@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.4.0",
+  "id": "orationes.gloria-patri",
+  "title": "Glória Patri",
+  "category": "orationes",
+  "section": "orationes-communes",
+  "variant": "devotional",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The lesser doxology. Wording transcribed verbatim from witness do-horas (chant flex asterisks stripped).",
+  "source": {
+    "method": "Transcribed verbatim from witness do-horas, collated against tpl: zero substantive divergence.",
+    "witnesses": "witnesses/orationes.gloria-patri/"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w002", "form": "Patri", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "Fílio", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "Spirítui", "lemma": "spiritus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w007", "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w008", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" } },
+        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w011", "form": "princípio", "post": ",", "lemma": "principium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "nunc", "post": ",", "lemma": "nunc", "morph": { "pos": "adv" } },
+        { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w015", "form": "semper", "post": ",", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w016", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w017", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w018", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w019", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w020", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
+    }
+  ]
+}
