@@ -4,6 +4,7 @@ Exit 0 iff VERDICT OK. Zero words, zero witnesses, or zero languages FAIL —
 a gate that checks nothing must not pass.
 
 Usage: python run_checks.py <text-id>     e.g. ordinarium.confiteor
+       python run_checks.py --all         every text under texts/
 """
 
 import json
@@ -59,8 +60,25 @@ def main(text_id: str) -> int:
     return 0
 
 
+def discover() -> list:
+    ids = []
+    for p in sorted(CORPUS.glob("texts/*/*.json")):
+        ids.append(f"{p.parent.name}.{p.stem}")
+    return ids
+
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("usage: run_checks.py <text-id>")
+        print("usage: run_checks.py <text-id> | --all")
         sys.exit(2)
+    if sys.argv[1] == "--all":
+        ids = discover()
+        if not ids:
+            print("VERDICT FAIL no texts discovered under texts/ — refusing to pass on zero")
+            sys.exit(1)
+        rc = 0
+        for tid in ids:
+            rc |= main(tid)
+        print(f"SUITE {'OK' if rc == 0 else 'FAIL'} texts={len(ids)}")
+        sys.exit(rc)
     sys.exit(main(sys.argv[1]))

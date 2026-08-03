@@ -14,4 +14,4 @@ jobs:
         with:
           python-version: '3.12'
       - name: Run corpus checks
-        run: python run_checks.py ordinarium.confiteor
+        run: python run_checks.py --all

@@ -24,12 +24,16 @@ def fold_ligatures(text: str) -> str:
     return text
 
 
-def substantive(text: str) -> str:
+def substantive(text: str, fold_ji: bool = False) -> str:
     """Level A: what must NEVER differ between witnesses of one recension —
     the letters. Case-folded, accents stripped, ligatures expanded,
-    punctuation removed, whitespace collapsed. j/v are NOT folded: witness
-    orthography profiles must match the corpus (ORTHOGRAPHY.md)."""
+    punctuation removed, whitespace collapsed. j is folded to i only for
+    witnesses that declare an i-style orthography profile (fold-ji: true in
+    the witness header); otherwise j/v differences are substantive
+    (ORTHOGRAPHY.md)."""
     text = fold_ligatures(strip_accents(text)).lower()
+    if fold_ji:
+        text = text.replace("j", "i")
     kept = [ch if ch.isalpha() or ch.isspace() else " " for ch in text]
     return " ".join("".join(kept).split())
 

@@ -60,10 +60,12 @@ def collate(doc, witness_dir: Path):
     for wf in witness_files:
         meta, text = load_witness(wf)
         wid = meta.get("witness", wf.stem)
-        wit_sub = substantive(text).split()
-        if wit_sub != ours_sub:
+        fold_ji = meta.get("fold-ji", "").strip().lower() == "true"
+        ours_cmp = substantive(" ".join(ours_raw), fold_ji=fold_ji).split() if fold_ji else ours_sub
+        wit_sub = substantive(text, fold_ji=fold_ji).split()
+        if wit_sub != ours_cmp:
             diverged = False
-            for i, (a, b) in enumerate(zip(ours_sub, wit_sub)):
+            for i, (a, b) in enumerate(zip(ours_cmp, wit_sub)):
                 if a != b:
                     errors.append(
                         f"{wid}: SUBSTANTIVE divergence at word {i + 1} "
@@ -73,8 +75,13 @@ def collate(doc, witness_dir: Path):
                     break
             if not diverged:
                 errors.append(
-                    f"{wid}: SUBSTANTIVE length mismatch: ours={len(ours_sub)} witness={len(wit_sub)}"
+                    f"{wid}: SUBSTANTIVE length mismatch: ours={len(ours_cmp)} witness={len(wit_sub)}"
                 )
+            continue
+        if meta.get("profile", "").strip() == "substantive-only":
+            # Witness with a different accidental profile (unaccented,
+            # different punctuation): the letters have been verified above;
+            # accidental comparison against it would be noise.
             continue
         wit_raw = text.split()
         if len(wit_raw) != len(ours_raw):

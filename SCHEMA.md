@@ -43,18 +43,21 @@ analysis_defaults, segments[]
   valid sources for rubric/text-level claims.
 - Segment: `{ id, type: "verse"|"rubric", text? (rubric Latin), words?[] }`.
 - Word: `{ id, form, post?, lemma, morph, analysis? }`. `post` = trailing
-  punctuation rendered after the word (`,` `:` `.`). `lemma` is a plain
+  punctuation rendered after the word (`,` `;` `:` `.`). `lemma` is a plain
   headword string until the lexicon exists — dictionary-normalized (i-form,
-  no j) and **lowercase except true proper names** (Maria, Michael, Ioannes,
-  Baptista, Petrus, Paulus — the linter's list); divine titles (deus,
-  dominus) are lowercase common-noun lemmas. (0.4.0 removed the 0.2.0
+  no j, full head: `ab` not `a`) and **lowercase except true proper names**
+  (Maria, Michael, Ioannes, Baptista, Petrus, Paulus, Iesus — the linter's
+  list); divine titles (deus, dominus, pater, spiritus) are lowercase
+  common-noun lemmas. (0.4.0 removed the 0.2.0
   `tier` field: hand-judged per-word difficulty proved unreviewable.)
-- `morph`: `pos` (verb|noun|adj|pron|adv|conj|prep) plus per-pos fields —
+- `morph`: `pos` (verb|noun|adj|pron|adv|conj|prep|intj) plus per-pos fields —
   nouns/adjs/prons: `case` (nom|gen|dat|acc|abl|voc), `number` (sg|pl),
-  `gender` (m|f|n), nouns also `decl` (1–5); adjs: `degree` (comp|sup) when
-  not positive; verbs: `person`, `number`, `tense` (pres|impf|fut|perf|plup|
-  futperf), `mood` (ind|subj|imp|inf), `voice` (act|pass|dep), `conj` (1–4);
-  preps: `governs` (acc|abl). Extend enums as texts require (participles etc.
+  `gender` (m|f|n), nouns also `decl` (1–5, omitted for Greek/irregular
+  declensions such as Iesus); adjs: `degree` (comp|sup) when not positive;
+  verbs: `person`, `number`, `tense` (pres|impf|fut|perf|plup|futperf),
+  `mood` (ind|subj|imp|inf), `voice` (act|pass|dep), `conj` (1–4, omitted
+  for irregulars such as sum, fio); preps: `governs` (acc|abl); intj covers
+  indeclinables like Amen. Extend enums as texts require (participles etc.
   are not yet covered).
 
 ## Gloss document

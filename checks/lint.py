@@ -6,7 +6,7 @@ import re
 from .normalize import ACCENTED_VOWELS, fold_ligatures, has_accent, strip_accents, syllable_count
 
 MORPH_ENUMS = {
-    "pos": {"verb", "noun", "adj", "pron", "adv", "conj", "prep"},
+    "pos": {"verb", "noun", "adj", "pron", "adv", "conj", "prep", "intj"},
     "case": {"nom", "gen", "dat", "acc", "abl", "voc"},
     "number": {"sg", "pl"},
     "gender": {"m", "f", "n"},
@@ -27,7 +27,7 @@ BANNED_TERMS = {
     "en": ["„"],  # Polish low-opening quote in English text
 }
 
-PROPER_LEMMAS = {"Maria", "Michael", "Ioannes", "Baptista", "Petrus", "Paulus"}
+PROPER_LEMMAS = {"Maria", "Michael", "Ioannes", "Baptista", "Petrus", "Paulus", "Iesus"}
 
 
 def lint_text(doc):
