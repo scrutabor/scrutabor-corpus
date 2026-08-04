@@ -1,4 +1,4 @@
-# Corpus schema v0 (0.5.0)
+# Corpus schema v0 (0.6.0)
 
 Three layers: a language-neutral Latin source document per text, one gloss
 document per text per language, and a corpus-wide lexicon (language-neutral
@@ -120,7 +120,7 @@ entries{ <lemma>: { head, pos, gender?, gender_pl?, decl?, conj?, analysis? } }
 
 ```
 schema_version, lang, status, analysis_defaults,
-entries{ <lemma>: { senses[], note?, analysis? } }
+entries{ <lemma>: { senses[], note?, derivatives?, analysis? } }
 ```
 
 - `senses`: 1–4 short dictionary-style meanings in the target language,
@@ -129,6 +129,12 @@ entries{ <lemma>: { senses[], note?, analysis? } }
 - `note`: optional lemma-level remark (etymology, register, usage) — facts
   true of the word everywhere. What used to be repeated on every token of
   `amen` lives here now.
+- `derivatives` (since 0.6.0): optional, 1–6 words of the TARGET language
+  genuinely derived from or borrowed via this lemma (confíteor →
+  konfesjonał; panis → companion) — memory hooks for learners. Only real
+  descent counts; lookalikes and independent cognates do not (mors is NOT
+  the source of Polish "mord"). Per-language by nature: no parity
+  requirement, and entries differ freely between languages.
 - Language files must cover identical key sets (parity), which must equal
   the lemmata key set.
 

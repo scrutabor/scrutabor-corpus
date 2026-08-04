@@ -14,7 +14,7 @@ already listed.
 | deponent | deponens (opis: forma bierna, znaczenie czynne) | — |
 | perfect | perfectum | czas przeszły dokonany (samodzielnie) |
 | declension/conjugation | deklinacja I–V, koniugacja I–IV (rzymskie) | 1. deklinacja |
-| apposition | apozycja (dopowiedzenie) — always with the parenthetical | przydawka rzeczowna |
+| apposition | apozycja (dopowiedzenie) — parenthetical at first mention per note or page; bare „apozycja” may follow anaphorically | przydawka rzeczowna |
 | agreement claim | zgadza się z „…” | zgodny/zgodna/zgodne z |
 | ablative of means | ablativus narzędzia | ablativus środka |
 | ablative of cause | ablativus przyczyny | — |

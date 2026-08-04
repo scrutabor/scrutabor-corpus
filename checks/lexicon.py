@@ -10,7 +10,7 @@ from .lint import BANNED_TERMS, MORPH_ENUMS
 from .normalize import ACCENTED_VOWELS, has_accent, syllable_count
 
 LEMMATA_ENTRY_KEYS = {"head", "pos", "gender", "gender_pl", "decl", "conj", "analysis"}
-SENSE_ENTRY_KEYS = {"senses", "note", "analysis"}
+SENSE_ENTRY_KEYS = {"senses", "note", "derivatives", "analysis"}
 
 # A head is dictionary punctuation plus word tokens; ending fragments ("-æ",
 # "-a") and the deponent auxiliary carry no accent rules of their own.
@@ -90,7 +90,15 @@ def lint_senses(lang, entries, lemmata):
             errors.append(f"lexicon:{lang}:{lemma}: senses must be 1+ nonempty strings")
         elif len(senses) > 4:
             errors.append(f"lexicon:{lang}:{lemma}: {len(senses)} senses — SCHEMA.md allows at most 4")
-        prose = " ".join(senses or []) + " " + e.get("note", "")
+        derivs = e.get("derivatives")
+        if derivs is not None:
+            if not derivs or not all(isinstance(d, str) and d for d in derivs):
+                errors.append(f"lexicon:{lang}:{lemma}: derivatives must be 1+ nonempty strings")
+            elif len(derivs) > 6:
+                errors.append(
+                    f"lexicon:{lang}:{lemma}: {len(derivs)} derivatives — SCHEMA.md allows at most 6"
+                )
+        prose = " ".join(senses or []) + " " + " ".join(derivs or []) + " " + e.get("note", "")
         for pat in banned:
             if re.search(pat, prose, re.IGNORECASE):
                 errors.append(
