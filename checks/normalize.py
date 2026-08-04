@@ -6,8 +6,9 @@ LIGATURES = {"æ": "ae", "œ": "oe", "Æ": "Ae", "Œ": "Oe", "ǽ": "ae", "Ǽ": "
 
 ACCENTED_VOWELS = set("áéíóúýǽÁÉÍÓÚÝǼ")
 
-# Vowel letters for syllable counting; ligatures and accented vowels count as one.
-VOWELS = set("aeiouyáéíóúýæœǽ")
+# Vowel letters for syllable counting; ligatures and accented vowels count as
+# one. ë (diaeresis, ORTHOGRAPHY.md rule 7) is its own syllable: Mí-cha-ël.
+VOWELS = set("aeiouyáéíóúýæœǽë")
 
 
 def strip_accents(text: str) -> str:

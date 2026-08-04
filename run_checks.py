@@ -14,9 +14,36 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8")
 
 from checks.collate import collate
+from checks.lexicon import (
+    check_orphans,
+    check_text_against_lexicon,
+    lint_lemmata,
+    lint_senses,
+    load_lexicon,
+)
 from checks.lint import lint_gloss, lint_parity, lint_text
 
 CORPUS = Path(__file__).resolve().parent
+
+
+def lexicon_suite(used_lemmas=None) -> int:
+    """Global lexicon checks: shape, head orthography, language parity, and
+    (given the set of lemmas every text uses) orphan entries. The per-text
+    coverage/consistency half runs inside main()."""
+    lemmata, langs, errors = load_lexicon(CORPUS)
+    errors += lint_lemmata(lemmata)
+    for lang, entries in sorted(langs.items()):
+        errors += lint_senses(lang, entries, lemmata)
+    if used_lemmas is not None:
+        errors += check_orphans(lemmata, used_lemmas)
+    for e in errors:
+        print(f"ERROR: {e}")
+    subject = f"lexicon entries={len(lemmata)} langs={','.join(sorted(langs)) or '-'}"
+    if errors:
+        print(f"VERDICT FAIL {subject} errors={len(errors)}")
+        return 1
+    print(f"VERDICT OK {subject} errors=0")
+    return 0
 
 
 def main(text_id: str) -> int:
@@ -28,6 +55,10 @@ def main(text_id: str) -> int:
 
     text_errors, n_words = lint_text(doc)
     all_errors += text_errors
+
+    lemmata, _, lex_errors = load_lexicon(CORPUS)
+    all_errors += lex_errors
+    all_errors += check_text_against_lexicon(doc, lemmata)
 
     gloss_docs = []
     for gloss_path in sorted(CORPUS.glob(f"glosses/*/{text_id}.json")):
@@ -51,7 +82,8 @@ def main(text_id: str) -> int:
 
     subject = (
         f"text={text_id} words={n_words} langs={','.join(langs) or '-'} "
-        f"witnesses={coll_stats['witnesses']} variants={coll_stats['variants_adjudicated']}"
+        f"witnesses={coll_stats['witnesses']} variants={coll_stats['variants_adjudicated']} "
+        f"lemmata={len(lemmata)}"
     )
     if all_errors:
         print(f"VERDICT FAIL {subject} errors={len(all_errors)} warnings={len(all_warnings)}")
@@ -76,9 +108,18 @@ if __name__ == "__main__":
         if not ids:
             print("VERDICT FAIL no texts discovered under texts/ — refusing to pass on zero")
             sys.exit(1)
-        rc = 0
+        used = set()
+        for tid in ids:
+            category, name = tid.split(".", 1)
+            tdoc = json.loads((CORPUS / "texts" / category / f"{name}.json").read_text(encoding="utf-8"))
+            for s in tdoc["segments"]:
+                for w in s.get("words") or []:
+                    used.add(w["lemma"])
+        rc = lexicon_suite(used)
         for tid in ids:
             rc |= main(tid)
         print(f"SUITE {'OK' if rc == 0 else 'FAIL'} texts={len(ids)}")
         sys.exit(rc)
-    sys.exit(main(sys.argv[1]))
+    # Single-text mode still runs the global lexicon shape checks (orphan
+    # detection needs every text, so it is --all only).
+    sys.exit(lexicon_suite(None) | main(sys.argv[1]))

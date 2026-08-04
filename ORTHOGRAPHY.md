@@ -24,6 +24,10 @@ corpus must match what their eyes see.
    forms: i-form (no j: *Ioannes*), lowercase except true proper names —
    so they match the conventions of morphological analyzers and dictionaries.
    Divine titles (*deus*, *dominus*) are lowercase common-noun lemmas.
+7. **Diaeresis (ë)** as the typical editions print it, marking two vowels
+   in hiatus where no acute already shows it: *Míchaël*, *Israël*, *Raphaël*.
+   Oblique forms whose acute falls on the hiatus vowel need no diaeresis
+   (*Michaélis*). ë counts as its own syllable and is not a stress accent.
 
 ## Witnesses and the apparatus
 

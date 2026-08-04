@@ -14,7 +14,10 @@ already listed.
 | deponent | deponens (opis: forma bierna, znaczenie czynne) | — |
 | perfect | perfectum | czas przeszły dokonany (samodzielnie) |
 | declension/conjugation | deklinacja I–V, koniugacja I–IV (rzymskie) | 1. deklinacja |
-| apposition | apozycja (dopowiedzenie) | przydawka rzeczowna |
+| apposition | apozycja (dopowiedzenie) — always with the parenthetical | przydawka rzeczowna |
+| agreement claim | zgadza się z „…” | zgodny/zgodna/zgodne z |
+| ablative of means | ablativus narzędzia | ablativus środka |
+| ablative of cause | ablativus przyczyny | — |
 | quotes in prose | „…” (polskie cudzysłowy) | "…", “…” |
 
 ## English
@@ -24,9 +27,11 @@ already listed.
 | cases | nominative, genitive, dative, accusative, ablative, vocative | — |
 | declension/conjugation | 1st–5th declension, 1st–4th conjugation | Roman numerals |
 | deponent | deponent (passive form, active meaning) | — |
+| ablative of means / of cause | ablative of means, ablative of cause | — |
 | quotes in prose | “…” (English quotes) | „…” |
 
 ## Linter hooks
 
-`checks/lint.py` `BANNED_TERMS`: PL bans `ablatiw`; EN bans `„`.
+`checks/lint.py` `BANNED_TERMS`: PL bans `ablatiw`, `ablativ* środka`,
+`zgodn* z`; EN bans `„`.
 Add a row here AND a pattern there when a new decision lands.

@@ -17,13 +17,17 @@ MORPH_ENUMS = {
     "governs": {"acc", "abl"},
 }
 
-FORM_RE = re.compile(r"^[A-Za-zÁÉÍÓÚÝáéíóúýÆæŒœǼǽ]+$")
+FORM_RE = re.compile(r"^[A-Za-zÁÉÍÓÚÝáéíóúýÆæŒœǼǽËë]+$")
 REF_RE = re.compile(r"\((w\d{3})\)")
 QUOTE_REF_RE = re.compile(r"[„“]([^”“„]+)”\s*\((w\d{3})\)")
 
 # Terminology contract (corpus/TERMINOLOGY.md): banned variants per language.
 BANNED_TERMS = {
-    "pl": [r"ablatiw"],  # ablatiwus/ablatiwie/... -> ablativus/ablativie/...
+    "pl": [
+        r"ablatiw",  # ablatiwus/ablatiwie/... -> ablativus/ablativie/...
+        r"ablativ\w* środka",  # -> ablativus narzędzia (TERMINOLOGY.md)
+        r"\bzgodn\w+ ze? „",  # agreement claim -> "zgadza się z „..."
+    ],
     "en": ["„"],  # Polish low-opening quote in English text
 }
 
@@ -91,6 +95,12 @@ def lint_gloss(doc, text_doc):
                 errors.append(f"{lang}:{where}: banned terminology/typography {pat!r} (TERMINOLOGY.md)")
 
     for wid, entry in gw.items():
+        if not entry.get("gloss"):
+            errors.append(f"{lang}:{wid}: missing gloss")
+        # function is OPTIONAL (contextual-only, SCHEMA.md 0.5.0) — omit the
+        # key entirely; an empty string is an authoring error, not an omission.
+        if "function" in entry and not entry["function"]:
+            errors.append(f"{lang}:{wid}: empty function — omit the key instead")
         fn = entry.get("function", "")
         check_prose(wid, entry.get("gloss", "") + " " + fn)
         for ref in REF_RE.finditer(fn):
@@ -127,11 +137,20 @@ def lint_parity(gloss_docs):
     if len(gloss_docs) < 2:
         return errors
     base = gloss_docs[0]
+    base_fn = {wid for wid, e in base["words"].items() if "function" in e}
     for other in gloss_docs[1:]:
         if set(base["words"]) != set(other["words"]):
             errors.append(
                 f"parity: word coverage differs {base['lang']} vs {other['lang']}: "
                 f"{sorted(set(base['words']) ^ set(other['words']))}"
+            )
+        # A function note claims something about the Latin, which is
+        # language-independent — presence must agree across languages.
+        other_fn = {wid for wid, e in other["words"].items() if "function" in e}
+        if base_fn != other_fn:
+            errors.append(
+                f"parity: function presence differs {base['lang']} vs {other['lang']}: "
+                f"{sorted(base_fn ^ other_fn)}"
             )
         if set(base.get("segments", {})) != set(other.get("segments", {})):
             errors.append(f"parity: segment coverage differs {base['lang']} vs {other['lang']}")
