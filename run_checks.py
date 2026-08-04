@@ -21,9 +21,28 @@ from checks.lexicon import (
     lint_senses,
     load_lexicon,
 )
-from checks.lint import lint_gloss, lint_parity, lint_text
+from checks.lint import lint_analysis, lint_gloss, lint_parity, lint_text
 
 CORPUS = Path(__file__).resolve().parent
+
+
+def check_schema_versions() -> list[str]:
+    """SCHEMA.md: schema_version is corpus-wide — every document carries the
+    same number. Reads every document; zero documents is itself a failure."""
+    versions = {}
+    for path in sorted(CORPUS.glob("texts/*/*.json")) + sorted(
+        CORPUS.glob("glosses/*/*.json")
+    ) + sorted(CORPUS.glob("lexicon/*.json")):
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        versions.setdefault(str(doc.get("schema_version")), []).append(
+            str(path.relative_to(CORPUS))
+        )
+    if not versions:
+        return ["no corpus documents found — refusing to pass on zero"]
+    if len(versions) > 1:
+        detail = "; ".join(f"{v}: {', '.join(ps)}" for v, ps in sorted(versions.items()))
+        return [f"schema_version differs across the corpus — {detail}"]
+    return []
 
 
 def lexicon_suite(used_lemmas=None) -> int:
@@ -55,6 +74,8 @@ def main(text_id: str) -> int:
 
     text_errors, n_words = lint_text(doc)
     all_errors += text_errors
+    all_errors += lint_analysis(doc)
+    all_errors += check_schema_versions()
 
     lemmata, _, lex_errors = load_lexicon(CORPUS)
     all_errors += lex_errors

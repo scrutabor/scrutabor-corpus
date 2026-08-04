@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.6.0",
+  "schema_version": "0.7.0",
   "id": "ordinarium.confiteor",
   "title": "Confíteor",
   "category": "ordinarium",
@@ -14,6 +14,7 @@
     "apparatus": "witnesses/ordinarium.confiteor/apparatus.json"
   },
   "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
   "segments": [
     {
       "id": "s01",
@@ -33,10 +34,10 @@
         { "id": "w006", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
         { "id": "w007", "form": "Vírgini", "post": ",", "lemma": "virgo", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "f", "decl": 3 } },
         { "id": "w008", "form": "beáto", "lemma": "beatus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" } },
-        { "id": "w009", "form": "Michaéli", "lemma": "Michael", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w009", "form": "Michaéli", "lemma": "Michael", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
         { "id": "w010", "form": "Archángelo", "post": ",", "lemma": "archangelus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w011", "form": "beáto", "lemma": "beatus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" } },
-        { "id": "w012", "form": "Joánni", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w012", "form": "Joánni", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
         { "id": "w013", "form": "Baptístæ", "post": ",", "lemma": "Baptista", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 1 } },
         { "id": "w014", "form": "sanctis", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" } },
         { "id": "w015", "form": "Apóstolis", "lemma": "apostolus", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 2 } },
@@ -93,10 +94,10 @@
         { "id": "w042", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
         { "id": "w043", "form": "Vírginem", "post": ",", "lemma": "virgo", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
         { "id": "w044", "form": "beátum", "lemma": "beatus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" } },
-        { "id": "w045", "form": "Michaélem", "lemma": "Michael", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w045", "form": "Michaélem", "lemma": "Michael", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
         { "id": "w046", "form": "Archángelum", "post": ",", "lemma": "archangelus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w047", "form": "beátum", "lemma": "beatus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" } },
-        { "id": "w048", "form": "Joánnem", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w048", "form": "Joánnem", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
         { "id": "w049", "form": "Baptístam", "post": ",", "lemma": "Baptista", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 1 } },
         { "id": "w050", "form": "sanctos", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" } },
         { "id": "w051", "form": "Apóstolos", "lemma": "apostolus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 } },

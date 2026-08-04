@@ -33,6 +33,60 @@ BANNED_TERMS = {
 
 PROPER_LEMMAS = {"Maria", "Michael", "Ioannes", "Baptista", "Petrus", "Paulus", "Iesus"}
 
+# Provenance (SCHEMA.md, since 0.7.0). Witness ids are also valid sources;
+# their grammar mirrors the witness directory names.
+ANALYSIS_ENUMS = {
+    "confidence": {"high", "medium", "low"},
+    "review": {"pending", "accepted", "disputed"},
+}
+ANALYSIS_KEYS = {"confidence", "sources", "review"}
+KNOWN_SOURCES = {"whitakers", "collatinus", "editorial", "treebank", "expert"}
+SOURCE_RE = re.compile(r"^[a-z][a-z0-9-]*$")
+
+
+def check_analysis(obj, where):
+    """Shape of one analysis object; the resolution order is
+    word.analysis ?? analysis_defaults_words ?? analysis_defaults."""
+    if not isinstance(obj, dict):
+        return [f"{where}: analysis must be an object"]
+    errors = [f"{where}: analysis missing {k}" for k in ANALYSIS_KEYS - set(obj)]
+    errors += [f"{where}: analysis has unknown key {k!r}" for k in set(obj) - ANALYSIS_KEYS]
+    for key, allowed in ANALYSIS_ENUMS.items():
+        if key in obj and obj[key] not in allowed:
+            errors.append(f"{where}: analysis.{key}={obj[key]!r} not in enum")
+    sources = obj.get("sources")
+    if sources is not None:
+        if not isinstance(sources, list) or not sources:
+            errors.append(f"{where}: analysis.sources must be a nonempty list")
+        else:
+            for s in sources:
+                if not isinstance(s, str) or not SOURCE_RE.match(s):
+                    errors.append(f"{where}: analysis source {s!r} malformed")
+    return errors
+
+
+def lint_analysis(doc):
+    """Provenance layer of a text document: defaults well-formed, overrides
+    well-formed and never redundantly restating the default they override."""
+    errors = check_analysis(doc["analysis_defaults"], "analysis_defaults")
+    defaults_words = doc.get("analysis_defaults_words")
+    if defaults_words is not None:
+        errors += check_analysis(defaults_words, "analysis_defaults_words")
+        if defaults_words == doc["analysis_defaults"]:
+            errors.append("analysis_defaults_words identical to analysis_defaults — drop it")
+    word_default = defaults_words if defaults_words is not None else doc["analysis_defaults"]
+    for seg in doc["segments"]:
+        if "analysis" in seg:
+            errors += check_analysis(seg["analysis"], seg["id"])
+            if seg["analysis"] == doc["analysis_defaults"]:
+                errors.append(f"{seg['id']}: analysis restates the default — drop it")
+        for w in seg.get("words") or []:
+            if "analysis" in w:
+                errors += check_analysis(w["analysis"], w["id"])
+                if w["analysis"] == word_default:
+                    errors.append(f"{w['id']}: analysis restates the word default — drop it")
+    return errors
+
 
 def lint_text(doc):
     errors = []

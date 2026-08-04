@@ -1,4 +1,4 @@
-# Corpus schema v0 (0.6.0)
+# Corpus schema v0 (0.7.0)
 
 Three layers: a language-neutral Latin source document per text, one gloss
 document per text per language, and a corpus-wide lexicon (language-neutral
@@ -65,6 +65,16 @@ analysis_defaults, segments[]
   [whitakers|collatinus|editorial|treebank|expert|<witness-id>], `review`:
   pending|accepted|disputed). Witness ids (e.g. `do`, `handmissal-eo`) are
   valid sources for rubric/text-level claims.
+- `analysis_defaults_words` (since 0.7.0, optional): the default for WORD
+  tokens specifically. Resolution order: `word.analysis` ??
+  `analysis_defaults_words` ?? `analysis_defaults`; segments never read it.
+  Rationale: word analyses are machine-confirmed by independent analyzers
+  (the agreement report names each token's confirmers), while segment-level
+  prose claims remain editorial — one document-wide default could not say
+  both. A per-word `analysis` appears ONLY where the confirmers differ from
+  the word default (e.g. proper names absent from one analyzer's lexicon);
+  an override that restates its default is a lint error, as is a
+  `analysis_defaults_words` identical to `analysis_defaults`.
 - Segment: `{ id, type: "verse"|"rubric", text? (rubric Latin), words?[] }`.
 - Word: `{ id, form, post?, lemma, morph, analysis? }`. `post` = trailing
   punctuation rendered after the word (`,` `;` `:` `.`). `lemma` is the key

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.6.0",
+  "schema_version": "0.7.0",
   "id": "orationes.ave-maria",
   "title": "Ave María",
   "category": "orationes",
@@ -13,6 +13,7 @@
     "witnesses": "witnesses/orationes.ave-maria/"
   },
   "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
   "segments": [
     {
       "id": "s01",
@@ -33,7 +34,7 @@
         { "id": "w013", "form": "fructus", "lemma": "fructus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 } },
         { "id": "w014", "form": "ventris", "lemma": "venter", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w015", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" } },
-        { "id": "w016", "form": "Jesus", "post": ".", "lemma": "Iesus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" } }
+        { "id": "w016", "form": "Jesus", "post": ".", "lemma": "Iesus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
       ]
     },
     {
