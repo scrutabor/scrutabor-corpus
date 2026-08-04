@@ -41,8 +41,10 @@ restate what another layer already carries:
   `<text-id>.<word-id>` (e.g. `ordinarium.confiteor.w002`) by SRS decks and
   future GABC syllable maps (`w002.s1` reserved for syllables).
 - **Never renumbered, never reused.** Document order = array order, not ID
-  order. Textual insertions get fresh IDs (policy TBD before public release:
-  letter suffix `w012a` vs next-free-number).
+  order. IDs are opaque stable tokens: the numeric appearance is allocation
+  history, not position. A textual insertion takes the NEXT FREE NUMBER in
+  its text, wherever it lands in reading order — the array carries the
+  order, the ID carries only identity.
 - Segment IDs (`s01`…) are NOT stable — segmentation may change freely; words
   are the stable layer.
 
