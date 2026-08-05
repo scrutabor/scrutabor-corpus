@@ -1,0 +1,97 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.kyrie",
+  "title": "Kýrie, eléison",
+  "category": "ordinarium",
+  "section": "missa-catechumenorum",
+  "variant": "missae",
+  "sung": true,
+  "status": "working-edition",
+  "notes": "Nine invocations in Greek, printed in Latin letters, between the Introit and the Gloria. They are encoded as words rather than as one opaque formula, and the parses claim only what the evidence carries. Kýrie and eléison take the lemmata the analyzers themselves head (kyrie, eleison), not the deeper Greek etyma kyrios and eleeo: a corpus lemma is a dictionary key for a word as it stands in a Latin book. No standard Latin lexicon heads either bare word — what Latin lexicalised is the phrase (Niermeyer heads kyrie-eleison as a noun for the chant; Du Cange has KYRIELES for the litany and the verb Kyrieeleisare) — and the lexicon entries say so. TENSE IS OMITTED on eléison: the Greek form is an aorist imperative, an aspect a Latin tense enum cannot hold, and inventing a value would claim more than is known; the note carries it instead. Whitaker\u0027s holds a part of speech for both words but no case for Kýrie and no features at all for eléison, so it cannot contradict the vocative or the imperative — those rest on Greek grammar and are editorial, pending expert review. Christe is the ordinary Latin vocative of the naturalised Christus, confirmed by both analyzers.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence and no accidental variants — the two editions agree token for token, so this text carries no apparatus.",
+    "witnesses": "witnesses/ordinarium.kyrie/"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Qua finita, junctis manibus, et alternatim cum Ministris, dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers"], "review": "pending" } },
+        { "id": "w002", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "words": [
+        { "id": "w003", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers"], "review": "pending" } },
+        { "id": "w004", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
+      ]
+    },
+    {
+      "id": "s04",
+      "type": "verse",
+      "words": [
+        { "id": "w005", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers"], "review": "pending" } },
+        { "id": "w006", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
+      ]
+    },
+    {
+      "id": "s05",
+      "type": "verse",
+      "words": [
+        { "id": "w007", "form": "Christe", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" } },
+        { "id": "w008", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
+      ]
+    },
+    {
+      "id": "s06",
+      "type": "verse",
+      "words": [
+        { "id": "w009", "form": "Christe", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" } },
+        { "id": "w010", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
+      ]
+    },
+    {
+      "id": "s07",
+      "type": "verse",
+      "words": [
+        { "id": "w011", "form": "Christe", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" } },
+        { "id": "w012", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
+      ]
+    },
+    {
+      "id": "s08",
+      "type": "verse",
+      "words": [
+        { "id": "w013", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers"], "review": "pending" } },
+        { "id": "w014", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
+      ]
+    },
+    {
+      "id": "s09",
+      "type": "verse",
+      "words": [
+        { "id": "w015", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers"], "review": "pending" } },
+        { "id": "w016", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
+      ]
+    },
+    {
+      "id": "s10",
+      "type": "verse",
+      "words": [
+        { "id": "w017", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers"], "review": "pending" } },
+        { "id": "w018", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
+      ]
+    }
+  ]
+}
