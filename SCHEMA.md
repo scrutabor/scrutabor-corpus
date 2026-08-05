@@ -77,7 +77,9 @@ analysis_defaults, segments[]
   `analysis_defaults_words` identical to `analysis_defaults`.
 - Segment: `{ id, type: "verse"|"rubric", text? (rubric Latin), words?[] }`.
 - Word: `{ id, form, post?, lemma, morph, analysis? }`. `post` = trailing
-  punctuation rendered after the word (`,` `;` `:` `.` `?`). `lemma` is the key
+  punctuation rendered after the word (`,` `;` `:` `.` `?`). `degree`
+  (`comp`/`sup`) is not confined to adjectives: Latin adverbs take it too
+  (*mirabílius*), and the analyzers report it. `lemma` is the key
   into `lexicon/lemmata.json` — dictionary-normalized (i-form,
   no j, full head: `ab` not `a`) and **lowercase except true proper names**
   (Maria, Michael, Ioannes, Baptista, Petrus, Paulus, Iesus, Christus,
@@ -94,12 +96,38 @@ analysis_defaults, segments[]
   intj covers indeclinables like Amen. **Participles** (since 0.8.0) are
   verb tokens with `mood: "part"`: no `person`, and they add the nominal
   agreement fields `case`/`number`/`gender` to `tense` (pres|perf|fut)
-  and `voice` (deponent perfect participles keep `voice: "dep"`).
+  and `voice` (deponent participles keep `voice: "dep"`, present as well as perfect).
   Extend enums as texts require (gerundives are not yet covered).
   Classification rulings: *sicut* is tagged `conj`
   (comparative conjunction) although several dictionaries head it as an
   adverb — analyzer disagreement at integration is expected there, not a
   silent error.
+
+### Homograph lemma keys
+
+Two different words can share a spelling: the demonstrative *hic, hæc, hoc*
+and the adverb *hic* ("here"). The lexicon is keyed by lemma with one part of
+speech per entry, so they cannot share a key.
+
+The plain key goes to the word a reader is likelier to look up — usually the
+more frequent one — and the other takes a discriminator, `<lemma>_<latin
+part of speech>`: `hic` is the demonstrative, `hic_adverbium` the adverb.
+Letters and underscore only: a hyphen breaks the analyzer lookup, which
+expects a single Latin word. The pipeline maps a discriminated key back to
+the word itself (`LEMMA_ALIASES`), so the analyzers still vote on it, and the
+app strips the discriminator when it builds an external dictionary link.
+
+### The gerundive
+
+A gerundive is the future passive participle, and is written as one:
+`mood: part`, `tense: fut`, `voice: pass`, plus the case, number and gender
+of its agreement. No enum value is invented for it, and none is needed — the
+analyzers describe it the same way. That it carries obligation ("to be
+offered", "which must be offered") is a matter of sense and belongs in the
+word's note, not in the morphology.
+
+The gerund — the verbal noun, active in sense and without agreement — is
+NOT this. When one is tokenized, it wants its own ruling.
 
 ### Witness corrigenda
 

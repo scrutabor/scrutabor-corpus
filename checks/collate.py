@@ -3,6 +3,13 @@ recension. Substantive text (letters) must match with zero divergence;
 accidentals (punctuation, capitalization, capital-accents) must each be
 covered by an adjudicated entry in the text's apparatus.json.
 
+A witness may print a DIFFERENT REAL SPELLING of the same word — the
+classical neglegentia against the ecclesiastical negligentia, caelum against
+coelum. Both are the word; neither page is wrong; but the letters differ, so
+this is neither an accidental nor a corrigendum. Such a reading passes only
+with an apparatus entry of `"class": "orthography"` quoting both spellings
+and ruling which the edition prints. Counted as `orthographic` in the stats.
+
 A witness may also carry a printer's slip — a letter its own edition sets
 wrong. Such a reading is not a variant to adjudicate and not something to
 tolerate silently, so a witness file DECLARES it:
@@ -87,6 +94,7 @@ def collate(doc, witness_dir: Path):
     used = set()
     n_variants = 0
     n_corrigenda = 0
+    n_orthographic = 0
     for wf in witness_files:
         meta, text = load_witness(wf)
         wid = meta.get("witness", wf.stem)
@@ -126,20 +134,43 @@ def collate(doc, witness_dir: Path):
         )
         wit_sub = substantive(text, fold_ji=fold_ji, fold_xs=fold_xs).split()
         if wit_sub != ours_cmp:
-            diverged = False
-            for i, (a, b) in enumerate(zip(ours_cmp, wit_sub)):
-                if a != b:
-                    errors.append(
-                        f"{wid}: SUBSTANTIVE divergence at word {i + 1} "
-                        f"({toks[i][0] if i < len(toks) else '?'}): ours={a!r} witness={b!r}"
-                    )
-                    diverged = True
-                    break
-            if not diverged:
+            if len(wit_sub) != len(ours_cmp):
                 errors.append(
                     f"{wid}: SUBSTANTIVE length mismatch: ours={len(ours_cmp)} witness={len(wit_sub)}"
                 )
-            continue
+                continue
+            unruled = False
+            for i, (a, b) in enumerate(zip(ours_cmp, wit_sub)):
+                if a == b:
+                    continue
+                # An ADJUDICATED ORTHOGRAPHIC VARIANT is a letter difference
+                # where both spellings are real words of the same recension
+                # (neglegentia/negligentia, caelum/coelum) and the edition has
+                # ruled which it prints. Unlike a corrigendum, neither witness
+                # is wrong; unlike an accidental, the letters differ. It passes
+                # only with a ruling that quotes both readings.
+                word_id, ours_tok = toks[i] if i < len(toks) else ("?", "")
+                entry = adjudicated.get((word_id, wid))
+                if (
+                    entry
+                    and entry.get("class") == "orthography"
+                    and entry["ours"] == ours_tok
+                    and entry["witnesses"].get(wid)
+                ):
+                    used.add((word_id, wid))
+                    n_orthographic += 1
+                    continue
+                errors.append(
+                    f"{wid}: SUBSTANTIVE divergence at word {i + 1} "
+                    f"({word_id}): ours={a!r} witness={b!r}"
+                )
+                unruled = True
+                break
+            if unruled:
+                continue
+            # every letter difference was ruled: the accidentals still get
+            # compared below, as they do for a witness that matched outright
+
         if meta.get("profile", "").strip() == "substantive-only":
             # Witness with a different accidental profile (unaccented,
             # different punctuation): the letters have been verified above;
@@ -153,8 +184,8 @@ def collate(doc, witness_dir: Path):
             )
             continue
         for (word_id, ours_tok), wit_tok in zip(toks, wit_raw):
-            if ours_tok == wit_tok:
-                continue
+            if ours_tok == wit_tok or (word_id, wid) in used:
+                continue  # identical, or already ruled as an orthographic variant
             entry = adjudicated.get((word_id, wid))
             if entry and entry["ours"] == ours_tok and entry["witnesses"][wid] == wit_tok:
                 used.add((word_id, wid))
@@ -175,5 +206,6 @@ def collate(doc, witness_dir: Path):
         "words": len(toks),
         "variants_adjudicated": n_variants,
         "corrigenda": n_corrigenda,
+        "orthographic": n_orthographic,
     }
     return errors, warnings, stats

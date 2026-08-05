@@ -1,17 +1,17 @@
 {
   "schema_version": "0.8.0",
-  "id": "ordinarium.confiteor",
-  "title": "Confíteor (Ministrórum)",
+  "id": "ordinarium.confiteor-sacerdotis",
+  "title": "Confíteor (Sacerdotis)",
   "category": "ordinarium",
   "section": "praeparatio",
-  "variant": "ministrorum",
+  "variant": "sacerdotis",
   "sung": false,
   "status": "working-edition",
-  "notes": "Servers'/faithful's variant (tibi, pater / te, pater). The priest's own confession has vobis, fratres / vos, fratres instead. Rubric s01 quotes the 1962 rubric as transcribed by witness do; s04 adapts the inline rubric '(Percutit sibi pectus ter, dicens:)' to the ministers' plural (percutiunt, dicentes). The priest's own form, addressed vobis, fratres and answered vos, fratres, stands as ordinarium.confiteor-sacerdotis.",
+  "notes": "The priest's own confession, said bowed at the foot of the altar before the ministers repeat it. The corpus already carries the ministers' branch as ordinarium.confiteor (variant ministrorum); this is its counterpart, and the two differ in exactly two places: vobis, fratres at w022-w023 and vos, fratres at w058-w059, where the ministers say tibi, pater and te, pater. Witness do prints the priest's text in full and gives the ministers' as a substitution rule (et ubi a Sacerdote dicebatur vobis, fratres, et vos, fratres, a Ministris dicitur tibi, pater, et te, pater), which is why every other word is shared. The answer to this confession is ordinarium.misereatur-tui, not ordinarium.misereatur: the ministers say Misereátur tui back to the priest, and the priest says Misereátur vestri over them after their own confession. FRATRES at w023 and w059 is tagged vocative although the plural of frater is identical in the nominative, the accusative and the vocative; the case rests on the address, exactly as pater does in the ministers' branch. Rubric s04 is DO's inline '(Percutit sibi pectus ter, dicens:)' as its own segment, here in the singular the missal prints for the priest.",
   "source": {
     "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants (punctuation, capitalization, capital accents) adjudicated in the apparatus.",
-    "witnesses": "witnesses/ordinarium.confiteor/",
-    "apparatus": "witnesses/ordinarium.confiteor/apparatus.json"
+    "witnesses": "witnesses/ordinarium.confiteor-sacerdotis/",
+    "apparatus": "witnesses/ordinarium.confiteor-sacerdotis/apparatus.json"
   },
   "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
   "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
@@ -19,7 +19,7 @@
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Deinde Ministri repetunt Confessionem.",
+      "text": "Deinde junctis manibus profunde inclinatus facit Confessionem.",
       "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
     },
     {
@@ -47,8 +47,8 @@
         { "id": "w019", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" } },
         { "id": "w020", "form": "Sanctis", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" } },
         { "id": "w021", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w022", "form": "tibi", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
-        { "id": "w023", "form": "pater", "post": ":", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } }
+        { "id": "w022", "form": "vobis", "post": ",", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
+        { "id": "w023", "form": "fratres", "post": ":", "lemma": "frater", "morph": { "pos": "noun", "case": "voc", "number": "pl", "gender": "m", "decl": 3 } }
       ]
     },
     {
@@ -67,7 +67,7 @@
     {
       "id": "s04",
       "type": "rubric",
-      "text": "Percutiunt sibi pectus ter, dicentes:",
+      "text": "Percutit sibi pectus ter, dicens:",
       "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
     },
     {
@@ -107,8 +107,8 @@
         { "id": "w055", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" } },
         { "id": "w056", "form": "Sanctos", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" } },
         { "id": "w057", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w058", "form": "te", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
-        { "id": "w059", "form": "pater", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w058", "form": "vos", "post": ",", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w059", "form": "fratres", "post": ",", "lemma": "frater", "morph": { "pos": "noun", "case": "voc", "number": "pl", "gender": "m", "decl": 3 } },
         { "id": "w060", "form": "oráre", "lemma": "oro", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 } },
         { "id": "w061", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" } },
         { "id": "w062", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },

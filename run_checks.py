@@ -103,6 +103,8 @@ def main(text_id: str) -> int:
 
     corrigenda = (
         f"corrigenda={coll_stats['corrigenda']} " if coll_stats.get("corrigenda") else ""
+    ) + (
+        f"orthographic={coll_stats['orthographic']} " if coll_stats.get("orthographic") else ""
     )
     subject = (
         f"text={text_id} words={n_words} langs={','.join(langs) or '-'} "

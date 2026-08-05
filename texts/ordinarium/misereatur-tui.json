@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.misereatur-tui",
+  "title": "Misereátur tui",
+  "category": "ordinarium",
+  "section": "praeparatio",
+  "variant": "sacerdotis",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The ministers' answer to the priest's own confession, with the Amen he says to it. It is the counterpart of ordinarium.misereatur, which carries the same formula in the plural (Misereátur vestri... peccátis vestris... perdúcat vos) as the priest pronounces it over the ministers, together with the Indulgéntiam that follows it there. Here there is no Indulgéntiam: the ministers say only this one prayer, and the priest answers Amen to a prayer asked for himself. TUI at w002 is the genitive of the pronoun tu, not the possessive adjective that supplies the tuis of w008: misereor governs the genitive of the person pitied, and the two forms fall together in the possessive's paradigm — the same distinction the corpus records at ordinarium.misereatur for vestri and vestris.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence and no accidental variants — the two editions agree token for token, so this text carries no apparatus.",
+    "witnesses": "witnesses/ordinarium.misereatur-tui/"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Misereátur", "lemma": "misereor", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 2 } },
+        { "id": "w002", "form": "tui", "lemma": "tu", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
+        { "id": "w003", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "et", "post": ",", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "dimíssis", "lemma": "dimitto", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 } },
+        { "id": "w007", "form": "peccátis", "lemma": "peccatum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w008", "form": "tuis", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" } },
+        { "id": "w009", "form": "perdúcat", "lemma": "perduco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w010", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w011", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w012", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w013", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "rubric",
+      "text": "Sacerdos dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "words": [
+        { "id": "w014", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
+    },
+    {
+      "id": "s04",
+      "type": "rubric",
+      "text": "Et erigit se. Deinde Ministri repetunt Confessionem: et ubi a Sacerdote dicebatur vobis, fratres, et vos, fratres, a Ministris dicitur tibi, pater, et te, pater.",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    }
+  ]
+}

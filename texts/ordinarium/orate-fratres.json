@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.orate-fratres",
+  "title": "Oráte, fratres",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The one dialogue of the offertory: the priest's invitation, the servers' answer and the priest's Amen. Kept in one document because it is a dialogue, on the pattern of ordinarium.adiutorium — the answer is unintelligible apart from what it answers. Witness do prints nominis without an accent where the same file writes nómini in the Veni sanctificátor and nómine at the Adjutórium; adjudicated in the apparatus. Witness do also prints the rubrical alternative '(vel meis)' inside the answer, for the case where the priest says it himself; the witness header declares the stripping. TOTIÚSQUE at w030 is one written word carrying two: the adjective totíus with the enclitic -que, and it is tagged as the adjective it is built on, as the corpus does for vobíscum at ordinarium.deus-tu-conversus. MEUM at w004 and VESTRUM at w006 are nominative neuter agreeing with sacrifícium, not the accusative masculine the same spellings allow.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants (punctuation, one accent) adjudicated in the apparatus.",
+    "witnesses": "witnesses/ordinarium.orate-fratres/",
+    "apparatus": "witnesses/ordinarium.orate-fratres/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Postea osculatur Altare, et versus ad populum extendens, et jungens manus, voce paululum elevata, dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Oráte", "post": ",", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w002", "form": "fratres", "post": ":", "lemma": "frater", "morph": { "pos": "noun", "case": "voc", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w003", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" } },
+        { "id": "w005", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "vestrum", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" } },
+        { "id": "w007", "form": "sacrifícium", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w008", "form": "acceptábile", "lemma": "acceptabilis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" } },
+        { "id": "w009", "form": "fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w010", "form": "apud", "lemma": "apud", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w011", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w012", "form": "Patrem", "lemma": "pater", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w013", "form": "omnipoténtem", "post": ".", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "rubric",
+      "text": "Minister, seu circumstantes respondent: alioquin ipsemet Sacerdos:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s04",
+      "type": "verse",
+      "words": [
+        { "id": "w014", "form": "Suscípiat", "lemma": "suscipio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w015", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w016", "form": "sacrifícium", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w017", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w018", "form": "mánibus", "lemma": "manus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 4 } },
+        { "id": "w019", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "f" } },
+        { "id": "w020", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w021", "form": "laudem", "lemma": "laus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w022", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w023", "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w024", "form": "nóminis", "lemma": "nomen", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w025", "form": "sui", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" } },
+        { "id": "w026", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w027", "form": "utilitátem", "lemma": "utilitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w028", "form": "quoque", "lemma": "quoque", "morph": { "pos": "adv" } },
+        { "id": "w029", "form": "nostram", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w030", "form": "totiúsque", "lemma": "totus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w031", "form": "Ecclésiæ", "lemma": "ecclesia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w032", "form": "suæ", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w033", "form": "sanctæ", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } }
+      ]
+    },
+    {
+      "id": "s05",
+      "type": "rubric",
+      "text": "Sacerdos submissa voce dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s06",
+      "type": "verse",
+      "words": [
+        { "id": "w034", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
+    }
+  ]
+}

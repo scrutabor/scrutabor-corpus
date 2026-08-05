@@ -1,0 +1,94 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.in-spiritu-humilitatis",
+  "title": "In spíritu humilitátis",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The two short prayers said once both gifts lie on the corporal. They are kept in one document because neither accompanies a new offering: the host and the chalice have been offered, and these complete the act — the first asking that the offerers themselves be received, the second calling the Sanctifier to come and bless what already lies there. Witness handmissal-eo prints them in one paragraph with the chalice prayer; witness do separates them by rubrics, which is the shape followed here. SANCTIFICÁTOR at w027 is a standing divergence: Whitaker's has no such agent noun and reads the form as a future passive imperative of sanctifico, while Collatinus heads sanctificator and reads the vocative; the token's provenance records the disagreement. BÉNEDIC at w032 is one word; witness do prints a cross glyph inside it (béne + dic) and the witness header declares the stripping. TUO at w035 and SANCTO at w036 are dative, agreeing with nómini, not ablative — the same spelling serves both cases.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants (punctuation) adjudicated in the apparatus.",
+    "witnesses": "witnesses/ordinarium.in-spiritu-humilitatis/",
+    "apparatus": "witnesses/ordinarium.in-spiritu-humilitatis/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Deinde facit signum crucis cum Calice, et illum ponit super Corporale, et Palla cooperit: tum, junctis manibus super Altare, aliquantulum inclinatus, dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w002", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w003", "form": "humilitátis", "lemma": "humilitas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w006", "form": "ánimo", "lemma": "animus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w007", "form": "contríto", "lemma": "contritus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } },
+        { "id": "w008", "form": "suscipiámur", "lemma": "suscipio", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 3 } },
+        { "id": "w009", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w010", "form": "te", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w011", "form": "Dómine", "post": ":", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "sic", "lemma": "sic", "morph": { "pos": "adv" } },
+        { "id": "w014", "form": "fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w015", "form": "sacrifícium", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w016", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" } },
+        { "id": "w017", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w018", "form": "conspéctu", "lemma": "conspectus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w019", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } },
+        { "id": "w020", "form": "hódie", "post": ",", "lemma": "hodie", "morph": { "pos": "adv" } },
+        { "id": "w021", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w022", "form": "pláceat", "lemma": "placeo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 } },
+        { "id": "w023", "form": "tibi", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w024", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w025", "form": "Deus", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "rubric",
+      "text": "Erectus expandit manus, easque in altum porrectas jungens, elevátis ad cælum oculis et statim demissis, dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s04",
+      "type": "verse",
+      "words": [
+        { "id": "w026", "form": "Veni", "post": ",", "lemma": "venio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 } },
+        { "id": "w027", "form": "sanctificátor", "lemma": "sanctificator", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 }, "analysis": { "confidence": "medium", "sources": ["editorial", "collatinus"], "review": "disputed" } },
+        { "id": "w028", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" } },
+        { "id": "w029", "form": "ætérne", "lemma": "aeternus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" } },
+        { "id": "w030", "form": "Deus", "post": ":", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } }
+      ]
+    },
+    {
+      "id": "s05",
+      "type": "rubric",
+      "text": "Benedicit Oblata, prosequendo:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s06",
+      "type": "verse",
+      "words": [
+        { "id": "w031", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w032", "form": "bénedic", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w033", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+        { "id": "w034", "form": "sacrifícium", "post": ",", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w035", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "n" } },
+        { "id": "w036", "form": "sancto", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "n" } },
+        { "id": "w037", "form": "nómini", "lemma": "nomen", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w038", "form": "præparátum", "post": ".", "lemma": "praeparo", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 } }
+      ]
+    }
+  ]
+}
