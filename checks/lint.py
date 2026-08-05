@@ -11,7 +11,7 @@ MORPH_ENUMS = {
     "number": {"sg", "pl"},
     "gender": {"m", "f", "n"},
     "tense": {"pres", "impf", "fut", "perf", "plup", "futperf"},
-    "mood": {"ind", "subj", "imp", "inf"},
+    "mood": {"ind", "subj", "imp", "inf", "part"},
     "voice": {"act", "pass", "dep"},
     "degree": {"comp", "sup"},
     "governs": {"acc", "abl"},
@@ -107,6 +107,16 @@ def lint_text(doc):
         for k, v in w["morph"].items():
             if k in MORPH_ENUMS and v not in MORPH_ENUMS[k]:
                 errors.append(f"{wid}: morph.{k}={v!r} not in enum")
+        m = w["morph"]
+        if m.get("pos") == "verb" and m.get("mood") == "part":
+            # Participles agree like nominals and have no person (SCHEMA.md).
+            for req in ("case", "number", "gender", "tense", "voice"):
+                if req not in m:
+                    errors.append(f"{wid}: participle missing morph.{req}")
+            if "person" in m:
+                errors.append(f"{wid}: participle carries morph.person")
+        elif m.get("pos") == "verb" and "case" in m:
+            errors.append(f"{wid}: finite verb carries morph.case")
         plain = fold_ligatures(strip_accents(f)).lower()
         # u after q/g before a vowel is a glide, not a vowel (quia, sanguis) —
         # drop it before the vocalic-context tests.

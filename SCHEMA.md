@@ -89,10 +89,14 @@ analysis_defaults, segments[]
   `gender` (m|f|n), nouns also `decl` (1–5, omitted for Greek/irregular
   declensions such as Iesus); adjs: `degree` (comp|sup) when not positive;
   verbs: `person`, `number`, `tense` (pres|impf|fut|perf|plup|futperf),
-  `mood` (ind|subj|imp|inf), `voice` (act|pass|dep), `conj` (1–4, omitted
-  for irregulars such as sum, fio); preps: `governs` (acc|abl); intj covers
-  indeclinables like Amen. Extend enums as texts require (participles etc.
-  are not yet covered). Classification rulings: *sicut* is tagged `conj`
+  `mood` (ind|subj|imp|inf|part), `voice` (act|pass|dep), `conj` (1–4,
+  omitted for irregulars such as sum, fio); preps: `governs` (acc|abl);
+  intj covers indeclinables like Amen. **Participles** (since 0.8.0) are
+  verb tokens with `mood: "part"`: no `person`, and they add the nominal
+  agreement fields `case`/`number`/`gender` to `tense` (pres|perf|fut)
+  and `voice` (deponent perfect participles keep `voice: "dep"`).
+  Extend enums as texts require (gerundives are not yet covered).
+  Classification rulings: *sicut* is tagged `conj`
   (comparative conjunction) although several dictionaries head it as an
   adverb — analyzer disagreement at integration is expected there, not a
   silent error.
