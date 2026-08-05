@@ -148,6 +148,31 @@ count (`corrigenda=N`) in the verdict. A corrigendum is a claim about a
 page, so it names the evidence for the emendation, as an apparatus ruling
 does.
 
+### Witness recension notes
+
+A witness may instead be **right about a different text**. The same prayer
+circulates in more than one recension: a page giving the devotional form
+of an antiphon closes it with an Amen where the liturgical form runs
+straight on to its versicle. Nothing is wrong with the page, and nothing
+is wrong with the edition — they attest different forms — so the witness
+file declares the difference and the transcription still carries **what
+the page prints**:
+
+```
+# recension: -Amen (after "Virgo Maria"; this page gives the devotional
+#   form, which closes the antiphon with an Amen; the Leonine recension
+#   has none and witness do runs on to the versicle)
+```
+
+Only the minus direction exists. Dropping a word the witness has is a
+claim about the witness; adding one it lacks would be a claim about our
+own text that no page attests, and a word this edition prints must stand
+in a witness. Collation applies declared removals before comparing, and
+refuses a note that names a word the page does not print, one that names
+a word this edition prints too (that is a divergence to adjudicate, not a
+recension difference), or one without a reason. Reported as
+`recensions=N` in the verdict.
+
 ## Lexicon
 
 `lexicon/lemmata.json` (language-neutral):

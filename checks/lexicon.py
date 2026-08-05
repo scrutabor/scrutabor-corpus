@@ -6,8 +6,8 @@ silently — SCHEMA.md)."""
 import json
 import re
 
-from .lint import BANNED_TERMS, MORPH_ENUMS
-from .normalize import ACCENTED_VOWELS, has_accent, syllable_count
+from .lint import BANNED_TERMS, MORPH_ENUMS, SPELLING_EXEMPT
+from .normalize import ACCENTED_VOWELS, fold_ligatures, has_accent, strip_accents, syllable_count
 
 LEMMATA_ENTRY_KEYS = {"head", "pos", "gender", "gender_alt", "gender_pl", "decl", "conj", "analysis"}
 SENSE_ENTRY_KEYS = {"senses", "note", "derivatives", "analysis"}
@@ -42,6 +42,10 @@ def _lint_head(lemma, head, errors):
             continue
         if not HEAD_TOKEN_RE.match(token):
             errors.append(f"lexicon:{lemma}: charset violation in head token {token!r}")
+            continue
+        # The same exemptions the token layer grants (checks/lint.py), for the
+        # same words and the same recorded reasons.
+        if fold_ligatures(strip_accents(token)).lower() in SPELLING_EXEMPT:
             continue
         n, acc = syllable_count(token), has_accent(token)
         n_marks = sum(1 for ch in token if ch in ACCENTED_VOWELS)

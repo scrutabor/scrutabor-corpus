@@ -91,7 +91,24 @@ PROPER_LEMMAS = {
     "Stephanus",
     "Thaddaeus",
     "Thomas",
+    "Eva",
     "Xystus",
+}
+
+# Forms exempt from the SPELLING heuristics at the end of lint_text (the
+# j-for-consonantal-i rules and the accent-versus-syllable rules). Nothing
+# else is exempt, and each entry carries the reason it had to be.
+#
+#   eia — the interjection of the Salve Regína. Its i is genuinely vocalic,
+#   so the rule that wants j (written for ejus, ejusdem…) has nothing to
+#   catch here; and its ei is a diphthong, so the word has two syllables and
+#   rightly carries no accent. The syllable counter knows only the au
+#   diphthong, and teaching it ei would mis-count diéi, meis and their like.
+#
+# Keyed on the normalized spelling (accents stripped, ligatures expanded,
+# lowercased) — the same `plain` the heuristics test.
+SPELLING_EXEMPT = {
+    "eia": "interjection: the i is vocalic, and ei is a diphthong — two syllables",
 }
 
 # Provenance (SCHEMA.md, since 0.7.0). Witness ids are also valid sources;
@@ -182,6 +199,8 @@ def lint_text(doc):
         # u after q/g before a vowel is a glide, not a vowel (quia, sanguis) —
         # drop it before the vocalic-context tests.
         plain = re.sub(r"([qg])u(?=[aeiouy])", r"\1", plain)
+        if plain in SPELLING_EXEMPT:
+            continue
         if re.search(r"[aeouy]i[aeouy]", plain):
             errors.append(f"{wid}: {f!r} has i between vowels — ORTHOGRAPHY.md wants j (allowlist if genuine)")
         if re.match(r"i[aeiouy]", plain):

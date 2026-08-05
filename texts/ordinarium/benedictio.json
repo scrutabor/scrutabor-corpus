@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.benedictio",
+  "title": "Benedícat vos omnípotens Deus",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The blessing at the end of Mass. One sentence, cut in two by a rubric: the priest says Benedícat vos omnípotens Deus at the altar, turns to the people, and finishes the sentence while making the sign of the cross over them. PATER at w005, FÍLIUS at w007 and SPÍRITUS at w009 are all nominative in apposition to DEUS at w004 — they name the God who blesses, they are not a separate address. The two witnesses place the rubrical cross differently (do before et Spíritus Sanctus, handmissal-eo before Pater); it is a direction to the hand, not a reading, and is stripped in both transcriptions. The rubric at s03 is set with the single space the 1962 typical edition prints; witness do sets two. The rubric at s05 sets Trínitas with its accent, as the same witness sets it four lines above.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence, and no accidental variant either — the two editions point the blessing identically.",
+    "witnesses": "witnesses/ordinarium.benedictio/",
+    "apparatus": "witnesses/ordinarium.benedictio/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Deinde osculatur Altare: et elevatis oculis, extendens, elevans et jungens manus, caputque Cruci inclínans, dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Benedícat", "lemma": "benedico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w002", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w003", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "rubric",
+      "text": "et versus ad populum, semel tantum benedícens, etiam in Missis sollemnibus; In Missa Pontificali ter benedicitur, ut in Pontificali habetur. Deinde prosequitur:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s04",
+      "type": "verse",
+      "words": [
+        { "id": "w005", "form": "Pater", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "Fílius", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w010", "form": "Sanctus", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w011", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
+    },
+    {
+      "id": "s05",
+      "type": "rubric",
+      "text": "In Missis Defunctorum non datur benedíctio, sed dicto Requiéscant in pace, dicit: Pláceat tibi, sancta Trínitas; deinde osculato Altari, legit Evangelium sancti Joannis.",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.placeat-tibi",
+  "title": "Pláceat tibi, sancta Trínitas",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The priest's own prayer after the dismissal, said bowed over the middle of the altar and said secretly: he asks that the service he has just rendered be acceptable, and that the sacrifice he offered unworthily be propitiatory for himself and for all he offered it for. ÓCULIS at w013 carries NO case. Dative and ablative are spelled alike, both analyzers offer both, and the sentence does not decide: óbtuli governs a dative of the party the offering is made to, which would give offered to the eyes of thy majesty, while the sense every edition renders — offered in the sight of thy majesty — wants a locative ablative. The corpus claims number, gender and declension and stops. MISERÁNTE at w030 is the present participle of the deponent miseror, active in form as every deponent's present participle is; te miseránte is an ablative absolute. PROPITIÁBILE at w031 is confirmed by Collatinus alone: the word is late and rare, and Whitaker's lexicon does not carry it, so the provenance names only the analyzer that does. ÓBTULI at w017 and w027 carry no conj: offero is a compound of fero and irregular. MAJESTÁTIS at w015 names Collatinus alone, as every form of majéstas in this corpus does — Whitaker's does not carry the j-spelling.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
+    "witnesses": "witnesses/ordinarium.placeat-tibi/",
+    "apparatus": "witnesses/ordinarium.placeat-tibi/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Tunc celebrans inclinat se ante medium altaris, et manibus junctis super illud, dicit secrete:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Pláceat", "lemma": "placeo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 } },
+        { "id": "w002", "form": "tibi", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w003", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" } },
+        { "id": "w004", "form": "Trínitas", "post": ",", "lemma": "trinitas", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w005", "form": "obséquium", "lemma": "obsequium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w006", "form": "servitútis", "lemma": "servitus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w007", "form": "meæ", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "præsta", "post": ";", "lemma": "praesto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w010", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "sacrifícium", "post": ",", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w012", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w013", "form": "óculis", "lemma": "oculus", "morph": { "pos": "noun", "number": "pl", "gender": "m", "decl": 2 }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
+        { "id": "w014", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w015", "form": "majestátis", "lemma": "maiestas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w016", "form": "indígnus", "lemma": "indignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w017", "form": "óbtuli", "post": ",", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act" } },
+        { "id": "w018", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w019", "form": "sit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w020", "form": "acceptábile", "post": ",", "lemma": "acceptabilis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" } },
+        { "id": "w021", "form": "mihíque", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w022", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w023", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" } },
+        { "id": "w024", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w025", "form": "quibus", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "m" } },
+        { "id": "w026", "form": "illud", "lemma": "ille", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w027", "form": "óbtuli", "post": ",", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act" } },
+        { "id": "w028", "form": "sit", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w029", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w030", "form": "miseránte", "post": ",", "lemma": "miseror", "morph": { "pos": "verb", "case": "abl", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "dep", "conj": 1 } },
+        { "id": "w031", "form": "propitiábile", "post": ".", "lemma": "propitiabilis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w032", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w033", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w034", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w035", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w036", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
+    }
+  ]
+}

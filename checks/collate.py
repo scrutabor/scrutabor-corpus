@@ -21,6 +21,24 @@ The collation applies declared corrigenda before comparing, refuses a
 declaration whose printed reading is not in the file, refuses one with no
 reason, and counts them in the verdict.
 
+A witness may instead be right about a text this edition does not print:
+the same prayer circulates in more than one RECENSION, and a page giving
+the devotional form of an antiphon closes it with an Amen where the
+liturgical form runs straight on. That is not a slip and not a spelling —
+the page is correct for its own recension — so it is declared too:
+
+    # recension: -Amen (after "Virgo Maria"; this page gives the
+    #   devotional form, which closes the antiphon with an Amen; the
+    #   Leonine recension has none and witness do runs on to the versicle)
+
+Only the minus direction exists, and deliberately. Dropping a word the
+witness has is a claim about the witness; ADDING one it lacks would be a
+claim about our own text that no page attests, and a word this edition
+prints must stand in a witness. Declared removals are applied before
+comparing, refused if the witness does not print the word, refused if our
+own text does print it (which would hide a real divergence), refused
+without a reason, and counted in the verdict.
+
 WHAT THIS DOES NOT DEFEND AGAINST, stated plainly: a transcriber who
 quietly "corrects" the page while typing it. That transcription passes,
 because nothing here can read the original — and worse, a silent
@@ -37,24 +55,35 @@ from .normalize import substantive
 
 
 def load_witness(path: Path):
-    meta, lines, corrigenda = {}, [], []
+    meta, lines, corrigenda, recensions = {}, [], [], []
+    # Header values wrap: a `#` line that does not open a new `key:` is a
+    # continuation of the one above. Reading them line by line instead
+    # truncates every reason at its first line break.
+    header: list[tuple[str, str]] = []
     for line in path.read_text(encoding="utf-8").splitlines():
         if line.startswith("#"):
             m = re.match(r"#\s*([\w-]+):\s*(.*)", line)
-            if not m:
-                continue
-            key, value = m.group(1), m.group(2)
-            if key == "corrigendum":
-                arrow = re.match(r"(\S+)\s*->\s*(\S+)\s*(?:\((.*)\))?", value)
-                if arrow:
-                    corrigenda.append((arrow.group(1), arrow.group(2), arrow.group(3) or ""))
-                else:
-                    corrigenda.append((value, "", ""))  # malformed; reported below
-            else:
-                meta[key] = value
+            if m:
+                header.append((m.group(1), m.group(2)))
+            elif header:
+                header[-1] = (header[-1][0], f"{header[-1][1]} {line.lstrip('# ').strip()}")
         elif line.strip():
             lines.append(line.strip())
+
+    for key, value in header:
+        if key == "recension":
+            drop = re.match(r"-(\S+)\s*(?:\((.*)\))?", value)
+            recensions.append((drop.group(1), drop.group(2) or "") if drop else (value, ""))
+        elif key == "corrigendum":
+            arrow = re.match(r"(\S+)\s*->\s*(\S+)\s*(?:\((.*)\))?", value)
+            if arrow:
+                corrigenda.append((arrow.group(1), arrow.group(2), arrow.group(3) or ""))
+            else:
+                corrigenda.append((value, "", ""))  # malformed; reported below
+        else:
+            meta[key] = value
     meta["corrigenda"] = corrigenda
+    meta["recensions"] = recensions
     return meta, " ".join(lines)
 
 
@@ -95,6 +124,7 @@ def collate(doc, witness_dir: Path):
     n_variants = 0
     n_corrigenda = 0
     n_orthographic = 0
+    n_recensions = 0
     for wf in witness_files:
         meta, text = load_witness(wf)
         wid = meta.get("witness", wf.stem)
@@ -124,6 +154,38 @@ def collate(doc, witness_dir: Path):
                 continue
             text = " ".join(_swap(t) for t in tokens)
             n_corrigenda += 1
+        # Declared recension differences: a word this page's recension has
+        # and ours does not. Refused unless the page really prints it and
+        # our own text really lacks it — otherwise a declaration here could
+        # quietly delete a divergence instead of explaining one.
+        for word, reason in meta["recensions"]:
+            if not word.strip():
+                errors.append(f"{wid}: malformed recension note — write '-word (reason)'")
+                continue
+            if not reason:
+                errors.append(f"{wid}: recension note {word!r} carries no reason")
+            # Compare the way the collation compares — accents, case and
+            # punctuation folded — or a declaration fails to match the very
+            # page it describes (María against Maria) and the check fires
+            # for the wrong reason.
+            bare = lambda t: substantive(t).strip()
+            word_cmp = bare(word)
+            tokens = text.split()
+            if not any(bare(t) == word_cmp for t in tokens):
+                errors.append(
+                    f"{wid}: recension note declares {word!r}, which this witness does not print "
+                    "— stale declaration, or the transcription already dropped it"
+                )
+                continue
+            if any(bare(t) == word_cmp for t in ours_raw):
+                errors.append(
+                    f"{wid}: recension note declares {word!r}, but this edition prints it too "
+                    "— that is a divergence to adjudicate, not a recension difference"
+                )
+                continue
+            cut = next(i for i, t in enumerate(tokens) if bare(t) == word_cmp)
+            text = " ".join(tokens[:cut] + tokens[cut + 1 :])
+            n_recensions += 1
         fold_ji = meta.get("fold-ji", "").strip().lower() == "true"
         fold_xs = meta.get("fold-xs", "").strip().lower() == "true"
         folded = fold_ji or fold_xs
@@ -207,5 +269,6 @@ def collate(doc, witness_dir: Path):
         "variants_adjudicated": n_variants,
         "corrigenda": n_corrigenda,
         "orthographic": n_orthographic,
+        "recensions": n_recensions,
     }
     return errors, warnings, stats
