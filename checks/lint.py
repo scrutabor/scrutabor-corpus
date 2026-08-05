@@ -31,6 +31,18 @@ BANNED_TERMS = {
     "en": ["„"],  # Polish low-opening quote in English text
 }
 
+# The corpus stores text, not typesetting. Polish does not leave a one-letter
+# word at the end of a line, but binding it is the reader app's job: a
+# non-breaking space here would travel into every consumer of this data and
+# be invisible to whoever edits the file next.
+LAYOUT_CHARS = {
+    "\u00a0": "non-breaking space",
+    "\u2007": "figure space",
+    "\u202f": "narrow no-break space",
+    "\u200b": "zero-width space",
+    "\u00ad": "soft hyphen",
+}
+
 PROPER_LEMMAS = {
     "Maria",
     "Michael",
@@ -168,6 +180,11 @@ def lint_gloss(doc, text_doc):
             # banned term (proven necessary by mutation, 2026-08-03).
             if re.search(pat, prose, re.IGNORECASE):
                 errors.append(f"{lang}:{where}: banned terminology/typography {pat!r} (TERMINOLOGY.md)")
+        for ch, name in LAYOUT_CHARS.items():
+            if ch in prose:
+                errors.append(
+                    f"{lang}:{where}: {name} in prose — layout belongs to the reader app"
+                )
 
     for wid, entry in gw.items():
         if not entry.get("gloss"):
