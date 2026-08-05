@@ -9,7 +9,7 @@ import re
 from .lint import BANNED_TERMS, MORPH_ENUMS
 from .normalize import ACCENTED_VOWELS, has_accent, syllable_count
 
-LEMMATA_ENTRY_KEYS = {"head", "pos", "gender", "gender_pl", "decl", "conj", "analysis"}
+LEMMATA_ENTRY_KEYS = {"head", "pos", "gender", "gender_alt", "gender_pl", "decl", "conj", "analysis"}
 SENSE_ENTRY_KEYS = {"senses", "note", "derivatives", "analysis"}
 
 # A head is dictionary punctuation plus word tokens; ending fragments ("-æ",
@@ -68,7 +68,7 @@ def lint_lemmata(entries):
             _lint_head(lemma, e["head"], errors)
         if e.get("pos") not in MORPH_ENUMS["pos"]:
             errors.append(f"lexicon:{lemma}: pos={e.get('pos')!r} not in enum")
-        for k in ("gender", "gender_pl"):
+        for k in ("gender", "gender_alt", "gender_pl"):
             if k in e and e[k] not in MORPH_ENUMS["gender"]:
                 errors.append(f"lexicon:{lemma}: {k}={e[k]!r} not in enum")
         if "decl" in e and e["decl"] not in range(1, 6):
@@ -144,10 +144,13 @@ def check_text_against_lexicon(text_doc, lemmata):
                 expected_gender = e.get("gender")
                 if morph.get("number") == "pl" and "gender_pl" in e:
                     expected_gender = e["gender_pl"]
-                if "gender" in morph and expected_gender and morph["gender"] != expected_gender:
+                # gender_alt: a second dictionary gender (dies m., f. for
+                # appointed days) — either satisfies the check.
+                allowed = {g for g in (expected_gender, e.get("gender_alt")) if g}
+                if "gender" in morph and allowed and morph["gender"] not in allowed:
                     errors.append(
                         f"{tid}:{wid}: morph.gender={morph['gender']!r} "
-                        f"but lexicon says {expected_gender!r}"
+                        f"but lexicon says {sorted(allowed)!r}"
                     )
             if morph["pos"] == "verb":
                 if "conj" in morph and "conj" in e and morph["conj"] != e["conj"]:

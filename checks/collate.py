@@ -61,8 +61,14 @@ def collate(doc, witness_dir: Path):
         meta, text = load_witness(wf)
         wid = meta.get("witness", wf.stem)
         fold_ji = meta.get("fold-ji", "").strip().lower() == "true"
-        ours_cmp = substantive(" ".join(ours_raw), fold_ji=fold_ji).split() if fold_ji else ours_sub
-        wit_sub = substantive(text, fold_ji=fold_ji).split()
+        fold_xs = meta.get("fold-xs", "").strip().lower() == "true"
+        folded = fold_ji or fold_xs
+        ours_cmp = (
+            substantive(" ".join(ours_raw), fold_ji=fold_ji, fold_xs=fold_xs).split()
+            if folded
+            else ours_sub
+        )
+        wit_sub = substantive(text, fold_ji=fold_ji, fold_xs=fold_xs).split()
         if wit_sub != ours_cmp:
             diverged = False
             for i, (a, b) in enumerate(zip(ours_cmp, wit_sub)):

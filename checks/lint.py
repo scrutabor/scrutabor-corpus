@@ -31,7 +31,18 @@ BANNED_TERMS = {
     "en": ["„"],  # Polish low-opening quote in English text
 }
 
-PROPER_LEMMAS = {"Maria", "Michael", "Ioannes", "Baptista", "Petrus", "Paulus", "Iesus", "Christus"}
+PROPER_LEMMAS = {
+    "Maria",
+    "Michael",
+    "Ioannes",
+    "Baptista",
+    "Petrus",
+    "Paulus",
+    "Iesus",
+    "Christus",
+    "Pontius",
+    "Pilatus",
+}
 
 # Provenance (SCHEMA.md, since 0.7.0). Witness ids are also valid sources;
 # their grammar mirrors the witness directory names.

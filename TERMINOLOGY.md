@@ -18,6 +18,7 @@ already listed.
 | agreement claim | zgadza się z „…” | zgodny/zgodna/zgodne z |
 | ablative of means | ablativus narzędzia | ablativus środka |
 | ablative of cause | ablativus przyczyny | — |
+| participle | imiesłów; z określeniami: imiesłów przyszły, imiesłów deponentny | imiesłów przymiotnikowy, participium (samodzielnie w prozie) |
 | quotes in prose | „…” (polskie cudzysłowy) | "…", “…” |
 
 ## English
@@ -28,6 +29,7 @@ already listed.
 | declension/conjugation | 1st–5th declension, 1st–4th conjugation | Roman numerals |
 | deponent | deponent (passive form, active meaning) | — |
 | ablative of means / of cause | ablative of means, ablative of cause | — |
+| participle | participle; qualified: future participle, deponent participle | verbal adjective (as the term) |
 | quotes in prose | “…” (English quotes) | „…” |
 
 ## Linter hooks

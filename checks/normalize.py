@@ -25,16 +25,20 @@ def fold_ligatures(text: str) -> str:
     return text
 
 
-def substantive(text: str, fold_ji: bool = False) -> str:
+def substantive(text: str, fold_ji: bool = False, fold_xs: bool = False) -> str:
     """Level A: what must NEVER differ between witnesses of one recension —
     the letters. Case-folded, accents stripped, ligatures expanded,
     punctuation removed, whitespace collapsed. j is folded to i only for
     witnesses that declare an i-style orthography profile (fold-ji: true in
     the witness header); otherwise j/v differences are substantive
-    (ORTHOGRAPHY.md)."""
+    (ORTHOGRAPHY.md). fold-xs likewise declares an edition that prints
+    assimilated ex- for exs- (expecto for exspecto): exs is folded to ex
+    on both sides for that witness only."""
     text = fold_ligatures(strip_accents(text)).lower()
     if fold_ji:
         text = text.replace("j", "i")
+    if fold_xs:
+        text = text.replace("exs", "ex")
     kept = [ch if ch.isalpha() or ch.isspace() else " " for ch in text]
     return " ".join("".join(kept).split())
 

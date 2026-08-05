@@ -80,8 +80,8 @@ analysis_defaults, segments[]
   punctuation rendered after the word (`,` `;` `:` `.`). `lemma` is the key
   into `lexicon/lemmata.json` — dictionary-normalized (i-form,
   no j, full head: `ab` not `a`) and **lowercase except true proper names**
-  (Maria, Michael, Ioannes, Baptista, Petrus, Paulus, Iesus, Christus — the
-  linter's list); divine titles (deus, dominus, pater, spiritus) are
+  (Maria, Michael, Ioannes, Baptista, Petrus, Paulus, Iesus, Christus,
+  Pontius, Pilatus — the linter's list); divine titles (deus, dominus, pater, spiritus) are
   lowercase common-noun lemmas. (0.4.0 removed the 0.2.0
   `tier` field: hand-judged per-word difficulty proved unreviewable.)
 - `morph`: `pos` (verb|noun|adj|pron|adv|conj|prep|intj) plus per-pos fields —
@@ -131,6 +131,10 @@ entries{ <lemma>: { head, pos, gender?, gender_pl?, decl?, conj?, analysis? } }
 - `gender_pl`: dictionary gender of the plural where it differs (heteroclite
   cælum: `gender: "n"`, `gender_pl: "m"`) — keeps the consistency check
   strict instead of exempting the word.
+- `gender_alt` (since 0.8.0): a second dictionary gender where the word
+  genuinely carries both (dies: `gender: "m"`, `gender_alt: "f"` for
+  appointed days — tértia die). A token may use either; the consistency
+  check accepts both and nothing else.
 
 `lexicon/<lang>.json` (one per gloss language):
 
@@ -171,6 +175,9 @@ words{ <word-id>: { gloss, function?, analysis? } }
 - `gloss` (required): shortest natural reading aid in the target language
   (interlinear line). It may be idiomatic rather than grammatical — it is
   the sense the context selects, which no lemma-level sense list can supply.
+  A token whose sense a neighboring word's gloss has absorbed (the
+  auxiliary of a periphrastic whose participle glosses the whole tense)
+  glosses as an em dash `—`: the declared interlinear null.
 - `function` (OPTIONAL, contextual-only): 1–3 sentences on what this word
   does **in this sentence**, in the target language, for a reader with basic
   Latin. Belongs here: agreement ("agrees with «culpa»"), apposition,
