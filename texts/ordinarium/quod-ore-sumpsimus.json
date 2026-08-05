@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.quod-ore-sumpsimus",
+  "title": "Quod ore súmpsimus",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The first of the two prayers at the ablutions, said after the Communion and before the minister pours wine into the chalice. QUOD at w001 has no expressed antecedent: what we have taken with the mouth. ORE at w002 is the ablative of os, oris, the mouth, and not of os, ossis, a bone; only the first of the two homographs occurs in this corpus, so the lexicon keeps the plain key for it. The prayer is in the first person plural throughout, where the three prayers before Communion were singular.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence and no accidental variants, so this text has no apparatus.",
+    "witnesses": "witnesses/ordinarium.quod-ore-sumpsimus/"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Postea dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w002", "form": "ore", "lemma": "os", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w003", "form": "súmpsimus", "post": ",", "lemma": "sumo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "pura", "lemma": "purus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" } },
+        { "id": "w006", "form": "mente", "lemma": "mens", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w007", "form": "capiámus", "post": ":", "lemma": "capio", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w010", "form": "múnere", "lemma": "munus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w011", "form": "temporáli", "lemma": "temporalis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" } },
+        { "id": "w012", "form": "fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w013", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
+        { "id": "w014", "form": "remédium", "lemma": "remedium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w015", "form": "sempitérnum", "post": ".", "lemma": "sempiternus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "rubric",
+      "text": "Interim porrigit Calicem ministro, qui infundit in eo parum vini, quo se purificat.",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    }
+  ]
+}

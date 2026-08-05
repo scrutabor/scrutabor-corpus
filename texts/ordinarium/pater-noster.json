@@ -1,0 +1,164 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.pater-noster",
+  "title": "Pater noster (Missæ)",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The Lord's Prayer as the Mass sets it: the preface Orémus. Præcéptis salutáribus móniti, the prayer said by the priest alone as far as tentatiónem, the server's Sed líbera nos a malo, and the priest's Amen said secretly. The words of the prayer are RE-ENCODED here rather than referenced. The corpus already carries orationes.pater-noster, the same prayer in its devotional form, and the letters are identical; but that document is one continuous text said by one voice, while this one is a dialogue — the last petition belongs to another speaker — wrapped in a preface and divided by three rubrics. Those are two recensions of one prayer, which is what the variant field is for, and the corpus already keeps such pairs apart with their own word ids (ordinarium.confiteor and ordinarium.confiteor-sacerdotis, ordinarium.misereatur and ordinarium.misereatur-tui). The schema has no field by which one text could borrow another's words, and a reference would leave a hole in the middle of a prayer the reader is praying. MÓNITI at w004 and FORMÁTI at w008 are participles, not adjectives: neither analyzer heads an adjective monitus or formatus, only the verbs and unrelated nouns. AUDÉMUS at w009 is present indicative; audeo is semi-deponent, so only its perfect system is deponent in form. NE at w050 is the prohibitive adverb, as the corpus rules it elsewhere.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
+    "witnesses": "witnesses/ordinarium.pater-noster/",
+    "apparatus": "witnesses/ordinarium.pater-noster/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Jungit manus.",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Orémus", "post": ".", "lemma": "oro", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "words": [
+        { "id": "w002", "form": "Præcéptis", "lemma": "praeceptum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w003", "form": "salutáribus", "lemma": "salutaris", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" } },
+        { "id": "w004", "form": "móniti", "post": ",", "lemma": "moneo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 2 } },
+        { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "divína", "lemma": "divinus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" } },
+        { "id": "w007", "form": "institutióne", "lemma": "institutio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w008", "form": "formáti", "post": ",", "lemma": "formo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 } },
+        { "id": "w009", "form": "audémus", "lemma": "audeo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
+        { "id": "w010", "form": "dícere", "post": ":", "lemma": "dico", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 } }
+      ]
+    },
+    {
+      "id": "s04",
+      "type": "rubric",
+      "text": "Extendit manus.",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s05",
+      "type": "verse",
+      "words": [
+        { "id": "w011", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w012", "form": "noster", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" } },
+        { "id": "w013", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w014", "form": "es", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w016", "form": "cælis", "post": ".", "lemma": "caelum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } }
+      ]
+    },
+    {
+      "id": "s06",
+      "type": "verse",
+      "words": [
+        { "id": "w017", "form": "Sanctificétur", "lemma": "sanctifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 1 } },
+        { "id": "w018", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w019", "form": "tuum", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" } }
+      ]
+    },
+    {
+      "id": "s07",
+      "type": "verse",
+      "words": [
+        { "id": "w020", "form": "Advéniat", "lemma": "advenio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 } },
+        { "id": "w021", "form": "regnum", "lemma": "regnum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w022", "form": "tuum", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" } }
+      ]
+    },
+    {
+      "id": "s08",
+      "type": "verse",
+      "words": [
+        { "id": "w023", "form": "Fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w024", "form": "volúntas", "lemma": "voluntas", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w025", "form": "tua", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" } },
+        { "id": "w026", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
+        { "id": "w027", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w028", "form": "cælo", "lemma": "caelum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w029", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w030", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w031", "form": "terra", "post": ".", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } }
+      ]
+    },
+    {
+      "id": "s09",
+      "type": "verse",
+      "words": [
+        { "id": "w032", "form": "Panem", "lemma": "panis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w033", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w034", "form": "quotidiánum", "lemma": "quotidianus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w035", "form": "da", "lemma": "do", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w036", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
+        { "id": "w037", "form": "hódie", "post": ".", "lemma": "hodie", "morph": { "pos": "adv" } }
+      ]
+    },
+    {
+      "id": "s10",
+      "type": "verse",
+      "words": [
+        { "id": "w038", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w039", "form": "dimítte", "lemma": "dimitto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w040", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
+        { "id": "w041", "form": "débita", "lemma": "debitum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w042", "form": "nostra", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w043", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
+        { "id": "w044", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w045", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
+        { "id": "w046", "form": "dimíttimus", "lemma": "dimitto", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w047", "form": "debitóribus", "lemma": "debitor", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w048", "form": "nostris", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" } }
+      ]
+    },
+    {
+      "id": "s11",
+      "type": "verse",
+      "words": [
+        { "id": "w049", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w050", "form": "ne", "lemma": "ne", "morph": { "pos": "adv" } },
+        { "id": "w051", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w052", "form": "indúcas", "lemma": "induco", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w053", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w054", "form": "tentatiónem", "post": ":", "lemma": "tentatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } }
+      ]
+    },
+    {
+      "id": "s12",
+      "type": "verse",
+      "words": [
+        { "id": "w055", "form": "Sed", "lemma": "sed", "morph": { "pos": "conj" } },
+        { "id": "w056", "form": "líbera", "lemma": "libero", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w057", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w058", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w059", "form": "malo", "post": ".", "lemma": "malum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } }
+      ]
+    },
+    {
+      "id": "s13",
+      "type": "rubric",
+      "text": "Sacerdos secrete dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s14",
+      "type": "verse",
+      "words": [
+        { "id": "w060", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.pax-domini",
+  "title": "Pax Dómini",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The greeting given over the chalice, with the particle just broken from the Host, and its response. Kept as one document because a dialogue is not divided. VOBÍSCUM at w005 is the ablative plural of vos with the enclitic cum; Collatinus dictionaries the fused form as a lemma of its own and tags it singular, which the pipeline sets aside by a recorded ruling, so the parse rests on Whitaker's and the edition — the same treatment as at ordinarium.praefatio-dialogus w002.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence and no accidental variants, so this text has no apparatus.",
+    "witnesses": "witnesses/ordinarium.pax-domini/"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Cum ipsa particula signat ter super Calicem, dicens:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Pax", "lemma": "pax", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w002", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w003", "form": "sit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w004", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w005", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers"], "review": "disputed" } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "words": [
+        { "id": "w006", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w008", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w009", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } }
+      ]
+    }
+  ]
+}
