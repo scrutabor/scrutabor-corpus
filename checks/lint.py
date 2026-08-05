@@ -107,9 +107,46 @@ PROPER_LEMMAS = {
 #
 # Keyed on the normalized spelling (accents stripped, ligatures expanded,
 # lowercased) — the same `plain` the heuristics test.
+# The books keep the glide spelled i in a few words where ORTHOGRAPHY.md
+# would otherwise want j (Eia in the Salve Regina, allelúia). Only the
+# SPELLING rule is waived: the syllable counter reads the glide correctly,
+# so these words still answer to the accent rule like any other.
 SPELLING_EXEMPT = {
-    "eia": "interjection: the i is vocalic, and ei is a diphthong — two syllables",
+    "eia": "the books print Eia, not Eja — the glide keeps its i here",
+    "alleluia": "the books print allelúia, not allelúja",
 }
+
+# Who says a segment, and how loudly (SCHEMA.md, since 0.9.0). Both are
+# READ from the sources, not remembered: the speaker from the witnesses'
+# own markers (S. sacerdos, M. minister, V./R. versicle and response), the
+# voice from the rubrics that say secreto, clara voce, elata aliquantulum
+# voce. Optional while the attribution pass proceeds — a segment with no
+# attribution says "not yet read", which is the honest state and the one
+# the app must render as unmarked rather than guess.
+SPEAKERS = {"sacerdos", "minister", "populus", "omnes", "schola"}
+VOICES = {"clara", "submissa", "secreto", "cantus"}
+
+
+def check_voices(doc):
+    """Validate speaker/voice wherever present; report how much is read."""
+    errors, attributed, verses = [], 0, 0
+    for seg in doc["segments"]:
+        speaker, voice = seg.get("speaker"), seg.get("voice")
+        if seg.get("type") == "verse":
+            verses += 1
+            if speaker:
+                attributed += 1
+        elif speaker or voice:
+            errors.append(
+                f"{seg['id']}: only a verse segment has a speaker or a voice — "
+                "a rubric is the edition's own framing, not anyone's words"
+            )
+        if speaker is not None and speaker not in SPEAKERS:
+            errors.append(f"{seg['id']}: unknown speaker {speaker!r} (one of {sorted(SPEAKERS)})")
+        if voice is not None and voice not in VOICES:
+            errors.append(f"{seg['id']}: unknown voice {voice!r} (one of {sorted(VOICES)})")
+    return errors, attributed, verses
+
 
 # Provenance (SCHEMA.md, since 0.7.0). Witness ids are also valid sources;
 # their grammar mirrors the witness directory names.
@@ -200,10 +237,11 @@ def lint_text(doc):
         # drop it before the vocalic-context tests.
         plain = re.sub(r"([qg])u(?=[aeiouy])", r"\1", plain)
         if plain in SPELLING_EXEMPT:
-            continue
-        if re.search(r"[aeouy]i[aeouy]", plain):
+            # waive the spelling rules only; the accent check below still runs
+            pass
+        elif re.search(r"[aeouy]i[aeouy]", plain):
             errors.append(f"{wid}: {f!r} has i between vowels — ORTHOGRAPHY.md wants j (allowlist if genuine)")
-        if re.match(r"i[aeiouy]", plain):
+        if plain not in SPELLING_EXEMPT and re.match(r"i[aeiouy]", plain):
             errors.append(f"{wid}: {f!r} starts i+vowel — ORTHOGRAPHY.md wants J (allowlist if genuine)")
         n, acc = syllable_count(f), has_accent(f)
         n_marks = sum(1 for ch in f if ch in ACCENTED_VOWELS)

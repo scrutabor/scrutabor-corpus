@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.8.0",
+  "schema_version": "0.9.0",
   "id": "ordinarium.praefatio-dialogus",
   "title": "Dóminus vobíscum (dialogus Præfationis)",
   "category": "ordinarium",
@@ -25,6 +25,7 @@
     {
       "id": "s02",
       "type": "verse",
+      "speaker": "sacerdos",
       "words": [
         { "id": "w001", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w002", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers"], "review": "disputed" } }
@@ -33,6 +34,7 @@
     {
       "id": "s03",
       "type": "verse",
+      "speaker": "minister",
       "words": [
         { "id": "w003", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" } },
@@ -43,6 +45,7 @@
     {
       "id": "s04",
       "type": "verse",
+      "speaker": "sacerdos",
       "words": [
         { "id": "w007", "form": "Sursum", "lemma": "sursum", "morph": { "pos": "adv" } },
         { "id": "w008", "form": "corda", "post": ".", "lemma": "cor", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 } }
@@ -51,6 +54,7 @@
     {
       "id": "s05",
       "type": "verse",
+      "speaker": "minister",
       "words": [
         { "id": "w009", "form": "Habémus", "lemma": "habeo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
         { "id": "w010", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" } },
@@ -60,6 +64,7 @@
     {
       "id": "s06",
       "type": "verse",
+      "speaker": "sacerdos",
       "words": [
         { "id": "w012", "form": "Grátias", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
         { "id": "w013", "form": "agámus", "lemma": "ago", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
@@ -71,6 +76,7 @@
     {
       "id": "s07",
       "type": "verse",
+      "speaker": "minister",
       "words": [
         { "id": "w017", "form": "Dignum", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" } },
         { "id": "w018", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },

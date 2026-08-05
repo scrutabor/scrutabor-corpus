@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.8.0",
+  "schema_version": "0.9.0",
   "id": "ordinarium.libera-nos",
   "title": "Líbera nos",
   "category": "ordinarium",
@@ -25,6 +25,7 @@
     {
       "id": "s02",
       "type": "verse",
+      "voice": "secreto",
       "words": [
         { "id": "w001", "form": "Líbera", "lemma": "libero", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
         { "id": "w002", "form": "nos", "post": ",", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
@@ -70,6 +71,7 @@
     {
       "id": "s04",
       "type": "verse",
+      "voice": "secreto",
       "words": [
         { "id": "w034", "form": "da", "lemma": "do", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
         { "id": "w035", "form": "propítius", "lemma": "propitius", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } },
@@ -88,6 +90,7 @@
     {
       "id": "s06",
       "type": "verse",
+      "voice": "secreto",
       "words": [
         { "id": "w040", "form": "ut", "post": ",", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w041", "form": "ope", "lemma": "ops", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
@@ -116,6 +119,7 @@
     {
       "id": "s08",
       "type": "verse",
+      "voice": "secreto",
       "words": [
         { "id": "w056", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" } },
         { "id": "w057", "form": "eúndem", "lemma": "idem", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
@@ -136,6 +140,7 @@
     {
       "id": "s10",
       "type": "verse",
+      "voice": "secreto",
       "words": [
         { "id": "w064", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w065", "form": "tecum", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
@@ -158,6 +163,8 @@
     {
       "id": "s12",
       "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "words": [
         { "id": "w074", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" } },
         { "id": "w075", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
@@ -168,6 +175,8 @@
     {
       "id": "s13",
       "type": "verse",
+      "speaker": "minister",
+      "voice": "clara",
       "words": [
         { "id": "w078", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.8.0",
+  "schema_version": "0.9.0",
   "id": "ordinarium.ite-missa-est",
   "title": "Ite, Missa est",
   "category": "ordinarium",
@@ -25,6 +25,7 @@
     {
       "id": "s02",
       "type": "verse",
+      "speaker": "sacerdos",
       "words": [
         { "id": "w001", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w002", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers"], "review": "disputed" } }
@@ -33,6 +34,7 @@
     {
       "id": "s03",
       "type": "verse",
+      "speaker": "minister",
       "words": [
         { "id": "w003", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" } },

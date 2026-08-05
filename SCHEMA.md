@@ -1,4 +1,4 @@
-# Corpus schema v0 (0.8.0)
+# Corpus schema v0 (0.9.0)
 
 Three layers: a language-neutral Latin source document per text, one gloss
 document per text per language, and a corpus-wide lexicon (language-neutral
@@ -75,7 +75,21 @@ analysis_defaults, segments[]
   the word default (e.g. proper names absent from one analyzer's lexicon);
   an override that restates its default is a lint error, as is a
   `analysis_defaults_words` identical to `analysis_defaults`.
-- Segment: `{ id, type: "verse"|"rubric", text? (rubric Latin), words?[] }`.
+- Segment: `{ id, type: "verse"|"rubric", speaker?, voice?, text? (rubric
+  Latin), words?[] }`. **`speaker`** (since 0.9.0) is who says it —
+  `sacerdos`, `minister`, `populus`, `omnes`, `schola` — and **`voice`**
+  is how loudly: `clara` (aloud), `submissa` (raised but not full, the
+  *elata aliquantulum voce* of Dómine non sum dignus), `secreto`
+  (silently), `cantus` (sung). Both belong to verse segments only: a
+  rubric is the edition's framing, not anyone's words.
+  Both are READ from the sources by `checks/attribute.py`, never
+  remembered — the speaker from the witnesses' own markers (S. sacerdos,
+  M. minister, V./R. a versicle and its response, O. omnes), which the
+  transcriptions strip and every witness header says so; the voice from
+  the rubrics this corpus already carries. Both are OPTIONAL, and their
+  absence is meaningful: it says the sources have not been read for this
+  segment yet, which the reader's app must render as unmarked rather than
+  guess. `run_checks` reports the coverage as `speakers=N/M`.
 - Word: `{ id, form, post?, lemma, morph, analysis? }`. `post` = trailing
   punctuation rendered after the word (`,` `;` `:` `.` `?`). `degree`
   (`comp`/`sup`) is not confined to adjectives: Latin adverbs take it too

@@ -47,18 +47,29 @@ def syllable_count(form: str) -> int:
     """Count syllables of a Latin form in 1962 orthography. Reliable because
     consonantal i is written j (ORTHOGRAPHY.md): remaining i/u are vocalic
     except u in qu/gu+vowel glides. Diphthongs: au counts once; ae/oe occur
-    only as ligatures (one char). eu is NOT treated as a diphthong (De-um)."""
+    only as ligatures (one char). eu is NOT treated as a diphthong (De-um).
+
+    The books keep a handful of words with the glide still spelled i —
+    Eia, allelúia — and there the i between two vowels is consonantal, not
+    a syllable of its own (E-ia, al-le-lú-ia). The qu/gu glide is consumed
+    before this can see it, so quia and relíquiæ are untouched."""
     s = unicodedata.normalize("NFC", form.lower())
     count = 0
     prev = ""
     prev_was_vowel = False
-    for ch in s:
+    for i, ch in enumerate(s):
+        nxt = s[i + 1] if i + 1 < len(s) else ""
         is_vowel = ch in VOWELS
         if is_vowel:
             if ch == "u" and prev in ("q", "g"):
                 # glide: qu-/gu- before a vowel; if no vowel follows this is
                 # wrong, but such forms (e.g. 'gutta') have no q/g+u+vowel
                 # ambiguity in practice — the next iteration adds the vowel.
+                prev = ch
+                prev_was_vowel = False
+                continue
+            if ch in ("i", "í") and prev_was_vowel and nxt in VOWELS:
+                # consonantal i between vowels: a glide, not a nucleus
                 prev = ch
                 prev_was_vowel = False
                 continue

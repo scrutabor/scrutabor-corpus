@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.8.0",
+  "schema_version": "0.9.0",
   "id": "ordinarium.deus-tu-conversus",
   "title": "Deus, tu convérsus",
   "category": "ordinarium",
@@ -24,6 +24,7 @@
     {
       "id": "s02",
       "type": "verse",
+      "speaker": "sacerdos",
       "words": [
         { "id": "w001", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w002", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
@@ -35,6 +36,7 @@
     {
       "id": "s03",
       "type": "verse",
+      "speaker": "minister",
       "words": [
         { "id": "w006", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w007", "form": "plebs", "lemma": "plebs", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
@@ -47,6 +49,7 @@
     {
       "id": "s04",
       "type": "verse",
+      "speaker": "sacerdos",
       "words": [
         { "id": "w012", "form": "Osténde", "lemma": "ostendo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
         { "id": "w013", "form": "nobis", "post": ",", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
@@ -58,6 +61,7 @@
     {
       "id": "s05",
       "type": "verse",
+      "speaker": "minister",
       "words": [
         { "id": "w017", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w018", "form": "salutáre", "lemma": "salutare", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
@@ -69,6 +73,7 @@
     {
       "id": "s06",
       "type": "verse",
+      "speaker": "sacerdos",
       "words": [
         { "id": "w022", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w023", "form": "exáudi", "lemma": "exaudio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 } },
@@ -79,6 +84,7 @@
     {
       "id": "s07",
       "type": "verse",
+      "speaker": "minister",
       "words": [
         { "id": "w026", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w027", "form": "clamor", "lemma": "clamor", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
@@ -91,6 +97,7 @@
     {
       "id": "s08",
       "type": "verse",
+      "speaker": "sacerdos",
       "words": [
         { "id": "w032", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w033", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers"], "review": "pending" } }
@@ -99,6 +106,7 @@
     {
       "id": "s09",
       "type": "verse",
+      "speaker": "minister",
       "words": [
         { "id": "w034", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w035", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" } },
