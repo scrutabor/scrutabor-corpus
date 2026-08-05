@@ -1,7 +1,26 @@
 """Collation: corpus verse text against independent witnesses of the SAME
 recension. Substantive text (letters) must match with zero divergence;
 accidentals (punctuation, capitalization, capital-accents) must each be
-covered by an adjudicated entry in the text's apparatus.json."""
+covered by an adjudicated entry in the text's apparatus.json.
+
+A witness may also carry a printer's slip — a letter its own edition sets
+wrong. Such a reading is not a variant to adjudicate and not something to
+tolerate silently, so a witness file DECLARES it:
+
+    # corrigendum: princípo -> princípio (this printing drops the i; the
+    #   same edition sets the doxology correctly on page 11)
+
+The collation applies declared corrigenda before comparing, refuses a
+declaration whose printed reading is not in the file, refuses one with no
+reason, and counts them in the verdict.
+
+WHAT THIS DOES NOT DEFEND AGAINST, stated plainly: a transcriber who
+quietly "corrects" the page while typing it. That transcription passes,
+because nothing here can read the original — and worse, a silent
+emendation of exactly this kind HIDES a real divergence by making the two
+witnesses agree. The mechanism makes an emendation declarable, checkable
+and counted; keeping it honest is the transcription discipline, not the
+checker."""
 
 import json
 import re
@@ -11,14 +30,24 @@ from .normalize import substantive
 
 
 def load_witness(path: Path):
-    meta, lines = {}, []
+    meta, lines, corrigenda = {}, [], []
     for line in path.read_text(encoding="utf-8").splitlines():
         if line.startswith("#"):
             m = re.match(r"#\s*([\w-]+):\s*(.*)", line)
-            if m:
-                meta[m.group(1)] = m.group(2)
+            if not m:
+                continue
+            key, value = m.group(1), m.group(2)
+            if key == "corrigendum":
+                arrow = re.match(r"(\S+)\s*->\s*(\S+)\s*(?:\((.*)\))?", value)
+                if arrow:
+                    corrigenda.append((arrow.group(1), arrow.group(2), arrow.group(3) or ""))
+                else:
+                    corrigenda.append((value, "", ""))  # malformed; reported below
+            else:
+                meta[key] = value
         elif line.strip():
             lines.append(line.strip())
+    meta["corrigenda"] = corrigenda
     return meta, " ".join(lines)
 
 
@@ -57,9 +86,36 @@ def collate(doc, witness_dir: Path):
 
     used = set()
     n_variants = 0
+    n_corrigenda = 0
     for wf in witness_files:
         meta, text = load_witness(wf)
         wid = meta.get("witness", wf.stem)
+        # Declared printer's slips: each must actually be in the file, and
+        # each is applied openly before anything is compared.
+        for printed, emended, reason in meta["corrigenda"]:
+            if not emended:
+                errors.append(
+                    f"{wid}: malformed corrigendum {printed!r} — write 'printed -> emended (reason)'"
+                )
+                continue
+            if not reason:
+                errors.append(f"{wid}: corrigendum {printed!r} carries no reason")
+            # The declared reading is the WORD; the token may carry the
+            # page's punctuation, which the emendation leaves alone.
+            def _swap(token: str) -> str:
+                body = token.rstrip(",.:;?!")
+                tail = token[len(body) :]
+                return emended + tail if body == printed else token
+
+            tokens = text.split()
+            if not any(_swap(t) != t for t in tokens):
+                errors.append(
+                    f"{wid}: corrigendum declares {printed!r}, which this witness does not print "
+                    "— stale declaration, or the transcription was already emended"
+                )
+                continue
+            text = " ".join(_swap(t) for t in tokens)
+            n_corrigenda += 1
         fold_ji = meta.get("fold-ji", "").strip().lower() == "true"
         fold_xs = meta.get("fold-xs", "").strip().lower() == "true"
         folded = fold_ji or fold_xs
@@ -118,5 +174,6 @@ def collate(doc, witness_dir: Path):
         "witnesses": len(witness_files),
         "words": len(toks),
         "variants_adjudicated": n_variants,
+        "corrigenda": n_corrigenda,
     }
     return errors, warnings, stats

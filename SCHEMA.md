@@ -77,7 +77,7 @@ analysis_defaults, segments[]
   `analysis_defaults_words` identical to `analysis_defaults`.
 - Segment: `{ id, type: "verse"|"rubric", text? (rubric Latin), words?[] }`.
 - Word: `{ id, form, post?, lemma, morph, analysis? }`. `post` = trailing
-  punctuation rendered after the word (`,` `;` `:` `.`). `lemma` is the key
+  punctuation rendered after the word (`,` `;` `:` `.` `?`). `lemma` is the key
   into `lexicon/lemmata.json` — dictionary-normalized (i-form,
   no j, full head: `ab` not `a`) and **lowercase except true proper names**
   (Maria, Michael, Ioannes, Baptista, Petrus, Paulus, Iesus, Christus,
@@ -100,6 +100,24 @@ analysis_defaults, segments[]
   (comparative conjunction) although several dictionaries head it as an
   adverb — analyzer disagreement at integration is expected there, not a
   silent error.
+
+### Witness corrigenda
+
+A witness may set a letter wrong — a printer's slip, not a reading. That is
+neither an adjudicated variant nor something to pass over, so the witness
+file declares it in its header:
+
+```
+# corrigendum: princípo -> princípio (this printing drops the i; the same
+#   edition sets the doxology correctly on printed page 11)
+```
+
+The transcription then carries **what the page prints**. Collation applies
+declared corrigenda before comparing, refuses a declaration whose printed
+reading is not in the file, refuses one without a reason, and reports the
+count (`corrigenda=N`) in the verdict. A corrigendum is a claim about a
+page, so it names the evidence for the emendation, as an apparatus ruling
+does.
 
 ## Lexicon
 

@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.adiutorium",
+  "title": "Adjutórium nostrum",
+  "category": "ordinarium",
+  "section": "praeparatio",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The versicle and response that close the psalm section and open the confession. It stands as a document of its own because the two texts on either side of it are documents of their own: the psalm before it (ordinarium.iudica-me) is omitted on some days and it is not, and the Confíteor after it is already in the corpus as ordinarium.confiteor. Both witnesses print a cross glyph in the versicle — do after nostrum, handmissal-eo before Adjutórium — a direction for the hand rather than a word; it is stripped, and the disagreement about where to put it is not collated. Neither line has an elliptical verb written out: Adjutórium nostrum in nómine Dómini stands without est.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence and no accidental variants — the two editions agree token for token, so this text carries no apparatus.",
+    "witnesses": "witnesses/ordinarium.adiutorium/"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Signat se, dicens:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Adjutórium", "lemma": "adiutorium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w002", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" } },
+        { "id": "w003", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w004", "form": "nómine", "lemma": "nomen", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w005", "form": "Dómini", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "words": [
+        { "id": "w006", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w007", "form": "fecit", "lemma": "facio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w008", "form": "cælum", "lemma": "caelum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "terram", "post": ".", "lemma": "terra", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } }
+      ]
+    }
+  ]
+}

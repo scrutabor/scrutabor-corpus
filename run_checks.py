@@ -101,10 +101,13 @@ def main(text_id: str) -> int:
     for e in all_errors:
         print(f"ERROR: {e}")
 
+    corrigenda = (
+        f"corrigenda={coll_stats['corrigenda']} " if coll_stats.get("corrigenda") else ""
+    )
     subject = (
         f"text={text_id} words={n_words} langs={','.join(langs) or '-'} "
         f"witnesses={coll_stats['witnesses']} variants={coll_stats['variants_adjudicated']} "
-        f"lemmata={len(lemmata)}"
+        f"{corrigenda}lemmata={len(lemmata)}"
     )
     if all_errors:
         print(f"VERDICT FAIL {subject} errors={len(all_errors)} warnings={len(all_warnings)}")

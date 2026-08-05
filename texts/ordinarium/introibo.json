@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.introibo",
+  "title": "Introíbo ad altáre Dei",
+  "category": "ordinarium",
+  "section": "praeparatio",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The opening of the prayers at the foot of the altar: the sign of the cross and the antiphon, said before the psalm. It is a text of its own because the 1962 rubric divides the block exactly here — in Requiem Masses and from Passion Sunday to Holy Saturday the psalm, the Glória Patri and the repetition of the antiphon are omitted, while In nómine Patris, Introíbo and Adjutórium are still said. What the rubric keeps and what it drops therefore cannot live in one document. The psalm follows as ordinarium.iudica-me, the versicle after it as ordinarium.adiutorium. Both witnesses print a cross glyph inside the first sentence; the glyph is a direction for the hand, not a word, and is stripped as in the other ordinarium texts. FÍLII at w005 is the genitive singular, as the three-genitive formula requires. Whitaker's contradicts it, but only because that dictionary carries the genitive of filius under the contracted spelling fili and leaves filii as locative and plural; it gives the genitive readily for fili, under the same entry. Collatinus reads the form as we do. The divergence is a shape in the analyzer's paradigm, not a doubt about the case.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. One accidental variant (punctuation) adjudicated in the apparatus.",
+    "witnesses": "witnesses/ordinarium.introibo/",
+    "apparatus": "witnesses/ordinarium.introibo/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Sacerdos paratus cum ingreditur ad Altare, facta illi debita reverentia, signat se signo crucis a fronte ad pectus, et clara voce dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w002", "form": "nómine", "lemma": "nomen", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w003", "form": "Patris", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "Fílii", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w008", "form": "Sancti", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w009", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "rubric",
+      "text": "Deinde, junctis manibus ante pectus, incipit Antiphonam:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s04",
+      "type": "verse",
+      "words": [
+        { "id": "w010", "form": "Introíbo", "lemma": "introeo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act" } },
+        { "id": "w011", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w012", "form": "altáre", "lemma": "altare", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w013", "form": "Dei", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } }
+      ]
+    },
+    {
+      "id": "s05",
+      "type": "verse",
+      "words": [
+        { "id": "w014", "form": "Ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w015", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w016", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w017", "form": "lætíficat", "lemma": "laetifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w018", "form": "juventútem", "lemma": "iuventus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w019", "form": "meam", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } }
+      ]
+    }
+  ]
+}
