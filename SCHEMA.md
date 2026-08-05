@@ -1,4 +1,4 @@
-# Corpus schema v0 (0.7.0)
+# Corpus schema v0 (0.8.0)
 
 Three layers: a language-neutral Latin source document per text, one gloss
 document per text per language, and a corpus-wide lexicon (language-neutral
@@ -153,11 +153,17 @@ entries{ <lemma>: { senses[], note?, derivatives?, analysis? } }
 ## Gloss document
 
 ```
-schema_version, text, lang, status, analysis_defaults,
+schema_version, text, lang, status, about?, analysis_defaults,
 segments{ <seg-id>: { translation? | narrative? } },
 words{ <word-id>: { gloss, function?, analysis? } }
 ```
 
+- `about` (since 0.8.0, optional): one short paragraph introducing the
+  text — history, when it is prayed, structure — in the target language.
+  Reader-facing and collapsed by default in apps; every claim must be
+  true and verifiable (the quality doctrine applies as to any layer).
+  Presence parity across languages per text (lint-enforced): the claim
+  set is about the Latin text, not about the gloss language.
 - `gloss` (required): shortest natural reading aid in the target language
   (interlinear line). It may be idiomatic rather than grammatical — it is
   the sense the context selects, which no lemma-level sense list can supply.

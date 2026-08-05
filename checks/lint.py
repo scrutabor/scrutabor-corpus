@@ -208,4 +208,11 @@ def lint_parity(gloss_docs):
             )
         if set(base.get("segments", {})) != set(other.get("segments", {})):
             errors.append(f"parity: segment coverage differs {base['lang']} vs {other['lang']}")
+        # The about paragraph introduces the Latin text — presence must
+        # agree across languages (SCHEMA.md, since 0.8.0).
+        if ("about" in base) != ("about" in other):
+            errors.append(f"parity: about presence differs {base['lang']} vs {other['lang']}")
+    for doc in gloss_docs:
+        if "about" in doc and not str(doc["about"]).strip():
+            errors.append(f"about: empty in {doc['lang']} — drop the key or write the paragraph")
     return errors
