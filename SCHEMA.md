@@ -82,9 +82,10 @@ analysis_defaults, segments[]
   (*mirabílius*), and the analyzers report it. `lemma` is the key
   into `lexicon/lemmata.json` — dictionary-normalized (i-form,
   no j, full head: `ab` not `a`) and **lowercase except true proper names**
-  (Maria, Michael, Ioannes, Baptista, Petrus, Paulus, Iesus, Christus,
-  Pontius, Pilatus — the linter's list); divine titles (deus, dominus, pater, spiritus) are
-  lowercase common-noun lemmas. (0.4.0 removed the 0.2.0
+  (Maria, Michael, Ioannes, Petrus, Paulus, Iesus, Christus, Abel, Abraham,
+  Melchisedech, the saints of the Canon's two lists… — `PROPER_LEMMAS` in
+  `checks/lint.py` is the list, and grows as texts require); divine titles
+  (deus, dominus, pater, spiritus) are lowercase common-noun lemmas. (0.4.0 removed the 0.2.0
   `tier` field: hand-judged per-word difficulty proved unreviewable.)
 - `morph`: `pos` (verb|noun|adj|pron|adv|conj|prep|intj) plus per-pos fields —
   nouns/adjs/prons: `case` (nom|gen|dat|acc|abl|voc), `number` (sg|pl),

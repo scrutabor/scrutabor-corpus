@@ -1,0 +1,89 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.hanc-igitur",
+  "title": "Hanc ígitur",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The prayer said with hands spread over the offerings, and the point from which the server's bell announces the approaching consecration. Its second half was added by Gregory the Great. PLACÁTUS at w014 is tagged as the adjective, with both analyzers, rather than as a participle of placo; it agrees with the subject of accípias, so the sense is that God receives the offering already appeased. ÉRIPI at w024 and NUMERÁRI at w029 are present passive infinitives depending on júbeas; the two clauses share that one verb across a long separation.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
+    "witnesses": "witnesses/ordinarium.hanc-igitur/",
+    "apparatus": "witnesses/ordinarium.hanc-igitur/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Tenens manus expansas super Oblata, dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Hanc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w002", "form": "ígitur", "lemma": "igitur", "morph": { "pos": "conj" } },
+        { "id": "w003", "form": "oblatiónem", "lemma": "oblatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w004", "form": "servitútis", "lemma": "servitus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w005", "form": "nostræ", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w006", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "cunctæ", "lemma": "cunctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w009", "form": "famíliæ", "lemma": "familia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w010", "form": "tuæ", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w011", "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "analysis": { "confidence": "medium", "sources": ["editorial"], "review": "pending" } },
+        { "id": "w012", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w013", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w014", "form": "placátus", "lemma": "placatus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w015", "form": "accípias", "post": ":", "lemma": "accipio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "words": [
+        { "id": "w016", "form": "diésque", "lemma": "dies", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 5 } },
+        { "id": "w017", "form": "nostros", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" } },
+        { "id": "w018", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w019", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" } },
+        { "id": "w020", "form": "pace", "lemma": "pax", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w021", "form": "dispónas", "post": ",", "lemma": "dispono", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w022", "form": "atque", "lemma": "atque", "morph": { "pos": "conj" } },
+        { "id": "w023", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w024", "form": "ætérna", "lemma": "aeternus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" } },
+        { "id": "w025", "form": "damnatióne", "lemma": "damnatio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w026", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w027", "form": "éripi", "post": ",", "lemma": "eripio", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "pass", "conj": 3 } },
+        { "id": "w028", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w029", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w030", "form": "electórum", "lemma": "electus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" } },
+        { "id": "w031", "form": "tuórum", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" } },
+        { "id": "w032", "form": "júbeas", "lemma": "iubeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w033", "form": "grege", "lemma": "grex", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w034", "form": "numerári", "post": ".", "lemma": "numero", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "pass", "conj": 1 } }
+      ]
+    },
+    {
+      "id": "s04",
+      "type": "rubric",
+      "text": "Jungit manus.",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s05",
+      "type": "verse",
+      "words": [
+        { "id": "w035", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w036", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w037", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w038", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w039", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
+    }
+  ]
+}

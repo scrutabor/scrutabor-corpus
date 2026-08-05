@@ -1,0 +1,100 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.memento-vivorum",
+  "title": "Meménto (pro vivis)",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The commemoration of the living, with the silence in which the priest names those he prays for; the missal marks it N. et N., and the edition omits the slot as it does in Te ígitur, carrying the pause as its own rubric segment. MEMÉNTO at w001 is the future imperative of memini, the only imperative that verb has; Whitaker's Words tags it present, Collatinus future, so the token stands as an argued divergence in the agreement report. CÓGNITA at w012 and NOTA at w015 are tagged as adjectives, with both analyzers, rather than as participles of cognósco and nosco. SE at w029 carries neither number nor gender: the reflexive marks neither, and only the case is fixed, by pro. SUÍSQUE at w030 is masculine on the persons it stands for, not on its own form.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
+    "witnesses": "witnesses/ordinarium.memento-vivorum/",
+    "apparatus": "witnesses/ordinarium.memento-vivorum/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Meménto", "post": ",", "lemma": "memini", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "fut", "mood": "imp", "voice": "act" }, "analysis": { "confidence": "medium", "sources": ["editorial", "collatinus"], "review": "disputed" } },
+        { "id": "w002", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w003", "form": "famulórum", "lemma": "famulus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w004", "form": "famularúmque", "lemma": "famula", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w005", "form": "tuárum", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "f" } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "rubric",
+      "text": "Jungit manus, orat aliquantulum pro quibus orare intendit: deinde manibus extensis prosequitur:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "words": [
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" } },
+        { "id": "w008", "form": "circumstántium", "post": ",", "lemma": "circumsto", "morph": { "pos": "verb", "case": "gen", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 1 } },
+        { "id": "w009", "form": "quorum", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "pl", "gender": "m" } },
+        { "id": "w010", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w011", "form": "fides", "lemma": "fides", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 5 } },
+        { "id": "w012", "form": "cógnita", "lemma": "cognitus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" } },
+        { "id": "w013", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w015", "form": "nota", "lemma": "notus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" } },
+        { "id": "w016", "form": "devótio", "post": ",", "lemma": "devotio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w017", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w018", "form": "quibus", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "m" } },
+        { "id": "w019", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w020", "form": "offérimus", "post": ":", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } }
+      ]
+    },
+    {
+      "id": "s04",
+      "type": "verse",
+      "words": [
+        { "id": "w021", "form": "vel", "lemma": "vel", "morph": { "pos": "conj" } },
+        { "id": "w022", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
+        { "id": "w023", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w024", "form": "ófferunt", "lemma": "offero", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w025", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w026", "form": "sacrifícium", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w027", "form": "laudis", "post": ",", "lemma": "laus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w028", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w029", "form": "se", "lemma": "sui", "morph": { "pos": "pron", "case": "abl" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+        { "id": "w030", "form": "suísque", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" } },
+        { "id": "w031", "form": "ómnibus", "post": ":", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" } },
+        { "id": "w032", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w033", "form": "redemptióne", "lemma": "redemptio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w034", "form": "animárum", "lemma": "anima", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w035", "form": "suárum", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "f" } },
+        { "id": "w036", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w037", "form": "spe", "lemma": "spes", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 5 } },
+        { "id": "w038", "form": "salútis", "lemma": "salus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w039", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w040", "form": "incolumitátis", "lemma": "incolumitas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w041", "form": "suæ", "post": ":", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } }
+      ]
+    },
+    {
+      "id": "s05",
+      "type": "verse",
+      "words": [
+        { "id": "w042", "form": "tibíque", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w043", "form": "reddunt", "lemma": "reddo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w044", "form": "vota", "lemma": "votum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w045", "form": "sua", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w046", "form": "ætérno", "lemma": "aeternus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" } },
+        { "id": "w047", "form": "Deo", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w048", "form": "vivo", "lemma": "vivus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" } },
+        { "id": "w049", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w050", "form": "vero", "post": ".", "lemma": "verus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" } }
+      ]
+    }
+  ]
+}

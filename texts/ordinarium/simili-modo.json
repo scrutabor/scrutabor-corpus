@@ -1,0 +1,140 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.simili-modo",
+  "title": "Símili modo",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The consecration of the chalice, with the command to repeat it. The words of consecration are set in capitals for the reason given at Qui prídie. CENÁTUM at w004 is the reading of the typical edition and of witness do, against witness handmissal-eo's cænátum, and is ruled in the apparatus: both are real spellings. It is tagged as the adjective cenátus with both analyzers; read strictly, cenátum est is the impersonal perfect passive of ceno — after the meal had been eaten — and the note carries that sense. MYSTÉRIUM FÍDEI at w027-w028 stands in the nominative, in apposition to CALIX, and is not governed by anything in the clause. FECÉRITIS at w037 is future perfect rather than perfect subjunctive; both analyzers offer the two, and the future indicative faciétis that answers it settles the choice.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence, apart from the orthographic variant adjudicated in the apparatus. Accidental variants adjudicated in the apparatus.",
+    "witnesses": "witnesses/ordinarium.simili-modo/",
+    "apparatus": "witnesses/ordinarium.simili-modo/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Tunc, detecto Calice, dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Símili", "lemma": "similis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } },
+        { "id": "w002", "form": "modo", "lemma": "modus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w003", "form": "postquam", "lemma": "postquam", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "cenátum", "lemma": "cenatus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" } },
+        { "id": "w005", "form": "est", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "rubric",
+      "text": "Ambabus manibus accipit Calicem.",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s04",
+      "type": "verse",
+      "words": [
+        { "id": "w006", "form": "accípiens", "lemma": "accipio", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 } },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "hunc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w009", "form": "præclárum", "lemma": "praeclarus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w010", "form": "Cálicem", "lemma": "calix", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w012", "form": "sanctas", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" } },
+        { "id": "w013", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
+        { "id": "w014", "form": "venerábiles", "lemma": "venerabilis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" } },
+        { "id": "w015", "form": "manus", "lemma": "manus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 4 } },
+        { "id": "w016", "form": "suas", "post": ":", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" } },
+        { "id": "w017", "form": "item", "lemma": "item", "morph": { "pos": "adv" } },
+        { "id": "w018", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w019", "form": "grátias", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w020", "form": "agens", "post": ",", "lemma": "ago", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 } },
+        { "id": "w021", "form": "benedíxit", "post": ",", "lemma": "benedico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w022", "form": "dedítque", "lemma": "do", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w023", "form": "discípulis", "lemma": "discipulus", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w024", "form": "suis", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" } },
+        { "id": "w025", "form": "dicens", "post": ":", "lemma": "dico", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 } }
+      ]
+    },
+    {
+      "id": "s05",
+      "type": "verse",
+      "words": [
+        { "id": "w026", "form": "Accípite", "post": ",", "lemma": "accipio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w027", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w028", "form": "bíbite", "lemma": "bibo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w029", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w030", "form": "eo", "lemma": "is", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" } },
+        { "id": "w031", "form": "omnes", "post": ".", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" } }
+      ]
+    },
+    {
+      "id": "s06",
+      "type": "rubric",
+      "text": "Profert verba consecrationis super Calicem, attente, continuate, et secrete, tenens illum parum elevatum.",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s07",
+      "type": "verse",
+      "words": [
+        { "id": "w032", "form": "HIC", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w033", "form": "EST", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w034", "form": "ENIM", "lemma": "enim", "morph": { "pos": "conj" } },
+        { "id": "w035", "form": "CALIX", "lemma": "calix", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w036", "form": "SÁNGUINIS", "lemma": "sanguis", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w037", "form": "MEI", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w038", "form": "NOVI", "lemma": "novus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" } },
+        { "id": "w039", "form": "ET", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w040", "form": "ÆTÉRNI", "lemma": "aeternus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" } },
+        { "id": "w041", "form": "TESTAMÉNTI", "post": ":", "lemma": "testamentum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w042", "form": "MYSTÉRIUM", "lemma": "mysterium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w043", "form": "FÍDEI", "post": ":", "lemma": "fides", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 5 } },
+        { "id": "w044", "form": "QUI", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w045", "form": "PRO", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w046", "form": "VOBIS", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
+        { "id": "w047", "form": "ET", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w048", "form": "PRO", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w049", "form": "MULTIS", "lemma": "multus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" } },
+        { "id": "w050", "form": "EFFUNDÉTUR", "lemma": "effundo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 3 } },
+        { "id": "w051", "form": "IN", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w052", "form": "REMISSIÓNEM", "lemma": "remissio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w053", "form": "PECCATÓRUM", "post": ".", "lemma": "peccatum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } }
+      ]
+    },
+    {
+      "id": "s08",
+      "type": "rubric",
+      "text": "Quibus verbis prolatis, deponit Calicem super Corporale, et dicens secrete:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s09",
+      "type": "verse",
+      "words": [
+        { "id": "w054", "form": "Hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w055", "form": "quotiescúmque", "lemma": "quotiescumque", "morph": { "pos": "adv" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+        { "id": "w056", "form": "fecéritis", "post": ",", "lemma": "facio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "futperf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w057", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w058", "form": "mei", "lemma": "ego", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
+        { "id": "w059", "form": "memóriam", "lemma": "memoria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w060", "form": "faciétis", "post": ".", "lemma": "facio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 } }
+      ]
+    },
+    {
+      "id": "s10",
+      "type": "rubric",
+      "text": "Genuflexus adorat: surgit, ostendit populo, deponit, cooperit, et genuflexus iterum adorat.",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    }
+  ]
+}

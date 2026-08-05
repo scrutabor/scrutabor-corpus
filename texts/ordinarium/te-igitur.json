@@ -1,0 +1,140 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.te-igitur",
+  "title": "Te ígitur",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The first prayer of the Canon, and the one that names the Church, the Pope and the bishop. UTI at w016 is the archaic form of the conjunction ut, not the infinitive of utor, which both analyzers also propose: what follows is a pair of subjunctives (hábeas, benedícas), not a construction utor could govern. ACCÉPTA at w017 is tagged as the adjective accéptus agreeing with the three neuter plurals that follow it, on the corpus's rule for forms both analyzers head adjectivally. PRIMIS at w030 carries no gender: in primis is a fossilised phrase and nothing in it marks one. UNA at w049 is the adverb (together), which Whitaker's heads separately; Collatinus reads the form only as the feminine of unus, so the agreement report records a form-level match there. The missal prints N. twice in this prayer, for the name of the reigning Pope and of the local bishop; a printed slot for a name is not a Latin word and carries no annotation, so the edition omits both, the witness transcriptions declare the omission, and the reader is told where they stand in the notes on w054 and w057.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
+    "witnesses": "witnesses/ordinarium.te-igitur/",
+    "apparatus": "witnesses/ordinarium.te-igitur/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Finita præfatione, sacerdos extendens, elevans aliquantulum et iungens manus, elevansque ad cælum oculos, et statim demittens, profunde inclinatus ante Altare, manibus super eo positis, dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w002", "form": "ígitur", "post": ",", "lemma": "igitur", "morph": { "pos": "conj" } },
+        { "id": "w003", "form": "clementíssime", "lemma": "clemens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m", "degree": "sup" }, "analysis": { "confidence": "medium", "sources": ["editorial", "collatinus"], "review": "disputed" } },
+        { "id": "w004", "form": "Pater", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w005", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w006", "form": "Jesum", "lemma": "Iesus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w007", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w008", "form": "Fílium", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w009", "form": "tuum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w010", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w011", "form": "nostrum", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w012", "form": "súpplices", "lemma": "supplex", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" } },
+        { "id": "w013", "form": "rogámus", "post": ",", "lemma": "rogo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w014", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
+        { "id": "w015", "form": "pétimus", "lemma": "peto", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "rubric",
+      "text": "Osculatur Altare et, junctis manibus ante pectus, dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s04",
+      "type": "verse",
+      "words": [
+        { "id": "w016", "form": "uti", "lemma": "uti", "morph": { "pos": "conj" } },
+        { "id": "w017", "form": "accépta", "lemma": "acceptus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w018", "form": "hábeas", "lemma": "habeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 } },
+        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w020", "form": "benedícas", "post": ",", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } }
+      ]
+    },
+    {
+      "id": "s05",
+      "type": "rubric",
+      "text": "Signat ter super Hostiam et Calicem simul, dicens:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s06",
+      "type": "verse",
+      "words": [
+        { "id": "w021", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w022", "form": "dona", "post": ",", "lemma": "donum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w023", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w024", "form": "múnera", "post": ",", "lemma": "munus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 } },
+        { "id": "w025", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w026", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w027", "form": "sacrifícia", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w028", "form": "illibáta", "post": ",", "lemma": "illibatus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      ]
+    },
+    {
+      "id": "s07",
+      "type": "rubric",
+      "text": "Extensis manibus prosequitur:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s08",
+      "type": "verse",
+      "words": [
+        { "id": "w029", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w030", "form": "primis", "post": ",", "lemma": "primus", "morph": { "pos": "adj", "case": "abl", "number": "pl" } },
+        { "id": "w031", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w032", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w033", "form": "offérimus", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w034", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w035", "form": "Ecclésia", "lemma": "ecclesia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w036", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" } },
+        { "id": "w037", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" } },
+        { "id": "w038", "form": "cathólica", "post": ":", "lemma": "catholicus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" } },
+        { "id": "w039", "form": "quam", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w040", "form": "pacificáre", "post": ",", "lemma": "pacifico", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 } },
+        { "id": "w041", "form": "custodíre", "post": ",", "lemma": "custodio", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 4 } },
+        { "id": "w042", "form": "adunáre", "lemma": "aduno", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 } },
+        { "id": "w043", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w044", "form": "régere", "lemma": "rego", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 } },
+        { "id": "w045", "form": "dignéris", "lemma": "dignor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 1 } },
+        { "id": "w046", "form": "toto", "lemma": "totus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } },
+        { "id": "w047", "form": "orbe", "lemma": "orbis", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w048", "form": "terrárum", "post": ":", "lemma": "terra", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 } }
+      ]
+    },
+    {
+      "id": "s09",
+      "type": "verse",
+      "words": [
+        { "id": "w049", "form": "una", "lemma": "una", "morph": { "pos": "adv" } },
+        { "id": "w050", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w051", "form": "fámulo", "lemma": "famulus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w052", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } },
+        { "id": "w053", "form": "Papa", "lemma": "papa", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 1 } },
+        { "id": "w054", "form": "nostro", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } },
+        { "id": "w055", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w056", "form": "Antístite", "lemma": "antistes", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w057", "form": "nostro", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } },
+        { "id": "w058", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w059", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" } },
+        { "id": "w060", "form": "orthodóxis", "post": ",", "lemma": "orthodoxus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" } },
+        { "id": "w061", "form": "atque", "lemma": "atque", "morph": { "pos": "conj" } },
+        { "id": "w062", "form": "cathólicæ", "lemma": "catholicus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w063", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w064", "form": "apostólicæ", "lemma": "apostolicus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w065", "form": "fídei", "lemma": "fides", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 5 } },
+        { "id": "w066", "form": "cultóribus", "post": ".", "lemma": "cultor", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 } }
+      ]
+    }
+  ]
+}

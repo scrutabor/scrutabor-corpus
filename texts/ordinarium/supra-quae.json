@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.supra-quae",
+  "title": "Supra quæ",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The prayer that sets this sacrifice beside those of Abel, Abraham and Melchisedech — the only place in the Roman Mass where the Old Testament sacrifices are named. SÍCUTI at w013 is accented on the antepenult: sicut plus the enclitic i, whose u is short, so the stress cannot fall on it; witness do accents the penult, adjudicated in the apparatus. ABEL at w022 and MELCHÍSEDECH at w036 are indeclinable and carry no declension; ÁBRAHÆ at w027 has a Latin genitive but a declension the corpus does not label. Whitaker's Words knows none of the three names; Collatinus knows all three, and the provenance of those tokens records it. QUOD at w031 is a relative with no expressed antecedent — that which Melchisedech offered — and its two appositions (sacrifícium, hóstiam) close the sentence.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
+    "witnesses": "witnesses/ordinarium.supra-quae/",
+    "apparatus": "witnesses/ordinarium.supra-quae/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Extensis manibus prosequitur:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Supra", "lemma": "supra", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w002", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w003", "form": "propítio", "lemma": "propitius", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } },
+        { "id": "w004", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "seréno", "lemma": "serenus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } },
+        { "id": "w006", "form": "vultu", "lemma": "vultus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w007", "form": "respícere", "lemma": "respicio", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 } },
+        { "id": "w008", "form": "dignéris", "post": ":", "lemma": "dignor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 1 } },
+        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "accépta", "lemma": "acceptus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w011", "form": "habére", "post": ",", "lemma": "habeo", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 2 } },
+        { "id": "w012", "form": "sícuti", "lemma": "sicuti", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "accépta", "lemma": "acceptus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w014", "form": "habére", "lemma": "habeo", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 2 } },
+        { "id": "w015", "form": "dignátus", "lemma": "dignor", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "dep", "conj": 1 } },
+        { "id": "w016", "form": "es", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w017", "form": "múnera", "lemma": "munus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 } },
+        { "id": "w018", "form": "púeri", "lemma": "puer", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w019", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w020", "form": "justi", "lemma": "iustus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w021", "form": "Abel", "post": ",", "lemma": "Abel", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w022", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w023", "form": "sacrifícium", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w024", "form": "Patriárchæ", "lemma": "patriarcha", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 1 } },
+        { "id": "w025", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w026", "form": "Ábrahæ", "post": ":", "lemma": "Abraham", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "words": [
+        { "id": "w027", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w028", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w029", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w030", "form": "óbtulit", "lemma": "offero", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act" } },
+        { "id": "w031", "form": "summus", "lemma": "summus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w032", "form": "sacérdos", "lemma": "sacerdos", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w033", "form": "tuus", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w034", "form": "Melchísedech", "post": ",", "lemma": "Melchisedech", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w035", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w036", "form": "sacrifícium", "post": ",", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w037", "form": "immaculátam", "lemma": "immaculatus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w038", "form": "hóstiam", "post": ".", "lemma": "hostia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } }
+      ]
+    }
+  ]
+}

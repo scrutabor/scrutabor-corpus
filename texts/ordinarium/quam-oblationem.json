@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.quam-oblationem",
+  "title": "Quam oblatiónem",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The last prayer before the consecration, asking that the offering be made the Body and Blood. Its five adjectives are the crux: BENEDÍCTAM at w008, RATAM at w010, RATIONÁBILEM at w011 and ACCEPTABILÉMQUE at w012 are adjectives, ADSCRÍPTAM at w009 a perfect passive participle of adscríbo — not an inconsistency of ours but of the dictionaries, which head an adjective for the first and only a verb for the second; each token follows the evidence that exists for it. FIAT at w015 is tagged active with the corpus's earlier rulings on fio, whose forms are active and whose sense is passive. CORPUS and SANGUIS at w013 and w014 are the subjects of fiat and stand in the nominative, though the sentence's other nouns around them are accusative.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
+    "witnesses": "witnesses/ordinarium.quam-oblationem/",
+    "apparatus": "witnesses/ordinarium.quam-oblationem/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Quam", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w002", "form": "oblatiónem", "lemma": "oblatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w003", "form": "tu", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w006", "form": "ómnibus", "post": ",", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" } },
+        { "id": "w007", "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "analysis": { "confidence": "medium", "sources": ["editorial"], "review": "pending" } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "rubric",
+      "text": "Signat ter super Oblata.",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "words": [
+        { "id": "w008", "form": "benedíctam", "post": ",", "lemma": "benedictus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w009", "form": "adscríptam", "post": ",", "lemma": "adscribo", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "f", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 } },
+        { "id": "w010", "form": "ratam", "post": ",", "lemma": "ratus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w011", "form": "rationábilem", "post": ",", "lemma": "rationabilis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w012", "form": "acceptabilémque", "lemma": "acceptabilis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w013", "form": "fácere", "lemma": "facio", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 } },
+        { "id": "w014", "form": "dignéris", "post": ":", "lemma": "dignor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 1 } }
+      ]
+    },
+    {
+      "id": "s04",
+      "type": "rubric",
+      "text": "Signat semel super Hostiam, et semel super Calicem.",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s05",
+      "type": "verse",
+      "words": [
+        { "id": "w015", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w016", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
+        { "id": "w017", "form": "Corpus", "post": ",", "lemma": "corpus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w018", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w019", "form": "Sanguis", "lemma": "sanguis", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w020", "form": "fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w021", "form": "dilectíssimi", "lemma": "dilectus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m", "degree": "sup" } },
+        { "id": "w022", "form": "Fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "medium", "sources": ["editorial", "collatinus"], "review": "disputed" } },
+        { "id": "w023", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w024", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w025", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w026", "form": "Jesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w027", "form": "Christi", "post": ".", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } }
+      ]
+    }
+  ]
+}

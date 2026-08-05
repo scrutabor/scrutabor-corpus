@@ -1,0 +1,141 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.communicantes",
+  "title": "Communicántes",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The prayer that joins the offering to the saints — Our Lady, Joseph, the twelve, and twelve martyrs of the Roman church: the popes Linus, Cletus, Clement and Sixtus, the bishops Cornelius and Cyprian, the deacon Lawrence, Chrysogonus, John and Paul, Cosmas and Damian. The list is a single chain of genitives depending on memóriam venerántes, and every name in it is tagged genitive on that syntax, since several of the forms could as well be nominative plural. COMMUNICÁNTES at w001 and VENERÁNTES at w004 are nominative plural masculine, agreeing with a subject the sentence never states: the priest and those with him. JOSEPH at w020 is indeclinable and carries no declension; its case is the one beáti agrees with. GENETRÍCIS at w011 is the reading of the typical edition and of witness do; witness handmissal-eo prints Genitrícis, and both are real spellings of the word, so the difference is ruled in the apparatus rather than passed over. ÓMNIBUS at w061 is neuter — in all things, not among all men. COSMÆ at w050 and CLETI at w040 are unknown to both analyzers; their parses rest on the edition alone and say so in their provenance.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence, apart from the orthographic variant adjudicated in the apparatus. Accidental variants adjudicated in the apparatus.",
+    "witnesses": "witnesses/ordinarium.communicantes/",
+    "apparatus": "witnesses/ordinarium.communicantes/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Communicántes", "post": ",", "lemma": "communico", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 1 } },
+        { "id": "w002", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w003", "form": "memóriam", "lemma": "memoria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w004", "form": "venerántes", "post": ",", "lemma": "veneror", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "dep", "conj": 1 } },
+        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w006", "form": "primis", "lemma": "primus", "morph": { "pos": "adj", "case": "abl", "number": "pl" } },
+        { "id": "w007", "form": "gloriósæ", "lemma": "gloriosus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w008", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w009", "form": "Vírginis", "lemma": "virgo", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w010", "form": "Maríæ", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w011", "form": "Genetrícis", "lemma": "genetrix", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w012", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w014", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w015", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w016", "form": "Jesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w017", "form": "Christi", "post": ":", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w018", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
+        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w020", "form": "beáti", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w021", "form": "Joseph", "post": ",", "lemma": "Ioseph", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w022", "form": "ejúsdem", "lemma": "idem", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w023", "form": "Vírginis", "lemma": "virgo", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w024", "form": "Sponsi", "post": ",", "lemma": "sponsus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "words": [
+        { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w026", "form": "beatórum", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" } },
+        { "id": "w027", "form": "Apostolórum", "lemma": "apostolus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w028", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
+        { "id": "w029", "form": "Mártyrum", "lemma": "martyr", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 3 }, "analysis": { "confidence": "medium", "sources": ["editorial", "collatinus"], "review": "disputed" } },
+        { "id": "w030", "form": "tuórum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" } },
+        { "id": "w031", "form": "Petri", "lemma": "Petrus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w032", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w033", "form": "Pauli", "post": ",", "lemma": "Paulus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w034", "form": "Andréæ", "post": ",", "lemma": "Andreas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 1 } },
+        { "id": "w035", "form": "Jacóbi", "post": ",", "lemma": "Iacobus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w036", "form": "Joánnis", "post": ",", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w037", "form": "Thomæ", "post": ",", "lemma": "Thomas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 1 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w038", "form": "Jacóbi", "post": ",", "lemma": "Iacobus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w039", "form": "Philíppi", "post": ",", "lemma": "Philippus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w040", "form": "Bartholomǽi", "post": ",", "lemma": "Bartholomaeus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w041", "form": "Matthǽi", "post": ",", "lemma": "Matthaeus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w042", "form": "Simónis", "lemma": "Simon", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w043", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w044", "form": "Thaddǽi", "post": ":", "lemma": "Thaddaeus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      ]
+    },
+    {
+      "id": "s04",
+      "type": "verse",
+      "words": [
+        { "id": "w045", "form": "Lini", "post": ",", "lemma": "Linus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "medium", "sources": ["editorial", "collatinus"], "review": "disputed" } },
+        { "id": "w046", "form": "Cleti", "post": ",", "lemma": "Cletus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
+        { "id": "w047", "form": "Cleméntis", "post": ",", "lemma": "Clemens", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "analysis": { "confidence": "medium", "sources": ["editorial", "collatinus"], "review": "disputed" } },
+        { "id": "w048", "form": "Xysti", "post": ",", "lemma": "Xystus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w049", "form": "Cornélii", "post": ",", "lemma": "Cornelius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w050", "form": "Cypriáni", "post": ",", "lemma": "Cyprianus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w051", "form": "Lauréntii", "post": ",", "lemma": "Laurentius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w052", "form": "Chrysógoni", "post": ",", "lemma": "Chrysogonus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w053", "form": "Joánnis", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w054", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w055", "form": "Pauli", "post": ",", "lemma": "Paulus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w056", "form": "Cosmæ", "lemma": "Cosmas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 1 }, "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
+        { "id": "w057", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w058", "form": "Damiáni", "post": ":", "lemma": "Damianus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } }
+      ]
+    },
+    {
+      "id": "s05",
+      "type": "verse",
+      "words": [
+        { "id": "w059", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w060", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" } },
+        { "id": "w061", "form": "Sanctórum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" } },
+        { "id": "w062", "form": "tuórum", "post": ";", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" } },
+        { "id": "w063", "form": "quorum", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "pl", "gender": "m" } },
+        { "id": "w064", "form": "méritis", "lemma": "meritum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w065", "form": "precibúsque", "lemma": "prex", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w066", "form": "concédas", "post": ",", "lemma": "concedo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w067", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w068", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w069", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" } },
+        { "id": "w070", "form": "protectiónis", "lemma": "protectio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w071", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w072", "form": "muniámur", "lemma": "munio", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 4 } },
+        { "id": "w073", "form": "auxílio", "post": ".", "lemma": "auxilium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } }
+      ]
+    },
+    {
+      "id": "s06",
+      "type": "rubric",
+      "text": "Jungit manus.",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s07",
+      "type": "verse",
+      "words": [
+        { "id": "w074", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w075", "form": "eúndem", "lemma": "idem", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w076", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w077", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w078", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w079", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
+    }
+  ]
+}

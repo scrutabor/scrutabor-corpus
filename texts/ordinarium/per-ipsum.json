@@ -1,0 +1,100 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.per-ipsum",
+  "title": "Per ipsum",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The doxology that closes the Canon, said with the Host held over the chalice — the minor elevation, so called against the elevations after each consecration. Witness do capitalises Ipsum, Ipso and Ipso; the edition prints them lowercase with witness handmissal-eo and the typical edition, adjudicated in the apparatus. EST at w009 is the only verb in the sentence and stands early, before the subjects (honor, glória) that close it. ÓMNIS at w022 agrees with honor alone, though the sense covers glória too.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
+    "witnesses": "witnesses/ordinarium.per-ipsum/",
+    "apparatus": "witnesses/ordinarium.per-ipsum/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Discooperit Calicem, genuflectit, accipit Hostiam inter pollicem et indicem manus dexteræ: et tenens sinistra Calicem, cum Hostia signat ter a labio ad labium Calicis, dicens:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w002", "form": "ipsum", "post": ",", "lemma": "ipse", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w005", "form": "ipso", "post": ",", "lemma": "ipse", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" } },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w008", "form": "ipso", "post": ",", "lemma": "ipse", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "rubric",
+      "text": "Cum ipsa Hostia signat bis inter se et Calicem, dicens:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s04",
+      "type": "verse",
+      "words": [
+        { "id": "w009", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w010", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w011", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w012", "form": "Patri", "lemma": "pater", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w013", "form": "omnipoténti", "post": ",", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" } },
+        { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w015", "form": "unitáte", "lemma": "unitas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w016", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w017", "form": "Sancti", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" } }
+      ]
+    },
+    {
+      "id": "s05",
+      "type": "rubric",
+      "text": "Elevans parum Calicem cum Hostia, dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s06",
+      "type": "verse",
+      "words": [
+        { "id": "w018", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w019", "form": "honor", "post": ",", "lemma": "honor", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w021", "form": "glória", "post": ".", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } }
+      ]
+    },
+    {
+      "id": "s07",
+      "type": "rubric",
+      "text": "Ponit Hostiam, Calicem Palla cooperit, genuflectit, surgit, et dicit intellegibili voce vel cantat:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s08",
+      "type": "verse",
+      "words": [
+        { "id": "w022", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w023", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w024", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w025", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } }
+      ]
+    },
+    {
+      "id": "s09",
+      "type": "verse",
+      "words": [
+        { "id": "w026", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
+    }
+  ]
+}

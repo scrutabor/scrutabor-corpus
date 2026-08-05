@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.memento-defunctorum",
+  "title": "Meménto étiam (pro defúnctis)",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The commemoration of the dead, with its own silence. As in the Meménto of the living, the missal's name slot N. et N. is omitted; because the edition does not print the names, the relative clause that follows describes the servants and handmaids themselves and takes no comma, which is also witness handmissal-eo's pointing. QUIESCÉNTIBUS at w029 is a participle used as a noun — those resting — and takes its dative from indúlgeas. LOCUM at w030 is the object of indúlgeas across the intervening ut, which stands late in its own clause. SIGNO FÍDEI at w011-w012 is the ancient phrase for baptism, and the note says so.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
+    "witnesses": "witnesses/ordinarium.memento-defunctorum/",
+    "apparatus": "witnesses/ordinarium.memento-defunctorum/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Meménto", "lemma": "memini", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "fut", "mood": "imp", "voice": "act" }, "analysis": { "confidence": "medium", "sources": ["editorial", "collatinus"], "review": "disputed" } },
+        { "id": "w002", "form": "étiam", "post": ",", "lemma": "etiam", "morph": { "pos": "adv" } },
+        { "id": "w003", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w004", "form": "famulórum", "lemma": "famulus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "famularúmque", "lemma": "famula", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w006", "form": "tuárum", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "f" } },
+        { "id": "w007", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
+        { "id": "w008", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w009", "form": "præcessérunt", "lemma": "praecedo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w010", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w011", "form": "signo", "lemma": "signum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w012", "form": "fídei", "post": ",", "lemma": "fides", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 5 } },
+        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w014", "form": "dórmiunt", "lemma": "dormio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 4 } },
+        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w016", "form": "somno", "lemma": "somnus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w017", "form": "pacis", "post": ".", "lemma": "pax", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "rubric",
+      "text": "Jungit manus, orat aliquantulum pro iis defunctis, pro quibus orare intendit, deinde extensis manibus prosequitur:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "words": [
+        { "id": "w018", "form": "Ipsis", "post": ",", "lemma": "ipse", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" } },
+        { "id": "w019", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w021", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" } },
+        { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w023", "form": "Christo", "lemma": "Christus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w024", "form": "quiescéntibus", "post": ",", "lemma": "quiesco", "morph": { "pos": "verb", "case": "dat", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 } },
+        { "id": "w025", "form": "locum", "lemma": "locus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w026", "form": "refrigérii", "post": ",", "lemma": "refrigerium", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 }, "analysis": { "confidence": "medium", "sources": ["editorial", "collatinus"], "review": "disputed" } },
+        { "id": "w027", "form": "lucis", "lemma": "lux", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w028", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w029", "form": "pacis", "post": ",", "lemma": "pax", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w030", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w031", "form": "indúlgeas", "post": ",", "lemma": "indulgeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 } },
+        { "id": "w032", "form": "deprecámur", "post": ".", "lemma": "deprecor", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "dep", "conj": 1 } }
+      ]
+    },
+    {
+      "id": "s04",
+      "type": "rubric",
+      "text": "Jungit manus, et caput inclinat, dicens:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s05",
+      "type": "verse",
+      "words": [
+        { "id": "w033", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w034", "form": "eúndem", "lemma": "idem", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w035", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w036", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w037", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w038", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
+    }
+  ]
+}

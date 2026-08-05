@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.8.0",
+  "id": "ordinarium.per-quem-haec-omnia",
+  "title": "Per quem hæc ómnia",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "Four verbs over the gifts, and the shortest prayer of the Canon. The relative quem at w002 reaches back to Jesus Christ, named at the end of the prayer before it — the Canon's paragraphs are one sentence more often than they look. HÆC ÓMNIA at w003-w004 and BONA at w007 are all accusative neuter plurals: God creates these things always good, and then hallows, quickens, blesses and bestows them.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
+    "witnesses": "witnesses/ordinarium.per-quem-haec-omnia/",
+    "apparatus": "witnesses/ordinarium.per-quem-haec-omnia/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w002", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w003", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w004", "form": "ómnia", "post": ",", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w005", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w006", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w007", "form": "bona", "lemma": "bonus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w008", "form": "creas", "post": ",", "lemma": "creo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "rubric",
+      "text": "Signat ter super Hostiam, et Calicem simul, dicens:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "words": [
+        { "id": "w009", "form": "sanctíficas", "post": ",", "lemma": "sanctifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w010", "form": "vivíficas", "post": ",", "lemma": "vivifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w011", "form": "benedícis", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "præstas", "lemma": "praesto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w014", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } }
+      ]
+    }
+  ]
+}
