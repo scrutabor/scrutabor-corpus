@@ -144,6 +144,17 @@ word's note, not in the morphology.
 The gerund — the verbal noun, active in sense and without agreement — is
 NOT this. When one is tokenized, it wants its own ruling.
 
+### `sung`
+
+`sung: true` marks a text that the CHANT BOOKS set: the five chants of
+the Kyriale ordinary (Kyrie, Gloria, Credo, Sanctus, Agnus Dei), the
+preface with its dialogue, and the dismissal, which the Kyriale prints
+with a melody for each Mass setting. It is a fact about the books, not
+about a particular celebration — every one of these is spoken at a low
+Mass, and much else is sung at a solemn one. The chant policy (v1 carries
+the texts, not the notation) is what this field serves: it says which
+texts a reader will meet as music.
+
 ### Witness corrigenda
 
 A witness may set a letter wrong — a printer's slip, not a reading. That is
