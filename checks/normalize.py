@@ -68,8 +68,12 @@ def syllable_count(form: str) -> int:
                 prev = ch
                 prev_was_vowel = False
                 continue
-            if ch in ("i", "í") and prev_was_vowel and nxt in VOWELS:
-                # consonantal i between vowels: a glide, not a nucleus
+            if ch in ("i", "í") and nxt in VOWELS and (prev_was_vowel or prev == ""):
+                # Consonantal i: a glide, not a nucleus. Between vowels
+                # (allelúia, eius) and at the head of a word before another
+                # vowel (Iesus, Ioánnes, iube) — which is where nearly all
+                # of them are, now that this edition prints the consonant
+                # as i rather than j.
                 prev = ch
                 prev_was_vowel = False
                 continue

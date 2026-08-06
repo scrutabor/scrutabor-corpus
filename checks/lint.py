@@ -110,14 +110,11 @@ PROPER_LEMMAS = {
 #
 # Keyed on the normalized spelling (accents stripped, ligatures expanded,
 # lowercased) — the same `plain` the heuristics test.
-# The books keep the glide spelled i in a few words where ORTHOGRAPHY.md
-# would otherwise want j (Eia in the Salve Regina, allelúia). Only the
-# SPELLING rule is waived: the syllable counter reads the glide correctly,
-# so these words still answer to the accent rule like any other.
-SPELLING_EXEMPT = {
-    "eia": "the books print Eia, not Eja — the glide keeps its i here",
-    "alleluia": "the books print allelúia, not allelúja",
-}
+# Kept for the mechanism, now empty: since this edition prints the
+# consonant as i throughout (ORTHOGRAPHY.md rule 2, reversed 2026-08-06),
+# Eia and allelúia need no exemption — they were only ever exceptions to a
+# j-rule that no longer exists.
+SPELLING_EXEMPT: dict[str, str] = {}
 
 # Who says a segment, and how loudly (SCHEMA.md, since 0.9.0). Both are
 # READ from the sources, not remembered: the speaker from the witnesses'
@@ -260,13 +257,11 @@ def lint_text(doc):
         # u after q/g before a vowel is a glide, not a vowel (quia, sanguis) —
         # drop it before the vocalic-context tests.
         plain = re.sub(r"([qg])u(?=[aeiouy])", r"\1", plain)
-        if plain in SPELLING_EXEMPT:
-            # waive the spelling rules only; the accent check below still runs
-            pass
-        elif re.search(r"[aeouy]i[aeouy]", plain):
-            errors.append(f"{wid}: {f!r} has i between vowels — ORTHOGRAPHY.md wants j (allowlist if genuine)")
-        if plain not in SPELLING_EXEMPT and re.match(r"i[aeiouy]", plain):
-            errors.append(f"{wid}: {f!r} starts i+vowel — ORTHOGRAPHY.md wants J (allowlist if genuine)")
+        if "j" in plain:
+            errors.append(
+                f"{wid}: {f!r} spells the consonant with j — ORTHOGRAPHY.md prints i, "
+                "as the typical edition and the Pallottinum Ordo do"
+            )
         n, acc = syllable_count(f), has_accent(f)
         n_marks = sum(1 for ch in f if ch in ACCENTED_VOWELS)
         if n >= 3 and not acc:

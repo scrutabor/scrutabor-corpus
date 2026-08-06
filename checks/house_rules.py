@@ -3,8 +3,9 @@
 Every witness printed in a different house style disagrees with us in the
 same two ways, over and over:
 
-  * **i for j.** The typical edition sets iube, maiestatis, Ioannem where
-    ORTHOGRAPHY.md prints jube, majestatis, Joannem.
+  * **i for j.** This edition prints iube, maiestátis, Ioánnem with the
+    books it edits; the mid-century hand missals print jube, majestátis,
+    Joánnem.
   * **accents on capitals.** This edition accents them; most printings do
     not, so Ángeli meets Angeli and Ómnia meets Omnia.
 
@@ -31,9 +32,11 @@ from .collate import corpus_tokens, load_witness
 CORPUS = Path(__file__).resolve().parent.parent
 
 IJ_RULING = (
-    "The i-form against this edition's j-form, by the house rule in ORTHOGRAPHY.md. Neither is a "
-    "different word and neither page is wrong: the two orthographies are the conventions in which "
-    "the same Latin has been printed for centuries, and this edition prints j."
+    "The j-form against this edition's i-form, by the house rule in ORTHOGRAPHY.md. This edition "
+    "prints i because the books it edits do: the 1962 typical edition sets Iesu, Ioánnem, iube and "
+    "maiestátis throughout, and so does the Ordo Missae of Pallottinum, Poznań 1963, which is the "
+    "book a Polish reader is most likely to hold. The mid-century hand missals print j; neither "
+    "spelling is a different word, and the apparatus records theirs."
 )
 CAPITAL_RULING = (
     "This edition accents capitals, by the house rule in ORTHOGRAPHY.md, because the accent tells a "
@@ -56,9 +59,10 @@ def classify(ours: str, theirs: str) -> tuple[str, str] | None:
             return 'capital-accent', CAPITAL_RULING
         if theirs == bare(theirs):
             return 'capital-accent', CAPITAL_RULING
-    fold = lambda w: bare(w).lower().replace('j', 'i').replace('v', 'u')
+    # direction-agnostic: it is the same rule whichever side prints j
+    fold = lambda w: bare(w).lower().replace('j', 'i')
     if fold(ours) == fold(theirs) and ours != theirs:
-        if ('j' in ours or 'J' in ours) and ('i' in theirs or 'I' in theirs):
+        if any(c in 'jJ' for c in ours + theirs):
             return 'orthography', IJ_RULING
     return None
 

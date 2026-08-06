@@ -1,13 +1,13 @@
 {
   "schema_version": "0.9.0",
   "id": "ordinarium.iudica-me",
-  "title": "Psalmus Júdica me",
+  "title": "Psalmus Iúdica me",
   "category": "ordinarium",
   "section": "praeparatio",
   "variant": "missae",
   "sung": false,
   "status": "working-edition",
-  "notes": "Psalm 42 as the Ordo prints it — verses 1-5, then the Glória Patri, then the antiphon repeated — said alternately by celebrant and ministers at the foot of the altar. It is a document of its own because the rubric omits exactly this much and no more (rubric s01): in Requiem Masses and from Passion Sunday to Holy Saturday the psalm, the doxology and the repeated antiphon fall away together while the sign of the cross, the antiphon's first statement and the Adjutórium stay. The psalm text is the Gallican psalter's, translated from the Greek rather than from the Hebrew, which is why w042 is neuter (see its note). Two parses claim less or more than a form alone can carry, and both are editorial: TRISTIS at w030 carries no gender — the two-termination adjective does not mark it and the speaker is whoever says the psalm — while the same word at w074 is feminine because it stands with ánima. meus at w072 is the nominative form: the masculine possessive has no vocative but mi, which the psalter does not use here, so the address is carried by the note (the ruling the corpus made for Agnus). Latin's vocative of meus is mi: the phrase is address, the possessive follows its noun, and neither analyzer offers the case, so the tag rests on the syntax and is flagged for review. The doxology here is the missal's setting of the same formula the corpus carries at orationes.gloria-patri, which the Hours punctuate differently (et semper, for et semper:); the two are separate witnesses of one text and are not collated against each other.",
+  "notes": "Psalm 42 as the Ordo prints it — verses 1-5, then the Glória Patri, then the antiphon repeated — said alternately by celebrant and ministers at the foot of the altar. It is a document of its own because the rubric omits exactly this much and no more (rubric s01): in Requiem Masses and from Passion Sunday to Holy Saturday the psalm, the doxology and the repeated antiphon fall away together while the sign of the cross, the antiphon's first statement and the Adiutórium stay. The psalm text is the Gallican psalter's, translated from the Greek rather than from the Hebrew, which is why w042 is neuter (see its note). Two parses claim less or more than a form alone can carry, and both are editorial: TRISTIS at w030 carries no gender — the two-termination adjective does not mark it and the speaker is whoever says the psalm — while the same word at w074 is feminine because it stands with ánima. meus at w072 is the nominative form: the masculine possessive has no vocative but mi, which the psalter does not use here, so the address is carried by the note (the ruling the corpus made for Agnus). Latin's vocative of meus is mi: the phrase is address, the possessive follows its noun, and neither analyzer offers the case, so the tag rests on the syntax and is flagged for review. The doxology here is the missal's setting of the same formula the corpus carries at orationes.gloria-patri, which the Hours punctuate differently (et semper, for et semper:); the two are separate witnesses of one text and are not collated against each other.",
   "source": {
     "method": "Verified by collation against the independent witnesses below: zero substantive divergence once the hand missal's manifest typographical slip at w105 is corrected (recorded in the apparatus and in the witness header). Accidental variants (punctuation) adjudicated in the apparatus.",
     "witnesses": "witnesses/ordinarium.iudica-me/",
@@ -19,7 +19,7 @@
     {
       "id": "s01",
       "type": "rubric",
-      "text": "In Missis Defunctorum, et in Missis de Tempore a Dominica Passionis usque ad Sabbatum sanctum exclusive, omittitur Psalmus Júdica me, Deus, cum Glória Patri, et repetitione Antiphonæ, sed dicto In nómine Patris, Introíbo, et Adjutórium, fit conféssio.",
+      "text": "In Missis Defunctorum, et in Missis de Tempore a Dominica Passionis usque ad Sabbatum sanctum exclusive, omittitur Psalmus Iúdica me, Deus, cum Glória Patri, et repetitione Antiphonæ, sed dicto In nómine Patris, Introíbo, et Adiutórium, fit conféssio.",
       "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
     },
     {
@@ -34,7 +34,7 @@
       "voice": "clara",
       "speaker": "sacerdos",
       "words": [
-        { "id": "w001", "form": "Júdica", "lemma": "iudico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w001", "form": "Iúdica", "lemma": "iudico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
         { "id": "w002", "form": "me", "post": ",", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w003", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -121,7 +121,7 @@
         { "id": "w061", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w062", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w063", "form": "lætíficat", "lemma": "laetifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w064", "form": "juventútem", "lemma": "iuventus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w064", "form": "iuventútem", "lemma": "iuventus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
         { "id": "w065", "form": "meam", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } }
       ]
     },
@@ -234,7 +234,7 @@
         { "id": "w120", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w121", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w122", "form": "lætíficat", "lemma": "laetifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w123", "form": "juventútem", "lemma": "iuventus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+        { "id": "w123", "form": "iuventútem", "lemma": "iuventus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
         { "id": "w124", "form": "meam", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } }
       ]
     }
