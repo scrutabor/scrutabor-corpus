@@ -83,7 +83,15 @@ analysis_defaults, segments[]
   (silently), `cantus` (sung). Both belong to verse segments only: a
   rubric is the edition's framing, not anyone's words.
   Both are READ from the sources by `checks/attribute.py`, never
-  remembered — the speaker from the witnesses' own markers (S. sacerdos,
+  remembered. Since 2026-08-06 the voice comes chiefly from the rite's own
+  law — **Rubricae generales IX, n. 511**, which lists what is said clara
+  voce at low Mass and closes *"Cetera dicuntur secreto"*, transcribed in
+  `witnesses/raw/mr-rubricae-generales-ix.txt`. That is what the rubrics
+  inside the texts could not give: the Canon's silence is stated once, in
+  the law (n. 500), and never repeated on the page. Where a text's own
+  rubric disagrees with the law the tool REPORTS it rather than choosing
+  quietly; n. 512 defines the terms, `secreto` being said "ut ipsemet se
+  audiat, et a circumstantibus non audiatur". — the speaker from the witnesses' own markers (S. sacerdos,
   M. minister, V./R. a versicle and its response, O. omnes), which the
   transcriptions strip and every witness header says so; the voice from
   the rubrics this corpus already carries. Both are OPTIONAL, and their

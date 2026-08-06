@@ -21,7 +21,7 @@ from checks.lexicon import (
     lint_senses,
     load_lexicon,
 )
-from checks.lint import check_voices, lint_analysis, lint_gloss, lint_parity, lint_text
+from checks.lint import check_voices, duplicate_keys, lint_analysis, lint_gloss, lint_parity, lint_text
 
 CORPUS = Path(__file__).resolve().parent
 
@@ -77,6 +77,7 @@ def main(text_id: str) -> int:
     all_errors += lint_analysis(doc)
     voice_errors, attributed, n_verses = check_voices(doc)
     all_errors += voice_errors
+    all_errors += duplicate_keys(text_path)
     all_errors += check_schema_versions()
 
     lemmata, _, lex_errors = load_lexicon(CORPUS)

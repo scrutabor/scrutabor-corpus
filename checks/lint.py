@@ -1,6 +1,9 @@
 """Mechanical corpus lint: schema shape, charset, orthography (ORTHOGRAPHY.md),
 accent rules, cross-references, quoted forms, terminology, layer parity."""
 
+import json
+from pathlib import Path
+
 import re
 
 from .normalize import ACCENTED_VOWELS, fold_ligatures, has_accent, strip_accents, syllable_count
@@ -125,6 +128,27 @@ SPELLING_EXEMPT = {
 # the app must render as unmarked rather than guess.
 SPEAKERS = {"sacerdos", "minister", "populus", "omnes", "schola"}
 VOICES = {"clara", "submissa", "secreto", "cantus"}
+
+
+def duplicate_keys(path: Path) -> list[str]:
+    """A JSON object may legally repeat a key, and every parser silently
+    keeps the last — so a file can say two things at once and pass every
+    check written against the parsed value. A writer that inserted where it
+    meant to replace produced exactly that here, and nothing caught it.
+    Read the raw text, and refuse it."""
+    seen: list[str] = []
+
+    def hook(pairs):
+        counts: dict[str, int] = {}
+        for key, _ in pairs:
+            counts[key] = counts.get(key, 0) + 1
+        for key, n in counts.items():
+            if n > 1:
+                seen.append(f"{path.name}: key {key!r} appears {n} times in one object")
+        return dict(pairs)
+
+    json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=hook)
+    return seen
 
 
 def check_voices(doc):
