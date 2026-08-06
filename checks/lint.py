@@ -225,6 +225,42 @@ def lint_analysis(doc):
     return errors
 
 
+# A note cites its tokens as FORM at wNNN — the caps form and the id have to
+# name the same word. They drift: word ids are renumbered whenever a text is
+# re-segmented, and the prose keeps the old numbers, so by the time this was
+# written 32 references pointed at other words and two at tokens that no
+# longer existed. Multi-word citations name the last word (SANCTA SANCTÓRUM
+# at w011-w012), and one form may carry several ids (ÓBTULI at w017 and w027).
+NOTE_REF = re.compile(r"\b([^\Wa-z\d_]{3,}(?:[^\Wa-z\d_]|-)*)( at w\d+(?:[- ]?(?:and )?w\d+)*)")
+
+
+def plain(word):
+    """The comparison spelling: accents off, ligatures expanded, lowercase."""
+    return fold_ligatures(strip_accents(word)).lower()
+
+
+def lint_notes(doc):
+    """Every token a note cites exists and holds the form the note names.
+    The comparison ignores accents and ligatures but NOT i against j, so a
+    note left in the old orthography is caught too."""
+    errors = []
+    forms = {w["id"]: w["form"] for s in doc["segments"] for w in s.get("words") or []}
+    for m in NOTE_REF.finditer(doc.get("notes") or ""):
+        cited, tail = m.groups()
+        ids = re.findall(r"w\d+", tail)
+        missing = [i for i in ids if i not in forms]
+        if missing:
+            errors.append(f"notes: {cited} at {', '.join(missing)} — no such token")
+            continue
+        named = [plain(forms[i]) for i in ids]
+        if plain(cited) not in named:
+            errors.append(
+                f"notes: {cited} at {', '.join(ids)} — those tokens are "
+                f"{', '.join(forms[i] for i in ids)}"
+            )
+    return errors
+
+
 def lint_text(doc):
     errors = []
     words = [w for s in doc["segments"] for w in s.get("words") or []]
