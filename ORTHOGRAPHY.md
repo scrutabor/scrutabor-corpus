@@ -24,6 +24,15 @@ corpus must match what their eyes see.
    57 tokens under 27 forms were changed. Lemma keys were already i-form
    (rule 6), so the edition is now internally consistent as well.
 
+   Consonantal i is **not a syllable**, which matters for rule 4: it
+   stands between vowels (*allelú-ia*, *e-ius*), at the head of a word
+   before another vowel (*Ie-sus*, *iu-be*), and after the prefix of a
+   compound built on such a stem — *ad-iu-tó-ri-um* is ad + iuvo, five
+   syllables, not six. The compounds of *eo* are the trap: *á-bi-it* is
+   ab + iit and its i IS a vowel. Spelling alone cannot tell those two
+   apart, so both the prefixes and the stems are named as data in
+   `checks/normalize.py` rather than guessed.
+
 3. **æ / œ ligatures** as printed: *beátæ*, *sǽcula*.
 4. **Acute accents** mark the stressed syllable on words of three or more
    syllables; one- and two-syllable words are unaccented. Accents ARE

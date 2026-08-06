@@ -228,8 +228,9 @@ entries{ <lemma>: { head, pos, gender?, gender_pl?, decl?, conj?, analysis? } }
   coverage is checked both ways: every text lemma has an entry, every entry
   is used by at least one text.
 - `head`: the reader-facing dictionary head in **1962 liturgical orthography
-  with accents** (ORTHOGRAPHY.md applies to every component) — this is the
-  display headword promised for j-lemmas (Joánnes for lemma `Ioannes`).
+  with accents** (ORTHOGRAPHY.md applies to every component) — the lemma key
+  is bare and normalized, the head is what a reader sees (`Ioánnes` for the
+  lemma `Ioannes`, `maiéstas, maiestátis` for `maiestas`).
   Conventions: nouns give the genitive (`mater, matris`; abbreviated for
   1st/2nd declension: `culpa, -æ`); adjectives give the feminine/neuter
   endings (`beátus, -a, -um`; one-ending adjectives the genitive:

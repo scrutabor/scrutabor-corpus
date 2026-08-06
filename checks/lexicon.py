@@ -47,6 +47,15 @@ def _lint_head(lemma, head, errors):
         # same words and the same recorded reasons.
         if fold_ligatures(strip_accents(token)).lower() in SPELLING_EXEMPT:
             continue
+        # A head is read by the same readers as the text and must be spelled
+        # the same way. This rule is here because it was missing: eight heads
+        # sat in the j-form after the orthography was reversed, two of them
+        # half-converted (majéstas, maiestátis), and nothing complained.
+        if "j" in token.lower():
+            errors.append(
+                f"lexicon:{lemma}: head token {token!r} spells the consonant with j — "
+                "ORTHOGRAPHY.md prints i"
+            )
         n, acc = syllable_count(token), has_accent(token)
         n_marks = sum(1 for ch in token if ch in ACCENTED_VOWELS)
         if n >= 3 and not acc:
