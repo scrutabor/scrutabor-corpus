@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.9.0",
+  "id": "orationes.regina-caeli",
+  "title": "Regína cæli",
+  "category": "orationes",
+  "section": "orationes-communes",
+  "variant": "devotional",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The Marian antiphon of Paschaltide, which stands in place of the Salve Regína from Compline of Holy Saturday to the Saturday after Pentecost, with the versicle that follows it. Four lines, each sealed with an allelúia, and two more in the versicle: the word is Hebrew, indeclinable, and this edition prints it with i where witness do prints j, by the house rule in ORTHOGRAPHY.md. The syntax turns on one construction a reader will not guess: DEUM at w017 is the object of ORA at w014, because Latin oro governs the one entreated in the accusative. The line therefore holds both a person prayed TO and, in pro + ablative, the people prayed FOR — it asks God on our behalf, and does not ask for God. QUEM at w006 has no antecedent in the text at all; the antiphon says who it is only by what he did, and both witnesses leave it so. No speaker is recorded: the Marian antiphon file marks the versicle v./R., and outside the Mass this edition reads those as the shape of a versicle rather than as officers (SCHEMA.md).",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence, and six adjudicated variants which are all one word — the Hebrew acclamation, which witness do spells with j at every occurrence.",
+    "witnesses": "witnesses/orationes.regina-caeli/",
+    "apparatus": "witnesses/orationes.regina-caeli/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Regína", "lemma": "regina", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w002", "form": "cæli", "post": ",", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w003", "form": "lætáre", "post": ",", "lemma": "laetor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 1 } },
+        { "id": "w004", "form": "allelúia", "post": ";", "lemma": "alleluia", "morph": { "pos": "intj" } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w005", "form": "Quia", "lemma": "quia", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w007", "form": "meruísti", "lemma": "mereo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 2 } },
+        { "id": "w008", "form": "portáre", "post": ",", "lemma": "porto", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 } },
+        { "id": "w009", "form": "allelúia", "post": ",", "lemma": "alleluia", "morph": { "pos": "intj" } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "words": [
+        { "id": "w010", "form": "Resurréxit", "post": ",", "lemma": "resurgo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w011", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
+        { "id": "w012", "form": "dixit", "post": ",", "lemma": "dico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w013", "form": "allelúia", "post": ":", "lemma": "alleluia", "morph": { "pos": "intj" } }
+      ]
+    },
+    {
+      "id": "s04",
+      "type": "verse",
+      "words": [
+        { "id": "w014", "form": "Ora", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w015", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w016", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
+        { "id": "w017", "form": "Deum", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w018", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
+      ]
+    },
+    {
+      "id": "s05",
+      "type": "verse",
+      "words": [
+        { "id": "w019", "form": "Gaude", "lemma": "gaudeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w021", "form": "lætáre", "post": ",", "lemma": "laetor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 1 } },
+        { "id": "w022", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w023", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w024", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
+      ]
+    },
+    {
+      "id": "s06",
+      "type": "verse",
+      "words": [
+        { "id": "w025", "form": "Quia", "lemma": "quia", "morph": { "pos": "conj" } },
+        { "id": "w026", "form": "surréxit", "lemma": "surgo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w027", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w028", "form": "vere", "post": ",", "lemma": "vere", "morph": { "pos": "adv" } },
+        { "id": "w029", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
+      ]
+    }
+  ]
+}

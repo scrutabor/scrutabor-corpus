@@ -48,3 +48,8 @@ no_implicit_optional = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# Without this only `python -m pytest` works, because that form puts the
+# working directory on sys.path and a bare `pytest` does not — so the tests
+# import `checks` in CI and fail to import it for anyone who types the
+# shorter command.
+pythonpath = ["."]
