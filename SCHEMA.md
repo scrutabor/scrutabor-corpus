@@ -83,7 +83,16 @@ analysis_defaults, segments[]
   (silently), `cantus` (sung). Both belong to verse segments only: a
   rubric is the edition's framing, not anyone's words.
   Both are READ from the sources by `checks/attribute.py`, never
-  remembered. Since 2026-08-06 the voice comes chiefly from the rite's own
+  remembered. The speaker is read from the witnesses' markers — which come
+  in both cases, the Ordo printing the priest's own Confiteor as a
+  lowercase `v.` — aligned to the text IN ORDER, because a dialogue that
+  repeats itself (the Kyrie's nine invocations of two phrases) cannot be
+  read by content alone. Where a passage of the Mass carries no marker at
+  all, the speaker is the celebrant: the Ordo marks every other voice, and
+  the Ritus servandus names sacerdos as the actor throughout. Outside the
+  Mass no such reasoning holds, so a devotional prayer takes only what an
+  "all" marker gives it.
+  Since 2026-08-06 the voice comes chiefly from the rite's own
   law — **Rubricae generales IX, n. 511**, which lists what is said clara
   voce at low Mass and closes *"Cetera dicuntur secreto"*, transcribed in
   `witnesses/raw/mr-rubricae-generales-ix.txt`. That is what the rubrics

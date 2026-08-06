@@ -27,6 +27,7 @@ It never guesses: a segment it cannot source stays empty, and the check
 in run_checks reports the coverage so the gap is visible.
 """
 
+import difflib
 import json
 import re
 import sys
@@ -35,7 +36,19 @@ from pathlib import Path
 
 CORPUS = Path(__file__).resolve().parent.parent
 
+# The archived sources mark the speaker: S. sacerdos, M. minister, V. and
+# R. a versicle and its response, O. omnes. The markers come in both cases
+# — the Ordo prints the priest's own Confiteor as a lowercase "v." — and
+# lowercase is by far the commonest, so reading only capitals threw away
+# 140 marked lines and left the most attributable text in the book blank.
 MARKERS = {'S': 'sacerdos', 'M': 'minister', 'V': 'sacerdos', 'R': 'minister', 'O': 'omnes'}
+
+# Outside the Mass only "all" means anything. V. and R. mark priest and
+# answer INSIDE the rite; in a prayer book they are the shape of a
+# versicle, and S. and M. name officers a devotional prayer does not have
+# — the Gloria Patri said on its own has no server saying its second half.
+# What a prayer book can tell us is that a prayer is said together.
+SPEAKER_MARKERS_ONLY = {'O'}
 
 # Rubric phrases that set the voice, longest first so that "elata
 # aliquantulum voce" is not read as the plain "voce".
@@ -134,6 +147,19 @@ VOICE_RULINGS: dict[str, tuple[str, str]] = {
 
 # Segments whose voice differs from their text's, and why. These are the
 # places the law names a few WORDS rather than a prayer.
+# Answers the matcher cannot reach, because our text and the source line
+# are not identical strings: the Suscipiat carries a "(vel meis)" variant
+# in the source, and the two Deo gratias and the Gospel response live in
+# files the Ordo calls in by reference. Each is marked in a witness — the
+# Divinum Officium Ordo with R. and M., the hand missal with its own S:
+# for the server — so these are readings, not guesses.
+SPEAKER_RULINGS: dict[str, tuple[str, str]] = {
+    'ordinarium.orate-fratres.s04': ('minister', 'do marks it M. (the line carries a "vel meis" variant)'),
+    'ordinarium.ite-missa-est.s06': ('minister', 'do marks the answer R. Deo grátias'),
+    'ordinarium.evangelium-ultimum.s06': ('minister', 'handmissal-eo marks it S:, the answer to the announcement'),
+    'ordinarium.evangelium-ultimum.s15': ('minister', 'do marks the answer R. Deo grátias'),
+}
+
 VOICE_SEGMENT_RULINGS: dict[str, tuple[str, str]] = {
     # the conclusions the people answer, inside otherwise silent prayers
     'ordinarium.libera-nos.s12': (CLARA, 'RG 511 i — Per omnia saecula saeculorum'),
@@ -207,7 +233,7 @@ def witness_ranges(text_id: str) -> list[tuple[Path, int, int]]:
     return out
 
 
-def marked_lines(text_id: str) -> list[tuple[str, str]]:
+def marked_lines(text_id: str, mass: bool = True) -> list[tuple[str, str]]:
     """(speaker, flattened text) for the marked lines of this text's own
     span in the archived sources; falls back to every archive when a
     witness records no line range."""
@@ -223,9 +249,12 @@ def marked_lines(text_id: str) -> list[tuple[str, str]]:
     out = []
     for lines in files:
         for line in lines:
-            m = re.match(r'^([SMVRO])\.\s+(.*)$', line.strip())
+            m = re.match(r'^([SMVROsmvro])\.\s+(.*)$', line.strip())
             if m and m.group(2).strip():
-                out.append((MARKERS[m.group(1)], flatten(m.group(2))))
+                marker = m.group(1).upper()
+                if not mass and marker not in SPEAKER_MARKERS_ONLY:
+                    continue
+                out.append((MARKERS[marker], flatten(m.group(2))))
     return out
 
 
@@ -241,8 +270,33 @@ def voice_of(doc, index: int) -> str | None:
     return None
 
 
+def align_speakers(doc, lines) -> dict[str, str]:
+    """Match the text's verse segments against the source's marked lines IN
+    ORDER.
+
+    Matching on content alone cannot read a dialogue that repeats itself:
+    the Kyrie is nine invocations of two phrases, said alternately by
+    priest and server, so "Kýrie, eléison" stands under both markers and a
+    content match rightly refuses to choose. The order decides what the
+    words cannot, and refusing to use it left the most obviously
+    attributable text in the Mass unattributed."""
+    seg_ids, seg_keys = [], []
+    for seg in doc['segments']:
+        if seg.get('type') != 'verse' or not seg.get('words'):
+            continue
+        seg_ids.append(seg['id'])
+        seg_keys.append(flatten(''.join(w['form'] for w in seg['words'])))
+    line_keys = [line for _, line in lines]
+    out: dict[str, str] = {}
+    for a, b, n in difflib.SequenceMatcher(None, seg_keys, line_keys).get_matching_blocks():
+        for i in range(n):
+            out[seg_ids[a + i]] = lines[b + i][0]
+    return out
+
+
 def propose(doc, disagreements: list[str] | None = None) -> dict[str, dict]:
-    lines = marked_lines(doc['id'])
+    lines = marked_lines(doc['id'], mass=doc['id'].startswith('ordinarium.'))
+    positional = align_speakers(doc, lines)
     ruled = VOICE_RULINGS.get(doc['id'])
     out: dict[str, dict] = {}
     for i, seg in enumerate(doc['segments']):
@@ -252,10 +306,30 @@ def propose(doc, disagreements: list[str] | None = None) -> dict[str, dict]:
         if not words:
             continue
         key = flatten(''.join(w['form'] for w in words))
-        hits = {speaker for speaker, line in lines if key and (key == line or key in line)}
         proposal = {}
-        if len(hits) == 1:
-            proposal['speaker'] = hits.pop()
+        ref_s = f"{doc['id']}.{seg['id']}"
+        if ref_s in SPEAKER_RULINGS:
+            proposal['speaker'] = SPEAKER_RULINGS[ref_s][0]
+        elif seg['id'] in positional:
+            proposal['speaker'] = positional[seg['id']]
+        else:
+            hits = {speaker for speaker, line in lines if key and (key == line or key in line)}
+            if len(hits) == 1:
+                proposal['speaker'] = hits.pop()
+            elif doc['id'].startswith('ordinarium.'):
+                # The Ordo prints the CELEBRANT's text unmarked and gives
+                # every other voice a marker — S. and M., V. and R., O. for
+                # all — as the archived source shows: the ministers'
+                # Confiteor is M., the Suscipiat is M., the responses are R.
+                # So unmarked text in the Mass is the priest's, and the
+                # Ritus servandus agrees, naming sacerdos or celebrans as
+                # the actor throughout its own prescriptions.
+                #
+                # A passage with no markers at all is not a passage this
+                # rule cannot see — it is a passage with no other voice in
+                # it, which is the strongest case of all: Aufer a nobis,
+                # the Lavabo, Quid retribuam are the priest alone.
+                proposal['speaker'] = 'sacerdos'
 
         ref = f"{doc['id']}.{seg['id']}"
         # The law first, then what the text's own rubrics say. Where the two
