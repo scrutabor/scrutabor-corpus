@@ -342,6 +342,35 @@ def lint_gloss(doc, text_doc):
 
     banned = BANNED_TERMS.get(lang, [])
 
+    def check_narrative(where, prose):
+        """A narrative sentence names its subject rather than opening with a
+        pronoun. Two reasons, and the second decides it: a prayer book's
+        rubrics say "the priest", not "he"; and a reader lands in the MIDDLE
+        of this book constantly — every part is its own block and the Ordo
+        jumps between them — so a sentence beginning "He goes on silently"
+        has no antecedent anywhere in view.
+
+        The NARRATIVE only. It was written over every prose field at first
+        and caught the Last Gospel — "He was not the light, but was to bear
+        witness of the light" — which is the Gospel talking about John, in a
+        translation, where the pronoun is the text's own. A rule about our
+        register has no business inside a rendering of someone else's words.
+
+        English only: Polish carries the person in the verb and never states
+        a subject pronoun here at all.
+        """
+        if lang != "en":
+            return
+        for sentence in re.split(r"(?<=[.;])\s+", prose):
+            if re.match(r"^\W*(He|His)\b", sentence) or re.match(
+                r"^\W*(Then|Now|Meanwhile|Here|Next|Again|Afterwards?)\b[^.]{0,24}\bhe\b",
+                sentence,
+            ):
+                errors.append(
+                    f"{lang}:{where}: narrative opens with a pronoun "
+                    f"({sentence[:40]!r}) — name the priest"
+                )
+
     def check_prose(where, prose):
         for pat in banned:
             # IGNORECASE: a capitalized sentence-initial variant is the same
@@ -383,6 +412,7 @@ def lint_gloss(doc, text_doc):
             )
     for sid, seg in doc.get("segments", {}).items():
         check_prose(sid, (seg.get("translation", "") or "") + " " + (seg.get("narrative", "") or ""))
+        check_narrative(sid, seg.get("narrative", "") or "")
         if sid not in seg_types:
             errors.append(f"{lang}: segment {sid} not in text document")
         elif "translation" in seg and seg_types[sid] != "verse":
