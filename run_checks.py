@@ -149,7 +149,14 @@ if __name__ == "__main__":
         rc = lexicon_suite(used)
         for tid in ids:
             rc |= main(tid)
-        print(f"SUITE {'OK' if rc == 0 else 'FAIL'} texts={len(ids)}")
+        from checks.disputed import collect
+
+        found = collect()
+        n_tokens = sum(len(v) for v in found.values())
+        print(
+            f"SUITE {'OK' if rc == 0 else 'FAIL'} texts={len(ids)} "
+            f"disputed={n_tokens}/{len(found)} forms"
+        )
         sys.exit(rc)
     # Single-text mode still runs the global lexicon shape checks (orphan
     # detection needs every text, so it is --all only).
