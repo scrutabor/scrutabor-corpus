@@ -27,6 +27,7 @@ from checks.lint import (
     lint_analysis,
     lint_gloss,
     lint_notes,
+    lint_rubrics,
     lint_parity,
     lint_text,
 )
@@ -84,6 +85,7 @@ def main(text_id: str) -> int:
     all_errors += text_errors
     all_errors += lint_analysis(doc)
     all_errors += lint_notes(doc)
+    all_errors += lint_rubrics(doc)
     voice_errors, attributed, n_verses = check_voices(doc)
     all_errors += voice_errors
     all_errors += duplicate_keys(text_path)

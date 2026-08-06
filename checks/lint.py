@@ -239,6 +239,23 @@ def plain(word):
     return fold_ligatures(strip_accents(word)).lower()
 
 
+def lint_rubrics(doc):
+    """Rubric Latin obeys the same orthography as the prayers it stands
+    between. It is not tokenized, so the word-level spelling rule never sees
+    it — and 43 j's sat in the rubrics for a day after the texts were
+    reversed, iunctis manibus printed junctis two lines above Iesu."""
+    errors = []
+    for seg in doc["segments"]:
+        if seg.get("type") != "rubric":
+            continue
+        for word in re.findall(r"[^\W\d_]+", seg.get("text") or ""):
+            if "j" in word.lower():
+                errors.append(
+                    f"{seg['id']}: rubric spells {word!r} with j — ORTHOGRAPHY.md prints i"
+                )
+    return errors
+
+
 def lint_notes(doc):
     """Every token a note cites exists and holds the form the note names.
     The comparison ignores accents and ligatures but NOT i against j, so a
