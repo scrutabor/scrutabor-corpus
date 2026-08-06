@@ -8,8 +8,23 @@ corpus must match what their eyes see.
 
 1. **u/v distinguished**: *vir*, *servus* — never the classical scholarly
    u-style (*uir*, *seruus*).
-2. **j for consonantal i**: *Joánni*, *ejus*, *hujus*, *Jesu* — as the
-   1962 books print, not the modern Vatican i-style (*Ioanni*, *eius*).
+2. **j for consonantal i**: *Joánni*, *ejus*, *hujus*, *Jesu*.
+   **The reason first given for this rule was wrong, and is corrected here
+   (2026-08-06).** It said "as the 1962 books print" — but the 1962
+   typical edition, the Missale Romanum itself, prints the I-STYLE
+   throughout: *Iesu*, *Ioánnem*, *iube*, *maiestátis*, *iunctis*, *eius*,
+   read from printed pages 302, 306, 307, 309 and 327 of that book. The
+   j-style is what the mid-century HAND MISSALS print — witness
+   handmissal-eo does, and so does Divinum Officium — which is a different
+   claim and a weaker one.
+   So the rule stands on what it can stand on: this is the spelling a
+   reader's own missal shows, and j marks the consonantal value, which an
+   edition that also teaches pronunciation has reason to keep visible.
+   It is 57 tokens of 2799 under 27 forms — small enough to reverse
+   deliberately, and OPEN for the owner and the expert reviewer to
+   reverse, since the book this edition edits spells them the other way.
+   Note that LEMMA keys are already i-form (rule 6), so the two
+   conventions already coexist here by design.
 3. **æ / œ ligatures** as printed: *beátæ*, *sǽcula*.
 4. **Acute accents** mark the stressed syllable on words of three or more
    syllables; one- and two-syllable words are unaccented. Accents ARE
