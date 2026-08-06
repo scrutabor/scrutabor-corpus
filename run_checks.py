@@ -124,7 +124,9 @@ def main(text_id: str) -> int:
     ) + (f"speakers={attributed}/{n_verses} " if n_verses else "")
     subject = (
         f"text={text_id} words={n_words} langs={','.join(langs) or '-'} "
-        f"witnesses={coll_stats['witnesses']} variants={coll_stats['variants_adjudicated']} "
+        f"witnesses={coll_stats['witnesses']}"
+        + (f"+{coll_stats['partial']}partial" if coll_stats.get("partial") else "")
+        + f" variants={coll_stats['variants_adjudicated']} "
         f"{corrigenda}lemmata={len(lemmata)}"
     )
     if all_errors:

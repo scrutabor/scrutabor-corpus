@@ -125,9 +125,40 @@ def collate(doc, witness_dir: Path):
     n_corrigenda = 0
     n_orthographic = 0
     n_recensions = 0
+    n_partial = 0
     for wf in witness_files:
         meta, text = load_witness(wf)
         wid = meta.get("witness", wf.stem)
+        # A witness may testify to PART of a text and nothing else. The
+        # Clementine Vulgate is the authority for the Gospel a Mass reads
+        # and says nothing about the versicles around it; a printed Ordo
+        # may carry the prayers and not the psalm. Coverage is DECLARED —
+        # `# covers: w015-w187` — never inferred from where the words stop
+        # matching, which is how a partial witness would otherwise be used
+        # to explain away a divergence.
+        toks_w, ours_raw_w, ours_sub_w = toks, ours_raw, ours_sub
+        covers = meta.get("covers", "").strip()
+        if covers:
+            ids = [i for i, _ in toks]
+            m = re.fullmatch(r"(w\d+)\s*-\s*(w\d+)", covers)
+            if not m:
+                errors.append(f"{wid}: malformed covers {covers!r} — write 'wNNN-wMMM'")
+                continue
+            first, last = m.groups()
+            if first not in ids or last not in ids:
+                errors.append(f"{wid}: covers {covers!r} names a token this text does not have")
+                continue
+            i0, i1 = ids.index(first), ids.index(last)
+            if i1 < i0:
+                errors.append(f"{wid}: covers {covers!r} runs backwards")
+                continue
+            if (i0, i1) == (0, len(toks) - 1):
+                errors.append(f"{wid}: covers the whole text — drop the declaration")
+                continue
+            toks_w = toks[i0 : i1 + 1]
+            ours_raw_w = [t for _, t in toks_w]
+            ours_sub_w = substantive(" ".join(ours_raw_w)).split()
+            n_partial += 1
         # Declared printer's slips: each must actually be in the file, and
         # each is applied openly before anything is compared.
         for printed, emended, reason in meta["corrigenda"]:
@@ -177,7 +208,7 @@ def collate(doc, witness_dir: Path):
                     "— stale declaration, or the transcription already dropped it"
                 )
                 continue
-            if any(bare(t) == word_cmp for t in ours_raw):
+            if any(bare(t) == word_cmp for t in ours_raw_w):
                 errors.append(
                     f"{wid}: recension note declares {word!r}, but this edition prints it too "
                     "— that is a divergence to adjudicate, not a recension difference"
@@ -190,9 +221,9 @@ def collate(doc, witness_dir: Path):
         fold_xs = meta.get("fold-xs", "").strip().lower() == "true"
         folded = fold_ji or fold_xs
         ours_cmp = (
-            substantive(" ".join(ours_raw), fold_ji=fold_ji, fold_xs=fold_xs).split()
+            substantive(" ".join(ours_raw_w), fold_ji=fold_ji, fold_xs=fold_xs).split()
             if folded
-            else ours_sub
+            else ours_sub_w
         )
         wit_sub = substantive(text, fold_ji=fold_ji, fold_xs=fold_xs).split()
         if wit_sub != ours_cmp:
@@ -211,7 +242,7 @@ def collate(doc, witness_dir: Path):
                 # ruled which it prints. Unlike a corrigendum, neither witness
                 # is wrong; unlike an accidental, the letters differ. It passes
                 # only with a ruling that quotes both readings.
-                word_id, ours_tok = toks[i] if i < len(toks) else ("?", "")
+                word_id, ours_tok = toks_w[i] if i < len(toks_w) else ("?", "")
                 entry = adjudicated.get((word_id, wid))
                 if (
                     entry
@@ -239,13 +270,13 @@ def collate(doc, witness_dir: Path):
             # accidental comparison against it would be noise.
             continue
         wit_raw = text.split()
-        if len(wit_raw) != len(ours_raw):
+        if len(wit_raw) != len(ours_raw_w):
             errors.append(
                 f"{wid}: raw token count mismatch despite substantive match "
-                f"(ours={len(ours_raw)} witness={len(wit_raw)}) — punctuation split a token?"
+                f"(ours={len(ours_raw_w)} witness={len(wit_raw)}) — punctuation split a token?"
             )
             continue
-        for (word_id, ours_tok), wit_tok in zip(toks, wit_raw):
+        for (word_id, ours_tok), wit_tok in zip(toks_w, wit_raw):
             if ours_tok == wit_tok or (word_id, wid) in used:
                 continue  # identical, or already ruled as an orthographic variant
             entry = adjudicated.get((word_id, wid))
@@ -263,8 +294,19 @@ def collate(doc, witness_dir: Path):
         if entry["witnesses"][wid] != entry["ours"] and (word_id, wid) not in used:
             warnings.append(f"apparatus entry {word_id}/{wid} did not match any observed variant — stale?")
 
+    # A partial witness ADDS evidence; it can never be the evidence. Every
+    # text still has to stand on two witnesses that cover all of it, or the
+    # part outside the partial witness's range would rest on one voice
+    # while the summary line said two.
+    if witness_files and len(witness_files) - n_partial < 2:
+        errors.append(
+            f"only {len(witness_files) - n_partial} full witness(es) for this text "
+            f"({n_partial} partial) — a partial witness cannot make up the second voice"
+        )
+
     stats = {
-        "witnesses": len(witness_files),
+        "witnesses": len(witness_files) - n_partial,
+        "partial": n_partial,
         "words": len(toks),
         "variants_adjudicated": n_variants,
         "corrigenda": n_corrigenda,
