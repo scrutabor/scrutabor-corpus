@@ -117,6 +117,14 @@ PROPER_LEMMAS = {
 # j-rule that no longer exists.
 SPELLING_EXEMPT: dict[str, str] = {}
 
+# Who a narrative may be about. Naming one of these in the opening sentence
+# is what lets a reader who lands mid-book know whose actions they are
+# reading — which they do constantly, since every part is its own block.
+NAMED_SUBJECT = re.compile(
+    r"\b(priest|celebrant|server|servers|minister|ministers|deacon|people|faithful|choir|schola|Church|congregation)\b",
+    re.IGNORECASE,
+)
+
 # Who says a segment, and how loudly (SCHEMA.md, since 0.9.0). Both are
 # READ from the sources, not remembered: the speaker from the witnesses'
 # own markers (S. sacerdos, M. minister, V./R. versicle and response), the
@@ -361,7 +369,19 @@ def lint_gloss(doc, text_doc):
         """
         if lang != "en":
             return
-        for sentence in re.split(r"(?<=[.;])\s+", prose):
+        # The FIRST sentence has to name whoever it is about. Opening with
+        # the pronoun is the obvious case ("He goes on silently"), but a
+        # participle in front of it hides the same fault — "Bowing a little,
+        # he takes both halves of the Host" tells a reader who has just
+        # landed on this block exactly nothing about who is bowing.
+        sentences = re.split(r"(?<=[.;])\s+", prose)
+        first = sentences[0] if sentences else ""
+        if re.search(r"\b(he|his|him)\b", first, re.IGNORECASE) and not NAMED_SUBJECT.search(first):
+            errors.append(
+                f"{lang}:{where}: narrative opens on a pronoun with no named subject "
+                f"({first[:48]!r}) — name the priest"
+            )
+        for sentence in sentences:
             if re.match(r"^\W*(He|His)\b", sentence) or re.match(
                 r"^\W*(Then|Now|Meanwhile|Here|Next|Again|Afterwards?)\b[^.]{0,24}\bhe\b",
                 sentence,
