@@ -2,9 +2,8 @@
 accent rules, cross-references, quoted forms, terminology, layer parity."""
 
 import json
-from pathlib import Path
-
 import re
+from pathlib import Path
 
 from .normalize import ACCENTED_VOWELS, fold_ligatures, has_accent, strip_accents, syllable_count
 
@@ -301,7 +300,9 @@ def lint_text(doc):
             errors.append(f"{wid}: charset violation in form {f!r}")
         lemma = w.get("lemma", "")
         if lemma and lemma[0].isupper() and lemma not in PROPER_LEMMAS:
-            errors.append(f"{wid}: lemma {lemma!r} capitalized but not in proper-name list (SCHEMA.md)")
+            errors.append(
+                f"{wid}: lemma {lemma!r} capitalized but not in proper-name list (SCHEMA.md)"
+            )
         for k, v in w["morph"].items():
             if k in MORPH_ENUMS and v not in MORPH_ENUMS[k]:
                 errors.append(f"{wid}: morph.{k}={v!r} not in enum")
@@ -396,12 +397,12 @@ def lint_gloss(doc, text_doc):
             # IGNORECASE: a capitalized sentence-initial variant is the same
             # banned term (proven necessary by mutation, 2026-08-03).
             if re.search(pat, prose, re.IGNORECASE):
-                errors.append(f"{lang}:{where}: banned terminology/typography {pat!r} (TERMINOLOGY.md)")
+                errors.append(
+                    f"{lang}:{where}: banned terminology/typography {pat!r} (TERMINOLOGY.md)"
+                )
         for ch, name in LAYOUT_CHARS.items():
             if ch in prose:
-                errors.append(
-                    f"{lang}:{where}: {name} in prose — layout belongs to the reader app"
-                )
+                errors.append(f"{lang}:{where}: {name} in prose — layout belongs to the reader app")
 
     for wid, entry in gw.items():
         if not entry.get("gloss"):
@@ -427,11 +428,11 @@ def lint_gloss(doc, text_doc):
         # leaking to readers.
         remainder = QUOTE_REF_RE.sub("", fn)
         for bare in re.finditer(r"\bw\d{3}\b", remainder):
-            errors.append(
-                f"{lang}:{wid}: bare word-id {bare.group(0)!r} in reader-facing prose"
-            )
+            errors.append(f"{lang}:{wid}: bare word-id {bare.group(0)!r} in reader-facing prose")
     for sid, seg in doc.get("segments", {}).items():
-        check_prose(sid, (seg.get("translation", "") or "") + " " + (seg.get("narrative", "") or ""))
+        check_prose(
+            sid, (seg.get("translation", "") or "") + " " + (seg.get("narrative", "") or "")
+        )
         check_narrative(sid, seg.get("narrative", "") or "")
         if sid not in seg_types:
             errors.append(f"{lang}: segment {sid} not in text document")

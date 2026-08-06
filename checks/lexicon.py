@@ -9,7 +9,16 @@ import re
 from .lint import BANNED_TERMS, MORPH_ENUMS, SPELLING_EXEMPT
 from .normalize import ACCENTED_VOWELS, fold_ligatures, has_accent, strip_accents, syllable_count
 
-LEMMATA_ENTRY_KEYS = {"head", "pos", "gender", "gender_alt", "gender_pl", "decl", "conj", "analysis"}
+LEMMATA_ENTRY_KEYS = {
+    "head",
+    "pos",
+    "gender",
+    "gender_alt",
+    "gender_pl",
+    "decl",
+    "conj",
+    "analysis",
+}
 SENSE_ENTRY_KEYS = {"senses", "note", "derivatives", "analysis"}
 
 # A head is dictionary punctuation plus word tokens; ending fragments ("-æ",
@@ -61,7 +70,9 @@ def _lint_head(lemma, head, errors):
         if n >= 3 and not acc:
             errors.append(f"lexicon:{lemma}: head token {token!r} has {n} syllables but no accent")
         if n <= 2 and acc:
-            errors.append(f"lexicon:{lemma}: head token {token!r} has {n} syllables but carries an accent")
+            errors.append(
+                f"lexicon:{lemma}: head token {token!r} has {n} syllables but carries an accent"
+            )
         if n_marks > 1:
             errors.append(f"lexicon:{lemma}: head token {token!r} carries {n_marks} accents")
 
@@ -102,20 +113,24 @@ def lint_senses(lang, entries, lemmata):
         if not senses or not all(isinstance(s, str) and s for s in senses):
             errors.append(f"lexicon:{lang}:{lemma}: senses must be 1+ nonempty strings")
         elif len(senses) > 4:
-            errors.append(f"lexicon:{lang}:{lemma}: {len(senses)} senses — SCHEMA.md allows at most 4")
+            errors.append(
+                f"lexicon:{lang}:{lemma}: {len(senses)} senses — SCHEMA.md allows at most 4"
+            )
         derivs = e.get("derivatives")
         if derivs is not None:
             if not derivs or not all(isinstance(d, str) and d for d in derivs):
                 errors.append(f"lexicon:{lang}:{lemma}: derivatives must be 1+ nonempty strings")
             elif len(derivs) > 6:
                 errors.append(
-                    f"lexicon:{lang}:{lemma}: {len(derivs)} derivatives — SCHEMA.md allows at most 6"
+                    f"lexicon:{lang}:{lemma}: {len(derivs)} derivatives — "
+                    "SCHEMA.md allows at most 6"
                 )
         prose = " ".join(senses or []) + " " + " ".join(derivs or []) + " " + e.get("note", "")
         for pat in banned:
             if re.search(pat, prose, re.IGNORECASE):
                 errors.append(
-                    f"lexicon:{lang}:{lemma}: banned terminology/typography {pat!r} (TERMINOLOGY.md)"
+                    f"lexicon:{lang}:{lemma}: banned terminology/typography "
+                    f"{pat!r} (TERMINOLOGY.md)"
                 )
     missing = sorted(set(lemmata) - set(entries))
     extra = sorted(set(entries) - set(lemmata))
@@ -165,9 +180,13 @@ def check_text_against_lexicon(text_doc, lemmata):
                         f"{tid}:{wid}: morph.gender={morph['gender']!r} "
                         f"but lexicon says {sorted(allowed)!r}"
                     )
-            if morph["pos"] == "verb":
-                if "conj" in morph and "conj" in e and morph["conj"] != e["conj"]:
-                    errors.append(
-                        f"{tid}:{wid}: morph.conj={morph['conj']} but lexicon says {e['conj']}"
-                    )
+            if (
+                morph["pos"] == "verb"
+                and "conj" in morph
+                and "conj" in e
+                and morph["conj"] != e["conj"]
+            ):
+                errors.append(
+                    f"{tid}:{wid}: morph.conj={morph['conj']} but lexicon says {e['conj']}"
+                )
     return errors

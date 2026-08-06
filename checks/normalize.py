@@ -60,7 +60,9 @@ def after_prefix(word: str, at: int) -> bool:
     """True when everything before position `at` is a prefix and what
     follows is a stem that begins with the consonant (ad|iutórium)."""
     head = fold_ligatures(strip_accents(word[:at]))
-    return head in GLIDE_PREFIXES and fold_ligatures(strip_accents(word[at:])).startswith(GLIDE_STEMS)
+    return head in GLIDE_PREFIXES and fold_ligatures(strip_accents(word[at:])).startswith(
+        GLIDE_STEMS
+    )
 
 
 def syllable_count(form: str) -> int:
@@ -90,7 +92,11 @@ def syllable_count(form: str) -> int:
                 prev = ch
                 prev_was_vowel = False
                 continue
-            if ch in ("i", "í") and nxt in VOWELS and (prev_was_vowel or prev == "" or after_prefix(s, i)):
+            if (
+                ch in ("i", "í")
+                and nxt in VOWELS
+                and (prev_was_vowel or prev == "" or after_prefix(s, i))
+            ):
                 # Consonantal i: a glide, not a nucleus. Between vowels
                 # (allelúia, eius), at the head of a word before another
                 # vowel (Iesus, Ioánnes, iube) — which is where nearly all

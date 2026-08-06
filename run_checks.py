@@ -11,8 +11,6 @@ import json
 import sys
 from pathlib import Path
 
-sys.stdout.reconfigure(encoding="utf-8")
-
 from checks.collate import collate
 from checks.lexicon import (
     check_orphans,
@@ -27,10 +25,15 @@ from checks.lint import (
     lint_analysis,
     lint_gloss,
     lint_notes,
-    lint_rubrics,
     lint_parity,
+    lint_rubrics,
     lint_text,
 )
+
+# Before anything is written, not before anything is imported: the corpus
+# prints Latin and Polish and the default encoding of a piped stdout is not
+# always UTF-8.
+sys.stdout.reconfigure(encoding="utf-8")  # type: ignore[union-attr]
 
 CORPUS = Path(__file__).resolve().parent
 
@@ -38,10 +41,12 @@ CORPUS = Path(__file__).resolve().parent
 def check_schema_versions() -> list[str]:
     """SCHEMA.md: schema_version is corpus-wide — every document carries the
     same number. Reads every document; zero documents is itself a failure."""
-    versions = {}
-    for path in sorted(CORPUS.glob("texts/*/*.json")) + sorted(
-        CORPUS.glob("glosses/*/*.json")
-    ) + sorted(CORPUS.glob("lexicon/*.json")):
+    versions: dict[str, list[str]] = {}
+    for path in (
+        sorted(CORPUS.glob("texts/*/*.json"))
+        + sorted(CORPUS.glob("glosses/*/*.json"))
+        + sorted(CORPUS.glob("lexicon/*.json"))
+    ):
         doc = json.loads(path.read_text(encoding="utf-8"))
         versions.setdefault(str(doc.get("schema_version")), []).append(
             str(path.relative_to(CORPUS))
@@ -116,12 +121,11 @@ def main(text_id: str) -> int:
         print(f"ERROR: {e}")
 
     corrigenda = (
-        f"corrigenda={coll_stats['corrigenda']} " if coll_stats.get("corrigenda") else ""
-    ) + (
-        f"orthographic={coll_stats['orthographic']} " if coll_stats.get("orthographic") else ""
-    ) + (
-        f"recensions={coll_stats['recensions']} " if coll_stats.get("recensions") else ""
-    ) + (f"speakers={attributed}/{n_verses} " if n_verses else "")
+        (f"corrigenda={coll_stats['corrigenda']} " if coll_stats.get("corrigenda") else "")
+        + (f"orthographic={coll_stats['orthographic']} " if coll_stats.get("orthographic") else "")
+        + (f"recensions={coll_stats['recensions']} " if coll_stats.get("recensions") else "")
+        + (f"speakers={attributed}/{n_verses} " if n_verses else "")
+    )
     subject = (
         f"text={text_id} words={n_words} langs={','.join(langs) or '-'} "
         f"witnesses={coll_stats['witnesses']}"
@@ -155,7 +159,9 @@ if __name__ == "__main__":
         used = set()
         for tid in ids:
             category, name = tid.split(".", 1)
-            tdoc = json.loads((CORPUS / "texts" / category / f"{name}.json").read_text(encoding="utf-8"))
+            tdoc = json.loads(
+                (CORPUS / "texts" / category / f"{name}.json").read_text(encoding="utf-8")
+            )
             for s in tdoc["segments"]:
                 for w in s.get("words") or []:
                     used.add(w["lemma"])

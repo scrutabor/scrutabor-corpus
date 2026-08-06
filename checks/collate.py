@@ -50,12 +50,35 @@ checker."""
 import json
 import re
 from pathlib import Path
+from typing import Any
 
 from .normalize import substantive
 
 
-def load_witness(path: Path):
-    meta, lines, corrigenda, recensions = {}, [], [], []
+def _bare(token: str) -> str:
+    """Compare the way the collation compares — accents, case and
+    punctuation folded — or a declaration fails to match the very page it
+    describes (María against Maria) and the check fires for the wrong
+    reason."""
+    return substantive(token).strip()
+
+
+def _emend(token: str, printed: str, emended: str) -> str:
+    """One corrigendum applied to one token. The declared reading is the
+    WORD; the token may carry the page's punctuation, which the emendation
+    leaves alone."""
+    body = token.rstrip(",.:;?!")
+    tail = token[len(body) :]
+    return emended + tail if body == printed else token
+
+
+def load_witness(path: Path) -> tuple[dict[str, Any], str]:
+    # The header is mostly `key: value` strings, but two keys are parsed into
+    # lists of tuples before they go in — hence Any rather than str.
+    meta: dict[str, Any] = {}
+    lines: list[str] = []
+    corrigenda: list[tuple[str, str, str]] = []
+    recensions: list[tuple[str, str]] = []
     # Header values wrap: a `#` line that does not open a new `key:` is a
     # continuation of the one above. Reading them line by line instead
     # truncates every reason at its first line break.
@@ -110,15 +133,13 @@ def collate(doc, witness_dir: Path):
         if app_path.exists()
         else {"adjudicated": []}
     )
-    adjudicated = {
-        (e["at"], wid): e
-        for e in apparatus["adjudicated"]
-        for wid in e["witnesses"]
-    }
+    adjudicated = {(e["at"], wid): e for e in apparatus["adjudicated"] for wid in e["witnesses"]}
 
     witness_files = sorted(p for p in witness_dir.glob("*.txt"))
     if not witness_files:
-        errors.append(f"no witness files in {witness_dir} — collation cannot pass on zero witnesses")
+        errors.append(
+            f"no witness files in {witness_dir} — collation cannot pass on zero witnesses"
+        )
 
     used = set()
     n_variants = 0
@@ -164,26 +185,22 @@ def collate(doc, witness_dir: Path):
         for printed, emended, reason in meta["corrigenda"]:
             if not emended:
                 errors.append(
-                    f"{wid}: malformed corrigendum {printed!r} — write 'printed -> emended (reason)'"
+                    f"{wid}: malformed corrigendum {printed!r} — "
+                    "write 'printed -> emended (reason)'"
                 )
                 continue
             if not reason:
                 errors.append(f"{wid}: corrigendum {printed!r} carries no reason")
             # The declared reading is the WORD; the token may carry the
             # page's punctuation, which the emendation leaves alone.
-            def _swap(token: str) -> str:
-                body = token.rstrip(",.:;?!")
-                tail = token[len(body) :]
-                return emended + tail if body == printed else token
-
             tokens = text.split()
-            if not any(_swap(t) != t for t in tokens):
+            if not any(_emend(t, printed, emended) != t for t in tokens):
                 errors.append(
                     f"{wid}: corrigendum declares {printed!r}, which this witness does not print "
                     "— stale declaration, or the transcription was already emended"
                 )
                 continue
-            text = " ".join(_swap(t) for t in tokens)
+            text = " ".join(_emend(t, printed, emended) for t in tokens)
             n_corrigenda += 1
         # Declared recension differences: a word this page's recension has
         # and ours does not. Refused unless the page really prints it and
@@ -199,22 +216,21 @@ def collate(doc, witness_dir: Path):
             # punctuation folded — or a declaration fails to match the very
             # page it describes (María against Maria) and the check fires
             # for the wrong reason.
-            bare = lambda t: substantive(t).strip()
-            word_cmp = bare(word)
+            word_cmp = _bare(word)
             tokens = text.split()
-            if not any(bare(t) == word_cmp for t in tokens):
+            if not any(_bare(t) == word_cmp for t in tokens):
                 errors.append(
                     f"{wid}: recension note declares {word!r}, which this witness does not print "
                     "— stale declaration, or the transcription already dropped it"
                 )
                 continue
-            if any(bare(t) == word_cmp for t in ours_raw_w):
+            if any(_bare(t) == word_cmp for t in ours_raw_w):
                 errors.append(
                     f"{wid}: recension note declares {word!r}, but this edition prints it too "
                     "— that is a divergence to adjudicate, not a recension difference"
                 )
                 continue
-            cut = next(i for i, t in enumerate(tokens) if bare(t) == word_cmp)
+            cut = next(i for i, t in enumerate(tokens) if _bare(t) == word_cmp)
             text = " ".join(tokens[:cut] + tokens[cut + 1 :])
             n_recensions += 1
         fold_ji = meta.get("fold-ji", "").strip().lower() == "true"
@@ -229,11 +245,12 @@ def collate(doc, witness_dir: Path):
         if wit_sub != ours_cmp:
             if len(wit_sub) != len(ours_cmp):
                 errors.append(
-                    f"{wid}: SUBSTANTIVE length mismatch: ours={len(ours_cmp)} witness={len(wit_sub)}"
+                    f"{wid}: SUBSTANTIVE length mismatch: "
+                    f"ours={len(ours_cmp)} witness={len(wit_sub)}"
                 )
                 continue
             unruled = False
-            for i, (a, b) in enumerate(zip(ours_cmp, wit_sub)):
+            for i, (a, b) in enumerate(zip(ours_cmp, wit_sub, strict=True)):
                 if a == b:
                     continue
                 # An ADJUDICATED ORTHOGRAPHIC VARIANT is a letter difference
@@ -276,7 +293,7 @@ def collate(doc, witness_dir: Path):
                 f"(ours={len(ours_raw_w)} witness={len(wit_raw)}) — punctuation split a token?"
             )
             continue
-        for (word_id, ours_tok), wit_tok in zip(toks_w, wit_raw):
+        for (word_id, ours_tok), wit_tok in zip(toks_w, wit_raw, strict=True):
             if ours_tok == wit_tok or (word_id, wid) in used:
                 continue  # identical, or already ruled as an orthographic variant
             entry = adjudicated.get((word_id, wid))
@@ -286,13 +303,16 @@ def collate(doc, witness_dir: Path):
             else:
                 errors.append(
                     f"{wid}: UNADJUDICATED variant at {word_id}: "
-                    f"ours={ours_tok!r} witness={wit_tok!r} — record a ruling in apparatus.json or fix the text"
+                    f"ours={ours_tok!r} witness={wit_tok!r} — "
+                    "record a ruling in apparatus.json or fix the text"
                 )
 
     # Stale apparatus entries: recorded diffs that no witness produced.
     for (word_id, wid), entry in adjudicated.items():
         if entry["witnesses"][wid] != entry["ours"] and (word_id, wid) not in used:
-            warnings.append(f"apparatus entry {word_id}/{wid} did not match any observed variant — stale?")
+            warnings.append(
+                f"apparatus entry {word_id}/{wid} did not match any observed variant — stale?"
+            )
 
     # A partial witness ADDS evidence; it can never be the evidence. Every
     # text still has to stand on two witnesses that cover all of it, or the

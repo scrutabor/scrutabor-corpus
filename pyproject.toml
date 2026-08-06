@@ -1,0 +1,50 @@
+# Tooling only. The corpus checks themselves import nothing but the standard
+# library and must keep doing so — they are the gate this repository is for,
+# and a gate that needs installing is a gate that gets skipped. Everything
+# below is DEVELOPMENT tooling: it lints, type-checks and tests those checks,
+# and none of it is imported by them.
+
+[project]
+name = "scrutabor-corpus-checks"
+version = "0.1.0"
+description = "Checks that gate the Scrutabor corpus"
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle
+    "F",    # pyflakes
+    "I",    # import order
+    "UP",   # pyupgrade
+    "B",    # bugbear
+    "SIM",  # simplify
+    "RUF",
+]
+ignore = [
+    # The corpus prose is Polish and Latin; RUF001/2/3 flag the accented and
+    # ligatured characters that are the whole point of this repository.
+    "RUF001",
+    "RUF002",
+    "RUF003",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+python_version = "3.12"
+files = ["checks", "run_checks.py", "tests"]
+# The checks read JSON, so most of what they handle is genuinely `Any`.
+# Strictness that would only be satisfied by casting everything back to
+# `Any` buys nothing; these three catch the mistakes that actually happen.
+warn_unused_ignores = true
+warn_redundant_casts = true
+no_implicit_optional = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
