@@ -8,7 +8,7 @@ Every Latin word carries its lemma, a full morphological analysis, a
 reading gloss, and a short explanation of its function in the sentence —
 *why Deo and not Deum*. Rubrics carry a narrative layer describing what is
 happening at the altar. The corpus is the data behind the Scrutabor
-reading app ([scrutabor-app](https://github.com/scrutabor/scrutabor-app)).
+reading app ([scrutabor](https://github.com/scrutabor/scrutabor)).
 
 **Status: working edition.** One text so far (the Confiteor, servers'
 variant), fully annotated in both languages. Every analysis carries its
