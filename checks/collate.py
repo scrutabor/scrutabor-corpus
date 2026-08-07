@@ -10,6 +10,16 @@ this is neither an accidental nor a corrigendum. Such a reading passes only
 with an apparatus entry of `"class": "orthography"` quoting both spellings
 and ruling which the edition prints. Counted as `orthographic` in the stats.
 
+A witness may INFLECT a name this edition leaves alone. Latin took the
+Hebrew names in twice: Ioseph stands unchanged in every case, and Iosephus
+declines like any second-declension noun, so one page sets *cum beato
+Ioseph* and another *cum beato Iosepho*. That is not a spelling — the
+letters differ because the grammar does — and calling it one would bury a
+real editorial question inside a class that exists for questions nobody
+needs to think about twice. It passes only with an apparatus entry of
+`"class": "inflection"`, and it is counted separately, so the number a
+verdict line reports as `orthographic` never quietly includes it.
+
 A witness may also carry a printer's slip — a letter its own edition sets
 wrong. Such a reading is not a variant to adjudicate and not something to
 tolerate silently, so a witness file DECLARES it:
@@ -53,6 +63,11 @@ from pathlib import Path
 from typing import Any
 
 from .normalize import substantive
+
+# The two classes a ruling may put on a letter difference. Both need an
+# apparatus entry quoting both readings; they are counted apart so the
+# verdict line never reports a grammatical question as a spelling one.
+RULED_CLASSES = ("orthography", "inflection")
 
 
 def _bare(token: str) -> str:
@@ -122,7 +137,12 @@ def corpus_tokens(doc):
 
 def collate(doc, witness_dir: Path):
     """Returns (errors, warnings, stats)."""
-    errors, warnings = [], []
+    errors: list[str] = []
+    # Empty on purpose, and kept: the stale-ruling report was the only thing
+    # this ever put here, and it is an error now. The channel stays because
+    # run_checks reads it and because a finding that is worth showing and
+    # not worth failing on is a real category — there just isn't one today.
+    warnings: list[str] = []
     toks = corpus_tokens(doc)
     ours_raw = [t for _, t in toks]
     ours_sub = substantive(" ".join(ours_raw)).split()
@@ -145,6 +165,7 @@ def collate(doc, witness_dir: Path):
     n_variants = 0
     n_corrigenda = 0
     n_orthographic = 0
+    n_inflection = 0
     n_recensions = 0
     n_partial = 0
     for wf in witness_files:
@@ -259,16 +280,24 @@ def collate(doc, witness_dir: Path):
                 # ruled which it prints. Unlike a corrigendum, neither witness
                 # is wrong; unlike an accidental, the letters differ. It passes
                 # only with a ruling that quotes both readings.
+                #
+                # An ADJUDICATED INFLECTION is the other ruled letter
+                # difference: a name this edition leaves indeclinable and the
+                # witness declines. It is counted apart from orthography
+                # because it is a question about grammar, not about spelling.
                 word_id, ours_tok = toks_w[i] if i < len(toks_w) else ("?", "")
                 entry = adjudicated.get((word_id, wid))
                 if (
                     entry
-                    and entry.get("class") == "orthography"
+                    and entry.get("class") in RULED_CLASSES
                     and entry["ours"] == ours_tok
                     and entry["witnesses"].get(wid)
                 ):
                     used.add((word_id, wid))
-                    n_orthographic += 1
+                    if entry["class"] == "inflection":
+                        n_inflection += 1
+                    else:
+                        n_orthographic += 1
                     continue
                 errors.append(
                     f"{wid}: SUBSTANTIVE divergence at word {i + 1} "
@@ -308,10 +337,18 @@ def collate(doc, witness_dir: Path):
                 )
 
     # Stale apparatus entries: recorded diffs that no witness produced.
+    # This was a warning, and 21 of them accumulated across two texts before
+    # anyone read one: seventeen rulings in the prayer to St Michael that
+    # said "this edition accents capitals" over lowercase words, against a
+    # page that is unaccented throughout and declares the profile that
+    # never compares accents at all. A stale ruling is worse than no ruling
+    # — it is a claim about a page, recorded in a public apparatus, that
+    # the page does not support — so the gate refuses it.
     for (word_id, wid), entry in adjudicated.items():
         if entry["witnesses"][wid] != entry["ours"] and (word_id, wid) not in used:
-            warnings.append(
-                f"apparatus entry {word_id}/{wid} did not match any observed variant — stale?"
+            errors.append(
+                f"apparatus entry {word_id}/{wid} matches no variant this witness produces "
+                "— stale ruling: delete it, or name the witness that does produce it"
             )
 
     # A partial witness ADDS evidence; it can never be the evidence. Every
@@ -331,6 +368,7 @@ def collate(doc, witness_dir: Path):
         "variants_adjudicated": n_variants,
         "corrigenda": n_corrigenda,
         "orthographic": n_orthographic,
+        "inflections": n_inflection,
         "recensions": n_recensions,
     }
     return errors, warnings, stats

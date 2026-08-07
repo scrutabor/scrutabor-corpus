@@ -404,6 +404,13 @@ def lint_gloss(doc, text_doc):
             if ch in prose:
                 errors.append(f"{lang}:{where}: {name} in prose — layout belongs to the reader app")
 
+    # The introduction is the MOST read prose in the layer — it is what the
+    # app puts behind the "about this prayer" button — and it was the one
+    # piece never checked: `about` arrived in 0.8.0 and nothing added it
+    # here, so a banned term walked into it while every gloss beside it was
+    # being refused for the same word.
+    check_prose("about", doc.get("about", "") or "")
+
     for wid, entry in gw.items():
         if not entry.get("gloss"):
             errors.append(f"{lang}:{wid}: missing gloss")

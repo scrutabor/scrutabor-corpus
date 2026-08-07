@@ -28,6 +28,7 @@ import unicodedata
 from pathlib import Path
 
 from .collate import corpus_tokens, load_witness
+from .normalize import substantive
 
 CORPUS = Path(__file__).resolve().parent.parent
 
@@ -51,15 +52,35 @@ def bare(word: str) -> str:
     return "".join(c for c in d if unicodedata.category(c) != "Mn")
 
 
+def accented(word: str) -> list[str]:
+    """The base letters that carry a written accent, in order."""
+    out: list[str] = []
+    letter = ""
+    for c in unicodedata.normalize("NFD", word):
+        if unicodedata.category(c) == "Mn":
+            if letter:
+                out.append(letter)
+        else:
+            letter = c
+    return out
+
+
 def classify(ours: str, theirs: str) -> tuple[str, str] | None:
     """('orthography'|'capital-accent', ruling) if a declared rule explains
     the difference, else None."""
     if bare(ours) == bare(theirs) and ours != theirs:
-        # same letters, different accents — only ours may carry more
-        if bare(ours) == ours.replace("́", "") and theirs == bare(theirs):
+        # Same letters, different accents. The declared rule is about
+        # accents ON CAPITALS, and it may only be applied where the accent
+        # that differs is on one: an unaccented lowercase word is a page
+        # that does not accent AT ALL, and the ruling — "this edition
+        # accents capitals; most printings omit them" — is then a
+        # statement about that page which is not true of it. Seventeen of
+        # those were written into the apparatus of one prayer before this
+        # narrowed.
+        lost = [c for c in accented(ours) if c not in accented(theirs)]
+        if lost and all(c.isupper() for c in lost):
             return "capital-accent", CAPITAL_RULING
-        if theirs == bare(theirs):
-            return "capital-accent", CAPITAL_RULING
+        return None
 
     # direction-agnostic: it is the same rule whichever side prints j
     def fold(w: str) -> str:
@@ -80,7 +101,14 @@ def main(argv: list[str]) -> int:
     doc = json.loads((CORPUS / "texts" / category / f"{name}.json").read_text(encoding="utf-8"))
     wdir = CORPUS / "witnesses" / text_id
     apath = wdir / "apparatus.json"
-    apparatus = json.loads(apath.read_text(encoding="utf-8"))
+    # A text whose witnesses have just been transcribed has no apparatus yet,
+    # and this tool is what writes the first entries into one — so start from
+    # an empty one rather than a traceback.
+    apparatus = (
+        json.loads(apath.read_text(encoding="utf-8"))
+        if apath.exists()
+        else {"text": text_id, "note": "", "adjudicated": []}
+    )
     by_at = {e["at"]: e for e in apparatus["adjudicated"]}
 
     toks = corpus_tokens(doc)
@@ -91,8 +119,20 @@ def main(argv: list[str]) -> int:
         wit = text.split()
         if len(wit) != len(toks):
             continue
+        # A witness that declares `profile: substantive-only` is never
+        # compared on accidentals, so a ruling about one of its accidentals
+        # can only ever be stale. Fold this witness the way the collation
+        # folds it and pass over everything the fold makes equal — the
+        # letters it really does spell differently still come through.
+        folded = meta.get("profile", "").strip() == "substantive-only"
+        fold = {
+            "fold_ji": meta.get("fold-ji", "").strip().lower() == "true",
+            "fold_xs": meta.get("fold-xs", "").strip().lower() == "true",
+        }
         for (at, ours), theirs in zip(toks, wit, strict=True):
             if ours == theirs:
+                continue
+            if folded and substantive(ours, **fold) == substantive(theirs, **fold):
                 continue
             entry = by_at.get(at)
             if entry and entry["witnesses"].get(wid) == theirs:

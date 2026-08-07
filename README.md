@@ -58,6 +58,14 @@ The verdict line names its subject — text, word count, languages,
 witnesses, adjudicated variants — and the gate refuses to pass on zero of
 any of them.
 
+Documents are kept in one layout, so that a diff over a text stays
+readable: one word to a line, with its morphology beside it.
+
+```bash
+python -m checks.layout --check   # is every file in layout?
+python -m checks.layout           # put them there
+```
+
 ## Contributing
 
 Corrections are welcome as issues or pull requests — a philological

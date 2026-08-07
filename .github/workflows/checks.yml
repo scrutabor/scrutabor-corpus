@@ -23,5 +23,8 @@ jobs:
       - run: ruff format --check .
       - run: mypy
       - run: python -m pytest -q
+      # The house layout, so that a diff over a text stays readable. It had
+      # already slipped in five files kept by hand.
+      - run: python -m checks.layout --check
       # …and then the corpus itself, which is what this repository is for.
       - run: python run_checks.py --all

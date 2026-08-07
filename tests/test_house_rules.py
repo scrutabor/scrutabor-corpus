@@ -10,7 +10,7 @@ both sides.
 
 import pytest
 
-from checks.house_rules import CAPITAL_RULING, IJ_RULING, bare, classify
+from checks.house_rules import CAPITAL_RULING, IJ_RULING, accented, bare, classify
 
 
 class TestBare:
@@ -19,6 +19,17 @@ class TestBare:
 
     def test_leaves_a_ligature_alone_because_it_is_a_letter(self):
         assert bare("cælis") == "cælis"
+
+
+class TestAccented:
+    def test_names_the_letter_under_the_accent(self):
+        assert accented("Dóminus") == ["o"]
+
+    def test_and_names_it_as_the_capital_it_is(self):
+        assert accented("Ómnia") == ["O"]
+
+    def test_a_word_with_no_accent_has_none(self):
+        assert accented("Dominus") == []
 
 
 class TestOrthographyRuling:
@@ -36,14 +47,31 @@ class TestOrthographyRuling:
 
 
 class TestCapitalAccentRuling:
+    """The ruling says one thing — "this edition accents capitals; most
+    printings omit them" — so it may only be applied where the accent that
+    differs is ON a capital. It used to fire on any accent at all, and
+    seventeen rulings saying that about lowercase words were written into
+    the apparatus of one prayer against a page that is unaccented
+    throughout and had already declared the profile that never compares
+    accents."""
+
     @pytest.mark.parametrize(
-        ("ours", "theirs"),
-        [("Dóminus", "Dominus"), ("DÓMINUS", "DOMINUS"), ("sǽculi", "saeculi".replace("ae", "æ"))],
+        ("ours", "theirs"), [("Ómnia", "Omnia"), ("Ángeli", "Angeli"), ("DÓMINUS", "DOMINUS")]
     )
-    def test_our_accent_against_their_bare_letter_is_ruled(self, ours, theirs):
+    def test_our_accented_capital_against_their_bare_one_is_ruled(self, ours, theirs):
         kind, ruling = classify(ours, theirs)
         assert kind == "capital-accent"
         assert ruling == CAPITAL_RULING
+
+    @pytest.mark.parametrize(
+        ("ours", "theirs"),
+        [("Dóminus", "Dominus"), ("defénde", "defende"), ("sǽculi", "sæculi")],
+    )
+    def test_but_an_accent_on_a_lowercase_letter_is_not_this_rule(self, ours, theirs):
+        # A page that drops these drops accents altogether, which is a fact
+        # about the page — `profile: substantive-only`, declared once — and
+        # not something to assert word by word.
+        assert classify(ours, theirs) is None
 
 
 class TestWhatIsNotRuled:
