@@ -25,6 +25,14 @@ Run it to see the proposal, or with --write to apply it:
 
 It never guesses: a segment it cannot source stays empty, and the check
 in run_checks reports the coverage so the gap is visible.
+
+And it checks its own footing. A witness header's line range is written by
+hand, and a stale one does not fail loudly — the markers simply run out,
+and the rule that supplies the celebrant for text the Ordo leaves unmarked
+supplies him for a line the Ordo marks M. Every text is therefore tested
+against its own declared range before anything is proposed for it: one
+that no longer holds its own words is REPORTED as UNSOURCED, keeps
+whatever it already has, and is never written. See span_covers.
 """
 
 import difflib
@@ -275,6 +283,43 @@ def marked_lines(text_id: str, mass: bool = True) -> list[tuple[str, str]]:
     return out
 
 
+def span_covers(doc) -> bool:
+    """Does the declared line range still contain the words transcribed from
+    it?
+
+    The range is written by hand — `path: … (lines 5, 11-12)` — and a source
+    file that gains a line, or a transcription that reaches one line further
+    than the header says, leaves it short. Nothing noticed, because a short
+    range simply yields fewer markers, and the rule for a passage the Ordo
+    leaves unmarked then supplies the celebrant. So the ONE line the Ordo
+    marks `M.` becomes the priest's, silently, and `--write` puts it in the
+    file: this was proposing sacerdos for *Ad Deum, qui lætíficat* — the
+    server's answer, marked as the server's two lines below the declared
+    range.
+
+    A tool that writes editorial data has to know when it is out of its
+    depth. The question is asked per SEGMENT, because that is the unit the
+    alignment works in: a range that holds most of a text but stops one line
+    short still leaves the last segment to be guessed at, and Pax Dómini —
+    two lines, the second of them the server's — is exactly that shape.
+    Comparison is by `flatten`, which folds accents, ligatures and i/j, so
+    the transcription's own conventions do not count as a miss.
+    """
+    spans = witness_ranges(doc["id"])
+    if not spans:
+        return True  # nothing declared: the fallback over the whole archive
+    span = ""
+    for raw, first, last in spans:
+        lines = raw.read_text(encoding="utf-8").splitlines()[max(0, first - 1) : last]
+        span += flatten(" ".join(lines))
+    for seg in doc["segments"]:
+        if seg.get("type") != "verse" or not seg.get("words"):
+            continue
+        if flatten("".join(w["form"] for w in seg["words"])) not in span:
+            return False
+    return True
+
+
 def voice_of(doc, index: int) -> str | None:
     """The voice the nearest preceding rubric sets, if any says."""
     for seg in reversed(doc["segments"][:index]):
@@ -314,6 +359,12 @@ def align_speakers(doc, lines) -> dict[str, str]:
 def propose(doc, disagreements: list[str] | None = None) -> dict[str, dict]:
     lines = marked_lines(doc["id"], mass=doc["id"].startswith("ordinarium."))
     positional = align_speakers(doc, lines)
+    # If the declared range no longer holds this text's words, the markers
+    # read out of it are the wrong markers, and the rule that supplies the
+    # celebrant for unmarked text would be supplying him for text the book
+    # marks otherwise. Propose only what was matched positionally, and let
+    # main report the text.
+    sourced = span_covers(doc)
     ruled = VOICE_RULINGS.get(doc["id"])
     out: dict[str, dict] = {}
     for i, seg in enumerate(doc["segments"]):
@@ -333,7 +384,11 @@ def propose(doc, disagreements: list[str] | None = None) -> dict[str, dict]:
             hits = {speaker for speaker, line in lines if key and (key == line or key in line)}
             if len(hits) == 1:
                 proposal["speaker"] = hits.pop()
-            elif doc["id"].startswith("ordinarium."):
+            # …and only where the markers were actually read: `sourced`.
+            # See span_covers — a stale range makes the markers run out,
+            # and this rule would then hand the celebrant a line the book
+            # marks otherwise.
+            elif sourced and doc["id"].startswith("ordinarium."):
                 # The Ordo prints the CELEBRANT's text unmarked and gives
                 # every other voice a marker — S. and M., V. and R., O. for
                 # all — as the archived source shows: the ministers'
@@ -382,13 +437,26 @@ def main() -> None:
     write = "--write" in sys.argv
     total = attributed = voiced = 0
     disagreements: list[str] = []
+    unsourced: list[str] = []
     for path in sorted((CORPUS / "texts").rglob("*.json")):
         doc = json.loads(path.read_text(encoding="utf-8"))
+        stale = not span_covers(doc)
+        if stale:
+            unsourced.append(doc["id"])
         proposal = propose(doc, disagreements)
         verses = [s for s in doc["segments"] if s.get("type") == "verse" and s.get("words")]
         total += len(verses)
         attributed += sum(1 for p in proposal.values() if "speaker" in p)
         voiced += sum(1 for p in proposal.values() if "voice" in p)
+        # A text whose declared range no longer holds its words is READ but
+        # never WRITTEN. The proposal for it is still shown, because it is
+        # what a person needs in order to fix the range; it is not applied,
+        # because what is already in the file was written when the range was
+        # right, and a run that quietly replaced it with a thinner reading
+        # would lose the better one. Run without --write, mend the header,
+        # and the text stops appearing here.
+        if write and stale:
+            continue
         if not write:
             if proposal:
                 print(f"{doc['id']}")
@@ -446,10 +514,13 @@ def main() -> None:
             path.write_text("".join(out), encoding="utf-8")
     for line in disagreements:
         print(f"DISAGREES  {line}")
+    for text_id in unsourced:
+        print(f"UNSOURCED  {text_id}: the declared line range no longer holds this text's words")
     verb = "applied" if write else "proposed"
     print(
         f"\n{verb} {attributed}/{total} speakers, {voiced}/{total} voices"
-        f" ({len(disagreements)} rubric/law disagreements)"
+        f" ({len(disagreements)} rubric/law disagreements,"
+        f" {len(unsourced)} texts with a stale line range)"
     )
 
 
