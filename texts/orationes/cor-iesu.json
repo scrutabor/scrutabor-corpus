@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.9.0",
+  "id": "orationes.cor-iesu",
+  "title": "Cor Iesu sacratíssimum",
+  "category": "orationes",
+  "section": "orationes-communes",
+  "variant": "devotional",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The invocation that closes the prayers of Leo XIII, added to them by Pius X in 1904. Four words, and it is said three times — which this edition states in the reader's introduction rather than printing three identical pairs. Witness do prints all three; its transcription takes the first pair only and says so. COR at w001 is nominative in the function of address, as AGNUS is in the Agnus Dei: the form is a neuter one that would not show the difference anyway, and this edition marks the case the analyzers head. IESU at w002 is genitive — one of the four cases this Greek-Latin name spells alike, and the only one the sense allows here.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: zero substantive divergence, and the orthography of the two declared classes.",
+    "witnesses": "witnesses/orationes.cor-iesu/",
+    "apparatus": "witnesses/orationes.cor-iesu/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Cor", "lemma": "cor", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w002", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w003", "form": "sacratíssimum", "post": ".", "lemma": "sacratus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n", "degree": "sup" } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w004", "form": "Miserére", "lemma": "misereor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 2 } },
+        { "id": "w005", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } }
+      ]
+    }
+  ]
+}

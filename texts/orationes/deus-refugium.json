@@ -1,0 +1,121 @@
+{
+  "schema_version": "0.9.0",
+  "id": "orationes.deus-refugium",
+  "title": "Deus, refúgium nostrum",
+  "category": "orationes",
+  "section": "orationes-communes",
+  "variant": "devotional",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The collect of the prayers of Leo XIII, said after the Salve Regína and its versicle. One long sentence on two imperatives, RÉSPICE at w012 and EXÁUDI at w053, each held back until everything that qualifies it has been said. Three constructions a reader will stall on. PROPÍTIUS at w011 is an adjective where English and Polish want an adverb: Latin says the one who looks is favourable, not that he looks favourably. INTERCEDÉNTE at w014 heads an ablative absolute — the Virgin's intercession is the circumstance under which the asking is done, not another thing asked for. QUAS at w037 stands eleven words before its own antecedent PRECES at w048, which is ordinary Latin and very hard to read forward: the prayers we pour out for the conversion of sinners are the object of exáudi. GENETRÍCE at w020 follows the corpus's standing ruling that one spelling of the noun is kept throughout, against both witnesses. IOSEPH at w024 is the indeclinable form, with witness do and with the corpus's own reading of the name in the Canon; the hand missal declines it, and the apparatus records that as the one substantive difference between the two pages.",
+  "source": {
+    "method": "Verified by collation against the independent witnesses below: one substantive divergence, in the declension of a Hebrew name, adjudicated; the rest orthography of the two declared classes.",
+    "witnesses": "witnesses/orationes.deus-refugium/",
+    "apparatus": "witnesses/orationes.deus-refugium/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Orémus", "post": ".", "lemma": "oro", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w002", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w003", "form": "refúgium", "lemma": "refugium", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w004", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "n" } },
+        { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "virtus", "post": ",", "lemma": "virtus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w007", "form": "pópulum", "lemma": "populus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w008", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w009", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w010", "form": "clamántem", "lemma": "clamo", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 1 } },
+        { "id": "w011", "form": "propítius", "lemma": "propitius", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w012", "form": "réspice", "post": ";", "lemma": "respicio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "words": [
+        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w014", "form": "intercedénte", "lemma": "intercedo", "morph": { "pos": "verb", "case": "abl", "number": "sg", "gender": "f", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 } },
+        { "id": "w015", "form": "gloriósa", "post": ",", "lemma": "gloriosus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" } },
+        { "id": "w016", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w017", "form": "immaculáta", "lemma": "immaculatus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" } },
+        { "id": "w018", "form": "Vírgine", "lemma": "virgo", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w019", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w020", "form": "Genetríce", "lemma": "genetrix", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w021", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } }
+      ]
+    },
+    {
+      "id": "s04",
+      "type": "verse",
+      "words": [
+        { "id": "w022", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w023", "form": "beáto", "lemma": "beatus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } },
+        { "id": "w024", "form": "Ioseph", "post": ",", "lemma": "Ioseph", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "disputed" } },
+        { "id": "w025", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w026", "form": "Sponso", "post": ",", "lemma": "sponsus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w027", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
+        { "id": "w028", "form": "beátis", "lemma": "beatus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" } },
+        { "id": "w029", "form": "Apóstolis", "lemma": "apostolus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w030", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" } },
+        { "id": "w031", "form": "Petro", "lemma": "Petrus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w032", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w033", "form": "Paulo", "post": ",", "lemma": "Paulus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w034", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w035", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" } },
+        { "id": "w036", "form": "Sanctis", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" } }
+      ]
+    },
+    {
+      "id": "s05",
+      "type": "verse",
+      "words": [
+        { "id": "w037", "form": "quas", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "f" } },
+        { "id": "w038", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w039", "form": "conversióne", "lemma": "conversio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w040", "form": "peccatórum", "post": ",", "lemma": "peccator", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w041", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w042", "form": "libertáte", "lemma": "libertas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w043", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w044", "form": "exaltatióne", "lemma": "exaltatio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w045", "form": "sanctæ", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w046", "form": "Matris", "lemma": "mater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w047", "form": "Ecclésiæ", "post": ",", "lemma": "ecclesia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w048", "form": "preces", "lemma": "prex", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w049", "form": "effúndimus", "post": ",", "lemma": "effundo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } }
+      ]
+    },
+    {
+      "id": "s06",
+      "type": "verse",
+      "words": [
+        { "id": "w050", "form": "miséricors", "lemma": "misericors", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w051", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w052", "form": "benígnus", "lemma": "benignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w053", "form": "exáudi", "post": ".", "lemma": "exaudio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 } }
+      ]
+    },
+    {
+      "id": "s07",
+      "type": "verse",
+      "words": [
+        { "id": "w054", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w055", "form": "eúndem", "lemma": "idem", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w056", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w057", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w058", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w059", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
+    }
+  ]
+}
