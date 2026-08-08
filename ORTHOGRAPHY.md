@@ -15,7 +15,7 @@ corpus must match what their eyes see.
    The evidence, once the typical edition became a witness: the **Missale
    Romanum 1962** sets *Iesu*, *Ioánnem*, *iube*, *maiestátis*, *iunctis*,
    *eius* throughout (printed pages 302, 306, 307, 309, 327), and so does
-   the **Ordo Missae of Pallottinum, Poznań 1963** — 1962 rubrics, Polish,
+   the **Mszał Rzymski of the Tyniec Benedictines (Pallottinum, Poznań 1963)** — 1962 rubrics, Polish,
    imprimatur Karol Wojtyła — which prints *Dómini nostri Iesu Christi*
    and *Et in unum Dóminum Iesum Christum*. That second book decides it
    for this edition, because it is the one a Polish reader is likeliest to
