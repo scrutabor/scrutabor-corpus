@@ -7,7 +7,7 @@
   "variant": "missae",
   "sung": false,
   "status": "working-edition",
-  "notes": "The prayer that asks an angel to carry the offering to the altar on high, said deeply bowed. QUOTQUOT at w024 is indeclinable; the nominative plural is the one the sentence requires, as the subject of sumpsérimus, and no gender is claimed, since nothing marks one. SUMPSÉRIMUS at w035 is future perfect rather than perfect subjunctive: the main verb repleámur is the subjunctive of the purpose clause, and quotquot ... sumpsérimus states the condition. PERFÉRRI at w008 is a compound of fero and carries no conjugation. ÁNGELI at w012 is singular — one angel, unnamed. The comma the edition prints after ut, with witness do and the typical edition, marks off the whole clause that quotquot opens.",
+  "notes": "The prayer that asks an angel to carry the offering to the altar on high, said deeply bowed. QUOTQUOT at w024 is indeclinable; the nominative plural is the one the sentence requires, as the subject of sumpsérimus, and no gender is claimed, since nothing marks one. SUMPSÉRIMUS at w035 is future perfect rather than perfect subjunctive: the generalizing relative clause quotquot ... sumpsérimus sits inside the ut clause whose one verb is repleámur, and the sense — as many as shall have received — settles the indicative with the received renderings. OSCULATUR ALTARE at s03 falls between quotquot and ex hac, at the mention of this altar, where witness do and the Tridentine books print it. FÍLII at w030 stands disputed because Whitaker's gives -ius nouns only the contracted genitive (fili); Collatinus alone carries the uncontracted form the liturgical books print. The close Per eúndem follows a naming of the Son by title only — Fílii tui — the one place where the rule that eúndem answers a naming needs its wider reading. PERFÉRRI at w008 is a compound of fero and carries no conjugation. ÁNGELI at w012 is singular — one angel, unnamed. The comma the edition prints after ut, with witnesses do and mr, marks off the whole clause that quotquot opens.",
   "source": {
     "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
     "witnesses": "witnesses/ordinarium.supplices-te-rogamus/",
@@ -53,19 +53,27 @@
       ]
     },
     {
-      "id": "s03",
-      "type": "rubric",
-      "text": "Osculatur Altare.",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
-    },
-    {
       "id": "s04",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
       "words": [
         { "id": "w023", "form": "ut", "post": ",", "lemma": "ut", "morph": { "pos": "conj" } },
-        { "id": "w024", "form": "quotquot", "lemma": "quotquot", "morph": { "pos": "adj", "case": "nom", "number": "pl" } },
+        { "id": "w024", "form": "quotquot", "lemma": "quotquot", "morph": { "pos": "adj", "case": "nom", "number": "pl" } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "rubric",
+      "text": "Osculatur Altare.",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+    },
+    {
+      "id": "s11",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "secreto",
+      "words": [
         { "id": "w025", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" } },
         { "id": "w026", "form": "hac", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "f" } },
         { "id": "w027", "form": "altáris", "lemma": "altare", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 } },
