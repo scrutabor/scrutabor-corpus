@@ -7,7 +7,7 @@
   "variant": "devotional",
   "sung": false,
   "status": "working-edition",
-  "notes": "The Marian antiphon with the versicle that follows it in the prayers of Leo XIII said after low Mass, and at Compline through the long green season. The whole first half is address: seven vocatives in a row before the first verb arrives. EIA at w027 is exempt from the corpus's two spelling heuristics, and checks/lint.py records why — its i is vocalic and its ei a diphthong. SALVE at w001 and w010 is the imperative of salveo, not an interjection: the analyzers head the verb. LACRYMÁRUM at w025 names Collatinus alone; Whitaker's carries only the i-spelling of lacrima. EVÆ at w016 needed the name added to the proper-lemma list. GÉNETRIX at w062 follows the corpus's standing ruling that one spelling of the noun is kept throughout, against witness do here. Witness tpl prints an Amen after Virgo María which the Leonine recension does not have; the witness file declares that the Amen is not transcribed, and why.",
+  "notes": "The Marian antiphon with the versicle that follows it in the prayers of Leo XIII said after low Mass, and at Compline through the long green season. The whole first half is address: the prayer opens on its verb — SALVE — and pours five vocative names after it before the sentence closes on salve again. EIA at w027 passes the accent heuristic on its own merits: two syllables, the i read as a glide (E-ia), below the three-syllable threshold. SALVE at w001 and w010 is the imperative of salveo, not an interjection: the analyzers head the verb. LACRYMÁRUM at w025 names Collatinus alone; Whitaker's carries only the i-spelling of lacrima. EVÆ at w016 needed the name added to the proper-lemma list. GÉNETRIX at w062 follows the corpus's standing ruling that one spelling of the noun is kept throughout, against witness do here. Witness tpl prints an Amen after Virgo María which the Leonine recension does not have; the witness file transcribes it, and a recension header declares that this edition omits it, and why.",
   "source": {
     "method": "Verified by collation against the independent witnesses below: zero substantive divergence beyond four adjudicated spellings, each of them a real form of the word.",
     "witnesses": "witnesses/orationes.salve-regina/",
@@ -134,7 +134,7 @@
         { "id": "w063", "form": "Ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w064", "form": "digni", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" } },
         { "id": "w065", "form": "efficiámur", "lemma": "efficio", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 3 } },
-        { "id": "w066", "form": "promissiónibus", "lemma": "promissio", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w066", "form": "promissiónibus", "lemma": "promissio", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 } },
         { "id": "w067", "form": "Christi", "post": ".", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     }
