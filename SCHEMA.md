@@ -299,7 +299,10 @@ entries{ <lemma>: { senses[], note?, derivatives?, analysis? } }
   genuinely derived from or borrowed via this lemma (confíteor →
   konfesjonał; panis → companion) — memory hooks for learners. Only real
   descent counts; lookalikes and independent cognates do not (mors is NOT
-  the source of Polish "mord"). Per-language by nature: no parity
+  the source of Polish "mord"). A word that descends through the lemma's
+  base or a sibling of the same root family, rather than through the
+  lemma itself, names its true ancestor in parentheses: „kustosz (od
+  custos)”, "custody (from custódia)". Per-language by nature: no parity
   requirement, and entries differ freely between languages.
 - Language files must cover identical key sets (parity), which must equal
   the lemmata key set.
