@@ -192,8 +192,11 @@ VOICE_SEGMENT_RULINGS: dict[str, tuple[str, str]] = {
     # not reach: "Sacerdos secrete dicit:". The specific rubric governs.
     "ordinarium.pater-noster.s14": (SECRETO, "the text's own rubric — Sacerdos secrete dicit"),
     # the server answers aloud, and the priest is silent under him
-    "ordinarium.orate-fratres.s04": (CLARA, "RG 511 g — the answering Suscipiat"),
-    "ordinarium.orate-fratres.s06": (CLARA, "RG 511 g — the answering Amen"),
+    # 511 g names only the words Orate, fratres; the answer's ground is
+    # plainer — it exists to be heard, and the priest waits on its
+    # omnipotentem before he can continue
+    "ordinarium.orate-fratres.s04": (CLARA, "an answer made to be heard; the priest waits on it"),
+    "ordinarium.orate-fratres.s06": (SUBMISSA, "the text's own rubric — Sacerdos submissa voce dicit"),
 }
 
 # Segments the law splits but our segmentation does not, so no single value
