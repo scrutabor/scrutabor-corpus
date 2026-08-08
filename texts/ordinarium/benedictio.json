@@ -7,7 +7,7 @@
   "variant": "missae",
   "sung": false,
   "status": "working-edition",
-  "notes": "The blessing at the end of Mass. One sentence, cut in two by a rubric: the priest says Benedícat vos omnípotens Deus at the altar, turns to the people, and finishes the sentence while making the sign of the cross over them. PATER at w005, FÍLIUS at w007 and SPÍRITUS at w009 are all nominative in apposition to DEUS at w004 — they name the God who blesses, they are not a separate address. The two witnesses place the rubrical cross differently (do before et Spíritus Sanctus, handmissal-eo before Pater); it is a direction to the hand, not a reading, and is stripped in both transcriptions. The rubric at s03 is set with the single space the 1962 typical edition prints; witness do sets two. The rubric at s05 sets Trínitas with its accent, as the same witness sets it four lines above.",
+  "notes": "The blessing at the end of Mass. One sentence, cut in two by a rubric: the priest says Benedícat vos omnípotens Deus at the altar, turns to the people, and finishes the sentence while making the sign of the cross over them. PATER at w005, FÍLIUS at w007 and SPÍRITUS at w009 are all nominative in apposition to DEUS at w004 — they name the God who blesses, they are not a separate address. The two witnesses place the rubrical cross differently (do before et Spíritus Sanctus, handmissal-eo before Pater); it is a direction to the hand, not a reading, and is stripped in both transcriptions. The rubric at s03 is set with a single space where witness do's plain text sets two — a transcription artifact of that file, normalized. The rubric at s05 sets Trínitas with its accent, as the same witness sets it in the Pláceat above (raw 374). The s05 rubric preserves DO's pre-1960 unconditional wording; the 1962 Ritus servandus XII, 4 makes the Last Gospel conditional — si est dicendum — and the Codex n. 510 omits it after Benedicámus Dómino and when the absolution follows a Requiem; the narratives state the condition. The Amen at w011 is the answer, not the priest's: witness do marks it R., the hand missal S:, and the Ritus servandus prints R. Amen — it stands as its own segment (s06).",
   "source": {
     "method": "Verified by collation against the independent witnesses below: zero substantive divergence, and no accidental variant either — the two editions point the blessing identically.",
     "witnesses": "witnesses/ordinarium.benedictio/",
@@ -51,7 +51,15 @@
         { "id": "w007", "form": "Fílius", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w009", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 } },
-        { "id": "w010", "form": "Sanctus", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w010", "form": "Sanctus", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } }
+      ]
+    },
+    {
+      "id": "s06",
+      "type": "verse",
+      "speaker": "minister",
+      "voice": "clara",
+      "words": [
         { "id": "w011", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     },
