@@ -61,7 +61,7 @@ SPEAKER_MARKERS_ONLY = {"O"}
 # Rubric phrases that set the voice, longest first so that "elata
 # aliquantulum voce" is not read as the plain "voce".
 VOICE_RUBRICS = [
-    ("elata aliquantulum voce", "submissa"),
+    ("elata aliquantulum voce", "clara"),
     ("intellegibili voce", "clara"),
     ("intelligibili voce", "clara"),
     ("clara voce", "clara"),
@@ -85,8 +85,12 @@ VOICE_RUBRICS = [
 #
 # n. 512 defines the terms: what is said secreto he pronounces "ut ipsemet
 # se audiat, et a circumstantibus non audiatur" — audible to himself, not
-# to the bystanders. Submissa is the Ritus servandus's own middle voice,
-# elata aliquantulum voce, for words the people are meant to catch.
+# to the bystanders — and its own use of submissa names the failure mode of
+# clara voce: "neque tam submissa, ut a circumstantibus audiri non possit."
+# So submissa in this table means a genuinely lowered voice (the Orate
+# fratres Amen), never the rubrics' elata aliquantulum voce, which is a
+# manner of clara: those words stand on the 511 list precisely so that the
+# people catch them, and the manner lives in the rubric text on the page.
 CLARA = "clara"
 SECRETO = "secreto"
 SUBMISSA = "submissa"
@@ -127,20 +131,20 @@ VOICE_RULINGS: dict[str, tuple[str, str]] = {
     "ordinarium.in-spiritu-humilitatis": (SECRETO, "RG 511 — cetera"),
     "ordinarium.lavabo": (SECRETO, "RG 511 — cetera"),
     "ordinarium.suscipe-sancta-trinitas": (SECRETO, "RG 511 — cetera"),
-    "ordinarium.te-igitur": (SECRETO, "RG 500, 511 — Canon Missae secreto"),
-    "ordinarium.memento-vivorum": (SECRETO, "RG 500, 511 — Canon Missae secreto"),
-    "ordinarium.communicantes": (SECRETO, "RG 500, 511 — Canon Missae secreto"),
-    "ordinarium.hanc-igitur": (SECRETO, "RG 500, 511 — Canon Missae secreto"),
-    "ordinarium.quam-oblationem": (SECRETO, "RG 500, 511 — Canon Missae secreto"),
-    "ordinarium.qui-pridie": (SECRETO, "RG 500, 511 — Canon Missae secreto"),
-    "ordinarium.simili-modo": (SECRETO, "RG 500, 511 — Canon Missae secreto"),
-    "ordinarium.unde-et-memores": (SECRETO, "RG 500, 511 — Canon Missae secreto"),
-    "ordinarium.supra-quae": (SECRETO, "RG 500, 511 — Canon Missae secreto"),
-    "ordinarium.supplices-te-rogamus": (SECRETO, "RG 500, 511 — Canon Missae secreto"),
-    "ordinarium.memento-defunctorum": (SECRETO, "RG 500, 511 — Canon Missae secreto"),
-    "ordinarium.nobis-quoque": (SECRETO, "RG 500, 511 — Canon Missae secreto"),
-    "ordinarium.per-quem-haec-omnia": (SECRETO, "RG 500, 511 — Canon Missae secreto"),
-    "ordinarium.per-ipsum": (SECRETO, "RG 500, 511 — Canon Missae secreto"),
+    "ordinarium.te-igitur": (SECRETO, "RG 511 — Canon Missae secreto (cetera)"),
+    "ordinarium.memento-vivorum": (SECRETO, "RG 511 — Canon Missae secreto (cetera)"),
+    "ordinarium.communicantes": (SECRETO, "RG 511 — Canon Missae secreto (cetera)"),
+    "ordinarium.hanc-igitur": (SECRETO, "RG 511 — Canon Missae secreto (cetera)"),
+    "ordinarium.quam-oblationem": (SECRETO, "RG 511 — Canon Missae secreto (cetera)"),
+    "ordinarium.qui-pridie": (SECRETO, "RG 511 — Canon Missae secreto (cetera)"),
+    "ordinarium.simili-modo": (SECRETO, "RG 511 — Canon Missae secreto (cetera)"),
+    "ordinarium.unde-et-memores": (SECRETO, "RG 511 — Canon Missae secreto (cetera)"),
+    "ordinarium.supra-quae": (SECRETO, "RG 511 — Canon Missae secreto (cetera)"),
+    "ordinarium.supplices-te-rogamus": (SECRETO, "RG 511 — Canon Missae secreto (cetera)"),
+    "ordinarium.memento-defunctorum": (SECRETO, "RG 511 — Canon Missae secreto (cetera)"),
+    "ordinarium.nobis-quoque": (SECRETO, "RG 511 — cetera; 511 i excepts the opening words (s02)"),
+    "ordinarium.per-quem-haec-omnia": (SECRETO, "RG 511 — Canon Missae secreto (cetera)"),
+    "ordinarium.per-ipsum": (SECRETO, "RG 511 — Canon Missae secreto (cetera)"),
     "ordinarium.libera-nos": (SECRETO, "RG 511 — cetera"),
     "ordinarium.haec-commixtio": (SECRETO, "RG 511 — cetera"),
     "ordinarium.qui-dixisti": (SECRETO, "RG 511 — cetera"),
@@ -183,10 +187,10 @@ VOICE_SEGMENT_RULINGS: dict[str, tuple[str, str]] = {
     # words the people are meant to catch: RG 511 i puts them among what is
     # said aloud, and the Ritus servandus gives the manner, elata
     # aliquantulum voce — a raised voice, not a full one
-    "ordinarium.nobis-quoque.s02": (SUBMISSA, "RG 511 i + RS VIII — elata aliquantulum voce"),
-    "ordinarium.panem-caelestem.s04": (SUBMISSA, "RG 511 i + RS X — Domine, non sum dignus"),
-    "ordinarium.panem-caelestem.s07": (SUBMISSA, "RG 511 i + RS X — the second time"),
-    "ordinarium.panem-caelestem.s10": (SUBMISSA, "RG 511 i + RS X — the third time"),
+    "ordinarium.nobis-quoque.s02": (CLARA, "RG 511 i — verba Nobis quoque peccatoribus; the rubric's elata aliquantulum names the manner"),
+    "ordinarium.panem-caelestem.s04": (CLARA, "RG 511 i — Domine, non sum dignus; the rubric's elata aliquantulum names the manner"),
+    "ordinarium.panem-caelestem.s07": (CLARA, "RG 511 i — the second time"),
+    "ordinarium.panem-caelestem.s10": (CLARA, "RG 511 i — the third time"),
     # The Pater noster is said aloud (511 i), but the priest answers his own
     # last petition under his breath, and the page says so where the law does
     # not reach: "Sacerdos secrete dicit:". The specific rubric governs.

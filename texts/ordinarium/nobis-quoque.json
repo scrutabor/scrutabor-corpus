@@ -7,7 +7,7 @@
   "variant": "missae",
   "sung": false,
   "status": "working-edition",
-  "notes": "The one prayer of the Canon said aloud, and the one at which the priest strikes his breast — the two go together: the raised voice is the rubric's own elata aliquantulum voce. Its list of saints answers the list in Communicántes: John the Baptist, Stephen, Matthias, Barnabas, Ignatius, Alexander, Marcellinus, Peter, then seven women — Felicity, Perpetua, Agatha, Lucy, Agnes, Cecilia, Anastasia. ÆSTIMÁTOR at w048 and LARGÍTOR at w053 are vocative, addressed to God as the imperative admítte is, on the corpus's ruling at ordinarium.in-spiritu-humilitatis w027; the nominative is the competing reading, and the two forms are identical. ÁLIQUAM at w012 is tagged pronoun with both analyzers. PERPÉTUA at w033 is the martyr's name; Whitaker's Words knows only the adjective perpétuus and contradicts the reading, which the agreement report records.",
+  "notes": "The opening words said aloud — the only words of the Canon the people hear besides the closing Per ómnia (RG 511 i lists both) — and the one prayer at which the priest strikes his breast; the raised voice is the rubric's own elata aliquantulum voce, a manner of the clara voce the law prescribes. Its list of saints answers the list in Communicántes: John (usually taken to be the Baptist), Stephen, Matthias, Barnabas, Ignatius, Alexander, Marcellinus, Peter, then seven women — Felicity, Perpetua, Agatha, Lucy, Agnes, Cecilia, Anastasia. ÆSTIMÁTOR at w048 and LARGÍTOR at w053 are nominative, in apposition to the unexpressed subject of admítte — the classical construction beside a second-person imperative, and the reading both translations give; the vocative address is the competing reading, the forms are identical, and both words stand flagged for review. ÁLIQUAM at w012 is tagged pronoun with both analyzers. PERPÉTUA at w033 is the martyr's name; Whitaker's Words knows only the adjective perpétuus and contradicts the reading, which the agreement report records.",
   "source": {
     "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
     "witnesses": "witnesses/ordinarium.nobis-quoque/",
@@ -26,7 +26,7 @@
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
-      "voice": "submissa",
+      "voice": "clara",
       "words": [
         { "id": "w001", "form": "Nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
         { "id": "w002", "form": "quoque", "lemma": "quoque", "morph": { "pos": "adv" } },
@@ -105,12 +105,12 @@
         { "id": "w045", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w046", "form": "consórtium", "post": ",", "lemma": "consortium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
         { "id": "w047", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w048", "form": "æstimátor", "lemma": "aestimator", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w048", "form": "æstimátor", "lemma": "aestimator", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
         { "id": "w049", "form": "mériti", "post": ",", "lemma": "meritum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
         { "id": "w050", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
         { "id": "w051", "form": "véniæ", "post": ",", "lemma": "venia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
         { "id": "w052", "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "analysis": { "confidence": "medium", "sources": ["editorial"], "review": "pending" } },
-        { "id": "w053", "form": "largítor", "lemma": "largitor", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w053", "form": "largítor", "lemma": "largitor", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
         { "id": "w054", "form": "admítte", "post": ".", "lemma": "admitto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } }
       ]
     },
