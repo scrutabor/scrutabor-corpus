@@ -101,12 +101,11 @@ PROPER_LEMMAS = {
 # j-for-consonantal-i rules and the accent-versus-syllable rules). Nothing
 # else is exempt, and each entry carries the reason it had to be.
 #
-#   eia — the interjection of the Salve Regína. Its ei is a diphthong, so
-#   the word has two syllables and rightly carries no accent; the syllable
-#   counter knows only the au diphthong, and teaching it ei would mis-count
-#   diéi, meis and their like. (The spelling rule itself no longer applies
-#   to it: since the orthography was reversed to i, there is nothing here
-#   to catch.)
+#   eia — the interjection of the Salve Regína. Its i is a glide between
+#   vowels (E-ia, as normalize.py reads it), so the word has two syllables
+#   and rightly carries no accent. (The spelling rule itself no longer
+#   applies to it: since the orthography was reversed to i, there is
+#   nothing here to catch.)
 #
 # Keyed on the normalized spelling (accents stripped, ligatures expanded,
 # lowercased) — the same `plain` the heuristics test.
