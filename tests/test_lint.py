@@ -61,3 +61,43 @@ class TestWhereTheRulesAlreadyApplied:
     def test_and_in_a_translation(self):
         g = gloss(segments={"s01": {"translation": "Witaj w ablatiwie."}})
         assert any("banned terminology" in e for e in lint_gloss(g, TEXT))
+
+
+class TestPossessiveAbsorption:
+    TEXT2 = {
+        "id": "orationes.test",
+        "segments": [
+            {
+                "id": "s01",
+                "type": "verse",
+                "words": [
+                    {"id": "w001", "form": "manus", "lemma": "manus", "morph": {"pos": "noun"}},
+                    {"id": "w002", "form": "meas", "lemma": "meus", "morph": {"pos": "adj"}},
+                ],
+            }
+        ],
+    }
+
+    def base(self, g1, g2, lang="en"):
+        g = gloss(lang=lang, segments={"s01": {"translation": "x."}})
+        g["words"] = {"w001": {"gloss": g1}, "w002": {"gloss": g2}}
+        return g
+
+    def test_an_absorbed_possessive_is_an_error(self):
+        found = lint_gloss(self.base("my hands", "my"), self.TEXT2)
+        assert any("absorbs the possessive" in e for e in found)
+
+    def test_the_separated_pair_passes(self):
+        assert lint_gloss(self.base("hands", "my"), self.TEXT2) == []
+
+    def test_the_of_form_is_caught_too(self):
+        found = lint_gloss(self.base("of Thy glory", "Thy"), self.TEXT2)
+        assert any("absorbs the possessive" in e for e in found)
+
+    def test_a_fused_token_with_no_possessive_neighbor_passes(self):
+        assert lint_gloss(self.base("with you", "and"), self.TEXT2) == []
+
+    def test_polish_absorption_is_an_error(self):
+        found = lint_gloss(self.base("ręce moje", "moje", lang="pl"), self.TEXT2)
+        assert any("absorbs the possessive" in e for e in found)
+

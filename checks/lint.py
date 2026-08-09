@@ -24,6 +24,22 @@ REF_RE = re.compile(r"\((w\d{3})\)")
 QUOTE_REF_RE = re.compile(r"[„“]([^”“„]+)”\s*\((w\d{3})\)")
 
 # Terminology contract (corpus/TERMINOLOGY.md): banned variants per language.
+GLOSS_POSSESSIVES = {
+    # A gloss may not render the possessive its neighbor token already
+    # glosses: "discípulis suis" reads "to the disciples | His", never
+    # "to His disciples | His". The word set is matched case-folded against
+    # a neighbor whose whole gloss is the one possessive word.
+    "en": {"my", "thy", "thine", "your", "our", "his", "her", "their", "its"},
+    "pl": {
+        "mój", "moja", "moje", "mojego", "mojej", "moich", "moim", "mego", "mych",
+        "twój", "twoja", "twoje", "twojego", "twojej", "twoich", "twoim", "twego",
+        "twych", "twym", "nasz", "nasza", "nasze", "naszego", "naszej", "naszych",
+        "naszym", "wasz", "wasza", "wasze", "waszego", "waszej", "waszych",
+        "ich", "jego", "jej", "swój", "swoja", "swoje", "swego", "swojej",
+        "swoich", "swym", "swych",
+    },
+}
+
 BANNED_TERMS = {
     "pl": [
         r"ablatiw",  # ablatiwus/ablatiwie/... -> ablativus/ablativie/...
@@ -349,6 +365,27 @@ def lint_gloss(doc, text_doc):
         errors.append(f"{lang}: gloss for unknown ids {extra}")
 
     banned = BANNED_TERMS.get(lang, [])
+
+    poss = GLOSS_POSSESSIVES.get(lang, set())
+    for seg in text_doc["segments"]:
+        ws = seg.get("words") or []
+        for i, w in enumerate(ws):
+            g = (gw.get(w["id"], {}).get("gloss") or "").strip()
+            parts = [p.lower().rstrip(".,") for p in g.split()[:2]]
+            if not parts:
+                continue
+            for j in (i - 1, i + 1):
+                if j < 0 or j >= len(ws):
+                    continue
+                ng = (gw.get(ws[j]["id"], {}).get("gloss") or "").strip()
+                if " " in ng or not ng:
+                    continue
+                key = ng.lower().rstrip(".,")
+                if key in poss and key in parts and g.lower() != ng.lower():
+                    errors.append(
+                        f"{lang}: {w['id']} gloss {g!r} absorbs the possessive "
+                        f"its neighbor {ws[j]['id']} glosses ({ng!r})"
+                    )
 
     def check_narrative(where, prose):
         """A narrative sentence names its subject rather than opening with a
