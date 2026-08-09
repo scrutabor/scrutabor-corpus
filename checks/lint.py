@@ -3,6 +3,7 @@ accent rules, cross-references, quoted forms, terminology, layer parity."""
 
 import json
 import re
+import unicodedata
 from pathlib import Path
 
 from .normalize import ACCENTED_VOWELS, fold_ligatures, has_accent, strip_accents, syllable_count
@@ -38,6 +39,13 @@ GLOSS_POSSESSIVES = {
         "ich", "jego", "jej", "swój", "swoja", "swoje", "swego", "swojej",
         "swoich", "swym", "swych",
     },
+}
+
+GLOSS_CONJUNCTIONS = {
+    # The same fault as GLOSS_POSSESSIVES, one part of speech over: the
+    # Last Gospel glossed "et veritátis" as "and truth" beside a "w186: and".
+    "en": {"and", "or", "but", "nor"},
+    "pl": {"i", "a", "oraz", "ani", "lecz", "ale"},
 }
 
 BANNED_TERMS = {
@@ -367,6 +375,7 @@ def lint_gloss(doc, text_doc):
     banned = BANNED_TERMS.get(lang, [])
 
     poss = GLOSS_POSSESSIVES.get(lang, set())
+    conj = GLOSS_CONJUNCTIONS.get(lang, set())
     for seg in text_doc["segments"]:
         ws = seg.get("words") or []
         for i, w in enumerate(ws):
@@ -384,6 +393,26 @@ def lint_gloss(doc, text_doc):
                 if key in poss and key in parts and g.lower() != ng.lower():
                     errors.append(
                         f"{lang}: {w['id']} gloss {g!r} absorbs the possessive "
+                        f"its neighbor {ws[j]['id']} glosses ({ng!r})"
+                    )
+                bare = (
+                    unicodedata.normalize("NFD", w["form"])
+                    .encode("ascii", "ignore")
+                    .decode()
+                    .lower()
+                )
+                # A token that FUSES the conjunction — mihíque, Patremque —
+                # carries it inside itself and must gloss it: the neighbour's
+                # own "and" is a second, separate conjunction (mihique ET
+                # omnibus reads "both for me and for all").
+                if (
+                    key in conj
+                    and key in parts
+                    and g.lower() != ng.lower()
+                    and not bare.endswith(("que", "ve"))
+                ):
+                    errors.append(
+                        f"{lang}: {w['id']} gloss {g!r} absorbs the conjunction "
                         f"its neighbor {ws[j]['id']} glosses ({ng!r})"
                     )
 

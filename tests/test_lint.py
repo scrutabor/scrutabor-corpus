@@ -101,3 +101,25 @@ class TestPossessiveAbsorption:
         found = lint_gloss(self.base("ręce moje", "moje", lang="pl"), self.TEXT2)
         assert any("absorbs the possessive" in e for e in found)
 
+    def test_an_absorbed_conjunction_is_an_error(self):
+        found = lint_gloss(self.base("and truth", "and"), self.TEXT2)
+        assert any("absorbs the conjunction" in e for e in found)
+
+    def test_a_fused_enclitic_may_gloss_its_own_conjunction(self):
+        # mihíque et ómnibus: the -que is inside the first token and the et
+        # is a second conjunction. "and for me" beside "and" is correct.
+        text = {
+            "id": "ordinarium.test",
+            "segments": [
+                {
+                    "id": "s01",
+                    "type": "verse",
+                    "words": [
+                        {"id": "w001", "form": "mihíque", "lemma": "ego", "morph": {"pos": "pron"}},
+                        {"id": "w002", "form": "et", "lemma": "et", "morph": {"pos": "conj"}},
+                    ],
+                }
+            ],
+        }
+        assert lint_gloss(self.base("and for me", "and"), text) == []
+
