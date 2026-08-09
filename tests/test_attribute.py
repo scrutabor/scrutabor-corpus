@@ -67,6 +67,16 @@ class TestSpanCoverage:
         monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
         assert span_covers(a_text("Introibo ad altare Dei et adiutórium")) is True
 
+    def test_the_editions_name_slots_do_not_break_a_segment(self, tmp_path, monkeypatch):
+        # The archived Ordo writes the missal's N. as N.p and N.b; every
+        # transcription strips them as edition framing. Unstripped, their
+        # letters fall in the middle of the Te ígitur's last segment and
+        # the range reads as stale when it is exactly right.
+        raw = tmp_path / "src.txt"
+        raw.write_text("una cum fámulo tuo Papa nostro N.p  et Antístite nostro N.b  et ómnibus.\n", encoding="utf-8")
+        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
+        assert span_covers(a_text("una cum fámulo tuo Papa nostro et Antístite nostro et ómnibus")) is True
+
 
 class TestTheCorpusItself:
     def test_a_write_never_touches_a_text_it_cannot_source(self):

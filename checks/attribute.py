@@ -311,7 +311,13 @@ def span_covers(doc) -> bool:
     short still leaves the last segment to be guessed at, and Pax Dómini —
     two lines, the second of them the server's — is exactly that shape.
     Comparison is by `flatten`, which folds accents, ligatures and i/j, so
-    the transcription's own conventions do not count as a miss.
+    the transcription's own conventions do not count as a miss. One
+    convention needs more than folding: the archived Ordo writes the name
+    slots the missal prints as `N.` with markers of its own (`N.p` for the
+    Pope, `N.b` for the bishop), and every transcription strips them as
+    edition framing — declared in the witness headers. Their letters would
+    otherwise land INSIDE a segment and break it in two, which is what
+    Te ígitur did the moment its range was written down correctly.
     """
     spans = witness_ranges(doc["id"])
     if not spans:
@@ -319,7 +325,7 @@ def span_covers(doc) -> bool:
     span = ""
     for raw, first, last in spans:
         lines = raw.read_text(encoding="utf-8").splitlines()[max(0, first - 1) : last]
-        span += flatten(" ".join(lines))
+        span += flatten(re.sub(r"N\.[a-z]?", " ", " ".join(lines)))
     for seg in doc["segments"]:
         if seg.get("type") != "verse" or not seg.get("words"):
             continue
