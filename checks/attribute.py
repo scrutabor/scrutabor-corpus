@@ -106,7 +106,12 @@ VOICE_RULINGS: dict[str, tuple[str, str]] = {
     "ordinarium.misereatur-tui": (CLARA, "RG 511 a"),
     "ordinarium.deus-tu-conversus": (CLARA, "RG 511 a"),
     # 511 a names two prayers as secret inside that same passage
-    "ordinarium.aufer-a-nobis": (SECRETO, 'RG 511 a — "orationes vero Aufer a nobis et Oramus te dicuntur secreto"; the same sentence puts the Oremus itself in the clara block (s02)'),
+    "ordinarium.aufer-a-nobis": (
+        SECRETO,
+        'RG 511 a — "orationes vero Aufer a nobis et Oramus te dicuntur '
+        'secreto"; the same sentence puts the Oremus itself in the clara '
+        "block (s02)",
+    ),
     # 511 b, c, f, h — the sung ordinary and the preface
     "ordinarium.kyrie": (CLARA, "RG 511 b"),
     "ordinarium.gloria": (CLARA, "RG 511 c"),
@@ -180,7 +185,11 @@ SPEAKER_RULINGS: dict[str, tuple[str, str]] = {
 
 VOICE_SEGMENT_RULINGS: dict[str, tuple[str, str]] = {
     # the conclusions the people answer, inside otherwise silent prayers
-    "ordinarium.aufer-a-nobis.s02": (CLARA, 'RG 511 a — "usque ad Oremus inclusive"; the mid-line rubric dicit secreto governs only what follows'),
+    "ordinarium.aufer-a-nobis.s02": (
+        CLARA,
+        'RG 511 a — "usque ad Oremus inclusive"; the mid-line rubric '
+        "dicit secreto governs only what follows",
+    ),
     "ordinarium.libera-nos.s12": (CLARA, "RG 511 i — Per omnia saecula saeculorum"),
     "ordinarium.libera-nos.s13": (CLARA, "RG 511 i — the answering Amen"),
     "ordinarium.per-ipsum.s08": (CLARA, "RG 511 i — Per omnia saecula saeculorum"),
@@ -188,8 +197,15 @@ VOICE_SEGMENT_RULINGS: dict[str, tuple[str, str]] = {
     # words the people are meant to catch: RG 511 i puts them among what is
     # said aloud, and the Ritus servandus gives the manner, elata
     # aliquantulum voce — a raised voice, not a full one
-    "ordinarium.nobis-quoque.s02": (CLARA, "RG 511 i — verba Nobis quoque peccatoribus; the rubric's elata aliquantulum names the manner"),
-    "ordinarium.panem-caelestem.s04": (CLARA, "RG 511 i — Domine, non sum dignus; the rubric's elata aliquantulum names the manner"),
+    "ordinarium.nobis-quoque.s02": (
+        CLARA,
+        "RG 511 i — verba Nobis quoque peccatoribus; the rubric's elata "
+        "aliquantulum names the manner",
+    ),
+    "ordinarium.panem-caelestem.s04": (
+        CLARA,
+        "RG 511 i — Domine, non sum dignus; the rubric's elata aliquantulum names the manner",
+    ),
     "ordinarium.panem-caelestem.s07": (CLARA, "RG 511 i — the second time"),
     "ordinarium.panem-caelestem.s10": (CLARA, "RG 511 i — the third time"),
     # The Pater noster is said aloud (511 i), but the priest answers his own
@@ -201,7 +217,10 @@ VOICE_SEGMENT_RULINGS: dict[str, tuple[str, str]] = {
     # plainer — it exists to be heard, and the priest waits on its
     # omnipotentem before he can continue
     "ordinarium.orate-fratres.s04": (CLARA, "an answer made to be heard; the priest waits on it"),
-    "ordinarium.orate-fratres.s06": (SUBMISSA, "the text's own rubric — Sacerdos submissa voce dicit"),
+    "ordinarium.orate-fratres.s06": (
+        SUBMISSA,
+        "the text's own rubric — Sacerdos submissa voce dicit",
+    ),
 }
 
 # Segments the law splits but our segmentation does not, so no single value

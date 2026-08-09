@@ -8,6 +8,8 @@ paragraph the app puts behind the "about this prayer" button and therefore
 the most read prose in the layer.
 """
 
+from typing import ClassVar
+
 from checks.lint import lint_gloss
 
 TEXT = {
@@ -64,7 +66,7 @@ class TestWhereTheRulesAlreadyApplied:
 
 
 class TestPossessiveAbsorption:
-    TEXT2 = {
+    TEXT2: ClassVar[dict] = {
         "id": "orationes.test",
         "segments": [
             {
@@ -122,4 +124,3 @@ class TestPossessiveAbsorption:
             ],
         }
         assert lint_gloss(self.base("and for me", "and"), text) == []
-

@@ -73,9 +73,13 @@ class TestSpanCoverage:
         # letters fall in the middle of the Te ígitur's last segment and
         # the range reads as stale when it is exactly right.
         raw = tmp_path / "src.txt"
-        raw.write_text("una cum fámulo tuo Papa nostro N.p  et Antístite nostro N.b  et ómnibus.\n", encoding="utf-8")
+        raw.write_text(
+            "una cum fámulo tuo Papa nostro N.p  et Antístite nostro N.b  et ómnibus.\n",
+            encoding="utf-8",
+        )
         monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
-        assert span_covers(a_text("una cum fámulo tuo Papa nostro et Antístite nostro et ómnibus")) is True
+        line = "una cum fámulo tuo Papa nostro et Antístite nostro et ómnibus"
+        assert span_covers(a_text(line)) is True
 
 
 class TestTheCorpusItself:
