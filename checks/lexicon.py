@@ -12,6 +12,7 @@ from .normalize import ACCENTED_VOWELS, fold_ligatures, has_accent, strip_accent
 LEMMATA_ENTRY_KEYS = {
     "head",
     "pos",
+    "pos_alt",
     "gender",
     "gender_alt",
     "gender_pl",
@@ -92,6 +93,8 @@ def lint_lemmata(entries):
             _lint_head(lemma, e["head"], errors)
         if e.get("pos") not in MORPH_ENUMS["pos"]:
             errors.append(f"lexicon:{lemma}: pos={e.get('pos')!r} not in enum")
+        if "pos_alt" in e and e["pos_alt"] not in MORPH_ENUMS["pos"]:
+            errors.append(f"lexicon:{lemma}: pos_alt={e['pos_alt']!r} not in enum")
         for k in ("gender", "gender_alt", "gender_pl"):
             if k in e and e[k] not in MORPH_ENUMS["gender"]:
                 errors.append(f"lexicon:{lemma}: {k}={e[k]!r} not in enum")
@@ -160,7 +163,7 @@ def check_text_against_lexicon(text_doc, lemmata):
             if e is None:
                 errors.append(f"{tid}:{wid}: lemma {lemma!r} has no lexicon entry")
                 continue
-            if morph["pos"] != e.get("pos"):
+            if morph["pos"] not in {e.get("pos"), e.get("pos_alt")}:
                 errors.append(
                     f"{tid}:{wid}: morph.pos={morph['pos']!r} but lexicon says {e.get('pos')!r}"
                 )
