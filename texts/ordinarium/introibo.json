@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.9.0",
+  "schema_version": "0.10.0",
   "id": "ordinarium.introibo",
   "title": "Introíbo ad altáre Dei",
   "category": "ordinarium",
@@ -69,7 +69,13 @@
         { "id": "w017", "form": "lætíficat", "lemma": "laetifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
         { "id": "w018", "form": "iuventútem", "lemma": "iuventus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
         { "id": "w019", "form": "meam", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } }
-      ]
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 2,
+          "source": "DMS 31 b"
+        }
+      }
     }
   ]
 }

@@ -1,4 +1,4 @@
-# Corpus schema v0 (0.9.0)
+# Corpus schema v0 (0.10.0)
 
 Three layers: a language-neutral Latin source document per text, one gloss
 document per text per language, and a corpus-wide lexicon (language-neutral
@@ -107,6 +107,35 @@ analysis_defaults, segments[]
   absence is meaningful: it says the sources have not been read for this
   segment yet, which the reader's app must render as unmarked rather than
   guess. `run_checks` reports the coverage as `speakers=N/M`.
+- Segment: **`participation`** (since 0.10.0) is who among the FAITHFUL makes
+  this line, and on whose authority. `speaker` answers a different question —
+  whom the Missale charges with the line — and at low Mass the answer is
+  always the minister, which is true and is not what a person in the pew
+  needs. The two must not be conflated: an edition that prints *ministrant*
+  over the line a congregation is about to say has answered the wrong
+  question.
+  Shape: `{ lecta?: {gradus?, source}, cantu?: {gradus?, source} }`. The two
+  keys are the two forms of Mass the law grades separately — `lecta` the low
+  Mass, `cantu` the sung Mass — because they are not the same event, and a
+  reader at a sung Sunday Mass has more of the Ordinary than one at a said
+  Mass. `gradus` is the degree of participation, 1 to 4; it is ABSENT where
+  the law grants a part without grading it (n. 32, the Pater noster).
+  The source is the Instruction **De musica sacra et sacra liturgia** (Sacra
+  Rituum Congregatio, 3 September 1958), nn. 25-26 and 31-32, transcribed in
+  `witnesses/raw/scr-de-musica-sacra-1958.txt`; n. 26 extends the sung-Mass
+  degrees verbatim to the Missa cantata, which is the form a parish keeps on
+  Sundays.
+  DERIVED, never remembered: `checks/participation.py` computes every
+  attribution from the text a segment prints and the speaker its witnesses
+  gave it, and `run_checks` fails if a file carries anything else. The
+  speaker is part of that test and not a formality — the corpus holds eight
+  segments reading *Amen* and three are the priest's, one of them said
+  secreto, so a rule reading n. 31 a as a list of strings would hand the
+  people a line the priest says silently.
+  Absence is meaningful here too: the instruction legislates for the Mass, so
+  the devotional prayers this corpus carries — the Leonine prayers, the
+  Marian antiphons — take nothing from it. `run_checks` reports the coverage
+  as `participation=N`.
 - Word: `{ id, form, post?, lemma, morph, analysis? }`. `post` = trailing
   punctuation rendered after the word (`,` `;` `:` `.` `?`). `degree`
   (`comp`/`sup`) is not confined to adjectives: Latin adverbs take it too

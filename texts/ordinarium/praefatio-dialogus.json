@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.9.0",
+  "schema_version": "0.10.0",
   "id": "ordinarium.praefatio-dialogus",
   "title": "Dóminus vobíscum (dialogus Præfationis)",
   "category": "ordinarium",
@@ -42,7 +42,17 @@
         { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" } },
         { "id": "w005", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
         { "id": "w006", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } }
-      ]
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     },
     {
       "id": "s04",
@@ -63,7 +73,17 @@
         { "id": "w009", "form": "Habémus", "lemma": "habeo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
         { "id": "w010", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" } },
         { "id": "w011", "form": "Dóminum", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } }
-      ]
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     },
     {
       "id": "s06",
@@ -88,7 +108,17 @@
         { "id": "w018", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w019", "form": "iustum", "lemma": "iustus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" } },
         { "id": "w020", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } }
-      ]
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     }
   ]
 }

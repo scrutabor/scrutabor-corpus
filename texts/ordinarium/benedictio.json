@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.9.0",
+  "schema_version": "0.10.0",
   "id": "ordinarium.benedictio",
   "title": "Benedícat vos omnípotens Deus",
   "category": "ordinarium",
@@ -61,7 +61,17 @@
       "voice": "clara",
       "words": [
         { "id": "w011", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
-      ]
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     },
     {
       "id": "s05",

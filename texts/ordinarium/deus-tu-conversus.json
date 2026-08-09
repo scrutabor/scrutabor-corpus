@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.9.0",
+  "schema_version": "0.10.0",
   "id": "ordinarium.deus-tu-conversus",
   "title": "Deus, tu convérsus",
   "category": "ordinarium",
@@ -46,7 +46,13 @@
         { "id": "w009", "form": "lætábitur", "lemma": "laetor", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "dep", "conj": 1 } },
         { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
         { "id": "w011", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } }
-      ]
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 2,
+          "source": "DMS 31 b"
+        }
+      }
     },
     {
       "id": "s04",
@@ -72,7 +78,13 @@
         { "id": "w019", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" } },
         { "id": "w020", "form": "da", "lemma": "do", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
         { "id": "w021", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } }
-      ]
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 2,
+          "source": "DMS 31 b"
+        }
+      }
     },
     {
       "id": "s06",
@@ -98,7 +110,13 @@
         { "id": "w029", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" } },
         { "id": "w030", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w031", "form": "véniat", "post": ".", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 } }
-      ]
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 2,
+          "source": "DMS 31 b"
+        }
+      }
     },
     {
       "id": "s08",
@@ -120,7 +138,17 @@
         { "id": "w035", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" } },
         { "id": "w036", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
         { "id": "w037", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } }
-      ]
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     }
   ]
 }

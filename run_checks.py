@@ -29,6 +29,7 @@ from checks.lint import (
     lint_rubrics,
     lint_text,
 )
+from checks.participation import check_doc as check_participation
 
 # Before anything is written, not before anything is imported: the corpus
 # prints Latin and Polish and the default encoding of a piped stdout is not
@@ -93,6 +94,11 @@ def main(text_id: str) -> int:
     all_errors += lint_rubrics(doc)
     voice_errors, attributed, n_verses = check_voices(doc)
     all_errors += voice_errors
+    # Who the FAITHFUL answer with, which the Missale never says: derived
+    # from the 1958 instruction and this text's own speakers, never stored
+    # by hand (checks/participation.py).
+    part_errors, participating = check_participation(doc)
+    all_errors += part_errors
     all_errors += duplicate_keys(text_path)
     all_errors += check_schema_versions()
 
@@ -126,6 +132,7 @@ def main(text_id: str) -> int:
         + (f"inflections={coll_stats['inflections']} " if coll_stats.get("inflections") else "")
         + (f"recensions={coll_stats['recensions']} " if coll_stats.get("recensions") else "")
         + (f"speakers={attributed}/{n_verses} " if n_verses else "")
+        + (f"participation={participating} " if participating else "")
     )
     subject = (
         f"text={text_id} words={n_words} langs={','.join(langs) or '-'} "

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.9.0",
+  "schema_version": "0.10.0",
   "id": "ordinarium.pax-domini",
   "title": "Pax Dómini",
   "category": "ordinarium",
@@ -44,7 +44,17 @@
         { "id": "w007", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" } },
         { "id": "w008", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
         { "id": "w009", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } }
-      ]
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     }
   ]
 }
