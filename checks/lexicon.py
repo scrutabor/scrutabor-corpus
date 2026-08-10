@@ -26,6 +26,29 @@ SENSE_ENTRY_KEYS = {"senses", "note", "derivatives", "analysis"}
 # "-a") and the deponent auxiliary carry no accent rules of their own.
 HEAD_TOKEN_RE = re.compile(r"^[A-Za-zÁÉÍÓÚÝáéíóúýÆæŒœǼǽËë]+$")
 
+# A lemma note is rendered on a dictionary page, without the verse or prayer
+# in which any one token occurs. Deictic prose therefore has no antecedent
+# there and usually signals that occurrence-specific commentary leaked out of
+# a gloss function. Explicit references such as "In Psalm 118:34" remain
+# available when naming the context is genuinely useful.
+CONTEXT_DEIXIS = {
+    "pl": (
+        r"\bw tym (?:wersecie|zdaniu|tekście|fragmencie|miejscu|psalmie|hymnie|kontekście)\b",
+        r"\bw tej (?:modlitwie|pieśni|antyfonie|formule|frazie)\b",
+        r"\btu(?:taj)?\s+(?:jednak|nie|o|oznacza|nazywa|odnosi|jest|ma)\b",
+        r"\b(?:modlitwa|psalmista|werset|tekst)\s+(?:nazywa|prosi|mówi|wskazuje|odnosi|opisuje)\b",
+        r"\b(?:prosi się|mówi się tu)\b",
+    ),
+    "en": (
+        r"\bin this (?:verse|sentence|text|passage|place|psalm|hymn|prayer|"
+        r"invocation|dialogue|context|antiphon|formula|phrase)\b",
+        r"\bhere (?:it|the|this|that)\b",
+        r"\bthe (?:prayer|psalmist|verse|text)\s+(?:calls|asks|says|names|"
+        r"indicates|refers|describes)\b",
+        r"\bthe \w+(?:\s+\w+){0,2}\s+(?:is|are) asked\b",
+    ),
+}
+
 
 def load_lexicon(corpus_dir):
     """Returns (lemmata_entries, {lang: entries}, errors). Missing files are
@@ -134,6 +157,13 @@ def lint_senses(lang, entries, lemmata):
                 errors.append(
                     f"lexicon:{lang}:{lemma}: banned terminology/typography "
                     f"{pat!r} (TERMINOLOGY.md)"
+                )
+        note = e.get("note", "")
+        for pat in CONTEXT_DEIXIS.get(lang, ()):
+            if re.search(pat, note, re.IGNORECASE):
+                errors.append(
+                    f"lexicon:{lang}:{lemma}: context-dependent deixis {pat!r} — "
+                    "move occurrence-specific prose to a gloss function or name the context"
                 )
     missing = sorted(set(lemmata) - set(entries))
     extra = sorted(set(entries) - set(lemmata))

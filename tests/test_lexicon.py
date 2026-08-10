@@ -90,6 +90,34 @@ class TestSenses:
         found = lint_senses("pl", {"ghost": {"senses": ["x"]}}, {})
         assert any("unknown lemmas" in e for e in found)
 
+    def test_a_lemma_note_cannot_point_to_an_absent_verse(self):
+        entry = {"senses": ["zrozumienie"], "note": "W tym wersecie jest darem."}
+        found = lint_senses("pl", {"intellectus": entry}, {"intellectus": {}})
+        assert any("context-dependent deixis" in e for e in found)
+
+    def test_contextual_here_is_rejected_in_english_too(self):
+        entry = {"senses": ["refuge"], "note": "Here it names a place."}
+        found = lint_senses("en", {"refugium": entry}, {"refugium": {}})
+        assert any("context-dependent deixis" in e for e in found)
+
+    def test_an_unnamed_prayer_is_not_a_context_anchor(self):
+        entry = {"senses": ["Eve"], "note": "The prayer calls us her children."}
+        found = lint_senses("en", {"Eva": entry}, {"Eva": {}})
+        assert any("context-dependent deixis" in e for e in found)
+
+    def test_an_impersonal_local_petition_is_rejected(self):
+        entry = {"senses": ["ustanowić"], "note": "Prosi się o utwierdzenie słowa."}
+        found = lint_senses("pl", {"statuo": entry}, {"statuo": {}})
+        assert any("context-dependent deixis" in e for e in found)
+
+    def test_an_explicitly_named_context_is_self_contained(self):
+        entry = {"senses": ["understanding"], "note": "In Psalm 118:34 it is a gift."}
+        assert lint_senses("en", {"intellectus": entry}, {"intellectus": {}}) == []
+
+    def test_word_internal_here_is_not_mistaken_for_verse_context(self):
+        entry = {"senses": ["bright"], "note": "The prefix here is intensive."}
+        assert lint_senses("en", {"praeclarus": entry}, {"praeclarus": {}}) == []
+
 
 class TestOrphans:
     def test_an_entry_no_text_uses_is_reported(self):

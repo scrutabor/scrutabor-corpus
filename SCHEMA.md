@@ -327,7 +327,10 @@ entries{ <lemma>: { senses[], note?, derivatives?, analysis? } }
   NEVER copied from protected dictionaries.
 - `note`: optional lemma-level remark (etymology, register, usage) — facts
   true of the word everywhere. What used to be repeated on every token of
-  `amen` lives here now.
+  `amen` lives here now. A lemma page supplies no verse or prayer as an
+  antecedent, so deictic wording such as “w tym wersecie” / “in this verse”
+  is forbidden. Move that claim to the occurrence's `function`, or name an
+  indispensable context explicitly (“In Psalm 118:34…”).
 - `derivatives` (since 0.6.0): optional, 1–6 words of the TARGET language
   genuinely derived from or borrowed via this lemma (confíteor →
   konfesjonał; panis → companion) — memory hooks for learners. Only real
