@@ -113,10 +113,33 @@ PATER = ("ordinarium.pater-noster", ("s05", "s06", "s07", "s08", "s09", "s10", "
 # is true of them.
 MASS_CATEGORIES = {"ordinarium", "proprium"}
 
-# n. 31 d — the fourth degree at low Mass names these four parts of the
-# Proper. The Alleluia belongs to the sung third degree instead, exactly as
-# n. 25 c enumerates the Proper sung by all.
+# n. 31 d — the fourth degree at low Mass, and the law names FOUR pieces:
+# "Introitum; Graduale; Offertorium; Communionem". The Alleluia is not among
+# them, and is not an oversight of ours: n. 25 c gives the faithful the
+# Proper they can SING, which is the wider grant.
 LECTA_IV_PROPER = {"introitus", "graduale", "offertorium", "communio"}
+
+# n. 25 c — "partes quoque ex Proprio Missae cantare valeant". The law names
+# no list here, so this one does: the CHANTS of the Proper, which is what
+# can be sung by a congregation. The Tract and the Sequence are on it
+# because the year has them (a Tract from Septuagesima to Easter, a Sequence
+# on a few days) even though this corpus carries neither yet.
+CANTU_III_PROPER = {
+    "introitus",
+    "graduale",
+    "alleluia",
+    "tractus",
+    "sequentia",
+    "offertorium",
+    "communio",
+}
+
+# What the Proper holds that is nobody's to sing: the orations, which are the
+# celebrant's, and the readings, which are read TO the people. Named rather
+# than left to fall through, so that a genus this module has never seen is an
+# error and not a silence — the corpus's rule is that it knows what it does
+# not know.
+PROPER_SPOKEN = {"collecta", "secreta", "postcommunio", "epistola", "evangelium", "lectio"}
 
 
 def fold(text: str) -> str:
@@ -136,6 +159,23 @@ LECTA_I_FOLDED = {fold(x) for x in LECTA_I}
 CANTU_I_FOLDED = {fold(x) for x in CANTU_I}
 
 
+def proper_genus(text_id: str) -> str:
+    """The kind of piece a proper text is, from the last part of its id."""
+    return text_id.rsplit("-", 1)[-1]
+
+
+def unknown_genus(doc: dict[str, Any]) -> str | None:
+    """A proper whose genus this module has no ruling for. Reported, never
+    silently unattributed: the law covers the whole Proper, so a piece it
+    cannot place means this module is behind the corpus, not that the piece
+    is nobody's."""
+    if doc.get("category") != "proprium":
+        return None
+    piece = proper_genus(doc["id"])
+    known = LECTA_IV_PROPER | CANTU_III_PROPER | PROPER_SPOKEN
+    return None if piece in known else piece
+
+
 def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
     """What the law gives the faithful in this segment. Empty if nothing."""
     if doc.get("category") not in MASS_CATEGORIES or seg.get("type") == "rubric":
@@ -145,12 +185,19 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
     out: dict[str, Any] = {}
 
     if doc.get("category") == "proprium":
-        piece = text_id.rsplit("-", 1)[-1]
+        # The genus of the piece, and NOT the document's `sung` flag, which
+        # answers a different question: at a solemn Mass the Epistle and the
+        # Gospel are chanted too, and the people sing neither. What n. 25 c
+        # grants is the Proper's own chants.
+        piece = proper_genus(text_id)
         if piece in LECTA_IV_PROPER:
             out["lecta"] = {"gradus": 4, "source": f"{DMS} 31 d"}
-        if doc.get("sung"):
+        if piece in CANTU_III_PROPER:
             out["cantu"] = {"gradus": 3, "source": f"{DMS} 25 c"}
-        return out
+        # and then fall through: a proper text can still carry a response.
+        # The one the reader answers after the Gospel — Laus tibi, Christe —
+        # stands in n. 31 a's list and in no other, and it lives here or
+        # nowhere.
 
     if speaker == "minister":
         # n. 31 b covers every part the rubrics give the server; n. 31 a
@@ -231,6 +278,13 @@ if __name__ == "__main__":
 def check_doc(doc: dict[str, Any]) -> tuple[list[str], int]:
     """For run_checks: what this text carries against what the law gives."""
     errors, attributed = [], 0
+    stray = unknown_genus(doc)
+    if stray:
+        errors.append(
+            f"proper genus {stray!r} has no ruling in checks/participation.py — "
+            f"nn. 25 c and 31 d cover the whole Proper, so this is a gap in the "
+            f"module rather than a piece belonging to nobody"
+        )
     for seg in doc.get("segments", []):
         want, have = derive(doc, seg), seg.get("participation") or {}
         if want != have:

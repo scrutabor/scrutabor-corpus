@@ -119,6 +119,44 @@ class TestTheProper:
     def test_a_prayer_of_the_proper_takes_neither_attribution(self):
         assert part("proprium.dominica-i-adventus-collecta", "s01") == {}
 
+    def test_the_readings_are_read_TO_the_people_at_either_mass(self):
+        # The rule keys on the genus of the piece and not on the document's
+        # `sung` flag, which answers a different question: at a solemn Mass
+        # the Epistle and the Gospel are chanted, and the people sing
+        # neither. Marking either sung must not hand it to them.
+        for piece in ("epistola", "evangelium"):
+            doc = text(f"proprium.dominica-i-adventus-{piece}")
+            doc["sung"] = True
+            assert derive(doc, doc["segments"][0]) == {}, piece
+
+    def test_a_response_inside_a_proper_still_gets_its_own_title(self):
+        # Laus tibi, Christe stands in n. 31 a and in no other list, and it
+        # is the answer after the GOSPEL — so it can only ever live in a
+        # proper text. The proper rules must not swallow the segment before
+        # the response rules see it.
+        doc = text("proprium.dominica-i-adventus-evangelium")
+        response = {
+            "id": "s99",
+            "type": "verse",
+            "speaker": "minister",
+            "words": [
+                {"id": "w1", "form": "Laus"},
+                {"id": "w2", "form": "tibi"},
+                {"id": "w3", "form": "Christe", "post": "."},
+            ],
+        }
+        assert derive(doc, response) == {
+            "lecta": {"gradus": 1, "source": "DMS 31 a"},
+        }
+
+    def test_a_genus_the_module_has_never_seen_is_reported(self):
+        # n. 25 c grants the whole Proper, so a piece with no ruling means
+        # this module is behind the corpus — not that the piece is nobody's.
+        doc = text("proprium.dominica-i-adventus-graduale")
+        doc["id"] = "proprium.dominica-i-adventus-tropus"
+        errors, _ = check_doc(doc)
+        assert any("no ruling" in e for e in errors), errors
+
 
 class TestThePaterNoster:
     """n. 32 — the whole prayer, and only the prayer."""
