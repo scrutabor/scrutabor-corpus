@@ -160,6 +160,18 @@ VOICE_RULINGS: dict[str, tuple[str, str]] = {
     "ordinarium.quod-ore-sumpsimus": (SECRETO, "RG 511 — cetera"),
     "ordinarium.corpus-tuum": (SECRETO, "RG 511 — cetera"),
     "ordinarium.placeat-tibi": (SECRETO, "RG 511 — cetera"),
+    # The Proper of the pilot formulary. RG 511 names the chants and lessons
+    # among the audible parts, while its closing rule governs the Secret.
+    "proprium.dominica-i-adventus-introitus": (CLARA, "RG 511 b"),
+    "proprium.dominica-i-adventus-collecta": (CLARA, "RG 511 d"),
+    "proprium.dominica-i-adventus-epistola": (CLARA, "RG 511 e"),
+    "proprium.dominica-i-adventus-graduale": (CLARA, "RG 511 e"),
+    "proprium.dominica-i-adventus-alleluia": (CLARA, "RG 511 e"),
+    "proprium.dominica-i-adventus-evangelium": (CLARA, "RG 511 e"),
+    "proprium.dominica-i-adventus-offertorium": (CLARA, "RG 511 g"),
+    "proprium.dominica-i-adventus-secreta": (SECRETO, "RG 511 — cetera"),
+    "proprium.dominica-i-adventus-communio": (CLARA, "RG 511 i"),
+    "proprium.dominica-i-adventus-postcommunio": (CLARA, "RG 511 i"),
 }
 
 # Segments whose voice differs from their text's, and why. These are the
@@ -266,22 +278,30 @@ def witness_ranges(text_id: str) -> list[tuple[Path, int, int]]:
         # also "lines 5, 11-12" where the transcription skips a line. Take
         # the span from the first number to the last — a superset of the
         # text, which is all this needs to stop reading the whole book.
-        m = re.search(r"#\s*path:[^(]*\(lines ([\d,\s-]+)\)", header)
-        if not m:
-            continue
-        numbers = [int(n) for n in re.findall(r"\d+", m.group(1))]
-        if not numbers:
-            continue
-        declared = re.search(r"#\s*path:\s*(\S+)", header)
-        if not declared:
-            continue  # a witness that names no source file records no range
-        src = re.search(r"([\w.-]+\.txt)", declared.group(1))
-        raw = CORPUS / "witnesses" / "raw"
-        # the raw archives are named for the file they came from; match on stem
-        for candidate in sorted(raw.glob("*.txt")):
-            if src and Path(src.group(1)).stem.lower() in candidate.stem.lower().replace("-", ""):
-                out.append((candidate, min(numbers), max(numbers)))
-                break
+        declarations = re.finditer(r"#\s*path:\s*(\S+)[^(]*\(lines ([\d,\s-]+)\)", header)
+        for declared in declarations:
+            numbers = [int(n) for n in re.findall(r"\d+", declared.group(2))]
+            if not numbers:
+                continue
+            src = re.search(r"([\w.-]+\.txt)", declared.group(1))
+            raw = CORPUS / "witnesses" / "raw"
+            # The raw archives are named for the file they came from. Compare
+            # punctuation-free stems so a source such as Adv1-0.txt still
+            # finds do-Adv1-0.txt.
+            if not src:
+                continue
+            source_path = Path(declared.group(1))
+            source_key = re.sub(r"[^a-z0-9]", "", source_path.stem.lower())
+            parent_key = re.sub(r"[^a-z0-9]", "", source_path.parent.name.lower())
+            candidates = []
+            for candidate in sorted(raw.glob("*.txt")):
+                candidate_key = re.sub(r"[^a-z0-9]", "", candidate.stem.lower())
+                if source_key and source_key in candidate_key:
+                    parent_match = int(bool(parent_key and parent_key in candidate_key))
+                    candidates.append((parent_match, candidate))
+            if candidates:
+                best = max(candidates, key=lambda item: item[0])[1]
+                out.append((best, min(numbers), max(numbers)))
     return out
 
 
@@ -390,7 +410,8 @@ def align_speakers(doc, lines) -> dict[str, str]:
 
 
 def propose(doc, disagreements: list[str] | None = None) -> dict[str, dict]:
-    lines = marked_lines(doc["id"], mass=doc["id"].startswith("ordinarium."))
+    is_mass = doc.get("category") in {"ordinarium", "proprium"}
+    lines = marked_lines(doc["id"], mass=is_mass)
     positional = align_speakers(doc, lines)
     # If the declared range no longer holds this text's words, the markers
     # read out of it are the wrong markers, and the rule that supplies the
@@ -421,7 +442,7 @@ def propose(doc, disagreements: list[str] | None = None) -> dict[str, dict]:
             # See span_covers — a stale range makes the markers run out,
             # and this rule would then hand the celebrant a line the book
             # marks otherwise.
-            elif sourced and doc["id"].startswith("ordinarium."):
+            elif sourced and is_mass:
                 # The Ordo prints the CELEBRANT's text unmarked and gives
                 # every other voice a marker — S. and M., V. and R., O. for
                 # all — as the archived source shows: the ministers'

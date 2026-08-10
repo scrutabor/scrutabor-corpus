@@ -115,6 +115,30 @@ class TestAnInflectedName:
         assert any("SUBSTANTIVE divergence" in e for e in errors)
 
 
+class TestAnOmittedWord:
+    def test_a_witness_omission_requires_an_explicit_ruling(self, tmp_path):
+        pages = {"a": "Ad te Domine levavi", "b": "Ad te levavi"}
+        app = [
+            {
+                "at": "w003",
+                "ours": "Domine",
+                "witnesses": {"b": ""},
+                "class": "omission",
+                "ruling": "Retained with the primary printed witness.",
+            }
+        ]
+        errors, _, stats = collate(
+            a_text("Ad", "te", "Domine", "levavi"), witnesses(tmp_path, pages, app)
+        )
+        assert errors == []
+        assert stats["omissions"] == 1
+
+    def test_an_unruled_omission_still_fails(self, tmp_path):
+        pages = {"a": "Ad te Domine levavi", "b": "Ad te levavi"}
+        errors, _, _ = collate(a_text("Ad", "te", "Domine", "levavi"), witnesses(tmp_path, pages))
+        assert any("length mismatch" in error for error in errors)
+
+
 class TestAStaleRuling:
     """A ruling that matches nothing on the page it names is a claim about
     that page which the page does not support. This was a warning, and

@@ -131,6 +131,7 @@ def main(text_id: str) -> int:
         + (f"orthographic={coll_stats['orthographic']} " if coll_stats.get("orthographic") else "")
         + (f"inflections={coll_stats['inflections']} " if coll_stats.get("inflections") else "")
         + (f"recensions={coll_stats['recensions']} " if coll_stats.get("recensions") else "")
+        + (f"omissions={coll_stats['omissions']} " if coll_stats.get("omissions") else "")
         + (f"speakers={attributed}/{n_verses} " if n_verses else "")
         + (f"participation={participating} " if participating else "")
     )

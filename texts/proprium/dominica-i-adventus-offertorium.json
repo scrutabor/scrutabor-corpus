@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.10.0",
+  "id": "proprium.dominica-i-adventus-offertorium",
+  "title": "Ad te, Dómine, levávi",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-i-adventus",
+  "sung": true,
+  "status": "working-edition",
+  "notes": "Part of the proper for the First Sunday of Advent. The biblical or liturgical citation and the source boundary are recorded in the witness files.",
+  "source": {
+    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+    "witnesses": "witnesses/proprium.dominica-i-adventus-offertorium/",
+    "apparatus": "witnesses/proprium.dominica-i-adventus-offertorium/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" } },
+        { "id": "w002", "form": "te", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w003", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w004", "form": "levávi", "lemma": "levo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w005", "form": "ánimam", "lemma": "anima", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w006", "form": "meam", "post": ":", "lemma": "meus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" } },
+        { "id": "w007", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w008", "form": "meus", "post": ",", "lemma": "meus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" } },
+        { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w010", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w011", "form": "confído", "post": ",", "lemma": "confido", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w012", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w013", "form": "erubéscam", "post": ":", "lemma": "erubesco", "morph": { "pos": "verb", "person": 1, "number": "sg", "voice": "act", "conj": 3 }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
+        { "id": "w014", "form": "neque", "lemma": "neque", "morph": { "pos": "conj" } },
+        { "id": "w015", "form": "irrídeant", "lemma": "irrideo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 } },
+        { "id": "w016", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w017", "form": "inimíci", "lemma": "inimicus", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w018", "form": "mei", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" } },
+        { "id": "w019", "form": "étenim", "lemma": "etenim", "morph": { "pos": "conj" } },
+        { "id": "w020", "form": "univérsi", "post": ",", "lemma": "universus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" } },
+        { "id": "w021", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
+        { "id": "w022", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w023", "form": "exspéctant", "post": ",", "lemma": "exspecto", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w024", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w025", "form": "confundéntur", "post": ".", "lemma": "confundo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 3 } }
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d"
+        },
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      }
+    }
+  ]
+}

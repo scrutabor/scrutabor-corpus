@@ -57,6 +57,7 @@ witnesses agree. The mechanism makes an emendation declarable, checkable
 and counted; keeping it honest is the transcription discipline, not the
 checker."""
 
+import difflib
 import json
 import re
 from pathlib import Path
@@ -167,6 +168,7 @@ def collate(doc, witness_dir: Path):
     n_orthographic = 0
     n_inflection = 0
     n_recensions = 0
+    n_omissions = 0
     n_partial = 0
     for wf in witness_files:
         meta, text = load_witness(wf)
@@ -263,6 +265,42 @@ def collate(doc, witness_dir: Path):
             else ours_sub_w
         )
         wit_sub = substantive(text, fold_ji=fold_ji, fold_xs=fold_xs).split()
+        if len(wit_sub) != len(ours_cmp):
+            # A full witness may omit a word which the primary witness and
+            # this edition print. That is a real substantive divergence, so
+            # it passes only through an explicit apparatus ruling whose
+            # witness reading is the empty string.
+            wit_raw_before = text.split()
+            rebuilt: list[str] = []
+            valid = True
+            matcher = difflib.SequenceMatcher(None, ours_cmp, wit_sub)
+            for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+                if tag == "equal":
+                    rebuilt.extend(wit_raw_before[j1:j2])
+                    continue
+                if tag == "delete":
+                    for i in range(i1, i2):
+                        word_id, ours_tok = toks_w[i]
+                        entry = adjudicated.get((word_id, wid))
+                        if not (
+                            entry
+                            and entry.get("class") == "omission"
+                            and entry.get("ours") == ours_tok
+                            and entry.get("witnesses", {}).get(wid) == ""
+                        ):
+                            valid = False
+                            break
+                        rebuilt.append(ours_tok)
+                        used.add((word_id, wid))
+                        n_omissions += 1
+                    if not valid:
+                        break
+                    continue
+                valid = False
+                break
+            if valid:
+                text = " ".join(rebuilt)
+                wit_sub = substantive(text, fold_ji=fold_ji, fold_xs=fold_xs).split()
         if wit_sub != ours_cmp:
             if len(wit_sub) != len(ours_cmp):
                 errors.append(
@@ -370,5 +408,6 @@ def collate(doc, witness_dir: Path):
         "orthographic": n_orthographic,
         "inflections": n_inflection,
         "recensions": n_recensions,
+        "omissions": n_omissions,
     }
     return errors, warnings, stats

@@ -17,7 +17,7 @@ the file over the correct reading.
 import json
 from pathlib import Path
 
-from checks.attribute import span_covers
+from checks.attribute import propose, span_covers, witness_ranges
 
 CORPUS = Path(__file__).resolve().parent.parent
 
@@ -80,6 +80,38 @@ class TestSpanCoverage:
         monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
         line = "una cum fámulo tuo Papa nostro et Antístite nostro et ómnibus"
         assert span_covers(a_text(line)) is True
+
+    def test_a_hyphenated_source_filename_finds_its_raw_archive(self, tmp_path, monkeypatch):
+        witness = tmp_path / "witnesses" / "proprium.test"
+        raw = tmp_path / "witnesses" / "raw"
+        witness.mkdir(parents=True)
+        raw.mkdir(parents=True)
+        (witness / "do.txt").write_text(
+            "# path: web/www/missa/Latin/Tempora/Adv1-0.txt (lines 12-18)\n",
+            encoding="utf-8",
+        )
+        archived = raw / "do-Adv1-0.txt"
+        archived.write_text("source\n", encoding="utf-8")
+        monkeypatch.setattr("checks.attribute.CORPUS", tmp_path)
+        assert witness_ranges("proprium.test") == [(archived, 12, 18)]
+
+
+class TestProperAttribution:
+    def test_the_proper_is_inside_the_mass(self, monkeypatch):
+        doc = {
+            "id": "proprium.dominica-i-adventus-communio",
+            "category": "proprium",
+            "segments": [
+                {
+                    "id": "s01",
+                    "type": "verse",
+                    "words": [{"id": "w001", "form": "Dóminus"}],
+                }
+            ],
+        }
+        monkeypatch.setattr("checks.attribute.marked_lines", lambda _id, mass: [])
+        monkeypatch.setattr("checks.attribute.span_covers", lambda _doc: True)
+        assert propose(doc) == {"s01": {"speaker": "sacerdos", "voice": "clara"}}
 
 
 class TestTheCorpusItself:

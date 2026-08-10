@@ -98,6 +98,28 @@ class TestTheOrdinary:
         assert servers["cantu"] == {"gradus": 2, "source": "DMS 25 b"}
 
 
+class TestTheProper:
+    """nn. 31 d and 25 c — the Proper recited or sung by the faithful."""
+
+    def test_the_four_recited_propers_are_fourth_degree(self):
+        assert part("proprium.dominica-i-adventus-introitus", "s01") == {
+            "lecta": {"gradus": 4, "source": "DMS 31 d"},
+            "cantu": {"gradus": 3, "source": "DMS 25 c"},
+        }
+        assert part("proprium.dominica-i-adventus-graduale", "s01")["lecta"] == {
+            "gradus": 4,
+            "source": "DMS 31 d",
+        }
+
+    def test_the_alleluia_is_sung_but_not_in_the_recited_fourth_degree(self):
+        assert part("proprium.dominica-i-adventus-alleluia", "s02") == {
+            "cantu": {"gradus": 3, "source": "DMS 25 c"}
+        }
+
+    def test_a_prayer_of_the_proper_takes_neither_attribution(self):
+        assert part("proprium.dominica-i-adventus-collecta", "s01") == {}
+
+
 class TestThePaterNoster:
     """n. 32 — the whole prayer, and only the prayer."""
 

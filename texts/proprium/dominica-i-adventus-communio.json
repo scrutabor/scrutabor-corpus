@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.10.0",
+  "id": "proprium.dominica-i-adventus-communio",
+  "title": "Dóminus dabit benignitátem",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-i-adventus",
+  "sung": true,
+  "status": "working-edition",
+  "notes": "Part of the proper for the First Sunday of Advent. The biblical or liturgical citation and the source boundary are recorded in the witness files.",
+  "source": {
+    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. The witnesses agree with zero divergence, so this text carries no apparatus.",
+    "witnesses": "witnesses/proprium.dominica-i-adventus-communio/"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w002", "form": "dabit", "lemma": "do", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w003", "form": "benignitátem", "post": ":", "lemma": "benignitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w006", "form": "nostra", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" } },
+        { "id": "w007", "form": "dabit", "lemma": "do", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w008", "form": "fructum", "lemma": "fructus", "morph": { "case": "acc", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w009", "form": "suum", "post": ".", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" } }
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d"
+        },
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      }
+    }
+  ]
+}

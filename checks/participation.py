@@ -111,7 +111,12 @@ PATER = ("ordinarium.pater-noster", ("s05", "s06", "s07", "s08", "s09", "s10", "
 # are outside nn. 25 and 31, and take no attribution from it: an absent
 # `participation` says the sources have not been read for that segment, which
 # is true of them.
-MASS = "ordinarium"
+MASS_CATEGORIES = {"ordinarium", "proprium"}
+
+# n. 31 d — the fourth degree at low Mass names these four parts of the
+# Proper. The Alleluia belongs to the sung third degree instead, exactly as
+# n. 25 c enumerates the Proper sung by all.
+LECTA_IV_PROPER = {"introitus", "graduale", "offertorium", "communio"}
 
 
 def fold(text: str) -> str:
@@ -133,11 +138,19 @@ CANTU_I_FOLDED = {fold(x) for x in CANTU_I}
 
 def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
     """What the law gives the faithful in this segment. Empty if nothing."""
-    if doc.get("category") != MASS or seg.get("type") == "rubric":
+    if doc.get("category") not in MASS_CATEGORIES or seg.get("type") == "rubric":
         return {}
     text_id, speaker = doc["id"], seg.get("speaker")
     said = fold(segment_text(seg))
     out: dict[str, Any] = {}
+
+    if doc.get("category") == "proprium":
+        piece = text_id.rsplit("-", 1)[-1]
+        if piece in LECTA_IV_PROPER:
+            out["lecta"] = {"gradus": 4, "source": f"{DMS} 31 d"}
+        if doc.get("sung"):
+            out["cantu"] = {"gradus": 3, "source": f"{DMS} 25 c"}
+        return out
 
     if speaker == "minister":
         # n. 31 b covers every part the rubrics give the server; n. 31 a

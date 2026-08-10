@@ -219,6 +219,10 @@ in the LETTERS, and both need a ruling that quotes both readings:
   about spelling — so it is counted apart, as `inflections=N`, and the
   token is normally marked `review: disputed` as well, to reach the list
   an expert reads.
+- **`omission`** — a full witness lacks a word printed by this edition and
+  another full witness. Its witness reading is the empty string. The ruling
+  identifies the positive evidence for retaining the word. Reported as
+  `omissions=N`. An omission cannot be inferred from a partial witness.
 
 The remaining classes settle ACCIDENTALS — punctuation, capitalization,
 and accents — and are compared only against a witness that has not

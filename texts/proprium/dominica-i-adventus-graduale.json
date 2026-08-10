@@ -1,0 +1,73 @@
+{
+  "schema_version": "0.10.0",
+  "id": "proprium.dominica-i-adventus-graduale",
+  "title": "Univérsi, qui te exspéctant",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-i-adventus",
+  "sung": true,
+  "status": "working-edition",
+  "notes": "Part of the proper for the First Sunday of Advent. The biblical or liturgical citation and the source boundary are recorded in the witness files.",
+  "source": {
+    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. The witnesses agree with zero divergence, so this text carries no apparatus.",
+    "witnesses": "witnesses/proprium.dominica-i-adventus-graduale/"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Univérsi", "post": ",", "lemma": "universus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" } },
+        { "id": "w002", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
+        { "id": "w003", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w004", "form": "exspéctant", "post": ",", "lemma": "exspecto", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w005", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w006", "form": "confundéntur", "post": ",", "lemma": "confundo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 3 } },
+        { "id": "w007", "form": "Dómine", "post": ".", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } }
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d"
+        },
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w008", "form": "Vias", "lemma": "via", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w009", "form": "tuas", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" } },
+        { "id": "w010", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w011", "form": "notas", "lemma": "notus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" } },
+        { "id": "w012", "form": "fac", "lemma": "facio", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w013", "form": "mihi", "post": ":", "lemma": "ego", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
+        { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w015", "form": "sémitas", "lemma": "semita", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w016", "form": "tuas", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" } },
+        { "id": "w017", "form": "édoce", "lemma": "edoceo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w018", "form": "me", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } }
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d"
+        },
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      }
+    }
+  ]
+}

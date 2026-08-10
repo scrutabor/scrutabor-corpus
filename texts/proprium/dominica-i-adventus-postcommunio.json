@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.10.0",
+  "id": "proprium.dominica-i-adventus-postcommunio",
+  "title": "Suscipiámus, Dómine",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-i-adventus",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "Part of the proper for the First Sunday of Advent. The biblical or liturgical citation and the source boundary are recorded in the witness files. The two-word Per Dóminum in the Secret and Postcommunion is the abbreviation printed on the proper page, not a silently expanded common conclusion.",
+  "source": {
+    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+    "witnesses": "witnesses/proprium.dominica-i-adventus-postcommunio/",
+    "apparatus": "witnesses/proprium.dominica-i-adventus-postcommunio/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Suscipiámus", "post": ",", "lemma": "suscipio", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w002", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w003", "form": "misericórdiam", "lemma": "misericordia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w004", "form": "tuam", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" } },
+        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w006", "form": "médio", "lemma": "medius", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" } },
+        { "id": "w007", "form": "templi", "lemma": "templum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w008", "form": "tui", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" } },
+        { "id": "w009", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "reparatiónis", "lemma": "reparatio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w011", "form": "nostræ", "lemma": "noster", "morph": { "case": "gen", "gender": "f", "number": "sg", "pos": "adj" } },
+        { "id": "w012", "form": "ventúra", "lemma": "venio", "morph": { "pos": "verb", "case": "acc", "number": "pl", "gender": "n", "tense": "fut", "mood": "part", "voice": "act", "conj": 4 } },
+        { "id": "w013", "form": "solémnia", "lemma": "solemnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w014", "form": "cóngruis", "lemma": "congruus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" } },
+        { "id": "w015", "form": "honóribus", "lemma": "honor", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w016", "form": "præcedámus", "post": ".", "lemma": "praecedo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w017", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" } },
+        { "id": "w018", "form": "Dóminum", "post": ".", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } }
+      ]
+    }
+  ]
+}
