@@ -3,14 +3,21 @@
   "text": "orationes.ave-maria",
   "lang": "pl",
   "status": "working-edition",
-  "about": "Pierwsza część Pozdrowienia anielskiego łączy słowa Gabriela (Łk 1, 28) i Elżbiety (Łk 1, 42). Prośba rozpoczynająca się od „Sancta María” została dołączona później. Pełną formę modlitwy oficjalnie przyjęto w Brewiarzu Rzymskim z 1568 roku.",
+  "about": "Pierwsza część Pozdrowienia anielskiego łączy słowa Gabriela (Łk 1, 28) i Elżbiety (Łk 1, 42). Druga część jest prośbą skierowaną do Maryi.",
+  "about_citations": [
+    {
+      "title": "Nova Vulgata, Evangelium secundum Lucam",
+      "locator": "1, 28; 1, 42",
+      "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-lucam_lt.html#1"
+    }
+  ],
   "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
   "segments": {
     "s01": { "translation": "Zdrowaś Maryjo, łaski pełna, Pan z Tobą, błogosławionaś Ty między niewiastami i błogosławiony owoc żywota Twojego, Jezus." },
     "s02": { "translation": "Święta Maryjo, Matko Boża, módl się za nami grzesznymi teraz i w godzinę śmierci naszej. Amen." }
   },
   "words": {
-    "w001": { "gloss": "Zdrowaś", "function": "Pozdrowienie anioła w Łk 1, 28." },
+    "w001": { "gloss": "Zdrowaś", "function": "Pozdrowienie anioła w Łk 1, 28.", "function_citations": [{ "title": "Biblia Sacra Vulgata", "locator": "Luke 1:28" }] },
     "w002": { "gloss": "Maryjo" },
     "w003": { "gloss": "łaską", "function": "Ablativus zależny od „plena” (w004)." },
     "w004": { "gloss": "pełna", "function": "Zgadza się z „María” (w002) i łączy z „grátia” (w003)." },
