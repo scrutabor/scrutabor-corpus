@@ -63,11 +63,22 @@ analysis_defaults, segments[]
   pointer is bidirectional: if the file exists, `source.apparatus` must name
   it and the file's `text` must name the document; a pointer to no file is
   also an error.
+- An apparatus carries a derived `summary` beside its prose `note`:
+  `entries` is the length of `adjudicated`, and `classes` is the sorted set
+  of classes those entries use. `python -m checks.apparatus --write`
+  regenerates every summary; the corpus gate rejects a stale one. Arithmetic
+  and class membership therefore never depend on copied prose.
 - A witness header may identify one or more archived source spans in its
   `path` value, using `line N` or `lines N-M`; wrapped values and two-file
   declarations are read in full. Once a header claims source lines, syntax
   the verifier cannot parse fails closed. Only a witness with no line
   declaration at all may use the deliberate whole-archive fallback.
+- Every witness with such a declaration and a matching local raw archive is
+  also checked as a transcription. The check preserves letters, accents,
+  capitalization, ligatures, and comma placement while removing only declared
+  source framing (speaker markers, rubrics, runtime calls, and name slots).
+  Composed witnesses are checked clause by clause against the ordered union of
+  their named spans. A declared raw path with no local archive is an error.
 - `analysis_defaults`: the `analysis` object assumed for every word/segment
   that does not carry its own (`confidence`: high|medium|low, `sources`:
   [whitakers|collatinus|editorial|treebank|expert|<witness-id>], `review`:

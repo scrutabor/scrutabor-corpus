@@ -321,6 +321,25 @@ def _declares_ranges(text_id: str) -> bool:
     )
 
 
+def _raw_archive_for(declared_path: str) -> Path | None:
+    """Resolve one source path to the best matching local raw archive.
+
+    The archive names add a source prefix (usually ``do-`` or ``mr-``),
+    while the headers retain the upstream path. Punctuation-free stems are
+    therefore the stable identity; a matching parent directory breaks ties.
+    """
+    source_path = Path(declared_path)
+    source_key = re.sub(r"[^a-z0-9]", "", source_path.stem.lower())
+    parent_key = re.sub(r"[^a-z0-9]", "", source_path.parent.name.lower())
+    candidates: list[tuple[int, Path]] = []
+    for candidate in sorted((CORPUS / "witnesses" / "raw").glob("*.txt")):
+        candidate_key = re.sub(r"[^a-z0-9]", "", candidate.stem.lower())
+        if source_key and source_key in candidate_key:
+            parent_match = int(bool(parent_key and parent_key in candidate_key))
+            candidates.append((parent_match, candidate))
+    return max(candidates, key=lambda item: item[0])[1] if candidates else None
+
+
 def witness_ranges(text_id: str) -> list[tuple[Path, int, int]]:
     """(raw file, first line, last line) for every declared source span."""
     out: list[tuple[Path, int, int]] = []
@@ -333,25 +352,9 @@ def witness_ranges(text_id: str) -> list[tuple[Path, int, int]]:
         # span.  It may include a rubric between the named lines; that is a
         # safe superset and avoids silently scanning the whole archive.
         for declared_path, numbers in _range_declarations(header):
-            src = re.search(r"([\w.-]+\.txt)", declared_path)
-            raw = CORPUS / "witnesses" / "raw"
-            # The raw archives are named for the file they came from. Compare
-            # punctuation-free stems so a source such as Adv1-0.txt still
-            # finds do-Adv1-0.txt.
-            if not src:
-                continue
-            source_path = Path(declared_path)
-            source_key = re.sub(r"[^a-z0-9]", "", source_path.stem.lower())
-            parent_key = re.sub(r"[^a-z0-9]", "", source_path.parent.name.lower())
-            candidates = []
-            for candidate in sorted(raw.glob("*.txt")):
-                candidate_key = re.sub(r"[^a-z0-9]", "", candidate.stem.lower())
-                if source_key and source_key in candidate_key:
-                    parent_match = int(bool(parent_key and parent_key in candidate_key))
-                    candidates.append((parent_match, candidate))
-            if candidates:
-                best = max(candidates, key=lambda item: item[0])[1]
-                out.append((best, min(numbers), max(numbers)))
+            raw = _raw_archive_for(declared_path)
+            if raw:
+                out.append((raw, min(numbers), max(numbers)))
     return out
 
 

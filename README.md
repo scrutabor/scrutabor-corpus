@@ -56,6 +56,7 @@ Run the checks locally (Python 3.10+, standard library only):
 
 ```bash
 python run_checks.py ordinarium.confiteor
+python -m checks.apparatus --write  # regenerate derived apparatus summaries
 ```
 
 The verdict line names its subject — text, word count, languages,

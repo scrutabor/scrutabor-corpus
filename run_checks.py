@@ -11,6 +11,7 @@ import json
 import sys
 from pathlib import Path
 
+from checks.apparatus import lint_apparatus_summary
 from checks.collate import collate
 from checks.lexicon import (
     check_orphans,
@@ -31,6 +32,7 @@ from checks.lint import (
     lint_text,
 )
 from checks.participation import check_doc as check_participation
+from checks.transcription import check_transcriptions
 
 # Before anything is written, not before anything is imported: the corpus
 # prints Latin and Polish and the default encoding of a piped stdout is not
@@ -119,6 +121,9 @@ def main(text_id: str) -> int:
         all_errors.append("no gloss layers found — refusing to pass on zero")
 
     witness_dir = CORPUS / "witnesses" / text_id
+    all_errors += lint_apparatus_summary(witness_dir / "apparatus.json")
+    transcription_errors, transcriptions_checked = check_transcriptions(witness_dir)
+    all_errors += transcription_errors
     coll_errors, coll_warnings, coll_stats = collate(doc, witness_dir)
     all_errors += coll_errors
     all_warnings += coll_warnings
@@ -136,6 +141,7 @@ def main(text_id: str) -> int:
         + (f"omissions={coll_stats['omissions']} " if coll_stats.get("omissions") else "")
         + (f"speakers={attributed}/{n_verses} " if n_verses else "")
         + (f"participation={participating} " if participating else "")
+        + (f"raw={transcriptions_checked} " if transcriptions_checked else "")
     )
     subject = (
         f"text={text_id} words={n_words} langs={','.join(langs) or '-'} "
