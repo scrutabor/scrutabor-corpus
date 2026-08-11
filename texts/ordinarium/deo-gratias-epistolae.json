@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.12.0",
+  "id": "ordinarium.deo-gratias-epistolae",
+  "title": "Deo grátias (post Epistolam)",
+  "category": "ordinarium",
+  "section": "missa-catechumenorum",
+  "variant": "missae",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The fixed response after the Epistle. DEO is dative and GRÁTIAS accusative plural in the elliptical expression grátias ágere: the verb is understood. The 1962 Ritus servandus assigns the response to the minister at low Mass. De musica sacra n. 31 a names it among the people's first-degree responses at low Mass, and n. 25 a does the same at sung Mass.",
+  "source": {
+    "method": "Compared across the three witnesses below: no substantive variation.",
+    "witnesses": "witnesses/ordinarium.deo-gratias-epistolae/"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "minister",
+      "words": [
+        { "id": "w001", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w002", "form": "grátias", "post": ".", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } }
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
+    }
+  ]
+}
