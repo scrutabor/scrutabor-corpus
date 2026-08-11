@@ -10,7 +10,7 @@ the most read prose in the layer.
 
 from typing import ClassVar
 
-from checks.lint import lint_citations, lint_gloss, lint_parity
+from checks.lint import lint_citations, lint_gloss, lint_notes, lint_parity
 
 TEXT = {
     "id": "orationes.test",
@@ -59,6 +59,74 @@ class TestTheIntroduction:
         # `about` arrived in 0.8.0 and is optional; a missing one must not
         # be read as an empty string that fails some other rule.
         assert lint_gloss(gloss(), TEXT) == []
+
+
+class TestNoteReferences:
+    def test_a_multiword_range_names_every_token(self):
+        text = {
+            **TEXT,
+            "notes": "DÓMINO DEO NOSTRO at w001-w003 is a dative phrase.",
+            "segments": [
+                {
+                    "id": "s01",
+                    "type": "verse",
+                    "words": [
+                        {"id": "w001", "form": "Dómino"},
+                        {"id": "w002", "form": "Deo"},
+                        {"id": "w003", "form": "nostro"},
+                    ],
+                }
+            ],
+        }
+        assert lint_notes(text) == []
+
+    def test_a_multiword_phrase_cannot_hide_behind_one_token(self):
+        text = {
+            **TEXT,
+            "notes": "DÓMINO DEO NOSTRO at w003-w003 is a dative phrase.",
+            "segments": [
+                {
+                    "id": "s01",
+                    "type": "verse",
+                    "words": [{"id": "w003", "form": "nostro"}],
+                }
+            ],
+        }
+        assert any("those tokens are nostro" in e for e in lint_notes(text))
+
+    def test_one_form_may_name_two_occurrences(self):
+        text = {
+            **TEXT,
+            "notes": "FRATRES at w001 and w003 is vocative at both places.",
+            "segments": [
+                {
+                    "id": "s01",
+                    "type": "verse",
+                    "words": [
+                        {"id": "w001", "form": "fratres"},
+                        {"id": "w003", "form": "fratres"},
+                    ],
+                }
+            ],
+        }
+        assert lint_notes(text) == []
+
+    def test_two_named_forms_may_use_two_separate_ids(self):
+        text = {
+            **TEXT,
+            "notes": "CORPUS and SANGUIS at w001 and w003 are nominative.",
+            "segments": [
+                {
+                    "id": "s01",
+                    "type": "verse",
+                    "words": [
+                        {"id": "w001", "form": "Corpus"},
+                        {"id": "w003", "form": "Sanguis"},
+                    ],
+                }
+            ],
+        }
+        assert lint_notes(text) == []
 
 
 class TestReaderFacingCitations:

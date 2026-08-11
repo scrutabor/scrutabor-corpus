@@ -59,7 +59,15 @@ analysis_defaults, segments[]
 - `source` (since 0.3.0): provenance — how the text entered the corpus,
   pointer to its `witnesses/<text-id>/` directory and `apparatus.json`
   (adjudicated accidental variants). Collation (checks/collate.py)
-  enforces zero substantive divergence from every witness.
+  enforces zero substantive divergence from every witness. The apparatus
+  pointer is bidirectional: if the file exists, `source.apparatus` must name
+  it and the file's `text` must name the document; a pointer to no file is
+  also an error.
+- A witness header may identify one or more archived source spans in its
+  `path` value, using `line N` or `lines N-M`; wrapped values and two-file
+  declarations are read in full. Once a header claims source lines, syntax
+  the verifier cannot parse fails closed. Only a witness with no line
+  declaration at all may use the deliberate whole-archive fallback.
 - `analysis_defaults`: the `analysis` object assumed for every word/segment
   that does not carry its own (`confidence`: high|medium|low, `sources`:
   [whitakers|collatinus|editorial|treebank|expert|<witness-id>], `review`:
@@ -238,6 +246,12 @@ profile, and not something to assert word by word.
 **A ruling that matches nothing the named witness prints is an error.**
 It is a claim about a page, recorded in a public apparatus, that the page
 does not support.
+
+The class applies to each named witness reading, not merely to the token.
+If two witnesses differ at the same token for different reasons, write two
+entries with disjoint `witnesses` maps. For example, *Joseph* against
+*Ioseph* is orthography, while *Iosepho* against indeclinable *Ioseph* is
+inflection; combining both readings under either label is refused.
 
 ### Witness corrigenda
 

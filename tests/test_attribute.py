@@ -95,6 +95,48 @@ class TestSpanCoverage:
         monkeypatch.setattr("checks.attribute.CORPUS", tmp_path)
         assert witness_ranges("proprium.test") == [(archived, 12, 18)]
 
+    def test_a_singular_line_declaration_is_read(self, tmp_path, monkeypatch):
+        witness = tmp_path / "witnesses" / "ordinarium.test"
+        raw = tmp_path / "witnesses" / "raw"
+        witness.mkdir(parents=True)
+        raw.mkdir(parents=True)
+        (witness / "do.txt").write_text(
+            "# path: web/www/missa/Latin/Ordo/Ordo.txt (line 38)\n",
+            encoding="utf-8",
+        )
+        archived = raw / "do-ordo-missae.txt"
+        archived.write_text("source\n", encoding="utf-8")
+        monkeypatch.setattr("checks.attribute.CORPUS", tmp_path)
+        assert witness_ranges("ordinarium.test") == [(archived, 38, 38)]
+
+    def test_a_wrapped_two_archive_declaration_reads_both(self, tmp_path, monkeypatch):
+        witness = tmp_path / "witnesses" / "ordinarium.test"
+        raw = tmp_path / "witnesses" / "raw"
+        witness.mkdir(parents=True)
+        raw.mkdir(parents=True)
+        (witness / "do.txt").write_text(
+            "# path: web/www/missa/Latin/Ordo/Ordo.txt (lines 365-366), and\n"
+            "#   web/www/missa/Latin/Ordo/Prayers.txt (lines\n"
+            "#   44-45)\n",
+            encoding="utf-8",
+        )
+        ordo = raw / "do-ordo-missae.txt"
+        prayers = raw / "do-ordo-prayers.txt"
+        ordo.write_text("source\n", encoding="utf-8")
+        prayers.write_text("source\n", encoding="utf-8")
+        monkeypatch.setattr("checks.attribute.CORPUS", tmp_path)
+        assert witness_ranges("ordinarium.test") == [(ordo, 365, 366), (prayers, 44, 45)]
+
+    def test_an_unreadable_declared_range_fails_closed(self, tmp_path, monkeypatch):
+        witness = tmp_path / "witnesses" / "ordinarium.test"
+        witness.mkdir(parents=True)
+        (witness / "do.txt").write_text(
+            "# path: Ordo.txt, line numbers to be supplied\n",
+            encoding="utf-8",
+        )
+        monkeypatch.setattr("checks.attribute.CORPUS", tmp_path)
+        assert span_covers(a_text("Introibo ad altare Dei")) is False
+
 
 class TestProperAttribution:
     def test_the_proper_is_inside_the_mass(self, monkeypatch):
@@ -127,10 +169,11 @@ class TestTheCorpusItself:
             for p in sorted((CORPUS / "texts").rglob("*.json"))
             if not span_covers(json.loads(p.read_text(encoding="utf-8")))
         ]
-        # Every one of them is a text taken from the archived Ordo Missae,
-        # which is where the hand-written ranges live. A stale range
-        # anywhere else would mean the fault is not the one this describes.
+        # Every stale result must come from a witness that actually declares
+        # source lines.  A text with no such declaration uses the deliberate
+        # whole-archive fallback and is not mislabeled as malformed
+        # provenance.
         for text_id in stale:
             wdir = CORPUS / "witnesses" / text_id
             headers = "".join(p.read_text(encoding="utf-8") for p in wdir.glob("*.txt"))
-            assert "do-ordo-missae.txt" in headers, text_id
+            assert "# path:" in headers and "line" in headers, text_id

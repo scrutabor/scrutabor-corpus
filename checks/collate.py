@@ -69,6 +69,7 @@ from .normalize import substantive
 # apparatus entry quoting both readings; they are counted apart so the
 # verdict line never reports a grammatical question as a spelling one.
 RULED_CLASSES = ("orthography", "inflection")
+ACCIDENTAL_CLASSES = ("accent", "capital-accent", "capitalization", "orthography", "punctuation")
 
 
 def _bare(token: str) -> str:
@@ -154,6 +155,21 @@ def collate(doc, witness_dir: Path):
         if app_path.exists()
         else {"adjudicated": []}
     )
+    expected_apparatus = f"witnesses/{doc['id']}/apparatus.json"
+    declared_apparatus = (doc.get("source") or {}).get("apparatus")
+    # Tiny synthetic documents in unit tests need no repository layout.
+    # Real corpus documents always carry ``source`` and therefore get the
+    # bidirectional pointer check.
+    if doc.get("source") is not None:
+        if app_path.exists():
+            if declared_apparatus != expected_apparatus:
+                errors.append(
+                    f"source.apparatus must point to {expected_apparatus!r} when that file exists"
+                )
+            if apparatus.get("text") != doc["id"]:
+                errors.append(f"apparatus text must be {doc['id']!r}")
+        elif declared_apparatus is not None:
+            errors.append(f"source.apparatus points to missing file {declared_apparatus!r}")
     adjudicated = {(e["at"], wid): e for e in apparatus["adjudicated"] for wid in e["witnesses"]}
 
     witness_files = sorted(p for p in witness_dir.glob("*.txt"))
@@ -364,7 +380,12 @@ def collate(doc, witness_dir: Path):
             if ours_tok == wit_tok or (word_id, wid) in used:
                 continue  # identical, or already ruled as an orthographic variant
             entry = adjudicated.get((word_id, wid))
-            if entry and entry["ours"] == ours_tok and entry["witnesses"][wid] == wit_tok:
+            if (
+                entry
+                and entry.get("class") in ACCIDENTAL_CLASSES
+                and entry["ours"] == ours_tok
+                and entry["witnesses"][wid] == wit_tok
+            ):
                 used.add((word_id, wid))
                 n_variants += 1
             else:

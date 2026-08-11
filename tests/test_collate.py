@@ -54,6 +54,13 @@ class TestTheEasyCase:
         errors, _, _ = collate(a_text("cum"), witnesses(tmp_path, {"a": "cum"}))
         assert any("full witness" in e for e in errors)
 
+    def test_an_apparatus_requires_the_matching_source_pointer(self, tmp_path):
+        doc = a_text("cum")
+        doc["source"] = {"witnesses": "witnesses/orationes.test/"}
+        pages = {"a": "cum", "b": "cum"}
+        errors, _, _ = collate(doc, witnesses(tmp_path, pages, []))
+        assert any("source.apparatus" in e for e in errors)
+
 
 class TestAnInflectedName:
     """Latin took the Hebrew names in twice — Ioseph never changes, Iosephus
@@ -113,6 +120,26 @@ class TestAnInflectedName:
             a_text("cum", "beato", "Ioseph"), witnesses(tmp_path, self.DECLINED, app)
         )
         assert any("SUBSTANTIVE divergence" in e for e in errors)
+
+    def test_an_inflection_class_cannot_excuse_only_punctuation(self, tmp_path):
+        doc = a_text("cum")
+        doc["source"] = {"apparatus": "witnesses/orationes.test/apparatus.json"}
+        app = [
+            {
+                "at": "w001",
+                "ours": "cum",
+                "witnesses": {"b": "cum,"},
+                "class": "inflection",
+                "ruling": "Wrong class on purpose.",
+            }
+        ]
+        directory = witnesses(tmp_path, {"a": "cum", "b": "cum,"}, app)
+        apparatus_path = directory / "apparatus.json"
+        apparatus = json.loads(apparatus_path.read_text(encoding="utf-8"))
+        apparatus["text"] = "orationes.test"
+        apparatus_path.write_text(json.dumps(apparatus), encoding="utf-8")
+        errors, _, _ = collate(doc, directory)
+        assert any("UNADJUDICATED variant" in e for e in errors)
 
 
 class TestAnOmittedWord:

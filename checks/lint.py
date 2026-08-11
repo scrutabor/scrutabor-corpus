@@ -339,9 +339,13 @@ def lint_analysis(doc):
 # name the same word. They drift: word ids are renumbered whenever a text is
 # re-segmented, and the prose keeps the old numbers, so by the time this was
 # written 32 references pointed at other words and two at tokens that no
-# longer existed. Multi-word citations name the last word (SANCTA SANCTÓRUM
+# longer existed. Multi-word citations name the whole span (SANCTA SANCTÓRUM
 # at w011-w012), and one form may carry several ids (ÓBTULI at w017 and w027).
-NOTE_REF = re.compile(r"\b([^\Wa-z\d_]{3,}(?:[^\Wa-z\d_]|-)*)( at w\d+(?:[- ]?(?:and )?w\d+)*)")
+UPPER_FORM = r"[A-ZÁÉÍÓÚÝÆŒǼË]+(?:-[A-ZÁÉÍÓÚÝÆŒǼË]+)?"
+NOTE_REF = re.compile(
+    rf"(?<!\w)({UPPER_FORM}(?:\s+(?:and\s+)?{UPPER_FORM}){{0,5}})"
+    r"( at w\d+(?:[- ]?(?:and )?w\d+)*)"
+)
 
 
 def plain(word):
@@ -374,13 +378,23 @@ def lint_notes(doc):
     forms = {w["id"]: w["form"] for s in doc["segments"] for w in s.get("words") or []}
     for m in NOTE_REF.finditer(doc.get("notes") or ""):
         cited, tail = m.groups()
-        ids = re.findall(r"w\d+", tail)
+        endpoints = re.findall(r"w\d+", tail)
+        if "-" in tail and len(endpoints) == 2:
+            first, last = (int(w[1:]) for w in endpoints)
+            width = len(endpoints[0]) - 1
+            ids = [f"w{i:0{width}d}" for i in range(first, last + 1)] if last >= first else []
+        else:
+            ids = endpoints
         missing = [i for i in ids if i not in forms]
         if missing:
             errors.append(f"notes: {cited} at {', '.join(missing)} — no such token")
             continue
+        cited_words = [plain(word) for word in cited.split() if word != "and"]
         named = [plain(forms[i]) for i in ids]
-        if plain(cited) not in named:
+        matches = cited_words == named or (
+            len(cited_words) == 1 and all(n == cited_words[0] for n in named)
+        )
+        if not ids or not matches:
             errors.append(
                 f"notes: {cited} at {', '.join(ids)} — those tokens are "
                 f"{', '.join(forms[i] for i in ids)}"

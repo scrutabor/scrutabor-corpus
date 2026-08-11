@@ -266,31 +266,76 @@ def _indent(line: str) -> str:
     return m.group(1) if m else ""
 
 
+def _range_declarations(header: str) -> list[tuple[str, list[int]]]:
+    """Source files and line numbers declared by one witness header.
+
+    A declaration is prose, and the longer ones wrap over several comment
+    lines.  Read the whole ``path`` value rather than assuming that the file
+    and ``(lines N-M)`` fit on its first physical line.  More than one source
+    file may occur in that value (the dismissal and Last Gospel use both
+    Ordo.txt and Prayers.txt), and the older singular spelling ``line N`` is
+    valid too.
+    """
+    values: list[str] = []
+    current_key: str | None = None
+    current_value: list[str] = []
+    for line in header.splitlines():
+        if not line.startswith("#"):
+            break
+        opened = re.match(r"#\s*([\w-]+):\s*(.*)", line)
+        if opened:
+            if current_key == "path":
+                values.append(" ".join(current_value))
+            current_key = opened.group(1)
+            current_value = [opened.group(2)]
+        elif current_key:
+            current_value.append(line.lstrip("# ").strip())
+    if current_key == "path":
+        values.append(" ".join(current_value))
+
+    declarations: list[tuple[str, list[int]]] = []
+    pattern = re.compile(
+        r"([\w./-]+\.txt)(?:(?![\w./-]+\.txt).){0,240}?"
+        r"\([^)]*\blines?\s+([\d,\s-]+)\)",
+        re.IGNORECASE,
+    )
+    for value in values:
+        for match in pattern.finditer(value):
+            numbers = [int(n) for n in re.findall(r"\d+", match.group(2))]
+            if numbers:
+                declarations.append((match.group(1), numbers))
+    return declarations
+
+
+def _declares_ranges(text_id: str) -> bool:
+    """Whether a witness claims source lines, even if their syntax is bad."""
+    wdir = CORPUS / "witnesses" / text_id
+    return any(
+        re.search(r"^#\s*path:.*\bline", wf.read_text(encoding="utf-8"), re.MULTILINE)
+        for wf in sorted(wdir.glob("*.txt"))
+    )
+
+
 def witness_ranges(text_id: str) -> list[tuple[Path, int, int]]:
-    """(raw file, first line, last line) for each witness that records one."""
+    """(raw file, first line, last line) for every declared source span."""
     out: list[tuple[Path, int, int]] = []
     wdir = CORPUS / "witnesses" / text_id
     if not wdir.is_dir():
         return out
     for wf in sorted(wdir.glob("*.txt")):
         header = wf.read_text(encoding="utf-8")
-        # ranges are written as a human writes them: "lines 203-208", and
-        # also "lines 5, 11-12" where the transcription skips a line. Take
-        # the span from the first number to the last — a superset of the
-        # text, which is all this needs to stop reading the whole book.
-        declarations = re.finditer(r"#\s*path:\s*(\S+)[^(]*\(lines ([\d,\s-]+)\)", header)
-        for declared in declarations:
-            numbers = [int(n) for n in re.findall(r"\d+", declared.group(2))]
-            if not numbers:
-                continue
-            src = re.search(r"([\w.-]+\.txt)", declared.group(1))
+        # A comma-separated range is intentionally read as one enclosing
+        # span.  It may include a rubric between the named lines; that is a
+        # safe superset and avoids silently scanning the whole archive.
+        for declared_path, numbers in _range_declarations(header):
+            src = re.search(r"([\w.-]+\.txt)", declared_path)
             raw = CORPUS / "witnesses" / "raw"
             # The raw archives are named for the file they came from. Compare
             # punctuation-free stems so a source such as Adv1-0.txt still
             # finds do-Adv1-0.txt.
             if not src:
                 continue
-            source_path = Path(declared.group(1))
+            source_path = Path(declared_path)
             source_key = re.sub(r"[^a-z0-9]", "", source_path.stem.lower())
             parent_key = re.sub(r"[^a-z0-9]", "", source_path.parent.name.lower())
             candidates = []
@@ -315,7 +360,7 @@ def marked_lines(text_id: str, mass: bool = True) -> list[tuple[str, str]]:
         for raw, first, last in spans:
             lines = raw.read_text(encoding="utf-8").splitlines()
             files.append(lines[max(0, first - 1) : last])
-    else:
+    elif not _declares_ranges(text_id):
         for raw in sorted((CORPUS / "witnesses" / "raw").glob("*.txt")):
             files.append(raw.read_text(encoding="utf-8").splitlines())
     out = []
@@ -360,7 +405,11 @@ def span_covers(doc) -> bool:
     """
     spans = witness_ranges(doc["id"])
     if not spans:
-        return True  # nothing declared: the fallback over the whole archive
+        # A text that names no raw lines may use the deliberate whole-archive
+        # fallback.  A text that *tries* to name them in unreadable syntax is
+        # unsourced: malformed provenance must never buy the same trust as
+        # verified provenance.
+        return not _declares_ranges(doc["id"])
     span = ""
     for raw, first, last in spans:
         lines = raw.read_text(encoding="utf-8").splitlines()[max(0, first - 1) : last]
