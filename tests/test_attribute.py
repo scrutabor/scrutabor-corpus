@@ -81,6 +81,45 @@ class TestSpanCoverage:
         line = "una cum fámulo tuo Papa nostro et Antístite nostro et ómnibus"
         assert span_covers(a_text(line)) is True
 
+    def test_inline_rubrics_and_macro_calls_do_not_break_a_source_span(self, tmp_path, monkeypatch):
+        raw = tmp_path / "src.txt"
+        raw.write_text(
+            "v. Qui prídie quam paterétur, (Accipit Hostiam,) accépit panem\n"
+            "&a-macro-call\n"
+            "in sanctas manus suas.\n",
+            encoding="utf-8",
+        )
+        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 3)])
+        assert span_covers(a_text("Qui prídie quam paterétur accépit panem in sanctas manus suas"))
+
+    def test_markers_between_lines_and_display_capitals_are_framing(self, tmp_path, monkeypatch):
+        raw = tmp_path / "src.txt"
+        raw.write_text(
+            "R. Sed líbera nos a malo.\n"
+            "S. (Sacerdos secrete dicit:) Amen.\n"
+            "!!!HOC EST ENIM CORPUS MEUM.\n",
+            encoding="utf-8",
+        )
+        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 3)])
+        assert span_covers(a_text("Sed líbera nos a malo Amen", "Hoc est enim Corpus meum"))
+
+    def test_only_an_explicit_apparatus_entry_licenses_a_source_spelling(
+        self, tmp_path, monkeypatch
+    ):
+        raw = tmp_path / "src.txt"
+        raw.write_text("S. Dei Genitríce María.\n", encoding="utf-8")
+        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
+        doc = a_text("Dei Genetríce María")
+        doc["source"] = {"apparatus": "apparatus.json"}
+        (tmp_path / "apparatus.json").write_text(
+            json.dumps({"adjudicated": [{"at": "w002"}]}), encoding="utf-8"
+        )
+        monkeypatch.setattr("checks.attribute.CORPUS", tmp_path)
+        assert span_covers(doc) is True
+
+        (tmp_path / "apparatus.json").write_text(json.dumps({"adjudicated": []}), encoding="utf-8")
+        assert span_covers(doc) is False
+
     def test_a_hyphenated_source_filename_finds_its_raw_archive(self, tmp_path, monkeypatch):
         witness = tmp_path / "witnesses" / "proprium.test"
         raw = tmp_path / "witnesses" / "raw"

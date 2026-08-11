@@ -244,6 +244,11 @@ VOICE_UNSETTLED: dict[str, str] = {
         "secreto. This segment holds both, so neither value is true of it; "
         "splitting the segment would renumber its words."
     ),
+    # This dialogue exists only when the solemn kiss of peace is given. The
+    # low-Mass list in RG 511 therefore cannot make it part of that prayer's
+    # otherwise secret voice, and neither of the two witnesses names a volume.
+    "ordinarium.qui-dixisti.s08": "solemn-only dialogue; no source names the voice",
+    "ordinarium.qui-dixisti.s09": "solemn-only dialogue; no source names the voice",
 }
 
 
@@ -413,11 +418,57 @@ def span_covers(doc) -> bool:
     span = ""
     for raw, first, last in spans:
         lines = raw.read_text(encoding="utf-8").splitlines()[max(0, first - 1) : last]
-        span += flatten(re.sub(r"N\.[a-z]?", " ", " ".join(lines)))
+        # The archived Ordo interleaves directions and macro calls with the
+        # words. Witness transcriptions strip both, so they cannot be allowed
+        # to break an otherwise exact span. Inline parenthetical rubrics are
+        # framing too. Keep unmarked continuation lines: several prayers run
+        # across them.
+        textual = []
+        for line in lines:
+            stripped = line.lstrip()
+            if stripped.startswith("!!!"):
+                line = stripped[3:]
+                stripped = line.lstrip()
+            if stripped.startswith(("!", "&", "#", "_", "wait")):
+                continue
+            line = re.sub(r"^[SMVROsmvro]\.\s*", "", line.strip())
+            line = re.sub(r"\([^)]*\)", " ", line)
+            line = re.sub(r"N\.[a-z]?\s+et\s+N\.[a-z]?", " ", line)
+            line = re.sub(r"N\.[a-z]?", " ", line)
+            line = re.sub(r"wait\d+", " ", line)
+            textual.append(line)
+        span += flatten(" ".join(textual))
+
+    apparatus_entries = []
+    apparatus_pointer = (doc.get("source") or {}).get("apparatus")
+    if apparatus_pointer:
+        apparatus_path = CORPUS / apparatus_pointer
+        if apparatus_path.is_file():
+            apparatus_entries = json.loads(apparatus_path.read_text(encoding="utf-8")).get(
+                "adjudicated", []
+            )
     for seg in doc["segments"]:
         if seg.get("type") != "verse" or not seg.get("words"):
             continue
-        if flatten("".join(w["form"] for w in seg["words"])) not in span:
+        key = flatten("".join(w["form"] for w in seg["words"]))
+        if key in span:
+            continue
+        word_ids = {w["id"] for w in seg["words"]}
+        # A named apparatus entry is precisely the declaration that a source
+        # may differ at this word. After punctuation, accents and i/j have
+        # already folded away, permit no more letter substitutions than the
+        # segment has explicit rulings. This keeps a real Genetrice/Genitrice
+        # reading from making a correct range look stale without turning a
+        # random typo into provenance.
+        allowed = sum(1 for entry in apparatus_entries if entry.get("at") in word_ids)
+        if not any(
+            sum(
+                left != right
+                for left, right in zip(key, span[start : start + len(key)], strict=True)
+            )
+            <= allowed
+            for start in range(max(0, len(span) - len(key) + 1))
+        ):
             return False
     return True
 

@@ -7,7 +7,7 @@
   "variant": "missae",
   "sung": false,
   "status": "working-edition",
-  "notes": "The first of the three prayers the priest says bowed over the altar before receiving; the prayer for peace, out of which the kiss of peace follows at solemn Mass. It is omitted in Masses for the dead, and the corpus carries that rubric as its closing segment. W008-W014 quote John 14:27 verbatim as far as do vobis; there the prayer stops, dropping the rest of the verse, which continues non quomodo mundus dat. EÁMQUE at w023 is the accusative of is with the enclitic -que; two feminine nouns stand within reach of it, fidem and Ecclésiæ, and the corpus does not settle the question in the morphology, which records only the form's own case, number and gender. The two infinitives it governs — to give peace and to gather into one — fit the Church, and that is how the prayer is read; the word's note says so and says why. NE at w015 is the prohibitive adverb, as the corpus rules it elsewhere.",
+  "notes": "The first of the three prayers the priest says bowed over the altar before receiving; the prayer for peace, followed where the peace is given by the exchange Pax tecum / Et cum spíritu tuo. The prayer and pax are omitted in Masses for the dead, and the corpus carries that rubric as its closing segment. W008-W014 quote John 14:27 verbatim as far as do vobis; there the prayer stops, dropping the rest of the verse, which continues non quomodo mundus dat. EÁMQUE at w023 is the accusative of is with the enclitic -que; two feminine nouns stand within reach of it, fidem and Ecclésiæ, and the corpus does not settle the question in the morphology, which records only the form's own case, number and gender. The two infinitives it governs — to give peace and to gather into one — fit the Church, and that is how the prayer is read; the word's note says so and says why. NE at w015 is the prohibitive adverb, as the corpus rules it elsewhere.",
   "source": {
     "method": "Verified by collation against the independent witnesses below: zero substantive divergence. The accidental variants are adjudicated in the apparatus.",
     "witnesses": "witnesses/ordinarium.qui-dixisti/",
@@ -104,6 +104,42 @@
     },
     {
       "id": "s07",
+      "type": "rubric",
+      "text": "Si danda est pax, osculatur Altare, et dans pacem, dicit:",
+      "analysis": { "confidence": "high", "sources": ["editorial", "do", "mr-ritus-servandus"], "review": "pending" }
+    },
+    {
+      "id": "s08",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "words": [
+        { "id": "w041", "form": "Pax", "lemma": "pax", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w042", "form": "tecum", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } }
+      ]
+    },
+    {
+      "id": "s09",
+      "type": "verse",
+      "speaker": "minister",
+      "words": [
+        { "id": "w043", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w044", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w045", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w046", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } }
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
+    },
+    {
+      "id": "s10",
       "type": "rubric",
       "text": "In Missis Defunctorum non datur pax, neque dicitur oratio Domine Iesu Christe, qui dixisti.",
       "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
