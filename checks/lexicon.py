@@ -131,6 +131,7 @@ def lint_lemmata(entries):
 def lint_senses(lang, entries, lemmata):
     errors = []
     banned = BANNED_TERMS.get(lang, [])
+    derivative_homes = {}
     for lemma, e in entries.items():
         unknown = set(e) - SENSE_ENTRY_KEYS
         if unknown:
@@ -151,6 +152,12 @@ def lint_senses(lang, entries, lemmata):
                     f"lexicon:{lang}:{lemma}: {len(derivs)} derivatives — "
                     "SCHEMA.md allows at most 6"
                 )
+            if isinstance(derivs, list) and all(isinstance(d, str) for d in derivs):
+                for derivative in derivs:
+                    display = re.sub(r"\s+\([^()]+\)$", "", derivative).casefold()
+                    derivative_homes.setdefault(display, []).append(
+                        (lemma, derivative, display != derivative.casefold())
+                    )
         prose = " ".join(senses or []) + " " + " ".join(derivs or []) + " " + e.get("note", "")
         for pat in banned:
             if re.search(pat, prose, re.IGNORECASE):
@@ -169,6 +176,13 @@ def lint_senses(lang, entries, lemmata):
                     f"lexicon:{lang}:{lemma}: context-dependent deixis {pat!r} — "
                     "move occurrence-specific prose to a gloss function or name the context"
                 )
+    for display, homes in sorted(derivative_homes.items()):
+        if len(homes) > 1 and any(annotated for _, _, annotated in homes):
+            locations = ", ".join(f"{lemma}: {raw!r}" for lemma, raw, _ in homes)
+            errors.append(
+                f"lexicon:{lang}: derivative {display!r} has duplicate homes "
+                f"({locations}) — keep it at its direct home"
+            )
     missing = sorted(set(lemmata) - set(entries))
     extra = sorted(set(entries) - set(lemmata))
     if missing:

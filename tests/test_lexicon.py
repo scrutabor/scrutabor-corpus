@@ -88,6 +88,24 @@ class TestSenses:
         entry = {"senses": ["ojciec"], "derivatives": list("abcdefg")}
         assert any("at most 6" in e for e in lint_senses("pl", {"pater": entry}, {"pater": {}}))
 
+    def test_an_indirect_derivative_may_not_duplicate_its_direct_home(self):
+        entries = {
+            "benedictio": {"senses": ["błogosławieństwo"], "derivatives": ["benedykcja"]},
+            "benedictus": {
+                "senses": ["błogosławiony"],
+                "derivatives": ["benedykcja (od benedíctio)"],
+            },
+        }
+        found = lint_senses("pl", entries, {lemma: {} for lemma in entries})
+        assert any("duplicate homes" in e for e in found)
+
+    def test_a_single_annotated_indirect_derivative_is_allowed(self):
+        entry = {
+            "senses": ["błogosławiony"],
+            "derivatives": ["benedykcja (od benedíctio)"],
+        }
+        assert lint_senses("pl", {"benedictus": entry}, {"benedictus": {}}) == []
+
     def test_every_lemma_needs_an_entry_in_every_language(self):
         found = lint_senses("pl", {}, {"pater": {}})
         assert any("no entry for" in e for e in found)
