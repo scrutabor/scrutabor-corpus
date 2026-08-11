@@ -5,6 +5,7 @@ import json
 import re
 import unicodedata
 from pathlib import Path
+from urllib.parse import urlparse
 
 from .normalize import ACCENTED_VOWELS, fold_ligatures, has_accent, strip_accents, syllable_count
 
@@ -246,6 +247,39 @@ ANALYSIS_ENUMS = {
 ANALYSIS_KEYS = {"confidence", "sources", "review"}
 KNOWN_SOURCES = {"whitakers", "collatinus", "editorial", "treebank", "expert"}
 SOURCE_RE = re.compile(r"^[a-z][a-z0-9-]*$")
+
+CITATION_KEYS = {"title", "locator", "url"}
+
+
+def lint_citations(citations, where):
+    """Reader-facing sources support one prose unit, never a detached
+    bibliography. Every note names the work and an exact locator; a link is
+    optional, but when present it must be a public HTTPS address."""
+    if not isinstance(citations, list) or not citations:
+        return [f"{where}: citations must be a nonempty list"]
+    errors = []
+    seen = set()
+    for index, citation in enumerate(citations, 1):
+        at = f"{where}:citation-{index}"
+        if not isinstance(citation, dict):
+            errors.append(f"{at}: citation must be an object")
+            continue
+        unknown = set(citation) - CITATION_KEYS
+        if unknown:
+            errors.append(f"{at}: unknown citation keys {sorted(unknown)}")
+        for key in ("title", "locator"):
+            if not isinstance(citation.get(key), str) or not citation[key].strip():
+                errors.append(f"{at}: {key} must be a nonempty string")
+        url = citation.get("url")
+        if url is not None:
+            parsed = urlparse(url) if isinstance(url, str) else None
+            if not parsed or parsed.scheme != "https" or not parsed.netloc:
+                errors.append(f"{at}: url must be an absolute HTTPS address")
+        signature = json.dumps(citation, sort_keys=True, ensure_ascii=False)
+        if signature in seen:
+            errors.append(f"{at}: duplicate citation")
+        seen.add(signature)
+    return errors
 
 
 def check_analysis(obj, where):
@@ -512,6 +546,10 @@ def lint_gloss(doc, text_doc):
     # here, so a banned term walked into it while every gloss beside it was
     # being refused for the same word.
     check_prose("about", doc.get("about", "") or "")
+    if "about_citations" in doc:
+        if not doc.get("about"):
+            errors.append(f"{lang}:about: citations without an about paragraph")
+        errors += lint_citations(doc["about_citations"], f"{lang}:about")
 
     for wid, entry in gw.items():
         if not entry.get("gloss"):
@@ -520,6 +558,10 @@ def lint_gloss(doc, text_doc):
         # key entirely; an empty string is an authoring error, not an omission.
         if "function" in entry and not entry["function"]:
             errors.append(f"{lang}:{wid}: empty function — omit the key instead")
+        if "function_citations" in entry:
+            if not entry.get("function"):
+                errors.append(f"{lang}:{wid}: citations without a function note")
+            errors += lint_citations(entry["function_citations"], f"{lang}:{wid}")
         fn = entry.get("function", "")
         check_prose(wid, entry.get("gloss", "") + " " + fn)
         for ref in REF_RE.finditer(fn):
@@ -543,6 +585,10 @@ def lint_gloss(doc, text_doc):
             sid, (seg.get("translation", "") or "") + " " + (seg.get("narrative", "") or "")
         )
         check_narrative(sid, seg.get("narrative", "") or "")
+        if "narrative_citations" in seg:
+            if not seg.get("narrative"):
+                errors.append(f"{lang}:{sid}: citations without a narrative")
+            errors += lint_citations(seg["narrative_citations"], f"{lang}:{sid}")
         if sid not in seg_types:
             errors.append(f"{lang}: segment {sid} not in text document")
         elif "translation" in seg and seg_types[sid] != "verse":
@@ -558,6 +604,23 @@ def lint_parity(gloss_docs):
         return errors
     base = gloss_docs[0]
     base_fn = {wid for wid, e in base["words"].items() if "function" in e}
+
+    def citations(doc):
+        return {
+            "about": doc.get("about_citations"),
+            "words": {
+                wid: entry["function_citations"]
+                for wid, entry in doc["words"].items()
+                if "function_citations" in entry
+            },
+            "segments": {
+                sid: entry["narrative_citations"]
+                for sid, entry in doc.get("segments", {}).items()
+                if "narrative_citations" in entry
+            },
+        }
+
+    base_citations = citations(base)
     for other in gloss_docs[1:]:
         if set(base["words"]) != set(other["words"]):
             errors.append(
@@ -578,6 +641,11 @@ def lint_parity(gloss_docs):
         # agree across languages (SCHEMA.md, since 0.8.0).
         if ("about" in base) != ("about" in other):
             errors.append(f"parity: about presence differs {base['lang']} vs {other['lang']}")
+        if base_citations != citations(other):
+            errors.append(
+                f"parity: citations differ {base['lang']} vs {other['lang']} — "
+                "reader-facing sources are language-independent"
+            )
     for doc in gloss_docs:
         if "about" in doc and not str(doc["about"]).strip():
             errors.append(f"about: empty in {doc['lang']} — drop the key or write the paragraph")

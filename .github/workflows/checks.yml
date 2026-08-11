@@ -2,7 +2,7 @@ name: checks
 
 on:
   push:
-    branches: [main]
+    branches: [main, '*-gate']
   pull_request:
 
 jobs:

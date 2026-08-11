@@ -7,7 +7,13 @@ complained — so it is checked here on a head of two words, which is the
 shape that hid them.
 """
 
-from checks.lexicon import check_orphans, check_text_against_lexicon, lint_lemmata, lint_senses
+from checks.lexicon import (
+    check_orphans,
+    check_text_against_lexicon,
+    lint_lemmata,
+    lint_sense_parity,
+    lint_senses,
+)
 
 
 def a_lemma(**over):
@@ -117,6 +123,27 @@ class TestSenses:
     def test_word_internal_here_is_not_mistaken_for_verse_context(self):
         entry = {"senses": ["bright"], "note": "The prefix here is intensive."}
         assert lint_senses("en", {"praeclarus": entry}, {"praeclarus": {}}) == []
+
+    def test_note_citations_require_a_note(self):
+        entry = {
+            "senses": ["father"],
+            "note_citations": [{"title": "A work", "locator": "p. 1"}],
+        }
+        found = lint_senses("en", {"pater": entry}, {"pater": {}})
+        assert any("citations without a note" in e for e in found)
+
+    def test_note_citations_have_exact_language_parity(self):
+        citation = [{"title": "A work", "locator": "p. 1"}]
+        langs = {
+            "en": {"pater": {"senses": ["father"], "note_citations": citation}},
+            "pl": {
+                "pater": {
+                    "senses": ["ojciec"],
+                    "note_citations": [{"title": "A work", "locator": "s. 1"}],
+                }
+            },
+        }
+        assert any("citation parity differs" in e for e in lint_sense_parity(langs))
 
 
 class TestOrphans:

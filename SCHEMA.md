@@ -1,4 +1,4 @@
-# Corpus schema v0 (0.10.0)
+# Corpus schema v0 (0.11.0)
 
 Three layers: a language-neutral Latin source document per text, one gloss
 document per text per language, and a corpus-wide lexicon (language-neutral
@@ -319,7 +319,7 @@ entries{ <lemma>: { head, pos, gender?, gender_pl?, decl?, conj?, analysis? } }
 
 ```
 schema_version, lang, status, analysis_defaults,
-entries{ <lemma>: { senses[], note?, derivatives?, analysis? } }
+entries{ <lemma>: { senses[], note?, note_citations?, derivatives?, analysis? } }
 ```
 
 - `senses`: 1–4 short dictionary-style meanings in the target language,
@@ -331,6 +331,8 @@ entries{ <lemma>: { senses[], note?, derivatives?, analysis? } }
   antecedent, so deictic wording such as “w tym wersecie” / “in this verse”
   is forbidden. Move that claim to the occurrence's `function`, or name an
   indispensable context explicitly (“In Psalm 118:34…”).
+- `note_citations` (since 0.11.0): optional reader-facing sources for the
+  `note`, using the citation shape below. It may not exist without `note`.
 - `derivatives` (since 0.6.0): optional, 1–6 words of the TARGET language
   genuinely derived from or borrowed via this lemma (confíteor →
   konfesjonał; panis → companion) — memory hooks for learners. Only real
@@ -346,9 +348,9 @@ entries{ <lemma>: { senses[], note?, derivatives?, analysis? } }
 ## Gloss document
 
 ```
-schema_version, text, lang, status, about?, analysis_defaults,
-segments{ <seg-id>: { translation? | narrative? } },
-words{ <word-id>: { gloss, function?, analysis? } }
+schema_version, text, lang, status, about?, about_citations?, analysis_defaults,
+segments{ <seg-id>: { translation? | narrative?, narrative_citations? } },
+words{ <word-id>: { gloss, function?, function_citations?, analysis? } }
 ```
 
 - `about` (since 0.8.0, optional): one short paragraph introducing the
@@ -357,6 +359,8 @@ words{ <word-id>: { gloss, function?, analysis? } }
   true and verifiable (the quality doctrine applies as to any layer).
   Presence parity across languages per text (lint-enforced): the claim
   set is about the Latin text, not about the gloss language.
+- `about_citations` (since 0.11.0): optional reader-facing sources supporting
+  the `about` paragraph. It may not exist without `about`.
 - `gloss` (required): shortest natural reading aid in the target language
   (interlinear line). It may be idiomatic rather than grammatical — it is
   the sense the context selects, which no lemma-level sense list can supply.
@@ -379,7 +383,32 @@ words{ <word-id>: { gloss, function?, analysis? } }
   pattern `„form” (wNNN)` (EN: `“form” (wNNN)`): the app renders the quoted
   form as a tap-link to that word and hides the id; bare ids in prose are
   lint errors.
+- `function_citations` (since 0.11.0): optional reader-facing sources for the
+  `function` note. It may not exist without `function`.
 - `narrative` (rubric segments): "what is happening at the altar" in the
   target language.
+- `narrative_citations` (since 0.11.0): optional reader-facing sources for
+  the `narrative`. It may not exist without `narrative`.
 - `translation` (verse segments): our own working translation — NEVER copied
   from protected literary translations.
+
+### Reader-facing citations
+
+A citation supports the smallest prose unit that makes the claim. It is not
+a detached bibliography and must not be used to restore history or commentary
+that the prose itself does not need:
+
+```json
+{
+  "title": "Catechismus Catholicae Ecclesiae",
+  "locator": "n. 1449",
+  "url": "https://www.vatican.va/..."
+}
+```
+
+`title` names the work and `locator` gives the exact passage; both are
+required nonempty strings. `url` is optional and, when present, must be an
+absolute HTTPS address. Citation presence and metadata agree exactly across
+gloss languages because the supported claim concerns the Latin text, not its
+Polish or English wording. Elementary grammar and statements directly visible
+in the displayed Latin do not receive decorative citations.

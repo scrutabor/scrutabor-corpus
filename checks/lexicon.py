@@ -6,7 +6,7 @@ silently — SCHEMA.md)."""
 import json
 import re
 
-from .lint import BANNED_TERMS, MORPH_ENUMS, SPELLING_EXEMPT
+from .lint import BANNED_TERMS, MORPH_ENUMS, SPELLING_EXEMPT, lint_citations
 from .normalize import ACCENTED_VOWELS, fold_ligatures, has_accent, strip_accents, syllable_count
 
 LEMMATA_ENTRY_KEYS = {
@@ -20,7 +20,7 @@ LEMMATA_ENTRY_KEYS = {
     "conj",
     "analysis",
 }
-SENSE_ENTRY_KEYS = {"senses", "note", "derivatives", "analysis"}
+SENSE_ENTRY_KEYS = {"senses", "note", "note_citations", "derivatives", "analysis"}
 
 # A head is dictionary punctuation plus word tokens; ending fragments ("-æ",
 # "-a") and the deponent auxiliary carry no accent rules of their own.
@@ -159,6 +159,10 @@ def lint_senses(lang, entries, lemmata):
                     f"{pat!r} (TERMINOLOGY.md)"
                 )
         note = e.get("note", "")
+        if "note_citations" in e:
+            if not note:
+                errors.append(f"lexicon:{lang}:{lemma}: citations without a note")
+            errors += lint_citations(e["note_citations"], f"lexicon:{lang}:{lemma}")
         for pat in CONTEXT_DEIXIS.get(lang, ()):
             if re.search(pat, note, re.IGNORECASE):
                 errors.append(
@@ -171,6 +175,24 @@ def lint_senses(lang, entries, lemmata):
         errors.append(f"lexicon:{lang}: no entry for {missing}")
     if extra:
         errors.append(f"lexicon:{lang}: entries for unknown lemmas {extra}")
+    return errors
+
+
+def lint_sense_parity(langs):
+    """A citation supports a claim about the Latin word, not one rendering
+    of that claim. Its presence and bibliographic metadata therefore agree
+    exactly across language layers."""
+    errors = []
+    if len(langs) < 2:
+        return errors
+    ordered = sorted(langs.items())
+    base_lang, base = ordered[0]
+    for lang, entries in ordered[1:]:
+        for lemma in sorted(set(base) & set(entries)):
+            left = base[lemma].get("note_citations")
+            right = entries[lemma].get("note_citations")
+            if left != right:
+                errors.append(f"lexicon: citation parity differs {base_lang} vs {lang} for {lemma}")
     return errors
 
 

@@ -16,6 +16,7 @@ from checks.lexicon import (
     check_orphans,
     check_text_against_lexicon,
     lint_lemmata,
+    lint_sense_parity,
     lint_senses,
     load_lexicon,
 )
@@ -68,6 +69,7 @@ def lexicon_suite(used_lemmas=None) -> int:
     errors += lint_lemmata(lemmata)
     for lang, entries in sorted(langs.items()):
         errors += lint_senses(lang, entries, lemmata)
+    errors += lint_sense_parity(langs)
     if used_lemmas is not None:
         errors += check_orphans(lemmata, used_lemmas)
     for e in errors:

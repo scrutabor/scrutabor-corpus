@@ -10,7 +10,7 @@ the most read prose in the layer.
 
 from typing import ClassVar
 
-from checks.lint import lint_gloss
+from checks.lint import lint_citations, lint_gloss, lint_parity
 
 TEXT = {
     "id": "orationes.test",
@@ -21,6 +21,12 @@ TEXT = {
             "words": [{"id": "w001", "form": "Salve", "lemma": "salveo", "morph": {"pos": "verb"}}],
         }
     ],
+}
+
+CITATION = {
+    "title": "Catechismus Catholicae Ecclesiae",
+    "locator": "n. 1449",
+    "url": "https://www.vatican.va/archive/catechism_lt/p2s2c2a4_lt.htm",
 }
 
 
@@ -53,6 +59,52 @@ class TestTheIntroduction:
         # `about` arrived in 0.8.0 and is optional; a missing one must not
         # be read as an empty string that fails some other rule.
         assert lint_gloss(gloss(), TEXT) == []
+
+
+class TestReaderFacingCitations:
+    def test_a_source_with_an_exact_locator_passes(self):
+        g = gloss(about="Modlitwa błagalna.", about_citations=[CITATION])
+        assert lint_gloss(g, TEXT) == []
+
+    def test_a_source_cannot_float_without_the_comment_it_supports(self):
+        found = lint_gloss(gloss(about_citations=[CITATION]), TEXT)
+        assert any("citations without an about paragraph" in e for e in found)
+
+    def test_a_function_source_requires_a_function_note(self):
+        g = gloss(words={"w001": {"gloss": "witaj", "function_citations": [CITATION]}})
+        found = lint_gloss(g, TEXT)
+        assert any("citations without a function note" in e for e in found)
+
+    def test_a_narrative_source_requires_a_narrative(self):
+        text = {"id": "orationes.test", "segments": [{"id": "s01", "type": "rubric"}]}
+        g = gloss(segments={"s01": {"narrative_citations": [CITATION]}}, words={})
+        found = lint_gloss(g, text)
+        assert any("citations without a narrative" in e for e in found)
+
+    def test_a_locator_is_mandatory(self):
+        found = lint_citations([{"title": "A work"}], "en:about")
+        assert any("locator must be a nonempty string" in e for e in found)
+
+    def test_a_link_must_be_public_https(self):
+        found = lint_citations(
+            [{"title": "A work", "locator": "p. 1", "url": "http://localhost/source"}],
+            "en:about",
+        )
+        assert any("absolute HTTPS" in e for e in found)
+
+    def test_duplicate_sources_are_refused(self):
+        found = lint_citations([CITATION, CITATION], "en:about")
+        assert any("duplicate citation" in e for e in found)
+
+    def test_bibliographic_metadata_has_exact_language_parity(self):
+        pl = gloss(about="Modlitwa błagalna.", about_citations=[CITATION])
+        en = gloss(
+            lang="en",
+            about="A prayer of petition.",
+            about_citations=[{**CITATION, "locator": "paragraph 1449"}],
+        )
+        found = lint_parity([pl, en])
+        assert any("citations differ" in e for e in found)
 
 
 class TestWhereTheRulesAlreadyApplied:

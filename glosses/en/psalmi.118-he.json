@@ -1,9 +1,26 @@
 {
-  "schema_version": "0.10.0",
+  "schema_version": "0.11.0",
   "text": "psalmi.118-he",
   "lang": "en",
   "status": "working-edition",
   "about": "Psalm 118 is an acrostic: twenty-two stanzas of eight verses, one stanza for each letter of the Hebrew alphabet, with all eight verses of a stanza beginning with the same letter in the Hebrew. It is the longest psalm in the psalter, and nearly every verse of it speaks about one thing — God's law, called among other names law, testimony, statute, commandment, judgement, word. This stanza carries the letter HE. In the Roman breviary its verses open the psalmody of Sunday Terce, whose antiphon is drawn from verse 35. The psalm itself runs across all four of Sunday's little hours. Verse thirty-four — “Da mihi intelléctum, et scrutábor legem tuam” — gave this edition its name. In it, the psalmist asks God for understanding and says that he will search His law and keep it with his whole heart.",
+  "about_citations": [
+    {
+      "title": "United States Conference of Catholic Bishops, Psalm 119",
+      "locator": "introduction",
+      "url": "https://bible.usccb.org/bible/psalms/119"
+    },
+    {
+      "title": "Nova Vulgata, Liber Psalmorum",
+      "locator": "Psalmus 119 (118), 33–40",
+      "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
+    },
+    {
+      "title": "Breviarium Romanum (1961)",
+      "locator": "Psalterium, Dominica ad Tertiam",
+      "url": "https://openlibrary.org/works/OL27763277W/Breviarium_Romanum_ex_decreto_ss._Concilii_Tridentini_restitutum"
+    }
+  ],
   "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
   "segments": {
     "s01": { "translation": "Set before me for a law, O Lord, the way of Thy statutes, and I will seek it always." },
@@ -35,7 +52,7 @@
     "w017": { "gloss": "law" },
     "w018": { "gloss": "Thy" },
     "w019": { "gloss": "and" },
-    "w020": { "gloss": "I will keep", "function": "The verb form is ambiguous like “exquíram” (w009) — future indicative or present subjunctive — but here the coordinate “scrutábor” (w016), unambiguously future, decides: this edition reads the future." },
+    "w020": { "gloss": "I will keep", "function": "The verb form is ambiguous like “exquíram” (w009) — future indicative or present subjunctive — but here the coordinate “scrutábor” (w016), unambiguously future, decides: this edition reads the future.", "function_citations": [{ "title": "Allen and Greenough, New Latin Grammar", "locator": "§§ 168 d–e, 187", "url": "https://dcc.dickinson.edu/grammar/latin/present-system" }] },
     "w021": { "gloss": "it", "function": "Feminine accusative, referring to “legem” (w017)." },
     "w022": { "gloss": "with" },
     "w023": { "gloss": "whole" },
