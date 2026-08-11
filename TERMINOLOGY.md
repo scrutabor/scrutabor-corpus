@@ -19,6 +19,7 @@ already listed.
 | ablative of means | ablativus narzędzia | ablativus środka |
 | ablative of cause | ablativus przyczyny | — |
 | participle | imiesłów; z określeniami: imiesłów przyszły, imiesłów deponentny | imiesłów przymiotnikowy, participium (samodzielnie w prozie) |
+| imperative | tryb rozkazujący | rozkaźnik |
 | quotes in prose | „…” (polskie cudzysłowy) | "…", “…” |
 
 ## English
@@ -35,5 +36,5 @@ already listed.
 ## Linter hooks
 
 `checks/lint.py` `BANNED_TERMS`: PL bans `ablatiw`, `ablativ* środka`,
-`zgodn* z`; EN bans `„`.
+`zgodn* z`, `rozkaźnik`; EN bans `„`.
 Add a row here AND a pattern there when a new decision lands.

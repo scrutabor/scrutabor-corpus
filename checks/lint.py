@@ -91,6 +91,7 @@ BANNED_TERMS = {
         r"ablatiw",  # ablatiwus/ablatiwie/... -> ablativus/ablativie/...
         r"ablativ\w* środka",  # -> ablativus narzędzia (TERMINOLOGY.md)
         r"\bzgodn\w+ ze? „",  # agreement claim -> "zgadza się z „..."
+        r"\brozkaźnik\w*",  # -> tryb rozkazujący (TERMINOLOGY.md)
     ],
     "en": ["„"],  # Polish low-opening quote in English text
 }
@@ -219,16 +220,24 @@ def duplicate_keys(path: Path) -> list[str]:
 
 def check_voices(doc):
     """Validate speaker/voice wherever present; report how much is read."""
-    errors, attributed, verses = [], 0, 0
+    errors, attributed, verses, verse_numbers = [], 0, 0, set()
     for seg in doc["segments"]:
         speaker, voice = seg.get("speaker"), seg.get("voice")
         if seg.get("type") == "verse":
             verses += 1
             if speaker:
                 attributed += 1
-        elif speaker or voice:
+            number = seg.get("verse")
+            if number is not None:
+                if not isinstance(number, int) or isinstance(number, bool) or number < 1:
+                    errors.append(f"{seg['id']}: verse must be a positive integer")
+                elif number in verse_numbers:
+                    errors.append(f"{seg['id']}: duplicate verse number {number}")
+                else:
+                    verse_numbers.add(number)
+        elif speaker or voice or "verse" in seg:
             errors.append(
-                f"{seg['id']}: only a verse segment has a speaker or a voice — "
+                f"{seg['id']}: only a verse segment has a speaker, voice, or verse number — "
                 "a rubric is the edition's own framing, not anyone's words"
             )
         if speaker is not None and speaker not in SPEAKERS:
@@ -589,6 +598,10 @@ def lint_gloss(doc, text_doc):
             if not seg.get("narrative"):
                 errors.append(f"{lang}:{sid}: citations without a narrative")
             errors += lint_citations(seg["narrative_citations"], f"{lang}:{sid}")
+        if "translation_citations" in seg:
+            if not seg.get("translation"):
+                errors.append(f"{lang}:{sid}: citations without a translation")
+            errors += lint_citations(seg["translation_citations"], f"{lang}:{sid}:translation")
         if sid not in seg_types:
             errors.append(f"{lang}: segment {sid} not in text document")
         elif "translation" in seg and seg_types[sid] != "verse":
@@ -637,6 +650,8 @@ def lint_parity(gloss_docs):
             )
         if set(base.get("segments", {})) != set(other.get("segments", {})):
             errors.append(f"parity: segment coverage differs {base['lang']} vs {other['lang']}")
+        # Translation sources belong to a particular target-language
+        # rendering and therefore deliberately do not have language parity.
         # The about paragraph introduces the Latin text — presence must
         # agree across languages (SCHEMA.md, since 0.8.0).
         if ("about" in base) != ("about" in other):

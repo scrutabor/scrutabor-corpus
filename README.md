@@ -91,6 +91,14 @@ The corpus content (texts, glosses, apparatus, documentation) is licensed
 under [CC BY-SA 4.0](LICENSE). The validation code in `checks/` and
 `run_checks.py` is licensed under [AGPL-3.0](checks/LICENSE).
 
+Witness transcriptions marked `do` were derived from the Divinum Officium
+Project. The archived snapshot was checked at revision
+`712035707cf1bbab75d22966fb1ceabaecae592f` (2026-08-05); that revision's
+README grants the MIT License. Its required permission notice is preserved in
+[THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). These witness files are
+source evidence, not an endorsement by the Divinum Officium Project.
+
 Liturgical Latin texts of the 1962 Missale Romanum are in the public
-domain; the annotations, glosses, translations, and apparatus are original
-work of the Scrutabor project.
+domain. The annotations, glosses, apparatus, and editorial contributions to
+the translations are original work of the Scrutabor project; inherited or
+received translation bases are identified beside the segments that use them.

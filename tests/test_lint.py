@@ -81,6 +81,15 @@ class TestReaderFacingCitations:
         found = lint_gloss(g, text)
         assert any("citations without a narrative" in e for e in found)
 
+    def test_a_translation_source_requires_a_translation(self):
+        found = lint_gloss(gloss(segments={"s01": {"translation_citations": [CITATION]}}), TEXT)
+        assert any("citations without a translation" in e for e in found)
+
+    def test_translation_sources_are_language_specific(self):
+        pl = gloss(segments={"s01": {"translation": "Witaj.", "translation_citations": [CITATION]}})
+        en = gloss(lang="en", segments={"s01": {"translation": "Hail."}})
+        assert lint_parity([pl, en]) == []
+
     def test_a_locator_is_mandatory(self):
         found = lint_citations([{"title": "A work"}], "en:about")
         assert any("locator must be a nonempty string" in e for e in found)

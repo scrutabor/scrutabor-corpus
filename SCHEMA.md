@@ -1,4 +1,4 @@
-# Corpus schema v0 (0.11.0)
+# Corpus schema v0 (0.12.0)
 
 Three layers: a language-neutral Latin source document per text, one gloss
 document per text per language, and a corpus-wide lexicon (language-neutral
@@ -75,7 +75,7 @@ analysis_defaults, segments[]
   the word default (e.g. proper names absent from one analyzer's lexicon);
   an override that restates its default is a lint error, as is a
   `analysis_defaults_words` identical to `analysis_defaults`.
-- Segment: `{ id, type: "verse"|"rubric", speaker?, voice?, text? (rubric
+- Segment: `{ id, type: "verse"|"rubric", verse?, speaker?, voice?, text? (rubric
   Latin), words?[] }`. **`speaker`** (since 0.9.0) is who says it —
   `sacerdos`, `minister`, `populus`, `omnes`, `schola` — and **`voice`**
   is how loudly: `clara` (aloud), `submissa` (raised but not full, the
@@ -92,6 +92,9 @@ analysis_defaults, segments[]
   the Ritus servandus names sacerdos as the actor throughout. Outside the
   Mass no such reasoning holds, so a devotional prayer takes only what an
   "all" marker gives it.
+  `verse` is an optional positive integer for a segment whose conventional
+  biblical verse number is known. It belongs to the corpus, not to an app-side
+  slug table, and must be unique within the text.
   Since 2026-08-06 the voice comes chiefly from the rite's own
   law — **Rubricae generales IX, n. 511**, which lists what is said clara
   voce at low Mass and closes *"Cetera dicuntur secreto"*, transcribed in
@@ -349,7 +352,7 @@ entries{ <lemma>: { senses[], note?, note_citations?, derivatives?, analysis? } 
 
 ```
 schema_version, text, lang, status, about?, about_citations?, analysis_defaults,
-segments{ <seg-id>: { translation? | narrative?, narrative_citations? } },
+segments{ <seg-id>: { translation?, translation_citations? | narrative?, narrative_citations? } },
 words{ <word-id>: { gloss, function?, function_citations?, analysis? } }
 ```
 
@@ -391,6 +394,12 @@ words{ <word-id>: { gloss, function?, function_citations?, analysis? } }
   the `narrative`. It may not exist without `narrative`.
 - `translation` (verse segments): our own working translation — NEVER copied
   from protected literary translations.
+- `translation_citations` (since 0.12.0): optional sources that identify a
+  public-domain or otherwise authorised rendering used as the basis of this
+  target-language translation. They belong to the translation, may not exist
+  without it, and are intentionally language-specific. A citation declares a
+  basis or inheritance; it does not assert word-for-word identity unless the
+  surrounding editorial record says so.
 
 ### Reader-facing citations
 
