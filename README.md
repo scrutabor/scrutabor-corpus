@@ -10,13 +10,14 @@ reading gloss, and a short explanation of its function in the sentence —
 happening at the altar. The corpus is the data behind the Scrutabor
 reading app ([scrutabor](https://github.com/scrutabor/scrutabor)).
 
-**Status: working edition.** 62 texts, fully annotated in both languages:
+**Status: working edition.** 72 texts, fully annotated in both languages:
 the complete Ordinary of the Mass, the prayers after low Mass, the common
-prayers, and the first psalm stanza. Every analysis carries its sources, a
-confidence grade and a review state, and nothing is presented as settled
-until it has passed expert review. Every text has been collated against at
-least two independent witnesses and adversarially reviewed, and the
-disputed readings are listed rather than hidden.
+prayers, the first psalm stanza, and the complete Proper for the First Sunday
+of Advent. Every analysis carries its sources, a confidence grade and a review
+state, and nothing is presented as settled until it has passed expert review.
+Every text has been collated against at least two independent witnesses and
+adversarially reviewed, and the disputed readings are listed rather than
+hidden.
 
 ## Design
 
