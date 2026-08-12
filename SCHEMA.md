@@ -96,7 +96,7 @@ analysis_defaults, segments[]
   `analysis_defaults_words` identical to `analysis_defaults`.
 - Segment: `{ id, type: "verse"|"rubric", verse?, speaker?, voice?, text? (rubric
   Latin), words?[] }`. **`speaker`** (since 0.9.0) is who says it —
-  `sacerdos`, `minister`, `populus`, `omnes`, `schola` — and **`voice`**
+  `sacerdos`, `ductor`, `minister`, `populus`, `omnes`, `schola` — and **`voice`**
   is how loudly: `clara` (aloud), `submissa` (raised but not full, the
   *elata aliquantulum voce* of Dómine non sum dignus), `secreto`
   (silently), `cantus` (sung). Both belong to verse segments only: a
@@ -109,8 +109,10 @@ analysis_defaults, segments[]
   read by content alone. Where a passage of the Mass carries no marker at
   all, the speaker is the celebrant: the Ordo marks every other voice, and
   the Ritus servandus names sacerdos as the actor throughout. Outside the
-  Mass no such reasoning holds, so a devotional prayer takes only what an
-  "all" marker gives it.
+  Mass no such reasoning holds. A devotional dialogue may use `ductor` for
+  the person leading it: unlike `sacerdos`, this does not imply ordination,
+  and is therefore suitable for a family or other lay group. A devotional
+  prayer takes no clerical attribution from a bare V. marker.
   `verse` is an optional positive integer for a segment whose conventional
   biblical verse number is known. It belongs to the corpus, not to an app-side
   slug table, and must be unique within the text.

@@ -209,7 +209,7 @@ NAMED_SUBJECT = re.compile(
 # voce. Optional while the attribution pass proceeds — a segment with no
 # attribution says "not yet read", which is the honest state and the one
 # the app must render as unmarked rather than guess.
-SPEAKERS = {"sacerdos", "minister", "populus", "omnes", "schola"}
+SPEAKERS = {"sacerdos", "ductor", "minister", "populus", "omnes", "schola"}
 VOICES = {"clara", "submissa", "secreto", "cantus"}
 
 
