@@ -8,9 +8,10 @@ paragraph the app puts behind the "about this prayer" button and therefore
 the most read prose in the layer.
 """
 
+from copy import deepcopy
 from typing import ClassVar
 
-from checks.lint import lint_citations, lint_gloss, lint_notes, lint_parity
+from checks.lint import lint_citations, lint_gloss, lint_notes, lint_parity, lint_text
 
 TEXT = {
     "id": "orationes.test",
@@ -128,6 +129,25 @@ class TestNoteReferences:
         }
         assert lint_notes(text) == []
 
+    def test_analysis_status_claims_must_match_the_words(self):
+        text = deepcopy(TEXT)
+        text["notes"] = "SALVE at w001 has medium confidence and marks the token disputed."
+        text["analysis_defaults"] = {
+            "confidence": "high",
+            "sources": ["editorial"],
+            "review": "accepted",
+        }
+        found = lint_notes(text)
+        assert any("no word has that confidence" in e for e in found)
+        assert any("no word is marked disputed" in e for e in found)
+
+        text["segments"][0]["words"][0]["analysis"] = {
+            "confidence": "medium",
+            "sources": ["editorial"],
+            "review": "disputed",
+        }
+        assert lint_notes(text) == []
+
 
 class TestReaderFacingCitations:
     def test_a_source_with_an_exact_locator_passes(self):
@@ -192,6 +212,80 @@ class TestWhereTheRulesAlreadyApplied:
     def test_and_in_a_translation(self):
         g = gloss(segments={"s01": {"translation": "Witaj w ablatiwie."}})
         assert any("banned terminology" in e for e in lint_gloss(g, TEXT))
+
+
+class TestContextualReadings:
+    def test_a_gloss_cannot_choose_what_its_note_leaves_unresolved(self):
+        g = gloss(
+            words={
+                "w001": {
+                    "gloss": "będę szukał",
+                    "function": (
+                        "Forma może mieć dwa odczytania. Wydanie nie rozstrzyga tej dwuznaczności."
+                    ),
+                }
+            }
+        )
+        found = lint_gloss(g, TEXT)
+        assert any("leaves the edition unresolved" in e for e in found)
+
+    def test_a_finite_verb_must_record_the_chosen_mood_and_tense(self):
+        text = {
+            **TEXT,
+            "segments": [
+                {
+                    **TEXT["segments"][0],
+                    "words": [
+                        {
+                            **TEXT["segments"][0]["words"][0],
+                            "morph": {
+                                "pos": "verb",
+                                "person": 2,
+                                "number": "sg",
+                                "voice": "act",
+                            },
+                        }
+                    ],
+                }
+            ],
+        }
+        found, count = lint_text(text)
+        assert count == 1
+        assert any("missing morph.mood" in e for e in found)
+
+        text["segments"][0]["words"][0]["morph"]["mood"] = "imp"
+        found, count = lint_text(text)
+        assert count == 1
+        assert any("missing morph.tense" in e for e in found)
+
+        text["segments"][0]["words"][0]["morph"]["tense"] = "pres"
+        found, count = lint_text(text)
+        assert count == 1
+        assert found == []
+
+    def test_a_formal_ambiguity_may_be_explained_with_the_adopted_reading(self):
+        g = gloss(
+            words={
+                "w001": {
+                    "gloss": "będę szukał",
+                    "function": "Forma może mieć dwa odczytania. Przekład przyjmuje futurum.",
+                }
+            }
+        )
+        assert lint_gloss(g, TEXT) == []
+
+    def test_an_english_left_unclaimed_note_is_refused(self):
+        g = gloss(
+            lang="en",
+            words={
+                "w001": {
+                    "gloss": "be put to shame",
+                    "function": "Tense and mood are left unclaimed.",
+                }
+            },
+        )
+        found = lint_gloss(g, TEXT)
+        assert any("leaves the edition unresolved" in e for e in found)
 
 
 class TestPossessiveAbsorption:

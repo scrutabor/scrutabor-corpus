@@ -96,6 +96,22 @@ BANNED_TERMS = {
     "en": ["„"],  # Polish low-opening quote in English text
 }
 
+# A word gloss is already this edition's contextual reading. A function note
+# may explain that the bare Latin form admits another parse, but it may not
+# then claim that the edition leaves the choice unresolved.
+UNRESOLVED_READER_CLAIMS = {
+    "pl": [
+        r"wydanie nie rozstrzyga",
+        r"(?:samo |to )?zdanie nie rozstrzyga",
+        r"czasu i trybu (?:tu )?nie podano",
+    ],
+    "en": [
+        r"this edition does not resolve",
+        r"the sentence does not (?:resolve|determine)",
+        r"tense and mood are left unclaimed",
+    ],
+}
+
 # The corpus stores text, not typesetting. Polish does not leave a one-letter
 # word at the end of a line, but binding it is the reader app's job: a
 # non-breaking space here would travel into every consumer of this data and
@@ -376,7 +392,22 @@ def lint_notes(doc):
     note left in the old orthography is caught too."""
     errors = []
     forms = {w["id"]: w["form"] for s in doc["segments"] for w in s.get("words") or []}
-    for m in NOTE_REF.finditer(doc.get("notes") or ""):
+    word_default = doc.get("analysis_defaults_words") or doc.get("analysis_defaults", {})
+    analyses = [
+        w.get("analysis", word_default)
+        for segment in doc["segments"]
+        for w in segment.get("words") or []
+    ]
+    notes = doc.get("notes") or ""
+    if re.search(r"\bmedium confidence\b", notes, re.IGNORECASE) and not any(
+        analysis.get("confidence") == "medium" for analysis in analyses
+    ):
+        errors.append("notes: claims medium confidence but no word has that confidence")
+    if re.search(
+        r"\b(?:disputed review|marks? (?:the )?token disputed)\b", notes, re.IGNORECASE
+    ) and not any(analysis.get("review") == "disputed" for analysis in analyses):
+        errors.append("notes: claims a disputed token but no word is marked disputed")
+    for m in NOTE_REF.finditer(notes):
         cited, tail = m.groups()
         endpoints = re.findall(r"w\d+", tail)
         if "-" in tail and len(endpoints) == 2:
@@ -431,8 +462,19 @@ def lint_text(doc):
                     errors.append(f"{wid}: participle missing morph.{req}")
             if "person" in m:
                 errors.append(f"{wid}: participle carries morph.person")
-        elif m.get("pos") == "verb" and "case" in m:
-            errors.append(f"{wid}: finite verb carries morph.case")
+        elif m.get("pos") == "verb":
+            if "case" in m:
+                errors.append(f"{wid}: finite verb carries morph.case")
+            if "mood" not in m:
+                errors.append(
+                    f"{wid}: finite verb missing morph.mood — the contextual parse must choose"
+                )
+            # Eléison is a Greek aorist imperative printed in Latin letters;
+            # the Latin tense enum deliberately cannot represent its aorist.
+            elif "tense" not in m and w.get("lemma") != "eleison":
+                errors.append(
+                    f"{wid}: finite verb missing morph.tense — the contextual parse must choose"
+                )
         plain = fold_ligatures(strip_accents(f)).lower()
         # u after q/g before a vowel is a glide, not a vowel (quia, sanguis) —
         # drop it before the vocalic-context tests.
@@ -558,6 +600,12 @@ def lint_gloss(doc, text_doc):
             if re.search(pat, prose, re.IGNORECASE):
                 errors.append(
                     f"{lang}:{where}: banned terminology/typography {pat!r} (TERMINOLOGY.md)"
+                )
+        for pat in UNRESOLVED_READER_CLAIMS.get(lang, []):
+            if re.search(pat, prose, re.IGNORECASE):
+                errors.append(
+                    f"{lang}:{where}: reader note leaves the edition unresolved — "
+                    "state the contextual reading adopted by the gloss"
                 )
         for ch, name in LAYOUT_CHARS.items():
             if ch in prose:

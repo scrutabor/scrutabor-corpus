@@ -404,6 +404,10 @@ words{ <word-id>: { gloss, function?, function_citations?, analysis? } }
   (the morph layer renders those) or lemma-level facts (the lexicon carries
   those). Naming a case is fine when the case is the hinge of the claim
   ("vocative, not dative — direct address"), never as a standalone label.
+  When the form alone admits more than one parse, the note may name the
+  alternatives, but it must also state the contextual reading adopted by the
+  structured morphology and gloss. It may not say that the edition leaves
+  unresolved a choice its own translation has already made.
   Omit the key entirely when the parse and lexicon already say everything —
   presence must agree across languages (the claim is about the Latin, not
   about the gloss language). **Self-contained prose** — each entry is read
