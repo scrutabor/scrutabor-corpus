@@ -24,7 +24,7 @@ SENSE_ENTRY_KEYS = {"senses", "note", "note_citations", "derivatives", "analysis
 
 # A head is dictionary punctuation plus word tokens; ending fragments ("-æ",
 # "-a") and the deponent auxiliary carry no accent rules of their own.
-HEAD_TOKEN_RE = re.compile(r"^[A-Za-zÁÉÍÓÚÝáéíóúýÆæŒœǼǽËë]+$")
+HEAD_TOKEN_RE = re.compile(r"^[A-Za-zÁÉÍÓÚÝáéíóúýÆæŒœǼǽËë\u0301]+$")
 
 # A lemma note is rendered on a dictionary page, without the verse or prayer
 # in which any one token occurs. Deictic prose therefore has no antecedent

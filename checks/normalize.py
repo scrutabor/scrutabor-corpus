@@ -4,7 +4,10 @@ import unicodedata
 
 LIGATURES = {"æ": "ae", "œ": "oe", "Æ": "Ae", "Œ": "Oe", "ǽ": "ae", "Ǽ": "Ae"}
 
-ACCENTED_VOWELS = set("áéíóúýǽÁÉÍÓÚÝǼ")
+# U+0301 is needed after œ: Unicode has no precomposed accented œ, while
+# liturgical editions print the stress in forms such as fœ́deris and
+# obœ́diens. NFC therefore legitimately leaves that one accent decomposed.
+ACCENTED_VOWELS = set("áéíóúýǽÁÉÍÓÚÝǼ\u0301")
 
 # Vowel letters for syllable counting; ligatures and accented vowels count as
 # one. ë (diaeresis, ORTHOGRAPHY.md rule 7) is its own syllable: Mí-cha-ël.
@@ -117,4 +120,4 @@ def syllable_count(form: str) -> int:
 
 
 def has_accent(form: str) -> bool:
-    return any(ch in ACCENTED_VOWELS for ch in form)
+    return any(ch in ACCENTED_VOWELS for ch in unicodedata.normalize("NFD", form))

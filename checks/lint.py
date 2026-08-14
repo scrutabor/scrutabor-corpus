@@ -21,7 +21,7 @@ MORPH_ENUMS = {
     "governs": {"acc", "abl"},
 }
 
-FORM_RE = re.compile(r"^[A-Za-zÁÉÍÓÚÝáéíóúýÆæŒœǼǽËë]+$")
+FORM_RE = re.compile(r"^[A-Za-zÁÉÍÓÚÝáéíóúýÆæŒœǼǽËë\u0301]+$")
 REF_RE = re.compile(r"\((w\d{3})\)")
 QUOTE_REF_RE = re.compile(r"[„“]([^”“„]+)”\s*\((w\d{3})\)")
 
@@ -168,12 +168,14 @@ PROPER_LEMMAS = {
     "Philippus",
     "Pilatus",
     "Pontius",
+    "Polonia",
     "Simon",
     "Stephanus",
     "Thaddaeus",
     "Thomas",
     "Eva",
     "Xystus",
+    "Israel",
 }
 
 # Forms exempt from the SPELLING heuristics at the end of lint_text (the
@@ -192,7 +194,11 @@ PROPER_LEMMAS = {
 # consonant as i throughout (ORTHOGRAPHY.md rule 2, reversed 2026-08-06),
 # Eia and allelúia need no exemption — they were only ever exceptions to a
 # j-rule that no longer exists.
-SPELLING_EXEMPT: dict[str, str] = {}
+SPELLING_EXEMPT: dict[str, str] = {
+    # The Hebrew name is conventionally written with the diaeresis that
+    # marks the hiatus, but without a Latin stress acute (ORTHOGRAPHY.md 7).
+    "israel": "indeclinable Hebrew name; diaeresis marks the hiatus",
+}
 
 # Who a narrative may be about. Naming one of these in the opening sentence
 # is what lets a reader who lands mid-book know whose actions they are
@@ -479,6 +485,8 @@ def lint_text(doc):
         # u after q/g before a vowel is a glide, not a vowel (quia, sanguis) —
         # drop it before the vocalic-context tests.
         plain = re.sub(r"([qg])u(?=[aeiouy])", r"\1", plain)
+        if plain in SPELLING_EXEMPT:
+            continue
         if "j" in plain:
             errors.append(
                 f"{wid}: {f!r} spells the consonant with j — ORTHOGRAPHY.md prints i, "

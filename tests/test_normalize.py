@@ -23,6 +23,7 @@ class TestStripAccents:
     def test_removes_the_marks_and_keeps_the_letters(self):
         assert strip_accents("Dóminus") == "Dominus"
         assert strip_accents("sæculórum") == "sæculorum"
+        assert strip_accents("fœ́deris") == "fœderis"
 
     def test_leaves_a_bare_word_alone(self):
         assert strip_accents("Pater") == "Pater"
@@ -128,6 +129,7 @@ class TestHasAccent:
     def test_finds_an_accent_anywhere(self):
         assert has_accent("Dóminus") is True
         assert has_accent("sǽculi") is True
+        assert has_accent("fœ́deris") is True
 
     def test_and_reports_none_when_there_is_none(self):
         assert has_accent("Pater") is False
