@@ -170,6 +170,10 @@ def check_prepositions(doc: dict, gloss: dict) -> list[str]:
 # ZNANYMI*, and the instrumental is what Polish requires after uczynić.
 # Declared site by site so the agreement check below stays a gate.
 PREDICATE_RULINGS: dict[tuple[str, str], str] = {
+    ("ordinarium.per-quem-haec-omnia", "w007"): (
+        "bona: hæc ómnia bona creas — Polish takes an instrumental "
+        "complement where the Latin has a predicate accusative"
+    ),
     ("proprium.dominica-i-adventus-graduale", "w011"): (
         "notas fac: uczynić takes an instrumental complement"
     ),
