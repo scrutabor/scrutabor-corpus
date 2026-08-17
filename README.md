@@ -83,8 +83,9 @@ Segment translations of prayers the modern Roman Missal still carries follow
 the received wording of the current vernacular editions, so that a reader
 meets the words in the form the Church prays them today: the English of the
 International Commission on English in the Liturgy and the Polish of the
-Mszał Rzymski dla diecezji polskich, used with acknowledgement and adapted
-only where this edition's Latin differs from theirs. The word-by-word glosses,
+Mszał Rzymski dla diecezji polskich and, in the scripture the Mass reads,
+the Biblia Tysiąclecia — all used with acknowledgement and adapted only
+where this edition's Latin differs from theirs. The word-by-word glosses,
 the notes, the apparatus and the rubrical narratives are this edition's own
 work.
 
