@@ -262,7 +262,14 @@ def check(doc: dict) -> list[str]:
 
 
 def coverage(doc: dict) -> tuple[int, int]:
-    """(declared, total) — how much of this text's syntax is stated as data."""
+    """(declared, total) — how much of this text's syntax is stated as data.
+
+    DECLARED, not verified. A head that names the wrong word counts here
+    exactly as a right one does: this measures whether the question was
+    answered, never whether the answer is true. It read 1289/1289 on the day
+    165 heads were found pointing at a word in another sentence. Anything
+    quoting this number owes the word `declared` beside it.
+    """
     declared = total = 0
     for segment in doc.get("segments", []):
         for word in segment.get("words") or []:

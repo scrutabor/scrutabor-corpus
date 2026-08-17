@@ -168,7 +168,7 @@ def main(text_id: str) -> int:
         + (f"omissions={coll_stats['omissions']} " if coll_stats.get("omissions") else "")
         + (f"speakers={attributed}/{n_verses} " if n_verses else "")
         + (f"participation={participating} " if participating else "")
-        + (f"syntax={syn_declared}/{syn_total} " if syn_total else "")
+        + (f"syntax={syn_declared}/{syn_total}-declared " if syn_total else "")
         + (f"raw={transcriptions_checked} " if transcriptions_checked else "")
     )
     subject = (
@@ -242,7 +242,7 @@ if __name__ == "__main__":
         rc |= 1 if doubt_errors else 0
         attested = readings(corpus_docs)
         print(
-            f"UNCERTAINTY exposure={sum(exposure(d, attested) for d in corpus_docs)} "
+            f"UNCERTAINTY exposure>={sum(exposure(d, attested) for d in corpus_docs)} "
             f"stored={sum(stored(d) for d in corpus_docs)}"
         )
         from checks.disputed import collect

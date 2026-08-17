@@ -55,7 +55,14 @@ def readings(docs: list[dict]) -> dict[str, set]:
 
 
 def exposure(doc: dict, attested: dict[str, set]) -> int:
-    """Tokens this text does not settle: ambiguous form, nothing forcing it."""
+    """Tokens this text does not settle: ambiguous form, nothing forcing it.
+
+    A FLOOR, not a measure. `attested` holds only the readings THIS corpus
+    happens to carry, so a form that is syncretic in Latin at large but occurs
+    here once, or always in one reading, is not counted at all. The real
+    exposure is larger by an unknown amount, and the printed figure is written
+    `>=` for that reason.
+    """
     words = {w["id"]: w for s in doc.get("segments", []) for w in (s.get("words") or [])}
     governed = {
         w["head"] for w in words.values() if w["morph"].get("pos") == "prep" and w.get("head")
