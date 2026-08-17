@@ -21,6 +21,7 @@ from checks.lexicon import (
     check_derivative_homes,
     check_note_prose,
     check_orphans,
+    check_paradigm,
     check_text_against_lexicon,
     lint_lemmata,
     lint_sense_parity,
@@ -82,6 +83,7 @@ def lexicon_suite(used_lemmas=None) -> int:
     coverage/consistency half runs inside main()."""
     lemmata, langs, errors = load_lexicon(CORPUS)
     errors += lint_lemmata(lemmata)
+    errors += check_paradigm(lemmata)
     for lang, entries in sorted(langs.items()):
         errors += lint_senses(lang, entries, lemmata)
     errors += lint_sense_parity(langs)

@@ -311,3 +311,63 @@ def check_note_prose(lex: dict) -> list[str]:
         if not note.rstrip().endswith((".", "?", "!", "”", '"', "’")):
             errors.append(f"lexicon note {lemma!r} does not end its sentence")
     return errors
+
+
+# Every noun states its declension and every verb its conjugation, unless it is
+# one of the words that has none to state. The irregulars are named here rather
+# than inferred, because "no declension recorded" and "no declension exists"
+# look identical in the data and mean opposite things — six nouns were simply
+# missing theirs until 2026-08-17, indistinguishable from the Hebrew names
+# beside them.
+INDECLINABLE = {
+    "Abel",
+    "Abraham",
+    "Ioseph",
+    "Israel",
+    "Melchisedech",
+    "sabaoth",
+    "seraphim",
+    "nihil",  # indeclinable by nature
+    "Iesus",
+    "kyrie",  # Greek, declined on their own pattern
+}
+IRREGULAR_VERBS = {
+    "sum",
+    "eo",
+    "fio",
+    "volo",
+    "memini",
+    "prosum",
+    "aufero",
+    "offero",
+    "perfero",  # compounds of fero
+    "introeo",
+    "praetereo",
+    "transeo",  # compounds of eo
+    "eleison",  # Greek imperative
+}
+
+
+def check_paradigm(lemmata: dict) -> list[str]:
+    """A noun without a declension, or a verb without a conjugation, that is
+    not one of the words which has none.
+
+    Takes either the whole lemmata document or the entries mapping, because
+    the loader hands over the latter and a reader of this file will reach for
+    the former.
+    """
+    entries = lemmata.get("entries") if "entries" in lemmata else lemmata
+    errors = []
+    for name, entry in sorted((entries or {}).items()):
+        pos = entry.get("pos")
+        if pos == "noun" and "decl" not in entry and name not in INDECLINABLE:
+            errors.append(
+                f"lexicon:{name}: a noun with no declension recorded — add it, or name "
+                f"the word in INDECLINABLE if it has none"
+            )
+        if pos == "verb" and "conj" not in entry and name not in IRREGULAR_VERBS:
+            errors.append(
+                f"lexicon:{name}: a verb with no conjugation recorded — add it, or name "
+                f"the word in IRREGULAR_VERBS if it has none"
+            )
+    return errors
