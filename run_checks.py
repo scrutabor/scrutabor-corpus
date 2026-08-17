@@ -13,6 +13,7 @@ from pathlib import Path
 
 from checks.apparatus import lint_apparatus_summary
 from checks.collate import collate
+from checks.conventions import check as check_conventions
 from checks.english import check as check_english
 from checks.english import check_number as check_english_number
 from checks.fusion import check as check_fusion
@@ -143,6 +144,8 @@ def main(text_id: str) -> int:
         all_errors += check_notes(doc, gdoc)
         # A gloss that renders nothing must say why it renders nothing.
         all_errors += check_fusion(doc, gdoc)
+        # The three gloss conventions the reading campaign settled.
+        all_errors += check_conventions(doc, gdoc)
         # English, where English can be checked exactly: a preposition
         # rendered twice, and a two-case preposition against its case.
         all_errors += check_english(doc, gdoc)
