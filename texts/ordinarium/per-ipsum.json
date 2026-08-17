@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.12.0",
+  "schema_version": "0.13.0",
   "id": "ordinarium.per-ipsum",
   "title": "Per ipsum",
   "category": "ordinarium",
@@ -28,13 +28,13 @@
       "speaker": "sacerdos",
       "voice": "secreto",
       "words": [
-        { "id": "w001", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w001", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w002" },
         { "id": "w002", "form": "ipsum", "post": ",", "lemma": "ipse", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
         { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
         { "id": "w005", "form": "ipso", "post": ",", "lemma": "ipse", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" } },
         { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w007", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w007", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008" },
         { "id": "w008", "form": "ipso", "post": ",", "lemma": "ipse", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" } }
       ]
     },
@@ -54,11 +54,11 @@
         { "id": "w010", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
         { "id": "w011", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w012", "form": "Patri", "lemma": "pater", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w013", "form": "omnipoténti", "post": ",", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" } },
-        { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w013", "form": "omnipoténti", "post": ",", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w012" },
+        { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w015" },
         { "id": "w015", "form": "unitáte", "lemma": "unitas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
         { "id": "w016", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
-        { "id": "w017", "form": "Sancti", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" } }
+        { "id": "w017", "form": "Sancti", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w016" }
       ]
     },
     {
@@ -73,7 +73,7 @@
       "speaker": "sacerdos",
       "voice": "secreto",
       "words": [
-        { "id": "w018", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w018", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w019" },
         { "id": "w019", "form": "honor", "post": ",", "lemma": "honor", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w021", "form": "glória", "post": ".", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } }
@@ -91,8 +91,8 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w022", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" } },
-        { "id": "w023", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w022", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w024" },
+        { "id": "w023", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w024" },
         { "id": "w024", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
         { "id": "w025", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } }
       ]

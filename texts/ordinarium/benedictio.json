@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.12.0",
+  "schema_version": "0.13.0",
   "id": "ordinarium.benedictio",
   "title": "Benedícat vos omnípotens Deus",
   "category": "ordinarium",
@@ -30,7 +30,7 @@
       "words": [
         { "id": "w001", "form": "Benedícat", "lemma": "benedico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
         { "id": "w002", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
-        { "id": "w003", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w003", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w004" },
         { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     },
@@ -51,7 +51,7 @@
         { "id": "w007", "form": "Fílius", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w009", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 } },
-        { "id": "w010", "form": "Sanctus", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } }
+        { "id": "w010", "form": "Sanctus", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w009" }
       ]
     },
     {

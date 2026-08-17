@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.12.0",
+  "schema_version": "0.13.0",
   "id": "orationes.gloria-patri",
   "title": "Glória Patri",
   "category": "orationes",
@@ -25,7 +25,7 @@
         { "id": "w004", "form": "Fílio", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w006", "form": "Spirítui", "lemma": "spiritus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 4 } },
-        { "id": "w007", "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" } }
+        { "id": "w007", "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w006" }
       ]
     },
     {
@@ -34,14 +34,14 @@
       "words": [
         { "id": "w008", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
         { "id": "w009", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" } },
-        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011" },
         { "id": "w011", "form": "princípio", "post": ",", "lemma": "principium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
         { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w013", "form": "nunc", "post": ",", "lemma": "nunc", "morph": { "pos": "adv" } },
         { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w015", "form": "semper", "post": ",", "lemma": "semper", "morph": { "pos": "adv" } },
         { "id": "w016", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w017", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w017", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w018" },
         { "id": "w018", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
         { "id": "w019", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } },
         { "id": "w020", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }

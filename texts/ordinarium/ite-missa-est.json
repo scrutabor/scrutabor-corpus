@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.12.0",
+  "schema_version": "0.13.0",
   "id": "ordinarium.ite-missa-est",
   "title": "Ite, Missa est",
   "category": "ordinarium",
@@ -39,9 +39,9 @@
       "speaker": "minister",
       "words": [
         { "id": "w003", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
         { "id": "w005", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
-        { "id": "w006", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } }
+        { "id": "w006", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w005" }
       ],
       "participation": {
         "lecta": {

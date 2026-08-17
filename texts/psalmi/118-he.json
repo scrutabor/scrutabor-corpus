@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.12.0",
+  "schema_version": "0.13.0",
   "id": "psalmi.118-he",
   "title": "Psalmus 118, HE",
   "category": "psalmi",
@@ -27,9 +27,9 @@
         { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w005", "form": "viam", "lemma": "via", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
         { "id": "w006", "form": "iustificatiónum", "lemma": "iustificatio", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 3 } },
-        { "id": "w007", "form": "tuárum", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "f" } },
+        { "id": "w007", "form": "tuárum", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "f" }, "head": "w006" },
         { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w009", "form": "exquíram", "lemma": "exquiro", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w009", "form": "exquíram", "lemma": "exquiro", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
         { "id": "w010", "form": "eam", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
         { "id": "w011", "form": "semper", "post": ".", "lemma": "semper", "morph": { "pos": "adv" } }
       ]
@@ -45,14 +45,14 @@
         { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w016", "form": "scrutábor", "lemma": "scrutor", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "dep", "conj": 1 } },
         { "id": "w017", "form": "legem", "lemma": "lex", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w018", "form": "tuam", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w018", "form": "tuam", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w017" },
         { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w020", "form": "custódiam", "lemma": "custodio", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 4 } },
         { "id": "w021", "form": "illam", "lemma": "ille", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
-        { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
-        { "id": "w023", "form": "toto", "lemma": "totus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" } },
+        { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024" },
+        { "id": "w023", "form": "toto", "lemma": "totus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "head": "w024" },
         { "id": "w024", "form": "corde", "lemma": "cor", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w025", "form": "meo", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" } }
+        { "id": "w025", "form": "meo", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "head": "w024" }
       ]
     },
     {
@@ -62,10 +62,10 @@
       "words": [
         { "id": "w026", "form": "Deduc", "lemma": "deduco", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
         { "id": "w027", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
-        { "id": "w028", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w028", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w029" },
         { "id": "w029", "form": "sémitam", "lemma": "semita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
         { "id": "w030", "form": "mandatórum", "lemma": "mandatum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w031", "form": "tuórum", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "n" } },
+        { "id": "w031", "form": "tuórum", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "n" }, "head": "w030" },
         { "id": "w032", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
         { "id": "w033", "form": "ipsam", "lemma": "ipse", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
         { "id": "w034", "form": "vólui", "post": ".", "lemma": "volo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act" } }
@@ -78,13 +78,13 @@
       "words": [
         { "id": "w035", "form": "Inclína", "lemma": "inclino", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
         { "id": "w036", "form": "cor", "lemma": "cor", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w037", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" } },
-        { "id": "w038", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w037", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w036" },
+        { "id": "w038", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w039" },
         { "id": "w039", "form": "testimónia", "lemma": "testimonium", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w040", "form": "tua", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w040", "form": "tua", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w039" },
         { "id": "w041", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w042", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w043", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w043", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w044" },
         { "id": "w044", "form": "avarítiam", "post": ".", "lemma": "avaritia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } }
       ]
     },
@@ -95,13 +95,13 @@
       "words": [
         { "id": "w045", "form": "Avérte", "lemma": "averto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
         { "id": "w046", "form": "óculos", "lemma": "oculus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 } },
-        { "id": "w047", "form": "meos", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" } },
+        { "id": "w047", "form": "meos", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "head": "w046" },
         { "id": "w048", "form": "ne", "lemma": "ne", "morph": { "pos": "conj" } },
         { "id": "w049", "form": "vídeant", "lemma": "video", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 } },
         { "id": "w050", "form": "vanitátem", "post": ":", "lemma": "vanitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w051", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w051", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w052" },
         { "id": "w052", "form": "via", "lemma": "via", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w053", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" } },
+        { "id": "w053", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w052" },
         { "id": "w054", "form": "vivífica", "lemma": "vivifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
         { "id": "w055", "form": "me", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } }
       ]
@@ -113,12 +113,12 @@
       "words": [
         { "id": "w056", "form": "Státue", "lemma": "statuo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
         { "id": "w057", "form": "servo", "lemma": "servus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w058", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" } },
+        { "id": "w058", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w057" },
         { "id": "w059", "form": "elóquium", "lemma": "eloquium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w060", "form": "tuum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" } },
-        { "id": "w061", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w060", "form": "tuum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w059" },
+        { "id": "w061", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w062" },
         { "id": "w062", "form": "timóre", "lemma": "timor", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w063", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" } }
+        { "id": "w063", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w062" }
       ]
     },
     {
@@ -128,14 +128,14 @@
       "words": [
         { "id": "w064", "form": "Ámputa", "lemma": "amputo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
         { "id": "w065", "form": "oppróbrium", "lemma": "opprobrium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w066", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w066", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w065" },
         { "id": "w067", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
-        { "id": "w068", "form": "suspicátus", "lemma": "suspicor", "morph": { "pos": "verb", "tense": "perf", "mood": "part", "voice": "dep", "number": "sg", "gender": "m", "case": "nom", "conj": 1 } },
+        { "id": "w068", "form": "suspicátus", "lemma": "suspicor", "morph": { "pos": "verb", "tense": "perf", "mood": "part", "voice": "dep", "number": "sg", "gender": "m", "case": "nom", "conj": 1 }, "head": "w069" },
         { "id": "w069", "form": "sum", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
         { "id": "w070", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
         { "id": "w071", "form": "iudícia", "lemma": "iudicium", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w072", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" } },
-        { "id": "w073", "form": "iucúnda", "post": ".", "lemma": "iucundus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" } }
+        { "id": "w072", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w071" },
+        { "id": "w073", "form": "iucúnda", "post": ".", "lemma": "iucundus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w071" }
       ]
     },
     {
@@ -146,10 +146,10 @@
         { "id": "w074", "form": "Ecce", "post": ",", "lemma": "ecce", "morph": { "pos": "intj" } },
         { "id": "w075", "form": "concupívi", "lemma": "concupisco", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
         { "id": "w076", "form": "mandáta", "lemma": "mandatum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w077", "form": "tua", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
-        { "id": "w078", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w077", "form": "tua", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w076" },
+        { "id": "w078", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w079" },
         { "id": "w079", "form": "æquitáte", "lemma": "aequitas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w080", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" } },
+        { "id": "w080", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w079" },
         { "id": "w081", "form": "vivífica", "lemma": "vivifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
         { "id": "w082", "form": "me", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } }
       ]

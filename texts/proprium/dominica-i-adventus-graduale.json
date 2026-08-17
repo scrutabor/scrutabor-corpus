@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.12.0",
+  "schema_version": "0.13.0",
   "id": "proprium.dominica-i-adventus-graduale",
   "title": "Univérsi, qui te exspéctant",
   "category": "proprium",
@@ -21,7 +21,7 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Univérsi", "post": ",", "lemma": "universus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" } },
+        { "id": "w001", "form": "Univérsi", "post": ",", "lemma": "universus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
         { "id": "w002", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
         { "id": "w003", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w004", "form": "exspéctant", "post": ",", "lemma": "exspecto", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
@@ -47,14 +47,14 @@
       "voice": "clara",
       "words": [
         { "id": "w008", "form": "Vias", "lemma": "via", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
-        { "id": "w009", "form": "tuas", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" } },
+        { "id": "w009", "form": "tuas", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w008" },
         { "id": "w010", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w011", "form": "notas", "lemma": "notus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" } },
+        { "id": "w011", "form": "notas", "lemma": "notus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w008" },
         { "id": "w012", "form": "fac", "lemma": "facio", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w013", "form": "mihi", "post": ":", "lemma": "ego", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
         { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w015", "form": "sémitas", "lemma": "semita", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
-        { "id": "w016", "form": "tuas", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" } },
+        { "id": "w016", "form": "tuas", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w015" },
         { "id": "w017", "form": "édoce", "lemma": "edoceo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
         { "id": "w018", "form": "me", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } }
       ],

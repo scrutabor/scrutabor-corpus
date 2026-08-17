@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.12.0",
+  "schema_version": "0.13.0",
   "id": "ordinarium.per-quem-haec-omnia",
   "title": "Per quem hæc ómnia",
   "category": "ordinarium",
@@ -22,13 +22,13 @@
       "speaker": "sacerdos",
       "voice": "secreto",
       "words": [
-        { "id": "w001", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w001", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w002" },
         { "id": "w002", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
         { "id": "w003", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
-        { "id": "w004", "form": "ómnia", "post": ",", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w004", "form": "ómnia", "post": ",", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true },
         { "id": "w005", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w006", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
-        { "id": "w007", "form": "bona", "lemma": "bonus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w007", "form": "bona", "lemma": "bonus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w004" },
         { "id": "w008", "form": "creas", "post": ",", "lemma": "creo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } }
       ]
     },

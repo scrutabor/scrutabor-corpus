@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.12.0",
+  "schema_version": "0.13.0",
   "id": "ordinarium.haec-commixtio",
   "title": "Hæc commíxtio",
   "category": "ordinarium",
@@ -36,15 +36,15 @@
         { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w007", "form": "Sánguinis", "lemma": "sanguis", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w008", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w009", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w009", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w008" },
         { "id": "w010", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w011", "form": "Christi", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w012", "form": "fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
-        { "id": "w013", "form": "accipiéntibus", "lemma": "accipio", "morph": { "pos": "verb", "case": "dat", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 } },
+        { "id": "w013", "form": "accipiéntibus", "lemma": "accipio", "morph": { "pos": "verb", "case": "dat", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w014" },
         { "id": "w014", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
-        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w016" },
         { "id": "w016", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w017", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w017", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w016" },
         { "id": "w018", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }

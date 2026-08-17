@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.12.0",
+  "schema_version": "0.13.0",
   "id": "ordinarium.unde-et-memores",
   "title": "Unde et mémores",
   "category": "ordinarium",
@@ -30,36 +30,36 @@
       "words": [
         { "id": "w001", "form": "Unde", "lemma": "unde", "morph": { "pos": "adv" } },
         { "id": "w002", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w003", "form": "mémores", "post": ",", "lemma": "memor", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" } },
+        { "id": "w003", "form": "mémores", "post": ",", "lemma": "memor", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w006" },
         { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w005", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
         { "id": "w006", "form": "servi", "lemma": "servus", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 } },
-        { "id": "w007", "form": "tui", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" } },
+        { "id": "w007", "form": "tui", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w006" },
         { "id": "w008", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
         { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w010", "form": "plebs", "lemma": "plebs", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w011", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" } },
-        { "id": "w012", "form": "sancta", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" } },
+        { "id": "w011", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w010" },
+        { "id": "w012", "form": "sancta", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w010" },
         { "id": "w013", "form": "eiúsdem", "lemma": "idem", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w014", "form": "Christi", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w015", "form": "Fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w016", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w016", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w015" },
         { "id": "w017", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w018", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w018", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w017" },
         { "id": "w019", "form": "tam", "lemma": "tam", "morph": { "pos": "adv" } },
-        { "id": "w020", "form": "beátæ", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w020", "form": "beátæ", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w021" },
         { "id": "w021", "form": "passiónis", "post": ",", "lemma": "passio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
         { "id": "w022", "form": "nec", "lemma": "nec", "morph": { "pos": "conj" } },
         { "id": "w023", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w024", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w025", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" } },
+        { "id": "w025", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w026" },
         { "id": "w026", "form": "ínferis", "lemma": "inferi", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } },
         { "id": "w027", "form": "resurrectiónis", "post": ",", "lemma": "resurrectio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
         { "id": "w028", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
         { "id": "w029", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w030", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w030", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w031" },
         { "id": "w031", "form": "cælos", "lemma": "caelum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w032", "form": "gloriósæ", "lemma": "gloriosus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w032", "form": "gloriósæ", "lemma": "gloriosus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w033" },
         { "id": "w033", "form": "ascensiónis", "post": ":", "lemma": "ascensio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } }
       ]
     },
@@ -70,11 +70,11 @@
       "voice": "secreto",
       "words": [
         { "id": "w034", "form": "offérimus", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w035", "form": "præcláræ", "lemma": "praeclarus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "f" } },
+        { "id": "w035", "form": "præcláræ", "lemma": "praeclarus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "f" }, "head": "w036" },
         { "id": "w036", "form": "maiestáti", "lemma": "maiestas", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w037", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "f" } },
-        { "id": "w038", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" } },
-        { "id": "w039", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" } },
+        { "id": "w037", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "f" }, "head": "w036" },
+        { "id": "w038", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w040" },
+        { "id": "w039", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w040" },
         { "id": "w040", "form": "donis", "lemma": "donum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
         { "id": "w041", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
         { "id": "w042", "form": "datis", "post": ",", "lemma": "datum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } }
@@ -93,11 +93,11 @@
       "voice": "secreto",
       "words": [
         { "id": "w043", "form": "hóstiam", "lemma": "hostia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w044", "form": "puram", "post": ",", "lemma": "purus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w044", "form": "puram", "post": ",", "lemma": "purus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w043" },
         { "id": "w045", "form": "hóstiam", "lemma": "hostia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w046", "form": "sanctam", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w046", "form": "sanctam", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w045" },
         { "id": "w047", "form": "hóstiam", "lemma": "hostia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w048", "form": "immaculátam", "post": ",", "lemma": "immaculatus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } }
+        { "id": "w048", "form": "immaculátam", "post": ",", "lemma": "immaculatus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w047" }
       ]
     },
     {
@@ -113,9 +113,9 @@
       "voice": "secreto",
       "words": [
         { "id": "w049", "form": "Panem", "lemma": "panis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w050", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w050", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w049" },
         { "id": "w051", "form": "vitæ", "lemma": "vita", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w052", "form": "ætérnæ", "post": ",", "lemma": "aeternus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } }
+        { "id": "w052", "form": "ætérnæ", "post": ",", "lemma": "aeternus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w051" }
       ]
     },
     {
@@ -133,7 +133,7 @@
         { "id": "w053", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w054", "form": "Cálicem", "lemma": "calix", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w055", "form": "salútis", "lemma": "salus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w056", "form": "perpétuæ", "post": ".", "lemma": "perpetuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" } }
+        { "id": "w056", "form": "perpétuæ", "post": ".", "lemma": "perpetuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w055" }
       ]
     }
   ]

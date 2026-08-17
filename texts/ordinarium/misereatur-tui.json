@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.12.0",
+  "schema_version": "0.13.0",
   "id": "ordinarium.misereatur-tui",
   "title": "Misereátur tui",
   "category": "ordinarium",
@@ -23,17 +23,17 @@
       "words": [
         { "id": "w001", "form": "Misereátur", "lemma": "misereor", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 2 } },
         { "id": "w002", "form": "tui", "lemma": "tu", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
-        { "id": "w003", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w003", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w004" },
         { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w005", "form": "et", "post": ",", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w006", "form": "dimíssis", "lemma": "dimitto", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 } },
+        { "id": "w006", "form": "dimíssis", "lemma": "dimitto", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w007" },
         { "id": "w007", "form": "peccátis", "lemma": "peccatum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w008", "form": "tuis", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" } },
+        { "id": "w008", "form": "tuis", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w007" },
         { "id": "w009", "form": "perdúcat", "lemma": "perduco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
         { "id": "w010", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
-        { "id": "w011", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" } },
+        { "id": "w011", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
         { "id": "w012", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w013", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" } }
+        { "id": "w013", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w012" }
       ],
       "participation": {
         "lecta": {

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.12.0",
+  "schema_version": "0.13.0",
   "id": "defunctorum.requiem-aeternam",
   "title": "Réquiem ætérnam",
   "category": "defunctorum",
@@ -21,13 +21,13 @@
       "type": "verse",
       "words": [
         { "form": "Réquiem", "lemma": "requies", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "id": "w001" },
-        { "form": "ætérnam", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "id": "w002" },
+        { "form": "ætérnam", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w001", "id": "w002" },
         { "form": "dona", "lemma": "dono", "morph": { "pos": "verb", "tense": "pres", "mood": "imp", "voice": "act", "person": 2, "number": "sg", "conj": 1 }, "id": "w003" },
         { "form": "eis", "lemma": "is", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "id": "w004", "post": "," },
         { "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "id": "w005", "post": ";" },
         { "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "id": "w006" },
         { "form": "lux", "lemma": "lux", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "id": "w007" },
-        { "form": "perpétua", "lemma": "perpetuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "id": "w008" },
+        { "form": "perpétua", "lemma": "perpetuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w007", "id": "w008" },
         { "form": "lúceat", "lemma": "luceo", "morph": { "pos": "verb", "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "person": 3, "conj": 2 }, "id": "w009" },
         { "form": "eis", "lemma": "is", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "id": "w010", "post": "." }
       ]
@@ -37,7 +37,7 @@
       "type": "verse",
       "words": [
         { "form": "Requiéscant", "lemma": "requiesco", "morph": { "pos": "verb", "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "person": 3, "conj": 3 }, "id": "w011" },
-        { "form": "in", "lemma": "in", "morph": { "pos": "prep" }, "id": "w012" },
+        { "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013", "id": "w012" },
         { "form": "pace", "lemma": "pax", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "id": "w013", "post": "." }
       ]
     },

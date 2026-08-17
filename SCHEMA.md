@@ -1,4 +1,4 @@
-# Corpus schema v0 (0.12.0)
+# Corpus schema v0 (0.13.0)
 
 Three layers: a language-neutral Latin source document per text, one gloss
 document per text per language, and a corpus-wide lexicon (language-neutral
@@ -79,6 +79,41 @@ analysis_defaults, segments[]
   source framing (speaker markers, rubrics, runtime calls, and name slots).
   Composed witnesses are checked clause by clause against the ordered union of
   their named spans. A declared raw path with no local archive is an error.
+- **`head`** and **`substantive`** (since 0.13.0) state the SYNTAX, which is
+  the one thing that settles a reading the form permits and the sentence
+  forbids (error class 43, notes/quality.md). Every adjective, numeral and
+  participle carries either `head`, the id of the word it must agree with, or
+  `substantive: true`, meaning it agrees with nothing expressed — it heads its
+  own phrase (*Salus infirmórum*, the health of the sick) or is impersonal
+  (*postquam cenátum est*). Every preposition carries a `head` naming the word
+  it governs. `checks/syntax.py` then verifies on every build that a modifier
+  matches its head in case, number and gender, that a preposition's object
+  stands in a case that preposition governs, and that a predicate complement or
+  a nominative relative matches its verb in number.
+  Three rules keep the claim honest. A head may stand in ANOTHER SEGMENT: a
+  segment is a unit of layout, not of syntax, and the Canon's sentences run
+  across four and five of them. A PERSONAL PRONOUN lends no gender — the corpus
+  records none for *nos*, *tu*, *mihi* — so an adjective agreeing with one
+  (*omnes nos*, *benedícta tu*) is checked on case and number alone. A
+  PARTICIPLE used substantively is a nominal and takes agreement like one
+  (*ómnium circumstántium*); only a FINITE verb head means "agrees with the
+  subject of this verb", where number is the only feature a verb can settle.
+  `substantive` is data and not a default, because "this adjective is really a
+  noun" is the assumption that buried 131 real agreement failures in noise when
+  the check was first attempted without heads. The verdict line reports
+  `syntax=declared/total`, which reached 1289/1289 on 2026-08-16. The annotation
+  is COMPLETE, so a modifier that declares neither a head nor `substantive` now
+  FAILS the build: a new word entering the corpus must say what it modifies, or
+  say that it modifies nothing.
+  Two rules constrain the SHAPE of the head graph, not the features, because
+  agreement is symmetric and cannot police itself: two coordinate modifiers
+  agree with each other by construction (*dignum et iustum*, *ómnibus Sanctis*),
+  so a pair naming each other satisfies every feature test while recording
+  nothing. A head that names a word which names it back is an ERROR, and so is a
+  modifier whose head is itself a dependent modifier — name that modifier's own
+  head instead. A head may still stand in another SEGMENT, but it must stand in
+  the same SENTENCE: 165 heads had reached past a full stop to the first word
+  that happened to agree.
 - `analysis_defaults`: the `analysis` object assumed for every word/segment
   that does not carry its own (`confidence`: high|medium|low, `sources`:
   [whitakers|collatinus|editorial|treebank|expert|<witness-id>], `review`:
