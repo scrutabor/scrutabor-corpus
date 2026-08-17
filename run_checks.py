@@ -35,6 +35,7 @@ from checks.lint import (
     lint_rubrics,
     lint_text,
 )
+from checks.notes import check as check_notes
 from checks.participation import check_doc as check_participation
 from checks.polish import check as check_polish
 from checks.syntax import check as check_syntax
@@ -137,6 +138,7 @@ def main(text_id: str) -> int:
         # beside it, a modifier agreeing with what it modifies, the divine
         # second person capitalised as the verse capitalises it.
         all_errors += check_polish(doc, gdoc)
+        all_errors += check_notes(doc, gdoc)
         # English, where English can be checked exactly: a preposition
         # rendered twice, and a two-case preposition against its case.
         all_errors += check_english(doc, gdoc)
