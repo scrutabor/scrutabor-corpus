@@ -13,7 +13,11 @@ from pathlib import Path
 
 from checks.apparatus import lint_apparatus_summary
 from checks.collate import collate
+from checks.english import check as check_english
+from checks.english import check_number as check_english_number
 from checks.lexicon import (
+    check_derivative_homes,
+    check_note_prose,
     check_orphans,
     check_text_against_lexicon,
     lint_lemmata,
@@ -32,7 +36,12 @@ from checks.lint import (
     lint_text,
 )
 from checks.participation import check_doc as check_participation
+from checks.polish import check as check_polish
+from checks.syntax import check as check_syntax
+from checks.syntax import coverage as syntax_coverage
 from checks.transcription import check_transcriptions
+from checks.uncertainty import check as check_uncertainty
+from checks.uncertainty import exposure, readings, stored
 
 # Before anything is written, not before anything is imported: the corpus
 # prints Latin and Polish and the default encoding of a piped stdout is not
@@ -74,6 +83,10 @@ def lexicon_suite(used_lemmas=None) -> int:
     errors += lint_sense_parity(langs)
     if used_lemmas is not None:
         errors += check_orphans(lemmata, used_lemmas)
+    for path in sorted(CORPUS.glob("lexicon/*.json")):
+        data = json.loads(path.read_text())
+        errors += check_derivative_homes(data)
+        errors += check_note_prose(data)
     for e in errors:
         print(f"ERROR: {e}")
     subject = f"lexicon entries={len(lemmata)} langs={','.join(sorted(langs)) or '-'}"
@@ -103,6 +116,11 @@ def main(text_id: str) -> int:
     # by hand (checks/participation.py).
     part_errors, participating = check_participation(doc)
     all_errors += part_errors
+    # Agreement and government, checked against the edition's own syntax
+    # (schema 0.13.0, checks/syntax.py). `syntax` counts what is declared;
+    # a modifier with no head yet is work outstanding, not a failure.
+    all_errors += check_syntax(doc)
+    syn_declared, syn_total = syntax_coverage(doc)
     all_errors += duplicate_keys(text_path)
     all_errors += check_schema_versions()
 
@@ -115,6 +133,13 @@ def main(text_id: str) -> int:
         gdoc = json.loads(gloss_path.read_text(encoding="utf-8"))
         gloss_docs.append(gdoc)
         all_errors += lint_gloss(gdoc, doc)
+        # The gloss line read AS POLISH: a preposition governing the case
+        # beside it, a modifier agreeing with what it modifies, the divine
+        # second person capitalised as the verse capitalises it.
+        all_errors += check_polish(doc, gdoc)
+        # English, where English can be checked exactly: a preposition
+        # rendered twice, and a two-case preposition against its case.
+        all_errors += check_english(doc, gdoc)
     all_errors += lint_parity(gloss_docs)
     langs = [g["lang"] for g in gloss_docs]
     if not langs:
@@ -141,6 +166,7 @@ def main(text_id: str) -> int:
         + (f"omissions={coll_stats['omissions']} " if coll_stats.get("omissions") else "")
         + (f"speakers={attributed}/{n_verses} " if n_verses else "")
         + (f"participation={participating} " if participating else "")
+        + (f"syntax={syn_declared}/{syn_total} " if syn_total else "")
         + (f"raw={transcriptions_checked} " if transcriptions_checked else "")
     )
     subject = (
@@ -185,6 +211,38 @@ if __name__ == "__main__":
         rc = lexicon_suite(used)
         for tid in ids:
             rc |= main(tid)
+        # English number is checked ACROSS the corpus, not per text: with no
+        # analyzer the only oracle is the corpus itself, and one gloss serving
+        # both numbers of a lemma is only visible with every text in hand.
+        pairs = []
+        for tid in ids:
+            category, name = tid.split(".", 1)
+            pairs.append(
+                (
+                    json.loads(
+                        (CORPUS / "texts" / category / f"{name}.json").read_text(encoding="utf-8")
+                    ),
+                    json.loads(
+                        (CORPUS / "glosses" / "en" / f"{tid}.json").read_text(encoding="utf-8")
+                    ),
+                )
+            )
+        number_errors = check_english_number(pairs)
+        for message in number_errors:
+            print(f"ERROR: {message}")
+        rc |= 1 if number_errors else 0
+        # What the edition does not know, stated as a number rather than left
+        # to be inferred from a silent default.
+        corpus_docs = [t for t, _ in pairs]
+        doubt_errors = check_uncertainty(corpus_docs)
+        for message in doubt_errors:
+            print(f"ERROR: {message}")
+        rc |= 1 if doubt_errors else 0
+        attested = readings(corpus_docs)
+        print(
+            f"UNCERTAINTY exposure={sum(exposure(d, attested) for d in corpus_docs)} "
+            f"stored={sum(stored(d) for d in corpus_docs)}"
+        )
         from checks.disputed import collect
 
         found = collect()

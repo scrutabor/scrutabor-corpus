@@ -53,3 +53,9 @@ testpaths = ["tests"]
 # import `checks` in CI and fail to import it for anyone who types the
 # shorter command.
 pythonpath = ["."]
+
+# morfeusz2 ships no type stubs. It is a build-time analyzer for the Polish
+# gloss line (checks/polish.py) and nothing in the corpus depends on its types.
+[[tool.mypy.overrides]]
+module = "morfeusz2"
+ignore_missing_imports = true

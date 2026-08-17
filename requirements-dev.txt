@@ -1,5 +1,8 @@
-# Development tooling only — the checks import nothing but the standard
-# library (see pyproject.toml).
-ruff==0.14.4
+# Development tooling only. The corpus SHIPS json and nothing else: morfeusz2
+# is a Polish morphological analyzer used at build time by checks/polish.py to
+# read the gloss line as Polish, and its GPL never reaches the published
+# artifact or a reader's browser.
+morfeusz2==1.99.15
 mypy==1.18.2
 pytest==8.4.2
+ruff==0.14.4

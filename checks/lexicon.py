@@ -259,3 +259,55 @@ def check_text_against_lexicon(text_doc, lemmata):
                     f"{tid}:{wid}: morph.conj={morph['conj']} but lexicon says {e['conj']}"
                 )
     return errors
+
+
+def check_derivative_homes(lex: dict) -> list[str]:
+    """A derivative belongs to ONE lemma: the nearest Latin ancestor it descends from.
+
+    Listing *oracja* under both `oratio` and `oro`, or *passion* under both
+    `passio` and `patior`, tells the reader the word has two parents. 47 such
+    listings had accumulated, every one the same shape — a derivative filed
+    under both a verb and its own deverbal noun, or under a base and the
+    compound it actually comes through (*receive* under `capio` as well as
+    `recipio`).
+    """
+    home: dict[str, list[str]] = {}
+    for lemma, entry in (lex.get("entries") or {}).items():
+        for d in entry.get("derivatives") or []:
+            form = d if isinstance(d, str) else d.get("form")
+            home.setdefault(form, []).append(lemma)
+    return [
+        f"derivative {form!r} is listed under {len(ls)} lemmata ({', '.join(sorted(ls))}): "
+        f"it belongs to the nearest ancestor only"
+        for form, ls in sorted(home.items())
+        if len(ls) > 1
+    ]
+
+
+def check_note_prose(lex: dict) -> list[str]:
+    """The lexicon's notes answer to the edition's prose rule like every other page.
+
+    The edition's no-semicolon rule was applied to the reader-facing strings
+    and to 121 gloss documents, and the guard that keeps it reads
+    `words[id].note`. The lexicon keeps its notes at `entries[lemma].note`, so
+    72 of them were never swept — and the lexicon is vendored and rendered, so
+    a reader met every one of them on a lemma page.
+    """
+    errors = []
+    for lemma, entry in sorted((lex.get("entries") or {}).items()):
+        # senses are checked on EVERY entry: gating them behind `note` would
+        # have covered 329 of 878.
+        for sense in entry.get("senses") or []:
+            if ";" in sense:
+                errors.append(
+                    f"lexicon sense {sense!r} under {lemma!r} packs two senses into one string: "
+                    f"the senses field is a LIST"
+                )
+        note = entry.get("note")
+        if not note:
+            continue
+        if ";" in note:
+            errors.append(f"lexicon note {lemma!r} uses a semicolon: use a full stop or an 'and'")
+        if not note.rstrip().endswith((".", "?", "!", "”", '"', "’")):
+            errors.append(f"lexicon note {lemma!r} does not end its sentence")
+    return errors

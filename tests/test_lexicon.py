@@ -232,3 +232,21 @@ class TestATextAgainstTheLexicon:
         del doc["segments"][0]["words"][0]["morph"]["decl"]
         del doc["segments"][0]["words"][0]["morph"]["gender"]
         assert any("morph.conj=" in e for e in check_text_against_lexicon(doc, lex))
+
+
+def test_a_lexicon_note_answers_to_the_prose_rule():
+    from checks.lexicon import check_note_prose
+
+    ok = {"entries": {"vir": {"senses": ["a man"], "note": "Vir is a male. Homo is a human."}}}
+    assert check_note_prose(ok) == []
+    bad = {"entries": {"vir": {"senses": ["a man"], "note": "Vir is a male; homo is a human."}}}
+    assert check_note_prose(bad)
+    unfinished = {"entries": {"vir": {"senses": ["a man"], "note": "Vir is a male"}}}
+    assert check_note_prose(unfinished)
+
+
+def test_a_sense_list_is_a_list():
+    from checks.lexicon import check_note_prose
+
+    assert check_note_prose({"entries": {"sinus": {"senses": ["womb", "bosom"]}}}) == []
+    assert check_note_prose({"entries": {"sinus": {"senses": ["womb; bosom"]}}})
