@@ -66,3 +66,57 @@ def test_english_notes_are_read_too():
 
 def test_a_note_naming_no_id_asserts_nothing():
     assert check(*case("w003", "An accusative participle in apposition.")) == []
+
+
+def parse(note, form, table_name):
+    from checks import notes as N
+
+    table = {"case": N.CASE_WORDS, "number": N.NUMBER_WORDS, "mood": N.MOOD_WORDS}[table_name]
+    return N._parse_claim(note, form, table["en"])
+
+
+def test_a_note_states_its_own_parse():
+    assert parse("Ablative after “in” (w029).", "cælo", "case") == "abl"
+    assert parse("Nominative plural agreeing with “inimíci”.", "mei", "number") == "pl"
+    assert parse("An imperative addressed to the Lord.", "audi", "mood") == "imp"
+
+
+def test_a_governed_case_is_not_a_claim_about_this_word():
+    # "It governs three genitives" says nothing about mémores' own case
+    assert parse("It governs three genitives: “passiónis”.", "mémores", "case") is None
+    assert parse("Takes the dative “Patri” (w046).", "consubstantiálem", "case") is None
+    assert parse("Takes an accusative of the person and an infinitive.", "precor", "mood") is None
+
+
+def test_a_word_named_first_is_the_one_described():
+    # the note is about viscéribus, not about adhǽreat
+    assert parse("“Viscéribus” is read as a plural dative.", "adhǽreat", "number") is None
+
+
+def test_a_syncretism_note_names_two_and_is_not_a_claim():
+    assert parse("“Spíritus” can be nominative or genitive.", "Spíritus", "case") is None
+    assert parse("“Deus” is the same in nominative and vocative.", "Deus", "case") is None
+
+
+def test_the_check_reports_a_real_disagreement():
+    from checks.notes import check
+
+    doc = {
+        "id": "t.t",
+        "segments": [
+            {
+                "id": "s01",
+                "words": [
+                    {
+                        "id": "w001",
+                        "form": "cælo",
+                        "lemma": "caelum",
+                        "morph": {"pos": "noun", "case": "dat", "number": "sg", "gender": "n"},
+                    }
+                ],
+            }
+        ],
+    }
+    gloss = {"lang": "en", "words": {"w001": {"function": "Ablative after “in”."}}}
+    errors = check(doc, gloss)
+    assert errors and "case='abl'" in errors[0] and "'dat'" in errors[0]

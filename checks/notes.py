@@ -21,6 +21,89 @@ from __future__ import annotations
 import re
 
 # "agrees with X (wNNN)" — the note claims W's head is wNNN.
+# A note's opening clause usually states the parse: "Ablativus po „in"",
+# "Nominative plural". That is a claim about THIS word, and the tag beneath it
+# is the same claim as data. Three things make a case word NOT such a claim,
+# and all three occur: the note may name a case the word GOVERNS ("It governs
+# three genitives"), it may name another word first and describe THAT ("
+# Viscéribus is read as a plural dative"), or it may name two cases because the
+# form is syncretic and then choose ("Spíritus can be nominative or genitive").
+# Each of those produced false positives before it was excluded.
+CASE_WORDS = {
+    "pl": {
+        "mianownik": "nom",
+        "dopełniacz": "gen",
+        "celownik": "dat",
+        "biernik": "acc",
+        "ablativus": "abl",
+        "ablatiwie": "abl",
+        "ablatiwem": "abl",
+        "wołacz": "voc",
+    },
+    "en": {
+        "nominative": "nom",
+        "genitive": "gen",
+        "dative": "dat",
+        "accusative": "acc",
+        "ablative": "abl",
+        "vocative": "voc",
+    },
+}
+NUMBER_WORDS = {
+    "pl": {
+        "liczby mnogiej": "pl",
+        "liczbie mnogiej": "pl",
+        "liczba mnoga": "pl",
+        "liczby pojedynczej": "sg",
+        "liczbie pojedynczej": "sg",
+        "liczba pojedyncza": "sg",
+    },
+    "en": {"plural": "pl", "singular": "sg"},
+}
+MOOD_WORDS = {
+    "pl": {
+        "tryb rozkazujący": "imp",
+        "trybie rozkazującym": "imp",
+        "rozkaźnik": "imp",
+        "tryb łączący": "subj",
+        "trybie łączącym": "subj",
+        "bezokolicznik": "inf",
+        "imiesłów": "part",
+    },
+    "en": {"imperative": "imp", "subjunctive": "subj", "infinitive": "inf", "participle": "part"},
+}
+GOVERNED = re.compile(
+    r"rządz\w+|łącz\w+ się z|wymaga|govern\w*|takes? a|takes? the|forma\b|the form\b|"
+    r"zarazem|at once|both\b|odczytujemy|is read as",
+    re.I,
+)
+QUOTED = re.compile(r"[„“\"«]([^”\"»]{2,})[”\"»]")
+SCRIPTURE = re.compile(r"\b\d+\s*,\s*\d+|\b[A-Z][a-z]{1,3}\s+\d+[:,]\d+")
+OPENING = re.compile(r"^([^.;:—]{0,60})")
+
+
+def _parse_claim(note: str, form: str, table: dict) -> str | None:
+    """The morphological value this note claims about its OWN word, if any."""
+    match = OPENING.match(note)
+    if match is None:
+        return None
+    opening = match.group(1)
+    if GOVERNED.search(opening) or SCRIPTURE.search(opening):
+        return None
+    low = opening.lower()
+    found = [(low.find(k), v) for k, v in table.items() if k in low]
+    if not found:
+        return None
+    at, value = min(found)
+    if len({v for pos, v in found if pos == at}) != 1:
+        return None
+    if len({v for _pos, v in found}) > 1:
+        return None  # names two values: a syncretism note, which then chooses
+    if any(m.start() < at and m.group(1).lower() != form.lower() for m in QUOTED.finditer(opening)):
+        return None  # names another word first, and is describing that one
+    return value
+
+
 AGREES = [
     re.compile(r"[Zz]gadza(?:ją)?\s+się\s+z(?P<rest>[^.]{0,90})"),
     re.compile(r"zgadzając[ye]?\w*\s+się\s+z(?P<rest>[^.]{0,90})"),
@@ -73,6 +156,27 @@ def check(doc: dict, gloss: dict) -> list[str]:
                 errors.append(
                     f"{doc['id']}:{wid} ({word['form']}): the {lang} note says it agrees "
                     f"with {shown}, but head={word.get('head')!r}"
+                )
+
+    # The parse a note states about its OWN word, against the tag beneath it.
+    # This reads every word, not only modifiers: a noun's note states its case
+    # as readily as an adjective's.
+    for wid, entry in (gloss.get("words") or {}).items():
+        note = entry.get("function")
+        word = words.get(wid)
+        if not note or word is None:
+            continue
+        for label, table, field in (
+            ("case", CASE_WORDS, "case"),
+            ("number", NUMBER_WORDS, "number"),
+            ("mood", MOOD_WORDS, "mood"),
+        ):
+            claimed = _parse_claim(note, word["form"], table.get(lang, {}))
+            actual = word["morph"].get(field)
+            if claimed and actual and claimed != actual:
+                errors.append(
+                    f"{doc['id']}:{wid} ({word['form']}): the {lang} note calls it "
+                    f"{label}={claimed!r}, but the tag says {actual!r}"
                 )
 
     return errors
