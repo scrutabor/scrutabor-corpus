@@ -51,6 +51,17 @@ corpus must match what their eyes see.
    in hiatus where no acute already shows it: *Míchaël*, *Israël*, *Raphaël*.
    Oblique forms whose acute falls on the hiatus vowel need no diaeresis
    (*Michaélis*). ë counts as its own syllable and is not a stress accent.
+8. **A segment that begins an utterance begins with a capital.** A litany
+   prints the invocation and its response on one line, so the response
+   carries a lowercase initial there — *Cor Iesu, maiestátis infinítæ,
+   miserere nobis*. This edition sets the response as its own segment,
+   spoken by someone else, and a segment that starts a line starts with a
+   capital: *Miserére nobis*, exactly as the same books already print
+   *Ora pro nobis* and *Líbera nos, Dómine*. A segment that continues a
+   sentence keeps its lowercase initial — most of the Canon is built that
+   way. The witnesses' own initials are untouched, and their capitalization
+   is not collated: every litany witness declares `profile:
+   substantive-only`.
 
 ## Witnesses and the apparatus
 
