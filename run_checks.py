@@ -39,6 +39,8 @@ from checks.lint import (
     lint_text,
 )
 from checks.notes import check as check_notes
+from checks.orthography import check as check_orthography
+from checks.orthography import check_lexicon as check_orthography_lexicon
 from checks.participation import check_doc as check_participation
 from checks.polish import check as check_polish
 from checks.syntax import check as check_syntax
@@ -84,6 +86,8 @@ def lexicon_suite(used_lemmas=None) -> int:
     lemmata, langs, errors = load_lexicon(CORPUS)
     errors += lint_lemmata(lemmata)
     errors += check_paradigm(lemmata)
+    if "en" in langs:
+        errors += check_orthography_lexicon(langs["en"])
     for lang, entries in sorted(langs.items()):
         errors += lint_senses(lang, entries, lemmata)
     errors += lint_sense_parity(langs)
@@ -148,6 +152,8 @@ def main(text_id: str) -> int:
         all_errors += check_fusion(doc, gdoc)
         # The three gloss conventions the reading campaign settled.
         all_errors += check_conventions(doc, gdoc)
+        # One edition, one spelling.
+        all_errors += check_orthography(doc, gdoc)
         # English, where English can be checked exactly: a preposition
         # rendered twice, and a two-case preposition against its case.
         all_errors += check_english(doc, gdoc)
