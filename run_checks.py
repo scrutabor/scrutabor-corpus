@@ -12,6 +12,7 @@ import sys
 from pathlib import Path
 
 from checks.apparatus import lint_apparatus_summary
+from checks.citations import check as check_citation_titles
 from checks.collate import collate
 from checks.conventions import check as check_conventions
 from checks.english import check as check_english
@@ -259,6 +260,24 @@ if __name__ == "__main__":
         for message in witness_errors:
             print(f"ERROR: {message}")
         rc |= 1 if witness_errors else 0
+        # One work, one title. The bibliography groups citations on the title
+        # string, so this only shows up with the whole corpus in hand — two
+        # correct spellings of one dictionary list it twice for the reader.
+        cited = (
+            corpus_docs
+            + [
+                json.loads(p.read_text(encoding="utf-8"))
+                for p in sorted(CORPUS.glob("glosses/*/*.json"))
+            ]
+            + [
+                json.loads(p.read_text(encoding="utf-8"))
+                for p in sorted(CORPUS.glob("lexicon/*.json"))
+            ]
+        )
+        title_errors = check_citation_titles(cited)
+        for message in title_errors:
+            print(f"ERROR: {message}")
+        rc |= 1 if title_errors else 0
         attested = readings(corpus_docs)
         print(
             f"UNCERTAINTY exposure>={sum(exposure(d, attested) for d in corpus_docs)} "
