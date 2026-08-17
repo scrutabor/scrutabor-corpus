@@ -43,6 +43,7 @@ from checks.syntax import coverage as syntax_coverage
 from checks.transcription import check_transcriptions
 from checks.uncertainty import check as check_uncertainty
 from checks.uncertainty import exposure, readings, stored
+from checks.witness_archive import check as check_witness_archive
 
 # Before anything is written, not before anything is imported: the corpus
 # prints Latin and Polish and the default encoding of a piped stdout is not
@@ -240,6 +241,10 @@ if __name__ == "__main__":
         for message in doubt_errors:
             print(f"ERROR: {message}")
         rc |= 1 if doubt_errors else 0
+        witness_errors = check_witness_archive(CORPUS)
+        for message in witness_errors:
+            print(f"ERROR: {message}")
+        rc |= 1 if witness_errors else 0
         attested = readings(corpus_docs)
         print(
             f"UNCERTAINTY exposure>={sum(exposure(d, attested) for d in corpus_docs)} "
