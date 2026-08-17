@@ -49,6 +49,7 @@ from checks.syntax import coverage as syntax_coverage
 from checks.transcription import check_transcriptions
 from checks.uncertainty import check as check_uncertainty
 from checks.uncertainty import exposure, readings, stored
+from checks.vocalised import check as check_vocalised
 from checks.witness_archive import check as check_witness_archive
 
 # Before anything is written, not before anything is imported: the corpus
@@ -155,6 +156,9 @@ def main(text_id: str) -> int:
         all_errors += check_conventions(doc, gdoc)
         # One edition, one spelling.
         all_errors += check_orthography(doc, gdoc)
+        # A Polish preposition stranded at the end of a gloss is voiced by
+        # the NEXT gloss, which no single-cell check can see.
+        all_errors += check_vocalised(doc, gdoc)
         # English, where English can be checked exactly: a preposition
         # rendered twice, and a two-case preposition against its case.
         all_errors += check_english(doc, gdoc)
