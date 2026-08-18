@@ -19,6 +19,7 @@ from checks.conventions import check as check_conventions
 from checks.english import check as check_english
 from checks.english import check_number as check_english_number
 from checks.fusion import check as check_fusion
+from checks.incipit import check as check_incipit
 from checks.lexicon import (
     check_derivative_homes,
     check_note_prose,
@@ -122,6 +123,10 @@ def main(text_id: str) -> int:
     all_errors += lint_analysis(doc)
     all_errors += lint_notes(doc)
     all_errors += lint_rubrics(doc)
+    # The introit's repetition rubric names its OWN antiphon: the sentence was
+    # written for the First Sunday and copied into two others that print a
+    # different one (checks/incipit.py).
+    all_errors += check_incipit(doc)
     # The typical edition drops the accent on a capital; this edition
     # restores it, and one text transcribed straight off a page image
     # would otherwise disagree with the eighty before it.
