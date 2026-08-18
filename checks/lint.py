@@ -15,7 +15,10 @@ MORPH_ENUMS = {
     "number": {"sg", "pl"},
     "gender": {"m", "f", "n"},
     "tense": {"pres", "impf", "fut", "perf", "plup", "futperf"},
-    "mood": {"ind", "subj", "imp", "inf", "part"},
+    # "ger" is the GERUND, a verbal noun: it takes a case and no person.
+    # It entered with the Advent II epistle, at *in credéndo* — the first
+    # one in the corpus, and the enum the BACKLOG said was still ahead.
+    "mood": {"ind", "subj", "imp", "inf", "part", "ger"},
     "voice": {"act", "pass", "dep"},
     "degree": {"comp", "sup"},
     "governs": {"acc", "abl"},
@@ -128,6 +131,8 @@ LAYOUT_CHARS = {
 # (SCHEMA.md); divine titles are lowercase common nouns. Grows as texts
 # require — the Canon's two lists of saints added most of these.
 PROPER_LEMMAS = {
+    "Iesse",
+    "Isaias",
     "Abel",
     "Abraham",
     "Agatha",
@@ -470,6 +475,15 @@ def lint_text(doc):
                     errors.append(f"{wid}: participle missing morph.{req}")
             if "person" in m:
                 errors.append(f"{wid}: participle carries morph.person")
+        elif m.get("pos") == "verb" and m.get("mood") == "ger":
+            # A GERUND is a verbal noun: it takes a case, never a person, and
+            # is neuter singular by nature. Checked apart from the finite verb
+            # below, which forbids the very case a gerund must have.
+            for req in ("case", "tense", "voice"):
+                if req not in m:
+                    errors.append(f"{wid}: gerund missing morph.{req}")
+            if "person" in m:
+                errors.append(f"{wid}: gerund carries morph.person")
         elif m.get("pos") == "verb":
             if "case" in m:
                 errors.append(f"{wid}: finite verb carries morph.case")

@@ -75,8 +75,17 @@ def is_modifier(word: dict) -> bool:
 
 
 def is_nominal(word: dict) -> bool:
+    """Anything a preposition can govern.
+
+    Participles decline, so a preposition may govern one. So may a GERUND,
+    which is a verbal noun and takes a case for exactly that reason — *in
+    credéndo*, the first in this corpus, arrived with the Advent II epistle
+    and was reported as something a preposition could not govern.
+    """
     m = word["morph"]
-    return m.get("pos") in NOMINAL or (m.get("pos") == "verb" and m.get("mood") == "part")
+    return m.get("pos") in NOMINAL or (
+        m.get("pos") == "verb" and m.get("mood") in ("part", "ger")
+    )
 
 
 def _index(doc: dict) -> dict[str, dict]:
