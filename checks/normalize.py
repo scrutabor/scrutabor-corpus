@@ -88,10 +88,14 @@ def syllable_count(form: str) -> int:
         nxt = s[i + 1] if i + 1 < len(s) else ""
         is_vowel = ch in VOWELS
         if is_vowel:
-            if ch == "u" and prev in ("q", "g"):
-                # glide: qu-/gu- before a vowel; if no vowel follows this is
-                # wrong, but such forms (e.g. 'gutta') have no q/g+u+vowel
-                # ambiguity in practice — the next iteration adds the vowel.
+            if ch == "u" and prev in ("q", "g") and nxt in VOWELS:
+                # glide: qu-/gu- BEFORE A VOWEL (lingua, sanguis, quia). The
+                # vowel test is not decoration. Without it every u after q or
+                # g was swallowed, so surgunt counted 1 syllable and regum 1,
+                # and the error stayed invisible while no such word carried an
+                # accent. resúrgunt, in the Advent II gospel, is the first that
+                # does, and it was reported as a two-syllable word wrongly
+                # accented.
                 prev = ch
                 prev_was_vowel = False
                 continue

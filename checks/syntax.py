@@ -83,9 +83,7 @@ def is_nominal(word: dict) -> bool:
     and was reported as something a preposition could not govern.
     """
     m = word["morph"]
-    return m.get("pos") in NOMINAL or (
-        m.get("pos") == "verb" and m.get("mood") in ("part", "ger")
-    )
+    return m.get("pos") in NOMINAL or (m.get("pos") == "verb" and m.get("mood") in ("part", "ger"))
 
 
 def _index(doc: dict) -> dict[str, dict]:

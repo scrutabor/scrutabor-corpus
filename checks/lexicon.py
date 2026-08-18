@@ -335,6 +335,9 @@ INDECLINABLE = {
     "kyrie",  # Greek, declined on their own pattern
 }
 IRREGULAR_VERBS = {
+    "exeo",
+    "coepi",
+    "abeo",
     "aio",
     "sum",
     "eo",
