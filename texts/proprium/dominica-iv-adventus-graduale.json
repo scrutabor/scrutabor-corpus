@@ -1,0 +1,80 @@
+{
+  "schema_version": "0.13.0",
+  "id": "proprium.dominica-iv-adventus-graduale",
+  "title": "Prope est Dóminus",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-iv-adventus",
+  "sung": true,
+  "status": "working-edition",
+  "notes": "The gradual of the Fourth Sunday of Advent.",
+  "source": {
+    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+    "witnesses": "witnesses/proprium.dominica-iv-adventus-graduale/",
+    "apparatus": "witnesses/proprium.dominica-iv-adventus-graduale/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "words": [
+        { "id": "w001", "form": "Prope", "lemma": "prope", "morph": { "pos": "adv" } },
+        { "id": "w002", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w003", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w004", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w005" },
+        { "id": "w005", "form": "invocántibus", "lemma": "invoco", "morph": { "pos": "verb", "case": "dat", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 1 }, "substantive": true },
+        { "id": "w006", "form": "eum", "post": ":", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w007", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w008", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
+        { "id": "w009", "form": "ínvocant", "lemma": "invoco", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w010", "form": "eum", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w012" },
+        { "id": "w012", "form": "veritáte", "post": ".", "lemma": "veritas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } }
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d"
+        },
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "words": [
+        { "id": "w013", "form": "Laudem", "lemma": "laus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w014", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w015", "form": "loquétur", "lemma": "loquor", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "dep", "conj": 3 } },
+        { "id": "w016", "form": "os", "lemma": "os", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w017", "form": "meum", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w016" },
+        { "id": "w018", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w019", "form": "benedícat", "lemma": "benedico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w020", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w021" },
+        { "id": "w021", "form": "caro", "lemma": "caro", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w022", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w023", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w022" },
+        { "id": "w024", "form": "eius", "post": ".", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } }
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d"
+        },
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      }
+    }
+  ]
+}

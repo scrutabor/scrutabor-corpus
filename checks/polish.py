@@ -319,6 +319,7 @@ NUMBER_RULINGS: dict[tuple[str, str], str] = {
     ("ordinarium.quod-ore-sumpsimus", "w002"): "ore: usta is a Polish plurale tantum",
     ("litaniae.sanctissimi-nominis-iesu", "w440"): "ore: usta is a Polish plurale tantum",
     ("proprium.dominica-ii-adventus-epistola", "w035"): "ore: usta is a Polish plurale tantum",
+    ("proprium.dominica-iv-adventus-graduale", "w016"): "os: usta is a Polish plurale tantum",
     ("proprium.dominica-i-adventus-epistola", "w031"): "arma: the collective zbroja",
     ("proprium.dominica-i-adventus-epistola", "w045"): "cubilibus: the abstract rozpusta",
     ("proprium.dominica-i-adventus-epistola", "w047"): "impudicitiis: the abstract wyuzdanie",
