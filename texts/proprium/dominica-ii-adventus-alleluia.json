@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.13.0",
+  "id": "proprium.dominica-ii-adventus-alleluia",
+  "title": "Lætátus sum in his",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-ii-adventus",
+  "sung": true,
+  "status": "working-edition",
+  "notes": "The alleluia verse of the Second Sunday of Advent. The source boundary is recorded in the witness files.",
+  "source": {
+    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+    "witnesses": "witnesses/proprium.dominica-ii-adventus-alleluia/",
+    "apparatus": "witnesses/proprium.dominica-ii-adventus-alleluia/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      },
+      "words": [
+        { "id": "w001", "form": "Allelúia", "post": ",", "lemma": "alleluia", "morph": { "pos": "intj" } },
+        { "id": "w002", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      },
+      "words": [
+        { "id": "w003", "form": "Lætátus", "lemma": "laetor", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "dep", "conj": 1 }, "head": "w004" },
+        { "id": "w004", "form": "sum", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w006" },
+        { "id": "w006", "form": "his", "post": ",", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "n" } },
+        { "id": "w007", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "n" } },
+        { "id": "w008", "form": "dicta", "lemma": "dico", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w009" },
+        { "id": "w009", "form": "sunt", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w010", "form": "mihi", "post": ":", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
+        { "id": "w012", "form": "domum", "lemma": "domus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 4 } },
+        { "id": "w013", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w014", "form": "íbimus", "post": ".", "lemma": "eo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act" } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      },
+      "words": [
+        { "id": "w015", "form": "Allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.13.0",
+  "id": "proprium.dominica-ii-adventus-graduale",
+  "title": "Ex Sion spécies decóris eius",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-ii-adventus",
+  "sung": true,
+  "status": "working-edition",
+  "notes": "The gradual of the Second Sunday of Advent. The source boundary is recorded in the witness files.",
+  "source": {
+    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+    "witnesses": "witnesses/proprium.dominica-ii-adventus-graduale/",
+    "apparatus": "witnesses/proprium.dominica-ii-adventus-graduale/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "participation": {
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d"
+        },
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      },
+      "words": [
+        { "id": "w001", "form": "Ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w002" },
+        { "id": "w002", "form": "Sion", "lemma": "Sion", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f" } },
+        { "id": "w003", "form": "spécies", "lemma": "species", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 5 } },
+        { "id": "w004", "form": "decóris", "lemma": "decor", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w005", "form": "eius", "post": ":", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w006", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w007", "form": "maniféste", "lemma": "manifeste", "morph": { "pos": "adv" } },
+        { "id": "w008", "form": "véniet", "post": ".", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 4 } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "participation": {
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d"
+        },
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      },
+      "words": [
+        { "id": "w009", "form": "Congregáte", "lemma": "congrego", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w010", "form": "illi", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" } },
+        { "id": "w011", "form": "sanctos", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w012", "form": "eius", "post": ",", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w013", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
+        { "id": "w014", "form": "ordinavérunt", "lemma": "ordino", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w015", "form": "testaméntum", "lemma": "testamentum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w016", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w017", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w018" },
+        { "id": "w018", "form": "sacrifícia", "post": ".", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } }
+      ]
+    }
+  ]
+}

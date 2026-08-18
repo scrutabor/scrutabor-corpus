@@ -171,6 +171,7 @@ PROPER_LEMMAS = {
     "Pontius",
     "Polonia",
     "Simon",
+    "Sion",
     "Stephanus",
     "Thaddaeus",
     "Thomas",

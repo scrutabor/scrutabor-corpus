@@ -320,6 +320,7 @@ def check_note_prose(lex: dict) -> list[str]:
 # missing theirs until 2026-08-17, indistinguishable from the Hebrew names
 # beside them.
 INDECLINABLE = {
+    "Sion",
     "Ierusalem",
     "Abel",
     "Abraham",
