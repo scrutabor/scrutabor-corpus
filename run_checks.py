@@ -40,6 +40,7 @@ from checks.lint import (
     lint_analysis,
     lint_gloss,
     lint_notes,
+    lint_nulls,
     lint_parity,
     lint_rubrics,
     lint_text,
@@ -128,6 +129,7 @@ def main(text_id: str) -> int:
     all_errors += text_errors
     all_errors += lint_analysis(doc)
     all_errors += lint_notes(doc)
+    all_errors += lint_nulls(doc)
     all_errors += lint_rubrics(doc)
     # A word id is identity, not position. SCHEMA.md has said so all along and
     # nothing enforced it (checks/identity.py).

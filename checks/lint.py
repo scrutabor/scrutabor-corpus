@@ -401,6 +401,30 @@ def plain(word):
     return fold_ligatures(strip_accents(word)).lower()
 
 
+def lint_nulls(doc: dict) -> list[str]:
+    """A key whose value is null says nothing and hides that it says nothing.
+
+    Two rubric segments carried `"narrative": null` — written by a build script
+    that copied a shape it did not need — and every check read straight past
+    them, because a check that asks "is there a narrative" gets an answer either
+    way. The merge round-trip found them, which is a fair advertisement for
+    reading a document as a whole.
+    """
+    errors = []
+    for segment in doc.get("segments", []):
+        for key, value in segment.items():
+            if value is None:
+                errors.append(
+                    f"{doc['id']}:{segment['id']}: {key!r} is null — a key that carries "
+                    f"nothing is removed, not left for a reader to interpret"
+                )
+        for word in segment.get("words") or []:
+            for key, value in word.items():
+                if value is None:
+                    errors.append(f"{doc['id']}:{word['id']}: {key!r} is null")
+    return errors
+
+
 def lint_rubrics(doc):
     """Rubric Latin obeys the same orthography as the prayers it stands
     between. It is not tokenized, so the word-level spelling rule never sees
