@@ -1,0 +1,183 @@
+{
+  "schema_version": "0.13.0",
+  "id": "proprium.dominica-iii-adventus-introitus",
+  "title": "Gaudéte in Dómino semper",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-iii-adventus",
+  "sung": true,
+  "status": "working-edition",
+  "notes": "The introit of the Third Sunday of Advent, which gives the day its name of Gaudete. The source boundary is recorded in the witness files.",
+  "source": {
+    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+    "witnesses": "witnesses/proprium.dominica-iii-adventus-introitus/",
+    "apparatus": "witnesses/proprium.dominica-iii-adventus-introitus/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "participation": {
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d"
+        },
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      },
+      "words": [
+        { "id": "w001", "form": "Gaudéte", "lemma": "gaudeo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w002", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w003" },
+        { "id": "w003", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w004", "form": "semper", "post": ":", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w005", "form": "íterum", "lemma": "iterum", "morph": { "pos": "adv" } },
+        { "id": "w006", "form": "dico", "post": ",", "lemma": "dico", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w007", "form": "gaudéte", "post": ".", "lemma": "gaudeo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w008", "form": "Modéstia", "lemma": "modestia", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w009", "form": "vestra", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w008" },
+        { "id": "w010", "form": "nota", "lemma": "notus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w008" },
+        { "id": "w011", "form": "sit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w012", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w013" },
+        { "id": "w013", "form": "homínibus", "post": ":", "lemma": "homo", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w014", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w015", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
+        { "id": "w016", "form": "prope", "lemma": "prope", "morph": { "pos": "adv" } },
+        { "id": "w017", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w018", "form": "Nihil", "lemma": "nihil", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w019", "form": "sollíciti", "lemma": "sollicitus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w020" },
+        { "id": "w020", "form": "sitis", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w021", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
+        { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024" },
+        { "id": "w023", "form": "omni", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w024" },
+        { "id": "w024", "form": "oratióne", "lemma": "oratio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w025", "form": "petitiónes", "lemma": "petitio", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w026", "form": "vestræ", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "f" }, "head": "w025" },
+        { "id": "w027", "form": "innotéscant", "lemma": "innotesco", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w028", "form": "apud", "lemma": "apud", "morph": { "pos": "prep", "governs": "acc" }, "head": "w029" },
+        { "id": "w029", "form": "Deum", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "participation": {
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d"
+        },
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      },
+      "words": [
+        { "id": "w030", "form": "Benedixísti", "post": ",", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w031", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w032", "form": "terram", "lemma": "terra", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w033", "form": "tuam", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w032" },
+        { "id": "w034", "form": "avertísti", "lemma": "averto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w035", "form": "captivitátem", "lemma": "captivitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w036", "form": "Iacob", "post": ".", "lemma": "Iacob", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "participation": {
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d"
+        },
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      },
+      "words": [
+        { "id": "w037", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w038", "form": "Patri", "post": ",", "lemma": "pater", "morph": { "case": "dat", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w039", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w040", "form": "Fílio", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w041", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w042", "form": "Spirítui", "lemma": "spiritus", "morph": { "case": "dat", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w043", "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w042" },
+        { "id": "w044", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
+        { "id": "w045", "form": "erat", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
+        { "id": "w046", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w047" },
+        { "id": "w047", "form": "princípio", "post": ",", "lemma": "principium", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w048", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w049", "form": "nunc", "post": ",", "lemma": "nunc", "morph": { "pos": "adv" } },
+        { "id": "w050", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w051", "form": "semper", "post": ",", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w052", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w053", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w054" },
+        { "id": "w054", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
+        { "id": "w055", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
+        { "id": "w056", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
+    },
+    {
+      "id": "s04",
+      "type": "rubric",
+      "text": "Quo finito, repetitur Ad te levávi usque ad psalmum.",
+      "narrative": null
+    },
+    {
+      "id": "s05",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "participation": {
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d"
+        },
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      },
+      "words": [
+        { "id": "w057", "form": "Gaudéte", "lemma": "gaudeo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w058", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w059" },
+        { "id": "w059", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w060", "form": "semper", "post": ":", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w061", "form": "íterum", "lemma": "iterum", "morph": { "pos": "adv" } },
+        { "id": "w062", "form": "dico", "post": ",", "lemma": "dico", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w063", "form": "gaudéte", "post": ".", "lemma": "gaudeo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w064", "form": "Modéstia", "lemma": "modestia", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w065", "form": "vestra", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w064" },
+        { "id": "w066", "form": "nota", "lemma": "notus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w064" },
+        { "id": "w067", "form": "sit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w068", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w069" },
+        { "id": "w069", "form": "homínibus", "post": ":", "lemma": "homo", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w070", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w071", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
+        { "id": "w072", "form": "prope", "lemma": "prope", "morph": { "pos": "adv" } },
+        { "id": "w073", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w074", "form": "Nihil", "lemma": "nihil", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w075", "form": "sollíciti", "lemma": "sollicitus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w076" },
+        { "id": "w076", "form": "sitis", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w077", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
+        { "id": "w078", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w080" },
+        { "id": "w079", "form": "omni", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w080" },
+        { "id": "w080", "form": "oratióne", "lemma": "oratio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w081", "form": "petitiónes", "lemma": "petitio", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w082", "form": "vestræ", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "f" }, "head": "w081" },
+        { "id": "w083", "form": "innotéscant", "lemma": "innotesco", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w084", "form": "apud", "lemma": "apud", "morph": { "pos": "prep", "governs": "acc" }, "head": "w085" },
+        { "id": "w085", "form": "Deum", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } }
+      ]
+    }
+  ]
+}
