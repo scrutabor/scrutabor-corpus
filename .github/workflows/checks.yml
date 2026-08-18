@@ -28,3 +28,5 @@ jobs:
       - run: python -m checks.layout --check
       # …and then the corpus itself, which is what this repository is for.
       - run: python run_checks.py --all
+      # The reader edition must lose nothing and must rebuild byte for byte.
+      - run: python build.py --check
