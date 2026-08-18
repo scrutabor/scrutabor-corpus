@@ -47,6 +47,19 @@ restate what another layer already carries:
   order, the ID carries only identity.
 - Segment IDs (`s01`…) are NOT stable — segmentation may change freely; words
   are the stable layer.
+- **The mint is recorded, not inferred.** Every text carries
+  `"ids": {"next": N}`, and a new word takes `next` and moves it on. Inferring
+  the next free number as one past the highest works only until a word is
+  removed, and a corpus that has never removed one is a corpus whose rule has
+  never been tested.
+- **A removed word leaves a tombstone**: `"ids": {"retired": {"w042": "s03"}}`,
+  naming the nearest segment that survives it. A deep link to a retired word
+  resolves to that segment rather than dangling. Ids are never reused, so a
+  tombstone is permanent.
+- `checks/identity.py` enforces all of the above, and compares against git —
+  the base branch in CI, HEAD locally — because "was this id reassigned" is a
+  question about history that no single snapshot can answer. A renumbering
+  cannot merge.
 
 ## Latin source document
 

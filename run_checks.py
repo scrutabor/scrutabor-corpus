@@ -8,6 +8,7 @@ Usage: python run_checks.py <text-id>     e.g. ordinarium.confiteor
 """
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -19,6 +20,8 @@ from checks.conventions import check as check_conventions
 from checks.english import check as check_english
 from checks.english import check_number as check_english_number
 from checks.fusion import check as check_fusion
+from checks.identity import check as check_identity
+from checks.identity import check_against_history
 from checks.incipit import check as check_incipit
 from checks.lexicon import (
     check_derivative_homes,
@@ -126,6 +129,9 @@ def main(text_id: str) -> int:
     all_errors += lint_analysis(doc)
     all_errors += lint_notes(doc)
     all_errors += lint_rubrics(doc)
+    # A word id is identity, not position. SCHEMA.md has said so all along and
+    # nothing enforced it (checks/identity.py).
+    all_errors += check_identity(doc)
     # The introit's repetition rubric names its OWN antiphon: the sentence was
     # written for the First Sunday and copied into two others that print a
     # different one (checks/incipit.py).
@@ -273,6 +279,13 @@ if __name__ == "__main__":
         for message in doubt_errors:
             print(f"ERROR: {message}")
         rc |= 1 if doubt_errors else 0
+        # Identity across TIME, which one snapshot cannot answer. Compared
+        # against the base branch in CI and against HEAD locally.
+        history_errors = check_against_history(CORPUS, os.environ.get("SCRUTABOR_BASE", "HEAD"))
+        for message in history_errors:
+            print(f"ERROR: {message}")
+        rc |= 1 if history_errors else 0
+
         witness_errors = check_witness_archive(CORPUS)
         for message in witness_errors:
             print(f"ERROR: {message}")
