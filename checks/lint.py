@@ -467,9 +467,19 @@ def lint_notes(doc):
         cited, tail = m.groups()
         endpoints = re.findall(r"w\d+", tail)
         if "-" in tail and len(endpoints) == 2:
-            first, last = (int(w[1:]) for w in endpoints)
-            width = len(endpoints[0]) - 1
-            ids = [f"w{i:0{width}d}" for i in range(first, last + 1)] if last >= first else []
+            # A RANGE IS A STRETCH OF THE TEXT, not a stretch of the number
+            # line. This counted from w005 to w008 arithmetically, which was
+            # the same thing only for as long as ids happened to be
+            # contiguous. They are minted now (SCHEMA.md), so a word inserted
+            # inside a range takes the next free number and sits between its
+            # neighbours — and arithmetic would then walk straight past it and
+            # report four ids that do not exist. The array knows the order.
+            order = [w["id"] for sg in doc["segments"] for w in sg.get("words") or []]
+            first, last = endpoints
+            if first in order and last in order and order.index(first) <= order.index(last):
+                ids = order[order.index(first) : order.index(last) + 1]
+            else:
+                ids = endpoints
         else:
             ids = endpoints
         missing = [i for i in ids if i not in forms]

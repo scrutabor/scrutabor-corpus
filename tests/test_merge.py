@@ -100,3 +100,27 @@ def test_the_corpus_carries_no_null_keys():
     for text_id in IDS:
         text, _ = load(CORPUS, text_id)
         assert lint_nulls(text) == [], text_id
+
+
+def test_a_note_range_follows_the_text_and_not_the_number_line():
+    # Minted ids are not contiguous. A word inserted inside a cited range takes
+    # the next free number and sits between its neighbours, and a range read
+    # arithmetically would walk past it and report ids that do not exist.
+    from checks.lint import lint_notes
+
+    doc = {
+        "id": "t",
+        "notes": 'The pair "alpha beta gamma" at w001-w003 carries it.',
+        "segments": [
+            {
+                "id": "s01",
+                "type": "verse",
+                "words": [
+                    {"id": "w001", "form": "alpha", "lemma": "a", "morph": {"pos": "adv"}},
+                    {"id": "w009", "form": "beta", "lemma": "b", "morph": {"pos": "adv"}},
+                    {"id": "w003", "form": "gamma", "lemma": "c", "morph": {"pos": "adv"}},
+                ],
+            }
+        ],
+    }
+    assert lint_notes(doc) == []
