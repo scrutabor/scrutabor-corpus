@@ -12,6 +12,7 @@ import os
 import sys
 from pathlib import Path
 
+from checks.addresses import check as check_addresses
 from checks.apparatus import lint_apparatus_summary
 from checks.capitals import check as check_capitals
 from checks.citations import check as check_citation_titles
@@ -287,6 +288,12 @@ if __name__ == "__main__":
         for message in history_errors:
             print(f"ERROR: {message}")
         rc |= 1 if history_errors else 0
+
+        # A text id is the other half of every word's global address.
+        address_errors = check_addresses(CORPUS, {d["id"] for d in corpus_docs})
+        for message in address_errors:
+            print(f"ERROR: {message}")
+        rc |= 1 if address_errors else 0
 
         witness_errors = check_witness_archive(CORPUS)
         for message in witness_errors:

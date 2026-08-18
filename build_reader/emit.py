@@ -143,20 +143,25 @@ def lexicon_slice(corpus: Path, lemmas: set[str] | None = None) -> dict:
 def index(corpus_docs: list[tuple[dict, dict]]) -> dict:
     """Lemma to its occurrences, and surface form to its lemmas.
 
-    One file, queried in plain JavaScript. 101K raw and 34K gzipped over this
-    corpus, and it is what a lemma page and a search box both want, so neither
-    needs the corpus itself.
+    A posting is `[text number, word id]`, which is exactly the compound
+    address SCHEMA.md documents and exactly what a link needs. One file,
+    queried in plain JavaScript, and it is what a lemma page and a search box
+    both want, so neither needs the corpus itself.
     """
     texts = [doc["id"] for doc, _ in corpus_docs]
-    postings: dict[str, list[list[int]]] = {}
+    postings: dict[str, list[list]] = {}
     forms: dict[str, set[str]] = {}
     for number, (doc, _glosses) in enumerate(corpus_docs):
-        position = 0
         for segment in doc["segments"]:
             for word in segment.get("words") or []:
-                postings.setdefault(word["lemma"], []).append([number, position])
+                # The WORD ID, not its position. A posting is what a lemma page
+                # turns into a link -- `/app/pl/<text>?w=<id>` -- and a position
+                # is not an address: it moves the moment a word is inserted
+                # before it, which is the one edit the mint exists to survive.
+                # The first draft stored positions and would have produced a
+                # concordance that drifted off its own words.
+                postings.setdefault(word["lemma"], []).append([number, word["id"]])
                 forms.setdefault(word["form"].lower(), set()).add(word["lemma"])
-                position += 1
     return {
         "t": texts,
         "l": {k: postings[k] for k in sorted(postings)},

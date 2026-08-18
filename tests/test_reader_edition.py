@@ -79,6 +79,19 @@ def test_the_index_finds_a_word_by_its_surface_form(tmp_path):
     assert idx["l"][lemma], "a lemma with no occurrences is not an index"
 
 
+def test_a_posting_is_an_address_and_not_a_position(tmp_path):
+    # A lemma page turns a posting into `/app/pl/<text>?w=<id>`. A position is
+    # not an address: it moves the moment a word is inserted before it, which
+    # is the one edit the mint exists to survive.
+    docs = read_corpus(CORPUS)
+    idx = index(docs)
+    number, word_id = idx["l"]["dominus"][0]
+    text_id = idx["t"][number]
+    doc = next(d for d, _ in docs if d["id"] == text_id)
+    found = [w for s in doc["segments"] for w in (s.get("words") or []) if w["id"] == word_id]
+    assert found and found[0]["lemma"] == "dominus", f"{text_id}#{word_id} does not resolve"
+
+
 def test_the_index_compresses_to_something_a_phone_can_hold(tmp_path):
     out = build(tmp_path)
     packed = len(gzip.compress((out / "x.json").read_bytes(), 9))
