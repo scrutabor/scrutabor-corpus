@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.13.0",
+  "id": "proprium.dominica-iv-adventus-postcommunio",
+  "title": "Sumptis munéribus",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-iv-adventus",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The postcommunion of the Fourth Sunday of Advent.",
+  "source": {
+    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+    "witnesses": "witnesses/proprium.dominica-iv-adventus-postcommunio/",
+    "apparatus": "witnesses/proprium.dominica-iv-adventus-postcommunio/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Sumptis", "lemma": "sumo", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w002" },
+        { "id": "w002", "form": "munéribus", "post": ",", "lemma": "munus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 3 } },
+        { "id": "w003", "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w004", "form": "Dómine", "post": ":", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007" },
+        { "id": "w007", "form": "frequentatióne", "lemma": "frequentatio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w008", "form": "mystérii", "post": ",", "lemma": "mysterium", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w009", "form": "crescat", "lemma": "cresco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w010", "form": "nostræ", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w011" },
+        { "id": "w011", "form": "salútis", "lemma": "salus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w012", "form": "efféctus", "post": ".", "lemma": "effectus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w013", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w014" },
+        { "id": "w014", "form": "Dóminum", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } }
+      ]
+    }
+  ]
+}

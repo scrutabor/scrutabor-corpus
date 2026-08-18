@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.13.0",
+  "id": "proprium.dominica-iv-adventus-communio",
+  "title": "Ecce Virgo concípiet",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-iv-adventus",
+  "sung": true,
+  "status": "working-edition",
+  "notes": "The communion antiphon of the Fourth Sunday of Advent.",
+  "source": {
+    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+    "witnesses": "witnesses/proprium.dominica-iv-adventus-communio/",
+    "apparatus": "witnesses/proprium.dominica-iv-adventus-communio/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "words": [
+        { "id": "w001", "form": "Ecce", "lemma": "ecce", "morph": { "pos": "intj" } },
+        { "id": "w002", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w003", "form": "concípiet", "post": ",", "lemma": "concipio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "páriet", "lemma": "pario", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w006", "form": "fílium", "post": ":", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "vocábitur", "lemma": "voco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 1 } },
+        { "id": "w009", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w010", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w011", "form": "Emmánuel", "post": ".", "lemma": "Emmanuel", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" } }
+      ],
+      "participation": {
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d"
+        },
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      }
+    }
+  ]
+}

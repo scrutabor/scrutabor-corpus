@@ -321,6 +321,7 @@ def check_note_prose(lex: dict) -> list[str]:
 # beside them.
 INDECLINABLE = {
     "cherubim",
+    "Emmanuel",
     "Iacob",
     "Iesse",
     "Sion",

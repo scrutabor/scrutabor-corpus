@@ -132,6 +132,7 @@ LAYOUT_CHARS = {
 # require — the Canon's two lists of saints added most of these.
 PROPER_LEMMAS = {
     "Bethania",
+    "Emmanuel",
     "Elias",
     "Ierosolyma",
     "Iordanes",
