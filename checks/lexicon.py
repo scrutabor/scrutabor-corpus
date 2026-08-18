@@ -320,6 +320,8 @@ def check_note_prose(lex: dict) -> list[str]:
 # missing theirs until 2026-08-17, indistinguishable from the Hebrew names
 # beside them.
 INDECLINABLE = {
+    "cherubim",
+    "Iacob",
     "Iesse",
     "Sion",
     "Ierusalem",
@@ -335,6 +337,7 @@ INDECLINABLE = {
     "kyrie",  # Greek, declined on their own pattern
 }
 IRREGULAR_VERBS = {
+    "nolo",
     "exeo",
     "coepi",
     "abeo",

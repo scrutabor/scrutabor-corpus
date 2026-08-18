@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.13.0",
+  "id": "proprium.dominica-iii-adventus-communio",
+  "title": "Dícite: pusillánimes confortámini",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-iii-adventus",
+  "sung": true,
+  "status": "working-edition",
+  "notes": "The communion antiphon of the Third Sunday of Advent. The source boundary is recorded in the witness files.",
+  "source": {
+    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+    "witnesses": "witnesses/proprium.dominica-iii-adventus-communio/",
+    "apparatus": "witnesses/proprium.dominica-iii-adventus-communio/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "participation": {
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d"
+        },
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      },
+      "words": [
+        { "id": "w001", "form": "Dícite", "post": ":", "lemma": "dico", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w002", "form": "pusillánimes", "lemma": "pusillanimis", "morph": { "pos": "adj", "case": "voc", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w003", "form": "confortámini", "post": ",", "lemma": "conforto", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "pass", "conj": 1 } },
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "nolíte", "lemma": "nolo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act" } },
+        { "id": "w006", "form": "timére", "post": ":", "lemma": "timeo", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 2 } },
+        { "id": "w007", "form": "ecce", "lemma": "ecce", "morph": { "pos": "intj" } },
+        { "id": "w008", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w009", "form": "noster", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w008" },
+        { "id": "w010", "form": "véniet", "post": ",", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 4 } },
+        { "id": "w011", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w012", "form": "salvábit", "lemma": "salvo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w013", "form": "nos", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } }
+      ]
+    }
+  ]
+}

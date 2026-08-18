@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.13.0",
+  "id": "proprium.dominica-iii-adventus-alleluia",
+  "title": "Éxcita, Dómine, poténtiam tuam",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-iii-adventus",
+  "sung": true,
+  "status": "working-edition",
+  "notes": "The alleluia verse of the Third Sunday of Advent. The source boundary is recorded in the witness files.",
+  "source": {
+    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+    "witnesses": "witnesses/proprium.dominica-iii-adventus-alleluia/",
+    "apparatus": "witnesses/proprium.dominica-iii-adventus-alleluia/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      },
+      "words": [
+        { "id": "w001", "form": "Allelúia", "post": ",", "lemma": "alleluia", "morph": { "pos": "intj" } },
+        { "id": "w002", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      },
+      "words": [
+        { "id": "w003", "form": "Éxcita", "post": ",", "lemma": "excito", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "poténtiam", "lemma": "potentia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w006", "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w005" },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "veni", "post": ",", "lemma": "venio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 } },
+        { "id": "w009", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "salvos", "lemma": "salvus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "head": "w012" },
+        { "id": "w011", "form": "fácias", "lemma": "facio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w012", "form": "nos", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "speaker": "schola",
+      "voice": "cantus",
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c"
+        }
+      },
+      "words": [
+        { "id": "w013", "form": "Allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
+      ]
+    }
+  ]
+}
