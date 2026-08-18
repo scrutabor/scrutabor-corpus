@@ -103,7 +103,8 @@ def merge(text: dict, glosses: dict[str, dict]) -> dict:
 def split(doc: dict) -> tuple[dict, dict[str, dict]]:
     """Three documents from one. The inverse, so the merge is reversible."""
     editorial = doc.get("editorial") or {}
-    text: dict = {"schema_version": "0.13.0"}
+    version = doc.get("schema_version", SCHEMA)
+    text: dict = {"schema_version": version}
     for key, value in doc.items():
         if key in ("schema_version", "segments", "editorial", "about", "about_citations"):
             continue
@@ -116,7 +117,7 @@ def split(doc: dict) -> tuple[dict, dict[str, dict]]:
 
     glosses: dict[str, dict] = {
         lang: {
-            "schema_version": "0.13.0",
+            "schema_version": version,
             "text": doc["id"],
             "lang": lang,
             "status": editorial.get("status", "working-edition"),
