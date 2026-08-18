@@ -150,6 +150,7 @@ PROPER_LEMMAS = {
     "Felicitas",
     "Iacobus",
     "Iesus",
+    "Ierusalem",
     "Ignatius",
     "Ioannes",
     "Ioseph",

@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.13.0",
+  "id": "proprium.dominica-ii-adventus-postcommunio",
+  "title": "Repléti cibo spirituális alimóniæ",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-ii-adventus",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The postcommunion of the Second Sunday of Advent. The source boundary is recorded in the witness files.",
+  "source": {
+    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+    "witnesses": "witnesses/proprium.dominica-ii-adventus-postcommunio/",
+    "apparatus": "witnesses/proprium.dominica-ii-adventus-postcommunio/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Repléti", "lemma": "repleo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 2 }, "head": "w008" },
+        { "id": "w002", "form": "cibo", "lemma": "cibus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w003", "form": "spirituális", "lemma": "spiritualis", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w004" },
+        { "id": "w004", "form": "alimóniæ", "post": ",", "lemma": "alimonia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w005", "form": "súpplices", "lemma": "supplex", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w008" },
+        { "id": "w006", "form": "te", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w007", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w008", "form": "deprecámur", "post": ":", "lemma": "deprecor", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "dep", "conj": 1 } },
+        { "id": "w009", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "huius", "lemma": "hic", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "n" } },
+        { "id": "w011", "form": "participatióne", "lemma": "participatio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w012", "form": "mystérii", "post": ",", "lemma": "mysterium", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w013", "form": "dóceas", "lemma": "doceo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 } },
+        { "id": "w014", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w015", "form": "terréna", "lemma": "terrenus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true },
+        { "id": "w016", "form": "despícere", "lemma": "despicio", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 } },
+        { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w018", "form": "amáre", "lemma": "amo", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 } },
+        { "id": "w019", "form": "cæléstia", "post": ".", "lemma": "caelestis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true },
+        { "id": "w020", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w021" },
+        { "id": "w021", "form": "Dóminum", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } }
+      ]
+    }
+  ]
+}
