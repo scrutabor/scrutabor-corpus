@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.13.0",
+  "id": "proprium.dominica-ii-adventus-collecta",
+  "title": "Éxcita, Dómine, corda nostra",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-ii-adventus",
+  "sung": false,
+  "status": "working-edition",
+  "notes": "The collect of the Second Sunday of Advent. The source boundary is recorded in the witness files.",
+  "source": {
+    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+    "witnesses": "witnesses/proprium.dominica-ii-adventus-collecta/",
+    "apparatus": "witnesses/proprium.dominica-ii-adventus-collecta/apparatus.json"
+  },
+  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Éxcita", "post": ",", "lemma": "excito", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w002", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w003", "form": "corda", "lemma": "cor", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 } },
+        { "id": "w004", "form": "nostra", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w003" },
+        { "id": "w005", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w009" },
+        { "id": "w006", "form": "præparándas", "lemma": "praeparo", "morph": { "pos": "verb", "case": "acc", "number": "pl", "gender": "f", "tense": "fut", "voice": "pass", "mood": "part", "conj": 1 }, "head": "w009" },
+        { "id": "w007", "form": "Unigéniti", "lemma": "unigenitus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "substantive": true },
+        { "id": "w008", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w007" },
+        { "id": "w009", "form": "vias", "post": ":", "lemma": "via", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w010", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w013" },
+        { "id": "w012", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w013", "form": "advéntum", "post": ",", "lemma": "adventus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w014", "form": "purificátis", "lemma": "purifico", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "f", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "head": "w016" },
+        { "id": "w015", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w016", "form": "méntibus", "lemma": "mens", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w017", "form": "servíre", "lemma": "servio", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 4 } },
+        { "id": "w018", "form": "mereámur", "post": ":", "lemma": "mereor", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 2 } },
+        { "id": "w019", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w020", "form": "tecum", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } }
+      ]
+    }
+  ]
+}
