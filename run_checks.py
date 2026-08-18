@@ -46,6 +46,9 @@ from checks.orthography import check as check_orthography
 from checks.orthography import check_lexicon as check_orthography_lexicon
 from checks.participation import check_doc as check_participation
 from checks.polish import check as check_polish
+from checks.rights import check as check_rights
+from checks.rights import exposure as rights_exposure
+from checks.rights import load as load_rights
 from checks.syntax import check as check_syntax
 from checks.syntax import coverage as syntax_coverage
 from checks.transcription import check_transcriptions
@@ -288,10 +291,23 @@ if __name__ == "__main__":
                 for p in sorted(CORPUS.glob("lexicon/*.json"))
             ]
         )
+        # What this edition may reproduce, counted rather than assumed. Every
+        # cited work must say what it is (checks/rights.py).
+        works, rights_errors = load_rights(CORPUS)
+        rights_errors += check_rights(cited, works)
+        for message in rights_errors:
+            print(f"ERROR: {message}")
+        rc |= 1 if rights_errors else 0
+
         title_errors = check_citation_titles(cited)
         for message in title_errors:
             print(f"ERROR: {message}")
         rc |= 1 if title_errors else 0
+        wording = rights_exposure(cited, works)
+        print(
+            "RIGHTS wording sites — "
+            + " ".join(f"{k}={v}" for k, v in sorted(wording.items()) if v)
+        )
         attested = readings(corpus_docs)
         print(
             f"UNCERTAINTY exposure>={sum(exposure(d, attested) for d in corpus_docs)} "
