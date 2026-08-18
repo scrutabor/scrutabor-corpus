@@ -12,6 +12,7 @@ import sys
 from pathlib import Path
 
 from checks.apparatus import lint_apparatus_summary
+from checks.capitals import check as check_capitals
 from checks.citations import check as check_citation_titles
 from checks.collate import collate
 from checks.conventions import check as check_conventions
@@ -121,6 +122,10 @@ def main(text_id: str) -> int:
     all_errors += lint_analysis(doc)
     all_errors += lint_notes(doc)
     all_errors += lint_rubrics(doc)
+    # The typical edition drops the accent on a capital; this edition
+    # restores it, and one text transcribed straight off a page image
+    # would otherwise disagree with the eighty before it.
+    all_errors += check_capitals(doc)
     voice_errors, attributed, n_verses = check_voices(doc)
     all_errors += voice_errors
     # Who the FAITHFUL answer with, which the Missale never says: derived
