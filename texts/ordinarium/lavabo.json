@@ -1,46 +1,74 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.lavabo",
   "title": "Lavábo inter innocéntes",
   "category": "ordinarium",
   "section": "missa-fidelium",
   "variant": "missae",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 95
   },
-  "notes": "Psalm 25:6-12 with the Glória Patri, said while the priest washes his fingers. A document of its own for the same reason as ordinarium.iudica-me: it is a whole psalm portion, and the doxology attached to it falls away on its own days (Masses for the Dead and, in Masses of the season, from Passion Sunday to Holy Thursday) while the psalm stays. Witness do prints the doxology here by reference to its own shared block; the witness header declares the expansion. CIRCÚMDABO at w007 is accented on the antepenult because the a of dare is short — witness handmissal-eo accents the penult, adjudicated in the apparatus. ÁUDIAM at w012 is present subjunctive, not future indicative, which the form equally allows: it stands under ut with enárrem, whose subjunctive is unambiguous. BENEDÍCAM at w072 is the opposite case — future indicative, not subjunctive, standing in a main clause beside the futures Lavábo and circúmdabo. MANUS at w004 is accusative plural (the object of Lavábo) out of six readings the form allows, and DOMUS at w023 genitive singular out of five. MEI at w064 is the genitive of ego, which misereor governs, not the possessive meus — the same trap the corpus records for vestri at ordinarium.misereatur. MIRABÍLIA at w018 and INNOCÉNTES at w003 are adjectives standing as nouns; DIRÉCTO at w069 likewise, a neuter used as a noun after in.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants (punctuation, one accent) adjudicated in the apparatus.",
-    "witnesses": "witnesses/ordinarium.lavabo/",
-    "apparatus": "witnesses/ordinarium.lavabo/apparatus.json"
+  "about": {
+    "pl": "Psalm 25, 6–12 według numeracji Wulgaty (Ps 26 w numeracji hebrajskiej), odmawiany podczas obmycia rąk. We Mszach za zmarłych oraz we Mszach okresowych od Niedzieli Męki Pańskiej do Wielkiego Czwartku włącznie opuszcza się „Glória Patri”. Sam psalm pozostaje.",
+    "en": "Psalm 25:6–12 in the Vulgate numbering (Psalm 26 in Hebrew), said during the washing of hands. At Masses for the Dead, and at Masses of the season from Passion Sunday through Maundy Thursday, the Glória Patri is omitted. The psalm itself remains."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ritus servandus in celebratione Missae, VII, 6",
+        "url": "https://archive.org/details/missale_romanum-1962/page/n60/mode/1up"
+      },
+      {
+        "title": "Nova Vulgata, Liber Psalmorum",
+        "locator": "Psalmus 26 (Vg 25), 6–12",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
+      }
+    ],
+    "en": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ritus servandus in celebratione Missae, VII, 6",
+        "url": "https://archive.org/details/missale_romanum-1962/page/n60/mode/1up"
+      },
+      {
+        "title": "Nova Vulgata, Liber Psalmorum",
+        "locator": "Psalmus 26 (Vg 25), 6–12",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
+      }
+    ]
+  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
       "text": "Sacerdos lavat manus, dicens:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan obmywa końce palców, kciuka i wskazującego, odmawiając psalm.",
+        "en": "The priest washes his fingertips, the thumb and the index, while saying the psalm."
+      }
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Obmyję ręce moje między niewinnymi i obejdę ołtarz Twój, Panie:",
+        "en": "I will wash my hands among the innocent, and go about Thy altar, Lord:"
+      },
       "words": [
-        { "id": "w001", "form": "Lavábo", "lemma": "lavo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w002", "form": "inter", "lemma": "inter", "morph": { "pos": "prep", "governs": "acc" }, "head": "w003" },
-        { "id": "w003", "form": "innocéntes", "lemma": "innocens", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w004", "form": "manus", "lemma": "manus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 4 } },
-        { "id": "w005", "form": "meas", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w004" },
-        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w007", "form": "circúmdabo", "lemma": "circumdo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w008", "form": "altáre", "lemma": "altare", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w009", "form": "tuum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w008" },
-        { "id": "w010", "form": "Dómine", "post": ":", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } }
+        { "id": "w001", "form": "Lavábo", "lemma": "lavo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "obmyję", "en": "I will wash" }, "function": { "pl": "Pierwsza osoba liczby pojedynczej czasu przyszłego.", "en": "First-person singular future." } },
+        { "id": "w002", "form": "inter", "lemma": "inter", "morph": { "pos": "prep", "governs": "acc" }, "head": "w003", "gloss": { "pl": "między", "en": "among" } },
+        { "id": "w003", "form": "innocéntes", "lemma": "innocens", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "niewinnymi", "en": "the innocent" }, "function": { "pl": "Przymiotnik użyty rzeczownikowo w bierniku liczby mnogiej po „inter” (w002).", "en": "An adjective used as a noun in the accusative plural after “inter” (w002)." } },
+        { "id": "w004", "form": "manus", "lemma": "manus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 4 }, "gloss": { "pl": "ręce", "en": "hands" }, "function": { "pl": "Biernik liczby mnogiej jako dopełnienie „Lavábo” (w001).", "en": "Accusative plural as the object of “Lavábo” (w001)." } },
+        { "id": "w005", "form": "meas", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w004", "gloss": { "pl": "moje", "en": "my" } },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w007", "form": "circúmdabo", "lemma": "circumdo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "obejdę", "en": "I will go about" } },
+        { "id": "w008", "form": "altáre", "lemma": "altare", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "ołtarz", "en": "altar" } },
+        { "id": "w009", "form": "tuum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w008", "gloss": { "pl": "Twój", "en": "Thy" } },
+        { "id": "w010", "form": "Dómine", "post": ":", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } }
       ]
     },
     {
@@ -48,16 +76,20 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Abym słyszał głos chwały i opowiadał wszystkie cuda Twoje.",
+        "en": "That I may hear the voice of praise, and tell all Thy wonders."
+      },
       "words": [
-        { "id": "w011", "form": "Ut", "lemma": "ut", "morph": { "pos": "conj" } },
-        { "id": "w012", "form": "áudiam", "lemma": "audio", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 } },
-        { "id": "w013", "form": "vocem", "lemma": "vox", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w014", "form": "laudis", "post": ",", "lemma": "laus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w016", "form": "enárrem", "lemma": "enarro", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 } },
-        { "id": "w017", "form": "univérsa", "lemma": "universus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w018" },
-        { "id": "w018", "form": "mirabília", "lemma": "mirabilis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true },
-        { "id": "w019", "form": "tua", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w018" }
+        { "id": "w011", "form": "Ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "abym", "en": "that" }, "function": { "pl": "Otwiera zdanie celowe z czasownikami w trybie łączącym.", "en": "It opens a purpose clause with verbs in the subjunctive." } },
+        { "id": "w012", "form": "áudiam", "lemma": "audio", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 }, "gloss": { "pl": "słyszał", "en": "I may hear" }, "function": { "pl": "Pierwsza osoba liczby pojedynczej trybu łączącego w zdaniu rozpoczętym przez „Ut” (w011).", "en": "First-person singular subjunctive in the clause introduced by “Ut” (w011)." } },
+        { "id": "w013", "form": "vocem", "lemma": "vox", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "głos", "en": "the voice" } },
+        { "id": "w014", "form": "laudis", "post": ",", "lemma": "laus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "chwały", "en": "of praise" } },
+        { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w016", "form": "enárrem", "lemma": "enarro", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 }, "gloss": { "pl": "opowiadał", "en": "may tell" }, "function": { "pl": "Drugi czasownik w trybie łączącym zależny od „Ut” (w011).", "en": "The second subjunctive verb governed by “Ut” (w011)." } },
+        { "id": "w017", "form": "univérsa", "lemma": "universus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w018", "gloss": { "pl": "wszystkie", "en": "all" } },
+        { "id": "w018", "form": "mirabília", "lemma": "mirabilis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true, "gloss": { "pl": "cuda", "en": "wonders" }, "function": { "pl": "Przymiotnik rodzaju nijakiego w liczbie mnogiej, użyty rzeczownikowo.", "en": "A neuter plural adjective used as a noun." } },
+        { "id": "w019", "form": "tua", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w018", "gloss": { "pl": "Twoje", "en": "Thy" } }
       ]
     },
     {
@@ -65,17 +97,21 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Panie, umiłowałem piękno domu Twego i miejsce mieszkania chwały Twojej.",
+        "en": "Lord, I have loved the beauty of Thy house, and the place of the dwelling of Thy glory."
+      },
       "words": [
-        { "id": "w020", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w021", "form": "diléxi", "lemma": "diligo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w022", "form": "decórem", "lemma": "decor", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w023", "form": "domus", "lemma": "domus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 4 } },
-        { "id": "w024", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w023" },
-        { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w026", "form": "locum", "lemma": "locus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w027", "form": "habitatiónis", "lemma": "habitatio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w028", "form": "glóriæ", "lemma": "gloria", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w029", "form": "tuæ", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w028" }
+        { "id": "w020", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w021", "form": "diléxi", "lemma": "diligo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "umiłowałem", "en": "I have loved" } },
+        { "id": "w022", "form": "decórem", "lemma": "decor", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "piękno", "en": "the beauty" } },
+        { "id": "w023", "form": "domus", "lemma": "domus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 4 }, "gloss": { "pl": "domu", "en": "of the house" }, "function": { "pl": "Dopełniacz liczby pojedynczej zależny od „decórem” (w022).", "en": "Genitive singular dependent on “decórem” (w022)." } },
+        { "id": "w024", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w023", "gloss": { "pl": "Twego", "en": "Thy" } },
+        { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w026", "form": "locum", "lemma": "locus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "miejsce", "en": "the place" } },
+        { "id": "w027", "form": "habitatiónis", "lemma": "habitatio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "mieszkania", "en": "of the dwelling" } },
+        { "id": "w028", "form": "glóriæ", "lemma": "gloria", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwały", "en": "of glory" }, "function": { "pl": "Dopełniacz zależny od „habitatiónis” (w027), które samo zależy od „locum” (w026).", "en": "A genitive dependent on “habitatiónis” (w027), which itself depends on “locum” (w026)." } },
+        { "id": "w029", "form": "tuæ", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w028", "gloss": { "pl": "Twojej", "en": "Thy" } }
       ]
     },
     {
@@ -83,20 +119,24 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Nie zatrać z bezbożnymi, Boże, duszy mojej, a z mężami krwawymi życia mojego:",
+        "en": "Destroy not my soul with the wicked, God, nor my life with men of blood:"
+      },
       "words": [
-        { "id": "w030", "form": "Ne", "lemma": "ne", "morph": { "pos": "adv" } },
-        { "id": "w031", "form": "perdas", "lemma": "perdo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
-        { "id": "w032", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w033" },
-        { "id": "w033", "form": "ímpiis", "post": ",", "lemma": "impius", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w034", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w035", "form": "ánimam", "lemma": "anima", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w036", "form": "meam", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w035" },
-        { "id": "w037", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w038", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w039" },
-        { "id": "w039", "form": "viris", "lemma": "vir", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } },
-        { "id": "w040", "form": "sánguinum", "lemma": "sanguis", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 3 } },
-        { "id": "w041", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w042", "form": "meam", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w041" }
+        { "id": "w030", "form": "Ne", "lemma": "ne", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "do not" }, "function": { "pl": "„Ne” wprowadza przeczącą prośbę.", "en": "“Ne” introduces a negative petition." } },
+        { "id": "w031", "form": "perdas", "lemma": "perdo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "zatrać", "en": "destroy" }, "function": { "pl": "Tryb łączący zależny od przeczącego „Ne” (w030).", "en": "A subjunctive governed by negative “Ne” (w030)." } },
+        { "id": "w032", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w033", "gloss": { "pl": "z", "en": "with" } },
+        { "id": "w033", "form": "ímpiis", "post": ",", "lemma": "impius", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "bezbożnymi", "en": "the wicked" }, "function": { "pl": "Przymiotnik użyty rzeczownikowo w ablativie liczby mnogiej po „cum” (w032).", "en": "An adjective used as a noun in the ablative plural after “cum” (w032)." } },
+        { "id": "w034", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boże", "en": "God" } },
+        { "id": "w035", "form": "ánimam", "lemma": "anima", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "duszy", "en": "soul" } },
+        { "id": "w036", "form": "meam", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w035", "gloss": { "pl": "mojej", "en": "my" } },
+        { "id": "w037", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w038", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w039", "gloss": { "pl": "z", "en": "with" } },
+        { "id": "w039", "form": "viris", "lemma": "vir", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "mężami", "en": "the men" } },
+        { "id": "w040", "form": "sánguinum", "lemma": "sanguis", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "krwi", "en": "of blood" }, "function": { "pl": "Dopełniacz liczby mnogiej zależny od „viris” (w039).", "en": "Genitive plural dependent on “viris” (w039)." } },
+        { "id": "w041", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "życia", "en": "life" } },
+        { "id": "w042", "form": "meam", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w041", "gloss": { "pl": "mojego", "en": "my" } }
       ]
     },
     {
@@ -104,17 +144,21 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "W których rękach są nieprawości: prawica ich napełniona jest darami.",
+        "en": "In whose hands are iniquities: their right hand is filled with gifts."
+      },
       "words": [
-        { "id": "w043", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w045" },
-        { "id": "w044", "form": "quorum", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "pl", "gender": "m" } },
-        { "id": "w045", "form": "mánibus", "lemma": "manus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 4 } },
-        { "id": "w046", "form": "iniquitátes", "lemma": "iniquitas", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 } },
-        { "id": "w047", "form": "sunt", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w048", "form": "déxtera", "lemma": "dextera", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w049", "form": "eórum", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "pl", "gender": "m" } },
-        { "id": "w050", "form": "repléta", "lemma": "repleo", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "f", "tense": "perf", "mood": "part", "voice": "pass", "conj": 2 }, "head": "w048" },
-        { "id": "w051", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w052", "form": "munéribus", "post": ".", "lemma": "munus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 3 } }
+        { "id": "w043", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w045", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w044", "form": "quorum", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "pl", "gender": "m" }, "gloss": { "pl": "których", "en": "whose" }, "function": { "pl": "Zaimek względny odnosi się do „viris” (w039) z poprzedniego wersetu.", "en": "The relative pronoun refers to “viris” (w039) in the preceding verse." } },
+        { "id": "w045", "form": "mánibus", "lemma": "manus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 4 }, "gloss": { "pl": "rękach", "en": "hands" } },
+        { "id": "w046", "form": "iniquitátes", "lemma": "iniquitas", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "nieprawości", "en": "iniquities" } },
+        { "id": "w047", "form": "sunt", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "są", "en": "are" } },
+        { "id": "w048", "form": "déxtera", "lemma": "dextera", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "prawica", "en": "right hand" } },
+        { "id": "w049", "form": "eórum", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "pl", "gender": "m" }, "gloss": { "pl": "ich", "en": "their" } },
+        { "id": "w050", "form": "repléta", "lemma": "repleo", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "f", "tense": "perf", "mood": "part", "voice": "pass", "conj": 2 }, "head": "w048", "gloss": { "pl": "napełniona", "en": "filled" } },
+        { "id": "w051", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "została", "en": "is" }, "function": { "pl": "Z „repléta” (w050) tworzy perfectum strony biernej.", "en": "With “repléta” (w050), it forms a perfect passive." } },
+        { "id": "w052", "form": "munéribus", "post": ".", "lemma": "munus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 3 }, "gloss": { "pl": "darami", "en": "with gifts" }, "function": { "pl": "Ablativus liczby mnogiej przy „repléta” (w050).", "en": "Ablative plural with “repléta” (w050)." } }
       ]
     },
     {
@@ -122,19 +166,23 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Ja zaś chodziłem w niewinności mojej: odkup mnie i zmiłuj się nade mną.",
+        "en": "But I have walked in my innocence: redeem me, and have mercy on me."
+      },
       "words": [
-        { "id": "w053", "form": "Ego", "lemma": "ego", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
-        { "id": "w054", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
-        { "id": "w055", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w056" },
-        { "id": "w056", "form": "innocéntia", "lemma": "innocentia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w057", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w056" },
-        { "id": "w058", "form": "ingréssus", "lemma": "ingredior", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "dep", "conj": 3 }, "head": "w053" },
-        { "id": "w059", "form": "sum", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w060", "form": "rédime", "lemma": "redimo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
-        { "id": "w061", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
-        { "id": "w062", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w063", "form": "miserére", "lemma": "misereor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 2 } },
-        { "id": "w064", "form": "mei", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "gen", "number": "sg" } }
+        { "id": "w053", "form": "Ego", "lemma": "ego", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "ja", "en": "I" }, "function": { "pl": "Mianownik, wyrażony dla przeciwstawienia mężom opisanym wcześniej.", "en": "Nominative, expressed in contrast with the men described before." } },
+        { "id": "w054", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" }, "gloss": { "pl": "zaś", "en": "but" } },
+        { "id": "w055", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w056", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w056", "form": "innocéntia", "lemma": "innocentia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "niewinności", "en": "innocence" } },
+        { "id": "w057", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w056", "gloss": { "pl": "mojej", "en": "my" } },
+        { "id": "w058", "form": "ingréssus", "lemma": "ingredior", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "dep", "conj": 3 }, "head": "w053", "gloss": { "pl": "chodziłem", "en": "have walked" }, "function": { "pl": "Łacina buduje ten czas przeszły z imiesłowu i słowa „est”. Polszczyzna oddaje go jednym słowem, więc „est” nie ma tu osobnego odpowiednika.", "en": "Latin builds this perfect from a participle and the verb to be. Polish renders it in one word, so the auxiliary has no separate counterpart there." } },
+        { "id": "w059", "form": "sum", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "—", "en": "have" }, "function": { "pl": "Z „ingréssus” (w058) tworzy perfectum czasownika deponentnego.", "en": "With “ingréssus” (w058), it forms the perfect of a deponent verb." } },
+        { "id": "w060", "form": "rédime", "lemma": "redimo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "wykup", "en": "redeem" }, "function": { "pl": "Druga osoba liczby pojedynczej trybu rozkazującego.", "en": "Second-person singular imperative." } },
+        { "id": "w061", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" } },
+        { "id": "w062", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w063", "form": "miserére", "lemma": "misereor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 2 }, "gloss": { "pl": "zmiłuj się", "en": "have mercy" } },
+        { "id": "w064", "form": "mei", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "gen", "number": "sg" }, "gloss": { "pl": "nade mną", "en": "on me" }, "function": { "pl": "Dopełniacz liczby pojedynczej zależny od „miserére” (w063).", "en": "Genitive singular governed by “miserére” (w063)." } }
       ]
     },
     {
@@ -142,17 +190,21 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Noga moja stanęła na prostej drodze: w zgromadzeniach będę błogosławił Ciebie, Panie.",
+        "en": "My foot hath stood in the straight way: in the assemblies I will bless Thee, Lord."
+      },
       "words": [
-        { "id": "w065", "form": "Pes", "lemma": "pes", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w066", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w065" },
-        { "id": "w067", "form": "stetit", "lemma": "sto", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w068", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w069" },
-        { "id": "w069", "form": "dirécto", "post": ":", "lemma": "directus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "substantive": true },
-        { "id": "w070", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w071" },
-        { "id": "w071", "form": "ecclésiis", "lemma": "ecclesia", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 1 } },
-        { "id": "w072", "form": "benedícam", "lemma": "benedico", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w073", "form": "te", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
-        { "id": "w074", "form": "Dómine", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } }
+        { "id": "w065", "form": "Pes", "lemma": "pes", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "noga", "en": "foot" } },
+        { "id": "w066", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w065", "gloss": { "pl": "moja", "en": "my" } },
+        { "id": "w067", "form": "stetit", "lemma": "sto", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "stanęła", "en": "hath stood" } },
+        { "id": "w068", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w069", "gloss": { "pl": "na", "en": "in" } },
+        { "id": "w069", "form": "dirécto", "post": ":", "lemma": "directus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "substantive": true, "gloss": { "pl": "prostej drodze", "en": "the straight way" }, "function": { "pl": "Przymiotnik rodzaju nijakiego użyty rzeczownikowo po „in” (w068).", "en": "A neuter adjective used as a noun after “in” (w068)." } },
+        { "id": "w070", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w071", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w071", "form": "ecclésiis", "lemma": "ecclesia", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "zgromadzeniach", "en": "the assemblies" }, "function": { "pl": "Ablativus liczby mnogiej po „in” (w070).", "en": "Ablative plural after “in” (w070)." } },
+        { "id": "w072", "form": "benedícam", "lemma": "benedico", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "będę błogosławił", "en": "I will bless" }, "function": { "pl": "Pierwsza osoba liczby pojedynczej czasu przyszłego.", "en": "First-person singular future." } },
+        { "id": "w073", "form": "te", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "Ciebie", "en": "Thee" } },
+        { "id": "w074", "form": "Dómine", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } }
       ]
     },
     {
@@ -160,14 +212,18 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Chwała Ojcu i Synowi, i Duchowi Świętemu.",
+        "en": "Glory be to the Father, and to the Son, and to the Holy Spirit."
+      },
       "words": [
-        { "id": "w075", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w076", "form": "Patri", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w077", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w078", "form": "Fílio", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w079", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w080", "form": "Spirítui", "lemma": "spiritus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 4 } },
-        { "id": "w081", "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w080" }
+        { "id": "w075", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwała", "en": "glory" }, "function": { "pl": "Mianownik w doksologii bez wyrażonego czasownika: domyślnie „niech będzie chwała”.", "en": "Nominative in a verbless doxology: “glory be” is understood." } },
+        { "id": "w076", "form": "Patri", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcu", "en": "to the Father" } },
+        { "id": "w077", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w078", "form": "Fílio", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Synowi", "en": "to the Son" } },
+        { "id": "w079", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w080", "form": "Spirítui", "lemma": "spiritus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Duchowi", "en": "to the Spirit" } },
+        { "id": "w081", "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w080", "gloss": { "pl": "Świętemu", "en": "Holy" } }
       ]
     },
     {
@@ -175,21 +231,42 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Jak była na początku, teraz i zawsze, i na wieki wieków. Amen.",
+        "en": "As it was in the beginning, is now, and ever shall be, world without end. Amen."
+      },
       "words": [
-        { "id": "w082", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
-        { "id": "w083", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" } },
-        { "id": "w084", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w085" },
-        { "id": "w085", "form": "princípio", "post": ",", "lemma": "principium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w086", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w087", "form": "nunc", "post": ",", "lemma": "nunc", "morph": { "pos": "adv" } },
-        { "id": "w088", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w089", "form": "semper", "post": ":", "lemma": "semper", "morph": { "pos": "adv" } },
-        { "id": "w090", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w091", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w092" },
-        { "id": "w092", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w093", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w094", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+        { "id": "w082", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" }, "gloss": { "pl": "jak", "en": "as" } },
+        { "id": "w083", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "była", "en": "it was" } },
+        { "id": "w084", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w085", "gloss": { "pl": "na", "en": "in" } },
+        { "id": "w085", "form": "princípio", "post": ",", "lemma": "principium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "początku", "en": "the beginning" } },
+        { "id": "w086", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w087", "form": "nunc", "post": ",", "lemma": "nunc", "morph": { "pos": "adv" }, "gloss": { "pl": "teraz", "en": "now" } },
+        { "id": "w088", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w089", "form": "semper", "post": ":", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "ever" } },
+        { "id": "w090", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w091", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w092", "gloss": { "pl": "na", "en": "unto" } },
+        { "id": "w092", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieki", "en": "ages" } },
+        { "id": "w093", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieków", "en": "of ages" } },
+        { "id": "w094", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "Psalm 25:6-12 with the Glória Patri, said while the priest washes his fingers. A document of its own for the same reason as ordinarium.iudica-me: it is a whole psalm portion, and the doxology attached to it falls away on its own days (Masses for the Dead and, in Masses of the season, from Passion Sunday to Holy Thursday) while the psalm stays. Witness do prints the doxology here by reference to its own shared block; the witness header declares the expansion. CIRCÚMDABO at w007 is accented on the antepenult because the a of dare is short — witness handmissal-eo accents the penult, adjudicated in the apparatus. ÁUDIAM at w012 is present subjunctive, not future indicative, which the form equally allows: it stands under ut with enárrem, whose subjunctive is unambiguous. BENEDÍCAM at w072 is the opposite case — future indicative, not subjunctive, standing in a main clause beside the futures Lavábo and circúmdabo. MANUS at w004 is accusative plural (the object of Lavábo) out of six readings the form allows, and DOMUS at w023 genitive singular out of five. MEI at w064 is the genitive of ego, which misereor governs, not the possessive meus — the same trap the corpus records for vestri at ordinarium.misereatur. MIRABÍLIA at w018 and INNOCÉNTES at w003 are adjectives standing as nouns; DIRÉCTO at w069 likewise, a neuter used as a noun after in.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants (punctuation, one accent) adjudicated in the apparatus.",
+      "witnesses": "witnesses/ordinarium.lavabo/",
+      "apparatus": "witnesses/ordinarium.lavabo/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    },
+    "words": {
+      "w048": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+    }
+  }
 }

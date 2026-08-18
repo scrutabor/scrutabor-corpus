@@ -1,49 +1,67 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.misereatur",
   "title": "Misereátur",
   "category": "ordinarium",
   "section": "praeparatio",
   "variant": "ministrorum",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 28
   },
-  "notes": "The two absolutions the priest pronounces after the ministers' confession, each with its Amen. The variant is ministrorum for the same reason as ordinarium.confiteor: this is the branch of the dialogue in which the ministers have just confessed, so the priest says vestri and vestris. After his own confession the ministers answer him with the same formula in the singular (Misereátur tui... peccátis tuis... perdúcat te), which belongs with the priest's Confíteor and stands as ordinarium.misereatur-tui — see the seam noted at ordinarium.confiteor-sacerdotis. Both witnesses print a cross glyph in the Indulgéntiam — do inside the word, the hand missal before it; it is stripped as elsewhere in the ordinarium. VESTRI at w002 is the genitive of the pronoun vos, not the possessive adjective that supplies w008: misereor governs the genitive of the person pitied, and the two forms fall together in the possessive's paradigm — the note carries the distinction.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants (punctuation) adjudicated in the apparatus.",
-    "witnesses": "witnesses/ordinarium.misereatur/",
-    "apparatus": "witnesses/ordinarium.misereatur/apparatus.json"
+  "about": {
+    "pl": "Dwie formuły błagalne: pierwsza zwraca się do wszechmogącego Boga, druga do wszechmogącego i miłosiernego Pana. Pierwsza prosi o miłosierdzie, odpuszczenie grzechów i życie wieczne, druga o przebaczenie, rozgrzeszenie i odpuszczenie grzechów. Nie jest to sakramentalna formuła Ego te absolvo.",
+    "en": "Two formulas of petition, the first addressed to almighty God and the second to the almighty and merciful Lord. The first asks mercy, the forgiveness of sins and eternal life, the second pardon, absolution and remission of sins. This is not the sacramental formula Ego te absolvo."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Catechismus Catholicae Ecclesiae",
+        "locator": "n. 1449",
+        "url": "https://press.vatican.va/archive/catechism_lt/p2s2c2a4_lt.htm"
+      }
+    ],
+    "en": [
+      {
+        "title": "Catechismus Catholicae Ecclesiae",
+        "locator": "n. 1449",
+        "url": "https://press.vatican.va/archive/catechism_lt/p2s2c2a4_lt.htm"
+      }
+    ]
+  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
       "text": "Postea Sacerdos, iunctis manibus, facit absolutionem, dicens:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan, ze złożonymi rękami, odmawia modlitwę o odpuszczenie.",
+        "en": "With hands joined, the priest says the prayer for forgiveness."
+      }
     },
     {
       "id": "s02",
       "type": "verse",
       "voice": "clara",
       "speaker": "sacerdos",
+      "translation": {
+        "pl": "Niech się zmiłuje nad wami Bóg wszechmogący, a odpuściwszy wam grzechy, niech was doprowadzi do życia wiecznego.",
+        "en": "May almighty God have mercy on you, and having forgiven your sins, bring you to life everlasting."
+      },
       "words": [
-        { "id": "w001", "form": "Misereátur", "lemma": "misereor", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 2 } },
-        { "id": "w002", "form": "vestri", "lemma": "vos", "morph": { "pos": "pron", "case": "gen", "number": "pl" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w003", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w004" },
-        { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w005", "form": "et", "post": ",", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w006", "form": "dimíssis", "lemma": "dimitto", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w007" },
-        { "id": "w007", "form": "peccátis", "lemma": "peccatum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w008", "form": "vestris", "post": ",", "lemma": "vester", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w007" },
-        { "id": "w009", "form": "perdúcat", "lemma": "perduco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
-        { "id": "w010", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
-        { "id": "w011", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
-        { "id": "w012", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w013", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w012" }
+        { "id": "w001", "form": "Misereátur", "lemma": "misereor", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 2 }, "gloss": { "pl": "niech się zmiłuje", "en": "may He have mercy" }, "function": { "pl": "Tryb łączący wyrażający prośbę skierowaną do Boga.", "en": "A subjunctive expressing a petition addressed to God." } },
+        { "id": "w002", "form": "vestri", "lemma": "vos", "morph": { "pos": "pron", "case": "gen", "number": "pl" }, "gloss": { "pl": "nad wami", "en": "on you" }, "function": { "pl": "Dopełniacz liczby mnogiej zależny od „Misereátur” (w001).", "en": "Genitive plural governed by “Misereátur” (w001)." } },
+        { "id": "w003", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w004", "gloss": { "pl": "wszechmogący", "en": "almighty" } },
+        { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bóg", "en": "God" }, "function": { "pl": "Mianownik jako podmiot „Misereátur” (w001) i „perdúcat” (w009).", "en": "Nominative subject of “Misereátur” (w001) and “perdúcat” (w009)." } },
+        { "id": "w005", "form": "et", "post": ",", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w006", "form": "dimíssis", "lemma": "dimitto", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w007", "gloss": { "pl": "odpuszczonymi", "en": "having been forgiven" }, "function": { "pl": "Imiesłów tworzący z „peccátis” (w007) ablativus absolutus.", "en": "A participle forming an ablative absolute with “peccátis” (w007)." } },
+        { "id": "w007", "form": "peccátis", "lemma": "peccatum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "grzechami", "en": "sins" }, "function": { "pl": "Rzeczownik w konstrukcji ablativus absolutus z „dimíssis” (w006).", "en": "The noun in the ablative absolute with “dimíssis” (w006)." } },
+        { "id": "w008", "form": "vestris", "post": ",", "lemma": "vester", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w007", "gloss": { "pl": "waszymi", "en": "your" } },
+        { "id": "w009", "form": "perdúcat", "lemma": "perduco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "niech doprowadzi", "en": "may He bring" }, "function": { "pl": "Drugi czasownik w trybie łączącym, współrzędny z „Misereátur” (w001).", "en": "A second subjunctive, coordinated with “Misereátur” (w001)." } },
+        { "id": "w010", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "was", "en": "you" }, "function": { "pl": "Biernik jako dopełnienie „perdúcat” (w009).", "en": "Accusative object of “perdúcat” (w009)." } },
+        { "id": "w011", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012", "gloss": { "pl": "do", "en": "to" } },
+        { "id": "w012", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "życia", "en": "life" } },
+        { "id": "w013", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w012", "gloss": { "pl": "wiecznego", "en": "everlasting" } }
       ]
     },
     {
@@ -51,9 +69,6 @@
       "type": "verse",
       "voice": "clara",
       "speaker": "minister",
-      "words": [
-        { "id": "w014", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
-      ],
       "participation": {
         "lecta": {
           "gradus": 1,
@@ -63,32 +78,46 @@
           "gradus": 1,
           "source": "DMS 25 a"
         }
-      }
+      },
+      "translation": {
+        "pl": "Amen.",
+        "en": "Amen."
+      },
+      "words": [
+        { "id": "w014", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+      ]
     },
     {
       "id": "s04",
       "type": "rubric",
       "text": "Signat se signo crucis, dicens:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan żegna się i odmawia drugą modlitwę.",
+        "en": "The priest signs himself and says the second prayer."
+      }
     },
     {
       "id": "s05",
       "type": "verse",
       "voice": "clara",
       "speaker": "sacerdos",
+      "translation": {
+        "pl": "Przebaczenia, rozgrzeszenia i odpuszczenia grzechów naszych niech nam udzieli wszechmogący i miłosierny Pan.",
+        "en": "May the almighty and merciful Lord grant us pardon, absolution and remission of our sins."
+      },
       "words": [
-        { "id": "w015", "form": "Indulgéntiam", "post": ",", "lemma": "indulgentia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w016", "form": "absolutiónem", "lemma": "absolutio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w018", "form": "remissiónem", "lemma": "remissio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w019", "form": "peccatórum", "lemma": "peccatum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w020", "form": "nostrórum", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "n" }, "head": "w019" },
-        { "id": "w021", "form": "tríbuat", "lemma": "tribuo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
-        { "id": "w022", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
-        { "id": "w023", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w026" },
-        { "id": "w024", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w025", "form": "miséricors", "lemma": "misericors", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w026" },
-        { "id": "w026", "form": "Dóminus", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } }
+        { "id": "w015", "form": "Indulgéntiam", "post": ",", "lemma": "indulgentia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "przebaczenia", "en": "pardon" }, "function": { "pl": "Pierwsze z trzech dopełnień „tríbuat” (w021), wszystkie w bierniku.", "en": "The first of three accusative objects of “tríbuat” (w021)." } },
+        { "id": "w016", "form": "absolutiónem", "lemma": "absolutio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "rozgrzeszenia", "en": "absolution" } },
+        { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w018", "form": "remissiónem", "lemma": "remissio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "odpuszczenia", "en": "remission" } },
+        { "id": "w019", "form": "peccatórum", "lemma": "peccatum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "grzechów", "en": "of sins" }, "function": { "pl": "Dopełniacz zależny od „remissiónem” (w018).", "en": "A genitive depending on “remissiónem” (w018)." } },
+        { "id": "w020", "form": "nostrórum", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "n" }, "head": "w019", "gloss": { "pl": "naszych", "en": "our" }, "function": { "pl": "Pierwsza osoba liczby mnogiej: kapłan obejmuje prośbą także siebie.", "en": "First-person plural: the priest includes himself in the petition." } },
+        { "id": "w021", "form": "tríbuat", "lemma": "tribuo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "niech udzieli", "en": "may He grant" }, "function": { "pl": "Tryb łączący. Czasownik rządzi trzema poprzedzającymi go dopełnieniami w bierniku.", "en": "A subjunctive governing the three preceding accusative objects." } },
+        { "id": "w022", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "us" }, "function": { "pl": "Celownik jako dopełnienie dalsze „tríbuat” (w021).", "en": "Dative recipient of “tríbuat” (w021)." } },
+        { "id": "w023", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w026", "gloss": { "pl": "wszechmogący", "en": "almighty" } },
+        { "id": "w024", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w025", "form": "miséricors", "lemma": "misericors", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w026", "gloss": { "pl": "miłosierny", "en": "merciful" } },
+        { "id": "w026", "form": "Dóminus", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "the Lord" }, "function": { "pl": "Mianownik jako podmiot „tríbuat” (w021).", "en": "Nominative subject of “tríbuat” (w021)." } }
       ]
     },
     {
@@ -96,9 +125,6 @@
       "type": "verse",
       "voice": "clara",
       "speaker": "minister",
-      "words": [
-        { "id": "w027", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
-      ],
       "participation": {
         "lecta": {
           "gradus": 1,
@@ -108,7 +134,32 @@
           "gradus": 1,
           "source": "DMS 25 a"
         }
-      }
+      },
+      "translation": {
+        "pl": "Amen.",
+        "en": "Amen."
+      },
+      "words": [
+        { "id": "w027", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+      ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The two absolutions the priest pronounces after the ministers' confession, each with its Amen. The variant is ministrorum for the same reason as ordinarium.confiteor: this is the branch of the dialogue in which the ministers have just confessed, so the priest says vestri and vestris. After his own confession the ministers answer him with the same formula in the singular (Misereátur tui... peccátis tuis... perdúcat te), which belongs with the priest's Confíteor and stands as ordinarium.misereatur-tui — see the seam noted at ordinarium.confiteor-sacerdotis. Both witnesses print a cross glyph in the Indulgéntiam — do inside the word, the hand missal before it; it is stripped as elsewhere in the ordinarium. VESTRI at w002 is the genitive of the pronoun vos, not the possessive adjective that supplies w008: misereor governs the genitive of the person pitied, and the two forms fall together in the possessive's paradigm — the note carries the distinction.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants (punctuation) adjudicated in the apparatus.",
+      "witnesses": "witnesses/ordinarium.misereatur/",
+      "apparatus": "witnesses/ordinarium.misereatur/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s04": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    },
+    "words": {
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+    }
+  }
 }

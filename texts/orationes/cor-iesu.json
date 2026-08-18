@@ -1,41 +1,74 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "orationes.cor-iesu",
   "title": "Cor Iesu sacratíssimum",
   "category": "orationes",
   "section": "orationes-communes",
   "variant": "devotional",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 6
   },
-  "notes": "The invocation that closes the prayers of Leo XIII, added to them by Pius X in 1904. Five words, and it is said three times — which this edition states in the reader's introduction rather than printing three identical pairs. Witness do prints all three; its transcription takes the first pair only and says so. COR at w001 is nominative in the function of address, as AGNUS is in the Agnus Dei: the form is a neuter one that would not show the difference anyway, and this edition marks the case the analyzers head. IESU at w002 is genitive — one of the four cases this Greek-Latin name spells alike, and the only one the sense allows here.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence, and the orthography each witness declares.",
-    "witnesses": "witnesses/orationes.cor-iesu/",
-    "apparatus": "witnesses/orationes.cor-iesu/apparatus.json"
+  "about": {
+    "pl": "Wezwanie zamykające modlitwy Leona XIII, dołączone do nich w 1904 r. za Piusa X. Powtarza się je trzy razy. To wydanie drukuje je raz.",
+    "en": "The invocation that closes the prayers of Leo XIII, added to them in 1904 under Pius X. It is said three times. This edition prints it once."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
+        "locator": "n. 675, p. 520",
+        "url": "https://archive.org/download/enchiridion_indulgentiarum_1952/enchiridion_indulgentiarum_1952.pdf"
+      }
+    ],
+    "en": [
+      {
+        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
+        "locator": "n. 675, p. 520",
+        "url": "https://archive.org/download/enchiridion_indulgentiarum_1952/enchiridion_indulgentiarum_1952.pdf"
+      }
+    ]
+  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
+      "translation": {
+        "pl": "Najświętsze Serce Jezusa.",
+        "en": "Most Sacred Heart of Jesus."
+      },
       "words": [
-        { "id": "w001", "form": "Cor", "lemma": "cor", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w002", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
-        { "id": "w003", "form": "sacratíssimum", "post": ".", "lemma": "sacratus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n", "degree": "sup" }, "head": "w001", "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+        { "id": "w001", "form": "Cor", "lemma": "cor", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "Serce", "en": "Heart" }, "function": { "pl": "Rodzaj nijaki ma jedną formę mianownika i wołacza. Ta edycja znakuje zwrot jako mianownik, tak jak w Agnus Dei.", "en": "A neuter noun has one form for nominative and vocative. This edition tags the address as nominative, as it does in Agnus Dei." } },
+        { "id": "w002", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezusa", "en": "of Jesus" }, "function": { "pl": "Dopełniacz zależny od „Cor”: Serce Jezusa.", "en": "Genitive dependent on “Cor”: the Heart of Jesus." } },
+        { "id": "w003", "form": "sacratíssimum", "post": ".", "lemma": "sacratus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n", "degree": "sup" }, "head": "w001", "gloss": { "pl": "najświętsze", "en": "most sacred" }, "function": { "pl": "Stopień najwyższy od „sacrátus”. Zgadza się z „Cor” (w001).", "en": "The superlative of “sacrátus”. It agrees with “Cor” (w001)." } }
       ]
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "omnes",
+      "translation": {
+        "pl": "Zmiłuj się nad nami.",
+        "en": "Have mercy on us."
+      },
       "words": [
-        { "id": "w004", "form": "Miserére", "lemma": "misereor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 2 } },
-        { "id": "w005", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } }
+        { "id": "w004", "form": "Miserére", "lemma": "misereor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 2 }, "gloss": { "pl": "zmiłuj się", "en": "have mercy" }, "function": { "pl": "Tryb rozkazujący czasownika deponentnego: forma bierna, znaczenie czynne.", "en": "The imperative of a deponent verb: passive in form, active in meaning." } },
+        { "id": "w005", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nad nami", "en": "on us" }, "function": { "pl": "Celownik zależny od „miserére”. W łacinie klasycznej czasownik ten zwykle łączy się z dopełniaczem.", "en": "Dative dependent on “miserére”. In Classical Latin this verb usually takes the genitive." }, "function_citations": { "pl": [{ "title": "Lewis and Short, A Latin Dictionary", "locator": "s.v. misereor", "url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0059" }], "en": [{ "title": "Lewis and Short, A Latin Dictionary", "locator": "s.v. misereor", "url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0059" }] } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The invocation that closes the prayers of Leo XIII, added to them by Pius X in 1904. Five words, and it is said three times — which this edition states in the reader's introduction rather than printing three identical pairs. Witness do prints all three; its transcription takes the first pair only and says so. COR at w001 is nominative in the function of address, as AGNUS is in the Agnus Dei: the form is a neuter one that would not show the difference anyway, and this edition marks the case the analyzers head. IESU at w002 is genitive — one of the four cases this Greek-Latin name spells alike, and the only one the sense allows here.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence, and the orthography each witness declares.",
+      "witnesses": "witnesses/orationes.cor-iesu/",
+      "apparatus": "witnesses/orationes.cor-iesu/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+    }
+  }
 }

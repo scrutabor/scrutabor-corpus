@@ -1,70 +1,85 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "proprium.dominica-i-adventus-evangelium",
   "title": "Erunt signa in sole",
   "category": "proprium",
   "section": "missa-catechumenorum",
   "variant": "dominica-i-adventus",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 120
   },
-  "notes": "Part of the proper for the First Sunday of Advent. The biblical or liturgical citation and the source boundary are recorded in the witness files.",
-  "source": {
-    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
-    "witnesses": "witnesses/proprium.dominica-i-adventus-evangelium/",
-    "apparatus": "witnesses/proprium.dominica-i-adventus-evangelium/apparatus.json"
+  "about": {
+    "pl": "Ewangelia I Niedzieli Adwentu, Łk 21, 25–33. Rok otwierają znaki poprzedzające przyjście Syna Człowieczego i przypowieść o drzewie figowym. In illo témpore, Onego czasu, to własne otwarcie mszału, a nie część wersetu.",
+    "en": "The Gospel of the First Sunday of Advent, Luke 21:25-33. The year opens with the signs before the coming of the Son of Man and with the parable of the fig tree. In illo témpore, At that time, is the missal's own opening and is not part of the verse."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Dominica I Adventus, printed page 2",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ],
+    "en": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Dominica I Adventus, printed page 2",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ]
+  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "W owym czasie Jezus powiedział do swoich uczniów: Będą znaki na słońcu, księżycu i gwiazdach, a na ziemi ucisk narodów bezradnych wobec szumu morza i fal. Ludzie mdleć będą ze strachu i w oczekiwaniu wydarzeń nadchodzących na cały świat, albowiem moce niebios zostaną wstrząśnięte.",
+        "en": "At that time Jesus said to His disciples: There will be signs in the sun, the moon, and the stars, and on earth distress among nations, perplexed by the roaring of the sea and the waves. People will faint with fear and expectation of what is coming upon the whole world, for the powers of the heavens will be shaken."
+      },
       "words": [
-        { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w002" },
-        { "id": "w002", "form": "illo", "lemma": "ille", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "n" } },
-        { "id": "w003", "form": "témpore", "post": ":", "lemma": "tempus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w004", "form": "Dixit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w005", "form": "Iesus", "lemma": "Iesus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w006", "form": "discípulis", "lemma": "discipulus", "morph": { "case": "dat", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
-        { "id": "w007", "form": "suis", "post": ":", "lemma": "suus", "morph": { "case": "dat", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w006" },
-        { "id": "w008", "form": "Erunt", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act" } },
-        { "id": "w009", "form": "signa", "lemma": "signum", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011" },
-        { "id": "w011", "form": "sole", "post": ",", "lemma": "sol", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w013", "form": "luna", "post": ",", "lemma": "luna", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w015", "form": "stellis", "post": ",", "lemma": "stella", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 1 } },
-        { "id": "w016", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w017", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w018" },
-        { "id": "w018", "form": "terris", "lemma": "terra", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" } },
-        { "id": "w019", "form": "pressúra", "lemma": "pressura", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w020", "form": "géntium", "lemma": "gens", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 3 } },
-        { "id": "w021", "form": "præ", "lemma": "prae", "morph": { "pos": "prep", "governs": "abl" }, "head": "w022" },
-        { "id": "w022", "form": "confusióne", "lemma": "confusio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w023", "form": "sónitus", "lemma": "sonitus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
-        { "id": "w024", "form": "maris", "post": ",", "lemma": "mare", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w026", "form": "flúctuum", "post": ":", "lemma": "fluctus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 4 } },
-        { "id": "w027", "form": "arescéntibus", "lemma": "aresco", "morph": { "pos": "verb", "number": "pl", "tense": "pres", "mood": "part", "voice": "act", "conj": 3, "case": "abl", "gender": "m" }, "head": "w028" },
-        { "id": "w028", "form": "homínibus", "lemma": "homo", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 } },
-        { "id": "w029", "form": "præ", "lemma": "prae", "morph": { "pos": "prep", "governs": "abl" }, "head": "w030" },
-        { "id": "w030", "form": "timóre", "lemma": "timor", "morph": { "case": "abl", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w031", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w032", "form": "exspectatióne", "post": ",", "lemma": "exspectatio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w033", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "n" } },
-        { "id": "w034", "form": "supervénient", "lemma": "supervenio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act", "conj": 4 } },
-        { "id": "w035", "form": "univérso", "lemma": "universus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w036" },
-        { "id": "w036", "form": "orbi", "post": ":", "lemma": "orbis", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w037", "form": "nam", "lemma": "nam", "morph": { "pos": "conj" } },
-        { "id": "w038", "form": "virtútes", "lemma": "virtus", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
-        { "id": "w039", "form": "cælórum", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 } },
-        { "id": "w040", "form": "movebúntur", "post": ".", "lemma": "moveo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 2 } }
+        { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w002", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w002", "form": "illo", "lemma": "ille", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "n" }, "gloss": { "pl": "owym", "en": "that" } },
+        { "id": "w003", "form": "témpore", "post": ":", "lemma": "tempus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "czasie", "en": "time" } },
+        { "id": "w004", "form": "Dixit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "gloss": { "pl": "powiedział", "en": "said" } },
+        { "id": "w005", "form": "Iesus", "lemma": "Iesus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "noun" }, "gloss": { "pl": "Jezus", "en": "Jesus" } },
+        { "id": "w006", "form": "discípulis", "lemma": "discipulus", "morph": { "case": "dat", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" }, "gloss": { "pl": "uczniom", "en": "to the disciples" } },
+        { "id": "w007", "form": "suis", "post": ":", "lemma": "suus", "morph": { "case": "dat", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w006", "gloss": { "pl": "swoim", "en": "His" } },
+        { "id": "w008", "form": "Erunt", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act" }, "gloss": { "pl": "będą", "en": "there will be" } },
+        { "id": "w009", "form": "signa", "lemma": "signum", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "znaki", "en": "signs" } },
+        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w011", "form": "sole", "post": ",", "lemma": "sol", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "słońcu", "en": "the sun" } },
+        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w013", "form": "luna", "post": ",", "lemma": "luna", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "księżycu", "en": "the moon" } },
+        { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w015", "form": "stellis", "post": ",", "lemma": "stella", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "gwiazdach", "en": "the stars" } },
+        { "id": "w016", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w017", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w018", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w018", "form": "terris", "lemma": "terra", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" }, "gloss": { "pl": "ziemiach", "en": "lands" } },
+        { "id": "w019", "form": "pressúra", "lemma": "pressura", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ucisk", "en": "distress" }, "function": { "pl": "Zdanie nie ma własnego czasownika. Trzeba ponownie dopowiedzieć początkowe erunt: będzie ucisk.", "en": "The clause has no expressed verb. Erunt from the opening is understood again: there will be distress." } },
+        { "id": "w020", "form": "géntium", "lemma": "gens", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "narodów", "en": "of nations" } },
+        { "id": "w021", "form": "præ", "lemma": "prae", "morph": { "pos": "prep", "governs": "abl" }, "head": "w022", "gloss": { "pl": "z powodu", "en": "because of" } },
+        { "id": "w022", "form": "confusióne", "lemma": "confusio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "zamętu", "en": "confusion" } },
+        { "id": "w023", "form": "sónitus", "lemma": "sonitus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "szumu", "en": "of the roaring" }, "function": { "pl": "Dopełniacz zależny od „confusióne” (w022). Od „sónitus” zależą z kolei „maris” (w024) i „flúctuum” (w026).", "en": "A genitive depending on “confusióne” (w022). In turn, “maris” (w024) and “flúctuum” (w026) depend on “sónitus”." } },
+        { "id": "w024", "form": "maris", "post": ",", "lemma": "mare", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "morza", "en": "of the sea" } },
+        { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w026", "form": "flúctuum", "post": ":", "lemma": "fluctus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 4 }, "gloss": { "pl": "fal", "en": "of the waves" } },
+        { "id": "w027", "form": "arescéntibus", "lemma": "aresco", "morph": { "pos": "verb", "number": "pl", "tense": "pres", "mood": "part", "voice": "act", "conj": 3, "case": "abl", "gender": "m" }, "head": "w028", "gloss": { "pl": "mdlejącymi", "en": "fainting" }, "function": { "pl": "Z „homínibus” (w028) tworzy ablativus absolutus: „gdy ludzie mdleją”.", "en": "With “homínibus” (w028), it forms an ablative absolute: while people faint." } },
+        { "id": "w028", "form": "homínibus", "lemma": "homo", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "ludźmi", "en": "people" } },
+        { "id": "w029", "form": "præ", "lemma": "prae", "morph": { "pos": "prep", "governs": "abl" }, "head": "w030", "gloss": { "pl": "z powodu", "en": "because of" } },
+        { "id": "w030", "form": "timóre", "lemma": "timor", "morph": { "case": "abl", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "gloss": { "pl": "strachu", "en": "fear" } },
+        { "id": "w031", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w032", "form": "exspectatióne", "post": ",", "lemma": "exspectatio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "oczekiwania", "en": "expectation" } },
+        { "id": "w033", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "n" }, "gloss": { "pl": "które", "en": "which things" }, "function": { "pl": "Zaimek rodzaju nijakiego w liczbie mnogiej, będący podmiotem „supervénient” (w034): „to, co nadejdzie”.", "en": "A neuter plural pronoun serving as the subject of “supervénient” (w034): the things that will come upon." } },
+        { "id": "w034", "form": "supervénient", "lemma": "supervenio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act", "conj": 4 }, "gloss": { "pl": "nadejdą", "en": "will come upon" } },
+        { "id": "w035", "form": "univérso", "lemma": "universus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w036", "gloss": { "pl": "całemu", "en": "the whole" } },
+        { "id": "w036", "form": "orbi", "post": ":", "lemma": "orbis", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "światu", "en": "world" } },
+        { "id": "w037", "form": "nam", "lemma": "nam", "morph": { "pos": "conj" }, "gloss": { "pl": "bowiem", "en": "for" } },
+        { "id": "w038", "form": "virtútes", "lemma": "virtus", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" }, "gloss": { "pl": "moce", "en": "powers" } },
+        { "id": "w039", "form": "cælórum", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "niebios", "en": "of the heavens" } },
+        { "id": "w040", "form": "movebúntur", "post": ".", "lemma": "moveo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 2 }, "gloss": { "pl": "zostaną wstrząśnięte", "en": "will be shaken" } }
       ]
     },
     {
@@ -72,20 +87,24 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Wtedy ujrzą Syna Człowieczego nadchodzącego w obłoku z wielką mocą i chwałą.",
+        "en": "Then they will see the Son of Man coming in a cloud with great power and glory."
+      },
       "words": [
-        { "id": "w041", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w042", "form": "tunc", "lemma": "tunc", "morph": { "pos": "adv" } },
-        { "id": "w043", "form": "vidébunt", "lemma": "video", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act", "conj": 2 } },
-        { "id": "w044", "form": "Fílium", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w045", "form": "hóminis", "lemma": "homo", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w046", "form": "veniéntem", "lemma": "venio", "morph": { "case": "acc", "conj": 4, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "head": "w044" },
-        { "id": "w047", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w048" },
-        { "id": "w048", "form": "nube", "lemma": "nubes", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w049", "form": "cum", "lemma": "cum", "morph": { "governs": "abl", "pos": "prep" }, "head": "w050" },
-        { "id": "w050", "form": "potestáte", "lemma": "potestas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w051", "form": "magna", "post": ",", "lemma": "magnus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w050" },
-        { "id": "w052", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w053", "form": "maiestáte", "post": ".", "lemma": "maiestas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } }
+        { "id": "w041", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w042", "form": "tunc", "lemma": "tunc", "morph": { "pos": "adv" }, "gloss": { "pl": "wtedy", "en": "then" } },
+        { "id": "w043", "form": "vidébunt", "lemma": "video", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act", "conj": 2 }, "gloss": { "pl": "ujrzą", "en": "they will see" } },
+        { "id": "w044", "form": "Fílium", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Syna", "en": "the Son" } },
+        { "id": "w045", "form": "hóminis", "lemma": "homo", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Człowieka", "en": "of Man" } },
+        { "id": "w046", "form": "veniéntem", "lemma": "venio", "morph": { "case": "acc", "conj": 4, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "head": "w044", "gloss": { "pl": "nadchodzącego", "en": "coming" } },
+        { "id": "w047", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w048", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w048", "form": "nube", "lemma": "nubes", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "obłoku", "en": "a cloud" } },
+        { "id": "w049", "form": "cum", "lemma": "cum", "morph": { "governs": "abl", "pos": "prep" }, "head": "w050", "gloss": { "pl": "z", "en": "with" } },
+        { "id": "w050", "form": "potestáte", "lemma": "potestas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "mocą", "en": "power" } },
+        { "id": "w051", "form": "magna", "post": ",", "lemma": "magnus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w050", "gloss": { "pl": "wielką", "en": "great" } },
+        { "id": "w052", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w053", "form": "maiestáte", "post": ".", "lemma": "maiestas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "majestatem", "en": "majesty" } }
       ]
     },
     {
@@ -93,20 +112,24 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "A gdy to dziać się zacznie, spójrzcie w górę i podnieście głowy, ponieważ zbliża się wasze odkupienie.",
+        "en": "When these things begin to happen, look up and raise your heads, because your redemption is at hand."
+      },
       "words": [
-        { "id": "w054", "form": "His", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "n" } },
-        { "id": "w055", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
-        { "id": "w056", "form": "fíeri", "lemma": "fio", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w057", "form": "incipiéntibus", "post": ",", "lemma": "incipio", "morph": { "pos": "verb", "number": "pl", "tense": "pres", "mood": "part", "voice": "act", "conj": 3, "case": "abl", "gender": "n" }, "head": "w054" },
-        { "id": "w058", "form": "respícite", "post": ",", "lemma": "respicio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
-        { "id": "w059", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w060", "form": "leváte", "lemma": "levo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
-        { "id": "w061", "form": "cápita", "lemma": "caput", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 } },
-        { "id": "w062", "form": "vestra", "post": ":", "lemma": "vester", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w061" },
-        { "id": "w063", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
-        { "id": "w064", "form": "appropínquat", "lemma": "appropinquo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w065", "form": "redémptio", "lemma": "redemptio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w066", "form": "vestra", "post": ".", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w065" }
+        { "id": "w054", "form": "His", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "n" }, "gloss": { "pl": "tymi", "en": "these things" }, "function": { "pl": "Z incipientibus rozpoczyna ablativus absolutus: gdy te rzeczy zaczną się dziać.", "en": "With incipientibus it begins an ablative absolute: when these things begin to happen." } },
+        { "id": "w055", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" }, "gloss": { "pl": "zaś", "en": "but" } },
+        { "id": "w056", "form": "fíeri", "lemma": "fio", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" }, "gloss": { "pl": "dziać się", "en": "to happen" } },
+        { "id": "w057", "form": "incipiéntibus", "post": ",", "lemma": "incipio", "morph": { "pos": "verb", "number": "pl", "tense": "pres", "mood": "part", "voice": "act", "conj": 3, "case": "abl", "gender": "n" }, "head": "w054", "gloss": { "pl": "zaczynającymi się", "en": "beginning" }, "function": { "pl": "Rodzaj nijaki wynika ze zgody z his. Bezokolicznik fieri mówi, co zaczyna się dziać.", "en": "The neuter agreement is with his. The infinitive fieri supplies what is beginning to occur." } },
+        { "id": "w058", "form": "respícite", "post": ",", "lemma": "respicio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "spójrzcie w górę", "en": "look up" } },
+        { "id": "w059", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w060", "form": "leváte", "lemma": "levo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "podnieście", "en": "raise" } },
+        { "id": "w061", "form": "cápita", "lemma": "caput", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 }, "gloss": { "pl": "głowy", "en": "heads" } },
+        { "id": "w062", "form": "vestra", "post": ":", "lemma": "vester", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w061", "gloss": { "pl": "wasze", "en": "your" } },
+        { "id": "w063", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" }, "gloss": { "pl": "ponieważ", "en": "because" } },
+        { "id": "w064", "form": "appropínquat", "lemma": "appropinquo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "zbliża się", "en": "draws near" } },
+        { "id": "w065", "form": "redémptio", "lemma": "redemptio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "odkupienie", "en": "redemption" } },
+        { "id": "w066", "form": "vestra", "post": ".", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w065", "gloss": { "pl": "wasze", "en": "your" } }
       ]
     },
     {
@@ -114,27 +137,31 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "I opowiedział im przypowieść: Spójrzcie na figowiec i wszystkie drzewa. Gdy wydają już z siebie owoc, wiecie, że blisko jest lato.",
+        "en": "And He told them a parable: Look at the fig tree and all the trees. When they now put forth fruit from themselves, you know that summer is near."
+      },
       "words": [
-        { "id": "w067", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w068", "form": "dixit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w069", "form": "illis", "lemma": "ille", "morph": { "case": "dat", "gender": "m", "number": "pl", "pos": "pron" } },
-        { "id": "w070", "form": "similitúdinem", "post": ":", "lemma": "similitudo", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w071", "form": "Vidéte", "lemma": "video", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
-        { "id": "w072", "form": "ficúlneam", "post": ",", "lemma": "ficulneus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "substantive": true },
-        { "id": "w073", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w074", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w075" },
-        { "id": "w075", "form": "árbores", "post": ":", "lemma": "arbor", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 } },
-        { "id": "w076", "form": "cum", "lemma": "cum", "morph": { "pos": "conj" } },
-        { "id": "w077", "form": "prodúcunt", "lemma": "produco", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w078", "form": "iam", "lemma": "iam", "morph": { "pos": "adv" } },
-        { "id": "w079", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w080" },
-        { "id": "w080", "form": "se", "lemma": "sui", "morph": { "case": "abl", "pos": "pron" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w081", "form": "fructum", "post": ",", "lemma": "fructus", "morph": { "case": "acc", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w082", "form": "scitis", "lemma": "scio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 4 } },
-        { "id": "w083", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
-        { "id": "w084", "form": "prope", "lemma": "prope", "morph": { "pos": "adv" } },
-        { "id": "w085", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w086", "form": "æstas", "post": ".", "lemma": "aestas", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } }
+        { "id": "w067", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w068", "form": "dixit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "gloss": { "pl": "powiedział", "en": "said" } },
+        { "id": "w069", "form": "illis", "lemma": "ille", "morph": { "case": "dat", "gender": "m", "number": "pl", "pos": "pron" }, "gloss": { "pl": "im", "en": "to them" } },
+        { "id": "w070", "form": "similitúdinem", "post": ":", "lemma": "similitudo", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "przypowieść", "en": "a parable" } },
+        { "id": "w071", "form": "Vidéte", "lemma": "video", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "spójrzcie na", "en": "look at" } },
+        { "id": "w072", "form": "ficúlneam", "post": ",", "lemma": "ficulneus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "substantive": true, "gloss": { "pl": "figowiec", "en": "the fig tree" }, "function": { "pl": "Przymiotnik rodzaju żeńskiego występuje rzeczownikowo z domyślnym arbor. Następujące “omnes” (w074) i “árbores” (w075) rozszerzają przykład z figowca na wszystkie drzewa.", "en": "The feminine adjective stands substantivally with arbor understood. The following “omnes” (w074) and “árbores” (w075) broaden the example from the fig tree to all trees." } },
+        { "id": "w073", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w074", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w075", "gloss": { "pl": "wszystkie", "en": "all" } },
+        { "id": "w075", "form": "árbores", "post": ":", "lemma": "arbor", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "drzewa", "en": "trees" } },
+        { "id": "w076", "form": "cum", "lemma": "cum", "morph": { "pos": "conj" }, "gloss": { "pl": "gdy", "en": "when" } },
+        { "id": "w077", "form": "prodúcunt", "lemma": "produco", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "wydają", "en": "they put forth" } },
+        { "id": "w078", "form": "iam", "lemma": "iam", "morph": { "pos": "adv" }, "gloss": { "pl": "już", "en": "now" } },
+        { "id": "w079", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w080", "gloss": { "pl": "z", "en": "from" } },
+        { "id": "w080", "form": "se", "lemma": "sui", "morph": { "case": "abl", "pos": "pron" }, "gloss": { "pl": "siebie", "en": "themselves" } },
+        { "id": "w081", "form": "fructum", "post": ",", "lemma": "fructus", "morph": { "case": "acc", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" }, "gloss": { "pl": "owoc", "en": "fruit" } },
+        { "id": "w082", "form": "scitis", "lemma": "scio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 4 }, "gloss": { "pl": "wiecie", "en": "you know" } },
+        { "id": "w083", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" }, "gloss": { "pl": "że", "en": "that" } },
+        { "id": "w084", "form": "prope", "lemma": "prope", "morph": { "pos": "adv" }, "gloss": { "pl": "blisko", "en": "near" } },
+        { "id": "w085", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "gloss": { "pl": "jest", "en": "is" } },
+        { "id": "w086", "form": "æstas", "post": ".", "lemma": "aestas", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "lato", "en": "summer" } }
       ]
     },
     {
@@ -142,20 +169,24 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Tak i wy, gdy ujrzycie, że to się dzieje, wiedzcie, że blisko jest królestwo Boże.",
+        "en": "So too, when you see these things happening, know that the Kingdom of God is near."
+      },
       "words": [
-        { "id": "w087", "form": "Ita", "lemma": "ita", "morph": { "pos": "adv" } },
-        { "id": "w088", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w089", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
-        { "id": "w090", "form": "cum", "lemma": "cum", "morph": { "pos": "conj" } },
-        { "id": "w091", "form": "vidéritis", "lemma": "video", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "futperf", "mood": "ind", "voice": "act", "conj": 2 } },
-        { "id": "w092", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
-        { "id": "w093", "form": "fíeri", "post": ",", "lemma": "fio", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w094", "form": "scitóte", "lemma": "scio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "fut", "mood": "imp", "voice": "act", "conj": 4 } },
-        { "id": "w095", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
-        { "id": "w096", "form": "prope", "lemma": "prope", "morph": { "pos": "adv" } },
-        { "id": "w097", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w098", "form": "regnum", "lemma": "regnum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w099", "form": "Dei", "post": ".", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } }
+        { "id": "w087", "form": "Ita", "lemma": "ita", "morph": { "pos": "adv" }, "gloss": { "pl": "tak", "en": "so" } },
+        { "id": "w088", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w089", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "nom", "number": "pl" }, "gloss": { "pl": "wy", "en": "you" } },
+        { "id": "w090", "form": "cum", "lemma": "cum", "morph": { "pos": "conj" }, "gloss": { "pl": "gdy", "en": "when" } },
+        { "id": "w091", "form": "vidéritis", "lemma": "video", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "futperf", "mood": "ind", "voice": "act", "conj": 2 }, "gloss": { "pl": "ujrzycie", "en": "you will have seen" }, "function": { "pl": "Futurum exactum w zdaniu czasowym odnoszącym się do przyszłości: gdy te rzeczy się dokonają, następuje scitóte w trybie rozkazującym.", "en": "Future perfect in a future temporal clause: when these things have occurred, the command scitóte follows." }, "function_citations": { "pl": [{ "title": "Allen and Greenough, New Latin Grammar", "locator": "§§ 472, 547", "url": "https://dcc.dickinson.edu/grammar/latin/future-tense" }], "en": [{ "title": "Allen and Greenough, New Latin Grammar", "locator": "§§ 472, 547", "url": "https://dcc.dickinson.edu/grammar/latin/future-tense" }] } },
+        { "id": "w092", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" }, "gloss": { "pl": "to", "en": "these things" } },
+        { "id": "w093", "form": "fíeri", "post": ",", "lemma": "fio", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" }, "gloss": { "pl": "dziać się", "en": "to happen" } },
+        { "id": "w094", "form": "scitóte", "lemma": "scio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "fut", "mood": "imp", "voice": "act", "conj": 4 }, "gloss": { "pl": "wiedzcie", "en": "know" }, "function": { "pl": "Tryb rozkazujący przyszły w drugiej osobie liczby mnogiej.", "en": "A second-person plural future imperative." } },
+        { "id": "w095", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" }, "gloss": { "pl": "że", "en": "that" } },
+        { "id": "w096", "form": "prope", "lemma": "prope", "morph": { "pos": "adv" }, "gloss": { "pl": "blisko", "en": "near" } },
+        { "id": "w097", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "gloss": { "pl": "jest", "en": "is" } },
+        { "id": "w098", "form": "regnum", "lemma": "regnum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "królestwo", "en": "the Kingdom" } },
+        { "id": "w099", "form": "Dei", "post": ".", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "gloss": { "pl": "Boga", "en": "of God" } }
       ]
     },
     {
@@ -163,18 +194,22 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Zaprawdę, powiadam wam, nie przeminie to pokolenie, aż wszystko się stanie.",
+        "en": "Amen, I say to you, this generation will not pass away until all things have taken place."
+      },
       "words": [
-        { "id": "w100", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" } },
-        { "id": "w101", "form": "dico", "lemma": "dico", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w102", "form": "vobis", "post": ",", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
-        { "id": "w103", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
-        { "id": "w104", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w105", "form": "præteríbit", "lemma": "praetereo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act" } },
-        { "id": "w106", "form": "generátio", "lemma": "generatio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w107", "form": "hæc", "post": ",", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" } },
-        { "id": "w108", "form": "donec", "lemma": "donec", "morph": { "pos": "conj" } },
-        { "id": "w109", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "substantive": true },
-        { "id": "w110", "form": "fiant", "post": ".", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act" } }
+        { "id": "w100", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } },
+        { "id": "w101", "form": "dico", "lemma": "dico", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "mówię", "en": "I say" } },
+        { "id": "w102", "form": "vobis", "post": ",", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "wam", "en": "to you" } },
+        { "id": "w103", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" }, "gloss": { "pl": "że", "en": "that" } },
+        { "id": "w104", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
+        { "id": "w105", "form": "præteríbit", "lemma": "praetereo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act" }, "gloss": { "pl": "przeminie", "en": "will pass away" } },
+        { "id": "w106", "form": "generátio", "lemma": "generatio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "pokolenie", "en": "generation" } },
+        { "id": "w107", "form": "hæc", "post": ",", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" }, "gloss": { "pl": "to", "en": "this" } },
+        { "id": "w108", "form": "donec", "lemma": "donec", "morph": { "pos": "conj" }, "gloss": { "pl": "aż", "en": "until" } },
+        { "id": "w109", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "substantive": true, "gloss": { "pl": "wszystkie", "en": "all" } },
+        { "id": "w110", "form": "fiant", "post": ".", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act" }, "gloss": { "pl": "się staną", "en": "happen" } }
       ]
     },
     {
@@ -182,17 +217,38 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Niebo i ziemia przeminą, ale Moje słowa nie przeminą.",
+        "en": "Heaven and earth will pass away, but My words will not pass away."
+      },
       "words": [
-        { "id": "w111", "form": "Cælum", "lemma": "caelum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w112", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w113", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w114", "form": "transíbunt", "post": ":", "lemma": "transeo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act" } },
-        { "id": "w115", "form": "verba", "lemma": "verbum", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w116", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
-        { "id": "w117", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w115" },
-        { "id": "w118", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w119", "form": "transíbunt", "post": ".", "lemma": "transeo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act" } }
+        { "id": "w111", "form": "Cælum", "lemma": "caelum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "niebo", "en": "heaven" } },
+        { "id": "w112", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w113", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ziemia", "en": "earth" } },
+        { "id": "w114", "form": "transíbunt", "post": ":", "lemma": "transeo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act" }, "gloss": { "pl": "przeminą", "en": "will pass away" } },
+        { "id": "w115", "form": "verba", "lemma": "verbum", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "słowa", "en": "words" } },
+        { "id": "w116", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" }, "gloss": { "pl": "zaś", "en": "but" } },
+        { "id": "w117", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w115", "gloss": { "pl": "Moje", "en": "My" } },
+        { "id": "w118", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
+        { "id": "w119", "form": "transíbunt", "post": ".", "lemma": "transeo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act" }, "gloss": { "pl": "przeminą", "en": "will pass away" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "Part of the proper for the First Sunday of Advent. The biblical or liturgical citation and the source boundary are recorded in the witness files.",
+    "source": {
+      "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-i-adventus-evangelium/",
+      "apparatus": "witnesses/proprium.dominica-i-adventus-evangelium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+    "words": {
+      "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w056": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w080": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w093": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+    }
+  }
 }

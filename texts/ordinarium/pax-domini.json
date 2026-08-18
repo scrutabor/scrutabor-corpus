@@ -1,40 +1,43 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.pax-domini",
   "title": "Pax Dómini",
   "category": "ordinarium",
   "section": "missa-fidelium",
   "variant": "missae",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 10
   },
-  "notes": "The greeting given over the chalice, with the particle just broken from the Host, and its response. Kept as one document because a dialogue is not divided. VOBÍSCUM at w005 is the ablative plural of vos with the enclitic cum; Collatinus dictionaries the fused form as a lemma of its own and tags it singular, which the pipeline sets aside by a recorded ruling, so the parse rests on Whitaker's and the edition — the same treatment as at ordinarium.praefatio-dialogus w002.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence and no accidental variants, so this text has no apparatus.",
-    "witnesses": "witnesses/ordinarium.pax-domini/"
+  "about": {
+    "pl": "Trzymając cząstkę Hostii nad kielichem, kapłan czyni nią trzykrotnie znak krzyża i wypowiada pozdrowienie pokoju. Ministrant odpowiada.",
+    "en": "Holding a particle of the Host over the chalice, the priest signs the chalice three times with it and gives the greeting of peace. The server answers."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
       "text": "Cum ipsa particula signat ter super Calicem, dicens:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Trzymając cząstkę nad kielichem, kapłan czyni nią trzy razy znak krzyża.",
+        "en": "Holding the particle over the chalice, the priest makes three signs of the cross with it."
+      }
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Pokój Pański niech zawsze będzie z wami.",
+        "en": "The peace of the Lord be with you always."
+      },
       "words": [
-        { "id": "w001", "form": "Pax", "lemma": "pax", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w002", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w003", "form": "sit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
-        { "id": "w004", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
-        { "id": "w005", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+        { "id": "w001", "form": "Pax", "lemma": "pax", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Pokój", "en": "The peace" } },
+        { "id": "w002", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "of the Lord" } },
+        { "id": "w003", "form": "sit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" }, "gloss": { "pl": "niech będzie", "en": "be" }, "function": { "pl": "Tryb łączący wyrażający życzenie.", "en": "Subjunctive expressing a wish." } },
+        { "id": "w004", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "always" } },
+        { "id": "w005", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "z wami", "en": "with you" }, "function": { "pl": "Ablativus liczby mnogiej zaimka vos z przyłączonym -cum.", "en": "Ablative plural of vos with -cum attached." } }
       ]
     },
     {
@@ -42,12 +45,6 @@
       "type": "verse",
       "voice": "clara",
       "speaker": "minister",
-      "words": [
-        { "id": "w006", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w007", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008" },
-        { "id": "w008", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
-        { "id": "w009", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w008" }
-      ],
       "participation": {
         "lecta": {
           "gradus": 1,
@@ -57,7 +54,33 @@
           "gradus": 1,
           "source": "DMS 25 a"
         }
-      }
+      },
+      "translation": {
+        "pl": "I z duchem twoim.",
+        "en": "And with your spirit."
+      },
+      "words": [
+        { "id": "w006", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w007", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008", "gloss": { "pl": "z", "en": "with" } },
+        { "id": "w008", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "duchem", "en": "spirit" }, "function": { "pl": "Ablativus po „cum” (w007), należący do odpowiedzi „Et cum spíritu tuo”.", "en": "An ablative after “cum” (w007), in the response “Et cum spíritu tuo”." } },
+        { "id": "w009", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w008", "gloss": { "pl": "twoim", "en": "your" } }
+      ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The greeting given over the chalice, with the particle just broken from the Host, and its response. Kept as one document because a dialogue is not divided. VOBÍSCUM at w005 is the ablative plural of vos with the enclitic cum; Collatinus dictionaries the fused form as a lemma of its own and tags it singular, which the pipeline sets aside by a recorded ruling, so the parse rests on Whitaker's and the edition — the same treatment as at ordinarium.praefatio-dialogus w002.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence and no accidental variants, so this text has no apparatus.",
+      "witnesses": "witnesses/ordinarium.pax-domini/"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    },
+    "words": {
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+    }
+  }
 }

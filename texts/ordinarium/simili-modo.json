@@ -1,103 +1,182 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.simili-modo",
   "title": "Símili modo",
   "category": "ordinarium",
   "section": "missa-fidelium",
   "variant": "missae",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 61
   },
-  "notes": "The consecration of the chalice, with the command to repeat it. The words of consecration are set as the typical edition prints them — Hic est enim Calix Sánguinis mei — for the reason given at Qui prídie; that edition capitalises the opening word, Calix and Sánguinis, and nothing else in the formula. CENÁTUM at w004 is the reading of the typical edition and of witness do, against witness handmissal-eo's cænátum, and is ruled in the apparatus: both are real spellings. It is tagged as the adjective cenátus with both analyzers; read strictly, cenátum est is the impersonal perfect passive of ceno — after the meal had been eaten — and the note carries that sense. MYSTÉRIUM FÍDEI at w042-w043 stands in the nominative, taking its case from no governing word; the received reading holds it in apposition to CALIX, an older tradition hears it as an exclamation of its own — the question is old and open, and both words stand flagged for review. QUI at w044 is likewise flagged: Calix and Sánguinis are both masculine, so the form leaves the antecedent open (see the gloss note). FECÉRITIS at w056 is future perfect rather than perfect subjunctive; both analyzers offer the two, and the future indicative faciétis that answers it settles the choice.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence, apart from the orthographic variant adjudicated in the apparatus. Accidental variants adjudicated in the apparatus.",
-    "witnesses": "witnesses/ordinarium.simili-modo/",
-    "apparatus": "witnesses/ordinarium.simili-modo/apparatus.json"
+  "about": {
+    "pl": "Konsekracja kielicha. Jej słowa łączą sformułowania z opisów ustanowienia w Mt 26, Mk 14, Łk 22 i 1 Kor 11. Zwrot „mystérium fídei” nie pochodzi z tych opisów, a „ætérni” odpowiada Hbr 13,20. Końcowe polecenie nawiązuje do Łk 22,19 i 1 Kor 11,25–26.",
+    "en": "The consecration of the chalice. Its words combine expressions from the institution narratives in Matthew 26, Mark 14, Luke 22 and 1 Corinthians 11. “Mystérium fídei” is not drawn from those accounts, while “ætérni” corresponds to Hebrews 13:20. The concluding command draws on Luke 22:19 and 1 Corinthians 11:25–26."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Nova Vulgata, Evangelium secundum Matthaeum",
+        "locator": "26, 27–28",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-matthaeum_lt.html#26"
+      },
+      {
+        "title": "Nova Vulgata, Evangelium secundum Marcum",
+        "locator": "14, 23–24",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-marcum_lt.html#14"
+      },
+      {
+        "title": "Nova Vulgata, Evangelium secundum Lucam",
+        "locator": "22, 19–20",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-lucam_lt.html#22"
+      },
+      {
+        "title": "Nova Vulgata, Epistula I ad Corinthios",
+        "locator": "11, 23–26",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_epist-i-corinthios_lt.html#11"
+      },
+      {
+        "title": "Nova Vulgata, Epistula ad Hebraeos",
+        "locator": "13, 20",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_epist-hebraeos_lt.html#13"
+      }
+    ],
+    "en": [
+      {
+        "title": "Nova Vulgata, Evangelium secundum Matthaeum",
+        "locator": "26, 27–28",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-matthaeum_lt.html#26"
+      },
+      {
+        "title": "Nova Vulgata, Evangelium secundum Marcum",
+        "locator": "14, 23–24",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-marcum_lt.html#14"
+      },
+      {
+        "title": "Nova Vulgata, Evangelium secundum Lucam",
+        "locator": "22, 19–20",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-lucam_lt.html#22"
+      },
+      {
+        "title": "Nova Vulgata, Epistula I ad Corinthios",
+        "locator": "11, 23–26",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_epist-i-corinthios_lt.html#11"
+      },
+      {
+        "title": "Nova Vulgata, Epistula ad Hebraeos",
+        "locator": "13, 20",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_epist-hebraeos_lt.html#13"
+      }
+    ]
+  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
       "text": "Tunc, detecto Calice, dicit:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan odsłania kielich.",
+        "en": "The priest uncovers the chalice."
+      }
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Podobnie po wieczerzy",
+        "en": "In a similar way, when supper was ended,"
+      },
       "words": [
-        { "id": "w001", "form": "Símili", "lemma": "similis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w002" },
-        { "id": "w002", "form": "modo", "lemma": "modus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w003", "form": "postquam", "lemma": "postquam", "morph": { "pos": "conj" } },
-        { "id": "w004", "form": "cenátum", "lemma": "ceno", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w005" },
-        { "id": "w005", "form": "est", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } }
+        { "id": "w001", "form": "Símili", "lemma": "similis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w002", "gloss": { "pl": "podobnym", "en": "in like" }, "function": { "pl": "„Símili modo” to ablativus sposobu: „w podobny sposób”.", "en": "“Símili modo” is an ablative of manner: “in a similar way”." } },
+        { "id": "w002", "form": "modo", "lemma": "modus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "sposobem", "en": "manner" } },
+        { "id": "w003", "form": "postquam", "lemma": "postquam", "morph": { "pos": "conj" }, "gloss": { "pl": "gdy", "en": "when" } },
+        { "id": "w004", "form": "cenátum", "lemma": "ceno", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w005", "gloss": { "pl": "po wieczerzy", "en": "supper was ended" }, "function": { "pl": "Bezosobowa konstrukcja czasu przeszłego: „gdy skończono wieczerzę”.", "en": "An impersonal past construction: “when supper was ended”." } },
+        { "id": "w005", "form": "est", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "było", "en": "was" } }
       ]
     },
     {
       "id": "s03",
       "type": "rubric",
       "text": "Ambabus manibus accipit Calicem.",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan bierze kielich obiema rękami.",
+        "en": "The priest takes the chalice in both hands."
+      }
     },
     {
       "id": "s04",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "wziął ten przesławny kielich w swoje święte i czcigodne ręce,",
+        "en": "He took this precious chalice in His holy and venerable hands,"
+      },
       "words": [
-        { "id": "w006", "form": "accípiens", "lemma": "accipio", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w021" },
-        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w008", "form": "hunc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
-        { "id": "w009", "form": "præclárum", "lemma": "praeclarus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w010" },
-        { "id": "w010", "form": "Cálicem", "lemma": "calix", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015" },
-        { "id": "w012", "form": "sanctas", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w015" },
-        { "id": "w013", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
-        { "id": "w014", "form": "venerábiles", "lemma": "venerabilis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w015" },
-        { "id": "w015", "form": "manus", "lemma": "manus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 4 } },
-        { "id": "w016", "form": "suas", "post": ":", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w015" }
+        { "id": "w006", "form": "accípiens", "lemma": "accipio", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w021", "gloss": { "pl": "biorąc", "en": "taking" }, "function": { "pl": "Imiesłów czasu teraźniejszego odnoszący się do Chrystusa, podmiotu „benedíxit” (w021).", "en": "A present participle referring to Christ, the subject of “benedíxit” (w021)." } },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "also" } },
+        { "id": "w008", "form": "hunc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "ten", "en": "this" } },
+        { "id": "w009", "form": "præclárum", "lemma": "praeclarus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w010", "gloss": { "pl": "przesławny", "en": "excellent" }, "function": { "pl": "Przydawka przy „Cálicem” (w010) — echo Ps 22, 5: calix meus inébrians quam præclárus est.", "en": "The epithet with “Cálicem” (w010) — an echo of Ps 22:5: calix meus inébrians quam præclárus est." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "Psalm 22:5" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "Psalm 22:5" }] } },
+        { "id": "w010", "form": "Cálicem", "lemma": "calix", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "kielich", "en": "chalice" } },
+        { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015", "gloss": { "pl": "w", "en": "into" } },
+        { "id": "w012", "form": "sanctas", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w015", "gloss": { "pl": "święte", "en": "holy" } },
+        { "id": "w013", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w014", "form": "venerábiles", "lemma": "venerabilis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w015", "gloss": { "pl": "czcigodne", "en": "venerable" } },
+        { "id": "w015", "form": "manus", "lemma": "manus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 4 }, "gloss": { "pl": "ręce", "en": "hands" } },
+        { "id": "w016", "form": "suas", "post": ":", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w015", "gloss": { "pl": "swoje", "en": "His" } }
       ]
     },
     {
       "id": "s05",
       "type": "rubric",
       "text": "Item caput inclinat.",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do", "mr"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan znów pochyla głowę.",
+        "en": "The priest bows his head again."
+      }
     },
     {
       "id": "s06",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "ponownie dzięki Tobie składając,",
+        "en": "and once more giving You thanks,"
+      },
       "words": [
-        { "id": "w017", "form": "item", "lemma": "item", "morph": { "pos": "adv" } },
-        { "id": "w018", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
-        { "id": "w019", "form": "grátias", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
-        { "id": "w020", "form": "agens", "post": ",", "lemma": "ago", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w021" }
+        { "id": "w017", "form": "item", "lemma": "item", "morph": { "pos": "adv" }, "gloss": { "pl": "znów", "en": "again" }, "function": { "pl": "Przysłówek wskazujący na powtórzenie pochylenia głowy wykonanego przy chlebie.", "en": "An adverb marking the repetition of the bow made at the consecration of the bread." } },
+        { "id": "w018", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Ci", "en": "to Thee" } },
+        { "id": "w019", "form": "grátias", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "dzięki", "en": "thanks" } },
+        { "id": "w020", "form": "agens", "post": ",", "lemma": "ago", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w021", "gloss": { "pl": "składając", "en": "giving" } }
       ]
     },
     {
       "id": "s07",
       "type": "rubric",
       "text": "Sinistra tenens Calicem, dextera signat super eum.",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do", "mr"], "review": "pending" }
+      "narrative": {
+        "pl": "Trzymając kielich w lewej ręce, kapłan prawą czyni nad nim znak krzyża.",
+        "en": "Holding the chalice in his left hand, the priest makes the sign of the cross over it with his right."
+      }
     },
     {
       "id": "s08",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "błogosławił i podał swoim uczniom, mówiąc:",
+        "en": "He said the blessing and gave the chalice to His disciples, saying:"
+      },
       "words": [
-        { "id": "w021", "form": "benedíxit", "post": ",", "lemma": "benedico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w022", "form": "dedítque", "lemma": "do", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w023", "form": "discípulis", "lemma": "discipulus", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 2 } },
-        { "id": "w024", "form": "suis", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w023" },
-        { "id": "w025", "form": "dicens", "post": ":", "lemma": "dico", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w021" }
+        { "id": "w021", "form": "benedíxit", "post": ",", "lemma": "benedico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "pobłogosławił", "en": "He blessed" } },
+        { "id": "w022", "form": "dedítque", "lemma": "do", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "i dał", "en": "and He gave" }, "function": { "pl": "W opowiadaniu nad kielichem nie ma „fregit”, które występuje przy chlebie.", "en": "The narrative over the chalice has no “fregit”, which occurs with the bread." } },
+        { "id": "w023", "form": "discípulis", "lemma": "discipulus", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "uczniom", "en": "to the disciples" } },
+        { "id": "w024", "form": "suis", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w023", "gloss": { "pl": "swoim", "en": "His" } },
+        { "id": "w025", "form": "dicens", "post": ":", "lemma": "dico", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w021", "gloss": { "pl": "mówiąc", "en": "saying" } }
       ]
     },
     {
@@ -105,77 +184,123 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Bierzcie i pijcie z niego wszyscy:",
+        "en": "Take this, all of you, and drink from it:"
+      },
       "words": [
-        { "id": "w026", "form": "Accípite", "post": ",", "lemma": "accipio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
-        { "id": "w027", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w028", "form": "bíbite", "lemma": "bibo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
-        { "id": "w029", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w030" },
-        { "id": "w030", "form": "eo", "lemma": "is", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" } },
-        { "id": "w031", "form": "omnes", "post": ".", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true }
+        { "id": "w026", "form": "Accípite", "post": ",", "lemma": "accipio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "bierzcie", "en": "take" } },
+        { "id": "w027", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w028", "form": "bíbite", "lemma": "bibo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "pijcie", "en": "drink" } },
+        { "id": "w029", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w030", "gloss": { "pl": "z", "en": "of" } },
+        { "id": "w030", "form": "eo", "lemma": "is", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" }, "gloss": { "pl": "niego", "en": "it" }, "function": { "pl": "Zaimek odnosi się do kielicha: „ex eo”, „z niego”. Przy chlebie występuje „ex hoc”, „z tego”.", "en": "The pronoun refers to the chalice: “ex eo”, “from it”. With the bread the formula has “ex hoc”, “of this”." } },
+        { "id": "w031", "form": "omnes", "post": ".", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "wszyscy", "en": "all of you" } }
       ]
     },
     {
       "id": "s10",
       "type": "rubric",
       "text": "Profert verba consecrationis super Calicem, attente, continuate, et secrete, tenens illum parum elevatum.",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan wymawia słowa konsekracji nad kielichem uważnie, jednym ciągiem i po cichu, trzymając go nieco uniesiony.",
+        "en": "The priest speaks the words of consecration over the chalice attentively, without break and silently, holding it slightly raised."
+      }
     },
     {
       "id": "s11",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "To jest bowiem kielich Krwi mojej nowego i wiecznego przymierza: tajemnica wiary: która za was i za wielu będzie wylana na odpuszczenie grzechów.",
+        "en": "For this is the chalice of My Blood, the Blood of the new and eternal covenant: the mystery of faith: which will be poured out for you and for many for the forgiveness of sins."
+      },
       "words": [
-        { "id": "w032", "form": "Hic", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w033", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w034", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
-        { "id": "w035", "form": "Calix", "lemma": "calix", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w036", "form": "Sánguinis", "lemma": "sanguis", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w037", "form": "mei", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w036" },
-        { "id": "w038", "form": "novi", "lemma": "novus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w041" },
-        { "id": "w039", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w040", "form": "ætérni", "lemma": "aeternus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w041" },
-        { "id": "w041", "form": "testaménti", "post": ":", "lemma": "testamentum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w042", "form": "mystérium", "lemma": "mysterium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-        { "id": "w043", "form": "fídei", "post": ":", "lemma": "fides", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 5 } },
-        { "id": "w044", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-        { "id": "w045", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w046" },
-        { "id": "w046", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
-        { "id": "w047", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w048", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w049" },
-        { "id": "w049", "form": "multis", "lemma": "multus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w050", "form": "effundétur", "lemma": "effundo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 3 } },
-        { "id": "w051", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w052" },
-        { "id": "w052", "form": "remissiónem", "lemma": "remissio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w053", "form": "peccatórum", "post": ".", "lemma": "peccatum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } }
+        { "id": "w032", "form": "Hic", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "to", "en": "this" } },
+        { "id": "w033", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jest", "en": "is" } },
+        { "id": "w034", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" }, "gloss": { "pl": "bowiem", "en": "for" } },
+        { "id": "w035", "form": "Calix", "lemma": "calix", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "kielich", "en": "the chalice" } },
+        { "id": "w036", "form": "Sánguinis", "lemma": "sanguis", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "krwi", "en": "of the blood" } },
+        { "id": "w037", "form": "mei", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w036", "gloss": { "pl": "mojej", "en": "My" } },
+        { "id": "w038", "form": "novi", "lemma": "novus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w041", "gloss": { "pl": "nowego", "en": "of the new" }, "function": { "pl": "Dopełniacz zależny od „testaménti” (w041), nie od „Sánguinis” (w036).", "en": "A genitive agreeing with “testaménti” (w041), not with “Sánguinis” (w036)." } },
+        { "id": "w039", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w040", "form": "ætérni", "lemma": "aeternus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w041", "gloss": { "pl": "wiecznego", "en": "eternal" }, "function": { "pl": "Tego określenia nie ma w opisach ustanowienia. „Krew przymierza wiecznego” występuje w Hbr 13, 20.", "en": "This qualification does not occur in the institution narratives. “The blood of the eternal covenant” occurs in Hebrews 13:20." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "Hebrews 13:20" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "Hebrews 13:20" }] } },
+        { "id": "w041", "form": "testaménti", "post": ":", "lemma": "testamentum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "przymierza", "en": "covenant" }, "function": { "pl": "Dopełniacz zależny od „Sánguinis” (w036), określony przez „novi” (w038) i „ætérni” (w040).", "en": "A genitive depending on “Sánguinis” (w036) and modified by “novi” (w038) and “ætérni” (w040)." } },
+        { "id": "w042", "form": "mystérium", "lemma": "mysterium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "tajemnica", "en": "the mystery" }, "function": { "pl": "Samodzielne dopowiedzenie w mianowniku do słów o kielichu Krwi: obecność Krwi Chrystusa w sakramencie jest tajemnicą przyjmowaną wiarą.", "en": "An independent nominative apposition to the words about the chalice of the Blood: Christ's Blood is present in the sacrament as a mystery held by faith." }, "function_citations": { "pl": [{ "title": "Thomas Aquinas, Summa theologiae", "locator": "III, q. 78, a. 3, ad 5–6", "url": "https://www.corpusthomisticum.org/sth4078.html" }, { "title": "Paulus VI, Mysterium fidei", "locator": "introduction", "url": "https://www.vatican.va/content/paul-vi/la/encyclicals/documents/hf_p-vi_enc_03091965_mysterium.html" }], "en": [{ "title": "Thomas Aquinas, Summa theologiae", "locator": "III, q. 78, a. 3, ad 5–6", "url": "https://www.corpusthomisticum.org/sth4078.html" }, { "title": "Paulus VI, Mysterium fidei", "locator": "introduction", "url": "https://www.vatican.va/content/paul-vi/la/encyclicals/documents/hf_p-vi_enc_03091965_mysterium.html" }] } },
+        { "id": "w043", "form": "fídei", "post": ":", "lemma": "fides", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 5 }, "gloss": { "pl": "wiary", "en": "of faith" } },
+        { "id": "w044", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "which" }, "function": { "pl": "„Calix” (w035) i „Sánguinis” (w036) są rodzaju męskiego, więc forma zaimka nie rozstrzyga poprzednika. Polski przekład odnosi go do Krwi.", "en": "“Calix” (w035) and “Sánguinis” (w036) are both masculine, so the pronoun's form does not resolve its antecedent. English likewise leaves it open." } },
+        { "id": "w045", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w046", "gloss": { "pl": "za", "en": "for" } },
+        { "id": "w046", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "was", "en": "you" } },
+        { "id": "w047", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w048", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w049", "gloss": { "pl": "za", "en": "for" } },
+        { "id": "w049", "form": "multis", "lemma": "multus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "wielu", "en": "many" } },
+        { "id": "w050", "form": "effundétur", "lemma": "effundo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 3 }, "gloss": { "pl": "będzie wylany", "en": "shall be shed" }, "function": { "pl": "Czas przyszły, nie przeszły: w chwili Wieczerzy krew jeszcze nie została wylana.", "en": "Future, not past: at the moment of the Supper the blood had not yet been shed." } },
+        { "id": "w051", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w052", "gloss": { "pl": "na", "en": "unto" } },
+        { "id": "w052", "form": "remissiónem", "lemma": "remissio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "odpuszczenie", "en": "the remission" } },
+        { "id": "w053", "form": "peccatórum", "post": ".", "lemma": "peccatum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "grzechów", "en": "of sins" } }
       ]
     },
     {
       "id": "s12",
       "type": "rubric",
       "text": "Quibus verbis prolatis, deponit Calicem super Corporale, et dicens secrete:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Po tych słowach kapłan stawia kielich na korporale i mówi po cichu:",
+        "en": "The words spoken, the priest sets the chalice on the corporal and says silently:"
+      }
     },
     {
       "id": "s13",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Ilekroć to czynić będziecie, na moją pamiątkę czynić będziecie.",
+        "en": "As often as you shall do these things, you shall do them in memory of Me."
+      },
       "words": [
-        { "id": "w054", "form": "Hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
-        { "id": "w055", "form": "quotiescúmque", "lemma": "quotiescumque", "morph": { "pos": "adv" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w056", "form": "fecéritis", "post": ",", "lemma": "facio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "futperf", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w057", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w059" },
-        { "id": "w058", "form": "mei", "lemma": "ego", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
-        { "id": "w059", "form": "memóriam", "lemma": "memoria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w060", "form": "faciétis", "post": ".", "lemma": "facio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 } }
+        { "id": "w054", "form": "Hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" }, "gloss": { "pl": "to", "en": "these things" } },
+        { "id": "w055", "form": "quotiescúmque", "lemma": "quotiescumque", "morph": { "pos": "adv" }, "gloss": { "pl": "ilekroć", "en": "as often as" } },
+        { "id": "w056", "form": "fecéritis", "post": ",", "lemma": "facio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "futperf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "uczynicie", "en": "you shall have done" }, "function": { "pl": "Czas przyszły dokonany: czynność zakończona przed tą, o której mówi „faciétis” (w060). Ta sama forma może być trybem łączącym czasu przeszłego, rozstrzyga następujący czas przyszły.", "en": "A future perfect: an action complete before the one “faciétis” (w060) names. The same form can be a perfect subjunctive, and the future that follows decides it." } },
+        { "id": "w057", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w059", "gloss": { "pl": "na", "en": "in" } },
+        { "id": "w058", "form": "mei", "lemma": "ego", "morph": { "pos": "pron", "case": "gen", "number": "sg" }, "gloss": { "pl": "mnie", "en": "of Me" }, "function": { "pl": "Dopełniacz zaimka osobowego: „na pamiątkę mnie”. Polszczyzna oddaje go zaimkiem dzierżawczym „moją”.", "en": "Genitive of the personal pronoun: “in memory of Me”." } },
+        { "id": "w059", "form": "memóriam", "lemma": "memoria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "pamiątkę", "en": "memory" } },
+        { "id": "w060", "form": "faciétis", "post": ".", "lemma": "facio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "czynić będziecie", "en": "you shall do" } }
       ]
     },
     {
       "id": "s14",
       "type": "rubric",
       "text": "Genuflexus adorat: surgit, ostendit populo, deponit, cooperit, et genuflexus iterum adorat.",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan przyklęka i adoruje, wstaje, ukazuje kielich ludowi, a ministrant trzykrotnie dzwoni, stawia go, nakrywa i znów przyklęka.",
+        "en": "The priest genuflects and adores, rises, shows the chalice to the people while the server rings the bell three times, sets it down, covers it and genuflects again."
+      }
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The consecration of the chalice, with the command to repeat it. The words of consecration are set as the typical edition prints them — Hic est enim Calix Sánguinis mei — for the reason given at Qui prídie; that edition capitalises the opening word, Calix and Sánguinis, and nothing else in the formula. CENÁTUM at w004 is the reading of the typical edition and of witness do, against witness handmissal-eo's cænátum, and is ruled in the apparatus: both are real spellings. It is tagged as the adjective cenátus with both analyzers; read strictly, cenátum est is the impersonal perfect passive of ceno — after the meal had been eaten — and the note carries that sense. MYSTÉRIUM FÍDEI at w042-w043 stands in the nominative, taking its case from no governing word; the received reading holds it in apposition to CALIX, an older tradition hears it as an exclamation of its own — the question is old and open, and both words stand flagged for review. QUI at w044 is likewise flagged: Calix and Sánguinis are both masculine, so the form leaves the antecedent open (see the gloss note). FECÉRITIS at w056 is future perfect rather than perfect subjunctive; both analyzers offer the two, and the future indicative faciétis that answers it settles the choice.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence, apart from the orthographic variant adjudicated in the apparatus. Accidental variants adjudicated in the apparatus.",
+      "witnesses": "witnesses/ordinarium.simili-modo/",
+      "apparatus": "witnesses/ordinarium.simili-modo/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s03": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s05": { "analysis": { "confidence": "high", "sources": ["editorial", "do", "mr"], "review": "pending" } },
+      "s07": { "analysis": { "confidence": "high", "sources": ["editorial", "do", "mr"], "review": "pending" } },
+      "s10": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s12": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s14": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    },
+    "words": {
+      "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w044": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w055": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+    }
+  }
 }

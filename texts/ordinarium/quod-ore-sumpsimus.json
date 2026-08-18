@@ -1,57 +1,109 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.quod-ore-sumpsimus",
   "title": "Quod ore súmpsimus",
   "category": "ordinarium",
   "section": "missa-fidelium",
   "variant": "missae",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 16
   },
-  "notes": "The first of the two prayers at the ablutions, said after the Communion while the minister pours wine into the chalice. QUOD at w001 has no expressed antecedent: what we have taken with the mouth. ORE at w002 is the ablative of os, oris, the mouth, and not of os, ossis, a bone; only the first of the two homographs occurs in this corpus, so the lexicon keeps the plain key for it. The prayer is in the first person plural throughout, where the three prayers before Communion were singular.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence and no accidental variants, so this text has no apparatus.",
-    "witnesses": "witnesses/ordinarium.quod-ore-sumpsimus/"
+  "about": {
+    "pl": "Pierwsza z dwóch modlitw przy puryfikacji, odmawiana, gdy ministrant wlewa wino do kielicha. Prosi, aby to, co spożyliśmy ustami, przyjąć czystym sercem i aby dar doczesny stał się dla nas lekarstwem na wieczność.",
+    "en": "The first of the two prayers at the ablutions, said while the minister pours wine into the chalice. It asks that what has passed the lips be taken up with a pure heart, and that a gift given in time become an everlasting remedy."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ritus servandus in celebratione Missae, X, 5",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ],
+    "en": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ritus servandus in celebratione Missae, X, 5",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ]
+  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
       "text": "Postea dicit:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Następnie kapłan mówi:",
+        "en": "Afterwards the priest says:"
+      }
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Panie, daj nam czystym sercem przyjąć to, co spożyliśmy ustami, i dar otrzymany w doczesności niech się stanie dla nas lekarstwem na życie wieczne.",
+        "en": "What has passed our lips as food, O Lord, may we possess in purity of heart, that what has been given to us in time may be our healing for eternity."
+      },
       "words": [
-        { "id": "w001", "form": "Quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
-        { "id": "w002", "form": "ore", "lemma": "os", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w003", "form": "súmpsimus", "post": ",", "lemma": "sumo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w005", "form": "pura", "lemma": "purus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w006" },
-        { "id": "w006", "form": "mente", "lemma": "mens", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w007", "form": "capiámus", "post": ":", "lemma": "capio", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
-        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w009", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010" },
-        { "id": "w010", "form": "múnere", "lemma": "munus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w011", "form": "temporáli", "lemma": "temporalis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "head": "w010" },
-        { "id": "w012", "form": "fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
-        { "id": "w013", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
-        { "id": "w014", "form": "remédium", "lemma": "remedium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w015", "form": "sempitérnum", "post": ".", "lemma": "sempiternus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w014" }
+        { "id": "w001", "form": "Quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" }, "gloss": { "pl": "Co", "en": "What" }, "function": { "pl": "Zaimek względny bez poprzednika: „to, co”. Łacina może go przemilczeć tam, gdzie polszczyzna potrzebuje słowa.", "en": "The relative with nothing to refer back to: “that which”. Latin can leave the antecedent unsaid where English needs a word for it." } },
+        { "id": "w002", "form": "ore", "lemma": "os", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "ustami", "en": "with the mouth" }, "function": { "pl": "Ablativus narzędzia: „ustami”. „Os” oznacza tu usta, nie kość, której nazwa pisze się tak samo.", "en": "Ablative of means: “with the mouth”. “Os” means the mouth here, not the word for bone, which has the same spelling." } },
+        { "id": "w003", "form": "súmpsimus", "post": ",", "lemma": "sumo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "spożyliśmy", "en": "we have taken" }, "function": { "pl": "Perfectum. Spożycie ustami już się dokonało, a przyjęcie czystym umysłem jest dopiero wypraszane.", "en": "Perfect. Reception by mouth has taken place, while reception with a pure mind is still being asked for." } },
+        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w005", "form": "pura", "lemma": "purus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w006", "gloss": { "pl": "czystym", "en": "pure" }, "function": { "pl": "Zgadza się z „mente” (w006).", "en": "Agrees with “mente” (w006)." } },
+        { "id": "w006", "form": "mente", "lemma": "mens", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "umysłem", "en": "with a mind" }, "function": { "pl": "Wyrażenie w ablativie określające sposób: „czystym umysłem”. Przekład oddaje tę wewnętrzną dyspozycję jako „czyste serce”.", "en": "An ablative phrase of manner: “with a pure mind”. The translation renders this interior disposition as “purity of heart”." } },
+        { "id": "w007", "form": "capiámus", "post": ":", "lemma": "capio", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "obyśmy przyjęli", "en": "may we receive" }, "function": { "pl": "Coniunctivus praesentis. Modlitwa prosi, aby to, co zostało spożyte ustami, zostało przyjęte także czystym umysłem.", "en": "Present subjunctive. The prayer asks that what has been received by mouth also be received with a pure mind." } },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w009", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010", "gloss": { "pl": "z", "en": "from" } },
+        { "id": "w010", "form": "múnere", "lemma": "munus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "daru", "en": "a gift" } },
+        { "id": "w011", "form": "temporáli", "lemma": "temporalis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "head": "w010", "gloss": { "pl": "doczesnego", "en": "temporal" }, "function": { "pl": "Zgadza się z „múnere” (w010) i przeciwstawia się „sempitérnum” (w015): „doczesny” i „wieczny”.", "en": "Agrees with “múnere” (w010) and contrasts with “sempitérnum” (w015): “temporal” and “everlasting”." } },
+        { "id": "w012", "form": "fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" }, "gloss": { "pl": "niech się stanie", "en": "may there be" } },
+        { "id": "w013", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "for us" } },
+        { "id": "w014", "form": "remédium", "lemma": "remedium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "lekarstwem", "en": "a remedy" }, "function": { "pl": "Wraz z „sempitérnum” (w015) jest podmiotem „fiat” (w012): „niech stanie się lekarstwem wiecznym”.", "en": "With “sempitérnum” (w015), it is the subject of “fiat” (w012): “may there be an everlasting remedy”." } },
+        { "id": "w015", "form": "sempitérnum", "post": ".", "lemma": "sempiternus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w014", "gloss": { "pl": "wiecznym", "en": "everlasting" } }
       ]
     },
     {
       "id": "s03",
       "type": "rubric",
       "text": "Interim porrigit Calicem ministro, qui infundit in eo parum vini, quo se purificat.",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Tymczasem kapłan podaje kielich ministrantowi, który wlewa doń trochę wina, a kapłan tym się oczyszcza.",
+        "en": "Meanwhile the priest holds out the chalice to the server, who pours a little wine into it, and with this the priest purifies himself."
+      },
+      "narrative_citations": {
+        "pl": [
+          {
+            "title": "Missale Romanum (1962)",
+            "locator": "Ritus servandus in celebratione Missae, X, 6",
+            "url": "https://archive.org/details/missale_romanum-1962"
+          }
+        ],
+        "en": [
+          {
+            "title": "Missale Romanum (1962)",
+            "locator": "Ritus servandus in celebratione Missae, X, 6",
+            "url": "https://archive.org/details/missale_romanum-1962"
+          }
+        ]
+      }
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The first of the two prayers at the ablutions, said after the Communion while the minister pours wine into the chalice. QUOD at w001 has no expressed antecedent: what we have taken with the mouth. ORE at w002 is the ablative of os, oris, the mouth, and not of os, ossis, a bone; only the first of the two homographs occurs in this corpus, so the lexicon keeps the plain key for it. The prayer is in the first person plural throughout, where the three prayers before Communion were singular.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence and no accidental variants, so this text has no apparatus.",
+      "witnesses": "witnesses/ordinarium.quod-ore-sumpsimus/"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s03": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    }
+  }
 }

@@ -1,37 +1,75 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.pater-noster",
   "title": "Pater noster (Missæ)",
   "category": "ordinarium",
   "section": "missa-fidelium",
   "variant": "missae",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 61
   },
-  "notes": "The Lord's Prayer as the Mass sets it: the preface Orémus. Præcéptis salutáribus móniti, the prayer said by the priest alone as far as tentatiónem, the server's Sed líbera nos a malo, and the priest's Amen — the Ordo's page rubric says secrete, the Ritus servandus (X, 1) submissa voce; the edition follows the page rubric and records the disagreement for the expert. The words of the prayer are RE-ENCODED here rather than referenced. The corpus already carries orationes.pater-noster, the same prayer in its devotional form, and the letters are identical; but that document is one continuous text said by one voice, while this one is a dialogue — the last petition belongs to another speaker — wrapped in a preface and divided by three rubrics. Those are two recensions of one prayer, which is what the variant field is for, and the corpus already keeps recension pairs apart with their own word ids (ordinarium.confiteor and ordinarium.confiteor-sacerdotis, ordinarium.misereatur and ordinarium.misereatur-tui — those pairs differ in wording; this pair alone is letter-identical). The schema has no field by which one text could borrow another's words, and a reference would leave a hole in the middle of a prayer the reader is praying. MÓNITI at w004 and FORMÁTI at w008 are participles, not adjectives: neither analyzer heads an adjective monitus or formatus, only the verbs and nouns of their own (monitus, -us — a reminding) that are not the adjective claimed. AUDÉMUS at w009 is present indicative; audeo is semi-deponent, so only its perfect system is deponent in form. NE at w050 is the prohibitive adverb, as the corpus rules it elsewhere.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
-    "witnesses": "witnesses/ordinarium.pater-noster/",
-    "apparatus": "witnesses/ordinarium.pater-noster/apparatus.json"
+  "about": {
+    "pl": "Rubryki nazywają zdanie poprzedzające Pater noster prefacją Modlitwy Pańskiej. Po słowach et ne nos indúcas in tentatiónem odpowiedź sed líbera nos a malo przypisują ministrantowi. We Mszy czytanej wierni mogą odmówić całe Ojcze nasz razem z kapłanem, po łacinie, i dodać z nim Amen.",
+    "en": "The rubrics call the sentence before Pater noster the preface of the Lord's Prayer. After et ne nos indúcas in tentatiónem, they assign the response sed líbera nos a malo to the server. At low Mass the faithful may say the whole Our Father with the priest, in Latin, and add the Amen with him."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Rubricae generales, IX, n. 511 i",
+        "url": "https://archive.org/details/missale_romanum-1962/page/n32/mode/1up"
+      },
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ritus servandus in celebratione Missae, X, 1",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      },
+      {
+        "title": "Sacra Rituum Congregatio, De musica sacra et sacra liturgia",
+        "locator": "n. 32",
+        "url": "https://www.vatican.va/archive/aas/documents/AAS-50-1958-ocr.pdf"
+      }
+    ],
+    "en": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Rubricae generales, IX, n. 511 i",
+        "url": "https://archive.org/details/missale_romanum-1962/page/n32/mode/1up"
+      },
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ritus servandus in celebratione Missae, X, 1",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      },
+      {
+        "title": "Sacra Rituum Congregatio, De musica sacra et sacra liturgia",
+        "locator": "n. 32",
+        "url": "https://www.vatican.va/archive/aas/documents/AAS-50-1958-ocr.pdf"
+      }
+    ]
+  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
       "text": "Iungit manus.",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan składa ręce.",
+        "en": "The priest joins his hands."
+      }
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Módlmy się.",
+        "en": "Let us pray."
+      },
       "words": [
-        { "id": "w001", "form": "Orémus", "post": ".", "lemma": "oro", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 } }
+        { "id": "w001", "form": "Orémus", "post": ".", "lemma": "oro", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 }, "gloss": { "pl": "módlmy się", "en": "let us pray" }, "function": { "pl": "Tryb łączący zachęcający w pierwszej osobie liczby mnogiej.", "en": "First-person plural hortatory subjunctive." } }
       ]
     },
     {
@@ -39,171 +77,215 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Pouczeni przez Zbawiciela i posłuszni Jego słowom, ośmielamy się mówić:",
+        "en": "At the Savior's command and formed by divine teaching, we dare to say:"
+      },
       "words": [
-        { "id": "w002", "form": "Præcéptis", "lemma": "praeceptum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w003", "form": "salutáribus", "lemma": "salutaris", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w002" },
-        { "id": "w004", "form": "móniti", "post": ",", "lemma": "moneo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 2 }, "head": "w009" },
-        { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w006", "form": "divína", "lemma": "divinus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w007" },
-        { "id": "w007", "form": "institutióne", "lemma": "institutio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w008", "form": "formáti", "post": ",", "lemma": "formo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w009" },
-        { "id": "w009", "form": "audémus", "lemma": "audeo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
-        { "id": "w010", "form": "dícere", "post": ":", "lemma": "dico", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 } }
+        { "id": "w002", "form": "Præcéptis", "lemma": "praeceptum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "przykazaniami", "en": "by precepts" }, "function": { "pl": "Ablativus narzędzia przy móniti.", "en": "Ablative of means with móniti." } },
+        { "id": "w003", "form": "salutáribus", "lemma": "salutaris", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w002", "gloss": { "pl": "zbawiennymi", "en": "saving" }, "function": { "pl": "Zgadza się z „Præcéptis” (w002): „zbawiennymi przykazaniami”.", "en": "Agrees with “Præcéptis” (w002): “salutary precepts”." } },
+        { "id": "w004", "form": "móniti", "post": ",", "lemma": "moneo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 2 }, "head": "w009", "gloss": { "pl": "pouczeni", "en": "admonished" }, "function": { "pl": "Imiesłów zgadzający się z niewyrażonym zaimkiem nos, podmiotem audémus.", "en": "A participle agreeing with the unexpressed nos, the subject of audémus." } },
+        { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w006", "form": "divína", "lemma": "divinus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w007", "gloss": { "pl": "Bożym", "en": "divine" }, "function": { "pl": "Zgadza się z „institutióne” (w007).", "en": "Agrees with “institutióne” (w007)." } },
+        { "id": "w007", "form": "institutióne", "lemma": "institutio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "ustanowieniem", "en": "by the institution" }, "function": { "pl": "Ablativus narzędzia przy formáti. Institutio oznacza tu pouczenie: ukształtowani przez Bożą naukę.", "en": "Ablative of means with formáti. Here institutio means instruction: formed by divine teaching." }, "function_citations": { "pl": [{ "title": "Lewis and Short, A Latin Dictionary", "locator": "s.v. institutio, C", "url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0059" }], "en": [{ "title": "Lewis and Short, A Latin Dictionary", "locator": "s.v. institutio, C", "url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0059" }] } },
+        { "id": "w008", "form": "formáti", "post": ",", "lemma": "formo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w009", "gloss": { "pl": "ukształtowani", "en": "formed" }, "function": { "pl": "Imiesłów zgadzający się z niewyrażonym zaimkiem nos, podmiotem audémus.", "en": "A participle agreeing with the unexpressed nos, the subject of audémus." } },
+        { "id": "w009", "form": "audémus", "lemma": "audeo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 }, "gloss": { "pl": "ośmielamy się", "en": "we dare" }, "function": { "pl": "„Audémus dícere” wyraża synowską śmiałość: pouczeni przez Chrystusa, ośmielamy się powiedzieć „Ojcze nasz”.", "en": "“Audémus dícere” expresses filial boldness: instructed by Christ, we dare to say “Our Father.”" }, "function_citations": { "pl": [{ "title": "Catechismus Catholicae Ecclesiae", "locator": "nn. 2777-2778", "url": "https://www.vatican.va/archive/catechism_lt/index_lt.htm" }], "en": [{ "title": "Catechismus Catholicae Ecclesiae", "locator": "nn. 2777-2778", "url": "https://www.vatican.va/archive/catechism_lt/index_lt.htm" }] } },
+        { "id": "w010", "form": "dícere", "post": ":", "lemma": "dico", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 }, "gloss": { "pl": "mówić", "en": "to say" }, "function": { "pl": "Bezokolicznik dopełniający audémus.", "en": "Complementary infinitive with audémus." } }
       ]
     },
     {
       "id": "s04",
       "type": "rubric",
       "text": "Extendit manus.",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan rozkłada ręce i tak je trzyma przez całą modlitwę.",
+        "en": "The priest spreads his hands, and keeps them so through the prayer."
+      },
+      "narrative_citations": {
+        "pl": [
+          {
+            "title": "Missale Romanum (1962)",
+            "locator": "Ritus servandus in celebratione Missae, X, 1",
+            "url": "https://archive.org/details/missale_romanum-1962"
+          }
+        ],
+        "en": [
+          {
+            "title": "Missale Romanum (1962)",
+            "locator": "Ritus servandus in celebratione Missae, X, 1",
+            "url": "https://archive.org/details/missale_romanum-1962"
+          }
+        ]
+      }
     },
     {
       "id": "s05",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "words": [
-        { "id": "w011", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w012", "form": "noster", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w011" },
-        { "id": "w013", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w014", "form": "es", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w016" },
-        { "id": "w016", "form": "cælis", "post": ".", "lemma": "caelum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } }
-      ],
       "participation": {
         "lecta": {
           "source": "DMS 32"
         }
-      }
+      },
+      "translation": {
+        "pl": "Ojcze nasz, któryś jest w niebie,",
+        "en": "Our Father, who art in heaven,"
+      },
+      "words": [
+        { "id": "w011", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcze", "en": "Father" }, "function": { "pl": "Wołacz liczby pojedynczej w bezpośrednim zwrocie do Boga.", "en": "Vocative singular in direct address to God." } },
+        { "id": "w012", "form": "noster", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w011", "gloss": { "pl": "nasz", "en": "our" }, "function": { "pl": "Wołacz rodzaju męskiego liczby pojedynczej, zgadzający się z Pater.", "en": "Vocative masculine singular agreeing with Pater." } },
+        { "id": "w013", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" }, "function": { "pl": "Podmiot przy es w mianowniku.", "en": "Nominative subject of es." } },
+        { "id": "w014", "form": "es", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jesteś", "en": "art" }, "function": { "pl": "Po wołaczu zdanie względne zachowuje 2. osobę: „który jesteś”, nie „który jest”.", "en": "After the vocative the relative clause keeps the 2nd person: “who art”, not “who is”." } },
+        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w016", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w016", "form": "cælis", "post": ".", "lemma": "caelum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "niebiosach", "en": "the heavens" }, "function": { "pl": "Ablativus liczby mnogiej po in. Tradycyjny przekład oddaje go liczbą pojedynczą.", "en": "Ablative plural after in. The received English renders it in the singular." } }
+      ]
     },
     {
       "id": "s06",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "words": [
-        { "id": "w017", "form": "Sanctificétur", "lemma": "sanctifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 1 } },
-        { "id": "w018", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w019", "form": "tuum", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w018" }
-      ],
       "participation": {
         "lecta": {
           "source": "DMS 32"
         }
-      }
+      },
+      "translation": {
+        "pl": "święć się imię Twoje.",
+        "en": "hallowed be Thy name."
+      },
+      "words": [
+        { "id": "w017", "form": "Sanctificétur", "lemma": "sanctifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 1 }, "gloss": { "pl": "niech się święci", "en": "hallowed be" }, "function": { "pl": "Tryb łączący czasu teraźniejszego w trzeciej osobie strony biernej, wyrażający prośbę.", "en": "Third-person present passive subjunctive expressing a petition." } },
+        { "id": "w018", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "imię", "en": "name" }, "function": { "pl": "Podmiot przy sanctificétur w mianowniku.", "en": "Nominative subject of sanctificétur." } },
+        { "id": "w019", "form": "tuum", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w018", "gloss": { "pl": "Twoje", "en": "Thy" }, "function": { "pl": "Mianownik rodzaju nijakiego liczby pojedynczej, zgadzający się z nomen.", "en": "Nominative neuter singular agreeing with nomen." } }
+      ]
     },
     {
       "id": "s07",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "words": [
-        { "id": "w020", "form": "Advéniat", "lemma": "advenio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 } },
-        { "id": "w021", "form": "regnum", "lemma": "regnum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w022", "form": "tuum", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w021" }
-      ],
       "participation": {
         "lecta": {
           "source": "DMS 32"
         }
-      }
+      },
+      "translation": {
+        "pl": "Przyjdź królestwo Twoje.",
+        "en": "Thy kingdom come."
+      },
+      "words": [
+        { "id": "w020", "form": "Advéniat", "lemma": "advenio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 }, "gloss": { "pl": "niech przyjdzie", "en": "may come" }, "function": { "pl": "Tryb łączący czasu teraźniejszego w trzeciej osobie strony czynnej, wyrażający prośbę.", "en": "Third-person present active subjunctive expressing a petition." } },
+        { "id": "w021", "form": "regnum", "lemma": "regnum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "królestwo", "en": "kingdom" }, "function": { "pl": "Podmiot przy advéniat w mianowniku.", "en": "Nominative subject of advéniat." } },
+        { "id": "w022", "form": "tuum", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w021", "gloss": { "pl": "Twoje", "en": "Thy" }, "function": { "pl": "Mianownik rodzaju nijakiego liczby pojedynczej, zgadzający się z regnum.", "en": "Nominative neuter singular agreeing with regnum." } }
+      ]
     },
     {
       "id": "s08",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "words": [
-        { "id": "w023", "form": "Fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
-        { "id": "w024", "form": "volúntas", "lemma": "voluntas", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w025", "form": "tua", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w024" },
-        { "id": "w026", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
-        { "id": "w027", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w028" },
-        { "id": "w028", "form": "cælo", "lemma": "caelum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w029", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w030", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w031" },
-        { "id": "w031", "form": "terra", "post": ".", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } }
-      ],
       "participation": {
         "lecta": {
           "source": "DMS 32"
         }
-      }
+      },
+      "translation": {
+        "pl": "Bądź wola Twoja, jako w niebie, tak i na ziemi.",
+        "en": "Thy will be done on earth as it is in heaven."
+      },
+      "words": [
+        { "id": "w023", "form": "Fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" }, "gloss": { "pl": "niech się stanie", "en": "be done" }, "function": { "pl": "Tryb łączący czasu teraźniejszego od fio w trzeciej osobie, wyrażający prośbę.", "en": "Third-person present subjunctive of fio expressing a petition." } },
+        { "id": "w024", "form": "volúntas", "lemma": "voluntas", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "wola", "en": "will" }, "function": { "pl": "Podmiot przy fiat w mianowniku.", "en": "Nominative subject of fiat." } },
+        { "id": "w025", "form": "tua", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w024", "gloss": { "pl": "Twoja", "en": "Thy" }, "function": { "pl": "Mianownik rodzaju żeńskiego liczby pojedynczej, zgadzający się z volúntas.", "en": "Nominative feminine singular agreeing with volúntas." } },
+        { "id": "w026", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" }, "gloss": { "pl": "jako", "en": "as" } },
+        { "id": "w027", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w028", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w028", "form": "cælo", "lemma": "caelum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "niebie", "en": "heaven" }, "function": { "pl": "Ablativus liczby pojedynczej po in.", "en": "Ablative singular after in." } },
+        { "id": "w029", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w030", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w031", "gloss": { "pl": "na", "en": "on" } },
+        { "id": "w031", "form": "terra", "post": ".", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ziemi", "en": "earth" } }
+      ]
     },
     {
       "id": "s09",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "words": [
-        { "id": "w032", "form": "Panem", "lemma": "panis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w033", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w032" },
-        { "id": "w034", "form": "quotidiánum", "lemma": "quotidianus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w032" },
-        { "id": "w035", "form": "da", "lemma": "do", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
-        { "id": "w036", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
-        { "id": "w037", "form": "hódie", "post": ".", "lemma": "hodie", "morph": { "pos": "adv" } }
-      ],
       "participation": {
         "lecta": {
           "source": "DMS 32"
         }
-      }
+      },
+      "translation": {
+        "pl": "Chleba naszego powszedniego daj nam dzisiaj.",
+        "en": "Give us this day our daily bread."
+      },
+      "words": [
+        { "id": "w032", "form": "Panem", "lemma": "panis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "chleba", "en": "bread" }, "function": { "pl": "Dopełnienie da w bierniku. Polski przekład używa dopełniacza.", "en": "Accusative object of da." } },
+        { "id": "w033", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w032", "gloss": { "pl": "naszego", "en": "our" }, "function": { "pl": "Biernik rodzaju męskiego liczby pojedynczej, zgadzający się z panem.", "en": "Accusative masculine singular agreeing with panem." } },
+        { "id": "w034", "form": "quotidiánum", "lemma": "quotidianus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w032", "gloss": { "pl": "powszedniego", "en": "daily" }, "function": { "pl": "Biernik rodzaju męskiego liczby pojedynczej, zgadzający się z panem.", "en": "Accusative masculine singular agreeing with panem." } },
+        { "id": "w035", "form": "da", "lemma": "do", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "daj", "en": "give" }, "function": { "pl": "Tryb rozkazujący czasu teraźniejszego w drugiej osobie liczby pojedynczej.", "en": "Second-person singular present imperative." } },
+        { "id": "w036", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "to us" }, "function": { "pl": "Dopełnienie dalsze da w celowniku.", "en": "Dative indirect object of da." } },
+        { "id": "w037", "form": "hódie", "post": ".", "lemma": "hodie", "morph": { "pos": "adv" }, "gloss": { "pl": "dzisiaj", "en": "today" } }
+      ]
     },
     {
       "id": "s10",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "words": [
-        { "id": "w038", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w039", "form": "dimítte", "lemma": "dimitto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
-        { "id": "w040", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
-        { "id": "w041", "form": "débita", "lemma": "debitum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w042", "form": "nostra", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w041" },
-        { "id": "w043", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
-        { "id": "w044", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w045", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
-        { "id": "w046", "form": "dimíttimus", "lemma": "dimitto", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w047", "form": "debitóribus", "lemma": "debitor", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 3 } },
-        { "id": "w048", "form": "nostris", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w047" }
-      ],
       "participation": {
         "lecta": {
           "source": "DMS 32"
         }
-      }
+      },
+      "translation": {
+        "pl": "I odpuść nam nasze winy, jako i my odpuszczamy naszym winowajcom.",
+        "en": "And forgive us our trespasses, as we forgive those who trespass against us."
+      },
+      "words": [
+        { "id": "w038", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w039", "form": "dimítte", "lemma": "dimitto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "odpuść", "en": "forgive" } },
+        { "id": "w040", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "us" }, "function": { "pl": "Celownik osoby, której się odpuszcza, przy dimítte.", "en": "Dative of the person forgiven with dimítte." } },
+        { "id": "w041", "form": "débita", "lemma": "debitum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "winy", "en": "debts" }, "function": { "pl": "Biernik liczby mnogiej. Dosłownie długi, tradycyjnie winy.", "en": "Accusative plural. Literally debts. The received English has trespasses." } },
+        { "id": "w042", "form": "nostra", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w041", "gloss": { "pl": "nasze", "en": "our" }, "function": { "pl": "Biernik rodzaju nijakiego liczby mnogiej, zgadzający się z débita.", "en": "Accusative neuter plural agreeing with débita." } },
+        { "id": "w043", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" }, "gloss": { "pl": "jako", "en": "as" }, "function": { "pl": "Wprowadza porównanie z naszym przebaczaniem.", "en": "Introduces the comparison with our forgiving." } },
+        { "id": "w044", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "also" }, "function": { "pl": "Et ma tutaj przysłówkowe znaczenie także.", "en": "Et has the adverbial sense also here." } },
+        { "id": "w045", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "nom", "number": "pl" }, "gloss": { "pl": "my", "en": "we" }, "function": { "pl": "Podmiot w mianowniku wyrażony dla podkreślenia.", "en": "Nominative subject expressed for emphasis." } },
+        { "id": "w046", "form": "dimíttimus", "lemma": "dimitto", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "odpuszczamy", "en": "forgive" }, "function": { "pl": "Czas teraźniejszy trybu oznajmującego, odmiennie od próśb w trybie łączącym.", "en": "Present indicative, in contrast to the petitionary subjunctives." } },
+        { "id": "w047", "form": "debitóribus", "lemma": "debitor", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "winowajcom", "en": "debtors" }, "function": { "pl": "Dopełnienie dalsze dimíttimus w celowniku liczby mnogiej. Dosłownie dłużnikom.", "en": "Dative plural indirect object of dimíttimus. Literally debtors." } },
+        { "id": "w048", "form": "nostris", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w047", "gloss": { "pl": "naszym", "en": "our" }, "function": { "pl": "Celownik rodzaju męskiego liczby mnogiej, zgadzający się z debitóribus.", "en": "Dative masculine plural agreeing with debitóribus." } }
+      ]
     },
     {
       "id": "s11",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "words": [
-        { "id": "w049", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w050", "form": "ne", "lemma": "ne", "morph": { "pos": "adv" } },
-        { "id": "w051", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
-        { "id": "w052", "form": "indúcas", "lemma": "induco", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
-        { "id": "w053", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w054" },
-        { "id": "w054", "form": "tentatiónem", "post": ":", "lemma": "tentatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } }
-      ],
       "participation": {
         "lecta": {
           "source": "DMS 32"
         }
-      }
+      },
+      "translation": {
+        "pl": "I nie wódź nas na pokuszenie,",
+        "en": "And lead us not into temptation,"
+      },
+      "words": [
+        { "id": "w049", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w050", "form": "ne", "lemma": "ne", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" }, "function": { "pl": "Przeczy samodzielnemu trybowi łączącemu indúcas, tworząc zakaz.", "en": "Negates the independent subjunctive indúcas to form a prohibition." } },
+        { "id": "w051", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" }, "function": { "pl": "Dopełnienie indúcas w bierniku.", "en": "Accusative object of indúcas." } },
+        { "id": "w052", "form": "indúcas", "lemma": "induco", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "wódź", "en": "lead" }, "function": { "pl": "Tryb łączący czasu teraźniejszego w drugiej osobie w zakazie z ne.", "en": "Second-person present subjunctive in a prohibition with ne." } },
+        { "id": "w053", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w054", "gloss": { "pl": "na", "en": "into" }, "function": { "pl": "Łączy się z biernikiem, wyrażając kierunek.", "en": "Governs the accusative to express direction into." } },
+        { "id": "w054", "form": "tentatiónem", "post": ":", "lemma": "tentatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "pokuszenie", "en": "temptation" }, "function": { "pl": "Biernik po „in” (w053), zależny od „indúcas” (w052).", "en": "Accusative after “in” (w053), dependent on “indúcas” (w052)." } }
+      ]
     },
     {
       "id": "s12",
       "type": "verse",
       "voice": "clara",
       "speaker": "minister",
-      "words": [
-        { "id": "w055", "form": "Sed", "lemma": "sed", "morph": { "pos": "conj" } },
-        { "id": "w056", "form": "líbera", "lemma": "libero", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
-        { "id": "w057", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
-        { "id": "w058", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w059" },
-        { "id": "w059", "form": "malo", "post": ".", "lemma": "malum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } }
-      ],
       "participation": {
         "lecta": {
           "gradus": 1,
@@ -213,27 +295,64 @@
           "gradus": 1,
           "source": "DMS 25 a"
         }
-      }
+      },
+      "translation": {
+        "pl": "ale nas zbaw ode złego.",
+        "en": "but deliver us from evil."
+      },
+      "words": [
+        { "id": "w055", "form": "Sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "ale", "en": "but" }, "function": { "pl": "Tutaj zaczyna się odpowiedź ministranta.", "en": "The server's response begins here." } },
+        { "id": "w056", "form": "líbera", "lemma": "libero", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "wybaw", "en": "deliver" }, "function": { "pl": "Następujący embolizm rozpoczyna ten sam tryb rozkazujący: Líbera nos, quǽsumus, Dómine.", "en": "The embolism that follows begins with the same imperative: Líbera nos, quǽsumus, Dómine." } },
+        { "id": "w057", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" }, "function": { "pl": "Dopełnienie líbera w bierniku.", "en": "Accusative object of líbera." } },
+        { "id": "w058", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w059", "gloss": { "pl": "od", "en": "from" } },
+        { "id": "w059", "form": "malo", "post": ".", "lemma": "malum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "złego", "en": "evil" }, "function": { "pl": "Wydanie analizuje „malo” jako rzeczownik nijaki oznaczający zło. Następujący embolizm podejmuje je w liczbie mnogiej: „ab ómnibus malis”. Katechizm wyjaśnia zarazem, że prośba odnosi się ostatecznie do Złego (KKK 2851).", "en": "This edition parses “malo” as the neuter noun for evil. The following embolism takes it up in the neuter plural, “ab ómnibus malis.” The Catechism also explains that the petition ultimately refers to the Evil One (CCC 2851)." }, "function_citations": { "pl": [{ "title": "Catechismus Catholicae Ecclesiae", "locator": "n. 2851", "url": "https://www.vatican.va/archive/catechism_lt/p4s2a3_lt.htm" }, { "title": "Missale Romanum (1962)", "locator": "Ordo Missae, embolism after the Lord's Prayer", "url": "https://archive.org/details/missale_romanum-1962" }], "en": [{ "title": "Catechismus Catholicae Ecclesiae", "locator": "n. 2851", "url": "https://www.vatican.va/archive/catechism_lt/p4s2a3_lt.htm" }, { "title": "Missale Romanum (1962)", "locator": "Ordo Missae, embolism after the Lord's Prayer", "url": "https://archive.org/details/missale_romanum-1962" }] }, "note": { "pl": "Forma jest ablatiwem obu słów naraz. Może to być malum — zło, rzecz zła — albo malus — Zły, czyli szatan. Ani forma, ani zdanie nie rozstrzygają, i tradycja czyta to na oba sposoby. Ta edycja przyjmuje malum i zaznacza wątpliwość.", "en": "The form is the ablative of both words at once. It can be malum, evil as a thing, or malus, the Evil One. Neither the form nor the sentence decides, and the tradition reads it both ways. This edition takes malum and marks the doubt." } }
+      ]
     },
     {
       "id": "s13",
       "type": "rubric",
       "text": "Sacerdos secrete dicit:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan mówi po cichu Amen.",
+        "en": "The priest says Amen silently."
+      }
     },
     {
       "id": "s14",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "words": [
-        { "id": "w060", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
-      ],
       "participation": {
         "lecta": {
           "source": "DMS 32"
         }
-      }
+      },
+      "translation": {
+        "pl": "Amen.",
+        "en": "Amen."
+      },
+      "words": [
+        { "id": "w060", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" }, "function": { "pl": "To Amen wypowiada kapłan.", "en": "This Amen is said by the priest." } }
+      ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The Lord's Prayer as the Mass sets it: the preface Orémus. Præcéptis salutáribus móniti, the prayer said by the priest alone as far as tentatiónem, the server's Sed líbera nos a malo, and the priest's Amen — the Ordo's page rubric says secrete, the Ritus servandus (X, 1) submissa voce; the edition follows the page rubric and records the disagreement for the expert. The words of the prayer are RE-ENCODED here rather than referenced. The corpus already carries orationes.pater-noster, the same prayer in its devotional form, and the letters are identical; but that document is one continuous text said by one voice, while this one is a dialogue — the last petition belongs to another speaker — wrapped in a preface and divided by three rubrics. Those are two recensions of one prayer, which is what the variant field is for, and the corpus already keeps recension pairs apart with their own word ids (ordinarium.confiteor and ordinarium.confiteor-sacerdotis, ordinarium.misereatur and ordinarium.misereatur-tui — those pairs differ in wording; this pair alone is letter-identical). The schema has no field by which one text could borrow another's words, and a reference would leave a hole in the middle of a prayer the reader is praying. MÓNITI at w004 and FORMÁTI at w008 are participles, not adjectives: neither analyzer heads an adjective monitus or formatus, only the verbs and nouns of their own (monitus, -us — a reminding) that are not the adjective claimed. AUDÉMUS at w009 is present indicative; audeo is semi-deponent, so only its perfect system is deponent in form. NE at w050 is the prohibitive adverb, as the corpus rules it elsewhere.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
+      "witnesses": "witnesses/ordinarium.pater-noster/",
+      "apparatus": "witnesses/ordinarium.pater-noster/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s04": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s13": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    },
+    "words": {
+      "w059": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } }
+    }
+  }
 }

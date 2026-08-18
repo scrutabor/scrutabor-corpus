@@ -1,47 +1,60 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "proprium.dominica-ii-adventus-evangelium",
   "title": "Cum audísset Ioánnes in vínculis",
   "category": "proprium",
   "section": "missa-catechumenorum",
   "variant": "dominica-ii-adventus",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 125
   },
-  "notes": "The gospel of the Second Sunday of Advent. The source boundary is recorded in the witness files.",
-  "source": {
-    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
-    "witnesses": "witnesses/proprium.dominica-ii-adventus-evangelium/",
-    "apparatus": "witnesses/proprium.dominica-ii-adventus-evangelium/apparatus.json"
+  "about": {
+    "pl": "Ewangelia II Niedzieli Adwentu. Jan Chrzciciel, już w więzieniu, posyła zapytać, czy to Ten. Odpowiedź nie jest twierdzeniem, lecz listą tego, co widać, i kończy się słowem o samym Janie.",
+    "en": "The gospel of the Second Sunday of Advent. John the Baptist, already in prison, sends to ask whether this is He. The answer is not a claim but a list of what can be seen, and it ends with a word about John himself."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "W owym czasie: Gdy Jan usłyszał w więzieniu o dziełach Chrystusa, posławszy dwóch spośród uczniów swoich, rzekł Mu:",
+        "en": "At that time: When John had heard in prison the works of Christ, sending two of his disciples he said to Him:"
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ]
+      },
       "words": [
-        { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w003" },
-        { "id": "w002", "form": "illo", "lemma": "ille", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "n" } },
-        { "id": "w003", "form": "témpore", "post": ":", "lemma": "tempus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w004", "form": "Cum", "lemma": "cum", "morph": { "pos": "conj" } },
-        { "id": "w005", "form": "audísset", "lemma": "audio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "plup", "mood": "subj", "voice": "act", "conj": 4 } },
-        { "id": "w006", "form": "Ioánnes", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w007", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008" },
-        { "id": "w008", "form": "vínculis", "lemma": "vinculum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w009", "form": "ópera", "lemma": "opus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 } },
-        { "id": "w010", "form": "Christi", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w011", "form": "mittens", "lemma": "mitto", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w005" },
-        { "id": "w012", "form": "duos", "lemma": "duo", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w013", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w014" },
-        { "id": "w014", "form": "discípulis", "lemma": "discipulus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } },
-        { "id": "w015", "form": "suis", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w014" },
-        { "id": "w016", "form": "ait", "lemma": "aio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w017", "form": "illi", "post": ":", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" } }
+        { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w003", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w002", "form": "illo", "lemma": "ille", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "n" }, "gloss": { "pl": "owym", "en": "that" } },
+        { "id": "w003", "form": "témpore", "post": ":", "lemma": "tempus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "czasie", "en": "time" } },
+        { "id": "w004", "form": "Cum", "lemma": "cum", "morph": { "pos": "conj" }, "gloss": { "pl": "gdy", "en": "when" } },
+        { "id": "w005", "form": "audísset", "lemma": "audio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "plup", "mood": "subj", "voice": "act", "conj": 4 }, "gloss": { "pl": "usłyszał", "en": "had heard" } },
+        { "id": "w006", "form": "Ioánnes", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Jan", "en": "John" } },
+        { "id": "w007", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w008", "form": "vínculis", "lemma": "vinculum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "więzach", "en": "chains" } },
+        { "id": "w009", "form": "ópera", "lemma": "opus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 }, "gloss": { "pl": "o dziełach", "en": "the works" } },
+        { "id": "w010", "form": "Christi", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "of Christ" } },
+        { "id": "w011", "form": "mittens", "lemma": "mitto", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w005", "gloss": { "pl": "posyławszy", "en": "sending" } },
+        { "id": "w012", "form": "duos", "lemma": "duo", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "dwóch", "en": "two" } },
+        { "id": "w013", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w014", "gloss": { "pl": "z", "en": "of" } },
+        { "id": "w014", "form": "discípulis", "lemma": "discipulus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "uczniów", "en": "disciples" } },
+        { "id": "w015", "form": "suis", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w014", "gloss": { "pl": "swoich", "en": "his" } },
+        { "id": "w016", "form": "ait", "lemma": "aio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "rzekł", "en": "he said" } },
+        { "id": "w017", "form": "illi", "post": ":", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" }, "gloss": { "pl": "Mu", "en": "to Him" } }
       ]
     },
     {
@@ -49,15 +62,33 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Tyś jest, który ma przyjść, czy innego oczekujemy?",
+        "en": "Art Thou He that art to come, or look we for another?"
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ]
+      },
       "words": [
-        { "id": "w018", "form": "Tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
-        { "id": "w019", "form": "es", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w020", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w021", "form": "ventúrus", "lemma": "venio", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "fut", "mood": "part", "voice": "act", "conj": 4 }, "head": "w022" },
-        { "id": "w022", "form": "es", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w023", "form": "an", "lemma": "an", "morph": { "pos": "conj" } },
-        { "id": "w024", "form": "álium", "lemma": "alius", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "substantive": true },
-        { "id": "w025", "form": "exspectámus", "post": "?", "lemma": "exspecto", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } }
+        { "id": "w018", "form": "Tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "Ty", "en": "Thou" } },
+        { "id": "w019", "form": "es", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jesteś", "en": "art" } },
+        { "id": "w020", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
+        { "id": "w021", "form": "ventúrus", "lemma": "venio", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "fut", "mood": "part", "voice": "act", "conj": 4 }, "head": "w022", "gloss": { "pl": "mający przyjść", "en": "to come" } },
+        { "id": "w022", "form": "es", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jesteś", "en": "art" } },
+        { "id": "w023", "form": "an", "lemma": "an", "morph": { "pos": "conj" }, "gloss": { "pl": "czy", "en": "or" } },
+        { "id": "w024", "form": "álium", "lemma": "alius", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "substantive": true, "gloss": { "pl": "innego", "en": "another" } },
+        { "id": "w025", "form": "exspectámus", "post": "?", "lemma": "exspecto", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "oczekujemy", "en": "do we look for" } }
       ]
     },
     {
@@ -65,19 +96,37 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "A Jezus odpowiadając rzekł im: Idźcie i donieście Janowi, coście usłyszeli i widzieli.",
+        "en": "And Jesus making answer said to them: Go and relate to John what you have heard and seen."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ]
+      },
       "words": [
-        { "id": "w026", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w027", "form": "respóndens", "lemma": "respondeo", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 2 }, "head": "w029" },
-        { "id": "w028", "form": "Iesus", "post": ",", "lemma": "Iesus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w029", "form": "ait", "lemma": "aio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w030", "form": "illis", "post": ":", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" } },
-        { "id": "w031", "form": "Eúntes", "lemma": "eo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act" }, "head": "w032" },
-        { "id": "w032", "form": "renuntiáte", "lemma": "renuntio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
-        { "id": "w033", "form": "Ioánni", "post": ",", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w034", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
-        { "id": "w035", "form": "audístis", "post": ",", "lemma": "audio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 4 } },
-        { "id": "w036", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w037", "form": "vidístis", "post": ".", "lemma": "video", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 2 } }
+        { "id": "w026", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w027", "form": "respóndens", "lemma": "respondeo", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 2 }, "head": "w029", "gloss": { "pl": "odpowiadając", "en": "answering" } },
+        { "id": "w028", "form": "Iesus", "post": ",", "lemma": "Iesus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezus", "en": "Jesus" } },
+        { "id": "w029", "form": "ait", "lemma": "aio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "rzekł", "en": "said" } },
+        { "id": "w030", "form": "illis", "post": ":", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "gloss": { "pl": "im", "en": "to them" } },
+        { "id": "w031", "form": "Eúntes", "lemma": "eo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act" }, "head": "w032", "gloss": { "pl": "idąc", "en": "going" } },
+        { "id": "w032", "form": "renuntiáte", "lemma": "renuntio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "donieście", "en": "report" } },
+        { "id": "w033", "form": "Ioánni", "post": ",", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Janowi", "en": "to John" } },
+        { "id": "w034", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" }, "gloss": { "pl": "które", "en": "what" } },
+        { "id": "w035", "form": "audístis", "post": ",", "lemma": "audio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 4 }, "gloss": { "pl": "usłyszeliście", "en": "you have heard" } },
+        { "id": "w036", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w037", "form": "vidístis", "post": ".", "lemma": "video", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 2 }, "gloss": { "pl": "zobaczyliście", "en": "you have seen" } }
       ]
     },
     {
@@ -85,28 +134,46 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Ślepi widzą, chromi chodzą, trędowaci bywają oczyszczeni, głusi słyszą, umarli powstają, ubogim głosi się dobrą nowinę: a błogosławiony jest, kto się we mnie nie zgorszy.",
+        "en": "The blind see, the lame walk, the lepers are made clean, the deaf hear, the dead rise again, the poor have the gospel preached to them: and blessed is he that shall not be scandalized in Me."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ]
+      },
       "words": [
-        { "id": "w038", "form": "Cæci", "lemma": "caecus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w039", "form": "vident", "post": ",", "lemma": "video", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
-        { "id": "w040", "form": "claudi", "lemma": "claudus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w041", "form": "ámbulant", "post": ",", "lemma": "ambulo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w042", "form": "leprósi", "lemma": "leprosus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w043", "form": "mundántur", "post": ",", "lemma": "mundo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "pass", "conj": 1 } },
-        { "id": "w044", "form": "surdi", "lemma": "surdus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w045", "form": "áudiunt", "post": ",", "lemma": "audio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 4 } },
-        { "id": "w046", "form": "mórtui", "lemma": "mortuus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w047", "form": "resúrgunt", "post": ",", "lemma": "resurgo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w048", "form": "páuperes", "lemma": "pauper", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 3 } },
-        { "id": "w049", "form": "evangelizántur", "post": ":", "lemma": "evangelizo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "pass", "conj": 1 } },
-        { "id": "w050", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w051", "form": "beátus", "lemma": "beatus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "substantive": true },
-        { "id": "w052", "form": "est", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w053", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w054", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w055", "form": "fúerit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "futperf", "mood": "ind", "voice": "act" } },
-        { "id": "w056", "form": "scandalizátus", "lemma": "scandalizo", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w055" },
-        { "id": "w057", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w058" },
-        { "id": "w058", "form": "me", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "abl", "number": "sg" } }
+        { "id": "w038", "form": "Cæci", "lemma": "caecus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "ślepi", "en": "the blind" } },
+        { "id": "w039", "form": "vident", "post": ",", "lemma": "video", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 }, "gloss": { "pl": "widzą", "en": "see" } },
+        { "id": "w040", "form": "claudi", "lemma": "claudus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "chromi", "en": "the lame" } },
+        { "id": "w041", "form": "ámbulant", "post": ",", "lemma": "ambulo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "chodzą", "en": "walk" } },
+        { "id": "w042", "form": "leprósi", "lemma": "leprosus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "trędowaci", "en": "lepers" } },
+        { "id": "w043", "form": "mundántur", "post": ",", "lemma": "mundo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "pass", "conj": 1 }, "gloss": { "pl": "są oczyszczani", "en": "are cleansed" } },
+        { "id": "w044", "form": "surdi", "lemma": "surdus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "głusi", "en": "the deaf" } },
+        { "id": "w045", "form": "áudiunt", "post": ",", "lemma": "audio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 4 }, "gloss": { "pl": "słyszą", "en": "hear" } },
+        { "id": "w046", "form": "mórtui", "lemma": "mortuus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "umarli", "en": "the dead" } },
+        { "id": "w047", "form": "resúrgunt", "post": ",", "lemma": "resurgo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "powstają", "en": "rise again" } },
+        { "id": "w048", "form": "páuperes", "lemma": "pauper", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "ubodzy", "en": "the poor" } },
+        { "id": "w049", "form": "evangelizántur", "post": ":", "lemma": "evangelizo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "pass", "conj": 1 }, "gloss": { "pl": "otrzymują dobrą nowinę", "en": "have the gospel preached to them" } },
+        { "id": "w050", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w051", "form": "beátus", "lemma": "beatus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "substantive": true, "gloss": { "pl": "błogosławiony", "en": "blessed" } },
+        { "id": "w052", "form": "est", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jest", "en": "is" } },
+        { "id": "w053", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "kto", "en": "who" } },
+        { "id": "w054", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
+        { "id": "w055", "form": "fúerit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "futperf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "będzie", "en": "shall be" } },
+        { "id": "w056", "form": "scandalizátus", "lemma": "scandalizo", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w055", "gloss": { "pl": "zgorszony", "en": "scandalized" } },
+        { "id": "w057", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w058", "gloss": { "pl": "we", "en": "in" } },
+        { "id": "w058", "form": "me", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" } }
       ]
     },
     {
@@ -114,25 +181,43 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "A gdy oni odchodzili, począł Jezus mówić do rzesz o Janie: Coście wyszli na pustynię oglądać? Trzcinę wiatrem kołysaną?",
+        "en": "And when they went their way, Jesus began to say to the multitudes concerning John: What went you out into the desert to see? A reed shaken with the wind?"
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ]
+      },
       "words": [
-        { "id": "w059", "form": "Illis", "lemma": "ille", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "m" } },
-        { "id": "w060", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
-        { "id": "w061", "form": "abeúntibus", "post": ",", "lemma": "abeo", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act" }, "head": "w059" },
-        { "id": "w062", "form": "cœpit", "lemma": "coepi", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act" } },
-        { "id": "w063", "form": "Iesus", "lemma": "Iesus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w064", "form": "dícere", "lemma": "dico", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 } },
-        { "id": "w065", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w066" },
-        { "id": "w066", "form": "turbas", "lemma": "turba", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
-        { "id": "w067", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w068" },
-        { "id": "w068", "form": "Ioánne", "post": ":", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w069", "form": "Quid", "lemma": "quis", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
-        { "id": "w070", "form": "exístis", "lemma": "exeo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act" } },
-        { "id": "w071", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w072" },
-        { "id": "w072", "form": "desértum", "lemma": "desertum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w073", "form": "vidére", "post": "?", "lemma": "video", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 2 } },
-        { "id": "w074", "form": "arúndinem", "lemma": "arundo", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w075", "form": "vento", "lemma": "ventus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w076", "form": "agitátam", "post": "?", "lemma": "agito", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "f", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w074" }
+        { "id": "w059", "form": "Illis", "lemma": "ille", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "m" }, "gloss": { "pl": "nimi", "en": "they" } },
+        { "id": "w060", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" }, "gloss": { "pl": "zaś", "en": "now" } },
+        { "id": "w061", "form": "abeúntibus", "post": ",", "lemma": "abeo", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act" }, "head": "w059", "gloss": { "pl": "odchodzącymi", "en": "going away" }, "function": { "pl": "Ablativus absolutus: „gdy oni odchodzili”. Para w narzędniku oddaje konstrukcję, której polszczyzna nie ma.", "en": "An ablative absolute: when they were going away." } },
+        { "id": "w062", "form": "cœpit", "lemma": "coepi", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "zaczął", "en": "began" } },
+        { "id": "w063", "form": "Iesus", "lemma": "Iesus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezus", "en": "Jesus" } },
+        { "id": "w064", "form": "dícere", "lemma": "dico", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 }, "gloss": { "pl": "mówić", "en": "to say" } },
+        { "id": "w065", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w066", "gloss": { "pl": "do", "en": "to" } },
+        { "id": "w066", "form": "turbas", "lemma": "turba", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "rzesz", "en": "the crowds" } },
+        { "id": "w067", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w068", "gloss": { "pl": "o", "en": "concerning" } },
+        { "id": "w068", "form": "Ioánne", "post": ":", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Janie", "en": "John" } },
+        { "id": "w069", "form": "Quid", "lemma": "quis", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" }, "gloss": { "pl": "co", "en": "what" } },
+        { "id": "w070", "form": "exístis", "lemma": "exeo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "wyszliście", "en": "went you out" } },
+        { "id": "w071", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w072", "gloss": { "pl": "na", "en": "into" } },
+        { "id": "w072", "form": "desértum", "lemma": "desertum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "pustynię", "en": "the desert" } },
+        { "id": "w073", "form": "vidére", "post": "?", "lemma": "video", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 2 }, "gloss": { "pl": "zobaczyć", "en": "to see" } },
+        { "id": "w074", "form": "arúndinem", "lemma": "arundo", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "trzcinę", "en": "a reed" } },
+        { "id": "w075", "form": "vento", "lemma": "ventus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "wiatrem", "en": "with the wind" } },
+        { "id": "w076", "form": "agitátam", "post": "?", "lemma": "agito", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "f", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w074", "gloss": { "pl": "kołysaną", "en": "shaken" } }
       ]
     },
     {
@@ -140,14 +225,32 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Ale coście wyszli oglądać? Człowieka w miękkie szaty odzianego?",
+        "en": "But what went you out to see? A man clothed in soft garments?"
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ]
+      },
       "words": [
-        { "id": "w077", "form": "Sed", "lemma": "sed", "morph": { "pos": "conj" } },
-        { "id": "w078", "form": "quid", "lemma": "quis", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
-        { "id": "w079", "form": "exístis", "lemma": "exeo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act" } },
-        { "id": "w080", "form": "vidére", "post": "?", "lemma": "video", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 2 } },
-        { "id": "w081", "form": "hóminem", "lemma": "homo", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w082", "form": "móllibus", "lemma": "mollis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "substantive": true },
-        { "id": "w083", "form": "vestítum", "post": "?", "lemma": "vestio", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 4 }, "head": "w081" }
+        { "id": "w077", "form": "Sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "lecz", "en": "but" } },
+        { "id": "w078", "form": "quid", "lemma": "quis", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" }, "gloss": { "pl": "co", "en": "what" } },
+        { "id": "w079", "form": "exístis", "lemma": "exeo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "wyszliście", "en": "went you out" } },
+        { "id": "w080", "form": "vidére", "post": "?", "lemma": "video", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 2 }, "gloss": { "pl": "zobaczyć", "en": "to see" } },
+        { "id": "w081", "form": "hóminem", "lemma": "homo", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "człowieka", "en": "a man" } },
+        { "id": "w082", "form": "móllibus", "lemma": "mollis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "substantive": true, "gloss": { "pl": "w miękkie", "en": "in soft" } },
+        { "id": "w083", "form": "vestítum", "post": "?", "lemma": "vestio", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 4 }, "head": "w081", "gloss": { "pl": "odzianego", "en": "clothed" } }
       ]
     },
     {
@@ -155,15 +258,33 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Oto ci, którzy w miękkie szaty się odziewają, w domach królewskich są.",
+        "en": "Behold, they that are clothed in soft garments are in the houses of kings."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ]
+      },
       "words": [
-        { "id": "w084", "form": "Ecce", "lemma": "ecce", "morph": { "pos": "intj" } },
-        { "id": "w085", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
-        { "id": "w086", "form": "móllibus", "lemma": "mollis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "substantive": true },
-        { "id": "w087", "form": "vestiúntur", "post": ",", "lemma": "vestio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "pass", "conj": 4 } },
-        { "id": "w088", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w089" },
-        { "id": "w089", "form": "dómibus", "lemma": "domus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 4 } },
-        { "id": "w090", "form": "regum", "lemma": "rex", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 3 } },
-        { "id": "w091", "form": "sunt", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } }
+        { "id": "w084", "form": "Ecce", "lemma": "ecce", "morph": { "pos": "intj" }, "gloss": { "pl": "oto", "en": "behold" } },
+        { "id": "w085", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" }, "gloss": { "pl": "którzy", "en": "they that" } },
+        { "id": "w086", "form": "móllibus", "lemma": "mollis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "substantive": true, "gloss": { "pl": "w miękkie", "en": "in soft" } },
+        { "id": "w087", "form": "vestiúntur", "post": ",", "lemma": "vestio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "pass", "conj": 4 }, "gloss": { "pl": "są odziani", "en": "are clothed" } },
+        { "id": "w088", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w089", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w089", "form": "dómibus", "lemma": "domus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 4 }, "gloss": { "pl": "domach", "en": "the houses" } },
+        { "id": "w090", "form": "regum", "lemma": "rex", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "królów", "en": "of kings" } },
+        { "id": "w091", "form": "sunt", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "są", "en": "are" } }
       ]
     },
     {
@@ -171,19 +292,37 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Ale coście wyszli oglądać? Proroka? Zaiste mówię wam, i więcej niż proroka.",
+        "en": "But what went you out to see? A prophet? Yea, I tell you, and more than a prophet."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ]
+      },
       "words": [
-        { "id": "w092", "form": "Sed", "lemma": "sed", "morph": { "pos": "conj" } },
-        { "id": "w093", "form": "quid", "lemma": "quis", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
-        { "id": "w094", "form": "exístis", "lemma": "exeo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act" } },
-        { "id": "w095", "form": "vidére", "post": "?", "lemma": "video", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 2 } },
-        { "id": "w096", "form": "prophétam", "post": "?", "lemma": "propheta", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 1 } },
-        { "id": "w097", "form": "Étiam", "lemma": "etiam", "morph": { "pos": "adv" } },
-        { "id": "w098", "form": "dico", "lemma": "dico", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w099", "form": "vobis", "post": ",", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
-        { "id": "w100", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w101", "form": "plus", "lemma": "plus", "morph": { "pos": "adv" } },
-        { "id": "w102", "form": "quam", "lemma": "quam", "morph": { "pos": "conj" } },
-        { "id": "w103", "form": "prophétam", "post": ".", "lemma": "propheta", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 1 } }
+        { "id": "w092", "form": "Sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "lecz", "en": "but" } },
+        { "id": "w093", "form": "quid", "lemma": "quis", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" }, "gloss": { "pl": "co", "en": "what" } },
+        { "id": "w094", "form": "exístis", "lemma": "exeo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "wyszliście", "en": "went you out" } },
+        { "id": "w095", "form": "vidére", "post": "?", "lemma": "video", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 2 }, "gloss": { "pl": "zobaczyć", "en": "to see" } },
+        { "id": "w096", "form": "prophétam", "post": "?", "lemma": "propheta", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 1 }, "gloss": { "pl": "proroka", "en": "a prophet" } },
+        { "id": "w097", "form": "Étiam", "lemma": "etiam", "morph": { "pos": "adv" }, "gloss": { "pl": "zaiste", "en": "yea" } },
+        { "id": "w098", "form": "dico", "lemma": "dico", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "mówię", "en": "I say" } },
+        { "id": "w099", "form": "vobis", "post": ",", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "wam", "en": "to you" } },
+        { "id": "w100", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w101", "form": "plus", "lemma": "plus", "morph": { "pos": "adv" }, "gloss": { "pl": "więcej", "en": "more" } },
+        { "id": "w102", "form": "quam", "lemma": "quam", "morph": { "pos": "conj" }, "gloss": { "pl": "niż", "en": "than" } },
+        { "id": "w103", "form": "prophétam", "post": ".", "lemma": "propheta", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 1 }, "gloss": { "pl": "proroka", "en": "a prophet" } }
       ]
     },
     {
@@ -191,29 +330,58 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Ten bowiem jest, o którym napisano: Oto ja posyłam Anioła mego przed obliczem Twoim, który przygotuje drogę Twoją przed Tobą.",
+        "en": "For this is he of whom it is written: Behold, I send My angel before Thy face, who shall prepare Thy way before Thee."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 11:2-10"
+          }
+        ]
+      },
       "words": [
-        { "id": "w104", "form": "Hic", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w105", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w106", "form": "enim", "post": ",", "lemma": "enim", "morph": { "pos": "conj" } },
-        { "id": "w107", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w108" },
-        { "id": "w108", "form": "quo", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" } },
-        { "id": "w109", "form": "scriptum", "lemma": "scribo", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w110" },
-        { "id": "w110", "form": "est", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w111", "form": "Ecce", "lemma": "ecce", "morph": { "pos": "intj" } },
-        { "id": "w112", "form": "ego", "lemma": "ego", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
-        { "id": "w113", "form": "mitto", "lemma": "mitto", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w114", "form": "Ángelum", "lemma": "angelus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w115", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w114" },
-        { "id": "w116", "form": "ante", "lemma": "ante", "morph": { "pos": "prep", "governs": "acc" }, "head": "w117" },
-        { "id": "w117", "form": "fáciem", "lemma": "facies", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 5 } },
-        { "id": "w118", "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w117" },
-        { "id": "w119", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w120", "form": "præparábit", "lemma": "praeparo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w121", "form": "viam", "lemma": "via", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w122", "form": "tuam", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w121" },
-        { "id": "w123", "form": "ante", "lemma": "ante", "morph": { "pos": "prep", "governs": "acc" }, "head": "w124" },
-        { "id": "w124", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } }
+        { "id": "w104", "form": "Hic", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "ten", "en": "this" } },
+        { "id": "w105", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jest", "en": "is" } },
+        { "id": "w106", "form": "enim", "post": ",", "lemma": "enim", "morph": { "pos": "conj" }, "gloss": { "pl": "bowiem", "en": "for" } },
+        { "id": "w107", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w108", "gloss": { "pl": "o", "en": "of" } },
+        { "id": "w108", "form": "quo", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" }, "gloss": { "pl": "którym", "en": "whom" } },
+        { "id": "w109", "form": "scriptum", "lemma": "scribo", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w110", "gloss": { "pl": "napisane", "en": "written" } },
+        { "id": "w110", "form": "est", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jest", "en": "it is" } },
+        { "id": "w111", "form": "Ecce", "lemma": "ecce", "morph": { "pos": "intj" }, "gloss": { "pl": "oto", "en": "behold" } },
+        { "id": "w112", "form": "ego", "lemma": "ego", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "ja", "en": "I" } },
+        { "id": "w113", "form": "mitto", "lemma": "mitto", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "posyłam", "en": "send" } },
+        { "id": "w114", "form": "Ángelum", "lemma": "angelus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Anioła", "en": "angel" } },
+        { "id": "w115", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w114", "gloss": { "pl": "mego", "en": "My" } },
+        { "id": "w116", "form": "ante", "lemma": "ante", "morph": { "pos": "prep", "governs": "acc" }, "head": "w117", "gloss": { "pl": "przed", "en": "before" } },
+        { "id": "w117", "form": "fáciem", "lemma": "facies", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 5 }, "gloss": { "pl": "obliczem", "en": "face" } },
+        { "id": "w118", "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w117", "gloss": { "pl": "Twoim", "en": "Thy" } },
+        { "id": "w119", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
+        { "id": "w120", "form": "præparábit", "lemma": "praeparo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "przygotuje", "en": "shall prepare" } },
+        { "id": "w121", "form": "viam", "lemma": "via", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "drogę", "en": "way" } },
+        { "id": "w122", "form": "tuam", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w121", "gloss": { "pl": "Twoją", "en": "Thy" } },
+        { "id": "w123", "form": "ante", "lemma": "ante", "morph": { "pos": "prep", "governs": "acc" }, "head": "w124", "gloss": { "pl": "przed", "en": "before" } },
+        { "id": "w124", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "Tobą", "en": "Thee" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The gospel of the Second Sunday of Advent. The source boundary is recorded in the witness files.",
+    "source": {
+      "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-ii-adventus-evangelium/",
+      "apparatus": "witnesses/proprium.dominica-ii-adventus-evangelium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" }
+  }
 }

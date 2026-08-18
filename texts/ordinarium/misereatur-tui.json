@@ -1,70 +1,94 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.misereatur-tui",
   "title": "Misereátur tui",
   "category": "ordinarium",
   "section": "praeparatio",
   "variant": "sacerdotis",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 15
   },
-  "notes": "The ministers' answer to the priest's own confession, with the Amen he says to it. It is the counterpart of ordinarium.misereatur, which carries the same formula in the plural (Misereátur vestri... peccátis vestris... perdúcat vos) as the priest pronounces it over the ministers, together with the Indulgéntiam that follows it there. Here there is no Indulgéntiam: the ministers say only this one prayer, and the priest answers Amen to a prayer asked for himself. TUI at w002 is the genitive of the pronoun tu, not the possessive adjective that supplies the tuis of w008: misereor governs the genitive of the person pitied, and the two forms fall together in the possessive's paradigm — the same distinction the corpus records at ordinarium.misereatur for vestri and vestris.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence and no accidental variants — the two editions agree token for token, so this text carries no apparatus.",
-    "witnesses": "witnesses/ordinarium.misereatur-tui/"
+  "about": {
+    "pl": "Usługujący modlą się za kapłana w liczbie pojedynczej: „misereátur tui”, „peccátis tuis”, „perdúcat te”, a kapłan odpowiada „Amen”. Po spowiedzi usługujących ta sama formuła występuje w liczbie mnogiej. Dopiero potem kapłan dodaje modlitwę „Indulgéntiam”.",
+    "en": "The ministers pray for the priest in the singular: “misereátur tui”, “peccátis tuis”, “perdúcat te”, and the priest answers “Amen”. After the ministers' confession the same formula appears in the plural. Only then does the priest add the “Indulgéntiam” prayer."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "voice": "clara",
       "speaker": "minister",
-      "words": [
-        { "id": "w001", "form": "Misereátur", "lemma": "misereor", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 2 } },
-        { "id": "w002", "form": "tui", "lemma": "tu", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
-        { "id": "w003", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w004" },
-        { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w005", "form": "et", "post": ",", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w006", "form": "dimíssis", "lemma": "dimitto", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w007" },
-        { "id": "w007", "form": "peccátis", "lemma": "peccatum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w008", "form": "tuis", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w007" },
-        { "id": "w009", "form": "perdúcat", "lemma": "perduco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
-        { "id": "w010", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
-        { "id": "w011", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
-        { "id": "w012", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w013", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w012" }
-      ],
       "participation": {
         "lecta": {
           "gradus": 2,
           "source": "DMS 31 b"
         }
-      }
+      },
+      "translation": {
+        "pl": "Niech się zmiłuje nad tobą Bóg wszechmogący, a odpuściwszy ci grzechy, niech cię doprowadzi do życia wiecznego.",
+        "en": "May almighty God have mercy on thee, and having forgiven thy sins, bring thee to life everlasting."
+      },
+      "words": [
+        { "id": "w001", "form": "Misereátur", "lemma": "misereor", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 2 }, "gloss": { "pl": "niech się zmiłuje", "en": "may He have mercy" }, "function": { "pl": "Tryb łączący wyrażający prośbę skierowaną do Boga.", "en": "A subjunctive expressing a petition addressed to God." } },
+        { "id": "w002", "form": "tui", "lemma": "tu", "morph": { "pos": "pron", "case": "gen", "number": "sg" }, "gloss": { "pl": "nad tobą", "en": "on you" }, "function": { "pl": "Dopełniacz liczby pojedynczej zależny od „Misereátur” (w001).", "en": "Genitive singular governed by “Misereátur” (w001)." } },
+        { "id": "w003", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w004", "gloss": { "pl": "wszechmogący", "en": "almighty" } },
+        { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bóg", "en": "God" }, "function": { "pl": "Mianownik jako podmiot „Misereátur” (w001) i „perdúcat” (w009).", "en": "Nominative subject of “Misereátur” (w001) and “perdúcat” (w009)." } },
+        { "id": "w005", "form": "et", "post": ",", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w006", "form": "dimíssis", "lemma": "dimitto", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w007", "gloss": { "pl": "odpuszczonymi", "en": "having been forgiven" }, "function": { "pl": "Imiesłów tworzący z „peccátis” (w007) ablativus absolutus.", "en": "A participle forming an ablative absolute with “peccátis” (w007)." } },
+        { "id": "w007", "form": "peccátis", "lemma": "peccatum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "grzechami", "en": "sins" }, "function": { "pl": "Rzeczownik w konstrukcji ablativus absolutus z „dimíssis” (w006).", "en": "The noun in the ablative absolute with “dimíssis” (w006)." } },
+        { "id": "w008", "form": "tuis", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w007", "gloss": { "pl": "twoimi", "en": "your" } },
+        { "id": "w009", "form": "perdúcat", "lemma": "perduco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "niech doprowadzi", "en": "may He bring" }, "function": { "pl": "Drugi czasownik w trybie łączącym, współrzędny z „Misereátur” (w001).", "en": "A second subjunctive, coordinated with “Misereátur” (w001)." } },
+        { "id": "w010", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "cię", "en": "you" }, "function": { "pl": "Biernik jako dopełnienie „perdúcat” (w009).", "en": "Accusative object of “perdúcat” (w009)." } },
+        { "id": "w011", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012", "gloss": { "pl": "do", "en": "to" } },
+        { "id": "w012", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "życia", "en": "life" } },
+        { "id": "w013", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w012", "gloss": { "pl": "wiecznego", "en": "everlasting" } }
+      ]
     },
     {
       "id": "s02",
       "type": "rubric",
       "text": "Sacerdos dicit:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan odpowiada.",
+        "en": "The priest answers."
+      }
     },
     {
       "id": "s03",
       "type": "verse",
       "voice": "clara",
       "speaker": "sacerdos",
+      "translation": {
+        "pl": "Amen.",
+        "en": "Amen."
+      },
       "words": [
-        { "id": "w014", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+        { "id": "w014", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
       ]
     },
     {
       "id": "s04",
       "type": "rubric",
       "text": "Et erigit se. Deinde Ministri repetunt Confessionem: et ubi a Sacerdote dicebatur vobis, fratres, et vos, fratres, a Ministris dicitur tibi, pater, et te, pater.",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan się prostuje. Teraz spowiedź powtarzają usługujący — tymi samymi słowami, z jedyną zmianą, którą mszał podaje wprost: gdzie kapłan mówił „wam, bracia” i „was, bracia”, oni mówią „tobie, ojcze” i „ciebie, ojcze”.",
+        "en": "The priest straightens up. The ministers now repeat the confession — in the same words, with the single change the missal states outright: where the priest said “to you, brethren” and “you, brethren”, they say “to you, father” and “you, father”."
+      }
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The ministers' answer to the priest's own confession, with the Amen he says to it. It is the counterpart of ordinarium.misereatur, which carries the same formula in the plural (Misereátur vestri... peccátis vestris... perdúcat vos) as the priest pronounces it over the ministers, together with the Indulgéntiam that follows it there. Here there is no Indulgéntiam: the ministers say only this one prayer, and the priest answers Amen to a prayer asked for himself. TUI at w002 is the genitive of the pronoun tu, not the possessive adjective that supplies the tuis of w008: misereor governs the genitive of the person pitied, and the two forms fall together in the possessive's paradigm — the same distinction the corpus records at ordinarium.misereatur for vestri and vestris.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence and no accidental variants — the two editions agree token for token, so this text carries no apparatus.",
+      "witnesses": "witnesses/ordinarium.misereatur-tui/"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s02": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s04": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    }
+  }
 }

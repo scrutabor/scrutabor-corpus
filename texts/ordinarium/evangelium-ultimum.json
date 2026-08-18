@@ -1,38 +1,66 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.evangelium-ultimum",
   "title": "Evangelium ultimum (Ioann. 1, 1-14)",
   "category": "ordinarium",
   "section": "missa-fidelium",
   "variant": "missae",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 190
   },
-  "notes": "The Last Gospel: the greeting at the Gospel corner, the announcement of the beginning of St John with its answer, John 1, 1-14, the genuflection at Et Verbum caro factum est, and the closing Deo grátias. The largest single text in the corpus. VENIT at w077 and w127 is perfect, not present: the two are spelled alike, and the narrative around them decides — Fuit at w067, erat at w074, recepérunt at w132. PLENUM at w184 is neuter nominative and refers back to VERBUM at w167, across the intervening description of the glory beheld; its genitives are GRÁTIÆ at w185 and VERITÁTIS at w187. The reader note cites the same construction in the Glossa ordinaria. NIHIL at w044 is indeclinable: the corpus states the syntactic case, number and gender the sentence gives it, though the form itself marks none. QUOD at w045 opens a clause that witness do, the hand missal and mr all point as belonging to what precedes (vg-clementina's substantive-only profile leaves its punctuation out of scope); the corpus follows their punctuation, which is the whole of the decision. QUASI at w180 is tagged conj, as sicut is under the classification ruling recorded in SCHEMA.md. NEQUE at w153 and w157 has its own lemma beside nec: Collatinus heads neque itself and would not link the form to nec. SUI at w129 (suus, the reflexive possessive) and PRÓPRIA at w126 (proprius, an adjective of ownership) are two different words in one and the same use — substantival, without a noun: neuter plural for his own things, masculine plural for his own people. The auxiliaries at w038, w043, w047, w119, w165 and w170 are separate tokens of sum; the participle beside each carries the tense. FACTA at w037 and FACTUS at w118 name Whitaker's alone; FÍERI at w142 rests on the recorded ruling about fio's infinitive. Witness do does not print the two responses in its Ordo chain — it keeps each once as a shared block and calls it from many places — and the witness file declares that expansion.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
-    "witnesses": "witnesses/ordinarium.evangelium-ultimum/",
-    "apparatus": "witnesses/ordinarium.evangelium-ultimum/apparatus.json"
+  "about": {
+    "pl": "Prolog św. Jana (J 1,1–14), czytany na końcu Mszy po stronie Ewangelii. Przed lekturą kapłan znaczy krzyżem ołtarz albo księgę, a następnie czoło, usta i pierś. Na słowach „Et Verbum caro factum est” przyklęka.",
+    "en": "The Prologue of Saint John (John 1:1–14), read at the Gospel side at the end of Mass. Before reading, the priest signs the altar or book and then his forehead, lips, and breast. He genuflects at “Et Verbum caro factum est”."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Nova Vulgata, Evangelium secundum Ioannem",
+        "locator": "1, 1–14",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-ioannem_lt.html#1"
+      },
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ordo Missae, Evangelium S. Ioannis",
+        "url": "https://archive.org/details/missale_romanum-1962/page/n406/mode/1up"
+      }
+    ],
+    "en": [
+      {
+        "title": "Nova Vulgata, Evangelium secundum Ioannem",
+        "locator": "1, 1–14",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-ioannem_lt.html#1"
+      },
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ordo Missae, Evangelium S. Ioannis",
+        "url": "https://archive.org/details/missale_romanum-1962/page/n406/mode/1up"
+      }
+    ]
+  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
       "text": "Deinde sacerdos in cornu Evangelii, iunctis manibus dicit:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Następnie kapłan, stojąc po stronie Ewangelii ze złożonymi rękami, mówi:",
+        "en": "Then the priest, at the Gospel side with hands joined, says:"
+      }
     },
     {
       "id": "s02",
       "type": "verse",
       "voice": "clara",
       "speaker": "sacerdos",
+      "translation": {
+        "pl": "Pan z wami.",
+        "en": "The Lord be with you."
+      },
       "words": [
-        { "id": "w001", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w002", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+        { "id": "w001", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "The Lord" } },
+        { "id": "w002", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "z wami", "en": "with you" } }
       ]
     },
     {
@@ -40,12 +68,6 @@
       "type": "verse",
       "voice": "clara",
       "speaker": "minister",
-      "words": [
-        { "id": "w003", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
-        { "id": "w005", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
-        { "id": "w006", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w005" }
-      ],
       "participation": {
         "lecta": {
           "gradus": 1,
@@ -55,25 +77,42 @@
           "gradus": 1,
           "source": "DMS 25 a"
         }
-      }
+      },
+      "translation": {
+        "pl": "I z duchem twoim.",
+        "en": "And with your spirit."
+      },
+      "words": [
+        { "id": "w003", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005", "gloss": { "pl": "z", "en": "with" } },
+        { "id": "w005", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "duchem", "en": "spirit" } },
+        { "id": "w006", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w005", "gloss": { "pl": "twoim", "en": "your" } }
+      ]
     },
     {
       "id": "s04",
       "type": "rubric",
       "text": "Et signans signo crucis primum Altare vel librum, deinde se in fronte, ore et pectore, dicit:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Znacząc znakiem krzyża najpierw ołtarz albo księgę, potem siebie na czole, na ustach i na piersi, kapłan mówi:",
+        "en": "And signing with the sign of the cross first the altar or the book, then himself on the forehead, the lips and the breast, the priest says:"
+      }
     },
     {
       "id": "s05",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Początek świętej Ewangelii według Jana.",
+        "en": "The beginning of the holy Gospel according to John."
+      },
       "words": [
-        { "id": "w007", "form": "Inítium", "lemma": "initium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w008", "form": "sancti", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w009" },
-        { "id": "w009", "form": "Evangélii", "lemma": "evangelium", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w010", "form": "secúndum", "lemma": "secundum", "morph": { "pos": "prep", "governs": "acc" }, "head": "w011" },
-        { "id": "w011", "form": "Ioánnem", "post": ".", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } }
+        { "id": "w007", "form": "Inítium", "lemma": "initium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "Początek", "en": "The beginning" }, "function": { "pl": "Mianownik w zapowiedzi nominalnej bez wyrażonego czasownika.", "en": "Nominative in a nominal announcement without an expressed verb." } },
+        { "id": "w008", "form": "sancti", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w009", "gloss": { "pl": "świętej", "en": "of the holy" }, "function": { "pl": "Dopełniacz liczby pojedynczej rodzaju nijakiego, zgadza się z „Evangélii” (w009).", "en": "Neuter genitive singular, agreeing with “Evangélii” (w009)." } },
+        { "id": "w009", "form": "Evangélii", "lemma": "evangelium", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "Ewangelii", "en": "Gospel" } },
+        { "id": "w010", "form": "secúndum", "lemma": "secundum", "morph": { "pos": "prep", "governs": "acc" }, "head": "w011", "gloss": { "pl": "według", "en": "according to" } },
+        { "id": "w011", "form": "Ioánnem", "post": ".", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Jana", "en": "John" } }
       ]
     },
     {
@@ -81,11 +120,6 @@
       "type": "verse",
       "speaker": "minister",
       "voice": "clara",
-      "words": [
-        { "id": "w012", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w013", "form": "tibi", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
-        { "id": "w014", "form": "Dómine", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } }
-      ],
       "participation": {
         "lecta": {
           "gradus": 1,
@@ -95,72 +129,106 @@
           "gradus": 1,
           "source": "DMS 25 a"
         }
-      }
+      },
+      "translation": {
+        "pl": "Chwała Tobie, Panie.",
+        "en": "Glory to You, O Lord."
+      },
+      "words": [
+        { "id": "w012", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Chwała", "en": "Glory" }, "function": { "pl": "Odpowiedź nominalna bez wyrażonego czasownika.", "en": "Nominal response without an expressed verb." } },
+        { "id": "w013", "form": "tibi", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Tobie", "en": "to You" } },
+        { "id": "w014", "form": "Dómine", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } }
+      ]
     },
     {
       "id": "s07",
       "type": "rubric",
       "text": "Iunctis manibus prosequitur:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Ze złożonymi rękami kapłan mówi dalej:",
+        "en": "With his hands joined the priest continues:"
+      }
     },
     {
       "id": "s08",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Na początku było Słowo, a Słowo było u Boga, a Bogiem było Słowo. Ono było na początku u Boga. Wszystko przez Nie się stało, a bez Niego nic się nie stało, co się stało: w Nim było Życie, a Życie było Światłością ludzi; a Światłość w ciemnościach świeci i ciemności Jej nie ogarnęły.",
+        "en": "In the beginning was the Word, and the Word was with God, and the Word was God. The same was in the beginning with God. All things were made by Him, and without Him was made nothing that was made: in Him was Life, and the Life was the Light of men; and the Light shines in the darkness, and the darkness did not comprehend It."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
+            "locator": "J 1, 1–5"
+          },
+          {
+            "title": "Biblia Tysiąclecia (Pallottinum), wydanie V",
+            "locator": "Ewangelia wg św. Jana 1, 1–14"
+          }
+        ],
+        "en": [
+          {
+            "title": "Douay-Rheims Bible (Challoner)",
+            "locator": "John 1:1–5"
+          }
+        ]
+      },
       "words": [
-        { "id": "w015", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w016" },
-        { "id": "w016", "form": "princípio", "lemma": "principium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w017", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" } },
-        { "id": "w018", "form": "Verbum", "post": ",", "lemma": "verbum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w020", "form": "Verbum", "lemma": "verbum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w021", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" } },
-        { "id": "w022", "form": "apud", "lemma": "apud", "morph": { "pos": "prep", "governs": "acc" }, "head": "w023" },
-        { "id": "w023", "form": "Deum", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w024", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w025", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w026", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" } },
-        { "id": "w027", "form": "Verbum", "post": ".", "lemma": "verbum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w028", "form": "Hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "n" } },
-        { "id": "w029", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" } },
-        { "id": "w030", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w031" },
-        { "id": "w031", "form": "princípio", "lemma": "principium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w032", "form": "apud", "lemma": "apud", "morph": { "pos": "prep", "governs": "acc" }, "head": "w033" },
-        { "id": "w033", "form": "Deum", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w034", "form": "Ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "substantive": true },
-        { "id": "w035", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w036" },
-        { "id": "w036", "form": "ipsum", "lemma": "ipse", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
-        { "id": "w037", "form": "facta", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "pl", "gender": "n", "conj": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" }, "head": "w034" },
-        { "id": "w038", "form": "sunt", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w039", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w040", "form": "sine", "lemma": "sine", "morph": { "pos": "prep", "governs": "abl" }, "head": "w041" },
-        { "id": "w041", "form": "ipso", "lemma": "ipse", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
-        { "id": "w042", "form": "factum", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "n", "conj": 3 }, "head": "w044" },
-        { "id": "w043", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w044", "form": "nihil", "post": ",", "lemma": "nihil", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n" } },
-        { "id": "w045", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "n" } },
-        { "id": "w046", "form": "factum", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "n", "conj": 3 }, "head": "w045" },
-        { "id": "w047", "form": "est", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w048", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w049" },
-        { "id": "w049", "form": "ipso", "lemma": "ipse", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
-        { "id": "w050", "form": "vita", "lemma": "vita", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w051", "form": "erat", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" } },
-        { "id": "w052", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w053", "form": "vita", "lemma": "vita", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w054", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" } },
-        { "id": "w055", "form": "lux", "lemma": "lux", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w056", "form": "hóminum", "post": ":", "lemma": "homo", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 3 } },
-        { "id": "w057", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w058", "form": "lux", "lemma": "lux", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w059", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w060" },
-        { "id": "w060", "form": "ténebris", "lemma": "tenebrae", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 1 } },
-        { "id": "w061", "form": "lucet", "post": ",", "lemma": "luceo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
-        { "id": "w062", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w063", "form": "ténebræ", "lemma": "tenebrae", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 1 } },
-        { "id": "w064", "form": "eam", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
-        { "id": "w065", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w066", "form": "comprehendérunt", "post": ".", "lemma": "comprehendo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } }
+        { "id": "w015", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w016", "gloss": { "pl": "na", "en": "in" }, "function": { "pl": "„In princípio” otwiera także Rdz 1,1.", "en": "“In princípio” also opens Genesis 1:1." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "Genesis 1:1" }, { "title": "Biblia Sacra Vulgata", "locator": "John 1:1" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "Genesis 1:1" }, { "title": "Biblia Sacra Vulgata", "locator": "John 1:1" }] } },
+        { "id": "w016", "form": "princípio", "lemma": "principium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "początku", "en": "the beginning" } },
+        { "id": "w017", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "było", "en": "was" } },
+        { "id": "w018", "form": "Verbum", "post": ",", "lemma": "verbum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "Słowo", "en": "the Word" }, "function": { "pl": "„Verbum” jest rodzaju nijakiego. W greckim tekście J 1, 1 odpowiada mu „lógos”.", "en": "“Verbum” is neuter. In the Greek text of Jn 1:1 it corresponds to “lógos”." }, "function_citations": { "pl": [{ "title": "Novum Testamentum Graece, ed. Nestle–Aland 28", "locator": "John 1:1" }], "en": [{ "title": "Novum Testamentum Graece, ed. Nestle–Aland 28", "locator": "John 1:1" }] } },
+        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
+        { "id": "w020", "form": "Verbum", "lemma": "verbum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "Słowo", "en": "the Word" } },
+        { "id": "w021", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "było", "en": "was" } },
+        { "id": "w022", "form": "apud", "lemma": "apud", "morph": { "pos": "prep", "governs": "acc" }, "head": "w023", "gloss": { "pl": "u", "en": "with" }, "function": { "pl": "„Apud” łączy się z biernikiem i znaczy tu „u” lub „w obecności”.", "en": "“Apud” governs the accusative and here means “with” or “in the presence of”." } },
+        { "id": "w023", "form": "Deum", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } },
+        { "id": "w024", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
+        { "id": "w025", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bogiem", "en": "God" } },
+        { "id": "w026", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "było", "en": "was" } },
+        { "id": "w027", "form": "Verbum", "post": ".", "lemma": "verbum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "Słowo", "en": "the Word" } },
+        { "id": "w028", "form": "Hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "n" }, "gloss": { "pl": "Ono", "en": "The same" }, "function": { "pl": "Rodzaj nijaki, odnosi się do „Verbum” (w027).", "en": "Neuter, referring to “Verbum” (w027)." } },
+        { "id": "w029", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "było", "en": "was" } },
+        { "id": "w030", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w031", "gloss": { "pl": "na", "en": "in" } },
+        { "id": "w031", "form": "princípio", "lemma": "principium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "początku", "en": "the beginning" } },
+        { "id": "w032", "form": "apud", "lemma": "apud", "morph": { "pos": "prep", "governs": "acc" }, "head": "w033", "gloss": { "pl": "u", "en": "with" } },
+        { "id": "w033", "form": "Deum", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } },
+        { "id": "w034", "form": "Ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "substantive": true, "gloss": { "pl": "Wszystko", "en": "All things" }, "function": { "pl": "Liczba mnoga rodzaju nijakiego, użycie rzeczownikowe: „wszystkie rzeczy”.", "en": "Neuter plural used substantively: “all things”." } },
+        { "id": "w035", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w036", "gloss": { "pl": "przez", "en": "by" } },
+        { "id": "w036", "form": "ipsum", "lemma": "ipse", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Nie (= Słowo)", "en": "Him" }, "note": { "pl": "Rodzaj jest dwuznaczny. Jedynym gramatycznym poprzednikiem jest Verbum, rodzaju nijakiego, ale tradycja czyta tu rodzaj męski, o Osobie. Ta edycja przyjmuje męski.", "en": "The gender is open. The only grammatical antecedent is Verbum, which is neuter, but the tradition reads a masculine here, of the Person. This edition takes the masculine." } },
+        { "id": "w037", "form": "facta", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "pl", "gender": "n", "conj": 3 }, "head": "w034", "gloss": { "pl": "uczynione", "en": "made" }, "function": { "pl": "Z „sunt” (w038) tworzy stronę bierną perfectum: facta sunt — „zostało uczynione”.", "en": "With “sunt” (w038) it forms the perfect passive: facta sunt — “were made”." } },
+        { "id": "w038", "form": "sunt", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "zostało", "en": "were" } },
+        { "id": "w039", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
+        { "id": "w040", "form": "sine", "lemma": "sine", "morph": { "pos": "prep", "governs": "abl" }, "head": "w041", "gloss": { "pl": "bez", "en": "without" } },
+        { "id": "w041", "form": "ipso", "lemma": "ipse", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" }, "gloss": { "pl": "Niego", "en": "Him" }, "note": { "pl": "Rodzaj jest dwuznaczny, jak przy w036. Ta edycja przyjmuje męski.", "en": "The gender is open, as at w036. This edition takes the masculine." } },
+        { "id": "w042", "form": "factum", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "n", "conj": 3 }, "head": "w044", "gloss": { "pl": "uczynione", "en": "made" } },
+        { "id": "w043", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "zostało", "en": "was" } },
+        { "id": "w044", "form": "nihil", "post": ",", "lemma": "nihil", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n" }, "gloss": { "pl": "nic", "en": "nothing" }, "function": { "pl": "Podmiot poprzedzającego zdania w mianowniku.", "en": "Nominative subject in the preceding clause." } },
+        { "id": "w045", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "n" }, "gloss": { "pl": "co", "en": "that which" } },
+        { "id": "w046", "form": "factum", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "n", "conj": 3 }, "head": "w045", "gloss": { "pl": "uczynione", "en": "made" } },
+        { "id": "w047", "form": "est", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "zostało", "en": "was" } },
+        { "id": "w048", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w049", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w049", "form": "ipso", "lemma": "ipse", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" }, "gloss": { "pl": "Nim", "en": "Him" }, "note": { "pl": "Rodzaj jest dwuznaczny, jak przy w036. Ta edycja przyjmuje męski.", "en": "The gender is open, as at w036. This edition takes the masculine." } },
+        { "id": "w050", "form": "vita", "lemma": "vita", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Życie", "en": "Life" } },
+        { "id": "w051", "form": "erat", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "było", "en": "was" } },
+        { "id": "w052", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
+        { "id": "w053", "form": "vita", "lemma": "vita", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Życie", "en": "the Life" } },
+        { "id": "w054", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "było", "en": "was" } },
+        { "id": "w055", "form": "lux", "lemma": "lux", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Światłością", "en": "the Light" } },
+        { "id": "w056", "form": "hóminum", "post": ":", "lemma": "homo", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "ludzi", "en": "of men" }, "function": { "pl": "Dopełniacz liczby mnogiej zależny od „lux” (w055).", "en": "Genitive plural depending on “lux” (w055)." } },
+        { "id": "w057", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
+        { "id": "w058", "form": "lux", "lemma": "lux", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Światłość", "en": "the Light" } },
+        { "id": "w059", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w060", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w060", "form": "ténebris", "lemma": "tenebrae", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "ciemnościach", "en": "the darkness" }, "function": { "pl": "Ablativus liczby mnogiej po „in” (w059).", "en": "Ablative plural after “in” (w059)." } },
+        { "id": "w061", "form": "lucet", "post": ",", "lemma": "luceo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 }, "gloss": { "pl": "świeci", "en": "shines" }, "function": { "pl": "Czas teraźniejszy, tryb oznajmujący.", "en": "Present indicative." } },
+        { "id": "w062", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
+        { "id": "w063", "form": "ténebræ", "lemma": "tenebrae", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "ciemności", "en": "the darkness" } },
+        { "id": "w064", "form": "eam", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" }, "gloss": { "pl": "Jej", "en": "It" }, "function": { "pl": "Rodzaj żeński, odnosi się do „lux” (w058).", "en": "Feminine, referring to “lux” (w058)." } },
+        { "id": "w065", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
+        { "id": "w066", "form": "comprehendérunt", "post": ".", "lemma": "comprehendo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "ogarnęły", "en": "comprehended" }, "function": { "pl": "Perfectum indicativi.", "en": "Perfect indicative." } }
       ]
     },
     {
@@ -168,40 +236,62 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Był człowiek posłany od Boga, któremu na imię było Jan. Ten przyszedł na świadectwo, aby dać świadectwo o Światłości, aby wszyscy uwierzyli przez niego. Nie był on Światłością, lecz miał dać świadectwo o Światłości.",
+        "en": "There was a man sent from God, whose name was John. This man came for a witness, to bear witness of the Light, that all might believe through him. He was not the Light, but was to bear witness of the Light."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
+            "locator": "J 1, 6–8"
+          },
+          {
+            "title": "Biblia Tysiąclecia (Pallottinum), wydanie V",
+            "locator": "Ewangelia wg św. Jana 1, 1–14"
+          }
+        ],
+        "en": [
+          {
+            "title": "Douay-Rheims Bible (Challoner)",
+            "locator": "John 1:6–8"
+          }
+        ]
+      },
       "words": [
-        { "id": "w067", "form": "Fuit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act" } },
-        { "id": "w068", "form": "homo", "lemma": "homo", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w069", "form": "missus", "lemma": "mitto", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w068" },
-        { "id": "w070", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w071" },
-        { "id": "w071", "form": "Deo", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w072", "form": "cui", "lemma": "qui", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" } },
-        { "id": "w073", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w074", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" } },
-        { "id": "w075", "form": "Ioánnes", "post": ".", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w076", "form": "Hic", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w077", "form": "venit", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 4 } },
-        { "id": "w078", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w079" },
-        { "id": "w079", "form": "testimónium", "post": ",", "lemma": "testimonium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w080", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
-        { "id": "w081", "form": "testimónium", "lemma": "testimonium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w082", "form": "perhibéret", "lemma": "perhibeo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "subj", "voice": "act", "conj": 2 } },
-        { "id": "w083", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w084" },
-        { "id": "w084", "form": "lúmine", "post": ",", "lemma": "lumen", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w085", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
-        { "id": "w086", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w087", "form": "créderent", "lemma": "credo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "impf", "mood": "subj", "voice": "act", "conj": 3 } },
-        { "id": "w088", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w089" },
-        { "id": "w089", "form": "illum", "post": ".", "lemma": "ille", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
-        { "id": "w090", "form": "Non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w091", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" } },
-        { "id": "w092", "form": "ille", "lemma": "ille", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w093", "form": "lux", "post": ",", "lemma": "lux", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w094", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
-        { "id": "w095", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
-        { "id": "w096", "form": "testimónium", "lemma": "testimonium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w097", "form": "perhibéret", "lemma": "perhibeo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "subj", "voice": "act", "conj": 2 } },
-        { "id": "w098", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w099" },
-        { "id": "w099", "form": "lúmine", "post": ".", "lemma": "lumen", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } }
+        { "id": "w067", "form": "Fuit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "był", "en": "there was" } },
+        { "id": "w068", "form": "homo", "lemma": "homo", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "człowiek", "en": "a man" } },
+        { "id": "w069", "form": "missus", "lemma": "mitto", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w068", "gloss": { "pl": "posłany", "en": "sent" }, "function": { "pl": "Imiesłów bierny w mianowniku, zgadza się z „homo” (w068).", "en": "A passive participle in the nominative, agreeing with “homo” (w068)." } },
+        { "id": "w070", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w071", "gloss": { "pl": "od", "en": "from" } },
+        { "id": "w071", "form": "Deo", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } },
+        { "id": "w072", "form": "cui", "lemma": "qui", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" }, "gloss": { "pl": "któremu", "en": "whose" }, "function": { "pl": "Celownik posiadania: „któremu było imię Jan”, czyli którego imię brzmiało Jan.", "en": "Dative of possession: “to whom the name was John”, that is, whose name was John." } },
+        { "id": "w073", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "imię", "en": "name" } },
+        { "id": "w074", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "było", "en": "was" } },
+        { "id": "w075", "form": "Ioánnes", "post": ".", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Jan", "en": "John" } },
+        { "id": "w076", "form": "Hic", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Ten", "en": "This man" } },
+        { "id": "w077", "form": "venit", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 4 }, "gloss": { "pl": "przyszedł", "en": "came" }, "function": { "pl": "Perfectum, nie czas teraźniejszy: forma jest ta sama, ale opowiadanie biegnie w przeszłości — „Fuit” (w067), „erat” (w074).", "en": "Perfect, not present: the form is the same for both, but the narrative runs in the past — “Fuit” (w067), “erat” (w074)." } },
+        { "id": "w078", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w079", "gloss": { "pl": "na", "en": "for" } },
+        { "id": "w079", "form": "testimónium", "post": ",", "lemma": "testimonium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "świadectwo", "en": "a witness" } },
+        { "id": "w080", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "aby", "en": "that" } },
+        { "id": "w081", "form": "testimónium", "lemma": "testimonium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "świadectwo", "en": "witness" } },
+        { "id": "w082", "form": "perhibéret", "lemma": "perhibeo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "subj", "voice": "act", "conj": 2 }, "gloss": { "pl": "dał", "en": "he might bear" }, "function": { "pl": "Coniunctivus imperfecti w zdaniu celowym po „ut” (w080).", "en": "Imperfect subjunctive in a purpose clause after “ut” (w080)." } },
+        { "id": "w083", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w084", "gloss": { "pl": "o", "en": "of" } },
+        { "id": "w084", "form": "lúmine", "post": ",", "lemma": "lumen", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "Światłości", "en": "the Light" } },
+        { "id": "w085", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "aby", "en": "that" } },
+        { "id": "w086", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "wszyscy", "en": "all men" }, "function": { "pl": "Przymiotnik rodzaju męskiego w liczbie mnogiej użyty rzeczownikowo: „wszyscy”.", "en": "Masculine plural adjective used substantively: “all”." } },
+        { "id": "w087", "form": "créderent", "lemma": "credo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "impf", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "uwierzyli", "en": "might believe" } },
+        { "id": "w088", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w089", "gloss": { "pl": "przez", "en": "through" } },
+        { "id": "w089", "form": "illum", "post": ".", "lemma": "ille", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "niego", "en": "him" } },
+        { "id": "w090", "form": "Non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
+        { "id": "w091", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "był", "en": "was" } },
+        { "id": "w092", "form": "ille", "lemma": "ille", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "on", "en": "he" } },
+        { "id": "w093", "form": "lux", "post": ",", "lemma": "lux", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Światłością", "en": "the Light" }, "function": { "pl": "Orzecznik w mianowniku przy „erat” (w091).", "en": "Predicate nominative with “erat” (w091)." } },
+        { "id": "w094", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "lecz", "en": "but" } },
+        { "id": "w095", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "aby", "en": "that" } },
+        { "id": "w096", "form": "testimónium", "lemma": "testimonium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "świadectwo", "en": "witness" } },
+        { "id": "w097", "form": "perhibéret", "lemma": "perhibeo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "subj", "voice": "act", "conj": 2 }, "gloss": { "pl": "dał", "en": "he might bear" } },
+        { "id": "w098", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w099", "gloss": { "pl": "o", "en": "of" } },
+        { "id": "w099", "form": "lúmine", "post": ".", "lemma": "lumen", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "Światłości", "en": "the Light" } }
       ]
     },
     {
@@ -209,123 +299,195 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Była Światłość prawdziwa, która oświeca każdego człowieka przychodzącego na ten świat. Na świecie był, a świat przez Niego się stał, a świat Go nie poznał. Przyszedł do swojej własności, a swoi Go nie przyjęli. A wszystkim, którzy Go przyjęli, dał moc stać się synami Bożymi, tym, którzy wierzą w imię Jego, którzy nie z krwi ani z woli ciała, ani z woli męża, ale z Boga się narodzili.",
+        "en": "It was the true Light, which enlightens every man that comes into this world. He was in the world, and the world was made by Him, and the world knew Him not. He came unto His own, and His own received Him not. But as many as received Him, to them He gave power to be made the sons of God, to them that believe in His name, who are born, not of blood, nor of the will of the flesh, nor of the will of man, but of God."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
+            "locator": "J 1, 9–13"
+          },
+          {
+            "title": "Biblia Tysiąclecia (Pallottinum), wydanie V",
+            "locator": "Ewangelia wg św. Jana 1, 1–14"
+          }
+        ],
+        "en": [
+          {
+            "title": "Douay-Rheims Bible (Challoner)",
+            "locator": "John 1:9–13"
+          }
+        ]
+      },
       "words": [
-        { "id": "w100", "form": "Erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" } },
-        { "id": "w101", "form": "lux", "lemma": "lux", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w102", "form": "vera", "post": ",", "lemma": "verus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w101" },
-        { "id": "w103", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" } },
-        { "id": "w104", "form": "illúminat", "lemma": "illumino", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w105", "form": "omnem", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w106" },
-        { "id": "w106", "form": "hóminem", "lemma": "homo", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w107", "form": "veniéntem", "lemma": "venio", "morph": { "pos": "verb", "mood": "part", "tense": "pres", "voice": "act", "case": "acc", "number": "sg", "gender": "m", "conj": 4 }, "head": "w106" },
-        { "id": "w108", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w109" },
-        { "id": "w109", "form": "hunc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
-        { "id": "w110", "form": "mundum", "post": ".", "lemma": "mundus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w111", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w112" },
-        { "id": "w112", "form": "mundo", "lemma": "mundus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w113", "form": "erat", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" } },
-        { "id": "w114", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w115", "form": "mundus", "lemma": "mundus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w116", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w117" },
-        { "id": "w117", "form": "ipsum", "lemma": "ipse", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
-        { "id": "w118", "form": "factus", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w115", "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w119", "form": "est", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w120", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w121", "form": "mundus", "lemma": "mundus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w122", "form": "eum", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
-        { "id": "w123", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w124", "form": "cognóvit", "post": ".", "lemma": "cognosco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w125", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w126" },
-        { "id": "w126", "form": "própria", "lemma": "proprius", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true },
-        { "id": "w127", "form": "venit", "post": ",", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 4 } },
-        { "id": "w128", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w129", "form": "sui", "lemma": "suus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w130", "form": "eum", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
-        { "id": "w131", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w132", "form": "recepérunt", "post": ".", "lemma": "recipio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w133", "form": "Quotquot", "lemma": "quotquot", "morph": { "pos": "adj", "case": "nom", "number": "pl" }, "substantive": true },
-        { "id": "w134", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
-        { "id": "w135", "form": "recepérunt", "lemma": "recipio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w136", "form": "eum", "post": ",", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
-        { "id": "w137", "form": "dedit", "lemma": "do", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w138", "form": "eis", "lemma": "is", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" } },
-        { "id": "w139", "form": "potestátem", "lemma": "potestas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w140", "form": "fílios", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 } },
-        { "id": "w141", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w142", "form": "fíeri", "post": ",", "lemma": "fio", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w143", "form": "his", "lemma": "hic", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" } },
-        { "id": "w144", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
-        { "id": "w145", "form": "credunt", "lemma": "credo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w146", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w147" },
-        { "id": "w147", "form": "nómine", "lemma": "nomen", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w148", "form": "eius", "post": ":", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
-        { "id": "w149", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
-        { "id": "w150", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w151", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w152" },
-        { "id": "w152", "form": "sanguínibus", "post": ",", "lemma": "sanguis", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 } },
-        { "id": "w153", "form": "neque", "lemma": "neque", "morph": { "pos": "conj" } },
-        { "id": "w154", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w155" },
-        { "id": "w155", "form": "voluntáte", "lemma": "voluntas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w156", "form": "carnis", "post": ",", "lemma": "caro", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w157", "form": "neque", "lemma": "neque", "morph": { "pos": "conj" } },
-        { "id": "w158", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w159" },
-        { "id": "w159", "form": "voluntáte", "lemma": "voluntas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w160", "form": "viri", "post": ",", "lemma": "vir", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w161", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
-        { "id": "w162", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w163" },
-        { "id": "w163", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w164", "form": "nati", "lemma": "nascor", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "case": "nom", "number": "pl", "gender": "m", "conj": 3 }, "head": "w149" },
-        { "id": "w165", "form": "sunt", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } }
+        { "id": "w100", "form": "Erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "była", "en": "it was" } },
+        { "id": "w101", "form": "lux", "lemma": "lux", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Światłość", "en": "the Light" } },
+        { "id": "w102", "form": "vera", "post": ",", "lemma": "verus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w101", "gloss": { "pl": "prawdziwa", "en": "true" } },
+        { "id": "w103", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" }, "gloss": { "pl": "która", "en": "which" }, "function": { "pl": "Rodzaj żeński, bo zgadza się z „lux” (w101).", "en": "Feminine, agreeing with “lux” (w101)." } },
+        { "id": "w104", "form": "illúminat", "lemma": "illumino", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "oświeca", "en": "enlightens" } },
+        { "id": "w105", "form": "omnem", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w106", "gloss": { "pl": "każdego", "en": "every" } },
+        { "id": "w106", "form": "hóminem", "lemma": "homo", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "człowieka", "en": "man" } },
+        { "id": "w107", "form": "veniéntem", "lemma": "venio", "morph": { "pos": "verb", "mood": "part", "tense": "pres", "voice": "act", "case": "acc", "number": "sg", "gender": "m", "conj": 4 }, "head": "w106", "gloss": { "pl": "przychodzącego", "en": "coming" }, "function": { "pl": "Biernik. „Venientem” zgadza się z „hóminem” (w106), więc w zdaniu łacińskim to człowiek przychodzi na świat.", "en": "Accusative agreeing with “hóminem” (w106): in the Latin sentence it is the man who comes into the world." } },
+        { "id": "w108", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w109", "gloss": { "pl": "na", "en": "into" } },
+        { "id": "w109", "form": "hunc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "ten", "en": "this" } },
+        { "id": "w110", "form": "mundum", "post": ".", "lemma": "mundus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "świat", "en": "world" } },
+        { "id": "w111", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w112", "gloss": { "pl": "na", "en": "in" } },
+        { "id": "w112", "form": "mundo", "lemma": "mundus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "świecie", "en": "the world" } },
+        { "id": "w113", "form": "erat", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "było", "en": "it was" } },
+        { "id": "w114", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
+        { "id": "w115", "form": "mundus", "lemma": "mundus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "świat", "en": "the world" } },
+        { "id": "w116", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w117", "gloss": { "pl": "przez", "en": "by" } },
+        { "id": "w117", "form": "ipsum", "lemma": "ipse", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Nie (= Słowo)", "en": "Him" } },
+        { "id": "w118", "form": "factus", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w115", "gloss": { "pl": "uczyniony", "en": "made" } },
+        { "id": "w119", "form": "est", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "został", "en": "was" } },
+        { "id": "w120", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
+        { "id": "w121", "form": "mundus", "lemma": "mundus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "świat", "en": "the world" } },
+        { "id": "w122", "form": "eum", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Go", "en": "Him" } },
+        { "id": "w123", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
+        { "id": "w124", "form": "cognóvit", "post": ".", "lemma": "cognosco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "poznał", "en": "knew" } },
+        { "id": "w125", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w126", "gloss": { "pl": "do", "en": "unto" } },
+        { "id": "w126", "form": "própria", "lemma": "proprius", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true, "gloss": { "pl": "swojej własności", "en": "His own" }, "function": { "pl": "Przymiotnik rodzaju nijakiego w liczbie mnogiej użyty rzeczownikowo: „to, co Jego własne”.", "en": "Neuter plural adjective used substantively: “His own things”." } },
+        { "id": "w127", "form": "venit", "post": ",", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 4 }, "gloss": { "pl": "przyszedł", "en": "He came" } },
+        { "id": "w128", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
+        { "id": "w129", "form": "sui", "lemma": "suus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "swoi", "en": "His own" }, "function": { "pl": "Przymiotnik rodzaju męskiego w liczbie mnogiej użyty rzeczownikowo: „swoi”. Por. nijakie „própria” (w126).", "en": "Masculine plural adjective used substantively: “His own people”. Compare neuter “própria” (w126)." } },
+        { "id": "w130", "form": "eum", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Go", "en": "Him" } },
+        { "id": "w131", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
+        { "id": "w132", "form": "recepérunt", "post": ".", "lemma": "recipio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "przyjęli", "en": "received" } },
+        { "id": "w133", "form": "Quotquot", "lemma": "quotquot", "morph": { "pos": "adj", "case": "nom", "number": "pl" }, "substantive": true, "gloss": { "pl": "Ilu", "en": "As many as" } },
+        { "id": "w134", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" }, "gloss": { "pl": "zaś", "en": "but" } },
+        { "id": "w135", "form": "recepérunt", "lemma": "recipio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "przyjęło", "en": "received" } },
+        { "id": "w136", "form": "eum", "post": ",", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Go", "en": "Him" } },
+        { "id": "w137", "form": "dedit", "lemma": "do", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "dał", "en": "He gave" } },
+        { "id": "w138", "form": "eis", "lemma": "is", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "gloss": { "pl": "im", "en": "them" } },
+        { "id": "w139", "form": "potestátem", "lemma": "potestas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "moc", "en": "power" } },
+        { "id": "w140", "form": "fílios", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "synami", "en": "sons" }, "function": { "pl": "Orzecznik w bierniku przy bezokoliczniku „fíeri” (w142).", "en": "Predicate accusative with the infinitive “fíeri” (w142)." } },
+        { "id": "w141", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" } },
+        { "id": "w142", "form": "fíeri", "post": ",", "lemma": "fio", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act" }, "gloss": { "pl": "się stać", "en": "to become" } },
+        { "id": "w143", "form": "his", "lemma": "hic", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "gloss": { "pl": "tym", "en": "to them" }, "function": { "pl": "Celownik liczby mnogiej w apozycji do „eis” (w138).", "en": "Dative plural in apposition to “eis” (w138)." } },
+        { "id": "w144", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" }, "gloss": { "pl": "którzy", "en": "that" } },
+        { "id": "w145", "form": "credunt", "lemma": "credo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "wierzą", "en": "believe" }, "function": { "pl": "Czas teraźniejszy, tryb oznajmujący.", "en": "Present indicative." } },
+        { "id": "w146", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w147", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w147", "form": "nómine", "lemma": "nomen", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "imieniu", "en": "name" } },
+        { "id": "w148", "form": "eius", "post": ":", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jego", "en": "His" } },
+        { "id": "w149", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" }, "gloss": { "pl": "którzy", "en": "who" } },
+        { "id": "w150", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
+        { "id": "w151", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w152", "gloss": { "pl": "z", "en": "of" } },
+        { "id": "w152", "form": "sanguínibus", "post": ",", "lemma": "sanguis", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "krwi", "en": "blood" }, "function": { "pl": "Ablativus liczby mnogiej po „ex” (w151).", "en": "Ablative plural after “ex” (w151)." } },
+        { "id": "w153", "form": "neque", "lemma": "neque", "morph": { "pos": "conj" }, "gloss": { "pl": "ani", "en": "nor" } },
+        { "id": "w154", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w155", "gloss": { "pl": "z", "en": "of" } },
+        { "id": "w155", "form": "voluntáte", "lemma": "voluntas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "woli", "en": "the will" } },
+        { "id": "w156", "form": "carnis", "post": ",", "lemma": "caro", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "ciała", "en": "of the flesh" } },
+        { "id": "w157", "form": "neque", "lemma": "neque", "morph": { "pos": "conj" }, "gloss": { "pl": "ani", "en": "nor" } },
+        { "id": "w158", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w159", "gloss": { "pl": "z", "en": "of" } },
+        { "id": "w159", "form": "voluntáte", "lemma": "voluntas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "woli", "en": "the will" } },
+        { "id": "w160", "form": "viri", "post": ",", "lemma": "vir", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "męża", "en": "of man" } },
+        { "id": "w161", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "ale", "en": "but" } },
+        { "id": "w162", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w163", "gloss": { "pl": "z", "en": "of" } },
+        { "id": "w163", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } },
+        { "id": "w164", "form": "nati", "lemma": "nascor", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "case": "nom", "number": "pl", "gender": "m", "conj": 3 }, "head": "w149", "gloss": { "pl": "narodzili", "en": "born" }, "function": { "pl": "Imiesłów deponentny: forma bierna, znaczenie czynne. Z „sunt” (w165) tworzy perfectum — narodzili się.", "en": "A deponent participle: passive in form, active in meaning. With “sunt” (w165) it forms the perfect — they were born." } },
+        { "id": "w165", "form": "sunt", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "się", "en": "are" } }
       ]
     },
     {
       "id": "s11",
       "type": "rubric",
       "text": "Genuflectit dicens:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do", "mr"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan przyklęka i mówi:",
+        "en": "The priest genuflects and says:"
+      }
     },
     {
       "id": "s12",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "A Słowo stało się ciałem,",
+        "en": "And the Word was made flesh,"
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
+            "locator": "J 1, 14"
+          },
+          {
+            "title": "Biblia Tysiąclecia (Pallottinum), wydanie V",
+            "locator": "Ewangelia wg św. Jana 1, 1–14"
+          }
+        ],
+        "en": [
+          {
+            "title": "Douay-Rheims Bible (Challoner)",
+            "locator": "John 1:14"
+          }
+        ]
+      },
       "words": [
-        { "id": "w166", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w167", "form": "Verbum", "lemma": "verbum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w168", "form": "caro", "lemma": "caro", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w169", "form": "factum", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "n", "conj": 3 }, "head": "w167" },
-        { "id": "w170", "form": "est", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } }
+        { "id": "w166", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
+        { "id": "w167", "form": "Verbum", "lemma": "verbum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "Słowo", "en": "the Word" } },
+        { "id": "w168", "form": "caro", "lemma": "caro", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "ciałem", "en": "flesh" }, "function": { "pl": "Orzecznik rodzaju żeńskiego w mianowniku. Nijakie „factum” (w169) zgadza się z „Verbum” (w167).", "en": "Feminine predicate nominative. Neuter “factum” (w169) agrees with “Verbum” (w167)." } },
+        { "id": "w169", "form": "factum", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "n", "conj": 3 }, "head": "w167", "gloss": { "pl": "stało", "en": "made" } },
+        { "id": "w170", "form": "est", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "się", "en": "was" } }
       ]
     },
     {
       "id": "s13",
       "type": "rubric",
       "text": "Et surgens prosequitur:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do", "mr"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan powstaje i mówi dalej:",
+        "en": "The priest rises and continues:"
+      }
     },
     {
       "id": "s14",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "i zamieszkało między nami; i ujrzeliśmy chwałę Jego, chwałę jakby Jednorodzonego od Ojca, pełne łaski i prawdy.",
+        "en": "and dwelt among us; and we saw His glory, the glory as of the Only-begotten of the Father, full of grace and truth."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
+            "locator": "J 1, 14"
+          },
+          {
+            "title": "Biblia Tysiąclecia (Pallottinum), wydanie V",
+            "locator": "Ewangelia wg św. Jana 1, 1–14"
+          }
+        ],
+        "en": [
+          {
+            "title": "Douay-Rheims Bible (Challoner)",
+            "locator": "John 1:14"
+          }
+        ]
+      },
       "words": [
-        { "id": "w171", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w172", "form": "habitávit", "lemma": "habito", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w173", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w174" },
-        { "id": "w174", "form": "nobis", "post": ":", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
-        { "id": "w175", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w176", "form": "vídimus", "lemma": "video", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 2 } },
-        { "id": "w177", "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w178", "form": "eius", "post": ",", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
-        { "id": "w179", "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w180", "form": "quasi", "lemma": "quasi", "morph": { "pos": "conj" } },
-        { "id": "w181", "form": "Unigéniti", "lemma": "unigenitus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "substantive": true },
-        { "id": "w182", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w183" },
-        { "id": "w183", "form": "Patre", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w184", "form": "plenum", "lemma": "plenus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w167", "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
-        { "id": "w185", "form": "grátiæ", "lemma": "gratia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w186", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w187", "form": "veritátis", "post": ".", "lemma": "veritas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } }
+        { "id": "w171", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w172", "form": "habitávit", "lemma": "habito", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "zamieszkało", "en": "dwelt" } },
+        { "id": "w173", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w174", "gloss": { "pl": "wśród", "en": "among" } },
+        { "id": "w174", "form": "nobis", "post": ":", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } },
+        { "id": "w175", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w176", "form": "vídimus", "lemma": "video", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 2 }, "gloss": { "pl": "ujrzeliśmy", "en": "we saw" }, "function": { "pl": "Perfectum indicativi, pierwsza osoba liczby mnogiej.", "en": "Perfect indicative, first-person plural." } },
+        { "id": "w177", "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwałę", "en": "the glory" } },
+        { "id": "w178", "form": "eius", "post": ",", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jego", "en": "of Him" } },
+        { "id": "w179", "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwałę", "en": "glory" } },
+        { "id": "w180", "form": "quasi", "lemma": "quasi", "morph": { "pos": "conj" }, "gloss": { "pl": "jakby", "en": "as" }, "function": { "pl": "Spójnik wprowadzający porównanie.", "en": "Conjunction introducing a comparison." } },
+        { "id": "w181", "form": "Unigéniti", "lemma": "unigenitus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "substantive": true, "gloss": { "pl": "Jednorodzonego", "en": "of the Only-begotten" }, "function": { "pl": "Przymiotnik użyty rzeczownikowo w dopełniaczu: „Jednorodzonego”.", "en": "Adjective used substantively in the genitive: “of the Only-begotten”." } },
+        { "id": "w182", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w183", "gloss": { "pl": "od", "en": "from" } },
+        { "id": "w183", "form": "Patre", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojca", "en": "the Father" } },
+        { "id": "w184", "form": "plenum", "lemma": "plenus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w167", "gloss": { "pl": "pełne", "en": "full" }, "function": { "pl": "Forma jest zarazem mianownikiem i biernikiem rodzaju nijakiego. Ta edycja czyta ją jako mianownik odnoszący się do „Verbum” (w167), od którego zależą dopełniacze „grátiæ” (w185) i „veritátis” (w187). Glossa interlinearis czyta biernik, dopełnienie „vídimus”.", "en": "The form is neuter nominative and accusative at once. This edition reads a nominative referring back to “Verbum” (w167), with the genitives “grátiæ” (w185) and “veritátis” (w187) depending on it. The Glossa interlinearis reads an accusative, the object of “vídimus”." }, "function_citations": { "pl": [{ "title": "Glossa ordinaria on John", "locator": "John 1:14, plenum gratiae et veritatis (interlinear gloss, which reads an accusative)", "url": "https://gloss-e.irht.cnrs.fr/php/editions_chapitre.php?chapitre=58_1&id=liber&numLivre=58" }], "en": [{ "title": "Glossa ordinaria on John", "locator": "John 1:14, plenum gratiae et veritatis (interlinear gloss, which reads an accusative)", "url": "https://gloss-e.irht.cnrs.fr/php/editions_chapitre.php?chapitre=58_1&id=liber&numLivre=58" }] }, "note": { "pl": "Forma nie rozstrzyga między mianownikiem a biernikiem, a dawni komentatorzy czytali ją na oba sposoby. Ta edycja przyjmuje mianownik i zaznacza wątpliwość.", "en": "The form decides nothing between nominative and accusative, and the old commentators read it both ways. This edition takes the nominative and marks the doubt." } },
+        { "id": "w185", "form": "grátiæ", "lemma": "gratia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "łaski", "en": "of grace" } },
+        { "id": "w186", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w187", "form": "veritátis", "post": ".", "lemma": "veritas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "prawdy", "en": "truth" } }
       ]
     },
     {
@@ -333,10 +495,6 @@
       "type": "verse",
       "speaker": "minister",
       "voice": "clara",
-      "words": [
-        { "id": "w188", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w189", "form": "grátias", "post": ".", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } }
-      ],
       "participation": {
         "lecta": {
           "gradus": 1,
@@ -346,7 +504,43 @@
           "gradus": 1,
           "source": "DMS 25 a"
         }
-      }
+      },
+      "translation": {
+        "pl": "Bogu niech będą dzięki.",
+        "en": "Thanks be to God."
+      },
+      "words": [
+        { "id": "w188", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bogu", "en": "to God" } },
+        { "id": "w189", "form": "grátias", "post": ".", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "dzięki", "en": "thanks" } }
+      ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The Last Gospel: the greeting at the Gospel corner, the announcement of the beginning of St John with its answer, John 1, 1-14, the genuflection at Et Verbum caro factum est, and the closing Deo grátias. The largest single text in the corpus. VENIT at w077 and w127 is perfect, not present: the two are spelled alike, and the narrative around them decides — Fuit at w067, erat at w074, recepérunt at w132. PLENUM at w184 is neuter nominative and refers back to VERBUM at w167, across the intervening description of the glory beheld; its genitives are GRÁTIÆ at w185 and VERITÁTIS at w187. The reader note cites the same construction in the Glossa ordinaria. NIHIL at w044 is indeclinable: the corpus states the syntactic case, number and gender the sentence gives it, though the form itself marks none. QUOD at w045 opens a clause that witness do, the hand missal and mr all point as belonging to what precedes (vg-clementina's substantive-only profile leaves its punctuation out of scope); the corpus follows their punctuation, which is the whole of the decision. QUASI at w180 is tagged conj, as sicut is under the classification ruling recorded in SCHEMA.md. NEQUE at w153 and w157 has its own lemma beside nec: Collatinus heads neque itself and would not link the form to nec. SUI at w129 (suus, the reflexive possessive) and PRÓPRIA at w126 (proprius, an adjective of ownership) are two different words in one and the same use — substantival, without a noun: neuter plural for his own things, masculine plural for his own people. The auxiliaries at w038, w043, w047, w119, w165 and w170 are separate tokens of sum; the participle beside each carries the tense. FACTA at w037 and FACTUS at w118 name Whitaker's alone; FÍERI at w142 rests on the recorded ruling about fio's infinitive. Witness do does not print the two responses in its Ordo chain — it keeps each once as a shared block and calls it from many places — and the witness file declares that expansion.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
+      "witnesses": "witnesses/ordinarium.evangelium-ultimum/",
+      "apparatus": "witnesses/ordinarium.evangelium-ultimum/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s04": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s07": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s11": { "analysis": { "confidence": "high", "sources": ["editorial", "do", "mr"], "review": "pending" } },
+      "s13": { "analysis": { "confidence": "high", "sources": ["editorial", "do", "mr"], "review": "pending" } }
+    },
+    "words": {
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w036": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
+      "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w041": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
+      "w049": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
+      "w118": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w142": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w184": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } }
+    }
+  }
 }

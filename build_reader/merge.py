@@ -26,9 +26,6 @@ document that cannot be taken apart again is a migration nobody can undo.
 
 from __future__ import annotations
 
-import json
-from pathlib import Path
-
 LANGS = ("pl", "en")
 SCHEMA = "0.14.0"
 
@@ -163,13 +160,4 @@ def split(doc: dict) -> tuple[dict, dict[str, dict]]:
     return text, glosses
 
 
-def load(corpus: Path, text_id: str) -> tuple[dict, dict[str, dict]]:
-    category, name = text_id.split(".", 1)
-    text = json.loads((corpus / "texts" / category / f"{name}.json").read_text(encoding="utf-8"))
-    glosses = {
-        lang: json.loads(
-            (corpus / "glosses" / lang / f"{text_id}.json").read_text(encoding="utf-8")
-        )
-        for lang in LANGS
-    }
-    return text, glosses
+# Reading is build_reader/store.py's job. This module only changes shape.

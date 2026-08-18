@@ -1,37 +1,40 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "proprium.dominica-i-adventus-graduale",
   "title": "Univérsi, qui te exspéctant",
   "category": "proprium",
   "section": "missa-catechumenorum",
   "variant": "dominica-i-adventus",
   "sung": true,
-  "status": "working-edition",
   "ids": {
     "next": 19
   },
-  "notes": "Part of the proper for the First Sunday of Advent. The biblical or liturgical citation and the source boundary are recorded in the witness files.",
-  "source": {
-    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. The witnesses agree with zero divergence, so this text carries no apparatus.",
-    "witnesses": "witnesses/proprium.dominica-i-adventus-graduale/"
+  "about": {
+    "pl": "Graduał I Niedzieli Adwentu, Ps 24, 3 i 4 według numeracji Wulgaty (Ps 25 w numeracji hebrajskiej). Śpiewa te dwa wersety, które śpiewał przed chwilą introit, i ma notas fac mihi tam, gdzie introit ma demónstra mihi.",
+    "en": "The Gradual of the First Sunday of Advent, Psalm 24:3 and 4 in the Vulgate numbering (Psalm 25 in Hebrew). It sings the two verses the Introit has just sung, and reads notas fac mihi where the Introit reads demónstra mihi."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Dominica I Adventus, printed page 2",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ],
+    "en": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Dominica I Adventus, printed page 2",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ]
+  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "words": [
-        { "id": "w001", "form": "Univérsi", "post": ",", "lemma": "universus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w002", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
-        { "id": "w003", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
-        { "id": "w004", "form": "exspéctant", "post": ",", "lemma": "exspecto", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w005", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w006", "form": "confundéntur", "post": ",", "lemma": "confundo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 3 } },
-        { "id": "w007", "form": "Dómine", "post": ".", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } }
-      ],
       "participation": {
         "lecta": {
           "gradus": 4,
@@ -41,26 +44,26 @@
           "gradus": 3,
           "source": "DMS 25 c"
         }
-      }
+      },
+      "translation": {
+        "pl": "Nikt, kto Ciebie oczekuje, nie będzie zawstydzony, Panie.",
+        "en": "None who await You shall be put to shame, O Lord."
+      },
+      "words": [
+        { "id": "w001", "form": "Univérsi", "post": ",", "lemma": "universus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "wszyscy", "en": "all" }, "function": { "pl": "Przymiotnik występuje rzeczownikowo jako „wszyscy”. Zdanie względne wskazuje, że chodzi o oczekujących Pana.", "en": "The adjective stands substantivally for all people. Its relative clause identifies them as those who await the Lord." } },
+        { "id": "w002", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" }, "gloss": { "pl": "którzy", "en": "who" } },
+        { "id": "w003", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "Ciebie", "en": "Thou" } },
+        { "id": "w004", "form": "exspéctant", "post": ",", "lemma": "exspecto", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "oczekują", "en": "await" } },
+        { "id": "w005", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
+        { "id": "w006", "form": "confundéntur", "post": ",", "lemma": "confundo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 3 }, "gloss": { "pl": "będą zawstydzeni", "en": "shall be put to shame" } },
+        { "id": "w007", "form": "Dómine", "post": ".", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "gloss": { "pl": "Panie", "en": "Lord" } }
+      ]
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "words": [
-        { "id": "w008", "form": "Vias", "lemma": "via", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
-        { "id": "w009", "form": "tuas", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w008" },
-        { "id": "w010", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w011", "form": "notas", "lemma": "notus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w008" },
-        { "id": "w012", "form": "fac", "lemma": "facio", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w013", "form": "mihi", "post": ":", "lemma": "ego", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
-        { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w015", "form": "sémitas", "lemma": "semita", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
-        { "id": "w016", "form": "tuas", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w015" },
-        { "id": "w017", "form": "édoce", "lemma": "edoceo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
-        { "id": "w018", "form": "me", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } }
-      ],
       "participation": {
         "lecta": {
           "gradus": 4,
@@ -70,7 +73,34 @@
           "gradus": 3,
           "source": "DMS 25 c"
         }
-      }
+      },
+      "translation": {
+        "pl": "Ukaż mi swoje drogi, Panie, i naucz mnie swoich ścieżek.",
+        "en": "Make Your ways known to me, O Lord, and teach me Your paths."
+      },
+      "words": [
+        { "id": "w008", "form": "Vias", "lemma": "via", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "drogi", "en": "ways" } },
+        { "id": "w009", "form": "tuas", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w008", "gloss": { "pl": "Twoje", "en": "Thy" } },
+        { "id": "w010", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w011", "form": "notas", "lemma": "notus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w008", "gloss": { "pl": "znanymi", "en": "known" } },
+        { "id": "w012", "form": "fac", "lemma": "facio", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "gloss": { "pl": "uczyń", "en": "make" } },
+        { "id": "w013", "form": "mihi", "post": ":", "lemma": "ego", "morph": { "case": "dat", "number": "sg", "pos": "pron" }, "gloss": { "pl": "mi", "en": "to me" } },
+        { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w015", "form": "sémitas", "lemma": "semita", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "ścieżki", "en": "paths" } },
+        { "id": "w016", "form": "tuas", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w015", "gloss": { "pl": "Twoje", "en": "Thy" } },
+        { "id": "w017", "form": "édoce", "lemma": "edoceo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "naucz", "en": "teach" } },
+        { "id": "w018", "form": "me", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" } }
+      ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "Part of the proper for the First Sunday of Advent. The biblical or liturgical citation and the source boundary are recorded in the witness files.",
+    "source": {
+      "method": "Verified by collation against the 1962 typical edition and Divinum Officium. The witnesses agree with zero divergence, so this text carries no apparatus.",
+      "witnesses": "witnesses/proprium.dominica-i-adventus-graduale/"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" }
+  }
 }

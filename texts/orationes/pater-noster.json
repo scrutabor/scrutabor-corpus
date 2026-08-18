@@ -1,120 +1,187 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "orationes.pater-noster",
   "title": "Pater noster",
   "category": "orationes",
   "section": "orationes-communes",
   "variant": "devotional",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 51
   },
-  "notes": "The Lord's Prayer in its devotional form (Mt 6:9-13 as received in the liturgy). Wording transcribed verbatim from witness do-missa (1962 Ordo Missae; quotidianum, not the modernized cotidianum of some editions); the final Amen is the priest's quiet response in the Ordo, standard in the devotional form.",
-  "source": {
-    "method": "Transcribed verbatim from witness do-missa, collated against tpl: zero substantive divergence.",
-    "witnesses": "witnesses/orationes.pater-noster/"
+  "about": {
+    "pl": "Modlitwa Pańska, której Jezus nauczył swoich uczniów (Mt 6, 9–13, a w formie krótszej Łk 11, 2–4). Zwraca się do Boga jako Ojca. Prosi o uświęcenie Jego imienia, przyjście królestwa i spełnienie Jego woli, a następnie o codzienny chleb, przebaczenie, o to, by nie być wodzonym na pokuszenie i wybawienie od zła.",
+    "en": "The Lord's Prayer, which Jesus taught His disciples (Mt 6:9–13, and in a shorter form at Lk 11:2-4). It addresses God as Father. It asks that His name be hallowed, His kingdom come, and His will be done, and then asks for daily bread, forgiveness, not to be led into temptation, and deliverance from evil."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Nova Vulgata, Evangelium secundum Matthaeum",
+        "locator": "6, 9–13",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-matthaeum_lt.html#6"
+      },
+      {
+        "title": "Nova Vulgata, Evangelium secundum Lucam",
+        "locator": "11, 2–4",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-lucam_lt.html#11"
+      }
+    ],
+    "en": [
+      {
+        "title": "Nova Vulgata, Evangelium secundum Matthaeum",
+        "locator": "6, 9–13",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-matthaeum_lt.html#6"
+      },
+      {
+        "title": "Nova Vulgata, Evangelium secundum Lucam",
+        "locator": "11, 2–4",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-lucam_lt.html#11"
+      }
+    ]
+  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
+      "translation": {
+        "pl": "Ojcze nasz, któryś jest w niebie,",
+        "en": "Our Father, who art in heaven,"
+      },
       "words": [
-        { "id": "w001", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w002", "form": "noster", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w001" },
-        { "id": "w003", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w004", "form": "es", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w006" },
-        { "id": "w006", "form": "cælis", "post": ".", "lemma": "caelum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } }
+        { "id": "w001", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcze", "en": "Father" } },
+        { "id": "w002", "form": "noster", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w001", "gloss": { "pl": "nasz", "en": "our" }, "function": { "pl": "Zgadza się z “Pater” (w001). Liczba mnoga wyraża wspólną modlitwę.", "en": "Agrees with “Pater” (w001). The plural expresses a common prayer." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "Matthew 6:9" }, { "title": "Catechismus Catholicae Ecclesiae", "locator": "nn. 2786–2793", "url": "https://www.vatican.va/archive/catechism_lt/index_lt.htm" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "Matthew 6:9" }, { "title": "Catechismus Catholicae Ecclesiae", "locator": "nn. 2786–2793", "url": "https://www.vatican.va/archive/catechism_lt/index_lt.htm" }] } },
+        { "id": "w003", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
+        { "id": "w004", "form": "es", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jesteś", "en": "art" }, "function": { "pl": "Po wołaczu zdanie względne zachowuje 2. osobę: „który jesteś”, nie „który jest”.", "en": "After the vocative the relative clause keeps the 2nd person: “who art”, not “who is”." } },
+        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w006", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w006", "form": "cælis", "post": ".", "lemma": "caelum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "niebiosach", "en": "the heavens" }, "function": { "pl": "Liczba mnoga, podczas gdy “cælo” (w018) występuje dalej w liczbie pojedynczej. Utrwalony przekład oddaje oba miejsca liczbą pojedynczą.", "en": "Plural, while “cælo” (w018) later in the prayer is singular. The received English renders both as singular." } }
       ]
     },
     {
       "id": "s02",
       "type": "verse",
+      "translation": {
+        "pl": "święć się imię Twoje.",
+        "en": "hallowed be Thy name."
+      },
       "words": [
-        { "id": "w007", "form": "Sanctificétur", "lemma": "sanctifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 1 } },
-        { "id": "w008", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w009", "form": "tuum", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w008" }
+        { "id": "w007", "form": "Sanctificétur", "lemma": "sanctifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 1 }, "gloss": { "pl": "niech się święci", "en": "hallowed be" }, "function": { "pl": "Tryb łączący wyrażający prośbę.", "en": "A subjunctive expressing a petition." } },
+        { "id": "w008", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "imię", "en": "name" } },
+        { "id": "w009", "form": "tuum", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w008", "gloss": { "pl": "Twoje", "en": "Thy" }, "function": { "pl": "Zgadza się z „nomen” (w008).", "en": "Agrees with “nomen” (w008)." } }
       ]
     },
     {
       "id": "s03",
       "type": "verse",
+      "translation": {
+        "pl": "Przyjdź królestwo Twoje.",
+        "en": "Thy kingdom come."
+      },
       "words": [
-        { "id": "w010", "form": "Advéniat", "lemma": "advenio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 } },
-        { "id": "w011", "form": "regnum", "lemma": "regnum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w012", "form": "tuum", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w011" }
+        { "id": "w010", "form": "Advéniat", "lemma": "advenio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 }, "gloss": { "pl": "niech przyjdzie", "en": "may come" }, "function": { "pl": "Tryb łączący wyrażający prośbę.", "en": "A subjunctive expressing a petition." } },
+        { "id": "w011", "form": "regnum", "lemma": "regnum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "królestwo", "en": "kingdom" } },
+        { "id": "w012", "form": "tuum", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w011", "gloss": { "pl": "Twoje", "en": "Thy" }, "function": { "pl": "Zgadza się z „regnum” (w011).", "en": "Agrees with “regnum” (w011)." } }
       ]
     },
     {
       "id": "s04",
       "type": "verse",
+      "translation": {
+        "pl": "Bądź wola Twoja, jako w niebie, tak i na ziemi.",
+        "en": "Thy will be done on earth as it is in heaven."
+      },
       "words": [
-        { "id": "w013", "form": "Fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
-        { "id": "w014", "form": "volúntas", "lemma": "voluntas", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w015", "form": "tua", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w014" },
-        { "id": "w016", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
-        { "id": "w017", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w018" },
-        { "id": "w018", "form": "cælo", "lemma": "caelum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w020", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w021" },
-        { "id": "w021", "form": "terra", "post": ".", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } }
+        { "id": "w013", "form": "Fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" }, "gloss": { "pl": "niech się stanie", "en": "be done" }, "function": { "pl": "Tryb łączący wyrażający prośbę. Ta sama forma “fiat” występuje w odpowiedzi Maryi przy zwiastowaniu (Łk 1, 38).", "en": "A subjunctive expressing a petition. The same form “fiat” occurs in Mary's reply at the Annunciation (Lk 1:38)." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "Matthew 6:10 and Luke 1:38" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "Matthew 6:10 and Luke 1:38" }] } },
+        { "id": "w014", "form": "volúntas", "lemma": "voluntas", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "wola", "en": "will" } },
+        { "id": "w015", "form": "tua", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w014", "gloss": { "pl": "Twoja", "en": "Thy" }, "function": { "pl": "Zgadza się z „volúntas” (w014).", "en": "Agrees with “volúntas” (w014)." } },
+        { "id": "w016", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" }, "gloss": { "pl": "jako", "en": "as" } },
+        { "id": "w017", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w018", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w018", "form": "cælo", "lemma": "caelum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "niebie", "en": "heaven" } },
+        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w020", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w021", "gloss": { "pl": "na", "en": "on" } },
+        { "id": "w021", "form": "terra", "post": ".", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ziemi", "en": "earth" } }
       ]
     },
     {
       "id": "s05",
       "type": "verse",
+      "translation": {
+        "pl": "Chleba naszego powszedniego daj nam dzisiaj.",
+        "en": "Give us this day our daily bread."
+      },
       "words": [
-        { "id": "w022", "form": "Panem", "lemma": "panis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w023", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w022" },
-        { "id": "w024", "form": "quotidiánum", "lemma": "quotidianus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w022" },
-        { "id": "w025", "form": "da", "lemma": "do", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
-        { "id": "w026", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
-        { "id": "w027", "form": "hódie", "post": ".", "lemma": "hodie", "morph": { "pos": "adv" } }
+        { "id": "w022", "form": "Panem", "lemma": "panis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "chleba", "en": "bread" }, "function": { "pl": "Biernik, dopełnienie “da” (w025). Tradycyjny polski przekład oddaje go dopełniaczem “chleba”.", "en": "Accusative object of “da” (w025)." } },
+        { "id": "w023", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w022", "gloss": { "pl": "naszego", "en": "our" }, "function": { "pl": "Zgadza się z „Panem” (w022).", "en": "Agrees with “Panem” (w022)." } },
+        { "id": "w024", "form": "quotidiánum", "lemma": "quotidianus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w022", "gloss": { "pl": "powszedniego", "en": "daily" }, "function": { "pl": "Zgadza się z „Panem” (w022).", "en": "Agrees with “Panem” (w022)." } },
+        { "id": "w025", "form": "da", "lemma": "do", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "daj", "en": "give" }, "function": { "pl": "Tryb rozkazujący wyrażający prośbę.", "en": "An imperative expressing a petition." } },
+        { "id": "w026", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "to us" } },
+        { "id": "w027", "form": "hódie", "post": ".", "lemma": "hodie", "morph": { "pos": "adv" }, "gloss": { "pl": "dzisiaj", "en": "today" } }
       ]
     },
     {
       "id": "s06",
       "type": "verse",
+      "translation": {
+        "pl": "I odpuść nam nasze winy, jako i my odpuszczamy naszym winowajcom.",
+        "en": "And forgive us our trespasses, as we forgive those who trespass against us."
+      },
       "words": [
-        { "id": "w028", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w029", "form": "dimítte", "lemma": "dimitto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
-        { "id": "w030", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
-        { "id": "w031", "form": "débita", "lemma": "debitum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w032", "form": "nostra", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w031" },
-        { "id": "w033", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
-        { "id": "w034", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w035", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
-        { "id": "w036", "form": "dimíttimus", "lemma": "dimitto", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w037", "form": "debitóribus", "lemma": "debitor", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 3 } },
-        { "id": "w038", "form": "nostris", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w037" }
+        { "id": "w028", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w029", "form": "dimítte", "lemma": "dimitto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "odpuść", "en": "forgive" } },
+        { "id": "w030", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "us" }, "function": { "pl": "Celownik oznaczający osobę, której odpuszcza się winy.", "en": "Dative denoting the person whose debts are forgiven." } },
+        { "id": "w031", "form": "débita", "lemma": "debitum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "winy", "en": "debts" }, "function": { "pl": "Dosłownie „długi”. Tradycyjny polski przekład ma „winy”.", "en": "Literally “debts”. The received English says “trespasses”." } },
+        { "id": "w032", "form": "nostra", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w031", "gloss": { "pl": "nasze", "en": "our" }, "function": { "pl": "Zgadza się z „débita” (w031).", "en": "Agrees with “débita” (w031)." } },
+        { "id": "w033", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" }, "gloss": { "pl": "jako", "en": "as" } },
+        { "id": "w034", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "also" }, "function": { "pl": "Tutaj “et” znaczy także i wzmacnia “nos” (w035).", "en": "Here “et” means also and reinforces “nos” (w035)." } },
+        { "id": "w035", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "nom", "number": "pl" }, "gloss": { "pl": "my", "en": "we" }, "function": { "pl": "Podmiot wypowiedziany wprost dla nacisku.", "en": "The subject spelled out for emphasis." } },
+        { "id": "w036", "form": "dimíttimus", "lemma": "dimitto", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "odpuszczamy", "en": "forgive" }, "function": { "pl": "Tryb oznajmujący w zdaniu wprowadzonym przez “sicut” (w033).", "en": "Indicative within the clause introduced by “sicut” (w033)." } },
+        { "id": "w037", "form": "debitóribus", "lemma": "debitor", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "winowajcom", "en": "debtors" }, "function": { "pl": "Celownik zależny od „dimíttimus” (w036). Dosłownie: dłużnikom. Tradycyjny przekład ma „winowajcom”.", "en": "Dative dependent on “dimíttimus” (w036). Literally, to the debtors. The received English has those who trespass against us." } },
+        { "id": "w038", "form": "nostris", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w037", "gloss": { "pl": "naszym", "en": "our" }, "function": { "pl": "Zgadza się z „debitóribus” (w037).", "en": "Agrees with “debitóribus” (w037)." } }
       ]
     },
     {
       "id": "s07",
       "type": "verse",
+      "translation": {
+        "pl": "I nie wódź nas na pokuszenie,",
+        "en": "And lead us not into temptation,"
+      },
       "words": [
-        { "id": "w039", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w040", "form": "ne", "lemma": "ne", "morph": { "pos": "adv" } },
-        { "id": "w041", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
-        { "id": "w042", "form": "indúcas", "lemma": "induco", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
-        { "id": "w043", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w044" },
-        { "id": "w044", "form": "tentatiónem", "post": ":", "lemma": "tentatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } }
+        { "id": "w039", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w040", "form": "ne", "lemma": "ne", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" }, "function": { "pl": "Z trybem łączącym „indúcas” (w042) tworzy przeczącą prośbę: „abyś nie…”.", "en": "With the subjunctive “indúcas” (w042) it forms a negative petition: “that Thou not…”." } },
+        { "id": "w041", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } },
+        { "id": "w042", "form": "indúcas", "lemma": "induco", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "wódź", "en": "lead" }, "function": { "pl": "Tryb łączący zależny od „ne” (w040). Tradycyjny przekład łączy oba słowa jako „nie wódź”.", "en": "Subjunctive governed by “ne” (w040). The received English combines the two as “lead us not”." } },
+        { "id": "w043", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w044", "gloss": { "pl": "na", "en": "into" }, "function": { "pl": "Przyimek „in” z biernikiem wyraża kierunek: na pokuszenie.", "en": "The preposition “in” with the accusative expresses direction: into temptation." } },
+        { "id": "w044", "form": "tentatiónem", "post": ":", "lemma": "tentatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "pokuszenie", "en": "temptation" }, "function": { "pl": "Biernik po „in” (w043), zależny od „indúcas” (w042).", "en": "Accusative after “in” (w043), dependent on “indúcas” (w042)." } }
       ]
     },
     {
       "id": "s08",
       "type": "verse",
+      "translation": {
+        "pl": "ale nas zbaw ode złego. Amen.",
+        "en": "but deliver us from evil. Amen."
+      },
       "words": [
-        { "id": "w045", "form": "Sed", "lemma": "sed", "morph": { "pos": "conj" } },
-        { "id": "w046", "form": "líbera", "lemma": "libero", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
-        { "id": "w047", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
-        { "id": "w048", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w049" },
-        { "id": "w049", "form": "malo", "post": ".", "lemma": "malum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
-        { "id": "w050", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+        { "id": "w045", "form": "Sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "ale", "en": "but" } },
+        { "id": "w046", "form": "líbera", "lemma": "libero", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "zbaw", "en": "deliver" }, "function": { "pl": "Tryb rozkazujący. Dosłownie: wybaw. Tradycyjny przekład ma „zbaw”.", "en": "Imperative of “líbero”: deliver." } },
+        { "id": "w047", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } },
+        { "id": "w048", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w049", "gloss": { "pl": "od", "en": "from" } },
+        { "id": "w049", "form": "malo", "post": ".", "lemma": "malum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "złego", "en": "evil" }, "function": { "pl": "Wydanie analizuje „malo” jako rzeczownik nijaki oznaczający zło. Tak podejmuje je mszalny embolizm w liczbie mnogiej: „ab ómnibus malis”. Katechizm wyjaśnia zarazem, że prośba odnosi się ostatecznie do Złego (KKK 2851).", "en": "This edition parses “malo” as the neuter noun for evil. The Mass embolism takes it up in the neuter plural, “ab ómnibus malis.” The Catechism also explains that the petition ultimately refers to the Evil One (CCC 2851)." }, "function_citations": { "pl": [{ "title": "Catechismus Catholicae Ecclesiae", "locator": "n. 2851", "url": "https://www.vatican.va/archive/catechism_lt/p4s2a3_lt.htm" }, { "title": "Missale Romanum (1962)", "locator": "Ordo Missae, embolism after the Lord's Prayer", "url": "https://archive.org/details/missale_romanum-1962" }], "en": [{ "title": "Catechismus Catholicae Ecclesiae", "locator": "n. 2851", "url": "https://www.vatican.va/archive/catechism_lt/p4s2a3_lt.htm" }, { "title": "Missale Romanum (1962)", "locator": "Ordo Missae, embolism after the Lord's Prayer", "url": "https://archive.org/details/missale_romanum-1962" }] }, "note": { "pl": "Forma jest ablatiwem obu słów naraz. Może to być malum — zło, rzecz zła — albo malus — Zły, czyli szatan. Ani forma, ani zdanie nie rozstrzygają, i tradycja czyta to na oba sposoby. Ta edycja przyjmuje malum i zaznacza wątpliwość.", "en": "The form is the ablative of both words at once. It can be malum, evil as a thing, or malus, the Evil One. Neither the form nor the sentence decides, and the tradition reads it both ways. This edition takes malum and marks the doubt." } },
+        { "id": "w050", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The Lord's Prayer in its devotional form (Mt 6:9-13 as received in the liturgy). Wording transcribed verbatim from witness do-missa (1962 Ordo Missae; quotidianum, not the modernized cotidianum of some editions); the final Amen is the priest's quiet response in the Ordo, standard in the devotional form.",
+    "source": {
+      "method": "Transcribed verbatim from witness do-missa, collated against tpl: zero substantive divergence.",
+      "witnesses": "witnesses/orationes.pater-noster/"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w049": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } }
+    }
+  }
 }

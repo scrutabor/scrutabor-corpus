@@ -2,7 +2,6 @@
 
 import gzip
 import json
-import shutil
 from pathlib import Path
 
 from build_reader.emit import Parses, emit, index, read_corpus, text_artifact, verify
@@ -54,10 +53,7 @@ def test_the_parse_table_is_shared_and_small(tmp_path):
 
 def test_the_edition_is_much_smaller_than_its_source(tmp_path):
     out = build(tmp_path)
-    source = sum(
-        p.stat().st_size
-        for p in list(CORPUS.glob("texts/*/*.json")) + list(CORPUS.glob("glosses/*/*.json"))
-    )
+    source = sum(p.stat().st_size for p in CORPUS.glob("texts/*/*.json"))
     made = sum(p.stat().st_size for p in out.rglob("*.json"))
     assert made < source * 0.6, f"{made} against {source} is not worth a build step"
 
@@ -98,15 +94,19 @@ def test_the_index_compresses_to_something_a_phone_can_hold(tmp_path):
     assert packed < 120_000, "the index is what search and lemma pages both read"
 
 
-def test_a_missing_gloss_layer_fails_loudly(tmp_path):
-    # The edition may never quietly emit a text with one language missing.
-    fake = tmp_path / "corpus"
-    shutil.copytree(CORPUS / "texts", fake / "texts")
-    shutil.copytree(CORPUS / "glosses", fake / "glosses")
-    shutil.copytree(CORPUS / "lexicon", fake / "lexicon")
-    (fake / "glosses/en/ordinarium.credo.json").unlink()
-    try:
-        read_corpus(fake)
-    except FileNotFoundError:
-        return
-    raise AssertionError("a missing gloss layer must not pass silently")
+def test_a_word_that_loses_a_language_is_caught(tmp_path):
+    # The languages share a document now, so a missing gloss is a missing key
+    # rather than a missing file. It must still be loud, and the check that
+    # has always said so must still say it.
+    import json
+
+    from build_reader.merge import split
+    from checks.lint import lint_gloss
+
+    doc = json.loads((CORPUS / "texts/ordinarium/credo.json").read_text(encoding="utf-8"))
+    for segment in doc["segments"]:
+        for word in segment.get("words") or []:
+            (word.get("gloss") or {}).pop("en", None)
+    text, layers = split(doc)
+    errors = lint_gloss(layers["en"], text)
+    assert errors and "no gloss" in errors[0], errors[:1]

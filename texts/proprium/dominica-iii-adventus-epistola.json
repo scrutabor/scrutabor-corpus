@@ -1,38 +1,51 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "proprium.dominica-iii-adventus-epistola",
   "title": "Gaudéte in Dómino semper",
   "category": "proprium",
   "section": "missa-catechumenorum",
   "variant": "dominica-iii-adventus",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 53
   },
-  "notes": "The epistle of the Third Sunday of Advent, from which the day takes its name of Gaudete. The source boundary is recorded in the witness files.",
-  "source": {
-    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
-    "witnesses": "witnesses/proprium.dominica-iii-adventus-epistola/",
-    "apparatus": "witnesses/proprium.dominica-iii-adventus-epistola/apparatus.json"
+  "about": {
+    "pl": "Lekcja III Niedzieli Adwentu, od której niedziela bierze nazwę Gaudete. Wezwanie do radości stoi obok wezwania do skromności i do wolności od troski — trzy rzeczy, które Paweł wiąże ze sobą, bo „Pan jest blisko”.",
+    "en": "The epistle of the Third Sunday of Advent, from which the day takes its name of Gaudete. The call to rejoice stands beside a call to modesty and to freedom from anxiety — three things Paul binds together because “the Lord is nigh”."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Bracia: Radujcie się zawsze w Panu: powtórnie mówię, radujcie się.",
+        "en": "Brethren: Rejoice in the Lord always: again I say, rejoice."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Philippians 4:4-7"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Philippians 4:4-7"
+          }
+        ]
+      },
       "words": [
-        { "id": "w001", "form": "Fratres", "post": ":", "lemma": "frater", "morph": { "pos": "noun", "case": "voc", "number": "pl", "gender": "m", "decl": 3 } },
-        { "id": "w002", "form": "Gaudéte", "lemma": "gaudeo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
-        { "id": "w003", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w004" },
-        { "id": "w004", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w005", "form": "semper", "post": ":", "lemma": "semper", "morph": { "pos": "adv" } },
-        { "id": "w006", "form": "íterum", "lemma": "iterum", "morph": { "pos": "adv" } },
-        { "id": "w007", "form": "dico", "post": ",", "lemma": "dico", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w008", "form": "gaudéte", "post": ".", "lemma": "gaudeo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } }
+        { "id": "w001", "form": "Fratres", "post": ":", "lemma": "frater", "morph": { "pos": "noun", "case": "voc", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "bracia", "en": "brethren" } },
+        { "id": "w002", "form": "Gaudéte", "lemma": "gaudeo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "radujcie się", "en": "rejoice" } },
+        { "id": "w003", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w004", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w004", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panu", "en": "the Lord" } },
+        { "id": "w005", "form": "semper", "post": ":", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "always" } },
+        { "id": "w006", "form": "íterum", "lemma": "iterum", "morph": { "pos": "adv" }, "gloss": { "pl": "znowu", "en": "again" } },
+        { "id": "w007", "form": "dico", "post": ",", "lemma": "dico", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "mówię", "en": "I say" } },
+        { "id": "w008", "form": "gaudéte", "post": ".", "lemma": "gaudeo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "radujcie się", "en": "rejoice" } }
       ]
     },
     {
@@ -40,16 +53,34 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Skromność wasza niech będzie znana wszystkim ludziom: Pan jest blisko.",
+        "en": "Let your modesty be known to all men: the Lord is nigh."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Philippians 4:4-7"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Philippians 4:4-7"
+          }
+        ]
+      },
       "words": [
-        { "id": "w009", "form": "Modéstia", "lemma": "modestia", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w010", "form": "vestra", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w009" },
-        { "id": "w011", "form": "nota", "lemma": "notus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w009" },
-        { "id": "w012", "form": "sit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
-        { "id": "w013", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w014" },
-        { "id": "w014", "form": "homínibus", "post": ":", "lemma": "homo", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 3 } },
-        { "id": "w015", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w016", "form": "prope", "lemma": "prope", "morph": { "pos": "adv" } },
-        { "id": "w017", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } }
+        { "id": "w009", "form": "Modéstia", "lemma": "modestia", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "skromność", "en": "modesty" } },
+        { "id": "w010", "form": "vestra", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w009", "gloss": { "pl": "wasza", "en": "your" } },
+        { "id": "w011", "form": "nota", "lemma": "notus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w009", "gloss": { "pl": "znana", "en": "known" } },
+        { "id": "w012", "form": "sit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" }, "gloss": { "pl": "niech będzie", "en": "let be" } },
+        { "id": "w013", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w014", "gloss": { "pl": "wszystkim", "en": "to all" } },
+        { "id": "w014", "form": "homínibus", "post": ":", "lemma": "homo", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "ludziom", "en": "men" } },
+        { "id": "w015", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "the Lord" } },
+        { "id": "w016", "form": "prope", "lemma": "prope", "morph": { "pos": "adv" }, "gloss": { "pl": "blisko", "en": "near" } },
+        { "id": "w017", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jest", "en": "is" } }
       ]
     },
     {
@@ -57,24 +88,42 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "O nic się nie troszczcie, ale w każdej modlitwie i błaganiu, z dziękczynieniem, niech prośby wasze będą znane u Boga.",
+        "en": "Be nothing solicitous: but in everything by prayer and supplication, with thanksgiving, let your petitions be made known to God."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Philippians 4:4-7"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Philippians 4:4-7"
+          }
+        ]
+      },
       "words": [
-        { "id": "w018", "form": "Nihil", "lemma": "nihil", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n" } },
-        { "id": "w019", "form": "sollíciti", "lemma": "sollicitus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w020" },
-        { "id": "w020", "form": "sitis", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act" } },
-        { "id": "w021", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
-        { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024" },
-        { "id": "w023", "form": "omni", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w024" },
-        { "id": "w024", "form": "oratióne", "post": ",", "lemma": "oratio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w026", "form": "obsecratióne", "post": ",", "lemma": "obsecratio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w027", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w029" },
-        { "id": "w028", "form": "gratiárum", "lemma": "gratia", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 } },
-        { "id": "w029", "form": "actióne", "post": ",", "lemma": "actio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w030", "form": "petitiónes", "lemma": "petitio", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 } },
-        { "id": "w031", "form": "vestræ", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "f" }, "head": "w030" },
-        { "id": "w032", "form": "innotéscant", "lemma": "innotesco", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
-        { "id": "w033", "form": "apud", "lemma": "apud", "morph": { "pos": "prep", "governs": "acc" }, "head": "w034" },
-        { "id": "w034", "form": "Deum", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } }
+        { "id": "w018", "form": "Nihil", "lemma": "nihil", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n" }, "gloss": { "pl": "o nic", "en": "nothing" } },
+        { "id": "w019", "form": "sollíciti", "lemma": "sollicitus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w020", "gloss": { "pl": "zatroskani", "en": "anxious" } },
+        { "id": "w020", "form": "sitis", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act" }, "gloss": { "pl": "nie bądźcie", "en": "be ye not" } },
+        { "id": "w021", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "lecz", "en": "but" } },
+        { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w023", "form": "omni", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w024", "gloss": { "pl": "każdej", "en": "every" } },
+        { "id": "w024", "form": "oratióne", "post": ",", "lemma": "oratio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "modlitwie", "en": "prayer" } },
+        { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w026", "form": "obsecratióne", "post": ",", "lemma": "obsecratio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "błaganiu", "en": "supplication" } },
+        { "id": "w027", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w029", "gloss": { "pl": "z", "en": "with" } },
+        { "id": "w028", "form": "gratiárum", "lemma": "gratia", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "dzięków", "en": "of thanks" } },
+        { "id": "w029", "form": "actióne", "post": ",", "lemma": "actio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "czynieniem", "en": "giving" } },
+        { "id": "w030", "form": "petitiónes", "lemma": "petitio", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "prośby", "en": "petitions" } },
+        { "id": "w031", "form": "vestræ", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "f" }, "head": "w030", "gloss": { "pl": "wasze", "en": "your" } },
+        { "id": "w032", "form": "innotéscant", "lemma": "innotesco", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "niech staną się znane", "en": "let become known" } },
+        { "id": "w033", "form": "apud", "lemma": "apud", "morph": { "pos": "prep", "governs": "acc" }, "head": "w034", "gloss": { "pl": "u", "en": "before" } },
+        { "id": "w034", "form": "Deum", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } }
       ]
     },
     {
@@ -82,26 +131,55 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "A pokój Boży, który przewyższa wszelki rozum, niech strzeże serc waszych i myśli waszych w Chrystusie Jezusie, Panu naszym.",
+        "en": "And the peace of God, which surpasseth all understanding, keep your hearts and minds in Christ Jesus our Lord."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Philippians 4:4-7"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Philippians 4:4-7"
+          }
+        ]
+      },
       "words": [
-        { "id": "w035", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w036", "form": "pax", "lemma": "pax", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w037", "form": "Dei", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w038", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" } },
-        { "id": "w039", "form": "exsúperat", "lemma": "exsupero", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w040", "form": "omnem", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w041" },
-        { "id": "w041", "form": "sensum", "post": ",", "lemma": "sensus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 4 } },
-        { "id": "w042", "form": "custódiat", "lemma": "custodio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 } },
-        { "id": "w043", "form": "corda", "lemma": "cor", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 } },
-        { "id": "w044", "form": "vestra", "lemma": "vester", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w043" },
-        { "id": "w045", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w046", "form": "intelligéntias", "lemma": "intelligentia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
-        { "id": "w047", "form": "vestras", "post": ",", "lemma": "vester", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w046" },
-        { "id": "w048", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w049" },
-        { "id": "w049", "form": "Christo", "lemma": "Christus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w050", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m" } },
-        { "id": "w051", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w052", "form": "nostro", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w051" }
+        { "id": "w035", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
+        { "id": "w036", "form": "pax", "lemma": "pax", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "pokój", "en": "the peace" } },
+        { "id": "w037", "form": "Dei", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boży", "en": "of God" } },
+        { "id": "w038", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" }, "gloss": { "pl": "który", "en": "which" } },
+        { "id": "w039", "form": "exsúperat", "lemma": "exsupero", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "przewyższa", "en": "surpasseth" } },
+        { "id": "w040", "form": "omnem", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w041", "gloss": { "pl": "wszelki", "en": "all" } },
+        { "id": "w041", "form": "sensum", "post": ",", "lemma": "sensus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "rozum", "en": "understanding" } },
+        { "id": "w042", "form": "custódiat", "lemma": "custodio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 }, "gloss": { "pl": "niech strzeże", "en": "let guard" } },
+        { "id": "w043", "form": "corda", "lemma": "cor", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 }, "gloss": { "pl": "serc", "en": "hearts" } },
+        { "id": "w044", "form": "vestra", "lemma": "vester", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w043", "gloss": { "pl": "waszych", "en": "your" } },
+        { "id": "w045", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w046", "form": "intelligéntias", "lemma": "intelligentia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "myśli", "en": "minds" } },
+        { "id": "w047", "form": "vestras", "post": ",", "lemma": "vester", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w046", "gloss": { "pl": "waszych", "en": "your" } },
+        { "id": "w048", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w049", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w049", "form": "Christo", "lemma": "Christus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusie", "en": "Christ" } },
+        { "id": "w050", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezusie", "en": "Jesus" } },
+        { "id": "w051", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panu", "en": "Lord" } },
+        { "id": "w052", "form": "nostro", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w051", "gloss": { "pl": "naszym", "en": "our" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The epistle of the Third Sunday of Advent, from which the day takes its name of Gaudete. The source boundary is recorded in the witness files.",
+    "source": {
+      "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-iii-adventus-epistola/",
+      "apparatus": "witnesses/proprium.dominica-iii-adventus-epistola/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" }
+  }
 }

@@ -1,48 +1,62 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.corpus-tuum",
   "title": "Corpus tuum",
   "category": "ordinarium",
   "section": "missa-fidelium",
   "variant": "missae",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 36
   },
-  "notes": "The second of the two prayers at the ablutions, said while the priest washes his thumbs and index fingers with wine and water over the chalice. QUEM at w022 is the crux of the prayer: it is masculine accusative singular and therefore cannot agree with the feminine mácula standing beside it, nor with the neuter plural sacraménta that follows. It reaches back over both to ME at w017 — let no stain remain in me, whom the pure and holy sacraments have refreshed. The corpus tags it with its own case, number and gender and leaves the reaching-back to the word's note. The rubric witness do prints before this prayer ends with deinde prosequitur, and the corpus splits it: the ablution belongs to the prayer before, and the two words that hand the priest on belong here, at s01. VISCÉRIBUS at w011 is dative, governed by adhǽreat, which takes the dative as inhærére does at ordinarium.fili-dei-vivi w040.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. The accidental variant is adjudicated in the apparatus.",
-    "witnesses": "witnesses/ordinarium.corpus-tuum/",
-    "apparatus": "witnesses/ordinarium.corpus-tuum/apparatus.json"
+  "about": {
+    "pl": "Druga z dwóch modlitw przy puryfikacji, odmawiana, gdy kapłan obmywa winem i wodą kciuki i palce wskazujące nad kielichem. Prosi, aby przyjęte Ciało i Krew przylgnęły do wnętrza przyjmującego i aby nie została w nim żadna zmaza grzechu.",
+    "en": "The second of the two prayers at the ablutions, said while the priest washes his thumbs and forefingers with wine and water over the chalice. It asks that the Body and Blood just received cleave to the one who received them and that no stain of sin remain in him."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ritus servandus in celebratione Missae, X, 5",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ],
+    "en": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ritus servandus in celebratione Missae, X, 5",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ]
+  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Deinde prosequitur:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "text": "Deinde prosequitur:"
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Ciało Twoje, Panie, które przyjąłem, i Krew, którą wypiłem, niech przylgnie do wnętrzności moich:",
+        "en": "May Thy Body, O Lord, which I have received, and the Blood which I have drunk, cleave to my inmost parts:"
+      },
       "words": [
-        { "id": "w001", "form": "Corpus", "lemma": "corpus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w002", "form": "tuum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w001" },
-        { "id": "w003", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w004", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
-        { "id": "w005", "form": "sumpsi", "post": ",", "lemma": "sumo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w007", "form": "Sanguis", "post": ",", "lemma": "sanguis", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w008", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
-        { "id": "w009", "form": "potávi", "post": ",", "lemma": "poto", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w010", "form": "adhǽreat", "lemma": "adhaereo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 } },
-        { "id": "w011", "form": "viscéribus", "lemma": "viscus", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "n", "decl": 3 } },
-        { "id": "w012", "form": "meis", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "n" }, "head": "w011" }
+        { "id": "w001", "form": "Corpus", "lemma": "corpus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "Ciało", "en": "Body" }, "function": { "pl": "Pierwszy z dwóch podmiotów czasownika „adhǽreat” (w010), który występuje w liczbie pojedynczej.", "en": "The first of the two subjects of “adhǽreat” (w010), which is singular." } },
+        { "id": "w002", "form": "tuum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w001", "gloss": { "pl": "Twoje", "en": "Thy" } },
+        { "id": "w003", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w004", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" }, "gloss": { "pl": "które", "en": "which" }, "function": { "pl": "Rodzaj nijaki, zgadza się z „Corpus” (w001).", "en": "Neuter, agreeing with “Corpus” (w001)." } },
+        { "id": "w005", "form": "sumpsi", "post": ",", "lemma": "sumo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "przyjąłem", "en": "I have received" } },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w007", "form": "Sanguis", "post": ",", "lemma": "sanguis", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Krew", "en": "the Blood" } },
+        { "id": "w008", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "którą", "en": "which" }, "function": { "pl": "Rodzaj męski, zgadza się z „Sanguis” (w007).", "en": "Masculine, agreeing with “Sanguis” (w007)." } },
+        { "id": "w009", "form": "potávi", "post": ",", "lemma": "poto", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "wypiłem", "en": "I have drunk" } },
+        { "id": "w010", "form": "adhǽreat", "lemma": "adhaereo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 }, "gloss": { "pl": "niech przylgnie", "en": "may cleave" }, "function": { "pl": "Viscéribus odczytujemy jako celownik liczby mnogiej: Ciało i Krew mają „przylgnąć do moich wnętrzności”.", "en": "Viscéribus is read as a plural dative: the Body and Blood are to “cleave to my inmost parts”." } },
+        { "id": "w011", "form": "viscéribus", "lemma": "viscus", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "n", "decl": 3 }, "gloss": { "pl": "do wnętrzności", "en": "to the inmost parts" }, "function": { "pl": "Celownik po „adhǽreat” (w010).", "en": "Dative after “adhǽreat” (w010)." } },
+        { "id": "w012", "form": "meis", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "n" }, "head": "w011", "gloss": { "pl": "moich", "en": "my" } }
       ]
     },
     {
@@ -50,22 +64,26 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "i spraw, aby we mnie, którego posiliły czyste i święte sakramenty, nie pozostała zmaza grzechów:",
+        "en": "and grant that no stain of sins remain in me, whom pure and holy sacraments have refreshed:"
+      },
       "words": [
-        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w014", "form": "præsta", "post": ";", "lemma": "praesto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
-        { "id": "w015", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
-        { "id": "w016", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w017" },
-        { "id": "w017", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
-        { "id": "w018", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w019", "form": "remáneat", "lemma": "remaneo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 } },
-        { "id": "w020", "form": "scélerum", "lemma": "scelus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 3 } },
-        { "id": "w021", "form": "mácula", "post": ",", "lemma": "macula", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w022", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
-        { "id": "w023", "form": "pura", "lemma": "purus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w027" },
-        { "id": "w024", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w025", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w027" },
-        { "id": "w026", "form": "refecérunt", "lemma": "reficio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w027", "form": "sacraménta", "post": ":", "lemma": "sacramentum", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "n", "decl": 2 } }
+        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w014", "form": "præsta", "post": ";", "lemma": "praesto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "spraw", "en": "grant" }, "function": { "pl": "Tryb rozkazujący. Rządzi zdaniem wprowadzonym przez „ut” (w015).", "en": "Imperative governing the clause introduced by “ut” (w015)." } },
+        { "id": "w015", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "aby", "en": "that" } },
+        { "id": "w016", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w017", "gloss": { "pl": "we", "en": "in" } },
+        { "id": "w017", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" }, "function": { "pl": "Ablativus po „in” (w016). Poprzednik „quem” (w022).", "en": "Ablative after “in” (w016). Antecedent of “quem” (w022)." } },
+        { "id": "w018", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
+        { "id": "w019", "form": "remáneat", "lemma": "remaneo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 }, "gloss": { "pl": "pozostała", "en": "may remain" } },
+        { "id": "w020", "form": "scélerum", "lemma": "scelus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 3 }, "gloss": { "pl": "grzechów", "en": "of sins" } },
+        { "id": "w021", "form": "mácula", "post": ",", "lemma": "macula", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "zmaza", "en": "stain" }, "function": { "pl": "Podmiot „remáneat” (w019) w rodzaju żeńskim i liczbie pojedynczej.", "en": "Feminine singular subject of “remáneat” (w019)." } },
+        { "id": "w022", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "którego", "en": "whom" }, "function": { "pl": "Zaimek względny rodzaju męskiego w liczbie pojedynczej. Odnosi się do „me” (w017), nie do żeńskiego „mácula” (w021) ani nijakiego „sacraménta” (w027).", "en": "Masculine singular relative pronoun referring to “me” (w017), not feminine “mácula” (w021) or neuter plural “sacraménta” (w027)." } },
+        { "id": "w023", "form": "pura", "lemma": "purus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w027", "gloss": { "pl": "czyste", "en": "pure" } },
+        { "id": "w024", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w025", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w027", "gloss": { "pl": "święte", "en": "holy" } },
+        { "id": "w026", "form": "refecérunt", "lemma": "reficio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "posiliły", "en": "have refreshed" } },
+        { "id": "w027", "form": "sacraménta", "post": ":", "lemma": "sacramentum", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "sakramenty", "en": "sacraments" } }
       ]
     },
     {
@@ -73,22 +91,44 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Który żyjesz i królujesz na wieki wieków. Amen.",
+        "en": "Who livest and reignest for ever and ever. Amen."
+      },
       "words": [
-        { "id": "w028", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w029", "form": "vivis", "lemma": "vivo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w030", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w031", "form": "regnas", "lemma": "regno", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w032", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w033" },
-        { "id": "w033", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w034", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w035", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+        { "id": "w028", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Który", "en": "Who" } },
+        { "id": "w029", "form": "vivis", "lemma": "vivo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "żyjesz", "en": "livest" } },
+        { "id": "w030", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w031", "form": "regnas", "lemma": "regno", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "królujesz", "en": "reignest" } },
+        { "id": "w032", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w033", "gloss": { "pl": "na", "en": "unto" } },
+        { "id": "w033", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieki", "en": "ages" } },
+        { "id": "w034", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieków", "en": "of ages" } },
+        { "id": "w035", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
       ]
     },
     {
       "id": "s05",
       "type": "rubric",
       "text": "Abluit et extergit digitos, ac sumit ablutionem: extergit os et Calicem, quem, plicato Corporali, operit et collocat in Altari ut prius: deinde prosequitur Missam.",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan obmywa i wyciera palce, spożywa ablucję, ociera usta i kielich, składa korporał, nakrywa kielich, stawia go na ołtarzu i kontynuuje Mszę.",
+        "en": "The priest washes and dries his fingers, consumes the ablution, wipes his mouth and the chalice, folds the corporal, covers the chalice, replaces it on the altar, and then continues the Mass."
+      }
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The second of the two prayers at the ablutions, said while the priest washes his thumbs and index fingers with wine and water over the chalice. QUEM at w022 is the crux of the prayer: it is masculine accusative singular and therefore cannot agree with the feminine mácula standing beside it, nor with the neuter plural sacraménta that follows. It reaches back over both to ME at w017 — let no stain remain in me, whom the pure and holy sacraments have refreshed. The corpus tags it with its own case, number and gender and leaves the reaching-back to the word's note. The rubric witness do prints before this prayer ends with deinde prosequitur, and the corpus splits it: the ablution belongs to the prayer before, and the two words that hand the priest on belong here, at s01. VISCÉRIBUS at w011 is dative, governed by adhǽreat, which takes the dative as inhærére does at ordinarium.fili-dei-vivi w040.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence. The accidental variant is adjudicated in the apparatus.",
+      "witnesses": "witnesses/ordinarium.corpus-tuum/",
+      "apparatus": "witnesses/ordinarium.corpus-tuum/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s05": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    }
+  }
 }

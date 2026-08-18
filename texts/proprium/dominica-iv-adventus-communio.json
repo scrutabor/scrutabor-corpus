@@ -1,42 +1,24 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "proprium.dominica-iv-adventus-communio",
   "title": "Ecce Virgo concípiet",
   "category": "proprium",
   "section": "missa-fidelium",
   "variant": "dominica-iv-adventus",
   "sung": true,
-  "status": "working-edition",
   "ids": {
     "next": 12
   },
-  "notes": "The communion antiphon of the Fourth Sunday of Advent.",
-  "source": {
-    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
-    "witnesses": "witnesses/proprium.dominica-iv-adventus-communio/",
-    "apparatus": "witnesses/proprium.dominica-iv-adventus-communio/apparatus.json"
+  "about": {
+    "pl": "Antyfona na komunię IV Niedzieli Adwentu, z Izajasza. Werset, na który powołuje się Ewangelia Mateusza, gdy tłumaczy imię.",
+    "en": "The communion antiphon of the Fourth Sunday of Advent, from Isaias. It is the verse Matthew's gospel cites when it explains the name."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "schola",
       "voice": "cantus",
-      "words": [
-        { "id": "w001", "form": "Ecce", "lemma": "ecce", "morph": { "pos": "intj" } },
-        { "id": "w002", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w003", "form": "concípiet", "post": ",", "lemma": "concipio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w005", "form": "páriet", "lemma": "pario", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w006", "form": "fílium", "post": ":", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w008", "form": "vocábitur", "lemma": "voco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 1 } },
-        { "id": "w009", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w010", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
-        { "id": "w011", "form": "Emmánuel", "post": ".", "lemma": "Emmanuel", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" } }
-      ],
       "participation": {
         "lecta": {
           "gradus": 4,
@@ -46,7 +28,49 @@
           "gradus": 3,
           "source": "DMS 25 c"
         }
-      }
+      },
+      "translation": {
+        "pl": "Oto Dziewica pocznie i porodzi Syna, i nazwą imię Jego Emmanuel.",
+        "en": "Behold a Virgin shall conceive and bring forth a son: and His name shall be called Emmanuel."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Isaiah 7:14"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Isaiah 7:14"
+          }
+        ]
+      },
+      "words": [
+        { "id": "w001", "form": "Ecce", "lemma": "ecce", "morph": { "pos": "intj" }, "gloss": { "pl": "oto", "en": "behold" } },
+        { "id": "w002", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Dziewica", "en": "a Virgin" } },
+        { "id": "w003", "form": "concípiet", "post": ",", "lemma": "concipio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "pocznie", "en": "shall conceive" } },
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w005", "form": "páriet", "lemma": "pario", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "porodzi", "en": "shall bring forth" } },
+        { "id": "w006", "form": "fílium", "post": ":", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "syna", "en": "a son" } },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w008", "form": "vocábitur", "lemma": "voco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 1 }, "gloss": { "pl": "nazwane będzie", "en": "shall be called" } },
+        { "id": "w009", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "imię", "en": "the name" } },
+        { "id": "w010", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jego", "en": "His" } },
+        { "id": "w011", "form": "Emmánuel", "post": ".", "lemma": "Emmanuel", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Emmanuel", "en": "Emmanuel" }, "function": { "pl": "Imię hebrajskie, które Ewangelia Mateusza tłumaczy w tym samym wersecie: „Bóg z nami”.", "en": "A Hebrew name that Matthew's gospel translates in the same breath: God with us." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "Matthew 1:23" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "Matthew 1:23" }] } }
+      ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The communion antiphon of the Fourth Sunday of Advent.",
+    "source": {
+      "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-iv-adventus-communio/",
+      "apparatus": "witnesses/proprium.dominica-iv-adventus-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" }
+  }
 }

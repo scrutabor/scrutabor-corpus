@@ -1,54 +1,53 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.kyrie",
   "title": "Kýrie, eléison",
   "category": "ordinarium",
   "section": "missa-catechumenorum",
   "variant": "missae",
   "sung": true,
-  "status": "working-edition",
   "ids": {
     "next": 19
   },
-  "notes": "Nine invocations in Greek, printed in Latin letters, between the Introit and the Gloria. They are encoded as separate words. Kýrie is parsed as the vocative of κύριος and eléison as the imperative of ἐλεέω; the Greek aorist is not represented in the Latin tense field. Christe is the ordinary Latin vocative of the naturalised Christus.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence and no accidental variants — the two editions agree token for token, so this text carries no apparatus.",
-    "witnesses": "witnesses/ordinarium.kyrie/"
+  "about": {
+    "pl": "Greckie wezwanie o miłosierdzie. Trzykrotne „Kýrie eléison” prowadzi do trzykrotnego „Christe eléison”, po którym „Kýrie eléison” powraca jeszcze trzy razy.",
+    "en": "A Greek invocation for mercy. Three repetitions of “Kýrie eléison” lead to three of “Christe eléison”, after which “Kýrie eléison” returns three more times."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
       "text": "Qua finita, iunctis manibus, et alternatim cum Ministris, dicit:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Ze złożonymi rękami kapłan odmawia wezwania na przemian z ministrantami. Jeśli nikt mu nie odpowiada, sam mówi wszystkie dziewięć.",
+        "en": "With hands joined, the priest says the invocations alternately with the ministers. If no one answers him, he says all nine himself."
+      }
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "words": [
-        { "id": "w001", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w002", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
-      ],
       "participation": {
         "cantu": {
           "gradus": 2,
           "source": "DMS 25 b"
         }
-      }
+      },
+      "translation": {
+        "pl": "Panie, zmiłuj się.",
+        "en": "Lord, have mercy."
+      },
+      "words": [
+        { "id": "w001", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w002", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" }, "gloss": { "pl": "zmiłuj się", "en": "have mercy" } }
+      ]
     },
     {
       "id": "s03",
       "type": "verse",
       "speaker": "minister",
       "voice": "clara",
-      "words": [
-        { "id": "w003", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w004", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
-      ],
       "participation": {
         "lecta": {
           "gradus": 2,
@@ -58,33 +57,41 @@
           "gradus": 2,
           "source": "DMS 25 b"
         }
-      }
+      },
+      "translation": {
+        "pl": "Panie, zmiłuj się.",
+        "en": "Lord, have mercy."
+      },
+      "words": [
+        { "id": "w003", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w004", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" }, "gloss": { "pl": "zmiłuj się", "en": "have mercy" } }
+      ]
     },
     {
       "id": "s04",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "words": [
-        { "id": "w005", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w006", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
-      ],
       "participation": {
         "cantu": {
           "gradus": 2,
           "source": "DMS 25 b"
         }
-      }
+      },
+      "translation": {
+        "pl": "Panie, zmiłuj się.",
+        "en": "Lord, have mercy."
+      },
+      "words": [
+        { "id": "w005", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w006", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" }, "gloss": { "pl": "zmiłuj się", "en": "have mercy" } }
+      ]
     },
     {
       "id": "s05",
       "type": "verse",
       "speaker": "minister",
       "voice": "clara",
-      "words": [
-        { "id": "w007", "form": "Christe", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w008", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
-      ],
       "participation": {
         "lecta": {
           "gradus": 2,
@@ -94,33 +101,41 @@
           "gradus": 2,
           "source": "DMS 25 b"
         }
-      }
+      },
+      "translation": {
+        "pl": "Chryste, zmiłuj się.",
+        "en": "Christ, have mercy."
+      },
+      "words": [
+        { "id": "w007", "form": "Christe", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chryste", "en": "Christ" }, "function": { "pl": "Grecki wołacz, z tą samą końcówką co „Kýrie” (w001).", "en": "A Greek vocative with the same ending as “Kýrie” (w001)." } },
+        { "id": "w008", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" }, "gloss": { "pl": "zmiłuj się", "en": "have mercy" } }
+      ]
     },
     {
       "id": "s06",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "words": [
-        { "id": "w009", "form": "Christe", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w010", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
-      ],
       "participation": {
         "cantu": {
           "gradus": 2,
           "source": "DMS 25 b"
         }
-      }
+      },
+      "translation": {
+        "pl": "Chryste, zmiłuj się.",
+        "en": "Christ, have mercy."
+      },
+      "words": [
+        { "id": "w009", "form": "Christe", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chryste", "en": "Christ" } },
+        { "id": "w010", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" }, "gloss": { "pl": "zmiłuj się", "en": "have mercy" } }
+      ]
     },
     {
       "id": "s07",
       "type": "verse",
       "speaker": "minister",
       "voice": "clara",
-      "words": [
-        { "id": "w011", "form": "Christe", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w012", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
-      ],
       "participation": {
         "lecta": {
           "gradus": 2,
@@ -130,33 +145,41 @@
           "gradus": 2,
           "source": "DMS 25 b"
         }
-      }
+      },
+      "translation": {
+        "pl": "Chryste, zmiłuj się.",
+        "en": "Christ, have mercy."
+      },
+      "words": [
+        { "id": "w011", "form": "Christe", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chryste", "en": "Christ" } },
+        { "id": "w012", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" }, "gloss": { "pl": "zmiłuj się", "en": "have mercy" } }
+      ]
     },
     {
       "id": "s08",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "words": [
-        { "id": "w013", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w014", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
-      ],
       "participation": {
         "cantu": {
           "gradus": 2,
           "source": "DMS 25 b"
         }
-      }
+      },
+      "translation": {
+        "pl": "Panie, zmiłuj się.",
+        "en": "Lord, have mercy."
+      },
+      "words": [
+        { "id": "w013", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w014", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" }, "gloss": { "pl": "zmiłuj się", "en": "have mercy" } }
+      ]
     },
     {
       "id": "s09",
       "type": "verse",
       "speaker": "minister",
       "voice": "clara",
-      "words": [
-        { "id": "w015", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w016", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
-      ],
       "participation": {
         "lecta": {
           "gradus": 2,
@@ -166,23 +189,56 @@
           "gradus": 2,
           "source": "DMS 25 b"
         }
-      }
+      },
+      "translation": {
+        "pl": "Panie, zmiłuj się.",
+        "en": "Lord, have mercy."
+      },
+      "words": [
+        { "id": "w015", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w016", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" }, "gloss": { "pl": "zmiłuj się", "en": "have mercy" } }
+      ]
     },
     {
       "id": "s10",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "words": [
-        { "id": "w017", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w018", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" } }
-      ],
       "participation": {
         "cantu": {
           "gradus": 2,
           "source": "DMS 25 b"
         }
-      }
+      },
+      "translation": {
+        "pl": "Panie, zmiłuj się.",
+        "en": "Lord, have mercy."
+      },
+      "words": [
+        { "id": "w017", "form": "Kýrie", "post": ",", "lemma": "kyrie", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w018", "form": "eléison", "post": ".", "lemma": "eleison", "morph": { "pos": "verb", "person": 2, "number": "sg", "mood": "imp", "voice": "act" }, "gloss": { "pl": "zmiłuj się", "en": "have mercy" } }
+      ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "Nine invocations in Greek, printed in Latin letters, between the Introit and the Gloria. They are encoded as separate words. Kýrie is parsed as the vocative of κύριος and eléison as the imperative of ἐλεέω; the Greek aorist is not represented in the Latin tense field. Christe is the ordinary Latin vocative of the naturalised Christus.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence and no accidental variants — the two editions agree token for token, so this text carries no apparatus.",
+      "witnesses": "witnesses/ordinarium.kyrie/"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    },
+    "words": {
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+    }
+  }
 }

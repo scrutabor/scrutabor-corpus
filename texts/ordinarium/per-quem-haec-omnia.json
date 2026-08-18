@@ -1,59 +1,79 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.per-quem-haec-omnia",
   "title": "Per quem hæc ómnia",
   "category": "ordinarium",
   "section": "missa-fidelium",
   "variant": "missae",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 15
   },
-  "notes": "Four verbs over the gifts, and the shortest prayer of the Canon. The relative quem at w002 reaches back to Iesus Christ, named at the end of the prayer before it — the Canon's paragraphs are one sentence more often than they look. HÆC ÓMNIA at w003-w004 and BONA at w007 are all accusative neuter plurals: God creates these things always good, and then hallows, quickens, blesses and bestows them.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
-    "witnesses": "witnesses/ordinarium.per-quem-haec-omnia/",
-    "apparatus": "witnesses/ordinarium.per-quem-haec-omnia/apparatus.json"
+  "about": {
+    "pl": "Modlitwa wyznaje, że przez Chrystusa Bóg nieustannie stwarza te wszystkie dobra, uświęca je, ożywia, błogosławi i nam ich udziela. Zaimek „quem” odnosi się do Chrystusa, wymienionego na końcu poprzedniej modlitwy.",
+    "en": "The prayer professes that through Christ God continually creates all these good things, sanctifies them, gives them life, blesses them, and bestows them upon us. The relative “quem” refers to Christ, named at the end of the preceding prayer."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Przez którego, Boże, wszystkie te dobra ustawicznie stwarzasz,",
+        "en": "Through whom You continue to make all these good things, O Lord;"
+      },
       "words": [
-        { "id": "w001", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w002" },
-        { "id": "w002", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
-        { "id": "w003", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
-        { "id": "w004", "form": "ómnia", "post": ",", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true },
-        { "id": "w005", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w006", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
-        { "id": "w007", "form": "bona", "lemma": "bonus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w004" },
-        { "id": "w008", "form": "creas", "post": ",", "lemma": "creo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } }
+        { "id": "w001", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w002", "gloss": { "pl": "przez", "en": "through" } },
+        { "id": "w002", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "którego", "en": "whom" }, "function": { "pl": "Quem odnosi się do Chrystusa wymienionego na końcu poprzedniej modlitwy.", "en": "Quem refers to Christ, named at the end of the preceding prayer." } },
+        { "id": "w003", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" }, "gloss": { "pl": "to", "en": "these" } },
+        { "id": "w004", "form": "ómnia", "post": ",", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true, "gloss": { "pl": "wszystko", "en": "all" } },
+        { "id": "w005", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w006", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "ever" } },
+        { "id": "w007", "form": "bona", "lemma": "bonus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w004", "gloss": { "pl": "dobrymi", "en": "good" }, "function": { "pl": "Orzecznik przy creas: stwarzasz je dobrymi.", "en": "Predicative complement with creas: You create them good." } },
+        { "id": "w008", "form": "creas", "post": ",", "lemma": "creo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "stwarzasz", "en": "Thou dost create" } }
       ]
     },
     {
       "id": "s02",
       "type": "rubric",
       "text": "Signat ter super Hostiam, et Calicem simul, dicens:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan czyni trzy znaki krzyża nad Hostią i kielichem jednocześnie.",
+        "en": "The priest makes three signs of the cross over the Host and chalice together."
+      }
     },
     {
       "id": "s03",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "uświęcasz, ożywiasz, błogosławisz i nam ich udzielasz.",
+        "en": "You sanctify them, fill them with life, bless them, and bestow them upon us."
+      },
       "words": [
-        { "id": "w009", "form": "sanctíficas", "post": ",", "lemma": "sanctifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w010", "form": "vivíficas", "post": ",", "lemma": "vivifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w011", "form": "benedícis", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w013", "form": "præstas", "lemma": "praesto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w014", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } }
+        { "id": "w009", "form": "sanctíficas", "post": ",", "lemma": "sanctifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "uświęcasz", "en": "Thou dost hallow" } },
+        { "id": "w010", "form": "vivíficas", "post": ",", "lemma": "vivifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "ożywiasz", "en": "Thou dost quicken" } },
+        { "id": "w011", "form": "benedícis", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "błogosławisz", "en": "Thou dost bless" } },
+        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w013", "form": "præstas", "lemma": "praesto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "udzielasz", "en": "Thou dost bestow" } },
+        { "id": "w014", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "upon us" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "Four verbs over the gifts, and the shortest prayer of the Canon. The relative quem at w002 reaches back to Iesus Christ, named at the end of the prayer before it — the Canon's paragraphs are one sentence more often than they look. HÆC ÓMNIA at w003-w004 and BONA at w007 are all accusative neuter plurals: God creates these things always good, and then hallows, quickens, blesses and bestows them.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
+      "witnesses": "witnesses/ordinarium.per-quem-haec-omnia/",
+      "apparatus": "witnesses/ordinarium.per-quem-haec-omnia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s02": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    }
+  }
 }

@@ -1,97 +1,129 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.memento-defunctorum",
   "title": "Meménto étiam (pro defúnctis)",
   "category": "ordinarium",
   "section": "missa-fidelium",
   "variant": "missae",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 39
   },
-  "notes": "The commemoration of the dead, with its own pause. As in the Meménto of the living, the missal's name slot N. et N. is omitted; because the edition does not print the names, the relative clause that follows describes the servants and handmaids themselves and takes no comma, which is also witness handmissal-eo's pointing. QUIESCÉNTIBUS at w024 is a participle used as a noun — those resting — and takes its dative from indúlgeas. LOCUM at w025 is the object of indúlgeas across the intervening ut, which stands late in its own clause. SIGNO FÍDEI at w011-w012 is understood of baptism — the seal received in it — and the note says so. REFRIGÉRII at w026 is the genitive singular: it stands coordinate with lucis and pacis, which leaves a locative no room at all, Lewis and Short head the noun refrigerium, ii, and Collatinus reads the genitive. Whitaker's carries THIS ENTRY with the contracted genitive only and so offers a locative — a choice made in his dictionary entry, not a rule about -ium nouns, since the same analyzer reads Evangélii as a genitive singular. The overruling is recorded in the pipeline's rulings.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
-    "witnesses": "witnesses/ordinarium.memento-defunctorum/",
-    "apparatus": "witnesses/ordinarium.memento-defunctorum/apparatus.json"
+  "about": {
+    "pl": "Wspomnienie zmarłych w Kanonie. Kapłan modli się za sługi i służebnice Boże, którzy odeszli ze znakiem wiary i spoczywają w pokoju, a potem składa ręce i modli się w milczeniu za tych, których pragnie wspomnieć. Prosi dla nich oraz dla wszystkich spoczywających w Chrystusie o miejsce ochłody, światła i pokoju.",
+    "en": "The commemoration of the dead in the Canon. The priest prays for God's servants and handmaids who have gone before with the sign of faith and rest in peace, then joins his hands and prays in silence for those he intends to remember. He asks for them and for all who rest in Christ a place of refreshment, light, and peace."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Pamiętaj też, Boże, o swoich sługach i służebnicach, którzy przed nami odeszli ze znakiem wiary i śpią w pokoju.",
+        "en": "Remember also, Lord, Your servants and handmaids who have gone before us with the sign of faith and rest in the sleep of peace."
+      },
       "words": [
-        { "id": "w001", "form": "Meménto", "lemma": "memini", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "fut", "mood": "imp", "voice": "act" }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w002", "form": "étiam", "post": ",", "lemma": "etiam", "morph": { "pos": "adv" } },
-        { "id": "w003", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w004", "form": "famulórum", "lemma": "famulus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 } },
-        { "id": "w005", "form": "famularúmque", "lemma": "famula", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 } },
-        { "id": "w006", "form": "tuárum", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "f" }, "head": "w005" },
-        { "id": "w007", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
-        { "id": "w008", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
-        { "id": "w009", "form": "præcessérunt", "lemma": "praecedo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w010", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011" },
-        { "id": "w011", "form": "signo", "lemma": "signum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w012", "form": "fídei", "post": ",", "lemma": "fides", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 5 } },
-        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w014", "form": "dórmiunt", "lemma": "dormio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 4 } },
-        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w016" },
-        { "id": "w016", "form": "somno", "lemma": "somnus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w017", "form": "pacis", "post": ".", "lemma": "pax", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } }
+        { "id": "w001", "form": "Meménto", "lemma": "memini", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "fut", "mood": "imp", "voice": "act" }, "gloss": { "pl": "pamiętaj", "en": "be mindful" }, "function": { "pl": "Druga osoba liczby pojedynczej trybu rozkazującego czasu przyszłego.", "en": "Second-person singular future imperative." } },
+        { "id": "w002", "form": "étiam", "post": ",", "lemma": "etiam", "morph": { "pos": "adv" }, "gloss": { "pl": "też", "en": "also" } },
+        { "id": "w003", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w004", "form": "famulórum", "lemma": "famulus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "sług", "en": "of servants" } },
+        { "id": "w005", "form": "famularúmque", "lemma": "famula", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "i służebnic", "en": "and of handmaids" } },
+        { "id": "w006", "form": "tuárum", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "f" }, "head": "w005", "gloss": { "pl": "Twoich", "en": "Thy" }, "function": { "pl": "Dopełniacz liczby mnogiej rodzaju żeńskiego. Zgadza się z „famularúmque” (w005).", "en": "Feminine genitive plural, agreeing with “famularúmque” (w005)." } },
+        { "id": "w007", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" }, "gloss": { "pl": "którzy", "en": "who" } },
+        { "id": "w008", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } },
+        { "id": "w009", "form": "præcessérunt", "lemma": "praecedo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "poprzedzili", "en": "have gone before" } },
+        { "id": "w010", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011", "gloss": { "pl": "ze", "en": "with" } },
+        { "id": "w011", "form": "signo", "lemma": "signum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "znakiem", "en": "the sign" }, "function": { "pl": "Ablativus po „cum” (w010): „ze znakiem wiary”. KKK 1274 odnosi to wyrażenie do wiary otrzymanej na chrzcie i dochowanej aż do śmierci.", "en": "Ablative after “cum” (w010): “with the sign of faith”. CCC 1274 relates the phrase to baptismal faith kept until death." }, "function_citations": { "pl": [{ "title": "Catechismus Catholicae Ecclesiae", "locator": "n. 1274", "url": "https://www.vatican.va/archive/catechism_lt/index_lt.htm" }, { "title": "Missale Romanum (1962)", "locator": "Canon Missae, Memento defunctorum", "url": "https://archive.org/details/missale_romanum-1962" }], "en": [{ "title": "Catechismus Catholicae Ecclesiae", "locator": "n. 1274", "url": "https://www.vatican.va/archive/catechism_lt/index_lt.htm" }, { "title": "Missale Romanum (1962)", "locator": "Canon Missae, Memento defunctorum", "url": "https://archive.org/details/missale_romanum-1962" }] } },
+        { "id": "w012", "form": "fídei", "post": ",", "lemma": "fides", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 5 }, "gloss": { "pl": "wiary", "en": "of faith" } },
+        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w014", "form": "dórmiunt", "lemma": "dormio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 4 }, "gloss": { "pl": "śpią", "en": "sleep" }, "function": { "pl": "Czas teraźniejszy po perfectum „præcessérunt” (w009).", "en": "Present tense after the perfect “præcessérunt” (w009)." } },
+        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w016", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w016", "form": "somno", "lemma": "somnus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "śnie", "en": "the sleep" } },
+        { "id": "w017", "form": "pacis", "post": ".", "lemma": "pax", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "pokoju", "en": "of peace" } }
       ]
     },
     {
       "id": "s02",
       "type": "rubric",
       "text": "Iungit manus, orat aliquantulum pro iis defunctis, pro quibus orare intendit, deinde extensis manibus prosequitur:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan składa ręce i modli się chwilę w milczeniu za tych zmarłych, których chce wspomnieć. Potem rozkłada ręce i mówi dalej.",
+        "en": "The priest joins his hands and prays a while in silence for those dead he means to remember, then spreads his hands and goes on."
+      }
     },
     {
       "id": "s03",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Błagamy Cię, daj tym zmarłym oraz wszystkim spoczywającym w Chrystusie miejsce ochłody, światłości i pokoju.",
+        "en": "Grant them, O Lord, we pray, and all who sleep in Christ, a place of refreshment, light and peace."
+      },
       "words": [
-        { "id": "w018", "form": "Ipsis", "post": ",", "lemma": "ipse", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" } },
-        { "id": "w019", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w021", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w024" },
-        { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w023" },
-        { "id": "w023", "form": "Christo", "lemma": "Christus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w024", "form": "quiescéntibus", "post": ",", "lemma": "quiesco", "morph": { "pos": "verb", "case": "dat", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "substantive": true },
-        { "id": "w025", "form": "locum", "lemma": "locus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w026", "form": "refrigérii", "post": ",", "lemma": "refrigerium", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w027", "form": "lucis", "lemma": "lux", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w028", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w029", "form": "pacis", "post": ",", "lemma": "pax", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w030", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
-        { "id": "w031", "form": "indúlgeas", "post": ",", "lemma": "indulgeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 } },
-        { "id": "w032", "form": "deprecámur", "post": ".", "lemma": "deprecor", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "dep", "conj": 1 } }
+        { "id": "w018", "form": "Ipsis", "post": ",", "lemma": "ipse", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "gloss": { "pl": "im", "en": "to them" }, "function": { "pl": "Celownik zależny od „indúlgeas” (w031).", "en": "A dative governed by “indúlgeas” (w031)." } },
+        { "id": "w019", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w021", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w024", "gloss": { "pl": "wszystkim", "en": "to all" } },
+        { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w023", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w023", "form": "Christo", "lemma": "Christus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusie", "en": "Christ" } },
+        { "id": "w024", "form": "quiescéntibus", "post": ",", "lemma": "quiesco", "morph": { "pos": "verb", "case": "dat", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "substantive": true, "gloss": { "pl": "spoczywającym", "en": "who rest" }, "function": { "pl": "Imiesłów użyty rzeczownikowo w celowniku liczby mnogiej.", "en": "A participle used as a noun in the dative plural." } },
+        { "id": "w025", "form": "locum", "lemma": "locus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "miejsce", "en": "a place" }, "function": { "pl": "Biernik jako dopełnienie „indúlgeas” (w031).", "en": "Accusative object of “indúlgeas” (w031)." } },
+        { "id": "w026", "form": "refrigérii", "post": ",", "lemma": "refrigerium", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "ochłody", "en": "of refreshment" }, "function": { "pl": "Dopełniacz zależny od „locum” (w025), współrzędny z „lucis” (w027) i „pacis” (w029).", "en": "A genitive dependent on “locum” (w025), coordinated with “lucis” (w027) and “pacis” (w029)." } },
+        { "id": "w027", "form": "lucis", "lemma": "lux", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "światła", "en": "of light" } },
+        { "id": "w028", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w029", "form": "pacis", "post": ",", "lemma": "pax", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "pokoju", "en": "of peace" } },
+        { "id": "w030", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "byś", "en": "that" } },
+        { "id": "w031", "form": "indúlgeas", "post": ",", "lemma": "indulgeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 }, "gloss": { "pl": "dał", "en": "Thou grant" } },
+        { "id": "w032", "form": "deprecámur", "post": ".", "lemma": "deprecor", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "dep", "conj": 1 }, "gloss": { "pl": "błagamy", "en": "we plead" }, "function": { "pl": "Pierwsza osoba liczby mnogiej czasu teraźniejszego czasownika deponentnego.", "en": "First-person plural present of a deponent verb." } }
       ]
     },
     {
       "id": "s04",
       "type": "rubric",
       "text": "Iungit manus, et caput inclinat, dicens:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan składa ręce i pochyla głowę.",
+        "en": "The priest joins his hands and bows his head."
+      }
     },
     {
       "id": "s05",
       "type": "verse",
       "voice": "secreto",
       "speaker": "sacerdos",
+      "translation": {
+        "pl": "Przez tegoż Chrystusa Pana naszego. Amen.",
+        "en": "Through the same Christ our Lord. Amen."
+      },
       "words": [
-        { "id": "w033", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w034" },
-        { "id": "w034", "form": "eúndem", "lemma": "idem", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
-        { "id": "w035", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w036", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w037", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w036" },
-        { "id": "w038", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+        { "id": "w033", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w034", "gloss": { "pl": "przez", "en": "through" } },
+        { "id": "w034", "form": "eúndem", "lemma": "idem", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "tegoż", "en": "the same" } },
+        { "id": "w035", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" } },
+        { "id": "w036", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "Lord" } },
+        { "id": "w037", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w036", "gloss": { "pl": "naszego", "en": "our" } },
+        { "id": "w038", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The commemoration of the dead, with its own pause. As in the Meménto of the living, the missal's name slot N. et N. is omitted; because the edition does not print the names, the relative clause that follows describes the servants and handmaids themselves and takes no comma, which is also witness handmissal-eo's pointing. QUIESCÉNTIBUS at w024 is a participle used as a noun — those resting — and takes its dative from indúlgeas. LOCUM at w025 is the object of indúlgeas across the intervening ut, which stands late in its own clause. SIGNO FÍDEI at w011-w012 is understood of baptism — the seal received in it — and the note says so. REFRIGÉRII at w026 is the genitive singular: it stands coordinate with lucis and pacis, which leaves a locative no room at all, Lewis and Short head the noun refrigerium, ii, and Collatinus reads the genitive. Whitaker's carries THIS ENTRY with the contracted genitive only and so offers a locative — a choice made in his dictionary entry, not a rule about -ium nouns, since the same analyzer reads Evangélii as a genitive singular. The overruling is recorded in the pipeline's rulings.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
+      "witnesses": "witnesses/ordinarium.memento-defunctorum/",
+      "apparatus": "witnesses/ordinarium.memento-defunctorum/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s02": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s04": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    },
+    "words": {
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w026": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+    }
+  }
 }

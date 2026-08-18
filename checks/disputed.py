@@ -18,10 +18,11 @@ Nothing here decides anything. It reports what the corpus already admits,
 which is the only honest basis for asking someone else to look.
 """
 
-import json
 import sys
 from collections import defaultdict
 from pathlib import Path
+
+from build_reader import store
 
 CORPUS = Path(__file__).resolve().parent.parent
 
@@ -38,8 +39,10 @@ def collect() -> dict[str, list[tuple[str, str, str | None, str | None]]]:
     marked disputed need carry no confidence, and one marked low-confidence
     need carry no review."""
     out: dict[str, list[tuple[str, str, str | None, str | None]]] = defaultdict(list)
-    for path in sorted((CORPUS / "texts").rglob("*.json")):
-        doc = json.loads(path.read_text(encoding="utf-8"))
+    for text_id in store.text_ids(CORPUS):
+        # The joined document keeps every editorial claim in one block, so the
+        # split gives back the shape this has always read (build_reader/store).
+        doc, _layers = store.load(CORPUS, text_id)
         base = defaults(doc)
         for seg in doc["segments"]:
             for word in seg.get("words") or []:

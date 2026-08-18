@@ -1,39 +1,40 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "proprium.dominica-i-adventus-communio",
   "title": "Dóminus dabit benignitátem",
   "category": "proprium",
   "section": "missa-fidelium",
   "variant": "dominica-i-adventus",
   "sung": true,
-  "status": "working-edition",
   "ids": {
     "next": 10
   },
-  "notes": "Part of the proper for the First Sunday of Advent. The biblical or liturgical citation and the source boundary are recorded in the witness files.",
-  "source": {
-    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. The witnesses agree with zero divergence, so this text carries no apparatus.",
-    "witnesses": "witnesses/proprium.dominica-i-adventus-communio/"
+  "about": {
+    "pl": "Antyfona na Komunię I Niedzieli Adwentu, Ps 84, 13 według numeracji Wulgaty (Ps 85 w numeracji hebrajskiej) — z psalmu, z którego śpiewało już Alleluja tej Mszy.",
+    "en": "The Communion of the First Sunday of Advent, Psalm 84:13 in the Vulgate numbering (Psalm 85 in Hebrew) — the psalm the Alleluia of this Mass has already sung from."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Dominica I Adventus, printed page 2",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ],
+    "en": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Dominica I Adventus, printed page 2",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ]
+  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "words": [
-        { "id": "w001", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w002", "form": "dabit", "lemma": "do", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w003", "form": "benignitátem", "post": ":", "lemma": "benignitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w005", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w006", "form": "nostra", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w005" },
-        { "id": "w007", "form": "dabit", "lemma": "do", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w008", "form": "fructum", "lemma": "fructus", "morph": { "case": "acc", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w009", "form": "suum", "post": ".", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w008" }
-      ],
       "participation": {
         "lecta": {
           "gradus": 4,
@@ -43,7 +44,32 @@
           "gradus": 3,
           "source": "DMS 25 c"
         }
-      }
+      },
+      "translation": {
+        "pl": "Pan obdarzy błogosławieństwem, a nasza ziemia wyda swój owoc.",
+        "en": "The Lord will bestow His bounty, and our earth shall yield its increase."
+      },
+      "words": [
+        { "id": "w001", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "gloss": { "pl": "Pan", "en": "the Lord" } },
+        { "id": "w002", "form": "dabit", "lemma": "do", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "da", "en": "will give" } },
+        { "id": "w003", "form": "benignitátem", "post": ":", "lemma": "benignitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "dobroć", "en": "bounty" } },
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w005", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ziemia", "en": "earth" } },
+        { "id": "w006", "form": "nostra", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w005", "gloss": { "pl": "nasza", "en": "our" } },
+        { "id": "w007", "form": "dabit", "lemma": "do", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "da", "en": "will give" } },
+        { "id": "w008", "form": "fructum", "lemma": "fructus", "morph": { "case": "acc", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" }, "gloss": { "pl": "owoc", "en": "fruit" } },
+        { "id": "w009", "form": "suum", "post": ".", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w008", "gloss": { "pl": "swój", "en": "its" } }
+      ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "Part of the proper for the First Sunday of Advent. The biblical or liturgical citation and the source boundary are recorded in the witness files.",
+    "source": {
+      "method": "Verified by collation against the 1962 typical edition and Divinum Officium. The witnesses agree with zero divergence, so this text carries no apparatus.",
+      "witnesses": "witnesses/proprium.dominica-i-adventus-communio/"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" }
+  }
 }

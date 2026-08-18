@@ -1,23 +1,18 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "proprium.dominica-ii-adventus-alleluia",
   "title": "Lætátus sum in his",
   "category": "proprium",
   "section": "missa-catechumenorum",
   "variant": "dominica-ii-adventus",
   "sung": true,
-  "status": "working-edition",
   "ids": {
     "next": 16
   },
-  "notes": "The alleluia verse of the Second Sunday of Advent. The source boundary is recorded in the witness files.",
-  "source": {
-    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
-    "witnesses": "witnesses/proprium.dominica-ii-adventus-alleluia/",
-    "apparatus": "witnesses/proprium.dominica-ii-adventus-alleluia/apparatus.json"
+  "about": {
+    "pl": "Werset allelujatyczny II Niedzieli Adwentu, z Psalmu 121 — pieśni pielgrzymów idących do Jerozolimy. Radość bierze się nie z przybycia, lecz z samej wiadomości, że się pójdzie.",
+    "en": "The alleluia verse of the Second Sunday of Advent, from Psalm 121 — a song of pilgrims going up to Jerusalem. The joy comes not from arriving but from the word that they will go."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
   "segments": [
     {
       "id": "s01",
@@ -30,9 +25,13 @@
           "source": "DMS 25 c"
         }
       },
+      "translation": {
+        "pl": "Alleluja, alleluja.",
+        "en": "Alleluia, alleluia."
+      },
       "words": [
-        { "id": "w001", "form": "Allelúia", "post": ",", "lemma": "alleluia", "morph": { "pos": "intj" } },
-        { "id": "w002", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
+        { "id": "w001", "form": "Allelúia", "post": ",", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } },
+        { "id": "w002", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } }
       ]
     },
     {
@@ -46,19 +45,37 @@
           "source": "DMS 25 c"
         }
       },
+      "translation": {
+        "pl": "Uradowałem się z tego, co mi powiedziano: pójdziemy do domu Pańskiego.",
+        "en": "I rejoiced at the things that were said to me: we shall go into the house of the Lord."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Psalm 121:1"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Psalm 121:1"
+          }
+        ]
+      },
       "words": [
-        { "id": "w003", "form": "Lætátus", "lemma": "laetor", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "dep", "conj": 1 }, "head": "w004" },
-        { "id": "w004", "form": "sum", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w006" },
-        { "id": "w006", "form": "his", "post": ",", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "n" } },
-        { "id": "w007", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "n" } },
-        { "id": "w008", "form": "dicta", "lemma": "dico", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w009" },
-        { "id": "w009", "form": "sunt", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w010", "form": "mihi", "post": ":", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
-        { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
-        { "id": "w012", "form": "domum", "lemma": "domus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 4 } },
-        { "id": "w013", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w014", "form": "íbimus", "post": ".", "lemma": "eo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act" } }
+        { "id": "w003", "form": "Lætátus", "lemma": "laetor", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "dep", "conj": 1 }, "head": "w004", "gloss": { "pl": "uradowałem", "en": "I rejoiced" }, "function": { "pl": "Imiesłów czasu przeszłego czasownika deponens. Z „sum” (w004) tworzy jedno orzeczenie.", "en": "Perfect participle of a deponent verb. With “sum” (w004) it forms one finite verb." } },
+        { "id": "w004", "form": "sum", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "się", "en": "(have)" }, "function": { "pl": "Z „Lætátus” (w003) tworzy czas przeszły czasownika deponens: uradowałem się.", "en": "With “Lætátus” (w003), it forms the perfect of a deponent verb: I rejoiced." } },
+        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w006", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w006", "form": "his", "post": ",", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "n" }, "gloss": { "pl": "tych", "en": "these things" } },
+        { "id": "w007", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "n" }, "gloss": { "pl": "które", "en": "which" } },
+        { "id": "w008", "form": "dicta", "lemma": "dico", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w009", "gloss": { "pl": "powiedziane", "en": "were said" } },
+        { "id": "w009", "form": "sunt", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "zostały", "en": "(were)" } },
+        { "id": "w010", "form": "mihi", "post": ":", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "mi", "en": "to me" } },
+        { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012", "gloss": { "pl": "do", "en": "into" } },
+        { "id": "w012", "form": "domum", "lemma": "domus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 4 }, "gloss": { "pl": "domu", "en": "the house" } },
+        { "id": "w013", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pańskiego", "en": "of the Lord" } },
+        { "id": "w014", "form": "íbimus", "post": ".", "lemma": "eo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act" }, "gloss": { "pl": "pójdziemy", "en": "we shall go" } }
       ]
     },
     {
@@ -72,9 +89,24 @@
           "source": "DMS 25 c"
         }
       },
+      "translation": {
+        "pl": "Alleluja.",
+        "en": "Alleluia."
+      },
       "words": [
-        { "id": "w015", "form": "Allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
+        { "id": "w015", "form": "Allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The alleluia verse of the Second Sunday of Advent. The source boundary is recorded in the witness files.",
+    "source": {
+      "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-ii-adventus-alleluia/",
+      "apparatus": "witnesses/proprium.dominica-ii-adventus-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" }
+  }
 }

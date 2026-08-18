@@ -1,49 +1,59 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "proprium.dominica-iii-adventus-postcommunio",
   "title": "Implorámus, Dómine, cleméntiam tuam",
   "category": "proprium",
   "section": "missa-fidelium",
   "variant": "dominica-iii-adventus",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 19
   },
-  "notes": "The postcommunion of the Third Sunday of Advent. The source boundary is recorded in the witness files.",
-  "source": {
-    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
-    "witnesses": "witnesses/proprium.dominica-iii-adventus-postcommunio/",
-    "apparatus": "witnesses/proprium.dominica-iii-adventus-postcommunio/apparatus.json"
+  "about": {
+    "pl": "Modlitwa po Komunii III Niedzieli Adwentu. Sakrament nie jest tu celem, lecz przygotowaniem — święta dopiero nadchodzą.",
+    "en": "The postcommunion of the Third Sunday of Advent. The sacrament is not the end here but the preparation — the feasts are still to come."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Błagamy, Panie, łaskawości Twojej: aby te boskie pomoce oczyściły nas z wad i przygotowały na przyszłe święta. Przez Pana.",
+        "en": "We implore Thy clemency, O Lord: that these divine helps may cleanse us from our vices and prepare us for the coming feasts. Through our Lord."
+      },
       "words": [
-        { "id": "w001", "form": "Implorámus", "post": ",", "lemma": "imploro", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
-        { "id": "w002", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w003", "form": "cleméntiam", "lemma": "clementia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w004", "form": "tuam", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w003" },
-        { "id": "w005", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
-        { "id": "w006", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "n" } },
-        { "id": "w007", "form": "divína", "lemma": "divinus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w008" },
-        { "id": "w008", "form": "subsídia", "post": ",", "lemma": "subsidium", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w009", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010" },
-        { "id": "w010", "form": "vítiis", "lemma": "vitium", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w011", "form": "expiátos", "post": ",", "lemma": "expio", "morph": { "pos": "verb", "case": "acc", "number": "pl", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "substantive": true },
-        { "id": "w012", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w013" },
-        { "id": "w013", "form": "festa", "lemma": "festum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w014", "form": "ventúra", "lemma": "venio", "morph": { "pos": "verb", "case": "acc", "number": "pl", "gender": "n", "tense": "fut", "mood": "part", "voice": "act", "conj": 4 }, "head": "w013" },
-        { "id": "w015", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
-        { "id": "w016", "form": "prǽparent", "post": ".", "lemma": "praeparo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 } },
-        { "id": "w017", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w018" },
-        { "id": "w018", "form": "Dóminum", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } }
+        { "id": "w001", "form": "Implorámus", "post": ",", "lemma": "imploro", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "błagamy", "en": "we implore" } },
+        { "id": "w002", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w003", "form": "cleméntiam", "lemma": "clementia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "łaskawości", "en": "clemency" } },
+        { "id": "w004", "form": "tuam", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w003", "gloss": { "pl": "Twojej", "en": "Thy" } },
+        { "id": "w005", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "aby", "en": "that" } },
+        { "id": "w006", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "n" }, "gloss": { "pl": "te", "en": "these" } },
+        { "id": "w007", "form": "divína", "lemma": "divinus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w008", "gloss": { "pl": "boskie", "en": "divine" } },
+        { "id": "w008", "form": "subsídia", "post": ",", "lemma": "subsidium", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "pomoce", "en": "helps" } },
+        { "id": "w009", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010", "gloss": { "pl": "od", "en": "from" } },
+        { "id": "w010", "form": "vítiis", "lemma": "vitium", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wad", "en": "vices" } },
+        { "id": "w011", "form": "expiátos", "post": ",", "lemma": "expio", "morph": { "pos": "verb", "case": "acc", "number": "pl", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "substantive": true, "gloss": { "pl": "oczyszczonych", "en": "cleansed" } },
+        { "id": "w012", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w013", "gloss": { "pl": "na", "en": "for" } },
+        { "id": "w013", "form": "festa", "lemma": "festum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "święta", "en": "the feasts" } },
+        { "id": "w014", "form": "ventúra", "lemma": "venio", "morph": { "pos": "verb", "case": "acc", "number": "pl", "gender": "n", "tense": "fut", "mood": "part", "voice": "act", "conj": 4 }, "head": "w013", "gloss": { "pl": "przyszłe", "en": "coming" } },
+        { "id": "w015", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } },
+        { "id": "w016", "form": "prǽparent", "post": ".", "lemma": "praeparo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 }, "gloss": { "pl": "przygotowały", "en": "may prepare" } },
+        { "id": "w017", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w018", "gloss": { "pl": "przez", "en": "Through" } },
+        { "id": "w018", "form": "Dóminum", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "the Lord" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The postcommunion of the Third Sunday of Advent. The source boundary is recorded in the witness files.",
+    "source": {
+      "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-iii-adventus-postcommunio/",
+      "apparatus": "witnesses/proprium.dominica-iii-adventus-postcommunio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" }
+  }
 }

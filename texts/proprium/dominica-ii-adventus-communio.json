@@ -1,23 +1,18 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "proprium.dominica-ii-adventus-communio",
   "title": "Ierúsalem surge, et sta in excélso",
   "category": "proprium",
   "section": "missa-fidelium",
   "variant": "dominica-ii-adventus",
   "sung": true,
-  "status": "working-edition",
   "ids": {
     "next": 16
   },
-  "notes": "The communion antiphon of the Second Sunday of Advent. The source boundary is recorded in the witness files.",
-  "source": {
-    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
-    "witnesses": "witnesses/proprium.dominica-ii-adventus-communio/",
-    "apparatus": "witnesses/proprium.dominica-ii-adventus-communio/apparatus.json"
+  "about": {
+    "pl": "Antyfona na komunię II Niedzieli Adwentu, złożona z dwóch miejsc Barucha. Miasto ma wstać i patrzeć, skąd przychodzi radość — nie ku sobie, lecz ku Bogu.",
+    "en": "The communion antiphon of the Second Sunday of Advent, made of two places in Baruch. The city is to rise and look for where the joy comes from — not toward itself, but toward God."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
   "segments": [
     {
       "id": "s01",
@@ -34,23 +29,52 @@
           "source": "DMS 25 c"
         }
       },
+      "translation": {
+        "pl": "Jeruzalem, powstań i stań na wysokości, i zobacz radość, która przyjdzie tobie od Boga twego.",
+        "en": "Jerusalem, arise and stand on high, and behold the joy that shall come to thee from thy God."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Baruch 5:5; 4:36"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Baruch 5:5; 4:36"
+          }
+        ]
+      },
       "words": [
-        { "id": "w001", "form": "Ierúsalem", "lemma": "Ierusalem", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f" } },
-        { "id": "w002", "form": "surge", "post": ",", "lemma": "surgo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
-        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w004", "form": "sta", "lemma": "sto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
-        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w006" },
-        { "id": "w006", "form": "excélso", "post": ",", "lemma": "excelsus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "substantive": true },
-        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w008", "form": "vide", "lemma": "video", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
-        { "id": "w009", "form": "iucunditátem", "post": ",", "lemma": "iucunditas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w010", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" } },
-        { "id": "w011", "form": "véniet", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 4 } },
-        { "id": "w012", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
-        { "id": "w013", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w014" },
-        { "id": "w014", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w015", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w014" }
+        { "id": "w001", "form": "Ierúsalem", "lemma": "Ierusalem", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f" }, "gloss": { "pl": "Jeruzalem", "en": "Jerusalem" } },
+        { "id": "w002", "form": "surge", "post": ",", "lemma": "surgo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "powstań", "en": "arise" } },
+        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w004", "form": "sta", "lemma": "sto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "stań", "en": "stand" } },
+        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w006", "gloss": { "pl": "na", "en": "on" } },
+        { "id": "w006", "form": "excélso", "post": ",", "lemma": "excelsus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "substantive": true, "gloss": { "pl": "wysokości", "en": "high" } },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w008", "form": "vide", "lemma": "video", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "zobacz", "en": "see" } },
+        { "id": "w009", "form": "iucunditátem", "post": ",", "lemma": "iucunditas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "radość", "en": "the joy" } },
+        { "id": "w010", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" }, "gloss": { "pl": "która", "en": "which" } },
+        { "id": "w011", "form": "véniet", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 4 }, "gloss": { "pl": "przyjdzie", "en": "shall come" } },
+        { "id": "w012", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "tobie", "en": "to thee" } },
+        { "id": "w013", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w014", "gloss": { "pl": "od", "en": "from" } },
+        { "id": "w014", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } },
+        { "id": "w015", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w014", "gloss": { "pl": "twego", "en": "thy" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The communion antiphon of the Second Sunday of Advent. The source boundary is recorded in the witness files.",
+    "source": {
+      "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-ii-adventus-communio/",
+      "apparatus": "witnesses/proprium.dominica-ii-adventus-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" }
+  }
 }

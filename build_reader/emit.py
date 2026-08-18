@@ -49,18 +49,14 @@ class Parses:
 
 
 def read_corpus(corpus: Path) -> list[tuple[dict, dict[str, dict]]]:
-    """Every text with its gloss layers, in a stable order."""
-    out = []
-    for path in sorted(corpus.glob("texts/*/*.json")):
-        doc = json.loads(path.read_text(encoding="utf-8"))
-        glosses = {
-            lang: json.loads(
-                (corpus / "glosses" / lang / f"{doc['id']}.json").read_text(encoding="utf-8")
-            )
-            for lang in LANGS
-        }
-        out.append((doc, glosses))
-    return out
+    """Every text with its gloss layers, in a stable order.
+
+    One document on disk since 0.14.0. It is split here rather than read three
+    ways, so everything below stayed as it was.
+    """
+    from build_reader import store
+
+    return store.all_texts(corpus)
 
 
 def text_artifact(doc: dict, glosses: dict[str, dict], parses: Parses) -> dict:

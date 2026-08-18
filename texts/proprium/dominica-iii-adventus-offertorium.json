@@ -1,23 +1,18 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "proprium.dominica-iii-adventus-offertorium",
   "title": "Benedixísti, Dómine, terram tuam",
   "category": "proprium",
   "section": "missa-fidelium",
   "variant": "dominica-iii-adventus",
   "sung": true,
-  "status": "working-edition",
   "ids": {
     "next": 12
   },
-  "notes": "The offertory antiphon of the Third Sunday of Advent. The source boundary is recorded in the witness files.",
-  "source": {
-    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
-    "witnesses": "witnesses/proprium.dominica-iii-adventus-offertorium/",
-    "apparatus": "witnesses/proprium.dominica-iii-adventus-offertorium/apparatus.json"
+  "about": {
+    "pl": "Antyfona na ofiarowanie III Niedzieli Adwentu, z Psalmu 84. Pierwsze dwa zdania śpiewa się już w introicie tej samej Mszy.",
+    "en": "The offertory antiphon of the Third Sunday of Advent, from Psalm 84. Its first two clauses are already sung at the introit of the same Mass."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
   "segments": [
     {
       "id": "s01",
@@ -34,19 +29,48 @@
           "source": "DMS 25 c"
         }
       },
+      "translation": {
+        "pl": "Pobłogosławiłeś, Panie, ziemię Twoją: odwróciłeś niewolę Jakuba: odpuściłeś nieprawość ludu Twego.",
+        "en": "Thou hast blessed, O Lord, Thy land: Thou hast turned away the captivity of Jacob: Thou hast forgiven the iniquity of Thy people."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Psalm 84:2"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Psalm 84:2"
+          }
+        ]
+      },
       "words": [
-        { "id": "w001", "form": "Benedixísti", "post": ",", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w002", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w003", "form": "terram", "lemma": "terra", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w004", "form": "tuam", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w003" },
-        { "id": "w005", "form": "avertísti", "lemma": "averto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w006", "form": "captivitátem", "lemma": "captivitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w007", "form": "Iacob", "post": ":", "lemma": "Iacob", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
-        { "id": "w008", "form": "remisísti", "lemma": "remitto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w009", "form": "iniquitátem", "lemma": "iniquitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w010", "form": "plebis", "lemma": "plebs", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w011", "form": "tuæ", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w010" }
+        { "id": "w001", "form": "Benedixísti", "post": ",", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "pobłogosławiłeś", "en": "Thou hast blessed" } },
+        { "id": "w002", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w003", "form": "terram", "lemma": "terra", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ziemię", "en": "land" } },
+        { "id": "w004", "form": "tuam", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w003", "gloss": { "pl": "Twoją", "en": "Thy" } },
+        { "id": "w005", "form": "avertísti", "lemma": "averto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "odwróciłeś", "en": "Thou hast turned away" } },
+        { "id": "w006", "form": "captivitátem", "lemma": "captivitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "niewolę", "en": "the captivity" } },
+        { "id": "w007", "form": "Iacob", "post": ":", "lemma": "Iacob", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jakuba", "en": "of Jacob" } },
+        { "id": "w008", "form": "remisísti", "lemma": "remitto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "odpuściłeś", "en": "Thou hast forgiven" } },
+        { "id": "w009", "form": "iniquitátem", "lemma": "iniquitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "nieprawość", "en": "the iniquity" } },
+        { "id": "w010", "form": "plebis", "lemma": "plebs", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "ludu", "en": "of people" } },
+        { "id": "w011", "form": "tuæ", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w010", "gloss": { "pl": "Twego", "en": "Thy" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The offertory antiphon of the Third Sunday of Advent. The source boundary is recorded in the witness files.",
+    "source": {
+      "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-iii-adventus-offertorium/",
+      "apparatus": "witnesses/proprium.dominica-iii-adventus-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" }
+  }
 }

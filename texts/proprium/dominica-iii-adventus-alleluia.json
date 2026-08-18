@@ -1,23 +1,18 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "proprium.dominica-iii-adventus-alleluia",
   "title": "Éxcita, Dómine, poténtiam tuam",
   "category": "proprium",
   "section": "missa-catechumenorum",
   "variant": "dominica-iii-adventus",
   "sung": true,
-  "status": "working-edition",
   "ids": {
     "next": 14
   },
-  "notes": "The alleluia verse of the Third Sunday of Advent. The source boundary is recorded in the witness files.",
-  "source": {
-    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
-    "witnesses": "witnesses/proprium.dominica-iii-adventus-alleluia/",
-    "apparatus": "witnesses/proprium.dominica-iii-adventus-alleluia/apparatus.json"
+  "about": {
+    "pl": "Werset allelujatyczny III Niedzieli Adwentu. Powtarza wołanie, którym zaczyna się kolekta I Niedzieli — o potęgę, która ma przyjść.",
+    "en": "The alleluia verse of the Third Sunday of Advent. It repeats the cry the collect of the First Sunday opens with — for a power that is to come."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
   "segments": [
     {
       "id": "s01",
@@ -30,9 +25,13 @@
           "source": "DMS 25 c"
         }
       },
+      "translation": {
+        "pl": "Alleluja, alleluja.",
+        "en": "Alleluia, alleluia."
+      },
       "words": [
-        { "id": "w001", "form": "Allelúia", "post": ",", "lemma": "alleluia", "morph": { "pos": "intj" } },
-        { "id": "w002", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
+        { "id": "w001", "form": "Allelúia", "post": ",", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } },
+        { "id": "w002", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } }
       ]
     },
     {
@@ -46,17 +45,21 @@
           "source": "DMS 25 c"
         }
       },
+      "translation": {
+        "pl": "Wzbudź, Panie, potęgę Twoją i przyjdź, abyś nas zbawił.",
+        "en": "Stir up Thy power, O Lord, and come, that Thou mayest save us."
+      },
       "words": [
-        { "id": "w003", "form": "Éxcita", "post": ",", "lemma": "excito", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
-        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w005", "form": "poténtiam", "lemma": "potentia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w006", "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w005" },
-        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w008", "form": "veni", "post": ",", "lemma": "venio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 } },
-        { "id": "w009", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
-        { "id": "w010", "form": "salvos", "lemma": "salvus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "head": "w012" },
-        { "id": "w011", "form": "fácias", "lemma": "facio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
-        { "id": "w012", "form": "nos", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } }
+        { "id": "w003", "form": "Éxcita", "post": ",", "lemma": "excito", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "wzbudź", "en": "stir up" } },
+        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w005", "form": "poténtiam", "lemma": "potentia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "potęgę", "en": "power" } },
+        { "id": "w006", "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w005", "gloss": { "pl": "Twoją", "en": "Thy" } },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w008", "form": "veni", "post": ",", "lemma": "venio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 }, "gloss": { "pl": "przyjdź", "en": "come" } },
+        { "id": "w009", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "abyś", "en": "that" } },
+        { "id": "w010", "form": "salvos", "lemma": "salvus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "head": "w012", "gloss": { "pl": "zbawionymi", "en": "safe" } },
+        { "id": "w011", "form": "fácias", "lemma": "facio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "uczynił", "en": "Thou mayest make" } },
+        { "id": "w012", "form": "nos", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } }
       ]
     },
     {
@@ -70,9 +73,24 @@
           "source": "DMS 25 c"
         }
       },
+      "translation": {
+        "pl": "Alleluja.",
+        "en": "Alleluia."
+      },
       "words": [
-        { "id": "w013", "form": "Allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
+        { "id": "w013", "form": "Allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The alleluia verse of the Third Sunday of Advent. The source boundary is recorded in the witness files.",
+    "source": {
+      "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-iii-adventus-alleluia/",
+      "apparatus": "witnesses/proprium.dominica-iii-adventus-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" }
+  }
 }

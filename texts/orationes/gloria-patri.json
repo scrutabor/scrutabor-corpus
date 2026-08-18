@@ -1,54 +1,84 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "orationes.gloria-patri",
   "title": "Glória Patri",
   "category": "orationes",
   "section": "orationes-communes",
   "variant": "devotional",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 21
   },
-  "notes": "The lesser doxology. Wording transcribed verbatim from witness do-horas (chant flex asterisks stripped).",
-  "source": {
-    "method": "Transcribed verbatim from witness do-horas, collated against tpl: zero substantive divergence.",
-    "witnesses": "witnesses/orationes.gloria-patri/"
+  "about": {
+    "pl": "Gloria Patri to krótka doksologia trynitarna. Kończy niemal każdy psalm i kantyk oficjum, a w tej książce czytelnik spotyka ją u stopni ołtarza, przy Lavabo i w introicie Mszy adwentowej.",
+    "en": "The Gloria Patri is a short Trinitarian doxology. It closes nearly every psalm and canticle of the Office, and in this book the reader meets it at the foot of the altar, at the Lavabo and in the Introit of the Advent Mass."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Breviarium Romanum (1961)",
+        "locator": "Psalterium, doxologies after psalms and canticles",
+        "url": "https://openlibrary.org/works/OL27763277W/Breviarium_Romanum_ex_decreto_ss._Concilii_Tridentini_restitutum"
+      }
+    ],
+    "en": [
+      {
+        "title": "Breviarium Romanum (1961)",
+        "locator": "Psalterium, doxologies after psalms and canticles",
+        "url": "https://openlibrary.org/works/OL27763277W/Breviarium_Romanum_ex_decreto_ss._Concilii_Tridentini_restitutum"
+      }
+    ]
+  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
+      "translation": {
+        "pl": "Chwała Ojcu i Synowi, i Duchowi Świętemu.",
+        "en": "Glory be to the Father, and to the Son, and to the Holy Spirit."
+      },
       "words": [
-        { "id": "w001", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w002", "form": "Patri", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w004", "form": "Fílio", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w006", "form": "Spirítui", "lemma": "spiritus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 4 } },
-        { "id": "w007", "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w006" }
+        { "id": "w001", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwała", "en": "glory" }, "function": { "pl": "Z domyślnym „sit”: chwała [niech będzie].", "en": "With an understood “sit”: glory [be]." } },
+        { "id": "w002", "form": "Patri", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcu", "en": "to the Father" }, "function": { "pl": "Celownik zależny od “Glória” (w001).", "en": "Dative dependent on “Glória” (w001)." } },
+        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w004", "form": "Fílio", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Synowi", "en": "to the Son" } },
+        { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w006", "form": "Spirítui", "lemma": "spiritus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Duchowi", "en": "to the Spirit" } },
+        { "id": "w007", "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w006", "gloss": { "pl": "Świętemu", "en": "Holy" }, "function": { "pl": "Zgadza się ze “Spirítui” (w006). Jako przymiotnik pierwszej i drugiej deklinacji ma w celowniku formę “Sancto”.", "en": "Agrees with “Spirítui” (w006). As an adjective of the first and second declensions, it has the dative form “Sancto”." } }
       ]
     },
     {
       "id": "s02",
       "type": "verse",
+      "translation": {
+        "pl": "Jak była na początku, teraz i zawsze, i na wieki wieków. Amen.",
+        "en": "As it was in the beginning, is now, and ever shall be, world without end. Amen."
+      },
       "words": [
-        { "id": "w008", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
-        { "id": "w009", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" } },
-        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011" },
-        { "id": "w011", "form": "princípio", "post": ",", "lemma": "principium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w013", "form": "nunc", "post": ",", "lemma": "nunc", "morph": { "pos": "adv" } },
-        { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w015", "form": "semper", "post": ",", "lemma": "semper", "morph": { "pos": "adv" } },
-        { "id": "w016", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w017", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w018" },
-        { "id": "w018", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w019", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w020", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+        { "id": "w008", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" }, "gloss": { "pl": "jak", "en": "as" } },
+        { "id": "w009", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "była", "en": "it was" }, "function": { "pl": "Imperfectum indicativi z domyślnym podmiotem “glória”.", "en": "Imperfect indicative with the understood subject “glória”." } },
+        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011", "gloss": { "pl": "na", "en": "in" } },
+        { "id": "w011", "form": "princípio", "post": ",", "lemma": "principium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "początku", "en": "the beginning" } },
+        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w013", "form": "nunc", "post": ",", "lemma": "nunc", "morph": { "pos": "adv" }, "gloss": { "pl": "teraz", "en": "now" } },
+        { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w015", "form": "semper", "post": ",", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "ever" } },
+        { "id": "w016", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w017", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w018", "gloss": { "pl": "na", "en": "unto" }, "function": { "pl": "Przyimek “in” z biernikiem w wyrażeniu “in sǽcula”: na wieki.", "en": "The preposition “in” with the accusative in the phrase “in sǽcula”: unto the ages." } },
+        { "id": "w018", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieki", "en": "ages" } },
+        { "id": "w019", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieków", "en": "of ages" }, "function": { "pl": "Dopełniacz zależny od “sǽcula” (w018).", "en": "Genitive dependent on “sǽcula” (w018)." } },
+        { "id": "w020", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The lesser doxology. Wording transcribed verbatim from witness do-horas (chant flex asterisks stripped).",
+    "source": {
+      "method": "Transcribed verbatim from witness do-horas, collated against tpl: zero substantive divergence.",
+      "witnesses": "witnesses/orationes.gloria-patri/"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  }
 }

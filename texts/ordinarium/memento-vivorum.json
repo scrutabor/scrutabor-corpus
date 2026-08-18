@@ -1,64 +1,70 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.memento-vivorum",
   "title": "Meménto (pro vivis)",
   "category": "ordinarium",
   "section": "missa-fidelium",
   "variant": "missae",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 51
   },
-  "notes": "The commemoration of the living, with the silence in which the priest names those he prays for; the missal marks it N. et N., and the edition omits the slot as it does in Te ígitur, carrying the pause as its own rubric segment. MEMÉNTO at w001 is the future imperative of memini — the only kind that verb has (meménto, plural mementóte); Whitaker's Words tags it present, Collatinus future, so the token stands as an argued divergence in the agreement report. CÓGNITA at w012 and NOTA at w015 are tagged as adjectives, with both analyzers, rather than as participles of cognósco and nosco. SE at w029 carries neither number nor gender: the reflexive marks neither, and only the case is fixed, by pro. Its provenance names Whitaker's alone beside the edition: Collatinus does not carry the bare reflexive ablative, and the token records only the analyzer that confirms it. SUÍSQUE at w030 is masculine on the persons it stands for, not on its own form.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
-    "witnesses": "witnesses/ordinarium.memento-vivorum/",
-    "apparatus": "witnesses/ordinarium.memento-vivorum/apparatus.json"
+  "about": {
+    "pl": "Modlitwa zaczyna się od prośby, aby Bóg pamiętał o swoich sługach i służebnicach. Kapłan składa wtedy ręce i modli się w milczeniu za tych, których pragnie wspomnieć. Następnie modlitwa obejmuje wszystkich obecnych i wymienia intencje: odkupienie ich dusz, nadzieję zbawienia oraz pomyślność.",
+    "en": "The prayer begins by asking God to remember His servants and handmaids. The priest then joins his hands and prays in silence for those he intends to name. The prayer then embraces all who are present and names its intentions: the redemption of their souls, the hope of salvation, and their well-being."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Pamiętaj, Boże, o swoich sługach i służebnicach",
+        "en": "Remember, Lord, Your servants and handmaids"
+      },
       "words": [
-        { "id": "w001", "form": "Meménto", "post": ",", "lemma": "memini", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "fut", "mood": "imp", "voice": "act" }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w002", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w003", "form": "famulórum", "lemma": "famulus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 } },
-        { "id": "w004", "form": "famularúmque", "lemma": "famula", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 } },
-        { "id": "w005", "form": "tuárum", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "f" }, "head": "w004" }
+        { "id": "w001", "form": "Meménto", "post": ",", "lemma": "memini", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "fut", "mood": "imp", "voice": "act" }, "gloss": { "pl": "pamiętaj", "en": "be mindful" }, "function": { "pl": "Druga osoba liczby pojedynczej trybu rozkazującego czasu przyszłego.", "en": "Second-person singular future imperative." } },
+        { "id": "w002", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w003", "form": "famulórum", "lemma": "famulus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "sług", "en": "servants" }, "function": { "pl": "Dopełniacz liczby mnogiej zależny od „Meménto” (w001).", "en": "Genitive plural governed by “Meménto” (w001)." } },
+        { "id": "w004", "form": "famularúmque", "lemma": "famula", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "i służebnic", "en": "and handmaids" }, "function": { "pl": "Dopełniacz liczby mnogiej z dołączonym spójnikiem „-que”.", "en": "Genitive plural with the conjunction “-que” attached." } },
+        { "id": "w005", "form": "tuárum", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "f" }, "head": "w004", "gloss": { "pl": "Twoich", "en": "Thy" }, "function": { "pl": "Dopełniacz liczby mnogiej rodzaju żeńskiego. Zgadza się z „famularúmque” (w004).", "en": "Feminine genitive plural, agreeing with “famularúmque” (w004)." } }
       ]
     },
     {
       "id": "s02",
       "type": "rubric",
       "text": "Iungit manus, orat aliquantulum pro quibus orare intendit: deinde manibus extensis prosequitur:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan składa ręce i modli się chwilę w milczeniu za tych, których chce wspomnieć. Potem rozkłada ręce i mówi dalej.",
+        "en": "The priest joins his hands and prays a while in silence for those he means to remember, then spreads his hands and goes on."
+      }
     },
     {
       "id": "s03",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "i o wszystkich tu zgromadzonych, których wiara i oddanie są Ci znane. Za nich składamy Tobie:",
+        "en": "and all gathered here, whose faith and devotion are known to You. For them we offer to You:"
+      },
       "words": [
-        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w007", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "head": "w008" },
-        { "id": "w008", "form": "circumstántium", "post": ",", "lemma": "circumsto", "morph": { "pos": "verb", "case": "gen", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 1 }, "substantive": true },
-        { "id": "w009", "form": "quorum", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "pl", "gender": "m" } },
-        { "id": "w010", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
-        { "id": "w011", "form": "fides", "lemma": "fides", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 5 } },
-        { "id": "w012", "form": "cógnita", "lemma": "cognitus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w011" },
-        { "id": "w013", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w015", "form": "nota", "lemma": "notus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w016" },
-        { "id": "w016", "form": "devótio", "post": ",", "lemma": "devotio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w017", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w018" },
-        { "id": "w018", "form": "quibus", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "m" } },
-        { "id": "w019", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
-        { "id": "w020", "form": "offérimus", "post": ":", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } }
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w007", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "head": "w008", "gloss": { "pl": "wszystkich", "en": "all" } },
+        { "id": "w008", "form": "circumstántium", "post": ",", "lemma": "circumsto", "morph": { "pos": "verb", "case": "gen", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 1 }, "substantive": true, "gloss": { "pl": "obecnych", "en": "here present" }, "function": { "pl": "Imiesłów użyty rzeczownikowo w dopełniaczu liczby mnogiej.", "en": "A participle used as a noun in the genitive plural." } },
+        { "id": "w009", "form": "quorum", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "pl", "gender": "m" }, "gloss": { "pl": "których", "en": "whose" } },
+        { "id": "w010", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Ci", "en": "to Thee" } },
+        { "id": "w011", "form": "fides", "lemma": "fides", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 5 }, "gloss": { "pl": "wiara", "en": "faith" } },
+        { "id": "w012", "form": "cógnita", "lemma": "cognitus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w011", "gloss": { "pl": "znana", "en": "known" } },
+        { "id": "w013", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jest", "en": "is" }, "function": { "pl": "Wspólne orzeczenie dla „fides cognita” i „nota devótio”.", "en": "The shared verb of “fides cognita” and “nota devótio”." } },
+        { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w015", "form": "nota", "lemma": "notus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w016", "gloss": { "pl": "wiadoma", "en": "noted" } },
+        { "id": "w016", "form": "devótio", "post": ",", "lemma": "devotio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "pobożność", "en": "devotion" } },
+        { "id": "w017", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w018", "gloss": { "pl": "za", "en": "for" } },
+        { "id": "w018", "form": "quibus", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "m" }, "gloss": { "pl": "których", "en": "whom" } },
+        { "id": "w019", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Ci", "en": "to Thee" } },
+        { "id": "w020", "form": "offérimus", "post": ":", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "składamy", "en": "we offer" } }
       ]
     },
     {
@@ -66,28 +72,32 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "albo oni sami składają Tobie tę Ofiarę uwielbienia za siebie oraz za wszystkich swoich bliskich: aby dostąpić odkupienia dusz swoich i osiągnąć zbawienie,",
+        "en": "or they themselves offer You this sacrifice of praise, for themselves and all who are dear to them: for the redemption of their souls, in hope of health and well-being,"
+      },
       "words": [
-        { "id": "w021", "form": "vel", "lemma": "vel", "morph": { "pos": "conj" } },
-        { "id": "w022", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
-        { "id": "w023", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
-        { "id": "w024", "form": "ófferunt", "lemma": "offero", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } },
-        { "id": "w025", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
-        { "id": "w026", "form": "sacrifícium", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w027", "form": "laudis", "post": ",", "lemma": "laus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w028", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w029" },
-        { "id": "w029", "form": "se", "lemma": "sui", "morph": { "pos": "pron", "case": "abl" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-        { "id": "w030", "form": "suísque", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w031", "form": "ómnibus", "post": ":", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w030" },
-        { "id": "w032", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w033" },
-        { "id": "w033", "form": "redemptióne", "lemma": "redemptio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w034", "form": "animárum", "lemma": "anima", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 } },
-        { "id": "w035", "form": "suárum", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "f" }, "head": "w034" },
-        { "id": "w036", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w037" },
-        { "id": "w037", "form": "spe", "lemma": "spes", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 5 } },
-        { "id": "w038", "form": "salútis", "lemma": "salus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w039", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w040", "form": "incolumitátis", "lemma": "incolumitas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w041", "form": "suæ", "post": ":", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w040" }
+        { "id": "w021", "form": "vel", "lemma": "vel", "morph": { "pos": "conj" }, "gloss": { "pl": "albo", "en": "or" } },
+        { "id": "w022", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" }, "gloss": { "pl": "którzy", "en": "who" } },
+        { "id": "w023", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Ci", "en": "to Thee" } },
+        { "id": "w024", "form": "ófferunt", "lemma": "offero", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "składają", "en": "offer" } },
+        { "id": "w025", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" }, "gloss": { "pl": "tę", "en": "this" } },
+        { "id": "w026", "form": "sacrifícium", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "ofiarę", "en": "sacrifice" } },
+        { "id": "w027", "form": "laudis", "post": ",", "lemma": "laus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "chwały", "en": "of praise" }, "function": { "pl": "Wyrażenie „sacrifícium laudis” występuje w Ps 49, 14 i 106, 22.", "en": "The phrase “sacrifícium laudis” occurs in Ps 49:14 and 106:22." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "Psalm 49:14" }, { "title": "Biblia Sacra Vulgata", "locator": "Psalm 106:22" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "Psalm 49:14" }, { "title": "Biblia Sacra Vulgata", "locator": "Psalm 106:22" }] } },
+        { "id": "w028", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w029", "gloss": { "pl": "za", "en": "for" } },
+        { "id": "w029", "form": "se", "lemma": "sui", "morph": { "pos": "pron", "case": "abl" }, "gloss": { "pl": "siebie", "en": "themselves" }, "function": { "pl": "„pro” (w028) wymaga ablativu. Forma „se” sama nie wskazuje liczby ani rodzaju.", "en": "“pro” (w028) requires the ablative. The form “se” itself marks neither number nor gender." } },
+        { "id": "w030", "form": "suísque", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "i swoich", "en": "and for their own" }, "function": { "pl": "Ablativus liczby mnogiej po „pro” (w028), z dołączonym spójnikiem „-que”.", "en": "Ablative plural after “pro” (w028), with the conjunction “-que” attached." } },
+        { "id": "w031", "form": "ómnibus", "post": ":", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w030", "gloss": { "pl": "wszystkich", "en": "all" } },
+        { "id": "w032", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w033", "gloss": { "pl": "za", "en": "for" } },
+        { "id": "w033", "form": "redemptióne", "lemma": "redemptio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "odkupienie", "en": "the redemption" }, "function": { "pl": "Ablativus po „pro” (w032): „za odkupienie ich dusz”.", "en": "Ablative after “pro” (w032): “for the redemption of their souls”." } },
+        { "id": "w034", "form": "animárum", "lemma": "anima", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "dusz", "en": "of the souls" } },
+        { "id": "w035", "form": "suárum", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "f" }, "head": "w034", "gloss": { "pl": "swoich", "en": "their" } },
+        { "id": "w036", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w037", "gloss": { "pl": "za", "en": "for" } },
+        { "id": "w037", "form": "spe", "lemma": "spes", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 5 }, "gloss": { "pl": "nadzieję", "en": "the hope" } },
+        { "id": "w038", "form": "salútis", "lemma": "salus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "zbawienia", "en": "of salvation" }, "function": { "pl": "Dopełniacz zależny od „spe” (w037), współrzędny z „incolumitátis” (w040).", "en": "A genitive dependent on “spe” (w037), coordinated with “incolumitátis” (w040)." } },
+        { "id": "w039", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w040", "form": "incolumitátis", "lemma": "incolumitas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "bezpieczeństwa", "en": "of safety" } },
+        { "id": "w041", "form": "suæ", "post": ":", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w040", "gloss": { "pl": "swego", "en": "their" } }
       ]
     },
     {
@@ -95,17 +105,39 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "i wznoszą swoje modlitwy ku Tobie, Bogu wiecznemu, żywemu i prawdziwemu.",
+        "en": "and paying their homage to You, the eternal God, living and true."
+      },
       "words": [
-        { "id": "w042", "form": "tibíque", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
-        { "id": "w043", "form": "reddunt", "lemma": "reddo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w044", "form": "vota", "lemma": "votum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w045", "form": "sua", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w044" },
-        { "id": "w046", "form": "ætérno", "lemma": "aeternus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w047" },
-        { "id": "w047", "form": "Deo", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w048", "form": "vivo", "lemma": "vivus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w047" },
-        { "id": "w049", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w050", "form": "vero", "post": ".", "lemma": "verus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w047" }
+        { "id": "w042", "form": "tibíque", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "i Tobie", "en": "and to Thee" } },
+        { "id": "w043", "form": "reddunt", "lemma": "reddo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "oddają", "en": "they pay" }, "function": { "pl": "Wyrażenie „vota réddere” występuje w Ps 115, 14 i 18.", "en": "The phrase “vota réddere” occurs in Ps 115:14 and 18." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "Psalm 115:14" }, { "title": "Biblia Sacra Vulgata", "locator": "Psalm 115:18" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "Psalm 115:14" }, { "title": "Biblia Sacra Vulgata", "locator": "Psalm 115:18" }] } },
+        { "id": "w044", "form": "vota", "lemma": "votum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "śluby", "en": "vows" } },
+        { "id": "w045", "form": "sua", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w044", "gloss": { "pl": "swoje", "en": "their" } },
+        { "id": "w046", "form": "ætérno", "lemma": "aeternus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w047", "gloss": { "pl": "wiecznemu", "en": "eternal" } },
+        { "id": "w047", "form": "Deo", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bogu", "en": "God" }, "function": { "pl": "Celownik wskazujący adresata ślubów. Wyrażenie „Deo vivo et vero” występuje w 1 Tes 1, 9.", "en": "Dative marking the recipient of the vows. The phrase “Deo vivo et vero” occurs in 1 Thess 1:9." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "1 Thessalonians 1:9" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "1 Thessalonians 1:9" }] } },
+        { "id": "w048", "form": "vivo", "lemma": "vivus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w047", "gloss": { "pl": "żywemu", "en": "living" } },
+        { "id": "w049", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w050", "form": "vero", "post": ".", "lemma": "verus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w047", "gloss": { "pl": "prawdziwemu", "en": "true" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The commemoration of the living, with the silence in which the priest names those he prays for; the missal marks it N. et N., and the edition omits the slot as it does in Te ígitur, carrying the pause as its own rubric segment. MEMÉNTO at w001 is the future imperative of memini — the only kind that verb has (meménto, plural mementóte); Whitaker's Words tags it present, Collatinus future, so the token stands as an argued divergence in the agreement report. CÓGNITA at w012 and NOTA at w015 are tagged as adjectives, with both analyzers, rather than as participles of cognósco and nosco. SE at w029 carries neither number nor gender: the reflexive marks neither, and only the case is fixed, by pro. Its provenance names Whitaker's alone beside the edition: Collatinus does not carry the bare reflexive ablative, and the token records only the analyzer that confirms it. SUÍSQUE at w030 is masculine on the persons it stands for, not on its own form.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence. Accidental variants adjudicated in the apparatus.",
+      "witnesses": "witnesses/ordinarium.memento-vivorum/",
+      "apparatus": "witnesses/ordinarium.memento-vivorum/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s02": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    },
+    "words": {
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+    }
+  }
 }

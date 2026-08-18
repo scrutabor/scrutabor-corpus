@@ -12,6 +12,7 @@ import os
 import sys
 from pathlib import Path
 
+from build_reader import store
 from checks.addresses import check as check_addresses
 from checks.apparatus import lint_apparatus_summary
 from checks.capitals import check as check_capitals
@@ -74,11 +75,7 @@ def check_schema_versions() -> list[str]:
     """SCHEMA.md: schema_version is corpus-wide — every document carries the
     same number. Reads every document; zero documents is itself a failure."""
     versions: dict[str, list[str]] = {}
-    for path in (
-        sorted(CORPUS.glob("texts/*/*.json"))
-        + sorted(CORPUS.glob("glosses/*/*.json"))
-        + sorted(CORPUS.glob("lexicon/*.json"))
-    ):
+    for path in sorted(CORPUS.glob("texts/*/*.json")) + sorted(CORPUS.glob("lexicon/*.json")):
         doc = json.loads(path.read_text(encoding="utf-8"))
         versions.setdefault(str(doc.get("schema_version")), []).append(
             str(path.relative_to(CORPUS))
@@ -120,9 +117,12 @@ def lexicon_suite(used_lemmas=None) -> int:
 
 
 def main(text_id: str) -> int:
-    category, name = text_id.split(".", 1)
-    text_path = CORPUS / "texts" / category / f"{name}.json"
-    doc = json.loads(text_path.read_text(encoding="utf-8"))
+    text_path = store.path_of(CORPUS, text_id)
+    # ONE document on disk, three in hand. The checks are each right about
+    # their own job -- check_polish asks about one language and should keep
+    # asking about one language -- so the seam is here (build_reader/store.py)
+    # and not in twenty modules.
+    doc, gloss_layers = store.load(CORPUS, text_id)
 
     all_errors, all_warnings = [], []
 
@@ -163,8 +163,7 @@ def main(text_id: str) -> int:
     all_errors += check_text_against_lexicon(doc, lemmata)
 
     gloss_docs = []
-    for gloss_path in sorted(CORPUS.glob(f"glosses/*/{text_id}.json")):
-        gdoc = json.loads(gloss_path.read_text(encoding="utf-8"))
+    for _lang, gdoc in sorted(gloss_layers.items()):
         gloss_docs.append(gdoc)
         all_errors += lint_gloss(gdoc, doc)
         # The gloss line read AS POLISH: a preposition governing the case
@@ -245,10 +244,7 @@ if __name__ == "__main__":
             sys.exit(1)
         used = set()
         for tid in ids:
-            category, name = tid.split(".", 1)
-            tdoc = json.loads(
-                (CORPUS / "texts" / category / f"{name}.json").read_text(encoding="utf-8")
-            )
+            tdoc = store.load(CORPUS, tid)[0]
             for s in tdoc["segments"]:
                 for w in s.get("words") or []:
                     used.add(w["lemma"])
@@ -263,12 +259,8 @@ if __name__ == "__main__":
             category, name = tid.split(".", 1)
             pairs.append(
                 (
-                    json.loads(
-                        (CORPUS / "texts" / category / f"{name}.json").read_text(encoding="utf-8")
-                    ),
-                    json.loads(
-                        (CORPUS / "glosses" / "en" / f"{tid}.json").read_text(encoding="utf-8")
-                    ),
+                    store.load(CORPUS, tid)[0],
+                    store.load(CORPUS, tid)[1]["en"],
                 )
             )
         number_errors = check_english_number(pairs)
@@ -304,10 +296,7 @@ if __name__ == "__main__":
         # correct spellings of one dictionary list it twice for the reader.
         cited = (
             corpus_docs
-            + [
-                json.loads(p.read_text(encoding="utf-8"))
-                for p in sorted(CORPUS.glob("glosses/*/*.json"))
-            ]
+            + [g for _doc, layers in store.all_texts(CORPUS) for g in layers.values()]
             + [
                 json.loads(p.read_text(encoding="utf-8"))
                 for p in sorted(CORPUS.glob("lexicon/*.json"))

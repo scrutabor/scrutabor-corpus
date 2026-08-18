@@ -4,7 +4,8 @@ import glob
 import json
 from pathlib import Path
 
-from build_reader.merge import load, merge, split
+from build_reader.merge import merge, split
+from build_reader.store import joined, load
 
 CORPUS = Path(__file__).resolve().parent.parent
 IDS = sorted(
@@ -12,15 +13,14 @@ IDS = sorted(
 )
 
 
-def test_every_text_in_the_corpus_survives_a_round_trip():
-    # The whole proof. A merge that cannot be taken apart again is a migration
-    # nobody can undo, and 111 texts is too many to undo by hand.
+def test_every_stored_document_survives_a_round_trip():
+    # The corpus stores the joined document now, so the proof runs the other
+    # way: take one apart and put it back, and it must be what it was. This is
+    # what lets a check keep reading three documents while one is on disk.
     for text_id in IDS:
-        text, glosses = load(CORPUS, text_id)
-        back_text, back_glosses = split(merge(text, glosses))
-        assert back_text == text, text_id
-        for lang in ("pl", "en"):
-            assert back_glosses[lang] == glosses[lang], f"{text_id}/{lang}"
+        stored = joined(CORPUS, text_id)
+        text, glosses = split(stored)
+        assert merge(text, glosses) == stored, text_id
 
 
 def test_the_editorial_layer_leaves_the_reading():

@@ -1,60 +1,137 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.benedictio",
   "title": "Benedícat vos omnípotens Deus",
   "category": "ordinarium",
   "section": "missa-fidelium",
   "variant": "missae",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 12
   },
-  "notes": "The blessing at the end of Mass. One sentence, cut in two by a rubric: the priest says Benedícat vos omnípotens Deus at the altar, turns to the people, and finishes the sentence while making the sign of the cross over them. PATER at w005, FÍLIUS at w007 and SPÍRITUS at w009 are all nominative in apposition to DEUS at w004 — they name the God who blesses, they are not a separate address. The two witnesses place the rubrical cross differently (do before et Spíritus Sanctus, handmissal-eo before Pater); it is a direction to the hand, not a reading, and is stripped in both transcriptions. The rubric at s03 is set with a single space where witness do's plain text sets two — a transcription artifact of that file, normalized. The rubric at s05 sets Trínitas with its accent, as the same witness sets it in the Pláceat above (raw 374). The s05 rubric preserves DO's pre-1960 unconditional wording; the 1962 Ritus servandus XII, 4 makes the Last Gospel conditional — si est dicendum — and the Codex n. 510 omits it after Benedicámus Dómino and when the absolution follows a Requiem; the narratives state the condition. The Amen at w011 is the answer, not the priest's: witness do marks it R., the hand missal S:, and the Ritus servandus prints R. Amen — it stands as its own segment (s06).",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence, and no accidental variant either — the two editions point the blessing identically.",
-    "witnesses": "witnesses/ordinarium.benedictio/",
-    "apparatus": "witnesses/ordinarium.benedictio/apparatus.json"
+  "about": {
+    "pl": "Kapłan wypowiada pierwszą część błogosławieństwa przy ołtarzu, następnie zwraca się do ludu i kreśli nad nim znak krzyża. Także podczas Mszy uroczystej czyni jeden znak. Potrójne błogosławieństwo należy do Mszy pontyfikalnej. Błogosławieństwo opuszcza się po Benedicámus Dómino oraz we Mszach za zmarłych.",
+    "en": "The priest says the first part of the blessing at the altar, then turns to the people and makes the sign of the cross over them. He makes one sign even at a solemn Mass. The threefold blessing belongs to a Pontifical Mass. The blessing is omitted after Benedicámus Dómino and in Masses for the Dead."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ordo Missae, Dimissio et benedictio",
+        "url": "https://archive.org/details/missale_romanum-1962/page/n403/mode/1up"
+      },
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ritus servandus in celebratione Missae, XII, 1–4",
+        "url": "https://archive.org/details/missale_romanum-1962/page/n65/mode/1up"
+      },
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Rubricae generales, n. 508",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ],
+    "en": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ordo Missae, Dimissio et benedictio",
+        "url": "https://archive.org/details/missale_romanum-1962/page/n403/mode/1up"
+      },
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ritus servandus in celebratione Missae, XII, 1–4",
+        "url": "https://archive.org/details/missale_romanum-1962/page/n65/mode/1up"
+      },
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Rubricae generales, n. 508",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ]
+  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
       "text": "Deinde osculatur Altare: et elevatis oculis, extendens, elevans et iungens manus, caputque Cruci inclínans, dicit:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Potem kapłan całuje ołtarz, podnosi oczy, wyciąga, unosi i składa ręce, pochyla głowę przed krzyżem i mówi:",
+        "en": "Then the priest kisses the altar, raises his eyes, extends, lifts and joins his hands, bows his head to the Cross, and says:"
+      },
+      "narrative_citations": {
+        "pl": [
+          {
+            "title": "Missale Romanum (1962)",
+            "locator": "Ordo Missae, rubric before Benedicat vos",
+            "url": "https://archive.org/details/missale_romanum-1962"
+          }
+        ],
+        "en": [
+          {
+            "title": "Missale Romanum (1962)",
+            "locator": "Ordo Missae, rubric before Benedicat vos",
+            "url": "https://archive.org/details/missale_romanum-1962"
+          }
+        ]
+      }
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Niech was błogosławi Bóg wszechmogący,",
+        "en": "May almighty God bless you,"
+      },
       "words": [
-        { "id": "w001", "form": "Benedícat", "lemma": "benedico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
-        { "id": "w002", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
-        { "id": "w003", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w004" },
-        { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } }
+        { "id": "w001", "form": "Benedícat", "lemma": "benedico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "niech błogosławi", "en": "may bless" }, "function": { "pl": "Tryb łączący życzenia. „Deus” (w004) jest podmiotem, a „vos” (w002) dopełnieniem bliższym.", "en": "Subjunctive of wish. “Deus” (w004) is the subject and “vos” (w002) the direct object." } },
+        { "id": "w002", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "was", "en": "you" } },
+        { "id": "w003", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w004", "gloss": { "pl": "wszechmogący", "en": "almighty" }, "function": { "pl": "Zgadza się z „Deus” (w004), choć stoi przed nim.", "en": "Agrees with “Deus” (w004), although it stands before it." } },
+        { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bóg", "en": "God" } }
       ]
     },
     {
       "id": "s03",
       "type": "rubric",
       "text": "et versus ad populum, semel tantum benedícens, etiam in Missis sollemnibus; In Missa Pontificali ter benedicitur, ut in Pontificali habetur. Deinde prosequitur:",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan zwraca się do ludu, błogosławi go jeden raz i mówi dalej:",
+        "en": "Turning towards the people, the priest blesses them once and continues:"
+      },
+      "narrative_citations": {
+        "pl": [
+          {
+            "title": "Missale Romanum (1962)",
+            "locator": "Ordo Missae, rubric for the final blessing",
+            "url": "https://archive.org/details/missale_romanum-1962"
+          }
+        ],
+        "en": [
+          {
+            "title": "Missale Romanum (1962)",
+            "locator": "Ordo Missae, rubric for the final blessing",
+            "url": "https://archive.org/details/missale_romanum-1962"
+          }
+        ]
+      }
     },
     {
       "id": "s04",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Ojciec i Syn, i Duch Święty.",
+        "en": "the Father, and the Son, and the Holy Spirit."
+      },
       "words": [
-        { "id": "w005", "form": "Pater", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w007", "form": "Fílius", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w009", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 } },
-        { "id": "w010", "form": "Sanctus", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w009" }
+        { "id": "w005", "form": "Pater", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojciec", "en": "the Father" }, "function": { "pl": "Mianownik w apozycji do „Deus” (w004), nie wołacz.", "en": "Nominative in apposition to “Deus” (w004), not vocative." } },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w007", "form": "Fílius", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Syn", "en": "the Son" } },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w009", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Duch", "en": "the Spirit" }, "function": { "pl": "Mianownik liczby pojedynczej w apozycji do „Deus” (w004), obok „Pater” (w005) i „Fílius” (w007).", "en": "Nominative singular in apposition to “Deus” (w004), alongside “Pater” (w005) and “Fílius” (w007)." } },
+        { "id": "w010", "form": "Sanctus", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w009", "gloss": { "pl": "Święty", "en": "Holy" } }
       ]
     },
     {
@@ -62,9 +139,6 @@
       "type": "verse",
       "speaker": "minister",
       "voice": "clara",
-      "words": [
-        { "id": "w011", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
-      ],
       "participation": {
         "lecta": {
           "gradus": 1,
@@ -74,13 +148,39 @@
           "gradus": 1,
           "source": "DMS 25 a"
         }
-      }
+      },
+      "translation": {
+        "pl": "Amen.",
+        "en": "Amen."
+      },
+      "words": [
+        { "id": "w011", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+      ]
     },
     {
       "id": "s05",
       "type": "rubric",
       "text": "In Missis Defunctorum non datur benedíctio, sed dicto Requiéscant in pace, dicit: Pláceat tibi, sancta Trínitas; deinde osculato Altari, legit Evangelium sancti Ioannis.",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "We Mszach za zmarłych błogosławieństwa się nie udziela. Po Requiéscant in pace kapłan odmawia Pláceat tibi, sancta Trínitas, całuje ołtarz i, jeśli ostatnia Ewangelia ma być odczytana, czyta Ewangelię św. Jana.",
+        "en": "In Masses for the Dead no blessing is given. After Requiéscant in pace the priest says Pláceat tibi, sancta Trínitas, kisses the altar and, if the Last Gospel is to be said, reads the Gospel of Saint John."
+      }
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The blessing at the end of Mass. One sentence, cut in two by a rubric: the priest says Benedícat vos omnípotens Deus at the altar, turns to the people, and finishes the sentence while making the sign of the cross over them. PATER at w005, FÍLIUS at w007 and SPÍRITUS at w009 are all nominative in apposition to DEUS at w004 — they name the God who blesses, they are not a separate address. The two witnesses place the rubrical cross differently (do before et Spíritus Sanctus, handmissal-eo before Pater); it is a direction to the hand, not a reading, and is stripped in both transcriptions. The rubric at s03 is set with a single space where witness do's plain text sets two — a transcription artifact of that file, normalized. The rubric at s05 sets Trínitas with its accent, as the same witness sets it in the Pláceat above (raw 374). The s05 rubric preserves DO's pre-1960 unconditional wording; the 1962 Ritus servandus XII, 4 makes the Last Gospel conditional — si est dicendum — and the Codex n. 510 omits it after Benedicámus Dómino and when the absolution follows a Requiem; the narratives state the condition. The Amen at w011 is the answer, not the priest's: witness do marks it R., the hand missal S:, and the Ritus servandus prints R. Amen — it stands as its own segment (s06).",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence, and no accidental variant either — the two editions point the blessing identically.",
+      "witnesses": "witnesses/ordinarium.benedictio/",
+      "apparatus": "witnesses/ordinarium.benedictio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s03": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s05": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    }
+  }
 }

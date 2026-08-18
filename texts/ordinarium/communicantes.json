@@ -1,47 +1,46 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.communicantes",
   "title": "Communicántes",
   "category": "ordinarium",
   "section": "missa-fidelium",
   "variant": "missae",
   "sung": false,
-  "status": "working-edition",
   "ids": {
     "next": 80
   },
-  "notes": "The prayer that joins the offering to the saints — Our Lady, Ioseph, the twelve, and twelve martyrs of the Roman church: the popes Linus, Cletus, Clement, Sixtus and Cornelius, the bishop of Carthage Cyprian, the deacon Lawrence, Chrysogonus, John and Paul, Cosmas and Damian. The list is a single chain of genitives depending on memóriam venerántes, and every name in it is tagged genitive on that syntax, since several of the forms could as well be nominative plural. COMMUNICÁNTES at w001 and VENERÁNTES at w004 are nominative plural masculine, agreeing with a subject the sentence never states: the priest and those with him. IOSEPH at w021 is indeclinable and carries no declension; its case is the one beáti agrees with. GENETRÍCIS at w011 is the reading of the typical edition and of witness do; witness handmissal-eo prints Genitrícis, and both are real spellings of the word, so the difference is ruled in the apparatus rather than passed over. ÓMNIBUS at w069 is neuter — in all things, not among all men. CLETI at w046, COSMÆ at w056 and DAMIÁNI at w058 are unknown to both analyzers; their parses rest on the edition alone and say so in their provenance. MÁRTYRUM at w029, LINI at w045 and CLEMÉNTIS at w047 rest on Collatinus alone, because Whitaker's fails at each in a way his own dictionary explains: a genitive singular for mártyrum, which that form cannot carry (the singular is mártyris) — a porting artefact; flax, linum, in place of the pope Linus; and only the adjective clemens where the pope's name stands. None of the three is a question about the Latin, and the overrulings are recorded in the pipeline's rulings.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence; the one genuine spelling variant (Genetrícis/Genitrícis) and the accidental variants are adjudicated in the apparatus. The typical edition itself (witness mr) agrees with this text at every token, punctuation included.",
-    "witnesses": "witnesses/ordinarium.communicantes/",
-    "apparatus": "witnesses/ordinarium.communicantes/apparatus.json"
+  "about": {
+    "pl": "Modlitwa wspomina w jedności z całym Kościołem Najświętszą Maryję Pannę, św. Józefa, Apostołów i męczenników. Po wymienieniu świętych prosi Boga, aby przez ich zasługi i modlitwy otaczał wiernych swoją opieką.",
+    "en": "In communion with the whole Church, the prayer honors the memory of the Blessed Virgin Mary, Saint Joseph, the Apostles, and the martyrs. After naming the saints, it asks God to surround the faithful with His protection through their merits and prayers."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Zjednoczeni z całym Kościołem, ze czcią wspominamy najpierw pełną chwały Maryję, zawsze Dziewicę, Matkę Boga i naszego Pana Jezusa Chrystusa:",
+        "en": "In communion with those whose memory we venerate, especially the glorious ever-Virgin Mary, Mother of our God and Lord, Jesus Christ:"
+      },
       "words": [
-        { "id": "w001", "form": "Communicántes", "post": ",", "lemma": "communico", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 1 }, "substantive": true },
-        { "id": "w002", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w003", "form": "memóriam", "lemma": "memoria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w004", "form": "venerántes", "post": ",", "lemma": "veneror", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "dep", "conj": 1 }, "substantive": true },
-        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w006" },
-        { "id": "w006", "form": "primis", "lemma": "primus", "morph": { "pos": "adj", "case": "abl", "number": "pl" }, "substantive": true },
-        { "id": "w007", "form": "gloriósæ", "lemma": "gloriosus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w009" },
-        { "id": "w008", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
-        { "id": "w009", "form": "Vírginis", "lemma": "virgo", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w010", "form": "Maríæ", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w011", "form": "Genetrícis", "lemma": "genetrix", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w012", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w014", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w015", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w014" },
-        { "id": "w016", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
-        { "id": "w017", "form": "Christi", "post": ":", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } }
+        { "id": "w001", "form": "Communicántes", "post": ",", "lemma": "communico", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 1 }, "substantive": true, "gloss": { "pl": "zjednoczeni", "en": "in communion with" }, "function": { "pl": "Imiesłów w mianowniku liczby mnogiej. Podmiot pozostaje niewyrażony.", "en": "A nominative plural participle. Its subject is left unexpressed." } },
+        { "id": "w002", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w003", "form": "memóriam", "lemma": "memoria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "pamięć", "en": "the memory" } },
+        { "id": "w004", "form": "venerántes", "post": ",", "lemma": "veneror", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "dep", "conj": 1 }, "substantive": true, "gloss": { "pl": "czcząc", "en": "venerating" }, "function": { "pl": "Imiesłów deponentny, od którego zależy następujący dalej łańcuch dopełniaczy.", "en": "Deponent participle governing the chain of genitives that follows." } },
+        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w006", "gloss": { "pl": "przede", "en": "first" } },
+        { "id": "w006", "form": "primis", "lemma": "primus", "morph": { "pos": "adj", "case": "abl", "number": "pl" }, "substantive": true, "gloss": { "pl": "wszystkim", "en": "of all" } },
+        { "id": "w007", "form": "gloriósæ", "lemma": "gloriosus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w009", "gloss": { "pl": "chwalebnej", "en": "glorious" } },
+        { "id": "w008", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "ever" } },
+        { "id": "w009", "form": "Vírginis", "lemma": "virgo", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Dziewicy", "en": "Virgin" }, "function": { "pl": "Razem z „semper” (w008) słowo Vírginis tworzy tytuł zawsze Dziewicy.", "en": "Together with “semper” (w008), Vírginis forms the title ever-Virgin." } },
+        { "id": "w010", "form": "Maríæ", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryi", "en": "Mary" } },
+        { "id": "w011", "form": "Genetrícis", "lemma": "genetrix", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Rodzicielki", "en": "Mother" }, "function": { "pl": "„Genetríx” znaczy „Rodzicielka”. Dopełniacz „Dei” określa, czyją jest Rodzicielką: „Boża Rodzicielka”.", "en": "“Genetríx” means “Mother”. With the genitive “Dei”, the title means “Mother of God”." } },
+        { "id": "w012", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" } },
+        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w014", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "Lord" } },
+        { "id": "w015", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w014", "gloss": { "pl": "naszego", "en": "our" } },
+        { "id": "w016", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezusa", "en": "Jesus" } },
+        { "id": "w017", "form": "Christi", "post": ":", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" } }
       ]
     },
     {
@@ -49,14 +48,18 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "a także świętego Józefa, Oblubieńca tejże Dziewicy,",
+        "en": "and blessed Joseph, Spouse of the same Virgin,"
+      },
       "words": [
-        { "id": "w018", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
-        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w020", "form": "beáti", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w021" },
-        { "id": "w021", "form": "Ioseph", "post": ",", "lemma": "Ioseph", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w022", "form": "eiúsdem", "lemma": "idem", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "f" } },
-        { "id": "w023", "form": "Vírginis", "lemma": "virgo", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w024", "form": "Sponsi", "post": ",", "lemma": "sponsus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } }
+        { "id": "w018", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
+        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "także", "en": "also" }, "function": { "pl": "Razem z „sed” (w018) słowo et dołącza Józefa do wyliczenia: a także.", "en": "Together with “sed” (w018), et adds Joseph to the list: but also." } },
+        { "id": "w020", "form": "beáti", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w021", "gloss": { "pl": "błogosławionego", "en": "blessed" } },
+        { "id": "w021", "form": "Ioseph", "post": ",", "lemma": "Ioseph", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Józefa", "en": "Joseph" }, "function": { "pl": "Imię nieodmienne: przypadek widać tylko po „beáti” (w020), które się z nim zgadza.", "en": "An indeclinable name: only “beáti” (w020), which agrees with it, shows the case." } },
+        { "id": "w022", "form": "eiúsdem", "lemma": "idem", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "f" }, "gloss": { "pl": "tejże", "en": "the same" } },
+        { "id": "w023", "form": "Vírginis", "lemma": "virgo", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Dziewicy", "en": "Virgin" } },
+        { "id": "w024", "form": "Sponsi", "post": ",", "lemma": "sponsus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Oblubieńca", "en": "Spouse" }, "function": { "pl": "Dopełniacz w dopowiedzeniu do „Ioseph” (w021): przy nieodmiennym imieniu przypadek widać w beáti i w Sponsi.", "en": "A genitive in apposition to “Ioseph” (w021): with the name indeclinable, the case shows in beáti and in Sponsi." } }
       ]
     },
     {
@@ -64,27 +67,31 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "oraz Twoich świętych Apostołów i Męczenników: Piotra i Pawła, Andrzeja, Jakuba, Jana, Tomasza, Jakuba, Filipa, Bartłomieja, Mateusza, Szymona i Tadeusza:",
+        "en": "Your blessed Apostles and Martyrs, Peter and Paul, Andrew, James, John, Thomas, James, Philip, Bartholomew, Matthew, Simon and Jude (Thaddeus):"
+      },
       "words": [
-        { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w026", "form": "beatórum", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "head": "w027" },
-        { "id": "w027", "form": "Apostolórum", "lemma": "apostolus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 } },
-        { "id": "w028", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
-        { "id": "w029", "form": "Mártyrum", "lemma": "martyr", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w030", "form": "tuórum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "head": "w029" },
-        { "id": "w031", "form": "Petri", "lemma": "Petrus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w032", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w033", "form": "Pauli", "post": ",", "lemma": "Paulus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w034", "form": "Andréæ", "post": ",", "lemma": "Andreas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 1 } },
-        { "id": "w035", "form": "Iacóbi", "post": ",", "lemma": "Iacobus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w036", "form": "Ioánnis", "post": ",", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w037", "form": "Thomæ", "post": ",", "lemma": "Thomas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 1 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w038", "form": "Iacóbi", "post": ",", "lemma": "Iacobus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w039", "form": "Philíppi", "post": ",", "lemma": "Philippus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w040", "form": "Bartholomǽi", "post": ",", "lemma": "Bartholomaeus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w041", "form": "Matthǽi", "post": ",", "lemma": "Matthaeus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w042", "form": "Simónis", "lemma": "Simon", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w043", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w044", "form": "Thaddǽi", "post": ":", "lemma": "Thaddaeus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+        { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w026", "form": "beatórum", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "head": "w027", "gloss": { "pl": "błogosławionych", "en": "blessed" } },
+        { "id": "w027", "form": "Apostolórum", "lemma": "apostolus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "apostołów", "en": "apostles" } },
+        { "id": "w028", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w029", "form": "Mártyrum", "lemma": "martyr", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "męczenników", "en": "martyrs" }, "function": { "pl": "Dopełniacz liczby mnogiej zależny od „memóriam” (w003).", "en": "Genitive plural dependent on “memóriam” (w003)." } },
+        { "id": "w030", "form": "tuórum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "head": "w029", "gloss": { "pl": "Twoich", "en": "Thy" } },
+        { "id": "w031", "form": "Petri", "lemma": "Petrus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Piotra", "en": "Peter" } },
+        { "id": "w032", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w033", "form": "Pauli", "post": ",", "lemma": "Paulus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pawła", "en": "Paul" }, "function": { "pl": "Wyliczenie obejmuje dwunastu Apostołów, w tym Pawła zamiast Macieja.", "en": "The list names twelve Apostles, including Paul rather than Matthias." }, "function_citations": { "pl": [{ "title": "Missale Romanum (1962)", "locator": "Canon Missae, Communicantes", "url": "https://archive.org/details/missale_romanum-1962" }, { "title": "Biblia Sacra Vulgata", "locator": "Acts 1:26" }], "en": [{ "title": "Missale Romanum (1962)", "locator": "Canon Missae, Communicantes", "url": "https://archive.org/details/missale_romanum-1962" }, { "title": "Biblia Sacra Vulgata", "locator": "Acts 1:26" }] } },
+        { "id": "w034", "form": "Andréæ", "post": ",", "lemma": "Andreas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 1 }, "gloss": { "pl": "Andrzeja", "en": "Andrew" } },
+        { "id": "w035", "form": "Iacóbi", "post": ",", "lemma": "Iacobus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Jakuba", "en": "James" }, "function": { "pl": "Pierwszy z dwóch Jakubów — brat Jana, syn Zebedeusza.", "en": "The first of the two Jameses — the brother of John, son of Zebedee." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "Matthew 4:21" }, { "title": "Biblia Sacra Vulgata", "locator": "Mark 1:19" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "Matthew 4:21" }, { "title": "Biblia Sacra Vulgata", "locator": "Mark 1:19" }] } },
+        { "id": "w036", "form": "Ioánnis", "post": ",", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Jana", "en": "John" } },
+        { "id": "w037", "form": "Thomæ", "post": ",", "lemma": "Thomas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 1 }, "gloss": { "pl": "Tomasza", "en": "Thomas" } },
+        { "id": "w038", "form": "Iacóbi", "post": ",", "lemma": "Iacobus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Jakuba", "en": "James" }, "function": { "pl": "Drugi Jakub jest synem Alfeusza. Miejsce w wyliczeniu odróżnia go od „Iacóbi” (w035).", "en": "The second James is the son of Alphaeus. His place in the list distinguishes him from “Iacóbi” (w035)." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "Matthew 10:3" }, { "title": "Biblia Sacra Vulgata", "locator": "Mark 3:18" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "Matthew 10:3" }, { "title": "Biblia Sacra Vulgata", "locator": "Mark 3:18" }] } },
+        { "id": "w039", "form": "Philíppi", "post": ",", "lemma": "Philippus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Filipa", "en": "Philip" } },
+        { "id": "w040", "form": "Bartholomǽi", "post": ",", "lemma": "Bartholomaeus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bartłomieja", "en": "Bartholomew" } },
+        { "id": "w041", "form": "Matthǽi", "post": ",", "lemma": "Matthaeus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Mateusza", "en": "Matthew" } },
+        { "id": "w042", "form": "Simónis", "lemma": "Simon", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Szymona", "en": "Simon" } },
+        { "id": "w043", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w044", "form": "Thaddǽi", "post": ":", "lemma": "Thaddaeus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Tadeusza", "en": "Thaddeus" } }
       ]
     },
     {
@@ -92,21 +99,25 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "Linusa, Kleta, Klemensa, Sykstusa, Korneliusza, Cypriana, Wawrzyńca, Chryzogona, Jana i Pawła, Kosmy i Damiana:",
+        "en": "Linus, Cletus, Clement, Sixtus, Cornelius, Cyprian, Lawrence, Chrysogonus, John and Paul, Cosmas and Damian:"
+      },
       "words": [
-        { "id": "w045", "form": "Lini", "post": ",", "lemma": "Linus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w046", "form": "Cleti", "post": ",", "lemma": "Cletus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
-        { "id": "w047", "form": "Cleméntis", "post": ",", "lemma": "Clemens", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w048", "form": "Xysti", "post": ",", "lemma": "Xystus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w049", "form": "Cornélii", "post": ",", "lemma": "Cornelius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w050", "form": "Cypriáni", "post": ",", "lemma": "Cyprianus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w051", "form": "Lauréntii", "post": ",", "lemma": "Laurentius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w052", "form": "Chrysógoni", "post": ",", "lemma": "Chrysogonus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w053", "form": "Ioánnis", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w054", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w055", "form": "Pauli", "post": ",", "lemma": "Paulus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w056", "form": "Cosmæ", "lemma": "Cosmas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 1 }, "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
-        { "id": "w057", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w058", "form": "Damiáni", "post": ":", "lemma": "Damianus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } }
+        { "id": "w045", "form": "Lini", "post": ",", "lemma": "Linus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Linusa", "en": "Linus" }, "function": { "pl": "Od Linusa rozpoczyna się druga grupa dwunastu imion w tej modlitwie.", "en": "Linus begins the second group of twelve names in this prayer." } },
+        { "id": "w046", "form": "Cleti", "post": ",", "lemma": "Cletus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Kleta", "en": "Cletus" } },
+        { "id": "w047", "form": "Cleméntis", "post": ",", "lemma": "Clemens", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Klemensa", "en": "Clement" } },
+        { "id": "w048", "form": "Xysti", "post": ",", "lemma": "Xystus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Sykstusa", "en": "Sixtus" } },
+        { "id": "w049", "form": "Cornélii", "post": ",", "lemma": "Cornelius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Korneliusza", "en": "Cornelius" } },
+        { "id": "w050", "form": "Cypriáni", "post": ",", "lemma": "Cyprianus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Cypriana", "en": "Cyprian" } },
+        { "id": "w051", "form": "Lauréntii", "post": ",", "lemma": "Laurentius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Wawrzyńca", "en": "Lawrence" } },
+        { "id": "w052", "form": "Chrysógoni", "post": ",", "lemma": "Chrysogonus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chryzogona", "en": "Chrysogonus" } },
+        { "id": "w053", "form": "Ioánnis", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Jana", "en": "John" } },
+        { "id": "w054", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w055", "form": "Pauli", "post": ",", "lemma": "Paulus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pawła", "en": "Paul" }, "function": { "pl": "Święci Jan i Paweł to wspominani razem męczennicy rzymscy, nie Apostołowie wymienieni wyżej.", "en": "Saints John and Paul are Roman martyrs commemorated together, not the Apostles named above." }, "function_citations": { "pl": [{ "title": "Martyrologium Romanum (1960)", "locator": "26 June" }, { "title": "Missale Romanum (1962)", "locator": "Canon Missae, Communicantes", "url": "https://archive.org/details/missale_romanum-1962" }], "en": [{ "title": "Martyrologium Romanum (1960)", "locator": "26 June" }, { "title": "Missale Romanum (1962)", "locator": "Canon Missae, Communicantes", "url": "https://archive.org/details/missale_romanum-1962" }] } },
+        { "id": "w056", "form": "Cosmæ", "lemma": "Cosmas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 1 }, "gloss": { "pl": "Kosmy", "en": "Cosmas" } },
+        { "id": "w057", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w058", "form": "Damiáni", "post": ":", "lemma": "Damianus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Damiana", "en": "Damian" }, "function": { "pl": "Cosmæ i Damiáni są dopełniaczami w szeregu imion zależnym od „memóriam” (w003).", "en": "Cosmæ and Damiáni are genitives in the list of names dependent on “memóriam” (w003)." } }
       ]
     },
     {
@@ -114,43 +125,105 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
+      "translation": {
+        "pl": "i wszystkich Twoich Świętych. Przez ich zasługi i modlitwy otaczaj nas we wszystkim swoją przemożną opieką.",
+        "en": "and all Your Saints; we ask that through their merits and prayers, in all things we may be defended by Your protecting help."
+      },
       "words": [
-        { "id": "w059", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w060", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "head": "w061" },
-        { "id": "w061", "form": "Sanctórum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w062", "form": "tuórum", "post": ";", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "head": "w061" },
-        { "id": "w063", "form": "quorum", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "pl", "gender": "m" } },
-        { "id": "w064", "form": "méritis", "lemma": "meritum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
-        { "id": "w065", "form": "precibúsque", "lemma": "prex", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 } },
-        { "id": "w066", "form": "concédas", "post": ",", "lemma": "concedo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
-        { "id": "w067", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
-        { "id": "w068", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w069" },
-        { "id": "w069", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "substantive": true },
-        { "id": "w070", "form": "protectiónis", "lemma": "protectio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-        { "id": "w071", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w070" },
-        { "id": "w072", "form": "muniámur", "lemma": "munio", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 4 } },
-        { "id": "w073", "form": "auxílio", "post": ".", "lemma": "auxilium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } }
+        { "id": "w059", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w060", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "head": "w061", "gloss": { "pl": "wszystkich", "en": "all" } },
+        { "id": "w061", "form": "Sanctórum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "Świętych", "en": "Saints" } },
+        { "id": "w062", "form": "tuórum", "post": ";", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "head": "w061", "gloss": { "pl": "Twoich", "en": "Thy" } },
+        { "id": "w063", "form": "quorum", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "pl", "gender": "m" }, "gloss": { "pl": "których", "en": "whose" } },
+        { "id": "w064", "form": "méritis", "lemma": "meritum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "zasługami", "en": "merits" }, "function": { "pl": "Ablativus liczby mnogiej, który może wyrażać przyczynę albo narzędzie.", "en": "Ablative plural, which may express cause or means." } },
+        { "id": "w065", "form": "precibúsque", "lemma": "prex", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "i modlitwami", "en": "and prayers" } },
+        { "id": "w066", "form": "concédas", "post": ",", "lemma": "concedo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "racz sprawić", "en": "grant" }, "function": { "pl": "Tryb łączący użyty jako prośba.", "en": "Subjunctive used as a petition." } },
+        { "id": "w067", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "abyśmy", "en": "that" } },
+        { "id": "w068", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w069", "gloss": { "pl": "we", "en": "in" } },
+        { "id": "w069", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "substantive": true, "gloss": { "pl": "wszystkim", "en": "all things" }, "function": { "pl": "Rodzaj nijaki: „we wszystkich rzeczach”, nie „wśród wszystkich ludzi”.", "en": "Neuter: in all things, not among all men." } },
+        { "id": "w070", "form": "protectiónis", "lemma": "protectio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "opieki", "en": "of protection" } },
+        { "id": "w071", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w070", "gloss": { "pl": "Twojej", "en": "Thy" } },
+        { "id": "w072", "form": "muniámur", "lemma": "munio", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 4 }, "gloss": { "pl": "byli obwarowani", "en": "we may be defended" } },
+        { "id": "w073", "form": "auxílio", "post": ".", "lemma": "auxilium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "pomocą", "en": "by the help" }, "function": { "pl": "Ablativus narzędzia zależny od „muniámur” (w072).", "en": "Ablative of means dependent on “muniámur” (w072)." } }
       ]
     },
     {
       "id": "s06",
       "type": "rubric",
       "text": "Iungit manus.",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do", "mr"], "review": "pending" }
+      "narrative": {
+        "pl": "Kapłan składa ręce.",
+        "en": "The priest joins his hands."
+      },
+      "narrative_citations": {
+        "pl": [
+          {
+            "title": "Missale Romanum (1962)",
+            "locator": "Canon Missae, rubric at Per eundem Christum",
+            "url": "https://archive.org/details/missale_romanum-1962"
+          }
+        ],
+        "en": [
+          {
+            "title": "Missale Romanum (1962)",
+            "locator": "Canon Missae, rubric at Per eundem Christum",
+            "url": "https://archive.org/details/missale_romanum-1962"
+          }
+        ]
+      }
     },
     {
       "id": "s07",
       "type": "verse",
       "voice": "secreto",
       "speaker": "sacerdos",
+      "translation": {
+        "pl": "Przez tegoż Chrystusa Pana naszego. Amen.",
+        "en": "Through the same Christ our Lord. Amen."
+      },
       "words": [
-        { "id": "w074", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w075" },
-        { "id": "w075", "form": "eúndem", "lemma": "idem", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
-        { "id": "w076", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w077", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w078", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w077" },
-        { "id": "w079", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+        { "id": "w074", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w075", "gloss": { "pl": "przez", "en": "through" } },
+        { "id": "w075", "form": "eúndem", "lemma": "idem", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "tegoż", "en": "the same" }, "function": { "pl": "Zaimek wskazujący odnoszący się do „Christi” (w017).", "en": "Demonstrative referring back to “Christi” (w017)." } },
+        { "id": "w076", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" } },
+        { "id": "w077", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "Lord" } },
+        { "id": "w078", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w077", "gloss": { "pl": "naszego", "en": "our" } },
+        { "id": "w079", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The prayer that joins the offering to the saints — Our Lady, Ioseph, the twelve, and twelve martyrs of the Roman church: the popes Linus, Cletus, Clement, Sixtus and Cornelius, the bishop of Carthage Cyprian, the deacon Lawrence, Chrysogonus, John and Paul, Cosmas and Damian. The list is a single chain of genitives depending on memóriam venerántes, and every name in it is tagged genitive on that syntax, since several of the forms could as well be nominative plural. COMMUNICÁNTES at w001 and VENERÁNTES at w004 are nominative plural masculine, agreeing with a subject the sentence never states: the priest and those with him. IOSEPH at w021 is indeclinable and carries no declension; its case is the one beáti agrees with. GENETRÍCIS at w011 is the reading of the typical edition and of witness do; witness handmissal-eo prints Genitrícis, and both are real spellings of the word, so the difference is ruled in the apparatus rather than passed over. ÓMNIBUS at w069 is neuter — in all things, not among all men. CLETI at w046, COSMÆ at w056 and DAMIÁNI at w058 are unknown to both analyzers; their parses rest on the edition alone and say so in their provenance. MÁRTYRUM at w029, LINI at w045 and CLEMÉNTIS at w047 rest on Collatinus alone, because Whitaker's fails at each in a way his own dictionary explains: a genitive singular for mártyrum, which that form cannot carry (the singular is mártyris) — a porting artefact; flax, linum, in place of the pope Linus; and only the adjective clemens where the pope's name stands. None of the three is a question about the Latin, and the overrulings are recorded in the pipeline's rulings.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence; the one genuine spelling variant (Genetrícis/Genitrícis) and the accidental variants are adjudicated in the apparatus. The typical edition itself (witness mr) agrees with this text at every token, punctuation included.",
+      "witnesses": "witnesses/ordinarium.communicantes/",
+      "apparatus": "witnesses/ordinarium.communicantes/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s06": { "analysis": { "confidence": "high", "sources": ["editorial", "do", "mr"], "review": "pending" } }
+    },
+    "words": {
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w038": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w041": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w044": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w045": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w046": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
+      "w047": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w049": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w050": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w051": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w052": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w056": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
+      "w058": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
+      "w070": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+    }
+  }
 }

@@ -1,23 +1,18 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "proprium.dominica-iii-adventus-graduale",
   "title": "Qui sedes, Dómine, super Chérubim",
   "category": "proprium",
   "section": "missa-catechumenorum",
   "variant": "dominica-iii-adventus",
   "sung": true,
-  "status": "working-edition",
   "ids": {
     "next": 20
   },
-  "notes": "The gradual of the Third Sunday of Advent. The source boundary is recorded in the witness files.",
-  "source": {
-    "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
-    "witnesses": "witnesses/proprium.dominica-iii-adventus-graduale/",
-    "apparatus": "witnesses/proprium.dominica-iii-adventus-graduale/apparatus.json"
+  "about": {
+    "pl": "Graduał III Niedzieli Adwentu, z Psalmu 79. Jego werset to co do słowa ten sam, który śpiewa się w introicie II Niedzieli — jedno zdanie, dwie niedziele, dwa miejsca w tej samej Mszy.",
+    "en": "The gradual of the Third Sunday of Advent, from Psalm 79. Its verse is word for word the one sung at the introit of the Second Sunday — one sentence, two Sundays, two places in the same Mass."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
   "segments": [
     {
       "id": "s01",
@@ -34,17 +29,35 @@
           "source": "DMS 25 c"
         }
       },
+      "translation": {
+        "pl": "Który zasiadasz nad cherubinami, Panie, wzbudź potęgę Twoją i przyjdź.",
+        "en": "Thou that sittest upon the cherubim, O Lord, stir up Thy power and come."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Psalm 79:2-3"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Psalm 79:2-3"
+          }
+        ]
+      },
       "words": [
-        { "id": "w001", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w002", "form": "sedes", "post": ",", "lemma": "sedeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
-        { "id": "w003", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w004", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w005" },
-        { "id": "w005", "form": "Chérubim", "post": ",", "lemma": "cherubim", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m" } },
-        { "id": "w006", "form": "éxcita", "lemma": "excito", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
-        { "id": "w007", "form": "poténtiam", "lemma": "potentia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w008", "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w007" },
-        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w010", "form": "veni", "post": ".", "lemma": "venio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 } }
+        { "id": "w001", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
+        { "id": "w002", "form": "sedes", "post": ",", "lemma": "sedeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 }, "gloss": { "pl": "zasiadasz", "en": "sittest" } },
+        { "id": "w003", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
+        { "id": "w004", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w005", "gloss": { "pl": "nad", "en": "upon" } },
+        { "id": "w005", "form": "Chérubim", "post": ",", "lemma": "cherubim", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m" }, "gloss": { "pl": "cherubiny", "en": "the cherubim" } },
+        { "id": "w006", "form": "éxcita", "lemma": "excito", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "wzbudź", "en": "stir up" } },
+        { "id": "w007", "form": "poténtiam", "lemma": "potentia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "potęgę", "en": "power" } },
+        { "id": "w008", "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w007", "gloss": { "pl": "Twoją", "en": "Thy" } },
+        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w010", "form": "veni", "post": ".", "lemma": "venio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 }, "gloss": { "pl": "przyjdź", "en": "come" } }
       ]
     },
     {
@@ -62,17 +75,46 @@
           "source": "DMS 25 c"
         }
       },
+      "translation": {
+        "pl": "Który rządzisz Izraelem, nakłoń ucha: który prowadzisz Józefa jak owcę.",
+        "en": "Thou that rulest Israel, give ear: Thou that leadest Joseph like a sheep."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Psalm 79:2-3"
+          }
+        ],
+        "en": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Psalm 79:2-3"
+          }
+        ]
+      },
       "words": [
-        { "id": "w011", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w012", "form": "regis", "lemma": "rego", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w013", "form": "Israël", "post": ",", "lemma": "Israel", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" } },
-        { "id": "w014", "form": "inténde", "post": ":", "lemma": "intendo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
-        { "id": "w015", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w016", "form": "dedúcis", "post": ",", "lemma": "deduco", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
-        { "id": "w017", "form": "velut", "lemma": "velut", "morph": { "pos": "adv" } },
-        { "id": "w018", "form": "ovem", "post": ",", "lemma": "ovis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w019", "form": "Ioseph", "post": ".", "lemma": "Ioseph", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" } }
+        { "id": "w011", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
+        { "id": "w012", "form": "regis", "lemma": "rego", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "rządzisz", "en": "rulest" } },
+        { "id": "w013", "form": "Israël", "post": ",", "lemma": "Israel", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Izraelem", "en": "Israel" } },
+        { "id": "w014", "form": "inténde", "post": ":", "lemma": "intendo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "nakłoń ucha", "en": "give ear" } },
+        { "id": "w015", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
+        { "id": "w016", "form": "dedúcis", "post": ",", "lemma": "deduco", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "prowadzisz", "en": "leadest" } },
+        { "id": "w017", "form": "velut", "lemma": "velut", "morph": { "pos": "adv" }, "gloss": { "pl": "jak", "en": "like" } },
+        { "id": "w018", "form": "ovem", "post": ",", "lemma": "ovis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "owcę", "en": "a sheep" } },
+        { "id": "w019", "form": "Ioseph", "post": ".", "lemma": "Ioseph", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Józefa", "en": "Joseph" } }
       ]
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The gradual of the Third Sunday of Advent. The source boundary is recorded in the witness files.",
+    "source": {
+      "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-iii-adventus-graduale/",
+      "apparatus": "witnesses/proprium.dominica-iii-adventus-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" }
+  }
 }

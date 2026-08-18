@@ -1,38 +1,66 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "id": "ordinarium.ite-missa-est",
   "title": "Ite, Missa est",
   "category": "ordinarium",
   "section": "missa-fidelium",
   "variant": "missae",
   "sung": true,
-  "status": "working-edition",
   "ids": {
     "next": 12
   },
-  "notes": "The dismissal: the last Dóminus vobíscum of the Mass, the deacon's or priest's Ite, Missa est, and the answer Deo grátias. The missal gives three further dismissals — the Easter form with allelúia, Benedicámus Dómino where a procession follows the Mass (the 1960 Codex n. 507 confined it so), Requiéscant in pace in Masses for the Dead — and they are named in the rubrics at s04 and s07 rather than encoded as words: only the Easter form appears in Latin in the second witness, on its chant page, so the others would rest on one witness alone. ITE at w007 carries no conj: eo is irregular, and SCHEMA.md omits the field for irregular verbs. MISSA at w008 is the noun missa, -æ in the nominative, not the participle of mitto: both analyzers head the noun, and the phrase is the sentence Ite, missa est — go, the dismissal is made. DEO at w010 is dative and GRÁTIAS at w011 accusative plural because the answer is elliptical: the verb agámus (or ago) is understood, as at the Preface dialogue's Grátias agámus Dómino Deo nostro. The rubric at s07 sets Requiéscant with its accent; witness do prints the word unaccented at this one place and accented elsewhere in the same file. VOBÍSCUM at w002 is the pronoun with its enclitic cum; Collatinus dictionaries the fused form as a lemma of its own and tags it singular, which the pipeline sets aside by a recorded ruling; the parse rests on Whitaker's and the edition, as at ordinarium.praefatio-dialogus w002.",
-  "source": {
-    "method": "Verified by collation against the independent witnesses below: zero substantive divergence, and no accidental variant either — the two editions set this dismissal identically.",
-    "witnesses": "witnesses/ordinarium.ite-missa-est/",
-    "apparatus": "witnesses/ordinarium.ite-missa-est/apparatus.json"
+  "about": {
+    "pl": "Rozesłanie po ostatniej modlitwie pokomunijnej. Kapłan pozdrawia wiernych i mówi „Ite, Missa est”, na co odpowiada się „Deo grátias”. Gdy po Mszy następuje procesja, mówi zamiast tego „Benedicámus Dómino”, a we Mszach za zmarłych „Requiéscant in pace”, na co odpowiada się „Amen”.",
+    "en": "The dismissal after the last prayer following Communion. The priest greets the faithful and says “Ite, Missa est”, answered by “Deo grátias”. When a procession follows the Mass he says “Benedicámus Dómino” instead, and in Masses for the Dead “Requiéscant in pace”, answered by “Amen”."
   },
-  "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-  "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ritus servandus in celebratione Missae, XI, 1",
+        "url": "https://archive.org/details/missale_romanum-1962/page/n64/mode/1up"
+      },
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Rubricae generales, n. 507",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ],
+    "en": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ritus servandus in celebratione Missae, XI, 1",
+        "url": "https://archive.org/details/missale_romanum-1962/page/n64/mode/1up"
+      },
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Rubricae generales, n. 507",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ]
+  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
       "text": "Dicto, post ultimam Orationem,",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Po ostatniej modlitwie pokomunijnej kapłan mówi:",
+        "en": "After the last prayer following Communion the priest says:"
+      }
     },
     {
       "id": "s02",
       "type": "verse",
       "voice": "clara",
       "speaker": "sacerdos",
+      "translation": {
+        "pl": "Pan z wami.",
+        "en": "The Lord be with you."
+      },
       "words": [
-        { "id": "w001", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w002", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+        { "id": "w001", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "The Lord" } },
+        { "id": "w002", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "z wami", "en": "with you" }, "function": { "pl": "Przyimek „cum” stoi po zaimku osobowym i łączy się z nim: „vobis” + „cum”.", "en": "The preposition “cum” follows and joins the personal pronoun: “vobis” + “cum”." } }
       ]
     },
     {
@@ -40,12 +68,6 @@
       "type": "verse",
       "voice": "clara",
       "speaker": "minister",
-      "words": [
-        { "id": "w003", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
-        { "id": "w005", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
-        { "id": "w006", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w005" }
-      ],
       "participation": {
         "lecta": {
           "gradus": 1,
@@ -55,23 +77,40 @@
           "gradus": 1,
           "source": "DMS 25 a"
         }
-      }
+      },
+      "translation": {
+        "pl": "I z duchem twoim.",
+        "en": "And with your spirit."
+      },
+      "words": [
+        { "id": "w003", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005", "gloss": { "pl": "z", "en": "with" } },
+        { "id": "w005", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "duchem", "en": "spirit" } },
+        { "id": "w006", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w005", "gloss": { "pl": "twoim", "en": "your" } }
+      ]
     },
     {
       "id": "s04",
       "type": "rubric",
       "text": "dicit pro Missæ qualitate, vel Ite, Missa est, vel Benedicámus Dómino. Deo grátias.",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "Zwrócony do ludu kapłan mówi „Ite, Missa est”, a ministrant odpowiada „Deo grátias”. Gdy zamiast tego mówi się „Benedicámus Dómino”, kapłan mówi to na środku ołtarza, zwrócony ku niemu.",
+        "en": "Turned toward the people, the priest says “Ite, Missa est”, and the server answers “Deo grátias”. Where “Benedicámus Dómino” is said instead, he says it at the middle of the altar, facing it."
+      }
     },
     {
       "id": "s05",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
+      "translation": {
+        "pl": "Idźcie, Msza się skończyła.",
+        "en": "Go forth, the Mass is ended."
+      },
       "words": [
-        { "id": "w007", "form": "Ite", "post": ",", "lemma": "eo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act" } },
-        { "id": "w008", "form": "Missa", "lemma": "missa", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
-        { "id": "w009", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } }
+        { "id": "w007", "form": "Ite", "post": ",", "lemma": "eo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act" }, "gloss": { "pl": "idźcie", "en": "go" }, "function": { "pl": "Tryb rozkazujący liczby mnogiej, skierowany do zgromadzenia.", "en": "A plural imperative addressed to the assembly." } },
+        { "id": "w008", "form": "Missa", "lemma": "missa", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "rozesłanie", "en": "the dismissal" }, "function": { "pl": "Rzeczownik w mianowniku, będący podmiotem „est” (w009).", "en": "A nominative noun serving as the subject of “est” (w009)." }, "note": { "pl": "Może to być rzeczownik missa — odesłanie, rozesłanie — albo imiesłów bierny od mitto z domyślnym podmiotem, co jest historycznym źródłem formuły. Ta edycja przyjmuje rzeczownik.", "en": "This can be the noun missa, the dismissal, or a perfect passive participle of mitto with an understood subject, which is the formula's historical origin. This edition takes the noun." } },
+        { "id": "w009", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "dokonuje się", "en": "is made" } }
       ]
     },
     {
@@ -79,10 +118,6 @@
       "type": "verse",
       "speaker": "minister",
       "voice": "clara",
-      "words": [
-        { "id": "w010", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
-        { "id": "w011", "form": "grátias", "post": ".", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } }
-      ],
       "participation": {
         "lecta": {
           "gradus": 1,
@@ -92,13 +127,44 @@
           "gradus": 1,
           "source": "DMS 25 a"
         }
-      }
+      },
+      "translation": {
+        "pl": "Bogu niech będą dzięki.",
+        "en": "Thanks be to God."
+      },
+      "words": [
+        { "id": "w010", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bogu", "en": "to God" }, "function": { "pl": "Celownik: Bogu składane są dzięki.", "en": "Dative: thanks are given to God." } },
+        { "id": "w011", "form": "grátias", "post": ".", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "dzięki", "en": "thanks" }, "function": { "pl": "Biernik liczby mnogiej. Czasownik oznaczający składanie dzięki pozostaje domyślny.", "en": "Accusative plural. The verb of giving thanks is understood." } }
+      ]
     },
     {
       "id": "s07",
       "type": "rubric",
       "text": "In Missis Defunctorum dicit: Requiéscant in pace. Amen.",
-      "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" }
+      "narrative": {
+        "pl": "We Mszach za zmarłych kapłan, zwrócony ku ołtarzowi, mówi zamiast tego: Requiéscant in pace — a odpowiedź brzmi Amen.",
+        "en": "In Masses for the Dead the priest says instead, facing the altar: Requiéscant in pace — and the answer is Amen."
+      }
     }
-  ]
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The dismissal: the last Dóminus vobíscum of the Mass, the deacon's or priest's Ite, Missa est, and the answer Deo grátias. The missal gives three further dismissals — the Easter form with allelúia, Benedicámus Dómino where a procession follows the Mass (the 1960 Codex n. 507 confined it so), Requiéscant in pace in Masses for the Dead — and they are named in the rubrics at s04 and s07 rather than encoded as words: only the Easter form appears in Latin in the second witness, on its chant page, so the others would rest on one witness alone. ITE at w007 carries no conj: eo is irregular, and SCHEMA.md omits the field for irregular verbs. MISSA at w008 is the noun missa, -æ in the nominative, not the participle of mitto: both analyzers head the noun, and the phrase is the sentence Ite, missa est — go, the dismissal is made. DEO at w010 is dative and GRÁTIAS at w011 accusative plural because the answer is elliptical: the verb agámus (or ago) is understood, as at the Preface dialogue's Grátias agámus Dómino Deo nostro. The rubric at s07 sets Requiéscant with its accent; witness do prints the word unaccented at this one place and accented elsewhere in the same file. VOBÍSCUM at w002 is the pronoun with its enclitic cum; Collatinus dictionaries the fused form as a lemma of its own and tags it singular, which the pipeline sets aside by a recorded ruling; the parse rests on Whitaker's and the edition, as at ordinarium.praefatio-dialogus w002.",
+    "source": {
+      "method": "Verified by collation against the independent witnesses below: zero substantive divergence, and no accidental variant either — the two editions set this dismissal identically.",
+      "witnesses": "witnesses/ordinarium.ite-missa-est/",
+      "apparatus": "witnesses/ordinarium.ite-missa-est/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "segments": {
+      "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s04": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
+      "s07": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    },
+    "words": {
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w008": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } }
+    }
+  }
 }
