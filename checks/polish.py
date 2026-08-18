@@ -312,6 +312,7 @@ NUMBER_RULINGS: dict[tuple[str, str], str] = {
     ("ordinarium.supplices-te-rogamus", "w007"): "haec: the Polish collective to",
     ("proprium.dominica-i-adventus-evangelium", "w092"): "haec: the Polish collective to",
     ("proprium.dominica-i-adventus-secreta", "w001"): "haec: the Polish collective to",
+    ("proprium.dominica-iii-adventus-evangelium", "w143"): "haec: the Polish collective to",
     ("ordinarium.suscipe-sancta-trinitas", "w057"): "in caelis: the received w niebie",
     ("ordinarium.suscipe-sancta-trinitas", "w062"): "in terris: the received na ziemi",
     ("ordinarium.te-igitur", "w048"): "orbe terrarum: the received świat",

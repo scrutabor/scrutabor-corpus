@@ -131,6 +131,11 @@ LAYOUT_CHARS = {
 # (SCHEMA.md); divine titles are lowercase common nouns. Grows as texts
 # require — the Canon's two lists of saints added most of these.
 PROPER_LEMMAS = {
+    "Bethania",
+    "Elias",
+    "Ierosolyma",
+    "Iordanes",
+    "Iudaeus",
     "Iacob",
     "Iesse",
     "Isaias",
