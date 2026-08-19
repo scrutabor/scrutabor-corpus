@@ -11,7 +11,17 @@ the most read prose in the layer.
 from copy import deepcopy
 from typing import ClassVar
 
-from checks.lint import lint_citations, lint_gloss, lint_notes, lint_parity, lint_text
+from checks.lint import (
+    STRESS_EXEMPT,
+    check_analysis,
+    lint_citations,
+    lint_gloss,
+    lint_notes,
+    lint_nulls,
+    lint_parity,
+    lint_text,
+    stress_position,
+)
 
 TEXT = {
     "id": "orationes.test",
@@ -347,3 +357,149 @@ class TestPossessiveAbsorption:
             ],
         }
         assert lint_gloss(self.base("and for me", "and"), text) == []
+
+
+class TestHoles:
+    """A null and an emptied string, at the depth the document actually has.
+
+    The rule read one level while the document had grown nested by language,
+    and a census of unguarded mutations (2026-08-19) walked through the gap
+    three ways: `translation.pl = null` passed, `gloss.pl = null` came back as
+    a TypeError from a check downstream, and an emptied translation passed
+    beside an empty gloss that was refused.
+    """
+
+    def stored(self, **over):
+        doc = {
+            "id": "orationes.test",
+            "title": "Ave María",
+            "about": {"pl": "Antyfona.", "en": "An antiphon."},
+            "segments": [
+                {
+                    "id": "s01",
+                    "type": "verse",
+                    "translation": {"pl": "Witaj.", "en": "Hail."},
+                    "words": [
+                        {
+                            "id": "w001",
+                            "form": "Ave",
+                            "gloss": {"pl": "witaj", "en": "hail"},
+                        }
+                    ],
+                }
+            ],
+        }
+        doc.update(over)
+        return doc
+
+    def test_a_clean_document_passes(self):
+        assert lint_nulls(self.stored()) == []
+
+    def test_a_null_translation_in_one_language_is_reported(self):
+        doc = self.stored()
+        doc["segments"][0]["translation"]["pl"] = None
+        found = lint_nulls(doc)
+        assert found == [
+            "orationes.test:segments.s01.translation.pl: is null — a key that carries "
+            "nothing is removed, not left for a reader to interpret"
+        ]
+
+    def test_a_null_gloss_is_reported_rather_than_raised(self):
+        doc = self.stored()
+        doc["segments"][0]["words"][0]["gloss"]["pl"] = None
+        found = lint_nulls(doc)
+        assert len(found) == 1 and "segments.s01.words.w001.gloss.pl" in found[0]
+
+    def test_a_null_about_is_reported(self):
+        doc = self.stored()
+        doc["about"]["en"] = None
+        assert any("about.en" in e for e in lint_nulls(doc))
+
+    def test_an_emptied_translation_is_a_hole_like_an_empty_gloss(self):
+        doc = self.stored()
+        doc["segments"][0]["translation"]["en"] = ""
+        found = lint_nulls(doc)
+        assert len(found) == 1 and "translation is empty" in found[0]
+
+    def test_whitespace_is_not_prose(self):
+        doc = self.stored()
+        doc["segments"][0]["words"][0]["gloss"]["pl"] = "   "
+        assert any("gloss is empty" in e for e in lint_nulls(doc))
+
+    def test_an_emptied_title_is_a_hole(self):
+        assert any("title is empty" in e for e in lint_nulls(self.stored(title="")))
+
+    def test_a_field_no_reader_sees_may_be_empty(self):
+        # `variant` is metadata, not prose. The emptiness rule is about the
+        # page, and the null rule above already covers the rest.
+        assert lint_nulls(self.stored(variant="")) == []
+
+
+class TestTheVoicesThatMayConfirm:
+    def test_a_declared_analyzer_passes(self):
+        assert (
+            check_analysis(
+                {
+                    "confidence": "high",
+                    "sources": ["whitakers", "collatinus"],
+                    "review": "accepted",
+                },
+                "w001",
+            )
+            == []
+        )
+
+    def test_a_witness_siglum_passes(self):
+        assert (
+            check_analysis(
+                {"confidence": "high", "sources": ["editorial", "do"], "review": "pending"}, "s01"
+            )
+            == []
+        )
+
+    def test_an_analyzer_this_edition_does_not_run_is_refused(self):
+        # Well-formed, and answered only by CI's network-clone agreement run
+        # until the vocabulary was read locally (census, 2026-08-19).
+        found = check_analysis(
+            {"confidence": "high", "sources": ["morfeusz-for-latin"], "review": "pending"}, "w001"
+        )
+        assert len(found) == 1 and "not a voice this edition knows" in found[0]
+
+    def test_a_malformed_name_is_still_caught_first(self):
+        found = check_analysis(
+            {"confidence": "high", "sources": ["Whitakers"], "review": "pending"}, "w001"
+        )
+        assert len(found) == 1 and "malformed" in found[0]
+
+
+class TestStressPosition:
+    """Latin stress reaches the antepenult and no further."""
+
+    def test_the_penult_and_the_antepenult_pass(self):
+        assert stress_position("w001: 'Dóminus'", "Dóminus") == []
+        assert stress_position("w001: 'Ioánnes'", "Ioánnes") == []
+
+    def test_a_fourth_from_last_accent_is_refused(self):
+        found = stress_position("w001: 'pérhibeo'", "pérhibeo")
+        assert len(found) == 1
+        assert found[0] == (
+            "w001: 'pérhibeo' accents the syllable 4 from the end — Latin stress "
+            "reaches the antepenult and no further"
+        )
+
+    def test_an_unaccented_form_says_nothing(self):
+        assert stress_position("w001: 'Pater'", "Pater") == []
+
+    def test_the_au_diphthong_is_one_syllable_even_under_the_mark(self):
+        # páuperum is pau-pe-rum, the accent on the antepenult. Reading the
+        # letter before the u without reading past the mark made it four.
+        assert stress_position("w001: 'páuperum'", "páuperum") == []
+        assert stress_position("w001: 'exáudi'", "exáudi") == []
+
+    def test_the_exemption_table_is_empty_and_an_entry_would_be_deliberate(self):
+        # Its one candidate ever, indúimini, was a transcription error the
+        # rule itself exposed: the 600 dpi page image prints induímini, the
+        # accent on the antepenult. The empty table is the record, and a
+        # violating form is an error unless someone names its page here.
+        assert STRESS_EXEMPT == {}
+        assert stress_position("w054: 'indúimini'", "indúimini") != []

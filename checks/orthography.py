@@ -68,29 +68,50 @@ BRITISH = {
     "licence": "license",
     "practise": "practice",
     "programme": "program",
+    # Found missing by the census of 2026-08-19, which read the table against
+    # the words this edition actually writes.
+    "worshipper": "worshiper",
+    "acknowledgement": "acknowledgment",
+    "towards": "toward",
 }
-PATTERN = re.compile("|".join(rf"\b{b}\w*\b" for b in sorted(BRITISH)), re.I)
+
+# A word, for this purpose, is a run of letters. The declared forms are all
+# ASCII, but the prose around them is not — a Latin incipit inside an English
+# note has to end a word rather than split one.
+WORD = re.compile(r"[^\W\d_]+")
+
+# Longest first, so the most specific declared form is the one that answers.
+DECLARED = sorted(BRITISH, key=len, reverse=True)
 
 
-AMERICAN = {v for v in BRITISH.values()}
-
-
-def _hits(text: str) -> list[str]:
-    """British forms in this text.
+def _hits(text: str) -> list[tuple[str, str]]:
+    """(the word as written, the declared British form it is built on).
 
     A British form can be a prefix of its own American replacement — *enrol*
-    inside *enroll*, *instil* inside *instill*, *fulfil* inside *fulfill* — so
-    a match is only a hit when it does not itself begin with the American form
-    it would be corrected to. Without that test the check fails on the very
-    spelling it asks for, which it did on the first run.
+    inside *enroll*, *instil* inside *instill*, *fulfil* inside *fulfill* — and
+    a word that begins with the American form is then the spelling this edition
+    asks for, not a hit. Written as "skip anything beginning with any American
+    form", that test silently exempted three of the table's own entries, the
+    ones whose American twin is their own PREFIX: `_hits('dialogue')` came back
+    empty, and so did catalogue and programme, for as long as they had been
+    declared (census, 2026-08-19).
+
+    So the exemption is now the narrow thing it was always meant to be — it
+    applies to ONE pair, the pair being tested, and only where that pair's
+    American form is the longer of the two. *towards* is caught and *toward*
+    is not, from the same rule read the other way round.
     """
     out = []
-    for match in PATTERN.finditer(text or ""):
+    for match in WORD.finditer(text or ""):
         word = match.group(0)
         low = word.lower()
-        if any(low.startswith(a) for a in AMERICAN):
-            continue
-        out.append(word)
+        for british in DECLARED:
+            if not low.startswith(british):
+                continue
+            american = BRITISH[british]
+            if not (len(american) > len(british) and low.startswith(american)):
+                out.append((word, british))
+            break
     return out
 
 
@@ -101,13 +122,10 @@ def check(doc: dict, gloss: dict) -> list[str]:
     errors: list[str] = []
 
     def report(where: str, text: str) -> None:
-        for hit in _hits(text):
-            base = hit.lower()
-            while base and base not in BRITISH:
-                base = base[:-1]
+        for hit, british in _hits(text):
             errors.append(
                 f"{doc['id']}:{where}: {hit!r} is British, and this edition writes "
-                f"American — {BRITISH.get(base, '?')!r}"
+                f"American — {BRITISH[british]!r}"
             )
 
     report("about", gloss.get("about") or "")
@@ -131,12 +149,9 @@ def check_lexicon(entries: dict) -> list[str]:
             + [entry.get("note") or ""]
             + (entry.get("derivatives") or [])
         )
-        for hit in _hits(blob):
-            base = hit.lower()
-            while base and base not in BRITISH:
-                base = base[:-1]
+        for hit, british in _hits(blob):
             errors.append(
                 f"lexicon:{name}: {hit!r} is British, and this edition writes American "
-                f"— {BRITISH.get(base, '?')!r}"
+                f"— {BRITISH[british]!r}"
             )
     return errors

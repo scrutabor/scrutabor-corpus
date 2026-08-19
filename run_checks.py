@@ -19,6 +19,7 @@ from checks.capitals import check as check_capitals
 from checks.citations import check as check_citation_titles
 from checks.collate import collate
 from checks.conventions import check as check_conventions
+from checks.document import check as check_document
 from checks.english import check as check_english
 from checks.english import check_number as check_english_number
 from checks.fusion import check as check_fusion
@@ -53,6 +54,8 @@ from checks.orthography import check as check_orthography
 from checks.orthography import check_lexicon as check_orthography_lexicon
 from checks.participation import check_doc as check_participation
 from checks.polish import check as check_polish
+from checks.prose import check as check_prose
+from checks.prose import check_lexicon as check_prose_lexicon
 from checks.rights import check as check_rights
 from checks.rights import exposure as rights_exposure
 from checks.rights import load as load_rights
@@ -70,6 +73,14 @@ from checks.witness_archive import check as check_witness_archive
 sys.stdout.reconfigure(encoding="utf-8")  # type: ignore[union-attr]
 
 CORPUS = Path(__file__).resolve().parent
+
+# What a single-text run did NOT do. Printed where the --all run prints its
+# `IDENTITY compared against <sha>` line, so the two runs answer the same
+# question in the same place and one of them answers it with a no.
+NOT_COMPARED = (
+    "IDENTITY not compared against history — a single-text run cannot see a "
+    "renumbering, and `run_checks.py --all` is the run that answers it"
+)
 
 
 def check_schema_versions() -> list[str]:
@@ -93,6 +104,22 @@ def lexicon_suite(used_lemmas=None) -> int:
     """Global lexicon checks: shape, head orthography, language parity, and
     (given the set of lemmas every text uses) orphan entries. The per-text
     coverage/consistency half runs inside main()."""
+    # Holes first, and alone if there are any: the checks below read the prose
+    # they find, and a null `note` reaches checks/lexicon.py as a TypeError for
+    # the same reason a null gloss reached checks/lint.py as one.
+    holes = []
+    for path in sorted(CORPUS.glob("lexicon/*.json")):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        holes += lint_nulls(data, f"lexicon:{data.get('lang', path.stem)}")
+    if holes:
+        for hole in holes:
+            print(f"ERROR: {hole}")
+        print(
+            f"VERDICT FAIL lexicon errors={len(holes)} — a document with holes in it "
+            f"is not read further"
+        )
+        return 1
+
     lemmata, langs, errors = load_lexicon(CORPUS)
     errors += lint_lemmata(lemmata)
     errors += check_paradigm(lemmata)
@@ -107,6 +134,7 @@ def lexicon_suite(used_lemmas=None) -> int:
         data = json.loads(path.read_text())
         errors += check_derivative_homes(data)
         errors += check_note_prose(data)
+        errors += check_prose_lexicon(data)
     for e in errors:
         print(f"ERROR: {e}")
     subject = f"lexicon entries={len(lemmata)} langs={','.join(sorted(langs)) or '-'}"
@@ -124,14 +152,39 @@ def main(text_id: str) -> int:
     # asking about one language -- so the seam is here (build_reader/store.py)
     # and not in twenty modules.
     doc, gloss_layers = store.load(CORPUS, text_id)
+    # A few questions are about the document AS STORED and cannot be asked of
+    # the split: a null belongs to no language, and what a file claims about
+    # itself is a fact about that file.
+    stored = store.joined(CORPUS, text_id)
+
+    # A hole is a SHAPE fault and everything below reads shapes. `gloss.pl =
+    # null` arrived in checks/lint.py as a TypeError naming a line of this
+    # package rather than as a diagnosis naming the word (census, 2026-08-19),
+    # so the document is refused here instead of read past.
+    holes = lint_nulls(stored)
+    if holes:
+        for hole in holes:
+            print(f"ERROR: {hole}")
+        print(
+            f"VERDICT FAIL text={text_id} errors={len(holes)} — a document with holes "
+            f"in it is not read further"
+        )
+        return 1
 
     all_errors, all_warnings = [], []
 
     text_errors, n_words = lint_text(doc)
     all_errors += text_errors
+    # What the file says about itself: its id against its path, its section and
+    # its sung flag against the vocabularies, and the witness path it declares
+    # against the one the collation derives (checks/document.py).
+    all_errors += check_document(stored, text_path)
+    # The edition's own voice, in both languages at once: no semicolons and no
+    # hedges (checks/prose.py). Guarded in the reader app until now, which
+    # reads a vendored copy and therefore only after someone re-vendors it.
+    all_errors += check_prose(stored)
     all_errors += lint_analysis(doc)
     all_errors += lint_notes(doc)
-    all_errors += lint_nulls(doc)
     all_errors += lint_rubrics(doc)
     # A word id is identity, not position. SCHEMA.md has said so all along and
     # nothing enforced it (checks/identity.py).
@@ -354,4 +407,12 @@ if __name__ == "__main__":
         sys.exit(rc)
     # Single-text mode still runs the global lexicon shape checks (orphan
     # detection needs every text, so it is --all only).
-    sys.exit(lexicon_suite(None) | main(sys.argv[1]))
+    rc = lexicon_suite(None) | main(sys.argv[1])
+    # And it does NOT answer the question about time. Verifying "just this
+    # text" after an id edit is exactly when someone wants that answer, and a
+    # run that prints nothing about it reads as a clean bill for the one
+    # failure checks/identity.py calls unrecoverable (census, 2026-08-19). A
+    # renumbering leaves every id present, each naming its neighbour, so
+    # nothing in this run can see it.
+    print(NOT_COMPARED)
+    sys.exit(rc)

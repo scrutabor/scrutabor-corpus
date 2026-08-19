@@ -6,7 +6,7 @@ silently — SCHEMA.md)."""
 import json
 import re
 
-from .lint import BANNED_TERMS, MORPH_ENUMS, SPELLING_EXEMPT, lint_citations
+from .lint import BANNED_TERMS, MORPH_ENUMS, SPELLING_EXEMPT, lint_citations, stress_position
 from .normalize import ACCENTED_VOWELS, fold_ligatures, has_accent, strip_accents, syllable_count
 
 LEMMATA_ENTRY_KEYS = {
@@ -89,6 +89,12 @@ def _lint_head(lemma, head, errors):
                 f"lexicon:{lemma}: head token {token!r} spells the consonant with j — "
                 "ORTHOGRAPHY.md prints i"
             )
+        # Latin stress reaches the antepenult and no further. The head that
+        # made this necessary is in this very file's history: `pérhibeo,
+        # perhibére, pérhibui, pérhibitum` stood in the lexicon for weeks with
+        # the mark four syllables from the end in three of its four principal
+        # parts (census, 2026-08-19).
+        errors += stress_position(f"lexicon:{lemma}: head token {token!r}", token)
         n, acc = syllable_count(token), has_accent(token)
         n_marks = sum(1 for ch in token if ch in ACCENTED_VOWELS)
         if n >= 3 and not acc:

@@ -271,15 +271,14 @@ def _indent(line: str) -> str:
     return m.group(1) if m else ""
 
 
-def _range_declarations(header: str) -> list[tuple[str, list[int]]]:
-    """Source files and line numbers declared by one witness header.
+SOURCE_FILE = re.compile(r"[\w./-]+\.txt", re.IGNORECASE)
+
+
+def _path_values(header: str) -> list[str]:
+    """The whole value of every ``path`` key in one witness header.
 
     A declaration is prose, and the longer ones wrap over several comment
-    lines.  Read the whole ``path`` value rather than assuming that the file
-    and ``(lines N-M)`` fit on its first physical line.  More than one source
-    file may occur in that value (the dismissal and Last Gospel use both
-    Ordo.txt and Prayers.txt), and the older singular spelling ``line N`` is
-    valid too.
+    lines, so the value is joined before anything is read out of it.
     """
     values: list[str] = []
     current_key: str | None = None
@@ -297,14 +296,36 @@ def _range_declarations(header: str) -> list[tuple[str, list[int]]]:
             current_value.append(line.lstrip("# ").strip())
     if current_key == "path":
         values.append(" ".join(current_value))
+    return values
 
+
+def declared_sources(header: str) -> list[str]:
+    """Every local source FILE a witness header names, ranged or not.
+
+    A witness may instead name printed pages — thirteen of them transcribe
+    page images, ``printed page LIII (scan leaf 58)`` — and those have no
+    archive here to be compared against. Naming a `.txt` is what says there is
+    one, which is why the check that follows the ranges asks this first.
+    """
+    return [
+        match.group(0) for value in _path_values(header) for match in SOURCE_FILE.finditer(value)
+    ]
+
+
+def _range_declarations(header: str) -> list[tuple[str, list[int]]]:
+    """Source files and line numbers declared by one witness header.
+
+    More than one source file may occur in that value (the dismissal and Last
+    Gospel use both Ordo.txt and Prayers.txt), and the older singular spelling
+    ``line N`` is valid too.
+    """
     declarations: list[tuple[str, list[int]]] = []
     pattern = re.compile(
         r"([\w./-]+\.txt)(?:(?![\w./-]+\.txt).){0,240}?"
         r"\([^)]*\blines?\s+([\d,\s-]+)\)",
         re.IGNORECASE,
     )
-    for value in values:
+    for value in _path_values(header):
         for match in pattern.finditer(value):
             numbers = [int(n) for n in re.findall(r"\d+", match.group(2))]
             if numbers:

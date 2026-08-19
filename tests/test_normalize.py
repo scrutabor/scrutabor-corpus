@@ -10,6 +10,7 @@ contradicts the documentation fails here rather than in a witness file.
 import pytest
 
 from checks.normalize import (
+    accented_syllable,
     after_prefix,
     fold_ligatures,
     has_accent,
@@ -134,3 +135,61 @@ class TestHasAccent:
     def test_and_reports_none_when_there_is_none(self):
         assert has_accent("Pater") is False
         assert has_accent("cælis") is False
+
+
+class TestAccentedSyllable:
+    """Where the written accent stands, counted from the end. The rule above it
+    is that Latin stress reaches the antepenult and no further, which needs no
+    vowel quantities and was held by nothing until 2026-08-19."""
+
+    @pytest.mark.parametrize(
+        ("form", "from_end"),
+        [("Dóminus", 2), ("Ioánnes", 1), ("sæculórum", 1), ("adiutórium", 2), ("fœ́deris", 2)],
+    )
+    def test_it_places_the_mark(self, form, from_end):
+        assert accented_syllable(form) == from_end
+
+    def test_a_word_with_no_accent_has_no_answer(self):
+        assert accented_syllable("Pater") is None
+
+    def test_the_fourth_from_last_is_reachable_and_is_what_the_rule_refuses(self):
+        assert accented_syllable("pérhibeo") == 3
+
+    def test_the_combining_acute_after_the_ligature_is_found(self):
+        # Unicode has no precomposed œ́, so fœ́deris carries its accent as a
+        # separate character and NFC leaves it there.
+        assert accented_syllable("fœ́deris") == 2
+
+
+class TestTheDiphthongUnderItsMark:
+    """The accent of au is written on its first vowel, and the counter has to
+    read past the mark to see the diphthong. Twenty-one forms were one syllable
+    too long until 2026-08-19, invisibly: every one was over the
+    three-syllable line either way."""
+
+    @pytest.mark.parametrize(
+        ("form", "count"), [("páuperum", 3), ("gáudium", 3), ("exáudi", 3), ("thesáurus", 3)]
+    )
+    def test_the_accented_diphthong_is_still_one_syllable(self, form, count):
+        assert syllable_count(form) == count
+
+    def test_and_the_stress_then_falls_where_latin_allows(self):
+        assert accented_syllable("páuperum") == 2
+
+
+class TestAnAccentedIIsNeverAGlide:
+    """A glide is not a nucleus, and a nucleus is what carries the stress. The
+    consonantal-i test read `i` or `í` and made Isaías — I-sa-í-as, a Hebrew
+    name whose i is a vowel between two vowels — a three-syllable word with its
+    accent on nothing."""
+
+    def test_the_hebrew_name_keeps_its_syllable(self):
+        assert syllable_count("Isaías") == 4
+        assert syllable_count("Isaíæ") == 4
+
+    def test_and_its_accent_can_be_placed(self):
+        assert accented_syllable("Isaías") == 1
+
+    def test_an_unaccented_consonantal_i_is_still_a_glide(self):
+        assert syllable_count("Iesus") == 2
+        assert syllable_count("allelúia") == 4

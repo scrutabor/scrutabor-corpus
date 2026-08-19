@@ -7,7 +7,14 @@ import unicodedata
 from pathlib import Path
 from urllib.parse import urlparse
 
-from .normalize import ACCENTED_VOWELS, fold_ligatures, has_accent, strip_accents, syllable_count
+from .normalize import (
+    ACCENTED_VOWELS,
+    accented_syllable,
+    fold_ligatures,
+    has_accent,
+    strip_accents,
+    syllable_count,
+)
 
 MORPH_ENUMS = {
     "pos": {"verb", "noun", "adj", "pron", "adv", "conj", "prep", "intj"},
@@ -226,6 +233,22 @@ SPELLING_EXEMPT: dict[str, str] = {
     "israel": "indeclinable Hebrew name; diaeresis marks the hiatus",
 }
 
+# Forms exempt from the STRESS-POSITION rule — an accent standing further back
+# than the antepenult, which Latin does not do. Keyed on the accented spelling
+# lowercased, because the exemption is about where the mark sits and a key
+# without it could not tell the two readings apart. Each entry says why, and
+# an entry here is a question left open, not one answered: the rule it suspends
+# is an invariant of the language.
+#
+# EMPTY, and that is the record: the one candidate this table ever held,
+# indúimini (Advent I epistle, w054), turned out on inspection of the 600 dpi
+# page image to be a transcription error — the typical edition prints
+# induímini, the mark on the antepenult, exactly where the invariant says it
+# must be. The transcription, the apparatus and the text were all corrected
+# at the root (2026-08-19). A form that genuinely prints against this rule
+# belongs here with its page named, and until one does, nothing is exempt.
+STRESS_EXEMPT: dict[str, str] = {}
+
 # Who a narrative may be about. Naming one of these in the opening sentence
 # is what lets a reader who lands mid-book know whose actions they are
 # reading — which they do constantly, since every part is its own block.
@@ -302,7 +325,18 @@ ANALYSIS_ENUMS = {
     "review": {"pending", "accepted", "disputed"},
 }
 ANALYSIS_KEYS = {"confidence", "sources", "review"}
-KNOWN_SOURCES = {"whitakers", "collatinus", "editorial", "treebank", "expert"}
+# The voices that may confirm a claim: the two analyzers, a treebank, a named
+# expert, and this edition itself (SCHEMA.md). This set was written down when
+# provenance was flipped and then read by nothing — the shape test below was
+# the whole gate, so `morfeusz-for-latin` was a well-formed source name and
+# passed locally, contradicted only by CI's network-clone agreement run
+# (census, 2026-08-19). A vocabulary nobody consults is a comment.
+KNOWN_SOURCES = frozenset(("whitakers", "collatinus", "editorial", "treebank", "expert"))
+# Witness sigla are sources too, for the rubric and text-level claims a
+# dictionary cannot speak to. These are the ones the corpus uses; a new witness
+# cited as a source is one line here, like every other ruling in this package.
+WITNESS_SOURCES = frozenset(("do", "mr", "mr-ritus-servandus"))
+SOURCES = KNOWN_SOURCES | WITNESS_SOURCES
 SOURCE_RE = re.compile(r"^[a-z][a-z0-9-]*$")
 
 CITATION_KEYS = {"title", "locator", "url"}
@@ -357,6 +391,11 @@ def check_analysis(obj, where):
             for s in sources:
                 if not isinstance(s, str) or not SOURCE_RE.match(s):
                     errors.append(f"{where}: analysis source {s!r} malformed")
+                elif s not in SOURCES:
+                    errors.append(
+                        f"{where}: analysis source {s!r} is not a voice this edition "
+                        f"knows ({', '.join(sorted(SOURCES))})"
+                    )
     return errors
 
 
@@ -401,27 +440,77 @@ def plain(word):
     return fold_ligatures(strip_accents(word)).lower()
 
 
-def lint_nulls(doc: dict) -> list[str]:
-    """A key whose value is null says nothing and hides that it says nothing.
+# The fields a reader meets on the page. Emptiness in one of them is a hole in
+# the book: an empty gloss has been refused since the beginning, and an emptied
+# `translation` passed every gate the corpus had (census, 2026-08-19).
+READER_FACING = frozenset(
+    ("translation", "gloss", "narrative", "about", "function", "title", "senses")
+)
+
+
+def _named_field(path: list[str]) -> str:
+    """The field a path names, past the language key and the list index that
+    hang off it: `s01.translation.pl` is a translation, `senses.[0]` a sense."""
+    for step in reversed(path):
+        if not step.startswith("[") and step not in ("pl", "en"):
+            return step
+    return ""
+
+
+def lint_nulls(doc: dict, subject: str | None = None) -> list[str]:
+    """A key whose value is null says nothing and hides that it says nothing —
+    and so does one holding an empty string where a reader expects prose.
 
     Two rubric segments carried `"narrative": null` — written by a build script
     that copied a shape it did not need — and every check read straight past
     them, because a check that asks "is there a narrative" gets an answer either
     way. The merge round-trip found them, which is a fair advertisement for
     reading a document as a whole.
+
+    It then read ONE LEVEL, over a document that has since become nested by
+    language, which the census of 2026-08-19 took apart three ways:
+    `translation.pl = null` passed green, `gloss.pl = null` came back as a
+    TypeError from a check downstream rather than as a diagnosis, and
+    `translation: ""` passed while the empty gloss beside it was refused. So
+    the walk is now the whole document to any depth, and the emptiness rule
+    stands beside it over the fields a reader is shown.
+
+    Reads the document AS STORED, both gloss layers included: the split hands
+    each check one language, and a null belongs to neither. `subject` names a
+    document that has no id of its own — the lexicon files, whose `senses` and
+    `note` are read by a reader like any other prose, and whose null note
+    reached checks/lexicon.py as a TypeError for the same reason a null gloss
+    reached this file as one.
     """
     errors = []
-    for segment in doc.get("segments", []):
-        for key, value in segment.items():
-            if value is None:
+    tid = subject or doc.get("id", "?")
+
+    def address(path: list[str]) -> str:
+        return ".".join(path)
+
+    def walk(node: object, path: list[str]) -> None:
+        if node is None:
+            errors.append(
+                f"{tid}:{address(path)}: is null — a key that carries nothing is "
+                f"removed, not left for a reader to interpret"
+            )
+        elif isinstance(node, dict):
+            for key, value in node.items():
+                walk(value, [*path, str(key)])
+        elif isinstance(node, list):
+            for index, item in enumerate(node):
+                step = item["id"] if isinstance(item, dict) and "id" in item else f"[{index}]"
+                walk(item, [*path, str(step)])
+        elif isinstance(node, str) and not node.strip():
+            field = _named_field(path)
+            if field in READER_FACING:
                 errors.append(
-                    f"{doc['id']}:{segment['id']}: {key!r} is null — a key that carries "
-                    f"nothing is removed, not left for a reader to interpret"
+                    f"{tid}:{address(path)}: {field} is empty — a reader is shown this, "
+                    f"and an unwritten one is left out rather than emptied"
                 )
-        for word in segment.get("words") or []:
-            for key, value in word.items():
-                if value is None:
-                    errors.append(f"{doc['id']}:{word['id']}: {key!r} is null")
+
+    for key, value in doc.items():
+        walk(value, [str(key)])
     return errors
 
 
@@ -499,6 +588,31 @@ def lint_notes(doc):
     return errors
 
 
+def stress_position(where: str, form: str) -> list[str]:
+    """Latin stress falls on the penult or the antepenult, never before it.
+
+    The one accent rule this edition can hold without knowing a single vowel
+    quantity, and the census of 2026-08-19 found nothing holding it: the
+    lexicon carried *pérhibeo, perhibére, pérhibui, pérhibitum* — the mark
+    four syllables from the end, three times in one entry — for weeks, and
+    every gate read past it, because the rules in force ask only whether an
+    accent is present and whether there is exactly one.
+
+    Used by the token layer (lint_text) and by the dictionary heads
+    (checks/lexicon.py) against the same syllabifier, so that a head and the
+    forms under it cannot be judged by two different counts.
+    """
+    if unicodedata.normalize("NFC", form).lower() in STRESS_EXEMPT:
+        return []
+    from_end = accented_syllable(form)
+    if from_end is None or from_end <= 2:
+        return []
+    return [
+        f"{where} accents the syllable {from_end + 1} from the end — Latin stress "
+        f"reaches the antepenult and no further"
+    ]
+
+
 def lint_text(doc):
     errors = []
     words = [w for s in doc["segments"] for w in s.get("words") or []]
@@ -569,6 +683,7 @@ def lint_text(doc):
             errors.append(f"{wid}: {f!r} has {n} syllables but carries an accent")
         if n_marks > 1:
             errors.append(f"{wid}: {f!r} carries {n_marks} accents")
+        errors += stress_position(f"{wid}: {f!r}", f)
     return errors, len(words)
 
 

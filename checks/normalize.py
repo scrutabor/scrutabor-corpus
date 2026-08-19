@@ -68,20 +68,25 @@ def after_prefix(word: str, at: int) -> bool:
     )
 
 
-def syllable_count(form: str) -> int:
-    """Count syllables of a Latin form in 1962 orthography. Vocalic i and u
-    are nuclei; the exceptions are u in the qu/gu glides and consonantal i,
-    which ORTHOGRAPHY.md prints as i, not j. Diphthongs: au counts once;
-    ae/oe occur only as ligatures (one char). eu is NOT treated as a
-    diphthong (De-um).
+def syllable_nuclei(form: str) -> list[int]:
+    """Where the syllables of a Latin form in 1962 orthography are — the index
+    of each nucleus, in order. Vocalic i and u are nuclei; the exceptions are u
+    in the qu/gu glides and consonantal i, which ORTHOGRAPHY.md prints as i,
+    not j. Diphthongs: au counts once; ae/oe occur only as ligatures (one
+    char). eu is NOT treated as a diphthong (De-um).
 
     Consonantal i stands between two vowels (E-ia, al-le-lú-ia, e-ius), at
     the head of a word before another vowel (Ie-sus, Io-án-nes, iu-be), and
     after the prefix of a compound whose simplex begins with it — see
     GLIDE_PREFIXES. The qu/gu glide is consumed before this can see it, so
-    quia and relíquiæ are untouched."""
-    s = unicodedata.normalize("NFC", form.lower())
-    count = 0
+    quia and relíquiæ are untouched.
+
+    This counted rather than located until 2026-08-19, and one number cannot
+    answer where the stress falls. It is the same walk either way, and
+    `syllable_count` is now its length, so the two answers cannot drift apart.
+    """
+    s = unicodedata.normalize("NFC", form).lower()
+    nuclei = []
     prev = ""
     prev_was_vowel = False
     for i, ch in enumerate(s):
@@ -99,29 +104,61 @@ def syllable_count(form: str) -> int:
                 prev = ch
                 prev_was_vowel = False
                 continue
-            if (
-                ch in ("i", "í")
-                and nxt in VOWELS
-                and (prev_was_vowel or prev == "" or after_prefix(s, i))
-            ):
+            if ch == "i" and nxt in VOWELS and (prev_was_vowel or prev == "" or after_prefix(s, i)):
                 # Consonantal i: a glide, not a nucleus. Between vowels
                 # (allelúia, eius), at the head of a word before another
                 # vowel (Iesus, Ioánnes, iube) — which is where nearly all
                 # of them are, now that this edition prints the consonant
                 # as i rather than j — and across a prefix seam (ad-iutórium).
+                #
+                # An ACCENTED í is never one of them, whatever stands beside
+                # it: a glide is not a nucleus and a nucleus is what carries
+                # the stress. The test read `ch in ("i", "í")` until the
+                # accent-position gate was written, and Isaías — I-sa-í-as,
+                # a Hebrew name whose i is a vowel between two vowels — came
+                # back as a three-syllable word with its accent nowhere.
                 prev = ch
                 prev_was_vowel = False
                 continue
-            if prev_was_vowel and prev == "a" and ch == "u":
-                # 'au' diphthong: already counted at 'a'
+            if prev_was_vowel and prev in ("a", "á") and ch == "u":
+                # 'au' diphthong: already counted at 'a'. The accent of a
+                # diphthong is written on its FIRST vowel — páuperum,
+                # gáudium, thesáurus, exáudi — so the test that reads the
+                # letter before must read past the mark. Comparing against a
+                # bare "a" made twenty-one such words one syllable too long,
+                # which no rule then in force could see: every one of them
+                # was over the three-syllable line either way.
                 prev = ch
                 prev_was_vowel = True
                 continue
-            count += 1
+            nuclei.append(i)
         prev = ch
         prev_was_vowel = is_vowel
-    return count
+    return nuclei
+
+
+def syllable_count(form: str) -> int:
+    return len(syllable_nuclei(form))
 
 
 def has_accent(form: str) -> bool:
     return any(ch in ACCENTED_VOWELS for ch in unicodedata.normalize("NFD", form))
+
+
+def accented_syllable(form: str) -> int | None:
+    """How far the written accent stands from the end, counted in syllables:
+    0 the last, 1 the penult, 2 the antepenult. None when the form carries no
+    accent, or carries one the syllabifier cannot place on a nucleus.
+
+    Latin stress falls on the penult or the antepenult and never before it —
+    an invariant that needs no vowel quantities, which is why this edition can
+    hold it mechanically. Callers report a number above 2.
+    """
+    s = unicodedata.normalize("NFC", form)
+    nuclei = syllable_nuclei(form)
+    for position, index in enumerate(nuclei):
+        # Either a precomposed accented vowel, or the combining acute that
+        # follows œ — Unicode has no precomposed œ́, and fœ́deris is printed.
+        if s[index] in ACCENTED_VOWELS or s[index + 1 : index + 2] == "́":
+            return len(nuclei) - 1 - position
+    return None

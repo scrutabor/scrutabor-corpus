@@ -17,7 +17,7 @@ import re
 import unicodedata
 from pathlib import Path
 
-from .attribute import _range_declarations, _raw_archive_for
+from .attribute import _range_declarations, _raw_archive_for, declared_sources
 
 
 def _signature(text: str, *, terminal_punctuation: bool) -> str:
@@ -54,6 +54,31 @@ def check_transcriptions(witness_dir: Path) -> tuple[list[str], int]:
     for witness in sorted(witness_dir.glob("*.txt")):
         text = witness.read_text(encoding="utf-8")
         declarations = _range_declarations(text)
+        # A witness that names a local archive and gives no readable line range
+        # is compared against nothing, and said so only by dropping one from
+        # the verdict's `raw=` count: deleting `(lines 29-31)` left the whole
+        # run green (census, 2026-08-19). The same hollow-verifier shape as an
+        # unresolvable base ref in checks/identity.py, which fails loudly for
+        # the same reason — a check that cannot run has not passed.
+        #
+        # Naming a `.txt` is what says there is an archive to compare against.
+        # Thirteen witnesses instead name printed pages and scan leaves, and
+        # they are out of scope here rather than unverified.
+        #
+        # The rule is per WITNESS and not per file, because a `path` value is
+        # prose and names files it is not transcribed from: hanc-igitur
+        # explains that DO fills its insertion point from Prefationes.txt on
+        # the Easter octave, and ite-missa-est says which file calls which. So
+        # a witness that ranges one of two archives is not caught here. What is
+        # caught is a witness that ranges none.
+        sources = declared_sources(text)
+        if sources and not declarations:
+            errors.append(
+                f"{witness.name}: names {', '.join(sorted(set(sources)))} and declares no "
+                f"readable line range — nothing was compared, and a range is what says "
+                f"which lines this transcription stands on"
+            )
+            continue
         if not declarations:
             continue
         body = _body(text)

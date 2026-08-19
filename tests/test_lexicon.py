@@ -72,6 +72,35 @@ class TestTheHeadIsSpelledLikeTheText:
         found = lint_lemmata({"dominus": {"head": "Dóminús", "pos": "noun"}})
         assert any("accents" in e for e in found)
 
+    def test_and_the_accent_reaches_the_antepenult_and_no_further(self):
+        # The head that made this necessary is this file's own history:
+        # `pérhibeo, perhibére, pérhibui, pérhibitum` stood in the lexicon for
+        # weeks with the mark four syllables from the end in three of its four
+        # principal parts, and every rule above read past it.
+        found = lint_lemmata(
+            {"perhibeo": {"head": "pérhibeo, perhibére, pérhibui, pérhibitum", "pos": "verb"}}
+        )
+        assert len(found) == 3
+        assert found[0] == (
+            "lexicon:perhibeo: head token 'pérhibeo' accents the syllable 4 from the end "
+            "— Latin stress reaches the antepenult and no further"
+        )
+
+    def test_and_the_corrected_head_passes(self):
+        assert (
+            lint_lemmata(
+                {"perhibeo": {"head": "perhíbeo, perhibére, perhíbui, perhíbitum", "pos": "verb"}}
+            )
+            == []
+        )
+
+    def test_a_diphthong_under_its_mark_is_not_a_fourth_syllable(self):
+        # gáudium is gau-di-um: the accent is on the antepenult, and reading
+        # the letter before the u without reading past the mark made it four.
+        assert (
+            lint_lemmata({"gaudium": {"head": "gáudium, gáudii", "pos": "noun", "decl": 2}}) == []
+        )
+
 
 class TestSenses:
     def test_a_good_entry_passes(self):
