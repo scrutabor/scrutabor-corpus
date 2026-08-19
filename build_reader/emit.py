@@ -5,21 +5,27 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-SCHEMA = "0.13.0"
+# The reader edition's OWN version. It moves when this file changes what it
+# writes, which is a different event from the corpus changing what it stores —
+# the manifest names both, so a consumer can tell the two apart.
+SCHEMA = "1.0.0"
 LANGS = ("pl", "en")
 
-# What a reader never sees, and what therefore never leaves the repository.
+# WHAT A READER NEVER SEES, and what therefore never leaves the repository.
+# Every name here is a decision, not an omission: the rule is that a field is
+# dropped because a reader is never shown it, never because it is inconvenient.
 DROP_DOC = {
-    "schema_version",
-    "status",
-    "notes",
-    "source",
-    "analysis_defaults",
-    "analysis_defaults_words",
-    "ids",
+    "schema_version",  # named once, in the manifest
+    "ids",  # the mint and its tombstones: identity bookkeeping
+    "notes",  # the editorial claims a reviewer reads in a diff
+    "source",  # witness line ranges, which belong to the apparatus
 }
-DROP_SEGMENT = {"analysis"}
-DROP_WORD = {"analysis"}
+# `analysis` is NOT dropped. It is what the word panel shows under the parse --
+# confidence, review state, and which analyzers confirmed it -- and an edition
+# that says "the system must know what it doesn't know" cannot ship the doubt
+# and withhold the note of it. It is interned instead: 9 shapes carry 499 uses.
+DROP_SEGMENT: set[str] = set()
+DROP_WORD: set[str] = set()
 
 
 def _dumps(obj: object) -> str:
@@ -27,25 +33,30 @@ def _dumps(obj: object) -> str:
     return json.dumps(obj, ensure_ascii=False, separators=(",", ":"), sort_keys=False)
 
 
-class Parses:
-    """The corpus-wide parse table.
+class Table:
+    """A corpus-wide table of repeated objects, addressed by index.
 
-    412 distinct parses carry 6,143 words, and the fifty commonest carry two
-    thirds of them. Writing the object out at every word is 44% of an authored
-    text document — free in git, free after gzip, and not free in a phone's
-    heap or in the bytes a page hands the browser.
+    Three layers repeat themselves hard enough to be worth this. 412 distinct
+    parses carry 6,143 words and the fifty commonest carry two thirds of them;
+    9 distinct analyses carry 499 words and 5 carry 130 segments; 232 distinct
+    citations carry 1,327 references. Written out at every site the parse alone
+    was 44% of an authored text document -- free in git, free after gzip, and
+    not free in a phone's heap or in the bytes a page hands the browser.
     """
 
     def __init__(self) -> None:
         self.order: list[dict] = []
         self._index: dict[str, int] = {}
 
-    def intern(self, morph: dict) -> int:
-        key = json.dumps(morph, sort_keys=True, separators=(",", ":"))
+    def intern(self, value: dict) -> int:
+        key = json.dumps(value, sort_keys=True, separators=(",", ":"))
         if key not in self._index:
             self._index[key] = len(self.order)
             self.order.append(json.loads(key))
         return self._index[key]
+
+    def intern_all(self, values: list[dict]) -> list[int]:
+        return [self.intern(v) for v in values]
 
 
 def read_corpus(corpus: Path) -> list[tuple[dict, dict[str, dict]]]:
@@ -59,15 +70,19 @@ def read_corpus(corpus: Path) -> list[tuple[dict, dict[str, dict]]]:
     return store.all_texts(corpus)
 
 
-def text_artifact(doc: dict, glosses: dict[str, dict], parses: Parses) -> dict:
-    """One text, both languages, nothing editorial."""
+def text_artifact(
+    doc: dict, glosses: dict[str, dict], parses: Table, analyses: Table, citations: Table
+) -> dict:
+    """One text, both languages, nothing a reader is not shown."""
     segments = []
     for segment in doc["segments"]:
         row: dict = {"id": segment["id"], "type": segment["type"]}
         for key, value in segment.items():
-            if key in DROP_SEGMENT or key in ("id", "type", "words"):
+            if key in DROP_SEGMENT or key in ("id", "type", "words", "analysis"):
                 continue
             row[key] = value
+        if segment.get("analysis"):
+            row["an"] = analyses.intern(segment["analysis"])
 
         words = segment.get("words") or []
         if words:
@@ -81,38 +96,147 @@ def text_artifact(doc: dict, glosses: dict[str, dict], parses: Parses) -> dict:
                     cell["h"] = word["head"]
                 if word.get("substantive"):
                     cell["s"] = True
+                if word.get("analysis"):
+                    cell["a"] = analyses.intern(word["analysis"])
                 cells.append(cell)
             row["w"] = cells
 
         for lang in LANGS:
             gloss = glosses[lang]
             seg = (gloss.get("segments") or {}).get(segment["id"]) or {}
-            if seg.get("translation"):
-                row.setdefault("tr", {})[lang] = seg["translation"]
-            if seg.get("narrative"):
-                row.setdefault("nr", {})[lang] = seg["narrative"]
+            for field, short in (("translation", "tr"), ("narrative", "nr")):
+                if seg.get(field):
+                    row.setdefault(short, {})[lang] = seg[field]
+                cites = seg.get(f"{field}_citations")
+                if cites:
+                    row.setdefault(f"{short[0]}c", {})[lang] = citations.intern_all(cites)
             if words:
                 entries = gloss.get("words") or {}
                 row.setdefault("g", {})[lang] = [
                     (entries.get(w["id"]) or {}).get("gloss", "") for w in words
                 ]
-                notes = {
-                    w["id"]: (entries.get(w["id"]) or {}).get("function")
+                for field, short in (("function", "fn"), ("note", "nt")):
+                    notes = {
+                        w["id"]: (entries.get(w["id"]) or {}).get(field)
+                        for w in words
+                        if (entries.get(w["id"]) or {}).get(field)
+                    }
+                    if notes:
+                        row.setdefault(short, {})[lang] = notes
+                cites = {
+                    w["id"]: citations.intern_all(cited)
                     for w in words
-                    if (entries.get(w["id"]) or {}).get("function")
+                    if (cited := (entries.get(w["id"]) or {}).get("function_citations"))
                 }
-                if notes:
-                    row.setdefault("fn", {})[lang] = notes
+                if cites:
+                    row.setdefault("fc", {})[lang] = cites
         segments.append(row)
 
     artifact: dict = {"id": doc["id"]}
     for key, value in doc.items():
-        if key in DROP_DOC or key in ("id", "segments"):
+        if key in DROP_DOC or key in ("id", "segments", "status", "analysis_defaults"):
+            continue
+        if key == "analysis_defaults_words":
             continue
         artifact[key] = value
+    artifact["st"] = doc["status"]
+    artifact["ad"] = analyses.intern(doc["analysis_defaults"])
+    if doc.get("analysis_defaults_words"):
+        artifact["adw"] = analyses.intern(doc["analysis_defaults_words"])
     artifact["about"] = {lang: glosses[lang]["about"] for lang in LANGS}
+    about_citations = {
+        lang: citations.intern_all(cited)
+        for lang in LANGS
+        if (cited := glosses[lang].get("about_citations"))
+    }
+    if about_citations:
+        artifact["ac"] = about_citations
     artifact["seg"] = segments
     return artifact
+
+
+def expand(artifact: dict, parses: list, analyses: list, citations: list) -> tuple[dict, dict]:
+    """The artifact read back as the documents the corpus stores.
+
+    The inverse of `text_artifact`, and the whole of `verify`'s method: rather
+    than checking field against field -- which tests only the fields somebody
+    remembered to list -- the edition is expanded and compared whole. A field
+    added to the corpus and forgotten here fails as a difference, not as
+    silence. The app carries this same function in TypeScript.
+    """
+    doc: dict = {}
+    layers: dict[str, dict] = {
+        lang: {
+            "text": artifact["id"],
+            "lang": lang,
+            "status": artifact["st"],
+            "analysis_defaults": analyses[artifact["ad"]],
+            "segments": {},
+            "words": {},
+        }
+        for lang in LANGS
+    }
+    for key, value in artifact.items():
+        if key in ("st", "ad", "adw", "about", "ac", "seg"):
+            continue
+        doc[key] = value
+    doc["status"] = artifact["st"]
+    doc["analysis_defaults"] = analyses[artifact["ad"]]
+    if "adw" in artifact:
+        doc["analysis_defaults_words"] = analyses[artifact["adw"]]
+    for lang in LANGS:
+        layers[lang]["about"] = artifact["about"][lang]
+        cited = (artifact.get("ac") or {}).get(lang)
+        if cited:
+            layers[lang]["about_citations"] = [citations[i] for i in cited]
+
+    segments = []
+    for row in artifact["seg"]:
+        segment: dict = {}
+        for key, value in row.items():
+            if key in ("w", "g", "fn", "nt", "fc", "tr", "tc", "nr", "nc", "an"):
+                continue
+            segment[key] = value
+        if "an" in row:
+            segment["analysis"] = analyses[row["an"]]
+        for lang in LANGS:
+            bucket: dict = {}
+            for field, short in (("translation", "tr"), ("narrative", "nr")):
+                if lang in (row.get(short) or {}):
+                    bucket[field] = row[short][lang]
+                cited = (row.get(f"{short[0]}c") or {}).get(lang)
+                if cited:
+                    bucket[f"{field}_citations"] = [citations[i] for i in cited]
+            if bucket:
+                layers[lang]["segments"][row["id"]] = bucket
+        if "w" in row:
+            words = []
+            for position, cell in enumerate(row["w"]):
+                word: dict = {"id": cell["i"], "form": cell["f"], "lemma": cell["l"]}
+                if "p" in cell:
+                    word["post"] = cell["p"]
+                word["morph"] = parses[cell["m"]]
+                if "h" in cell:
+                    word["head"] = cell["h"]
+                if cell.get("s"):
+                    word["substantive"] = True
+                if "a" in cell:
+                    word["analysis"] = analyses[cell["a"]]
+                words.append(word)
+                for lang in LANGS:
+                    entry: dict = {"gloss": row["g"][lang][position]}
+                    for field, short in (("function", "fn"), ("note", "nt")):
+                        value = ((row.get(short) or {}).get(lang) or {}).get(cell["i"])
+                        if value:
+                            entry[field] = value
+                    cited = ((row.get("fc") or {}).get(lang) or {}).get(cell["i"])
+                    if cited:
+                        entry["function_citations"] = [citations[i] for i in cited]
+                    layers[lang]["words"][cell["i"]] = entry
+            segment["words"] = words
+        segments.append(segment)
+    doc["segments"] = segments
+    return doc, layers
 
 
 def lexicon_slice(corpus: Path, lemmas: set[str] | None = None) -> dict:
@@ -168,21 +292,23 @@ def index(corpus_docs: list[tuple[dict, dict]]) -> dict:
 def emit(corpus: Path, out: Path) -> dict[str, int]:
     """Write the whole reader edition. Returns what it wrote."""
     corpus_docs = read_corpus(corpus)
-    parses = Parses()
+    parses, analyses, citations = Table(), Table(), Table()
     written = {"texts": 0, "bytes": 0}
 
     (out / "t").mkdir(parents=True, exist_ok=True)
     for doc, glosses in corpus_docs:
-        artifact = text_artifact(doc, glosses, parses)
+        artifact = text_artifact(doc, glosses, parses, analyses, citations)
         body = _dumps(artifact)
         (out / "t" / f"{doc['id']}.json").write_text(body, encoding="utf-8")
         written["texts"] += 1
         written["bytes"] += len(body.encode())
 
-    # The parse table is written LAST because interning fills it as texts are
-    # emitted, and a table written first would be the previous run's.
+    # The three tables are written LAST because interning fills them as texts
+    # are emitted, and a table written first would be the previous run's.
     for name, payload in (
         ("m", parses.order),
+        ("a", analyses.order),
+        ("c", citations.order),
         ("x", index(corpus_docs)),
         ("lex", lexicon_slice(corpus)),
     ):
@@ -192,9 +318,12 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
 
     manifest = {
         "schema_version": SCHEMA,
+        "corpus_schema": corpus_docs[0][0]["schema_version"],
         "texts": [doc["id"] for doc, _ in corpus_docs],
         "langs": list(LANGS),
         "parses": len(parses.order),
+        "analyses": len(analyses.order),
+        "citations": len(citations.order),
     }
     body = _dumps(manifest)
     (out / "manifest.json").write_text(body, encoding="utf-8")
@@ -202,45 +331,69 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
     return written
 
 
+def _strip(doc: dict, glosses: dict) -> tuple[dict, dict]:
+    """The corpus documents with the declared drops taken out.
+
+    What is left is what the edition promises to carry, and `verify` compares
+    the whole of it rather than a list of remembered fields.
+    """
+    kept_doc = {k: v for k, v in doc.items() if k not in DROP_DOC}
+    kept_glosses = {
+        lang: {k: v for k, v in layer.items() if k != "schema_version"}
+        for lang, layer in glosses.items()
+    }
+    return kept_doc, kept_glosses
+
+
 def verify(corpus: Path, out: Path) -> list[str]:
     """Read the edition back and hold it against the corpus it came from.
 
-    Word by word, gloss by gloss, translation by translation. A compression
-    nobody checks is a second, quieter edition of the same book.
+    Whole documents, not chosen fields. A compression nobody checks is a
+    second, quieter edition of the same book -- and a compression checked
+    field by field is one that stays honest only about the fields somebody
+    thought to list. `expand` reverses the emitter and the result must equal
+    what the corpus stores, minus what DROP_DOC says is left behind.
     """
     errors: list[str] = []
     parses = json.loads((out / "m.json").read_text(encoding="utf-8"))
+    analyses = json.loads((out / "a.json").read_text(encoding="utf-8"))
+    citations = json.loads((out / "c.json").read_text(encoding="utf-8"))
     for doc, glosses in read_corpus(corpus):
         path = out / "t" / f"{doc['id']}.json"
         if not path.exists():
             errors.append(f"{doc['id']}: no artifact was written")
             continue
-        art = json.loads(path.read_text(encoding="utf-8"))
-        rows = {row["id"]: row for row in art["seg"]}
-        for segment in doc["segments"]:
-            row = rows.get(segment["id"])
-            if row is None:
-                errors.append(f"{doc['id']}:{segment['id']}: segment missing from the artifact")
-                continue
-            words = segment.get("words") or []
-            cells = row.get("w") or []
-            if len(words) != len(cells):
+        artifact = json.loads(path.read_text(encoding="utf-8"))
+        want_doc, want_glosses = _strip(doc, glosses)
+        got_doc, got_glosses = expand(artifact, parses, analyses, citations)
+        if got_doc != want_doc:
+            errors.append(f"{doc['id']}: {_first_difference(want_doc, got_doc, 'text')}")
+        for lang in LANGS:
+            if got_glosses[lang] != want_glosses[lang]:
                 errors.append(
-                    f"{doc['id']}:{segment['id']}: {len(words)} words became {len(cells)}"
+                    f"{doc['id']}: {_first_difference(want_glosses[lang], got_glosses[lang], lang)}"
                 )
-                continue
-            for word, cell in zip(words, cells, strict=True):
-                if cell["f"] != word["form"] or cell["i"] != word["id"]:
-                    errors.append(f"{doc['id']}:{word['id']}: form or id does not match")
-                if parses[cell["m"]] != word["morph"]:
-                    errors.append(f"{doc['id']}:{word['id']}: the interned parse does not match")
-            for lang in LANGS:
-                entries = glosses[lang].get("words") or {}
-                want = [(entries.get(w["id"]) or {}).get("gloss", "") for w in words]
-                got = (row.get("g") or {}).get(lang, [])
-                if want != got:
-                    errors.append(f"{doc['id']}:{segment['id']}:{lang}: glosses do not match")
-                seg = (glosses[lang].get("segments") or {}).get(segment["id"]) or {}
-                if seg.get("translation") and (row.get("tr") or {}).get(lang) != seg["translation"]:
-                    errors.append(f"{doc['id']}:{segment['id']}:{lang}: translation does not match")
     return errors
+
+
+def _first_difference(want: object, got: object, where: str) -> str:
+    """Name the first place two structures part company, not merely that they do."""
+    if isinstance(want, dict) and isinstance(got, dict):
+        for key in sorted(set(want) | set(got)):
+            if key not in want:
+                return f"{where}.{key} was added by the edition"
+            if key not in got:
+                return f"{where}.{key} is missing from the edition"
+            if want[key] != got[key]:
+                return _first_difference(want[key], got[key], f"{where}.{key}")
+    if isinstance(want, list) and isinstance(got, list):
+        if len(want) != len(got):
+            return f"{where}: {len(want)} entries became {len(got)}"
+        for i, (a, b) in enumerate(zip(want, got, strict=True)):
+            if a != b:
+                return _first_difference(a, b, f"{where}[{i}]")
+
+    def brief(value: object) -> str:
+        return json.dumps(value, ensure_ascii=False)[:80]
+
+    return f"{where}: {brief(want)} != {brief(got)}"

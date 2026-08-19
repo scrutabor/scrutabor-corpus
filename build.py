@@ -25,10 +25,10 @@ def main(check_only: bool) -> int:
     errors = verify(HERE, out)
     for message in errors:
         print(f"ERROR: {message}")
-    source = sum(
-        p.stat().st_size
-        for p in list(HERE.glob("texts/*/*.json")) + list(HERE.glob("glosses/*/*.json"))
-    )
+    # One document per text since 0.14.0, so this is the whole authored corpus
+    # for these texts -- glosses/ no longer exists and globbing it silently
+    # measured half the source, which flattered the ratio.
+    source = sum(p.stat().st_size for p in HERE.glob("texts/*/*.json"))
     subject = (
         f"texts={written['texts']} bytes={written['bytes']} "
         f"source={source} ratio={written['bytes'] / source:.2f}"

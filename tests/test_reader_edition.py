@@ -4,7 +4,7 @@ import gzip
 import json
 from pathlib import Path
 
-from build_reader.emit import Parses, emit, index, read_corpus, text_artifact, verify
+from build_reader.emit import Table, emit, expand, index, read_corpus, text_artifact, verify
 
 CORPUS = Path(__file__).resolve().parent.parent
 
@@ -30,16 +30,69 @@ def test_the_build_is_deterministic(tmp_path):
         assert path.read_bytes() == twin.read_bytes(), path.name
 
 
-def test_nothing_editorial_survives(tmp_path):
+def test_nothing_a_reader_never_sees_survives(tmp_path):
+    # The apparatus, the mint and the editorial notes are written for someone
+    # reading a diff. They are the whole reason the authored corpus and the
+    # shipped one are different documents.
     out = build(tmp_path)
     for path in out.glob("t/*.json"):
         art = json.loads(path.read_text(encoding="utf-8"))
-        for gone in ("analysis_defaults", "analysis_defaults_words", "source", "status", "ids"):
+        for gone in ("source", "ids", "notes", "schema_version"):
             assert gone not in art, f"{path.name} still carries {gone}"
-        for row in art["seg"]:
-            assert "analysis" not in row
-            for cell in row.get("w") or []:
-                assert "analysis" not in cell
+
+
+def test_what_a_reader_is_shown_does_survive(tmp_path):
+    # The other half, and the one the first draft got wrong: it dropped the
+    # analysis and every citation, which are exactly what the word panel and
+    # the source notes render. An edition that ships the doubt and withholds
+    # the note of it is not the edition this corpus claims to be.
+    out = build(tmp_path)
+    art = json.loads((out / "t/orationes.pater-noster.json").read_text(encoding="utf-8"))
+    assert isinstance(art["ad"], int), "the analysis default is an index into the table"
+    assert art["st"], "the working-edition label travels with the text"
+
+    citations = json.loads((out / "c.json").read_text(encoding="utf-8"))
+    seen = 0
+    for path in out.glob("t/*.json"):
+        text = json.loads(path.read_text(encoding="utf-8"))
+        for key in ("ac",):
+            for indices in (text.get(key) or {}).values():
+                seen += len(indices)
+                assert all(citations[i]["title"] for i in indices)
+        for row in text["seg"]:
+            for key in ("tc", "nc"):
+                for indices in (row.get(key) or {}).values():
+                    seen += len(indices)
+                    assert all(citations[i]["title"] for i in indices)
+            for byword in (row.get("fc") or {}).values():
+                for indices in byword.values():
+                    seen += len(indices)
+                    assert all(citations[i]["title"] for i in indices)
+    assert seen > 1000, f"the source notes did not survive the build ({seen} references)"
+
+
+def test_the_tables_are_tables_and_not_lists_of_everything(tmp_path):
+    out = build(tmp_path)
+    manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
+    words = sum(
+        len(s.get("words") or []) for doc, _ in read_corpus(CORPUS) for s in doc["segments"]
+    )
+    assert manifest["analyses"] < 50, "an analysis has a handful of shapes, not one per word"
+    assert manifest["citations"] < words / 10, "the same works are cited over and over"
+
+
+def test_the_edition_expands_back_into_what_the_corpus_stores(tmp_path):
+    # `verify` runs this over all 111 texts; this states the property in one
+    # place so that what the round trip means is readable without reading it.
+    out = build(tmp_path)
+    tables = [
+        json.loads((out / f"{name}.json").read_text(encoding="utf-8")) for name in ("m", "a", "c")
+    ]
+    doc, glosses = next((d, g) for d, g in read_corpus(CORPUS) if d["id"] == "ordinarium.credo")
+    art = json.loads((out / "t/ordinarium.credo.json").read_text(encoding="utf-8"))
+    got_doc, got_glosses = expand(art, *tables)
+    assert got_doc["segments"] == doc["segments"]
+    assert got_glosses["pl"]["words"] == glosses["pl"]["words"]
 
 
 def test_the_parse_table_is_shared_and_small(tmp_path):
@@ -55,13 +108,32 @@ def test_the_edition_is_much_smaller_than_its_source(tmp_path):
     out = build(tmp_path)
     source = sum(p.stat().st_size for p in CORPUS.glob("texts/*/*.json"))
     made = sum(p.stat().st_size for p in out.rglob("*.json"))
-    assert made < source * 0.6, f"{made} against {source} is not worth a build step"
+    assert made < source * 0.65, f"{made} against {source} is not worth a build step"
+
+
+def test_the_saving_is_in_the_bytes_parsed_and_not_the_bytes_sent(tmp_path):
+    # STATED, because it is a surprise and would otherwise be assumed the
+    # other way. The authored corpus repeats one parse object at every one of
+    # 6,143 words, and gzip is very good at exactly that -- so compressed, the
+    # edition is no smaller than the corpus it came from, and by a little it
+    # is larger, the indices being less repetitive than what they replaced.
+    #
+    # The saving that is real is the one a phone feels: 39% fewer bytes to
+    # parse, and 412 parse objects on the heap where the corpus has 6,143,
+    # because `expand` hands out the SAME object rather than a copy of it.
+    # The download is made small by not shipping 1,961 prerendered pages,
+    # which is a different lever and lives in the app.
+    def packed(paths) -> int:
+        return len(gzip.compress(b"".join(p.read_bytes() for p in sorted(paths)), 9))
+
+    out = build(tmp_path)
+    assert packed(out.rglob("*.json")) > packed(CORPUS.glob("texts/*/*.json")) * 0.9
 
 
 def test_a_text_artifact_carries_both_languages(tmp_path):
     docs = read_corpus(CORPUS)
     doc, glosses = next((d, g) for d, g in docs if d["id"] == "ordinarium.credo")
-    art = text_artifact(doc, glosses, Parses())
+    art = text_artifact(doc, glosses, Table(), Table(), Table())
     assert set(art["about"]) == {"pl", "en"}
     spoken = [r for r in art["seg"] if r.get("w")]
     assert set(spoken[0]["g"]) == {"pl", "en"}

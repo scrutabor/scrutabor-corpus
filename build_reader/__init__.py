@@ -6,11 +6,22 @@ separate documents so each can be worked on alone. That is the right shape for
 the work and the wrong shape for a phone.
 
 This package derives the other shape. One document per text carrying both
-languages, the parse replaced by an index into a table the whole corpus shares,
-the editorial layer left behind, and a lexicon slice holding only the entries
-that text's own words need. Measured over the whole corpus the result is 80%
-smaller raw and 64% smaller gzipped, and it is the form the app is meant to
-fetch rather than the form a reviewer is meant to read.
+languages, the three repeated layers -- parse, analysis, citation -- replaced by
+indices into tables the whole corpus shares, and the reviewer's apparatus left
+behind. It is the form the app ships rather than the form a reviewer reads.
+
+What it is left behind is named in DROP_DOC and is exactly three things: the
+witness line ranges, the mint, and the editorial notes. Everything a reader is
+SHOWN travels, including the analysis under the parse and every source note --
+the first draft dropped both, and an edition that ships the doubt and withholds
+the note of it is not the edition this corpus claims to be.
+
+The saving is 39% of the bytes to parse and 412 parse objects on the heap where
+the corpus has 6,143. It is NOT a saving in the bytes sent: the corpus repeats
+one parse object at every word and gzip is very good at that, so compressed the
+edition is a little larger than its source. The download is made small by not
+shipping 1,961 prerendered pages, which is a different lever and lives in the
+app.
 
 Two things make it trustworthy rather than merely small:
 
