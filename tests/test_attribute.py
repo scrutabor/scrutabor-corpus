@@ -197,7 +197,7 @@ class TestProperAttribution:
 
 class TestTheCorpusItself:
     def test_a_write_never_touches_a_text_it_cannot_source(self):
-        # The corpus carries 19 stale ranges (BACKLOG). This is not a
+        # The corpus has carried stale ranges. This is not a
         # demand that they be zero — it is the guarantee that goes with
         # them: whatever the number, those texts are read and reported,
         # never written. If this list ever shrinks to nothing the check

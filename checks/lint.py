@@ -17,7 +17,7 @@ MORPH_ENUMS = {
     "tense": {"pres", "impf", "fut", "perf", "plup", "futperf"},
     # "ger" is the GERUND, a verbal noun: it takes a case and no person.
     # It entered with the Advent II epistle, at *in credéndo* — the first
-    # one in the corpus, and the enum the BACKLOG said was still ahead.
+    # one in the corpus, and the enum this schema had not yet needed.
     "mood": {"ind", "subj", "imp", "inf", "part", "ger"},
     "voice": {"act", "pass", "dep"},
     "degree": {"comp", "sup"},

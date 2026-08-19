@@ -23,7 +23,7 @@ DROP_DOC = {
 # `analysis` is NOT dropped. It is what the word panel shows under the parse --
 # confidence, review state, and which analyzers confirmed it -- and an edition
 # that says "the system must know what it doesn't know" cannot ship the doubt
-# and withhold the note of it. It is interned instead: 9 shapes carry 499 uses.
+# and withhold the note of it. It is interned instead: 13 shapes carry 518 sites.
 DROP_SEGMENT: set[str] = set()
 DROP_WORD: set[str] = set()
 
@@ -38,8 +38,8 @@ class Table:
 
     Three layers repeat themselves hard enough to be worth this. 412 distinct
     parses carry 6,143 words and the fifty commonest carry two thirds of them;
-    9 distinct analyses carry 499 words and 5 carry 130 segments; 232 distinct
-    citations carry 1,327 references. Written out at every site the parse alone
+    13 distinct analyses carry 518 sites -- 166 words, 130 segments and 222
+    document defaults; 232 distinct citations carry 1,327 references. Written out at every site the parse alone
     was 44% of an authored text document -- free in git, free after gzip, and
     not free in a phone's heap or in the bytes a page hands the browser.
     """

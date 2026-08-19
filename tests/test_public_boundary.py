@@ -7,8 +7,12 @@ nowhere. Worse, three of the pointers were in ERROR MESSAGES, so the first
 person to trip a check would be told to consult a file that does not exist.
 
 An external review found sixteen of these across both public repositories on
-2026-08-19. They had accumulated one comment at a time, each individually
-harmless, which is exactly the shape a rule needs a gate for.
+2026-08-19, and a re-review found three more that the FIRST VERSION OF THIS
+GATE could not see: it matched `BACKLOG.md` with the extension, and the
+survivors wrote the bare word — "the enum the BACKLOG said was still ahead",
+"19 stale ranges (BACKLOG)", "recorded in the backlog". A gate that certifies
+a boundary it cannot see past is worse than none, so the pattern now takes the
+word under any casing.
 
 The fix in every case was to say the thing rather than to cite it. A rule worth
 enforcing in code is worth stating in the code.
@@ -27,12 +31,12 @@ PRIVATE = re.compile(
     r"""(?:
         reviews/[A-Z][A-Z0-9-]*\.md   # PLAYBOOK, OWNER-QUEUE, CAMPAIGN…
       | notes/[a-z-]+\.md             # quality, conventions, decisions…
-      | \bBACKLOG\.md
-      | \bPLAYBOOK\b
-      | \bOWNER-QUEUE\b
+      | \bbacklog\b                 # the tracker, under any casing
+      | \bplaybook\b
+      | \bowner-queue\b
       | scrutabor-workbench
     )""",
-    re.VERBOSE,
+    re.VERBOSE | re.IGNORECASE,
 )
 
 # This file names them in order to forbid them.
