@@ -8,27 +8,33 @@ Every Latin word carries its lemma, a full morphological analysis, a
 reading gloss, and a short explanation of its function in the sentence —
 *why Deo and not Deum*. Rubrics carry a narrative layer describing what is
 happening at the altar. The corpus is the data behind the Scrutabor
-reading app ([scrutabor](https://github.com/scrutabor/scrutabor)).
+reading app ([scrutabor](https://github.com/scrutabor/scrutabor)), live at
+[scrutabor.org](https://scrutabor.org).
 
-**Status: working edition.** 72 texts, fully annotated in both languages:
+**Status: working edition.** 111 texts, fully annotated in both languages:
 the complete Ordinary of the Mass, the prayers after low Mass, the common
-prayers, the first psalm stanza, and the complete Proper for the First Sunday
-of Advent. Every analysis carries its sources, a confidence grade and a review
-state, and nothing is presented as settled until it has passed expert review.
-Every text has been collated against at least two independent witnesses and
-adversarially reviewed, and the disputed readings are listed rather than
-hidden.
+prayers, three litanies, the prayers for the dead, the first psalm stanza,
+and the complete Propers of the four Sundays of Advent — with the 1962
+temporal calendar computed for 76 years and verified against the Missale's
+own table. Every analysis carries its sources, a confidence grade and a
+review state, and nothing is presented as settled until it has passed
+expert review. Every text has been collated against at least two
+independent witnesses and adversarially reviewed, and the disputed
+readings are listed rather than hidden.
 
 ## Design
 
-Two layers per text, JSON, UTF-8:
+One document per text, JSON, UTF-8 — the Latin, the parse, both gloss
+layers and both translations together, every editorial claim gathered at
+the foot:
 
 ```
-texts/<category>/<name>.json           Latin source + morphology (language-neutral)
-glosses/<lang>/<category>.<name>.json  per-language layer (glosses, functions,
-                                       translations, rubric narratives)
-witnesses/<text-id>/                   witness transcriptions + adjudicated apparatus
-checks/, run_checks.py                 mechanical validation (see below)
+texts/<category>/<name>.json  the text: Latin + morphology + both languages
+lexicon/                      one lexicon, three files (heads, Polish, English)
+kalendarium/                  the 1962 temporal cycle, computed and verified
+witnesses/<text-id>/          witness transcriptions + adjudicated apparatus
+build_reader/, build.py       the reader edition the app ships
+checks/, run_checks.py        mechanical validation (see below)
 ```
 
 Word ids are stable forever — external references (spaced-repetition
