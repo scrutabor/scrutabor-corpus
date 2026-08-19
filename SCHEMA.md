@@ -380,8 +380,12 @@ entries{ <lemma>: { head, pos, gender?, gender_pl?, decl?, conj?, analysis? } }
   with accents** (ORTHOGRAPHY.md applies to every component) — the lemma key
   is bare and normalized, the head is what a reader sees (`Ioánnes` for the
   lemma `Ioannes`, `maiéstas, maiestátis` for `maiestas`).
-  Conventions: nouns give the genitive (`mater, matris`; abbreviated for
-  1st/2nd declension: `culpa, -æ`); adjectives give the feminine/neuter
+  Conventions: nouns give the genitive (`mater, matris`; it may be
+  abbreviated to its ending for the 1st, 2nd and 4th declensions —
+  `culpa, -æ`, `dóminus, -i`, `spíritus, -us` — except that nouns in
+  -ius/-ium print the genitive in full, `solácium, solácii`, because `-i`
+  after such a stem reads as a genitive in `-i` and the running text
+  prints `-ii`); adjectives give the feminine/neuter
   endings (`beátus, -a, -um`; one-ending adjectives the genitive:
   `omnípotens, omnipoténtis`); verbs give principal parts
   (`oro, oráre, orávi, orátum`; deponents `precor, precári, precátus sum`);
