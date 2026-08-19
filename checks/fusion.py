@@ -1,6 +1,6 @@
 """A gloss that renders nothing must say why.
 
-The word gloss renders its word and leaves nothing unrendered (PLAYBOOK, the
+The word gloss renders its word and leaves nothing unrendered (the
 two-layer rule). One thing defeats that honestly: a Latin compound perfect is
 two words — a participle and a part of *sum* — and a language may build the
 same tense with an inflection instead of a second word. Polish does: *locútus

@@ -94,7 +94,7 @@ analysis_defaults, segments[]
   their named spans. A declared raw path with no local archive is an error.
 - **`head`** and **`substantive`** (since 0.13.0) state the SYNTAX, which is
   the one thing that settles a reading the form permits and the sentence
-  forbids (error class 43, notes/quality.md). Every adjective, numeral and
+  forbids. Every adjective, numeral and
   participle carries either `head`, the id of the word it must agree with, or
   `substantive: true`, meaning it agrees with nothing expressed — it heads its
   own phrase (*Salus infirmórum*, the health of the sick) or is impersonal

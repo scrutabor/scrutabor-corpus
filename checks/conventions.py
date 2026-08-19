@@ -1,6 +1,6 @@
 """The gloss conventions the reading campaign settled, held to the corpus.
 
-Three rulings landed on 2026-08-17 (reviews/PLAYBOOK.md) and each was applied
+Three editorial rulings landed on 2026-08-17 and each was applied
 by hand across the whole corpus. Nothing compared them afterwards, which is the
 exact shape of every defect this edition has ever had: a thing asserted once
 and never checked again. So they are checked here.
@@ -71,7 +71,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
                 errors.append(
                     f"{doc['id']}:{word['id']} ({word['form']}): the {lang} gloss "
                     f"{text!r} carries the vocative particle, which renders no Latin "
-                    f"word — a vocative is glossed bare (PLAYBOOK, convention 1)"
+                    f"word — a vocative is glossed bare"
                 )
 
         # Rule 3 — a capital marks a name, not a description.
@@ -89,13 +89,13 @@ def check(doc: dict, gloss: dict) -> list[str]:
                 errors.append(
                     f"{doc['id']}:{word['id']} ({word['form']} {head['form']}): the {lang} "
                     f"gloss {text!r} names a divine person and wants a capital "
-                    f"(PLAYBOOK, convention 3)"
+                    f"(the gloss renders the word, not the phrase)"
                 )
             if not names and text[:1].isupper():
                 errors.append(
                     f"{doc['id']}:{word['id']} ({word['form']} {head['form']}): the {lang} "
                     f"gloss {text!r} describes rather than names and wants no capital "
-                    f"(PLAYBOOK, convention 3)"
+                    f"(the gloss renders the word, not the phrase)"
                 )
 
         # Rule 2 — the register follows who is addressed, so one segment speaks
@@ -113,7 +113,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
                 errors.append(
                     f"{doc['id']}:{segment['id']}: the English second person is glossed in "
                     f"both registers inside one segment — {line[:60]!r} — and the register "
-                    f"follows who is addressed (PLAYBOOK, convention 2)"
+                    f"follows who is addressed"
                 )
 
     return errors

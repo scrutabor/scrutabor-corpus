@@ -1,5 +1,5 @@
 """One edition, one spelling — American, for a United States and Canada
-audience (PLAYBOOK, owner 2026-08-17).
+audience (owner, 2026-08-17).
 
 The question was first settled the wrong way, by counting forms inside the
 corpus, which says nothing about who reads it. Having been settled properly it
@@ -107,7 +107,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
                 base = base[:-1]
             errors.append(
                 f"{doc['id']}:{where}: {hit!r} is British, and this edition writes "
-                f"American — {BRITISH.get(base, '?')!r} (PLAYBOOK, orthography)"
+                f"American — {BRITISH.get(base, '?')!r}"
             )
 
     report("about", gloss.get("about") or "")
@@ -137,6 +137,6 @@ def check_lexicon(entries: dict) -> list[str]:
                 base = base[:-1]
             errors.append(
                 f"lexicon:{name}: {hit!r} is British, and this edition writes American "
-                f"— {BRITISH.get(base, '?')!r} (PLAYBOOK, orthography)"
+                f"— {BRITISH.get(base, '?')!r}"
             )
     return errors
