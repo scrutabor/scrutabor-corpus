@@ -39,9 +39,10 @@ class Table:
     Three layers repeat themselves hard enough to be worth this. 412 distinct
     parses carry 6,143 words and the fifty commonest carry two thirds of them;
     13 distinct analyses carry 518 sites -- 166 words, 130 segments and 222
-    document defaults; 232 distinct citations carry 1,327 references. Written out at every site the parse alone
-    was 44% of an authored text document -- free in git, free after gzip, and
-    not free in a phone's heap or in the bytes a page hands the browser.
+    document defaults; 232 distinct citations carry 1,327 references. Written
+    out at every site the parse alone was 44% of an authored text document --
+    free in git, free after gzip, and not free in a phone's heap or in the
+    bytes a page hands the browser.
     """
 
     def __init__(self) -> None:
