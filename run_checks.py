@@ -25,6 +25,7 @@ from checks.fusion import check as check_fusion
 from checks.identity import check as check_identity
 from checks.identity import check_against_history
 from checks.incipit import check as check_incipit
+from checks.kalendarium import check as check_kalendarium
 from checks.lexicon import (
     check_derivative_homes,
     check_note_prose,
@@ -319,6 +320,18 @@ if __name__ == "__main__":
             "RIGHTS wording sites — "
             + " ".join(f"{k}={v}" for k, v in sorted(wording.items()) if v)
         )
+        # The temporal cycle, held against the table the Missale prints itself
+        # (checks/kalendarium.py). A wrong Sunday is the first error a reader
+        # would notice and the last one they would forgive.
+        kal_errors, kal_compared, kal_misprints = check_kalendarium(CORPUS)
+        for message in kal_errors:
+            print(f"ERROR: {message}")
+        rc |= 1 if kal_errors else 0
+        print(
+            f"KALENDARIUM verified={kal_compared} against the Missale's own table "
+            f"misprints={kal_misprints}"
+        )
+
         attested = readings(corpus_docs)
         print(
             f"UNCERTAINTY exposure>={sum(exposure(d, attested) for d in corpus_docs)} "

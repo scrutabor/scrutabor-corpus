@@ -289,6 +289,46 @@ def index(corpus_docs: list[tuple[dict, dict]]) -> dict:
     }
 
 
+# The span the calendar covers. Decision #6 fixed 2026-2100 for the shipped
+# table; `temporale.year(n)` builds the year ENDING in n, so the last one has to
+# be 2101 for the civil year 2100 to be complete to its final Saturday.
+KALENDARIUM = range(2026, 2102)
+
+
+def kalendarium() -> dict:
+    """Every day of the temporal cycle that has a Mass of its own, 2026-2100.
+
+    Explicit rather than derivable: decision #6 says apps never implement
+    movable-feast logic, and three readers are coming. A row is
+    `[date, formulary, season, class, position]`, the last three as indices
+    into the vocabularies beside them, and `position` differs from `formulary`
+    only where a feast or n. 18's transfer moved something.
+    """
+    from kalendarium.temporale import year
+
+    formularies: list[str] = []
+    seasons: list[str] = []
+
+    def ix(table: list[str], value: str) -> int:
+        if value not in table:
+            table.append(value)
+        return table.index(value)
+
+    years: dict[str, list] = {}
+    for ending in KALENDARIUM:
+        years[str(ending)] = [
+            [
+                d.when.isoformat(),
+                ix(formularies, d.formulary),
+                ix(seasons, d.season),
+                d.dies_class,
+                ix(formularies, d.position),
+            ]
+            for d in year(ending)
+        ]
+    return {"f": formularies, "s": seasons, "y": years}
+
+
 def emit(corpus: Path, out: Path) -> dict[str, int]:
     """Write the whole reader edition. Returns what it wrote."""
     corpus_docs = read_corpus(corpus)
@@ -311,6 +351,7 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
         ("c", citations.order),
         ("x", index(corpus_docs)),
         ("lex", lexicon_slice(corpus)),
+        ("kal", kalendarium()),
     ):
         body = _dumps(payload)
         (out / f"{name}.json").write_text(body, encoding="utf-8")
@@ -322,6 +363,7 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
         "texts": [doc["id"] for doc, _ in corpus_docs],
         "langs": list(LANGS),
         "parses": len(parses.order),
+        "kalendarium": [KALENDARIUM.start, KALENDARIUM.stop - 1],
         "analyses": len(analyses.order),
         "citations": len(citations.order),
     }

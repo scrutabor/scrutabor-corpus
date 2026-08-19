@@ -105,9 +105,13 @@ def test_the_parse_table_is_shared_and_small(tmp_path):
 
 
 def test_the_edition_is_much_smaller_than_its_source(tmp_path):
+    # The texts and the tables they are addressed through, against the texts
+    # they came from. kal.json is left out on purpose: the calendar is derived
+    # from the rubrics and not from the corpus, so it has no counterpart on the
+    # other side of this comparison and would only make the ratio meaningless.
     out = build(tmp_path)
     source = sum(p.stat().st_size for p in CORPUS.glob("texts/*/*.json"))
-    made = sum(p.stat().st_size for p in out.rglob("*.json"))
+    made = sum(p.stat().st_size for p in out.rglob("*.json") if p.name != "kal.json")
     assert made < source * 0.65, f"{made} against {source} is not worth a build step"
 
 
@@ -182,3 +186,36 @@ def test_a_word_that_loses_a_language_is_caught(tmp_path):
     text, layers = split(doc)
     errors = lint_gloss(layers["en"], text)
     assert errors and "no gloss" in errors[0], errors[:1]
+
+
+def test_the_edition_carries_the_calendar_a_reader_can_look_today_up_in(tmp_path):
+    # Decision #6: apps never implement movable-feast logic. Three readers are
+    # coming, and a rule implemented three times becomes three rules.
+    out = build(tmp_path)
+    kal = json.loads((out / "kal.json").read_text(encoding="utf-8"))
+    manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
+    first, last = manifest["kalendarium"]
+    assert first == 2026 and last == 2101, (
+        "the span decision #6 fixed, plus the year that ends 2100"
+    )
+    assert set(kal["y"]) == {str(y) for y in range(first, last + 1)}
+
+    rows = kal["y"]["2026"]
+    assert rows == sorted(rows), "a reader looks a date up by walking forward"
+    assert kal["f"][rows[0][1]] == "dominica-i-adventus", "the year opens where the year opens"
+    for row in rows:
+        _when, formulary, season, dies_class, position = row
+        assert kal["f"][formulary] and kal["s"][season]
+        assert dies_class in (1, 2)
+        assert kal["f"][position]
+
+    # The whole point of shipping it: a date resolves without arithmetic.
+    by_date = {row[0]: row for row in kal["y"]["2026"]}
+    assert kal["f"][by_date["2026-04-05"][1]] == "dominica-resurrectionis"
+    assert kal["f"][by_date["2025-11-30"][1]] == "dominica-i-adventus"
+
+
+def test_the_calendar_costs_almost_nothing_to_ship(tmp_path):
+    out = build(tmp_path)
+    packed = len(gzip.compress((out / "kal.json").read_bytes(), 9))
+    assert packed < 40_000, "seventy-six years of Sundays is not a large object"
