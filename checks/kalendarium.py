@@ -17,10 +17,11 @@ from __future__ import annotations
 
 import re
 from datetime import date, timedelta
+from functools import cache
 from pathlib import Path
 
-from kalendarium.computus import advent_i, easter
-from kalendarium.temporale import sundays_after_pentecost
+from kalendarium.computus import easter
+from kalendarium.temporale import Dies, year
 
 ROOT = Path(__file__).resolve().parent.parent
 TABLE = "witnesses/raw/mr-tabella-temporaria.txt"
@@ -68,23 +69,48 @@ def rows(corpus: Path) -> list[tuple[int, list[str]]]:
     return out
 
 
-def computed(year: int) -> list[str]:
-    """The same eight values, from `kalendarium`, spelled as the book spells them."""
+@cache
+def _year(ending: int) -> tuple[Dies, ...]:
+    return tuple(year(ending))
+
+
+def _on(days: tuple[Dies, ...], position: str) -> date | None:
+    for d in days:
+        if d.position == position:
+            return d.when
+    return None
+
+
+def computed(y: int) -> list[str]:
+    """The same eight values, READ FROM THE TABLE THE READER GETS.
+
+    Until 2026-08-19 this re-derived every value from the computus directly —
+    the same functions `year()` is built from, but never `year()` itself — so
+    the check printed verified=416 over a shipped table whose Pentecost had
+    been moved a whole week (a planted mutation proved it). Seven of the
+    eight columns now come out of `year()`'s own days, which is exactly what
+    `build_reader` turns into kal.json. Ash Wednesday stays on the computus:
+    the shipped table holds no ferias, and that cell verifies the arithmetic
+    the year is built on. Column 8 is Advent I of this civil year, which
+    OPENS the liturgical year that ends the year after — hence `_year(y + 1)`.
+    """
     names = {v: k for k, v in MONTHS.items()}
-    pascha, advent = easter(year), advent_i(year)
+    days = _year(y)
 
-    def show(when: date) -> str:
-        return f"{when.day} {names[when.month]}"
+    def show(when: date | None) -> str:
+        return f"{when.day} {names[when.month]}" if when else "(absent from the table)"
 
+    pentecost = _on(days, "dominica-pentecostes")
+    after = [d for d in days if pentecost and d.when > pentecost and d.when.weekday() == 6]
     return [
-        show(pascha - timedelta(days=63)),
-        show(pascha - timedelta(days=46)),
-        show(pascha),
-        show(pascha + timedelta(days=39)),
-        show(pascha + timedelta(days=49)),
-        show(pascha + timedelta(days=60)),
-        str(sundays_after_pentecost(year)),
-        show(advent),
+        show(_on(days, "dominica-in-septuagesima")),
+        show(easter(y) - timedelta(days=46)),
+        show(_on(days, "dominica-resurrectionis")),
+        show(_on(days, "ascensio-domini")),
+        show(pentecost),
+        show(_on(days, "corpus-christi")),
+        str(len(after)),
+        show(_on(_year(y + 1), "dominica-i-adventus")),
     ]
 
 
@@ -122,23 +148,23 @@ def check(corpus: Path = ROOT) -> tuple[list[str], int, int]:
     """Errors, values compared, and misprints met."""
     errors: list[str] = charter(corpus)
     compared = misprinted = 0
-    for year, cells in rows(corpus):
+    for anno, cells in rows(corpus):
         if len(cells) != len(COLUMNS):
-            errors.append(f"{TABLE}:{year}: {len(cells)} columns, expected {len(COLUMNS)}")
+            errors.append(f"{TABLE}:{anno}: {len(cells)} columns, expected {len(COLUMNS)}")
             continue
-        for column, printed, got in zip(COLUMNS, cells, computed(year), strict=True):
+        for column, printed, got in zip(COLUMNS, cells, computed(anno), strict=True):
             compared += 1
             if printed == got:
                 continue
-            if MISPRINTS.get((year, column)) == printed:
+            if MISPRINTS.get((anno, column)) == printed:
                 misprinted += 1
                 continue
             errors.append(
-                f"{TABLE}:{year} {column}: the book prints {printed}, this computes {got}"
+                f"{TABLE}:{anno} {column}: the book prints {printed}, this computes {got}"
             )
     if not compared:
         errors.append(f"{TABLE}: no rows were read — the table is the whole verification")
-    for year, _column in MISPRINTS:
-        if not any(y == year for y, _ in rows(corpus)):
-            errors.append(f"{TABLE}: {year} is declared a misprint and is not in the table")
+    for anno, _column in MISPRINTS:
+        if not any(y == anno for y, _ in rows(corpus)):
+            errors.append(f"{TABLE}: {anno} is declared a misprint and is not in the table")
     return errors, compared, misprinted

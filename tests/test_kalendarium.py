@@ -237,3 +237,27 @@ def test_the_declared_gap_is_still_a_gap():
     from kalendarium import __doc__ as charter
 
     assert charter and "30 December" in charter, "the gap must stay declared while it stands"
+
+
+def test_a_shipped_table_that_drifts_from_the_book_is_caught(monkeypatch):
+    # The check used to re-derive its eight values from the computus — the
+    # same functions year() is built from, never year() itself — so a
+    # Pentecost moved a whole week inside the SHIPPED table still printed
+    # verified=416. This pins the check to what ships: shift Pentecost in
+    # year()'s own output and the tabella must contradict it.
+    from dataclasses import replace
+
+    import checks.kalendarium as ck
+
+    def shifted(ending):
+        return tuple(
+            replace(d, when=d.when + timedelta(days=7))
+            if d.position == "dominica-pentecostes"
+            else d
+            for d in year(ending)
+        )
+
+    monkeypatch.setattr(ck, "_year", shifted)
+    errors, _compared, _misprints = ck.check()
+    assert errors, "a moved Pentecost in the shipped table must redden the check"
+    assert any("Pentecostes" in e for e in errors)
