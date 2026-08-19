@@ -2,3 +2,6 @@ __pycache__/
 .venv/
 tmp/
 build/
+# the agreement machine writes its queue to the cwd it is pointed at;
+# the tracked copy lives in scrutabor-pipeline
+/review-queue.json

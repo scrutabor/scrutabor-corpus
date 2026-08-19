@@ -23,7 +23,7 @@ from checks.english import check as check_english
 from checks.english import check_number as check_english_number
 from checks.fusion import check as check_fusion
 from checks.identity import check as check_identity
-from checks.identity import check_against_history
+from checks.identity import check_against_history, resolve_ref
 from checks.incipit import check as check_incipit
 from checks.kalendarium import check as check_kalendarium
 from checks.lexicon import (
@@ -276,8 +276,14 @@ if __name__ == "__main__":
             print(f"ERROR: {message}")
         rc |= 1 if doubt_errors else 0
         # Identity across TIME, which one snapshot cannot answer. Compared
-        # against the base branch in CI and against HEAD locally.
-        history_errors = check_against_history(CORPUS, os.environ.get("SCRUTABOR_BASE", "HEAD"))
+        # against the base the workflow names in CI and against HEAD locally,
+        # where it guards uncommitted work. The base is PRINTED because a
+        # comparison whose reference nobody can see is how this check ran as
+        # HEAD-against-itself in CI for a month — a green with no sha is not
+        # evidence.
+        base = os.environ.get("SCRUTABOR_BASE", "HEAD")
+        print(f"IDENTITY compared against {base} ({resolve_ref(CORPUS, base)})")
+        history_errors = check_against_history(CORPUS, base)
         for message in history_errors:
             print(f"ERROR: {message}")
         rc |= 1 if history_errors else 0

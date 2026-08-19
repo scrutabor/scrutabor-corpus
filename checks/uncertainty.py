@@ -77,13 +77,31 @@ def exposure(doc: dict, attested: dict[str, set]) -> int:
 
 
 def stored(doc: dict) -> int:
-    """Tokens this text marks as doubted, by confidence or by review."""
-    base = doc.get("analysis_defaults") or {}
-    words_base = doc.get("analysis_defaults_words") or base
+    """Tokens this text marks as doubted, by confidence or by review.
+
+    Reads BOTH document shapes: the joined 0.14.0 document, where the
+    analysis lives under `editorial`, and the split shape the store hands
+    the suite. Until 2026-08-19 it read only the split shape and was right
+    by luck — everything flowed through `build_reader/store.py` — while the
+    same lookup, pointed at a file on disk, returned zero and would have
+    failed the build. That one-seam dependence is exactly how the agreement
+    machine's own provenance reader went silent, so this reader takes no
+    seam for granted.
+    """
+    editorial = doc.get("editorial") or {}
+    base = editorial.get("analysis_defaults") or doc.get("analysis_defaults") or {}
+    words_base = (
+        editorial.get("analysis_defaults_words") or doc.get("analysis_defaults_words") or base
+    )
+    overrides = editorial.get("words") or {}
     total = 0
     for segment in doc.get("segments", []):
         for word in segment.get("words") or []:
-            a = word.get("analysis") or words_base
+            a = (
+                (overrides.get(word.get("id"), {}) or {}).get("analysis")
+                or word.get("analysis")
+                or words_base
+            )
             if a.get("confidence") in ("medium", "low") or a.get("review") == "disputed":
                 total += 1
     return total

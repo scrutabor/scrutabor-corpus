@@ -84,6 +84,22 @@ def check(doc: dict) -> list[str]:
     return errors
 
 
+def resolve_ref(corpus: Path, ref: str) -> str:
+    """The commit a ref names, so the verdict can say what it compared.
+
+    A comparison whose reference nobody can see is how the history check ran
+    as HEAD-against-itself in CI for a month. An unresolvable ref is answered
+    honestly rather than raised: the comparison itself will then say what it
+    could not do.
+    """
+    result = subprocess.run(
+        ["git", "-C", str(corpus), "rev-parse", "--short", f"{ref}^{{commit}}"],
+        capture_output=True,
+        text=True,
+    )
+    return result.stdout.strip() if result.returncode == 0 else "unresolvable"
+
+
 def committed(corpus: Path, relative: str, ref: str) -> dict | None:
     """The version of a file in git, or None if it is not there yet."""
     result = subprocess.run(
@@ -102,10 +118,17 @@ def committed(corpus: Path, relative: str, ref: str) -> dict | None:
 def check_against_history(corpus: Path, ref: str = "HEAD") -> list[str]:
     """No id may change what it points at, and the mint may not rewind.
 
-    Compared against `ref`, which is HEAD locally and the base branch in CI.
-    A text that is new in this change has no history to contradict.
+    Compared against `ref` — HEAD locally, where it guards uncommitted work,
+    and the base the workflow names in CI. A text that is new in this change
+    has no history to contradict.
+
+    A ref that does not resolve FAILS rather than passes: under an unknown
+    ref every file reads as new, which is the same silence this check exists
+    to end, arrived at from the other side.
     """
     errors: list[str] = []
+    if resolve_ref(corpus, ref) == "unresolvable":
+        return [f"identity: base ref '{ref}' does not resolve — nothing was compared"]
     for path in sorted(corpus.glob("texts/*/*.json")):
         relative = str(path.relative_to(corpus))
         was = committed(corpus, relative, ref)

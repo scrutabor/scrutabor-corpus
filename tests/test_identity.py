@@ -156,3 +156,13 @@ def test_a_typo_fix_is_not_a_renumbering(tmp_path):
     p = _repo(tmp_path, doc([("w001", "Excita"), ("w002", "b")], next_=10))
     p.write_text(json.dumps(doc([("w001", "Éxcita"), ("w002", "b")], next_=10)))
     assert check_against_history(tmp_path) == []
+
+
+def test_an_unresolvable_base_fails_rather_than_reading_every_file_as_new(tmp_path):
+    # Under an unknown ref every file looks new and the whole check passes
+    # vacuously — the silence this check exists to end, from the other side.
+    # It ran exactly so in CI: the workflow named no base, the default was
+    # HEAD, and the tree in CI IS HEAD, so nothing was ever compared.
+    _repo(tmp_path, doc([("w001", "a")], next_=10))
+    errors = check_against_history(tmp_path, "no-such-ref")
+    assert errors and "does not resolve" in errors[0], errors

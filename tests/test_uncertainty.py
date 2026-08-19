@@ -83,3 +83,17 @@ def test_exposure_without_any_stored_doubt_fails_the_build():
 def test_a_corpus_with_no_exposure_needs_no_stored_doubt():
     d = doc([word("w1", "Deus", "deus", {"pos": "noun", "case": "nom", "number": "sg"})])
     assert check([d]) == []
+
+
+def test_stored_reads_the_joined_document_without_the_store_seam():
+    # The 0.14.0 document keeps the analysis under `editorial`. Read straight
+    # off disk this used to return zero — right in the suite only because
+    # build_reader/store.py split the document first. No seam is trusted now.
+    doc = {
+        "editorial": {
+            "analysis_defaults": {"confidence": "high", "review": "accepted"},
+            "words": {"w002": {"analysis": {"confidence": "medium", "review": "disputed"}}},
+        },
+        "segments": [{"words": [{"id": "w001", "form": "a"}, {"id": "w002", "form": "b"}]}],
+    }
+    assert stored(doc) == 1
