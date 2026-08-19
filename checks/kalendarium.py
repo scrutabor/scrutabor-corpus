@@ -88,9 +88,39 @@ def computed(year: int) -> list[str]:
     ]
 
 
+# Where the module's own citations live. The witness header claims "no rule
+# there is asserted that is not printed here", and until 2026-08-19 that was
+# false: the code cited n. 69 and the article was nowhere in the file.
+CITING = ("kalendarium/temporale.py", "kalendarium/computus.py", "kalendarium/__init__.py")
+CHARTER = "witnesses/raw/mr-rubricae-generales-temporale.txt"
+
+
+def charter(corpus: Path = ROOT) -> list[str]:
+    """Every article the calendar cites must be printed in its own witness.
+
+    The check the charter sentence needs in order to be a promise rather than
+    an intention. It reads the citations out of the code — `n. 20`, `nn.
+    67-69`, `n. 30 a` — and asks the witness for each number.
+    """
+    printed = {
+        line.split(".", 1)[0]
+        for line in (corpus / CHARTER).read_text(encoding="utf-8").splitlines()
+        if line[:1].isdigit()
+    }
+    errors = []
+    for name in CITING:
+        text = (corpus / name).read_text(encoding="utf-8")
+        for match in re.finditer(r"\bnn?\.\s*(\d+)(?:\s*-\s*(\d+))?", text):
+            first, last = match.group(1), match.group(2) or match.group(1)
+            for number in range(int(first), int(last) + 1):
+                if str(number) not in printed:
+                    errors.append(f"{name} cites n. {number}, which {CHARTER} does not print")
+    return sorted(set(errors))
+
+
 def check(corpus: Path = ROOT) -> tuple[list[str], int, int]:
     """Errors, values compared, and misprints met."""
-    errors: list[str] = []
+    errors: list[str] = charter(corpus)
     compared = misprinted = 0
     for year, cells in rows(corpus):
         if len(cells) != len(COLUMNS):

@@ -157,3 +157,83 @@ def test_the_year_is_continuous_and_in_order():
         assert days == sorted(days, key=lambda d: d.when)
         assert days[0].when == advent_i(y - 1)
         assert days[-1].when < advent_i(y)
+
+
+def test_the_immaculate_conception_takes_the_sunday_n15_gives_it():
+    # n. 15, second sentence. The one feast of the saints this module knows,
+    # and it is here because the article that governs Sundays prints it. Ten
+    # years of the shipped window put 8 December on a Sunday of Advent, and
+    # until 2026-08-19 the book opened on the Sunday's Mass on every one.
+    met = 0
+    for y in YEARS:
+        eighth = date(y - 1, 12, 8)
+        if eighth.weekday() != 6:
+            continue
+        met += 1
+        day = {d.when: d for d in year(y)}[eighth]
+        assert day.formulary == "immaculata-conceptio"
+        assert day.position.endswith("-adventus"), "the Sunday keeps its own name"
+        assert day.dies_class == 1
+    assert met > 10, f"only {met} years put 8 December on a Sunday"
+
+
+def test_the_vigil_of_the_nativity_is_a_day_in_every_year():
+    # n. 30 a. It was emitted only where it displaced a Sunday, so on the 66
+    # years of 76 it falls on a weekday the table had nothing — and the app
+    # called Christmas Eve an ordinary weekday.
+    for y in YEARS:
+        eve = {d.when: d for d in year(y)}.get(date(y - 1, 12, 24))
+        assert eve is not None, f"{y - 1}-12-24 has no entry"
+        assert eve.formulary == "vigilia-nativitatis"
+        assert eve.dies_class == 1
+
+
+def test_the_sunday_in_the_octave_reaches_the_thirty_first():
+    # n. 69: "a die 26 ad 31 decembris", inclusive. An exclusive stop lost ten
+    # years of this window entirely.
+    met = 0
+    for y in YEARS:
+        last = date(y - 1, 12, 31)
+        if last.weekday() != 6:
+            continue
+        met += 1
+        day = {d.when: d for d in year(y)}[last]
+        assert day.formulary == "dominica-infra-octavam-nativitatis"
+    assert met > 10, f"only {met} years put 31 December on a Sunday"
+
+
+def test_the_octave_day_of_the_nativity_is_the_first_of_january():
+    # n. 67: "dies autem octavus est I classis", and the Missale gives it its
+    # own Mass under "Die 1 ianuarii - IN OCTAVA NATIVITATIS DOMINI".
+    for y in YEARS:
+        day = {d.when: d for d in year(y)}.get(date(y, 1, 1))
+        assert day is not None, f"{y}-01-01 has no entry"
+        assert day.formulary == "in-octava-nativitatis"
+        assert day.dies_class == 1
+
+
+def test_both_vigils_of_the_first_class_are_carried():
+    # n. 30 names two. Only one of them was here.
+    for y in YEARS:
+        said = {d.formulary for d in year(y)}
+        assert "vigilia-nativitatis" in said
+        assert "vigilia-pentecostes" in said
+
+
+def test_the_declared_gap_is_still_a_gap():
+    # When Christmas falls on a Sunday no Sunday occurs between 26 and 31
+    # December, and the Mass of the Sunday within the octave is said on the
+    # 30th by a rule n. 70 sends to the Missale's own rubrics — which this
+    # edition has not transcribed. The gap is named in the module docstring;
+    # this holds the two together, so that closing one without the other
+    # fails rather than drifts.
+    short = [
+        y
+        for y in YEARS
+        if date(y - 1, 12, 25).weekday() == 6
+        and not any(d.formulary == "dominica-infra-octavam-nativitatis" for d in year(y))
+    ]
+    assert short, "the gap closed — say so in kalendarium/__init__.py and delete this"
+    from kalendarium import __doc__ as charter
+
+    assert charter and "30 December" in charter, "the gap must stay declared while it stands"

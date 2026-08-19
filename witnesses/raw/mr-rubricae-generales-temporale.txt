@@ -1,20 +1,28 @@
 # witness: mr-rubricae-temporale
 # description: Missale Romanum 1962, Rubricae generales Missalis romani — the
 #   articles that determine WHICH DAY of the temporal cycle a given date is.
+#   Title II "De die liturgico in genere" nn. 4-8, which name the four classes;
 #   Title III "De dominicis" nn. 9-20, which classify Sundays, say where the
 #   Sundays after Epiphany go when Septuagesima cuts them off, and fix the
-#   First Sunday of Advent; n. 30, because the Vigil of the Nativity takes the
-#   place of the Fourth Sunday of Advent when the two fall together; and
-#   Title VIII "De anni temporibus" nn. 71-77, which bound every season.
+#   First Sunday of Advent; n. 30, which names the two vigils of the first
+#   class -- the Nativity's, which takes the place of the Fourth Sunday of
+#   Advent when the two fall together, and Pentecost's; Title VII "De octavis"
+#   nn. 63-70, which govern the octave of the Nativity and the Sunday inside
+#   it; and Title VIII "De anni temporibus" nn. 71-77, which bound every
+#   season.
 #   This is the whole charter of `calendar/` — no rule there is asserted that
 #   is not printed here.
 # source: https://archive.org/details/missale_romanum-1962
 # path: printed pages XII-XIII, XV-XVI (scan leaves n9-n10 and n12-n13),
 #   600 dpi colour scan
 # fetched: 2026-08-19
-# orthography: 1962 liturgical (ae-ligature; i-form throughout — Iesu, Ioseph,
-#   iuxta). The rubrical prose of the front matter carries NO accents, unlike
-#   the liturgical texts of the book, and none are supplied here.
+# orthography: i-form throughout, as the page sets it (Iesu, Ioseph, iuxta).
+#   The rubrical prose of the front matter carries NO accents, unlike the
+#   liturgical texts of the book, and none are supplied here.
+#   THE AE-LIGATURE IS EXPANDED: the page prints dominicæ and this file writes
+#   dominicae. Every collation of this witness folds ligatures anyway, and a
+#   rule is read here rather than set. The header said "ae-ligature" until
+#   2026-08-19 and described the page instead of the transcription.
 # fold-ji: true
 # note: transcribed from the PAGE IMAGES, not from the scan's text layer. That
 #   layer is ABBYY output and breaks the law in ways that change what it says:
@@ -22,11 +30,24 @@
 #   "Maria", and runs the running heads into the articles.
 # note: the superscript abbreviation stroke over "Ssmi" and "Ssmae" in n. 17
 #   is written here as a combining tilde, as the page sets it.
-# partial: nn. 9-20, 30 and 71-77 in full. The rest of the Rubricae generales
+# partial: nn. 4-20, 30, 63-70 and 71-77 in full. The rest of the Rubricae generales
 #   is not transcribed here: it governs feasts, octaves, commemorations, the
 #   precedence table (n. 91) and the sanctoral, none of which the temporal
 #   cycle needs to name its own days. n. 91's table is what a later sanctoral
 #   layer will have to read.
+
+II - De die liturgico in genere
+
+4. Dies liturgicus est dies sanctificatus actionibus liturgicis, praesertim Sacrificio eucharistico et publica Ecclesiae prece, id est Officio divino; et decurrit a media nocte ad mediam noctem.
+
+5. Celebratio diei liturgici decurrit per se a Matutino ad Completorium. Sunt tamen dies solemniores, quorum Officium inchoatur a I Vesperis, die praecedenti.
+Habetur denique celebratio liturgica non plena seu sola commemoratio in Officio et Missa diei liturgici currentis.
+
+6. Singulis diebus fit aut de dominica, aut de feria, aut de vigilia, aut de festo, aut de octava, iuxta calendarium et praecedentiam dierum liturgicorum.
+
+7. Praecedentia inter singulos dies liturgicos unice per peculiarem tabellam (n. 91) determinatur.
+
+8. Dies liturgici sunt primae, secundae, tertiae aut quartae classis.
 
 III - De dominicis
 
@@ -86,6 +107,36 @@ V - De vigiliis
 a) vigilia Nativitatis Domini quae, in occurrentia, locum tenet dominicae IV Adventus, de qua, proinde, nulla fit commemoratio;
 b) vigilia Pentecostes.
 Hae vigiliae festis quibuslibet praeferuntur, et nullam admittunt commemorationem.
+
+VII - De octavis
+
+A) De octavis in genere
+
+63. Octava est celebratio summorum festorum per octo dies continuos protracta.
+
+64. Celebrantur tantum octavae Nativitatis Domini, Paschatis et Pentecostes, exclusis omnibus aliis, sive in calendario universali sive in calendariis particularibus.
+
+65. Octavae sunt I aut II classis.
+
+B) De octavis I classis
+
+66. Octavae I classis sunt octavae Paschatis et Pentecostes. Dies infra has octavas sunt I classis.
+
+C) De octava II classis
+
+67. Octava II classis est octava Nativitatis Domini. Dies infra octavam sunt II classis; dies autem octavus est I classis.
+
+68. Octava Nativitatis Domini modo peculiari ordinatur, scilicet:
+a) die 26 decembris, fit festum S. Stephani Protomart. (II classis);
+b) die 27 decembris, fit festum S. Ioannis Ap. et Evang. (II classis);
+c) die 28 decembris, fit festum Ss. Innocentium Mm. (II classis);
+d) die 29 decembris, fit commemoratio S. Thomae Episcopi et Mart.;
+e) die 31 decembris, fit commemoratio S. Silvestri I Papae et Conf.;
+f) ex festis particularibus ea tantum admittuntur quae sunt I classis et in honorem Sanctorum qui in calendario universali his diebus inscribuntur, etsi tantum ad modum commemorationis; cetera transferuntur post octavam.
+
+69. De dominica infra octavam Nativitatis Domini, quae scilicet a die 26 ad 31 decembris occurrit, semper fit Officium cum commemoratione festi forte occurrentis, iuxta rubricas, nisi dominica incidat in festum I classis: quo in casu, fit de festo cum commemoratione dominicae.
+
+70. Normae peculiares pro ordinandis Officio et Missa infra octavam Nativitatis Domini inveniuntur in rubricis Breviarii et Missalis.
 
 VIII - De anni temporibus
 

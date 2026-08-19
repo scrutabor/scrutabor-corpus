@@ -6,10 +6,12 @@ civil year n, which is how the Missale's own table is arranged.
 
 Every day this returns is a day with a Mass of its own in the temporal cycle:
 the Sundays, and the feasts of the Lord that belong to the season rather than to
-the sanctoral. Ferias are deliberately absent — in Advent and Lent they have
-Masses of their own rather than the Sunday's, so listing them under a Sunday
-would be a claim this module has no authority for, and listing them empty would
-say nothing the season does not already say.
+the sanctoral. Ferias are deliberately absent, and the reason differs by
+season: between one Sunday of Lent and the next the Missale prints a Mass for
+every day of the week, and between one Sunday of Advent and the next it prints
+none at all. Naming the week is true of both seasons. Naming a formulary would
+need the first case and would be wrong about the second, and no article
+transcribed beside this module settles which Mass an Advent feria takes.
 """
 
 from __future__ import annotations
@@ -64,6 +66,7 @@ ROMAN = [
 FORMULARIES = frozenset(
     [f"dominica-{ROMAN[i]}-adventus" for i in range(1, 5)]
     + ["vigilia-nativitatis", "nativitas-domini", "dominica-infra-octavam-nativitatis"]
+    + ["in-octava-nativitatis", "immaculata-conceptio", "vigilia-pentecostes"]
     + ["sanctissimi-nominis-iesu", "epiphania-domini", "sancta-familia"]
     + [f"dominica-{ROMAN[i]}-post-epiphaniam" for i in range(1, 7)]
     + [f"dominica-in-{n}" for n in ("septuagesima", "sexagesima", "quinquagesima")]
@@ -144,21 +147,42 @@ def year(ending: int) -> list[Dies]:
 
     # ADVENT — n. 71, and all four Sundays are I class (n. 11 a).
     christmas = date(ending - 1, 12, 25)
+    eve = christmas - timedelta(days=1)
+    conception = date(ending - 1, 12, 8)
     for i in range(4):
         when = begins + timedelta(days=7 * i)
         name = f"dominica-{ROMAN[i + 1]}-adventus"
         # n. 30 a: the Vigil of the Nativity, when it falls on the Fourth
         # Sunday, takes its place and no commemoration is made of it.
-        if when == christmas - timedelta(days=1):
+        if when == eve:
             add(when, "vigilia-nativitatis", "adventus", 1, name)
+        # n. 15, second sentence: "Festum tamen Immaculatae Conceptionis B.
+        # Mariae Virg. praefertur occurrenti dominicae Adventus." The ONE
+        # sanctoral feast this module knows, because it is printed among the
+        # rules that govern Sundays rather than in the calendar of saints --
+        # and because without it the book opens on the wrong Mass ten times in
+        # this table's window, on the one season the edition carries.
+        elif when == conception:
+            add(when, "immaculata-conceptio", "adventus", 1, name)
         else:
             add(when, name, "adventus", 1)
+    # …and on the 66 years of 76 where the Vigil is not a Sunday it is still a
+    # day of the first class with a Mass of its own (n. 30 a). Left out, the
+    # picker called Christmas Eve an ordinary weekday.
+    if eve.weekday() != 6:
+        add(eve, "vigilia-nativitatis", "adventus", 1)
 
     # CHRISTMASTIDE — n. 72: from Christmas to 13 January, in two parts.
     add(christmas, "nativitas-domini", "nativitas", 1)
-    for when in _sundays(date(ending - 1, 12, 26), date(ending - 1, 12, 32 - 1)):
-        # n. 69: the Sunday between 26 and 31 December has its own Office.
+    # n. 69: the Sunday within the octave is the one occurring "a die 26 ad 31
+    # decembris" — INCLUSIVE of the 31st, which an exclusive stop of 31 lost.
+    # Ten years of this table's window have a Sunday on 31 December and had no
+    # entry at all.
+    for when in _sundays(date(ending - 1, 12, 26), date(ending, 1, 1)):
         add(when, "dominica-infra-octavam-nativitatis", "nativitas", 2)
+    # n. 67: "dies autem octavus est I classis". The Missale gives it its own
+    # Mass under "Die 1 ianuarii — IN OCTAVA NATIVITATIS DOMINI — I classis".
+    add(date(ending, 1, 1), "in-octava-nativitatis", "nativitas", 1)
     # n. 17 a: the Most Holy Name of Jesus, on the Sunday falling between 2 and
     # 5 January. On a year with no such Sunday it is kept on 2 January, which
     # is a weekday and so outside what this list carries.
@@ -196,6 +220,8 @@ def year(ending: int) -> list[Dies]:
         add(pascha + timedelta(days=7 * i), f"dominica-{ROMAN[i]}-post-pascha", "paschale", 2)
     add(pascha + timedelta(days=39), "ascensio-domini", "paschale", 1)
     add(pascha + timedelta(days=42), "dominica-post-ascensionem", "paschale", 2)
+    # n. 30 b: the Vigil of Pentecost, the other vigil of the first class.
+    add(pascha + timedelta(days=48), "vigilia-pentecostes", "paschale", 1)
     add(pascha + timedelta(days=49), "dominica-pentecostes", "paschale", 1)
 
     # AFTER PENTECOST. Trinity is the First Sunday after Pentecost (n. 17 c),

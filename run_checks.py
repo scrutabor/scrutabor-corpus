@@ -329,7 +329,7 @@ if __name__ == "__main__":
         rc |= 1 if kal_errors else 0
         print(
             f"KALENDARIUM verified={kal_compared} against the Missale's own table "
-            f"misprints={kal_misprints}"
+            f"misprints={kal_misprints} articles=cited-and-printed"
         )
 
         attested = readings(corpus_docs)
