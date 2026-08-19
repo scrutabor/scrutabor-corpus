@@ -149,8 +149,15 @@ analysis_defaults, segments[]
   *elata aliquantulum voce* of Dómine non sum dignus), `secreto`
   (silently), `cantus` (sung). Both belong to verse segments only: a
   rubric is the edition's framing, not anyone's words.
-  Both are READ from the sources by `checks/attribute.py`, never
-  remembered. The speaker is read from the witnesses' markers — which come
+  `checks/attribute.py` PROPOSES both from the sources — the speaker from the
+  witnesses' markers, aligned to the text in order — and it is run by hand,
+  not by the build. What it proposes is written into the files and reviewed
+  there, so these two fields are AUTHORED with a tool's help rather than
+  derived on every run, which `participation` is and they are not. Until
+  2026-08-19 this paragraph said they were "READ from the sources … never
+  remembered", and an external review found the propers' values hand-written,
+  the module ignorant of the `schola` and `cantus` the propers use, and
+  `run_checks` never calling it. The speaker is read from the witnesses' markers — which come
   in both cases, the Ordo printing the priest's own Confiteor as a
   lowercase `v.` — aligned to the text IN ORDER, because a dialogue that
   repeats itself (the Kyrie's nine invocations of two phrases) cannot be

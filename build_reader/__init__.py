@@ -10,8 +10,9 @@ languages, the three repeated layers -- parse, analysis, citation -- replaced by
 indices into tables the whole corpus shares, and the reviewer's apparatus left
 behind. It is the form the app ships rather than the form a reviewer reads.
 
-What it is left behind is named in DROP_DOC and is exactly three things: the
-witness line ranges, the mint, and the editorial notes. Everything a reader is
+What it leaves behind is named in DROP_DOC and is exactly four things: the
+schema version, which the manifest names once, the mint, the editorial notes,
+and the witness line ranges. Everything a reader is
 SHOWN travels, including the analysis under the parse and every source note --
 the first draft dropped both, and an edition that ships the doubt and withholds
 the note of it is not the edition this corpus claims to be.

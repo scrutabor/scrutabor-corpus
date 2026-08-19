@@ -106,6 +106,22 @@ LECTA_III = (
 # malo (s12) is the people's already, by n. 31 a.
 PATER = ("ordinarium.pater-noster", ("s05", "s06", "s07", "s08", "s09", "s10", "s11", "s14"))
 
+# n. 31 b, second clause: "et, si sacra Communio infra Missam distribuitur,
+# confessionem quoque dicunt et ter Domine, non sum dignus". The triple is the
+# celebrant's own line by the Missale, and the law gives it to the faithful
+# too -- so it is the one place where `speaker: sacerdos` yields a SECOND
+# degree rather than a third or nothing. It was unattributed until 2026-08-19:
+# of the moments a reader at low Mass most personally says, it was the one
+# the layer said nothing about.
+#
+# The condition the article attaches is satisfied by the segments themselves.
+# They are said while Communion is given to the people, and they occur in no
+# other circumstance -- which is why this is a rule and not a guess.
+#
+# The `confessio` of the same clause has no counterpart here: the Confiteor
+# before the people's Communion is not in the 1962 books this edition follows.
+NON_SUM_DIGNUS = ("ordinarium.ecce-agnus-dei", ("s04", "s05", "s06"))
+
 # The instruction legislates for the Mass. The devotional prayers this corpus
 # also carries — the Leonine prayers after low Mass, the Marian antiphons —
 # are outside nn. 25 and 31, and take no attribution from it: an absent
@@ -217,6 +233,8 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
         # they say them WITH him.
         if text_id in LECTA_III:
             out["lecta"] = {"gradus": 3, "source": f"{DMS} 31 c"}
+        elif text_id == NON_SUM_DIGNUS[0] and seg["id"] in NON_SUM_DIGNUS[1]:
+            out["lecta"] = {"gradus": 2, "source": f"{DMS} 31 b"}
         elif text_id == PATER[0] and seg["id"] in PATER[1]:
             # n. 32 is a faculty, not one of the four degrees, so it carries
             # no gradus: the corpus does not invent a rank the law withholds.
