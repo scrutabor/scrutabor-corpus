@@ -95,9 +95,16 @@ where this edition's Latin differs from theirs. The word-by-word glosses,
 the notes, the apparatus and the rubrical narratives are this edition's own
 work.
 
-The corpus content (texts, glosses, apparatus, documentation) is licensed
-under [CC BY-SA 4.0](LICENSE). The validation code in `checks/` and
-`run_checks.py` is licensed under [AGPL-3.0](checks/LICENSE).
+The editorial layer — the word-by-word glosses, the analyses and notes,
+the apparatus, the rubrical narratives, the introductions, and the
+translations this edition wrote itself — is licensed under
+[CC BY-SA 4.0](LICENSE), including the EU database right in the
+compilation. The Latin liturgical and scriptural texts are public domain.
+The received vernacular wordings described above remain their owners' —
+they are used with acknowledgement, each such passage is marked in the
+data (`translation_citations`), and this repository does not relicense
+them. The validation code in `checks/` and `run_checks.py` is licensed
+under [AGPL-3.0](checks/LICENSE).
 
 Witness transcriptions marked `do` were derived from the Divinum Officium
 Project. The archived snapshot was checked at revision
