@@ -102,12 +102,17 @@ translations this edition wrote itself — is licensed under
 compilation. The Latin texts this edition prints — the 1962 Missale
 Romanum and the Clementine psalter — are in the public domain. The
 received vernacular wordings described above remain their owners' and
-this repository does not relicense them: wordings inherited from printed
-translations of scripture carry per-segment citations in the data
-(`translation_citations`), and the liturgical wordings of the current
-Missal are followed under the acknowledgement above, without per-segment
-marking. The validation code in `checks/` and `run_checks.py` is licensed
-under [AGPL-3.0](checks/LICENSE).
+this repository does not relicense them: a passage that follows one names
+the work it follows in a per-segment citation in the data
+(`translation_citations`), whether that wording comes from a printed
+translation of scripture or from the current Missal. Four places carry
+received wording that is not yet marked, and are named here rather than
+left to be found: the *Deo grátias* after the Epistle, the *Laus tibi,
+Christe* after the Gospel, the doxology printed inside the introits, and
+the Polish of the *Dómine, non sum dignus* said at the rail. The English
+of the First Sunday of Advent's epistle and gospel is still being traced
+to the translation it follows. The validation code in `checks/` and
+`run_checks.py` is licensed under [AGPL-3.0](checks/LICENSE).
 
 Witness transcriptions marked `do` were derived from the Divinum Officium
 Project. The archived snapshot was checked at revision
