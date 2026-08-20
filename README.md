@@ -99,11 +99,14 @@ The editorial layer — the word-by-word glosses, the analyses and notes,
 the apparatus, the rubrical narratives, the introductions, and the
 translations this edition wrote itself — is licensed under
 [CC BY-SA 4.0](LICENSE), including the EU database right in the
-compilation. The Latin liturgical and scriptural texts are public domain.
-The received vernacular wordings described above remain their owners' —
-they are used with acknowledgement, each such passage is marked in the
-data (`translation_citations`), and this repository does not relicense
-them. The validation code in `checks/` and `run_checks.py` is licensed
+compilation. The Latin texts this edition prints — the 1962 Missale
+Romanum and the Clementine psalter — are in the public domain. The
+received vernacular wordings described above remain their owners' and
+this repository does not relicense them: wordings inherited from printed
+translations of scripture carry per-segment citations in the data
+(`translation_citations`), and the liturgical wordings of the current
+Missal are followed under the acknowledgement above, without per-segment
+marking. The validation code in `checks/` and `run_checks.py` is licensed
 under [AGPL-3.0](checks/LICENSE).
 
 Witness transcriptions marked `do` were derived from the Divinum Officium
@@ -113,7 +116,3 @@ README grants the MIT License. Its required permission notice is preserved in
 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). These witness files are
 source evidence, not an endorsement by the Divinum Officium Project.
 
-Liturgical Latin texts of the 1962 Missale Romanum are in the public
-domain. The annotations, glosses, apparatus, and editorial contributions to
-the translations are original work of the Scrutabor project; inherited or
-received translation bases are identified beside the segments that use them.

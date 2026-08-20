@@ -66,7 +66,7 @@ def test_citations_stay_attached_to_the_language_that_made_the_claim():
     doc = merge(text, glosses)
     cites = doc["segments"][0]["translation_citations"]
     assert set(cites) == {"pl", "en"}
-    assert cites["pl"][0]["locator"] == "Isaias 7:14"
+    assert cites["pl"][0]["locator"] == "Isaiah 7:14"
 
 
 def test_a_merged_document_is_not_larger_than_its_three_sources():
