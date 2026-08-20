@@ -105,13 +105,11 @@ received vernacular wordings described above remain their owners' and
 this repository does not relicense them: a passage that follows one names
 the work it follows in a per-segment citation in the data
 (`translation_citations`), whether that wording comes from a printed
-translation of scripture or from the current Missal. Four places carry
-received wording that is not yet marked, and are named here rather than
-left to be found: the *Deo grátias* after the Epistle, the *Laus tibi,
-Christe* after the Gospel, the doxology printed inside the introits, and
-the Polish of the *Dómine, non sum dignus* said at the rail. The English
-of the First Sunday of Advent's epistle and gospel is still being traced
-to the translation it follows. The validation code in `checks/` and
+translation of scripture or from the current Missal. One exception is
+named here rather than left to be found: the Polish of the *Dómine, non
+sum dignus* said at the rail keeps the traditional Wujek-shaped wording
+against the current Missal's, and carries no citation until its exact
+source is settled. The validation code in `checks/` and
 `run_checks.py` is licensed under [AGPL-3.0](checks/LICENSE).
 
 Witness transcriptions marked `do` were derived from the Divinum Officium
