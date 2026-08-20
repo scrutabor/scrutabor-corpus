@@ -97,10 +97,26 @@ def test_an_apparatus_path_is_held_to_the_same_derivation():
     assert any("source.apparatus declares" in e for e in check(doc, PATH))
 
 
-def test_a_text_with_no_apparatus_declared_is_not_made_to_have_one():
+def test_a_pointer_to_no_file_is_an_error(tmp_path):
+    # The pointer's other half (owner ruling, 2026-08-20): SCHEMA.md promised
+    # both directions and only the name was held. Declared, file absent:
+    path = tmp_path / "texts" / "ordinarium" / "credo.json"
+    assert any("names a file that does not exist" in e for e in check(a_text(), path))
+
+
+def test_an_apparatus_on_disk_must_be_declared():
+    # File present, declaration absent — the real credo has an apparatus, and
+    # a document silent about it hides provenance a reader could follow.
     doc = a_text()
     del doc["editorial"]["source"]["apparatus"]
-    assert check(doc, PATH) == []
+    assert any("does not name it" in e for e in check(doc, PATH))
+
+
+def test_no_apparatus_and_no_pointer_is_clean(tmp_path):
+    path = tmp_path / "texts" / "ordinarium" / "credo.json"
+    doc = a_text()
+    del doc["editorial"]["source"]["apparatus"]
+    assert check(doc, path) == []
 
 
 def test_the_vocabularies_are_the_ones_the_corpus_uses():

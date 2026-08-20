@@ -95,4 +95,20 @@ def check(doc: dict, path: Path) -> list[str]:
                 f"{derived!r} — the path is derived from the text id, so a declaration that "
                 f"disagrees with it is read by nobody"
             )
+
+    # The pointer's other half (SCHEMA.md: a pointer to no file is also an
+    # error). The derived-path rule above holds the NAME; this holds the
+    # thing named, in both directions: a declaration must have its file, and
+    # an apparatus that exists must be declared (owner ruling, 2026-08-20).
+    apparatus = path.parents[2] / "witnesses" / text_id / "apparatus.json"
+    if "apparatus" in source and not apparatus.exists():
+        errors.append(
+            f"{text_id}: source.apparatus names a file that does not exist — a pointer "
+            f"to nothing reads like provenance and is only decoration"
+        )
+    if apparatus.exists() and "apparatus" not in source:
+        errors.append(
+            f"{text_id}: witnesses/{text_id}/apparatus.json exists and source.apparatus "
+            f"does not name it — an apparatus nobody declares cannot be followed"
+        )
     return errors
