@@ -3,7 +3,7 @@
 import json
 from pathlib import Path
 
-from checks.rights import STATUSES, check, cited, exposure, load
+from checks.rights import STATUSES, check, cited, exposure, load, wording_sites
 
 CORPUS = Path(__file__).resolve().parent.parent
 
@@ -61,8 +61,14 @@ def test_a_registered_citation_passes():
 def test_only_a_translation_citation_counts_as_wording():
     # A note or an about citation says where to look. It reproduces nothing.
     doc = {
-        "id": "x",
-        "segments": {"s01": {"translation_citations": [{"title": "W", "locator": "1"}]}},
+        "text": "x",
+        "lang": "en",
+        "segments": {
+            "s01": {
+                "translation": "Words.",
+                "translation_citations": [{"title": "W", "locator": "1"}],
+            }
+        },
         "about_citations": [{"title": "W", "locator": "2"}],
         "words": {"w1": {"function_citations": [{"title": "W", "locator": "3"}]}},
     }
@@ -71,10 +77,88 @@ def test_only_a_translation_citation_counts_as_wording():
     assert len(cited(doc)) == 3
 
 
+def test_an_uncited_translation_is_counted_as_own():
+    doc = {
+        "text": "x",
+        "lang": "pl",
+        "segments": {"s01": {"translation": "Własne słowa."}},
+    }
+    tally, errors = wording_sites([doc], {})
+    assert errors == []
+    assert tally["own"] == 1
+    assert sum(tally.values()) == 1
+
+
+def test_deleting_a_citation_changes_the_class_not_the_denominator():
+    works = {"W": {"rights": {"status": "permission", "basis": "b"}}}
+    cited_doc = {
+        "text": "x",
+        "lang": "en",
+        "segments": {
+            "s01": {
+                "translation": "Words.",
+                "translation_citations": [{"title": "W", "locator": "1"}],
+            }
+        },
+    }
+    uncited_doc = {
+        "text": "x",
+        "lang": "en",
+        "segments": {"s01": {"translation": "Words."}},
+    }
+    before, _ = wording_sites([cited_doc], works)
+    after, _ = wording_sites([uncited_doc], works)
+    assert before["permission"] == 1
+    assert after["own"] == 1
+    assert sum(before.values()) == sum(after.values()) == 1
+
+
+def test_one_site_with_several_sources_takes_the_most_restrictive_status():
+    works = {
+        "Old": {"rights": {"status": "public-domain", "basis": "b"}},
+        "Unknown": {"rights": {"status": "unverified", "basis": "b"}},
+    }
+    doc = {
+        "text": "x",
+        "lang": "en",
+        "segments": {
+            "s01": {
+                "translation": "Words.",
+                "translation_citations": [
+                    {"title": "Old", "locator": "1"},
+                    {"title": "Unknown", "locator": "2"},
+                ],
+            }
+        },
+    }
+    tally, errors = wording_sites([doc], works)
+    assert errors == []
+    assert tally["unverified"] == 1
+    assert sum(tally.values()) == 1
+
+
+def test_a_translation_site_cannot_be_counted_twice():
+    doc = {
+        "text": "x",
+        "lang": "pl",
+        "segments": {"s01": {"translation": "Słowa."}},
+    }
+    tally, errors = wording_sites([doc, doc], {})
+    assert tally["own"] == 1
+    assert len(errors) == 1
+    assert "more than once" in errors[0]
+
+
 def test_an_unregistered_wording_citation_is_counted_apart():
     doc = {
-        "id": "x",
-        "segments": {"s01": {"translation_citations": [{"title": "Stranger", "locator": "1"}]}},
+        "text": "x",
+        "lang": "en",
+        "segments": {
+            "s01": {
+                "translation": "Words.",
+                "translation_citations": [{"title": "Stranger", "locator": "1"}],
+            }
+        },
     }
     assert exposure([doc], {})["unregistered"] == 1
 

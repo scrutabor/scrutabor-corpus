@@ -62,6 +62,7 @@ from checks.rights import load as load_rights
 from checks.syntax import check as check_syntax
 from checks.syntax import coverage as syntax_coverage
 from checks.transcription import check_transcriptions
+from checks.translation_provenance import check as check_translation_provenance
 from checks.uncertainty import check as check_uncertainty
 from checks.uncertainty import exposure, readings, stored
 from checks.vocalised import check as check_vocalised
@@ -376,8 +377,16 @@ if __name__ == "__main__":
         rc |= 1 if title_errors else 0
         wording = rights_exposure(cited, works)
         print(
-            "RIGHTS wording sites — "
+            f"RIGHTS translation sites total={sum(wording.values())} — "
             + " ".join(f"{k}={v}" for k, v in sorted(wording.items()) if v)
+        )
+        provenance_errors, provenance_tally = check_translation_provenance(CORPUS)
+        for message in provenance_errors:
+            print(f"ERROR: {message}")
+        rc |= 1 if provenance_errors else 0
+        print(
+            f"TRANSLATION PROVENANCE sites={sum(provenance_tally.values())} — "
+            + " ".join(f"{key}={value}" for key, value in provenance_tally.items())
         )
         # The temporal cycle, held against the table the Missale prints itself
         # (checks/kalendarium.py). A wrong Sunday is the first error a reader

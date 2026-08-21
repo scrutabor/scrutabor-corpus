@@ -112,10 +112,24 @@ against the current Missal's, and carries no citation until its exact
 source is settled. The validation code in `checks/` and
 `run_checks.py` is licensed under [AGPL-3.0](checks/LICENSE).
 
+The rights report counts every translated `verse segment × language` site,
+including a translation with no wording citation. An uncited site is counted
+as this edition's own wording; a site with several cited wording sources takes
+the most restrictive recorded status. Removing a citation therefore changes a
+site's classification instead of removing it from the denominator. These are
+provenance states recorded by the repository, not legal conclusions.
+
+[`translation-provenance.json`](translation-provenance.json) is the exhaustive
+site ledger. It binds each public origin and review state to hashes of the exact
+Latin source segment and target string, so a changed translation cannot retain
+an old state silently. `working-unsettled` means that the working edition has
+not completed that site's independent-origin or historical-wording review. It
+does not by itself assert infringement, ecclesiastical disapproval, or a ban on
+publishing a clearly labelled working edition.
+
 Witness transcriptions marked `do` were derived from the Divinum Officium
 Project. The archived snapshot was checked at revision
 `712035707cf1bbab75d22966fb1ceabaecae592f` (2026-08-05); that revision's
 README grants the MIT License. Its required permission notice is preserved in
 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). These witness files are
 source evidence, not an endorsement by the Divinum Officium Project.
-

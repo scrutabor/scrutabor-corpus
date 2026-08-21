@@ -1,24 +1,58 @@
-# Corpus schema v0 (0.13.0)
+# Corpus schema v0 (0.14.0)
 
-Three layers: a language-neutral Latin source document per text, one gloss
-document per text per language, and a corpus-wide lexicon (language-neutral
-lemma data + one sense file per language). JSON, UTF-8. `form` uses 1962
+Three semantic layers: language-neutral Latin, per-language gloss/editorial
+content, and a corpus-wide lexicon. Since 0.14.0 the Latin and both language
+layers for one text are stored together in one document. The lexicon keeps one
+language-neutral lemma file and one sense file per language. JSON, UTF-8.
+`form` uses 1962
 liturgical orthography (u/v, j for consonantal i, æ/œ, accents — see
 ORTHOGRAPHY.md); `lemma` is dictionary-normalized (i-form, no j) for analyzer
 matching. Normalization of forms (strip accents, æ→ae, j→i) is derived
 mechanically, never stored.
 
-Since 0.5.0 `schema_version` is corpus-wide: every document carries the same
-number (earlier gloss documents versioned independently and stayed at 0.1.0).
+## Translation provenance ledger
+
+`translation-provenance.json` contains one entry for every translated
+`verse segment × language` site. Its site set must equal the corpus exactly.
+Each entry carries:
+
+- `site`, `text`, `segment`, and `language` — the complete stable address;
+- `familiar_core` — whether exact recognizability is being protected while the
+  wording's history is established;
+- `origin` — `working-unsettled`, `own`, `public-domain`, `traditional`, or
+  `trivial`;
+- `review` — `working`, `internally-reviewed`, or `expert-reviewed`;
+- `source_sha256` and `target_sha256` — hashes binding the state to the Latin
+  segment and target string actually reviewed.
+
+`working-unsettled` is a working-edition provenance state, not a legal verdict.
+An inherited origin requires a wording citation; `own` and `trivial` prohibit
+one. `checks/translation_provenance.py` rejects missing, duplicated, orphaned,
+or stale entries. A source or target change therefore makes review provenance
+stale rather than silently inheriting it.
+
+Since 0.5.0 `schema_version` is corpus-wide: every text and lexicon document
+carries the same number.
 
 ## File layout
 
 ```
-texts/<category>/<name>.json          Latin source + morphology
-glosses/<lang>/<category>.<name>.json gloss layer (one per language)
+texts/<category>/<name>.json          Latin + PL/EN gloss/editorial layers
 lexicon/lemmata.json                  language-neutral lemma data
 lexicon/<lang>.json                   senses per language
+translation-provenance.json           one public state per translation site
 ```
+
+The sections below describe the semantic Latin and gloss layers separately
+because each checker asks one question of one layer. On disk they are joined:
+
+- `gloss`, `function`, `translation`, `narrative` and their citation fields are
+  objects keyed by `pl` and `en` beside the Latin word or segment they render;
+- `about` and `about_citations` are language-keyed objects at document level;
+- working analysis defaults, source pointers, notes and per-token analysis live
+  under the document's `editorial` block;
+- `build_reader/store.py` exposes the separated semantic views to checks, and
+  `build_reader/merge.py` defines and tests the reversible mapping.
 
 ## The three layers of word help (binding division of labor)
 
@@ -61,7 +95,7 @@ restate what another layer already carries:
   question about history that no single snapshot can answer. A renumbering
   cannot merge.
 
-## Latin source document
+## Latin source layer
 
 ```
 schema_version, id, title, category, section, variant, sung, status, notes,
@@ -434,7 +468,7 @@ entries{ <lemma>: { senses[], note?, note_citations?, derivatives?, analysis? } 
 - Language files must cover identical key sets (parity), which must equal
   the lemmata key set.
 
-## Gloss document
+## Gloss layer
 
 ```
 schema_version, text, lang, status, about?, about_citations?, analysis_defaults,
@@ -490,6 +524,11 @@ words{ <word-id>: { gloss, function?, function_citations?, analysis? } }
   without it, and are intentionally language-specific. A citation declares a
   basis or inheritance; it does not assert word-for-word identity unless the
   surrounding editorial record says so.
+  `checks/rights.py` counts each translated segment-language site exactly once:
+  a translation without this field is `own`; a site citing only public-domain
+  wording is `public-domain`; a site with several sources takes the most
+  restrictive recorded status. Deleting the field therefore changes the site
+  to `own` rather than making it disappear from the report.
 
 ### Reader-facing citations
 
