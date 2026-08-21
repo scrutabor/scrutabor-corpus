@@ -21,6 +21,21 @@ def test_every_work_declares_a_status_and_a_basis():
         assert work["rights"]["basis"].strip(), title
 
 
+def test_english_wording_does_not_name_the_latin_vulgate():
+    failures = []
+    for path in sorted((CORPUS / "texts").rglob("*.json")):
+        doc = json.loads(path.read_text())
+        for segment in doc["segments"]:
+            citations = segment.get("translation_citations", {}).get("en", [])
+            if any(citation["title"] == "Biblia Sacra Vulgata" for citation in citations):
+                failures.append(f"{doc['id']}:{segment['id']}")
+
+    assert failures == [], (
+        "an English wording citation must name the English rendering it follows, "
+        f"not the Latin source text: {failures}"
+    )
+
+
 def test_a_citation_outside_the_registry_fails():
     doc = {
         "id": "x",
