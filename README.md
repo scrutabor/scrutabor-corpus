@@ -85,9 +85,9 @@ contributor guide will be published as the corpus grows.
 
 ## License
 
-Segment translations of prayers the modern Roman Missal still carries follow
-the received wording of the current vernacular editions, so that a reader
-meets the words in the form the Church prays them today: the English of the
+Some segment translations of prayers the modern Roman Missal still carries
+retain the received wording of the current vernacular editions, so that a
+reader meets the words in the form the Church prays them today: the English of the
 International Commission on English in the Liturgy and the Polish of the
 Mszał Rzymski dla diecezji polskich and, in the scripture the Mass reads,
 the Biblia Tysiąclecia — all used with acknowledgement and adapted only
@@ -105,8 +105,8 @@ received vernacular wordings described above remain their owners' and
 this repository does not relicense them: a passage that follows one names
 the work it follows in a per-segment citation in the data
 (`translation_citations`), whether that wording comes from a printed
-translation of scripture or from the current Missal. One exception is
-named here rather than left to be found: the Polish of the *Dómine, non
+translation of scripture or from the current Missal. Among the familiar-core
+passages whose exact origin is not yet settled, the Polish of the *Dómine, non
 sum dignus* said at the rail keeps the traditional Wujek-shaped wording
 against the current Missal's, and carries no citation until its exact
 source is settled. The validation code in `checks/` and
