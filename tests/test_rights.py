@@ -55,7 +55,42 @@ def test_a_registered_citation_passes():
         "id": "x",
         "segments": {"s01": {"translation_citations": [{"title": "Known", "locator": "p. 1"}]}},
     }
-    assert check([doc], {"Known": {"rights": {"status": "own", "basis": "ours"}}}) == []
+    assert (
+        check(
+            [doc],
+            {
+                "Known": {
+                    "rights": {"status": "own", "basis": "ours"},
+                    "cited_for_wording": True,
+                }
+            },
+        )
+        == []
+    )
+
+
+def test_wording_flags_must_match_current_translation_citations():
+    doc = {
+        "text": "x",
+        "lang": "en",
+        "segments": {
+            "s01": {
+                "translation": "Words.",
+                "translation_citations": [{"title": "Used", "locator": "1"}],
+            }
+        },
+    }
+    works = {
+        "Used": {"rights": {"status": "public-domain", "basis": "b"}},
+        "Stale": {
+            "rights": {"status": "public-domain", "basis": "b"},
+            "cited_for_wording": True,
+        },
+    }
+    errors = check([doc], works)
+    assert len(errors) == 2
+    assert any("Used" in error and "not true" in error for error in errors)
+    assert any("Stale" in error and "no current translation" in error for error in errors)
 
 
 def test_only_a_translation_citation_counts_as_wording():

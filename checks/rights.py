@@ -85,13 +85,27 @@ def cited(doc: object, field: str | None = None) -> list[tuple[str, bool]]:
 def check(docs: list[dict], works: dict) -> list[str]:
     """One message per citation the registry cannot account for."""
     errors = []
+    wording_titles: set[str] = set()
     for doc in docs:
-        for title, _wording in cited(doc):
+        for title, wording in cited(doc):
             if title not in works:
                 errors.append(
                     f"{doc.get('id') or doc.get('text') or '?'}: cites {title!r}, which is "
                     f"not in sources.json — a work this edition quotes must say what it is"
                 )
+            elif wording:
+                wording_titles.add(title)
+    flagged = {title for title, work in works.items() if work.get("cited_for_wording") is True}
+    for title in sorted(wording_titles - flagged):
+        errors.append(
+            f"sources.json:{title}: a current translation follows this work, "
+            "but cited_for_wording is not true"
+        )
+    for title in sorted(flagged - wording_titles):
+        errors.append(
+            f"sources.json:{title}: cited_for_wording is true, but no current "
+            "translation cites this work for wording"
+        )
     _tally, site_errors = wording_sites(docs, works)
     return errors + site_errors
 

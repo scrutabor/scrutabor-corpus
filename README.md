@@ -85,31 +85,28 @@ contributor guide will be published as the corpus grows.
 
 ## License
 
-Some segment translations of prayers the modern Roman Missal still carries
-retain the received wording of the current vernacular editions, so that a
-reader meets the words in the form the Church prays them today: the English of the
-International Commission on English in the Liturgy and the Polish of the
-Mszał Rzymski dla diecezji polskich and, in the scripture the Mass reads,
-the Biblia Tysiąclecia — all used with acknowledgement and adapted only
-where this edition's Latin differs from theirs. The word-by-word glosses,
-the notes, the apparatus and the rubrical narratives are this edition's own
-work.
+The Polish and English translations are either this edition's own renderings
+from the printed Latin or revisions made openly from page-verified historical
+translations that are in the public domain. A defined familiar core — such as
+the Lord's Prayer, Hail Mary, Creeds, ordinary responses and selected litanies
+— retains the forms readers know where those forms are historically attested
+or consist of fixed elementary formulas. Modern vernacular missals and Bible
+translations remain in the source registry only where they supplied reference
+evidence or recorded prior exposure; no current segment cites them as its
+wording source. The word-by-word glosses, notes, apparatus and rubrical
+narratives are this edition's own work.
 
-The editorial layer — the word-by-word glosses, the analyses and notes,
-the apparatus, the rubrical narratives, the introductions, and the
-translations this edition wrote itself — is licensed under
+The editorial layer — the word-by-word glosses, analyses and notes,
+apparatus, rubrical narratives, introductions, and translations this edition
+wrote itself — is licensed under
 [CC BY-SA 4.0](LICENSE), including the EU database right in the
 compilation. The Latin texts this edition prints — the 1962 Missale
 Romanum and the Clementine psalter — are in the public domain. The
-received vernacular wordings described above remain their owners' and
-this repository does not relicense them: a passage that follows one names
-the work it follows in a per-segment citation in the data
-(`translation_citations`), whether that wording comes from a printed
-translation of scripture or from the current Missal. Among the familiar-core
-passages whose exact origin is not yet settled, the Polish of the *Dómine, non
-sum dignus* said at the rail keeps the traditional Wujek-shaped wording
-against the current Missal's, and carries no citation until its exact
-source is settled. The validation code in `checks/` and
+historical translations named in per-segment `translation_citations` remain
+public-domain source material; the citations identify the wording basis and
+the exact pages examined rather than claiming ownership of those source
+texts. Contemporary wording is not reproduced under a bare acknowledgement.
+The validation code in `checks/` and
 `run_checks.py` is licensed under [AGPL-3.0](checks/LICENSE).
 
 The rights report counts every translated `verse segment × language` site,
@@ -122,10 +119,10 @@ provenance states recorded by the repository, not legal conclusions.
 [`translation-provenance.json`](translation-provenance.json) is the exhaustive
 site ledger. It binds each public origin and review state to hashes of the exact
 Latin source segment and target string, so a changed translation cannot retain
-an old state silently. `working-unsettled` means that the working edition has
-not completed that site's independent-origin or historical-wording review. It
-does not by itself assert infringement, ecclesiastical disapproval, or a ban on
-publishing a clearly labelled working edition.
+an old state silently. The schema still admits `working-unsettled` for future
+work: it means that a site's independent-origin or historical-wording review is
+not complete, not that infringement or ecclesiastical disapproval has been
+established.
 
 Witness transcriptions marked `do` were derived from the Divinum Officium
 Project. The archived snapshot was checked at revision
