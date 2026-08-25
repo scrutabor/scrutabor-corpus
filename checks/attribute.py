@@ -174,6 +174,33 @@ VOICE_RULINGS: dict[str, tuple[str, str]] = {
     "proprium.dominica-i-adventus-postcommunio": (CLARA, "RG 511 i"),
 }
 
+# RG 511 governs every Proper by its liturgical genus, not only the first
+# formulary entered into the corpus. The base delivery is the low Mass; the
+# sung-form exception belongs to the independent, derived delivery layer.
+PROPER_VOICE_RULINGS: dict[str, tuple[str, str]] = {
+    "introitus": (CLARA, "RG 511 b"),
+    "collecta": (CLARA, "RG 511 d"),
+    "epistola": (CLARA, "RG 511 e"),
+    "graduale": (CLARA, "RG 511 e"),
+    "alleluia": (CLARA, "RG 511 e"),
+    "tractus": (CLARA, "RG 511 e"),
+    "sequentia": (CLARA, "RG 511 e"),
+    "evangelium": (CLARA, "RG 511 e"),
+    "lectio": (CLARA, "RG 511 e"),
+    "offertorium": (CLARA, "RG 511 g"),
+    "secreta": (SECRETO, "RG 511 — cetera"),
+    "communio": (CLARA, "RG 511 i"),
+    "postcommunio": (CLARA, "RG 511 i"),
+}
+
+
+def voice_ruling(doc: dict) -> tuple[str, str] | None:
+    explicit = VOICE_RULINGS.get(doc["id"])
+    if explicit or doc.get("category") != "proprium":
+        return explicit
+    return PROPER_VOICE_RULINGS.get(doc["id"].rsplit("-", 1)[-1])
+
+
 # Segments whose voice differs from their text's, and why. These are the
 # places the law names a few WORDS rather than a prayer.
 # Answers the matcher cannot reach, because our text and the source line
@@ -543,7 +570,7 @@ def propose(doc, disagreements: list[str] | None = None) -> dict[str, dict]:
     # marks otherwise. Propose only what was matched positionally, and let
     # main report the text.
     sourced = span_covers(doc)
-    ruled = VOICE_RULINGS.get(doc["id"])
+    ruled = voice_ruling(doc)
     out: dict[str, dict] = {}
     for i, seg in enumerate(doc["segments"]):
         if seg.get("type") != "verse":

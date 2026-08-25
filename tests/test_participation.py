@@ -58,7 +58,9 @@ class TestTheAmensThatAreNotTheirs:
     def test_but_the_amen_closing_the_pater_is_theirs_by_n_32(self):
         # n. 32: "addito ab omnibus Amen" — theirs, on a different title,
         # and so without a gradus, because n. 32 grades nothing.
-        assert part("ordinarium.pater-noster", "s14") == {"lecta": {"source": "DMS 32"}}
+        assert part("ordinarium.pater-noster", "s14") == {
+            "lecta": {"source": "DMS 32", "conditional": True}
+        }
 
 
 class TestTheServersOtherParts:
@@ -103,17 +105,18 @@ class TestTheProper:
 
     def test_the_four_recited_propers_are_fourth_degree(self):
         assert part("proprium.dominica-i-adventus-introitus", "s01") == {
-            "lecta": {"gradus": 4, "source": "DMS 31 d"},
-            "cantu": {"gradus": 3, "source": "DMS 25 c"},
+            "lecta": {"gradus": 4, "source": "DMS 31 d", "conditional": True},
+            "cantu": {"gradus": 3, "source": "DMS 25 c", "conditional": True},
         }
         assert part("proprium.dominica-i-adventus-graduale", "s01")["lecta"] == {
             "gradus": 4,
             "source": "DMS 31 d",
+            "conditional": True,
         }
 
     def test_the_alleluia_is_sung_but_not_in_the_recited_fourth_degree(self):
         assert part("proprium.dominica-i-adventus-alleluia", "s02") == {
-            "cantu": {"gradus": 3, "source": "DMS 25 c"}
+            "cantu": {"gradus": 3, "source": "DMS 25 c", "conditional": True}
         }
 
     def test_a_prayer_of_the_proper_takes_neither_attribution(self):
@@ -162,7 +165,9 @@ class TestThePaterNoster:
     """n. 32 — the whole prayer, and only the prayer."""
 
     def test_the_prayer_itself_is_theirs(self):
-        assert part("ordinarium.pater-noster", "s05") == {"lecta": {"source": "DMS 32"}}
+        assert part("ordinarium.pater-noster", "s05") == {
+            "lecta": {"source": "DMS 32", "conditional": True}
+        }
 
     def test_but_not_the_preface_that_introduces_it(self):
         # "Orémus" and "Præceptis salutaribus moniti" lead into the Pater

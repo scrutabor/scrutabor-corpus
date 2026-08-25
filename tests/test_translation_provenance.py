@@ -5,7 +5,7 @@ from checks.translation_provenance import canonical_hash, check, initialize
 
 def text(target="Words."):
     return {
-        "schema_version": "0.14.0",
+        "schema_version": "0.15.0",
         "id": "orationes.test",
         "category": "orationes",
         "segments": [

@@ -194,6 +194,22 @@ class TestProperAttribution:
         monkeypatch.setattr("checks.attribute.span_covers", lambda _doc: True)
         assert propose(doc) == {"s01": {"speaker": "sacerdos", "voice": "clara"}}
 
+    def test_the_ruling_applies_to_later_formularies(self, monkeypatch):
+        doc = {
+            "id": "proprium.dominica-iv-adventus-offertorium",
+            "category": "proprium",
+            "segments": [
+                {
+                    "id": "s01",
+                    "type": "verse",
+                    "words": [{"id": "w001", "form": "Ave"}],
+                }
+            ],
+        }
+        monkeypatch.setattr("checks.attribute.marked_lines", lambda _id, mass: [])
+        monkeypatch.setattr("checks.attribute.span_covers", lambda _doc: True)
+        assert propose(doc) == {"s01": {"speaker": "sacerdos", "voice": "clara"}}
+
 
 class TestTheCorpusItself:
     def test_a_write_never_touches_a_text_it_cannot_source(self):

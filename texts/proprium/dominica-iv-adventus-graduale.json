@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.14.0",
+  "schema_version": "0.15.0",
   "id": "proprium.dominica-iv-adventus-graduale",
   "title": "Prope est Dóminus",
   "category": "proprium",
@@ -17,16 +17,18 @@
     {
       "id": "s01",
       "type": "verse",
-      "speaker": "schola",
-      "voice": "cantus",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "participation": {
         "lecta": {
           "gradus": 4,
-          "source": "DMS 31 d"
+          "source": "DMS 31 d",
+          "conditional": true
         },
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -62,21 +64,29 @@
         { "id": "w010", "form": "eum", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Go", "en": "Him" } },
         { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w012", "gloss": { "pl": "w", "en": "in" } },
         { "id": "w012", "form": "veritáte", "post": ".", "lemma": "veritas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "prawdzie", "en": "truth" } }
-      ]
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
     },
     {
       "id": "s02",
       "type": "verse",
-      "speaker": "schola",
-      "voice": "cantus",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "participation": {
         "lecta": {
           "gradus": 4,
-          "source": "DMS 31 d"
+          "source": "DMS 31 d",
+          "conditional": true
         },
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -112,7 +122,13 @@
         { "id": "w022", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "imię", "en": "the name" } },
         { "id": "w023", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w022", "gloss": { "pl": "święte", "en": "holy" } },
         { "id": "w024", "form": "eius", "post": ".", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jego", "en": "His" } }
-      ]
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
     }
   ],
   "editorial": {

@@ -207,9 +207,17 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
         # grants is the Proper's own chants.
         piece = proper_genus(text_id)
         if piece in LECTA_IV_PROPER:
-            out["lecta"] = {"gradus": 4, "source": f"{DMS} 31 d"}
+            out["lecta"] = {
+                "gradus": 4,
+                "source": f"{DMS} 31 d",
+                "conditional": True,
+            }
         if piece in CANTU_III_PROPER:
-            out["cantu"] = {"gradus": 3, "source": f"{DMS} 25 c"}
+            out["cantu"] = {
+                "gradus": 3,
+                "source": f"{DMS} 25 c",
+                "conditional": True,
+            }
         # and then fall through: a proper text can still carry a response.
         # The one the reader answers after the Gospel — Laus tibi, Christe —
         # stands in n. 31 a's list and in no other, and it lives here or
@@ -238,7 +246,7 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
         elif text_id == PATER[0] and seg["id"] in PATER[1]:
             # n. 32 is a faculty, not one of the four degrees, so it carries
             # no gradus: the corpus does not invent a rank the law withholds.
-            out["lecta"] = {"source": f"{DMS} 32"}
+            out["lecta"] = {"source": f"{DMS} 32", "conditional": True}
         if text_id in CANTU_II:
             out["cantu"] = {"gradus": 2, "source": f"{DMS} 25 b"}
 

@@ -19,6 +19,7 @@ from checks.capitals import check as check_capitals
 from checks.citations import check as check_citation_titles
 from checks.collate import collate
 from checks.conventions import check as check_conventions
+from checks.delivery import check_doc as check_delivery
 from checks.document import check as check_document
 from checks.english import check as check_english
 from checks.english import check_number as check_english_number
@@ -200,6 +201,8 @@ def main(text_id: str) -> int:
     all_errors += check_capitals(doc)
     voice_errors, attributed, n_verses = check_voices(doc)
     all_errors += voice_errors
+    delivery_errors, delivered = check_delivery(doc)
+    all_errors += delivery_errors
     # Who the FAITHFUL answer with, which the Missale never says: derived
     # from the 1958 instruction and this text's own speakers, never stored
     # by hand (checks/participation.py).
@@ -263,6 +266,7 @@ def main(text_id: str) -> int:
         + (f"recensions={coll_stats['recensions']} " if coll_stats.get("recensions") else "")
         + (f"omissions={coll_stats['omissions']} " if coll_stats.get("omissions") else "")
         + (f"speakers={attributed}/{n_verses} " if n_verses else "")
+        + (f"delivery={delivered} " if delivered else "")
         + (f"participation={participating} " if participating else "")
         + (f"syntax={syn_declared}/{syn_total}-declared " if syn_total else "")
         + (f"raw={transcriptions_checked} " if transcriptions_checked else "")

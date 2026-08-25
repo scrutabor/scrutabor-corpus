@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.14.0",
+  "schema_version": "0.15.0",
   "id": "proprium.dominica-ii-adventus-graduale",
   "title": "Ex Sion spécies decóris eius",
   "category": "proprium",
@@ -17,16 +17,18 @@
     {
       "id": "s01",
       "type": "verse",
-      "speaker": "schola",
-      "voice": "cantus",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "participation": {
         "lecta": {
           "gradus": 4,
-          "source": "DMS 31 d"
+          "source": "DMS 31 d",
+          "conditional": true
         },
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -58,21 +60,29 @@
         { "id": "w006", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bóg", "en": "God" } },
         { "id": "w007", "form": "maniféste", "lemma": "manifeste", "morph": { "pos": "adv" }, "gloss": { "pl": "jawnie", "en": "openly" } },
         { "id": "w008", "form": "véniet", "post": ".", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 4 }, "gloss": { "pl": "przyjdzie", "en": "shall come" } }
-      ]
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
     },
     {
       "id": "s02",
       "type": "verse",
-      "speaker": "schola",
-      "voice": "cantus",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "participation": {
         "lecta": {
           "gradus": 4,
-          "source": "DMS 31 d"
+          "source": "DMS 31 d",
+          "conditional": true
         },
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -106,7 +116,13 @@
         { "id": "w016", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jego", "en": "His" } },
         { "id": "w017", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w018", "gloss": { "pl": "ponad", "en": "above" } },
         { "id": "w018", "form": "sacrifícia", "post": ".", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "ofiary", "en": "sacrifices" } }
-      ]
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
     }
   ],
   "editorial": {

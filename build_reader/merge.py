@@ -27,7 +27,7 @@ document that cannot be taken apart again is a migration nobody can undo.
 from __future__ import annotations
 
 LANGS = ("pl", "en")
-SCHEMA = "0.14.0"
+SCHEMA = "0.15.0"
 
 # Document keys that describe the edition's working rather than its content.
 EDITORIAL = ("status", "notes", "source", "analysis_defaults", "analysis_defaults_words")

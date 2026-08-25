@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.14.0",
+  "schema_version": "0.15.0",
   "id": "proprium.dominica-iii-adventus-communio",
   "title": "Dícite: pusillánimes confortámini",
   "category": "proprium",
@@ -17,16 +17,18 @@
     {
       "id": "s01",
       "type": "verse",
-      "speaker": "schola",
-      "voice": "cantus",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "participation": {
         "lecta": {
           "gradus": 4,
-          "source": "DMS 31 d"
+          "source": "DMS 31 d",
+          "conditional": true
         },
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -63,7 +65,13 @@
         { "id": "w011", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
         { "id": "w012", "form": "salvábit", "lemma": "salvo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "zbawi", "en": "shall save" } },
         { "id": "w013", "form": "nos", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } }
-      ]
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
     }
   ],
   "editorial": {

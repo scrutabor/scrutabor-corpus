@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.14.0",
+  "schema_version": "0.15.0",
   "id": "proprium.dominica-iii-adventus-introitus",
   "title": "Gaudéte in Dómino semper",
   "category": "proprium",
@@ -17,16 +17,18 @@
     {
       "id": "s01",
       "type": "verse",
-      "speaker": "schola",
-      "voice": "cantus",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "participation": {
         "lecta": {
           "gradus": 4,
-          "source": "DMS 31 d"
+          "source": "DMS 31 d",
+          "conditional": true
         },
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -79,21 +81,29 @@
         { "id": "w027", "form": "innotéscant", "lemma": "innotesco", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "niech staną się znane", "en": "let become known" } },
         { "id": "w028", "form": "apud", "lemma": "apud", "morph": { "pos": "prep", "governs": "acc" }, "head": "w029", "gloss": { "pl": "u", "en": "before" } },
         { "id": "w029", "form": "Deum", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } }
-      ]
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
     },
     {
       "id": "s02",
       "type": "verse",
-      "speaker": "schola",
-      "voice": "cantus",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "participation": {
         "lecta": {
           "gradus": 4,
-          "source": "DMS 31 d"
+          "source": "DMS 31 d",
+          "conditional": true
         },
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -124,21 +134,29 @@
         { "id": "w034", "form": "avertísti", "lemma": "averto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "odwróciłeś", "en": "Thou hast turned away" } },
         { "id": "w035", "form": "captivitátem", "lemma": "captivitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "niewolę", "en": "the captivity" } },
         { "id": "w036", "form": "Iacob", "post": ".", "lemma": "Iacob", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jakuba", "en": "of Jacob" } }
-      ]
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
     },
     {
       "id": "s03",
       "type": "verse",
-      "speaker": "schola",
-      "voice": "cantus",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "participation": {
         "lecta": {
           "gradus": 4,
-          "source": "DMS 31 d"
+          "source": "DMS 31 d",
+          "conditional": true
         },
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -182,6 +200,12 @@
             "url": "https://archive.org/details/TheMissalForTheLaity"
           }
         ]
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
       }
     },
     {
@@ -196,16 +220,18 @@
     {
       "id": "s05",
       "type": "verse",
-      "speaker": "schola",
-      "voice": "cantus",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "participation": {
         "lecta": {
           "gradus": 4,
-          "source": "DMS 31 d"
+          "source": "DMS 31 d",
+          "conditional": true
         },
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -258,7 +284,13 @@
         { "id": "w083", "form": "innotéscant", "lemma": "innotesco", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "niech staną się znane", "en": "let become known" } },
         { "id": "w084", "form": "apud", "lemma": "apud", "morph": { "pos": "prep", "governs": "acc" }, "head": "w085", "gloss": { "pl": "u", "en": "before" } },
         { "id": "w085", "form": "Deum", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } }
-      ]
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
     }
   ],
   "editorial": {

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.14.0",
+  "schema_version": "0.15.0",
   "id": "proprium.dominica-i-adventus-graduale",
   "title": "Univérsi, qui te exspéctant",
   "category": "proprium",
@@ -38,11 +38,13 @@
       "participation": {
         "lecta": {
           "gradus": 4,
-          "source": "DMS 31 d"
+          "source": "DMS 31 d",
+          "conditional": true
         },
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -73,6 +75,12 @@
             "url": "https://archive.org/details/TheMissalForTheLaity"
           }
         ]
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
       }
     },
     {
@@ -83,11 +91,13 @@
       "participation": {
         "lecta": {
           "gradus": 4,
-          "source": "DMS 31 d"
+          "source": "DMS 31 d",
+          "conditional": true
         },
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -122,6 +132,12 @@
             "url": "https://archive.org/details/TheMissalForTheLaity"
           }
         ]
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
       }
     }
   ],

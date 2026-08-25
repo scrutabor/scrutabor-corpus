@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.14.0",
+  "schema_version": "0.15.0",
   "id": "proprium.dominica-iii-adventus-graduale",
   "title": "Qui sedes, Dómine, super Chérubim",
   "category": "proprium",
@@ -17,16 +17,18 @@
     {
       "id": "s01",
       "type": "verse",
-      "speaker": "schola",
-      "voice": "cantus",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "participation": {
         "lecta": {
           "gradus": 4,
-          "source": "DMS 31 d"
+          "source": "DMS 31 d",
+          "conditional": true
         },
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -60,21 +62,29 @@
         { "id": "w008", "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w007", "gloss": { "pl": "Twoją", "en": "Thy" } },
         { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
         { "id": "w010", "form": "veni", "post": ".", "lemma": "venio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 }, "gloss": { "pl": "przyjdź", "en": "come" } }
-      ]
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
     },
     {
       "id": "s02",
       "type": "verse",
-      "speaker": "schola",
-      "voice": "cantus",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "participation": {
         "lecta": {
           "gradus": 4,
-          "source": "DMS 31 d"
+          "source": "DMS 31 d",
+          "conditional": true
         },
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -107,7 +117,13 @@
         { "id": "w017", "form": "velut", "lemma": "velut", "morph": { "pos": "adv" }, "gloss": { "pl": "jak", "en": "like" } },
         { "id": "w018", "form": "ovem", "post": ",", "lemma": "ovis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "owcę", "en": "a sheep" } },
         { "id": "w019", "form": "Ioseph", "post": ".", "lemma": "Ioseph", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Józefa", "en": "Joseph" } }
-      ]
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
     }
   ],
   "editorial": {

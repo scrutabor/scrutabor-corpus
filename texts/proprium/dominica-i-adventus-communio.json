@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.14.0",
+  "schema_version": "0.15.0",
   "id": "proprium.dominica-i-adventus-communio",
   "title": "Dóminus dabit benignitátem",
   "category": "proprium",
@@ -38,11 +38,13 @@
       "participation": {
         "lecta": {
           "gradus": 4,
-          "source": "DMS 31 d"
+          "source": "DMS 31 d",
+          "conditional": true
         },
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -59,7 +61,13 @@
         { "id": "w007", "form": "dabit", "lemma": "do", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "da", "en": "will give" } },
         { "id": "w008", "form": "fructum", "lemma": "fructus", "morph": { "case": "acc", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" }, "gloss": { "pl": "owoc", "en": "fruit" } },
         { "id": "w009", "form": "suum", "post": ".", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w008", "gloss": { "pl": "swój", "en": "its" } }
-      ]
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
     }
   ],
   "editorial": {

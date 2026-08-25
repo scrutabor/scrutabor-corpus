@@ -80,6 +80,7 @@ def source_payload(segment: dict) -> dict:
         "id": segment["id"],
         "speaker": segment.get("speaker"),
         "voice": segment.get("voice"),
+        **({"delivery": segment["delivery"]} if "delivery" in segment else {}),
         "words": [
             {
                 key: word[key]

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.14.0",
+  "schema_version": "0.15.0",
   "id": "proprium.dominica-iv-adventus-communio",
   "title": "Ecce Virgo concípiet",
   "category": "proprium",
@@ -17,16 +17,18 @@
     {
       "id": "s01",
       "type": "verse",
-      "speaker": "schola",
-      "voice": "cantus",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "participation": {
         "lecta": {
           "gradus": 4,
-          "source": "DMS 31 d"
+          "source": "DMS 31 d",
+          "conditional": true
         },
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -61,7 +63,13 @@
         { "id": "w009", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "imię", "en": "the name" } },
         { "id": "w010", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jego", "en": "His" } },
         { "id": "w011", "form": "Emmánuel", "post": ".", "lemma": "Emmanuel", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Emmanuel", "en": "Emmanuel" }, "function": { "pl": "Imię hebrajskie, które Ewangelia Mateusza tłumaczy w tym samym wersecie: „Bóg z nami”.", "en": "A Hebrew name that Matthew's gospel translates in the same breath: God with us." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "Matthew 1:23" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "Matthew 1:23" }] } }
-      ]
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
     }
   ],
   "editorial": {

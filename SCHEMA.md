@@ -1,4 +1,4 @@
-# Corpus schema v0 (0.14.0)
+# Corpus schema v0 (0.15.0)
 
 Three semantic layers: language-neutral Latin, per-language gloss/editorial
 content, and a corpus-wide lexicon. Since 0.14.0 the Latin and both language
@@ -176,8 +176,8 @@ analysis_defaults, segments[]
   the word default (e.g. proper names absent from one analyzer's lexicon);
   an override that restates its default is a lint error, as is a
   `analysis_defaults_words` identical to `analysis_defaults`.
-- Segment: `{ id, type: "verse"|"rubric", verse?, speaker?, voice?, text? (rubric
-  Latin), words?[] }`. **`speaker`** (since 0.9.0) is who says it —
+- Segment: `{ id, type: "verse"|"rubric", verse?, speaker?, voice?, delivery?,
+  text? (rubric Latin), words?[] }`. **`speaker`** (since 0.9.0) is who says it —
   `sacerdos`, `ductor`, `minister`, `populus`, `omnes`, `schola` — and **`voice`**
   is how loudly: `clara` (aloud), `submissa` (raised but not full, the
   *elata aliquantulum voce* of Dómine non sum dignus), `secreto`
@@ -220,6 +220,15 @@ analysis_defaults, segments[]
   absence is meaningful: it says the sources have not been read for this
   segment yet, which the reader's app must render as unmarked rather than
   guess. `run_checks` reports the coverage as `speakers=N/M`.
+  **`delivery`** (since 0.15.0) records a form-specific exception to those
+  base values: `{ lecta?: {speaker?, voice?}, cantu?: {speaker?, voice?} }`.
+  It exists because the Proper is read aloud by the celebrant at low Mass but
+  its chants are delivered by the schola at sung Mass. The base `speaker` and
+  `voice` remain the low-Mass reading (`sacerdos`, `clara`); a Proper chant
+  carries `delivery.cantu: {speaker: "schola", voice: "cantus"}`. Consumers
+  select the requested form and overlay only the named fields. Empty,
+  redundant, unknown, or rubric-level overrides are errors. This layer is
+  DERIVED by `checks/delivery.py`, not authored separately in each formulary.
 - Segment: **`participation`** (since 0.10.0) is who among the FAITHFUL makes
   this line, and on whose authority. `speaker` answers a different question —
   whom the Missale charges with the line — and at low Mass the answer is
@@ -227,12 +236,17 @@ analysis_defaults, segments[]
   needs. The two must not be conflated: an edition that prints *ministrant*
   over the line a congregation is about to say has answered the wrong
   question.
-  Shape: `{ lecta?: {gradus?, source}, cantu?: {gradus?, source} }`. The two
+  Shape: `{ lecta?: {gradus?, source, conditional?}, cantu?: {gradus?, source,
+  conditional?} }`. The two
   keys are the two forms of Mass the law grades separately — `lecta` the low
   Mass, `cantu` the sung Mass — because they are not the same event, and a
   reader at a sung Sunday Mass has more of the Ordinary than one at a said
   Mass. `gradus` is the degree of participation, 1 to 4; it is ABSENT where
   the law grants a part without grading it (n. 32, the Pater noster).
+  `conditional: true` distinguishes a faculty dependent on the faithful's
+  preparation or a selected trained group from an unconditional congregational
+  answer. False is never stored. A reader must present this as “may join”, not
+  mark the line as though it belonged unconditionally to the congregation.
   The source is the Instruction **De musica sacra et sacra liturgia** (Sacra
   Rituum Congregatio, 3 September 1958), nn. 25-26 and 31-32, transcribed in
   `witnesses/raw/scr-de-musica-sacra-1958.txt`; n. 26 extends the sung-Mass

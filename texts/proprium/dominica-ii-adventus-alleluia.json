@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.14.0",
+  "schema_version": "0.15.0",
   "id": "proprium.dominica-ii-adventus-alleluia",
   "title": "Lætátus sum in his",
   "category": "proprium",
@@ -17,12 +17,13 @@
     {
       "id": "s01",
       "type": "verse",
-      "speaker": "schola",
-      "voice": "cantus",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "participation": {
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -41,17 +42,24 @@
             "url": "https://archive.org/details/TheMissalForTheLaity"
           }
         ]
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
       }
     },
     {
       "id": "s02",
       "type": "verse",
-      "speaker": "schola",
-      "voice": "cantus",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "participation": {
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -87,17 +95,24 @@
         { "id": "w012", "form": "domum", "lemma": "domus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 4 }, "gloss": { "pl": "domu", "en": "the house" } },
         { "id": "w013", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pańskiego", "en": "of the Lord" } },
         { "id": "w014", "form": "íbimus", "post": ".", "lemma": "eo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act" }, "gloss": { "pl": "pójdziemy", "en": "we shall go" } }
-      ]
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
     },
     {
       "id": "s03",
       "type": "verse",
-      "speaker": "schola",
-      "voice": "cantus",
+      "speaker": "sacerdos",
+      "voice": "clara",
       "participation": {
         "cantu": {
           "gradus": 3,
-          "source": "DMS 25 c"
+          "source": "DMS 25 c",
+          "conditional": true
         }
       },
       "translation": {
@@ -115,6 +130,12 @@
             "url": "https://archive.org/details/TheMissalForTheLaity"
           }
         ]
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
       }
     }
   ],
