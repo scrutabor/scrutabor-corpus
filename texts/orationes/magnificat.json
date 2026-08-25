@@ -1,0 +1,500 @@
+{
+  "schema_version": "0.15.0",
+  "id": "orationes.magnificat",
+  "title": "Magníficat",
+  "category": "orationes",
+  "section": "orationes-communes",
+  "variant": "vulgata",
+  "sung": false,
+  "ids": {
+    "next": 110
+  },
+  "about": {
+    "pl": "Magníficat to pieśń Maryi z Ewangelii według św. Łukasza (Łk 1,46–55), śpiewana w rzymskich nieszporach. Ta edycja zachowuje tradycyjny tekst łaciński i dziesięć numerowanych wersetów biblijnych, po których umieszcza osobno doksologię Chwała Ojcu.",
+    "en": "The Magníficat is Mary's canticle from the Gospel according to Saint Luke (Luke 1:46–55), sung at Roman Vespers. This edition preserves the traditional Latin text and its ten numbered biblical verses, followed separately by the Glory Be doxology."
+  },
+  "about_citations": {
+    "pl": [
+      {
+        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
+        "locator": "n. 320, printed pp. 203–204",
+        "url": "https://canadienfrancais.org/wp-content/uploads/editions/pdf/4/Enchiridion%20indulgentiarum1952-canadienfrancais.org.pdf"
+      },
+      {
+        "title": "The Raccolta (1910)",
+        "locator": "Cantico B.M.V., printed p. 161",
+        "url": "https://archive.org/details/theraccoltaorcol00unknuoft"
+      }
+    ],
+    "en": [
+      {
+        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
+        "locator": "n. 320, printed pp. 203–204",
+        "url": "https://canadienfrancais.org/wp-content/uploads/editions/pdf/4/Enchiridion%20indulgentiarum1952-canadienfrancais.org.pdf"
+      },
+      {
+        "title": "The Raccolta (1910)",
+        "locator": "Cantico B.M.V., printed p. 161",
+        "url": "https://archive.org/details/theraccoltaorcol00unknuoft"
+      }
+    ]
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "verse": 46,
+      "translation": {
+        "pl": "Wielbi dusza moja Pana.",
+        "en": "My soul magnifies the Lord."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
+            "locator": "Magnificat, printed pp. 324–325",
+            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
+          }
+        ],
+        "en": [
+          {
+            "title": "The Missal for the Use of the Laity (1853)",
+            "locator": "Canticle of B.V.M., printed p. 346",
+            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
+          }
+        ]
+      },
+      "words": [
+        { "id": "w001", "form": "Magníficat", "lemma": "magnifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "wielbi", "en": "magnifies" }, "function": { "pl": "Orzeczenie, którego podmiotem jest „ánima” (w002), a dopełnieniem „Dóminum” (w004).", "en": "The predicate whose subject is “ánima” (w002) and object is “Dóminum” (w004)." } },
+        { "id": "w002", "form": "ánima", "lemma": "anima", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "dusza", "en": "soul" } },
+        { "id": "w003", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w002", "gloss": { "pl": "moja", "en": "my" } },
+        { "id": "w004", "form": "Dóminum", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "the Lord" } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "verse": 47,
+      "translation": {
+        "pl": "I rozradował się duch mój w Bogu, moim Zbawicielu.",
+        "en": "And my spirit has rejoiced in God my Savior."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
+            "locator": "Magnificat, printed pp. 324–325",
+            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
+          }
+        ],
+        "en": [
+          {
+            "title": "The Missal for the Use of the Laity (1853)",
+            "locator": "Canticle of B.V.M., printed p. 346",
+            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
+          }
+        ]
+      },
+      "words": [
+        { "id": "w005", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w006", "form": "exsultávit", "lemma": "exsulto", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "rozradował się", "en": "has rejoiced" }, "function": { "pl": "Perfectum indicativi. Podmiotem jest „spíritus” (w007).", "en": "Perfect indicative. Its subject is “spíritus” (w007)." } },
+        { "id": "w007", "form": "spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "duch", "en": "spirit" } },
+        { "id": "w008", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w007", "gloss": { "pl": "mój", "en": "my" } },
+        { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w010", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bogu", "en": "God" } },
+        { "id": "w011", "form": "salutári", "lemma": "salutaris", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w010", "gloss": { "pl": "Zbawicielu", "en": "Savior" }, "function": { "pl": "Przymiotnik użyty rzeczownikowo, który z „Deo” tworzy określenie Boga jako mojego Zbawiciela.", "en": "A substantival adjective agreeing with “Deo”: God as my Savior." } },
+        { "id": "w012", "form": "meo", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w010", "gloss": { "pl": "moim", "en": "my" } }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "verse": 48,
+      "translation": {
+        "pl": "Bo wejrzał na uniżenie swojej służebnicy: oto bowiem odtąd wszystkie pokolenia będą mnie zwać błogosławioną.",
+        "en": "For he has regarded the lowliness of his handmaid: behold, from now on all generations will call me blessed."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
+            "locator": "Magnificat, printed pp. 324–325",
+            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
+          }
+        ],
+        "en": [
+          {
+            "title": "The Missal for the Use of the Laity (1853)",
+            "locator": "Canticle of B.V.M., printed p. 346",
+            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
+          }
+        ]
+      },
+      "words": [
+        { "id": "w013", "form": "Quia", "lemma": "quia", "morph": { "pos": "conj" }, "gloss": { "pl": "bo", "en": "for" }, "function": { "pl": "Wprowadza przyczynę radości Maryi.", "en": "Introduces the reason for Mary's rejoicing." } },
+        { "id": "w014", "form": "respéxit", "lemma": "respicio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "wejrzał na", "en": "has regarded" } },
+        { "id": "w015", "form": "humilitátem", "lemma": "humilitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "uniżenie", "en": "lowliness" }, "function": { "pl": "Dopełnienie „respéxit”. Greckie ταπείνωσις potwierdza tutaj niski stan służebnicy, nie pochwałę jej własnego osiągnięcia moralnego.", "en": "Object of “respéxit.” Greek ταπείνωσις confirms the handmaid's low estate here, not praise of her own moral achievement." }, "function_citations": { "pl": [{ "title": "The Greek New Testament: SBL Edition", "locator": "Luke 1:48", "url": "https://github.com/LogosBible/SBLGNT/tree/c4d241a9c1c479a55b989ba35a4976c1d0b8052c" }], "en": [{ "title": "The Greek New Testament: SBL Edition", "locator": "Luke 1:48", "url": "https://github.com/LogosBible/SBLGNT/tree/c4d241a9c1c479a55b989ba35a4976c1d0b8052c" }] } },
+        { "id": "w016", "form": "ancíllæ", "lemma": "ancilla", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "służebnicy", "en": "of the handmaid" } },
+        { "id": "w017", "form": "suæ", "post": ":", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w016", "gloss": { "pl": "swojej", "en": "his" }, "function": { "pl": "Odnosi służebnicę do Boga, domyślnego podmiotu „respéxit”.", "en": "Relates the handmaid to God, the understood subject of “respéxit.”" } },
+        { "id": "w018", "form": "ecce", "post": ",", "lemma": "ecce", "morph": { "pos": "intj" }, "gloss": { "pl": "oto", "en": "behold" } },
+        { "id": "w019", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" }, "gloss": { "pl": "bowiem", "en": "for" } },
+        { "id": "w020", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w021", "gloss": { "pl": "od", "en": "from" } },
+        { "id": "w021", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "n" }, "gloss": { "pl": "tej chwili", "en": "this point" }, "function": { "pl": "Z „ex” tworzy wyrażenie czasowe „odtąd”.", "en": "With “ex,” forms the temporal expression “from now on.”" } },
+        { "id": "w022", "form": "beátam", "lemma": "beatus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w023", "gloss": { "pl": "błogosławioną", "en": "blessed" }, "function": { "pl": "Orzecznik przy „me” w konstrukcji zależnej od „dicent”.", "en": "Predicate complement to “me” under “dicent.”" } },
+        { "id": "w023", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" } },
+        { "id": "w024", "form": "dicent", "lemma": "dico", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "będą zwać", "en": "will call" } },
+        { "id": "w025", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "f" }, "head": "w026", "gloss": { "pl": "wszystkie", "en": "all" } },
+        { "id": "w026", "form": "generatiónes", "post": ".", "lemma": "generatio", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "pokolenia", "en": "generations" }, "function": { "pl": "Podmiot przyszłego „dicent”. Oznacza pokolenia, nie narody.", "en": "Subject of future “dicent”. It means generations, not nations." } }
+      ]
+    },
+    {
+      "id": "s04",
+      "type": "verse",
+      "verse": 49,
+      "translation": {
+        "pl": "Gdyż wielkie rzeczy uczynił mi Ten, który jest potężny, i święte jest Jego imię.",
+        "en": "For he who is mighty has done great things for me, and holy is his name."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
+            "locator": "Magnificat, printed pp. 324–325",
+            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
+          }
+        ],
+        "en": [
+          {
+            "title": "The Missal for the Use of the Laity (1853)",
+            "locator": "Canticle of B.V.M., printed p. 346",
+            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
+          }
+        ]
+      },
+      "words": [
+        { "id": "w027", "form": "Quia", "lemma": "quia", "morph": { "pos": "conj" }, "gloss": { "pl": "gdyż", "en": "for" } },
+        { "id": "w028", "form": "fecit", "lemma": "facio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "uczynił", "en": "has done" } },
+        { "id": "w029", "form": "mihi", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "mi", "en": "for me" }, "function": { "pl": "Celownik korzyści: wielkie rzeczy uczynione Maryi lub dla Maryi.", "en": "Dative of advantage: great things done to or for Mary." } },
+        { "id": "w030", "form": "magna", "post": ",", "lemma": "magnus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true, "gloss": { "pl": "wielkie rzeczy", "en": "great things" }, "function": { "pl": "Przymiotnik rodzaju nijakiego użyty rzeczownikowo jako dopełnienie „fecit”.", "en": "A substantival neuter plural adjective, object of “fecit.”" } },
+        { "id": "w031", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Ten, który", "en": "he who" }, "function": { "pl": "Domyślny podmiot „fecit”, określony przez „potens est”.", "en": "The understood subject of “fecit,” characterized by “potens est.”" } },
+        { "id": "w032", "form": "potens", "lemma": "potens", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w031", "gloss": { "pl": "potężny", "en": "mighty" } },
+        { "id": "w033", "form": "est", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jest", "en": "is" } },
+        { "id": "w034", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w035", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w036", "gloss": { "pl": "święte", "en": "holy" }, "function": { "pl": "Orzecznik przy domyślnym „est”, odnoszący się do „nomen”.", "en": "Predicate to an understood “est,” agreeing with “nomen.”" } },
+        { "id": "w036", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "imię", "en": "name" } },
+        { "id": "w037", "form": "eius", "post": ".", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg" }, "gloss": { "pl": "Jego", "en": "his" }, "function": { "pl": "Dopełniacz wskazujący na Boga, który uczynił wielkie rzeczy.", "en": "Genitive referring to God, who has done the great things." } }
+      ]
+    },
+    {
+      "id": "s05",
+      "type": "verse",
+      "verse": 50,
+      "translation": {
+        "pl": "A Jego miłosierdzie z pokolenia na pokolenie dla tych, którzy się Go boją.",
+        "en": "And his mercy is from generation to generation for those who fear him."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
+            "locator": "Magnificat, printed pp. 324–325",
+            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
+          }
+        ],
+        "en": [
+          {
+            "title": "The Missal for the Use of the Laity (1853)",
+            "locator": "Canticle of B.V.M., printed p. 346",
+            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
+          }
+        ]
+      },
+      "words": [
+        { "id": "w038", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
+        { "id": "w039", "form": "misericórdia", "lemma": "misericordia", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "miłosierdzie", "en": "mercy" }, "function": { "pl": "Podmiot zdania z domyślnym łącznikiem „jest”.", "en": "Subject of the clause with an understood copula “is.”" } },
+        { "id": "w040", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg" }, "gloss": { "pl": "Jego", "en": "his" } },
+        { "id": "w041", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w042", "gloss": { "pl": "z", "en": "from" } },
+        { "id": "w042", "form": "progénie", "lemma": "progenies", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 5 }, "gloss": { "pl": "pokolenia", "en": "generation" } },
+        { "id": "w043", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w044", "gloss": { "pl": "na", "en": "to" } },
+        { "id": "w044", "form": "progénies", "lemma": "progenies", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 5 }, "gloss": { "pl": "pokolenia", "en": "generations" }, "function": { "pl": "Z `a progénie` tworzy wyrażenie trwania miłosierdzia poprzez kolejne pokolenia.", "en": "With `a progénie`, forms the expression of mercy extending through successive generations." } },
+        { "id": "w045", "form": "timéntibus", "lemma": "timeo", "morph": { "pos": "verb", "tense": "pres", "mood": "part", "voice": "act", "case": "dat", "number": "pl", "gender": "m", "conj": 2 }, "substantive": true, "gloss": { "pl": "bojącym się", "en": "for those fearing" }, "function": { "pl": "Imiesłów użyty rzeczownikowo w celowniku. Nazywa tych, ku którym zwraca się miłosierdzie.", "en": "A substantival participle in the dative, naming those toward whom mercy extends." } },
+        { "id": "w046", "form": "eum", "post": ".", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Go", "en": "him" }, "function": { "pl": "Dopełnienie „timéntibus”. Odnosi się do Boga.", "en": "Object of “timéntibus,” referring to God." } }
+      ]
+    },
+    {
+      "id": "s06",
+      "type": "verse",
+      "verse": 51,
+      "translation": {
+        "pl": "Okazał moc swoim ramieniem; rozproszył pyszniących się zamysłami swoich serc.",
+        "en": "He has shown strength with his arm; he has scattered the proud in the thoughts of their hearts."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
+            "locator": "Magnificat, printed pp. 324–325",
+            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
+          }
+        ],
+        "en": [
+          {
+            "title": "The Missal for the Use of the Laity (1853)",
+            "locator": "Canticle of B.V.M., printed p. 346",
+            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
+          }
+        ]
+      },
+      "words": [
+        { "id": "w047", "form": "Fecit", "lemma": "facio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "okazał", "en": "has shown" } },
+        { "id": "w048", "form": "poténtiam", "lemma": "potentia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "moc", "en": "strength" }, "function": { "pl": "Dopełnienie „Fecit”: dosłownie uczynił/okazał moc.", "en": "Object of “Fecit”: literally wrought or showed strength." } },
+        { "id": "w049", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w050", "gloss": { "pl": "w", "en": "in" } },
+        { "id": "w050", "form": "bráchio", "lemma": "brachium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "ramieniu", "en": "arm" }, "function": { "pl": "Ablativus instrumenti z „in”, obraz Bożego działania z mocą.", "en": "Instrumental ablative with “in,” an image of God's powerful action." } },
+        { "id": "w051", "form": "suo", "post": ":", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "head": "w050", "gloss": { "pl": "swoim", "en": "his" }, "function": { "pl": "Odnosi ramię do Boga, podmiotu „Fecit”.", "en": "Relates the arm to God, the subject of “Fecit.”" } },
+        { "id": "w052", "form": "dispérsit", "lemma": "dispergo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "rozproszył", "en": "has scattered" } },
+        { "id": "w053", "form": "supérbos", "lemma": "superbus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "pysznych", "en": "the proud" }, "function": { "pl": "Przymiotnik użyty rzeczownikowo jako dopełnienie „dispérsit”.", "en": "A substantival adjective, object of “dispérsit.”" } },
+        { "id": "w054", "form": "mente", "lemma": "mens", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "zamysłem", "en": "in the thought" }, "function": { "pl": "Ablativus względu/sfery: pycha ujawnia się w zamyśle serca.", "en": "Ablative of respect or sphere: pride is located in the thought of the heart." } },
+        { "id": "w055", "form": "cordis", "lemma": "cor", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "serca", "en": "of the heart" } },
+        { "id": "w056", "form": "sui", "post": ".", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w055", "gloss": { "pl": "swojego", "en": "their own" }, "function": { "pl": "Łacińska liczba pojedyncza jest dystrybutywna: serce należy do każdego z pysznych. Greckie αὐτῶν jawnie potwierdza referent mnogi, nie serce Boga.", "en": "The Latin singular is distributive: the heart belongs to each of the proud. Greek αὐτῶν explicitly confirms the plural referent, not God's heart." }, "function_citations": { "pl": [{ "title": "The Greek New Testament: SBL Edition", "locator": "Luke 1:51", "url": "https://github.com/LogosBible/SBLGNT/tree/c4d241a9c1c479a55b989ba35a4976c1d0b8052c" }], "en": [{ "title": "The Greek New Testament: SBL Edition", "locator": "Luke 1:51", "url": "https://github.com/LogosBible/SBLGNT/tree/c4d241a9c1c479a55b989ba35a4976c1d0b8052c" }] } }
+      ]
+    },
+    {
+      "id": "s07",
+      "type": "verse",
+      "verse": 52,
+      "translation": {
+        "pl": "Strącił możnych z tronu, a wywyższył pokornych.",
+        "en": "He has brought the mighty down from their throne and exalted the lowly."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
+            "locator": "Magnificat, printed pp. 324–325",
+            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
+          }
+        ],
+        "en": [
+          {
+            "title": "The Missal for the Use of the Laity (1853)",
+            "locator": "Canticle of B.V.M., printed p. 346",
+            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
+          }
+        ]
+      },
+      "words": [
+        { "id": "w057", "form": "Depósuit", "lemma": "depono", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "strącił", "en": "has brought down" } },
+        { "id": "w058", "form": "poténtes", "lemma": "potens", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "możnych", "en": "the mighty" }, "function": { "pl": "Przymiotnik użyty rzeczownikowo jako dopełnienie „Depósuit”.", "en": "A substantival adjective, object of “Depósuit.”" } },
+        { "id": "w059", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w060", "gloss": { "pl": "z", "en": "from" } },
+        { "id": "w060", "form": "sede", "post": ",", "lemma": "sedes", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "tronu", "en": "the throne" }, "function": { "pl": "Ablativus po „de”, oznaczający miejsce, z którego możni zostają strąceni.", "en": "Ablative after “de,” the seat from which the mighty are brought down." } },
+        { "id": "w061", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
+        { "id": "w062", "form": "exaltávit", "lemma": "exalto", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "wywyższył", "en": "has exalted" } },
+        { "id": "w063", "form": "húmiles", "post": ".", "lemma": "humilis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "pokornych", "en": "the lowly" }, "function": { "pl": "Przymiotnik użyty rzeczownikowo, przeciwstawiony możnym.", "en": "A substantival adjective contrasted with the mighty." } }
+      ]
+    },
+    {
+      "id": "s08",
+      "type": "verse",
+      "verse": 53,
+      "translation": {
+        "pl": "Głodnych napełnił dobrami, a bogatych odesłał z niczym.",
+        "en": "He has filled the hungry with good things and sent the rich away empty."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
+            "locator": "Magnificat, printed pp. 324–325",
+            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
+          }
+        ],
+        "en": [
+          {
+            "title": "The Missal for the Use of the Laity (1853)",
+            "locator": "Canticle of B.V.M., printed p. 346",
+            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
+          }
+        ]
+      },
+      "words": [
+        { "id": "w064", "form": "Esuriéntes", "lemma": "esurio", "morph": { "pos": "verb", "tense": "pres", "mood": "part", "voice": "act", "case": "acc", "number": "pl", "gender": "m", "conj": 4 }, "substantive": true, "gloss": { "pl": "głodnych", "en": "the hungry" }, "function": { "pl": "Imiesłów użyty rzeczownikowo jako dopełnienie „implévit”.", "en": "A substantival participle, object of “implévit.”" } },
+        { "id": "w065", "form": "implévit", "lemma": "impleo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 2 }, "gloss": { "pl": "napełnił", "en": "has filled" } },
+        { "id": "w066", "form": "bonis", "post": ":", "lemma": "bonus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "substantive": true, "gloss": { "pl": "dobrami", "en": "with good things" }, "function": { "pl": "Przymiotnik użyty rzeczownikowo w narzędniku treści lub napełnienia.", "en": "A substantival adjective in the ablative of content or filling." } },
+        { "id": "w067", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
+        { "id": "w068", "form": "dívites", "lemma": "dives", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "bogatych", "en": "the rich" }, "function": { "pl": "Przymiotnik użyty rzeczownikowo jako dopełnienie „dimísit”.", "en": "A substantival adjective, object of “dimísit.”" } },
+        { "id": "w069", "form": "dimísit", "lemma": "dimitto", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "odesłał", "en": "has sent away" } },
+        { "id": "w070", "form": "inánes", "post": ".", "lemma": "inanis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "head": "w068", "gloss": { "pl": "z niczym", "en": "empty" }, "function": { "pl": "Orzecznik przy „dívites”: bogaci odchodzą puści.", "en": "Predicative to “dívites”: the rich are sent away empty." } }
+      ]
+    },
+    {
+      "id": "s09",
+      "type": "verse",
+      "verse": 54,
+      "translation": {
+        "pl": "Ujął się za Izraelem, swoim sługą, pamiętając o swoim miłosierdziu.",
+        "en": "He has helped Israel, his servant, remembering his mercy."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
+            "locator": "Magnificat, printed pp. 324–325",
+            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
+          }
+        ],
+        "en": [
+          {
+            "title": "The Missal for the Use of the Laity (1853)",
+            "locator": "Canticle of B.V.M., printed p. 346",
+            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
+          }
+        ]
+      },
+      "words": [
+        { "id": "w071", "form": "Suscépit", "lemma": "suscipio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "ujął się za", "en": "has helped" }, "function": { "pl": "W tym biblijnym kontekście oznacza przyjście Izraelowi z pomocą. Greckie ἀντελάβετο potwierdza aktywne wsparcie.", "en": "In this biblical context it means coming to Israel's aid. Greek ἀντελάβετο confirms active help." }, "function_citations": { "pl": [{ "title": "The Greek New Testament: SBL Edition", "locator": "Luke 1:54", "url": "https://github.com/LogosBible/SBLGNT/tree/c4d241a9c1c479a55b989ba35a4976c1d0b8052c" }], "en": [{ "title": "The Greek New Testament: SBL Edition", "locator": "Luke 1:54", "url": "https://github.com/LogosBible/SBLGNT/tree/c4d241a9c1c479a55b989ba35a4976c1d0b8052c" }] } },
+        { "id": "w072", "form": "Israël", "lemma": "Israel", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Izraelem", "en": "Israel" } },
+        { "id": "w073", "form": "púerum", "lemma": "puer", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "sługą", "en": "servant" }, "function": { "pl": "Dopowiedzenie do „Israël”. Greckie παῖς potwierdza znaczenie „sługa”, nie „chłopiec”.", "en": "Apposition to “Israël”. Greek παῖς confirms “servant,” not “boy.”" }, "function_citations": { "pl": [{ "title": "The Greek New Testament: SBL Edition", "locator": "Luke 1:54", "url": "https://github.com/LogosBible/SBLGNT/tree/c4d241a9c1c479a55b989ba35a4976c1d0b8052c" }], "en": [{ "title": "The Greek New Testament: SBL Edition", "locator": "Luke 1:54", "url": "https://github.com/LogosBible/SBLGNT/tree/c4d241a9c1c479a55b989ba35a4976c1d0b8052c" }] } },
+        { "id": "w074", "form": "suum", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w073", "gloss": { "pl": "swoim", "en": "his" } },
+        { "id": "w075", "form": "recordátus", "lemma": "recordor", "morph": { "pos": "verb", "tense": "perf", "mood": "part", "voice": "dep", "case": "nom", "number": "sg", "gender": "m", "conj": 1 }, "head": "w071", "gloss": { "pl": "pamiętając", "en": "remembering" }, "function": { "pl": "Imiesłów perfectum czasownika deponentnego. Forma bierna ma znaczenie czynne i odnosi się do Boga.", "en": "Perfect participle of a deponent verb. Its passive form has active meaning and refers to God." } },
+        { "id": "w076", "form": "misericórdiæ", "lemma": "misericordia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "o miłosierdziu", "en": "of mercy" }, "function": { "pl": "Dopełniacz zależny od „recordátus”.", "en": "Genitive governed by “recordátus.”" } },
+        { "id": "w077", "form": "suæ", "post": ".", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w076", "gloss": { "pl": "swoim", "en": "his" }, "function": { "pl": "Odnosi miłosierdzie do Boga. Inaczej niż „sui” w s06 nie odnosi się do pysznych.", "en": "Relates mercy to God. Unlike “sui” in s06, it does not refer to the proud." } }
+      ]
+    },
+    {
+      "id": "s10",
+      "type": "verse",
+      "verse": 55,
+      "translation": {
+        "pl": "Jak powiedział naszym ojcom, Abrahamowi i jego potomstwu na wieki.",
+        "en": "As he spoke to our fathers, to Abraham and to his seed forever."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
+            "locator": "Magnificat, printed pp. 324–325",
+            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
+          }
+        ],
+        "en": [
+          {
+            "title": "The Missal for the Use of the Laity (1853)",
+            "locator": "Canticle of B.V.M., printed p. 346",
+            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
+          }
+        ]
+      },
+      "words": [
+        { "id": "w078", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" }, "gloss": { "pl": "jak", "en": "as" }, "function": { "pl": "Łączy pomoc i pamięć o miłosierdziu z wcześniejszą obietnicą Boga.", "en": "Connects the help and remembered mercy with God's earlier promise." } },
+        { "id": "w079", "form": "locútus", "lemma": "loquor", "morph": { "pos": "verb", "tense": "perf", "mood": "part", "voice": "dep", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w080", "gloss": { "pl": "powiedział", "en": "spoke" }, "function": { "pl": "Imiesłów deponentny z „est” (w080): forma bierna, znaczenie czynne.", "en": "A deponent participle with “est” (w080): passive form, active meaning." } },
+        { "id": "w080", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "—", "en": "has" } },
+        { "id": "w081", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w082", "gloss": { "pl": "do", "en": "to" } },
+        { "id": "w082", "form": "patres", "lemma": "pater", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "ojców", "en": "the fathers" } },
+        { "id": "w083", "form": "nostros", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "head": "w082", "gloss": { "pl": "naszych", "en": "our" } },
+        { "id": "w084", "form": "Ábraham", "lemma": "Abraham", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m" }, "gloss": { "pl": "Abrahamowi", "en": "to Abraham" }, "function": { "pl": "Biblijne imię użyte nieodmiennie w celowniku, równolegle do „sémini”.", "en": "The biblical name used indeclinably in the dative, parallel to “sémini.”" } },
+        { "id": "w085", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w086", "form": "sémini", "lemma": "semen", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "potomstwu", "en": "to the seed" }, "function": { "pl": "Celownik liczby pojedynczej. Rzeczownik zbiorowy oznacza potomstwo Abrahama.", "en": "Dative singular. The collective noun denotes Abraham's descendants." } },
+        { "id": "w087", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg" }, "gloss": { "pl": "jego", "en": "his" }, "function": { "pl": "Odnosi potomstwo do Abrahama.", "en": "Relates the seed to Abraham." } },
+        { "id": "w088", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w089", "gloss": { "pl": "na", "en": "unto" } },
+        { "id": "w089", "form": "sǽcula", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieki", "en": "the ages" }, "function": { "pl": "Wyrażenie czasu trwania: na wieki.", "en": "An expression of duration: forever." } }
+      ]
+    },
+    {
+      "id": "s11",
+      "type": "verse",
+      "translation": {
+        "pl": "Chwała Ojcu i Synowi, i Duchowi Świętemu.",
+        "en": "Glory be to the Father, and to the Son, and to the Holy Spirit."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Książka do nabożeństwa (1883)",
+            "locator": "printed p. 498",
+            "url": "https://commons.wikimedia.org/wiki/File:Ksi%C4%85%C5%BCka_do_nabo%C5%BCe%C5%84stwa_O._Karola_Antoniewicza.djvu"
+          },
+          {
+            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
+            "locator": "printed p. 12",
+            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
+          }
+        ],
+        "en": [
+          {
+            "title": "Key of Heaven (1901)",
+            "locator": "printed p. 55",
+            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
+          }
+        ]
+      },
+      "words": [
+        { "id": "w090", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwała", "en": "glory" }, "function": { "pl": "Z domyślnym „sit”: chwała [niech będzie].", "en": "With an understood “sit”: glory [be]." } },
+        { "id": "w091", "form": "Patri", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcu", "en": "to the Father" }, "function": { "pl": "Celownik zależny od „Glória” (w090).", "en": "Dative dependent on “Glória” (w090)." } },
+        { "id": "w092", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w093", "form": "Fílio", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Synowi", "en": "to the Son" } },
+        { "id": "w094", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w095", "form": "Spirítui", "lemma": "spiritus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Duchowi", "en": "to the Spirit" } },
+        { "id": "w096", "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w095", "gloss": { "pl": "Świętemu", "en": "Holy" }, "function": { "pl": "Zgadza się ze „Spirítui” (w095).", "en": "Agrees with “Spirítui” (w095)." } }
+      ]
+    },
+    {
+      "id": "s12",
+      "type": "verse",
+      "translation": {
+        "pl": "Jak była na początku, teraz i zawsze, i na wieki wieków. Amen.",
+        "en": "As it was in the beginning, is now, and ever shall be, world without end. Amen."
+      },
+      "translation_citations": {
+        "pl": [
+          {
+            "title": "Książka do nabożeństwa (1883)",
+            "locator": "printed p. 498",
+            "url": "https://commons.wikimedia.org/wiki/File:Ksi%C4%85%C5%BCka_do_nabo%C5%BCe%C5%84stwa_O._Karola_Antoniewicza.djvu"
+          },
+          {
+            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
+            "locator": "printed p. 12",
+            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
+          }
+        ],
+        "en": [
+          {
+            "title": "Key of Heaven (1901)",
+            "locator": "printed p. 55",
+            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
+          }
+        ]
+      },
+      "words": [
+        { "id": "w097", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" }, "gloss": { "pl": "jak", "en": "as" } },
+        { "id": "w098", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "była", "en": "it was" }, "function": { "pl": "Imperfectum indicativi z domyślnym podmiotem „glória”.", "en": "Imperfect indicative with the understood subject “glória.”" } },
+        { "id": "w099", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w100", "gloss": { "pl": "na", "en": "in" } },
+        { "id": "w100", "form": "princípio", "post": ",", "lemma": "principium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "początku", "en": "the beginning" } },
+        { "id": "w101", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w102", "form": "nunc", "post": ",", "lemma": "nunc", "morph": { "pos": "adv" }, "gloss": { "pl": "teraz", "en": "now" } },
+        { "id": "w103", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w104", "form": "semper", "post": ",", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "ever" } },
+        { "id": "w105", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
+        { "id": "w106", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w107", "gloss": { "pl": "na", "en": "unto" } },
+        { "id": "w107", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieki", "en": "ages" } },
+        { "id": "w108", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieków", "en": "of ages" }, "function": { "pl": "Dopełniacz zależny od „sǽcula” (w107).", "en": "Genitive dependent on “sǽcula” (w107)." } },
+        { "id": "w109", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+      ]
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "Traditional Roman/Clementine Luke 1:46–55 with each biblical verse kept separate. The 2005 Compendium's salvatore, in progenies et progenies and omission of suae are recorded as a different current recension, not merged. The two final segments exactly reuse orationes.gloria-patri; chant asterisks are performance marks, not spoken words.",
+    "source": {
+      "method": "Transcribed from the page-checked 1952 Enchiridion and collated against the independent 1910 Raccolta and 1853 Husenbeth missal; the 2005 Compendium supplies a current-recension comparison and the fully written doxology.",
+      "witnesses": "witnesses/orationes.magnificat/",
+      "apparatus": "witnesses/orationes.magnificat/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w072": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w084": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+    }
+  }
+}
