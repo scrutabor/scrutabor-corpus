@@ -34,6 +34,7 @@ PROTECTED_PL_TEXTS = frozenset(
         "orationes.angelus-domini",
         "orationes.ave-maria",
         "orationes.gloria-patri",
+        "orationes.memorare",
         "orationes.pater-noster",
         "orationes.regina-caeli",
         "orationes.salve-regina",
