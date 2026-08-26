@@ -12,8 +12,11 @@ from build_reader.emit import (
     expand,
     index,
     language_artifact,
+    language_index,
     normalize_latin,
+    normalize_search,
     read_corpus,
+    tokenize_search,
     update_registry,
     verify,
 )
@@ -136,8 +139,16 @@ def test_the_edition_is_much_smaller_than_its_source(tmp_path):
     source = sum(p.stat().st_size for p in CORPUS.glob("texts/*/*.json")) + sum(
         p.stat().st_size for p in CORPUS.glob("languages/*/texts/*/*.json")
     )
-    made = sum(p.stat().st_size for p in out.rglob("*.json") if p.name != "calendar.json")
-    assert made < source * 0.72, f"{made} against {source} is not worth a build step"
+    artifacts = [p for p in out.rglob("*.json") if p.name != "calendar.json"]
+    localized_search = [
+        p
+        for p in artifacts
+        if p.name == "concordance.json" and "languages" in p.relative_to(out).parts
+    ]
+    reader = sum(p.stat().st_size for p in artifacts if p not in localized_search)
+    made = sum(p.stat().st_size for p in artifacts)
+    assert reader < source * 0.72, f"{reader} against {source} is not worth a build step"
+    assert made < source * 0.76, f"localized search made the edition too large: {made}"
 
 
 def test_the_saving_is_in_the_bytes_parsed_and_not_the_bytes_sent(tmp_path):
@@ -188,6 +199,13 @@ def test_search_forms_ignore_case_accents_and_typed_out_ligatures():
     assert normalize_latin("cælos") == "caelos"
 
 
+def test_target_search_ignores_case_diacritics_and_polish_l_stroke():
+    pious = "Duszo Chrystusowa"
+    assert normalize_search(pious) == normalize_search(pious.upper())
+    assert tokenize_search("Najświętsza Panno") == ["najswietsza", "panno"]
+    assert tokenize_search("Królowo niebios") == ["krolowo", "niebios"]
+
+
 def test_a_posting_is_an_address_and_not_a_position(tmp_path):
     # A lemma page turns a posting into `/app/pl/<text>?w=<id>`. A position is
     # not an address: it moves the moment a word is inserted before it, which
@@ -195,17 +213,42 @@ def test_a_posting_is_an_address_and_not_a_position(tmp_path):
     docs = read_corpus(CORPUS)
     registry = json.loads((REGISTRY / "texts.json").read_text(encoding="utf-8"))
     idx = index(docs, registry)
-    number, word_id = idx["latin"]["lemmata"]["dominus"][0]
+    number, segment_id, word_id, position = idx["latin"]["lemmata"]["dominus"][0]
     text_id = idx["texts"][number]
     doc = next(d for d, _ in docs if d["id"] == text_id)
     found = [w for s in doc["segments"] for w in (s.get("words") or []) if w["id"] == word_id]
     assert found and found[0]["lemma"] == "dominus", f"{text_id}#{word_id} does not resolve"
+    segment = next(segment for segment in doc["segments"] if segment["id"] == segment_id)
+    assert segment["words"][position]["id"] == word_id
+
+
+def test_language_index_finds_a_piously_capitalized_prayer_title_phrase():
+    docs = read_corpus(CORPUS)
+    registry = json.loads((REGISTRY / "texts.json").read_text(encoding="utf-8"))
+    idx = language_index(docs, "pl", registry)
+    number = idx["texts"].index("orationes.anima-christi")
+    duszo = idx["terms"]["duszo"]
+    chrystusowa = idx["terms"]["chrystusowa"]
+    assert [number, "s01", 0] in duszo
+    assert [number, "s01", 1] in chrystusowa
 
 
 def test_the_index_compresses_to_something_a_phone_can_hold(tmp_path):
     out = build(tmp_path)
     packed = len(gzip.compress((out / "concordance.json").read_bytes(), 9))
     assert packed < 150_000, "the index is what search and lemma pages both read"
+
+
+def test_language_indexes_are_small_and_independently_packaged(tmp_path):
+    out = build(tmp_path)
+    for language in ("pl", "en"):
+        path = out / f"languages/{language}/concordance.json"
+        packed = len(gzip.compress(path.read_bytes(), 9))
+        assert packed < 100_000, f"{language} search index is too large ({packed})"
+        manifest = json.loads(
+            (out / f"languages/{language}/manifest.json").read_text(encoding="utf-8")
+        )
+        assert manifest["concordance"] == f"languages/{language}/concordance.json"
 
 
 def test_registry_is_append_only_and_current(tmp_path, monkeypatch):
@@ -232,6 +275,7 @@ def test_generated_json_has_descriptive_paths_and_logical_lines(tmp_path):
         "lexicon/heads.json",
         "languages/pl/manifest.json",
         "languages/pl/lexicon.json",
+        "languages/pl/concordance.json",
         "languages/pl/citations.json",
         "languages/pl/texts/ordinarium/credo.json",
         "calendar.json",

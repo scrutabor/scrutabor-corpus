@@ -58,6 +58,28 @@ def check_manifests(corpus: Path) -> list[str]:
                 f"{where}: manifest/file coverage differs — "
                 f"missing={sorted(set(texts) - actual)} orphaned={sorted(actual - set(texts))}"
             )
+        titles = manifest.get("titles") or {}
+        if not isinstance(titles, dict):
+            errors.append(f"{where}: titles must be an object")
+            titles = {}
+        unknown_titles = sorted(set(titles) - set(texts))
+        if unknown_titles:
+            errors.append(f"{where}: titles name uncovered texts {unknown_titles}")
+        for text_id, metadata in titles.items():
+            title_where = f"{where}:titles.{text_id}"
+            if not isinstance(metadata, dict) or set(metadata) - {"title", "aliases"}:
+                errors.append(f"{title_where}: unknown title metadata shape")
+                continue
+            title = metadata.get("title")
+            if not isinstance(title, str) or not title.strip():
+                errors.append(f"{title_where}: title is required and must be nonempty")
+            aliases = metadata.get("aliases") or []
+            if (
+                not isinstance(aliases, list)
+                or any(not isinstance(alias, str) or not alias.strip() for alias in aliases)
+                or len(aliases) != len(set(aliases))
+            ):
+                errors.append(f"{title_where}: aliases must be unique nonempty strings")
         for required in ("lexicon.json", "translation-provenance.json"):
             if not (corpus / "languages" / language / required).exists():
                 errors.append(f"languages/{language}/{required} is missing")

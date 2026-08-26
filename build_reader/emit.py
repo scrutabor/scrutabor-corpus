@@ -11,7 +11,7 @@ from build_reader import store
 # The reader edition's OWN version. It moves when this file changes what it
 # writes, which is a different event from the corpus changing what it stores —
 # the manifest names both, so a consumer can tell the two apart.
-SCHEMA = "3.0.0"
+SCHEMA = "3.1.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -96,6 +96,20 @@ def _concordance_json(payload: dict) -> str:
     lines.extend(["    },", '    "forms":{'])
     lines.extend(_record_mapping(latin["forms"], "      "))
     lines.extend(["    }", "  }", "}"])
+    return "\n".join(lines) + "\n"
+
+
+def _language_concordance_json(payload: dict) -> str:
+    lines = ["{", f'  "schema_version":{json.dumps(payload["schema_version"])},']
+    lines.append(f'  "language":{json.dumps(payload["language"])},')
+    lines.append('  "texts":[')
+    lines.extend(
+        f"    {_compact(value)}{',' if i + 1 < len(payload['texts']) else ''}"
+        for i, value in enumerate(payload["texts"])
+    )
+    lines.extend(["  ],", '  "terms":{'])
+    lines.extend(_record_mapping(payload["terms"], "    "))
+    lines.extend(["  }", "}"])
     return "\n".join(lines) + "\n"
 
 
@@ -374,13 +388,28 @@ def normalize_latin(value: str) -> str:
     )
 
 
+def normalize_search(value: str) -> str:
+    """A language-neutral, case-insensitive key for reader-entered text."""
+    expanded = value.casefold().replace("æ", "ae").replace("œ", "oe").replace("ł", "l")
+    letters = (
+        char for char in unicodedata.normalize("NFKD", expanded) if not unicodedata.combining(char)
+    )
+    return " ".join("".join(char if char.isalnum() else " " for char in letters).split())
+
+
+def tokenize_search(value: str) -> list[str]:
+    normalized = normalize_search(value)
+    return normalized.split() if normalized else []
+
+
 def index(corpus_docs: list[tuple[dict, dict]], text_registry: list[str] | None = None) -> dict:
     """Lemma and normalized Latin-form postings over stable text addresses.
 
-    A posting is `[text number, word id]`, which is exactly the compound
-    address SCHEMA.md documents and exactly what a link needs. Forms point
-    directly to occurrences rather than through lemmas, so a future search
-    can find candidates without opening every inflection of a homograph.
+    A posting is `[text number, segment id, word id, position]`. The first
+    three values are the stable address SCHEMA.md documents; the final value
+    is derived search geometry. Forms point directly to occurrences rather
+    than through lemmata, so phrase candidates can be ranked before any text
+    document is opened.
     """
     active = [doc["id"] for doc, _ in corpus_docs]
     texts = list(text_registry or active)
@@ -396,24 +425,59 @@ def index(corpus_docs: list[tuple[dict, dict]], text_registry: list[str] | None 
     for doc, _glosses in corpus_docs:
         number = positions[doc["id"]]
         for segment in doc["segments"]:
-            for word in segment.get("words") or []:
+            for position, word in enumerate(segment.get("words") or []):
                 # The WORD ID, not its position. A posting is what a lemma page
                 # turns into a link -- `/app/pl/<text>?w=<id>` -- and a position
                 # is not an address: it moves the moment a word is inserted
                 # before it, which is the one edit the mint exists to survive.
                 # The first draft stored positions and would have produced a
                 # concordance that drifted off its own words.
-                posting = [number, word["id"]]
+                posting = [number, segment["id"], word["id"], position]
                 lemmata.setdefault(word["lemma"], []).append(posting)
                 forms.setdefault(normalize_latin(word["form"]), []).append(posting)
     active_set = set(active)
     return {
-        "schema_version": "1.0.0",
+        "schema_version": "2.0.0",
         "texts": [text_id if text_id in active_set else None for text_id in texts],
         "latin": {
             "lemmata": {k: lemmata[k] for k in sorted(lemmata)},
             "forms": {k: forms[k] for k in sorted(forms)},
         },
+    }
+
+
+def language_index(
+    corpus_docs: list[tuple[dict, dict]], language: str, text_registry: list[str]
+) -> dict:
+    """Normalized target-language verse terms over stable segment addresses."""
+    positions = {text_id: i for i, text_id in enumerate(text_registry)}
+    covered = {doc["id"] for doc, glosses in corpus_docs if language in glosses}
+    missing = sorted(covered - set(positions))
+    if missing:
+        raise RegistryStale(
+            "text registry is stale; run python -m build_reader.update_registry "
+            f"and review the append ({', '.join(missing[:3])})"
+        )
+
+    terms: dict[str, list[list]] = {}
+    for doc, glosses in corpus_docs:
+        layer = glosses.get(language)
+        if layer is None:
+            continue
+        number = positions[doc["id"]]
+        for segment in doc["segments"]:
+            if segment["type"] != "verse":
+                continue
+            translation = (
+                (layer.get("segments") or {}).get(segment["id"], {}).get("translation", "")
+            )
+            for position, term in enumerate(tokenize_search(translation)):
+                terms.setdefault(term, []).append([number, segment["id"], position])
+    return {
+        "schema_version": "1.0.0",
+        "language": language,
+        "texts": [text_id if text_id in covered else None for text_id in text_registry],
+        "terms": {term: terms[term] for term in sorted(terms)},
     }
 
 
@@ -577,6 +641,10 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
                 f"languages/{language}/lexicon.json",
                 _entries_json(lexicon_slice(corpus, language)),
             ),
+            (
+                f"languages/{language}/concordance.json",
+                _language_concordance_json(language_index(corpus_docs, language, text_registry)),
+            ),
         )
         for name, body in localized_outputs:
             (out / name).parent.mkdir(parents=True, exist_ok=True)
@@ -587,17 +655,21 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
             "corpus_schema": corpus_docs[0][0]["schema_version"],
             "language": language,
             "direction": source_manifest["direction"],
-            "texts": [
-                {
-                    "id": doc["id"],
-                    "path": f"languages/{language}/texts/{doc['id'].replace('.', '/', 1)}.json",
-                }
-                for doc, _ in corpus_docs
-                if doc["id"] in covered
-            ],
+            "texts": [],
             "lexicon": f"languages/{language}/lexicon.json",
             "citations": f"languages/{language}/citations.json",
+            "concordance": f"languages/{language}/concordance.json",
         }
+        title_metadata = source_manifest.get("titles") or {}
+        for doc, _ in corpus_docs:
+            if doc["id"] not in covered:
+                continue
+            entry = {
+                "id": doc["id"],
+                "path": f"languages/{language}/texts/{doc['id'].replace('.', '/', 1)}.json",
+            }
+            entry.update(title_metadata.get(doc["id"]) or {})
+            language_manifest["texts"].append(entry)
         language_manifest_path = f"languages/{language}/manifest.json"
         body = json.dumps(language_manifest, ensure_ascii=False, indent=2) + "\n"
         (out / language_manifest_path).write_text(body, encoding="utf-8")

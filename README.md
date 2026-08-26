@@ -40,12 +40,12 @@ The reader edition uses descriptive base paths (`texts/`, `tables/`,
 `lexicon/heads.json`, `calendar.json`, and `concordance.json`) and mirrors each
 published language under `languages/<lang>/`. Root and language manifests make
 the base and every language independently packageable for mobile downloads or
-offline archives. The shared Latin concordance already names candidate texts
-before they are opened. When localized search is added, its file-candidate
-index can be another manifest-named resource inside the relevant language
-package; no text file or other language package has to move, and no unused
-index is committed in advance. Its compact JSON keeps one logical record per
-line. Table and text addresses come from tracked append-only files
+offline archives. The shared Latin concordance and each package's localized
+concordance name candidate texts and segments before they are opened.
+Localized titles and aliases travel in the same language manifest, so a
+partial package exposes only readings it can render and a one-language mobile
+download needs no index from another package. The compact JSON keeps one
+logical record per line. Table and text addresses come from tracked append-only files
 under `build_reader/registry/`; after adding a genuinely new record, run
 `python -m build_reader.update_registry` and review only the appended lines.
 Ordinary builds refuse to invent or renumber those addresses.

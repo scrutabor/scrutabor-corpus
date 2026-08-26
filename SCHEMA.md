@@ -41,7 +41,7 @@ carries the same number.
 ```
 texts/<category>/<name>.json          language-neutral Latin core
 lexicon/lemmata.json                  language-neutral lemma data
-languages/<lang>/manifest.json        explicit published-text coverage
+languages/<lang>/manifest.json        coverage, localized titles and aliases
 languages/<lang>/texts/<category>/<name>.json
                                       one target-language text layer
 languages/<lang>/lexicon.json         senses for the language package
@@ -54,6 +54,14 @@ subset of the neutral texts, but each listed text is complete: every word has a
 gloss, every verse a translation, every rubric a narrative, and every neutral
 localization requirement is fulfilled. Missing languages never fall back to
 another language silently.
+
+The optional manifest `titles` object is keyed by covered text id. Each entry
+has a nonempty `title` and may carry unique nonempty `aliases`. These are
+reader search and display metadata, not alternate recensions. The reader
+edition emits them beside each text's path and emits a manifest-named
+`concordance.json` inside the language package. Search normalization is
+case-insensitive, removes diacritics, expands æ/œ, and treats Polish ł as l;
+display strings retain their authored, devotional capitalization.
 
 Working analysis defaults, source pointers, notes and per-token analysis live
 under the neutral document's `editorial` block. Its `localization` block records
