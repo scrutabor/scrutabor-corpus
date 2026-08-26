@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import copy
 
-SCHEMA = "0.16.0"
+SCHEMA = "0.17.0"
 
 
 def expand_core(core: dict) -> dict:
@@ -52,9 +52,9 @@ def enrich_layer(core: dict, layer: dict) -> dict:
 
     if citations := localization.get("about_citations"):
         out["about_citations"] = copy.deepcopy(citations)
-    for word_id, requirement in (localization.get("functions") or {}).items():
+    for word_id, requirement in (localization.get("explanations") or {}).items():
         if citations := requirement.get("citations"):
-            out["words"][word_id]["function_citations"] = copy.deepcopy(citations)
+            out["words"][word_id]["explanation_citations"] = copy.deepcopy(citations)
     for segment_id, citations in (localization.get("narrative_citations") or {}).items():
         out["segments"][segment_id]["narrative_citations"] = copy.deepcopy(citations)
     return out

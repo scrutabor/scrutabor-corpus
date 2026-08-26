@@ -168,10 +168,10 @@ class TestReaderFacingCitations:
         found = lint_gloss(gloss(about_citations=[CITATION]), TEXT)
         assert any("citations without an about paragraph" in e for e in found)
 
-    def test_a_function_source_requires_a_function_note(self):
-        g = gloss(words={"w001": {"gloss": "witaj", "function_citations": [CITATION]}})
+    def test_an_explanation_source_requires_an_explanation(self):
+        g = gloss(words={"w001": {"gloss": "witaj", "explanation_citations": [CITATION]}})
         found = lint_gloss(g, TEXT)
-        assert any("citations without a function note" in e for e in found)
+        assert any("citations without an explanation" in e for e in found)
 
     def test_a_narrative_source_requires_a_narrative(self):
         text = {"id": "orationes.test", "segments": [{"id": "s01", "type": "rubric"}]}
@@ -216,7 +216,7 @@ class TestReaderFacingCitations:
 
 class TestWhereTheRulesAlreadyApplied:
     def test_a_banned_term_in_a_function_note_is_still_refused(self):
-        g = gloss(words={"w001": {"gloss": "witaj", "function": "Stoi w ablatiwie."}})
+        g = gloss(words={"w001": {"gloss": "witaj", "explanation": "Stoi w ablatiwie."}})
         assert any("banned terminology" in e for e in lint_gloss(g, TEXT))
 
     def test_and_in_a_translation(self):
@@ -230,7 +230,7 @@ class TestContextualReadings:
             words={
                 "w001": {
                     "gloss": "będę szukał",
-                    "function": (
+                    "explanation": (
                         "Forma może mieć dwa odczytania. Wydanie nie rozstrzyga tej dwuznaczności."
                     ),
                 }
@@ -278,7 +278,7 @@ class TestContextualReadings:
             words={
                 "w001": {
                     "gloss": "będę szukał",
-                    "function": "Forma może mieć dwa odczytania. Przekład przyjmuje futurum.",
+                    "explanation": "Forma może mieć dwa odczytania. Przekład przyjmuje futurum.",
                 }
             }
         )
@@ -290,12 +290,24 @@ class TestContextualReadings:
             words={
                 "w001": {
                     "gloss": "be put to shame",
-                    "function": "Tense and mood are left unclaimed.",
+                    "explanation": "Tense and mood are left unclaimed.",
                 }
             },
         )
         found = lint_gloss(g, TEXT)
         assert any("leaves the edition unresolved" in e for e in found)
+
+    def test_a_stock_grammar_explanation_is_refused(self):
+        g = gloss(
+            words={
+                "w001": {
+                    "gloss": "Królowo",
+                    "explanation": "Wołacz jest drugim tytułem Maryi.",
+                }
+            }
+        )
+        found = lint_gloss(g, TEXT)
+        assert any("merely restates structured grammar" in error for error in found)
 
 
 class TestPossessiveAbsorption:

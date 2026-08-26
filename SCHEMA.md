@@ -1,4 +1,4 @@
-# Corpus schema v0 (0.16.0)
+# Corpus schema v0 (0.17.0)
 
 Three semantic layers: language-neutral Latin, per-language gloss/editorial
 content, and a corpus-wide lexicon. Since 0.16.0 each Latin text is a neutral
@@ -75,8 +75,8 @@ display strings retain their authored, devotional capitalization.
 Working analysis defaults, source pointers, notes and per-token analysis live
 under the neutral document's `editorial` block. Its `localization` block records
 language-independent topology: whether an introduction is required, which
-words require contextual functions or disputed-reading notes, and the shared
-citations supporting introductions, functions and rubric narratives. Citations
+words require contextual explanations or disputed-reading notes, and the shared
+citations supporting introductions, explanations and rubric narratives. Citations
 supporting the particular wording of a translation remain in its language
 package. `build_reader/store.py` combines these layers only in memory for checks.
 
@@ -91,9 +91,11 @@ restate what another layer already carries:
 2. **Morphology** (per token, structured): the `morph` object states THE
    parse in this context — apps render it as prose. This is where formal
    ambiguity (María vocative, not nominative) is resolved.
-3. **`function` note** (per token, prose, OPTIONAL): only what is true of
-   this word in this sentence and not derivable from the other two layers —
-   see the gloss document section.
+3. **`explanation`** (per token, prose, OPTIONAL): a reader-facing insight
+   true of this occurrence and not derivable from the other two layers —
+   meaning, imagery, idiom, ellipsis, a translation difficulty, textual
+   history, or a liturgical and scriptural resonance. It is not a prose
+   rendering of the parse; see the language-layer section.
 
 ## Word IDs (binding rules)
 
@@ -492,7 +494,7 @@ entries{ <lemma>: { senses[], note?, derivatives?, analysis? } }
   true of the word everywhere. What used to be repeated on every token of
   `amen` lives here now. A lemma page supplies no verse or prayer as an
   antecedent, so deictic wording such as “w tym wersecie” / “in this verse”
-  is forbidden. Move that claim to the occurrence's `function`, or name an
+  is forbidden. Move that claim to the occurrence's `explanation`, or name an
   indispensable context explicitly (“In Psalm 118:34…”).
 - `note_citations` (since 0.11.0): optional reader-facing sources for the
   localized `note`. Since 0.16.0 the note requirement and citations live once
@@ -515,7 +517,7 @@ entries{ <lemma>: { senses[], note?, derivatives?, analysis? } }
 ```
 schema_version, language, text, about,
 segments{ <seg-id>: { translation, translation_citations? | narrative } },
-words{ <word-id>: { gloss, function?, note? } }
+words{ <word-id>: { gloss, explanation?, note? } }
 ```
 
 - `about` (since 0.8.0; required for a published text): one short paragraph introducing the
@@ -532,29 +534,27 @@ words{ <word-id>: { gloss, function?, note? } }
   A token whose sense a neighboring word's gloss has absorbed (the
   auxiliary of a periphrastic whose participle glosses the whole tense)
   glosses as an em dash `—`: the declared interlinear null.
-- `function` (OPTIONAL, contextual-only): 1–3 sentences on what this word
-  does **in this sentence**, in the target language, for a reader with basic
-  Latin. Belongs here: agreement ("agrees with «culpa»"), apposition,
-  government ("ablative after «pro»"), implied verbs, resolution of formal
-  ambiguity (culpă/culpā), word order, idiom, scriptural or liturgical
-  resonance of the phrase. Does NOT belong here: bare parse restatements
-  (the morph layer renders those) or lemma-level facts (the lexicon carries
-  those). Naming a case is fine when the case is the hinge of the claim
-  ("vocative, not dative — direct address"), never as a standalone label.
-  When the form alone admits more than one parse, the note may name the
-  alternatives, but it must also state the contextual reading adopted by the
-  structured morphology and gloss. It may not say that the edition leaves
-  unresolved a choice its own translation has already made.
-  Omit the key entirely when the parse and lexicon already say everything.
-  Required sites are declared by `localization.functions` in the neutral core.
+- `explanation` (OPTIONAL, contextual-only): usually 1–3 sentences that add a
+  coherent reader-facing insight in the target language. Belongs here:
+  meaning that a short gloss cannot carry, sacred imagery or referents,
+  idiom and ellipsis, a consequential ambiguity and its adopted reading,
+  a non-obvious translation difference, textual history, or scriptural and
+  liturgical resonance. Does NOT belong here: agreement, government, case,
+  person, number, or another bare parse restatement already rendered from
+  `morph` and `head`; nor a lemma-level fact already in the lexicon. A formal
+  term may appear when it is necessary to explain a genuine ambiguity, but
+  it must serve the meaning rather than become the explanation's subject.
+  Omit the key entirely when the gloss, form row, and lexicon already say
+  everything. Required sites are declared by `localization.explanations` in
+  the neutral core.
   **Self-contained prose** — each entry is read
   in isolation. The only permitted cross-reference is the quoted-form
   pattern `„form” (wNNN)` (EN: `“form” (wNNN)`): the app renders the quoted
   form as a tap-link to that word and hides the id; bare ids in prose are
   lint errors.
-- `function_citations` (since 0.11.0): optional reader-facing sources for the
-  `function` note. Since 0.16.0 they are stored once at the corresponding
-  `localization.functions` site in the neutral core.
+- `explanation_citations` (renamed in 0.17.0): optional reader-facing sources
+  for the `explanation`. They are stored once at the corresponding
+  `localization.explanations` site in the neutral core.
 - `narrative` (rubric segments): "what is happening at the altar" in the
   target language.
 - `narrative_citations` (since 0.11.0): optional reader-facing sources for

@@ -86,7 +86,7 @@ class TestWhereItReads:
         )
 
     def test_and_in_a_gloss_and_a_function_note(self):
-        doc = gloss(words={"w001": {"gloss": "honour", "function": "Towards the altar."}})
+        doc = gloss(words={"w001": {"gloss": "honour", "explanation": "Towards the altar."}})
         assert len(check(TEXT, doc)) == 2
 
     def test_a_quoted_verse_keeps_the_spelling_of_the_source(self):

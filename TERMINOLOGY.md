@@ -1,9 +1,12 @@
 # Terminology contract — gloss-language grammar vocabulary
 
-Read before writing any gloss `function` text; the linter enforces the banned
-list. One term per concept, corpus-wide. Extend the tables when new
-morphology appears (participles etc.); never introduce a synonym for a term
-already listed.
+Read before writing any contextual `explanation`; the linter enforces the
+banned list and rejects stock grammatical openings that merely restate the
+form row. An explanation is optional: keep it only when it helps a reader
+understand the prayer's meaning, wording, imagery, source, or a genuine
+translation difficulty. One term per concept, corpus-wide. Extend the tables
+when new morphology appears (participles etc.); never introduce a synonym for
+a term already listed.
 
 ## Polish
 
@@ -38,3 +41,8 @@ already listed.
 `checks/lint.py` `BANNED_TERMS`: PL bans `ablatiw`, `ablativ* środka`,
 `zgodn* z`, `rozkaźnik`; EN bans `„`.
 Add a row here AND a pattern there when a new decision lands.
+
+`REDUNDANT_EXPLANATION_OPENINGS` rejects templates such as “Wołacz jest…”
+and “Dopełniacz liczby mnogiej…”. Case and agreement already belong to the
+structured morphology; prose may mention them only when they unlock a real
+ambiguity or a meaningful difference in translation.

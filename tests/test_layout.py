@@ -63,11 +63,11 @@ class TestTheGlossLayer:
         g = {
             "schema_version": "0.9.0",
             "lang": "pl",
-            "words": {"w001": {"gloss": "Witaj", "function": "Tryb rozkazujący."}},
+            "words": {"w001": {"gloss": "Witaj", "explanation": "Tryb rozkazujący."}},
             "segments": {"s01": {"translation": "Witaj."}},
         }
         out = formatted(g)
-        assert '"w001": { "gloss": "Witaj", "function": "Tryb rozkazujący." }' in out
+        assert '"w001": { "gloss": "Witaj", "explanation": "Tryb rozkazujący." }' in out
         assert '"s01": { "translation": "Witaj." }' in out
 
 

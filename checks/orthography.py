@@ -131,7 +131,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
     report("about", gloss.get("about") or "")
     for wid, entry in (gloss.get("words") or {}).items():
         report(wid, entry.get("gloss") or "")
-        report(f"{wid} note", entry.get("function") or "")
+        report(f"{wid} explanation", entry.get("explanation") or "")
     for sid, segment in (gloss.get("segments") or {}).items():
         report(f"{sid} rubric", segment.get("narrative") or "")
         # a cited verse quotes its source, spelling and all

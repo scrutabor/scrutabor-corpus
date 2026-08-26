@@ -7,7 +7,7 @@ same tense with an inflection instead of a second word. Polish does: *locútus
 est* is *mówił*, one word, and there is nothing for the auxiliary's cell.
 
 Where that happens the cell carries an em dash, and this check requires the
-pair to declare it — a note on the participle, or on the auxiliary itself,
+pair to declare it — an explanation on the participle, or on the auxiliary itself,
 saying the construction has no separate counterpart in this language. A bare
 dash with no explanation is a hole a reader falls into: they tap the word and
 are told nothing at all.
@@ -48,13 +48,13 @@ def check(doc: dict, gloss: dict) -> list[str]:
             )
             continue
 
-        explained = (entry.get("function") or "").strip() or (
-            entries.get(previous["id"], {}).get("function") or ""
+        explained = (entry.get("explanation") or "").strip() or (
+            entries.get(previous["id"], {}).get("explanation") or ""
         ).strip()
         if not explained:
             errors.append(
                 f"{doc['id']}:{wid} ({previous['form']} {word['form']}): the {lang} gloss is a "
-                f"dash and nothing says why — note the fusion on the participle or on the "
+                f"dash and nothing says why — explain the fusion on the participle or on the "
                 f"auxiliary, or gloss the auxiliary with the word this language uses"
             )
     return errors

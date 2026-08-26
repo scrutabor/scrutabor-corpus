@@ -1,9 +1,8 @@
-"""The note a reader reads and the tag a reader parses must say the same thing.
+"""A contextual explanation and the structured parse must not disagree.
 
-The gloss files explain each word in prose, and that prose names the word a
-form agrees with or the preposition that governs it, with the word id beside
-it: *Zgadza się z „pópulum" (w007)*, *Agrees with "culpa" (w034)*, *Ablативus
-po „in" (w029)*. The text files record the same relation as data, in `head`.
+Most explanations no longer narrate routine grammar. A genuinely useful
+explanation may still name a formal ambiguity or a relation to another word,
+however, and the text files record the adopted relation as data in `head`.
 
 Nothing compared them, and they had drifted apart in both directions: *ipsa*
 tagged feminine under a note reading "neuter plural", *clamántem* headed at
@@ -11,7 +10,7 @@ tagged feminine under a note reading "neuter plural", *clamántem* headed at
 calling it substantival. A reader meets both layers on the same panel.
 
 The claim is only extracted where the prose makes it unambiguously — an
-agreement phrase or a government phrase, immediately followed by an id. Notes
+agreement phrase or a government phrase, immediately followed by an id. Explanations
 that merely mention another word ("It joins X to Y") assert no relation this
 file can check, and are left alone.
 """
@@ -20,8 +19,8 @@ from __future__ import annotations
 
 import re
 
-# "agrees with X (wNNN)" — the note claims W's head is wNNN.
-# A note's opening clause usually states the parse: "Ablativus po „in"",
+# "agrees with X (wNNN)" — the explanation claims W's head is wNNN.
+# An explanation's opening clause can state the parse: "Ablativus po „in"",
 # "Nominative plural". That is a claim about THIS word, and the tag beneath it
 # is the same claim as data. Three things make a case word NOT such a claim,
 # and all three occur: the note may name a case the word GOVERNS ("It governs
@@ -82,9 +81,9 @@ SCRIPTURE = re.compile(r"\b\d+\s*,\s*\d+|\b[A-Z][a-z]{1,3}\s+\d+[:,]\d+")
 OPENING = re.compile(r"^([^.;:—]{0,60})")
 
 
-def _parse_claim(note: str, form: str, table: dict) -> str | None:
-    """The morphological value this note claims about its OWN word, if any."""
-    match = OPENING.match(note)
+def _parse_claim(explanation: str, form: str, table: dict) -> str | None:
+    """The morphological value the prose claims about its own word, if any."""
+    match = OPENING.match(explanation)
     if match is None:
         return None
     opening = match.group(1)
@@ -136,46 +135,46 @@ def check(doc: dict, gloss: dict) -> list[str]:
     lang = gloss.get("lang", "?")
     errors: list[str] = []
     for wid, entry in (gloss.get("words") or {}).items():
-        note = entry.get("function")
+        explanation = entry.get("explanation")
         word = words.get(wid)
-        if not note or word is None or not is_modifier(word):
+        if not explanation or word is None or not is_modifier(word):
             continue
 
-        for named in _claims(note, AGREES):
+        for named in _claims(explanation, AGREES):
             named = {c for c in named if c in words}
             if not named or word.get("head") in named:
                 continue
             shown = " / ".join(f"{words[c]['form']!r} ({c})" for c in sorted(named))
             if word.get("substantive"):
                 errors.append(
-                    f"{doc['id']}:{wid} ({word['form']}): the {lang} note says it agrees "
+                    f"{doc['id']}:{wid} ({word['form']}): the {lang} explanation says it agrees "
                     f"with {shown}, but the word is marked `substantive`, which claims "
                     f"it agrees with nothing expressed"
                 )
             else:
                 errors.append(
-                    f"{doc['id']}:{wid} ({word['form']}): the {lang} note says it agrees "
+                    f"{doc['id']}:{wid} ({word['form']}): the {lang} explanation says it agrees "
                     f"with {shown}, but head={word.get('head')!r}"
                 )
 
-    # The parse a note states about its OWN word, against the tag beneath it.
-    # This reads every word, not only modifiers: a noun's note states its case
+    # The parse an explanation states about its own word, against the tag beneath it.
+    # This reads every word, not only modifiers: a noun's prose states its case
     # as readily as an adjective's.
     for wid, entry in (gloss.get("words") or {}).items():
-        note = entry.get("function")
+        explanation = entry.get("explanation")
         word = words.get(wid)
-        if not note or word is None:
+        if not explanation or word is None:
             continue
         for label, table, field in (
             ("case", CASE_WORDS, "case"),
             ("number", NUMBER_WORDS, "number"),
             ("mood", MOOD_WORDS, "mood"),
         ):
-            claimed = _parse_claim(note, word["form"], table.get(lang, {}))
+            claimed = _parse_claim(explanation, word["form"], table.get(lang, {}))
             actual = word["morph"].get(field)
             if claimed and actual and claimed != actual:
                 errors.append(
-                    f"{doc['id']}:{wid} ({word['form']}): the {lang} note calls it "
+                    f"{doc['id']}:{wid} ({word['form']}): the {lang} explanation calls it "
                     f"{label}={claimed!r}, but the tag says {actual!r}"
                 )
 

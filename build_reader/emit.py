@@ -11,7 +11,7 @@ from build_reader import store
 # The reader edition's OWN version. It moves when this file changes what it
 # writes, which is a different event from the corpus changing what it stores —
 # the manifest names both, so a consumer can tell the two apart.
-SCHEMA = "3.2.0"
+SCHEMA = "3.3.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -209,15 +209,15 @@ def core_artifact(
         if cited := (localization.get("narrative_citations") or {}).get(segment["id"]):
             row["nc"] = citations.intern_all(cited)
         if words:
-            function_requirements = localization.get("functions") or {}
+            explanation_requirements = localization.get("explanations") or {}
             cited = {
                 word["id"]: citations.intern_all(requirement["citations"])
                 for word in words
-                if (requirement := function_requirements.get(word["id"]))
+                if (requirement := explanation_requirements.get(word["id"]))
                 and requirement.get("citations")
             }
             if cited:
-                row["fc"] = cited
+                row["ec"] = cited
         segments.append(row)
 
     artifact: dict = {"id": doc["id"]}
@@ -261,7 +261,7 @@ def language_artifact(
         if words:
             entries = layer.get("words") or {}
             row["g"] = [(entries.get(word["id"]) or {}).get("gloss", "") for word in words]
-            for field, short in (("function", "fn"), ("note", "nt")):
+            for field, short in (("explanation", "ex"), ("note", "nt")):
                 prose = {
                     word["id"]: (entries.get(word["id"]) or {}).get(field)
                     for word in words
@@ -293,7 +293,7 @@ def expand(
     than checking field against field -- which tests only the fields somebody
     remembered to list -- the edition is expanded and compared whole. A field
     added to the corpus and forgotten here fails as a difference, not as
-    silence. The app carries this same function in TypeScript.
+    silence. The app carries this same operation in TypeScript.
     """
     doc: dict = {}
     layer: dict = {
@@ -322,7 +322,7 @@ def expand(
         localized = localized_rows[row["id"]]
         segment: dict = {}
         for key, value in row.items():
-            if key in ("w", "fc", "nc", "an"):
+            if key in ("w", "ec", "nc", "an"):
                 continue
             segment[key] = value
         if "an" in row:
@@ -353,13 +353,13 @@ def expand(
                     word["analysis"] = analyses[cell["a"]]
                 words.append(word)
                 entry: dict = {"gloss": localized["g"][position]}
-                for field, short in (("function", "fn"), ("note", "nt")):
+                for field, short in (("explanation", "ex"), ("note", "nt")):
                     value = (localized.get(short) or {}).get(cell["i"])
                     if value:
                         entry[field] = value
-                cited = (row.get("fc") or {}).get(cell["i"])
+                cited = (row.get("ec") or {}).get(cell["i"])
                 if cited:
-                    entry["function_citations"] = [shared_citations[i] for i in cited]
+                    entry["explanation_citations"] = [shared_citations[i] for i in cited]
                 layer["words"][cell["i"]] = entry
             segment["words"] = words
         segments.append(segment)

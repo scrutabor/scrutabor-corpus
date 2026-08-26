@@ -12,7 +12,7 @@ LANGUAGE_RE = re.compile(r"^[a-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$")
 CORE_LOCALIZATION_KEYS = {
     "about",
     "about_citations",
-    "functions",
+    "explanations",
     "notes",
     "narrative_citations",
 }
@@ -111,18 +111,18 @@ def check_core(core: dict) -> list[str]:
     word_ids = {
         word["id"] for segment in core.get("segments") or [] for word in segment.get("words") or []
     }
-    functions = localization.get("functions") or {}
-    if not isinstance(functions, dict):
-        errors.append(f"{text_id}: localization.functions must be an object")
-        functions = {}
-    for word_id, requirement in functions.items():
+    explanations = localization.get("explanations") or {}
+    if not isinstance(explanations, dict):
+        errors.append(f"{text_id}: localization.explanations must be an object")
+        explanations = {}
+    for word_id, requirement in explanations.items():
         if word_id not in word_ids:
-            errors.append(f"{text_id}: function requirement for unknown word {word_id}")
+            errors.append(f"{text_id}: explanation requirement for unknown word {word_id}")
         if not isinstance(requirement, dict) or set(requirement) - {"citations"}:
-            errors.append(f"{text_id}:{word_id}: function requirement has unknown shape")
+            errors.append(f"{text_id}:{word_id}: explanation requirement has unknown shape")
             continue
         if citations := requirement.get("citations"):
-            errors += lint_citations(citations, f"{text_id}:{word_id}:function")
+            errors += lint_citations(citations, f"{text_id}:{word_id}:explanation")
 
     notes = localization.get("notes") or []
     if not isinstance(notes, list) or len(notes) != len(set(notes)):
@@ -160,7 +160,7 @@ def check_core(core: dict) -> list[str]:
                 f"{text_id}:{segment['id']}: localized fields in neutral core {sorted(forbidden)}"
             )
         for word in segment.get("words") or []:
-            forbidden = set(word) & {"gloss", "function", "function_citations", "note"}
+            forbidden = set(word) & {"gloss", "explanation", "explanation_citations", "note"}
             if forbidden:
                 errors.append(
                     f"{text_id}:{word['id']}: localized fields in neutral core {sorted(forbidden)}"
@@ -209,26 +209,26 @@ def check_layer(core: dict, layer: dict, path: Path) -> list[str]:
     core_word_ids = [word["id"] for segment in core_segments for word in segment.get("words") or []]
     if list(words) != core_word_ids:
         errors.append(f"{where}: word coverage or order differs from the neutral core")
-    expected_functions = set((core.get("localization") or {}).get("functions") or {})
+    expected_explanations = set((core.get("localization") or {}).get("explanations") or {})
     expected_notes = set((core.get("localization") or {}).get("notes") or [])
-    actual_functions: set[str] = set()
+    actual_explanations: set[str] = set()
     actual_notes: set[str] = set()
     for word_id in core_word_ids:
         entry = words.get(word_id) or {}
-        unknown = set(entry) - {"gloss", "function", "note"}
+        unknown = set(entry) - {"gloss", "explanation", "note"}
         if unknown:
             errors.append(f"{where}:{word_id}: unknown keys {sorted(unknown)}")
         if not isinstance(entry.get("gloss"), str) or not entry["gloss"].strip():
             errors.append(f"{where}:{word_id}: gloss is required and must be nonempty")
-        if "function" in entry:
-            actual_functions.add(word_id)
+        if "explanation" in entry:
+            actual_explanations.add(word_id)
         if "note" in entry:
             actual_notes.add(word_id)
-    if actual_functions != expected_functions:
+    if actual_explanations != expected_explanations:
         errors.append(
-            f"{where}: function topology differs — "
-            f"missing={sorted(expected_functions - actual_functions)} "
-            f"extra={sorted(actual_functions - expected_functions)}"
+            f"{where}: explanation topology differs — "
+            f"missing={sorted(expected_explanations - actual_explanations)} "
+            f"extra={sorted(actual_explanations - expected_explanations)}"
         )
     if actual_notes != expected_notes:
         errors.append(

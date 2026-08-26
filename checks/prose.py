@@ -78,7 +78,7 @@ def check(doc: dict) -> list[str]:
             for language, narrative in (segment.get("narrative") or {}).items():
                 errors += _sweep(f"{tid}:{segment_id}.narrative.{language}", narrative)
             for word in segment.get("words") or []:
-                for key in ("function", "note"):
+                for key in ("explanation", "note"):
                     for language, prose in (word.get(key) or {}).items():
                         errors += _sweep(f"{tid}:{word.get('id', '?')}.{key}.{language}", prose)
         return errors
@@ -89,7 +89,7 @@ def check(doc: dict) -> list[str]:
         if narrative := segment.get("narrative"):
             errors += _sweep(f"{tid}:{sid}.narrative.{lang}", narrative)
     for wid, word in (doc.get("words") or {}).items():
-        for key in ("function", "note"):
+        for key in ("explanation", "note"):
             if prose := word.get(key):
                 errors += _sweep(f"{tid}:{wid}.{key}.{lang}", prose)
     return errors

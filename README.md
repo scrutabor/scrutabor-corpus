@@ -4,11 +4,13 @@ Word-by-word annotated Latin sacral texts — the traditional Roman liturgy
 (1962 Missale Romanum) first, the Church's common prayers as the corpus
 grows — with gloss layers in Polish and English.
 
-Every Latin word carries its lemma, a full morphological analysis, a
-reading gloss, and a short explanation of its function in the sentence —
-*why Deo and not Deum*. Rubrics carry a narrative layer describing what is
-happening at the altar. The corpus is the data behind the Scrutabor
-reading app ([scrutabor](https://github.com/scrutabor/scrutabor)), live at
+Every Latin word carries its lemma, a full morphological analysis, and a
+reading gloss. A deliberately smaller set also carries a contextual
+explanation where idiom, ellipsis, translation, textual history, or sacred
+imagery adds something the structured analysis cannot say. Rubrics carry a
+narrative layer describing what is happening at the altar. The corpus is the
+data behind the Scrutabor reading app
+([scrutabor](https://github.com/scrutabor/scrutabor)), live at
 [scrutabor.org](https://scrutabor.org).
 
 **Status: working edition.** 122 texts, fully annotated in both languages:

@@ -105,7 +105,7 @@ def test_only_a_translation_citation_counts_as_wording():
             }
         },
         "about_citations": [{"title": "W", "locator": "2"}],
-        "words": {"w1": {"function_citations": [{"title": "W", "locator": "3"}]}},
+        "words": {"w1": {"explanation_citations": [{"title": "W", "locator": "3"}]}},
     }
     works = {"W": {"rights": {"status": "permission", "basis": "b"}}}
     assert exposure([doc], works)["permission"] == 1

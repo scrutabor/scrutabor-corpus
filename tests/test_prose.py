@@ -31,7 +31,7 @@ def a_text(**over):
                         "id": "w001",
                         "form": "Glória",
                         "gloss": {"pl": "chwała", "en": "glory"},
-                        "function": {"pl": "Mianownik.", "en": "Nominative."},
+                        "explanation": {"pl": "Mianownik.", "en": "Nominative."},
                     }
                 ],
             },
@@ -60,10 +60,10 @@ class TestTheSemicolon:
         doc["segments"][0]["narrative"]["pl"] = "Kapłan się pochyla; potem czyta."
         assert any("s01.narrative.pl" in e for e in check(doc))
 
-    def test_one_in_a_function_note_is_refused(self):
+    def test_one_in_an_explanation_is_refused(self):
         doc = a_text()
-        doc["segments"][1]["words"][0]["function"]["en"] = "Nominative; the subject."
-        assert any("w001.function.en" in e for e in check(doc))
+        doc["segments"][1]["words"][0]["explanation"]["en"] = "Nominative; the subject."
+        assert any("w001.explanation.en" in e for e in check(doc))
 
     def test_a_verse_translation_keeps_the_punctuation_of_its_own_text(self):
         doc = a_text()

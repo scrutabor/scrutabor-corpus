@@ -37,7 +37,7 @@ def case(head, note, substantive=False):
             }
         ],
     }
-    return doc, {"lang": "pl", "words": {"w002": {"function": note}}}
+    return doc, {"lang": "pl", "words": {"w002": {"explanation": note}}}
 
 
 def test_the_note_and_the_head_must_name_the_same_word():
@@ -117,6 +117,6 @@ def test_the_check_reports_a_real_disagreement():
             }
         ],
     }
-    gloss = {"lang": "en", "words": {"w001": {"function": "Ablative after “in”."}}}
+    gloss = {"lang": "en", "words": {"w001": {"explanation": "Ablative after “in”."}}}
     errors = check(doc, gloss)
     assert errors and "case='abl'" in errors[0] and "'dat'" in errors[0]

@@ -77,7 +77,7 @@ def test_what_a_reader_is_shown_does_survive(tmp_path):
             if indices := row.get("nc"):
                 seen += len(indices)
                 assert all(citations[i]["title"] for i in indices)
-            for indices in (row.get("fc") or {}).values():
+            for indices in (row.get("ec") or {}).values():
                 seen += len(indices)
                 assert all(citations[i]["title"] for i in indices)
     for language in ("pl", "en"):

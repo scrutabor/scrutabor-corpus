@@ -106,7 +106,7 @@ BANNED_TERMS = {
     "en": ["„"],  # Polish low-opening quote in English text
 }
 
-# A word gloss is already this edition's contextual reading. A function note
+# A word gloss is already this edition's contextual reading. An explanation
 # may explain that the bare Latin form admits another parse, but it may not
 # then claim that the edition leaves the choice unresolved.
 UNRESOLVED_READER_CLAIMS = {
@@ -119,6 +119,25 @@ UNRESOLVED_READER_CLAIMS = {
         r"this edition does not resolve",
         r"the sentence does not (?:resolve|determine)",
         r"tense and mood are left unclaimed",
+    ],
+}
+
+# These openings make grammar itself the message even though the form row
+# already renders the same structured facts.  A case or agreement term may
+# still appear later when it unlocks a genuine ambiguity or translation
+# difficulty; what is rejected is the old stock-note template.
+REDUNDANT_EXPLANATION_OPENINGS = {
+    "pl": [
+        r"^(?:wołacz|mianownik|biernik|celownik) (?:jest|nazywa|pełni)",
+        r"^dopełniacz liczby ",
+        r"^(?:przymiotnik|imiesłów) zgadza się ",
+        r"^tryb rozkazujący\.?$",
+    ],
+    "en": [
+        r"^(?:the )?(?:vocative|nominative|accusative|dative) (?:is|names|serves)",
+        r"^the genitive plural ",
+        r"^(?:the )?(?:adjective|participle) agrees with ",
+        r"^imperative mood\.?$",
     ],
 }
 
@@ -445,7 +464,7 @@ def plain(word):
 # the book: an empty gloss has been refused since the beginning, and an emptied
 # `translation` passed every gate the corpus had (census, 2026-08-19).
 READER_FACING = frozenset(
-    ("translation", "gloss", "narrative", "about", "function", "title", "senses")
+    ("translation", "gloss", "narrative", "about", "explanation", "title", "senses")
 )
 
 
@@ -818,20 +837,26 @@ def lint_gloss(doc, text_doc):
     for wid, entry in gw.items():
         if not entry.get("gloss"):
             errors.append(f"{lang}:{wid}: missing gloss")
-        # function is OPTIONAL (contextual-only, SCHEMA.md 0.5.0) — omit the
+        # explanation is OPTIONAL — omit the
         # key entirely; an empty string is an authoring error, not an omission.
-        if "function" in entry and not entry["function"]:
-            errors.append(f"{lang}:{wid}: empty function — omit the key instead")
-        if "function_citations" in entry:
-            if not entry.get("function"):
-                errors.append(f"{lang}:{wid}: citations without a function note")
-            errors += lint_citations(entry["function_citations"], f"{lang}:{wid}")
-        fn = entry.get("function", "")
-        check_prose(wid, entry.get("gloss", "") + " " + fn)
-        for ref in REF_RE.finditer(fn):
+        if "explanation" in entry and not entry["explanation"]:
+            errors.append(f"{lang}:{wid}: empty explanation — omit the key instead")
+        if "explanation_citations" in entry:
+            if not entry.get("explanation"):
+                errors.append(f"{lang}:{wid}: citations without an explanation")
+            errors += lint_citations(entry["explanation_citations"], f"{lang}:{wid}")
+        explanation = entry.get("explanation", "")
+        check_prose(wid, entry.get("gloss", "") + " " + explanation)
+        for pattern in REDUNDANT_EXPLANATION_OPENINGS.get(lang, []):
+            if re.search(pattern, explanation, re.IGNORECASE):
+                errors.append(
+                    f"{lang}:{wid}: explanation merely restates structured grammar "
+                    f"({pattern!r}) — omit it or explain why the distinction matters"
+                )
+        for ref in REF_RE.finditer(explanation):
             if ref.group(1) not in words:
                 errors.append(f"{lang}:{wid}: dangling cross-reference {ref.group(1)}")
-        for qm in QUOTE_REF_RE.finditer(fn):
+        for qm in QUOTE_REF_RE.finditer(explanation):
             quoted, rid = qm.groups()
             if rid in words and quoted != words[rid]["form"]:
                 errors.append(
@@ -841,7 +866,7 @@ def lint_gloss(doc, text_doc):
         # reference is the quoted-form pattern above (the app renders it as a
         # link and hides the id). Bare ids ("Jak w004") are author shorthand
         # leaking to readers.
-        remainder = QUOTE_REF_RE.sub("", fn)
+        remainder = QUOTE_REF_RE.sub("", explanation)
         for bare in re.finditer(r"\bw\d{3}\b", remainder):
             errors.append(f"{lang}:{wid}: bare word-id {bare.group(0)!r} in reader-facing prose")
     for sid, seg in doc.get("segments", {}).items():
@@ -871,15 +896,15 @@ def lint_parity(gloss_docs):
     if len(gloss_docs) < 2:
         return errors
     base = gloss_docs[0]
-    base_fn = {wid for wid, e in base["words"].items() if "function" in e}
+    base_explanations = {wid for wid, e in base["words"].items() if "explanation" in e}
 
     def citations(doc):
         return {
             "about": doc.get("about_citations"),
             "words": {
-                wid: entry["function_citations"]
+                wid: entry["explanation_citations"]
                 for wid, entry in doc["words"].items()
-                if "function_citations" in entry
+                if "explanation_citations" in entry
             },
             "segments": {
                 sid: entry["narrative_citations"]
@@ -895,13 +920,13 @@ def lint_parity(gloss_docs):
                 f"parity: word coverage differs {base['lang']} vs {other['lang']}: "
                 f"{sorted(set(base['words']) ^ set(other['words']))}"
             )
-        # A function note claims something about the Latin, which is
-        # language-independent — presence must agree across languages.
-        other_fn = {wid for wid, e in other["words"].items() if "function" in e}
-        if base_fn != other_fn:
+        # An explanation claims something about the Latin occurrence, which
+        # is language-independent — presence must agree across languages.
+        other_explanations = {wid for wid, e in other["words"].items() if "explanation" in e}
+        if base_explanations != other_explanations:
             errors.append(
-                f"parity: function presence differs {base['lang']} vs {other['lang']}: "
-                f"{sorted(base_fn ^ other_fn)}"
+                f"parity: explanation presence differs {base['lang']} vs {other['lang']}: "
+                f"{sorted(base_explanations ^ other_explanations)}"
             )
         if set(base.get("segments", {})) != set(other.get("segments", {})):
             errors.append(f"parity: segment coverage differs {base['lang']} vs {other['lang']}")

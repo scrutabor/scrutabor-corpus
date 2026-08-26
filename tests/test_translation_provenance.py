@@ -5,7 +5,7 @@ from checks.translation_provenance import canonical_hash, check, initialize
 
 def text():
     return {
-        "schema_version": "0.16.0",
+        "schema_version": "0.17.0",
         "id": "orationes.test",
         "title": "Test",
         "category": "orationes",
@@ -33,7 +33,7 @@ def layer(language, target="Words.", cited=False):
     if cited:
         segment["translation_citations"] = [{"title": "A", "locator": "1"}]
     return {
-        "schema_version": "0.16.0",
+        "schema_version": "0.17.0",
         "language": language,
         "text": "orationes.test",
         "about": "About.",
@@ -54,7 +54,7 @@ def write_text(corpus, target="Words.", cited_pl=False):
         (root / "manifest.json").write_text(
             json.dumps(
                 {
-                    "schema_version": "0.16.0",
+                    "schema_version": "0.17.0",
                     "language": language,
                     "direction": "ltr",
                     "texts": ["orationes.test"],

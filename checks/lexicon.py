@@ -30,7 +30,7 @@ HEAD_TOKEN_RE = re.compile(r"^[A-Za-zÁÉÍÓÚÝáéíóúýÆæŒœǼǽËë\u0
 # A lemma note is rendered on a dictionary page, without the verse or prayer
 # in which any one token occurs. Deictic prose therefore has no antecedent
 # there and usually signals that occurrence-specific commentary leaked out of
-# a gloss function. Explicit references such as "In Psalm 118:34" remain
+# a contextual explanation. Explicit references such as "In Psalm 118:34" remain
 # available when naming the context is genuinely useful.
 CONTEXT_DEIXIS = {
     "pl": (
@@ -209,7 +209,7 @@ def lint_senses(lang, entries, lemmata, required=None):
             if re.search(pat, note, re.IGNORECASE):
                 errors.append(
                     f"lexicon:{lang}:{lemma}: context-dependent deixis {pat!r} — "
-                    "move occurrence-specific prose to a gloss function or name the context"
+                    "move occurrence-specific prose to a contextual explanation or name the context"
                 )
     for display, homes in sorted(derivative_homes.items()):
         if len(homes) > 1 and any(annotated for _, _, annotated in homes):
