@@ -491,7 +491,8 @@ def span_covers(doc) -> bool:
         span += flatten(" ".join(textual))
 
     apparatus_entries = []
-    apparatus_pointer = (doc.get("source") or {}).get("apparatus")
+    source = doc.get("source") or (doc.get("editorial") or {}).get("source") or {}
+    apparatus_pointer = source.get("apparatus")
     if apparatus_pointer:
         apparatus_path = CORPUS / apparatus_pointer
         if apparatus_path.is_file():
@@ -501,25 +502,29 @@ def span_covers(doc) -> bool:
     for seg in doc["segments"]:
         if seg.get("type") != "verse" or not seg.get("words"):
             continue
-        key = flatten("".join(w["form"] for w in seg["words"]))
-        if key in span:
-            continue
-        word_ids = {w["id"] for w in seg["words"]}
-        # A named apparatus entry is precisely the declaration that a source
-        # may differ at this word. After punctuation, accents and i/j have
-        # already folded away, permit no more letter substitutions than the
-        # segment has explicit rulings. This keeps a real Genetrice/Genitrice
-        # reading from making a correct range look stale without turning a
-        # random typo into provenance.
-        allowed = sum(1 for entry in apparatus_entries if entry.get("at") in word_ids)
-        if not any(
-            sum(
-                left != right
-                for left, right in zip(key, span[start : start + len(key)], strict=True)
-            )
-            <= allowed
-            for start in range(max(0, len(span) - len(key) + 1))
-        ):
+        keys = {""}
+        for word in seg["words"]:
+            form = flatten(word["form"])
+            readings = {form}
+            for entry in apparatus_entries:
+                if (
+                    entry.get("at") != word["id"]
+                    or entry.get("class") != "orthography"
+                    or flatten(entry.get("ours", "")) != form
+                ):
+                    continue
+                readings.update(
+                    flatten(reading)
+                    for reading in entry.get("witnesses", {}).values()
+                    if isinstance(reading, str) and reading
+                )
+            keys = {prefix + reading for prefix in keys for reading in readings}
+
+        # Apparatus entries license their recorded witness readings, not an
+        # arbitrary number of edits near the ruled word. Thus the established
+        # Genetrice/Genitrice and negligentia/neglegentia spellings pass while
+        # an unrelated one-letter typo still fails closed.
+        if not any(key in span for key in keys):
             return False
     return True
 

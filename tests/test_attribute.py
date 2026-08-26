@@ -110,14 +110,74 @@ class TestSpanCoverage:
         raw.write_text("S. Dei Genitríce María.\n", encoding="utf-8")
         monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
         doc = a_text("Dei Genetríce María")
-        doc["source"] = {"apparatus": "apparatus.json"}
+        doc["editorial"] = {"source": {"apparatus": "apparatus.json"}}
         (tmp_path / "apparatus.json").write_text(
-            json.dumps({"adjudicated": [{"at": "w002"}]}), encoding="utf-8"
+            json.dumps(
+                {
+                    "adjudicated": [
+                        {
+                            "at": "w002",
+                            "ours": "Genetríce",
+                            "witnesses": {"source": "Genitríce"},
+                            "class": "orthography",
+                        }
+                    ]
+                }
+            ),
+            encoding="utf-8",
         )
         monkeypatch.setattr("checks.attribute.CORPUS", tmp_path)
         assert span_covers(doc) is True
 
         (tmp_path / "apparatus.json").write_text(json.dumps({"adjudicated": []}), encoding="utf-8")
+        assert span_covers(doc) is False
+
+    def test_the_explicit_negligentia_spelling_variant_passes(self, tmp_path, monkeypatch):
+        raw = tmp_path / "src.txt"
+        raw.write_text("S. pro neglegéntiis meis.\n", encoding="utf-8")
+        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
+        doc = a_text("pro negligéntiis meis")
+        doc["editorial"] = {"source": {"apparatus": "apparatus.json"}}
+        (tmp_path / "apparatus.json").write_text(
+            json.dumps(
+                {
+                    "adjudicated": [
+                        {
+                            "at": "w002",
+                            "ours": "negligéntiis",
+                            "witnesses": {"source": "neglegéntiis"},
+                            "class": "orthography",
+                        }
+                    ]
+                }
+            ),
+            encoding="utf-8",
+        )
+        monkeypatch.setattr("checks.attribute.CORPUS", tmp_path)
+        assert span_covers(doc) is True
+
+    def test_an_apparatus_entry_does_not_license_an_unlisted_typo(self, tmp_path, monkeypatch):
+        raw = tmp_path / "src.txt"
+        raw.write_text("S. Dei Genetráce María.\n", encoding="utf-8")
+        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
+        doc = a_text("Dei Genetríce María")
+        doc["editorial"] = {"source": {"apparatus": "apparatus.json"}}
+        (tmp_path / "apparatus.json").write_text(
+            json.dumps(
+                {
+                    "adjudicated": [
+                        {
+                            "at": "w002",
+                            "ours": "Genetríce",
+                            "witnesses": {"source": "Genitríce"},
+                            "class": "orthography",
+                        }
+                    ]
+                }
+            ),
+            encoding="utf-8",
+        )
+        monkeypatch.setattr("checks.attribute.CORPUS", tmp_path)
         assert span_covers(doc) is False
 
     def test_a_hyphenated_source_filename_finds_its_raw_archive(self, tmp_path, monkeypatch):
