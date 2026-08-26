@@ -139,6 +139,12 @@ work: it means that a site's independent-origin or historical-wording review is
 not complete, not that infringement or ecclesiastical disapproval has been
 established.
 
+Each language also carries a grouped `translation-basis.json`. It distinguishes
+wording that is exact, normalized, revised, or assembled as a traditional
+composite. The build expands that relationship into the one language-and-text
+file a reader has already requested, avoiding both a second request and a
+repeated field at every authored translation site.
+
 Witness transcriptions marked `do` were derived from the Divinum Officium
 Project. The archived snapshot was checked at revision
 `712035707cf1bbab75d22966fb1ceabaecae592f` (2026-08-05); that revision's

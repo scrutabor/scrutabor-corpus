@@ -69,6 +69,19 @@ def test_relative_agrees_with_its_verb_in_number():
     assert any("subject of" in e for e in check(bad))
 
 
+def test_oblique_relative_names_its_nominal_antecedent():
+    bad = doc(
+        [
+            w("w1", "dona", "noun", case="acc", number="pl", gender="n"),
+            w("w2", "quæ", "pron", lemma="qui", head="w3", case="acc", number="pl", gender="n"),
+            w("w3", "sumus", "verb", lemma="sum", person=1, number="pl", mood="ind"),
+        ]
+    )
+    assert any("nominal antecedent" in e for e in check(bad))
+    bad["segments"][0]["words"][1]["head"] = "w1"
+    assert check(bad) == []
+
+
 def test_head_may_stand_in_another_segment():
     # Et ex Patre natum takes its head from the segment before
     d = doc(

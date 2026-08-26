@@ -93,6 +93,16 @@ def test_what_a_reader_is_shown_does_survive(tmp_path):
     assert seen > 1000, f"the source notes did not survive the build ({seen} references)"
 
 
+def test_translation_relationship_travels_only_with_its_language_text(tmp_path):
+    out = build(tmp_path)
+    pl = json.loads(
+        (out / "languages/pl/texts/orationes/benedic-domine.json").read_text(encoding="utf-8")
+    )
+    base = json.loads((out / "texts/orationes/benedic-domine.json").read_text(encoding="utf-8"))
+    assert {row.get("tb") for row in pl["seg"]} == {"traditional-composite"}
+    assert all("tb" not in row for row in base["seg"])
+
+
 def test_the_tables_are_tables_and_not_lists_of_everything(tmp_path):
     out = build(tmp_path)
     manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))

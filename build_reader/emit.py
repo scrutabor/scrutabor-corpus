@@ -11,7 +11,7 @@ from build_reader import store
 # The reader edition's OWN version. It moves when this file changes what it
 # writes, which is a different event from the corpus changing what it stores —
 # the manifest names both, so a consumer can tell the two apart.
-SCHEMA = "3.1.0"
+SCHEMA = "3.2.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -237,7 +237,12 @@ def core_artifact(
     return artifact
 
 
-def language_artifact(doc: dict, layer: dict, citations: Table) -> dict:
+def language_artifact(
+    doc: dict,
+    layer: dict,
+    citations: Table,
+    relationships: dict[str, str] | None = None,
+) -> dict:
     """One target language for one text, independently loadable."""
     rows = []
     for segment in doc["segments"]:
@@ -247,6 +252,9 @@ def language_artifact(doc: dict, layer: dict, citations: Table) -> dict:
             row["tr"] = translation
         if cited := localized.get("translation_citations"):
             row["tc"] = citations.intern_all(cited)
+        site = f"{doc['id']}.{segment['id']}.{layer['lang']}"
+        if relationship := (relationships or {}).get(site):
+            row["tb"] = relationship
         if narrative := localized.get("narrative"):
             row["nr"] = narrative
         words = segment.get("words") or []
@@ -581,6 +589,9 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
     language_citations = {
         language: Table(citation_registry, locked=True, label="citations") for language in languages
     }
+    translation_relationships = {
+        language: store.translation_relationships(corpus, language) for language in languages
+    }
     text_registry = _registry_records("texts")
     if len(set(text_registry)) != len(text_registry) or not all(
         isinstance(value, str) for value in text_registry
@@ -601,7 +612,12 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
         written["texts"] += 1
         written["bytes"] += len(body.encode())
         for language, layer in glosses.items():
-            localized = language_artifact(doc, layer, language_citations[language])
+            localized = language_artifact(
+                doc,
+                layer,
+                language_citations[language],
+                translation_relationships[language],
+            )
             directory = out / "languages" / language / "texts" / category
             directory.mkdir(parents=True, exist_ok=True)
             body = _artifact_json(localized)
@@ -740,6 +756,10 @@ def verify(corpus: Path, out: Path) -> list[str]:
     parses = json.loads((out / "tables/morphology.json").read_text(encoding="utf-8"))
     analyses = json.loads((out / "tables/analysis.json").read_text(encoding="utf-8"))
     shared_citations = json.loads((out / "tables/citations.json").read_text(encoding="utf-8"))
+    relationships = {
+        language: store.translation_relationships(corpus, language)
+        for language in store.language_ids(corpus)
+    }
     for doc, glosses in read_corpus(corpus):
         path = out / "texts" / Path(*doc["id"].split(".")).with_suffix(".json")
         if not path.exists():
@@ -760,6 +780,10 @@ def verify(corpus: Path, out: Path) -> list[str]:
                 errors.append(f"{doc['id']}:{lang}: no language artifact was written")
                 continue
             language_art = json.loads(language_path.read_text(encoding="utf-8"))
+            for row in language_art["seg"]:
+                site = f"{doc['id']}.{row['id']}.{lang}"
+                if row.get("tb") != relationships[lang].get(site):
+                    errors.append(f"{site}: translation relationship was lost or changed")
             language_citations = json.loads(
                 (out / "languages" / lang / "citations.json").read_text(encoding="utf-8")
             )

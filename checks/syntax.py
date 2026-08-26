@@ -163,6 +163,25 @@ def check(doc: dict) -> list[str]:
 
             head = words.get(head_id) if head_id else None
 
+            # A nominative relative may point to the finite verb whose
+            # unexpressed subject it supplies (qui tollis). An oblique relative
+            # already has a role inside its own clause, so its head must be the
+            # nominal antecedent it resumes. Pointing accusative quæ at sumus
+            # once made the graph agree in number while losing dona entirely.
+            if (
+                word.get("lemma") == "qui"
+                and m.get("case") != "nom"
+                and head is not None
+                and head["morph"].get("pos") == "verb"
+                and head["morph"].get("mood") != "part"
+            ):
+                fail(
+                    word,
+                    f"is a {m.get('case')} relative but heads finite verb "
+                    f"{head['form']!r}: name its nominal antecedent instead",
+                )
+                continue
+
             # --- prepositions govern a case -------------------------------
             if m.get("pos") == "prep":
                 if substantive:

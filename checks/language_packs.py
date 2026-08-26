@@ -80,7 +80,11 @@ def check_manifests(corpus: Path) -> list[str]:
                 or len(aliases) != len(set(aliases))
             ):
                 errors.append(f"{title_where}: aliases must be unique nonempty strings")
-        for required in ("lexicon.json", "translation-provenance.json"):
+        for required in (
+            "lexicon.json",
+            "translation-basis.json",
+            "translation-provenance.json",
+        ):
             if not (corpus / "languages" / language / required).exists():
                 errors.append(f"languages/{language}/{required} is missing")
     return errors

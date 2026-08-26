@@ -36,6 +36,30 @@ def language_manifest(corpus: Path, language: str) -> dict:
     return _manifest(str(corpus / "languages" / language / "manifest.json"))
 
 
+@cache
+def _translation_relationships(corpus_path: str, language: str) -> dict[str, str]:
+    """Expand the compact public relationship groups to stable site keys."""
+    corpus = Path(corpus_path)
+    path = corpus / "languages" / language / "translation-basis.json"
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    out: dict[str, str] = {}
+    for record in doc.get("records") or []:
+        for text_id in record["texts"]:
+            core_doc = core(corpus, text_id)
+            segments = record.get("segments") or [
+                segment["id"]
+                for segment in core_doc.get("segments") or []
+                if segment.get("type") == "verse"
+            ]
+            for segment_id in segments:
+                out[f"{text_id}.{segment_id}.{language}"] = record["relationship"]
+    return out
+
+
+def translation_relationships(corpus: Path, language: str) -> dict[str, str]:
+    return _translation_relationships(str(corpus), language)
+
+
 def layer_path(corpus: Path, language: str, text_id: str) -> Path:
     category, name = text_id.split(".", 1)
     return corpus / "languages" / language / "texts" / category / f"{name}.json"

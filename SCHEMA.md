@@ -33,6 +33,13 @@ one. `checks/translation_provenance.py` rejects missing, duplicated, orphaned,
 or stale entries. A source or target change therefore makes review provenance
 stale rather than silently inheriting it.
 
+`languages/<lang>/translation-basis.json` groups inherited sites by text and,
+where necessary, segment. Its `relationship` says how the published wording
+relates to the cited historical witness: `exact`, `normalized`, `revised`, or
+`traditional-composite`. The grouping keeps this reader-facing distinction
+authoritative without repeating it in every translated segment. The reader
+edition expands it only into the lazily loaded language artifact for the text.
+
 Since 0.5.0 `schema_version` is corpus-wide: every text and lexicon document
 carries the same number.
 
@@ -47,6 +54,8 @@ languages/<lang>/texts/<category>/<name>.json
 languages/<lang>/lexicon.json         senses for the language package
 languages/<lang>/translation-provenance.json
                                       public states for that language's sites
+languages/<lang>/translation-basis.json
+                                      grouped relation to wording witnesses
 ```
 
 The manifest is the authority for coverage. A language may publish any ordered
