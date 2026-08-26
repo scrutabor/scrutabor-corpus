@@ -182,6 +182,7 @@ PROPER_LEMMAS = {
     "Cyprianus",
     "Damianus",
     "Felicitas",
+    "Gabriel",
     "Iacobus",
     "Iesus",
     "Ierusalem",
