@@ -37,6 +37,14 @@ build_reader/, build.py       the reader edition the app ships
 checks/, run_checks.py        mechanical validation (see below)
 ```
 
+The reader edition uses descriptive paths (`texts/`, `tables/morphology.json`,
+`tables/analysis.json`, `tables/citations.json`, `lexicon.json`,
+`calendar.json`, and `concordance.json`). Its compact JSON keeps one logical
+record per line. Table and text addresses come from tracked append-only files
+under `build_reader/registry/`; after adding a genuinely new record, run
+`python -m build_reader.update_registry` and review only the appended lines.
+Ordinary builds refuse to invent or renumber those addresses.
+
 Word ids are stable forever — external references (spaced-repetition
 decks, links) never break. `SCHEMA.md` documents the format,
 `ORTHOGRAPHY.md` the editorial policy (1962 liturgical orthography),

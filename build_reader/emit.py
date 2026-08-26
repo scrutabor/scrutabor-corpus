@@ -3,13 +3,15 @@
 from __future__ import annotations
 
 import json
+import unicodedata
 from pathlib import Path
 
 # The reader edition's OWN version. It moves when this file changes what it
 # writes, which is a different event from the corpus changing what it stores —
 # the manifest names both, so a consumer can tell the two apart.
-SCHEMA = "1.0.0"
+SCHEMA = "2.0.0"
 LANGS = ("pl", "en")
+REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
 # Every name here is a decision, not an omission: the rule is that a field is
@@ -28,9 +30,81 @@ DROP_SEGMENT: set[str] = set()
 DROP_WORD: set[str] = set()
 
 
-def _dumps(obj: object) -> str:
-    """One way to write JSON, so a rebuild can be compared byte for byte."""
+def _compact(obj: object) -> str:
     return json.dumps(obj, ensure_ascii=False, separators=(",", ":"), sort_keys=False)
+
+
+def _record_array(values: list) -> str:
+    """One logical record per line without paying the cost of full indentation."""
+    if not values:
+        return "[]\n"
+    return "[\n" + ",\n".join(f"  {_compact(value)}" for value in values) + "\n]\n"
+
+
+def _record_mapping(values: dict, indent: str = "  ") -> list[str]:
+    items = list(values.items())
+    lines = []
+    for i, (key, value) in enumerate(items):
+        comma = "," if i + 1 < len(items) else ""
+        lines.append(f"{indent}{json.dumps(key, ensure_ascii=False)}:{_compact(value)}{comma}")
+    return lines
+
+
+def _artifact_json(artifact: dict) -> str:
+    """A text header field and a segment per line: compact, but diffable."""
+    header = [(key, value) for key, value in artifact.items() if key != "seg"]
+    lines = ["{"]
+    for key, value in header:
+        lines.append(f"  {json.dumps(key)}:{_compact(value)},")
+    lines.append('  "seg":[')
+    rows = artifact["seg"]
+    lines.extend(
+        f"    {_compact(row)}{',' if i + 1 < len(rows) else ''}" for i, row in enumerate(rows)
+    )
+    lines.extend(["  ]", "}"])
+    return "\n".join(lines) + "\n"
+
+
+def _lexicon_json(payload: dict) -> str:
+    lines = ["{", '  "heads":{']
+    lines.extend(_record_mapping(payload["heads"], "    "))
+    lines.extend(["  },", '  "senses":{'])
+    languages = list(payload["senses"].items())
+    for lang_index, (lang, entries) in enumerate(languages):
+        lines.append(f"    {json.dumps(lang)}:{{")
+        lines.extend(_record_mapping(entries, "      "))
+        lines.append(f"    }}{',' if lang_index + 1 < len(languages) else ''}")
+    lines.extend(["  }", "}"])
+    return "\n".join(lines) + "\n"
+
+
+def _calendar_json(payload: dict) -> str:
+    lines = ["{", f'  "formularies":{_compact(payload["formularies"])},']
+    lines.append(f'  "seasons":{_compact(payload["seasons"])},')
+    lines.append('  "years":{')
+    lines.extend(_record_mapping(payload["years"], "    "))
+    lines.extend(["  }", "}"])
+    return "\n".join(lines) + "\n"
+
+
+def _concordance_json(payload: dict) -> str:
+    latin = payload["latin"]
+    lines = ["{", f'  "schema_version":{json.dumps(payload["schema_version"])},']
+    lines.append('  "texts":[')
+    lines.extend(
+        f"    {_compact(value)}{',' if i + 1 < len(payload['texts']) else ''}"
+        for i, value in enumerate(payload["texts"])
+    )
+    lines.extend(["  ],", '  "latin":{', '    "lemmata":{'])
+    lines.extend(_record_mapping(latin["lemmata"], "      "))
+    lines.extend(["    },", '    "forms":{'])
+    lines.extend(_record_mapping(latin["forms"], "      "))
+    lines.extend(["    }", "  }", "}"])
+    return "\n".join(lines) + "\n"
+
+
+class RegistryStale(RuntimeError):
+    """A source value has no stable reader-edition identity yet."""
 
 
 class Table:
@@ -45,19 +119,40 @@ class Table:
     bytes a page hands the browser.
     """
 
-    def __init__(self) -> None:
-        self.order: list[dict] = []
-        self._index: dict[str, int] = {}
+    def __init__(
+        self, initial: list[dict] | None = None, *, locked: bool = False, label: str = "table"
+    ) -> None:
+        self.order: list[dict] = list(initial or [])
+        self._index: dict[str, int] = {
+            json.dumps(value, sort_keys=True, separators=(",", ":")): i
+            for i, value in enumerate(self.order)
+        }
+        if len(self._index) != len(self.order):
+            raise ValueError(f"{label} registry contains duplicate records")
+        self._used: set[int] = set()
+        self.locked = locked
+        self.label = label
 
     def intern(self, value: dict) -> int:
         key = json.dumps(value, sort_keys=True, separators=(",", ":"))
         if key not in self._index:
+            if self.locked:
+                raise RegistryStale(
+                    f"{self.label} registry is stale; run "
+                    "python -m build_reader.update_registry and review the append"
+                )
             self._index[key] = len(self.order)
             self.order.append(json.loads(key))
-        return self._index[key]
+        index = self._index[key]
+        self._used.add(index)
+        return index
 
     def intern_all(self, values: list[dict]) -> list[int]:
         return [self.intern(v) for v in values]
+
+    def edition(self) -> list[dict | None]:
+        """Keep addresses stable while omitting records no active text reaches."""
+        return [value if i in self._used else None for i, value in enumerate(self.order)]
 
 
 def read_corpus(corpus: Path) -> list[tuple[dict, dict[str, dict]]]:
@@ -251,28 +346,45 @@ def lexicon_slice(corpus: Path, lemmas: set[str] | None = None) -> dict:
     """
     heads = json.loads((corpus / "lexicon/lemmata.json").read_text(encoding="utf-8"))["entries"]
     keep = sorted(lemmas) if lemmas is not None else sorted(heads)
-    out: dict = {"h": {}, "s": {}}
+    out: dict = {"heads": {}, "senses": {}}
     for lang in LANGS:
         entries = json.loads((corpus / f"lexicon/{lang}.json").read_text(encoding="utf-8"))[
             "entries"
         ]
-        out["s"][lang] = {k: entries[k] for k in keep if k in entries}
-    out["h"] = {k: heads[k] for k in keep if k in heads}
+        out["senses"][lang] = {k: entries[k] for k in keep if k in entries}
+    out["heads"] = {k: heads[k] for k in keep if k in heads}
     return out
 
 
-def index(corpus_docs: list[tuple[dict, dict]]) -> dict:
-    """Lemma to its occurrences, and surface form to its lemmas.
+def normalize_latin(value: str) -> str:
+    """A search key: case- and accent-insensitive, with typed-out ligatures."""
+    expanded = value.casefold().replace("æ", "ae").replace("œ", "oe")
+    return "".join(
+        char for char in unicodedata.normalize("NFKD", expanded) if not unicodedata.combining(char)
+    )
+
+
+def index(corpus_docs: list[tuple[dict, dict]], text_registry: list[str] | None = None) -> dict:
+    """Lemma and normalized Latin-form postings over stable text addresses.
 
     A posting is `[text number, word id]`, which is exactly the compound
-    address SCHEMA.md documents and exactly what a link needs. One file,
-    queried in plain JavaScript, and it is what a lemma page and a search box
-    both want, so neither needs the corpus itself.
+    address SCHEMA.md documents and exactly what a link needs. Forms point
+    directly to occurrences rather than through lemmas, so a future search
+    can find candidates without opening every inflection of a homograph.
     """
-    texts = [doc["id"] for doc, _ in corpus_docs]
-    postings: dict[str, list[list]] = {}
-    forms: dict[str, set[str]] = {}
-    for number, (doc, _glosses) in enumerate(corpus_docs):
+    active = [doc["id"] for doc, _ in corpus_docs]
+    texts = list(text_registry or active)
+    positions = {text_id: i for i, text_id in enumerate(texts)}
+    missing = [text_id for text_id in active if text_id not in positions]
+    if missing:
+        raise RegistryStale(
+            "text registry is stale; run python -m build_reader.update_registry "
+            f"and review the append ({', '.join(missing[:3])})"
+        )
+    lemmata: dict[str, list[list]] = {}
+    forms: dict[str, list[list]] = {}
+    for doc, _glosses in corpus_docs:
+        number = positions[doc["id"]]
         for segment in doc["segments"]:
             for word in segment.get("words") or []:
                 # The WORD ID, not its position. A posting is what a lemma page
@@ -281,12 +393,17 @@ def index(corpus_docs: list[tuple[dict, dict]]) -> dict:
                 # before it, which is the one edit the mint exists to survive.
                 # The first draft stored positions and would have produced a
                 # concordance that drifted off its own words.
-                postings.setdefault(word["lemma"], []).append([number, word["id"]])
-                forms.setdefault(word["form"].lower(), set()).add(word["lemma"])
+                posting = [number, word["id"]]
+                lemmata.setdefault(word["lemma"], []).append(posting)
+                forms.setdefault(normalize_latin(word["form"]), []).append(posting)
+    active_set = set(active)
     return {
-        "t": texts,
-        "l": {k: postings[k] for k in sorted(postings)},
-        "f": {k: sorted(forms[k]) for k in sorted(forms)},
+        "schema_version": "1.0.0",
+        "texts": [text_id if text_id in active_set else None for text_id in texts],
+        "latin": {
+            "lemmata": {k: lemmata[k] for k in sorted(lemmata)},
+            "forms": {k: forms[k] for k in sorted(forms)},
+        },
     }
 
 
@@ -327,48 +444,113 @@ def kalendarium() -> dict:
             ]
             for d in year(ending)
         ]
-    return {"f": formularies, "s": seasons, "y": years}
+    return {"formularies": formularies, "seasons": seasons, "years": years}
+
+
+def _registry_records(name: str) -> list:
+    path = REGISTRY / f"{name}.json"
+    if not path.exists():
+        raise RegistryStale(
+            f"{name} registry is missing; run python -m build_reader.update_registry"
+        )
+    values = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(values, list):
+        raise ValueError(f"{path} must contain an array")
+    return values
+
+
+def update_registry(corpus: Path) -> dict[str, int]:
+    """Append identities used by the corpus; never reorder or reuse one."""
+    REGISTRY.mkdir(parents=True, exist_ok=True)
+
+    def existing(name: str) -> list:
+        path = REGISTRY / f"{name}.json"
+        return json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+
+    parses = Table(existing("morphology"), label="morphology")
+    analyses = Table(existing("analysis"), label="analysis")
+    citations = Table(existing("citations"), label="citations")
+    docs = read_corpus(corpus)
+    for doc, glosses in docs:
+        text_artifact(doc, glosses, parses, analyses, citations)
+
+    texts = existing("texts")
+    if len(set(texts)) != len(texts) or not all(isinstance(value, str) for value in texts):
+        raise ValueError("text registry must contain unique string ids")
+    known = set(texts)
+    texts.extend(doc["id"] for doc, _ in docs if doc["id"] not in known)
+
+    values = {
+        "morphology": parses.order,
+        "analysis": analyses.order,
+        "citations": citations.order,
+        "texts": texts,
+    }
+    changes: dict[str, int] = {}
+    for name, records in values.items():
+        before = len(existing(name))
+        (REGISTRY / f"{name}.json").write_text(_record_array(records), encoding="utf-8")
+        changes[name] = len(records) - before
+    return changes
 
 
 def emit(corpus: Path, out: Path) -> dict[str, int]:
     """Write the whole reader edition. Returns what it wrote."""
     corpus_docs = read_corpus(corpus)
-    parses, analyses, citations = Table(), Table(), Table()
+    parses = Table(_registry_records("morphology"), locked=True, label="morphology")
+    analyses = Table(_registry_records("analysis"), locked=True, label="analysis")
+    citations = Table(_registry_records("citations"), locked=True, label="citations")
+    text_registry = _registry_records("texts")
+    if len(set(text_registry)) != len(text_registry) or not all(
+        isinstance(value, str) for value in text_registry
+    ):
+        raise ValueError("text registry must contain unique string ids")
     written = {"texts": 0, "bytes": 0}
 
-    (out / "t").mkdir(parents=True, exist_ok=True)
+    (out / "texts").mkdir(parents=True, exist_ok=True)
     for doc, glosses in corpus_docs:
         artifact = text_artifact(doc, glosses, parses, analyses, citations)
-        body = _dumps(artifact)
-        (out / "t" / f"{doc['id']}.json").write_text(body, encoding="utf-8")
+        category, slug = doc["id"].split(".", 1)
+        directory = out / "texts" / category
+        directory.mkdir(parents=True, exist_ok=True)
+        body = _artifact_json(artifact)
+        (directory / f"{slug}.json").write_text(body, encoding="utf-8")
         written["texts"] += 1
         written["bytes"] += len(body.encode())
 
     # The three tables are written LAST because interning fills them as texts
     # are emitted, and a table written first would be the previous run's.
-    for name, payload in (
-        ("m", parses.order),
-        ("a", analyses.order),
-        ("c", citations.order),
-        ("x", index(corpus_docs)),
-        ("lex", lexicon_slice(corpus)),
-        ("kal", kalendarium()),
-    ):
-        body = _dumps(payload)
-        (out / f"{name}.json").write_text(body, encoding="utf-8")
+    (out / "tables").mkdir(parents=True, exist_ok=True)
+    outputs = (
+        ("tables/morphology.json", _record_array(parses.edition())),
+        ("tables/analysis.json", _record_array(analyses.edition())),
+        ("tables/citations.json", _record_array(citations.edition())),
+        ("concordance.json", _concordance_json(index(corpus_docs, text_registry))),
+        ("lexicon.json", _lexicon_json(lexicon_slice(corpus))),
+        ("calendar.json", _calendar_json(kalendarium())),
+    )
+    for name, body in outputs:
+        (out / name).write_text(body, encoding="utf-8")
         written["bytes"] += len(body.encode())
 
     manifest = {
         "schema_version": SCHEMA,
         "corpus_schema": corpus_docs[0][0]["schema_version"],
-        "texts": [doc["id"] for doc, _ in corpus_docs],
-        "langs": list(LANGS),
-        "parses": len(parses.order),
+        "texts": [
+            {
+                "id": doc["id"],
+                "path": f"texts/{doc['id'].replace('.', '/', 1)}.json",
+                "title": doc["title"],
+            }
+            for doc, _ in corpus_docs
+        ],
+        "languages": list(LANGS),
+        "morphology": len(parses.order),
         "kalendarium": [KALENDARIUM.start, KALENDARIUM.stop - 1],
         "analyses": len(analyses.order),
         "citations": len(citations.order),
     }
-    body = _dumps(manifest)
+    body = json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
     (out / "manifest.json").write_text(body, encoding="utf-8")
     written["bytes"] += len(body.encode())
     return written
@@ -398,11 +580,11 @@ def verify(corpus: Path, out: Path) -> list[str]:
     what the corpus stores, minus what DROP_DOC says is left behind.
     """
     errors: list[str] = []
-    parses = json.loads((out / "m.json").read_text(encoding="utf-8"))
-    analyses = json.loads((out / "a.json").read_text(encoding="utf-8"))
-    citations = json.loads((out / "c.json").read_text(encoding="utf-8"))
+    parses = json.loads((out / "tables/morphology.json").read_text(encoding="utf-8"))
+    analyses = json.loads((out / "tables/analysis.json").read_text(encoding="utf-8"))
+    citations = json.loads((out / "tables/citations.json").read_text(encoding="utf-8"))
     for doc, glosses in read_corpus(corpus):
-        path = out / "t" / f"{doc['id']}.json"
+        path = out / "texts" / Path(*doc["id"].split(".")).with_suffix(".json")
         if not path.exists():
             errors.append(f"{doc['id']}: no artifact was written")
             continue
