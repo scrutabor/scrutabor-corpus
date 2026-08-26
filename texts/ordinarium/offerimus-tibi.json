@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.offerimus-tibi",
   "title": "Offérimus tibi, Dómine",
   "category": "ordinarium",
@@ -9,107 +9,43 @@
   "ids": {
     "next": 26
   },
-  "about": {
-    "pl": "Wyrażenie „Cálicem salutáris” pochodzi z Ps 115, 4 według numeracji Wulgaty (Ps 116, 13 w numeracji hebrajskiej): „kielich zbawienia wezmę i imienia Pańskiego wzywać będę”. W końcowej prośbie powraca biblijne „odor suavitátis”, określenie ofiary składanej Panu (Kpł 4, 31).",
-    "en": "The phrase “Cálicem salutáris” comes from Psalm 115:4 in the Vulgate numbering (Psalm 116:13 in Hebrew): “I will take the chalice of salvation, and call upon the name of the Lord.” The closing petition returns to the biblical “odor suavitátis”, a description of an offering made to the Lord (Lev 4:31)."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Nova Vulgata, Liber Psalmorum",
-        "locator": "Psalmus 116 (Vg 115), 13",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
-      },
-      {
-        "title": "Nova Vulgata, Liber Leviticus",
-        "locator": "Leviticus 4, 31",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_leviticus_lt.html#1"
-      }
-    ],
-    "en": [
-      {
-        "title": "Nova Vulgata, Liber Psalmorum",
-        "locator": "Psalmus 116 (Vg 115), 13",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
-      },
-      {
-        "title": "Nova Vulgata, Liber Leviticus",
-        "locator": "Leviticus 4, 31",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_leviticus_lt.html#1"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Postea accipit Calicem, et offert dicens:",
-      "narrative": {
-        "pl": "Kapłan bierze kielich i ofiaruje go, mówiąc:",
-        "en": "The priest takes the chalice and offers it, saying:"
-      }
+      "text": "Postea accipit Calicem, et offert dicens:"
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Ofiarujemy Ci, Panie, kielich zbawienia, błagając o Twoją łaskawość, aby wzniósł się przed Twój boski majestat z miłą wonią, dla naszego zbawienia i dla zbawienia całego świata. Amen.",
-        "en": "Lord, we offer You the chalice of salvation, imploring Your clemency, so that it may rise before Your divine majesty with a pleasing fragrance for our salvation and that of the whole world. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 52",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 11",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 47",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 471",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Offérimus", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "składamy", "en": "we offer" } },
-        { "id": "w002", "form": "tibi", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Tobie", "en": "Thee" } },
-        { "id": "w003", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w004", "form": "cálicem", "lemma": "calix", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "kielich", "en": "the chalice" }, "function": { "pl": "Dopełnienie „Offérimus” (w001).", "en": "The object of “Offérimus” (w001)." } },
-        { "id": "w005", "form": "salutáris", "post": ",", "lemma": "salutare", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "zbawienia", "en": "of salvation" }, "function": { "pl": "Dopełniacz rzeczownika nijakiego „salutáre”, zależny od „cálicem” (w004).", "en": "Genitive of the neuter noun “salutáre”, dependent on “cálicem” (w004)." } },
-        { "id": "w006", "form": "tuam", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w008", "gloss": { "pl": "Twoją", "en": "Thy" }, "function": { "pl": "Zgadza się z „cleméntiam” (w008).", "en": "Agrees with “cleméntiam” (w008)." } },
-        { "id": "w007", "form": "deprecántes", "lemma": "deprecor", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "dep", "conj": 1 }, "head": "w001", "gloss": { "pl": "błagając", "en": "beseeching" }, "function": { "pl": "Imiesłów odnoszący się do niewyrażonego podmiotu „Offérimus” (w001).", "en": "A participle referring to the unexpressed subject of “Offérimus” (w001)." } },
-        { "id": "w008", "form": "cleméntiam", "post": ":", "lemma": "clementia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "łaskawość", "en": "clemency" }, "function": { "pl": "Biernik jako dopełnienie „deprecántes” (w007).", "en": "Accusative object of “deprecántes” (w007)." } },
-        { "id": "w009", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "aby", "en": "that" } },
-        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011", "gloss": { "pl": "przed", "en": "in" } },
-        { "id": "w011", "form": "conspéctu", "lemma": "conspectus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "obliczem", "en": "the sight" } },
-        { "id": "w012", "form": "divínæ", "lemma": "divinus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w013", "gloss": { "pl": "boskiego", "en": "of divine" } },
-        { "id": "w013", "form": "maiestátis", "lemma": "maiestas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "majestatu", "en": "majesty" } },
-        { "id": "w014", "form": "tuæ", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w013", "gloss": { "pl": "Twego", "en": "Thy" } },
-        { "id": "w015", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w020", "gloss": { "pl": "za", "en": "for" } },
-        { "id": "w016", "form": "nostra", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w020", "gloss": { "pl": "nasze", "en": "our" }, "function": { "pl": "Ablativus rodzaju żeńskiego. Forma zgadza się z „salúte” (w020), nie jest liczbą mnogą rodzaju nijakiego.", "en": "Feminine ablative agreeing with “salúte” (w020), not a neuter plural." } },
-        { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w018", "form": "totíus", "lemma": "totus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w019", "gloss": { "pl": "całego", "en": "of the whole" } },
-        { "id": "w019", "form": "mundi", "lemma": "mundus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "świata", "en": "world" } },
-        { "id": "w020", "form": "salúte", "post": ",", "lemma": "salus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "zbawienie", "en": "salvation" }, "function": { "pl": "Do tego rzeczownika odnoszą się zarówno „nostra”, jak i „totíus mundi”.", "en": "Both “nostra” and “totíus mundi” qualify this noun." } },
-        { "id": "w021", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w022", "gloss": { "pl": "z", "en": "with" } },
-        { "id": "w022", "form": "odóre", "lemma": "odor", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "wonią", "en": "the fragrance" } },
-        { "id": "w023", "form": "suavitátis", "lemma": "suavitas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "słodyczy", "en": "of sweetness" }, "function": { "pl": "Dopełniacz zależny od „odóre” (w022).", "en": "Genitive dependent on “odóre” (w022)." } },
-        { "id": "w024", "form": "ascéndat", "post": ".", "lemma": "ascendo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "wstąpił", "en": "may it go up" }, "function": { "pl": "Tryb łączący po „ut” (w009), z kielichem jako podmiotem.", "en": "Subjunctive after “ut” (w009), with the chalice as its subject." } },
-        { "id": "w025", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w001", "form": "Offérimus", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w002", "form": "tibi", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w003", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w004", "form": "cálicem", "lemma": "calix", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w005", "form": "salutáris", "post": ",", "lemma": "salutare", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w006", "form": "tuam", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w008" },
+        { "id": "w007", "form": "deprecántes", "lemma": "deprecor", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "dep", "conj": 1 }, "head": "w001" },
+        { "id": "w008", "form": "cleméntiam", "post": ":", "lemma": "clementia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w009", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011" },
+        { "id": "w011", "form": "conspéctu", "lemma": "conspectus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w012", "form": "divínæ", "lemma": "divinus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w013" },
+        { "id": "w013", "form": "maiestátis", "lemma": "maiestas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w014", "form": "tuæ", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w013" },
+        { "id": "w015", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w020" },
+        { "id": "w016", "form": "nostra", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w020" },
+        { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w018", "form": "totíus", "lemma": "totus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w019" },
+        { "id": "w019", "form": "mundi", "lemma": "mundus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w020", "form": "salúte", "post": ",", "lemma": "salus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w021", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w022" },
+        { "id": "w022", "form": "odóre", "lemma": "odor", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w023", "form": "suavitátis", "lemma": "suavitas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w024", "form": "ascéndat", "post": ".", "lemma": "ascendo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w025", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -125,6 +61,50 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "segments": {
       "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Nova Vulgata, Liber Psalmorum",
+        "locator": "Psalmus 116 (Vg 115), 13",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
+      },
+      {
+        "title": "Nova Vulgata, Liber Leviticus",
+        "locator": "Leviticus 4, 31",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_leviticus_lt.html#1"
+      }
+    ],
+    "functions": {
+      "w004": {
+
+      },
+      "w005": {
+
+      },
+      "w006": {
+
+      },
+      "w007": {
+
+      },
+      "w008": {
+
+      },
+      "w016": {
+
+      },
+      "w020": {
+
+      },
+      "w023": {
+
+      },
+      "w024": {
+
+      }
     }
   }
 }

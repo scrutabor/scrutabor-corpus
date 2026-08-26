@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.panem-caelestem",
   "title": "Panem cæléstem",
   "category": "ordinarium",
@@ -9,196 +9,68 @@
   "ids": {
     "next": 71
   },
-  "about": {
-    "pl": "Formuła Dómine, non sum dignus opiera się na słowach setnika z Mt 8, 8. Zamiast puer meus — sługa mój — występuje w niej ánima mea — dusza moja. Panem cæléstem accípiam podobnie nawiązuje do Ps 115, 4 w numeracji Wulgaty (Ps 116, 13 w numeracji hebrajskiej): Cálicem salutáris accípiam — kielich zbawienia przyjmę. Kapłan trzykrotnie powtarza Dómine, non sum dignus, rozpoczynając każde wezwanie nieco podniesionym głosem i kontynuując po cichu.",
-    "en": "Dómine, non sum dignus adapts the centurion's words in Matthew 8:8, replacing puer meus — my servant — with ánima mea — my soul. Panem cæléstem accípiam likewise adapts Psalm 115:4 in the Vulgate (Psalm 116:13 in Hebrew numbering): Cálicem salutáris accípiam — I will take the chalice of salvation. The priest repeats Dómine, non sum dignus three times, beginning each invocation in a slightly raised voice and continuing quietly."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Nova Vulgata, Evangelium secundum Matthaeum",
-        "locator": "8, 8",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-matthaeum_lt.html#8"
-      },
-      {
-        "title": "Nova Vulgata, Liber Psalmorum",
-        "locator": "116, 13 (Vg 115, 4)",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html#PSALMUS%20116"
-      },
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Ritus servandus in celebratione Missae, X, 4",
-        "url": "https://archive.org/details/missale_romanum-1962/page/n63/mode/1up"
-      }
-    ],
-    "en": [
-      {
-        "title": "Nova Vulgata, Evangelium secundum Matthaeum",
-        "locator": "8, 8",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-matthaeum_lt.html#8"
-      },
-      {
-        "title": "Nova Vulgata, Liber Psalmorum",
-        "locator": "116, 13 (Vg 115, 4)",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html#PSALMUS%20116"
-      },
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Ritus servandus in celebratione Missae, X, 4",
-        "url": "https://archive.org/details/missale_romanum-1962/page/n63/mode/1up"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Genuflectit, surgit, et dicit:",
-      "narrative": {
-        "pl": "Kapłan przyklęka, wstaje i mówi:",
-        "en": "The priest genuflects, rises, and says:"
-      }
+      "text": "Genuflectit, surgit, et dicit:"
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Przyjmę chleb niebieski i będę wzywał imienia Pana.",
-        "en": "I will receive the Bread of heaven and call upon the name of the Lord."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 67–68 / printed pp. 64–65",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Panem", "lemma": "panis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Chleb", "en": "Bread" } },
-        { "id": "w002", "form": "cæléstem", "lemma": "caelestis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w001", "gloss": { "pl": "niebiański", "en": "of heaven" }, "function": { "pl": "Przymiotnik zgadzający się z panem.", "en": "An adjective agreeing with panem." } },
-        { "id": "w003", "form": "accípiam", "post": ",", "lemma": "accipio", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "wezmę", "en": "I will take" }, "function": { "pl": "Czas przyszły trybu oznajmującego, co potwierdza współrzędny czasownik invocábo.", "en": "Future indicative, as the coordinated invocábo confirms." } },
-        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w005", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "imienia", "en": "the name" } },
-        { "id": "w006", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "of the Lord" } },
-        { "id": "w007", "form": "invocábo", "post": ".", "lemma": "invoco", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "wzywać będę", "en": "I will call upon" } }
+        { "id": "w001", "form": "Panem", "lemma": "panis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w002", "form": "cæléstem", "lemma": "caelestis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w001" },
+        { "id": "w003", "form": "accípiam", "post": ",", "lemma": "accipio", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w006", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w007", "form": "invocábo", "post": ".", "lemma": "invoco", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 } }
       ]
     },
     {
       "id": "s03",
       "type": "rubric",
-      "text": "Deinde parum inclinatus, accipit ambas partes Hostiæ inter pollicem et indicem sinistræ manus, et Patenam inter eundem indicem et medium supponit, et dextera tribus vicibus percutiens pectus, elata aliquantulum voce, ter dicit devote et humiliter:",
-      "narrative": {
-        "pl": "Lekko pochylony, kapłan bierze obie części Hostii w lewą rękę i podsuwa pod nie patenę. Bijąc się trzykrotnie prawą ręką w piersi, trzykrotnie mówi nieco podniesionym głosem, pobożnie i pokornie:",
-        "en": "Bowing a little, the priest takes both halves of the Host in his left hand and slips the paten beneath them. Striking his breast three times with his right hand, he says the following three times in a slightly raised voice, devoutly and humbly:"
-      }
+      "text": "Deinde parum inclinatus, accipit ambas partes Hostiæ inter pollicem et indicem sinistræ manus, et Patenam inter eundem indicem et medium supponit, et dextera tribus vicibus percutiens pectus, elata aliquantulum voce, ter dicit devote et humiliter:"
     },
     {
       "id": "s04",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Panie, nie jestem godzien,",
-        "en": "Lord, I am not worthy,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 67–68 / printed pp. 64–65",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w008", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w009", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
-        { "id": "w010", "form": "sum", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jestem", "en": "am" } },
-        { "id": "w011", "form": "dignus", "post": ",", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w010", "gloss": { "pl": "godzien", "en": "worthy" }, "function": { "pl": "Pierwsze cztery słowa kapłan wypowiada nieco podniesionym głosem, uderzając się w piersi. Resztę zdania mówi po cichu.", "en": "The priest says the first four words in a slightly raised voice while striking his breast. He continues the sentence under his breath." } }
+        { "id": "w008", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w009", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w010", "form": "sum", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w011", "form": "dignus", "post": ",", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w010" }
       ]
     },
     {
       "id": "s05",
       "type": "rubric",
-      "text": "Et secrete prosequitur:",
-      "narrative": {
-        "pl": "Kapłan mówi dalej po cichu.",
-        "en": "The priest goes on silently."
-      },
-      "narrative_citations": {
-        "pl": [
-          {
-            "title": "Missale Romanum (1962)",
-            "locator": "Ritus servandus in celebratione Missae, X, 4",
-            "url": "https://archive.org/details/missale_romanum-1962"
-          }
-        ],
-        "en": [
-          {
-            "title": "Missale Romanum (1962)",
-            "locator": "Ritus servandus in celebratione Missae, X, 4",
-            "url": "https://archive.org/details/missale_romanum-1962"
-          }
-        ]
-      }
+      "text": "Et secrete prosequitur:"
     },
     {
       "id": "s06",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "abyś wszedł pod dach mój: ale powiedz tylko słowo, a będzie uzdrowiona dusza moja.",
-        "en": "that You should enter under my roof: but only say the word, and my soul shall be healed."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 67–68 / printed pp. 64–65",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w012", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "abyś", "en": "that" } },
-        { "id": "w013", "form": "intres", "lemma": "intro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 }, "gloss": { "pl": "wszedł", "en": "You should enter" }, "function": { "pl": "Tryb łączący wymagany przez ut.", "en": "Subjunctive governed by ut." } },
-        { "id": "w014", "form": "sub", "lemma": "sub", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015", "gloss": { "pl": "pod", "en": "under" }, "function": { "pl": "Biernik wskazuje ruch pod dach.", "en": "The accusative marks motion under the roof." } },
-        { "id": "w015", "form": "tectum", "lemma": "tectum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "dach", "en": "roof" } },
-        { "id": "w016", "form": "meum", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w015", "gloss": { "pl": "mój", "en": "my" } },
-        { "id": "w017", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "ale", "en": "but" } },
-        { "id": "w018", "form": "tantum", "lemma": "tantum", "morph": { "pos": "adv" }, "gloss": { "pl": "tylko", "en": "only" }, "function": { "pl": "Przysłówek określający dic.", "en": "An adverb modifying dic." } },
-        { "id": "w019", "form": "dic", "lemma": "dico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "powiedz", "en": "say" } },
-        { "id": "w020", "form": "verbo", "post": ",", "lemma": "verbum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "słowem", "en": "with the word" }, "function": { "pl": "Ablativus narzędzia przy dic.", "en": "Ablative of means with dic." } },
-        { "id": "w021", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
-        { "id": "w022", "form": "sanábitur", "lemma": "sano", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 1 }, "gloss": { "pl": "będzie uzdrowiona", "en": "shall be healed" }, "function": { "pl": "Czas przyszły strony biernej trybu oznajmującego.", "en": "Future passive indicative." } },
-        { "id": "w023", "form": "ánima", "lemma": "anima", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "dusza", "en": "soul" }, "function": { "pl": "Podmiot przy sanábitur w mianowniku.", "en": "Nominative subject of sanábitur." } },
-        { "id": "w024", "form": "mea", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w023", "gloss": { "pl": "moja", "en": "my" } }
+        { "id": "w012", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "intres", "lemma": "intro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 } },
+        { "id": "w014", "form": "sub", "lemma": "sub", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015" },
+        { "id": "w015", "form": "tectum", "lemma": "tectum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w016", "form": "meum", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w015" },
+        { "id": "w017", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
+        { "id": "w018", "form": "tantum", "lemma": "tantum", "morph": { "pos": "adv" } },
+        { "id": "w019", "form": "dic", "lemma": "dico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w020", "form": "verbo", "post": ",", "lemma": "verbum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w021", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w022", "form": "sanábitur", "lemma": "sano", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 1 } },
+        { "id": "w023", "form": "ánima", "lemma": "anima", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w024", "form": "mea", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w023" }
       ]
     },
     {
@@ -206,97 +78,37 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Panie, nie jestem godzien,",
-        "en": "Lord, I am not worthy,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 67–68 / printed pp. 64–65",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w025", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w026", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
-        { "id": "w027", "form": "sum", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jestem", "en": "am" } },
-        { "id": "w028", "form": "dignus", "post": ",", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w027", "gloss": { "pl": "godzien", "en": "worthy" } }
+        { "id": "w025", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w026", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w027", "form": "sum", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w028", "form": "dignus", "post": ",", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w027" }
       ]
     },
     {
       "id": "s08",
       "type": "rubric",
-      "text": "Et secrete prosequitur:",
-      "narrative": {
-        "pl": "Kapłan mówi dalej po cichu.",
-        "en": "The priest goes on silently."
-      },
-      "narrative_citations": {
-        "pl": [
-          {
-            "title": "Missale Romanum (1962)",
-            "locator": "Ritus servandus in celebratione Missae, X, 4",
-            "url": "https://archive.org/details/missale_romanum-1962"
-          }
-        ],
-        "en": [
-          {
-            "title": "Missale Romanum (1962)",
-            "locator": "Ritus servandus in celebratione Missae, X, 4",
-            "url": "https://archive.org/details/missale_romanum-1962"
-          }
-        ]
-      }
+      "text": "Et secrete prosequitur:"
     },
     {
       "id": "s09",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "abyś wszedł pod dach mój: ale powiedz tylko słowo, a będzie uzdrowiona dusza moja.",
-        "en": "that You should enter under my roof: but only say the word, and my soul shall be healed."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 67–68 / printed pp. 64–65",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w029", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "abyś", "en": "that" } },
-        { "id": "w030", "form": "intres", "lemma": "intro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 }, "gloss": { "pl": "wszedł", "en": "You should enter" } },
-        { "id": "w031", "form": "sub", "lemma": "sub", "morph": { "pos": "prep", "governs": "acc" }, "head": "w032", "gloss": { "pl": "pod", "en": "under" } },
-        { "id": "w032", "form": "tectum", "lemma": "tectum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "dach", "en": "roof" } },
-        { "id": "w033", "form": "meum", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w032", "gloss": { "pl": "mój", "en": "my" } },
-        { "id": "w034", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "ale", "en": "but" } },
-        { "id": "w035", "form": "tantum", "lemma": "tantum", "morph": { "pos": "adv" }, "gloss": { "pl": "tylko", "en": "only" } },
-        { "id": "w036", "form": "dic", "lemma": "dico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "powiedz", "en": "say" } },
-        { "id": "w037", "form": "verbo", "post": ",", "lemma": "verbum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "słowem", "en": "with the word" } },
-        { "id": "w038", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
-        { "id": "w039", "form": "sanábitur", "lemma": "sano", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 1 }, "gloss": { "pl": "będzie uzdrowiona", "en": "shall be healed" } },
-        { "id": "w040", "form": "ánima", "lemma": "anima", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "dusza", "en": "soul" } },
-        { "id": "w041", "form": "mea", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w040", "gloss": { "pl": "moja", "en": "my" } }
+        { "id": "w029", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w030", "form": "intres", "lemma": "intro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 } },
+        { "id": "w031", "form": "sub", "lemma": "sub", "morph": { "pos": "prep", "governs": "acc" }, "head": "w032" },
+        { "id": "w032", "form": "tectum", "lemma": "tectum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w033", "form": "meum", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w032" },
+        { "id": "w034", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
+        { "id": "w035", "form": "tantum", "lemma": "tantum", "morph": { "pos": "adv" } },
+        { "id": "w036", "form": "dic", "lemma": "dico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w037", "form": "verbo", "post": ",", "lemma": "verbum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w038", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w039", "form": "sanábitur", "lemma": "sano", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 1 } },
+        { "id": "w040", "form": "ánima", "lemma": "anima", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w041", "form": "mea", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w040" }
       ]
     },
     {
@@ -304,156 +116,68 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Panie, nie jestem godzien,",
-        "en": "Lord, I am not worthy,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 67–68 / printed pp. 64–65",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w042", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w043", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
-        { "id": "w044", "form": "sum", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jestem", "en": "am" } },
-        { "id": "w045", "form": "dignus", "post": ",", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w044", "gloss": { "pl": "godzien", "en": "worthy" } }
+        { "id": "w042", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w043", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w044", "form": "sum", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w045", "form": "dignus", "post": ",", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w044" }
       ]
     },
     {
       "id": "s11",
       "type": "rubric",
-      "text": "Et secrete prosequitur:",
-      "narrative": {
-        "pl": "Kapłan mówi dalej po cichu.",
-        "en": "The priest goes on silently."
-      },
-      "narrative_citations": {
-        "pl": [
-          {
-            "title": "Missale Romanum (1962)",
-            "locator": "Ritus servandus in celebratione Missae, X, 4",
-            "url": "https://archive.org/details/missale_romanum-1962"
-          }
-        ],
-        "en": [
-          {
-            "title": "Missale Romanum (1962)",
-            "locator": "Ritus servandus in celebratione Missae, X, 4",
-            "url": "https://archive.org/details/missale_romanum-1962"
-          }
-        ]
-      }
+      "text": "Et secrete prosequitur:"
     },
     {
       "id": "s12",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "abyś wszedł pod dach mój: ale powiedz tylko słowo, a będzie uzdrowiona dusza moja.",
-        "en": "that You should enter under my roof: but only say the word, and my soul shall be healed."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 67–68 / printed pp. 64–65",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w046", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "abyś", "en": "that" } },
-        { "id": "w047", "form": "intres", "lemma": "intro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 }, "gloss": { "pl": "wszedł", "en": "You should enter" } },
-        { "id": "w048", "form": "sub", "lemma": "sub", "morph": { "pos": "prep", "governs": "acc" }, "head": "w049", "gloss": { "pl": "pod", "en": "under" } },
-        { "id": "w049", "form": "tectum", "lemma": "tectum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "dach", "en": "roof" } },
-        { "id": "w050", "form": "meum", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w049", "gloss": { "pl": "mój", "en": "my" } },
-        { "id": "w051", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "ale", "en": "but" } },
-        { "id": "w052", "form": "tantum", "lemma": "tantum", "morph": { "pos": "adv" }, "gloss": { "pl": "tylko", "en": "only" } },
-        { "id": "w053", "form": "dic", "lemma": "dico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "powiedz", "en": "say" } },
-        { "id": "w054", "form": "verbo", "post": ",", "lemma": "verbum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "słowem", "en": "with the word" } },
-        { "id": "w055", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
-        { "id": "w056", "form": "sanábitur", "lemma": "sano", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 1 }, "gloss": { "pl": "będzie uzdrowiona", "en": "shall be healed" } },
-        { "id": "w057", "form": "ánima", "lemma": "anima", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "dusza", "en": "soul" } },
-        { "id": "w058", "form": "mea", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w057", "gloss": { "pl": "moja", "en": "my" } }
+        { "id": "w046", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w047", "form": "intres", "lemma": "intro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 } },
+        { "id": "w048", "form": "sub", "lemma": "sub", "morph": { "pos": "prep", "governs": "acc" }, "head": "w049" },
+        { "id": "w049", "form": "tectum", "lemma": "tectum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w050", "form": "meum", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w049" },
+        { "id": "w051", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
+        { "id": "w052", "form": "tantum", "lemma": "tantum", "morph": { "pos": "adv" } },
+        { "id": "w053", "form": "dic", "lemma": "dico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w054", "form": "verbo", "post": ",", "lemma": "verbum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w055", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w056", "form": "sanábitur", "lemma": "sano", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 1 } },
+        { "id": "w057", "form": "ánima", "lemma": "anima", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w058", "form": "mea", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w057" }
       ]
     },
     {
       "id": "s13",
       "type": "rubric",
-      "text": "Postea dextera se signans cum Hostia super Patenam, dicit:",
-      "narrative": {
-        "pl": "Kapłan żegna się Hostią nad pateną i mówi:",
-        "en": "The priest signs himself with the Host over the paten, and says:"
-      }
+      "text": "Postea dextera se signans cum Hostia super Patenam, dicit:"
     },
     {
       "id": "s14",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Ciało Pana naszego Jezusa Chrystusa niech strzeże mojej duszy na życie wieczne. Amen.",
-        "en": "May the Body of our Lord Jesus Christ preserve my soul for eternal life. Amen."
-      },
       "words": [
-        { "id": "w059", "form": "Corpus", "lemma": "corpus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "Ciało", "en": "The Body" }, "function": { "pl": "Podmiot przy custódiat.", "en": "Subject of custódiat." } },
-        { "id": "w060", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "of the Lord" } },
-        { "id": "w061", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w060", "gloss": { "pl": "naszego", "en": "our" } },
-        { "id": "w062", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezusa", "en": "Jesus" } },
-        { "id": "w063", "form": "Christi", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" } },
-        { "id": "w064", "form": "custódiat", "lemma": "custodio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 }, "gloss": { "pl": "niech strzeże", "en": "may keep" } },
-        { "id": "w065", "form": "ánimam", "lemma": "anima", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "duszy", "en": "soul" } },
-        { "id": "w066", "form": "meam", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w065", "gloss": { "pl": "mojej", "en": "my" }, "function": { "pl": "W formule Komunii wiernych w tym miejscu występuje ánimam tuam.", "en": "The Communion formula for the faithful has ánimam tuam in this place." } },
-        { "id": "w067", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w068", "gloss": { "pl": "na", "en": "unto" } },
-        { "id": "w068", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "żywot", "en": "life" } },
-        { "id": "w069", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w068", "gloss": { "pl": "wieczny", "en": "everlasting" } },
-        { "id": "w070", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
-      ],
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 67–68 / printed pp. 64–65",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      }
+        { "id": "w059", "form": "Corpus", "lemma": "corpus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w060", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w061", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w060" },
+        { "id": "w062", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w063", "form": "Christi", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w064", "form": "custódiat", "lemma": "custodio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 } },
+        { "id": "w065", "form": "ánimam", "lemma": "anima", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w066", "form": "meam", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w065" },
+        { "id": "w067", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w068" },
+        { "id": "w068", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w069", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w068" },
+        { "id": "w070", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
     },
     {
       "id": "s15",
       "type": "rubric",
-      "text": "Et se inclinans, reverenter sumit ambas partes Hostiæ: quibus sumptis, deponit Patenam super Corporale, et erigens se iungit manus, et quiescit aliquantulum in meditatione Sanctissimi Sacramenti.",
-      "narrative": {
-        "pl": "Pochylony, kapłan przyjmuje z czcią obie części Hostii, kładzie patenę na korporale, składa ręce i przez chwilę trwa w rozmyślaniu o Najświętszym Sakramencie.",
-        "en": "Bowing, the priest reverently receives both halves of the Host, lays the paten on the corporal, joins his hands and rests a while in meditation on the Most Holy Sacrament."
-      }
+      "text": "Et se inclinans, reverenter sumit ambas partes Hostiæ: quibus sumptis, deponit Patenam super Corporale, et erigens se iungit manus, et quiescit aliquantulum in meditatione Sanctissimi Sacramenti."
     }
   ],
   "editorial": {
@@ -474,6 +198,84 @@
       "s11": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
       "s13": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
       "s15": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Nova Vulgata, Evangelium secundum Matthaeum",
+        "locator": "8, 8",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-matthaeum_lt.html#8"
+      },
+      {
+        "title": "Nova Vulgata, Liber Psalmorum",
+        "locator": "116, 13 (Vg 115, 4)",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html#PSALMUS%20116"
+      },
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ritus servandus in celebratione Missae, X, 4",
+        "url": "https://archive.org/details/missale_romanum-1962/page/n63/mode/1up"
+      }
+    ],
+    "functions": {
+      "w002": {
+
+      },
+      "w003": {
+
+      },
+      "w011": {
+
+      },
+      "w013": {
+
+      },
+      "w014": {
+
+      },
+      "w018": {
+
+      },
+      "w020": {
+
+      },
+      "w022": {
+
+      },
+      "w023": {
+
+      },
+      "w059": {
+
+      },
+      "w066": {
+
+      }
+    },
+    "narrative_citations": {
+      "s05": [
+        {
+          "title": "Missale Romanum (1962)",
+          "locator": "Ritus servandus in celebratione Missae, X, 4",
+          "url": "https://archive.org/details/missale_romanum-1962"
+        }
+      ],
+      "s08": [
+        {
+          "title": "Missale Romanum (1962)",
+          "locator": "Ritus servandus in celebratione Missae, X, 4",
+          "url": "https://archive.org/details/missale_romanum-1962"
+        }
+      ],
+      "s11": [
+        {
+          "title": "Missale Romanum (1962)",
+          "locator": "Ritus servandus in celebratione Missae, X, 4",
+          "url": "https://archive.org/details/missale_romanum-1962"
+        }
+      ]
     }
   }
 }

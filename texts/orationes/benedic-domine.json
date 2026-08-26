@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "orationes.benedic-domine",
   "title": "Bénedic, Dómine",
   "category": "orationes",
@@ -9,147 +9,47 @@
   "ids": {
     "next": 19
   },
-  "about": {
-    "pl": "Benedic, Domine jest krótką modlitwą błogosławieństwa przed posiłkiem. Zgromadzeni proszą Pana o pobłogosławienie ich samych i darów, które mają przyjąć z Jego hojności, a prośbę zanoszą przez Chrystusa.",
-    "en": "The Benedic, Domine is a short blessing before a meal. Those gathered ask the Lord to bless both them and the gifts they are about to receive from his bounty, making the petition through Christ."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Enchiridion Indulgentiarum, fourth edition",
-        "locator": "concession 26 §2, Benedic, Domine",
-        "url": "https://www.vatican.va/roman_curia/tribunals/apost_penit/documents/rc_trib_appen_doc_20020826_enchiridion-indulgentiarum_lt.html"
-      }
-    ],
-    "en": [
-      {
-        "title": "Enchiridion Indulgentiarum, fourth edition",
-        "locator": "concession 26 §2, Benedic, Domine",
-        "url": "https://www.vatican.va/roman_curia/tribunals/apost_penit/documents/rc_trib_appen_doc_20020826_enchiridion-indulgentiarum_lt.html"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
-      "translation": {
-        "pl": "Pobłogosław, Panie, nas",
-        "en": "Bless us, O Lord,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 153",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 440",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Bénedic", "post": ",", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "pobłogosław", "en": "bless" }, "function": { "pl": "Tryb rozkazujący otwiera bezpośrednią prośbę skierowaną do Pana. Ma dwa skoordynowane dopełnienia: „nos” oraz „hæc tua dona”.", "en": "The imperative opens a direct petition to the Lord and governs two coordinated objects: “nos” and “hæc tua dona”." } },
-        { "id": "w002", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" }, "function": { "pl": "Wołacz wskazuje Pana jako jedynego adresata modlitwy.", "en": "The vocative identifies the Lord as the prayer's sole addressee." } },
-        { "id": "w003", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" }, "function": { "pl": "Pierwsze dopełnienie bliższe „Bénedic” obejmuje wspólnotę mówiących.", "en": "The first direct object of “Bénedic” comprises the community of speakers." } }
+        { "id": "w001", "form": "Bénedic", "post": ",", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w002", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w003", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } }
       ]
     },
     {
       "id": "s02",
       "type": "verse",
-      "translation": {
-        "pl": "i te Twoje dary,",
-        "en": "and these your gifts,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 153",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 440",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" }, "function": { "pl": "Spójnik łączy osoby i dary jako równorzędne przedmioty jednego błogosławieństwa.", "en": "The conjunction joins persons and gifts as coordinate objects of one blessing." } },
-        { "id": "w005", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" }, "gloss": { "pl": "te", "en": "these" }, "function": { "pl": "Zaimek wskazujący zgadza się z „dona” i odnosi się do darów obecnych przy posiłku.", "en": "The demonstrative agrees with “dona” and points to the gifts present at the meal." } },
-        { "id": "w006", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w007", "gloss": { "pl": "Twoje", "en": "your" }, "function": { "pl": "Przymiotnik dzierżawczy odnosi dary do Pana, do którego skierowana jest modlitwa.", "en": "The possessive relates the gifts to the Lord addressed in the prayer." } },
-        { "id": "w007", "form": "dona", "post": ",", "lemma": "donum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "dary", "en": "gifts" }, "function": { "pl": "Drugie dopełnienie bliższe „Bénedic”, skoordynowane z „nos”.", "en": "The second direct object of “Bénedic”, coordinated with “nos”." } }
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w006", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w007" },
+        { "id": "w007", "form": "dona", "post": ",", "lemma": "donum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } }
       ]
     },
     {
       "id": "s03",
       "type": "verse",
-      "translation": {
-        "pl": "które z Twojej hojności mamy spożywać.",
-        "en": "which we are about to receive from your bounty."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 153",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 440",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w008", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" }, "head": "w012", "gloss": { "pl": "które", "en": "which" }, "function": { "pl": "Zaimek względny wraca do nijakiego „dona” i jest dopełnieniem imiesłowu „sumptúri” w orzeczeniu z „sumus”.", "en": "The relative resumes neuter “dona” and serves as the object of the participle “sumptúri” in the predicate with “sumus”." } },
-        { "id": "w009", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011", "gloss": { "pl": "z", "en": "from" }, "function": { "pl": "Przyimek z ablatywem wskazuje źródło otrzymywanych darów.", "en": "The preposition with the ablative marks the source of the gifts received." } },
-        { "id": "w010", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w011", "gloss": { "pl": "Twojej", "en": "your" } },
-        { "id": "w011", "form": "largitáte", "lemma": "largitas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "hojności", "en": "bounty" }, "function": { "pl": "Ablativus po „de” nazywa Bożą hojność jako źródło darów.", "en": "The ablative after “de” names divine bounty as the source of the gifts." } },
-        { "id": "w012", "form": "sumus", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jesteśmy", "en": "we are" }, "function": { "pl": "Czasownik posiłkowy z „sumptúri” tworzy opisową konstrukcję przyszłą pierwszej osoby liczby mnogiej.", "en": "With “sumptúri”, the auxiliary forms a first-person plural future active periphrastic." } },
-        { "id": "w013", "form": "sumptúri", "post": ".", "lemma": "sumo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "fut", "mood": "part", "voice": "act", "conj": 3 }, "head": "w012", "gloss": { "pl": "mający spożywać", "en": "about to receive" }, "function": { "pl": "Imiesłów przyszły czynny zgadza się z domyślnymi ludzkimi mówiącymi i wraz z „sumus” wyraża bliskie przyszłe spożycie.", "en": "The future active participle agrees with the understood human speakers and, with “sumus”, expresses imminent reception." } }
+        { "id": "w008", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" }, "head": "w012" },
+        { "id": "w009", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011" },
+        { "id": "w010", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w011" },
+        { "id": "w011", "form": "largitáte", "lemma": "largitas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w012", "form": "sumus", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w013", "form": "sumptúri", "post": ".", "lemma": "sumo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "fut", "mood": "part", "voice": "act", "conj": 3 }, "head": "w012" }
       ]
     },
     {
       "id": "s04",
       "type": "verse",
-      "translation": {
-        "pl": "Przez Chrystusa, Pana naszego. Amen.",
-        "en": "Through Christ our Lord. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 153",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 440",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w014", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015", "gloss": { "pl": "przez", "en": "through" } },
-        { "id": "w015", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" }, "function": { "pl": "Biernik zależny od „Per” wyraża pośrednictwo Chrystusa w zakończeniu modlitwy.", "en": "The accusative governed by “Per” expresses Christ's mediation in the prayer's conclusion." } },
-        { "id": "w016", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "Lord" }, "function": { "pl": "Biernik w apozycji do „Christum”.", "en": "An accusative in apposition to “Christum”." } },
-        { "id": "w017", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w016", "gloss": { "pl": "naszego", "en": "our" }, "function": { "pl": "Przymiotnik zgadza się z „Dóminum” i obejmuje tę samą wspólnotę, która mówiła „nos” i „sumus”.", "en": "The adjective agrees with “Dóminum” and includes the same community that spoke as “nos” and “sumus”." } },
-        { "id": "w018", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w014", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015" },
+        { "id": "w015", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w016", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w017", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w016" },
+        { "id": "w018", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -163,5 +63,62 @@
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Enchiridion Indulgentiarum, fourth edition",
+        "locator": "concession 26 §2, Benedic, Domine",
+        "url": "https://www.vatican.va/roman_curia/tribunals/apost_penit/documents/rc_trib_appen_doc_20020826_enchiridion-indulgentiarum_lt.html"
+      }
+    ],
+    "functions": {
+      "w001": {
+
+      },
+      "w002": {
+
+      },
+      "w003": {
+
+      },
+      "w004": {
+
+      },
+      "w005": {
+
+      },
+      "w006": {
+
+      },
+      "w007": {
+
+      },
+      "w008": {
+
+      },
+      "w009": {
+
+      },
+      "w011": {
+
+      },
+      "w012": {
+
+      },
+      "w013": {
+
+      },
+      "w015": {
+
+      },
+      "w016": {
+
+      },
+      "w017": {
+
+      }
+    }
   }
 }

@@ -1,9 +1,10 @@
-# Corpus schema v0 (0.15.0)
+# Corpus schema v0 (0.16.0)
 
 Three semantic layers: language-neutral Latin, per-language gloss/editorial
-content, and a corpus-wide lexicon. Since 0.14.0 the Latin and both language
-layers for one text are stored together in one document. The lexicon keeps one
-language-neutral lemma file and one sense file per language. JSON, UTF-8.
+content, and a corpus-wide lexicon. Since 0.16.0 each Latin text is a neutral
+core and each target language is an independently publishable, potentially
+partial package. The lexicon likewise keeps neutral lemma data apart from each
+language's senses. JSON, UTF-8.
 `form` uses 1962
 liturgical orthography (u/v, j for consonantal i, æ/œ, accents — see
 ORTHOGRAPHY.md); `lemma` is dictionary-normalized (i-form, no j) for analyzer
@@ -12,8 +13,9 @@ mechanically, never stored.
 
 ## Translation provenance ledger
 
-`translation-provenance.json` contains one entry for every translated
-`verse segment × language` site. Its site set must equal the corpus exactly.
+`languages/<lang>/translation-provenance.json` contains one entry for every
+translated `verse segment` in that language's published text set. Its site set
+must equal the language manifest exactly.
 Each entry carries:
 
 - `site`, `text`, `segment`, and `language` — the complete stable address;
@@ -37,22 +39,29 @@ carries the same number.
 ## File layout
 
 ```
-texts/<category>/<name>.json          Latin + PL/EN gloss/editorial layers
+texts/<category>/<name>.json          language-neutral Latin core
 lexicon/lemmata.json                  language-neutral lemma data
-lexicon/<lang>.json                   senses per language
-translation-provenance.json           one public state per translation site
+languages/<lang>/manifest.json        explicit published-text coverage
+languages/<lang>/texts/<category>/<name>.json
+                                      one target-language text layer
+languages/<lang>/lexicon.json         senses for the language package
+languages/<lang>/translation-provenance.json
+                                      public states for that language's sites
 ```
 
-The sections below describe the semantic Latin and gloss layers separately
-because each checker asks one question of one layer. On disk they are joined:
+The manifest is the authority for coverage. A language may publish any ordered
+subset of the neutral texts, but each listed text is complete: every word has a
+gloss, every verse a translation, every rubric a narrative, and every neutral
+localization requirement is fulfilled. Missing languages never fall back to
+another language silently.
 
-- `gloss`, `function`, `translation`, `narrative` and their citation fields are
-  objects keyed by `pl` and `en` beside the Latin word or segment they render;
-- `about` and `about_citations` are language-keyed objects at document level;
-- working analysis defaults, source pointers, notes and per-token analysis live
-  under the document's `editorial` block;
-- `build_reader/store.py` exposes the separated semantic views to checks, and
-  `build_reader/merge.py` defines and tests the reversible mapping.
+Working analysis defaults, source pointers, notes and per-token analysis live
+under the neutral document's `editorial` block. Its `localization` block records
+language-independent topology: whether an introduction is required, which
+words require contextual functions or disputed-reading notes, and the shared
+citations supporting introductions, functions and rubric narratives. Citations
+supporting the particular wording of a translation remain in its language
+package. `build_reader/store.py` combines these layers only in memory for checks.
 
 ## The three layers of word help (binding division of labor)
 
@@ -98,8 +107,8 @@ restate what another layer already carries:
 ## Latin source layer
 
 ```
-schema_version, id, title, category, section, variant, sung, status, notes,
-analysis_defaults, segments[]
+schema_version, id, title, category, section, variant, sung, segments[],
+localization, editorial
 ```
 
 - `status`: `"working-edition"` until expert review (quality rule).
@@ -452,11 +461,11 @@ entries{ <lemma>: { head, pos, gender?, gender_pl?, decl?, conj?, analysis? } }
   appointed days — tértia die). A token may use either; the consistency
   check accepts both and nothing else.
 
-`lexicon/<lang>.json` (one per gloss language):
+`languages/<lang>/lexicon.json` (one per published language):
 
 ```
-schema_version, lang, status, analysis_defaults,
-entries{ <lemma>: { senses[], note?, note_citations?, derivatives?, analysis? } }
+schema_version, language,
+entries{ <lemma>: { senses[], note?, derivatives?, analysis? } }
 ```
 
 - `senses`: 1–4 short dictionary-style meanings in the target language,
@@ -469,7 +478,8 @@ entries{ <lemma>: { senses[], note?, note_citations?, derivatives?, analysis? } 
   is forbidden. Move that claim to the occurrence's `function`, or name an
   indispensable context explicitly (“In Psalm 118:34…”).
 - `note_citations` (since 0.11.0): optional reader-facing sources for the
-  `note`, using the citation shape below. It may not exist without `note`.
+  localized `note`. Since 0.16.0 the note requirement and citations live once
+  under the neutral lemma's `localization` field.
 - `derivatives` (since 0.6.0): optional, 1–6 words of the TARGET language
   genuinely derived from or borrowed via this lemma (confíteor →
   konfesjonał; panis → companion) — memory hooks for learners. Only real
@@ -479,25 +489,26 @@ entries{ <lemma>: { senses[], note?, note_citations?, derivatives?, analysis? } 
   lemma itself, names its true ancestor in parentheses: „kustosz (od
   custos)”, "custody (from custódia)". Per-language by nature: no parity
   requirement, and entries differ freely between languages.
-- Language files must cover identical key sets (parity), which must equal
-  the lemmata key set.
+- A language lexicon must cover every lemma reachable from the texts in that
+  language's manifest. It may grow ahead of published text coverage, but may
+  not contain a lemma unknown to the neutral lexicon.
 
-## Gloss layer
+## Language layer
 
 ```
-schema_version, text, lang, status, about?, about_citations?, analysis_defaults,
-segments{ <seg-id>: { translation?, translation_citations? | narrative?, narrative_citations? } },
-words{ <word-id>: { gloss, function?, function_citations?, analysis? } }
+schema_version, language, text, about,
+segments{ <seg-id>: { translation, translation_citations? | narrative } },
+words{ <word-id>: { gloss, function?, note? } }
 ```
 
-- `about` (since 0.8.0, optional): one short paragraph introducing the
+- `about` (since 0.8.0; required for a published text): one short paragraph introducing the
   text — history, when it is prayed, structure — in the target language.
   Reader-facing and collapsed by default in apps; every claim must be
   true and verifiable (the quality doctrine applies as to any layer).
-  Presence parity across languages per text (lint-enforced): the claim
-  set is about the Latin text, not about the gloss language.
+  Its presence is declared by the neutral core, not inferred from another
+  target language.
 - `about_citations` (since 0.11.0): optional reader-facing sources supporting
-  the `about` paragraph. It may not exist without `about`.
+  the introduction. Since 0.16.0 these are written once in the neutral core.
 - `gloss` (required): shortest natural reading aid in the target language
   (interlinear line). It may be idiomatic rather than grammatical — it is
   the sense the context selects, which no lemma-level sense list can supply.
@@ -517,19 +528,20 @@ words{ <word-id>: { gloss, function?, function_citations?, analysis? } }
   alternatives, but it must also state the contextual reading adopted by the
   structured morphology and gloss. It may not say that the edition leaves
   unresolved a choice its own translation has already made.
-  Omit the key entirely when the parse and lexicon already say everything —
-  presence must agree across languages (the claim is about the Latin, not
-  about the gloss language). **Self-contained prose** — each entry is read
+  Omit the key entirely when the parse and lexicon already say everything.
+  Required sites are declared by `localization.functions` in the neutral core.
+  **Self-contained prose** — each entry is read
   in isolation. The only permitted cross-reference is the quoted-form
   pattern `„form” (wNNN)` (EN: `“form” (wNNN)`): the app renders the quoted
   form as a tap-link to that word and hides the id; bare ids in prose are
   lint errors.
 - `function_citations` (since 0.11.0): optional reader-facing sources for the
-  `function` note. It may not exist without `function`.
+  `function` note. Since 0.16.0 they are stored once at the corresponding
+  `localization.functions` site in the neutral core.
 - `narrative` (rubric segments): "what is happening at the altar" in the
   target language.
 - `narrative_citations` (since 0.11.0): optional reader-facing sources for
-  the `narrative`. It may not exist without `narrative`.
+  the `narrative`, stored once in the neutral core since 0.16.0.
 - `translation` (verse segments): our own working translation — NEVER copied
   from protected literary translations.
 - `translation_citations` (since 0.12.0): optional sources that identify a
@@ -560,7 +572,7 @@ that the prose itself does not need:
 
 `title` names the work and `locator` gives the exact passage; both are
 required nonempty strings. `url` is optional and, when present, must be an
-absolute HTTPS address. Citation presence and metadata agree exactly across
-gloss languages because the supported claim concerns the Latin text, not its
-Polish or English wording. Elementary grammar and statements directly visible
-in the displayed Latin do not receive decorative citations.
+absolute HTTPS address. Language-independent citation metadata is stored once
+in the neutral core because the supported claim concerns the Latin text, not
+its Polish or English wording. Elementary grammar and statements directly
+visible in the displayed Latin do not receive decorative citations.

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "proprium.dominica-iv-adventus-postcommunio",
   "title": "Sumptis munéribus",
   "category": "proprium",
@@ -9,35 +9,27 @@
   "ids": {
     "next": 15
   },
-  "about": {
-    "pl": "Modlitwa po Komunii IV Niedzieli Adwentu. Nie prosi o nowy dar, lecz o to, żeby częstsze przystępowanie do tego samego dawało wzrost.",
-    "en": "The postcommunion of the Fourth Sunday of Advent. It asks for no new gift but that coming often to the same one make the fruit grow."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Po przyjęciu darów prosimy Cię, Panie: niech dzięki częstemu uczestnictwu w misterium zbawienie coraz obficiej owocuje w nas. Przez Pana.",
-        "en": "Having received the gifts, we ask You, Lord: may salvation bear ever greater fruit in us through frequent participation in the mystery. Through the Lord."
-      },
       "words": [
-        { "id": "w001", "form": "Sumptis", "lemma": "sumo", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w002", "gloss": { "pl": "przyjętymi", "en": "taken" }, "function": { "pl": "Ablativus absolutus: „gdy dary zostały przyjęte”. Para w narzędniku oddaje konstrukcję, której polszczyzna nie ma.", "en": "An ablative absolute: “the gifts having been received”. It stands apart from the clause beside it." } },
-        { "id": "w002", "form": "munéribus", "post": ",", "lemma": "munus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 3 }, "gloss": { "pl": "darami", "en": "the gifts" } },
-        { "id": "w003", "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "prosimy", "en": "we beseech" } },
-        { "id": "w004", "form": "Dómine", "post": ":", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w005", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "aby", "en": "that" } },
-        { "id": "w006", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007", "gloss": { "pl": "przez", "en": "by" } },
-        { "id": "w007", "form": "frequentatióne", "lemma": "frequentatio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "częste sprawowanie", "en": "the frequent celebration" } },
-        { "id": "w008", "form": "mystérii", "post": ",", "lemma": "mysterium", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "misterium", "en": "of the mystery" } },
-        { "id": "w009", "form": "crescat", "lemma": "cresco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "wzrastał", "en": "may grow" } },
-        { "id": "w010", "form": "nostræ", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w011", "gloss": { "pl": "naszego", "en": "of our" } },
-        { "id": "w011", "form": "salútis", "lemma": "salus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "zbawienia", "en": "salvation" } },
-        { "id": "w012", "form": "efféctus", "post": ".", "lemma": "effectus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "skutek", "en": "the effect" } },
-        { "id": "w013", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w014", "gloss": { "pl": "przez", "en": "Through" } },
-        { "id": "w014", "form": "Dóminum", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "the Lord" } }
+        { "id": "w001", "form": "Sumptis", "lemma": "sumo", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w002" },
+        { "id": "w002", "form": "munéribus", "post": ",", "lemma": "munus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 3 } },
+        { "id": "w003", "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w004", "form": "Dómine", "post": ":", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007" },
+        { "id": "w007", "form": "frequentatióne", "lemma": "frequentatio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w008", "form": "mystérii", "post": ",", "lemma": "mysterium", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w009", "form": "crescat", "lemma": "cresco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w010", "form": "nostræ", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w011" },
+        { "id": "w011", "form": "salútis", "lemma": "salus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w012", "form": "efféctus", "post": ".", "lemma": "effectus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w013", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w014" },
+        { "id": "w014", "form": "Dóminum", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     }
   ],
@@ -54,6 +46,14 @@
     "words": {
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w001": {
+
+      }
     }
   }
 }

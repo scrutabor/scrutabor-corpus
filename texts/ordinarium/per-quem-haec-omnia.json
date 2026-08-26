@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.per-quem-haec-omnia",
   "title": "Per quem hæc ómnia",
   "category": "ordinarium",
@@ -9,98 +9,40 @@
   "ids": {
     "next": 15
   },
-  "about": {
-    "pl": "Modlitwa wyznaje, że przez Chrystusa Bóg nieustannie stwarza to wszystko jako dobre, uświęca je, ożywia, błogosławi i daje nam. Zaimek „quem” odnosi się do Chrystusa, wymienionego na końcu poprzedniej modlitwy.",
-    "en": "The prayer professes that through Christ God continually creates all these things as good, sanctifies them, gives them life, blesses them, and gives them to us. The relative “quem” refers to Christ, named at the end of the preceding prayer."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Przez Niego, Panie, zawsze stwarzasz to wszystko jako dobre,",
-        "en": "Through Him, Lord, You always create all these things as good,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 61",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 28",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 70",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w002", "gloss": { "pl": "przez", "en": "through" } },
-        { "id": "w002", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "którego", "en": "whom" }, "function": { "pl": "Quem odnosi się do Chrystusa wymienionego na końcu poprzedniej modlitwy.", "en": "Quem refers to Christ, named at the end of the preceding prayer." } },
-        { "id": "w003", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" }, "gloss": { "pl": "to", "en": "these" } },
-        { "id": "w004", "form": "ómnia", "post": ",", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true, "gloss": { "pl": "wszystko", "en": "all" } },
-        { "id": "w005", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w006", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "ever" } },
-        { "id": "w007", "form": "bona", "lemma": "bonus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w004", "gloss": { "pl": "dobrymi", "en": "good" }, "function": { "pl": "Orzecznik przy creas: stwarzasz je dobrymi.", "en": "Predicative complement with creas: You create them good." } },
-        { "id": "w008", "form": "creas", "post": ",", "lemma": "creo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "stwarzasz", "en": "Thou dost create" } }
+        { "id": "w001", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w002" },
+        { "id": "w002", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w003", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w004", "form": "ómnia", "post": ",", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true },
+        { "id": "w005", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w006", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w007", "form": "bona", "lemma": "bonus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w004" },
+        { "id": "w008", "form": "creas", "post": ",", "lemma": "creo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } }
       ]
     },
     {
       "id": "s02",
       "type": "rubric",
-      "text": "Signat ter super Hostiam, et Calicem simul, dicens:",
-      "narrative": {
-        "pl": "Kapłan czyni trzy znaki krzyża nad Hostią i kielichem jednocześnie.",
-        "en": "The priest makes three signs of the cross over the Host and chalice together."
-      }
+      "text": "Signat ter super Hostiam, et Calicem simul, dicens:"
     },
     {
       "id": "s03",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "uświęcasz je, ożywiasz, błogosławisz i dajesz je nam.",
-        "en": "sanctify them, give them life, bless them, and give them to us."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 61",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 28",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 70",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w009", "form": "sanctíficas", "post": ",", "lemma": "sanctifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "uświęcasz", "en": "Thou dost hallow" } },
-        { "id": "w010", "form": "vivíficas", "post": ",", "lemma": "vivifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "ożywiasz", "en": "Thou dost quicken" } },
-        { "id": "w011", "form": "benedícis", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "błogosławisz", "en": "Thou dost bless" } },
-        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w013", "form": "præstas", "lemma": "praesto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "udzielasz", "en": "Thou dost bestow" } },
-        { "id": "w014", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "upon us" } }
+        { "id": "w009", "form": "sanctíficas", "post": ",", "lemma": "sanctifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w010", "form": "vivíficas", "post": ",", "lemma": "vivifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w011", "form": "benedícis", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "præstas", "lemma": "praesto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w014", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } }
       ]
     }
   ],
@@ -116,6 +58,17 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "segments": {
       "s02": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w002": {
+
+      },
+      "w007": {
+
+      }
     }
   }
 }

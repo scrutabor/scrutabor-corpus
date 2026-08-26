@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.credo",
   "title": "Credo",
   "category": "ordinarium",
@@ -9,45 +9,11 @@
   "ids": {
     "next": 164
   },
-  "about": {
-    "pl": "Symbol nicejsko-konstantynopolitański, odmawiany po Ewangelii w każdą niedzielę i w większe święta, a opuszczany we Mszach za zmarłych. Na słowa Et incarnátus est, w których Symbol wyznaje Słowo, które stało się ciałem, wszyscy przyklękają. Jego artykuły idą od Ojca i Syna do Ducha Świętego, Kościoła, jednego chrztu, wskrzeszenia umarłych i życia wiecznego.",
-    "en": "The Nicene-Constantinopolitan Creed, said after the Gospel on every Sunday and on the greater feasts, and left out in Masses for the Dead. All genuflect at Et incarnátus est, where the Creed confesses the Word made flesh. Its articles run from the Father and the Son to the Holy Spirit, the Church, one baptism, the resurrection of the dead and the life of the world to come."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Rubricae generales, nn. 475–476",
-        "url": "https://archive.org/details/missale_romanum-1962"
-      },
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Rubricae generales, n. 522 a",
-        "url": "https://archive.org/details/missale_romanum-1962"
-      }
-    ],
-    "en": [
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Rubricae generales, nn. 475–476",
-        "url": "https://archive.org/details/missale_romanum-1962"
-      },
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Rubricae generales, n. 522 a",
-        "url": "https://archive.org/details/missale_romanum-1962"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Deinde ad medium Altaris extendens, elevans et iungens manus, dicit, si dicendum est, Credo in unum Deum, et prosequitur iunctis manibus.",
-      "narrative": {
-        "pl": "Na środku ołtarza kapłan wyciąga i unosi ręce, składa je, odmawia Credo, jeśli jest przewidziane, i kontynuuje ze złożonymi rękami. Pochyla głowę ku krzyżowi przy in unum Deum, przy Iesum Christum i przy simul adorátur, a przy Et vitam ventúri sǽculi żegna się od czoła do piersi.",
-        "en": "At the middle of the altar, the priest extends and raises his hands, joins them, says the Creed if prescribed, and continues with hands joined. The priest bows his head to the cross at in unum Deum, at Iesum Christum and at simul adorátur, and signs himself from forehead to breast at Et vitam ventúri sǽculi."
-      }
+      "text": "Deinde ad medium Altaris extendens, elevans et iungens manus, dicit, si dicendum est, Credo in unum Deum, et prosequitur iunctis manibus."
     },
     {
       "id": "s02",
@@ -64,41 +30,21 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Wierzę w jednego Boga, Ojca wszechmogącego, Stworzyciela nieba i ziemi, wszystkich rzeczy widzialnych i niewidzialnych.",
-        "en": "I believe in one God, the almighty Father, maker of heaven and earth, of all things visible and invisible."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Credo", "lemma": "credo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "wierzę", "en": "I believe" }, "function": { "pl": "Łączy się z „in” (w002) i biernikiem.", "en": "Takes “in” (w002) with the accusative." } },
-        { "id": "w002", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w004", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w003", "form": "unum", "lemma": "unus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w004", "gloss": { "pl": "jednego", "en": "one" } },
-        { "id": "w004", "form": "Deum", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } },
-        { "id": "w005", "form": "Patrem", "lemma": "pater", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojca", "en": "the Father" } },
-        { "id": "w006", "form": "omnipoténtem", "post": ",", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w005", "gloss": { "pl": "wszechmogącego", "en": "almighty" } },
-        { "id": "w007", "form": "factórem", "lemma": "factor", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "twórcę", "en": "maker" } },
-        { "id": "w008", "form": "cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "nieba", "en": "of heaven" } },
-        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w010", "form": "terræ", "post": ",", "lemma": "terra", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ziemi", "en": "of earth" } },
-        { "id": "w011", "form": "visibílium", "lemma": "visibilis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "n" }, "head": "w012", "gloss": { "pl": "widzialnych", "en": "visible" } },
-        { "id": "w012", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "n" }, "substantive": true, "gloss": { "pl": "wszystkich", "en": "of all things" } },
-        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w014", "form": "invisibílium", "post": ".", "lemma": "invisibilis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "n" }, "head": "w012", "gloss": { "pl": "niewidzialnych", "en": "invisible" } }
+        { "id": "w001", "form": "Credo", "lemma": "credo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w002", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w004" },
+        { "id": "w003", "form": "unum", "lemma": "unus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w004" },
+        { "id": "w004", "form": "Deum", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "Patrem", "lemma": "pater", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w006", "form": "omnipoténtem", "post": ",", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w005" },
+        { "id": "w007", "form": "factórem", "lemma": "factor", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w008", "form": "cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "terræ", "post": ",", "lemma": "terra", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w011", "form": "visibílium", "lemma": "visibilis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "n" }, "head": "w012" },
+        { "id": "w012", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "n" }, "substantive": true },
+        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w014", "form": "invisibílium", "post": ".", "lemma": "invisibilis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "n" }, "head": "w012" }
       ]
     },
     {
@@ -116,36 +62,16 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "I w jednego Pana, Jezusa Chrystusa, Syna Bożego jednorodzonego.",
-        "en": "And in one Lord Jesus Christ, the only-begotten Son of God."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w015", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w016", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w018", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w017", "form": "unum", "lemma": "unus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w018", "gloss": { "pl": "jednego", "en": "one" } },
-        { "id": "w018", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "Lord" } },
-        { "id": "w019", "form": "Iesum", "lemma": "Iesus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezusa", "en": "Jesus" } },
-        { "id": "w020", "form": "Christum", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" } },
-        { "id": "w021", "form": "Fílium", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Syna", "en": "the Son" } },
-        { "id": "w022", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" } },
-        { "id": "w023", "form": "unigénitum", "post": ".", "lemma": "unigenitus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w021", "gloss": { "pl": "jednorodzonego", "en": "only-begotten" } }
+        { "id": "w015", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w016", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w018" },
+        { "id": "w017", "form": "unum", "lemma": "unus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w018" },
+        { "id": "w018", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w019", "form": "Iesum", "lemma": "Iesus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w020", "form": "Christum", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w021", "form": "Fílium", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w022", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w023", "form": "unigénitum", "post": ".", "lemma": "unigenitus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w021" }
       ]
     },
     {
@@ -163,34 +89,14 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Który z Ojca jest zrodzony przed wszystkimi wiekami.",
-        "en": "And born of the Father before all ages."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w024", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w025", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w026", "gloss": { "pl": "z", "en": "of" } },
-        { "id": "w026", "form": "Patre", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojca", "en": "the Father" } },
-        { "id": "w027", "form": "natum", "lemma": "nascor", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "case": "acc", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021", "gloss": { "pl": "zrodzonego", "en": "born" }, "function": { "pl": "Imiesłów zgadzający się z „Fílium” (w021).", "en": "Participle agreeing with “Fílium” (w021)." } },
-        { "id": "w028", "form": "ante", "lemma": "ante", "morph": { "pos": "prep", "governs": "acc" }, "head": "w030", "gloss": { "pl": "przed", "en": "before" } },
-        { "id": "w029", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w030", "gloss": { "pl": "wszystkimi", "en": "all" } },
-        { "id": "w030", "form": "sǽcula", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wiekami", "en": "ages" } }
+        { "id": "w024", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w025", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w026" },
+        { "id": "w026", "form": "Patre", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w027", "form": "natum", "lemma": "nascor", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "case": "acc", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021" },
+        { "id": "w028", "form": "ante", "lemma": "ante", "morph": { "pos": "prep", "governs": "acc" }, "head": "w030" },
+        { "id": "w029", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w030" },
+        { "id": "w030", "form": "sǽcula", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } }
       ]
     },
     {
@@ -208,38 +114,18 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Bóg z Boga, Światłość ze Światłości, Bóg prawdziwy z Boga prawdziwego.",
-        "en": "God from God, Light from Light, true God from true God."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w031", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } },
-        { "id": "w032", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w033", "gloss": { "pl": "z", "en": "from" } },
-        { "id": "w033", "form": "Deo", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } },
-        { "id": "w034", "form": "Lumen", "lemma": "lumen", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "Światłość", "en": "Light" } },
-        { "id": "w035", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w036", "gloss": { "pl": "ze", "en": "from" } },
-        { "id": "w036", "form": "Lúmine", "post": ",", "lemma": "lumen", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "Światłości", "en": "Light" } },
-        { "id": "w037", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } },
-        { "id": "w038", "form": "verum", "lemma": "verus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w037", "gloss": { "pl": "prawdziwego", "en": "true" } },
-        { "id": "w039", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w040", "gloss": { "pl": "z", "en": "from" } },
-        { "id": "w040", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } },
-        { "id": "w041", "form": "vero", "post": ".", "lemma": "verus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w040", "gloss": { "pl": "prawdziwego", "en": "true" } }
+        { "id": "w031", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w032", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w033" },
+        { "id": "w033", "form": "Deo", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w034", "form": "Lumen", "lemma": "lumen", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w035", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w036" },
+        { "id": "w036", "form": "Lúmine", "post": ",", "lemma": "lumen", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w037", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w038", "form": "verum", "lemma": "verus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w037" },
+        { "id": "w039", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w040" },
+        { "id": "w040", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w041", "form": "vero", "post": ".", "lemma": "verus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w040" }
       ]
     },
     {
@@ -257,37 +143,17 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Zrodzony, a nie stworzony, współistotny Ojcu, a przez Niego wszystko się stało.",
-        "en": "Begotten, not made, consubstantial with the Father; through whom all things were made."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w042", "form": "Génitum", "post": ",", "lemma": "gigno", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "acc", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021", "gloss": { "pl": "zrodzonego", "en": "begotten" }, "function": { "pl": "Biernik. Zgadza się z „Fílium” (w021) i jest przeciwstawiony „factum” (w044).", "en": "Accusative agreeing with “Fílium” (w021), contrasted with “factum” (w044)." } },
-        { "id": "w043", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
-        { "id": "w044", "form": "factum", "post": ",", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "acc", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021", "gloss": { "pl": "uczynionego", "en": "made" } },
-        { "id": "w045", "form": "consubstantiálem", "lemma": "consubstantialis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w021", "gloss": { "pl": "współistotnego", "en": "consubstantial" }, "function": { "pl": "Łączy się z celownikiem „Patri” (w046).", "en": "Takes the dative “Patri” (w046)." } },
-        { "id": "w046", "form": "Patri", "post": ":", "lemma": "pater", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcu", "en": "with the Father" } },
-        { "id": "w047", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w048", "gloss": { "pl": "przez", "en": "through" } },
-        { "id": "w048", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "którego", "en": "whom" } },
-        { "id": "w049", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "substantive": true, "gloss": { "pl": "wszystko", "en": "all things" } },
-        { "id": "w050", "form": "facta", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "pl", "gender": "n", "conj": 3 }, "head": "w049", "gloss": { "pl": "uczynione", "en": "made" }, "function": { "pl": "Z „sunt” (w051) tworzy stronę bierną perfectum „facta sunt”: „zostały uczynione”.", "en": "With “sunt” (w051), forms the perfect passive “facta sunt”: “were made”." } },
-        { "id": "w051", "form": "sunt", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "zostało", "en": "were" } }
+        { "id": "w042", "form": "Génitum", "post": ",", "lemma": "gigno", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "acc", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021" },
+        { "id": "w043", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w044", "form": "factum", "post": ",", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "acc", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021" },
+        { "id": "w045", "form": "consubstantiálem", "lemma": "consubstantialis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w021" },
+        { "id": "w046", "form": "Patri", "post": ":", "lemma": "pater", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w047", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w048" },
+        { "id": "w048", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w049", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "substantive": true },
+        { "id": "w050", "form": "facta", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "pl", "gender": "n", "conj": 3 }, "head": "w049" },
+        { "id": "w051", "form": "sunt", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } }
       ]
     },
     {
@@ -305,48 +171,24 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "On to dla nas ludzi i dla naszego zbawienia zstąpił z nieba.",
-        "en": "Who, for us human beings and for our salvation, came down from heaven."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w052", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
-        { "id": "w053", "form": "propter", "lemma": "propter", "morph": { "pos": "prep", "governs": "acc" }, "head": "w054", "gloss": { "pl": "dla", "en": "for" } },
-        { "id": "w054", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } },
-        { "id": "w055", "form": "hómines", "lemma": "homo", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "ludzi", "en": "men" } },
-        { "id": "w056", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w057", "form": "propter", "lemma": "propter", "morph": { "pos": "prep", "governs": "acc" }, "head": "w059", "gloss": { "pl": "dla", "en": "for" } },
-        { "id": "w058", "form": "nostram", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w059", "gloss": { "pl": "naszego", "en": "our" } },
-        { "id": "w059", "form": "salútem", "lemma": "salus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "zbawienia", "en": "salvation" } },
-        { "id": "w060", "form": "descéndit", "lemma": "descendo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "zstąpił", "en": "came down" }, "function": { "pl": "Perfectum: „zstąpił”.", "en": "Perfect here: “came down”." } },
-        { "id": "w061", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w062", "gloss": { "pl": "z", "en": "from" } },
-        { "id": "w062", "form": "cælis", "post": ".", "lemma": "caelum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "niebios", "en": "the heavens" } }
+        { "id": "w052", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w053", "form": "propter", "lemma": "propter", "morph": { "pos": "prep", "governs": "acc" }, "head": "w054" },
+        { "id": "w054", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w055", "form": "hómines", "lemma": "homo", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w056", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w057", "form": "propter", "lemma": "propter", "morph": { "pos": "prep", "governs": "acc" }, "head": "w059" },
+        { "id": "w058", "form": "nostram", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w059" },
+        { "id": "w059", "form": "salútem", "lemma": "salus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w060", "form": "descéndit", "lemma": "descendo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w061", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w062" },
+        { "id": "w062", "form": "cælis", "post": ".", "lemma": "caelum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } }
       ]
     },
     {
       "id": "s08",
       "type": "rubric",
-      "text": "Hic genuflectitur.",
-      "narrative": {
-        "pl": "W tym miejscu przyklęka się, trwając tak od Et incarnátus est do et homo factus est, i powstaje.",
-        "en": "Here a genuflection is made, held from Et incarnátus est through et homo factus est, and then all rise."
-      }
+      "text": "Hic genuflectitur."
     },
     {
       "id": "s09",
@@ -363,40 +205,20 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "I za sprawą Ducha Świętego przyjął ciało z Maryi Dziewicy: i stał się człowiekiem.",
-        "en": "And He was incarnate by the Holy Spirit from the Virgin Mary, and became man."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w063", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w064", "form": "incarnátus", "lemma": "incarno", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 1 }, "head": "w065", "gloss": { "pl": "wcielony", "en": "made flesh" }, "function": { "pl": "Z „est” (w065) tworzy perfectum „incarnátus est”: „wcielił się”.", "en": "With “est” (w065), forms the perfect “incarnátus est”: “was made flesh”." } },
-        { "id": "w065", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "został", "en": "was" } },
-        { "id": "w066", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w067", "gloss": { "pl": "za sprawą", "en": "by" } },
-        { "id": "w067", "form": "Spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Ducha", "en": "the Spirit" } },
-        { "id": "w068", "form": "Sancto", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w067", "gloss": { "pl": "Świętego", "en": "Holy" } },
-        { "id": "w069", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w070", "gloss": { "pl": "z", "en": "of" } },
-        { "id": "w070", "form": "María", "lemma": "Maria", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryi", "en": "Mary" } },
-        { "id": "w071", "form": "Vírgine", "post": ":", "lemma": "virgo", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Dziewicy", "en": "the Virgin" } },
-        { "id": "w072", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w073", "form": "homo", "lemma": "homo", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "człowiekiem", "en": "man" } },
-        { "id": "w074", "form": "factus", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w073", "gloss": { "pl": "stał", "en": "made" }, "function": { "pl": "Z „est” (w075) tworzy perfectum „factus est”. „homo” (w073) jest orzecznikiem w mianowniku.", "en": "With “est” (w075), forms the perfect “factus est”. “homo” (w073) is the predicate nominative." } },
-        { "id": "w075", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "się", "en": "was" } }
+        { "id": "w063", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w064", "form": "incarnátus", "lemma": "incarno", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 1 }, "head": "w065" },
+        { "id": "w065", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w066", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w067" },
+        { "id": "w067", "form": "Spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w068", "form": "Sancto", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w067" },
+        { "id": "w069", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w070" },
+        { "id": "w070", "form": "María", "lemma": "Maria", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w071", "form": "Vírgine", "post": ":", "lemma": "virgo", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w072", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w073", "form": "homo", "lemma": "homo", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w074", "form": "factus", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w073" },
+        { "id": "w075", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } }
       ]
     },
     {
@@ -414,38 +236,18 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Ukrzyżowany również za nas, pod Poncjuszem Piłatem został umęczony i pogrzebany.",
-        "en": "He was also crucified for us; He suffered under Pontius Pilate and was buried."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w076", "form": "Crucifíxus", "lemma": "crucifigo", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w086", "gloss": { "pl": "ukrzyżowany", "en": "crucified" }, "function": { "pl": "Łączy się ze wspólnym „est” (w086), podobnie jak „passus” (w083) i „sepúltus” (w085).", "en": "Shares “est” (w086) with “passus” (w083) and “sepúltus” (w085)." } },
-        { "id": "w077", "form": "étiam", "lemma": "etiam", "morph": { "pos": "adv" }, "gloss": { "pl": "także", "en": "also" } },
-        { "id": "w078", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w079", "gloss": { "pl": "za", "en": "for" } },
-        { "id": "w079", "form": "nobis", "post": ":", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } },
-        { "id": "w080", "form": "sub", "lemma": "sub", "morph": { "pos": "prep", "governs": "abl" }, "head": "w081", "gloss": { "pl": "pod", "en": "under" } },
-        { "id": "w081", "form": "Póntio", "lemma": "Pontius", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Poncjuszem", "en": "Pontius" } },
-        { "id": "w082", "form": "Piláto", "lemma": "Pilatus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Piłatem", "en": "Pilate" } },
-        { "id": "w083", "form": "passus", "post": ",", "lemma": "patior", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w086", "gloss": { "pl": "umęczony", "en": "having suffered" }, "function": { "pl": "Imiesłów czasownika deponentnego — forma bierna, znaczenie czynne: ten, który cierpiał.", "en": "Participle of a deponent verb — passive form, active meaning: the one who suffered." } },
-        { "id": "w084", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w085", "form": "sepúltus", "lemma": "sepelio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 4 }, "head": "w086", "gloss": { "pl": "pogrzebany", "en": "buried" } },
-        { "id": "w086", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "został", "en": "was" } }
+        { "id": "w076", "form": "Crucifíxus", "lemma": "crucifigo", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w086" },
+        { "id": "w077", "form": "étiam", "lemma": "etiam", "morph": { "pos": "adv" } },
+        { "id": "w078", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w079" },
+        { "id": "w079", "form": "nobis", "post": ":", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
+        { "id": "w080", "form": "sub", "lemma": "sub", "morph": { "pos": "prep", "governs": "abl" }, "head": "w081" },
+        { "id": "w081", "form": "Póntio", "lemma": "Pontius", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w082", "form": "Piláto", "lemma": "Pilatus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w083", "form": "passus", "post": ",", "lemma": "patior", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w086" },
+        { "id": "w084", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w085", "form": "sepúltus", "lemma": "sepelio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 4 }, "head": "w086" },
+        { "id": "w086", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } }
       ]
     },
     {
@@ -463,33 +265,13 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "I zmartwychwstał dnia trzeciego, jak oznajmia Pismo.",
-        "en": "And He rose again on the third day, according to the Scriptures."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w087", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w088", "form": "resurréxit", "lemma": "resurgo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "zmartwychwstał", "en": "rose again" } },
-        { "id": "w089", "form": "tértia", "lemma": "tertius", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w090", "gloss": { "pl": "trzeciego", "en": "on the third" } },
-        { "id": "w090", "form": "die", "post": ",", "lemma": "dies", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 5 }, "gloss": { "pl": "dnia", "en": "day" }, "function": { "pl": "Ablativus czasu. Tutaj rodzaj żeński. Zgadza się z „tértia” (w089).", "en": "Ablative of time. Feminine here, agreeing with “tértia” (w089)." } },
-        { "id": "w091", "form": "secúndum", "lemma": "secundum", "morph": { "pos": "prep", "governs": "acc" }, "head": "w092", "gloss": { "pl": "według", "en": "according to" } },
-        { "id": "w092", "form": "Scriptúras", "post": ".", "lemma": "scriptura", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "Pism", "en": "the Scriptures" } }
+        { "id": "w087", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w088", "form": "resurréxit", "lemma": "resurgo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w089", "form": "tértia", "lemma": "tertius", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w090" },
+        { "id": "w090", "form": "die", "post": ",", "lemma": "dies", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 5 } },
+        { "id": "w091", "form": "secúndum", "lemma": "secundum", "morph": { "pos": "prep", "governs": "acc" }, "head": "w092" },
+        { "id": "w092", "form": "Scriptúras", "post": ".", "lemma": "scriptura", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } }
       ]
     },
     {
@@ -507,35 +289,15 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "I wstąpił do nieba: siedzi po prawicy Ojca.",
-        "en": "And He ascended into heaven and sits at the Father's right hand."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w093", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w094", "form": "ascéndit", "lemma": "ascendo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "wstąpił", "en": "ascended" }, "function": { "pl": "Perfectum: „wstąpił”.", "en": "Perfect here: “ascended”." } },
-        { "id": "w095", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w096", "gloss": { "pl": "do", "en": "into" } },
-        { "id": "w096", "form": "cælum", "post": ":", "lemma": "caelum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "nieba", "en": "heaven" } },
-        { "id": "w097", "form": "sedet", "lemma": "sedeo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 }, "gloss": { "pl": "siedzi", "en": "He sits" } },
-        { "id": "w098", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w099", "gloss": { "pl": "po", "en": "at" } },
-        { "id": "w099", "form": "déxteram", "lemma": "dextera", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "prawicy", "en": "the right hand" } },
-        { "id": "w100", "form": "Patris", "post": ".", "lemma": "pater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojca", "en": "of the Father" } }
+        { "id": "w093", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w094", "form": "ascéndit", "lemma": "ascendo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w095", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w096" },
+        { "id": "w096", "form": "cælum", "post": ":", "lemma": "caelum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w097", "form": "sedet", "lemma": "sedeo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
+        { "id": "w098", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w099" },
+        { "id": "w099", "form": "déxteram", "lemma": "dextera", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w100", "form": "Patris", "post": ".", "lemma": "pater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } }
       ]
     },
     {
@@ -553,42 +315,22 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "I powtórnie przyjdzie w chwale sądzić żywych i umarłych: a Królestwu Jego nie będzie końca.",
-        "en": "And He will come again in glory to judge the living and the dead; His kingdom will have no end."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w101", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w102", "form": "íterum", "lemma": "iterum", "morph": { "pos": "adv" }, "gloss": { "pl": "powtórnie", "en": "again" } },
-        { "id": "w103", "form": "ventúrus", "lemma": "venio", "morph": { "pos": "verb", "mood": "part", "tense": "fut", "voice": "act", "case": "nom", "number": "sg", "gender": "m", "conj": 4 }, "head": "w104", "gloss": { "pl": "mający przyjść", "en": "about to come" }, "function": { "pl": "Imiesłów przyszły z „est” (w104): „przyjdzie”.", "en": "Future participle with “est” (w104): “will come”." } },
-        { "id": "w104", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jest", "en": "is" } },
-        { "id": "w105", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w106", "gloss": { "pl": "w", "en": "with" } },
-        { "id": "w106", "form": "glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwale", "en": "glory" } },
-        { "id": "w107", "form": "iudicáre", "lemma": "iudico", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 }, "gloss": { "pl": "sądzić", "en": "to judge" }, "function": { "pl": "Bezokolicznik określa cel przyjścia: „przyjdzie sądzić żywych i umarłych”.", "en": "The infinitive states the purpose of His coming: “He will come to judge the living and the dead”." } },
-        { "id": "w108", "form": "vivos", "lemma": "vivus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "żywych", "en": "the living" } },
-        { "id": "w109", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w110", "form": "mórtuos", "post": ":", "lemma": "mortuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "umarłych", "en": "the dead" } },
-        { "id": "w111", "form": "cuius", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "którego", "en": "of whose" }, "function": { "pl": "Dopełniacz posiadacza określający „regni” (w112). Jego poprzednikiem jest Chrystus.", "en": "Possessive genitive modifying “regni” (w112), with Christ as its antecedent." } },
-        { "id": "w112", "form": "regni", "lemma": "regnum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "królestwa", "en": "kingdom" } },
-        { "id": "w113", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "no" } },
-        { "id": "w114", "form": "erit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act" }, "gloss": { "pl": "będzie", "en": "there will be" } },
-        { "id": "w115", "form": "finis", "post": ".", "lemma": "finis", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "końca", "en": "end" } }
+        { "id": "w101", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w102", "form": "íterum", "lemma": "iterum", "morph": { "pos": "adv" } },
+        { "id": "w103", "form": "ventúrus", "lemma": "venio", "morph": { "pos": "verb", "mood": "part", "tense": "fut", "voice": "act", "case": "nom", "number": "sg", "gender": "m", "conj": 4 }, "head": "w104" },
+        { "id": "w104", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w105", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w106" },
+        { "id": "w106", "form": "glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w107", "form": "iudicáre", "lemma": "iudico", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 } },
+        { "id": "w108", "form": "vivos", "lemma": "vivus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w109", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w110", "form": "mórtuos", "post": ":", "lemma": "mortuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w111", "form": "cuius", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w112", "form": "regni", "lemma": "regnum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w113", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w114", "form": "erit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act" } },
+        { "id": "w115", "form": "finis", "post": ".", "lemma": "finis", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } }
       ]
     },
     {
@@ -606,39 +348,19 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Wierzę w Ducha Świętego, Pana i Ożywiciela: który od Ojca i Syna pochodzi.",
-        "en": "And I believe in the Holy Spirit, the Lord and giver of life, who proceeds from the Father and the Son."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w116", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w117", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w118", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w118", "form": "Spíritum", "lemma": "spiritus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Ducha", "en": "the Spirit" } },
-        { "id": "w119", "form": "Sanctum", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w118", "gloss": { "pl": "Świętego", "en": "Holy" } },
-        { "id": "w120", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "the Lord" } },
-        { "id": "w121", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w122", "form": "vivificántem", "post": ":", "lemma": "vivifico", "morph": { "pos": "verb", "mood": "part", "tense": "pres", "voice": "act", "case": "acc", "number": "sg", "gender": "m", "conj": 1 }, "head": "w120", "gloss": { "pl": "Ożywiciela", "en": "giver of life" }, "function": { "pl": "Imiesłów czasu teraźniejszego w roli tytułu: dosłownie „ożywiającego” — Tego, który daje życie.", "en": "A present participle serving as a title: literally “the one giving life”." } },
-        { "id": "w123", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
-        { "id": "w124", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w125", "gloss": { "pl": "od", "en": "from" } },
-        { "id": "w125", "form": "Patre", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojca", "en": "the Father" } },
-        { "id": "w126", "form": "Filióque", "lemma": "filius", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "i Syna", "en": "and the Son" }, "function": { "pl": "Enklityczny spójnik „-que” znaczy „i”: „ex Patre Filióque”, „od Ojca i Syna”.", "en": "The enclitic conjunction “-que” means “and”: “ex Patre Filióque”, “from the Father and the Son”." } },
-        { "id": "w127", "form": "procédit", "post": ".", "lemma": "procedo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "pochodzi", "en": "proceeds" } }
+        { "id": "w116", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w117", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w118" },
+        { "id": "w118", "form": "Spíritum", "lemma": "spiritus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w119", "form": "Sanctum", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w118" },
+        { "id": "w120", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w121", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w122", "form": "vivificántem", "post": ":", "lemma": "vivifico", "morph": { "pos": "verb", "mood": "part", "tense": "pres", "voice": "act", "case": "acc", "number": "sg", "gender": "m", "conj": 1 }, "head": "w120" },
+        { "id": "w123", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w124", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w125" },
+        { "id": "w125", "form": "Patre", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w126", "form": "Filióque", "lemma": "filius", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w127", "form": "procédit", "post": ".", "lemma": "procedo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } }
       ]
     },
     {
@@ -656,41 +378,21 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Który z Ojcem i Synem wspólnie odbiera uwielbienie i chwałę: który mówił przez Proroków.",
-        "en": "Who is adored and glorified together with the Father and the Son; who spoke through the prophets."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w128", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
-        { "id": "w129", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w130", "gloss": { "pl": "z", "en": "with" } },
-        { "id": "w130", "form": "Patre", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcem", "en": "the Father" } },
-        { "id": "w131", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w132", "form": "Fílio", "lemma": "filius", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Synem", "en": "the Son" } },
-        { "id": "w133", "form": "simul", "lemma": "simul", "morph": { "pos": "adv" }, "gloss": { "pl": "wspólnie", "en": "together" } },
-        { "id": "w134", "form": "adorátur", "lemma": "adoro", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "pass", "conj": 1 }, "gloss": { "pl": "odbiera uwielbienie", "en": "is adored" } },
-        { "id": "w135", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w136", "form": "conglorificátur", "post": ":", "lemma": "conglorifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "pass", "conj": 1 }, "gloss": { "pl": "odbiera chwałę", "en": "is glorified" } },
-        { "id": "w137", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
-        { "id": "w138", "form": "locútus", "lemma": "loquor", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w137", "gloss": { "pl": "mówił", "en": "spoke" }, "function": { "pl": "Imiesłów deponentny z „est” (w139): locútus est — „przemówił, mówił”. Forma bierna, znaczenie czynne.", "en": "A deponent participle with “est” (w139): locútus est — “spoke”. Passive form, active meaning." } },
-        { "id": "w139", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "—", "en": "has" } },
-        { "id": "w140", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w141", "gloss": { "pl": "przez", "en": "through" } },
-        { "id": "w141", "form": "Prophétas", "post": ".", "lemma": "propheta", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 1 }, "gloss": { "pl": "Proroków", "en": "the Prophets" } }
+        { "id": "w128", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w129", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w130" },
+        { "id": "w130", "form": "Patre", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w131", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w132", "form": "Fílio", "lemma": "filius", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w133", "form": "simul", "lemma": "simul", "morph": { "pos": "adv" } },
+        { "id": "w134", "form": "adorátur", "lemma": "adoro", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "pass", "conj": 1 } },
+        { "id": "w135", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w136", "form": "conglorificátur", "post": ":", "lemma": "conglorifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "pass", "conj": 1 } },
+        { "id": "w137", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w138", "form": "locútus", "lemma": "loquor", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w137" },
+        { "id": "w139", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w140", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w141" },
+        { "id": "w141", "form": "Prophétas", "post": ".", "lemma": "propheta", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 1 } }
       ]
     },
     {
@@ -708,34 +410,14 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Wierzę w jeden, święty, powszechny i apostolski Kościół.",
-        "en": "And I believe in one holy, catholic and apostolic Church."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w142", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w143", "form": "unam", "lemma": "unus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w148", "gloss": { "pl": "jeden", "en": "one" } },
-        { "id": "w144", "form": "sanctam", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w148", "gloss": { "pl": "święty", "en": "holy" } },
-        { "id": "w145", "form": "cathólicam", "lemma": "catholicus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w148", "gloss": { "pl": "katolicki", "en": "catholic" } },
-        { "id": "w146", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w147", "form": "apostólicam", "lemma": "apostolicus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w148", "gloss": { "pl": "apostolski", "en": "apostolic" } },
-        { "id": "w148", "form": "Ecclésiam", "post": ".", "lemma": "ecclesia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Kościół", "en": "Church" } }
+        { "id": "w142", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w143", "form": "unam", "lemma": "unus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w148" },
+        { "id": "w144", "form": "sanctam", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w148" },
+        { "id": "w145", "form": "cathólicam", "lemma": "catholicus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w148" },
+        { "id": "w146", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w147", "form": "apostólicam", "lemma": "apostolicus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w148" },
+        { "id": "w148", "form": "Ecclésiam", "post": ".", "lemma": "ecclesia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } }
       ]
     },
     {
@@ -753,33 +435,13 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Wyznaję jeden chrzest na odpuszczenie grzechów.",
-        "en": "I confess one baptism for the forgiveness of sins."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w149", "form": "Confíteor", "lemma": "confiteor", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "dep", "conj": 2 }, "gloss": { "pl": "wyznaję", "en": "I confess" } },
-        { "id": "w150", "form": "unum", "lemma": "unus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w151", "gloss": { "pl": "jeden", "en": "one" } },
-        { "id": "w151", "form": "baptísma", "lemma": "baptisma", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "chrzest", "en": "baptism" } },
-        { "id": "w152", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w153", "gloss": { "pl": "na", "en": "for" } },
-        { "id": "w153", "form": "remissiónem", "lemma": "remissio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "odpuszczenie", "en": "the remission" } },
-        { "id": "w154", "form": "peccatórum", "post": ".", "lemma": "peccatum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "grzechów", "en": "of sins" } }
+        { "id": "w149", "form": "Confíteor", "lemma": "confiteor", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "dep", "conj": 2 } },
+        { "id": "w150", "form": "unum", "lemma": "unus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w151" },
+        { "id": "w151", "form": "baptísma", "lemma": "baptisma", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w152", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w153" },
+        { "id": "w153", "form": "remissiónem", "lemma": "remissio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w154", "form": "peccatórum", "post": ".", "lemma": "peccatum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } }
       ]
     },
     {
@@ -797,31 +459,11 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "I oczekuję wskrzeszenia umarłych.",
-        "en": "And I await the resurrection of the dead."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w155", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w156", "form": "exspécto", "lemma": "exspecto", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "oczekuję", "en": "I await" } },
-        { "id": "w157", "form": "resurrectiónem", "lemma": "resurrectio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "zmartwychwstania", "en": "the resurrection" } },
-        { "id": "w158", "form": "mortuórum", "post": ".", "lemma": "mortuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "umarłych", "en": "of the dead" } }
+        { "id": "w155", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w156", "form": "exspécto", "lemma": "exspecto", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w157", "form": "resurrectiónem", "lemma": "resurrectio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w158", "form": "mortuórum", "post": ".", "lemma": "mortuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "substantive": true }
       ]
     },
     {
@@ -839,32 +481,12 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "I życia wiecznego w przyszłym świecie. Amen.",
-        "en": "And the life of the world to come. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "s. 59–60",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "pp. 79–83",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w159", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w160", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "życia", "en": "the life" } },
-        { "id": "w161", "form": "ventúri", "lemma": "venio", "morph": { "pos": "verb", "mood": "part", "tense": "fut", "voice": "act", "case": "gen", "number": "sg", "gender": "n", "conj": 4 }, "head": "w162", "gloss": { "pl": "przyszłego", "en": "to come" }, "function": { "pl": "Imiesłów przyszły w dopełniaczu — zgadza się ze „sǽculi” (w162): dosłownie „wieku, który ma nadejść”.", "en": "The future participle in the genitive, agreeing with “sǽculi” (w162): literally “of the age that is to come”." } },
-        { "id": "w162", "form": "sǽculi", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieku", "en": "of the age" } },
-        { "id": "w163", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w159", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w160", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w161", "form": "ventúri", "lemma": "venio", "morph": { "pos": "verb", "mood": "part", "tense": "fut", "voice": "act", "case": "gen", "number": "sg", "gender": "n", "conj": 4 }, "head": "w162" },
+        { "id": "w162", "form": "sǽculi", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w163", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -887,6 +509,80 @@
       "w074": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w099": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w136": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Rubricae generales, nn. 475–476",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      },
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Rubricae generales, n. 522 a",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ],
+    "functions": {
+      "w001": {
+
+      },
+      "w027": {
+
+      },
+      "w042": {
+
+      },
+      "w045": {
+
+      },
+      "w050": {
+
+      },
+      "w060": {
+
+      },
+      "w064": {
+
+      },
+      "w074": {
+
+      },
+      "w076": {
+
+      },
+      "w083": {
+
+      },
+      "w090": {
+
+      },
+      "w094": {
+
+      },
+      "w103": {
+
+      },
+      "w107": {
+
+      },
+      "w111": {
+
+      },
+      "w122": {
+
+      },
+      "w126": {
+
+      },
+      "w138": {
+
+      },
+      "w161": {
+
+      }
     }
   }
 }

@@ -11,7 +11,6 @@ from checks.lexicon import (
     check_orphans,
     check_text_against_lexicon,
     lint_lemmata,
-    lint_sense_parity,
     lint_senses,
 )
 
@@ -179,18 +178,10 @@ class TestSenses:
         found = lint_senses("en", {"pater": entry}, {"pater": {}})
         assert any("citations without a note" in e for e in found)
 
-    def test_note_citations_have_exact_language_parity(self):
+    def test_note_citations_can_be_declared_once_in_the_neutral_lemma(self):
         citation = [{"title": "A work", "locator": "p. 1"}]
-        langs = {
-            "en": {"pater": {"senses": ["father"], "note_citations": citation}},
-            "pl": {
-                "pater": {
-                    "senses": ["ojciec"],
-                    "note_citations": [{"title": "A work", "locator": "s. 1"}],
-                }
-            },
-        }
-        assert any("citation parity differs" in e for e in lint_sense_parity(langs))
+        entry = a_lemma(localization={"note": True, "note_citations": citation})
+        assert lint_lemmata(entry) == []
 
 
 class TestOrphans:

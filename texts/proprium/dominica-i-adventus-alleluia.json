@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "proprium.dominica-i-adventus-alleluia",
   "title": "Osténde nobis, Dómine",
   "category": "proprium",
@@ -9,35 +9,11 @@
   "ids": {
     "next": 14
   },
-  "about": {
-    "pl": "Werset allelujatyczny I Niedzieli Adwentu, Ps 84, 8 według numeracji Wulgaty (Ps 85 w numeracji hebrajskiej). W dni powszednie Adwentu, gdy w ciągu tygodnia powtarza się tę Mszę niedzielną, opuszcza się Alleluja z wersetem i odmawia się tylko graduał.",
-    "en": "The alleluia verse of the First Sunday of Advent, Psalm 84:8 in the Vulgate numbering (Psalm 85 in Hebrew). On the ferias of Advent, when this Sunday Mass is used through the week, the Alleluia and its verse are omitted and only the gradual is said."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Dominica I Adventus, printed page 2",
-        "url": "https://archive.org/details/missale_romanum-1962"
-      }
-    ],
-    "en": [
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Dominica I Adventus, printed page 2",
-        "url": "https://archive.org/details/missale_romanum-1962"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "In feriis Adventus, quando per hebdomadam adhibetur Missa de dominica, non dicitur Allelúia, nec versus sequens, sed tantum graduale.",
-      "narrative": {
-        "pl": "Gdy w dzień powszedni Adwentu bierze się Mszę z poprzedniej niedzieli, opuszcza się Alleluja z jego wersetem i odmawia tylko Graduał.",
-        "en": "When a weekday of Advent uses the preceding Sunday's Mass, the Alleluia and its verse are omitted and only the Gradual is said."
-      }
+      "text": "In feriis Adventus, quando per hebdomadam adhibetur Missa de dominica, non dicitur Allelúia, nec versus sequens, sed tantum graduale."
     },
     {
       "id": "s02",
@@ -51,23 +27,10 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Alleluja, alleluja.",
-        "en": "Alleluia, alleluia."
-      },
       "words": [
-        { "id": "w001", "form": "Allelúia", "post": ",", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } },
-        { "id": "w002", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } }
+        { "id": "w001", "form": "Allelúia", "post": ",", "lemma": "alleluia", "morph": { "pos": "intj" } },
+        { "id": "w002", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
       ],
-      "translation_citations": {
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "delivery": {
         "cantu": {
           "speaker": "schola",
@@ -87,38 +50,18 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Okaż nam, Panie, miłosierdzie swoje i daj nam swoje zbawienie.",
-        "en": "Show us, Lord, Your mercy and grant us Your salvation."
-      },
       "words": [
-        { "id": "w003", "form": "Osténde", "lemma": "ostendo", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "gloss": { "pl": "okaż", "en": "show" } },
-        { "id": "w004", "form": "nobis", "post": ",", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "to us" } },
-        { "id": "w005", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w006", "form": "misericórdiam", "lemma": "misericordia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "gloss": { "pl": "miłosierdzie", "en": "mercy" } },
-        { "id": "w007", "form": "tuam", "post": ":", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w006", "gloss": { "pl": "Twoje", "en": "Thy" } },
-        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w009", "form": "salutáre", "lemma": "salutare", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "zbawienie", "en": "salvation" }, "function": { "pl": "Przymiotnik rodzaju nijakiego użyty rzeczownikowo: „zbawienie”.", "en": "A neuter adjective used substantivally: salvation." } },
-        { "id": "w010", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w009", "gloss": { "pl": "Twoje", "en": "Thy" } },
-        { "id": "w011", "form": "da", "lemma": "do", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "gloss": { "pl": "daj", "en": "give" } },
-        { "id": "w012", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "to us" } }
+        { "id": "w003", "form": "Osténde", "lemma": "ostendo", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w004", "form": "nobis", "post": ",", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
+        { "id": "w005", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w006", "form": "misericórdiam", "lemma": "misericordia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w007", "form": "tuam", "post": ":", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w006" },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "salutáre", "lemma": "salutare", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w010", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w009" },
+        { "id": "w011", "form": "da", "lemma": "do", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w012", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } }
       ],
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Psalm 84:8 (Vulgate numbering)",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "delivery": {
         "cantu": {
           "speaker": "schola",
@@ -138,22 +81,9 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Alleluja.",
-        "en": "Alleluia."
-      },
       "words": [
-        { "id": "w013", "form": "Allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } }
+        { "id": "w013", "form": "Allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
       ],
-      "translation_citations": {
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "delivery": {
         "cantu": {
           "speaker": "schola",
@@ -174,6 +104,21 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
     "segments": {
       "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Dominica I Adventus, printed page 2",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ],
+    "functions": {
+      "w009": {
+
+      }
     }
   }
 }

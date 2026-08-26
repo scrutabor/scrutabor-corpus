@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.quam-oblationem",
   "title": "Quam oblatiónem",
   "category": "ordinarium",
@@ -9,215 +9,79 @@
   "ids": {
     "next": 28
   },
-  "about": {
-    "pl": "Kapłan prosi Boga, aby zechciał uczynić ofiarę błogosławioną, uznaną, zatwierdzoną, rozumną i miłą. Końcowa prośba brzmi: aby stała się dla nas Ciałem i Krwią najmilszego Syna Bożego, Pana naszego Jezusa Chrystusa.",
-    "en": "The priest asks God to make the offering blessed, duly recognized, ratified, spiritual and acceptable. The final petition asks that it may become for us the Body and Blood of God's dearly beloved Son, our Lord Jesus Christ."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Prosimy Cię, Boże, abyś raczył tę ofiarę pod każdym względem uczynić",
-        "en": "O God, we ask You graciously to make this offering in all respects"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed p. 69",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          },
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 58",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 25",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 64–65",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Quam", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" }, "gloss": { "pl": "tę", "en": "which" }, "function": { "pl": "Zaimek względny zgadzający się z „oblatiónem” z poprzedniej modlitwy.", "en": "A relative pronoun agreeing with “oblatiónem” in the preceding prayer." } },
-        { "id": "w002", "form": "oblatiónem", "lemma": "oblatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "ofiarę", "en": "oblation" } },
-        { "id": "w003", "form": "tu", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "Ty", "en": "Thou" }, "function": { "pl": "Wyrażony zaimek podmiotu, zwykle w łacinie pomijany, podkreśla adresata prośby, nazwanego zaraz słowem „Deus” (w004).", "en": "The expressed subject pronoun, which Latin usually omits, emphasizes the addressee named immediately as “Deus” (w004)." } },
-        { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boże", "en": "God" } },
-        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w006", "gloss": { "pl": "we", "en": "in" } },
-        { "id": "w006", "form": "ómnibus", "post": ",", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "substantive": true, "gloss": { "pl": "wszystkim", "en": "all respects" } },
-        { "id": "w007", "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "prosimy", "en": "we beseech" } }
+        { "id": "w001", "form": "Quam", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w002", "form": "oblatiónem", "lemma": "oblatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w003", "form": "tu", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w006" },
+        { "id": "w006", "form": "ómnibus", "post": ",", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "substantive": true },
+        { "id": "w007", "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } }
       ]
     },
     {
       "id": "s02",
       "type": "rubric",
-      "text": "Signat ter super Oblata.",
-      "narrative": {
-        "pl": "Kapłan czyni trzy znaki krzyża nad darami.",
-        "en": "The priest makes three signs of the cross over the offerings."
-      }
+      "text": "Signat ter super Oblata."
     },
     {
       "id": "s03",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "błogosławioną, uznaną, zatwierdzoną, rozumną i miłą Tobie:",
-        "en": "blessed, duly recognized, ratified, spiritual, and acceptable to You:"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed p. 69",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          },
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 58",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 25",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 64–65",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w008", "form": "benedíctam", "post": ",", "lemma": "benedictus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w002", "gloss": { "pl": "błogosławioną", "en": "blessed" } },
-        { "id": "w009", "form": "adscríptam", "post": ",", "lemma": "adscribo", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "f", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w002", "gloss": { "pl": "wpisaną", "en": "enrolled" }, "function": { "pl": "Imiesłów bierny czasu przeszłego od „adscríbo”.", "en": "The perfect passive participle of “adscríbo”." } },
-        { "id": "w010", "form": "ratam", "post": ",", "lemma": "ratus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w002", "gloss": { "pl": "prawomocną", "en": "ratified" } },
-        { "id": "w011", "form": "rationábilem", "post": ",", "lemma": "rationabilis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w002", "gloss": { "pl": "rozumną", "en": "reasonable" } },
-        { "id": "w012", "form": "acceptabilémque", "lemma": "acceptabilis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w002", "gloss": { "pl": "i miłą", "en": "and acceptable" } },
-        { "id": "w013", "form": "fácere", "lemma": "facio", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 }, "gloss": { "pl": "uczynić", "en": "to make" } },
-        { "id": "w014", "form": "dignéris", "post": ":", "lemma": "dignor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 1 }, "gloss": { "pl": "racz", "en": "deign" } }
+        { "id": "w008", "form": "benedíctam", "post": ",", "lemma": "benedictus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w002" },
+        { "id": "w009", "form": "adscríptam", "post": ",", "lemma": "adscribo", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "f", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w002" },
+        { "id": "w010", "form": "ratam", "post": ",", "lemma": "ratus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w002" },
+        { "id": "w011", "form": "rationábilem", "post": ",", "lemma": "rationabilis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w002" },
+        { "id": "w012", "form": "acceptabilémque", "lemma": "acceptabilis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w002" },
+        { "id": "w013", "form": "fácere", "lemma": "facio", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 } },
+        { "id": "w014", "form": "dignéris", "post": ":", "lemma": "dignor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 1 } }
       ]
     },
     {
       "id": "s04",
       "type": "rubric",
-      "text": "Signat semel super Hostiam, et semel super Calicem.",
-      "narrative": {
-        "pl": "Kapłan czyni jeden znak krzyża nad samą Hostią, przy słowie Corpus, i jeden nad samym kielichem, przy Sanguis.",
-        "en": "The priest makes one sign of the cross over the Host alone, at the word Corpus, and one over the chalice alone, at Sanguis."
-      }
+      "text": "Signat semel super Hostiam, et semel super Calicem."
     },
     {
       "id": "s05",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "aby dla nas stała się Ciałem i Krwią Twojego najmilszego Syna,",
-        "en": "so that for us it may become the Body and Blood of Your dearly beloved Son,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed p. 69",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          },
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 58",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 25",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 64–65",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w015", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "aby", "en": "that" } },
-        { "id": "w016", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "for us" }, "function": { "pl": "Dativus commodi: „dla nas”.", "en": "A dative of advantage: “for us”." } },
-        { "id": "w017", "form": "Corpus", "post": ",", "lemma": "corpus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "Ciałem", "en": "the Body" }, "function": { "pl": "Mianownik. „Corpus” i „Sanguis” są orzecznikami przy „fiat” (w020). Domyślnym podmiotem jest „oblátio” z początku modlitwy, dlatego czasownik stoi w liczbie pojedynczej.", "en": "Nominative. “Corpus” and “Sanguis” are predicate nominatives with “fiat” (w020). The understood subject is the “oblátio” introduced at the beginning of the prayer, so the verb is singular." } },
-        { "id": "w018", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w019", "form": "Sanguis", "lemma": "sanguis", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Krwią", "en": "Blood" } },
-        { "id": "w020", "form": "fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" }, "gloss": { "pl": "stała się", "en": "may become" }, "function": { "pl": "Tryb łączący czasu teraźniejszego od „fio”, tutaj: „niech się stanie”.", "en": "The present subjunctive of “fio”, here: “may it become”." } },
-        { "id": "w021", "form": "dilectíssimi", "lemma": "dilectus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m", "degree": "sup" }, "head": "w022", "gloss": { "pl": "najmilszego", "en": "most beloved" }, "function": { "pl": "Stopień najwyższy od „diléctus”.", "en": "The superlative of “diléctus”." } },
-        { "id": "w022", "form": "Fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Syna", "en": "Son" } },
-        { "id": "w023", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w022", "gloss": { "pl": "Twego", "en": "Thy" } }
+        { "id": "w015", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w016", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
+        { "id": "w017", "form": "Corpus", "post": ",", "lemma": "corpus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w018", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w019", "form": "Sanguis", "lemma": "sanguis", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w020", "form": "fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w021", "form": "dilectíssimi", "lemma": "dilectus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m", "degree": "sup" }, "head": "w022" },
+        { "id": "w022", "form": "Fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w023", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w022" }
       ]
     },
     {
       "id": "s06",
       "type": "rubric",
-      "text": "Iungit manus.",
-      "narrative": {
-        "pl": "Kapłan składa ręce.",
-        "en": "The priest joins his hands."
-      }
+      "text": "Iungit manus."
     },
     {
       "id": "s07",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "naszego Pana Jezusa Chrystusa.",
-        "en": "our Lord Jesus Christ."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed p. 69",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          },
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 58",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 25",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 64–65",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w024", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "Lord" } },
-        { "id": "w025", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w024", "gloss": { "pl": "naszego", "en": "our" } },
-        { "id": "w026", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezusa", "en": "Jesus" } },
-        { "id": "w027", "form": "Christi", "post": ".", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" } }
+        { "id": "w024", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w025", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w024" },
+        { "id": "w026", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w027", "form": "Christi", "post": ".", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     }
   ],
@@ -239,6 +103,32 @@
     "words": {
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w001": {
+
+      },
+      "w003": {
+
+      },
+      "w009": {
+
+      },
+      "w016": {
+
+      },
+      "w017": {
+
+      },
+      "w020": {
+
+      },
+      "w021": {
+
+      }
     }
   }
 }

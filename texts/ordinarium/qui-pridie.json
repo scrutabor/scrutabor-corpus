@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.qui-pridie",
   "title": "Qui prídie",
   "category": "ordinarium",
@@ -9,229 +9,89 @@
   "ids": {
     "next": 44
   },
-  "about": {
-    "pl": "Opowiadanie o ustanowieniu i konsekracja chleba. Kapłan bierze Hostię, podnosi oczy ku niebu i wypowiada nad nią słowa konsekracji cicho, wyraźnie i uważnie. Następnie przyklęka, ukazuje konsekrowaną Hostię ludowi i ponownie przyklęka. Od tej chwili nie rozłącza kciuków i palców wskazujących, chyba że dotyka Hostii, aż do obmycia palców.",
-    "en": "The institution narrative and the consecration of the bread. The priest takes the Host, raises his eyes to heaven, and pronounces the words of consecration over it quietly, distinctly, and attentively. He then genuflects, shows the consecrated Host to the people, and genuflects again. From this point he does not separate his thumbs and forefingers, except when handling the Host, until the ablution of his fingers."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Accipit Hostiam.",
-      "narrative": {
-        "pl": "Kapłan bierze Hostię.",
-        "en": "The priest takes the Host."
-      }
+      "text": "Accipit Hostiam."
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Który w przeddzień swej męki wziął chleb w swe święte i czcigodne ręce,",
-        "en": "Who, on the day before He suffered, took bread into His holy and venerable hands,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 58",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed p. 69",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 25",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 65",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Który", "en": "Who" }, "function": { "pl": "Zaimek względny odnosi się do Chrystusa, wymienionego na końcu poprzedniej modlitwy.", "en": "The relative refers to Christ, named at the end of the preceding prayer." } },
-        { "id": "w002", "form": "prídie", "lemma": "pridie", "morph": { "pos": "adv" }, "gloss": { "pl": "dzień wcześniej", "en": "the day before" }, "function": { "pl": "Razem z „quam” (w003) tworzy wyrażenie „dzień przed tym, nim”.", "en": "Together with “quam” (w003), it forms the expression “the day before”." } },
-        { "id": "w003", "form": "quam", "lemma": "quam", "morph": { "pos": "conj" }, "gloss": { "pl": "niż", "en": "than" }, "function": { "pl": "Spójnik dopełniający „prídie” (w002): „przed tym, nim cierpiał”.", "en": "The conjunction completing “prídie” (w002): “before He suffered”." } },
-        { "id": "w004", "form": "paterétur", "post": ",", "lemma": "patior", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "subj", "voice": "dep", "conj": 3 }, "gloss": { "pl": "cierpiał", "en": "He suffered" }, "function": { "pl": "Czasownik deponentny w trybie łączącym: forma bierna, znaczenie czynne.", "en": "A deponent in the subjunctive: passive in form, active in meaning." } },
-        { "id": "w005", "form": "accépit", "lemma": "accipio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "wziął", "en": "He took" } },
-        { "id": "w006", "form": "panem", "lemma": "panis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "chleb", "en": "bread" } },
-        { "id": "w007", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w011", "gloss": { "pl": "w", "en": "into" } },
-        { "id": "w008", "form": "sanctas", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w011", "gloss": { "pl": "święte", "en": "holy" } },
-        { "id": "w009", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w010", "form": "venerábiles", "lemma": "venerabilis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w011", "gloss": { "pl": "czcigodne", "en": "venerable" } },
-        { "id": "w011", "form": "manus", "lemma": "manus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 4 }, "gloss": { "pl": "ręce", "en": "hands" }, "function": { "pl": "Biernik liczby mnogiej. Przydawki „sanctas” i „suas” mają tę samą liczbę i przypadek.", "en": "Accusative plural. The adjectives “sanctas” and “suas” have the same number and case." } },
-        { "id": "w012", "form": "suas", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w011", "gloss": { "pl": "swoje", "en": "His" } }
+        { "id": "w001", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w002", "form": "prídie", "lemma": "pridie", "morph": { "pos": "adv" } },
+        { "id": "w003", "form": "quam", "lemma": "quam", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "paterétur", "post": ",", "lemma": "patior", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "subj", "voice": "dep", "conj": 3 } },
+        { "id": "w005", "form": "accépit", "lemma": "accipio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w006", "form": "panem", "lemma": "panis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w007", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w011" },
+        { "id": "w008", "form": "sanctas", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w011" },
+        { "id": "w009", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "venerábiles", "lemma": "venerabilis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w011" },
+        { "id": "w011", "form": "manus", "lemma": "manus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 4 } },
+        { "id": "w012", "form": "suas", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w011" }
       ]
     },
     {
       "id": "s03",
       "type": "rubric",
-      "text": "Elevat oculos ad cælum.",
-      "narrative": {
-        "pl": "Kapłan wznosi oczy ku niebu.",
-        "en": "The priest raises his eyes to heaven."
-      }
+      "text": "Elevat oculos ad cælum."
     },
     {
       "id": "s04",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "a wzniósłszy oczy ku niebu, ku Tobie, Bogu, swojemu Ojcu wszechmogącemu,",
-        "en": "and, raising His eyes to heaven, to You, O God, His almighty Father,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 58",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed p. 69",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 25",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 65",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w014", "form": "elevátis", "lemma": "elevo", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w015", "gloss": { "pl": "podniesionymi", "en": "having been raised" }, "function": { "pl": "Wraz z „óculis” (w015) tworzy ablativus absolutus: „podniósłszy oczy”.", "en": "With “óculis” (w015), it forms an ablative absolute: “lifting up His eyes”." } },
-        { "id": "w015", "form": "óculis", "lemma": "oculus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "oczami", "en": "eyes" } },
-        { "id": "w016", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w017", "gloss": { "pl": "ku", "en": "to" } },
-        { "id": "w017", "form": "cælum", "lemma": "caelum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "niebu", "en": "heaven" } },
-        { "id": "w018", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w019", "gloss": { "pl": "ku", "en": "to" } },
-        { "id": "w019", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "Tobie", "en": "Thee" }, "function": { "pl": "Kanon nadal zwraca się do Ojca, opowiadając o słowach i czynach Chrystusa.", "en": "The Canon continues to address the Father while recounting the words and actions of Christ." } },
-        { "id": "w020", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bogu", "en": "God" } },
-        { "id": "w021", "form": "Patrem", "lemma": "pater", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcu", "en": "Father" } },
-        { "id": "w022", "form": "suum", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w021", "gloss": { "pl": "swemu", "en": "His" } },
-        { "id": "w023", "form": "omnipoténtem", "post": ",", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w021", "gloss": { "pl": "wszechmogącemu", "en": "almighty" } }
+        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w014", "form": "elevátis", "lemma": "elevo", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w015" },
+        { "id": "w015", "form": "óculis", "lemma": "oculus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w016", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w017" },
+        { "id": "w017", "form": "cælum", "lemma": "caelum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w018", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w019" },
+        { "id": "w019", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w020", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w021", "form": "Patrem", "lemma": "pater", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w022", "form": "suum", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w021" },
+        { "id": "w023", "form": "omnipoténtem", "post": ",", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w021" }
       ]
     },
     {
       "id": "s05",
       "type": "rubric",
-      "text": "Caput inclinat.",
-      "narrative": {
-        "pl": "Kapłan pochyla głowę.",
-        "en": "The priest bows his head."
-      }
+      "text": "Caput inclinat."
     },
     {
       "id": "s06",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "składając Ci dzięki,",
-        "en": "giving thanks to You,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 58",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed p. 69",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 25",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 65",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w024", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Ci", "en": "to Thee" } },
-        { "id": "w025", "form": "grátias", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "dzięki", "en": "thanks" } },
-        { "id": "w026", "form": "agens", "post": ",", "lemma": "ago", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w005", "gloss": { "pl": "składając", "en": "giving" }, "function": { "pl": "Imiesłów odnoszący się do Chrystusa: składając Tobie dzięki.", "en": "A participle referring to Christ: giving thanks to Thee." } }
+        { "id": "w024", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w025", "form": "grátias", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w026", "form": "agens", "post": ",", "lemma": "ago", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w005" }
       ]
     },
     {
       "id": "s07",
       "type": "rubric",
-      "text": "Signat super Hostiam.",
-      "narrative": {
-        "pl": "Kapłan czyni znak krzyża nad Hostią.",
-        "en": "The priest makes the sign of the cross over the Host."
-      }
+      "text": "Signat super Hostiam."
     },
     {
       "id": "s08",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "pobłogosławił, połamał i dał swoim uczniom, mówiąc:",
-        "en": "blessed it, broke it, and gave it to His disciples, saying:"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 58",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed p. 69",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 25",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 65",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w027", "form": "benedíxit", "post": ",", "lemma": "benedico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "pobłogosławił", "en": "He blessed" } },
-        { "id": "w028", "form": "fregit", "post": ",", "lemma": "frango", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "połamał", "en": "He broke" } },
-        { "id": "w029", "form": "dedítque", "lemma": "do", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "i dał", "en": "and He gave" }, "function": { "pl": "Końcowe „-que” łączy „dedit” z poprzednimi czasownikami: „pobłogosławił, połamał i dał”.", "en": "The final “-que” joins “dedit” to the preceding verbs: “He blessed, broke and gave”." } },
-        { "id": "w030", "form": "discípulis", "lemma": "discipulus", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "uczniom", "en": "to the disciples" }, "function": { "pl": "Celownik liczby mnogiej przy „dedítque” (w029): ci, którym podał.", "en": "A dative plural with “dedítque” (w029): those to whom He gave." } },
-        { "id": "w031", "form": "suis", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w030", "gloss": { "pl": "swoim", "en": "His" } },
-        { "id": "w032", "form": "dicens", "post": ":", "lemma": "dico", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w005", "gloss": { "pl": "mówiąc", "en": "saying" } }
+        { "id": "w027", "form": "benedíxit", "post": ",", "lemma": "benedico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w028", "form": "fregit", "post": ",", "lemma": "frango", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w029", "form": "dedítque", "lemma": "do", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w030", "form": "discípulis", "lemma": "discipulus", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w031", "form": "suis", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w030" },
+        { "id": "w032", "form": "dicens", "post": ":", "lemma": "dico", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w005" }
       ]
     },
     {
@@ -239,115 +99,37 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Bierzcie i jedzcie z tego wszyscy:",
-        "en": "Take and eat of this, all of you:"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 58",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed p. 69",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          },
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "1 Kor 11, 23–24, printed pp. 190–191",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 25",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 65",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w033", "form": "Accípite", "post": ",", "lemma": "accipio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "bierzcie", "en": "take" } },
-        { "id": "w034", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w035", "form": "manducáte", "lemma": "manduco", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "jedzcie", "en": "eat" }, "function": { "pl": "Tryb rozkazujący. Kanon mówi „manducáte” za 1 Kor 11, 24, tam gdzie Mt 26, 26 ma „comédite”.", "en": "An imperative. The Canon says “manducáte” with 1 Cor 11:24, where Mt 26:26 has “comédite”." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "1 Corinthians 11:24" }, { "title": "Biblia Sacra Vulgata", "locator": "Matthew 26:26" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "1 Corinthians 11:24" }, { "title": "Biblia Sacra Vulgata", "locator": "Matthew 26:26" }] } },
-        { "id": "w036", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w037", "gloss": { "pl": "z", "en": "of" } },
-        { "id": "w037", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "n" }, "gloss": { "pl": "tego", "en": "this" } },
-        { "id": "w038", "form": "omnes", "post": ".", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "wszyscy", "en": "all of you" }, "function": { "pl": "Forma mianownika i wołacza liczby mnogiej jest tu taka sama. Sens: „wy wszyscy”.", "en": "The nominative and vocative plural have the same form here. The sense is “you all”." } }
+        { "id": "w033", "form": "Accípite", "post": ",", "lemma": "accipio", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w034", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w035", "form": "manducáte", "lemma": "manduco", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w036", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w037" },
+        { "id": "w037", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "n" } },
+        { "id": "w038", "form": "omnes", "post": ".", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true }
       ]
     },
     {
       "id": "s10",
       "type": "rubric",
-      "text": "Tenens ambabus manibus Hostiam inter indices et pollices, profert verba consecrationis secrete, distincte et attente super Hostiam, et simul super omnes, si plures sint consecrandæ.",
-      "narrative": {
-        "pl": "Kapłan trzyma Hostię obiema rękami między palcami wskazującymi a kciukami i wymawia słowa konsekracji po cichu, wyraźnie i uważnie nad Hostią, a jeśli Hostii jest więcej — nad wszystkimi razem.",
-        "en": "The priest holds the Host with both hands between his forefingers and thumbs and speaks the words of consecration silently, distinctly and attentively over it, and over all the hosts together if there are more to be consecrated."
-      }
+      "text": "Tenens ambabus manibus Hostiam inter indices et pollices, profert verba consecrationis secrete, distincte et attente super Hostiam, et simul super omnes, si plures sint consecrandæ."
     },
     {
       "id": "s11",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "To jest bowiem Ciało moje.",
-        "en": "For this is My Body."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 58",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed p. 69",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          },
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "1 Kor 11, 23–24, printed pp. 190–191",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 25",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 65",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w039", "form": "Hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "n" }, "gloss": { "pl": "to", "en": "this" } },
-        { "id": "w040", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jest", "en": "is" } },
-        { "id": "w041", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" }, "gloss": { "pl": "bowiem", "en": "for" }, "function": { "pl": "„Enim” nie rozpoczyna zdania. Tutaj następuje po „Hoc est”.", "en": "“Enim” does not begin its clause. Here it follows “Hoc est”." } },
-        { "id": "w042", "form": "Corpus", "lemma": "corpus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "Ciało", "en": "Body" } },
-        { "id": "w043", "form": "meum", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w042", "gloss": { "pl": "moje", "en": "My" } }
+        { "id": "w039", "form": "Hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "n" } },
+        { "id": "w040", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w041", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
+        { "id": "w042", "form": "Corpus", "lemma": "corpus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w043", "form": "meum", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w042" }
       ]
     },
     {
       "id": "s12",
       "type": "rubric",
-      "text": "Quibus verbis prolatis, statim Hostiam consecratam genuflexus adorat: surgit, ostendit populo, reponit super Corporale, et genuflexus iterum adorat: nec amplius pollices et indices disiungit, nisi quando Hostia tractanda est, usque ad ablutionem digitorum.",
-      "narrative": {
-        "pl": "Po wymówieniu tych słów kapłan przyklęka i adoruje konsekrowaną Hostię, wstaje, ukazuje ją ludowi — to podniesienie, przy którym usługujący trzykrotnie dzwoni — składa na korporale i znów przyklęka. Odtąd aż do obmycia palców trzyma kciuk i palec wskazujący złączone, rozłączając je tylko do dotknięcia Hostii.",
-        "en": "The words spoken, the priest genuflects and adores the consecrated Host, rises, shows it to the people — the elevation, at which the server rings the bell three times — lays it on the corporal and genuflects again. From now until the ablution of the fingers he keeps thumb and forefinger joined, parting them only to handle the Host."
-      }
+      "text": "Quibus verbis prolatis, statim Hostiam consecratam genuflexus adorat: surgit, ostendit populo, reponit super Corporale, et genuflexus iterum adorat: nec amplius pollices et indices disiungit, nisi quando Hostia tractanda est, usque ad ablutionem digitorum."
     }
   ],
   "editorial": {
@@ -371,6 +153,59 @@
     "words": {
       "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w038": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w001": {
+
+      },
+      "w002": {
+
+      },
+      "w003": {
+
+      },
+      "w004": {
+
+      },
+      "w011": {
+
+      },
+      "w014": {
+
+      },
+      "w019": {
+
+      },
+      "w026": {
+
+      },
+      "w029": {
+
+      },
+      "w030": {
+
+      },
+      "w035": {
+        "citations": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "1 Corinthians 11:24"
+          },
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Matthew 26:26"
+          }
+        ]
+      },
+      "w038": {
+
+      },
+      "w041": {
+
+      }
     }
   }
 }

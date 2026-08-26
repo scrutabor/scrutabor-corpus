@@ -19,6 +19,7 @@ LEMMATA_ENTRY_KEYS = {
     "decl",
     "conj",
     "analysis",
+    "localization",
 }
 SENSE_ENTRY_KEYS = {"senses", "note", "note_citations", "derivatives", "analysis"}
 
@@ -51,19 +52,39 @@ CONTEXT_DEIXIS = {
 
 
 def load_lexicon(corpus_dir):
-    """Returns (lemmata_entries, {lang: entries}, errors). Missing files are
-    errors — a corpus without a lexicon must not pass (SCHEMA.md 0.5.0)."""
+    """Return neutral heads and independently covered language senses.
+
+    Shared citations and the requirement for a localized note live beside the
+    neutral lemma. They are attached in memory so existing prose and rights
+    checks still receive a self-contained sense entry.
+    """
     errors = []
     lemmata_path = corpus_dir / "lexicon" / "lemmata.json"
     if not lemmata_path.exists():
         return {}, {}, ["lexicon/lemmata.json missing"]
     lemmata = json.loads(lemmata_path.read_text(encoding="utf-8"))["entries"]
     langs = {}
-    for p in sorted((corpus_dir / "lexicon").glob("*.json")):
-        if p.name == "lemmata.json":
-            continue
+    for p in sorted((corpus_dir / "languages").glob("*/lexicon.json")):
         doc = json.loads(p.read_text(encoding="utf-8"))
-        langs[doc["lang"]] = doc["entries"]
+        lang = doc.get("language")
+        if lang != p.parent.name:
+            errors.append(f"{p.relative_to(corpus_dir)}: language does not match its directory")
+            continue
+        entries = doc.get("entries") or {}
+        for lemma, entry in entries.items():
+            if "note_citations" in entry:
+                errors.append(
+                    f"lexicon:{lang}:{lemma}: shared note_citations belong in lemmata.json"
+                )
+            localization = (lemmata.get(lemma) or {}).get("localization") or {}
+            note_required = localization.get("note") is True
+            if note_required and "note" not in entry:
+                errors.append(f"lexicon:{lang}:{lemma}: localized note is required")
+            if not note_required and "note" in entry:
+                errors.append(f"lexicon:{lang}:{lemma}: note has no neutral requirement")
+            if citations := localization.get("note_citations"):
+                entry["note_citations"] = citations
+        langs[lang] = entries
     if not langs:
         errors.append("lexicon: no language files found — refusing to pass on zero")
     return lemmata, langs, errors
@@ -116,6 +137,14 @@ def lint_lemmata(entries):
         unknown = set(e) - LEMMATA_ENTRY_KEYS
         if unknown:
             errors.append(f"lexicon:{lemma}: unknown keys {sorted(unknown)}")
+        localization = e.get("localization")
+        if localization is not None:
+            if not isinstance(localization, dict) or localization.get("note") is not True:
+                errors.append(f"lexicon:{lemma}: localization must require note=true")
+            elif set(localization) - {"note", "note_citations"}:
+                errors.append(f"lexicon:{lemma}: localization has unknown keys")
+            elif citations := localization.get("note_citations"):
+                errors += lint_citations(citations, f"lexicon:{lemma}:note")
         if not e.get("head"):
             errors.append(f"lexicon:{lemma}: missing head")
         else:
@@ -134,7 +163,7 @@ def lint_lemmata(entries):
     return errors
 
 
-def lint_senses(lang, entries, lemmata):
+def lint_senses(lang, entries, lemmata, required=None):
     errors = []
     banned = BANNED_TERMS.get(lang, [])
     derivative_homes = {}
@@ -189,30 +218,13 @@ def lint_senses(lang, entries, lemmata):
                 f"lexicon:{lang}: derivative {display!r} has duplicate homes "
                 f"({locations}) — keep it at its direct home"
             )
-    missing = sorted(set(lemmata) - set(entries))
+    required = set(lemmata) if required is None else set(required)
+    missing = sorted(required - set(entries))
     extra = sorted(set(entries) - set(lemmata))
     if missing:
         errors.append(f"lexicon:{lang}: no entry for {missing}")
     if extra:
         errors.append(f"lexicon:{lang}: entries for unknown lemmas {extra}")
-    return errors
-
-
-def lint_sense_parity(langs):
-    """A citation supports a claim about the Latin word, not one rendering
-    of that claim. Its presence and bibliographic metadata therefore agree
-    exactly across language layers."""
-    errors = []
-    if len(langs) < 2:
-        return errors
-    ordered = sorted(langs.items())
-    base_lang, base = ordered[0]
-    for lang, entries in ordered[1:]:
-        for lemma in sorted(set(base) & set(entries)):
-            left = base[lemma].get("note_citations")
-            right = entries[lemma].get("note_citations")
-            if left != right:
-                errors.append(f"lexicon: citation parity differs {base_lang} vs {lang} for {lemma}")
     return errors
 
 

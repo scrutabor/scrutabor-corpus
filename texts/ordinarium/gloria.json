@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.gloria",
   "title": "Glória in excélsis",
   "category": "ordinarium",
@@ -9,51 +9,11 @@
   "ids": {
     "next": 85
   },
-  "about": {
-    "pl": "Hymn rozpoczyna się słowami pieśni aniołów przy narodzeniu Chrystusa. Wielbi Boga Ojca, a następnie zwraca się do Jezusa Chrystusa, Jednorodzonego Syna i Baranka Bożego, prosząc Go o miłosierdzie i przyjęcie modlitwy. Kończy się wyznaniem chwały Chrystusa wraz z Duchem Świętym w chwale Boga Ojca.",
-    "en": "The hymn begins with the song of the angels at the birth of Christ. It praises God the Father and then addresses Jesus Christ, the only-begotten Son and Lamb of God, asking Him to have mercy on us and receive our prayer. It ends by professing the glory of Christ with the Holy Spirit in the glory of God the Father."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Nova Vulgata, Evangelium secundum Lucam",
-        "locator": "2, 13–14",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-lucam_lt.html#2"
-      }
-    ],
-    "en": [
-      {
-        "title": "Nova Vulgata, Evangelium secundum Lucam",
-        "locator": "2, 13–14",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-lucam_lt.html#2"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Postea in medio Altaris extendens et iungens manus, caputque aliquantulum inclínans, dicit, si dicendum est, Glória in excélsis Deo, et prosequitur iunctis manibus.",
-      "narrative": {
-        "pl": "Na środku ołtarza kapłan rozkłada i składa ręce, lekko pochyla głowę i, jeśli hymn należy odmówić, rozpoczyna go słowami „Glória in excélsis Deo”. Odmawia dalszy ciąg ze złożonymi rękami, pochylając głowę ku krzyżowi przy Deo, przy Adorámus te, przy Grátias ágimus tibi, przy obu Iesu Christe i przy Súscipe deprecatiónem nostram, a przy Cum Sancto Spíritu żegnając się od czoła do piersi.",
-        "en": "At the middle of the altar, the priest extends and joins his hands, bows his head slightly and, if the hymn is to be said, begins it with “Glória in excélsis Deo”, continuing with hands joined. The priest bows his head to the cross at Deo, at Adorámus te, at Grátias ágimus tibi, at both Iesu Christe and at Súscipe deprecatiónem nostram, and signs himself from forehead to breast at Cum Sancto Spíritu."
-      },
-      "narrative_citations": {
-        "pl": [
-          {
-            "title": "Missale Romanum (1962)",
-            "locator": "Ordo Missae rubric before Gloria in excelsis",
-            "url": "https://archive.org/details/missale_romanum-1962"
-          }
-        ],
-        "en": [
-          {
-            "title": "Missale Romanum (1962)",
-            "locator": "Ordo Missae rubric before Gloria in excelsis",
-            "url": "https://archive.org/details/missale_romanum-1962"
-          }
-        ]
-      }
+      "text": "Postea in medio Altaris extendens et iungens manus, caputque aliquantulum inclínans, dicit, si dicendum est, Glória in excélsis Deo, et prosequitur iunctis manibus."
     },
     {
       "id": "s02",
@@ -70,31 +30,11 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Chwała na wysokości Bogu.",
-        "en": "Glory to God in the highest."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 46",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "Douay-Rheims Bible (Challoner)",
-            "locator": "Luke 2:14 (1914 edition, New Testament p. 67)",
-            "url": "https://commons.wikimedia.org/wiki/File:The_Holy_Bible_-_Douay_Rheims_Version.pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwała", "en": "glory" }, "function": { "pl": "Zdanie nominalne z domyślnym „niech będzie”. „Deo” (w004) wskazuje odbiorcę chwały.", "en": "A nominal sentence with “let there be” understood. “Deo” (w004) identifies the recipient of the glory." } },
-        { "id": "w002", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w003", "gloss": { "pl": "na", "en": "in" } },
-        { "id": "w003", "form": "excélsis", "lemma": "excelsus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "substantive": true, "gloss": { "pl": "wysokościach", "en": "the highest" }, "function": { "pl": "Przymiotnik rodzaju nijakiego użyty rzeczownikowo: „w najwyższych [miejscach]”.", "en": "A neuter adjective used substantively: “in the highest [places]”." } },
-        { "id": "w004", "form": "Deo", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bogu", "en": "to God" } }
+        { "id": "w001", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w002", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w003" },
+        { "id": "w003", "form": "excélsis", "lemma": "excelsus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "substantive": true },
+        { "id": "w004", "form": "Deo", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     },
     {
@@ -112,27 +52,14 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "A na ziemi pokój ludziom dobrej woli.",
-        "en": "And on earth, peace for people of good will."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 46",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ]
-      },
       "words": [
-        { "id": "w005", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
-        { "id": "w006", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007", "gloss": { "pl": "na", "en": "on" } },
-        { "id": "w007", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ziemi", "en": "earth" } },
-        { "id": "w008", "form": "pax", "lemma": "pax", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "pokój", "en": "peace" } },
-        { "id": "w009", "form": "homínibus", "lemma": "homo", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "ludziom", "en": "to men" } },
-        { "id": "w010", "form": "bonæ", "lemma": "bonus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w011", "gloss": { "pl": "dobrej", "en": "of good" } },
-        { "id": "w011", "form": "voluntátis", "post": ".", "lemma": "voluntas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "woli", "en": "will" }, "function": { "pl": "Z „bonæ” (w010) tworzy dopełniacz cechy określający „homínibus” (w009).", "en": "With “bonæ” (w010), it forms a genitive of quality modifying “homínibus” (w009)." } }
+        { "id": "w005", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007" },
+        { "id": "w007", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w008", "form": "pax", "lemma": "pax", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w009", "form": "homínibus", "lemma": "homo", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w010", "form": "bonæ", "lemma": "bonus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w011" },
+        { "id": "w011", "form": "voluntátis", "post": ".", "lemma": "voluntas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } }
       ]
     },
     {
@@ -150,35 +77,15 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Chwalimy Cię. Błogosławimy Cię. Wielbimy Cię. Wysławiamy Cię.",
-        "en": "We praise You. We bless You. We adore You. We glorify You."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 46",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "pp. 65–66",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w012", "form": "Laudámus", "lemma": "laudo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "chwalimy", "en": "we praise" } },
-        { "id": "w013", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "Cię", "en": "You" } },
-        { "id": "w014", "form": "Benedícimus", "lemma": "benedico", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "błogosławimy", "en": "we bless" } },
-        { "id": "w015", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "Cię", "en": "You" } },
-        { "id": "w016", "form": "Adorámus", "lemma": "adoro", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "wielbimy", "en": "we adore" } },
-        { "id": "w017", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "Cię", "en": "You" } },
-        { "id": "w018", "form": "Glorificámus", "lemma": "glorifico", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "sławimy", "en": "we glorify" } },
-        { "id": "w019", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "Cię", "en": "You" } }
+        { "id": "w012", "form": "Laudámus", "lemma": "laudo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w013", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w014", "form": "Benedícimus", "lemma": "benedico", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w015", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w016", "form": "Adorámus", "lemma": "adoro", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w017", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w018", "form": "Glorificámus", "lemma": "glorifico", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w019", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } }
       ]
     },
     {
@@ -196,34 +103,14 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Dzięki Ci składamy, bo wielka jest chwała Twoja.",
-        "en": "We give You thanks for Your great glory."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 46",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "p. 65",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w020", "form": "Grátias", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "dzięki", "en": "thanks" } },
-        { "id": "w021", "form": "ágimus", "lemma": "ago", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "składamy", "en": "we give" }, "function": { "pl": "Z „Grátias” (w020) tworzy stały zwrot „grátias ágere” — składać dzięki.", "en": "With “Grátias” (w020), it forms the fixed expression “grátias ágere” — to give thanks." } },
-        { "id": "w022", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Tobie", "en": "to You" } },
-        { "id": "w023", "form": "propter", "lemma": "propter", "morph": { "pos": "prep", "governs": "acc" }, "head": "w025", "gloss": { "pl": "ze względu na", "en": "for" } },
-        { "id": "w024", "form": "magnam", "lemma": "magnus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w025", "gloss": { "pl": "wielką", "en": "great" } },
-        { "id": "w025", "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwałę", "en": "glory" } },
-        { "id": "w026", "form": "tuam", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w025", "gloss": { "pl": "Twoją", "en": "Your" } }
+        { "id": "w020", "form": "Grátias", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w021", "form": "ágimus", "lemma": "ago", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w022", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w023", "form": "propter", "lemma": "propter", "morph": { "pos": "prep", "governs": "acc" }, "head": "w025" },
+        { "id": "w024", "form": "magnam", "lemma": "magnus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w025" },
+        { "id": "w025", "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w026", "form": "tuam", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w025" }
       ]
     },
     {
@@ -241,27 +128,14 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Panie Boże, Królu nieba, Boże Ojcze wszechmogący.",
-        "en": "Lord God, King of heaven, almighty God and Father."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 46",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ]
-      },
       "words": [
-        { "id": "w027", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w028", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boże", "en": "God" }, "function": { "pl": "Forma „Deus” jest jednakowa w mianowniku i wołaczu. Tutaj jest wołaczem, równoległym do „Dómine” (w027).", "en": "“Deus” has the same form in the nominative and vocative. Here it is vocative, parallel to “Dómine” (w027)." } },
-        { "id": "w029", "form": "Rex", "lemma": "rex", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Królu", "en": "King" } },
-        { "id": "w030", "form": "cæléstis", "post": ",", "lemma": "caelestis", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w029", "gloss": { "pl": "niebieski", "en": "heavenly" } },
-        { "id": "w031", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boże", "en": "God" } },
-        { "id": "w032", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcze", "en": "Father" } },
-        { "id": "w033", "form": "omnípotens", "post": ".", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w032", "gloss": { "pl": "wszechmogący", "en": "almighty" } }
+        { "id": "w027", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w028", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w029", "form": "Rex", "lemma": "rex", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w030", "form": "cæléstis", "post": ",", "lemma": "caelestis", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w029" },
+        { "id": "w031", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w032", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w033", "form": "omnípotens", "post": ".", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w032" }
       ]
     },
     {
@@ -279,25 +153,12 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Panie, Synu Jednorodzony, Jezu Chryste.",
-        "en": "Lord Jesus Christ, Only Begotten Son."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 46",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ]
-      },
       "words": [
-        { "id": "w034", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w035", "form": "Fili", "lemma": "filius", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Synu", "en": "Son" }, "function": { "pl": "Wołacz liczby pojedynczej od „fílius”.", "en": "Singular vocative of “fílius”." } },
-        { "id": "w036", "form": "unigénite", "post": ",", "lemma": "unigenitus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w035", "gloss": { "pl": "Jednorodzony", "en": "only-begotten" } },
-        { "id": "w037", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezu", "en": "Jesus" } },
-        { "id": "w038", "form": "Christe", "post": ".", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chryste", "en": "Christ" } }
+        { "id": "w034", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w035", "form": "Fili", "lemma": "filius", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w036", "form": "unigénite", "post": ",", "lemma": "unigenitus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w035" },
+        { "id": "w037", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" } },
+        { "id": "w038", "form": "Christe", "post": ".", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     },
     {
@@ -315,33 +176,13 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Panie Boże, Baranku Boży, Synu Ojca.",
-        "en": "Lord God, Lamb of God, Son of the Father."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 46",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "p. 65",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w039", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w040", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boże", "en": "God" } },
-        { "id": "w041", "form": "Agnus", "lemma": "agnus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Baranku", "en": "Lamb" }, "function": { "pl": "Mianownik użyty jako zawołanie w szeregu po „Dómine” (w039) i „Deus” (w040).", "en": "Nominative used as an address in the series following “Dómine” (w039) and “Deus” (w040)." } },
-        { "id": "w042", "form": "Dei", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" } },
-        { "id": "w043", "form": "Fílius", "lemma": "filius", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Synu", "en": "Son" }, "function": { "pl": "Mianownik użyty jako zawołanie, równoległe do „Agnus” (w041).", "en": "Nominative used as an address, parallel to “Agnus” (w041)." } },
-        { "id": "w044", "form": "Patris", "post": ".", "lemma": "pater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojca", "en": "of the Father" } }
+        { "id": "w039", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w040", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w041", "form": "Agnus", "lemma": "agnus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w042", "form": "Dei", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w043", "form": "Fílius", "lemma": "filius", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w044", "form": "Patris", "post": ".", "lemma": "pater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } }
       ]
     },
     {
@@ -359,33 +200,13 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Który gładzisz grzechy świata, zmiłuj się nad nami.",
-        "en": "You who take away the sins of the world, have mercy on us."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 46",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "p. 65",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w045", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" }, "function": { "pl": "Podmiot „tollis” (w046). Druga osoba wynika z bezpośredniego zwrotu do Chrystusa.", "en": "Subject of “tollis” (w046). The second person follows from the direct address to Christ." } },
-        { "id": "w046", "form": "tollis", "lemma": "tollo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "gładzisz", "en": "take away" } },
-        { "id": "w047", "form": "peccáta", "lemma": "peccatum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "grzechy", "en": "the sins" } },
-        { "id": "w048", "form": "mundi", "post": ",", "lemma": "mundus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "świata", "en": "of the world" } },
-        { "id": "w049", "form": "miserére", "lemma": "misereor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 2 }, "gloss": { "pl": "zmiłuj się", "en": "have mercy" } },
-        { "id": "w050", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nad nami", "en": "on us" } }
+        { "id": "w045", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w046", "form": "tollis", "lemma": "tollo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w047", "form": "peccáta", "lemma": "peccatum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w048", "form": "mundi", "post": ",", "lemma": "mundus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w049", "form": "miserére", "lemma": "misereor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 2 } },
+        { "id": "w050", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } }
       ]
     },
     {
@@ -403,27 +224,14 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Który gładzisz grzechy świata, przyjm błaganie nasze.",
-        "en": "You who take away the sins of the world, receive our supplication."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 46",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ]
-      },
       "words": [
-        { "id": "w051", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
-        { "id": "w052", "form": "tollis", "lemma": "tollo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "gładzisz", "en": "take away" } },
-        { "id": "w053", "form": "peccáta", "lemma": "peccatum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "grzechy", "en": "the sins" } },
-        { "id": "w054", "form": "mundi", "post": ",", "lemma": "mundus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "świata", "en": "of the world" } },
-        { "id": "w055", "form": "súscipe", "lemma": "suscipio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "przyjmij", "en": "receive" }, "function": { "pl": "Tryb rozkazujący. Dopełnieniem jest „deprecatiónem” (w056).", "en": "Imperative. Its object is “deprecatiónem” (w056)." } },
-        { "id": "w056", "form": "deprecatiónem", "lemma": "deprecatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "błaganie", "en": "the plea" } },
-        { "id": "w057", "form": "nostram", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w056", "gloss": { "pl": "nasze", "en": "our" } }
+        { "id": "w051", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w052", "form": "tollis", "lemma": "tollo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w053", "form": "peccáta", "lemma": "peccatum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w054", "form": "mundi", "post": ",", "lemma": "mundus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w055", "form": "súscipe", "lemma": "suscipio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w056", "form": "deprecatiónem", "lemma": "deprecatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w057", "form": "nostram", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w056" }
       ]
     },
     {
@@ -441,34 +249,14 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Który siedzisz po prawicy Ojca, zmiłuj się nad nami.",
-        "en": "You who sit at the Father's right hand, have mercy on us."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 46",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "p. 66",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w058", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
-        { "id": "w059", "form": "sedes", "lemma": "sedeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 }, "gloss": { "pl": "zasiadasz", "en": "sit" } },
-        { "id": "w060", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w061", "gloss": { "pl": "po", "en": "at" } },
-        { "id": "w061", "form": "déxteram", "lemma": "dextera", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "prawicy", "en": "the right hand" }, "function": { "pl": "„ad” (w060) z biernikiem określa tu położenie: po prawicy Ojca.", "en": "“ad” (w060) with the accusative marks position here: at the right hand of the Father." } },
-        { "id": "w062", "form": "Patris", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojca", "en": "of the Father" } },
-        { "id": "w063", "form": "miserére", "lemma": "misereor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 2 }, "gloss": { "pl": "zmiłuj się", "en": "have mercy" } },
-        { "id": "w064", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nad nami", "en": "on us" } }
+        { "id": "w058", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w059", "form": "sedes", "lemma": "sedeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
+        { "id": "w060", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w061" },
+        { "id": "w061", "form": "déxteram", "lemma": "dextera", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w062", "form": "Patris", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w063", "form": "miserére", "lemma": "misereor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 2 } },
+        { "id": "w064", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } }
       ]
     },
     {
@@ -486,39 +274,19 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Albowiem tylko Tyś jest święty. Tylko Tyś jest Panem. Tylko Tyś Najwyższy, Jezu Chryste.",
-        "en": "For You alone are holy. You alone are Lord. You alone are Most High, Jesus Christ."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 46",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "p. 66",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w065", "form": "Quóniam", "lemma": "quoniam", "morph": { "pos": "conj" }, "gloss": { "pl": "albowiem", "en": "for" } },
-        { "id": "w066", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "Ty", "en": "You" } },
-        { "id": "w067", "form": "solus", "lemma": "solus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w066", "gloss": { "pl": "sam", "en": "alone" }, "function": { "pl": "Z „tu” (w066) tworzy zdanie bez wyrażonego czasownika: „Ty sam [jesteś] Święty”. Taką samą budowę mają dwa dalsze solus.", "en": "With “tu” (w066) it forms a sentence without an expressed verb: “Thou alone [art] holy”. The next two occurrences of solus have the same construction." } },
-        { "id": "w068", "form": "Sanctus", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w066", "gloss": { "pl": "święty", "en": "holy" } },
-        { "id": "w069", "form": "Tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "Ty", "en": "You" } },
-        { "id": "w070", "form": "solus", "lemma": "solus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w069", "gloss": { "pl": "sam", "en": "alone" } },
-        { "id": "w071", "form": "Dóminus", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panem", "en": "the Lord" } },
-        { "id": "w072", "form": "Tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "Ty", "en": "You" } },
-        { "id": "w073", "form": "solus", "lemma": "solus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w072", "gloss": { "pl": "sam", "en": "alone" } },
-        { "id": "w074", "form": "Altíssimus", "post": ",", "lemma": "altus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m", "degree": "sup" }, "head": "w072", "gloss": { "pl": "Najwyższy", "en": "Most High" } },
-        { "id": "w075", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezu", "en": "Jesus" } },
-        { "id": "w076", "form": "Christe", "post": ".", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chryste", "en": "Christ" } }
+        { "id": "w065", "form": "Quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
+        { "id": "w066", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w067", "form": "solus", "lemma": "solus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w066" },
+        { "id": "w068", "form": "Sanctus", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w066" },
+        { "id": "w069", "form": "Tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w070", "form": "solus", "lemma": "solus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w069" },
+        { "id": "w071", "form": "Dóminus", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w072", "form": "Tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w073", "form": "solus", "lemma": "solus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w072" },
+        { "id": "w074", "form": "Altíssimus", "post": ",", "lemma": "altus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m", "degree": "sup" }, "head": "w072" },
+        { "id": "w075", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" } },
+        { "id": "w076", "form": "Christe", "post": ".", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     },
     {
@@ -536,35 +304,15 @@
           "source": "DMS 25 b"
         }
       },
-      "translation": {
-        "pl": "Z Duchem Świętym w chwale Boga Ojca. Amen.",
-        "en": "With the Holy Spirit in the glory of God the Father. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 46",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "p. 66",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w077", "form": "Cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w079", "gloss": { "pl": "ze", "en": "with" } },
-        { "id": "w078", "form": "Sancto", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w079", "gloss": { "pl": "Świętym", "en": "Holy" } },
-        { "id": "w079", "form": "Spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Duchem", "en": "Spirit" } },
-        { "id": "w080", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w081", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w081", "form": "glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwale", "en": "the glory" } },
-        { "id": "w082", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" } },
-        { "id": "w083", "form": "Patris", "post": ".", "lemma": "pater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojca", "en": "the Father" } },
-        { "id": "w084", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w077", "form": "Cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w079" },
+        { "id": "w078", "form": "Sancto", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w079" },
+        { "id": "w079", "form": "Spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w080", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w081" },
+        { "id": "w081", "form": "glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w082", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w083", "form": "Patris", "post": ".", "lemma": "pater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w084", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -583,6 +331,63 @@
     },
     "words": {
       "w061": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Nova Vulgata, Evangelium secundum Lucam",
+        "locator": "2, 13–14",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-lucam_lt.html#2"
+      }
+    ],
+    "functions": {
+      "w001": {
+
+      },
+      "w003": {
+
+      },
+      "w011": {
+
+      },
+      "w021": {
+
+      },
+      "w028": {
+
+      },
+      "w035": {
+
+      },
+      "w041": {
+
+      },
+      "w043": {
+
+      },
+      "w045": {
+
+      },
+      "w055": {
+
+      },
+      "w061": {
+
+      },
+      "w067": {
+
+      }
+    },
+    "narrative_citations": {
+      "s01": [
+        {
+          "title": "Missale Romanum (1962)",
+          "locator": "Ordo Missae rubric before Gloria in excelsis",
+          "url": "https://archive.org/details/missale_romanum-1962"
+        }
+      ]
     }
   }
 }

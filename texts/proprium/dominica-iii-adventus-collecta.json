@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "proprium.dominica-iii-adventus-collecta",
   "title": "Aurem tuam, quǽsumus, Dómine",
   "category": "proprium",
@@ -9,48 +9,31 @@
   "ids": {
     "next": 18
   },
-  "about": {
-    "pl": "Kolekta III Niedzieli Adwentu. Prosi o dwie rzeczy naraz: o wysłuchanie i o światło — nie o zmianę okoliczności, lecz o zmianę widzenia.",
-    "en": "The collect of the Third Sunday of Advent. It asks two things at once, a hearing and a light — not that circumstances change but that seeing does."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Nakłoń, prosimy, Panie, ucho ku naszym modlitwom i rozświetl ciemności naszego umysłu łaską swojego nawiedzenia. Ty, który żyjesz.",
-        "en": "Incline Your ear, O Lord, we pray, to our prayers, and enlighten the darkness of our mind by the grace of Your visitation. You who live."
-      },
       "words": [
-        { "id": "w001", "form": "Aurem", "lemma": "auris", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "ucho", "en": "ear" } },
-        { "id": "w002", "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w001", "gloss": { "pl": "Twoje", "en": "Thy" } },
-        { "id": "w003", "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "prosimy", "en": "we beseech" } },
-        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w005", "form": "précibus", "lemma": "prex", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "modlitwom", "en": "to prayers" } },
-        { "id": "w006", "form": "nostris", "lemma": "noster", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "f" }, "head": "w005", "gloss": { "pl": "naszym", "en": "our" } },
-        { "id": "w007", "form": "accómmoda", "post": ":", "lemma": "accommodo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "nakłoń", "en": "incline" } },
-        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w009", "form": "mentis", "lemma": "mens", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "umysłu", "en": "of mind" } },
-        { "id": "w010", "form": "nostræ", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w009", "gloss": { "pl": "naszego", "en": "our" } },
-        { "id": "w011", "form": "ténebras", "post": ",", "lemma": "tenebrae", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "ciemności", "en": "the darkness" } },
-        { "id": "w012", "form": "grátia", "lemma": "gratia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "łaską", "en": "by the grace" } },
-        { "id": "w013", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w014", "gloss": { "pl": "Twego", "en": "of Thy" } },
-        { "id": "w014", "form": "visitatiónis", "lemma": "visitatio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "nawiedzenia", "en": "visitation" } },
-        { "id": "w015", "form": "illústra", "post": ":", "lemma": "illustro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "oświeć", "en": "enlighten" } },
-        { "id": "w016", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Który", "en": "Who" } },
-        { "id": "w017", "form": "vivis", "post": ".", "lemma": "vivo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "żyjesz", "en": "livest" } }
-      ],
-      "translation_citations": {
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      }
+        { "id": "w001", "form": "Aurem", "lemma": "auris", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w002", "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w001" },
+        { "id": "w003", "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "précibus", "lemma": "prex", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w006", "form": "nostris", "lemma": "noster", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "f" }, "head": "w005" },
+        { "id": "w007", "form": "accómmoda", "post": ":", "lemma": "accommodo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "mentis", "lemma": "mens", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w010", "form": "nostræ", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w009" },
+        { "id": "w011", "form": "ténebras", "post": ",", "lemma": "tenebrae", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w012", "form": "grátia", "lemma": "gratia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w013", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w014" },
+        { "id": "w014", "form": "visitatiónis", "lemma": "visitatio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w015", "form": "illústra", "post": ":", "lemma": "illustro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w016", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w017", "form": "vivis", "post": ".", "lemma": "vivo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } }
+      ]
     }
   ],
   "editorial": {
@@ -65,5 +48,8 @@
     "words": {
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } }
     }
+  },
+  "localization": {
+    "about": true
   }
 }

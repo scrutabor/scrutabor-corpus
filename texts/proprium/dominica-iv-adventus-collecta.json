@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "proprium.dominica-iv-adventus-collecta",
   "title": "Éxcita, quǽsumus, Dómine, poténtiam tuam",
   "category": "proprium",
@@ -9,58 +9,41 @@
   "ids": {
     "next": 28
   },
-  "about": {
-    "pl": "Kolekta IV Niedzieli Adwentu. Prosi o pośpiech: łaska ma nadejść szybciej, niż zdążą przeszkodzić grzechy.",
-    "en": "The collect of the Fourth Sunday of Advent. It asks for haste, that grace outrun the sins standing in its way."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Wzbudź, prosimy, Panie, swoją moc i przyjdź; wesprzyj nas z wielką potęgą, aby dzięki pomocy Twojej łaski Twoje miłosierne przebaczenie przyspieszyło to, co nasze grzechy opóźniają. Ty, który żyjesz.",
-        "en": "Stir up Your power, O Lord, we pray, and come; help us with great might, so that through the aid of Your grace Your merciful forgiveness may hasten what our sins delay. You who live."
-      },
       "words": [
-        { "id": "w001", "form": "Éxcita", "post": ",", "lemma": "excito", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "wzbudź", "en": "stir up" } },
-        { "id": "w002", "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "prosimy", "en": "we beseech" } },
-        { "id": "w003", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w004", "form": "poténtiam", "lemma": "potentia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "potęgę", "en": "power" } },
-        { "id": "w005", "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w004", "gloss": { "pl": "Twoją", "en": "Thy" } },
-        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w007", "form": "veni", "post": ":", "lemma": "venio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 }, "gloss": { "pl": "przyjdź", "en": "come" } },
-        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w009", "form": "magna", "lemma": "magnus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w011", "gloss": { "pl": "wielką", "en": "with great" } },
-        { "id": "w010", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "to us" } },
-        { "id": "w011", "form": "virtúte", "lemma": "virtus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "mocą", "en": "might" } },
-        { "id": "w012", "form": "succúrre", "post": ";", "lemma": "succurro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "pospiesz z pomocą", "en": "succor" } },
-        { "id": "w013", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "aby", "en": "that" } },
-        { "id": "w014", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015", "gloss": { "pl": "przez", "en": "by" } },
-        { "id": "w015", "form": "auxílium", "lemma": "auxilium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "wsparcie", "en": "the help" } },
-        { "id": "w016", "form": "grátiæ", "lemma": "gratia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "łaski", "en": "of grace" } },
-        { "id": "w017", "form": "tuæ", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w016", "gloss": { "pl": "Twojej", "en": "Thy" } },
-        { "id": "w018", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" }, "gloss": { "pl": "to co", "en": "what" }, "function": { "pl": "Dopełnienie bliższe czasownika „accéleret”: łaska ma przyspieszyć to, czemu grzechy stają na drodze.", "en": "The object of “accéleret”: grace is to hasten the very thing the sins stand in the way of." } },
-        { "id": "w019", "form": "nostra", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w020", "gloss": { "pl": "nasze", "en": "our" } },
-        { "id": "w020", "form": "peccáta", "lemma": "peccatum", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "grzechy", "en": "sins" } },
-        { "id": "w021", "form": "præpédiunt", "post": ",", "lemma": "praepedio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 4 }, "gloss": { "pl": "udaremniają", "en": "hinder" } },
-        { "id": "w022", "form": "indulgéntia", "lemma": "indulgentia", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "pobłażliwość", "en": "the indulgence" } },
-        { "id": "w023", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w024", "gloss": { "pl": "Twojego", "en": "of Thy" } },
-        { "id": "w024", "form": "propitiatiónis", "lemma": "propitiatio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "przebaczenia", "en": "forgiveness" } },
-        { "id": "w025", "form": "accéleret", "post": ":", "lemma": "accelero", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 }, "gloss": { "pl": "przyspieszyła", "en": "may hasten" } },
-        { "id": "w026", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Który", "en": "Who" } },
-        { "id": "w027", "form": "vivis", "post": ".", "lemma": "vivo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "żyjesz", "en": "livest" } }
-      ],
-      "translation_citations": {
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      }
+        { "id": "w001", "form": "Éxcita", "post": ",", "lemma": "excito", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w002", "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w003", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w004", "form": "poténtiam", "lemma": "potentia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w005", "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w004" },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "veni", "post": ":", "lemma": "venio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 } },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "magna", "lemma": "magnus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w011" },
+        { "id": "w010", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
+        { "id": "w011", "form": "virtúte", "lemma": "virtus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w012", "form": "succúrre", "post": ";", "lemma": "succurro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w013", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w014", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015" },
+        { "id": "w015", "form": "auxílium", "lemma": "auxilium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w016", "form": "grátiæ", "lemma": "gratia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w017", "form": "tuæ", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w016" },
+        { "id": "w018", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w019", "form": "nostra", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w020" },
+        { "id": "w020", "form": "peccáta", "lemma": "peccatum", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w021", "form": "præpédiunt", "post": ",", "lemma": "praepedio", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 4 } },
+        { "id": "w022", "form": "indulgéntia", "lemma": "indulgentia", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w023", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w024" },
+        { "id": "w024", "form": "propitiatiónis", "lemma": "propitiatio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w025", "form": "accéleret", "post": ":", "lemma": "accelero", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 } },
+        { "id": "w026", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w027", "form": "vivis", "post": ".", "lemma": "vivo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } }
+      ]
     }
   ],
   "editorial": {
@@ -76,6 +59,14 @@
     "words": {
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
       "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w018": {
+
+      }
     }
   }
 }

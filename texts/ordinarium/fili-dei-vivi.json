@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.fili-dei-vivi",
   "title": "Dómine Iesu Christe, Fili Dei vivi",
   "category": "ordinarium",
@@ -9,63 +9,19 @@
   "ids": {
     "next": 64
   },
-  "about": {
-    "pl": "Kapłan zwraca się do Jezusa Chrystusa, Syna Boga żywego. Wspomina dzieło zbawienia dokonane przez śmierć Chrystusa z woli Ojca i przy współdziałaniu Ducha Świętego. Prosi o uwolnienie od nieprawości i zła, o wierność przykazaniom oraz o to, by nigdy nie został odłączony od Chrystusa.",
-    "en": "The priest addresses Jesus Christ, the Son of the living God. He recalls the work of salvation accomplished through Christ's death, by the will of the Father and with the cooperation of the Holy Spirit. He asks to be delivered from iniquity and evil, to remain faithful to the commandments, and never to be separated from Christ."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Panie Jezu Chryste, Synu Boga żywego,",
-        "en": "Lord Jesus Christ, Son of the living God,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed pp. 63–64",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed pp. 30–31",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 73–74",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 96–97",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 122–123",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          },
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 477",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w002", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezu", "en": "Jesus" } },
-        { "id": "w003", "form": "Christe", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chryste", "en": "Christ" } },
-        { "id": "w004", "form": "Fili", "lemma": "filius", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Synu", "en": "Son" }, "function": { "pl": "Wołacz liczby pojedynczej od filius.", "en": "Singular vocative of filius." } },
-        { "id": "w005", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" } },
-        { "id": "w006", "form": "vivi", "post": ",", "lemma": "vivus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w005", "gloss": { "pl": "żywego", "en": "living" }, "function": { "pl": "Dopełniacz liczby pojedynczej, zgadzający się z „Dei” (w005).", "en": "Genitive singular agreeing with “Dei” (w005)." } }
+        { "id": "w001", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w002", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" } },
+        { "id": "w003", "form": "Christe", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w004", "form": "Fili", "lemma": "filius", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w006", "form": "vivi", "post": ",", "lemma": "vivus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w005" }
       ]
     },
     {
@@ -73,59 +29,19 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "który z woli Ojca, przy współdziałaniu Ducha Świętego, przez swoją śmierć ożywiłeś świat:",
-        "en": "who, by the will of the Father and with the cooperation of the Holy Spirit, brought the world to life through Your death:"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed pp. 63–64",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed pp. 30–31",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 73–74",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 96–97",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 122–123",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          },
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 477",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w007", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
-        { "id": "w008", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w009", "gloss": { "pl": "z", "en": "out of" } },
-        { "id": "w009", "form": "voluntáte", "lemma": "voluntas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "woli", "en": "the will" } },
-        { "id": "w010", "form": "Patris", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojca", "en": "of the Father" } },
-        { "id": "w011", "form": "cooperánte", "lemma": "cooperor", "morph": { "pos": "verb", "case": "abl", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "dep", "conj": 1 }, "head": "w012", "gloss": { "pl": "współdziałającym", "en": "cooperating" }, "function": { "pl": "Imiesłów deponentny tworzący ze „Spíritu” (w012) ablativus absolutus.", "en": "Deponent participle forming an ablative absolute with “Spíritu” (w012)." } },
-        { "id": "w012", "form": "Spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Duchem", "en": "Spirit" } },
-        { "id": "w013", "form": "Sancto", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w012", "gloss": { "pl": "Świętym", "en": "Holy" } },
-        { "id": "w014", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015", "gloss": { "pl": "przez", "en": "through" } },
-        { "id": "w015", "form": "mortem", "lemma": "mors", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "śmierć", "en": "death" } },
-        { "id": "w016", "form": "tuam", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w015", "gloss": { "pl": "Twoją", "en": "Thy" } },
-        { "id": "w017", "form": "mundum", "lemma": "mundus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "świat", "en": "the world" }, "function": { "pl": "Dopełnienie „vivificásti” (w018).", "en": "Object of “vivificásti” (w018)." } },
-        { "id": "w018", "form": "vivificásti", "post": ":", "lemma": "vivifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "ożywiłeś", "en": "hast given life to" }, "function": { "pl": "Ściągnięta forma perfectum: vivificásti = vivificávisti.", "en": "Contracted perfect form: vivificásti = vivificávisti." } }
+        { "id": "w007", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w008", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w009" },
+        { "id": "w009", "form": "voluntáte", "lemma": "voluntas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w010", "form": "Patris", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w011", "form": "cooperánte", "lemma": "cooperor", "morph": { "pos": "verb", "case": "abl", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "dep", "conj": 1 }, "head": "w012" },
+        { "id": "w012", "form": "Spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w013", "form": "Sancto", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w012" },
+        { "id": "w014", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015" },
+        { "id": "w015", "form": "mortem", "lemma": "mors", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w016", "form": "tuam", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w015" },
+        { "id": "w017", "form": "mundum", "lemma": "mundus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w018", "form": "vivificásti", "post": ":", "lemma": "vivifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 } }
       ]
     },
     {
@@ -133,63 +49,23 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "wybaw mnie przez to najświętsze Ciało i Twoją Krew od wszystkich moich nieprawości i od wszelkiego zła:",
-        "en": "deliver me through this most holy Body and Your Blood from all my iniquities and from all evils:"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed pp. 63–64",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed pp. 30–31",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 73–74",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 96–97",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 122–123",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          },
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 477",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w019", "form": "líbera", "lemma": "libero", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "wybaw", "en": "deliver" } },
-        { "id": "w020", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" }, "function": { "pl": "Od tego miejsca modlitwa pozostaje w pierwszej osobie liczby pojedynczej.", "en": "From this point the prayer remains in the first person singular." } },
-        { "id": "w021", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w022", "gloss": { "pl": "przez", "en": "through" } },
-        { "id": "w022", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" }, "gloss": { "pl": "to", "en": "this" }, "function": { "pl": "Rodzaj nijaki, zgadza się z „Corpus” (w024).", "en": "Neuter, agreeing with “Corpus” (w024)." } },
-        { "id": "w023", "form": "sacrosánctum", "lemma": "sacrosanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w024", "gloss": { "pl": "najświętsze", "en": "most holy" }, "function": { "pl": "Zgadza się z „Corpus” (w024): „to najświętsze Ciało”.", "en": "Agrees with “Corpus” (w024): “this most holy Body”." } },
-        { "id": "w024", "form": "Corpus", "lemma": "corpus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "Ciało", "en": "Body" } },
-        { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w026", "form": "Sánguinem", "lemma": "sanguis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Krew", "en": "Blood" } },
-        { "id": "w027", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w026", "gloss": { "pl": "Twoją", "en": "Thy" }, "function": { "pl": "Zgadza się z „Sánguinem” (w026). Znaczeniowo odnosi się do Ciała i Krwi.", "en": "Agrees with “Sánguinem” (w026). In sense it qualifies both Body and Blood." } },
-        { "id": "w028", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w030", "gloss": { "pl": "od", "en": "from" } },
-        { "id": "w029", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "f" }, "head": "w030", "gloss": { "pl": "wszystkich", "en": "all" } },
-        { "id": "w030", "form": "iniquitátibus", "lemma": "iniquitas", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "nieprawości", "en": "iniquities" } },
-        { "id": "w031", "form": "meis", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "f" }, "head": "w030", "gloss": { "pl": "moich", "en": "my" } },
-        { "id": "w032", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w033", "form": "univérsis", "lemma": "universus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w034", "gloss": { "pl": "wszelkiego", "en": "all manner of" } },
-        { "id": "w034", "form": "malis", "post": ":", "lemma": "malum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "zła", "en": "evils" }, "function": { "pl": "Rzeczownik rodzaju nijakiego w liczbie mnogiej: wszelkie zło, nie źli ludzie.", "en": "Neuter plural noun: evils, not evil men." } }
+        { "id": "w019", "form": "líbera", "lemma": "libero", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w020", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w021", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w022" },
+        { "id": "w022", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w023", "form": "sacrosánctum", "lemma": "sacrosanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w024" },
+        { "id": "w024", "form": "Corpus", "lemma": "corpus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w026", "form": "Sánguinem", "lemma": "sanguis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w027", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w026" },
+        { "id": "w028", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w030" },
+        { "id": "w029", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "f" }, "head": "w030" },
+        { "id": "w030", "form": "iniquitátibus", "lemma": "iniquitas", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w031", "form": "meis", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "f" }, "head": "w030" },
+        { "id": "w032", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w033", "form": "univérsis", "lemma": "universus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w034" },
+        { "id": "w034", "form": "malis", "post": ":", "lemma": "malum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } }
       ]
     },
     {
@@ -197,60 +73,20 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "i spraw, abym zawsze trwał przy Twoich przykazaniach, i nigdy nie dopuść, bym został odłączony od Ciebie:",
-        "en": "and make me always hold fast to Your commandments, and never permit me to be separated from You:"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed pp. 63–64",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed pp. 30–31",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 73–74",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 96–97",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 122–123",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          },
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 477",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w035", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w036", "form": "fac", "lemma": "facio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "spraw", "en": "make" } },
-        { "id": "w037", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" }, "function": { "pl": "Biernik jako podmiot bezokolicznika „inhærére” (w040).", "en": "Accusative subject of the infinitive “inhærére” (w040)." } },
-        { "id": "w038", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "n" }, "head": "w041", "gloss": { "pl": "Twoich", "en": "Thy" }, "function": { "pl": "Zgadza się z „mandátis” (w041).", "en": "Agrees with “mandátis” (w041)." } },
-        { "id": "w039", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "always" } },
-        { "id": "w040", "form": "inhærére", "lemma": "inhaereo", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 2 }, "gloss": { "pl": "trwać", "en": "to cling" } },
-        { "id": "w041", "form": "mandátis", "post": ",", "lemma": "mandatum", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "przy przykazaniach", "en": "commandments" } },
-        { "id": "w042", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w043", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w044", "gloss": { "pl": "od", "en": "from" } },
-        { "id": "w044", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "gloss": { "pl": "Ciebie", "en": "Thee" } },
-        { "id": "w045", "form": "numquam", "lemma": "numquam", "morph": { "pos": "adv" }, "gloss": { "pl": "nigdy", "en": "never" } },
-        { "id": "w046", "form": "separári", "lemma": "separo", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "pass", "conj": 1 }, "gloss": { "pl": "być odłączonym", "en": "to be parted" }, "function": { "pl": "Bezokolicznik strony biernej zależny od „permíttas” (w047).", "en": "Passive infinitive depending on “permíttas” (w047)." } },
-        { "id": "w047", "form": "permíttas", "post": ":", "lemma": "permitto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "dopuść", "en": "allow" }, "function": { "pl": "Tryb łączący wyrażający prośbę, z przeczeniem „numquam” (w045).", "en": "Subjunctive expressing a petition, negated by “numquam” (w045)." } }
+        { "id": "w035", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w036", "form": "fac", "lemma": "facio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w037", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w038", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "n" }, "head": "w041" },
+        { "id": "w039", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w040", "form": "inhærére", "lemma": "inhaereo", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 2 } },
+        { "id": "w041", "form": "mandátis", "post": ",", "lemma": "mandatum", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w042", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w043", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w044" },
+        { "id": "w044", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w045", "form": "numquam", "lemma": "numquam", "morph": { "pos": "adv" } },
+        { "id": "w046", "form": "separári", "lemma": "separo", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "pass", "conj": 1 } },
+        { "id": "w047", "form": "permíttas", "post": ":", "lemma": "permitto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } }
       ]
     },
     {
@@ -258,63 +94,23 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "który, będąc Bogiem, żyjesz i królujesz z tym samym Bogiem Ojcem i z Duchem Świętym przez wszystkie wieki wieków. Amen.",
-        "en": "who, being God, live and reign with the same God the Father and with the Holy Spirit for ever and ever. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed pp. 63–64",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed pp. 30–31",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 73–74",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 96–97",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 122–123",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          },
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 477",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w048", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Który", "en": "Who" } },
-        { "id": "w049", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w050", "gloss": { "pl": "z", "en": "with" } },
-        { "id": "w050", "form": "eódem", "lemma": "idem", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" }, "gloss": { "pl": "tymże", "en": "the same" }, "function": { "pl": "Zgadza się z „Deo” (w051) i odsyła do wcześniej nazwanego Boga Ojca.", "en": "Agrees with “Deo” (w051) and points back to God the Father named earlier." } },
-        { "id": "w051", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bogiem", "en": "God" } },
-        { "id": "w052", "form": "Patre", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcem", "en": "the Father" } },
-        { "id": "w053", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w054", "form": "Spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Duchem", "en": "the Spirit" } },
-        { "id": "w055", "form": "Sancto", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w054", "gloss": { "pl": "Świętym", "en": "Holy" } },
-        { "id": "w056", "form": "vivis", "lemma": "vivo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "żyjesz", "en": "livest" } },
-        { "id": "w057", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w058", "form": "regnas", "lemma": "regno", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "królujesz", "en": "reignest" } },
-        { "id": "w059", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bóg", "en": "God" }, "function": { "pl": "Mianownik w apozycji do „Qui” (w048).", "en": "Nominative in apposition to “Qui” (w048)." } },
-        { "id": "w060", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w061", "gloss": { "pl": "na", "en": "unto" } },
-        { "id": "w061", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieki", "en": "ages" } },
-        { "id": "w062", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieków", "en": "of ages" } },
-        { "id": "w063", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w048", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w049", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w050" },
+        { "id": "w050", "form": "eódem", "lemma": "idem", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" } },
+        { "id": "w051", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w052", "form": "Patre", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w053", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w054", "form": "Spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w055", "form": "Sancto", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w054" },
+        { "id": "w056", "form": "vivis", "lemma": "vivo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w057", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w058", "form": "regnas", "lemma": "regno", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w059", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w060", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w061" },
+        { "id": "w061", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w062", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w063", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -330,6 +126,59 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w004": {
+
+      },
+      "w006": {
+
+      },
+      "w011": {
+
+      },
+      "w017": {
+
+      },
+      "w018": {
+
+      },
+      "w020": {
+
+      },
+      "w022": {
+
+      },
+      "w023": {
+
+      },
+      "w027": {
+
+      },
+      "w034": {
+
+      },
+      "w037": {
+
+      },
+      "w038": {
+
+      },
+      "w046": {
+
+      },
+      "w047": {
+
+      },
+      "w050": {
+
+      },
+      "w059": {
+
+      }
     }
   }
 }

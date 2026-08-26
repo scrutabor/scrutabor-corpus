@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "orationes.ave-regina-caelorum",
   "title": "Ave Regína cælórum",
   "category": "orationes",
@@ -9,362 +9,92 @@
   "ids": {
     "next": 32
   },
-  "about": {
-    "pl": "Ave Regina Caelorum jest maryjną antyfoną końcową okresu od Oczyszczenia Najświętszej Maryi Panny do Wielkiego Tygodnia. W kolejnych pozdrowieniach wierni nazywają Maryję Królową niebios, Panią Aniołów, korzeniem i bramą, z której wzeszło dla świata Światło, a na końcu proszą Ją o wstawiennictwo u Chrystusa.",
-    "en": "The Ave Regina Caelorum is the final Marian antiphon for the season from the Purification of the Blessed Virgin Mary into Holy Week. In successive salutations the faithful call Mary Queen of the heavens, Lady of the Angels, the root and gate from whom the Light arose for the world, and finally ask her to intercede with Christ."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Katolik w modlitwie (1902)",
-        "locator": "printed p. 139",
-        "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-      },
-      {
-        "title": "Key of Heaven (1901)",
-        "locator": "printed pp. 189 and 191",
-        "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-      }
-    ],
-    "en": [
-      {
-        "title": "Katolik w modlitwie (1902)",
-        "locator": "printed p. 139",
-        "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-      },
-      {
-        "title": "Key of Heaven (1901)",
-        "locator": "printed pp. 189 and 191",
-        "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "Bądź pozdrowiona, Królowo niebios,",
-        "en": "Hail, Queen of the heavens,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Ave", "lemma": "aveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "bądź pozdrowiona", "en": "hail" }, "post": ",", "function": { "pl": "Tryb rozkazujący służy jako pierwsze pozdrowienie skierowane do Maryi.", "en": "The imperative serves as the first salutation addressed to Mary." } },
-        { "id": "w002", "form": "Regína", "lemma": "regina", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Królowo", "en": "Queen" }, "function": { "pl": "Wołacz nazywa Maryję Królową.", "en": "The vocative addresses Mary as Queen." } },
-        { "id": "w003", "form": "cælórum", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "niebios", "en": "of the heavens" }, "post": ",", "function": { "pl": "Dopełniacz liczby mnogiej zależy od „Regína”.", "en": "The plural genitive depends on “Regína”." } }
+        { "id": "w001", "form": "Ave", "lemma": "aveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "post": "," },
+        { "id": "w002", "form": "Regína", "lemma": "regina", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w003", "form": "cælórum", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 }, "post": "," }
       ]
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "bądź pozdrowiona, Pani Aniołów:",
-        "en": "hail, Lady of the Angels:"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w004", "form": "Ave", "lemma": "aveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "bądź pozdrowiona", "en": "hail" }, "post": ",", "function": { "pl": "Powtórzenie „Ave” rozpoczyna równoległe drugie pozdrowienie.", "en": "The repeated “Ave” opens the parallel second salutation." } },
-        { "id": "w005", "form": "Dómina", "lemma": "domina", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Pani", "en": "Lady" }, "function": { "pl": "Wołacz jest drugim tytułem Maryi.", "en": "The vocative is a second title of Mary." } },
-        { "id": "w006", "form": "Angelórum", "lemma": "angelus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "Aniołów", "en": "of the Angels" }, "post": ":", "function": { "pl": "Dopełniacz zależy od „Dómina” i określa Ją jako Panią Aniołów.", "en": "The genitive depends on “Dómina” and calls her Lady of the Angels." } }
+        { "id": "w004", "form": "Ave", "lemma": "aveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "post": "," },
+        { "id": "w005", "form": "Dómina", "lemma": "domina", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w006", "form": "Angelórum", "lemma": "angelus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 }, "post": ":" }
       ]
     },
     {
       "id": "s03",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "witaj, korzeniu, witaj, bramo,",
-        "en": "hail, root, hail, gate,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w007", "form": "Salve", "lemma": "salveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "witaj", "en": "hail" }, "function": { "pl": "Pierwsze „Salve” pozdrawia Maryję pod obrazem korzenia.", "en": "The first “Salve” greets Mary under the image of a root." } },
-        { "id": "w008", "form": "radix", "lemma": "radix", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "korzeniu", "en": "root" }, "post": ",", "function": { "pl": "Wołacz-metafora odnosi się do Maryi jako korzenia, z którego wyrasta zbawcze Światło.", "en": "The metaphorical vocative addresses Mary as the root from which the saving Light springs." } },
-        { "id": "w009", "form": "salve", "lemma": "salveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "witaj", "en": "hail" }, "function": { "pl": "Powtórzenie czasownika wprowadza drugi równoległy obraz.", "en": "The repeated verb introduces the second parallel image." } },
-        { "id": "w010", "form": "porta", "lemma": "porta", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "bramo", "en": "gate" }, "post": ",", "function": { "pl": "Wołacz-metafora nazywa Maryję bramą, przez którą Światło przyszło na świat.", "en": "The metaphorical vocative calls Mary the gate through which the Light came into the world." } }
+        { "id": "w007", "form": "Salve", "lemma": "salveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w008", "form": "radix", "lemma": "radix", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "post": "," },
+        { "id": "w009", "form": "salve", "lemma": "salveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w010", "form": "porta", "lemma": "porta", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "post": "," }
       ]
     },
     {
       "id": "s04",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "z której dla świata wzeszło Światło:",
-        "en": "from whom the Light arose for the world:"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w011", "form": "Ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "gloss": { "pl": "z", "en": "from" }, "head": "w012", "function": { "pl": "Przyimek z ablatywem wskazuje pochodzenie: Światło wzeszło z Maryi przedstawionej jako brama.", "en": "The preposition with the ablative marks origin: the Light arose from Mary represented as the gate." } },
-        { "id": "w012", "form": "qua", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "f" }, "gloss": { "pl": "której", "en": "whom" }, "function": { "pl": "Zaimek względny w ablatywie odnosi się do Maryi, bezpośrednio nazwanej „porta”.", "en": "The ablative relative refers to Mary, immediately named “porta”." } },
-        { "id": "w013", "form": "mundo", "lemma": "mundus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "dla świata", "en": "for the world" }, "function": { "pl": "Celownik korzyści lub odniesienia: Światło wzeszło dla świata.", "en": "A dative of advantage or reference: the Light arose for the world." } },
-        { "id": "w014", "form": "lux", "lemma": "lux", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Światło", "en": "the Light" }, "function": { "pl": "Mianownik jest podmiotem „orta est”. Światło oznacza Chrystusa.", "en": "The nominative is the subject of “orta est”. The Light denotes Christ." } },
-        { "id": "w015", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "[czasownik posiłkowy]", "en": "[auxiliary]" }, "function": { "pl": "Z formą „orta” tworzy perfectum deponentne: „wzeszło”.", "en": "With “orta” it forms the deponent perfect: “arose”." } },
-        { "id": "w016", "form": "orta", "lemma": "orior", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "f", "tense": "perf", "mood": "part", "voice": "dep", "conj": 4 }, "gloss": { "pl": "wzeszło", "en": "arose" }, "post": ":", "head": "w015", "function": { "pl": "Imiesłów perfectum czasownika deponentnego zgadza się z „lux” i wraz z „est” tworzy orzeczenie czasu przeszłego.", "en": "The perfect participle of a deponent verb agrees with “lux” and with “est” forms the past-tense predicate." } }
+        { "id": "w011", "form": "Ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w012" },
+        { "id": "w012", "form": "qua", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "f" } },
+        { "id": "w013", "form": "mundo", "lemma": "mundus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w014", "form": "lux", "lemma": "lux", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w015", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w016", "form": "orta", "lemma": "orior", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "f", "tense": "perf", "mood": "part", "voice": "dep", "conj": 4 }, "post": ":", "head": "w015" }
       ]
     },
     {
       "id": "s05",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "raduj się, Panno chwalebna,",
-        "en": "rejoice, glorious Virgin,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w017", "form": "Gaude", "lemma": "gaudeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "raduj się", "en": "rejoice" }, "post": ",", "function": { "pl": "Tryb rozkazujący kieruje do Maryi wezwanie do radości.", "en": "The imperative calls Mary to rejoice." } },
-        { "id": "w018", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Panno", "en": "Virgin" }, "function": { "pl": "Wołacz ponownie nazywa adresatkę.", "en": "The vocative names the addressee again." } },
-        { "id": "w019", "form": "gloriósa", "lemma": "gloriosus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "gloss": { "pl": "chwalebna", "en": "glorious" }, "post": ",", "head": "w018", "function": { "pl": "Przymiotnik w wołaczu zgadza się z „Virgo”.", "en": "The vocative adjective agrees with “Virgo”." } }
+        { "id": "w017", "form": "Gaude", "lemma": "gaudeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "post": "," },
+        { "id": "w018", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w019", "form": "gloriósa", "lemma": "gloriosus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "post": ",", "head": "w018" }
       ]
     },
     {
       "id": "s06",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "piękna ponad wszystkie,",
-        "en": "beautiful above all,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w020", "form": "Super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "gloss": { "pl": "ponad", "en": "above" }, "head": "w021", "function": { "pl": "Przyimek z biernikiem wprowadza zakres przewyższania.", "en": "The preposition with the accusative introduces the range surpassed." } },
-        { "id": "w021", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "gloss": { "pl": "wszystkie", "en": "all" }, "substantive": true, "function": { "pl": "Przymiotnik rodzaju żeńskiego jest użyty rzeczownikowo: Maryja jest piękna ponad wszystkie kobiety lub dziewice.", "en": "The feminine adjective is used substantively: Mary is beautiful above all women or virgins." } },
-        { "id": "w022", "form": "speciósa", "lemma": "speciosus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "gloss": { "pl": "piękna", "en": "beautiful" }, "post": ",", "substantive": true, "function": { "pl": "Przymiotnik użyty rzeczownikowo w wołaczu opisuje Maryję jako piękną ponad wszystkie.", "en": "The substantival vocative adjective describes Mary as beautiful above all." } }
+        { "id": "w020", "form": "Super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w021" },
+        { "id": "w021", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "substantive": true },
+        { "id": "w022", "form": "speciósa", "lemma": "speciosus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "post": ",", "substantive": true }
       ]
     },
     {
       "id": "s07",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "żegnaj, o nader urodziwa,",
-        "en": "farewell, O exceedingly comely,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w023", "form": "Vale", "lemma": "valeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "żegnaj", "en": "farewell" }, "post": ",", "function": { "pl": "Tryb rozkazujący „miej się dobrze” działa tu jako pożegnanie i odróżnia się od wcześniejszych „Ave” i „Salve”.", "en": "The imperative “be well” functions here as a farewell, distinct from the earlier “Ave” and “Salve”." } },
-        { "id": "w024", "form": "o", "lemma": "o", "morph": { "pos": "intj" }, "gloss": { "pl": "o", "en": "O" } },
-        { "id": "w025", "form": "valde", "lemma": "valde", "morph": { "pos": "adv" }, "gloss": { "pl": "nader", "en": "exceedingly" }, "function": { "pl": "Przysłówek wzmacnia „decóra”.", "en": "The adverb intensifies “decóra”." } },
-        { "id": "w026", "form": "decóra", "lemma": "decorus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "gloss": { "pl": "urodziwa", "en": "comely" }, "post": ",", "substantive": true, "function": { "pl": "Przymiotnik użyty rzeczownikowo w wołaczu określa Maryję jako urodziwą i pełną wdzięku. Pozostaje znaczeniowo odrębny od „speciósa”.", "en": "The substantival vocative adjective describes Mary as comely and graceful. It remains distinct from “speciósa”." } }
+        { "id": "w023", "form": "Vale", "lemma": "valeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "post": "," },
+        { "id": "w024", "form": "o", "lemma": "o", "morph": { "pos": "intj" } },
+        { "id": "w025", "form": "valde", "lemma": "valde", "morph": { "pos": "adv" } },
+        { "id": "w026", "form": "decóra", "lemma": "decorus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "post": ",", "substantive": true }
       ]
     },
     {
       "id": "s08",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "i błagaj Chrystusa za nami.",
-        "en": "and entreat Christ for us."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 139",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 189 and 191",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w027", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w028", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "gloss": { "pl": "za", "en": "for" }, "head": "w029", "function": { "pl": "Przyimek z ablatywem wskazuje osoby, w których sprawie Maryja ma prosić.", "en": "The preposition with the ablative identifies those on whose behalf Mary is to ask." } },
-        { "id": "w029", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "nami", "en": "us" }, "function": { "pl": "Ablativus po „pro” obejmuje mówiących wiernych.", "en": "The ablative after “pro” includes the worshipers who speak." } },
-        { "id": "w030", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" }, "function": { "pl": "Biernik nazywa osobę proszoną przez Maryję, nie przedmiot prośby.", "en": "The accusative names the person Mary is to entreat, not the thing requested." } },
-        { "id": "w031", "form": "exóra", "lemma": "exoro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "błagaj", "en": "entreat" }, "post": ".", "function": { "pl": "Końcowy tryb rozkazujący prosi Maryję, aby błagała Chrystusa w imieniu wiernych.", "en": "The final imperative asks Mary to entreat Christ on behalf of the faithful." } }
+        { "id": "w027", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w028", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w029" },
+        { "id": "w029", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
+        { "id": "w030", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w031", "form": "exóra", "lemma": "exoro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "post": "." }
       ]
     }
   ],
@@ -378,5 +108,109 @@
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Katolik w modlitwie (1902)",
+        "locator": "printed p. 139",
+        "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
+      },
+      {
+        "title": "Key of Heaven (1901)",
+        "locator": "printed pp. 189 and 191",
+        "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
+      }
+    ],
+    "functions": {
+      "w001": {
+
+      },
+      "w002": {
+
+      },
+      "w003": {
+
+      },
+      "w004": {
+
+      },
+      "w005": {
+
+      },
+      "w006": {
+
+      },
+      "w007": {
+
+      },
+      "w008": {
+
+      },
+      "w009": {
+
+      },
+      "w010": {
+
+      },
+      "w011": {
+
+      },
+      "w012": {
+
+      },
+      "w013": {
+
+      },
+      "w014": {
+
+      },
+      "w015": {
+
+      },
+      "w016": {
+
+      },
+      "w017": {
+
+      },
+      "w018": {
+
+      },
+      "w019": {
+
+      },
+      "w020": {
+
+      },
+      "w021": {
+
+      },
+      "w022": {
+
+      },
+      "w023": {
+
+      },
+      "w025": {
+
+      },
+      "w026": {
+
+      },
+      "w028": {
+
+      },
+      "w029": {
+
+      },
+      "w030": {
+
+      },
+      "w031": {
+
+      }
+    }
   }
 }

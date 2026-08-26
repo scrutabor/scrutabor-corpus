@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.orate-fratres",
   "title": "Oráte, fratres",
   "category": "ordinarium",
@@ -9,68 +9,36 @@
   "ids": {
     "next": 35
   },
-  "about": {
-    "pl": "„Meum ac vestrum” określa „sacrifícium” w liczbie pojedynczej: „moja i wasza ofiara”. Odpowiedź prosi, by Pan przyjął ją „de mánibus tuis” — z rąk kapłana — na chwałę swojego imienia oraz dla dobra obecnych i całego Kościoła. Rubryka nakazuje kapłanowi wypowiedzieć wezwanie nieco podniesionym głosem, a końcowe „Amen” głosem zniżonym.",
-    "en": "“Meum ac vestrum” modifies the singular “sacrifícium”: “my sacrifice and yours”. The response asks the Lord to receive it “de mánibus tuis” — from the priest's hands — for the glory of His name and the good of those present and of the whole Church. The rubric directs the priest to say the invitation with his voice raised a little and the closing “Amen” in a low voice."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Postea osculatur Altare, et versus ad populum extendens, et iungens manus, voce paululum elevata, dicit:",
-      "narrative": {
-        "pl": "Kapłan całuje ołtarz, odwraca się do ludu, rozkłada i składa ręce. Głos podnosi tylko na słowach „Oráte, fratres”, resztę mówi po cichu.",
-        "en": "The priest kisses the altar, turns to the people, spreads and joins his hands. The priest raises his voice only for the words “Oráte, fratres” and says the rest silently."
-      }
+      "text": "Postea osculatur Altare, et versus ad populum extendens, et iungens manus, voce paululum elevata, dicit:"
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
-      "translation": {
-        "pl": "Módlcie się, bracia, aby moją i waszą ofiarę przyjął Bóg Ojciec wszechmogący.",
-        "en": "Pray, brethren, that my sacrifice and yours may be acceptable to God, the almighty Father."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scan 57 / printed p. 54",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Oráte", "post": ",", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "módlcie się", "en": "pray" }, "function": { "pl": "Tryb rozkazujący liczby mnogiej skierowany do obecnych.", "en": "A plural imperative addressed to those present." } },
-        { "id": "w002", "form": "fratres", "post": ":", "lemma": "frater", "morph": { "pos": "noun", "case": "voc", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "bracia", "en": "brethren" }, "function": { "pl": "Wołacz liczby mnogiej, o formie tożsamej z mianownikiem i biernikiem.", "en": "Vocative plural, identical in form to the nominative and accusative plural." } },
-        { "id": "w003", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "aby", "en": "that" } },
-        { "id": "w004", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w007", "gloss": { "pl": "moja", "en": "my" }, "function": { "pl": "Rodzaj nijaki liczby pojedynczej. Forma zgadza się z „sacrifícium” (w007).", "en": "Neuter singular agreeing with “sacrifícium” (w007)." } },
-        { "id": "w005", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w006", "form": "vestrum", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w007", "gloss": { "pl": "wasza", "en": "your" } },
-        { "id": "w007", "form": "sacrifícium", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "ofiara", "en": "sacrifice" }, "function": { "pl": "Rzeczownik w liczbie pojedynczej, określany przez „meum” (w004) i „vestrum” (w006).", "en": "A singular noun modified by “meum” (w004) and “vestrum” (w006)." } },
-        { "id": "w008", "form": "acceptábile", "lemma": "acceptabilis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w007", "gloss": { "pl": "przyjemna", "en": "acceptable" }, "function": { "pl": "Przymiotnik w funkcji orzecznika przy „fiat” (w009).", "en": "A predicate adjective with “fiat” (w009)." } },
-        { "id": "w009", "form": "fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" }, "gloss": { "pl": "stała się", "en": "may be" } },
-        { "id": "w010", "form": "apud", "lemma": "apud", "morph": { "pos": "prep", "governs": "acc" }, "head": "w011", "gloss": { "pl": "u", "en": "with" } },
-        { "id": "w011", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } },
-        { "id": "w012", "form": "Patrem", "lemma": "pater", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojca", "en": "the Father" }, "function": { "pl": "Apozycja (dopowiedzenie) do „Deum” (w011).", "en": "Apposition to “Deum” (w011)." } },
-        { "id": "w013", "form": "omnipoténtem", "post": ".", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w012", "gloss": { "pl": "wszechmogącego", "en": "almighty" } }
+        { "id": "w001", "form": "Oráte", "post": ",", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w002", "form": "fratres", "post": ":", "lemma": "frater", "morph": { "pos": "noun", "case": "voc", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w003", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w007" },
+        { "id": "w005", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "vestrum", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w007" },
+        { "id": "w007", "form": "sacrifícium", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w008", "form": "acceptábile", "lemma": "acceptabilis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w007" },
+        { "id": "w009", "form": "fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w010", "form": "apud", "lemma": "apud", "morph": { "pos": "prep", "governs": "acc" }, "head": "w011" },
+        { "id": "w011", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w012", "form": "Patrem", "lemma": "pater", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w013", "form": "omnipoténtem", "post": ".", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w012" }
       ]
     },
     {
       "id": "s03",
       "type": "rubric",
-      "text": "Minister, seu circumstantes respondent: alioquin ipsemet Sacerdos:",
-      "narrative": {
-        "pl": "Odpowiada usługujący albo obecni. Jeśli nie ma komu odpowiedzieć, kapłan odpowiada sam sobie, mówiąc meis — moich — zamiast tuis.",
-        "en": "The server answers, or those present. If there is no one to answer, the priest says the response himself, saying meis — my — for tuis."
-      }
+      "text": "Minister, seu circumstantes respondent: alioquin ipsemet Sacerdos:"
     },
     {
       "id": "s04",
@@ -83,86 +51,42 @@
           "source": "DMS 31 b"
         }
       },
-      "translation": {
-        "pl": "Niech Pan przyjmie ofiarę z rąk twoich na cześć i chwałę swojego imienia, a także na pożytek nasz i całego swojego Kościoła świętego.",
-        "en": "May the Lord accept the sacrifice at your hands for the praise and glory of His name, for our good also and the good of all His holy Church."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scan 57 / printed p. 54",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w014", "form": "Suscípiat", "lemma": "suscipio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "niech przyjmie", "en": "may receive" }, "function": { "pl": "Tryb łączący w trzeciej osobie, wyrażający prośbę.", "en": "A third-person subjunctive expressing a prayer." } },
-        { "id": "w015", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "the Lord" } },
-        { "id": "w016", "form": "sacrifícium", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "ofiarę", "en": "the sacrifice" } },
-        { "id": "w017", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w018", "gloss": { "pl": "z", "en": "from" } },
-        { "id": "w018", "form": "mánibus", "lemma": "manus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 4 }, "gloss": { "pl": "rąk", "en": "the hands" } },
-        { "id": "w019", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "f" }, "head": "w018", "gloss": { "pl": "twoich", "en": "your" }, "function": { "pl": "Zgadza się z „mánibus” (w018) i odnosi się do rąk kapłana.", "en": "Agrees with “mánibus” (w018) and refers to the priest's hands." } },
-        { "id": "w020", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w021", "gloss": { "pl": "na", "en": "unto" } },
-        { "id": "w021", "form": "laudem", "lemma": "laus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "cześć", "en": "the praise" } },
-        { "id": "w022", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w023", "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwałę", "en": "glory" } },
-        { "id": "w024", "form": "nóminis", "lemma": "nomen", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "imienia", "en": "of name" } },
-        { "id": "w025", "form": "sui", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w024", "gloss": { "pl": "swego", "en": "His own" }, "function": { "pl": "Zaimek zwrotny dzierżawczy odnosi się do „Dóminus” (w015) oraz zgadza się z „nóminis” (w024).", "en": "A reflexive possessive referring to “Dóminus” (w015) and agreeing with “nóminis” (w024)." } },
-        { "id": "w026", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w027", "gloss": { "pl": "na", "en": "unto" } },
-        { "id": "w027", "form": "utilitátem", "lemma": "utilitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "pożytek", "en": "the good" } },
-        { "id": "w028", "form": "quoque", "lemma": "quoque", "morph": { "pos": "adv" }, "gloss": { "pl": "także", "en": "also" } },
-        { "id": "w029", "form": "nostram", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w027", "gloss": { "pl": "nasz", "en": "our" } },
-        { "id": "w030", "form": "totiúsque", "lemma": "totus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w031", "gloss": { "pl": "i całego", "en": "and of the whole" }, "function": { "pl": "Totíusque łączy totíus z enklityką -que („i”), która przenosi akcent na poprzedzającą ją sylabę.", "en": "Totíusque combines totíus with the enclitic -que (“and”), which places the stress on the preceding syllable." } },
-        { "id": "w031", "form": "Ecclésiæ", "lemma": "ecclesia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Kościoła", "en": "Church" } },
-        { "id": "w032", "form": "suæ", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w031", "gloss": { "pl": "swego", "en": "His" } },
-        { "id": "w033", "form": "sanctæ", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w031", "gloss": { "pl": "świętego", "en": "holy" } }
+        { "id": "w014", "form": "Suscípiat", "lemma": "suscipio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w015", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w016", "form": "sacrifícium", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w017", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w018" },
+        { "id": "w018", "form": "mánibus", "lemma": "manus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 4 } },
+        { "id": "w019", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "f" }, "head": "w018" },
+        { "id": "w020", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w021" },
+        { "id": "w021", "form": "laudem", "lemma": "laus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w022", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w023", "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w024", "form": "nóminis", "lemma": "nomen", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w025", "form": "sui", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w024" },
+        { "id": "w026", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w027" },
+        { "id": "w027", "form": "utilitátem", "lemma": "utilitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w028", "form": "quoque", "lemma": "quoque", "morph": { "pos": "adv" } },
+        { "id": "w029", "form": "nostram", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w027" },
+        { "id": "w030", "form": "totiúsque", "lemma": "totus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w031" },
+        { "id": "w031", "form": "Ecclésiæ", "lemma": "ecclesia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w032", "form": "suæ", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w031" },
+        { "id": "w033", "form": "sanctæ", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w031" }
       ]
     },
     {
       "id": "s05",
       "type": "rubric",
-      "text": "Sacerdos submissa voce dicit:",
-      "narrative": {
-        "pl": "Kapłan mówi Amen zniżonym głosem.",
-        "en": "The priest says Amen in a low voice."
-      }
+      "text": "Sacerdos submissa voce dicit:"
     },
     {
       "id": "s06",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "submissa",
-      "translation": {
-        "pl": "Amen.",
-        "en": "Amen."
-      },
       "words": [
-        { "id": "w034", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
-      ],
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scan 57 / printed p. 54",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      }
+        { "id": "w034", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
     }
   ],
   "editorial": {
@@ -179,6 +103,41 @@
       "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
       "s03": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
       "s05": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w001": {
+
+      },
+      "w002": {
+
+      },
+      "w004": {
+
+      },
+      "w007": {
+
+      },
+      "w008": {
+
+      },
+      "w012": {
+
+      },
+      "w014": {
+
+      },
+      "w019": {
+
+      },
+      "w025": {
+
+      },
+      "w030": {
+
+      }
     }
   }
 }

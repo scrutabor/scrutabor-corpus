@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "proprium.dominica-iii-adventus-graduale",
   "title": "Qui sedes, Dómine, super Chérubim",
   "category": "proprium",
@@ -8,10 +8,6 @@
   "sung": true,
   "ids": {
     "next": 20
-  },
-  "about": {
-    "pl": "Graduał III Niedzieli Adwentu, z Psalmu 79. Jego werset to co do słowa ten sam, który śpiewa się w introicie II Niedzieli — jedno zdanie, dwie niedziele, dwa miejsca w tej samej Mszy.",
-    "en": "The gradual of the Third Sunday of Advent, from Psalm 79. Its verse is word for word the one sung at the introit of the Second Sunday — one sentence, two Sundays, two places in the same Mass."
   },
   "segments": [
     {
@@ -31,37 +27,17 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Ty, który zasiadasz nad cherubinami, Panie, wzbudź swoją moc i przyjdź.",
-        "en": "You who sit above the cherubim, O Lord, stir up Your power and come."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Psalm 79:2–3 (Vulgate numbering)",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
-        { "id": "w002", "form": "sedes", "post": ",", "lemma": "sedeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 }, "gloss": { "pl": "zasiadasz", "en": "sittest" } },
-        { "id": "w003", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w004", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w005", "gloss": { "pl": "nad", "en": "upon" } },
-        { "id": "w005", "form": "Chérubim", "post": ",", "lemma": "cherubim", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m" }, "gloss": { "pl": "cherubiny", "en": "the cherubim" } },
-        { "id": "w006", "form": "éxcita", "lemma": "excito", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "wzbudź", "en": "stir up" } },
-        { "id": "w007", "form": "poténtiam", "lemma": "potentia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "potęgę", "en": "power" } },
-        { "id": "w008", "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w007", "gloss": { "pl": "Twoją", "en": "Thy" } },
-        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w010", "form": "veni", "post": ".", "lemma": "venio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 }, "gloss": { "pl": "przyjdź", "en": "come" } }
+        { "id": "w001", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w002", "form": "sedes", "post": ",", "lemma": "sedeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
+        { "id": "w003", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w004", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w005" },
+        { "id": "w005", "form": "Chérubim", "post": ",", "lemma": "cherubim", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m" } },
+        { "id": "w006", "form": "éxcita", "lemma": "excito", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w007", "form": "poténtiam", "lemma": "potentia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w008", "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w007" },
+        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "veni", "post": ".", "lemma": "venio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 } }
       ],
       "delivery": {
         "cantu": {
@@ -87,36 +63,16 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Ty, który pasiesz Izraela, usłysz; Ty, który prowadzisz Józefa jak owcę.",
-        "en": "You who shepherd Israel, give ear; You who lead Joseph like a sheep."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Psalm 79:2–3 (Vulgate numbering)",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w011", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
-        { "id": "w012", "form": "regis", "lemma": "rego", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "rządzisz", "en": "rulest" } },
-        { "id": "w013", "form": "Israël", "post": ",", "lemma": "Israel", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Izraelem", "en": "Israel" } },
-        { "id": "w014", "form": "inténde", "post": ":", "lemma": "intendo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "nakłoń ucha", "en": "give ear" } },
-        { "id": "w015", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
-        { "id": "w016", "form": "dedúcis", "post": ",", "lemma": "deduco", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "prowadzisz", "en": "leadest" } },
-        { "id": "w017", "form": "velut", "lemma": "velut", "morph": { "pos": "adv" }, "gloss": { "pl": "jak", "en": "like" } },
-        { "id": "w018", "form": "ovem", "post": ",", "lemma": "ovis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "owcę", "en": "a sheep" } },
-        { "id": "w019", "form": "Ioseph", "post": ".", "lemma": "Ioseph", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Józefa", "en": "Joseph" } }
+        { "id": "w011", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w012", "form": "regis", "lemma": "rego", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w013", "form": "Israël", "post": ",", "lemma": "Israel", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w014", "form": "inténde", "post": ":", "lemma": "intendo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w015", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w016", "form": "dedúcis", "post": ",", "lemma": "deduco", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w017", "form": "velut", "lemma": "velut", "morph": { "pos": "adv" } },
+        { "id": "w018", "form": "ovem", "post": ",", "lemma": "ovis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w019", "form": "Ioseph", "post": ".", "lemma": "Ioseph", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" } }
       ],
       "delivery": {
         "cantu": {
@@ -140,5 +96,8 @@
       "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
     }
+  },
+  "localization": {
+    "about": true
   }
 }

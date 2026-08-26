@@ -7,12 +7,13 @@ from pathlib import Path
 from build_reader.emit import (
     REGISTRY,
     Table,
+    core_artifact,
     emit,
     expand,
     index,
+    language_artifact,
     normalize_latin,
     read_corpus,
-    text_artifact,
     update_registry,
     verify,
 )
@@ -66,19 +67,26 @@ def test_what_a_reader_is_shown_does_survive(tmp_path):
     seen = 0
     for path in out.glob("texts/*/*.json"):
         text = json.loads(path.read_text(encoding="utf-8"))
-        for key in ("ac",):
-            for indices in (text.get(key) or {}).values():
+        if indices := text.get("ac"):
+            seen += len(indices)
+            assert all(citations[i]["title"] for i in indices)
+        for row in text["seg"]:
+            if indices := row.get("nc"):
                 seen += len(indices)
                 assert all(citations[i]["title"] for i in indices)
-        for row in text["seg"]:
-            for key in ("tc", "nc"):
-                for indices in (row.get(key) or {}).values():
+            for indices in (row.get("fc") or {}).values():
+                seen += len(indices)
+                assert all(citations[i]["title"] for i in indices)
+    for language in ("pl", "en"):
+        language_citations = json.loads(
+            (out / f"languages/{language}/citations.json").read_text(encoding="utf-8")
+        )
+        for path in out.glob(f"languages/{language}/texts/*/*.json"):
+            text = json.loads(path.read_text(encoding="utf-8"))
+            for row in text["seg"]:
+                if indices := row.get("tc"):
                     seen += len(indices)
-                    assert all(citations[i]["title"] for i in indices)
-            for byword in (row.get("fc") or {}).values():
-                for indices in byword.values():
-                    seen += len(indices)
-                    assert all(citations[i]["title"] for i in indices)
+                    assert all(language_citations[i]["title"] for i in indices)
     assert seen > 1000, f"the source notes did not survive the build ({seen} references)"
 
 
@@ -96,15 +104,18 @@ def test_the_edition_expands_back_into_what_the_corpus_stores(tmp_path):
     # `verify` runs this over all 111 texts; this states the property in one
     # place so that what the round trip means is readable without reading it.
     out = build(tmp_path)
-    tables = [
-        json.loads((out / f"tables/{name}.json").read_text(encoding="utf-8"))
-        for name in ("morphology", "analysis", "citations")
-    ]
+    parses = json.loads((out / "tables/morphology.json").read_text(encoding="utf-8"))
+    analyses = json.loads((out / "tables/analysis.json").read_text(encoding="utf-8"))
+    citations = json.loads((out / "tables/citations.json").read_text(encoding="utf-8"))
+    pl_citations = json.loads((out / "languages/pl/citations.json").read_text(encoding="utf-8"))
     doc, glosses = next((d, g) for d, g in read_corpus(CORPUS) if d["id"] == "ordinarium.credo")
     art = json.loads((out / "texts/ordinarium/credo.json").read_text(encoding="utf-8"))
-    got_doc, got_glosses = expand(art, *tables)
+    localized = json.loads(
+        (out / "languages/pl/texts/ordinarium/credo.json").read_text(encoding="utf-8")
+    )
+    got_doc, got_gloss = expand(art, localized, parses, analyses, citations, pl_citations)
     assert got_doc["segments"] == doc["segments"]
-    assert got_glosses["pl"]["words"] == glosses["pl"]["words"]
+    assert got_gloss["words"] == glosses["pl"]["words"]
 
 
 def test_the_parse_table_is_shared_and_small(tmp_path):
@@ -122,9 +133,11 @@ def test_the_edition_is_much_smaller_than_its_source(tmp_path):
     # from the rubrics and not from the corpus, so it has no counterpart on the
     # other side of this comparison and would only make the ratio meaningless.
     out = build(tmp_path)
-    source = sum(p.stat().st_size for p in CORPUS.glob("texts/*/*.json"))
+    source = sum(p.stat().st_size for p in CORPUS.glob("texts/*/*.json")) + sum(
+        p.stat().st_size for p in CORPUS.glob("languages/*/texts/*/*.json")
+    )
     made = sum(p.stat().st_size for p in out.rglob("*.json") if p.name != "calendar.json")
-    assert made < source * 0.65, f"{made} against {source} is not worth a build step"
+    assert made < source * 0.72, f"{made} against {source} is not worth a build step"
 
 
 def test_the_saving_is_in_the_bytes_parsed_and_not_the_bytes_sent(tmp_path):
@@ -143,17 +156,24 @@ def test_the_saving_is_in_the_bytes_parsed_and_not_the_bytes_sent(tmp_path):
         return len(gzip.compress(b"".join(p.read_bytes() for p in sorted(paths)), 9))
 
     out = build(tmp_path)
-    assert packed(out.rglob("*.json")) > packed(CORPUS.glob("texts/*/*.json")) * 0.9
+    authored = list(CORPUS.glob("texts/*/*.json")) + list(CORPUS.glob("languages/*/texts/*/*.json"))
+    assert packed(out.rglob("*.json")) > packed(authored) * 0.9
 
 
-def test_a_text_artifact_carries_both_languages(tmp_path):
+def test_base_and_language_artifacts_are_independently_loadable(tmp_path):
+    from build_reader import store
+
     docs = read_corpus(CORPUS)
     doc, glosses = next((d, g) for d, g in docs if d["id"] == "ordinarium.credo")
-    art = text_artifact(doc, glosses, Table(), Table(), Table())
-    assert set(art["about"]) == {"pl", "en"}
-    spoken = [r for r in art["seg"] if r.get("w")]
-    assert set(spoken[0]["g"]) == {"pl", "en"}
-    assert set(spoken[0]["tr"]) == {"pl", "en"}
+    base = core_artifact(doc, store.core(CORPUS, doc["id"]), Table(), Table(), Table())
+    pl = language_artifact(doc, glosses["pl"], Table())
+    en = language_artifact(doc, glosses["en"], Table())
+    assert "about" not in base
+    assert pl["language"] == "pl" and en["language"] == "en"
+    pl_translation = next(row["tr"] for row in pl["seg"] if "tr" in row)
+    en_translation = next(row["tr"] for row in en["seg"] if "tr" in row)
+    assert pl_translation != en_translation
+    assert "g" not in base["seg"][0]
 
 
 def test_the_index_finds_a_word_by_its_surface_form(tmp_path):
@@ -209,7 +229,11 @@ def test_generated_json_has_descriptive_paths_and_logical_lines(tmp_path):
     expected = {
         "manifest.json",
         "concordance.json",
-        "lexicon.json",
+        "lexicon/heads.json",
+        "languages/pl/manifest.json",
+        "languages/pl/lexicon.json",
+        "languages/pl/citations.json",
+        "languages/pl/texts/ordinarium/credo.json",
         "calendar.json",
         "tables/morphology.json",
         "tables/analysis.json",
@@ -225,21 +249,14 @@ def test_generated_json_has_descriptive_paths_and_logical_lines(tmp_path):
 
 
 def test_a_word_that_loses_a_language_is_caught(tmp_path):
-    # The languages share a document now, so a missing gloss is a missing key
-    # rather than a missing file. It must still be loud, and the check that
-    # has always said so must still say it.
-    import json
+    from build_reader import store
+    from checks.language_packs import check_layer
 
-    from build_reader.merge import split
-    from checks.lint import lint_gloss
-
-    doc = json.loads((CORPUS / "texts/ordinarium/credo.json").read_text(encoding="utf-8"))
-    for segment in doc["segments"]:
-        for word in segment.get("words") or []:
-            (word.get("gloss") or {}).pop("en", None)
-    text, layers = split(doc)
-    errors = lint_gloss(layers["en"], text)
-    assert errors and "no gloss" in errors[0], errors[:1]
+    core = store.core(CORPUS, "ordinarium.credo")
+    layer = store.raw_layer(CORPUS, "en", "ordinarium.credo")
+    layer["words"].pop(next(iter(layer["words"])))
+    errors = check_layer(core, layer, store.layer_path(CORPUS, "en", "ordinarium.credo"))
+    assert errors and "word coverage" in errors[0], errors[:1]
 
 
 def test_the_edition_carries_the_calendar_a_reader_can_look_today_up_in(tmp_path):

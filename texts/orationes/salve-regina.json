@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "orationes.salve-regina",
   "title": "Salve Regína",
   "category": "orationes",
@@ -9,347 +9,127 @@
   "ids": {
     "next": 68
   },
-  "about": {
-    "pl": "Antyfona maryjna odmawiana po Mszy cichej w modlitwach Leona XIII, a w komplecie przez długi okres po Zesłaniu Ducha Świętego. Zwraca się do Najświętszej Maryi Panny jako Królowej i Matki miłosierdzia, a wygnańcy, synowie Ewy, proszą Ją, aby zwróciła ku nim swoje miłosierne oczy i po tym wygnaniu ukazała im Jezusa. Po antyfonie następuje werset z odpowiedzią.",
-    "en": "The Marian antiphon said after low Mass in the prayers of Leo XIII, and at Compline through the long season after Pentecost. It addresses the Blessed Virgin Mary as Queen and Mother of mercy, and the banished children of Eve ask her to turn her merciful eyes toward them and, after this exile, to show them Jesus. A versicle and response follow the antiphon."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
-        "locator": "n. 675, p. 520",
-        "url": "https://archive.org/download/enchiridion_indulgentiarum_1952/enchiridion_indulgentiarum_1952.pdf"
-      }
-    ],
-    "en": [
-      {
-        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
-        "locator": "n. 675, p. 520",
-        "url": "https://archive.org/download/enchiridion_indulgentiarum_1952/enchiridion_indulgentiarum_1952.pdf"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "Witaj, Królowo, Matko miłosierdzia, życie, słodyczy i nadziejo nasza, witaj.",
-        "en": "Hail, holy Queen, Mother of mercy, our life, our sweetness and our hope."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed pp. 106–107",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 155",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 25–26",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Salve", "lemma": "salveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "witaj", "en": "hail" }, "function": { "pl": "Tryb rozkazujący liczby pojedynczej od sálveo, skierowany do „Regína”: dosłownie „bądź zdrowa”, jako pozdrowienie „witaj”.", "en": "Singular imperative of sálveo, addressed to “Regína”: literally “be well”, used as a greeting, “hail”." } },
-        { "id": "w002", "form": "Regína", "post": ",", "lemma": "regina", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Królowo", "en": "Queen" } },
-        { "id": "w003", "form": "Mater", "lemma": "mater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Matko", "en": "Mother" } },
-        { "id": "w004", "form": "misericórdiæ", "post": ",", "lemma": "misericordia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "miłosierdzia", "en": "of mercy" }, "function": { "pl": "Dopełniacz zależny od „Mater” (w003).", "en": "Genitive dependent on “Mater” (w003)." } },
-        { "id": "w005", "form": "vita", "post": ",", "lemma": "vita", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "życie", "en": "life" } },
-        { "id": "w006", "form": "dulcédo", "post": ",", "lemma": "dulcedo", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "słodyczy", "en": "sweetness" } },
-        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w008", "form": "spes", "lemma": "spes", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 5 }, "gloss": { "pl": "nadziejo", "en": "hope" }, "function": { "pl": "Wołacz w szeregu rozpoczętym przez „Regína” (w002). Czasownikiem zdania jest „Salve” (w001).", "en": "A vocative in the series begun by “Regína” (w002). The verb of the sentence is “Salve” (w001)." } },
-        { "id": "w009", "form": "nostra", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w008", "gloss": { "pl": "nasza", "en": "our" } },
-        { "id": "w010", "form": "salve", "post": ".", "lemma": "salveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "witaj", "en": "hail" } }
+        { "id": "w001", "form": "Salve", "lemma": "salveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w002", "form": "Regína", "post": ",", "lemma": "regina", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w003", "form": "Mater", "lemma": "mater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w004", "form": "misericórdiæ", "post": ",", "lemma": "misericordia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w005", "form": "vita", "post": ",", "lemma": "vita", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w006", "form": "dulcédo", "post": ",", "lemma": "dulcedo", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "spes", "lemma": "spes", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 5 } },
+        { "id": "w009", "form": "nostra", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w008" },
+        { "id": "w010", "form": "salve", "post": ".", "lemma": "salveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } }
       ]
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "Do Ciebie wołamy wygnańcy, synowie Ewy.",
-        "en": "To thee do we cry, poor banished children of Eve."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed pp. 106–107",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 155",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 25–26",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w011", "form": "Ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012", "gloss": { "pl": "do", "en": "to" } },
-        { "id": "w012", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "Ciebie", "en": "thee" } },
-        { "id": "w013", "form": "clamámus", "post": ",", "lemma": "clamo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "wołamy", "en": "we cry" } },
-        { "id": "w014", "form": "éxsules", "lemma": "exsul", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "wygnańcy", "en": "exiles" }, "function": { "pl": "Mianownik w apozycji do domyślnego podmiotu „clamámus” (w013).", "en": "Nominative in apposition to the understood subject of “clamámus” (w013)." } },
-        { "id": "w015", "form": "fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "synowie", "en": "children" } },
-        { "id": "w016", "form": "Evæ", "post": ".", "lemma": "Eva", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Ewy", "en": "of Eve" } }
+        { "id": "w011", "form": "Ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
+        { "id": "w012", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w013", "form": "clamámus", "post": ",", "lemma": "clamo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w014", "form": "éxsules", "lemma": "exsul", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w015", "form": "fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w016", "form": "Evæ", "post": ".", "lemma": "Eva", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } }
       ]
     },
     {
       "id": "s03",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "Do Ciebie wzdychamy, jęcząc i płacząc na tym łez padole.",
-        "en": "To thee do we send up our sighs, mourning and weeping in this valley of tears."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed pp. 106–107",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 155",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 25–26",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w017", "form": "Ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w018", "gloss": { "pl": "do", "en": "to" } },
-        { "id": "w018", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "Ciebie", "en": "thee" } },
-        { "id": "w019", "form": "suspirámus", "lemma": "suspiro", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "wzdychamy", "en": "we sigh" } },
-        { "id": "w020", "form": "geméntes", "lemma": "gemo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w019", "gloss": { "pl": "jęcząc", "en": "groaning" }, "function": { "pl": "Imiesłów w mianowniku liczby mnogiej, zgodny z domyślnym podmiotem „suspirámus” (w019).", "en": "Nominative plural participle agreeing with the understood subject of “suspirámus” (w019)." } },
-        { "id": "w021", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w022", "form": "flentes", "lemma": "fleo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 2 }, "head": "w019", "gloss": { "pl": "płacząc", "en": "weeping" } },
-        { "id": "w023", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024", "gloss": { "pl": "na", "en": "in" } },
-        { "id": "w024", "form": "hac", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "f" }, "gloss": { "pl": "tym", "en": "this" } },
-        { "id": "w025", "form": "lacrymárum", "lemma": "lacryma", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "łez", "en": "of tears" }, "function": { "pl": "Dopełniacz liczby mnogiej zależny od „valle” (w026).", "en": "Genitive plural dependent on “valle” (w026)." } },
-        { "id": "w026", "form": "valle", "post": ".", "lemma": "vallis", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "padole", "en": "valley" } }
+        { "id": "w017", "form": "Ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w018" },
+        { "id": "w018", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w019", "form": "suspirámus", "lemma": "suspiro", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w020", "form": "geméntes", "lemma": "gemo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w019" },
+        { "id": "w021", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w022", "form": "flentes", "lemma": "fleo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 2 }, "head": "w019" },
+        { "id": "w023", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024" },
+        { "id": "w024", "form": "hac", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "f" } },
+        { "id": "w025", "form": "lacrymárum", "lemma": "lacryma", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w026", "form": "valle", "post": ".", "lemma": "vallis", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } }
       ]
     },
     {
       "id": "s04",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "Przeto, Orędowniczko nasza, one miłosierne oczy Twoje na nas zwróć.",
-        "en": "Turn, then, most gracious Advocate, thine eyes of mercy toward us."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed pp. 106–107",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 155",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 25–26",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w027", "form": "Eia", "lemma": "eia", "morph": { "pos": "intj" }, "gloss": { "pl": "nuże", "en": "come then" } },
-        { "id": "w028", "form": "ergo", "post": ",", "lemma": "ergo", "morph": { "pos": "adv" }, "gloss": { "pl": "więc", "en": "therefore" } },
-        { "id": "w029", "form": "Advocáta", "lemma": "advocata", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Orędowniczko", "en": "Advocate" } },
-        { "id": "w030", "form": "nostra", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w029", "gloss": { "pl": "nasza", "en": "our" } },
-        { "id": "w031", "form": "illos", "lemma": "ille", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "m" }, "gloss": { "pl": "one", "en": "those" }, "function": { "pl": "Zaimek wskazujący. Zgadza się z „óculos” (w034).", "en": "Demonstrative agreeing with “óculos” (w034)." } },
-        { "id": "w032", "form": "tuos", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "head": "w034", "gloss": { "pl": "Twoje", "en": "thine" } },
-        { "id": "w033", "form": "misericórdes", "lemma": "misericors", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "head": "w034", "gloss": { "pl": "miłosierne", "en": "merciful" } },
-        { "id": "w034", "form": "óculos", "lemma": "oculus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "oczy", "en": "eyes" } },
-        { "id": "w035", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w036", "gloss": { "pl": "ku", "en": "upon" } },
-        { "id": "w036", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nam", "en": "us" } },
-        { "id": "w037", "form": "convérte", "post": ".", "lemma": "converto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "zwróć", "en": "turn" } }
+        { "id": "w027", "form": "Eia", "lemma": "eia", "morph": { "pos": "intj" } },
+        { "id": "w028", "form": "ergo", "post": ",", "lemma": "ergo", "morph": { "pos": "adv" } },
+        { "id": "w029", "form": "Advocáta", "lemma": "advocata", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w030", "form": "nostra", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w029" },
+        { "id": "w031", "form": "illos", "lemma": "ille", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "m" } },
+        { "id": "w032", "form": "tuos", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "head": "w034" },
+        { "id": "w033", "form": "misericórdes", "lemma": "misericors", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "head": "w034" },
+        { "id": "w034", "form": "óculos", "lemma": "oculus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w035", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w036" },
+        { "id": "w036", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w037", "form": "convérte", "post": ".", "lemma": "converto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } }
       ]
     },
     {
       "id": "s05",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "A Jezusa, błogosławiony owoc żywota Twojego, po tym wygnaniu nam okaż.",
-        "en": "And after this our exile show unto us the blessed fruit of thy womb, Jesus."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed pp. 106–107",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 155",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 25–26",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w038", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
-        { "id": "w039", "form": "Iesum", "post": ",", "lemma": "Iesus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezusa", "en": "Jesus" } },
-        { "id": "w040", "form": "benedíctum", "lemma": "benedictus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w041", "gloss": { "pl": "błogosławiony", "en": "blessed" } },
-        { "id": "w041", "form": "fructum", "lemma": "fructus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "owoc", "en": "fruit" } },
-        { "id": "w042", "form": "ventris", "lemma": "venter", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "żywota", "en": "of the womb" } },
-        { "id": "w043", "form": "tui", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w042", "gloss": { "pl": "Twojego", "en": "thy" } },
-        { "id": "w044", "form": "nobis", "post": ",", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "to us" } },
-        { "id": "w045", "form": "post", "lemma": "post", "morph": { "pos": "prep", "governs": "acc" }, "head": "w046", "gloss": { "pl": "po", "en": "after" } },
-        { "id": "w046", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" }, "gloss": { "pl": "tym", "en": "this" } },
-        { "id": "w047", "form": "exílium", "post": ",", "lemma": "exilium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "wygnaniu", "en": "exile" } },
-        { "id": "w048", "form": "osténde", "post": ".", "lemma": "ostendo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "okaż", "en": "show" }, "function": { "pl": "Tryb rozkazujący skierowany do Maryi. Dopełnieniem jest „Iesum” (w039).", "en": "Imperative addressed to Mary. Its object is “Iesum” (w039)." } }
+        { "id": "w038", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w039", "form": "Iesum", "post": ",", "lemma": "Iesus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w040", "form": "benedíctum", "lemma": "benedictus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w041" },
+        { "id": "w041", "form": "fructum", "lemma": "fructus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w042", "form": "ventris", "lemma": "venter", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w043", "form": "tui", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w042" },
+        { "id": "w044", "form": "nobis", "post": ",", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
+        { "id": "w045", "form": "post", "lemma": "post", "morph": { "pos": "prep", "governs": "acc" }, "head": "w046" },
+        { "id": "w046", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w047", "form": "exílium", "post": ",", "lemma": "exilium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w048", "form": "osténde", "post": ".", "lemma": "ostendo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } }
       ]
     },
     {
       "id": "s06",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "O łaskawa, o litościwa, o słodka Panno Maryjo.",
-        "en": "O clement, O loving, O sweet Virgin Mary."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed pp. 106–107",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 155",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Raccolta (1910)",
-            "locator": "printed p. 167",
-            "url": "https://archive.org/details/theraccoltaorcol00unknuoft"
-          }
-        ]
-      },
       "words": [
-        { "id": "w049", "form": "O", "lemma": "o", "morph": { "pos": "intj" }, "gloss": { "pl": "o", "en": "O" } },
-        { "id": "w050", "form": "clemens", "post": ",", "lemma": "clemens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w055", "gloss": { "pl": "łaskawa", "en": "gracious" } },
-        { "id": "w051", "form": "o", "lemma": "o", "morph": { "pos": "intj" }, "gloss": { "pl": "o", "en": "O" } },
-        { "id": "w052", "form": "pia", "post": ",", "lemma": "pius", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w055", "gloss": { "pl": "litościwa", "en": "loving" } },
-        { "id": "w053", "form": "o", "lemma": "o", "morph": { "pos": "intj" }, "gloss": { "pl": "o", "en": "O" } },
-        { "id": "w054", "form": "dulcis", "lemma": "dulcis", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w055", "gloss": { "pl": "słodka", "en": "sweet" } },
-        { "id": "w055", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Panno", "en": "Virgin" } },
-        { "id": "w056", "form": "María", "post": ".", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryjo", "en": "Mary" } }
+        { "id": "w049", "form": "O", "lemma": "o", "morph": { "pos": "intj" } },
+        { "id": "w050", "form": "clemens", "post": ",", "lemma": "clemens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w055" },
+        { "id": "w051", "form": "o", "lemma": "o", "morph": { "pos": "intj" } },
+        { "id": "w052", "form": "pia", "post": ",", "lemma": "pius", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w055" },
+        { "id": "w053", "form": "o", "lemma": "o", "morph": { "pos": "intj" } },
+        { "id": "w054", "form": "dulcis", "lemma": "dulcis", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w055" },
+        { "id": "w055", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w056", "form": "María", "post": ".", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } }
       ]
     },
     {
       "id": "s07",
       "type": "verse",
-      "translation": {
-        "pl": "Módl się za nami, święta Boża Rodzicielko.",
-        "en": "Pray for us, O holy Mother of God."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 107",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 154",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 25–26",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w057", "form": "Ora", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "módl się", "en": "pray" } },
-        { "id": "w058", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w059", "gloss": { "pl": "za", "en": "for" } },
-        { "id": "w059", "form": "nobis", "post": ",", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "nami", "en": "us" } },
-        { "id": "w060", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w062", "gloss": { "pl": "Święta", "en": "Holy" } },
-        { "id": "w061", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" } },
-        { "id": "w062", "form": "Génetrix", "post": ".", "lemma": "genetrix", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Rodzicielko", "en": "Mother" } }
+        { "id": "w057", "form": "Ora", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w058", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w059" },
+        { "id": "w059", "form": "nobis", "post": ",", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
+        { "id": "w060", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w062" },
+        { "id": "w061", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w062", "form": "Génetrix", "post": ".", "lemma": "genetrix", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } }
       ]
     },
     {
       "id": "s08",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "Abyśmy się stali godnymi obietnic Chrystusowych.",
-        "en": "That we may be made worthy of the promises of Christ."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 107",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          },
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 154",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 25–26",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w063", "form": "Ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "abyśmy", "en": "that" } },
-        { "id": "w064", "form": "digni", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w065", "gloss": { "pl": "godnymi", "en": "worthy" } },
-        { "id": "w065", "form": "efficiámur", "lemma": "efficio", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 3 }, "gloss": { "pl": "się stali", "en": "we may be made" }, "function": { "pl": "Strona bierna: dosłownie, abyśmy zostali uczynieni godnymi.", "en": "Passive: literally, that we may be made worthy." } },
-        { "id": "w066", "form": "promissiónibus", "lemma": "promissio", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "obietnic", "en": "of the promises" }, "function": { "pl": "Ablativus zależny od „digni” (w064).", "en": "Ablative dependent on “digni” (w064)." } },
-        { "id": "w067", "form": "Christi", "post": ".", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "of Christ" } }
+        { "id": "w063", "form": "Ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w064", "form": "digni", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w065" },
+        { "id": "w065", "form": "efficiámur", "lemma": "efficio", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 3 } },
+        { "id": "w066", "form": "promissiónibus", "lemma": "promissio", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w067", "form": "Christi", "post": ".", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     }
   ],
@@ -363,5 +143,47 @@
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
+        "locator": "n. 675, p. 520",
+        "url": "https://archive.org/download/enchiridion_indulgentiarum_1952/enchiridion_indulgentiarum_1952.pdf"
+      }
+    ],
+    "functions": {
+      "w001": {
+
+      },
+      "w004": {
+
+      },
+      "w008": {
+
+      },
+      "w014": {
+
+      },
+      "w020": {
+
+      },
+      "w025": {
+
+      },
+      "w031": {
+
+      },
+      "w048": {
+
+      },
+      "w065": {
+
+      },
+      "w066": {
+
+      }
+    }
   }
 }

@@ -65,25 +65,33 @@ def _sweep(where: str, prose: str) -> list[str]:
 
 
 def check(doc: dict) -> list[str]:
-    """One text, as stored: both gloss layers in one pass.
-
-    The prose rule is language-independent, so the joined document is the right
-    shape to ask it of — the split hands a check one language and this one has
-    no business preferring either.
-    """
+    """One independently stored language layer."""
     errors: list[str] = []
-    tid = doc.get("id", "?")
-    for lang, about in (doc.get("about") or {}).items():
-        errors += _sweep(f"{tid}:about.{lang}", about)
-    for segment in doc.get("segments") or []:
-        sid = segment.get("id", "?")
-        for lang, narrative in (segment.get("narrative") or {}).items():
+    if isinstance(doc.get("segments"), list):
+        # The joined shape remains useful in small unit-test fixtures and for
+        # reading old revisions. Current authored files take the branch below.
+        tid = doc.get("id", "?")
+        for language, about in (doc.get("about") or {}).items():
+            errors += _sweep(f"{tid}:about.{language}", about)
+        for segment in doc.get("segments") or []:
+            segment_id = segment.get("id", "?")
+            for language, narrative in (segment.get("narrative") or {}).items():
+                errors += _sweep(f"{tid}:{segment_id}.narrative.{language}", narrative)
+            for word in segment.get("words") or []:
+                for key in ("function", "note"):
+                    for language, prose in (word.get(key) or {}).items():
+                        errors += _sweep(f"{tid}:{word.get('id', '?')}.{key}.{language}", prose)
+        return errors
+    tid = doc.get("text", "?")
+    lang = doc.get("lang") or doc.get("language") or "?"
+    errors += _sweep(f"{tid}:about.{lang}", doc.get("about", ""))
+    for sid, segment in (doc.get("segments") or {}).items():
+        if narrative := segment.get("narrative"):
             errors += _sweep(f"{tid}:{sid}.narrative.{lang}", narrative)
-        for word in segment.get("words") or []:
-            wid = word.get("id", "?")
-            for key in ("function", "note"):
-                for lang, prose in (word.get(key) or {}).items():
-                    errors += _sweep(f"{tid}:{wid}.{key}.{lang}", prose)
+    for wid, word in (doc.get("words") or {}).items():
+        for key in ("function", "note"):
+            if prose := word.get(key):
+                errors += _sweep(f"{tid}:{wid}.{key}.{lang}", prose)
     return errors
 
 
@@ -92,7 +100,7 @@ def check_lexicon(lex: dict) -> list[str]:
     checks/lexicon.py and are not repeated here — what is added is the
     derivatives, which no sweep had read, and the hedges."""
     errors: list[str] = []
-    lang = lex.get("lang", "?")
+    lang = lex.get("lang") or lex.get("language") or "?"
     for lemma, entry in sorted((lex.get("entries") or {}).items()):
         for derivative in entry.get("derivatives") or []:
             errors += _sweep(f"lexicon:{lang}:{lemma}: derivative {derivative!r}", derivative)

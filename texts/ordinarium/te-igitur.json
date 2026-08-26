@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.te-igitur",
   "title": "Te ígitur",
   "category": "ordinarium",
@@ -9,205 +9,105 @@
   "ids": {
     "next": 67
   },
-  "about": {
-    "pl": "Pierwsza modlitwa Kanonu. Kapłan prosi Ojca przez Jezusa Chrystusa o przyjęcie darów oraz o pokój, opiekę, jedność i kierowanie Kościołem. Mszał zostawia tu miejsce na imię papieża i biskupa miejsca, wymienianych wraz ze wszystkimi strzegącymi wiary katolickiej.",
-    "en": "The first prayer of the Canon. Through Jesus Christ, the priest asks the Father to accept the offerings and to grant the Church peace, protection, unity and governance. The missal leaves a slot here for the reigning Pope and the local bishop, named with all who keep the Catholic faith."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Finita præfatione, sacerdos extendens, elevans aliquantulum et iungens manus, elevansque ad cælum oculos, et statim demittens, profunde inclinatus ante Altare, manibus super eo positis, dicit:",
-      "narrative": {
-        "pl": "Po prefacji kapłan rozkłada ręce, nieco je unosi i składa, wznosi oczy ku niebu i zaraz je opuszcza, po czym pochyla się głęboko przed ołtarzem i opiera na nim ręce.",
-        "en": "After the Preface the priest spreads his hands, raises them slightly and joins them, lifts his eyes to heaven and lowers them at once, then bows low before the altar and rests his hands upon it."
-      }
+      "text": "Finita præfatione, sacerdos extendens, elevans aliquantulum et iungens manus, elevansque ad cælum oculos, et statim demittens, profunde inclinatus ante Altare, manibus super eo positis, dicit:"
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Ciebie więc, najmiłosierniejszy Ojcze, przez Jezusa Chrystusa, Twojego Syna, naszego Pana, pokornie prosimy i błagamy,",
-        "en": "Therefore, most merciful Father, through Jesus Christ, Your Son, our Lord, we humbly pray and beseech You"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Powściągliwość i Praca (1912)",
-            "locator": "no. 1, printed p. 4",
-            "url": "https://jbc.bj.uj.edu.pl/dlibra/publication/969117/edition/929713/powsciagliwosc-i-praca-organ-towarzystwa-r-15-1912-nr-1"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 61–62",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "Ciebie", "en": "Thee" }, "function": { "pl": "Biernik, dopełnienie „rogámus” (w013) i „pétimus” (w015), umieszczone na początku modlitwy.", "en": "Accusative object of “rogámus” (w013) and “pétimus” (w015), placed at the prayer's beginning." } },
-        { "id": "w002", "form": "ígitur", "post": ",", "lemma": "igitur", "morph": { "pos": "conj" }, "gloss": { "pl": "więc", "en": "therefore" }, "function": { "pl": "Łączy tę modlitwę z poprzedzającą liturgią: „więc”.", "en": "Connects this prayer with the preceding liturgy: “therefore”." } },
-        { "id": "w003", "form": "clementíssime", "lemma": "clemens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m", "degree": "sup" }, "head": "w004", "gloss": { "pl": "najłaskawszy", "en": "most merciful" }, "function": { "pl": "Stopień najwyższy w wołaczu, w tym samym przypadku co „Pater” (w004).", "en": "A superlative in the vocative, sharing its case with “Pater” (w004)." } },
-        { "id": "w004", "form": "Pater", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcze", "en": "Father" }, "function": { "pl": "Wołacz. Do Ojca odnoszą się „Te” (w001), „rogámus” (w013) i „pétimus” (w015).", "en": "Vocative. “Te” (w001), “rogámus” (w013) and “pétimus” (w015) are addressed to the Father." } },
-        { "id": "w005", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w006", "gloss": { "pl": "przez", "en": "through" } },
-        { "id": "w006", "form": "Iesum", "lemma": "Iesus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezusa", "en": "Jesus" } },
-        { "id": "w007", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" } },
-        { "id": "w008", "form": "Fílium", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Syna", "en": "Son" }, "function": { "pl": "Apozycja (dopowiedzenie) do „Christum” (w007). Stąd biernik.", "en": "In apposition to “Christum” (w007), and so accusative." } },
-        { "id": "w009", "form": "tuum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w008", "gloss": { "pl": "Twego", "en": "Thy" } },
-        { "id": "w010", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "Lord" } },
-        { "id": "w011", "form": "nostrum", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w010", "gloss": { "pl": "naszego", "en": "our" } },
-        { "id": "w012", "form": "súpplices", "lemma": "supplex", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w013", "gloss": { "pl": "korni", "en": "suppliant" }, "function": { "pl": "Przymiotnik w mianowniku liczby mnogiej odnoszący się do domyślnego „my”: „my, korni”.", "en": "A nominative plural adjective referring to the unstated “we”: “we, the suppliants”." } },
-        { "id": "w013", "form": "rogámus", "post": ",", "lemma": "rogo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "prosimy", "en": "we pray" } },
-        { "id": "w014", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w015", "form": "pétimus", "lemma": "peto", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "błagamy", "en": "we beseech" } }
+        { "id": "w001", "form": "Te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w002", "form": "ígitur", "post": ",", "lemma": "igitur", "morph": { "pos": "conj" } },
+        { "id": "w003", "form": "clementíssime", "lemma": "clemens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m", "degree": "sup" }, "head": "w004" },
+        { "id": "w004", "form": "Pater", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w005", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w006" },
+        { "id": "w006", "form": "Iesum", "lemma": "Iesus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w007", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w008", "form": "Fílium", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w009", "form": "tuum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w008" },
+        { "id": "w010", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w011", "form": "nostrum", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w010" },
+        { "id": "w012", "form": "súpplices", "lemma": "supplex", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w013" },
+        { "id": "w013", "form": "rogámus", "post": ",", "lemma": "rogo", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w014", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
+        { "id": "w015", "form": "pétimus", "lemma": "peto", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } }
       ]
     },
     {
       "id": "s03",
       "type": "rubric",
-      "text": "Osculatur Altare et, iunctis manibus ante pectus, dicit:",
-      "narrative": {
-        "pl": "Kapłan całuje ołtarz i składa ręce przed piersią.",
-        "en": "The priest kisses the altar and joins his hands before his breast."
-      }
+      "text": "Osculatur Altare et, iunctis manibus ante pectus, dicit:"
     },
     {
       "id": "s04",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "abyś przyjął i pobłogosławił",
-        "en": "to accept and bless"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Powściągliwość i Praca (1912)",
-            "locator": "no. 1, printed p. 4",
-            "url": "https://jbc.bj.uj.edu.pl/dlibra/publication/969117/edition/929713/powsciagliwosc-i-praca-organ-towarzystwa-r-15-1912-nr-1"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 61–62",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w016", "form": "uti", "lemma": "uti", "morph": { "pos": "conj" }, "gloss": { "pl": "abyś", "en": "that" }, "function": { "pl": "Starsza postać ut. Nie bezokolicznik od utor (używać), choć pisze się tak samo.", "en": "An older form of ut. Not the infinitive of utor (to use), though it is spelt the same." } },
-        { "id": "w017", "form": "accépta", "lemma": "acceptus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w022", "gloss": { "pl": "za przyjęte", "en": "as accepted" }, "function": { "pl": "W zwrocie „accépta habére”: „uznać za przyjęte”. Zgadza się z „dona” (w022), „múnera” (w024) i „sacrifícia” (w027).", "en": "In the phrase “accépta habére”: “to regard as accepted”. It agrees with “dona” (w022), “múnera” (w024) and “sacrifícia” (w027)." } },
-        { "id": "w018", "form": "hábeas", "lemma": "habeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 }, "gloss": { "pl": "miał", "en": "hold" } },
-        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w020", "form": "benedícas", "post": ",", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "pobłogosławił", "en": "bless" } }
+        { "id": "w016", "form": "uti", "lemma": "uti", "morph": { "pos": "conj" } },
+        { "id": "w017", "form": "accépta", "lemma": "acceptus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w022" },
+        { "id": "w018", "form": "hábeas", "lemma": "habeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 } },
+        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w020", "form": "benedícas", "post": ",", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } }
       ]
     },
     {
       "id": "s05",
       "type": "rubric",
-      "text": "Signat ter super Hostiam et Calicem simul, dicens:",
-      "narrative": {
-        "pl": "Kapłan czyni trzy znaki krzyża nad Hostią i kielichem jednocześnie.",
-        "en": "The priest makes three signs of the cross over the Host and the chalice together."
-      }
+      "text": "Signat ter super Hostiam et Calicem simul, dicens:"
     },
     {
       "id": "s06",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "te dary, te daniny, te święte i nieskalane ofiary,",
-        "en": "these gifts, these offerings, these holy and undefiled sacrifices,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Powściągliwość i Praca (1912)",
-            "locator": "no. 1, printed p. 4",
-            "url": "https://jbc.bj.uj.edu.pl/dlibra/publication/969117/edition/929713/powsciagliwosc-i-praca-organ-towarzystwa-r-15-1912-nr-1"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 61–62",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w021", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" }, "gloss": { "pl": "te", "en": "these" }, "function": { "pl": "Pierwsze z trzech „hæc”, przy których kapłan czyni znaki krzyża nad Hostią i kielichem.", "en": "The first of three occurrences of “hæc” at which the priest signs the cross over the Host and chalice." } },
-        { "id": "w022", "form": "dona", "post": ",", "lemma": "donum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "dary", "en": "gifts" } },
-        { "id": "w023", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" }, "gloss": { "pl": "te", "en": "these" } },
-        { "id": "w024", "form": "múnera", "post": ",", "lemma": "munus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 }, "gloss": { "pl": "daniny", "en": "dues" } },
-        { "id": "w025", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" }, "gloss": { "pl": "te", "en": "these" } },
-        { "id": "w026", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w027", "gloss": { "pl": "święte", "en": "holy" } },
-        { "id": "w027", "form": "sacrifícia", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "ofiary", "en": "sacrifices" } },
-        { "id": "w028", "form": "illibáta", "post": ",", "lemma": "illibatus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w027", "gloss": { "pl": "nieskalane", "en": "unblemished" }, "function": { "pl": "Zgadza się z „sacrifícia” (w027): „nieskalane”.", "en": "Agrees with “sacrifícia” (w027): “unblemished”." } }
+        { "id": "w021", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w022", "form": "dona", "post": ",", "lemma": "donum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w023", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w024", "form": "múnera", "post": ",", "lemma": "munus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 } },
+        { "id": "w025", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w026", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w027" },
+        { "id": "w027", "form": "sacrifícia", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w028", "form": "illibáta", "post": ",", "lemma": "illibatus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w027" }
       ]
     },
     {
       "id": "s07",
       "type": "rubric",
-      "text": "Extensis manibus prosequitur:",
-      "narrative": {
-        "pl": "Kapłan rozkłada ręce i mówi dalej.",
-        "en": "The priest spreads his hands and goes on."
-      }
+      "text": "Extensis manibus prosequitur:"
     },
     {
       "id": "s08",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "które ofiarujemy Ci najpierw za Twój święty Kościół katolicki; racz obdarzyć go pokojem, strzec go, jednoczyć i nim rządzić na całym świecie,",
-        "en": "We offer them to You above all for Your holy Catholic Church. Graciously grant her peace, preserve her, unite her, and govern her throughout the world,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Powściągliwość i Praca (1912)",
-            "locator": "no. 1, printed p. 4",
-            "url": "https://jbc.bj.uj.edu.pl/dlibra/publication/969117/edition/929713/powsciagliwosc-i-praca-organ-towarzystwa-r-15-1912-nr-1"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 61–62",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w029", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w030", "gloss": { "pl": "przede", "en": "first" } },
-        { "id": "w030", "form": "primis", "post": ",", "lemma": "primus", "morph": { "pos": "adj", "case": "abl", "number": "pl" }, "substantive": true, "gloss": { "pl": "wszystkim", "en": "of all" }, "function": { "pl": "In primis to utrwalony zwrot przysłówkowy: „przede wszystkim”. Dlatego nie przypisano tu rodzaju.", "en": "In primis is a fixed adverbial phrase meaning “first of all”. No gender is therefore assigned here." } },
-        { "id": "w031", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" }, "gloss": { "pl": "które", "en": "which" }, "function": { "pl": "Zaimek względny w bierniku liczby mnogiej rodzaju nijakiego. Odnosi się do „dona” (w022), „múnera” (w024) i „sacrifícia” (w027).", "en": "An accusative neuter plural relative referring to “dona” (w022), “múnera” (w024) and “sacrifícia” (w027)." } },
-        { "id": "w032", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Ci", "en": "Thee" } },
-        { "id": "w033", "form": "offérimus", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "składamy", "en": "we offer" } },
-        { "id": "w034", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w035", "gloss": { "pl": "za", "en": "for" } },
-        { "id": "w035", "form": "Ecclésia", "lemma": "ecclesia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Kościół", "en": "Church" } },
-        { "id": "w036", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w035", "gloss": { "pl": "Twój", "en": "Thy" } },
-        { "id": "w037", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w035", "gloss": { "pl": "święty", "en": "holy" } },
-        { "id": "w038", "form": "cathólica", "post": ":", "lemma": "catholicus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w035", "gloss": { "pl": "katolicki", "en": "catholic" } },
-        { "id": "w039", "form": "quam", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" }, "gloss": { "pl": "który", "en": "whom" }, "function": { "pl": "Biernik liczby pojedynczej rodzaju żeńskiego, odnoszący się do „Ecclésia” (w035). Jest dopełnieniem czterech następujących bezokoliczników.", "en": "Feminine accusative singular, referring to “Ecclésia” (w035). It is the object of the following four infinitives." } },
-        { "id": "w040", "form": "pacificáre", "post": ",", "lemma": "pacifico", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 }, "gloss": { "pl": "obdarzyć pokojem", "en": "to give peace to" } },
-        { "id": "w041", "form": "custodíre", "post": ",", "lemma": "custodio", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 4 }, "gloss": { "pl": "strzec", "en": "to guard" } },
-        { "id": "w042", "form": "adunáre", "lemma": "aduno", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 }, "gloss": { "pl": "jednoczyć", "en": "to unite" } },
-        { "id": "w043", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w044", "form": "régere", "lemma": "rego", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 }, "gloss": { "pl": "rządzić", "en": "to govern" } },
-        { "id": "w045", "form": "dignéris", "lemma": "dignor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 1 }, "gloss": { "pl": "racz", "en": "deign" }, "function": { "pl": "„Dignéris” rządzi czterema poprzedzającymi je bezokolicznikami.", "en": "“Dignéris” governs the four infinitives that precede it." } },
-        { "id": "w046", "form": "toto", "lemma": "totus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w047", "gloss": { "pl": "po całym", "en": "throughout the whole" }, "function": { "pl": "Zgadza się z „orbe” (w047). Wyrażenie „toto orbe terrárum” określa miejsce bez przyimka „in”.", "en": "It agrees with “orbe” (w047). The phrase “toto orbe terrárum” expresses place without the preposition in." } },
-        { "id": "w047", "form": "orbe", "lemma": "orbis", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "okręgu", "en": "circle" } },
-        { "id": "w048", "form": "terrárum", "post": ":", "lemma": "terra", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "ziemi", "en": "of the lands" }, "function": { "pl": "Dopełniacz liczby mnogiej zależny od „orbe” (w047). Całe wyrażenie oznacza cały świat.", "en": "A genitive plural depending on “orbe” (w047). The whole phrase means the whole world." } }
+        { "id": "w029", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w030" },
+        { "id": "w030", "form": "primis", "post": ",", "lemma": "primus", "morph": { "pos": "adj", "case": "abl", "number": "pl" }, "substantive": true },
+        { "id": "w031", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
+        { "id": "w032", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w033", "form": "offérimus", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w034", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w035" },
+        { "id": "w035", "form": "Ecclésia", "lemma": "ecclesia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w036", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w035" },
+        { "id": "w037", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w035" },
+        { "id": "w038", "form": "cathólica", "post": ":", "lemma": "catholicus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w035" },
+        { "id": "w039", "form": "quam", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w040", "form": "pacificáre", "post": ",", "lemma": "pacifico", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 } },
+        { "id": "w041", "form": "custodíre", "post": ",", "lemma": "custodio", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 4 } },
+        { "id": "w042", "form": "adunáre", "lemma": "aduno", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 } },
+        { "id": "w043", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w044", "form": "régere", "lemma": "rego", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 } },
+        { "id": "w045", "form": "dignéris", "lemma": "dignor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 1 } },
+        { "id": "w046", "form": "toto", "lemma": "totus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w047" },
+        { "id": "w047", "form": "orbe", "lemma": "orbis", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w048", "form": "terrárum", "post": ":", "lemma": "terra", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 } }
       ]
     },
     {
@@ -215,45 +115,25 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "wraz ze sługą Twoim, naszym papieżem, i naszym biskupem, oraz ze wszystkimi prawowiernymi wyznawcami wiary katolickiej i apostolskiej.",
-        "en": "with Your servant, our Pope, our Bishop, and all who uphold the true Catholic and Apostolic faith."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Powściągliwość i Praca (1912)",
-            "locator": "no. 1, printed p. 4",
-            "url": "https://jbc.bj.uj.edu.pl/dlibra/publication/969117/edition/929713/powsciagliwosc-i-praca-organ-towarzystwa-r-15-1912-nr-1"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 61–62",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w049", "form": "una", "lemma": "una", "morph": { "pos": "adv" }, "gloss": { "pl": "wraz", "en": "together" }, "function": { "pl": "Przysłówek w wyrażeniu „una cum”: „razem z”.", "en": "An adverb in the phrase “una cum”: together with." } },
-        { "id": "w050", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w051", "gloss": { "pl": "ze", "en": "with" } },
-        { "id": "w051", "form": "fámulo", "lemma": "famulus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "sługą", "en": "servant" } },
-        { "id": "w052", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w051", "gloss": { "pl": "Twoim", "en": "Thy" } },
-        { "id": "w053", "form": "Papa", "lemma": "papa", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 1 }, "gloss": { "pl": "papieżem", "en": "Pope" } },
-        { "id": "w054", "form": "nostro", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w053", "gloss": { "pl": "naszym", "en": "our" } },
-        { "id": "w055", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w056", "form": "Antístite", "lemma": "antistes", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "biskupem", "en": "Bishop" }, "function": { "pl": "Ablativus po „cum” (w050). Tutaj jest tytułem miejscowego biskupa.", "en": "An ablative after “cum” (w050). Here it is a title for the local bishop." } },
-        { "id": "w057", "form": "nostro", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w056", "gloss": { "pl": "naszym", "en": "our" }, "function": { "pl": "Zgadza się z „Antístite” (w056). Mszał przewiduje w tym miejscu imię miejscowego biskupa.", "en": "It agrees with “Antístite” (w056). The missal provides for the local bishop's name here." } },
-        { "id": "w058", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w059", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w060", "gloss": { "pl": "wszystkimi", "en": "all" } },
-        { "id": "w060", "form": "orthodóxis", "post": ",", "lemma": "orthodoxus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "prawowiernymi", "en": "the orthodox" }, "function": { "pl": "Z „ómnibus” (w059) tworzy wyrażenie w ablativie liczby mnogiej: „ze wszystkimi prawowiernymi”.", "en": "With “ómnibus” (w059), it forms an ablative plural phrase: with all the orthodox." } },
-        { "id": "w061", "form": "atque", "lemma": "atque", "morph": { "pos": "conj" }, "gloss": { "pl": "oraz", "en": "and" }, "function": { "pl": "Łączy „orthodóxis” (w060) z „cultóribus” (w066).", "en": "It joins “orthodóxis” (w060) to “cultóribus” (w066)." } },
-        { "id": "w062", "form": "cathólicæ", "lemma": "catholicus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w065", "gloss": { "pl": "katolickiej", "en": "catholic" }, "function": { "pl": "Dopełniacz liczby pojedynczej zgadzający się z „fídei” (w065).", "en": "A genitive singular agreeing with “fídei” (w065)." } },
-        { "id": "w063", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w064", "form": "apostólicæ", "lemma": "apostolicus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w065", "gloss": { "pl": "apostolskiej", "en": "apostolic" } },
-        { "id": "w065", "form": "fídei", "lemma": "fides", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 5 }, "gloss": { "pl": "wiary", "en": "faith" } },
-        { "id": "w066", "form": "cultóribus", "post": ".", "lemma": "cultor", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "wyznawcami", "en": "worshipers" }, "function": { "pl": "Ablativus liczby mnogiej po „una” (w049) i „cum” (w050). Z „fídei” (w065): „wyznawcy wiary”.", "en": "An ablative plural after “una” (w049) and “cum” (w050). With “fídei” (w065): those who profess the faith." } }
+        { "id": "w049", "form": "una", "lemma": "una", "morph": { "pos": "adv" } },
+        { "id": "w050", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w051" },
+        { "id": "w051", "form": "fámulo", "lemma": "famulus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w052", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w051" },
+        { "id": "w053", "form": "Papa", "lemma": "papa", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 1 } },
+        { "id": "w054", "form": "nostro", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w053" },
+        { "id": "w055", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w056", "form": "Antístite", "lemma": "antistes", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w057", "form": "nostro", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w056" },
+        { "id": "w058", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w059", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w060" },
+        { "id": "w060", "form": "orthodóxis", "post": ",", "lemma": "orthodoxus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w061", "form": "atque", "lemma": "atque", "morph": { "pos": "conj" } },
+        { "id": "w062", "form": "cathólicæ", "lemma": "catholicus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w065" },
+        { "id": "w063", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w064", "form": "apostólicæ", "lemma": "apostolicus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w065" },
+        { "id": "w065", "form": "fídei", "lemma": "fides", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 5 } },
+        { "id": "w066", "form": "cultóribus", "post": ".", "lemma": "cultor", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 } }
       ]
     }
   ],
@@ -276,6 +156,80 @@
     "words": {
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w001": {
+
+      },
+      "w002": {
+
+      },
+      "w003": {
+
+      },
+      "w004": {
+
+      },
+      "w008": {
+
+      },
+      "w012": {
+
+      },
+      "w016": {
+
+      },
+      "w017": {
+
+      },
+      "w021": {
+
+      },
+      "w028": {
+
+      },
+      "w030": {
+
+      },
+      "w031": {
+
+      },
+      "w039": {
+
+      },
+      "w045": {
+
+      },
+      "w046": {
+
+      },
+      "w048": {
+
+      },
+      "w049": {
+
+      },
+      "w056": {
+
+      },
+      "w057": {
+
+      },
+      "w060": {
+
+      },
+      "w061": {
+
+      },
+      "w062": {
+
+      },
+      "w066": {
+
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.suscipe-sancte-pater",
   "title": "Súscipe, sancte Pater",
   "category": "ordinarium",
@@ -9,109 +9,71 @@
   "ids": {
     "next": 54
   },
-  "about": {
-    "pl": "Kapłan ofiaruje Bogu Ojcu hostię za własne grzechy, przewinienia i zaniedbania, za wszystkich obecnych oraz za wszystkich wiernych chrześcijan, żywych i umarłych. Prosi, aby ofiara posłużyła jemu i im ku zbawieniu na życie wieczne.",
-    "en": "The priest offers the host to God the Father for his own sins, offenses, and negligences, for all who are present, and for all faithful Christians, living and dead. He asks that the offering may avail both him and them unto salvation and eternal life."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Quo dicto, si est Missa sollemnis, Diaconus porrigit Celebranti Patenam cum Hostia: si privata, Sacerdos ipse accipit Patenam cum Hostia, quam offerens, dicit:",
-      "narrative": {
-        "pl": "We Mszy uroczystej diakon podaje kapłanowi patenę z Hostią. We Mszy cichej kapłan bierze ją sam i ofiaruje, odmawiając modlitwę.",
-        "en": "At solemn Mass the deacon hands the celebrant the paten with the Host. At low Mass the priest takes it himself and offers it while saying the prayer."
-      }
+      "text": "Quo dicto, si est Missa sollemnis, Diaconus porrigit Celebranti Patenam cum Hostia: si privata, Sacerdos ipse accipit Patenam cum Hostia, quam offerens, dicit:"
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Przyjmij, Ojcze święty, wszechmogący wieczny Boże, tę nieskalaną ofiarę, którą ja, Twój niegodny sługa, składam Tobie, mojemu Bogu żywemu i prawdziwemu, za moje niezliczone grzechy, przewinienia i zaniedbania, za wszystkich tu obecnych, a także za wszystkich wiernych chrześcijan, żywych i zmarłych, aby mnie i im przyniosła zbawienie prowadzące do życia wiecznego. Amen.",
-        "en": "Holy Father, almighty and eternal God, receive this unblemished sacrificial offering, which I, Your unworthy servant, offer to You, my living and true God, for my countless sins, offenses, and omissions, for all those present, and also for all the Christian faithful, living and departed, so that it may bring me and them salvation leading to eternal life. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 51",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 10",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 46",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 471",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Súscipe", "post": ",", "lemma": "suscipio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "przyjmij", "en": "receive" }, "function": { "pl": "Tryb rozkazujący. Dopełnieniem jest „hóstiam” (w009).", "en": "An imperative. Its object is “hóstiam” (w009)." } },
-        { "id": "w002", "form": "sancte", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w003", "gloss": { "pl": "święty", "en": "holy" }, "function": { "pl": "Zgadza się z „Pater” (w003).", "en": "Agrees with “Pater” (w003)." } },
-        { "id": "w003", "form": "Pater", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcze", "en": "Father" } },
-        { "id": "w004", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w003", "gloss": { "pl": "wszechmogący", "en": "almighty" }, "function": { "pl": "Wołacz przymiotnika III deklinacji brzmi tak samo jak mianownik. Rozstrzyga o tym zwrot do Ojca.", "en": "The vocative of a 3rd declension adjective is identical with the nominative. The address to the Father settles it." } },
-        { "id": "w005", "form": "ætérne", "lemma": "aeternus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w006", "gloss": { "pl": "wieczny", "en": "eternal" } },
-        { "id": "w006", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boże", "en": "God" }, "function": { "pl": "„Pater” (w003) i „Deus” są w wołaczu wraz z określającymi je przymiotnikami.", "en": "“Pater” (w003) and “Deus” are vocative together with their modifying adjectives." } },
-        { "id": "w007", "form": "hanc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" }, "gloss": { "pl": "tę", "en": "this" }, "function": { "pl": "Zgadza się z „hóstiam” (w009) i wskazuje na Hostię na patenie.", "en": "It agrees with “hóstiam” (w009) and points to the Host on the paten." } },
-        { "id": "w008", "form": "immaculátam", "lemma": "immaculatus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w009", "gloss": { "pl": "niepokalaną", "en": "spotless" } },
-        { "id": "w009", "form": "hóstiam", "post": ",", "lemma": "hostia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "hostię", "en": "host" }, "function": { "pl": "Dopełnienie „Súscipe” (w001).", "en": "The object of “Súscipe” (w001)." } },
-        { "id": "w010", "form": "quam", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" }, "gloss": { "pl": "którą", "en": "which" }, "function": { "pl": "Zaimek względny w bierniku, bo jest dopełnieniem „óffero” (w015). Rodzaj i liczbę bierze od „hóstiam” (w009).", "en": "A relative in the accusative because it is the object of “óffero” (w015). It takes gender and number from “hóstiam” (w009)." } },
-        { "id": "w011", "form": "ego", "lemma": "ego", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "ja", "en": "I" }, "function": { "pl": "Wyrażony zaimek podmiotu, określony przez „indígnus” (w012) i „fámulus” (w013).", "en": "An expressed subject pronoun, modified by “indígnus” (w012) and “fámulus” (w013)." } },
-        { "id": "w012", "form": "indígnus", "lemma": "indignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w013", "gloss": { "pl": "niegodny", "en": "unworthy" } },
-        { "id": "w013", "form": "fámulus", "lemma": "famulus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "sługa", "en": "servant" }, "function": { "pl": "Apozycja (dopowiedzenie) do „ego” (w011): ja — sługa twój.", "en": "Apposition to “ego” (w011): I, thy servant." } },
-        { "id": "w014", "form": "tuus", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w013", "gloss": { "pl": "Twój", "en": "Thy" } },
-        { "id": "w015", "form": "óffero", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "składam", "en": "offer" }, "function": { "pl": "Orzeczenie zdania względnego rozpoczynającego się od „quam” (w010).", "en": "The verb of the relative clause beginning with “quam” (w010)." } },
-        { "id": "w016", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Tobie", "en": "to Thee" } },
-        { "id": "w017", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bogu", "en": "God" }, "function": { "pl": "Apozycja (dopowiedzenie) do „tibi” (w016), stąd celownik.", "en": "Apposition to “tibi” (w016), hence the dative." } },
-        { "id": "w018", "form": "meo", "lemma": "meus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w017", "gloss": { "pl": "memu", "en": "my" } },
-        { "id": "w019", "form": "vivo", "lemma": "vivus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w017", "gloss": { "pl": "żywemu", "en": "living" }, "function": { "pl": "Zgadza się z „Deo” (w017).", "en": "Agrees with “Deo” (w017)." } },
-        { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w021", "form": "vero", "post": ",", "lemma": "verus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w017", "gloss": { "pl": "prawdziwemu", "en": "true" }, "function": { "pl": "Zwrot „Deo vivo et vero” występuje także w 1 Tes 1, 9.", "en": "The phrase “Deo vivo et vero” also occurs in 1 Thessalonians 1:9." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "1 Thessalonians 1:9" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "1 Thessalonians 1:9" }] } },
-        { "id": "w022", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024", "gloss": { "pl": "za", "en": "for" } },
-        { "id": "w023", "form": "innumerabílibus", "lemma": "innumerabilis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w024", "gloss": { "pl": "niezliczone", "en": "innumerable" }, "function": { "pl": "Zgadza się z „peccátis” (w024).", "en": "Agrees with “peccátis” (w024)." } },
-        { "id": "w024", "form": "peccátis", "post": ",", "lemma": "peccatum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "grzechy", "en": "sins" }, "function": { "pl": "Forma jest zarazem celownikiem i ablativem. Rozstrzyga przyimek „pro” (w022), który rządzi ablativem.", "en": "The form is dative as well as ablative. The preposition “pro” (w022), which governs the ablative, decides." } },
-        { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w026", "form": "offensiónibus", "post": ",", "lemma": "offensio", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "zniewagi", "en": "offenses" } },
-        { "id": "w027", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w028", "form": "negligéntiis", "lemma": "negligentia", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "zaniedbania", "en": "negligences" }, "function": { "pl": "Oznacza to, co zaniedbano lub czego zaniechano.", "en": "It denotes what was neglected or left undone." } },
-        { "id": "w029", "form": "meis", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "pl" }, "head": "w028", "gloss": { "pl": "moje", "en": "my" }, "function": { "pl": "Ablativus liczby mnogiej, w tym samym przypadku co wszystkie trzy poprzednie rzeczowniki.", "en": "Ablative plural, sharing its case with all three preceding nouns." } },
-        { "id": "w030", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w031", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w033", "gloss": { "pl": "za", "en": "for" } },
-        { "id": "w032", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w033", "gloss": { "pl": "wszystkich", "en": "all" }, "function": { "pl": "Zgadza się z „circumstántibus” (w033).", "en": "Agrees with “circumstántibus” (w033)." } },
-        { "id": "w033", "form": "circumstántibus", "post": ",", "lemma": "circumsto", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 1 }, "substantive": true, "gloss": { "pl": "obecnych", "en": "here present" }, "function": { "pl": "Imiesłów użyty rzeczownikowo: „stojący wokół”, czyli obecni.", "en": "A participle used as a noun: “those standing around”, meaning those present." } },
-        { "id": "w034", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "lecz", "en": "but" } },
-        { "id": "w035", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "także", "en": "also" }, "function": { "pl": "W zwrocie „sed et” rozszerza wyliczenie: „a także”.", "en": "In the phrase “sed et”, it expands the list: “and also”." } },
-        { "id": "w036", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w038", "gloss": { "pl": "za", "en": "for" } },
-        { "id": "w037", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w038", "gloss": { "pl": "wszystkich", "en": "all" } },
-        { "id": "w038", "form": "fidélibus", "lemma": "fidelis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "wiernych", "en": "faithful" } },
-        { "id": "w039", "form": "christiánis", "lemma": "christianus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w038", "gloss": { "pl": "chrześcijan", "en": "Christians" }, "function": { "pl": "Oba przymiotniki są tu użyte rzeczownikowo: wierni chrześcijanie.", "en": "Both adjectives stand as nouns here: the faithful Christian people." } },
-        { "id": "w040", "form": "vivis", "lemma": "vivus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w038", "gloss": { "pl": "żywych", "en": "living" } },
-        { "id": "w041", "form": "atque", "lemma": "atque", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w042", "form": "defúnctis", "post": ":", "lemma": "defunctus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w038", "gloss": { "pl": "umarłych", "en": "dead" }, "function": { "pl": "Imiesłów użyty rzeczownikowo: „zmarli”.", "en": "A participle used as a noun: “the deceased”." } },
-        { "id": "w043", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "aby", "en": "that" } },
-        { "id": "w044", "form": "mihi", "post": ",", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" }, "function": { "pl": "Celownik korzyści przy „profíciat” (w047): komu ma to wyjść na pożytek.", "en": "Dative of advantage with “profíciat” (w047): to whom it is to be of profit." } },
-        { "id": "w045", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w046", "form": "illis", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "gloss": { "pl": "im", "en": "them" }, "function": { "pl": "Celownik liczby mnogiej przy „profíciat” (w047), równoległy do „mihi” (w044).", "en": "Dative plural with “profíciat” (w047), parallel to “mihi” (w044)." } },
-        { "id": "w047", "form": "profíciat", "lemma": "proficio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "posłużyła", "en": "may profit" }, "function": { "pl": "Tryb łączący po „ut” (w043). Podmiotem jest ofiara nazwana wcześniej „hóstiam” (w009).", "en": "Subjunctive after “ut” (w043). Its subject is the offering previously named “hóstiam” (w009)." } },
-        { "id": "w048", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w049", "gloss": { "pl": "ku", "en": "unto" } },
-        { "id": "w049", "form": "salútem", "lemma": "salus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "zbawieniu", "en": "salvation" } },
-        { "id": "w050", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w051", "gloss": { "pl": "ku", "en": "unto" } },
-        { "id": "w051", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "życiu", "en": "life" } },
-        { "id": "w052", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w051", "gloss": { "pl": "wiecznemu", "en": "everlasting" }, "function": { "pl": "Zgadza się z „vitam” (w051).", "en": "Agrees with “vitam” (w051)." } },
-        { "id": "w053", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w001", "form": "Súscipe", "post": ",", "lemma": "suscipio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w002", "form": "sancte", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w003" },
+        { "id": "w003", "form": "Pater", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w004", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w003" },
+        { "id": "w005", "form": "ætérne", "lemma": "aeternus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w006" },
+        { "id": "w006", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w007", "form": "hanc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w008", "form": "immaculátam", "lemma": "immaculatus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w009" },
+        { "id": "w009", "form": "hóstiam", "post": ",", "lemma": "hostia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w010", "form": "quam", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w011", "form": "ego", "lemma": "ego", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w012", "form": "indígnus", "lemma": "indignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w013" },
+        { "id": "w013", "form": "fámulus", "lemma": "famulus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w014", "form": "tuus", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w013" },
+        { "id": "w015", "form": "óffero", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w016", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w017", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w018", "form": "meo", "lemma": "meus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w017" },
+        { "id": "w019", "form": "vivo", "lemma": "vivus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w017" },
+        { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w021", "form": "vero", "post": ",", "lemma": "verus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w017" },
+        { "id": "w022", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024" },
+        { "id": "w023", "form": "innumerabílibus", "lemma": "innumerabilis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w024" },
+        { "id": "w024", "form": "peccátis", "post": ",", "lemma": "peccatum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w026", "form": "offensiónibus", "post": ",", "lemma": "offensio", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w027", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w028", "form": "negligéntiis", "lemma": "negligentia", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w029", "form": "meis", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "pl" }, "head": "w028" },
+        { "id": "w030", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w031", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w033" },
+        { "id": "w032", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w033" },
+        { "id": "w033", "form": "circumstántibus", "post": ",", "lemma": "circumsto", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 1 }, "substantive": true },
+        { "id": "w034", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
+        { "id": "w035", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w036", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w038" },
+        { "id": "w037", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w038" },
+        { "id": "w038", "form": "fidélibus", "lemma": "fidelis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w039", "form": "christiánis", "lemma": "christianus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w038" },
+        { "id": "w040", "form": "vivis", "lemma": "vivus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w038" },
+        { "id": "w041", "form": "atque", "lemma": "atque", "morph": { "pos": "conj" } },
+        { "id": "w042", "form": "defúnctis", "post": ":", "lemma": "defunctus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w038" },
+        { "id": "w043", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w044", "form": "mihi", "post": ",", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w045", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w046", "form": "illis", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" } },
+        { "id": "w047", "form": "profíciat", "lemma": "proficio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w048", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w049" },
+        { "id": "w049", "form": "salútem", "lemma": "salus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w050", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w051" },
+        { "id": "w051", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w052", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w051" },
+        { "id": "w053", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -132,6 +94,94 @@
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w001": {
+
+      },
+      "w002": {
+
+      },
+      "w004": {
+
+      },
+      "w006": {
+
+      },
+      "w007": {
+
+      },
+      "w009": {
+
+      },
+      "w010": {
+
+      },
+      "w011": {
+
+      },
+      "w013": {
+
+      },
+      "w015": {
+
+      },
+      "w017": {
+
+      },
+      "w019": {
+
+      },
+      "w021": {
+        "citations": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "1 Thessalonians 1:9"
+          }
+        ]
+      },
+      "w023": {
+
+      },
+      "w024": {
+
+      },
+      "w028": {
+
+      },
+      "w029": {
+
+      },
+      "w032": {
+
+      },
+      "w033": {
+
+      },
+      "w035": {
+
+      },
+      "w039": {
+
+      },
+      "w042": {
+
+      },
+      "w044": {
+
+      },
+      "w046": {
+
+      },
+      "w047": {
+
+      },
+      "w052": {
+
+      }
     }
   }
 }

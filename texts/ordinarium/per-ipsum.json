@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.per-ipsum",
   "title": "Per ipsum",
   "category": "ordinarium",
@@ -9,258 +9,82 @@
   "ids": {
     "next": 27
   },
-  "about": {
-    "pl": "Ta doksologia zamyka Kanon. Kapłan czyni Hostią trzy znaki krzyża nad kielichem, a następnie dwa między sobą a kielichem. Przy omnis honor et glória nieco unosi kielich wraz z Hostią. Końcowe Per ómnia sǽcula sæculórum wypowiada głosem słyszalnym, a lud odpowiada Amen.",
-    "en": "This doxology closes the Canon. The priest makes three signs of the cross with the Host over the chalice, then two between himself and the chalice. At omnis honor et glória he slightly raises the chalice with the Host. He says the closing Per ómnia sǽcula sæculórum audibly, and the people answer Amen."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Ordo Missae, conclusion of the Canon",
-        "url": "https://archive.org/details/missale_romanum-1962"
-      }
-    ],
-    "en": [
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Ordo Missae, conclusion of the Canon",
-        "url": "https://archive.org/details/missale_romanum-1962"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Discooperit Calicem, genuflectit, accipit Hostiam inter pollicem et indicem manus dexteræ: et tenens sinistra Calicem, cum Hostia signat ter a labio ad labium Calicis, dicens:",
-      "narrative": {
-        "pl": "Kapłan odsłania kielich, przyklęka, bierze Hostię w prawą rękę, a kielich w lewą, po czym czyni Hostią trzy znaki krzyża od brzegu do brzegu kielicha.",
-        "en": "The priest uncovers the chalice, genuflects, takes the Host in his right hand and the chalice in his left, and makes three signs of the cross with the Host from rim to rim of the chalice."
-      }
+      "text": "Discooperit Calicem, genuflectit, accipit Hostiam inter pollicem et indicem manus dexteræ: et tenens sinistra Calicem, cum Hostia signat ter a labio ad labium Calicis, dicens:"
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Przez Niego i z Nim, i w Nim,",
-        "en": "Through Him, and with Him, and in Him,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 61",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed p. 71",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 28",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 70",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 93–94",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w002", "gloss": { "pl": "przez", "en": "through" } },
-        { "id": "w002", "form": "ipsum", "post": ",", "lemma": "ipse", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Niego", "en": "Him" }, "function": { "pl": "Ipsum odnosi się do Chrystusa wymienionego w poprzedniej modlitwie.", "en": "Ipsum refers to Christ, named in the preceding prayer." } },
-        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005", "gloss": { "pl": "z", "en": "with" } },
-        { "id": "w005", "form": "ipso", "post": ",", "lemma": "ipse", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" }, "gloss": { "pl": "Nim", "en": "Him" } },
-        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w007", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w008", "form": "ipso", "post": ",", "lemma": "ipse", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" }, "gloss": { "pl": "Nim", "en": "Him" } }
+        { "id": "w001", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w002" },
+        { "id": "w002", "form": "ipsum", "post": ",", "lemma": "ipse", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
+        { "id": "w005", "form": "ipso", "post": ",", "lemma": "ipse", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" } },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008" },
+        { "id": "w008", "form": "ipso", "post": ",", "lemma": "ipse", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" } }
       ]
     },
     {
       "id": "s03",
       "type": "rubric",
-      "text": "Cum ipsa Hostia signat bis inter se et Calicem, dicens:",
-      "narrative": {
-        "pl": "Hostią kapłan czyni dwa znaki krzyża między sobą a kielichem.",
-        "en": "With the Host the priest makes two signs of the cross between himself and the chalice."
-      }
+      "text": "Cum ipsa Hostia signat bis inter se et Calicem, dicens:"
     },
     {
       "id": "s04",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "należy się Tobie, Bogu Ojcu wszechmogącemu, w jedności Ducha Świętego,",
-        "en": "belong to You, God the almighty Father, in the unity of the Holy Spirit,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 61",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed p. 71",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 28",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 70",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 93–94",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w009", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jest", "en": "is" }, "function": { "pl": "Jedyne orzeczenie w zdaniu, umieszczone przed podmiotami honor i glória.", "en": "The sentence's only verb, placed before its subjects honor and glória." } },
-        { "id": "w010", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Tobie", "en": "to Thee" }, "function": { "pl": "Celownik posiadacza przy est: Tobie należy się cześć i chwała.", "en": "Dative of possession with est: honor and glory belong to Thee." } },
-        { "id": "w011", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bogu", "en": "God" } },
-        { "id": "w012", "form": "Patri", "lemma": "pater", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcu", "en": "the Father" } },
-        { "id": "w013", "form": "omnipoténti", "post": ",", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w012", "gloss": { "pl": "wszechmogącemu", "en": "almighty" } },
-        { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w015", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w015", "form": "unitáte", "lemma": "unitas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "jedności", "en": "the unity" } },
-        { "id": "w016", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Ducha", "en": "of the Spirit" } },
-        { "id": "w017", "form": "Sancti", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w016", "gloss": { "pl": "Świętego", "en": "Holy" } }
+        { "id": "w009", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w010", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w011", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w012", "form": "Patri", "lemma": "pater", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w013", "form": "omnipoténti", "post": ",", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w012" },
+        { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w015" },
+        { "id": "w015", "form": "unitáte", "lemma": "unitas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w016", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w017", "form": "Sancti", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w016" }
       ]
     },
     {
       "id": "s05",
       "type": "rubric",
-      "text": "Elevans parum Calicem cum Hostia, dicit:",
-      "narrative": {
-        "pl": "Kapłan unosi nieco kielich wraz z Hostią.",
-        "en": "The priest raises the chalice a little, with the Host."
-      }
+      "text": "Elevans parum Calicem cum Hostia, dicit:"
     },
     {
       "id": "s06",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "wszelka cześć i chwała,",
-        "en": "all honor and glory,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 61",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed p. 71",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 28",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 70",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 93–94",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w018", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w019", "gloss": { "pl": "wszelka", "en": "all" }, "function": { "pl": "Omnis zgadza się z bliższym rzeczownikiem honor i określa łącznie honor oraz glória.", "en": "Omnis agrees with the nearer honor and modifies honor and glória together." } },
-        { "id": "w019", "form": "honor", "post": ",", "lemma": "honor", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "cześć", "en": "honor" } },
-        { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w021", "form": "glória", "post": ".", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwała", "en": "glory" } }
+        { "id": "w018", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w019" },
+        { "id": "w019", "form": "honor", "post": ",", "lemma": "honor", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w021", "form": "glória", "post": ".", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } }
       ]
     },
     {
       "id": "s07",
       "type": "rubric",
-      "text": "Ponit Hostiam, Calicem Palla cooperit, genuflectit, surgit, et dicit intellegibili voce vel cantat:",
-      "narrative": {
-        "pl": "Kapłan odkłada Hostię, nakrywa kielich palką, przyklęka, wstaje i mówi głosem słyszalnym albo śpiewa:",
-        "en": "The priest sets down the Host, covers the chalice with the pall, genuflects, rises, and says in an audible voice or sings:"
-      }
+      "text": "Ponit Hostiam, Calicem Palla cooperit, genuflectit, surgit, et dicit intellegibili voce vel cantat:"
     },
     {
       "id": "s08",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "przez wszystkie wieki wieków.",
-        "en": "for ever and ever."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 61",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed p. 71",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 28",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 70",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 93–94",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w022", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w024", "gloss": { "pl": "przez", "en": "for" } },
-        { "id": "w023", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w024", "gloss": { "pl": "wszystkie", "en": "all" } },
-        { "id": "w024", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieki", "en": "ages" } },
-        { "id": "w025", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieków", "en": "of ages" }, "function": { "pl": "Dopełniacz liczby mnogiej podwaja poprzedzający go biernik.", "en": "The genitive plural doubles the accusative before it." } }
+        { "id": "w022", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w024" },
+        { "id": "w023", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w024" },
+        { "id": "w024", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w025", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } }
       ]
     },
     {
@@ -278,43 +102,8 @@
           "source": "DMS 25 a"
         }
       },
-      "translation": {
-        "pl": "Amen.",
-        "en": "Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 61",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed p. 71",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 28",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 70",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 93–94",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w026", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" }, "function": { "pl": "We Mszy cichej tej odpowiedzi udziela usługujący.", "en": "At low Mass the server gives this response." } }
+        { "id": "w026", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -333,6 +122,36 @@
       "s03": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
       "s05": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
       "s07": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ordo Missae, conclusion of the Canon",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ],
+    "functions": {
+      "w002": {
+
+      },
+      "w009": {
+
+      },
+      "w010": {
+
+      },
+      "w018": {
+
+      },
+      "w025": {
+
+      },
+      "w026": {
+
+      }
     }
   }
 }

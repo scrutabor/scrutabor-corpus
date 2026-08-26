@@ -10,7 +10,7 @@ That layout was kept by hand, and it had already slipped in three files —
 two texts written back by some round-trip, and one carrying an escaped
 apostrophe no editor typed. So it is a tool:
 
-    python3 -m checks.layout            # rewrite every text and gloss
+    python3 -m checks.layout            # rewrite every core and language text
     python3 -m checks.layout --check    # fail if any file is not in layout
 
 Formatting is byte-identical to what the corpus already held for 56 of its
@@ -74,18 +74,15 @@ def formatted(doc: object) -> str:
 
 
 def documents() -> list[Path]:
-    """Every file this layout governs: the texts, and only the texts.
+    """Every authored text core and per-language text layer.
 
-    Until 2026-08-19 this docstring promised the gloss layers and the lexicon
-    too, and delivered neither: `glosses/` had not existed since schema 0.14.0
-    joined it into the texts, so its glob matched nothing, and `lexicon/` was
-    never globbed at all. The lexicon stays outside on purpose rather than by
-    accident now — its three files keep ordinary indent-2 throughout, and
-    adopting them here would rewrite three sealed, human-read files for no
-    reader-visible gain. Witness apparatus files are likewise left alone —
-    they are prose in JSON clothing and read better as blocks.
+    Lexicon and manifest files keep ordinary indent-2 formatting. Witness
+    apparatus files are prose in JSON clothing and likewise remain outside
+    this formatter.
     """
-    return sorted((CORPUS / "texts").rglob("*.json"))
+    return sorted((CORPUS / "texts").rglob("*.json")) + sorted(
+        (CORPUS / "languages").glob("*/texts/*/*.json")
+    )
 
 
 def main(argv: list[str]) -> int:

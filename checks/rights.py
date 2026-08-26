@@ -113,8 +113,8 @@ def check(docs: list[dict], works: dict) -> list[str]:
 def wording_sites(docs: list[dict], works: dict) -> tuple[dict[str, int], list[str]]:
     """Classify every translated segment-language site exactly once.
 
-    The joined corpus is split into one gloss document per language before it
-    reaches this check. Such a document has `text`, `lang`, and a segment map;
+    Each published language layer reaches this check as a self-contained gloss
+    document. Such a document has `text`, `lang`, and a segment map;
     Latin documents and lexicon documents do not, and are deliberately ignored
     here while their citations are still registered by :func:`check`.
     """

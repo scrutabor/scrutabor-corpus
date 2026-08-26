@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "orationes.symbolum-apostolorum",
   "title": "Symbolum Apostolórum",
   "category": "orationes",
@@ -9,478 +9,153 @@
   "ids": {
     "next": 77
   },
-  "about": {
-    "pl": "Skład Apostolski jest starożytnym symbolem chrzcielnym Kościoła rzymskiego, tradycyjnie ujmowanym w dwunastu artykułach. W pierwszej osobie wyznaje wiarę w Boga Ojca, Jezusa Chrystusa i Ducha Świętego, a następnie w Kościół, odpuszczenie grzechów, zmartwychwstanie ciała i życie wieczne. Ta recenzja zachowuje powtórzone Credo przed artykułami o Duchu Świętym.",
-    "en": "The Apostles’ Creed is the ancient baptismal symbol of the Church of Rome, traditionally arranged in twelve articles. In the first person it professes faith in God the Father, Jesus Christ, and the Holy Spirit, and then professes the Church, forgiveness of sins, resurrection of the body, and everlasting life. This recension retains a repeated Credo before the articles concerning the Holy Spirit."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Compendium of the Catechism of the Catholic Church",
-        "locator": "nn. 33 and 193; Appendix: The Apostles’ Creed",
-        "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_en.html"
-      }
-    ],
-    "en": [
-      {
-        "title": "Compendium of the Catechism of the Catholic Church",
-        "locator": "nn. 33 and 193; Appendix: The Apostles’ Creed",
-        "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_en.html"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
-      "translation": {
-        "pl": "Wierzę w Boga, Ojca wszechmogącego, Stworzyciela nieba i ziemi.",
-        "en": "I believe in God, the Father Almighty, Creator of heaven and earth;"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed pp. 7–8",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 2",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 10–11",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Credo", "lemma": "credo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "wierzę", "en": "I believe" } },
-        { "id": "w002", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w003", "gloss": { "pl": "w", "en": "into" } },
-        { "id": "w003", "form": "Deum", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } },
-        { "id": "w004", "form": "Patrem", "lemma": "pater", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojca", "en": "the Father" }, "function": { "pl": "Apozycja do „Deum” (w003): Bóg — Ojciec.", "en": "Apposition to “Deum” (w003): God — the Father." } },
-        { "id": "w005", "form": "omnipoténtem", "post": ",", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w004", "gloss": { "pl": "wszechmogącego", "en": "almighty" } },
-        { "id": "w006", "form": "Creatórem", "lemma": "creator", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Stworzyciela", "en": "Creator" }, "function": { "pl": "Druga apozycja do „Deum” (w003).", "en": "A second apposition to “Deum” (w003)." } },
-        { "id": "w007", "form": "cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "nieba", "en": "of heaven" } },
-        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w009", "form": "terræ", "post": ".", "lemma": "terra", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ziemi", "en": "of earth" }, "function": { "pl": "Wraz z „cæli” (w007) zależy od „Creatórem” (w006).", "en": "Together with “cæli” (w007), depends on “Creatórem” (w006)." } }
+        { "id": "w001", "form": "Credo", "lemma": "credo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w002", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w003" },
+        { "id": "w003", "form": "Deum", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w004", "form": "Patrem", "lemma": "pater", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w005", "form": "omnipoténtem", "post": ",", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w004" },
+        { "id": "w006", "form": "Creatórem", "lemma": "creator", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w007", "form": "cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "terræ", "post": ".", "lemma": "terra", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } }
       ]
     },
     {
       "id": "s02",
       "type": "verse",
-      "translation": {
-        "pl": "I w Jezusa Chrystusa, Syna Jego jedynego, Pana naszego,",
-        "en": "and in Jesus Christ, His only Son, our Lord:"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed pp. 7–8",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 2",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 10–11",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w010", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012", "gloss": { "pl": "w", "en": "into" }, "function": { "pl": "Drugi człon zależny od „Credo” (w001).", "en": "Begins the second complement governed by “Credo” (w001)." } },
-        { "id": "w012", "form": "Iesum", "lemma": "Iesus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezusa", "en": "Jesus" } },
-        { "id": "w013", "form": "Christum", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" }, "function": { "pl": "Apozycja do imienia „Iesum” (w012).", "en": "Apposition to the name “Iesum” (w012)." } },
-        { "id": "w014", "form": "Fílium", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Syna", "en": "the Son" }, "function": { "pl": "Apozycja do imienia i tytułu „Iesum Christum”.", "en": "Apposition to the name and title “Iesum Christum”." } },
-        { "id": "w015", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jego", "en": "His" } },
-        { "id": "w016", "form": "únicum", "post": ",", "lemma": "unicus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w014", "gloss": { "pl": "jedynego", "en": "only" } },
-        { "id": "w017", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "Lord" }, "function": { "pl": "Kolejna apozycja do imienia i tytułu „Iesum Christum”.", "en": "A further apposition to the name and title “Iesum Christum”." } },
-        { "id": "w018", "form": "nostrum", "post": ":", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w017", "gloss": { "pl": "naszego", "en": "our" } }
+        { "id": "w010", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
+        { "id": "w012", "form": "Iesum", "lemma": "Iesus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w013", "form": "Christum", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w014", "form": "Fílium", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w015", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w016", "form": "únicum", "post": ",", "lemma": "unicus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w014" },
+        { "id": "w017", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w018", "form": "nostrum", "post": ":", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w017" }
       ]
     },
     {
       "id": "s03",
       "type": "verse",
-      "translation": {
-        "pl": "który się począł z Ducha Świętego, narodził się z Maryi Panny,",
-        "en": "who was conceived by the Holy Spirit, born of the Virgin Mary,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed pp. 7–8",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 2",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 10–11",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w019", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" }, "function": { "pl": "Zaimek względny odnosi się do Jezusa Chrystusa z poprzedniego członu.", "en": "The relative pronoun refers to Jesus Christ in the preceding clause." } },
-        { "id": "w020", "form": "concéptus", "lemma": "concipio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021", "gloss": { "pl": "poczęty", "en": "conceived" }, "function": { "pl": "Z „est” (w021) tworzy perfectum strony biernej: „został poczęty”.", "en": "With “est” (w021), forms the perfect passive: “was conceived”." } },
-        { "id": "w021", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "został", "en": "was" } },
-        { "id": "w022", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w023", "gloss": { "pl": "z", "en": "by" } },
-        { "id": "w023", "form": "Spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Ducha", "en": "the Spirit" } },
-        { "id": "w024", "form": "Sancto", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w023", "gloss": { "pl": "Świętego", "en": "Holy" } },
-        { "id": "w025", "form": "natus", "lemma": "nascor", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021", "gloss": { "pl": "narodzony", "en": "born" }, "function": { "pl": "Imiesłów czasownika deponentnego. Współdzieli domyślne „est” (w021).", "en": "A deponent participle sharing the understood “est” (w021)." } },
-        { "id": "w026", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w027", "gloss": { "pl": "z", "en": "of" } },
-        { "id": "w027", "form": "María", "lemma": "Maria", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryi", "en": "Mary" } },
-        { "id": "w028", "form": "Vírgine", "post": ",", "lemma": "virgo", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Dziewicy", "en": "the Virgin" }, "function": { "pl": "Apozycja do „María” (w027).", "en": "Apposition to “María” (w027)." } }
+        { "id": "w019", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w020", "form": "concéptus", "lemma": "concipio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021" },
+        { "id": "w021", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w022", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w023" },
+        { "id": "w023", "form": "Spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w024", "form": "Sancto", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w023" },
+        { "id": "w025", "form": "natus", "lemma": "nascor", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021" },
+        { "id": "w026", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w027" },
+        { "id": "w027", "form": "María", "lemma": "Maria", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w028", "form": "Vírgine", "post": ",", "lemma": "virgo", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } }
       ]
     },
     {
       "id": "s04",
       "type": "verse",
-      "translation": {
-        "pl": "umęczon pod Ponckim Piłatem, ukrzyżowan, umarł i pogrzebion,",
-        "en": "suffered under Pontius Pilate, was crucified; died, and was buried."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed pp. 7–8",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 2",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 10–11",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w029", "form": "passus", "lemma": "patior", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021", "gloss": { "pl": "umęczony", "en": "having suffered" }, "function": { "pl": "Imiesłów deponentny o znaczeniu czynnym. Współdzieli domyślne „est” (w021).", "en": "A deponent participle with active meaning, sharing the understood “est” (w021)." } },
-        { "id": "w030", "form": "sub", "lemma": "sub", "morph": { "pos": "prep", "governs": "abl" }, "head": "w031", "gloss": { "pl": "pod", "en": "under" } },
-        { "id": "w031", "form": "Póntio", "lemma": "Pontius", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Poncjuszem", "en": "Pontius" } },
-        { "id": "w032", "form": "Piláto", "post": ",", "lemma": "Pilatus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Piłatem", "en": "Pilate" }, "function": { "pl": "Drugi człon imienia „Póntio Piláto”.", "en": "The second part of the name “Póntio Piláto”." } },
-        { "id": "w033", "form": "crucifíxus", "post": ",", "lemma": "crucifigo", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021", "gloss": { "pl": "ukrzyżowany", "en": "crucified" }, "function": { "pl": "Współdzieli domyślne „est” (w021).", "en": "Shares the understood “est” (w021)." } },
-        { "id": "w034", "form": "mórtuus", "lemma": "morior", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021", "gloss": { "pl": "umarłszy", "en": "having died" }, "function": { "pl": "Imiesłów perfectum czasownika deponentnego „morior”. Z domyślnym „est” (w021) znaczy „umarł”.", "en": "The perfect participle of the deponent “morior”. With understood “est” (w021), it means “died”." } },
-        { "id": "w035", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w036", "form": "sepúltus", "post": ";", "lemma": "sepelio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 4 }, "head": "w021", "gloss": { "pl": "pogrzebany", "en": "buried" }, "function": { "pl": "Współdzieli domyślne „est” (w021).", "en": "Shares the understood “est” (w021)." } }
+        { "id": "w029", "form": "passus", "lemma": "patior", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021" },
+        { "id": "w030", "form": "sub", "lemma": "sub", "morph": { "pos": "prep", "governs": "abl" }, "head": "w031" },
+        { "id": "w031", "form": "Póntio", "lemma": "Pontius", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w032", "form": "Piláto", "post": ",", "lemma": "Pilatus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w033", "form": "crucifíxus", "post": ",", "lemma": "crucifigo", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021" },
+        { "id": "w034", "form": "mórtuus", "lemma": "morior", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w021" },
+        { "id": "w035", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w036", "form": "sepúltus", "post": ";", "lemma": "sepelio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 4 }, "head": "w021" }
       ]
     },
     {
       "id": "s05",
       "type": "verse",
-      "translation": {
-        "pl": "zstąpił do piekieł,",
-        "en": "He descended into hell;"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed pp. 7–8",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 2",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 10–11",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w037", "form": "descéndit", "lemma": "descendo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "zstąpił", "en": "descended" } },
-        { "id": "w038", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w039", "gloss": { "pl": "do", "en": "to" } },
-        { "id": "w039", "form": "ínferos", "post": ";", "lemma": "inferi", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "otchłani", "en": "the realm of the dead" }, "function": { "pl": "Rzeczownik w liczbie mnogiej po „ad”. Oznacza tych, którzy są niżej, lub ich krainę.", "en": "A plural noun after “ad”, denoting those below or their realm." } }
+        { "id": "w037", "form": "descéndit", "lemma": "descendo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w038", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w039" },
+        { "id": "w039", "form": "ínferos", "post": ";", "lemma": "inferi", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 } }
       ]
     },
     {
       "id": "s06",
       "type": "verse",
-      "translation": {
-        "pl": "trzeciego dnia zmartwychwstał,",
-        "en": "the third day He rose again from the dead;"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed pp. 7–8",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 2",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 10–11",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w040", "form": "tértia", "lemma": "tertius", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w041", "gloss": { "pl": "trzeciego", "en": "on the third" } },
-        { "id": "w041", "form": "die", "lemma": "dies", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 5 }, "gloss": { "pl": "dnia", "en": "day" }, "function": { "pl": "Ablativus czasu. Tutaj rodzaj żeński, który zgadza się z „tértia” (w040).", "en": "Ablative of time. Feminine here, agreeing with “tértia” (w040)." } },
-        { "id": "w042", "form": "resurréxit", "lemma": "resurgo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "zmartwychwstał", "en": "rose again" } },
-        { "id": "w043", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w044", "gloss": { "pl": "spośród", "en": "from" } },
-        { "id": "w044", "form": "mórtuis", "post": ";", "lemma": "mortuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "umarłych", "en": "the dead" } }
+        { "id": "w040", "form": "tértia", "lemma": "tertius", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w041" },
+        { "id": "w041", "form": "die", "lemma": "dies", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 5 } },
+        { "id": "w042", "form": "resurréxit", "lemma": "resurgo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w043", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w044" },
+        { "id": "w044", "form": "mórtuis", "post": ";", "lemma": "mortuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true }
       ]
     },
     {
       "id": "s07",
       "type": "verse",
-      "translation": {
-        "pl": "wstąpił na niebiosa,",
-        "en": "He ascended into heaven,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed pp. 7–8",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 2",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 10–11",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w045", "form": "ascéndit", "lemma": "ascendo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "wstąpił", "en": "ascended" } },
-        { "id": "w046", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w047", "gloss": { "pl": "do", "en": "into" } },
-        { "id": "w047", "form": "cælos", "post": ";", "lemma": "caelum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "niebios", "en": "heaven" }, "function": { "pl": "Forma mnoga rzeczownika „caelum”. W liczbie mnogiej ma rodzaj męski.", "en": "The plural of “caelum”. In the plural it is masculine." } }
+        { "id": "w045", "form": "ascéndit", "lemma": "ascendo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w046", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w047" },
+        { "id": "w047", "form": "cælos", "post": ";", "lemma": "caelum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 } }
       ]
     },
     {
       "id": "s08",
       "type": "verse",
-      "translation": {
-        "pl": "siedzi po prawicy Boga Ojca wszechmogącego,",
-        "en": "sits at the right hand of God the Father Almighty;"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed pp. 7–8",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          },
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Mt 22, 44; DjVu scan 897, printed p. 31",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 2",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 10–11",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w048", "form": "sedet", "lemma": "sedeo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 }, "gloss": { "pl": "siedzi", "en": "sits" } },
-        { "id": "w049", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w050", "gloss": { "pl": "po", "en": "at" } },
-        { "id": "w050", "form": "déxteram", "lemma": "dextera", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "prawicy", "en": "the right hand" } },
-        { "id": "w051", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" } },
-        { "id": "w052", "form": "Patris", "lemma": "pater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojca", "en": "the Father" }, "function": { "pl": "Apozycja do „Dei” (w051).", "en": "Apposition to “Dei” (w051)." } },
-        { "id": "w053", "form": "omnipoténtis", "post": ";", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w052", "gloss": { "pl": "wszechmogącego", "en": "almighty" } }
+        { "id": "w048", "form": "sedet", "lemma": "sedeo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
+        { "id": "w049", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w050" },
+        { "id": "w050", "form": "déxteram", "lemma": "dextera", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w051", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w052", "form": "Patris", "lemma": "pater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w053", "form": "omnipoténtis", "post": ";", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w052" }
       ]
     },
     {
       "id": "s09",
       "type": "verse",
-      "translation": {
-        "pl": "stamtąd przyjdzie sądzić żywych i umarłych.",
-        "en": "from thence He shall come to judge the living and the dead."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed pp. 7–8",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 2",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 10–11",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w054", "form": "inde", "lemma": "inde", "morph": { "pos": "adv" }, "gloss": { "pl": "stamtąd", "en": "from there" } },
-        { "id": "w055", "form": "ventúrus", "lemma": "venio", "morph": { "pos": "verb", "mood": "part", "tense": "fut", "voice": "act", "case": "nom", "number": "sg", "gender": "m", "conj": 4 }, "head": "w056", "gloss": { "pl": "mający przyjść", "en": "about to come" }, "function": { "pl": "Imiesłów przyszły z „est” (w056): „przyjdzie”.", "en": "A future participle with “est” (w056): “will come”." } },
-        { "id": "w056", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jest", "en": "is" } },
-        { "id": "w057", "form": "iudicáre", "lemma": "iudico", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 }, "gloss": { "pl": "sądzić", "en": "to judge" }, "function": { "pl": "Bezokolicznik określa cel przyszłego przyjścia.", "en": "The infinitive states the purpose of the future coming." } },
-        { "id": "w058", "form": "vivos", "lemma": "vivus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "żywych", "en": "the living" } },
-        { "id": "w059", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w060", "form": "mórtuos", "post": ".", "lemma": "mortuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "umarłych", "en": "the dead" } }
+        { "id": "w054", "form": "inde", "lemma": "inde", "morph": { "pos": "adv" } },
+        { "id": "w055", "form": "ventúrus", "lemma": "venio", "morph": { "pos": "verb", "mood": "part", "tense": "fut", "voice": "act", "case": "nom", "number": "sg", "gender": "m", "conj": 4 }, "head": "w056" },
+        { "id": "w056", "form": "est", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w057", "form": "iudicáre", "lemma": "iudico", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 } },
+        { "id": "w058", "form": "vivos", "lemma": "vivus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w059", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w060", "form": "mórtuos", "post": ".", "lemma": "mortuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true }
       ]
     },
     {
       "id": "s10",
       "type": "verse",
-      "translation": {
-        "pl": "Wierzę w Ducha Świętego,",
-        "en": "I believe in the Holy Spirit,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed pp. 7–8",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 2",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 10–11",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w061", "form": "Credo", "lemma": "credo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "wierzę", "en": "I believe" }, "function": { "pl": "Powtórzony czasownik otwiera trzecią grupę artykułów w wybranej recenzji dewocyjnej.", "en": "The repeated verb opens the third group of articles in the selected devotional recension." } },
-        { "id": "w062", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w063", "gloss": { "pl": "w", "en": "into" } },
-        { "id": "w063", "form": "Spíritum", "lemma": "spiritus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Ducha", "en": "the Spirit" } },
-        { "id": "w064", "form": "Sanctum", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w063", "gloss": { "pl": "Świętego", "en": "Holy" } }
+        { "id": "w061", "form": "Credo", "lemma": "credo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w062", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w063" },
+        { "id": "w063", "form": "Spíritum", "lemma": "spiritus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w064", "form": "Sanctum", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w063" }
       ]
     },
     {
       "id": "s11",
       "type": "verse",
-      "translation": {
-        "pl": "święty Kościół powszechny, świętych obcowanie,",
-        "en": "the Holy Catholic Church, the communion of Saints,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Książka do nabożeństwa (1883)",
-            "locator": "printed p. 3",
-            "url": "https://commons.wikimedia.org/wiki/File:Ksi%C4%85%C5%BCka_do_nabo%C5%BCe%C5%84stwa_O._Karola_Antoniewicza.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 2",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 10–11",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w065", "form": "sanctam", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w066", "gloss": { "pl": "święty", "en": "holy" } },
-        { "id": "w066", "form": "Ecclésiam", "lemma": "ecclesia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Kościół", "en": "Church" } },
-        { "id": "w067", "form": "cathólicam", "post": ",", "lemma": "catholicus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w066", "gloss": { "pl": "powszechny", "en": "catholic" } },
-        { "id": "w068", "form": "sanctórum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "świętych", "en": "of saints" } },
-        { "id": "w069", "form": "communiónem", "post": ",", "lemma": "communio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "obcowanie", "en": "communion" }, "function": { "pl": "„sanctórum” (w068) jest dopełniaczem zależnym od „communiónem”.", "en": "“sanctórum” (w068) is a genitive dependent on “communiónem”." } }
+        { "id": "w065", "form": "sanctam", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w066" },
+        { "id": "w066", "form": "Ecclésiam", "lemma": "ecclesia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w067", "form": "cathólicam", "post": ",", "lemma": "catholicus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w066" },
+        { "id": "w068", "form": "sanctórum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w069", "form": "communiónem", "post": ",", "lemma": "communio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } }
       ]
     },
     {
       "id": "s12",
       "type": "verse",
-      "translation": {
-        "pl": "grzechów odpuszczenie, ciała zmartwychwstanie, żywot wieczny. Amen.",
-        "en": "the forgiveness of sins, the resurrection of the body, and the life everlasting. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed pp. 7–8",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 2",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 10–11",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w070", "form": "remissiónem", "lemma": "remissio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "odpuszczenie", "en": "forgiveness" } },
-        { "id": "w071", "form": "peccatórum", "post": ",", "lemma": "peccatum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "grzechów", "en": "of sins" }, "function": { "pl": "Dopełniacz zależny od „remissiónem” (w070).", "en": "Genitive dependent on “remissiónem” (w070)." } },
-        { "id": "w072", "form": "carnis", "lemma": "caro", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "ciała", "en": "of the body" } },
-        { "id": "w073", "form": "resurrectiónem", "post": ",", "lemma": "resurrectio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "zmartwychwstanie", "en": "resurrection" }, "function": { "pl": "„carnis” (w072) jest dopełniaczem zależnym od „resurrectiónem”.", "en": "“carnis” (w072) is a genitive dependent on “resurrectiónem”." } },
-        { "id": "w074", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "życie", "en": "life" } },
-        { "id": "w075", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w074", "gloss": { "pl": "wieczne", "en": "everlasting" } },
-        { "id": "w076", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w070", "form": "remissiónem", "lemma": "remissio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w071", "form": "peccatórum", "post": ",", "lemma": "peccatum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w072", "form": "carnis", "lemma": "caro", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w073", "form": "resurrectiónem", "post": ",", "lemma": "resurrectio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w074", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w075", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w074" },
+        { "id": "w076", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -497,6 +172,96 @@
     "words": {
       "w047": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w050": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Compendium of the Catechism of the Catholic Church",
+        "locator": "nn. 33 and 193; Appendix: The Apostles’ Creed",
+        "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_en.html"
+      }
+    ],
+    "functions": {
+      "w004": {
+
+      },
+      "w006": {
+
+      },
+      "w009": {
+
+      },
+      "w011": {
+
+      },
+      "w013": {
+
+      },
+      "w014": {
+
+      },
+      "w017": {
+
+      },
+      "w019": {
+
+      },
+      "w020": {
+
+      },
+      "w025": {
+
+      },
+      "w028": {
+
+      },
+      "w029": {
+
+      },
+      "w032": {
+
+      },
+      "w033": {
+
+      },
+      "w034": {
+
+      },
+      "w036": {
+
+      },
+      "w039": {
+
+      },
+      "w041": {
+
+      },
+      "w047": {
+
+      },
+      "w052": {
+
+      },
+      "w055": {
+
+      },
+      "w057": {
+
+      },
+      "w061": {
+
+      },
+      "w069": {
+
+      },
+      "w071": {
+
+      },
+      "w073": {
+
+      }
     }
   }
 }

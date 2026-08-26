@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "proprium.dominica-iv-adventus-epistola",
   "title": "Sic nos exístimet homo",
   "category": "proprium",
@@ -9,49 +9,25 @@
   "ids": {
     "next": 80
   },
-  "about": {
-    "pl": "Lekcja IV Niedzieli Adwentu. Paweł odbiera sąd nie tylko Koryntianom, ale i sobie — wyrok należy do Pana, a wydany będzie dopiero wtedy, gdy On przyjdzie.",
-    "en": "The epistle of the Fourth Sunday of Advent. Paul takes the verdict away from the Corinthians and from himself alike — it belongs to the Lord, and it is not given until He comes."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Bracia: Niech ludzie uważają nas za sługi Chrystusa i szafarzy tajemnic Boga.",
-        "en": "Brethren: Let people regard us as servants of Christ and stewards of the mysteries of God."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "1 Corinthians 4:1–5, DjVu scan 1050",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Fratres", "post": ":", "lemma": "frater", "morph": { "pos": "noun", "case": "voc", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "bracia", "en": "brethren" } },
-        { "id": "w002", "form": "Sic", "lemma": "sic", "morph": { "pos": "adv" }, "gloss": { "pl": "tak", "en": "so" } },
-        { "id": "w003", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } },
-        { "id": "w004", "form": "exístimet", "lemma": "existimo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 }, "gloss": { "pl": "niech uważa", "en": "let account" } },
-        { "id": "w005", "form": "homo", "lemma": "homo", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "człowiek", "en": "a man" } },
-        { "id": "w006", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "za", "en": "as" } },
-        { "id": "w007", "form": "minístros", "lemma": "minister", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "sługi", "en": "the ministers" } },
-        { "id": "w008", "form": "Christi", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "of Christ" } },
-        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w010", "form": "dispensatóres", "lemma": "dispensator", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "szafarzy", "en": "the stewards" } },
-        { "id": "w011", "form": "mysteriórum", "lemma": "mysterium", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "tajemnic", "en": "of the mysteries" } },
-        { "id": "w012", "form": "Dei", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" } }
+        { "id": "w001", "form": "Fratres", "post": ":", "lemma": "frater", "morph": { "pos": "noun", "case": "voc", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w002", "form": "Sic", "lemma": "sic", "morph": { "pos": "adv" } },
+        { "id": "w003", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w004", "form": "exístimet", "lemma": "existimo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 } },
+        { "id": "w005", "form": "homo", "lemma": "homo", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w006", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "minístros", "lemma": "minister", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w008", "form": "Christi", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "dispensatóres", "lemma": "dispensator", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w011", "form": "mysteriórum", "lemma": "mysterium", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w012", "form": "Dei", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     },
     {
@@ -59,36 +35,16 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Od szafarzy wymaga się zaś, aby każdy okazał się wierny.",
-        "en": "What is required of stewards is that each be found faithful."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "1 Corinthians 4:1–5, DjVu scan 1050",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w013", "form": "Hic", "lemma": "hic_adverbium", "morph": { "pos": "adv" }, "gloss": { "pl": "tu", "en": "here" } },
-        { "id": "w014", "form": "iam", "lemma": "iam", "morph": { "pos": "adv" }, "gloss": { "pl": "już", "en": "now" } },
-        { "id": "w015", "form": "quǽritur", "lemma": "quaero", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "pass", "conj": 3 }, "gloss": { "pl": "wymaga się", "en": "is required" } },
-        { "id": "w016", "form": "inter", "lemma": "inter", "morph": { "pos": "prep", "governs": "acc" }, "head": "w017", "gloss": { "pl": "wśród", "en": "among" } },
-        { "id": "w017", "form": "dispensatóres", "post": ",", "lemma": "dispensator", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "szafarzy", "en": "the stewards" } },
-        { "id": "w018", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "aby", "en": "that" } },
-        { "id": "w019", "form": "fidélis", "lemma": "fidelis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w020", "gloss": { "pl": "wierny", "en": "faithful" } },
-        { "id": "w020", "form": "quis", "lemma": "quis", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "ktoś", "en": "a man" } },
-        { "id": "w021", "form": "inveniátur", "post": ".", "lemma": "invenio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 4 }, "gloss": { "pl": "się znalazł", "en": "be found" } }
+        { "id": "w013", "form": "Hic", "lemma": "hic_adverbium", "morph": { "pos": "adv" } },
+        { "id": "w014", "form": "iam", "lemma": "iam", "morph": { "pos": "adv" } },
+        { "id": "w015", "form": "quǽritur", "lemma": "quaero", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "pass", "conj": 3 } },
+        { "id": "w016", "form": "inter", "lemma": "inter", "morph": { "pos": "prep", "governs": "acc" }, "head": "w017" },
+        { "id": "w017", "form": "dispensatóres", "post": ",", "lemma": "dispensator", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w018", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w019", "form": "fidélis", "lemma": "fidelis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w020" },
+        { "id": "w020", "form": "quis", "lemma": "quis", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w021", "form": "inveniátur", "post": ".", "lemma": "invenio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 4 } }
       ]
     },
     {
@@ -96,44 +52,24 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Dla mnie niewiele znaczy, czy osądzicie mnie wy, czy ludzki sąd; sam również siebie nie osądzam.",
-        "en": "It matters very little to me whether I am judged by you or by a human court; I do not even judge myself."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "1 Corinthians 4:1–5, DjVu scan 1050",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w022", "form": "Mihi", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "mnie", "en": "to me" } },
-        { "id": "w023", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" }, "gloss": { "pl": "zaś", "en": "but" } },
-        { "id": "w024", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w025", "gloss": { "pl": "za", "en": "for" } },
-        { "id": "w025", "form": "mínimo", "lemma": "parvus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "substantive": true, "gloss": { "pl": "najmniejsze", "en": "the least thing" }, "function": { "pl": "Przymiotnik użyty rzeczownikowo: „za rzecz najmniejszą”. Stopień najwyższy od „parvus”.", "en": "An adjective used as a noun: “a very small thing”. It is the superlative of parvus." } },
-        { "id": "w026", "form": "est", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jest", "en": "it is" } },
-        { "id": "w027", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "abym", "en": "that" } },
-        { "id": "w028", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w029", "gloss": { "pl": "przez", "en": "by" } },
-        { "id": "w029", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "was", "en": "you" } },
-        { "id": "w030", "form": "iúdicer", "post": ",", "lemma": "iudico", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 1 }, "gloss": { "pl": "był sądzony", "en": "I be judged" } },
-        { "id": "w031", "form": "aut", "lemma": "aut", "morph": { "pos": "conj" }, "gloss": { "pl": "albo", "en": "or" } },
-        { "id": "w032", "form": "ab", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w034", "gloss": { "pl": "przez", "en": "by" } },
-        { "id": "w033", "form": "humáno", "lemma": "humanus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w034", "gloss": { "pl": "ludzki", "en": "man's" }, "function": { "pl": "„Dzień” w znaczeniu sądu, jak w „dniu Pańskim”. Grecki oryginał ma tu „ludzki dzień”, czyli ludzki trybunał.", "en": "Day in the sense of a court sitting, as in the day of the Lord. The Greek behind it says a human day, that is, a human tribunal." } },
-        { "id": "w034", "form": "die", "post": ":", "lemma": "dies", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 5 }, "gloss": { "pl": "dzień", "en": "day" } },
-        { "id": "w035", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "lecz", "en": "but" } },
-        { "id": "w036", "form": "neque", "lemma": "neque", "morph": { "pos": "conj" }, "gloss": { "pl": "ani", "en": "neither" } },
-        { "id": "w037", "form": "meípsum", "lemma": "meipse", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "siebie samego", "en": "myself" } },
-        { "id": "w038", "form": "iúdico", "post": ".", "lemma": "iudico", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "sądzę", "en": "do I judge" } }
+        { "id": "w022", "form": "Mihi", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w023", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
+        { "id": "w024", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w025" },
+        { "id": "w025", "form": "mínimo", "lemma": "parvus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "substantive": true },
+        { "id": "w026", "form": "est", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w027", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w028", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w029" },
+        { "id": "w029", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
+        { "id": "w030", "form": "iúdicer", "post": ",", "lemma": "iudico", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 1 } },
+        { "id": "w031", "form": "aut", "lemma": "aut", "morph": { "pos": "conj" } },
+        { "id": "w032", "form": "ab", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w034" },
+        { "id": "w033", "form": "humáno", "lemma": "humanus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w034" },
+        { "id": "w034", "form": "die", "post": ":", "lemma": "dies", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 5 } },
+        { "id": "w035", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
+        { "id": "w036", "form": "neque", "lemma": "neque", "morph": { "pos": "conj" } },
+        { "id": "w037", "form": "meípsum", "lemma": "meipse", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w038", "form": "iúdico", "post": ".", "lemma": "iudico", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } }
       ]
     },
     {
@@ -141,44 +77,24 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Niczego bowiem sobie nie zarzucam, ale to mnie jeszcze nie usprawiedliwia; tym, który mnie osądza, jest Pan.",
-        "en": "For I am not conscious of anything against myself, yet this does not justify me; the Lord is the One who judges me."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "1 Corinthians 4:1–5, DjVu scan 1050",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w039", "form": "Nihil", "lemma": "nihil", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n" }, "gloss": { "pl": "niczego", "en": "of nothing" } },
-        { "id": "w040", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" }, "gloss": { "pl": "bowiem", "en": "for" } },
-        { "id": "w041", "form": "mihi", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "sobie", "en": "to myself" } },
-        { "id": "w042", "form": "cónscius", "lemma": "conscius", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w043", "gloss": { "pl": "świadom", "en": "conscious" } },
-        { "id": "w043", "form": "sum", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jestem", "en": "I am" } },
-        { "id": "w044", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "lecz", "en": "but" } },
-        { "id": "w045", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
-        { "id": "w046", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w047", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w047", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "n" }, "gloss": { "pl": "tym", "en": "this" } },
-        { "id": "w048", "form": "iustificátus", "lemma": "iustifico", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w049", "gloss": { "pl": "usprawiedliwiony", "en": "justified" } },
-        { "id": "w049", "form": "sum", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jestem", "en": "I am" } },
-        { "id": "w050", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "kto", "en": "who" } },
-        { "id": "w051", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" }, "gloss": { "pl": "zaś", "en": "but" } },
-        { "id": "w052", "form": "iúdicat", "lemma": "iudico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "sądzi", "en": "judges" } },
-        { "id": "w053", "form": "me", "post": ",", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" } },
-        { "id": "w054", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panem", "en": "the Lord" } },
-        { "id": "w055", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jest", "en": "is" } }
+        { "id": "w039", "form": "Nihil", "lemma": "nihil", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w040", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
+        { "id": "w041", "form": "mihi", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w042", "form": "cónscius", "lemma": "conscius", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w043" },
+        { "id": "w043", "form": "sum", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w044", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
+        { "id": "w045", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w046", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w047" },
+        { "id": "w047", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "n" } },
+        { "id": "w048", "form": "iustificátus", "lemma": "iustifico", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w049" },
+        { "id": "w049", "form": "sum", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w050", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w051", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
+        { "id": "w052", "form": "iúdicat", "lemma": "iudico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w053", "form": "me", "post": ",", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w054", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w055", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } }
       ]
     },
     {
@@ -186,51 +102,31 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Nie osądzajcie więc przed czasem, dopóki nie przyjdzie Pan. On rozświetli to, co ukryte w ciemności, i ujawni zamysły serc; wtedy każdy otrzyma pochwałę od Boga.",
-        "en": "Therefore do not judge before the time, until the Lord comes. He will bring to light the things hidden in darkness and reveal the counsels of hearts; then each will receive praise from God."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "1 Corinthians 4:1–5, DjVu scan 1050",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w056", "form": "Ítaque", "lemma": "itaque", "morph": { "pos": "conj" }, "gloss": { "pl": "przeto", "en": "therefore" } },
-        { "id": "w057", "form": "nolíte", "lemma": "nolo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act" }, "gloss": { "pl": "nie chciejcie", "en": "be not willing" } },
-        { "id": "w058", "form": "ante", "lemma": "ante", "morph": { "pos": "prep", "governs": "acc" }, "head": "w059", "gloss": { "pl": "przed", "en": "before" } },
-        { "id": "w059", "form": "tempus", "lemma": "tempus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "czasem", "en": "the time" } },
-        { "id": "w060", "form": "iudicáre", "post": ",", "lemma": "iudico", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 }, "gloss": { "pl": "sądzić", "en": "to judge" } },
-        { "id": "w061", "form": "quoadúsque", "lemma": "quoadusque", "morph": { "pos": "conj" }, "gloss": { "pl": "dopóki nie", "en": "until" } },
-        { "id": "w062", "form": "véniat", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 }, "gloss": { "pl": "przyjdzie", "en": "shall come" } },
-        { "id": "w063", "form": "Dóminus", "post": ":", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "the Lord" } },
-        { "id": "w064", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
-        { "id": "w065", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "also" } },
-        { "id": "w066", "form": "illuminábit", "lemma": "illumino", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "oświetli", "en": "will light up" } },
-        { "id": "w067", "form": "abscóndita", "lemma": "abscondo", "morph": { "pos": "verb", "case": "acc", "number": "pl", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "substantive": true, "gloss": { "pl": "ukryte", "en": "the hidden things" }, "function": { "pl": "Imiesłów w liczbie mnogiej użyty rzeczownikowo: „rzeczy ukryte”.", "en": "A plural participle used as a noun: the hidden things." } },
-        { "id": "w068", "form": "tenebrárum", "post": ",", "lemma": "tenebrae", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "ciemności", "en": "of the darkness" } },
-        { "id": "w069", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w070", "form": "manifestábit", "lemma": "manifesto", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "ujawni", "en": "will make manifest" } },
-        { "id": "w071", "form": "consília", "lemma": "consilium", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "zamysły", "en": "the counsels" } },
-        { "id": "w072", "form": "córdium", "post": ":", "lemma": "cor", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 3 }, "gloss": { "pl": "serc", "en": "of hearts" } },
-        { "id": "w073", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w074", "form": "tunc", "lemma": "tunc", "morph": { "pos": "adv" }, "gloss": { "pl": "wtedy", "en": "then" } },
-        { "id": "w075", "form": "laus", "lemma": "laus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "chwała", "en": "praise" } },
-        { "id": "w076", "form": "erit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act" }, "gloss": { "pl": "będzie", "en": "shall be" } },
-        { "id": "w077", "form": "unicuíque", "lemma": "unusquisque", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" }, "gloss": { "pl": "każdemu", "en": "to each one" } },
-        { "id": "w078", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w079", "gloss": { "pl": "od", "en": "from" } },
-        { "id": "w079", "form": "Deo", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } }
+        { "id": "w056", "form": "Ítaque", "lemma": "itaque", "morph": { "pos": "conj" } },
+        { "id": "w057", "form": "nolíte", "lemma": "nolo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act" } },
+        { "id": "w058", "form": "ante", "lemma": "ante", "morph": { "pos": "prep", "governs": "acc" }, "head": "w059" },
+        { "id": "w059", "form": "tempus", "lemma": "tempus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w060", "form": "iudicáre", "post": ",", "lemma": "iudico", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 } },
+        { "id": "w061", "form": "quoadúsque", "lemma": "quoadusque", "morph": { "pos": "conj" } },
+        { "id": "w062", "form": "véniat", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 } },
+        { "id": "w063", "form": "Dóminus", "post": ":", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w064", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w065", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w066", "form": "illuminábit", "lemma": "illumino", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w067", "form": "abscóndita", "lemma": "abscondo", "morph": { "pos": "verb", "case": "acc", "number": "pl", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "substantive": true },
+        { "id": "w068", "form": "tenebrárum", "post": ",", "lemma": "tenebrae", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w069", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w070", "form": "manifestábit", "lemma": "manifesto", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w071", "form": "consília", "lemma": "consilium", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w072", "form": "córdium", "post": ":", "lemma": "cor", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 3 } },
+        { "id": "w073", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w074", "form": "tunc", "lemma": "tunc", "morph": { "pos": "adv" } },
+        { "id": "w075", "form": "laus", "lemma": "laus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w076", "form": "erit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act" } },
+        { "id": "w077", "form": "unicuíque", "lemma": "unusquisque", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" } },
+        { "id": "w078", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w079" },
+        { "id": "w079", "form": "Deo", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     }
   ],
@@ -248,6 +144,20 @@
       "w032": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w037": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
       "w072": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w025": {
+
+      },
+      "w033": {
+
+      },
+      "w067": {
+
+      }
     }
   }
 }

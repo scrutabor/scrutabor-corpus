@@ -25,12 +25,15 @@ def main(check_only: bool) -> int:
     errors = verify(HERE, out)
     for message in errors:
         print(f"ERROR: {message}")
-    # One document per text since 0.14.0, so this is the whole authored corpus
-    # for these texts -- glosses/ no longer exists and globbing it silently
-    # measured half the source, which flattered the ratio.
-    source = sum(p.stat().st_size for p in HERE.glob("texts/*/*.json"))
+    # The authored book is the neutral core plus every independently
+    # publishable language layer. Measuring only one side would flatter the
+    # reader-edition ratio.
+    source = sum(p.stat().st_size for p in HERE.glob("texts/*/*.json")) + sum(
+        p.stat().st_size for p in HERE.glob("languages/*/texts/*/*.json")
+    )
     subject = (
-        f"texts={written['texts']} bytes={written['bytes']} "
+        f"texts={written['texts']} language_texts={written['language_texts']} "
+        f"bytes={written['bytes']} "
         f"source={source} ratio={written['bytes'] / source:.2f}"
     )
     if check_only:

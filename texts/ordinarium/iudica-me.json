@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.iudica-me",
   "title": "Psalmus Iúdica me",
   "category": "ordinarium",
@@ -9,89 +9,41 @@
   "ids": {
     "next": 125
   },
-  "about": {
-    "pl": "W modlitwach u stopni ołtarza Psalm 42 według numeracji Wulgaty (Ps 43 w numeracji hebrajskiej) odmawiają na przemian kapłan i usługujący. Poprzedza go antyfona „Introíbo ad altáre Dei”, powtarzana po doksologii. We Mszach za zmarłych oraz we Mszach okresowych od Niedzieli Męki Pańskiej do Wielkiego Czwartku włącznie psalm opuszcza się wraz z antyfoną, a od razu następuje Confíteor.",
-    "en": "In the prayers at the foot of the altar, Psalm 42 in the Vulgate numbering (Psalm 43 in Hebrew) is said alternately by the priest and server. The antiphon “Introíbo ad altáre Dei” precedes it and is repeated after the doxology. In Masses for the Dead, and at Masses of the season from Passion Sunday through Maundy Thursday, the psalm is left out with its antiphon and the Confíteor follows at once."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Nova Vulgata, Liber Psalmorum",
-        "locator": "Psalmus 43 (Vg 42)",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
-      }
-    ],
-    "en": [
-      {
-        "title": "Nova Vulgata, Liber Psalmorum",
-        "locator": "Psalmus 43 (Vg 42)",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "In Missis Defunctorum, et in Missis de Tempore a Dominica Passionis usque ad Sabbatum sanctum exclusive, omittitur Psalmus Iúdica me, Deus, cum Glória Patri, et repetitione Antiphonæ, sed dicto In nómine Patris, Introíbo, et Adiutórium, fit conféssio.",
-      "narrative": {
-        "pl": "We Mszach za zmarłych oraz we Mszach okresowych od Niedzieli Męki Pańskiej do Wielkiego Czwartku włącznie opuszcza się psalm, „Glória Patri” i powtórzenie antyfony. Po „In nómine Patris”, antyfonie i „Adiutórium” następuje od razu Confíteor.",
-        "en": "At Masses for the Dead, and at Masses of the season from Passion Sunday through Maundy Thursday, the psalm, the Glória Patri and the repetition of the antiphon are omitted. After In nómine Patris, the antiphon and the Adiutórium, the Confíteor follows at once."
-      },
-      "narrative_citations": {
-        "pl": [
-          {
-            "title": "Missale Romanum (1962)",
-            "locator": "Ordo Missae rubric before Psalm 42",
-            "url": "https://archive.org/details/missale_romanum-1962"
-          }
-        ],
-        "en": [
-          {
-            "title": "Missale Romanum (1962)",
-            "locator": "Ordo Missae rubric before Psalm 42",
-            "url": "https://archive.org/details/missale_romanum-1962"
-          }
-        ]
-      }
+      "text": "In Missis Defunctorum, et in Missis de Tempore a Dominica Passionis usque ad Sabbatum sanctum exclusive, omittitur Psalmus Iúdica me, Deus, cum Glória Patri, et repetitione Antiphonæ, sed dicto In nómine Patris, Introíbo, et Adiutórium, fit conféssio."
     },
     {
       "id": "s02",
       "type": "rubric",
-      "text": "Postea alternatim cum Ministris dicit sequentem:",
-      "narrative": {
-        "pl": "Kapłan odmawia psalm na przemian z usługującymi.",
-        "en": "The priest says the psalm alternately with the ministers."
-      }
+      "text": "Postea alternatim cum Ministris dicit sequentem:"
     },
     {
       "id": "s03",
       "type": "verse",
       "voice": "clara",
       "speaker": "sacerdos",
-      "translation": {
-        "pl": "Osądź mnie, Boże, i rozstrzygnij moją sprawę przeciwko bezbożnemu ludowi. Wybaw mnie od człowieka nieprawego i podstępnego.",
-        "en": "Judge me, O God, and decide my case against an unholy people. Deliver me from an unjust and deceitful man."
-      },
       "words": [
-        { "id": "w001", "form": "Iúdica", "lemma": "iudico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "osądź", "en": "judge" } },
-        { "id": "w002", "form": "me", "post": ",", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" }, "function": { "pl": "Biernik jako dopełnienie „Iúdica” (w001).", "en": "Accusative as the object of “Iúdica” (w001)." } },
-        { "id": "w003", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boże", "en": "God" }, "function": { "pl": "Wołacz: psalmista zwraca się do Boga.", "en": "Vocative: the psalmist addresses God." } },
-        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w005", "form": "discérne", "lemma": "discerno", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "oddziel", "en": "distinguish" } },
-        { "id": "w006", "form": "causam", "lemma": "causa", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "sprawę", "en": "cause" }, "function": { "pl": "Biernik jako dopełnienie „discérne” (w005).", "en": "Accusative as the object of “discérne” (w005)." } },
-        { "id": "w007", "form": "meam", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w006", "gloss": { "pl": "moją", "en": "my" } },
-        { "id": "w008", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w009", "gloss": { "pl": "od", "en": "from" } },
-        { "id": "w009", "form": "gente", "lemma": "gens", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "narodu", "en": "the nation" }, "function": { "pl": "Ablativus wymagany przez „de” (w008).", "en": "Ablative governed by “de” (w008)." } },
-        { "id": "w010", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
-        { "id": "w011", "form": "sancta", "post": ":", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w009", "gloss": { "pl": "świętego", "en": "holy" }, "function": { "pl": "Ablativus. Wraz z „gente” (w009) tworzy wyrażenie „naród nieświęty”.", "en": "Ablative. With “gente” (w009), it forms the phrase “an unholy nation”." } },
-        { "id": "w012", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013", "gloss": { "pl": "od", "en": "from" } },
-        { "id": "w013", "form": "hómine", "lemma": "homo", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "człowieka", "en": "the man" }, "function": { "pl": "Ablativus wymagany przez „ab” (w012).", "en": "Ablative governed by “ab” (w012)." } },
-        { "id": "w014", "form": "iníquo", "lemma": "iniquus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w013", "gloss": { "pl": "niesprawiedliwego", "en": "unjust" }, "function": { "pl": "Ablativus rodzaju męskiego, jak „hómine” (w013).", "en": "Ablative, agreeing with “hómine” (w013)." } },
-        { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w016", "form": "dolóso", "lemma": "dolosus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w013", "gloss": { "pl": "podstępnego", "en": "deceitful" } },
-        { "id": "w017", "form": "érue", "lemma": "eruo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "wyrwij", "en": "deliver" } },
-        { "id": "w018", "form": "me", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" } }
+        { "id": "w001", "form": "Iúdica", "lemma": "iudico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w002", "form": "me", "post": ",", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w003", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "discérne", "lemma": "discerno", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w006", "form": "causam", "lemma": "causa", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w007", "form": "meam", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w006" },
+        { "id": "w008", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w009" },
+        { "id": "w009", "form": "gente", "lemma": "gens", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w010", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w011", "form": "sancta", "post": ":", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w009" },
+        { "id": "w012", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013" },
+        { "id": "w013", "form": "hómine", "lemma": "homo", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w014", "form": "iníquo", "lemma": "iniquus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w013" },
+        { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w016", "form": "dolóso", "lemma": "dolosus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w013" },
+        { "id": "w017", "form": "érue", "lemma": "eruo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w018", "form": "me", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } }
       ]
     },
     {
@@ -105,28 +57,24 @@
           "source": "DMS 31 b"
         }
       },
-      "translation": {
-        "pl": "Bo Ty, Boże, jesteś moją mocą. Dlaczego mnie odrzuciłeś i dlaczego chodzę smutny, gdy gnębi mnie nieprzyjaciel?",
-        "en": "For You, O God, are my strength. Why have You rejected me, and why do I walk in sorrow while the enemy oppresses me?"
-      },
       "words": [
-        { "id": "w019", "form": "Quia", "lemma": "quia", "morph": { "pos": "conj" }, "gloss": { "pl": "bo", "en": "for" } },
-        { "id": "w020", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "Ty", "en": "Thou" }, "function": { "pl": "Wyrażony zaimek podkreśla podmiot: „Ty”.", "en": "The expressed pronoun emphasizes the subject: “Thou”." } },
-        { "id": "w021", "form": "es", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jesteś", "en": "art" } },
-        { "id": "w022", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boże", "en": "God" } },
-        { "id": "w023", "form": "fortitúdo", "lemma": "fortitudo", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "moc", "en": "strength" }, "function": { "pl": "Orzecznik w mianowniku przy „es” (w021).", "en": "A predicate nominative with “es” (w021)." } },
-        { "id": "w024", "form": "mea", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w023", "gloss": { "pl": "moja", "en": "my" }, "function": { "pl": "Mianownik rodzaju żeńskiego, jak „fortitúdo” (w023).", "en": "Feminine nominative, agreeing with “fortitúdo” (w023)." } },
-        { "id": "w025", "form": "quare", "lemma": "quare", "morph": { "pos": "adv" }, "gloss": { "pl": "czemu", "en": "why" } },
-        { "id": "w026", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" } },
-        { "id": "w027", "form": "repulísti", "post": ",", "lemma": "repello", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "odrzuciłeś", "en": "hast Thou cast off" }, "function": { "pl": "Druga osoba liczby pojedynczej perfectum.", "en": "Second-person singular perfect." } },
-        { "id": "w028", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w029", "form": "quare", "lemma": "quare", "morph": { "pos": "adv" }, "gloss": { "pl": "czemu", "en": "why" } },
-        { "id": "w030", "form": "tristis", "lemma": "tristis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w031", "gloss": { "pl": "smutny", "en": "sad" }, "function": { "pl": "Mianownik rodzaju męskiego. Sama forma łacińska może być także żeńska, lecz odpowiadające jej formy hebrajska i grecka są męskie.", "en": "Masculine nominative. The Latin form can also be feminine, but the corresponding Hebrew and Greek forms are masculine." }, "function_citations": { "pl": [{ "title": "Biblia Hebraica Stuttgartensia", "locator": "Psalm 43, 2" }, { "title": "Septuaginta, ed. Rahlfs–Hanhart", "locator": "Psalm 42, 2", "url": "https://www.die-bibel.de/bibel/LXX/PSA.42" }], "en": [{ "title": "Biblia Hebraica Stuttgartensia", "locator": "Psalm 43, 2" }, { "title": "Septuaginta, ed. Rahlfs–Hanhart", "locator": "Psalm 42, 2", "url": "https://www.die-bibel.de/bibel/LXX/PSA.42" }] } },
-        { "id": "w031", "form": "incédo", "post": ",", "lemma": "incedo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "chodzę", "en": "do I go about" } },
-        { "id": "w032", "form": "dum", "lemma": "dum", "morph": { "pos": "conj" }, "gloss": { "pl": "gdy", "en": "while" } },
-        { "id": "w033", "form": "afflígit", "lemma": "affligo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "gnębi", "en": "afflicts" } },
-        { "id": "w034", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" } },
-        { "id": "w035", "form": "inimícus", "post": "?", "lemma": "inimicus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "nieprzyjaciel", "en": "the enemy" }, "function": { "pl": "Mianownik, podmiot „afflígit” (w033).", "en": "Nominative, serving as the subject of “afflígit” (w033)." } }
+        { "id": "w019", "form": "Quia", "lemma": "quia", "morph": { "pos": "conj" } },
+        { "id": "w020", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w021", "form": "es", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w022", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w023", "form": "fortitúdo", "lemma": "fortitudo", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w024", "form": "mea", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w023" },
+        { "id": "w025", "form": "quare", "lemma": "quare", "morph": { "pos": "adv" } },
+        { "id": "w026", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w027", "form": "repulísti", "post": ",", "lemma": "repello", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w028", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w029", "form": "quare", "lemma": "quare", "morph": { "pos": "adv" } },
+        { "id": "w030", "form": "tristis", "lemma": "tristis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w031" },
+        { "id": "w031", "form": "incédo", "post": ",", "lemma": "incedo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w032", "form": "dum", "lemma": "dum", "morph": { "pos": "conj" } },
+        { "id": "w033", "form": "afflígit", "lemma": "affligo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w034", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w035", "form": "inimícus", "post": "?", "lemma": "inimicus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     },
     {
@@ -134,30 +82,26 @@
       "type": "verse",
       "voice": "clara",
       "speaker": "sacerdos",
-      "translation": {
-        "pl": "Ześlij Twoje światło i Twoją prawdę. One mnie poprowadziły i przywiodły na Twoją świętą górę i do Twoich przybytków.",
-        "en": "Send forth Your light and Your truth. They have led me and brought me to Your holy mountain and into Your dwelling places."
-      },
       "words": [
-        { "id": "w036", "form": "Emítte", "lemma": "emitto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "wyślij", "en": "send forth" } },
-        { "id": "w037", "form": "lucem", "lemma": "lux", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "światło", "en": "light" } },
-        { "id": "w038", "form": "tuam", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w037", "gloss": { "pl": "Twoje", "en": "Thy" } },
-        { "id": "w039", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w040", "form": "veritátem", "lemma": "veritas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "prawdę", "en": "truth" } },
-        { "id": "w041", "form": "tuam", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w040", "gloss": { "pl": "Twoją", "en": "Thy" } },
-        { "id": "w042", "form": "ipsa", "lemma": "ipse", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "n" }, "gloss": { "pl": "one", "en": "they" }, "function": { "pl": "Rodzaj nijaki liczby mnogiej odbiega od rodzaju „lucem” (w037) i „veritátem” (w040). Odpowiada greckiemu αὐτά w Septuagincie.", "en": "The neuter plural differs from the gender of “lucem” (w037) and “veritátem” (w040). It corresponds to Greek αὐτά in the Septuagint." }, "function_citations": { "pl": [{ "title": "Septuaginta, ed. Rahlfs–Hanhart", "locator": "Psalm 42:3" }, { "title": "Biblia Sacra Vulgata", "locator": "Psalm 42:3" }], "en": [{ "title": "Septuaginta, ed. Rahlfs–Hanhart", "locator": "Psalm 42:3" }, { "title": "Biblia Sacra Vulgata", "locator": "Psalm 42:3" }] } },
-        { "id": "w043", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" } },
-        { "id": "w044", "form": "deduxérunt", "post": ",", "lemma": "deduco", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "poprowadziły", "en": "have led" }, "function": { "pl": "Trzecia osoba liczby mnogiej perfectum. Podmiotem są „lucem” (w037) i „veritátem” (w040).", "en": "Third-person plural perfect. Its subjects are “lucem” (w037) and “veritátem” (w040)." } },
-        { "id": "w045", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w046", "form": "adduxérunt", "lemma": "adduco", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "przywiodły", "en": "have brought" } },
-        { "id": "w047", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w048", "gloss": { "pl": "na", "en": "to" }, "function": { "pl": "„In” z biernikiem wskazuje kierunek ruchu.", "en": "“In” with the accusative marks direction of motion." } },
-        { "id": "w048", "form": "montem", "lemma": "mons", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "górę", "en": "the mountain" } },
-        { "id": "w049", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w048", "gloss": { "pl": "świętą", "en": "holy" } },
-        { "id": "w050", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w048", "gloss": { "pl": "Twoją", "en": "Thy" } },
-        { "id": "w051", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w052", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w053", "gloss": { "pl": "do", "en": "into" } },
-        { "id": "w053", "form": "tabernácula", "lemma": "tabernaculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "przybytków", "en": "the tabernacles" }, "function": { "pl": "Biernik liczby mnogiej wymagany przez kierunkowe „in” (w052).", "en": "Accusative plural governed by directional “in” (w052)." } },
-        { "id": "w054", "form": "tua", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w053", "gloss": { "pl": "Twoich", "en": "Thy" } }
+        { "id": "w036", "form": "Emítte", "lemma": "emitto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w037", "form": "lucem", "lemma": "lux", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w038", "form": "tuam", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w037" },
+        { "id": "w039", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w040", "form": "veritátem", "lemma": "veritas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w041", "form": "tuam", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w040" },
+        { "id": "w042", "form": "ipsa", "lemma": "ipse", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "n" } },
+        { "id": "w043", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w044", "form": "deduxérunt", "post": ",", "lemma": "deduco", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w045", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w046", "form": "adduxérunt", "lemma": "adduco", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w047", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w048" },
+        { "id": "w048", "form": "montem", "lemma": "mons", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w049", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w048" },
+        { "id": "w050", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w048" },
+        { "id": "w051", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w052", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w053" },
+        { "id": "w053", "form": "tabernácula", "lemma": "tabernaculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w054", "form": "tua", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w053" }
       ]
     },
     {
@@ -171,22 +115,18 @@
           "source": "DMS 31 b"
         }
       },
-      "translation": {
-        "pl": "I przystąpię do ołtarza Bożego, do Boga, który rozwesela moją młodość.",
-        "en": "And I will go to the altar of God, to God, who gladdens my youth."
-      },
       "words": [
-        { "id": "w055", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w056", "form": "introíbo", "lemma": "introeo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act" }, "gloss": { "pl": "przystąpię", "en": "I will go in" }, "function": { "pl": "W liturgii mszalnej wiersz ten służy jako antyfona przed psalmem i po nim.", "en": "In the Mass this verse serves as the antiphon before and after the psalm." } },
-        { "id": "w057", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w058", "gloss": { "pl": "do", "en": "unto" } },
-        { "id": "w058", "form": "altáre", "lemma": "altare", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "ołtarza", "en": "the altar" } },
-        { "id": "w059", "form": "Dei", "post": ":", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" }, "function": { "pl": "Dopełniacz zależny od „altáre” (w058): ołtarz Boga.", "en": "A genitive dependent on “altáre” (w058): the altar of God." } },
-        { "id": "w060", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w061", "gloss": { "pl": "do", "en": "to" } },
-        { "id": "w061", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } },
-        { "id": "w062", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" }, "function": { "pl": "Mianownik i podmiot „lætíficat” (w063). Poprzednik „Deum” (w061) stoi w bierniku.", "en": "Nominative and the subject of “lætíficat” (w063). Its antecedent “Deum” (w061) is accusative." } },
-        { "id": "w063", "form": "lætíficat", "lemma": "laetifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "rozwesela", "en": "gladdens" } },
-        { "id": "w064", "form": "iuventútem", "lemma": "iuventus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "młodość", "en": "youth" }, "function": { "pl": "Hebrajski tekst mówi o radości, natomiast „młodość” występuje w Septuagincie, za którą podąża tutaj łacina.", "en": "The Hebrew text speaks of joy, while “youth” appears in the Septuagint, which the Latin follows here." }, "function_citations": { "pl": [{ "title": "Biblia Hebraica Stuttgartensia", "locator": "Psalm 43:4" }, { "title": "Septuaginta, ed. Rahlfs–Hanhart", "locator": "Psalm 42:4" }, { "title": "Biblia Sacra Vulgata", "locator": "Psalm 42:4" }], "en": [{ "title": "Biblia Hebraica Stuttgartensia", "locator": "Psalm 43:4" }, { "title": "Septuaginta, ed. Rahlfs–Hanhart", "locator": "Psalm 42:4" }, { "title": "Biblia Sacra Vulgata", "locator": "Psalm 42:4" }] } },
-        { "id": "w065", "form": "meam", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w064", "gloss": { "pl": "moją", "en": "my" } }
+        { "id": "w055", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w056", "form": "introíbo", "lemma": "introeo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act" } },
+        { "id": "w057", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w058" },
+        { "id": "w058", "form": "altáre", "lemma": "altare", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w059", "form": "Dei", "post": ":", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w060", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w061" },
+        { "id": "w061", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w062", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w063", "form": "lætíficat", "lemma": "laetifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w064", "form": "iuventútem", "lemma": "iuventus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w065", "form": "meam", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w064" }
       ]
     },
     {
@@ -194,27 +134,23 @@
       "type": "verse",
       "voice": "clara",
       "speaker": "sacerdos",
-      "translation": {
-        "pl": "Będę Cię wysławiał przy dźwięku cytry, Boże, mój Boże. Dlaczego jesteś smutna, duszo moja, i dlaczego mnie niepokoisz?",
-        "en": "I will praise You on the lyre, O God, my God. Why are you sad, my soul, and why do you disturb me?"
-      },
       "words": [
-        { "id": "w066", "form": "Confitébor", "lemma": "confiteor", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "dep", "conj": 2 }, "gloss": { "pl": "będę wysławiał", "en": "I will praise" }, "function": { "pl": "Czasownik „confitéri” może znaczyć „wyznawać” albo „wysławiać”. Tutaj ma drugie znaczenie.", "en": "The verb “confitéri” can mean “confess” or “praise”. Here it bears the latter sense." } },
-        { "id": "w067", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Ciebie", "en": "Thee" }, "function": { "pl": "Celownik osoby przy „Confitébor” (w066). Po polsku biernik, za rządem „wysławiać”.", "en": "Dative of the person with “Confitébor” (w066)." } },
-        { "id": "w068", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w069", "gloss": { "pl": "na", "en": "on" } },
-        { "id": "w069", "form": "cíthara", "post": ",", "lemma": "cithara", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "cytrze", "en": "the harp" }, "function": { "pl": "Ablativus wymagany przez „in” (w068).", "en": "Ablative governed by “in” (w068)." } },
-        { "id": "w070", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boże", "en": "God" } },
-        { "id": "w071", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boże", "en": "God" } },
-        { "id": "w072", "form": "meus", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w071", "gloss": { "pl": "mój", "en": "my" }, "function": { "pl": "Forma „meus” jest mianownikiem. Zwykły męski wołacz tego zaimka to „mi”, lecz psałterz go tutaj nie używa.", "en": "The form “meus” is nominative. Its regular masculine vocative is “mi”, which the psalter does not use here." } },
-        { "id": "w073", "form": "quare", "lemma": "quare", "morph": { "pos": "adv" }, "gloss": { "pl": "czemu", "en": "why" } },
-        { "id": "w074", "form": "tristis", "lemma": "tristis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w075", "gloss": { "pl": "smutna", "en": "sad" }, "function": { "pl": "Rodzaj żeński wynika ze zgody z „ánima” (w076).", "en": "Feminine through agreement with “ánima” (w076)." } },
-        { "id": "w075", "form": "es", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jesteś", "en": "art thou" } },
-        { "id": "w076", "form": "ánima", "lemma": "anima", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "duszo", "en": "soul" }, "function": { "pl": "Wołacz: psalmista zwraca się do własnej duszy.", "en": "Vocative: the psalmist addresses his own soul." } },
-        { "id": "w077", "form": "mea", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w076", "gloss": { "pl": "moja", "en": "my" } },
-        { "id": "w078", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w079", "form": "quare", "lemma": "quare", "morph": { "pos": "adv" }, "gloss": { "pl": "czemu", "en": "why" } },
-        { "id": "w080", "form": "contúrbas", "lemma": "conturbo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "niepokoisz", "en": "dost thou disquiet" } },
-        { "id": "w081", "form": "me", "post": "?", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" } }
+        { "id": "w066", "form": "Confitébor", "lemma": "confiteor", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "dep", "conj": 2 } },
+        { "id": "w067", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w068", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w069" },
+        { "id": "w069", "form": "cíthara", "post": ",", "lemma": "cithara", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w070", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w071", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w072", "form": "meus", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w071" },
+        { "id": "w073", "form": "quare", "lemma": "quare", "morph": { "pos": "adv" } },
+        { "id": "w074", "form": "tristis", "lemma": "tristis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w075" },
+        { "id": "w075", "form": "es", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w076", "form": "ánima", "lemma": "anima", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w077", "form": "mea", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w076" },
+        { "id": "w078", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w079", "form": "quare", "lemma": "quare", "morph": { "pos": "adv" } },
+        { "id": "w080", "form": "contúrbas", "lemma": "conturbo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w081", "form": "me", "post": "?", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } }
       ]
     },
     {
@@ -228,24 +164,20 @@
           "source": "DMS 31 b"
         }
       },
-      "translation": {
-        "pl": "Miej nadzieję w Bogu, bo jeszcze będę Go wysławiał. On jest zbawieniem mojego oblicza i moim Bogiem.",
-        "en": "Hope in God, for I will yet praise Him. He is the salvation of my countenance and my God."
-      },
       "words": [
-        { "id": "w082", "form": "Spera", "lemma": "spero", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "miej nadzieję", "en": "hope" }, "function": { "pl": "Tryb rozkazujący skierowany do ánima mea w poprzednim zdaniu.", "en": "An imperative addressed to ánima mea in the preceding sentence." } },
-        { "id": "w083", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w084", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w084", "form": "Deo", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bogu", "en": "God" }, "function": { "pl": "Ablativus wymagany przez „in” (w083).", "en": "Ablative governed by “in” (w083)." } },
-        { "id": "w085", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" }, "gloss": { "pl": "bo", "en": "for" } },
-        { "id": "w086", "form": "adhuc", "lemma": "adhuc", "morph": { "pos": "adv" }, "gloss": { "pl": "jeszcze", "en": "still" } },
-        { "id": "w087", "form": "confitébor", "lemma": "confiteor", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "dep", "conj": 2 }, "gloss": { "pl": "będę wysławiał", "en": "I will praise" } },
-        { "id": "w088", "form": "illi", "post": ":", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" }, "gloss": { "pl": "Go", "en": "Him" }, "function": { "pl": "Celownik osoby przy „confitébor” (w087). Po polsku biernik, za rządem „wysławiać”.", "en": "Dative of the person with “confitébor” (w087)." } },
-        { "id": "w089", "form": "salutáre", "lemma": "salutare", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "zbawienie", "en": "the salvation" }, "function": { "pl": "Mianownik w dopowiedzeniu odnoszącym się do „illi” (w088).", "en": "Nominative in an apposition referring to “illi” (w088)." } },
-        { "id": "w090", "form": "vultus", "lemma": "vultus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "oblicza", "en": "of countenance" }, "function": { "pl": "Dopełniacz deklinacji IV, o tej samej postaci co mianownik. Przypadek potwierdza „mei” (w091).", "en": "A 4th-declension genitive, with the same form as the nominative. “mei” (w091) confirms the case." } },
-        { "id": "w091", "form": "mei", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w090", "gloss": { "pl": "mojego", "en": "my" } },
-        { "id": "w092", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w093", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bóg", "en": "God" }, "function": { "pl": "Mianownik. Razem z „salutáre” (w089) odnosi się do „illi” (w088).", "en": "Nominative. Together with “salutáre” (w089), it refers to “illi” (w088)." } },
-        { "id": "w094", "form": "meus", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w093", "gloss": { "pl": "mój", "en": "my" } }
+        { "id": "w082", "form": "Spera", "lemma": "spero", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w083", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w084" },
+        { "id": "w084", "form": "Deo", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w085", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
+        { "id": "w086", "form": "adhuc", "lemma": "adhuc", "morph": { "pos": "adv" } },
+        { "id": "w087", "form": "confitébor", "lemma": "confiteor", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "dep", "conj": 2 } },
+        { "id": "w088", "form": "illi", "post": ":", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" } },
+        { "id": "w089", "form": "salutáre", "lemma": "salutare", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w090", "form": "vultus", "lemma": "vultus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w091", "form": "mei", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w090" },
+        { "id": "w092", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w093", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w094", "form": "meus", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w093" }
       ]
     },
     {
@@ -253,27 +185,14 @@
       "type": "verse",
       "voice": "clara",
       "speaker": "sacerdos",
-      "translation": {
-        "pl": "Chwała Ojcu i Synowi, i Duchowi Świętemu.",
-        "en": "Glory be to the Father, and to the Son, and to the Holy Spirit."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Książka do nabożeństwa (1883)",
-            "locator": "printed p. 498",
-            "url": "https://commons.wikimedia.org/wiki/File:Ksi%C4%85%C5%BCka_do_nabo%C5%BCe%C5%84stwa_O._Karola_Antoniewicza.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w095", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwała", "en": "glory" }, "function": { "pl": "Mianownik w zdaniu bez czasownika. Domyślne brzmienie: niech będzie chwała.", "en": "Nominative in a verbless sentence. The sense is: may glory be." } },
-        { "id": "w096", "form": "Patri", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcu", "en": "to the Father" }, "function": { "pl": "Celownik wskazujący adresata chwały.", "en": "Dative marking the recipient of glory." } },
-        { "id": "w097", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w098", "form": "Fílio", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Synowi", "en": "to the Son" } },
-        { "id": "w099", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w100", "form": "Spirítui", "lemma": "spiritus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Duchowi", "en": "to the Spirit" } },
-        { "id": "w101", "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w100", "gloss": { "pl": "Świętemu", "en": "Holy" } }
+        { "id": "w095", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w096", "form": "Patri", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w097", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w098", "form": "Fílio", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w099", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w100", "form": "Spirítui", "lemma": "spiritus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w101", "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w100" }
       ]
     },
     {
@@ -287,65 +206,37 @@
           "source": "DMS 31 b"
         }
       },
-      "translation": {
-        "pl": "Jak była na początku, teraz i zawsze, i na wieki wieków. Amen.",
-        "en": "As it was in the beginning, is now, and ever shall be, world without end. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Książka do nabożeństwa (1883)",
-            "locator": "printed p. 498",
-            "url": "https://commons.wikimedia.org/wiki/File:Ksi%C4%85%C5%BCka_do_nabo%C5%BCe%C5%84stwa_O._Karola_Antoniewicza.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 55",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w102", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" }, "gloss": { "pl": "jak", "en": "as" } },
-        { "id": "w103", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "była", "en": "it was" } },
-        { "id": "w104", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w105", "gloss": { "pl": "na", "en": "in" } },
-        { "id": "w105", "form": "princípio", "post": ",", "lemma": "principium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "początku", "en": "the beginning" }, "function": { "pl": "Ablativus wymagany przez czasowe „in” (w104).", "en": "Ablative governed by temporal “in” (w104)." } },
-        { "id": "w106", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w107", "form": "nunc", "post": ",", "lemma": "nunc", "morph": { "pos": "adv" }, "gloss": { "pl": "teraz", "en": "now" } },
-        { "id": "w108", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w109", "form": "semper", "post": ":", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "ever" } },
-        { "id": "w110", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w111", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w112", "gloss": { "pl": "na", "en": "unto" }, "function": { "pl": "Przyimek z biernikiem, należący do wyrażenia „na wieki wieków”.", "en": "A preposition with the accusative, forming part of the phrase “unto ages of ages”." } },
-        { "id": "w112", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieki", "en": "ages" } },
-        { "id": "w113", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieków", "en": "of ages" }, "function": { "pl": "Dopełniacz liczby mnogiej zależny od „sǽcula” (w112).", "en": "Genitive plural dependent on “sǽcula” (w112)." } },
-        { "id": "w114", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w102", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
+        { "id": "w103", "form": "erat", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "ind", "voice": "act" } },
+        { "id": "w104", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w105" },
+        { "id": "w105", "form": "princípio", "post": ",", "lemma": "principium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w106", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w107", "form": "nunc", "post": ",", "lemma": "nunc", "morph": { "pos": "adv" } },
+        { "id": "w108", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w109", "form": "semper", "post": ":", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w110", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w111", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w112" },
+        { "id": "w112", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w113", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w114", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     },
     {
       "id": "s11",
       "type": "rubric",
-      "text": "Sacerdos repetit Antiphonam:",
-      "narrative": {
-        "pl": "Kapłan powtarza antyfonę.",
-        "en": "The priest repeats the antiphon."
-      }
+      "text": "Sacerdos repetit Antiphonam:"
     },
     {
       "id": "s12",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Przystąpię do ołtarza Bożego.",
-        "en": "I will go to the altar of God."
-      },
       "words": [
-        { "id": "w115", "form": "Introíbo", "lemma": "introeo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act" }, "gloss": { "pl": "przystąpię", "en": "I will go in" } },
-        { "id": "w116", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w117", "gloss": { "pl": "do", "en": "unto" } },
-        { "id": "w117", "form": "altáre", "lemma": "altare", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "ołtarza", "en": "the altar" } },
-        { "id": "w118", "form": "Dei", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" } }
+        { "id": "w115", "form": "Introíbo", "lemma": "introeo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act" } },
+        { "id": "w116", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w117" },
+        { "id": "w117", "form": "altáre", "lemma": "altare", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w118", "form": "Dei", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     },
     {
@@ -359,17 +250,13 @@
           "source": "DMS 31 b"
         }
       },
-      "translation": {
-        "pl": "Do Boga, który rozwesela moją młodość.",
-        "en": "To God, who gladdens my youth."
-      },
       "words": [
-        { "id": "w119", "form": "Ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w120", "gloss": { "pl": "do", "en": "to" } },
-        { "id": "w120", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" } },
-        { "id": "w121", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
-        { "id": "w122", "form": "lætíficat", "lemma": "laetifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "rozwesela", "en": "gladdens" } },
-        { "id": "w123", "form": "iuventútem", "lemma": "iuventus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "młodość", "en": "youth" } },
-        { "id": "w124", "form": "meam", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w123", "gloss": { "pl": "moją", "en": "my" } }
+        { "id": "w119", "form": "Ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w120" },
+        { "id": "w120", "form": "Deum", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w121", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w122", "form": "lætíficat", "lemma": "laetifico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w123", "form": "iuventútem", "lemma": "iuventus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w124", "form": "meam", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w123" }
       ]
     }
   ],
@@ -391,6 +278,173 @@
     "words": {
       "w033": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w072": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Nova Vulgata, Liber Psalmorum",
+        "locator": "Psalmus 43 (Vg 42)",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
+      }
+    ],
+    "functions": {
+      "w002": {
+
+      },
+      "w003": {
+
+      },
+      "w006": {
+
+      },
+      "w009": {
+
+      },
+      "w011": {
+
+      },
+      "w013": {
+
+      },
+      "w014": {
+
+      },
+      "w020": {
+
+      },
+      "w023": {
+
+      },
+      "w024": {
+
+      },
+      "w027": {
+
+      },
+      "w030": {
+        "citations": [
+          {
+            "title": "Biblia Hebraica Stuttgartensia",
+            "locator": "Psalm 43, 2"
+          },
+          {
+            "title": "Septuaginta, ed. Rahlfs–Hanhart",
+            "locator": "Psalm 42, 2",
+            "url": "https://www.die-bibel.de/bibel/LXX/PSA.42"
+          }
+        ]
+      },
+      "w035": {
+
+      },
+      "w042": {
+        "citations": [
+          {
+            "title": "Septuaginta, ed. Rahlfs–Hanhart",
+            "locator": "Psalm 42:3"
+          },
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Psalm 42:3"
+          }
+        ]
+      },
+      "w044": {
+
+      },
+      "w047": {
+
+      },
+      "w053": {
+
+      },
+      "w056": {
+
+      },
+      "w059": {
+
+      },
+      "w062": {
+
+      },
+      "w064": {
+        "citations": [
+          {
+            "title": "Biblia Hebraica Stuttgartensia",
+            "locator": "Psalm 43:4"
+          },
+          {
+            "title": "Septuaginta, ed. Rahlfs–Hanhart",
+            "locator": "Psalm 42:4"
+          },
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Psalm 42:4"
+          }
+        ]
+      },
+      "w066": {
+
+      },
+      "w067": {
+
+      },
+      "w069": {
+
+      },
+      "w072": {
+
+      },
+      "w074": {
+
+      },
+      "w076": {
+
+      },
+      "w082": {
+
+      },
+      "w084": {
+
+      },
+      "w088": {
+
+      },
+      "w089": {
+
+      },
+      "w090": {
+
+      },
+      "w093": {
+
+      },
+      "w095": {
+
+      },
+      "w096": {
+
+      },
+      "w105": {
+
+      },
+      "w111": {
+
+      },
+      "w113": {
+
+      }
+    },
+    "narrative_citations": {
+      "s01": [
+        {
+          "title": "Missale Romanum (1962)",
+          "locator": "Ordo Missae rubric before Psalm 42",
+          "url": "https://archive.org/details/missale_romanum-1962"
+        }
+      ]
     }
   }
 }

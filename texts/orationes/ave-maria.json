@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "orationes.ave-maria",
   "title": "Ave María",
   "category": "orationes",
@@ -9,119 +9,49 @@
   "ids": {
     "next": 32
   },
-  "about": {
-    "pl": "Pierwsza część Pozdrowienia anielskiego łączy słowa Gabriela (Łk 1, 28) i Elżbiety (Łk 1, 42), a w żadnym z tych wersetów nie ma imion Maryja i Jezus, które dodaje modlitwa. Druga część, prośba skierowana do Maryi, pochodzi z XVI wieku.",
-    "en": "The first part of the Hail Mary joins Gabriel's words (Lk 1:28) to Elizabeth's (Lk 1:42), and neither verse carries the names Maria and Iesus that the prayer supplies. The second part, the petition addressed to Mary, is of the sixteenth century."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Nova Vulgata, Evangelium secundum Lucam",
-        "locator": "1, 28; 1, 42",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-lucam_lt.html#1"
-      }
-    ],
-    "en": [
-      {
-        "title": "Nova Vulgata, Evangelium secundum Lucam",
-        "locator": "1, 28; 1, 42",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-lucam_lt.html#1"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
-      "translation": {
-        "pl": "Zdrowaś Maryjo, łaski pełna, Pan z Tobą, błogosławionaś Ty między niewiastami i błogosławiony owoc żywota Twojego, Jezus.",
-        "en": "Hail Mary, full of grace, the Lord is with thee, blessed art thou among women, and blessed is the fruit of thy womb, Jesus."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Książka do nabożeństwa (1883)",
-            "locator": "printed pp. 2–3",
-            "url": "https://commons.wikimedia.org/wiki/File:Ksi%C4%85%C5%BCka_do_nabo%C5%BCe%C5%84stwa_O._Karola_Antoniewicza.djvu"
-          },
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 11",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 9–10",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Ave", "lemma": "aveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "zdrowaś", "en": "hail" }, "function": { "pl": "Pozdrowienie anioła w Łk 1, 28.", "en": "The angel's greeting in Lk 1:28." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "Luke 1:28" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "Luke 1:28" }] } },
-        { "id": "w002", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryjo", "en": "Mary" } },
-        { "id": "w003", "form": "grátia", "lemma": "gratia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "łaski", "en": "with grace" }, "function": { "pl": "Ablativus zależny od „plena” (w004). Po polsku dopełniacz: „łaski pełna”.", "en": "Ablative complement of “plena” (w004)." } },
-        { "id": "w004", "form": "plena", "post": ";", "lemma": "plenus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w002", "gloss": { "pl": "pełna", "en": "full" }, "function": { "pl": "Zgadza się z „María” (w002) i łączy z „grátia” (w003).", "en": "Agrees with “María” (w002) and takes “grátia” (w003)." } },
-        { "id": "w005", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "the Lord" }, "function": { "pl": "Podmiot zdania z domyślnym „est”: Pan [jest] z Tobą.", "en": "Subject with an understood “est”: the Lord [is] with thee." } },
-        { "id": "w006", "form": "tecum", "post": ":", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "gloss": { "pl": "z Tobą", "en": "with thee" }, "function": { "pl": "Połączenie „te” i „cum”. Przy zaimkach osobowych „cum” stoi po zaimku.", "en": "A combination of “te” and “cum”. With personal pronouns, “cum” follows the pronoun." } },
-        { "id": "w007", "form": "benedícta", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w008", "gloss": { "pl": "błogosławiona", "en": "blessed" }, "function": { "pl": "„Benedícta [es] tu” — z domyślnym „es”.", "en": "“Benedícta [es] tu” — with “es” understood." } },
-        { "id": "w008", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "Ty", "en": "thou" } },
-        { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010", "gloss": { "pl": "między", "en": "among" } },
-        { "id": "w010", "form": "muliéribus", "post": ",", "lemma": "mulier", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "niewiastami", "en": "women" } },
-        { "id": "w011", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w012", "form": "benedíctus", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w013", "gloss": { "pl": "błogosławiony", "en": "blessed" }, "function": { "pl": "Zgadza się z „fructus” (w013) i dlatego ma rodzaj męski.", "en": "Masculine in agreement with “fructus” (w013)." } },
-        { "id": "w013", "form": "fructus", "lemma": "fructus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "owoc", "en": "fruit" } },
-        { "id": "w014", "form": "ventris", "lemma": "venter", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "żywota", "en": "of the womb" }, "function": { "pl": "Dopełniacz zależny od „fructus” (w013).", "en": "A genitive dependent on “fructus” (w013)." } },
-        { "id": "w015", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w014", "gloss": { "pl": "Twojego", "en": "thy" }, "function": { "pl": "Zgadza się z „ventris” (w014).", "en": "Agrees with “ventris” (w014)." } },
-        { "id": "w016", "form": "Iesus", "post": ".", "lemma": "Iesus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezus", "en": "Jesus" }, "function": { "pl": "Apozycja (dopowiedzenie) do „fructus” (w013): owoc… — Jezus.", "en": "Apposition to “fructus” (w013): the fruit… — Iesus." } }
+        { "id": "w001", "form": "Ave", "lemma": "aveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w002", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w003", "form": "grátia", "lemma": "gratia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w004", "form": "plena", "post": ";", "lemma": "plenus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w002" },
+        { "id": "w005", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w006", "form": "tecum", "post": ":", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w007", "form": "benedícta", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w008" },
+        { "id": "w008", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010" },
+        { "id": "w010", "form": "muliéribus", "post": ",", "lemma": "mulier", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w011", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w012", "form": "benedíctus", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w013" },
+        { "id": "w013", "form": "fructus", "lemma": "fructus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w014", "form": "ventris", "lemma": "venter", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w015", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w014" },
+        { "id": "w016", "form": "Iesus", "post": ".", "lemma": "Iesus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" } }
       ]
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "omnes",
-      "translation": {
-        "pl": "Święta Maryjo, Matko Boża, módl się za nami grzesznymi teraz i w godzinę śmierci naszej. Amen.",
-        "en": "Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Książka do nabożeństwa (1883)",
-            "locator": "printed p. 3",
-            "url": "https://commons.wikimedia.org/wiki/File:Ksi%C4%85%C5%BCka_do_nabo%C5%BCe%C5%84stwa_O._Karola_Antoniewicza.djvu"
-          },
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 11",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 10",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w017", "form": "Sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w018", "gloss": { "pl": "Święta", "en": "Holy" }, "function": { "pl": "Zgadza się z „María” (w018).", "en": "Agrees with “María” (w018)." } },
-        { "id": "w018", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryjo", "en": "Mary" } },
-        { "id": "w019", "form": "Mater", "lemma": "mater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Matko", "en": "Mother" }, "function": { "pl": "Apozycja (dopowiedzenie) do „María” (w018).", "en": "Apposition to “María” (w018)." } },
-        { "id": "w020", "form": "Dei", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" }, "function": { "pl": "Dopełniacz zależny od „Mater”: Matka Boga.", "en": "Genitive dependent on “Mater”: Mother of God." } },
-        { "id": "w021", "form": "ora", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "módl się", "en": "pray" } },
-        { "id": "w022", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w023", "gloss": { "pl": "za", "en": "for" } },
-        { "id": "w023", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "nami", "en": "us" }, "function": { "pl": "Ablativus po „pro” (w022).", "en": "Ablative after “pro” (w022)." } },
-        { "id": "w024", "form": "peccatóribus", "post": ",", "lemma": "peccator", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "grzesznikami", "en": "sinners" }, "function": { "pl": "Apozycja (dopowiedzenie) do „nobis” (w023).", "en": "Apposition to “nobis” (w023)." } },
-        { "id": "w025", "form": "nunc", "lemma": "nunc", "morph": { "pos": "adv" }, "gloss": { "pl": "teraz", "en": "now" } },
-        { "id": "w026", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w027", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w028", "gloss": { "pl": "w", "en": "at" } },
-        { "id": "w028", "form": "hora", "lemma": "hora", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "godzinie", "en": "the hour" }, "function": { "pl": "Ablativus po „in” (w027) w określeniu czasu.", "en": "Ablative after “in” (w027) in a temporal phrase." } },
-        { "id": "w029", "form": "mortis", "lemma": "mors", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "śmierci", "en": "of death" }, "function": { "pl": "Dopełniacz zależny od „hora” (w028).", "en": "Genitive dependent on “hora” (w028)." } },
-        { "id": "w030", "form": "nostræ", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w029", "gloss": { "pl": "naszej", "en": "our" }, "function": { "pl": "Zgadza się z „mortis” (w029).", "en": "Agrees with “mortis” (w029)." } },
-        { "id": "w031", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w017", "form": "Sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w018" },
+        { "id": "w018", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w019", "form": "Mater", "lemma": "mater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w020", "form": "Dei", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w021", "form": "ora", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w022", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w023" },
+        { "id": "w023", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
+        { "id": "w024", "form": "peccatóribus", "post": ",", "lemma": "peccator", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w025", "form": "nunc", "lemma": "nunc", "morph": { "pos": "adv" } },
+        { "id": "w026", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w027", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w028" },
+        { "id": "w028", "form": "hora", "lemma": "hora", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w029", "form": "mortis", "lemma": "mors", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w030", "form": "nostræ", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w029" },
+        { "id": "w031", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -135,5 +65,76 @@
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Nova Vulgata, Evangelium secundum Lucam",
+        "locator": "1, 28; 1, 42",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_evang-lucam_lt.html#1"
+      }
+    ],
+    "functions": {
+      "w001": {
+        "citations": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "Luke 1:28"
+          }
+        ]
+      },
+      "w003": {
+
+      },
+      "w004": {
+
+      },
+      "w005": {
+
+      },
+      "w006": {
+
+      },
+      "w007": {
+
+      },
+      "w012": {
+
+      },
+      "w014": {
+
+      },
+      "w015": {
+
+      },
+      "w016": {
+
+      },
+      "w017": {
+
+      },
+      "w019": {
+
+      },
+      "w020": {
+
+      },
+      "w023": {
+
+      },
+      "w024": {
+
+      },
+      "w028": {
+
+      },
+      "w029": {
+
+      },
+      "w030": {
+
+      }
+    }
   }
 }

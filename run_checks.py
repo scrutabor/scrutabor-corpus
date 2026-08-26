@@ -28,6 +28,9 @@ from checks.identity import check as check_identity
 from checks.identity import check_against_history, resolve_ref
 from checks.incipit import check as check_incipit
 from checks.kalendarium import check as check_kalendarium
+from checks.language_packs import check_core as check_language_core
+from checks.language_packs import check_layer as check_language_layer
+from checks.language_packs import check_manifests as check_language_manifests
 from checks.lexicon import (
     check_derivative_homes,
     check_note_prose,
@@ -35,7 +38,6 @@ from checks.lexicon import (
     check_paradigm,
     check_text_against_lexicon,
     lint_lemmata,
-    lint_sense_parity,
     lint_senses,
     load_lexicon,
 )
@@ -46,7 +48,6 @@ from checks.lint import (
     lint_gloss,
     lint_notes,
     lint_nulls,
-    lint_parity,
     lint_rubrics,
     lint_text,
 )
@@ -89,7 +90,14 @@ def check_schema_versions() -> list[str]:
     """SCHEMA.md: schema_version is corpus-wide — every document carries the
     same number. Reads every document; zero documents is itself a failure."""
     versions: dict[str, list[str]] = {}
-    for path in sorted(CORPUS.glob("texts/*/*.json")) + sorted(CORPUS.glob("lexicon/*.json")):
+    paths = [
+        *sorted(CORPUS.glob("texts/*/*.json")),
+        CORPUS / "lexicon/lemmata.json",
+        *sorted(CORPUS.glob("languages/*/manifest.json")),
+        *sorted(CORPUS.glob("languages/*/lexicon.json")),
+        *sorted(CORPUS.glob("languages/*/texts/*/*.json")),
+    ]
+    for path in paths:
         doc = json.loads(path.read_text(encoding="utf-8"))
         versions.setdefault(str(doc.get("schema_version")), []).append(
             str(path.relative_to(CORPUS))
@@ -110,9 +118,12 @@ def lexicon_suite(used_lemmas=None) -> int:
     # they find, and a null `note` reaches checks/lexicon.py as a TypeError for
     # the same reason a null gloss reached checks/lint.py as one.
     holes = []
-    for path in sorted(CORPUS.glob("lexicon/*.json")):
+    for path in [
+        CORPUS / "lexicon/lemmata.json",
+        *sorted(CORPUS.glob("languages/*/lexicon.json")),
+    ]:
         data = json.loads(path.read_text(encoding="utf-8"))
-        holes += lint_nulls(data, f"lexicon:{data.get('lang', path.stem)}")
+        holes += lint_nulls(data, f"lexicon:{data.get('language', path.stem)}")
     if holes:
         for hole in holes:
             print(f"ERROR: {hole}")
@@ -128,12 +139,18 @@ def lexicon_suite(used_lemmas=None) -> int:
     if "en" in langs:
         errors += check_orthography_lexicon(langs["en"])
     for lang, entries in sorted(langs.items()):
-        errors += lint_senses(lang, entries, lemmata)
-    errors += lint_sense_parity(langs)
+        covered = set(store.language_manifest(CORPUS, lang).get("texts") or [])
+        required = {
+            word["lemma"]
+            for text_id in covered
+            for segment in store.load(CORPUS, text_id)[0]["segments"]
+            for word in segment.get("words") or []
+        }
+        errors += lint_senses(lang, entries, lemmata, required)
     if used_lemmas is not None:
         errors += check_orphans(lemmata, used_lemmas)
-    for path in sorted(CORPUS.glob("lexicon/*.json")):
-        data = json.loads(path.read_text())
+    for lang, entries in sorted(langs.items()):
+        data = {"language": lang, "entries": entries}
         errors += check_derivative_homes(data)
         errors += check_note_prose(data)
         errors += check_prose_lexicon(data)
@@ -149,21 +166,19 @@ def lexicon_suite(used_lemmas=None) -> int:
 
 def main(text_id: str) -> int:
     text_path = store.path_of(CORPUS, text_id)
-    # ONE document on disk, three in hand. The checks are each right about
-    # their own job -- check_polish asks about one language and should keep
-    # asking about one language -- so the seam is here (build_reader/store.py)
-    # and not in twenty modules.
+    # One neutral core and every published language layer in hand. Each check
+    # still asks the language-specific question it was written to ask.
     doc, gloss_layers = store.load(CORPUS, text_id)
-    # A few questions are about the document AS STORED and cannot be asked of
-    # the split: a null belongs to no language, and what a file claims about
-    # itself is a fact about that file.
-    stored = store.joined(CORPUS, text_id)
+    stored = store.core(CORPUS, text_id)
 
     # A hole is a SHAPE fault and everything below reads shapes. `gloss.pl =
     # null` arrived in checks/lint.py as a TypeError naming a line of this
     # package rather than as a diagnosis naming the word (census, 2026-08-19),
     # so the document is refused here instead of read past.
     holes = lint_nulls(stored)
+    for language in store.languages_for(CORPUS, text_id):
+        raw = store.raw_layer(CORPUS, language, text_id)
+        holes += lint_nulls(raw, f"{language}:{text_id}")
     if holes:
         for hole in holes:
             print(f"ERROR: {hole}")
@@ -174,6 +189,14 @@ def main(text_id: str) -> int:
         return 1
 
     all_errors, all_warnings = [], []
+    all_errors += check_language_manifests(CORPUS)
+    all_errors += check_language_core(stored)
+    for language in store.languages_for(CORPUS, text_id):
+        all_errors += check_language_layer(
+            stored,
+            store.raw_layer(CORPUS, language, text_id),
+            store.layer_path(CORPUS, language, text_id),
+        )
 
     text_errors, n_words = lint_text(doc)
     all_errors += text_errors
@@ -181,10 +204,6 @@ def main(text_id: str) -> int:
     # its sung flag against the vocabularies, and the witness path it declares
     # against the one the collation derives (checks/document.py).
     all_errors += check_document(stored, text_path)
-    # The edition's own voice, in both languages at once: no semicolons and no
-    # hedges (checks/prose.py). Guarded in the reader app until now, which
-    # reads a vendored copy and therefore only after someone re-vendors it.
-    all_errors += check_prose(stored)
     all_errors += lint_analysis(doc)
     all_errors += lint_notes(doc)
     all_errors += lint_rubrics(doc)
@@ -214,6 +233,8 @@ def main(text_id: str) -> int:
     all_errors += check_syntax(doc)
     syn_declared, syn_total = syntax_coverage(doc)
     all_errors += duplicate_keys(text_path)
+    for language in store.languages_for(CORPUS, text_id):
+        all_errors += duplicate_keys(store.layer_path(CORPUS, language, text_id))
     all_errors += check_schema_versions()
 
     lemmata, _, lex_errors = load_lexicon(CORPUS)
@@ -223,6 +244,7 @@ def main(text_id: str) -> int:
     gloss_docs = []
     for _lang, gdoc in sorted(gloss_layers.items()):
         gloss_docs.append(gdoc)
+        all_errors += check_prose(gdoc)
         all_errors += lint_gloss(gdoc, doc)
         # The gloss line read AS POLISH: a preposition governing the case
         # beside it, a modifier agreeing with what it modifies, the divine
@@ -241,7 +263,6 @@ def main(text_id: str) -> int:
         # English, where English can be checked exactly: a preposition
         # rendered twice, and a two-case preposition against its case.
         all_errors += check_english(doc, gdoc)
-    all_errors += lint_parity(gloss_docs)
     langs = [g["lang"] for g in gloss_docs]
     if not langs:
         all_errors.append("no gloss layers found — refusing to pass on zero")
@@ -363,8 +384,8 @@ if __name__ == "__main__":
             corpus_docs
             + [g for _doc, layers in store.all_texts(CORPUS) for g in layers.values()]
             + [
-                json.loads(p.read_text(encoding="utf-8"))
-                for p in sorted(CORPUS.glob("lexicon/*.json"))
+                {"language": lang, "entries": entries}
+                for lang, entries in load_lexicon(CORPUS)[1].items()
             ]
         )
         # What this edition may reproduce, counted rather than assumed. Every

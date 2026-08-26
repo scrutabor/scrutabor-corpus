@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "orationes.angelus-domini",
   "title": "Ángelus Dómini",
   "category": "orationes",
@@ -9,570 +9,255 @@
   "ids": {
     "next": 163
   },
-  "about": {
-    "pl": "Anioł Pański odmawia się trzy razy dziennie: o świcie, w południe i pod wieczór, a to wydanie drukuje trzy Zdrowaś Maryjo, które się w nim odmawia. W okresie wielkanocnym jego miejsce zajmuje Regína cæli.",
-    "en": "The Ángelus is prayed three times a day, at dawn, at noon and toward evening, and this edition prints the three Hail Marys said in it. In Paschaltide the Regína cæli takes its place."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Enchiridion Indulgentiarum, fourth edition",
-        "locator": "Concessio 17 § 2, Angelus Domini and Regina caeli",
-        "url": "https://www.vatican.va/roman_curia/tribunals/apost_penit/documents/rc_trib_appen_doc_20020826_enchiridion-indulgentiarum_lt.html"
-      },
-      {
-        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
-        "locator": "n. 331, pp. 213–215",
-        "url": "https://archive.org/download/enchiridion_indulgentiarum_1952/enchiridion_indulgentiarum_1952.pdf"
-      }
-    ],
-    "en": [
-      {
-        "title": "Enchiridion Indulgentiarum, fourth edition",
-        "locator": "Concessio 17 § 2, Angelus Domini and Regina caeli",
-        "url": "https://www.vatican.va/roman_curia/tribunals/apost_penit/documents/rc_trib_appen_doc_20020826_enchiridion-indulgentiarum_lt.html"
-      },
-      {
-        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
-        "locator": "n. 331, pp. 213–215",
-        "url": "https://archive.org/download/enchiridion_indulgentiarum_1952/enchiridion_indulgentiarum_1952.pdf"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "ductor",
-      "translation": {
-        "pl": "Anioł Pański zwiastował Pannie Maryi.",
-        "en": "The Angel of the Lord declared unto Mary."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 15",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 26",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "form": "Ángelus", "lemma": "angelus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "id": "w001", "gloss": { "pl": "anioł", "en": "angel" } },
-        { "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "id": "w002", "gloss": { "pl": "Pana", "en": "of the Lord" } },
-        { "form": "nuntiávit", "lemma": "nuntio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 }, "id": "w003", "gloss": { "pl": "zwiastował", "en": "declared" } },
-        { "form": "Maríæ", "post": ".", "lemma": "Maria", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "f", "decl": 1 }, "id": "w004", "gloss": { "pl": "Maryi", "en": "unto Mary" } }
+        { "form": "Ángelus", "lemma": "angelus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "id": "w001" },
+        { "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "id": "w002" },
+        { "form": "nuntiávit", "lemma": "nuntio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 }, "id": "w003" },
+        { "form": "Maríæ", "post": ".", "lemma": "Maria", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "f", "decl": 1 }, "id": "w004" }
       ]
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "populus",
-      "translation": {
-        "pl": "I poczęła z Ducha Świętego.",
-        "en": "And she conceived of the Holy Spirit."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 15",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 26",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "id": "w005", "gloss": { "pl": "i", "en": "and" } },
-        { "form": "concépit", "lemma": "concipio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "id": "w006", "gloss": { "pl": "poczęła", "en": "conceived" } },
-        { "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008", "id": "w007", "gloss": { "pl": "z", "en": "of" } },
-        { "form": "Spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 }, "id": "w008", "gloss": { "pl": "Ducha", "en": "the Spirit" } },
-        { "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w008", "id": "w009", "gloss": { "pl": "Świętego", "en": "Holy" } }
+        { "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "id": "w005" },
+        { "form": "concépit", "lemma": "concipio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "id": "w006" },
+        { "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008", "id": "w007" },
+        { "form": "Spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 }, "id": "w008" },
+        { "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w008", "id": "w009" }
       ]
     },
     {
       "id": "ave1",
       "type": "verse",
-      "translation": {
-        "pl": "Zdrowaś Maryjo, łaski pełna, Pan z Tobą, błogosławionaś Ty między niewiastami i błogosławiony owoc żywota Twojego, Jezus. Święta Maryjo, Matko Boża, módl się za nami grzesznymi teraz i w godzinę śmierci naszej. Amen.",
-        "en": "Hail Mary, full of grace, the Lord is with thee, blessed art thou among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Książka do nabożeństwa (1883)",
-            "locator": "printed pp. 2–3",
-            "url": "https://commons.wikimedia.org/wiki/File:Ksi%C4%85%C5%BCka_do_nabo%C5%BCe%C5%84stwa_O._Karola_Antoniewicza.djvu"
-          },
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 11",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 9–10 and 26–27",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w010", "form": "Ave", "lemma": "aveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "zdrowaś", "en": "hail" } },
-        { "id": "w011", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryjo", "en": "Mary" } },
-        { "id": "w012", "form": "grátia", "lemma": "gratia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "łaski", "en": "with grace" } },
-        { "id": "w013", "form": "plena", "post": ";", "lemma": "plenus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w011", "gloss": { "pl": "pełna", "en": "full" } },
-        { "id": "w014", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "the Lord" } },
-        { "id": "w015", "form": "tecum", "post": ":", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "gloss": { "pl": "z Tobą", "en": "with thee" } },
-        { "id": "w016", "form": "benedícta", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w017", "gloss": { "pl": "błogosławiona", "en": "blessed" } },
-        { "id": "w017", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "Ty", "en": "thou" } },
-        { "id": "w018", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w019", "gloss": { "pl": "między", "en": "among" } },
-        { "id": "w019", "form": "muliéribus", "post": ",", "lemma": "mulier", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "niewiastami", "en": "women" } },
-        { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w021", "form": "benedíctus", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w022", "gloss": { "pl": "błogosławiony", "en": "blessed" } },
-        { "id": "w022", "form": "fructus", "lemma": "fructus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "owoc", "en": "fruit" } },
-        { "id": "w023", "form": "ventris", "lemma": "venter", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "żywota", "en": "of the womb" } },
-        { "id": "w024", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w023", "gloss": { "pl": "Twojego", "en": "thy" } },
-        { "id": "w025", "form": "Iesus", "post": ".", "lemma": "Iesus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezus", "en": "Jesus" } },
-        { "id": "w026", "form": "Sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w027", "gloss": { "pl": "Święta", "en": "Holy" } },
-        { "id": "w027", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryjo", "en": "Mary" } },
-        { "id": "w028", "form": "Mater", "lemma": "mater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Matko", "en": "Mother" } },
-        { "id": "w029", "form": "Dei", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" } },
-        { "id": "w030", "form": "ora", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "módl się", "en": "pray" } },
-        { "id": "w031", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w032", "gloss": { "pl": "za", "en": "for" } },
-        { "id": "w032", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "nami", "en": "us" } },
-        { "id": "w033", "form": "peccatóribus", "post": ",", "lemma": "peccator", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "grzesznikami", "en": "sinners" } },
-        { "id": "w034", "form": "nunc", "lemma": "nunc", "morph": { "pos": "adv" }, "gloss": { "pl": "teraz", "en": "now" } },
-        { "id": "w035", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w036", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w037", "gloss": { "pl": "w", "en": "at" } },
-        { "id": "w037", "form": "hora", "lemma": "hora", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "godzinie", "en": "the hour" } },
-        { "id": "w038", "form": "mortis", "lemma": "mors", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "śmierci", "en": "of death" } },
-        { "id": "w039", "form": "nostræ", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w038", "gloss": { "pl": "naszej", "en": "our" } },
-        { "id": "w040", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w010", "form": "Ave", "lemma": "aveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w011", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w012", "form": "grátia", "lemma": "gratia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w013", "form": "plena", "post": ";", "lemma": "plenus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w011" },
+        { "id": "w014", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w015", "form": "tecum", "post": ":", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w016", "form": "benedícta", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w017" },
+        { "id": "w017", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w018", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w019" },
+        { "id": "w019", "form": "muliéribus", "post": ",", "lemma": "mulier", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w021", "form": "benedíctus", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w022" },
+        { "id": "w022", "form": "fructus", "lemma": "fructus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w023", "form": "ventris", "lemma": "venter", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w024", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w023" },
+        { "id": "w025", "form": "Iesus", "post": ".", "lemma": "Iesus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w026", "form": "Sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w027" },
+        { "id": "w027", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w028", "form": "Mater", "lemma": "mater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w029", "form": "Dei", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w030", "form": "ora", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w031", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w032" },
+        { "id": "w032", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
+        { "id": "w033", "form": "peccatóribus", "post": ",", "lemma": "peccator", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w034", "form": "nunc", "lemma": "nunc", "morph": { "pos": "adv" } },
+        { "id": "w035", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w036", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w037" },
+        { "id": "w037", "form": "hora", "lemma": "hora", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w038", "form": "mortis", "lemma": "mors", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w039", "form": "nostræ", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w038" },
+        { "id": "w040", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     },
     {
       "id": "s04",
       "type": "verse",
       "speaker": "ductor",
-      "translation": {
-        "pl": "Oto ja, służebnica Pańska.",
-        "en": "Behold the handmaid of the Lord."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 15",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 27",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "form": "Ecce", "lemma": "ecce", "morph": { "pos": "intj" }, "id": "w041", "gloss": { "pl": "oto", "en": "behold" } },
-        { "form": "ancílla", "lemma": "ancilla", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "id": "w042", "gloss": { "pl": "służebnica", "en": "handmaid" } },
-        { "form": "Dómini", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "id": "w043", "gloss": { "pl": "Pana", "en": "of the Lord" } }
+        { "form": "Ecce", "lemma": "ecce", "morph": { "pos": "intj" }, "id": "w041" },
+        { "form": "ancílla", "lemma": "ancilla", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "id": "w042" },
+        { "form": "Dómini", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "id": "w043" }
       ]
     },
     {
       "id": "s05",
       "type": "verse",
       "speaker": "populus",
-      "translation": {
-        "pl": "Niech mi się stanie według słowa Twego.",
-        "en": "Be it done unto me according to thy word."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 15",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 27",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "form": "Fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" }, "id": "w044", "gloss": { "pl": "niech się stanie", "en": "be it done" } },
-        { "form": "mihi", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "id": "w045", "gloss": { "pl": "mi", "en": "unto me" } },
-        { "form": "secúndum", "lemma": "secundum", "morph": { "pos": "prep", "governs": "acc" }, "head": "w047", "id": "w046", "gloss": { "pl": "według", "en": "according to" } },
-        { "form": "verbum", "lemma": "verbum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "id": "w047", "gloss": { "pl": "słowa", "en": "word" } },
-        { "form": "tuum", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w047", "id": "w048", "gloss": { "pl": "Twego", "en": "thy" } }
+        { "form": "Fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" }, "id": "w044" },
+        { "form": "mihi", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "id": "w045" },
+        { "form": "secúndum", "lemma": "secundum", "morph": { "pos": "prep", "governs": "acc" }, "head": "w047", "id": "w046" },
+        { "form": "verbum", "lemma": "verbum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "id": "w047" },
+        { "form": "tuum", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w047", "id": "w048" }
       ]
     },
     {
       "id": "ave2",
       "type": "verse",
-      "translation": {
-        "pl": "Zdrowaś Maryjo, łaski pełna, Pan z Tobą, błogosławionaś Ty między niewiastami i błogosławiony owoc żywota Twojego, Jezus. Święta Maryjo, Matko Boża, módl się za nami grzesznymi teraz i w godzinę śmierci naszej. Amen.",
-        "en": "Hail Mary, full of grace, the Lord is with thee, blessed art thou among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Książka do nabożeństwa (1883)",
-            "locator": "printed pp. 2–3",
-            "url": "https://commons.wikimedia.org/wiki/File:Ksi%C4%85%C5%BCka_do_nabo%C5%BCe%C5%84stwa_O._Karola_Antoniewicza.djvu"
-          },
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 11",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 9–10 and 26–27",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w049", "form": "Ave", "lemma": "aveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "zdrowaś", "en": "hail" } },
-        { "id": "w050", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryjo", "en": "Mary" } },
-        { "id": "w051", "form": "grátia", "lemma": "gratia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "łaski", "en": "with grace" } },
-        { "id": "w052", "form": "plena", "post": ";", "lemma": "plenus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w050", "gloss": { "pl": "pełna", "en": "full" } },
-        { "id": "w053", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "the Lord" } },
-        { "id": "w054", "form": "tecum", "post": ":", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "gloss": { "pl": "z Tobą", "en": "with thee" } },
-        { "id": "w055", "form": "benedícta", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w056", "gloss": { "pl": "błogosławiona", "en": "blessed" } },
-        { "id": "w056", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "Ty", "en": "thou" } },
-        { "id": "w057", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w058", "gloss": { "pl": "między", "en": "among" } },
-        { "id": "w058", "form": "muliéribus", "post": ",", "lemma": "mulier", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "niewiastami", "en": "women" } },
-        { "id": "w059", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w060", "form": "benedíctus", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w061", "gloss": { "pl": "błogosławiony", "en": "blessed" } },
-        { "id": "w061", "form": "fructus", "lemma": "fructus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "owoc", "en": "fruit" } },
-        { "id": "w062", "form": "ventris", "lemma": "venter", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "żywota", "en": "of the womb" } },
-        { "id": "w063", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w062", "gloss": { "pl": "Twojego", "en": "thy" } },
-        { "id": "w064", "form": "Iesus", "post": ".", "lemma": "Iesus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezus", "en": "Jesus" } },
-        { "id": "w065", "form": "Sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w066", "gloss": { "pl": "Święta", "en": "Holy" } },
-        { "id": "w066", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryjo", "en": "Mary" } },
-        { "id": "w067", "form": "Mater", "lemma": "mater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Matko", "en": "Mother" } },
-        { "id": "w068", "form": "Dei", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" } },
-        { "id": "w069", "form": "ora", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "módl się", "en": "pray" } },
-        { "id": "w070", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w071", "gloss": { "pl": "za", "en": "for" } },
-        { "id": "w071", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "nami", "en": "us" } },
-        { "id": "w072", "form": "peccatóribus", "post": ",", "lemma": "peccator", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "grzesznikami", "en": "sinners" } },
-        { "id": "w073", "form": "nunc", "lemma": "nunc", "morph": { "pos": "adv" }, "gloss": { "pl": "teraz", "en": "now" } },
-        { "id": "w074", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w075", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w076", "gloss": { "pl": "w", "en": "at" } },
-        { "id": "w076", "form": "hora", "lemma": "hora", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "godzinie", "en": "the hour" } },
-        { "id": "w077", "form": "mortis", "lemma": "mors", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "śmierci", "en": "of death" } },
-        { "id": "w078", "form": "nostræ", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w077", "gloss": { "pl": "naszej", "en": "our" } },
-        { "id": "w079", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w049", "form": "Ave", "lemma": "aveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w050", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w051", "form": "grátia", "lemma": "gratia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w052", "form": "plena", "post": ";", "lemma": "plenus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w050" },
+        { "id": "w053", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w054", "form": "tecum", "post": ":", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w055", "form": "benedícta", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w056" },
+        { "id": "w056", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w057", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w058" },
+        { "id": "w058", "form": "muliéribus", "post": ",", "lemma": "mulier", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w059", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w060", "form": "benedíctus", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w061" },
+        { "id": "w061", "form": "fructus", "lemma": "fructus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w062", "form": "ventris", "lemma": "venter", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w063", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w062" },
+        { "id": "w064", "form": "Iesus", "post": ".", "lemma": "Iesus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w065", "form": "Sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w066" },
+        { "id": "w066", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w067", "form": "Mater", "lemma": "mater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w068", "form": "Dei", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w069", "form": "ora", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w070", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w071" },
+        { "id": "w071", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
+        { "id": "w072", "form": "peccatóribus", "post": ",", "lemma": "peccator", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w073", "form": "nunc", "lemma": "nunc", "morph": { "pos": "adv" } },
+        { "id": "w074", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w075", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w076" },
+        { "id": "w076", "form": "hora", "lemma": "hora", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w077", "form": "mortis", "lemma": "mors", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w078", "form": "nostræ", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w077" },
+        { "id": "w079", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     },
     {
       "id": "s07",
       "type": "verse",
       "speaker": "ductor",
-      "translation": {
-        "pl": "A Słowo ciałem się stało.",
-        "en": "And the Word was made flesh."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 15",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          },
-          {
-            "title": "Gazeta Kościelna, R. 9, nr 16 (1901)",
-            "locator": "printed p. 168",
-            "url": "https://jbc.bj.uj.edu.pl/dlibra/publication/913560"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 27",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "id": "w080", "gloss": { "pl": "i", "en": "and" } },
-        { "form": "Verbum", "lemma": "verbum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "id": "w081", "gloss": { "pl": "Słowo", "en": "the Word" } },
-        { "form": "caro", "lemma": "caro", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "id": "w082", "gloss": { "pl": "ciałem", "en": "flesh" } },
-        { "form": "factum", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "n", "conj": 3 }, "head": "w081", "id": "w083", "gloss": { "pl": "stało", "en": "made" } },
-        { "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "id": "w084", "gloss": { "pl": "się", "en": "was" } }
+        { "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "id": "w080" },
+        { "form": "Verbum", "lemma": "verbum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "id": "w081" },
+        { "form": "caro", "lemma": "caro", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "id": "w082" },
+        { "form": "factum", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "n", "conj": 3 }, "head": "w081", "id": "w083" },
+        { "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "id": "w084" }
       ]
     },
     {
       "id": "s08",
       "type": "verse",
       "speaker": "populus",
-      "translation": {
-        "pl": "I zamieszkało między nami.",
-        "en": "And dwelt among us."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 15",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          },
-          {
-            "title": "Gazeta Kościelna, R. 9, nr 16 (1901)",
-            "locator": "printed p. 168",
-            "url": "https://jbc.bj.uj.edu.pl/dlibra/publication/913560"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 27",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "id": "w085", "gloss": { "pl": "i", "en": "and" } },
-        { "form": "habitávit", "lemma": "habito", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 }, "id": "w086", "gloss": { "pl": "zamieszkało", "en": "dwelt" } },
-        { "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w088", "id": "w087", "gloss": { "pl": "między", "en": "among" } },
-        { "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "id": "w088", "gloss": { "pl": "nami", "en": "us" } }
+        { "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "id": "w085" },
+        { "form": "habitávit", "lemma": "habito", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 }, "id": "w086" },
+        { "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w088", "id": "w087" },
+        { "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "id": "w088" }
       ]
     },
     {
       "id": "ave3",
       "type": "verse",
-      "translation": {
-        "pl": "Zdrowaś Maryjo, łaski pełna, Pan z Tobą, błogosławionaś Ty między niewiastami i błogosławiony owoc żywota Twojego, Jezus. Święta Maryjo, Matko Boża, módl się za nami grzesznymi teraz i w godzinę śmierci naszej. Amen.",
-        "en": "Hail Mary, full of grace, the Lord is with thee, blessed art thou among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Książka do nabożeństwa (1883)",
-            "locator": "printed pp. 2–3",
-            "url": "https://commons.wikimedia.org/wiki/File:Ksi%C4%85%C5%BCka_do_nabo%C5%BCe%C5%84stwa_O._Karola_Antoniewicza.djvu"
-          },
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 11",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 9–10 and 26–27",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w089", "form": "Ave", "lemma": "aveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "zdrowaś", "en": "hail" } },
-        { "id": "w090", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryjo", "en": "Mary" } },
-        { "id": "w091", "form": "grátia", "lemma": "gratia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "łaski", "en": "with grace" } },
-        { "id": "w092", "form": "plena", "post": ";", "lemma": "plenus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w090", "gloss": { "pl": "pełna", "en": "full" } },
-        { "id": "w093", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "the Lord" } },
-        { "id": "w094", "form": "tecum", "post": ":", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "gloss": { "pl": "z Tobą", "en": "with thee" } },
-        { "id": "w095", "form": "benedícta", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w096", "gloss": { "pl": "błogosławiona", "en": "blessed" } },
-        { "id": "w096", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "Ty", "en": "thou" } },
-        { "id": "w097", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w098", "gloss": { "pl": "między", "en": "among" } },
-        { "id": "w098", "form": "muliéribus", "post": ",", "lemma": "mulier", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "niewiastami", "en": "women" } },
-        { "id": "w099", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w100", "form": "benedíctus", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w101", "gloss": { "pl": "błogosławiony", "en": "blessed" } },
-        { "id": "w101", "form": "fructus", "lemma": "fructus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "owoc", "en": "fruit" } },
-        { "id": "w102", "form": "ventris", "lemma": "venter", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "żywota", "en": "of the womb" } },
-        { "id": "w103", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w102", "gloss": { "pl": "Twojego", "en": "thy" } },
-        { "id": "w104", "form": "Iesus", "post": ".", "lemma": "Iesus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezus", "en": "Jesus" } },
-        { "id": "w105", "form": "Sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w106", "gloss": { "pl": "Święta", "en": "Holy" } },
-        { "id": "w106", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryjo", "en": "Mary" } },
-        { "id": "w107", "form": "Mater", "lemma": "mater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Matko", "en": "Mother" } },
-        { "id": "w108", "form": "Dei", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" } },
-        { "id": "w109", "form": "ora", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "módl się", "en": "pray" } },
-        { "id": "w110", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w111", "gloss": { "pl": "za", "en": "for" } },
-        { "id": "w111", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "nami", "en": "us" } },
-        { "id": "w112", "form": "peccatóribus", "post": ",", "lemma": "peccator", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 }, "gloss": { "pl": "grzesznikami", "en": "sinners" } },
-        { "id": "w113", "form": "nunc", "lemma": "nunc", "morph": { "pos": "adv" }, "gloss": { "pl": "teraz", "en": "now" } },
-        { "id": "w114", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w115", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w116", "gloss": { "pl": "w", "en": "at" } },
-        { "id": "w116", "form": "hora", "lemma": "hora", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "godzinie", "en": "the hour" } },
-        { "id": "w117", "form": "mortis", "lemma": "mors", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "śmierci", "en": "of death" } },
-        { "id": "w118", "form": "nostræ", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w117", "gloss": { "pl": "naszej", "en": "our" } },
-        { "id": "w119", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w089", "form": "Ave", "lemma": "aveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w090", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w091", "form": "grátia", "lemma": "gratia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w092", "form": "plena", "post": ";", "lemma": "plenus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w090" },
+        { "id": "w093", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w094", "form": "tecum", "post": ":", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w095", "form": "benedícta", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w096" },
+        { "id": "w096", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w097", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w098" },
+        { "id": "w098", "form": "muliéribus", "post": ",", "lemma": "mulier", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w099", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w100", "form": "benedíctus", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w101" },
+        { "id": "w101", "form": "fructus", "lemma": "fructus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w102", "form": "ventris", "lemma": "venter", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w103", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w102" },
+        { "id": "w104", "form": "Iesus", "post": ".", "lemma": "Iesus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w105", "form": "Sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w106" },
+        { "id": "w106", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w107", "form": "Mater", "lemma": "mater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w108", "form": "Dei", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w109", "form": "ora", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w110", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w111" },
+        { "id": "w111", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
+        { "id": "w112", "form": "peccatóribus", "post": ",", "lemma": "peccator", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w113", "form": "nunc", "lemma": "nunc", "morph": { "pos": "adv" } },
+        { "id": "w114", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w115", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w116" },
+        { "id": "w116", "form": "hora", "lemma": "hora", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w117", "form": "mortis", "lemma": "mors", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w118", "form": "nostræ", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w117" },
+        { "id": "w119", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     },
     {
       "id": "s10",
       "type": "verse",
       "speaker": "ductor",
-      "translation": {
-        "pl": "Módl się za nami, święta Boża Rodzicielko.",
-        "en": "Pray for us, O holy Mother of God."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 15",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 26",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "form": "Ora", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "id": "w120", "gloss": { "pl": "módl się", "en": "pray" } },
-        { "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w122", "id": "w121", "gloss": { "pl": "za", "en": "for" } },
-        { "form": "nobis", "post": ",", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "id": "w122", "gloss": { "pl": "nami", "en": "us" } },
-        { "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w125", "id": "w123", "gloss": { "pl": "Święta", "en": "Holy" } },
-        { "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "id": "w124", "gloss": { "pl": "Boga", "en": "of God" } },
-        { "form": "Génetrix", "post": ".", "lemma": "genetrix", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "id": "w125", "gloss": { "pl": "Rodzicielko", "en": "Mother" } }
+        { "form": "Ora", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "id": "w120" },
+        { "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w122", "id": "w121" },
+        { "form": "nobis", "post": ",", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "id": "w122" },
+        { "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w125", "id": "w123" },
+        { "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "id": "w124" },
+        { "form": "Génetrix", "post": ".", "lemma": "genetrix", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "id": "w125" }
       ]
     },
     {
       "id": "s11",
       "type": "verse",
       "speaker": "populus",
-      "translation": {
-        "pl": "Abyśmy się stali godnymi obietnic Chrystusowych.",
-        "en": "That we may be made worthy of the promises of Christ."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 15",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 26",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "form": "Ut", "lemma": "ut", "morph": { "pos": "conj" }, "id": "w126", "gloss": { "pl": "aby", "en": "that" } },
-        { "form": "digni", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "id": "w127", "head": "w128", "gloss": { "pl": "godnymi", "en": "worthy" } },
-        { "form": "efficiámur", "lemma": "efficio", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 3 }, "id": "w128", "gloss": { "pl": "stali się", "en": "we may be made" } },
-        { "form": "promissiónibus", "lemma": "promissio", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 }, "id": "w129", "gloss": { "pl": "obietnic", "en": "of the promises" } },
-        { "form": "Christi", "post": ".", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "id": "w130", "gloss": { "pl": "Chrystusa", "en": "of Christ" } }
+        { "form": "Ut", "lemma": "ut", "morph": { "pos": "conj" }, "id": "w126" },
+        { "form": "digni", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "id": "w127", "head": "w128" },
+        { "form": "efficiámur", "lemma": "efficio", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 3 }, "id": "w128" },
+        { "form": "promissiónibus", "lemma": "promissio", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 }, "id": "w129" },
+        { "form": "Christi", "post": ".", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "id": "w130" }
       ]
     },
     {
       "id": "s12",
       "type": "verse",
       "speaker": "ductor",
-      "translation": {
-        "pl": "Módlmy się.",
-        "en": "Let us pray."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 15",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 27",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "form": "Orémus", "post": ".", "lemma": "oro", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 }, "id": "w131", "gloss": { "pl": "módlmy się", "en": "let us pray" } }
+        { "form": "Orémus", "post": ".", "lemma": "oro", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 }, "id": "w131" }
       ]
     },
     {
       "id": "s13",
       "type": "verse",
       "speaker": "ductor",
-      "translation": {
-        "pl": "Łaskę Twoją, prosimy Cię, Panie, racz wlać w serca nasze, abyśmy, którzy za zwiastowaniem anielskim wcielenie Chrystusa, Syna Twego, poznali, przez mękę Jego i krzyż do chwały zmartwychwstania byli doprowadzeni. Przez tegoż Chrystusa, Pana naszego. Amen.",
-        "en": "Pour forth, we beseech thee, O Lord, thy grace into our hearts; that we, to whom the Incarnation of Christ, thy Son, was made known by the message of an angel, may by his Passion and Cross be brought to the glory of his Resurrection. Through the same Christ, our Lord. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed pp. 15–16",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ],
-        "en": [
-          {
-            "title": "Patrick Francis Moran, The Catholic Prayer Book (1883)",
-            "locator": "printed p. 11",
-            "url": "https://commons.wikimedia.org/wiki/File:The_Catholic_prayer_book.djvu"
-          }
-        ]
-      },
       "words": [
-        { "form": "Grátiam", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "id": "w132", "gloss": { "pl": "łaskę", "en": "grace" } },
-        { "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w132", "id": "w133", "gloss": { "pl": "Twoją", "en": "thy" } },
-        { "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "id": "w134", "gloss": { "pl": "prosimy", "en": "we beseech" } },
-        { "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "id": "w135", "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "form": "méntibus", "lemma": "mens", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "f", "decl": 3 }, "id": "w136", "gloss": { "pl": "umysłom", "en": "minds" } },
-        { "form": "nostris", "lemma": "noster", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "f" }, "head": "w136", "id": "w137", "gloss": { "pl": "naszym", "en": "our" } },
-        { "form": "infúnde", "post": ";", "lemma": "infundo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "id": "w138", "gloss": { "pl": "wlej", "en": "pour forth" } },
-        { "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "id": "w139", "gloss": { "pl": "aby", "en": "that" } },
-        { "form": "qui", "post": ",", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" }, "id": "w140", "gloss": { "pl": "którzy", "en": "we who" } },
-        { "form": "Ángelo", "lemma": "angelus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "id": "w141", "gloss": { "pl": "aniołem", "en": "an angel" } },
-        { "form": "nuntiánte", "post": ",", "lemma": "nuntio", "morph": { "pos": "verb", "mood": "part", "tense": "pres", "voice": "act", "case": "abl", "number": "sg", "gender": "m", "conj": 1 }, "head": "w141", "id": "w142", "gloss": { "pl": "zwiastującym", "en": "declaring" } },
-        { "form": "Christi", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "id": "w143", "gloss": { "pl": "Chrystusa", "en": "of Christ" } },
-        { "form": "Fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "id": "w144", "gloss": { "pl": "Syna", "en": "Son" } },
-        { "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w144", "id": "w145", "gloss": { "pl": "Twego", "en": "thy" } },
-        { "form": "incarnatiónem", "lemma": "incarnatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "id": "w146", "gloss": { "pl": "wcielenie", "en": "Incarnation" } },
-        { "form": "cognóvimus", "post": ",", "lemma": "cognosco", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "id": "w147", "gloss": { "pl": "poznaliśmy", "en": "have known" } },
-        { "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w149", "id": "w148", "gloss": { "pl": "przez", "en": "by" } },
-        { "form": "passiónem", "lemma": "passio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "id": "w149", "gloss": { "pl": "mękę", "en": "Passion" } },
-        { "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "id": "w150", "gloss": { "pl": "Jego", "en": "his" } },
-        { "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "id": "w151", "gloss": { "pl": "i", "en": "and" } },
-        { "form": "crucem", "post": ",", "lemma": "crux", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "id": "w152", "gloss": { "pl": "krzyż", "en": "Cross" } },
-        { "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w155", "id": "w153", "gloss": { "pl": "do", "en": "to" } },
-        { "form": "resurrectiónis", "lemma": "resurrectio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "id": "w154", "gloss": { "pl": "zmartwychwstania", "en": "of the Resurrection" } },
-        { "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "id": "w155", "gloss": { "pl": "chwały", "en": "glory" } },
-        { "form": "perducámur", "post": ".", "lemma": "perduco", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 3 }, "id": "w156", "gloss": { "pl": "zostali doprowadzeni", "en": "may be brought" } },
-        { "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w158", "id": "w157", "gloss": { "pl": "przez", "en": "through" } },
-        { "form": "eúndem", "lemma": "idem", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "id": "w158", "gloss": { "pl": "tego samego", "en": "the same" } },
-        { "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "id": "w159", "gloss": { "pl": "Chrystusa", "en": "Christ" } },
-        { "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "id": "w160", "gloss": { "pl": "Pana", "en": "Lord" } },
-        { "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w160", "id": "w161", "gloss": { "pl": "naszego", "en": "our" } },
-        { "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "id": "w162", "gloss": { "pl": "amen", "en": "amen" } }
+        { "form": "Grátiam", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "id": "w132" },
+        { "form": "tuam", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w132", "id": "w133" },
+        { "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "id": "w134" },
+        { "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "id": "w135" },
+        { "form": "méntibus", "lemma": "mens", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "f", "decl": 3 }, "id": "w136" },
+        { "form": "nostris", "lemma": "noster", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "f" }, "head": "w136", "id": "w137" },
+        { "form": "infúnde", "post": ";", "lemma": "infundo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "id": "w138" },
+        { "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "id": "w139" },
+        { "form": "qui", "post": ",", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" }, "id": "w140" },
+        { "form": "Ángelo", "lemma": "angelus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "id": "w141" },
+        { "form": "nuntiánte", "post": ",", "lemma": "nuntio", "morph": { "pos": "verb", "mood": "part", "tense": "pres", "voice": "act", "case": "abl", "number": "sg", "gender": "m", "conj": 1 }, "head": "w141", "id": "w142" },
+        { "form": "Christi", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "id": "w143" },
+        { "form": "Fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "id": "w144" },
+        { "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w144", "id": "w145" },
+        { "form": "incarnatiónem", "lemma": "incarnatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "id": "w146" },
+        { "form": "cognóvimus", "post": ",", "lemma": "cognosco", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "id": "w147" },
+        { "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w149", "id": "w148" },
+        { "form": "passiónem", "lemma": "passio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "id": "w149" },
+        { "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "id": "w150" },
+        { "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "id": "w151" },
+        { "form": "crucem", "post": ",", "lemma": "crux", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "id": "w152" },
+        { "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w155", "id": "w153" },
+        { "form": "resurrectiónis", "lemma": "resurrectio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "id": "w154" },
+        { "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "id": "w155" },
+        { "form": "perducámur", "post": ".", "lemma": "perduco", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 3 }, "id": "w156" },
+        { "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w158", "id": "w157" },
+        { "form": "eúndem", "lemma": "idem", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "id": "w158" },
+        { "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "id": "w159" },
+        { "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "id": "w160" },
+        { "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w160", "id": "w161" },
+        { "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "id": "w162" }
       ]
     }
   ],
@@ -590,5 +275,20 @@
       "w134": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w144": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
     }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Enchiridion Indulgentiarum, fourth edition",
+        "locator": "Concessio 17 § 2, Angelus Domini and Regina caeli",
+        "url": "https://www.vatican.va/roman_curia/tribunals/apost_penit/documents/rc_trib_appen_doc_20020826_enchiridion-indulgentiarum_lt.html"
+      },
+      {
+        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
+        "locator": "n. 331, pp. 213–215",
+        "url": "https://archive.org/download/enchiridion_indulgentiarum_1952/enchiridion_indulgentiarum_1952.pdf"
+      }
+    ]
   }
 }

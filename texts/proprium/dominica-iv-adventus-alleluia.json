@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "proprium.dominica-iv-adventus-alleluia",
   "title": "Veni, Dómine, et noli tardáre",
   "category": "proprium",
@@ -8,10 +8,6 @@
   "sung": true,
   "ids": {
     "next": 14
-  },
-  "about": {
-    "pl": "Werset allelujatyczny IV Niedzieli Adwentu. Ostatnia niedziela przed Bożym Narodzeniem prosi o jedno: żeby nie zwlekał.",
-    "en": "The alleluia verse of the Fourth Sunday of Advent. The last Sunday before Christmas asks one thing, that He not delay."
   },
   "segments": [
     {
@@ -26,23 +22,10 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Alleluja, alleluja.",
-        "en": "Alleluia, alleluia."
-      },
       "words": [
-        { "id": "w001", "form": "Allelúia", "post": ",", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } },
-        { "id": "w002", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } }
+        { "id": "w001", "form": "Allelúia", "post": ",", "lemma": "alleluia", "morph": { "pos": "intj" } },
+        { "id": "w002", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
       ],
-      "translation_citations": {
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "delivery": {
         "cantu": {
           "speaker": "schola",
@@ -62,31 +45,18 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Przyjdź, Panie, i nie zwlekaj; odpuść występki swojego ludu Izraela.",
-        "en": "Come, O Lord, and do not delay; forgive the offenses of Your people Israel."
-      },
       "words": [
-        { "id": "w003", "form": "Veni", "post": ",", "lemma": "venio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 }, "gloss": { "pl": "przyjdź", "en": "come" } },
-        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w006", "form": "noli", "lemma": "nolo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act" }, "gloss": { "pl": "nie chciej", "en": "be not willing" } },
-        { "id": "w007", "form": "tardáre", "post": ":", "lemma": "tardo", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 }, "gloss": { "pl": "zwlekać", "en": "to delay" } },
-        { "id": "w008", "form": "reláxa", "lemma": "relaxo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "odpuść", "en": "remit" } },
-        { "id": "w009", "form": "facínora", "lemma": "facinus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 }, "gloss": { "pl": "występki", "en": "the misdeeds" } },
-        { "id": "w010", "form": "plebis", "lemma": "plebs", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "ludowi", "en": "of people" } },
-        { "id": "w011", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w010", "gloss": { "pl": "Twemu", "en": "Thy" } },
-        { "id": "w012", "form": "Israël", "post": ".", "lemma": "Israel", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Izraelowi", "en": "Israel" } }
+        { "id": "w003", "form": "Veni", "post": ",", "lemma": "venio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 } },
+        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "noli", "lemma": "nolo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act" } },
+        { "id": "w007", "form": "tardáre", "post": ":", "lemma": "tardo", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 } },
+        { "id": "w008", "form": "reláxa", "lemma": "relaxo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w009", "form": "facínora", "lemma": "facinus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 } },
+        { "id": "w010", "form": "plebis", "lemma": "plebs", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w011", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w010" },
+        { "id": "w012", "form": "Israël", "post": ".", "lemma": "Israel", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } }
       ],
-      "translation_citations": {
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "delivery": {
         "cantu": {
           "speaker": "schola",
@@ -106,22 +76,9 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Alleluja.",
-        "en": "Alleluia."
-      },
       "words": [
-        { "id": "w013", "form": "Allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } }
+        { "id": "w013", "form": "Allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
       ],
-      "translation_citations": {
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "delivery": {
         "cantu": {
           "speaker": "schola",
@@ -143,5 +100,8 @@
     "words": {
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
     }
+  },
+  "localization": {
+    "about": true
   }
 }

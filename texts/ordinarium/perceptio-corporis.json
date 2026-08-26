@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.perceptio-corporis",
   "title": "Percéptio Córporis tui",
   "category": "ordinarium",
@@ -9,84 +9,24 @@
   "ids": {
     "next": 51
   },
-  "about": {
-    "pl": "Modlitwa prosi, aby przyjęcie Ciała Chrystusa nie sprowadziło sądu ani potępienia, lecz służyło ochronie i uzdrowieniu. Jej słowa nawiązują do 1 Kor 11, 29, gdzie św. Paweł przestrzega przed niegodnym przyjmowaniem.",
-    "en": "This prayer asks that receiving the Body of Christ bring neither judgment nor condemnation, but protection and healing. Its wording recalls 1 Corinthians 11:29, where Saint Paul warns against receiving unworthily."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Nova Vulgata, Epistula I ad Corinthios",
-        "locator": "11, 29",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_epist-i-corinthios_lt.html#11"
-      }
-    ],
-    "en": [
-      {
-        "title": "Nova Vulgata, Epistula I ad Corinthios",
-        "locator": "11, 29",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_epist-i-corinthios_lt.html#11"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Przyjęcie Twojego Ciała, Panie Jezu Chryste, które ja, choć niegodny, ośmielam się przyjąć,",
-        "en": "The reception of Your Body, Lord Jesus Christ, which I, though unworthy, dare to receive,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 64",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 31",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 74–75",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 97",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 123–124",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          },
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 477",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Percéptio", "lemma": "perceptio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Przyjęcie", "en": "The partaking" }, "function": { "pl": "Podmiot przy provéniat i prosit.", "en": "Subject of provéniat and prosit." } },
-        { "id": "w002", "form": "Córporis", "lemma": "corpus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "Ciała", "en": "of the Body" } },
-        { "id": "w003", "form": "tui", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w002", "gloss": { "pl": "Twego", "en": "Thy" }, "function": { "pl": "Dopełniacz rodzaju nijakiego liczby pojedynczej, zgadzający się z Córporis.", "en": "Genitive neuter singular agreeing with Córporis." } },
-        { "id": "w004", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w005", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezu", "en": "Jesus" } },
-        { "id": "w006", "form": "Christe", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chryste", "en": "Christ" } },
-        { "id": "w007", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" }, "gloss": { "pl": "które", "en": "which" }, "function": { "pl": "Zaimek względny rodzaju nijakiego, odnoszący się do Córporis.", "en": "Neuter relative pronoun referring to Córporis." } },
-        { "id": "w008", "form": "ego", "lemma": "ego", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "ja", "en": "I" }, "function": { "pl": "Podmiot præsúmo w mianowniku, wyrażony dla podkreślenia.", "en": "Nominative subject of præsúmo, expressed for emphasis." } },
-        { "id": "w009", "form": "indígnus", "lemma": "indignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w008", "gloss": { "pl": "niegodny", "en": "unworthy" }, "function": { "pl": "Mianownik rodzaju męskiego liczby pojedynczej, zgadzający się z ego.", "en": "Nominative masculine singular agreeing with ego." } },
-        { "id": "w010", "form": "súmere", "lemma": "sumo", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 }, "gloss": { "pl": "spożyć", "en": "to receive" } },
-        { "id": "w011", "form": "præsúmo", "post": ",", "lemma": "praesumo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "ośmielam się", "en": "presume" }, "function": { "pl": "Præsúmo znaczy tu ośmielam się przyjąć.", "en": "Præsúmo here means to venture or dare to receive." } }
+        { "id": "w001", "form": "Percéptio", "lemma": "perceptio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w002", "form": "Córporis", "lemma": "corpus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w003", "form": "tui", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w002" },
+        { "id": "w004", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" } },
+        { "id": "w006", "form": "Christe", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w007", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w008", "form": "ego", "lemma": "ego", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w009", "form": "indígnus", "lemma": "indignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w008" },
+        { "id": "w010", "form": "súmere", "lemma": "sumo", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 } },
+        { "id": "w011", "form": "præsúmo", "post": ",", "lemma": "praesumo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } }
       ]
     },
     {
@@ -94,54 +34,14 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "niech nie sprowadzi na mnie sądu ani potępienia:",
-        "en": "may it bring me neither judgment nor condemnation:"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 64",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 31",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 74–75",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 97",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 123–124",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          },
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 477",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w012", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
-        { "id": "w013", "form": "mihi", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "mi", "en": "to me" }, "function": { "pl": "Celownik przy provéniat.", "en": "Dative with provéniat." } },
-        { "id": "w014", "form": "provéniat", "lemma": "provenio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 }, "gloss": { "pl": "niech wyjdzie", "en": "turn out" }, "function": { "pl": "Tryb łączący czasu teraźniejszego w trzeciej osobie. Provénio znaczy tu wyniknąć lub obrócić się.", "en": "Third-person present subjunctive. Provénio here means to turn out or result." } },
-        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w016", "gloss": { "pl": "na", "en": "to" } },
-        { "id": "w016", "form": "iudícium", "lemma": "iudicium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "sąd", "en": "judgment" }, "function": { "pl": "Słowo użyte w 1 Kor 11, 29 w odniesieniu do niegodnego przyjmowania.", "en": "The word used in 1 Corinthians 11:29 for unworthy reception." }, "function_citations": { "pl": [{ "title": "Biblia Sacra Vulgata", "locator": "1 Corinthians 11:29" }], "en": [{ "title": "Biblia Sacra Vulgata", "locator": "1 Corinthians 11:29" }] } },
-        { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w018", "form": "condemnatiónem", "post": ":", "lemma": "condemnatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "potępienie", "en": "condemnation" }, "function": { "pl": "Współrzędne z iudícium po „in”.", "en": "Coordinated with iudícium after in." } }
+        { "id": "w012", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w013", "form": "mihi", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w014", "form": "provéniat", "lemma": "provenio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 } },
+        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w016" },
+        { "id": "w016", "form": "iudícium", "lemma": "iudicium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w018", "form": "condemnatiónem", "post": ":", "lemma": "condemnatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } }
       ]
     },
     {
@@ -149,62 +49,22 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "lecz ze względu na Twoją dobroć niech chroni mój umysł i ciało oraz przyniesie mi uzdrowienie:",
-        "en": "but because of Your goodness, may it protect my mind and body and bring me healing:"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 64",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 31",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 74–75",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 97",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 123–124",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          },
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 477",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w019", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "lecz", "en": "but" } },
-        { "id": "w020", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w022", "gloss": { "pl": "dzięki", "en": "by" } },
-        { "id": "w021", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w022", "gloss": { "pl": "Twojej", "en": "Thy" } },
-        { "id": "w022", "form": "pietáte", "lemma": "pietas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "dobroci", "en": "loving-kindness" }, "function": { "pl": "Przyimek „pro” (w020) z ablativem wskazuje tu podstawę prośby: ze względu na Twoją dobroć.", "en": "Here “pro” (w020) with the ablative expresses the ground of the petition: because of Thy loving-kindness." } },
-        { "id": "w023", "form": "prosit", "lemma": "prosum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" }, "gloss": { "pl": "niech posłuży", "en": "let it profit" }, "function": { "pl": "Ma ten sam podmiot co provéniat i wyraża oczekiwany dobry skutek.", "en": "Shares its subject with provéniat and states the positive outcome requested." } },
-        { "id": "w024", "form": "mihi", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "mi", "en": "me" } },
-        { "id": "w025", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w026", "gloss": { "pl": "ku", "en": "for" } },
-        { "id": "w026", "form": "tutaméntum", "lemma": "tutamentum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "obronie", "en": "a safeguard" }, "function": { "pl": "Biernik po ad, od którego zależą dwa następujące dopełniacze.", "en": "Accusative after ad, governing the two genitives that follow." } },
-        { "id": "w027", "form": "mentis", "lemma": "mens", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "umysłu", "en": "of mind" }, "function": { "pl": "Dopełniacz zależny od tutaméntum, współrzędny z córporis.", "en": "Genitive dependent on tutaméntum and paired with córporis." } },
-        { "id": "w028", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w029", "form": "córporis", "post": ",", "lemma": "corpus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "ciała", "en": "of body" } },
-        { "id": "w030", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "oraz", "en": "and" } },
-        { "id": "w031", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w032", "gloss": { "pl": "ku", "en": "for" } },
-        { "id": "w032", "form": "medélam", "lemma": "medela", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "uzdrowieniu", "en": "a healing" } },
-        { "id": "w033", "form": "percipiéndam", "post": ":", "lemma": "percipio", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "f", "tense": "fut", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w032", "gloss": { "pl": "które ma być otrzymane", "en": "to be received" }, "function": { "pl": "Gerundivum zgadzające się z „medélam” (w032). Z przyimkiem ad wyraża cel.", "en": "A gerundive agreeing with “medélam” (w032). With ad it expresses purpose." } }
+        { "id": "w019", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
+        { "id": "w020", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w022" },
+        { "id": "w021", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w022" },
+        { "id": "w022", "form": "pietáte", "lemma": "pietas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w023", "form": "prosit", "lemma": "prosum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w024", "form": "mihi", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w025", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w026" },
+        { "id": "w026", "form": "tutaméntum", "lemma": "tutamentum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w027", "form": "mentis", "lemma": "mens", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w028", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w029", "form": "córporis", "post": ",", "lemma": "corpus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w030", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w031", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w032" },
+        { "id": "w032", "form": "medélam", "lemma": "medela", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w033", "form": "percipiéndam", "post": ":", "lemma": "percipio", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "f", "tense": "fut", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w032" }
       ]
     },
     {
@@ -212,64 +72,24 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "który, będąc Bogiem, żyjesz i królujesz z Bogiem Ojcem w jedności Ducha Świętego przez wszystkie wieki wieków. Amen.",
-        "en": "who, being God, live and reign with God the Father in the unity of the Holy Spirit for ever and ever. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 64",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 31",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 74–75",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 97",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 123–124",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          },
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 477",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w034", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Który", "en": "Who" } },
-        { "id": "w035", "form": "vivis", "lemma": "vivo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "żyjesz", "en": "livest" } },
-        { "id": "w036", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w037", "form": "regnas", "lemma": "regno", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "królujesz", "en": "reignest" } },
-        { "id": "w038", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w039", "gloss": { "pl": "z", "en": "with" } },
-        { "id": "w039", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bogiem", "en": "God" } },
-        { "id": "w040", "form": "Patre", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcem", "en": "the Father" } },
-        { "id": "w041", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w042", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w042", "form": "unitáte", "lemma": "unitas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "jedności", "en": "the unity" } },
-        { "id": "w043", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Ducha", "en": "of the Spirit" } },
-        { "id": "w044", "form": "Sancti", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w043", "gloss": { "pl": "Świętego", "en": "Holy" } },
-        { "id": "w045", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bóg", "en": "God" }, "function": { "pl": "Mianownik przy „vivis” i „regnas”.", "en": "Nominative with “vivis” and “regnas”." } },
-        { "id": "w046", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w048", "gloss": { "pl": "przez", "en": "for" } },
-        { "id": "w047", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w048", "gloss": { "pl": "wszystkie", "en": "all" } },
-        { "id": "w048", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieki", "en": "ages" } },
-        { "id": "w049", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieków", "en": "of ages" } },
-        { "id": "w050", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w034", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w035", "form": "vivis", "lemma": "vivo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w036", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w037", "form": "regnas", "lemma": "regno", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w038", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w039" },
+        { "id": "w039", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w040", "form": "Patre", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w041", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w042" },
+        { "id": "w042", "form": "unitáte", "lemma": "unitas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w043", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w044", "form": "Sancti", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w043" },
+        { "id": "w045", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w046", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w048" },
+        { "id": "w047", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w048" },
+        { "id": "w048", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w049", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w050", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -285,6 +105,71 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Nova Vulgata, Epistula I ad Corinthios",
+        "locator": "11, 29",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_nt_epist-i-corinthios_lt.html#11"
+      }
+    ],
+    "functions": {
+      "w001": {
+
+      },
+      "w003": {
+
+      },
+      "w007": {
+
+      },
+      "w008": {
+
+      },
+      "w009": {
+
+      },
+      "w011": {
+
+      },
+      "w013": {
+
+      },
+      "w014": {
+
+      },
+      "w016": {
+        "citations": [
+          {
+            "title": "Biblia Sacra Vulgata",
+            "locator": "1 Corinthians 11:29"
+          }
+        ]
+      },
+      "w018": {
+
+      },
+      "w022": {
+
+      },
+      "w023": {
+
+      },
+      "w026": {
+
+      },
+      "w027": {
+
+      },
+      "w033": {
+
+      },
+      "w045": {
+
+      }
     }
   }
 }

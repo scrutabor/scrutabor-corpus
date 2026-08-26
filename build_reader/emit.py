@@ -6,11 +6,12 @@ import json
 import unicodedata
 from pathlib import Path
 
+from build_reader import store
+
 # The reader edition's OWN version. It moves when this file changes what it
 # writes, which is a different event from the corpus changing what it stores —
 # the manifest names both, so a consumer can tell the two apart.
-SCHEMA = "2.0.0"
-LANGS = ("pl", "en")
+SCHEMA = "3.0.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -65,15 +66,10 @@ def _artifact_json(artifact: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
-def _lexicon_json(payload: dict) -> str:
-    lines = ["{", '  "heads":{']
-    lines.extend(_record_mapping(payload["heads"], "    "))
-    lines.extend(["  },", '  "senses":{'])
-    languages = list(payload["senses"].items())
-    for lang_index, (lang, entries) in enumerate(languages):
-        lines.append(f"    {json.dumps(lang)}:{{")
-        lines.extend(_record_mapping(entries, "      "))
-        lines.append(f"    }}{',' if lang_index + 1 < len(languages) else ''}")
+def _entries_json(entries: dict) -> str:
+    """A dictionary header plus one complete lemma per diff line."""
+    lines = ["{", '  "entries":{']
+    lines.extend(_record_mapping(entries, "    "))
     lines.extend(["  }", "}"])
     return "\n".join(lines) + "\n"
 
@@ -158,18 +154,17 @@ class Table:
 def read_corpus(corpus: Path) -> list[tuple[dict, dict[str, dict]]]:
     """Every text with its gloss layers, in a stable order.
 
-    One document on disk since 0.14.0. It is split here rather than read three
-    ways, so everything below stayed as it was.
+    Neutral cores and independently covered language layers are joined only in
+    memory by the storage seam.
     """
-    from build_reader import store
-
     return store.all_texts(corpus)
 
 
-def text_artifact(
-    doc: dict, glosses: dict[str, dict], parses: Table, analyses: Table, citations: Table
+def core_artifact(
+    doc: dict, stored: dict, parses: Table, analyses: Table, citations: Table
 ) -> dict:
-    """One text, both languages, nothing a reader is not shown."""
+    """One language-neutral text and its shared reader-facing citations."""
+    localization = stored.get("localization") or {}
     segments = []
     for segment in doc["segments"]:
         row: dict = {"id": segment["id"], "type": segment["type"]}
@@ -197,35 +192,18 @@ def text_artifact(
                 cells.append(cell)
             row["w"] = cells
 
-        for lang in LANGS:
-            gloss = glosses[lang]
-            seg = (gloss.get("segments") or {}).get(segment["id"]) or {}
-            for field, short in (("translation", "tr"), ("narrative", "nr")):
-                if seg.get(field):
-                    row.setdefault(short, {})[lang] = seg[field]
-                cites = seg.get(f"{field}_citations")
-                if cites:
-                    row.setdefault(f"{short[0]}c", {})[lang] = citations.intern_all(cites)
-            if words:
-                entries = gloss.get("words") or {}
-                row.setdefault("g", {})[lang] = [
-                    (entries.get(w["id"]) or {}).get("gloss", "") for w in words
-                ]
-                for field, short in (("function", "fn"), ("note", "nt")):
-                    notes = {
-                        w["id"]: (entries.get(w["id"]) or {}).get(field)
-                        for w in words
-                        if (entries.get(w["id"]) or {}).get(field)
-                    }
-                    if notes:
-                        row.setdefault(short, {})[lang] = notes
-                cites = {
-                    w["id"]: citations.intern_all(cited)
-                    for w in words
-                    if (cited := (entries.get(w["id"]) or {}).get("function_citations"))
-                }
-                if cites:
-                    row.setdefault("fc", {})[lang] = cites
+        if cited := (localization.get("narrative_citations") or {}).get(segment["id"]):
+            row["nc"] = citations.intern_all(cited)
+        if words:
+            function_requirements = localization.get("functions") or {}
+            cited = {
+                word["id"]: citations.intern_all(requirement["citations"])
+                for word in words
+                if (requirement := function_requirements.get(word["id"]))
+                and requirement.get("citations")
+            }
+            if cited:
+                row["fc"] = cited
         segments.append(row)
 
     artifact: dict = {"id": doc["id"]}
@@ -239,72 +217,105 @@ def text_artifact(
     artifact["ad"] = analyses.intern(doc["analysis_defaults"])
     if doc.get("analysis_defaults_words"):
         artifact["adw"] = analyses.intern(doc["analysis_defaults_words"])
-    artifact["about"] = {lang: glosses[lang]["about"] for lang in LANGS}
-    about_citations = {
-        lang: citations.intern_all(cited)
-        for lang in LANGS
-        if (cited := glosses[lang].get("about_citations"))
-    }
-    if about_citations:
-        artifact["ac"] = about_citations
+    if cited := localization.get("about_citations"):
+        artifact["ac"] = citations.intern_all(cited)
     artifact["seg"] = segments
     return artifact
 
 
-def expand(artifact: dict, parses: list, analyses: list, citations: list) -> tuple[dict, dict]:
-    """The artifact read back as the documents the corpus stores.
+def language_artifact(doc: dict, layer: dict, citations: Table) -> dict:
+    """One target language for one text, independently loadable."""
+    rows = []
+    for segment in doc["segments"]:
+        localized = (layer.get("segments") or {}).get(segment["id"]) or {}
+        row: dict = {"id": segment["id"]}
+        if translation := localized.get("translation"):
+            row["tr"] = translation
+        if cited := localized.get("translation_citations"):
+            row["tc"] = citations.intern_all(cited)
+        if narrative := localized.get("narrative"):
+            row["nr"] = narrative
+        words = segment.get("words") or []
+        if words:
+            entries = layer.get("words") or {}
+            row["g"] = [(entries.get(word["id"]) or {}).get("gloss", "") for word in words]
+            for field, short in (("function", "fn"), ("note", "nt")):
+                prose = {
+                    word["id"]: (entries.get(word["id"]) or {}).get(field)
+                    for word in words
+                    if (entries.get(word["id"]) or {}).get(field)
+                }
+                if prose:
+                    row[short] = prose
+        rows.append(row)
+    return {
+        "id": doc["id"],
+        "language": layer["lang"],
+        "about": layer["about"],
+        "seg": rows,
+    }
 
-    The inverse of `text_artifact`, and the whole of `verify`'s method: rather
+
+def expand(
+    artifact: dict,
+    language_art: dict,
+    parses: list,
+    analyses: list,
+    shared_citations: list,
+    language_citations: list,
+) -> tuple[dict, dict]:
+    """Read a base text and one language artifact back into checking views.
+
+    The inverse of `core_artifact` plus `language_artifact`, and the whole of
+    `verify`'s method: rather
     than checking field against field -- which tests only the fields somebody
     remembered to list -- the edition is expanded and compared whole. A field
     added to the corpus and forgotten here fails as a difference, not as
     silence. The app carries this same function in TypeScript.
     """
     doc: dict = {}
-    layers: dict[str, dict] = {
-        lang: {
-            "text": artifact["id"],
-            "lang": lang,
-            "status": artifact["st"],
-            "analysis_defaults": analyses[artifact["ad"]],
-            "segments": {},
-            "words": {},
-        }
-        for lang in LANGS
+    layer: dict = {
+        "text": artifact["id"],
+        "lang": language_art["language"],
+        "status": artifact["st"],
+        "analysis_defaults": analyses[artifact["ad"]],
+        "about": language_art["about"],
+        "segments": {},
+        "words": {},
     }
     for key, value in artifact.items():
-        if key in ("st", "ad", "adw", "about", "ac", "seg"):
+        if key in ("st", "ad", "adw", "ac", "seg"):
             continue
         doc[key] = value
     doc["status"] = artifact["st"]
     doc["analysis_defaults"] = analyses[artifact["ad"]]
     if "adw" in artifact:
         doc["analysis_defaults_words"] = analyses[artifact["adw"]]
-    for lang in LANGS:
-        layers[lang]["about"] = artifact["about"][lang]
-        cited = (artifact.get("ac") or {}).get(lang)
-        if cited:
-            layers[lang]["about_citations"] = [citations[i] for i in cited]
+    if cited := artifact.get("ac"):
+        layer["about_citations"] = [shared_citations[i] for i in cited]
 
     segments = []
+    localized_rows = {row["id"]: row for row in language_art["seg"]}
     for row in artifact["seg"]:
+        localized = localized_rows[row["id"]]
         segment: dict = {}
         for key, value in row.items():
-            if key in ("w", "g", "fn", "nt", "fc", "tr", "tc", "nr", "nc", "an"):
+            if key in ("w", "fc", "nc", "an"):
                 continue
             segment[key] = value
         if "an" in row:
             segment["analysis"] = analyses[row["an"]]
-        for lang in LANGS:
-            bucket: dict = {}
-            for field, short in (("translation", "tr"), ("narrative", "nr")):
-                if lang in (row.get(short) or {}):
-                    bucket[field] = row[short][lang]
-                cited = (row.get(f"{short[0]}c") or {}).get(lang)
-                if cited:
-                    bucket[f"{field}_citations"] = [citations[i] for i in cited]
-            if bucket:
-                layers[lang]["segments"][row["id"]] = bucket
+        bucket: dict = {}
+        if "tr" in localized:
+            bucket["translation"] = localized["tr"]
+        if cited := localized.get("tc"):
+            bucket["translation_citations"] = [language_citations[i] for i in cited]
+        if "nr" in localized:
+            bucket["narrative"] = localized["nr"]
+        if cited := row.get("nc"):
+            bucket["narrative_citations"] = [shared_citations[i] for i in cited]
+        if bucket:
+            layer["segments"][row["id"]] = bucket
         if "w" in row:
             words = []
             for position, cell in enumerate(row["w"]):
@@ -319,23 +330,24 @@ def expand(artifact: dict, parses: list, analyses: list, citations: list) -> tup
                 if "a" in cell:
                     word["analysis"] = analyses[cell["a"]]
                 words.append(word)
-                for lang in LANGS:
-                    entry: dict = {"gloss": row["g"][lang][position]}
-                    for field, short in (("function", "fn"), ("note", "nt")):
-                        value = ((row.get(short) or {}).get(lang) or {}).get(cell["i"])
-                        if value:
-                            entry[field] = value
-                    cited = ((row.get("fc") or {}).get(lang) or {}).get(cell["i"])
-                    if cited:
-                        entry["function_citations"] = [citations[i] for i in cited]
-                    layers[lang]["words"][cell["i"]] = entry
+                entry: dict = {"gloss": localized["g"][position]}
+                for field, short in (("function", "fn"), ("note", "nt")):
+                    value = (localized.get(short) or {}).get(cell["i"])
+                    if value:
+                        entry[field] = value
+                cited = (row.get("fc") or {}).get(cell["i"])
+                if cited:
+                    entry["function_citations"] = [shared_citations[i] for i in cited]
+                layer["words"][cell["i"]] = entry
             segment["words"] = words
         segments.append(segment)
     doc["segments"] = segments
-    return doc, layers
+    return doc, layer
 
 
-def lexicon_slice(corpus: Path, lemmas: set[str] | None = None) -> dict:
+def lexicon_slice(
+    corpus: Path, language: str | None = None, lemmas: set[str] | None = None
+) -> dict:
     """The dictionary, or the part of it a given set of words reaches for.
 
     Sliced per text it duplicated: the same hundred common entries appear in
@@ -346,14 +358,12 @@ def lexicon_slice(corpus: Path, lemmas: set[str] | None = None) -> dict:
     """
     heads = json.loads((corpus / "lexicon/lemmata.json").read_text(encoding="utf-8"))["entries"]
     keep = sorted(lemmas) if lemmas is not None else sorted(heads)
-    out: dict = {"heads": {}, "senses": {}}
-    for lang in LANGS:
-        entries = json.loads((corpus / f"lexicon/{lang}.json").read_text(encoding="utf-8"))[
-            "entries"
-        ]
-        out["senses"][lang] = {k: entries[k] for k in keep if k in entries}
-    out["heads"] = {k: heads[k] for k in keep if k in heads}
-    return out
+    if language is None:
+        return {k: heads[k] for k in keep if k in heads}
+    entries = json.loads(
+        (corpus / "languages" / language / "lexicon.json").read_text(encoding="utf-8")
+    )["entries"]
+    return {k: entries[k] for k in keep if k in entries}
 
 
 def normalize_latin(value: str) -> str:
@@ -472,7 +482,9 @@ def update_registry(corpus: Path) -> dict[str, int]:
     citations = Table(existing("citations"), label="citations")
     docs = read_corpus(corpus)
     for doc, glosses in docs:
-        text_artifact(doc, glosses, parses, analyses, citations)
+        core_artifact(doc, store.core(corpus, doc["id"]), parses, analyses, citations)
+        for layer in glosses.values():
+            language_artifact(doc, layer, citations)
 
     texts = existing("texts")
     if len(set(texts)) != len(texts) or not all(isinstance(value, str) for value in texts):
@@ -499,17 +511,24 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
     corpus_docs = read_corpus(corpus)
     parses = Table(_registry_records("morphology"), locked=True, label="morphology")
     analyses = Table(_registry_records("analysis"), locked=True, label="analysis")
-    citations = Table(_registry_records("citations"), locked=True, label="citations")
+    citation_registry = _registry_records("citations")
+    shared_citations = Table(citation_registry, locked=True, label="citations")
+    languages = store.language_ids(corpus)
+    language_citations = {
+        language: Table(citation_registry, locked=True, label="citations") for language in languages
+    }
     text_registry = _registry_records("texts")
     if len(set(text_registry)) != len(text_registry) or not all(
         isinstance(value, str) for value in text_registry
     ):
         raise ValueError("text registry must contain unique string ids")
-    written = {"texts": 0, "bytes": 0}
+    written = {"texts": 0, "language_texts": 0, "bytes": 0}
 
     (out / "texts").mkdir(parents=True, exist_ok=True)
     for doc, glosses in corpus_docs:
-        artifact = text_artifact(doc, glosses, parses, analyses, citations)
+        artifact = core_artifact(
+            doc, store.core(corpus, doc["id"]), parses, analyses, shared_citations
+        )
         category, slug = doc["id"].split(".", 1)
         directory = out / "texts" / category
         directory.mkdir(parents=True, exist_ok=True)
@@ -517,6 +536,14 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
         (directory / f"{slug}.json").write_text(body, encoding="utf-8")
         written["texts"] += 1
         written["bytes"] += len(body.encode())
+        for language, layer in glosses.items():
+            localized = language_artifact(doc, layer, language_citations[language])
+            directory = out / "languages" / language / "texts" / category
+            directory.mkdir(parents=True, exist_ok=True)
+            body = _artifact_json(localized)
+            (directory / f"{slug}.json").write_text(body, encoding="utf-8")
+            written["language_texts"] += 1
+            written["bytes"] += len(body.encode())
 
     # The three tables are written LAST because interning fills them as texts
     # are emitted, and a table written first would be the previous run's.
@@ -524,14 +551,64 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
     outputs = (
         ("tables/morphology.json", _record_array(parses.edition())),
         ("tables/analysis.json", _record_array(analyses.edition())),
-        ("tables/citations.json", _record_array(citations.edition())),
+        ("tables/citations.json", _record_array(shared_citations.edition())),
         ("concordance.json", _concordance_json(index(corpus_docs, text_registry))),
-        ("lexicon.json", _lexicon_json(lexicon_slice(corpus))),
+        (
+            "lexicon/heads.json",
+            _entries_json(lexicon_slice(corpus)),
+        ),
         ("calendar.json", _calendar_json(kalendarium())),
     )
     for name, body in outputs:
+        (out / name).parent.mkdir(parents=True, exist_ok=True)
         (out / name).write_text(body, encoding="utf-8")
         written["bytes"] += len(body.encode())
+
+    language_manifests = []
+    for language in languages:
+        source_manifest = store.language_manifest(corpus, language)
+        covered = set(source_manifest["texts"])
+        localized_outputs = (
+            (
+                f"languages/{language}/citations.json",
+                _record_array(language_citations[language].edition()),
+            ),
+            (
+                f"languages/{language}/lexicon.json",
+                _entries_json(lexicon_slice(corpus, language)),
+            ),
+        )
+        for name, body in localized_outputs:
+            (out / name).parent.mkdir(parents=True, exist_ok=True)
+            (out / name).write_text(body, encoding="utf-8")
+            written["bytes"] += len(body.encode())
+        language_manifest = {
+            "schema_version": SCHEMA,
+            "corpus_schema": corpus_docs[0][0]["schema_version"],
+            "language": language,
+            "direction": source_manifest["direction"],
+            "texts": [
+                {
+                    "id": doc["id"],
+                    "path": f"languages/{language}/texts/{doc['id'].replace('.', '/', 1)}.json",
+                }
+                for doc, _ in corpus_docs
+                if doc["id"] in covered
+            ],
+            "lexicon": f"languages/{language}/lexicon.json",
+            "citations": f"languages/{language}/citations.json",
+        }
+        language_manifest_path = f"languages/{language}/manifest.json"
+        body = json.dumps(language_manifest, ensure_ascii=False, indent=2) + "\n"
+        (out / language_manifest_path).write_text(body, encoding="utf-8")
+        written["bytes"] += len(body.encode())
+        language_manifests.append(
+            {
+                "id": language,
+                "direction": source_manifest["direction"],
+                "path": language_manifest_path,
+            }
+        )
 
     manifest = {
         "schema_version": SCHEMA,
@@ -544,11 +621,19 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
             }
             for doc, _ in corpus_docs
         ],
-        "languages": list(LANGS),
+        "languages": language_manifests,
+        "base": {
+            "concordance": "concordance.json",
+            "calendar": "calendar.json",
+            "lexicon": "lexicon/heads.json",
+            "morphology": "tables/morphology.json",
+            "analysis": "tables/analysis.json",
+            "citations": "tables/citations.json",
+        },
         "morphology": len(parses.order),
         "kalendarium": [KALENDARIUM.start, KALENDARIUM.stop - 1],
         "analyses": len(analyses.order),
-        "citations": len(citations.order),
+        "citations": len(shared_citations.order),
     }
     body = json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
     (out / "manifest.json").write_text(body, encoding="utf-8")
@@ -582,7 +667,7 @@ def verify(corpus: Path, out: Path) -> list[str]:
     errors: list[str] = []
     parses = json.loads((out / "tables/morphology.json").read_text(encoding="utf-8"))
     analyses = json.loads((out / "tables/analysis.json").read_text(encoding="utf-8"))
-    citations = json.loads((out / "tables/citations.json").read_text(encoding="utf-8"))
+    shared_citations = json.loads((out / "tables/citations.json").read_text(encoding="utf-8"))
     for doc, glosses in read_corpus(corpus):
         path = out / "texts" / Path(*doc["id"].split(".")).with_suffix(".json")
         if not path.exists():
@@ -590,13 +675,36 @@ def verify(corpus: Path, out: Path) -> list[str]:
             continue
         artifact = json.loads(path.read_text(encoding="utf-8"))
         want_doc, want_glosses = _strip(doc, glosses)
-        got_doc, got_glosses = expand(artifact, parses, analyses, citations)
-        if got_doc != want_doc:
-            errors.append(f"{doc['id']}: {_first_difference(want_doc, got_doc, 'text')}")
-        for lang in LANGS:
-            if got_glosses[lang] != want_glosses[lang]:
+        checked_doc = False
+        for lang in sorted(glosses):
+            language_path = (
+                out
+                / "languages"
+                / lang
+                / "texts"
+                / Path(*doc["id"].split(".")).with_suffix(".json")
+            )
+            if not language_path.exists():
+                errors.append(f"{doc['id']}:{lang}: no language artifact was written")
+                continue
+            language_art = json.loads(language_path.read_text(encoding="utf-8"))
+            language_citations = json.loads(
+                (out / "languages" / lang / "citations.json").read_text(encoding="utf-8")
+            )
+            got_doc, got_gloss = expand(
+                artifact,
+                language_art,
+                parses,
+                analyses,
+                shared_citations,
+                language_citations,
+            )
+            if not checked_doc and got_doc != want_doc:
+                errors.append(f"{doc['id']}: {_first_difference(want_doc, got_doc, 'text')}")
+            checked_doc = True
+            if got_gloss != want_glosses[lang]:
                 errors.append(
-                    f"{doc['id']}: {_first_difference(want_glosses[lang], got_glosses[lang], lang)}"
+                    f"{doc['id']}: {_first_difference(want_glosses[lang], got_gloss, lang)}"
                 )
     return errors
 

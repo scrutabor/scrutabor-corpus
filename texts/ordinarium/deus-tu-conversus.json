@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.deus-tu-conversus",
   "title": "Deus, tu convérsus",
   "category": "ordinarium",
@@ -9,77 +9,23 @@
   "ids": {
     "next": 38
   },
-  "about": {
-    "pl": "Pierwsze trzy wezwania pochodzą z Ps 84, 7–8 i Ps 101, 2 według numeracji Wulgaty, z psałterza gallikańskiego, którym posługuje się Msza: zaczyna on pierwsze z nich słowami Deus, tu convérsus, gdzie późniejsze wydania mają Nonne tu convérsus. Ostatnie to liturgiczne pozdrowienie „Dóminus vobíscum” i odpowiedź na nie.",
-    "en": "The first three exchanges are Psalm 84:7–8 and Psalm 101:2 in the Vulgate numbering, from the Gallican psalter the Mass uses: it opens the first of them Deus, tu convérsus where later editions read Nonne tu convérsus. The last is the liturgical greeting “Dóminus vobíscum” and its response."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Nova Vulgata, Liber Psalmorum",
-        "locator": "Psalmus 85 (Vg 84), 7–8",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
-      },
-      {
-        "title": "Nova Vulgata, Liber Psalmorum",
-        "locator": "Psalmus 102 (Vg 101), 2",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
-      }
-    ],
-    "en": [
-      {
-        "title": "Nova Vulgata, Liber Psalmorum",
-        "locator": "Psalmus 85 (Vg 84), 7–8",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
-      },
-      {
-        "title": "Nova Vulgata, Liber Psalmorum",
-        "locator": "Psalmus 102 (Vg 101), 2",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Et inclinatus prosequitur:",
-      "narrative": {
-        "pl": "Kapłan, pochylony, mówi dalej.",
-        "en": "Bowed, the priest continues."
-      }
+      "text": "Et inclinatus prosequitur:"
     },
     {
       "id": "s02",
       "type": "verse",
       "voice": "clara",
       "speaker": "sacerdos",
-      "translation": {
-        "pl": "Boże, Ty zwrócisz się ku nam i przywrócisz nam życie.",
-        "en": "O God, You will turn toward us and give us life."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 47–48 / printed pp. 44–45",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boże", "en": "God" } },
-        { "id": "w002", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "Ty", "en": "Thou" } },
-        { "id": "w003", "form": "convérsus", "lemma": "converto", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w002", "gloss": { "pl": "zwróciwszy się", "en": "having turned" }, "function": { "pl": "Imiesłów o formie biernej użyty zwrotnie: „zwróciwszy się”.", "en": "A passive participle used reflexively: “having turned”." } },
-        { "id": "w004", "form": "vivificábis", "lemma": "vivifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "ożywisz", "en": "wilt give life" }, "function": { "pl": "Czas przyszły, tryb oznajmujący.", "en": "Future indicative." } },
-        { "id": "w005", "form": "nos", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } }
+        { "id": "w001", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w002", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w003", "form": "convérsus", "lemma": "converto", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w002" },
+        { "id": "w004", "form": "vivificábis", "lemma": "vivifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w005", "form": "nos", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } }
       ]
     },
     {
@@ -93,33 +39,13 @@
           "source": "DMS 31 b"
         }
       },
-      "translation": {
-        "pl": "A Twój lud rozraduje się w Tobie.",
-        "en": "And Your people will rejoice in You."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 47–48 / printed pp. 44–45",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w006", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
-        { "id": "w007", "form": "plebs", "lemma": "plebs", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "lud", "en": "people" } },
-        { "id": "w008", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w007", "gloss": { "pl": "Twój", "en": "Thy" }, "function": { "pl": "Zgadza się z „plebs” (w007).", "en": "Agrees with “plebs” (w007)." } },
-        { "id": "w009", "form": "lætábitur", "lemma": "laetor", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "dep", "conj": 1 }, "gloss": { "pl": "rozraduje się", "en": "will rejoice" }, "function": { "pl": "Czas przyszły, równoległy do „vivificábis” (w004): lud będzie się radował w Bogu.", "en": "A future parallel to “vivificábis” (w004): the people will rejoice in God." } },
-        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w011", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "gloss": { "pl": "Tobie", "en": "Thee" }, "function": { "pl": "Ablativus po „in” (w010).", "en": "Ablative after “in” (w010)." } }
+        { "id": "w006", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "plebs", "lemma": "plebs", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w008", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w007" },
+        { "id": "w009", "form": "lætábitur", "lemma": "laetor", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "dep", "conj": 1 } },
+        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011" },
+        { "id": "w011", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } }
       ]
     },
     {
@@ -127,32 +53,12 @@
       "type": "verse",
       "voice": "clara",
       "speaker": "sacerdos",
-      "translation": {
-        "pl": "Okaż nam, Panie, swoje miłosierdzie.",
-        "en": "Show us Your mercy, O Lord."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 47–48 / printed pp. 44–45",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w012", "form": "Osténde", "lemma": "ostendo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "okaż", "en": "show" } },
-        { "id": "w013", "form": "nobis", "post": ",", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "us" }, "function": { "pl": "Celownik przy „Osténde” (w012).", "en": "Dative with “Osténde” (w012)." } },
-        { "id": "w014", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w015", "form": "misericórdiam", "lemma": "misericordia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "miłosierdzie", "en": "mercy" }, "function": { "pl": "Dopełnienie „Osténde” (w012) w bierniku.", "en": "Accusative object of “Osténde” (w012)." } },
-        { "id": "w016", "form": "tuam", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w015", "gloss": { "pl": "Twoje", "en": "Thy" }, "function": { "pl": "Zgadza się z „misericórdiam” (w015).", "en": "Agrees with “misericórdiam” (w015)." } }
+        { "id": "w012", "form": "Osténde", "lemma": "ostendo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w013", "form": "nobis", "post": ",", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
+        { "id": "w014", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w015", "form": "misericórdiam", "lemma": "misericordia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w016", "form": "tuam", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w015" }
       ]
     },
     {
@@ -166,32 +72,12 @@
           "source": "DMS 31 b"
         }
       },
-      "translation": {
-        "pl": "I daj nam swoje zbawienie.",
-        "en": "And grant us Your salvation."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 47–48 / printed pp. 44–45",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w017", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w018", "form": "salutáre", "lemma": "salutare", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "zbawienie", "en": "salvation" }, "function": { "pl": "Przymiotnik rodzaju nijakiego użyty rzeczownikowo. Dopełnienie „da” (w020) w bierniku.", "en": "Neuter adjective used substantively. Accusative object of “da” (w020)." } },
-        { "id": "w019", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w018", "gloss": { "pl": "Twoje", "en": "Thy" }, "function": { "pl": "Rodzaj nijaki, zgadza się z „salutáre” (w018).", "en": "Neuter, agreeing with “salutáre” (w018)." } },
-        { "id": "w020", "form": "da", "lemma": "do", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "daj", "en": "grant" } },
-        { "id": "w021", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "us" } }
+        { "id": "w017", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w018", "form": "salutáre", "lemma": "salutare", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w019", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w018" },
+        { "id": "w020", "form": "da", "lemma": "do", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w021", "form": "nobis", "post": ".", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } }
       ]
     },
     {
@@ -199,31 +85,11 @@
       "type": "verse",
       "voice": "clara",
       "speaker": "sacerdos",
-      "translation": {
-        "pl": "Panie, wysłuchaj mojej modlitwy.",
-        "en": "O Lord, hear my prayer."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 47–48 / printed pp. 44–45",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w022", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w023", "form": "exáudi", "lemma": "exaudio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 }, "gloss": { "pl": "wysłuchaj", "en": "hear favorably" } },
-        { "id": "w024", "form": "oratiónem", "lemma": "oratio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "modlitwy", "en": "prayer" } },
-        { "id": "w025", "form": "meam", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w024", "gloss": { "pl": "mojej", "en": "my" }, "function": { "pl": "Zgadza się z „oratiónem” (w024).", "en": "Agrees with “oratiónem” (w024)." } }
+        { "id": "w022", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w023", "form": "exáudi", "lemma": "exaudio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 } },
+        { "id": "w024", "form": "oratiónem", "lemma": "oratio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w025", "form": "meam", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w024" }
       ]
     },
     {
@@ -237,33 +103,13 @@
           "source": "DMS 31 b"
         }
       },
-      "translation": {
-        "pl": "A moje wołanie niech do Ciebie dotrze.",
-        "en": "And let my cry come to You."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 47–48 / printed pp. 44–45",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w026", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
-        { "id": "w027", "form": "clamor", "lemma": "clamor", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "wołanie", "en": "cry" }, "function": { "pl": "Podmiot „véniat” (w031) w mianowniku.", "en": "Nominative subject of “véniat” (w031)." } },
-        { "id": "w028", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w027", "gloss": { "pl": "moje", "en": "my" }, "function": { "pl": "Zgadza się z „clamor” (w027).", "en": "Agrees with “clamor” (w027)." } },
-        { "id": "w029", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w030", "gloss": { "pl": "do", "en": "unto" } },
-        { "id": "w030", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "Ciebie", "en": "Thee" }, "function": { "pl": "Biernik po „ad” (w029).", "en": "Accusative after “ad” (w029)." } },
-        { "id": "w031", "form": "véniat", "post": ".", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 }, "gloss": { "pl": "niech przyjdzie", "en": "let come" }, "function": { "pl": "Praesens coniunctivi wyrażające prośbę.", "en": "Present subjunctive expressing a petition." } }
+        { "id": "w026", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w027", "form": "clamor", "lemma": "clamor", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w028", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w027" },
+        { "id": "w029", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w030" },
+        { "id": "w030", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w031", "form": "véniat", "post": ".", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 } }
       ]
     },
     {
@@ -271,30 +117,10 @@
       "type": "verse",
       "voice": "clara",
       "speaker": "sacerdos",
-      "translation": {
-        "pl": "Pan z wami.",
-        "en": "The Lord be with you."
-      },
       "words": [
-        { "id": "w032", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "the Lord" }, "function": { "pl": "Zdanie nominalne bez wyrażonego czasownika.", "en": "Nominal clause without an expressed verb." } },
-        { "id": "w033", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "z wami", "en": "with you" }, "function": { "pl": "Przyimek „cum” następuje po zaimku osobowym: „vobís-cum”.", "en": "The preposition “cum” follows the personal pronoun: “vobís-cum”." } }
-      ],
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 47–48 / printed pp. 44–45",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      }
+        { "id": "w032", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w033", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } }
+      ]
     },
     {
       "id": "s09",
@@ -311,32 +137,12 @@
           "source": "DMS 25 a"
         }
       },
-      "translation": {
-        "pl": "I z duchem twoim.",
-        "en": "And with your spirit."
-      },
       "words": [
-        { "id": "w034", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w035", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w036", "gloss": { "pl": "z", "en": "with" } },
-        { "id": "w036", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "duchem", "en": "spirit" }, "function": { "pl": "Ablativus po „cum” (w035), należący do stałej odpowiedzi „Et cum spíritu tuo”.", "en": "An ablative after “cum” (w035), in the fixed response “Et cum spíritu tuo”." } },
-        { "id": "w037", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w036", "gloss": { "pl": "twoim", "en": "your" }, "function": { "pl": "Zgadza się z „spíritu” (w036).", "en": "Agrees with “spíritu” (w036)." } }
-      ],
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scans 47–48 / printed pp. 44–45",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      }
+        { "id": "w034", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w035", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w036" },
+        { "id": "w036", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w037", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w036" }
+      ]
     }
   ],
   "editorial": {
@@ -353,6 +159,80 @@
     },
     "words": {
       "w033": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Nova Vulgata, Liber Psalmorum",
+        "locator": "Psalmus 85 (Vg 84), 7–8",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
+      },
+      {
+        "title": "Nova Vulgata, Liber Psalmorum",
+        "locator": "Psalmus 102 (Vg 101), 2",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
+      }
+    ],
+    "functions": {
+      "w003": {
+
+      },
+      "w004": {
+
+      },
+      "w008": {
+
+      },
+      "w009": {
+
+      },
+      "w011": {
+
+      },
+      "w013": {
+
+      },
+      "w015": {
+
+      },
+      "w016": {
+
+      },
+      "w018": {
+
+      },
+      "w019": {
+
+      },
+      "w025": {
+
+      },
+      "w027": {
+
+      },
+      "w028": {
+
+      },
+      "w030": {
+
+      },
+      "w031": {
+
+      },
+      "w032": {
+
+      },
+      "w033": {
+
+      },
+      "w036": {
+
+      },
+      "w037": {
+
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "psalmi.118-he",
   "title": "Psalmus 118, HE",
   "category": "psalmi",
@@ -9,12 +9,163 @@
   "ids": {
     "next": 83
   },
-  "about": {
-    "pl": "Psalm 118 według numeracji Wulgaty (Psalm 119 w numeracji hebrajskiej) jest akrostychem: dwadzieścia dwie strofy po osiem wersetów, po jednej na każdą literę alfabetu hebrajskiego, a wszystkie osiem wersetów jednej strofy zaczyna się w hebrajskim tą samą literą. To najdłuższy psalm psałterza i niemal każdy jego werset mówi o jednym: o prawie Bożym, które psalm nazywa wieloma imionami — zakonem, świadectwem, ustawą, przykazaniem, sądem, słowem. Ta strofa nosi nazwę litery HE. W brewiarzu rzymskim jej wersety otwierają psalmodię niedzielnej tercji, a antyfona tej godziny w psałterzu bierze z niej werset 35. Cały psalm rozłożony jest na wszystkie cztery godziny mniejsze niedzieli. Werset trzydziesty czwarty — „Da mihi intelléctum, et scrutábor legem tuam” — dał nazwę temu wydaniu. Psalmista prosi w nim Boga o zrozumienie i zapowiada, że będzie zgłębiał Jego prawo oraz zachowywał je całym sercem.",
-    "en": "Psalm 118 in the Vulgate numbering (Psalm 119 in Hebrew) is an acrostic: twenty-two stanzas of eight verses, one stanza for each letter of the Hebrew alphabet, with all eight verses of a stanza beginning with the same letter in the Hebrew. It is the longest psalm in the psalter, and nearly every verse of it speaks about one thing — God's law, which the psalm calls by many names: law, testimony, statute, commandment, judgment, word. This stanza carries the letter HE. In the Roman breviary its verses open the psalmody of Sunday Terce, and the antiphon of that hour in the psalter is drawn from verse 35. The psalm itself runs across all four of Sunday's little hours. Verse thirty-four — “Da mihi intelléctum, et scrutábor legem tuam” — gave this edition its name. In it, the psalmist asks God for understanding and says that he will search His law and keep it with his whole heart."
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "verse": 33,
+      "words": [
+        { "id": "w001", "form": "Legem", "lemma": "lex", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w002", "form": "pone", "lemma": "pono", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w003", "form": "mihi", "post": ",", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "viam", "lemma": "via", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w006", "form": "iustificatiónum", "lemma": "iustificatio", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w007", "form": "tuárum", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "f" }, "head": "w006" },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "exquíram", "lemma": "exquiro", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w010", "form": "eam", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w011", "form": "semper", "post": ".", "lemma": "semper", "morph": { "pos": "adv" } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "verse": 34,
+      "words": [
+        { "id": "w012", "form": "Da", "lemma": "do", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w013", "form": "mihi", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w014", "form": "intelléctum", "post": ",", "lemma": "intellectus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w016", "form": "scrutábor", "lemma": "scrutor", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "dep", "conj": 1 } },
+        { "id": "w017", "form": "legem", "lemma": "lex", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w018", "form": "tuam", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w017" },
+        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w020", "form": "custódiam", "lemma": "custodio", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 4 } },
+        { "id": "w021", "form": "illam", "lemma": "ille", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024" },
+        { "id": "w023", "form": "toto", "lemma": "totus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "head": "w024" },
+        { "id": "w024", "form": "corde", "lemma": "cor", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w025", "form": "meo", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "head": "w024" }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "verse": 35,
+      "words": [
+        { "id": "w026", "form": "Deduc", "lemma": "deduco", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w027", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w028", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w029" },
+        { "id": "w029", "form": "sémitam", "lemma": "semita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w030", "form": "mandatórum", "lemma": "mandatum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w031", "form": "tuórum", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "n" }, "head": "w030" },
+        { "id": "w032", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
+        { "id": "w033", "form": "ipsam", "lemma": "ipse", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w034", "form": "vólui", "post": ".", "lemma": "volo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act" } }
+      ]
+    },
+    {
+      "id": "s04",
+      "type": "verse",
+      "verse": 36,
+      "words": [
+        { "id": "w035", "form": "Inclína", "lemma": "inclino", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w036", "form": "cor", "lemma": "cor", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w037", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w036" },
+        { "id": "w038", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w039" },
+        { "id": "w039", "form": "testimónia", "lemma": "testimonium", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w040", "form": "tua", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w039" },
+        { "id": "w041", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w042", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w043", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w044" },
+        { "id": "w044", "form": "avarítiam", "post": ".", "lemma": "avaritia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } }
+      ]
+    },
+    {
+      "id": "s05",
+      "type": "verse",
+      "verse": 37,
+      "words": [
+        { "id": "w045", "form": "Avérte", "lemma": "averto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w046", "form": "óculos", "lemma": "oculus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w047", "form": "meos", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "head": "w046" },
+        { "id": "w048", "form": "ne", "lemma": "ne", "morph": { "pos": "conj" } },
+        { "id": "w049", "form": "vídeant", "lemma": "video", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 } },
+        { "id": "w050", "form": "vanitátem", "post": ":", "lemma": "vanitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w051", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w052" },
+        { "id": "w052", "form": "via", "lemma": "via", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w053", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w052" },
+        { "id": "w054", "form": "vivífica", "lemma": "vivifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w055", "form": "me", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } }
+      ]
+    },
+    {
+      "id": "s06",
+      "type": "verse",
+      "verse": 38,
+      "words": [
+        { "id": "w056", "form": "Státue", "lemma": "statuo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w057", "form": "servo", "lemma": "servus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w058", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w057" },
+        { "id": "w059", "form": "elóquium", "lemma": "eloquium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w060", "form": "tuum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w059" },
+        { "id": "w061", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w062" },
+        { "id": "w062", "form": "timóre", "lemma": "timor", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w063", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w062" }
+      ]
+    },
+    {
+      "id": "s07",
+      "type": "verse",
+      "verse": 39,
+      "words": [
+        { "id": "w064", "form": "Ámputa", "lemma": "amputo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w065", "form": "oppróbrium", "lemma": "opprobrium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w066", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w065" },
+        { "id": "w067", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w068", "form": "suspicátus", "lemma": "suspicor", "morph": { "pos": "verb", "tense": "perf", "mood": "part", "voice": "dep", "number": "sg", "gender": "m", "case": "nom", "conj": 1 }, "head": "w069" },
+        { "id": "w069", "form": "sum", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w070", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
+        { "id": "w071", "form": "iudícia", "lemma": "iudicium", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w072", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w071" },
+        { "id": "w073", "form": "iucúnda", "post": ".", "lemma": "iucundus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w071" }
+      ]
+    },
+    {
+      "id": "s08",
+      "type": "verse",
+      "verse": 40,
+      "words": [
+        { "id": "w074", "form": "Ecce", "post": ",", "lemma": "ecce", "morph": { "pos": "intj" } },
+        { "id": "w075", "form": "concupívi", "lemma": "concupisco", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w076", "form": "mandáta", "lemma": "mandatum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w077", "form": "tua", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w076" },
+        { "id": "w078", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w079" },
+        { "id": "w079", "form": "æquitáte", "lemma": "aequitas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w080", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w079" },
+        { "id": "w081", "form": "vivífica", "lemma": "vivifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w082", "form": "me", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } }
+      ]
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The stanza of the Hebrew letter HE — psalm 118 is an alphabetic acrostic of twenty-two stanzas of eight verses, one per letter, and every verse of this one begins with H in the Hebrew. Verse 34 is the verse this edition is named from: DA MIHI INTELLECTUM, ET SCRUTABOR LEGEM TUAM. Three constructions are worth naming. LEGEM (w001) is not the object of PONE: the object is VIAM (w005), and legem stands with pone — legem ponere renders the single Greek verb meaning to lay down as law, so the way is what is being laid down, and legem says what it is laid down as. EXQUIRAM (w009) and CUSTODIAM (w020) have forms shared by the future indicative and present subjunctive. This edition reads both as futures. For EXQUIRAM that reading agrees with the speaker's resolved purpose in the Hebrew text and the unambiguous SERVABO of the Nova Vulgata; EAM (w010) refers to VIAM, as the corresponding Greek pronoun refers to HODON. For CUSTODIAM the coordinate SCRUTABOR, unambiguously future, decides it — the same rule that reads accipiam as future beside invocabo in the priest's Communion verses (Ps 115). SUSPICATUS SUM (w068-w069) is a deponent perfect: passive in form, active in meaning, so it says I have feared and not I have been suspected. In the Roman breviary this stanza's verses open the psalmody of Sunday Terce, whose antiphon is drawn from verse 35; the psalm itself runs across all four of Sunday's little hours; it carries no speaker, because a psalm said in choir has none this edition would record.",
+    "source": {
+      "method": "Verified by collation against the two independent witnesses below: zero substantive divergence over all eight verses. The only differences are the consonantal i, which witness do prints as j (iustificatiónum, iudícia, iucúnda), and punctuation.",
+      "witnesses": "witnesses/psalmi.118-he/",
+      "apparatus": "witnesses/psalmi.118-he/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w009": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } }
+    }
   },
-  "about_citations": {
-    "pl": [
+  "localization": {
+    "about": true,
+    "about_citations": [
       {
         "title": "United States Conference of Catholic Bishops, Psalm 119",
         "locator": "introduction",
@@ -36,341 +187,128 @@
         "url": "https://openlibrary.org/works/OL27763277W/Breviarium_Romanum_ex_decreto_ss._Concilii_Tridentini_restitutum"
       }
     ],
-    "en": [
-      {
-        "title": "United States Conference of Catholic Bishops, Psalm 119",
-        "locator": "introduction",
-        "url": "https://bible.usccb.org/bible/psalms/119"
+    "functions": {
+      "w001": {
+
       },
-      {
-        "title": "Biblia Sacra Vulgatae Editionis (1914)",
-        "locator": "Psalmus 118, 34",
-        "url": "https://www.sacredbible.org/vulgate1914/VT-21_Psalmi.htm"
+      "w002": {
+
       },
-      {
-        "title": "Nova Vulgata, Liber Psalmorum",
-        "locator": "Psalmus 119 (118), 33–40, for the stanza",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
+      "w004": {
+
       },
-      {
-        "title": "Breviarium Romanum (1961)",
-        "locator": "Psalterium, Dominica ad Tertiam",
-        "url": "https://openlibrary.org/works/OL27763277W/Breviarium_Romanum_ex_decreto_ss._Concilii_Tridentini_restitutum"
-      }
-    ]
-  },
-  "segments": [
-    {
-      "id": "s01",
-      "type": "verse",
-      "verse": 33,
-      "translation": {
-        "pl": "Panie, uczyń drogę swoich ustaw moim prawem, a będę jej zawsze pilnie szukał.",
-        "en": "O Lord, make the way of Your statutes my law, and I will always seek it."
+      "w006": {
+
       },
-      "words": [
-        { "id": "w001", "form": "Legem", "lemma": "lex", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "za prawo", "en": "for a law" }, "function": { "pl": "Orzecznik w bierniku przy „viam” (w005): droga ma zostać ustanowiona jako prawo.", "en": "A predicative accusative with “viam” (w005): the way is to be established as a law." } },
-        { "id": "w002", "form": "pone", "lemma": "pono", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "postaw", "en": "set" }, "function": { "pl": "Tryb rozkazujący. Rządzi dwoma biernikami: „viam” (w005) i orzecznikiem „Legem” (w001).", "en": "An imperative governing two accusatives: “viam” (w005) and the predicate “Legem” (w001)." } },
-        { "id": "w003", "form": "mihi", "post": ",", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "mi", "en": "me" } },
-        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" }, "function": { "pl": "Wołacz liczby pojedynczej.", "en": "A singular vocative." } },
-        { "id": "w005", "form": "viam", "lemma": "via", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "drogę", "en": "the way" } },
-        { "id": "w006", "form": "iustificatiónum", "lemma": "iustificatio", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "ustaw", "en": "of the statutes" }, "function": { "pl": "Dopełniacz liczby mnogiej zależny od „viam” (w005). Tutaj „iustificatiónes” oznacza ustawy.", "en": "A genitive plural depending on “viam” (w005). Here “iustificatiónes” means statutes." } },
-        { "id": "w007", "form": "tuárum", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "f" }, "head": "w006", "gloss": { "pl": "Twoich", "en": "Thy" } },
-        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
-        { "id": "w009", "form": "exquíram", "lemma": "exquiro", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "będę szukał", "en": "I will seek" }, "function": { "pl": "Forma jest wspólna futurum indicativi i coniunctivus praesentis. Przekład przyjmuje futurum: „będę szukał”. Tekst hebrajski wyraża postanowienie zachowania drogi, a Nova Vulgata oddaje je jednoznacznym futurum „servabo”.", "en": "The form is shared by the future indicative and present subjunctive. This translation reads the future: “I will seek.” The Hebrew expresses a resolve to keep the way, and the Nova Vulgata renders it with the unambiguous future “servabo.”" }, "function_citations": { "pl": [{ "title": "Allen and Greenough, New Latin Grammar", "locator": "§§ 168 d–e, 187", "url": "https://dcc.dickinson.edu/grammar/latin/present-system" }, { "title": "Biblia Hebraica Stuttgartensia", "locator": "Psalm 119, 33" }, { "title": "Nova Vulgata, Liber Psalmorum", "locator": "Psalmus 119 (118), 33", "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html" }], "en": [{ "title": "Allen and Greenough, New Latin Grammar", "locator": "§§ 168 d–e, 187", "url": "https://dcc.dickinson.edu/grammar/latin/present-system" }, { "title": "Biblia Hebraica Stuttgartensia", "locator": "Psalm 119, 33" }, { "title": "Nova Vulgata, Liber Psalmorum", "locator": "Psalmus 119 (118), 33", "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html" }] }, "note": { "pl": "Końcówka -am jest tu zarazem czasem przyszłym i trybem łączącym. „Będę jej szukał” albo „abym jej szukał”, po rozkaźniku pone. Ta edycja przyjmuje czas przyszły i zaznacza wątpliwość.", "en": "The ending -am is future indicative and present subjunctive at once. I shall seek it, or that I may seek it, after the imperative pone. This edition takes the future and marks the doubt." } },
-        { "id": "w010", "form": "eam", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" }, "gloss": { "pl": "jej", "en": "it" }, "function": { "pl": "Zaimek odnosi się do „viam” (w005). Tak samo grecki zaimek αὐτήν odnosi się w Septuagincie do ὁδόν — „drogi”.", "en": "The pronoun refers to “viam” (w005). Likewise, the Greek pronoun αὐτήν in the Septuagint refers to ὁδόν, “the way.”" }, "function_citations": { "pl": [{ "title": "Septuaginta, ed. Rahlfs–Hanhart", "locator": "Psalm 118, 33", "url": "https://www.die-bibel.de/bibel/LXX/PSA.118" }], "en": [{ "title": "Septuaginta, ed. Rahlfs–Hanhart", "locator": "Psalm 118, 33", "url": "https://www.die-bibel.de/bibel/LXX/PSA.118" }] } },
-        { "id": "w011", "form": "semper", "post": ".", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "always" } }
-      ],
-      "translation_citations": {
-        "pl": [
+      "w009": {
+        "citations": [
           {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Psalm 118:33–40, DjVu scan 588",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
+            "title": "Allen and Greenough, New Latin Grammar",
+            "locator": "§§ 168 d–e, 187",
+            "url": "https://dcc.dickinson.edu/grammar/latin/present-system"
+          },
           {
-            "title": "Douay-Rheims Bible (Challoner)",
-            "locator": "Psalm 118:33–40 (Vulgate numbering)",
-            "url": "https://www.gutenberg.org/ebooks/1610"
-          }
-        ]
-      }
-    },
-    {
-      "id": "s02",
-      "type": "verse",
-      "verse": 34,
-      "translation": {
-        "pl": "Daj mi zrozumienie, a będę badał Twoje prawo i zachowywał je całym sercem.",
-        "en": "Give me understanding, and I will search Your law and keep it with all my heart."
-      },
-      "translation_citations": {
-        "pl": [
+            "title": "Biblia Hebraica Stuttgartensia",
+            "locator": "Psalm 119, 33"
+          },
           {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Psalm 118:33–40, DjVu scan 588",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Douay-Rheims Bible (Challoner)",
-            "locator": "Psalm 118:33–40 (Vulgate numbering)",
-            "url": "https://www.gutenberg.org/ebooks/1610"
+            "title": "Nova Vulgata, Liber Psalmorum",
+            "locator": "Psalmus 119 (118), 33",
+            "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
           }
         ]
       },
-      "words": [
-        { "id": "w012", "form": "Da", "lemma": "do", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "daj", "en": "give" } },
-        { "id": "w013", "form": "mihi", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "mi", "en": "me" } },
-        { "id": "w014", "form": "intelléctum", "post": ",", "lemma": "intellectus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "zrozumienie", "en": "understanding" }, "function": { "pl": "Dopełnienie prośby „Da” (w012): psalmista prosi Boga o dar zrozumienia.", "en": "The object of the petition “Da” (w012): the psalmist asks God for the gift of understanding." } },
-        { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" }, "function": { "pl": "W tym miejscu spójnik łączy prośbę z zapowiedzią, dlatego w przekładzie ma postać „a”, nie „i”.", "en": "Here the conjunction links the petition to the psalmist's statement of what he will do." } },
-        { "id": "w016", "form": "scrutábor", "lemma": "scrutor", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "dep", "conj": 1 }, "gloss": { "pl": "będę badał", "en": "I will search" }, "function": { "pl": "Po prośbie „Da” (w012) psalmista zapowiada, że będzie zgłębiał Boże prawo.", "en": "After the petition “Da” (w012), the psalmist says that he will search God's law." } },
-        { "id": "w017", "form": "legem", "lemma": "lex", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "prawo", "en": "law" } },
-        { "id": "w018", "form": "tuam", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w017", "gloss": { "pl": "Twoje", "en": "Thy" } },
-        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w020", "form": "custódiam", "lemma": "custodio", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 4 }, "gloss": { "pl": "zachowam", "en": "I will keep" }, "function": { "pl": "Forma czasownika jest dwuznaczna jak „exquíram” (w009) — czas przyszły albo tryb łączący — ale tu rozstrzyga współrzędny „scrutábor” (w016), jednoznacznie przyszły: wydanie czyta czas przyszły.", "en": "The verb form is ambiguous like “exquíram” (w009) — future indicative or present subjunctive — but here the coordinate “scrutábor” (w016), unambiguously future, decides: this edition reads the future." }, "function_citations": { "pl": [{ "title": "Allen and Greenough, New Latin Grammar", "locator": "§§ 168 d–e, 187", "url": "https://dcc.dickinson.edu/grammar/latin/present-system" }], "en": [{ "title": "Allen and Greenough, New Latin Grammar", "locator": "§§ 168 d–e, 187", "url": "https://dcc.dickinson.edu/grammar/latin/present-system" }] } },
-        { "id": "w021", "form": "illam", "lemma": "ille", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" }, "gloss": { "pl": "je", "en": "it" }, "function": { "pl": "Biernik rodzaju żeńskiego, bo odnosi się do „legem” (w017). Polskie „prawo” jest nijakie i zaimek musi zmienić rodzaj.", "en": "Feminine accusative, referring to “legem” (w017)." } },
-        { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w023", "form": "toto", "lemma": "totus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "head": "w024", "gloss": { "pl": "całym", "en": "whole" } },
-        { "id": "w024", "form": "corde", "lemma": "cor", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "sercu", "en": "heart" }, "function": { "pl": "Ablativus przy „in” (w022). Wyrażenie „in toto corde” podkreśla, że prawo Boże ma być zachowywane całym i niepodzielonym sercem.", "en": "Ablative with “in” (w022). The phrase “in toto corde” stresses that God's law is to be kept with a whole and undivided heart." } },
-        { "id": "w025", "form": "meo", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "head": "w024", "gloss": { "pl": "moim", "en": "my" } }
-      ]
-    },
-    {
-      "id": "s03",
-      "type": "verse",
-      "verse": 35,
-      "translation": {
-        "pl": "Prowadź mnie ścieżką swoich przykazań, bo jej pragnąłem.",
-        "en": "Lead me along the path of Your commandments, for I have desired it."
-      },
-      "words": [
-        { "id": "w026", "form": "Deduc", "lemma": "deduco", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "prowadź", "en": "lead" }, "function": { "pl": "Tryb rozkazujący — „Deduc” ma skróconą formę bez końcowego -e, jak „dic” i „duc”.", "en": "Imperative — “Deduc” takes the shortened form without final -e, like “dic” and “duc”." } },
-        { "id": "w027", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" } },
-        { "id": "w028", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w029", "gloss": { "pl": "na", "en": "into" } },
-        { "id": "w029", "form": "sémitam", "lemma": "semita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ścieżkę", "en": "the path" } },
-        { "id": "w030", "form": "mandatórum", "lemma": "mandatum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "przykazań", "en": "of the commandments" } },
-        { "id": "w031", "form": "tuórum", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "n" }, "head": "w030", "gloss": { "pl": "Twoich", "en": "Thy" } },
-        { "id": "w032", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" }, "gloss": { "pl": "bo", "en": "for" } },
-        { "id": "w033", "form": "ipsam", "lemma": "ipse", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" }, "gloss": { "pl": "jej właśnie", "en": "that very one" }, "function": { "pl": "Zaimek wzmacniający odnoszący się do „sémitam” (w029): „właśnie jej”.", "en": "An intensive pronoun referring to “sémitam” (w029): that very one." } },
-        { "id": "w034", "form": "vólui", "post": ".", "lemma": "volo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "chciałem", "en": "I have wanted" }, "function": { "pl": "Perfectum indicativi w pierwszej osobie liczby pojedynczej.", "en": "A first-person singular perfect indicative." } }
-      ],
-      "translation_citations": {
-        "pl": [
+      "w010": {
+        "citations": [
           {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Psalm 118:33–40, DjVu scan 588",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Douay-Rheims Bible (Challoner)",
-            "locator": "Psalm 118:33–40 (Vulgate numbering)",
-            "url": "https://www.gutenberg.org/ebooks/1610"
+            "title": "Septuaginta, ed. Rahlfs–Hanhart",
+            "locator": "Psalm 118, 33",
+            "url": "https://www.die-bibel.de/bibel/LXX/PSA.118"
           }
         ]
-      }
-    },
-    {
-      "id": "s04",
-      "type": "verse",
-      "verse": 36,
-      "translation": {
-        "pl": "Skłoń moje serce ku swoim świadectwom, nie ku chciwości.",
-        "en": "Incline my heart to Your testimonies and not to greed."
       },
-      "words": [
-        { "id": "w035", "form": "Inclína", "lemma": "inclino", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "nachyl", "en": "incline" }, "function": { "pl": "Tryb rozkazujący. Dopełnieniem jest „cor” (w036).", "en": "An imperative whose object is “cor” (w036)." } },
-        { "id": "w036", "form": "cor", "lemma": "cor", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "serce", "en": "heart" } },
-        { "id": "w037", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w036", "gloss": { "pl": "moje", "en": "my" } },
-        { "id": "w038", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w039", "gloss": { "pl": "ku", "en": "to" } },
-        { "id": "w039", "form": "testimónia", "lemma": "testimonium", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "świadectwom", "en": "testimonies" } },
-        { "id": "w040", "form": "tua", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w039", "gloss": { "pl": "Twoim", "en": "Thy" } },
-        { "id": "w041", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
-        { "id": "w042", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
-        { "id": "w043", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w044", "gloss": { "pl": "ku", "en": "to" } },
-        { "id": "w044", "form": "avarítiam", "post": ".", "lemma": "avaritia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chciwości", "en": "greed" }, "function": { "pl": "Biernik po „in” (w043): kierunek, w którym serce mogłoby się nachylić zamiast tamtego.", "en": "Accusative after “in” (w043): the direction the heart might lean instead." } }
-      ],
-      "translation_citations": {
-        "pl": [
+      "w014": {
+
+      },
+      "w015": {
+
+      },
+      "w016": {
+
+      },
+      "w020": {
+        "citations": [
           {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Psalm 118:33–40, DjVu scan 588",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Douay-Rheims Bible (Challoner)",
-            "locator": "Psalm 118:33–40 (Vulgate numbering)",
-            "url": "https://www.gutenberg.org/ebooks/1610"
+            "title": "Allen and Greenough, New Latin Grammar",
+            "locator": "§§ 168 d–e, 187",
+            "url": "https://dcc.dickinson.edu/grammar/latin/present-system"
           }
         ]
-      }
-    },
-    {
-      "id": "s05",
-      "type": "verse",
-      "verse": 37,
-      "translation": {
-        "pl": "Odwróć moje oczy, by nie patrzyły na marność; ożyw mnie na swojej drodze.",
-        "en": "Turn away my eyes, that they may not look on emptiness; give me life in Your way."
       },
-      "words": [
-        { "id": "w045", "form": "Avérte", "lemma": "averto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "odwróć", "en": "turn away" } },
-        { "id": "w046", "form": "óculos", "lemma": "oculus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "oczy", "en": "eyes" } },
-        { "id": "w047", "form": "meos", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "head": "w046", "gloss": { "pl": "moje", "en": "my" } },
-        { "id": "w048", "form": "ne", "lemma": "ne", "morph": { "pos": "conj" }, "gloss": { "pl": "aby nie", "en": "that not" }, "function": { "pl": "Otwiera zdanie celowe zaprzeczone, stąd tryb łączący przy „vídeant” (w049).", "en": "Opens a negative purpose clause, hence the subjunctive at “vídeant” (w049)." } },
-        { "id": "w049", "form": "vídeant", "lemma": "video", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 }, "gloss": { "pl": "patrzyły na", "en": "they may look on" }, "function": { "pl": "Tryb łączący po „ne” (w048): nie stwierdzenie, lecz cel, dla którego prosi się o odwrócenie oczu.", "en": "Subjunctive after “ne” (w048): not a statement but the purpose for which the turning is asked." } },
-        { "id": "w050", "form": "vanitátem", "post": ":", "lemma": "vanitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "marność", "en": "emptiness" }, "function": { "pl": "„Vánitas” oznacza tutaj marność lub pustkę, nie zarozumiałość.", "en": "Here “vánitas” means emptiness or futility, not conceit." } },
-        { "id": "w051", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w052", "gloss": { "pl": "na", "en": "in" } },
-        { "id": "w052", "form": "via", "lemma": "via", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "drodze", "en": "way" } },
-        { "id": "w053", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w052", "gloss": { "pl": "Twojej", "en": "Thy" } },
-        { "id": "w054", "form": "vivífica", "lemma": "vivifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "ożyw", "en": "give life to" }, "function": { "pl": "Tryb rozkazujący od „vivífico”: „uczyń żywym”.", "en": "An imperative of “vivífico”: make alive." } },
-        { "id": "w055", "form": "me", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" } }
-      ],
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Psalm 118:33–40, DjVu scan 588",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Douay-Rheims Bible (Challoner)",
-            "locator": "Psalm 118:33–40 (Vulgate numbering)",
-            "url": "https://www.gutenberg.org/ebooks/1610"
-          }
-        ]
-      }
-    },
-    {
-      "id": "s06",
-      "type": "verse",
-      "verse": 38,
-      "translation": {
-        "pl": "Utwierdź wobec swojego sługi swoje słowo, które prowadzi do bojaźni przed Tobą.",
-        "en": "Confirm Your word to Your servant, the word that leads to fear of You."
+      "w021": {
+
       },
-      "words": [
-        { "id": "w056", "form": "Státue", "lemma": "statuo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "utwierdź", "en": "establish" }, "function": { "pl": "Tryb rozkazujący. Dopełnieniem jest „elóquium” (w059).", "en": "An imperative whose object is “elóquium” (w059)." } },
-        { "id": "w057", "form": "servo", "lemma": "servus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "słudze", "en": "for the servant" } },
-        { "id": "w058", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w057", "gloss": { "pl": "Twemu", "en": "Thy" } },
-        { "id": "w059", "form": "elóquium", "lemma": "eloquium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "słowo", "en": "word" } },
-        { "id": "w060", "form": "tuum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w059", "gloss": { "pl": "Twoje", "en": "Thy" } },
-        { "id": "w061", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w062", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w062", "form": "timóre", "lemma": "timor", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "bojaźni", "en": "fear" } },
-        { "id": "w063", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w062", "gloss": { "pl": "Twojej", "en": "Thy" } }
-      ],
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Psalm 118:33–40, DjVu scan 588",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Douay-Rheims Bible (Challoner)",
-            "locator": "Psalm 118:33–40 (Vulgate numbering)",
-            "url": "https://www.gutenberg.org/ebooks/1610"
-          }
-        ]
-      }
-    },
-    {
-      "id": "s07",
-      "type": "verse",
-      "verse": 39,
-      "translation": {
-        "pl": "Oddal ode mnie hańbę, której się lękam, bo Twoje wyroki są dobre.",
-        "en": "Turn away the reproach I fear, for Your judgments are good."
+      "w024": {
+
       },
-      "words": [
-        { "id": "w064", "form": "Ámputa", "lemma": "amputo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "odetnij", "en": "cut away" } },
-        { "id": "w065", "form": "oppróbrium", "lemma": "opprobrium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "hańbę", "en": "reproach" }, "function": { "pl": "„Oppróbrium” oznacza hańbę lub zniewagę.", "en": "“Oppróbrium” means reproach or disgrace." } },
-        { "id": "w066", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w065", "gloss": { "pl": "moją", "en": "my" } },
-        { "id": "w067", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" }, "gloss": { "pl": "której", "en": "which" }, "function": { "pl": "Zaimek względny w bierniku, dopełnienie przy „suspicátus” (w068).", "en": "Relative pronoun in the accusative, object of “suspicátus” (w068)." } },
-        { "id": "w068", "form": "suspicátus", "lemma": "suspicor", "morph": { "pos": "verb", "tense": "perf", "mood": "part", "voice": "dep", "number": "sg", "gender": "m", "case": "nom", "conj": 1 }, "head": "w069", "gloss": { "pl": "obawiałem", "en": "I have feared" }, "function": { "pl": "Imiesłów czasu przeszłego czasownika deponentnego. Razem z „sum” (w069) tworzy formę osobową.", "en": "Perfect participle of a deponent verb. With “sum” (w069) it forms one finite verb." } },
-        { "id": "w069", "form": "sum", "post": ":", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "się", "en": "(have)" }, "function": { "pl": "Z „suspicátus” (w068) tworzy perfectum czasownika deponentnego: „obawiałem się”.", "en": "With “suspicátus” (w068), it forms the perfect of a deponent verb: I have feared." } },
-        { "id": "w070", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" }, "gloss": { "pl": "bo", "en": "for" } },
-        { "id": "w071", "form": "iudícia", "lemma": "iudicium", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "sądy", "en": "judgments" }, "function": { "pl": "Mianownik liczby mnogiej. Łącznik „są” pozostaje domyślny.", "en": "A nominative plural with the verb are understood." } },
-        { "id": "w072", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w071", "gloss": { "pl": "Twoje", "en": "Thy" } },
-        { "id": "w073", "form": "iucúnda", "post": ".", "lemma": "iucundus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w071", "gloss": { "pl": "miłe", "en": "delightful" }, "function": { "pl": "Orzecznik przy domyślnym „są”, odnoszący się do „iudícia” (w071).", "en": "Predicate to the understood “are”, agreeing with “iudícia” (w071)." } }
-      ],
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Psalm 118:33–40, DjVu scan 588",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Douay-Rheims Bible (Challoner)",
-            "locator": "Psalm 118:33–40 (Vulgate numbering)",
-            "url": "https://www.gutenberg.org/ebooks/1610"
-          }
-        ]
-      }
-    },
-    {
-      "id": "s08",
-      "type": "verse",
-      "verse": 40,
-      "translation": {
-        "pl": "Oto pragnę Twoich przykazań; ożyw mnie w swojej sprawiedliwości.",
-        "en": "Behold, I have longed for Your commandments; give me life in Your justice."
+      "w026": {
+
       },
-      "words": [
-        { "id": "w074", "form": "Ecce", "post": ",", "lemma": "ecce", "morph": { "pos": "intj" }, "gloss": { "pl": "oto", "en": "behold" } },
-        { "id": "w075", "form": "concupívi", "lemma": "concupisco", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "zapragnąłem", "en": "I have longed for" }, "function": { "pl": "Dopełnienie „mandáta” (w076) wskazuje, czego psalmista pragnie: Bożych przykazań.", "en": "The object “mandáta” (w076) names what the psalmist longs for: God's commandments." } },
-        { "id": "w076", "form": "mandáta", "lemma": "mandatum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "przykazań", "en": "commandments" } },
-        { "id": "w077", "form": "tua", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w076", "gloss": { "pl": "Twoich", "en": "Thy" } },
-        { "id": "w078", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w079", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w079", "form": "æquitáte", "lemma": "aequitas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "sprawiedliwości", "en": "justice" }, "function": { "pl": "Ablativus po przyimku in: „według Twojej sprawiedliwości”.", "en": "An ablative governed by in: “according to thy justice”." } },
-        { "id": "w080", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w079", "gloss": { "pl": "Twojej", "en": "Thy" } },
-        { "id": "w081", "form": "vivífica", "lemma": "vivifico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "ożyw", "en": "give life to" }, "function": { "pl": "Powtarza „vivífica” (w054) z wcześniejszego wersetu.", "en": "It repeats “vivífica” (w054) from the earlier verse." } },
-        { "id": "w082", "form": "me", "post": ".", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" } }
-      ],
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Psalm 118:33–40, DjVu scan 588",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Douay-Rheims Bible (Challoner)",
-            "locator": "Psalm 118:33–40 (Vulgate numbering)",
-            "url": "https://www.gutenberg.org/ebooks/1610"
-          }
-        ]
+      "w033": {
+
+      },
+      "w034": {
+
+      },
+      "w035": {
+
+      },
+      "w044": {
+
+      },
+      "w048": {
+
+      },
+      "w049": {
+
+      },
+      "w050": {
+
+      },
+      "w054": {
+
+      },
+      "w056": {
+
+      },
+      "w065": {
+
+      },
+      "w067": {
+
+      },
+      "w068": {
+
+      },
+      "w069": {
+
+      },
+      "w071": {
+
+      },
+      "w073": {
+
+      },
+      "w075": {
+
+      },
+      "w079": {
+
+      },
+      "w081": {
+
       }
-    }
-  ],
-  "editorial": {
-    "status": "working-edition",
-    "notes": "The stanza of the Hebrew letter HE — psalm 118 is an alphabetic acrostic of twenty-two stanzas of eight verses, one per letter, and every verse of this one begins with H in the Hebrew. Verse 34 is the verse this edition is named from: DA MIHI INTELLECTUM, ET SCRUTABOR LEGEM TUAM. Three constructions are worth naming. LEGEM (w001) is not the object of PONE: the object is VIAM (w005), and legem stands with pone — legem ponere renders the single Greek verb meaning to lay down as law, so the way is what is being laid down, and legem says what it is laid down as. EXQUIRAM (w009) and CUSTODIAM (w020) have forms shared by the future indicative and present subjunctive. This edition reads both as futures. For EXQUIRAM that reading agrees with the speaker's resolved purpose in the Hebrew text and the unambiguous SERVABO of the Nova Vulgata; EAM (w010) refers to VIAM, as the corresponding Greek pronoun refers to HODON. For CUSTODIAM the coordinate SCRUTABOR, unambiguously future, decides it — the same rule that reads accipiam as future beside invocabo in the priest's Communion verses (Ps 115). SUSPICATUS SUM (w068-w069) is a deponent perfect: passive in form, active in meaning, so it says I have feared and not I have been suspected. In the Roman breviary this stanza's verses open the psalmody of Sunday Terce, whose antiphon is drawn from verse 35; the psalm itself runs across all four of Sunday's little hours; it carries no speaker, because a psalm said in choir has none this edition would record.",
-    "source": {
-      "method": "Verified by collation against the two independent witnesses below: zero substantive divergence over all eight verses. The only differences are the consonantal i, which witness do prints as j (iustificatiónum, iudícia, iucúnda), and punctuation.",
-      "witnesses": "witnesses/psalmi.118-he/",
-      "apparatus": "witnesses/psalmi.118-he/apparatus.json"
     },
-    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
-    "words": {
-      "w009": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } }
-    }
+    "notes": ["w009"]
   }
 }

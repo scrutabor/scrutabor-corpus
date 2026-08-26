@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.placeat-tibi",
   "title": "Pláceat tibi, sancta Trínitas",
   "category": "ordinarium",
@@ -9,92 +9,54 @@
   "ids": {
     "next": 37
   },
-  "about": {
-    "pl": "Kapłan, pochylony przed środkiem ołtarza, odmawia tę modlitwę po cichu. Prosi Trójcę Świętą, aby przyjęła jego służbę i ofiarę oraz aby przez swoje miłosierdzie uczyniła ją przebłagalną dla niego i dla wszystkich, za których została złożona.",
-    "en": "Bowed before the middle of the altar, the priest says this prayer quietly. He asks the Holy Trinity to accept his service and sacrifice and, in mercy, to make it propitiatory for him and for all those for whom it was offered."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Tunc celebrans inclinat se ante medium altaris, et manibus iunctis super illud, dicit secrete:",
-      "narrative": {
-        "pl": "Wtedy kapłan pochyla się przed środkiem ołtarza, ręce składa na nim i mówi po cichu:",
-        "en": "Then the celebrant bows before the middle of the altar, joins his hands upon it, and says silently:"
-      }
+      "text": "Tunc celebrans inclinat se ante medium altaris, et manibus iunctis super illud, dicit secrete:"
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Trójco Święta, niech ten akt mojej służby będzie Ci miły. Spraw, aby ofiara, którą ja, choć niegodny, złożyłem przed Twoim majestatem, była Ci miła i dzięki Twemu miłosierdziu stała się przebłaganiem za mnie i za wszystkich, za których ją złożyłem. Przez Chrystusa, Pana naszego. Amen.",
-        "en": "Holy Trinity, may this act of my service please You. Grant that the sacrifice which I, though unworthy, have offered before Your majesty may be acceptable to You and, through Your mercy, propitiatory for me and for all for whom I offered it. Through Christ our Lord. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 66",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 34",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 78–79",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 105",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Pláceat", "lemma": "placeo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 }, "gloss": { "pl": "niech się podoba", "en": "may it please" }, "function": { "pl": "Podmiotem nie jest kapłan, lecz „obséquium” (w005) — hołd. To on ma się Bogu podobać.", "en": "The subject is not the priest but “obséquium” (w005), the homage — that is what is to please God." } },
-        { "id": "w002", "form": "tibi", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Tobie", "en": "Thee" } },
-        { "id": "w003", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w004", "gloss": { "pl": "Święta", "en": "Holy" } },
-        { "id": "w004", "form": "Trínitas", "post": ",", "lemma": "trinitas", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Trójco", "en": "Trinity" }, "function": { "pl": "Wołacz. Modlitwa zwraca się tu do Trójcy po imieniu.", "en": "Vocative. Here the prayer addresses the Trinity by name." } },
-        { "id": "w005", "form": "obséquium", "lemma": "obsequium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "hołd", "en": "the homage" } },
-        { "id": "w006", "form": "servitútis", "lemma": "servitus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "służby", "en": "of service" } },
-        { "id": "w007", "form": "meæ", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w006", "gloss": { "pl": "mojej", "en": "my" }, "function": { "pl": "Zgadza się z „servitútis” (w006) i wskazuje na pierwszą osobę liczby pojedynczej.", "en": "Agrees with “servitútis” (w006) and marks the first person singular." } },
-        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w009", "form": "præsta", "post": ";", "lemma": "praesto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "spraw", "en": "grant" } },
-        { "id": "w010", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "aby", "en": "that" } },
-        { "id": "w011", "form": "sacrifícium", "post": ",", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "ofiara", "en": "the sacrifice" } },
-        { "id": "w012", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" }, "gloss": { "pl": "którą", "en": "which" }, "function": { "pl": "Rodzaj nijaki, bo zgadza się z „sacrifícium” (w011), choć po polsku wypada rodzaj żeński.", "en": "Neuter, agreeing with “sacrifícium” (w011), and object of “óbtuli” (w017)." } },
-        { "id": "w013", "form": "óculis", "lemma": "oculus", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "przed oczyma", "en": "before the eyes" }, "function": { "pl": "Celownik zależny od „óbtuli” (w017). Wyrażenie znaczy: „złożyłem przed oczyma Twojego majestatu”.", "en": "Dative depending on “óbtuli” (w017). The phrase means “I offered before the eyes of Thy majesty.”" }, "function_citations": { "pl": [{ "title": "Lewis and Short, A Latin Dictionary", "locator": "s.v. offero", "url": "https://cld.bbaw.de/lemma/lat/offero" }], "en": [{ "title": "Lewis and Short, A Latin Dictionary", "locator": "s.v. offero", "url": "https://cld.bbaw.de/lemma/lat/offero" }] }, "note": { "pl": "Forma jest zarazem celownikiem i ablatiwem liczby mnogiej. Nic w zdaniu nie rozstrzyga, czy ofiara jest złożona OCZOM Twojego majestatu, czy PRZED nimi. Ta edycja przyjmuje celownik i zaznacza wątpliwość.", "en": "The form is dative and ablative plural at once. Nothing in the sentence decides whether the sacrifice is offered TO the eyes of Thy majesty or BEFORE them. This edition takes the dative and marks the doubt." } },
-        { "id": "w014", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w015", "gloss": { "pl": "Twego", "en": "of Thy" } },
-        { "id": "w015", "form": "maiestátis", "lemma": "maiestas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "majestatu", "en": "majesty" } },
-        { "id": "w016", "form": "indígnus", "lemma": "indignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w017", "gloss": { "pl": "niegodny", "en": "unworthy" }, "function": { "pl": "Mianownik: nie dopowiedzenie do ofiary, lecz określenie tego, kto ją składa — „ja, niegodny, złożyłem”.", "en": "Nominative: it describes the man who offers, not the offering — “I, unworthy, have offered”." } },
-        { "id": "w017", "form": "óbtuli", "post": ",", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "złożyłem", "en": "I have offered" } },
-        { "id": "w018", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Tobie", "en": "to Thee" } },
-        { "id": "w019", "form": "sit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" }, "gloss": { "pl": "była", "en": "may be" } },
-        { "id": "w020", "form": "acceptábile", "post": ",", "lemma": "acceptabilis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w019", "gloss": { "pl": "miła", "en": "acceptable" }, "function": { "pl": "Rodzaj nijaki, bo orzeka o „sacrifícium” (w011).", "en": "Neuter, because what it says is said of “sacrifícium” (w011)." } },
-        { "id": "w021", "form": "mihíque", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "a mnie", "en": "and for me" }, "function": { "pl": "Mihi z enklitycznym -que znaczy „i mnie”. Enklityka przesuwa akcent na poprzedzającą sylabę.", "en": "Mihi with enclitic -que means “and for me”. The enclitic shifts the stress to the preceding syllable." } },
-        { "id": "w022", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w023", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "wszystkim", "en": "for all" } },
-        { "id": "w024", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w025", "gloss": { "pl": "za", "en": "for" } },
-        { "id": "w025", "form": "quibus", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "m" }, "gloss": { "pl": "których", "en": "whom" } },
-        { "id": "w026", "form": "illud", "lemma": "ille", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" }, "gloss": { "pl": "ją", "en": "it" } },
-        { "id": "w027", "form": "óbtuli", "post": ",", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act" }, "gloss": { "pl": "złożyłem", "en": "I have offered" } },
-        { "id": "w028", "form": "sit", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" }, "gloss": { "pl": "była", "en": "may it be" } },
-        { "id": "w029", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "gloss": { "pl": "Tobą", "en": "Thou" }, "function": { "pl": "Razem z „miseránte” (w030) tworzy ablativus absolutus — konstrukcję, którą polszczyzna oddaje zdaniem pobocznym: „gdy Ty się zmiłujesz”.", "en": "With “miseránte” (w030) it forms an ablative absolute, which English turns into a clause: “Thou showing mercy”, that is, through Thy mercy." } },
-        { "id": "w030", "form": "miseránte", "post": ",", "lemma": "miseror", "morph": { "pos": "verb", "case": "abl", "number": "sg", "gender": "f", "tense": "pres", "mood": "part", "voice": "dep", "conj": 1 }, "head": "w029", "gloss": { "pl": "litującą się", "en": "showing mercy" }, "function": { "pl": "Imiesłów czasu teraźniejszego od deponentnego „miseror”, o formie czynnej.", "en": "The present participle of deponent “miseror”, active in form." } },
-        { "id": "w031", "form": "propitiábile", "post": ".", "lemma": "propitiabilis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w028", "gloss": { "pl": "przebłagalna", "en": "a means of favor" } },
-        { "id": "w032", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w033", "gloss": { "pl": "przez", "en": "through" } },
-        { "id": "w033", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" } },
-        { "id": "w034", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "Lord" } },
-        { "id": "w035", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w034", "gloss": { "pl": "naszego", "en": "our" } },
-        { "id": "w036", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w001", "form": "Pláceat", "lemma": "placeo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 } },
+        { "id": "w002", "form": "tibi", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w003", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w004" },
+        { "id": "w004", "form": "Trínitas", "post": ",", "lemma": "trinitas", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w005", "form": "obséquium", "lemma": "obsequium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w006", "form": "servitútis", "lemma": "servitus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w007", "form": "meæ", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w006" },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "præsta", "post": ";", "lemma": "praesto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w010", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "sacrifícium", "post": ",", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w012", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w013", "form": "óculis", "lemma": "oculus", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w014", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w015" },
+        { "id": "w015", "form": "maiestátis", "lemma": "maiestas", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w016", "form": "indígnus", "lemma": "indignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w017" },
+        { "id": "w017", "form": "óbtuli", "post": ",", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act" } },
+        { "id": "w018", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w019", "form": "sit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w020", "form": "acceptábile", "post": ",", "lemma": "acceptabilis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w019" },
+        { "id": "w021", "form": "mihíque", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w022", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w023", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w024", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w025" },
+        { "id": "w025", "form": "quibus", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "m" } },
+        { "id": "w026", "form": "illud", "lemma": "ille", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w027", "form": "óbtuli", "post": ",", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act" } },
+        { "id": "w028", "form": "sit", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w029", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w030", "form": "miseránte", "post": ",", "lemma": "miseror", "morph": { "pos": "verb", "case": "abl", "number": "sg", "gender": "f", "tense": "pres", "mood": "part", "voice": "dep", "conj": 1 }, "head": "w029" },
+        { "id": "w031", "form": "propitiábile", "post": ".", "lemma": "propitiabilis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w028" },
+        { "id": "w032", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w033" },
+        { "id": "w033", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w034", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w035", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w034" },
+        { "id": "w036", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -115,5 +77,47 @@
       "w013": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
       "w031": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
     }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w001": {
+
+      },
+      "w004": {
+
+      },
+      "w007": {
+
+      },
+      "w012": {
+
+      },
+      "w013": {
+        "citations": [
+          {
+            "title": "Lewis and Short, A Latin Dictionary",
+            "locator": "s.v. offero",
+            "url": "https://cld.bbaw.de/lemma/lat/offero"
+          }
+        ]
+      },
+      "w016": {
+
+      },
+      "w020": {
+
+      },
+      "w021": {
+
+      },
+      "w029": {
+
+      },
+      "w030": {
+
+      }
+    },
+    "notes": ["w013"]
   }
 }

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.unde-et-memores",
   "title": "Unde et mémores",
   "category": "ordinarium",
@@ -9,94 +9,51 @@
   "ids": {
     "next": 57
   },
-  "about": {
-    "pl": "Kościół wspomina błogosławioną mękę, zmartwychwstanie i chwalebne wniebowstąpienie Chrystusa. Z darów otrzymanych od Boga ofiaruje Jego majestatowi Ofiarę czystą, Ofiarę świętą, Ofiarę niepokalaną, święty Chleb życia wiecznego oraz Kielich wiecznego zbawienia.",
-    "en": "The Church remembers Christ's blessed Passion, Resurrection, and glorious Ascension. From the gifts received from God, it offers to His majesty a pure Victim, a holy Victim, a spotless Victim, the holy Bread of eternal life and the Chalice of everlasting salvation."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Deinde disiunctis manibus dicit:",
-      "narrative": {
-        "pl": "Kapłan rozłącza ręce.",
-        "en": "The priest parts his hands."
-      }
+      "text": "Deinde disiunctis manibus dicit:"
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Przeto i my, Panie, Twoi słudzy, a także Twój lud święty, pomni na błogosławioną mękę tegoż Chrystusa, Twojego Syna, naszego Pana, na Jego zmartwychwstanie spośród umarłych i chwalebne wniebowstąpienie:",
-        "en": "Therefore, O Lord, we, Your servants, and likewise Your holy people, mindful of the blessed Passion of the same Christ, Your Son, our Lord, of His Resurrection from the dead, and of His glorious Ascension into heaven:"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 59",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed pp. 69–70",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 26",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 66–67",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 91",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Unde", "lemma": "unde", "morph": { "pos": "adv" }, "gloss": { "pl": "przeto", "en": "wherefore" }, "function": { "pl": "Spójnik łączący tę modlitwę z poprzedzającym tekstem: „przeto”.", "en": "A connective joining this prayer to the preceding text: wherefore." } },
-        { "id": "w002", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "too" } },
-        { "id": "w003", "form": "mémores", "post": ",", "lemma": "memor", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w006", "gloss": { "pl": "pomni", "en": "mindful" }, "function": { "pl": "Rządzi trzema dopełniaczami: „passiónis” (w021), „resurrectiónis” (w027) i „ascensiónis” (w033).", "en": "It governs three genitives: “passiónis” (w021), “resurrectiónis” (w027), and “ascensiónis” (w033)." } },
-        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w005", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "nom", "number": "pl" }, "gloss": { "pl": "my", "en": "we" } },
-        { "id": "w006", "form": "servi", "lemma": "servus", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "słudzy", "en": "servants" }, "function": { "pl": "Apozycja (dopowiedzenie) do „nos” (w005): my — słudzy Twoi.", "en": "In apposition to “nos” (w005): we, thy servants." } },
-        { "id": "w007", "form": "tui", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w006", "gloss": { "pl": "Twoi", "en": "Thy" } },
-        { "id": "w008", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "but" } },
-        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "także", "en": "also" }, "function": { "pl": "„Sed et” rozszerza podmiot od „nos servi tui” do „plebs tua sancta”.", "en": "“Sed et” extends the subject from “nos servi tui” to “plebs tua sancta”." } },
-        { "id": "w010", "form": "plebs", "lemma": "plebs", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "lud", "en": "people" } },
-        { "id": "w011", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w010", "gloss": { "pl": "Twój", "en": "Thy" } },
-        { "id": "w012", "form": "sancta", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w010", "gloss": { "pl": "święty", "en": "holy" } },
-        { "id": "w013", "form": "eiúsdem", "lemma": "idem", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "tegoż", "en": "of the same" } },
-        { "id": "w014", "form": "Christi", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" } },
-        { "id": "w015", "form": "Fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Syna", "en": "Son" } },
-        { "id": "w016", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w015", "gloss": { "pl": "Twego", "en": "Thy" } },
-        { "id": "w017", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "Lord" } },
-        { "id": "w018", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w017", "gloss": { "pl": "naszego", "en": "our" } },
-        { "id": "w019", "form": "tam", "lemma": "tam", "morph": { "pos": "adv" }, "gloss": { "pl": "tak", "en": "so" } },
-        { "id": "w020", "form": "beátæ", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w021", "gloss": { "pl": "błogosławionej", "en": "blessed" } },
-        { "id": "w021", "form": "passiónis", "post": ",", "lemma": "passio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "męki", "en": "Passion" }, "function": { "pl": "Pierwszy z trzech dopełniaczy zależnych od „mémores” (w003).", "en": "The first of the three genitives depending on “mémores” (w003)." } },
-        { "id": "w022", "form": "nec", "lemma": "nec", "morph": { "pos": "conj" }, "gloss": { "pl": "ani", "en": "nor" } },
-        { "id": "w023", "form": "non", "lemma": "non", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" }, "function": { "pl": "Wyrażenie „nec non” tworzy całość znaczącą „a także”.", "en": "The phrase “nec non” forms a unit meaning and also." } },
-        { "id": "w024", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w025", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w026", "gloss": { "pl": "spośród", "en": "from" } },
-        { "id": "w026", "form": "ínferis", "lemma": "inferi", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "umarłych", "en": "the dead" }, "function": { "pl": "Ablativus liczby mnogiej po „ab” (w025). Wyrażenie „ab ínferis” zależy od „resurrectiónis” (w027).", "en": "An ablative plural after “ab” (w025). The phrase “ab ínferis” depends on “resurrectiónis” (w027)." } },
-        { "id": "w027", "form": "resurrectiónis", "post": ",", "lemma": "resurrectio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "zmartwychwstania", "en": "rising" } },
-        { "id": "w028", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "but" } },
-        { "id": "w029", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "także", "en": "also" } },
-        { "id": "w030", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w031", "gloss": { "pl": "do", "en": "into" } },
-        { "id": "w031", "form": "cælos", "lemma": "caelum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "niebios", "en": "heaven" }, "function": { "pl": "Biernik liczby mnogiej od „cælum”. W liczbie mnogiej rzeczownik ma rodzaj męski.", "en": "The accusative plural of “cælum”. The noun is masculine in the plural." } },
-        { "id": "w032", "form": "gloriósæ", "lemma": "gloriosus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w033", "gloss": { "pl": "chwalebnego", "en": "glorious" } },
-        { "id": "w033", "form": "ascensiónis", "post": ":", "lemma": "ascensio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "wniebowstąpienia", "en": "Ascension" } }
+        { "id": "w001", "form": "Unde", "lemma": "unde", "morph": { "pos": "adv" } },
+        { "id": "w002", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w003", "form": "mémores", "post": ",", "lemma": "memor", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w006" },
+        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
+        { "id": "w006", "form": "servi", "lemma": "servus", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w007", "form": "tui", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w006" },
+        { "id": "w008", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "plebs", "lemma": "plebs", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w011", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w010" },
+        { "id": "w012", "form": "sancta", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w010" },
+        { "id": "w013", "form": "eiúsdem", "lemma": "idem", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w014", "form": "Christi", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w015", "form": "Fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w016", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w015" },
+        { "id": "w017", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w018", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w017" },
+        { "id": "w019", "form": "tam", "lemma": "tam", "morph": { "pos": "adv" } },
+        { "id": "w020", "form": "beátæ", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w021" },
+        { "id": "w021", "form": "passiónis", "post": ",", "lemma": "passio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w022", "form": "nec", "lemma": "nec", "morph": { "pos": "conj" } },
+        { "id": "w023", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w024", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w025", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w026" },
+        { "id": "w026", "form": "ínferis", "lemma": "inferi", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w027", "form": "resurrectiónis", "post": ",", "lemma": "resurrectio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w028", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
+        { "id": "w029", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w030", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w031" },
+        { "id": "w031", "form": "cælos", "lemma": "caelum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w032", "form": "gloriósæ", "lemma": "gloriosus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w033" },
+        { "id": "w033", "form": "ascensiónis", "post": ":", "lemma": "ascensio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } }
       ]
     },
     {
@@ -104,221 +61,69 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "ofiarujemy Twojemu przesławnemu majestatowi z Twoich darów i udzielonych nam dóbr,",
-        "en": "offer to Your excellent majesty, from Your own gifts and all that You have bestowed upon us,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 59",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed pp. 69–70",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 26",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 66–67",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 91",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w034", "form": "offérimus", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "składamy", "en": "we offer" }, "function": { "pl": "Orzeczenie, którego podmiotem jest wcześniejsze „nos servi tui, sed et plebs tua sancta”.", "en": "The finite verb whose subject is the earlier “nos servi tui, sed et plebs tua sancta”." } },
-        { "id": "w035", "form": "præcláræ", "lemma": "praeclarus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "f" }, "head": "w036", "gloss": { "pl": "przesławnemu", "en": "most excellent" } },
-        { "id": "w036", "form": "maiestáti", "lemma": "maiestas", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "majestatowi", "en": "majesty" } },
-        { "id": "w037", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "f" }, "head": "w036", "gloss": { "pl": "Twemu", "en": "Thy" } },
-        { "id": "w038", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w040", "gloss": { "pl": "z", "en": "of" } },
-        { "id": "w039", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w040", "gloss": { "pl": "Twoich", "en": "Thine own" } },
-        { "id": "w040", "form": "donis", "lemma": "donum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "darów", "en": "gifts" } },
-        { "id": "w041", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w042", "form": "datis", "post": ",", "lemma": "datum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "danin", "en": "grants" }, "function": { "pl": "Rzeczownikowe użycie imiesłowu od „do”: „to, co dane”. Łączy się z „donis” (w040).", "en": "The participle of “do” used as a noun: things given. It is joined to “donis” (w040)." } }
+        { "id": "w034", "form": "offérimus", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w035", "form": "præcláræ", "lemma": "praeclarus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "f" }, "head": "w036" },
+        { "id": "w036", "form": "maiestáti", "lemma": "maiestas", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w037", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "f" }, "head": "w036" },
+        { "id": "w038", "form": "de", "lemma": "de", "morph": { "pos": "prep", "governs": "abl" }, "head": "w040" },
+        { "id": "w039", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w040" },
+        { "id": "w040", "form": "donis", "lemma": "donum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w041", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
+        { "id": "w042", "form": "datis", "post": ",", "lemma": "datum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } }
       ]
     },
     {
       "id": "s04",
       "type": "rubric",
-      "text": "Iungit manus, et signat ter super Hostiam, et Calicem simul, dicens:",
-      "narrative": {
-        "pl": "Kapłan składa ręce i czyni trzy znaki krzyża nad Hostią i kielichem jednocześnie.",
-        "en": "The priest joins his hands and makes three signs of the cross over the Host and chalice together."
-      }
+      "text": "Iungit manus, et signat ter super Hostiam, et Calicem simul, dicens:"
     },
     {
       "id": "s05",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Ofiarę czystą, Ofiarę świętą, Ofiarę niepokalaną,",
-        "en": "a pure Victim, a holy Victim, a spotless Victim,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 59",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed pp. 69–70",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 26",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 66–67",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 91",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w043", "form": "hóstiam", "lemma": "hostia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ofiarę", "en": "victim" }, "function": { "pl": "„Hóstia” oznacza ofiarę lub żertwę ofiarną.", "en": "“Hóstia” means a sacrifice or sacrificial victim." } },
-        { "id": "w044", "form": "puram", "post": ",", "lemma": "purus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w043", "gloss": { "pl": "czystą", "en": "pure" } },
-        { "id": "w045", "form": "hóstiam", "lemma": "hostia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ofiarę", "en": "victim" } },
-        { "id": "w046", "form": "sanctam", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w045", "gloss": { "pl": "świętą", "en": "holy" } },
-        { "id": "w047", "form": "hóstiam", "lemma": "hostia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ofiarę", "en": "victim" } },
-        { "id": "w048", "form": "immaculátam", "post": ",", "lemma": "immaculatus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w047", "gloss": { "pl": "niepokalaną", "en": "unspotted" } }
+        { "id": "w043", "form": "hóstiam", "lemma": "hostia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w044", "form": "puram", "post": ",", "lemma": "purus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w043" },
+        { "id": "w045", "form": "hóstiam", "lemma": "hostia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w046", "form": "sanctam", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w045" },
+        { "id": "w047", "form": "hóstiam", "lemma": "hostia", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w048", "form": "immaculátam", "post": ",", "lemma": "immaculatus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w047" }
       ]
     },
     {
       "id": "s06",
       "type": "rubric",
-      "text": "Signat semel super Hostiam, dicens:",
-      "narrative": {
-        "pl": "Kapłan czyni jeden znak krzyża nad Hostią.",
-        "en": "The priest makes one sign of the cross over the Host."
-      }
+      "text": "Signat semel super Hostiam, dicens:"
     },
     {
       "id": "s07",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Chleb święty życia wiecznego",
-        "en": "the holy Bread of eternal life"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 59",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed pp. 69–70",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 26",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 66–67",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 91",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w049", "form": "Panem", "lemma": "panis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Chleb", "en": "Bread" } },
-        { "id": "w050", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w049", "gloss": { "pl": "święty", "en": "holy" } },
-        { "id": "w051", "form": "vitæ", "lemma": "vita", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "życia", "en": "of life" } },
-        { "id": "w052", "form": "ætérnæ", "post": ",", "lemma": "aeternus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w051", "gloss": { "pl": "wiecznego", "en": "eternal" } }
+        { "id": "w049", "form": "Panem", "lemma": "panis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w050", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w049" },
+        { "id": "w051", "form": "vitæ", "lemma": "vita", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w052", "form": "ætérnæ", "post": ",", "lemma": "aeternus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w051" }
       ]
     },
     {
       "id": "s08",
       "type": "rubric",
-      "text": "Et semel super Calicem, dicens:",
-      "narrative": {
-        "pl": "Kapłan czyni jeden znak krzyża nad kielichem.",
-        "en": "The priest makes one sign of the cross over the chalice."
-      }
+      "text": "Et semel super Calicem, dicens:"
     },
     {
       "id": "s09",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "i Kielich wiekuistego zbawienia.",
-        "en": "and the Chalice of everlasting salvation."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 59",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed pp. 69–70",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 26",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 66–67",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 91",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w053", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w054", "form": "Cálicem", "lemma": "calix", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Kielich", "en": "Chalice" } },
-        { "id": "w055", "form": "salútis", "lemma": "salus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "zbawienia", "en": "of salvation" } },
-        { "id": "w056", "form": "perpétuæ", "post": ".", "lemma": "perpetuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w055", "gloss": { "pl": "wiecznego", "en": "everlasting" }, "function": { "pl": "Dopełniacz liczby pojedynczej zgadzający się z „salútis” (w055).", "en": "A genitive singular agreeing with “salútis” (w055)." } }
+        { "id": "w053", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w054", "form": "Cálicem", "lemma": "calix", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w055", "form": "salútis", "lemma": "salus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w056", "form": "perpétuæ", "post": ".", "lemma": "perpetuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w055" }
       ]
     }
   ],
@@ -341,6 +146,47 @@
     "words": {
       "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w031": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w001": {
+
+      },
+      "w003": {
+
+      },
+      "w006": {
+
+      },
+      "w009": {
+
+      },
+      "w021": {
+
+      },
+      "w023": {
+
+      },
+      "w026": {
+
+      },
+      "w031": {
+
+      },
+      "w034": {
+
+      },
+      "w042": {
+
+      },
+      "w043": {
+
+      },
+      "w056": {
+
+      }
     }
   }
 }

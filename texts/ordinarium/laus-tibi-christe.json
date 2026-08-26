@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.laus-tibi-christe",
   "title": "Laus tibi, Christe",
   "category": "ordinarium",
@@ -8,26 +8,6 @@
   "sung": false,
   "ids": {
     "next": 4
-  },
-  "about": {
-    "pl": "Odpowiedź po zakończeniu Ewangelii.",
-    "en": "The response at the end of the Gospel."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Ritus servandus in celebratione Missae, VI, 2",
-        "url": "https://archive.org/details/missale_romanum-1962/page/n58/mode/1up"
-      }
-    ],
-    "en": [
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Ritus servandus in celebratione Missae, VI, 2",
-        "url": "https://archive.org/details/missale_romanum-1962/page/n58/mode/1up"
-      }
-    ]
   },
   "segments": [
     {
@@ -40,33 +20,10 @@
           "source": "DMS 31 a"
         }
       },
-      "translation": {
-        "pl": "Chwała Tobie, Chryste.",
-        "en": "Praise to You, O Christ."
-      },
-      "translation_citations": {
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 8",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed p. 43",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 70",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Laus", "lemma": "laus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Chwała", "en": "Praise" }, "function": { "pl": "Mianownik w odpowiedzi bez wyrażonego czasownika.", "en": "Nominative in a response without an expressed verb." } },
-        { "id": "w002", "form": "tibi", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Tobie", "en": "to You" } },
-        { "id": "w003", "form": "Christe", "post": ".", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chryste", "en": "Christ" } }
+        { "id": "w001", "form": "Laus", "lemma": "laus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w002", "form": "tibi", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w003", "form": "Christe", "post": ".", "lemma": "Christus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     }
   ],
@@ -79,5 +36,20 @@
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ritus servandus in celebratione Missae, VI, 2",
+        "url": "https://archive.org/details/missale_romanum-1962/page/n58/mode/1up"
+      }
+    ],
+    "functions": {
+      "w001": {
+
+      }
+    }
   }
 }

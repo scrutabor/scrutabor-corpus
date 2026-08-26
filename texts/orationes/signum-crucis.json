@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "orationes.signum-crucis",
   "title": "Signum crucis",
   "category": "orationes",
@@ -8,60 +8,20 @@
   "ids": {
     "next": 10
   },
-  "about": {
-    "pl": "Znak krzyża łączy gest krzyża z krótkim wezwaniem Trójcy Świętej.",
-    "en": "The Sign of the Cross joins the gesture of the cross to a brief invocation of the Holy Trinity."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Ordo Missae, opening rubric and formula",
-        "url": "https://archive.org/details/missale-romanum-1962"
-      }
-    ],
-    "en": [
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Ordo Missae, opening rubric and formula",
-        "url": "https://archive.org/details/missale-romanum-1962"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
-      "translation": {
-        "pl": "W imię Ojca i Syna, i Ducha Świętego. Amen.",
-        "en": "In the name of the Father, and of the Son, and of the Holy Spirit. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 43",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 630",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w002", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w002", "form": "nómine", "lemma": "nomen", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "imieniu", "en": "the name" } },
-        { "id": "w003", "form": "Patris", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojca", "en": "of the Father" }, "function": { "pl": "Dopełniacz zależny od „nómine” (w002), równoległy do „Fílii” (w005) i „Spíritus” (w007).", "en": "Genitive depending on “nómine” (w002), parallel to “Fílii” (w005) and “Spíritus” (w007)." } },
-        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w005", "form": "Fílii", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Syna", "en": "of the Son" } },
-        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w007", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Ducha", "en": "of the Spirit" }, "function": { "pl": "Forma „Spíritus” może być mianownikiem albo dopełniaczem. Końcówka „Sancti” (w008) wskazuje tutaj dopełniacz.", "en": "“Spíritus” can be nominative or genitive. Agreement with “Sancti” (w008) establishes the genitive here." } },
-        { "id": "w008", "form": "Sancti", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w007", "gloss": { "pl": "Świętego", "en": "Holy" } },
-        { "id": "w009", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w002" },
+        { "id": "w002", "form": "nómine", "lemma": "nomen", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w003", "form": "Patris", "post": ",", "lemma": "pater", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "Fílii", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w008", "form": "Sancti", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w007" },
+        { "id": "w009", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -77,6 +37,24 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ordo Missae, opening rubric and formula",
+        "url": "https://archive.org/details/missale-romanum-1962"
+      }
+    ],
+    "functions": {
+      "w003": {
+
+      },
+      "w007": {
+
+      }
     }
   }
 }

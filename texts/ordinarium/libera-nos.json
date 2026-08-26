@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.libera-nos",
   "title": "Líbera nos",
   "category": "ordinarium",
@@ -9,398 +9,160 @@
   "ids": {
     "next": 79
   },
-  "about": {
-    "pl": "Modlitwa „Líbera nos” rozwija ostatnią prośbę Modlitwy Pańskiej: „wybaw nas od złego”. Prosi o to wybawienie przez wstawiennictwo Najświętszej Maryi Panny, Apostołów Piotra, Pawła i Andrzeja oraz wszystkich świętych. Kapłan odmawia ją po cichu nad pateną i żegna się nią, a słychać dopiero końcowe Per ómnia sǽcula sæculórum.",
-    "en": "The “Líbera nos” develops the final petition of the Lord's Prayer: “deliver us from evil”. It asks that deliverance through the intercession of the Virgin Mary, the Apostles Peter, Paul and Andrew, and all the saints. The priest says it secretly over the paten and signs himself with it, and only the closing Per ómnia sǽcula sæculórum is heard."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Deinde manu dextera accipit inter indicem et medium digitos Patenam, quam tenens super Altare erectam, dicit secrete:",
-      "narrative": {
-        "pl": "Kapłan bierze patenę prawą ręką, między palec wskazujący a środkowy, trzyma ją pionowo nad ołtarzem i odmawia modlitwę po cichu.",
-        "en": "The priest takes the paten in his right hand, between the forefinger and the middle finger, holds it upright over the altar, and says the prayer silently."
-      }
+      "text": "Deinde manu dextera accipit inter indicem et medium digitos Patenam, quam tenens super Altare erectam, dicit secrete:"
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Wybaw nas, prosimy Cię, Panie, od wszelkiego zła przeszłego, obecnego i przyszłego; i za wstawiennictwem błogosławionej i chwalebnej Maryi, zawsze Dziewicy, Bożej Rodzicielki, wraz z Twoimi błogosławionymi apostołami Piotrem i Pawłem, Andrzejem i wszystkimi świętymi,",
-        "en": "Deliver us, we pray, Lord, from all evils, past, present, and future; and through the intercession of blessed and glorious Mary, ever Virgin and Mother of God, together with Your blessed Apostles Peter and Paul, Andrew, and all the saints,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 62",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed pp. 71–72",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 29",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 71–72",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 94–95",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Líbera", "lemma": "libero", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "wybaw", "en": "deliver" }, "function": { "pl": "Druga osoba liczby pojedynczej trybu rozkazującego, otwierająca modlitwę.", "en": "A second-person singular imperative opening the prayer." } },
-        { "id": "w002", "form": "nos", "post": ",", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } },
-        { "id": "w003", "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "prosimy", "en": "we beseech" }, "function": { "pl": "Pierwsza osoba liczby mnogiej czasu teraźniejszego, użyta jako wtrącenie.", "en": "First-person plural present, used parenthetically." } },
-        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w005", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007", "gloss": { "pl": "od", "en": "from" } },
-        { "id": "w006", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w007", "gloss": { "pl": "wszelkiego", "en": "all" }, "function": { "pl": "Ablativus liczby mnogiej. Zgadza się z „malis” (w007).", "en": "Ablative plural agreeing with “malis” (w007)." } },
-        { "id": "w007", "form": "malis", "post": ",", "lemma": "malum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "zła", "en": "evils" }, "function": { "pl": "Ablativus liczby mnogiej zależny od „ab” (w005).", "en": "Ablative plural governed by “ab” (w005)." } },
-        { "id": "w008", "form": "prætéritis", "post": ",", "lemma": "praeteritus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w007", "gloss": { "pl": "przeszłego", "en": "past" }, "function": { "pl": "Pierwszy z trzech przymiotników w ablativie liczby mnogiej. Zgadza się z „malis” (w007).", "en": "The first of three ablative plural adjectives agreeing with “malis” (w007)." } },
-        { "id": "w009", "form": "præséntibus", "lemma": "praesens", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w007", "gloss": { "pl": "obecnego", "en": "present" } },
-        { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w011", "form": "futúris", "post": ":", "lemma": "futurus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w007", "gloss": { "pl": "przyszłego", "en": "to come" } },
-        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "a", "en": "and" } },
-        { "id": "w013", "form": "intercedénte", "lemma": "intercedo", "morph": { "pos": "verb", "case": "abl", "number": "sg", "gender": "f", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w018", "gloss": { "pl": "wstawiającą się", "en": "interceding" }, "function": { "pl": "Imiesłów tworzący z „Vírgine” (w018) ablativus absolutus.", "en": "A participle forming an ablative absolute with “Vírgine” (w018)." } },
-        { "id": "w014", "form": "beáta", "lemma": "beatus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w018", "gloss": { "pl": "błogosławioną", "en": "blessed" } },
-        { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w016", "form": "gloriósa", "lemma": "gloriosus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w018", "gloss": { "pl": "chwalebną", "en": "glorious" } },
-        { "id": "w017", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "ever" }, "function": { "pl": "Przysłówek określający „Vírgine” (w018): zawsze Dziewicy.", "en": "An adverb modifying “Vírgine” (w018): ever-Virgin." } },
-        { "id": "w018", "form": "Vírgine", "lemma": "virgo", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Dziewicą", "en": "Virgin" } },
-        { "id": "w019", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" }, "function": { "pl": "Dopełniacz zależny od „Genetríce” (w020).", "en": "A genitive dependent on “Genetríce” (w020)." } },
-        { "id": "w020", "form": "Genetríce", "lemma": "genetrix", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Rodzicielką", "en": "Mother" }, "function": { "pl": "Apozycja (dopowiedzenie) do „Vírgine” (w018).", "en": "In apposition to “Vírgine” (w018)." } },
-        { "id": "w021", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryją", "en": "Mary" } },
-        { "id": "w022", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024", "gloss": { "pl": "z", "en": "with" } },
-        { "id": "w023", "form": "beátis", "lemma": "beatus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w024", "gloss": { "pl": "błogosławionymi", "en": "blessed" } },
-        { "id": "w024", "form": "Apóstolis", "lemma": "apostolus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "Apostołami", "en": "Apostles" } },
-        { "id": "w025", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w024", "gloss": { "pl": "Twoimi", "en": "Thy" } },
-        { "id": "w026", "form": "Petro", "lemma": "Petrus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Piotrem", "en": "Peter" } },
-        { "id": "w027", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w028", "form": "Paulo", "post": ",", "lemma": "Paulus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pawłem", "en": "Paul" } },
-        { "id": "w029", "form": "atque", "lemma": "atque", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w030", "form": "Andréa", "post": ",", "lemma": "Andreas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 1 }, "gloss": { "pl": "Andrzejem", "en": "Andrew" } },
-        { "id": "w031", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w032", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w033", "gloss": { "pl": "wszystkimi", "en": "all" }, "function": { "pl": "Ablativus liczby mnogiej rodzaju męskiego. Zgadza się z „Sanctis” (w033).", "en": "Masculine ablative plural, agreeing with “Sanctis” (w033)." } },
-        { "id": "w033", "form": "Sanctis", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "Świętymi", "en": "the Saints" }, "function": { "pl": "Przymiotnik użyty rzeczownikowo: święci.", "en": "An adjective used as a noun: the holy ones." } }
+        { "id": "w001", "form": "Líbera", "lemma": "libero", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w002", "form": "nos", "post": ",", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w003", "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w004", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007" },
+        { "id": "w006", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w007" },
+        { "id": "w007", "form": "malis", "post": ",", "lemma": "malum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w008", "form": "prætéritis", "post": ",", "lemma": "praeteritus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w007" },
+        { "id": "w009", "form": "præséntibus", "lemma": "praesens", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w007" },
+        { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "futúris", "post": ":", "lemma": "futurus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w007" },
+        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "intercedénte", "lemma": "intercedo", "morph": { "pos": "verb", "case": "abl", "number": "sg", "gender": "f", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w018" },
+        { "id": "w014", "form": "beáta", "lemma": "beatus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w018" },
+        { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w016", "form": "gloriósa", "lemma": "gloriosus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w018" },
+        { "id": "w017", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w018", "form": "Vírgine", "lemma": "virgo", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w019", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w020", "form": "Genetríce", "lemma": "genetrix", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w021", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w022", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024" },
+        { "id": "w023", "form": "beátis", "lemma": "beatus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w024" },
+        { "id": "w024", "form": "Apóstolis", "lemma": "apostolus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w025", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w024" },
+        { "id": "w026", "form": "Petro", "lemma": "Petrus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w027", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w028", "form": "Paulo", "post": ",", "lemma": "Paulus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w029", "form": "atque", "lemma": "atque", "morph": { "pos": "conj" } },
+        { "id": "w030", "form": "Andréa", "post": ",", "lemma": "Andreas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 1 } },
+        { "id": "w031", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w032", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w033" },
+        { "id": "w033", "form": "Sanctis", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true }
       ]
     },
     {
       "id": "s03",
       "type": "rubric",
-      "text": "Signat se cum Patena a fronte ad pectus.",
-      "narrative": {
-        "pl": "Kapłan żegna się pateną, od czoła do piersi.",
-        "en": "The priest signs himself with the paten, from forehead to breast."
-      }
+      "text": "Signat se cum Patena a fronte ad pectus."
     },
     {
       "id": "s04",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "łaskawie udziel nam pokoju w naszych dniach,",
-        "en": "in Your kindness, grant peace in our days,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 62",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed pp. 71–72",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 29",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 71–72",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 94–95",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w034", "form": "da", "lemma": "do", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "użycz", "en": "grant" }, "function": { "pl": "Druga osoba liczby pojedynczej trybu rozkazującego.", "en": "Second-person singular imperative." } },
-        { "id": "w035", "form": "propítius", "lemma": "propitius", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w034", "gloss": { "pl": "łaskawie", "en": "graciously" }, "function": { "pl": "Przymiotnik w mianowniku. Zgadza się z domyślnym podmiotem „da” (w034).", "en": "A nominative adjective agreeing with the understood subject of “da” (w034)." } },
-        { "id": "w036", "form": "pacem", "lemma": "pax", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "pokoju", "en": "peace" } },
-        { "id": "w037", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w038", "gloss": { "pl": "za", "en": "in" } },
-        { "id": "w038", "form": "diébus", "lemma": "dies", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 5 }, "gloss": { "pl": "dni", "en": "days" } },
-        { "id": "w039", "form": "nostris", "post": ":", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w038", "gloss": { "pl": "naszych", "en": "our" } }
+        { "id": "w034", "form": "da", "lemma": "do", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w035", "form": "propítius", "lemma": "propitius", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w034" },
+        { "id": "w036", "form": "pacem", "lemma": "pax", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w037", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w038" },
+        { "id": "w038", "form": "diébus", "lemma": "dies", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 5 } },
+        { "id": "w039", "form": "nostris", "post": ":", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w038" }
       ]
     },
     {
       "id": "s05",
       "type": "rubric",
-      "text": "Patenam osculatur.",
-      "narrative": {
-        "pl": "Kapłan całuje patenę.",
-        "en": "The priest kisses the paten."
-      }
+      "text": "Patenam osculatur."
     },
     {
       "id": "s06",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "abyśmy, wspomożeni Twoim miłosierdziem, zawsze byli wolni od grzechu i chronieni przed wszelkim zamętem.",
-        "en": "so that, upheld by Your mercy, we may always be free from sin and protected from every disturbance."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 62",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed pp. 71–72",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 29",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 71–72",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 94–95",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w040", "form": "ut", "post": ",", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "abyśmy", "en": "that" }, "function": { "pl": "Wprowadza zdanie celowe z orzeczeniem „simus” (w048).", "en": "It introduces a purpose clause with “simus” (w048) as its verb." } },
-        { "id": "w041", "form": "ope", "lemma": "ops", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "pomocą", "en": "by the help" }, "function": { "pl": "Ablativus narzędzia przy „adiúti” (w044).", "en": "Ablative of means with “adiúti” (w044)." } },
-        { "id": "w042", "form": "misericórdiæ", "lemma": "misericordia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "miłosierdzia", "en": "of mercy" } },
-        { "id": "w043", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w042", "gloss": { "pl": "Twego", "en": "Thy" } },
-        { "id": "w044", "form": "adiúti", "post": ",", "lemma": "adiuvo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w048", "gloss": { "pl": "wsparci", "en": "upheld" }, "function": { "pl": "Imiesłów zgadzający się z domyślnym podmiotem „simus” (w048).", "en": "A participle agreeing with the understood subject of “simus” (w048)." } },
-        { "id": "w045", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "both" }, "function": { "pl": "Pierwsza połowa pary et… et… ze spójnikiem „et” (w051): i wolni od grzechu, i bezpieczni od zamętu.", "en": "The first half of an et… et… pair with “et” (w051): both free from sin and safe from disquiet." } },
-        { "id": "w046", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w047", "gloss": { "pl": "od", "en": "from" } },
-        { "id": "w047", "form": "peccáto", "lemma": "peccatum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "grzechu", "en": "sin" } },
-        { "id": "w048", "form": "simus", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act" }, "gloss": { "pl": "byli", "en": "we may be" }, "function": { "pl": "Orzeczenie zdania rozpoczętego przez „ut” (w040), z orzecznikami „líberi” (w050) i „secúri” (w055).", "en": "The verb of the clause introduced by “ut” (w040), with “líberi” (w050) and “secúri” (w055) as predicates." } },
-        { "id": "w049", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "always" } },
-        { "id": "w050", "form": "líberi", "lemma": "liber", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w048", "gloss": { "pl": "wolni", "en": "free" }, "function": { "pl": "Pierwszy orzecznik przy „simus” (w048).", "en": "The first predicate with “simus” (w048)." } },
-        { "id": "w051", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w052", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w054", "gloss": { "pl": "od", "en": "from" } },
-        { "id": "w053", "form": "omni", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w054", "gloss": { "pl": "wszelkiego", "en": "all" } },
-        { "id": "w054", "form": "perturbatióne", "lemma": "perturbatio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "zamętu", "en": "disquiet" } },
-        { "id": "w055", "form": "secúri", "post": ".", "lemma": "securus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w048", "gloss": { "pl": "bezpieczni", "en": "safe" }, "function": { "pl": "Drugi orzecznik przy „simus” (w048).", "en": "The second predicate with “simus” (w048)." } }
+        { "id": "w040", "form": "ut", "post": ",", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w041", "form": "ope", "lemma": "ops", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w042", "form": "misericórdiæ", "lemma": "misericordia", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w043", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w042" },
+        { "id": "w044", "form": "adiúti", "post": ",", "lemma": "adiuvo", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w048" },
+        { "id": "w045", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w046", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w047" },
+        { "id": "w047", "form": "peccáto", "lemma": "peccatum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w048", "form": "simus", "lemma": "sum", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w049", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w050", "form": "líberi", "lemma": "liber", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w048" },
+        { "id": "w051", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w052", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w054" },
+        { "id": "w053", "form": "omni", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w054" },
+        { "id": "w054", "form": "perturbatióne", "lemma": "perturbatio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w055", "form": "secúri", "post": ".", "lemma": "securus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w048" }
       ]
     },
     {
       "id": "s07",
       "type": "rubric",
-      "text": "Submittit Patenam Hostiæ, discooperit Calicem, genuflectit, surgit, accipit Hostiam, et eam super Calicem tenens utraque manu, frangit per medium, dicens:",
-      "narrative": {
-        "pl": "Kapłan wsuwa patenę pod Hostię, odkrywa kielich, przyklęka, wstaje, bierze Hostię i trzymając ją oburącz nad kielichem, łamie na dwoje.",
-        "en": "The priest slips the paten under the Host, uncovers the chalice, genuflects, rises, takes the Host, and holding it over the chalice with both hands breaks it in two."
-      }
+      "text": "Submittit Patenam Hostiæ, discooperit Calicem, genuflectit, surgit, accipit Hostiam, et eam super Calicem tenens utraque manu, frangit per medium, dicens:"
     },
     {
       "id": "s08",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Przez tego samego Pana naszego Jezusa Chrystusa, Twojego Syna,",
-        "en": "Through the same Jesus Christ, Your Son and our Lord,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 62",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed pp. 71–72",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 29",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 71–72",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 94–95",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w056", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w057", "gloss": { "pl": "przez", "en": "through" } },
-        { "id": "w057", "form": "eúndem", "lemma": "idem", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "tegoż", "en": "the same" }, "function": { "pl": "Biernik liczby pojedynczej rodzaju męskiego. Zgadza się z „Dóminum” (w058).", "en": "Masculine accusative singular, agreeing with “Dóminum” (w058)." } },
-        { "id": "w058", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "Lord" } },
-        { "id": "w059", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w058", "gloss": { "pl": "naszego", "en": "our" } },
-        { "id": "w060", "form": "Iesum", "lemma": "Iesus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezusa", "en": "Jesus" } },
-        { "id": "w061", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" } },
-        { "id": "w062", "form": "Fílium", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Syna", "en": "Son" }, "function": { "pl": "Apozycja (dopowiedzenie) do „Christum” (w061).", "en": "In apposition to “Christum” (w061)." } },
-        { "id": "w063", "form": "tuum", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w062", "gloss": { "pl": "Twego", "en": "Thy" } }
+        { "id": "w056", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w057" },
+        { "id": "w057", "form": "eúndem", "lemma": "idem", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w058", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w059", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w058" },
+        { "id": "w060", "form": "Iesum", "lemma": "Iesus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w061", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w062", "form": "Fílium", "lemma": "filius", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w063", "form": "tuum", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w062" }
       ]
     },
     {
       "id": "s09",
       "type": "rubric",
-      "text": "Et mediam partem, quam in dextera manu tenet, ponit super Patenam. Deinde ex parte, quæ in sinistra remanserat, frangit particulam, dicens:",
-      "narrative": {
-        "pl": "Połowę trzymaną w prawej ręce kapłan kładzie na patenie, a z połowy pozostałej w lewej odłamuje małą cząstkę.",
-        "en": "The priest lays the half held in his right hand on the paten and breaks a small particle from the half remaining in his left."
-      }
+      "text": "Et mediam partem, quam in dextera manu tenet, ponit super Patenam. Deinde ex parte, quæ in sinistra remanserat, frangit particulam, dicens:"
     },
     {
       "id": "s10",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "który, będąc Bogiem, żyje i króluje z Tobą w jedności Ducha Świętego,",
-        "en": "who, being God, lives and reigns with You in the unity of the Holy Spirit,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 62",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed pp. 71–72",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 29",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 71–72",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 94–95",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w064", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "Który", "en": "Who" } },
-        { "id": "w065", "form": "tecum", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "gloss": { "pl": "z Tobą", "en": "with Thee" }, "function": { "pl": "Przyimek „cum” dołączony do końca zaimka „te”.", "en": "The preposition “cum” is attached to the end of the pronoun “te”." } },
-        { "id": "w066", "form": "vivit", "lemma": "vivo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "żyje", "en": "liveth" } },
-        { "id": "w067", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w068", "form": "regnat", "lemma": "regno", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "króluje", "en": "reigneth" } },
-        { "id": "w069", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w070", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w070", "form": "unitáte", "lemma": "unitas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "jedności", "en": "the unity" } },
-        { "id": "w071", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "Ducha", "en": "of the Spirit" } },
-        { "id": "w072", "form": "Sancti", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w071", "gloss": { "pl": "Świętego", "en": "Holy" } },
-        { "id": "w073", "form": "Deus", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bóg", "en": "God" }, "function": { "pl": "Mianownik odnoszący się do podmiotu „vivit” (w066) i „regnat” (w068).", "en": "Nominative referring to the subject of “vivit” (w066) and “regnat” (w068)." } }
+        { "id": "w064", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w065", "form": "tecum", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w066", "form": "vivit", "lemma": "vivo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w067", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w068", "form": "regnat", "lemma": "regno", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w069", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w070" },
+        { "id": "w070", "form": "unitáte", "lemma": "unitas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w071", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w072", "form": "Sancti", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w071" },
+        { "id": "w073", "form": "Deus", "post": ".", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     },
     {
       "id": "s11",
       "type": "rubric",
-      "text": "Aliam mediam partem, quam in sinistra manu habet, adiungit mediæ super Patenam positæ, et particulam parvam dextera retinens super Calicem, quem sinistra per nodum infra cuppam tenet, dicit intellegibili voce vel cantat:",
-      "narrative": {
-        "pl": "Drugą połowę kapłan dołącza do połowy leżącej na patenie, trzyma małą cząstkę nad kielichem i mówi głosem słyszalnym albo śpiewa:",
-        "en": "The priest joins the other half to the half on the paten, holds the small particle over the chalice, and says in an audible voice or sings:"
-      }
+      "text": "Aliam mediam partem, quam in sinistra manu habet, adiungit mediæ super Patenam positæ, et particulam parvam dextera retinens super Calicem, quem sinistra per nodum infra cuppam tenet, dicit intellegibili voce vel cantat:"
     },
     {
       "id": "s12",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "przez wszystkie wieki wieków.",
-        "en": "for ever and ever."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 62",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed pp. 71–72",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 29",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 71–72",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 94–95",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w074", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w076", "gloss": { "pl": "przez", "en": "through" } },
-        { "id": "w075", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w076", "gloss": { "pl": "wszystkie", "en": "all" } },
-        { "id": "w076", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieki", "en": "ages" } },
-        { "id": "w077", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieków", "en": "of ages" }, "function": { "pl": "Dopełniacz liczby mnogiej zależny od „sǽcula” (w076).", "en": "Genitive plural dependent on “sǽcula” (w076)." } }
+        { "id": "w074", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w076" },
+        { "id": "w075", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w076" },
+        { "id": "w076", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w077", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } }
       ]
     },
     {
@@ -418,43 +180,8 @@
           "source": "DMS 25 a"
         }
       },
-      "translation": {
-        "pl": "Amen.",
-        "en": "Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 62",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          },
-          {
-            "title": "Piśmiennictwo polskie, tom III (1852)",
-            "locator": "printed pp. 71–72",
-            "url": "https://archive.org/details/pimiennictwopol03macigoog"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 29",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 71–72",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed pp. 94–95",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w078", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w078", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -478,6 +205,86 @@
     },
     "words": {
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w001": {
+
+      },
+      "w003": {
+
+      },
+      "w006": {
+
+      },
+      "w007": {
+
+      },
+      "w008": {
+
+      },
+      "w013": {
+
+      },
+      "w017": {
+
+      },
+      "w019": {
+
+      },
+      "w020": {
+
+      },
+      "w032": {
+
+      },
+      "w033": {
+
+      },
+      "w034": {
+
+      },
+      "w035": {
+
+      },
+      "w040": {
+
+      },
+      "w041": {
+
+      },
+      "w044": {
+
+      },
+      "w045": {
+
+      },
+      "w048": {
+
+      },
+      "w050": {
+
+      },
+      "w055": {
+
+      },
+      "w057": {
+
+      },
+      "w062": {
+
+      },
+      "w065": {
+
+      },
+      "w073": {
+
+      },
+      "w077": {
+
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "orationes.regina-caeli",
   "title": "Regína cæli",
   "category": "orationes",
@@ -9,240 +9,70 @@
   "ids": {
     "next": 30
   },
-  "about": {
-    "pl": "Antyfona maryjna okresu wielkanocnego, która stoi od komplety Wielkiej Soboty do soboty po Zesłaniu Ducha Świętego i w tym okresie zastępuje Anioła Pańskiego. Wzywa Najświętszą Maryję Pannę do radości ze zmartwychwstania Jej Syna i prosi Ją o modlitwę za nami. Po antyfonie następuje werset z odpowiedzią, wyznający prawdziwe zmartwychwstanie Pana.",
-    "en": "The Marian antiphon of Paschaltide, which stands from Compline of Holy Saturday to the Saturday after Pentecost and takes the place of the Ángelus in that season. It calls the Blessed Virgin Mary to rejoice in the resurrection of her Son and asks her to pray for us. A versicle and response follow the antiphon, professing that the Lord has truly risen."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
-        "locator": "n. 331 b, pp. 214–215",
-        "url": "https://archive.org/download/enchiridion_indulgentiarum_1952/enchiridion_indulgentiarum_1952.pdf"
-      }
-    ],
-    "en": [
-      {
-        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
-        "locator": "n. 331 b, pp. 214–215",
-        "url": "https://archive.org/download/enchiridion_indulgentiarum_1952/enchiridion_indulgentiarum_1952.pdf"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
-      "translation": {
-        "pl": "Królowo nieba, wesel się, alleluja;",
-        "en": "Queen of heaven, rejoice, alleluia;"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 16",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          },
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 154",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 28",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Regína", "lemma": "regina", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Królowo", "en": "Queen" } },
-        { "id": "w002", "form": "cæli", "post": ",", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "nieba", "en": "of heaven" }, "function": { "pl": "Dopełniacz zależny od „Regína” (w001).", "en": "Genitive dependent on “Regína” (w001)." } },
-        { "id": "w003", "form": "lætáre", "post": ",", "lemma": "laetor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 1 }, "gloss": { "pl": "wesel się", "en": "rejoice" }, "function": { "pl": "Tryb rozkazujący czasownika deponentnego: forma bierna, znaczenie czynne.", "en": "Imperative of a deponent verb: passive in form and active in meaning." } },
-        { "id": "w004", "form": "allelúia", "post": ";", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } }
+        { "id": "w001", "form": "Regína", "lemma": "regina", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w002", "form": "cæli", "post": ",", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w003", "form": "lætáre", "post": ",", "lemma": "laetor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 1 } },
+        { "id": "w004", "form": "allelúia", "post": ";", "lemma": "alleluia", "morph": { "pos": "intj" } }
       ]
     },
     {
       "id": "s02",
       "type": "verse",
-      "translation": {
-        "pl": "bo Ten, któregoś nosiła, alleluja,",
-        "en": "for He whom you did merit to bear, alleluia,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 16",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          },
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 154",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 28",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w005", "form": "Quia", "lemma": "quia", "morph": { "pos": "conj" }, "gloss": { "pl": "albowiem", "en": "for" } },
-        { "id": "w006", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "którego", "en": "whom" }, "function": { "pl": "Biernik, dopełnienie „portáre” (w008).", "en": "Accusative object of “portáre” (w008)." } },
-        { "id": "w007", "form": "meruísti", "lemma": "mereo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 2 }, "gloss": { "pl": "zasłużyłaś", "en": "you were counted worthy" }, "function": { "pl": "Perfectum indicativi czasownika deponentnego „méreor”. Z bezokolicznikiem znaczy tutaj: byłaś godna, aby coś uczynić.", "en": "Perfect indicative of the deponent “méreor”. With an infinitive, it means here to have been worthy to do something." } },
-        { "id": "w008", "form": "portáre", "post": ",", "lemma": "porto", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 }, "gloss": { "pl": "nosić", "en": "to bear" }, "function": { "pl": "Bezokolicznik zależny od „meruísti” (w007).", "en": "Infinitive dependent on “meruísti” (w007)." } },
-        { "id": "w009", "form": "allelúia", "post": ",", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } }
+        { "id": "w005", "form": "Quia", "lemma": "quia", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w007", "form": "meruísti", "lemma": "mereo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 2 } },
+        { "id": "w008", "form": "portáre", "post": ",", "lemma": "porto", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 1 } },
+        { "id": "w009", "form": "allelúia", "post": ",", "lemma": "alleluia", "morph": { "pos": "intj" } }
       ]
     },
     {
       "id": "s03",
       "type": "verse",
-      "translation": {
-        "pl": "zmartwychpowstał, jak powiedział, alleluja.",
-        "en": "has risen, as He said, alleluia."
-      },
-      "translation_citations": {
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 28",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ],
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 16",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          },
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 154",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ]
-      },
       "words": [
-        { "id": "w010", "form": "Resurréxit", "post": ",", "lemma": "resurgo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "zmartwychwstał", "en": "has risen" }, "function": { "pl": "Orzeczenie zdania głównego. Podmiotem jest domyślny poprzednik „quem” (w006).", "en": "The main verb. Its subject is the understood antecedent of “quem” (w006)." } },
-        { "id": "w011", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" }, "gloss": { "pl": "jak", "en": "as" } },
-        { "id": "w012", "form": "dixit", "post": ",", "lemma": "dico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "powiedział", "en": "He said" }, "function": { "pl": "Perfectum indicativi z tym samym podmiotem co „Resurréxit” (w010).", "en": "Perfect indicative with the same subject as “Resurréxit” (w010)." } },
-        { "id": "w013", "form": "allelúia", "post": ":", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } }
+        { "id": "w010", "form": "Resurréxit", "post": ",", "lemma": "resurgo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w011", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
+        { "id": "w012", "form": "dixit", "post": ",", "lemma": "dico", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w013", "form": "allelúia", "post": ":", "lemma": "alleluia", "morph": { "pos": "intj" } }
       ]
     },
     {
       "id": "s04",
       "type": "verse",
-      "translation": {
-        "pl": "Módl się za nami do Boga, alleluja.",
-        "en": "Pray for us to God, alleluia."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 16",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          },
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 154",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 28",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w014", "form": "Ora", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "módl się", "en": "pray" }, "function": { "pl": "Tryb rozkazujący skierowany do Maryi.", "en": "Imperative addressed to Mary." } },
-        { "id": "w015", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w016", "gloss": { "pl": "za", "en": "for" } },
-        { "id": "w016", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "nami", "en": "us" }, "function": { "pl": "Ablativus po „pro” (w015): ci, w czyjej sprawie się prosi.", "en": "Ablative after “pro” (w015): those on whose behalf the prayer is made." } },
-        { "id": "w017", "form": "Deum", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "God" }, "function": { "pl": "Biernik, dopełnienie „Ora” (w014). Czasownik „oráre” łączy się z biernikiem osoby proszonej, a fraza pro nobis wskazuje, za kim wstawiana jest prośba.", "en": "Accusative object of “Ora” (w014). The verb “oráre” takes the person entreated in the accusative, while the phrase pro nobis states on whose behalf." } },
-        { "id": "w018", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } }
+        { "id": "w014", "form": "Ora", "lemma": "oro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w015", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w016" },
+        { "id": "w016", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
+        { "id": "w017", "form": "Deum", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w018", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
       ]
     },
     {
       "id": "s05",
       "type": "verse",
-      "translation": {
-        "pl": "Raduj się i wesel, Panno Maryjo, alleluja.",
-        "en": "Rejoice and be glad, O Virgin Mary, alleluia."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 16",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          },
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 154",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 28",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w019", "form": "Gaude", "lemma": "gaudeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "raduj się", "en": "rejoice" }, "function": { "pl": "Czynny tryb rozkazujący. Synonimiczne „lætáre” (w021) jest deponentne.", "en": "Active imperative. The synonymous “lætáre” (w021) is deponent." } },
-        { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w021", "form": "lætáre", "post": ",", "lemma": "laetor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 1 }, "gloss": { "pl": "wesel się", "en": "be glad" } },
-        { "id": "w022", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Panno", "en": "Virgin" } },
-        { "id": "w023", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryjo", "en": "Mary" }, "function": { "pl": "Wołacz. Werset nazywa Maryję, do której zwraca się antyfona.", "en": "Vocative. The versicle names Mary, to whom the antiphon is addressed." } },
-        { "id": "w024", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } }
+        { "id": "w019", "form": "Gaude", "lemma": "gaudeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w021", "form": "lætáre", "post": ",", "lemma": "laetor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 1 } },
+        { "id": "w022", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w023", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w024", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
       ]
     },
     {
       "id": "s06",
       "type": "verse",
-      "translation": {
-        "pl": "Bo zmartwychwstał Pan prawdziwie, alleluja.",
-        "en": "For the Lord has truly risen, alleluia."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 16",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          },
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 154",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 29 and 193",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w025", "form": "Quia", "lemma": "quia", "morph": { "pos": "conj" }, "gloss": { "pl": "bo", "en": "for" } },
-        { "id": "w026", "form": "surréxit", "lemma": "surgo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "zmartwychwstał", "en": "has risen" }, "function": { "pl": "Forma od súrgo, bez przedrostka re-. Podobnie jak „Resurréxit” (w010), odnosi się tu do zmartwychwstania Chrystusa.", "en": "A form of súrgo, without the prefix re-. Like “Resurréxit” (w010), it refers here to Christ's Resurrection." } },
-        { "id": "w027", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "the Lord" }, "function": { "pl": "Mianownik, podmiot „surréxit” (w026).", "en": "Nominative subject of “surréxit” (w026)." } },
-        { "id": "w028", "form": "vere", "post": ",", "lemma": "vere", "morph": { "pos": "adv" }, "gloss": { "pl": "prawdziwie", "en": "truly" } },
-        { "id": "w029", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" }, "gloss": { "pl": "alleluja", "en": "alleluia" } }
+        { "id": "w025", "form": "Quia", "lemma": "quia", "morph": { "pos": "conj" } },
+        { "id": "w026", "form": "surréxit", "lemma": "surgo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w027", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w028", "form": "vere", "post": ",", "lemma": "vere", "morph": { "pos": "adv" } },
+        { "id": "w029", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -256,5 +86,59 @@
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
+        "locator": "n. 331 b, pp. 214–215",
+        "url": "https://archive.org/download/enchiridion_indulgentiarum_1952/enchiridion_indulgentiarum_1952.pdf"
+      }
+    ],
+    "functions": {
+      "w002": {
+
+      },
+      "w003": {
+
+      },
+      "w006": {
+
+      },
+      "w007": {
+
+      },
+      "w008": {
+
+      },
+      "w010": {
+
+      },
+      "w012": {
+
+      },
+      "w014": {
+
+      },
+      "w016": {
+
+      },
+      "w017": {
+
+      },
+      "w019": {
+
+      },
+      "w023": {
+
+      },
+      "w026": {
+
+      },
+      "w027": {
+
+      }
+    }
   }
 }

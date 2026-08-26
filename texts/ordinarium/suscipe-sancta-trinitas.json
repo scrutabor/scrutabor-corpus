@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.suscipe-sancta-trinitas",
   "title": "Súscipe, sancta Trínitas",
   "category": "ordinarium",
@@ -9,124 +9,86 @@
   "ids": {
     "next": 69
   },
-  "about": {
-    "pl": "Kapłan prosi Trójcę Świętą o przyjęcie ofiary składanej na pamiątkę męki, zmartwychwstania i wniebowstąpienia Chrystusa oraz ku czci Najświętszej Maryi Panny i świętych. W końcowej prośbie ich wstawiennictwu w niebie odpowiada obchodzenie ich pamiątki na ziemi.",
-    "en": "The priest asks the Holy Trinity to receive the offering made in memory of Christ's passion, resurrection and ascension, and in honor of the Blessed Virgin Mary and the saints. In the final petition, their intercession in heaven corresponds to the keeping of their memory on earth."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Deinde, aliquantulum inclinatus in medio Altaris, iunctis manibus super eo, dicit:",
-      "narrative": {
-        "pl": "Kapłan, stojąc pośrodku ołtarza, pochyla się nieco i opiera na nim złożone ręce.",
-        "en": "At the middle of the altar, the priest bows slightly and rests his joined hands upon it."
-      }
+      "text": "Deinde, aliquantulum inclinatus in medio Altaris, iunctis manibus super eo, dicit:"
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Przyjmij, Trójco Święta, tę ofiarę, którą składamy Ci na pamiątkę męki, zmartwychwstania i wniebowstąpienia Jezusa Chrystusa, naszego Pana, oraz ku czci błogosławionej Maryi zawsze Dziewicy, błogosławionego Jana Chrzciciela, świętych Apostołów Piotra i Pawła, tych świętych i wszystkich świętych. Niech przyniesie im cześć, a nam zbawienie; oni zaś, których wspomnienie obchodzimy na ziemi, niech raczą wstawiać się za nami w niebie. Przez tegoż Chrystusa, Pana naszego. Amen.",
-        "en": "Holy Trinity, receive this offering, which we present to You in remembrance of the Passion, Resurrection, and Ascension of Jesus Christ our Lord, and in honor of blessed Mary ever Virgin, blessed John the Baptist, the holy Apostles Peter and Paul, these saints, and all the saints. May it bring them honor and us salvation; and may those whom we commemorate on earth deign to intercede for us in heaven. Through the same Christ our Lord. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 53",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 14",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          },
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "printed pp. 51–52",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          },
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 472",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Súscipe", "post": ",", "lemma": "suscipio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "przyjmij", "en": "receive" } },
-        { "id": "w002", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w003", "gloss": { "pl": "Święta", "en": "Holy" }, "function": { "pl": "Zgadza się z „Trínitas” (w003).", "en": "Agrees with “Trínitas” (w003)." } },
-        { "id": "w003", "form": "Trínitas", "post": ",", "lemma": "trinitas", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Trójco", "en": "Trinity" }, "function": { "pl": "Wołacz ma tę samą formę co mianownik. Rozstrzyga o tym zwrot do adresata.", "en": "The vocative is the same as the nominative. The address settles it." } },
-        { "id": "w004", "form": "hanc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" }, "gloss": { "pl": "tę", "en": "this" } },
-        { "id": "w005", "form": "oblatiónem", "post": ",", "lemma": "oblatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "ofiarę", "en": "offering" }, "function": { "pl": "Biernik, dopełnienie „Súscipe” (w001): „tę ofiarę”.", "en": "Accusative object of “Súscipe” (w001): “this offering”." } },
-        { "id": "w006", "form": "quam", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" }, "gloss": { "pl": "którą", "en": "which" } },
-        { "id": "w007", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Tobie", "en": "Thee" } },
-        { "id": "w008", "form": "offérimus", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "składamy", "en": "we offer" } },
-        { "id": "w009", "form": "ob", "lemma": "ob", "morph": { "pos": "prep", "governs": "acc" }, "head": "w010", "gloss": { "pl": "dla", "en": "for" } },
-        { "id": "w010", "form": "memóriam", "lemma": "memoria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "pamiątki", "en": "memory" }, "function": { "pl": "„Ob” rządzi biernikiem i znaczy „ze względu na”. „memóriam” (w059) powraca przy końcu modlitwy.", "en": "“Ob” governs the accusative and means “on account of”. “memóriam” (w059) returns near the prayer's end." } },
-        { "id": "w011", "form": "passiónis", "post": ",", "lemma": "passio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "męki", "en": "of the passion" } },
-        { "id": "w012", "form": "resurrectiónis", "post": ",", "lemma": "resurrectio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "zmartwychwstania", "en": "of the resurrection" } },
-        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w014", "form": "ascensiónis", "lemma": "ascensio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "wniebowstąpienia", "en": "of the ascension" }, "function": { "pl": "Trzeci z trzech dopełniaczy zależnych od „memóriam” (w010): Męki, Zmartwychwstania i Wniebowstąpienia.", "en": "The third of three genitives depending on “memóriam” (w010): the Passion, Resurrection and Ascension." } },
-        { "id": "w015", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezusa", "en": "of Jesus" } },
-        { "id": "w016", "form": "Christi", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" } },
-        { "id": "w017", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "Lord" } },
-        { "id": "w018", "form": "nostri", "post": ":", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w017", "gloss": { "pl": "naszego", "en": "our" } },
-        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w020", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w021", "gloss": { "pl": "na", "en": "in" } },
-        { "id": "w021", "form": "honórem", "lemma": "honor", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "cześć", "en": "honor" }, "function": { "pl": "„Ob memóriam” odnosi się do Chrystusa, a „in honórem” do świętych.", "en": "“Ob memóriam” refers to Christ, while “in honórem” refers to the saints." } },
-        { "id": "w022", "form": "beátæ", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w023", "gloss": { "pl": "błogosławionej", "en": "of blessed" } },
-        { "id": "w023", "form": "Maríæ", "lemma": "Maria", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryi", "en": "Mary" } },
-        { "id": "w024", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "ever" } },
-        { "id": "w025", "form": "Vírginis", "post": ",", "lemma": "virgo", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Dziewicy", "en": "Virgin" } },
-        { "id": "w026", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w027", "form": "beáti", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w028", "gloss": { "pl": "błogosławionego", "en": "of blessed" } },
-        { "id": "w028", "form": "Ioánnis", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Jana", "en": "John" } },
-        { "id": "w029", "form": "Baptístæ", "post": ",", "lemma": "Baptista", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 1 }, "gloss": { "pl": "Chrzciciela", "en": "the Baptist" } },
-        { "id": "w030", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w031", "form": "sanctórum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "head": "w032", "gloss": { "pl": "świętych", "en": "of the holy" } },
-        { "id": "w032", "form": "Apostolórum", "lemma": "apostolus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "Apostołów", "en": "Apostles" } },
-        { "id": "w033", "form": "Petri", "lemma": "Petrus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Piotra", "en": "Peter" } },
-        { "id": "w034", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w035", "form": "Pauli", "post": ",", "lemma": "Paulus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pawła", "en": "Paul" }, "function": { "pl": "Lista odpowiada Confíteor, lecz pomija Michała Archanioła i dodaje „istórum” (w037).", "en": "The list corresponds to the Confíteor but omits Michael the Archangel and adds “istórum” (w037)." } },
-        { "id": "w036", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w037", "form": "istórum", "lemma": "iste", "morph": { "pos": "pron", "case": "gen", "number": "pl", "gender": "m" }, "gloss": { "pl": "tych", "en": "of these" } },
-        { "id": "w038", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w039", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "head": "w040", "gloss": { "pl": "wszystkich", "en": "all" } },
-        { "id": "w040", "form": "Sanctórum", "post": ":", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "substantive": true, "gloss": { "pl": "Świętych", "en": "the Saints" } },
-        { "id": "w041", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "aby", "en": "that" } },
-        { "id": "w042", "form": "illis", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "gloss": { "pl": "im", "en": "them" }, "function": { "pl": "Celownik korzyści: świętym ma to przynieść cześć.", "en": "Dative of advantage: it is to be of honor to them." } },
-        { "id": "w043", "form": "profíciat", "lemma": "proficio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "posłużyła", "en": "may profit" } },
-        { "id": "w044", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w045", "gloss": { "pl": "ku", "en": "unto" } },
-        { "id": "w045", "form": "honórem", "post": ",", "lemma": "honor", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "czci", "en": "honor" } },
-        { "id": "w046", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "us" } },
-        { "id": "w047", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" }, "gloss": { "pl": "zaś", "en": "but" } },
-        { "id": "w048", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w049", "gloss": { "pl": "ku", "en": "unto" } },
-        { "id": "w049", "form": "salútem", "post": ":", "lemma": "salus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "zbawieniu", "en": "salvation" }, "function": { "pl": "Odpowiada „honórem” (w045): świętym ku czci, nam ku zbawieniu.", "en": "It corresponds to “honórem” (w045): honor to the saints and salvation to us." } },
-        { "id": "w050", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w051", "form": "illi", "lemma": "ille", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" }, "gloss": { "pl": "oni", "en": "they" }, "function": { "pl": "Mianownik liczby mnogiej, podmiot „dignéntur” (w055).", "en": "Nominative plural, the subject of “dignéntur” (w055)." } },
-        { "id": "w052", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w053", "gloss": { "pl": "za", "en": "for" } },
-        { "id": "w053", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "nami", "en": "us" } },
-        { "id": "w054", "form": "intercédere", "lemma": "intercedo", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 }, "gloss": { "pl": "wstawiać się", "en": "to intercede" }, "function": { "pl": "Bezokolicznik dopełniający „dignéntur” (w055): „wstawiać się za nami”.", "en": "The infinitive completing “dignéntur” (w055): “to intercede for us”." } },
-        { "id": "w055", "form": "dignéntur", "lemma": "dignor", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 1 }, "gloss": { "pl": "niech raczą", "en": "may deign" } },
-        { "id": "w056", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w057", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w057", "form": "cælis", "post": ",", "lemma": "caelum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "niebie", "en": "heaven" } },
-        { "id": "w058", "form": "quorum", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "pl", "gender": "m" }, "gloss": { "pl": "których", "en": "whose" } },
-        { "id": "w059", "form": "memóriam", "lemma": "memoria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "pamiątkę", "en": "memory" } },
-        { "id": "w060", "form": "ágimus", "lemma": "ago", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "obchodzimy", "en": "we keep" } },
-        { "id": "w061", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w062", "gloss": { "pl": "na", "en": "on" } },
-        { "id": "w062", "form": "terris", "post": ".", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "ziemi", "en": "earth" }, "function": { "pl": "„cælis” (w057) określa wstawiennictwo świętych, a „terris” obchodzenie ich pamiątki.", "en": "“cælis” (w057) modifies the saints' intercession, while “terris” modifies the keeping of their memory." } },
-        { "id": "w063", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w064", "gloss": { "pl": "przez", "en": "through" } },
-        { "id": "w064", "form": "eúndem", "lemma": "idem", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "tegoż", "en": "the same" }, "function": { "pl": "Biernik liczby pojedynczej od „idem”, który zgadza się z „Christum” (w065): „przez tegoż Chrystusa”.", "en": "Accusative singular of “idem”, agreeing with “Christum” (w065): “through the same Christ”." } },
-        { "id": "w065", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" } },
-        { "id": "w066", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "Lord" } },
-        { "id": "w067", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w066", "gloss": { "pl": "naszego", "en": "our" } },
-        { "id": "w068", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w001", "form": "Súscipe", "post": ",", "lemma": "suscipio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w002", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w003" },
+        { "id": "w003", "form": "Trínitas", "post": ",", "lemma": "trinitas", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w004", "form": "hanc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w005", "form": "oblatiónem", "post": ",", "lemma": "oblatio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w006", "form": "quam", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
+        { "id": "w007", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w008", "form": "offérimus", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w009", "form": "ob", "lemma": "ob", "morph": { "pos": "prep", "governs": "acc" }, "head": "w010" },
+        { "id": "w010", "form": "memóriam", "lemma": "memoria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w011", "form": "passiónis", "post": ",", "lemma": "passio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w012", "form": "resurrectiónis", "post": ",", "lemma": "resurrectio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w014", "form": "ascensiónis", "lemma": "ascensio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w015", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w016", "form": "Christi", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w017", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w018", "form": "nostri", "post": ":", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w017" },
+        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w020", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w021" },
+        { "id": "w021", "form": "honórem", "lemma": "honor", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w022", "form": "beátæ", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w023" },
+        { "id": "w023", "form": "Maríæ", "lemma": "Maria", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w024", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w025", "form": "Vírginis", "post": ",", "lemma": "virgo", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w026", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w027", "form": "beáti", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w028" },
+        { "id": "w028", "form": "Ioánnis", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w029", "form": "Baptístæ", "post": ",", "lemma": "Baptista", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 1 } },
+        { "id": "w030", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w031", "form": "sanctórum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "head": "w032" },
+        { "id": "w032", "form": "Apostolórum", "lemma": "apostolus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w033", "form": "Petri", "lemma": "Petrus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w034", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w035", "form": "Pauli", "post": ",", "lemma": "Paulus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w036", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w037", "form": "istórum", "lemma": "iste", "morph": { "pos": "pron", "case": "gen", "number": "pl", "gender": "m" } },
+        { "id": "w038", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w039", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "head": "w040" },
+        { "id": "w040", "form": "Sanctórum", "post": ":", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w041", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w042", "form": "illis", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" } },
+        { "id": "w043", "form": "profíciat", "lemma": "proficio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w044", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w045" },
+        { "id": "w045", "form": "honórem", "post": ",", "lemma": "honor", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w046", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
+        { "id": "w047", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
+        { "id": "w048", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w049" },
+        { "id": "w049", "form": "salútem", "post": ":", "lemma": "salus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w050", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w051", "form": "illi", "lemma": "ille", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
+        { "id": "w052", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w053" },
+        { "id": "w053", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
+        { "id": "w054", "form": "intercédere", "lemma": "intercedo", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 } },
+        { "id": "w055", "form": "dignéntur", "lemma": "dignor", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "dep", "conj": 1 } },
+        { "id": "w056", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w057" },
+        { "id": "w057", "form": "cælis", "post": ",", "lemma": "caelum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w058", "form": "quorum", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "pl", "gender": "m" } },
+        { "id": "w059", "form": "memóriam", "lemma": "memoria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w060", "form": "ágimus", "lemma": "ago", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w061", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w062" },
+        { "id": "w062", "form": "terris", "post": ".", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w063", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w064" },
+        { "id": "w064", "form": "eúndem", "lemma": "idem", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w065", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w066", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w067", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w066" },
+        { "id": "w068", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -145,6 +107,50 @@
     },
     "words": {
       "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w002": {
+
+      },
+      "w003": {
+
+      },
+      "w005": {
+
+      },
+      "w010": {
+
+      },
+      "w014": {
+
+      },
+      "w021": {
+
+      },
+      "w035": {
+
+      },
+      "w042": {
+
+      },
+      "w049": {
+
+      },
+      "w051": {
+
+      },
+      "w054": {
+
+      },
+      "w062": {
+
+      },
+      "w064": {
+
+      }
     }
   }
 }

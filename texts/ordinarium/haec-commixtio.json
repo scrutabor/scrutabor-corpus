@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.haec-commixtio",
   "title": "Hæc commíxtio",
   "category": "ordinarium",
@@ -9,48 +9,36 @@
   "ids": {
     "next": 19
   },
-  "about": {
-    "pl": "Kapłan wpuszcza małą cząstkę konsekrowanej Hostii do kielicha. Cicho prosi, aby to zmieszanie i konsekracja Ciała i Krwi Pana naszego Jezusa Chrystusa posłużyły nam ku życiu wiecznemu.",
-    "en": "The priest drops a small particle of the consecrated Host into the chalice. He quietly asks that this commingling and consecration of the Body and Blood of our Lord Jesus Christ may avail us unto eternal life."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Particulam ipsam immittit in Calicem, dicens secrete:",
-      "narrative": {
-        "pl": "Kapłan wpuszcza cząstkę do kielicha i odmawia modlitwę po cichu.",
-        "en": "The priest drops the particle into the chalice and says the prayer silently."
-      }
+      "text": "Particulam ipsam immittit in Calicem, dicens secrete:"
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "secreto",
-      "translation": {
-        "pl": "Niech to zmieszanie i konsekracja Ciała i Krwi naszego Pana Jezusa Chrystusa przyniosą nam, którzy je przyjmujemy, życie wieczne. Amen.",
-        "en": "As we receive the Body and Blood of our Lord Jesus Christ, may their mingling and consecration bring us eternal life. Amen."
-      },
       "words": [
-        { "id": "w001", "form": "Hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" }, "gloss": { "pl": "To", "en": "This" }, "function": { "pl": "Rodzaj żeński, zgadza się z „commíxtio” (w002).", "en": "Feminine, agreeing with “commíxtio” (w002)." } },
-        { "id": "w002", "form": "commíxtio", "post": ",", "lemma": "commixtio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "zmieszanie", "en": "mingling" } },
-        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w004", "form": "consecrátio", "lemma": "consecratio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "konsekracja", "en": "consecration" }, "function": { "pl": "Drugi z dwóch podmiotów liczby pojedynczej przy „fiat” (w012), które także pozostaje w liczbie pojedynczej.", "en": "The second of two singular subjects of “fiat” (w012), which also remains singular." } },
-        { "id": "w005", "form": "Córporis", "lemma": "corpus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "Ciała", "en": "of the Body" } },
-        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w007", "form": "Sánguinis", "lemma": "sanguis", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Krwi", "en": "of the Blood" } },
-        { "id": "w008", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "of the Lord" } },
-        { "id": "w009", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w008", "gloss": { "pl": "naszego", "en": "our" } },
-        { "id": "w010", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jezusa", "en": "Jesus" } },
-        { "id": "w011", "form": "Christi", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" } },
-        { "id": "w012", "form": "fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" }, "gloss": { "pl": "niech się stanie", "en": "may it be" }, "function": { "pl": "Tryb łączący wyrażający życzenie.", "en": "Subjunctive expressing a wish." } },
-        { "id": "w013", "form": "accipiéntibus", "lemma": "accipio", "morph": { "pos": "verb", "case": "dat", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w014", "gloss": { "pl": "przyjmującym", "en": "receiving" }, "function": { "pl": "Imiesłów w celowniku liczby mnogiej, zgadzający się z „nobis” (w014).", "en": "Dative plural participle agreeing with “nobis” (w014)." } },
-        { "id": "w014", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "gloss": { "pl": "nam", "en": "to us" }, "function": { "pl": "Celownik przy „fiat” (w012).", "en": "Dative with “fiat” (w012)." } },
-        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w016", "gloss": { "pl": "ku", "en": "unto" } },
-        { "id": "w016", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "żywotowi", "en": "life" } },
-        { "id": "w017", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w016", "gloss": { "pl": "wiecznemu", "en": "everlasting" } },
-        { "id": "w018", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w001", "form": "Hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" } },
+        { "id": "w002", "form": "commíxtio", "post": ",", "lemma": "commixtio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "consecrátio", "lemma": "consecratio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w005", "form": "Córporis", "lemma": "corpus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "Sánguinis", "lemma": "sanguis", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w008", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w009", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w008" },
+        { "id": "w010", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w011", "form": "Christi", "post": ",", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w012", "form": "fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w013", "form": "accipiéntibus", "lemma": "accipio", "morph": { "pos": "verb", "case": "dat", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w014" },
+        { "id": "w014", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
+        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w016" },
+        { "id": "w016", "form": "vitam", "lemma": "vita", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w017", "form": "ætérnam", "post": ".", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w016" },
+        { "id": "w018", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -66,6 +54,26 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "segments": {
       "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w001": {
+
+      },
+      "w004": {
+
+      },
+      "w012": {
+
+      },
+      "w013": {
+
+      },
+      "w014": {
+
+      }
     }
   }
 }

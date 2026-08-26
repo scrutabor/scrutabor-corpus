@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "proprium.dominica-iii-adventus-offertorium",
   "title": "Benedixísti, Dómine, terram tuam",
   "category": "proprium",
@@ -8,10 +8,6 @@
   "sung": true,
   "ids": {
     "next": 12
-  },
-  "about": {
-    "pl": "Antyfona na ofiarowanie III Niedzieli Adwentu, z Psalmu 84. Pierwsze dwa zdania śpiewa się już w introicie tej samej Mszy.",
-    "en": "The offertory antiphon of the Third Sunday of Advent, from Psalm 84. Its first two clauses are already sung at the introit of the same Mass."
   },
   "segments": [
     {
@@ -31,38 +27,18 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Pobłogosławiłeś, Panie, swoją ziemię; położyłeś kres niewoli Jakuba i odpuściłeś nieprawość swojego ludu.",
-        "en": "You have blessed Your land, O Lord; You have ended Jacob's captivity and forgiven the iniquity of Your people."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Psalm 84:2–3 (Vulgate numbering)",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Benedixísti", "post": ",", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "pobłogosławiłeś", "en": "Thou hast blessed" } },
-        { "id": "w002", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w003", "form": "terram", "lemma": "terra", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ziemię", "en": "land" } },
-        { "id": "w004", "form": "tuam", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w003", "gloss": { "pl": "Twoją", "en": "Thy" } },
-        { "id": "w005", "form": "avertísti", "lemma": "averto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "odwróciłeś", "en": "Thou hast turned away" } },
-        { "id": "w006", "form": "captivitátem", "lemma": "captivitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "niewolę", "en": "the captivity" } },
-        { "id": "w007", "form": "Iacob", "post": ":", "lemma": "Iacob", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jakuba", "en": "of Jacob" } },
-        { "id": "w008", "form": "remisísti", "lemma": "remitto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "odpuściłeś", "en": "Thou hast forgiven" } },
-        { "id": "w009", "form": "iniquitátem", "lemma": "iniquitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "nieprawość", "en": "the iniquity" } },
-        { "id": "w010", "form": "plebis", "lemma": "plebs", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "ludu", "en": "of people" } },
-        { "id": "w011", "form": "tuæ", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w010", "gloss": { "pl": "Twego", "en": "Thy" } }
+        { "id": "w001", "form": "Benedixísti", "post": ",", "lemma": "benedico", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w002", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w003", "form": "terram", "lemma": "terra", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w004", "form": "tuam", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w003" },
+        { "id": "w005", "form": "avertísti", "lemma": "averto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w006", "form": "captivitátem", "lemma": "captivitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w007", "form": "Iacob", "post": ":", "lemma": "Iacob", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w008", "form": "remisísti", "lemma": "remitto", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w009", "form": "iniquitátem", "lemma": "iniquitas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w010", "form": "plebis", "lemma": "plebs", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w011", "form": "tuæ", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w010" }
       ],
       "delivery": {
         "cantu": {
@@ -82,5 +58,8 @@
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" }
+  },
+  "localization": {
+    "about": true
   }
 }

@@ -21,9 +21,10 @@ import json
 from collections import Counter
 from pathlib import Path
 
+from build_reader import store
+
 ORIGINS = frozenset(("working-unsettled", "own", "public-domain", "traditional", "trivial"))
 REVIEWS = frozenset(("working", "internally-reviewed", "expert-reviewed"))
-LANGS = frozenset(("pl", "en"))
 
 PROTECTED_PL_TEXTS = frozenset(
     {
@@ -108,18 +109,24 @@ def source_payload(segment: dict) -> dict:
 
 
 def protected(text_id: str, language: str) -> bool:
-    return text_id in (PROTECTED_PL_TEXTS if language == "pl" else PROTECTED_EN_TEXTS)
+    if language == "pl":
+        return text_id in PROTECTED_PL_TEXTS
+    if language == "en":
+        return text_id in PROTECTED_EN_TEXTS
+    return False
 
 
 def corpus_sites(corpus: Path) -> dict[str, dict]:
     sites: dict[str, dict] = {}
-    for path in sorted((corpus / "texts").rglob("*.json")):
-        doc = json.loads(path.read_text(encoding="utf-8"))
+    for doc, layers in store.all_texts(corpus):
         for segment in doc["segments"]:
-            translations = segment.get("translation") or {}
             if segment["type"] != "verse":
                 continue
-            for language, target in sorted(translations.items()):
+            for language, layer in sorted(layers.items()):
+                localized = (layer.get("segments") or {}).get(segment["id"]) or {}
+                target = localized.get("translation")
+                if not isinstance(target, str):
+                    continue
                 site = f"{doc['id']}.{segment['id']}.{language}"
                 sites[site] = {
                     "site": site,
@@ -129,30 +136,37 @@ def corpus_sites(corpus: Path) -> dict[str, dict]:
                     "familiar_core": protected(doc["id"], language),
                     "source_sha256": canonical_hash(source_payload(segment)),
                     "target_sha256": canonical_hash(target),
-                    "has_wording_citations": bool(
-                        (segment.get("translation_citations") or {}).get(language)
-                    ),
+                    "has_wording_citations": bool(localized.get("translation_citations")),
                 }
     return sites
 
 
 def load(corpus: Path) -> tuple[dict, list[str]]:
-    path = corpus / "translation-provenance.json"
-    if not path.exists():
-        return {}, ["translation-provenance.json is missing"]
-    doc = json.loads(path.read_text(encoding="utf-8"))
+    by_site: dict[str, dict] = {}
     errors: list[str] = []
-    if doc.get("schema_version") != "1.0.0":
-        errors.append("translation-provenance.json: schema_version must be '1.0.0'")
-    if doc.get("status") != "working-edition":
-        errors.append("translation-provenance.json: status must be 'working-edition'")
-    entries = doc.get("sites")
-    if not isinstance(entries, list):
-        errors.append("translation-provenance.json: sites must be a list")
-        return {}, errors
-    by_site = {entry.get("site"): entry for entry in entries if isinstance(entry, dict)}
-    if len(by_site) != len(entries):
-        errors.append("translation-provenance.json: site keys must be unique")
+    for language in store.language_ids(corpus):
+        path = corpus / "languages" / language / "translation-provenance.json"
+        where = str(path.relative_to(corpus))
+        if not path.exists():
+            errors.append(f"{where} is missing")
+            continue
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        if doc.get("schema_version") != "1.0.0":
+            errors.append(f"{where}: schema_version must be '1.0.0'")
+        if doc.get("language") != language:
+            errors.append(f"{where}: language does not match its directory")
+        if doc.get("status") != "working-edition":
+            errors.append(f"{where}: status must be 'working-edition'")
+        entries = doc.get("sites")
+        if not isinstance(entries, list):
+            errors.append(f"{where}: sites must be a list")
+            continue
+        for entry in entries:
+            site = entry.get("site") if isinstance(entry, dict) else None
+            if site in by_site:
+                errors.append(f"{where}: duplicate site key {site!r}")
+            elif site is not None:
+                by_site[site] = entry
     return by_site, errors
 
 
@@ -197,12 +211,17 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
     return errors, dict(sorted(tally.items()))
 
 
-def initialize(corpus: Path) -> int:
-    path = corpus / "translation-provenance.json"
+def initialize(corpus: Path, language: str) -> int:
+    if language not in store.language_ids(corpus):
+        print(f"refusing to initialize unknown language {language!r}")
+        return 1
+    path = corpus / "languages" / language / "translation-provenance.json"
     if path.exists():
         print(f"refusing to overwrite {path.name}")
         return 1
-    sites = corpus_sites(corpus)
+    sites = {
+        site: value for site, value in corpus_sites(corpus).items() if value["language"] == language
+    }
     entries = []
     for site in sorted(sites):
         actual = sites[site]
@@ -217,7 +236,12 @@ def initialize(corpus: Path) -> int:
         )
     path.write_text(
         json.dumps(
-            {"schema_version": "1.0.0", "status": "working-edition", "sites": entries},
+            {
+                "schema_version": "1.0.0",
+                "language": language,
+                "status": "working-edition",
+                "sites": entries,
+            },
             ensure_ascii=False,
             indent=2,
         )
@@ -231,10 +255,13 @@ def initialize(corpus: Path) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--initialize", action="store_true")
+    parser.add_argument("--language")
     args = parser.parse_args()
     corpus = Path(__file__).resolve().parent.parent
     if args.initialize:
-        return initialize(corpus)
+        if not args.language:
+            parser.error("--initialize requires --language")
+        return initialize(corpus, args.language)
     errors, tally = check(corpus)
     for error in errors:
         print(f"ERROR: {error}")

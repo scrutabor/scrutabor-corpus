@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.pax-domini",
   "title": "Pax Dómini",
   "category": "ordinarium",
@@ -9,51 +9,23 @@
   "ids": {
     "next": 10
   },
-  "about": {
-    "pl": "Trzymając cząstkę Hostii nad kielichem, kapłan czyni nią trzykrotnie znak krzyża i wypowiada pozdrowienie pokoju. Usługujący odpowiada.",
-    "en": "Holding a particle of the Host over the chalice, the priest signs the chalice three times with it and gives the greeting of peace. The server answers."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Cum ipsa particula signat ter super Calicem, dicens:",
-      "narrative": {
-        "pl": "Trzymając cząstkę nad kielichem, kapłan czyni nią trzy razy znak krzyża.",
-        "en": "Holding the particle over the chalice, the priest makes three signs of the cross with it."
-      }
+      "text": "Cum ipsa particula signat ter super Calicem, dicens:"
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Pokój Pański niech zawsze będzie z wami.",
-        "en": "May the peace of the Lord always be with you."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 62",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 119",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Pax", "lemma": "pax", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Pokój", "en": "The peace" } },
-        { "id": "w002", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "of the Lord" } },
-        { "id": "w003", "form": "sit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" }, "gloss": { "pl": "niech będzie", "en": "be" }, "function": { "pl": "Tryb łączący wyrażający życzenie.", "en": "Subjunctive expressing a wish." } },
-        { "id": "w004", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "always" } },
-        { "id": "w005", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "z wami", "en": "with you" }, "function": { "pl": "Ablativus liczby mnogiej zaimka vos z przyłączonym -cum.", "en": "Ablative plural of vos with -cum attached." } }
+        { "id": "w001", "form": "Pax", "lemma": "pax", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w002", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w003", "form": "sit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w004", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w005", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } }
       ]
     },
     {
@@ -71,31 +43,11 @@
           "source": "DMS 25 a"
         }
       },
-      "translation": {
-        "pl": "I z duchem twoim.",
-        "en": "And with your spirit."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "printed p. 62",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 119",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w006", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w007", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008", "gloss": { "pl": "z", "en": "with" } },
-        { "id": "w008", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "duchem", "en": "spirit" }, "function": { "pl": "Ablativus po „cum” (w007), należący do odpowiedzi „Et cum spíritu tuo”.", "en": "An ablative after “cum” (w007), in the response “Et cum spíritu tuo”." } },
-        { "id": "w009", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w008", "gloss": { "pl": "twoim", "en": "your" } }
+        { "id": "w006", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008" },
+        { "id": "w008", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w009", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w008" }
       ]
     }
   ],
@@ -113,6 +65,20 @@
     },
     "words": {
       "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w003": {
+
+      },
+      "w005": {
+
+      },
+      "w008": {
+
+      }
     }
   }
 }

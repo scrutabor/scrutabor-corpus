@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.praefatio-communis",
   "title": "Præfatio communis",
   "category": "ordinarium",
@@ -9,54 +9,33 @@
   "ids": {
     "next": 57
   },
-  "about": {
-    "pl": "Prefacja zwykła nie wymienia tajemnicy dnia. Po słowach „przez Chrystusa, Pana naszego” przechodzi do uwielbienia Boga przez chóry anielskie. Jej pierwsze zdanie jest zbudowane wokół „est”, od którego zależy konstrukcja „nos tibi grátias ágere”.",
-    "en": "The Common Preface names no mystery of the day. After “through Christ our Lord” it turns to the angelic choirs' praise of God. Its opening sentence is built around “est”, which governs the construction “nos tibi grátias ágere”."
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Deinde disiungit manus, et disiunctas tenet usque ad finem Præfationis: qua finita, iterum iungit eas, et inclinatus dicit: Sanctus.",
-      "narrative": {
-        "pl": "Kapłan rozłącza ręce i trzyma je rozłożone aż do końca Prefacji.",
-        "en": "The priest parts his hands and holds them apart to the end of the Preface."
-      }
+      "text": "Deinde disiungit manus, et disiunctas tenet usque ad finem Præfationis: qua finita, iterum iungit eas, et inclinatus dicit: Sanctus."
     },
     {
       "id": "s02",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Zaprawdę godne to i sprawiedliwe, słuszne i zbawienne, byśmy Tobie zawsze i wszędzie składali dzięki:",
-        "en": "Truly it is right and just, fitting and leading to salvation, that we should give You thanks always and everywhere:"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 55",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Vere", "lemma": "vere", "morph": { "pos": "adv" }, "gloss": { "pl": "zaprawdę", "en": "truly" } },
-        { "id": "w002", "form": "dignum", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w005", "gloss": { "pl": "godne", "en": "right" }, "function": { "pl": "„Vere dignum et iustum est” podejmuje odpowiedź „Dignum et iustum est”.", "en": "“Vere dignum et iustum est” takes up the answer “Dignum et iustum est”." } },
-        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w004", "form": "iustum", "lemma": "iustus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w005", "gloss": { "pl": "sprawiedliwe", "en": "just" } },
-        { "id": "w005", "form": "est", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jest", "en": "it is" }, "function": { "pl": "Jedyne orzeczenie osobowe w tym zdaniu. Jego podmiotem jest konstrukcja „nos tibi grátias ágere”.", "en": "The only finite verb in this sentence. Its subject is the construction “nos tibi grátias ágere”." } },
-        { "id": "w006", "form": "æquum", "lemma": "aequus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w005", "gloss": { "pl": "słuszne", "en": "proper" } },
-        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w008", "form": "salutáre", "post": ",", "lemma": "salutaris", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w005", "gloss": { "pl": "zbawienne", "en": "salutary" }, "function": { "pl": "Rodzaj nijaki liczby pojedynczej od salutáris, w szeregu z dignum, iustum i æquum. Tutaj jest to przymiotnik „zbawienne”.", "en": "Neuter singular of salutáris, in a series with dignum, iustum and æquum. Here it is the adjective “salutary”." } },
-        { "id": "w009", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "byśmy my", "en": "that we" }, "function": { "pl": "Biernik jako podmiot bezokolicznika „ágere” (w015) — konstrukcja, której polszczyzna nie ma i oddaje ją zdaniem podrzędnym.", "en": "The accusative subject of the infinitive “ágere” (w015) — a construction English renders with a that-clause." } },
-        { "id": "w010", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Tobie", "en": "to Thee" } },
-        { "id": "w011", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "always" } },
-        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w013", "form": "ubíque", "lemma": "ubique", "morph": { "pos": "adv" }, "gloss": { "pl": "wszędzie", "en": "everywhere" } },
-        { "id": "w014", "form": "grátias", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "dzięki", "en": "thanks" } },
-        { "id": "w015", "form": "ágere", "post": ":", "lemma": "ago", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 }, "gloss": { "pl": "składać", "en": "give" }, "function": { "pl": "Bezokolicznik w konstrukcji „nos tibi grátias ágere”, zależnej od „est” (w005).", "en": "The infinitive in “nos tibi grátias ágere”, a construction governed by “est” (w005)." } }
+        { "id": "w001", "form": "Vere", "lemma": "vere", "morph": { "pos": "adv" } },
+        { "id": "w002", "form": "dignum", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w005" },
+        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "iustum", "lemma": "iustus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w005" },
+        { "id": "w005", "form": "est", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w006", "form": "æquum", "lemma": "aequus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w005" },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "salutáre", "post": ",", "lemma": "salutaris", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w005" },
+        { "id": "w009", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w010", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w011", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "ubíque", "lemma": "ubique", "morph": { "pos": "adv" } },
+        { "id": "w014", "form": "grátias", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w015", "form": "ágere", "post": ":", "lemma": "ago", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 } }
       ]
     },
     {
@@ -64,37 +43,17 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Panie święty, Ojcze wszechmogący, wieczny Boże: przez Chrystusa Pana naszego.",
-        "en": "Holy Lord, almighty Father, eternal God: through Christ our Lord."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 55",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "p. 79",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w016", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "id": "w017", "form": "sancte", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w016", "gloss": { "pl": "święty", "en": "holy" } },
-        { "id": "w018", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Ojcze", "en": "Father" } },
-        { "id": "w019", "form": "omnípotens", "post": ",", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w018", "gloss": { "pl": "wszechmogący", "en": "almighty" } },
-        { "id": "w020", "form": "ætérne", "lemma": "aeternus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w021", "gloss": { "pl": "wieczny", "en": "eternal" } },
-        { "id": "w021", "form": "Deus", "post": ":", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boże", "en": "God" } },
-        { "id": "w022", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w023", "gloss": { "pl": "przez", "en": "through" } },
-        { "id": "w023", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Chrystusa", "en": "Christ" } },
-        { "id": "w024", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "Lord" } },
-        { "id": "w025", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w024", "gloss": { "pl": "naszego", "en": "our" }, "function": { "pl": "W tym miejscu prefacje własne wprowadzają część odnoszącą się do dnia lub tajemnicy.", "en": "At this point the proper prefaces insert a section referring to the day or mystery." } }
+        { "id": "w016", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w017", "form": "sancte", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w016" },
+        { "id": "w018", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w019", "form": "omnípotens", "post": ",", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w018" },
+        { "id": "w020", "form": "ætérne", "lemma": "aeternus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w021" },
+        { "id": "w021", "form": "Deus", "post": ":", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w022", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w023" },
+        { "id": "w023", "form": "Christum", "lemma": "Christus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w024", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w025", "form": "nostrum", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w024" }
       ]
     },
     {
@@ -102,37 +61,17 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Przez Niego Aniołowie chwalą Twój majestat, Państwa go uwielbiają, a Potęgi przed nim drżą.",
-        "en": "Through Him the Angels praise Your majesty, the Dominions adore it, and the Powers tremble before it."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 55",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "p. 79",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w026", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w027", "gloss": { "pl": "przez", "en": "through" } },
-        { "id": "w027", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Niego", "en": "whom" }, "function": { "pl": "Zaimek względny odnoszący się do Chrystusa.", "en": "A relative pronoun referring to Christ." } },
-        { "id": "w028", "form": "maiestátem", "lemma": "maiestas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "majestat", "en": "majesty" }, "function": { "pl": "Jedno dopełnienie na trzy czasowniki: chwalą go, uwielbiają i drżą przed nim.", "en": "One object for three verbs: they praise it, adore it, tremble before it." } },
-        { "id": "w029", "form": "tuam", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w028", "gloss": { "pl": "Twój", "en": "Thy" } },
-        { "id": "w030", "form": "laudant", "lemma": "laudo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "chwalą", "en": "praise" } },
-        { "id": "w031", "form": "Ángeli", "post": ",", "lemma": "angelus", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "Aniołowie", "en": "the Angels" } },
-        { "id": "w032", "form": "adórant", "lemma": "adoro", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "uwielbiają", "en": "adore" } },
-        { "id": "w033", "form": "Dominatiónes", "post": ",", "lemma": "dominatio", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "Państwa", "en": "the Dominations" }, "function": { "pl": "Mianownik, będący podmiotem „adórant”.", "en": "Nominative subject of “adórant”." } },
-        { "id": "w034", "form": "tremunt", "lemma": "tremo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "drżą", "en": "tremble" } },
-        { "id": "w035", "form": "Potestátes", "post": ".", "lemma": "potestas", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "Potęgi", "en": "the Powers" } }
+        { "id": "w026", "form": "Per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w027" },
+        { "id": "w027", "form": "quem", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w028", "form": "maiestátem", "lemma": "maiestas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w029", "form": "tuam", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w028" },
+        { "id": "w030", "form": "laudant", "lemma": "laudo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w031", "form": "Ángeli", "post": ",", "lemma": "angelus", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w032", "form": "adórant", "lemma": "adoro", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w033", "form": "Dominatiónes", "post": ",", "lemma": "dominatio", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w034", "form": "tremunt", "lemma": "tremo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w035", "form": "Potestátes", "post": ".", "lemma": "potestas", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 } }
       ]
     },
     {
@@ -140,36 +79,16 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Niebiosa, Moce niebios i błogosławieni Serafini wspólnie i radośnie wysławiają Twój majestat.",
-        "en": "The heavens, the heavenly Virtues, and the blessed Seraphim join in joyful celebration of Your majesty."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "s. 55",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "p. 79",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          }
-        ]
-      },
       "words": [
-        { "id": "w036", "form": "Cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "Niebiosa", "en": "The heavens" }, "function": { "pl": "Męska liczba mnoga od nijakiego „cælum”.", "en": "The masculine plural of neuter “cælum”." } },
-        { "id": "w037", "form": "cælorúmque", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "i niebios", "en": "and of the heavens" }, "function": { "pl": "Dopełniacz zależny od „Virtútes” (w038): moce należące do niebios.", "en": "A genitive depending on “Virtútes” (w038): the Virtues belonging to the heavens." } },
-        { "id": "w038", "form": "Virtútes", "lemma": "virtus", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "Moce", "en": "the Virtues" } },
-        { "id": "w039", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w040", "form": "beáta", "lemma": "beatus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w041", "gloss": { "pl": "błogosławione", "en": "blessed" }, "function": { "pl": "Rodzaj nijaki liczby mnogiej, zgodny z nieodmiennym „Séraphim”.", "en": "Neuter plural agreeing with indeclinable “Séraphim”." } },
-        { "id": "w041", "form": "Séraphim", "lemma": "seraphim", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "n" }, "gloss": { "pl": "Serafiny", "en": "Seraphim" } },
-        { "id": "w042", "form": "sócia", "lemma": "socius", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w043", "gloss": { "pl": "wspólnym", "en": "shared" }, "function": { "pl": "Ablativus sposobu razem z „exsultatióne” (w043), nie mianownik przy podmiotach.", "en": "An ablative of manner with “exsultatióne” (w043), not a nominative with the subjects." } },
-        { "id": "w043", "form": "exsultatióne", "lemma": "exsultatio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "uniesieniem", "en": "exultation" } },
-        { "id": "w044", "form": "concélebrant", "post": ".", "lemma": "concelebro", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "sławią razem", "en": "celebrate together" }, "function": { "pl": "Podmiotem są chóry anielskie: czasownik mówi o ich wspólnym uwielbieniu.", "en": "The subjects are the angelic choirs: the verb describes their shared praise." } }
+        { "id": "w036", "form": "Cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w037", "form": "cælorúmque", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w038", "form": "Virtútes", "lemma": "virtus", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w039", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
+        { "id": "w040", "form": "beáta", "lemma": "beatus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w041" },
+        { "id": "w041", "form": "Séraphim", "lemma": "seraphim", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "n" } },
+        { "id": "w042", "form": "sócia", "lemma": "socius", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w043" },
+        { "id": "w043", "form": "exsultatióne", "lemma": "exsultatio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w044", "form": "concélebrant", "post": ".", "lemma": "concelebro", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } }
       ]
     },
     {
@@ -177,23 +96,19 @@
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Prosimy Cię, pozwól, aby także nasze głosy dołączyły do ich głosów, gdy z pokorą wyznajemy:",
-        "en": "We beseech You to admit our voices to join theirs as we speak in humble confession:"
-      },
       "words": [
-        { "id": "w045", "form": "Cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w046", "gloss": { "pl": "z", "en": "with" } },
-        { "id": "w046", "form": "quibus", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "którymi", "en": "whom" }, "function": { "pl": "Ablativus po „cum”, odnoszący się do chórów anielskich.", "en": "Ablative after “cum”, referring to the angelic choirs." } },
-        { "id": "w047", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "also" } },
-        { "id": "w048", "form": "nostras", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w049", "gloss": { "pl": "nasze", "en": "our" } },
-        { "id": "w049", "form": "voces", "lemma": "vox", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "głosy", "en": "voices" }, "function": { "pl": "Podmiot bezokolicznika „admítti” (w051) w bierniku — „iúbeas” (w052) rządzi całą tą konstrukcją.", "en": "The accusative subject of the infinitive “admítti” (w051) — “iúbeas” (w052) governs the whole construction." } },
-        { "id": "w050", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "gloss": { "pl": "aby", "en": "that" } },
-        { "id": "w051", "form": "admítti", "lemma": "admitto", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "pass", "conj": 3 }, "gloss": { "pl": "być dopuszczonymi", "en": "be admitted" } },
-        { "id": "w052", "form": "iúbeas", "post": ",", "lemma": "iubeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 }, "gloss": { "pl": "kazał", "en": "Thou bid" }, "function": { "pl": "Tryb łączący po ut. Po polsku oddany trybem rozkazującym, ale w łacinie to prośba, nie rozkaz.", "en": "A subjunctive after ut. The petition is put as a wish rather than a command." } },
-        { "id": "w053", "form": "deprecámur", "post": ",", "lemma": "deprecor", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "dep", "conj": 1 }, "gloss": { "pl": "prosimy", "en": "we pray" }, "function": { "pl": "Czasownik deponentny: forma bierna, znaczenie czynne.", "en": "A deponent: passive in form, active in meaning." } },
-        { "id": "w054", "form": "súpplici", "lemma": "supplex", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w055", "gloss": { "pl": "kornym", "en": "humble" } },
-        { "id": "w055", "form": "confessióne", "lemma": "confessio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "wyznaniem", "en": "confession" }, "function": { "pl": "Wyznanie nie winy, lecz chwały — to, co za chwilę wyśpiewa Sanctus.", "en": "A confession not of guilt but of praise — what the Sanctus is about to sing." } },
-        { "id": "w056", "form": "dicéntes", "post": ":", "lemma": "dico", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w053", "gloss": { "pl": "mówiąc", "en": "saying" }, "function": { "pl": "Imiesłów zgadza się z domyślnym „my” i wprowadza Sanctus.", "en": "The participle agrees with the unstated “we” and introduces the Sanctus." } }
+        { "id": "w045", "form": "Cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w046" },
+        { "id": "w046", "form": "quibus", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
+        { "id": "w047", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w048", "form": "nostras", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w049" },
+        { "id": "w049", "form": "voces", "lemma": "vox", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w050", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w051", "form": "admítti", "lemma": "admitto", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "pass", "conj": 3 } },
+        { "id": "w052", "form": "iúbeas", "post": ",", "lemma": "iubeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 2 } },
+        { "id": "w053", "form": "deprecámur", "post": ",", "lemma": "deprecor", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "dep", "conj": 1 } },
+        { "id": "w054", "form": "súpplici", "lemma": "supplex", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w055" },
+        { "id": "w055", "form": "confessióne", "lemma": "confessio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w056", "form": "dicéntes", "post": ":", "lemma": "dico", "morph": { "pos": "verb", "case": "nom", "number": "pl", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w053" }
       ]
     }
   ],
@@ -212,6 +127,71 @@
     },
     "words": {
       "w036": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w002": {
+
+      },
+      "w005": {
+
+      },
+      "w008": {
+
+      },
+      "w009": {
+
+      },
+      "w015": {
+
+      },
+      "w025": {
+
+      },
+      "w027": {
+
+      },
+      "w028": {
+
+      },
+      "w033": {
+
+      },
+      "w036": {
+
+      },
+      "w037": {
+
+      },
+      "w040": {
+
+      },
+      "w042": {
+
+      },
+      "w044": {
+
+      },
+      "w046": {
+
+      },
+      "w049": {
+
+      },
+      "w052": {
+
+      },
+      "w053": {
+
+      },
+      "w055": {
+
+      },
+      "w056": {
+
+      }
     }
   }
 }

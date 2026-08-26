@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "orationes.sub-tuum-praesidium",
   "title": "Sub tuum præsídium",
   "category": "orationes",
@@ -9,169 +9,74 @@
   "ids": {
     "next": 46
   },
-  "about": {
-    "pl": "Podstawową formę stanowi antyfona kończąca się słowami „Panno chwalebna i błogosławiona”: jest to prośba o opiekę Maryi, przyjęcie błagań i wybawienie od niebezpieczeństw. W często używanej w Polsce formie rozszerzonej następują po niej wezwania „O Pani nasza…” i dalsze prośby. Poza polskimi modlitewnikami kontynuację tę poświadcza akt zawierzenia, który Jan Paweł II odmówił na Jasnej Górze w 1991 roku, gdzie dwa z tytułów stoją w odwrotnej kolejności.",
-    "en": "The basic form is the antiphon ending “O glorious and blessed Virgin”: a prayer for Mary's protection, for the petitions of the faithful to be heard, and for deliverance from danger. In the extended form often used in Poland, it is followed by the invocations beginning “Our Lady…” and further petitions. Beyond Polish prayer books that continuation is attested in the act of entrustment John Paul II made at Jasna Góra in 1991, where two of the titles stand in the other order."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Compendium of the Catechism of the Catholic Church",
-        "locator": "Appendix A: Common Prayers — Sub tuum praesidium",
-        "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_en.html"
-      },
-      {
-        "title": "Konferencja Episkopatu Polski, Akta KEP 32",
-        "locator": "Pod Twoją obronę",
-        "url": "https://episkopat.pl/files/24.bkt/04/04/242488_HSZP_32_Akta_KEP_2020.pdf"
-      },
-      {
-        "title": "John Paul II, Solemn Act of Entrustment of the Young People of the World to Our Lady",
-        "locator": "Jasna Gora, 15 August 1991",
-        "url": "https://www.vatican.va/content/john-paul-ii/it/speeches/1991/august/documents/hf_jp-ii_spe_19910815_affidamento-wyd.html"
-      }
-    ],
-    "en": [
-      {
-        "title": "Compendium of the Catechism of the Catholic Church",
-        "locator": "Appendix A: Common Prayers — Sub tuum praesidium",
-        "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_en.html"
-      },
-      {
-        "title": "Konferencja Episkopatu Polski, Akta KEP 32",
-        "locator": "Pod Twoją obronę",
-        "url": "https://episkopat.pl/files/24.bkt/04/04/242488_HSZP_32_Akta_KEP_2020.pdf"
-      },
-      {
-        "title": "John Paul II, Solemn Act of Entrustment of the Young People of the World to Our Lady",
-        "locator": "Jasna Gora, 15 August 1991",
-        "url": "https://www.vatican.va/content/john-paul-ii/it/speeches/1991/august/documents/hf_jp-ii_spe_19910815_affidamento-wyd.html"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
-      "translation": {
-        "pl": "Pod Twoją obronę uciekamy się, Święta Boża Rodzicielko, naszymi prośbami racz nie gardzić w potrzebach naszych, ale od wszelakich złych przygód racz nas zawsze wybawiać, Panno chwalebna i błogosławiona.",
-        "en": "We fly to thy protection, O holy Mother of God; despise not our petitions in our necessities, but deliver us always from all dangers, O glorious and blessed Virgin."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed pp. 40–41",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Family Prayer-book (1839)",
-            "locator": "printed p. 52",
-            "url": "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,_containing_all_the_public_and_private_devotions_in_use_amongst_English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf"
-          },
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 40",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Sub", "lemma": "sub", "morph": { "pos": "prep", "governs": "acc" }, "head": "w003", "gloss": { "pl": "pod", "en": "under" } },
-        { "id": "w002", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w003", "gloss": { "pl": "Twoją", "en": "thy" } },
-        { "id": "w003", "form": "præsídium", "lemma": "praesidium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "obronę", "en": "protection" } },
-        { "id": "w004", "form": "confúgimus", "post": ",", "lemma": "confugio", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "uciekamy się", "en": "we flee" } },
-        { "id": "w005", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w007", "gloss": { "pl": "Święta", "en": "Holy" } },
-        { "id": "w006", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" } },
-        { "id": "w007", "form": "Génetrix", "post": ",", "lemma": "genetrix", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Rodzicielko", "en": "Mother" } },
-        { "id": "w008", "form": "nostras", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w009", "gloss": { "pl": "naszymi", "en": "our" } },
-        { "id": "w009", "form": "deprecatiónes", "lemma": "deprecatio", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "prośbami", "en": "petitions" } },
-        { "id": "w010", "form": "ne", "lemma": "ne", "morph": { "pos": "adv" }, "gloss": { "pl": "nie", "en": "not" } },
-        { "id": "w011", "form": "despícias", "lemma": "despicio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "gardź", "en": "despise" } },
-        { "id": "w012", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w013", "form": "necessitátibus", "post": ";", "lemma": "necessitas", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "potrzebach", "en": "necessities" } },
-        { "id": "w014", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" }, "gloss": { "pl": "lecz", "en": "but" } },
-        { "id": "w015", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w016", "gloss": { "pl": "od", "en": "from" } },
-        { "id": "w016", "form": "perículis", "lemma": "periculum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "niebezpieczeństw", "en": "dangers" } },
-        { "id": "w017", "form": "cunctis", "lemma": "cunctus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w016", "gloss": { "pl": "wszystkich", "en": "all" } },
-        { "id": "w018", "form": "líbera", "lemma": "libero", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "wybaw", "en": "deliver" } },
-        { "id": "w019", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } },
-        { "id": "w020", "form": "semper", "post": ",", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "always" } },
-        { "id": "w021", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Panno", "en": "Virgin" } },
-        { "id": "w022", "form": "gloriósa", "lemma": "gloriosus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w021", "gloss": { "pl": "chwalebna", "en": "glorious" } },
-        { "id": "w023", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w024", "form": "benedícta", "post": ".", "lemma": "benedictus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w021", "gloss": { "pl": "błogosławiona", "en": "blessed" } }
+        { "id": "w001", "form": "Sub", "lemma": "sub", "morph": { "pos": "prep", "governs": "acc" }, "head": "w003" },
+        { "id": "w002", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w003" },
+        { "id": "w003", "form": "præsídium", "lemma": "praesidium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w004", "form": "confúgimus", "post": ",", "lemma": "confugio", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w005", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w007" },
+        { "id": "w006", "form": "Dei", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w007", "form": "Génetrix", "post": ",", "lemma": "genetrix", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w008", "form": "nostras", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w009" },
+        { "id": "w009", "form": "deprecatiónes", "lemma": "deprecatio", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w010", "form": "ne", "lemma": "ne", "morph": { "pos": "adv" } },
+        { "id": "w011", "form": "despícias", "lemma": "despicio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w012", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013" },
+        { "id": "w013", "form": "necessitátibus", "post": ";", "lemma": "necessitas", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w014", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
+        { "id": "w015", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w016" },
+        { "id": "w016", "form": "perículis", "lemma": "periculum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w017", "form": "cunctis", "lemma": "cunctus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w016" },
+        { "id": "w018", "form": "líbera", "lemma": "libero", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w019", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w020", "form": "semper", "post": ",", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w021", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w022", "form": "gloriósa", "lemma": "gloriosus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w021" },
+        { "id": "w023", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w024", "form": "benedícta", "post": ".", "lemma": "benedictus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w021" }
       ]
     },
     {
       "id": "s02",
       "type": "verse",
-      "translation": {
-        "pl": "O Pani nasza, Orędowniczko nasza, Pośredniczko nasza, Pocieszycielko nasza.",
-        "en": "Our Lady, our Mediatrix, our Advocate, our Comforter."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed pp. 40–41",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ]
-      },
       "words": [
-        { "id": "w025", "form": "Dómina", "lemma": "domina", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Pani", "en": "Lady" } },
-        { "id": "w026", "form": "nostra", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w025", "gloss": { "pl": "nasza", "en": "our" } },
-        { "id": "w027", "form": "Mediátrix", "lemma": "mediatrix", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Pośredniczko", "en": "Mediatrix" } },
-        { "id": "w028", "form": "nostra", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w027", "gloss": { "pl": "nasza", "en": "our" } },
-        { "id": "w029", "form": "Advocáta", "lemma": "advocata", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Orędowniczko", "en": "Advocate" } },
-        { "id": "w030", "form": "nostra", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w029", "gloss": { "pl": "nasza", "en": "our" } },
-        { "id": "w031", "form": "Consolátrix", "lemma": "consolatrix", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "Pocieszycielko", "en": "Comforter" } },
-        { "id": "w032", "form": "nostra", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w031", "gloss": { "pl": "nasza", "en": "our" } }
+        { "id": "w025", "form": "Dómina", "lemma": "domina", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w026", "form": "nostra", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w025" },
+        { "id": "w027", "form": "Mediátrix", "lemma": "mediatrix", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w028", "form": "nostra", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w027" },
+        { "id": "w029", "form": "Advocáta", "lemma": "advocata", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w030", "form": "nostra", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w029" },
+        { "id": "w031", "form": "Consolátrix", "lemma": "consolatrix", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w032", "form": "nostra", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w031" }
       ]
     },
     {
       "id": "s03",
       "type": "verse",
-      "translation": {
-        "pl": "Z Synem swoim nas pojednaj, Synowi swojemu nas polecaj, swojemu Synowi nas oddawaj.",
-        "en": "Reconcile us with thy Son, commend us to thy Son, present us to thy Son."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed pp. 40–41",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ]
-      },
       "words": [
-        { "id": "w033", "form": "Tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w034", "gloss": { "pl": "Twojemu", "en": "thy" } },
-        { "id": "w034", "form": "Fílio", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Synowi", "en": "Son" } },
-        { "id": "w035", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } },
-        { "id": "w036", "form": "reconcília", "post": ",", "lemma": "reconcilio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "pojednaj", "en": "reconcile" } },
-        { "id": "w037", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w038", "gloss": { "pl": "Twojemu", "en": "thy" } },
-        { "id": "w038", "form": "Fílio", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Synowi", "en": "Son" } },
-        { "id": "w039", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } },
-        { "id": "w040", "form": "comménda", "post": ",", "lemma": "commendo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "polecaj", "en": "commend" } },
-        { "id": "w041", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w042", "gloss": { "pl": "Twojemu", "en": "thy" } },
-        { "id": "w042", "form": "Fílio", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Synowi", "en": "Son" } },
-        { "id": "w043", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "gloss": { "pl": "nas", "en": "us" } },
-        { "id": "w044", "form": "repræsénta", "post": ".", "lemma": "repraesento", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "przedstaw", "en": "present" } }
+        { "id": "w033", "form": "Tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w034" },
+        { "id": "w034", "form": "Fílio", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w035", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w036", "form": "reconcília", "post": ",", "lemma": "reconcilio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w037", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w038" },
+        { "id": "w038", "form": "Fílio", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w039", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w040", "form": "comménda", "post": ",", "lemma": "commendo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w041", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w042" },
+        { "id": "w042", "form": "Fílio", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w043", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w044", "form": "repræsénta", "post": ".", "lemma": "repraesento", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } }
       ]
     },
     {
       "id": "s04",
       "type": "verse",
-      "translation": {
-        "pl": "Amen.",
-        "en": "Amen."
-      },
       "words": [
-        { "id": "w045", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w045", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -189,5 +94,25 @@
       "w027": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w031": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
     }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Compendium of the Catechism of the Catholic Church",
+        "locator": "Appendix A: Common Prayers — Sub tuum praesidium",
+        "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_en.html"
+      },
+      {
+        "title": "Konferencja Episkopatu Polski, Akta KEP 32",
+        "locator": "Pod Twoją obronę",
+        "url": "https://episkopat.pl/files/24.bkt/04/04/242488_HSZP_32_Akta_KEP_2020.pdf"
+      },
+      {
+        "title": "John Paul II, Solemn Act of Entrustment of the Young People of the World to Our Lady",
+        "locator": "Jasna Gora, 15 August 1991",
+        "url": "https://www.vatican.va/content/john-paul-ii/it/speeches/1991/august/documents/hf_jp-ii_spe_19910815_affidamento-wyd.html"
+      }
+    ]
   }
 }

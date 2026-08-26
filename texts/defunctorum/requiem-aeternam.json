@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "defunctorum.requiem-aeternam",
   "title": "Réquiem ætérnam",
   "category": "defunctorum",
@@ -9,101 +9,37 @@
   "ids": {
     "next": 15
   },
-  "about": {
-    "pl": "Krótka modlitwa za wiernych zmarłych w brzmieniu łacińskim Enchiridion Indulgentiarum z 1952 r. Prosi dla nich o wieczny odpoczynek i światłość wiekuistą, a kończy się życzeniem, aby spoczywali w pokoju.",
-    "en": "The brief suffrage for the faithful departed, in the Latin of the 1952 Enchiridion Indulgentiarum. It asks eternal rest and perpetual light for them, and closes with the wish that they rest in peace."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
-        "locator": "n. 582, p. 450",
-        "url": "https://archive.org/download/enchiridion_indulgentiarum_1952/enchiridion_indulgentiarum_1952.pdf"
-      }
-    ],
-    "en": [
-      {
-        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
-        "locator": "n. 582, p. 450",
-        "url": "https://archive.org/download/enchiridion_indulgentiarum_1952/enchiridion_indulgentiarum_1952.pdf"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s001",
       "type": "verse",
-      "translation": {
-        "pl": "Wieczny odpoczynek racz im dać, Panie, a światłość wiekuista niechaj im świeci.",
-        "en": "Eternal rest grant unto them, O Lord, and let perpetual light shine upon them."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Ludwik Skowronek, Droga do Nieba (1907)",
-            "locator": "printed p. 456",
-            "url": "https://sbc.org.pl/dlibra/publication/230307/edition/217677/droga-do-nieba-wyborek-modlitw-i-piesni"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed pp. 281–282",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "form": "Réquiem", "lemma": "requies", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "id": "w001", "gloss": { "pl": "odpoczynek", "en": "rest" } },
-        { "form": "ætérnam", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w001", "id": "w002", "gloss": { "pl": "wieczny", "en": "eternal" } },
-        { "form": "dona", "lemma": "dono", "morph": { "pos": "verb", "tense": "pres", "mood": "imp", "voice": "act", "person": 2, "number": "sg", "conj": 1 }, "id": "w003", "gloss": { "pl": "daj", "en": "grant" } },
-        { "form": "eis", "lemma": "is", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "id": "w004", "post": ",", "gloss": { "pl": "im", "en": "unto them" } },
-        { "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "id": "w005", "post": ";", "gloss": { "pl": "Panie", "en": "Lord" } },
-        { "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "id": "w006", "gloss": { "pl": "i", "en": "and" } },
-        { "form": "lux", "lemma": "lux", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "id": "w007", "gloss": { "pl": "światłość", "en": "light" } },
-        { "form": "perpétua", "lemma": "perpetuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w007", "id": "w008", "gloss": { "pl": "wiekuista", "en": "perpetual" } },
-        { "form": "lúceat", "lemma": "luceo", "morph": { "pos": "verb", "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "person": 3, "conj": 2 }, "id": "w009", "gloss": { "pl": "niech świeci", "en": "may shine" } },
-        { "form": "eis", "lemma": "is", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "id": "w010", "post": ".", "gloss": { "pl": "im", "en": "unto them" } }
+        { "form": "Réquiem", "lemma": "requies", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "id": "w001" },
+        { "form": "ætérnam", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w001", "id": "w002" },
+        { "form": "dona", "lemma": "dono", "morph": { "pos": "verb", "tense": "pres", "mood": "imp", "voice": "act", "person": 2, "number": "sg", "conj": 1 }, "id": "w003" },
+        { "form": "eis", "lemma": "is", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "id": "w004", "post": "," },
+        { "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "id": "w005", "post": ";" },
+        { "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "id": "w006" },
+        { "form": "lux", "lemma": "lux", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "id": "w007" },
+        { "form": "perpétua", "lemma": "perpetuus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w007", "id": "w008" },
+        { "form": "lúceat", "lemma": "luceo", "morph": { "pos": "verb", "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "person": 3, "conj": 2 }, "id": "w009" },
+        { "form": "eis", "lemma": "is", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "id": "w010", "post": "." }
       ]
     },
     {
       "id": "s002",
       "type": "verse",
-      "translation": {
-        "pl": "Niech odpoczywają w pokoju wiecznym.",
-        "en": "May they rest in peace."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 341",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "Key of Heaven (1901)",
-            "locator": "printed p. 282",
-            "url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu"
-          }
-        ]
-      },
       "words": [
-        { "form": "Requiéscant", "lemma": "requiesco", "morph": { "pos": "verb", "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "person": 3, "conj": 3 }, "id": "w011", "gloss": { "pl": "niech odpoczywają", "en": "may they rest" } },
-        { "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013", "id": "w012", "gloss": { "pl": "w", "en": "in" } },
-        { "form": "pace", "lemma": "pax", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "id": "w013", "post": ".", "gloss": { "pl": "pokoju", "en": "peace" } }
+        { "form": "Requiéscant", "lemma": "requiesco", "morph": { "pos": "verb", "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "person": 3, "conj": 3 }, "id": "w011" },
+        { "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013", "id": "w012" },
+        { "form": "pace", "lemma": "pax", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "id": "w013", "post": "." }
       ]
     },
     {
       "id": "s003",
       "type": "verse",
-      "translation": {
-        "pl": "Amen.",
-        "en": "Amen."
-      },
       "words": [
-        { "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "id": "w014", "post": ".", "gloss": { "pl": "amen", "en": "amen" } }
+        { "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "id": "w014", "post": "." }
       ]
     }
   ],
@@ -117,5 +53,15 @@
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Enchiridion Indulgentiarum: Preces et Pia Opera (1952)",
+        "locator": "n. 582, p. 450",
+        "url": "https://archive.org/download/enchiridion_indulgentiarum_1952/enchiridion_indulgentiarum_1952.pdf"
+      }
+    ]
   }
 }

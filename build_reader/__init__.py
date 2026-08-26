@@ -5,10 +5,11 @@ to a line, every editorial claim visible, the text and its two gloss layers in
 separate documents so each can be worked on alone. That is the right shape for
 the work and the wrong shape for a phone.
 
-This package derives the other shape. One document per text carrying both
-languages, the three repeated layers -- parse, analysis, citation -- replaced by
-indices into tables the whole corpus shares, and the reviewer's apparatus left
-behind. It is the form the app ships rather than the form a reviewer reads.
+This package derives the other shape: one compact neutral document per text and
+one independently loadable artifact per target language. Repeated parse,
+analysis and citation layers become indices into shared tables, while the
+reviewer's apparatus stays behind. Root and language manifests are also package
+boundaries for mobile downloads and offline archives.
 
 What it leaves behind is named in DROP_DOC and is exactly four things: the
 schema version, which the manifest names once, the mint, the editorial notes,

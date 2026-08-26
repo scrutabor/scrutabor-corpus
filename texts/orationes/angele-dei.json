@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "orationes.angele-dei",
   "title": "Ángele Dei",
   "category": "orationes",
@@ -9,198 +9,58 @@
   "ids": {
     "next": 18
   },
-  "about": {
-    "pl": "Angele Dei jest indywidualną modlitwą do Anioła Stróża. Mówiący uznaje, że został powierzony jego opiece z dobroci Bożej, i prosi go kolejno o oświecenie, strzeżenie, rządzenie i prowadzenie.",
-    "en": "The Angele Dei is an individual prayer to the Guardian Angel. The speaker acknowledges having been entrusted to the angel by heavenly mercy and asks in order to be enlightened, guarded, ruled, and guided."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Compendium of the Catechism of the Catholic Church",
-        "locator": "appendix, Angele Dei, p. 195",
-        "url": "https://www.vatican.va/archive/compendium_ccc/documents/compendium_catech_lit.pdf"
-      }
-    ],
-    "en": [
-      {
-        "title": "Compendium of the Catechism of the Catholic Church",
-        "locator": "appendix, Angele Dei, p. 195",
-        "url": "https://www.vatican.va/archive/compendium_ccc/documents/compendium_catech_lit.pdf"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
-      "translation": {
-        "pl": "Aniele Boży,",
-        "en": "Angel of God,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 22",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Raccolta (1910)",
-            "locator": "printed p. 267",
-            "url": "https://archive.org/details/theraccoltaorcol00unknuoft"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Ángele", "lemma": "angelus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "aniele", "en": "angel" }, "function": { "pl": "Wołacz rozpoczynający bezpośrednie zwrócenie się do Anioła Stróża.", "en": "A vocative opening the direct address to the Guardian Angel." } },
-        { "id": "w002", "form": "Dei", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boży", "en": "of God" }, "function": { "pl": "Dopełniacz zależny od „Ángele” określa przynależność i posłannictwo anioła.", "en": "A genitive depending on “Ángele”, identifying the angel's belonging and commission." } }
+        { "id": "w001", "form": "Ángele", "lemma": "angelus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w002", "form": "Dei", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     },
     {
       "id": "s02",
       "type": "verse",
-      "translation": {
-        "pl": "Stróżu mój,",
-        "en": "who are my guardian,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 22",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Raccolta (1910)",
-            "locator": "printed p. 267",
-            "url": "https://archive.org/details/theraccoltaorcol00unknuoft"
-          }
-        ]
-      },
       "words": [
-        { "id": "w003", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" }, "function": { "pl": "Zaimek względny odnosi się do anioła z pierwszego segmentu i jest podmiotem „es”.", "en": "The relative pronoun refers to the angel in the first segment and is the subject of “es”." } },
-        { "id": "w004", "form": "custos", "lemma": "custos", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "stróż", "en": "guardian" }, "function": { "pl": "Orzecznik przy „es”, określający anioła jako stróża mówiącego.", "en": "A predicate noun with “es”, identifying the angel as the speaker's guardian." } },
-        { "id": "w005", "form": "es", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "jesteś", "en": "you are" } },
-        { "id": "w006", "form": "mei", "post": ",", "lemma": "ego", "morph": { "pos": "pron", "case": "gen", "number": "sg" }, "gloss": { "pl": "mój", "en": "of me" }, "function": { "pl": "Dopełniacz zaimka pierwszej osoby zależy od „custos” i wskazuje osobę pozostającą pod opieką.", "en": "The first-person genitive depends on “custos” and identifies the person under guardianship." } }
+        { "id": "w003", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w004", "form": "custos", "lemma": "custos", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w005", "form": "es", "lemma": "sum", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w006", "form": "mei", "post": ",", "lemma": "ego", "morph": { "pos": "pron", "case": "gen", "number": "sg" } }
       ]
     },
     {
       "id": "s03",
       "type": "verse",
-      "translation": {
-        "pl": "mnie, Tobie powierzonego",
-        "en": "me, entrusted to you"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 22",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Raccolta (1910)",
-            "locator": "printed p. 267",
-            "url": "https://archive.org/details/theraccoltaorcol00unknuoft"
-          }
-        ]
-      },
       "words": [
-        { "id": "w007", "form": "me", "post": ",", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "gloss": { "pl": "mnie", "en": "me" }, "function": { "pl": "Wspólne dopełnienie czterech form czasownika. „Commíssum” opisuje tę samą osobę.", "en": "The shared object of the four imperatives. “Commíssum” describes the same person." } },
-        { "id": "w008", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Tobie", "en": "to you" } },
-        { "id": "w009", "form": "commíssum", "lemma": "committo", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w007", "gloss": { "pl": "powierzonego", "en": "entrusted" }, "function": { "pl": "Imiesłów bierny zgadza się z „me”. Rodzaj męski zachowuje gramatyczną postać wybranej recenzji.", "en": "A passive participle agreeing with “me”. Its masculine form preserves the grammar of the selected recension." } }
+        { "id": "w007", "form": "me", "post": ",", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w008", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w009", "form": "commíssum", "lemma": "committo", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "pass", "conj": 3 }, "head": "w007" }
       ]
     },
     {
       "id": "s04",
       "type": "verse",
-      "translation": {
-        "pl": "z dobroci Bożej,",
-        "en": "by heavenly mercy,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 22",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Raccolta (1910)",
-            "locator": "printed p. 267",
-            "url": "https://archive.org/details/theraccoltaorcol00unknuoft"
-          }
-        ]
-      },
       "words": [
-        { "id": "w010", "form": "pietáte", "lemma": "pietas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "z dobroci", "en": "by mercy" }, "function": { "pl": "Ablativus przyczyny lub sprawczej troski wyjaśnia, dzięki czemu mówiący został powierzony aniołowi.", "en": "An ablative of cause or caring agency explains by what mercy the speaker was entrusted to the angel." } },
-        { "id": "w011", "form": "supérna", "post": ",", "lemma": "supernus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w010", "gloss": { "pl": "Bożej", "en": "heavenly" }, "function": { "pl": "Przymiotnik wskazuje niebieskie, a więc Boże, źródło dobroci.", "en": "The adjective identifies the heavenly, and thus divine, source of the mercy." } }
+        { "id": "w010", "form": "pietáte", "lemma": "pietas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w011", "form": "supérna", "post": ",", "lemma": "supernus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w010" }
       ]
     },
     {
       "id": "s05",
       "type": "verse",
-      "translation": {
-        "pl": "oświecaj, strzeż,",
-        "en": "enlighten, guard,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 22",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Raccolta (1910)",
-            "locator": "printed p. 267",
-            "url": "https://archive.org/details/theraccoltaorcol00unknuoft"
-          }
-        ]
-      },
       "words": [
-        { "id": "w012", "form": "illúmina", "post": ",", "lemma": "illumino", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "oświecaj", "en": "enlighten" }, "function": { "pl": "Pierwsza z czterech równorzędnych próśb skierowanych do anioła.", "en": "The first of four coordinated imperatives addressed to the angel." } },
-        { "id": "w013", "form": "custódi", "post": ",", "lemma": "custodio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 }, "gloss": { "pl": "strzeż", "en": "guard" } }
+        { "id": "w012", "form": "illúmina", "post": ",", "lemma": "illumino", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w013", "form": "custódi", "post": ",", "lemma": "custodio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 4 } }
       ]
     },
     {
       "id": "s06",
       "type": "verse",
-      "translation": {
-        "pl": "rządź i prowadź. Amen.",
-        "en": "rule and guide. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katolik w modlitwie (1902)",
-            "locator": "printed p. 22",
-            "url": "https://obc.opole.pl/dlibra/publication/13965/edition/12961/katolik-w-modlitwie-czyli-ksiazka-do-nabozenstwa-oraz-spiewnik-koscielny"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Raccolta (1910)",
-            "locator": "printed p. 267",
-            "url": "https://archive.org/details/theraccoltaorcol00unknuoft"
-          }
-        ]
-      },
       "words": [
-        { "id": "w014", "form": "rege", "lemma": "rego", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "rządź", "en": "rule" }, "function": { "pl": "Trzecia prośba dotyczy kierowania życiem mówiącego pod prawowitą opieką.", "en": "The third imperative asks for the speaker's life to be ruled under rightful guardianship." } },
-        { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w016", "form": "gubérna", "post": ".", "lemma": "guberno", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "prowadź", "en": "guide" }, "function": { "pl": "Ostatnia forma czasownika dopełnia sekwencję próśb o stałe prowadzenie.", "en": "The final imperative completes the sequence with a request for continuing guidance." } },
-        { "id": "w017", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w014", "form": "rege", "lemma": "rego", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w016", "form": "gubérna", "post": ".", "lemma": "guberno", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w017", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -214,5 +74,53 @@
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Compendium of the Catechism of the Catholic Church",
+        "locator": "appendix, Angele Dei, p. 195",
+        "url": "https://www.vatican.va/archive/compendium_ccc/documents/compendium_catech_lit.pdf"
+      }
+    ],
+    "functions": {
+      "w001": {
+
+      },
+      "w002": {
+
+      },
+      "w003": {
+
+      },
+      "w004": {
+
+      },
+      "w006": {
+
+      },
+      "w007": {
+
+      },
+      "w009": {
+
+      },
+      "w010": {
+
+      },
+      "w011": {
+
+      },
+      "w012": {
+
+      },
+      "w014": {
+
+      },
+      "w016": {
+
+      }
+    }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.adiutorium",
   "title": "Adiutórium nostrum",
   "category": "ordinarium",
@@ -9,72 +9,23 @@
   "ids": {
     "next": 11
   },
-  "about": {
-    "pl": "Werset i odpowiedź tworzą ostatni werset Psalmu 123 według numeracji Wulgaty (Ps 124, 8 w numeracji hebrajskiej). Pierwsza część ma domyślny łącznik, a druga własne orzeczenie: fecit.",
-    "en": "The versicle and response form the final verse of Psalm 123 in the Vulgate numbering (Psalm 124:8 in Hebrew). The first part has an understood copula, while the second has its own verb, fecit."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Nova Vulgata, Liber Psalmorum",
-        "locator": "Psalmus 124 (Vg 123), 8",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
-      }
-    ],
-    "en": [
-      {
-        "title": "Nova Vulgata, Liber Psalmorum",
-        "locator": "Psalmus 124 (Vg 123), 8",
-        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Signat se, dicens:",
-      "narrative": {
-        "pl": "Kapłan czyni znak krzyża.",
-        "en": "The priest makes the sign of the cross."
-      }
+      "text": "Signat se, dicens:"
     },
     {
       "id": "s02",
       "type": "verse",
       "voice": "clara",
       "speaker": "sacerdos",
-      "translation": {
-        "pl": "Wspomożenie nasze w imieniu Pana.",
-        "en": "Our help is in the name of the Lord."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Psalm 123:8 (Vulgate numbering), printed p. 589",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Douay-Rheims Bible (Challoner)",
-            "locator": "Psalm 123:8 (Vulgate numbering)",
-            "url": "https://www.gutenberg.org/ebooks/1610"
-          },
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 4",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Adiutórium", "lemma": "adiutorium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "wspomożenie", "en": "help" }, "function": { "pl": "Mianownik podmiotu z domyślnym łącznikiem.", "en": "Nominative subject with an understood copula." } },
-        { "id": "w002", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w001", "gloss": { "pl": "nasze", "en": "our" }, "function": { "pl": "Zgadza się z „Adiutórium” (w001).", "en": "Agrees with “Adiutórium” (w001)." } },
-        { "id": "w003", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w004", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w004", "form": "nómine", "lemma": "nomen", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "imieniu", "en": "the name" }, "function": { "pl": "Ablativus zależny od „in” (w003).", "en": "Ablative governed by “in” (w003)." } },
-        { "id": "w005", "form": "Dómini", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pana", "en": "of the Lord" }, "function": { "pl": "Dopełniacz zależny od „nómine” (w004).", "en": "Genitive dependent on “nómine” (w004)." } }
+        { "id": "w001", "form": "Adiutórium", "lemma": "adiutorium", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w002", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w001" },
+        { "id": "w003", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w004" },
+        { "id": "w004", "form": "nómine", "lemma": "nomen", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w005", "form": "Dómini", "post": ".", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     },
     {
@@ -88,37 +39,12 @@
           "source": "DMS 31 b"
         }
       },
-      "translation": {
-        "pl": "Który stworzył niebo i ziemię.",
-        "en": "Who made heaven and earth."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Psalm 123:8 (Vulgate numbering), printed p. 589",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "Douay-Rheims Bible (Challoner)",
-            "locator": "Psalm 123:8 (Vulgate numbering)",
-            "url": "https://www.gutenberg.org/ebooks/1610"
-          },
-          {
-            "title": "The Missal for the Use of the Laity (1853)",
-            "locator": "printed p. 4",
-            "url": "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-          }
-        ]
-      },
       "words": [
-        { "id": "w006", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" }, "function": { "pl": "Zaimek względny. Jego poprzednikiem jest „Dómini” (w005), a mianownik wynika z funkcji podmiotu przy „fecit” (w007).", "en": "Relative pronoun. Its antecedent is “Dómini” (w005), while the nominative marks its role as the subject of “fecit” (w007)." } },
-        { "id": "w007", "form": "fecit", "lemma": "facio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "uczynił", "en": "made" }, "function": { "pl": "Perfectum indicativi. Podmiotem jest „Qui” (w006).", "en": "Perfect indicative, with “Qui” (w006) as its subject." } },
-        { "id": "w008", "form": "cælum", "lemma": "caelum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "niebo", "en": "heaven" } },
-        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w010", "form": "terram", "post": ".", "lemma": "terra", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ziemię", "en": "earth" } }
+        { "id": "w006", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w007", "form": "fecit", "lemma": "facio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w008", "form": "cælum", "lemma": "caelum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "terram", "post": ".", "lemma": "terra", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } }
       ]
     }
   ],
@@ -134,6 +60,36 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "segments": {
       "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Nova Vulgata, Liber Psalmorum",
+        "locator": "Psalmus 124 (Vg 123), 8",
+        "url": "https://www.vatican.va/archive/bible/nova_vulgata/documents/nova-vulgata_vt_psalmorum_lt.html"
+      }
+    ],
+    "functions": {
+      "w001": {
+
+      },
+      "w002": {
+
+      },
+      "w004": {
+
+      },
+      "w005": {
+
+      },
+      "w006": {
+
+      },
+      "w007": {
+
+      }
     }
   }
 }

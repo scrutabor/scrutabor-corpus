@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "proprium.dominica-ii-adventus-introitus",
   "title": "Pópulus Sion, ecce Dóminus véniet",
   "category": "proprium",
@@ -8,10 +8,6 @@
   "sung": true,
   "ids": {
     "next": 68
-  },
-  "about": {
-    "pl": "Introit II Niedzieli Adwentu, z Izajasza, z wersetem Psalmu 79. Antyfona zwraca się do ludu Syjonu i mówi, po co Pan przychodzi — zbawić narody, i dać usłyszeć swój głos.",
-    "en": "The introit of the Second Sunday of Advent, from Isaias, with a verse of Psalm 79. The antiphon addresses the people of Sion and says what the Lord comes for — to save the nations, and to let His voice be heard."
   },
   "segments": [
     {
@@ -31,46 +27,26 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Ludu Syjonu, oto Pan przyjdzie, aby zbawić narody; Pan pozwoli wam usłyszeć chwałę swojego głosu ku radości waszych serc.",
-        "en": "O people of Sion, behold, the Lord will come to save the nations; the Lord will make the glory of His voice heard for the joy of your hearts."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Isaiah 30:19,30 and Psalm 79:2",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Pópulus", "lemma": "populus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "lud", "en": "people" } },
-        { "id": "w002", "form": "Sion", "post": ",", "lemma": "Sion", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f" }, "gloss": { "pl": "Syjonu", "en": "of Sion" } },
-        { "id": "w003", "form": "ecce", "lemma": "ecce", "morph": { "pos": "intj" }, "gloss": { "pl": "oto", "en": "behold" } },
-        { "id": "w004", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "the Lord" } },
-        { "id": "w005", "form": "véniet", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 4 }, "gloss": { "pl": "przyjdzie", "en": "shall come" } },
-        { "id": "w006", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w008", "gloss": { "pl": "aby", "en": "to" } },
-        { "id": "w007", "form": "salvándas", "lemma": "salvo", "morph": { "pos": "verb", "case": "acc", "number": "pl", "gender": "f", "tense": "fut", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w008", "gloss": { "pl": "zbawić", "en": "save" } },
-        { "id": "w008", "form": "gentes", "post": ":", "lemma": "gens", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "narody", "en": "the nations" } },
-        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w010", "form": "audítam", "lemma": "audio", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "f", "tense": "perf", "mood": "part", "voice": "pass", "conj": 4 }, "head": "w013", "gloss": { "pl": "usłyszaną", "en": "heard" } },
-        { "id": "w011", "form": "fáciet", "lemma": "facio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "uczyni", "en": "shall make" } },
-        { "id": "w012", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "the Lord" } },
-        { "id": "w013", "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwałę", "en": "the glory" } },
-        { "id": "w014", "form": "vocis", "lemma": "vox", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "głosu", "en": "of voice" } },
-        { "id": "w015", "form": "suæ", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w014", "gloss": { "pl": "swego", "en": "His" } },
-        { "id": "w016", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w017", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w017", "form": "lætítia", "lemma": "laetitia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "radości", "en": "the gladness" } },
-        { "id": "w018", "form": "cordis", "lemma": "cor", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "serca", "en": "of heart" } },
-        { "id": "w019", "form": "vestri", "post": ".", "lemma": "vester", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w018", "gloss": { "pl": "waszego", "en": "your" } }
+        { "id": "w001", "form": "Pópulus", "lemma": "populus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w002", "form": "Sion", "post": ",", "lemma": "Sion", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w003", "form": "ecce", "lemma": "ecce", "morph": { "pos": "intj" } },
+        { "id": "w004", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "véniet", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 4 } },
+        { "id": "w006", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w008" },
+        { "id": "w007", "form": "salvándas", "lemma": "salvo", "morph": { "pos": "verb", "case": "acc", "number": "pl", "gender": "f", "tense": "fut", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w008" },
+        { "id": "w008", "form": "gentes", "post": ":", "lemma": "gens", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "audítam", "lemma": "audio", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "f", "tense": "perf", "mood": "part", "voice": "pass", "conj": 4 }, "head": "w013" },
+        { "id": "w011", "form": "fáciet", "lemma": "facio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w012", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w013", "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w014", "form": "vocis", "lemma": "vox", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w015", "form": "suæ", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w014" },
+        { "id": "w016", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w017" },
+        { "id": "w017", "form": "lætítia", "lemma": "laetitia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w018", "form": "cordis", "lemma": "cor", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w019", "form": "vestri", "post": ".", "lemma": "vester", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w018" }
       ],
       "delivery": {
         "cantu": {
@@ -96,36 +72,16 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Ty, który pasiesz Izraela, usłysz; Ty, który prowadzisz Józefa jak owcę.",
-        "en": "You who shepherd Israel, give ear; You who lead Joseph like a sheep."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Isaiah 30:19,30 and Psalm 79:2",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w020", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
-        { "id": "w021", "form": "regis", "lemma": "rego", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "rządzisz", "en": "rulest" } },
-        { "id": "w022", "form": "Israël", "post": ",", "lemma": "Israel", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Izraelem", "en": "Israel" } },
-        { "id": "w023", "form": "inténde", "post": ":", "lemma": "intendo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "gloss": { "pl": "nakłoń ucha", "en": "give ear" } },
-        { "id": "w024", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" } },
-        { "id": "w025", "form": "dedúcis", "post": ",", "lemma": "deduco", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "prowadzisz", "en": "leadest" } },
-        { "id": "w026", "form": "velut", "lemma": "velut", "morph": { "pos": "adv" }, "gloss": { "pl": "jak", "en": "like" } },
-        { "id": "w027", "form": "ovem", "post": ",", "lemma": "ovis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "owcę", "en": "a sheep" } },
-        { "id": "w028", "form": "Ioseph", "post": ".", "lemma": "Ioseph", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" }, "gloss": { "pl": "Józefa", "en": "Joseph" } }
+        { "id": "w020", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w021", "form": "regis", "lemma": "rego", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w022", "form": "Israël", "post": ",", "lemma": "Israel", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w023", "form": "inténde", "post": ":", "lemma": "intendo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } },
+        { "id": "w024", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w025", "form": "dedúcis", "post": ",", "lemma": "deduco", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w026", "form": "velut", "lemma": "velut", "morph": { "pos": "adv" } },
+        { "id": "w027", "form": "ovem", "post": ",", "lemma": "ovis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w028", "form": "Ioseph", "post": ".", "lemma": "Ioseph", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m" } }
       ],
       "delivery": {
         "cantu": {
@@ -151,48 +107,28 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Chwała Ojcu i Synowi, i Duchowi Świętemu. Jak była na początku, teraz i zawsze, i na wieki wieków. Amen.",
-        "en": "Glory be to the Father, and to the Son, and to the Holy Spirit. As it was in the beginning, is now, and ever shall be, world without end. Amen."
-      },
       "words": [
-        { "id": "w029", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwała", "en": "glory" }, "function": { "pl": "Doksologia nie ma wyrażonego czasownika. Z użycia liturgicznego trzeba dopowiedzieć życzenie „chwała niech będzie”.", "en": "The doxology has no expressed verb. It supplies the wish “glory be” from liturgical usage." } },
-        { "id": "w030", "form": "Patri", "post": ",", "lemma": "pater", "morph": { "case": "dat", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "gloss": { "pl": "Ojcu", "en": "to the Father" } },
-        { "id": "w031", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w032", "form": "Fílio", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Synowi", "en": "to the Son" } },
-        { "id": "w033", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w034", "form": "Spirítui", "lemma": "spiritus", "morph": { "case": "dat", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" }, "gloss": { "pl": "Duchowi", "en": "to the Spirit" } },
-        { "id": "w035", "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w034", "gloss": { "pl": "Świętemu", "en": "Holy" } },
-        { "id": "w036", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" }, "gloss": { "pl": "jak", "en": "as" } },
-        { "id": "w037", "form": "erat", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" }, "gloss": { "pl": "była", "en": "it was" } },
-        { "id": "w038", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w039", "gloss": { "pl": "na", "en": "in" } },
-        { "id": "w039", "form": "princípio", "post": ",", "lemma": "principium", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "gloss": { "pl": "początku", "en": "the beginning" } },
-        { "id": "w040", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w041", "form": "nunc", "post": ",", "lemma": "nunc", "morph": { "pos": "adv" }, "gloss": { "pl": "teraz", "en": "now" } },
-        { "id": "w042", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w043", "form": "semper", "post": ",", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "always" } },
-        { "id": "w044", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w045", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w046", "gloss": { "pl": "na", "en": "unto" } },
-        { "id": "w046", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "gloss": { "pl": "wieki", "en": "ages" } },
-        { "id": "w047", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "gloss": { "pl": "wieków", "en": "of ages" } },
-        { "id": "w048", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w029", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w030", "form": "Patri", "post": ",", "lemma": "pater", "morph": { "case": "dat", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w031", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w032", "form": "Fílio", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w033", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w034", "form": "Spirítui", "lemma": "spiritus", "morph": { "case": "dat", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w035", "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w034" },
+        { "id": "w036", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
+        { "id": "w037", "form": "erat", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
+        { "id": "w038", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w039" },
+        { "id": "w039", "form": "princípio", "post": ",", "lemma": "principium", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w040", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w041", "form": "nunc", "post": ",", "lemma": "nunc", "morph": { "pos": "adv" } },
+        { "id": "w042", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w043", "form": "semper", "post": ",", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w044", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w045", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w046" },
+        { "id": "w046", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
+        { "id": "w047", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
+        { "id": "w048", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ],
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Isaiah 30:19,30 and Psalm 79:2",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "delivery": {
         "cantu": {
           "speaker": "schola",
@@ -203,11 +139,7 @@
     {
       "id": "s04",
       "type": "rubric",
-      "text": "Quo finito, repetitur Pópulus Sion usque ad psalmum.",
-      "narrative": {
-        "pl": "Po doksologii powtarza się antyfonę na wejście od Pópulus Sion do wersetu psalmu — we Mszy śpiewanej czyni to schola, we Mszy cichej sam kapłan.",
-        "en": "After the doxology the Introit antiphon is repeated from Pópulus Sion to the psalm verse — by the choir at a sung Mass, by the priest himself at a low Mass."
-      }
+      "text": "Quo finito, repetitur Pópulus Sion usque ad psalmum."
     },
     {
       "id": "s05",
@@ -226,46 +158,26 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Ludu Syjonu, oto Pan przyjdzie, aby zbawić narody; Pan pozwoli wam usłyszeć chwałę swojego głosu ku radości waszych serc.",
-        "en": "O people of Sion, behold, the Lord will come to save the nations; the Lord will make the glory of His voice heard for the joy of your hearts."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Isaiah 30:19,30 and Psalm 79:2",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w049", "form": "Pópulus", "lemma": "populus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "lud", "en": "people" } },
-        { "id": "w050", "form": "Sion", "post": ",", "lemma": "Sion", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f" }, "gloss": { "pl": "Syjonu", "en": "of Sion" } },
-        { "id": "w051", "form": "ecce", "lemma": "ecce", "morph": { "pos": "intj" }, "gloss": { "pl": "oto", "en": "behold" } },
-        { "id": "w052", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "the Lord" } },
-        { "id": "w053", "form": "véniet", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 4 }, "gloss": { "pl": "przyjdzie", "en": "shall come" } },
-        { "id": "w054", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w056", "gloss": { "pl": "aby", "en": "to" } },
-        { "id": "w055", "form": "salvándas", "lemma": "salvo", "morph": { "pos": "verb", "case": "acc", "number": "pl", "gender": "f", "tense": "fut", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w056", "gloss": { "pl": "zbawić", "en": "save" } },
-        { "id": "w056", "form": "gentes", "post": ":", "lemma": "gens", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "narody", "en": "the nations" } },
-        { "id": "w057", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w058", "form": "audítam", "lemma": "audio", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "f", "tense": "perf", "mood": "part", "voice": "pass", "conj": 4 }, "head": "w061", "gloss": { "pl": "usłyszaną", "en": "heard" } },
-        { "id": "w059", "form": "fáciet", "lemma": "facio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "uczyni", "en": "shall make" } },
-        { "id": "w060", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "the Lord" } },
-        { "id": "w061", "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwałę", "en": "the glory" } },
-        { "id": "w062", "form": "vocis", "lemma": "vox", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 }, "gloss": { "pl": "głosu", "en": "of voice" } },
-        { "id": "w063", "form": "suæ", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w062", "gloss": { "pl": "swego", "en": "His" } },
-        { "id": "w064", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w065", "gloss": { "pl": "w", "en": "in" } },
-        { "id": "w065", "form": "lætítia", "lemma": "laetitia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "radości", "en": "the gladness" } },
-        { "id": "w066", "form": "cordis", "lemma": "cor", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 }, "gloss": { "pl": "serca", "en": "of heart" } },
-        { "id": "w067", "form": "vestri", "post": ".", "lemma": "vester", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w066", "gloss": { "pl": "waszego", "en": "your" } }
+        { "id": "w049", "form": "Pópulus", "lemma": "populus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w050", "form": "Sion", "post": ",", "lemma": "Sion", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f" } },
+        { "id": "w051", "form": "ecce", "lemma": "ecce", "morph": { "pos": "intj" } },
+        { "id": "w052", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w053", "form": "véniet", "lemma": "venio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 4 } },
+        { "id": "w054", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w056" },
+        { "id": "w055", "form": "salvándas", "lemma": "salvo", "morph": { "pos": "verb", "case": "acc", "number": "pl", "gender": "f", "tense": "fut", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w056" },
+        { "id": "w056", "form": "gentes", "post": ":", "lemma": "gens", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w057", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w058", "form": "audítam", "lemma": "audio", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "f", "tense": "perf", "mood": "part", "voice": "pass", "conj": 4 }, "head": "w061" },
+        { "id": "w059", "form": "fáciet", "lemma": "facio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w060", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w061", "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w062", "form": "vocis", "lemma": "vox", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w063", "form": "suæ", "lemma": "suus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w062" },
+        { "id": "w064", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w065" },
+        { "id": "w065", "form": "lætítia", "lemma": "laetitia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w066", "form": "cordis", "lemma": "cor", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w067", "form": "vestri", "post": ".", "lemma": "vester", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w066" }
       ],
       "delivery": {
         "cantu": {
@@ -290,6 +202,14 @@
       "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w050": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w029": {
+
+      }
     }
   }
 }

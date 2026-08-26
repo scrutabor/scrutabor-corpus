@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "orationes.agimus-tibi-gratias",
   "title": "Ágimus tibi grátias",
   "category": "orationes",
@@ -9,120 +9,40 @@
   "ids": {
     "next": 18
   },
-  "about": {
-    "pl": "Agimus tibi gratias jest krótką modlitwą dziękczynną tradycyjnie odmawianą po posiłku. Zgromadzeni dziękują wszechmogącemu Bogu za wszystkie Jego dobrodziejstwa i wyznają, że żyje i króluje na wieki.",
-    "en": "The Agimus tibi gratias is a short thanksgiving traditionally said after a meal. Those gathered thank almighty God for all his benefits and confess that he lives and reigns for ever."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Enchiridion Indulgentiarum, fourth edition",
-        "locator": "concession 26 §2, Agimus tibi gratias",
-        "url": "https://www.vatican.va/roman_curia/tribunals/apost_penit/documents/rc_trib_appen_doc_20020826_enchiridion-indulgentiarum_lt.html"
-      }
-    ],
-    "en": [
-      {
-        "title": "Enchiridion Indulgentiarum, fourth edition",
-        "locator": "concession 26 §2, Agimus tibi gratias",
-        "url": "https://www.vatican.va/roman_curia/tribunals/apost_penit/documents/rc_trib_appen_doc_20020826_enchiridion-indulgentiarum_lt.html"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
-      "translation": {
-        "pl": "Dziękujemy Ci, wszechmogący Boże,",
-        "en": "We give you thanks, almighty God,"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 153",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 440",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Ágimus", "lemma": "ago", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "składamy", "en": "we give" }, "function": { "pl": "Z „grátias” tworzy stały zwrot „grátias ágere” — składać dzięki. Końcówka wyraża pierwszą osobę liczby mnogiej.", "en": "With “grátias”, it forms the fixed expression “grátias ágere” — to give thanks. Its ending expresses the first-person plural." } },
-        { "id": "w002", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "gloss": { "pl": "Tobie", "en": "to you" }, "function": { "pl": "Celownik wskazuje Boga jako osobowego odbiorcę dziękczynienia.", "en": "The dative identifies God as the personal recipient of thanksgiving." } },
-        { "id": "w003", "form": "grátias", "post": ",", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "dzięki", "en": "thanks" }, "function": { "pl": "Biernik liczby mnogiej jest dopełnieniem „Ágimus” w idiomie oznaczającym składanie dzięki.", "en": "The accusative plural is the object of “Ágimus” in the idiom meaning to give thanks." } },
-        { "id": "w004", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w005", "gloss": { "pl": "wszechmogący", "en": "almighty" }, "function": { "pl": "Wołacz przymiotnika zgadza się z „Deus” i nazywa wszechmoc adresata.", "en": "The vocative adjective agrees with “Deus” and names the addressee's almighty power." } },
-        { "id": "w005", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boże", "en": "God" }, "function": { "pl": "Forma „Deus” jest tu wołaczem: dopowiada, kim jest adresat wskazany przez „tibi”.", "en": "Here “Deus” is vocative: it identifies the addressee already indicated by “tibi”." } }
+        { "id": "w001", "form": "Ágimus", "lemma": "ago", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w002", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w003", "form": "grátias", "post": ",", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w004", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w005" },
+        { "id": "w005", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } }
       ]
     },
     {
       "id": "s02",
       "type": "verse",
-      "translation": {
-        "pl": "za wszystkie Twoje dobrodziejstwa:",
-        "en": "for all your benefits:"
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 153",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 440",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w006", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008", "gloss": { "pl": "za", "en": "for" }, "function": { "pl": "Przyimek z ablatywem wprowadza dobrodziejstwa, za które składane są dzięki.", "en": "The preposition with the ablative introduces the benefits for which thanks are given." } },
-        { "id": "w007", "form": "univérsis", "lemma": "universus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w008", "gloss": { "pl": "wszystkie", "en": "all" }, "function": { "pl": "Przymiotnik obejmuje pełny zakres dobrodziejstw, nie tylko dar posiłku.", "en": "The adjective includes the complete range of benefits, not only the gift of the meal." } },
-        { "id": "w008", "form": "benefíciis", "lemma": "beneficium", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "dobrodziejstwa", "en": "benefits" }, "function": { "pl": "Ablativus zależny od „pro” nazywa Boże dobrodziejstwa jako powód dziękczynienia.", "en": "The ablative governed by “pro” names God's benefits as the reason for thanksgiving." } },
-        { "id": "w009", "form": "tuis", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w008", "gloss": { "pl": "Twoje", "en": "your" }, "function": { "pl": "Przymiotnik dzierżawczy wiąże dobrodziejstwa z Bogiem, do którego mówią wierni.", "en": "The possessive relates the benefits to the God whom the faithful address." } }
+        { "id": "w006", "form": "pro", "lemma": "pro", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008" },
+        { "id": "w007", "form": "univérsis", "lemma": "universus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w008" },
+        { "id": "w008", "form": "benefíciis", "lemma": "beneficium", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w009", "form": "tuis", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w008" }
       ]
     },
     {
       "id": "s03",
       "type": "verse",
-      "translation": {
-        "pl": "który żyjesz i królujesz na wieki wieków. Amen.",
-        "en": "who live and reign for ever and ever. Amen."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Katechizm religji rzymsko-katolickiej (1925)",
-            "locator": "printed p. 153",
-            "url": "https://sbc.org.pl/dlibra/publication/339133/edition/320337/katechizm-religji-rzymsko-katolickiej-dla-uzytku-szkol-polskich-w-republice-czechoslowackiej"
-          }
-        ],
-        "en": [
-          {
-            "title": "Francis X. Lasance, The Catholic Girl's Guide (1906)",
-            "locator": "printed p. 440",
-            "url": "https://archive.org/details/catholicgirlsgui00lasa"
-          }
-        ]
-      },
       "words": [
-        { "id": "w010", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "gloss": { "pl": "który", "en": "who" }, "function": { "pl": "Zaimek względny jest podmiotem w mianowniku i wraca do Boga nazwanego przez „Deus”. Czasowniki drugiej osoby podtrzymują bezpośredni zwrot do Boga.", "en": "The relative is a nominative subject and resumes the God named by “Deus”. Its second-person verbs continue the direct address to God." } },
-        { "id": "w011", "form": "vivis", "lemma": "vivo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 }, "gloss": { "pl": "żyjesz", "en": "live" }, "function": { "pl": "Czas teraźniejszy drugiej osoby orzeka o żyjącym Bogu nadal bezpośrednio adresowanym.", "en": "The present second person predicates life of the God who remains directly addressed." } },
-        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" }, "function": { "pl": "Spójnik łączy dwa równorzędne orzeczenia o tym samym adresacie.", "en": "The conjunction coordinates two predicates of the same addressee." } },
-        { "id": "w013", "form": "regnas", "lemma": "regno", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "królujesz", "en": "reign" }, "function": { "pl": "Czas teraźniejszy drugiej osoby wyznaje nieprzerwane królowanie Boga.", "en": "The present second person confesses God's continuing reign." } },
-        { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015", "gloss": { "pl": "na", "en": "unto" }, "function": { "pl": "Przyimek z biernikiem wprowadza utrwaloną formułę nieograniczonego trwania.", "en": "The preposition with the accusative introduces the fixed formula of unbounded duration." } },
-        { "id": "w015", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieki", "en": "ages" }, "function": { "pl": "Biernik liczby mnogiej zależy od „in”.", "en": "The accusative plural is governed by “in”." } },
-        { "id": "w016", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 }, "gloss": { "pl": "wieków", "en": "of ages" }, "function": { "pl": "Dopełniacz liczby mnogiej dopełnia idiom „wieki wieków”, wyrażający wieczność.", "en": "The genitive plural completes the idiom “ages of ages”, expressing eternity." } },
-        { "id": "w017", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" }, "function": { "pl": "Końcowe potwierdzenie obejmuje całe dziękczynienie i wyznanie.", "en": "The final assent embraces the whole thanksgiving and confession." } }
+        { "id": "w010", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w011", "form": "vivis", "lemma": "vivo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "regnas", "lemma": "regno", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015" },
+        { "id": "w015", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w016", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w017", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ]
     }
   ],
@@ -136,5 +56,68 @@
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Enchiridion Indulgentiarum, fourth edition",
+        "locator": "concession 26 §2, Agimus tibi gratias",
+        "url": "https://www.vatican.va/roman_curia/tribunals/apost_penit/documents/rc_trib_appen_doc_20020826_enchiridion-indulgentiarum_lt.html"
+      }
+    ],
+    "functions": {
+      "w001": {
+
+      },
+      "w002": {
+
+      },
+      "w003": {
+
+      },
+      "w004": {
+
+      },
+      "w005": {
+
+      },
+      "w006": {
+
+      },
+      "w007": {
+
+      },
+      "w008": {
+
+      },
+      "w009": {
+
+      },
+      "w010": {
+
+      },
+      "w011": {
+
+      },
+      "w012": {
+
+      },
+      "w013": {
+
+      },
+      "w014": {
+
+      },
+      "w015": {
+
+      },
+      "w016": {
+
+      },
+      "w017": {
+
+      }
+    }
   }
 }

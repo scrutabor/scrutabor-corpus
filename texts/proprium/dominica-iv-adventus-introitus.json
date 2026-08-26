@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "proprium.dominica-iv-adventus-introitus",
   "title": "Roráte, cæli, désuper",
   "category": "proprium",
@@ -8,10 +8,6 @@
   "sung": true,
   "ids": {
     "next": 55
-  },
-  "about": {
-    "pl": "Introit IV Niedzieli Adwentu, od którego cały adwentowy zwyczaj Rorat bierze nazwę. Antyfona wraca po psalmie i po Chwała Ojcu, tak jak każe rubryka pod nią.",
-    "en": "The introit of the Fourth Sunday of Advent, the antiphon the Roráte Masses of Advent are named from. It returns after the psalm verse and the Glória Patri, as the rubric under it directs."
   },
   "segments": [
     {
@@ -31,39 +27,19 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Niebiosa, spuśćcie rosę z góry, a obłoki niech ześlą z deszczem Sprawiedliwego; niech otworzy się ziemia i wyda Zbawiciela.",
-        "en": "Drop down dew, O heavens, from above, and let the clouds rain down the Just One; let the earth open and bring forth the Savior."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Isaiah 45:8 and Psalm 18:2",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Roráte", "post": ",", "lemma": "roro", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "spuszczajcie rosę", "en": "drop down dew" } },
-        { "id": "w002", "form": "cæli", "post": ",", "lemma": "caelum", "morph": { "pos": "noun", "case": "voc", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "niebiosa", "en": "ye heavens" }, "function": { "pl": "Wołacz od „cælum”. Ten rzeczownik zmienia rodzaj wewnątrz własnej odmiany, z nijakiego na męski, więc wołacz brzmi cæli, a nie cæla.", "en": "The vocative of cælum. The noun changes gender inside its own paradigm, from neuter to masculine, so the form is cæli and not cæla." } },
-        { "id": "w003", "form": "désuper", "post": ",", "lemma": "desuper", "morph": { "pos": "adv" }, "gloss": { "pl": "z góry", "en": "from above" } },
-        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w005", "form": "nubes", "lemma": "nubes", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "obłoki", "en": "let the clouds" } },
-        { "id": "w006", "form": "pluant", "lemma": "pluo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "niech spuszczą deszczem", "en": "rain down" } },
-        { "id": "w007", "form": "iustum", "post": ":", "lemma": "iustus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "substantive": true, "gloss": { "pl": "Sprawiedliwego", "en": "the Just One" } },
-        { "id": "w008", "form": "aperiátur", "lemma": "aperio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 4 }, "gloss": { "pl": "niech się otworzy", "en": "let be opened" } },
-        { "id": "w009", "form": "terra", "post": ",", "lemma": "terra", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ziemia", "en": "the earth" } },
-        { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w011", "form": "gérminet", "lemma": "germino", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 }, "gloss": { "pl": "niech wyda", "en": "let it bud forth" } },
-        { "id": "w012", "form": "Salvatórem", "post": ".", "lemma": "salvator", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Zbawiciela", "en": "the Savior" } }
+        { "id": "w001", "form": "Roráte", "post": ",", "lemma": "roro", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w002", "form": "cæli", "post": ",", "lemma": "caelum", "morph": { "pos": "noun", "case": "voc", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w003", "form": "désuper", "post": ",", "lemma": "desuper", "morph": { "pos": "adv" } },
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "nubes", "lemma": "nubes", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w006", "form": "pluant", "lemma": "pluo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w007", "form": "iustum", "post": ":", "lemma": "iustus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "substantive": true },
+        { "id": "w008", "form": "aperiátur", "lemma": "aperio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 4 } },
+        { "id": "w009", "form": "terra", "post": ",", "lemma": "terra", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "gérminet", "lemma": "germino", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 } },
+        { "id": "w012", "form": "Salvatórem", "post": ".", "lemma": "salvator", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } }
       ],
       "delivery": {
         "cantu": {
@@ -89,37 +65,17 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Niebiosa opowiadają chwałę Boga, a firmament oznajmia dzieła Jego rąk.",
-        "en": "The heavens declare the glory of God, and the firmament proclaims the works of His hands."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Isaiah 45:8 and Psalm 18:2",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w013", "form": "Cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "niebiosa", "en": "the heavens" } },
-        { "id": "w014", "form": "enárrant", "lemma": "enarro", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "opowiadają", "en": "declare" } },
-        { "id": "w015", "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwałę", "en": "the glory" } },
-        { "id": "w016", "form": "Dei", "post": ":", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Boga", "en": "of God" } },
-        { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w018", "form": "ópera", "lemma": "opus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 }, "gloss": { "pl": "dzieła", "en": "the works" } },
-        { "id": "w019", "form": "mánuum", "lemma": "manus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 4 }, "gloss": { "pl": "rąk", "en": "of hands" } },
-        { "id": "w020", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "gloss": { "pl": "Jego", "en": "His" } },
-        { "id": "w021", "form": "annúntiat", "lemma": "annuntio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "gloss": { "pl": "oznajmia", "en": "proclaims" } },
-        { "id": "w022", "form": "firmaméntum", "post": ".", "lemma": "firmamentum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 }, "gloss": { "pl": "firmament", "en": "the firmament" } }
+        { "id": "w013", "form": "Cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w014", "form": "enárrant", "lemma": "enarro", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w015", "form": "glóriam", "lemma": "gloria", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w016", "form": "Dei", "post": ":", "lemma": "deus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w018", "form": "ópera", "lemma": "opus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 3 } },
+        { "id": "w019", "form": "mánuum", "lemma": "manus", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "f", "decl": 4 } },
+        { "id": "w020", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w021", "form": "annúntiat", "lemma": "annuntio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w022", "form": "firmaméntum", "post": ".", "lemma": "firmamentum", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 2 } }
       ],
       "delivery": {
         "cantu": {
@@ -145,48 +101,28 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Chwała Ojcu i Synowi, i Duchowi Świętemu. Jak była na początku, teraz i zawsze, i na wieki wieków. Amen.",
-        "en": "Glory be to the Father, and to the Son, and to the Holy Spirit. As it was in the beginning, is now, and ever shall be, world without end. Amen."
-      },
       "words": [
-        { "id": "w023", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "chwała", "en": "glory" } },
-        { "id": "w024", "form": "Patri", "post": ",", "lemma": "pater", "morph": { "case": "dat", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "gloss": { "pl": "Ojcu", "en": "to the Father" } },
-        { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w026", "form": "Fílio", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Synowi", "en": "to the Son" } },
-        { "id": "w027", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w028", "form": "Spirítui", "lemma": "spiritus", "morph": { "case": "dat", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" }, "gloss": { "pl": "Duchowi", "en": "to the Spirit" } },
-        { "id": "w029", "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w028", "gloss": { "pl": "Świętemu", "en": "Holy" } },
-        { "id": "w030", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" }, "gloss": { "pl": "jak", "en": "as" } },
-        { "id": "w031", "form": "erat", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" }, "gloss": { "pl": "była", "en": "it was" } },
-        { "id": "w032", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w033", "gloss": { "pl": "na", "en": "in" } },
-        { "id": "w033", "form": "princípio", "post": ",", "lemma": "principium", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "gloss": { "pl": "początku", "en": "the beginning" } },
-        { "id": "w034", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w035", "form": "nunc", "post": ",", "lemma": "nunc", "morph": { "pos": "adv" }, "gloss": { "pl": "teraz", "en": "now" } },
-        { "id": "w036", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w037", "form": "semper", "post": ",", "lemma": "semper", "morph": { "pos": "adv" }, "gloss": { "pl": "zawsze", "en": "always" } },
-        { "id": "w038", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w039", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w040", "gloss": { "pl": "na", "en": "unto" } },
-        { "id": "w040", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "gloss": { "pl": "wieki", "en": "ages" } },
-        { "id": "w041", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "gloss": { "pl": "wieków", "en": "of ages" } },
-        { "id": "w042", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" }, "gloss": { "pl": "amen", "en": "amen" } }
+        { "id": "w023", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w024", "form": "Patri", "post": ",", "lemma": "pater", "morph": { "case": "dat", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w026", "form": "Fílio", "post": ",", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w027", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w028", "form": "Spirítui", "lemma": "spiritus", "morph": { "case": "dat", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w029", "form": "Sancto", "post": ".", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w028" },
+        { "id": "w030", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
+        { "id": "w031", "form": "erat", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
+        { "id": "w032", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w033" },
+        { "id": "w033", "form": "princípio", "post": ",", "lemma": "principium", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w034", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w035", "form": "nunc", "post": ",", "lemma": "nunc", "morph": { "pos": "adv" } },
+        { "id": "w036", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w037", "form": "semper", "post": ",", "lemma": "semper", "morph": { "pos": "adv" } },
+        { "id": "w038", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w039", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w040" },
+        { "id": "w040", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
+        { "id": "w041", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
+        { "id": "w042", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
       ],
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Isaiah 45:8 and Psalm 18:2",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "delivery": {
         "cantu": {
           "speaker": "schola",
@@ -197,11 +133,7 @@
     {
       "id": "s04",
       "type": "rubric",
-      "text": "Quo finito, repetitur Roráte usque ad psalmum.",
-      "narrative": {
-        "pl": "Po doksologii powtarza się antyfonę na wejście od Roráte do wersetu psalmu — we Mszy śpiewanej czyni to schola, we Mszy cichej sam kapłan.",
-        "en": "After the doxology the Introit antiphon is repeated from Roráte to the psalm verse — by the choir at a sung Mass, by the priest himself at a low Mass."
-      }
+      "text": "Quo finito, repetitur Roráte usque ad psalmum."
     },
     {
       "id": "s05",
@@ -220,39 +152,19 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Niebiosa, spuśćcie rosę z góry, a obłoki niech ześlą z deszczem Sprawiedliwego; niech otworzy się ziemia i wyda Zbawiciela.",
-        "en": "Drop down dew, O heavens, from above, and let the clouds rain down the Just One; let the earth open and bring forth the Savior."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Isaiah 45:8 and Psalm 18:2",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w043", "form": "Roráte", "post": ",", "lemma": "roro", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "gloss": { "pl": "spuszczajcie rosę", "en": "drop down dew" } },
-        { "id": "w044", "form": "cæli", "post": ",", "lemma": "caelum", "morph": { "pos": "noun", "case": "voc", "number": "pl", "gender": "m", "decl": 2 }, "gloss": { "pl": "niebiosa", "en": "ye heavens" } },
-        { "id": "w045", "form": "désuper", "post": ",", "lemma": "desuper", "morph": { "pos": "adv" }, "gloss": { "pl": "z góry", "en": "from above" } },
-        { "id": "w046", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w047", "form": "nubes", "lemma": "nubes", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "obłoki", "en": "let the clouds" } },
-        { "id": "w048", "form": "pluant", "lemma": "pluo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 }, "gloss": { "pl": "niech spuszczą deszczem", "en": "rain down" } },
-        { "id": "w049", "form": "iustum", "post": ":", "lemma": "iustus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "substantive": true, "gloss": { "pl": "Sprawiedliwego", "en": "the Just One" } },
-        { "id": "w050", "form": "aperiátur", "lemma": "aperio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 4 }, "gloss": { "pl": "niech się otworzy", "en": "let be opened" } },
-        { "id": "w051", "form": "terra", "post": ",", "lemma": "terra", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "ziemia", "en": "the earth" } },
-        { "id": "w052", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w053", "form": "gérminet", "lemma": "germino", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 }, "gloss": { "pl": "niech wyda", "en": "let it bud forth" } },
-        { "id": "w054", "form": "Salvatórem", "post": ".", "lemma": "salvator", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "Zbawiciela", "en": "the Savior" } }
+        { "id": "w043", "form": "Roráte", "post": ",", "lemma": "roro", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w044", "form": "cæli", "post": ",", "lemma": "caelum", "morph": { "pos": "noun", "case": "voc", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w045", "form": "désuper", "post": ",", "lemma": "desuper", "morph": { "pos": "adv" } },
+        { "id": "w046", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w047", "form": "nubes", "lemma": "nubes", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w048", "form": "pluant", "lemma": "pluo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w049", "form": "iustum", "post": ":", "lemma": "iustus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "substantive": true },
+        { "id": "w050", "form": "aperiátur", "lemma": "aperio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "pass", "conj": 4 } },
+        { "id": "w051", "form": "terra", "post": ",", "lemma": "terra", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w052", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w053", "form": "gérminet", "lemma": "germino", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 } },
+        { "id": "w054", "form": "Salvatórem", "post": ".", "lemma": "salvator", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } }
       ],
       "delivery": {
         "cantu": {
@@ -276,6 +188,14 @@
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
       "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
       "w044": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "functions": {
+      "w002": {
+
+      }
     }
   }
 }

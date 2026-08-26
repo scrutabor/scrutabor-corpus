@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "ordinarium.ite-missa-est",
   "title": "Ite, Missa est",
   "category": "ordinarium",
@@ -9,74 +9,20 @@
   "ids": {
     "next": 12
   },
-  "about": {
-    "pl": "Rozesłanie po ostatniej modlitwie pokomunijnej. Kapłan pozdrawia wiernych i mówi „Ite, Missa est”, na co odpowiada się „Deo grátias”. Gdy po Mszy następuje procesja, mówi zamiast tego „Benedicámus Dómino”, a we Mszach za zmarłych „Requiéscant in pace”, na co odpowiada się „Amen”.",
-    "en": "The dismissal after the last prayer following Communion. The priest greets the faithful and says “Ite, Missa est”, answered by “Deo grátias”. When a procession follows the Mass he says “Benedicámus Dómino” instead, and in Masses for the Dead “Requiéscant in pace”, answered by “Amen”."
-  },
-  "about_citations": {
-    "pl": [
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Ritus servandus in celebratione Missae, XI, 1",
-        "url": "https://archive.org/details/missale_romanum-1962/page/n64/mode/1up"
-      },
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Rubricae generales, n. 507",
-        "url": "https://archive.org/details/missale_romanum-1962"
-      }
-    ],
-    "en": [
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Ritus servandus in celebratione Missae, XI, 1",
-        "url": "https://archive.org/details/missale_romanum-1962/page/n64/mode/1up"
-      },
-      {
-        "title": "Missale Romanum (1962)",
-        "locator": "Rubricae generales, n. 507",
-        "url": "https://archive.org/details/missale_romanum-1962"
-      }
-    ]
-  },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Dicto, post ultimam Orationem,",
-      "narrative": {
-        "pl": "Po ostatniej modlitwie pokomunijnej kapłan mówi:",
-        "en": "After the last prayer following Communion the priest says:"
-      }
+      "text": "Dicto, post ultimam Orationem,"
     },
     {
       "id": "s02",
       "type": "verse",
       "voice": "clara",
       "speaker": "sacerdos",
-      "translation": {
-        "pl": "Pan z wami.",
-        "en": "The Lord be with you."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scan 69 / printed p. 66",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "The Lord" } },
-        { "id": "w002", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "gloss": { "pl": "z wami", "en": "with you" }, "function": { "pl": "Przyimek „cum” stoi po zaimku osobowym i łączy się z nim: „vobis” + „cum”.", "en": "The preposition “cum” follows and joins the personal pronoun: “vobis” + “cum”." } }
+        { "id": "w001", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w002", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } }
       ]
     },
     {
@@ -94,71 +40,27 @@
           "source": "DMS 25 a"
         }
       },
-      "translation": {
-        "pl": "I z duchem twoim.",
-        "en": "And with your spirit."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scan 69 / printed p. 66",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w003", "form": "Et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005", "gloss": { "pl": "z", "en": "with" } },
-        { "id": "w005", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "duchem", "en": "spirit" } },
-        { "id": "w006", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w005", "gloss": { "pl": "twoim", "en": "your" } }
+        { "id": "w003", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
+        { "id": "w005", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w006", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w005" }
       ]
     },
     {
       "id": "s04",
       "type": "rubric",
-      "text": "dicit pro Missæ qualitate, vel Ite, Missa est, vel Benedicámus Dómino. Deo grátias.",
-      "narrative": {
-        "pl": "Zwrócony do ludu kapłan mówi „Ite, Missa est”, a usługujący odpowiada „Deo grátias”. Gdy zamiast tego mówi się „Benedicámus Dómino”, kapłan mówi to na środku ołtarza, zwrócony ku niemu.",
-        "en": "Turned toward the people, the priest says “Ite, Missa est”, and the server answers “Deo grátias”. Where “Benedicámus Dómino” is said instead, he says it at the middle of the altar, facing it."
-      }
+      "text": "dicit pro Missæ qualitate, vel Ite, Missa est, vel Benedicámus Dómino. Deo grátias."
     },
     {
       "id": "s05",
       "type": "verse",
       "speaker": "sacerdos",
       "voice": "clara",
-      "translation": {
-        "pl": "Idźcie, ofiara spełniona.",
-        "en": "Go forth, the Mass is ended."
-      },
-      "translation_citations": {
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ],
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scan 69 / printed p. 66",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ]
-      },
       "words": [
-        { "id": "w007", "form": "Ite", "post": ",", "lemma": "eo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act" }, "gloss": { "pl": "idźcie", "en": "go" }, "function": { "pl": "Tryb rozkazujący liczby mnogiej, skierowany do zgromadzenia.", "en": "A plural imperative addressed to the assembly." } },
-        { "id": "w008", "form": "Missa", "lemma": "missa", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "rozesłanie", "en": "the dismissal" }, "function": { "pl": "Rzeczownik w mianowniku, będący podmiotem „est” (w009).", "en": "A nominative noun serving as the subject of “est” (w009)." }, "note": { "pl": "Może to być rzeczownik missa — odesłanie, rozesłanie — albo imiesłów bierny od mitto z domyślnym podmiotem, co jest historycznym źródłem formuły. Ta edycja przyjmuje rzeczownik.", "en": "This can be the noun missa, the dismissal, or a perfect passive participle of mitto with an understood subject, which is the formula's historical origin. This edition takes the noun." } },
-        { "id": "w009", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" }, "gloss": { "pl": "dokonuje się", "en": "is made" } }
+        { "id": "w007", "form": "Ite", "post": ",", "lemma": "eo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act" } },
+        { "id": "w008", "form": "Missa", "lemma": "missa", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w009", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } }
       ]
     },
     {
@@ -176,39 +78,15 @@
           "source": "DMS 25 a"
         }
       },
-      "translation": {
-        "pl": "Bogu niech będą dzięki.",
-        "en": "Thanks be to God."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Pamiątka Missyi dla ludu katolickiego (1903)",
-            "locator": "PDF scan 69 / printed p. 66",
-            "url": "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w010", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Bogu", "en": "to God" }, "function": { "pl": "Celownik: Bogu składane są dzięki.", "en": "Dative: thanks are given to God." } },
-        { "id": "w011", "form": "grátias", "post": ".", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 }, "gloss": { "pl": "dzięki", "en": "thanks" }, "function": { "pl": "Biernik liczby mnogiej. Czasownik oznaczający składanie dzięki pozostaje domyślny.", "en": "Accusative plural. The verb of giving thanks is understood." } }
+        { "id": "w010", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w011", "form": "grátias", "post": ".", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } }
       ]
     },
     {
       "id": "s07",
       "type": "rubric",
-      "text": "In Missis Defunctorum dicit: Requiéscant in pace. Amen.",
-      "narrative": {
-        "pl": "We Mszach za zmarłych kapłan, zwrócony ku ołtarzowi, mówi zamiast tego: Requiéscant in pace — a odpowiedź brzmi Amen.",
-        "en": "In Masses for the Dead the priest says instead, facing the altar: Requiéscant in pace — and the answer is Amen."
-      }
+      "text": "In Missis Defunctorum dicit: Requiéscant in pace. Amen."
     }
   ],
   "editorial": {
@@ -230,5 +108,38 @@
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w008": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } }
     }
+  },
+  "localization": {
+    "about": true,
+    "about_citations": [
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Ritus servandus in celebratione Missae, XI, 1",
+        "url": "https://archive.org/details/missale_romanum-1962/page/n64/mode/1up"
+      },
+      {
+        "title": "Missale Romanum (1962)",
+        "locator": "Rubricae generales, n. 507",
+        "url": "https://archive.org/details/missale_romanum-1962"
+      }
+    ],
+    "functions": {
+      "w002": {
+
+      },
+      "w007": {
+
+      },
+      "w008": {
+
+      },
+      "w010": {
+
+      },
+      "w011": {
+
+      }
+    },
+    "notes": ["w008"]
   }
 }

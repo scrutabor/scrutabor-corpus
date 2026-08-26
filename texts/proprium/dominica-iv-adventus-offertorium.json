@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.15.0",
+  "schema_version": "0.16.0",
   "id": "proprium.dominica-iv-adventus-offertorium",
   "title": "Ave María, grátia plena",
   "category": "proprium",
@@ -8,10 +8,6 @@
   "sung": true,
   "ids": {
     "next": 16
-  },
-  "about": {
-    "pl": "Antyfona na ofiarowanie IV Niedzieli Adwentu. Pozdrowienie anioła, słowo w słowo z Ewangelii Łukasza, i pierwsza połowa Zdrowaś Maryjo.",
-    "en": "The offertory antiphon of the Fourth Sunday of Advent. The angel's greeting word for word from Luke's gospel, and the first half of the Hail Mary."
   },
   "segments": [
     {
@@ -31,42 +27,22 @@
           "conditional": true
         }
       },
-      "translation": {
-        "pl": "Zdrowaś Maryjo, łaski pełna, Pan z Tobą, błogosławionaś Ty między niewiastami i błogosławiony owoc żywota Twojego.",
-        "en": "Hail Mary, full of grace: the Lord is with thee: blessed art thou among women, and blessed is the fruit of thy womb."
-      },
-      "translation_citations": {
-        "pl": [
-          {
-            "title": "Biblia w przekładzie ks. Jakuba Wujka (1923)",
-            "locator": "Luke 1:28,42",
-            "url": "https://commons.wikimedia.org/wiki/File:PL_Wujek-Biblia_to_jest_ksi%C4%99gi_Starego_i_Nowego_Testamentu_1923.djvu"
-          }
-        ],
-        "en": [
-          {
-            "title": "The Missal for the Laity (1846)",
-            "locator": "parallel Ordinary and Advent propers, examined edition",
-            "url": "https://archive.org/details/TheMissalForTheLaity"
-          }
-        ]
-      },
       "words": [
-        { "id": "w001", "form": "Ave", "lemma": "aveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 }, "gloss": { "pl": "zdrowaś", "en": "hail" } },
-        { "id": "w002", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "Maryjo", "en": "Mary" } },
-        { "id": "w003", "form": "grátia", "lemma": "gratia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "gloss": { "pl": "łaski", "en": "of grace" } },
-        { "id": "w004", "form": "plena", "post": ":", "lemma": "plenus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w002", "gloss": { "pl": "pełna", "en": "full" } },
-        { "id": "w005", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 }, "gloss": { "pl": "Pan", "en": "the Lord" } },
-        { "id": "w006", "form": "tecum", "post": ":", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "gloss": { "pl": "z Tobą", "en": "with thee" } },
-        { "id": "w007", "form": "benedícta", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w008", "gloss": { "pl": "błogosławiona", "en": "blessed" } },
-        { "id": "w008", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "gloss": { "pl": "Ty", "en": "thou" } },
-        { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010", "gloss": { "pl": "między", "en": "among" } },
-        { "id": "w010", "form": "muliéribus", "post": ",", "lemma": "mulier", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 }, "gloss": { "pl": "niewiastami", "en": "women" } },
-        { "id": "w011", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "gloss": { "pl": "i", "en": "and" } },
-        { "id": "w012", "form": "benedíctus", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w013", "gloss": { "pl": "błogosławiony", "en": "blessed" } },
-        { "id": "w013", "form": "fructus", "lemma": "fructus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 }, "gloss": { "pl": "owoc", "en": "the fruit" } },
-        { "id": "w014", "form": "ventris", "lemma": "venter", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 }, "gloss": { "pl": "żywota", "en": "of womb" } },
-        { "id": "w015", "form": "tui", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w014", "gloss": { "pl": "Twojego", "en": "thy" } }
+        { "id": "w001", "form": "Ave", "lemma": "aveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w002", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w003", "form": "grátia", "lemma": "gratia", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w004", "form": "plena", "post": ":", "lemma": "plenus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w002" },
+        { "id": "w005", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w006", "form": "tecum", "post": ":", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w007", "form": "benedícta", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w008" },
+        { "id": "w008", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010" },
+        { "id": "w010", "form": "muliéribus", "post": ",", "lemma": "mulier", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w011", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w012", "form": "benedíctus", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w013" },
+        { "id": "w013", "form": "fructus", "lemma": "fructus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w014", "form": "ventris", "lemma": "venter", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w015", "form": "tui", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w014" }
       ],
       "delivery": {
         "cantu": {
@@ -86,5 +62,8 @@
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" }
+  },
+  "localization": {
+    "about": true
   }
 }

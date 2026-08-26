@@ -11,7 +11,7 @@ happening at the altar. The corpus is the data behind the Scrutabor
 reading app ([scrutabor](https://github.com/scrutabor/scrutabor)), live at
 [scrutabor.org](https://scrutabor.org).
 
-**Status: working edition.** 111 texts, fully annotated in both languages:
+**Status: working edition.** 122 texts, fully annotated in both languages:
 the complete Ordinary of the Mass, the prayers after low Mass, the common
 prayers, three litanies, the prayers for the dead, the first psalm stanza,
 and the complete Propers of the four Sundays of Advent — with the 1962
@@ -24,23 +24,28 @@ readings are listed rather than hidden.
 
 ## Design
 
-One document per text, JSON, UTF-8 — the Latin, the parse, both gloss
-layers and both translations together, every editorial claim gathered at
-the foot:
+Neutral cores and independently publishable language packages, JSON, UTF-8:
 
 ```
-texts/<category>/<name>.json  the text: Latin + morphology + both languages
-lexicon/                      one lexicon, three files (heads, Polish, English)
+texts/<category>/<name>.json  Latin, morphology and neutral editorial topology
+languages/<lang>/             manifest, text layers, senses and provenance
+lexicon/lemmata.json          language-neutral dictionary heads
 kalendarium/                  the 1962 temporal cycle, computed and verified
 witnesses/<text-id>/          witness transcriptions + adjudicated apparatus
 build_reader/, build.py       the reader edition the app ships
 checks/, run_checks.py        mechanical validation (see below)
 ```
 
-The reader edition uses descriptive paths (`texts/`, `tables/morphology.json`,
-`tables/analysis.json`, `tables/citations.json`, `lexicon.json`,
-`calendar.json`, and `concordance.json`). Its compact JSON keeps one logical
-record per line. Table and text addresses come from tracked append-only files
+The reader edition uses descriptive base paths (`texts/`, `tables/`,
+`lexicon/heads.json`, `calendar.json`, and `concordance.json`) and mirrors each
+published language under `languages/<lang>/`. Root and language manifests make
+the base and every language independently packageable for mobile downloads or
+offline archives. The shared Latin concordance already names candidate texts
+before they are opened. When localized search is added, its file-candidate
+index can be another manifest-named resource inside the relevant language
+package; no text file or other language package has to move, and no unused
+index is committed in advance. Its compact JSON keeps one logical record per
+line. Table and text addresses come from tracked append-only files
 under `build_reader/registry/`; after adding a genuinely new record, run
 `python -m build_reader.update_registry` and review only the appended lines.
 Ordinary builds refuse to invent or renumber those addresses.
@@ -61,7 +66,7 @@ The guiding rule: no unreviewed single-source claim. Concretely:
   adjudicated in a per-text apparatus with a recorded ruling.
 - **Mechanical linting.** Orthography rules, accent-versus-syllable
   verification, cross-reference and quoted-form checks, terminology bans,
-  and coverage parity between gloss languages run on every push.
+  and completeness against each language manifest run on every push.
 - **Provenance on every claim.** Each analysis names its sources and
   confidence; disagreements are flagged for review rather than resolved
   silently.
@@ -77,8 +82,9 @@ The verdict line names its subject — text, word count, languages,
 witnesses, adjudicated variants — and the gate refuses to pass on zero of
 any of them.
 
-Documents are kept in one layout, so that a diff over a text stays
-readable: one word to a line, with its morphology beside it.
+Documents are kept in one layout, so that a diff over a text stays readable:
+one Latin word to a line in the core and one target-language entry to a line in
+its package. Editing Polish does not touch English or Latin.
 
 ```bash
 python -m checks.layout --check   # is every file in layout?
@@ -124,8 +130,9 @@ the most restrictive recorded status. Removing a citation therefore changes a
 site's classification instead of removing it from the denominator. These are
 provenance states recorded by the repository, not legal conclusions.
 
-[`translation-provenance.json`](translation-provenance.json) is the exhaustive
-site ledger. It binds each public origin and review state to hashes of the exact
+Each [`languages/<lang>/translation-provenance.json`](languages/) is the
+exhaustive ledger for that language's manifest. It binds each public origin and
+review state to hashes of the exact
 Latin source segment and target string, so a changed translation cannot retain
 an old state silently. The schema still admits `working-unsettled` for future
 work: it means that a site's independent-origin or historical-wording review is
