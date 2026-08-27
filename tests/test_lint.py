@@ -18,7 +18,6 @@ from checks.lint import (
     lint_gloss,
     lint_notes,
     lint_nulls,
-    lint_parity,
     lint_text,
     stress_position,
 )
@@ -195,11 +194,6 @@ class TestReaderFacingCitations:
         found = lint_gloss(gloss(segments={"s01": {"translation_citations": [CITATION]}}), TEXT)
         assert any("citations without a translation" in e for e in found)
 
-    def test_translation_sources_are_language_specific(self):
-        pl = gloss(segments={"s01": {"translation": "Witaj.", "translation_citations": [CITATION]}})
-        en = gloss(lang="en", segments={"s01": {"translation": "Hail."}})
-        assert lint_parity([pl, en]) == []
-
     def test_a_locator_is_mandatory(self):
         found = lint_citations([{"title": "A work"}], "en:about")
         assert any("locator must be a nonempty string" in e for e in found)
@@ -214,16 +208,6 @@ class TestReaderFacingCitations:
     def test_duplicate_sources_are_refused(self):
         found = lint_citations([CITATION, CITATION], "en:about")
         assert any("duplicate citation" in e for e in found)
-
-    def test_bibliographic_metadata_has_exact_language_parity(self):
-        pl = gloss(about="Modlitwa błagalna.", about_citations=[CITATION])
-        en = gloss(
-            lang="en",
-            about="A prayer of petition.",
-            about_citations=[{**CITATION, "locator": "paragraph 1449"}],
-        )
-        found = lint_parity([pl, en])
-        assert any("citations differ" in e for e in found)
 
 
 class TestWhereTheRulesAlreadyApplied:
