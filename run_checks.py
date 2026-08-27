@@ -23,6 +23,7 @@ from checks.delivery import check_doc as check_delivery
 from checks.document import check as check_document
 from checks.english import check as check_english
 from checks.english import check_number as check_english_number
+from checks.explanation_floor import check as check_explanation_floor
 from checks.fusion import check as check_fusion
 from checks.identity import check as check_identity
 from checks.identity import check_against_history, resolve_ref
@@ -406,6 +407,10 @@ if __name__ == "__main__":
             f"RIGHTS translation sites total={sum(wording.values())} — "
             + " ".join(f"{k}={v}" for k, v in sorted(wording.items()) if v)
         )
+        floor_errors = check_explanation_floor(CORPUS)
+        for message in floor_errors:
+            print(f"ERROR: {message}")
+        rc |= 1 if floor_errors else 0
         provenance_errors, provenance_tally = check_translation_provenance(CORPUS)
         for message in provenance_errors:
             print(f"ERROR: {message}")
