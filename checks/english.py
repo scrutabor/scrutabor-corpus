@@ -121,6 +121,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
 # Hebraism for one substance, and *in cælis et in terris* is the same idiom.
 ENGLISH_NUMBER_RULINGS: dict[str, str] = {
     "caelum": "the ecclesiastical plural caeli names one heaven",
+    "dies": "the distributive per singulos dies is rendered every day",
     "sanguis": "sanguinibus is a Hebraism for one substance",
     "terra": "in caelis et in terris: English says earth",
 }
