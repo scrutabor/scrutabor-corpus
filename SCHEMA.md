@@ -133,7 +133,10 @@ restate what another layer already carries:
   segment that now carries its content. The reader edition ships the map
   (`rs` on the text artifact), so the app resolves a retired `?s=` address
   to the surviving verse and canonicalizes the link. Retirement records are
-  permanent, and a retired id never returns to life.
+  permanent, and a retired id never returns to life. Identifiers from
+  before this contract (the 2026 `ave1`–`ave3` aliases) appear as
+  retirement keys in their historical shape, so the oldest published
+  addresses still resolve.
 - `checks/identity.py` enforces all of the above, and compares against git —
   the base branch in CI, HEAD locally — because "was this id reassigned" is a
   question about history that no single snapshot can answer. A renumbering
