@@ -209,6 +209,44 @@ def test_search_forms_ignore_case_accents_and_typed_out_ligatures():
     assert normalize_latin("cælos") == "caelos"
 
 
+def test_search_keys_expand_the_accented_ligature():
+    # ǽ (U+01FD) is precomposed: expanding ligatures before decomposition
+    # misses it and a bare æ survives into the key, so the doxology's own
+    # sǽcula and every collect's quǽsumus cannot be found as typed.
+    assert normalize_latin("sǽcula") == "saecula"
+    assert normalize_latin("quǽsumus") == "quaesumus"
+    assert normalize_latin("Galilǽæ") == "galilaeae"
+    assert normalize_latin("Ǽthiops") == "aethiops"
+    assert normalize_latin("fœ́deris") == "foederis"
+    assert tokenize_search("in sǽcula sæculórum") == ["in", "saecula", "saeculorum"]
+
+
+def test_the_emitted_vectors_are_the_normalizers_truth(tmp_path):
+    # The vectors are hand-authored expected outputs, shipped in the edition
+    # so the app can assert its own normalizers against the identical pairs.
+    from build_reader.emit import NORMALIZATION_VECTORS
+
+    for probe, expected in NORMALIZATION_VECTORS["latin"]:
+        assert normalize_latin(probe) == expected, probe
+    for probe, expected in NORMALIZATION_VECTORS["search"]:
+        assert normalize_search(probe) == expected, probe
+    out = build(tmp_path)
+    emitted = json.loads((out / "normalization.json").read_text(encoding="utf-8"))
+    assert emitted == NORMALIZATION_VECTORS
+    manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
+    assert manifest["base"]["normalization"] == "normalization.json"
+
+
+def test_normalization_is_idempotent():
+    # A key fed back through the normalizer must not change again; the ǽ
+    # defect was exactly a non-idempotent pipeline.
+    for probe in ("sǽcula", "Galilǽæ", "cælos", "fœ́deris", "DÓMINUS", "Najświętszą"):
+        latin = normalize_latin(probe)
+        assert normalize_latin(latin) == latin
+        search = normalize_search(probe)
+        assert normalize_search(search) == search
+
+
 def test_target_search_ignores_case_diacritics_and_polish_l_stroke():
     pious = "Duszo Chrystusowa"
     assert normalize_search(pious) == normalize_search(pious.upper())

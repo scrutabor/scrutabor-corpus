@@ -388,26 +388,72 @@ def lexicon_slice(
     return {k: entries[k] for k in keep if k in entries}
 
 
+def _fold(value: str) -> str:
+    """Casefold, decompose, strip combining marks — BEFORE ligature expansion.
+
+    Order is the whole correctness of this function: ǽ (U+01FD) is a
+    precomposed accented ligature, so an æ→ae replacement that runs first
+    never sees it, and after decomposition a bare æ survives into the key.
+    Ligatures themselves have no NFKD decomposition, so expanding them after
+    the mark strip catches the plain and the formerly-accented ones alike.
+    """
+    stripped = "".join(
+        char
+        for char in unicodedata.normalize("NFKD", value.casefold())
+        if not unicodedata.combining(char)
+    )
+    return stripped.replace("æ", "ae").replace("œ", "oe")
+
+
 def normalize_latin(value: str) -> str:
     """A search key: case- and accent-insensitive, with typed-out ligatures."""
-    expanded = value.casefold().replace("æ", "ae").replace("œ", "oe")
-    return "".join(
-        char for char in unicodedata.normalize("NFKD", expanded) if not unicodedata.combining(char)
-    )
+    return _fold(value)
 
 
 def normalize_search(value: str) -> str:
     """A language-neutral, case-insensitive key for reader-entered text."""
-    expanded = value.casefold().replace("æ", "ae").replace("œ", "oe").replace("ł", "l")
-    letters = (
-        char for char in unicodedata.normalize("NFKD", expanded) if not unicodedata.combining(char)
-    )
+    letters = _fold(value).replace("ł", "l")
     return " ".join("".join(char if char.isalnum() else " " for char in letters).split())
 
 
 def tokenize_search(value: str) -> list[str]:
     normalized = normalize_search(value)
     return normalized.split() if normalized else []
+
+
+# Hand-authored truth shared with every consumer of the edition. The pairs
+# are EXPECTED outputs, not echoes of the implementation: this module's own
+# tests assert normalize_latin/normalize_search against them, the emitted
+# normalization.json carries them verbatim, and the app asserts its own
+# normalizers against the vendored copy — so the two runtimes cannot drift
+# apart silently again (the ǽ defect lived exactly in that gap).
+NORMALIZATION_VECTORS: dict[str, list[list[str]]] = {
+    "latin": [
+        ["sǽcula", "saecula"],
+        ["Sǽcula", "saecula"],
+        ["quǽsumus", "quaesumus"],
+        ["Quǽsumus", "quaesumus"],
+        ["Galilǽæ", "galilaeae"],
+        ["Iudǽi", "iudaei"],
+        ["cælos", "caelos"],
+        ["Æthíopum", "aethiopum"],
+        ["fœ́deris", "foederis"],
+        ["cœlum", "coelum"],
+        ["DÓMINUS", "dominus"],
+        ["María", "maria"],
+        ["exsultávit", "exsultavit"],
+        ["Iesu", "iesu"],
+    ],
+    "search": [
+        ["In sǽcula sæculórum. Amen.", "in saecula saeculorum amen"],
+        ["Quǽsumus, Dómine", "quaesumus domine"],
+        ["Najświętsza Panno", "najswietsza panno"],
+        ["ŁASKI pełna", "laski pelna"],
+        ["Zdrowaś, Maryjo!", "zdrowas maryjo"],
+        ["Pod Twoją obronę", "pod twoja obrone"],
+        ["Sǽculo 12", "saeculo 12"],
+    ],
+}
 
 
 def index(corpus_docs: list[tuple[dict, dict]], text_registry: list[str] | None = None) -> dict:
@@ -638,6 +684,10 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
             _entries_json(lexicon_slice(corpus)),
         ),
         ("calendar.json", _calendar_json(kalendarium())),
+        (
+            "normalization.json",
+            json.dumps(NORMALIZATION_VECTORS, ensure_ascii=False, indent=1) + "\n",
+        ),
     )
     for name, body in outputs:
         (out / name).parent.mkdir(parents=True, exist_ok=True)
@@ -717,6 +767,7 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
             "morphology": "tables/morphology.json",
             "analysis": "tables/analysis.json",
             "citations": "tables/citations.json",
+            "normalization": "normalization.json",
         },
         "morphology": len(parses.order),
         "kalendarium": [KALENDARIUM.start, KALENDARIUM.stop - 1],
