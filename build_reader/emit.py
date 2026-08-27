@@ -233,6 +233,11 @@ def core_artifact(
         artifact["adw"] = analyses.intern(doc["analysis_defaults_words"])
     if cited := localization.get("about_citations"):
         artifact["ac"] = citations.intern_all(cited)
+    # Retired segment ids, so a shared `?s=` link outlives a merge or split:
+    # the app resolves a retired id to the surviving segment and canonicalizes
+    # the address. The mint itself stays behind with the rest of `ids`.
+    if retired_segments := ((doc.get("ids") or {}).get("segments") or {}).get("retired"):
+        artifact["rs"] = retired_segments
     artifact["seg"] = segments
     return artifact
 
@@ -306,7 +311,10 @@ def expand(
         "words": {},
     }
     for key, value in artifact.items():
-        if key in ("st", "ad", "adw", "ac", "seg"):
+        # `rs` is not copied back: its source (`ids`) is a declared drop, so
+        # the round-trip cannot see it. `verify` compares it explicitly
+        # against `ids.segments.retired` instead.
+        if key in ("st", "ad", "adw", "ac", "seg", "rs"):
             continue
         doc[key] = value
     doc["status"] = artifact["st"]
@@ -818,6 +826,16 @@ def verify(corpus: Path, out: Path) -> list[str]:
             continue
         artifact = json.loads(path.read_text(encoding="utf-8"))
         want_doc, want_glosses = _strip(doc, glosses)
+        # `ids` is a declared drop, so the whole-document comparison cannot
+        # see the retired-segment map; hold the emitted `rs` against the mint
+        # directly, in both directions.
+        want_retired = ((doc.get("ids") or {}).get("segments") or {}).get("retired") or {}
+        if (artifact.get("rs") or {}) != want_retired:
+            errors.append(
+                f"{doc['id']}: retired segments differ — the corpus retires "
+                f"{sorted(want_retired)} and the edition carries "
+                f"{sorted(artifact.get('rs') or {})}"
+            )
         checked_doc = False
         for lang in sorted(glosses):
             language_path = (

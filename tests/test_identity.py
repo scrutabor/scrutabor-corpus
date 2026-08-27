@@ -10,10 +10,18 @@ from checks.identity import check, check_against_history
 CORPUS = Path(__file__).resolve().parent.parent
 
 
-def doc(words, next_=10, retired=None, segments=("s01",)):
+def doc(words, next_=10, retired=None, segments=("s01",), seg_next=None, seg_retired=None):
+    if seg_next is None:
+        numeric = [int(s[1:]) for s in segments if s[1:].isdigit()]
+        seg_next = (max(numeric) + 1) if numeric else 1
+    segment_mint = {"next": seg_next, **({"retired": seg_retired} if seg_retired else {})}
     return {
         "id": "test.text",
-        "ids": {"next": next_, **({"retired": retired} if retired else {})},
+        "ids": {
+            "next": next_,
+            **({"retired": retired} if retired else {}),
+            "segments": segment_mint,
+        },
         "segments": [
             {"id": segments[0], "type": "verse", "words": [{"id": w, "form": f} for w, f in words]}
         ]
@@ -184,3 +192,114 @@ def test_an_unresolvable_base_fails_rather_than_reading_every_file_as_new(tmp_pa
     _repo(tmp_path, doc([("w001", "a")], next_=10))
     errors = check_against_history(tmp_path, "no-such-ref")
     assert errors and "does not resolve" in errors[0], errors
+
+
+def test_a_missing_segment_mint_fails():
+    d = doc([("w001", "a")])
+    del d["ids"]["segments"]
+    assert any("segment mint must be recorded" in e for e in check(d))
+
+
+def test_a_segment_at_or_past_its_mint_fails():
+    errors = check(doc([("w001", "a")], segments=("s01", "s05"), seg_next=5))
+    assert any("past ids.segments.next" in e for e in errors)
+
+
+def test_a_segment_that_is_both_live_and_retired_fails():
+    errors = check(doc([("w001", "a")], segments=("s01", "s02"), seg_retired={"s02": "s01"}))
+    assert any("both a live segment and a retired one" in e for e in errors)
+
+
+def test_a_retired_segment_resolving_nowhere_fails():
+    errors = check(doc([("w001", "a")], seg_next=9, seg_retired={"s02": "s07"}))
+    assert any("does not have" in e for e in errors)
+
+
+def test_a_retired_segment_resolving_to_a_live_one_passes():
+    assert check(doc([("w001", "a")], seg_next=9, seg_retired={"s02": "s01"})) == []
+
+
+def test_history_catches_a_segment_removed_without_a_record(tmp_path):
+    p = _repo(tmp_path, doc([("w001", "a")], segments=("s01", "s02")))
+    p.write_text(json.dumps(doc([("w001", "a")], segments=("s01",), seg_next=3)))
+    errors = check_against_history(tmp_path)
+    assert any("without a retirement record" in e for e in errors), errors
+    p.write_text(
+        json.dumps(doc([("w001", "a")], segments=("s01",), seg_next=3, seg_retired={"s02": "s01"}))
+    )
+    assert check_against_history(tmp_path) == []
+
+
+def test_history_catches_a_dropped_retirement_record(tmp_path):
+    p = _repo(tmp_path, doc([("w001", "a")], seg_next=3, seg_retired={"s02": "s01"}))
+    p.write_text(json.dumps(doc([("w001", "a")], seg_next=3)))
+    errors = check_against_history(tmp_path)
+    assert any("retirement record has been dropped" in e for e in errors), errors
+
+
+def test_history_catches_a_retired_segment_id_reused(tmp_path):
+    p = _repo(tmp_path, doc([("w001", "a")], seg_next=3, seg_retired={"s02": "s01"}))
+    p.write_text(
+        json.dumps(
+            doc([("w001", "a")], segments=("s01", "s02"), seg_next=3, seg_retired={"s02": "s01"})
+        )
+    )
+    errors = check_against_history(tmp_path)
+    assert any("come back to life" in e for e in errors), errors
+
+
+def test_history_catches_a_segment_readdressing(tmp_path):
+    # Two segments swap their ids; every word survives, so nothing is
+    # missing, yet every link to either segment now shows the other's verse.
+    def swapped(first, second):
+        return {
+            "id": "test.text",
+            "ids": {"next": 10, "segments": {"next": 3}},
+            "segments": [
+                {"id": "s01", "type": "verse", "words": [{"id": w, "form": w} for w in first]},
+                {"id": "s02", "type": "verse", "words": [{"id": w, "form": w} for w in second]},
+            ],
+        }
+
+    p = _repo(tmp_path, swapped(["w001", "w002"], ["w003", "w004"]))
+    p.write_text(json.dumps(swapped(["w003", "w004"], ["w001", "w002"])))
+    errors = check_against_history(tmp_path)
+    assert any("readdressed" in e for e in errors), errors
+
+
+def test_history_allows_a_genuine_split(tmp_path):
+    # s01 keeps its opening words and hands the rest to a freshly minted
+    # segment: members are shared, so this is resegmentation, not a rename.
+    base = {
+        "id": "test.text",
+        "ids": {"next": 10, "segments": {"next": 2}},
+        "segments": [
+            {
+                "id": "s01",
+                "type": "verse",
+                "words": [{"id": w, "form": w} for w in ("w001", "w002", "w003")],
+            }
+        ],
+    }
+    split = {
+        "id": "test.text",
+        "ids": {"next": 10, "segments": {"next": 3}},
+        "segments": [
+            {"id": "s01", "type": "verse", "words": [{"id": w, "form": w} for w in ("w001",)]},
+            {
+                "id": "s02",
+                "type": "verse",
+                "words": [{"id": w, "form": w} for w in ("w002", "w003")],
+            },
+        ],
+    }
+    p = _repo(tmp_path, base)
+    p.write_text(json.dumps(split))
+    assert check_against_history(tmp_path) == []
+
+
+def test_history_catches_a_rewound_segment_mint(tmp_path):
+    p = _repo(tmp_path, doc([("w001", "a")], seg_next=9))
+    p.write_text(json.dumps(doc([("w001", "a")], seg_next=4)))
+    errors = check_against_history(tmp_path)
+    assert any("segments.next went backwards" in e for e in errors), errors

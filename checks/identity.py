@@ -64,6 +64,32 @@ def check(doc: dict) -> list[str]:
             errors.append(f"{tid}:{sid}: segment id used twice")
         seen_segments.add(sid)
 
+    # Segments are addresses too — every shared `?s=` link names one — so
+    # their mint is recorded exactly like the words': nothing minted outside
+    # the counter, an id used once as a live segment or a retirement record,
+    # and a retired id resolving to a segment that still exists.
+    segment_mint = mint.get("segments")
+    if not isinstance(segment_mint, dict) or not isinstance(segment_mint.get("next"), int):
+        errors.append(f"{tid}: ids.segments.next is missing — the segment mint must be recorded")
+        segment_mint = {}
+    retired_segments = segment_mint.get("retired") or {}
+    for sid, anchor in sorted(retired_segments.items()):
+        if sid in seen_segments:
+            errors.append(f"{tid}:{sid}: is both a live segment and a retired one")
+        if anchor not in seen_segments:
+            errors.append(
+                f"{tid}:{sid}: retires to segment {anchor!r}, which this text does "
+                f"not have — a retired segment must resolve to somewhere real"
+            )
+    if isinstance(segment_mint.get("next"), int):
+        for sid in list(seen_segments) + list(retired_segments):
+            found = SEGMENT_ID.match(sid)
+            if found and int(sid[1:]) >= segment_mint["next"]:
+                errors.append(
+                    f"{tid}:{sid}: is at or past ids.segments.next="
+                    f"{segment_mint['next']} — every segment id comes from the mint"
+                )
+
     live = [w["id"] for s in doc.get("segments", []) for w in (s.get("words") or [])]
     seen = set()
     for wid in live:
@@ -194,4 +220,67 @@ def check_against_history(corpus: Path, ref: str = "HEAD") -> list[str]:
                     f"This is a renumbering, and every reference to those ids still "
                     f"resolves, to the wrong word"
                 )
+
+        # Segments hold the same contract: once published, an id is live or
+        # retired, forever. The rules mirror the words' rules above.
+        errors += _segment_history(tid, was, now)
+    return errors
+
+
+def _segment_history(tid: str, was: dict, now: dict) -> list[str]:
+    errors: list[str] = []
+    old_mint = (was.get("ids") or {}).get("segments") or {}
+    new_mint = (now.get("ids") or {}).get("segments") or {}
+    old_next, new_next = old_mint.get("next"), new_mint.get("next")
+    if isinstance(old_next, int) and isinstance(new_next, int) and new_next < old_next:
+        errors.append(
+            f"{tid}: ids.segments.next went backwards, {old_next} to {new_next} — "
+            f"the segment mint only ever rises"
+        )
+
+    def members(doc: dict) -> dict[str, list[str]]:
+        return {
+            s["id"]: [w["id"] for w in (s.get("words") or [])] for s in doc.get("segments", [])
+        }
+
+    before, after = members(was), members(now)
+    old_retired = old_mint.get("retired") or {}
+    new_retired = new_mint.get("retired") or {}
+    for sid in sorted(before):
+        if sid not in after and sid not in new_retired:
+            errors.append(
+                f"{tid}:{sid} has gone without a retirement record — a removed "
+                f"segment is retired to a survivor, so links to it degrade "
+                f"rather than dangle"
+            )
+    for sid in sorted(old_retired):
+        if sid not in new_retired:
+            errors.append(
+                f"{tid}:{sid}: a retirement record has been dropped — retirements "
+                f"are permanent, or the id could be silently reused"
+            )
+        if sid in after:
+            errors.append(
+                f"{tid}:{sid}: a retired segment id has come back to life — an id "
+                f"is never reused, every old link to it would change meaning"
+            )
+
+    # The readdressing shape: the words did not move, yet an id names an
+    # entirely different set of them while its own words live on elsewhere.
+    # Genuine resegmentation shares members between old and new; a swap or a
+    # rename-with-reuse shares none.
+    all_now = {wid for ids in after.values() for wid in ids}
+    for sid in sorted(set(before) & set(after)):
+        old_words, new_words = set(before[sid]), set(after[sid])
+        if (
+            old_words
+            and new_words
+            and not (old_words & new_words)
+            and old_words <= all_now
+        ):
+            errors.append(
+                f"{tid}:{sid}: names an entirely different set of words while its "
+                f"former words live on in this text — a segment was readdressed, "
+                f"and every link to it now shows other content"
+            )
     return errors

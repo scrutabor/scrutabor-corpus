@@ -108,19 +108,32 @@ restate what another layer already carries:
   history, not position. A textual insertion takes the NEXT FREE NUMBER in
   its text, wherever it lands in reading order — the array carries the
   order, the ID carries only identity.
-- Segment IDs (`s01`…) are NOT stable — segmentation may change freely; words
-  are the stable layer. Their two-digit padding is likewise a minimum, not a
-  limit: `s99` is followed by `s100`. Document order always comes from the
-  segment array, never from lexicographic ID sorting.
+- Segment IDs (`s01`…) are stable identities under the same discipline as
+  word IDs: the reader publishes them in shareable verse addresses
+  (`?s=s02-s04`), so once a segment id has existed it is live or retired,
+  forever, and never renamed or reused. Their two-digit padding is a
+  minimum, not a limit: `s99` is followed by `s100`. Document order always
+  comes from the segment array, never from lexicographic ID sorting.
+  Segmentation may still improve — a split keeps the surviving id on the
+  segment that keeps (some of) its words and mints new ids for the rest; a
+  merge or removal retires the vanished id to the surviving segment that
+  now carries its content.
 - **The mint is recorded, not inferred.** Every text carries
   `"ids": {"next": N}`, and a new word takes `next` and moves it on. Inferring
   the next free number as one past the highest works only until a word is
   removed, and a corpus that has never removed one is a corpus whose rule has
-  never been tested.
+  never been tested. Segments carry their own recorded mint the same way:
+  `"ids": {"segments": {"next": M}}`, and a new segment takes `M`.
 - **A removed word leaves a tombstone**: `"ids": {"retired": {"w042": "s03"}}`,
   naming the nearest segment that survives it. A deep link to a retired word
   resolves to that segment rather than dangling. Ids are never reused, so a
   tombstone is permanent.
+- **A removed segment leaves a retirement record**:
+  `"ids": {"segments": {"retired": {"s07": "s05"}}}`, naming the live
+  segment that now carries its content. The reader edition ships the map
+  (`rs` on the text artifact), so the app resolves a retired `?s=` address
+  to the surviving verse and canonicalizes the link. Retirement records are
+  permanent, and a retired id never returns to life.
 - `checks/identity.py` enforces all of the above, and compares against git —
   the base branch in CI, HEAD locally — because "was this id reassigned" is a
   question about history that no single snapshot can answer. A renumbering

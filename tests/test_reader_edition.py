@@ -384,3 +384,31 @@ def test_the_calendar_costs_almost_nothing_to_ship(tmp_path):
     out = build(tmp_path)
     packed = len(gzip.compress((out / "calendar.json").read_bytes(), 9))
     assert packed < 40_000, "seventy-six years of Sundays is not a large object"
+
+
+def test_retired_segments_reach_the_edition_and_verify_guards_them(tmp_path):
+    # A retired segment id must travel with the text, so the app can resolve
+    # an old `?s=` link to the surviving verse — and the round-trip cannot
+    # see it (its source, `ids`, is a declared drop), so `verify` holds the
+    # emitted map against the mint explicitly. Both directions are proved:
+    # the map is emitted, and a divergent map fails the gate.
+    docs = read_corpus(CORPUS)
+    sample = docs[0][0]
+    from build_reader import store
+
+    retired_doc = json.loads(json.dumps(sample))
+    live = retired_doc["segments"][0]["id"]
+    retired_doc["ids"]["segments"]["retired"] = {"s90": live}
+    artifact = core_artifact(retired_doc, store.core(CORPUS, sample["id"]), Table(), Table(), Table())
+    assert artifact["rs"] == {"s90": live}
+    plain = core_artifact(sample, store.core(CORPUS, sample["id"]), Table(), Table(), Table())
+    assert "rs" not in plain
+
+    out = build(tmp_path)
+    assert verify(CORPUS, out) == []
+    victim = out / "texts" / Path(*sample["id"].split(".")).with_suffix(".json")
+    mutated = json.loads(victim.read_text(encoding="utf-8"))
+    mutated["rs"] = {"s90": live}
+    victim.write_text(json.dumps(mutated, ensure_ascii=False), encoding="utf-8")
+    errors = verify(CORPUS, out)
+    assert any("retired segments differ" in e for e in errors), errors
