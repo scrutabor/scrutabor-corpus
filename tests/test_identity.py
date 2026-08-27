@@ -66,6 +66,11 @@ def test_semantic_segment_aliases_are_refused():
     assert any("segment id is s + at least two digits" in error for error in errors)
 
 
+def test_semantic_retired_segment_aliases_are_refused():
+    errors = check(doc([("w001", "a")], seg_retired={"ave1": "s01"}))
+    assert any("retired segment id is s + at least two digits" in error for error in errors)
+
+
 def test_duplicate_segment_ids_are_refused():
     errors = check(doc([("w001", "a")], segments=("s01", "s01")))
     assert any("segment id used twice" in error for error in errors)
@@ -78,11 +83,16 @@ def test_a_word_that_is_also_a_tombstone_fails():
 
 def test_a_tombstone_pointing_nowhere_fails():
     errors = check(doc([("w001", "a")], retired={"w002": "s99"}))
-    assert any("does not have" in e for e in errors)
+    assert any("does not resolve" in e for e in errors)
 
 
 def test_a_tombstone_pointing_at_a_real_segment_passes():
     assert check(doc([("w001", "a")], retired={"w002": "s01"})) == []
+
+
+def test_a_semantic_word_tombstone_is_refused():
+    errors = check(doc([("w001", "a")], retired={"word-two": "s01"}))
+    assert any("retired word id is w + at least three digits" in error for error in errors)
 
 
 def test_history_catches_a_word_removed_without_a_tombstone(tmp_path, monkeypatch):
@@ -139,6 +149,27 @@ def test_history_catches_a_rewound_mint(tmp_path):
     p.write_text(json.dumps(doc([("w001", "a")], next_=20)))
     errors = check_against_history(tmp_path)
     assert len(errors) == 1 and "went backwards" in errors[0]
+
+
+def test_history_catches_a_dropped_word_tombstone(tmp_path):
+    p = _repo(tmp_path, doc([("w001", "a")], retired={"w002": "s01"}))
+    p.write_text(json.dumps(doc([("w001", "a")])))
+    assert any("tombstone has been dropped" in e for e in check_against_history(tmp_path))
+
+
+def test_history_catches_a_retargeted_word_tombstone(tmp_path):
+    p = _repo(
+        tmp_path,
+        doc([("w001", "a")], retired={"w002": "s01"}, segments=("s01", "s02")),
+    )
+    p.write_text(json.dumps(doc([("w001", "a")], retired={"w002": "s02"}, segments=("s01", "s02"))))
+    assert any("tombstone moved" in e for e in check_against_history(tmp_path))
+
+
+def test_history_catches_a_retired_word_id_reused(tmp_path):
+    p = _repo(tmp_path, doc([("w001", "a")], retired={"w002": "s01"}))
+    p.write_text(json.dumps(doc([("w001", "a"), ("w002", "b")], retired={"w002": "s01"})))
+    assert any("come back to life" in e for e in check_against_history(tmp_path))
 
 
 def _repo(tmp_path, doc_obj):
@@ -212,11 +243,31 @@ def test_a_segment_that_is_both_live_and_retired_fails():
 
 def test_a_retired_segment_resolving_nowhere_fails():
     errors = check(doc([("w001", "a")], seg_next=9, seg_retired={"s02": "s07"}))
-    assert any("does not have" in e for e in errors)
+    assert any("does not resolve" in e for e in errors)
 
 
 def test_a_retired_segment_resolving_to_a_live_one_passes():
     assert check(doc([("w001", "a")], seg_next=9, seg_retired={"s02": "s01"})) == []
+
+
+def test_retirement_chains_reach_a_live_segment():
+    retired = {"s03": "s02", "s02": "s01"}
+    assert check(doc([("w001", "a")], seg_next=9, seg_retired=retired)) == []
+    assert check(doc([("w001", "a")], seg_next=9, seg_retired={"s02": "s03", "s03": "s02"}))
+
+
+def test_a_word_tombstone_may_reach_a_live_segment_through_a_chain():
+    assert (
+        check(
+            doc(
+                [("w001", "a")],
+                retired={"w002": "s02"},
+                seg_next=9,
+                seg_retired={"s02": "s01"},
+            )
+        )
+        == []
+    )
 
 
 def test_history_catches_a_segment_removed_without_a_record(tmp_path):
@@ -230,11 +281,40 @@ def test_history_catches_a_segment_removed_without_a_record(tmp_path):
     assert check_against_history(tmp_path) == []
 
 
+def test_history_allows_precontract_semantic_segment_labels_to_disappear(tmp_path):
+    p = _repo(tmp_path, doc([("w001", "a")], segments=("s01", "ave1"), seg_next=2))
+    p.write_text(json.dumps(doc([("w001", "a")], segments=("s01",), seg_next=2)))
+    assert check_against_history(tmp_path) == []
+
+
 def test_history_catches_a_dropped_retirement_record(tmp_path):
     p = _repo(tmp_path, doc([("w001", "a")], seg_next=3, seg_retired={"s02": "s01"}))
     p.write_text(json.dumps(doc([("w001", "a")], seg_next=3)))
     errors = check_against_history(tmp_path)
     assert any("retirement record has been dropped" in e for e in errors), errors
+
+
+def test_history_catches_a_retargeted_segment_retirement(tmp_path):
+    p = _repo(
+        tmp_path,
+        doc(
+            [("w001", "a")],
+            segments=("s01", "s03"),
+            seg_next=4,
+            seg_retired={"s02": "s01"},
+        ),
+    )
+    p.write_text(
+        json.dumps(
+            doc(
+                [("w001", "a")],
+                segments=("s01", "s03"),
+                seg_next=4,
+                seg_retired={"s02": "s03"},
+            )
+        )
+    )
+    assert any("retirement moved" in e for e in check_against_history(tmp_path))
 
 
 def test_history_catches_a_retired_segment_id_reused(tmp_path):
@@ -265,6 +345,22 @@ def test_history_catches_a_segment_readdressing(tmp_path):
     p.write_text(json.dumps(swapped(["w003", "w004"], ["w001", "w002"])))
     errors = check_against_history(tmp_path)
     assert any("readdressed" in e for e in errors), errors
+
+
+def test_history_catches_a_rubric_readdressing(tmp_path):
+    def rubrics(first, second):
+        return {
+            "id": "test.text",
+            "ids": {"next": 1, "segments": {"next": 3}},
+            "segments": [
+                {"id": "s01", "type": "rubric", "text": first},
+                {"id": "s02", "type": "rubric", "text": second},
+            ],
+        }
+
+    p = _repo(tmp_path, rubrics("Primum", "Deinde"))
+    p.write_text(json.dumps(rubrics("Deinde", "Primum")))
+    assert any("readdressed" in e for e in check_against_history(tmp_path))
 
 
 def test_history_allows_a_genuine_split(tmp_path):

@@ -127,16 +127,17 @@ restate what another layer already carries:
 - **A removed word leaves a tombstone**: `"ids": {"retired": {"w042": "s03"}}`,
   naming the nearest segment that survives it. A deep link to a retired word
   resolves to that segment rather than dangling. Ids are never reused, so a
-  tombstone is permanent.
+  tombstone is permanent. The reader edition ships this map as `rw`.
 - **A removed segment leaves a retirement record**:
   `"ids": {"segments": {"retired": {"s07": "s05"}}}`, naming the live
   segment that now carries its content. The reader edition ships the map
   (`rs` on the text artifact), so the app resolves a retired `?s=` address
   to the surviving verse and canonicalizes the link. Retirement records are
-  permanent, and a retired id never returns to life. Identifiers from
-  before this contract (the 2026 `ave1`–`ave3` aliases) appear as
-  retirement keys in their historical shape, so the oldest published
-  addresses still resolve.
+  permanent, and a retired id never returns to life. Both live and retired
+  segment identifiers use the same `s` plus digits syntax; pre-contract
+  semantic labels are not preserved as compatibility aliases. If a survivor
+  is later retired, the older record remains unchanged and points through the
+  newly added record; every acyclic chain must end at a live segment.
 - `checks/identity.py` enforces all of the above, and compares against git —
   the base branch in CI, HEAD locally — because "was this id reassigned" is a
   question about history that no single snapshot can answer. A renumbering

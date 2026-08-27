@@ -13,6 +13,7 @@ from build_reader.emit import (
     index,
     language_artifact,
     language_index,
+    language_lexicon_differences,
     normalize_latin,
     normalize_search,
     read_corpus,
@@ -34,6 +35,35 @@ def test_every_word_gloss_and_translation_round_trips(tmp_path):
     # The gate that makes the compression trustworthy. Without it the edition
     # is a second, quieter version of the same book.
     assert verify(CORPUS, build(tmp_path)) == []
+
+
+def test_a_partial_language_pack_needs_only_its_covered_lemmas():
+    docs = [
+        (
+            {
+                "id": "orationes.alpha",
+                "segments": [{"words": [{"lemma": "pater"}]}],
+            },
+            {},
+        ),
+        (
+            {
+                "id": "orationes.beta",
+                "segments": [{"words": [{"lemma": "mater"}]}],
+            },
+            {},
+        ),
+    ]
+    heads = {"mater": {}, "pater": {}}
+    assert language_lexicon_differences(docs, {"orationes.alpha"}, {"pater": {}}, heads) == (
+        set(),
+        set(),
+    )
+    missing, unknown = language_lexicon_differences(
+        docs, {"orationes.alpha"}, {"mater": {}, "ghost": {}}, heads
+    )
+    assert missing == {"pater"}
+    assert unknown == {"ghost"}
 
 
 def test_the_build_is_deterministic(tmp_path):
@@ -419,6 +449,31 @@ def test_retired_segments_reach_the_edition_and_verify_guards_them(tmp_path):
     assert any("retired segments differ" in e for e in errors), errors
 
 
+def test_retired_words_reach_the_edition_and_verify_guards_them(tmp_path):
+    docs = read_corpus(CORPUS)
+    sample = docs[0][0]
+    from build_reader import store
+
+    retired_doc = json.loads(json.dumps(sample))
+    live = retired_doc["segments"][0]["id"]
+    retired_doc["ids"]["retired"] = {"w900": live}
+    artifact = core_artifact(
+        retired_doc, store.core(CORPUS, sample["id"]), Table(), Table(), Table()
+    )
+    assert artifact["rw"] == {"w900": live}
+    plain = core_artifact(sample, store.core(CORPUS, sample["id"]), Table(), Table(), Table())
+    assert "rw" not in plain
+
+    out = build(tmp_path)
+    assert verify(CORPUS, out) == []
+    victim = out / "texts" / Path(*sample["id"].split(".")).with_suffix(".json")
+    mutated = json.loads(victim.read_text(encoding="utf-8"))
+    mutated["rw"] = {"w900": live}
+    victim.write_text(json.dumps(mutated, ensure_ascii=False), encoding="utf-8")
+    errors = verify(CORPUS, out)
+    assert any("retired words differ" in e for e in errors), errors
+
+
 def test_verify_catches_what_the_round_trip_cannot(tmp_path):
     # Fault injection, one artifact class at a time. Every probe below passed
     # a round-trip-only verify when the review ran them; each must now fail.
@@ -497,3 +552,58 @@ def test_verify_catches_what_the_round_trip_cannot(tmp_path):
         p.write_text(json.dumps(v), encoding="utf-8")
 
     assert any("authored vectors" in e for e in broken(altered_vectors, "b9"))
+
+    def dropped_latin_posting(out):
+        p = out / "concordance.json"
+        c = json.loads(p.read_text(encoding="utf-8"))
+        key = next(key for key, postings in c["latin"]["forms"].items() if len(postings) > 1)
+        c["latin"]["forms"][key].pop()
+        p.write_text(json.dumps(c), encoding="utf-8")
+
+    assert any("emitted index" in e for e in broken(dropped_latin_posting, "b10"))
+
+    def rotated_language_texts(out):
+        p = out / "languages/pl/concordance.json"
+        c = json.loads(p.read_text(encoding="utf-8"))
+        c["texts"] = c["texts"][1:] + c["texts"][:1]
+        p.write_text(json.dumps(c), encoding="utf-8")
+
+    assert any("emitted translation index" in e for e in broken(rotated_language_texts, "b11"))
+
+    def dropped_language_posting(out):
+        p = out / "languages/pl/concordance.json"
+        c = json.loads(p.read_text(encoding="utf-8"))
+        key = next(key for key, postings in c["terms"].items() if len(postings) > 1)
+        c["terms"][key].pop()
+        p.write_text(json.dumps(c), encoding="utf-8")
+
+    assert any("emitted translation index" in e for e in broken(dropped_language_posting, "b12"))
+
+    def altered_head(out):
+        p = out / "lexicon/heads.json"
+        lexicon = json.loads(p.read_text(encoding="utf-8"))
+        key = next(iter(lexicon["entries"]))
+        lexicon["entries"][key]["lemma"] = "corruptum"
+        p.write_text(json.dumps(lexicon), encoding="utf-8")
+
+    assert any("emitted heads" in e for e in broken(altered_head, "b13"))
+
+    def altered_localized_entry(out):
+        p = out / "languages/pl/lexicon.json"
+        lexicon = json.loads(p.read_text(encoding="utf-8"))
+        key = next(iter(lexicon["entries"]))
+        entry = lexicon["entries"][key]
+        field = next(iter(entry))
+        entry[field] = "uszkodzone"
+        p.write_text(json.dumps(lexicon), encoding="utf-8")
+
+    assert any("emitted localized lexicon" in e for e in broken(altered_localized_entry, "b14"))
+
+    def altered_calendar_row(out):
+        p = out / "calendar.json"
+        calendar = json.loads(p.read_text(encoding="utf-8"))
+        year = next(iter(calendar["years"]))
+        calendar["years"][year][0][3] = 99
+        p.write_text(json.dumps(calendar), encoding="utf-8")
+
+    assert any("emitted calendar" in e for e in broken(altered_calendar_row, "b15"))

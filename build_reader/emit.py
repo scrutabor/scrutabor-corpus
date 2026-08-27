@@ -243,6 +243,10 @@ def core_artifact(
     # the address. The mint itself stays behind with the rest of `ids`.
     if retired_segments := ((doc.get("ids") or {}).get("segments") or {}).get("retired"):
         artifact["rs"] = retired_segments
+    # The same promise for a shared `?w=` link: a removed word no longer has
+    # a panel to open, but it still leads to the surviving segment around it.
+    if retired_words := (doc.get("ids") or {}).get("retired"):
+        artifact["rw"] = retired_words
     artifact["seg"] = segments
     return artifact
 
@@ -319,7 +323,7 @@ def expand(
         # `rs` is not copied back: its source (`ids`) is a declared drop, so
         # the round-trip cannot see it. `verify` compares it explicitly
         # against `ids.segments.retired` instead.
-        if key in ("st", "ad", "adw", "ac", "seg", "rs"):
+        if key in ("st", "ad", "adw", "ac", "seg", "rs", "rw"):
             continue
         doc[key] = value
     doc["status"] = artifact["st"]
@@ -399,6 +403,28 @@ def lexicon_slice(
         (corpus / "languages" / language / "lexicon.json").read_text(encoding="utf-8")
     )["entries"]
     return {k: entries[k] for k in keep if k in entries}
+
+
+def language_lexicon_differences(
+    corpus_docs: list[tuple[dict, dict[str, dict]]],
+    covered_texts: set[str],
+    entries: dict,
+    heads: dict,
+) -> tuple[set[str], set[str]]:
+    """Missing required senses and entries that have no neutral head.
+
+    A language pack may cover only part of the corpus and its dictionary may
+    grow ahead of that coverage. It must therefore contain every lemma used by
+    its covered texts, not every lemma used by every language.
+    """
+    required = {
+        word["lemma"]
+        for doc, _ in corpus_docs
+        if doc["id"] in covered_texts
+        for segment in doc["segments"]
+        for word in (segment.get("words") or [])
+    }
+    return required - set(entries), set(entries) - set(heads)
 
 
 def _fold(value: str) -> str:
@@ -832,7 +858,7 @@ def verify(corpus: Path, out: Path) -> list[str]:
         artifact = json.loads(path.read_text(encoding="utf-8"))
         want_doc, want_glosses = _strip(doc, glosses)
         # `ids` is a declared drop, so the whole-document comparison cannot
-        # see the retired-segment map; hold the emitted `rs` against the mint
+        # see the retirement maps; hold emitted `rs` and `rw` against the mint
         # directly, in both directions.
         want_retired = ((doc.get("ids") or {}).get("segments") or {}).get("retired") or {}
         if (artifact.get("rs") or {}) != want_retired:
@@ -840,6 +866,13 @@ def verify(corpus: Path, out: Path) -> list[str]:
                 f"{doc['id']}: retired segments differ — the corpus retires "
                 f"{sorted(want_retired)} and the edition carries "
                 f"{sorted(artifact.get('rs') or {})}"
+            )
+        want_retired_words = (doc.get("ids") or {}).get("retired") or {}
+        if (artifact.get("rw") or {}) != want_retired_words:
+            errors.append(
+                f"{doc['id']}: retired words differ — the corpus retires "
+                f"{sorted(want_retired_words)} and the edition carries "
+                f"{sorted(artifact.get('rw') or {})}"
             )
         checked_doc = False
         for lang in sorted(glosses):
@@ -889,7 +922,8 @@ def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
     every text perfectly. Fault injection showed exactly that, so each
     artifact class is verified here: every posting resolves to the word or
     term it claims, every declared path exists, nothing undeclared ships,
-    the lexicons cover exactly the words' lemmata, and every declared
+    the neutral lexicon exactly covers the Latin words, each localized
+    lexicon covers its package (and may grow ahead), and every declared
     calendar year is present and non-empty.
     """
     errors: list[str] = []
@@ -912,6 +946,7 @@ def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
     if errors:
         return errors  # unresolvable paths would only cascade below
 
+    corpus_docs = read_corpus(corpus)
     texts_by_number: list[dict] = []
     words_by_text: list[dict[str, dict]] = []
     registry = json.loads((REGISTRY / "texts.json").read_text(encoding="utf-8"))
@@ -932,6 +967,11 @@ def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
         )
 
     concordance = json.loads((out / manifest["base"]["concordance"]).read_text(encoding="utf-8"))
+    expected_concordance = index(corpus_docs, registry)
+    if concordance != expected_concordance:
+        errors.append(
+            "concordance: " + _first_difference(expected_concordance, concordance, "emitted index")
+        )
     if concordance["texts"] != registry:
         errors.append("concordance: its text table is not the registry — every posting shifts")
     if not concordance["latin"]["forms"] or not concordance["latin"]["lemmata"]:
@@ -957,6 +997,16 @@ def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
     for language in manifest["languages"]:
         language_manifest = json.loads((out / language["path"]).read_text(encoding="utf-8"))
         localized = json.loads((out / language_manifest["concordance"]).read_text(encoding="utf-8"))
+        expected_localized = language_index(corpus_docs, language["id"], registry)
+        if localized != expected_localized:
+            errors.append(
+                f"{language['id']}: "
+                + _first_difference(
+                    expected_localized,
+                    localized,
+                    "emitted translation index",
+                )
+            )
         if not localized["terms"]:
             errors.append(f"{language['id']}: the translation index is empty")
         segments_by_number: list[dict[str, list[str]]] = []
@@ -985,6 +1035,9 @@ def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
         for cell in (row.get("w") or [])
     }
     heads = json.loads((out / manifest["base"]["lexicon"]).read_text(encoding="utf-8"))["entries"]
+    expected_heads = lexicon_slice(corpus)
+    if heads != expected_heads:
+        errors.append("lexicon: " + _first_difference(expected_heads, heads, "emitted heads"))
     if set(heads) != lemmata_in_use:
         missing = sorted(lemmata_in_use - set(heads))[:3]
         dead = sorted(set(heads) - lemmata_in_use)[:3]
@@ -994,10 +1047,37 @@ def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
         entries = json.loads((out / language_manifest["lexicon"]).read_text(encoding="utf-8"))[
             "entries"
         ]
-        if set(entries) != set(heads):
-            errors.append(f"{language['id']}: the localized lexicon does not cover the heads")
+        expected_entries = lexicon_slice(corpus, language["id"])
+        if entries != expected_entries:
+            errors.append(
+                f"{language['id']}: "
+                + _first_difference(
+                    expected_entries,
+                    entries,
+                    "emitted localized lexicon",
+                )
+            )
+        covered_texts = {entry["id"] for entry in language_manifest["texts"]}
+        missing_lemmas, unknown_lemmas = language_lexicon_differences(
+            corpus_docs, covered_texts, entries, heads
+        )
+        if missing_lemmas:
+            errors.append(
+                f"{language['id']}: localized lexicon misses covered lemmas "
+                f"{sorted(missing_lemmas)[:3]}"
+            )
+        if unknown_lemmas:
+            errors.append(
+                f"{language['id']}: localized lexicon has unknown lemmas "
+                f"{sorted(unknown_lemmas)[:3]}"
+            )
 
     calendar = json.loads((out / manifest["base"]["calendar"]).read_text(encoding="utf-8"))
+    expected_calendar = kalendarium()
+    if calendar != expected_calendar:
+        errors.append(
+            "calendar: " + _first_difference(expected_calendar, calendar, "emitted calendar")
+        )
     first, last = manifest["kalendarium"]
     for year in range(first, last + 1):
         if not calendar.get("years", {}).get(str(year)):

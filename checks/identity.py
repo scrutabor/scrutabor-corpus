@@ -35,6 +35,18 @@ SEGMENT_ID = re.compile(r"^s\d{2,}$")
 WORD_ID = re.compile(r"^w(\d{3,})$")
 
 
+def _segment_survivor(anchor: str, live: set[str], retired: dict[str, str]) -> str | None:
+    """Follow immutable retirement links to the live segment they reach."""
+    seen: set[str] = set()
+    current = anchor
+    while current in retired:
+        if current in seen:
+            return None
+        seen.add(current)
+        current = retired[current]
+    return current if current in live else None
+
+
 def numbers(doc: dict) -> list[int]:
     out = []
     for segment in doc.get("segments", []):
@@ -74,12 +86,14 @@ def check(doc: dict) -> list[str]:
         segment_mint = {}
     retired_segments = segment_mint.get("retired") or {}
     for sid, anchor in sorted(retired_segments.items()):
+        if not SEGMENT_ID.match(sid):
+            errors.append(f"{tid}:{sid}: a retired segment id is s + at least two digits")
         if sid in seen_segments:
             errors.append(f"{tid}:{sid}: is both a live segment and a retired one")
-        if anchor not in seen_segments:
+        if _segment_survivor(anchor, seen_segments, retired_segments) is None:
             errors.append(
-                f"{tid}:{sid}: retires to segment {anchor!r}, which this text does "
-                f"not have — a retired segment must resolve to somewhere real"
+                f"{tid}:{sid}: retires through {anchor!r}, which does not resolve "
+                f"to a live segment — retirement chains must end somewhere real"
             )
     if isinstance(segment_mint.get("next"), int):
         for sid in list(seen_segments) + list(retired_segments):
@@ -102,12 +116,15 @@ def check(doc: dict) -> list[str]:
     retired = mint.get("retired") or {}
     segments = set(segment_ids)
     for wid, anchor in sorted(retired.items()):
+        if not WORD_ID.match(wid):
+            errors.append(f"{tid}:{wid}: a retired word id is w + at least three digits")
         if wid in seen:
             errors.append(f"{tid}:{wid}: is both a live word and a tombstone")
-        if anchor not in segments:
+        if _segment_survivor(anchor, segments, retired_segments) is None:
             errors.append(
-                f"{tid}:{wid}: the tombstone points at segment {anchor!r}, which this "
-                f"text does not have — a retired word must degrade to somewhere real"
+                f"{tid}:{wid}: the tombstone points through segment {anchor!r}, which "
+                f"does not resolve to a live segment — a retired word must degrade "
+                f"to somewhere real"
             )
 
     for wid in list(seen) + list(retired):
@@ -187,12 +204,29 @@ def check_against_history(corpus: Path, ref: str = "HEAD") -> list[str]:
         after = {
             w["id"]: w["form"] for s in now.get("segments", []) for w in (s.get("words") or [])
         }
-        retired = ((now.get("ids") or {}).get("retired") or {}).keys()
+        old_retired = (was.get("ids") or {}).get("retired") or {}
+        new_retired = (now.get("ids") or {}).get("retired") or {}
         for wid in sorted(before):
-            if wid not in after and wid not in retired:
+            if wid not in after and wid not in new_retired:
                 errors.append(
                     f"{tid}:{wid} ({before[wid]!r}) has gone without a tombstone — a "
                     f"removed word is retired, so links to it degrade rather than dangle"
+                )
+        for wid, old_anchor in sorted(old_retired.items()):
+            if wid not in new_retired:
+                errors.append(
+                    f"{tid}:{wid}: a tombstone has been dropped — tombstones are "
+                    f"permanent, or the id could be silently reused"
+                )
+            elif new_retired[wid] != old_anchor:
+                errors.append(
+                    f"{tid}:{wid}: tombstone moved from {old_anchor!r} to "
+                    f"{new_retired[wid]!r} — a retired address is immutable"
+                )
+            if wid in after:
+                errors.append(
+                    f"{tid}:{wid}: a retired word id has come back to life — an id "
+                    f"is never reused, every old link to it would change meaning"
                 )
 
         # A SHIFT is the dangerous shape, and absence alone does not find it.
@@ -239,23 +273,41 @@ def _segment_history(tid: str, was: dict, now: dict) -> list[str]:
         )
 
     def members(doc: dict) -> dict[str, list[str]]:
-        return {s["id"]: [w["id"] for w in (s.get("words") or [])] for s in doc.get("segments", [])}
+        out = {}
+        for segment in doc.get("segments", []):
+            words = segment.get("words") or []
+            out[segment["id"]] = (
+                [word["id"] for word in words]
+                if words
+                else [f"{segment.get('type', '?')}:{segment.get('text', '')}"]
+            )
+        return out
 
     before, after = members(was), members(now)
     old_retired = old_mint.get("retired") or {}
     new_retired = new_mint.get("retired") or {}
     for sid in sorted(before):
+        # Pre-contract semantic labels were never valid stable addresses.
+        # Let their one-time migration disappear instead of turning them into
+        # permanent aliases; every conforming sNN address remains protected.
+        if not SEGMENT_ID.match(sid):
+            continue
         if sid not in after and sid not in new_retired:
             errors.append(
                 f"{tid}:{sid} has gone without a retirement record — a removed "
                 f"segment is retired to a survivor, so links to it degrade "
                 f"rather than dangle"
             )
-    for sid in sorted(old_retired):
+    for sid, old_anchor in sorted(old_retired.items()):
         if sid not in new_retired:
             errors.append(
                 f"{tid}:{sid}: a retirement record has been dropped — retirements "
                 f"are permanent, or the id could be silently reused"
+            )
+        elif new_retired[sid] != old_anchor:
+            errors.append(
+                f"{tid}:{sid}: retirement moved from {old_anchor!r} to "
+                f"{new_retired[sid]!r} — a retired address is immutable"
             )
         if sid in after:
             errors.append(
