@@ -299,7 +299,10 @@ def test_language_indexes_are_small_and_independently_packaged(tmp_path):
         assert manifest["concordance"] == f"languages/{language}/concordance.json"
 
 
-def test_registry_is_append_only_and_current(tmp_path, monkeypatch):
+def test_registry_is_current(tmp_path, monkeypatch):
+    # Currency only: zero pending appends. The append-only property itself is
+    # held by checks.identity.check_registry_history as an exact-prefix
+    # comparison against git, mutation-tested in tests/test_identity.py.
     # Updating a copy may rewrite whitespace, but a current corpus appends no
     # identities and therefore cannot silently renumber a shipped address.
     copied = tmp_path / "registry"
@@ -399,7 +402,9 @@ def test_retired_segments_reach_the_edition_and_verify_guards_them(tmp_path):
     retired_doc = json.loads(json.dumps(sample))
     live = retired_doc["segments"][0]["id"]
     retired_doc["ids"]["segments"]["retired"] = {"s90": live}
-    artifact = core_artifact(retired_doc, store.core(CORPUS, sample["id"]), Table(), Table(), Table())
+    artifact = core_artifact(
+        retired_doc, store.core(CORPUS, sample["id"]), Table(), Table(), Table()
+    )
     assert artifact["rs"] == {"s90": live}
     plain = core_artifact(sample, store.core(CORPUS, sample["id"]), Table(), Table(), Table())
     assert "rs" not in plain
@@ -412,3 +417,83 @@ def test_retired_segments_reach_the_edition_and_verify_guards_them(tmp_path):
     victim.write_text(json.dumps(mutated, ensure_ascii=False), encoding="utf-8")
     errors = verify(CORPUS, out)
     assert any("retired segments differ" in e for e in errors), errors
+
+
+def test_verify_catches_what_the_round_trip_cannot(tmp_path):
+    # Fault injection, one artifact class at a time. Every probe below passed
+    # a round-trip-only verify when the review ran them; each must now fail.
+    import shutil
+
+    clean = build(tmp_path)
+    assert verify(CORPUS, clean) == []
+
+    def broken(mutate, name):
+        out = tmp_path / name
+        shutil.copytree(clean, out)
+        mutate(out)
+        return verify(CORPUS, out)
+
+    def emptied_concordance(out):
+        p = out / "concordance.json"
+        c = json.loads(p.read_text(encoding="utf-8"))
+        c["latin"] = {"lemmata": {}, "forms": {}}
+        p.write_text(json.dumps(c), encoding="utf-8")
+
+    assert any("index is empty" in e for e in broken(emptied_concordance, "b1"))
+
+    def rotated_texts(out):
+        p = out / "concordance.json"
+        c = json.loads(p.read_text(encoding="utf-8"))
+        c["texts"] = c["texts"][1:] + c["texts"][:1]
+        p.write_text(json.dumps(c), encoding="utf-8")
+
+    assert any("not the registry" in e for e in broken(rotated_texts, "b2"))
+
+    def emptied_language_terms(out):
+        p = out / "languages/pl/concordance.json"
+        c = json.loads(p.read_text(encoding="utf-8"))
+        c["terms"] = {}
+        p.write_text(json.dumps(c), encoding="utf-8")
+
+    assert any("translation index is empty" in e for e in broken(emptied_language_terms, "b3"))
+
+    def repointed_posting(out):
+        p = out / "concordance.json"
+        c = json.loads(p.read_text(encoding="utf-8"))
+        key = next(iter(c["latin"]["forms"]))
+        c["latin"]["forms"][key][0][2] = "w999"
+        p.write_text(json.dumps(c), encoding="utf-8")
+
+    assert any("missing word" in e for e in broken(repointed_posting, "b4"))
+
+    def emptied_lexicon(out):
+        (out / "lexicon/heads.json").write_text('{"entries":{}}', encoding="utf-8")
+
+    assert any("lexicon: heads" in e for e in broken(emptied_lexicon, "b5"))
+
+    def emptied_year(out):
+        p = out / "calendar.json"
+        c = json.loads(p.read_text(encoding="utf-8"))
+        year = next(iter(c["years"]))
+        c["years"][year] = []
+        p.write_text(json.dumps(c), encoding="utf-8")
+
+    assert any("missing or empty" in e for e in broken(emptied_year, "b6"))
+
+    def dropped_declared_file(out):
+        (out / "calendar.json").unlink()
+
+    assert any("declared and not written" in e for e in broken(dropped_declared_file, "b7"))
+
+    def stray_file(out):
+        (out / "extra.json").write_text("{}", encoding="utf-8")
+
+    assert any("no manifest declares" in e for e in broken(stray_file, "b8"))
+
+    def altered_vectors(out):
+        p = out / "normalization.json"
+        v = json.loads(p.read_text(encoding="utf-8"))
+        v["latin"][0][1] = "sæcula"
+        p.write_text(json.dumps(v), encoding="utf-8")
+
+    assert any("authored vectors" in e for e in broken(altered_vectors, "b9"))

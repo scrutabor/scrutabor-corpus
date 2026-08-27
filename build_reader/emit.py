@@ -11,7 +11,12 @@ from build_reader import store
 # The reader edition's OWN version. It moves when this file changes what it
 # writes, which is a different event from the corpus changing what it stores —
 # the manifest names both, so a consumer can tell the two apart.
-SCHEMA = "3.3.0"
+# 4.0.0: the 3.2.0→3.3.0 step renamed the per-word `fn` key to `ex` — a
+# breaking change that should have taken the major by this project's own
+# policy, majored here — and this version adds the emitted normalization
+# vectors, the `rs` retired-segment map, and the manifest's `normalization`
+# entry.
+SCHEMA = "4.0.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -871,6 +876,136 @@ def verify(corpus: Path, out: Path) -> list[str]:
                 errors.append(
                     f"{doc['id']}: {_first_difference(want_glosses[lang], got_gloss, lang)}"
                 )
+    errors += verify_edition_artifacts(corpus, out)
+    return errors
+
+
+def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
+    """The artifacts the round-trip cannot see, held to their own contracts.
+
+    The per-text expansion above proves the documents; it proves nothing
+    about the concordances, the calendar, the lexicons, the vectors, or the
+    manifest's own claims — an edition shipping empty indexes still expanded
+    every text perfectly. Fault injection showed exactly that, so each
+    artifact class is verified here: every posting resolves to the word or
+    term it claims, every declared path exists, nothing undeclared ships,
+    the lexicons cover exactly the words' lemmata, and every declared
+    calendar year is present and non-empty.
+    """
+    errors: list[str] = []
+    manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
+
+    declared: set[str] = {"manifest.json"}
+    declared.update(manifest["base"].values())
+    declared.update(entry["path"] for entry in manifest["texts"])
+    for language in manifest["languages"]:
+        declared.add(language["path"])
+        language_manifest = json.loads((out / language["path"]).read_text(encoding="utf-8"))
+        declared.update(language_manifest[key] for key in ("lexicon", "citations", "concordance"))
+        declared.update(entry["path"] for entry in language_manifest["texts"])
+    for name in sorted(declared):
+        if not (out / name).is_file():
+            errors.append(f"manifest: {name} is declared and not written")
+    present = {str(p.relative_to(out)) for p in out.rglob("*.json")}
+    for name in sorted(present - declared):
+        errors.append(f"manifest: {name} was written and no manifest declares it")
+    if errors:
+        return errors  # unresolvable paths would only cascade below
+
+    texts_by_number: list[dict] = []
+    words_by_text: list[dict[str, dict]] = []
+    registry = json.loads((REGISTRY / "texts.json").read_text(encoding="utf-8"))
+    by_id = {entry["id"]: entry for entry in manifest["texts"]}
+    for text_id in registry:
+        entry = by_id.get(text_id)
+        artifact = (
+            json.loads((out / entry["path"]).read_text(encoding="utf-8")) if entry else {"seg": []}
+        )
+        texts_by_number.append(artifact)
+        words_by_text.append(
+            {
+                row["id"]: {
+                    cell["i"]: (position, cell) for position, cell in enumerate(row.get("w") or [])
+                }
+                for row in artifact["seg"]
+            }
+        )
+
+    concordance = json.loads((out / manifest["base"]["concordance"]).read_text(encoding="utf-8"))
+    if concordance["texts"] != registry:
+        errors.append("concordance: its text table is not the registry — every posting shifts")
+    if not concordance["latin"]["forms"] or not concordance["latin"]["lemmata"]:
+        errors.append("concordance: the Latin index is empty — nothing is findable")
+    for kind, wanted in (("forms", "f"), ("lemmata", "l")):
+        for key, postings in concordance["latin"][kind].items():
+            for number, sid, wid, position in postings:
+                located = words_by_text[number].get(sid, {}).get(wid)
+                if located is None:
+                    errors.append(
+                        f"concordance: {kind}[{key}] points at a missing word "
+                        f"{concordance['texts'][number]}.{sid}.{wid}"
+                    )
+                    continue
+                where, cell = located
+                value = normalize_latin(cell[wanted]) if kind == "forms" else cell[wanted]
+                if value != key or where != position:
+                    errors.append(
+                        f"concordance: {kind}[{key}] disagrees with "
+                        f"{concordance['texts'][number]}.{sid}.{wid}"
+                    )
+
+    for language in manifest["languages"]:
+        language_manifest = json.loads((out / language["path"]).read_text(encoding="utf-8"))
+        localized = json.loads((out / language_manifest["concordance"]).read_text(encoding="utf-8"))
+        if not localized["terms"]:
+            errors.append(f"{language['id']}: the translation index is empty")
+        segments_by_number: list[dict[str, list[str]]] = []
+        for text_id in registry:
+            entry = next((e for e in language_manifest["texts"] if e["id"] == text_id), None)
+            if entry is None:
+                segments_by_number.append({})
+                continue
+            artifact = json.loads((out / entry["path"]).read_text(encoding="utf-8"))
+            segments_by_number.append(
+                {row["id"]: tokenize_search(row["tr"]) for row in artifact["seg"] if "tr" in row}
+            )
+        for term, postings in localized["terms"].items():
+            for number, sid, position in postings:
+                tokens = segments_by_number[number].get(sid)
+                if tokens is None or position >= len(tokens) or tokens[position] != term:
+                    errors.append(
+                        f"{language['id']}: terms[{term}] disagrees with "
+                        f"{localized['texts'][number]}.{sid}[{position}]"
+                    )
+
+    lemmata_in_use = {
+        cell["l"]
+        for text in texts_by_number
+        for row in text["seg"]
+        for cell in (row.get("w") or [])
+    }
+    heads = json.loads((out / manifest["base"]["lexicon"]).read_text(encoding="utf-8"))["entries"]
+    if set(heads) != lemmata_in_use:
+        missing = sorted(lemmata_in_use - set(heads))[:3]
+        dead = sorted(set(heads) - lemmata_in_use)[:3]
+        errors.append(f"lexicon: heads and the words disagree — missing {missing}, unused {dead}")
+    for language in manifest["languages"]:
+        language_manifest = json.loads((out / language["path"]).read_text(encoding="utf-8"))
+        entries = json.loads((out / language_manifest["lexicon"]).read_text(encoding="utf-8"))[
+            "entries"
+        ]
+        if set(entries) != set(heads):
+            errors.append(f"{language['id']}: the localized lexicon does not cover the heads")
+
+    calendar = json.loads((out / manifest["base"]["calendar"]).read_text(encoding="utf-8"))
+    first, last = manifest["kalendarium"]
+    for year in range(first, last + 1):
+        if not calendar.get("years", {}).get(str(year)):
+            errors.append(f"calendar: declared year {year} is missing or empty")
+
+    vectors = json.loads((out / manifest["base"]["normalization"]).read_text(encoding="utf-8"))
+    if vectors != NORMALIZATION_VECTORS:
+        errors.append("normalization: the emitted vectors are not the authored vectors")
     return errors
 
 

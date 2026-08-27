@@ -303,3 +303,40 @@ def test_history_catches_a_rewound_segment_mint(tmp_path):
     p.write_text(json.dumps(doc([("w001", "a")], seg_next=4)))
     errors = check_against_history(tmp_path)
     assert any("segments.next went backwards" in e for e in errors), errors
+
+
+def test_registry_history_is_an_exact_prefix(tmp_path):
+    from checks.identity import check_registry_history, is_exact_prefix
+
+    assert is_exact_prefix([1, 2], [1, 2, 3])
+    assert is_exact_prefix([], [1])
+    assert not is_exact_prefix([1, 2], [2, 1, 3]), "a reorder is a different address space"
+    assert not is_exact_prefix([1, 2], [1]), "a shrink retires addresses"
+
+    reg = tmp_path / "build_reader" / "registry"
+    reg.mkdir(parents=True)
+    p = reg / "texts.json"
+    p.write_text(json.dumps(["a.one", "a.two"]))
+    subprocess.run(["git", "-C", str(tmp_path), "init", "-q"], check=True, capture_output=True)
+    subprocess.run(["git", "-C", str(tmp_path), "add", "-A"], check=True, capture_output=True)
+    subprocess.run(
+        [
+            "git",
+            "-C",
+            str(tmp_path),
+            "-c",
+            "user.email=t@t",
+            "-c",
+            "user.name=t",
+            "commit",
+            "-qm",
+            "base",
+        ],
+        check=True,
+        capture_output=True,
+    )
+    p.write_text(json.dumps(["a.one", "a.two", "a.three"]))
+    assert check_registry_history(tmp_path) == []
+    p.write_text(json.dumps(["a.two", "a.one", "a.three"]))
+    errors = check_registry_history(tmp_path)
+    assert any("not an exact prefix" in e for e in errors), errors

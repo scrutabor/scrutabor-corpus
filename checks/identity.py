@@ -136,7 +136,7 @@ def resolve_ref(corpus: Path, ref: str) -> str:
     return result.stdout.strip() if result.returncode == 0 else "unresolvable"
 
 
-def committed(corpus: Path, relative: str, ref: str) -> dict | None:
+def committed(corpus: Path, relative: str, ref: str) -> dict | list | None:
     """The version of a file in git, or None if it is not there yet."""
     result = subprocess.run(
         ["git", "-C", str(corpus), "show", f"{ref}:{relative}"],
@@ -168,7 +168,7 @@ def check_against_history(corpus: Path, ref: str = "HEAD") -> list[str]:
     for path in sorted(corpus.glob("texts/*/*.json")):
         relative = str(path.relative_to(corpus))
         was = committed(corpus, relative, ref)
-        if was is None:
+        if not isinstance(was, dict):
             continue
         now = json.loads(path.read_text(encoding="utf-8"))
         tid = now.get("id", relative)
@@ -239,9 +239,7 @@ def _segment_history(tid: str, was: dict, now: dict) -> list[str]:
         )
 
     def members(doc: dict) -> dict[str, list[str]]:
-        return {
-            s["id"]: [w["id"] for w in (s.get("words") or [])] for s in doc.get("segments", [])
-        }
+        return {s["id"]: [w["id"] for w in (s.get("words") or [])] for s in doc.get("segments", [])}
 
     before, after = members(was), members(now)
     old_retired = old_mint.get("retired") or {}
@@ -272,15 +270,51 @@ def _segment_history(tid: str, was: dict, now: dict) -> list[str]:
     all_now = {wid for ids in after.values() for wid in ids}
     for sid in sorted(set(before) & set(after)):
         old_words, new_words = set(before[sid]), set(after[sid])
-        if (
-            old_words
-            and new_words
-            and not (old_words & new_words)
-            and old_words <= all_now
-        ):
+        if old_words and new_words and not (old_words & new_words) and old_words <= all_now:
             errors.append(
                 f"{tid}:{sid}: names an entirely different set of words while its "
                 f"former words live on in this text — a segment was readdressed, "
                 f"and every link to it now shows other content"
+            )
+    return errors
+
+
+REGISTRY_FILES = (
+    "build_reader/registry/texts.json",
+    "build_reader/registry/morphology.json",
+    "build_reader/registry/analysis.json",
+    "build_reader/registry/citations.json",
+)
+
+
+def is_exact_prefix(old: list, new: list) -> bool:
+    """Append-only means the past is byte-for-byte the front of the present."""
+    return len(new) >= len(old) and new[: len(old)] == old
+
+
+def check_registry_history(corpus: Path, ref: str = "HEAD") -> list[str]:
+    """The reader registries are address spaces: index i names a record
+    forever. `update_registry` adding zero rows proves only currency; this
+    compares the committed registry as an EXACT PREFIX of the working one,
+    so a reorder — an internally consistent but different address space —
+    fails instead of renumbering every posting that resolves through it.
+    """
+    errors: list[str] = []
+    if resolve_ref(corpus, ref) == "unresolvable":
+        return [f"registry: base ref '{ref}' does not resolve — nothing was compared"]
+    for relative in REGISTRY_FILES:
+        was = committed(corpus, relative, ref)
+        if not isinstance(was, list):
+            continue
+        path = corpus / relative
+        if not path.exists():
+            errors.append(f"{relative}: the registry file itself has gone")
+            continue
+        now = json.loads(path.read_text(encoding="utf-8"))
+        if not is_exact_prefix(was, now):
+            errors.append(
+                f"{relative}: the committed registry is not an exact prefix of the "
+                f"working one — a registry only ever appends, or every index that "
+                f"resolves through it changes meaning"
             )
     return errors

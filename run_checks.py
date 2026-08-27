@@ -26,7 +26,7 @@ from checks.english import check_number as check_english_number
 from checks.explanation_floor import check as check_explanation_floor
 from checks.fusion import check as check_fusion
 from checks.identity import check as check_identity
-from checks.identity import check_against_history, resolve_ref
+from checks.identity import check_against_history, check_registry_history, resolve_ref
 from checks.incipit import check as check_incipit
 from checks.kalendarium import check as check_kalendarium
 from checks.language_packs import check_core as check_language_core
@@ -368,6 +368,11 @@ if __name__ == "__main__":
         for message in history_errors:
             print(f"ERROR: {message}")
         rc |= 1 if history_errors else 0
+
+        registry_errors = check_registry_history(CORPUS, base)
+        for message in registry_errors:
+            print(f"ERROR: {message}")
+        rc |= 1 if registry_errors else 0
 
         # A text id is the other half of every word's global address.
         address_errors = check_addresses(CORPUS, {d["id"] for d in corpus_docs})
