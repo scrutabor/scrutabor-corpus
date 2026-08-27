@@ -45,6 +45,24 @@ def test_a_duplicate_id_fails():
     assert any("used twice" in e for e in errors)
 
 
+def test_word_ids_grow_beyond_three_digits_without_renumbering():
+    assert check(doc([("w1000", "a")], next_=1001)) == []
+
+
+def test_segment_ids_grow_beyond_two_digits():
+    assert check(doc([("w001", "a")], segments=("s1000",))) == []
+
+
+def test_semantic_segment_aliases_are_refused():
+    errors = check(doc([("w001", "a")], segments=("ave1",)))
+    assert any("segment id is s + at least two digits" in error for error in errors)
+
+
+def test_duplicate_segment_ids_are_refused():
+    errors = check(doc([("w001", "a")], segments=("s01", "s01")))
+    assert any("segment id used twice" in error for error in errors)
+
+
 def test_a_word_that_is_also_a_tombstone_fails():
     errors = check(doc([("w001", "a")], retired={"w001": "s01"}))
     assert any("both a live word and a tombstone" in e for e in errors)

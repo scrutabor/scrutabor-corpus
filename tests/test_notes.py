@@ -53,6 +53,12 @@ def test_a_note_may_name_several_words_in_apposition():
     assert check(*case("w003", note)) == []
 
 
+def test_a_note_may_reference_a_four_digit_word_id():
+    doc, gloss = case("w1000", "Zgadza się z „Fílium” (w1000).")
+    doc["segments"][0]["words"][0]["id"] = "w1000"
+    assert check(doc, gloss) == []
+
+
 def test_substantive_contradicts_any_agreement_claim():
     errors = check(*case(None, "Zgadza się z „Fílium” (w001).", substantive=True))
     assert errors and "substantive" in errors[0]

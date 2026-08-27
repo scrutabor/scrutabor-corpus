@@ -99,7 +99,8 @@ restate what another layer already carries:
 
 ## Word IDs (binding rules)
 
-- Global per text, zero-padded: `w001`… Referenced externally as
+- Global per text, zero-padded to a minimum of three digits: `w001`…`w999`,
+  then `w1000` and beyond without a maximum width. Referenced externally as
   `<text-id>.<word-id>` (e.g. `ordinarium.confiteor.w002`) by SRS decks and
   future GABC syllable maps (`w002.s1` reserved for syllables).
 - **Never renumbered, never reused.** Document order = array order, not ID
@@ -108,7 +109,9 @@ restate what another layer already carries:
   its text, wherever it lands in reading order — the array carries the
   order, the ID carries only identity.
 - Segment IDs (`s01`…) are NOT stable — segmentation may change freely; words
-  are the stable layer.
+  are the stable layer. Their two-digit padding is likewise a minimum, not a
+  limit: `s99` is followed by `s100`. Document order always comes from the
+  segment array, never from lexicographic ID sorting.
 - **The mint is recorded, not inferred.** Every text carries
   `"ids": {"next": N}`, and a new word takes `next` and moves it on. Inferring
   the next free number as one past the highest works only until a word is

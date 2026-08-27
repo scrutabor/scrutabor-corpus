@@ -108,7 +108,7 @@ AGREES = [
     re.compile(r"zgadzając[ye]?\w*\s+się\s+z(?P<rest>[^.]{0,90})"),
     re.compile(r"[Aa]gree(?:s|ing)\s+with(?P<rest>[^.]{0,90})"),
 ]
-ID = re.compile(r"\((w\d{3})\)")
+ID = re.compile(r"\((w\d{3,})\)")
 
 
 def _claims(text: str, patterns: list[re.Pattern]) -> list[set[str]]:

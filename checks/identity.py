@@ -31,6 +31,7 @@ import re
 import subprocess
 from pathlib import Path
 
+SEGMENT_ID = re.compile(r"^s\d{2,}$")
 WORD_ID = re.compile(r"^w(\d{3,})$")
 
 
@@ -54,6 +55,15 @@ def check(doc: dict) -> list[str]:
     if not isinstance(mint["next"], int):
         return [f"{tid}: ids.next is not a number — the mint must be recorded"]
 
+    segment_ids = [segment["id"] for segment in doc.get("segments", [])]
+    seen_segments: set[str] = set()
+    for sid in segment_ids:
+        if not SEGMENT_ID.match(sid):
+            errors.append(f"{tid}:{sid}: a segment id is s + at least two digits")
+        if sid in seen_segments:
+            errors.append(f"{tid}:{sid}: segment id used twice")
+        seen_segments.add(sid)
+
     live = [w["id"] for s in doc.get("segments", []) for w in (s.get("words") or [])]
     seen = set()
     for wid in live:
@@ -64,7 +74,7 @@ def check(doc: dict) -> list[str]:
         seen.add(wid)
 
     retired = mint.get("retired") or {}
-    segments = {s["id"] for s in doc.get("segments", [])}
+    segments = set(segment_ids)
     for wid, anchor in sorted(retired.items()):
         if wid in seen:
             errors.append(f"{tid}:{wid}: is both a live word and a tombstone")

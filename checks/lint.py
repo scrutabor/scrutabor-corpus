@@ -32,8 +32,8 @@ MORPH_ENUMS = {
 }
 
 FORM_RE = re.compile(r"^[A-Za-zÁÉÍÓÚÝáéíóúýÆæŒœǼǽËë\u0301]+$")
-REF_RE = re.compile(r"\((w\d{3})\)")
-QUOTE_REF_RE = re.compile(r"[„“]([^”“„]+)”\s*\((w\d{3})\)")
+REF_RE = re.compile(r"\((w\d{3,})\)")
+QUOTE_REF_RE = re.compile(r"[„“]([^”“„]+)”\s*\((w\d{3,})\)")
 
 # Terminology contract (corpus/TERMINOLOGY.md): banned variants per language.
 GLOSS_POSSESSIVES = {
@@ -867,7 +867,7 @@ def lint_gloss(doc, text_doc):
         # link and hides the id). Bare ids ("Jak w004") are author shorthand
         # leaking to readers.
         remainder = QUOTE_REF_RE.sub("", explanation)
-        for bare in re.finditer(r"\bw\d{3}\b", remainder):
+        for bare in re.finditer(r"\bw\d{3,}\b", remainder):
             errors.append(f"{lang}:{wid}: bare word-id {bare.group(0)!r} in reader-facing prose")
     for sid, seg in doc.get("segments", {}).items():
         check_prose(

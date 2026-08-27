@@ -160,6 +160,18 @@ class TestNoteReferences:
 
 
 class TestReaderFacingCitations:
+    def test_a_four_digit_word_reference_is_checked(self):
+        g = gloss(
+            words={
+                "w001": {
+                    "gloss": "witaj",
+                    "explanation": "Porównaj „Deum” (w1000).",
+                }
+            }
+        )
+        found = lint_gloss(g, TEXT)
+        assert any("dangling cross-reference w1000" in error for error in found)
+
     def test_a_source_with_an_exact_locator_passes(self):
         g = gloss(about="Modlitwa błagalna.", about_citations=[CITATION])
         assert lint_gloss(g, TEXT) == []
