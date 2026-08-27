@@ -1,4 +1,4 @@
-# Corpus schema v0 (0.17.0)
+# Corpus schema v0 (0.18.0)
 
 Three semantic layers: language-neutral Latin, per-language gloss/editorial
 content, and a corpus-wide lexicon. Since 0.16.0 each Latin text is a neutral
