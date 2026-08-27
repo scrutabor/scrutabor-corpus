@@ -13,7 +13,7 @@ data behind the Scrutabor reading app
 ([scrutabor](https://github.com/scrutabor/scrutabor)), live at
 [scrutabor.org](https://scrutabor.org).
 
-**Status: working edition.** 122 texts, fully annotated in both languages:
+**Status: working edition.** 123 texts, fully annotated in both languages:
 the complete Ordinary of the Mass, the prayers after low Mass, the common
 prayers, three litanies, the prayers for the dead, the first psalm stanza,
 and the complete Propers of the four Sundays of Advent — with the 1962
