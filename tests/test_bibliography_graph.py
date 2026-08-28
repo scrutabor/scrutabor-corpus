@@ -40,6 +40,7 @@ def edition(identifier: str, work: str, title: str) -> dict:
         "year": "1962",
         "publication_type": "official_act",
         "authority": "official_document",
+        "languages": ["la"],
         "rights": {"status": "public-domain", "basis": "Official text."},
     }
 
@@ -126,10 +127,10 @@ def test_the_authored_graph_accounts_for_every_audited_legacy_citation():
     assert state == {
         "legacy": 2776,
         "mapped": 2044,
-        "removed": 266,
-        "unmapped": 466,
-        "sha256": "0a98de216bb10472089375a1a1845327c1dbcaceb180d688f3e55c5aa6cbb48f",
-        "complete": False,
+        "removed": 732,
+        "unmapped": 0,
+        "sha256": "4677bbf9680895093b48590798855cf37876b2cbc47526d4110695e30d660999",
+        "complete": True,
     }
 
 
@@ -143,6 +144,19 @@ def test_a_use_cannot_point_to_an_unknown_edition():
     graph["uses"][0]["edition"] = "edition-missing"
     errors = validate(CORPUS, graph, languages)
     assert any("unknown edition" in error for error in errors)
+
+
+def test_an_edition_rejects_an_unsupported_reader_language():
+    graph, languages = sample()
+    graph["editions"][0]["languages"] = ["lt"]
+    errors = validate(CORPUS, graph, languages)
+    assert any("unsupported reader language" in error for error in errors)
+
+
+def test_an_edition_accepts_supported_parallel_languages():
+    graph, languages = sample()
+    graph["editions"][0]["languages"] = ["en", "la"]
+    assert validate(CORPUS, graph, languages) == []
 
 
 def test_a_language_package_rejects_a_neutral_role():

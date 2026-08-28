@@ -75,7 +75,10 @@ contains:
 - `works`: abstract works, with stable ids, responsible bodies/authors and
   uniform titles;
 - `editions`: concrete editions, their recension, imprint, authority class and
-  rights record;
+  rights record. Every edition declares a sorted `languages` array. Reader-
+  facing editions may use only Polish (`pl`), English (`en`) or Latin (`la`),
+  so an unsupported modern-language layer cannot enter the public catalogue by
+  accident;
 - `digital_items`: individual scans or born-digital manifestations, each tied
   to one edition and a stable record or documented owner-held copy;
 - `uses`: exact claims at typed text, segment, word or lemma addresses, with a

@@ -18,7 +18,7 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
-SCHEMA = "1.1.0"
+SCHEMA = "1.2.0"
 
 GRAPH_KEYS = {
     "schema_version",
@@ -48,6 +48,7 @@ EDITION_KEYS = {
     "volume",
     "publication_type",
     "authority",
+    "languages",
     "rights",
 }
 RIGHTS_KEYS = {"status", "basis"}
@@ -186,6 +187,8 @@ ROLE_ORDER = {
 
 ID_RE = re.compile(r"^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+LANGUAGE_RE = re.compile(r"^[a-z]{2,3}(?:-[A-Za-z0-9]+)*$")
+SUPPORTED_READER_LANGUAGES = {"en", "la", "pl"}
 
 
 def graph_path(corpus: Path) -> Path:
@@ -520,6 +523,23 @@ def validate(
             errors.append(f"{where}.publication_type: unknown value")
         if edition.get("authority") not in AUTHORITIES:
             errors.append(f"{where}.authority: unknown value")
+        languages = edition.get("languages")
+        if (
+            not isinstance(languages, list)
+            or not languages
+            or any(
+                not isinstance(language, str) or not LANGUAGE_RE.fullmatch(language)
+                for language in languages
+            )
+        ):
+            errors.append(f"{where}.languages: must be a nonempty array of BCP 47 language tags")
+        elif languages != sorted(set(languages)):
+            errors.append(f"{where}.languages: must be unique and sorted")
+        elif not set(languages) <= SUPPORTED_READER_LANGUAGES:
+            errors.append(
+                f"{where}.languages: unsupported reader language; "
+                f"allowed values are {sorted(SUPPORTED_READER_LANGUAGES)}"
+            )
         contributors = edition.get("contributors") or []
         if not isinstance(contributors, list) or any(not _nonempty(v) for v in contributors):
             errors.append(f"{where}.contributors: must be an array of nonempty strings")
@@ -831,6 +851,7 @@ def _project_edition(edition: dict) -> dict:
         "volume",
         "publication_type",
         "authority",
+        "languages",
         "rights",
     )
     return {key: edition[key] for key in fields if key in edition}
