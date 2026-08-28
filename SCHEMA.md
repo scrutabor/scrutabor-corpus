@@ -56,6 +56,8 @@ languages/<lang>/translation-provenance.json
                                       public states for that language's sites
 languages/<lang>/translation-basis.json
                                       grouped relation to wording witnesses
+bibliography/graph.json               neutral evidence graph and parity state
+languages/<lang>/bibliography.json    wording uses for one language only
 ```
 
 The manifest is the authority for coverage. A language may publish any ordered
@@ -63,6 +65,55 @@ subset of the neutral texts, but each listed text is complete: every word has a
 gloss, every verse a translation, every rubric a narrative, and every neutral
 localization requirement is fulfilled. Missing languages never fall back to
 another language silently.
+
+## Bibliography and evidence graph
+
+The bibliography is an identity graph rather than a list keyed by display
+title. Its schema version is independent of the text schema. The neutral graph
+contains:
+
+- `works`: abstract works, with stable ids, responsible bodies/authors and
+  uniform titles;
+- `editions`: concrete editions, their recension, imprint, authority class and
+  rights record;
+- `digital_items`: individual scans or born-digital manifestations, each tied
+  to one edition and a stable record or documented owner-held copy;
+- `uses`: exact claims at typed text, segment, word or lemma addresses, with a
+  role, decision, manifestation, structured locator and verification date;
+- `witnesses`: Latin transcriptions bound to neutral uses, with coverage,
+  independence and transcription identity;
+- `collations`: the selected recension and text hash, witness set and compact
+  apparatus result for one text.
+
+`role`, `decision`, and acquisition state are separate facts. A strong official
+edition does not support a claim merely by being relevant to its subject, and a
+historical wording comparator is not thereby a source of the published
+translation. Paginated evidence requires both printed and scan/PDF locators;
+born-digital evidence requires a stable section. All ids are stable and URLs
+never serve as identity.
+
+Wording uses live only in `languages/<lang>/bibliography.json`. A neutral use
+cannot carry a wording role, and a language package cannot carry a neutral or
+another language's use. The reader's neutral catalogue therefore contains only
+neutral-reachable identities. A language artifact supplies a catalogue delta
+for identities reached by that language alone, then a ready-to-render four-part
+index: Latin textual sources, wording witnesses for the active language,
+official documents and liturgical history, and Scripture/language/scholarship.
+
+The reader projection is an allowlist. It omits evidence-image hashes,
+owner-held inventory ids, migration pointers, editorial decisions and their
+reasons, raw transcriptions, and archive paths. During the transition it emits
+the existing citation tables alongside the normalized projection. Every legacy
+inline citation is held by a deterministic inventory digest and may be claimed
+once by a normalized use or once by an explicit removal; setting migration
+`complete` is rejected while any pointer remains unresolved.
+
+The initial reader foundation writes compact per-text evidence to
+`bibliography/texts.json`. Before bulk witness migration makes that table a
+material eager-load cost, it is to be split into manifest-declared
+`bibliography/texts/<category>/<text>.json` artifacts without changing the
+authored graph or its stable ids. Language-specific per-text evidence follows
+the same package boundary.
 
 The optional manifest `titles` object is keyed by covered text id. Each entry
 has a nonempty `title` and may carry unique nonempty `aliases`. These are

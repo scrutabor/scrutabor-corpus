@@ -6,7 +6,7 @@ import json
 import unicodedata
 from pathlib import Path
 
-from build_reader import store
+from build_reader import bibliography, store
 
 # The reader edition's OWN version. It moves when this file changes what it
 # writes, which is a different event from the corpus changing what it stores —
@@ -16,7 +16,10 @@ from build_reader import store
 # policy, majored here — and this version adds the emitted normalization
 # vectors, the `rs` retired-segment map, and the manifest's `normalization`
 # entry.
-SCHEMA = "4.0.0"
+# 4.1.0 adds the normalized bibliography catalogue, functional index, compact
+# per-text evidence table, and an isolated bibliography projection per
+# language while retaining the legacy citation tables during migration.
+SCHEMA = "4.1.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -666,6 +669,10 @@ def update_registry(corpus: Path) -> dict[str, int]:
 def emit(corpus: Path, out: Path) -> dict[str, int]:
     """Write the whole reader edition. Returns what it wrote."""
     corpus_docs = read_corpus(corpus)
+    evidence_graph, language_evidence = bibliography.load(corpus)
+    evidence_errors = bibliography.validate(corpus, evidence_graph, language_evidence)
+    if evidence_errors:
+        raise ValueError("invalid bibliography graph: " + "; ".join(evidence_errors))
     parses = Table(_registry_records("morphology"), locked=True, label="morphology")
     analyses = Table(_registry_records("analysis"), locked=True, label="analysis")
     citation_registry = _registry_records("citations")
@@ -727,6 +734,29 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
             "normalization.json",
             json.dumps(NORMALIZATION_VECTORS, ensure_ascii=False, indent=1) + "\n",
         ),
+        (
+            "bibliography/catalog.json",
+            json.dumps(
+                bibliography.public_catalog(evidence_graph),
+                ensure_ascii=False,
+                indent=1,
+            )
+            + "\n",
+        ),
+        (
+            "bibliography/index.json",
+            json.dumps(bibliography.public_index(evidence_graph), ensure_ascii=False, indent=1)
+            + "\n",
+        ),
+        (
+            "bibliography/texts.json",
+            json.dumps(
+                bibliography.public_text_evidence(evidence_graph),
+                ensure_ascii=False,
+                indent=1,
+            )
+            + "\n",
+        ),
     )
     for name, body in outputs:
         (out / name).parent.mkdir(parents=True, exist_ok=True)
@@ -750,6 +780,23 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
                 f"languages/{language}/concordance.json",
                 _language_concordance_json(language_index(corpus_docs, language, text_registry)),
             ),
+            (
+                f"languages/{language}/bibliography.json",
+                json.dumps(
+                    {
+                        **bibliography.public_index(evidence_graph, language_evidence[language]),
+                        "catalog": bibliography.public_catalog_delta(
+                            evidence_graph, language_evidence[language]
+                        ),
+                        "texts": bibliography.public_text_evidence(
+                            evidence_graph, language_evidence[language]
+                        )["texts"],
+                    },
+                    ensure_ascii=False,
+                    indent=1,
+                )
+                + "\n",
+            ),
         )
         for name, body in localized_outputs:
             (out / name).parent.mkdir(parents=True, exist_ok=True)
@@ -764,6 +811,7 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
             "lexicon": f"languages/{language}/lexicon.json",
             "citations": f"languages/{language}/citations.json",
             "concordance": f"languages/{language}/concordance.json",
+            "bibliography": f"languages/{language}/bibliography.json",
         }
         title_metadata = source_manifest.get("titles") or {}
         for doc, _ in corpus_docs:
@@ -807,11 +855,15 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
             "analysis": "tables/analysis.json",
             "citations": "tables/citations.json",
             "normalization": "normalization.json",
+            "bibliography_catalog": "bibliography/catalog.json",
+            "bibliography_index": "bibliography/index.json",
+            "text_evidence": "bibliography/texts.json",
         },
         "morphology": len(parses.order),
         "kalendarium": [KALENDARIUM.start, KALENDARIUM.stop - 1],
         "analyses": len(analyses.order),
         "citations": len(shared_citations.order),
+        "bibliography_schema": bibliography.SCHEMA,
     }
     body = json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
     (out / "manifest.json").write_text(body, encoding="utf-8")
@@ -935,7 +987,10 @@ def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
     for language in manifest["languages"]:
         declared.add(language["path"])
         language_manifest = json.loads((out / language["path"]).read_text(encoding="utf-8"))
-        declared.update(language_manifest[key] for key in ("lexicon", "citations", "concordance"))
+        declared.update(
+            language_manifest[key]
+            for key in ("lexicon", "citations", "concordance", "bibliography")
+        )
         declared.update(entry["path"] for entry in language_manifest["texts"])
     for name in sorted(declared):
         if not (out / name).is_file():
@@ -1086,6 +1141,57 @@ def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
     vectors = json.loads((out / manifest["base"]["normalization"]).read_text(encoding="utf-8"))
     if vectors != NORMALIZATION_VECTORS:
         errors.append("normalization: the emitted vectors are not the authored vectors")
+
+    evidence_graph, language_evidence = bibliography.load(corpus)
+    expected_catalog = bibliography.public_catalog(evidence_graph)
+    catalog = json.loads(
+        (out / manifest["base"]["bibliography_catalog"]).read_text(encoding="utf-8")
+    )
+    if catalog != expected_catalog:
+        errors.append(
+            "bibliography catalog: "
+            + _first_difference(expected_catalog, catalog, "emitted catalog")
+        )
+    expected_index = bibliography.public_index(evidence_graph)
+    index_artifact = json.loads(
+        (out / manifest["base"]["bibliography_index"]).read_text(encoding="utf-8")
+    )
+    if index_artifact != expected_index:
+        errors.append(
+            "bibliography index: "
+            + _first_difference(expected_index, index_artifact, "emitted index")
+        )
+    expected_texts = bibliography.public_text_evidence(evidence_graph)
+    text_evidence = json.loads(
+        (out / manifest["base"]["text_evidence"]).read_text(encoding="utf-8")
+    )
+    if text_evidence != expected_texts:
+        errors.append(
+            "text evidence: " + _first_difference(expected_texts, text_evidence, "emitted evidence")
+        )
+    for language in manifest["languages"]:
+        language_manifest = json.loads((out / language["path"]).read_text(encoding="utf-8"))
+        expected_language = {
+            **bibliography.public_index(evidence_graph, language_evidence[language["id"]]),
+            "catalog": bibliography.public_catalog_delta(
+                evidence_graph, language_evidence[language["id"]]
+            ),
+            "texts": bibliography.public_text_evidence(
+                evidence_graph, language_evidence[language["id"]]
+            )["texts"],
+        }
+        language_bibliography = json.loads(
+            (out / language_manifest["bibliography"]).read_text(encoding="utf-8")
+        )
+        if language_bibliography != expected_language:
+            errors.append(
+                f"{language['id']} bibliography: "
+                + _first_difference(
+                    expected_language,
+                    language_bibliography,
+                    "emitted language bibliography",
+                )
+            )
     return errors
 
 

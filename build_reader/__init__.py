@@ -11,6 +11,11 @@ analysis and citation layers become indices into shared tables, while the
 reviewer's apparatus stays behind. Root and language manifests are also package
 boundaries for mobile downloads and offline archives.
 
+The build also emits a normalized source catalogue, a functional bibliography
+index, and per-text evidence records. Language-only wording sources travel as a
+catalogue delta in that language's artifact and never enter the neutral or
+another language's package.
+
 What it leaves behind is named in DROP_DOC and is exactly four things: the
 schema version, which the manifest names once, the mint, the editorial notes,
 and the witness line ranges. Everything a reader is

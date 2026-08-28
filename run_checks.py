@@ -15,6 +15,7 @@ from pathlib import Path
 from build_reader import store
 from checks.addresses import check as check_addresses
 from checks.apparatus import lint_apparatus_summary
+from checks.bibliography import check as check_bibliography
 from checks.capitals import check as check_capitals
 from checks.citations import check as check_citation_titles
 from checks.collate import collate
@@ -384,6 +385,11 @@ if __name__ == "__main__":
         for message in witness_errors:
             print(f"ERROR: {message}")
         rc |= 1 if witness_errors else 0
+
+        bibliography_errors = check_bibliography(CORPUS)
+        for message in bibliography_errors:
+            print(f"ERROR: {message}")
+        rc |= 1 if bibliography_errors else 0
         # One work, one title. The bibliography groups citations on the title
         # string, so this only shows up with the whole corpus in hand — two
         # correct spellings of one dictionary list it twice for the reader.

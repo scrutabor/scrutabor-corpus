@@ -32,6 +32,7 @@ Neutral cores and independently publishable language packages, JSON, UTF-8:
 texts/<category>/<name>.json  Latin, morphology and neutral editorial topology
 languages/<lang>/             manifest, text layers, senses and provenance
 lexicon/lemmata.json          language-neutral dictionary heads
+bibliography/graph.json       works, editions, digital items, uses and witnesses
 kalendarium/                  the 1962 temporal cycle, computed and verified
 witnesses/<text-id>/          witness transcriptions + adjudicated apparatus
 build_reader/, build.py       the reader edition the app ships
@@ -51,6 +52,14 @@ logical record per line. Table and text addresses come from tracked append-only 
 under `build_reader/registry/`; after adding a genuinely new record, run
 `python -m build_reader.update_registry` and review only the appended lines.
 Ordinary builds refuse to invent or renumber those addresses.
+
+The reader also exposes a normalized bibliography catalogue, a functional
+source index, and compact per-text evidence records. Each language artifact
+contains its own wording evidence and only the catalogue identities absent
+from the neutral package; it never imports another language's sources. The
+legacy inline citation tables remain available while their exact source
+pointers are migrated, and the corpus gate prevents that inventory from
+changing without an explicit parity update.
 
 Word ids are stable forever — external references (spaced-repetition
 decks, links) never break. `SCHEMA.md` documents the format,
