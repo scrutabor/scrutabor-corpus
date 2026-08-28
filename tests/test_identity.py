@@ -287,6 +287,15 @@ def test_history_allows_precontract_semantic_segment_labels_to_disappear(tmp_pat
     assert check_against_history(tmp_path) == []
 
 
+def test_history_allows_precontract_segment_retirements_to_disappear(tmp_path):
+    p = _repo(
+        tmp_path,
+        doc([("w001", "a")], seg_next=2, seg_retired={"ave1": "s01"}),
+    )
+    p.write_text(json.dumps(doc([("w001", "a")], seg_next=2)))
+    assert check_against_history(tmp_path) == []
+
+
 def test_history_catches_a_dropped_retirement_record(tmp_path):
     p = _repo(tmp_path, doc([("w001", "a")], seg_next=3, seg_retired={"s02": "s01"}))
     p.write_text(json.dumps(doc([("w001", "a")], seg_next=3)))

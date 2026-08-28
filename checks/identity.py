@@ -299,6 +299,11 @@ def _segment_history(tid: str, was: dict, now: dict) -> list[str]:
                 f"rather than dangle"
             )
     for sid, old_anchor in sorted(old_retired.items()):
+        # A pre-contract semantic label may also have appeared briefly as a
+        # migration alias. It was never a conforming stable address, so do
+        # not turn that internal bridge into a permanent public contract.
+        if not SEGMENT_ID.match(sid):
+            continue
         if sid not in new_retired:
             errors.append(
                 f"{tid}:{sid}: a retirement record has been dropped — retirements "
