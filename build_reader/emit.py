@@ -16,10 +16,11 @@ from build_reader import bibliography, store
 # policy, majored here — and this version adds the emitted normalization
 # vectors, the `rs` retired-segment map, and the manifest's `normalization`
 # entry.
-# 4.1.0 adds the normalized bibliography catalogue, functional index, compact
-# per-text evidence table, and an isolated bibliography projection per
-# language while retaining the legacy citation tables during migration.
-SCHEMA = "4.1.0"
+# 4.1.0 adds the normalized bibliography catalogue and evidence graph.
+# 4.2.0 splits its eager tables into manifest-declared catalogues, indexes,
+# and independently loadable per-text slices for both the neutral core and
+# every language package.
+SCHEMA = "4.2.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -673,6 +674,19 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
     evidence_errors = bibliography.validate(corpus, evidence_graph, language_evidence)
     if evidence_errors:
         raise ValueError("invalid bibliography graph: " + "; ".join(evidence_errors))
+    neutral_evidence = {
+        record["id"]: record
+        for record in bibliography.public_text_evidence(evidence_graph)["texts"]
+    }
+    localized_evidence = {
+        language: {
+            record["id"]: record
+            for record in bibliography.public_text_evidence(
+                evidence_graph, language_evidence[language]
+            )["texts"]
+        }
+        for language in language_evidence
+    }
     parses = Table(_registry_records("morphology"), locked=True, label="morphology")
     analyses = Table(_registry_records("analysis"), locked=True, label="analysis")
     citation_registry = _registry_records("citations")
@@ -689,7 +703,9 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
         isinstance(value, str) for value in text_registry
     ):
         raise ValueError("text registry must contain unique string ids")
-    written = {"texts": 0, "language_texts": 0, "bytes": 0}
+    written = {"texts": 0, "language_texts": 0, "evidence": 0, "bytes": 0}
+    neutral_evidence_paths: dict[str, str] = {}
+    localized_evidence_paths: dict[str, dict[str, str]] = {language: {} for language in languages}
 
     (out / "texts").mkdir(parents=True, exist_ok=True)
     for doc, glosses in corpus_docs:
@@ -703,6 +719,17 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
         (directory / f"{slug}.json").write_text(body, encoding="utf-8")
         written["texts"] += 1
         written["bytes"] += len(body.encode())
+        if doc["id"] in neutral_evidence:
+            evidence_path = f"bibliography/texts/{category}/{slug}.json"
+            evidence_body = (
+                json.dumps(neutral_evidence[doc["id"]], ensure_ascii=False, indent=1) + "\n"
+            )
+            destination = out / evidence_path
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_text(evidence_body, encoding="utf-8")
+            neutral_evidence_paths[doc["id"]] = evidence_path
+            written["evidence"] += 1
+            written["bytes"] += len(evidence_body.encode())
         for language, layer in glosses.items():
             localized = language_artifact(
                 doc,
@@ -716,6 +743,22 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
             (directory / f"{slug}.json").write_text(body, encoding="utf-8")
             written["language_texts"] += 1
             written["bytes"] += len(body.encode())
+            if doc["id"] in localized_evidence[language]:
+                evidence_path = f"languages/{language}/bibliography/texts/{category}/{slug}.json"
+                evidence_body = (
+                    json.dumps(
+                        localized_evidence[language][doc["id"]],
+                        ensure_ascii=False,
+                        indent=1,
+                    )
+                    + "\n"
+                )
+                destination = out / evidence_path
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_text(evidence_body, encoding="utf-8")
+                localized_evidence_paths[language][doc["id"]] = evidence_path
+                written["evidence"] += 1
+                written["bytes"] += len(evidence_body.encode())
 
     # The three tables are written LAST because interning fills them as texts
     # are emitted, and a table written first would be the previous run's.
@@ -748,15 +791,6 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
             json.dumps(bibliography.public_index(evidence_graph), ensure_ascii=False, indent=1)
             + "\n",
         ),
-        (
-            "bibliography/texts.json",
-            json.dumps(
-                bibliography.public_text_evidence(evidence_graph),
-                ensure_ascii=False,
-                indent=1,
-            )
-            + "\n",
-        ),
     )
     for name, body in outputs:
         (out / name).parent.mkdir(parents=True, exist_ok=True)
@@ -781,17 +815,18 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
                 _language_concordance_json(language_index(corpus_docs, language, text_registry)),
             ),
             (
-                f"languages/{language}/bibliography.json",
+                f"languages/{language}/bibliography/catalog.json",
                 json.dumps(
-                    {
-                        **bibliography.public_index(evidence_graph, language_evidence[language]),
-                        "catalog": bibliography.public_catalog_delta(
-                            evidence_graph, language_evidence[language]
-                        ),
-                        "texts": bibliography.public_text_evidence(
-                            evidence_graph, language_evidence[language]
-                        )["texts"],
-                    },
+                    bibliography.public_catalog_delta(evidence_graph, language_evidence[language]),
+                    ensure_ascii=False,
+                    indent=1,
+                )
+                + "\n",
+            ),
+            (
+                f"languages/{language}/bibliography/index.json",
+                json.dumps(
+                    bibliography.public_index(evidence_graph, language_evidence[language]),
                     ensure_ascii=False,
                     indent=1,
                 )
@@ -811,7 +846,10 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
             "lexicon": f"languages/{language}/lexicon.json",
             "citations": f"languages/{language}/citations.json",
             "concordance": f"languages/{language}/concordance.json",
-            "bibliography": f"languages/{language}/bibliography.json",
+            "bibliography": {
+                "catalog": f"languages/{language}/bibliography/catalog.json",
+                "index": f"languages/{language}/bibliography/index.json",
+            },
         }
         title_metadata = source_manifest.get("titles") or {}
         for doc, _ in corpus_docs:
@@ -821,6 +859,8 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
                 "id": doc["id"],
                 "path": f"languages/{language}/texts/{doc['id'].replace('.', '/', 1)}.json",
             }
+            if doc["id"] in localized_evidence_paths[language]:
+                entry["evidence"] = localized_evidence_paths[language][doc["id"]]
             entry.update(title_metadata.get(doc["id"]) or {})
             language_manifest["texts"].append(entry)
         language_manifest_path = f"languages/{language}/manifest.json"
@@ -843,10 +883,19 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
                 "id": doc["id"],
                 "path": f"texts/{doc['id'].replace('.', '/', 1)}.json",
                 "title": doc["title"],
+                **(
+                    {"evidence": neutral_evidence_paths[doc["id"]]}
+                    if doc["id"] in neutral_evidence_paths
+                    else {}
+                ),
             }
             for doc, _ in corpus_docs
         ],
         "languages": language_manifests,
+        "bibliography": {
+            "catalog": "bibliography/catalog.json",
+            "index": "bibliography/index.json",
+        },
         "base": {
             "concordance": "concordance.json",
             "calendar": "calendar.json",
@@ -855,9 +904,6 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
             "analysis": "tables/analysis.json",
             "citations": "tables/citations.json",
             "normalization": "normalization.json",
-            "bibliography_catalog": "bibliography/catalog.json",
-            "bibliography_index": "bibliography/index.json",
-            "text_evidence": "bibliography/texts.json",
         },
         "morphology": len(parses.order),
         "kalendarium": [KALENDARIUM.start, KALENDARIUM.stop - 1],
@@ -983,15 +1029,18 @@ def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
 
     declared: set[str] = {"manifest.json"}
     declared.update(manifest["base"].values())
+    declared.update(manifest["bibliography"].values())
     declared.update(entry["path"] for entry in manifest["texts"])
+    declared.update(entry["evidence"] for entry in manifest["texts"] if "evidence" in entry)
     for language in manifest["languages"]:
         declared.add(language["path"])
         language_manifest = json.loads((out / language["path"]).read_text(encoding="utf-8"))
-        declared.update(
-            language_manifest[key]
-            for key in ("lexicon", "citations", "concordance", "bibliography")
-        )
+        declared.update(language_manifest[key] for key in ("lexicon", "citations", "concordance"))
+        declared.update(language_manifest["bibliography"].values())
         declared.update(entry["path"] for entry in language_manifest["texts"])
+        declared.update(
+            entry["evidence"] for entry in language_manifest["texts"] if "evidence" in entry
+        )
     for name in sorted(declared):
         if not (out / name).is_file():
             errors.append(f"manifest: {name} is declared and not written")
@@ -1144,9 +1193,7 @@ def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
 
     evidence_graph, language_evidence = bibliography.load(corpus)
     expected_catalog = bibliography.public_catalog(evidence_graph)
-    catalog = json.loads(
-        (out / manifest["base"]["bibliography_catalog"]).read_text(encoding="utf-8")
-    )
+    catalog = json.loads((out / manifest["bibliography"]["catalog"]).read_text(encoding="utf-8"))
     if catalog != expected_catalog:
         errors.append(
             "bibliography catalog: "
@@ -1154,44 +1201,95 @@ def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
         )
     expected_index = bibliography.public_index(evidence_graph)
     index_artifact = json.loads(
-        (out / manifest["base"]["bibliography_index"]).read_text(encoding="utf-8")
+        (out / manifest["bibliography"]["index"]).read_text(encoding="utf-8")
     )
     if index_artifact != expected_index:
         errors.append(
             "bibliography index: "
             + _first_difference(expected_index, index_artifact, "emitted index")
         )
-    expected_texts = bibliography.public_text_evidence(evidence_graph)
-    text_evidence = json.loads(
-        (out / manifest["base"]["text_evidence"]).read_text(encoding="utf-8")
-    )
-    if text_evidence != expected_texts:
+    expected_texts = {
+        record["id"]: record
+        for record in bibliography.public_text_evidence(evidence_graph)["texts"]
+    }
+    declared_texts = {
+        entry["id"]: entry["evidence"] for entry in manifest["texts"] if "evidence" in entry
+    }
+    if set(declared_texts) != set(expected_texts):
         errors.append(
-            "text evidence: " + _first_difference(expected_texts, text_evidence, "emitted evidence")
+            "text evidence: manifest coverage differs — "
+            f"missing={sorted(set(expected_texts) - set(declared_texts))} "
+            f"extra={sorted(set(declared_texts) - set(expected_texts))}"
         )
-    for language in manifest["languages"]:
-        language_manifest = json.loads((out / language["path"]).read_text(encoding="utf-8"))
-        expected_language = {
-            **bibliography.public_index(evidence_graph, language_evidence[language["id"]]),
-            "catalog": bibliography.public_catalog_delta(
-                evidence_graph, language_evidence[language["id"]]
-            ),
-            "texts": bibliography.public_text_evidence(
-                evidence_graph, language_evidence[language["id"]]
-            )["texts"],
-        }
-        language_bibliography = json.loads(
-            (out / language_manifest["bibliography"]).read_text(encoding="utf-8")
-        )
-        if language_bibliography != expected_language:
+    for text_id, path in declared_texts.items():
+        text_evidence = json.loads((out / path).read_text(encoding="utf-8"))
+        if text_evidence != expected_texts[text_id]:
             errors.append(
-                f"{language['id']} bibliography: "
+                "text evidence: "
                 + _first_difference(
-                    expected_language,
-                    language_bibliography,
-                    "emitted language bibliography",
+                    expected_texts[text_id], text_evidence, f"emitted evidence.{text_id}"
                 )
             )
+    for language in manifest["languages"]:
+        language_manifest = json.loads((out / language["path"]).read_text(encoding="utf-8"))
+        expected_language_catalog = bibliography.public_catalog_delta(
+            evidence_graph, language_evidence[language["id"]]
+        )
+        language_catalog = json.loads(
+            (out / language_manifest["bibliography"]["catalog"]).read_text(encoding="utf-8")
+        )
+        if language_catalog != expected_language_catalog:
+            errors.append(
+                f"{language['id']} bibliography catalog: "
+                + _first_difference(
+                    expected_language_catalog,
+                    language_catalog,
+                    "emitted language bibliography catalog",
+                )
+            )
+        expected_language_index = bibliography.public_index(
+            evidence_graph, language_evidence[language["id"]]
+        )
+        language_index_artifact = json.loads(
+            (out / language_manifest["bibliography"]["index"]).read_text(encoding="utf-8")
+        )
+        if language_index_artifact != expected_language_index:
+            errors.append(
+                f"{language['id']} bibliography index: "
+                + _first_difference(
+                    expected_language_index,
+                    language_index_artifact,
+                    "emitted language bibliography index",
+                )
+            )
+        expected_language_texts = {
+            record["id"]: record
+            for record in bibliography.public_text_evidence(
+                evidence_graph, language_evidence[language["id"]]
+            )["texts"]
+        }
+        declared_language_texts = {
+            entry["id"]: entry["evidence"]
+            for entry in language_manifest["texts"]
+            if "evidence" in entry
+        }
+        if set(declared_language_texts) != set(expected_language_texts):
+            errors.append(
+                f"{language['id']} text evidence: manifest coverage differs — "
+                f"missing={sorted(set(expected_language_texts) - set(declared_language_texts))} "
+                f"extra={sorted(set(declared_language_texts) - set(expected_language_texts))}"
+            )
+        for text_id, path in declared_language_texts.items():
+            text_evidence = json.loads((out / path).read_text(encoding="utf-8"))
+            if text_evidence != expected_language_texts[text_id]:
+                errors.append(
+                    f"{language['id']} text evidence: "
+                    + _first_difference(
+                        expected_language_texts[text_id],
+                        text_evidence,
+                        f"emitted language evidence.{text_id}",
+                    )
+                )
     return errors
 
 

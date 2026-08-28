@@ -54,12 +54,14 @@ under `build_reader/registry/`; after adding a genuinely new record, run
 Ordinary builds refuse to invent or renumber those addresses.
 
 The reader also exposes a normalized bibliography catalogue, a functional
-source index, and compact per-text evidence records. Each language artifact
-contains its own wording evidence and only the catalogue identities absent
-from the neutral package; it never imports another language's sources. The
-legacy inline citation tables remain available while their exact source
-pointers are migrated, and the corpus gate prevents that inventory from
-changing without an explicit parity update.
+source index, and independently loadable evidence files beside the texts that
+have evidence. Each language package contains its own wording evidence and
+only the global catalogue identities absent from the neutral package; it never
+imports another language's sources. A text page can load its self-contained
+neutral slice and one selected language slice without opening the global
+bibliography. The legacy inline citation tables remain available while their
+exact source pointers are migrated, and the corpus gate prevents that
+inventory from changing without an explicit parity update.
 
 Word ids are stable forever — external references (spaced-repetition
 decks, links) never break. `SCHEMA.md` documents the format,

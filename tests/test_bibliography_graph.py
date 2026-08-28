@@ -205,6 +205,26 @@ def test_one_edition_can_appear_in_each_section_it_actually_supports():
     ] == ["edition-neutral"]
 
 
+def test_a_corrected_and_reverified_use_is_published():
+    graph, languages = sample()
+    graph["uses"][0]["decision"] = "RETAIN_WITH_CORRECTION"
+    graph["uses"][0]["decision_reason"] = "The locator was corrected against the scan."
+    assert public_index(graph)["sections"][1]["entries"][0]["edition"] == "edition-neutral"
+    assert public_text_evidence(graph)["texts"][0]["uses"][0]["id"] == "use-neutral"
+    assert validate(CORPUS, graph, languages) == []
+
+
+def test_per_text_slices_are_self_contained_and_language_is_not_duplicated():
+    graph, languages = sample()
+    neutral = public_text_evidence(graph)["texts"][0]
+    polish = public_text_evidence(graph, languages["pl"])["texts"][0]
+    assert [use["id"] for use in neutral["uses"]] == ["use-neutral"]
+    assert [edition["id"] for edition in neutral["catalog"]["editions"]] == ["edition-neutral"]
+    assert [use["id"] for use in polish["uses"]] == ["use-pl"]
+    assert [edition["id"] for edition in polish["catalog"]["editions"]] == ["edition-pl"]
+    assert polish["language"] == "pl"
+
+
 def test_public_projection_is_an_allowlist():
     graph, _languages = sample()
     graph["uses"][0]["evidence_sha256"] = "a" * 64
@@ -233,10 +253,38 @@ def test_reader_emits_new_and_legacy_source_surfaces_together(tmp_path):
     emit(CORPUS, out)
     manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
     assert (out / manifest["base"]["citations"]).is_file()
-    assert (out / manifest["base"]["bibliography_catalog"]).is_file()
-    assert (out / manifest["base"]["bibliography_index"]).is_file()
-    assert (out / manifest["base"]["text_evidence"]).is_file()
+    assert (out / manifest["bibliography"]["catalog"]).is_file()
+    assert (out / manifest["bibliography"]["index"]).is_file()
+    assert not (out / "bibliography/texts.json").exists()
     for language in manifest["languages"]:
         language_manifest = json.loads((out / language["path"]).read_text(encoding="utf-8"))
         assert (out / language_manifest["citations"]).is_file()
-        assert (out / language_manifest["bibliography"]).is_file()
+        assert (out / language_manifest["bibliography"]["catalog"]).is_file()
+        assert (out / language_manifest["bibliography"]["index"]).is_file()
+
+
+def test_reader_declares_independent_per_text_evidence(tmp_path, monkeypatch):
+    graph, languages = sample()
+    monkeypatch.setattr(
+        "build_reader.emit.bibliography.load",
+        lambda _corpus: (graph, languages),
+    )
+    out = tmp_path / "reader"
+    emit(CORPUS, out)
+    manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
+    text_entry = next(
+        entry for entry in manifest["texts"] if entry["id"] == "orationes.benedic-domine"
+    )
+    assert text_entry["evidence"] == "bibliography/texts/orationes/benedic-domine.json"
+    assert (out / text_entry["evidence"]).is_file()
+    polish_manifest_path = next(
+        entry["path"] for entry in manifest["languages"] if entry["id"] == "pl"
+    )
+    polish_manifest = json.loads((out / polish_manifest_path).read_text(encoding="utf-8"))
+    polish_entry = next(
+        entry for entry in polish_manifest["texts"] if entry["id"] == "orationes.benedic-domine"
+    )
+    assert polish_entry["evidence"] == (
+        "languages/pl/bibliography/texts/orationes/benedic-domine.json"
+    )
+    assert (out / polish_entry["evidence"]).is_file()

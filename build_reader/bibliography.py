@@ -850,12 +850,25 @@ def _project_collation(collation: dict) -> dict:
     return {key: collation[key] for key in fields if key in collation}
 
 
+def _publishable(values: list[dict]) -> list[dict]:
+    return [use for use in values if use.get("decision") in {"RETAIN", "RETAIN_WITH_CORRECTION"}]
+
+
 def _retained_uses(graph: dict, language_graph: dict | None = None) -> list[dict]:
-    return [
-        use
-        for use in [*(graph.get("uses") or []), *((language_graph or {}).get("uses") or [])]
-        if use.get("decision") == "RETAIN"
-    ]
+    """Return all publishable uses visible in a reader package."""
+    return _publishable([*(graph.get("uses") or []), *((language_graph or {}).get("uses") or [])])
+
+
+def _package_uses(graph: dict, language_graph: dict | None = None) -> list[dict]:
+    """Return only the uses authored by one package.
+
+    A language bibliography index combines the neutral and localized layers,
+    but its per-text file contains only the localized layer.  The reading page
+    can therefore load the neutral slice and one selected language slice
+    without receiving the neutral evidence twice.
+    """
+    source = graph if language_graph is None else language_graph
+    return _publishable(source.get("uses") or [])
 
 
 def _catalog_for_uses(graph: dict, uses: list[dict], excluded: dict | None = None) -> dict:
@@ -957,16 +970,17 @@ def public_index(graph: dict, language_graph: dict | None = None) -> dict:
 
 
 def public_text_evidence(graph: dict, language_graph: dict | None = None) -> dict:
-    uses = _retained_uses(graph, language_graph)
-    by_text: dict[str, list[str]] = defaultdict(list)
+    """Return self-contained evidence slices, ready to write one file per text."""
+    uses = _package_uses(graph, language_graph)
+    by_text: dict[str, list[dict]] = defaultdict(list)
     for use in uses:
         text_id = (use.get("address") or {}).get("text")
         if text_id:
-            by_text[text_id].append(use["id"])
+            by_text[text_id].append(use)
     public_witnesses = [
         witness
         for witness in graph.get("witnesses") or []
-        if witness.get("use") in {use["id"] for use in uses}
+        if language_graph is None and witness.get("use") in {use["id"] for use in uses}
     ]
     witnesses_by_text: dict[str, list[dict]] = defaultdict(list)
     for witness in public_witnesses:
@@ -979,13 +993,17 @@ def public_text_evidence(graph: dict, language_graph: dict | None = None) -> dic
     text_ids = sorted(set(by_text) | set(witnesses_by_text) | set(collations))
     records = []
     for text_id in text_ids:
+        text_uses = sorted(by_text[text_id], key=lambda value: value["id"])
         record = {
             "id": text_id,
-            "uses": sorted(by_text[text_id]),
+            "catalog": _catalog_for_uses(graph, text_uses),
+            "uses": [_project_use(use) for use in text_uses],
             "witnesses": sorted(witnesses_by_text[text_id], key=lambda value: value["id"]),
         }
         if text_id in collations:
             record["collation"] = collations[text_id]
+        if language_graph is not None:
+            record["language"] = language_graph["language"]
         records.append(record)
     out = {"schema_version": SCHEMA, "texts": records}
     if language_graph is not None:

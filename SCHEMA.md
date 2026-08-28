@@ -108,12 +108,14 @@ inline citation is held by a deterministic inventory digest and may be claimed
 once by a normalized use or once by an explicit removal; setting migration
 `complete` is rejected while any pointer remains unresolved.
 
-The initial reader foundation writes compact per-text evidence to
-`bibliography/texts.json`. Before bulk witness migration makes that table a
-material eager-load cost, it is to be split into manifest-declared
-`bibliography/texts/<category>/<text>.json` artifacts without changing the
-authored graph or its stable ids. Language-specific per-text evidence follows
-the same package boundary.
+The reader writes evidence as manifest-declared
+`bibliography/texts/<category>/<text>.json` artifacts. Each slice contains the
+projected uses, witnesses, collation and the small source catalogue needed to
+render that text without loading the global bibliography. Language-specific
+slices live under `languages/<lang>/bibliography/texts/` and contain only that
+language's wording evidence; loading them alongside the neutral slice never
+duplicates neutral uses. Global catalogues and functional indexes remain
+separate, small manifest resources for the bibliography page.
 
 The optional manifest `titles` object is keyed by covered text id. Each entry
 has a nonempty `title` and may carry unique nonempty `aliases`. These are
