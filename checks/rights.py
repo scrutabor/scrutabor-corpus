@@ -33,6 +33,7 @@ citation therefore moves a site to `own`; it cannot make the site disappear.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 STATUSES = ("public-domain", "own", "permission", "unverified")
@@ -51,6 +52,18 @@ RESTRICTIVENESS = {
 # else it names a place to look, which raises no question of reproduction.
 WORDING_FIELD = "translation_citations"
 
+DLIBRA_ITEM = re.compile(r"/dlibra/publication/(?P<publication>\d+)/edition/(?P<edition>\d+)")
+
+
+def dlibra_identity(url: object) -> tuple[str, str] | None:
+    """The two IDs dLibra needs to identify one edition unambiguously."""
+    if not isinstance(url, str):
+        return None
+    match = DLIBRA_ITEM.search(url)
+    if match is None:
+        return None
+    return match.group("publication"), match.group("edition")
+
 
 def load(corpus: Path) -> tuple[dict, list[str]]:
     path = corpus / "sources.json"
@@ -65,29 +78,42 @@ def load(corpus: Path) -> tuple[dict, list[str]]:
             errors.append(f"sources.json:{title}: status {status!r} is not one of {STATUSES}")
         if not ((work.get("rights") or {}).get("basis") or "").strip():
             errors.append(f"sources.json:{title}: a status without a basis says nothing")
+        url = work.get("url")
+        if isinstance(url, str) and "/dlibra/publication/" in url and "/edition/" not in url:
+            errors.append(
+                f"sources.json:{title}: a dLibra item URL must identify both the "
+                "publication and edition — a bare publication number may belong to "
+                "a different record"
+            )
     return works, errors
+
+
+def citation_entries(doc: object, field: str | None = None) -> list[tuple[str, bool, str | None]]:
+    """Every (title, is-wording, URL) citation in a document."""
+    out: list[tuple[str, bool, str | None]] = []
+    if isinstance(doc, dict):
+        if "title" in doc and "locator" in doc:
+            out.append((doc["title"], field == WORDING_FIELD, doc.get("url")))
+        for key, value in doc.items():
+            out += citation_entries(value, key if key.endswith("_citations") else field)
+    elif isinstance(doc, list):
+        for value in doc:
+            out += citation_entries(value, field)
+    return out
 
 
 def cited(doc: object, field: str | None = None) -> list[tuple[str, bool]]:
     """Every (title, is-wording) pair in a document."""
-    out: list[tuple[str, bool]] = []
-    if isinstance(doc, dict):
-        if "title" in doc and "locator" in doc:
-            out.append((doc["title"], field == WORDING_FIELD))
-        for key, value in doc.items():
-            out += cited(value, key if key.endswith("_citations") else field)
-    elif isinstance(doc, list):
-        for value in doc:
-            out += cited(value, field)
-    return out
+    return [(title, wording) for title, wording, _url in citation_entries(doc, field)]
 
 
 def check(docs: list[dict], works: dict) -> list[str]:
     """One message per citation the registry cannot account for."""
     errors = []
     wording_titles: set[str] = set()
+    url_mismatches: set[tuple[str, str, str]] = set()
     for doc in docs:
-        for title, wording in cited(doc):
+        for title, wording, url in citation_entries(doc):
             if title not in works:
                 errors.append(
                     f"{doc.get('id') or doc.get('text') or '?'}: cites {title!r}, which is "
@@ -95,6 +121,24 @@ def check(docs: list[dict], works: dict) -> list[str]:
                 )
             elif wording:
                 wording_titles.add(title)
+            work = works.get(title)
+            registered_url = work.get("url") if work is not None else None
+            if isinstance(url, str) and "/dlibra/publication/" in url:
+                if dlibra_identity(url) is None:
+                    errors.append(
+                        f"citation {title!r}: a dLibra item URL must identify both "
+                        "the publication and edition"
+                    )
+                elif dlibra_identity(registered_url) is not None and dlibra_identity(
+                    url
+                ) != dlibra_identity(registered_url):
+                    assert isinstance(registered_url, str)
+                    url_mismatches.add((title, url, registered_url))
+    for title, url, registered_url in sorted(url_mismatches):
+        errors.append(
+            f"citation {title!r}: dLibra edition {url!r} differs from the "
+            f"sources.json edition {registered_url!r}"
+        )
     flagged = {title for title, work in works.items() if work.get("cited_for_wording") is True}
     for title in sorted(wording_titles - flagged):
         errors.append(

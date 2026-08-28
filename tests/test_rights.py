@@ -69,6 +69,51 @@ def test_a_registered_citation_passes():
     )
 
 
+def test_a_dlibra_citation_must_match_the_registered_edition():
+    doc = {
+        "id": "x",
+        "segments": {
+            "s01": {
+                "translation_citations": [
+                    {
+                        "title": "Known",
+                        "locator": "p. 1",
+                        "url": "https://example.org/dlibra/publication/2/edition/20/work",
+                    }
+                ]
+            }
+        },
+    }
+    errors = check(
+        [doc],
+        {
+            "Known": {
+                "rights": {"status": "own", "basis": "ours"},
+                "cited_for_wording": True,
+                "url": "https://example.org/dlibra/publication/1/edition/10/work",
+            }
+        },
+    )
+    assert len(errors) == 1
+    assert "differs from the sources.json edition" in errors[0]
+
+
+def test_a_citation_may_deep_link_within_a_registered_work():
+    doc = {
+        "id": "x",
+        "about_citations": [
+            {"title": "Known", "locator": "chapter 2", "url": "https://example.org/work#2"}
+        ],
+    }
+    works = {
+        "Known": {
+            "rights": {"status": "public-domain", "basis": "b"},
+            "url": "https://example.org/work",
+        }
+    }
+    assert check([doc], works) == []
+
+
 def test_wording_flags_must_match_current_translation_citations():
     doc = {
         "text": "x",
@@ -205,6 +250,43 @@ def test_a_status_with_no_basis_is_rejected(tmp_path):
     _works, errors = load(tmp_path)
     assert len(errors) == 1
     assert "says nothing" in errors[0]
+
+
+def test_a_dlibra_source_url_must_name_the_edition(tmp_path):
+    (tmp_path / "sources.json").write_text(
+        json.dumps(
+            {
+                "works": {
+                    "W": {
+                        "title": "W",
+                        "rights": {"status": "public-domain", "basis": "b"},
+                        "url": "https://example.org/dlibra/publication/913560",
+                    }
+                }
+            }
+        )
+    )
+    _works, errors = load(tmp_path)
+    assert len(errors) == 1
+    assert "publication and edition" in errors[0]
+
+
+def test_a_complete_dlibra_source_url_is_accepted(tmp_path):
+    (tmp_path / "sources.json").write_text(
+        json.dumps(
+            {
+                "works": {
+                    "W": {
+                        "title": "W",
+                        "rights": {"status": "public-domain", "basis": "b"},
+                        "url": "https://example.org/dlibra/publication/951462/edition/913560/w",
+                    }
+                }
+            }
+        )
+    )
+    _works, errors = load(tmp_path)
+    assert errors == []
 
 
 def test_a_missing_registry_is_a_failure_not_a_default(tmp_path):
