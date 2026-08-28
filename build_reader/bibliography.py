@@ -18,7 +18,7 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
-SCHEMA = "1.2.0"
+SCHEMA = "1.3.0"
 
 GRAPH_KEYS = {
     "schema_version",
@@ -139,7 +139,7 @@ DECISIONS = {
 }
 
 LATIN_ROLES = {
-    "controlling_official_text",
+    "official_text",
     "corroborating_latin_witness",
     "direct_approved_print",
     "derived_digital_collation_aid",
@@ -149,11 +149,10 @@ OFFICIAL_ROLES = {
     "official_liturgical_context",
     "rubric_control",
     "liturgical_history",
-    "historical_context",
 }
 SCHOLARLY_ROLES = {
     "quotation_control",
-    "scripture_control",
+    "scripture_text",
     "lexical_support",
     "grammatical_support",
     "semantic_comparator",

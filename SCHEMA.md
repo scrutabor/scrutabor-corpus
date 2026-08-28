@@ -101,6 +101,13 @@ translation. Paginated evidence requires both printed and scan/PDF locators;
 born-digital evidence requires a stable section. All ids are stable and URLs
 never serve as identity.
 
+Reader-facing role names describe only the function actually verified:
+`official_text`, `direct_approved_print`, `official_liturgical_context`,
+`historical_wording_basis`, `historical_wording_comparator`, and
+`scripture_text`. The graph does not use a generic `historical_context` role:
+age is not an evidentiary function, and a recent official edition may directly
+print a much older prayer without becoming a historical study.
+
 Wording uses live only in `languages/<lang>/bibliography.json`. A neutral use
 cannot carry a wording role, and a language package cannot carry a neutral or
 another language's use. The reader's neutral catalogue therefore contains only

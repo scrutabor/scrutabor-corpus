@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "migration": {
     "complete": true,
     "legacy_inventory": {
@@ -3610,7 +3610,7 @@
       "id": "use.core.02848aef2cc6b3dcd25d",
       "edition": "edition.enchiridion-indulgentiarum-fourth-edition",
       "digital_item": "item.enchiridion-indulgentiarum-1999.scan",
-      "role": "historical_context",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "orationes.angelus-domini"
@@ -3633,7 +3633,7 @@
       "id": "use.core.1995cc4c1a78cd96b7a1",
       "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
       "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
-      "role": "historical_context",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "orationes.anima-christi"
@@ -3702,7 +3702,7 @@
       "id": "use.core.59efc84711d7e7672562",
       "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
       "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
-      "role": "historical_context",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "orationes.memorare"
@@ -3725,7 +3725,7 @@
       "id": "use.core.6633ed8538a351936777",
       "edition": "edition.biblia-sacra-vulgatae-editionis-1914",
       "digital_item": "item.biblia-sacra-vulgatae-1914.scan",
-      "role": "scripture_control",
+      "role": "scripture_text",
       "address": {
         "kind": "text",
         "text": "defunctorum.de-profundis"
@@ -3747,7 +3747,7 @@
       "id": "use.core.83f4b5e0cb26c6298acb",
       "edition": "edition.enchiridion-indulgentiarum-fourth-edition",
       "digital_item": "item.enchiridion-indulgentiarum-1999.scan",
-      "role": "historical_context",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "orationes.agimus-tibi-gratias"
@@ -3770,7 +3770,7 @@
       "id": "use.core.ab8ff3b4c96a69a66480",
       "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
       "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
-      "role": "historical_context",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "orationes.deus-refugium"
@@ -3790,31 +3790,10 @@
       "evidence_sha256": "027fbf35ae1871e33d95b218c9343e03587931072d9b8958737395948994a76b"
     },
     {
-      "id": "use.core.c81ffe467613eb6395ac",
-      "edition": "edition.compendium-of-the-catechism-of-the-catholic-church",
-      "digital_item": "item.compendium-of-the-catechism-2005.html",
-      "role": "historical_context",
-      "address": {
-        "kind": "text",
-        "text": "orationes.symbolum-apostolorum"
-      },
-      "locator": {
-        "section": "Appendix A — The Apostles’ Creed; questions 33–35, especially 35 (CCC 193–195)"
-      },
-      "claim": "The source prints and identifies Symbolum Apostolórum.",
-      "verified_on": "2026-08-28",
-      "decision": "RETAIN_WITH_CORRECTION",
-      "legacy_refs": [
-        "texts/orationes/symbolum-apostolorum.json#/localization/about_citations/0"
-      ],
-      "decision_reason": "Exact locator and/or evidentiary role corrected after direct page-image audit; see english.md.",
-      "evidence_sha256": "ef84377c3915acdae3cdfc4eeea27481441bc4cd268643fe3d1ea7ce87fad298"
-    },
-    {
       "id": "use.core.ea37ed10433d61424880",
       "edition": "edition.enchiridion-indulgentiarum-fourth-edition",
       "digital_item": "item.enchiridion-indulgentiarum-1999.scan",
-      "role": "historical_context",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "orationes.benedic-domine"
@@ -3860,7 +3839,7 @@
       "id": "use.core.f9e87cc5d5b567cbab11",
       "edition": "edition.compendium-of-the-catechism-of-the-catholic-church",
       "digital_item": "item.compendium-of-the-catechism-2005.html",
-      "role": "historical_context",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "orationes.sub-tuum-praesidium"
@@ -3904,7 +3883,7 @@
       "id": "use.defunctorum.requiem-aeternam.context.ei1952",
       "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
       "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
-      "role": "historical_context",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "defunctorum.requiem-aeternam"
@@ -3925,7 +3904,7 @@
       "id": "use.litaniae.lauretanae.context.ei1952",
       "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
       "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
-      "role": "historical_context",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "litaniae.lauretanae"
@@ -3943,10 +3922,10 @@
       "evidence_sha256": "027fbf35ae1871e33d95b218c9343e03587931072d9b8958737395948994a76b"
     },
     {
-      "id": "use.litaniae.sacratissimi-cordis-iesu.context.ei1952",
+      "id": "use.litaniae.sacratissimi-cordis-iesu.enchiridion-1952",
       "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
       "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
-      "role": "historical_context",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "litaniae.sacratissimi-cordis-iesu"
@@ -3955,7 +3934,7 @@
         "printed": "n. 245, pp. 150–153",
         "scan": "PDF scans 167–170"
       },
-      "claim": "Prints the complete Litany of the Sacred Heart.",
+      "claim": "Direct witness for the selected Latin text and the stated text boundary.",
       "verified_on": "2026-08-28",
       "decision": "RETAIN",
       "legacy_refs": [
@@ -3964,28 +3943,10 @@
       "evidence_sha256": "027fbf35ae1871e33d95b218c9343e03587931072d9b8958737395948994a76b"
     },
     {
-      "id": "use.litaniae.sacratissimi-cordis-iesu.enchiridion-1952",
+      "id": "use.litaniae.sanctissimi-nominis-iesu.enchiridion-1952",
       "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
       "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
-      "role": "controlling_official_text",
-      "address": {
-        "kind": "text",
-        "text": "litaniae.sacratissimi-cordis-iesu"
-      },
-      "locator": {
-        "printed": "n. 245, pp. 150–153",
-        "scan": "PDF scans 167–170"
-      },
-      "claim": "Direct witness for the selected Latin text and the stated text boundary.",
-      "verified_on": "2026-08-28",
-      "decision": "RETAIN",
-      "legacy_refs": []
-    },
-    {
-      "id": "use.litaniae.sanctissimi-nominis-iesu.context.ei1952",
-      "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
-      "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
-      "role": "historical_context",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "litaniae.sanctissimi-nominis-iesu"
@@ -3994,7 +3955,7 @@
         "printed": "n. 114, pp. 52–56",
         "scan": "PDF scans 69–73"
       },
-      "claim": "Prints the complete Litany of the Holy Name, including the concluding petitions.",
+      "claim": "Direct witness for the selected Latin text and the stated text boundary.",
       "verified_on": "2026-08-28",
       "decision": "RETAIN",
       "legacy_refs": [
@@ -4003,28 +3964,10 @@
       "evidence_sha256": "027fbf35ae1871e33d95b218c9343e03587931072d9b8958737395948994a76b"
     },
     {
-      "id": "use.litaniae.sanctissimi-nominis-iesu.enchiridion-1952",
-      "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
-      "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
-      "role": "controlling_official_text",
-      "address": {
-        "kind": "text",
-        "text": "litaniae.sanctissimi-nominis-iesu"
-      },
-      "locator": {
-        "printed": "n. 114, pp. 52–56",
-        "scan": "PDF scans 69–73"
-      },
-      "claim": "Direct witness for the selected Latin text and the stated text boundary.",
-      "verified_on": "2026-08-28",
-      "decision": "RETAIN",
-      "legacy_refs": []
-    },
-    {
       "id": "use.neutral.4a5fc94788b5cf7456f1",
       "edition": "edition.katolik-w-modlitwie-1902",
       "digital_item": "item.katolik-w-modlitwie-1902.obc",
-      "role": "historical_context",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "orationes.ave-regina-caelorum"
@@ -4046,7 +3989,7 @@
       "id": "use.neutral.a0a23c585c7b7ac1d97d",
       "edition": "edition.katolik-w-modlitwie-1902",
       "digital_item": "item.katolik-w-modlitwie-1902.obc",
-      "role": "historical_context",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "orationes.alma-redemptoris-mater"
@@ -4068,7 +4011,7 @@
       "id": "use.orationes.actus-contritionis.compendium-2005",
       "edition": "edition.compendium-of-the-catechism-of-the-catholic-church",
       "digital_item": "item.compendium-of-the-catechism-2005.html",
-      "role": "controlling_official_text",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "orationes.actus-contritionis"
@@ -4077,25 +4020,6 @@
         "section": "Appendix A — Common Prayers — Actus contritionis"
       },
       "claim": "Direct witness for the selected Latin text and the stated text boundary.",
-      "verified_on": "2026-08-28",
-      "decision": "RETAIN",
-      "legacy_refs": [],
-      "evidence_sha256": "a35594fda5cf56333ff59388de407e152f5cd41e012d68e34f2bf75bbfa691a8",
-      "decision_reason": "Reverified against the official English Holy See edition, which prints the cited Latin formula directly; the former Lithuanian access layer was removed."
-    },
-    {
-      "id": "use.orationes.actus-contritionis.context.compendium2005",
-      "edition": "edition.compendium-of-the-catechism-of-the-catholic-church",
-      "digital_item": "item.compendium-of-the-catechism-2005.html",
-      "role": "historical_context",
-      "address": {
-        "kind": "text",
-        "text": "orationes.actus-contritionis"
-      },
-      "locator": {
-        "section": "Appendix A — Common Prayers — Actus contritionis"
-      },
-      "claim": "Prints the selected Latin Actus contritionis.",
       "verified_on": "2026-08-28",
       "decision": "RETAIN",
       "legacy_refs": [
@@ -4127,7 +4051,7 @@
       "id": "use.orationes.alma-redemptoris-mater.context.key1901",
       "edition": "edition.key-of-heaven-1901",
       "digital_item": "item.key-of-heaven-1901.wikimedia-commons",
-      "role": "historical_context",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "orationes.alma-redemptoris-mater"
@@ -4148,7 +4072,7 @@
       "id": "use.orationes.angele-dei.compendium-2005",
       "edition": "edition.compendium-of-the-catechism-of-the-catholic-church",
       "digital_item": "item.compendium-of-the-catechism-2005.html",
-      "role": "controlling_official_text",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "orationes.angele-dei"
@@ -4157,25 +4081,6 @@
         "section": "Appendix A — Common Prayers — Angele Dei"
       },
       "claim": "Direct witness for the selected Latin text and the stated text boundary.",
-      "verified_on": "2026-08-28",
-      "decision": "RETAIN",
-      "legacy_refs": [],
-      "evidence_sha256": "a35594fda5cf56333ff59388de407e152f5cd41e012d68e34f2bf75bbfa691a8",
-      "decision_reason": "Reverified against the official English Holy See edition, which prints the cited Latin formula directly; the former Lithuanian access layer was removed."
-    },
-    {
-      "id": "use.orationes.angele-dei.context.compendium2005",
-      "edition": "edition.compendium-of-the-catechism-of-the-catholic-church",
-      "digital_item": "item.compendium-of-the-catechism-2005.html",
-      "role": "historical_context",
-      "address": {
-        "kind": "text",
-        "text": "orationes.angele-dei"
-      },
-      "locator": {
-        "section": "Appendix A — Common Prayers — Angele Dei"
-      },
-      "claim": "Prints the selected Latin Angele Dei.",
       "verified_on": "2026-08-28",
       "decision": "RETAIN",
       "legacy_refs": [
@@ -4188,7 +4093,7 @@
       "id": "use.orationes.angelus-domini.context.ei1952",
       "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
       "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
-      "role": "historical_context",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "orationes.angelus-domini"
@@ -4209,7 +4114,7 @@
       "id": "use.orationes.anima-christi.compendium-2005",
       "edition": "edition.compendium-of-the-catechism-of-the-catholic-church",
       "digital_item": "item.compendium-of-the-catechism-2005.html",
-      "role": "controlling_official_text",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "orationes.anima-christi"
@@ -4218,25 +4123,6 @@
         "section": "Appendix A — Common Prayers — Anima Christi"
       },
       "claim": "Direct witness for the selected Latin text and the stated text boundary.",
-      "verified_on": "2026-08-28",
-      "decision": "RETAIN",
-      "legacy_refs": [],
-      "evidence_sha256": "a35594fda5cf56333ff59388de407e152f5cd41e012d68e34f2bf75bbfa691a8",
-      "decision_reason": "Reverified against the official English Holy See edition, which prints the cited Latin formula directly; the former Lithuanian access layer was removed."
-    },
-    {
-      "id": "use.orationes.anima-christi.context.compendium2005",
-      "edition": "edition.compendium-of-the-catechism-of-the-catholic-church",
-      "digital_item": "item.compendium-of-the-catechism-2005.html",
-      "role": "historical_context",
-      "address": {
-        "kind": "text",
-        "text": "orationes.anima-christi"
-      },
-      "locator": {
-        "section": "Appendix A — Common Prayers — Anima Christi"
-      },
-      "claim": "Prints the selected Latin Anima Christi and its text boundary.",
       "verified_on": "2026-08-28",
       "decision": "RETAIN",
       "legacy_refs": [
@@ -4249,7 +4135,7 @@
       "id": "use.orationes.ave-regina-caelorum.context.key1901",
       "edition": "edition.key-of-heaven-1901",
       "digital_item": "item.key-of-heaven-1901.wikimedia-commons",
-      "role": "historical_context",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "orationes.ave-regina-caelorum"
@@ -4308,7 +4194,7 @@
       "id": "use.orationes.magnificat.compendium-2005",
       "edition": "edition.compendium-of-the-catechism-of-the-catholic-church",
       "digital_item": "item.compendium-of-the-catechism-2005.html",
-      "role": "controlling_official_text",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "orationes.magnificat"
@@ -4327,7 +4213,7 @@
       "id": "use.orationes.memorare.compendium-2005",
       "edition": "edition.compendium-of-the-catechism-of-the-catholic-church",
       "digital_item": "item.compendium-of-the-catechism-2005.html",
-      "role": "controlling_official_text",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "orationes.memorare"
@@ -4336,25 +4222,6 @@
         "section": "Appendix A — Common Prayers — Memorare"
       },
       "claim": "Direct witness for the selected Latin text and the stated text boundary.",
-      "verified_on": "2026-08-28",
-      "decision": "RETAIN",
-      "legacy_refs": [],
-      "evidence_sha256": "a35594fda5cf56333ff59388de407e152f5cd41e012d68e34f2bf75bbfa691a8",
-      "decision_reason": "Reverified against the official English Holy See edition, which prints the cited Latin formula directly; the former Lithuanian access layer was removed."
-    },
-    {
-      "id": "use.orationes.memorare.context.compendium2005",
-      "edition": "edition.compendium-of-the-catechism-of-the-catholic-church",
-      "digital_item": "item.compendium-of-the-catechism-2005.html",
-      "role": "historical_context",
-      "address": {
-        "kind": "text",
-        "text": "orationes.memorare"
-      },
-      "locator": {
-        "section": "Appendix A — Common Prayers — Memorare"
-      },
-      "claim": "Prints the selected Latin Memorare and its complete boundary.",
       "verified_on": "2026-08-28",
       "decision": "RETAIN",
       "legacy_refs": [
@@ -4367,7 +4234,7 @@
       "id": "use.orationes.regina-caeli.context.ei1952",
       "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
       "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
-      "role": "historical_context",
+      "role": "official_liturgical_context",
       "address": {
         "kind": "text",
         "text": "orationes.regina-caeli"
@@ -4388,7 +4255,7 @@
       "id": "use.orationes.symbolum-apostolorum.compendium-2005",
       "edition": "edition.compendium-of-the-catechism-of-the-catholic-church",
       "digital_item": "item.compendium-of-the-catechism-2005.html",
-      "role": "controlling_official_text",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "orationes.symbolum-apostolorum"
@@ -4399,7 +4266,9 @@
       "claim": "Direct witness for the selected Latin text and the stated text boundary.",
       "verified_on": "2026-08-28",
       "decision": "RETAIN",
-      "legacy_refs": [],
+      "legacy_refs": [
+        "texts/orationes/symbolum-apostolorum.json#/localization/about_citations/0"
+      ],
       "evidence_sha256": "a35594fda5cf56333ff59388de407e152f5cd41e012d68e34f2bf75bbfa691a8",
       "decision_reason": "Reverified against the official English Holy See edition, which prints the cited Latin formula directly; the former Lithuanian access layer was removed."
     },
@@ -4423,29 +4292,10 @@
       "evidence_sha256": "f811359bce60aa34cf5554e6a86a0b5a94877c18fd81870b39b8758913964e28"
     },
     {
-      "id": "use.orationes.te-deum.breviarium-1902-b",
-      "edition": "edition.breviarium-romanum.1902-pustet",
-      "digital_item": "item.breviarium-romanum.1902-pustet.ia-breviariumromanu04cath",
-      "role": "direct_approved_print",
-      "address": {
-        "kind": "text",
-        "text": "orationes.te-deum"
-      },
-      "locator": {
-        "printed": "p. 18, Te Deum laudamus",
-        "scan": "PDF scan 62"
-      },
-      "claim": "Direct witness for the selected Latin text and the stated text boundary.",
-      "verified_on": "2026-08-28",
-      "decision": "RETAIN",
-      "legacy_refs": [],
-      "evidence_sha256": "f811359bce60aa34cf5554e6a86a0b5a94877c18fd81870b39b8758913964e28"
-    },
-    {
       "id": "use.orationes.te-deum.compendium-2005",
       "edition": "edition.compendium-of-the-catechism-of-the-catholic-church",
       "digital_item": "item.compendium-of-the-catechism-2005.html",
-      "role": "controlling_official_text",
+      "role": "official_text",
       "address": {
         "kind": "text",
         "text": "orationes.te-deum"
@@ -4454,25 +4304,6 @@
         "section": "Appendix A — Common Prayers — Te Deum"
       },
       "claim": "Direct witness for the selected Latin text and the stated text boundary.",
-      "verified_on": "2026-08-28",
-      "decision": "RETAIN",
-      "legacy_refs": [],
-      "evidence_sha256": "a35594fda5cf56333ff59388de407e152f5cd41e012d68e34f2bf75bbfa691a8",
-      "decision_reason": "Reverified against the official English Holy See edition, which prints the cited Latin formula directly; the former Lithuanian access layer was removed."
-    },
-    {
-      "id": "use.orationes.te-deum.context.compendium2005",
-      "edition": "edition.compendium-of-the-catechism-of-the-catholic-church",
-      "digital_item": "item.compendium-of-the-catechism-2005.html",
-      "role": "historical_context",
-      "address": {
-        "kind": "text",
-        "text": "orationes.te-deum"
-      },
-      "locator": {
-        "section": "Appendix A — Common Prayers — Te Deum"
-      },
-      "claim": "Prints the selected Latin Te Deum and its complete boundary.",
       "verified_on": "2026-08-28",
       "decision": "RETAIN",
       "legacy_refs": [
@@ -4864,7 +4695,7 @@
     {
       "id": "witness.orationes.te-deum.breviarium-1902-b",
       "text": "orationes.te-deum",
-      "use": "use.orationes.te-deum.breviarium-1902-b",
+      "use": "use.orationes.te-deum.breviarium-1902-a",
       "role": "approved_corroboration",
       "coverage": {
         "kind": "words",

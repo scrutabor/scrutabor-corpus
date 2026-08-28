@@ -159,6 +159,13 @@ def test_an_edition_accepts_supported_parallel_languages():
     assert validate(CORPUS, graph, languages) == []
 
 
+def test_a_use_rejects_the_obsolete_generic_historical_context_role():
+    graph, languages = sample()
+    graph["uses"][0]["role"] = "historical_context"
+    errors = validate(CORPUS, graph, languages)
+    assert any("role: must be one of" in error for error in errors)
+
+
 def test_a_language_package_rejects_a_neutral_role():
     graph, languages = sample()
     languages["pl"]["uses"][0]["role"] = "lexical_support"
