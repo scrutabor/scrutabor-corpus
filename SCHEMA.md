@@ -85,6 +85,12 @@ contains:
 - `collations`: the selected recension and text hash, witness set and compact
   apparatus result for one text.
 
+Witness coverage is either the whole text, an explicit list of stable segment
+ids, or an explicit list of stable word ids in canonical text order. Word-id
+lists deliberately are not compressed to numeric ranges: ids record allocation
+history rather than position, so a range could silently change meaning after a
+later insertion.
+
 `role`, `decision`, and acquisition state are separate facts. A strong official
 edition does not support a claim merely by being relevant to its subject, and a
 historical wording comparator is not thereby a source of the published

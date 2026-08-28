@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 from build_reader.bibliography import (
+    SCHEMA,
     legacy_digest,
     legacy_inventory,
     load,
@@ -75,7 +76,7 @@ def use(identifier: str, edition_id: str, item_id: str, role: str) -> dict:
 
 def sample() -> tuple[dict, dict[str, dict]]:
     graph: dict = {
-        "schema_version": "1.0.0",
+        "schema_version": SCHEMA,
         "migration": migration(),
         "works": [
             {"id": "work-neutral", "responsible": "A", "title": "Neutral work"},
@@ -101,9 +102,9 @@ def sample() -> tuple[dict, dict[str, dict]]:
         "collations": [],
     }
     languages: dict[str, dict] = {
-        "en": {"schema_version": "1.0.0", "language": "en", "uses": []},
+        "en": {"schema_version": SCHEMA, "language": "en", "uses": []},
         "pl": {
-            "schema_version": "1.0.0",
+            "schema_version": SCHEMA,
             "language": "pl",
             "uses": [
                 use(
@@ -158,6 +159,43 @@ def test_a_scanned_print_requires_both_printed_and_scan_locators():
     graph["uses"][0]["locator"] = {"printed": "p. 1"}
     errors = validate(CORPUS, graph, languages)
     assert any("requires printed and scan locators" in error for error in errors)
+
+
+def test_partial_witness_can_name_an_explicit_stable_word_set():
+    graph, languages = sample()
+    graph["uses"][0]["role"] = "direct_approved_print"
+    graph["witnesses"] = [
+        {
+            "id": "witness-partial",
+            "text": "orationes.benedic-domine",
+            "use": "use-neutral",
+            "role": "approved_corroboration",
+            "coverage": {"kind": "words", "words": ["w001", "w002", "w003"]},
+            "transcription_sha256": "a" * 64,
+            "orthography_profile": "The source is transcribed without editorial accents.",
+            "independence_basis": "The witness is an independently printed approved edition.",
+        }
+    ]
+    assert validate(CORPUS, graph, languages) == []
+
+
+def test_partial_witness_word_ids_follow_text_order():
+    graph, languages = sample()
+    graph["uses"][0]["role"] = "direct_approved_print"
+    graph["witnesses"] = [
+        {
+            "id": "witness-partial",
+            "text": "orationes.benedic-domine",
+            "use": "use-neutral",
+            "role": "approved_corroboration",
+            "coverage": {"kind": "words", "words": ["w003", "w001"]},
+            "transcription_sha256": "a" * 64,
+            "orthography_profile": "The source is transcribed without editorial accents.",
+            "independence_basis": "The witness is an independently printed approved edition.",
+        }
+    ]
+    errors = validate(CORPUS, graph, languages)
+    assert any("must follow canonical text order" in error for error in errors)
 
 
 def test_one_legacy_attachment_cannot_map_to_two_uses():

@@ -18,7 +18,7 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
-SCHEMA = "1.0.0"
+SCHEMA = "1.1.0"
 
 GRAPH_KEYS = {
     "schema_version",
@@ -90,7 +90,7 @@ WITNESS_KEYS = {
     "orthography_profile",
     "independence_basis",
 }
-COVERAGE_KEYS = {"kind", "segments"}
+COVERAGE_KEYS = {"kind", "segments", "words"}
 COLLATION_KEYS = {
     "id",
     "text",
@@ -322,22 +322,24 @@ def _records(
 
 def _address_sets(
     corpus: Path,
-) -> tuple[dict[str, set[str]], dict[str, set[str]], set[str]]:
+) -> tuple[dict[str, set[str]], dict[str, set[str]], dict[str, list[str]], set[str]]:
     segments: dict[str, set[str]] = {}
     words: dict[str, set[str]] = {}
+    word_order: dict[str, list[str]] = {}
     for path in sorted(corpus.glob("texts/*/*.json")):
         doc = json.loads(path.read_text(encoding="utf-8"))
         text_id = doc["id"]
         segments[text_id] = {segment["id"] for segment in doc.get("segments") or []}
-        words[text_id] = {
+        word_order[text_id] = [
             word["id"]
             for segment in doc.get("segments") or []
             for word in segment.get("words") or []
-        }
+        ]
+        words[text_id] = set(word_order[text_id])
     lemmata = set(
         json.loads((corpus / "lexicon" / "lemmata.json").read_text(encoding="utf-8"))["entries"]
     )
-    return segments, words, lemmata
+    return segments, words, word_order, lemmata
 
 
 def _validate_address(
@@ -495,7 +497,7 @@ def validate(
         for witness in witnesses
         if isinstance(identifier := witness.get("id"), str)
     }
-    segments_by_text, words_by_text, lemmata = _address_sets(corpus)
+    segments_by_text, words_by_text, word_order_by_text, lemmata = _address_sets(corpus)
 
     for index, work in enumerate(works):
         where = f"bibliography.works[{index}]"
@@ -643,11 +645,13 @@ def validate(
         if text_id not in segments_by_text:
             errors.append(f"{where}.text: unknown text {text_id!r}")
         coverage = _unknown(witness.get("coverage"), COVERAGE_KEYS, f"{where}.coverage", errors)
-        if coverage.get("kind") not in {"full", "segments"}:
-            errors.append(f"{where}.coverage.kind: must be full or segments")
+        if coverage.get("kind") not in {"full", "segments", "words"}:
+            errors.append(f"{where}.coverage.kind: must be full, segments or words")
         if coverage.get("kind") == "full" and set(coverage) != {"kind"}:
             errors.append(f"{where}.coverage: full coverage has no segment list")
         if coverage.get("kind") == "segments":
+            if set(coverage) != {"kind", "segments"}:
+                errors.append(f"{where}.coverage: segment coverage has exactly a segment list")
             segments = coverage.get("segments")
             if (
                 not isinstance(segments, list)
@@ -659,6 +663,27 @@ def validate(
                 unknown := sorted(set(segments) - segments_by_text[str(text_id)])
             ):
                 errors.append(f"{where}.coverage.segments: unknown ids {unknown}")
+        if coverage.get("kind") == "words":
+            if set(coverage) != {"kind", "words"}:
+                errors.append(f"{where}.coverage: word coverage has exactly a word list")
+            covered_words = coverage.get("words")
+            if (
+                not isinstance(covered_words, list)
+                or not covered_words
+                or len(covered_words) != len(set(covered_words))
+            ):
+                errors.append(f"{where}.coverage.words: must be a unique nonempty array")
+            elif text_id in words_by_text:
+                unknown = sorted(set(covered_words) - words_by_text[str(text_id)])
+                if unknown:
+                    errors.append(f"{where}.coverage.words: unknown ids {unknown}")
+                expected_order = [
+                    word_id
+                    for word_id in word_order_by_text[str(text_id)]
+                    if word_id in set(covered_words)
+                ]
+                if covered_words != expected_order:
+                    errors.append(f"{where}.coverage.words: must follow canonical text order")
 
     seen_texts: set[str] = set()
     for index, collation in enumerate(collations):
