@@ -119,15 +119,15 @@ def sample() -> tuple[dict, dict[str, dict]]:
     return graph, languages
 
 
-def test_the_authored_foundation_reconciles_every_legacy_citation():
+def test_the_authored_graph_accounts_for_every_audited_legacy_citation():
     graph, languages = load(CORPUS)
     assert validate(CORPUS, graph, languages) == []
     state = parity(CORPUS, graph, languages)
     assert state == {
         "legacy": 2776,
-        "mapped": 0,
-        "removed": 0,
-        "unmapped": 2776,
+        "mapped": 2044,
+        "removed": 266,
+        "unmapped": 466,
         "sha256": "0a98de216bb10472089375a1a1845327c1dbcaceb180d688f3e55c5aa6cbb48f",
         "complete": False,
     }
@@ -248,18 +248,19 @@ def test_a_corrected_and_reverified_use_is_published():
     graph["uses"][0]["decision"] = "RETAIN_WITH_CORRECTION"
     graph["uses"][0]["decision_reason"] = "The locator was corrected against the scan."
     assert public_index(graph)["sections"][1]["entries"][0]["edition"] == "edition-neutral"
-    assert public_text_evidence(graph)["texts"][0]["uses"][0]["id"] == "use-neutral"
+    entry = public_text_evidence(graph)["texts"][0]["source_groups"][0]["entries"][0]
+    assert entry["id"] == "use-neutral"
     assert validate(CORPUS, graph, languages) == []
 
 
-def test_per_text_slices_are_self_contained_and_language_is_not_duplicated():
+def test_per_text_slices_share_catalogues_and_language_is_not_duplicated():
     graph, languages = sample()
     neutral = public_text_evidence(graph)["texts"][0]
     polish = public_text_evidence(graph, languages["pl"])["texts"][0]
-    assert [use["id"] for use in neutral["uses"]] == ["use-neutral"]
-    assert [edition["id"] for edition in neutral["catalog"]["editions"]] == ["edition-neutral"]
-    assert [use["id"] for use in polish["uses"]] == ["use-pl"]
-    assert [edition["id"] for edition in polish["catalog"]["editions"]] == ["edition-pl"]
+    assert [entry["id"] for entry in neutral["source_groups"][0]["entries"]] == ["use-neutral"]
+    assert "catalog" not in neutral
+    assert [entry["id"] for entry in polish["source_groups"][0]["entries"]] == ["use-pl"]
+    assert "catalog" not in polish
     assert polish["language"] == "pl"
 
 

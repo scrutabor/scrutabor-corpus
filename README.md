@@ -57,9 +57,11 @@ The reader also exposes a normalized bibliography catalogue, a functional
 source index, and independently loadable evidence files beside the texts that
 have evidence. Each language package contains its own wording evidence and
 only the global catalogue identities absent from the neutral package; it never
-imports another language's sources. A text page can load its self-contained
-neutral slice and one selected language slice without opening the global
-bibliography. The legacy inline citation tables remain available while their
+imports another language's sources. A text page loads the small neutral
+catalogue once, then its neutral slice and one selected language slice; source
+identities are not repeated in every text file, and uses sharing one source
+locator are grouped. The global index names affected texts and counts while
+detailed claims remain lazy. The legacy inline citation tables remain available while their
 exact source pointers are migrated, and the corpus gate prevents that
 inventory from changing without an explicit parity update.
 

@@ -116,12 +116,18 @@ once by a normalized use or once by an explicit removal; setting migration
 
 The reader writes evidence as manifest-declared
 `bibliography/texts/<category>/<text>.json` artifacts. Each slice contains the
-projected uses, witnesses, collation and the small source catalogue needed to
-render that text without loading the global bibliography. Language-specific
+projected evidence grouped by shared edition, digital item, role and locator,
+plus witnesses and collation. The entries inside a source group retain their
+stable use ids, local addresses and claims. Source ids resolve through the
+manifest-declared package catalogue, which is loaded once rather than copied
+into every text file. Language-specific
 slices live under `languages/<lang>/bibliography/texts/` and contain only that
 language's wording evidence; loading them alongside the neutral slice never
 duplicates neutral uses. Global catalogues and functional indexes remain
-separate, small manifest resources for the bibliography page.
+separate manifest resources shared by the bibliography and text pages. The
+functional index maps each source and role to text ids and use counts; detailed
+claims stay in the lazily loaded text slices instead of being duplicated in the
+index.
 
 The optional manifest `titles` object is keyed by covered text id. Each entry
 has a nonempty `title` and may carry unique nonempty `aliases`. These are

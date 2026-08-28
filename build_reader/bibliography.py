@@ -972,13 +972,23 @@ def public_index(graph: dict, language_graph: dict | None = None) -> dict:
             if not section_uses:
                 continue
             roles = sorted({use["role"] for use in section_uses}, key=ROLE_ORDER.__getitem__)
+            uses_by_text: dict[str, list[dict]] = defaultdict(list)
+            for use in section_uses:
+                uses_by_text[use["address"]["text"]].append(use)
             buckets[section].append(
                 {
                     "edition": edition_id,
                     "roles": roles,
-                    "uses": [
-                        _project_use(use)
-                        for use in sorted(section_uses, key=lambda value: value["id"])
+                    "texts": [
+                        {
+                            "id": text_id,
+                            "roles": sorted(
+                                {use["role"] for use in text_uses},
+                                key=ROLE_ORDER.__getitem__,
+                            ),
+                            "uses": len(text_uses),
+                        }
+                        for text_id, text_uses in sorted(uses_by_text.items())
                     ],
                 }
             )
@@ -994,8 +1004,45 @@ def public_index(graph: dict, language_graph: dict | None = None) -> dict:
     return out
 
 
+def _text_source_groups(uses: list[dict], text_id: str) -> list[dict]:
+    grouped: dict[tuple[str, str, str, str, str], list[dict]] = defaultdict(list)
+    for use in uses:
+        key = (
+            use["edition"],
+            use["digital_item"],
+            use["role"],
+            json.dumps(use["locator"], ensure_ascii=False, sort_keys=True),
+            use.get("verified_on") or "",
+        )
+        grouped[key].append(use)
+    records = []
+    for key, grouped_uses in sorted(grouped.items()):
+        edition, digital_item, role, _locator_key, verified_on = key
+        entries = []
+        for use in sorted(grouped_uses, key=lambda value: value["id"]):
+            address = {key: value for key, value in use["address"].items() if key != "text"}
+            entry = {"id": use["id"], "address": address, "claim": use["claim"]}
+            entries.append(entry)
+        record = {
+            "edition": edition,
+            "digital_item": digital_item,
+            "role": role,
+            "locator": grouped_uses[0]["locator"],
+            "entries": entries,
+        }
+        if verified_on:
+            record["verified_on"] = verified_on
+        records.append(record)
+    return records
+
+
 def public_text_evidence(graph: dict, language_graph: dict | None = None) -> dict:
-    """Return self-contained evidence slices, ready to write one file per text."""
+    """Return compact evidence slices, ready to write one file per text.
+
+    Source identities live in the manifest-declared catalogue. Repeating the
+    same edition and digital-item records in every text slice would make the
+    lazy layout larger than its authored source without making it more useful.
+    """
     uses = _package_uses(graph, language_graph)
     by_text: dict[str, list[dict]] = defaultdict(list)
     for use in uses:
@@ -1021,8 +1068,7 @@ def public_text_evidence(graph: dict, language_graph: dict | None = None) -> dic
         text_uses = sorted(by_text[text_id], key=lambda value: value["id"])
         record = {
             "id": text_id,
-            "catalog": _catalog_for_uses(graph, text_uses),
-            "uses": [_project_use(use) for use in text_uses],
+            "source_groups": _text_source_groups(text_uses, text_id),
             "witnesses": sorted(witnesses_by_text[text_id], key=lambda value: value["id"]),
         }
         if text_id in collations:

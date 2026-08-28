@@ -28,8 +28,11 @@ def main(check_only: bool) -> int:
     # The authored book is the neutral core plus every independently
     # publishable language layer. Measuring only one side would flatter the
     # reader-edition ratio.
-    source = sum(p.stat().st_size for p in HERE.glob("texts/*/*.json")) + sum(
-        p.stat().st_size for p in HERE.glob("languages/*/texts/*/*.json")
+    source = (
+        sum(p.stat().st_size for p in HERE.glob("texts/*/*.json"))
+        + sum(p.stat().st_size for p in HERE.glob("languages/*/texts/*/*.json"))
+        + (HERE / "bibliography" / "graph.json").stat().st_size
+        + sum(p.stat().st_size for p in HERE.glob("languages/*/bibliography.json"))
     )
     subject = (
         f"texts={written['texts']} language_texts={written['language_texts']} "

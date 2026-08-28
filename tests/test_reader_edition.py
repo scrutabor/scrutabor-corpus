@@ -171,13 +171,15 @@ def test_the_parse_table_is_shared_and_small(tmp_path):
 
 
 def test_the_edition_is_much_smaller_than_its_source(tmp_path):
-    # The texts and the tables they are addressed through, against the texts
-    # they came from. calendar.json is left out on purpose: the calendar is derived
-    # from the rubrics and not from the corpus, so it has no counterpart on the
-    # other side of this comparison and would only make the ratio meaningless.
+    # The texts, source graph and the tables they are addressed through, against
+    # the authored data they came from. calendar.json is left out on purpose: the
+    # calendar is derived from the rubrics and has no authored counterpart.
     out = build(tmp_path)
-    source = sum(p.stat().st_size for p in CORPUS.glob("texts/*/*.json")) + sum(
-        p.stat().st_size for p in CORPUS.glob("languages/*/texts/*/*.json")
+    source = (
+        sum(p.stat().st_size for p in CORPUS.glob("texts/*/*.json"))
+        + sum(p.stat().st_size for p in CORPUS.glob("languages/*/texts/*/*.json"))
+        + (CORPUS / "bibliography" / "graph.json").stat().st_size
+        + sum(p.stat().st_size for p in CORPUS.glob("languages/*/bibliography.json"))
     )
     artifacts = [p for p in out.rglob("*.json") if p.name != "calendar.json"]
     localized_search = [

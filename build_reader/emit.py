@@ -20,7 +20,9 @@ from build_reader import bibliography, store
 # 4.2.0 splits its eager tables into manifest-declared catalogues, indexes,
 # and independently loadable per-text slices for both the neutral core and
 # every language package.
-SCHEMA = "4.2.0"
+# 5.0.0 makes the bibliography index a compact source-to-text map and groups
+# per-text uses by their shared edition, digital item, role and locator.
+SCHEMA = "5.0.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
