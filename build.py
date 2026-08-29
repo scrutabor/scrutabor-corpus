@@ -34,10 +34,21 @@ def main(check_only: bool) -> int:
         + (HERE / "bibliography" / "graph.json").stat().st_size
         + sum(p.stat().st_size for p in HERE.glob("languages/*/bibliography.json"))
     )
+    projection = written["citation_projection"]
+    coverage = written["evidence_coverage"]
+    language_coverage = " ".join(
+        f"{language}={state['normalized']}/{state['texts']}"
+        f"(effective={state['effective']}/{state['texts']})"
+        for language, state in coverage["languages"].items()
+    )
     subject = (
         f"texts={written['texts']} language_texts={written['language_texts']} "
         f"bytes={written['bytes']} "
-        f"source={source} ratio={written['bytes'] / source:.2f}"
+        f"source={source} ratio={written['bytes'] / source:.2f} "
+        f"evidence=neutral={coverage['neutral']['normalized']}/{coverage['neutral']['texts']} "
+        f"{language_coverage} "
+        f"citations=kept={projection['kept']}/{projection['legacy']} "
+        f"excluded={projection['excluded']} rejected_exposed={projection['rejected_exposed']}"
     )
     if check_only:
         shutil.rmtree(out.parent, ignore_errors=True)

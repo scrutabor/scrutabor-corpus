@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import copy
 import json
 import unicodedata
 from pathlib import Path
+from typing import Any
 
 from build_reader import bibliography, store
 
@@ -22,7 +24,9 @@ from build_reader import bibliography, store
 # every language package.
 # 5.0.0 makes the bibliography index a compact source-to-text map and groups
 # per-text uses by their shared edition, digital item, role and locator.
-SCHEMA = "5.0.0"
+# 5.1.0 excludes exact citation attachments rejected by the audited evidence
+# migration and reports the normalized-evidence denominator at build time.
+SCHEMA = "5.1.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -186,7 +190,12 @@ def read_corpus(corpus: Path) -> list[tuple[dict, dict[str, dict]]]:
 
 
 def core_artifact(
-    doc: dict, stored: dict, parses: Table, analyses: Table, citations: Table
+    doc: dict,
+    stored: dict,
+    parses: Table,
+    analyses: Table,
+    citations: Table,
+    projection: bibliography.ReaderCitationProjection | None = None,
 ) -> dict:
     """One language-neutral text and its shared reader-facing citations."""
     localization = stored.get("localization") or {}
@@ -217,15 +226,31 @@ def core_artifact(
                 cells.append(cell)
             row["w"] = cells
 
-        if cited := (localization.get("narrative_citations") or {}).get(segment["id"]):
+        cited = (localization.get("narrative_citations") or {}).get(segment["id"])
+        if cited and projection:
+            cited = projection.citations(
+                f"texts/{doc['id'].replace('.', '/', 1)}.json",
+                ("localization", "narrative_citations", segment["id"]),
+                cited,
+            )
+        if cited:
             row["nc"] = citations.intern_all(cited)
         if words:
             explanation_requirements = localization.get("explanations") or {}
             cited = {
-                word["id"]: citations.intern_all(requirement["citations"])
+                word["id"]: citations.intern_all(projected)
                 for word in words
                 if (requirement := explanation_requirements.get(word["id"]))
                 and requirement.get("citations")
+                and (
+                    projected := projection.citations(
+                        f"texts/{doc['id'].replace('.', '/', 1)}.json",
+                        ("localization", "explanations", word["id"], "citations"),
+                        requirement["citations"],
+                    )
+                    if projection
+                    else requirement["citations"]
+                )
             }
             if cited:
                 row["ec"] = cited
@@ -242,7 +267,14 @@ def core_artifact(
     artifact["ad"] = analyses.intern(doc["analysis_defaults"])
     if doc.get("analysis_defaults_words"):
         artifact["adw"] = analyses.intern(doc["analysis_defaults_words"])
-    if cited := localization.get("about_citations"):
+    cited = localization.get("about_citations")
+    if cited and projection:
+        cited = projection.citations(
+            f"texts/{doc['id'].replace('.', '/', 1)}.json",
+            ("localization", "about_citations"),
+            cited,
+        )
+    if cited:
         artifact["ac"] = citations.intern_all(cited)
     # Retired segment ids, so a shared `?s=` link outlives a merge or split:
     # the app resolves a retired id to the surviving segment and canonicalizes
@@ -262,6 +294,7 @@ def language_artifact(
     layer: dict,
     citations: Table,
     relationships: dict[str, str] | None = None,
+    projection: bibliography.ReaderCitationProjection | None = None,
 ) -> dict:
     """One target language for one text, independently loadable."""
     rows = []
@@ -270,7 +303,14 @@ def language_artifact(
         row: dict = {"id": segment["id"]}
         if translation := localized.get("translation"):
             row["tr"] = translation
-        if cited := localized.get("translation_citations"):
+        cited = localized.get("translation_citations")
+        if cited and projection:
+            cited = projection.citations(
+                f"languages/{layer['lang']}/texts/{doc['id'].replace('.', '/', 1)}.json",
+                ("segments", segment["id"], "translation_citations"),
+                cited,
+            )
+        if cited:
             row["tc"] = citations.intern_all(cited)
         site = f"{doc['id']}.{segment['id']}.{layer['lang']}"
         if relationship := (relationships or {}).get(site):
@@ -391,7 +431,10 @@ def expand(
 
 
 def lexicon_slice(
-    corpus: Path, language: str | None = None, lemmas: set[str] | None = None
+    corpus: Path,
+    language: str | None = None,
+    lemmas: set[str] | None = None,
+    projection: bibliography.ReaderCitationProjection | None = None,
 ) -> dict:
     """The dictionary, or the part of it a given set of words reaches for.
 
@@ -401,13 +444,29 @@ def lexicon_slice(
     units that must arrive self-sufficient — a day's proper is picked whole and
     should not need a second request to be read.
     """
-    heads = json.loads((corpus / "lexicon/lemmata.json").read_text(encoding="utf-8"))["entries"]
-    keep = sorted(lemmas) if lemmas is not None else sorted(heads)
-    if language is None:
-        return {k: heads[k] for k in keep if k in heads}
-    entries = json.loads(
-        (corpus / "languages" / language / "lexicon.json").read_text(encoding="utf-8")
-    )["entries"]
+    relative_path = (
+        "lexicon/lemmata.json" if language is None else f"languages/{language}/lexicon.json"
+    )
+    source_path = corpus / relative_path
+    entries = copy.deepcopy(json.loads(source_path.read_text(encoding="utf-8"))["entries"])
+    if projection:
+        for lemma, entry in entries.items():
+            parts: tuple[str, ...]
+            if language is None:
+                container = entry.get("localization") or {}
+                parts = ("entries", lemma, "localization", "note_citations")
+            else:
+                container = entry
+                parts = ("entries", lemma, "note_citations")
+            cited = container.get("note_citations")
+            if not cited:
+                continue
+            projected = projection.citations(relative_path, parts, cited)
+            if projected:
+                container["note_citations"] = projected
+            else:
+                container.pop("note_citations", None)
+    keep = sorted(lemmas) if lemmas is not None else sorted(entries)
     return {k: entries[k] for k in keep if k in entries}
 
 
@@ -643,11 +702,20 @@ def update_registry(corpus: Path) -> dict[str, int]:
     parses = Table(existing("morphology"), label="morphology")
     analyses = Table(existing("analysis"), label="analysis")
     citations = Table(existing("citations"), label="citations")
+    graph, language_graphs = bibliography.load(corpus)
+    projection = bibliography.ReaderCitationProjection(corpus, graph, language_graphs)
     docs = read_corpus(corpus)
     for doc, glosses in docs:
-        core_artifact(doc, store.core(corpus, doc["id"]), parses, analyses, citations)
+        core_artifact(
+            doc,
+            store.core(corpus, doc["id"]),
+            parses,
+            analyses,
+            citations,
+            projection,
+        )
         for layer in glosses.values():
-            language_artifact(doc, layer, citations)
+            language_artifact(doc, layer, citations, projection=projection)
 
     texts = existing("texts")
     if len(set(texts)) != len(texts) or not all(isinstance(value, str) for value in texts):
@@ -669,13 +737,14 @@ def update_registry(corpus: Path) -> dict[str, int]:
     return changes
 
 
-def emit(corpus: Path, out: Path) -> dict[str, int]:
+def emit(corpus: Path, out: Path) -> dict[str, Any]:
     """Write the whole reader edition. Returns what it wrote."""
     corpus_docs = read_corpus(corpus)
     evidence_graph, language_evidence = bibliography.load(corpus)
     evidence_errors = bibliography.validate(corpus, evidence_graph, language_evidence)
     if evidence_errors:
         raise ValueError("invalid bibliography graph: " + "; ".join(evidence_errors))
+    projection = bibliography.ReaderCitationProjection(corpus, evidence_graph, language_evidence)
     neutral_evidence = {
         record["id"]: record
         for record in bibliography.public_text_evidence(evidence_graph)["texts"]
@@ -705,14 +774,24 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
         isinstance(value, str) for value in text_registry
     ):
         raise ValueError("text registry must contain unique string ids")
-    written = {"texts": 0, "language_texts": 0, "evidence": 0, "bytes": 0}
+    written: dict[str, Any] = {
+        "texts": 0,
+        "language_texts": 0,
+        "evidence": 0,
+        "bytes": 0,
+    }
     neutral_evidence_paths: dict[str, str] = {}
     localized_evidence_paths: dict[str, dict[str, str]] = {language: {} for language in languages}
 
     (out / "texts").mkdir(parents=True, exist_ok=True)
     for doc, glosses in corpus_docs:
         artifact = core_artifact(
-            doc, store.core(corpus, doc["id"]), parses, analyses, shared_citations
+            doc,
+            store.core(corpus, doc["id"]),
+            parses,
+            analyses,
+            shared_citations,
+            projection,
         )
         category, slug = doc["id"].split(".", 1)
         directory = out / "texts" / category
@@ -738,6 +817,7 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
                 layer,
                 language_citations[language],
                 translation_relationships[language],
+                projection,
             )
             directory = out / "languages" / language / "texts" / category
             directory.mkdir(parents=True, exist_ok=True)
@@ -772,7 +852,7 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
         ("concordance.json", _concordance_json(index(corpus_docs, text_registry))),
         (
             "lexicon/heads.json",
-            _entries_json(lexicon_slice(corpus)),
+            _entries_json(lexicon_slice(corpus, projection=projection)),
         ),
         ("calendar.json", _calendar_json(kalendarium())),
         (
@@ -810,7 +890,7 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
             ),
             (
                 f"languages/{language}/lexicon.json",
-                _entries_json(lexicon_slice(corpus, language)),
+                _entries_json(lexicon_slice(corpus, language, projection=projection)),
             ),
             (
                 f"languages/{language}/concordance.json",
@@ -916,7 +996,62 @@ def emit(corpus: Path, out: Path) -> dict[str, int]:
     body = json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
     (out / "manifest.json").write_text(body, encoding="utf-8")
     written["bytes"] += len(body.encode())
+    if projection_errors := projection.errors():
+        raise ValueError("invalid reader citation projection: " + "; ".join(projection_errors))
+    written["citation_projection"] = projection.counts()
+    written["evidence_coverage"] = bibliography.evidence_coverage(
+        corpus, evidence_graph, language_evidence
+    )
     return written
+
+
+def _project_glosses(
+    doc: dict,
+    glosses: dict[str, dict],
+    projection: bibliography.ReaderCitationProjection,
+) -> dict[str, dict]:
+    """Apply the exact attachment decisions to the checking view."""
+    projected = copy.deepcopy(glosses)
+    neutral_path = f"texts/{doc['id'].replace('.', '/', 1)}.json"
+    for language, layer in projected.items():
+        fields: list[tuple[dict, str, tuple[str, ...], str]] = []
+        fields.append((layer, "about_citations", ("localization", "about_citations"), neutral_path))
+        for segment_id, segment in (layer.get("segments") or {}).items():
+            fields.append(
+                (
+                    segment,
+                    "narrative_citations",
+                    ("localization", "narrative_citations", segment_id),
+                    neutral_path,
+                )
+            )
+            fields.append(
+                (
+                    segment,
+                    "translation_citations",
+                    ("segments", segment_id, "translation_citations"),
+                    f"languages/{language}/texts/{doc['id'].replace('.', '/', 1)}.json",
+                )
+            )
+        for word_id, word in (layer.get("words") or {}).items():
+            fields.append(
+                (
+                    word,
+                    "explanation_citations",
+                    ("localization", "explanations", word_id, "citations"),
+                    neutral_path,
+                )
+            )
+        for container, field, parts, relative_path in fields:
+            cited = container.get(field)
+            if not cited:
+                continue
+            kept = projection.citations(relative_path, parts, cited)
+            if kept:
+                container[field] = kept
+            else:
+                container.pop(field, None)
+    return projected
 
 
 def _strip(doc: dict, glosses: dict) -> tuple[dict, dict]:
@@ -950,13 +1085,15 @@ def verify(corpus: Path, out: Path) -> list[str]:
         language: store.translation_relationships(corpus, language)
         for language in store.language_ids(corpus)
     }
+    evidence_graph, language_evidence = bibliography.load(corpus)
+    projection = bibliography.ReaderCitationProjection(corpus, evidence_graph, language_evidence)
     for doc, glosses in read_corpus(corpus):
         path = out / "texts" / Path(*doc["id"].split(".")).with_suffix(".json")
         if not path.exists():
             errors.append(f"{doc['id']}: no artifact was written")
             continue
         artifact = json.loads(path.read_text(encoding="utf-8"))
-        want_doc, want_glosses = _strip(doc, glosses)
+        want_doc, want_glosses = _strip(doc, _project_glosses(doc, glosses, projection))
         # `ids` is a declared drop, so the whole-document comparison cannot
         # see the retirement maps; hold emitted `rs` and `rw` against the mint
         # directly, in both directions.
@@ -1009,11 +1146,17 @@ def verify(corpus: Path, out: Path) -> list[str]:
                 errors.append(
                     f"{doc['id']}: {_first_difference(want_glosses[lang], got_gloss, lang)}"
                 )
-    errors += verify_edition_artifacts(corpus, out)
+    errors += verify_edition_artifacts(corpus, out, evidence_graph, projection)
+    errors += projection.errors()
     return errors
 
 
-def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
+def verify_edition_artifacts(
+    corpus: Path,
+    out: Path,
+    evidence_graph: dict,
+    projection: bibliography.ReaderCitationProjection,
+) -> list[str]:
     """The artifacts the round-trip cannot see, held to their own contracts.
 
     The per-text expansion above proves the documents; it proves nothing
@@ -1141,7 +1284,7 @@ def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
         for cell in (row.get("w") or [])
     }
     heads = json.loads((out / manifest["base"]["lexicon"]).read_text(encoding="utf-8"))["entries"]
-    expected_heads = lexicon_slice(corpus)
+    expected_heads = lexicon_slice(corpus, projection=projection)
     if heads != expected_heads:
         errors.append("lexicon: " + _first_difference(expected_heads, heads, "emitted heads"))
     if set(heads) != lemmata_in_use:
@@ -1153,7 +1296,7 @@ def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
         entries = json.loads((out / language_manifest["lexicon"]).read_text(encoding="utf-8"))[
             "entries"
         ]
-        expected_entries = lexicon_slice(corpus, language["id"])
+        expected_entries = lexicon_slice(corpus, language["id"], projection=projection)
         if entries != expected_entries:
             errors.append(
                 f"{language['id']}: "
@@ -1193,7 +1336,7 @@ def verify_edition_artifacts(corpus: Path, out: Path) -> list[str]:
     if vectors != NORMALIZATION_VECTORS:
         errors.append("normalization: the emitted vectors are not the authored vectors")
 
-    evidence_graph, language_evidence = bibliography.load(corpus)
+    _, language_evidence = bibliography.load(corpus)
     expected_catalog = bibliography.public_catalog(evidence_graph)
     catalog = json.loads((out / manifest["bibliography"]["catalog"]).read_text(encoding="utf-8"))
     if catalog != expected_catalog:

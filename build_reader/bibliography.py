@@ -257,6 +257,116 @@ def legacy_digest(records: list[dict]) -> str:
     return hashlib.sha256(body).hexdigest()
 
 
+class ReaderCitationProjection:
+    """Keep audited legacy citations and exclude exact rejected attachments.
+
+    Migration decisions address citation *attachments*, not titles.  The same
+    work can support one claim and be rejected for another, so reader emission
+    must decide by the frozen ``legacy_ref`` pointer rather than by comparing a
+    citation's display fields.
+    """
+
+    def __init__(self, corpus: Path, graph: dict, language_graphs: dict[str, dict]) -> None:
+        inventory = legacy_inventory(corpus)
+        self.known = {record["ref"] for record in inventory}
+        self.mapped = {
+            reference
+            for use in [
+                *(graph.get("uses") or []),
+                *(
+                    use
+                    for language_graph in language_graphs.values()
+                    for use in (language_graph.get("uses") or [])
+                ),
+            ]
+            for reference in (use.get("legacy_refs") or [])
+        }
+        self.removed = {
+            record["legacy_ref"] for record in (graph.get("migration") or {}).get("removals") or []
+        }
+        self.seen: set[str] = set()
+        self.kept: set[str] = set()
+        self.excluded: set[str] = set()
+
+    def citations(
+        self,
+        relative_path: str,
+        pointer_parts: tuple[str, ...],
+        values: list[dict],
+    ) -> list[dict]:
+        """Project one authored citation list while retaining original indices."""
+        kept = []
+        prefix = _pointer(pointer_parts)
+        for index, value in enumerate(values):
+            reference = f"{relative_path}#/{prefix}/{index}"
+            self.seen.add(reference)
+            if reference in self.removed:
+                self.excluded.add(reference)
+            else:
+                self.kept.add(reference)
+                kept.append(value)
+        return kept
+
+    def errors(self) -> list[str]:
+        errors = []
+        if missing := sorted(self.known - self.seen):
+            errors.append(
+                "reader citation projection did not inspect every legacy attachment: "
+                f"{len(missing)} missing, first={missing[:3]}"
+            )
+        if unknown := sorted(self.seen - self.known):
+            errors.append(
+                "reader citation projection inspected unknown attachments: "
+                f"{len(unknown)}, first={unknown[:3]}"
+            )
+        if exposed := sorted(self.kept & self.removed):
+            errors.append(
+                "reader citation projection retained rejected attachments: "
+                f"{len(exposed)}, first={exposed[:3]}"
+            )
+        if missed := sorted(self.removed - self.excluded):
+            errors.append(
+                "reader citation projection did not exclude every rejected attachment: "
+                f"{len(missed)} missing, first={missed[:3]}"
+            )
+        return errors
+
+    def counts(self) -> dict[str, int]:
+        return {
+            "legacy": len(self.known),
+            "mapped": len(self.mapped),
+            "kept": len(self.kept),
+            "excluded": len(self.excluded),
+            "unresolved": len(self.known - self.mapped - self.removed),
+            "rejected_exposed": len(self.kept & self.removed),
+        }
+
+
+def evidence_coverage(corpus: Path, graph: dict, language_graphs: dict[str, dict]) -> dict:
+    """Name normalized evidence coverage with an explicit denominator."""
+    all_texts = {f"{path.parent.name}.{path.stem}" for path in corpus.glob("texts/*/*.json")}
+    neutral = {record["id"] for record in public_text_evidence(graph).get("texts") or []}
+    languages = {}
+    for language, language_graph in sorted(language_graphs.items()):
+        manifest = json.loads(
+            (corpus / "languages" / language / "manifest.json").read_text(encoding="utf-8")
+        )
+        covered = set(manifest.get("texts") or [])
+        localized = {
+            record["id"]
+            for record in public_text_evidence(graph, language_graph).get("texts") or []
+        }
+        languages[language] = {
+            "normalized": len(localized),
+            "effective": len((neutral | localized) & covered),
+            "texts": len(covered),
+        }
+    return {
+        "neutral": {"normalized": len(neutral), "texts": len(all_texts)},
+        "languages": languages,
+    }
+
+
 def legacy_scope(reference: str) -> str:
     match = re.match(r"languages/([^/]+)/", reference)
     return match.group(1) if match else "neutral"

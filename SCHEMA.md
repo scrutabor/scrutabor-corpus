@@ -119,10 +119,16 @@ official documents and liturgical history, and Scripture/language/scholarship.
 The reader projection is an allowlist. It omits evidence-image hashes,
 owner-held inventory ids, migration pointers, editorial decisions and their
 reasons, raw transcriptions, and archive paths. During the transition it emits
-the existing citation tables alongside the normalized projection. Every legacy
-inline citation is held by a deterministic inventory digest and may be claimed
-once by a normalized use or once by an explicit removal; setting migration
-`complete` is rejected while any pointer remains unresolved.
+retained legacy citation attachments alongside the normalized projection.
+Every legacy inline citation is held by a deterministic inventory digest and
+may be claimed once by a normalized use or once by an explicit removal;
+setting migration `complete` is rejected while any pointer remains unresolved.
+A `migration.removals` entry therefore records an attachment excluded from the
+published reader projection, not deletion of the canonical citation object
+from the authored corpus. The build filters by exact legacy pointer (never by
+source title), fails if a rejected attachment remains reader-visible, and
+reports normalized-evidence coverage separately for the neutral, Polish, and
+English packages.
 
 The reader writes evidence as manifest-declared
 `bibliography/texts/<category>/<text>.json` artifacts. Each slice contains the

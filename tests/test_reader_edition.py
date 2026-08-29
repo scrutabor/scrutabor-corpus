@@ -123,6 +123,54 @@ def test_what_a_reader_is_shown_does_survive(tmp_path):
     assert seen > 1000, f"the source notes did not survive the build ({seen} references)"
 
 
+def test_rejected_citation_attachments_do_not_reach_the_reader(tmp_path):
+    out = build(tmp_path)
+    shared = json.loads((out / "tables/citations.json").read_text(encoding="utf-8"))
+    pl = json.loads((out / "languages/pl/citations.json").read_text(encoding="utf-8"))
+
+    ave = json.loads((out / "texts/orationes/ave-maria.json").read_text(encoding="utf-8"))
+    assert "w001" not in (ave["seg"][0].get("ec") or {})
+
+    aufer = json.loads((out / "texts/ordinarium/aufer-a-nobis.json").read_text(encoding="utf-8"))
+    assert "nc" not in next(row for row in aufer["seg"] if row["id"] == "s01")
+
+    te_igitur = json.loads(
+        (out / "languages/pl/texts/ordinarium/te-igitur.json").read_text(encoding="utf-8")
+    )
+    assert "tc" not in next(row for row in te_igitur["seg"] if row["id"] == "s02")
+
+    heads = json.loads((out / "lexicon/heads.json").read_text(encoding="utf-8"))["entries"]
+    assert "note_citations" not in heads["Abel"]["localization"]
+
+    gloria = json.loads(
+        (out / "languages/pl/texts/ordinarium/gloria.json").read_text(encoding="utf-8")
+    )
+    retained = next(row for row in gloria["seg"] if row["id"] == "s12")["tc"]
+    assert any(
+        pl[index]["title"] == "Pamiątka Missyi dla ludu katolickiego (1903)" for index in retained
+    )
+    assert all(value is None or "legacy_ref" not in value for value in [*shared, *pl])
+
+
+def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
+    written = emit(CORPUS, tmp_path / "build")
+    assert written["citation_projection"] == {
+        "legacy": 2776,
+        "mapped": 2044,
+        "kept": 2044,
+        "excluded": 732,
+        "unresolved": 0,
+        "rejected_exposed": 0,
+    }
+    assert written["evidence_coverage"] == {
+        "neutral": {"normalized": 23, "texts": 123},
+        "languages": {
+            "en": {"normalized": 108, "effective": 109, "texts": 123},
+            "pl": {"normalized": 72, "effective": 74, "texts": 123},
+        },
+    }
+
+
 def test_translation_relationship_travels_only_with_its_language_text(tmp_path):
     out = build(tmp_path)
     pl = json.loads(
