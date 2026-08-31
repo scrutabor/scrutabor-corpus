@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-iv-post-pentecosten-alleluia",
+  "title": "Allelúia, allelúia. Deus, qui sedes super thronum",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-iv-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 17,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w004", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w005", "form": "sedes", "lemma": "sedeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
+        { "id": "w006", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w007" },
+        { "id": "w007", "form": "thronum", "lemma": "thronus", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "iúdicas", "lemma": "iudico", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w010", "form": "æquitátem", "lemma": "aequitas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w011", "form": "esto", "lemma": "sum", "morph": { "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w012", "form": "refúgium", "lemma": "refugium", "morph": { "case": "voc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w013", "form": "páuperum", "lemma": "pauper", "morph": { "case": "gen", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w015" },
+        { "id": "w015", "form": "tribulatióne", "lemma": "tribulatio", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 3 }, "post": "." },
+        { "id": "w016", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-iv-post-pentecosten-alleluia/",
+      "apparatus": "witnesses/proprium.dominica-iv-post-pentecosten-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

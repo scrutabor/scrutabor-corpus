@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-xi-post-pentecosten-offertorium",
+  "title": "Exaltábo te, Dómine, quóniam suscepísti me, nec",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-xi-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 20,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Exaltábo", "lemma": "exalto", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w002", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "," },
+        { "id": "w003", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w004", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "suscepísti", "lemma": "suscipio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w006", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "," },
+        { "id": "w007", "form": "nec", "lemma": "nec", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "delectásti", "lemma": "delecto", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "perf", "voice": "act", "conj": 1 } },
+        { "id": "w009", "form": "inimícos", "lemma": "inimicus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w010", "form": "meos", "lemma": "meus", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w009" },
+        { "id": "w011", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
+        { "id": "w012", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": ":" },
+        { "id": "w013", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w014", "form": "clamávi", "lemma": "clamo", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w015", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w016" },
+        { "id": "w016", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "," },
+        { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w018", "form": "sanásti", "lemma": "sano", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "perf", "voice": "act", "conj": 1 } },
+        { "id": "w019", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-xi-post-pentecosten-offertorium/",
+      "apparatus": "witnesses/proprium.dominica-xi-post-pentecosten-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

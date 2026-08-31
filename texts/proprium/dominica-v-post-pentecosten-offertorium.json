@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-v-post-pentecosten-offertorium",
+  "title": "Benedícam Dóminum, qui tríbuit mihi intelléctum: providébam",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-v-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 20,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Benedícam", "lemma": "benedico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w002", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w003", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w004", "form": "tríbuit", "lemma": "tribuo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 3 } },
+        { "id": "w005", "form": "mihi", "lemma": "ego", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
+        { "id": "w006", "form": "intelléctum", "lemma": "intellectus", "morph": { "case": "acc", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w007", "form": "providébam", "lemma": "provideo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "impf", "voice": "act", "conj": 2 } },
+        { "id": "w008", "form": "Deum", "lemma": "deus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010" },
+        { "id": "w010", "form": "conspéctu", "lemma": "conspectus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w011", "form": "meo", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "substantive": true },
+        { "id": "w012", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" }, "post": ":" },
+        { "id": "w013", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
+        { "id": "w014", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w017" },
+        { "id": "w015", "form": "dextris", "lemma": "dexter", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "substantive": true },
+        { "id": "w016", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w017", "form": "mihi", "lemma": "ego", "morph": { "case": "abl", "number": "sg", "pos": "pron" }, "post": "," },
+        { "id": "w018", "form": "ne", "lemma": "ne", "morph": { "pos": "conj" } },
+        { "id": "w019", "form": "commóvear", "lemma": "commoveo", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 1, "tense": "pres", "voice": "pass", "conj": 2 }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-v-post-pentecosten-offertorium/",
+      "apparatus": "witnesses/proprium.dominica-v-post-pentecosten-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

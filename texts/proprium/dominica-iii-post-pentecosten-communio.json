@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-iii-post-pentecosten-communio",
+  "title": "Dico vobis: gáudium est Angelis Dei super",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-iii-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 12,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Dico", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w002", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "post": ":" },
+        { "id": "w003", "form": "gáudium", "lemma": "gaudium", "morph": { "case": "voc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w004", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w005", "form": "Ángelis", "lemma": "angelus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w006", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w007", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "abl" }, "head": "w009" },
+        { "id": "w008", "form": "uno", "lemma": "unus", "morph": { "case": "abl", "gender": "n", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w009", "form": "peccatóre", "lemma": "peccator", "morph": { "case": "abl", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w010", "form": "pœniténtiam", "lemma": "poenitentia", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w011", "form": "agénte", "lemma": "ago", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "sg", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "post": ".", "head": "w009" }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-iii-post-pentecosten-communio/",
+      "apparatus": "witnesses/proprium.dominica-iii-post-pentecosten-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

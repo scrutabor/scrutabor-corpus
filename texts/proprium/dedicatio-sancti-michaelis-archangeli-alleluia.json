@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dedicatio-sancti-michaelis-archangeli-alleluia",
+  "title": "Allelúia, allelúia. Sancte Míchaël Archángele, defénde nos",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dedicatio-sancti-michaelis-archangeli",
+  "sung": true,
+  "ids": {
+    "next": 17,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Sancte", "lemma": "sanctus", "morph": { "case": "voc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w004" },
+        { "id": "w004", "form": "Míchaël", "lemma": "Michael", "morph": { "case": "voc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w005", "form": "Archángele", "lemma": "archangelus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w006", "form": "defénde", "lemma": "defendo", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w007", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w008", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w009" },
+        { "id": "w009", "form": "prœ́lio", "lemma": "proelium", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 2 }, "post": ":" },
+        { "id": "w010", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w012", "form": "pereámus", "lemma": "pereo", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 1, "tense": "pres", "voice": "act" } },
+        { "id": "w013", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w015" },
+        { "id": "w014", "form": "treméndo", "lemma": "tremo", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "sg", "tense": "fut", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w015", "form": "iudício", "lemma": "iudicium", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "post": "." },
+        { "id": "w016", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dedicatio-sancti-michaelis-archangeli-alleluia/",
+      "apparatus": "witnesses/proprium.dedicatio-sancti-michaelis-archangeli-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

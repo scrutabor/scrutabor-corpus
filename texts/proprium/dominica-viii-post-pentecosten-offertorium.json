@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-viii-post-pentecosten-offertorium",
+  "title": "Pópulum húmilem salvum fácies, Dómine, et óculos",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-viii-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 16,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Pópulum", "lemma": "populus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w002", "form": "húmilem", "lemma": "humilis", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w001" },
+        { "id": "w003", "form": "salvum", "lemma": "salvus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w001" },
+        { "id": "w004", "form": "fácies", "lemma": "facio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "fut", "voice": "act", "conj": 3 }, "post": "," },
+        { "id": "w005", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "óculos", "lemma": "oculus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w008", "form": "superbórum", "lemma": "superbus", "morph": { "pos": "adj", "case": "gen", "gender": "m", "number": "pl" }, "substantive": true },
+        { "id": "w009", "form": "humiliábis", "lemma": "humilio", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" }, "post": ":" },
+        { "id": "w010", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "quis", "lemma": "quis", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" } },
+        { "id": "w012", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w013", "form": "præter", "lemma": "praeter", "morph": { "pos": "prep", "governs": "acc" }, "head": "w014" },
+        { "id": "w014", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "," },
+        { "id": "w015", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "?" }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-viii-post-pentecosten-offertorium/",
+      "apparatus": "witnesses/proprium.dominica-viii-post-pentecosten-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

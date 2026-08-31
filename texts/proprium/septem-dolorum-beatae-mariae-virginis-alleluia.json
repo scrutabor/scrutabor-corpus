@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.septem-dolorum-beatae-mariae-virginis-alleluia",
+  "title": "Allelúia, allelúia. Stabat sancta María, cæli Regína",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "septem-dolorum-beatae-mariae-virginis",
+  "sung": true,
+  "ids": {
+    "next": 18,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Stabat", "lemma": "sto", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
+        { "id": "w004", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w005" },
+        { "id": "w005", "form": "María", "lemma": "Maria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 }, "post": "," },
+        { "id": "w006", "form": "cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w007", "form": "Regína", "lemma": "regina", "morph": { "case": "voc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "mundi", "lemma": "mundus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w010", "form": "Dómina", "lemma": "domina", "morph": { "case": "voc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w011", "form": "iuxta", "lemma": "iuxta", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
+        { "id": "w012", "form": "Crucem", "lemma": "crux", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w013", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w014", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" } },
+        { "id": "w015", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w016", "form": "Christi", "lemma": "Christus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w017", "form": "dolorósa", "lemma": "dolorosus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "post": ".", "substantive": true }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.septem-dolorum-beatae-mariae-virginis-alleluia/",
+      "apparatus": "witnesses/proprium.septem-dolorum-beatae-mariae-virginis-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

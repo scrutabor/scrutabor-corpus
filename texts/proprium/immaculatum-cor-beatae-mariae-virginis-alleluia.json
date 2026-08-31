@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.immaculatum-cor-beatae-mariae-virginis-alleluia",
+  "title": "Allelúia, allelúia. Magníficat ánima mea Dóminum: et",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "immaculatum-cor-beatae-mariae-virginis",
+  "sung": true,
+  "ids": {
+    "next": 16,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Magníficat", "lemma": "magnifico", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w004", "form": "ánima", "lemma": "anima", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w005", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w004" },
+        { "id": "w006", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "exsultávit", "lemma": "exsulto", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w009", "form": "spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w010", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "substantive": true },
+        { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w012" },
+        { "id": "w012", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w013", "form": "salutári", "lemma": "salutaris", "morph": { "case": "abl", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w014", "form": "meo", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "post": ".", "substantive": true },
+        { "id": "w015", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.immaculatum-cor-beatae-mariae-virginis-alleluia/",
+      "apparatus": "witnesses/proprium.immaculatum-cor-beatae-mariae-virginis-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

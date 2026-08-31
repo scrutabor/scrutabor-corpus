@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.sancti-iacobi-apostoli-communio",
+  "title": "Vos, qui secúti estis me, sedébitis super",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "sancti-iacobi-apostoli",
+  "sung": true,
+  "ids": {
+    "next": 13,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Vos", "lemma": "vos", "morph": { "pos": "pron", "case": "nom", "number": "pl" }, "post": "," },
+        { "id": "w002", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w003", "form": "secúti", "lemma": "sequor", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "dep", "mood": "part", "conj": 3 }, "head": "w001" },
+        { "id": "w004", "form": "estis", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w005", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "," },
+        { "id": "w006", "form": "sedébitis", "lemma": "sedeo", "morph": { "conj": 2, "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w007", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w009" },
+        { "id": "w008", "form": "sedes", "lemma": "sedeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 }, "post": "," },
+        { "id": "w009", "form": "iudicántes", "lemma": "iudico", "morph": { "pos": "verb", "case": "acc", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w010", "form": "duódecim", "lemma": "duodecim", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w011", "form": "tribus", "lemma": "tribus", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "pl", "decl": 4 } },
+        { "id": "w012", "form": "Ísrael", "lemma": "Israel", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.sancti-iacobi-apostoli-communio/",
+      "apparatus": "witnesses/proprium.sancti-iacobi-apostoli-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

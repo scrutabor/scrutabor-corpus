@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.maternitas-beatae-mariae-virginis-alleluia",
+  "title": "Allelúia, allelúia. Virgo Dei Génitrix, quem totus",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "maternitas-beatae-mariae-virginis",
+  "sung": true,
+  "ids": {
+    "next": 19,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w004", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w005", "form": "Génitrix", "lemma": "genitrix", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "post": "," },
+        { "id": "w006", "form": "quem", "lemma": "qui", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
+        { "id": "w007", "form": "totus", "lemma": "totus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "substantive": true },
+        { "id": "w008", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w009", "form": "capit", "lemma": "capio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w010", "form": "orbis", "lemma": "orbis", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 }, "post": "," },
+        { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w013" },
+        { "id": "w012", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true },
+        { "id": "w013", "form": "se", "lemma": "sui", "morph": { "case": "acc", "pos": "pron" } },
+        { "id": "w014", "form": "clausit", "lemma": "claudo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 3 } },
+        { "id": "w015", "form": "víscera", "lemma": "viscus", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 3 } },
+        { "id": "w016", "form": "factus", "lemma": "facio", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w017" },
+        { "id": "w017", "form": "homo", "lemma": "homo", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
+        { "id": "w018", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.maternitas-beatae-mariae-virginis-alleluia/",
+      "apparatus": "witnesses/proprium.maternitas-beatae-mariae-virginis-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

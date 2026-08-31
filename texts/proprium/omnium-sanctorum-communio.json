@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.omnium-sanctorum-communio",
+  "title": "Beáti mundo corde, quóniam ipsi Deum vidébunt",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "omnium-sanctorum",
+  "sung": true,
+  "ids": {
+    "next": 25,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Beáti", "lemma": "beatus", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w002", "form": "mundo", "lemma": "mundus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg" } },
+        { "id": "w003", "form": "corde", "lemma": "cor", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w004", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "ipsi", "lemma": "ipse", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" } },
+        { "id": "w006", "form": "Deum", "lemma": "deus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w007", "form": "vidébunt", "lemma": "video", "morph": { "conj": 2, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" }, "post": ";" },
+        { "id": "w008", "form": "beáti", "lemma": "beatus", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w011" },
+        { "id": "w009", "form": "pacífici", "lemma": "pacificus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "post": ",", "substantive": true },
+        { "id": "w010", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w012", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w013", "form": "vocabúntur", "lemma": "voco", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" }, "post": ":" },
+        { "id": "w014", "form": "beáti", "lemma": "beatus", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "adj" }, "post": ",", "substantive": true },
+        { "id": "w015", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w016", "form": "persecutiónem", "lemma": "persecutio", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w017", "form": "patiúntur", "lemma": "patior", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "pres", "voice": "dep", "conj": 3 } },
+        { "id": "w018", "form": "propter", "lemma": "propter", "morph": { "governs": "acc", "pos": "prep" }, "head": "w019" },
+        { "id": "w019", "form": "iustítiam", "lemma": "iustitia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w020", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
+        { "id": "w021", "form": "ipsórum", "lemma": "ipse", "morph": { "pos": "pron", "case": "gen", "number": "pl" } },
+        { "id": "w022", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w023", "form": "regnum", "lemma": "regnum", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w024", "form": "cælórum", "lemma": "caelum", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.omnium-sanctorum-communio/",
+      "apparatus": "witnesses/proprium.omnium-sanctorum-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

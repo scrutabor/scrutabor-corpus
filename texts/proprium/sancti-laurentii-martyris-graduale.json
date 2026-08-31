@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.sancti-laurentii-martyris-graduale",
+  "title": "Probásti, Dómine, cor meum, et visitásti nocte",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "sancti-laurentii-martyris",
+  "sung": true,
+  "ids": {
+    "next": 18,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Probásti", "lemma": "probo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "perf", "voice": "act", "conj": 1 }, "post": "," },
+        { "id": "w002", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w003", "form": "cor", "lemma": "cor", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 3 } },
+        { "id": "w004", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "post": ",", "head": "w003" },
+        { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "visitásti", "lemma": "visito", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "perf", "voice": "act", "conj": 1 } },
+        { "id": "w007", "form": "nocte", "lemma": "nox", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 }, "post": "." },
+        { "id": "w008", "form": "Igne", "lemma": "ignis", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 3 } },
+        { "id": "w009", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w010", "form": "examinásti", "lemma": "examino", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "perf", "voice": "act", "conj": 1 }, "post": "," },
+        { "id": "w011", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w012", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w013", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w014", "form": "invénta", "lemma": "invenio", "morph": { "pos": "verb", "case": "nom", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 4 }, "head": "w017" },
+        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w016" },
+        { "id": "w016", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w017", "form": "iníquitas", "lemma": "iniquitas", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.sancti-laurentii-martyris-graduale/",
+      "apparatus": "witnesses/proprium.sancti-laurentii-martyris-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

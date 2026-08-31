@@ -1,0 +1,64 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-vii-post-pentecosten-communio",
+  "title": "Inclína aurem tuam, accélera, ut erípias me",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-vii-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 8,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Inclína", "lemma": "inclino", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w002", "form": "aurem", "lemma": "auris", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w003", "form": "tuam", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ",", "head": "w002" },
+        { "id": "w004", "form": "accélera", "lemma": "accelero", "morph": { "pos": "verb", "mood": "imp", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 1 }, "post": "," },
+        { "id": "w005", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "erípias", "lemma": "eripio", "morph": { "conj": 3, "mood": "subj", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w007", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-vii-post-pentecosten-communio/",
+      "apparatus": "witnesses/proprium.dominica-vii-post-pentecosten-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

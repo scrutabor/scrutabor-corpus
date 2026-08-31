@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-alleluia",
+  "title": "Allelúia, allelúia. Si testimónium hóminum accípimus, testimónium",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "pretiosissimi-sanguinis-domini-nostri-iesu-christi",
+  "sung": true,
+  "ids": {
+    "next": 12,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Si", "lemma": "si", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "testimónium", "lemma": "testimonium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
+        { "id": "w005", "form": "hóminum", "lemma": "homo", "morph": { "case": "gen", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w006", "form": "accípimus", "lemma": "accipio", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w007", "form": "testimónium", "lemma": "testimonium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
+        { "id": "w008", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w009", "form": "maius", "lemma": "magnus", "morph": { "pos": "adj", "case": "nom", "degree": "comp", "gender": "n", "number": "sg" }, "substantive": true },
+        { "id": "w010", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." },
+        { "id": "w011", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-alleluia/",
+      "apparatus": "witnesses/proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

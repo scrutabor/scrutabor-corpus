@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-xviii-post-pentecosten-communio",
+  "title": "Tóllite hóstias, et introíte in átria eius",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-xviii-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 14,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Tóllite", "lemma": "tollo", "morph": { "conj": 3, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w002", "form": "hóstias", "lemma": "hostia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" }, "post": "," },
+        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "introíte", "lemma": "introeo", "morph": { "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w006" },
+        { "id": "w006", "form": "átria", "lemma": "atrium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 2 } },
+        { "id": "w007", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": ":" },
+        { "id": "w008", "form": "adoráte", "lemma": "adoro", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "act", "conj": 1 } },
+        { "id": "w009", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011" },
+        { "id": "w011", "form": "aula", "lemma": "aula", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w012", "form": "sancta", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "substantive": true },
+        { "id": "w013", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-xviii-post-pentecosten-communio/",
+      "apparatus": "witnesses/proprium.dominica-xviii-post-pentecosten-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

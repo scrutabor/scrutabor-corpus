@@ -330,6 +330,13 @@ NUMBER_RULINGS: dict[tuple[str, str], str] = {
     ("ordinarium.fili-dei-vivi", "w033"): "universis malis: od wszelkiego zła, one phrase",
 }
 
+# Polish has no singular surface form for usta.  This is the same grammatical
+# collapse at every occurrence of Latin os/oris, so it is recorded once by
+# lemma rather than repeated as dozens of site exceptions.
+NUMBER_LEMMA_RULINGS = {
+    "os": "usta is a Polish plurale tantum",
+}
+
 NUMBERED_POS = {"noun", "adj", "pron", "num"}
 
 
@@ -355,6 +362,8 @@ def check_number(doc: dict, gloss: dict) -> list[str]:
             if n not in {"sg", "pl"} or w["morph"].get("pos") not in NUMBERED_POS:
                 continue
             if (doc["id"], w["id"]) in NUMBER_RULINGS:
+                continue
+            if w["lemma"] in NUMBER_LEMMA_RULINGS:
                 continue
             text = (words.get(w["id"]) or {}).get("gloss")
             if not text:
@@ -480,9 +489,14 @@ def check_purpose_clauses(doc: dict, gloss: dict) -> list[str]:
             for nxt in seq[i + 1 :]:
                 if nxt["lemma"] == "ut":
                     break
+                sentence_end = bool(re.search(r"[.?!]", nxt.get("post", "")))
                 if nxt["morph"].get("mood") != "subj":
+                    if sentence_end:
+                        break
                     continue
                 if (doc["id"], nxt["id"]) in PURPOSE_RULINGS:
+                    if sentence_end:
+                        break
                     continue
                 text = (glosses.get(nxt["id"]) or {}).get("gloss") or ""
                 parts = WORD_RE.findall(text)
@@ -501,6 +515,8 @@ def check_purpose_clauses(doc: dict, gloss: dict) -> list[str]:
                         f"{doc['id']}:{nxt['id']} ({nxt['form']}): gloss {text!r} is {bad}, "
                         f"but it stands under {lead!r} — a purpose clause takes the l-form"
                     )
+                if sentence_end:
+                    break
     return errors
 
 

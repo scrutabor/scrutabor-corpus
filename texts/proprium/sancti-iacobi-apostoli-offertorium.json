@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.sancti-iacobi-apostoli-offertorium",
+  "title": "In omnem terram exívit sonus eórum: et",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "sancti-iacobi-apostoli",
+  "sung": true,
+  "ids": {
+    "next": 14,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w003" },
+        { "id": "w002", "form": "omnem", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "gender": "f", "number": "sg" }, "head": "w003" },
+        { "id": "w003", "form": "terram", "lemma": "terra", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w004", "form": "exívit", "lemma": "exeo", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w005", "form": "sonus", "lemma": "sonus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w006", "form": "eórum", "lemma": "is", "morph": { "case": "gen", "gender": "m", "number": "pl", "pos": "pron" }, "post": ":" },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w009" },
+        { "id": "w009", "form": "fines", "lemma": "finis", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w010", "form": "orbis", "lemma": "orbis", "morph": { "pos": "noun", "case": "gen", "gender": "m", "number": "sg", "decl": 3 } },
+        { "id": "w011", "form": "terræ", "lemma": "terra", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w012", "form": "verba", "lemma": "verbum", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "pl", "decl": 2 } },
+        { "id": "w013", "form": "eórum", "lemma": "is", "morph": { "case": "gen", "gender": "m", "number": "pl", "pos": "pron" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.sancti-iacobi-apostoli-offertorium/",
+      "apparatus": "witnesses/proprium.sancti-iacobi-apostoli-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

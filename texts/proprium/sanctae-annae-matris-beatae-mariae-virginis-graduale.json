@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.sanctae-annae-matris-beatae-mariae-virginis-graduale",
+  "title": "Dilexísti iustítiam, et odísti iniquitátem. Proptérea unxit",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "sanctae-annae-matris-beatae-mariae-virginis",
+  "sung": true,
+  "ids": {
+    "next": 14,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Dilexísti", "lemma": "diligo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w002", "form": "iustítiam", "lemma": "iustitia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "odísti", "lemma": "odi", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "perf", "voice": "act", "conj": 3 } },
+        { "id": "w005", "form": "iniquitátem", "lemma": "iniquitas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." },
+        { "id": "w006", "form": "Proptérea", "lemma": "propterea", "morph": { "pos": "adv" } },
+        { "id": "w007", "form": "unxit", "lemma": "unguo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 3 } },
+        { "id": "w008", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w009", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w010", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w011", "form": "tuus", "lemma": "tuus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "post": ",", "head": "w010" },
+        { "id": "w012", "form": "óleo", "lemma": "oleum", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 2 } },
+        { "id": "w013", "form": "lætítiæ", "lemma": "laetitia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.sanctae-annae-matris-beatae-mariae-virginis-graduale/",
+      "apparatus": "witnesses/proprium.sanctae-annae-matris-beatae-mariae-virginis-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

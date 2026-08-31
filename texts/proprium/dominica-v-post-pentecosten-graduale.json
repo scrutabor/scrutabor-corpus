@@ -1,0 +1,73 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-v-post-pentecosten-graduale",
+  "title": "Protéctor noster, áspice, Deus, et réspice super",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-v-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 17,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Protéctor", "lemma": "protector", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
+        { "id": "w002", "form": "noster", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w003", "form": "áspice", "lemma": "aspicio", "morph": { "pos": "verb", "mood": "imp", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 3 }, "post": "," },
+        { "id": "w004", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "réspice", "lemma": "respicio", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w007", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w008" },
+        { "id": "w008", "form": "servos", "lemma": "servus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w009", "form": "tuos", "lemma": "tuus", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "post": ".", "substantive": true },
+        { "id": "w010", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w011", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w012", "form": "virtútum", "lemma": "virtus", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" }, "post": "," },
+        { "id": "w013", "form": "exáudi", "lemma": "exaudio", "morph": { "conj": 4, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w014", "form": "preces", "lemma": "prex", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
+        { "id": "w015", "form": "servórum", "lemma": "servus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w016", "form": "tuórum", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "gender": "m", "number": "pl" }, "post": ".", "head": "w015" }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-v-post-pentecosten-graduale/",
+      "apparatus": "witnesses/proprium.dominica-v-post-pentecosten-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

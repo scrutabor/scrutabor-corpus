@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.d-n-iesu-christi-regis-alleluia",
+  "title": "Allelúia, allelúia. Potéstas eius, potéstas ætérna, quæ",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "d-n-iesu-christi-regis",
+  "sung": true,
+  "ids": {
+    "next": 17,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Potéstas", "lemma": "potestas", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w004", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": "," },
+        { "id": "w005", "form": "potéstas", "lemma": "potestas", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w006", "form": "ætérna", "lemma": "aeternus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "post": ",", "head": "w007" },
+        { "id": "w007", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w008", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w009", "form": "auferétur", "lemma": "aufero", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" }, "post": ":" },
+        { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "regnum", "lemma": "regnum", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w012", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": "," },
+        { "id": "w013", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w014", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w015", "form": "corrumpétur", "lemma": "corrumpo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "pass", "conj": 3 }, "post": "." },
+        { "id": "w016", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.d-n-iesu-christi-regis-alleluia/",
+      "apparatus": "witnesses/proprium.d-n-iesu-christi-regis-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

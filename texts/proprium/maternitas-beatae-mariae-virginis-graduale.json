@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.maternitas-beatae-mariae-virginis-graduale",
+  "title": "Egrediétur virga de rádice Iesse, et flos",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "maternitas-beatae-mariae-virginis",
+  "sung": true,
+  "ids": {
+    "next": 18,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Egrediétur", "lemma": "egredior", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "dep", "conj": 3 } },
+        { "id": "w002", "form": "virga", "lemma": "virga", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w003", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w004" },
+        { "id": "w004", "form": "rádice", "lemma": "radix", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w005", "form": "Iesse", "lemma": "Iesse", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "flos", "lemma": "flos", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
+        { "id": "w008", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w009" },
+        { "id": "w009", "form": "rádice", "lemma": "radix", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w010", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w011", "form": "ascéndet", "lemma": "ascendo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" }, "post": "." },
+        { "id": "w012", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "requiéscet", "lemma": "requiesco", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w014", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015" },
+        { "id": "w015", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
+        { "id": "w016", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w017", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.maternitas-beatae-mariae-virginis-graduale/",
+      "apparatus": "witnesses/proprium.maternitas-beatae-mariae-virginis-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

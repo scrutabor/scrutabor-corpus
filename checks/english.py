@@ -125,6 +125,7 @@ ENGLISH_NUMBER_RULINGS: dict[str, str] = {
     "sanguis": "sanguinibus is a Hebraism for one substance",
     "species": "the English noun species has the same form in singular and plural",
     "terra": "in caelis et in terris: English says earth",
+    "Ierosolyma": "the plural-form place name denotes the one city Jerusalem",
 }
 
 

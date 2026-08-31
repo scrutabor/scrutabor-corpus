@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-offertorium",
+  "title": "Calix benedictiónis, cui benedícimus, nonne communicátio sánguinis",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "pretiosissimi-sanguinis-domini-nostri-iesu-christi",
+  "sung": true,
+  "ids": {
+    "next": 19,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Calix", "lemma": "calix", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w002", "form": "benedictiónis", "lemma": "benedictio", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w003", "form": "cui", "lemma": "qui", "morph": { "case": "dat", "gender": "m", "number": "sg", "pos": "pron" } },
+        { "id": "w004", "form": "benedícimus", "lemma": "benedico", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w005", "form": "nonne", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w006", "form": "communicátio", "lemma": "communicatio", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w007", "form": "sánguinis", "lemma": "sanguis", "morph": { "case": "gen", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w008", "form": "Christi", "lemma": "Christus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w009", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "?" },
+        { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "panis", "lemma": "panis", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "post": "," },
+        { "id": "w012", "form": "quem", "lemma": "qui", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
+        { "id": "w013", "form": "frángimus", "lemma": "frango", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w014", "form": "nonne", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w015", "form": "participátio", "lemma": "participatio", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w016", "form": "córporis", "lemma": "corpus", "morph": { "case": "gen", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w017", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w018", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "?" }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-offertorium/",
+      "apparatus": "witnesses/proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

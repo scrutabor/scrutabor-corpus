@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-xix-post-pentecosten-graduale",
+  "title": "Dirigátur orátio mea, sicut incénsum in conspéctu",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-xix-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 15,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Dirigátur", "lemma": "dirigo", "morph": { "conj": 3, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" } },
+        { "id": "w002", "form": "orátio", "lemma": "oratio", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w003", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "post": ",", "head": "w002" },
+        { "id": "w004", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "incénsum", "lemma": "incensum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w006", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007" },
+        { "id": "w007", "form": "conspéctu", "lemma": "conspectus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w008", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w009", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
+        { "id": "w010", "form": "Elevátio", "lemma": "elevatio", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w011", "form": "mánuum", "lemma": "manus", "morph": { "case": "gen", "decl": 4, "gender": "f", "number": "pl", "pos": "noun" } },
+        { "id": "w012", "form": "meárum", "lemma": "meus", "morph": { "case": "gen", "gender": "f", "number": "pl", "pos": "adj" }, "head": "w011" },
+        { "id": "w013", "form": "sacrifícium", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
+        { "id": "w014", "form": "vespertínum", "lemma": "vespertinus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "post": ".", "substantive": true }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-xix-post-pentecosten-graduale/",
+      "apparatus": "witnesses/proprium.dominica-xix-post-pentecosten-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

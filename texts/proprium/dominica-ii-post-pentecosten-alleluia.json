@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-ii-post-pentecosten-alleluia",
+  "title": "Allelúia, allelúia. Dómine, Deus meus, in te",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-ii-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 20,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w004", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w005", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "post": ",", "head": "w004" },
+        { "id": "w006", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007" },
+        { "id": "w007", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w008", "form": "sperávi", "lemma": "spero", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" }, "post": ":" },
+        { "id": "w009", "form": "salvum", "lemma": "salvus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w010" },
+        { "id": "w010", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w011", "form": "fac", "lemma": "facio", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w012", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w015" },
+        { "id": "w013", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "pl" }, "substantive": true },
+        { "id": "w014", "form": "persequéntibus", "lemma": "persequor", "morph": { "pos": "verb", "case": "abl", "gender": "f", "number": "pl", "tense": "pres", "voice": "dep", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w015", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w016", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w017", "form": "líbera", "lemma": "libero", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w018", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "." },
+        { "id": "w019", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-ii-post-pentecosten-alleluia/",
+      "apparatus": "witnesses/proprium.dominica-ii-post-pentecosten-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

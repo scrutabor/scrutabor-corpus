@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-communio",
+  "title": "Domus mea domus oratiónis vocábitur, dicit Dóminus",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dedicatio-archibasilicae-sanctissimi-salvatoris",
+  "sung": true,
+  "ids": {
+    "next": 22,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Domus", "lemma": "domus", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 4 } },
+        { "id": "w002", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w003" },
+        { "id": "w003", "form": "domus", "lemma": "domus", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 4 } },
+        { "id": "w004", "form": "oratiónis", "lemma": "oratio", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w005", "form": "vocábitur", "lemma": "voco", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" }, "post": "," },
+        { "id": "w006", "form": "dicit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w007", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w008", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w009" },
+        { "id": "w009", "form": "ea", "lemma": "is", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w010", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "post": ",", "substantive": true },
+        { "id": "w011", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w012", "form": "petit", "lemma": "peto", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w013", "form": "áccipit", "lemma": "accipio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ";" },
+        { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w015", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w016", "form": "quærit", "lemma": "quaero", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w017", "form": "invénit", "lemma": "invenio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 4 }, "post": ";" },
+        { "id": "w018", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w019", "form": "pulsánti", "lemma": "pulso", "morph": { "pos": "verb", "case": "dat", "gender": "m", "number": "sg", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w020", "form": "aperiétur", "lemma": "aperio", "morph": { "conj": 4, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" }, "post": "." },
+        { "id": "w021", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": ".)" }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-communio/",
+      "apparatus": "witnesses/proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

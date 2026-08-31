@@ -1,0 +1,73 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-xxiii-post-pentecosten-offertorium",
+  "title": "De profúndis clamávi ad te, Dómine: Dómine",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-xxiii-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 17,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "De", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w002" },
+        { "id": "w002", "form": "profúndis", "lemma": "profundum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
+        { "id": "w003", "form": "clamávi", "lemma": "clamo", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w004", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w005" },
+        { "id": "w005", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "," },
+        { "id": "w006", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w007", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w008", "form": "exáudi", "lemma": "exaudio", "morph": { "conj": 4, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w009", "form": "oratiónem", "lemma": "oratio", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w010", "form": "meam", "lemma": "meus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ":", "head": "w009" },
+        { "id": "w011", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w012" },
+        { "id": "w012", "form": "profúndis", "lemma": "profundum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
+        { "id": "w013", "form": "clamávi", "lemma": "clamo", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w014", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w015" },
+        { "id": "w015", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "," },
+        { "id": "w016", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-xxiii-post-pentecosten-offertorium/",
+      "apparatus": "witnesses/proprium.dominica-xxiii-post-pentecosten-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

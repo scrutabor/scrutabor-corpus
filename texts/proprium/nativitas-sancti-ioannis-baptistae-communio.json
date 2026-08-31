@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.nativitas-sancti-ioannis-baptistae-communio",
+  "title": "Tu, puer, Propheta Altíssimi vocaberis: præíbis enim",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "nativitas-sancti-ioannis-baptistae",
+  "sung": true,
+  "ids": {
+    "next": 14,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Tu", "lemma": "tu", "morph": { "case": "nom", "number": "sg", "pos": "pron" }, "post": "," },
+        { "id": "w002", "form": "puer", "lemma": "puer", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w003", "form": "Prophéta", "lemma": "propheta", "morph": { "case": "nom", "decl": 1, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w004", "form": "Altíssimi", "lemma": "altus", "morph": { "case": "gen", "degree": "sup", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w005", "form": "vocáberis", "lemma": "voco", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "pass" }, "post": ":" },
+        { "id": "w006", "form": "præíbis", "lemma": "praeeo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "fut", "voice": "act" } },
+        { "id": "w007", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "ante", "lemma": "ante", "morph": { "governs": "acc", "pos": "prep" }, "head": "w009" },
+        { "id": "w009", "form": "fáciem", "lemma": "facies", "morph": { "case": "acc", "decl": 5, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w010", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w011", "form": "paráre", "lemma": "paro", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 1 } },
+        { "id": "w012", "form": "vias", "lemma": "via", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" } },
+        { "id": "w013", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.nativitas-sancti-ioannis-baptistae-communio/",
+      "apparatus": "witnesses/proprium.nativitas-sancti-ioannis-baptistae-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

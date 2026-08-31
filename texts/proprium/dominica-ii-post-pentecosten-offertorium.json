@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-ii-post-pentecosten-offertorium",
+  "title": "Dómine, convértere, et éripe ánimam meam: salvum",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-ii-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 13,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w002", "form": "convértere", "lemma": "converto", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 3 }, "post": "," },
+        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "éripe", "lemma": "eripio", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w005", "form": "ánimam", "lemma": "anima", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w006", "form": "meam", "lemma": "meus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ":", "head": "w005" },
+        { "id": "w007", "form": "salvum", "lemma": "salvus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w008" },
+        { "id": "w008", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w009", "form": "fac", "lemma": "facio", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w010", "form": "propter", "lemma": "propter", "morph": { "governs": "acc", "pos": "prep" }, "head": "w011" },
+        { "id": "w011", "form": "misericórdiam", "lemma": "misericordia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w012", "form": "tuam", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ".", "substantive": true }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-ii-post-pentecosten-offertorium/",
+      "apparatus": "witnesses/proprium.dominica-ii-post-pentecosten-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

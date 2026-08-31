@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.beata-maria-virgo-regina-alleluia",
+  "title": "Allelúia, allelúia. Salve, Regína misericórdiæ, tu nos",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "beata-maria-virgo-regina",
+  "sung": true,
+  "ids": {
+    "next": 16,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Salve", "lemma": "salveo", "morph": { "conj": 2, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w004", "form": "Regína", "lemma": "regina", "morph": { "case": "voc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w005", "form": "misericórdiæ", "lemma": "misericordia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w006", "form": "tu", "lemma": "tu", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
+        { "id": "w007", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w008", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w009" },
+        { "id": "w009", "form": "hoste", "lemma": "hostis", "morph": { "case": "abl", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w010", "form": "prótege", "lemma": "protego", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w011", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w012", "form": "mortis", "lemma": "mors", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w013", "form": "hora", "lemma": "hora", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w014", "form": "súscipe", "lemma": "suscipio", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." },
+        { "id": "w015", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.beata-maria-virgo-regina-alleluia/",
+      "apparatus": "witnesses/proprium.beata-maria-virgo-regina-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

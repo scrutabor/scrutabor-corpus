@@ -1,0 +1,73 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-iv-post-pentecosten-offertorium",
+  "title": "Illúmina óculos meos, ne umquam obdórmiam in",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-iv-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 17,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Illúmina", "lemma": "illumino", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w002", "form": "óculos", "lemma": "oculus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w003", "form": "meos", "lemma": "meus", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "post": ",", "head": "w002" },
+        { "id": "w004", "form": "ne", "lemma": "ne", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "umquam", "lemma": "umquam", "morph": { "pos": "adv" } },
+        { "id": "w006", "form": "obdórmiam", "lemma": "obdormio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "fut", "voice": "act", "conj": 3 } },
+        { "id": "w007", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008" },
+        { "id": "w008", "form": "morte", "lemma": "mors", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w009", "form": "ne", "lemma": "ne", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "quando", "lemma": "quando", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "dicat", "lemma": "dico", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 3 } },
+        { "id": "w012", "form": "inimícus", "lemma": "inimicus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w013", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "post": ":", "head": "w012" },
+        { "id": "w014", "form": "Præválui", "lemma": "praevaleo", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 2 } },
+        { "id": "w015", "form": "advérsus", "lemma": "adversus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w016", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-iv-post-pentecosten-offertorium/",
+      "apparatus": "witnesses/proprium.dominica-iv-post-pentecosten-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

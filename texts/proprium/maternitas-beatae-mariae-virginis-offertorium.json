@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.maternitas-beatae-mariae-virginis-offertorium",
+  "title": "Cum esset desponsáta mater eius María Ioseph",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "maternitas-beatae-mariae-virginis",
+  "sung": true,
+  "ids": {
+    "next": 16,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Cum", "lemma": "cum", "morph": { "pos": "conj" } },
+        { "id": "w002", "form": "esset", "lemma": "sum", "morph": { "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
+        { "id": "w003", "form": "desponsáta", "lemma": "desponso", "morph": { "pos": "verb", "case": "voc", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "head": "w004" },
+        { "id": "w004", "form": "mater", "lemma": "mater", "morph": { "case": "voc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w005", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w006", "form": "María", "lemma": "Maria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w007", "form": "Ioseph", "lemma": "Ioseph", "morph": { "pos": "noun", "gender": "m", "case": "gen", "number": "sg" }, "post": "," },
+        { "id": "w008", "form": "invénta", "lemma": "invenio", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 4 }, "substantive": true },
+        { "id": "w009", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011" },
+        { "id": "w011", "form": "útero", "lemma": "uterus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w012", "form": "habens", "lemma": "habeo", "morph": { "case": "acc", "conj": 2, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
+        { "id": "w013", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w014" },
+        { "id": "w014", "form": "Spíritu", "lemma": "spiritus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w015", "form": "Sancto", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "post": ".", "substantive": true }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.maternitas-beatae-mariae-virginis-offertorium/",
+      "apparatus": "witnesses/proprium.maternitas-beatae-mariae-virginis-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

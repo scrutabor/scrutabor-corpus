@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.assumptio-beatae-mariae-virginis-communio",
+  "title": "Beátam me dicent omnes generatiónes, quia fecit",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "assumptio-beatae-mariae-virginis",
+  "sung": true,
+  "ids": {
+    "next": 13,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Beátam", "lemma": "beatus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w002" },
+        { "id": "w002", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w003", "form": "dicent", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w004", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "substantive": true },
+        { "id": "w005", "form": "generatiónes", "lemma": "generatio", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" }, "post": "," },
+        { "id": "w006", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "fecit", "lemma": "facio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w008", "form": "mihi", "lemma": "ego", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
+        { "id": "w009", "form": "magna", "lemma": "magnus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "substantive": true },
+        { "id": "w010", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w011", "form": "potens", "lemma": "potens", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "head": "w010" },
+        { "id": "w012", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.assumptio-beatae-mariae-virginis-communio/",
+      "apparatus": "witnesses/proprium.assumptio-beatae-mariae-virginis-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

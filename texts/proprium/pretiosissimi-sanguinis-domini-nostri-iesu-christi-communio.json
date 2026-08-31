@@ -1,0 +1,73 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-communio",
+  "title": "Christus semel oblátus est ad multórum exhauriénda",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "pretiosissimi-sanguinis-domini-nostri-iesu-christi",
+  "sung": true,
+  "ids": {
+    "next": 17,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Christus", "lemma": "Christus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w002", "form": "semel", "lemma": "semel", "morph": { "pos": "adv" } },
+        { "id": "w003", "form": "oblátus", "lemma": "offero", "morph": { "case": "nom", "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w001" },
+        { "id": "w004", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w005", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w008" },
+        { "id": "w006", "form": "multórum", "lemma": "multus", "morph": { "pos": "adj", "case": "gen", "gender": "m", "number": "pl" }, "substantive": true },
+        { "id": "w007", "form": "exhauriénda", "lemma": "exhaurio", "morph": { "pos": "verb", "case": "acc", "gender": "n", "number": "pl", "tense": "fut", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w008" },
+        { "id": "w008", "form": "peccáta", "lemma": "peccatum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 2 }, "post": ":" },
+        { "id": "w009", "form": "secúndo", "lemma": "secundo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "pres", "voice": "act", "conj": 1 } },
+        { "id": "w010", "form": "sine", "lemma": "sine", "morph": { "governs": "abl", "pos": "prep" }, "head": "w011" },
+        { "id": "w011", "form": "peccáto", "lemma": "peccatum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w012", "form": "apparébit", "lemma": "appareo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "act", "conj": 2 } },
+        { "id": "w013", "form": "exspectántibus", "lemma": "exspecto", "morph": { "pos": "verb", "case": "dat", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w014", "form": "se", "lemma": "sui", "morph": { "case": "abl", "pos": "pron" } },
+        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w016" },
+        { "id": "w016", "form": "salútem", "lemma": "salus", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-communio/",
+      "apparatus": "witnesses/proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

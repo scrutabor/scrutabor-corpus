@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-tractus",
+  "title": "Absólve, Dómine, ánimas ómnium fidélium ab omni",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "commemoratio-omnium-fidelium-defunctorum-missa-i",
+  "sung": true,
+  "ids": {
+    "next": 24,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Absólve", "lemma": "absolvo", "morph": { "pos": "verb", "mood": "imp", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 3 }, "post": "," },
+        { "id": "w002", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w003", "form": "ánimas", "lemma": "anima", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" } },
+        { "id": "w004", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w005", "form": "fidélium", "lemma": "fidelis", "morph": { "case": "gen", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
+        { "id": "w006", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008" },
+        { "id": "w007", "form": "omni", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "substantive": true },
+        { "id": "w008", "form": "vínculo", "lemma": "vinculum", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 2 } },
+        { "id": "w009", "form": "delictórum", "lemma": "delictum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." },
+        { "id": "w010", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "grátia", "lemma": "gratia", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w012", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w011" },
+        { "id": "w013", "form": "illis", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" } },
+        { "id": "w014", "form": "succurrénte", "lemma": "succurro", "morph": { "pos": "verb", "case": "abl", "gender": "f", "number": "sg", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "post": ",", "head": "w011" },
+        { "id": "w015", "form": "mereántur", "lemma": "mereo", "morph": { "conj": 2, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" } },
+        { "id": "w016", "form": "evádere", "lemma": "evado", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 3 } },
+        { "id": "w017", "form": "iudícium", "lemma": "iudicium", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w018", "form": "ultiónis", "lemma": "ultio", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "sg", "decl": 3 }, "post": "." },
+        { "id": "w019", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w020", "form": "lucis", "lemma": "lux", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w021", "form": "ætérnæ", "lemma": "aeternus", "morph": { "case": "gen", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w020" },
+        { "id": "w022", "form": "beatitúdine", "lemma": "beatitudo", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w023", "form": "pérfrui", "lemma": "perfruor", "morph": { "conj": 3, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "dep" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-tractus/",
+      "apparatus": "witnesses/proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-tractus/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

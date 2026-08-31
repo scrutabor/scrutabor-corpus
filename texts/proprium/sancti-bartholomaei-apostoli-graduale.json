@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.sancti-bartholomaei-apostoli-graduale",
+  "title": "Constítues eos príncipes super omnem terram: mémores",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "sancti-bartholomaei-apostoli",
+  "sung": true,
+  "ids": {
+    "next": 23,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Constítues", "lemma": "constituo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "fut", "voice": "act", "conj": 3 } },
+        { "id": "w002", "form": "eos", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "pron" } },
+        { "id": "w003", "form": "príncipes", "lemma": "princeps", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 3 } },
+        { "id": "w004", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w006" },
+        { "id": "w005", "form": "omnem", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "gender": "f", "number": "sg" }, "head": "w006" },
+        { "id": "w006", "form": "terram", "lemma": "terra", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w007", "form": "mémores", "lemma": "memor", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
+        { "id": "w008", "form": "erunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w009", "form": "nóminis", "lemma": "nomen", "morph": { "case": "gen", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w010", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w011", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
+        { "id": "w012", "form": "Pro", "lemma": "pro", "morph": { "governs": "abl", "pos": "prep" }, "head": "w013" },
+        { "id": "w013", "form": "pátribus", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w014", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w015", "form": "nati", "lemma": "nascor", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "dep" }, "substantive": true },
+        { "id": "w016", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w017", "form": "tibi", "lemma": "tu", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
+        { "id": "w018", "form": "fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "post": ":" },
+        { "id": "w019", "form": "proptérea", "lemma": "propterea", "morph": { "pos": "adv" } },
+        { "id": "w020", "form": "pópuli", "lemma": "populus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w021", "form": "confitebúntur", "lemma": "confiteor", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "fut", "voice": "dep", "conj": 2 } },
+        { "id": "w022", "form": "tibi", "lemma": "tu", "morph": { "case": "dat", "number": "sg", "pos": "pron" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.sancti-bartholomaei-apostoli-graduale/",
+      "apparatus": "witnesses/proprium.sancti-bartholomaei-apostoli-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

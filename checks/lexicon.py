@@ -338,6 +338,15 @@ def check_note_prose(lex: dict) -> list[str]:
 # missing theirs until 2026-08-17, indistinguishable from the Hebrew names
 # beside them.
 INDECLINABLE = {
+    "Aaron", "Abba", "Abiud", "Achaz", "Achim", "Aminadab", "Amon", "Asa",
+    "Aser", "Azor", "Bar", "Beniamin", "Booz", "Capharnaum", "Cephas", "Cleophas",
+    "David", "Eleazar", "Eliacim", "Elisabeth", "Eliud", "Esron", "Ezechias", "Gad",
+    "Genesareth", "Hus", "Iechonias", "Iericho", "Ioachim", "Ioatham", "Iob", "Ioram",
+    "Iosaphat", "Iosias", "Issachar", "Magdalene", "Mathan", "Naasson", "Naim",
+    "Nazareth", "Nephthali", "Obed", "Ophir", "Ozias", "Phares", "Rahab", "Roboam",
+    "Ruben", "Ruth", "Sadoc", "Salathiel", "Salmon", "Salome", "Satan", "Sidon",
+    "Simeon", "Thamar", "Zabulon", "Zara", "Zorobabel", "mille", "nil",
+    "paterfamilias",
     "cherubim",
     "Emmanuel",
     "Iacob",
@@ -359,6 +368,8 @@ INDECLINABLE = {
     "Parasceve",  # Greek liturgical name for the day of preparation
 }
 IRREGULAR_VERBS = {
+    "absum", "adeo", "adsum", "circueo", "desum", "ineo", "pereo", "pertranseo",
+    "praeeo", "prodeo", "redeo",
     "nolo",
     "exeo",
     "coepi",
@@ -378,6 +389,7 @@ IRREGULAR_VERBS = {
     "praetereo",
     "transeo",  # compounds of eo
     "eleison",  # Greek imperative
+    "praesum",  # compound of sum; its paradigm has no numbered conjugation
 }
 
 

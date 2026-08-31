@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-ii-post-pentecosten-communio",
+  "title": "Cantábo Dómino, qui bona tríbuit mihi: et",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-ii-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 12,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Cantábo", "lemma": "canto", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w002", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w003", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w004", "form": "bona", "lemma": "bonus", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "substantive": true },
+        { "id": "w005", "form": "tríbuit", "lemma": "tribuo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 3 } },
+        { "id": "w006", "form": "mihi", "lemma": "ego", "morph": { "case": "dat", "number": "sg", "pos": "pron" }, "post": ":" },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "psallam", "lemma": "psallo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "fut", "voice": "act", "conj": 3 } },
+        { "id": "w009", "form": "nómini", "lemma": "nomen", "morph": { "case": "dat", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w010", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w011", "form": "altíssimi", "lemma": "altus", "morph": { "case": "gen", "degree": "sup", "gender": "m", "number": "sg", "pos": "adj" }, "post": ".", "head": "w010" }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-ii-post-pentecosten-communio/",
+      "apparatus": "witnesses/proprium.dominica-ii-post-pentecosten-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

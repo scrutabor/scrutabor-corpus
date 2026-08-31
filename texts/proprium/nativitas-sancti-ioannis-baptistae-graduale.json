@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.nativitas-sancti-ioannis-baptistae-graduale",
+  "title": "Priusquam te formárem in útero, novi te",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "nativitas-sancti-ioannis-baptistae",
+  "sung": true,
+  "ids": {
+    "next": 26,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Priúsquam", "lemma": "priusquam", "morph": { "pos": "conj" } },
+        { "id": "w002", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w003", "form": "formárem", "lemma": "formo", "morph": { "conj": 1, "mood": "subj", "number": "sg", "person": 1, "pos": "verb", "tense": "impf", "voice": "act" } },
+        { "id": "w004", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
+        { "id": "w005", "form": "útero", "lemma": "uterus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w006", "form": "novi", "lemma": "nosco", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "perf", "voice": "act", "conj": 3 } },
+        { "id": "w007", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": ":" },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "ántequam", "lemma": "antequam", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "exíres", "lemma": "exeo", "morph": { "mood": "subj", "number": "sg", "person": 2, "pos": "verb", "tense": "impf", "voice": "act" } },
+        { "id": "w011", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w012" },
+        { "id": "w012", "form": "ventre", "lemma": "venter", "morph": { "case": "abl", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w013", "form": "sanctificávi", "lemma": "sanctifico", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w014", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "." },
+        { "id": "w015", "form": "Misit", "lemma": "mitto", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w016", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w017", "form": "manum", "lemma": "manus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 4 } },
+        { "id": "w018", "form": "suam", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "post": ",", "head": "w017" },
+        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w020", "form": "tétigit", "lemma": "tango", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 3 } },
+        { "id": "w021", "form": "os", "lemma": "os", "morph": { "case": "nom", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w022", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w023", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w024", "form": "dixit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w025", "form": "mihi", "lemma": "ego", "morph": { "case": "dat", "number": "sg", "pos": "pron" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.nativitas-sancti-ioannis-baptistae-graduale/",
+      "apparatus": "witnesses/proprium.nativitas-sancti-ioannis-baptistae-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

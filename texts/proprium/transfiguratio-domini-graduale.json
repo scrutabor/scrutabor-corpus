@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.transfiguratio-domini-graduale",
+  "title": "Speciosus forma præ fíliis hóminum: diffúsa est",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "transfiguratio-domini",
+  "sung": true,
+  "ids": {
+    "next": 22,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Specíosus", "lemma": "speciosus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w002", "form": "forma", "lemma": "forma", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w003", "form": "præ", "lemma": "prae", "morph": { "governs": "abl", "pos": "prep" }, "head": "w004" },
+        { "id": "w004", "form": "fíliis", "lemma": "filius", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "pl", "decl": 2 } },
+        { "id": "w005", "form": "hóminum", "lemma": "homo", "morph": { "case": "gen", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" }, "post": ":" },
+        { "id": "w006", "form": "diffúsa", "lemma": "diffundo", "morph": { "pos": "verb", "case": "abl", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w007", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w008", "form": "grátia", "lemma": "gratia", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010" },
+        { "id": "w010", "form": "lábiis", "lemma": "labium", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "pl", "decl": 2 } },
+        { "id": "w011", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "post": ".", "substantive": true },
+        { "id": "w012", "form": "Eructávit", "lemma": "eructo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 1 } },
+        { "id": "w013", "form": "cor", "lemma": "cor", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 3 } },
+        { "id": "w014", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "substantive": true },
+        { "id": "w015", "form": "verbum", "lemma": "verbum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
+        { "id": "w016", "form": "bonum", "lemma": "bonus", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "post": ":", "head": "w015" },
+        { "id": "w017", "form": "dico", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w018", "form": "ego", "lemma": "ego", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
+        { "id": "w019", "form": "ópera", "lemma": "opus", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" } },
+        { "id": "w020", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w018" },
+        { "id": "w021", "form": "Regi", "lemma": "rex", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 3 }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.transfiguratio-domini-graduale/",
+      "apparatus": "witnesses/proprium.transfiguratio-domini-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

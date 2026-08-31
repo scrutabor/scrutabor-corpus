@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.transfiguratio-domini-alleluia",
+  "title": "Allelúia, allelúia. Candor est lucis ætérnæ, spéculum",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "transfiguratio-domini",
+  "sung": true,
+  "ids": {
+    "next": 15,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Candor", "lemma": "candor", "morph": { "case": "voc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w004", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w005", "form": "lucis", "lemma": "lux", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w006", "form": "ætérnæ", "lemma": "aeternus", "morph": { "case": "gen", "gender": "f", "number": "sg", "pos": "adj" }, "post": ",", "head": "w005" },
+        { "id": "w007", "form": "spéculum", "lemma": "speculum", "morph": { "case": "voc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w008", "form": "sine", "lemma": "sine", "morph": { "governs": "abl", "pos": "prep" }, "head": "w009" },
+        { "id": "w009", "form": "mácula", "lemma": "macula", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "imágo", "lemma": "imago", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w012", "form": "bonitátis", "lemma": "bonitas", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w013", "form": "illíus", "lemma": "ille", "morph": { "case": "gen", "gender": "f", "number": "sg", "pos": "pron" }, "post": "." },
+        { "id": "w014", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.transfiguratio-domini-alleluia/",
+      "apparatus": "witnesses/proprium.transfiguratio-domini-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

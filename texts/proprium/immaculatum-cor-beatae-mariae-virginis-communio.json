@@ -1,0 +1,80 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.immaculatum-cor-beatae-mariae-virginis-communio",
+  "title": "Dixit Iesus matri suæ: Múlier, ecce fílius",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "immaculatum-cor-beatae-mariae-virginis",
+  "sung": true,
+  "ids": {
+    "next": 24,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Dixit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w002", "form": "Iesus", "lemma": "Iesus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w003", "form": "matri", "lemma": "mater", "morph": { "case": "dat", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w004", "form": "suæ", "lemma": "suus", "morph": { "case": "gen", "gender": "f", "number": "sg", "pos": "adj" }, "post": ":", "substantive": true },
+        { "id": "w005", "form": "Múlier", "lemma": "mulier", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 }, "post": "," },
+        { "id": "w006", "form": "ecce", "lemma": "ecce", "morph": { "pos": "intj" } },
+        { "id": "w007", "form": "fílius", "lemma": "filius", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w008", "form": "tuus", "lemma": "tuus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "post": ":", "head": "w007" },
+        { "id": "w009", "form": "deínde", "lemma": "deinde", "morph": { "pos": "adv" } },
+        { "id": "w010", "form": "dixit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w011", "form": "discípulo", "lemma": "discipulus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": ":" },
+        { "id": "w012", "form": "Ecce", "lemma": "ecce", "morph": { "pos": "intj" } },
+        { "id": "w013", "form": "mater", "lemma": "mater", "morph": { "case": "voc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w014", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "post": ".", "substantive": true },
+        { "id": "w015", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w016", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w017" },
+        { "id": "w017", "form": "illa", "lemma": "ille", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w018", "form": "hora", "lemma": "hora", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w019", "form": "accépit", "lemma": "accipio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w020", "form": "eam", "lemma": "is", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "pron" } },
+        { "id": "w021", "form": "discípulus", "lemma": "discipulus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w023" },
+        { "id": "w023", "form": "sua", "lemma": "suus", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "post": ".", "substantive": true }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.immaculatum-cor-beatae-mariae-virginis-communio/",
+      "apparatus": "witnesses/proprium.immaculatum-cor-beatae-mariae-virginis-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

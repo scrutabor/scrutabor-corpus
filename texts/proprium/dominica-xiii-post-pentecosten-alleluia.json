@@ -1,0 +1,64 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-xiii-post-pentecosten-alleluia",
+  "title": "Allelúia, allelúia Dómine, refúgium factus es nobis",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-xiii-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 13,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" } },
+        { "id": "w003", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w004", "form": "refúgium", "lemma": "refugium", "morph": { "case": "voc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w005", "form": "factus", "lemma": "facio", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
+        { "id": "w006", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w007", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
+        { "id": "w008", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w009" },
+        { "id": "w009", "form": "generatióne", "lemma": "generatio", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "progénie", "lemma": "progenies", "morph": { "case": "abl", "decl": 5, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." },
+        { "id": "w012", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-xiii-post-pentecosten-alleluia/",
+      "apparatus": "witnesses/proprium.dominica-xiii-post-pentecosten-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

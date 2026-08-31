@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.beata-maria-virgo-regina-communio",
+  "title": "Regína mundi digníssima, María Virgo perpétua, intercéde",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "beata-maria-virgo-regina",
+  "sung": true,
+  "ids": {
+    "next": 19,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Regína", "lemma": "regina", "morph": { "case": "voc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w002", "form": "mundi", "lemma": "mundus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w003", "form": "digníssima", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "degree": "sup", "gender": "f", "number": "sg" }, "post": ",", "head": "w004" },
+        { "id": "w004", "form": "María", "lemma": "Maria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w005", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w006", "form": "perpétua", "lemma": "perpetuus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "post": ",", "head": "w005" },
+        { "id": "w007", "form": "intercéde", "lemma": "intercedo", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w008", "form": "pro", "lemma": "pro", "morph": { "governs": "abl", "pos": "prep" }, "head": "w010" },
+        { "id": "w009", "form": "nostra", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w010" },
+        { "id": "w010", "form": "pace", "lemma": "pax", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w011", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w012", "form": "salúte", "lemma": "salus", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w013", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w014", "form": "genuísti", "lemma": "gigno", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w015", "form": "Christum", "lemma": "Christus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w016", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w017", "form": "Salvatórem", "lemma": "salvator", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w018", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "post": ".", "substantive": true }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.beata-maria-virgo-regina-communio/",
+      "apparatus": "witnesses/proprium.beata-maria-virgo-regina-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

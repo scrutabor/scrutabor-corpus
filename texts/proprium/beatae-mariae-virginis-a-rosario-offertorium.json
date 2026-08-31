@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.beatae-mariae-virginis-a-rosario-offertorium",
+  "title": "In me grátia omnis viæ et veritátis",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "beatae-mariae-virginis-a-rosario",
+  "sung": true,
+  "ids": {
+    "next": 23,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w002" },
+        { "id": "w002", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w003", "form": "grátia", "lemma": "gratia", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w004", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "substantive": true },
+        { "id": "w005", "form": "viæ", "lemma": "via", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "veritátis", "lemma": "veritas", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w008", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w009" },
+        { "id": "w009", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w010", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w011" },
+        { "id": "w011", "form": "spes", "lemma": "spes", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 5 } },
+        { "id": "w012", "form": "vitæ", "lemma": "vita", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w014", "form": "virtútis", "lemma": "virtus", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w015", "form": "ego", "lemma": "ego", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
+        { "id": "w016", "form": "quasi", "lemma": "quasi", "morph": { "pos": "conj" } },
+        { "id": "w017", "form": "rosa", "lemma": "rosa", "morph": { "case": "voc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w018", "form": "plantáta", "lemma": "planto", "morph": { "pos": "verb", "case": "acc", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w019", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w020" },
+        { "id": "w020", "form": "rivos", "lemma": "rivus", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "pl", "decl": 2 } },
+        { "id": "w021", "form": "aquárum", "lemma": "aqua", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" } },
+        { "id": "w022", "form": "fructificávi", "lemma": "fructifico", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "perf", "voice": "act", "conj": 1 }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.beatae-mariae-virginis-a-rosario-offertorium/",
+      "apparatus": "witnesses/proprium.beatae-mariae-virginis-a-rosario-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

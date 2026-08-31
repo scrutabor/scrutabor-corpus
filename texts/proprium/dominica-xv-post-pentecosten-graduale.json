@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-xv-post-pentecosten-graduale",
+  "title": "Bonum est confitéri Dómino: et psallere nómini",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-xv-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 20,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Bonum", "lemma": "bonus", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w002", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w003", "form": "confitéri", "lemma": "confiteor", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "dep", "conj": 2 } },
+        { "id": "w004", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": ":" },
+        { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "psállere", "lemma": "psallo", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 3 } },
+        { "id": "w007", "form": "nómini", "lemma": "nomen", "morph": { "case": "dat", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w008", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w009", "form": "Altíssime", "lemma": "altus", "morph": { "case": "voc", "degree": "sup", "gender": "m", "number": "sg", "pos": "adj" }, "post": ".", "substantive": true },
+        { "id": "w010", "form": "Ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w013" },
+        { "id": "w011", "form": "annuntiándum", "lemma": "annuntio", "morph": { "pos": "verb", "case": "acc", "gender": "n", "number": "sg", "tense": "fut", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w012", "form": "mane", "lemma": "maneo", "morph": { "conj": 2, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w013", "form": "misericórdiam", "lemma": "misericordia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w014", "form": "tuam", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ",", "head": "w013" },
+        { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w016", "form": "veritátem", "lemma": "veritas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w017", "form": "tuam", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w016" },
+        { "id": "w018", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w019" },
+        { "id": "w019", "form": "noctem", "lemma": "nox", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-xv-post-pentecosten-graduale/",
+      "apparatus": "witnesses/proprium.dominica-xv-post-pentecosten-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

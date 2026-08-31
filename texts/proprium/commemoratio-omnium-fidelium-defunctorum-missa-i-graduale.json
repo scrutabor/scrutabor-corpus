@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-graduale",
+  "title": "Réquiem ætérnam dona eis, Dómine: et lux",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "commemoratio-omnium-fidelium-defunctorum-missa-i",
+  "sung": true,
+  "ids": {
+    "next": 21,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Réquiem", "lemma": "requies", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w002", "form": "ætérnam", "lemma": "aeternus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w001" },
+        { "id": "w003", "form": "dona", "lemma": "donum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w004", "form": "eis", "lemma": "is", "morph": { "case": "dat", "gender": "m", "number": "pl", "pos": "pron" }, "post": "," },
+        { "id": "w005", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "lux", "lemma": "lux", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w008", "form": "perpétua", "lemma": "perpetuus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "head": "w007" },
+        { "id": "w009", "form": "lúceat", "lemma": "luceo", "morph": { "conj": 2, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w010", "form": "eis", "lemma": "is", "morph": { "case": "dat", "gender": "m", "number": "pl", "pos": "pron" }, "post": "." },
+        { "id": "w011", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w012" },
+        { "id": "w012", "form": "memória", "lemma": "memoria", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w013", "form": "ætérna", "lemma": "aeternus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w014", "form": "erit", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w015", "form": "iustus", "lemma": "iustus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "post": ":", "substantive": true },
+        { "id": "w016", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w017" },
+        { "id": "w017", "form": "auditióne", "lemma": "auditio", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w018", "form": "mala", "lemma": "malus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w019", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w020", "form": "timébit", "lemma": "timeo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-graduale/",
+      "apparatus": "witnesses/proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

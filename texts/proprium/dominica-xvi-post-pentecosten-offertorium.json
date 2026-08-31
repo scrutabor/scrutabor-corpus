@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-xvi-post-pentecosten-offertorium",
+  "title": "Dómine, in auxílium meum réspice: confundántur et",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-xvi-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 21,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w002", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w003" },
+        { "id": "w003", "form": "auxílium", "lemma": "auxilium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
+        { "id": "w004", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "substantive": true },
+        { "id": "w005", "form": "réspice", "lemma": "respicio", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":" },
+        { "id": "w006", "form": "confundántur", "lemma": "confundo", "morph": { "conj": 3, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" } },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "revereántur", "lemma": "revereor", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 3, "tense": "pres", "voice": "dep", "conj": 2 }, "post": "," },
+        { "id": "w009", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w010", "form": "quærunt", "lemma": "quaero", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w011", "form": "ánimam", "lemma": "anima", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w012", "form": "meam", "lemma": "meus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ",", "head": "w011" },
+        { "id": "w013", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w014", "form": "áuferant", "lemma": "aufero", "morph": { "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w015", "form": "eam", "lemma": "is", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "pron" }, "post": ":" },
+        { "id": "w016", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w017", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w018" },
+        { "id": "w018", "form": "auxílium", "lemma": "auxilium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
+        { "id": "w019", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "substantive": true },
+        { "id": "w020", "form": "réspice", "lemma": "respicio", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-xvi-post-pentecosten-offertorium/",
+      "apparatus": "witnesses/proprium.dominica-xvi-post-pentecosten-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

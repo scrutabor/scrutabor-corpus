@@ -1,0 +1,65 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.sancti-petri-et-pauli-apostolorum-alleluia",
+  "title": "Allelúia, allelúia. Tu es Petrus, et super",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "sancti-petri-et-pauli-apostolorum",
+  "sung": true,
+  "ids": {
+    "next": 14,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Tu", "lemma": "tu", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
+        { "id": "w004", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w005", "form": "Petrus", "lemma": "Petrus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w008" },
+        { "id": "w008", "form": "hanc", "lemma": "hic", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "pron" } },
+        { "id": "w009", "form": "petram", "lemma": "petra", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w010", "form": "ædificábo", "lemma": "aedifico", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "fut", "voice": "act", "conj": 1 } },
+        { "id": "w011", "form": "Ecclésiam", "lemma": "ecclesia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w012", "form": "meam", "lemma": "meus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ".", "head": "w011" },
+        { "id": "w013", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.sancti-petri-et-pauli-apostolorum-alleluia/",
+      "apparatus": "witnesses/proprium.sancti-petri-et-pauli-apostolorum-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

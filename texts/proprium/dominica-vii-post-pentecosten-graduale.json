@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-vii-post-pentecosten-graduale",
+  "title": "Veníte, fílii, audíte me: timórem Dómini docébo",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-vii-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 19,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Veníte", "lemma": "venio", "morph": { "conj": 4, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w002", "form": "fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "post": "," },
+        { "id": "w003", "form": "audíte", "lemma": "audio", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "act", "conj": 4 } },
+        { "id": "w004", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": ":" },
+        { "id": "w005", "form": "timórem", "lemma": "timor", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w006", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w007", "form": "docébo", "lemma": "doceo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w008", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": "." },
+        { "id": "w009", "form": "Accédite", "lemma": "accedo", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "act", "conj": 3 } },
+        { "id": "w010", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w011" },
+        { "id": "w011", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" }, "post": "," },
+        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "illuminámini", "lemma": "illumino", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 2, "tense": "pres", "voice": "pass", "conj": 1 }, "post": ":" },
+        { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w015", "form": "fácies", "lemma": "facies", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "pl", "decl": 5 } },
+        { "id": "w016", "form": "vestræ", "lemma": "vester", "morph": { "case": "nom", "gender": "f", "number": "pl", "pos": "adj" }, "head": "w015" },
+        { "id": "w017", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w018", "form": "confundéntur", "lemma": "confundo", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-vii-post-pentecosten-graduale/",
+      "apparatus": "witnesses/proprium.dominica-vii-post-pentecosten-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-viii-post-pentecosten-communio",
+  "title": "Gustáte et vidéte, quóniam suávis est Dóminus",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-viii-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 14,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Gustáte", "lemma": "gusto", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "act", "conj": 1 } },
+        { "id": "w002", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w003", "form": "vidéte", "lemma": "video", "morph": { "conj": 2, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w004", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "suávis", "lemma": "suavis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "substantive": true },
+        { "id": "w006", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w007", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w008", "form": "beátus", "lemma": "beatus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w009" },
+        { "id": "w009", "form": "vir", "lemma": "vir", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w010", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w011", "form": "sperat", "lemma": "spero", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w012", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013" },
+        { "id": "w013", "form": "eo", "lemma": "is", "morph": { "case": "abl", "gender": "m", "number": "sg", "pos": "pron" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-viii-post-pentecosten-communio/",
+      "apparatus": "witnesses/proprium.dominica-viii-post-pentecosten-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

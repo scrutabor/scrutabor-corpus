@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.d-n-iesu-christi-regis-graduale",
+  "title": "Dominábitur a mari usque ad mare, et",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "d-n-iesu-christi-regis",
+  "sung": true,
+  "ids": {
+    "next": 25,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Dominábitur", "lemma": "domino", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "pass", "conj": 1 } },
+        { "id": "w002", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w003" },
+        { "id": "w003", "form": "mari", "lemma": "mare", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 3 } },
+        { "id": "w004", "form": "usque", "lemma": "usque", "morph": { "pos": "adv" } },
+        { "id": "w005", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w006" },
+        { "id": "w006", "form": "mare", "lemma": "mare", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 3 }, "post": "," },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w009" },
+        { "id": "w009", "form": "flúmine", "lemma": "flumen", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 3 } },
+        { "id": "w010", "form": "usque", "lemma": "usque", "morph": { "pos": "adv" } },
+        { "id": "w011", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w012" },
+        { "id": "w012", "form": "términos", "lemma": "terminus", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "pl", "decl": 2 } },
+        { "id": "w013", "form": "orbis", "lemma": "orbis", "morph": { "pos": "noun", "case": "gen", "gender": "m", "number": "sg", "decl": 3 } },
+        { "id": "w014", "form": "terrárum", "lemma": "terra", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" }, "post": "." },
+        { "id": "w015", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w016", "form": "adorábunt", "lemma": "adoro", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w017", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
+        { "id": "w018", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "substantive": true },
+        { "id": "w019", "form": "reges", "lemma": "rex", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 3 } },
+        { "id": "w020", "form": "terræ", "lemma": "terra", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w021", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w022" },
+        { "id": "w022", "form": "gentes", "lemma": "gens", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w023", "form": "sérvient", "lemma": "servio", "morph": { "conj": 4, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w024", "form": "ei", "lemma": "is", "morph": { "case": "dat", "gender": "m", "number": "sg", "pos": "pron" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.d-n-iesu-christi-regis-graduale/",
+      "apparatus": "witnesses/proprium.d-n-iesu-christi-regis-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

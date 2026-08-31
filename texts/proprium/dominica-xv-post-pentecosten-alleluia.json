@@ -1,0 +1,65 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-xv-post-pentecosten-alleluia",
+  "title": "Allelúia, allelúia. Quóniam Deus magnus Dóminus, et",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-xv-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 14,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w005", "form": "magnus", "lemma": "magnus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w006" },
+        { "id": "w006", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "Rex", "lemma": "rex", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
+        { "id": "w009", "form": "magnus", "lemma": "magnus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w008" },
+        { "id": "w010", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
+        { "id": "w011", "form": "omnem", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "gender": "f", "number": "sg" }, "head": "w012" },
+        { "id": "w012", "form": "terram", "lemma": "terra", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." },
+        { "id": "w013", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-xv-post-pentecosten-alleluia/",
+      "apparatus": "witnesses/proprium.dominica-xv-post-pentecosten-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-offertorium",
+  "title": "Dómine Deus, in simplicitáte cordis mei lætus",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dedicatio-archibasilicae-sanctissimi-salvatoris",
+  "sung": true,
+  "ids": {
+    "next": 26,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w002", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w003", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w004" },
+        { "id": "w004", "form": "simplicitáte", "lemma": "simplicitas", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w005", "form": "cordis", "lemma": "cor", "morph": { "case": "gen", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w006", "form": "mei", "lemma": "meus", "morph": { "pos": "adj", "case": "gen", "gender": "m", "number": "sg" }, "substantive": true },
+        { "id": "w007", "form": "lætus", "lemma": "laetus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "head": "w002" },
+        { "id": "w008", "form": "óbtuli", "lemma": "offero", "morph": { "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w009", "form": "univérsa", "lemma": "universus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "post": ";", "substantive": true },
+        { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "pópulum", "lemma": "populus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w012", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "post": ",", "head": "w011" },
+        { "id": "w013", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w014", "form": "repértus", "lemma": "reperio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w013" },
+        { "id": "w015", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w016", "form": "vidi", "lemma": "video", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w017", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w019" },
+        { "id": "w018", "form": "ingénti", "lemma": "ingens", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "head": "w019" },
+        { "id": "w019", "form": "gáudio", "lemma": "gaudium", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w020", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w021", "form": "Ísrael", "lemma": "Israel", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" }, "post": "," },
+        { "id": "w022", "form": "custódi", "lemma": "custodio", "morph": { "conj": 4, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w023", "form": "hanc", "lemma": "hic", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "pron" } },
+        { "id": "w024", "form": "voluntátem", "lemma": "voluntas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w025", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-offertorium/",
+      "apparatus": "witnesses/proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

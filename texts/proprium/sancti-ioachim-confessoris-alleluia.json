@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.sancti-ioachim-confessoris-alleluia",
+  "title": "Allelúia, allelúia. O Ióachim, sanctæ coniux Annæ",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "sancti-ioachim-confessoris",
+  "sung": true,
+  "ids": {
+    "next": 17,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "O", "lemma": "o", "morph": { "pos": "intj" } },
+        { "id": "w004", "form": "Ióachim", "lemma": "Ioachim", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" }, "post": "," },
+        { "id": "w005", "form": "sanctæ", "lemma": "sanctus", "morph": { "case": "gen", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w007" },
+        { "id": "w006", "form": "cóniux", "lemma": "coniux", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w007", "form": "Annæ", "lemma": "Anna", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f" }, "post": "," },
+        { "id": "w008", "form": "pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w009", "form": "almæ", "lemma": "almus", "morph": { "pos": "adj", "case": "gen", "gender": "f", "number": "sg" }, "head": "w010" },
+        { "id": "w010", "form": "Vírginis", "lemma": "virgo", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w011", "form": "hic", "lemma": "hic", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" } },
+        { "id": "w012", "form": "fámulis", "lemma": "famulus", "morph": { "case": "dat", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w013", "form": "ferto", "lemma": "fero", "morph": { "pos": "verb", "mood": "imp", "number": "sg", "person": 2, "tense": "fut", "voice": "act", "conj": 3 } },
+        { "id": "w014", "form": "salútis", "lemma": "salus", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w015", "form": "opem", "lemma": "ops", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." },
+        { "id": "w016", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.sancti-ioachim-confessoris-alleluia/",
+      "apparatus": "witnesses/proprium.sancti-ioachim-confessoris-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-ix-post-pentecosten-offertorium",
+  "title": "Iustítiæ Dómini rectæ, lætificántes corda, et iudícia",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-ix-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 20,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Iustítiæ", "lemma": "iustitia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w002", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w003", "form": "rectæ", "lemma": "rectus", "morph": { "pos": "adj", "case": "gen", "gender": "f", "number": "sg" }, "post": ",", "head": "w001" },
+        { "id": "w004", "form": "lætificántes", "lemma": "laetifico", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w005", "form": "corda", "lemma": "cor", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" }, "post": "," },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "iudícia", "lemma": "iudicium", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
+        { "id": "w008", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w009", "form": "dulcióra", "lemma": "dulcis", "morph": { "pos": "adj", "case": "acc", "degree": "comp", "gender": "n", "number": "pl" }, "head": "w005" },
+        { "id": "w010", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w011" },
+        { "id": "w011", "form": "mel", "lemma": "mel", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 3 } },
+        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "favum", "lemma": "favus", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "sg", "decl": 2 }, "post": ":" },
+        { "id": "w014", "form": "nam", "lemma": "nam", "morph": { "pos": "conj" } },
+        { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w016", "form": "servus", "lemma": "servus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w017", "form": "tuus", "lemma": "tuus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w016" },
+        { "id": "w018", "form": "custódit", "lemma": "custodio", "morph": { "conj": 4, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w019", "form": "ea", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-ix-post-pentecosten-offertorium/",
+      "apparatus": "witnesses/proprium.dominica-ix-post-pentecosten-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

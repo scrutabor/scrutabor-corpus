@@ -1,0 +1,73 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.sanctae-annae-matris-beatae-mariae-virginis-offertorium",
+  "title": "Fíliæ regum in honóre tuo, ástitit regína",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "sanctae-annae-matris-beatae-mariae-virginis",
+  "sung": true,
+  "ids": {
+    "next": 17,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Fíliæ", "lemma": "filia", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w002", "form": "regum", "lemma": "rex", "morph": { "case": "gen", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w003", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w004" },
+        { "id": "w004", "form": "honóre", "lemma": "honor", "morph": { "case": "abl", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w005", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w006", "form": "ástitit", "lemma": "asto", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 1 } },
+        { "id": "w007", "form": "regína", "lemma": "regina", "morph": { "case": "voc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w008", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010" },
+        { "id": "w009", "form": "dextris", "lemma": "dexter", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "substantive": true },
+        { "id": "w010", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w012" },
+        { "id": "w012", "form": "vestítu", "lemma": "vestitus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 4 } },
+        { "id": "w013", "form": "deauráto", "lemma": "deauro", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "post": ",", "substantive": true },
+        { "id": "w014", "form": "circúmdata", "lemma": "circumdo", "morph": { "pos": "verb", "case": "abl", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "head": "w015" },
+        { "id": "w015", "form": "varietáte", "lemma": "varietas", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 3 }, "post": "." },
+        { "id": "w016", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": ".)" }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.sanctae-annae-matris-beatae-mariae-virginis-offertorium/",
+      "apparatus": "witnesses/proprium.sanctae-annae-matris-beatae-mariae-virginis-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

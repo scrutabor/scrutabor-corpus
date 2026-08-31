@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.d-n-iesu-christi-regis-offertorium",
+  "title": "Póstula a me, et dabo tibi gentes",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "d-n-iesu-christi-regis",
+  "sung": true,
+  "ids": {
+    "next": 15,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Póstula", "lemma": "postulo", "morph": { "pos": "verb", "mood": "imp", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 1 } },
+        { "id": "w002", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w003" },
+        { "id": "w003", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "," },
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "dabo", "lemma": "do", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w006", "form": "tibi", "lemma": "tu", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
+        { "id": "w007", "form": "gentes", "lemma": "gens", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w008", "form": "hereditátem", "lemma": "hereditas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w009", "form": "tuam", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ",", "head": "w008" },
+        { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "possessiónem", "lemma": "possessio", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w012", "form": "tuam", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w011" },
+        { "id": "w013", "form": "términos", "lemma": "terminus", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "pl", "decl": 2 } },
+        { "id": "w014", "form": "terræ", "lemma": "terra", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.d-n-iesu-christi-regis-offertorium/",
+      "apparatus": "witnesses/proprium.d-n-iesu-christi-regis-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

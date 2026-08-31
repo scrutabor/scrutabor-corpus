@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.sancti-ioachim-confessoris-communio",
+  "title": "Fidélis servus et prudens, quem constítuit dóminus",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "sancti-ioachim-confessoris",
+  "sung": true,
+  "ids": {
+    "next": 19,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Fidélis", "lemma": "fidelis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "head": "w002" },
+        { "id": "w002", "form": "servus", "lemma": "servus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "prudens", "lemma": "prudens", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "post": ",", "head": "w002" },
+        { "id": "w005", "form": "quem", "lemma": "qui", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
+        { "id": "w006", "form": "constítuit", "lemma": "constituo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 3 } },
+        { "id": "w007", "form": "dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w008", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w009" },
+        { "id": "w009", "form": "famíliam", "lemma": "familia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w010", "form": "suam", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "post": ":", "substantive": true },
+        { "id": "w011", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w012", "form": "det", "lemma": "do", "morph": { "conj": 1, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w013", "form": "illis", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" } },
+        { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w015" },
+        { "id": "w015", "form": "témpore", "lemma": "tempus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w016", "form": "trítici", "lemma": "triticum", "morph": { "pos": "noun", "case": "gen", "gender": "n", "number": "sg", "decl": 2 } },
+        { "id": "w017", "form": "mensúram", "lemma": "mensura", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 1 }, "post": "." },
+        { "id": "w018", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": ".)" }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.sancti-ioachim-confessoris-communio/",
+      "apparatus": "witnesses/proprium.sancti-ioachim-confessoris-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.visitatio-beatae-mariae-virginis-alleluia",
+  "title": "Allelúia, allelúia. Felix es, sacra Virgo María",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "visitatio-beatae-mariae-virginis",
+  "sung": true,
+  "ids": {
+    "next": 23,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Felix", "lemma": "felix", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "substantive": true },
+        { "id": "w004", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w005", "form": "sacra", "lemma": "sacer", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "head": "w006" },
+        { "id": "w006", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w007", "form": "María", "lemma": "Maria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 }, "post": "," },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "omni", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w010" },
+        { "id": "w010", "form": "laude", "lemma": "laus", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w011", "form": "digníssima", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "degree": "sup", "gender": "f", "number": "sg" }, "post": ":", "head": "w007" },
+        { "id": "w012", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w014" },
+        { "id": "w014", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w015", "form": "ortus", "lemma": "orior", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "perf", "voice": "dep", "mood": "part", "conj": 4 }, "substantive": true },
+        { "id": "w016", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w017", "form": "sol", "lemma": "sol", "morph": { "case": "voc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w018", "form": "iustítiæ", "lemma": "iustitia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w019", "form": "Christus", "lemma": "Christus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w020", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w021", "form": "noster", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "post": ".", "head": "w017" },
+        { "id": "w022", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.visitatio-beatae-mariae-virginis-alleluia/",
+      "apparatus": "witnesses/proprium.visitatio-beatae-mariae-virginis-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

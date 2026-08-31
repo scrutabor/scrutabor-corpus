@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-ix-post-pentecosten-alleluia",
+  "title": "Allelúia, allelúia. Eripe me de inimícis meis",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-ix-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 18,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Éripe", "lemma": "eripio", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w004", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w005", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w006" },
+        { "id": "w006", "form": "inimícis", "lemma": "inimicus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w007", "form": "meis", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "pl" }, "post": ",", "substantive": true },
+        { "id": "w008", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w009", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "post": ":", "head": "w008" },
+        { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w012" },
+        { "id": "w012", "form": "insurgéntibus", "lemma": "insurgo", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w013", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w014" },
+        { "id": "w014", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w015", "form": "líbera", "lemma": "libero", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w016", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "." },
+        { "id": "w017", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-ix-post-pentecosten-alleluia/",
+      "apparatus": "witnesses/proprium.dominica-ix-post-pentecosten-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

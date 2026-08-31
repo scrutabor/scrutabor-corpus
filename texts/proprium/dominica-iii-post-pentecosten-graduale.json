@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-iii-post-pentecosten-graduale",
+  "title": "Iacta cogitátum tuum in Dómino: et ipse",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-iii-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 22,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Iacta", "lemma": "iacto", "morph": { "pos": "verb", "mood": "imp", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 1 } },
+        { "id": "w002", "form": "cogitátum", "lemma": "cogito", "morph": { "pos": "verb", "case": "nom", "gender": "n", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w003", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "substantive": true },
+        { "id": "w004", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
+        { "id": "w005", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 }, "post": ":" },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "ipse", "lemma": "ipse", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" } },
+        { "id": "w008", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w009", "form": "enútriet", "lemma": "enutrio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "act", "conj": 3 }, "post": "." },
+        { "id": "w010", "form": "Dum", "lemma": "dum", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "clamárem", "lemma": "clamo", "morph": { "conj": 1, "mood": "subj", "number": "sg", "person": 1, "pos": "verb", "tense": "impf", "voice": "act" } },
+        { "id": "w012", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w013" },
+        { "id": "w013", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w014", "form": "exaudívit", "lemma": "exaudio", "morph": { "conj": 4, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w015", "form": "vocem", "lemma": "vox", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w016", "form": "meam", "lemma": "meus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w015" },
+        { "id": "w017", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w018" },
+        { "id": "w018", "form": "his", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "post": "," },
+        { "id": "w019", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w020", "form": "appropínquant", "lemma": "appropinquo", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w021", "form": "mihi", "lemma": "ego", "morph": { "case": "dat", "number": "sg", "pos": "pron" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-iii-post-pentecosten-graduale/",
+      "apparatus": "witnesses/proprium.dominica-iii-post-pentecosten-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

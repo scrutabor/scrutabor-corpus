@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-ix-post-pentecosten-graduale",
+  "title": "Dómine, Dóminus noster, quam admirábile est nomen",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-ix-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 19,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w002", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w003", "form": "noster", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "post": ",", "head": "w001" },
+        { "id": "w004", "form": "quam", "lemma": "quam", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "admirábile", "lemma": "admirabilis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "substantive": true },
+        { "id": "w006", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w007", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w008", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "head": "w007" },
+        { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011" },
+        { "id": "w010", "form": "univérsa", "lemma": "universus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w011" },
+        { "id": "w011", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "post": "!" },
+        { "id": "w012", "form": "Quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "eleváta", "lemma": "elevo", "morph": { "pos": "verb", "case": "nom", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w014", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w015", "form": "magnificéntia", "lemma": "magnificentia", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w016", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "head": "w015" },
+        { "id": "w017", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w018" },
+        { "id": "w018", "form": "cælos", "lemma": "caelum", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-ix-post-pentecosten-graduale/",
+      "apparatus": "witnesses/proprium.dominica-ix-post-pentecosten-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

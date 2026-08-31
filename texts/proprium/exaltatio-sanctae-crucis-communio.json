@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.exaltatio-sanctae-crucis-communio",
+  "title": "Per signum Crucis de inimícis nostris líbera",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "exaltatio-sanctae-crucis",
+  "sung": true,
+  "ids": {
+    "next": 11,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w002" },
+        { "id": "w002", "form": "signum", "lemma": "signum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
+        { "id": "w003", "form": "Crucis", "lemma": "crux", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w004", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w005" },
+        { "id": "w005", "form": "inimícis", "lemma": "inimicus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w006", "form": "nostris", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "pl" }, "substantive": true },
+        { "id": "w007", "form": "líbera", "lemma": "libero", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w008", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": "," },
+        { "id": "w009", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w010", "form": "noster", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "post": ".", "substantive": true }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.exaltatio-sanctae-crucis-communio/",
+      "apparatus": "witnesses/proprium.exaltatio-sanctae-crucis-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

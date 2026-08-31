@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.sancti-lucae-evangelistae-alleluia",
+  "title": "Allelúia, allelúia. Ego vos elégi de mundo",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "sancti-lucae-evangelistae",
+  "sung": true,
+  "ids": {
+    "next": 18,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Ego", "lemma": "ego", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
+        { "id": "w004", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w005", "form": "elégi", "lemma": "eligo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "perf", "voice": "act", "conj": 3 } },
+        { "id": "w006", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w007" },
+        { "id": "w007", "form": "mundo", "lemma": "mundus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w008", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "eátis", "lemma": "eo", "morph": { "mood": "subj", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "fructum", "lemma": "fructus", "morph": { "case": "acc", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w012", "form": "afferátis", "lemma": "affero", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 2, "tense": "pres", "voice": "act", "conj": 3 }, "post": ":" },
+        { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w014", "form": "fructus", "lemma": "fructus", "morph": { "case": "nom", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w015", "form": "vester", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "head": "w014" },
+        { "id": "w016", "form": "máneat", "lemma": "maneo", "morph": { "conj": 2, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." },
+        { "id": "w017", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.sancti-lucae-evangelistae-alleluia/",
+      "apparatus": "witnesses/proprium.sancti-lucae-evangelistae-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

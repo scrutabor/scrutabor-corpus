@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-xi-post-pentecosten-alleluia",
+  "title": "Allelúia, allelúia Exsultáte Deo, adiutóri nostro, iubiláte",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-xi-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 16,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" } },
+        { "id": "w003", "form": "Exsultáte", "lemma": "exsulto", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w004", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w005", "form": "adiutóri", "lemma": "adiutor", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w006", "form": "nostro", "lemma": "noster", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "post": ",", "head": "w005" },
+        { "id": "w007", "form": "iubiláte", "lemma": "iubilo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
+        { "id": "w008", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w009", "form": "Iacob", "lemma": "Iacob", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w010", "form": "súmite", "lemma": "sumo", "morph": { "conj": 3, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w011", "form": "psalmum", "lemma": "psalmus", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w012", "form": "iucúndum", "lemma": "iucundus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w011" },
+        { "id": "w013", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w014" },
+        { "id": "w014", "form": "cíthara", "lemma": "cithara", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." },
+        { "id": "w015", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-xi-post-pentecosten-alleluia/",
+      "apparatus": "witnesses/proprium.dominica-xi-post-pentecosten-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

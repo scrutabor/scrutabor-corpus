@@ -157,6 +157,20 @@ LAYOUT_CHARS = {
 # (SCHEMA.md); divine titles are lowercase common nouns. Grows as texts
 # require — the Canon's two lists of saints added most of these.
 PROPER_LEMMAS = {
+    "Aaron", "Abba", "Abias", "Abiud", "Achaia", "Achaz", "Achim",
+    "Aegyptus", "Alphaeus", "Aminadab", "Amon", "Anna", "Asa", "Aser",
+    "Asia", "Azor", "Babylon", "Babylonius", "Bar", "Beniamin", "Booz",
+    "Caesarea", "Capharnaum", "Cephas", "Chananaeus", "Cleophas", "Daniel",
+    "David", "Decapolis", "Eleazar", "Eliacim", "Elisabeth", "Eliud", "Esron",
+    "Evodia", "Ezechias", "Gad", "Genesareth", "Herodianus", "Hus", "Iechonias",
+    "Ieremias", "Iericho", "Ioachim", "Ioatham", "Iob", "Iona", "Ioram",
+    "Iosaphat", "Iosias", "Iscariotes", "Issachar", "Iuda", "Iudas", "Libanus",
+    "Lucas", "Macedonia", "Magdalene", "Manasses", "Mathan", "Moyses", "Naasson",
+    "Naim", "Nazareth", "Nephthali", "Obed", "Ophir", "Ozias", "Phares", "Rahab",
+    "Roboam", "Ruben", "Ruth", "Sadoc", "Salathiel", "Salmon", "Salome", "Salomon",
+    "Samaria", "Samaritanus", "Satan", "Sextus", "Sibylla", "Sidon", "Simeon",
+    "Syntyche", "Tartarus", "Thamar", "Titus", "Tyrus", "Urias", "Zabulon",
+    "Zachaeus", "Zara", "Zebedaeus", "Zorobabel",
     "Abilina",
     "Annas",
     "Caesar",
@@ -253,6 +267,10 @@ SPELLING_EXEMPT: dict[str, str] = {
     # The Hebrew name is conventionally written with the diaeresis that
     # marks the hiatus, but without a Latin stress acute (ORTHOGRAPHY.md 7).
     "israel": "indeclinable Hebrew name; diaeresis marks the hiatus",
+    # The typical edition prints iísdem in the Preface of the Apostles
+    # (p. 299). The two adjacent i's are a hiatus, so the apparent two-vowel
+    # spelling has three syllables (i-ís-dem) and correctly marks the penult.
+    "iisdem": "hiatus printed in MR 1962 p. 299: i-ís-dem",
 }
 
 # Forms exempt from the STRESS-POSITION rule — an accent standing further back

@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.exaltatio-sanctae-crucis-alleluia",
+  "title": "Allelúia, allelúia. Dulce lignum, dulces clavos, dúlcia",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "exaltatio-sanctae-crucis",
+  "sung": true,
+  "ids": {
+    "next": 20,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Dulce", "lemma": "dulcis", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w004" },
+        { "id": "w004", "form": "lignum", "lemma": "lignum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w005", "form": "dulces", "lemma": "dulcis", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "pl" }, "head": "w006" },
+        { "id": "w006", "form": "clavos", "lemma": "clavus", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "pl", "decl": 2 }, "post": "," },
+        { "id": "w007", "form": "dúlcia", "lemma": "dulcis", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "head": "w009" },
+        { "id": "w008", "form": "ferens", "lemma": "fero", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w009", "form": "póndera", "lemma": "pondus", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 3 }, "post": ":" },
+        { "id": "w010", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w011", "form": "sola", "lemma": "solus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "substantive": true },
+        { "id": "w012", "form": "fuísti", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w013", "form": "digna", "lemma": "dignus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "substantive": true },
+        { "id": "w014", "form": "sustinére", "lemma": "sustineo", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 2 } },
+        { "id": "w015", "form": "Regem", "lemma": "rex", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w016", "form": "cælórum", "lemma": "caelum", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w018", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
+        { "id": "w019", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.exaltatio-sanctae-crucis-alleluia/",
+      "apparatus": "witnesses/proprium.exaltatio-sanctae-crucis-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

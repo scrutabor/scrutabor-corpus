@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-xx-post-pentecosten-offertorium",
+  "title": "Super flúmina Babylónis illic sédimus et flévimus",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-xx-post-pentecosten",
+  "sung": true,
+  "ids": {
+    "next": 12,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w002" },
+        { "id": "w002", "form": "flúmina", "lemma": "flumen", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 3 } },
+        { "id": "w003", "form": "Babylónis", "lemma": "Babylon", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w004", "form": "illic", "lemma": "illic", "morph": { "pos": "adv" } },
+        { "id": "w005", "form": "sédimus", "lemma": "sedeo", "morph": { "conj": 2, "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w007", "form": "flévimus", "lemma": "fleo", "morph": { "conj": 2, "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" }, "post": ":" },
+        { "id": "w008", "form": "dum", "lemma": "dum", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "recordarémur", "lemma": "recordor", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 1, "tense": "impf", "voice": "dep", "conj": 1 } },
+        { "id": "w010", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w011", "form": "Sion", "lemma": "Sion", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-xx-post-pentecosten-offertorium/",
+      "apparatus": "witnesses/proprium.dominica-xx-post-pentecosten-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}
