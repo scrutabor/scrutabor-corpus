@@ -88,3 +88,19 @@ def load(corpus: Path, text_id: str) -> tuple[dict, dict[str, dict]]:
 
 def all_texts(corpus: Path) -> list[tuple[dict, dict[str, dict]]]:
     return [load(corpus, text_id) for text_id in text_ids(corpus)]
+
+
+def formularies(corpus: Path) -> list[dict]:
+    """Return the authored Mass assemblies in stable collection/id order."""
+    return [
+        json.loads(path.read_text(encoding="utf-8"))
+        for path in sorted(corpus.glob("formularies/*/*.json"))
+    ]
+
+
+def language_formularies(corpus: Path, language: str) -> list[dict]:
+    """Return one language package's localized formulary metadata."""
+    return [
+        json.loads(path.read_text(encoding="utf-8"))
+        for path in sorted((corpus / "languages" / language).glob("formularies/*/*.json"))
+    ]

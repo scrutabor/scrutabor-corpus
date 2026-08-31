@@ -1,0 +1,81 @@
+{
+  "formulary_schema": "1.0.0",
+  "id": "omnium-sanctorum",
+  "order": 55,
+  "collection": "sanctorale",
+  "season": "per-annum",
+  "observance": "omnium-sanctorum",
+  "calendar": {
+    "key": "omnium-sanctorum",
+    "default": true
+  },
+  "title": "In Festo Omnium Sanctorum",
+  "components": [
+    {
+      "key": "introitus",
+      "role": "introitus",
+      "text": "proprium.omnium-sanctorum-introitus",
+      "relation": "proper"
+    },
+    {
+      "key": "collecta",
+      "role": "collecta",
+      "text": "proprium.omnium-sanctorum-collecta",
+      "relation": "proper"
+    },
+    {
+      "key": "epistola",
+      "role": "epistola",
+      "text": "proprium.omnium-sanctorum-epistola",
+      "relation": "proper"
+    },
+    {
+      "key": "graduale",
+      "role": "graduale",
+      "text": "proprium.omnium-sanctorum-graduale",
+      "relation": "proper"
+    },
+    {
+      "key": "alleluia",
+      "role": "alleluia",
+      "text": "proprium.omnium-sanctorum-alleluia",
+      "relation": "proper"
+    },
+    {
+      "key": "evangelium",
+      "role": "evangelium",
+      "text": "proprium.omnium-sanctorum-evangelium",
+      "relation": "proper"
+    },
+    {
+      "key": "offertorium",
+      "role": "offertorium",
+      "text": "proprium.omnium-sanctorum-offertorium",
+      "relation": "proper"
+    },
+    {
+      "key": "secreta",
+      "role": "secreta",
+      "text": "proprium.omnium-sanctorum-secreta",
+      "relation": "proper"
+    },
+    {
+      "key": "praefatio",
+      "role": "praefatio",
+      "text": "ordinarium.praefatio-communis",
+      "relation": "shared"
+    },
+    {
+      "key": "communio",
+      "role": "communio",
+      "text": "proprium.omnium-sanctorum-communio",
+      "relation": "proper"
+    },
+    {
+      "key": "postcommunio",
+      "role": "postcommunio",
+      "text": "proprium.omnium-sanctorum-postcommunio",
+      "relation": "proper"
+    }
+  ]
+}

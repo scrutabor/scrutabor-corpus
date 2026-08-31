@@ -31,6 +31,7 @@ Neutral cores and independently publishable language packages, JSON, UTF-8:
 
 ```
 texts/<category>/<name>.json  Latin, morphology and neutral editorial topology
+formularies/<collection>/    canonical ordered assemblies of Mass texts
 languages/<lang>/             manifest, text layers, senses and provenance
 lexicon/lemmata.json          language-neutral dictionary heads
 bibliography/graph.json       works, editions, digital items, uses and witnesses
@@ -41,11 +42,15 @@ checks/, run_checks.py        mechanical validation (see below)
 ```
 
 The reader edition uses descriptive base paths (`texts/`, `tables/`,
-`lexicon/heads.json`, `calendar.json`, and `concordance.json`) and mirrors each
+`lexicon/heads.json`, `calendar.json`, `formularies.json`, `metrics.json`, and
+`concordance.json`) and mirrors each
 published language under `languages/<lang>/`. Root and language manifests make
 the base and every language independently packageable for mobile downloads or
 offline archives. The shared Latin concordance and each package's localized
 concordance name candidate texts and segments before they are opened.
+The formulary catalogue supplies each Mass's ordered, explicit component list,
+including shared and transferred texts; applications do not infer the Mass
+from filenames. Each language package supplies its localized formulary titles.
 Localized titles and aliases travel in the same language manifest, so a
 partial package exposes only readings it can render and a one-language mobile
 download needs no index from another package. The compact JSON keeps one

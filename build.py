@@ -31,6 +31,8 @@ def main(check_only: bool) -> int:
     source = (
         sum(p.stat().st_size for p in HERE.glob("texts/*/*.json"))
         + sum(p.stat().st_size for p in HERE.glob("languages/*/texts/*/*.json"))
+        + sum(p.stat().st_size for p in HERE.glob("formularies/*/*.json"))
+        + sum(p.stat().st_size for p in HERE.glob("languages/*/formularies/*/*.json"))
         + (HERE / "bibliography" / "graph.json").stat().st_size
         + sum(p.stat().st_size for p in HERE.glob("languages/*/bibliography.json"))
     )
@@ -43,6 +45,7 @@ def main(check_only: bool) -> int:
     )
     subject = (
         f"texts={written['texts']} language_texts={written['language_texts']} "
+        f"formularies={written['formularies']} "
         f"bytes={written['bytes']} "
         f"source={source} ratio={written['bytes'] / source:.2f} "
         f"evidence=neutral={coverage['neutral']['normalized']}/{coverage['neutral']['texts']} "

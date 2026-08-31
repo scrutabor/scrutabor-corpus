@@ -26,7 +26,10 @@ from build_reader import bibliography, store
 # per-text uses by their shared edition, digital item, role and locator.
 # 5.1.0 excludes exact citation attachments rejected by the audited evidence
 # migration and reports the normalized-evidence denominator at build time.
-SCHEMA = "5.1.0"
+# 5.2.0 adds manifest-declared, localized Mass-formulary assemblies. Their
+# component list is authored by the corpus rather than rediscovered by apps.
+# 5.3.0 adds one derived metrics resource so consumers share denominators.
+SCHEMA = "5.3.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -96,6 +99,68 @@ def _calendar_json(payload: dict) -> str:
     lines.extend(_record_mapping(payload["years"], "    "))
     lines.extend(["  }", "}"])
     return "\n".join(lines) + "\n"
+
+
+def formulary_catalog(corpus: Path) -> dict:
+    """Project authored assembly ids to the reader's slash-addressed texts."""
+    formularies = []
+    for authored in sorted(store.formularies(corpus), key=lambda value: value["order"]):
+        formulary = {
+            key: copy.deepcopy(value)
+            for key, value in authored.items()
+            if key != "formulary_schema"
+        }
+        for component in formulary["components"]:
+            component["text"] = component["text"].replace(".", "/", 1)
+        formularies.append(formulary)
+    return {"schema_version": "1.0.0", "formularies": formularies}
+
+
+def language_formulary_catalog(corpus: Path, language: str) -> dict:
+    """Project localized titles without duplicating neutral assembly data."""
+    return {
+        "schema_version": "1.0.0",
+        "language": language,
+        "titles": [
+            {"id": authored["id"], "title": authored["title"]}
+            for authored in store.language_formularies(corpus, language)
+        ],
+    }
+
+
+def corpus_metrics(corpus: Path, corpus_docs: list[tuple[dict, dict[str, dict]]]) -> dict:
+    formularies = store.formularies(corpus)
+    text_ids = [doc["id"] for doc, _glosses in corpus_docs]
+    component_texts = {
+        component["text"] for formulary in formularies for component in formulary["components"]
+    }
+    return {
+        "schema_version": "1.0.0",
+        "texts": {
+            "total": len(text_ids),
+            "proprium": sum(text_id.startswith("proprium.") for text_id in text_ids),
+            "words": sum(
+                len(segment.get("words") or [])
+                for doc, _glosses in corpus_docs
+                for segment in doc["segments"]
+            ),
+            "verse_segments": sum(
+                segment.get("type") == "verse"
+                for doc, _glosses in corpus_docs
+                for segment in doc["segments"]
+            ),
+        },
+        "languages": {
+            language: {"texts": len(store.language_manifest(corpus, language)["texts"])}
+            for language in store.language_ids(corpus)
+        },
+        "formularies": {
+            "total": len(formularies),
+            "observances": len({formulary["observance"] for formulary in formularies}),
+            "component_uses": sum(len(formulary["components"]) for formulary in formularies),
+            "unique_component_texts": len(component_texts),
+        },
+    }
 
 
 def _concordance_json(payload: dict) -> str:
@@ -777,6 +842,7 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
     written: dict[str, Any] = {
         "texts": 0,
         "language_texts": 0,
+        "formularies": 0,
         "evidence": 0,
         "bytes": 0,
     }
@@ -860,6 +926,14 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
             json.dumps(NORMALIZATION_VECTORS, ensure_ascii=False, indent=1) + "\n",
         ),
         (
+            "formularies.json",
+            json.dumps(formulary_catalog(corpus), ensure_ascii=False, indent=1) + "\n",
+        ),
+        (
+            "metrics.json",
+            json.dumps(corpus_metrics(corpus, corpus_docs), ensure_ascii=False, indent=1) + "\n",
+        ),
+        (
             "bibliography/catalog.json",
             json.dumps(
                 bibliography.public_catalog(evidence_graph),
@@ -878,6 +952,7 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
         (out / name).parent.mkdir(parents=True, exist_ok=True)
         (out / name).write_text(body, encoding="utf-8")
         written["bytes"] += len(body.encode())
+    written["formularies"] = len(store.formularies(corpus))
 
     language_manifests = []
     for language in languages:
@@ -895,6 +970,15 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
             (
                 f"languages/{language}/concordance.json",
                 _language_concordance_json(language_index(corpus_docs, language, text_registry)),
+            ),
+            (
+                f"languages/{language}/formularies.json",
+                json.dumps(
+                    language_formulary_catalog(corpus, language),
+                    ensure_ascii=False,
+                    indent=1,
+                )
+                + "\n",
             ),
             (
                 f"languages/{language}/bibliography/catalog.json",
@@ -928,6 +1012,7 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
             "lexicon": f"languages/{language}/lexicon.json",
             "citations": f"languages/{language}/citations.json",
             "concordance": f"languages/{language}/concordance.json",
+            "formularies": f"languages/{language}/formularies.json",
             "bibliography": {
                 "catalog": f"languages/{language}/bibliography/catalog.json",
                 "index": f"languages/{language}/bibliography/index.json",
@@ -986,6 +1071,8 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
             "analysis": "tables/analysis.json",
             "citations": "tables/citations.json",
             "normalization": "normalization.json",
+            "formularies": "formularies.json",
+            "metrics": "metrics.json",
         },
         "morphology": len(parses.order),
         "kalendarium": [KALENDARIUM.start, KALENDARIUM.stop - 1],
@@ -1180,7 +1267,9 @@ def verify_edition_artifacts(
     for language in manifest["languages"]:
         declared.add(language["path"])
         language_manifest = json.loads((out / language["path"]).read_text(encoding="utf-8"))
-        declared.update(language_manifest[key] for key in ("lexicon", "citations", "concordance"))
+        declared.update(
+            language_manifest[key] for key in ("lexicon", "citations", "concordance", "formularies")
+        )
         declared.update(language_manifest["bibliography"].values())
         declared.update(entry["path"] for entry in language_manifest["texts"])
         declared.update(
@@ -1331,6 +1420,34 @@ def verify_edition_artifacts(
     for year in range(first, last + 1):
         if not calendar.get("years", {}).get(str(year)):
             errors.append(f"calendar: declared year {year} is missing or empty")
+
+    formularies = json.loads((out / manifest["base"]["formularies"]).read_text(encoding="utf-8"))
+    expected_formularies = formulary_catalog(corpus)
+    if formularies != expected_formularies:
+        errors.append(
+            "formularies: "
+            + _first_difference(expected_formularies, formularies, "emitted assemblies")
+        )
+    if not formularies["formularies"]:
+        errors.append("formularies: the assembly catalogue is empty")
+    for language in manifest["languages"]:
+        language_manifest = json.loads((out / language["path"]).read_text(encoding="utf-8"))
+        localized = json.loads((out / language_manifest["formularies"]).read_text(encoding="utf-8"))
+        expected_localized = language_formulary_catalog(corpus, language["id"])
+        if localized != expected_localized:
+            errors.append(
+                f"{language['id']} formularies: "
+                + _first_difference(
+                    expected_localized,
+                    localized,
+                    "emitted localized assemblies",
+                )
+            )
+
+    metrics = json.loads((out / manifest["base"]["metrics"]).read_text(encoding="utf-8"))
+    expected_metrics = corpus_metrics(corpus, corpus_docs)
+    if metrics != expected_metrics:
+        errors.append("metrics: " + _first_difference(expected_metrics, metrics, "emitted metrics"))
 
     vectors = json.loads((out / manifest["base"]["normalization"]).read_text(encoding="utf-8"))
     if vectors != NORMALIZATION_VECTORS:

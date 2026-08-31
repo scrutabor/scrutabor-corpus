@@ -25,6 +25,7 @@ from checks.document import check as check_document
 from checks.english import check as check_english
 from checks.english import check_number as check_english_number
 from checks.explanation_floor import check as check_explanation_floor
+from checks.formularies import check as check_formularies
 from checks.fusion import check as check_fusion
 from checks.identity import check as check_identity
 from checks.identity import check_against_history, check_registry_history, resolve_ref
@@ -448,6 +449,14 @@ if __name__ == "__main__":
         print(
             f"KALENDARIUM verified={kal_compared} against the Missale's own table "
             f"misprints={kal_misprints} articles=cited-and-printed"
+        )
+
+        formulary_errors, formulary_counts = check_formularies(CORPUS)
+        for message in formulary_errors:
+            print(f"ERROR: {message}")
+        rc |= 1 if formulary_errors else 0
+        print(
+            "FORMULARIES " + " ".join(f"{key}={value}" for key, value in formulary_counts.items())
         )
 
         attested = readings(corpus_docs)

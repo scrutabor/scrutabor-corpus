@@ -226,6 +226,8 @@ def test_the_edition_is_much_smaller_than_its_source(tmp_path):
     source = (
         sum(p.stat().st_size for p in CORPUS.glob("texts/*/*.json"))
         + sum(p.stat().st_size for p in CORPUS.glob("languages/*/texts/*/*.json"))
+        + sum(p.stat().st_size for p in CORPUS.glob("formularies/*/*.json"))
+        + sum(p.stat().st_size for p in CORPUS.glob("languages/*/formularies/*/*.json"))
         + (CORPUS / "bibliography" / "graph.json").stat().st_size
         + sum(p.stat().st_size for p in CORPUS.glob("languages/*/bibliography.json"))
     )
@@ -257,7 +259,12 @@ def test_the_saving_is_in_the_bytes_parsed_and_not_the_bytes_sent(tmp_path):
         return len(gzip.compress(b"".join(p.read_bytes() for p in sorted(paths)), 9))
 
     out = build(tmp_path)
-    authored = list(CORPUS.glob("texts/*/*.json")) + list(CORPUS.glob("languages/*/texts/*/*.json"))
+    authored = (
+        list(CORPUS.glob("texts/*/*.json"))
+        + list(CORPUS.glob("languages/*/texts/*/*.json"))
+        + list(CORPUS.glob("formularies/*/*.json"))
+        + list(CORPUS.glob("languages/*/formularies/*/*.json"))
+    )
     assert packed(out.rglob("*.json")) > packed(authored) * 0.9
 
 
@@ -379,6 +386,68 @@ def test_language_indexes_are_small_and_independently_packaged(tmp_path):
         assert manifest["concordance"] == f"languages/{language}/concordance.json"
 
 
+def test_formulary_assemblies_are_explicit_localized_and_calendar_addressable(tmp_path):
+    out = build(tmp_path)
+    manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
+    catalog = json.loads((out / manifest["base"]["formularies"]).read_text(encoding="utf-8"))
+    by_id = {formulary["id"]: formulary for formulary in catalog["formularies"]}
+    assert len(by_id) == 60
+
+    corpus_christi = by_id["corporis-christi"]
+    assert corpus_christi["calendar"] == {"key": "corpus-christi", "default": True}
+
+    transferred = by_id["dominica-xxiv-post-pentecosten"]
+    references = {
+        component["role"]: component["text"]
+        for component in transferred["components"]
+        if component["relation"] == "reference"
+    }
+    assert references == {
+        "introitus": "proprium/dominica-xxiii-post-pentecosten-introitus",
+        "graduale": "proprium/dominica-xxiii-post-pentecosten-graduale",
+        "alleluia": "proprium/dominica-xxiii-post-pentecosten-alleluia",
+        "offertorium": "proprium/dominica-xxiii-post-pentecosten-offertorium",
+        "communio": "proprium/dominica-xxiii-post-pentecosten-communio",
+    }
+
+    all_souls = [
+        formulary
+        for formulary in by_id.values()
+        if formulary["observance"] == "commemoratio-omnium-fidelium-defunctorum"
+    ]
+    assert {formulary["variant"] for formulary in all_souls} == {
+        "missa-i",
+        "missa-ii",
+        "missa-iii",
+    }
+    assert sum(formulary["calendar"]["default"] for formulary in all_souls) == 1
+
+    for language in ("pl", "en"):
+        language_manifest = json.loads(
+            (out / f"languages/{language}/manifest.json").read_text(encoding="utf-8")
+        )
+        localized = json.loads((out / language_manifest["formularies"]).read_text(encoding="utf-8"))
+        assert localized["language"] == language
+        assert {entry["id"] for entry in localized["titles"]} == set(by_id)
+
+
+def test_metrics_are_the_single_derived_denominator(tmp_path):
+    out = build(tmp_path)
+    manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
+    metrics = json.loads((out / manifest["base"]["metrics"]).read_text(encoding="utf-8"))
+    assert metrics == {
+        "schema_version": "1.0.0",
+        "texts": {"total": 660, "proprium": 566, "words": 35651, "verse_segments": 1609},
+        "languages": {"en": {"texts": 660}, "pl": {"texts": 660}},
+        "formularies": {
+            "total": 60,
+            "observances": 58,
+            "component_uses": 671,
+            "unique_component_texts": 578,
+        },
+    }
+
+
 def test_registry_is_current(tmp_path, monkeypatch):
     # Currency only: zero pending appends. The append-only property itself is
     # held by checks.identity.check_registry_history as an exact-prefix
@@ -407,9 +476,12 @@ def test_generated_json_has_descriptive_paths_and_logical_lines(tmp_path):
         "languages/pl/manifest.json",
         "languages/pl/lexicon.json",
         "languages/pl/concordance.json",
+        "languages/pl/formularies.json",
         "languages/pl/citations.json",
         "languages/pl/texts/ordinarium/credo.json",
         "calendar.json",
+        "formularies.json",
+        "metrics.json",
         "tables/morphology.json",
         "tables/analysis.json",
         "tables/citations.json",
@@ -657,3 +729,29 @@ def test_verify_catches_what_the_round_trip_cannot(tmp_path):
         p.write_text(json.dumps(calendar), encoding="utf-8")
 
     assert any("emitted calendar" in e for e in broken(altered_calendar_row, "b15"))
+
+    def repointed_formulary_component(out):
+        p = out / "formularies.json"
+        catalog = json.loads(p.read_text(encoding="utf-8"))
+        catalog["formularies"][0]["components"][0]["text"] = "proprium/corruptum"
+        p.write_text(json.dumps(catalog), encoding="utf-8")
+
+    assert any("emitted assemblies" in e for e in broken(repointed_formulary_component, "b16"))
+
+    def altered_localized_formulary(out):
+        p = out / "languages/pl/formularies.json"
+        catalog = json.loads(p.read_text(encoding="utf-8"))
+        catalog["titles"][0]["title"] = "Uszkodzony tytuł"
+        p.write_text(json.dumps(catalog), encoding="utf-8")
+
+    assert any(
+        "emitted localized assemblies" in e for e in broken(altered_localized_formulary, "b17")
+    )
+
+    def altered_metrics(out):
+        p = out / "metrics.json"
+        metrics = json.loads(p.read_text(encoding="utf-8"))
+        metrics["texts"]["total"] = 0
+        p.write_text(json.dumps(metrics), encoding="utf-8")
+
+    assert any("emitted metrics" in e for e in broken(altered_metrics, "b18"))

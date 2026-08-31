@@ -47,10 +47,13 @@ carries the same number.
 
 ```
 texts/<category>/<name>.json          language-neutral Latin core
+formularies/<collection>/<id>.json   ordered Mass assembly and calendar address
 lexicon/lemmata.json                  language-neutral lemma data
 languages/<lang>/manifest.json        coverage, localized titles and aliases
 languages/<lang>/texts/<category>/<name>.json
                                       one target-language text layer
+languages/<lang>/formularies/<collection>/<id>.json
+                                      localized formulary title
 languages/<lang>/lexicon.json         senses for the language package
 languages/<lang>/translation-provenance.json
                                       public states for that language's sites
@@ -65,6 +68,41 @@ subset of the neutral texts, but each listed text is complete: every word has a
 gloss, every verse a translation, every rubric a narrative, and every neutral
 localization requirement is fulfilled. Missing languages never fall back to
 another language silently.
+
+## Mass formulary assemblies
+
+`formularies/<collection>/<id>.json` is the canonical assembly contract for
+one Mass. It keeps liturgical structure out of filenames and out of reader
+applications. The stable `id` addresses the particular Mass; `observance`
+groups variants of one day, while `calendar.key` addresses the computed Roman
+calendar. These identities may deliberately differ. `calendar.default` marks
+the single variant opened for a calendar occurrence. The unique integer
+`order` is the canonical display and campaign order; consumers never recreate
+that sequence from filenames or a private table.
+
+The ordered `components` array names each unique liturgical `key` and `role`,
+the stable dotted text id, and its relationship to this assembly:
+
+- `proper` is a text authored for this formulary;
+- `shared` is a non-Proper text such as a common preface;
+- `reference` explicitly transfers a Proper text from another formulary.
+
+Transferred parts are never inferred from a missing filename. Every Proper
+text must be reached by at least one assembly, every target must exist, and
+component order follows the order of Mass. A multi-Mass observance gives every
+member a distinct `variant` and exactly one calendar default.
+
+Each language package mirrors the neutral path with a small document carrying
+the same formulary id, language id and localized title. The reader edition
+publishes the neutral catalogue as manifest-declared `formularies.json` and
+each localized title catalogue as `languages/<lang>/formularies.json`. Reader
+text addresses use slash form (`proprium/<id>`) while authored documents retain
+dotted corpus ids.
+
+The manifest-declared `metrics.json` is derived from the same corpus snapshot.
+It is the shared denominator for text, word, verse-segment, language-package,
+formulary, observance and component-use counts; consumers do not maintain
+independent copies of those totals.
 
 ## Bibliography and evidence graph
 
