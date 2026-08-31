@@ -16,9 +16,7 @@ def test_2026_names_every_supported_observance_through_advent():
     assert days[date(2026, 11, 1)].formulary == "omnium-sanctorum"
     assert days[date(2026, 11, 1)].position == "dominica-xxiii-post-pentecosten"
     assert days[date(2026, 11, 2)].formulary == "commemoratio-omnium-fidelium-defunctorum"
-    assert days[date(2026, 11, 9)].formulary == (
-        "dedicatio-archibasilicae-sanctissimi-salvatoris"
-    )
+    assert days[date(2026, 11, 9)].formulary == ("dedicatio-archibasilicae-sanctissimi-salvatoris")
     assert days[date(2026, 11, 22)].formulary == "dominica-xxiv-post-pentecosten"
 
 
@@ -50,9 +48,7 @@ def test_an_impeded_first_class_feast_moves_to_the_next_free_day():
 def test_all_souls_uses_its_special_monday_when_second_november_is_sunday():
     days = by_date(2031)
     assert days[date(2031, 11, 2)].formulary.endswith("post-pentecosten")
-    assert days[date(2031, 11, 3)].formulary == (
-        "commemoratio-omnium-fidelium-defunctorum"
-    )
+    assert days[date(2031, 11, 3)].formulary == ("commemoratio-omnium-fidelium-defunctorum")
 
 
 def test_the_merged_calendar_neither_repeats_nor_invents_a_formulary():

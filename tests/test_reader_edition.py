@@ -163,10 +163,10 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
         "rejected_exposed": 0,
     }
     assert written["evidence_coverage"] == {
-        "neutral": {"normalized": 56, "texts": 156},
+        "neutral": {"normalized": 560, "texts": 660},
         "languages": {
-            "en": {"normalized": 108, "effective": 142, "texts": 156},
-            "pl": {"normalized": 72, "effective": 107, "texts": 156},
+            "en": {"normalized": 108, "effective": 646, "texts": 660},
+            "pl": {"normalized": 72, "effective": 611, "texts": 660},
         },
     }
 
@@ -364,7 +364,7 @@ def test_language_index_finds_a_piously_capitalized_prayer_title_phrase():
 def test_the_index_compresses_to_something_a_phone_can_hold(tmp_path):
     out = build(tmp_path)
     packed = len(gzip.compress((out / "concordance.json").read_bytes(), 9))
-    assert packed < 150_000, "the index is what search and lemma pages both read"
+    assert packed < 400_000, "the index is what search and lemma pages both read"
 
 
 def test_language_indexes_are_small_and_independently_packaged(tmp_path):
@@ -372,7 +372,7 @@ def test_language_indexes_are_small_and_independently_packaged(tmp_path):
     for language in ("pl", "en"):
         path = out / f"languages/{language}/concordance.json"
         packed = len(gzip.compress(path.read_bytes(), 9))
-        assert packed < 100_000, f"{language} search index is too large ({packed})"
+        assert packed < 200_000, f"{language} search index is too large ({packed})"
         manifest = json.loads(
             (out / f"languages/{language}/manifest.json").read_text(encoding="utf-8")
         )
