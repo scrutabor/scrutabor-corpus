@@ -13,10 +13,11 @@ data behind the Scrutabor reading app
 ([scrutabor](https://github.com/scrutabor/scrutabor)), live at
 [scrutabor.org](https://scrutabor.org).
 
-**Status: working edition.** 123 texts, fully annotated in both languages:
+**Status: working edition.** 156 texts, fully annotated in both languages:
 the complete Ordinary of the Mass, the prayers after low Mass, the common
 prayers, three litanies, the prayers for the dead, the first psalm stanza,
-and the complete Propers of the four Sundays of Advent — with the 1962
+and the complete Propers of the four Sundays of Advent, the Most Holy
+Trinity, Corpus Christi, and the Most Sacred Heart of Jesus — with the 1962
 temporal calendar computed for 76 years and verified against the Missale's
 own table. Every analysis carries its sources, a confidence grade and a
 review state, and nothing is presented as settled until it has passed

@@ -1,0 +1,103 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.sanctissimae-trinitatis-graduale",
+  "title": "Benedíctus es, Dómine",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "sanctissimae-trinitatis",
+  "sung": true,
+  "ids": {
+    "next": 21,
+    "segments": {
+      "next": 3
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Benedíctus", "lemma": "benedictus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w002" },
+        { "id": "w002", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w003", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w004", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w005", "form": "intuéris", "lemma": "intueor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "dep", "conj": 2 } },
+        { "id": "w006", "form": "abýssos", "lemma": "abyssus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 2 }, "post": "," },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "sedes", "lemma": "sedeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
+        { "id": "w009", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w010" },
+        { "id": "w010", "form": "Chérubim", "lemma": "cherubim", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m" }, "post": "," }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w011", "form": "Benedíctus", "lemma": "benedictus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w012" },
+        { "id": "w012", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w013", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w015" },
+        { "id": "w015", "form": "firmaménto", "lemma": "firmamentum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w016", "form": "cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 }, "post": "," },
+        { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w018", "form": "laudábilis", "lemma": "laudabilis", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w012" },
+        { "id": "w019", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w020" },
+        { "id": "w020", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.sanctissimae-trinitatis-graduale/",
+      "apparatus": "witnesses/proprium.sanctissimae-trinitatis-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

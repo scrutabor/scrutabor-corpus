@@ -1,0 +1,106 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.corporis-christi-graduale",
+  "title": "Oculi ómnium in te sperant",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "corporis-christi",
+  "sung": true,
+  "ids": {
+    "next": 24,
+    "segments": {
+      "next": 3
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Óculi", "lemma": "oculus", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w002", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w003", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w004" },
+        { "id": "w004", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w005", "form": "sperant", "lemma": "spero", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 }, "post": "," },
+        { "id": "w006", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "tu", "lemma": "tu", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
+        { "id": "w009", "form": "das", "lemma": "do", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w010", "form": "illis", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" } },
+        { "id": "w011", "form": "escam", "lemma": "esca", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w012", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013" },
+        { "id": "w013", "form": "témpore", "lemma": "tempus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w014", "form": "opportúno", "lemma": "opportunus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "post": ".", "head": "w013" }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w015", "form": "Áperis", "lemma": "aperio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 4 } },
+        { "id": "w016", "form": "tu", "lemma": "tu", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
+        { "id": "w017", "form": "manum", "lemma": "manus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 4 } },
+        { "id": "w018", "form": "tuam", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ":", "head": "w017" },
+        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w020", "form": "imples", "lemma": "impleo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
+        { "id": "w021", "form": "omne", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w022" },
+        { "id": "w022", "form": "ánimal", "lemma": "animal", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w023", "form": "benedictióne", "lemma": "benedictio", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.corporis-christi-graduale/",
+      "apparatus": "witnesses/proprium.corporis-christi-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

@@ -2959,6 +2959,11 @@
       "responsible": "Catholic Church"
     },
     {
+      "id": "work.divinum-officium",
+      "title": "Divinum Officium",
+      "responsible": "Divinum Officium Project"
+    },
+    {
       "id": "work.douay-rheims-bible-challoner",
       "title": "The Holy Bible: Douay-Rheims Version",
       "responsible": "Richard Challoner (revision)"
@@ -3009,6 +3014,11 @@
       "id": "work.ludwik-skowronek-droga-do-nieba",
       "responsible": "Ludwik Skowronek",
       "title": "Droga do Nieba"
+    },
+    {
+      "id": "work.missale-romanum",
+      "title": "Missale Romanum ex decreto SS. Concilii Tridentini restitutum",
+      "responsible": "Ecclesia Catholica"
     },
     {
       "id": "work.pamiatka-missyi-dla-ludu-katolickiego",
@@ -3105,6 +3115,23 @@
         "en",
         "la"
       ]
+    },
+    {
+      "id": "edition.divinum-officium-missa.44667ff",
+      "work": "work.divinum-officium",
+      "recension": "Latin Mass data at commit 44667ff518b8ff1439780470828b39714f5306a2",
+      "title": "Divinum Officium: Missa, Latin data",
+      "edition_statement": "Pinned source revision",
+      "year": "2026",
+      "publication_type": "web_resource",
+      "authority": "reference_work",
+      "languages": [
+        "la"
+      ],
+      "rights": {
+        "status": "permission",
+        "basis": "Distributed under the MIT License by the Divinum Officium project."
+      }
     },
     {
       "id": "edition.douay-rheims-bible-challoner",
@@ -3298,6 +3325,25 @@
       ]
     },
     {
+      "id": "edition.missale-romanum.1962-typica",
+      "work": "work.missale-romanum",
+      "recension": "Roman Missal governed by the 1960 Code of Rubrics",
+      "title": "Missale Romanum ex decreto SS. Concilii Tridentini restitutum",
+      "edition_statement": "Editio typica",
+      "place": "Civitate Vaticana",
+      "publisher": "Typis Polyglottis Vaticanis",
+      "year": "1962",
+      "publication_type": "missal",
+      "authority": "typical_liturgical_edition",
+      "languages": [
+        "la"
+      ],
+      "rights": {
+        "status": "public-domain",
+        "basis": "Liturgical Latin of the 1962 typical edition."
+      }
+    },
+    {
       "id": "edition.pamiatka-missyi-dla-ludu-katolickiego-1903",
       "work": "work.pamiatka-missyi-dla-ludu-katolickiego",
       "title": "Pamiątka Missyi dla ludu katolickiego",
@@ -3452,6 +3498,16 @@
       "sha256": "a35594fda5cf56333ff59388de407e152f5cd41e012d68e34f2bf75bbfa691a8"
     },
     {
+      "id": "item.divinum-officium-missa.44667ff.github",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "repository": "GitHub",
+      "kind": "born-digital",
+      "record_url": "https://github.com/DivinumOfficium/divinum-officium/commit/44667ff518b8ff1439780470828b39714f5306a2",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "sha256": "b091db3afa9a4d469a2af11888fb7cf7abd7972d2320b7053a48c13c97ce7ddf",
+      "access": "open"
+    },
+    {
       "id": "item.douay-rheims-challoner-1914.scan",
       "edition": "edition.douay-rheims-bible-challoner",
       "repository": "Wikimedia Commons",
@@ -3584,6 +3640,15 @@
       "access": "open",
       "scan_url": "https://archive.org/download/missal_for_use_of_laity_1853-f_c_husenbeth/missal_for_use_of_laity_1853-f_c_husenbeth.pdf",
       "sha256": "64dda22f4b0753135be1112b8bd36eab7fbb9c92586c2fc2d831c0a4b7f65d8a"
+    },
+    {
+      "id": "item.missale-romanum.1962-typica.ia",
+      "edition": "edition.missale-romanum.1962-typica",
+      "repository": "Internet Archive",
+      "kind": "scan",
+      "record_url": "https://archive.org/details/missale_romanum-1962",
+      "scan_url": "https://archive.org/download/missale_romanum-1962/missale-romanum-1962.pdf",
+      "access": "open"
     },
     {
       "id": "item.pamiatka-missyi-dla-ludu-katolickiego-1903.sbc",
@@ -4330,6 +4395,1194 @@
       "decision": "RETAIN",
       "legacy_refs": [],
       "evidence_sha256": "87a3560e5e1bcbcf7ba4992f88f5a18d849207090ef96c195d1841182e40d7e2"
+    },
+    {
+      "id": "use.ordinarium.praefatio-sacratissimi-cordis-iesu.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.praefatio-sacratissimi-cordis-iesu"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Ordo/Prefationes.txt (lines 40-42)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "cdcc5bb39df5043a85f17a6ebab0483bfad1a360fd31940878c09c67b5d22c80"
+    },
+    {
+      "id": "use.ordinarium.praefatio-sacratissimi-cordis-iesu.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.praefatio-sacratissimi-cordis-iesu"
+      },
+      "locator": {
+        "printed": "p. 293",
+        "scan": "leaf n371 / PDF p. 372",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n371/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "27d3250175f403c078b1a4fa566e4b4911da212e1dfae7ae14906af728ba7f7c"
+    },
+    {
+      "id": "use.ordinarium.praefatio-sanctissimae-trinitatis.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.praefatio-sanctissimae-trinitatis"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Ordo/Prefationes.txt (line 54)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "cdcc5bb39df5043a85f17a6ebab0483bfad1a360fd31940878c09c67b5d22c80"
+    },
+    {
+      "id": "use.ordinarium.praefatio-sanctissimae-trinitatis.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.praefatio-sanctissimae-trinitatis"
+      },
+      "locator": {
+        "printed": "p. 296",
+        "scan": "leaf n375 / PDF p. 376",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n375/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "40cf3bccf67618cf8cf93fe5961df2021bf6489f0657a022b1d072160f74a7fe"
+    },
+    {
+      "id": "use.proprium.corporis-christi-alleluia.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-alleluia"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-4.txt (lines 35-37); selected 1962 boundary excludes the source's final repeated Alleluia"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.corporis-christi-alleluia.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-alleluia"
+      },
+      "locator": {
+        "printed": "p. 370",
+        "scan": "leaf n450 / PDF p. 451",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n450/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "d4ef94be634d54b2747cb30af167777438d5a46b37ad6ba12a6ecc3ef3f24e96"
+    },
+    {
+      "id": "use.proprium.corporis-christi-collecta.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-collecta"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-4.txt (lines 23-25); web/www/missa/Latin/Ordo/Prayers.txt (lines 116-118)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.corporis-christi-collecta.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-collecta"
+      },
+      "locator": {
+        "printed": "p. 369 and Rubricae generales p. xvii",
+        "scan": "leaf n449 / PDF p. 450; leaf n22 / PDF p. 23",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n449/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "e1d19ee2fe941b449382c07f7f2068bbb87f64a60440e7643a650a08b51b63bb"
+    },
+    {
+      "id": "use.proprium.corporis-christi-communio.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-communio"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-4.txt (lines 159-161)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.corporis-christi-communio.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-communio"
+      },
+      "locator": {
+        "printed": "p. 371",
+        "scan": "leaf n451 / PDF p. 452",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n451/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "b8ad974fa46dab5eae101687ddcf4c9d3a472abc0a7d93fb4b894080cc8648ba"
+    },
+    {
+      "id": "use.proprium.corporis-christi-epistola.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-epistola"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-4.txt (lines 27-30)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.corporis-christi-epistola.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-epistola"
+      },
+      "locator": {
+        "printed": "pp. 369–370",
+        "scan": "leaves n449–n450 / PDF pp. 450–451",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n449/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "1310688c48bdd759e9c48e89d93bfab776186beeb2fc0fd844dab2f5c83224de"
+    },
+    {
+      "id": "use.proprium.corporis-christi-evangelium.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-evangelium"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-4.txt (lines 146-149)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.corporis-christi-evangelium.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-evangelium"
+      },
+      "locator": {
+        "printed": "p. 371",
+        "scan": "leaf n451 / PDF p. 452",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n451/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "b8ad974fa46dab5eae101687ddcf4c9d3a472abc0a7d93fb4b894080cc8648ba"
+    },
+    {
+      "id": "use.proprium.corporis-christi-graduale.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-graduale"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-4.txt (lines 32-35); selected Gradual boundary ends before the appended Alleluia"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.corporis-christi-graduale.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-graduale"
+      },
+      "locator": {
+        "printed": "p. 370",
+        "scan": "leaf n450 / PDF p. 451",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n450/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "d4ef94be634d54b2747cb30af167777438d5a46b37ad6ba12a6ecc3ef3f24e96"
+    },
+    {
+      "id": "use.proprium.corporis-christi-introitus.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-introitus"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-4.txt (lines 15-21); web/www/missa/Latin/Ordo/Prayers.txt (lines 13-15)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.corporis-christi-introitus.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-introitus"
+      },
+      "locator": {
+        "printed": "p. 369; expanded doxology attested on p. 401",
+        "scan": "leaf n449 / PDF p. 450; leaf n482 / PDF p. 483",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n449/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "e1d19ee2fe941b449382c07f7f2068bbb87f64a60440e7643a650a08b51b63bb"
+    },
+    {
+      "id": "use.proprium.corporis-christi-offertorium.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-offertorium"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-4.txt (lines 151-153)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.corporis-christi-offertorium.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-offertorium"
+      },
+      "locator": {
+        "printed": "p. 371",
+        "scan": "leaf n451 / PDF p. 452",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n451/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "b8ad974fa46dab5eae101687ddcf4c9d3a472abc0a7d93fb4b894080cc8648ba"
+    },
+    {
+      "id": "use.proprium.corporis-christi-postcommunio.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-postcommunio"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-4.txt (lines 163-165); web/www/missa/Latin/Ordo/Prayers.txt (lines 116-118)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.corporis-christi-postcommunio.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-postcommunio"
+      },
+      "locator": {
+        "printed": "p. 371",
+        "scan": "leaf n451 / PDF p. 452",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n451/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "b8ad974fa46dab5eae101687ddcf4c9d3a472abc0a7d93fb4b894080cc8648ba"
+    },
+    {
+      "id": "use.proprium.corporis-christi-secreta.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-secreta"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-4.txt (lines 155-157); web/www/missa/Latin/Ordo/Prayers.txt (lines 95-97)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.corporis-christi-secreta.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-secreta"
+      },
+      "locator": {
+        "printed": "p. 371",
+        "scan": "leaf n451 / PDF p. 452",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n451/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "b8ad974fa46dab5eae101687ddcf4c9d3a472abc0a7d93fb4b894080cc8648ba"
+    },
+    {
+      "id": "use.proprium.corporis-christi-sequentia.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-sequentia"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-4.txt (lines 39-144); line 40 is superseded pre-1960 octave framing, not selected text"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.corporis-christi-sequentia.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.corporis-christi-sequentia"
+      },
+      "locator": {
+        "printed": "p. 370",
+        "scan": "leaf n450 / PDF p. 451",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n450/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "d4ef94be634d54b2747cb30af167777438d5a46b37ad6ba12a6ecc3ef3f24e96"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-alleluia.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-alleluia"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent02-5.txt (lines 37-38)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "91ec8c8bad8090b84ac63ba2cf77d2b3a24f94dd85b2e48440bd0ad66b25082c"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-alleluia.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-alleluia"
+      },
+      "locator": {
+        "printed": "p. 374",
+        "scan": "leaf n454 / PDF p. 455",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n454/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "17b921afb2dc1ead4ef47447741096627cfc51457d8eab83742ef50b92ad0b62"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-collecta.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-collecta"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent02-5.txt (lines 24-26); web/www/missa/Latin/Ordo/Prayers.txt (lines 108-110)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "91ec8c8bad8090b84ac63ba2cf77d2b3a24f94dd85b2e48440bd0ad66b25082c"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-collecta.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-collecta"
+      },
+      "locator": {
+        "printed": "p. 373 and Rubricae generales p. xvii",
+        "scan": "leaf n453 / PDF p. 454; leaf n22 / PDF p. 23",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n453/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "e2387ec49df0ac32e94c2fc5ac6d6b3baf9877d6aa5d3698fcf047af1fb899c5"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-communio.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-communio"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent02-5.txt (lines 68-70)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "91ec8c8bad8090b84ac63ba2cf77d2b3a24f94dd85b2e48440bd0ad66b25082c"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-communio.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-communio"
+      },
+      "locator": {
+        "printed": "p. 374",
+        "scan": "leaf n454 / PDF p. 455",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n454/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "17b921afb2dc1ead4ef47447741096627cfc51457d8eab83742ef50b92ad0b62"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-epistola.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-epistola"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent02-5.txt (lines 28-31)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "91ec8c8bad8090b84ac63ba2cf77d2b3a24f94dd85b2e48440bd0ad66b25082c"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-epistola.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-epistola"
+      },
+      "locator": {
+        "printed": "pp. 373–374",
+        "scan": "leaves n453–n454 / PDF pp. 454–455",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n453/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "c96489bd9a9744b20460e9329080f2103d27dc9d235d1da2c5a28fb85db40dc9"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-evangelium.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-evangelium"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent02-5.txt (lines 51-54)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "91ec8c8bad8090b84ac63ba2cf77d2b3a24f94dd85b2e48440bd0ad66b25082c"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-evangelium.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-evangelium"
+      },
+      "locator": {
+        "printed": "p. 374",
+        "scan": "leaf n454 / PDF p. 455",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n454/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "17b921afb2dc1ead4ef47447741096627cfc51457d8eab83742ef50b92ad0b62"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-graduale.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-graduale"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent02-5.txt (lines 33-36); selected boundary ends before the Alleluia citation"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "91ec8c8bad8090b84ac63ba2cf77d2b3a24f94dd85b2e48440bd0ad66b25082c"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-graduale.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-graduale"
+      },
+      "locator": {
+        "printed": "p. 374",
+        "scan": "leaf n454 / PDF p. 455",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n454/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "17b921afb2dc1ead4ef47447741096627cfc51457d8eab83742ef50b92ad0b62"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-introitus.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-introitus"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent02-5.txt (lines 16-22), with the inapplicable parenthesized Paschal addition excluded; web/www/missa/Latin/Ordo/Prayers.txt (lines 13-15)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "91ec8c8bad8090b84ac63ba2cf77d2b3a24f94dd85b2e48440bd0ad66b25082c"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-introitus.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-introitus"
+      },
+      "locator": {
+        "printed": "p. 373; expanded doxology attested on p. 401",
+        "scan": "leaf n453 / PDF p. 454; leaf n482 / PDF p. 483",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n453/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "e2387ec49df0ac32e94c2fc5ac6d6b3baf9877d6aa5d3698fcf047af1fb899c5"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-offertorium.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-offertorium"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent02-5.txt (lines 56-58)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "91ec8c8bad8090b84ac63ba2cf77d2b3a24f94dd85b2e48440bd0ad66b25082c"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-offertorium.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-offertorium"
+      },
+      "locator": {
+        "printed": "p. 374",
+        "scan": "leaf n454 / PDF p. 455",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n454/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "17b921afb2dc1ead4ef47447741096627cfc51457d8eab83742ef50b92ad0b62"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-postcommunio.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-postcommunio"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent02-5.txt (lines 76-78); web/www/missa/Latin/Ordo/Prayers.txt (lines 116-118)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "91ec8c8bad8090b84ac63ba2cf77d2b3a24f94dd85b2e48440bd0ad66b25082c"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-postcommunio.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-postcommunio"
+      },
+      "locator": {
+        "printed": "p. 374 and Rubricae generales p. xvii",
+        "scan": "leaf n454 / PDF p. 455; leaf n22 / PDF p. 23",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n454/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "17b921afb2dc1ead4ef47447741096627cfc51457d8eab83742ef50b92ad0b62"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-secreta.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-secreta"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent02-5.txt (lines 64-66); web/www/missa/Latin/Ordo/Prayers.txt (lines 108-110); abbreviated Per eumdem conclusion"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "91ec8c8bad8090b84ac63ba2cf77d2b3a24f94dd85b2e48440bd0ad66b25082c"
+    },
+    {
+      "id": "use.proprium.sacratissimi-cordis-iesu-secreta.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sacratissimi-cordis-iesu-secreta"
+      },
+      "locator": {
+        "printed": "p. 374",
+        "scan": "leaf n454 / PDF p. 455",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n454/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "17b921afb2dc1ead4ef47447741096627cfc51457d8eab83742ef50b92ad0b62"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-alleluia.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-alleluia"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-0r.txt (lines 37-39)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-alleluia.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-alleluia"
+      },
+      "locator": {
+        "printed": "p. 366",
+        "scan": "leaf n447 / PDF p. 448",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n447/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "1e4659d2b0dc8b7801bd16759fb45ec22c6fa26f7553582cb26943ef9375cf30"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-collecta.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-collecta"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-0r.txt (lines 21-22); web/www/missa/Latin/Ordo/Prayers.txt (lines 96-98)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-collecta.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-collecta"
+      },
+      "locator": {
+        "printed": "p. 366 and Rubricae generales p. xvii",
+        "scan": "leaf n447 / PDF p. 448; leaf n22 / PDF p. 23",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n447/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "1e4659d2b0dc8b7801bd16759fb45ec22c6fa26f7553582cb26943ef9375cf30"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-communio.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-communio"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-0r.txt (line 61)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-communio.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-communio"
+      },
+      "locator": {
+        "printed": "p. 367",
+        "scan": "leaf n448 / PDF p. 449",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n448/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "763520280df1d871ff32d85b6a0b3bc7b27512a8c90f3985578ce28f6b35d218"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-epistola.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-epistola"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-0r.txt (line 32)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-epistola.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-epistola"
+      },
+      "locator": {
+        "printed": "p. 366",
+        "scan": "leaf n447 / PDF p. 448",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n447/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "1e4659d2b0dc8b7801bd16759fb45ec22c6fa26f7553582cb26943ef9375cf30"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-evangelium.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-evangelium"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-0r.txt (line 44)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-evangelium.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-evangelium"
+      },
+      "locator": {
+        "printed": "p. 366",
+        "scan": "leaf n447 / PDF p. 448",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n447/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "1e4659d2b0dc8b7801bd16759fb45ec22c6fa26f7553582cb26943ef9375cf30"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-graduale.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-graduale"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-0r.txt (lines 36-37)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-graduale.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-graduale"
+      },
+      "locator": {
+        "printed": "p. 366",
+        "scan": "leaf n447 / PDF p. 448",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n447/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "1e4659d2b0dc8b7801bd16759fb45ec22c6fa26f7553582cb26943ef9375cf30"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-introitus.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-introitus"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-0r.txt (lines 14-18); web/www/missa/Latin/Ordo/Prayers.txt (lines 13-15)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-introitus.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-introitus"
+      },
+      "locator": {
+        "printed": "p. 366; expanded doxology attested on p. 401",
+        "scan": "leaf n447 / PDF p. 448; leaf n482 / PDF p. 483",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n447/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "1e4659d2b0dc8b7801bd16759fb45ec22c6fa26f7553582cb26943ef9375cf30"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-offertorium.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-offertorium"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-0r.txt (line 48)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-offertorium.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-offertorium"
+      },
+      "locator": {
+        "printed": "p. 366",
+        "scan": "leaf n447 / PDF p. 448",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n447/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "1e4659d2b0dc8b7801bd16759fb45ec22c6fa26f7553582cb26943ef9375cf30"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-postcommunio.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-postcommunio"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-0r.txt (lines 64-65); web/www/missa/Latin/Ordo/Prayers.txt (lines 96-98)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-postcommunio.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-postcommunio"
+      },
+      "locator": {
+        "printed": "p. 367",
+        "scan": "leaf n448 / PDF p. 449",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n448/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "763520280df1d871ff32d85b6a0b3bc7b27512a8c90f3985578ce28f6b35d218"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-secreta.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-secreta"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Pent01-0r.txt (lines 51-52); web/www/missa/Latin/Ordo/Prayers.txt (lines 96-98)"
+      },
+      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    },
+    {
+      "id": "use.proprium.sanctissimae-trinitatis-secreta.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sanctissimae-trinitatis-secreta"
+      },
+      "locator": {
+        "printed": "p. 366",
+        "scan": "leaf n447 / PDF p. 448",
+        "page_url": "https://archive.org/download/missale_romanum-1962/page/n447/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-08-31",
+      "decision": "RETAIN",
+      "evidence_sha256": "1e4659d2b0dc8b7801bd16759fb45ec22c6fa26f7553582cb26943ef9375cf30"
     }
   ],
   "witnesses": [
@@ -4793,6 +6046,798 @@
       "transcription_sha256": "232a6f90d51644247f10cdb7db8eb95d0c951aaf1457210512e64a69493f0144",
       "orthography_profile": "substantive-only",
       "independence_basis": "Direct page-image transcription of the identified edition; not derived from another retained witness."
+    },
+    {
+      "id": "witness.ordinarium.praefatio-sacratissimi-cordis-iesu.do44667ff",
+      "text": "ordinarium.praefatio-sacratissimi-cordis-iesu",
+      "use": "use.ordinarium.praefatio-sacratissimi-cordis-iesu.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "5f1e897b2f6c1b91af1b47a307148ac1eb26c3a7eefc13c14a56d43de68c4fd1",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.ordinarium.praefatio-sacratissimi-cordis-iesu.mr1962",
+      "text": "ordinarium.praefatio-sacratissimi-cordis-iesu",
+      "use": "use.ordinarium.praefatio-sacratissimi-cordis-iesu.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "e29bb9490f388464c0dc0ac5e5f86c8edd3f0bbff7ec9745a2a1c13cac0e2a05",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.ordinarium.praefatio-sanctissimae-trinitatis.do44667ff",
+      "text": "ordinarium.praefatio-sanctissimae-trinitatis",
+      "use": "use.ordinarium.praefatio-sanctissimae-trinitatis.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "d726ebb6af3669da9038417017366ee8ebb512ed5c898704d90dad5faef39737",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.ordinarium.praefatio-sanctissimae-trinitatis.mr1962",
+      "text": "ordinarium.praefatio-sanctissimae-trinitatis",
+      "use": "use.ordinarium.praefatio-sanctissimae-trinitatis.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "626862a3ae340bbdca2ac0e09a942efa12014f0943dc2d1c952c43ec480833d1",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-alleluia.do44667ff",
+      "text": "proprium.corporis-christi-alleluia",
+      "use": "use.proprium.corporis-christi-alleluia.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "e318a5e4887ff5b02f5e2bc67cc590b15226bedbbe1b17395c0908c12dac4ba1",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-alleluia.mr1962",
+      "text": "proprium.corporis-christi-alleluia",
+      "use": "use.proprium.corporis-christi-alleluia.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "c1de4ad4b8500d2f64c778df5224d36b5d3f6db9ada3f1520e114f9fa5ab4185",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-collecta.do44667ff",
+      "text": "proprium.corporis-christi-collecta",
+      "use": "use.proprium.corporis-christi-collecta.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "2dea418d96b26f45afa6d97aa691ba985084f8895cfb612f5bf160d1000aada8",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-collecta.mr1962",
+      "text": "proprium.corporis-christi-collecta",
+      "use": "use.proprium.corporis-christi-collecta.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "b1f88d4b3508de4e5b33074b5417713d637299a7dd51f775f153ffdc6a5cc9a4",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-communio.do44667ff",
+      "text": "proprium.corporis-christi-communio",
+      "use": "use.proprium.corporis-christi-communio.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "fe4b7ceb44fa20683b93c5d3f514e095c761e1f448f56088885bd8a637394a64",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-communio.mr1962",
+      "text": "proprium.corporis-christi-communio",
+      "use": "use.proprium.corporis-christi-communio.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "a28feae0037192214c1ee2b3c160115dd639845562cc6419ba2528219ad7c40d",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-epistola.do44667ff",
+      "text": "proprium.corporis-christi-epistola",
+      "use": "use.proprium.corporis-christi-epistola.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "12f6e363faa98c5d59f9b491f65d1b3c810532241c03aa9bcda81979b7d3a43d",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-epistola.mr1962",
+      "text": "proprium.corporis-christi-epistola",
+      "use": "use.proprium.corporis-christi-epistola.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "098d88238cc013d9afdc3d23d95a10e929d8ad80bad8240580b95e49c320dccb",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-evangelium.do44667ff",
+      "text": "proprium.corporis-christi-evangelium",
+      "use": "use.proprium.corporis-christi-evangelium.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "357e1cdadf4a7d95ea333c405567258a79b7247f2ca96a59490751a8f8ee5c92",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-evangelium.mr1962",
+      "text": "proprium.corporis-christi-evangelium",
+      "use": "use.proprium.corporis-christi-evangelium.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "0964ee4f49a7f26c1e343087640799a9f9b7f44f0afb1dbb8f7028ac16de1f8a",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-graduale.do44667ff",
+      "text": "proprium.corporis-christi-graduale",
+      "use": "use.proprium.corporis-christi-graduale.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "148a0635bd9c4546ba13c5fdf2aa5e75e754ae66a38acc6b41e9da5aa9876198",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-graduale.mr1962",
+      "text": "proprium.corporis-christi-graduale",
+      "use": "use.proprium.corporis-christi-graduale.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "63bd11d477e75b63c0aaf70813ff7993a65c10e89f026ce942a726c4f6b20a73",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-introitus.do44667ff",
+      "text": "proprium.corporis-christi-introitus",
+      "use": "use.proprium.corporis-christi-introitus.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "c69acf38d8bf541f3be2fb8cb6b46a06d24b3ff17ed2c1323f6d3a4afbece17e",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-introitus.mr1962",
+      "text": "proprium.corporis-christi-introitus",
+      "use": "use.proprium.corporis-christi-introitus.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "6330ba6a80965f989385f20d7a138ff30587d08ad763805b0473565ed9766a51",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-offertorium.do44667ff",
+      "text": "proprium.corporis-christi-offertorium",
+      "use": "use.proprium.corporis-christi-offertorium.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "0c7d09707c8ad7e714e6368f68deb6bc2e2f379114562a44a65a37f3ebce86f0",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-offertorium.mr1962",
+      "text": "proprium.corporis-christi-offertorium",
+      "use": "use.proprium.corporis-christi-offertorium.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "252f9c760712dc6de97eda2a37ab442fa075b652d7132f13b3121b3544e4342c",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-postcommunio.do44667ff",
+      "text": "proprium.corporis-christi-postcommunio",
+      "use": "use.proprium.corporis-christi-postcommunio.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "cc84e4e64aed05cd4edeb5ec2481c45f9d85c136b09a42ff2d5b276662913244",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-postcommunio.mr1962",
+      "text": "proprium.corporis-christi-postcommunio",
+      "use": "use.proprium.corporis-christi-postcommunio.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "af7a12ed8b82d4dfa5afb94ba56dbb7366b2d45b59828b0097e50679bf4fbd36",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-secreta.do44667ff",
+      "text": "proprium.corporis-christi-secreta",
+      "use": "use.proprium.corporis-christi-secreta.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "a48ae556e763ac67711b982228bb056ce48126c8938e26f604cded49ad6d4f20",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-secreta.mr1962",
+      "text": "proprium.corporis-christi-secreta",
+      "use": "use.proprium.corporis-christi-secreta.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "a48ae556e763ac67711b982228bb056ce48126c8938e26f604cded49ad6d4f20",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-sequentia.do44667ff",
+      "text": "proprium.corporis-christi-sequentia",
+      "use": "use.proprium.corporis-christi-sequentia.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "dba8ae330aecc3fed3e28e8607c660ca84681d881b1f0b2c851993350f77e31b",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.corporis-christi-sequentia.mr1962",
+      "text": "proprium.corporis-christi-sequentia",
+      "use": "use.proprium.corporis-christi-sequentia.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "d9dfbef97c683187ce0347716733ed54d760fb85ec12c979307fea9a761ad330",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-alleluia.do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-alleluia",
+      "use": "use.proprium.sacratissimi-cordis-iesu-alleluia.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "4a4ffbd471cbc2328ab929c337f991d9b684f52f5d780245ab03fe580c720bf5",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-alleluia.mr1962",
+      "text": "proprium.sacratissimi-cordis-iesu-alleluia",
+      "use": "use.proprium.sacratissimi-cordis-iesu-alleluia.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "d7281f04a97636d4986d13f674d7f0aa9a1afb697613a50adbfa2fa9183c0371",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-collecta.do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-collecta",
+      "use": "use.proprium.sacratissimi-cordis-iesu-collecta.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "ee1a9ea12325bb12f52ace7cb8dac98b4b1a445b0bd847fb1d3f7041056247ad",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-collecta.mr1962",
+      "text": "proprium.sacratissimi-cordis-iesu-collecta",
+      "use": "use.proprium.sacratissimi-cordis-iesu-collecta.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "d6bd7cf1b05dd7f435fdf59a87d52e0e04d22c582a6fb0489c6e65e5cfb57309",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-communio.do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-communio",
+      "use": "use.proprium.sacratissimi-cordis-iesu-communio.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "c6b0f686779263f724ab97b343198e3560f55a3e1f2f3614ad5f377d3c928cd9",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-communio.mr1962",
+      "text": "proprium.sacratissimi-cordis-iesu-communio",
+      "use": "use.proprium.sacratissimi-cordis-iesu-communio.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "f90d83a01c382f13be9f62860cac6356f94723fec7eabb8fb842f398381859cb",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-epistola.do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-epistola",
+      "use": "use.proprium.sacratissimi-cordis-iesu-epistola.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "7e3f4e1c2b07ea01f28ef7b6890422c9b4d1a5099ce3b1fef76fc8f6c7dc7ab5",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-epistola.mr1962",
+      "text": "proprium.sacratissimi-cordis-iesu-epistola",
+      "use": "use.proprium.sacratissimi-cordis-iesu-epistola.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "3c3e6fee51b727216088aa27d74cab64a642d6026d85bc8517441ef8bd12578d",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-evangelium.do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-evangelium",
+      "use": "use.proprium.sacratissimi-cordis-iesu-evangelium.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "ce3a9698270a5f799d5d0305a23ff26d777dbde0073433d1e46e99208cca0c99",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-evangelium.mr1962",
+      "text": "proprium.sacratissimi-cordis-iesu-evangelium",
+      "use": "use.proprium.sacratissimi-cordis-iesu-evangelium.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "632e2df2d68dc3fbf2682f8e27b9092b5478a0415c1d9467a93054c9bd5c801a",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-graduale.do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-graduale",
+      "use": "use.proprium.sacratissimi-cordis-iesu-graduale.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "62a0175e835621d1023a9f753d5cff9c59fd43372506f640751650b0beee9c39",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-graduale.mr1962",
+      "text": "proprium.sacratissimi-cordis-iesu-graduale",
+      "use": "use.proprium.sacratissimi-cordis-iesu-graduale.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "7b6fb2fc67c650053a6f962c737c969ae9f19c3aa43737ca38dd4b980b2704ae",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-introitus.do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-introitus",
+      "use": "use.proprium.sacratissimi-cordis-iesu-introitus.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "a822ff92488d68b47e6f5efb7c063019f00667208ca1f2ea8a4ddf10bbbd5bd6",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-introitus.mr1962",
+      "text": "proprium.sacratissimi-cordis-iesu-introitus",
+      "use": "use.proprium.sacratissimi-cordis-iesu-introitus.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "a164318ed95b216e75f3dae4136a01a94d9d2afcc1ce483d2515ff06656ba3f5",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-offertorium.do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-offertorium",
+      "use": "use.proprium.sacratissimi-cordis-iesu-offertorium.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "16bf13651989281f25a663d94d745e2a86188795f52c96f6f5ac435e99d89917",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-offertorium.mr1962",
+      "text": "proprium.sacratissimi-cordis-iesu-offertorium",
+      "use": "use.proprium.sacratissimi-cordis-iesu-offertorium.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "1e79ab8b01845f20126009a3e61ed0811fa8da052c001cbc34c10c1a8a894583",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-postcommunio.do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-postcommunio",
+      "use": "use.proprium.sacratissimi-cordis-iesu-postcommunio.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "061d448b364dbd0364e2a1006351c680b577f98cb32de63941e179e284d6b09f",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-postcommunio.mr1962",
+      "text": "proprium.sacratissimi-cordis-iesu-postcommunio",
+      "use": "use.proprium.sacratissimi-cordis-iesu-postcommunio.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "a6d0b767784c69d6690d3b0938753986aa5eaef26d39df4ad124b63a6e10131f",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-secreta.do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-secreta",
+      "use": "use.proprium.sacratissimi-cordis-iesu-secreta.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "9ee574b46f6e3390a9e058ddf1af94f3f63766da8a3337259c0fe9bd2aced168",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sacratissimi-cordis-iesu-secreta.mr1962",
+      "text": "proprium.sacratissimi-cordis-iesu-secreta",
+      "use": "use.proprium.sacratissimi-cordis-iesu-secreta.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "9ee574b46f6e3390a9e058ddf1af94f3f63766da8a3337259c0fe9bd2aced168",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-alleluia.do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-alleluia",
+      "use": "use.proprium.sanctissimae-trinitatis-alleluia.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "2d8ebb0d9e0f2c1f84fa0adf90c3e34bdcad4a1f7131a3a4fc663f7f2e51b2a3",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-alleluia.mr1962",
+      "text": "proprium.sanctissimae-trinitatis-alleluia",
+      "use": "use.proprium.sanctissimae-trinitatis-alleluia.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "bbbf65ab98307384d26a786f78a22aa941f3bf31ab55d285fe0f13d5a8fa5b2f",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-collecta.do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-collecta",
+      "use": "use.proprium.sanctissimae-trinitatis-collecta.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "5886afff1100d5dba6024bdda2865e0d0864245fc39638b238680f15cef045da",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-collecta.mr1962",
+      "text": "proprium.sanctissimae-trinitatis-collecta",
+      "use": "use.proprium.sanctissimae-trinitatis-collecta.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "77f9db4d4731557a1d141ca3a4995f4bf91c122d9c1443fa0206a77f69b291ab",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-communio.do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-communio",
+      "use": "use.proprium.sanctissimae-trinitatis-communio.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "6a5f609ddfca0e8cf578b9d9f87f347a59ac95da3988389057aad7165282a2fc",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-communio.mr1962",
+      "text": "proprium.sanctissimae-trinitatis-communio",
+      "use": "use.proprium.sanctissimae-trinitatis-communio.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "8febd908876971197b161ffc98440dc0367af5026671cda8984d7b62305ee588",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-epistola.do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-epistola",
+      "use": "use.proprium.sanctissimae-trinitatis-epistola.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "3e3e48dc1e3b7c428b5286c57ee42f9376fdc7937f88e92a0561253c10bd243f",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-epistola.mr1962",
+      "text": "proprium.sanctissimae-trinitatis-epistola",
+      "use": "use.proprium.sanctissimae-trinitatis-epistola.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "a96916371a13eb53a6e31e7f655f334c3c572e7e537efb0db9727ed8dfb51d75",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-evangelium.do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-evangelium",
+      "use": "use.proprium.sanctissimae-trinitatis-evangelium.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "ca6dfd7631ca449b1c5578591e624447073c3ab55392e448c50b021218700492",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-evangelium.mr1962",
+      "text": "proprium.sanctissimae-trinitatis-evangelium",
+      "use": "use.proprium.sanctissimae-trinitatis-evangelium.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "66d69c75311c0d17b6ab92033e7858aa62f6eea512885c4cece0a96c71a5b034",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-graduale.do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-graduale",
+      "use": "use.proprium.sanctissimae-trinitatis-graduale.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "551e9f146e9d20fb7a674364dbc0a51c1664947133f61e9c14cea431f64f03c5",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-graduale.mr1962",
+      "text": "proprium.sanctissimae-trinitatis-graduale",
+      "use": "use.proprium.sanctissimae-trinitatis-graduale.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "551e9f146e9d20fb7a674364dbc0a51c1664947133f61e9c14cea431f64f03c5",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-introitus.do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-introitus",
+      "use": "use.proprium.sanctissimae-trinitatis-introitus.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "7574db8fafe736bbae689f2deeb1bffb822cb745917c38b4cc040c38ff194a9e",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-introitus.mr1962",
+      "text": "proprium.sanctissimae-trinitatis-introitus",
+      "use": "use.proprium.sanctissimae-trinitatis-introitus.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "757951c6b8fc537d61ea34ce64dc3eec641e0c901989c32e03cfe0a2c10bcc6d",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-offertorium.do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-offertorium",
+      "use": "use.proprium.sanctissimae-trinitatis-offertorium.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "1543a0ed0c784bae8a96f6dad9ac192adcb841c0c76f553a5e190a380c5ef50d",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-offertorium.mr1962",
+      "text": "proprium.sanctissimae-trinitatis-offertorium",
+      "use": "use.proprium.sanctissimae-trinitatis-offertorium.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "1543a0ed0c784bae8a96f6dad9ac192adcb841c0c76f553a5e190a380c5ef50d",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-postcommunio.do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-postcommunio",
+      "use": "use.proprium.sanctissimae-trinitatis-postcommunio.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "d0bae42a67b9480678dd16adb0dc373ba938b1a48507f2e9422c1f835a77baa4",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-postcommunio.mr1962",
+      "text": "proprium.sanctissimae-trinitatis-postcommunio",
+      "use": "use.proprium.sanctissimae-trinitatis-postcommunio.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "95bad82cdd8b5d93db93f46fed625a9534035d3fb6fc6f103f651b2cca569e0e",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-secreta.do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-secreta",
+      "use": "use.proprium.sanctissimae-trinitatis-secreta.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "3f2f64dee15e91d5240e49d8b102456ee914207bc54d17762abad70a94f95144",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sanctissimae-trinitatis-secreta.mr1962",
+      "text": "proprium.sanctissimae-trinitatis-secreta",
+      "use": "use.proprium.sanctissimae-trinitatis-secreta.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "b9e8ba0735712f260d2d632b3b64a336e4b4f42367c3e5edb9680510eace6a7a",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
     }
   ],
   "collations": [
@@ -4824,6 +6869,568 @@
       "apparatus": {
         "entries": 0,
         "classes": []
+      }
+    },
+    {
+      "id": "collation.ordinarium.praefatio-sacratissimi-cordis-iesu.mr1962-do44667ff",
+      "text": "ordinarium.praefatio-sacratissimi-cordis-iesu",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "c9f955d2af7a74826e250794748b03e1ce94bafe441f377d48bb1d2c4799c527",
+      "witnesses": [
+        "witness.ordinarium.praefatio-sacratissimi-cordis-iesu.do44667ff",
+        "witness.ordinarium.praefatio-sacratissimi-cordis-iesu.mr1962"
+      ],
+      "apparatus": {
+        "entries": 13,
+        "classes": [
+          "accent",
+          "capital-accent",
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.ordinarium.praefatio-sanctissimae-trinitatis.mr1962-do44667ff",
+      "text": "ordinarium.praefatio-sanctissimae-trinitatis",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "31969761614cc203446f7369fad96010441a6fb57751dcd2544bb180b7bcf3e5",
+      "witnesses": [
+        "witness.ordinarium.praefatio-sanctissimae-trinitatis.do44667ff",
+        "witness.ordinarium.praefatio-sanctissimae-trinitatis.mr1962"
+      ],
+      "apparatus": {
+        "entries": 11,
+        "classes": [
+          "capital-accent",
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.corporis-christi-alleluia.mr1962-do44667ff",
+      "text": "proprium.corporis-christi-alleluia",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "b5a5404c3220b73bbf25b6e7becd83d7a60565e9211196637058edfc779e3d9c",
+      "witnesses": [
+        "witness.proprium.corporis-christi-alleluia.do44667ff",
+        "witness.proprium.corporis-christi-alleluia.mr1962"
+      ],
+      "apparatus": {
+        "entries": 4,
+        "classes": [
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.corporis-christi-collecta.mr1962-do44667ff",
+      "text": "proprium.corporis-christi-collecta",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "8b3d8e810a2e52f2efb502eed026161e9f0bd178c15d3ac157943ef9facbc9d2",
+      "witnesses": [
+        "witness.proprium.corporis-christi-collecta.do44667ff",
+        "witness.proprium.corporis-christi-collecta.mr1962"
+      ],
+      "apparatus": {
+        "entries": 4,
+        "classes": [
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.corporis-christi-communio.mr1962-do44667ff",
+      "text": "proprium.corporis-christi-communio",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "cb919d33af743ed15eba83cb310fd43f0472683c84d7bd47c5b77244237462c8",
+      "witnesses": [
+        "witness.proprium.corporis-christi-communio.do44667ff",
+        "witness.proprium.corporis-christi-communio.mr1962"
+      ],
+      "apparatus": {
+        "entries": 5,
+        "classes": [
+          "accent",
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.corporis-christi-epistola.mr1962-do44667ff",
+      "text": "proprium.corporis-christi-epistola",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "76c54ab2b1c5b4daa57484b92fc8948bced158e05faab3090c2c48339e5e6bbb",
+      "witnesses": [
+        "witness.proprium.corporis-christi-epistola.do44667ff",
+        "witness.proprium.corporis-christi-epistola.mr1962"
+      ],
+      "apparatus": {
+        "entries": 11,
+        "classes": [
+          "accent",
+          "capital-accent",
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.corporis-christi-evangelium.mr1962-do44667ff",
+      "text": "proprium.corporis-christi-evangelium",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "fb6d5a395e695b95f59ecac93c54789ae51abc28390b9f70fc1f571897fa15cd",
+      "witnesses": [
+        "witness.proprium.corporis-christi-evangelium.do44667ff",
+        "witness.proprium.corporis-christi-evangelium.mr1962"
+      ],
+      "apparatus": {
+        "entries": 6,
+        "classes": [
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.corporis-christi-graduale.mr1962-do44667ff",
+      "text": "proprium.corporis-christi-graduale",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "6098b169b470cef0f51a63319e8f307c95caeb9bf46219326b2f3b328a729ee5",
+      "witnesses": [
+        "witness.proprium.corporis-christi-graduale.do44667ff",
+        "witness.proprium.corporis-christi-graduale.mr1962"
+      ],
+      "apparatus": {
+        "entries": 6,
+        "classes": [
+          "accent",
+          "capital-accent",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.corporis-christi-introitus.mr1962-do44667ff",
+      "text": "proprium.corporis-christi-introitus",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "aed710759c1f6fa5ea91d948b3b019c1b7abb2cc9ee486412aaffea311eecb80",
+      "witnesses": [
+        "witness.proprium.corporis-christi-introitus.do44667ff",
+        "witness.proprium.corporis-christi-introitus.mr1962"
+      ],
+      "apparatus": {
+        "entries": 12,
+        "classes": [
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.corporis-christi-offertorium.mr1962-do44667ff",
+      "text": "proprium.corporis-christi-offertorium",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "96cc09b44df37eec7213380db341eaf9fcdcf780f64e9ab8e89e0fcf75545440",
+      "witnesses": [
+        "witness.proprium.corporis-christi-offertorium.do44667ff",
+        "witness.proprium.corporis-christi-offertorium.mr1962"
+      ],
+      "apparatus": {
+        "entries": 3,
+        "classes": [
+          "accent",
+          "orthography"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.corporis-christi-postcommunio.mr1962-do44667ff",
+      "text": "proprium.corporis-christi-postcommunio",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "170bae2fbd7b885586f928effa00aea40435d4103ea5782ce17a05b94023ae20",
+      "witnesses": [
+        "witness.proprium.corporis-christi-postcommunio.do44667ff",
+        "witness.proprium.corporis-christi-postcommunio.mr1962"
+      ],
+      "apparatus": {
+        "entries": 6,
+        "classes": [
+          "accent",
+          "capital-accent",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.corporis-christi-secreta.mr1962-do44667ff",
+      "text": "proprium.corporis-christi-secreta",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "d05498e1ffc572722d2ef4c93574a31eabf5c18a7c3c5ca2296083653ebefcee",
+      "witnesses": [
+        "witness.proprium.corporis-christi-secreta.do44667ff",
+        "witness.proprium.corporis-christi-secreta.mr1962"
+      ],
+      "apparatus": {
+        "entries": 0,
+        "classes": []
+      }
+    },
+    {
+      "id": "collation.proprium.corporis-christi-sequentia.mr1962-do44667ff",
+      "text": "proprium.corporis-christi-sequentia",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "f995c9b4e84d8b1fb5860ec3c62833d1ae8c977562358491cf1f1a1695f7f4f9",
+      "witnesses": [
+        "witness.proprium.corporis-christi-sequentia.do44667ff",
+        "witness.proprium.corporis-christi-sequentia.mr1962"
+      ],
+      "apparatus": {
+        "entries": 14,
+        "classes": [
+          "accent",
+          "capital-accent",
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sacratissimi-cordis-iesu-alleluia.mr1962-do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-alleluia",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "f20d084ac37b6a4e6d82cb4289b19aaf1bbff597a09c370d5ee1a1a72cfb167f",
+      "witnesses": [
+        "witness.proprium.sacratissimi-cordis-iesu-alleluia.do44667ff",
+        "witness.proprium.sacratissimi-cordis-iesu-alleluia.mr1962"
+      ],
+      "apparatus": {
+        "entries": 4,
+        "classes": [
+          "orthography"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sacratissimi-cordis-iesu-collecta.mr1962-do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-collecta",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "3a95189de4a6cb7067e7c49bd2bf04a2692dddefb23573beddd99730d2210409",
+      "witnesses": [
+        "witness.proprium.sacratissimi-cordis-iesu-collecta.do44667ff",
+        "witness.proprium.sacratissimi-cordis-iesu-collecta.mr1962"
+      ],
+      "apparatus": {
+        "entries": 6,
+        "classes": [
+          "capitalization",
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sacratissimi-cordis-iesu-communio.mr1962-do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-communio",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "0f617b58c05d75f637622ba8ccc06f42e59e580e349718ddc5bc9f8e048ce30d",
+      "witnesses": [
+        "witness.proprium.sacratissimi-cordis-iesu-communio.do44667ff",
+        "witness.proprium.sacratissimi-cordis-iesu-communio.mr1962"
+      ],
+      "apparatus": {
+        "entries": 1,
+        "classes": [
+          "orthography"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sacratissimi-cordis-iesu-epistola.mr1962-do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-epistola",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "69a1f5be0738a1687a6e481e9ef977bc5f3f7a934d5de3a022d2d8902446124a",
+      "witnesses": [
+        "witness.proprium.sacratissimi-cordis-iesu-epistola.do44667ff",
+        "witness.proprium.sacratissimi-cordis-iesu-epistola.mr1962"
+      ],
+      "apparatus": {
+        "entries": 13,
+        "classes": [
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sacratissimi-cordis-iesu-evangelium.mr1962-do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-evangelium",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "29908412a277b0d2580f8739dd29dc48d737e02356ced249bd9a21a6098dc329",
+      "witnesses": [
+        "witness.proprium.sacratissimi-cordis-iesu-evangelium.do44667ff",
+        "witness.proprium.sacratissimi-cordis-iesu-evangelium.mr1962"
+      ],
+      "apparatus": {
+        "entries": 14,
+        "classes": [
+          "accent",
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sacratissimi-cordis-iesu-graduale.mr1962-do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-graduale",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "aa87ad6eeb155b91da8ac356908f197b18cd331bfda78dda006fef30e27eb46f",
+      "witnesses": [
+        "witness.proprium.sacratissimi-cordis-iesu-graduale.do44667ff",
+        "witness.proprium.sacratissimi-cordis-iesu-graduale.mr1962"
+      ],
+      "apparatus": {
+        "entries": 3,
+        "classes": [
+          "accent",
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sacratissimi-cordis-iesu-introitus.mr1962-do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-introitus",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "4ba5133e4f209d85cb18d7f59a17bd7b7ff2154015f1c8eac56c82ec6f9ec607",
+      "witnesses": [
+        "witness.proprium.sacratissimi-cordis-iesu-introitus.do44667ff",
+        "witness.proprium.sacratissimi-cordis-iesu-introitus.mr1962"
+      ],
+      "apparatus": {
+        "entries": 3,
+        "classes": [
+          "orthography"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sacratissimi-cordis-iesu-offertorium.mr1962-do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-offertorium",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "917f8ee95e907d39eda675cd9d6042e351029cab921df6f3086d37252311a7b4",
+      "witnesses": [
+        "witness.proprium.sacratissimi-cordis-iesu-offertorium.do44667ff",
+        "witness.proprium.sacratissimi-cordis-iesu-offertorium.mr1962"
+      ],
+      "apparatus": {
+        "entries": 4,
+        "classes": [
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sacratissimi-cordis-iesu-postcommunio.mr1962-do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-postcommunio",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "fb44372fe5efce9f51b38a6e7d67be880595df16a53553cbeb851d41925a056d",
+      "witnesses": [
+        "witness.proprium.sacratissimi-cordis-iesu-postcommunio.do44667ff",
+        "witness.proprium.sacratissimi-cordis-iesu-postcommunio.mr1962"
+      ],
+      "apparatus": {
+        "entries": 6,
+        "classes": [
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sacratissimi-cordis-iesu-secreta.mr1962-do44667ff",
+      "text": "proprium.sacratissimi-cordis-iesu-secreta",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "fd8deef5f85ec71db7e1405aefbdf043e2e304ec657312b666a6810ab64cc979",
+      "witnesses": [
+        "witness.proprium.sacratissimi-cordis-iesu-secreta.do44667ff",
+        "witness.proprium.sacratissimi-cordis-iesu-secreta.mr1962"
+      ],
+      "apparatus": {
+        "entries": 0,
+        "classes": []
+      }
+    },
+    {
+      "id": "collation.proprium.sanctissimae-trinitatis-alleluia.mr1962-do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-alleluia",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "2fa9c0a31673a55aeb226021a6b533a423924229d5d96f28638f3af2ed1c4c55",
+      "witnesses": [
+        "witness.proprium.sanctissimae-trinitatis-alleluia.do44667ff",
+        "witness.proprium.sanctissimae-trinitatis-alleluia.mr1962"
+      ],
+      "apparatus": {
+        "entries": 3,
+        "classes": [
+          "orthography"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sanctissimae-trinitatis-collecta.mr1962-do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-collecta",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "e61fcaf9e19d6c9b1cc1ae93472edf52e99bf65d7db1c552f801302d47552ef9",
+      "witnesses": [
+        "witness.proprium.sanctissimae-trinitatis-collecta.do44667ff",
+        "witness.proprium.sanctissimae-trinitatis-collecta.mr1962"
+      ],
+      "apparatus": {
+        "entries": 9,
+        "classes": [
+          "capital-accent",
+          "capitalization",
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sanctissimae-trinitatis-communio.mr1962-do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-communio",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "9afb48eefe8ea2186ffaee4bdddbcf923e41e0f81b8f56c65b4815d4a45aa6d4",
+      "witnesses": [
+        "witness.proprium.sanctissimae-trinitatis-communio.do44667ff",
+        "witness.proprium.sanctissimae-trinitatis-communio.mr1962"
+      ],
+      "apparatus": {
+        "entries": 1,
+        "classes": [
+          "orthography"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sanctissimae-trinitatis-epistola.mr1962-do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-epistola",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "054bb23c13fb5de2017da4e102f4f06b2730f8b0206536e1745330616419fb7c",
+      "witnesses": [
+        "witness.proprium.sanctissimae-trinitatis-epistola.do44667ff",
+        "witness.proprium.sanctissimae-trinitatis-epistola.mr1962"
+      ],
+      "apparatus": {
+        "entries": 7,
+        "classes": [
+          "accent",
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sanctissimae-trinitatis-evangelium.mr1962-do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-evangelium",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "ba6c9a54be44e8701875e49c17eea638b43dcdaa5e4e88ed5e020c81f3562e10",
+      "witnesses": [
+        "witness.proprium.sanctissimae-trinitatis-evangelium.do44667ff",
+        "witness.proprium.sanctissimae-trinitatis-evangelium.mr1962"
+      ],
+      "apparatus": {
+        "entries": 3,
+        "classes": [
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sanctissimae-trinitatis-graduale.mr1962-do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-graduale",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "0911f9dc42084eb5cfbca38f81dc8f27b91e521105adff91423e08b471ec7f54",
+      "witnesses": [
+        "witness.proprium.sanctissimae-trinitatis-graduale.do44667ff",
+        "witness.proprium.sanctissimae-trinitatis-graduale.mr1962"
+      ],
+      "apparatus": {
+        "entries": 0,
+        "classes": []
+      }
+    },
+    {
+      "id": "collation.proprium.sanctissimae-trinitatis-introitus.mr1962-do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-introitus",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "028a3b341dd5c2c18c7a60878c80b0ddbbdf18fe408cc81eb03628d899dc4a36",
+      "witnesses": [
+        "witness.proprium.sanctissimae-trinitatis-introitus.do44667ff",
+        "witness.proprium.sanctissimae-trinitatis-introitus.mr1962"
+      ],
+      "apparatus": {
+        "entries": 6,
+        "classes": [
+          "accent",
+          "capital-accent",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sanctissimae-trinitatis-offertorium.mr1962-do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-offertorium",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "40753626711e0dd956e5c033fee5dd80d84c42223d060e38590342c4bc2b3bb1",
+      "witnesses": [
+        "witness.proprium.sanctissimae-trinitatis-offertorium.do44667ff",
+        "witness.proprium.sanctissimae-trinitatis-offertorium.mr1962"
+      ],
+      "apparatus": {
+        "entries": 0,
+        "classes": []
+      }
+    },
+    {
+      "id": "collation.proprium.sanctissimae-trinitatis-postcommunio.mr1962-do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-postcommunio",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "8b34d12602c94a5bbe1847a574da0aadf2ee5e0a6b7c0a85573d85bf889d097a",
+      "witnesses": [
+        "witness.proprium.sanctissimae-trinitatis-postcommunio.do44667ff",
+        "witness.proprium.sanctissimae-trinitatis-postcommunio.mr1962"
+      ],
+      "apparatus": {
+        "entries": 6,
+        "classes": [
+          "capital-accent",
+          "capitalization",
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.proprium.sanctissimae-trinitatis-secreta.mr1962-do44667ff",
+      "text": "proprium.sanctissimae-trinitatis-secreta",
+      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "selected_text_sha256": "4f1a26364f061dc7ba0ce144e6e79023bd243f7612c75d1df88c978e2ee3e00f",
+      "witnesses": [
+        "witness.proprium.sanctissimae-trinitatis-secreta.do44667ff",
+        "witness.proprium.sanctissimae-trinitatis-secreta.mr1962"
+      ],
+      "apparatus": {
+        "entries": 2,
+        "classes": [
+          "orthography",
+          "punctuation"
+        ]
       }
     }
   ]

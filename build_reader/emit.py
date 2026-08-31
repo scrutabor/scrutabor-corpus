@@ -646,7 +646,7 @@ KALENDARIUM = range(2026, 2102)
 
 
 def kalendarium() -> dict:
-    """Every day of the temporal cycle that has a Mass of its own, 2026-2100.
+    """Every supported Roman-calendar day with a Mass of its own, 2026-2100.
 
     Explicit rather than derivable: decision #6 says apps never implement
     movable-feast logic, and three readers are coming. A row is
@@ -654,7 +654,7 @@ def kalendarium() -> dict:
     into the vocabularies beside them, and `position` differs from `formulary`
     only where a feast or n. 18's transfer moved something.
     """
-    from kalendarium.temporale import year
+    from kalendarium.roman import year
 
     formularies: list[str] = []
     seasons: list[str] = []

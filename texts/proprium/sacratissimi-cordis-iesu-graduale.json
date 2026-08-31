@@ -1,0 +1,102 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.sacratissimi-cordis-iesu-graduale",
+  "title": "Dulcis et rectus Dóminus",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "sacratissimi-cordis-iesu",
+  "sung": true,
+  "ids": {
+    "next": 20,
+    "segments": {
+      "next": 3
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Dulcis", "lemma": "dulcis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w004" },
+        { "id": "w002", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w003", "form": "rectus", "lemma": "rectus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w004" },
+        { "id": "w004", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w005", "form": "propter", "lemma": "propter", "morph": { "governs": "acc", "pos": "prep" }, "head": "w006" },
+        { "id": "w006", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w007", "form": "legem", "lemma": "lex", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w008", "form": "dabit", "lemma": "do", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w009", "form": "delinquéntibus", "lemma": "delinquo", "morph": { "pos": "verb", "number": "pl", "case": "dat", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "substantive": true },
+        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011" },
+        { "id": "w011", "form": "via", "lemma": "via", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w012", "form": "Díriget", "lemma": "dirigo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w013", "form": "mansuétos", "lemma": "mansuetus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w015" },
+        { "id": "w015", "form": "iudício", "lemma": "iudicium", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 }, "post": "," },
+        { "id": "w016", "form": "docébit", "lemma": "doceo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w017", "form": "mites", "lemma": "mitis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w018", "form": "vias", "lemma": "via", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" } },
+        { "id": "w019", "form": "suas", "lemma": "suus", "morph": { "case": "acc", "gender": "f", "number": "pl", "pos": "adj" }, "post": ".", "head": "w018" }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.sacratissimi-cordis-iesu-graduale/",
+      "apparatus": "witnesses/proprium.sacratissimi-cordis-iesu-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

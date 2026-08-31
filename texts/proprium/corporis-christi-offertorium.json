@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.corporis-christi-offertorium",
+  "title": "Sacerdótes Dómini incénsum et panes",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "corporis-christi",
+  "sung": true,
+  "ids": {
+    "next": 20,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Sacerdótes", "lemma": "sacerdos", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w002", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w003", "form": "incénsum", "lemma": "incensum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "panes", "lemma": "panis", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 3 } },
+        { "id": "w006", "form": "ófferunt", "lemma": "offero", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w007", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 }, "post": ":" },
+        { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "ídeo", "lemma": "ideo", "morph": { "pos": "adv" } },
+        { "id": "w010", "form": "sancti", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w001" },
+        { "id": "w011", "form": "erunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w012", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w013", "form": "suo", "lemma": "suus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "post": ",", "head": "w012" },
+        { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w015", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w016", "form": "pólluent", "lemma": "polluo", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "fut", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w017", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w018", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": "," },
+        { "id": "w019", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.corporis-christi-offertorium/",
+      "apparatus": "witnesses/proprium.corporis-christi-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

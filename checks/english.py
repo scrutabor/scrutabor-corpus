@@ -123,6 +123,7 @@ ENGLISH_NUMBER_RULINGS: dict[str, str] = {
     "caelum": "the ecclesiastical plural caeli names one heaven",
     "dies": "the distributive per singulos dies is rendered every day",
     "sanguis": "sanguinibus is a Hebraism for one substance",
+    "species": "the English noun species has the same form in singular and plural",
     "terra": "in caelis et in terris: English says earth",
 }
 

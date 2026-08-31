@@ -75,7 +75,12 @@ FORMULARIES = frozenset(
     + ["dominica-resurrectionis", "dominica-in-albis"]
     + [f"dominica-{ROMAN[i]}-post-pascha" for i in range(2, 6)]
     + ["ascensio-domini", "dominica-post-ascensionem", "dominica-pentecostes"]
-    + ["sanctissimae-trinitatis", "corpus-christi", "d-n-iesu-christi-regis"]
+    + [
+        "sanctissimae-trinitatis",
+        "corpus-christi",
+        "sacratissimi-cordis-iesu",
+        "d-n-iesu-christi-regis",
+    ]
     + [f"dominica-{ROMAN[i]}-post-pentecosten" for i in range(2, 25)]
 )
 
@@ -251,6 +256,9 @@ def year(ending: int) -> list[Dies]:
             formulary, dies_class = "d-n-iesu-christi-regis", 1
         add(when, formulary, "per-annum", dies_class, position)
     add(pascha + timedelta(days=60), "corpus-christi", "per-annum", 1)
+    # Friday after the Second Sunday after Pentecost; its own formulary stands
+    # in the temporal cycle immediately after that Sunday.
+    add(pascha + timedelta(days=68), "sacratissimi-cordis-iesu", "per-annum", 1)
 
     unknown = sorted({d.formulary for d in days} - FORMULARIES)
     assert not unknown, f"{ending}: the Missale has no such Mass: {unknown}"

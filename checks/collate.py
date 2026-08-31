@@ -369,7 +369,11 @@ def collate(doc, witness_dir: Path):
             # different punctuation): the letters have been verified above;
             # accidental comparison against it would be noise.
             continue
-        wit_raw = text.split()
+        # A source may set a parenthetic break as a free-standing dash.  It
+        # is punctuation, not a word, and therefore has no corpus word ID;
+        # retain it in the exact witness transcription and ignore only that
+        # punctuation-only token when aligning word-level accidentals.
+        wit_raw = [token for token in text.split() if any(char.isalpha() for char in token)]
         if len(wit_raw) != len(ours_raw_w):
             errors.append(
                 f"{wid}: raw token count mismatch despite substantive match "

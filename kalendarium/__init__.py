@@ -1,4 +1,4 @@
-"""The temporal cycle of the 1962 Roman rite, computed once so that no app has to.
+"""The supported 1962 Roman calendar, computed once so that no app has to.
 
 Decision #6 of this project says the calendar is built here and shipped as data:
 "apps never implement movable-feast logic". There are three readers coming — the
@@ -6,28 +6,26 @@ web, Android, iOS — and a rule implemented three times is a rule that will
 eventually be three different rules.
 
 WHAT THIS KNOWS is exactly what `witnesses/raw/mr-rubricae-generales-temporale
-.txt` prints, and nothing else. Every function below names the article it
+.txt` and `witnesses/raw/mr-rubricae-generales-occurrence.txt` print, and
+nothing else. Every function below names the article it
 obeys: n. 20 for the First Sunday of Advent, n. 30 for the two vigils of the
 first class, n. 18 for the Sundays after Epiphany that Septuagesima cuts off,
 n. 17 for the four feasts that may fall on a Sunday and take its place, nn.
 67-69 for the octave of the Nativity and the Sunday inside it, nn. 71-77 for
 the bounds of every season.
 
-ONE FEAST OF THE SAINTS IS HERE, and only one: the Immaculate Conception, on
-8 December. It is here because n. 15 prints it — "Festum tamen Immaculatae
-Conceptionis B. Mariae Virg. praefertur occurrenti dominicae Adventus" — among
-the rules that govern Sundays rather than in the calendar of saints. Without
-it the book opened on the wrong Mass in ten years of this table's window, on
-the one season the edition carries. It is not the beginning of a sanctoral.
+THE SANCTORAL IS DELIBERATELY BOUNDED. It carries the universal first- and
+second-class observances from 31 May through 9 November whose formularies are
+in the current Sundays-and-major-feasts scope. It does not pretend to be the
+complete General Roman Calendar. The Immaculate Conception remains in the
+temporal computation because n. 15 states its exceptional precedence over an
+Advent Sunday there.
 
 WHAT IT DOES NOT KNOW, said plainly because a calendar that quietly guesses is
 worse than one that stops:
 
-- THE SANCTORAL, apart from that one article. A feast of the first class
-  falling on a Sunday of the second class takes that Sunday's place (n. 16 a),
-  and this module carries no list of feasts to check it against. Sundays of
-  the first class — Advent, Lent, Passiontide, Eastertide — yield to nothing
-  else (n. 15), so for those the answer is complete.
+- SANCTORAL OBSERVANCES OUTSIDE THE DECLARED V1 RANGE, including local and
+  particular calendars and universal feasts of the third class.
 - THE FERIAS. They have no entry, and the reason differs by season: in Lent
   the Missale prints a Mass for every day of the week, and in Advent it prints
   none between one Sunday and the next. Naming the week is true of both;

@@ -353,7 +353,10 @@ INDECLINABLE = {
     "seraphim",
     "nihil",  # indeclinable by nature
     "Iesus",
+    "Isaac",
+    "phase",
     "kyrie",  # Greek, declined on their own pattern
+    "Parasceve",  # Greek liturgical name for the day of preparation
 }
 IRREGULAR_VERBS = {
     "nolo",
@@ -367,6 +370,7 @@ IRREGULAR_VERBS = {
     "volo",
     "memini",
     "prosum",
+    "possum",
     "aufero",
     "offero",
     "perfero",  # compounds of fero
