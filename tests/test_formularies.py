@@ -13,13 +13,13 @@ def test_every_formulary_component_and_language_title_is_accounted_for():
     errors, counts = check(CORPUS)
     assert errors == []
     assert counts == {
-        "formularies": 60,
-        "observances": 58,
-        "components": 671,
-        "proper_texts": 566,
-        "proper_uses": 616,
-        "shared_uses": 55,
-        "reference_uses": 50,
+        "formularies": 65,
+        "observances": 61,
+        "components": 726,
+        "proper_texts": 611,
+        "proper_uses": 666,
+        "shared_uses": 60,
+        "reference_uses": 55,
     }
 
 
@@ -62,3 +62,25 @@ def test_two_calendar_defaults_for_one_observance_fail(tmp_path):
     path.write_text(json.dumps(value), encoding="utf-8")
     errors, _counts = check(root)
     assert any("has defaults" in error and "expected one" in error for error in errors)
+
+
+def test_vigil_alleluia_is_conditioned_on_sunday():
+    path = CORPUS / "formularies/temporale/vigilia-nativitatis.json"
+    value = json.loads(path.read_text(encoding="utf-8"))
+    alleluia = next(
+        component for component in value["components"] if component["role"] == "alleluia"
+    )
+    assert alleluia["condition"] == {"weekday": "sunday"}
+
+
+def test_unknown_component_condition_fails(tmp_path):
+    root = tmp_path / "corpus"
+    shutil.copytree(CORPUS / "formularies", root / "formularies")
+    shutil.copytree(CORPUS / "languages", root / "languages")
+    shutil.copytree(CORPUS / "texts", root / "texts")
+    path = root / "formularies/temporale/vigilia-nativitatis.json"
+    value = json.loads(path.read_text(encoding="utf-8"))
+    value["components"][4]["condition"] = {"weekday": "monday"}
+    path.write_text(json.dumps(value), encoding="utf-8")
+    errors, _counts = check(root)
+    assert any("unknown component condition" in error for error in errors)

@@ -163,10 +163,10 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
         "rejected_exposed": 0,
     }
     assert written["evidence_coverage"] == {
-        "neutral": {"normalized": 560, "texts": 660},
+        "neutral": {"normalized": 606, "texts": 706},
         "languages": {
-            "en": {"normalized": 108, "effective": 646, "texts": 660},
-            "pl": {"normalized": 72, "effective": 611, "texts": 660},
+            "en": {"normalized": 108, "effective": 692, "texts": 706},
+            "pl": {"normalized": 72, "effective": 657, "texts": 706},
         },
     }
 
@@ -391,7 +391,7 @@ def test_formulary_assemblies_are_explicit_localized_and_calendar_addressable(tm
     manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
     catalog = json.loads((out / manifest["base"]["formularies"]).read_text(encoding="utf-8"))
     by_id = {formulary["id"]: formulary for formulary in catalog["formularies"]}
-    assert len(by_id) == 60
+    assert len(by_id) == 65
 
     corpus_christi = by_id["corporis-christi"]
     assert corpus_christi["calendar"] == {"key": "corpus-christi", "default": True}
@@ -422,6 +422,17 @@ def test_formulary_assemblies_are_explicit_localized_and_calendar_addressable(tm
     }
     assert sum(formulary["calendar"]["default"] for formulary in all_souls) == 1
 
+    christmas = [
+        formulary for formulary in by_id.values() if formulary["observance"] == "nativitas-domini"
+    ]
+    assert {formulary["variant"] for formulary in christmas} == {
+        "in-nocte",
+        "in-aurora",
+        "in-die",
+    }
+    defaults = [formulary["variant"] for formulary in christmas if formulary["calendar"]["default"]]
+    assert defaults == ["in-die"]
+
     for language in ("pl", "en"):
         language_manifest = json.loads(
             (out / f"languages/{language}/manifest.json").read_text(encoding="utf-8")
@@ -437,13 +448,13 @@ def test_metrics_are_the_single_derived_denominator(tmp_path):
     metrics = json.loads((out / manifest["base"]["metrics"]).read_text(encoding="utf-8"))
     assert metrics == {
         "schema_version": "1.0.0",
-        "texts": {"total": 660, "proprium": 566, "words": 35651, "verse_segments": 1609},
-        "languages": {"en": {"texts": 660}, "pl": {"texts": 660}},
+        "texts": {"total": 706, "proprium": 611, "words": 37931, "verse_segments": 1662},
+        "languages": {"en": {"texts": 706}, "pl": {"texts": 706}},
         "formularies": {
-            "total": 60,
-            "observances": 58,
-            "component_uses": 671,
-            "unique_component_texts": 578,
+            "total": 65,
+            "observances": 61,
+            "component_uses": 726,
+            "unique_component_texts": 624,
         },
     }
 

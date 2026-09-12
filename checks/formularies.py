@@ -134,6 +134,7 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
             role = component.get("role")
             target = component.get("text")
             relation = component.get("relation")
+            condition = component.get("condition")
             if not isinstance(key, str) or not key:
                 errors.append(f"{formulary_id}: component {index} has no stable key")
             elif key in keys:
@@ -174,6 +175,8 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
                     errors.append(
                         f"{formulary_id}:{key}: own proper {target} is mislabeled reference"
                     )
+            if condition is not None and condition != {"weekday": "sunday"}:
+                errors.append(f"{formulary_id}:{key}: unknown component condition {condition!r}")
 
     if sorted(orders) != list(range(len(rows))):
         errors.append(

@@ -1,0 +1,81 @@
+{
+  "formulary_schema": "1.0.0",
+  "id": "in-octava-nativitatis",
+  "order": 8,
+  "collection": "temporale",
+  "season": "nativitas",
+  "observance": "in-octava-nativitatis",
+  "calendar": {
+    "key": "in-octava-nativitatis",
+    "default": true
+  },
+  "title": "In Octava Nativitatis Domini",
+  "components": [
+    {
+      "key": "introitus",
+      "role": "introitus",
+      "text": "proprium.nativitas-domini-in-die-introitus",
+      "relation": "reference"
+    },
+    {
+      "key": "collecta",
+      "role": "collecta",
+      "text": "proprium.in-octava-nativitatis-collecta",
+      "relation": "proper"
+    },
+    {
+      "key": "epistola",
+      "role": "epistola",
+      "text": "proprium.nativitas-domini-in-nocte-epistola",
+      "relation": "reference"
+    },
+    {
+      "key": "graduale",
+      "role": "graduale",
+      "text": "proprium.nativitas-domini-in-die-graduale",
+      "relation": "reference"
+    },
+    {
+      "key": "alleluia",
+      "role": "alleluia",
+      "text": "proprium.in-octava-nativitatis-alleluia",
+      "relation": "proper"
+    },
+    {
+      "key": "evangelium",
+      "role": "evangelium",
+      "text": "proprium.in-octava-nativitatis-evangelium",
+      "relation": "proper"
+    },
+    {
+      "key": "offertorium",
+      "role": "offertorium",
+      "text": "proprium.nativitas-domini-in-die-offertorium",
+      "relation": "reference"
+    },
+    {
+      "key": "secreta",
+      "role": "secreta",
+      "text": "proprium.in-octava-nativitatis-secreta",
+      "relation": "proper"
+    },
+    {
+      "key": "praefatio",
+      "role": "praefatio",
+      "text": "ordinarium.praefatio-nativitatis",
+      "relation": "shared"
+    },
+    {
+      "key": "communio",
+      "role": "communio",
+      "text": "proprium.nativitas-domini-in-die-communio",
+      "relation": "reference"
+    },
+    {
+      "key": "postcommunio",
+      "role": "postcommunio",
+      "text": "proprium.in-octava-nativitatis-postcommunio",
+      "relation": "proper"
+    }
+  ]
+}

@@ -56,7 +56,7 @@ def substantive(text: str, fold_ji: bool = False, fold_xs: bool = False) -> str:
 GLIDE_PREFIXES = frozenset(
     ("ab", "ad", "con", "de", "dis", "in", "inter", "ob", "per", "prae", "sub", "trans")
 )
-GLIDE_STEMS = ("iac", "iect", "iud", "iung", "iunct", "iur", "iust", "iut", "iuv")
+GLIDE_STEMS = ("iac", "iect", "iud", "iug", "iung", "iunct", "iur", "iust", "iut", "iuv")
 
 
 def after_prefix(word: str, at: int) -> bool:

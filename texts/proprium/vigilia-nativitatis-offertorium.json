@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.vigilia-nativitatis-offertorium",
+  "title": "Tóllite portas, principes, vestras: et elevámini, portæ",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "vigilia-nativitatis",
+  "sung": true,
+  "ids": {
+    "next": 13,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Tóllite", "lemma": "tollo", "morph": { "conj": 3, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w002", "form": "portas", "lemma": "porta", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "pl", "decl": 1 }, "post": "," },
+        { "id": "w003", "form": "príncipes", "lemma": "princeps", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "pl", "decl": 3 }, "post": "," },
+        { "id": "w004", "form": "vestras", "lemma": "vester", "morph": { "case": "acc", "gender": "f", "number": "pl", "pos": "adj" }, "post": ":", "head": "w002" },
+        { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "elevámini", "lemma": "elevo", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 2, "tense": "pres", "voice": "pass", "conj": 1 }, "post": "," },
+        { "id": "w007", "form": "portæ", "lemma": "porta", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "pl", "decl": 1 } },
+        { "id": "w008", "form": "æternáles", "lemma": "aeternalis", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "pl" }, "post": ",", "head": "w007" },
+        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "introíbit", "lemma": "introeo", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w011", "form": "Rex", "lemma": "rex", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
+        { "id": "w012", "form": "glóriæ", "lemma": "gloria", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.vigilia-nativitatis-offertorium/",
+      "apparatus": "witnesses/proprium.vigilia-nativitatis-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true
+  }
+}

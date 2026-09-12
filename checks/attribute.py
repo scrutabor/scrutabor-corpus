@@ -379,13 +379,22 @@ def _raw_archive_for(declared_path: str) -> Path | None:
     source_path = Path(declared_path)
     source_key = re.sub(r"[^a-z0-9]", "", source_path.stem.lower())
     parent_key = re.sub(r"[^a-z0-9]", "", source_path.parent.name.lower())
-    candidates: list[tuple[int, Path]] = []
+    path_keys = {
+        key
+        for part in source_path.parts[:-1]
+        if (key := re.sub(r"[^a-z0-9]", "", part.lower())) and len(key) > 2
+    }
+    candidates: list[tuple[int, int, int, int, Path]] = []
     for candidate in sorted((CORPUS / "witnesses" / "raw").glob("*.txt")):
         candidate_key = re.sub(r"[^a-z0-9]", "", candidate.stem.lower())
         if source_key and source_key in candidate_key:
             parent_match = int(bool(parent_key and parent_key in candidate_key))
-            candidates.append((parent_match, candidate))
-    return max(candidates, key=lambda item: item[0])[1] if candidates else None
+            exact_suffix = int(candidate_key.endswith(source_key))
+            path_matches = sum(key in candidate_key for key in path_keys)
+            candidates.append(
+                (exact_suffix, path_matches, parent_match, -len(candidate_key), candidate)
+            )
+    return max(candidates)[4] if candidates else None
 
 
 def witness_ranges(text_id: str) -> list[tuple[Path, int, int]]:

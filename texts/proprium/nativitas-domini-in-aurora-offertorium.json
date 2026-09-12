@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.nativitas-domini-in-aurora-offertorium",
+  "title": "Deus firmávit orbem terræ, qui non commovébitur",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "nativitas-domini-in-aurora",
+  "sung": true,
+  "ids": {
+    "next": 18,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w002", "form": "firmávit", "lemma": "firmo", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w003", "form": "orbem", "lemma": "orbis", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w004", "form": "terræ", "lemma": "terra", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w005", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w006", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w007", "form": "commovébitur", "lemma": "commoveo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" }, "post": ":" },
+        { "id": "w008", "form": "paráta", "lemma": "paro", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "f", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w009" },
+        { "id": "w009", "form": "sedes", "lemma": "sedes", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w010", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "post": ",", "head": "w009" },
+        { "id": "w011", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w012", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w016" },
+        { "id": "w013", "form": "tunc", "lemma": "tunc", "morph": { "pos": "adv" }, "post": "," },
+        { "id": "w014", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w015" },
+        { "id": "w015", "form": "sǽculo", "lemma": "saeculum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w016", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w017", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.nativitas-domini-in-aurora-offertorium/",
+      "apparatus": "witnesses/proprium.nativitas-domini-in-aurora-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true
+  }
+}

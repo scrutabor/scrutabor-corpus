@@ -92,6 +92,12 @@ text must be reached by at least one assembly, every target must exist, and
 component order follows the order of Mass. A multi-Mass observance gives every
 member a distinct `variant` and exactly one calendar default.
 
+A component may carry `condition: {"weekday": "sunday"}` when the Missal
+prints it only for a Sunday occurrence of that formulary. Consumers with a
+civil date omit the component on every other weekday; a manual formulary view
+without a civil date retains it so that the complete formulary remains
+available for study.
+
 Each language package mirrors the neutral path with a small document carrying
 the same formulary id, language id and localized title. The reader edition
 publishes the neutral catalogue as manifest-declared `formularies.json` and

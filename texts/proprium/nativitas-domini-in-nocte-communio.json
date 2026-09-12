@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.nativitas-domini-in-nocte-communio",
+  "title": "In splendóribus Sanctórum, ex útero ante lucíferum",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "nativitas-domini-in-nocte",
+  "sung": true,
+  "ids": {
+    "next": 10,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w002" },
+        { "id": "w002", "form": "splendóribus", "lemma": "splendor", "morph": { "case": "abl", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w003", "form": "Sanctórum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w004", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w005" },
+        { "id": "w005", "form": "útero", "lemma": "uterus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w006", "form": "ante", "lemma": "ante", "morph": { "governs": "acc", "pos": "prep" }, "head": "w007" },
+        { "id": "w007", "form": "lucíferum", "lemma": "lucifer", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w008", "form": "génui", "lemma": "gigno", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w009", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.nativitas-domini-in-nocte-communio/",
+      "apparatus": "witnesses/proprium.nativitas-domini-in-nocte-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

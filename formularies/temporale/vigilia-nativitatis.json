@@ -1,0 +1,84 @@
+{
+  "formulary_schema": "1.0.0",
+  "id": "vigilia-nativitatis",
+  "order": 4,
+  "collection": "temporale",
+  "season": "nativitas",
+  "observance": "vigilia-nativitatis",
+  "calendar": {
+    "key": "vigilia-nativitatis",
+    "default": true
+  },
+  "title": "In Vigilia Nativitatis Domini",
+  "components": [
+    {
+      "key": "introitus",
+      "role": "introitus",
+      "text": "proprium.vigilia-nativitatis-introitus",
+      "relation": "proper"
+    },
+    {
+      "key": "collecta",
+      "role": "collecta",
+      "text": "proprium.vigilia-nativitatis-collecta",
+      "relation": "proper"
+    },
+    {
+      "key": "epistola",
+      "role": "epistola",
+      "text": "proprium.vigilia-nativitatis-epistola",
+      "relation": "proper"
+    },
+    {
+      "key": "graduale",
+      "role": "graduale",
+      "text": "proprium.vigilia-nativitatis-graduale",
+      "relation": "proper"
+    },
+    {
+      "key": "alleluia",
+      "role": "alleluia",
+      "text": "proprium.vigilia-nativitatis-alleluia",
+      "relation": "proper",
+      "condition": {
+        "weekday": "sunday"
+      }
+    },
+    {
+      "key": "evangelium",
+      "role": "evangelium",
+      "text": "proprium.vigilia-nativitatis-evangelium",
+      "relation": "proper"
+    },
+    {
+      "key": "offertorium",
+      "role": "offertorium",
+      "text": "proprium.vigilia-nativitatis-offertorium",
+      "relation": "proper"
+    },
+    {
+      "key": "secreta",
+      "role": "secreta",
+      "text": "proprium.vigilia-nativitatis-secreta",
+      "relation": "proper"
+    },
+    {
+      "key": "praefatio",
+      "role": "praefatio",
+      "text": "ordinarium.praefatio-sanctissimae-trinitatis",
+      "relation": "shared"
+    },
+    {
+      "key": "communio",
+      "role": "communio",
+      "text": "proprium.vigilia-nativitatis-communio",
+      "relation": "proper"
+    },
+    {
+      "key": "postcommunio",
+      "role": "postcommunio",
+      "text": "proprium.vigilia-nativitatis-postcommunio",
+      "relation": "proper"
+    }
+  ]
+}

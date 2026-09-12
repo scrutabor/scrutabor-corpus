@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.nativitas-domini-in-aurora-communio",
+  "title": "Exsúlta, fília Sion, lauda, fília Ierúsalem: ecce",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "nativitas-domini-in-aurora",
+  "sung": true,
+  "ids": {
+    "next": 15,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Exsúlta", "lemma": "exsulto", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w002", "form": "fília", "lemma": "filia", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w003", "form": "Sion", "lemma": "Sion", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f" }, "post": "," },
+        { "id": "w004", "form": "lauda", "lemma": "laudo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "post": "," },
+        { "id": "w005", "form": "fília", "lemma": "filia", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w006", "form": "Ierúsalem", "lemma": "Ierusalem", "morph": { "gender": "f", "pos": "noun" }, "post": ":" },
+        { "id": "w007", "form": "ecce", "lemma": "ecce", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w008", "form": "Rex", "lemma": "rex", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
+        { "id": "w009", "form": "tuus", "lemma": "tuus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w008" },
+        { "id": "w010", "form": "venit", "lemma": "venio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 4 } },
+        { "id": "w011", "form": "sanctus", "lemma": "sanctus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w013" },
+        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "Salvátor", "lemma": "salvator", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
+        { "id": "w014", "form": "mundi", "lemma": "mundus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.nativitas-domini-in-aurora-communio/",
+      "apparatus": "witnesses/proprium.nativitas-domini-in-aurora-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true
+  }
+}
