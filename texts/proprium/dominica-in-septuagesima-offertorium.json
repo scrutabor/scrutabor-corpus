@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-in-septuagesima-offertorium",
+  "title": "Bonum est confitéri Dómino, et psállere nómini",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-in-septuagesima",
+  "sung": true,
+  "ids": {
+    "next": 10,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Bonum", "lemma": "bonus", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w002", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w003", "form": "confitéri", "lemma": "confiteor", "morph": { "conj": 2, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "dep" } },
+        { "id": "w004", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w006", "form": "psállere", "lemma": "psallo", "morph": { "conj": 3, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w007", "form": "nómini", "lemma": "nomen", "morph": { "case": "dat", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w008", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w009", "form": "Altíssime", "lemma": "altus", "morph": { "case": "voc", "degree": "sup", "gender": "m", "number": "sg", "pos": "adj" }, "post": ".", "substantive": true }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-in-septuagesima-offertorium/",
+      "apparatus": "witnesses/proprium.dominica-in-septuagesima-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

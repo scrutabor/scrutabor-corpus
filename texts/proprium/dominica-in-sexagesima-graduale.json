@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-in-sexagesima-graduale",
+  "title": "Sciant gentes, quóniam nomen tibi Deus: tu",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-in-sexagesima",
+  "sung": true,
+  "ids": {
+    "next": 25,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Sciant", "lemma": "scio", "morph": { "conj": 4, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w002", "form": "gentes", "lemma": "gens", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 }, "post": "," },
+        { "id": "w003", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w005", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
+        { "id": "w006", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": ":" },
+        { "id": "w007", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w008", "form": "solus", "lemma": "solus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w007" },
+        { "id": "w009", "form": "Altíssimus", "lemma": "altus", "morph": { "case": "nom", "degree": "sup", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w007" },
+        { "id": "w010", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
+        { "id": "w011", "form": "omnem", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "gender": "f", "number": "sg" }, "head": "w012" },
+        { "id": "w012", "form": "terram", "lemma": "terra", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w013", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w014", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "post": ",", "head": "w013" },
+        { "id": "w015", "form": "pone", "lemma": "pono", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w016", "form": "illos", "lemma": "ille", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "pron" } },
+        { "id": "w017", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w018", "form": "rotam", "lemma": "rota", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 1 }, "post": "," },
+        { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w020", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
+        { "id": "w021", "form": "stípulam", "lemma": "stipula", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w022", "form": "ante", "lemma": "ante", "morph": { "governs": "acc", "pos": "prep" }, "head": "w023" },
+        { "id": "w023", "form": "fáciem", "lemma": "facies", "morph": { "case": "acc", "decl": 5, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w024", "form": "venti", "lemma": "ventus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-in-sexagesima-graduale/",
+      "apparatus": "witnesses/proprium.dominica-in-sexagesima-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-in-sexagesima-tractus",
+  "title": "Commovísti, Dómine, terram, et conturbásti eam. Sana",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-in-sexagesima",
+  "sung": true,
+  "ids": {
+    "next": 22,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Commovísti", "lemma": "commoveo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "perf", "voice": "act" }, "post": "," },
+        { "id": "w002", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w003", "form": "terram", "lemma": "terra", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "conturbásti", "lemma": "conturbo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "perf", "voice": "act", "conj": 1 } },
+        { "id": "w006", "form": "eam", "lemma": "is", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "pron" }, "post": "." },
+        { "id": "w007", "form": "Sana", "lemma": "sanus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w008", "form": "contritiónes", "lemma": "contritio", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w009", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": "," },
+        { "id": "w010", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "mota", "lemma": "moveo", "morph": { "pos": "verb", "case": "nom", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 2 }, "substantive": true },
+        { "id": "w012", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." },
+        { "id": "w013", "form": "Ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w014", "form": "fúgiant", "lemma": "fugio", "morph": { "conj": 3, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w015", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w016" },
+        { "id": "w016", "form": "fácie", "lemma": "facies", "morph": { "case": "abl", "decl": 5, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w017", "form": "arcus", "lemma": "arcus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 4 }, "post": ":" },
+        { "id": "w018", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w019", "form": "liberéntur", "lemma": "libero", "morph": { "conj": 1, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" } },
+        { "id": "w020", "form": "elécti", "lemma": "eligo", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
+        { "id": "w021", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "post": ".", "substantive": true }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-in-sexagesima-tractus/",
+      "apparatus": "witnesses/proprium.dominica-in-sexagesima-tractus/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true
+  }
+}
