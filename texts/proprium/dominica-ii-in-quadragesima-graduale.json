@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-ii-in-quadragesima-graduale",
+  "title": "Tribulatiónes cordis mei dilatátæ sunt: de necessitátibus",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-ii-in-quadragesima",
+  "sung": true,
+  "ids": {
+    "next": 23,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Tribulatiónes", "lemma": "tribulatio", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "pl", "decl": 3 } },
+        { "id": "w002", "form": "cordis", "lemma": "cor", "morph": { "case": "gen", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w003", "form": "mei", "lemma": "meus", "morph": { "pos": "adj", "case": "gen", "gender": "m", "number": "sg" }, "substantive": true },
+        { "id": "w004", "form": "dilatátæ", "lemma": "dilato", "morph": { "pos": "verb", "case": "nom", "gender": "f", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "head": "w001" },
+        { "id": "w005", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":" },
+        { "id": "w006", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w007" },
+        { "id": "w007", "form": "necessitátibus", "lemma": "necessitas", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
+        { "id": "w008", "form": "meis", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "pl" }, "substantive": true },
+        { "id": "w009", "form": "éripe", "lemma": "eripio", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w010", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "," },
+        { "id": "w011", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w012", "form": "Vide", "lemma": "video", "morph": { "conj": 2, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w013", "form": "humilitátem", "lemma": "humilitas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w014", "form": "meam", "lemma": "meus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w013" },
+        { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w016", "form": "labórem", "lemma": "labor", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w017", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "post": ":", "head": "w016" },
+        { "id": "w018", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w019", "form": "dimítte", "lemma": "dimitto", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w020", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w021" },
+        { "id": "w021", "form": "peccáta", "lemma": "peccatum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 2 } },
+        { "id": "w022", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "post": ".", "substantive": true }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-ii-in-quadragesima-graduale/",
+      "apparatus": "witnesses/proprium.dominica-ii-in-quadragesima-graduale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

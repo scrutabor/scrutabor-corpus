@@ -338,6 +338,7 @@ def check_note_prose(lex: dict) -> list[str]:
 # missing theirs until 2026-08-17, indistinguishable from the Hebrew names
 # beside them.
 INDECLINABLE = {
+    "Agar",
     "Aaron",
     "Abba",
     "Abiud",
@@ -349,6 +350,7 @@ INDECLINABLE = {
     "Aser",
     "Azor",
     "Bar",
+    "Beelzebub",
     "Beniamin",
     "Booz",
     "bethlehem",
@@ -393,6 +395,7 @@ INDECLINABLE = {
     "Ruben",
     "Ruth",
     "Saba",
+    "Sina",
     "Sadoc",
     "Salathiel",
     "Salmon",
@@ -460,6 +463,8 @@ IRREGULAR_VERBS = {
     "transeo",  # compounds of eo
     "eleison",  # Greek imperative
     "praesum",  # compound of sum; its paradigm has no numbered conjugation
+    "subeo",  # compound of eo
+    "supersum",  # compound of sum
 }
 
 

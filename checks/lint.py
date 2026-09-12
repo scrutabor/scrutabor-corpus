@@ -157,6 +157,9 @@ LAYOUT_CHARS = {
 # (SCHEMA.md); divine titles are lowercase common nouns. Grows as texts
 # require — the Canon's two lists of saints added most of these.
 PROPER_LEMMAS = {
+    "Agar",
+    "Arabia",
+    "Beelzebub",
     "Aaron",
     "Abba",
     "Abias",
@@ -255,12 +258,14 @@ PROPER_LEMMAS = {
     "Sibylla",
     "Sidon",
     "Simeon",
+    "Sina",
     "Syria",
     "Syntyche",
     "Tartarus",
     "Thamar",
     "Tharsis",
     "Titus",
+    "Tiberias",
     "Tyrus",
     "Urias",
     "Zabulon",
