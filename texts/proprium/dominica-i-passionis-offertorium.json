@@ -1,0 +1,101 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-i-passionis-offertorium",
+  "title": "Confitébor tibi, Dómine, in toto corde meo",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-i-passionis",
+  "sung": true,
+  "ids": {
+    "next": 22,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Confitébor", "lemma": "confiteor", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "dep" } },
+        { "id": "w002", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "post": "," },
+        { "id": "w003", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w004", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w006" },
+        { "id": "w005", "form": "toto", "lemma": "totus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "head": "w006" },
+        { "id": "w006", "form": "corde", "lemma": "cor", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w007", "form": "meo", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "post": ":", "substantive": true },
+        { "id": "w008", "form": "retríbue", "lemma": "retribuo", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w009", "form": "servo", "lemma": "servus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w010", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "post": ":", "substantive": true },
+        { "id": "w011", "form": "vivam", "lemma": "vivus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ",", "substantive": true },
+        { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w013", "form": "custódiam", "lemma": "custodio", "morph": { "conj": 4, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w014", "form": "sermónes", "lemma": "sermo", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "pl", "decl": 3 } },
+        { "id": "w015", "form": "tuos", "lemma": "tuus", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "post": ":", "head": "w014" },
+        { "id": "w016", "form": "vivífica", "lemma": "vivifico", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w017", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w018", "form": "secúndum", "lemma": "secundum", "morph": { "governs": "acc", "pos": "prep" }, "head": "w019" },
+        { "id": "w019", "form": "verbum", "lemma": "verbum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
+        { "id": "w020", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "post": ",", "head": "w017" },
+        { "id": "w021", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-i-passionis-offertorium/",
+      "apparatus": "witnesses/proprium.dominica-i-passionis-offertorium/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true
+  }
+}

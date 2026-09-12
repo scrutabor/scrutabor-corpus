@@ -93,14 +93,20 @@ def syllable_nuclei(form: str) -> list[int]:
         nxt = s[i + 1] if i + 1 < len(s) else ""
         is_vowel = ch in VOWELS
         if is_vowel:
-            if ch == "u" and prev in ("q", "g") and nxt in VOWELS:
+            if (
+                ch == "u"
+                and prev in ("q", "g")
+                and nxt in VOWELS
+                and not strip_accents(s).startswith("argu")
+            ):
                 # glide: qu-/gu- BEFORE A VOWEL (lingua, sanguis, quia). The
                 # vowel test is not decoration. Without it every u after q or
                 # g was swallowed, so surgunt counted 1 syllable and regum 1,
                 # and the error stayed invisible while no such word carried an
                 # accent. resúrgunt, in the Advent II gospel, is the first that
                 # does, and it was reported as a two-syllable word wrongly
-                # accented.
+                # accented. Arguo and its forms are the relevant exception:
+                # their u is vocalic (ár-gu-et), not the glide of sanguis.
                 prev = ch
                 prev_was_vowel = False
                 continue

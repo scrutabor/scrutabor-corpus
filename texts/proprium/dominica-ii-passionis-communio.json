@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-ii-passionis-communio",
+  "title": "Pater, si non potest hic calix transíre",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "dominica-ii-passionis",
+  "sung": true,
+  "ids": {
+    "next": 14,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 }, "post": "," },
+        { "id": "w002", "form": "si", "lemma": "si", "morph": { "pos": "conj" } },
+        { "id": "w003", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w004", "form": "potest", "lemma": "possum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w005", "form": "hic", "lemma": "hic", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" } },
+        { "id": "w006", "form": "calix", "lemma": "calix", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w007", "form": "transíre", "lemma": "transeo", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w008", "form": "nisi", "lemma": "nisi", "morph": { "pos": "conj" } },
+        { "id": "w009", "form": "bibam", "lemma": "bibo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "fut", "voice": "act", "conj": 3 } },
+        { "id": "w010", "form": "illum", "lemma": "ille", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" }, "post": ":" },
+        { "id": "w011", "form": "fiat", "lemma": "fio", "morph": { "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w012", "form": "volúntas", "lemma": "voluntas", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w013", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "post": ".", "head": "w012" }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-ii-passionis-communio/",
+      "apparatus": "witnesses/proprium.dominica-ii-passionis-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true
+  }
+}

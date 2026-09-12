@@ -19,9 +19,31 @@ from checks.participation import CANTU_III_PROPER, proper_genus
 
 ROOT = Path(__file__).resolve().parent.parent
 
+# The solemn Passion has three traditional parts.  The printed role sequence
+# is fixed here independently of the text files, just as the chant genera
+# below are fixed independently of their stored overrides.  At low Mass the
+# celebrant reads every part, which remains the base ``speaker`` in the text.
+PALM_PASSION = "proprium.dominica-ii-passionis-evangelium"
+PALM_PASSION_ROLES = (
+    "CXCXCXCXCXCXCSCSCXCXCXCSCSCSCXCSCSCSCSCSCSCSCSCSCSCSCXCSCSCSCSCSCSCSCSCSCSCSCSCSCSCXCXCSCSCCSC"
+)
+PALM_PASSION_SEGMENTS = tuple(f"s{number:02d}" for number in range(1, 96) if number != 92)
+assert len(PALM_PASSION_ROLES) == len(PALM_PASSION_SEGMENTS)
+PALM_PASSION_DELIVERY = {
+    segment: {"C": "chronista", "X": "christus", "S": "synagoga"}[role]
+    for segment, role in zip(PALM_PASSION_SEGMENTS, PALM_PASSION_ROLES, strict=True)
+}
+
 
 def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
     """Return the form-specific override required by this segment."""
+    if doc.get("id") == PALM_PASSION and seg.get("id") in PALM_PASSION_DELIVERY:
+        return {
+            "cantu": {
+                "speaker": PALM_PASSION_DELIVERY[seg["id"]],
+                "voice": "cantus",
+            }
+        }
     if (
         doc.get("category") == "proprium"
         and seg.get("type") == "verse"

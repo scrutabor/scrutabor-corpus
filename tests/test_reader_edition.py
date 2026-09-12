@@ -163,10 +163,10 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
         "rejected_exposed": 0,
     }
     assert written["evidence_coverage"] == {
-        "neutral": {"normalized": 740, "texts": 840},
+        "neutral": {"normalized": 759, "texts": 859},
         "languages": {
-            "en": {"normalized": 108, "effective": 826, "texts": 840},
-            "pl": {"normalized": 72, "effective": 791, "texts": 840},
+            "en": {"normalized": 108, "effective": 845, "texts": 859},
+            "pl": {"normalized": 72, "effective": 810, "texts": 859},
         },
     }
 
@@ -391,7 +391,7 @@ def test_formulary_assemblies_are_explicit_localized_and_calendar_addressable(tm
     manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
     catalog = json.loads((out / manifest["base"]["formularies"]).read_text(encoding="utf-8"))
     by_id = {formulary["id"]: formulary for formulary in catalog["formularies"]}
-    assert len(by_id) == 81
+    assert len(by_id) == 83
 
     corpus_christi = by_id["corporis-christi"]
     assert corpus_christi["calendar"] == {"key": "corpus-christi", "default": True}
@@ -448,13 +448,13 @@ def test_metrics_are_the_single_derived_denominator(tmp_path):
     metrics = json.loads((out / manifest["base"]["metrics"]).read_text(encoding="utf-8"))
     assert metrics == {
         "schema_version": "1.0.0",
-        "texts": {"total": 840, "proprium": 743, "words": 46163, "verse_segments": 1805},
-        "languages": {"en": {"texts": 840}, "pl": {"texts": 840}},
+        "texts": {"total": 859, "proprium": 762, "words": 48724, "verse_segments": 1917},
+        "languages": {"en": {"texts": 859}, "pl": {"texts": 859}},
         "formularies": {
-            "total": 81,
-            "observances": 77,
-            "component_uses": 902,
-            "unique_component_texts": 758,
+            "total": 83,
+            "observances": 79,
+            "component_uses": 924,
+            "unique_component_texts": 777,
         },
     }
 

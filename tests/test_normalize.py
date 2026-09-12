@@ -118,6 +118,9 @@ class TestSyllableCount:
     def test_the_qu_glide_is_consumed_before_the_i_rule_can_see_it(self, form, count):
         assert syllable_count(form) == count
 
+    def test_arguo_keeps_its_vocalic_u(self):
+        assert syllable_count("árguet") == 3
+
     def test_au_is_a_diphthong_and_eu_is_not(self):
         assert syllable_count("laus") == 1
         assert syllable_count("Deum") == 2

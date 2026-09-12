@@ -37,6 +37,19 @@ def test_a_stale_or_extra_override_is_rejected():
     assert any("Mass forms require none" in error for error in errors)
 
 
+def test_the_sung_passion_uses_its_three_traditional_parts():
+    doc = text("proprium.dominica-ii-passionis-evangelium")
+    derived = [
+        derive(doc, segment)["cantu"]["speaker"]
+        for segment in doc["segments"]
+        if segment["type"] == "verse"
+    ]
+    assert len(derived) == 94
+    assert set(derived) == {"chronista", "christus", "synagoga"}
+    rubric = next(segment for segment in doc["segments"] if segment["type"] == "rubric")
+    assert derive(doc, rubric) == {}
+
+
 def test_every_text_carries_the_derived_delivery():
     problems = []
     for path in sorted(CORPUS.glob("texts/*/*.json")):

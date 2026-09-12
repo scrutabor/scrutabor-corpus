@@ -172,6 +172,7 @@ PROPER_LEMMAS = {
     "Aminadab",
     "Amon",
     "Anna",
+    "Arimathaea",
     "Aretas",
     "Augustus",
     "Asa",
@@ -181,6 +182,7 @@ PROPER_LEMMAS = {
     "Babylon",
     "Babylonius",
     "Bar",
+    "Barabbas",
     "Beniamin",
     "Booz",
     "Caesarea",
@@ -188,6 +190,7 @@ PROPER_LEMMAS = {
     "Cephas",
     "Chananaeus",
     "Cleophas",
+    "Cyrenaeus",
     "Cyrinus",
     "Deipara",
     "Daniel",
@@ -203,8 +206,13 @@ PROPER_LEMMAS = {
     "Evodia",
     "Ezechias",
     "Epha",
+    "Eli",
     "Gad",
+    "Galilaeus",
     "Genesareth",
+    "Gethsemani",
+    "Golgotha",
+    "Haceldama",
     "Herodianus",
     "Hebraeus",
     "Hus",
@@ -407,7 +415,17 @@ NAMED_SUBJECT = re.compile(
 # voce. Optional while the attribution pass proceeds — a segment with no
 # attribution says "not yet read", which is the honest state and the one
 # the app must render as unmarked rather than guess.
-SPEAKERS = {"sacerdos", "ductor", "minister", "populus", "omnes", "schola"}
+SPEAKERS = {
+    "sacerdos",
+    "ductor",
+    "minister",
+    "populus",
+    "omnes",
+    "schola",
+    "chronista",
+    "christus",
+    "synagoga",
+}
 VOICES = {"clara", "submissa", "secreto", "cantus"}
 
 

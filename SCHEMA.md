@@ -402,6 +402,9 @@ localization, editorial
   select the requested form and overlay only the named fields. Empty,
   redundant, unknown, or rubric-level overrides are errors. This layer is
   DERIVED by `checks/delivery.py`, not authored separately in each formulary.
+  In a sung Passion the traditional parts use `chronista`, `christus`, and
+  `synagoga`; the base speaker remains `sacerdos`, because at low Mass the
+  celebrant reads the whole Passion.
 - Segment: **`participation`** (since 0.10.0) is who among the FAITHFUL makes
   this line, and on whose authority. `speaker` answers a different question —
   whom the Missale charges with the line — and at low Mass the answer is
