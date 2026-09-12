@@ -76,8 +76,8 @@ FORMULARIES = frozenset(
     + [f"dominica-{ROMAN[i]}-post-epiphaniam" for i in range(1, 7)]
     + [f"dominica-in-{n}" for n in ("septuagesima", "sexagesima", "quinquagesima")]
     + [f"dominica-{ROMAN[i]}-in-quadragesima" for i in range(1, 5)]
-    + ["dominica-i-passionis", "dominica-ii-passionis"]
-    + ["dominica-resurrectionis", "dominica-in-albis"]
+    + ["dominica-i-passionis", "dominica-ii-passionis", "feria-v-in-cena-domini"]
+    + ["vigilia-paschalis", "dominica-resurrectionis", "dominica-in-albis"]
     + [f"dominica-{ROMAN[i]}-post-pascha" for i in range(2, 6)]
     + ["ascensio-domini", "dominica-post-ascensionem", "dominica-pentecostes"]
     + [
@@ -232,8 +232,12 @@ def year(ending: int) -> list[Dies]:
         add(when, f"dominica-{ROMAN[i + 1]}-in-quadragesima", "quadragesima", 1)
     add(pascha - timedelta(days=14), "dominica-i-passionis", "passionis", 1)
     add(pascha - timedelta(days=7), "dominica-ii-passionis", "passionis", 1)
+    add(pascha - timedelta(days=3), "feria-v-in-cena-domini", "passionis", 1)
 
     # EASTERTIDE — n. 76.
+    # The Vigil's Mass belongs to the Paschal night and cannot be detached from
+    # its preceding ceremonies; the calendar entry names that complete route.
+    add(pascha - timedelta(days=1), "vigilia-paschalis", "paschale", 1)
     add(pascha, "dominica-resurrectionis", "paschale", 1)
     add(pascha + timedelta(days=7), "dominica-in-albis", "paschale", 1)
     for i in range(2, 6):

@@ -148,7 +148,18 @@ def test_every_season_runs_where_the_law_puts_it():
         pascha = easter(y)
         for d in days:
             if d.season == "paschale":
-                assert pascha <= d.when <= pascha + timedelta(days=56)
+                # The Mass of the Easter Vigil belongs to the Paschal night
+                # although its civil date is Holy Saturday.
+                assert pascha - timedelta(days=1) <= d.when <= pascha + timedelta(days=56)
+
+
+def test_the_three_mass_formularies_from_holy_thursday_to_easter_are_dated():
+    days = {d.when: d for d in year(2027)}
+    assert days[date(2027, 3, 25)].formulary == "feria-v-in-cena-domini"
+    assert days[date(2027, 3, 25)].season == "passionis"
+    assert days[date(2027, 3, 27)].formulary == "vigilia-paschalis"
+    assert days[date(2027, 3, 27)].season == "paschale"
+    assert days[date(2027, 3, 28)].formulary == "dominica-resurrectionis"
 
 
 def test_the_year_is_continuous_and_in_order():

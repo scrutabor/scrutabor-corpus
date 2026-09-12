@@ -1,0 +1,57 @@
+{
+  "formulary_schema": "1.0.0",
+  "id": "vigilia-paschalis",
+  "order": 28,
+  "collection": "temporale",
+  "season": "paschale",
+  "observance": "vigilia-paschalis",
+  "calendar": {
+    "key": "vigilia-paschalis",
+    "default": true
+  },
+  "title": "Missa Vigiliæ Paschalis",
+  "components": [
+    {
+      "key": "collecta",
+      "role": "collecta",
+      "text": "proprium.vigilia-paschalis-collecta",
+      "relation": "proper"
+    },
+    {
+      "key": "epistola",
+      "role": "epistola",
+      "text": "proprium.vigilia-paschalis-epistola",
+      "relation": "proper"
+    },
+    {
+      "key": "alleluia",
+      "role": "alleluia",
+      "text": "proprium.vigilia-paschalis-alleluia",
+      "relation": "proper"
+    },
+    {
+      "key": "evangelium",
+      "role": "evangelium",
+      "text": "proprium.vigilia-paschalis-evangelium",
+      "relation": "proper"
+    },
+    {
+      "key": "secreta",
+      "role": "secreta",
+      "text": "proprium.vigilia-paschalis-secreta",
+      "relation": "proper"
+    },
+    {
+      "key": "praefatio",
+      "role": "praefatio",
+      "text": "ordinarium.praefatio-paschalis-in-nocte",
+      "relation": "shared"
+    },
+    {
+      "key": "postcommunio",
+      "role": "postcommunio",
+      "text": "proprium.vigilia-paschalis-postcommunio",
+      "relation": "proper"
+    }
+  ]
+}
