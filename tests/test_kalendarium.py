@@ -212,6 +212,29 @@ def test_the_octave_day_of_the_nativity_is_the_first_of_january():
         assert day.dies_class == 1
 
 
+def test_the_holy_name_is_kept_on_its_sunday_or_on_the_second_of_january():
+    for y in YEARS:
+        day = next(d for d in year(y) if d.formulary == "sanctissimi-nominis-iesu")
+        assert day.when.month == 1
+        if any(date(y, 1, n).weekday() == 6 for n in range(2, 6)):
+            assert 2 <= day.when.day <= 5
+            assert day.when.weekday() == 6
+        else:
+            assert day.when == date(y, 1, 2)
+
+
+def test_the_baptism_is_kept_on_the_thirteenth_unless_holy_family_takes_sunday():
+    for y in YEARS:
+        days = {d.when: d for d in year(y)}
+        thirteenth = date(y, 1, 13)
+        if thirteenth.weekday() == 6:
+            assert days[thirteenth].formulary == "sancta-familia"
+            assert "commemoratio-baptismatis-domini" not in {d.formulary for d in days.values()}
+        else:
+            assert days[thirteenth].formulary == "commemoratio-baptismatis-domini"
+            assert days[thirteenth].dies_class == 2
+
+
 def test_both_vigils_of_the_first_class_are_carried():
     # n. 30 names two. Only one of them was here.
     for y in YEARS:

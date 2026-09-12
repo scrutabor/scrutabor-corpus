@@ -1,0 +1,81 @@
+{
+  "formulary_schema": "1.0.0",
+  "id": "sancta-familia",
+  "order": 12,
+  "collection": "temporale",
+  "season": "epiphania",
+  "observance": "sancta-familia",
+  "calendar": {
+    "key": "sancta-familia",
+    "default": true
+  },
+  "title": "Sanctæ Familiæ Iesu, Mariæ, Ioseph",
+  "components": [
+    {
+      "key": "introitus",
+      "role": "introitus",
+      "text": "proprium.sancta-familia-introitus",
+      "relation": "proper"
+    },
+    {
+      "key": "collecta",
+      "role": "collecta",
+      "text": "proprium.sancta-familia-collecta",
+      "relation": "proper"
+    },
+    {
+      "key": "epistola",
+      "role": "epistola",
+      "text": "proprium.dominica-v-post-epiphaniam-epistola",
+      "relation": "reference"
+    },
+    {
+      "key": "graduale",
+      "role": "graduale",
+      "text": "proprium.sancta-familia-graduale",
+      "relation": "proper"
+    },
+    {
+      "key": "alleluia",
+      "role": "alleluia",
+      "text": "proprium.sancta-familia-alleluia",
+      "relation": "proper"
+    },
+    {
+      "key": "evangelium",
+      "role": "evangelium",
+      "text": "proprium.sancta-familia-evangelium",
+      "relation": "proper"
+    },
+    {
+      "key": "offertorium",
+      "role": "offertorium",
+      "text": "proprium.sancta-familia-offertorium",
+      "relation": "proper"
+    },
+    {
+      "key": "secreta",
+      "role": "secreta",
+      "text": "proprium.sancta-familia-secreta",
+      "relation": "proper"
+    },
+    {
+      "key": "praefatio",
+      "role": "praefatio",
+      "text": "ordinarium.praefatio-epiphaniae",
+      "relation": "shared"
+    },
+    {
+      "key": "communio",
+      "role": "communio",
+      "text": "proprium.sancta-familia-communio",
+      "relation": "proper"
+    },
+    {
+      "key": "postcommunio",
+      "role": "postcommunio",
+      "text": "proprium.sancta-familia-postcommunio",
+      "relation": "proper"
+    }
+  ]
+}

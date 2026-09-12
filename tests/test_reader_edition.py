@@ -163,10 +163,10 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
         "rejected_exposed": 0,
     }
     assert written["evidence_coverage"] == {
-        "neutral": {"normalized": 606, "texts": 706},
+        "neutral": {"normalized": 680, "texts": 780},
         "languages": {
-            "en": {"normalized": 108, "effective": 692, "texts": 706},
-            "pl": {"normalized": 72, "effective": 657, "texts": 706},
+            "en": {"normalized": 108, "effective": 766, "texts": 780},
+            "pl": {"normalized": 72, "effective": 731, "texts": 780},
         },
     }
 
@@ -371,7 +371,7 @@ def test_language_index_finds_a_piously_capitalized_prayer_title_phrase():
 def test_the_index_compresses_to_something_a_phone_can_hold(tmp_path):
     out = build(tmp_path)
     packed = len(gzip.compress((out / "concordance.json").read_bytes(), 9))
-    assert packed < 400_000, "the index is what search and lemma pages both read"
+    assert packed < 450_000, "the index is what search and lemma pages both read"
 
 
 def test_language_indexes_are_small_and_independently_packaged(tmp_path):
@@ -379,7 +379,7 @@ def test_language_indexes_are_small_and_independently_packaged(tmp_path):
     for language in ("pl", "en"):
         path = out / f"languages/{language}/concordance.json"
         packed = len(gzip.compress(path.read_bytes(), 9))
-        assert packed < 200_000, f"{language} search index is too large ({packed})"
+        assert packed < 230_000, f"{language} search index is too large ({packed})"
         manifest = json.loads(
             (out / f"languages/{language}/manifest.json").read_text(encoding="utf-8")
         )
@@ -391,7 +391,7 @@ def test_formulary_assemblies_are_explicit_localized_and_calendar_addressable(tm
     manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
     catalog = json.loads((out / manifest["base"]["formularies"]).read_text(encoding="utf-8"))
     by_id = {formulary["id"]: formulary for formulary in catalog["formularies"]}
-    assert len(by_id) == 65
+    assert len(by_id) == 74
 
     corpus_christi = by_id["corporis-christi"]
     assert corpus_christi["calendar"] == {"key": "corpus-christi", "default": True}
@@ -448,13 +448,13 @@ def test_metrics_are_the_single_derived_denominator(tmp_path):
     metrics = json.loads((out / manifest["base"]["metrics"]).read_text(encoding="utf-8"))
     assert metrics == {
         "schema_version": "1.0.0",
-        "texts": {"total": 706, "proprium": 611, "words": 37931, "verse_segments": 1662},
-        "languages": {"en": {"texts": 706}, "pl": {"texts": 706}},
+        "texts": {"total": 780, "proprium": 684, "words": 41775, "verse_segments": 1740},
+        "languages": {"en": {"texts": 780}, "pl": {"texts": 780}},
         "formularies": {
-            "total": 65,
-            "observances": 61,
-            "component_uses": 726,
-            "unique_component_texts": 624,
+            "total": 74,
+            "observances": 70,
+            "component_uses": 825,
+            "unique_component_texts": 698,
         },
     }
 

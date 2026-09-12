@@ -67,7 +67,12 @@ FORMULARIES = frozenset(
     [f"dominica-{ROMAN[i]}-adventus" for i in range(1, 5)]
     + ["vigilia-nativitatis", "nativitas-domini", "dominica-infra-octavam-nativitatis"]
     + ["in-octava-nativitatis", "immaculata-conceptio", "vigilia-pentecostes"]
-    + ["sanctissimi-nominis-iesu", "epiphania-domini", "sancta-familia"]
+    + [
+        "sanctissimi-nominis-iesu",
+        "epiphania-domini",
+        "sancta-familia",
+        "commemoratio-baptismatis-domini",
+    ]
     + [f"dominica-{ROMAN[i]}-post-epiphaniam" for i in range(1, 7)]
     + [f"dominica-in-{n}" for n in ("septuagesima", "sexagesima", "quinquagesima")]
     + [f"dominica-{ROMAN[i]}-in-quadragesima" for i in range(1, 5)]
@@ -189,10 +194,14 @@ def year(ending: int) -> list[Dies]:
     # Mass under "Die 1 ianuarii — IN OCTAVA NATIVITATIS DOMINI — I classis".
     add(date(ending, 1, 1), "in-octava-nativitatis", "nativitas", 1)
     # n. 17 a: the Most Holy Name of Jesus, on the Sunday falling between 2 and
-    # 5 January. On a year with no such Sunday it is kept on 2 January, which
-    # is a weekday and so outside what this list carries.
-    for when in _sundays(date(ending, 1, 2), date(ending, 1, 6)):
-        add(when, "sanctissimi-nominis-iesu", "nativitas", 2)
+    # 5 January; when there is no such Sunday, it is kept on 2 January.
+    holy_name_sundays = _sundays(date(ending, 1, 2), date(ending, 1, 6))
+    add(
+        holy_name_sundays[0] if holy_name_sundays else date(ending, 1, 2),
+        "sanctissimi-nominis-iesu",
+        "nativitas",
+        2,
+    )
     epiphany = date(ending, 1, 6)
     add(epiphany, "epiphania-domini", "epiphania", 1)
 
@@ -207,6 +216,12 @@ def year(ending: int) -> list[Dies]:
             add(when, "sancta-familia", season, 2, "dominica-i-post-epiphaniam")
         else:
             add(when, f"dominica-{ROMAN[index + 1]}-post-epiphaniam", season, 2)
+    # The Commemoration of the Baptism is kept on 13 January. If the Holy
+    # Family occurs that Sunday, its feast takes precedence and the Baptism is
+    # neither anticipated nor resumed.
+    baptism = date(ending, 1, 13)
+    if baptism != after_epiphany[0]:
+        add(baptism, "commemoratio-baptismatis-domini", "epiphania", 2)
     used_after_epiphany = len(after_epiphany)
 
     # SEPTUAGESIMA — n. 73 — and LENT — n. 74.

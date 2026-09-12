@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-iii-post-epiphaniam-alleluia",
+  "title": "Allelúia, allelúia. Dóminus regnávit, exsúltet terra: læténtur",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-iii-post-epiphaniam",
+  "sung": true,
+  "ids": {
+    "next": 11,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w004", "form": "regnávit", "lemma": "regno", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": "," },
+        { "id": "w005", "form": "exsúltet", "lemma": "exsulto", "morph": { "conj": 1, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w006", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "post": ":" },
+        { "id": "w007", "form": "læténtur", "lemma": "laeto", "morph": { "conj": 1, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" } },
+        { "id": "w008", "form": "ínsulæ", "lemma": "insula", "morph": { "case": "dat", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w009", "form": "multæ", "lemma": "multus", "morph": { "case": "gen", "gender": "f", "number": "sg", "pos": "adj" }, "post": ".", "substantive": true },
+        { "id": "w010", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-iii-post-epiphaniam-alleluia/",
+      "apparatus": "witnesses/proprium.dominica-iii-post-epiphaniam-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+  },
+  "localization": {
+    "about": true
+  }
+}

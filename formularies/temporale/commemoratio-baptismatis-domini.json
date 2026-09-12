@@ -1,0 +1,81 @@
+{
+  "formulary_schema": "1.0.0",
+  "id": "commemoratio-baptismatis-domini",
+  "order": 14,
+  "collection": "temporale",
+  "season": "epiphania",
+  "observance": "commemoratio-baptismatis-domini",
+  "calendar": {
+    "key": "commemoratio-baptismatis-domini",
+    "default": true
+  },
+  "title": "In Commemoratione Baptismatis Domini nostri Iesu Christi",
+  "components": [
+    {
+      "key": "introitus",
+      "role": "introitus",
+      "text": "proprium.epiphania-domini-introitus",
+      "relation": "reference"
+    },
+    {
+      "key": "collecta",
+      "role": "collecta",
+      "text": "proprium.commemoratio-baptismatis-domini-collecta",
+      "relation": "proper"
+    },
+    {
+      "key": "epistola",
+      "role": "epistola",
+      "text": "proprium.epiphania-domini-epistola",
+      "relation": "reference"
+    },
+    {
+      "key": "graduale",
+      "role": "graduale",
+      "text": "proprium.epiphania-domini-graduale",
+      "relation": "reference"
+    },
+    {
+      "key": "alleluia",
+      "role": "alleluia",
+      "text": "proprium.epiphania-domini-alleluia",
+      "relation": "reference"
+    },
+    {
+      "key": "evangelium",
+      "role": "evangelium",
+      "text": "proprium.commemoratio-baptismatis-domini-evangelium",
+      "relation": "proper"
+    },
+    {
+      "key": "offertorium",
+      "role": "offertorium",
+      "text": "proprium.epiphania-domini-offertorium",
+      "relation": "reference"
+    },
+    {
+      "key": "secreta",
+      "role": "secreta",
+      "text": "proprium.commemoratio-baptismatis-domini-secreta",
+      "relation": "proper"
+    },
+    {
+      "key": "praefatio",
+      "role": "praefatio",
+      "text": "ordinarium.praefatio-epiphaniae",
+      "relation": "shared"
+    },
+    {
+      "key": "communio",
+      "role": "communio",
+      "text": "proprium.epiphania-domini-communio",
+      "relation": "reference"
+    },
+    {
+      "key": "postcommunio",
+      "role": "postcommunio",
+      "text": "proprium.commemoratio-baptismatis-domini-postcommunio",
+      "relation": "proper"
+    }
+  ]
+}
