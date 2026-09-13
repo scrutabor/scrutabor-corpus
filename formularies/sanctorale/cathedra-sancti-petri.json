@@ -1,0 +1,87 @@
+{
+  "formulary_schema": "1.0.0",
+  "id": "cathedra-sancti-petri",
+  "order": 102,
+  "collection": "sanctorale",
+  "season": "per-annum",
+  "observance": "cathedra-sancti-petri",
+  "calendar": {
+    "key": "cathedra-sancti-petri",
+    "default": true
+  },
+  "title": "In Cathedra Sancti Petri Apostoli",
+  "components": [
+    {
+      "key": "introitus",
+      "role": "introitus",
+      "text": "proprium.cathedra-sancti-petri-introitus",
+      "relation": "proper"
+    },
+    {
+      "key": "collecta",
+      "role": "collecta",
+      "text": "proprium.cathedra-sancti-petri-collecta",
+      "relation": "proper"
+    },
+    {
+      "key": "epistola",
+      "role": "epistola",
+      "text": "proprium.cathedra-sancti-petri-epistola",
+      "relation": "proper"
+    },
+    {
+      "key": "graduale",
+      "role": "graduale",
+      "text": "proprium.cathedra-sancti-petri-graduale",
+      "relation": "proper"
+    },
+    {
+      "key": "alleluia",
+      "role": "alleluia",
+      "text": "proprium.sancti-petri-et-pauli-apostolorum-alleluia",
+      "relation": "reference"
+    },
+    {
+      "key": "tractus",
+      "role": "tractus",
+      "text": "proprium.cathedra-sancti-petri-tractus",
+      "relation": "proper"
+    },
+    {
+      "key": "evangelium",
+      "role": "evangelium",
+      "text": "proprium.sancti-petri-et-pauli-apostolorum-evangelium",
+      "relation": "reference"
+    },
+    {
+      "key": "offertorium",
+      "role": "offertorium",
+      "text": "proprium.cathedra-sancti-petri-offertorium",
+      "relation": "proper"
+    },
+    {
+      "key": "secreta",
+      "role": "secreta",
+      "text": "proprium.cathedra-sancti-petri-secreta",
+      "relation": "proper"
+    },
+    {
+      "key": "praefatio",
+      "role": "praefatio",
+      "text": "ordinarium.praefatio-apostolorum",
+      "relation": "shared"
+    },
+    {
+      "key": "communio",
+      "role": "communio",
+      "text": "proprium.sancti-petri-et-pauli-apostolorum-communio",
+      "relation": "reference"
+    },
+    {
+      "key": "postcommunio",
+      "role": "postcommunio",
+      "text": "proprium.cathedra-sancti-petri-postcommunio",
+      "relation": "proper"
+    }
+  ]
+}

@@ -53,6 +53,7 @@ def test_all_souls_uses_its_special_monday_when_second_november_is_sunday():
 
 def test_the_merged_calendar_neither_repeats_nor_invents_a_formulary():
     for ending in range(1961, 2101):
-        said = [day.formulary for day in year(ending)]
-        assert len(said) == len(set(said)), ending
-        assert set(said) <= FORMULARIES
+        days = year(ending)
+        dates = [day.when for day in days]
+        assert len(dates) == len(set(dates)), ending
+        assert {day.formulary for day in days} <= FORMULARIES

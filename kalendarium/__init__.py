@@ -14,12 +14,12 @@ n. 17 for the four feasts that may fall on a Sunday and take its place, nn.
 67-69 for the octave of the Nativity and the Sunday inside it, nn. 71-77 for
 the bounds of every season.
 
-THE SANCTORAL IS DELIBERATELY BOUNDED. It carries the universal first- and
-second-class observances from 31 May through 9 November whose formularies are
-in the current Sundays-and-major-feasts scope. It does not pretend to be the
-complete General Roman Calendar. The Immaculate Conception remains in the
-temporal computation because n. 15 states its exceptional precedence over an
-Advent Sunday there.
+THE SANCTORAL IS DELIBERATELY BOUNDED. It carries every universal first- and
+second-class fixed observance whose formulary belongs to the present
+Sundays-and-major-feasts scope. It does not pretend to include third-class,
+local or particular calendars. The Immaculate Conception remains visible in
+the temporal computation too because n. 15 states its exceptional precedence
+over an Advent Sunday there.
 
 WHAT IT DOES NOT KNOW, said plainly because a calendar that quietly guesses is
 worse than one that stops:
@@ -30,14 +30,6 @@ worse than one that stops:
   the Missale prints a Mass for every day of the week, and in Advent it prints
   none between one Sunday and the next. Naming the week is true of both;
   naming a formulary would need the first and would be wrong about the second.
-- THE SUNDAY WITHIN THE OCTAVE WHEN CHRISTMAS IS A SUNDAY. n. 69 governs the
-  Sunday that occurs between 26 and 31 December, and in ten years of this
-  window none does. The Mass is then said on 30 December, by a rule n. 70
-  sends to "rubricis Breviarii et Missalis" — the Missale's own rubrics for
-  the octave, which this edition has not transcribed. Ten years are therefore
-  short one day: 2033, 2039, 2044, 2050, 2061, 2067, 2072, 2078, 2089, 2095.
-- 13 JANUARY, the Commemoration of the Baptism of the Lord, which closes the
-  season n. 72 b bounds and which no article transcribed here assigns.
 
 ONE CONCLUSION IS DERIVED RATHER THAN PRINTED, and is flagged here because a
 reviewer should be able to challenge it. n. 18 puts a leftover Sunday after

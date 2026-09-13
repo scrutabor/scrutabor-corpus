@@ -254,23 +254,17 @@ def test_both_vigils_of_the_first_class_are_carried():
         assert "vigilia-pentecostes" in said
 
 
-def test_the_declared_gap_is_still_a_gap():
-    # When Christmas falls on a Sunday no Sunday occurs between 26 and 31
-    # December, and the Mass of the Sunday within the octave is said on the
-    # 30th by a rule n. 70 sends to the Missale's own rubrics — which this
-    # edition has not transcribed. The gap is named in the module docstring;
-    # this holds the two together, so that closing one without the other
-    # fails rather than drifts.
-    short = [
-        y
-        for y in YEARS
-        if date(y - 1, 12, 25).weekday() == 6
-        and not any(d.formulary == "dominica-infra-octavam-nativitatis" for d in year(y))
-    ]
-    assert short, "the gap closed — say so in kalendarium/__init__.py and delete this"
-    from kalendarium import __doc__ as charter
-
-    assert charter and "30 December" in charter, "the gap must stay declared while it stands"
+def test_the_sunday_within_the_octave_is_reposed_on_the_thirtieth_when_needed():
+    met = 0
+    for y in YEARS:
+        christmas = date(y - 1, 12, 25)
+        if christmas.weekday() != 6:
+            continue
+        met += 1
+        day = {d.when: d for d in year(y)}[date(y - 1, 12, 30)]
+        assert day.formulary == "dominica-infra-octavam-nativitatis"
+        assert day.dies_class == 2
+    assert met > 10
 
 
 def test_a_shipped_table_that_drifts_from_the_book_is_caught(monkeypatch):

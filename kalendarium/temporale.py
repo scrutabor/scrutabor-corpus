@@ -190,6 +190,15 @@ def year(ending: int) -> list[Dies]:
     # entry at all.
     for when in _sundays(date(ending - 1, 12, 26), date(ending, 1, 1)):
         add(when, "dominica-infra-octavam-nativitatis", "nativitas", 2)
+    if christmas.weekday() == 6:
+        # The Missal's proper octave rubric reposes this Mass on 30 December
+        # when Christmas itself is Sunday and no Sunday can occur on 26–31.
+        add(
+            date(ending - 1, 12, 30),
+            "dominica-infra-octavam-nativitatis",
+            "nativitas",
+            2,
+        )
     # n. 67: "dies autem octavus est I classis". The Missale gives it its own
     # Mass under "Die 1 ianuarii — IN OCTAVA NATIVITATIS DOMINI — I classis".
     add(date(ending, 1, 1), "in-octava-nativitatis", "nativitas", 1)

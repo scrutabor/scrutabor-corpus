@@ -1,9 +1,9 @@
-"""Universal first- and second-class feasts in the current v1 scope.
+"""Universal first- and second-class fixed feasts in the current v1 scope.
 
-This is deliberately not a general catalogue of saints.  It is the closed
+This is deliberately not a general catalogue of saints. It is the closed
 list of universal Roman observances whose formularies this edition carries
-between Trinity Sunday and the Saturday before Advent.  Their relative place
-against the temporal cycle comes from the table at General Rubrics n. 91.
+throughout the liturgical year. Their relative place against the temporal
+cycle comes from the table at General Rubrics n. 91.
 """
 
 from __future__ import annotations
@@ -26,9 +26,24 @@ class Festum:
 
 
 # The numbers are the numbered places in n. 91, not invented weights:
-# 4 Assumption; 8 All Souls; 11 other universal I-class feasts;
+# 4 Immaculate Conception and Assumption; 8 All Souls;
+# 11 other universal I-class feasts;
 # 14 feasts of the Lord II class; 16 other universal II-class feasts.
 FESTA = (
+    Festum(11, 30, "sancti-andreae-apostoli", 2, 16),
+    Festum(12, 8, "immaculata-conceptio", 1, 4, True),
+    Festum(12, 21, "sancti-thomae-apostoli", 2, 16),
+    Festum(12, 26, "sancti-stephani-protomartyris", 2, 16),
+    Festum(12, 27, "sancti-ioannis-apostoli-et-evangelistae", 2, 16),
+    Festum(12, 28, "sanctorum-innocentium-martyrum", 2, 16),
+    Festum(2, 2, "purificatio-beatae-mariae-virginis", 2, 14),
+    Festum(2, 22, "cathedra-sancti-petri", 2, 16),
+    Festum(2, 24, "sancti-matthiae-apostoli", 2, 16),
+    Festum(3, 19, "sancti-ioseph-sponsi-beatae-mariae-virginis", 1, 11, True),
+    Festum(3, 25, "annuntiatio-beatae-mariae-virginis", 1, 11, True),
+    Festum(4, 25, "sancti-marci-evangelistae", 2, 16),
+    Festum(5, 1, "sancti-ioseph-opificis", 1, 11, True),
+    Festum(5, 11, "sanctorum-philippi-et-iacobi-apostolorum", 2, 16),
     Festum(5, 31, "beata-maria-virgo-regina", 2, 16),
     Festum(6, 24, "nativitas-sancti-ioannis-baptistae", 1, 11, True),
     Festum(6, 29, "sancti-petri-et-pauli-apostolorum", 1, 11, True),
@@ -66,14 +81,25 @@ FESTA = (
 FORMULARIES = frozenset(feast.formulary for feast in FESTA)
 
 
+def _advent_start(civil_year: int) -> date:
+    """The Sunday from 27 November through 3 December."""
+
+    latest = date(civil_year, 12, 3)
+    return latest - timedelta(days=(latest.weekday() + 1) % 7)
+
+
 def occurrences(ending: int) -> list[tuple[date, Festum]]:
-    """The fixed observances falling in the civil year that ends the cycle."""
+    """The fixed observances falling inside one complete liturgical year."""
 
     out: list[tuple[date, Festum]] = []
-    for feast in FESTA:
-        when = date(ending, feast.month, feast.day)
-        if feast.monday_after_sunday and when.weekday() == 6:
-            # n. 96 b calls the following Monday its proper transferred seat.
-            when += timedelta(days=1)
-        out.append((when, feast))
-    return out
+    start = _advent_start(ending - 1)
+    end = _advent_start(ending) - timedelta(days=1)
+    for civil_year in (ending - 1, ending):
+        for feast in FESTA:
+            when = date(civil_year, feast.month, feast.day)
+            if feast.monday_after_sunday and when.weekday() == 6:
+                # n. 96 b calls the following Monday its proper transferred seat.
+                when += timedelta(days=1)
+            if start <= when <= end:
+                out.append((when, feast))
+    return sorted(out, key=lambda row: row[0])
