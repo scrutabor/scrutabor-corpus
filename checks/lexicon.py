@@ -463,6 +463,7 @@ IRREGULAR_VERBS = {
     "offero",
     "perfero",  # compounds of fero
     "introeo",
+    "inquit",  # defective reporting verb; only fixed forms survive
     "praetereo",
     "transeo",  # compounds of eo
     "eleison",  # Greek imperative

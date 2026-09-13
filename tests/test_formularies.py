@@ -13,13 +13,13 @@ def test_every_formulary_component_and_language_title_is_accounted_for():
     errors, counts = check(CORPUS)
     assert errors == []
     assert counts == {
-        "formularies": 91,
-        "observances": 87,
-        "components": 1003,
-        "proper_texts": 829,
-        "proper_uses": 917,
-        "shared_uses": 86,
-        "reference_uses": 88,
+        "formularies": 95,
+        "observances": 91,
+        "components": 1045,
+        "proper_texts": 864,
+        "proper_uses": 955,
+        "shared_uses": 90,
+        "reference_uses": 91,
     }
 
 
