@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.18.0",
+  "id": "proprium.dominica-iv-post-pascha-alleluia",
+  "title": "Allelúia, allelúia. Déxtera Dómini fecit virtútem: déxtera",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "dominica-iv-post-pascha",
+  "sung": true,
+  "ids": {
+    "next": 25,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w003", "form": "Déxtera", "lemma": "dexter", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w004", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w005", "form": "fecit", "lemma": "facio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w006", "form": "virtútem", "lemma": "virtus", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w007", "form": "déxtera", "lemma": "dextera", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w008", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w009", "form": "exaltávit", "lemma": "exalto", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w010", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "." },
+        { "id": "w011", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
+        { "id": "w012", "form": "Christus", "lemma": "Christus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w013", "form": "resúrgens", "lemma": "resurgo", "morph": { "case": "acc", "conj": 3, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
+        { "id": "w014", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w019" },
+        { "id": "w015", "form": "mórtuis", "lemma": "mortuus", "morph": { "case": "abl", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
+        { "id": "w016", "form": "iam", "lemma": "iam", "morph": { "pos": "adv" } },
+        { "id": "w017", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w018", "form": "móritur", "lemma": "morior", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "dep" }, "post": ":" },
+        { "id": "w019", "form": "mors", "lemma": "mors", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w020", "form": "illi", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" } },
+        { "id": "w021", "form": "ultra", "lemma": "ultra", "morph": { "pos": "adv" } },
+        { "id": "w022", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w023", "form": "dominábitur", "lemma": "domino", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" }, "post": "." },
+        { "id": "w024", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.dominica-iv-post-pascha-alleluia/",
+      "apparatus": "witnesses/proprium.dominica-iv-post-pascha-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w019": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+    }
+  },
+  "localization": {
+    "about": true
+  }
+}

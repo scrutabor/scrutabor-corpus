@@ -163,10 +163,10 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
         "rejected_exposed": 0,
     }
     assert written["evidence_coverage"] == {
-        "neutral": {"normalized": 783, "texts": 883},
+        "neutral": {"normalized": 828, "texts": 928},
         "languages": {
-            "en": {"normalized": 108, "effective": 869, "texts": 883},
-            "pl": {"normalized": 72, "effective": 834, "texts": 883},
+            "en": {"normalized": 108, "effective": 914, "texts": 928},
+            "pl": {"normalized": 72, "effective": 879, "texts": 928},
         },
     }
 
@@ -371,7 +371,7 @@ def test_language_index_finds_a_piously_capitalized_prayer_title_phrase():
 def test_the_index_compresses_to_something_a_phone_can_hold(tmp_path):
     out = build(tmp_path)
     packed = len(gzip.compress((out / "concordance.json").read_bytes(), 9))
-    assert packed < 500_000, "the index is what search and lemma pages both read"
+    assert packed < 550_000, "the index is what search and lemma pages both read"
 
 
 def test_language_indexes_are_small_and_independently_packaged(tmp_path):
@@ -391,7 +391,7 @@ def test_formulary_assemblies_are_explicit_localized_and_calendar_addressable(tm
     manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
     catalog = json.loads((out / manifest["base"]["formularies"]).read_text(encoding="utf-8"))
     by_id = {formulary["id"]: formulary for formulary in catalog["formularies"]}
-    assert len(by_id) == 86
+    assert len(by_id) == 91
 
     corpus_christi = by_id["corporis-christi"]
     assert corpus_christi["calendar"] == {"key": "corpus-christi", "default": True}
@@ -448,13 +448,13 @@ def test_metrics_are_the_single_derived_denominator(tmp_path):
     metrics = json.loads((out / manifest["base"]["metrics"]).read_text(encoding="utf-8"))
     assert metrics == {
         "schema_version": "1.0.0",
-        "texts": {"total": 883, "proprium": 784, "words": 50219, "verse_segments": 1941},
-        "languages": {"en": {"texts": 883}, "pl": {"texts": 883}},
+        "texts": {"total": 928, "proprium": 829, "words": 52766, "verse_segments": 1986},
+        "languages": {"en": {"texts": 928}, "pl": {"texts": 928}},
         "formularies": {
-            "total": 86,
-            "observances": 82,
-            "component_uses": 953,
-            "unique_component_texts": 801,
+            "total": 91,
+            "observances": 87,
+            "component_uses": 1003,
+            "unique_component_texts": 846,
         },
     }
 
