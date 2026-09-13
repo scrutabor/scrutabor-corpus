@@ -453,7 +453,7 @@ def test_metrics_are_the_single_derived_denominator(tmp_path):
         "formularies": {
             "total": 95,
             "observances": 91,
-            "component_uses": 1045,
+            "component_uses": 1046,
             "unique_component_texts": 883,
         },
     }
