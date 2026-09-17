@@ -24,7 +24,6 @@ from checks.document import check as check_document
 from checks.english import check as check_english
 from checks.explanation_floor import check as check_explanation_floor
 from checks.formularies import check as check_formularies
-from checks.fusion import check as check_fusion
 from checks.identity import check as check_identity
 from checks.identity import check_against_history, check_registry_history, resolve_ref
 from checks.incipit import check as check_incipit
@@ -255,8 +254,6 @@ def main(text_id: str) -> int:
         # second person capitalised as the verse capitalises it.
         all_errors += check_polish(doc, gdoc)
         all_errors += check_notes(doc, gdoc)
-        # A gloss that renders nothing must say why it renders nothing.
-        all_errors += check_fusion(doc, gdoc)
         # Address register is reviewed contextually. A single Gospel segment
         # may contain several speakers and addressees, so segment-wide string
         # comparison is an editorial diagnostic rather than a correctness

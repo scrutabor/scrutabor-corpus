@@ -29,7 +29,8 @@ from build_reader import bibliography, store
 # 5.2.0 adds manifest-declared, localized Mass-formulary assemblies. Their
 # component list is authored by the corpus rather than rediscovered by apps.
 # 5.3.0 adds one derived metrics resource so consumers share denominators.
-SCHEMA = "5.3.0"
+# 5.4.0 carries language-specific many-to-one and zero interlinear alignments.
+SCHEMA = "5.4.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -385,7 +386,20 @@ def language_artifact(
         words = segment.get("words") or []
         if words:
             entries = layer.get("words") or {}
-            row["g"] = [(entries.get(word["id"]) or {}).get("gloss", "") for word in words]
+            row["g"] = [(entries.get(word["id"]) or {}).get("gloss") for word in words]
+            positions = {word["id"]: index for index, word in enumerate(words)}
+            compact_alignments = []
+            for alignment in localized.get("alignments") or []:
+                ids = alignment["words"]
+                compact: dict = {"s": positions[ids[0]], "n": len(ids)}
+                if "gloss" in alignment:
+                    compact["a"] = positions[alignment["anchor"]] - compact["s"]
+                    compact["g"] = alignment["gloss"]
+                else:
+                    compact["r"] = alignment["reason"]
+                compact_alignments.append(compact)
+            if compact_alignments:
+                row["a"] = compact_alignments
             for field, short in (("explanation", "ex"), ("note", "nt")):
                 prose = {
                     word["id"]: (entries.get(word["id"]) or {}).get(field)
@@ -462,6 +476,18 @@ def expand(
             bucket["translation_citations"] = [language_citations[i] for i in cited]
         if "nr" in localized:
             bucket["narrative"] = localized["nr"]
+        if compact_alignments := localized.get("a"):
+            bucket["alignments"] = []
+            cells = row.get("w") or []
+            for compact in compact_alignments:
+                ids = [cell["i"] for cell in cells[compact["s"] : compact["s"] + compact["n"]]]
+                alignment: dict = {"words": ids}
+                if "g" in compact:
+                    alignment["anchor"] = ids[compact["a"]]
+                    alignment["gloss"] = compact["g"]
+                else:
+                    alignment["reason"] = compact["r"]
+                bucket["alignments"].append(alignment)
         if cited := row.get("nc"):
             bucket["narrative_citations"] = [shared_citations[i] for i in cited]
         if bucket:
@@ -480,7 +506,9 @@ def expand(
                 if "a" in cell:
                     word["analysis"] = analyses[cell["a"]]
                 words.append(word)
-                entry: dict = {"gloss": localized["g"][position]}
+                entry: dict = {}
+                if localized["g"][position] is not None:
+                    entry["gloss"] = localized["g"][position]
                 for field, short in (("explanation", "ex"), ("note", "nt")):
                     value = (localized.get(short) or {}).get(cell["i"])
                     if value:

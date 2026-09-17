@@ -27,16 +27,17 @@ def test_duplicated_english_plural_suffix_is_rejected():
     assert check(DOC, layer("en", "ages")) == []
 
 
-def test_structural_absorption_marker_is_allowed():
-    assert check(DOC, layer("en", "[included]")) == []
-    assert check(DOC, layer("pl", "[dopełnienie]")) == []
+def test_structural_absorption_marker_is_rejected():
+    assert check(DOC, layer("en", "[included]"))
+    assert check(DOC, layer("pl", "[dopełnienie]"))
+    assert check(DOC, layer("pl", "—"))
 
 
-def test_polish_auxiliary_marker_is_canonical():
+def test_no_polish_auxiliary_marker_is_reader_wording():
     assert check(DOC, layer("pl", "[czas posiłkowy]"))
     assert check(DOC, layer("pl", "[pomocnicze]"))
     assert check(DOC, layer("pl", "[auxiliary]"))
-    assert check(DOC, layer("pl", "[czasownik posiłkowy]")) == []
+    assert check(DOC, layer("pl", "[czasownik posiłkowy]"))
 
 
 def future_periphrastic_doc():
@@ -78,5 +79,5 @@ def test_future_periphrastic_cannot_duplicate_its_auxiliary():
     doc = future_periphrastic_doc()
     assert check(doc, future_layer("pl", "jest", "będzie"))
     assert check(doc, future_layer("en", "is", "shall be"))
-    assert check(doc, future_layer("pl", "[czasownik posiłkowy]", "będzie")) == []
-    assert check(doc, future_layer("en", "[auxiliary]", "shall be")) == []
+    assert check(doc, future_layer("pl", "[czasownik posiłkowy]", "będzie"))
+    assert check(doc, future_layer("en", "[auxiliary]", "shall be"))

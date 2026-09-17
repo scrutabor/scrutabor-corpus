@@ -4,12 +4,9 @@ from __future__ import annotations
 
 import re
 
+from checks.interlinear import TECHNICAL_GLOSS
+
 CORRUPT_EXACT = {"Ń", "NIEROZSTRZYGNIĘTE", "UNRESOLVED"}
-NONCANONICAL_POLISH_AUXILIARY_MARKERS = {
-    "[auxiliary]",
-    "[czas posiłkowy]",
-    "[pomocnicze]",
-}
 ENGLISH_CHOICE_LIST = re.compile(r"[,;/]")
 CORRUPT_ENGLISH_PLURAL = re.compile(r"\b(?:ageses|taxeses)\b", re.IGNORECASE)
 DUPLICATED_FUTURE_AUXILIARY = {
@@ -38,10 +35,10 @@ def check(doc: dict, gloss: dict) -> list[str]:
             errors.append(
                 f"{doc['id']}:{word_id}: {language} gloss {stripped!r} is a corruption marker"
             )
-        if language == "pl" and stripped in NONCANONICAL_POLISH_AUXILIARY_MARKERS:
+        if TECHNICAL_GLOSS.fullmatch(stripped):
             errors.append(
-                f"{doc['id']}:{word_id}: Polish auxiliary marker {stripped!r} is not "
-                "canonical; use '[czasownik posiłkowy]'"
+                f"{doc['id']}:{word_id}: {language} gloss {stripped!r} is an editorial marker; "
+                "use an explicit alignment"
             )
         if language != "en":
             continue

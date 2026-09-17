@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.18.0",
+  "schema_version": "0.19.0",
   "id": "proprium.sancti-matthaei-apostoli-et-evangelistae-communio",
   "title": "Magna est glória eius in salutári tuo",
   "category": "proprium",
@@ -8,6 +8,9 @@
   "sung": true,
   "ids": {
     "next": 17,
+    "retired": {
+      "w012": "s01"
+    },
     "segments": {
       "next": 2
     }
@@ -28,9 +31,8 @@
         { "id": "w007", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "post": ":", "substantive": true },
         { "id": "w008", "form": "glóriam", "lemma": "gloria", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w010", "form": "magnum", "lemma": "magnus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "substantive": true },
-        { "id": "w011", "form": "deI", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w012", "form": "corem", "lemma": "coris", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w010", "form": "magnum", "lemma": "magnus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w011" },
+        { "id": "w011", "form": "decórem", "lemma": "decor", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "sg", "decl": 3 } },
         { "id": "w013", "form": "ímpones", "lemma": "impono", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "fut", "voice": "act", "conj": 3 } },
         { "id": "w014", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015" },
         { "id": "w015", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" }, "post": "," },

@@ -7,6 +7,8 @@ import unicodedata
 from pathlib import Path
 from urllib.parse import urlparse
 
+from checks.interlinear import effective_gloss
+
 from .normalize import (
     ACCENTED_VOWELS,
     accented_syllable,
@@ -903,14 +905,14 @@ def lint_gloss(doc, text_doc):
     for seg in text_doc["segments"]:
         ws = seg.get("words") or []
         for i, w in enumerate(ws):
-            g = (gw.get(w["id"], {}).get("gloss") or "").strip()
+            g = effective_gloss(doc, w["id"]).strip()
             parts = [p.lower().rstrip(".,") for p in g.split()[:2]]
             if not parts:
                 continue
             for j in (i - 1, i + 1):
                 if j < 0 or j >= len(ws):
                     continue
-                ng = (gw.get(ws[j]["id"], {}).get("gloss") or "").strip()
+                ng = effective_gloss(doc, ws[j]["id"]).strip()
                 if " " in ng or not ng:
                     continue
                 key = ng.lower().rstrip(".,")
@@ -1013,8 +1015,6 @@ def lint_gloss(doc, text_doc):
         errors += lint_citations(doc["about_citations"], f"{lang}:about")
 
     for wid, entry in gw.items():
-        if not entry.get("gloss"):
-            errors.append(f"{lang}:{wid}: missing gloss")
         # explanation is OPTIONAL — omit the
         # key entirely; an empty string is an authoring error, not an omission.
         if "explanation" in entry and not entry["explanation"]:

@@ -6,6 +6,7 @@ import re
 from pathlib import Path
 
 from build_reader import store
+from checks.interlinear import check as check_interlinear_alignment
 from checks.lint import lint_citations
 
 LANGUAGE_RE = re.compile(r"^[a-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$")
@@ -194,9 +195,13 @@ def check_layer(core: dict, layer: dict, path: Path) -> list[str]:
         segment_id = segment["id"]
         entry = segments.get(segment_id) or {}
         if segment["type"] == "verse":
-            allowed, required = {"translation", "translation_citations"}, "translation"
+            allowed, required = {
+                "translation",
+                "translation_citations",
+                "alignments",
+            }, "translation"
         else:
-            allowed, required = {"narrative"}, "narrative"
+            allowed, required = {"narrative", "alignments"}, "narrative"
         unknown = set(entry) - allowed
         if unknown:
             errors.append(f"{where}:{segment_id}: unknown keys {sorted(unknown)}")
@@ -218,8 +223,10 @@ def check_layer(core: dict, layer: dict, path: Path) -> list[str]:
         unknown = set(entry) - {"gloss", "explanation", "note"}
         if unknown:
             errors.append(f"{where}:{word_id}: unknown keys {sorted(unknown)}")
-        if not isinstance(entry.get("gloss"), str) or not entry["gloss"].strip():
-            errors.append(f"{where}:{word_id}: gloss is required and must be nonempty")
+        if "gloss" in entry and (
+            not isinstance(entry.get("gloss"), str) or not entry["gloss"].strip()
+        ):
+            errors.append(f"{where}:{word_id}: gloss must be a nonempty string when present")
         if "explanation" in entry:
             actual_explanations.add(word_id)
         if "note" in entry:
@@ -235,4 +242,5 @@ def check_layer(core: dict, layer: dict, path: Path) -> list[str]:
             f"{where}: note topology differs — missing={sorted(expected_notes - actual_notes)} "
             f"extra={sorted(actual_notes - expected_notes)}"
         )
+    errors += check_interlinear_alignment(core, layer)
     return errors

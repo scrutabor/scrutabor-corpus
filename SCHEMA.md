@@ -1,4 +1,4 @@
-# Corpus schema v0 (0.18.0)
+# Corpus schema v0 (0.19.0)
 
 Three semantic layers: language-neutral Latin, per-language gloss/editorial
 content, and a corpus-wide lexicon. Since 0.16.0 each Latin text is a neutral
@@ -64,8 +64,9 @@ languages/<lang>/bibliography.json    wording uses for one language only
 ```
 
 The manifest is the authority for coverage. A language may publish any ordered
-subset of the neutral texts, but each listed text is complete: every word has a
-gloss, every verse a translation, every rubric a narrative, and every neutral
+subset of the neutral texts, but each listed text is complete: every word has
+exactly one direct gloss or one explicit alignment realization, every verse a
+translation, every rubric a narrative, and every neutral
 localization requirement is fulfilled. Missing languages never fall back to
 another language silently.
 
@@ -666,8 +667,8 @@ entries{ <lemma>: { senses[], note?, derivatives?, analysis? } }
 
 ```
 schema_version, language, text, about,
-segments{ <seg-id>: { translation, translation_citations? | narrative } },
-words{ <word-id>: { gloss, explanation?, note? } }
+segments{ <seg-id>: { translation, translation_citations? | narrative, alignments? } },
+words{ <word-id>: { gloss?, explanation?, note? } }
 ```
 
 - `about` (since 0.8.0; required for a published text): one short paragraph introducing the
@@ -678,15 +679,29 @@ words{ <word-id>: { gloss, explanation?, note? } }
   target language.
 - `about_citations` (since 0.11.0): optional reader-facing sources supporting
   the introduction. Since 0.16.0 these are written once in the neutral core.
-- `gloss` (required): shortest natural reading aid in the target language
+- `gloss`: shortest natural reading aid in the target language
   (interlinear line). It may be idiomatic rather than grammatical — it is
   the sense the context selects, which no lemma-level sense list can supply.
-  A token whose sense a neighboring word's gloss has absorbed (the
-  auxiliary of a periphrastic whose participle glosses the whole tense)
-  glosses as an em dash `—`: the declared interlinear null.
-  When an auxiliary instead retains a visible structural slot, its marker is
-  exactly `[czasownik posiłkowy]` in Polish and `[auxiliary]` in English.
-  Synonymous, abbreviated, or untranslated variants are invalid.
+  It is required unless the word belongs to an alignment on its segment.
+  A visible gloss is always target-language wording: square-bracketed grammar
+  labels, editorial placeholders, and dashes standing for silence are invalid.
+- `alignments` (since 0.19.0; optional on a segment): the exceptional mapping
+  between a contiguous source construction and its target-language realization.
+  A realized alignment has `words` in source order, an `anchor` naming the
+  source word whose analysis carries the shared reading, and one natural
+  target-language `gloss`. It contains at least two words. For example:
+
+  ```json
+  { "words": ["w015", "w016"], "anchor": "w016", "gloss": "będzie" }
+  ```
+
+  A source particle with no separate target word omits `anchor` and `gloss`
+  and declares why with `reason`: `idiom`, `inflection`, `punctuation`, or
+  `word-order`. Every Latin word has exactly one realization: a direct gloss
+  or membership in one alignment, never both. Alignments are language-specific,
+  non-overlapping, contiguous, and stored in source order. Their purpose is to
+  model real many-to-one or zero correspondences, not to conceal an unresolved
+  translation.
 - `explanation` (OPTIONAL, contextual-only): usually 1–3 sentences that add a
   coherent reader-facing insight in the target language. Belongs here:
   meaning that a short gloss cannot carry, sacred imagery or referents,
