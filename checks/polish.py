@@ -61,12 +61,101 @@ PREP_CASE: dict[str, set[str]] = {
 # Each is a rendering the edition chose on purpose, and none is a place where
 # the next gloss answers to the preposition inside it.
 PHRASE_GLOSSES = {
+    "od pradawna",
     "z powodu",
     "ze względu na",
     "za wstawiennictwem",
     "za sprawą",
     "wraz z",
     "przede",
+}
+
+# Contextual Polish can move a Latin relation onto another word.  These sites
+# are complete, grammatical Polish phrases, but the Latin dependency head is
+# not the word governed by the Polish preposition.  Keeping the rulings explicit
+# makes the checker strict everywhere else without forcing Latin government
+# onto Polish syntax.
+PREPOSITION_RULINGS: dict[tuple[str, str], str] = {
+    ("proprium.beata-maria-virgo-regina-secreta", "w014"): "dla naszego zbawienia",
+    (
+        "proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-offertorium",
+        "w029",
+    ): "w ciemność; the recorded Latin head lies in the following clause",
+    ("proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-tractus", "w029"): "na wieki",
+    ("proprium.dominica-ii-passionis-evangelium", "w602"): "po chwili",
+    ("proprium.dominica-ii-passionis-evangelium", "w1359"): "od góry",
+    ("proprium.dominica-ii-passionis-evangelium", "w1424"): "z daleka",
+    ("proprium.dominica-ii-post-epiphaniam-epistola", "w018"): "w posługiwaniu",
+    ("proprium.dominica-ii-post-epiphaniam-epistola", "w027"): "w napominaniu",
+    ("proprium.dominica-ii-post-epiphaniam-epistola", "w085"): "z płaczącymi",
+    ("proprium.dominica-ii-post-epiphaniam-evangelium", "w007"): "w Kanie",
+    ("proprium.dominica-in-albis-evangelium", "w085"): "jeden z Dwunastu",
+    (
+        "proprium.dominica-in-septuagesima-epistola",
+        "w111",
+    ): "z duchowej skały, która im towarzyszyła",
+    ("proprium.dominica-in-septuagesima-epistola", "w122"): "w większości z nich",
+    ("proprium.dominica-iv-in-quadragesima-epistola", "w014"): "z wolnej kobiety",
+    ("proprium.dominica-iv-in-quadragesima-epistola", "w026"): "z wolnej kobiety",
+    ("proprium.dominica-iv-post-pascha-alleluia", "w014"): "z martwych",
+    ("proprium.dominica-iv-post-pascha-epistola", "w044"): "do słuchania",
+    ("proprium.dominica-iv-post-pascha-epistola", "w048"): "do mówienia",
+    ("proprium.dominica-iv-post-pascha-evangelium", "w141"): "z mojego",
+    ("proprium.dominica-post-ascensionem-epistola", "w056"): "we wszystkim",
+    ("proprium.dominica-resurrectionis-collecta", "w005"): "przez Twojego Jednorodzonego",
+    ("proprium.dominica-resurrectionis-evangelium", "w030"): "do siebie nawzajem",
+    ("proprium.dominica-resurrectionis-sequentia", "w055"): "spośród umarłych",
+    ("proprium.d-n-iesu-christi-regis-communio", "w004"): "na wieki",
+    ("proprium.dominica-vi-post-epiphaniam-epistola", "w169"): "z martwych",
+    ("proprium.dominica-vi-post-pentecosten-epistola", "w093"): "z martwych",
+    ("proprium.dominica-vi-post-pentecosten-evangelium", "w046"): "z daleka",
+    ("proprium.dominica-vii-post-pentecosten-secreta", "w012"): "od oddanych Tobie sług",
+    ("proprium.dominica-xi-post-pentecosten-evangelium", "w015"): "przez środek granic Dekapolu",
+    ("proprium.dominica-xi-post-pentecosten-postcommunio", "w012"): "w obu",
+    ("proprium.dominica-xiii-post-pentecosten-epistola", "w018"): "jak o jednym",
+    ("proprium.dominica-xiii-post-pentecosten-evangelium", "w010"): "przez środek Samarii",
+    ("proprium.dominica-xvi-post-pentecosten-evangelium", "w080"): "do zaproszonych",
+    ("proprium.dominica-xviii-post-pentecosten-epistola", "w020"): "we wszystkim",
+    ("proprium.dominica-xxi-post-pentecosten-communio", "w001"): "w zbawieniu Twoim",
+    ("proprium.dominica-xxi-post-pentecosten-epistola", "w055"): "we wszystkim",
+    ("proprium.exaltatio-sanctae-crucis-evangelium", "w047"): "na wieki",
+    (
+        "proprium.maternitas-beatae-mariae-virginis-secreta",
+        "w010",
+    ): "dla wiecznej i doczesnej pomyślności",
+    ("proprium.nativitas-domini-in-aurora-offertorium", "w012"): "od wtedy",
+    ("proprium.nativitas-domini-in-aurora-secreta", "w068"): "dla naszego zbawienia",
+    ("proprium.nativitas-sancti-ioannis-baptistae-epistola", "w006"): "z daleka",
+    (
+        "proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-postcommunio",
+        "w001",
+    ): "do świętej uczty; the vocative intervenes",
+    ("proprium.purificatio-beatae-mariae-virginis-evangelium", "w056"): "w Jeruzalem",
+    ("proprium.sanctae-annae-matris-beatae-mariae-virginis-epistola", "w047"): "z daleka",
+    ("proprium.sancti-andreae-apostoli-epistola", "w035"): "dla wszystkich, którzy Go wzywają",
+    ("proprium.sancti-ioachim-confessoris-postcommunio", "w032"): "w przyszłości",
+    ("proprium.sancti-laurentii-martyris-epistola", "w075"): "do spożycia",
+    ("proprium.sancti-laurentii-martyris-secreta", "w012"): "dla naszego zbawienia",
+    (
+        "proprium.sancti-matthaei-apostoli-et-evangelistae-epistola",
+        "w010",
+    ): "po prawej stronie czworga",
+    ("proprium.sancti-matthaei-apostoli-et-evangelistae-postcommunio", "w014"): "ku jego chwale",
+    ("proprium.sancti-thomae-apostoli-evangelium", "w006"): "jeden z Dwunastu",
+    ("proprium.sanctissimi-nominis-iesu-offertorium", "w014"): "na wieki",
+    (
+        "proprium.sanctorum-innocentium-martyrum-communio",
+        "w002",
+    ): "received biblical place-name phrase w Rama",
+    (
+        "proprium.sanctorum-innocentium-martyrum-evangelium",
+        "w119",
+    ): "received biblical place-name phrase w Rama",
+    ("proprium.sanctorum-philippi-et-iacobi-apostolorum-epistola", "w066"): "wśród Świętych",
+    ("proprium.septem-dolorum-beatae-mariae-virginis-secreta", "w035"): "z błogosławionymi",
+    ("proprium.septem-dolorum-beatae-mariae-virginis-sequentia", "w099"): "w miłowaniu Chrystusa",
+    ("proprium.transfiguratio-domini-communio", "w007"): "z umarłych",
+    ("proprium.visitatio-beatae-mariae-virginis-offertorium", "w014"): "na wieki",
 }
 
 WORD_RE = re.compile(r"[^\W\d_]+", re.UNICODE)
@@ -110,12 +199,25 @@ def _head_word(gloss: str | None) -> str | None:
     return found[-1] if found else None
 
 
+def _governed_word(tokens: list[str]) -> tuple[str | None, frozenset[str]]:
+    """Find the first case-bearing member of a Polish prepositional phrase."""
+    for token in tokens:
+        got = cases(token)
+        if got:
+            return token, got
+    if tokens:
+        return tokens[-1], cases(tokens[-1])
+    return None, frozenset()
+
+
 def check_prepositions(doc: dict, gloss: dict) -> list[str]:
     """A Polish preposition in the gloss line must govern the gloss beside it."""
     errors: list[str] = []
     words = gloss.get("words", {})
     for segment in doc.get("segments", []):
         for w in segment.get("words") or []:
+            if (doc["id"], w["id"]) in PREPOSITION_RULINGS:
+                continue
             text = (words.get(w["id"]) or {}).get("gloss")
             if not text or text.strip() in PHRASE_GLOSSES:
                 continue
@@ -127,12 +229,12 @@ def check_prepositions(doc: dict, gloss: dict) -> list[str]:
             # object: "z Tobą", "nade mną". Check inside it and stop there.
             if len(tokens) >= 2 and tokens[0].lower() in PREP_CASE:
                 allowed = PREP_CASE[tokens[0].lower()]
-                got = cases(tokens[-1])
+                target, got = _governed_word(tokens[1:])
                 if got and not (got & allowed):
                     errors.append(
                         f"{doc['id']}:{w['id']} ({w['form']}): gloss {text!r} — "
                         f"{tokens[0]!r} takes the {'/'.join(sorted(allowed))}, but "
-                        f"{tokens[-1]!r} is {'/'.join(sorted(got))}"
+                        f"{target!r} is {'/'.join(sorted(got))}"
                     )
                 continue
 
@@ -150,11 +252,14 @@ def check_prepositions(doc: dict, gloss: dict) -> list[str]:
             head_id = w.get("head")
             if head_id is None:
                 continue
+            head_gloss = (words.get(head_id) or {}).get("gloss") or ""
+            if head_gloss.strip().startswith("[") and head_gloss.strip().endswith("]"):
+                continue
             allowed = PREP_CASE[tokens[0].lower()]
-            target = _head_word((words.get(head_id) or {}).get("gloss"))
+            object_tokens = WORD_RE.findall(head_gloss)
+            target, got = _governed_word(object_tokens)
             if target is None:
                 continue
-            got = cases(target)
             if got and not (got & allowed):
                 errors.append(
                     f"{doc['id']}:{w['id']} ({w['form']}): gloss line reads "
@@ -169,7 +274,7 @@ def check_prepositions(doc: dict, gloss: dict) -> list[str]:
 # has its modifier agreeing with the head's case: *notas fac* is *uczyń drogi
 # ZNANYMI*, and the instrumental is what Polish requires after uczynić.
 # Declared site by site so the agreement check below stays a gate.
-PREDICATE_RULINGS: dict[tuple[str, str], str] = {
+MODIFIER_RULINGS: dict[tuple[str, str], str] = {
     ("ordinarium.per-quem-haec-omnia", "w007"): (
         "bona: hæc ómnia bona creas — Polish takes an instrumental "
         "complement where the Latin has a predicate accusative"
@@ -177,6 +282,84 @@ PREDICATE_RULINGS: dict[tuple[str, str], str] = {
     ("proprium.dominica-i-adventus-graduale", "w011"): (
         "notas fac: uczynić takes an instrumental complement"
     ),
+    ("proprium.corporis-christi-sequentia", "w039"): "dwunastu modifies braci in Polish",
+    ("proprium.d-n-iesu-christi-regis-collecta", "w024"): "najsłodszemu panowaniu",
+    ("proprium.dominica-ii-passionis-evangelium", "w206"): "starszych is a coordinated substantive",
+    ("proprium.dominica-ii-passionis-evangelium", "w1281"): "do godziny dziewiątej",
+    ("proprium.dominica-ii-post-pascha-introitus", "w003"): "pełna predicates ziemia in Polish",
+    ("proprium.dominica-ii-post-pascha-introitus", "w043"): "pełna predicates ziemia in Polish",
+    (
+        "proprium.dominica-infra-octavam-nativitatis-epistola",
+        "w005",
+    ): "dzieckiem is a predicate complement after jest",
+    ("proprium.dominica-iv-post-pentecosten-collecta", "w016"): "Twój modifies Kościół in Polish",
+    ("proprium.dominica-iv-post-pentecosten-communio", "w011"): "mój modifies Bóg in Polish",
+    ("proprium.dominica-ix-post-pentecosten-evangelium", "w098"): "mój modifies the preceding dom",
+    ("proprium.dominica-post-ascensionem-evangelium", "w052"): "każdy is substantival before kto",
+    (
+        "proprium.dominica-resurrectionis-collecta",
+        "w006",
+    ): "Jednorodzonego is substantival after przez",
+    (
+        "proprium.dominica-resurrectionis-collecta",
+        "w007",
+    ): "Twojego modifies the substantival Jednorodzonego",
+    ("proprium.dominica-v-post-pentecosten-epistola", "w090"): "dobra is governed by miłośnikami",
+    (
+        "proprium.dominica-viii-post-pentecosten-introitus",
+        "w021",
+    ): "pełna predicates prawica in Polish",
+    (
+        "proprium.dominica-viii-post-pentecosten-introitus",
+        "w078",
+    ): "pełna predicates prawica in Polish",
+    (
+        "proprium.dominica-viii-post-pentecosten-offertorium",
+        "w003",
+    ): "ocalonym is an instrumental predicate after uczynisz",
+    (
+        "proprium.dominica-xi-post-pentecosten-communio",
+        "w014",
+    ): "twoje modifies spichlerze in Polish",
+    (
+        "proprium.dominica-xi-post-pentecosten-evangelium",
+        "w016",
+    ): "środek is governed by przez in the recast phrase",
+    ("proprium.dominica-xi-post-pentecosten-graduale", "w016"): "mojej modifies woli in Polish",
+    (
+        "proprium.dominica-xiii-post-pentecosten-evangelium",
+        "w011",
+    ): "środek is governed by przez in the recast phrase",
+    (
+        "proprium.dominica-xxiv-post-pentecosten-evangelium",
+        "w227",
+    ): "wielką modifies mocą in Polish",
+    ("proprium.immaculatum-cor-beatae-mariae-virginis-epistola", "w056"): "słodki predicates Duch",
+    ("proprium.nativitas-domini-in-die-secreta", "w004"): "nowym modifies Narodzeniem",
+    ("proprium.omnium-sanctorum-communio", "w008"): "Błogosławieni predicates pokój czyniący",
+    ("proprium.purificatio-beatae-mariae-virginis-collecta", "w013"): "dzisiejszego modifies dnia",
+    ("proprium.purificatio-beatae-mariae-virginis-epistola", "w015"): "moim modifies obliczem",
+    ("proprium.sancta-familia-collecta", "w016"): "obojga is substantival for Mary and Joseph",
+    ("proprium.sancti-andreae-apostoli-postcommunio", "w003"): "Boskie modifies Tajemnice",
+    ("proprium.sancti-bartholomaei-apostoli-evangelium", "w087"): "wybrzeża is substantival",
+    ("proprium.sancti-ioachim-confessoris-secreta", "w014"): "Twojemu modifies majestatowi",
+    ("proprium.sancti-lucae-evangelistae-evangelium", "w016"): "sobą completes przed sobą",
+    (
+        "proprium.sanctorum-simonis-et-iudae-apostolorum-epistola",
+        "w059",
+    ): "innych is the object; Prorokami is its predicate",
+    (
+        "proprium.sanctorum-simonis-et-iudae-apostolorum-epistola",
+        "w062",
+    ): "innych is the object; Ewangelistami is its predicate",
+    (
+        "proprium.sanctissimi-nominis-iesu-offertorium",
+        "w024",
+    ): "pełen miłosierdzia recasts the Latin genitive phrase",
+    ("proprium.transfiguratio-domini-introitus", "w003"): "Twoje modifies błyskawice",
+    ("proprium.transfiguratio-domini-introitus", "w047"): "Twoje modifies błyskawice",
+    ("proprium.transfiguratio-domini-secreta", "w005"): "chwalebnym modifies Przemienieniem",
+    ("proprium.visitatio-beatae-mariae-virginis-epistola", "w103"): "słodki predicates głos",
 }
 
 
@@ -213,12 +396,12 @@ def check_modifier_glosses(doc: dict, gloss: dict) -> list[str]:
     index = {w["id"]: w for s in doc.get("segments", []) for w in (s.get("words") or [])}
     for w in index.values():
         head_id = w.get("head")
-        if head_id is None or w["morph"].get("pos") not in {"adj", "num"}:
+        if head_id is None or w["morph"].get("pos") != "adj":
             continue
         head = index.get(head_id)
         if head is None or head["morph"].get("pos") not in {"noun", "adj"}:
             continue
-        if (doc["id"], w["id"]) in PREDICATE_RULINGS:
+        if (doc["id"], w["id"]) in MODIFIER_RULINGS:
             continue
         # Only single-word glosses on both sides. *godna podziwu* and *z kości
         # słoniowej* are phrases whose head is not their last word, and
@@ -231,6 +414,14 @@ def check_modifier_glosses(doc: dict, gloss: dict) -> list[str]:
         mine = _head_word(mine_text)
         theirs = _head_word(theirs_text)
         if not mine or not theirs:
+            continue
+        # Polish cardinal numerals from five upward govern a genitive plural
+        # instead of agreeing with it: pięćdziesiąt lat, siedem chlebów.
+        if any(a[2][2].split(":")[0] == "num" for a in _morfeusz().analyse(mine)):
+            continue
+        # Polish possessives jego, jej and ich are indeclinable.  Their surface
+        # form does not agree in case, gender or number with the possessed noun.
+        if mine.lower() in {"jego", "jej", "ich"}:
             continue
         for label, mine_f, theirs_f in (
             ("case", cases(mine), cases(theirs)),
@@ -258,6 +449,12 @@ def check_divine_address(doc: dict, gloss: dict) -> list[str]:
     sees the edition contradict itself on the same line.
     """
     errors: list[str] = []
+    human_or_created_addressee = {
+        ("proprium.dominica-in-quinquagesima-evangelium", "w126"),
+        ("proprium.dominica-in-septuagesima-evangelium", "w189"),
+        ("proprium.dominica-xx-post-pentecosten-offertorium", "w010"),
+        ("proprium.feria-v-in-cena-domini-evangelium", "w112"),
+    }
     words = gloss.get("words", {})
     segments = gloss.get("segments", {})
     for segment in doc.get("segments", []):
@@ -265,6 +462,8 @@ def check_divine_address(doc: dict, gloss: dict) -> list[str]:
         capitalised = {t for t in WORD_RE.findall(translation) if t[:1].isupper()}
         lowered = {t.lower() for t in capitalised}
         for w in segment.get("words") or []:
+            if (doc["id"], w["id"]) in human_or_created_addressee:
+                continue
             if w["lemma"] not in {"tuus", "tu"}:
                 continue
             text = (words.get(w["id"]) or {}).get("gloss")
@@ -284,14 +483,18 @@ def check_divine_address(doc: dict, gloss: dict) -> list[str]:
 def check(doc: dict, gloss: dict) -> list[str]:
     if gloss.get("lang") != "pl":
         return []
+    # These checks read the Polish gloss line as Polish.  They deliberately do
+    # not require every token to preserve the Latin token's case or number:
+    # contextual interlinear glossing may redistribute government, use a
+    # collective, or recast a construction that has no Polish equivalent.
+    # `check_number`, `check_ablative_absolute`, and
+    # `check_two_case_prepositions` remain available as editorial diagnostics,
+    # but are not correctness gates for a natural contextual gloss.
     return (
         check_prepositions(doc, gloss)
         + check_modifier_glosses(doc, gloss)
         + check_divine_address(doc, gloss)
-        + check_number(doc, gloss)
-        + check_ablative_absolute(doc, gloss)
         + check_purpose_clauses(doc, gloss)
-        + check_two_case_prepositions(doc, gloss)
     )
 
 

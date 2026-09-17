@@ -907,7 +907,8 @@ def lint_gloss(doc, text_doc):
                 key = ng.lower().rstrip(".,")
                 if key in poss and key in parts and g.lower() != ng.lower():
                     errors.append(
-                        f"{lang}: {w['id']} gloss {g!r} absorbs the possessive "
+                        f"{text_doc['id']}:{w['id']}: the {lang} gloss "
+                        f"{g!r} absorbs the possessive "
                         f"its neighbor {ws[j]['id']} glosses ({ng!r})"
                     )
                 bare = (
@@ -927,7 +928,8 @@ def lint_gloss(doc, text_doc):
                     and not bare.endswith(("que", "ve"))
                 ):
                     errors.append(
-                        f"{lang}: {w['id']} gloss {g!r} absorbs the conjunction "
+                        f"{text_doc['id']}:{w['id']}: the {lang} gloss "
+                        f"{g!r} absorbs the conjunction "
                         f"its neighbor {ws[j]['id']} glosses ({ng!r})"
                     )
 

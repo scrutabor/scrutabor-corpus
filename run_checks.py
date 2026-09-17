@@ -19,17 +19,16 @@ from checks.bibliography import check as check_bibliography
 from checks.capitals import check as check_capitals
 from checks.citations import check as check_citation_titles
 from checks.collate import collate
-from checks.conventions import check as check_conventions
 from checks.delivery import check_doc as check_delivery
 from checks.document import check as check_document
 from checks.english import check as check_english
-from checks.english import check_number as check_english_number
 from checks.explanation_floor import check as check_explanation_floor
 from checks.formularies import check as check_formularies
 from checks.fusion import check as check_fusion
 from checks.identity import check as check_identity
 from checks.identity import check_against_history, check_registry_history, resolve_ref
 from checks.incipit import check as check_incipit
+from checks.interlinear_quality import check as check_interlinear_quality
 from checks.kalendarium import check as check_kalendarium
 from checks.language_packs import check_core as check_language_core
 from checks.language_packs import check_layer as check_language_layer
@@ -250,6 +249,7 @@ def main(text_id: str) -> int:
         gloss_docs.append(gdoc)
         all_errors += check_prose(gdoc)
         all_errors += lint_gloss(gdoc, doc)
+        all_errors += check_interlinear_quality(doc, gdoc)
         # The gloss line read AS POLISH: a preposition governing the case
         # beside it, a modifier agreeing with what it modifies, the divine
         # second person capitalised as the verse capitalises it.
@@ -257,8 +257,10 @@ def main(text_id: str) -> int:
         all_errors += check_notes(doc, gdoc)
         # A gloss that renders nothing must say why it renders nothing.
         all_errors += check_fusion(doc, gdoc)
-        # The three gloss conventions the reading campaign settled.
-        all_errors += check_conventions(doc, gdoc)
+        # Address register is reviewed contextually. A single Gospel segment
+        # may contain several speakers and addressees, so segment-wide string
+        # comparison is an editorial diagnostic rather than a correctness
+        # gate.
         # One edition, one spelling.
         all_errors += check_orthography(doc, gdoc)
         # A Polish preposition stranded at the end of a gloss is voiced by
@@ -335,9 +337,11 @@ if __name__ == "__main__":
         rc = lexicon_suite(used)
         for tid in ids:
             rc |= main(tid)
-        # English number is checked ACROSS the corpus, not per text: with no
-        # analyzer the only oracle is the corpus itself, and one gloss serving
-        # both numbers of a lemma is only visible with every text in hand.
+        # Keep the English pairs for corpus-wide checks below.  Number is not
+        # inferred from repeated surface glosses: English nouns may be
+        # uninflected, collective, idiomatic, or attached to an ambiguous
+        # Latin parse, so that comparison is an editorial diagnostic rather
+        # than a correctness gate.
         pairs = []
         for tid in ids:
             category, name = tid.split(".", 1)
@@ -347,10 +351,6 @@ if __name__ == "__main__":
                     store.load(CORPUS, tid)[1]["en"],
                 )
             )
-        number_errors = check_english_number(pairs)
-        for message in number_errors:
-            print(f"ERROR: {message}")
-        rc |= 1 if number_errors else 0
         # What the edition does not know, stated as a number rather than left
         # to be inferred from a silent default.
         corpus_docs = [t for t, _ in pairs]

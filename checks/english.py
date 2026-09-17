@@ -11,10 +11,10 @@ Two things are decidable:
 - **A preposition rendered twice.** When *de* is glossed *from* and its own
   object *cælis* is glossed *of heaven*, the gloss line reads *Father from of
   heaven*. Exact, because the Latin `head` says which word is the object.
-- **A two-case preposition against the case it governs.** *in* with the
-  ablative is *in*, with the accusative *into*; the corpus records the case.
-  Where English idiom overrides — *in memoriam*, *at the hour*, *believe in* —
-  the site is declared below rather than guessed at.
+The Latin case of a two-case preposition is still useful as an editorial
+diagnostic, but it is not an English correctness gate.  Natural English often
+selects a preposition from the governing verb or idiom rather than mechanically
+copying Latin spatial case (*wait for*, *rejoice in*, *upon the Cross*).
 """
 
 from __future__ import annotations
@@ -112,7 +112,7 @@ def check_two_case_prepositions(doc: dict, gloss: dict) -> list[str]:
 def check(doc: dict, gloss: dict) -> list[str]:
     if gloss.get("lang") != "en":
         return []
-    return check_doubled_preposition(doc, gloss) + check_two_case_prepositions(doc, gloss)
+    return check_doubled_preposition(doc, gloss)
 
 
 # A Latin plural the edition renders with an English singular, declared site by

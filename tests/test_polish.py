@@ -63,6 +63,42 @@ def test_preposition_object_is_its_head_not_its_neighbour():
     )
 
 
+def test_prepositional_phrase_checks_its_first_nominal_member():
+    d = doc(
+        [
+            {
+                "form": "postquam",
+                "lemma": "postquam",
+                "morph": {"pos": "conj"},
+                "id": "w1",
+            }
+        ]
+    )
+    assert check_prepositions(d, gloss({"w1": "po tym jak"})) == []
+    assert check_prepositions(d, gloss({"w1": "na kogoś, kto"})) == []
+
+
+def test_preposition_ignores_an_absorbed_dependency_marker():
+    d = doc(
+        [
+            {
+                "form": "ante",
+                "lemma": "ante",
+                "morph": {"pos": "prep"},
+                "id": "w1",
+                "head": "w2",
+            },
+            {
+                "form": "conspectum",
+                "lemma": "conspectus",
+                "morph": {"pos": "noun"},
+                "id": "w2",
+            },
+        ]
+    )
+    assert check_prepositions(d, gloss({"w1": "wobec", "w2": "[included]"})) == []
+
+
 def test_an_interjection_is_not_the_preposition_o():
     d = doc(
         [
@@ -120,6 +156,38 @@ def test_a_phrase_gloss_is_left_alone():
         ]
     )
     assert check_modifier_glosses(d, gloss({"w1": "Matko", "w2": "godna podziwu"})) == []
+
+
+def test_polish_cardinal_governs_a_genitive_instead_of_agreeing():
+    d = doc(
+        [
+            {"form": "annos", "lemma": "annus", "morph": {"pos": "noun"}, "id": "w1"},
+            {
+                "form": "quinquaginta",
+                "lemma": "quinquaginta",
+                "morph": {"pos": "adj"},
+                "id": "w2",
+                "head": "w1",
+            },
+        ]
+    )
+    assert check_modifier_glosses(d, gloss({"w1": "lat", "w2": "pięćdziesiąt"})) == []
+
+
+def test_polish_indeclinable_possessive_does_not_fake_agreement():
+    d = doc(
+        [
+            {"form": "manuum", "lemma": "manus", "morph": {"pos": "noun"}, "id": "w1"},
+            {
+                "form": "suarum",
+                "lemma": "suus",
+                "morph": {"pos": "adj"},
+                "id": "w2",
+                "head": "w1",
+            },
+        ]
+    )
+    assert check_modifier_glosses(d, gloss({"w1": "rąk", "w2": "jej"})) == []
 
 
 def test_divine_address_follows_its_own_verse():

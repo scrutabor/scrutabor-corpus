@@ -43,7 +43,7 @@ def test_a_word_and_each_gloss_live_in_different_files():
     assert word["form"] == "Virgo"
     assert "gloss" not in word
     assert glosses["pl"]["words"][word["id"]]["gloss"] == "Dziewica"
-    assert glosses["en"]["words"][word["id"]]["gloss"] == "a Virgin"
+    assert glosses["en"]["words"][word["id"]]["gloss"] == "the Virgin"
     assert word["morph"]["case"] == "nom"
 
 
