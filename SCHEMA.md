@@ -439,8 +439,10 @@ localization, editorial
   the devotional prayers this corpus carries — the Leonine prayers, the
   Marian antiphons — take nothing from it. `run_checks` reports the coverage
   as `participation=N`.
-- Word: `{ id, form, post?, lemma, morph, analysis? }`. `post` = trailing
-  punctuation rendered after the word (`,` `;` `:` `.` `?`). `degree`
+- Word: `{ id, form, post?, lemma, morph, analysis? }`. `post` = exactly one
+  trailing punctuation mark rendered after the word (`,` `;` `:` `.` `?`
+  `!`). It never carries a bracket, rubric, source marker, or two marks.
+  `degree`
   (`comp`/`sup`) is not confined to adjectives: Latin adverbs take it too
   (*mirabílius*), and the analyzers report it. `lemma` is the key
   into `lexicon/lemmata.json` — dictionary-normalized (i-form,

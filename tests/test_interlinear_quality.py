@@ -6,7 +6,7 @@ DOC = {"id": "t.t"}
 
 
 def layer(language, text):
-    return {"lang": language, "words": {"w1": {"gloss": text}}}
+    return {"language": language, "words": {"w1": {"gloss": text}}}
 
 
 def test_corruption_marker_is_rejected_in_each_language():
@@ -30,3 +30,46 @@ def test_duplicated_english_plural_suffix_is_rejected():
 def test_structural_absorption_marker_is_allowed():
     assert check(DOC, layer("en", "[included]")) == []
     assert check(DOC, layer("pl", "[dopełnienie]")) == []
+
+
+def future_periphrastic_doc():
+    return {
+        "id": "t.future",
+        "segments": [
+            {
+                "id": "s01",
+                "words": [
+                    {
+                        "id": "w1",
+                        "lemma": "sum",
+                        "morph": {"pos": "verb", "mood": "ind", "tense": "pres"},
+                    },
+                    {
+                        "id": "w2",
+                        "lemma": "sum",
+                        "morph": {"pos": "verb", "mood": "part", "tense": "fut"},
+                    },
+                ],
+            }
+        ],
+    }
+
+
+def future_layer(language, first, second):
+    return {
+        "language": language,
+        "words": {"w1": {"gloss": first}, "w2": {"gloss": second}},
+    }
+
+
+def test_fixture_uses_the_production_language_field():
+    assert check(DOC, {"language": "en", "words": {"w1": {"gloss": "one/two"}}})
+    assert check(DOC, {"lang": "en", "words": {"w1": {"gloss": "one/two"}}}) == []
+
+
+def test_future_periphrastic_cannot_duplicate_its_auxiliary():
+    doc = future_periphrastic_doc()
+    assert check(doc, future_layer("pl", "jest", "będzie"))
+    assert check(doc, future_layer("en", "is", "shall be"))
+    assert check(doc, future_layer("pl", "[czas posiłkowy]", "będzie")) == []
+    assert check(doc, future_layer("en", "[auxiliary]", "shall be")) == []

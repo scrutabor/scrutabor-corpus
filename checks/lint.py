@@ -32,6 +32,7 @@ MORPH_ENUMS = {
 }
 
 FORM_RE = re.compile(r"^[A-Za-zÁÉÍÓÚÝáéíóúýÆæŒœǼǽËë\u0301]+$")
+POST_RE = re.compile(r"^[,.;:?!]$")
 REF_RE = re.compile(r"\((w\d{3,})\)")
 QUOTE_REF_RE = re.compile(r"[„“]([^”“„]+)”\s*\((w\d{3,})\)")
 
@@ -813,6 +814,14 @@ def lint_text(doc):
         wid, f = w["id"], w["form"]
         if not FORM_RE.match(f):
             errors.append(f"{wid}: charset violation in form {f!r}")
+        post = w.get("post")
+        if post is not None and (
+            not isinstance(post, str) or not POST_RE.fullmatch(post)
+        ):
+            errors.append(
+                f"{wid}: post={post!r} is not one trailing punctuation mark; "
+                "rubrics, brackets, and source artifacts must be modeled or removed"
+            )
         lemma = w.get("lemma", "")
         if lemma and lemma[0].isupper() and lemma not in PROPER_LEMMAS:
             errors.append(

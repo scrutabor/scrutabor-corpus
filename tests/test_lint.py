@@ -269,6 +269,18 @@ class TestContextualReadings:
         assert count == 1
         assert found == []
 
+    def test_word_post_accepts_only_one_renderable_punctuation_mark(self):
+        text = deepcopy(TEXT)
+        text["segments"][0]["words"][0]["post"] = ".)"
+        found, count = lint_text(text)
+        assert count == 1
+        assert any("not one trailing punctuation mark" in e for e in found)
+
+        text["segments"][0]["words"][0]["post"] = "."
+        found, count = lint_text(text)
+        assert count == 1
+        assert not any("trailing punctuation mark" in e for e in found)
+
     def test_a_formal_ambiguity_may_be_explained_with_the_adopted_reading(self):
         g = gloss(
             words={
