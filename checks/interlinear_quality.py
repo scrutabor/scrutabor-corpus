@@ -5,6 +5,11 @@ from __future__ import annotations
 import re
 
 CORRUPT_EXACT = {"Ń", "NIEROZSTRZYGNIĘTE", "UNRESOLVED"}
+NONCANONICAL_POLISH_AUXILIARY_MARKERS = {
+    "[auxiliary]",
+    "[czas posiłkowy]",
+    "[pomocnicze]",
+}
 ENGLISH_CHOICE_LIST = re.compile(r"[,;/]")
 CORRUPT_ENGLISH_PLURAL = re.compile(r"\b(?:ageses|taxeses)\b", re.IGNORECASE)
 DUPLICATED_FUTURE_AUXILIARY = {
@@ -21,13 +26,22 @@ def check(doc: dict, gloss: dict) -> list[str]:
     and have no place in the reader layer.
     """
     errors: list[str] = []
-    language = gloss.get("language")
+    # Authored language layers use ``language``; the in-memory checking view
+    # produced by build_reader.layers uses the compatibility key ``lang``.
+    # Accept both so the repository gate checks the same bytes as direct unit
+    # tests and reader builds.
+    language = gloss.get("language") or gloss.get("lang")
     for word_id, entry in (gloss.get("words") or {}).items():
         text = (entry or {}).get("gloss") or ""
         stripped = text.strip()
         if stripped in CORRUPT_EXACT:
             errors.append(
                 f"{doc['id']}:{word_id}: {language} gloss {stripped!r} is a corruption marker"
+            )
+        if language == "pl" and stripped in NONCANONICAL_POLISH_AUXILIARY_MARKERS:
+            errors.append(
+                f"{doc['id']}:{word_id}: Polish auxiliary marker {stripped!r} is not "
+                "canonical; use '[czasownik posiłkowy]'"
             )
         if language != "en":
             continue

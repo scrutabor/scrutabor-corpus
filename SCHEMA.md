@@ -684,6 +684,9 @@ words{ <word-id>: { gloss, explanation?, note? } }
   A token whose sense a neighboring word's gloss has absorbed (the
   auxiliary of a periphrastic whose participle glosses the whole tense)
   glosses as an em dash `—`: the declared interlinear null.
+  When an auxiliary instead retains a visible structural slot, its marker is
+  exactly `[czasownik posiłkowy]` in Polish and `[auxiliary]` in English.
+  Synonymous, abbreviated, or untranslated variants are invalid.
 - `explanation` (OPTIONAL, contextual-only): usually 1–3 sentences that add a
   coherent reader-facing insight in the target language. Belongs here:
   meaning that a short gloss cannot carry, sacred imagery or referents,
