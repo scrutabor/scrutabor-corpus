@@ -223,7 +223,22 @@ restate what another layer already carries:
    history, or a liturgical and scriptural resonance. It is not a prose
    rendering of the parse; see the language-layer section.
 
+Word help must also be read as one card: the explanation, uncertainty note,
+lemma note, displayed form, and gloss must agree. An explanation gives context
+or sourced interpretation, while a disputed-reading note states the precise
+remaining ambiguity. Do not repeat the same claim in both fields or describe
+a form as two analyses "at once" when it merely permits either. Distinguish
+morphology from theological interpretation. Attribute the latter to its source,
+not to "this edition" as an authority. A grammatical reading may remain open
+without making a cited doctrinal explanation sound equally uncertain.
+
+`checks/prose.py` guards recognizable editorial self-reference in word help,
+raw word IDs in plain notes, and exact explanation/note duplication. Semantic
+agreement across the whole card still requires contextual review in each
+language. Bibliographic references to an actual named edition are not banned.
+
 ## Word IDs (binding rules)
+
 
 - Global per text, zero-padded to a minimum of three digits: `w001`…`w999`,
   then `w1000` and beyond without a maximum width. Referenced externally as

@@ -9,6 +9,8 @@ The exemptions are tested as carefully as the rule: a verse translation carries
 the punctuation of the text it translates, and thirty-one of them do.
 """
 
+import pytest
+
 from checks.prose import check, check_lexicon
 
 
@@ -123,3 +125,92 @@ class TestTheLexicon:
         assert (
             check_lexicon({"lang": "en", "entries": {"oro": {"senses": ["to pray; to beg"]}}}) == []
         )
+
+
+@pytest.mark.parametrize("field", ["explanation", "note"])
+@pytest.mark.parametrize(
+    ("lang", "prose"),
+    [
+        ("pl", "Wydanie analizuje „malo” jako rzeczownik nijaki."),
+        ("pl", "Ta edycja przyjmuje malum i zaznacza wątpliwość."),
+        ("en", "This edition parses malo as a neuter noun."),
+        ("en", "Our edition takes the masculine."),
+    ],
+)
+def test_word_help_cannot_appeal_to_its_own_editorial_authority(field, lang, prose):
+    doc = {"text": "orationes.pater-noster", "language": lang, "words": {"w049": {field: prose}}}
+    errors = check(doc)
+    assert len(errors) == 1
+    assert f"w049.{field}.{lang}" in errors[0]
+    assert "self-authorizing word help" in errors[0]
+
+
+def test_joined_word_help_has_the_same_guard():
+    doc = a_text()
+    doc["segments"][1]["words"][0]["note"] = {"en": "This edition takes the noun."}
+    assert any("self-authorizing word help" in error for error in check(doc))
+
+
+def test_lexicon_notes_do_not_claim_editorial_authority():
+    lex = {
+        "language": "pl",
+        "entries": {"Ioseph": {"note": "Ta edycja pozostawia je nieodmiennym."}},
+    }
+    assert any("self-authorizing word help" in error for error in check_lexicon(lex))
+
+
+@pytest.mark.parametrize(
+    "prose",
+    [
+        "The Nova Vulgata reads servabo, an unambiguous future.",
+        "The 1962 edition prints this form.",
+        "Wydanie typiczne Mszału z 1962 r. zawiera tę modlitwę.",
+        "Sama forma może pochodzić od malum albo malus.",
+        "The form permits either reading. The context favors a petition.",
+        "The Catechism identifies the Evil One as Satan (CCC 2851).",
+    ],
+)
+def test_sources_and_honest_uncertainty_are_not_self_authority(prose):
+    assert check({"text": "t.t", "words": {"w001": {"note": prose}}}) == []
+
+
+def test_edition_coverage_information_is_not_word_help():
+    doc = {"text": "t.t", "about": "This edition prints the full prayer."}
+    assert check(doc) == []
+
+
+@pytest.mark.parametrize("prose", ["As at w036.", "As at “ipsum” (w036).", "Jak przy w1000."])
+def test_plain_uncertainty_notes_cannot_expose_word_ids(prose):
+    errors = check({"text": "t.t", "words": {"w049": {"note": prose}}})
+    assert len(errors) == 1 and "bare word-id" in errors[0]
+
+
+def test_explanations_may_use_the_linked_reference_format():
+    doc = {"text": "t.t", "words": {"w049": {"explanation": "Refers to “Verbum” (w001)."}}}
+    assert check(doc) == []  # Reference identity and syntax are checked by lint.py.
+
+
+def test_duplicate_explanation_and_note_are_rejected_in_both_document_shapes():
+    doc = {
+        "text": "t.t",
+        "words": {"w001": {"explanation": "Two readings.", "note": " Two  readings. "}},
+    }
+    assert any("repeat the same text" in error for error in check(doc))
+    joined = a_text()
+    joined["segments"][1]["words"][0].update(
+        explanation={"pl": "Dwa odczytania."}, note={"pl": "Dwa odczytania."}
+    )
+    assert any("repeat the same text" in error for error in check(joined))
+
+
+def test_complementary_explanation_and_uncertainty_note_are_allowed():
+    doc = {
+        "text": "orationes.pater-noster",
+        "words": {
+            "w049": {
+                "explanation": "The Catechism identifies the Evil One as Satan (CCC 2851).",
+                "note": "The Latin form can come from malum or malus.",
+            }
+        },
+    }
+    assert check(doc) == []

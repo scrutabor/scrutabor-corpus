@@ -46,6 +46,45 @@ HEDGES = {
 # hedge translated word for word and the reverse is likelier still.
 ALL_HEDGES = tuple(pattern for patterns in HEDGES.values() for pattern in patterns)
 
+# Word help explains the text and names its evidence, not the authority of
+# the reader's own editorial decisions. This is a narrow wording check, not
+# a semantic contradiction detector. Named source editions remain valid.
+EDITORIAL_SELF_REFERENCE = re.compile(
+    r"\b(?:this|our) edition(?:['’]s)?\b|"
+    r"\bthe edition (?:parses|takes|reads|adopts|interprets|analy[sz]es)\b|"
+    r"\b(?:ta|to|nasza|nasze) (?:edycja|wydanie)\b|"
+    r"\bwydanie (?:analizuje|czyta|odczytuje|przyjmuje|interpretuje|wiąże)\b",
+    re.IGNORECASE,
+)
+WORD_ID = re.compile(r"\bw\d{3,}\b")
+
+
+def _word_help(where: str, prose: str, *, plain_note: bool = False) -> list[str]:
+    errors = []
+    if not isinstance(prose, str):
+        return errors
+    if match := EDITORIAL_SELF_REFERENCE.search(prose):
+        errors.append(
+            f"{where}: self-authorizing word help ({match.group()!r}) — "
+            "explain the context or name the source, and retain genuine uncertainty"
+        )
+    # Explanations support linked quoted-form references, validated by lint.py.
+    # Notes are plain prose in the reader, so even a quoted id leaks here.
+    if plain_note and (match := WORD_ID.search(prose)):
+        errors.append(f"{where}: bare word-id {match.group()!r} in plain reader note")
+    return errors
+
+
+def _duplicate_help(where: str, explanation: str, note: str) -> list[str]:
+    if (
+        isinstance(explanation, str)
+        and isinstance(note, str)
+        and explanation.strip()
+        and " ".join(explanation.casefold().split()) == " ".join(note.casefold().split())
+    ):
+        return [f"{where}: explanation and note repeat the same text"]
+    return []
+
 
 def _sweep(where: str, prose: str) -> list[str]:
     errors = []
@@ -80,7 +119,15 @@ def check(doc: dict) -> list[str]:
             for word in segment.get("words") or []:
                 for key in ("explanation", "note"):
                     for language, prose in (word.get(key) or {}).items():
-                        errors += _sweep(f"{tid}:{word.get('id', '?')}.{key}.{language}", prose)
+                        where = f"{tid}:{word.get('id', '?')}.{key}.{language}"
+                        errors += _sweep(where, prose)
+                        errors += _word_help(where, prose, plain_note=key == "note")
+                for language, explanation in (word.get("explanation") or {}).items():
+                    errors += _duplicate_help(
+                        f"{tid}:{word.get('id', '?')}.{language}",
+                        explanation,
+                        (word.get("note") or {}).get(language, ""),
+                    )
         return errors
     tid = doc.get("text", "?")
     lang = doc.get("lang") or doc.get("language") or "?"
@@ -91,7 +138,12 @@ def check(doc: dict) -> list[str]:
     for wid, word in (doc.get("words") or {}).items():
         for key in ("explanation", "note"):
             if prose := word.get(key):
-                errors += _sweep(f"{tid}:{wid}.{key}.{lang}", prose)
+                where = f"{tid}:{wid}.{key}.{lang}"
+                errors += _sweep(where, prose)
+                errors += _word_help(where, prose, plain_note=key == "note")
+        errors += _duplicate_help(
+            f"{tid}:{wid}.{lang}", word.get("explanation", ""), word.get("note", "")
+        )
     return errors
 
 
@@ -109,6 +161,7 @@ def check_lexicon(lex: dict) -> list[str]:
                 if re.search(hedge, sense, re.IGNORECASE):
                     errors.append(f"lexicon:{lang}:{lemma}: sense hedges ({hedge!r})")
         note = entry.get("note") or ""
+        errors += _word_help(f"lexicon:{lang}:{lemma}: note", note, plain_note=True)
         for hedge in ALL_HEDGES:
             if re.search(hedge, note, re.IGNORECASE):
                 errors.append(f"lexicon:{lang}:{lemma}: note hedges ({hedge!r})")

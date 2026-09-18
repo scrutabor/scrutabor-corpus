@@ -2954,6 +2954,11 @@
       "responsible": "Ecclesia Catholica"
     },
     {
+      "id": "work.catechismus-catholicae-ecclesiae",
+      "title": "Catechismus Catholicae Ecclesiae",
+      "responsible": "Catholic Church"
+    },
+    {
       "id": "work.compendium-of-the-catechism-of-the-catholic-church",
       "title": "Compendium of the Catechism of the Catholic Church",
       "responsible": "Catholic Church"
@@ -3099,6 +3104,22 @@
       "languages": [
         "la"
       ]
+    },
+    {
+      "id": "edition.catechismus-catholicae-ecclesiae.latin-1997",
+      "work": "work.catechismus-catholicae-ecclesiae",
+      "title": "Catechismus Catholicae Ecclesiae",
+      "edition_statement": "Editio typica Latina",
+      "year": "1997",
+      "publication_type": "official_act",
+      "authority": "official_document",
+      "languages": [
+        "la"
+      ],
+      "rights": {
+        "status": "unverified",
+        "basis": "Copyright Libreria Editrice Vaticana. Cited for doctrinal context only, without reproducing its text or claiming permission to republish it."
+      }
     },
     {
       "id": "edition.compendium-of-the-catechism-of-the-catholic-church",
@@ -3467,6 +3488,15 @@
       "scan_url": "https://archive.org/download/breviariumromanu04cath/breviariumromanu04cath.pdf",
       "sha256": "f811359bce60aa34cf5554e6a86a0b5a94877c18fd81870b39b8758913964e28",
       "access": "open"
+    },
+    {
+      "id": "item.catechismus-catholicae-ecclesiae.septem-petitiones",
+      "edition": "edition.catechismus-catholicae-ecclesiae.latin-1997",
+      "repository": "The Holy See",
+      "kind": "born-digital",
+      "record_url": "https://www.vatican.va/archive/catechism_lt/p4s2a3_lt.htm",
+      "access": "open",
+      "sha256": "be478753ad6664d7d4c9c57b18a0054321797dd10b22db2361c27a030037d11a"
     },
     {
       "id": "item.catholic-girls-guide-1906.scan",
@@ -4296,6 +4326,24 @@
       "decision_reason": "Reverified against the official English Holy See edition, which prints the cited Latin formula directly; the former Lithuanian access layer was removed."
     },
     {
+      "id": "use.orationes.pater-noster.malo.catechism",
+      "edition": "edition.catechismus-catholicae-ecclesiae.latin-1997",
+      "digital_item": "item.catechismus-catholicae-ecclesiae.septem-petitiones",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "orationes.pater-noster",
+        "word": "w049"
+      },
+      "locator": {
+        "section": "2851, 2854"
+      },
+      "claim": "The Catechism identifies the Evil One in the final petition as Satan and explains that deliverance from him includes deliverance from every evil. This supports the petition's theological meaning, not an exclusive grammatical analysis of malo.",
+      "verified_on": "2026-09-18",
+      "evidence_sha256": "be478753ad6664d7d4c9c57b18a0054321797dd10b22db2361c27a030037d11a",
+      "decision": "RETAIN"
+    },
+    {
       "id": "use.orationes.regina-caeli.context.ei1952",
       "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
       "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
@@ -4395,6 +4443,24 @@
       "decision": "RETAIN",
       "legacy_refs": [],
       "evidence_sha256": "87a3560e5e1bcbcf7ba4992f88f5a18d849207090ef96c195d1841182e40d7e2"
+    },
+    {
+      "id": "use.ordinarium.pater-noster.malo.catechism",
+      "edition": "edition.catechismus-catholicae-ecclesiae.latin-1997",
+      "digital_item": "item.catechismus-catholicae-ecclesiae.septem-petitiones",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "ordinarium.pater-noster",
+        "word": "w059"
+      },
+      "locator": {
+        "section": "2851, 2854"
+      },
+      "claim": "The Catechism identifies the Evil One in the final petition as Satan and explains that deliverance from him includes deliverance from every evil. This supports the petition's theological meaning, not an exclusive grammatical analysis of malo.",
+      "verified_on": "2026-09-18",
+      "evidence_sha256": "be478753ad6664d7d4c9c57b18a0054321797dd10b22db2361c27a030037d11a",
+      "decision": "RETAIN"
     },
     {
       "id": "use.ordinarium.praefatio-apostolorum.do44667ff",
