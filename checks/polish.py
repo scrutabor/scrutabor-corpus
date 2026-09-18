@@ -62,6 +62,7 @@ PREP_CASE: dict[str, set[str]] = {
 # the next gloss answers to the preposition inside it.
 PHRASE_GLOSSES = {
     "od pradawna",
+    "z daleka",
     "z powodu",
     "ze względu na",
     "za wstawiennictwem",
@@ -253,6 +254,11 @@ def check_prepositions(doc: dict, gloss: dict) -> list[str]:
             if head_id is None:
                 continue
             head_gloss = (words.get(head_id) or {}).get("gloss") or ""
+            # Fixed adverbial phrases remain fixed when split between two
+            # glosses. Morfeusz also reads ``daleka`` as a feminine adjective;
+            # that homograph must not turn ``z daleka`` into a case error.
+            if " ".join((text.strip(), head_gloss.strip())) in PHRASE_GLOSSES:
+                continue
             if head_gloss.strip().startswith("[") and head_gloss.strip().endswith("]"):
                 continue
             allowed = PREP_CASE[tokens[0].lower()]

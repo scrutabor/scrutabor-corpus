@@ -6,7 +6,7 @@ core and each target language is an independently publishable, potentially
 partial package. The lexicon likewise keeps neutral lemma data apart from each
 language's senses. JSON, UTF-8.
 `form` uses 1962
-liturgical orthography (u/v, j for consonantal i, æ/œ, accents — see
+liturgical orthography (u/v, i for consonantal i, æ/œ, accents — see
 ORTHOGRAPHY.md); `lemma` is dictionary-normalized (i-form, no j) for analyzer
 matching. Normalization of forms (strip accents, æ→ae, j→i) is derived
 mechanically, never stored.

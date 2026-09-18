@@ -192,6 +192,16 @@ def check(doc: dict) -> list[str]:
                 allowed = PREP_CASE.get(word["lemma"])
                 if allowed is None:
                     continue  # a preposition whose government we do not assert
+                # Biblical de longe ("from afar") has an adverbial complement,
+                # not a declined object. Do not invent an ablative on longe or
+                # attach de to an unrelated noun merely to satisfy this check.
+                if (
+                    word["lemma"] == "de"
+                    and head.get("lemma") == "longe"
+                    and head["morph"].get("pos") == "adv"
+                    and not m.get("governs")
+                ):
+                    continue
                 if not is_nominal(head):
                     fail(word, f"governs {head['form']!r}, which is not a nominal")
                     continue

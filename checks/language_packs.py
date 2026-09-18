@@ -195,11 +195,14 @@ def check_layer(core: dict, layer: dict, path: Path) -> list[str]:
         segment_id = segment["id"]
         entry = segments.get(segment_id) or {}
         if segment["type"] == "verse":
-            allowed, required = {
+            allowed, required = (
+                {
+                    "translation",
+                    "translation_citations",
+                    "alignments",
+                },
                 "translation",
-                "translation_citations",
-                "alignments",
-            }, "translation"
+            )
         else:
             allowed, required = {"narrative", "alignments"}, "narrative"
         unknown = set(entry) - allowed

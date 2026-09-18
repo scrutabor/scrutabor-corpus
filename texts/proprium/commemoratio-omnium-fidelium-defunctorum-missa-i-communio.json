@@ -27,10 +27,10 @@
         { "id": "w006", "form": "Cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008" },
         { "id": "w007", "form": "Sanctis", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "pl" }, "substantive": true },
         { "id": "w008", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
+        { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w010" },
         { "id": "w010", "form": "ætérnum", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "post": ":", "substantive": true },
         { "id": "w011", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
-        { "id": "w012", "form": "pius", "lemma": "pius", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w012", "form": "pius", "lemma": "pius", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w013" },
         { "id": "w013", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." },
         { "id": "w014", "form": "Réquiem", "lemma": "requies", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w015", "form": "ætérnam", "lemma": "aeternus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w014" },
@@ -45,10 +45,10 @@
         { "id": "w024", "form": "Cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w026" },
         { "id": "w025", "form": "Sanctis", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "pl" }, "substantive": true },
         { "id": "w026", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w027", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w030" },
+        { "id": "w027", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w028" },
         { "id": "w028", "form": "ætérnum", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "post": ":", "substantive": true },
         { "id": "w029", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
-        { "id": "w030", "form": "pius", "lemma": "pius", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w030", "form": "pius", "lemma": "pius", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w031" },
         { "id": "w031", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." }
       ],
       "participation": {
@@ -80,11 +80,7 @@
       "apparatus": "witnesses/proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-communio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
-    "words": {
-      "w012": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w030": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
-    }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
   },
   "localization": {
     "about": true

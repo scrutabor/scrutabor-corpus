@@ -41,7 +41,7 @@
         { "id": "w020", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "substantive": true },
         { "id": "w021", "form": "nómini", "lemma": "nomen", "morph": { "case": "dat", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w022", "form": "sit", "lemma": "sum", "morph": { "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w023", "form": "devóta", "lemma": "devoveo", "morph": { "pos": "verb", "case": "acc", "gender": "m", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 2 }, "post": ".", "substantive": true },
+        { "id": "w023", "form": "devóta", "lemma": "devoveo", "morph": { "pos": "verb", "case": "nom", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 2 }, "post": ".", "head": "w022" },
         { "id": "w024", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w025" },
         { "id": "w025", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w026", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w027" },
@@ -78,8 +78,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w003": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w023": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
     }
   },
   "localization": {

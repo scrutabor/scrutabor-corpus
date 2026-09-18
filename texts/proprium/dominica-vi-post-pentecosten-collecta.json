@@ -43,14 +43,14 @@
         { "id": "w022", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
         { "id": "w023", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w024", "form": "bona", "lemma": "bonus", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "post": ",", "substantive": true },
-        { "id": "w025", "form": "nútrias", "lemma": "nutrio", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 3 }, "post": "," },
+        { "id": "w025", "form": "nútrias", "lemma": "nutrio", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 4 }, "post": "," },
         { "id": "w026", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
         { "id": "w027", "form": "pietátis", "lemma": "pietas", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w028", "form": "stúdio", "lemma": "studium", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w029", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
         { "id": "w030", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w031", "form": "nutríta", "lemma": "nutrio", "morph": { "pos": "verb", "case": "acc", "gender": "f", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "post": ",", "head": "w032" },
-        { "id": "w032", "form": "custódias", "lemma": "custodia", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "pl", "decl": 1 }, "post": "." },
+        { "id": "w031", "form": "nutríta", "lemma": "nutrio", "morph": { "pos": "verb", "case": "nom", "gender": "n", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 4 }, "post": ",", "head": "w029" },
+        { "id": "w032", "form": "custódias", "lemma": "custodio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 }, "post": "." },
         { "id": "w033", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w034" },
         { "id": "w034", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w035", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w036" },
@@ -87,8 +87,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w018": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w031": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
     }
   },
   "localization": {

@@ -78,6 +78,19 @@ def test_prepositional_phrase_checks_its_first_nominal_member():
     assert check_prepositions(d, gloss({"w1": "na kogoś, kto"})) == []
 
 
+def test_fixed_adverbial_phrase_can_span_two_glosses():
+    d = doc(
+        [
+            {"form": "de", "lemma": "de", "morph": {"pos": "prep"}, "id": "w1", "head": "w2"},
+            {"form": "longe", "lemma": "longe", "morph": {"pos": "adv"}, "id": "w2"},
+        ]
+    )
+    assert check_prepositions(d, gloss({"w1": "z", "w2": "daleka"})) == []
+    assert check_prepositions(d, gloss({"w1": "z daleka", "w2": ""})) == []
+    assert check_prepositions(d, gloss({"w1": "z", "w2": "daleki"}))
+    assert check_prepositions(d, gloss({"w1": "ku", "w2": "daleka"}))
+
+
 def test_preposition_ignores_an_absorbed_dependency_marker():
     d = doc(
         [

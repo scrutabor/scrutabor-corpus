@@ -100,9 +100,7 @@ def check(doc: dict, layer: dict) -> list[str]:
                     )
 
     word_ids = [
-        word["id"]
-        for segment in doc.get("segments") or []
-        for word in segment.get("words") or []
+        word["id"] for segment in doc.get("segments") or [] for word in segment.get("words") or []
     ]
     for word_id in word_ids:
         entry = entries.get(word_id) or {}
@@ -113,7 +111,8 @@ def check(doc: dict, layer: dict) -> list[str]:
                 errors.append(f"{doc['id']}:{word_id}:{language}: gloss must be nonempty")
             elif TECHNICAL_GLOSS.fullmatch(direct):
                 errors.append(
-                    f"{doc['id']}:{word_id}:{language}: visible gloss {direct!r} is a technical marker"
+                    f"{doc['id']}:{word_id}:{language}: visible gloss {direct!r} "
+                    "is a technical marker"
                 )
         if bool(direct) == in_alignment:
             errors.append(

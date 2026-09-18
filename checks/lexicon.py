@@ -23,6 +23,13 @@ LEMMATA_ENTRY_KEYS = {
 }
 SENSE_ENTRY_KEYS = {"senses", "note", "note_citations", "derivatives", "analysis"}
 
+# Dictionary export notation is not a reader-facing meaning. Ordinary
+# parentheses ("shoot (of a vine)") and lexical slash alternatives remain valid.
+SENSE_APPARATUS = re.compile(
+    r"=>|(?<!\w)~|\?\?|\bw/|\b(?:GEN|DAT|ACC|ABL|NOM|VOC|PASS|PRES|PERF|PERFDEF|COMP|ADJ|ECC)\b"
+    r"|\bL\+S\b|\((?:Cal|Bee)\)|^[A-Z]:"
+)
+
 # A head is dictionary punctuation plus word tokens; ending fragments ("-æ",
 # "-a") and the deponent auxiliary carry no accent rules of their own.
 HEAD_TOKEN_RE = re.compile(r"^[A-Za-zÁÉÍÓÚÝáéíóúýÆæŒœǼǽËë\u0301]+$")
@@ -178,6 +185,12 @@ def lint_senses(lang, entries, lemmata, required=None):
             errors.append(
                 f"lexicon:{lang}:{lemma}: {len(senses)} senses — SCHEMA.md allows at most 4"
             )
+        for sense in senses or []:
+            if isinstance(sense, str) and SENSE_APPARATUS.search(sense):
+                errors.append(
+                    f"lexicon:{lang}:{lemma}: sense {sense!r} contains dictionary apparatus; "
+                    "write a reader-facing meaning"
+                )
         derivs = e.get("derivatives")
         if derivs is not None:
             if not derivs or not all(isinstance(d, str) and d for d in derivs):
@@ -338,6 +351,9 @@ def check_note_prose(lex: dict) -> list[str]:
 # missing theirs until 2026-08-17, indistinguishable from the Hebrew names
 # beside them.
 INDECLINABLE = {
+    "Aram",  # Hebrew personal name, unchanged in subject and object positions
+    "Apollo",  # Apollos in Acts 19, not the classical god Apollo, Apollinis
+    "Ierosolyma",  # plural neuter / singular feminine: no single declension
     "Agar",
     "Aaron",
     "Abba",
@@ -353,7 +369,7 @@ INDECLINABLE = {
     "Beelzebub",
     "Beniamin",
     "Booz",
-    "bethlehem",
+    "Bethlehem",
     "Capharnaum",
     "Cephas",
     "Cleophas",
@@ -365,7 +381,7 @@ INDECLINABLE = {
     "Esron",
     "Ezechias",
     "Epha",
-    "ephraim",
+    "Ephraim",
     "Gad",
     "Genesareth",
     "Gethsemani",

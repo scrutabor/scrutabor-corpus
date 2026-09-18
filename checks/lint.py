@@ -160,6 +160,14 @@ LAYOUT_CHARS = {
 # (SCHEMA.md); divine titles are lowercase common nouns. Grows as texts
 # require — the Canon's two lists of saints added most of these.
 PROPER_LEMMAS = {
+    "Aram",
+    "Cana",
+    "Bethlehem",
+    "Cappadocia",
+    "Mesopotamia",
+    "Pamphylia",
+    "Calvaria",
+    "Ephraim",
     "Agar",
     "Alexandrinus",
     "Arabia",
@@ -817,9 +825,7 @@ def lint_text(doc):
         if not FORM_RE.match(f):
             errors.append(f"{wid}: charset violation in form {f!r}")
         post = w.get("post")
-        if post is not None and (
-            not isinstance(post, str) or not POST_RE.fullmatch(post)
-        ):
+        if post is not None and (not isinstance(post, str) or not POST_RE.fullmatch(post)):
             errors.append(
                 f"{wid}: post={post!r} is not one trailing punctuation mark; "
                 "rubrics, brackets, and source artifacts must be modeled or removed"

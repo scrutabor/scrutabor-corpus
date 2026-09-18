@@ -33,12 +33,12 @@
         { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w013", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w014", "form": "dominántium", "lemma": "dominor", "morph": { "pos": "verb", "case": "gen", "gender": "m", "number": "pl", "tense": "pres", "voice": "dep", "mood": "part", "conj": 1 }, "post": ".", "head": "w011" },
-        { "id": "w015", "form": "Regína", "lemma": "regina", "morph": { "case": "voc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w015", "form": "Regína", "lemma": "regina", "morph": { "case": "nom", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w016", "form": "adstat", "lemma": "adsto", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 1 } },
         { "id": "w017", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w018" },
         { "id": "w018", "form": "déxteram", "lemma": "dextera", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w019", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": "," },
-        { "id": "w020", "form": "ornáta", "lemma": "orno", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "head": "w021" },
+        { "id": "w020", "form": "ornáta", "lemma": "orno", "morph": { "pos": "verb", "case": "nom", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "head": "w015" },
         { "id": "w021", "form": "auro", "lemma": "aurum", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 2 } },
         { "id": "w022", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w023" },
         { "id": "w023", "form": "Ophir", "lemma": "Ophir", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m" }, "post": "." }
@@ -75,7 +75,6 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w020": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
     }
   },

@@ -56,6 +56,7 @@ from checks.notes import check as check_notes
 from checks.orthography import check as check_orthography
 from checks.orthography import check_lexicon as check_orthography_lexicon
 from checks.participation import check_doc as check_participation
+from checks.participle_inflection import check as check_participle_inflection
 from checks.polish import check as check_polish
 from checks.prose import check as check_prose
 from checks.prose import check_lexicon as check_prose_lexicon
@@ -67,6 +68,7 @@ from checks.syntax import coverage as syntax_coverage
 from checks.transcription import check_transcriptions
 from checks.translation_basis import check as check_translation_basis
 from checks.translation_provenance import check as check_translation_provenance
+from checks.translation_punctuation import check as check_translation_punctuation
 from checks.uncertainty import check as check_uncertainty
 from checks.uncertainty import exposure, readings, stored
 from checks.vocalised import check as check_vocalised
@@ -233,6 +235,7 @@ def main(text_id: str) -> int:
     # (schema 0.13.0, checks/syntax.py). `syntax` counts what is declared;
     # a modifier with no head yet is work outstanding, not a failure.
     all_errors += check_syntax(doc)
+    all_errors += check_participle_inflection(doc)
     syn_declared, syn_total = syntax_coverage(doc)
     all_errors += duplicate_keys(text_path)
     for language in store.languages_for(CORPUS, text_id):
@@ -247,6 +250,7 @@ def main(text_id: str) -> int:
     for _lang, gdoc in sorted(gloss_layers.items()):
         gloss_docs.append(gdoc)
         all_errors += check_prose(gdoc)
+        all_errors += check_translation_punctuation(gdoc)
         all_errors += lint_gloss(gdoc, doc)
         all_errors += check_interlinear_quality(doc, gdoc)
         # The gloss line read AS POLISH: a preposition governing the case

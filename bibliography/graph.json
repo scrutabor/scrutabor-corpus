@@ -8692,8 +8692,8 @@
       "locator": {
         "section": "pinned source key Sancti/10-DU; resolved section [Lectio] with declared inherited references"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
+      "claim": "The pinned Latin Mass data provide a derived comparison witness. The transcription error creatúra is retained in that witness and explicitly corrected against the typical edition.",
+      "verified_on": "2026-09-18",
       "decision": "RETAIN",
       "evidence_sha256": "fde044df8be6b9f539df6cb80f6af4f33d4d392eb32c253f64341aa8b5a6c969"
     },
@@ -8707,12 +8707,12 @@
         "text": "proprium.d-n-iesu-christi-regis-epistola"
       },
       "locator": {
-        "printed": "p. 712",
-        "scan": "leaf n792 / PDF p. 793",
+        "printed": "pp. 712–713",
+        "scan": "leaves n792–n793 / PDF pp. 793–794",
         "page_url": "https://archive.org/download/missale_romanum-1962/page/n792/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
+      "claim": "Both cited page images were rechecked. The printed genitive creatúræ corrects the electronic witness's creatúra; capitalization and punctuation differences are recorded in the apparatus.",
+      "verified_on": "2026-09-18",
       "decision": "RETAIN",
       "evidence_sha256": "2f920d649ac002a473877ecb55129385da83afc4deb9831b10fdfc3407ba237b"
     },
@@ -42571,7 +42571,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "b0cb15af44670cc4f22d7026e2c2f2f583b53d78458f3e22f752bf6a18d8e0be",
+      "transcription_sha256": "00555de0805af90fc63ea0a0b3143fc61ee31bd274fe7c5abe9b41b486f58728",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
     },
@@ -42583,7 +42583,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "b0cb15af44670cc4f22d7026e2c2f2f583b53d78458f3e22f752bf6a18d8e0be",
+      "transcription_sha256": "07eab4277f51a4d2de465094a2569eb3f7ba4f6e8dd9251fe3eb67af45087aba",
       "orthography_profile": "exact-page-image",
       "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
     },
@@ -64808,14 +64808,18 @@
       "id": "collation.proprium.d-n-iesu-christi-regis-epistola.mr1962-do44667ff",
       "text": "proprium.d-n-iesu-christi-regis-epistola",
       "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
-      "selected_text_sha256": "9244790792189061efb3c7ff929260417e3f4ea9f33a1e6fc656c099971150bb",
+      "selected_text_sha256": "71a6225a293a49a50f6d709b124d1642c37e5793fe35dbfa31d5052bf9a39db0",
       "witnesses": [
         "witness.proprium.d-n-iesu-christi-regis-epistola.do44667ff",
         "witness.proprium.d-n-iesu-christi-regis-epistola.mr1962"
       ],
       "apparatus": {
-        "entries": 0,
-        "classes": []
+        "entries": 10,
+        "classes": [
+          "capitalization",
+          "orthography",
+          "punctuation"
+        ]
       }
     },
     {

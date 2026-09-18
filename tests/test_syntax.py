@@ -69,6 +69,22 @@ def test_relative_agrees_with_its_verb_in_number():
     assert any("subject of" in e for e in check(bad))
 
 
+def test_de_longe_has_an_adverbial_complement_not_an_invented_case():
+    words = [
+        w("w1", "de", "prep", lemma="de", head="w2"),
+        w("w2", "longe", "adv", lemma="longe"),
+    ]
+    assert check(doc(words)) == []
+    words[0]["morph"]["governs"] = "abl"
+    assert any("not a nominal" in e for e in check(doc(words)))
+    words[0]["morph"].pop("governs")
+    words[1]["lemma"] = "bene"
+    assert any("not a nominal" in e for e in check(doc(words)))
+    words[1]["lemma"] = "longe"
+    words[0]["lemma"] = "in"
+    assert any("not a nominal" in e for e in check(doc(words)))
+
+
 def test_oblique_relative_names_its_nominal_antecedent():
     bad = doc(
         [

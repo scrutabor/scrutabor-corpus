@@ -24,7 +24,7 @@
         { "id": "w003", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w004" },
         { "id": "w004", "form": "his", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "post": "," },
         { "id": "w005", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
-        { "id": "w006", "form": "dicta", "lemma": "dico", "morph": { "case": "acc", "conj": 3, "gender": "f", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
+        { "id": "w006", "form": "dicta", "lemma": "dico", "morph": { "case": "nom", "conj": 3, "gender": "n", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w005" },
         { "id": "w007", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w008", "form": "mihi", "lemma": "ego", "morph": { "case": "dat", "number": "sg", "pos": "pron" }, "post": ":" },
         { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w010" },
@@ -71,10 +71,7 @@
       "apparatus": "witnesses/proprium.dominica-xviii-post-pentecosten-graduale/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
-    "words": {
-      "w006": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
-    }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
   },
   "localization": {
     "about": true

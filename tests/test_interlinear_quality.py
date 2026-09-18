@@ -27,6 +27,13 @@ def test_duplicated_english_plural_suffix_is_rejected():
     assert check(DOC, layer("en", "ages")) == []
 
 
+def test_dictionary_asides_do_not_leak_into_inline_glosses():
+    for text in ("the Lord (of God)", "you (more than one)", "persecution (esp. of Christians)"):
+        assert check(DOC, layer("en", text))
+    for text in ("the Lord", "you", "persecution", "is risen"):
+        assert check(DOC, layer("en", text)) == []
+
+
 def test_structural_absorption_marker_is_rejected():
     assert check(DOC, layer("en", "[included]"))
     assert check(DOC, layer("pl", "[dopełnienie]"))

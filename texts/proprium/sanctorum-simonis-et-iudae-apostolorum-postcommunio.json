@@ -29,7 +29,7 @@
         { "id": "w008", "form": "beátis", "lemma": "beatus", "morph": { "case": "abl", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w009" },
         { "id": "w009", "form": "Apóstolis", "lemma": "apostolus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "pl", "decl": 2 } },
         { "id": "w010", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w011", "form": "Simóne", "lemma": "simus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "head": "w013" },
+        { "id": "w011", "form": "Simóne", "lemma": "Simon", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w013", "form": "Iuda", "lemma": "Iuda", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg" }, "post": "," },
         { "id": "w014", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
@@ -78,6 +78,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
     }
   },

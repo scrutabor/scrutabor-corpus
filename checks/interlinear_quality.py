@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import re
+from itertools import pairwise
 
 from checks.interlinear import TECHNICAL_GLOSS
 
 CORRUPT_EXACT = {"Ń", "NIEROZSTRZYGNIĘTE", "UNRESOLVED"}
 ENGLISH_CHOICE_LIST = re.compile(r"[,;/]")
 CORRUPT_ENGLISH_PLURAL = re.compile(r"\b(?:ageses|taxeses)\b", re.IGNORECASE)
+DICTIONARY_GLOSS_ASIDES = re.compile(r"\((?:esp\.|more than one\b|of God\b)", re.IGNORECASE)
 DUPLICATED_FUTURE_AUXILIARY = {
     "pl": re.compile(r"\b(?:jest|są)\s+(?:będzie|będą)\b", re.IGNORECASE),
     "en": re.compile(r"\b(?:is|are)\s+(?:shall|will)\b", re.IGNORECASE),
@@ -27,7 +29,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
     # produced by build_reader.layers uses the compatibility key ``lang``.
     # Accept both so the repository gate checks the same bytes as direct unit
     # tests and reader builds.
-    language = gloss.get("language") or gloss.get("lang")
+    language = gloss.get("language") or gloss.get("lang") or ""
     for word_id, entry in (gloss.get("words") or {}).items():
         text = (entry or {}).get("gloss") or ""
         stripped = text.strip()
@@ -42,6 +44,11 @@ def check(doc: dict, gloss: dict) -> list[str]:
             )
         if language != "en":
             continue
+        if DICTIONARY_GLOSS_ASIDES.search(stripped):
+            errors.append(
+                f"{doc['id']}:{word_id}: English gloss {stripped!r} contains a dictionary "
+                "aside; keep the contextual rendering here and explanation in its own layer"
+            )
         if ENGLISH_CHOICE_LIST.search(stripped):
             errors.append(
                 f"{doc['id']}:{word_id}: English gloss {stripped!r} reads as a "
@@ -57,7 +64,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
     if pattern:
         for segment in doc.get("segments") or []:
             latin_words = segment.get("words") or []
-            for first, second in zip(latin_words, latin_words[1:]):
+            for first, second in pairwise(latin_words):
                 morphs = (first.get("morph") or {}, second.get("morph") or {})
                 is_future_periphrastic = any(
                     word.get("lemma") == "sum"
