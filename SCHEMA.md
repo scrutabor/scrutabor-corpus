@@ -449,6 +449,18 @@ localization, editorial
   the person leading it: unlike `sacerdos`, this does not imply ordination,
   and is therefore suitable for a family or other lay group. A devotional
   prayer takes no clerical attribution from a bare V. marker.
+  When literal source coverage fails, `checks/attribution_alignment.py` can
+  separately establish attribution across exact declared one-to-one variants.
+  This requires one complete verse, one unmarked explicitly bound source line,
+  successful exact raw validation and full collation, and one complete
+  unmodified witness supporting the entire selected reading. Every word is
+  aligned ordinally; differing forms need exact source-specific rulings.
+  Partial witnesses, corrigenda, recension removals, omissions, length-changing
+  variants and multiline readings are ineligible. The result retains word
+  mappings and source coordinates; the tool reports `ALIGNED`, never literal
+  agreement. This authorizes only the existing unmarked-celebrant attribution;
+  voice remains independently derived from the rubrics. Unresolved sources
+  remain `UNSOURCED` and are never written.
   `verse` is an optional positive integer for a segment whose conventional
   biblical verse number is known. It belongs to the corpus, not to an app-side
   slug table, and must be unique within the text.

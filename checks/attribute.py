@@ -32,7 +32,9 @@ and the rule that supplies the celebrant for text the Ordo leaves unmarked
 supplies him for a line the Ordo marks M. Every text is therefore tested
 against its own declared range before anything is proposed for it: one
 that no longer holds its own words is REPORTED as UNSOURCED, keeps
-whatever it already has, and is never written. See span_covers.
+whatever it already has, and is never written. See span_covers. A separately
+verified one-to-one alignment across declared variants can establish performer
+evidence for a complete unmarked reading without claiming textual identity.
 """
 
 import difflib
@@ -42,6 +44,7 @@ import sys
 import unicodedata
 from pathlib import Path
 
+from checks.attribution_alignment import AttributionAlignment, align_unmarked_reading
 from checks.orations import base_attributes as oration_attributes
 from checks.raw_binding import BindingError, resolve_binding
 
@@ -600,16 +603,31 @@ def align_speakers(doc, lines) -> dict[str, str]:
     return out
 
 
+def _coverage(doc: dict) -> tuple[bool, AttributionAlignment | None]:
+    sourced = span_covers(doc)
+    return sourced, None if sourced else align_unmarked_reading(doc, CORPUS)
+
+
 def propose(doc, disagreements: list[str] | None = None) -> dict[str, dict]:
+    return _propose(doc, disagreements, *_coverage(doc))
+
+
+def _propose(
+    doc: dict,
+    disagreements: list[str] | None,
+    sourced: bool,
+    alignment: AttributionAlignment | None,
+) -> dict[str, dict]:
     is_mass = doc.get("category") in {"ordinarium", "proprium"}
-    lines = marked_lines(doc["id"], mass=is_mass)
+    # The new path uses only its one verified, unmarked source line. Never
+    # borrow pooled markers from other witnesses for source-specific alignment.
+    lines = [] if alignment is not None else marked_lines(doc["id"], mass=is_mass)
     positional = align_speakers(doc, lines)
     # If the declared range no longer holds this text's words, the markers
     # read out of it are the wrong markers, and the rule that supplies the
     # celebrant for unmarked text would be supplying him for text the book
     # marks otherwise. Propose only what was matched positionally, and let
     # main report the text.
-    sourced = span_covers(doc)
     ruled = voice_ruling(doc)
     # General rubric rulings apply only after the actual body/tail/answer
     # boundaries are modeled. Never infer a public response inside old prose.
@@ -628,6 +646,8 @@ def propose(doc, disagreements: list[str] | None = None) -> dict[str, dict]:
             proposal["speaker"] = orations[seg["id"]]["speaker"]
         elif ref_s in SPEAKER_RULINGS:
             proposal["speaker"] = SPEAKER_RULINGS[ref_s][0]
+        elif alignment is not None:
+            proposal["speaker"] = "sacerdos"
         elif seg["id"] in positional:
             proposal["speaker"] = positional[seg["id"]]
         else:
@@ -694,18 +714,22 @@ def main() -> None:
     total = attributed = voiced = 0
     disagreements: list[str] = []
     unsourced: list[str] = []
+    aligned: list[tuple[str, AttributionAlignment]] = []
     for path in sorted((CORPUS / "texts").rglob("*.json")):
         doc = json.loads(path.read_text(encoding="utf-8"))
-        stale = not span_covers(doc)
+        sourced, alignment = _coverage(doc)
+        stale = not sourced and alignment is None
         if stale:
             unsourced.append(doc["id"])
-        proposal = propose(doc, disagreements)
+        elif alignment is not None:
+            aligned.append((doc["id"], alignment))
+        proposal = _propose(doc, disagreements, sourced, alignment)
         verses = [s for s in doc["segments"] if s.get("type") == "verse" and s.get("words")]
         total += len(verses)
         attributed += sum(1 for p in proposal.values() if "speaker" in p)
         voiced += sum(1 for p in proposal.values() if "voice" in p)
-        # A text whose declared range no longer holds its words is READ but
-        # never WRITTEN. The proposal for it is still shown, because it is
+        # Without direct coverage or a verified source-specific alignment, a
+        # text is READ but never WRITTEN. Its proposal is still shown, because it is
         # what a person needs in order to fix the range; it is not applied,
         # because what is already in the file was written when the range was
         # right, and a run that quietly replaced it with a thinner reading
@@ -770,13 +794,21 @@ def main() -> None:
             path.write_text("".join(out), encoding="utf-8")
     for line in disagreements:
         print(f"DISAGREES  {line}")
+    for text_id, alignment in aligned:
+        print(
+            f"ALIGNED  {text_id}: attribution via {alignment.witness_id} "
+            f"({alignment.source_path.relative_to(CORPUS)}:{alignment.source_line}; "
+            f"{alignment.substantive_variants} substantive variants); "
+            "not literal source coverage"
+        )
     for text_id in unsourced:
         print(f"UNSOURCED  {text_id}: the declared line range no longer holds this text's words")
     verb = "applied" if write else "proposed"
     print(
         f"\n{verb} {attributed}/{total} speakers, {voiced}/{total} voices"
         f" ({len(disagreements)} rubric/law disagreements,"
-        f" {len(unsourced)} texts with a stale line range)"
+        f" {len(unsourced)} texts with a stale line range,"
+        f" {len(aligned)} texts with source-specific attribution alignment)"
     )
 
 
