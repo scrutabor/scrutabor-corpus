@@ -1,4 +1,4 @@
-# Corpus schema v0 (0.20.0)
+# Corpus schema v0 (0.21.0)
 
 Three semantic layers: language-neutral Latin, per-language gloss/editorial
 content, and a corpus-wide lexicon. Since 0.16.0 each Latin text is a neutral
@@ -406,7 +406,7 @@ localization, editorial
   an override that restates its default is a lint error, as is a
   `analysis_defaults_words` identical to `analysis_defaults`.
 - Segment: `{ id, type: "verse"|"rubric", verse?, speaker?, voice?, delivery?,
-  text? (rubric Latin), words?[] }`. **`speaker`** (since 0.9.0) is who says it —
+  parentheses?[], text? (rubric Latin), words?[] }`. **`speaker`** (since 0.9.0) is who says it —
   `sacerdos`, `ductor`, `minister`, `populus`, `omnes`, `schola` — and **`voice`**
   is how loudly: `clara` (aloud), `submissa` (raised but not full, the
   *elata aliquantulum voce* of Dómine non sum dignus), `secreto`
@@ -495,6 +495,33 @@ localization, editorial
   the devotional prayers this corpus carries — the Leonine prayers, the
   Marian antiphons — take nothing from it. `run_checks` reports the coverage
   as `participation=N`.
+- Segment **`parentheses`** (since 0.21.0) records genuine paired punctuation
+  in the selected Latin, not directions, optional readings or target-language
+  prose. Omit the field when unused. Otherwise it is a nonempty array of
+  `{ "from": "w167", "through": "w170", "closing"?: "after-post" }`.
+  Both inclusive endpoints must be live words in the same verse. Ranges follow
+  document order (not numerical IDs) and must be sorted and disjoint: no
+  duplicate, nested, crossing, shared-endpoint or cross-segment ranges. A
+  single-word range is valid. No other keys or delimiter strings are accepted.
+  The opening precedes the first lexical form; the closing normally precedes
+  the last word's ordinary `post`, as in `(verbum),`. Explicit `after-post`
+  instead gives `(verbum,)` and requires an actual valid `post` mark. Do not
+  store an explicit default or empty array. Two ordinary marks around a
+  closing, nesting, and cross-verse pairs require a future explicit contract,
+  not silent deletion of attested punctuation.
+  `checks/punctuation.py` projects exact prefix/form/suffix faces for collation
+  and apparatus quotes, leaving every lexical word object and ID intact.
+  Current translation-source payloads include the range field only when
+  present; adding, moving or changing a pair invalidates that source binding.
+  Existing payloads without ranges remain unchanged. Shape validation is not
+  proof of a source reading. Raw-source framing adapters have a separate
+  contract: their removal of bracketed directions cannot establish the
+  integrity of a sacred parenthetical clause. Such raw sources need explicit
+  source-framing support before that path can be used as evidence.
+  Reader 5.7.0 transports the range as segment metadata, without new words or
+  compact word fields. A reader-controlled excerpt must extend to include
+  every intersected pair and render the real marks outside lexical forms;
+  editorial ellipses follow the complete projected source, not a half-pair.
 - Word: `{ id, form, post?, lemma, morph, analysis? }`. `post` = exactly one
   trailing punctuation mark rendered after the word (`,` `;` `:` `.` `?`
   `!`). It never carries a bracket, rubric, source marker, or two marks.
@@ -608,7 +635,8 @@ actual readings exactly, including their punctuation:
   different-recension reading with a different number of words. `at` and
   `through` name the inclusive first and last stable word IDs **in document
   order**, not numerical ID order. `ours` is the exact space-joined sequence
-  of their `form` + `post` values; each `witnesses` value quotes that witness's
+  of their exact projected source tokens (`form` + `post` with any explicit
+  paired punctuation); each `witnesses` value quotes that witness's
   entire actual phrase, including punctuation. A nonempty `ruling` explains
   the selection. For example:
 

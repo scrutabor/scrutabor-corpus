@@ -78,6 +78,7 @@ from pathlib import Path
 from typing import Any
 
 from .normalize import substantive
+from .punctuation import word_faces
 
 # Letter-difference classes quote exact readings and are counted separately.
 RULED_CLASSES = ("orthography", "inflection", "substantive")
@@ -140,12 +141,11 @@ def load_witness(path: Path) -> tuple[dict[str, Any], str]:
 
 
 def corpus_tokens(doc):
-    """Verse tokens in document order as (word_id, form+post). Rubrics are
+    """Exact source tokens in document order as (word_id, projected face). Rubrics are
     not collated — they are edition-specific framing, flagged separately."""
     toks = []
     for seg in doc["segments"]:
-        for w in seg.get("words") or []:
-            toks.append((w["id"], w["form"] + w.get("post", "")))
+        toks.extend((face.id, face.text) for face in word_faces(seg))
     return toks
 
 
@@ -166,7 +166,7 @@ def _spans(entries, toks, errors):
             errors.append(f"{label}: range runs backwards in document order")
             continue
         if entry["ours"] != " ".join(token for _, token in toks[first : last + 1]):
-            errors.append(f"{label}: ours must quote the exact complete form+post sequence")
+            errors.append(f"{label}: ours must quote the exact complete source-token sequence")
             continue
         if not isinstance(entry.get("ruling"), str) or not entry["ruling"].strip():
             errors.append(f"{label}: a nonempty ruling is required")
@@ -333,7 +333,31 @@ def collate(doc, witness_dir: Path):
     # run_checks reads it and because a finding that is worth showing and
     # not worth failing on is a real category — there just isn't one today.
     warnings: list[str] = []
-    toks = corpus_tokens(doc)
+    try:
+        toks = corpus_tokens(doc)
+    except ValueError as error:
+        # No collation was performed: invalid ranges cannot be ignored to
+        # manufacture an unpunctuated selected reading or a successful count.
+        return (
+            [str(error)],
+            warnings,
+            {
+                key: 0
+                for key in (
+                    "witnesses",
+                    "partial",
+                    "words",
+                    "variants_adjudicated",
+                    "corrigenda",
+                    "orthographic",
+                    "inflections",
+                    "substantive_variants",
+                    "substantive_spans",
+                    "recensions",
+                    "omissions",
+                )
+            },
+        )
     ours_raw = [t for _, t in toks]
     ours_sub = substantive(" ".join(ours_raw)).split()
 

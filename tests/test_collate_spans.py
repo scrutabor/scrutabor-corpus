@@ -374,7 +374,7 @@ def test_canonical_post_punctuation_is_included_in_ours(tmp_path):
     errors, _, _ = check(tmp_path, doc=doc, pages=pages, entries=[ruling(ours=CHOSEN + ",")])
     assert errors == []
     errors, _, _ = check(tmp_path, doc=doc, pages=pages)
-    assert any("exact complete form+post" in error for error in errors)
+    assert any("exact complete source-token" in error for error in errors)
 
 
 def test_unsupported_or_inaccurate_omission_alongside_span_is_rejected(tmp_path):

@@ -13,7 +13,7 @@ def subject_ellipsis():
     return {
         "id": "proprium.example",
         "category": "proprium",
-        "schema_version": "0.20.0",
+        "schema_version": "0.21.0",
         "localization": {"about": True, "explanations": {"w001": {}}},
         "segments": [
             {

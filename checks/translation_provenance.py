@@ -104,6 +104,10 @@ def source_payload(segment: dict) -> dict:
         "speaker": segment.get("speaker"),
         "voice": segment.get("voice"),
         **({"delivery": segment["delivery"]} if "delivery" in segment else {}),
+        # Preserve exact legacy payloads when no pair is present. Including
+        # the explicit ranges binds placement as well as the displayed text;
+        # shape errors are reported by the neutral/lint gates, not normalized.
+        **({"parentheses": segment["parentheses"]} if "parentheses" in segment else {}),
         "words": [
             {
                 key: word[key]

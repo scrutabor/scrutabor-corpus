@@ -32,7 +32,8 @@ from build_reader import bibliography, store
 # 5.4.0 carries language-specific many-to-one and zero interlinear alignments.
 # 5.5.0 preserves explicit elliptical-predicate annotations.
 # 5.6.0 also carries a nominative participle's understood-subject annotation.
-SCHEMA = "5.6.0"
+# 5.7.0 carries explicit same-verse source parentheses as segment ranges.
+SCHEMA = "5.7.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.

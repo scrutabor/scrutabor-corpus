@@ -8,6 +8,7 @@ from pathlib import Path
 from build_reader import store
 from checks.interlinear import check as check_interlinear_alignment
 from checks.lint import lint_citations
+from checks.punctuation import check_parentheses
 
 LANGUAGE_RE = re.compile(r"^[a-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$")
 CORE_LOCALIZATION_KEYS = {
@@ -92,7 +93,7 @@ def check_manifests(corpus: Path) -> list[str]:
 
 
 def check_core(core: dict) -> list[str]:
-    errors: list[str] = []
+    errors = [error for segment in core.get("segments", []) for error in check_parentheses(segment)]
     text_id = core.get("id", "?")
     localization = core.get("localization")
     if not isinstance(localization, dict):

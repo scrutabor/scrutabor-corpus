@@ -17,6 +17,7 @@ from .normalize import (
     strip_accents,
     syllable_count,
 )
+from .punctuation import check_parentheses
 
 MORPH_ENUMS = {
     "pos": {"verb", "noun", "adj", "pron", "adv", "conj", "prep", "intj"},
@@ -812,7 +813,7 @@ def stress_position(where: str, form: str) -> list[str]:
 
 
 def lint_text(doc):
-    errors = []
+    errors = [error for segment in doc["segments"] for error in check_parentheses(segment)]
     words = [w for s in doc["segments"] for w in s.get("words") or []]
     if not words:
         errors.append("no words in document — refusing to pass on zero")
