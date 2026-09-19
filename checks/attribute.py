@@ -43,6 +43,7 @@ import unicodedata
 from pathlib import Path
 
 from checks.orations import base_attributes as oration_attributes
+from checks.raw_binding import BindingError, resolve_binding
 
 CORPUS = Path(__file__).resolve().parent.parent
 
@@ -399,13 +400,17 @@ def _raw_archive_for(declared_path: str) -> Path | None:
     return max(candidates)[4] if candidates else None
 
 
-def witness_ranges(text_id: str) -> list[tuple[Path, int, int]]:
-    """(raw file, first line, last line) for every declared source span."""
-    out: list[tuple[Path, int, int]] = []
+def _source_ranges(text_id: str) -> list[tuple[Path, int, int, bool]]:
+    """Source spans with their explicit/legacy framing policy preserved."""
+    out: list[tuple[Path, int, int, bool]] = []
     wdir = CORPUS / "witnesses" / text_id
     if not wdir.is_dir():
         return out
     for wf in sorted(wdir.glob("*.txt")):
+        bound = resolve_binding(wf, CORPUS)
+        if bound is not None:
+            out.extend((raw, first, last, True) for raw, first, last in bound.spans)
+            continue
         header = wf.read_text(encoding="utf-8")
         # A comma-separated range is intentionally read as one enclosing
         # span.  It may include a rubric between the named lines; that is a
@@ -413,15 +418,23 @@ def witness_ranges(text_id: str) -> list[tuple[Path, int, int]]:
         for declared_path, numbers in _range_declarations(header):
             raw = _raw_archive_for(declared_path)
             if raw:
-                out.append((raw, min(numbers), max(numbers)))
+                out.append((raw, min(numbers), max(numbers), False))
     return out
+
+
+def witness_ranges(text_id: str) -> list[tuple[Path, int, int]]:
+    """(raw file, first line, last line) for every declared source span."""
+    return [(raw, first, last) for raw, first, last, _ in _source_ranges(text_id)]
 
 
 def marked_lines(text_id: str, mass: bool = True) -> list[tuple[str, str]]:
     """(speaker, flattened text) for the marked lines of this text's own
     span in the archived sources; falls back to every archive when a
     witness records no line range."""
-    spans = witness_ranges(text_id)
+    try:
+        spans = witness_ranges(text_id)
+    except BindingError:
+        return []  # Invalid explicit evidence must never scan unrelated archives.
     files: list[list[str]] = []
     if spans:
         for raw, first, last in spans:
@@ -470,7 +483,10 @@ def span_covers(doc) -> bool:
     otherwise land INSIDE a segment and break it in two, which is what
     Te ígitur did the moment its range was written down correctly.
     """
-    spans = witness_ranges(doc["id"])
+    try:
+        spans = _source_ranges(doc["id"])
+    except BindingError:
+        return False
     if not spans:
         # A text that names no raw lines may use the deliberate whole-archive
         # fallback.  A text that *tries* to name them in unreadable syntax is
@@ -478,8 +494,16 @@ def span_covers(doc) -> bool:
         # verified provenance.
         return not _declares_ranges(doc["id"])
     span = ""
-    for raw, first, last in spans:
+    for raw, first, last, explicit in spans:
         lines = raw.read_text(encoding="utf-8").splitlines()[max(0, first - 1) : last]
+        if explicit:
+            # These are already verified textual lines, not a legacy span
+            # mixing sacred text with parenthetical rubrics or runtime calls.
+            # Keep every printed word, including words inside parentheses.
+            span += flatten(
+                " ".join(re.sub(r"^[SMVROsmvro]\.\s+", "", line.strip()) for line in lines)
+            )
+            continue
         # The archived Ordo interleaves directions and macro calls with the
         # words. Witness transcriptions strip both, so they cannot be allowed
         # to break an otherwise exact span. Inline parenthetical rubrics are

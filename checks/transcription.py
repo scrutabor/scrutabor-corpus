@@ -7,10 +7,9 @@ and name slots are not part of the transcribed prayer. The comparison keeps
 letters, accents, capitalization, ligatures, and comma placement exact.
 
 Most witnesses are one contiguous source excerpt and must occur as a whole.
-A few are explicitly composed from shared source blocks or repeat an antiphon;
-for those, every sentence-level clause must occur in the ordered union of the
-declared spans. This still catches the accent mutation that motivated the
-check without mistaking declared source expansion for a transcription error.
+A few legacy composites use clause membership in the declared spans; that
+fallback does not establish order or multiplicity. Explicit raw bindings use
+an exact complete ordered reading instead, with no clause fallback.
 """
 
 import re
@@ -18,6 +17,7 @@ import unicodedata
 from pathlib import Path
 
 from .attribute import _range_declarations, _raw_archive_for, declared_sources
+from .raw_binding import BindingError, resolve_binding
 
 
 def _signature(text: str, *, terminal_punctuation: bool) -> str:
@@ -74,6 +74,14 @@ def check_transcriptions(witness_dir: Path) -> tuple[list[str], int]:
             seasonal_alleluia = seasonal_mode(text)
         except ValueError as error:
             errors.append(f"{witness.name}: {error}")
+            continue
+        try:
+            bound = resolve_binding(witness, witness_dir.parent.parent)
+        except BindingError as error:
+            errors.append(f"{witness.name}: {error}")
+            continue
+        if bound is not None:
+            checked += 1
             continue
         declarations = _range_declarations(text)
         # A witness that names a local archive and gives no readable line range

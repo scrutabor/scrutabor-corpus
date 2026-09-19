@@ -29,6 +29,7 @@ import re
 import unicodedata
 from pathlib import Path
 
+from .raw_binding import BindingError, load_registry, resolve_binding
 from .transcription import OPTIONAL_ALLELUIA, seasonal_mode
 
 RAW_REF = re.compile(r"(?:\.\./raw/|witnesses/raw/)(\S+?\.txt)")
@@ -56,6 +57,10 @@ def body_of(path: Path) -> str:
 
 def check(root: Path) -> list[str]:
     """One message per bound witness with missing archives or unattested words."""
+    try:
+        load_registry(root)
+    except BindingError as error:
+        return [str(error)]
     raw_dir = root / "witnesses" / "raw"
     archives: dict[str, dict[str, set[str]]] = {}
     for path in raw_dir.glob("*.txt"):
@@ -69,8 +74,15 @@ def check(root: Path) -> list[str]:
         }
     errors: list[str] = []
     for path in sorted((root / "witnesses").rglob("*.txt")):
-        if path.parent.name == "raw":
+        if path.is_relative_to(raw_dir):
             continue
+        try:
+            bound = resolve_binding(path, root)
+        except BindingError as error:
+            errors.append(f"{path}: {error}")
+            continue
+        if bound is not None:
+            continue  # Exact ordered comparison is stronger than the legacy word pool.
         head = "\n".join(
             line for line in path.read_text(encoding="utf-8").splitlines() if line.startswith("#")
         )

@@ -1,7 +1,7 @@
 {
   "schema_version": "0.21.0",
   "id": "proprium.transfiguratio-domini-graduale",
-  "title": "Speciosus forma præ fíliis hóminum: diffúsa est",
+  "title": "Speciósus forma præ fíliis hóminum: diffúsa est",
   "category": "proprium",
   "section": "missa-catechumenorum",
   "variant": "transfiguratio-domini",
@@ -19,17 +19,17 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Specíosus", "lemma": "speciosus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
-        { "id": "w002", "form": "forma", "lemma": "forma", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w001", "form": "Speciósus", "lemma": "speciosus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "ellipsis": "predicate" },
+        { "id": "w002", "form": "forma", "lemma": "forma", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w003", "form": "præ", "lemma": "prae", "morph": { "governs": "abl", "pos": "prep" }, "head": "w004" },
         { "id": "w004", "form": "fíliis", "lemma": "filius", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "pl", "decl": 2 } },
         { "id": "w005", "form": "hóminum", "lemma": "homo", "morph": { "case": "gen", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" }, "post": ":" },
-        { "id": "w006", "form": "diffúsa", "lemma": "diffundo", "morph": { "pos": "verb", "case": "abl", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w006", "form": "diffúsa", "lemma": "diffundo", "morph": { "pos": "verb", "case": "nom", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w008" },
         { "id": "w007", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w008", "form": "grátia", "lemma": "gratia", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w008", "form": "grátia", "lemma": "gratia", "morph": { "case": "nom", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010" },
         { "id": "w010", "form": "lábiis", "lemma": "labium", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "pl", "decl": 2 } },
-        { "id": "w011", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "post": ".", "substantive": true },
+        { "id": "w011", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "post": ".", "head": "w010" },
         { "id": "w012", "form": "Eructávit", "lemma": "eructo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 1 } },
         { "id": "w013", "form": "cor", "lemma": "cor", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg", "decl": 3 } },
         { "id": "w014", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "head": "w013" },
@@ -63,9 +63,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "notes": "The source boundary and biblical citation are recorded in the witness files. The following Alleluia is a separate chant, excluded from this gradual.",
     "source": {
-      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "Transcribed from the directly viewed 1962 typical-edition gradual on printed page 627 and collated against the exact pinned Divinum Officium [Graduale] verses. The following Alleluia is outside this component. Accent differences are declared in the apparatus.",
       "witnesses": "witnesses/proprium.transfiguratio-domini-graduale/",
       "apparatus": "witnesses/proprium.transfiguratio-domini-graduale/apparatus.json"
     },
@@ -74,10 +74,39 @@
     "words": {
       "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w001": {
+
+      },
+      "w012": {
+
+      },
+      "w019": {
+
+      }
+    }
   }
 }

@@ -1,0 +1,190 @@
+{
+  "version": 1,
+  "archives": {
+    "rosary": {
+      "upstream": "web/www/missa/Latin/Sancti/10-07.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/10-07.txt",
+      "sha256": "5a340f328bbda0bfd484c3fd2925890beb6e9069c12d0ecf9f29b11b1b1b1c66"
+    },
+    "transfiguration": {
+      "upstream": "web/www/missa/Latin/Sancti/08-06.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/08-06.txt",
+      "sha256": "a242e939e4364b4a82fc63f02e81a8b3412168ad6cad76c97f07292d955d7d2d"
+    },
+    "visitation": {
+      "upstream": "web/www/missa/Latin/Sancti/07-02.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-Sancti-07-02.txt",
+      "sha256": "50ce2d7211d611714925a97be541a0adb02d7057338723dbf70a97790dc2ea93"
+    },
+    "common-c10": {
+      "upstream": "web/www/horas/Latin/Commune/C10.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C10.txt",
+      "sha256": "463fcb39e6d91e899a4da4c608ecb0d45d51f1d983769efceaad975a69ab108e"
+    },
+    "common-c11": {
+      "upstream": "web/www/horas/Latin/Commune/C11.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C11.txt",
+      "sha256": "cff3086e9c0f698b67c7fa0972d2b8cd7a953b4fe45fbf23100ec471db27c428"
+    },
+    "prayers": {
+      "upstream": "web/www/missa/Latin/Ordo/Prayers.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Ordo/Prayers.txt",
+      "sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    }
+  },
+  "bindings": {
+    "rosary-introit": {
+      "witness": "witnesses/proprium.beatae-mariae-virginis-a-rosario-introitus/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "rosary",
+          "first": 13,
+          "last": 18,
+          "section": "Introitus",
+          "section_line": 13
+        },
+        {
+          "archive": "prayers",
+          "first": 12,
+          "last": 14,
+          "section": "Gloria",
+          "section_line": 12
+        }
+      ],
+      "references": [
+        {
+          "archive": "rosary",
+          "line": 17,
+          "text": "&Gloria",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "rosary",
+          "first": 14,
+          "last": 14
+        },
+        {
+          "archive": "rosary",
+          "first": 16,
+          "last": 16
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14
+        },
+        {
+          "archive": "rosary",
+          "first": 18,
+          "last": 18
+        }
+      ]
+    },
+    "transfiguration-gradual": {
+      "witness": "witnesses/proprium.transfiguratio-domini-graduale/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "transfiguration",
+          "first": 29,
+          "last": 31,
+          "section": "Graduale",
+          "section_line": 28
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "transfiguration",
+          "first": 30,
+          "last": 31
+        }
+      ]
+    },
+    "visitation-introit": {
+      "witness": "witnesses/proprium.visitatio-beatae-mariae-virginis-introitus/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "visitation",
+          "first": 9,
+          "last": 10,
+          "section": "Introitus",
+          "section_line": 9
+        },
+        {
+          "archive": "common-c10",
+          "first": 201,
+          "last": 202,
+          "section": "Introitus",
+          "section_line": 201
+        },
+        {
+          "archive": "common-c11",
+          "first": 350,
+          "last": 356,
+          "section": "Introitus",
+          "section_line": 350
+        },
+        {
+          "archive": "prayers",
+          "first": 12,
+          "last": 14,
+          "section": "Gloria",
+          "section_line": 12
+        }
+      ],
+      "references": [
+        {
+          "archive": "visitation",
+          "line": 10,
+          "text": "@Commune/C10",
+          "target": 1
+        },
+        {
+          "archive": "common-c10",
+          "line": 202,
+          "text": "@Commune/C11",
+          "target": 2
+        },
+        {
+          "archive": "common-c11",
+          "line": 355,
+          "text": "&Gloria",
+          "target": 3
+        }
+      ],
+      "reading": [
+        {
+          "archive": "common-c11",
+          "first": 352,
+          "last": 352
+        },
+        {
+          "archive": "common-c11",
+          "first": 354,
+          "last": 354
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14
+        },
+        {
+          "archive": "common-c11",
+          "first": 356,
+          "last": 356
+        }
+      ]
+    }
+  }
+}

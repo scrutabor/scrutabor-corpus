@@ -41,13 +41,13 @@ class TestSpanCoverage:
     def test_a_text_that_declares_no_range_is_not_faulted_for_it(self, monkeypatch):
         # The tool then reads the whole archive, which is its own fallback
         # and not this check's business.
-        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [])
+        monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [])
         assert span_covers(a_text("Introibo ad altare Dei")) is True
 
     def test_a_range_holding_every_segment_passes(self, tmp_path, monkeypatch):
         raw = tmp_path / "src.txt"
         raw.write_text("S. Introíbo ad altáre Dei.\nM. Ad Deum, qui lætíficat.\n", encoding="utf-8")
-        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 2)])
+        monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [(raw, 1, 2, False)])
         assert span_covers(a_text("Introíbo ad altáre Dei", "Ad Deum qui lætíficat")) is True
 
     def test_a_range_one_line_short_does_not(self, tmp_path, monkeypatch):
@@ -56,7 +56,7 @@ class TestSpanCoverage:
         # the four words that decide whose voice it is.
         raw = tmp_path / "src.txt"
         raw.write_text("S. Introíbo ad altáre Dei.\nM. Ad Deum, qui lætíficat.\n", encoding="utf-8")
-        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
+        monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [(raw, 1, 1, False)])
         assert span_covers(a_text("Introíbo ad altáre Dei", "Ad Deum qui lætíficat")) is False
 
     def test_the_page_may_spell_it_its_own_way(self, tmp_path, monkeypatch):
@@ -64,7 +64,7 @@ class TestSpanCoverage:
         # comparison folds all three, or every witness would read as stale.
         raw = tmp_path / "src.txt"
         raw.write_text("S. Introíbo ad altáre Dei, et adjutórium.\n", encoding="utf-8")
-        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
+        monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [(raw, 1, 1, False)])
         assert span_covers(a_text("Introibo ad altare Dei et adiutórium")) is True
 
     def test_the_editions_name_slots_do_not_break_a_segment(self, tmp_path, monkeypatch):
@@ -77,7 +77,7 @@ class TestSpanCoverage:
             "una cum fámulo tuo Papa nostro N.p  et Antístite nostro N.b  et ómnibus.\n",
             encoding="utf-8",
         )
-        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
+        monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [(raw, 1, 1, False)])
         line = "una cum fámulo tuo Papa nostro et Antístite nostro et ómnibus"
         assert span_covers(a_text(line)) is True
 
@@ -89,7 +89,7 @@ class TestSpanCoverage:
             "in sanctas manus suas.\n",
             encoding="utf-8",
         )
-        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 3)])
+        monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [(raw, 1, 3, False)])
         assert span_covers(a_text("Qui prídie quam paterétur accépit panem in sanctas manus suas"))
 
     def test_markers_between_lines_and_display_capitals_are_framing(self, tmp_path, monkeypatch):
@@ -100,7 +100,7 @@ class TestSpanCoverage:
             "!!!HOC EST ENIM CORPUS MEUM.\n",
             encoding="utf-8",
         )
-        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 3)])
+        monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [(raw, 1, 3, False)])
         assert span_covers(a_text("Sed líbera nos a malo Amen", "Hoc est enim Corpus meum"))
 
     def test_only_an_explicit_apparatus_entry_licenses_a_source_spelling(
@@ -108,7 +108,7 @@ class TestSpanCoverage:
     ):
         raw = tmp_path / "src.txt"
         raw.write_text("S. Dei Genitríce María.\n", encoding="utf-8")
-        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
+        monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [(raw, 1, 1, False)])
         doc = a_text("Dei Genetríce María")
         doc["editorial"] = {"source": {"apparatus": "apparatus.json"}}
         (tmp_path / "apparatus.json").write_text(
@@ -135,7 +135,7 @@ class TestSpanCoverage:
     def test_the_explicit_negligentia_spelling_variant_passes(self, tmp_path, monkeypatch):
         raw = tmp_path / "src.txt"
         raw.write_text("S. pro neglegéntiis meis.\n", encoding="utf-8")
-        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
+        monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [(raw, 1, 1, False)])
         doc = a_text("pro negligéntiis meis")
         doc["editorial"] = {"source": {"apparatus": "apparatus.json"}}
         (tmp_path / "apparatus.json").write_text(
@@ -159,7 +159,7 @@ class TestSpanCoverage:
     def test_an_apparatus_entry_does_not_license_an_unlisted_typo(self, tmp_path, monkeypatch):
         raw = tmp_path / "src.txt"
         raw.write_text("S. Dei Genetráce María.\n", encoding="utf-8")
-        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
+        monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [(raw, 1, 1, False)])
         doc = a_text("Dei Genetríce María")
         doc["editorial"] = {"source": {"apparatus": "apparatus.json"}}
         (tmp_path / "apparatus.json").write_text(

@@ -336,8 +336,26 @@ localization, editorial
   also checked as a transcription. The check preserves letters, accents,
   capitalization, ligatures, and comma placement while removing only declared
   source framing (speaker markers, rubrics, runtime calls, and name slots).
-  Composed witnesses are checked clause by clause against the ordered union of
-  their named spans. A declared raw path with no local archive is an error.
+  Legacy composed witnesses use clause membership in the union of their named
+  spans; that fallback does not prove order or multiplicity. A declared raw
+  path with no local archive is an error.
+- **Explicit raw bindings** use one `# raw-binding: <id>` header and an entry
+  in `witnesses/raw/bindings.json` (version 1). Each archive records its full
+  upstream path, exact revision, local raw path and SHA-256. Each witness entry
+  records its path/revision, evidence ranges with section locations, reference
+  lines and target evidence indexes, and ordered textual ranges. Its `path`
+  header lists those evidence ranges exactly as `upstream [Section] (lines N-M)`
+  separated by semicolons. Reference lines remain source evidence; no upstream
+  runtime code is executed. The explicit reading plan must cover the selected
+  textual evidence exactly once and contain no references or source framing.
+  The whole witness body must equal that ordered reading, allowing only
+  whitespace normalization and removal of line-initial source speaker markers.
+  All punctuation, spelling, accents, case and ligatures are significant.
+  Missing records/markers, drifted revisions/hashes/ranges, ambiguous identities,
+  escaping paths, stale references and incomplete/reordered readings fail closed
+  in transcription, archive and attribution checks. Deleting a marker does not
+  downgrade a registered witness to legacy checking. New raw snapshots belong
+  in subdirectories so existing top-level filename bindings remain unchanged.
 - **`head`** and **`substantive`** (since 0.13.0) state the SYNTAX, which is
   the one thing that settles a reading the form permits and the sentence
   forbids. Every adjective, numeral and
