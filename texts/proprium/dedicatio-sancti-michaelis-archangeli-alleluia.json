@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dedicatio-sancti-michaelis-archangeli-alleluia",
   "title": "Allelúia, allelúia. Sancte Míchaël Archángele, defénde nos",
   "category": "proprium",
@@ -32,7 +32,7 @@
         { "id": "w011", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w012", "form": "pereámus", "lemma": "pereo", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 1, "tense": "pres", "voice": "act" } },
         { "id": "w013", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w015" },
-        { "id": "w014", "form": "treméndo", "lemma": "tremo", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "sg", "tense": "fut", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w014", "form": "treméndo", "lemma": "tremo", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "fut", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w015" },
         { "id": "w015", "form": "iudício", "lemma": "iudicium", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "post": "." },
         { "id": "w016", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
       ],
@@ -62,7 +62,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

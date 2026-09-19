@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-graduale",
   "title": "Locus iste a Deo factus est, inæstimábile",
   "category": "proprium",
@@ -23,13 +23,13 @@
         { "id": "w002", "form": "iste", "lemma": "iste", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w003", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w004" },
         { "id": "w004", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
-        { "id": "w005", "form": "factus", "lemma": "facio", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w002" },
+        { "id": "w005", "form": "factus", "lemma": "facio", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w001" },
         { "id": "w006", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w007", "form": "inæstimábile", "lemma": "inaestimabilis", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "head": "w008" },
         { "id": "w008", "form": "sacraméntum", "lemma": "sacramentum", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg", "decl": 2 }, "post": "," },
-        { "id": "w009", "form": "irreprehensíbilis", "lemma": "irreprehensibilis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "substantive": true },
+        { "id": "w009", "form": "irreprehensíbilis", "lemma": "irreprehensibilis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "head": "w001" },
         { "id": "w010", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." },
-        { "id": "w011", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w011", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w012", "form": "cui", "lemma": "qui", "morph": { "case": "dat", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w013", "form": "astat", "lemma": "asto", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 1 } },
         { "id": "w014", "form": "Angelórum", "lemma": "angelus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
@@ -70,8 +70,10 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

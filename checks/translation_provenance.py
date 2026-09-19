@@ -55,6 +55,13 @@ PROTECTED_PL_TEXTS = frozenset(
         "ordinarium.kyrie",
         "ordinarium.pater-noster",
         "ordinarium.sanctus",
+        # The Paschal pair contains the inherited Ave greeting. Protection
+        # does not attribute its separate Virga Iesse verse to that formula.
+        "proprium.annuntiatio-beatae-mariae-virginis-alleluia",
+        "proprium.annuntiatio-beatae-mariae-virginis-extra-tempus-paschale-introitus",
+        "proprium.annuntiatio-beatae-mariae-virginis-introitus",
+        "proprium.annuntiatio-beatae-mariae-virginis-extra-tempus-paschale-offertorium",
+        "proprium.annuntiatio-beatae-mariae-virginis-offertorium",
     }
 )
 
@@ -76,6 +83,11 @@ PROTECTED_EN_TEXTS = frozenset(
         "ordinarium.confiteor-sacerdotis",
         "ordinarium.kyrie",
         "ordinarium.pater-noster",
+        "proprium.annuntiatio-beatae-mariae-virginis-alleluia",
+        "proprium.annuntiatio-beatae-mariae-virginis-extra-tempus-paschale-introitus",
+        "proprium.annuntiatio-beatae-mariae-virginis-introitus",
+        "proprium.annuntiatio-beatae-mariae-virginis-extra-tempus-paschale-offertorium",
+        "proprium.annuntiatio-beatae-mariae-virginis-offertorium",
     }
 )
 
@@ -103,6 +115,7 @@ def source_payload(segment: dict) -> dict:
                     "morph",
                     "head",
                     "substantive",
+                    "ellipsis",
                 )
                 if key in word
             }

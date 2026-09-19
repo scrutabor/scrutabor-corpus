@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.nativitas-domini-in-die-evangelium",
   "title": "In princípio erat Verbum, et Verbum erat",
   "category": "proprium",
@@ -90,7 +90,7 @@
         { "id": "w069", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w070" },
         { "id": "w070", "form": "lúmine", "lemma": "lumen", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w071", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
-        { "id": "w072", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "substantive": true },
+        { "id": "w072", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
         { "id": "w073", "form": "créderent", "lemma": "credo", "morph": { "conj": 3, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w074", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w075" },
         { "id": "w075", "form": "illum", "lemma": "ille", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" }, "post": "." },
@@ -190,8 +190,8 @@
         { "id": "w156", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w157", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w158", "form": "habitávit", "lemma": "habito", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w159", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w160" },
-        { "id": "w160", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": ":" },
+        { "id": "w159", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w160" },
+        { "id": "w160", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "post": ":" },
         { "id": "w161", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w162", "form": "vídimus", "lemma": "video", "morph": { "conj": 2, "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w163", "form": "glóriam", "lemma": "gloria", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -223,7 +223,9 @@
       "w104": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w115": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w128": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w160": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w159": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w160": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w072": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

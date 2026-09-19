@@ -17,6 +17,7 @@ LEMMATA_ENTRY_KEYS = {
     "gender_alt",
     "gender_pl",
     "decl",
+    "decl_alt",
     "conj",
     "analysis",
     "localization",
@@ -165,6 +166,13 @@ def lint_lemmata(entries):
                 errors.append(f"lexicon:{lemma}: {k}={e[k]!r} not in enum")
         if "decl" in e and e["decl"] not in range(1, 6):
             errors.append(f"lexicon:{lemma}: decl={e['decl']!r} out of range")
+        if "decl_alt" in e:
+            if type(e["decl_alt"]) is not int or e["decl_alt"] not in range(1, 6):
+                errors.append(f"lexicon:{lemma}: decl_alt={e['decl_alt']!r} out of range")
+            if e.get("pos") != "noun" or type(e.get("decl")) is not int:
+                errors.append(f"lexicon:{lemma}: decl_alt requires a noun with a primary decl")
+            elif e["decl_alt"] == e["decl"]:
+                errors.append(f"lexicon:{lemma}: decl_alt must differ from decl")
         if "conj" in e and e["conj"] not in range(1, 5):
             errors.append(f"lexicon:{lemma}: conj={e['conj']!r} out of range")
     return errors
@@ -265,9 +273,11 @@ def check_text_against_lexicon(text_doc, lemmata):
                     f"{tid}:{wid}: morph.pos={morph['pos']!r} but lexicon says {e.get('pos')!r}"
                 )
             if morph["pos"] == "noun":
-                if "decl" in morph and "decl" in e and morph["decl"] != e["decl"]:
+                allowed_decl = {d for d in (e.get("decl"), e.get("decl_alt")) if d is not None}
+                if "decl" in morph and allowed_decl and morph["decl"] not in allowed_decl:
                     errors.append(
-                        f"{tid}:{wid}: morph.decl={morph['decl']} but lexicon says {e['decl']}"
+                        f"{tid}:{wid}: morph.decl={morph['decl']} "
+                        f"but lexicon says {sorted(allowed_decl)}"
                     )
                 expected_gender = e.get("gender")
                 if morph.get("number") == "pl" and "gender_pl" in e:
@@ -288,6 +298,16 @@ def check_text_against_lexicon(text_doc, lemmata):
             ):
                 errors.append(
                     f"{tid}:{wid}: morph.conj={morph['conj']} but lexicon says {e['conj']}"
+                )
+            if (
+                morph["pos"] == "verb"
+                and "conj" in morph
+                and "conj" not in e
+                and lemma in IRREGULAR_VERBS
+            ):
+                errors.append(
+                    f"{tid}:{wid}: irregular lemma {lemma!r} has no numbered conjugation; "
+                    "omit morph.conj as in its dictionary entry"
                 )
     return errors
 
@@ -351,6 +371,7 @@ def check_note_prose(lex: dict) -> list[str]:
 # missing theirs until 2026-08-17, indistinguishable from the Hebrew names
 # beside them.
 INDECLINABLE = {
+    "mane",  # morning: indeclinable neuter noun, also used adverbially
     "Aram",  # Hebrew personal name, unchanged in subject and object positions
     "Apollo",  # Apollos in Acts 19, not the classical god Apollo, Apollinis
     "Ierosolyma",  # plural neuter / singular feminine: no single declension
@@ -504,6 +525,14 @@ def check_paradigm(lemmata: dict) -> list[str]:
     errors = []
     for name, entry in sorted((entries or {}).items()):
         pos = entry.get("pos")
+        parts = entry.get("head", "").split(", ")
+        if pos == "verb" and entry.get("conj") == 3 and len(parts) > 1:
+            infinitive = strip_accents(parts[1])
+            if infinitive.endswith("ire"):
+                errors.append(
+                    f"lexicon:{name}: third conjugation conflicts with infinitive "
+                    f"{parts[1]!r}; verify the paradigm independently"
+                )
         if pos == "noun" and "decl" not in entry and name not in INDECLINABLE:
             errors.append(
                 f"lexicon:{name}: a noun with no declension recorded — add it, or name "

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.transfiguratio-domini-introitus",
   "title": "Illuxérunt coruscatiónes tuæ orbi terræ: commóta est",
   "category": "proprium",
@@ -29,7 +29,7 @@
         { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w009", "form": "contrémuit", "lemma": "contremisco", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 3 } },
         { "id": "w010", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "post": "." },
-        { "id": "w011", "form": "Quam", "lemma": "quam", "morph": { "pos": "conj" } },
+        { "id": "w011", "form": "Quam", "lemma": "quam", "morph": { "pos": "adv" } },
         { "id": "w012", "form": "dilécta", "lemma": "diligo", "morph": { "pos": "verb", "case": "acc", "gender": "n", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w013" },
         { "id": "w013", "form": "tabernácula", "lemma": "tabernaculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
         { "id": "w014", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "post": ",", "substantive": true },
@@ -43,7 +43,7 @@
         { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w023" },
         { "id": "w023", "form": "átria", "lemma": "atrium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 2 } },
         { "id": "w024", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
-        { "id": "w025", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w025", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w026", "form": "Patri", "lemma": "pater", "morph": { "case": "dat", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w027", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w028", "form": "Fílio", "lemma": "filius", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
@@ -103,7 +103,11 @@
       "apparatus": "witnesses/proprium.transfiguratio-domini-introitus/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

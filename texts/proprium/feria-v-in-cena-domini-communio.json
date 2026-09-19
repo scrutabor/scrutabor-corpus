@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.feria-v-in-cena-domini-communio",
   "title": "Dóminus Iesus, postquam cœnávit cum discípulis suis",
   "category": "proprium",
@@ -23,9 +23,9 @@
         { "id": "w002", "form": "Iesus", "lemma": "Iesus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w003", "form": "postquam", "lemma": "postquam", "morph": { "pos": "conj" } },
         { "id": "w004", "form": "cœnávit", "lemma": "coeno", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 1 } },
-        { "id": "w005", "form": "cum", "lemma": "cum", "morph": { "pos": "conj" } },
-        { "id": "w006", "form": "discípulis", "lemma": "discipulus", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 2 } },
-        { "id": "w007", "form": "suis", "lemma": "suus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "post": ",", "head": "w006" },
+        { "id": "w005", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w006" },
+        { "id": "w006", "form": "discípulis", "lemma": "discipulus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w007", "form": "suis", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "post": ",", "head": "w006" },
         { "id": "w008", "form": "lavit", "lemma": "lavo", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w009", "form": "pedes", "lemma": "pes", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w010", "form": "eórum", "lemma": "is", "morph": { "case": "gen", "gender": "m", "number": "pl", "pos": "pron" }, "post": "," },
@@ -39,7 +39,7 @@
         { "id": "w018", "form": "ego", "lemma": "ego", "morph": { "case": "nom", "number": "sg", "pos": "pron" }, "post": "," },
         { "id": "w019", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w021", "form": "Magíster", "lemma": "magister", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "?" },
+        { "id": "w021", "form": "Magíster", "lemma": "magister", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "?" },
         { "id": "w022", "form": "Exémplum", "lemma": "exemplum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w023", "form": "dedi", "lemma": "do", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w024", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "post": "," },
@@ -80,7 +80,10 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

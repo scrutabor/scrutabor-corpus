@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.sancti-petri-et-pauli-apostolorum-evangelium",
   "title": "In illo témpore: Venit Iesus in partes",
   "category": "proprium",
@@ -92,7 +92,7 @@
         { "id": "w071", "form": "revelávit", "lemma": "revelo", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w072", "form": "tibi", "lemma": "tu", "morph": { "case": "dat", "number": "sg", "pos": "pron" }, "post": "," },
         { "id": "w073", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
-        { "id": "w074", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w074", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w075", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "post": ",", "head": "w076" },
         { "id": "w076", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w077", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w078" },
@@ -118,7 +118,7 @@
         { "id": "w097", "form": "ínferi", "lemma": "inferus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 2 } },
         { "id": "w098", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w099", "form": "prævalébunt", "lemma": "praevaleo", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "fut", "voice": "act", "conj": 2 } },
-        { "id": "w100", "form": "advérsus", "lemma": "adversus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w100", "form": "advérsus", "lemma": "adversus_prep", "morph": { "pos": "prep", "governs": "acc" }, "head": "w101" },
         { "id": "w101", "form": "eam", "lemma": "is", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "pron" }, "post": "." },
         { "id": "w102", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w103", "form": "tibi", "lemma": "tu", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
@@ -168,7 +168,9 @@
       "w047": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w063": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w064": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w065": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w065": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w074": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w100": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

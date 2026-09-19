@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.visitatio-beatae-mariae-virginis-graduale",
   "title": "Benedícta et venerábilis es, Virgo María: quæ",
   "category": "proprium",
@@ -29,7 +29,7 @@
         { "id": "w008", "form": "sine", "lemma": "sine", "morph": { "governs": "abl", "pos": "prep" }, "head": "w009" },
         { "id": "w009", "form": "tactu", "lemma": "tactus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 4 } },
         { "id": "w010", "form": "pudóris", "lemma": "pudor", "morph": { "pos": "noun", "case": "gen", "gender": "m", "number": "sg", "decl": 3 } },
-        { "id": "w011", "form": "invénta", "lemma": "invenio", "morph": { "pos": "verb", "case": "voc", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 4 }, "substantive": true },
+        { "id": "w011", "form": "invénta", "lemma": "invenio", "morph": { "pos": "verb", "case": "nom", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 4 }, "head": "w006" },
         { "id": "w012", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w013", "form": "Mater", "lemma": "mater", "morph": { "case": "voc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w014", "form": "Salvatóris", "lemma": "salvator", "morph": { "case": "gen", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
@@ -81,7 +81,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

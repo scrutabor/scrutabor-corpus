@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xv-post-pentecosten-epistola",
   "title": "Fratres: Si spíritu vívimus, spíritu et ambulémus",
   "category": "proprium",
@@ -165,9 +165,9 @@
         { "id": "w144", "form": "habémus", "lemma": "habeo", "morph": { "conj": 2, "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w145", "form": "operémur", "lemma": "operor", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 1, "tense": "pres", "voice": "dep", "conj": 1 } },
         { "id": "w146", "form": "bonum", "lemma": "bonus", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "substantive": true },
-        { "id": "w147", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w149" },
-        { "id": "w148", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "post": ",", "substantive": true },
-        { "id": "w149", "form": "máxime", "lemma": "magnus", "morph": { "case": "acc", "degree": "sup", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w147", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w148" },
+        { "id": "w148", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w149", "form": "máxime", "lemma": "maxime", "morph": { "pos": "adv", "degree": "sup" } },
         { "id": "w150", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w151", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w152" },
         { "id": "w152", "form": "domésticos", "lemma": "domesticus", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "pl", "decl": 2 } },
@@ -193,7 +193,9 @@
       "w061": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w071": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w092": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w149": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w147": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w149": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w148": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

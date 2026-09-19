@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-iii-post-epiphaniam-communio",
   "title": "Mirabántur omnes de his, quæ procedébant de",
   "category": "proprium",
@@ -19,8 +19,8 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Mirabántur", "lemma": "miro", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "pass" } },
-        { "id": "w002", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "substantive": true },
+        { "id": "w001", "form": "Mirabántur", "lemma": "miror", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "dep" } },
+        { "id": "w002", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
         { "id": "w003", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w004" },
         { "id": "w004", "form": "his", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "post": "," },
         { "id": "w005", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
@@ -58,7 +58,11 @@
       "apparatus": "witnesses/proprium.dominica-iii-post-epiphaniam-communio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

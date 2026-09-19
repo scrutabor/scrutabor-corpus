@@ -1,5 +1,6 @@
-"""Collation: corpus verse text against independent witnesses of the SAME
-recension. Substantive text (letters) must match with zero divergence;
+"""Collation: corpus verse text against independent witnesses, including
+explicitly adjudicated alternate-recension readings. Substantive text
+(letters) must match or have an explicit reading ruling;
 accidentals (punctuation, capitalization, capital-accents) must each be
 covered by an adjudicated entry in the text's apparatus.json.
 
@@ -19,6 +20,20 @@ real editorial question inside a class that exists for questions nobody
 needs to think about twice. It passes only with an apparatus entry of
 `"class": "inflection"`, and it is counted separately, so the number a
 verdict line reports as `orthographic` never quietly includes it.
+
+A witness may carry a different lexical or grammatical READING, such as
+inspexerunt/conspexerunt or resurgemus/resurgamus. A `substantive` ruling
+quotes both exact tokens and explains the choice without calling it a spelling
+or a printer's slip. The selected word must be positively attested at the
+aligned locus by another full witness. These one-to-one variants are counted
+separately; they cannot authorize missing words or excuse punctuation alone.
+
+A `substantive-span` ruling quotes a complete replacement phrase, bounded
+by `at` and `through` in document order. Its exact raw witness reading is
+consumed at that locus, never searched for elsewhere. Only the comparison
+buffer is aligned; the witness transcription remains unchanged. Another
+full, unmodified, one-to-one aligned witness must attest the entire chosen
+phrase. The ordinary checks still examine every word outside the span.
 
 A witness may also carry a printer's slip — a letter its own edition sets
 wrong. Such a reading is not a variant to adjudicate and not something to
@@ -57,7 +72,6 @@ witnesses agree. The mechanism makes an emendation declarable, checkable
 and counted; keeping it honest is the transcription discipline, not the
 checker."""
 
-import difflib
 import json
 import re
 from pathlib import Path
@@ -65,10 +79,8 @@ from typing import Any
 
 from .normalize import substantive
 
-# The two classes a ruling may put on a letter difference. Both need an
-# apparatus entry quoting both readings; they are counted apart so the
-# verdict line never reports a grammatical question as a spelling one.
-RULED_CLASSES = ("orthography", "inflection")
+# Letter-difference classes quote exact readings and are counted separately.
+RULED_CLASSES = ("orthography", "inflection", "substantive")
 ACCIDENTAL_CLASSES = ("accent", "capital-accent", "capitalization", "orthography", "punctuation")
 
 
@@ -137,6 +149,182 @@ def corpus_tokens(doc):
     return toks
 
 
+def _spans(entries, toks, errors):
+    """Validate explicit ranges before any witness can use them."""
+    positions = {word_id: i for i, (word_id, _) in enumerate(toks)}
+    spans = []
+    for entry in entries:
+        if entry.get("class") != "substantive-span":
+            continue
+        at, through = entry["at"], entry.get("through")
+        label = f"apparatus substantive-span {at}..{through}"
+        if at not in positions or not isinstance(through, str) or through not in positions:
+            errors.append(f"{label}: endpoints must name existing words")
+            continue
+        first, last = positions[at], positions[through]
+        if last < first:
+            errors.append(f"{label}: range runs backwards in document order")
+            continue
+        if entry["ours"] != " ".join(token for _, token in toks[first : last + 1]):
+            errors.append(f"{label}: ours must quote the exact complete form+post sequence")
+            continue
+        if not isinstance(entry.get("ruling"), str) or not entry["ruling"].strip():
+            errors.append(f"{label}: a nonempty ruling is required")
+            continue
+        valid = True
+        for wid, reading in entry["witnesses"].items():
+            words = reading.split()
+            if (
+                not words
+                or reading != " ".join(words)
+                or not any(c.isalpha() for c in words[0])
+                or not any(c.isalpha() for c in words[-1])
+                or any(
+                    len(substantive(w).split()) != 1 for w in words if any(c.isalpha() for c in w)
+                )
+            ):
+                errors.append(f"{label}/{wid}: quote a nonempty exact word sequence")
+                valid = False
+            elif substantive(reading) == substantive(entry["ours"]):
+                errors.append(f"{label}/{wid}: redundant or accidental-only span")
+                valid = False
+        if valid:
+            spans.append((first, last, entry))
+    spans.sort(key=lambda span: span[0])
+    for i, (first, last, entry) in enumerate(spans):
+        for prior_first, prior_last, prior in spans[:i]:
+            if first <= prior_last and prior_first <= last:
+                errors.append(
+                    f"apparatus: overlapping substantive spans {prior['at']}..{prior['through']} "
+                    f"and {entry['at']}..{entry['through']}"
+                )
+        for other in entries:
+            if other.get("class") == "substantive-span":
+                continue
+            if first <= positions.get(other["at"], -1) <= last:
+                shared = entry["witnesses"].keys() & other["witnesses"].keys()
+                if shared:
+                    errors.append(
+                        f"apparatus: reading at {other['at']}/{','.join(sorted(shared))} "
+                        f"overlaps substantive span {entry['at']}..{entry['through']}"
+                    )
+    return spans
+
+
+def _span_support(spans, witnesses, entries, ours_raw):
+    """Raw ordinal alignment only: never obtain support from a replacement.
+
+    Even balanced insertions/deletions can move a repeated phrase to the
+    wrong locus while preserving total length. Exclude witnesses declaring
+    any length-changing alignment, rather than using those rulings to prove
+    themselves. This intentionally does not infer alignment for them.
+    """
+    support: dict[str, set[str]] = {}
+    ours = [substantive(token) for token in ours_raw]
+    for path, meta, text in witnesses:
+        wid = meta.get("witness", path.stem)
+        if meta.get("covers", "").strip() or meta["recensions"]:
+            continue
+        if any(
+            wid in entry["witnesses"]
+            and (
+                entry.get("class") == "omission"
+                or (
+                    entry.get("class") == "substantive-span"
+                    and len(substantive(entry["ours"]).split())
+                    != len(substantive(entry["witnesses"][wid]).split())
+                )
+            )
+            for entry in entries
+        ):
+            continue
+        raw = [t for t in text.split() if any(c.isalpha() for c in t)]
+        printed = [substantive(token) for token in raw]
+        if len(printed) != len(ours) or any(len(token.split()) != 1 for token in printed):
+            continue
+        for first, last, entry in spans:
+            if printed[first : last + 1] == ours[first : last + 1]:
+                support.setdefault(entry["at"], set()).add(wid)
+    return support
+
+
+def _align_spans(toks, text, wid, spans, adjudicated, attested, support, errors):
+    """Consume declared phrases once, left-to-right; never fuzzy-match.
+
+    Returns a comparison buffer and used ruling keys, or None on failure.
+    Free-standing punctuation is retained in the exact interior quote;
+    outside a span it follows the existing word-level accidental policy.
+    """
+    ids = {word_id: i for i, (word_id, _) in enumerate(toks)}
+    ranges = {}
+    for _, _, entry in spans:
+        if entry["at"] not in ids or entry["through"] not in ids:
+            errors.append(f"{wid}: substantive span lies outside declared witness coverage")
+            return None
+        ranges[ids[entry["at"]]] = (ids[entry["through"]], entry)
+    raw = text.split()
+    word_positions = [i for i, token in enumerate(raw) if any(c.isalpha() for c in token)]
+    if any(len(substantive(raw[i]).split()) != 1 for i in word_positions):
+        errors.append(f"{wid}: substantive span requires unambiguous word tokenization")
+        return None
+    rebuilt: list[str] = []
+    used = set()
+    omissions = 0
+    i = j = 0
+    while i < len(toks):
+        word_id, ours = toks[i]
+        if i in ranges:
+            last, entry = ranges[i]
+            reading = entry["witnesses"][wid]
+            count = len(substantive(reading).split())
+            if j + count > len(word_positions):
+                observed = ""
+            else:
+                observed = " ".join(raw[word_positions[j] : word_positions[j + count - 1] + 1])
+            if observed != reading:
+                errors.append(
+                    f"{wid}: substantive span {word_id}..{entry['through']} does not match "
+                    f"the exact raw witness phrase at this locus: quoted={reading!r} "
+                    f"observed={observed!r}"
+                )
+                return None
+            if not (support.get(word_id, set()) - {wid}):
+                errors.append(
+                    f"{wid}: substantive span at {word_id} has no positive full-witness "
+                    "support for the entire selected reading at this locus"
+                )
+                return None
+            rebuilt.extend(token for _, token in toks[i : last + 1])
+            used.add((word_id, wid))
+            i, j = last + 1, j + count
+            continue
+        entry = adjudicated.get((word_id, wid))
+        if entry and entry.get("class") == "omission":
+            if not (
+                entry["ours"] == ours
+                and entry["witnesses"][wid] == ""
+                and isinstance(entry.get("ruling"), str)
+                and entry["ruling"].strip()
+                and attested.get(word_id, set()) - {wid}
+            ):
+                errors.append(f"{wid}: invalid or unsupported omission alongside substantive span")
+                return None
+            rebuilt.append(ours)
+            used.add((word_id, wid))
+            omissions += 1
+            i += 1
+            continue
+        if j == len(word_positions):
+            errors.append(f"{wid}: SUBSTANTIVE length mismatch outside substantive spans")
+            return None
+        rebuilt.append(raw[word_positions[j]])
+        i, j = i + 1, j + 1
+    if j != len(word_positions):
+        errors.append(f"{wid}: SUBSTANTIVE length mismatch outside substantive spans")
+        return None
+    return " ".join(rebuilt), used, omissions
+
+
 def collate(doc, witness_dir: Path):
     """Returns (errors, warnings, stats)."""
     errors: list[str] = []
@@ -155,6 +343,9 @@ def collate(doc, witness_dir: Path):
         if app_path.exists()
         else {"adjudicated": []}
     )
+    if not isinstance(apparatus, dict):
+        errors.append("apparatus must be an object")
+        apparatus = {}
     expected_apparatus = f"witnesses/{doc['id']}/apparatus.json"
     declared_apparatus = (doc.get("source") or {}).get("apparatus")
     # Tiny synthetic documents in unit tests need no repository layout.
@@ -170,7 +361,36 @@ def collate(doc, witness_dir: Path):
                 errors.append(f"apparatus text must be {doc['id']!r}")
         elif declared_apparatus is not None:
             errors.append(f"source.apparatus points to missing file {declared_apparatus!r}")
-    adjudicated = {(e["at"], wid): e for e in apparatus["adjudicated"] for wid in e["witnesses"]}
+    entries = apparatus.get("adjudicated")
+    if not isinstance(entries, list):
+        errors.append("apparatus.adjudicated must be an array")
+        entries = []
+    adjudicated = {}
+    valid_entries = []
+    for index, entry in enumerate(entries):
+        if not (
+            isinstance(entry, dict)
+            and isinstance(entry.get("at"), str)
+            and entry["at"]
+            and isinstance(entry.get("ours"), str)
+            and isinstance(entry.get("witnesses"), dict)
+            and entry["witnesses"]
+            and all(
+                isinstance(wid, str) and wid and isinstance(reading, str)
+                for wid, reading in entry["witnesses"].items()
+            )
+        ):
+            errors.append(f"apparatus.adjudicated[{index}]: invalid reading record")
+            continue
+        valid_entries.append(entry)
+        for wid in entry["witnesses"]:
+            key = (entry["at"], wid)
+            if key in adjudicated:
+                errors.append(f"apparatus: duplicate reading at {entry['at']}/{wid}")
+            else:
+                adjudicated[key] = entry
+
+    spans = _spans(valid_entries, toks, errors)
 
     witness_files = sorted(p for p in witness_dir.glob("*.txt"))
     if not witness_files:
@@ -178,7 +398,23 @@ def collate(doc, witness_dir: Path):
             f"no witness files in {witness_dir} — collation cannot pass on zero witnesses"
         )
 
-    used = set()
+    witnesses = [(path, *load_witness(path)) for path in witness_files]
+    span_support = _span_support(spans, witnesses, valid_entries, ours_raw) if spans else {}
+    # Positive support comes from the actual uncorrected transcription, not
+    # from an apparatus replacement. Align by locus rather than searching for
+    # the same word anywhere on a page. A partial witness cannot supply it.
+    attested: dict[str, set[str]] = {}
+    for path, meta, text in witnesses:
+        if meta.get("covers", "").strip():
+            continue
+        printed = substantive(text).split()
+        if len(printed) != len(ours_sub):
+            continue
+        for index, (chosen, observed) in enumerate(zip(ours_sub, printed, strict=True)):
+            if chosen == observed:
+                attested.setdefault(toks[index][0], set()).add(meta.get("witness", path.stem))
+
+    used: set[tuple[str, str]] = set()
     n_variants = 0
     n_corrigenda = 0
     n_orthographic = 0
@@ -186,8 +422,9 @@ def collate(doc, witness_dir: Path):
     n_recensions = 0
     n_omissions = 0
     n_partial = 0
-    for wf in witness_files:
-        meta, text = load_witness(wf)
+    n_substantive = 0
+    n_spans = 0
+    for wf, meta, text in witnesses:
         wid = meta.get("witness", wf.stem)
         # A witness may testify to PART of a text and nothing else. The
         # Clementine Vulgate is the authority for the Gospel a Mass reads
@@ -219,6 +456,23 @@ def collate(doc, witness_dir: Path):
             ours_raw_w = [t for _, t in toks_w]
             ours_sub_w = substantive(" ".join(ours_raw_w)).split()
             n_partial += 1
+        witness_spans = [span for span in spans if wid in span[2]["witnesses"]]
+        if witness_spans:
+            if meta["recensions"]:
+                errors.append(
+                    f"{wid}: substantive spans cannot be aligned with header recension removals"
+                )
+                continue
+            aligned = _align_spans(
+                toks_w, text, wid, witness_spans, adjudicated, attested, span_support, errors
+            )
+            if aligned is None:
+                continue
+            text, span_used, omitted_count = aligned
+            used.update(span_used)
+            n_omissions += omitted_count
+            n_spans += len(witness_spans)
+            n_substantive += len(witness_spans)
         # Declared printer's slips: each must actually be in the file, and
         # each is applied openly before anything is compared.
         for printed, emended, reason in meta["corrigenda"]:
@@ -286,37 +540,48 @@ def collate(doc, witness_dir: Path):
             # this edition print. That is a real substantive divergence, so
             # it passes only through an explicit apparatus ruling whose
             # witness reading is the empty string.
-            wit_raw_before = text.split()
-            rebuilt: list[str] = []
+            wit_raw_before = [t for t in text.split() if any(c.isalpha() for c in t)]
+            omitted: dict[int, str] = {}
             valid = True
-            matcher = difflib.SequenceMatcher(None, ours_cmp, wit_sub)
-            for tag, i1, i2, j1, j2 in matcher.get_opcodes():
-                if tag == "equal":
-                    rebuilt.extend(wit_raw_before[j1:j2])
+            # The apparatus names the exact locus. Do not guess the missing
+            # position with sequence matching: an adjacent spelling variant
+            # can otherwise merge the omission into an unequal replacement.
+            for i, (word_id, ours_tok) in enumerate(toks_w):
+                entry = adjudicated.get((word_id, wid))
+                if not entry or entry.get("class") != "omission":
                     continue
-                if tag == "delete":
-                    for i in range(i1, i2):
-                        word_id, ours_tok = toks_w[i]
-                        entry = adjudicated.get((word_id, wid))
-                        if not (
-                            entry
-                            and entry.get("class") == "omission"
-                            and entry.get("ours") == ours_tok
-                            and entry.get("witnesses", {}).get(wid) == ""
-                        ):
-                            valid = False
-                            break
-                        rebuilt.append(ours_tok)
-                        used.add((word_id, wid))
-                        n_omissions += 1
-                    if not valid:
-                        break
+                if not (
+                    entry.get("ours") == ours_tok
+                    and entry.get("witnesses", {}).get(wid) == ""
+                    and isinstance(entry.get("ruling"), str)
+                    and entry["ruling"].strip()
+                ):
+                    valid = False
                     continue
-                valid = False
-                break
-            if valid:
+                if not (attested.get(word_id, set()) - {wid}):
+                    errors.append(
+                        f"{wid}: omission ruling at {word_id} has no positive full-witness "
+                        "support for the selected reading at this locus"
+                    )
+                    valid = False
+                    continue
+                omitted[i] = word_id
+            if (
+                valid
+                and omitted
+                and len(wit_raw_before) == len(wit_sub)
+                and len(wit_raw_before) + len(omitted) == len(toks_w)
+            ):
+                observed_tokens = iter(wit_raw_before)
+                rebuilt = [
+                    ours_tok if i in omitted else next(observed_tokens)
+                    for i, (_, ours_tok) in enumerate(toks_w)
+                ]
                 text = " ".join(rebuilt)
                 wit_sub = substantive(text, fold_ji=fold_ji, fold_xs=fold_xs).split()
+                used.update((word_id, wid) for word_id in omitted.values())
+                n_omissions += len(omitted)
+        wit_raw = [token for token in text.split() if any(char.isalpha() for char in token)]
         if wit_sub != ours_cmp:
             if len(wit_sub) != len(ours_cmp):
                 errors.append(
@@ -335,7 +600,7 @@ def collate(doc, witness_dir: Path):
                 # is wrong; unlike an accidental, the letters differ. It passes
                 # only with a ruling that quotes both readings.
                 #
-                # An ADJUDICATED INFLECTION is the other ruled letter
+                # An ADJUDICATED INFLECTION is a ruled letter
                 # difference: a name this edition leaves indeclinable and the
                 # witness declines. It is counted apart from orthography
                 # because it is a question about grammar, not about spelling.
@@ -345,11 +610,25 @@ def collate(doc, witness_dir: Path):
                     entry
                     and entry.get("class") in RULED_CLASSES
                     and entry["ours"] == ours_tok
-                    and entry["witnesses"].get(wid)
+                    and len(wit_raw) == len(toks_w)
+                    and entry["witnesses"].get(wid) == wit_raw[i]
+                    and isinstance(entry.get("ruling"), str)
+                    and entry["ruling"].strip()
                 ):
+                    if entry["class"] == "substantive" and not (
+                        attested.get(word_id, set()) - {wid}
+                    ):
+                        errors.append(
+                            f"{wid}: substantive ruling at {word_id} has no positive full-witness "
+                            "support for the selected reading at this locus"
+                        )
+                        unruled = True
+                        break
                     used.add((word_id, wid))
                     if entry["class"] == "inflection":
                         n_inflection += 1
+                    elif entry["class"] == "substantive":
+                        n_substantive += 1
                     else:
                         n_orthographic += 1
                     continue
@@ -373,7 +652,6 @@ def collate(doc, witness_dir: Path):
         # is punctuation, not a word, and therefore has no corpus word ID;
         # retain it in the exact witness transcription and ignore only that
         # punctuation-only token when aligning word-level accidentals.
-        wit_raw = [token for token in text.split() if any(char.isalpha() for char in token)]
         if len(wit_raw) != len(ours_raw_w):
             errors.append(
                 f"{wid}: raw token count mismatch despite substantive match "
@@ -432,6 +710,8 @@ def collate(doc, witness_dir: Path):
         "corrigenda": n_corrigenda,
         "orthographic": n_orthographic,
         "inflections": n_inflection,
+        "substantive_variants": n_substantive,
+        "substantive_spans": n_spans,
         "recensions": n_recensions,
         "omissions": n_omissions,
     }

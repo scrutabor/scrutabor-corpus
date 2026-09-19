@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.sancti-matthiae-apostoli-epistola",
   "title": "In diébus illis exsúrgens Petrus in médio",
   "category": "proprium",
@@ -41,7 +41,7 @@
         { "id": "w020", "form": "opórtet", "lemma": "oporteo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w021", "form": "impléri", "lemma": "impleo", "morph": { "conj": 2, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "pass" } },
         { "id": "w022", "form": "Scriptúram", "lemma": "scriptura", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 1 }, "post": "," },
-        { "id": "w023", "form": "quam", "lemma": "quam", "morph": { "pos": "conj" } },
+        { "id": "w023", "form": "quam", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
         { "id": "w024", "form": "prædíxit", "lemma": "praedico", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w025", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
         { "id": "w026", "form": "Sanctus", "lemma": "sanctus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w032" },
@@ -60,8 +60,8 @@
         { "id": "w039", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w040", "form": "connumerátus", "lemma": "connumero", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "head": "w039" },
         { "id": "w041", "form": "erat", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
-        { "id": "w042", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w043" },
-        { "id": "w043", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": "," },
+        { "id": "w042", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w043" },
+        { "id": "w043", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "post": "," },
         { "id": "w044", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w045", "form": "sortítus", "lemma": "sortior", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "perf", "voice": "dep", "mood": "part", "conj": 3 }, "substantive": true },
         { "id": "w046", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -263,7 +263,7 @@
       "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w026": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
@@ -282,8 +282,7 @@
       "w039": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w041": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w043": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w044": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w045": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w046": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
@@ -448,7 +447,8 @@
       "w205": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w206": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w207": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w208": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } }
+      "w208": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w043": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

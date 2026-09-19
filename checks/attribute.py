@@ -42,6 +42,8 @@ import sys
 import unicodedata
 from pathlib import Path
 
+from checks.orations import base_attributes as oration_attributes
+
 CORPUS = Path(__file__).resolve().parent.parent
 
 # The archived sources mark the speaker: S. sacerdos, M. minister, V. and
@@ -585,6 +587,9 @@ def propose(doc, disagreements: list[str] | None = None) -> dict[str, dict]:
     # main report the text.
     sourced = span_covers(doc)
     ruled = voice_ruling(doc)
+    # General rubric rulings apply only after the actual body/tail/answer
+    # boundaries are modeled. Never infer a public response inside old prose.
+    orations = oration_attributes(doc) if sourced else {}
     out: dict[str, dict] = {}
     for i, seg in enumerate(doc["segments"]):
         if seg.get("type") != "verse":
@@ -595,7 +600,9 @@ def propose(doc, disagreements: list[str] | None = None) -> dict[str, dict]:
         key = flatten("".join(w["form"] for w in words))
         proposal = {}
         ref_s = f"{doc['id']}.{seg['id']}"
-        if ref_s in SPEAKER_RULINGS:
+        if seg["id"] in orations:
+            proposal["speaker"] = orations[seg["id"]]["speaker"]
+        elif ref_s in SPEAKER_RULINGS:
             proposal["speaker"] = SPEAKER_RULINGS[ref_s][0]
         elif seg["id"] in positional:
             proposal["speaker"] = positional[seg["id"]]
@@ -628,7 +635,9 @@ def propose(doc, disagreements: list[str] | None = None) -> dict[str, dict]:
         # rubric read one way and a rubric read the other way is a finding,
         # not a detail to settle silently.
         from_rubric = voice_of(doc, i)
-        if ref in VOICE_UNSETTLED:
+        if seg["id"] in orations:
+            proposal["voice"] = orations[seg["id"]]["voice"]
+        elif ref in VOICE_UNSETTLED:
             pass  # named in the table above: no single value is true of it
         elif ref in VOICE_SEGMENT_RULINGS:
             proposal["voice"] = VOICE_SEGMENT_RULINGS[ref][0]
@@ -643,7 +652,11 @@ def propose(doc, disagreements: list[str] | None = None) -> dict[str, dict]:
             and "voice" in proposal
             and from_rubric != proposal["voice"]
         ):
-            cite = (VOICE_SEGMENT_RULINGS.get(ref) or ruled or ("", "?"))[1]
+            cite = (
+                "RG 480–481, 511 d/i; Ordo Missae conclusion"
+                if seg["id"] in orations
+                else (VOICE_SEGMENT_RULINGS.get(ref) or ruled or ("", "?"))[1]
+            )
             disagreements.append(
                 f"{ref}: the text's rubric reads {from_rubric}, {cite} rules {proposal['voice']}"
             )

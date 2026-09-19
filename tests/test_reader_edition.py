@@ -155,18 +155,18 @@ def test_rejected_citation_attachments_do_not_reach_the_reader(tmp_path):
 def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
     written = emit(CORPUS, tmp_path / "build")
     assert written["citation_projection"] == {
-        "legacy": 2776,
-        "mapped": 2044,
-        "kept": 2044,
+        "legacy": 2773,
+        "mapped": 2041,
+        "kept": 2041,
         "excluded": 732,
         "unresolved": 0,
         "rejected_exposed": 0,
     }
     assert written["evidence_coverage"] == {
-        "neutral": {"normalized": 993, "texts": 1091},
+        "neutral": {"normalized": 1010, "texts": 1096},
         "languages": {
-            "en": {"normalized": 108, "effective": 1077, "texts": 1091},
-            "pl": {"normalized": 72, "effective": 1042, "texts": 1091},
+            "en": {"normalized": 110, "effective": 1091, "texts": 1096},
+            "pl": {"normalized": 72, "effective": 1059, "texts": 1096},
         },
     }
 
@@ -448,13 +448,13 @@ def test_metrics_are_the_single_derived_denominator(tmp_path):
     metrics = json.loads((out / manifest["base"]["metrics"]).read_text(encoding="utf-8"))
     assert metrics == {
         "schema_version": "1.0.0",
-        "texts": {"total": 1091, "proprium": 986, "words": 61522, "verse_segments": 2174},
-        "languages": {"en": {"texts": 1091}, "pl": {"texts": 1091}},
+        "texts": {"total": 1096, "proprium": 991, "words": 61789, "verse_segments": 2599},
+        "languages": {"en": {"texts": 1096}, "pl": {"texts": 1096}},
         "formularies": {
             "total": 109,
             "observances": 105,
-            "component_uses": 1205,
-            "unique_component_texts": 1009,
+            "component_uses": 1209,
+            "unique_component_texts": 1014,
         },
     }
 

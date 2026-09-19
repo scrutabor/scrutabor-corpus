@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-i-post-epiphaniam-postcommunio",
   "title": "Súpplices te rogámus, omnípotens Deus: ut, quos",
   "category": "proprium",
@@ -9,7 +9,7 @@
   "ids": {
     "next": 40,
     "segments": {
-      "next": 2
+      "next": 3
     }
   },
   "segments": [
@@ -34,7 +34,7 @@
         { "id": "w013", "form": "plácitis", "lemma": "placeo", "morph": { "pos": "verb", "case": "abl", "number": "pl", "gender": "m", "tense": "perf", "voice": "pass", "mood": "part", "conj": 2 }, "head": "w014" },
         { "id": "w014", "form": "móribus", "lemma": "mos", "morph": { "case": "abl", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w015", "form": "dignánter", "lemma": "dignanter", "morph": { "pos": "adv" } },
-        { "id": "w016", "form": "deservíre", "lemma": "deservio", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 3 } },
+        { "id": "w016", "form": "deservíre", "lemma": "deservio", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 4 } },
         { "id": "w017", "form": "concédas", "lemma": "concedo", "morph": { "conj": 3, "mood": "subj", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." },
         { "id": "w018", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w019" },
         { "id": "w019", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -56,9 +56,39 @@
         { "id": "w035", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w037" },
         { "id": "w036", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w037" },
         { "id": "w037", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w038", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." },
+        { "id": "w038", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." }
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "sacerdos",
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
         { "id": "w039", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." }
-      ]
+      ],
+      "speaker": "minister",
+      "voice": "clara",
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      },
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     }
   ],
   "editorial": {
@@ -70,7 +100,10 @@
       "apparatus": "witnesses/proprium.dominica-i-post-epiphaniam-postcommunio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

@@ -65,3 +65,74 @@ def test_an_archive_that_does_not_exist_is_an_error(tmp_path):
     )
     errors = check(root)
     assert errors and "do not exist" in errors[0]
+
+
+def test_one_missing_word_in_a_long_witness_is_not_tolerated(tmp_path):
+    root = build(
+        tmp_path, "# archived: ../raw/src.txt", "Deus " * 122 + "alienum", {"src.txt": "Deus"}
+    )
+    assert "1 of 123 words" in check(root)[0]
+
+
+def test_a_substring_does_not_attest_a_whole_word(tmp_path):
+    root = build(tmp_path, "# archived: ../raw/src.txt", "sum", {"src.txt": "sumus"})
+    assert check(root)
+
+
+def test_a_repository_relative_archive_is_checked(tmp_path):
+    root = build(tmp_path, "# local-archive: witnesses/raw/src.txt", "alienum", {"src.txt": "Deus"})
+    assert check(root)
+
+
+def test_a_late_header_reference_is_not_ignored(tmp_path):
+    root = build(
+        tmp_path,
+        "# note: context\n" * 21 + "# archived: ../raw/src.txt",
+        "alienum",
+        {"src.txt": "Deus"},
+    )
+    assert check(root)
+
+
+def test_crosses_can_also_stand_between_whole_words(tmp_path):
+    root = build(
+        tmp_path,
+        "# archived: ../raw/src.txt",
+        "Hóstiam puram benedícas",
+        {"src.txt": "Hóstiam + puram bene + dícas"},
+    )
+    assert check(root) == []
+
+
+def test_accented_ligatures_remain_whole_letters():
+    assert normalise("sǽcula quǽsumus") == "sǽcula quǽsumus"
+
+
+def test_an_empty_bound_witness_cannot_pass(tmp_path):
+    root = build(tmp_path, "# archived: ../raw/src.txt", "", {"src.txt": "Deus"})
+    assert "no words" in check(root)[0]
+
+
+def test_optional_alleluia_requires_the_witness_declaration(tmp_path):
+    root = build(
+        tmp_path,
+        "# archived: ../raw/src.txt",
+        "Deus Allelúja.",
+        {"src.txt": "Deus (Allelúja.) (rubrica)."},
+    )
+    assert check(root)
+    witness = root / "witnesses/ordinarium.x/do.txt"
+    witness.write_text("# archived: ../raw/src.txt\n# seasonal-alleluia: include\nDeus Allelúja.")
+    assert check(root) == []
+    witness.write_text(witness.read_text() + " rubrica")
+    assert check(root)
+
+
+def test_archive_check_rejects_an_unknown_seasonal_declaration(tmp_path):
+    root = build(
+        tmp_path,
+        "# archived: ../raw/src.txt\n# seasonal-alleluia: perhaps",
+        "Deus",
+        {"src.txt": "Deus"},
+    )
+    assert "seasonal-alleluia" in check(root)[0]

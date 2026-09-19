@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-i-in-quadragesima-tractus",
   "title": "Qui hábitat in adiutório Altíssimi, in protectióne",
   "category": "proprium",
@@ -92,9 +92,9 @@
         { "id": "w071", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w072" },
         { "id": "w072", "form": "látere", "lemma": "latus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w073", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "substantive": true },
-        { "id": "w074", "form": "mille", "lemma": "mille", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "post": ",", "head": "w077" },
+        { "id": "w074", "form": "mille", "lemma": "mille", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "post": ",", "substantive": true },
         { "id": "w075", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w076", "form": "decem", "lemma": "decem", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
+        { "id": "w076", "form": "decem", "lemma": "decem", "morph": { "case": "nom", "gender": "n", "number": "pl", "pos": "adj" }, "head": "w077" },
         { "id": "w077", "form": "mília", "lemma": "mille", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "pl" } },
         { "id": "w078", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w080" },
         { "id": "w079", "form": "dextris", "lemma": "dexter", "morph": { "case": "abl", "gender": "n", "number": "pl", "pos": "adj" }, "substantive": true },
@@ -203,7 +203,8 @@
     "words": {
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w068": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w074": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w074": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
+      "w076": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

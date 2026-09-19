@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.beatae-mariae-virginis-a-rosario-evangelium",
   "title": "In illo témpore: Missus est Angelus Gábriel",
   "category": "proprium",
@@ -57,7 +57,7 @@
         { "id": "w036", "form": "dixit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": ":" },
         { "id": "w037", "form": "Ave", "lemma": "aveo", "morph": { "conj": 2, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w038", "form": "grátia", "lemma": "gratia", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w039", "form": "plena", "lemma": "plenus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "post": ";", "head": "w038" },
+        { "id": "w039", "form": "plena", "lemma": "plenus", "morph": { "pos": "adj", "case": "voc", "gender": "f", "number": "sg" }, "post": ";", "substantive": true },
         { "id": "w040", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w041", "form": "tecum", "lemma": "tu", "morph": { "case": "abl", "number": "sg", "pos": "pron" }, "post": ":" },
         { "id": "w042", "form": "benedícta", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w043" },
@@ -123,14 +123,14 @@
         { "id": "w102", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w103" },
         { "id": "w103", "form": "domo", "lemma": "domus", "morph": { "case": "abl", "decl": 4, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w104", "form": "Iacob", "lemma": "Iacob", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w105", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w112" },
+        { "id": "w105", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w106" },
         { "id": "w106", "form": "ætérnum", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "post": ",", "substantive": true },
         { "id": "w107", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w108", "form": "regni", "lemma": "regnum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w109", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w110", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w111", "form": "erit", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
-        { "id": "w112", "form": "finis", "lemma": "finis", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
+        { "id": "w112", "form": "finis", "lemma": "finis", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
         { "id": "w113", "form": "Dixit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w114", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w115", "form": "María", "lemma": "Maria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
@@ -225,8 +225,10 @@
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w048": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w112": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w152": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w152": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w105": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w112": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w039": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

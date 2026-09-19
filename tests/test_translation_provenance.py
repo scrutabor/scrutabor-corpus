@@ -1,6 +1,6 @@
 import json
 
-from checks.translation_provenance import canonical_hash, check, initialize
+from checks.translation_provenance import canonical_hash, check, initialize, protected
 
 
 def text():
@@ -119,3 +119,10 @@ def test_own_origin_rejects_a_wording_citation(tmp_path):
 
 def test_hash_is_canonical_for_object_key_order():
     assert canonical_hash({"a": 1, "b": 2}) == canonical_hash({"b": 2, "a": 1})
+
+
+def test_paschal_pair_protects_its_inherited_greeting_in_both_languages():
+    text_id = "proprium.annuntiatio-beatae-mariae-virginis-alleluia"
+    assert protected(text_id, "pl")
+    assert protected(text_id, "en")
+    assert not protected(text_id, "la")

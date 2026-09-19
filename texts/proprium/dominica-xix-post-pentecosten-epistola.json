@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xix-post-pentecosten-epistola",
   "title": "Fratres: Renovámini spíritu mentis vestræ, et indúite",
   "category": "proprium",
@@ -74,7 +74,7 @@
         { "id": "w053", "form": "magis", "lemma": "magis", "morph": { "pos": "adv", "degree": "comp" } },
         { "id": "w054", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w055", "form": "labóret", "lemma": "laboro", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 1 }, "post": "," },
-        { "id": "w056", "form": "operándo", "lemma": "operor", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "fut", "voice": "dep", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w056", "form": "operándo", "lemma": "operor", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "ger", "conj": 1 } },
         { "id": "w057", "form": "mánibus", "lemma": "manus", "morph": { "case": "abl", "decl": 4, "gender": "f", "number": "pl", "pos": "noun" } },
         { "id": "w058", "form": "suis", "lemma": "suus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "post": ",", "substantive": true },
         { "id": "w059", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
@@ -100,9 +100,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w028": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w052": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w056": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w056": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

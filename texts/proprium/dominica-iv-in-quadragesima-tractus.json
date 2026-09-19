@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-iv-in-quadragesima-tractus",
   "title": "Qui confídunt in Dómino, sicut mons Sion",
   "category": "proprium",
@@ -28,9 +28,9 @@
         { "id": "w007", "form": "Sion", "lemma": "Sion", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f" }, "post": ":" },
         { "id": "w008", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w009", "form": "commovébitur", "lemma": "commoveo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" } },
-        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
+        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w011" },
         { "id": "w011", "form": "ætérnum", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "post": ",", "substantive": true },
-        { "id": "w012", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w012", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w013", "form": "hábitat", "lemma": "habito", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w015" },
         { "id": "w015", "form": "Ierúsalem", "lemma": "Ierusalem", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg" }, "post": "." },
@@ -79,9 +79,10 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w012": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

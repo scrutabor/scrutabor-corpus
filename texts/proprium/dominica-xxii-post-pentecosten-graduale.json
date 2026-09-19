@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xxii-post-pentecosten-graduale",
   "title": "Ecce, quam bonum et quam iucúndum, habitáre",
   "category": "proprium",
@@ -20,13 +20,13 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Ecce", "lemma": "ecce", "morph": { "pos": "intj" }, "post": "," },
-        { "id": "w002", "form": "quam", "lemma": "quam", "morph": { "pos": "conj" } },
-        { "id": "w003", "form": "bonum", "lemma": "bonus", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w002", "form": "quam", "lemma": "quam", "morph": { "pos": "adv" } },
+        { "id": "w003", "form": "bonum", "lemma": "bonus", "morph": { "case": "nom", "gender": "n", "number": "sg", "pos": "adj" }, "substantive": true },
         { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w005", "form": "quam", "lemma": "quam", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "quam", "lemma": "quam", "morph": { "pos": "adv" } },
         { "id": "w006", "form": "iucúndum", "lemma": "iucundus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "post": ",", "substantive": true },
         { "id": "w007", "form": "habitáre", "lemma": "habito", "morph": { "conj": 1, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w008", "form": "fratres", "lemma": "frater", "morph": { "case": "voc", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w008", "form": "fratres", "lemma": "frater", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w010" },
         { "id": "w010", "form": "unum", "lemma": "unus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "post": "!", "substantive": true },
         { "id": "w011", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
@@ -71,7 +71,11 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

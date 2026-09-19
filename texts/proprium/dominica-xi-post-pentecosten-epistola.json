@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xi-post-pentecosten-epistola",
   "title": "Fratres: Notum vobis fácio Evangélium, quod prædicávi",
   "category": "proprium",
@@ -50,9 +50,9 @@
         { "id": "w029", "form": "Trádidi", "lemma": "trado", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
         { "id": "w030", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
         { "id": "w031", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
-        { "id": "w032", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w034" },
+        { "id": "w032", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w033" },
         { "id": "w033", "form": "primis", "lemma": "primus", "morph": { "case": "abl", "number": "pl", "pos": "adj" }, "post": ",", "substantive": true },
-        { "id": "w034", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "n" } },
+        { "id": "w034", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
         { "id": "w035", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w036", "form": "accépi", "lemma": "accipio", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 }, "post": ":" },
         { "id": "w037", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
@@ -89,7 +89,7 @@
         { "id": "w068", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w069", "form": "plus", "lemma": "plus", "morph": { "pos": "adv" } },
         { "id": "w070", "form": "quam", "lemma": "quam", "morph": { "pos": "conj" } },
-        { "id": "w071", "form": "quingéntis", "lemma": "quingenti", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "pl" }, "substantive": true },
+        { "id": "w071", "form": "quingéntis", "lemma": "quingenti", "morph": { "pos": "adj", "case": "dat", "gender": "m", "number": "pl" }, "head": "w072" },
         { "id": "w072", "form": "frátribus", "lemma": "frater", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "pl", "decl": 3 } },
         { "id": "w073", "form": "simul", "lemma": "simul", "morph": { "pos": "adv" }, "post": "," },
         { "id": "w074", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w075" },
@@ -162,10 +162,12 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w034": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w061": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w082": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w086": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w086": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w032": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w034": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w071": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

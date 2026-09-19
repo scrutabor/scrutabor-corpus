@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-in-quinquagesima-introitus",
   "title": "Esto mihi in Deum protectórem, et in",
   "category": "proprium",
@@ -48,7 +48,7 @@
         { "id": "w027", "form": "mihi", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
         { "id": "w028", "form": "eris", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" }, "post": "," },
         { "id": "w029", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w030", "form": "enútries", "lemma": "enutrio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w030", "form": "enútries", "lemma": "enutrio", "morph": { "conj": 4, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w031", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "." },
         { "id": "w032", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w033" },
         { "id": "w033", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "," },
@@ -115,7 +115,7 @@
         { "id": "w094", "form": "mihi", "lemma": "ego", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
         { "id": "w095", "form": "eris", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" }, "post": "," },
         { "id": "w096", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w097", "form": "enútries", "lemma": "enutrio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w097", "form": "enútries", "lemma": "enutrio", "morph": { "conj": 4, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w098", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "." }
       ],
       "participation": {
@@ -150,9 +150,11 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w009": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w068": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w076": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w076": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w030": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w097": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

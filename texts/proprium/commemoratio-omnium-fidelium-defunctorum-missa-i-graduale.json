@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-graduale",
   "title": "Réquiem ætérnam dona eis, Dómine: et lux",
   "category": "proprium",
@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "Réquiem", "lemma": "requies", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w002", "form": "ætérnam", "lemma": "aeternus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w001" },
-        { "id": "w003", "form": "dona", "lemma": "donum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w003", "form": "dona", "lemma": "dono", "morph": { "pos": "verb", "tense": "pres", "mood": "imp", "voice": "act", "person": 2, "number": "sg", "conj": 1 } },
         { "id": "w004", "form": "eis", "lemma": "is", "morph": { "case": "dat", "gender": "m", "number": "pl", "pos": "pron" }, "post": "," },
         { "id": "w005", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -69,7 +69,10 @@
       "apparatus": "witnesses/proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-graduale/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-iii-post-pascha-collecta",
   "title": "Deus, qui errántibus, ut in viam possint",
   "category": "proprium",
@@ -9,7 +9,7 @@
   "ids": {
     "next": 56,
     "segments": {
-      "next": 2
+      "next": 3
     }
   },
   "segments": [
@@ -43,7 +43,7 @@
         { "id": "w022", "form": "respúere", "lemma": "respuo", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 3 }, "post": "," },
         { "id": "w023", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
         { "id": "w024", "form": "huic", "lemma": "hic", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
-        { "id": "w025", "form": "inimíca", "lemma": "inimicus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl" } },
+        { "id": "w025", "form": "inimíca", "lemma": "inimicus_hostilis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w023" },
         { "id": "w026", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w027", "form": "nómini", "lemma": "nomen", "morph": { "case": "dat", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" }, "post": ";" },
         { "id": "w028", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -72,9 +72,39 @@
         { "id": "w051", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w053" },
         { "id": "w052", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w053" },
         { "id": "w053", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w054", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." },
+        { "id": "w054", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." }
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "sacerdos",
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
         { "id": "w055", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." }
-      ]
+      ],
+      "speaker": "minister",
+      "voice": "clara",
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      },
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     }
   ],
   "editorial": {
@@ -88,7 +118,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w025": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

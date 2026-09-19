@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xiii-post-pentecosten-evangelium",
   "title": "In illo témpore: Dum iret Iesus in",
   "category": "proprium",
@@ -45,17 +45,17 @@
         { "id": "w024", "form": "leprósi", "lemma": "leprosus", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "post": ",", "substantive": true },
         { "id": "w025", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w026", "form": "stetérunt", "lemma": "sto", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w027", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w037" },
+        { "id": "w027", "form": "a", "lemma": "a", "morph": { "pos": "prep" }, "head": "w028" },
         { "id": "w028", "form": "longe", "lemma": "longe", "morph": { "pos": "adv" }, "post": ";" },
         { "id": "w029", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w030", "form": "levavérunt", "lemma": "levo", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w031", "form": "vocem", "lemma": "vox", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w032", "form": "dicéntes", "lemma": "dico", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":", "substantive": true },
-        { "id": "w033", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w033", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" } },
         { "id": "w034", "form": "præcéptor", "lemma": "praeceptor", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 }, "post": "," },
         { "id": "w035", "form": "miserére", "lemma": "misereor", "morph": { "conj": 2, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "dep" } },
         { "id": "w036", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" }, "post": "." },
-        { "id": "w037", "form": "Quos", "lemma": "qui", "morph": { "case": "abl", "gender": "m", "number": "pl", "pos": "pron" } },
+        { "id": "w037", "form": "Quos", "lemma": "qui", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "pron" } },
         { "id": "w038", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w039", "form": "vidit", "lemma": "video", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": "," },
         { "id": "w040", "form": "dixit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": ":" },
@@ -108,7 +108,7 @@
         { "id": "w087", "form": "mundáti", "lemma": "mundo", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
         { "id": "w088", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "?" },
         { "id": "w089", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w090", "form": "novem", "lemma": "novo", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 1, "tense": "pres", "voice": "act", "conj": 1 } },
+        { "id": "w090", "form": "novem", "lemma": "novem", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
         { "id": "w091", "form": "ubi", "lemma": "ubi", "morph": { "pos": "conj" } },
         { "id": "w092", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "?" },
         { "id": "w093", "form": "Non", "lemma": "non", "morph": { "pos": "adv" } },
@@ -151,7 +151,10 @@
       "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w036": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w037": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w027": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w090": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w033": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
     }
   },
   "localization": {

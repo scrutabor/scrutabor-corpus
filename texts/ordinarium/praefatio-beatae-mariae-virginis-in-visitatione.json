@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "ordinarium.praefatio-beatae-mariae-virginis-in-visitatione",
   "title": "Præfatio de Beata Maria Virgine",
   "category": "ordinarium",
@@ -62,7 +62,7 @@
       "voice": "clara",
       "words": [
         { "id": "w022", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w023", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w023", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w024", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w025" },
         { "id": "w025", "form": "Visitatióne", "lemma": "visitatio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
         { "id": "w026", "form": "beátæ", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w027" },
@@ -81,10 +81,10 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w034", "form": "Quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w034", "form": "Quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" } },
         { "id": "w035", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w036", "form": "Unigénitum", "lemma": "unigenitus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
-        { "id": "w037", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "substantive": true },
+        { "id": "w037", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w036" },
         { "id": "w038", "form": "Sancti", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w039" },
         { "id": "w039", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
         { "id": "w040", "form": "obumbratióne", "lemma": "obumbratio", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
@@ -171,7 +171,10 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w030": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w034": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

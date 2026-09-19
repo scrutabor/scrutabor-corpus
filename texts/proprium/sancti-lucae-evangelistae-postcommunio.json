@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.sancti-lucae-evangelistae-postcommunio",
   "title": "Præsta, quǽsumus, omnípotens Deus: ut, quod de",
   "category": "proprium",
@@ -9,7 +9,7 @@
   "ids": {
     "next": 47,
     "segments": {
-      "next": 2
+      "next": 3
     }
   },
   "segments": [
@@ -63,9 +63,39 @@
         { "id": "w042", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w044" },
         { "id": "w043", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w044" },
         { "id": "w044", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w045", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." },
+        { "id": "w045", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." }
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "sacerdos",
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
         { "id": "w046", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." }
-      ]
+      ],
+      "speaker": "minister",
+      "voice": "clara",
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      },
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     }
   ],
   "editorial": {

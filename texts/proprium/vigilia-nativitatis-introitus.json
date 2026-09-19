@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.vigilia-nativitatis-introitus",
   "title": "Hódie sciétis, quia véniet Dóminus et salvábit",
   "category": "proprium",
@@ -28,7 +28,7 @@
         { "id": "w007", "form": "salvábit", "lemma": "salvo", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w008", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": ":" },
         { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w010", "form": "mane", "lemma": "maneo", "morph": { "conj": 2, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w010", "form": "mane", "lemma": "mane", "morph": { "pos": "adv" } },
         { "id": "w011", "form": "vidébitis", "lemma": "video", "morph": { "conj": 2, "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w012", "form": "glóriam", "lemma": "gloria", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w013", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": "." },
@@ -75,7 +75,7 @@
         { "id": "w054", "form": "salvábit", "lemma": "salvo", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w055", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": ":" },
         { "id": "w056", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w057", "form": "mane", "lemma": "maneo", "morph": { "conj": 2, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w057", "form": "mane", "lemma": "mane", "morph": { "pos": "adv" } },
         { "id": "w058", "form": "vidébitis", "lemma": "video", "morph": { "conj": 2, "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w059", "form": "glóriam", "lemma": "gloria", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w060", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": "." }
@@ -109,7 +109,11 @@
       "apparatus": "witnesses/proprium.vigilia-nativitatis-introitus/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w057": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

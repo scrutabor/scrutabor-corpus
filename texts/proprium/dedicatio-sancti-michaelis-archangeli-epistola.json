@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dedicatio-sancti-michaelis-archangeli-epistola",
   "title": "In diébus illis: Significávit Deus, quæ opórtet",
   "category": "proprium",
@@ -42,7 +42,7 @@
         { "id": "w021", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w022", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w023", "form": "testimónium", "lemma": "testimonium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
-        { "id": "w024", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w024", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w025", "form": "Christi", "lemma": "Christus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w026", "form": "quæcúmque", "lemma": "quicumque", "morph": { "case": "nom", "gender": "n", "number": "pl", "pos": "pron" } },
         { "id": "w027", "form": "vidit", "lemma": "video", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": "." },
@@ -100,7 +100,7 @@
         { "id": "w079", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":" },
         { "id": "w080", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w081", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w082" },
-        { "id": "w082", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w082", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m" } },
         { "id": "w083", "form": "Christo", "lemma": "Christus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w084", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w085", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -109,7 +109,7 @@
         { "id": "w088", "form": "primogénitus", "lemma": "primogenitus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "head": "w086" },
         { "id": "w089", "form": "mortuórum", "lemma": "mortuus", "morph": { "case": "gen", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w092" },
         { "id": "w090", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w091", "form": "princeps", "lemma": "princeps", "morph": { "case": "voc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w091", "form": "princeps", "lemma": "princeps", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w092", "form": "regum", "lemma": "rex", "morph": { "case": "gen", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w093", "form": "terræ", "lemma": "terra", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w094", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
@@ -139,7 +139,10 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w077": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w077": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w091": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
+      "w082": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
     }
   },
   "localization": {

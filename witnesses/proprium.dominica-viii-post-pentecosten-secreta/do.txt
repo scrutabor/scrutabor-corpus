@@ -1,9 +1,11 @@
 # witness: do
-# description: Divinum Officium Latin Mass data, pinned revision
+# description: Pinned Latin proper and selected full conclusion macro, one derived comparison
 # source: https://github.com/DivinumOfficium/divinum-officium
 # revision: 44667ff518b8ff1439780470828b39714f5306a2
-# fetched: 2026-08-31
-# path: pinned source key Tempora/Pent08-0; resolved section [Secreta] with declared inherited references
-# orthography: exact source spelling, accents, capitalization, and punctuation
-# note: section labels, scripture references, speaker markers, and runtime control characters are edition framing and are not transcribed
-Súscipe, quǽsumus, Dómine, múnera, quæ tibi de tua largitáte deférimus: ut hæc sacrosáncta mystéria, grátiæ tuæ operánte virtúte, et præséntis vitæ nos conversatióne sanctíficent, et ad gáudia sempitérna perdúcant. Per Dóminum nostrum Iesum Christum, Fílium tuum: Qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum. Amen.
+# path: witnesses/raw/do-pent08-0.txt (line 49); witnesses/raw/do-ordo-prayers-b5e250b.txt (lines 96-97)
+# upstream: web/www/missa/Latin/Tempora/Pent08-0.txt, [Secreta] lines 49-50; web/www/missa/Latin/Ordo/Prayers.txt, [Per Dominum] lines 96-97
+# dependency: proper SHA256 ab3233793a0f44c51dcc6365c21a9274f05f77d0a5e2edb316829ef05b257b43; selected macro source SHA256 7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b
+# fetched: ../raw/do-pent08-0.txt; ../raw/do-ordo-prayers-b5e250b.txt
+# orthography: exact source proper and macro spelling, accents, capitalization and punctuation
+# assembly: the proper selects $Per Dominum. Literal expansion uses the named macro and its Amen; r./R. markers are framing. This is not a claim about live runtime selection or dated commemorations.
+Súscipe, quǽsumus, Dómine, múnera, quæ tibi de tua largitáte deférimus: ut hæc sacrosáncta mystéria, grátiæ tuæ operánte virtúte, et præséntis vitæ nos conversatióne sanctíficent, et ad gáudia sempitérna perdúcant. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti Deus, per ómnia sǽcula sæculórum. Amen.

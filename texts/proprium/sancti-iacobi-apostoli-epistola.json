@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.sancti-iacobi-apostoli-epistola",
   "title": "Fratres: Puto, quod Deus nos Apóstolos novíssimos",
   "category": "proprium",
@@ -65,7 +65,7 @@
         { "id": "w044", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w045", "form": "esurímus", "lemma": "esurio", "morph": { "conj": 4, "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w046", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w047", "form": "sitímus", "lemma": "sitio", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 1, "tense": "pres", "voice": "act", "conj": 3 }, "post": "," },
+        { "id": "w047", "form": "sitímus", "lemma": "sitio", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 1, "tense": "pres", "voice": "act", "conj": 4 }, "post": "," },
         { "id": "w048", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w049", "form": "nudi", "lemma": "nudus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "substantive": true },
         { "id": "w050", "form": "sumus", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
@@ -127,7 +127,7 @@
         { "id": "w106", "form": "Nam", "lemma": "nam", "morph": { "pos": "conj" } },
         { "id": "w107", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w108" },
         { "id": "w108", "form": "Christo", "lemma": "Christus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w109", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w109", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m" } },
         { "id": "w110", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w111" },
         { "id": "w111", "form": "Evangélium", "lemma": "evangelium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
         { "id": "w112", "form": "ego", "lemma": "ego", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
@@ -148,7 +148,9 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w076": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w076": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w047": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w109": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
     }
   },
   "localization": {

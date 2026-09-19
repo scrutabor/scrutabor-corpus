@@ -220,6 +220,21 @@ def test_divine_address_follows_its_own_verse():
     assert check_divine_address(d, gloss({"w1": "twoim"}, "I z duchem twoim.")) == []
 
 
+def test_mixed_addresses_do_not_force_one_pronouns_capitalization_on_another():
+    d = doc([{"id": "w1", "form": "tuam", "lemma": "tuus"}])
+    assert (
+        check_divine_address(
+            d,
+            gloss(
+                {"w1": "twojej"}, "Król zapragnął twojej piękności. Córki królów ku Twojej czci."
+            ),
+        )
+        == []
+    )
+    # The unambiguous same-form inconsistency still fails.
+    assert check_divine_address(d, gloss({"w1": "twojej"}, "Córki królów ku Twojej czci."))
+
+
 def test_latin_plural_is_glossed_in_the_plural():
     from checks.polish import check_number
 
@@ -297,7 +312,7 @@ def test_morfeusz_reads_the_case_of_a_participle():
     assert "nom" in cases("odpuszczone")
 
 
-def test_an_ablative_absolute_is_glossed_in_the_instrumental():
+def test_legacy_absolute_diagnostic_recognizes_instrumental_pairs():
     from checks.polish import check_ablative_absolute
 
     assert (
@@ -307,10 +322,10 @@ def test_an_ablative_absolute_is_glossed_in_the_instrumental():
     assert check_ablative_absolute(_abs_doc(), gloss({"w1": "odpuszczone", "w2": "grzechy"}))
 
 
-def test_an_ablative_absolute_may_not_import_a_preposition():
+def test_legacy_absolute_diagnostic_flags_prepositional_recasting():
     from checks.polish import check_ablative_absolute
 
-    # za wstawiennictwem Dziewicy: the Latin has no preposition to render
+    # This is a review signal, not proof that prepositional recasting is wrong.
     assert check_ablative_absolute(
         _abs_doc(), gloss({"w1": "za wstawiennictwem", "w2": "grzechami"})
     )

@@ -10,6 +10,8 @@ It does now. Every adjective, numeral and participle carries either
 
     "head": "wNNN"        the word it must agree with, or
     "substantive": true   it heads its own phrase and agrees with nothing
+    "ellipsis": "predicate"   nominative predicate with an unexpressed subject/copula
+    "ellipsis": "subject"     nominative participle with an unexpressed subject
 
 and every preposition carries a `head` naming the word it governs. Both are
 CLAIMS, checked here on every build:
@@ -25,12 +27,17 @@ is exactly the kind of quiet assumption that hid *omnibus* = all people among
 
 from __future__ import annotations
 
+from .normalize import substantive
+
 # What each preposition may govern. Two-case prepositions list both; the check
 # speaks only when the object stands in neither.
 PREP_CASE: dict[str, set[str]] = {
+    "a": {"abl"},
     "ab": {"abl"},
+    "abs": {"abl"},
     "de": {"abl"},
     "ex": {"abl"},
+    "e": {"abl"},
     "cum": {"abl"},
     "pro": {"abl"},
     "sine": {"abl"},
@@ -52,6 +59,11 @@ PREP_CASE: dict[str, set[str]] = {
     "ultra": {"acc"},
     "intra": {"acc"},
     "extra": {"acc"},
+    "iuxta": {"acc"},
+    "secus": {"acc"},
+    "praeter": {"acc"},
+    "ob": {"acc"},
+    "adversus_prep": {"acc"},
     "erga": {"acc"},
     "usque": {"acc"},
     "in": {"abl", "acc"},
@@ -117,7 +129,7 @@ def check(doc: dict) -> list[str]:
     tid = doc["id"]
     words = _index(doc)
     seg_of = _same_segment(doc)
-    errors: list[str] = []
+    errors = check_conclusion_subject(doc)
 
     def fail(word: dict, msg: str) -> None:
         errors.append(f"{tid}:{word['id']} ({word['form']}): {msg}")
@@ -127,6 +139,33 @@ def check(doc: dict) -> list[str]:
             m = word["morph"]
             head_id = word.get("head")
             substantive = word.get("substantive")
+            if "ellipsis" in word:
+                # An unexpressed subject is not substantivization, nor permission
+                # to invent an agreement head in a different clause.
+                # This is a contextual claim, not automatic discovery of ellipsis.
+                kind = word["ellipsis"]
+                if kind == "predicate":
+                    if m.get("pos") != "adj" or m.get("case") != "nom":
+                        fail(word, "predicate ellipsis requires a nominative adjective")
+                elif kind == "subject":
+                    if not (
+                        m.get("pos") == "verb"
+                        and m.get("mood") == "part"
+                        and m.get("case") == "nom"
+                        and m.get("number") in ("sg", "pl")
+                        and m.get("gender") in ("m", "f", "n")
+                        and m.get("tense") in ("pres", "perf", "fut")
+                        and m.get("voice") in ("act", "pass", "dep")
+                    ):
+                        fail(
+                            word,
+                            "subject ellipsis requires a fully specified nominative participle",
+                        )
+                else:
+                    fail(word, "unknown ellipsis kind")
+                if head_id is not None or substantive:
+                    fail(word, f"{kind} ellipsis cannot also carry a head or substantive flag")
+                continue
 
             if head_id is not None:
                 if head_id not in words:
@@ -192,12 +231,18 @@ def check(doc: dict) -> list[str]:
                 allowed = PREP_CASE.get(word["lemma"])
                 if allowed is None:
                     continue  # a preposition whose government we do not assert
-                # Biblical de longe ("from afar") has an adverbial complement,
-                # not a declined object. Do not invent an ablative on longe or
-                # attach de to an unrelated noun merely to satisfy this check.
+                # These lexicalized expressions have adverbial complements,
+                # not declined objects: from afar, to one another, from then.
+                # Never invent a case or attach them to a later unrelated noun.
                 if (
-                    word["lemma"] == "de"
-                    and head.get("lemma") == "longe"
+                    (word["lemma"], head.get("lemma"))
+                    in {
+                        ("de", "longe"),
+                        ("a", "longe"),
+                        ("ab", "longe"),
+                        ("ad", "invicem"),
+                        ("ex", "tunc"),
+                    }
                     and head["morph"].get("pos") == "adv"
                     and not m.get("governs")
                 ):
@@ -297,6 +342,58 @@ def check(doc: dict) -> list[str]:
     return errors
 
 
+def conclusion_subjects(doc: dict) -> list[dict]:
+    """Find Deus in the exact third-person oration formula.
+
+    This narrow lexical construction is source-defined (MR1962 RG115a/c).
+    Neither an isolated Deus nor direct-address Qui vivis is adjudicated by
+    this rule. Ordinary agreement checks cannot detect the wrong vocative.
+    """
+    prefixes = (
+        ("qui", "tecum", "vivit", "et", "regnat", "in", "unitate", "spiritus", "sancti"),
+        ("qui", "tecum", "vivit", "et", "regnat", "in", "unitate", "eiusdem", "spiritus", "sancti"),
+    )
+    subjects = []
+    for segment in doc.get("segments", []):
+        words = segment.get("words") or []
+        forms = tuple(substantive(w["form"], fold_ji=True) for w in words)
+        for index, word in enumerate(words):
+            if forms[index] != "deus":
+                continue
+            if any(index >= len(p) and forms[index - len(p) : index] == p for p in prefixes):
+                subjects.append(word)
+    return subjects
+
+
+def check_conclusion_subject(doc: dict) -> list[str]:
+    """The third-person oration formula names Christ, not a new addressee."""
+    return [
+        f"{doc['id']}:{word['id']}: Deus in Qui tecum vivit et regnat "
+        "is nominative, naming the third-person subject, not a vocative"
+        for word in conclusion_subjects(doc)
+        if word["morph"].get("case") != "nom"
+    ]
+
+
+def check_conclusion_gloss(doc: dict, gloss: dict) -> list[str]:
+    """Reject an explicit vocative gloss for that subject, not free translations.
+
+    Only a direct single-word gloss is inspected. Natural shared expressions
+    and continuous prose require their own contextual review. Qui vivis and
+    isolated invocations are deliberately outside this exact construction.
+    """
+    forbidden = {"pl": {"boże", "o boże"}, "en": {"o god"}}.get(gloss.get("lang", ""), set())
+    errors = []
+    for word in conclusion_subjects(doc):
+        target = (gloss.get("words", {}).get(word["id"]) or {}).get("gloss")
+        if isinstance(target, str) and target.strip().casefold().rstrip(",.!:;") in forbidden:
+            errors.append(
+                f"{doc['id']}:{word['id']}: {target!r} addresses God directly, "
+                "but Deus names the third-person subject in this conclusion"
+            )
+    return errors
+
+
 def coverage(doc: dict) -> tuple[int, int]:
     """(declared, total) — how much of this text's syntax is stated as data.
 
@@ -312,6 +409,6 @@ def coverage(doc: dict) -> tuple[int, int]:
             m = word["morph"]
             if m.get("pos") == "prep" or is_modifier(word):
                 total += 1
-                if word.get("head") is not None or word.get("substantive"):
+                if word.get("head") is not None or word.get("substantive") or word.get("ellipsis"):
                     declared += 1
     return declared, total

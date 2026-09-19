@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.sanctorum-philippi-et-iacobi-apostolorum-epistola",
   "title": "Stabunt iusti in magna constántia advérsus eos",
   "category": "proprium",
@@ -24,7 +24,7 @@
         { "id": "w003", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
         { "id": "w004", "form": "magna", "lemma": "magnus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w005" },
         { "id": "w005", "form": "constántia", "lemma": "constantia", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 } },
-        { "id": "w006", "form": "advérsus", "lemma": "adversus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w008" },
+        { "id": "w006", "form": "advérsus", "lemma": "adversus_prep", "morph": { "pos": "prep", "governs": "acc" }, "head": "w007" },
         { "id": "w007", "form": "eos", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "pron" }, "post": "," },
         { "id": "w008", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w009", "form": "se", "lemma": "sui", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
@@ -84,9 +84,9 @@
         { "id": "w063", "form": "fílios", "lemma": "filius", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w064", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w065", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w066", "form": "inter", "lemma": "inter", "morph": { "governs": "acc", "pos": "prep" }, "head": "w068" },
+        { "id": "w066", "form": "inter", "lemma": "inter", "morph": { "governs": "acc", "pos": "prep" }, "head": "w067" },
         { "id": "w067", "form": "Sanctos", "lemma": "sanctus", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
-        { "id": "w068", "form": "sors", "lemma": "sors", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w068", "form": "sors", "lemma": "sors", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
         { "id": "w069", "form": "illórum", "lemma": "ille", "morph": { "case": "gen", "number": "pl", "pos": "pron" } },
         { "id": "w070", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." }
       ]
@@ -108,7 +108,7 @@
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
@@ -168,11 +168,11 @@
       "w063": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w064": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w065": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w066": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w066": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w067": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w068": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w069": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w070": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } }
+      "w070": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w068": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

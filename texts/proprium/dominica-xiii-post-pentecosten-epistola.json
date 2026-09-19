@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xiii-post-pentecosten-epistola",
   "title": "Fratres: Abrahæ dictæ sunt promissiónes, et sémini",
   "category": "proprium",
@@ -36,11 +36,11 @@
         { "id": "w015", "form": "multis", "lemma": "multus", "morph": { "case": "abl", "gender": "m", "number": "pl", "pos": "adj" }, "post": ";", "substantive": true },
         { "id": "w016", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
         { "id": "w017", "form": "quasi", "lemma": "quasi", "morph": { "pos": "conj" } },
-        { "id": "w018", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w021" },
+        { "id": "w018", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w019" },
         { "id": "w019", "form": "uno", "lemma": "unus", "morph": { "case": "abl", "gender": "n", "number": "sg", "pos": "adj" }, "post": ":", "substantive": true },
         { "id": "w020", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w021", "form": "sémini", "lemma": "semen", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w022", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "post": ",", "head": "w021" },
+        { "id": "w021", "form": "sémini", "lemma": "semen", "morph": { "case": "dat", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w022", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "gender": "n", "number": "sg" }, "post": ",", "head": "w021" },
         { "id": "w023", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w024", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w025", "form": "Christus", "lemma": "Christus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
@@ -110,7 +110,7 @@
         { "id": "w089", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." },
         { "id": "w090", "form": "Lex", "lemma": "lex", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
         { "id": "w091", "form": "ergo", "lemma": "ergo", "morph": { "pos": "adv" } },
-        { "id": "w092", "form": "advérsus", "lemma": "adversus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w092", "form": "advérsus", "lemma": "adversus_prep", "morph": { "pos": "prep", "governs": "acc" }, "head": "w093" },
         { "id": "w093", "form": "promíssa", "lemma": "promissum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 2 } },
         { "id": "w094", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "?" },
         { "id": "w095", "form": "Absit", "lemma": "absum", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 3, "tense": "pres", "voice": "act" }, "post": "." },
@@ -137,7 +137,7 @@
         { "id": "w116", "form": "promíssio", "lemma": "promissio", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
         { "id": "w117", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w118" },
         { "id": "w118", "form": "fide", "lemma": "fides", "morph": { "case": "abl", "decl": 5, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w119", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w119", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w120", "form": "Christi", "lemma": "Christus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w121", "form": "darétur", "lemma": "do", "morph": { "conj": 1, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "pass" } },
         { "id": "w122", "form": "credéntibus", "lemma": "credo", "morph": { "case": "dat", "conj": 3, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "act" }, "post": ".", "substantive": true }
@@ -156,10 +156,14 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w021": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w039": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w057": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w080": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w080": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w092": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w119": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
     }
   },
   "localization": {

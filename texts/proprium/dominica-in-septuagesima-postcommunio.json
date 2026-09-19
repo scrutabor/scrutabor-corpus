@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-in-septuagesima-postcommunio",
   "title": "Fidéles tui, Deus, per tua dona firméntur",
   "category": "proprium",
@@ -9,7 +9,7 @@
   "ids": {
     "next": 40,
     "segments": {
-      "next": 2
+      "next": 3
     }
   },
   "segments": [
@@ -29,10 +29,10 @@
         { "id": "w008", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w009", "form": "éadem", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w011", "form": "percipiéndo", "lemma": "percipio", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "fut", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w011", "form": "percipiéndo", "lemma": "percipio", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "ger", "conj": 3 } },
         { "id": "w012", "form": "requírant", "lemma": "requiro", "morph": { "conj": 3, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w014", "form": "quæréndo", "lemma": "quaero", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "fut", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w014", "form": "quæréndo", "lemma": "quaero", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "ger", "conj": 3 } },
         { "id": "w015", "form": "sine", "lemma": "sine", "morph": { "governs": "abl", "pos": "prep" }, "head": "w016" },
         { "id": "w016", "form": "fine", "lemma": "finis", "morph": { "case": "abl", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w017", "form": "percípiant", "lemma": "percipio", "morph": { "conj": 3, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." },
@@ -56,9 +56,39 @@
         { "id": "w035", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w037" },
         { "id": "w036", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w037" },
         { "id": "w037", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w038", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." },
+        { "id": "w038", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." }
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "sacerdos",
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
         { "id": "w039", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." }
-      ]
+      ],
+      "speaker": "minister",
+      "voice": "clara",
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      },
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     }
   ],
   "editorial": {
@@ -72,7 +102,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

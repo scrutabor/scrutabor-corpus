@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.0.0",
+  "formulary_schema": "1.1.0",
   "id": "septem-dolorum-beatae-mariae-virginis",
   "order": 83,
   "collection": "sanctorale",
@@ -44,8 +44,11 @@
     {
       "key": "tractus",
       "role": "tractus",
-      "text": "proprium.nativitas-beatae-mariae-virginis-tractus",
-      "relation": "reference"
+      "text": "proprium.septem-dolorum-beatae-mariae-virginis-tractus",
+      "relation": "proper",
+      "condition": {
+        "use": "votive-after-septuagesima"
+      }
     },
     {
       "key": "sequentia",

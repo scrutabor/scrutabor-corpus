@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xiv-post-pentecosten-introitus",
   "title": "Protéctor noster, áspice, Deus, et réspice in",
   "category": "proprium",
@@ -39,7 +39,7 @@
         { "id": "w018", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "substantive": true },
         { "id": "w019", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w020" },
         { "id": "w020", "form": "mília", "lemma": "mille", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl" }, "post": "." },
-        { "id": "w021", "form": "Quam", "lemma": "quam", "morph": { "pos": "conj" } },
+        { "id": "w021", "form": "Quam", "lemma": "quam", "morph": { "pos": "adv" } },
         { "id": "w022", "form": "dilécta", "lemma": "diligo", "morph": { "pos": "verb", "case": "acc", "gender": "n", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w023" },
         { "id": "w023", "form": "tabernácula", "lemma": "tabernaculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
         { "id": "w024", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "post": ",", "substantive": true },
@@ -123,7 +123,10 @@
       "apparatus": "witnesses/proprium.dominica-xiv-post-pentecosten-introitus/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

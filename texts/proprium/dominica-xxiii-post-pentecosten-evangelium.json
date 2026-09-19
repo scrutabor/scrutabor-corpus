@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xxiii-post-pentecosten-evangelium",
   "title": "In illo témpore: Loquénte Iesu ad turbas",
   "category": "proprium",
@@ -22,12 +22,12 @@
         { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w002" },
         { "id": "w002", "form": "illo", "lemma": "ille", "morph": { "case": "abl", "gender": "n", "number": "sg", "pos": "pron" } },
         { "id": "w003", "form": "témpore", "lemma": "tempus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" }, "post": ":" },
-        { "id": "w004", "form": "Loquénte", "lemma": "loquor", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "sg", "tense": "pres", "voice": "dep", "mood": "part", "conj": 3 }, "substantive": true },
-        { "id": "w005", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w004", "form": "Loquénte", "lemma": "loquor", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "sg", "tense": "pres", "voice": "dep", "mood": "part", "conj": 3 }, "head": "w005" },
+        { "id": "w005", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m" } },
         { "id": "w006", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w007" },
         { "id": "w007", "form": "turbas", "lemma": "turba", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" }, "post": "," },
         { "id": "w008", "form": "ecce", "lemma": "ecce", "morph": { "pos": "intj" }, "post": "," },
-        { "id": "w009", "form": "princeps", "lemma": "princeps", "morph": { "case": "voc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w009", "form": "princeps", "lemma": "princeps", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w010", "form": "unus", "lemma": "unus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
         { "id": "w011", "form": "accéssit", "lemma": "accedo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 3 } },
         { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -37,7 +37,7 @@
         { "id": "w016", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w017", "form": "fília", "lemma": "filia", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w018", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w017" },
-        { "id": "w019", "form": "modo", "lemma": "modus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w019", "form": "modo", "lemma": "modo", "morph": { "pos": "adv" } },
         { "id": "w020", "form": "defúncta", "lemma": "defunctus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "head": "w017" },
         { "id": "w021", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":" },
         { "id": "w022", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
@@ -170,7 +170,11 @@
       "w058": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w082": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w115": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w127": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w127": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
     }
   },
   "localization": {

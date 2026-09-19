@@ -26,7 +26,20 @@ def _signature(text: str, *, terminal_punctuation: bool) -> str:
     return "".join(char for char in normalized if char.isalpha() or char in allowed)
 
 
-def _source_text(lines: list[str]) -> str:
+OPTIONAL_ALLELUIA = re.compile(
+    r"\(\s*(Allelú[ij]a(?:\s*[,.;]?\s*allelú[ij]a)*[.!]?)\s*\)", re.IGNORECASE
+)
+
+
+def seasonal_mode(text: str) -> str:
+    """A witness must explicitly select optional Alleluia, never infer it."""
+    declarations = re.findall(r"^# seasonal-alleluia:\s*(.*?)\s*$", text, re.MULTILINE)
+    if len(declarations) > 1 or (declarations and declarations[0] not in {"include", "omit"}):
+        raise ValueError("seasonal-alleluia must be one include or omit declaration")
+    return declarations[0] if declarations else "omit"
+
+
+def _source_text(lines: list[str], *, seasonal_alleluia: str = "omit") -> str:
     textual = []
     for line in lines:
         stripped = line.lstrip()
@@ -36,6 +49,10 @@ def _source_text(lines: list[str]) -> str:
         if stripped.startswith(("!", "&", "#", "_", "wait")):
             continue
         line = re.sub(r"^[SMVROsmvro]\.\s*", "", line.strip())
+        # Only this explicitly declared acclamation may be sung rather than
+        # discarded as framing. Other parenthetical instructions stay out.
+        if seasonal_alleluia == "include":
+            line = OPTIONAL_ALLELUIA.sub(r"\1", line)
         line = re.sub(r"\([^)]*\)", " ", line)
         line = re.sub(r"N\.[a-z]?\s+et\s+N\.[a-z]?", " ", line)
         line = re.sub(r"N\.[a-z]?", " ", line)
@@ -53,6 +70,11 @@ def check_transcriptions(witness_dir: Path) -> tuple[list[str], int]:
     checked = 0
     for witness in sorted(witness_dir.glob("*.txt")):
         text = witness.read_text(encoding="utf-8")
+        try:
+            seasonal_alleluia = seasonal_mode(text)
+        except ValueError as error:
+            errors.append(f"{witness.name}: {error}")
+            continue
         declarations = _range_declarations(text)
         # A witness that names a local archive and gives no readable line range
         # is compared against nothing, and said so only by dropping one from
@@ -94,7 +116,11 @@ def check_transcriptions(witness_dir: Path) -> tuple[list[str], int]:
                 missing.append(declared_path)
                 continue
             lines = raw.read_text(encoding="utf-8").splitlines()
-            spans.append(_source_text(lines[min(numbers) - 1 : max(numbers)]))
+            spans.append(
+                _source_text(
+                    lines[min(numbers) - 1 : max(numbers)], seasonal_alleluia=seasonal_alleluia
+                )
+            )
         if missing:
             errors.append(
                 f"{witness.name}: declared raw source has no local archive: {', '.join(missing)}"

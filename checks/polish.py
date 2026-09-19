@@ -18,6 +18,8 @@ from __future__ import annotations
 import functools
 import re
 
+from checks.syntax import check_conclusion_gloss
+
 # What each Polish preposition governs. Where a preposition takes more than one
 # case the check accepts any of them: it speaks only when the gloss beside it
 # stands in NONE of them, which is the shape of a real mistake.
@@ -211,6 +213,78 @@ def _governed_word(tokens: list[str]) -> tuple[str | None, frozenset[str]]:
     return None, frozenset()
 
 
+@functools.lru_cache(maxsize=512)
+def _numeral_government(form: str) -> tuple:
+    """Morfeusz distinguishes numeral government (rec) from agreement (congr)."""
+    readings = set()
+    for analysis in _morfeusz().analyse(form):
+        parts = analysis[2][2].split(":")
+        if parts[0] == "num" and len(parts) >= 5:
+            for mode in set(parts[4].split(".")) & {"rec", "congr"}:
+                readings.add(
+                    (
+                        frozenset(parts[1].split(".")),
+                        frozenset(parts[2].split(".")) & CASES,
+                        frozenset(parts[3].split(".")),
+                        mode,
+                    )
+                )
+    return tuple(readings)
+
+
+@functools.lru_cache(maxsize=512)
+def _nominal_inflections(form: str) -> tuple:
+    """Keep each number/case/gender reading together, not as independent votes."""
+    readings = set()
+    for analysis in _morfeusz().analyse(form):
+        parts = analysis[2][2].split(":")
+        if parts[0] in NOMINAL_TAGS - {"num"} and len(parts) >= 4:
+            readings.add(tuple(frozenset(field.split(".")) for field in parts[1:4]))
+    return tuple(readings)
+
+
+def _quantified_object_errors(segment, prep, head_id, words, allowed):
+    """Check a linked, single-word quantity before a single-word noun gloss.
+
+    Latin *in multis argumentis* can yield *przez wiele dowodów*: the
+    preposition governs the numeral's accusative, while the numeral governs
+    the noun's genitive. A nearby but unrelated numeral is not evidence.
+    Return None when this bounded pattern is absent, not a blanket exemption.
+    """
+    sequence = segment.get("words") or []
+    positions = {word["id"]: index for index, word in enumerate(sequence)}
+    if head_id not in positions or positions[head_id] <= positions[prep["id"]]:
+        return None
+    noun = WORD_RE.findall((words.get(head_id) or {}).get("gloss") or "")
+    if len(noun) != 1:
+        return None
+    quantities = []
+    for modifier in sequence[positions[prep["id"]] + 1 : positions[head_id]]:
+        if modifier.get("head") != head_id or modifier["morph"].get("pos") not in {"adj", "num"}:
+            continue
+        tokens = WORD_RE.findall((words.get(modifier["id"]) or {}).get("gloss") or "")
+        if len(tokens) == 1 and (readings := _numeral_government(tokens[0])):
+            quantities.append((tokens[0], readings))
+    if len(quantities) != 1:
+        return None
+    quantity, readings = quantities[0]
+    compatible = [
+        (number, got & allowed, gender, mode)
+        for number, got, gender, mode in readings
+        if got & allowed
+    ]
+    if not compatible:
+        return [f"quantity {quantity!r} does not fit the preposition's {'/'.join(sorted(allowed))}"]
+    noun_readings = _nominal_inflections(noun[0])
+    if not noun_readings:
+        return None  # Unknown morphology remains with the existing checker.
+    for number, got, gender, mode in compatible:
+        expected = {"gen"} if mode == "rec" else got
+        if any(number & n and expected & c and gender & g for n, c, g in noun_readings):
+            return []
+    return [f"quantity {quantity!r} and noun {noun[0]!r} have incompatible case, number or gender"]
+
+
 def check_prepositions(doc: dict, gloss: dict) -> list[str]:
     """A Polish preposition in the gloss line must govern the gloss beside it."""
     errors: list[str] = []
@@ -262,6 +336,12 @@ def check_prepositions(doc: dict, gloss: dict) -> list[str]:
             if head_gloss.strip().startswith("[") and head_gloss.strip().endswith("]"):
                 continue
             allowed = PREP_CASE[tokens[0].lower()]
+            quantified = _quantified_object_errors(segment, w, head_id, words, allowed)
+            if quantified is not None:
+                errors.extend(
+                    f"{doc['id']}:{w['id']} ({w['form']}): {error}" for error in quantified
+                )
+                continue
             object_tokens = WORD_RE.findall(head_gloss)
             target, got = _governed_word(object_tokens)
             if target is None:
@@ -294,6 +374,12 @@ MODIFIER_RULINGS: dict[tuple[str, str], str] = {
     ("proprium.dominica-ii-passionis-evangelium", "w1281"): "do godziny dziewiątej",
     ("proprium.dominica-ii-post-pascha-introitus", "w003"): "pełna predicates ziemia in Polish",
     ("proprium.dominica-ii-post-pascha-introitus", "w043"): "pełna predicates ziemia in Polish",
+    ("proprium.dominica-in-septuagesima-evangelium", "w230"): (
+        "pierwszymi is an instrumental predicate after będą, not a modifier of ostatni"
+    ),
+    ("proprium.dominica-in-septuagesima-evangelium", "w233"): (
+        "ostatnimi is an instrumental predicate with będą carried over from the first clause"
+    ),
     (
         "proprium.dominica-infra-octavam-nativitatis-epistola",
         "w005",
@@ -451,8 +537,9 @@ def check_divine_address(doc: dict, gloss: dict) -> list[str]:
     Lowercase is right where the words address a person — *Et cum spiritu tuo*
     to the priest, *Misereatur tui* to the penitent — so the test is not the
     word but whether this text's own translation of the same verse capitalises
-    it. Where the verse writes *Twój* and the gloss writes *twój*, the reader
-    sees the edition contradict itself on the same line.
+    it. A segment can address several people: when both *Twój* and *twój*
+    occur, a bag of words cannot identify the corresponding addressee. Such
+    mixed cases require contextual review, not forced capitalization.
     """
     errors: list[str] = []
     human_or_created_addressee = {
@@ -465,8 +552,10 @@ def check_divine_address(doc: dict, gloss: dict) -> list[str]:
     segments = gloss.get("segments", {})
     for segment in doc.get("segments", []):
         translation = (segments.get(segment["id"]) or {}).get("translation") or ""
-        capitalised = {t for t in WORD_RE.findall(translation) if t[:1].isupper()}
-        lowered = {t.lower() for t in capitalised}
+        translation_tokens = WORD_RE.findall(translation)
+        capitalised = {t for t in translation_tokens if t[:1].isupper()}
+        lowercase = {t for t in translation_tokens if t[:1].islower()}
+        lowered = {t.lower() for t in capitalised} - lowercase
         for w in segment.get("words") or []:
             if (doc["id"], w["id"]) in human_or_created_addressee:
                 continue
@@ -501,6 +590,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
         + check_modifier_glosses(doc, gloss)
         + check_divine_address(doc, gloss)
         + check_purpose_clauses(doc, gloss)
+        + check_conclusion_gloss(doc, gloss)
     )
 
 
@@ -590,22 +680,17 @@ def check_number(doc: dict, gloss: dict) -> list[str]:
 
 
 def check_ablative_absolute(doc: dict, gloss: dict) -> list[str]:
-    """An ablative absolute is glossed as an instrumental pair, and nothing else.
+    """Optional diagnostic for legacy, separately glossed instrumental pairs.
 
-    The construction has no Polish counterpart, so the four renderings Polish
-    grammars sanction — a *gdy* clause, a *-wszy/-łszy* converb, a coordinate
-    clause, a prepositional phrase — all restructure it. Allen & Greenough say
-    the same of English: a change of form is generally required in translation.
-    That change belongs to the VERSE. The gloss line follows the source's
-    structure (Leipzig Glossing Rules: a gloss is not required to be
-    grammatical in the metalanguage), so it renders each word in its own right,
-    in the case Polish grammars name as the ablative's counterpart.
+    This is not a translation-correctness gate. A natural Polish realization
+    may require a clause or prepositional phrase, including in the interlinear
+    layer. Conversely, an instrumental pair can pass this mechanical test and
+    still misrepresent the construction or read ungrammatically in context.
 
-    Two shapes are therefore errors, and both stood at four of the twelve sites
-    before this rule: a gloss carrying a preposition the Latin does not have
-    (*przez anioła* for a bare *Ángelo*), and a member standing in some case
-    other than the instrumental (*odpuszczone grzechy*, a nominative, for
-    *dimíssis peccátis*).
+    Shared expressions have no direct member glosses and are not assessed by
+    this legacy diagnostic. Their coverage is checked by the alignment rules;
+    their meaning, agency and naturalness require contextual editorial review.
+    Do not rewrite a valid natural rendering merely to remove these findings.
     """
     words = {w["id"]: w for s in doc.get("segments", []) for w in (s.get("words") or [])}
     glosses = gloss.get("words") or {}
@@ -633,13 +718,14 @@ def check_ablative_absolute(doc: dict, gloss: dict) -> list[str]:
             if parts[0].lower() in PREP_CASE:
                 errors.append(
                     f"{doc['id']}:{member} ({words[member]['form']}): gloss {text!r} opens "
-                    f"with a preposition the Latin does not have — an ablative absolute is "
-                    f"glossed as an instrumental pair"
+                    f"with a preposition: differs from a legacy instrumental pair; "
+                    f"review the complete construction in context"
                 )
             elif not any("inst" in cases(part) for part in parts):
                 errors.append(
                     f"{doc['id']}:{member} ({words[member]['form']}): gloss {text!r} is not "
-                    f"instrumental — an ablative absolute is glossed as an instrumental pair"
+                    f"instrumental: differs from a legacy instrumental pair; "
+                    f"review the complete construction in context"
                 )
     return errors
 

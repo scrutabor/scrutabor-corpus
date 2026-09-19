@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.nativitas-domini-in-die-introitus",
   "title": "Puer natus est nobis, et fílius datus",
   "category": "proprium",
@@ -40,7 +40,7 @@
         { "id": "w019", "form": "magni", "lemma": "magnus", "morph": { "case": "gen", "gender": "n", "number": "sg", "pos": "adj" }, "head": "w020" },
         { "id": "w020", "form": "consílii", "lemma": "consilium", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w021", "form": "Ángelus", "lemma": "angelus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
-        { "id": "w022", "form": "Cantáte", "lemma": "canto", "morph": { "pos": "verb", "case": "voc", "gender": "m", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w022", "form": "Cantáte", "lemma": "canto", "morph": { "pos": "verb", "mood": "imp", "tense": "pres", "voice": "act", "person": 2, "number": "pl", "conj": 1 } },
         { "id": "w023", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w024", "form": "cánticum", "lemma": "canticum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w025", "form": "novum", "lemma": "novus", "morph": { "case": "nom", "gender": "n", "number": "sg", "pos": "adj" }, "post": ",", "substantive": true },
@@ -121,7 +121,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w068": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w068": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

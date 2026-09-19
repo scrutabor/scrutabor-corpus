@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xiii-post-pentecosten-communio",
   "title": "Panem de cælo dedísti nobis, Dómine, habéntem",
   "category": "proprium",
@@ -29,7 +29,7 @@
         { "id": "w008", "form": "omne", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w009" },
         { "id": "w009", "form": "delectaméntum", "lemma": "delectamentum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
         { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w011", "form": "omnem", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w011", "form": "omnem", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w012" },
         { "id": "w012", "form": "sapórem", "lemma": "sapor", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "sg", "decl": 3 } },
         { "id": "w013", "form": "suavitátis", "lemma": "suavitas", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." }
       ],
@@ -62,7 +62,10 @@
       "apparatus": "witnesses/proprium.dominica-xiii-post-pentecosten-communio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

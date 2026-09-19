@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-iv-post-pascha-epistola",
   "title": "Caríssimi: Omne datum óptimum, et omne donum",
   "category": "proprium",
@@ -59,15 +59,15 @@
         { "id": "w038", "form": "dilectíssimi", "lemma": "dilectus", "morph": { "case": "gen", "degree": "sup", "gender": "m", "number": "sg", "pos": "adj" }, "post": ".", "substantive": true },
         { "id": "w039", "form": "Sit", "lemma": "sum", "morph": { "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w040", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
-        { "id": "w041", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "substantive": true },
+        { "id": "w041", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w042" },
         { "id": "w042", "form": "homo", "lemma": "homo", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w043", "form": "velox", "lemma": "velox", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "head": "w042" },
         { "id": "w044", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w045" },
-        { "id": "w045", "form": "audiéndum", "lemma": "audio", "morph": { "pos": "verb", "case": "acc", "gender": "n", "number": "sg", "tense": "fut", "voice": "pass", "mood": "part", "conj": 4 }, "post": ":", "substantive": true },
+        { "id": "w045", "form": "audiéndum", "lemma": "audio", "morph": { "pos": "verb", "case": "acc", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "ger", "conj": 4 }, "post": ":" },
         { "id": "w046", "form": "tardus", "lemma": "tardus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "head": "w042" },
         { "id": "w047", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w048", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w049" },
-        { "id": "w049", "form": "loquéndum", "lemma": "loquor", "morph": { "pos": "verb", "case": "acc", "gender": "n", "number": "sg", "tense": "fut", "voice": "dep", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w049", "form": "loquéndum", "lemma": "loquor", "morph": { "pos": "verb", "case": "acc", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "ger", "conj": 3 } },
         { "id": "w050", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w051", "form": "tardus", "lemma": "tardus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "head": "w042" },
         { "id": "w052", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w053" },
@@ -116,7 +116,10 @@
       "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w032": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w063": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w063": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w045": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w049": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w041": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

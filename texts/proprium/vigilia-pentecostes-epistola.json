@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.vigilia-pentecostes-epistola",
   "title": "In diébus illis: Factum est, cum Apóllo",
   "category": "proprium",
@@ -101,7 +101,7 @@
         { "id": "w080", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w081" },
         { "id": "w081", "form": "nómine", "lemma": "nomen", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w082", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w083", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "post": "." },
+        { "id": "w083", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" }, "post": "." },
         { "id": "w084", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w085", "form": "cum", "lemma": "cum", "morph": { "pos": "conj" } },
         { "id": "w086", "form": "imposuísset", "lemma": "impono", "morph": { "conj": 3, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "plup", "voice": "act" } },
@@ -120,8 +120,8 @@
         { "id": "w099", "form": "prophetábant", "lemma": "propheto", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" }, "post": "." },
         { "id": "w100", "form": "Erant", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w101", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
-        { "id": "w102", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "substantive": true },
-        { "id": "w103", "form": "viri", "lemma": "vir", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w102", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w103" },
+        { "id": "w103", "form": "viri", "lemma": "vir", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w104", "form": "fere", "lemma": "fere", "morph": { "pos": "adv" } },
         { "id": "w105", "form": "duódecim", "lemma": "duodecim", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "post": ".", "substantive": true },
         { "id": "w106", "form": "Introgréssus", "lemma": "ingredior", "morph": { "pos": "verb", "mood": "part", "case": "nom", "number": "sg", "gender": "m", "tense": "perf", "voice": "dep", "conj": 3 }, "substantive": true },
@@ -154,7 +154,10 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w059": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w106": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w106": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w102": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w103": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w083": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
     }
   },
   "localization": {

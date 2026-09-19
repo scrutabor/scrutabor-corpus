@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-i-in-quadragesima-epistola",
   "title": "Fratres: Exhortámur vos, ne in vácuum grátiam",
   "category": "proprium",
@@ -58,10 +58,10 @@
         { "id": "w037", "form": "ministérium", "lemma": "ministerium", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w038", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "post": ":", "substantive": true },
         { "id": "w039", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
-        { "id": "w040", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w043" },
+        { "id": "w040", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w041" },
         { "id": "w041", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "substantive": true },
         { "id": "w042", "form": "exhibeámus", "lemma": "exhibeo", "morph": { "conj": 2, "mood": "subj", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w043", "form": "nosmetípsos", "lemma": "nosmetipse", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "m" } },
+        { "id": "w043", "form": "nosmetípsos", "lemma": "nosmetipse", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "m" } },
         { "id": "w044", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
         { "id": "w045", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w046", "form": "minístros", "lemma": "minister", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" }, "post": "," },
@@ -173,7 +173,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w043": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w043": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
+      "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

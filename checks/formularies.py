@@ -8,7 +8,9 @@ from pathlib import Path
 
 from kalendarium.roman import FORMULARIES as CALENDAR_FORMULARIES
 
-SCHEMA = "1.0.0"
+from .normalize import substantive
+
+SCHEMA = "1.1.0"
 COLLECTIONS = ("temporale", "sanctorale", "commune", "votive", "ritual", "local")
 SEASONS = (
     "adventus",
@@ -36,6 +38,49 @@ ROLES = (
     "postcommunio",
 )
 RELATIONS = ("proper", "shared", "reference")
+CONDITION_PAIRS = (
+    ({"weekday": "sunday"}, {"weekday": "not-sunday"}),
+    ({"season": "paschale"}, {"season": "not-paschale"}),
+)
+VOTIVE_CONDITION = {"use": "votive-after-septuagesima"}
+CONDITIONS = (*CONDITION_PAIRS[0], *CONDITION_PAIRS[1], VOTIVE_CONDITION)
+RECENSIONS = {
+    "paschale": "paschale",
+    "non-paschale": "not-paschale",
+    "tempore-paschali": "paschale",
+    "extra-tempus-paschale": "not-paschale",
+}
+
+
+def component_applies(
+    condition: dict | None,
+    *,
+    weekday: int | None = None,
+    season: str | None = None,
+    study: bool = False,
+) -> bool:
+    """Select a calendar component, or retain labelled alternatives for study.
+
+    Weekday follows datetime.date.weekday (Monday=0). Season is supplied by
+    the resolved calendar occurrence, never inferred from a feast's grouping.
+    The current reader does not select votive Masses. Unknown context is not
+    evidence that a conditional component applies.
+    """
+    if condition is None:
+        return True
+    if condition not in CONDITIONS:
+        return False
+    if study:
+        return True
+    if "weekday" in condition:
+        if weekday not in range(7):
+            return False
+        return (weekday == 6) == (condition["weekday"] == "sunday")
+    if "season" in condition:
+        if season not in SEASONS:
+            return False
+        return (season == "paschale") == (condition["season"] == "paschale")
+    return False
 
 
 def _documents(corpus: Path) -> list[tuple[Path, dict]]:
@@ -55,13 +100,21 @@ def _language_documents(corpus: Path, language: str) -> dict[str, tuple[Path, di
     return rows
 
 
+def _latin_tokens(path: Path) -> list[str]:
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    forms = (word["form"] for segment in doc["segments"] for word in segment.get("words") or [])
+    return substantive(" ".join(forms)).split()
+
+
 def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
     """Return errors and non-vacuous denominators for the authored catalogue."""
     errors: list[str] = []
     rows = _documents(corpus)
-    text_ids = {
-        f"{path.parent.name}.{path.stem}" for path in sorted((corpus / "texts").glob("*/*.json"))
+    text_paths = {
+        f"{path.parent.name}.{path.stem}": path
+        for path in sorted((corpus / "texts").glob("*/*.json"))
     }
+    text_ids = set(text_paths)
     proper_ids = {text_id for text_id in text_ids if text_id.startswith("proprium.")}
     seen_ids: set[str] = set()
     orders: list[int] = []
@@ -69,6 +122,7 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
     calendar_groups: dict[str, list[tuple[str, bool]]] = defaultdict(list)
     observances: dict[str, list[dict]] = defaultdict(list)
     relations: Counter[str] = Counter()
+    gradual_tract_pairs = 0
 
     if not rows:
         errors.append("formularies: no authored documents found")
@@ -125,6 +179,8 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
             errors.append(f"{formulary_id}: components must be a non-empty array")
             continue
         keys: set[str] = set()
+        role_conditions: dict[str, list[dict | None]] = defaultdict(list)
+        chant_targets: dict[str, list[tuple[str, str]]] = defaultdict(list)
         last_rank = -1
         for index, component in enumerate(components):
             if not isinstance(component, dict):
@@ -145,20 +201,33 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
                 errors.append(f"{formulary_id}:{key}: unknown role {role!r}")
             else:
                 rank = ROLES.index(role)
-                if rank <= last_rank:
+                if rank < last_rank:
                     errors.append(f"{formulary_id}:{key}: component order is not liturgical")
                 last_rank = rank
-                if key != role:
-                    errors.append(f"{formulary_id}:{key}: key differs from unique role {role!r}")
+                role_conditions[role].append(condition)
             if target not in text_ids:
                 errors.append(f"{formulary_id}:{key}: missing text {target!r}")
                 continue
+            if role in ("graduale", "tractus"):
+                chant_targets[role].append((str(key), target))
             used_texts[target] += 1
             if relation not in RELATIONS:
                 errors.append(f"{formulary_id}:{key}: unknown relation {relation!r}")
                 continue
             relations[relation] += 1
-            expected_proper = f"proprium.{prefix}-{role}"
+            recension = component.get("recension")
+            known_recension = isinstance(recension, str) and recension in RECENSIONS
+            if recension is not None and (
+                not known_recension
+                or relation != "proper"
+                or condition != {"season": RECENSIONS[recension]}
+            ):
+                errors.append(
+                    f"{formulary_id}:{key}: recension requires its matching "
+                    "season condition and a proper relationship"
+                )
+            text_prefix = f"{prefix}-{recension}" if known_recension else prefix
+            expected_proper = f"proprium.{text_prefix}-{role}"
             if relation == "proper" and target != expected_proper:
                 errors.append(
                     f"{formulary_id}:{key}: proper relation must address "
@@ -175,8 +244,30 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
                     errors.append(
                         f"{formulary_id}:{key}: own proper {target} is mislabeled reference"
                     )
-            if condition is not None and condition != {"weekday": "sunday"}:
+            if condition is not None and condition not in CONDITIONS:
                 errors.append(f"{formulary_id}:{key}: unknown component condition {condition!r}")
+
+        for role, conditions in role_conditions.items():
+            if len(conditions) > 1 and not (
+                len(conditions) == 2
+                and any(all(member in conditions for member in pair) for pair in CONDITION_PAIRS)
+            ):
+                errors.append(
+                    f"{formulary_id}:{role}: repeated role requires complementary conditions"
+                )
+
+        for gradual_key, gradual_id in chant_targets["graduale"]:
+            gradual = _latin_tokens(text_paths[gradual_id])
+            for tract_key, tract_id in chant_targets["tractus"]:
+                tract = _latin_tokens(text_paths[tract_id])
+                if not gradual or not tract:
+                    continue
+                gradual_tract_pairs += 1
+                if tract[: len(gradual)] == gradual:
+                    errors.append(
+                        f"{formulary_id}:{tract_key}: tract text {tract_id} repeats the entire "
+                        f"gradual {gradual_key} ({gradual_id}) as its Latin prefix"
+                    )
 
     if sorted(orders) != list(range(len(rows))):
         errors.append(
@@ -233,5 +324,6 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
         "proper_uses": sum(used_texts[text_id] for text_id in proper_ids),
         "shared_uses": relations["shared"],
         "reference_uses": relations["reference"],
+        "gradual_tract_pairs": gradual_tract_pairs,
     }
     return errors, counts

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.sanctissimi-nominis-iesu-introitus",
   "title": "In nómine Iesu omne genu flectátur, cæléstium",
   "category": "proprium",
@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w002" },
         { "id": "w002", "form": "nómine", "lemma": "nomen", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w003", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w003", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w004", "form": "omne", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "substantive": true },
         { "id": "w005", "form": "genu", "lemma": "genu", "morph": { "case": "nom", "decl": 4, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w006", "form": "flectátur", "lemma": "flecto", "morph": { "conj": 3, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" }, "post": "," },
@@ -45,8 +45,8 @@
         { "id": "w024", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w025", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w026", "form": "noster", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "post": ",", "head": "w024" },
-        { "id": "w027", "form": "quam", "lemma": "quam", "morph": { "pos": "conj" } },
-        { "id": "w028", "form": "admirábile", "lemma": "admirabilis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "substantive": true },
+        { "id": "w027", "form": "quam", "lemma": "quam", "morph": { "pos": "adv" } },
+        { "id": "w028", "form": "admirábile", "lemma": "admirabilis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w030" },
         { "id": "w029", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w030", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
         { "id": "w031", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "head": "w030" },
@@ -75,7 +75,7 @@
         { "id": "w054", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w055", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w056" },
         { "id": "w056", "form": "nómine", "lemma": "nomen", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w057", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w057", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w058", "form": "omne", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "substantive": true },
         { "id": "w059", "form": "genu", "lemma": "genu", "morph": { "case": "nom", "decl": 4, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w060", "form": "flectátur", "lemma": "flecto", "morph": { "conj": 3, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" }, "post": "," },
@@ -126,7 +126,13 @@
       "apparatus": "witnesses/proprium.sanctissimi-nominis-iesu-introitus/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w027": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
+      "w057": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

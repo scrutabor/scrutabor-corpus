@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.vigilia-pentecostes-communio",
   "title": "Ultimo festivitátis die dicébat Iesus: Qui in",
   "category": "proprium",
@@ -41,7 +41,7 @@
         { "id": "w020", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w021" },
         { "id": "w021", "form": "Spíritu", "lemma": "spiritus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w022", "form": "quem", "lemma": "qui", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
-        { "id": "w023", "form": "acceptúri", "lemma": "accipio", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "fut", "voice": "act" }, "substantive": true },
+        { "id": "w023", "form": "acceptúri", "lemma": "accipio", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "fut", "voice": "act" }, "head": "w025" },
         { "id": "w024", "form": "erant", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w025", "form": "credéntes", "lemma": "credo", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
         { "id": "w026", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w027" },
@@ -80,7 +80,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

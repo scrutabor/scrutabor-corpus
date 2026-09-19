@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xv-post-pentecosten-graduale",
   "title": "Bonum est confitéri Dómino: et psallere nómini",
   "category": "proprium",
@@ -29,8 +29,8 @@
         { "id": "w008", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "post": ",", "substantive": true },
         { "id": "w009", "form": "Altíssime", "lemma": "altus", "morph": { "case": "voc", "degree": "sup", "gender": "m", "number": "sg", "pos": "adj" }, "post": ".", "substantive": true },
         { "id": "w010", "form": "Ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w013" },
-        { "id": "w011", "form": "annuntiándum", "lemma": "annuntio", "morph": { "pos": "verb", "case": "acc", "gender": "n", "number": "sg", "tense": "fut", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
-        { "id": "w012", "form": "mane", "lemma": "maneo", "morph": { "conj": 2, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w011", "form": "annuntiándum", "lemma": "annuntio", "morph": { "pos": "verb", "case": "acc", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "ger", "conj": 1 } },
+        { "id": "w012", "form": "mane", "lemma": "mane", "morph": { "pos": "adv" } },
         { "id": "w013", "form": "misericórdiam", "lemma": "misericordia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w014", "form": "tuam", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ",", "head": "w013" },
         { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -68,7 +68,11 @@
       "apparatus": "witnesses/proprium.dominica-xv-post-pentecosten-graduale/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

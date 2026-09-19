@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xxi-post-pentecosten-evangelium",
   "title": "In illo témpore: Dixit Iesus discípulis suis",
   "category": "proprium",
@@ -104,7 +104,7 @@
         { "id": "w083", "form": "débitum", "lemma": "debeo", "morph": { "pos": "verb", "case": "acc", "gender": "n", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 2 }, "substantive": true },
         { "id": "w084", "form": "dimísit", "lemma": "dimitto", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w085", "form": "ei", "lemma": "is", "morph": { "case": "dat", "gender": "m", "number": "sg", "pos": "pron" }, "post": "." },
-        { "id": "w086", "form": "Egréssus", "lemma": "egressus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 4 } },
+        { "id": "w086", "form": "Egréssus", "lemma": "egredior", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "conj": 3, "case": "nom", "number": "sg", "gender": "m" }, "head": "w088" },
         { "id": "w087", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w088", "form": "servus", "lemma": "servus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w089", "form": "ille", "lemma": "ille", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" }, "post": "," },
@@ -217,7 +217,7 @@
         { "id": "w196", "form": "débitum", "lemma": "debeo", "morph": { "pos": "verb", "case": "acc", "gender": "n", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 2 }, "post": ".", "substantive": true },
         { "id": "w197", "form": "Sic", "lemma": "sic", "morph": { "pos": "adv" } },
         { "id": "w198", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w199", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w199", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w200", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "substantive": true },
         { "id": "w201", "form": "cæléstis", "lemma": "caelestis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "substantive": true },
         { "id": "w202", "form": "fáciet", "lemma": "facio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
@@ -253,7 +253,9 @@
       "w153": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w164": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w170": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w184": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w184": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w086": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w199": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

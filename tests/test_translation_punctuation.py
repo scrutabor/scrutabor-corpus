@@ -40,3 +40,10 @@ def test_balanced_but_duplicated_importer_parentheses_fail():
     assert check(layer("pl", "((O. W. Alleluja.))"))
     assert check(layer("pl", "(O. W. Alleluja.)")) == []
     assert check(layer("en", "(A response (twice))")) == []
+
+
+@pytest.mark.parametrize("separator", [",", ";", ":"])
+def test_separator_cannot_lead_a_segment_after_a_rubric(separator):
+    assert check(layer("pl", "wszelkie imię", separator + " aby każde kolano"))
+    assert check(layer("pl", "wszelkie imię" + separator, "aby każde kolano")) == []
+    assert check(layer("en", "… and the following words")) == []

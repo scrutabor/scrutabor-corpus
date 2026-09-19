@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.0.0",
+  "formulary_schema": "1.1.0",
   "id": "sanctae-annae-matris-beatae-mariae-virginis",
   "order": 74,
   "collection": "sanctorale",
@@ -45,7 +45,8 @@
       "key": "tractus",
       "role": "tractus",
       "text": "proprium.sanctae-annae-matris-beatae-mariae-virginis-tractus",
-      "relation": "proper"
+      "relation": "proper",
+      "condition": { "use": "votive-after-septuagesima" }
     },
     {
       "key": "evangelium",

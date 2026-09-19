@@ -392,6 +392,34 @@ def _date(value: object) -> bool:
         return False
 
 
+def _archive_locator(item: dict, locator: dict, where: str, errors: list[str]) -> None:
+    """Catch inconsistent Archive reader links without claiming page collation."""
+    record = item.get("record_url")
+    page = locator.get("page_url")
+    if not isinstance(record, str) or not isinstance(page, str):
+        return
+    record_url, page_url = urlparse(record), urlparse(page)
+    if record_url.hostname != "archive.org" or page_url.hostname != "archive.org":
+        return
+    record_parts = record_url.path.strip("/").split("/")
+    page_parts = page_url.path.strip("/").split("/")
+    if len(record_parts) < 2 or record_parts[0] != "details":
+        return
+    if len(page_parts) < 2 or page_parts[1] != record_parts[1]:
+        errors.append(f"{where}.page_url: Archive item differs from the cited digital item")
+    if len(page_parts) > 2 and page_parts[2] == "page":
+        if page_parts[0] != "details":
+            errors.append(f"{where}.page_url: Archive page readers use /details/, not /download/")
+        scan = locator.get("scan")
+        leaf = (
+            re.search(r"\bleaf n(\d+)\b|\bleaves n(\d+)\b", scan) if isinstance(scan, str) else None
+        )
+        if leaf and len(page_parts) > 3 and re.fullmatch(r"n\d+", page_parts[3]):
+            number = leaf.group(1) or leaf.group(2)
+            if int(page_parts[3][1:]) != int(number):
+                errors.append(f"{where}.page_url: Archive leaf differs from the scan locator")
+
+
 def _unknown(record: object, allowed: set[str], where: str, errors: list[str]) -> dict:
     if not isinstance(record, dict):
         errors.append(f"{where}: must be an object")
@@ -547,6 +575,8 @@ def _validate_uses(
         locator = _unknown(use.get("locator"), LOCATOR_KEYS, f"{where}.locator", errors)
         if "page_url" in locator and not _https(locator.get("page_url")):
             errors.append(f"{where}.locator.page_url: must be an absolute HTTPS URL")
+        if item is not None:
+            _archive_locator(item, locator, f"{where}.locator", errors)
         if item is not None and item.get("kind") == "scan":
             if not _nonempty(locator.get("printed")) or not _nonempty(locator.get("scan")):
                 errors.append(f"{where}.locator: a scan requires printed and scan locators")
@@ -1103,8 +1133,13 @@ def public_index(graph: dict, language_graph: dict | None = None) -> dict:
                 continue
             roles = sorted({use["role"] for use in section_uses}, key=ROLE_ORDER.__getitem__)
             uses_by_text: dict[str, list[dict]] = defaultdict(list)
+            uses_by_lemma: dict[str, list[dict]] = defaultdict(list)
             for use in section_uses:
-                uses_by_text[use["address"]["text"]].append(use)
+                address = use["address"]
+                if address["kind"] == "lemma":
+                    uses_by_lemma[address["lemma"]].append(use)
+                else:
+                    uses_by_text[address["text"]].append(use)
             buckets[section].append(
                 {
                     "edition": edition_id,
@@ -1120,6 +1155,18 @@ def public_index(graph: dict, language_graph: dict | None = None) -> dict:
                         }
                         for text_id, text_uses in sorted(uses_by_text.items())
                     ],
+                    "lemmas": [
+                        {
+                            "id": lemma_id,
+                            "roles": sorted(
+                                {use["role"] for use in lemma_uses},
+                                key=ROLE_ORDER.__getitem__,
+                            ),
+                            "uses": len(lemma_uses),
+                            "source_groups": _source_groups(lemma_uses),
+                        }
+                        for lemma_id, lemma_uses in sorted(uses_by_lemma.items())
+                    ],
                 }
             )
     for section in included_sections:
@@ -1134,7 +1181,7 @@ def public_index(graph: dict, language_graph: dict | None = None) -> dict:
     return out
 
 
-def _text_source_groups(uses: list[dict], text_id: str) -> list[dict]:
+def _source_groups(uses: list[dict]) -> list[dict]:
     grouped: dict[tuple[str, str, str, str, str], list[dict]] = defaultdict(list)
     for use in uses:
         key = (
@@ -1198,7 +1245,7 @@ def public_text_evidence(graph: dict, language_graph: dict | None = None) -> dic
         text_uses = sorted(by_text[text_id], key=lambda value: value["id"])
         record = {
             "id": text_id,
-            "source_groups": _text_source_groups(text_uses, text_id),
+            "source_groups": _source_groups(text_uses),
             "witnesses": sorted(witnesses_by_text[text_id], key=lambda value: value["id"]),
         }
         if text_id in collations:

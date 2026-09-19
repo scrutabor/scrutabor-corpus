@@ -6,6 +6,7 @@ import re
 from itertools import pairwise
 
 from checks.interlinear import TECHNICAL_GLOSS
+from checks.normalize import strip_accents
 
 CORRUPT_EXACT = {"Ń", "NIEROZSTRZYGNIĘTE", "UNRESOLVED"}
 ENGLISH_CHOICE_LIST = re.compile(r"[,;/]")
@@ -30,9 +31,25 @@ def check(doc: dict, gloss: dict) -> list[str]:
     # Accept both so the repository gate checks the same bytes as direct unit
     # tests and reader builds.
     language = gloss.get("language") or gloss.get("lang") or ""
+    latin = {
+        word["id"]: strip_accents(word.get("form", "")).lower()
+        for segment in doc.get("segments", [])
+        for word in segment.get("words", [])
+    }
     for word_id, entry in (gloss.get("words") or {}).items():
         text = (entry or {}).get("gloss") or ""
         stripped = text.strip()
+        form = latin.get(word_id)
+        if form == "tecum" and stripped.lower() in {"tobą", "thee", "you"}:
+            errors.append(
+                f"{doc['id']}:{word_id}: {language} gloss {stripped!r} drops cum from tecum; "
+                "include its prepositional meaning or use an explicit shared alignment"
+            )
+        if form == "eius" and stripped.lower() in {"jest", "był", "is", "was", "be"}:
+            errors.append(
+                f"{doc['id']}:{word_id}: {language} gloss {stripped!r} turns a genitive "
+                "pronoun into a copula; represent a larger idiom with a shared alignment"
+            )
         if stripped in CORRUPT_EXACT:
             errors.append(
                 f"{doc['id']}:{word_id}: {language} gloss {stripped!r} is a corruption marker"

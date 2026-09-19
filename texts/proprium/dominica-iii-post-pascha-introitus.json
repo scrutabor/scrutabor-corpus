@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-iii-post-pascha-introitus",
   "title": "Iubiláte Deo, omnis terra, allelúia: psalmum dícite",
   "category": "proprium",
@@ -21,8 +21,8 @@
       "words": [
         { "id": "w001", "form": "Iubiláte", "lemma": "iubilo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
         { "id": "w002", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
-        { "id": "w003", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "substantive": true },
-        { "id": "w004", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "post": "," },
+        { "id": "w003", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w004" },
+        { "id": "w004", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "post": "," },
         { "id": "w005", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": ":" },
         { "id": "w006", "form": "psalmum", "lemma": "psalmus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w007", "form": "dícite", "lemma": "dico", "morph": { "conj": 3, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -38,11 +38,11 @@
         { "id": "w017", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w018", "form": "Dícite", "lemma": "dico", "morph": { "conj": 3, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w019", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
-        { "id": "w020", "form": "quam", "lemma": "quam", "morph": { "pos": "conj" } },
-        { "id": "w021", "form": "terribília", "lemma": "terribilis", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "substantive": true },
+        { "id": "w020", "form": "quam", "lemma": "quam", "morph": { "pos": "adv" } },
+        { "id": "w021", "form": "terribília", "lemma": "terribilis", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "head": "w023" },
         { "id": "w022", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w023", "form": "ópera", "lemma": "opus", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w024", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w023", "form": "ópera", "lemma": "opus", "morph": { "case": "nom", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" } },
+        { "id": "w024", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "post": ",", "head": "w023" },
         { "id": "w025", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 }, "post": "!" },
         { "id": "w026", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w027" },
         { "id": "w027", "form": "multitúdine", "lemma": "multitudo", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -74,8 +74,8 @@
         { "id": "w053", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w054", "form": "Iubiláte", "lemma": "iubilo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
         { "id": "w055", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
-        { "id": "w056", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "substantive": true },
-        { "id": "w057", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "post": "," },
+        { "id": "w056", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w057" },
+        { "id": "w057", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 }, "post": "," },
         { "id": "w058", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": ":" },
         { "id": "w059", "form": "psalmum", "lemma": "psalmus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w060", "form": "dícite", "lemma": "dico", "morph": { "conj": 3, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -121,7 +121,14 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-
+      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w056": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w057": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

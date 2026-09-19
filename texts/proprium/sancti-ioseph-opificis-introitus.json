@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.sancti-ioseph-opificis-introitus",
   "title": "Sapiéntia réddidit iustis mercédem labórum suórum, et",
   "category": "proprium",
@@ -49,10 +49,10 @@
         { "id": "w028", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w029", "form": "ædificáverit", "lemma": "aedifico", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "futperf", "voice": "act", "conj": 1 } },
         { "id": "w030", "form": "domum", "lemma": "domus", "morph": { "case": "acc", "decl": 4, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
-        { "id": "w031", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w034" },
+        { "id": "w031", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w032" },
         { "id": "w032", "form": "vanum", "lemma": "vanus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
         { "id": "w033", "form": "labórant", "lemma": "laboro", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w034", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
+        { "id": "w034", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
         { "id": "w035", "form": "ædíficant", "lemma": "aedifico", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w036", "form": "eam", "lemma": "is", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "pron" }, "post": "." },
         { "id": "w037", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
@@ -163,10 +163,9 @@
       "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w030": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w031": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w031": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w032": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w033": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w034": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w036": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
@@ -214,7 +213,8 @@
       "w079": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w080": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w081": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w082": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } }
+      "w082": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w034": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

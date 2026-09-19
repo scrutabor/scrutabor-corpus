@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.omnium-sanctorum-epistola",
   "title": "In diébus illis: Ecce, ego Ioánnes vidi",
   "category": "proprium",
@@ -156,7 +156,7 @@
         { "id": "w135", "form": "vidi", "lemma": "video", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w136", "form": "turbam", "lemma": "turba", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w137", "form": "magnam", "lemma": "magnus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ",", "head": "w136" },
-        { "id": "w138", "form": "quam", "lemma": "quam", "morph": { "pos": "conj" } },
+        { "id": "w138", "form": "quam", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
         { "id": "w139", "form": "dinumeráre", "lemma": "dinumero", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 1 } },
         { "id": "w140", "form": "nemo", "lemma": "nemo", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
         { "id": "w141", "form": "póterat", "lemma": "possum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" }, "post": "," },
@@ -199,7 +199,7 @@
         { "id": "w178", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w179", "form": "Agno", "lemma": "agnus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": "." },
         { "id": "w180", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w181", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "substantive": true },
+        { "id": "w181", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w182" },
         { "id": "w182", "form": "Ángeli", "lemma": "angelus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 2 } },
         { "id": "w183", "form": "stabant", "lemma": "sto", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w184", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w185" },
@@ -264,7 +264,7 @@
       "w081": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w087": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w099": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w105": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w105": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w111": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w117": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w123": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
@@ -273,7 +273,9 @@
       "w177": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w186": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w190": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w196": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w196": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w138": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w181": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

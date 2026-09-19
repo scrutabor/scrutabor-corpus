@@ -855,6 +855,16 @@ def lint_text(doc):
                     errors.append(f"{wid}: gerund missing morph.{req}")
             if "person" in m:
                 errors.append(f"{wid}: gerund carries morph.person")
+            if m.get("case") not in {"gen", "dat", "acc", "abl"}:
+                errors.append(f"{wid}: gerund must have an oblique case")
+            if m.get("number") != "sg" or m.get("gender") != "n":
+                errors.append(f"{wid}: gerund must be neuter singular, not agree with an agent")
+            if m.get("voice") != "act":
+                errors.append(f"{wid}: gerund is active, including a deponent verb's gerund")
+            if m.get("tense") != "pres":
+                errors.append(f"{wid}: gerund uses the present-stem convention, not a future tense")
+            if w.get("head") is not None or w.get("substantive"):
+                errors.append(f"{wid}: gerund is a verbal noun, not an agreeing modifier")
         elif m.get("pos") == "verb":
             if "case" in m:
                 errors.append(f"{wid}: finite verb carries morph.case")
@@ -910,6 +920,18 @@ def lint_gloss(doc, text_doc):
     conj = GLOSS_CONJUNCTIONS.get(lang, set())
     for seg in text_doc["segments"]:
         ws = seg.get("words") or []
+        # A short shared expression can have its own genitive pronoun.
+        # In post eam / proximae eius, the two English occurrences of her
+        # belong to different Latin pronouns, not to an absorbed neighbor.
+        owned_possessives = {
+            group.get("anchor")
+            for group in (doc.get("segments", {}).get(seg["id"], {}).get("alignments") or [])
+            if any(
+                words.get(member, {}).get("morph", {}).get("pos") == "pron"
+                and words.get(member, {}).get("morph", {}).get("case") == "gen"
+                for member in group.get("words", [])
+            )
+        }
         for i, w in enumerate(ws):
             g = effective_gloss(doc, w["id"]).strip()
             parts = [p.lower().rstrip(".,") for p in g.split()[:2]]
@@ -922,7 +944,18 @@ def lint_gloss(doc, text_doc):
                 if " " in ng or not ng:
                     continue
                 key = ng.lower().rstrip(".,")
-                if key in poss and key in parts and g.lower() != ng.lower():
+                neighbor_morph = ws[j].get("morph", {})
+                separate_personal_pronoun = (
+                    w["id"] in owned_possessives
+                    and neighbor_morph.get("pos") == "pron"
+                    and neighbor_morph.get("case") in {"nom", "acc", "dat", "abl", "voc"}
+                )
+                if (
+                    key in poss
+                    and key in parts
+                    and g.lower() != ng.lower()
+                    and not separate_personal_pronoun
+                ):
                     errors.append(
                         f"{text_doc['id']}:{w['id']}: the {lang} gloss "
                         f"{g!r} absorbs the possessive "

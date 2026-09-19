@@ -9,16 +9,45 @@ shape that hid them.
 
 from checks.lexicon import (
     check_orphans,
+    check_paradigm,
     check_text_against_lexicon,
     lint_lemmata,
     lint_senses,
 )
 
 
+def test_fourth_conjugation_is_not_mislabelled_as_third():
+    entries = {
+        "pervenio": {"head": "pervénio, perveníre, pervéni, pervéntum", "pos": "verb", "conj": 3}
+    }
+    assert any("third conjugation conflicts" in error for error in check_paradigm(entries))
+    entries["pervenio"]["conj"] = 4
+    assert check_paradigm(entries) == []
+    # Third-conjugation -io verbs and irregular ire are not this error class.
+    assert (
+        check_paradigm({"capio": {"head": "cápio, cápere, cepi, captum", "pos": "verb", "conj": 3}})
+        == []
+    )
+    assert check_paradigm({"eo": {"head": "eo, ire, ivi, itum", "pos": "verb"}}) == []
+
+
 def a_lemma(**over):
     entry = {"head": "pater, patris", "pos": "noun", "gender": "m", "decl": 3}
     entry.update(over)
     return {"pater": entry}
+
+
+def test_irregular_token_cannot_invent_a_conjugation_absent_from_its_lemma():
+    lemmata = {"fio": {"head": "fio, fíeri, factus sum", "pos": "verb"}}
+    word = {"id": "w010", "lemma": "fio", "morph": {"pos": "verb"}}
+    doc = {"id": "t.epistola", "segments": [{"words": [word]}]}
+    assert check_text_against_lexicon(doc, lemmata) == []
+    word["morph"]["conj"] = 3
+    assert any("no numbered conjugation" in e for e in check_text_against_lexicon(doc, lemmata))
+    # This is a declared-paradigm check, not an inference from any missing field.
+    word["lemma"] = "credo"
+    lemmata = {"credo": {"head": "credo, crédere, crédidi, créditum", "pos": "verb", "conj": 3}}
+    assert check_text_against_lexicon(doc, lemmata) == []
 
 
 def errors_for(**over):
@@ -223,6 +252,38 @@ class TestATextAgainstTheLexicon:
     def test_the_declension_must_agree(self):
         found = check_text_against_lexicon(a_text(decl=2), PATER)
         assert any("morph.decl=" in e for e in found)
+
+    def test_a_mixed_paradigm_accepts_only_its_two_declensions(self):
+        lex = {"pater": {"head": "ficus, -i et -us", "pos": "noun", "decl": 2, "decl_alt": 4}}
+        assert lint_lemmata(lex) == []
+        for decl in (2, 4):
+            assert check_text_against_lexicon(a_text(decl=decl), lex) == []
+        assert any("morph.decl=" in e for e in check_text_against_lexicon(a_text(decl=3), lex))
+
+    def test_an_alternate_declension_must_be_explicit_and_distinct(self):
+        entry = {"head": "ficus, -i et -us", "pos": "noun", "decl": 2, "decl_alt": 4}
+        for value in (0, 6, "4", True, 4.0, None, 2):
+            assert lint_lemmata({"ficus": {**entry, "decl_alt": value}})
+        missing_primary = {k: v for k, v in entry.items() if k != "decl"}
+        assert lint_lemmata({"ficus": missing_primary})
+        assert lint_lemmata({"ficus": {**entry, "pos": "adj"}})
+
+    def test_a_mixed_declension_does_not_relax_other_paradigm_facts(self):
+        lex = {
+            "pater": {
+                "head": "ficus, -i et -us",
+                "pos": "noun",
+                "decl": 2,
+                "decl_alt": 4,
+                "gender": "f",
+                "gender_alt": "m",
+            }
+        }
+        assert any(
+            "morph.gender=" in e
+            for e in check_text_against_lexicon(a_text(decl=4, gender="n"), lex)
+        )
+        assert any("morph.pos=" in e for e in check_text_against_lexicon(a_text(pos="adj"), lex))
 
     def test_the_gender_must_agree(self):
         found = check_text_against_lexicon(a_text(gender="f"), PATER)

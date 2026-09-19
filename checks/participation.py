@@ -47,6 +47,8 @@ from pathlib import Path
 from typing import Any
 
 from checks.layout import formatted
+from checks.orations import genus as oration_genus
+from checks.orations import structure as oration_structure
 
 ROOT = Path(__file__).resolve().parent.parent
 LAW = "witnesses/raw/scr-de-musica-sacra-1958.txt"
@@ -196,6 +198,13 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
     """What the law gives the faithful in this segment. Empty if nothing."""
     if doc.get("category") not in MASS_CATEGORIES or seg.get("type") == "rubric":
         return {}
+    if oration_genus(doc):
+        _, roles = oration_structure(doc)
+        # Oration bodies remain priestly. A public Amen needs the complete
+        # modeled boundary, not merely an isolated string or a mistaken label
+        # on the nonfinal Dawn secret. The ordinary exceptions below survive.
+        if roles.get(seg.get("id", "")) != "response":
+            return {}
     text_id, speaker = doc["id"], seg.get("speaker")
     said = fold(segment_text(seg))
     out: dict[str, Any] = {}

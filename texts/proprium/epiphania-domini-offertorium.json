@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.epiphania-domini-offertorium",
   "title": "Reges Tharsis, et ínsulæ múnera ófferent: reges",
   "category": "proprium",
@@ -40,7 +40,7 @@
         { "id": "w019", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w020" },
         { "id": "w020", "form": "gentes", "lemma": "gens", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 } },
         { "id": "w021", "form": "sérvient", "lemma": "servio", "morph": { "conj": 4, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
-        { "id": "w022", "form": "ei", "lemma": "is", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "pron" }, "post": "." }
+        { "id": "w022", "form": "ei", "lemma": "is", "morph": { "case": "dat", "gender": "m", "number": "sg", "pos": "pron" }, "post": "." }
       ],
       "participation": {
         "cantu": {
@@ -74,7 +74,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w010": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

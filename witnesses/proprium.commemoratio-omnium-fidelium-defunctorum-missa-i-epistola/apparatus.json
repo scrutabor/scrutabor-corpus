@@ -1,9 +1,51 @@
 {
   "text": "proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-epistola",
-  "note": "Adjudicated accidental and house-orthography variants. The witnesses agree on the substantive text.",
+  "note": "Exact full readings of the controlling two-page print and the pinned digital source; resurgemus/resurgamus is a substantive variant.",
   "summary": {
-    "entries": 0,
-    "classes": []
+    "entries": 4,
+    "classes": [
+      "accent",
+      "orthography",
+      "punctuation",
+      "substantive"
+    ]
   },
-  "adjudicated": []
+  "adjudicated": [
+    {
+      "at": "w002",
+      "ours": "Ecce",
+      "witnesses": {
+        "do": "Ecce,"
+      },
+      "class": "punctuation",
+      "ruling": "MR p.722 prints Ecce without a comma. Retain that punctuation; DO line19 has Ecce,."
+    },
+    {
+      "at": "w008",
+      "ours": "resurgémus,",
+      "witnesses": {
+        "do": "resurgámus,"
+      },
+      "class": "substantive",
+      "ruling": "Select MR1962 pp.722–723 resurgémus, positively attested across resurgé-/mus, a future indicative in this printed Epistle. DO line19 actually has resurgámus,. This is a grammatical/substantive reading difference, not orthography or an established printer's slip."
+    },
+    {
+      "at": "w035",
+      "ours": "indúere",
+      "witnesses": {
+        "do": "induere"
+      },
+      "class": "accent",
+      "ruling": "MR p.723 prints indúere; the first occurrence in DO line19 lacks an acute accent. Keep the printed MR accent and declare the source difference."
+    },
+    {
+      "at": "w088",
+      "ours": "Iesum",
+      "witnesses": {
+        "do": "Jesum"
+      },
+      "class": "orthography",
+      "ruling": "MR p.723 prints Iesum; DO line19 prints Jesum. Retain the controlling i-spelling and declare the digital j-spelling."
+    }
+  ]
 }

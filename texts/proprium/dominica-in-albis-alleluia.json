@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-in-albis-alleluia",
   "title": "Allelúia, allelúia. In die resurrectiónis meæ, dicit",
   "category": "proprium",
@@ -33,19 +33,19 @@
         { "id": "w012", "form": "Galilǽam", "lemma": "Galilaea", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." },
         { "id": "w013", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w014", "form": "Post", "lemma": "post", "morph": { "governs": "acc", "pos": "prep" }, "head": "w015" },
-        { "id": "w015", "form": "dies", "lemma": "dies", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 5 } },
+        { "id": "w015", "form": "dies", "lemma": "dies", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 5 } },
         { "id": "w016", "form": "octo", "lemma": "octo", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "post": ",", "substantive": true },
         { "id": "w017", "form": "iánuis", "lemma": "ianua", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" } },
         { "id": "w018", "form": "clausis", "lemma": "claudo", "morph": { "pos": "verb", "case": "abl", "gender": "f", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "post": ",", "head": "w017" },
         { "id": "w019", "form": "stetit", "lemma": "sto", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w020", "form": "Iesus", "lemma": "Iesus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w021", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w027" },
+        { "id": "w021", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w022" },
         { "id": "w022", "form": "médio", "lemma": "medius", "morph": { "case": "abl", "gender": "n", "number": "sg", "pos": "adj" }, "substantive": true },
         { "id": "w023", "form": "discipulórum", "lemma": "discipulus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w024", "form": "suórum", "lemma": "suus", "morph": { "case": "gen", "gender": "m", "number": "pl", "pos": "adj" }, "post": ",", "head": "w023" },
         { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w026", "form": "dixit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": ":" },
-        { "id": "w027", "form": "Pax", "lemma": "pax", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w027", "form": "Pax", "lemma": "pax", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w028", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "post": "." },
         { "id": "w029", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
       ],
@@ -75,8 +75,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w015": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w027": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w027": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

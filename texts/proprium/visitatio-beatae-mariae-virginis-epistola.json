@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.visitatio-beatae-mariae-virginis-epistola",
   "title": "Ecce, iste venit sáliens in móntibus, transíliens",
   "category": "proprium",
@@ -22,10 +22,10 @@
         { "id": "w001", "form": "Ecce", "lemma": "ecce", "morph": { "pos": "intj" }, "post": "," },
         { "id": "w002", "form": "iste", "lemma": "iste", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w003", "form": "venit", "lemma": "venio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 4 } },
-        { "id": "w004", "form": "sáliens", "lemma": "salio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w004", "form": "sáliens", "lemma": "salio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "pres", "voice": "act", "mood": "part", "conj": 4 }, "substantive": true },
         { "id": "w005", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w006" },
         { "id": "w006", "form": "móntibus", "lemma": "mons", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "pl", "decl": 3 }, "post": "," },
-        { "id": "w007", "form": "transíliens", "lemma": "transilio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w007", "form": "transíliens", "lemma": "transilio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "pres", "voice": "act", "mood": "part", "conj": 4 }, "substantive": true },
         { "id": "w008", "form": "colles", "lemma": "collis", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "pl", "decl": 3 }, "post": ";" },
         { "id": "w009", "form": "símilis", "lemma": "similis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "substantive": true },
         { "id": "w010", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -141,7 +141,9 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w046": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w048": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w048": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

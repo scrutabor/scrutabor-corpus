@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.nativitas-sancti-ioannis-baptistae-introitus",
   "title": "De ventre matris meæ vocávit me Dóminus",
   "category": "proprium",
@@ -28,7 +28,7 @@
         { "id": "w007", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w008", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w009" },
         { "id": "w009", "form": "nómine", "lemma": "nomen", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w010", "form": "meo", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "post": ":", "substantive": true },
+        { "id": "w010", "form": "meo", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "post": ":", "head": "w009" },
         { "id": "w011", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w012", "form": "pósuit", "lemma": "pono", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w013", "form": "os", "lemma": "os", "morph": { "case": "nom", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
@@ -86,7 +86,7 @@
         { "id": "w065", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w066", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w067" },
         { "id": "w067", "form": "nómine", "lemma": "nomen", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w068", "form": "meo", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "post": ":", "substantive": true },
+        { "id": "w068", "form": "meo", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "post": ":", "head": "w067" },
         { "id": "w069", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w070", "form": "pósuit", "lemma": "pono", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w071", "form": "os", "lemma": "os", "morph": { "case": "nom", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
@@ -136,7 +136,11 @@
       "apparatus": "witnesses/proprium.nativitas-sancti-ioannis-baptistae-introitus/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w068": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

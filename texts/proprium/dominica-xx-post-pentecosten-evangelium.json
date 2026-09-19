@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xx-post-pentecosten-evangelium",
   "title": "In illo témpore: Erat quidam régulus, cuius",
   "category": "proprium",
@@ -79,7 +79,7 @@
         { "id": "w058", "form": "Dicit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w059", "form": "ei", "lemma": "is", "morph": { "case": "dat", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w060", "form": "Iesus", "lemma": "Iesus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
-        { "id": "w061", "form": "Vade", "lemma": "vadum", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w061", "form": "Vade", "lemma": "vado", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 }, "post": "," },
         { "id": "w062", "form": "fílius", "lemma": "filius", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w063", "form": "tuus", "lemma": "tuus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w062" },
         { "id": "w064", "form": "vivit", "lemma": "vivo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." },
@@ -127,7 +127,7 @@
         { "id": "w106", "form": "febris", "lemma": "febris", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 }, "post": "." },
         { "id": "w107", "form": "Cognóvit", "lemma": "cognosco", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w108", "form": "ergo", "lemma": "ergo", "morph": { "pos": "adv" } },
-        { "id": "w109", "form": "pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 }, "post": "," },
+        { "id": "w109", "form": "pater", "lemma": "pater", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "post": "," },
         { "id": "w110", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
         { "id": "w111", "form": "illa", "lemma": "ille", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
         { "id": "w112", "form": "hora", "lemma": "hora", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
@@ -164,8 +164,9 @@
       "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w061": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w095": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w095": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w061": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w109": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

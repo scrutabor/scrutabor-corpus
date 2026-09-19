@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.nativitas-domini-in-nocte-evangelium",
   "title": "In illo témpore: Exiit edíctum a Cæsare",
   "category": "proprium",
@@ -42,7 +42,7 @@
         { "id": "w021", "form": "Cyríno", "lemma": "Cyrinus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 }, "post": ":" },
         { "id": "w022", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w023", "form": "ibant", "lemma": "eo", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
-        { "id": "w024", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "substantive": true },
+        { "id": "w024", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
         { "id": "w025", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w026", "form": "profiteréntur", "lemma": "profiteor", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 3, "tense": "impf", "voice": "dep", "conj": 2 } },
         { "id": "w027", "form": "sínguli", "lemma": "singulus", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
@@ -158,7 +158,7 @@
         { "id": "w137", "form": "magnum", "lemma": "magnus", "morph": { "pos": "adj", "case": "voc", "gender": "n", "number": "sg" }, "post": ",", "head": "w136" },
         { "id": "w138", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
         { "id": "w139", "form": "erit", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
-        { "id": "w140", "form": "omni", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "substantive": true },
+        { "id": "w140", "form": "omni", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "head": "w141" },
         { "id": "w141", "form": "pópulo", "lemma": "populus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": ":" },
         { "id": "w142", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
         { "id": "w143", "form": "natus", "lemma": "nascor", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "dep" }, "substantive": true },
@@ -232,7 +232,9 @@
       "w095": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w101": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w120": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w169": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w169": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w140": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

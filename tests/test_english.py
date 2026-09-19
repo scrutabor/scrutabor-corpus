@@ -1,6 +1,8 @@
 """The English checks: only what is decidable without English morphology."""
 
-from checks.english import check_doubled_preposition, check_two_case_prepositions
+import pytest
+
+from checks.english import check, check_doubled_preposition, check_two_case_prepositions
 
 
 def doc(words):
@@ -87,3 +89,55 @@ def test_a_derivative_belongs_to_one_lemma():
     assert check_derivative_homes(lex) == []
     lex["entries"]["oro"]["derivatives"].append("oration")
     assert check_derivative_homes(lex)
+
+
+def _usque(connective="ad"):
+    return [
+        {"id": "w1", "form": "usque", "lemma": "usque", "morph": {"pos": "adv"}},
+        {"id": "w2", "form": connective, "lemma": connective, "morph": {"pos": "prep"}},
+    ]
+
+
+@pytest.mark.parametrize(
+    "connective,left,right",
+    [
+        ("ad", "even until", "to"),
+        ("ad", "Until", "unto the"),
+        ("ad", "as far", "to"),
+        ("in", "until", "for"),
+        ("dum", "until", "when"),
+    ],
+)
+def test_ordinary_english_gate_rejects_malformed_usque_junctions(connective, left, right):
+    errors = check(doc(_usque(connective)), gloss({"w1": left, "w2": right}))
+    assert len(errors) == 1
+    assert "w1–w2" in errors[0]
+
+
+@pytest.mark.parametrize(
+    "connective,left,right",
+    [("ad", "up", "to"), ("ad", "as far", "as"), ("in", "even", "for")],
+)
+def test_coherent_usque_splits_are_retained(connective, left, right):
+    assert check(doc(_usque(connective)), gloss({"w1": left, "w2": right})) == []
+
+
+def test_shared_usque_alignment_is_not_read_as_two_direct_glosses():
+    layer = gloss({})
+    layer["segments"] = {
+        "s01": {"alignments": [{"words": ["w1", "w2"], "anchor": "w2", "gloss": "until"}]}
+    }
+    assert check(doc(_usque()), layer) == []
+
+
+def test_usque_check_does_not_cross_segments_or_languages():
+    first, second = _usque()
+    source = {"id": "t.t", "segments": [{"words": [first]}, {"words": [second]}]}
+    layer = gloss({"w1": "until", "w2": "to"})
+    assert check(source, layer) == []
+    layer["lang"] = "pl"
+    assert check(doc([first, second]), layer) == []
+
+
+def test_usque_adhuc_is_outside_the_connective_check():
+    assert check(doc(_usque("adhuc")), gloss({"w1": "until", "w2": "now"})) == []

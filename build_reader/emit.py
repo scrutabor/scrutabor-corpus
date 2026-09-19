@@ -30,7 +30,9 @@ from build_reader import bibliography, store
 # component list is authored by the corpus rather than rediscovered by apps.
 # 5.3.0 adds one derived metrics resource so consumers share denominators.
 # 5.4.0 carries language-specific many-to-one and zero interlinear alignments.
-SCHEMA = "5.4.0"
+# 5.5.0 preserves explicit elliptical-predicate annotations.
+# 5.6.0 also carries a nominative participle's understood-subject annotation.
+SCHEMA = "5.6.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -114,13 +116,13 @@ def formulary_catalog(corpus: Path) -> dict:
         for component in formulary["components"]:
             component["text"] = component["text"].replace(".", "/", 1)
         formularies.append(formulary)
-    return {"schema_version": "1.0.0", "formularies": formularies}
+    return {"schema_version": "1.1.0", "formularies": formularies}
 
 
 def language_formulary_catalog(corpus: Path, language: str) -> dict:
     """Project localized titles without duplicating neutral assembly data."""
     return {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "language": language,
         "titles": [
             {"id": authored["id"], "title": authored["title"]}
@@ -287,6 +289,8 @@ def core_artifact(
                     cell["h"] = word["head"]
                 if word.get("substantive"):
                     cell["s"] = True
+                if word.get("ellipsis"):
+                    cell["el"] = word["ellipsis"]
                 if word.get("analysis"):
                     cell["a"] = analyses.intern(word["analysis"])
                 cells.append(cell)
@@ -503,6 +507,8 @@ def expand(
                     word["head"] = cell["h"]
                 if cell.get("s"):
                     word["substantive"] = True
+                if "el" in cell:
+                    word["ellipsis"] = cell["el"]
                 if "a" in cell:
                     word["analysis"] = analyses[cell["a"]]
                 words.append(word)

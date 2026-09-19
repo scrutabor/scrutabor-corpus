@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.vigilia-nativitatis-evangelium",
   "title": "Cum esset desponsáta Mater Iesu María Ioseph",
   "category": "proprium",
@@ -21,13 +21,13 @@
       "words": [
         { "id": "w001", "form": "Cum", "lemma": "cum", "morph": { "pos": "conj" } },
         { "id": "w002", "form": "esset", "lemma": "sum", "morph": { "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
-        { "id": "w003", "form": "desponsáta", "lemma": "desponso", "morph": { "case": "voc", "conj": 1, "gender": "f", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w004" },
-        { "id": "w004", "form": "Mater", "lemma": "mater", "morph": { "case": "voc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w005", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w003", "form": "desponsáta", "lemma": "desponso", "morph": { "case": "nom", "conj": 1, "gender": "f", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w004" },
+        { "id": "w004", "form": "Mater", "lemma": "mater", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w005", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w006", "form": "María", "lemma": "Maria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w007", "form": "Ioseph", "lemma": "Ioseph", "morph": { "pos": "noun", "gender": "m", "case": "gen", "number": "sg" }, "post": "," },
         { "id": "w008", "form": "ántequam", "lemma": "antequam", "morph": { "pos": "conj" } },
-        { "id": "w009", "form": "convenírent", "lemma": "convenio", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 3, "tense": "impf", "voice": "act", "conj": 3 }, "post": "," },
+        { "id": "w009", "form": "convenírent", "lemma": "convenio", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 3, "tense": "impf", "voice": "act", "conj": 4 }, "post": "," },
         { "id": "w010", "form": "invénta", "lemma": "invenio", "morph": { "pos": "verb", "case": "nom", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 4 }, "head": "w006" },
         { "id": "w011", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w012", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013" },
@@ -61,7 +61,7 @@
         { "id": "w040", "form": "appáruit", "lemma": "appareo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w041", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w042" },
         { "id": "w042", "form": "somnis", "lemma": "somnus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "pl", "decl": 2 } },
-        { "id": "w043", "form": "ei", "lemma": "is", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "pron" }, "post": "," },
+        { "id": "w043", "form": "ei", "lemma": "is", "morph": { "case": "dat", "gender": "m", "number": "sg", "pos": "pron" }, "post": "," },
         { "id": "w044", "form": "dicens", "lemma": "dico", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":", "substantive": true },
         { "id": "w045", "form": "Ioseph", "lemma": "Ioseph", "morph": { "pos": "noun", "gender": "m", "case": "voc", "number": "sg" }, "post": "," },
         { "id": "w046", "form": "fili", "lemma": "filius", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -116,7 +116,12 @@
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w045": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w052": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w052": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w043": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
     }
   },
   "localization": {

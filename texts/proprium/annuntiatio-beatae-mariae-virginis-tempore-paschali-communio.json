@@ -1,0 +1,80 @@
+{
+  "schema_version": "0.20.0",
+  "id": "proprium.annuntiatio-beatae-mariae-virginis-tempore-paschali-communio",
+  "title": "Ecce, Virgo concípiet et páriet fílium: et",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "annuntiatio-beatae-mariae-virginis",
+  "sung": true,
+  "ids": {
+    "next": 13,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Ecce", "lemma": "ecce", "morph": { "pos": "intj" } },
+        { "id": "w002", "form": "virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w003", "form": "concípiet", "lemma": "concipio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" }, "post": "," },
+        { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w005", "form": "páriet", "lemma": "pario", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
+        { "id": "w006", "form": "fílium", "lemma": "filius", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w008", "form": "vocábitur", "lemma": "voco", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" } },
+        { "id": "w009", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w010", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w011", "form": "Emmánuel", "lemma": "Emmanuel", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w012", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      }
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "Complete paschale recension. Seasonal Alleluia framing is resolved before reading; the companion recension has a separate text identity. The Introit explicitly expands Gloria Patri and repeats its own antiphon.",
+    "source": {
+      "method": "Directly viewed Benziger 1962 editio iuxta typicam, exact declared expansions and separate comparison sources. The Paschal Communion has a printed Liber Usualis comparison; its actual digital source covers only the eleven-word antiphon.",
+      "witnesses": "witnesses/proprium.annuntiatio-beatae-mariae-virginis-tempore-paschali-communio/",
+      "apparatus": "witnesses/proprium.annuntiatio-beatae-mariae-virginis-tempore-paschali-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+    "words": {
+
+    }
+  },
+  "localization": {
+    "about": true,
+    "explanations": {
+      "w008": {
+
+      },
+      "w011": {
+
+      }
+    }
+  }
+}

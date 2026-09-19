@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-ii-in-quadragesima-epistola",
   "title": "Fratres: Rogámus vos et obsecrámus in Dómino",
   "category": "proprium",
@@ -26,7 +26,7 @@
         { "id": "w005", "form": "obsecrámus", "lemma": "obsecro", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w006", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007" },
         { "id": "w007", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
-        { "id": "w008", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "post": ":" },
+        { "id": "w008", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m" }, "post": ":" },
         { "id": "w009", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "post": "," },
         { "id": "w010", "form": "quemádmodum", "lemma": "quemadmodum", "morph": { "pos": "conj" } },
         { "id": "w011", "form": "accepístis", "lemma": "accipio", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "perf", "voice": "act" } },
@@ -92,7 +92,7 @@
         { "id": "w071", "form": "quis", "lemma": "quis", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w072", "form": "supergrediátur", "lemma": "supergredior", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 3, "tense": "pres", "voice": "dep", "conj": 3 } },
         { "id": "w073", "form": "neque", "lemma": "neque", "morph": { "pos": "conj" } },
-        { "id": "w074", "form": "circumvéniat", "lemma": "circumvenio", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 3 } },
+        { "id": "w074", "form": "circumvéniat", "lemma": "circumvenio", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 4 } },
         { "id": "w075", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w076" },
         { "id": "w076", "form": "negótio", "lemma": "negotium", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 2 } },
         { "id": "w077", "form": "fratrem", "lemma": "frater", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -122,7 +122,7 @@
         { "id": "w101", "form": "sanctificatiónem", "lemma": "sanctificatio", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w102", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w103" },
         { "id": "w103", "form": "Christo", "lemma": "Christus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w104", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "post": "," },
+        { "id": "w104", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m" }, "post": "," },
         { "id": "w105", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w106", "form": "nostro", "lemma": "noster", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "post": ".", "substantive": true }
       ]
@@ -139,7 +139,10 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w062": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w062": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w074": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
+      "w104": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
     }
   },
   "localization": {

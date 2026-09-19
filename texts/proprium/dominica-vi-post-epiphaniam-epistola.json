@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-vi-post-epiphaniam-epistola",
   "title": "Fratres: Grátias ágimus Deo semper pro ómnibus",
   "category": "proprium",
@@ -48,7 +48,7 @@
         { "id": "w027", "form": "spei", "lemma": "spes", "morph": { "case": "gen", "decl": 5, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w028", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w029", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" } },
-        { "id": "w030", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w030", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w031", "form": "Christi", "lemma": "Christus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w032", "form": "ante", "lemma": "ante", "morph": { "governs": "acc", "pos": "prep" }, "head": "w033" },
         { "id": "w033", "form": "Deum", "lemma": "deus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -88,8 +88,8 @@
         { "id": "w067", "form": "scitis", "lemma": "scio", "morph": { "conj": 4, "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w068", "form": "quales", "lemma": "qualis", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "pl" }, "substantive": true },
         { "id": "w069", "form": "fuérimus", "lemma": "sum", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 1, "tense": "perf", "voice": "act" } },
-        { "id": "w070", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w071" },
-        { "id": "w071", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w070", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w071" },
+        { "id": "w071", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
         { "id": "w072", "form": "propter", "lemma": "propter", "morph": { "governs": "acc", "pos": "prep" }, "head": "w073" },
         { "id": "w073", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": "." },
         { "id": "w074", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -138,7 +138,7 @@
         { "id": "w117", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
         { "id": "w118", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w119", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w121" },
-        { "id": "w120", "form": "omni", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "substantive": true },
+        { "id": "w120", "form": "omni", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w121" },
         { "id": "w121", "form": "loco", "lemma": "locus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w122", "form": "fides", "lemma": "fides", "morph": { "case": "nom", "decl": 5, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w123", "form": "vestra", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "post": ",", "head": "w124" },
@@ -187,15 +187,15 @@
         { "id": "w166", "form": "cælis", "lemma": "caelum", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w167", "form": "quem", "lemma": "qui", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w168", "form": "suscitávit", "lemma": "suscito", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 1 } },
-        { "id": "w169", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w172" },
+        { "id": "w169", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w170" },
         { "id": "w170", "form": "mórtuis", "lemma": "mortuus", "morph": { "case": "abl", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
         { "id": "w171", "form": "Iesum", "lemma": "Iesus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
-        { "id": "w172", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" } },
+        { "id": "w172", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w173", "form": "erípuit", "lemma": "eripio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w174", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w175", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w176" },
         { "id": "w176", "form": "ira", "lemma": "ira", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w177", "form": "ventúra", "lemma": "venio", "morph": { "case": "acc", "conj": 4, "gender": "n", "mood": "part", "number": "pl", "pos": "verb", "tense": "fut", "voice": "act" }, "post": ".", "head": "w174" }
+        { "id": "w177", "form": "ventúra", "lemma": "venio", "morph": { "case": "abl", "conj": 4, "gender": "f", "mood": "part", "number": "sg", "pos": "verb", "tense": "fut", "voice": "act" }, "post": ".", "head": "w176" }
       ]
     }
   ],
@@ -212,14 +212,19 @@
     "words": {
       "w026": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w071": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w077": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w078": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w093": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w102": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w116": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w135": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w172": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w070": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w071": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w169": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w172": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w177": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w120": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w030": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
     }
   },
   "localization": {

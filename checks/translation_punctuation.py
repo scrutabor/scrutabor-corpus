@@ -6,7 +6,7 @@ import re
 
 
 def check(doc: dict) -> list[str]:
-    """Check only paired, unambiguous delimiters, not editorial punctuation style.
+    """Check unambiguous delimiter and segment-boundary corruption, not style.
 
     A quotation may run across several translated verses. Apostrophes and single
     quotes are deliberately excluded: a final possessive apostrophe is not an
@@ -19,6 +19,8 @@ def check(doc: dict) -> list[str]:
     errors: list[str] = []
     for sid, segment in (doc.get("segments") or {}).items():
         where = f"{doc.get('text', '?')}:{sid}.translation.{language}"
+        if re.match(r"\s*[,;:]", segment.get("translation", "")):
+            errors.append(f"{where}: separator belongs at the end of the preceding segment")
         if re.search(r"\(\([^()]*\)\)", segment.get("translation", "")):
             errors.append(f"{where}: duplicated parenthesis wrapper")
         for char in segment.get("translation", ""):

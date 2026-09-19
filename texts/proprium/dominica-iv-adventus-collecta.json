@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-iv-adventus-collecta",
   "title": "Éxcita, quǽsumus, Dómine, poténtiam tuam",
   "category": "proprium",
@@ -7,17 +7,15 @@
   "variant": "dominica-iv-adventus",
   "sung": false,
   "ids": {
-    "next": 28,
+    "next": 43,
     "segments": {
-      "next": 2
+      "next": 3
     }
   },
   "segments": [
     {
       "id": "s01",
       "type": "verse",
-      "speaker": "sacerdos",
-      "voice": "clara",
       "words": [
         { "id": "w001", "form": "Éxcita", "post": ",", "lemma": "excito", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
         { "id": "w002", "form": "quǽsumus", "post": ",", "lemma": "quaeso", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
@@ -44,16 +42,63 @@
         { "id": "w023", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w024" },
         { "id": "w024", "form": "propitiatiónis", "lemma": "propitiatio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
         { "id": "w025", "form": "accéleret", "post": ":", "lemma": "accelero", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 } },
-        { "id": "w026", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w027", "form": "vivis", "post": ".", "lemma": "vivo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } }
-      ]
+        { "id": "w026", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" }, "head": "w027" },
+        { "id": "w027", "form": "vivis", "lemma": "vivo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 3 } },
+        { "id": "w028", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w029", "form": "regnas", "lemma": "regno", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 1 } },
+        { "id": "w030", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w031" },
+        { "id": "w031", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w032", "form": "Patre", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w033", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w034" },
+        { "id": "w034", "form": "unitáte", "lemma": "unitas", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w035", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w036", "form": "Sancti", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w035" },
+        { "id": "w037", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w038", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w040" },
+        { "id": "w039", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w040" },
+        { "id": "w040", "form": "sǽcula", "lemma": "saeculum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w041", "form": "sæculórum", "post": ".", "lemma": "saeculum", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "n", "decl": 2 } }
+      ],
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "delivery": {
+        "cantu": {
+          "speaker": "sacerdos",
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w042", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ],
+      "speaker": "minister",
+      "voice": "clara",
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      },
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     }
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The collect of the Fourth Sunday of Advent.",
+    "notes": "The proper-page abbreviated conclusion is supplied from the prescribed full formula. The composite witnesses declare the proper and formula loci separately. Response boundaries describe the current explicit prayer selection, not a complete date-specific commemoration inventory.",
     "source": {
-      "method": "Verified by collation against the 1962 typical edition and Divinum Officium. Every divergence is declared in the apparatus.",
+      "method": "Proper-page body and abbreviated cue collated against the directly inspected typical edition. Full conclusion supplied from Rubricae generales 115 and compared with the exact selected pinned digital macro. Composite dependencies and accidental differences are declared.",
       "witnesses": "witnesses/proprium.dominica-iv-adventus-collecta/",
       "apparatus": "witnesses/proprium.dominica-iv-adventus-collecta/apparatus.json"
     },
@@ -61,10 +106,12 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
     "words": {
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
-      "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } }
+      "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
+      "w037": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "notes": ["w037"]
   }
 }

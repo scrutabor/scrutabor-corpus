@@ -53,6 +53,7 @@ from checks.lint import (
     lint_text,
 )
 from checks.notes import check as check_notes
+from checks.orations import check_doc as check_orations
 from checks.orthography import check as check_orthography
 from checks.orthography import check_lexicon as check_orthography_lexicon
 from checks.participation import check_doc as check_participation
@@ -67,6 +68,7 @@ from checks.syntax import check as check_syntax
 from checks.syntax import coverage as syntax_coverage
 from checks.transcription import check_transcriptions
 from checks.translation_basis import check as check_translation_basis
+from checks.translation_names import check as check_translation_names
 from checks.translation_provenance import check as check_translation_provenance
 from checks.translation_punctuation import check as check_translation_punctuation
 from checks.uncertainty import check as check_uncertainty
@@ -231,6 +233,8 @@ def main(text_id: str) -> int:
     # by hand (checks/participation.py).
     part_errors, participating = check_participation(doc)
     all_errors += part_errors
+    oration_errors, oration_boundaries = check_orations(doc)
+    all_errors += oration_errors
     # Agreement and government, checked against the edition's own syntax
     # (schema 0.13.0, checks/syntax.py). `syntax` counts what is declared;
     # a modifier with no head yet is work outstanding, not a failure.
@@ -251,6 +255,7 @@ def main(text_id: str) -> int:
         gloss_docs.append(gdoc)
         all_errors += check_prose(gdoc)
         all_errors += check_translation_punctuation(gdoc)
+        all_errors += check_translation_names(doc, gdoc)
         all_errors += lint_gloss(gdoc, doc)
         all_errors += check_interlinear_quality(doc, gdoc)
         # The gloss line read AS POLISH: a preposition governing the case
@@ -291,11 +296,17 @@ def main(text_id: str) -> int:
         (f"corrigenda={coll_stats['corrigenda']} " if coll_stats.get("corrigenda") else "")
         + (f"orthographic={coll_stats['orthographic']} " if coll_stats.get("orthographic") else "")
         + (f"inflections={coll_stats['inflections']} " if coll_stats.get("inflections") else "")
+        + (
+            f"substantive_variants={coll_stats['substantive_variants']} "
+            if coll_stats.get("substantive_variants")
+            else ""
+        )
         + (f"recensions={coll_stats['recensions']} " if coll_stats.get("recensions") else "")
         + (f"omissions={coll_stats['omissions']} " if coll_stats.get("omissions") else "")
         + (f"speakers={attributed}/{n_verses} " if n_verses else "")
         + (f"delivery={delivered} " if delivered else "")
         + (f"participation={participating} " if participating else "")
+        + (f"oration_boundaries={oration_boundaries} " if oration_boundaries else "")
         + (f"syntax={syn_declared}/{syn_total}-declared " if syn_total else "")
         + (f"raw={transcriptions_checked} " if transcriptions_checked else "")
     )

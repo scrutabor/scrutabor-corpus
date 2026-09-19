@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "orationes.memorare",
   "title": "Memoráre",
   "category": "orationes",
@@ -17,14 +17,14 @@
       "id": "s01",
       "type": "verse",
       "words": [
-        { "id": "w001", "form": "Memoráre", "post": ",", "lemma": "memoro", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "pass", "conj": 1 } },
+        { "id": "w001", "form": "Memoráre", "post": ",", "lemma": "memoror", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 1 } },
         { "id": "w002", "form": "o", "lemma": "o", "morph": { "pos": "intj" } },
         { "id": "w003", "form": "piíssima", "lemma": "pius", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f", "degree": "sup" }, "head": "w004" },
         { "id": "w004", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 3 } },
         { "id": "w005", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
         { "id": "w006", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w007", "form": "esse", "lemma": "sum", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act" } },
-        { "id": "w008", "form": "audítum", "lemma": "audio", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 4 }, "substantive": true },
+        { "id": "w008", "form": "audítum", "lemma": "audio", "morph": { "pos": "verb", "case": "acc", "number": "sg", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 4 }, "substantive": true },
         { "id": "w009", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010" },
         { "id": "w010", "form": "sǽculo", "post": ",", "lemma": "saeculum", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 2 } }
       ]
@@ -122,7 +122,9 @@
     "words": {
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w041": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w041": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
@@ -138,6 +140,14 @@
         "locator": "n. 339, p. 228",
         "url": "https://canadienfrancais.org/wp-content/uploads/editions/pdf/4/Enchiridion%20indulgentiarum1952-canadienfrancais.org.pdf"
       }
-    ]
+    ],
+    "explanations": {
+      "w008": {
+
+      },
+      "w023": {
+
+      }
+    }
   }
 }

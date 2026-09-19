@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.omnium-sanctorum-evangelium",
   "title": "In illo témpore: Videns Iesus turbas, ascéndit",
   "category": "proprium",
@@ -67,7 +67,7 @@
         { "id": "w046", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w047", "form": "esúriunt", "lemma": "esurio", "morph": { "conj": 4, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w048", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w049", "form": "sítiunt", "lemma": "sitio", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "pres", "voice": "act", "conj": 3 } },
+        { "id": "w049", "form": "sítiunt", "lemma": "sitio", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "pres", "voice": "act", "conj": 4 } },
         { "id": "w050", "form": "iustítiam", "lemma": "iustitia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w051", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
         { "id": "w052", "form": "ipsi", "lemma": "ipse", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" } },
@@ -88,7 +88,7 @@
         { "id": "w067", "form": "Beáti", "lemma": "beatus", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
         { "id": "w068", "form": "pacífici", "lemma": "pacificus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "post": ":", "substantive": true },
         { "id": "w069", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
-        { "id": "w070", "form": "fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w070", "form": "fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 } },
         { "id": "w071", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w072", "form": "vocabúntur", "lemma": "voco", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" }, "post": "." },
         { "id": "w073", "form": "Beáti", "lemma": "beatus", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "adj" }, "post": ",", "substantive": true },
@@ -144,7 +144,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w070": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w049": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w070": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

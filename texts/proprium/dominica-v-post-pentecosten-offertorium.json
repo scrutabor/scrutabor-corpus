@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-v-post-pentecosten-offertorium",
   "title": "Benedícam Dóminum, qui tríbuit mihi intelléctum: providébam",
   "category": "proprium",
@@ -32,10 +32,10 @@
         { "id": "w011", "form": "meo", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "substantive": true },
         { "id": "w012", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" }, "post": ":" },
         { "id": "w013", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
-        { "id": "w014", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w017" },
+        { "id": "w014", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w015" },
         { "id": "w015", "form": "dextris", "lemma": "dexter", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "substantive": true },
         { "id": "w016", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w017", "form": "mihi", "lemma": "ego", "morph": { "case": "abl", "number": "sg", "pos": "pron" }, "post": "," },
+        { "id": "w017", "form": "mihi", "lemma": "ego", "morph": { "case": "dat", "number": "sg", "pos": "pron" }, "post": "," },
         { "id": "w018", "form": "ne", "lemma": "ne", "morph": { "pos": "conj" } },
         { "id": "w019", "form": "commóvear", "lemma": "commoveo", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 1, "tense": "pres", "voice": "pass", "conj": 2 }, "post": "." }
       ],
@@ -70,7 +70,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w017": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

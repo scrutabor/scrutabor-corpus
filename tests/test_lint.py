@@ -11,6 +11,8 @@ the most read prose in the layer.
 from copy import deepcopy
 from typing import ClassVar
 
+import pytest
+
 from checks.lint import (
     STRESS_EXEMPT,
     check_analysis,
@@ -32,6 +34,62 @@ TEXT = {
         }
     ],
 }
+
+
+def gerund_text():
+    doc = deepcopy(TEXT)
+    doc["segments"][0]["words"] = [
+        {
+            "id": "w001",
+            "form": "moriéndo",
+            "lemma": "morior",
+            "morph": {
+                "pos": "verb",
+                "mood": "ger",
+                "case": "abl",
+                "number": "sg",
+                "gender": "n",
+                "tense": "pres",
+                "voice": "act",
+                "conj": 3,
+            },
+        }
+    ]
+    return doc
+
+
+def test_gerund_is_an_active_oblique_verbal_noun_even_from_a_deponent():
+    errors, _ = lint_text(gerund_text())
+    assert not any("gerund" in error for error in errors)
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("gender", "m"),
+        ("number", "pl"),
+        ("case", "nom"),
+        ("case", "voc"),
+        ("voice", "pass"),
+        ("voice", "dep"),
+        ("tense", "fut"),
+        ("person", 3),
+    ],
+)
+def test_gerund_rejects_participle_or_finite_features(field, value):
+    doc = gerund_text()
+    doc["segments"][0]["words"][0]["morph"][field] = value
+    errors, _ = lint_text(doc)
+    assert any("gerund" in error for error in errors)
+
+
+@pytest.mark.parametrize("field,value", [("head", "w002"), ("substantive", True)])
+def test_gerund_does_not_agree_with_an_actor(field, value):
+    doc = gerund_text()
+    doc["segments"][0]["words"][0][field] = value
+    errors, _ = lint_text(doc)
+    assert any("gerund" in error for error in errors)
+
 
 CITATION = {
     "title": "Catechismus Catholicae Ecclesiae",
@@ -355,6 +413,62 @@ class TestPossessiveAbsorption:
     def test_polish_absorption_is_an_error(self):
         found = lint_gloss(self.base("ręce moje", "moje", lang="pl"), self.TEXT2)
         assert any("absorbs the possessive" in e for e in found)
+
+    def test_group_owned_possessive_beside_a_personal_object_is_not_duplicated(self):
+        text = {
+            "id": "proprium.test",
+            "segments": [
+                {
+                    "id": "s01",
+                    "type": "verse",
+                    "words": [
+                        {
+                            "id": "w001",
+                            "form": "eam",
+                            "lemma": "is",
+                            "morph": {"pos": "pron", "case": "acc"},
+                        },
+                        {
+                            "id": "w002",
+                            "form": "próximæ",
+                            "lemma": "proximus",
+                            "morph": {"pos": "adj", "case": "nom"},
+                        },
+                        {
+                            "id": "w003",
+                            "form": "eius",
+                            "lemma": "is",
+                            "morph": {"pos": "pron", "case": "gen"},
+                        },
+                    ],
+                }
+            ],
+        }
+        layer = gloss(
+            lang="en",
+            words={"w001": {"gloss": "her"}, "w002": {}, "w003": {}},
+            segments={
+                "s01": {
+                    "translation": "Her companions follow her.",
+                    "alignments": [
+                        {"words": ["w002", "w003"], "anchor": "w002", "gloss": "her companions"}
+                    ],
+                }
+            },
+        )
+        assert lint_gloss(layer, text) == []
+
+        # A genitive outside the group is still a possible duplicate. The
+        # new rule must not silently exempt every neighboring pronoun.
+        text["segments"][0]["words"][0].update(form="eius", morph={"pos": "pron", "case": "gen"})
+        assert any("absorbs the possessive" in error for error in lint_gloss(layer, text))
+
+        # Nor does an arbitrary group license a possessive by itself.
+        text["segments"][0]["words"][0].update(form="eam", morph={"pos": "pron", "case": "acc"})
+        text["segments"][0]["words"][2].update(
+            form="fidélis", lemma="fidelis", morph={"pos": "adj", "case": "nom"}
+        )
+        assert any("absorbs the possessive" in error for error in lint_gloss(layer, text))
 
     def test_an_absorbed_conjunction_is_an_error(self):
         found = lint_gloss(self.base("and truth", "and"), self.TEXT2)

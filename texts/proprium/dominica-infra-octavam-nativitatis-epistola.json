@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-infra-octavam-nativitatis-epistola",
   "title": "Fratres: Quanto témpore heres párvulus est, nihil",
   "category": "proprium",
@@ -85,7 +85,7 @@
         { "id": "w064", "form": "Quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
         { "id": "w065", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w066", "form": "estis", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w067", "form": "fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 }, "post": "," },
+        { "id": "w067", "form": "fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 }, "post": "," },
         { "id": "w068", "form": "misit", "lemma": "mitto", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
         { "id": "w069", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w070", "form": "Spíritum", "lemma": "spiritus", "morph": { "case": "acc", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -125,9 +125,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w067": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w071": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w072": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w072": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w067": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

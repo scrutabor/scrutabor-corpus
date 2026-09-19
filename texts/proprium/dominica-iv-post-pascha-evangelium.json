@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-iv-post-pascha-evangelium",
   "title": "In illo témpore: Dixit Iesus discípulis suis",
   "category": "proprium",
@@ -55,7 +55,7 @@
         { "id": "w034", "form": "veritátem", "lemma": "veritas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w035", "form": "dico", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w036", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "post": ":" },
-        { "id": "w037", "form": "expédit", "lemma": "expedio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w037", "form": "expédit", "lemma": "expedio", "morph": { "conj": 4, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w038", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "post": "," },
         { "id": "w039", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w040", "form": "ego", "lemma": "ego", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
@@ -114,7 +114,7 @@
         { "id": "w093", "form": "iudício", "lemma": "iudicium", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w094", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" }, "post": "," },
         { "id": "w095", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
-        { "id": "w096", "form": "princeps", "lemma": "princeps", "morph": { "case": "voc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w096", "form": "princeps", "lemma": "princeps", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w097", "form": "huius", "lemma": "hic", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
         { "id": "w098", "form": "mundi", "lemma": "mundus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w099", "form": "iam", "lemma": "iam", "morph": { "pos": "adv" } },
@@ -129,7 +129,7 @@
         { "id": "w108", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w109", "form": "potéstis", "lemma": "possum", "morph": { "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w110", "form": "portáre", "lemma": "porto", "morph": { "conj": 1, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w111", "form": "modo", "lemma": "modus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
+        { "id": "w111", "form": "modo", "lemma": "modo", "morph": { "pos": "adv" }, "post": "." },
         { "id": "w112", "form": "Cum", "lemma": "cum", "morph": { "pos": "conj" } },
         { "id": "w113", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w114", "form": "vénerit", "lemma": "venio", "morph": { "conj": 4, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "futperf", "voice": "act" } },
@@ -181,7 +181,10 @@
     "words": {
       "w045": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w053": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w126": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w126": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w096": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w111": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

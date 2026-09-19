@@ -1,22 +1,23 @@
 {
   "text": "proprium.dominica-ii-passionis-tractus",
-  "note": "Adjudicated accidental and house-orthography variants. The witnesses agree on the substantive text.",
+  "note": "The controlling printed tract and derived digital witness have one substantive lexical difference and the declared accidental differences; neither raw witness is silently normalized.",
   "summary": {
-    "entries": 6,
+    "entries": 8,
     "classes": [
-      "capital-accent",
-      "orthography"
+      "orthography",
+      "punctuation",
+      "substantive"
     ]
   },
   "adjudicated": [
     {
-      "at": "w037",
-      "ours": "Ísrael.",
+      "at": "w069",
+      "ours": "hóminum,",
       "witnesses": {
-        "do": "Israël."
+        "do": "hóminum"
       },
-      "class": "capital-accent",
-      "ruling": "The lexical accent is restored in the working text under the edition's house convention; the witness's capital typography is recorded exactly."
+      "class": "punctuation",
+      "ruling": "MR prints a comma after hóminum; DO line204 lacks it. Retain the printed comma."
     },
     {
       "at": "w071",
@@ -25,7 +26,25 @@
         "do": "abjéctio"
       },
       "class": "orthography",
-      "ruling": "The typical edition's spelling is retained under the house orthography. The witness reading is the same word in another editorial spelling."
+      "ruling": "MR abiéctio versus DO abjéctio is i/j spelling of the same word."
+    },
+    {
+      "at": "w098",
+      "ours": "consideravérunt,",
+      "witnesses": {
+        "do": "consideravérunt"
+      },
+      "class": "punctuation",
+      "ruling": "MR prints consideravérunt, while DO line207 has no comma; retain the printed comma."
+    },
+    {
+      "at": "w100",
+      "ours": "inspexérunt",
+      "witnesses": {
+        "do": "conspexérunt"
+      },
+      "class": "substantive",
+      "ruling": "Select MR inspexérunt, positively attested by the full147-word controlling witness; DO line207 really has conspexérunt. This changes the lexical reading, not orthography. Do not diagnose an upstream printer's slip without evidence."
     },
     {
       "at": "w130",
@@ -34,16 +53,16 @@
         "do": "Jacob,"
       },
       "class": "orthography",
-      "ruling": "The typical edition's spelling is retained under the house orthography. The witness reading is the same word in another editorial spelling."
+      "ruling": "MR Iacob, versus DO Jacob, is i/j spelling of the same name; the comma occurs in both."
     },
     {
       "at": "w139",
-      "ours": "cæli",
+      "ours": "cæli,",
       "witnesses": {
         "do": "cœli"
       },
       "class": "orthography",
-      "ruling": "The typical edition's spelling is retained under the house orthography. The witness reading is the same word in another editorial spelling."
+      "ruling": "MR prints cæli, with æ AND a following comma; DO line210 prints cœli with œ and NO comma. The exact quotes declare both the ae/oe spelling difference and the punctuation difference. Preserve both raw source facts."
     },
     {
       "at": "w140",
@@ -52,7 +71,7 @@
         "do": "justítiam"
       },
       "class": "orthography",
-      "ruling": "The typical edition's spelling is retained under the house orthography. The witness reading is the same word in another editorial spelling."
+      "ruling": "MR iustítiam versus DO justítiam is i/j spelling of the same word."
     },
     {
       "at": "w141",
@@ -61,7 +80,7 @@
         "do": "ejus."
       },
       "class": "orthography",
-      "ruling": "The typical edition's spelling is retained under the house orthography. The witness reading is the same word in another editorial spelling."
+      "ruling": "MR eius. versus DO ejus. is i/j spelling of the same word; retain the terminal period in both exact quotes."
     }
   ]
 }

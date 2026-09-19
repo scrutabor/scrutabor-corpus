@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-resurrectionis-epistola",
   "title": "Fratres: Expurgáte vetus ferméntum, ut sitis nova",
   "category": "proprium",
@@ -25,15 +25,15 @@
         { "id": "w004", "form": "ferméntum", "lemma": "fermentum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w005", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w006", "form": "sitis", "lemma": "sum", "morph": { "mood": "subj", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w007", "form": "nova", "lemma": "novus", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "substantive": true },
+        { "id": "w007", "form": "nova", "lemma": "novus", "morph": { "case": "nom", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w008" },
         { "id": "w008", "form": "conspérsio", "lemma": "conspersio", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 }, "post": "," },
         { "id": "w009", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
         { "id": "w010", "form": "estis", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w011", "form": "ázymi", "lemma": "azymus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "post": ".", "substantive": true },
+        { "id": "w011", "form": "ázymi", "lemma": "azymus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "post": ".", "head": "w010" },
         { "id": "w012", "form": "Étenim", "lemma": "etenim", "morph": { "pos": "conj" } },
         { "id": "w013", "form": "Pascha", "lemma": "pascha", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w014", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "substantive": true },
-        { "id": "w015", "form": "immolátus", "lemma": "immolo", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
+        { "id": "w014", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w013" },
+        { "id": "w015", "form": "immolátus", "lemma": "immolo", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w017" },
         { "id": "w016", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w017", "form": "Christus", "lemma": "Christus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
         { "id": "w018", "form": "Ítaque", "lemma": "itaque", "morph": { "pos": "conj" } },
@@ -41,7 +41,7 @@
         { "id": "w020", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w021", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w022" },
         { "id": "w022", "form": "ferménto", "lemma": "fermentum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w023", "form": "véteri", "lemma": "vetus", "morph": { "case": "dat", "number": "sg", "pos": "adj" }, "post": ",", "substantive": true },
+        { "id": "w023", "form": "véteri", "lemma": "vetus", "morph": { "case": "abl", "number": "sg", "pos": "adj", "gender": "n" }, "post": ",", "head": "w022" },
         { "id": "w024", "form": "neque", "lemma": "neque", "morph": { "pos": "conj" } },
         { "id": "w025", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w026" },
         { "id": "w026", "form": "ferménto", "lemma": "fermentum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
@@ -68,7 +68,12 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w013": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } }
     }
   },
   "localization": {

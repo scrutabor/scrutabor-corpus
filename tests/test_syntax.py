@@ -1,5 +1,8 @@
 """The syntax check: what it must catch, and what it must not mistake for an error."""
 
+import pytest
+
+from checks.language_packs import check_core
 from checks.syntax import check, coverage
 
 
@@ -20,6 +23,66 @@ def w(wid, form, pos, lemma="x", head=None, substantive=None, **morph):
 
 
 NOUN = dict(case="gen", number="pl", gender="m")
+
+
+def elliptical_predicate():
+    word = w("w1", "Speciósus", "adj", case="nom", number="sg", gender="m")
+    word["ellipsis"] = "predicate"
+    value = doc([word])
+    value["localization"] = {"about": True, "explanations": {"w1": {}}}
+    return value
+
+
+def test_explicit_elliptical_predicate_does_not_invent_a_substantive_or_head():
+    value = elliptical_predicate()
+    assert check(value) == []
+    assert check_core(value) == []
+    assert coverage(value) == (1, 1)
+
+
+@pytest.mark.parametrize("field,value", [("head", "w2"), ("substantive", True)])
+def test_ellipsis_cannot_hide_an_incompatible_syntax_claim(field, value):
+    fixture = elliptical_predicate()
+    fixture["segments"][0]["words"][0][field] = value
+    assert any("cannot also carry" in error for error in check(fixture))
+
+
+@pytest.mark.parametrize("field,value", [("pos", "noun"), ("case", "acc")])
+def test_predicate_ellipsis_does_not_waive_nominal_morphology(field, value):
+    fixture = elliptical_predicate()
+    fixture["segments"][0]["words"][0]["morph"][field] = value
+    assert any("nominative adjective" in error for error in check(fixture))
+
+
+def test_ellipsis_requires_an_explanation_and_a_known_kind():
+    fixture = elliptical_predicate()
+    fixture["localization"].pop("explanations")
+    assert any("requires a contextual explanation" in error for error in check_core(fixture))
+    fixture = elliptical_predicate()
+    fixture["segments"][0]["words"][0]["ellipsis"] = "unknown"
+    assert any("unknown ellipsis" in error for error in check(fixture))
+
+
+@pytest.mark.parametrize(
+    "prep,case",
+    [
+        ("a", "abl"),
+        ("abs", "abl"),
+        ("e", "abl"),
+        ("iuxta", "acc"),
+        ("secus", "acc"),
+        ("praeter", "acc"),
+        ("ob", "acc"),
+    ],
+)
+def test_every_published_preposition_checks_its_object(prep, case):
+    words = [
+        w("w1", prep, "prep", lemma=prep, head="w2", governs=case),
+        w("w2", "object", "pron", case="nom", number="sg"),
+    ]
+    assert any("governs" in error for error in check(doc(words)))
+    words[1]["morph"]["case"] = case
+    assert check(doc(words)) == []
 
 
 def test_modifier_must_match_its_head():
@@ -82,6 +145,22 @@ def test_de_longe_has_an_adverbial_complement_not_an_invented_case():
     assert any("not a nominal" in e for e in check(doc(words)))
     words[1]["lemma"] = "longe"
     words[0]["lemma"] = "in"
+    assert any("not a nominal" in e for e in check(doc(words)))
+
+
+@pytest.mark.parametrize(
+    "prep,adverb", [("ad", "invicem"), ("ex", "tunc"), ("a", "longe"), ("ab", "longe")]
+)
+def test_lexicalized_adverbial_complements_do_not_license_arbitrary_heads(prep, adverb):
+    words = [
+        w("w1", prep, "prep", lemma=prep, head="w2"),
+        w("w2", adverb, "adv", lemma=adverb),
+    ]
+    assert check(doc(words)) == []
+    words[0]["morph"]["governs"] = "acc"
+    assert any("not a nominal" in e for e in check(doc(words)))
+    words[0]["morph"].pop("governs")
+    words[1]["lemma"] = "bene"
     assert any("not a nominal" in e for e in check(doc(words)))
 
 

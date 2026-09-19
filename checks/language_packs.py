@@ -116,6 +116,10 @@ def check_core(core: dict) -> list[str]:
     if not isinstance(explanations, dict):
         errors.append(f"{text_id}: localization.explanations must be an object")
         explanations = {}
+    for segment in core.get("segments") or []:
+        for word in segment.get("words") or []:
+            if word.get("ellipsis") and word["id"] not in explanations:
+                errors.append(f"{text_id}:{word['id']}: ellipsis requires a contextual explanation")
     for word_id, requirement in explanations.items():
         if word_id not in word_ids:
             errors.append(f"{text_id}: explanation requirement for unknown word {word_id}")

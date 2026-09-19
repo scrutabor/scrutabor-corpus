@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.nativitas-beatae-mariae-virginis-collecta",
   "title": "Fámulis tuis, quǽsumus, Dómine, cæléstis grátiæ munus",
   "category": "proprium",
@@ -9,7 +9,7 @@
   "ids": {
     "next": 46,
     "segments": {
-      "next": 2
+      "next": 3
     }
   },
   "segments": [
@@ -26,7 +26,7 @@
         { "id": "w005", "form": "cæléstis", "lemma": "caelestis", "morph": { "pos": "adj", "case": "gen", "gender": "f", "number": "sg" }, "head": "w006" },
         { "id": "w006", "form": "grátiæ", "lemma": "gratia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w007", "form": "munus", "lemma": "munus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w008", "form": "impertíre", "lemma": "impertio", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 3 }, "post": ":" },
+        { "id": "w008", "form": "impertíre", "lemma": "impertio", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 4 }, "post": ":" },
         { "id": "w009", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "post": "," },
         { "id": "w010", "form": "quibus", "lemma": "qui", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
         { "id": "w011", "form": "beátæ", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "gender": "f", "number": "sg" }, "head": "w012" },
@@ -62,9 +62,39 @@
         { "id": "w041", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w043" },
         { "id": "w042", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w043" },
         { "id": "w043", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w044", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." },
+        { "id": "w044", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." }
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "sacerdos",
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
         { "id": "w045", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." }
-      ]
+      ],
+      "speaker": "minister",
+      "voice": "clara",
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      },
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     }
   ],
   "editorial": {
@@ -78,7 +108,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w003": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-resurrectionis-collecta",
   "title": "Deus, qui hodiérna die per Unigénitum tuum",
   "category": "proprium",
@@ -9,7 +9,7 @@
   "ids": {
     "next": 45,
     "segments": {
-      "next": 2
+      "next": 3
     }
   },
   "segments": [
@@ -21,24 +21,24 @@
       "words": [
         { "id": "w001", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w002", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w003", "form": "hodiérna", "lemma": "hodiernus", "morph": { "case": "abl", "gender": "f", "number": "sg", "pos": "adj" }, "substantive": true },
-        { "id": "w004", "form": "die", "lemma": "dies", "morph": { "case": "abl", "decl": 5, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w005", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w009" },
-        { "id": "w006", "form": "Unigénitum", "lemma": "unigenitus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w010" },
-        { "id": "w007", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w010" },
+        { "id": "w003", "form": "hodiérna", "lemma": "hodiernus", "morph": { "case": "abl", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w004" },
+        { "id": "w004", "form": "die", "lemma": "dies", "morph": { "case": "abl", "decl": 5, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w005", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w006" },
+        { "id": "w006", "form": "Unigénitum", "lemma": "unigenitus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w007", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w006" },
         { "id": "w008", "form": "æternitátis", "lemma": "aeternitas", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "sg", "decl": 3 } },
-        { "id": "w009", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w009", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
         { "id": "w010", "form": "áditum", "lemma": "aditus", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "sg", "decl": 4 }, "post": "," },
         { "id": "w011", "form": "devícta", "lemma": "devinco", "morph": { "pos": "verb", "case": "abl", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w012" },
         { "id": "w012", "form": "morte", "lemma": "mors", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w013", "form": "reserásti", "lemma": "resero", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "perf", "voice": "act", "conj": 1 }, "post": ":" },
         { "id": "w014", "form": "vota", "lemma": "votum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w015", "form": "nostra", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "post": ",", "head": "w016" },
+        { "id": "w015", "form": "nostra", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "post": ",", "head": "w014" },
         { "id": "w016", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
-        { "id": "w017", "form": "præveniéndo", "lemma": "praevenio", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "fut", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w017", "form": "præveniéndo", "lemma": "praevenio", "morph": { "pos": "verb", "conj": 4, "mood": "ger", "tense": "pres", "voice": "act", "case": "abl", "number": "sg", "gender": "n" } },
         { "id": "w018", "form": "aspíras", "lemma": "aspiro", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 1 }, "post": "," },
         { "id": "w019", "form": "étiam", "lemma": "etiam", "morph": { "pos": "adv" } },
-        { "id": "w020", "form": "adiuvándo", "lemma": "adiuvo", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "fut", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w020", "form": "adiuvándo", "lemma": "adiuvo", "morph": { "pos": "verb", "conj": 1, "mood": "ger", "tense": "pres", "voice": "act", "case": "abl", "number": "sg", "gender": "n" } },
         { "id": "w021", "form": "proséquere", "lemma": "prosequor", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "dep" }, "post": "." },
         { "id": "w022", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w023" },
         { "id": "w023", "form": "eúndem", "lemma": "idem", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
@@ -61,9 +61,39 @@
         { "id": "w040", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w042" },
         { "id": "w041", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w042" },
         { "id": "w042", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w043", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." },
+        { "id": "w043", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." }
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "sacerdos",
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
         { "id": "w044", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." }
-      ]
+      ],
+      "speaker": "minister",
+      "voice": "clara",
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      },
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     }
   ],
   "editorial": {
@@ -77,8 +107,16 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w009": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

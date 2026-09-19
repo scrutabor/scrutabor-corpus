@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-x-post-pentecosten-introitus",
   "title": "Dum clamárem ad Dóminum, exaudívit vocem meam",
   "category": "proprium",
@@ -50,7 +50,7 @@
         { "id": "w029", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w030", "form": "ipse", "lemma": "ipse", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w031", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
-        { "id": "w032", "form": "enútriet", "lemma": "enutrio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "act", "conj": 3 }, "post": "." },
+        { "id": "w032", "form": "enútriet", "lemma": "enutrio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "act", "conj": 4 }, "post": "." },
         { "id": "w033", "form": "Exáudi", "lemma": "exaudio", "morph": { "conj": 4, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w034", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w035", "form": "oratiónem", "lemma": "oratio", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -116,7 +116,7 @@
         { "id": "w095", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w096", "form": "ipse", "lemma": "ipse", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w097", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
-        { "id": "w098", "form": "enútriet", "lemma": "enutrio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "act", "conj": 3 }, "post": "." }
+        { "id": "w098", "form": "enútriet", "lemma": "enutrio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "act", "conj": 4 }, "post": "." }
       ],
       "participation": {
         "cantu": {
@@ -147,7 +147,11 @@
       "apparatus": "witnesses/proprium.dominica-x-post-pentecosten-introitus/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w032": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w098": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

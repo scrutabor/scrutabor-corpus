@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.sanctorum-simonis-et-iudae-apostolorum-evangelium",
   "title": "In illo témpore: Dixit Iesus discípulis suis",
   "category": "proprium",
@@ -68,7 +68,7 @@
         { "id": "w047", "form": "odit", "lemma": "odi", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 3 } },
         { "id": "w048", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w049", "form": "mundus", "lemma": "mundus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
-        { "id": "w050", "form": "Mementóte", "lemma": "memini", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "perf", "voice": "act" } },
+        { "id": "w050", "form": "Mementóte", "lemma": "memini", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "fut", "voice": "act" } },
         { "id": "w051", "form": "sermónis", "lemma": "sermo", "morph": { "case": "gen", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w052", "form": "mei", "lemma": "meus", "morph": { "pos": "adj", "case": "gen", "gender": "m", "number": "sg" }, "post": ",", "head": "w051" },
         { "id": "w053", "form": "quem", "lemma": "qui", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
@@ -138,8 +138,8 @@
         { "id": "w117", "form": "ópera", "lemma": "opus", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" } },
         { "id": "w118", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w119", "form": "fecíssem", "lemma": "facio", "morph": { "conj": 3, "mood": "subj", "number": "sg", "person": 1, "pos": "verb", "tense": "plup", "voice": "act" } },
-        { "id": "w120", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w121" },
-        { "id": "w121", "form": "eis", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "pron" }, "post": "," },
+        { "id": "w120", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w121" },
+        { "id": "w121", "form": "eis", "lemma": "is", "morph": { "case": "abl", "gender": "m", "number": "pl", "pos": "pron" }, "post": "," },
         { "id": "w122", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w123", "form": "nemo", "lemma": "nemo", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
         { "id": "w124", "form": "álius", "lemma": "alius", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w123" },
@@ -189,11 +189,12 @@
     "words": {
       "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w047": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w050": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w050": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
       "w111": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w115": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w121": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w134": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w134": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w120": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w121": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

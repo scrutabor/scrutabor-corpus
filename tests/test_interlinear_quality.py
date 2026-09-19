@@ -1,5 +1,7 @@
 """Reader-visible interlinear corruption must not return."""
 
+import pytest
+
 from checks.interlinear_quality import check
 
 DOC = {"id": "t.t"}
@@ -88,3 +90,39 @@ def test_future_periphrastic_cannot_duplicate_its_auxiliary():
     assert check(doc, future_layer("en", "is", "shall be"))
     assert check(doc, future_layer("pl", "[czasownik posiłkowy]", "będzie"))
     assert check(doc, future_layer("en", "[auxiliary]", "shall be"))
+
+
+def word_doc(form):
+    return {"id": "t.t", "segments": [{"id": "s01", "words": [{"id": "w1", "form": form}]}]}
+
+
+@pytest.mark.parametrize(
+    "language,bare,complete",
+    [
+        ("pl", "Tobą", "z Tobą"),
+        ("en", "Thee", "with Thee"),
+        ("en", "thee", "with thee"),
+        ("en", "you", "with you"),
+    ],
+)
+def test_tecum_does_not_drop_its_fused_preposition(language, bare, complete):
+    assert check(word_doc("tecum"), layer(language, bare))
+    assert check(word_doc("Tecum"), layer(language, complete)) == []
+    assert check(word_doc("te"), layer(language, bare)) == []
+
+
+def test_idiomatic_cum_and_explicit_alignment_are_not_overcorrected():
+    assert check(word_doc("nobíscum"), layer("pl", "nam")) == []
+    assert check(word_doc("Tecum"), layer("pl", "Przy Tobie")) == []
+    shared = layer("pl", "")
+    shared["segments"] = {
+        "s01": {"alignments": [{"words": ["w1", "w2"], "anchor": "w1", "gloss": "wspólnie z Tobą"}]}
+    }
+    assert check(word_doc("tecum"), shared) == []
+
+
+@pytest.mark.parametrize("language,copula,pronoun", [("pl", "jest", "jego"), ("en", "is", "his")])
+def test_eius_is_not_a_copula(language, copula, pronoun):
+    assert check(word_doc("eius"), layer(language, copula))
+    assert check(word_doc("eius"), layer(language, pronoun)) == []
+    assert check(word_doc("est"), layer(language, copula)) == []

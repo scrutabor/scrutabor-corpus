@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-introitus",
   "title": "Terríbilis est locus iste: hic domus Dei",
   "category": "proprium",
@@ -36,7 +36,7 @@
         { "id": "w015", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
         { "id": "w016", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
         { "id": "w017", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
-        { "id": "w018", "form": "Quam", "lemma": "quam", "morph": { "pos": "conj" } },
+        { "id": "w018", "form": "Quam", "lemma": "quam", "morph": { "pos": "adv" } },
         { "id": "w019", "form": "dilécta", "lemma": "diligo", "morph": { "pos": "verb", "case": "acc", "gender": "n", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w020" },
         { "id": "w020", "form": "tabernácula", "lemma": "tabernaculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
         { "id": "w021", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "post": ",", "substantive": true },
@@ -117,7 +117,10 @@
       "apparatus": "witnesses/proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-introitus/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

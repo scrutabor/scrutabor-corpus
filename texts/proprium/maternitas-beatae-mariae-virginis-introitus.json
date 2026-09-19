@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.maternitas-beatae-mariae-virginis-introitus",
   "title": "Ecce Virgo concípiet, et páriet fílium, et",
   "category": "proprium",
@@ -30,7 +30,7 @@
         { "id": "w009", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
         { "id": "w010", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w011", "form": "Emmánuel", "lemma": "Emmanuel", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
-        { "id": "w012", "form": "Cantáte", "lemma": "canto", "morph": { "pos": "verb", "case": "voc", "gender": "m", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w012", "form": "Cantáte", "lemma": "canto", "morph": { "pos": "verb", "mood": "imp", "tense": "pres", "voice": "act", "person": 2, "number": "pl", "conj": 1 } },
         { "id": "w013", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w014", "form": "cánticum", "lemma": "canticum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
         { "id": "w015", "form": "novum", "lemma": "novus", "morph": { "case": "nom", "gender": "n", "number": "sg", "pos": "adj" }, "post": ":", "substantive": true },
@@ -98,7 +98,10 @@
       "apparatus": "witnesses/proprium.maternitas-beatae-mariae-virginis-introitus/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

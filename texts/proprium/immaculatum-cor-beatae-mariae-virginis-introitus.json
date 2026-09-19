@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.immaculatum-cor-beatae-mariae-virginis-introitus",
   "title": "Adeámus cum fidúcia ad thronum grátiæ, ut",
   "category": "proprium",
@@ -35,15 +35,15 @@
         { "id": "w014", "form": "auxílio", "lemma": "auxilium", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w015", "form": "opportúno", "lemma": "opportunus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "post": ".", "substantive": true },
         { "id": "w016", "form": "Eructávit", "lemma": "eructo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 1 } },
-        { "id": "w017", "form": "cor", "lemma": "cor", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 3 } },
-        { "id": "w018", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "substantive": true },
+        { "id": "w017", "form": "cor", "lemma": "cor", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg", "decl": 3 } },
+        { "id": "w018", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "head": "w017" },
         { "id": "w019", "form": "verbum", "lemma": "verbum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
         { "id": "w020", "form": "bonum", "lemma": "bonus", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "post": ":", "head": "w019" },
         { "id": "w021", "form": "dico", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w022", "form": "ego", "lemma": "ego", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
         { "id": "w023", "form": "ópera", "lemma": "opus", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w024", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w022" },
-        { "id": "w025", "form": "regi", "lemma": "rego", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "pass", "conj": 3 }, "post": "." },
+        { "id": "w024", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w023" },
+        { "id": "w025", "form": "regi", "lemma": "rex", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 3 }, "post": "." },
         { "id": "w026", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w027", "form": "Patri", "lemma": "pater", "morph": { "case": "dat", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w028", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -112,7 +112,11 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w050": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w050": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

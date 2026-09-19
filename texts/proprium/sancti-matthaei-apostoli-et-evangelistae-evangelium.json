@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.sancti-matthaei-apostoli-et-evangelistae-evangelium",
   "title": "In illo témpore: Vidit Iesus hóminem sedéntem",
   "category": "proprium",
@@ -55,7 +55,7 @@
         { "id": "w034", "form": "veniéntes", "lemma": "venio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 4 }, "head": "w033" },
         { "id": "w035", "form": "discumbébant", "lemma": "discumbo", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "impf", "voice": "act", "conj": 3 } },
         { "id": "w036", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w037" },
-        { "id": "w037", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w037", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m" } },
         { "id": "w038", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w039", "form": "discípulis", "lemma": "discipulus", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 2 } },
         { "id": "w040", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": "." },
@@ -117,7 +117,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w043": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w043": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
     }
   },
   "localization": {

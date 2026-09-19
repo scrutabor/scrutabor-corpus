@@ -125,11 +125,11 @@ def test_the_authored_graph_accounts_for_every_audited_legacy_citation():
     assert validate(CORPUS, graph, languages) == []
     state = parity(CORPUS, graph, languages)
     assert state == {
-        "legacy": 2776,
-        "mapped": 2044,
+        "legacy": 2773,
+        "mapped": 2041,
         "removed": 732,
         "unmapped": 0,
-        "sha256": "4677bbf9680895093b48590798855cf37876b2cbc47526d4110695e30d660999",
+        "sha256": "e59fc076f487a5c0051168874c34c5d861ad730fe74613667f6415e9381a1381",
         "complete": True,
     }
 
@@ -137,6 +137,43 @@ def test_the_authored_graph_accounts_for_every_audited_legacy_citation():
 def test_a_complete_typed_sample_is_valid():
     graph, languages = sample()
     assert validate(CORPUS, graph, languages) == []
+
+
+def test_lemma_evidence_is_indexed_without_inventing_a_text_address():
+    graph, languages = sample()
+    lexical = use("use-lemma", "edition-neutral", "item-neutral", "lexical_support")
+    lexical["address"] = {"kind": "lemma", "lemma": "deus"}
+    lexical["evidence_sha256"] = "a" * 64
+    lexical["decision_reason"] = "Private validation detail."
+    graph["uses"].append(lexical)
+    graph["uses"].sort(key=lambda record: record["id"])
+    assert validate(CORPUS, graph, languages) == []
+    index = public_index(graph)
+    section = next(s for s in index["sections"] if s["id"] == "scripture_language_and_scholarship")
+    entry = section["entries"][0]
+    assert entry["texts"] == []
+    assert entry["lemmas"][0]["id"] == "deus"
+    assert entry["lemmas"][0]["roles"] == ["lexical_support"]
+    assert entry["lemmas"][0]["uses"] == 1
+    group = entry["lemmas"][0]["source_groups"][0]
+    assert group["entries"][0]["address"] == {"kind": "lemma", "lemma": "deus"}
+    assert group["entries"][0]["claim"] == lexical["claim"]
+    assert "evidence_sha256" not in json.dumps(entry)
+    assert "decision_reason" not in json.dumps(entry)
+    assert all(record["id"] != "deus" for record in public_text_evidence(graph)["texts"])
+
+
+def test_rejected_lemma_evidence_does_not_enter_the_index():
+    graph, _languages = sample()
+    lexical = use("use-lemma", "edition-neutral", "item-neutral", "lexical_support")
+    lexical.update(address={"kind": "lemma", "lemma": "deus"}, decision="REMOVE")
+    graph["uses"].append(lexical)
+    section = next(
+        s
+        for s in public_index(graph)["sections"]
+        if s["id"] == "scripture_language_and_scholarship"
+    )
+    assert section["entries"] == []
 
 
 def test_a_use_cannot_point_to_an_unknown_edition():

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xix-post-pentecosten-collecta",
   "title": "Omnípotens et miséricors Deus, univérsa nobis adversántia",
   "category": "proprium",
@@ -9,7 +9,7 @@
   "ids": {
     "next": 44,
     "segments": {
-      "next": 2
+      "next": 3
     }
   },
   "segments": [
@@ -25,7 +25,7 @@
         { "id": "w004", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w005", "form": "univérsa", "lemma": "universus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "substantive": true },
         { "id": "w006", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
-        { "id": "w007", "form": "adversántia", "lemma": "adversor", "morph": { "pos": "verb", "case": "abl", "number": "sg", "gender": "f", "tense": "pres", "mood": "part", "voice": "dep", "conj": 1 }, "substantive": true },
+        { "id": "w007", "form": "adversántia", "lemma": "adversor", "morph": { "pos": "verb", "case": "acc", "number": "pl", "gender": "n", "tense": "pres", "mood": "part", "voice": "dep", "conj": 1 }, "substantive": true },
         { "id": "w008", "form": "propitiátus", "lemma": "propitio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "head": "w004" },
         { "id": "w009", "form": "exclúde", "lemma": "excludo", "morph": { "pos": "verb", "mood": "imp", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 3 }, "post": ":" },
         { "id": "w010", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
@@ -33,7 +33,7 @@
         { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w013", "form": "córpore", "lemma": "corpus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w014", "form": "páriter", "lemma": "pariter", "morph": { "pos": "adv" } },
-        { "id": "w015", "form": "expedíti", "lemma": "expedio", "morph": { "pos": "verb", "case": "gen", "gender": "m", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "post": ",", "substantive": true },
+        { "id": "w015", "form": "expedíti", "lemma": "expedio", "morph": { "pos": "verb", "case": "gen", "gender": "m", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 4 }, "post": ",", "substantive": true },
         { "id": "w016", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
         { "id": "w017", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "head": "w016" },
         { "id": "w018", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
@@ -60,9 +60,39 @@
         { "id": "w039", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w041" },
         { "id": "w040", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w041" },
         { "id": "w041", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w042", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." },
+        { "id": "w042", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." }
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "sacerdos",
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
         { "id": "w043", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." }
-      ]
+      ],
+      "speaker": "minister",
+      "voice": "clara",
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      },
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     }
   ],
   "editorial": {
@@ -76,7 +106,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w007": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

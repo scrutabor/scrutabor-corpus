@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-vii-post-pentecosten-evangelium",
   "title": "In illo témpore: Dixit Iesus discípulis suis",
   "category": "proprium",
@@ -54,8 +54,8 @@
         { "id": "w033", "form": "uvas", "lemma": "uva", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "pl", "decl": 1 }, "post": "," },
         { "id": "w034", "form": "aut", "lemma": "aut", "morph": { "pos": "conj" } },
         { "id": "w035", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w036" },
-        { "id": "w036", "form": "tríbulis", "lemma": "tribulis", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "pl", "decl": 3 } },
-        { "id": "w037", "form": "ficus", "lemma": "ficus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 2 }, "post": "?" },
+        { "id": "w036", "form": "tríbulis", "lemma": "tribulus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "pl", "decl": 2 } },
+        { "id": "w037", "form": "ficus", "lemma": "ficus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 4 }, "post": "?" },
         { "id": "w038", "form": "Sic", "lemma": "sic", "morph": { "pos": "adv" } },
         { "id": "w039", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w040" },
         { "id": "w040", "form": "arbor", "lemma": "arbor", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
@@ -101,7 +101,7 @@
         { "id": "w080", "form": "cognoscétis", "lemma": "cognosco", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w081", "form": "eos", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "pron" }, "post": "." },
         { "id": "w082", "form": "Non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w083", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "post": ",", "substantive": true },
+        { "id": "w083", "form": "omnis", "post": ",", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "substantive": true },
         { "id": "w084", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w085", "form": "dicit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w086", "form": "mihi", "lemma": "ego", "morph": { "case": "dat", "number": "sg", "pos": "pron" }, "post": "," },
@@ -141,7 +141,9 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w036": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w036": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w083": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w037": { "analysis": { "confidence": "medium", "sources": ["editorial"], "review": "pending" } }
     }
   },
   "localization": {

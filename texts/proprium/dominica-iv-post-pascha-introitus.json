@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-iv-post-pascha-introitus",
   "title": "Cantáte Dómino cánticum novum, allelúia: quia mirabília",
   "category": "proprium",
@@ -19,10 +19,10 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Cantáte", "lemma": "canto", "morph": { "pos": "verb", "case": "voc", "gender": "m", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w001", "form": "Cantáte", "lemma": "canto", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
         { "id": "w002", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w003", "form": "cánticum", "lemma": "canticum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w004", "form": "novum", "lemma": "novus", "morph": { "case": "nom", "gender": "n", "number": "sg", "pos": "adj" }, "post": ",", "substantive": true },
+        { "id": "w004", "form": "novum", "lemma": "novus", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "post": ",", "head": "w003" },
         { "id": "w005", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": ":" },
         { "id": "w006", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
         { "id": "w007", "form": "mirabília", "lemma": "mirabilis", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "substantive": true },
@@ -43,8 +43,8 @@
         { "id": "w022", "form": "déxtera", "lemma": "dextera", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w023", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": ":" },
         { "id": "w024", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w025", "form": "bráchium", "lemma": "brachium", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w026", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w025" },
+        { "id": "w025", "form": "bráchium", "lemma": "brachium", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w026", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "head": "w025" },
         { "id": "w027", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": "." },
         { "id": "w028", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w029", "form": "Patri", "lemma": "pater", "morph": { "case": "dat", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
@@ -66,10 +66,10 @@
         { "id": "w045", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
         { "id": "w046", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." },
         { "id": "w047", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." },
-        { "id": "w048", "form": "Cantáte", "lemma": "canto", "morph": { "pos": "verb", "case": "voc", "gender": "m", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w048", "form": "Cantáte", "lemma": "canto", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
         { "id": "w049", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w050", "form": "cánticum", "lemma": "canticum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w051", "form": "novum", "lemma": "novus", "morph": { "case": "nom", "gender": "n", "number": "sg", "pos": "adj" }, "post": ",", "substantive": true },
+        { "id": "w051", "form": "novum", "lemma": "novus", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "post": ",", "head": "w050" },
         { "id": "w052", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": ":" },
         { "id": "w053", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
         { "id": "w054", "form": "mirabília", "lemma": "mirabilis", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "substantive": true },
@@ -118,7 +118,13 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w026": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w048": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w051": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

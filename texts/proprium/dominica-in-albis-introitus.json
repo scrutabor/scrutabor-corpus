@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-in-albis-introitus",
   "title": "Quasi modo géniti infántes, allelúia: rationábiles, sine",
   "category": "proprium",
@@ -20,7 +20,7 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Quasi", "lemma": "quasi", "morph": { "pos": "conj" } },
-        { "id": "w002", "form": "modo", "lemma": "modus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w002", "form": "modo", "lemma": "modo", "morph": { "pos": "adv" } },
         { "id": "w003", "form": "géniti", "lemma": "gigno", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
         { "id": "w004", "form": "infántes", "lemma": "infans", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 }, "post": "," },
         { "id": "w005", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": ":" },
@@ -60,7 +60,7 @@
         { "id": "w039", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." },
         { "id": "w040", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w041", "form": "Quasi", "lemma": "quasi", "morph": { "pos": "conj" } },
-        { "id": "w042", "form": "modo", "lemma": "modus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w042", "form": "modo", "lemma": "modo", "morph": { "pos": "adv" } },
         { "id": "w043", "form": "géniti", "lemma": "gigno", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
         { "id": "w044", "form": "infántes", "lemma": "infans", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 }, "post": "," },
         { "id": "w045", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": ":" },
@@ -104,7 +104,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

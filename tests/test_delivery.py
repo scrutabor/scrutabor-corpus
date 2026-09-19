@@ -19,9 +19,9 @@ def test_a_proper_chant_has_a_sung_mass_override():
     assert derive(doc, doc["segments"][0]) == {"cantu": {"speaker": "schola", "voice": "cantus"}}
 
 
-def test_a_proper_oration_keeps_the_celebrants_base_delivery():
-    doc = text("proprium.dominica-iv-adventus-collecta")
-    assert derive(doc, doc["segments"][0]) == {}
+def test_a_complete_proper_oration_is_sung_by_the_celebrant():
+    doc = text("proprium.nativitas-domini-in-nocte-collecta")
+    assert derive(doc, doc["segments"][0]) == {"cantu": {"speaker": "sacerdos", "voice": "cantus"}}
 
 
 def test_the_rule_does_not_depend_on_one_advent_formulary():
@@ -34,7 +34,7 @@ def test_a_stale_or_extra_override_is_rejected():
     doc = text("proprium.dominica-i-adventus-collecta")
     doc["segments"][0]["delivery"] = {"cantu": {"speaker": "schola"}}
     errors, _ = check_doc(doc)
-    assert any("Mass forms require none" in error for error in errors)
+    assert any("sacerdos" in error and "schola" in error for error in errors)
 
 
 def test_the_sung_passion_uses_its_three_traditional_parts():

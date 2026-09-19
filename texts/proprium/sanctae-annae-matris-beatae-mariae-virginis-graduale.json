@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.sanctae-annae-matris-beatae-mariae-virginis-graduale",
   "title": "Dilexísti iustítiam, et odísti iniquitátem. Proptérea unxit",
   "category": "proprium",
@@ -26,7 +26,7 @@
         { "id": "w005", "form": "iniquitátem", "lemma": "iniquitas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." },
         { "id": "w006", "form": "Proptérea", "lemma": "propterea", "morph": { "pos": "adv" } },
         { "id": "w007", "form": "unxit", "lemma": "unguo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 3 } },
-        { "id": "w008", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w008", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w009", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w010", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w011", "form": "tuus", "lemma": "tuus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "post": ",", "head": "w010" },
@@ -55,19 +55,25 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "notes": "This is the ordinary feast chant printed before the separate votive section. The source preserves its exact component boundary.",
     "source": {
-      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "Transcribed from the directly viewed Benziger 1962 editio iuxta typicam page and compared with the exact pinned digital passage. Source spelling and component boundaries are recorded separately for both witnesses.",
       "witnesses": "witnesses/proprium.sanctae-annae-matris-beatae-mariae-virginis-graduale/",
       "apparatus": "witnesses/proprium.sanctae-annae-matris-beatae-mariae-virginis-graduale/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w009": {
+
+      }
+    }
   }
 }

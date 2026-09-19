@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.sancti-thomae-apostoli-epistola",
   "title": "Fratres: Iam non estis hóspites et ádvenæ",
   "category": "proprium",
@@ -40,11 +40,11 @@
         { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w020", "form": "Prophetárum", "lemma": "propheta", "morph": { "case": "gen", "decl": 1, "gender": "m", "number": "pl", "pos": "noun" }, "post": "," },
         { "id": "w021", "form": "ipso", "lemma": "ipse", "morph": { "case": "abl", "gender": "m", "number": "sg", "pos": "pron" } },
-        { "id": "w022", "form": "summo", "lemma": "summus", "morph": { "case": "abl", "gender": "n", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w022", "form": "summo", "lemma": "summus", "morph": { "case": "abl", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w024" },
         { "id": "w023", "form": "angulári", "lemma": "angularis", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "head": "w024" },
         { "id": "w024", "form": "lápide", "lemma": "lapis", "morph": { "case": "abl", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w025", "form": "Christo", "lemma": "Christus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w026", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 }, "post": ":" },
+        { "id": "w026", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m" }, "post": ":" },
         { "id": "w027", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w028" },
         { "id": "w028", "form": "quo", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
         { "id": "w029", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w030" },
@@ -101,11 +101,11 @@
       "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w022": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w026": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w026": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w027": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
@@ -129,6 +129,11 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w021": {
+
+      }
+    }
   }
 }

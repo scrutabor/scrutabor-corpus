@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xxii-post-pentecosten-postcommunio",
   "title": "Súmpsimus, Dómine, sacri dona mystérii, humíliter deprecántes",
   "category": "proprium",
@@ -9,7 +9,7 @@
   "ids": {
     "next": 38,
     "segments": {
-      "next": 2
+      "next": 3
     }
   },
   "segments": [
@@ -34,8 +34,8 @@
         { "id": "w013", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w014", "form": "fácere", "lemma": "facio", "morph": { "conj": 3, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w015", "form": "præcepísti", "lemma": "praecipio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "perf", "voice": "act", "conj": 3 }, "post": "," },
-        { "id": "w016", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w017" },
-        { "id": "w017", "form": "nostræ", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "gender": "f", "number": "pl" }, "substantive": true },
+        { "id": "w016", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w020" },
+        { "id": "w017", "form": "nostræ", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "gender": "f", "number": "sg" }, "head": "w019" },
         { "id": "w018", "form": "profíciant", "lemma": "proficio", "morph": { "conj": 3, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w019", "form": "infirmitátis", "lemma": "infirmitas", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "sg", "decl": 3 } },
         { "id": "w020", "form": "auxílium", "lemma": "auxilium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 }, "post": ":" },
@@ -54,9 +54,39 @@
         { "id": "w033", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w035" },
         { "id": "w034", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w035" },
         { "id": "w035", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w036", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." },
+        { "id": "w036", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." }
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "sacerdos",
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
         { "id": "w037", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." }
-      ]
+      ],
+      "speaker": "minister",
+      "voice": "clara",
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      },
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     }
   ],
   "editorial": {
@@ -70,7 +100,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w017": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

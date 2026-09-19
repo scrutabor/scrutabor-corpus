@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.sancti-ioachim-confessoris-postcommunio",
   "title": "Quǽsumus, omnípotens Deus: ut per hæc sacraménta",
   "category": "proprium",
@@ -9,7 +9,7 @@
   "ids": {
     "next": 60,
     "segments": {
-      "next": 2
+      "next": 3
     }
   },
   "segments": [
@@ -41,7 +41,7 @@
         { "id": "w020", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "post": ",", "head": "w021" },
         { "id": "w021", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w022", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" } },
-        { "id": "w023", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w023", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w024", "form": "Christi", "lemma": "Christus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w025", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w026" },
         { "id": "w026", "form": "grátiæ", "lemma": "gratia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -50,9 +50,9 @@
         { "id": "w029", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w030", "form": "ætérnæ", "lemma": "aeternus", "morph": { "case": "gen", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w031" },
         { "id": "w031", "form": "glóriæ", "lemma": "gloria", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w032", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w034" },
+        { "id": "w032", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w033" },
         { "id": "w033", "form": "futúro", "lemma": "futurus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "substantive": true },
-        { "id": "w034", "form": "partícipes", "lemma": "particeps", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "pl" } },
+        { "id": "w034", "form": "partícipes", "lemma": "particeps", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl" } },
         { "id": "w035", "form": "esse", "lemma": "sum", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w036", "form": "mereámur", "lemma": "mereor", "morph": { "conj": 2, "mood": "subj", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "dep" }, "post": "." },
         { "id": "w037", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w038" },
@@ -76,9 +76,39 @@
         { "id": "w055", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w057" },
         { "id": "w056", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w057" },
         { "id": "w057", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w058", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." },
+        { "id": "w058", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." }
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "sacerdos",
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
         { "id": "w059", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." }
-      ]
+      ],
+      "speaker": "minister",
+      "voice": "clara",
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      },
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     }
   ],
   "editorial": {
@@ -96,8 +126,10 @@
       "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w034": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w032": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w034": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
     }
   },
   "localization": {

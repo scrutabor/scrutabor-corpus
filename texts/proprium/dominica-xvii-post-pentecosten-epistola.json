@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xvii-post-pentecosten-epistola",
   "title": "Fratres: Obsecro vos ego vinctus in Dómino",
   "category": "proprium",
@@ -23,7 +23,7 @@
         { "id": "w002", "form": "Óbsecro", "lemma": "obsecro", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "pres", "voice": "act", "conj": 1 } },
         { "id": "w003", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w004", "form": "ego", "lemma": "ego", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
-        { "id": "w005", "form": "vinctus", "lemma": "vincio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w004" },
+        { "id": "w005", "form": "vinctus", "lemma": "vincio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 4 }, "head": "w004" },
         { "id": "w006", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007" },
         { "id": "w007", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w008", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
@@ -73,12 +73,12 @@
         { "id": "w052", "form": "Unus", "lemma": "unus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w053" },
         { "id": "w053", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w054", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w055", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w055", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w056", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "post": ",", "substantive": true },
         { "id": "w057", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w058", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w059", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w060" },
-        { "id": "w060", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "substantive": true },
+        { "id": "w060", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true },
         { "id": "w061", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w062", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w063" },
         { "id": "w063", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true },
@@ -105,7 +105,12 @@
       "apparatus": "witnesses/proprium.dominica-xvii-post-pentecosten-epistola/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w055": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w060": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

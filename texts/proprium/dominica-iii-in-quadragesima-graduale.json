@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-iii-in-quadragesima-graduale",
   "title": "Exsúrge, Dómine, non præváleat homo: iudicéntur gentes",
   "category": "proprium",
@@ -30,7 +30,7 @@
         { "id": "w009", "form": "conspéctu", "lemma": "conspectus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w010", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "post": ".", "substantive": true },
         { "id": "w011", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w013" },
-        { "id": "w012", "form": "converténdo", "lemma": "converto", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "fut", "voice": "pass", "mood": "ger", "conj": 3 } },
+        { "id": "w012", "form": "converténdo", "lemma": "converto", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "ger", "conj": 3 } },
         { "id": "w013", "form": "inimícum", "lemma": "inimicus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w014", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w013" },
         { "id": "w015", "form": "retrórsum", "lemma": "retrorsum", "morph": { "pos": "adv" }, "post": "," },
@@ -70,7 +70,10 @@
       "apparatus": "witnesses/proprium.dominica-iii-in-quadragesima-graduale/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-in-sexagesima-epistola",
   "title": "Fratres: Libénter suffértis insipiéntes: cum sitis ipsi",
   "category": "proprium",
@@ -206,10 +206,10 @@
         { "id": "w185", "form": "gloriábor", "lemma": "glorior", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "dep" }, "post": "." },
         { "id": "w186", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w187", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w188", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w188", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w189", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w190", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" } },
-        { "id": "w191", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w191", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w192", "form": "Christi", "lemma": "Christus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w193", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w194", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -249,9 +249,9 @@
         { "id": "w228", "form": "gloriári", "lemma": "glorior", "morph": { "conj": 1, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "dep" } },
         { "id": "w229", "form": "opórtet", "lemma": "oporteo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w230", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w231", "form": "éxpedit", "lemma": "expedio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w231", "form": "éxpedit", "lemma": "expedio", "morph": { "conj": 4, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w232", "form": "quidem", "lemma": "quidem", "morph": { "pos": "adv" }, "post": "," },
-        { "id": "w233", "form": "véniam", "lemma": "venia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w233", "form": "véniam", "lemma": "venio", "morph": { "pos": "verb", "conj": 4, "mood": "ind", "tense": "fut", "person": 1, "number": "sg", "voice": "act" } },
         { "id": "w234", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w235", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w236" },
         { "id": "w236", "form": "visiónes", "lemma": "visio", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "pl", "decl": 3 } },
@@ -413,13 +413,17 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w061": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w089": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w089": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w090": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w098": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w098": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w190": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w205": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w246": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w346": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w346": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w188": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w231": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w233": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w191": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
     }
   },
   "localization": {

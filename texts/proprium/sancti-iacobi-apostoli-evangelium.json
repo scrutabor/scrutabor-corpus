@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.sancti-iacobi-apostoli-evangelium",
   "title": "In illo témpore: Accessit ad Iesum mater",
   "category": "proprium",
@@ -49,7 +49,7 @@
         { "id": "w028", "form": "sédeant", "lemma": "sedeo", "morph": { "conj": 2, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w029", "form": "hi", "lemma": "hic", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "pron" } },
         { "id": "w030", "form": "duo", "lemma": "duo", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "head": "w029" },
-        { "id": "w031", "form": "fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w031", "form": "fílii", "lemma": "filius", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 } },
         { "id": "w032", "form": "mei", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "post": ",", "head": "w029" },
         { "id": "w033", "form": "unus", "lemma": "unus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
         { "id": "w034", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w035" },
@@ -120,9 +120,9 @@
     "words": {
       "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w031": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w070": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w070": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w031": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

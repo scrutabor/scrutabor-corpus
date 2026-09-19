@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xvii-post-pentecosten-evangelium",
   "title": "In illo témpore: Accessérunt ad Iesum pharisǽi",
   "category": "proprium",
@@ -76,8 +76,8 @@
         { "id": "w055", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w056", "form": "huic", "lemma": "hic", "morph": { "pos": "pron", "case": "dat", "number": "sg" }, "post": ":" },
         { "id": "w057", "form": "Díliges", "lemma": "diligo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" } },
-        { "id": "w058", "form": "próximum", "lemma": "proximus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w061" },
-        { "id": "w059", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w061" },
+        { "id": "w058", "form": "próximum", "lemma": "proximus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "substantive": true },
+        { "id": "w059", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w058" },
         { "id": "w060", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
         { "id": "w061", "form": "teípsum", "lemma": "teipse", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "." },
         { "id": "w062", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w063" },
@@ -175,9 +175,10 @@
     "words": {
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w058": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w058": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w061": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w073": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w073": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w059": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

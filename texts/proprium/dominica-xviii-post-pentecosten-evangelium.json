@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xviii-post-pentecosten-evangelium",
   "title": "In illo témpore: Ascéndens Iesus in navículam",
   "category": "proprium",
@@ -100,7 +100,7 @@
         { "id": "w079", "form": "potestátem", "lemma": "potestas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w080", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w081" },
         { "id": "w081", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w082", "form": "dimitténdi", "lemma": "dimitto", "morph": { "pos": "verb", "case": "gen", "gender": "n", "number": "sg", "tense": "fut", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w082", "form": "dimitténdi", "lemma": "dimitto", "morph": { "pos": "verb", "case": "gen", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "ger", "conj": 3 } },
         { "id": "w083", "form": "peccáta", "lemma": "peccatum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 2 }, "post": "," },
         { "id": "w084", "form": "tunc", "lemma": "tunc", "morph": { "pos": "adv" } },
         { "id": "w085", "form": "ait", "lemma": "aio", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -148,7 +148,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w099": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w099": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w082": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

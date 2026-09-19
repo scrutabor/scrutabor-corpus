@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any
 
 from checks.layout import formatted
+from checks.orations import structure, sung_delivery
 from checks.participation import CANTU_III_PROPER, proper_genus
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -37,6 +38,9 @@ PALM_PASSION_DELIVERY = {
 
 def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
     """Return the form-specific override required by this segment."""
+    _, orations = structure(doc)
+    if seg.get("id") in orations:
+        return sung_delivery(orations[seg["id"]])
     if doc.get("id") == PALM_PASSION and seg.get("id") in PALM_PASSION_DELIVERY:
         return {
             "cantu": {

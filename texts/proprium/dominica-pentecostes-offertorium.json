@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-pentecostes-offertorium",
   "title": "Confírma hoc, Deus, quod operátus es in",
   "category": "proprium",
@@ -32,9 +32,9 @@
         { "id": "w011", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "post": ",", "substantive": true },
         { "id": "w012", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
         { "id": "w013", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w016" },
-        { "id": "w015", "form": "Ierúsalem", "lemma": "Ierusalem", "morph": { "gender": "f", "pos": "noun" }, "post": "," },
-        { "id": "w016", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w015" },
+        { "id": "w015", "form": "Ierúsalem", "lemma": "Ierusalem", "morph": { "gender": "f", "pos": "noun", "case": "abl", "number": "sg" }, "post": "," },
+        { "id": "w016", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
         { "id": "w017", "form": "ófferent", "lemma": "offero", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w018", "form": "reges", "lemma": "rex", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 3 } },
         { "id": "w019", "form": "múnera", "lemma": "munus", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" }, "post": "," },
@@ -71,8 +71,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w016": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.0.0",
+  "formulary_schema": "1.1.0",
   "id": "vigilia-nativitatis",
   "order": 4,
   "collection": "temporale",
@@ -65,8 +65,20 @@
     {
       "key": "praefatio",
       "role": "praefatio",
+      "text": "ordinarium.praefatio-communis",
+      "relation": "shared",
+      "condition": {
+        "weekday": "not-sunday"
+      }
+    },
+    {
+      "key": "praefatio-sunday",
+      "role": "praefatio",
       "text": "ordinarium.praefatio-sanctissimae-trinitatis",
-      "relation": "shared"
+      "relation": "shared",
+      "condition": {
+        "weekday": "sunday"
+      }
     },
     {
       "key": "communio",

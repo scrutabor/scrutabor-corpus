@@ -1,4 +1,4 @@
-# Corpus schema v0 (0.19.0)
+# Corpus schema v0 (0.20.0)
 
 Three semantic layers: language-neutral Latin, per-language gloss/editorial
 content, and a corpus-wide lexicon. Since 0.16.0 each Latin text is a neutral
@@ -81,7 +81,7 @@ the single variant opened for a calendar occurrence. The unique integer
 `order` is the canonical display and campaign order; consumers never recreate
 that sequence from filenames or a private table.
 
-The ordered `components` array names each unique liturgical `key` and `role`,
+The ordered `components` array names each unique component `key` and liturgical `role`,
 the stable dotted text id, and its relationship to this assembly:
 
 - `proper` is a text authored for this formulary;
@@ -93,11 +93,34 @@ text must be reached by at least one assembly, every target must exist, and
 component order follows the order of Mass. A multi-Mass observance gives every
 member a distinct `variant` and exactly one calendar default.
 
-A component may carry `condition: {"weekday": "sunday"}` when the Missal
-prints it only for a Sunday occurrence of that formulary. Consumers with a
-civil date omit the component on every other weekday; a manual formulary view
-without a civil date retains it so that the complete formulary remains
-available for study.
+Formulary schema `1.1.0` permits only these component conditions:
+
+- `{"weekday": "sunday"}` or `{"weekday": "not-sunday"}` for the printed
+  weekday distinction, such as the Christmas Vigil's preface (MR1962 p. 16);
+- `{"season": "paschale"}` or `{"season": "not-paschale"}` for a printed
+  Paschal alternative, such as the Annunciation chants (MR1962 p. 496);
+- `{"use": "votive-after-septuagesima"}` for source alternatives expressly
+  limited to votive Masses after Septuagesima and before Easter. These remain
+  study material and are never selected by the calendar-only Ordo. This does
+  not declare a complete votive formulary or permission to celebrate it.
+
+No combined predicates, additional fields, arbitrary season lists, or implicit
+defaults are allowed. The **actual calendar occurrence's** season governs the
+Paschal branch, not the catalogue grouping or civil month. Missing or unknown
+date/season context must not select either seasonal branch. An explicitly
+undated study view retains and labels alternatives without presenting them as
+one consecutive Mass. Repeated roles require exactly one of the complementary
+weekday or season pairs and distinct stable keys.
+
+Where the source changes words within a chant, publish separately reviewed
+complete text recensions rather than hide words or manufacture acclamations in
+the reader. A proper component may declare `recension: "paschale"` or
+`recension: "non-paschale"`, with the matching season condition. The equivalent
+Latin labels `tempore-paschali` and `extra-tempus-paschale` also bind to those
+same two conditions. Its text id is
+`proprium.<text_prefix>-<recension>-<role>`. The base recension retains its
+original text id. Every recension has its own stable words, complete Latin and
+target-language layers, source evidence, and translation provenance.
 
 Each language package mirrors the neutral path with a small document carrying
 the same formulary id, language id and localized title. The reader edition
@@ -321,11 +344,28 @@ localization, editorial
   participle carries either `head`, the id of the word it must agree with, or
   `substantive: true`, meaning it agrees with nothing expressed — it heads its
   own phrase (*Salus infirmórum*, the health of the sick) or is impersonal
-  (*postquam cenátum est*). Every preposition carries a `head` naming the word
+  (*postquam cenátum est*). A nominative adjective with an unexpressed subject/copula instead
+  declares `ellipsis: "predicate"` and requires a localized contextual
+  explanation. This explicitly reviewed elliptical predicate has neither a
+  `head` nor `substantive`: it must not be attached to an unrelated finite verb
+  merely to fill a field. The marker does not claim an expressed Latin subject.
+  A nominative participle whose subject is understood, with no suitable expressed
+  nominal controller or finite personal verb carrying that subject, may instead
+  declare `ellipsis: "subject"`. This requires explicit case, number, gender,
+  tense and voice plus a localized contextual explanation. It is neither
+  substantivization nor a claim that a nearby impersonal verb has an omitted
+  grammatical subject. It does not identify the theological referent by itself.
+  It cannot also carry `head` or `substantive: true`. Apply it only after reading
+  the complete construction; prefer a real agreement head when one is expressed.
+  The validator constrains this claim's shape, not its contextual truth.
+  Every preposition carries a `head` naming the word
   it governs. `checks/syntax.py` then verifies on every build that a modifier
   matches its head in case, number and gender, that a preposition's object
   stands in a case that preposition governs, and that a predicate complement or
   a nominative relative matches its verb in number.
+  The lexicalized expressions *de/a/ab longe*, *ad invicem* and *ex tunc* attach
+  to their adverbial complements and omit `governs`; they must not point to
+  an unrelated declined word later in the sentence.
   Three rules keep the claim honest. A head may stand in ANOTHER SEGMENT: a
   segment is a unit of layout, not of syntax, and the Canon's sentences run
   across four and five of them. A PERSONAL PRONOUN lends no gender — the corpus
@@ -473,13 +513,13 @@ localization, editorial
   `gender` (m|f|n), nouns also `decl` (1–5, omitted for Greek/irregular
   declensions such as Iesus); adjs: `degree` (comp|sup) when not positive;
   verbs: `person`, `number`, `tense` (pres|impf|fut|perf|plup|futperf),
-  `mood` (ind|subj|imp|inf|part), `voice` (act|pass|dep), `conj` (1–4,
+  `mood` (ind|subj|imp|inf|part|ger), `voice` (act|pass|dep), `conj` (1–4,
   omitted for irregulars such as sum, fio); preps: `governs` (acc|abl);
   intj covers indeclinables like Amen. **Participles** (since 0.8.0) are
   verb tokens with `mood: "part"`: no `person`, and they add the nominal
   agreement fields `case`/`number`/`gender` to `tense` (pres|perf|fut)
   and `voice` (deponent participles keep `voice: "dep"`, present as well as perfect).
-  Extend enums as texts require (gerundives are not yet covered).
+  Gerundives and gerunds follow the distinct rules below.
   Classification rulings: *sicut* is tagged `conj`
   (comparative conjunction) although several dictionaries head it as an
   adverb — analyzer disagreement at integration is expected there, not a
@@ -508,8 +548,24 @@ analyzers describe it the same way. That it carries obligation ("to be
 offered", "which must be offered") is a matter of sense and belongs in the
 word's note, not in the morphology.
 
-The gerund — the verbal noun, active in sense and without agreement — is
-NOT this. When one is tokenized, it wants its own ruling.
+### The gerund
+
+The gerund is a verbal noun, not an agreeing gerundive. It is represented as
+`pos: verb`, `mood: ger`, `voice: act`, `number: sg`, `gender: n`, with
+`case: gen|dat|acc|abl` and the verb's `conj` where applicable. `tense: pres`
+identifies its present-stem formation in the stored morphology; it does not
+assert that the action takes place in the present. There is no `person`,
+agreement `head`, or `substantive` modifier flag. The reader names the verbal
+noun and its case rather than displaying it as a finite present-tense verb.
+
+Deponent verbs also have active gerunds (Bennett §112a); their gerundives
+remain passive (§112b). Thus `moriéndo` is an active ablative gerund, while
+`ad imitándum ... exémplum` has a passive gerundive agreeing with exémplum.
+A masculine actor does not make a gerund masculine. Context determines
+gerund versus gerundive: `ad liberándum ... hóminem` can carry agreement,
+whereas `ad protegéndum nos` has a verbal noun governing its plural object.
+Do not rewrite biblical or later Latin to impose classical word order or
+a different construction.
 
 ### `sung`
 
@@ -525,8 +581,9 @@ texts a reader will meet as music.
 ### Apparatus classes
 
 Every entry in a text's `apparatus.json` carries a `class`, and the class
-decides where the collation will accept it. Two of them settle differences
-in the LETTERS, and both need a ruling that quotes both readings:
+decides where the collation will accept it. Three classes settle one-to-one
+differences in the LETTERS; each needs a nonempty ruling that quotes both
+actual readings exactly, including their punctuation:
 
 - **`orthography`** — a different real spelling of the same word:
   neglegentia against negligentia, genetrix against genitrix, and the
@@ -540,10 +597,77 @@ in the LETTERS, and both need a ruling that quotes both readings:
   about spelling — so it is counted apart, as `inflections=N`, and the
   token is normally marked `review: disputed` as well, to reach the list
   an expert reads.
+- **`substantive`** — a different lexical or grammatical reading, such as
+  *inspexerunt* against *conspexerunt*, or *resurgemus* against *resurgamus*.
+  The ruling explains the choice without misclassifying it as spelling or
+  asserting a printer's slip. The selected reading must be positively
+  attested at the aligned locus by another full witness, before corrigenda
+  or apparatus substitutions. Reported separately as `substantive_variants=N`.
+  This class cannot excuse a length mismatch or an accidental-only difference.
+- **`substantive-span`** — a complete alternate phrase, including a genuine
+  different-recension reading with a different number of words. `at` and
+  `through` name the inclusive first and last stable word IDs **in document
+  order**, not numerical ID order. `ours` is the exact space-joined sequence
+  of their `form` + `post` values; each `witnesses` value quotes that witness's
+  entire actual phrase, including punctuation. A nonempty `ruling` explains
+  the selection. For example:
+
+  ```json
+  {
+    "at": "w060",
+    "through": "w018",
+    "ours": "ánimas famulórum famularúmque tuárum, quæ",
+    "witnesses": {
+      "do": "nostræ congregatiónis fratres, propínquos et benefactóres, qui"
+    },
+    "class": "substantive-span",
+    "ruling": "Retain the complete reading of the controlling printed witness."
+  }
+  ```
+
+  Here the document places the newly allocated IDs `w060`–`w063` before the
+  retained `w018`. This example is a schema illustration, not source evidence.
+  The checker consumes exactly the quoted alternate phrase at that locus;
+  it does not search forward for a convenient matching substring. Every
+  outside word still undergoes the ordinary substantive and accidental
+  checks. Only a comparison buffer changes; source transcription bytes do
+  not. The quote is exact even for a `substantive-only` witness.
+
+  Another **single full raw witness** must attest all selected words at the
+  same ordinal positions, before corrections or apparatus replacements.
+  Its raw word count must equal the edition's, and it cannot declare an
+  omission, a length-changing span, or a header recension removal. This is
+  deliberately conservative: support requiring earlier length-changing
+  alignment is not inferred. Accents, case, punctuation and ligatures use
+  the ordinary substantive normalization for positive support; the support
+  witness's own accidental differences remain subject to its usual checks.
+  Partial witnesses, a union of separate witnesses' word readings, and
+  circular replacements cannot supply positive support.
+
+  Spans must not overlap each other, even across different witnesses. Put
+  multiple alternate readings of one range in its `witnesses` map. A span
+  also cannot overlap a single-word ruling for the same witness. Identical
+  readings and accidental-only differences are rejected; so are missing or
+  reversed endpoints, inaccurate quotes, and unused rulings. Quotes use
+  single spaces, begin and end with lexical tokens, and cannot split one
+  whitespace-delimited token into several words. Free-standing punctuation
+  inside the quote is checked exactly. Separate word omissions can coexist
+  outside a span; header recension removals in the same alternate witness
+  cannot currently be combined with span alignment. Partial alternate
+  witnesses may quote spans wholly within their declared coverage, but
+  never replace either of the two required full witnesses.
+
+  Counted once per alternate witness, not once per replaced word, within
+  `substantive_variants=N`; the returned `substantive_spans` statistic gives
+  that subset separately. These counts do not certify source transcription
+  accuracy or editorial justification: those still require source review.
 - **`omission`** — a full witness lacks a word printed by this edition and
   another full witness. Its witness reading is the empty string. The ruling
-  identifies the positive evidence for retaining the word. Reported as
-  `omissions=N`. An omission cannot be inferred from a partial witness.
+  must be nonempty and quote the exact selected token. Positive support must
+  occur at the same locus in an uncorrected full witness, not be fabricated
+  by another apparatus entry. Other differences still require their own
+  exact rulings after omission alignment. Reported as `omissions=N`.
+  An omission cannot be inferred from a partial witness.
 
 The remaining classes settle ACCIDENTALS — punctuation, capitalization,
 and accents — and are compared only against a witness that has not
@@ -645,6 +769,11 @@ entries{ <lemma>: { head, pos, gender?, gender_pl?, decl?, conj?, analysis? } }
   genuinely carries both (dies: `gender: "m"`, `gender_alt: "f"` for
   appointed days — tértia die). A token may use either; the consistency
   check accepts both and nothing else.
+- `decl_alt`: a second, distinct attested declension for a mixed-paradigm
+  noun with a primary `decl` (ficus: `decl: 2`, `decl_alt: 4`). Each token
+  records the paradigm of its actual form, not a list of alternatives.
+  Both values must be integers from 1 through 5. This records a lexical
+  fact; it does not establish a token's case, number or contextual reading.
 
 `languages/<lang>/lexicon.json` (one per published language):
 

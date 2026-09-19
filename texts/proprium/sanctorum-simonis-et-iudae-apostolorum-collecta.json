@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.sanctorum-simonis-et-iudae-apostolorum-collecta",
   "title": "Deus, qui nos per beátos Apóstolos tuos",
   "category": "proprium",
@@ -9,7 +9,7 @@
   "ids": {
     "next": 50,
     "segments": {
-      "next": 2
+      "next": 3
     }
   },
   "segments": [
@@ -41,10 +41,10 @@
         { "id": "w020", "form": "glóriam", "lemma": "gloria", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w021", "form": "sempitérnam", "lemma": "sempiternus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w020" },
         { "id": "w022", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w023", "form": "proficiéndo", "lemma": "proficio", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "fut", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w023", "form": "proficiéndo", "lemma": "proficio", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "ger", "conj": 3 } },
         { "id": "w024", "form": "celebráre", "lemma": "celebro", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 1 }, "post": "," },
         { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w026", "form": "celebrándo", "lemma": "celebro", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "fut", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w026", "form": "celebrándo", "lemma": "celebro", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "ger", "conj": 1 } },
         { "id": "w027", "form": "profícere", "lemma": "proficio", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 3 }, "post": "." },
         { "id": "w028", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w029" },
         { "id": "w029", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -66,9 +66,39 @@
         { "id": "w045", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w047" },
         { "id": "w046", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w047" },
         { "id": "w047", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w048", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." },
+        { "id": "w048", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." }
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "sacerdos",
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
         { "id": "w049", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." }
-      ]
+      ],
+      "speaker": "minister",
+      "voice": "clara",
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      },
+      "participation": {
+        "lecta": {
+          "gradus": 1,
+          "source": "DMS 31 a"
+        },
+        "cantu": {
+          "gradus": 1,
+          "source": "DMS 25 a"
+        }
+      }
     }
   ],
   "editorial": {
@@ -82,7 +112,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w026": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

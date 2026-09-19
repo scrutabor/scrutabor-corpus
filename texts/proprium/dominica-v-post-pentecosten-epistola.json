@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-v-post-pentecosten-epistola",
   "title": "Caríssimi: Omnes unánimes in oratióne estóte, compatiéntes",
   "category": "proprium",
@@ -20,7 +20,7 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Caríssimi", "lemma": "carus", "morph": { "pos": "adj", "case": "voc", "degree": "sup", "gender": "m", "number": "pl" }, "post": ":", "substantive": true },
-        { "id": "w002", "form": "Omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "substantive": true },
+        { "id": "w002", "form": "Omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
         { "id": "w003", "form": "unánimes", "lemma": "unanimis", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
         { "id": "w004", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
         { "id": "w005", "form": "oratióne", "lemma": "oratio", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -41,9 +41,9 @@
         { "id": "w020", "form": "pro", "lemma": "pro", "morph": { "governs": "abl", "pos": "prep" }, "head": "w021" },
         { "id": "w021", "form": "maledícto", "lemma": "maledictum", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w022", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
-        { "id": "w023", "form": "e", "lemma": "e", "morph": { "pos": "prep", "governs": "abl" }, "head": "w025" },
+        { "id": "w023", "form": "e", "lemma": "e", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024" },
         { "id": "w024", "form": "contrário", "lemma": "contrarius", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "substantive": true },
-        { "id": "w025", "form": "benedicéntes", "lemma": "benedico", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "post": ":", "substantive": true },
+        { "id": "w025", "form": "benedicéntes", "lemma": "benedico", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "post": ":", "substantive": true },
         { "id": "w026", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
         { "id": "w027", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w028" },
         { "id": "w028", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
@@ -149,8 +149,10 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w025": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

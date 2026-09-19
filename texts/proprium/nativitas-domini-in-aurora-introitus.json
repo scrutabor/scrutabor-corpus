@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.nativitas-domini-in-aurora-introitus",
   "title": "Lux fulgébit hódie super nos: quia natus",
   "category": "proprium",
@@ -33,9 +33,9 @@
         { "id": "w012", "form": "vocábitur", "lemma": "voco", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" } },
         { "id": "w013", "form": "Admirábilis", "lemma": "admirabilis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "post": ",", "head": "w014" },
         { "id": "w014", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
-        { "id": "w015", "form": "Princeps", "lemma": "princeps", "morph": { "case": "voc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w015", "form": "Princeps", "lemma": "princeps", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w016", "form": "pacis", "lemma": "pax", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
-        { "id": "w017", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w017", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w018", "form": "futúri", "lemma": "futurus", "morph": { "case": "gen", "gender": "n", "number": "sg", "pos": "adj" }, "head": "w019" },
         { "id": "w019", "form": "sǽculi", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w020", "form": "cuius", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
@@ -89,9 +89,9 @@
         { "id": "w068", "form": "vocábitur", "lemma": "voco", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" } },
         { "id": "w069", "form": "Admirábilis", "lemma": "admirabilis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "post": ",", "head": "w070" },
         { "id": "w070", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
-        { "id": "w071", "form": "Princeps", "lemma": "princeps", "morph": { "case": "voc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w071", "form": "Princeps", "lemma": "princeps", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w072", "form": "pacis", "lemma": "pax", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
-        { "id": "w073", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w073", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w074", "form": "futúri", "lemma": "futurus", "morph": { "case": "gen", "gender": "n", "number": "sg", "pos": "adj" }, "head": "w075" },
         { "id": "w075", "form": "sǽculi", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w076", "form": "cuius", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
@@ -131,7 +131,11 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w036": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w036": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w071": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w073": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

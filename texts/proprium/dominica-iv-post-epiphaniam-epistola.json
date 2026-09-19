@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-iv-post-epiphaniam-epistola",
   "title": "Fratres: Némini quidquam debeátis, nisi ut ínvicem",
   "category": "proprium",
@@ -39,7 +39,7 @@
         { "id": "w018", "form": "Non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w019", "form": "occídes", "lemma": "occido", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" }, "post": "," },
         { "id": "w020", "form": "Non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w021", "form": "furáberis", "lemma": "furor", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "fut", "voice": "act", "conj": 1 }, "post": "," },
+        { "id": "w021", "form": "furáberis", "lemma": "furor", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "fut", "voice": "dep", "conj": 1 }, "post": "," },
         { "id": "w022", "form": "Non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w023", "form": "falsum", "lemma": "falsus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w024" },
         { "id": "w024", "form": "testimónium", "lemma": "testimonium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
@@ -57,8 +57,8 @@
         { "id": "w036", "form": "verbo", "lemma": "verbum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w037", "form": "instaurátur", "lemma": "instauro", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" }, "post": ":" },
         { "id": "w038", "form": "Díliges", "lemma": "diligo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" } },
-        { "id": "w039", "form": "próximum", "lemma": "proximus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w042" },
-        { "id": "w040", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w042" },
+        { "id": "w039", "form": "próximum", "lemma": "proximus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w040", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w039" },
         { "id": "w041", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
         { "id": "w042", "form": "teípsum", "lemma": "teipse", "morph": { "case": "acc", "number": "sg", "pos": "pron" }, "post": "." },
         { "id": "w043", "form": "Diléctio", "lemma": "dilectio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
@@ -85,14 +85,15 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w012": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w021": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w032": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w039": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w039": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w042": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w043": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w044": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w052": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w044": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w052": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

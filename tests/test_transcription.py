@@ -92,3 +92,31 @@ def test_a_witness_transcribed_from_page_images_is_out_of_scope(tmp_path, monkey
     )
     monkeypatch.setattr("checks.attribute.CORPUS", tmp_path)
     assert check_transcriptions(witness_dir) == ([], 0)
+
+
+def test_declared_paschal_alleluia_is_checked_against_actual_optional_words(tmp_path, monkeypatch):
+    witness_dir = make_witness(
+        tmp_path, "Ave, María. Allelúja, allelúja.", "Ave, María. (Allelúja, allelúja.) (rubric)"
+    )
+    witness = witness_dir / "do.txt"
+    witness.write_text("# seasonal-alleluia: include\n" + witness.read_text(), encoding="utf-8")
+    monkeypatch.setattr("checks.attribute.CORPUS", tmp_path)
+    assert check_transcriptions(witness_dir) == ([], 1)
+    witness.write_text(
+        witness.read_text().replace("Allelúja, allelúja.", "Allelúia, allelúia."), encoding="utf-8"
+    )
+    assert check_transcriptions(witness_dir)[0]  # never normalize source j to i
+
+
+def test_optional_alleluia_is_not_included_without_explicit_declaration(tmp_path, monkeypatch):
+    witness_dir = make_witness(tmp_path, "Ave, María. Allelúja.", "Ave, María. (Allelúja.)")
+    monkeypatch.setattr("checks.attribute.CORPUS", tmp_path)
+    assert check_transcriptions(witness_dir)[0]
+
+
+def test_malformed_seasonal_projection_is_rejected(tmp_path, monkeypatch):
+    witness_dir = make_witness(tmp_path, "Joannis Baptistæ.")
+    witness = witness_dir / "do.txt"
+    witness.write_text("# seasonal-alleluia: guess\n" + witness.read_text(), encoding="utf-8")
+    monkeypatch.setattr("checks.attribute.CORPUS", tmp_path)
+    assert "seasonal-alleluia" in check_transcriptions(witness_dir)[0][0]

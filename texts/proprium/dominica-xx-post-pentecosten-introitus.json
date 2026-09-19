@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-xx-post-pentecosten-introitus",
   "title": "Omnia, quæ fecísti nobis, Dómine, in vero",
   "category": "proprium",
@@ -33,7 +33,7 @@
         { "id": "w012", "form": "tibi", "lemma": "tu", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
         { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w014", "form": "mandátis", "lemma": "mandatum", "morph": { "case": "dat", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w015", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w015", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "n" }, "head": "w014" },
         { "id": "w016", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w017", "form": "obœdívimus", "lemma": "oboedio", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 1, "tense": "perf", "voice": "act", "conj": 4 }, "post": ":" },
         { "id": "w018", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
@@ -91,7 +91,7 @@
         { "id": "w070", "form": "tibi", "lemma": "tu", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
         { "id": "w071", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w072", "form": "mandátis", "lemma": "mandatum", "morph": { "case": "dat", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w073", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w073", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "n" }, "head": "w072" },
         { "id": "w074", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w075", "form": "obœdívimus", "lemma": "oboedio", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 1, "tense": "perf", "voice": "act", "conj": 4 }, "post": ":" },
         { "id": "w076", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
@@ -141,7 +141,9 @@
       "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w075": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w083": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w083": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w073": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

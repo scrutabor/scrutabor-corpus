@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-offertorium",
   "title": "Dómine Iesu Christe, Rex glóriæ, líbera ánimas",
   "category": "proprium",
@@ -20,7 +20,7 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w002", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w002", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m" } },
         { "id": "w003", "form": "Christe", "lemma": "Christus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w004", "form": "Rex", "lemma": "rex", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
         { "id": "w005", "form": "glóriæ", "lemma": "gloria", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
@@ -58,7 +58,7 @@
         { "id": "w037", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w038" },
         { "id": "w038", "form": "lucem", "lemma": "lux", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w039", "form": "sanctam", "lemma": "sanctus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ":", "substantive": true },
-        { "id": "w040", "form": "Quam", "lemma": "quam", "morph": { "pos": "conj" } },
+        { "id": "w040", "form": "Quam", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
         { "id": "w041", "form": "olim", "lemma": "olim", "morph": { "pos": "adv" } },
         { "id": "w042", "form": "Ábrahæ", "lemma": "Abraham", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w043", "form": "promisísti", "lemma": "promitto", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "perf", "voice": "act", "conj": 3 } },
@@ -89,7 +89,7 @@
         { "id": "w068", "form": "transíre", "lemma": "transeo", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w069", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w070" },
         { "id": "w070", "form": "vitam", "lemma": "vita", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." },
-        { "id": "w071", "form": "Quam", "lemma": "quam", "morph": { "pos": "conj" } },
+        { "id": "w071", "form": "Quam", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "f" } },
         { "id": "w072", "form": "olim", "lemma": "olim", "morph": { "pos": "adv" } },
         { "id": "w073", "form": "Ábrahæ", "lemma": "Abraham", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w074", "form": "promisísti", "lemma": "promitto", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "perf", "voice": "act", "conj": 3 } },
@@ -132,7 +132,10 @@
       "w034": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w057": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w073": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w073": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w071": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
     }
   },
   "localization": {

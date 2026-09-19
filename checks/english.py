@@ -6,11 +6,16 @@ rather than to the Latin case — *believe IN one God* renders an accusative,
 *have mercy ON us* a dative, and neither is a mistake. So this module asserts
 only what is decidable without English morphology, and says nothing else.
 
-Two things are decidable:
+Two repeated-preposition patterns are checked:
 
 - **A preposition rendered twice.** When *de* is glossed *from* and its own
   object *cælis* is glossed *of heaven*, the gloss line reads *Father from of
   heaven*. Exact, because the Latin `head` says which word is the object.
+- **Usque and its following connective rendered redundantly.** Separate
+  glosses such as *until unto* or *as far to* do not express the Latin phrase
+  in English. Only the specific malformed junctions below are rejected;
+  this is not a general English grammar or translation validator.
+
 The Latin case of a two-case preposition is still useful as an editorial
 diagnostic, but it is not an English correctness gate.  Natural English often
 selects a preposition from the governing verb or idiom rather than mechanically
@@ -20,6 +25,9 @@ copying Latin spatial case (*wait for*, *rejoice in*, *upon the Cross*).
 from __future__ import annotations
 
 import re
+from itertools import pairwise
+
+from checks.syntax import check_conclusion_gloss
 
 LEADING_PREPOSITION = re.compile(
     r"^\s*(of|to|unto|for|with|by|in|from|at|on|into|through|upon)\b", re.IGNORECASE
@@ -109,10 +117,52 @@ def check_two_case_prepositions(doc: dict, gloss: dict) -> list[str]:
     return errors
 
 
+def check_usque_junctions(doc: dict, gloss: dict) -> list[str]:
+    """Reject known redundant direct glosses of an adjacent usque phrase.
+
+    Shared alignments have no separate word glosses and are validated by the
+    interlinear checker. Keep grammatical splits such as ``up`` + ``to`` and
+    ``as far`` + ``as``. Never compare across segment boundaries or infer an
+    error from the Latin preposition alone.
+    """
+    errors: list[str] = []
+    glosses = gloss.get("words", {})
+    for segment in doc.get("segments", []):
+        words = segment.get("words") or []
+        for first, second in pairwise(words):
+            if first.get("lemma") != "usque" or second.get("lemma") not in {"ad", "in", "dum"}:
+                continue
+            left = str((glosses.get(first["id"]) or {}).get("gloss") or "").strip()
+            right = str((glosses.get(second["id"]) or {}).get("gloss") or "").strip()
+            duplicate = re.search(r"\b(?:until|unto|to)$", left, re.IGNORECASE) and re.match(
+                r"(?:to|unto|until|for)\b", right, re.IGNORECASE
+            )
+            incomplete_extent = left.lower() == "as far" and re.match(
+                r"(?:to|unto)\b", right, re.IGNORECASE
+            )
+            duplicate_conjunction = (
+                second["lemma"] == "dum"
+                and re.search(r"\buntil$", left, re.IGNORECASE)
+                and right.lower() == "when"
+            )
+            if duplicate or incomplete_extent or duplicate_conjunction:
+                errors.append(
+                    f"{doc['id']}:{first['id']}–{second['id']} "
+                    f"({first['form']} {second['form']}): separate glosses "
+                    f"{left!r} + {right!r} repeat or misjoin the English connective — "
+                    "use a coherent split or a shared interlinear alignment"
+                )
+    return errors
+
+
 def check(doc: dict, gloss: dict) -> list[str]:
     if gloss.get("lang") != "en":
         return []
-    return check_doubled_preposition(doc, gloss)
+    return (
+        check_doubled_preposition(doc, gloss)
+        + check_usque_junctions(doc, gloss)
+        + check_conclusion_gloss(doc, gloss)
+    )
 
 
 # A Latin plural the edition renders with an English singular, declared site by

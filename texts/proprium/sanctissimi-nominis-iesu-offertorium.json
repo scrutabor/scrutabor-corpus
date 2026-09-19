@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.sanctissimi-nominis-iesu-offertorium",
   "title": "Confitébor tibi, Dómine, Deus meus, in toto",
   "category": "proprium",
@@ -32,14 +32,14 @@
         { "id": "w011", "form": "glorificábo", "lemma": "glorifico", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w012", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
         { "id": "w013", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "substantive": true },
-        { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w017" },
+        { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015" },
         { "id": "w015", "form": "ætérnum", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "post": ":", "substantive": true },
         { "id": "w016", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
-        { "id": "w017", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "," },
+        { "id": "w017", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "post": "," },
         { "id": "w018", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w019", "form": "suávis", "lemma": "suavis", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
         { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w021", "form": "mitis", "lemma": "mitis", "morph": { "case": "voc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w018" },
+        { "id": "w021", "form": "mitis", "lemma": "mitis", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w017" },
         { "id": "w022", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":" },
         { "id": "w023", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w024", "form": "multæ", "lemma": "multus", "morph": { "case": "gen", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w025" },
@@ -80,7 +80,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w017": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

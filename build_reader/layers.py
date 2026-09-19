@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import copy
 
-SCHEMA = "0.19.0"
+SCHEMA = "0.20.0"
 
 
 def expand_core(core: dict) -> dict:

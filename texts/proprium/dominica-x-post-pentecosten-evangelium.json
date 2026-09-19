@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "id": "proprium.dominica-x-post-pentecosten-evangelium",
   "title": "In illo témpore: Dixit Iesus ad quosdam",
   "category": "proprium",
@@ -83,7 +83,7 @@
         { "id": "w062", "form": "possídeo", "lemma": "possideo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "pres", "voice": "act", "conj": 2 }, "post": "." },
         { "id": "w063", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w064", "form": "publicánus", "lemma": "publicanus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
-        { "id": "w065", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w082" },
+        { "id": "w065", "form": "a", "lemma": "a", "morph": { "pos": "prep" }, "head": "w066" },
         { "id": "w066", "form": "longe", "lemma": "longe", "morph": { "pos": "adv" } },
         { "id": "w067", "form": "stans", "lemma": "sto", "morph": { "case": "acc", "conj": 1, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
         { "id": "w068", "form": "nolébat", "lemma": "nolo", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
@@ -100,7 +100,7 @@
         { "id": "w079", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w080", "form": "propítius", "lemma": "propitius", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w079" },
         { "id": "w081", "form": "esto", "lemma": "sum", "morph": { "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" } },
-        { "id": "w082", "form": "mihi", "lemma": "ego", "morph": { "case": "abl", "number": "sg", "pos": "pron" } },
+        { "id": "w082", "form": "mihi", "lemma": "ego", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
         { "id": "w083", "form": "peccatóri", "lemma": "peccator", "morph": { "case": "dat", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
         { "id": "w084", "form": "Dico", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w085", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "post": ":" },
@@ -113,7 +113,7 @@
         { "id": "w092", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w093" },
         { "id": "w093", "form": "illo", "lemma": "ille", "morph": { "case": "abl", "gender": "n", "number": "sg", "pos": "pron" }, "post": ":" },
         { "id": "w094", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
-        { "id": "w095", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "substantive": true },
+        { "id": "w095", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "substantive": true },
         { "id": "w096", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w097", "form": "se", "lemma": "sui", "morph": { "case": "abl", "pos": "pron" } },
         { "id": "w098", "form": "exáltat", "lemma": "exalto", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
@@ -143,11 +143,13 @@
       "w027": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w031": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w055": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w055": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w081": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w082": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w097": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w102": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w102": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w065": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w082": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w095": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
