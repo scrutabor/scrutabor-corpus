@@ -965,7 +965,7 @@ def test_easter_alleluia_death_will_not_rule_rather_than_be_ruled():
     assert token["morph"]["tense"] == "fut"
 
 
-def test_palm_gradual_printed_witness_does_not_silently_copy_house_spellings():
+def test_palm_gradual_follows_the_printed_spellings():
     from checks.collate import load_witness
 
     directory = CORPUS / "witnesses/proprium.dominica-ii-passionis-graduale"
@@ -974,11 +974,15 @@ def test_palm_gradual_printed_witness_does_not_silently_copy_house_spellings():
     assert "Israël" in printed and "Ísrael" not in printed
     assert printed.count("pene") == 2 and "pæne" not in printed
     assert digital.count("pæne") == 2
+    # The reading text prints what page 138 prints: the diaeresis and the
+    # spelling without the ligature. The digital spelling is a ruled variant.
+    assert word("proprium/dominica-ii-passionis-graduale", "w018")["form"] == "Israël"
     apparatus = json.loads((directory / "apparatus.json").read_text())
     readings = {row["at"]: row for row in apparatus["adjudicated"]}
-    assert readings["w018"]["witnesses"]["mr"] == "Israël"
-    assert readings["w024"]["witnesses"]["mr"] == "pene"
-    assert readings["w028"]["witnesses"]["mr"] == "pene"
+    for wid in ("w024", "w028"):
+        assert word("proprium/dominica-ii-passionis-graduale", wid)["form"] == "pene"
+        assert readings[wid]["witnesses"]["do"] == "pæne"
+        assert readings[wid]["class"] == "orthography"
 
 
 def test_easter_alleluia_records_the_printed_comma_and_digital_omission():
