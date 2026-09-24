@@ -70,7 +70,7 @@
         { "id": "w049", "form": "exspectántibus", "lemma": "exspecto", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "substantive": true },
         { "id": "w050", "form": "revelatiónem", "lemma": "revelatio", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 3 } },
         { "id": "w051", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w052", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" } },
+        { "id": "w052", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w051" },
         { "id": "w053", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w054", "form": "Christi", "lemma": "Christus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w055", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
@@ -86,7 +86,7 @@
         { "id": "w065", "form": "die", "lemma": "dies", "morph": { "case": "abl", "decl": 5, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w066", "form": "advéntus", "lemma": "adventus", "morph": { "pos": "noun", "case": "gen", "gender": "m", "number": "sg", "decl": 4 } },
         { "id": "w067", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w068", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" } },
+        { "id": "w068", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w067" },
         { "id": "w069", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w070", "form": "Christi", "lemma": "Christus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." }
       ]
@@ -104,8 +104,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w052": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w068": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w052": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w068": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w053": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w069": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }

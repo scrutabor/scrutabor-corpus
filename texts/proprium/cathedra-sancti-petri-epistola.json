@@ -56,7 +56,7 @@
         { "id": "w035", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w036", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w037", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w038", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" } },
+        { "id": "w038", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w037" },
         { "id": "w039", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w040", "form": "Christi", "lemma": "Christus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w041", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
@@ -135,7 +135,7 @@
         { "id": "w114", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w115", "form": "Christi", "lemma": "Christus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w116", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w117", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" }, "post": "." }
+        { "id": "w117", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "post": ".", "head": "w116" }
       ]
     }
   ],
@@ -187,7 +187,7 @@
       "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w036": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w038": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w038": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w039": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w041": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
@@ -266,7 +266,7 @@
       "w114": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w115": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w116": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w117": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w117": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

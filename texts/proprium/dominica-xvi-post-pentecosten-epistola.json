@@ -42,7 +42,7 @@
         { "id": "w021", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w022" },
         { "id": "w022", "form": "Patrem", "lemma": "pater", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w023", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w024", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" } },
+        { "id": "w024", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w023" },
         { "id": "w025", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w026", "form": "Christi", "lemma": "Christus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w027", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w028" },
@@ -155,7 +155,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w050": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w063": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w098": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },

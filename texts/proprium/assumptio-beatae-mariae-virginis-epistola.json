@@ -101,7 +101,7 @@
         { "id": "w080", "form": "ante", "lemma": "ante", "morph": { "governs": "acc", "pos": "prep" }, "head": "w081" },
         { "id": "w081", "form": "conspéctum", "lemma": "conspectus", "morph": { "case": "acc", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w082", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w083", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" }, "post": "." },
+        { "id": "w083", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "post": ".", "head": "w082" },
         { "id": "w084", "form": "Tu", "lemma": "tu", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
         { "id": "w085", "form": "glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w086", "form": "Ierúsalem", "lemma": "Ierusalem", "morph": { "case": "voc", "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
@@ -110,8 +110,8 @@
         { "id": "w089", "form": "Ísrael", "lemma": "Israel", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" }, "post": "," },
         { "id": "w090", "form": "tu", "lemma": "tu", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
         { "id": "w091", "form": "honorificéntia", "lemma": "honorificentia", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
-        { "id": "w092", "form": "pópuli", "lemma": "populus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
-        { "id": "w093", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" }, "post": "." }
+        { "id": "w092", "form": "pópuli", "lemma": "populus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w093", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "post": ".", "head": "w092" }
       ]
     }
   ],
@@ -126,9 +126,10 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w083": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w083": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w086": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w093": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w093": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w092": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

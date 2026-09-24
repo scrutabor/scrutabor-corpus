@@ -29,7 +29,7 @@
         { "id": "w008", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w009", "form": "Nativitátem", "lemma": "nativitas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w010", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w011", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" } },
+        { "id": "w011", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w010" },
         { "id": "w012", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w013", "form": "Christi", "lemma": "Christus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w014", "form": "mystériis", "lemma": "mysterium", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
@@ -103,7 +103,7 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w034": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }

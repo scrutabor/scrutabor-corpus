@@ -29,7 +29,7 @@
         { "id": "w008", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w009" },
         { "id": "w009", "form": "civitáte", "lemma": "civitas", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 3 } },
         { "id": "w010", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w011", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" }, "post": "," },
+        { "id": "w011", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "post": ",", "head": "w010" },
         { "id": "w012", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013" },
         { "id": "w013", "form": "monte", "lemma": "mons", "morph": { "case": "abl", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w014", "form": "sancto", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "substantive": true },
@@ -62,7 +62,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

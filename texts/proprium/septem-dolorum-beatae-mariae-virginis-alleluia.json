@@ -32,7 +32,7 @@
         { "id": "w011", "form": "iuxta", "lemma": "iuxta", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
         { "id": "w012", "form": "Crucem", "lemma": "crux", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w013", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w014", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" } },
+        { "id": "w014", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w013" },
         { "id": "w015", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w016", "form": "Christi", "lemma": "Christus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w017", "form": "dolorósa", "lemma": "dolorosus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "post": ".", "substantive": true }
@@ -63,7 +63,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
     }
   },

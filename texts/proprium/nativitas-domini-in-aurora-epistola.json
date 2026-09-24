@@ -25,7 +25,7 @@
         { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w005", "form": "humánitas", "lemma": "humanitas", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w006", "form": "Salvatóris", "lemma": "salvator", "morph": { "case": "gen", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w007", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" } },
+        { "id": "w007", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w006" },
         { "id": "w008", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w009", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w010", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w011" },
@@ -87,7 +87,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w052": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
     }
   },

@@ -25,7 +25,7 @@
         { "id": "w004", "form": "terræ", "lemma": "terra", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w005", "form": "salutáre", "lemma": "salutaris", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "substantive": true },
         { "id": "w006", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w007", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" }, "post": ":" },
+        { "id": "w007", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "post": ":", "head": "w006" },
         { "id": "w008", "form": "iubiláte", "lemma": "iubilo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
         { "id": "w009", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w010", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w011" },
@@ -73,7 +73,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w010": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w011": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
