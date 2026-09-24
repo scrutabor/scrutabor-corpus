@@ -35,7 +35,7 @@
         { "id": "w014", "form": "dominéntur", "lemma": "domino", "morph": { "conj": 1, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" } },
         { "id": "w015", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
         { "id": "w016", "form": "inimíci", "lemma": "inimicus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
-        { "id": "w017", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" }, "post": ":" },
+        { "id": "w017", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "post": ":", "head": "w016" },
         { "id": "w018", "form": "líbera", "lemma": "libero", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w019", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": "," },
         { "id": "w020", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
@@ -93,7 +93,7 @@
         { "id": "w072", "form": "dominéntur", "lemma": "domino", "morph": { "conj": 1, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" } },
         { "id": "w073", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
         { "id": "w074", "form": "inimíci", "lemma": "inimicus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
-        { "id": "w075", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" }, "post": ":" },
+        { "id": "w075", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "post": ":", "head": "w074" },
         { "id": "w076", "form": "líbera", "lemma": "libero", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w077", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": "," },
         { "id": "w078", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
@@ -134,8 +134,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w075": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w075": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

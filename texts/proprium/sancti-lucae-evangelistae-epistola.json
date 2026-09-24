@@ -143,9 +143,9 @@
         { "id": "w122", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w123", "form": "adiútor", "lemma": "adiutor", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 }, "post": "," },
         { "id": "w124", "form": "sive", "lemma": "si", "morph": { "pos": "conj" } },
-        { "id": "w125", "form": "fratres", "lemma": "frater", "morph": { "case": "voc", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
-        { "id": "w126", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" }, "post": "," },
-        { "id": "w127", "form": "Apóstoli", "lemma": "apostolus", "morph": { "pos": "noun", "case": "gen", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w125", "form": "fratres", "lemma": "frater", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w126", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "post": ",", "head": "w125" },
+        { "id": "w127", "form": "Apóstoli", "lemma": "apostolus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 2 } },
         { "id": "w128", "form": "ecclesiárum", "lemma": "ecclesia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" }, "post": "," },
         { "id": "w129", "form": "glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w130", "form": "Christi", "lemma": "Christus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
@@ -183,8 +183,10 @@
       "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w104": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w108": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w126": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w131": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w126": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w131": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w125": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w127": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

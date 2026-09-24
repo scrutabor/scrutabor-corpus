@@ -46,7 +46,7 @@
         { "id": "w025", "form": "suæ", "lemma": "suus", "morph": { "case": "gen", "gender": "f", "number": "sg", "pos": "adj" }, "post": ":", "head": "w024" },
         { "id": "w026", "form": "ita", "lemma": "ita", "morph": { "pos": "adv" } },
         { "id": "w027", "form": "óculi", "lemma": "oculus", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 } },
-        { "id": "w028", "form": "nostri", "lemma": "nos", "morph": { "pos": "pron", "case": "gen", "number": "pl" } },
+        { "id": "w028", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w027" },
         { "id": "w029", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w030" },
         { "id": "w030", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w031", "form": "Deum", "lemma": "deus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -86,7 +86,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
     }
   },
