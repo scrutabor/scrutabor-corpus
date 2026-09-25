@@ -1,8 +1,8 @@
 {
   "text": "ordinarium.simili-modo",
-  "note": "Adjudicated variants: one of orthography (cenátum/cænátum, where both spellings are real words of the same recension and the edition rules which it prints), one of punctuation, and twenty-three of capitalization — twenty-two of them the words of consecration at w032-w053, the twenty-third the narrative Cálicem at w010 — twenty-five in all. Substantive text agrees across all three witnesses with zero further divergence.",
+  "note": "Adjudicated variants, twenty-seven in all. Two of orthography at w004, where the typical edition prints cœnátum, witness do the classical cenátum and witness handmissal-eo cænátum. Three of punctuation, and twenty-two of capitalization in the words of consecration at w032-w053. Substantive text agrees across all three witnesses with zero further divergence.",
   "summary": {
-    "entries": 25,
+    "entries": 27,
     "classes": [
       "capitalization",
       "orthography",
@@ -12,21 +12,39 @@
   "adjudicated": [
     {
       "at": "w004",
-      "ours": "cenátum",
+      "ours": "cœnátum",
+      "witnesses": {
+        "do": "cenátum"
+      },
+      "class": "orthography",
+      "ruling": "The typical edition prints cœnátum in the Canon (p. 307). The digital source prints the classical spelling cenátum."
+    },
+    {
+      "at": "w004",
+      "ours": "cœnátum",
       "witnesses": {
         "handmissal-eo": "cænátum"
       },
       "class": "orthography",
-      "ruling": "Both spellings are real: ceno is the classical verb, and the ligature spellings cæno and cœno are the later ecclesiastical ones, all three headed by the dictionaries. The typical edition prints cenátum est in the Canon, and witness do follows it, so the edition prints that and records the hand missal's reading here rather than silently correcting a page that is not wrong. Whitaker's Words and Collatinus both head the classical spelling; Collatinus reads the ligature form under caeno."
+      "ruling": "The typical edition prints cœnátum in the Canon (p. 307). The hand missal prints the same word with the æ ligature, cænátum."
     },
     {
-      "at": "w010",
-      "ours": "Cálicem",
+      "at": "w012",
+      "ours": "sanctas,",
       "witnesses": {
-        "mr": "cálicem"
+        "do": "sanctas"
       },
-      "class": "capitalization",
-      "ruling": "The typical edition prints 'cálicem' where this edition prints 'Cálicem'; the reading is the same and only the case differs. Recorded rather than corrected."
+      "class": "punctuation",
+      "ruling": "The typical edition's punctuation is retained. The difference marks phrasing and does not change the words."
+    },
+    {
+      "at": "w012",
+      "ours": "sanctas,",
+      "witnesses": {
+        "handmissal-eo": "sanctas"
+      },
+      "class": "punctuation",
+      "ruling": "The typical edition's punctuation is retained. The difference marks phrasing and does not change the words."
     },
     {
       "at": "w031",

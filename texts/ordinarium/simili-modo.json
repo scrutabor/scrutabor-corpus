@@ -27,7 +27,7 @@
         { "id": "w001", "form": "Símili", "lemma": "similis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w002" },
         { "id": "w002", "form": "modo", "lemma": "modus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w003", "form": "postquam", "lemma": "postquam", "morph": { "pos": "conj" } },
-        { "id": "w004", "form": "cenátum", "lemma": "ceno", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w005" },
+        { "id": "w004", "form": "cœnátum", "lemma": "coeno", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "n", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "head": "w005" },
         { "id": "w005", "form": "est", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } }
       ]
     },
@@ -48,7 +48,7 @@
         { "id": "w009", "form": "præclárum", "lemma": "praeclarus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w010" },
         { "id": "w010", "form": "Cálicem", "lemma": "calix", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015" },
-        { "id": "w012", "form": "sanctas", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w015" },
+        { "id": "w012", "form": "sanctas", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w015", "post": "," },
         { "id": "w013", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
         { "id": "w014", "form": "venerábiles", "lemma": "venerabilis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w015" },
         { "id": "w015", "form": "manus", "lemma": "manus", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 4 } },
@@ -167,7 +167,7 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The consecration of the chalice, with the command to repeat it. The words of consecration are set as the typical edition prints them — Hic est enim Calix Sánguinis mei — for the reason given at Qui prídie; that edition capitalises the opening word, Calix and Sánguinis, and nothing else in the formula. CENÁTUM at w004 is the reading of the typical edition and of witness do, against witness handmissal-eo's cænátum, and is ruled in the apparatus: both are real spellings. It is tagged as the adjective cenátus with both analyzers; read strictly, cenátum est is the impersonal perfect passive of ceno — after the meal had been eaten — and the note carries that sense. MYSTÉRIUM FÍDEI at w042-w043 stands in the nominative, taking its case from no governing word; the received reading holds it in apposition to CALIX, an older tradition hears it as an exclamation of its own — the question is old and open, and both words stand flagged for review. QUI at w044 is likewise flagged: Calix and Sánguinis are both masculine, so the form leaves the antecedent open (see the gloss note). FECÉRITIS at w056 is future perfect rather than perfect subjunctive; both analyzers offer the two, and the future indicative faciétis that answers it settles the choice.",
+    "notes": "The consecration of the chalice, with the command to repeat it. The words of consecration are set as the typical edition prints them — Hic est enim Calix Sánguinis mei — for the reason given at Qui prídie; that edition capitalises the opening word, Calix and Sánguinis, and nothing else in the formula. CŒNÁTUM at w004 is the reading of the typical edition (p. 307). Witness do prints cenátum and witness handmissal-eo cænátum, the same word in other spellings, ruled in the apparatus. Cœnátum est is the impersonal perfect passive of ceno, after the meal had been eaten, and the gloss carries that sense. MYSTÉRIUM FÍDEI at w042-w043 stands in the nominative, taking its case from no governing word; the received reading holds it in apposition to CALIX, an older tradition hears it as an exclamation of its own — the question is old and open, and both words stand flagged for review. QUI at w044 is likewise flagged: Calix and Sánguinis are both masculine, so the form leaves the antecedent open (see the gloss note). FECÉRITIS at w056 is future perfect rather than perfect subjunctive; both analyzers offer the two, and the future indicative faciétis that answers it settles the choice.",
     "source": {
       "method": "Verified by collation against the independent witnesses below: zero substantive divergence, apart from the orthographic variant adjudicated in the apparatus. Accidental variants adjudicated in the apparatus.",
       "witnesses": "witnesses/ordinarium.simili-modo/",
@@ -187,7 +187,8 @@
     "words": {
       "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w044": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w055": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w055": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
