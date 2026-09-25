@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.21.0",
+  "id": "proprium.beata-maria-virgo-regina-tempore-paschali-alleluia",
+  "title": "Beáta es, Virgo María / Nunc cum eo regnas",
+  "category": "proprium",
+  "section": "missa-catechumenorum",
+  "variant": "beata-maria-virgo-regina",
+  "sung": true,
+  "ids": {
+    "next": 20,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      },
+      "words": [
+        { "id": "w001", "form": "Allelúia", "post": ",", "lemma": "alleluia", "morph": { "pos": "intj" } },
+        { "id": "w002", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } },
+        { "id": "w003", "form": "Beáta", "lemma": "beatus", "morph": { "case": "nom", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w004" },
+        { "id": "w004", "form": "es", "post": ",", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w005", "form": "Virgo", "lemma": "virgo", "morph": { "case": "voc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w006", "form": "María", "post": ",", "lemma": "Maria", "morph": { "case": "voc", "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w007", "form": "quæ", "lemma": "qui", "morph": { "case": "nom", "gender": "f", "number": "sg", "pos": "pron" } },
+        { "id": "w008", "form": "sub", "lemma": "sub", "morph": { "governs": "abl", "pos": "prep" }, "head": "w009" },
+        { "id": "w009", "form": "cruce", "lemma": "crux", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w010", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w011", "form": "sustinuísti", "post": ",", "lemma": "sustineo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w012", "form": "allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } },
+        { "id": "w013", "form": "Nunc", "lemma": "nunc", "morph": { "pos": "adv" } },
+        { "id": "w014", "form": "cum", "lemma": "cum", "morph": { "governs": "abl", "pos": "prep" }, "head": "w015" },
+        { "id": "w015", "form": "eo", "lemma": "is", "morph": { "case": "abl", "gender": "m", "number": "sg", "pos": "pron" } },
+        { "id": "w016", "form": "regnas", "lemma": "regno", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w017", "form": "in", "lemma": "in", "morph": { "governs": "acc", "pos": "prep" }, "head": "w018" },
+        { "id": "w018", "form": "ætérnum", "post": ".", "lemma": "aeternus", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w019", "form": "Allelúia", "post": ".", "lemma": "alleluia", "morph": { "pos": "intj" } }
+      ]
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "In Paschaltide this Alleluia replaces the gradual and the Alleluia said outside that season.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image (p. 543) and collated against the pinned Divinum Officium Paschal gradual of 31 May; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.beata-maria-virgo-regina-tempore-paschali-alleluia/",
+      "apparatus": "witnesses/proprium.beata-maria-virgo-regina-tempore-paschali-alleluia/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+    "words": {
+
+    }
+  },
+  "localization": {
+    "about": true
+  }
+}
