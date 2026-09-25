@@ -7,9 +7,13 @@
   "variant": "dominica-ii-passionis",
   "sung": false,
   "ids": {
-    "next": 1510,
+    "next": 1515,
     "segments": {
       "next": 96
+    },
+    "retired": {
+      "w001": "s01",
+      "w005": "s01"
     }
   },
   "segments": [
@@ -19,11 +23,14 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Tunc", "lemma": "tunc", "morph": { "pos": "adv" } },
-        { "id": "w002", "form": "venit", "lemma": "venio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 4 } },
+        { "id": "w1510", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w1511" },
+        { "id": "w1511", "form": "illo", "lemma": "ille", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "n" } },
+        { "id": "w1512", "form": "témpore", "post": ":", "lemma": "tempus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w002", "form": "Venit", "lemma": "venio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 4 } },
         { "id": "w003", "form": "Iesus", "lemma": "Iesus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "conj" } },
-        { "id": "w005", "form": "illis", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" } },
+        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w1513" },
+        { "id": "w1513", "form": "discípulis", "lemma": "discipulus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w1514", "form": "suis", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w1513" },
         { "id": "w006", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w007" },
         { "id": "w007", "form": "villam", "lemma": "villa", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w008", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
@@ -2855,11 +2862,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
@@ -4348,7 +4353,12 @@
       "w568": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w605": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w1183": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w1426": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w1426": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w1510": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w1511": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w1512": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w1513": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w1514": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
