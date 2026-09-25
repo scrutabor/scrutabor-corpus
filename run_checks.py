@@ -19,6 +19,7 @@ from checks.bibliography import check as check_bibliography
 from checks.capitals import check as check_capitals
 from checks.citations import check as check_citation_titles
 from checks.collate import collate
+from checks.conventions import check as check_conventions
 from checks.delivery import check_doc as check_delivery
 from checks.document import check as check_document
 from checks.english import check as check_english
@@ -263,6 +264,8 @@ def main(text_id: str) -> int:
         # second person capitalised as the verse capitalises it.
         all_errors += check_polish(doc, gdoc)
         all_errors += check_notes(doc, gdoc)
+        # A vocative is glossed bare: the particle O renders no Latin word.
+        all_errors += check_conventions(doc, gdoc)
         # Address register is reviewed contextually. A single Gospel segment
         # may contain several speakers and addressees, so segment-wide string
         # comparison is an editorial diagnostic rather than a correctness
