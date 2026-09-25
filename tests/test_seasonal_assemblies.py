@@ -258,3 +258,42 @@ def test_post_septuagesimam_pair_selects_once_and_never_on_unknown_seasons():
     vote = {"use": "votive-before-septuagesima-or-after-pentecost"}
     assert component_applies(vote, study=True)
     assert not component_applies(vote, weekday=2, season="per-annum")
+
+
+JOSEPH = "sancti-ioseph-sponsi-beatae-mariae-virginis"
+
+
+def test_joseph_says_the_printed_alleluias_only_in_paschaltide():
+    """Benziger 1962 pp.491–492 print the introit, offertory and communion
+    Alleluias as (T. P.), and a Paschal Alleluia replacing gradual and tract.
+    The feast reaches Paschaltide only when it is transferred."""
+    form = next(f for f in formulary_catalog(CORPUS)["formularies"] if f["id"] == JOSEPH)
+    expected = {
+        False: {
+            "introitus": "extra-tempus-paschale-introitus",
+            "offertorium": "extra-tempus-paschale-offertorium",
+            "communio": "extra-tempus-paschale-communio",
+        },
+        True: {"introitus": "introitus", "offertorium": "offertorium", "communio": "communio"},
+    }
+    alleluias = {"introitus": 4, "offertorium": 1, "communio": 1}
+    seen = Counter()
+    for ending in range(2026, 2102):
+        for occurrence in year(ending):
+            if occurrence.formulary != JOSEPH:
+                continue
+            paschal = occurrence.season == "paschale"
+            chosen = selected(form["components"], occurrence)
+            assert chant_roles(chosen) == (["alleluia"] if paschal else ["graduale", "tractus"])
+            for role, suffix in expected[paschal].items():
+                parts = [c for c in chosen if c["role"] == role]
+                assert len(parts) == 1, (occurrence.when, role)
+                path = parts[0]["text"]
+                assert path == f"proprium/{JOSEPH}-{suffix}"
+                doc = json.loads((CORPUS / "texts" / f"{path}.json").read_text())
+                words = [w for segment in doc["segments"] for w in segment.get("words", [])]
+                assert sum(w["lemma"] == "alleluia" for w in words) == (
+                    alleluias[role] if paschal else 0
+                )
+            seen[paschal] += 1
+    assert seen[True] >= 1 and seen[False] >= 60

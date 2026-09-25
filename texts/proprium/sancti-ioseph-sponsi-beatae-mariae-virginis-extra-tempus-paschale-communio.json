@@ -1,0 +1,97 @@
+{
+  "schema_version": "0.21.0",
+  "id": "proprium.sancti-ioseph-sponsi-beatae-mariae-virginis-extra-tempus-paschale-communio",
+  "title": "Ioseph, fili David, noli timére accípere Maríam",
+  "category": "proprium",
+  "section": "missa-fidelium",
+  "variant": "sancti-ioseph-sponsi-beatae-mariae-virginis",
+  "sung": true,
+  "ids": {
+    "next": 20,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "participation": {
+        "cantu": {
+          "gradus": 3,
+          "source": "DMS 25 c",
+          "conditional": true
+        },
+        "lecta": {
+          "gradus": 4,
+          "source": "DMS 31 d",
+          "conditional": true
+        }
+      },
+      "delivery": {
+        "cantu": {
+          "speaker": "schola",
+          "voice": "cantus"
+        }
+      },
+      "words": [
+        { "id": "w001", "form": "Ioseph", "lemma": "Ioseph", "morph": { "pos": "noun", "gender": "m", "case": "voc", "number": "sg" }, "post": "," },
+        { "id": "w002", "form": "fili", "lemma": "filius", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w003", "form": "David", "lemma": "David", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" }, "post": "," },
+        { "id": "w004", "form": "noli", "lemma": "nolo", "morph": { "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w005", "form": "timére", "lemma": "timeo", "morph": { "conj": 2, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w006", "form": "accípere", "lemma": "accipio", "morph": { "conj": 3, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w007", "form": "Maríam", "lemma": "Maria", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w008", "form": "cóniugem", "lemma": "coniunx", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w009", "form": "tuam", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ":", "head": "w008" },
+        { "id": "w010", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w011", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
+        { "id": "w012", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013" },
+        { "id": "w013", "form": "ea", "lemma": "is", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w014", "form": "natum", "lemma": "nascor", "morph": { "case": "acc", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "dep" }, "substantive": true },
+        { "id": "w015", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
+        { "id": "w016", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w017" },
+        { "id": "w017", "form": "Spíritu", "lemma": "spiritus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w018", "form": "Sancto", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w017" },
+        { "id": "w019", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." }
+      ]
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "source": {
+      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "witnesses": "witnesses/proprium.sancti-ioseph-sponsi-beatae-mariae-virginis-extra-tempus-paschale-communio/",
+      "apparatus": "witnesses/proprium.sancti-ioseph-sponsi-beatae-mariae-virginis-extra-tempus-paschale-communio/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true
+  }
+}
