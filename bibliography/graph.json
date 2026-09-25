@@ -45485,6 +45485,42 @@
       "decision_reason": "Source-defined ritual boundary only. The complete word sequence and existing word IDs are unchanged."
     },
     {
+      "id": "use.proprium.sancti-thomae-apostoli-communio.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-thomae-apostoli-communio"
+      },
+      "locator": {
+        "section": "Sancti/12-21 [Communio] -> @Tempora/Pasc1-0 [Communio], missa/Latin/Tempora/Pasc1-0 source line 50"
+      },
+      "claim": "The pinned Latin data borrow the Low Sunday communion for 21 December; its three Paschaltide Alleluias are declared as recensions and the remaining words corroborate the page.",
+      "verified_on": "2026-09-25",
+      "decision": "RETAIN",
+      "evidence_sha256": "87839b3d2dabbd479342b039c7c177abcc18b9e64a96d79f150361ce009048eb"
+    },
+    {
+      "id": "use.proprium.sancti-thomae-apostoli-communio.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-thomae-apostoli-communio"
+      },
+      "locator": {
+        "printed": "p. 441",
+        "scan": "leaf n522 / PDF p. 523",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n522/mode/1up"
+      },
+      "claim": "The cited page image prints the communion for 21 December without the Low Sunday Alleluias.",
+      "verified_on": "2026-09-25",
+      "decision": "RETAIN",
+      "evidence_sha256": "72d9f28c917d239d9ace19649ed1526b5faafc3d5795cbc2c46675fbfed1f0ad"
+    },
+    {
       "id": "use.proprium.sancti-thomae-apostoli-epistola.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -71881,6 +71917,30 @@
       "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
     },
     {
+      "id": "witness.proprium.sancti-thomae-apostoli-communio.do44667ff",
+      "text": "proprium.sancti-thomae-apostoli-communio",
+      "use": "use.proprium.sancti-thomae-apostoli-communio.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "87839b3d2dabbd479342b039c7c177abcc18b9e64a96d79f150361ce009048eb",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+    },
+    {
+      "id": "witness.proprium.sancti-thomae-apostoli-communio.mr1962",
+      "text": "proprium.sancti-thomae-apostoli-communio",
+      "use": "use.proprium.sancti-thomae-apostoli-communio.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "685bfd118e15b1648e0a85e32e6cfa2ddea066dfd1b7bd0e4f11e5e2d44765a7",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+    },
+    {
       "id": "witness.proprium.sancti-thomae-apostoli-epistola.do44667ff",
       "text": "proprium.sancti-thomae-apostoli-epistola",
       "use": "use.proprium.sancti-thomae-apostoli-epistola.do44667ff",
@@ -87803,6 +87863,22 @@
       "apparatus": {
         "entries": 0,
         "classes": []
+      }
+    },
+    {
+      "id": "collation.proprium.sancti-thomae-apostoli-communio.mr1962-do44667ff",
+      "text": "proprium.sancti-thomae-apostoli-communio",
+      "recension": "The 1962 typical-edition communion for 21 December, without the Paschaltide Alleluias of the Low Sunday text",
+      "selected_text_sha256": "6adcb2388307ac4b5195cfcf09ac54a1ace6960d3f250931d560aa82c90a3724",
+      "witnesses": [
+        "witness.proprium.sancti-thomae-apostoli-communio.do44667ff",
+        "witness.proprium.sancti-thomae-apostoli-communio.mr1962"
+      ],
+      "apparatus": {
+        "entries": 2,
+        "classes": [
+          "punctuation"
+        ]
       }
     },
     {
