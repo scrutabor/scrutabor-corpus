@@ -12,10 +12,23 @@
   "title": "Sancti Ioseph Sponsi Beatæ Mariæ Virginis",
   "components": [
     {
-      "key": "introitus",
+      "key": "introitus-not-paschale",
+      "recension": "extra-tempus-paschale",
+      "role": "introitus",
+      "text": "proprium.sancti-ioseph-sponsi-beatae-mariae-virginis-extra-tempus-paschale-introitus",
+      "relation": "proper",
+      "condition": {
+        "season": "not-paschale"
+      }
+    },
+    {
+      "key": "introitus-paschale",
       "role": "introitus",
       "text": "proprium.sancti-ioseph-sponsi-beatae-mariae-virginis-introitus",
-      "relation": "proper"
+      "relation": "proper",
+      "condition": {
+        "season": "paschale"
+      }
     },
     {
       "key": "collecta",
@@ -33,13 +46,28 @@
       "key": "graduale",
       "role": "graduale",
       "text": "proprium.sancti-ioseph-sponsi-beatae-mariae-virginis-graduale",
-      "relation": "proper"
+      "relation": "proper",
+      "condition": {
+        "season": "not-paschale"
+      }
+    },
+    {
+      "key": "alleluia",
+      "role": "alleluia",
+      "text": "proprium.sancti-ioseph-sponsi-beatae-mariae-virginis-alleluia",
+      "relation": "proper",
+      "condition": {
+        "season": "paschale"
+      }
     },
     {
       "key": "tractus",
       "role": "tractus",
       "text": "proprium.sancti-ioannis-apostoli-et-evangelistae-tractus",
-      "relation": "reference"
+      "relation": "reference",
+      "condition": {
+        "season": "not-paschale"
+      }
     },
     {
       "key": "evangelium",
@@ -48,10 +76,23 @@
       "relation": "reference"
     },
     {
-      "key": "offertorium",
+      "key": "offertorium-not-paschale",
+      "recension": "extra-tempus-paschale",
+      "role": "offertorium",
+      "text": "proprium.sancti-ioseph-sponsi-beatae-mariae-virginis-extra-tempus-paschale-offertorium",
+      "relation": "proper",
+      "condition": {
+        "season": "not-paschale"
+      }
+    },
+    {
+      "key": "offertorium-paschale",
       "role": "offertorium",
       "text": "proprium.sancti-ioseph-sponsi-beatae-mariae-virginis-offertorium",
-      "relation": "proper"
+      "relation": "proper",
+      "condition": {
+        "season": "paschale"
+      }
     },
     {
       "key": "secreta",
@@ -66,10 +107,23 @@
       "relation": "shared"
     },
     {
-      "key": "communio",
+      "key": "communio-not-paschale",
+      "recension": "extra-tempus-paschale",
+      "role": "communio",
+      "text": "proprium.sancti-ioseph-sponsi-beatae-mariae-virginis-extra-tempus-paschale-communio",
+      "relation": "proper",
+      "condition": {
+        "season": "not-paschale"
+      }
+    },
+    {
+      "key": "communio-paschale",
       "role": "communio",
       "text": "proprium.sancti-ioseph-sponsi-beatae-mariae-virginis-communio",
-      "relation": "proper"
+      "relation": "proper",
+      "condition": {
+        "season": "paschale"
+      }
     },
     {
       "key": "postcommunio",
