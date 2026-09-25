@@ -44,7 +44,7 @@
         { "id": "w023", "form": "mare", "lemma": "mare", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w024", "form": "erant", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w025", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
-        { "id": "w026", "form": "piscatóres", "lemma": "piscator", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w026", "form": "piscatóres", "post": ",", "lemma": "piscator", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w027", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w028", "form": "ait", "lemma": "aio", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w029", "form": "illis", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "post": ":" },
@@ -100,6 +100,12 @@
         { "id": "w079", "form": "secúti", "lemma": "sequor", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "dep" }, "substantive": true },
         { "id": "w080", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w081", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" }, "post": "." }
+      ],
+      "parentheses": [
+        {
+          "from": "w024",
+          "through": "w026"
+        }
       ]
     }
   ],
