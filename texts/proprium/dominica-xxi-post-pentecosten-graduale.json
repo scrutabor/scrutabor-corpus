@@ -20,8 +20,8 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
-        { "id": "w002", "form": "refúgium", "lemma": "refugium", "morph": { "case": "voc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w003", "form": "factus", "lemma": "facio", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
+        { "id": "w002", "form": "refúgium", "lemma": "refugium", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w003", "form": "factus", "lemma": "facio", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w004" },
         { "id": "w004", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w005", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "post": "," },
         { "id": "w006", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007" },
@@ -33,7 +33,7 @@
         { "id": "w012", "form": "fíerent", "lemma": "fio", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 3, "tense": "impf", "voice": "act" } },
         { "id": "w013", "form": "aut", "lemma": "aut", "morph": { "pos": "conj" } },
         { "id": "w014", "form": "formarétur", "lemma": "formo", "morph": { "conj": 1, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "pass" } },
-        { "id": "w015", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w015", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
         { "id": "w016", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w017", "form": "orbis", "lemma": "orbis", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 }, "post": ":" },
         { "id": "w018", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w019" },
@@ -77,8 +77,10 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

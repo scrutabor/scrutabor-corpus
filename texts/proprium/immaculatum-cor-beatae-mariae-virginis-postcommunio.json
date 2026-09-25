@@ -19,8 +19,8 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Divínis", "lemma": "divinus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "pl" }, "substantive": true },
-        { "id": "w002", "form": "refécti", "lemma": "reficio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w001", "form": "Divínis", "lemma": "divinus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "head": "w003" },
+        { "id": "w002", "form": "refécti", "lemma": "reficio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w007" },
         { "id": "w003", "form": "munéribus", "lemma": "munus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" } },
         { "id": "w004", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "," },
         { "id": "w005", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
@@ -32,7 +32,7 @@
         { "id": "w011", "form": "Vírginis", "lemma": "virgo", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w012", "form": "intercessióne", "lemma": "intercessio", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w013", "form": "cuius", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
-        { "id": "w014", "form": "immaculáti", "lemma": "immaculatus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "substantive": true },
+        { "id": "w014", "form": "immaculáti", "lemma": "immaculatus", "morph": { "pos": "adj", "case": "gen", "gender": "n", "number": "sg" }, "head": "w015" },
         { "id": "w015", "form": "Cordis", "lemma": "cor", "morph": { "case": "gen", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w016", "form": "sollémnia", "lemma": "sollemne", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 3 } },
         { "id": "w017", "form": "venerándo", "lemma": "venero", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "ger", "conj": 1 } },
@@ -40,7 +40,7 @@
         { "id": "w019", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w021" },
         { "id": "w020", "form": "præséntibus", "lemma": "praesens", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "head": "w021" },
         { "id": "w021", "form": "perículis", "lemma": "periculum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w022", "form": "liberáti", "lemma": "libero", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "post": ",", "substantive": true },
+        { "id": "w022", "form": "liberáti", "post": ",", "lemma": "libero", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "head": "w026" },
         { "id": "w023", "form": "ætérnæ", "lemma": "aeternus", "morph": { "case": "gen", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w024" },
         { "id": "w024", "form": "vitæ", "lemma": "vita", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w025", "form": "gáudia", "lemma": "gaudium", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
@@ -111,7 +111,11 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

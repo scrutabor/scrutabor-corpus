@@ -20,8 +20,8 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Benedícite", "lemma": "benedico", "morph": { "conj": 3, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
-        { "id": "w002", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w003" },
-        { "id": "w003", "form": "Ángeli", "lemma": "angelus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 2 } },
+        { "id": "w002", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "voc", "number": "pl", "gender": "m" }, "head": "w003" },
+        { "id": "w003", "form": "Ángeli", "lemma": "angelus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "pl", "decl": 2 } },
         { "id": "w004", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w005", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w006", "form": "hymnum", "lemma": "hymnus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -64,7 +64,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w002": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w002": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

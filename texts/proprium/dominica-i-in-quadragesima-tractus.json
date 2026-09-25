@@ -91,14 +91,14 @@
         { "id": "w070", "form": "Cadent", "lemma": "cado", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w071", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w072" },
         { "id": "w072", "form": "látere", "lemma": "latus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w073", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "substantive": true },
+        { "id": "w073", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "head": "w072" },
         { "id": "w074", "form": "mille", "lemma": "mille", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "post": ",", "substantive": true },
         { "id": "w075", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w076", "form": "decem", "lemma": "decem", "morph": { "case": "nom", "gender": "n", "number": "pl", "pos": "adj" }, "head": "w077" },
         { "id": "w077", "form": "mília", "lemma": "mille", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "pl" } },
-        { "id": "w078", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w080" },
+        { "id": "w078", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w079" },
         { "id": "w079", "form": "dextris", "lemma": "dexter", "morph": { "case": "abl", "gender": "n", "number": "pl", "pos": "adj" }, "substantive": true },
-        { "id": "w080", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "post": ":", "substantive": true },
+        { "id": "w080", "form": "tuis", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w079" },
         { "id": "w081", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
         { "id": "w082", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w083", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
@@ -204,7 +204,10 @@
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w068": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w074": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
-      "w076": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w076": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w073": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w078": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w080": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

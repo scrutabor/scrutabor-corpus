@@ -41,7 +41,7 @@
         { "id": "w020", "form": "acceptábile", "lemma": "acceptabilis", "morph": { "case": "nom", "gender": "n", "number": "sg", "pos": "adj" }, "substantive": true },
         { "id": "w021", "form": "fiat", "lemma": "fio", "morph": { "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w022", "form": "sacrifícium", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg", "decl": 2 } },
-        { "id": "w023", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w023", "form": "nostrum", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w022" },
         { "id": "w024", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
       ],
       "participation": {
@@ -73,7 +73,10 @@
       "apparatus": "witnesses/proprium.exaltatio-sanctae-crucis-offertorium/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

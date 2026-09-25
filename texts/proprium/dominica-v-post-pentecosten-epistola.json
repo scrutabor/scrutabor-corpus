@@ -21,16 +21,16 @@
       "words": [
         { "id": "w001", "form": "Caríssimi", "lemma": "carus", "morph": { "pos": "adj", "case": "voc", "degree": "sup", "gender": "m", "number": "pl" }, "post": ":", "substantive": true },
         { "id": "w002", "form": "Omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w003", "form": "unánimes", "lemma": "unanimis", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
+        { "id": "w003", "form": "unánimes", "lemma": "unanimis", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w006" },
         { "id": "w004", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
         { "id": "w005", "form": "oratióne", "lemma": "oratio", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w006", "form": "estóte", "lemma": "sum", "morph": { "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" }, "post": "," },
         { "id": "w007", "form": "compatiéntes", "lemma": "compatior", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "dep", "mood": "part", "conj": 3 }, "post": ",", "substantive": true },
         { "id": "w008", "form": "fraternitátis", "lemma": "fraternitas", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "sg", "decl": 3 } },
-        { "id": "w009", "form": "amatóres", "lemma": "amator", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "pl", "decl": 3 }, "post": "," },
-        { "id": "w010", "form": "misericórdes", "lemma": "misericors", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "post": ",", "head": "w009" },
-        { "id": "w011", "form": "modésti", "lemma": "modestus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "post": ",", "substantive": true },
-        { "id": "w012", "form": "húmiles", "lemma": "humilis", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "post": ":", "head": "w009" },
+        { "id": "w009", "form": "amatóres", "post": ",", "lemma": "amator", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 3 } },
+        { "id": "w010", "form": "misericórdes", "post": ",", "lemma": "misericors", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w006" },
+        { "id": "w011", "form": "modésti", "post": ",", "lemma": "modestus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "head": "w006" },
+        { "id": "w012", "form": "húmiles", "post": ":", "lemma": "humilis", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w006" },
         { "id": "w013", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w014", "form": "reddéntes", "lemma": "reddo", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
         { "id": "w015", "form": "malum", "lemma": "malum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
@@ -152,7 +152,12 @@
       "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w002": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w002": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -21,8 +21,8 @@
       "words": [
         { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
         { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
-        { "id": "w003", "form": "Omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w004" },
-        { "id": "w004", "form": "gentes", "lemma": "gens", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 }, "post": "," },
+        { "id": "w003", "form": "Omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "voc", "number": "pl", "gender": "f" }, "head": "w004" },
+        { "id": "w004", "form": "gentes", "post": ",", "lemma": "gens", "morph": { "pos": "noun", "case": "voc", "number": "pl", "gender": "f", "decl": 3 } },
         { "id": "w005", "form": "pláudite", "lemma": "plaudo", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "act", "conj": 3 } },
         { "id": "w006", "form": "mánibus", "lemma": "manus", "morph": { "case": "abl", "decl": 4, "gender": "f", "number": "pl", "pos": "noun" }, "post": ":" },
         { "id": "w007", "form": "iubiláte", "lemma": "iubilo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
@@ -56,7 +56,11 @@
       "apparatus": "witnesses/proprium.dominica-vii-post-pentecosten-alleluia/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

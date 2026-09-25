@@ -368,6 +368,12 @@ MODIFIER_RULINGS: dict[tuple[str, str], str] = {
     ("proprium.dominica-i-adventus-graduale", "w011"): (
         "notas fac: uczynić takes an instrumental complement"
     ),
+    ("proprium.nativitas-domini-in-die-graduale", "w012"): (
+        "Notum fecit: uczynić takes an instrumental complement"
+    ),
+    ("proprium.purificatio-beatae-mariae-virginis-evangelium", "w032"): (
+        "sanctum vocábitur: świętym is an instrumental predicate after będzie nazwany"
+    ),
     ("proprium.corporis-christi-sequentia", "w039"): "dwunastu modifies braci in Polish",
     ("proprium.d-n-iesu-christi-regis-collecta", "w024"): "najsłodszemu panowaniu",
     ("proprium.dominica-ii-passionis-evangelium", "w206"): "starszych is a coordinated substantive",

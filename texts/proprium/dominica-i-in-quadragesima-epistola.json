@@ -56,7 +56,7 @@
         { "id": "w035", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w036", "form": "vituperétur", "lemma": "vitupero", "morph": { "conj": 1, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" } },
         { "id": "w037", "form": "ministérium", "lemma": "ministerium", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w038", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "post": ":", "substantive": true },
+        { "id": "w038", "form": "nostrum", "post": ":", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w037" },
         { "id": "w039", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
         { "id": "w040", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w041" },
         { "id": "w041", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "substantive": true },
@@ -96,7 +96,7 @@
         { "id": "w075", "form": "suavitáte", "lemma": "suavitas", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w076", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w077" },
         { "id": "w077", "form": "Spíritu", "lemma": "spiritus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w078", "form": "Sancto", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w078", "form": "Sancto", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w077" },
         { "id": "w079", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w080" },
         { "id": "w080", "form": "caritáte", "lemma": "caritas", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w081", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
@@ -174,7 +174,9 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w043": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
-      "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w038": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w078": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -23,8 +23,8 @@
         { "id": "w002", "form": "Christus", "lemma": "Christus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w003", "form": "assístens", "lemma": "assisto", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "head": "w004" },
         { "id": "w004", "form": "Póntifex", "lemma": "pontifex", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
-        { "id": "w005", "form": "futurórum", "lemma": "futurus", "morph": { "pos": "adj", "case": "gen", "gender": "n", "number": "pl" }, "substantive": true },
-        { "id": "w006", "form": "bonórum", "lemma": "bonus", "morph": { "pos": "adj", "case": "gen", "gender": "m", "number": "pl" }, "post": ",", "substantive": true },
+        { "id": "w005", "form": "futurórum", "lemma": "futurus", "morph": { "pos": "adj", "case": "gen", "gender": "n", "number": "pl" }, "head": "w006" },
+        { "id": "w006", "form": "bonórum", "post": ",", "lemma": "bonus", "morph": { "pos": "adj", "case": "gen", "gender": "n", "number": "pl" }, "substantive": true },
         { "id": "w007", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w011" },
         { "id": "w008", "form": "ámplius", "lemma": "ample", "morph": { "pos": "adv", "degree": "comp" } },
         { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -120,7 +120,7 @@
         { "id": "w099", "form": "Christo", "lemma": "Christus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w100", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m" }, "post": "," },
         { "id": "w101", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
-        { "id": "w102", "form": "nostro", "lemma": "noster", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "post": ".", "substantive": true }
+        { "id": "w102", "form": "nostro", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w101" }
       ]
     }
   ],
@@ -147,7 +147,10 @@
       "w069": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w071": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w072": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w100": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
+      "w100": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w102": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -37,10 +37,16 @@ def test_known_deponent_present_participles_keep_the_lexical_voice():
     assert not [row for row in subjects if row[2] != "dep"]
 
 
-@pytest.mark.parametrize("identifier", ["w019", "w042", "w045", "w050"])
-def test_ascension_participles_describe_jesus(identifier):
+@pytest.mark.parametrize(
+    ("identifier", "head"),
+    # Et convéscens, præcépit eis opens a new sentence after Dei., so its
+    # participle heads the finite verb of that sentence (SCHEMA same-sentence
+    # rule) rather than Jesus three sentences back.
+    [("w019", "w011"), ("w042", "w011"), ("w045", "w011"), ("w050", "w051")],
+)
+def test_ascension_participles_describe_jesus(identifier, head):
     word = tokens("ascensio-domini-epistola")[identifier]
-    assert word.get("head") == "w011"
+    assert word.get("head") == head
     assert not word.get("substantive")
     assert tuple(word["morph"][k] for k in ("case", "number", "gender")) == (
         "nom",

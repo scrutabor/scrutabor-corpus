@@ -33,7 +33,7 @@
         { "id": "w012", "form": "Cantáte", "lemma": "canto", "morph": { "pos": "verb", "mood": "imp", "tense": "pres", "voice": "act", "person": 2, "number": "pl", "conj": 1 } },
         { "id": "w013", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w014", "form": "cánticum", "lemma": "canticum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
-        { "id": "w015", "form": "novum", "lemma": "novus", "morph": { "case": "nom", "gender": "n", "number": "sg", "pos": "adj" }, "post": ":", "substantive": true },
+        { "id": "w015", "form": "novum", "post": ":", "lemma": "novus", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "head": "w014" },
         { "id": "w016", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
         { "id": "w017", "form": "mirabília", "lemma": "mirabilis", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "substantive": true },
         { "id": "w018", "form": "fecit", "lemma": "facio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": "." },
@@ -100,7 +100,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

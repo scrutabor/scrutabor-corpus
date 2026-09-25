@@ -23,13 +23,13 @@
         { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w003", "form": "Laudáte", "lemma": "laudo", "morph": { "conj": 1, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w004", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
-        { "id": "w005", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w006" },
-        { "id": "w006", "form": "Ángeli", "lemma": "angelus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 2 } },
+        { "id": "w005", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "voc", "number": "pl", "gender": "m" }, "head": "w006" },
+        { "id": "w006", "form": "Ángeli", "lemma": "angelus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "pl", "decl": 2 } },
         { "id": "w007", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": ":" },
         { "id": "w008", "form": "laudáte", "lemma": "laudo", "morph": { "conj": 1, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w009", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" }, "post": "," },
-        { "id": "w010", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "f" }, "head": "w011" },
-        { "id": "w011", "form": "virtútes", "lemma": "virtus", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
+        { "id": "w010", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "voc", "number": "pl", "gender": "f" }, "head": "w011" },
+        { "id": "w011", "form": "virtútes", "lemma": "virtus", "morph": { "case": "voc", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
         { "id": "w012", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": "." },
         { "id": "w013", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
       ],
@@ -60,7 +60,9 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w005": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w010": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w010": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

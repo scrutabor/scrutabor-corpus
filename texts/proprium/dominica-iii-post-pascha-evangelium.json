@@ -169,11 +169,11 @@
         { "id": "w148", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": "," },
         { "id": "w149", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w150", "form": "gaudébit", "lemma": "gaudeo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
-        { "id": "w151", "form": "cor", "lemma": "cor", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 3 } },
-        { "id": "w152", "form": "vestrum", "lemma": "vester", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "post": ":", "head": "w151" },
+        { "id": "w151", "form": "cor", "lemma": "cor", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg", "decl": 3 } },
+        { "id": "w152", "form": "vestrum", "post": ":", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "head": "w151" },
         { "id": "w153", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w154", "form": "gáudium", "lemma": "gaudium", "morph": { "case": "voc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w155", "form": "vestrum", "lemma": "vester", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "substantive": true },
+        { "id": "w154", "form": "gáudium", "lemma": "gaudium", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w155", "form": "vestrum", "lemma": "vester", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w154" },
         { "id": "w156", "form": "nemo", "lemma": "nemo", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w157", "form": "tollet", "lemma": "tollo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w158", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w159" },
@@ -192,7 +192,11 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w129": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
+      "w129": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w151": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w152": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w154": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w155": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

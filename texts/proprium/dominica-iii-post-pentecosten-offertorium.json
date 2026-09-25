@@ -31,14 +31,14 @@
         { "id": "w010", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
         { "id": "w011", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w012", "form": "derelínquis", "lemma": "derelinquo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w013", "form": "quæréntes", "lemma": "quaero", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
-        { "id": "w014", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": ":" },
+        { "id": "w013", "form": "quæréntes", "lemma": "quaero", "morph": { "pos": "verb", "case": "acc", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w014", "form": "te", "post": ":", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w015", "form": "psállite", "lemma": "psallo", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "act", "conj": 3 } },
         { "id": "w016", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w017", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w018", "form": "hábitat", "lemma": "habito", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w019", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w020" },
-        { "id": "w020", "form": "Sion", "lemma": "Sion", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f" }, "post": ":" },
+        { "id": "w019", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w020" },
+        { "id": "w020", "form": "Sion", "post": ":", "lemma": "Sion", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f" } },
         { "id": "w021", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
         { "id": "w022", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w023", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -77,11 +77,14 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w020": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
       "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

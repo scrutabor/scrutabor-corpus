@@ -55,7 +55,7 @@
         { "id": "w034", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w035", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w036" },
         { "id": "w036", "form": "vínculis", "lemma": "vinculum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w037", "form": "meis", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "post": ",", "substantive": true },
+        { "id": "w037", "form": "meis", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "head": "w036" },
         { "id": "w038", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w039", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w040" },
         { "id": "w040", "form": "defensióne", "lemma": "defensio", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 3 }, "post": "," },
@@ -64,8 +64,8 @@
         { "id": "w043", "form": "Evangélii", "lemma": "evangelium", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w044", "form": "sócios", "lemma": "socius", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w048" },
         { "id": "w045", "form": "gáudii", "lemma": "gaudium", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w046", "form": "mei", "lemma": "meus", "morph": { "pos": "adj", "case": "gen", "gender": "m", "number": "sg" }, "substantive": true },
-        { "id": "w047", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w048" },
+        { "id": "w046", "form": "mei", "lemma": "meus", "morph": { "pos": "adj", "case": "gen", "gender": "n", "number": "sg" }, "head": "w045" },
+        { "id": "w047", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "head": "w048" },
         { "id": "w048", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w049", "form": "esse", "lemma": "sum", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." },
         { "id": "w050", "form": "Testis", "lemma": "testis", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
@@ -145,7 +145,10 @@
       "w060": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w061": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w077": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
+      "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w046": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w047": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
