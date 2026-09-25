@@ -42,6 +42,24 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C2.txt",
       "sha256": "1fb67608f24b6f80604e0735eccbbbe8950c1bf1b2246164b454d7f772b16d40"
+    },
+    "pentecost-gospel": {
+      "upstream": "web/www/missa/Latin/Tempora/Pasc7-0.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pasc7-0.txt",
+      "sha256": "b82047ee1044c54a8b127e887ba3f4ea823e73921b38f6e55c4c9699533ea304"
+    },
+    "philip-james-gospel": {
+      "upstream": "web/www/missa/Latin/Sancti/05-01.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/05-01.txt",
+      "sha256": "df1c6d4e5f450a4e9e4dda5ad6b47ff086cfe4893696dd4febcd27bca4815511"
+    },
+    "epiphany-vi-epistle": {
+      "upstream": "web/www/missa/Latin/Tempora/Epi6-0.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Epi6-0.txt",
+      "sha256": "f2e1dbe62b235504f395637720b6955a6e034897b8ff5945c35a72d63ed89158"
     }
   },
   "bindings": {
@@ -239,6 +257,69 @@
           "archive": "common-c2",
           "first": 355,
           "last": 355
+        }
+      ]
+    },
+    "pentecost-gospel": {
+      "witness": "witnesses/proprium.dominica-pentecostes-evangelium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "pentecost-gospel",
+          "first": 81,
+          "last": 81,
+          "section": "Evangelium",
+          "section_line": 78
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "pentecost-gospel",
+          "first": 81,
+          "last": 81
+        }
+      ]
+    },
+    "philip-james-gospel": {
+      "witness": "witnesses/proprium.sanctorum-philippi-et-iacobi-apostolorum-evangelium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "philip-james-gospel",
+          "first": 39,
+          "last": 39,
+          "section": "Evangelium",
+          "section_line": 36
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "philip-james-gospel",
+          "first": 39,
+          "last": 39
+        }
+      ]
+    },
+    "epiphany-vi-epistle": {
+      "witness": "witnesses/proprium.dominica-vi-post-epiphaniam-epistola/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "epiphany-vi-epistle",
+          "first": 22,
+          "last": 22,
+          "section": "Lectio",
+          "section_line": 19
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "epiphany-vi-epistle",
+          "first": 22,
+          "last": 22
         }
       ]
     }

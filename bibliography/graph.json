@@ -3021,6 +3021,11 @@
       "title": "Liber Usualis"
     },
     {
+      "id": "work.liddell-scott-jones.greek-english-lexicon",
+      "responsible": "Henry George Liddell; Robert Scott; Henry Stuart Jones; Roderick McKenzie",
+      "title": "A Greek-English Lexicon"
+    },
+    {
       "id": "work.ludwik-skowronek-droga-do-nieba",
       "responsible": "Ludwik Skowronek",
       "title": "Droga do Nieba"
@@ -3057,6 +3062,11 @@
       "id": "work.the-raccolta",
       "title": "The Raccolta",
       "responsible": "Ambrose St John (English translation)"
+    },
+    {
+      "id": "work.valla.elegantiae",
+      "responsible": "Laurentius Valla",
+      "title": "De linguae Latinae elegantia libri sex"
     }
   ],
   "editions": [
@@ -3371,6 +3381,24 @@
       ]
     },
     {
+      "id": "edition.liddell-scott-jones.greek-english-lexicon.1940",
+      "work": "work.liddell-scott-jones.greek-english-lexicon",
+      "title": "A Greek-English Lexicon",
+      "edition_statement": "Revised and augmented throughout by Henry Stuart Jones, with the assistance of Roderick McKenzie",
+      "place": "Oxford",
+      "publisher": "Clarendon Press",
+      "year": "1940",
+      "publication_type": "lexicon",
+      "authority": "reference_work",
+      "languages": [
+        "en"
+      ],
+      "rights": {
+        "status": "unverified",
+        "basis": "Bibliographic and factual reference only. No claim of public-domain status for the 1940 edition or permission to reproduce the printed dictionary is made."
+      }
+    },
+    {
       "id": "edition.ludwik-skowronek-droga-do-nieba-1907",
       "work": "work.ludwik-skowronek-droga-do-nieba",
       "title": "Droga do Nieba",
@@ -3497,6 +3525,23 @@
         "en",
         "la"
       ]
+    },
+    {
+      "id": "edition.valla.elegantiae.1538",
+      "work": "work.valla.elegantiae",
+      "title": "De linguae Latinae elegantia libri sex",
+      "place": "Lugduni",
+      "publisher": "Sebastianus Gryphius",
+      "year": "1538",
+      "publication_type": "grammar",
+      "authority": "reference_work",
+      "languages": [
+        "la"
+      ],
+      "rights": {
+        "status": "public-domain",
+        "basis": "The Latin work and identified 1538 printing are public-domain; no permission to redistribute repository photographs is asserted."
+      }
     }
   ],
   "digital_items": [
@@ -3757,6 +3802,17 @@
       "access": "open"
     },
     {
+      "id": "item.liddell-scott-jones.greek-english-lexicon.1940.perseus40038e4",
+      "edition": "edition.liddell-scott-jones.greek-english-lexicon.1940",
+      "repository": "Perseus Digital Library",
+      "kind": "born-digital",
+      "record_url": "https://github.com/PerseusDL/lexica/tree/40038e40937fa639639802e73dac15e6c938496b",
+      "revision": "40038e40937fa639639802e73dac15e6c938496b",
+      "sha256": "237bf71d5e293c8cd5bc6c22e125e180cb11f28597b17c2efe0f9018c03e1fcc",
+      "access": "open",
+      "digitization_rights": "PerseusDL lexica distributes its digital repository under CC-BY-SA 4.0. This reference does not republish the dictionary entry."
+    },
+    {
       "id": "item.ludwik-skowronek-droga-do-nieba-1907.sbc",
       "edition": "edition.ludwik-skowronek-droga-do-nieba-1907",
       "repository": "Śląska Biblioteka Cyfrowa",
@@ -3812,6 +3868,16 @@
       "access": "open",
       "scan_url": "https://archive.org/download/theraccoltaorcol00unknuoft/theraccoltaorcol00unknuoft.pdf",
       "sha256": "c9809a19f94297b103f773e26129d932f4a0eaa99796e398155dc35a92e2fa7b"
+    },
+    {
+      "id": "item.valla.elegantiae.1538.mateo",
+      "edition": "edition.valla.elegantiae.1538",
+      "repository": "University of Mannheim, MATEO/CAMENA, Sch 102/218",
+      "kind": "scan",
+      "record_url": "https://mateo.uni-mannheim.de/itali/autoren/valla_itali.html",
+      "scan_url": "https://mateo.uni-mannheim.de/itali/valla3/jpg/valla185.jpg",
+      "access": "open",
+      "digitization_rights": "Repository photographs are linked as research evidence, not reproduced or licensed for redistribution here."
     }
   ],
   "uses": [
@@ -23292,12 +23358,13 @@
         "text": "proprium.dominica-pentecostes-evangelium"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Pasc7-0.txt (section [Evangelium]); resolved spans: web/www/missa/Latin/Tempora/Pasc7-0.txt (lines 79-81)"
+        "section": "web/www/missa/Latin/Tempora/Pasc7-0.txt [Evangelium], body line 81"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "b82047ee1044c54a8b127e887ba3f4ea823e73921b38f6e55c4c9699533ea304"
+      "claim": "The pinned digital file supplies a complete comparison body. Its own readings, including substantive variants where present, are retained without claiming it is an independent copy of the controlling 1962 printing.",
+      "verified_on": "2026-09-19",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "b82047ee1044c54a8b127e887ba3f4ea823e73921b38f6e55c4c9699533ea304",
+      "decision_reason": "Complete recollation corrects the earlier exact-source claim; the actual printed and digital readings remain separately attributable."
     },
     {
       "id": "use.proprium.dominica-pentecostes-evangelium.mr1962",
@@ -23313,10 +23380,31 @@
         "scan": "leaf n432 / PDF p. 433",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n432/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "b87eae39c61069223ba208a01c5dbc9c682f93dbed66bd44ea054144d85fdd35"
+      "claim": "The cited original page prints the complete component, directly re-collated including its actual grammatical readings and punctuation; no shared expansion is needed.",
+      "verified_on": "2026-09-19",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "b87eae39c61069223ba208a01c5dbc9c682f93dbed66bd44ea054144d85fdd35",
+      "decision_reason": "Complete recollation corrects the earlier exact-source claim; the actual printed and digital readings remain separately attributable."
+    },
+    {
+      "id": "use.proprium.dominica-pentecostes-evangelium.w038.valla1538",
+      "edition": "edition.valla.elegantiae.1538",
+      "digital_item": "item.valla.elegantiae.1538.mateo",
+      "role": "grammatical_support",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-pentecostes-evangelium",
+        "word": "w038"
+      },
+      "locator": {
+        "printed": "Liber III, caput XIX, pp. 184–186; Gospel example p. 185",
+        "scan": "MATEO/CAMENA images valla184–valla186; Sch 102/218",
+        "page_url": "https://mateo.uni-mannheim.de/itali/valla3/jpg/valla185.jpg"
+      },
+      "claim": "Valla explicitly cites sermonem quem vos audistis, non est meus while explaining an antecedent attracted into the relative pronoun's case. This supports the grammatical explanation of the retained accusative sermonem, not a change to the printed reading.",
+      "verified_on": "2026-09-19",
+      "evidence_sha256": "5dcead9a3735d4e6628c989512e16a511c253d66e9622e4b2e0361810cdc3823",
+      "decision": "RETAIN"
     },
     {
       "id": "use.proprium.dominica-pentecostes-introitus.do44667ff",
@@ -25228,12 +25316,13 @@
         "text": "proprium.dominica-vi-post-epiphaniam-epistola"
       },
       "locator": {
-        "section": "pinned source key Tempora/Epi6-0; resolved section [Lectio] with declared inherited references"
+        "section": "web/www/missa/Latin/Tempora/Epi6-0.txt [Lectio], body line 22"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "f2e1dbe62b235504f395637720b6955a6e034897b8ff5945c35a72d63ed89158"
+      "claim": "The pinned digital file supplies a complete comparison body. Its own readings, including substantive variants where present, are retained without claiming it is an independent copy of the controlling 1962 printing.",
+      "verified_on": "2026-09-19",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "f2e1dbe62b235504f395637720b6955a6e034897b8ff5945c35a72d63ed89158",
+      "decision_reason": "Complete recollation corrects the earlier exact-source claim; the actual printed and digital readings remain separately attributable."
     },
     {
       "id": "use.proprium.dominica-vi-post-epiphaniam-epistola.mr1962",
@@ -25249,10 +25338,30 @@
         "scan": "leaf n497 / PDF p. 498",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n497/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "9ac70fa73b3899b20b47803b3cbd28baaca925b589b041766c519b248b2eddbf"
+      "claim": "The cited original page prints the complete component, directly re-collated including its actual grammatical readings and punctuation; no shared expansion is needed.",
+      "verified_on": "2026-09-19",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "9ac70fa73b3899b20b47803b3cbd28baaca925b589b041766c519b248b2eddbf",
+      "decision_reason": "Complete recollation corrects the earlier exact-source claim; the actual printed and digital readings remain separately attributable."
+    },
+    {
+      "id": "use.proprium.dominica-vi-post-epiphaniam-epistola.w064.lsj1940",
+      "edition": "edition.liddell-scott-jones.greek-english-lexicon.1940",
+      "digital_item": "item.liddell-scott-jones.greek-english-lexicon.1940.perseus40038e4",
+      "role": "lexical_support",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-vi-post-epiphaniam-epistola",
+        "word": "w064"
+      },
+      "locator": {
+        "section": "s.v. plērophoria, TEI entry n83833, sense I, expressly citing 1 Thessalonians 1:5; grc.lsj.perseus-eng17.xml",
+        "page_url": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0057%3Aentry%3Dplhrofori%2Fa"
+      },
+      "claim": "The English lexicon gives assurance or certainty for plērophoria and explicitly cites 1 Thessalonians 1:5. This supports the contextual explanation of Latin plenitudine here; it does not replace the selected Latin wording or supply a target translation.",
+      "verified_on": "2026-09-19",
+      "evidence_sha256": "237bf71d5e293c8cd5bc6c22e125e180cb11f28597b17c2efe0f9018c03e1fcc",
+      "decision": "RETAIN"
     },
     {
       "id": "use.proprium.dominica-vi-post-epiphaniam-evangelium.do44667ff",
@@ -47109,12 +47218,13 @@
         "text": "proprium.sanctorum-philippi-et-iacobi-apostolorum-evangelium"
       },
       "locator": {
-        "section": "pinned source key Sancti/05-01; resolved section [Evangelium] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/05-01.txt [Evangelium], body line 39"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "df1c6d4e5f450a4e9e4dda5ad6b47ff086cfe4893696dd4febcd27bca4815511"
+      "claim": "The pinned digital file supplies a complete comparison body. Its own readings, including substantive variants where present, are retained without claiming it is an independent copy of the controlling 1962 printing.",
+      "verified_on": "2026-09-19",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "df1c6d4e5f450a4e9e4dda5ad6b47ff086cfe4893696dd4febcd27bca4815511",
+      "decision_reason": "Complete recollation corrects the earlier exact-source claim; the actual printed and digital readings remain separately attributable."
     },
     {
       "id": "use.proprium.sanctorum-philippi-et-iacobi-apostolorum-evangelium.mr1962",
@@ -47130,10 +47240,50 @@
         "scan": "leaf n608 / PDF p. 609",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n608/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "34e8dff4354fd87e34c2f1037ac058d9ac248ecf5d31e89c5c63b0c72e42c198"
+      "claim": "The cited original page prints the complete component, directly re-collated including its actual grammatical readings and punctuation; no shared expansion is needed.",
+      "verified_on": "2026-09-19",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "34e8dff4354fd87e34c2f1037ac058d9ac248ecf5d31e89c5c63b0c72e42c198",
+      "decision_reason": "Complete recollation corrects the earlier exact-source claim; the actual printed and digital readings remain separately attributable."
+    },
+    {
+      "id": "use.proprium.sanctorum-philippi-et-iacobi-apostolorum-evangelium.w104.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sanctorum-philippi-et-iacobi-apostolorum-evangelium",
+        "word": "w104"
+      },
+      "locator": {
+        "section": "Latin/Sancti/05-01.txt, [Evangelium], line 39 (Ioannes 14:7)",
+        "page_url": "https://github.com/DivinumOfficium/divinum-officium/blob/44667ff518b8ff1439780470828b39714f5306a2/web/www/missa/Latin/Sancti/05-01.txt#L39"
+      },
+      "claim": "The pinned digital Gospel reads cognoscátis, present active subjunctive, second person plural. This is a variant from, not an exact transcription of, the printed cognoscétis at this word.",
+      "verified_on": "2026-09-19",
+      "evidence_sha256": "df1c6d4e5f450a4e9e4dda5ad6b47ff086cfe4893696dd4febcd27bca4815511",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.proprium.sanctorum-philippi-et-iacobi-apostolorum-evangelium.w104.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sanctorum-philippi-et-iacobi-apostolorum-evangelium",
+        "word": "w104"
+      },
+      "locator": {
+        "printed": "p. 527, SS. Philippi et Iacobi Apostolorum, Evangelium (Io. 14, 7)",
+        "scan": "Archive.org leaf n608; PDF page 609",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n608/mode/1up"
+      },
+      "claim": "The printed Gospel reads cognoscétis, future active indicative, second person plural; this is the selected reading at this word.",
+      "verified_on": "2026-09-19",
+      "evidence_sha256": "34e8dff4354fd87e34c2f1037ac058d9ac248ecf5d31e89c5c63b0c72e42c198",
+      "decision": "RETAIN"
     },
     {
       "id": "use.proprium.sanctorum-philippi-et-iacobi-apostolorum-introitus.do44667ff",
@@ -59390,9 +59540,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "b8e30fcdaf5b18454f52af894a9fff9fa94af5187391c56f396dae87504cf86c",
+      "transcription_sha256": "452bd8b819ffe0980c64094ca4a83fc6bdefdb8af1a5c5d52d6fc4c2d63c7315",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+      "independence_basis": "Direct re-collation of the complete component from the identified registered 1962 typical-edition original page image; no OCR wording substituted."
     },
     {
       "id": "witness.proprium.dominica-pentecostes-introitus.do44667ff",
@@ -60482,7 +60632,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "8bcba3264e2a030783601f72c43943b27cde0919441410f6116f037b26747c7a",
+      "transcription_sha256": "f8dae726884c1631fae014598e0d930122ae3ec7ba83ef53dad23c2335b439d3",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
     },
@@ -60494,9 +60644,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "8bcba3264e2a030783601f72c43943b27cde0919441410f6116f037b26747c7a",
+      "transcription_sha256": "8565be3a76e011365f803ef8e099611eba6f84f64bcaf7a4e7158683cfabed0c",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+      "independence_basis": "Direct re-collation of the complete component from the identified registered 1962 typical-edition original page image; no OCR wording substituted."
     },
     {
       "id": "witness.proprium.dominica-vi-post-epiphaniam-evangelium.do44667ff",
@@ -72674,7 +72824,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "a84ad3139c9314bc6f7bad6180b3df1b369b324c24cca95e0c0f0a12d4623670",
+      "transcription_sha256": "a389691cc0623c567812405ec06acde435a29696d51a3f81cfba10346557e7ad",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
     },
@@ -72686,9 +72836,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "a84ad3139c9314bc6f7bad6180b3df1b369b324c24cca95e0c0f0a12d4623670",
+      "transcription_sha256": "9c85c8a43853320dacd40b759b9919d7e12f36442de5a13c715afa77e8bf8b69",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+      "independence_basis": "Direct re-collation of the complete component from the identified registered 1962 typical-edition original page image; no OCR wording substituted."
     },
     {
       "id": "witness.proprium.sanctorum-philippi-et-iacobi-apostolorum-introitus.do44667ff",
@@ -80144,16 +80294,17 @@
     {
       "id": "collation.proprium.dominica-pentecostes-evangelium.mr1962-do44667ff",
       "text": "proprium.dominica-pentecostes-evangelium",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete 1962 typical-edition component; no shared expansion. Exact printed and pinned digital readings, including punctuation and substantive variants, remain distinguished in the witnesses and apparatus.",
       "selected_text_sha256": "2217431df7dcd8da95ccd4b4a44fe9dfb062b9b2363d256bd9b3f5850791a660",
       "witnesses": [
         "witness.proprium.dominica-pentecostes-evangelium.do44667ff",
         "witness.proprium.dominica-pentecostes-evangelium.mr1962"
       ],
       "apparatus": {
-        "entries": 5,
+        "entries": 12,
         "classes": [
-          "orthography"
+          "orthography",
+          "punctuation"
         ]
       }
     },
@@ -80865,15 +81016,18 @@
     {
       "id": "collation.proprium.dominica-vi-post-epiphaniam-epistola.mr1962-do44667ff",
       "text": "proprium.dominica-vi-post-epiphaniam-epistola",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete 1962 typical-edition component; no shared expansion. Exact printed and pinned digital readings, including punctuation and substantive variants, remain distinguished in the witnesses and apparatus.",
       "selected_text_sha256": "f719d342e9d5f2a669874051aedbe71b163f021884045b8205ca88aa4f33ef7b",
       "witnesses": [
         "witness.proprium.dominica-vi-post-epiphaniam-epistola.do44667ff",
         "witness.proprium.dominica-vi-post-epiphaniam-epistola.mr1962"
       ],
       "apparatus": {
-        "entries": 0,
-        "classes": []
+        "entries": 14,
+        "classes": [
+          "orthography",
+          "punctuation"
+        ]
       }
     },
     {
@@ -88254,15 +88408,21 @@
     {
       "id": "collation.proprium.sanctorum-philippi-et-iacobi-apostolorum-evangelium.mr1962-do44667ff",
       "text": "proprium.sanctorum-philippi-et-iacobi-apostolorum-evangelium",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
-      "selected_text_sha256": "d1215fdad1ec5ead7149d196c61e129b6c8f03568d299bf72a258f8565a5d3a0",
+      "recension": "The complete 1962 typical-edition component; no shared expansion. Exact printed and pinned digital readings, including punctuation and substantive variants, remain distinguished in the witnesses and apparatus.",
+      "selected_text_sha256": "1b6e5788b1f1f3bc216013959350c67df08cc4f1e683677b8abc055f49b6d99f",
       "witnesses": [
         "witness.proprium.sanctorum-philippi-et-iacobi-apostolorum-evangelium.do44667ff",
         "witness.proprium.sanctorum-philippi-et-iacobi-apostolorum-evangelium.mr1962"
       ],
       "apparatus": {
-        "entries": 0,
-        "classes": []
+        "entries": 24,
+        "classes": [
+          "accent",
+          "capitalization",
+          "orthography",
+          "punctuation",
+          "substantive"
+        ]
       }
     },
     {
