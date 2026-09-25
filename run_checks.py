@@ -69,6 +69,7 @@ from checks.syntax import check as check_syntax
 from checks.syntax import coverage as syntax_coverage
 from checks.transcription import check_transcriptions
 from checks.translation_basis import check as check_translation_basis
+from checks.translation_integrity import check as check_translation_integrity
 from checks.translation_names import check as check_translation_names
 from checks.translation_provenance import check as check_translation_provenance
 from checks.translation_punctuation import check as check_translation_punctuation
@@ -256,6 +257,7 @@ def main(text_id: str) -> int:
         gloss_docs.append(gdoc)
         all_errors += check_prose(gdoc)
         all_errors += check_translation_punctuation(gdoc)
+        all_errors += check_translation_integrity(doc, gdoc)
         all_errors += check_translation_names(doc, gdoc)
         all_errors += lint_gloss(gdoc, doc)
         all_errors += check_interlinear_quality(doc, gdoc)
