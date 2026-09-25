@@ -362,3 +362,49 @@ def test_opt_in_catalogue_runner_really_calls_boundary_validation(tmp_path, caps
 def test_empty_catalogue_fails_instead_of_claiming_a_pass(tmp_path, capsys):
     assert orations.run(tmp_path) == 1
     assert "no Proper orations examined" in capsys.readouterr().out
+
+
+CATHEDRA = "proprium.cathedra-sancti-petri-"
+
+
+@pytest.mark.parametrize("piece", ["collecta", "postcommunio", "secreta"])
+def test_paul_commemoration_is_joined_sub_unica_conclusione(piece):
+    """RG 110 b: the Peter prayer has no conclusion; the Paul prayer carries it."""
+    doc = text(CATHEDRA + piece)
+    assert orations.check_doc(doc) == ([], 1)
+    first, second = verses(doc)[:2]
+    roles = orations.structure(doc)[1]
+    assert roles[first["id"]] == ("joined-secret" if piece == "secreta" else "joined")
+    assert roles[second["id"]] == ("secret-body" if piece == "secreta" else "body")
+    assert orations.tokens(first)[-1] not in ("deus", "saeculorum")
+    assert first["voice"] == ("secreto" if piece == "secreta" else "clara")
+    assert participation.derive(doc, first) == {}
+    rubric = doc["segments"][doc["segments"].index(first) + 1]
+    assert rubric["type"] == "rubric" and orations.UNICA in orations.substantive(rubric["text"])
+
+
+@pytest.mark.parametrize("piece", ["collecta", "postcommunio", "secreta"])
+def test_joined_prayer_cannot_keep_its_own_conclusion(piece):
+    doc = text(CATHEDRA + piece)
+    first, second = verses(doc)[:2]
+    tail = [w for w in second["words"] if orations.tokens({"words": [w]})[0] == "deus"]
+    first["words"] = first["words"] + copy.deepcopy(tail)
+    errors, roles = orations.structure(doc)
+    assert any("no conclusion of its own" in e for e in errors)
+    assert roles == {}
+
+
+@pytest.mark.parametrize(
+    "rubric", [None, "Et fit commemoratio Sancti Pauli Apostoli."], ids=["removed", "other"]
+)
+@pytest.mark.parametrize("piece", ["collecta", "postcommunio", "secreta"])
+def test_only_the_printed_rubric_licenses_a_prayer_without_conclusion(piece, rubric):
+    doc = text(CATHEDRA + piece)
+    index = next(i for i, s in enumerate(doc["segments"]) if s["type"] == "rubric")
+    if rubric is None:
+        del doc["segments"][index]
+    else:
+        doc["segments"][index]["text"] = rubric
+    errors, roles = orations.structure(doc)
+    assert errors and roles == {}
+    assert orations.base_attributes(doc) == {}

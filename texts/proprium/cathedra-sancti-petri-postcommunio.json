@@ -7,9 +7,9 @@
   "variant": "cathedra-sancti-petri",
   "sung": false,
   "ids": {
-    "next": 44,
+    "next": 60,
     "segments": {
-      "next": 3
+      "next": 5
     }
   },
   "segments": [
@@ -39,7 +39,48 @@
         { "id": "w018", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "substantive": true },
         { "id": "w019", "form": "sumámus", "lemma": "sumo", "morph": { "conj": 3, "mood": "subj", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w020", "form": "indulgéntiæ", "lemma": "indulgentia", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "sg", "decl": 1 } },
-        { "id": "w021", "form": "largitátem", "lemma": "largitas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." },
+        { "id": "w021", "form": "largitátem", "lemma": "largitas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." }
+      ],
+      "delivery": {
+        "cantu": {
+          "speaker": "sacerdos",
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s03",
+      "type": "rubric",
+      "text": "Et fit commemoratio Sancti Pauli Apostoli sub unica conclusione:"
+    },
+    {
+      "id": "s04",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "delivery": {
+        "cantu": {
+          "speaker": "sacerdos",
+          "voice": "cantus"
+        }
+      },
+      "words": [
+        { "id": "w044", "form": "Sanctificáti", "post": ",", "lemma": "sanctifico", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w048" },
+        { "id": "w045", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w046", "form": "salutári", "lemma": "salutaris", "morph": { "case": "abl", "gender": "n", "number": "sg", "pos": "adj" }, "head": "w047" },
+        { "id": "w047", "form": "mystério", "post": ":", "lemma": "mysterium", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w048", "form": "quǽsumus", "post": ";", "lemma": "quaeso", "morph": { "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act", "conj": 3 } },
+        { "id": "w049", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w050", "form": "nobis", "lemma": "nos", "morph": { "case": "dat", "number": "pl", "pos": "pron" } },
+        { "id": "w051", "form": "eius", "lemma": "is", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "pron" } },
+        { "id": "w052", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
+        { "id": "w053", "form": "desit", "lemma": "desum", "morph": { "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w054", "form": "orátio", "post": ",", "lemma": "oratio", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w055", "form": "cuius", "lemma": "qui", "morph": { "case": "gen", "number": "sg", "pos": "pron" } },
+        { "id": "w056", "form": "nos", "lemma": "nos", "morph": { "case": "acc", "number": "pl", "pos": "pron" } },
+        { "id": "w057", "form": "donásti", "lemma": "dono", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "perf", "voice": "act", "conj": 1 } },
+        { "id": "w058", "form": "patrocínio", "lemma": "patrocinium", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w059", "form": "gubernári", "post": ".", "lemma": "guberno", "morph": { "conj": 1, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "pass" } },
         { "id": "w022", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w023" },
         { "id": "w023", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w024", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w025" },
@@ -61,13 +102,7 @@
         { "id": "w040", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w041" },
         { "id": "w041", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
         { "id": "w042", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." }
-      ],
-      "delivery": {
-        "cantu": {
-          "speaker": "sacerdos",
-          "voice": "cantus"
-        }
-      }
+      ]
     },
     {
       "id": "s02",
@@ -97,9 +132,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "notes": "Saint Paul's commemoration is inseparable from a Mass of Saint Peter (general rubric 110): the page prints the Peter prayer without a conclusion, the rubric, and the Paul prayer with the single conclusion Per Dóminum. The two prayers count as one oration.",
     "source": {
-      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The controlling witness is an explicit same-edition composite: both prayers as printed on page 479, with the full conclusion prescribed in general rubric 115a (page xvii) in place of the printed abbreviation Per Dóminum. The pinned Divinum Officium text, projected from its Peter and Paul sections under its own rule Sub unica conclusione, serves only as a derived comparison witness.",
       "witnesses": "witnesses/proprium.cathedra-sancti-petri-postcommunio/",
       "apparatus": "witnesses/proprium.cathedra-sancti-petri-postcommunio/apparatus.json"
     },
@@ -148,7 +183,23 @@
       "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w041": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w043": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } }
+      "w043": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w044": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w045": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w046": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w047": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w048": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
+      "w049": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w050": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w051": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w052": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w053": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w054": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w055": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w056": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w057": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w058": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w059": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

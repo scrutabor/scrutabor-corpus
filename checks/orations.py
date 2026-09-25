@@ -5,6 +5,12 @@ conclusion. RG 511 d/i and 513–514 govern collects/postcommunions and sung
 delivery; the Ordo Missae prints Per omnia ... R. Amen before the preface.
 DMS 16 b, 25 a/26 and 31 a distinguish that answer from priestly Amen.
 
+RG 110 b joins the other Apostle's prayer to a Mass of St Peter or St Paul
+"sub unica conclusione": the page prints the first prayer without a
+conclusion, that rubric, and the second prayer carrying the single
+conclusion. Only the printed rubric, standing between the two verses,
+licenses a verse without its own conclusion.
+
 This is deliberately not a general Amen matcher or a conclusion expander.
 Only complete, separately modeled boundaries receive new derived labels.
 An unsplit or abbreviated prayer fails without receiving new attribution.
@@ -26,6 +32,7 @@ GENERA = {"collecta", "secreta", "postcommunio"}
 TAIL = ("per", "omnia", "saecula", "saeculorum")
 DAWN = "proprium.nativitas-domini-in-aurora-"
 PREFACE = "ordinarium.praefatio-dialogus"
+UNICA = "sub unica conclusione"
 
 
 def genus(doc: dict[str, Any]) -> str | None:
@@ -59,6 +66,26 @@ def _dawn_nonfinal(verses: list[dict[str, Any]]) -> bool:
     )
 
 
+def joined(doc: dict[str, Any]) -> set[str]:
+    """Verses the printed rubric joins to the next prayer (RG 110 b).
+
+    MR1962 pp. 477 and 479 print the Peter prayer, then "Et fit commemoratio
+    S. Pauli Ap. sub unica conclusione:", then the Paul prayer ending Per
+    Dominum; the two prayers count as one oration. A verse qualifies only
+    when that rubric immediately follows it and another verse follows the
+    rubric.
+    """
+    segs = doc.get("segments", [])
+    return {
+        first["id"]
+        for first, rubric, second in zip(segs, segs[1:], segs[2:], strict=False)
+        if first.get("type") == "verse"
+        and rubric.get("type") == "rubric"
+        and second.get("type") == "verse"
+        and UNICA in substantive(rubric.get("text", ""))
+    }
+
+
 def structure(doc: dict[str, Any]) -> tuple[list[str], dict[str, str]]:
     """Return shape errors and segment roles, independent of stored labels.
 
@@ -73,10 +100,15 @@ def structure(doc: dict[str, Any]) -> tuple[list[str], dict[str, str]]:
     verses = [s for s in doc.get("segments", []) if s.get("type") == "verse"]
     errors: list[str] = []
     roles: dict[str, str] = {}
+    first_prayers = joined(doc)
     for seg in verses:
         said = tokens(seg)
         if not said:
             errors.append(f"{seg['id']}: empty oration verse")
+        if seg["id"] in first_prayers and (said[-1:] == ("deus",) or said[-4:] == TAIL):
+            errors.append(
+                f"{seg['id']}: a prayer joined sub unica conclusione has no conclusion of its own"
+            )
         if said[-2:] in {("per", "dominum"), ("qui", "tecum"), ("qui", "vivis")} or said[-3:] == (
             "per",
             "eundem",
@@ -90,6 +122,10 @@ def structure(doc: dict[str, Any]) -> tuple[list[str], dict[str, str]]:
         ):
             errors.append(f"{seg['id']}: Amen is absorbed into a priestly oration")
 
+    roles.update(
+        {sid: "joined-secret" if piece == "secreta" else "joined" for sid in first_prayers}
+    )
+    verses = [s for s in verses if s["id"] not in first_prayers]
     if piece == "secreta":
         if doc["id"] == DAWN + "secreta":
             if not _dawn_nonfinal(verses):
@@ -139,14 +175,16 @@ def base_attributes(doc: dict[str, Any]) -> dict[str, dict[str, str]]:
     return {
         sid: {
             "speaker": "minister" if role == "response" else "sacerdos",
-            "voice": "secreto" if role in {"secret-body", "nonfinal-secret"} else "clara",
+            "voice": "secreto"
+            if role in {"secret-body", "nonfinal-secret", "joined-secret"}
+            else "clara",
         }
         for sid, role in roles.items()
     }
 
 
 def sung_delivery(role: str | None) -> dict[str, Any]:
-    if role in {"body", "tail", "response"}:
+    if role in {"body", "joined", "tail", "response"}:
         return {
             "cantu": {"speaker": "schola" if role == "response" else "sacerdos", "voice": "cantus"}
         }
