@@ -70,7 +70,7 @@
         { "id": "w049", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w048" },
         { "id": "w050", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w051", "form": "tu", "lemma": "tu", "morph": { "case": "nom", "number": "sg", "pos": "pron" }, "post": "," },
-        { "id": "w052", "form": "Ísrael", "lemma": "Israel", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" }, "post": "," },
+        { "id": "w052", "form": "Israël", "post": ",", "lemma": "Israel", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" } },
         { "id": "w053", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
         { "id": "w054", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w055" },
         { "id": "w055", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
@@ -110,7 +110,7 @@
         { "id": "w089", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w090", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w091", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "substantive": true },
-        { "id": "w092", "form": "Ísrael", "lemma": "Israel", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" }, "post": "," },
+        { "id": "w092", "form": "Israël", "post": ",", "lemma": "Israel", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" } },
         { "id": "w093", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w094", "form": "elégit", "lemma": "eligo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 3 } },
         { "id": "w095", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "." }
@@ -129,7 +129,9 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w066": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w066": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w052": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w092": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

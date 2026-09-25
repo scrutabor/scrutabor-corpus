@@ -41,7 +41,7 @@
         { "id": "w020", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w021" },
         { "id": "w021", "form": "conspéctu", "lemma": "conspectus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w022", "form": "filiórum", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 } },
-        { "id": "w023", "form": "Ísrael", "lemma": "Israel", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" }, "post": "." }
+        { "id": "w023", "form": "Israël", "post": ".", "lemma": "Israel", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" } }
       ],
       "participation": {
         "cantu": {
@@ -72,7 +72,10 @@
       "apparatus": "witnesses/proprium.dominica-xviii-post-pentecosten-offertorium/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true
