@@ -10344,12 +10344,31 @@
         "text": "proprium.cathedra-sancti-petri-introitus"
       },
       "locator": {
-        "section": "pinned source key Sancti/02-22; resolved section [Introitus] with declared inherited references"
+        "section": "horas/Latin/Commune/C2.txt [Introitus], lines 349–355; &Gloria resolved from missa/Latin/Ordo/Prayers.txt [Gloria], lines 12–14"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
+      "claim": "The exact pinned Latin data give the Statuit antiphon, psalm verse, full Gloria and repeated antiphon in the Common whose chant the typical edition prints. The digital proper for 22 February resolves to a different introit (In virtute tua, @Commune/C2a), so this attests the chant text, not that assignment. This is a derived digital comparison, not an independent page image.",
+      "verified_on": "2026-09-25",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "09cbe26e84775821a4ec9573d9e1d11773fcb77e4622ff90dbda98fde511160c",
+      "decision_reason": "The previous record resolved the digital 22 February proper, whose introit the typical edition does not print; the comparison is now bound to the Statuit common text with declared Paschaltide recensions."
+    },
+    {
+      "id": "use.proprium.cathedra-sancti-petri-introitus.lu1961",
+      "edition": "edition.liber-usualis.1961",
+      "digital_item": "item.liber-usualis.1961.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.cathedra-sancti-petri-introitus"
+      },
+      "locator": {
+        "printed": "pp. 1390, 1330–1331, 1182",
+        "scan": "PDF pp. 1594, 1530–1531, 1376"
+      },
+      "claim": "22 February directs the Mass of St Peter's Chair at Rome, whose Introit is Statuit on page 1182. The directly viewed antiphon and psalm verse form this declared partial comparison.",
+      "verified_on": "2026-09-25",
       "decision": "RETAIN",
-      "evidence_sha256": "2f4e54ea8a72636ee6fc60c7c7c4d71b7cff627968e62a7b18eeda9b4801ecae"
+      "evidence_sha256": "87a3560e5e1bcbcf7ba4992f88f5a18d849207090ef96c195d1841182e40d7e2"
     },
     {
       "id": "use.proprium.cathedra-sancti-petri-introitus.mr1962",
@@ -10361,14 +10380,16 @@
         "text": "proprium.cathedra-sancti-petri-introitus"
       },
       "locator": {
-        "printed": "p. 478",
-        "scan": "leaf n559 / PDF p. 560",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n559/mode/1up"
+        "printed": "pp. 477, 1; p. xxix, no. 427",
+        "scan": "leaves n558, n80, n34 / PDF pp. 559, 81, 35",
+        "section": "Proper Introitus; full Gloria and year-round antiphon-repetition rule; general rubric 427",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n558/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "e60bef2884398aaec3719046250879507e39e39e846d5e42065ff943b2b92f70"
+      "claim": "The complete introit is an explicit same-edition composite: the proper antiphon Statuit and Psalm131:1 on page 477, the full Gloria on page 1, and the repeated antiphon required by the proper-page incipit, page1's annual repetition rule and general rubric427. These page images establish all recited words without relying on the derived comparison text.",
+      "verified_on": "2026-09-25",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "8e5311d636452dcfb0d5651b426702571114570969efe46a42594bdd05d01716",
+      "decision_reason": "The earlier record cited page 478 and the introit In virtute tua; the directly viewed page 477 prints Statuit for this feast."
     },
     {
       "id": "use.proprium.cathedra-sancti-petri-offertorium.do44667ff",
@@ -52437,9 +52458,46 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "443212314f6d9b8a57bf29c197c8cff237f4b0490c46261f2bcfb2ddb875eec9",
-      "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
+      "transcription_sha256": "09cbe26e84775821a4ec9573d9e1d11773fcb77e4622ff90dbda98fde511160c",
+      "orthography_profile": "exact-pinned-source-resolved",
+      "independence_basis": "Pinned upstream Latin data maintained outside this corpus, resolved through the exact cited Common sections. Full doxology comes from the pinned Prayers section, not from the abbreviated proper page."
+    },
+    {
+      "id": "witness.proprium.cathedra-sancti-petri-introitus.lu1961",
+      "text": "proprium.cathedra-sancti-petri-introitus",
+      "use": "use.proprium.cathedra-sancti-petri-introitus.lu1961",
+      "role": "approved_corroboration",
+      "coverage": {
+        "kind": "words",
+        "words": [
+          "w069",
+          "w070",
+          "w071",
+          "w072",
+          "w073",
+          "w074",
+          "w075",
+          "w076",
+          "w077",
+          "w078",
+          "w079",
+          "w080",
+          "w081",
+          "w082",
+          "w083",
+          "w084",
+          "w085",
+          "w086",
+          "w087",
+          "w088",
+          "w089",
+          "w090",
+          "w091"
+        ]
+      },
+      "transcription_sha256": "ee8367ece9314c869c925842a9f9e3c38f77de28d7528ac2788ec85ddba9c11e",
+      "orthography_profile": "exact-musical-lyric-with-explicit-delegation",
+      "independence_basis": "Separate 1961 printed liturgical book, read at its explicit three-location delegation chain; no assertion of genealogical independence from the Roman liturgical tradition."
     },
     {
       "id": "witness.proprium.cathedra-sancti-petri-introitus.mr1962",
@@ -52449,9 +52507,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "443212314f6d9b8a57bf29c197c8cff237f4b0490c46261f2bcfb2ddb875eec9",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
+      "transcription_sha256": "3da1baa45967f94240d092fd30e805197cd51990c41a953c207ed95ddcb1dd7d",
+      "orthography_profile": "explicit-same-edition-composite",
+      "independence_basis": "Every word is supported by directly viewed pages of the same 1962 edition: the proper antiphon and verse, the full printed Gloria, and explicit annual antiphon-repetition instructions. The component ranges are declared in the header. No expansion is copied from the digital comparison source."
     },
     {
       "id": "witness.proprium.cathedra-sancti-petri-offertorium.do44667ff",
@@ -75438,17 +75496,22 @@
       }
     },
     {
-      "id": "collation.proprium.cathedra-sancti-petri-introitus.mr1962-do44667ff",
+      "id": "collation.proprium.cathedra-sancti-petri-introitus.source-comparison",
       "text": "proprium.cathedra-sancti-petri-introitus",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
-      "selected_text_sha256": "f78523fa46f320773068b075abd508e99b6cc915bb1205f50ec6b33e115807a1",
+      "recension": "The 1962 introit explicitly composed from the same edition's proper antiphon and psalm (page 477), full Gloria, and printed antiphon-repetition instructions",
+      "selected_text_sha256": "5541a12781bff6eda3824430022c3ec49ccd6a7e75d0b78f7e33676589ccb9c8",
       "witnesses": [
         "witness.proprium.cathedra-sancti-petri-introitus.do44667ff",
+        "witness.proprium.cathedra-sancti-petri-introitus.lu1961",
         "witness.proprium.cathedra-sancti-petri-introitus.mr1962"
       ],
       "apparatus": {
-        "entries": 0,
-        "classes": []
+        "entries": 11,
+        "classes": [
+          "accent",
+          "orthography",
+          "punctuation"
+        ]
       }
     },
     {
