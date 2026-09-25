@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "Ego", "lemma": "ego", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
         { "id": "w002", "form": "sum", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w003", "form": "pastor", "lemma": "pastor", "morph": { "case": "voc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w003", "form": "pastor", "lemma": "pastor", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w004", "form": "bonus", "lemma": "bonus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "post": ",", "substantive": true },
         { "id": "w005", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": ":" },
         { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -66,7 +66,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

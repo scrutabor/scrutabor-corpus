@@ -52,10 +52,10 @@
         { "id": "w010", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011" },
         { "id": "w011", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "," },
         { "id": "w012", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
-        { "id": "w013", "form": "mitis", "lemma": "mitis", "morph": { "case": "voc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w014" },
+        { "id": "w013", "form": "mitis", "lemma": "mitis", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w014" },
         { "id": "w014", "form": "sum", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w016", "form": "húmilis", "lemma": "humilis", "morph": { "case": "voc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w014" },
+        { "id": "w016", "form": "húmilis", "lemma": "humilis", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w014" },
         { "id": "w017", "form": "Corde", "lemma": "cor", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w018", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w019", "form": "inveniétis", "lemma": "invenio", "morph": { "conj": 4, "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" } },
@@ -90,7 +90,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

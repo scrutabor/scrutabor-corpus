@@ -23,7 +23,7 @@
         { "id": "w002", "form": "firmaméntum", "lemma": "firmamentum", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w003", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "post": ",", "substantive": true },
         { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w005", "form": "refúgium", "lemma": "refugium", "morph": { "case": "voc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w005", "form": "refúgium", "lemma": "refugium", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w006", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "post": ",", "substantive": true },
         { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w008", "form": "liberátor", "lemma": "liberator", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
@@ -62,7 +62,10 @@
       "apparatus": "witnesses/proprium.dominica-iv-post-pentecosten-communio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

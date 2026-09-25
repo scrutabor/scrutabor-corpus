@@ -50,7 +50,7 @@
         { "id": "w029", "form": "firmaméntum", "lemma": "firmamentum", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w030", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "post": ",", "substantive": true },
         { "id": "w031", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w032", "form": "refúgium", "lemma": "refugium", "morph": { "case": "voc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w032", "form": "refúgium", "lemma": "refugium", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w033", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "post": ",", "substantive": true },
         { "id": "w034", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w035", "form": "liberátor", "lemma": "liberator", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -127,7 +127,10 @@
       "apparatus": "witnesses/proprium.dominica-in-septuagesima-introitus/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w032": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true
