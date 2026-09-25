@@ -13677,9 +13677,10 @@
         "section": "pinned source key Sancti/09-29; resolved section [Communio] with declared inherited references"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "e0a500e272427a7ef983417ff91e488182038b92bcf92f36b3f381fec2eb53f2"
+      "verified_on": "2026-09-25",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "e80bd2729955e5ca84746f52cf9efc58bf142211222a49f431a5be8207f091e4",
+      "decision_reason": "Re-projected from the resolved source line, which belongs to the Mass of 8 May. Its Paschaltide Alleluia is declared as a recension difference."
     },
     {
       "id": "use.proprium.dedicatio-sancti-michaelis-archangeli-communio.mr1962",
@@ -13696,9 +13697,10 @@
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n766/mode/1up"
       },
       "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "b3b1226e53699c8ae606f1b4a1b3e05f43694e5b7d63599bb80a753990760455"
+      "verified_on": "2026-09-25",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "b3b1226e53699c8ae606f1b4a1b3e05f43694e5b7d63599bb80a753990760455",
+      "decision_reason": "Recollated against the page image: the page prints no Alleluia after this communion, a comma after dícite and Angeli without an accent."
     },
     {
       "id": "use.proprium.dedicatio-sancti-michaelis-archangeli-epistola.do44667ff",
@@ -54727,7 +54729,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "3d0b4a2a9caf5194e319743e5a4e5ceb2917aa9df9f2caaf20b5c85e7007447c",
+      "transcription_sha256": "e80bd2729955e5ca84746f52cf9efc58bf142211222a49f431a5be8207f091e4",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition."
     },
@@ -54739,7 +54741,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "3d0b4a2a9caf5194e319743e5a4e5ceb2917aa9df9f2caaf20b5c85e7007447c",
+      "transcription_sha256": "4e42a51ab8a490e8073734e559ab7949d5611b89c9af7dafe652f357d24e0b52",
       "orthography_profile": "exact-page-image",
       "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page."
     },
@@ -77392,14 +77394,17 @@
       "id": "collation.proprium.dedicatio-sancti-michaelis-archangeli-communio.mr1962-do44667ff",
       "text": "proprium.dedicatio-sancti-michaelis-archangeli-communio",
       "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
-      "selected_text_sha256": "f68ead4e2c11bdc03fc899e566df987cc1ff063e1e785954ecdb483318d14440",
+      "selected_text_sha256": "5d151ea1600cc74111e1289a610561a47398b7280cea2b6f740a7bf4b10f91cd",
       "witnesses": [
         "witness.proprium.dedicatio-sancti-michaelis-archangeli-communio.do44667ff",
         "witness.proprium.dedicatio-sancti-michaelis-archangeli-communio.mr1962"
       ],
       "apparatus": {
-        "entries": 0,
-        "classes": []
+        "entries": 3,
+        "classes": [
+          "capital-accent",
+          "punctuation"
+        ]
       }
     },
     {

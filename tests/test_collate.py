@@ -278,6 +278,49 @@ class TestAnOmittedWord:
         )
         assert errors
 
+    @staticmethod
+    def joseph(fold: bool):
+        """A page printed before the 1962 decree lacks the clause naming
+        Saint Joseph; the witness that prints it spells him Joseph."""
+        app = [
+            {
+                "at": at,
+                "ours": ours,
+                "witnesses": {"b": ""},
+                "class": "omission",
+                "ruling": "Printed before the decree that added the clause.",
+            }
+            for at, ours in (("w002", "et"), ("w003", "beati"), ("w004", "Ioseph"))
+        ]
+        app.append(
+            {
+                "at": "w004",
+                "ours": "Ioseph",
+                "witnesses": {"a": "Joseph"},
+                "class": "orthography",
+                "ruling": "The house i-form.",
+            }
+        )
+        header = "# fold-ji: true\n" if fold else ""
+        return {"a": f"{header}sed et beati Joseph et beatorum", "b": "sed et beatorum"}, app
+
+    def test_a_declared_fold_attests_the_folded_word(self, tmp_path):
+        pages, app = self.joseph(fold=True)
+        errors, _, stats = collate(
+            a_text("sed", "et", "beati", "Ioseph", "et", "beatorum"),
+            witnesses(tmp_path, pages, app),
+        )
+        assert errors == []
+        assert stats["omissions"] == 3
+
+    def test_an_undeclared_j_form_cannot_attest_the_i_form(self, tmp_path):
+        pages, app = self.joseph(fold=False)
+        errors, _, _ = collate(
+            a_text("sed", "et", "beati", "Ioseph", "et", "beatorum"),
+            witnesses(tmp_path, pages, app),
+        )
+        assert any("w004 has no positive full-witness" in error for error in errors)
+
 
 class TestAStaleRuling:
     """A ruling that matches nothing on the page it names is a claim about

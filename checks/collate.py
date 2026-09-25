@@ -427,14 +427,24 @@ def collate(doc, witness_dir: Path):
     # Positive support comes from the actual uncorrected transcription, not
     # from an apparatus replacement. Align by locus rather than searching for
     # the same word anywhere on a page. A partial witness cannot supply it.
+    # A witness that declares a letter fold (fold-ji, fold-xs) attests under
+    # that fold: its Joseph is this edition's Ioseph, as the comparison below
+    # already treats it.
     attested: dict[str, set[str]] = {}
     for path, meta, text in witnesses:
         if meta.get("covers", "").strip():
             continue
-        printed = substantive(text).split()
-        if len(printed) != len(ours_sub):
+        fold_ji = meta.get("fold-ji", "").strip().lower() == "true"
+        fold_xs = meta.get("fold-xs", "").strip().lower() == "true"
+        chosen_all = (
+            substantive(" ".join(ours_raw), fold_ji=fold_ji, fold_xs=fold_xs).split()
+            if fold_ji or fold_xs
+            else ours_sub
+        )
+        printed = substantive(text, fold_ji=fold_ji, fold_xs=fold_xs).split()
+        if len(printed) != len(chosen_all):
             continue
-        for index, (chosen, observed) in enumerate(zip(ours_sub, printed, strict=True)):
+        for index, (chosen, observed) in enumerate(zip(chosen_all, printed, strict=True)):
             if chosen == observed:
                 attested.setdefault(toks[index][0], set()).add(meta.get("witness", path.stem))
 
