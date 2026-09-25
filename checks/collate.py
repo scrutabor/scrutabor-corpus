@@ -44,7 +44,13 @@ tolerate silently, so a witness file DECLARES it:
 
 The collation applies declared corrigenda before comparing, refuses a
 declaration whose printed reading is not in the file, refuses one with no
-reason, and counts them in the verdict.
+reason, and counts them in the verdict. A declaration emends every token
+that prints the word, which is wrong when the same word also stands
+correctly elsewhere on the page: one Gospel page sets eis for eius once and
+eis rightly three times. Such a slip names its occurrence, counted in the
+witness from 1, and nothing else is touched:
+
+    # corrigendum: eis#3 -> eius (the page's slip; John 20:25 reads eius)
 
 A witness may instead be right about a text this edition does not print:
 the same prayer circulates in more than one RECENSION, and a page giving
@@ -520,14 +526,31 @@ def collate(doc, witness_dir: Path):
                 errors.append(f"{wid}: corrigendum {printed!r} carries no reason")
             # The declared reading is the WORD; the token may carry the
             # page's punctuation, which the emendation leaves alone.
+            word, _, nth = printed.partition("#")
             tokens = text.split()
-            if not any(_emend(t, printed, emended) != t for t in tokens):
+            hits = [i for i, t in enumerate(tokens) if _emend(t, word, emended) != t]
+            if not hits:
                 errors.append(
                     f"{wid}: corrigendum declares {printed!r}, which this witness does not print "
                     "— stale declaration, or the transcription was already emended"
                 )
                 continue
-            text = " ".join(_emend(t, printed, emended) for t in tokens)
+            if nth:
+                if not nth.isdigit() or int(nth) < 1:
+                    errors.append(
+                        f"{wid}: malformed corrigendum occurrence {printed!r} — write 'word#N'"
+                    )
+                    continue
+                if int(nth) > len(hits):
+                    errors.append(
+                        f"{wid}: corrigendum declares {printed!r}, but this witness prints "
+                        f"{word!r} only {len(hits)} time(s)"
+                    )
+                    continue
+                hits = [hits[int(nth) - 1]]
+            for i in hits:
+                tokens[i] = _emend(tokens[i], word, emended)
+            text = " ".join(tokens)
             n_corrigenda += 1
         # Declared recension differences: a word this page's recension has
         # and ours does not. Refused unless the page really prints it and

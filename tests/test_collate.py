@@ -322,6 +322,34 @@ class TestAnOmittedWord:
         assert any("w004 has no positive full-witness" in error for error in errors)
 
 
+class TestAPositionalCorrigendum:
+    """A slip whose word also stands correctly elsewhere names its occurrence."""
+
+    TEXT = ("dixit", "eis", "in", "mánibus", "eius", "et", "eis")
+    RIGHT = "dixit eis in mánibus eius et eis"
+    SLIP = "dixit eis in mánibus eis et eis"
+
+    def run(self, tmp_path, declaration):
+        page = f"# corrigendum: {declaration}\n{self.SLIP}"
+        return collate(a_text(*self.TEXT), witnesses(tmp_path, {"a": page, "b": self.RIGHT}))
+
+    def test_only_the_named_occurrence_is_emended(self, tmp_path):
+        errors, _, stats = self.run(tmp_path, "eis#2 -> eius (the page's slip)")
+        assert errors == []
+        assert stats["corrigenda"] == 1
+
+    def test_an_unpositioned_declaration_emends_every_occurrence(self, tmp_path):
+        errors, _, _ = self.run(tmp_path, "eis -> eius (the page's slip)")
+        assert any("SUBSTANTIVE divergence" in e for e in errors)
+
+    @pytest.mark.parametrize(
+        "declaration", ["eis#4 -> eius (slip)", "eis#0 -> eius (slip)", "eis#x -> eius (slip)"]
+    )
+    def test_an_occurrence_the_page_does_not_have_is_refused(self, tmp_path, declaration):
+        errors, _, _ = self.run(tmp_path, declaration)
+        assert any("corrigendum" in e for e in errors)
+
+
 class TestAStaleRuling:
     """A ruling that matches nothing on the page it names is a claim about
     that page which the page does not support. This was a warning, and
