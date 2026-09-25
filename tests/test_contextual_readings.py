@@ -862,8 +862,9 @@ def test_sequence_translations_follow_their_own_latin_stanza():
 def test_postcommunion_conclusion_preserves_person_and_addressee():
     doc = layer("en", "proprium/pretiosissimi-sanguinis-domini-nostri-iesu-christi-postcommunio")
     target = doc["segments"]["s01"]["translation"]
-    assert "Who liveth and reigneth with Thee" in target
-    assert "Who livest" not in target
+    assert "who liveth and reigneth with Thee" in target
+    # the conclusion speaks of the Son, not to Him
+    assert "livest" not in target
 
 
 def test_creaturae_preserves_the_witnessed_genitive():
@@ -1140,5 +1141,5 @@ def test_joseph_secret_restores_the_explicit_son_title():
 def test_anne_secret_nested_genitive_keeps_the_son_relation():
     target = layer("en", "proprium/sanctae-annae-matris-beatae-mariae-virginis-secreta")
     alignment = next(a for a in target["segments"]["s01"]["alignments"] if "w014" in a["words"])
-    assert alignment == {"words": ["w014", "w015"], "anchor": "w014", "gloss": "of Your Son"}
+    assert alignment == {"words": ["w014", "w015"], "anchor": "w014", "gloss": "of Thy Son"}
     assert "gloss" not in target["words"]["w014"]
