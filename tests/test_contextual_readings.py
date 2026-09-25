@@ -435,7 +435,8 @@ def test_lateran_psalm_keeps_the_inhabitant_and_realizes_each_circuitu_once(lang
 
 def test_asto_does_not_invent_an_unattested_supine():
     entries = json.loads((CORPUS / "lexicon/lemmata.json").read_text())["entries"]
-    assert entries["asto"]["head"] == "asto, ástare, ástiti"
+    # No supine; the first-conjugation infinitive takes its long-penult accent.
+    assert entries["asto"]["head"] == "asto, astáre, ástiti"
 
 
 @pytest.mark.parametrize(
