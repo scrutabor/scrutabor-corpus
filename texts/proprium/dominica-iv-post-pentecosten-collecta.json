@@ -27,7 +27,7 @@
         { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w007", "form": "mundi", "lemma": "mundus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w008", "form": "cursus", "lemma": "curro", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
-        { "id": "w009", "form": "pacífice", "lemma": "pacificus", "morph": { "pos": "adj", "case": "voc", "gender": "m", "number": "sg" }, "substantive": true },
+        { "id": "w009", "form": "pacífice", "lemma": "pacifice", "morph": { "pos": "adv" } },
         { "id": "w010", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
         { "id": "w011", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "head": "w012" },
         { "id": "w012", "form": "órdine", "lemma": "ordo", "morph": { "case": "abl", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -104,7 +104,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w003": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

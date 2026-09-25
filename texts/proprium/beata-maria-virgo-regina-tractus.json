@@ -40,8 +40,8 @@
         { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w020", "form": "post", "lemma": "post", "morph": { "governs": "acc", "pos": "prep" }, "head": "w021" },
         { "id": "w021", "form": "partum", "lemma": "partus", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "sg", "decl": 4 }, "post": "," },
-        { "id": "w022", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 }, "post": "," },
-        { "id": "w023", "form": "invioláta", "lemma": "inviolatus", "morph": { "case": "voc", "gender": "f", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w022", "form": "Virgo", "post": ",", "lemma": "virgo", "morph": { "pos": "noun", "case": "voc", "gender": "f", "number": "sg", "decl": 3 } },
+        { "id": "w023", "form": "invioláta", "lemma": "inviolatus", "morph": { "case": "nom", "gender": "f", "number": "sg", "pos": "adj" }, "ellipsis": "predicate" },
         { "id": "w024", "form": "permansísti", "lemma": "permaneo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "perf", "voice": "act", "conj": 2 }, "post": "." },
         { "id": "w025", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w026", "form": "Génetrix", "lemma": "genetrix", "morph": { "case": "voc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
@@ -76,10 +76,17 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w023": {
+
+      }
+    }
   }
 }

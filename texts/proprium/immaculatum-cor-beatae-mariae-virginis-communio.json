@@ -31,7 +31,7 @@
         { "id": "w010", "form": "dixit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w011", "form": "discípulo", "lemma": "discipulus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": ":" },
         { "id": "w012", "form": "Ecce", "lemma": "ecce", "morph": { "pos": "intj" } },
-        { "id": "w013", "form": "mater", "lemma": "mater", "morph": { "case": "voc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w013", "form": "mater", "lemma": "mater", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w014", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "post": ".", "substantive": true },
         { "id": "w015", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w016", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w017" },
@@ -72,7 +72,10 @@
       "apparatus": "witnesses/proprium.immaculatum-cor-beatae-mariae-virginis-communio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

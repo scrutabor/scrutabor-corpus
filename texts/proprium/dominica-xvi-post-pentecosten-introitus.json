@@ -33,7 +33,7 @@
         { "id": "w012", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w013", "form": "suávis", "lemma": "suavis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "head": "w011" },
         { "id": "w014", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
-        { "id": "w015", "form": "mitis", "lemma": "mitis", "morph": { "case": "voc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w012" },
+        { "id": "w015", "form": "mitis", "lemma": "mitis", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w011" },
         { "id": "w016", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w018", "form": "copiósus", "lemma": "copiosus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
@@ -90,7 +90,7 @@
         { "id": "w069", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w070", "form": "suávis", "lemma": "suavis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "head": "w068" },
         { "id": "w071", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
-        { "id": "w072", "form": "mitis", "lemma": "mitis", "morph": { "case": "voc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w069" },
+        { "id": "w072", "form": "mitis", "lemma": "mitis", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w068" },
         { "id": "w073", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w074", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w075", "form": "copiósus", "lemma": "copiosus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
@@ -129,7 +129,11 @@
       "apparatus": "witnesses/proprium.dominica-xvi-post-pentecosten-introitus/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w072": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true
