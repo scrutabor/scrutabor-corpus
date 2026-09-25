@@ -36,6 +36,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/missa/Latin/Ordo/Prayers.txt",
       "sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    },
+    "common-c2": {
+      "upstream": "web/www/horas/Latin/Commune/C2.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C2.txt",
+      "sha256": "1fb67608f24b6f80604e0735eccbbbe8950c1bf1b2246164b454d7f772b16d40"
     }
   },
   "bindings": {
@@ -183,6 +189,56 @@
           "archive": "common-c11",
           "first": 356,
           "last": 356
+        }
+      ]
+    },
+    "cathedra-introit": {
+      "witness": "witnesses/proprium.cathedra-sancti-petri-introitus/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "common-c2",
+          "first": 349,
+          "last": 355,
+          "section": "Introitus",
+          "section_line": 349
+        },
+        {
+          "archive": "prayers",
+          "first": 12,
+          "last": 14,
+          "section": "Gloria",
+          "section_line": 12
+        }
+      ],
+      "references": [
+        {
+          "archive": "common-c2",
+          "line": 354,
+          "text": "&Gloria",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "common-c2",
+          "first": 351,
+          "last": 351
+        },
+        {
+          "archive": "common-c2",
+          "first": 353,
+          "last": 353
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14
+        },
+        {
+          "archive": "common-c2",
+          "first": 355,
+          "last": 355
         }
       ]
     }
