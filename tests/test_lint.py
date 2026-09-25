@@ -639,3 +639,14 @@ class TestStressPosition:
         assert set(STRESS_EXEMPT) == {"béniamin"}
         assert stress_position("w030: 'Béniamin'", "Béniamin") == []
         assert stress_position("w054: 'indúimini'", "indúimini") != []
+
+
+@pytest.mark.parametrize(("second", "refused"), [("allelúia", True), ("Allelúia", False)])
+def test_a_word_after_a_full_stop_starts_with_a_capital(second, refused):
+    doc = deepcopy(TEXT)
+    doc["segments"][0]["words"] = [
+        {"id": "w001", "form": "solus", "post": ".", "lemma": "solus", "morph": {"pos": "adj"}},
+        {"id": "w002", "form": second, "post": ".", "lemma": "alleluia", "morph": {"pos": "intj"}},
+    ]
+    errors, _ = lint_text(doc)
+    assert any("follows a full stop" in e for e in errors) is refused

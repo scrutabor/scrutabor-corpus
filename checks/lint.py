@@ -4,6 +4,7 @@ accent rules, cross-references, quoted forms, terminology, layer parity."""
 import json
 import re
 import unicodedata
+from itertools import pairwise
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -826,6 +827,14 @@ def lint_text(doc):
     ids = [w["id"] for w in words]
     if len(ids) != len(set(ids)):
         errors.append("duplicate word ids")
+    # A full stop ends the sentence in the typical edition; the next word it
+    # prints in the same verse starts with a capital. A punctuation change
+    # that turns a comma into a full stop must change the next word's case.
+    for segment in doc["segments"]:
+        seq = segment.get("words") or []
+        for before, after in pairwise(seq):
+            if before.get("post") == "." and after["form"][:1].islower():
+                errors.append(f"{after['id']}: {after['form']!r} follows a full stop in lower case")
     for w in words:
         wid, f = w["id"], w["form"]
         if not FORM_RE.match(f):
