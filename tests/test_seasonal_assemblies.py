@@ -161,3 +161,100 @@ def test_unknown_annunciation_season_does_not_select_unconditional_ioc():
     for component in doc["components"]:
         if component["role"] in {"introitus", "offertorium", "communio"}:
             assert not component_applies(component.get("condition"), season=None)
+
+
+# Every feast that prints both an Alleluia and a Tract. Twelve of them print
+# the tract only "In Missis votivis post Septuagesimam" (e.g. MR1962 pp. 24,
+# 29, 436, 713): the feast day itself never falls after Septuagesima. The
+# Purification (p. 467) takes its tract "Post Septuagesimam", which Feb 2 may
+# or may not be; the Chair of Peter (p. 478) always falls after Septuagesima
+# Sunday and prints its Alleluia only for votive Masses before Septuagesima or
+# after Pentecost.
+PURIFICATION = "purificatio-beatae-mariae-virginis"
+CATHEDRA = "cathedra-sancti-petri"
+VOTIVE_TRACTS = (
+    "beata-maria-virgo-regina",
+    "beatae-mariae-virginis-a-rosario",
+    "dedicatio-archibasilicae-sanctissimi-salvatoris",
+    "immaculata-conceptio",
+    "immaculatum-cor-beatae-mariae-virginis",
+    "maternitas-beatae-mariae-virginis",
+    "nativitas-beatae-mariae-virginis",
+    "pretiosissimi-sanguinis-domini-nostri-iesu-christi",
+    "sancti-ioachim-confessoris",
+    "sancti-ioannis-apostoli-et-evangelistae",
+    "sancti-stephani-protomartyris",
+    "sancti-thomae-apostoli",
+    "sanctorum-innocentium-martyrum",
+    "d-n-iesu-christi-regis",
+)
+
+
+def test_feasts_never_select_a_tract_printed_for_votive_masses_only():
+    catalogue = {form["id"]: form for form in formulary_catalog(CORPUS)["formularies"]}
+    seen = Counter()
+    purification = Counter()
+    for ending in range(2026, 2102):
+        for occurrence in year(ending):
+            formulary = occurrence.formulary
+            if formulary not in (*VOTIVE_TRACTS, PURIFICATION, CATHEDRA):
+                continue
+            roles = chant_roles(selected(catalogue[formulary]["components"], occurrence))
+            if formulary == CATHEDRA:
+                assert occurrence.season in ("septuagesima", "quadragesima")
+                expected = ["graduale", "tractus"]
+            elif formulary == PURIFICATION:
+                after = occurrence.season in ("septuagesima", "quadragesima", "passionis")
+                expected = ["graduale", "tractus" if after else "alleluia"]
+                purification[after] += 1
+            else:
+                expected = ["graduale", "alleluia"]
+            assert roles == expected, (occurrence.when, formulary)
+            seen[formulary] += 1
+    assert set(seen) == {*VOTIVE_TRACTS, PURIFICATION, CATHEDRA}
+    # Feb 2 falls after Septuagesima Sunday in some years and before it in
+    # others; both branches must actually occur in the tested window.
+    assert purification[True] and purification[False]
+
+
+@pytest.mark.parametrize("formulary", [*VOTIVE_TRACTS, PURIFICATION, CATHEDRA])
+def test_dropping_the_new_condition_breaks_the_feast(formulary):
+    (path,) = CORPUS.glob(f"formularies/*/{formulary}.json")
+    doc = json.loads(path.read_text())
+    role = "alleluia" if formulary == CATHEDRA else "tractus"
+    mutated = deepcopy(doc["components"])
+    next(c for c in mutated if c["role"] == role).pop("condition")
+    broken = 0
+    for ending in (2026, 2027, 2028, 2029):
+        for occurrence in year(ending):
+            if occurrence.formulary != formulary:
+                continue
+            if chant_roles(selected(mutated, occurrence)) != chant_roles(
+                selected(doc["components"], occurrence)
+            ):
+                broken += 1
+    assert broken
+
+
+def test_post_septuagesimam_pair_selects_once_and_never_on_unknown_seasons():
+    conditions = [{"season": "post-septuagesimam"}, {"season": "not-post-septuagesimam"}]
+    for season in (
+        "adventus",
+        "nativitas",
+        "epiphania",
+        "septuagesima",
+        "quadragesima",
+        "passionis",
+        "paschale",
+        "per-annum",
+    ):
+        chosen = [c for c in conditions if component_applies(c, weekday=2, season=season)]
+        assert len(chosen) == 1
+        assert (chosen[0]["season"] == "post-septuagesimam") == (
+            season in ("septuagesima", "quadragesima", "passionis")
+        )
+    for season in (None, "", "lent"):
+        assert not any(component_applies(c, season=season) for c in conditions)
+    vote = {"use": "votive-before-septuagesima-or-after-pentecost"}
+    assert component_applies(vote, study=True)
+    assert not component_applies(vote, weekday=2, season="per-annum")

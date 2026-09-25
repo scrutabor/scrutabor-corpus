@@ -10,7 +10,7 @@ from kalendarium.roman import FORMULARIES as CALENDAR_FORMULARIES
 
 from .normalize import substantive
 
-SCHEMA = "1.1.0"
+SCHEMA = "1.2.0"
 COLLECTIONS = ("temporale", "sanctorale", "commune", "votive", "ritual", "local")
 SEASONS = (
     "adventus",
@@ -41,9 +41,16 @@ RELATIONS = ("proper", "shared", "reference")
 CONDITION_PAIRS = (
     ({"weekday": "sunday"}, {"weekday": "not-sunday"}),
     ({"season": "paschale"}, {"season": "not-paschale"}),
+    ({"season": "post-septuagesimam"}, {"season": "not-post-septuagesimam"}),
 )
-VOTIVE_CONDITION = {"use": "votive-after-septuagesima"}
-CONDITIONS = (*CONDITION_PAIRS[0], *CONDITION_PAIRS[1], VOTIVE_CONDITION)
+# The seasons a printed "post Septuagesimam" rubric covers: from Septuagesima
+# Sunday until Easter (the Purification's tract, MR1962 p. 467).
+POST_SEPTUAGESIMAM = ("septuagesima", "quadragesima", "passionis")
+VOTIVE_CONDITIONS = (
+    {"use": "votive-after-septuagesima"},
+    {"use": "votive-before-septuagesima-or-after-pentecost"},
+)
+CONDITIONS = (*(member for pair in CONDITION_PAIRS for member in pair), *VOTIVE_CONDITIONS)
 RECENSIONS = {
     "paschale": "paschale",
     "non-paschale": "not-paschale",
@@ -79,7 +86,9 @@ def component_applies(
     if "season" in condition:
         if season not in SEASONS:
             return False
-        return (season == "paschale") == (condition["season"] == "paschale")
+        if condition["season"] in ("paschale", "not-paschale"):
+            return (season == "paschale") == (condition["season"] == "paschale")
+        return (season in POST_SEPTUAGESIMAM) == (condition["season"] == "post-septuagesimam")
     return False
 
 

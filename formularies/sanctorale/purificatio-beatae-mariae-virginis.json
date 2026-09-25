@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.1.0",
+  "formulary_schema": "1.2.0",
   "id": "purificatio-beatae-mariae-virginis",
   "order": 101,
   "collection": "sanctorale",
@@ -39,13 +39,19 @@
       "key": "alleluia",
       "role": "alleluia",
       "text": "proprium.purificatio-beatae-mariae-virginis-alleluia",
-      "relation": "proper"
+      "relation": "proper",
+      "condition": {
+        "season": "not-post-septuagesimam"
+      }
     },
     {
       "key": "tractus",
       "role": "tractus",
       "text": "proprium.purificatio-beatae-mariae-virginis-tractus",
-      "relation": "proper"
+      "relation": "proper",
+      "condition": {
+        "season": "post-septuagesimam"
+      }
     },
     {
       "key": "evangelium",

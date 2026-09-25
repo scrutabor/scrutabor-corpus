@@ -93,16 +93,24 @@ text must be reached by at least one assembly, every target must exist, and
 component order follows the order of Mass. A multi-Mass observance gives every
 member a distinct `variant` and exactly one calendar default.
 
-Formulary schema `1.1.0` permits only these component conditions:
+Formulary schema `1.2.0` permits only these component conditions:
 
 - `{"weekday": "sunday"}` or `{"weekday": "not-sunday"}` for the printed
   weekday distinction, such as the Christmas Vigil's preface (MR1962 p. 16);
 - `{"season": "paschale"}` or `{"season": "not-paschale"}` for a printed
   Paschal alternative, such as the Annunciation chants (MR1962 p. 496);
+- `{"season": "post-septuagesimam"}` or `{"season": "not-post-septuagesimam"}`
+  for a printed "post Septuagesimam" alternative on a feast whose date falls
+  on either side of Septuagesima Sunday, such as the Purification's tract
+  (MR1962 p. 467). The branch covers the seasons `septuagesima`,
+  `quadragesima` and `passionis`;
 - `{"use": "votive-after-septuagesima"}` for source alternatives expressly
-  limited to votive Masses after Septuagesima and before Easter. These remain
-  study material and are never selected by the calendar-only Ordo. This does
-  not declare a complete votive formulary or permission to celebrate it.
+  limited to votive Masses after Septuagesima and before Easter, and
+  `{"use": "votive-before-septuagesima-or-after-pentecost"}` for those limited
+  to votive Masses before Septuagesima or after Pentecost, such as the Chair
+  of Peter's Alleluia (MR1962 p. 478). These remain study material and are
+  never selected by the calendar-only Ordo. This does not declare a complete
+  votive formulary or permission to celebrate it.
 
 No combined predicates, additional fields, arbitrary season lists, or implicit
 defaults are allowed. The **actual calendar occurrence's** season governs the
