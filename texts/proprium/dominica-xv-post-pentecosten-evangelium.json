@@ -81,7 +81,7 @@
         { "id": "w060", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" }, "post": "," },
         { "id": "w061", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w062", "form": "portábant", "lemma": "porto", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" }, "post": "," },
-        { "id": "w063", "form": "stetérunt", "lemma": "sto", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w063", "form": "stetérunt", "post": ".", "lemma": "sto", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w064", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w065", "form": "ait", "lemma": "aio", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":" },
         { "id": "w066", "form": "Adoléscens", "lemma": "adolescens", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 }, "post": "," },
@@ -121,6 +121,13 @@
         { "id": "w100", "form": "visitávit", "lemma": "visito", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 1 } },
         { "id": "w101", "form": "plebem", "lemma": "plebs", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w102", "form": "suam", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "post": ".", "head": "w101" }
+      ],
+      "parentheses": [
+        {
+          "from": "w059",
+          "through": "w063",
+          "closing": "after-post"
+        }
       ]
     }
   ],

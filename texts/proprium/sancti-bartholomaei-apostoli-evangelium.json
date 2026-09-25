@@ -49,7 +49,7 @@
         { "id": "w028", "form": "quos", "lemma": "qui", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "pron" } },
         { "id": "w029", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w030", "form": "Apóstolos", "lemma": "apostolus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
-        { "id": "w031", "form": "nominávit", "lemma": "nomino", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
+        { "id": "w031", "form": "nominávit", "post": ":", "lemma": "nomino", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w032", "form": "Simónem", "lemma": "Simon", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 }, "post": "," },
         { "id": "w033", "form": "quem", "lemma": "qui", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w034", "form": "cognominávit", "lemma": "cognomino", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 1 } },
@@ -141,6 +141,12 @@
         { "id": "w120", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w121", "form": "sanábat", "lemma": "sano", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w122", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "post": ".", "substantive": true }
+      ],
+      "parentheses": [
+        {
+          "from": "w028",
+          "through": "w031"
+        }
       ]
     }
   ],
