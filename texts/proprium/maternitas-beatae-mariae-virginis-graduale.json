@@ -22,12 +22,12 @@
         { "id": "w001", "form": "Egrediétur", "lemma": "egredior", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "dep", "conj": 3 } },
         { "id": "w002", "form": "virga", "lemma": "virga", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w003", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w004" },
-        { "id": "w004", "form": "rádice", "lemma": "radix", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w004", "form": "radíce", "lemma": "radix", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w005", "form": "Iesse", "lemma": "Iesse", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w007", "form": "flos", "lemma": "flos", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
         { "id": "w008", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w009" },
-        { "id": "w009", "form": "rádice", "lemma": "radix", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w009", "form": "radíce", "lemma": "radix", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w010", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w011", "form": "ascéndet", "lemma": "ascendo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" }, "post": "." },
         { "id": "w012", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -68,7 +68,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

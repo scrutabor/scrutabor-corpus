@@ -630,10 +630,12 @@ class TestStressPosition:
         assert stress_position("w001: 'páuperum'", "páuperum") == []
         assert stress_position("w001: 'exáudi'", "exáudi") == []
 
-    def test_the_exemption_table_is_empty_and_an_entry_would_be_deliberate(self):
-        # Its one candidate ever, indúimini, was a transcription error the
-        # rule itself exposed: the 600 dpi page image prints induímini, the
-        # accent on the antepenult. The empty table is the record, and a
-        # violating form is an error unless someone names its page here.
-        assert STRESS_EXEMPT == {}
+    def test_the_exemption_table_holds_only_printed_forms(self):
+        # Its first candidate, indúimini, was a transcription error the rule
+        # itself exposed: the 600 dpi page image prints induímini, the accent
+        # on the antepenult. The one entry is a printed form whose consonantal
+        # i the syllabifier cannot see; any other violating form is an error
+        # unless someone names its page here.
+        assert set(STRESS_EXEMPT) == {"béniamin"}
+        assert stress_position("w030: 'Béniamin'", "Béniamin") == []
         assert stress_position("w054: 'indúimini'", "indúimini") != []

@@ -33,7 +33,7 @@
         { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w010", "form": "magnum", "lemma": "magnus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w011" },
         { "id": "w011", "form": "decórem", "lemma": "decor", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "sg", "decl": 3 } },
-        { "id": "w013", "form": "ímpones", "lemma": "impono", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "fut", "voice": "act", "conj": 3 } },
+        { "id": "w013", "form": "impónes", "lemma": "impono", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "fut", "voice": "act", "conj": 3 } },
         { "id": "w014", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015" },
         { "id": "w015", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" }, "post": "," },
         { "id": "w016", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." }
@@ -67,7 +67,10 @@
       "apparatus": "witnesses/proprium.sancti-matthaei-apostoli-et-evangelistae-communio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true
