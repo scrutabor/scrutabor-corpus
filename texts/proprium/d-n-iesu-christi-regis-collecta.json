@@ -42,7 +42,7 @@
         { "id": "w021", "form": "vúlnere", "lemma": "vulnus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w022", "form": "disgregátæ", "lemma": "disgrego", "morph": { "pos": "verb", "case": "nom", "gender": "f", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "post": ",", "substantive": true },
         { "id": "w023", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
-        { "id": "w024", "form": "suavissímo", "lemma": "suavis", "morph": { "pos": "adj", "case": "abl", "degree": "sup", "gender": "n", "number": "sg" }, "head": "w021" },
+        { "id": "w024", "form": "suavíssimo", "lemma": "suavis", "morph": { "pos": "adj", "case": "abl", "degree": "sup", "gender": "n", "number": "sg" }, "head": "w021" },
         { "id": "w025", "form": "subdántur", "lemma": "subdo", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 3, "tense": "pres", "voice": "pass", "conj": 3 } },
         { "id": "w026", "form": "império", "lemma": "imperium", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 2 }, "post": ":" },
         { "id": "w027", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
@@ -102,7 +102,10 @@
       "apparatus": "witnesses/proprium.d-n-iesu-christi-regis-collecta/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

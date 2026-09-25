@@ -429,14 +429,19 @@ SPELLING_EXEMPT: dict[str, str] = {
 # an entry here is a question left open, not one answered: the rule it suspends
 # is an invariant of the language.
 #
-# EMPTY, and that is the record: the one candidate this table ever held,
-# indúimini (Advent I epistle, w054), turned out on inspection of the 600 dpi
-# page image to be a transcription error — the typical edition prints
-# induímini, the mark on the antepenult, exactly where the invariant says it
-# must be. The transcription, the apparatus and the text were all corrected
-# at the root (2026-08-19). A form that genuinely prints against this rule
-# belongs here with its page named, and until one does, nothing is exempt.
-STRESS_EXEMPT: dict[str, str] = {}
+# The first candidate this table held, indúimini (Advent I epistle, w054),
+# turned out on inspection of the 600 dpi page image to be a transcription
+# error — the typical edition prints induímini, the mark on the antepenult,
+# exactly where the invariant says it must be. The transcription, the
+# apparatus and the text were all corrected at the root (2026-08-19). A form
+# that genuinely prints against this rule belongs here with its page named.
+STRESS_EXEMPT: dict[str, str] = {
+    # Printed Béniamin on pp. 15 and 718 (Christmas Vigil gradual, All Saints
+    # epistle). The Hebrew name's i is the consonant (Ben-ia-min), so the mark
+    # stands on the antepenult; the syllabifier cannot know that and counts
+    # the i as a vowel.
+    "béniamin": "printed MR 1962 pp. 15 and 718; consonantal i (Ben-ia-min)",
+}
 
 # Who a narrative may be about. Naming one of these in the opening sentence
 # is what lets a reader who lands mid-book know whose actions they are

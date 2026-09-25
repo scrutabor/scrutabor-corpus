@@ -31,7 +31,7 @@
         { "id": "w010", "form": "cursu", "lemma": "cursus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 4 } },
         { "id": "w011", "form": "médium", "lemma": "medius", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w012" },
         { "id": "w012", "form": "iter", "lemma": "iter", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w013", "form": "háberet", "lemma": "habeo", "morph": { "conj": 2, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" }, "post": "," },
+        { "id": "w013", "form": "habéret", "post": ",", "lemma": "habeo", "morph": { "conj": 2, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w014", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w017" },
         { "id": "w015", "form": "Sermo", "lemma": "sermo", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w016", "form": "tuus", "lemma": "tuus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "post": ",", "head": "w015" },
@@ -86,7 +86,7 @@
         { "id": "w065", "form": "cursu", "lemma": "cursus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 4 } },
         { "id": "w066", "form": "médium", "lemma": "medius", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w067" },
         { "id": "w067", "form": "iter", "lemma": "iter", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w068", "form": "háberet", "lemma": "habeo", "morph": { "conj": 2, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" }, "post": "," },
+        { "id": "w068", "form": "habéret", "post": ",", "lemma": "habeo", "morph": { "conj": 2, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w069", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w072" },
         { "id": "w070", "form": "Sermo", "lemma": "sermo", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w071", "form": "tuus", "lemma": "tuus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "post": ",", "head": "w070" },
@@ -129,7 +129,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w068": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
