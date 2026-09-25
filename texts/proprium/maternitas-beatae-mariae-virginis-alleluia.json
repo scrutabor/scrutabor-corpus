@@ -23,7 +23,7 @@
         { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w003", "form": "Virgo", "lemma": "virgo", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
         { "id": "w004", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w005", "form": "Génitrix", "lemma": "genitrix", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 }, "post": "," },
+        { "id": "w005", "form": "Génetrix", "post": ",", "lemma": "genetrix", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
         { "id": "w006", "form": "quem", "lemma": "qui", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w007", "form": "totus", "lemma": "totus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "substantive": true },
         { "id": "w008", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
@@ -64,7 +64,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
     }
