@@ -99,8 +99,8 @@
         { "id": "w078", "form": "tuus", "lemma": "tuus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w077" },
         { "id": "w079", "form": "habet", "lemma": "habeo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w080", "form": "áliquid", "lemma": "aliquis", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
-        { "id": "w081", "form": "advérsum", "lemma": "adversus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w080" },
-        { "id": "w082", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": ":" },
+        { "id": "w081", "form": "advérsum", "lemma": "adversus_prep", "morph": { "pos": "prep", "governs": "acc" }, "head": "w082" },
+        { "id": "w082", "form": "te", "post": ":", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w083", "form": "relínque", "lemma": "relinquo", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w084", "form": "ibi", "lemma": "ibi", "morph": { "pos": "adv" } },
         { "id": "w085", "form": "munus", "lemma": "munus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
@@ -136,7 +136,9 @@
       "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w053": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w081": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w082": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

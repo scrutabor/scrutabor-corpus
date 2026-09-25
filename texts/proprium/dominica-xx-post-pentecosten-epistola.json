@@ -57,7 +57,7 @@
         { "id": "w036", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
         { "id": "w037", "form": "implémini", "lemma": "impleo", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "pass", "conj": 2 } },
         { "id": "w038", "form": "Spíritu", "lemma": "spiritus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w039", "form": "Sancto", "lemma": "sanctus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w039", "form": "Sancto", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w038" },
         { "id": "w040", "form": "loquéntes", "lemma": "loquor", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "dep", "mood": "part", "conj": 3 }, "substantive": true },
         { "id": "w041", "form": "vobismetípsis", "lemma": "vosmetipse", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
         { "id": "w042", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w043" },
@@ -72,7 +72,7 @@
         { "id": "w051", "form": "psalléntes", "lemma": "psallo", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
         { "id": "w052", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w053" },
         { "id": "w053", "form": "córdibus", "lemma": "cor", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w054", "form": "vestris", "lemma": "vester", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "substantive": true },
+        { "id": "w054", "form": "vestris", "lemma": "vester", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "head": "w053" },
         { "id": "w055", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": ":" },
         { "id": "w056", "form": "grátias", "lemma": "gratia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" } },
         { "id": "w057", "form": "agéntes", "lemma": "ago", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
@@ -110,7 +110,9 @@
       "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w041": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
       "w064": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w065": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
+      "w065": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
+      "w039": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w054": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

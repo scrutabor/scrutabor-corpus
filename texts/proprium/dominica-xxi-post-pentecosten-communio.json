@@ -42,8 +42,8 @@
         { "id": "w021", "form": "ádiuva", "lemma": "adiuvo", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w022", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "," },
         { "id": "w023", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
-        { "id": "w024", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
-        { "id": "w025", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "post": ".", "head": "w024" }
+        { "id": "w024", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 } },
+        { "id": "w025", "form": "meus", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w024" }
       ],
       "participation": {
         "cantu": {
@@ -74,7 +74,11 @@
       "apparatus": "witnesses/proprium.dominica-xxi-post-pentecosten-communio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w025": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

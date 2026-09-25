@@ -22,8 +22,8 @@
         { "id": "w001", "form": "Vota", "lemma": "votum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "," },
         { "id": "w002", "form": "quǽsumus", "lemma": "quaeso", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w003", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
-        { "id": "w004", "form": "supplicántis", "lemma": "supplico", "morph": { "case": "gen", "conj": 1, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
-        { "id": "w005", "form": "pópuli", "lemma": "populus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w004", "form": "supplicántis", "lemma": "supplico", "morph": { "case": "gen", "conj": 1, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "head": "w005" },
+        { "id": "w005", "form": "pópuli", "lemma": "populus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w006", "form": "cælésti", "lemma": "caelestis", "morph": { "case": "abl", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w007" },
         { "id": "w007", "form": "pietáte", "lemma": "pietas", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w008", "form": "proséquere", "lemma": "prosequor", "morph": { "pos": "verb", "mood": "imp", "number": "sg", "person": 2, "tense": "pres", "voice": "dep", "conj": 3 }, "post": ":" },
@@ -105,7 +105,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w002": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

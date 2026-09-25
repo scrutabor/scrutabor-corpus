@@ -20,8 +20,8 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Quǽsumus", "lemma": "quaeso", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
-        { "id": "w002", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "substantive": true },
-        { "id": "w003", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": ":" },
+        { "id": "w002", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w003" },
+        { "id": "w003", "form": "Deus", "post": ":", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w004", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "post": "," },
         { "id": "w005", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w006", "form": "cæléstia", "lemma": "caelestis", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "head": "w007" },
@@ -99,7 +99,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w001": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

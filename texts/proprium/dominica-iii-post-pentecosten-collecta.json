@@ -19,11 +19,11 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Protéctor", "lemma": "protector", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
+        { "id": "w001", "form": "Protéctor", "lemma": "protector", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 3 } },
         { "id": "w002", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w003" },
         { "id": "w003", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
         { "id": "w004", "form": "sperántium", "lemma": "spero", "morph": { "case": "gen", "conj": 1, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "act" }, "post": ",", "substantive": true },
-        { "id": "w005", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w005", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w006", "form": "sine", "lemma": "sine", "morph": { "governs": "abl", "pos": "prep" }, "head": "w007" },
         { "id": "w007", "form": "quo", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
         { "id": "w008", "form": "nihil", "lemma": "nihil", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg" } },
@@ -31,7 +31,7 @@
         { "id": "w010", "form": "válidum", "lemma": "validus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "post": ",", "head": "w011" },
         { "id": "w011", "form": "nihil", "lemma": "nihil", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg" } },
         { "id": "w012", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "post": ":", "head": "w011" },
-        { "id": "w013", "form": "multíplica", "lemma": "multiplicus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w013", "form": "multíplica", "lemma": "multiplico", "morph": { "pos": "verb", "mood": "imp", "tense": "pres", "voice": "act", "person": 2, "number": "sg", "conj": 1 } },
         { "id": "w014", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015" },
         { "id": "w015", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w016", "form": "misericórdiam", "lemma": "misericordia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -40,7 +40,7 @@
         { "id": "w019", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
         { "id": "w020", "form": "rectóre", "lemma": "rector", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 3 }, "post": "," },
         { "id": "w021", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
-        { "id": "w022", "form": "duce", "lemma": "duco", "morph": { "pos": "verb", "mood": "imp", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 3 }, "post": "," },
+        { "id": "w022", "form": "duce", "post": ",", "lemma": "dux", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w023", "form": "sic", "lemma": "sic", "morph": { "pos": "adv" } },
         { "id": "w024", "form": "transeámus", "lemma": "transeo", "morph": { "mood": "subj", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w025", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w026" },
@@ -114,7 +114,13 @@
       "apparatus": "witnesses/proprium.dominica-iii-post-pentecosten-collecta/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

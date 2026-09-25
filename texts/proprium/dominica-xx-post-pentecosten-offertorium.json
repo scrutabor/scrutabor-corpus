@@ -28,7 +28,7 @@
         { "id": "w007", "form": "flévimus", "lemma": "fleo", "morph": { "conj": 2, "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" }, "post": ":" },
         { "id": "w008", "form": "dum", "lemma": "dum", "morph": { "pos": "conj" } },
         { "id": "w009", "form": "recordarémur", "lemma": "recordor", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 1, "tense": "impf", "voice": "dep", "conj": 1 } },
-        { "id": "w010", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w010", "form": "tui", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
         { "id": "w011", "form": "Sion", "lemma": "Sion", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f" }, "post": "." }
       ],
       "participation": {
@@ -63,7 +63,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

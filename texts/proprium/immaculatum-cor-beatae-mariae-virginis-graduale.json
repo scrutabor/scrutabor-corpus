@@ -46,7 +46,7 @@
         { "id": "w025", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w026", "form": "generatiónem", "lemma": "generatio", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w027", "form": "proptérea", "lemma": "propterea", "morph": { "pos": "adv" } },
-        { "id": "w028", "form": "pópuli", "lemma": "populus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w028", "form": "pópuli", "lemma": "populus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w029", "form": "confitebúntur", "lemma": "confiteor", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "fut", "voice": "dep", "conj": 2 } },
         { "id": "w030", "form": "tibi", "lemma": "tu", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
         { "id": "w031", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w032" },
@@ -81,7 +81,10 @@
       "apparatus": "witnesses/proprium.immaculatum-cor-beatae-mariae-virginis-graduale/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

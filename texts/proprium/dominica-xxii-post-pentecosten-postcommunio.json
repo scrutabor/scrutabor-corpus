@@ -25,11 +25,11 @@
         { "id": "w004", "form": "dona", "lemma": "donum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
         { "id": "w005", "form": "mystérii", "lemma": "mysterium", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w006", "form": "humíliter", "lemma": "humiliter", "morph": { "pos": "adv" } },
-        { "id": "w007", "form": "deprecántes", "lemma": "deprecor", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "dep" }, "post": ":", "substantive": true },
+        { "id": "w007", "form": "deprecántes", "post": ":", "lemma": "deprecor", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "dep" }, "head": "w001" },
         { "id": "w008", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "post": "," },
         { "id": "w009", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
-        { "id": "w011", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "substantive": true },
+        { "id": "w011", "form": "tui", "lemma": "tu", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
         { "id": "w012", "form": "commemoratiónem", "lemma": "commemoratio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
         { "id": "w013", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w014", "form": "fácere", "lemma": "facio", "morph": { "conj": 3, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -101,7 +101,9 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

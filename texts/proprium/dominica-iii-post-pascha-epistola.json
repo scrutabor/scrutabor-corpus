@@ -136,12 +136,12 @@
         { "id": "w115", "form": "Hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
         { "id": "w116", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w117", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
-        { "id": "w118", "form": "grátia", "lemma": "gratia", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": ":" },
+        { "id": "w118", "form": "grátia", "post": ":", "lemma": "gratia", "morph": { "case": "nom", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w119", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w120" },
         { "id": "w120", "form": "Christo", "lemma": "Christus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w121", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m" }, "post": "," },
         { "id": "w122", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
-        { "id": "w123", "form": "nostro", "lemma": "noster", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "post": ".", "substantive": true }
+        { "id": "w123", "form": "nostro", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w122" }
       ]
     }
   ],
@@ -164,7 +164,9 @@
       "w104": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w048": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w047": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w121": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
+      "w121": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
+      "w118": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w123": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

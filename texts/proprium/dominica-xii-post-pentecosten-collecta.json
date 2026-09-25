@@ -21,8 +21,8 @@
       "words": [
         { "id": "w001", "form": "Omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "substantive": true },
         { "id": "w002", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w003", "form": "miséricors", "lemma": "misericors", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w004" },
-        { "id": "w004", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w003", "form": "miséricors", "lemma": "misericors", "morph": { "case": "voc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w004" },
+        { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w005", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w007" },
         { "id": "w006", "form": "cuius", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
         { "id": "w007", "form": "múnere", "lemma": "munus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
@@ -113,7 +113,9 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w019": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w019": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

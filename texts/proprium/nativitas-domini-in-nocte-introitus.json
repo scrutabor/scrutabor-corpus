@@ -33,10 +33,10 @@
         { "id": "w012", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "." },
         { "id": "w013", "form": "Quare", "lemma": "quare", "morph": { "pos": "adv" } },
         { "id": "w014", "form": "fremuérunt", "lemma": "fremo", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "perf", "voice": "act", "conj": 3 } },
-        { "id": "w015", "form": "gentes", "lemma": "gens", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 }, "post": ":" },
+        { "id": "w015", "form": "gentes", "post": ":", "lemma": "gens", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 } },
         { "id": "w016", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w017", "form": "pópuli", "lemma": "populus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
-        { "id": "w018", "form": "meditáti", "lemma": "meditor", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "dep", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w017", "form": "pópuli", "lemma": "populus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w018", "form": "meditáti", "lemma": "meditor", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "dep", "mood": "part", "conj": 1 }, "head": "w017" },
         { "id": "w019", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w020", "form": "inánia", "lemma": "inanis", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "post": "?", "substantive": true },
         { "id": "w021", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
@@ -101,7 +101,12 @@
       "apparatus": "witnesses/proprium.nativitas-domini-in-nocte-introitus/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

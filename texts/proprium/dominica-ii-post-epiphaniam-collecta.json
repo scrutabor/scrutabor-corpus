@@ -19,9 +19,9 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "substantive": true },
-        { "id": "w002", "form": "sempitérne", "lemma": "sempiternus", "morph": { "case": "voc", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
-        { "id": "w003", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w001", "form": "Omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w003" },
+        { "id": "w002", "form": "sempitérne", "lemma": "sempiternus", "morph": { "case": "voc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w003" },
+        { "id": "w003", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w004", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w005", "form": "cæléstia", "lemma": "caelestis", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "substantive": true },
         { "id": "w006", "form": "simul", "lemma": "simul", "morph": { "pos": "adv" } },
@@ -29,8 +29,8 @@
         { "id": "w008", "form": "terréna", "lemma": "terrenus", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "substantive": true },
         { "id": "w009", "form": "moderáris", "lemma": "moderor", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "pres", "voice": "dep", "conj": 1 }, "post": ":" },
         { "id": "w010", "form": "supplicatiónes", "lemma": "supplicatio", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "pl", "decl": 3 } },
-        { "id": "w011", "form": "pópuli", "lemma": "populus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
-        { "id": "w012", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "substantive": true },
+        { "id": "w011", "form": "pópuli", "lemma": "populus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w012", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w011" },
         { "id": "w013", "form": "cleménter", "lemma": "clementer", "morph": { "pos": "adv" } },
         { "id": "w014", "form": "exáudi", "lemma": "exaudio", "morph": { "conj": 4, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ";" },
         { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -103,7 +103,14 @@
       "apparatus": "witnesses/proprium.dominica-ii-post-epiphaniam-collecta/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

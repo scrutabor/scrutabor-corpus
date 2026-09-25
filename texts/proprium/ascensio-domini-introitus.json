@@ -38,8 +38,8 @@
         { "id": "w017", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
         { "id": "w018", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
         { "id": "w019", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
-        { "id": "w020", "form": "Omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w021" },
-        { "id": "w021", "form": "gentes", "lemma": "gens", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 }, "post": "," },
+        { "id": "w020", "form": "Omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "voc", "number": "pl", "gender": "f" }, "head": "w021" },
+        { "id": "w021", "form": "gentes", "post": ",", "lemma": "gens", "morph": { "pos": "noun", "case": "voc", "number": "pl", "gender": "f", "decl": 3 } },
         { "id": "w022", "form": "pláudite", "lemma": "plaudo", "morph": { "conj": 3, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w023", "form": "mánibus", "lemma": "manus", "morph": { "case": "abl", "decl": 4, "gender": "f", "number": "pl", "pos": "noun" }, "post": ":" },
         { "id": "w024", "form": "iubiláte", "lemma": "iubilo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
@@ -118,7 +118,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

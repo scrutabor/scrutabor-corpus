@@ -69,9 +69,9 @@
         { "id": "w048", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w049", "form": "sciat", "lemma": "scio", "morph": { "conj": 4, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w050", "form": "unusquísque", "lemma": "unusquisque", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" } },
-        { "id": "w051", "form": "vestrum", "lemma": "vester", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "substantive": true },
-        { "id": "w052", "form": "vas", "lemma": "vas", "morph": { "case": "voc", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w053", "form": "suum", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "substantive": true },
+        { "id": "w051", "form": "vestrum", "lemma": "vos", "morph": { "pos": "pron", "case": "gen", "number": "pl" } },
+        { "id": "w052", "form": "vas", "lemma": "vas", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w053", "form": "suum", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w052" },
         { "id": "w054", "form": "possidére", "lemma": "possideo", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 2 } },
         { "id": "w055", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w056" },
         { "id": "w056", "form": "sanctificatióne", "lemma": "sanctificatio", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -124,7 +124,7 @@
         { "id": "w103", "form": "Christo", "lemma": "Christus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w104", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m" }, "post": "," },
         { "id": "w105", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
-        { "id": "w106", "form": "nostro", "lemma": "noster", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "post": ".", "substantive": true }
+        { "id": "w106", "form": "nostro", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w105" }
       ]
     }
   ],
@@ -142,7 +142,11 @@
       "w062": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w074": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
-      "w104": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } }
+      "w104": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
+      "w051": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w052": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w053": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w106": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -21,8 +21,8 @@
       "words": [
         { "id": "w001", "form": "Iubiláte", "lemma": "iubilo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
         { "id": "w002", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
-        { "id": "w003", "form": "univérsa", "lemma": "universus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w004" },
-        { "id": "w004", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "post": "," },
+        { "id": "w003", "form": "univérsa", "lemma": "universus", "morph": { "pos": "adj", "case": "voc", "gender": "f", "number": "sg" }, "head": "w004" },
+        { "id": "w004", "form": "terra", "post": ",", "lemma": "terra", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "f", "decl": 1 } },
         { "id": "w005", "form": "psalmum", "lemma": "psalmus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w006", "form": "dícite", "lemma": "dico", "morph": { "conj": 3, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w007", "form": "nómini", "lemma": "nomen", "morph": { "case": "dat", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
@@ -34,7 +34,7 @@
         { "id": "w013", "form": "narrábo", "lemma": "narro", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w014", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "post": "," },
         { "id": "w015", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "voc", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w016", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w016", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" }, "head": "w017" },
         { "id": "w017", "form": "timétis", "lemma": "timeo", "morph": { "conj": 2, "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w018", "form": "Deum", "lemma": "deus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w019", "form": "quanta", "lemma": "quantus", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "substantive": true },
@@ -75,7 +75,10 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w015": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w015": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
