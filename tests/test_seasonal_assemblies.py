@@ -207,6 +207,9 @@ def test_feasts_never_select_a_tract_printed_for_votive_masses_only():
                 after = occurrence.season in ("septuagesima", "quadragesima", "passionis")
                 expected = ["graduale", "tractus" if after else "alleluia"]
                 purification[after] += 1
+            elif formulary == QUEEN and occurrence.season == "paschale":
+                # pp.543–544: in Paschaltide the Paschal Alleluia replaces both.
+                expected = ["alleluia"]
             else:
                 expected = ["graduale", "alleluia"]
             assert roles == expected, (occurrence.when, formulary)
@@ -297,3 +300,48 @@ def test_joseph_says_the_printed_alleluias_only_in_paschaltide():
                 )
             seen[paschal] += 1
     assert seen[True] >= 1 and seen[False] >= 60
+
+
+QUEEN = "beata-maria-virgo-regina"
+
+
+def test_queenship_says_the_printed_alleluias_only_in_paschaltide():
+    """Benziger 1962 pp.543–544: (T. P.) Alleluias on introit, offertory and
+    communion; a Paschal Alleluia replaces the gradual and the Alleluia said
+    outside Paschaltide."""
+    form = next(f for f in formulary_catalog(CORPUS)["formularies"] if f["id"] == QUEEN)
+    expected = {
+        False: {
+            "introitus": "extra-tempus-paschale-introitus",
+            "offertorium": "extra-tempus-paschale-offertorium",
+            "communio": "communio",
+            "alleluia": "alleluia",
+        },
+        True: {
+            "introitus": "introitus",
+            "offertorium": "offertorium",
+            "communio": "tempore-paschali-communio",
+            "alleluia": "tempore-paschali-alleluia",
+        },
+    }
+    alleluias = {"introitus": 4, "offertorium": 1, "communio": 1}
+    seen = Counter()
+    for ending in range(2026, 2102):
+        for occurrence in year(ending):
+            if occurrence.formulary != QUEEN:
+                continue
+            paschal = occurrence.season == "paschale"
+            chosen = selected(form["components"], occurrence)
+            assert chant_roles(chosen) == (["alleluia"] if paschal else ["graduale", "alleluia"])
+            for role, suffix in expected[paschal].items():
+                parts = [c for c in chosen if c["role"] == role]
+                assert len(parts) == 1, (occurrence.when, role)
+                assert parts[0]["text"] == f"proprium/{QUEEN}-{suffix}"
+                if role in alleluias:
+                    doc = json.loads((CORPUS / "texts" / f"{parts[0]['text']}.json").read_text())
+                    words = [w for segment in doc["segments"] for w in segment.get("words", [])]
+                    assert sum(w["lemma"] == "alleluia" for w in words) == (
+                        alleluias[role] if paschal else 0
+                    )
+            seen[paschal] += 1
+    assert seen[True] >= 10 and seen[False] >= 10
