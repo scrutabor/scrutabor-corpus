@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.1.0",
+  "formulary_schema": "1.2.0",
   "id": "dedicatio-archibasilicae-sanctissimi-salvatoris",
   "order": 94,
   "collection": "sanctorale",
@@ -45,7 +45,10 @@
       "key": "tractus",
       "role": "tractus",
       "text": "proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-tractus",
-      "relation": "proper"
+      "relation": "proper",
+      "condition": {
+        "use": "votive-after-septuagesima"
+      }
     },
     {
       "key": "evangelium",

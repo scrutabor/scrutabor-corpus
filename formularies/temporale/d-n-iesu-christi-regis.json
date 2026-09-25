@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.1.0",
+  "formulary_schema": "1.2.0",
   "id": "d-n-iesu-christi-regis",
   "order": 67,
   "collection": "temporale",
@@ -45,7 +45,10 @@
       "key": "tractus",
       "role": "tractus",
       "text": "proprium.d-n-iesu-christi-regis-tractus",
-      "relation": "proper"
+      "relation": "proper",
+      "condition": {
+        "use": "votive-after-septuagesima"
+      }
     },
     {
       "key": "evangelium",

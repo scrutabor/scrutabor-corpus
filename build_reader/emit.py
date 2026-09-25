@@ -117,13 +117,13 @@ def formulary_catalog(corpus: Path) -> dict:
         for component in formulary["components"]:
             component["text"] = component["text"].replace(".", "/", 1)
         formularies.append(formulary)
-    return {"schema_version": "1.1.0", "formularies": formularies}
+    return {"schema_version": "1.2.0", "formularies": formularies}
 
 
 def language_formulary_catalog(corpus: Path, language: str) -> dict:
     """Project localized titles without duplicating neutral assembly data."""
     return {
-        "schema_version": "1.1.0",
+        "schema_version": "1.2.0",
         "language": language,
         "titles": [
             {"id": authored["id"], "title": authored["title"]}

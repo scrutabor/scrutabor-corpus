@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.1.0",
+  "formulary_schema": "1.2.0",
   "id": "sancti-thomae-apostoli",
   "order": 97,
   "collection": "sanctorale",
@@ -45,7 +45,10 @@
       "key": "tractus",
       "role": "tractus",
       "text": "proprium.sancti-ioachim-confessoris-tractus",
-      "relation": "reference"
+      "relation": "reference",
+      "condition": {
+        "use": "votive-after-septuagesima"
+      }
     },
     {
       "key": "evangelium",

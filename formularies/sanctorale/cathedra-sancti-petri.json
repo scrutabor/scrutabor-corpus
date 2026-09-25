@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.1.0",
+  "formulary_schema": "1.2.0",
   "id": "cathedra-sancti-petri",
   "order": 102,
   "collection": "sanctorale",
@@ -39,7 +39,10 @@
       "key": "alleluia",
       "role": "alleluia",
       "text": "proprium.sancti-petri-et-pauli-apostolorum-alleluia",
-      "relation": "reference"
+      "relation": "reference",
+      "condition": {
+        "use": "votive-before-septuagesima-or-after-pentecost"
+      }
     },
     {
       "key": "tractus",

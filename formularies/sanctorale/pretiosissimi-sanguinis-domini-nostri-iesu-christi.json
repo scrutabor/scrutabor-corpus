@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.1.0",
+  "formulary_schema": "1.2.0",
   "id": "pretiosissimi-sanguinis-domini-nostri-iesu-christi",
   "order": 71,
   "collection": "sanctorale",
@@ -45,7 +45,10 @@
       "key": "tractus",
       "role": "tractus",
       "text": "proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-tractus",
-      "relation": "proper"
+      "relation": "proper",
+      "condition": {
+        "use": "votive-after-septuagesima"
+      }
     },
     {
       "key": "evangelium",
