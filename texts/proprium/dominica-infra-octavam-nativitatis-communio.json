@@ -28,7 +28,7 @@
         { "id": "w007", "form": "vade", "lemma": "vado", "morph": { "pos": "verb", "mood": "imp", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 3 } },
         { "id": "w008", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w009" },
         { "id": "w009", "form": "terram", "lemma": "terra", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w010", "form": "Ísrael", "lemma": "Israel", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" }, "post": ":" },
+        { "id": "w010", "form": "Israël", "post": ":", "lemma": "Israel", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" } },
         { "id": "w011", "form": "defúncti", "lemma": "defunctus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "substantive": true },
         { "id": "w012", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w013", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" }, "post": "," },
@@ -68,7 +68,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

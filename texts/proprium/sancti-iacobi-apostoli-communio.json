@@ -30,7 +30,7 @@
         { "id": "w009", "form": "iudicántes", "lemma": "iudico", "morph": { "pos": "verb", "case": "acc", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "substantive": true },
         { "id": "w010", "form": "duódecim", "lemma": "duodecim", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true },
         { "id": "w011", "form": "tribus", "lemma": "tribus", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "pl", "decl": 4 } },
-        { "id": "w012", "form": "Ísrael", "lemma": "Israel", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" }, "post": "." }
+        { "id": "w012", "form": "Israël", "post": ".", "lemma": "Israel", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" } }
       ],
       "participation": {
         "cantu": {
@@ -61,7 +61,10 @@
       "apparatus": "witnesses/proprium.sancti-iacobi-apostoli-communio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

@@ -8,6 +8,9 @@
   "sung": true,
   "ids": {
     "next": 25,
+    "retired": {
+      "w024": "s01"
+    },
     "segments": {
       "next": 2
     }
@@ -31,7 +34,7 @@
         { "id": "w010", "form": "meam", "lemma": "meus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ":", "head": "w009" },
         { "id": "w011", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w012", "form": "portæ", "lemma": "porta", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "pl", "decl": 1 } },
-        { "id": "w013", "form": "ínferi", "lemma": "inferus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w013", "form": "ínferi", "lemma": "inferus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w014", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w015", "form": "prævalébunt", "lemma": "praevaleo", "morph": { "conj": 2, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w016", "form": "advérsus", "lemma": "adversus_prep", "morph": { "pos": "prep", "governs": "acc" }, "head": "w017" },
@@ -41,8 +44,7 @@
         { "id": "w020", "form": "dabo", "lemma": "do", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w021", "form": "claves", "lemma": "clavis", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
         { "id": "w022", "form": "regni", "lemma": "regnum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w023", "form": "cælórum", "lemma": "caelum", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" }, "post": "." },
-        { "id": "w024", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+        { "id": "w023", "form": "cælórum", "lemma": "caelum", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" }, "post": "." }
       ],
       "participation": {
         "cantu": {
@@ -87,7 +89,7 @@
       "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
@@ -97,8 +99,7 @@
       "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } }
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } }
     }
   },
   "localization": {
