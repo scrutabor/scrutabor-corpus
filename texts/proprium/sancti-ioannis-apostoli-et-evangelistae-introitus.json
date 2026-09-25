@@ -10,6 +10,12 @@
     "next": 70,
     "segments": {
       "next": 2
+    },
+    "retired": {
+      "w019": "s01",
+      "w020": "s01",
+      "w068": "s01",
+      "w069": "s01"
     }
   },
   "segments": [
@@ -30,15 +36,13 @@
         { "id": "w009", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w010", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w011", "form": "spíritu", "lemma": "spiritus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w012", "form": "sapiéntiæ", "lemma": "sapientia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w012", "form": "sapiéntiæ", "lemma": "sapientia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w014", "form": "intelléctus", "lemma": "intellectus", "morph": { "pos": "noun", "case": "gen", "gender": "m", "number": "sg", "decl": 4 }, "post": ":" },
         { "id": "w015", "form": "stolam", "lemma": "stola", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w016", "form": "glóriæ", "lemma": "gloria", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w017", "form": "índuit", "lemma": "induo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 3 } },
         { "id": "w018", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" }, "post": "." },
-        { "id": "w019", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
-        { "id": "w020", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w021", "form": "Bonum", "lemma": "bonus", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "substantive": true },
         { "id": "w022", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w023", "form": "confitéri", "lemma": "confiteor", "morph": { "conj": 2, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "dep" } },
@@ -79,15 +83,13 @@
         { "id": "w058", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w059", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w060", "form": "spíritu", "lemma": "spiritus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w061", "form": "sapiéntiæ", "lemma": "sapientia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w061", "form": "sapiéntiæ", "lemma": "sapientia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w062", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w063", "form": "intelléctus", "lemma": "intellectus", "morph": { "pos": "noun", "case": "gen", "gender": "m", "number": "sg", "decl": 4 }, "post": ":" },
         { "id": "w064", "form": "stolam", "lemma": "stola", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w065", "form": "glóriæ", "lemma": "gloria", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w066", "form": "índuit", "lemma": "induo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 3 } },
-        { "id": "w067", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" }, "post": "." },
-        { "id": "w068", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
-        { "id": "w069", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+        { "id": "w067", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" }, "post": "." }
       ],
       "participation": {
         "cantu": {
@@ -137,8 +139,6 @@
       "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
@@ -185,8 +185,6 @@
       "w065": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w066": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w067": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w068": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w069": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w058": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
