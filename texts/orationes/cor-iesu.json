@@ -17,9 +17,9 @@
       "id": "s01",
       "type": "verse",
       "words": [
-        { "id": "w001", "form": "Cor", "lemma": "cor", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w001", "form": "Cor", "lemma": "cor", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "n", "decl": 3 } },
         { "id": "w002", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
-        { "id": "w003", "form": "sacratíssimum", "post": ".", "lemma": "sacratus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n", "degree": "sup" }, "head": "w001" }
+        { "id": "w003", "form": "sacratíssimum", "post": ".", "lemma": "sacratus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "n", "degree": "sup" }, "head": "w001" }
       ]
     },
     {
@@ -43,7 +43,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

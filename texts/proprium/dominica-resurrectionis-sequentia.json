@@ -42,7 +42,7 @@
         { "id": "w021", "form": "vitæ", "lemma": "vita", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w022", "form": "mórtuus", "lemma": "morior", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "dep" }, "head": "w020", "post": "," },
         { "id": "w023", "form": "regnat", "lemma": "regno", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w024", "form": "vivus", "lemma": "vivus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "post": ".", "substantive": true },
+        { "id": "w024", "form": "vivus", "post": ".", "lemma": "vivus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "head": "w020" },
         { "id": "w025", "form": "Dic", "lemma": "dico", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w026", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "post": "," },
         { "id": "w027", "form": "María", "post": ",", "lemma": "Maria", "morph": { "pos": "noun", "case": "voc", "gender": "f", "number": "sg", "decl": 1 } },
@@ -79,7 +79,7 @@
         { "id": "w058", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
         { "id": "w059", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "post": "," },
         { "id": "w060", "form": "victor", "lemma": "victor", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 3 } },
-        { "id": "w061", "form": "Rex", "lemma": "rex", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 }, "post": "," },
+        { "id": "w061", "form": "Rex", "post": ",", "lemma": "rex", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 3 } },
         { "id": "w062", "form": "miserére", "lemma": "misereor", "morph": { "conj": 2, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "dep" }, "post": "." },
         { "id": "w063", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w064", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
@@ -119,7 +119,9 @@
       "w039": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w027": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w060": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w060": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w061": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

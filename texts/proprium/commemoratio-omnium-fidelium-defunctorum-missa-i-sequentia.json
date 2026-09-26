@@ -62,7 +62,7 @@
         { "id": "w020", "form": "ventúrus", "lemma": "venio", "morph": { "case": "nom", "conj": 4, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "fut", "voice": "act" }, "post": ".", "head": "w018" },
         { "id": "w021", "form": "Cuncta", "lemma": "cunctus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true },
         { "id": "w022", "form": "stricte", "lemma": "stricte", "morph": { "pos": "adv" } },
-        { "id": "w023", "form": "discussúrus", "lemma": "discutio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "fut", "voice": "act", "mood": "part", "conj": 3 }, "post": "!", "head": "w018" }
+        { "id": "w023", "form": "discussúrus", "post": "!", "lemma": "discutio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "fut", "voice": "act", "mood": "part", "conj": 3 }, "ellipsis": "subject" }
       ],
       "participation": {
         "cantu": {
@@ -181,7 +181,7 @@
         { "id": "w055", "form": "ergo", "lemma": "ergo", "morph": { "pos": "adv" } },
         { "id": "w056", "form": "cum", "lemma": "cum", "morph": { "pos": "conj" } },
         { "id": "w057", "form": "sedébit", "lemma": "sedeo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" }, "post": "," },
-        { "id": "w058", "form": "Quidquid", "lemma": "quidquid", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w058", "form": "Quidquid", "lemma": "quidquid", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "n" } },
         { "id": "w059", "form": "latet", "lemma": "lateo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w060", "form": "apparébit", "lemma": "appareo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "act", "conj": 2 }, "post": ":" },
         { "id": "w061", "form": "Nil", "lemma": "nil", "morph": { "pos": "noun", "gender": "n", "case": "nom", "number": "sg" } },
@@ -213,14 +213,14 @@
         { "id": "w066", "form": "miser", "lemma": "miser", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "substantive": true },
         { "id": "w067", "form": "tunc", "lemma": "tunc", "morph": { "pos": "adv" } },
         { "id": "w068", "form": "dictúrus", "lemma": "dico", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "fut", "voice": "act" }, "post": "?", "head": "w065" },
-        { "id": "w069", "form": "Quem", "lemma": "qui", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
+        { "id": "w069", "form": "Quem", "lemma": "quis", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w070", "form": "patrónum", "lemma": "patronus", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w071", "form": "rogatúrus", "lemma": "rogo", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "fut", "voice": "act" }, "post": ",", "substantive": true },
         { "id": "w072", "form": "Cum", "lemma": "cum", "morph": { "pos": "conj" } },
         { "id": "w073", "form": "vix", "lemma": "vix", "morph": { "pos": "adv" } },
         { "id": "w074", "form": "iustus", "lemma": "iustus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
         { "id": "w075", "form": "sit", "lemma": "sum", "morph": { "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w076", "form": "secúrus", "lemma": "securus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "post": "?", "substantive": true }
+        { "id": "w076", "form": "secúrus", "post": "?", "lemma": "securus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w074" }
       ],
       "participation": {
         "cantu": {
@@ -690,10 +690,18 @@
       "w165": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w171": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w175": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w179": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w179": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w058": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w069": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w076": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w023": {
+
+      }
+    }
   }
 }
