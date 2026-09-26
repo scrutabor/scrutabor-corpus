@@ -438,8 +438,9 @@ localization, editorial
 - Segment: `{ id, type: "verse"|"rubric", verse?, speaker?, voice?, delivery?,
   parentheses?[], text? (rubric Latin), words?[] }`. **`speaker`** (since 0.9.0) is who says it —
   `sacerdos`, `ductor`, `minister`, `populus`, `omnes`, `schola` — and **`voice`**
-  is how loudly: `clara` (aloud), `submissa` (raised but not full, the
-  *elata aliquantulum voce* of Dómine non sum dignus), `secreto`
+  is how loudly: `clara` (aloud, including the *elata aliquantulum voce*
+  of Dómine, non sum dignus, a manner of clara), `submissa` (a genuinely
+  lowered voice, the priest's Amen after the Suscípiat), `secreto`
   (silently), `cantus` (sung). Both belong to verse segments only: a
   rubric is the edition's framing, not anyone's words.
   `checks/attribute.py` PROPOSES both from the sources — the speaker from the

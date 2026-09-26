@@ -155,9 +155,9 @@ def test_rejected_citation_attachments_do_not_reach_the_reader(tmp_path):
 def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
     written = emit(CORPUS, tmp_path / "build")
     assert written["citation_projection"] == {
-        "legacy": 2770,
-        "mapped": 1871,
-        "kept": 1871,
+        "legacy": 2771,
+        "mapped": 1872,
+        "kept": 1872,
         "excluded": 899,
         "unresolved": 0,
         "rejected_exposed": 0,
@@ -448,7 +448,7 @@ def test_metrics_are_the_single_derived_denominator(tmp_path):
     metrics = json.loads((out / manifest["base"]["metrics"]).read_text(encoding="utf-8"))
     assert metrics == {
         "schema_version": "1.0.0",
-        "texts": {"total": 1105, "proprium": 1000, "words": 62093, "verse_segments": 2611},
+        "texts": {"total": 1105, "proprium": 1000, "words": 62093, "verse_segments": 2612},
         "languages": {"en": {"texts": 1105}, "pl": {"texts": 1105}},
         "formularies": {
             "total": 109,

@@ -261,6 +261,17 @@ VOICE_SEGMENT_RULINGS: dict[str, tuple[str, str]] = {
     # 511 g names only the words Orate, fratres; the answer's ground is
     # plainer — it exists to be heard, and the priest waits on its
     # omnipotentem before he can continue
+    # RG 511 g names only the words Orate, fratres; the Ritus servandus VII.7
+    # gives their manner, voce aliquantulum elata, and has the priest go on
+    # secreto: ut meum ac vestrum sacrificium. The two voices are two segments.
+    "ordinarium.orate-fratres.s02": (
+        CLARA,
+        "RG 511 g — verba Orate, fratres; the rubric's voce paululum elevata names the manner",
+    ),
+    "ordinarium.orate-fratres.s07": (
+        SECRETO,
+        "Ritus servandus VII.7 — secreto prosequens: ut meum ac vestrum sacrificium",
+    ),
     "ordinarium.orate-fratres.s04": (CLARA, "an answer made to be heard; the priest waits on it"),
     "ordinarium.orate-fratres.s06": (
         SUBMISSA,
@@ -271,12 +282,6 @@ VOICE_SEGMENT_RULINGS: dict[str, tuple[str, str]] = {
 # Segments the law splits but our segmentation does not, so no single value
 # is true of them. Left unattributed on purpose, with the reason here.
 VOICE_UNSETTLED: dict[str, str] = {
-    "ordinarium.orate-fratres.s02": (
-        'RG 511 g names only the words "Orate, fratres" as said aloud, and the '
-        'Ritus servandus has the priest continue "ut meum ac vestrum sacrificium" '
-        "secreto. This segment holds both, so neither value is true of it; "
-        "splitting the segment would renumber its words."
-    ),
     # This dialogue exists only when the solemn kiss of peace is given. The
     # low-Mass list in RG 511 therefore cannot make it part of that prayer's
     # otherwise secret voice, and neither of the two witnesses names a volume.
