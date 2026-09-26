@@ -855,10 +855,12 @@ def test_sequence_translations_follow_their_own_latin_stanza():
     doc = layer("en", "proprium/commemoratio-omnium-fidelium-defunctorum-missa-i-sequentia")
     sheep = doc["segments"]["s15"]["translation"]
     accursed = doc["segments"]["s16"]["translation"]
-    assert "Your sheep" in sheep and "Your right" in sheep
+    # Inter oves locum præsta ... státuens in parte dextra
+    assert "among the sheep" in sheep and "the right side" in sheep
     assert "flames" not in sheep
-    assert "the cursed" in accursed and "the blessed" in accursed
-    assert "Your sheep" not in accursed
+    # Confutátis maledíctis, flammis ácribus addíctis: voca me cum benedíctis
+    assert "the accursed" in accursed and "flames" in accursed and "the blessed" in accursed
+    assert "sheep" not in accursed
 
 
 def test_postcommunion_conclusion_preserves_person_and_addressee():
