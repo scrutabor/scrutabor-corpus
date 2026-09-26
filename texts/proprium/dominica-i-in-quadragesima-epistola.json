@@ -49,7 +49,7 @@
         { "id": "w028", "form": "dies", "lemma": "dies", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 5 } },
         { "id": "w029", "form": "salútis", "lemma": "salus", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." },
         { "id": "w030", "form": "Némini", "lemma": "nemo", "morph": { "case": "dat", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w031", "form": "dantes", "lemma": "do", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w031", "form": "dantes", "lemma": "do", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "head": "w042" },
         { "id": "w032", "form": "ullam", "lemma": "ullus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w033" },
         { "id": "w033", "form": "offensiónem", "lemma": "offensio", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w034", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
@@ -173,6 +173,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
+      "w031": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w043": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
       "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w038": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },

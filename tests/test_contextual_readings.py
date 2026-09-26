@@ -298,7 +298,7 @@ def test_requiem_epistle_keeps_the_scope_of_all_and_not_all(language):
     translation = doc["segments"]["s01"]["translation"]
     if language == "pl":
         assert (
-            "Wszyscy wprawdzie zmartwychwstaniemy, ale nie wszyscy będziemy przemienieni"
+            "Wszyscy wprawdzie zmartwychwstaniemy, lecz nie wszyscy zostaniemy odmienieni"
             in translation
         )
         assert "Nie wszyscy wprawdzie zaśniemy" not in translation
