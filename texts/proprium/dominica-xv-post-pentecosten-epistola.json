@@ -83,7 +83,7 @@
         { "id": "w062", "form": "sedúcit", "lemma": "seduco", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 3 }, "post": "." },
         { "id": "w063", "form": "Opus", "lemma": "opus", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 3 } },
         { "id": "w064", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
-        { "id": "w065", "form": "suum", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "substantive": true },
+        { "id": "w065", "form": "suum", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w063" },
         { "id": "w066", "form": "probet", "lemma": "probo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 } },
         { "id": "w067", "form": "unusquísque", "lemma": "unusquisque", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" }, "post": "," },
         { "id": "w068", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -132,7 +132,7 @@
         { "id": "w111", "form": "séminat", "lemma": "semino", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 1 } },
         { "id": "w112", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w113" },
         { "id": "w113", "form": "carne", "lemma": "caro", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w114", "form": "sua", "lemma": "suus", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "post": ",", "substantive": true },
+        { "id": "w114", "form": "sua", "post": ",", "lemma": "suus", "morph": { "case": "abl", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w113" },
         { "id": "w115", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w116" },
         { "id": "w116", "form": "carne", "lemma": "caro", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w117", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -197,7 +197,9 @@
       "w149": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w148": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w065": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w114": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

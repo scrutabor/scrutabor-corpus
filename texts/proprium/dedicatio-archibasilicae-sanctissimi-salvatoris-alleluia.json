@@ -24,8 +24,8 @@
         { "id": "w003", "form": "Adorábo", "lemma": "adoro", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w004", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w005" },
         { "id": "w005", "form": "templum", "lemma": "templum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w006", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "substantive": true },
-        { "id": "w007", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "post": ":", "substantive": true },
+        { "id": "w006", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w005" },
+        { "id": "w007", "form": "tuum", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w005" },
         { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w009", "form": "confitébor", "lemma": "confiteor", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "dep" } },
         { "id": "w010", "form": "nómini", "lemma": "nomen", "morph": { "case": "dat", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
@@ -56,7 +56,11 @@
       "apparatus": "witnesses/proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-alleluia/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

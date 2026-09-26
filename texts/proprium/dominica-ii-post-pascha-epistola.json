@@ -64,7 +64,7 @@
         { "id": "w043", "form": "pértulit", "lemma": "perfero", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w044", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w045" },
         { "id": "w045", "form": "córpore", "lemma": "corpus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w046", "form": "suo", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "substantive": true },
+        { "id": "w046", "form": "suo", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "head": "w045" },
         { "id": "w047", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w048" },
         { "id": "w048", "form": "lignum", "lemma": "lignum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w049", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
@@ -106,7 +106,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w038": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
+      "w038": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w046": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

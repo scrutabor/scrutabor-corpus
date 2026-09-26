@@ -35,7 +35,7 @@
         { "id": "w014", "form": "fraudáti", "lemma": "fraudo", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
         { "id": "w015", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w016" },
         { "id": "w016", "form": "desidério", "lemma": "desiderium", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 2 } },
-        { "id": "w017", "form": "suo", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "post": ".", "substantive": true }
+        { "id": "w017", "form": "suo", "post": ".", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "head": "w016" }
       ],
       "participation": {
         "cantu": {
@@ -68,7 +68,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

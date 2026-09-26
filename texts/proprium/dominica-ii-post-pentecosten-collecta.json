@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "Sancti", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "substantive": true },
         { "id": "w002", "form": "nóminis", "lemma": "nomen", "morph": { "case": "gen", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w003", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w003", "form": "tui", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w002" },
         { "id": "w004", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w005", "form": "timórem", "lemma": "timor", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w006", "form": "páriter", "lemma": "pariter", "morph": { "pos": "adv" } },
@@ -108,7 +108,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

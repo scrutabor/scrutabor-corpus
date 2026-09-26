@@ -36,7 +36,7 @@
         { "id": "w015", "form": "dat", "lemma": "do", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w016", "form": "pro", "lemma": "pro", "morph": { "governs": "abl", "pos": "prep" }, "head": "w017" },
         { "id": "w017", "form": "óvibus", "lemma": "ovis", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "pl", "decl": 3 } },
-        { "id": "w018", "form": "suis", "lemma": "suus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "post": ".", "substantive": true },
+        { "id": "w018", "form": "suis", "post": ".", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "f" }, "head": "w017" },
         { "id": "w019", "form": "Mercenárius", "lemma": "mercenarius", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w020", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" }, "post": "," },
         { "id": "w021", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -86,7 +86,7 @@
         { "id": "w065", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w066", "form": "cognóscunt", "lemma": "cognosco", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w067", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
-        { "id": "w068", "form": "meæ", "lemma": "meus", "morph": { "case": "gen", "gender": "f", "number": "sg", "pos": "adj" }, "post": ".", "substantive": true },
+        { "id": "w068", "form": "meæ", "post": ".", "lemma": "meus", "morph": { "case": "nom", "gender": "f", "number": "pl", "pos": "adj" }, "substantive": true },
         { "id": "w069", "form": "Sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
         { "id": "w070", "form": "novit", "lemma": "nosco", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w071", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
@@ -101,7 +101,7 @@
         { "id": "w080", "form": "pono", "lemma": "pono", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w081", "form": "pro", "lemma": "pro", "morph": { "governs": "abl", "pos": "prep" }, "head": "w082" },
         { "id": "w082", "form": "óvibus", "lemma": "ovis", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "pl", "decl": 3 } },
-        { "id": "w083", "form": "meis", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "pl" }, "post": ".", "substantive": true },
+        { "id": "w083", "form": "meis", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "pl" }, "head": "w082" },
         { "id": "w084", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w085", "form": "álias", "lemma": "alius", "morph": { "case": "acc", "gender": "f", "number": "pl", "pos": "adj" }, "head": "w086" },
         { "id": "w086", "form": "oves", "lemma": "ovis", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
@@ -148,7 +148,10 @@
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w060": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w109": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w109": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w068": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w083": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

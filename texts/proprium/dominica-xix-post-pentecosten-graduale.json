@@ -26,7 +26,7 @@
         { "id": "w005", "form": "incénsum", "lemma": "incensum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
         { "id": "w006", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007" },
         { "id": "w007", "form": "conspéctu", "lemma": "conspectus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w008", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w008", "form": "tuo", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "head": "w007" },
         { "id": "w009", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
         { "id": "w010", "form": "Elevátio", "lemma": "elevatio", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
         { "id": "w011", "form": "mánuum", "lemma": "manus", "morph": { "case": "gen", "decl": 4, "gender": "f", "number": "pl", "pos": "noun" } },
@@ -63,7 +63,10 @@
       "apparatus": "witnesses/proprium.dominica-xix-post-pentecosten-graduale/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

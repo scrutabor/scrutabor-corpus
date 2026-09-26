@@ -39,7 +39,7 @@
         { "id": "w018", "form": "semen", "lemma": "semen", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 3 } },
         { "id": "w019", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w020" },
         { "id": "w020", "form": "agro", "lemma": "ager", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
-        { "id": "w021", "form": "suo", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "post": ".", "substantive": true },
+        { "id": "w021", "form": "suo", "post": ".", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "head": "w020" },
         { "id": "w022", "form": "Cum", "lemma": "cum", "morph": { "pos": "conj" } },
         { "id": "w023", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w024", "form": "dormírent", "lemma": "dormio", "morph": { "conj": 4, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
@@ -79,7 +79,7 @@
         { "id": "w058", "form": "seminásti", "lemma": "semino", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "perf", "voice": "act", "conj": 1 } },
         { "id": "w059", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w060" },
         { "id": "w060", "form": "agro", "lemma": "ager", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
-        { "id": "w061", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "post": "?", "substantive": true },
+        { "id": "w061", "form": "tuo", "post": "?", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "head": "w060" },
         { "id": "w062", "form": "Unde", "lemma": "unde", "morph": { "pos": "adv" } },
         { "id": "w063", "form": "ergo", "lemma": "ergo", "morph": { "pos": "adv" } },
         { "id": "w064", "form": "habet", "lemma": "habeo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -140,7 +140,7 @@
         { "id": "w119", "form": "congregáte", "lemma": "congrego", "morph": { "conj": 1, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w120", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w121" },
         { "id": "w121", "form": "hórreum", "lemma": "horreum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
-        { "id": "w122", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "post": ".", "substantive": true }
+        { "id": "w122", "form": "meum", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w121" }
       ]
     }
   ],
@@ -162,7 +162,10 @@
       "w058": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w111": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w116": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
-      "w096": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w096": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w061": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w122": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -35,12 +35,12 @@
         { "id": "w014", "form": "pax", "lemma": "pax", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w016" },
         { "id": "w016", "form": "virtúte", "lemma": "virtus", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w017", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "post": ":", "substantive": true },
+        { "id": "w017", "form": "tua", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w016" },
         { "id": "w018", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w019", "form": "abundántia", "lemma": "abundantia", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w020", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w021" },
         { "id": "w021", "form": "túrribus", "lemma": "turris", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "pl", "decl": 3 } },
-        { "id": "w022", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "post": ".", "substantive": true }
+        { "id": "w022", "form": "tuis", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "f" }, "head": "w021" }
       ],
       "participation": {
         "cantu": {
@@ -71,7 +71,11 @@
       "apparatus": "witnesses/proprium.dominica-xviii-post-pentecosten-graduale/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

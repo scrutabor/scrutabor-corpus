@@ -41,9 +41,9 @@
         { "id": "w014", "form": "aula", "lemma": "aula", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w015", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
         { "id": "w018", "form": "Quam", "lemma": "quam", "morph": { "pos": "adv" } },
-        { "id": "w019", "form": "dilécta", "lemma": "diligo", "morph": { "pos": "verb", "case": "acc", "gender": "n", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w020" },
-        { "id": "w020", "form": "tabernácula", "lemma": "tabernaculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w021", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w019", "form": "dilécta", "lemma": "diligo", "morph": { "pos": "verb", "case": "nom", "gender": "n", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w020" },
+        { "id": "w020", "form": "tabernácula", "lemma": "tabernaculum", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
+        { "id": "w021", "form": "tua", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "head": "w020" },
         { "id": "w022", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w023", "form": "virtútum", "lemma": "virtus", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" }, "post": "!" },
         { "id": "w024", "form": "concupíscit", "lemma": "concupisco", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
@@ -121,7 +121,10 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

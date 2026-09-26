@@ -20,7 +20,7 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Sanctificatiónibus", "lemma": "sanctificatio", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "pl", "decl": 3 } },
-        { "id": "w002", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w002", "form": "tuis", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "f" }, "head": "w001" },
         { "id": "w003", "form": "omnípotens", "lemma": "omnipotens", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w004" },
         { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -99,7 +99,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

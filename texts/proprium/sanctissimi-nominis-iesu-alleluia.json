@@ -24,8 +24,8 @@
         { "id": "w003", "form": "Laudem", "lemma": "laus", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 3 } },
         { "id": "w004", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w005", "form": "loquétur", "lemma": "loquor", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "dep" } },
-        { "id": "w006", "form": "os", "lemma": "os", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 3 } },
-        { "id": "w007", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w006", "form": "os", "lemma": "os", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg", "decl": 3 } },
+        { "id": "w007", "form": "meum", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "head": "w006" },
         { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w009", "form": "benedícat", "lemma": "benedico", "morph": { "conj": 3, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w010", "form": "omnis", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w011" },
@@ -59,7 +59,11 @@
       "apparatus": "witnesses/proprium.sanctissimi-nominis-iesu-alleluia/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

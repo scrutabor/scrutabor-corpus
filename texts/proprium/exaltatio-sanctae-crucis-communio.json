@@ -24,7 +24,7 @@
         { "id": "w003", "form": "Crucis", "lemma": "crux", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w004", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w005" },
         { "id": "w005", "form": "inimícis", "lemma": "inimicus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
-        { "id": "w006", "form": "nostris", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "pl" }, "substantive": true },
+        { "id": "w006", "form": "nostris", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "pl" }, "head": "w005" },
         { "id": "w007", "form": "líbera", "lemma": "libero", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w008", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": "," },
         { "id": "w009", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 } },
@@ -62,7 +62,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

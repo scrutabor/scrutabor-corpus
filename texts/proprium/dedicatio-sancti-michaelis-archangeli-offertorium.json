@@ -29,7 +29,7 @@
         { "id": "w008", "form": "áureum", "lemma": "aureus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w007" },
         { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010" },
         { "id": "w010", "form": "manu", "lemma": "manus", "morph": { "case": "abl", "decl": 4, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w011", "form": "sua", "lemma": "suus", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "post": ",", "substantive": true },
+        { "id": "w011", "form": "sua", "post": ",", "lemma": "suus", "morph": { "case": "abl", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w010" },
         { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w013", "form": "data", "lemma": "do", "morph": { "pos": "verb", "number": "sg", "case": "nom", "gender": "f", "tense": "perf", "mood": "part", "voice": "pass", "conj": 1 }, "substantive": true },
         { "id": "w014", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -76,7 +76,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -19,8 +19,8 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Ángelis", "lemma": "angelus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
-        { "id": "w002", "form": "suis", "lemma": "suus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w001", "form": "Ángelis", "lemma": "angelus", "morph": { "case": "dat", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w002", "form": "suis", "lemma": "suus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w001" },
         { "id": "w003", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w004", "form": "mandávit", "lemma": "mando", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w005", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w006" },
@@ -31,7 +31,7 @@
         { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w012" },
         { "id": "w011", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "pl" }, "head": "w012" },
         { "id": "w012", "form": "viis", "lemma": "via", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "pl", "decl": 1 } },
-        { "id": "w013", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "post": ".", "substantive": true },
+        { "id": "w013", "form": "tuis", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "f" }, "head": "w012" },
         { "id": "w014", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w015" },
         { "id": "w015", "form": "mánibus", "lemma": "manus", "morph": { "case": "abl", "decl": 4, "gender": "f", "number": "pl", "pos": "noun" } },
         { "id": "w016", "form": "portábunt", "lemma": "porto", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
@@ -73,7 +73,12 @@
       "apparatus": "witnesses/proprium.dominica-i-in-quadragesima-graduale/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

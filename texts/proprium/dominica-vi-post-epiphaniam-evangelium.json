@@ -39,7 +39,7 @@
         { "id": "w018", "form": "seminávit", "lemma": "semino", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 1 } },
         { "id": "w019", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w020" },
         { "id": "w020", "form": "agro", "lemma": "ager", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
-        { "id": "w021", "form": "suo", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "post": ":", "substantive": true },
+        { "id": "w021", "form": "suo", "post": ":", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "head": "w020" },
         { "id": "w022", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
         { "id": "w023", "form": "mínimum", "lemma": "parvus", "morph": { "pos": "adj", "case": "nom", "degree": "sup", "gender": "n", "number": "sg" }, "substantive": true },
         { "id": "w024", "form": "quidem", "lemma": "quidem", "morph": { "pos": "adv" } },
@@ -114,8 +114,8 @@
         { "id": "w093", "form": "Apériam", "lemma": "aperio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "fut", "voice": "act", "conj": 4 } },
         { "id": "w094", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w095" },
         { "id": "w095", "form": "parábolis", "lemma": "parabola", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "pl", "decl": 1 } },
-        { "id": "w096", "form": "os", "lemma": "os", "morph": { "case": "nom", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w097", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w096", "form": "os", "lemma": "os", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w097", "form": "meum", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w096" },
         { "id": "w098", "form": "eructábo", "lemma": "eructo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "fut", "voice": "act", "conj": 1 } },
         { "id": "w099", "form": "abscóndita", "lemma": "abscondo", "morph": { "case": "abl", "conj": 3, "gender": "f", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
         { "id": "w100", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w101" },
@@ -141,7 +141,10 @@
       "w064": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w076": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w081": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w095": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w095": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w096": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w097": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

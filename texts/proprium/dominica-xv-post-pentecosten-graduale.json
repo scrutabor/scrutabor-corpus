@@ -26,7 +26,7 @@
         { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w006", "form": "psállere", "lemma": "psallo", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 3 } },
         { "id": "w007", "form": "nómini", "lemma": "nomen", "morph": { "case": "dat", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w008", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w008", "form": "tuo", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "gender": "n", "number": "sg" }, "head": "w007" },
         { "id": "w009", "form": "Altíssime", "lemma": "altus", "morph": { "case": "voc", "degree": "sup", "gender": "m", "number": "sg", "pos": "adj" }, "post": ".", "substantive": true },
         { "id": "w010", "form": "Ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w013" },
         { "id": "w011", "form": "annuntiándum", "lemma": "annuntio", "morph": { "pos": "verb", "case": "acc", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "ger", "conj": 1 } },
@@ -71,7 +71,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
-      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

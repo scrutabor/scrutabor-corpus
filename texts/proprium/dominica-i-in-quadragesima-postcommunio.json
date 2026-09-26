@@ -19,7 +19,7 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "substantive": true },
+        { "id": "w001", "form": "Tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w004" },
         { "id": "w002", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": "," },
         { "id": "w003", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w004", "form": "sacraménti", "lemma": "sacramentum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
@@ -100,7 +100,10 @@
       "apparatus": "witnesses/proprium.dominica-i-in-quadragesima-postcommunio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

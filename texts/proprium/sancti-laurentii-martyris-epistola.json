@@ -40,7 +40,7 @@
         { "id": "w019", "form": "destinávit", "lemma": "destino", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 1 } },
         { "id": "w020", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w021" },
         { "id": "w021", "form": "corde", "lemma": "cor", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w022", "form": "suo", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w022", "form": "suo", "post": ",", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "head": "w021" },
         { "id": "w023", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w024", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w025" },
         { "id": "w025", "form": "tristítia", "lemma": "tristitia", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
@@ -105,7 +105,7 @@
         { "id": "w084", "form": "increménta", "lemma": "incrementum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 2 } },
         { "id": "w085", "form": "frugum", "lemma": "frux", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "pl", "decl": 3 } },
         { "id": "w086", "form": "iustítiæ", "lemma": "iustitia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w087", "form": "vestræ", "lemma": "vester", "morph": { "case": "nom", "gender": "f", "number": "pl", "pos": "adj" }, "post": ".", "substantive": true }
+        { "id": "w087", "form": "vestræ", "post": ".", "lemma": "vester", "morph": { "case": "gen", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w086" }
       ]
     }
   ],
@@ -125,7 +125,9 @@
       "w045": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w050": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w070": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w070": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w087": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

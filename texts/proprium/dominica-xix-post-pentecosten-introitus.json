@@ -41,7 +41,7 @@
         { "id": "w020", "form": "perpétuum", "lemma": "perpetuus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "post": ".", "substantive": true },
         { "id": "w021", "form": "Atténdite", "lemma": "attendo", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "act", "conj": 3 }, "post": "," },
         { "id": "w022", "form": "pópule", "lemma": "populus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w023", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w023", "form": "meus", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w022" },
         { "id": "w024", "form": "legem", "lemma": "lex", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w025", "form": "meam", "lemma": "meus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ":", "head": "w024" },
         { "id": "w026", "form": "inclináte", "lemma": "inclino", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "act", "conj": 1 } },
@@ -50,7 +50,7 @@
         { "id": "w029", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w030" },
         { "id": "w030", "form": "verba", "lemma": "verbum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 2 } },
         { "id": "w031", "form": "oris", "lemma": "os", "morph": { "case": "gen", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w032", "form": "mei", "lemma": "meus", "morph": { "pos": "adj", "case": "gen", "gender": "m", "number": "sg" }, "post": ".", "substantive": true },
+        { "id": "w032", "form": "mei", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "gen", "gender": "n", "number": "sg" }, "head": "w031" },
         { "id": "w033", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w034", "form": "Patri", "lemma": "pater", "morph": { "case": "dat", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w035", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -125,7 +125,9 @@
     "words": {
       "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w054": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w054": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
+      "w032": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

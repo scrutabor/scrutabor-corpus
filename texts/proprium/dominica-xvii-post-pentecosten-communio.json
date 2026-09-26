@@ -24,7 +24,7 @@
         { "id": "w003", "form": "réddite", "lemma": "reddo", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "act", "conj": 3 } },
         { "id": "w004", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w005", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 } },
-        { "id": "w006", "form": "vestro", "lemma": "vester", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "substantive": true },
+        { "id": "w006", "form": "vestro", "lemma": "vester", "morph": { "pos": "adj", "case": "dat", "gender": "m", "number": "sg" }, "head": "w005" },
         { "id": "w007", "form": "omnes", "post": ",", "lemma": "omnis", "morph": { "pos": "adj", "case": "voc", "number": "pl", "gender": "m" }, "substantive": true },
         { "id": "w008", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010" },
@@ -78,7 +78,8 @@
     "words": {
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w007": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
