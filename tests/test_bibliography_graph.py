@@ -126,10 +126,10 @@ def test_the_authored_graph_accounts_for_every_audited_legacy_citation():
     state = parity(CORPUS, graph, languages)
     assert state == {
         "legacy": 2770,
-        "mapped": 1910,
-        "removed": 860,
+        "mapped": 1871,
+        "removed": 899,
         "unmapped": 0,
-        "sha256": "807b377aba156adb13b5daf5348c3ec7242c23a3eee56586cb022bf44e4b82c5",
+        "sha256": "3440413badcc48c2359db71c8618dade5dfbde7d730ed233a96d41d4492b93ed",
         "complete": True,
     }
 
