@@ -55,7 +55,7 @@
       "words": [
         { "id": "w019", "form": "líbera", "lemma": "libero", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 } },
         { "id": "w020", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
-        { "id": "w021", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w022" },
+        { "id": "w021", "form": "per", "lemma": "per", "morph": { "pos": "prep", "governs": "acc" }, "head": "w024" },
         { "id": "w022", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
         { "id": "w023", "form": "sacrosánctum", "lemma": "sacrosanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w024" },
         { "id": "w024", "form": "Corpus", "lemma": "corpus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 3 } },
@@ -99,7 +99,7 @@
       "voice": "secreto",
       "words": [
         { "id": "w048", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w049", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w050" },
+        { "id": "w049", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w051" },
         { "id": "w050", "form": "eódem", "lemma": "idem", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" } },
         { "id": "w051", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w052", "form": "Patre", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 }, "post": "," },
@@ -128,7 +128,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w049": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

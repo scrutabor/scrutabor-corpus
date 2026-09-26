@@ -19,7 +19,7 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Sumptum", "lemma": "sumptus", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "sg", "decl": 4 }, "post": "," },
+        { "id": "w001", "form": "Sumptum", "post": ",", "lemma": "sumo", "morph": { "case": "nom", "conj": 3, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w003" },
         { "id": "w002", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w003", "form": "pignus", "lemma": "pignus", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg", "decl": 3 } },
         { "id": "w004", "form": "redemptiónis", "lemma": "redemptio", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 3 } },
@@ -34,13 +34,13 @@
         { "id": "w013", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "post": ",", "head": "w012" },
         { "id": "w014", "form": "vitæ", "lemma": "vita", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w015", "form": "præséntis", "lemma": "praesens", "morph": { "pos": "adj", "case": "gen", "gender": "f", "number": "sg" }, "head": "w014" },
-        { "id": "w016", "form": "auxílium", "lemma": "auxilium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
+        { "id": "w016", "form": "auxílium", "lemma": "auxilium", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg", "decl": 2 } },
         { "id": "w017", "form": "páriter", "lemma": "pariter", "morph": { "pos": "adv" } },
         { "id": "w018", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w019", "form": "futúræ", "lemma": "futurus", "morph": { "pos": "adj", "case": "gen", "gender": "f", "number": "sg" }, "post": ".", "head": "w014" },
         { "id": "w020", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w021" },
         { "id": "w021", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w022", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w023" },
+        { "id": "w022", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w021" },
         { "id": "w023", "form": "Iesum", "lemma": "Iesus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w024", "form": "Christum", "lemma": "Christus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w025", "form": "Fílium", "lemma": "filius", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -106,7 +106,10 @@
     "words": {
       "w008": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -90,7 +90,7 @@
         { "id": "w042", "form": "ventris", "lemma": "venter", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w043", "form": "tui", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w042" },
         { "id": "w044", "form": "nobis", "post": ",", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
-        { "id": "w045", "form": "post", "lemma": "post", "morph": { "pos": "prep", "governs": "acc" }, "head": "w046" },
+        { "id": "w045", "form": "post", "lemma": "post", "morph": { "pos": "prep", "governs": "acc" }, "head": "w047" },
         { "id": "w046", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
         { "id": "w047", "form": "exílium", "post": ",", "lemma": "exilium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
         { "id": "w048", "form": "osténde", "post": ".", "lemma": "ostendo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 3 } }
@@ -145,7 +145,10 @@
       "apparatus": "witnesses/orationes.salve-regina/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w045": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true,

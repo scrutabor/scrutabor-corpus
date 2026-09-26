@@ -24,7 +24,7 @@
         { "id": "w003", "form": "misericórdiæ", "lemma": "misericordia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w004", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "post": ",", "head": "w003" },
         { "id": "w005", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
-        { "id": "w006", "form": "précibus", "lemma": "prex", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "pl", "decl": 3 } },
+        { "id": "w006", "form": "précibus", "lemma": "prex", "morph": { "pos": "noun", "case": "dat", "gender": "f", "number": "pl", "decl": 3 } },
         { "id": "w007", "form": "supplicántium", "lemma": "supplico", "morph": { "pos": "verb", "case": "gen", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "post": ":", "substantive": true },
         { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" }, "post": "," },
         { "id": "w009", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
@@ -36,11 +36,11 @@
         { "id": "w015", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
         { "id": "w016", "form": "tibi", "lemma": "tu", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
         { "id": "w017", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w018", "form": "plácita", "lemma": "placeo", "morph": { "pos": "verb", "case": "nom", "gender": "n", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 2 }, "post": ",", "substantive": true },
+        { "id": "w018", "form": "plácita", "post": ",", "lemma": "placeo", "morph": { "pos": "verb", "case": "nom", "gender": "n", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 2 }, "head": "w015" },
         { "id": "w019", "form": "postuláre", "lemma": "postulo", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 1 }, "post": "." },
         { "id": "w020", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w021" },
         { "id": "w021", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w022", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w023" },
+        { "id": "w022", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w021" },
         { "id": "w023", "form": "Iesum", "lemma": "Iesus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w024", "form": "Christum", "lemma": "Christus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w025", "form": "Fílium", "lemma": "filius", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -102,7 +102,12 @@
       "apparatus": "witnesses/proprium.dominica-ix-post-pentecosten-collecta/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true
