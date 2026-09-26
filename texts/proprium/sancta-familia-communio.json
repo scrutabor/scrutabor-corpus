@@ -22,7 +22,7 @@
         { "id": "w001", "form": "Descéndit", "lemma": "descendo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w002", "form": "Iesus", "lemma": "Iesus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w003", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w004" },
-        { "id": "w004", "form": "eis", "lemma": "is", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "post": "," },
+        { "id": "w004", "form": "eis", "lemma": "is", "morph": { "case": "abl", "gender": "m", "number": "pl", "pos": "pron" }, "post": "," },
         { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w006", "form": "venit", "lemma": "venio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 4 } },
         { "id": "w007", "form": "Názareth", "post": ",", "lemma": "Nazareth", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "noun" } },
@@ -62,6 +62,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }

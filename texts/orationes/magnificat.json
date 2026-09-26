@@ -75,7 +75,7 @@
         { "id": "w034", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w035", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w036" },
         { "id": "w036", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
-        { "id": "w037", "form": "eius", "post": ".", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg" } }
+        { "id": "w037", "form": "eius", "post": ".", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } }
       ]
     },
     {
@@ -85,7 +85,7 @@
       "words": [
         { "id": "w038", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w039", "form": "misericórdia", "lemma": "misericordia", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
-        { "id": "w040", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
+        { "id": "w040", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w041", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w042" },
         { "id": "w042", "form": "progénie", "lemma": "progenies", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 5 } },
         { "id": "w043", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w044" },
@@ -216,6 +216,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
+      "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w072": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w084": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
     }
