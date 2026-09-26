@@ -29,7 +29,7 @@
         { "id": "w008", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
         { "id": "w009", "form": "recta", "lemma": "rectus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "head": "w008" },
         { "id": "w010", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
-        { "id": "w011", "form": "propítius", "lemma": "propitius", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w011", "form": "propítius", "lemma": "propitius", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w001" },
         { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w013", "form": "agéndi", "lemma": "ago", "morph": { "pos": "verb", "case": "gen", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "ger", "conj": 3 }, "post": ":" },
         { "id": "w014", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "post": "," },
@@ -110,6 +110,7 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
