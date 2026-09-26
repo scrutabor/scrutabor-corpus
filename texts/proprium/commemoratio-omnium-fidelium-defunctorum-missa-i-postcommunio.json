@@ -27,13 +27,13 @@
         { "id": "w006", "form": "tuárum", "lemma": "tuus", "morph": { "case": "gen", "gender": "f", "number": "pl", "pos": "adj" }, "head": "w005" },
         { "id": "w007", "form": "orátio", "lemma": "oratio", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
         { "id": "w008", "form": "profíciat", "lemma": "proficio", "morph": { "conj": 3, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w009", "form": "supplicántium", "lemma": "supplico", "morph": { "pos": "verb", "case": "gen", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "post": ":", "substantive": true },
+        { "id": "w009", "form": "supplicántium", "post": ":", "lemma": "supplico", "morph": { "pos": "verb", "case": "gen", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "head": "w004" },
         { "id": "w010", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w011", "form": "eas", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w013", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w014" },
         { "id": "w014", "form": "peccátis", "lemma": "peccatum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w015", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "substantive": true },
+        { "id": "w015", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "head": "w014" },
         { "id": "w016", "form": "éxuas", "lemma": "exuo", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 3 }, "post": "," },
         { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w018", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w019" },
@@ -104,7 +104,9 @@
     "words": {
       "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

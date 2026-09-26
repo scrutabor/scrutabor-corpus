@@ -19,8 +19,8 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Viri", "lemma": "vir", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w002", "form": "Galilǽi", "lemma": "Galilaeus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w001", "form": "Viri", "lemma": "vir", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w002", "form": "Galilǽi", "post": ",", "lemma": "Galilaeus", "morph": { "pos": "adj", "case": "voc", "number": "pl", "gender": "m" }, "head": "w001" },
         { "id": "w003", "form": "quid", "lemma": "quis", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w004", "form": "admirámini", "lemma": "admiror", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 2, "tense": "pres", "voice": "dep", "conj": 1 } },
         { "id": "w005", "form": "aspiciéntes", "lemma": "aspicio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
@@ -67,8 +67,8 @@
         { "id": "w046", "form": "sǽcula", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
         { "id": "w047", "form": "sæculórum", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" }, "post": "." },
         { "id": "w048", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." },
-        { "id": "w049", "form": "Viri", "lemma": "vir", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w050", "form": "Galilǽi", "lemma": "Galilaeus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w049", "form": "Viri", "lemma": "vir", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w050", "form": "Galilǽi", "post": ",", "lemma": "Galilaeus", "morph": { "pos": "adj", "case": "voc", "number": "pl", "gender": "m" }, "head": "w049" },
         { "id": "w051", "form": "quid", "lemma": "quis", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w052", "form": "admirámini", "lemma": "admiror", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 2, "tense": "pres", "voice": "dep", "conj": 1 } },
         { "id": "w053", "form": "aspiciéntes", "lemma": "aspicio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
@@ -120,7 +120,11 @@
     "words": {
       "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w049": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w050": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -37,7 +37,7 @@
         { "id": "w016", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w017", "form": "fecit", "lemma": "facio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": "," },
         { "id": "w018", "form": "nec", "lemma": "nec", "morph": { "pos": "conj" } },
-        { "id": "w019", "form": "invéntus", "lemma": "invenio", "morph": { "case": "nom", "conj": 4, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
+        { "id": "w019", "form": "invéntus", "lemma": "invenio", "morph": { "case": "nom", "conj": 4, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w021" },
         { "id": "w020", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w021", "form": "dolus", "lemma": "dolus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w023" },
@@ -79,8 +79,8 @@
         { "id": "w058", "form": "Erátis", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w059", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
         { "id": "w060", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
-        { "id": "w061", "form": "oves", "lemma": "ovis", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
-        { "id": "w062", "form": "errántes", "lemma": "erro", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "post": ",", "substantive": true },
+        { "id": "w061", "form": "oves", "lemma": "ovis", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
+        { "id": "w062", "form": "errántes", "post": ",", "lemma": "erro", "morph": { "pos": "verb", "case": "nom", "gender": "f", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "head": "w061" },
         { "id": "w063", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
         { "id": "w064", "form": "convérsi", "lemma": "converto", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
         { "id": "w065", "form": "estis", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -107,7 +107,10 @@
     "words": {
       "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w038": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
-      "w046": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w046": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w061": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w062": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

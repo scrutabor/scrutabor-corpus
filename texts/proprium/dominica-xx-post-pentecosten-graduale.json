@@ -32,7 +32,7 @@
         { "id": "w011", "form": "escam", "lemma": "esca", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 1 } },
         { "id": "w012", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013" },
         { "id": "w013", "form": "témpore", "lemma": "tempus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w014", "form": "opportúno", "lemma": "opportunus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "post": ".", "substantive": true },
+        { "id": "w014", "form": "opportúno", "post": ".", "lemma": "opportunus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "head": "w013" },
         { "id": "w015", "form": "Áperis", "lemma": "aperio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 4 } },
         { "id": "w016", "form": "tu", "lemma": "tu", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
         { "id": "w017", "form": "manum", "lemma": "manus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 4 } },
@@ -72,7 +72,10 @@
       "apparatus": "witnesses/proprium.dominica-xx-post-pentecosten-graduale/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

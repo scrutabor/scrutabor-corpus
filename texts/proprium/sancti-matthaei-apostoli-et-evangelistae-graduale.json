@@ -29,7 +29,7 @@
         { "id": "w008", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w009", "form": "cupit", "lemma": "cupio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 3 } },
         { "id": "w010", "form": "nimis", "lemma": "nimis", "morph": { "pos": "adv" }, "post": "." },
-        { "id": "w011", "form": "Potens", "lemma": "potens", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "substantive": true },
+        { "id": "w011", "form": "Potens", "lemma": "potens", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "head": "w015" },
         { "id": "w012", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013" },
         { "id": "w013", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
         { "id": "w014", "form": "erit", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
@@ -68,7 +68,10 @@
       "apparatus": "witnesses/proprium.sancti-matthaei-apostoli-et-evangelistae-graduale/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

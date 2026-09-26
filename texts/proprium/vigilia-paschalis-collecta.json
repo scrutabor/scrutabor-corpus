@@ -30,7 +30,7 @@
         { "id": "w009", "form": "illústras", "lemma": "illustro", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":" },
         { "id": "w010", "form": "consérva", "lemma": "conservo", "morph": { "pos": "verb", "mood": "imp", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 1 } },
         { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w017" },
-        { "id": "w012", "form": "nova", "lemma": "novus", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "substantive": true },
+        { "id": "w012", "form": "nova", "lemma": "novus", "morph": { "case": "abl", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w015" },
         { "id": "w013", "form": "famíliæ", "lemma": "familia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w014", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w013" },
         { "id": "w015", "form": "progénie", "lemma": "progenies", "morph": { "case": "abl", "decl": 5, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -43,7 +43,7 @@
         { "id": "w022", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w023", "form": "mente", "lemma": "mens", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w024", "form": "renováti", "lemma": "renovo", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "post": ",", "substantive": true },
-        { "id": "w025", "form": "puram", "lemma": "purus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w025", "form": "puram", "lemma": "purus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w028" },
         { "id": "w026", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
         { "id": "w027", "form": "exhíbeant", "lemma": "exhibeo", "morph": { "conj": 2, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w028", "form": "servitútem", "lemma": "servitus", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." },
@@ -115,7 +115,9 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

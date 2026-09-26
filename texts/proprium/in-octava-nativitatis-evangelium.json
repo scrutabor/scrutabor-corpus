@@ -23,14 +23,14 @@
         { "id": "w002", "form": "illo", "lemma": "ille", "morph": { "case": "abl", "gender": "n", "number": "sg", "pos": "pron" } },
         { "id": "w003", "form": "témpore", "lemma": "tempus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w004", "form": "Postquam", "lemma": "postquam", "morph": { "pos": "conj" } },
-        { "id": "w005", "form": "consummáti", "lemma": "consummo", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w005", "form": "consummáti", "lemma": "consummo", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "head": "w007" },
         { "id": "w006", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w007", "form": "dies", "lemma": "dies", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 5 } },
-        { "id": "w008", "form": "octo", "lemma": "octo", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w007", "form": "dies", "lemma": "dies", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 5 } },
+        { "id": "w008", "form": "octo", "post": ",", "lemma": "octo", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w007" },
         { "id": "w009", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w010", "form": "circumciderétur", "lemma": "circumcido", "morph": { "conj": 3, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "pass" } },
         { "id": "w011", "form": "puer", "lemma": "puer", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
-        { "id": "w012", "form": "vocátum", "lemma": "voco", "morph": { "pos": "verb", "case": "nom", "gender": "n", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w012", "form": "vocátum", "lemma": "voco", "morph": { "pos": "verb", "case": "nom", "gender": "n", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "head": "w014" },
         { "id": "w013", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w014", "form": "nomen", "lemma": "nomen", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
         { "id": "w015", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
@@ -56,7 +56,13 @@
       "apparatus": "witnesses/proprium.in-octava-nativitatis-evangelium/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

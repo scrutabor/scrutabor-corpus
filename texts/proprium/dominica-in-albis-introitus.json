@@ -21,10 +21,10 @@
       "words": [
         { "id": "w001", "form": "Quasi", "lemma": "quasi", "morph": { "pos": "conj" } },
         { "id": "w002", "form": "modo", "lemma": "modo", "morph": { "pos": "adv" } },
-        { "id": "w003", "form": "géniti", "lemma": "gigno", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
-        { "id": "w004", "form": "infántes", "lemma": "infans", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 }, "post": "," },
+        { "id": "w003", "form": "géniti", "lemma": "gigno", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w004" },
+        { "id": "w004", "form": "infántes", "post": ",", "lemma": "infans", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 3 } },
         { "id": "w005", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": ":" },
-        { "id": "w006", "form": "rationábiles", "lemma": "rationabilis", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "pl" }, "post": ",", "substantive": true },
+        { "id": "w006", "form": "rationábiles", "post": ",", "lemma": "rationabilis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "substantive": true },
         { "id": "w007", "form": "sine", "lemma": "sine", "morph": { "governs": "abl", "pos": "prep" }, "head": "w008" },
         { "id": "w008", "form": "dolo", "lemma": "dolus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w009", "form": "lac", "lemma": "lac", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
@@ -61,10 +61,10 @@
         { "id": "w040", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w041", "form": "Quasi", "lemma": "quasi", "morph": { "pos": "conj" } },
         { "id": "w042", "form": "modo", "lemma": "modo", "morph": { "pos": "adv" } },
-        { "id": "w043", "form": "géniti", "lemma": "gigno", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
-        { "id": "w044", "form": "infántes", "lemma": "infans", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 }, "post": "," },
+        { "id": "w043", "form": "géniti", "lemma": "gigno", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w044" },
+        { "id": "w044", "form": "infántes", "post": ",", "lemma": "infans", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 3 } },
         { "id": "w045", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": ":" },
-        { "id": "w046", "form": "rationábiles", "lemma": "rationabilis", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "pl" }, "post": ",", "substantive": true },
+        { "id": "w046", "form": "rationábiles", "post": ",", "lemma": "rationabilis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "substantive": true },
         { "id": "w047", "form": "sine", "lemma": "sine", "morph": { "governs": "abl", "pos": "prep" }, "head": "w048" },
         { "id": "w048", "form": "dolo", "lemma": "dolus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w049", "form": "lac", "lemma": "lac", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
@@ -105,7 +105,13 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w043": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w044": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w046": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

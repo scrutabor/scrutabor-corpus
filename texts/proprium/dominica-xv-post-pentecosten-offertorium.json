@@ -19,7 +19,7 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Exspéctans", "lemma": "exspecto", "morph": { "case": "acc", "conj": 1, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
+        { "id": "w001", "form": "Exspéctans", "lemma": "exspecto", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
         { "id": "w002", "form": "exspectávi", "lemma": "exspecto", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w003", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -35,7 +35,7 @@
         { "id": "w014", "form": "os", "lemma": "os", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w015", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w016" },
         { "id": "w016", "form": "cánticum", "lemma": "canticum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
-        { "id": "w017", "form": "novum", "lemma": "novus", "morph": { "case": "nom", "gender": "n", "number": "sg", "pos": "adj" }, "post": ",", "substantive": true },
+        { "id": "w017", "form": "novum", "post": ",", "lemma": "novus", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "head": "w016" },
         { "id": "w018", "form": "hymnum", "lemma": "hymnus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w019", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w020", "form": "nostro", "lemma": "noster", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "m" }, "post": ".", "head": "w019" }
@@ -69,7 +69,11 @@
       "apparatus": "witnesses/proprium.dominica-xv-post-pentecosten-offertorium/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

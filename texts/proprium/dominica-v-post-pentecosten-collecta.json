@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w002", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w003", "form": "diligéntibus", "lemma": "diligo", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w003", "form": "diligéntibus", "lemma": "diligo", "morph": { "pos": "verb", "case": "dat", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
         { "id": "w004", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
         { "id": "w005", "form": "bona", "lemma": "bonus", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "substantive": true },
         { "id": "w006", "form": "invisibília", "lemma": "invisibil", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "substantive": true },
@@ -39,12 +39,12 @@
         { "id": "w018", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w019", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w022" },
         { "id": "w020", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true },
-        { "id": "w021", "form": "diligéntes", "lemma": "diligo", "morph": { "pos": "verb", "case": "acc", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "post": ",", "substantive": true },
+        { "id": "w021", "form": "diligéntes", "post": ",", "lemma": "diligo", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
         { "id": "w022", "form": "promissiónes", "lemma": "promissio", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
         { "id": "w023", "form": "tuas", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "pl", "pos": "adj" }, "post": ",", "head": "w022" },
         { "id": "w024", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
-        { "id": "w025", "form": "omne", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "substantive": true },
-        { "id": "w026", "form": "desidérium", "lemma": "desiderium", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w025", "form": "omne", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w026" },
+        { "id": "w026", "form": "desidérium", "lemma": "desiderium", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w027", "form": "súperant", "lemma": "supero", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "pres", "voice": "act", "conj": 1 }, "post": "," },
         { "id": "w028", "form": "consequámur", "lemma": "consequor", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 1, "tense": "pres", "voice": "dep", "conj": 3 }, "post": "." },
         { "id": "w029", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w030" },
@@ -116,7 +116,11 @@
       "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w026": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

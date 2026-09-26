@@ -26,7 +26,7 @@
         { "id": "w005", "form": "Procul", "lemma": "procul", "morph": { "pos": "adv" }, "post": "," },
         { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w007", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w009" },
-        { "id": "w008", "form": "últimis", "lemma": "ulterior", "morph": { "pos": "adj", "case": "abl", "degree": "sup", "gender": "f", "number": "pl" }, "substantive": true },
+        { "id": "w008", "form": "últimis", "lemma": "ulterior", "morph": { "pos": "adj", "case": "abl", "degree": "sup", "gender": "m", "number": "pl" }, "head": "w009" },
         { "id": "w009", "form": "fínibus", "lemma": "finis", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 3 } },
         { "id": "w010", "form": "prétium", "lemma": "pretium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
         { "id": "w011", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": "." },
@@ -185,7 +185,7 @@
         { "id": "w164", "form": "ridébit", "lemma": "rideo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "act", "conj": 2 } },
         { "id": "w165", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w166" },
         { "id": "w166", "form": "die", "lemma": "dies", "morph": { "case": "abl", "decl": 5, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w167", "form": "novíssimo", "lemma": "novissimus", "morph": { "pos": "adj", "case": "abl", "degree": "sup", "gender": "m", "number": "sg" }, "post": ".", "substantive": true },
+        { "id": "w167", "form": "novíssimo", "post": ".", "lemma": "novissimus", "morph": { "pos": "adj", "case": "abl", "degree": "sup", "gender": "m", "number": "sg" }, "head": "w166" },
         { "id": "w168", "form": "Os", "lemma": "os", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w169", "form": "suum", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w168" },
         { "id": "w170", "form": "apéruit", "lemma": "aperio", "morph": { "conj": 4, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
@@ -262,7 +262,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
       "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
       "w131": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
@@ -293,7 +293,8 @@
       "w063": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w082": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w168": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w169": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w169": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w167": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

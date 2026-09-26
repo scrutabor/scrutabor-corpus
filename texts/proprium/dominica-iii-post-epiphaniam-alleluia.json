@@ -26,8 +26,8 @@
         { "id": "w005", "form": "exsúltet", "lemma": "exsulto", "morph": { "conj": 1, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w006", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "post": ":" },
         { "id": "w007", "form": "læténtur", "lemma": "laeto", "morph": { "conj": 1, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" } },
-        { "id": "w008", "form": "ínsulæ", "lemma": "insula", "morph": { "case": "dat", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w009", "form": "multæ", "lemma": "multus", "morph": { "case": "gen", "gender": "f", "number": "sg", "pos": "adj" }, "post": ".", "substantive": true },
+        { "id": "w008", "form": "ínsulæ", "lemma": "insula", "morph": { "case": "nom", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" } },
+        { "id": "w009", "form": "multæ", "post": ".", "lemma": "multus", "morph": { "case": "nom", "gender": "f", "number": "pl", "pos": "adj" }, "head": "w008" },
         { "id": "w010", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
       ],
       "participation": {
@@ -54,7 +54,11 @@
       "apparatus": "witnesses/proprium.dominica-iii-post-epiphaniam-alleluia/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

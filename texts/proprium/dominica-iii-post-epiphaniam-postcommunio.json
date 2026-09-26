@@ -20,7 +20,7 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Quos", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
-        { "id": "w002", "form": "tantis", "lemma": "tantus", "morph": { "pos": "adj", "case": "dat", "gender": "m", "number": "pl" }, "post": ",", "substantive": true },
+        { "id": "w002", "form": "tantis", "post": ",", "lemma": "tantus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "head": "w006" },
         { "id": "w003", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w004", "form": "largíris", "lemma": "largior", "morph": { "conj": 4, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "dep" } },
         { "id": "w005", "form": "uti", "lemma": "uti", "morph": { "pos": "conj" } },
@@ -100,7 +100,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -37,8 +37,8 @@
         { "id": "w016", "form": "céteros", "lemma": "ceterus", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "post": ",", "substantive": true },
         { "id": "w017", "form": "parábolam", "lemma": "parabola", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w018", "form": "istam", "lemma": "iste", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "pron" }, "post": ":" },
-        { "id": "w019", "form": "Duo", "lemma": "duo", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "substantive": true },
-        { "id": "w020", "form": "hómines", "lemma": "homo", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w019", "form": "Duo", "lemma": "duo", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "head": "w020" },
+        { "id": "w020", "form": "hómines", "lemma": "homo", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w021", "form": "ascendérunt", "lemma": "ascendo", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w023" },
         { "id": "w023", "form": "templum", "lemma": "templum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
@@ -50,7 +50,7 @@
         { "id": "w029", "form": "alter", "lemma": "alter", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "head": "w030" },
         { "id": "w030", "form": "publicánus", "lemma": "publicanus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "." },
         { "id": "w031", "form": "Pharisǽus", "lemma": "pharisaeus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
-        { "id": "w032", "form": "stans", "lemma": "sto", "morph": { "case": "acc", "conj": 1, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "post": ",", "substantive": true },
+        { "id": "w032", "form": "stans", "post": ",", "lemma": "sto", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "head": "w031" },
         { "id": "w033", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w034", "form": "apud", "lemma": "apud", "morph": { "governs": "acc", "pos": "prep" }, "head": "w035" },
         { "id": "w035", "form": "se", "lemma": "sui", "morph": { "case": "acc", "pos": "pron" } },
@@ -153,7 +153,10 @@
       "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w079": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w080": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w091": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w091": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w032": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

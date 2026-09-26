@@ -28,11 +28,11 @@
         { "id": "w007", "form": "illud", "lemma": "ille", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "pron" } },
         { "id": "w008", "form": "holocáusta", "lemma": "holocaustum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 2 }, "post": "," },
         { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w010", "form": "ímmolans", "lemma": "immolo", "morph": { "case": "acc", "conj": 1, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
+        { "id": "w010", "form": "ímmolans", "lemma": "immolo", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
         { "id": "w011", "form": "víctimas", "lemma": "victima", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" }, "post": ":" },
         { "id": "w012", "form": "fecit", "lemma": "facio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w013", "form": "sacrifícium", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
-        { "id": "w014", "form": "vespertínum", "lemma": "vespertinus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "substantive": true },
+        { "id": "w014", "form": "vespertínum", "lemma": "vespertinus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w016" },
         { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w016" },
         { "id": "w016", "form": "odórem", "lemma": "odor", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w017", "form": "suavitátis", "lemma": "suavitas", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -74,7 +74,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
