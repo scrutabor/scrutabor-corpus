@@ -19,7 +19,7 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Repléti", "lemma": "repleo", "morph": { "case": "nom", "conj": 2, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "pass" }, "post": ",", "substantive": true },
+        { "id": "w001", "form": "Repléti", "lemma": "repleo", "morph": { "case": "nom", "conj": 2, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "pass" }, "post": ",", "head": "w006" },
         { "id": "w002", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w003", "form": "munéribus", "lemma": "munus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" } },
         { "id": "w004", "form": "sacris", "lemma": "sacer", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "post": ":", "head": "w003" },
@@ -97,6 +97,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w006": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
