@@ -665,14 +665,6 @@ def test_impersonal_perfect_infinitive_has_accusative_participle():
         ),
         (
             "commemoratio-omnium-fidelium-defunctorum-missa-i-sequentia",
-            "w023",
-            "w018",
-            "nom",
-            "sg",
-            "m",
-        ),
-        (
-            "commemoratio-omnium-fidelium-defunctorum-missa-i-sequentia",
             "w043",
             "w041",
             "nom",
@@ -719,6 +711,16 @@ def test_future_participles_keep_their_expressed_subject(
     assert token.get("head") == head
     assert not token.get("substantive")
     assert tuple(token["morph"][k] for k in ("case", "number", "gender")) == (case, number, gender)
+
+
+def test_discussurus_stands_in_its_own_printed_sentence():
+    # The typical edition prints "ventúrus." so "Cuncta stricte discussúrus!" is a
+    # sentence of its own; a head must stand in the same sentence (SCHEMA), so the
+    # participle declares its understood subject, the Judge, with an explanation.
+    token = word("proprium/commemoratio-omnium-fidelium-defunctorum-missa-i-sequentia", "w023")
+    assert token.get("ellipsis") == "subject"
+    assert token.get("head") is None and not token.get("substantive")
+    assert tuple(token["morph"][k] for k in ("case", "number", "gender")) == ("nom", "sg", "m")
 
 
 def test_venturi_can_still_modify_the_genitive_age_in_the_creed():

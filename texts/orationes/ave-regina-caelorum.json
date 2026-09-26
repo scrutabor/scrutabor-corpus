@@ -74,7 +74,7 @@
       "words": [
         { "id": "w020", "form": "Super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w021" },
         { "id": "w021", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "substantive": true },
-        { "id": "w022", "form": "speciósa", "lemma": "speciosus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "post": ",", "substantive": true }
+        { "id": "w022", "form": "speciósa", "post": ",", "lemma": "speciosus", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "f" }, "head": "w018" }
       ]
     },
     {
@@ -112,7 +112,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w021": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w021": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

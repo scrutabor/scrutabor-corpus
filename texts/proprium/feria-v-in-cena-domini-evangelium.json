@@ -22,7 +22,7 @@
         { "id": "w001", "form": "Ante", "lemma": "ante", "morph": { "governs": "acc", "pos": "prep" }, "head": "w002" },
         { "id": "w002", "form": "diem", "lemma": "dies", "morph": { "case": "acc", "decl": 5, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w003", "form": "festum", "lemma": "festus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w002" },
-        { "id": "w004", "form": "Paschæ", "lemma": "pascha", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 3 }, "post": "," },
+        { "id": "w004", "form": "Paschæ", "post": ",", "lemma": "pascha", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
         { "id": "w005", "form": "sciens", "lemma": "scio", "morph": { "case": "nom", "conj": 4, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "head": "w006" },
         { "id": "w006", "form": "Iesus", "lemma": "Iesus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w007", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
@@ -278,7 +278,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w031": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w043": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },

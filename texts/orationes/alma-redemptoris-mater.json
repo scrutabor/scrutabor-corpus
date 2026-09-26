@@ -80,7 +80,7 @@
         { "id": "w031", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w032" },
         { "id": "w032", "form": "ore", "lemma": "os", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
         { "id": "w033", "form": "sumens", "lemma": "sumo", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "f", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w018" },
-        { "id": "w034", "form": "illud", "lemma": "ille", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" }, "head": "w035" },
+        { "id": "w034", "form": "illud", "lemma": "ille", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
         { "id": "w035", "form": "Ave", "post": ",", "lemma": "aveo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
         { "id": "w036", "form": "peccatórum", "lemma": "peccator", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 3 } },
         { "id": "w037", "form": "miserére", "post": ".", "lemma": "misereor", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "dep", "conj": 2 } }
@@ -98,7 +98,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w030": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w030": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w034": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

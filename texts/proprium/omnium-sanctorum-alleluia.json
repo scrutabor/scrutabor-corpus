@@ -28,7 +28,7 @@
         { "id": "w007", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
         { "id": "w008", "form": "laborátis", "lemma": "laboro", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 2, "tense": "pres", "voice": "act", "conj": 1 }, "post": "," },
         { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w010", "form": "oneráti", "lemma": "onero", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w010", "form": "oneráti", "lemma": "onero", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "head": "w007" },
         { "id": "w011", "form": "estis", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":" },
         { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w013", "form": "ego", "lemma": "ego", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
@@ -63,7 +63,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w006": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
