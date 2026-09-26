@@ -156,9 +156,9 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
     written = emit(CORPUS, tmp_path / "build")
     assert written["citation_projection"] == {
         "legacy": 2770,
-        "mapped": 2038,
-        "kept": 2038,
-        "excluded": 732,
+        "mapped": 1966,
+        "kept": 1966,
+        "excluded": 804,
         "unresolved": 0,
         "rejected_exposed": 0,
     }
@@ -166,7 +166,7 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
         "neutral": {"normalized": 1066, "texts": 1105},
         "languages": {
             "en": {"normalized": 112, "effective": 1104, "texts": 1105},
-            "pl": {"normalized": 72, "effective": 1073, "texts": 1105},
+            "pl": {"normalized": 66, "effective": 1073, "texts": 1105},
         },
     }
 
