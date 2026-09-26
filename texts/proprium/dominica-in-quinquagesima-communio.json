@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "Manducavérunt", "lemma": "manduco", "morph": { "pos": "verb", "person": 3, "number": "pl", "tense": "perf", "mood": "ind", "voice": "act", "conj": 1 }, "post": "," },
         { "id": "w002", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w003", "form": "saturáti", "lemma": "saturo", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
+        { "id": "w003", "form": "saturáti", "lemma": "saturo", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w004" },
         { "id": "w004", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w005", "form": "nimis", "lemma": "nimis", "morph": { "pos": "adv" }, "post": "," },
         { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -32,7 +32,7 @@
         { "id": "w011", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w012", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w013", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w014", "form": "fraudáti", "lemma": "fraudo", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w014", "form": "fraudáti", "lemma": "fraudo", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "head": "w013" },
         { "id": "w015", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w016" },
         { "id": "w016", "form": "desidério", "lemma": "desiderium", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 2 } },
         { "id": "w017", "form": "suo", "post": ".", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "head": "w016" }
@@ -70,7 +70,9 @@
     "words": {
       "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
