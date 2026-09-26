@@ -30,9 +30,9 @@
         { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w010", "form": "noli", "lemma": "nolo", "morph": { "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w011", "form": "esse", "lemma": "sum", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w012", "form": "incrédulus", "lemma": "incredulus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w012", "form": "incrédulus", "post": ",", "lemma": "incredulus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "head": "w010" },
         { "id": "w013", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
-        { "id": "w014", "form": "fidélis", "lemma": "fidelis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w014", "form": "fidélis", "post": ",", "lemma": "fidelis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "head": "w010" },
         { "id": "w015", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
         { "id": "w016", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
       ],
@@ -68,7 +68,9 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w006": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
-      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
