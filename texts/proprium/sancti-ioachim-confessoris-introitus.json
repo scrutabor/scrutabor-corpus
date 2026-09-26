@@ -28,7 +28,7 @@
         { "id": "w007", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w008" },
         { "id": "w008", "form": "sǽculum", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w009", "form": "sǽculi", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "post": ":" },
-        { "id": "w010", "form": "cornu", "lemma": "cornu", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 4 } },
+        { "id": "w010", "form": "cornu", "lemma": "cornu", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg", "decl": 4 } },
         { "id": "w011", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w012", "form": "exaltábitur", "lemma": "exalto", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" } },
         { "id": "w013", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w014" },
@@ -72,7 +72,7 @@
         { "id": "w051", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w052" },
         { "id": "w052", "form": "sǽculum", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w053", "form": "sǽculi", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "post": ":" },
-        { "id": "w054", "form": "cornu", "lemma": "cornu", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 4 } },
+        { "id": "w054", "form": "cornu", "lemma": "cornu", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg", "decl": 4 } },
         { "id": "w055", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w056", "form": "exaltábitur", "lemma": "exalto", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" } },
         { "id": "w057", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w058" },
@@ -107,7 +107,11 @@
       "apparatus": "witnesses/proprium.sancti-ioachim-confessoris-introitus/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w054": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

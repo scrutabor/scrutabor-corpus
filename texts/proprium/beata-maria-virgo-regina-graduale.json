@@ -27,12 +27,12 @@
         { "id": "w006", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007" },
         { "id": "w007", "form": "fémore", "lemma": "femur", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 3 } },
         { "id": "w008", "form": "suo", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "head": "w007" },
-        { "id": "w009", "form": "scriptum", "lemma": "scribo", "morph": { "case": "nom", "conj": 3, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "post": ":", "substantive": true },
+        { "id": "w009", "form": "scriptum", "post": ":", "lemma": "scribo", "morph": { "case": "acc", "conj": 3, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
         { "id": "w010", "form": "Rex", "lemma": "rex", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
         { "id": "w011", "form": "regum", "lemma": "rex", "morph": { "case": "gen", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" }, "post": "," },
         { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w013", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w014", "form": "dominántium", "lemma": "dominor", "morph": { "pos": "verb", "case": "gen", "gender": "m", "number": "pl", "tense": "pres", "voice": "dep", "mood": "part", "conj": 1 }, "post": ".", "head": "w011" },
+        { "id": "w014", "form": "dominántium", "post": ".", "lemma": "dominor", "morph": { "pos": "verb", "case": "gen", "gender": "m", "number": "pl", "tense": "pres", "voice": "dep", "mood": "part", "conj": 1 }, "substantive": true },
         { "id": "w015", "form": "Regína", "lemma": "regina", "morph": { "case": "nom", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w016", "form": "adstat", "lemma": "adsto", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 1 } },
         { "id": "w017", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w018" },
@@ -76,7 +76,9 @@
     "words": {
       "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

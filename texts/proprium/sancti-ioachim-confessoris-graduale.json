@@ -35,7 +35,7 @@
         { "id": "w014", "form": "semen", "lemma": "semen", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg", "decl": 3 } },
         { "id": "w015", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": ":" },
         { "id": "w016", "form": "generátio", "lemma": "generatio", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w017", "form": "rectórum", "lemma": "rector", "morph": { "pos": "noun", "case": "gen", "gender": "m", "number": "pl", "decl": 3 } },
+        { "id": "w017", "form": "rectórum", "lemma": "rectus", "morph": { "case": "gen", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
         { "id": "w018", "form": "benedicétur", "lemma": "benedico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" }, "post": "." }
       ],
       "participation": {
@@ -69,7 +69,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } }
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
