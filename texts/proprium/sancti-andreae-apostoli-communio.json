@@ -22,7 +22,7 @@
         { "id": "w001", "form": "Veníte", "lemma": "venio", "morph": { "conj": 4, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w002", "form": "post", "lemma": "post", "morph": { "governs": "acc", "pos": "prep" }, "head": "w003" },
         { "id": "w003", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": ":" },
-        { "id": "w004", "form": "fáciam", "lemma": "facio", "morph": { "conj": 3, "mood": "subj", "number": "sg", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w004", "form": "fáciam", "lemma": "facio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w005", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w006", "form": "fíeri", "lemma": "fio", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w007", "form": "piscatóres", "lemma": "piscator", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
@@ -32,7 +32,7 @@
         { "id": "w011", "form": "contínuo", "lemma": "continuo", "morph": { "pos": "adv" }, "post": "," },
         { "id": "w012", "form": "relíctis", "lemma": "relinquo", "morph": { "case": "abl", "conj": 3, "gender": "n", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w013" },
         { "id": "w013", "form": "rétibus", "lemma": "rete", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "pl", "decl": 3 }, "post": "," },
-        { "id": "w014", "form": "secúti", "lemma": "sequor", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "dep" }, "substantive": true },
+        { "id": "w014", "form": "secúti", "lemma": "sequor", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "dep" }, "head": "w010" },
         { "id": "w015", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w016", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." }
       ],
@@ -70,7 +70,7 @@
       "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
@@ -80,7 +80,7 @@
       "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } }
     }

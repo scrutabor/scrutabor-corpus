@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 }, "post": "," },
         { "id": "w002", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w003", "form": "divítiæ", "lemma": "divitia", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w003", "form": "divítiæ", "lemma": "divitiae", "morph": { "case": "nom", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" } },
         { "id": "w004", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
         { "id": "w005", "form": "domo", "lemma": "domus", "morph": { "case": "abl", "decl": 4, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w006", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": ":" },
@@ -63,7 +63,10 @@
       "apparatus": "witnesses/proprium.transfiguratio-domini-offertorium/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

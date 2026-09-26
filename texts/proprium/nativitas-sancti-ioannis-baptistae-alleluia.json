@@ -22,7 +22,7 @@
         { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
         { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w003", "form": "Tu", "lemma": "tu", "morph": { "case": "nom", "number": "sg", "pos": "pron" }, "post": "," },
-        { "id": "w004", "form": "puer", "lemma": "puer", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w004", "form": "puer", "post": ",", "lemma": "puer", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w005", "form": "prophéta", "lemma": "propheta", "morph": { "case": "nom", "decl": 1, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w006", "form": "Altíssimi", "lemma": "altus", "morph": { "case": "gen", "degree": "sup", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
         { "id": "w007", "form": "vocáberis", "lemma": "voco", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "pass" }, "post": ":" },
@@ -58,7 +58,10 @@
       "apparatus": "witnesses/proprium.nativitas-sancti-ioannis-baptistae-alleluia/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true
