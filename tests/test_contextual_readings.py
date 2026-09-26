@@ -923,7 +923,7 @@ def test_maundy_thursday_does_not_insert_an_unprinted_conclusion(language, part)
     text = target["segments"]["s01"]["translation"]
     assert "Przez Pana naszego" not in text
     assert "Through our Lord" not in text
-    assert ("On z Tobą" if language == "pl" else "He liveth") in text
+    assert ("z Tobą żyje" if language == "pl" else "He liveth") in text
 
 
 @pytest.mark.parametrize("language", ["pl", "en"])
