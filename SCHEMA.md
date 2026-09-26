@@ -39,6 +39,10 @@ relates to the cited historical witness: `exact`, `normalized`, `revised`, or
 `traditional-composite`. The grouping keeps this reader-facing distinction
 authoritative without repeating it in every translated segment. The reader
 edition expands it only into the lazily loaded language artifact for the text.
+An `exact` or `normalized` site says that a page prints its wording, so at least
+one retained use in the language's bibliography must name a page as the
+`historical_wording_basis` of the site or its text. A comparator cannot carry
+that claim.
 
 Since 0.5.0 `schema_version` is corpus-wide: every text and lexicon document
 carries the same number.
