@@ -442,8 +442,6 @@ MODIFIER_RULINGS: dict[tuple[str, str], str] = {
         "proprium.nativitas-sancti-ioannis-baptistae-collecta",
         "w005",
     ): "czcigodnym is an instrumental predicate after uczyniłeś",
-    ("proprium.sancti-bartholomaei-apostoli-evangelium", "w087"): "wybrzeża is substantival",
-    ("proprium.sancti-lucae-evangelistae-evangelium", "w016"): "sobą completes przed sobą",
     (
         "proprium.sanctissimi-nominis-iesu-offertorium",
         "w024",
