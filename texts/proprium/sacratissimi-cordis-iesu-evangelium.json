@@ -137,7 +137,7 @@
         { "id": "w086", "form": "dicit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w087", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w088", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w089", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w089", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
         { "id": "w090", "form": "credátis", "lemma": "credo", "morph": { "conj": 3, "mood": "subj", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." }
       ]
     },
@@ -182,7 +182,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w091": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w091": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w089": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

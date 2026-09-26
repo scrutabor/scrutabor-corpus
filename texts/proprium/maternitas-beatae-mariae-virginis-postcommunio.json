@@ -19,9 +19,9 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w001", "form": "Hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" } },
         { "id": "w002", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
-        { "id": "w003", "form": "commúnio", "lemma": "communio", "morph": { "pos": "noun", "number": "sg", "case": "nom" }, "post": "," },
+        { "id": "w003", "form": "commúnio", "post": ",", "lemma": "communio", "morph": { "pos": "noun", "number": "sg", "case": "nom", "gender": "f" } },
         { "id": "w004", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w005", "form": "purget", "lemma": "purgo", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 1 } },
         { "id": "w006", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007" },
@@ -106,7 +106,9 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
-      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

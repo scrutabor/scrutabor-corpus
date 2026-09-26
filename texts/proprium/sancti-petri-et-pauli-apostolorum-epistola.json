@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w002" },
         { "id": "w002", "form": "diébus", "lemma": "dies", "morph": { "case": "abl", "decl": 5, "gender": "m", "number": "pl", "pos": "noun" } },
-        { "id": "w003", "form": "illis", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "post": ":" },
+        { "id": "w003", "form": "illis", "post": ":", "lemma": "ille", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "m" } },
         { "id": "w004", "form": "Misit", "lemma": "mitto", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
         { "id": "w005", "form": "Heródes", "lemma": "Herodes", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
         { "id": "w006", "form": "rex", "lemma": "rex", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
@@ -141,7 +141,7 @@
         { "id": "w120", "form": "Præcíngere", "lemma": "praecingo", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 3 }, "post": "," },
         { "id": "w121", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w122", "form": "cálcea", "lemma": "calceo", "morph": { "pos": "verb", "mood": "imp", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 1 } },
-        { "id": "w123", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w123", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w124", "form": "cáligas", "lemma": "caliga", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
         { "id": "w125", "form": "tuas", "post": ".", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "pl", "pos": "adj" }, "head": "w124" },
         { "id": "w126", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -172,7 +172,7 @@
         { "id": "w151", "form": "Ángelum", "lemma": "angelus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w152", "form": "existimábat", "lemma": "existimo", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w153", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
-        { "id": "w154", "form": "se", "lemma": "sui", "morph": { "case": "abl", "pos": "pron" } },
+        { "id": "w154", "form": "se", "lemma": "sui", "morph": { "case": "acc", "pos": "pron", "number": "sg" } },
         { "id": "w155", "form": "visum", "lemma": "visus", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "sg", "decl": 4 } },
         { "id": "w156", "form": "vidére", "lemma": "video", "morph": { "conj": 2, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." },
         { "id": "w157", "form": "Transeúntes", "lemma": "transeo", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part" }, "substantive": true },
@@ -253,7 +253,7 @@
       "w095": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w100": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w149": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w154": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w154": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
       "w190": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w043": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w069": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
@@ -266,7 +266,9 @@
       "w125": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w078": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w084": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w166": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w166": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w123": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -55,7 +55,7 @@
       "voice": "secreto",
       "words": [
         { "id": "w023", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
-        { "id": "w024", "form": "quotquot", "lemma": "quotquot", "morph": { "pos": "adj", "case": "nom", "number": "pl" }, "substantive": true, "post": "," }
+        { "id": "w024", "form": "quotquot", "post": ",", "lemma": "quotquot", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true }
       ]
     },
     {
@@ -152,7 +152,8 @@
       "s09": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
     },
     "words": {
-      "w030": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w030": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -34,7 +34,7 @@
         { "id": "w013", "form": "manducáre", "lemma": "manduco", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 1 } },
         { "id": "w014", "form": "panem", "lemma": "panis", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w016", "form": "ipsi", "lemma": "ipse", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" } },
+        { "id": "w016", "form": "ipsi", "lemma": "ipse", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
         { "id": "w017", "form": "observábant", "lemma": "observo", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w018", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" }, "post": "." },
         { "id": "w019", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -59,7 +59,7 @@
         { "id": "w038", "form": "sábbato", "lemma": "sabbatum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w039", "form": "curáre", "lemma": "curo", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 1 }, "post": "?" },
         { "id": "w040", "form": "At", "lemma": "at", "morph": { "pos": "conj" } },
-        { "id": "w041", "form": "illi", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" } },
+        { "id": "w041", "form": "illi", "lemma": "ille", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
         { "id": "w042", "form": "tacuérunt", "lemma": "taceo", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "perf", "voice": "act", "conj": 2 }, "post": "." },
         { "id": "w043", "form": "Ipse", "lemma": "ipse", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w044", "form": "vero", "lemma": "vero", "morph": { "pos": "adv" } },
@@ -131,7 +131,7 @@
         { "id": "w110", "form": "véniens", "lemma": "venio", "morph": { "case": "acc", "conj": 4, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
         { "id": "w111", "form": "is", "lemma": "is", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "post": "," },
         { "id": "w112", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w113", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "," },
+        { "id": "w113", "form": "te", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w114", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w115", "form": "illum", "lemma": "ille", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w116", "form": "vocávit", "lemma": "voco", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": "," },
@@ -161,7 +161,7 @@
         { "id": "w140", "form": "cum", "lemma": "cum", "morph": { "pos": "conj" } },
         { "id": "w141", "form": "vénerit", "lemma": "venio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "futperf", "voice": "act", "conj": 4 } },
         { "id": "w142", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w143", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w143", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w144", "form": "invitávit", "lemma": "invito", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 1 }, "post": "," },
         { "id": "w145", "form": "dicat", "lemma": "dico", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 3 } },
         { "id": "w146", "form": "tibi", "lemma": "tu", "morph": { "case": "dat", "number": "sg", "pos": "pron" }, "post": ":" },
@@ -214,7 +214,11 @@
       "w056": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w127": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w083": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w083": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w041": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w113": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w143": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

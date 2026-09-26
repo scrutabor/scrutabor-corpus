@@ -25,7 +25,7 @@
         { "id": "w004", "form": "eis", "lemma": "is", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "post": "," },
         { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w006", "form": "venit", "lemma": "venio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 4 } },
-        { "id": "w007", "form": "Názareth", "lemma": "Nazareth", "morph": { "case": "nom", "gender": "n", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w007", "form": "Názareth", "post": ",", "lemma": "Nazareth", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w009", "form": "erat", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w010", "form": "súbditus", "lemma": "subdo", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
@@ -60,7 +60,10 @@
       "apparatus": "witnesses/proprium.sancta-familia-communio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

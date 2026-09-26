@@ -20,7 +20,7 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Beáti", "lemma": "beatus", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w005" },
-        { "id": "w002", "form": "Apóstoli", "lemma": "apostolus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 2 } },
+        { "id": "w002", "form": "Apóstoli", "lemma": "apostolus", "morph": { "pos": "noun", "case": "gen", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w004", "form": "Evangelístæ", "lemma": "evangelista", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 1 } },
         { "id": "w005", "form": "Matthǽi", "lemma": "Matthaeus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
@@ -104,7 +104,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -20,7 +20,7 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Fratres", "lemma": "frater", "morph": { "case": "voc", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" }, "post": ":" },
-        { "id": "w002", "form": "Ábrahæ", "lemma": "Abraham", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w002", "form": "Ábrahæ", "lemma": "Abraham", "morph": { "case": "dat", "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w003", "form": "dictæ", "lemma": "dico", "morph": { "pos": "verb", "case": "nom", "gender": "f", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w005" },
         { "id": "w004", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w005", "form": "promissiónes", "post": ",", "lemma": "promissio", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
@@ -30,7 +30,7 @@
         { "id": "w009", "form": "Non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w010", "form": "dicit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":" },
         { "id": "w011", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w012", "form": "semínibus", "lemma": "semen", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "pl", "decl": 3 }, "post": "," },
+        { "id": "w012", "form": "semínibus", "post": ",", "lemma": "semen", "morph": { "pos": "noun", "case": "dat", "gender": "n", "number": "pl", "decl": 3 } },
         { "id": "w013", "form": "quasi", "lemma": "quasi", "morph": { "pos": "conj" } },
         { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w015" },
         { "id": "w015", "form": "multis", "lemma": "multus", "morph": { "case": "abl", "gender": "m", "number": "pl", "pos": "adj" }, "post": ";", "substantive": true },
@@ -75,7 +75,7 @@
         { "id": "w054", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w055", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w056" },
         { "id": "w056", "form": "promissióne", "lemma": "promissio", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 3 }, "post": "." },
-        { "id": "w057", "form": "Ábrahæ", "lemma": "Abraham", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w057", "form": "Ábrahæ", "lemma": "Abraham", "morph": { "case": "dat", "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w058", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w059", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w060" },
         { "id": "w060", "form": "repromissiónem", "lemma": "repromissio", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 3 } },
@@ -155,9 +155,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
       "w039": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w057": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w057": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
       "w080": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
@@ -167,7 +167,8 @@
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w043": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w098": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w098": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

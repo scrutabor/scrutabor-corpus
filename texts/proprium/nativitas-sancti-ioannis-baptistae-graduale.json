@@ -20,19 +20,19 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Priúsquam", "lemma": "priusquam", "morph": { "pos": "conj" } },
-        { "id": "w002", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w002", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w003", "form": "formárem", "lemma": "formo", "morph": { "conj": 1, "mood": "subj", "number": "sg", "person": 1, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w004", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
         { "id": "w005", "form": "útero", "lemma": "uterus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w006", "form": "novi", "lemma": "nosco", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "perf", "voice": "act", "conj": 3 } },
-        { "id": "w007", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": ":" },
+        { "id": "w007", "form": "te", "post": ":", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w008", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w009", "form": "ántequam", "lemma": "antequam", "morph": { "pos": "conj" } },
         { "id": "w010", "form": "exíres", "lemma": "exeo", "morph": { "mood": "subj", "number": "sg", "person": 2, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w011", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w012" },
         { "id": "w012", "form": "ventre", "lemma": "venter", "morph": { "case": "abl", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w013", "form": "sanctificávi", "lemma": "sanctifico", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w014", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "." },
+        { "id": "w014", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w015", "form": "Misit", "lemma": "mitto", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
         { "id": "w016", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w017", "form": "manum", "lemma": "manus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 4 } },
@@ -77,7 +77,10 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

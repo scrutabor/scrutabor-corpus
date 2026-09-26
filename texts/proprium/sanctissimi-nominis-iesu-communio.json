@@ -19,8 +19,8 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w002" },
-        { "id": "w002", "form": "gentes", "lemma": "gens", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w001", "form": "Omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "f" }, "head": "w002" },
+        { "id": "w002", "form": "gentes", "lemma": "gens", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 } },
         { "id": "w003", "form": "quascúmque", "lemma": "quicumque", "morph": { "case": "acc", "gender": "f", "number": "pl", "pos": "pron" } },
         { "id": "w004", "form": "fecísti", "lemma": "facio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "perf", "voice": "act" }, "post": "," },
         { "id": "w005", "form": "vénient", "lemma": "venio", "morph": { "conj": 4, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" }, "post": "," },
@@ -38,7 +38,7 @@
         { "id": "w017", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w018", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "post": "," },
         { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w020", "form": "fáciens", "lemma": "facio", "morph": { "case": "acc", "conj": 3, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
+        { "id": "w020", "form": "fáciens", "lemma": "facio", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
         { "id": "w021", "form": "mirabília", "lemma": "mirabilis", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "post": ":", "substantive": true },
         { "id": "w022", "form": "tu", "lemma": "tu", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
         { "id": "w023", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -78,7 +78,10 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

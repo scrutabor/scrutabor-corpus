@@ -19,7 +19,7 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "post": ",", "head": "w002" },
+        { "id": "w001", "form": "Ómnia", "post": ",", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true },
         { "id": "w002", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w003", "form": "fecísti", "lemma": "facio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w004", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "post": "," },
@@ -48,11 +48,11 @@
         { "id": "w027", "form": "multitúdinem", "lemma": "multitudo", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w028", "form": "misericórdiæ", "lemma": "misericordia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w029", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "post": ".", "head": "w028" },
-        { "id": "w030", "form": "Beáti", "lemma": "beatus", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w030", "form": "Beáti", "lemma": "beatus", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
         { "id": "w031", "form": "immaculáti", "lemma": "immaculatus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "substantive": true },
         { "id": "w032", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w033" },
         { "id": "w033", "form": "via", "lemma": "via", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 }, "post": ":" },
-        { "id": "w034", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w034", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
         { "id": "w035", "form": "ámbulant", "lemma": "ambulo", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w036", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w037" },
         { "id": "w037", "form": "lege", "lemma": "lex", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 3 } },
@@ -143,7 +143,10 @@
       "w075": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w083": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w073": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w073": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w030": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w034": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
         { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
-        { "id": "w003", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w003", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
         { "id": "w004", "form": "timent", "lemma": "timeo", "morph": { "conj": 2, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w005", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w006", "form": "sperent", "lemma": "spero", "morph": { "conj": 1, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -58,7 +58,10 @@
       "apparatus": "witnesses/proprium.dominica-xxii-post-pentecosten-alleluia/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true
