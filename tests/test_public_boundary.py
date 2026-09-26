@@ -2,7 +2,8 @@
 
 This repository is self-contained: when a comment, a docstring, or an error
 message points a reader at `notes/<page>.md`, `reviews/<page>.md`, or
-`docs/<page>.md`, that file must exist here. A pointer a reader cannot follow
+`docs/<page>.md`, or when any text, a data record's reason included, tells
+the reader to "see <page>.md", that file must exist here. A pointer a reader cannot follow
 is worse than none — the first person to trip a check would be told to
 consult a page that is not there. The rule is therefore the readable one:
 say the thing, or cite a page this repository actually ships.
@@ -17,6 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 DOC_REFERENCE = re.compile(r"\b(?:notes|reviews|docs)/[A-Za-z0-9][A-Za-z0-9._-]*\.md\b")
+SEE_REFERENCE = re.compile(r"\b[Ss]ee ([A-Za-z0-9][A-Za-z0-9._/-]*\.md)\b")
 
 
 def tracked(root: Path) -> list[str]:
@@ -32,7 +34,7 @@ def dangling_references(root: Path, names: list[str]) -> list[str]:
         except (UnicodeDecodeError, OSError):
             continue  # binaries: fonts, images
         for number, line in enumerate(text.splitlines(), start=1):
-            for reference in DOC_REFERENCE.findall(line):
+            for reference in [*DOC_REFERENCE.findall(line), *SEE_REFERENCE.findall(line)]:
                 if not (root / reference).is_file():
                     found.append(f"{name}:{number}: {reference}")
     return found
@@ -55,3 +57,9 @@ def test_the_gate_can_fail(tmp_path):
     (tmp_path / "notes").mkdir()
     (tmp_path / "notes" / "example.md").write_text("# rules\n")
     assert dangling_references(tmp_path, ["src.py"]) == []
+    page = ".".join(["audit", "md"])
+    (tmp_path / "data.json").write_text(f'{{"reason": "Corrected after the audit; see {page}."}}\n')
+    found = dangling_references(tmp_path, ["data.json"])
+    assert found and page in found[0]
+    (tmp_path / page).write_text("# audit\n")
+    assert dangling_references(tmp_path, ["data.json"]) == []
