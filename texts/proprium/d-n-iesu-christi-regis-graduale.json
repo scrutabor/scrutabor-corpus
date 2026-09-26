@@ -19,7 +19,7 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Dominábitur", "lemma": "domino", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "pass", "conj": 1 } },
+        { "id": "w001", "form": "Dominábitur", "lemma": "dominor", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "dep", "conj": 1 } },
         { "id": "w002", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w003" },
         { "id": "w003", "form": "mari", "lemma": "mare", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 3 } },
         { "id": "w004", "form": "usque", "lemma": "usque", "morph": { "pos": "adv" } },
@@ -39,8 +39,8 @@
         { "id": "w018", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w019" },
         { "id": "w019", "form": "reges", "lemma": "rex", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 3 } },
         { "id": "w020", "form": "terræ", "lemma": "terra", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": ":" },
-        { "id": "w021", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w022" },
-        { "id": "w022", "form": "gentes", "lemma": "gens", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 } },
+        { "id": "w021", "form": "omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "f" }, "head": "w022" },
+        { "id": "w022", "form": "gentes", "lemma": "gens", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "f", "decl": 3 } },
         { "id": "w023", "form": "sérvient", "lemma": "servio", "morph": { "conj": 4, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w024", "form": "ei", "lemma": "is", "morph": { "case": "dat", "gender": "m", "number": "sg", "pos": "pron" }, "post": "." }
       ],
@@ -75,7 +75,10 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

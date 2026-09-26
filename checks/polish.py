@@ -374,8 +374,6 @@ MODIFIER_RULINGS: dict[tuple[str, str], str] = {
     ("proprium.purificatio-beatae-mariae-virginis-evangelium", "w032"): (
         "sanctum vocábitur: świętym is an instrumental predicate after będzie nazwany"
     ),
-    ("proprium.dominica-ii-post-pascha-introitus", "w003"): "pełna predicates ziemia in Polish",
-    ("proprium.dominica-ii-post-pascha-introitus", "w043"): "pełna predicates ziemia in Polish",
     ("proprium.dominica-in-septuagesima-evangelium", "w230"): (
         "pierwszymi is an instrumental predicate after będą, not a modifier of ostatni"
     ),
@@ -447,8 +445,6 @@ MODIFIER_RULINGS: dict[tuple[str, str], str] = {
         "proprium.sanctissimi-nominis-iesu-offertorium",
         "w024",
     ): "pełen miłosierdzia recasts the Latin genitive phrase",
-    ("proprium.transfiguratio-domini-introitus", "w003"): "Twoje modifies błyskawice",
-    ("proprium.transfiguratio-domini-introitus", "w047"): "Twoje modifies błyskawice",
     ("proprium.visitatio-beatae-mariae-virginis-epistola", "w103"): "słodki predicates głos",
 }
 

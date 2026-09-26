@@ -38,12 +38,12 @@
         { "id": "w017", "form": "hábitat", "lemma": "habito", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w018", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w019" },
         { "id": "w019", "form": "adiutório", "lemma": "adiutorium", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 2 } },
-        { "id": "w020", "form": "Altíssimi", "lemma": "altus", "morph": { "case": "gen", "degree": "sup", "gender": "m", "number": "sg", "pos": "adj" }, "post": ",", "head": "w023" },
+        { "id": "w020", "form": "Altíssimi", "post": ",", "lemma": "altus", "morph": { "case": "gen", "degree": "sup", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
         { "id": "w021", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w022" },
         { "id": "w022", "form": "protectióne", "lemma": "protectio", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w023", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w024", "form": "cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w025", "form": "commorábitur", "lemma": "commoro", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "pass", "conj": 1 }, "post": "." },
+        { "id": "w025", "form": "commorábitur", "post": ".", "lemma": "commoror", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "dep", "conj": 1 } },
         { "id": "w026", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w027", "form": "Patri", "lemma": "pater", "morph": { "case": "dat", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w028", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -111,7 +111,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

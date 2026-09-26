@@ -60,8 +60,8 @@
       "voice": "clara",
       "words": [
         { "id": "w015", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w016", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w017", "form": "noster", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "post": ",", "head": "w016" },
+        { "id": "w016", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w017", "form": "noster", "post": ",", "lemma": "noster", "morph": { "pos": "adj", "case": "voc", "number": "sg", "gender": "m" }, "head": "w016" },
         { "id": "w018", "form": "quam", "lemma": "quam", "morph": { "pos": "adv" } },
         { "id": "w019", "form": "admirábile", "lemma": "admirabilis", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "n" }, "head": "w021" },
         { "id": "w020", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -195,7 +195,9 @@
     "words": {
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w057": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

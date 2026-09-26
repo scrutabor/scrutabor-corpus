@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "Exsúlta", "lemma": "exsulto", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w002", "form": "fília", "lemma": "filia", "morph": { "pos": "noun", "case": "voc", "gender": "f", "number": "sg", "decl": 1 } },
-        { "id": "w003", "form": "Sion", "lemma": "Sion", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f" }, "post": "," },
+        { "id": "w003", "form": "Sion", "post": ",", "lemma": "Sion", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f" } },
         { "id": "w004", "form": "lauda", "lemma": "laudo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "post": "," },
         { "id": "w005", "form": "fília", "lemma": "filia", "morph": { "pos": "noun", "case": "voc", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w006", "form": "Ierúsalem", "post": ":", "lemma": "Ierusalem", "morph": { "gender": "f", "pos": "noun", "case": "gen", "number": "sg" } },
@@ -29,7 +29,7 @@
         { "id": "w008", "form": "rex", "lemma": "rex", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
         { "id": "w009", "form": "tuus", "lemma": "tuus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w008" },
         { "id": "w010", "form": "venit", "lemma": "venio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 4 } },
-        { "id": "w011", "form": "sanctus", "lemma": "sanctus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w013", "post": "," },
+        { "id": "w011", "form": "sanctus", "post": ",", "lemma": "sanctus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w008" },
         { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w013", "form": "salvátor", "lemma": "salvator", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
         { "id": "w014", "form": "mundi", "lemma": "mundus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." }
@@ -65,11 +65,12 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
       "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

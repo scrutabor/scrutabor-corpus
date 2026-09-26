@@ -33,10 +33,10 @@
         { "id": "w012", "form": "véniat", "lemma": "venio", "morph": { "conj": 4, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":" },
         { "id": "w013", "form": "ítaque", "lemma": "itaque", "morph": { "pos": "conj" } },
         { "id": "w014", "form": "quicúmque", "lemma": "quicumque", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w015", "form": "manducáverit", "lemma": "manduco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "subj", "voice": "act", "conj": 1 } },
+        { "id": "w015", "form": "manducáverit", "lemma": "manduco", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "futperf", "mood": "ind", "voice": "act", "conj": 1 } },
         { "id": "w016", "form": "panem", "lemma": "panis", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w017", "form": "vel", "lemma": "vel", "morph": { "pos": "conj" } },
-        { "id": "w018", "form": "bíberit", "lemma": "bibo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "subj", "voice": "act", "conj": 3 } },
+        { "id": "w018", "form": "bíberit", "lemma": "bibo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "futperf", "mood": "ind", "voice": "act", "conj": 3 } },
         { "id": "w019", "form": "cálicem", "lemma": "calix", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w020", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w021", "form": "indígne", "lemma": "indigne", "morph": { "pos": "adv" }, "post": "," },
@@ -79,7 +79,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
