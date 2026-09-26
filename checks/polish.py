@@ -407,6 +407,12 @@ MODIFIER_RULINGS: dict[tuple[str, str], str] = {
         "proprium.dominica-xv-post-pentecosten-introitus",
         "w068",
     ): "ocalonym is an instrumental predicate after uczyń",
+    ("proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-epistola", "w080"): (
+        "nowym is an instrumental predicate after czynię"
+    ),
+    ("proprium.dominica-xiii-post-pentecosten-epistola", "w043"): (
+        "nieważnym is an instrumental predicate after czyni"
+    ),
     ("proprium.dominica-xix-post-pentecosten-secreta", "w010"): (
         "zbawiennymi is an instrumental predicate after być"
     ),
@@ -430,22 +436,12 @@ MODIFIER_RULINGS: dict[tuple[str, str], str] = {
         "proprium.nativitas-sancti-ioannis-baptistae-collecta",
         "w005",
     ): "czcigodnym is an instrumental predicate after uczyniłeś",
-    ("proprium.purificatio-beatae-mariae-virginis-epistola", "w015"): "moim modifies obliczem",
     ("proprium.sancti-bartholomaei-apostoli-evangelium", "w087"): "wybrzeża is substantival",
     ("proprium.sancti-lucae-evangelistae-evangelium", "w016"): "sobą completes przed sobą",
-    (
-        "proprium.sanctorum-simonis-et-iudae-apostolorum-epistola",
-        "w059",
-    ): "innych is the object; Prorokami is its predicate",
-    (
-        "proprium.sanctorum-simonis-et-iudae-apostolorum-epistola",
-        "w062",
-    ): "innych is the object; Ewangelistami is its predicate",
     (
         "proprium.sanctissimi-nominis-iesu-offertorium",
         "w024",
     ): "pełen miłosierdzia recasts the Latin genitive phrase",
-    ("proprium.visitatio-beatae-mariae-virginis-epistola", "w103"): "słodki predicates głos",
 }
 
 

@@ -42,7 +42,7 @@
         { "id": "w021", "form": "tértio", "lemma": "tertius", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "substantive": true },
         { "id": "w022", "form": "doctóres", "lemma": "doctor", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "pl", "decl": 3 }, "post": "," },
         { "id": "w023", "form": "deínde", "lemma": "deinde", "morph": { "pos": "adv" } },
-        { "id": "w024", "form": "virtútes", "lemma": "virtus", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" }, "post": "," },
+        { "id": "w024", "form": "virtútes", "post": ",", "lemma": "virtus", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
         { "id": "w025", "form": "exínde", "lemma": "exinde", "morph": { "pos": "adv" } },
         { "id": "w026", "form": "grátias", "lemma": "gratia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" } },
         { "id": "w027", "form": "curatiónum", "post": ",", "lemma": "curatio", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "pl", "decl": 3 } },
@@ -78,8 +78,8 @@
         { "id": "w057", "form": "interpretántur", "lemma": "interpretor", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "pres", "voice": "dep", "conj": 1 }, "post": "?" },
         { "id": "w058", "form": "Æmulámini", "lemma": "aemulor", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "dep", "conj": 1 } },
         { "id": "w059", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
-        { "id": "w060", "form": "charísmata", "lemma": "charisma", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "pl", "decl": 3 } },
-        { "id": "w061", "form": "melióra", "lemma": "bonus", "morph": { "pos": "adj", "case": "nom", "degree": "comp", "gender": "n", "number": "pl" }, "post": ".", "head": "w060" }
+        { "id": "w060", "form": "charísmata", "lemma": "charisma", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 3 } },
+        { "id": "w061", "form": "melióra", "post": ".", "lemma": "bonus", "morph": { "pos": "adj", "case": "acc", "degree": "comp", "gender": "n", "number": "pl" }, "head": "w060" }
       ]
     }
   ],
@@ -108,7 +108,10 @@
       "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w039": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w060": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w061": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
