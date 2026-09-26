@@ -43,7 +43,7 @@
         { "id": "w022", "form": "superabundávit", "lemma": "superabundo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 1 } },
         { "id": "w023", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024" },
         { "id": "w024", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "abl", "number": "pl" }, "post": "." },
-        { "id": "w025", "form": "Iustificáti", "lemma": "iustifico", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w025", "form": "Iustificáti", "lemma": "iustifico", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "ellipsis": "subject" },
         { "id": "w026", "form": "gratis", "lemma": "gratis", "morph": { "pos": "adv" } },
         { "id": "w027", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w028" },
         { "id": "w028", "form": "grátiam", "lemma": "gratia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -94,12 +94,18 @@
       "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w036": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w045": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w025": {
+
+      }
+    }
   }
 }
