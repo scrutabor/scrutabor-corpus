@@ -215,7 +215,7 @@
         { "id": "w068", "form": "dictúrus", "lemma": "dico", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "fut", "voice": "act" }, "post": "?", "head": "w065" },
         { "id": "w069", "form": "Quem", "lemma": "quis", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w070", "form": "patrónum", "lemma": "patronus", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "sg", "decl": 2 } },
-        { "id": "w071", "form": "rogatúrus", "lemma": "rogo", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "fut", "voice": "act" }, "post": ",", "substantive": true },
+        { "id": "w071", "form": "rogatúrus", "lemma": "rogo", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "fut", "voice": "act" }, "post": ",", "ellipsis": "subject" },
         { "id": "w072", "form": "Cum", "lemma": "cum", "morph": { "pos": "conj" } },
         { "id": "w073", "form": "vix", "lemma": "vix", "morph": { "pos": "adv" } },
         { "id": "w074", "form": "iustus", "lemma": "iustus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
@@ -638,6 +638,7 @@
       "w034": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w066": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w070": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w071": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w104": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w107": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w137": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
@@ -703,6 +704,9 @@
     "about": true,
     "explanations": {
       "w023": {
+
+      },
+      "w071": {
 
       }
     }
