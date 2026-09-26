@@ -47,7 +47,7 @@
         { "id": "w026", "form": "domum", "lemma": "domus", "morph": { "case": "acc", "decl": 4, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w027", "form": "ubi", "lemma": "ubi", "morph": { "pos": "conj" } },
         { "id": "w028", "form": "erant", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
-        { "id": "w029", "form": "sedéntes", "lemma": "sedeo", "morph": { "case": "nom", "conj": 2, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "act" }, "post": ".", "substantive": true },
+        { "id": "w029", "form": "sedéntes", "post": ".", "lemma": "sedeo", "morph": { "case": "nom", "conj": 2, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "act" }, "head": "w028" },
         { "id": "w030", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w031", "form": "apparuérunt", "lemma": "appareo", "morph": { "conj": 2, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w032", "form": "illis", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" } },
@@ -131,7 +131,7 @@
         { "id": "w110", "form": "nostram", "lemma": "noster", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ",", "head": "w109" },
         { "id": "w111", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w112" },
         { "id": "w112", "form": "qua", "lemma": "qui", "morph": { "case": "abl", "gender": "f", "number": "sg", "pos": "pron" } },
-        { "id": "w113", "form": "nati", "lemma": "nascor", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "dep", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w113", "form": "nati", "lemma": "nascor", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "dep", "mood": "part", "conj": 3 }, "head": "w114" },
         { "id": "w114", "form": "sumus", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "?" },
         { "id": "w115", "form": "Parthi", "lemma": "Parthus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 2 }, "post": "," },
         { "id": "w116", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -230,7 +230,9 @@
       "w065": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w073": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w095": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w143": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w143": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w113": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
