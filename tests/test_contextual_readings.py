@@ -430,7 +430,7 @@ def test_lateran_psalm_keeps_the_inhabitant_and_realizes_each_circuitu_once(lang
     )
     translation = doc["segments"]["s01"]["translation"]
     assert "Sinai" not in translation
-    assert ("Jerozolimie" if language == "pl" else "Jerusalem") in translation
+    assert ("Jeruzalem" if language == "pl" else "Jerusalem") in translation
 
 
 def test_asto_does_not_invent_an_unattested_supine():
