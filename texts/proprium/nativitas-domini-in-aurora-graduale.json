@@ -40,7 +40,7 @@
         { "id": "w019", "form": "mirábile", "lemma": "mirabilis", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "substantive": true },
         { "id": "w020", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w021" },
         { "id": "w021", "form": "óculis", "lemma": "oculus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "pl", "decl": 2 } },
-        { "id": "w022", "form": "nostris", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "pl" }, "post": ".", "substantive": true }
+        { "id": "w022", "form": "nostris", "post": ".", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "pl" }, "head": "w021" }
       ],
       "participation": {
         "cantu": {
@@ -71,7 +71,10 @@
       "apparatus": "witnesses/proprium.nativitas-domini-in-aurora-graduale/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

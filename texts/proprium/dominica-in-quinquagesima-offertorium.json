@@ -28,12 +28,12 @@
         { "id": "w007", "form": "tuas", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "pl", "pos": "adj" }, "post": ":", "head": "w006" },
         { "id": "w008", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w009" },
         { "id": "w009", "form": "lábiis", "lemma": "labium", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w010", "form": "meis", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "pl" }, "substantive": true },
+        { "id": "w010", "form": "meis", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "head": "w009" },
         { "id": "w011", "form": "pronuntiávi", "lemma": "pronuntio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "perf", "voice": "act", "conj": 1 } },
         { "id": "w012", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true },
         { "id": "w013", "form": "iudícia", "lemma": "iudicium", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
         { "id": "w014", "form": "oris", "lemma": "os", "morph": { "case": "gen", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w015", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "post": ".", "substantive": true }
+        { "id": "w015", "form": "tui", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w014" }
       ],
       "participation": {
         "cantu": {
@@ -64,7 +64,11 @@
       "apparatus": "witnesses/proprium.dominica-in-quinquagesima-offertorium/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

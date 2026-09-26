@@ -28,7 +28,7 @@
         { "id": "w007", "form": "gentes", "lemma": "gens", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 3 } },
         { "id": "w008", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w009" },
         { "id": "w009", "form": "conspéctu", "lemma": "conspectus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w010", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "post": ".", "substantive": true },
+        { "id": "w010", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "head": "w009" },
         { "id": "w011", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w013" },
         { "id": "w012", "form": "converténdo", "lemma": "converto", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "ger", "conj": 3 } },
         { "id": "w013", "form": "inimícum", "lemma": "inimicus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -39,7 +39,7 @@
         { "id": "w018", "form": "períbunt", "lemma": "pereo", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w019", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w020" },
         { "id": "w020", "form": "fácie", "lemma": "facies", "morph": { "case": "abl", "decl": 5, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w021", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "post": ".", "substantive": true }
+        { "id": "w021", "form": "tua", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w020" }
       ],
       "participation": {
         "cantu": {
@@ -72,7 +72,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

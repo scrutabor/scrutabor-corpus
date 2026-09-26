@@ -29,7 +29,7 @@
         { "id": "w008", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w009", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w010" },
         { "id": "w010", "form": "ore", "lemma": "os", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w011", "form": "meo", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "post": ".", "substantive": true },
+        { "id": "w011", "form": "meo", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "head": "w010" },
         { "id": "w012", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013" },
         { "id": "w013", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w014", "form": "laudábitur", "lemma": "laudo", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" } },
@@ -71,7 +71,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

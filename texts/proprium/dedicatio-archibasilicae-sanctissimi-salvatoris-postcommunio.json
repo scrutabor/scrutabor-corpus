@@ -28,7 +28,7 @@
         { "id": "w007", "form": "lapídibus", "lemma": "lapis", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "pl", "decl": 3 } },
         { "id": "w008", "form": "ætérnum", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "substantive": true },
         { "id": "w009", "form": "maiestáti", "lemma": "maiestas", "morph": { "case": "dat", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w010", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "substantive": true },
+        { "id": "w010", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "f" }, "head": "w009" },
         { "id": "w011", "form": "prǽparas", "lemma": "praeparo", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w012", "form": "habitáculum", "lemma": "habitaculum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "post": ":" },
         { "id": "w013", "form": "auxiliáre", "lemma": "auxilio", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 1 } },
@@ -112,7 +112,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

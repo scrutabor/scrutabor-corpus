@@ -31,7 +31,7 @@
         { "id": "w007", "form": "dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w008", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w009" },
         { "id": "w009", "form": "famíliam", "lemma": "familia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w010", "form": "suam", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "post": ":", "substantive": true },
+        { "id": "w010", "form": "suam", "post": ":", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w009" },
         { "id": "w011", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w012", "form": "det", "lemma": "do", "morph": { "conj": 1, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w013", "form": "illis", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" } },
@@ -69,7 +69,10 @@
       "apparatus": "witnesses/proprium.sancti-ioachim-confessoris-communio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

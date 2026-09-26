@@ -31,8 +31,8 @@
         { "id": "w010", "form": "inveniántur", "lemma": "invenio", "morph": { "conj": 4, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" }, "post": ":" },
         { "id": "w011", "form": "exáudi", "lemma": "exaudio", "morph": { "conj": 4, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w012", "form": "preces", "lemma": "prex", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
-        { "id": "w013", "form": "servi", "lemma": "servus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
-        { "id": "w014", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "substantive": true, "post": "," },
+        { "id": "w013", "form": "servi", "lemma": "servus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w014", "form": "tui", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w013" },
         { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w016", "form": "plebis", "lemma": "plebs", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w017", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w016" },
@@ -81,8 +81,8 @@
         { "id": "w060", "form": "inveniántur", "lemma": "invenio", "morph": { "conj": 4, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" }, "post": ":" },
         { "id": "w061", "form": "exáudi", "lemma": "exaudio", "morph": { "conj": 4, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w062", "form": "preces", "lemma": "prex", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
-        { "id": "w063", "form": "servi", "lemma": "servus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
-        { "id": "w064", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "substantive": true, "post": "," },
+        { "id": "w063", "form": "servi", "lemma": "servus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w064", "form": "tui", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w063" },
         { "id": "w065", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w066", "form": "plebis", "lemma": "plebs", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w067", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w066" },
@@ -120,7 +120,11 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w068": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
+      "w068": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w063": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w064": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

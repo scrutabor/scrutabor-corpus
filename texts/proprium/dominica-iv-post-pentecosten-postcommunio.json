@@ -26,7 +26,7 @@
         { "id": "w005", "form": "sumpta", "lemma": "sumo", "morph": { "pos": "verb", "case": "nom", "gender": "n", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w001" },
         { "id": "w006", "form": "puríficent", "lemma": "purifico", "morph": { "conj": 1, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":" },
         { "id": "w007", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w008", "form": "suo", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "substantive": true },
+        { "id": "w008", "form": "suo", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "head": "w009" },
         { "id": "w009", "form": "múnere", "lemma": "munus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w010", "form": "tueántur", "lemma": "tueor", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 3, "tense": "pres", "voice": "dep", "conj": 2 }, "post": "." },
         { "id": "w011", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w012" },
@@ -95,7 +95,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w004": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

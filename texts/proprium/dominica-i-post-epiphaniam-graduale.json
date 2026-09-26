@@ -34,7 +34,7 @@
         { "id": "w013", "form": "montes", "lemma": "mons", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "pl", "decl": 3 } },
         { "id": "w014", "form": "pacem", "lemma": "pax", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w015", "form": "pópulo", "lemma": "populus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 } },
-        { "id": "w016", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w016", "form": "tuo", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "gender": "m", "number": "sg" }, "head": "w015" },
         { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w018", "form": "colles", "lemma": "collis", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w019", "form": "iustítiam", "lemma": "iustitia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." }
@@ -70,7 +70,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

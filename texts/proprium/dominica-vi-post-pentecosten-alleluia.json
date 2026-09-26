@@ -31,7 +31,7 @@
         { "id": "w010", "form": "ætérnum", "lemma": "aeternus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "post": ":", "substantive": true },
         { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w012" },
         { "id": "w012", "form": "iustítia", "lemma": "iustitia", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 } },
-        { "id": "w013", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w013", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w012" },
         { "id": "w014", "form": "líbera", "lemma": "libero", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w015", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "," },
         { "id": "w016", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -74,7 +74,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

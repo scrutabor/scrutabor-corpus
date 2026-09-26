@@ -59,7 +59,7 @@
         { "id": "w038", "form": "reple", "lemma": "repleo", "morph": { "conj": 2, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w039", "form": "cordis", "lemma": "cor", "morph": { "case": "gen", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w040", "form": "íntima", "lemma": "intimus", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true },
-        { "id": "w041", "form": "tuórum", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "gender": "m", "number": "pl" }, "substantive": true },
+        { "id": "w041", "form": "tuórum", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "gender": "m", "number": "pl" }, "head": "w042" },
         { "id": "w042", "form": "fidélium", "lemma": "fidelis", "morph": { "case": "gen", "gender": "m", "number": "pl", "pos": "adj" }, "post": ".", "substantive": true },
         { "id": "w043", "form": "Sine", "lemma": "sine", "morph": { "governs": "abl", "pos": "prep" }, "head": "w045" },
         { "id": "w044", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "head": "w045" },
@@ -96,8 +96,8 @@
         { "id": "w075", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w076", "form": "dévium", "lemma": "devius", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "post": ".", "substantive": true },
         { "id": "w077", "form": "Da", "lemma": "do", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w078", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w079", "form": "fidélibus", "lemma": "fidelis", "morph": { "case": "abl", "gender": "m", "number": "pl", "pos": "adj" }, "post": ",", "substantive": true },
+        { "id": "w078", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w079" },
+        { "id": "w079", "form": "fidélibus", "post": ",", "lemma": "fidelis", "morph": { "case": "dat", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
         { "id": "w080", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w081" },
         { "id": "w081", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
         { "id": "w082", "form": "confidéntibus", "lemma": "confido", "morph": { "case": "dat", "conj": 3, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "act" }, "post": ",", "substantive": true },
@@ -143,7 +143,10 @@
     "words": {
       "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
-      "w034": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w034": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w041": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w078": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w079": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -34,8 +34,8 @@
         { "id": "w013", "form": "mirábilis", "lemma": "mirabilis", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "substantive": true },
         { "id": "w014", "form": "facta", "lemma": "facio", "morph": { "pos": "verb", "case": "abl", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
         { "id": "w015", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w016", "form": "sciéntia", "lemma": "scientia", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w017", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w016", "form": "sciéntia", "lemma": "scientia", "morph": { "case": "nom", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w017", "form": "tua", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "head": "w016" },
         { "id": "w018", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
         { "id": "w019", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w020", "form": "Dómine", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
@@ -86,8 +86,8 @@
         { "id": "w065", "form": "mirábilis", "lemma": "mirabilis", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "substantive": true },
         { "id": "w066", "form": "facta", "lemma": "facio", "morph": { "pos": "verb", "case": "abl", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "substantive": true },
         { "id": "w067", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w068", "form": "sciéntia", "lemma": "scientia", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w069", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w068", "form": "sciéntia", "lemma": "scientia", "morph": { "case": "nom", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w069", "form": "tua", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "head": "w068" },
         { "id": "w070", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
         { "id": "w071", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
       ],
@@ -124,7 +124,11 @@
     "words": {
       "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w066": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w066": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w068": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w069": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

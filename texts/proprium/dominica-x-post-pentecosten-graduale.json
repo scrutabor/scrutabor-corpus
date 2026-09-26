@@ -33,12 +33,12 @@
         { "id": "w012", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "." },
         { "id": "w013", "form": "De", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w014" },
         { "id": "w014", "form": "vultu", "lemma": "vultus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w015", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "substantive": true },
-        { "id": "w016", "form": "iudícium", "lemma": "iudicium", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w017", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "substantive": true },
+        { "id": "w015", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "head": "w014" },
+        { "id": "w016", "form": "iudícium", "lemma": "iudicium", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w017", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "head": "w016" },
         { "id": "w018", "form": "pródeat", "lemma": "prodeo", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 3, "tense": "pres", "voice": "act" }, "post": ":" },
         { "id": "w019", "form": "óculi", "lemma": "oculus", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 } },
-        { "id": "w020", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "substantive": true },
+        { "id": "w020", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w019" },
         { "id": "w021", "form": "vídeant", "lemma": "video", "morph": { "conj": 2, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w022", "form": "æquitátem", "lemma": "aequitas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." }
       ],
@@ -71,7 +71,13 @@
       "apparatus": "witnesses/proprium.dominica-x-post-pentecosten-graduale/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

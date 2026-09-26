@@ -26,7 +26,7 @@
         { "id": "w005", "form": "deprecáre", "lemma": "deprecor", "morph": { "pos": "verb", "mood": "imp", "number": "sg", "person": 2, "tense": "pres", "voice": "dep", "conj": 1 } },
         { "id": "w006", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w007" },
         { "id": "w007", "form": "servos", "lemma": "servus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
-        { "id": "w008", "form": "tuos", "lemma": "tuus", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "post": ".", "substantive": true },
+        { "id": "w008", "form": "tuos", "post": ".", "lemma": "tuus", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w007" },
         { "id": "w009", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w010", "form": "refúgium", "lemma": "refugium", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w011", "form": "factus", "lemma": "facio", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
@@ -69,7 +69,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

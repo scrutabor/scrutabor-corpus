@@ -30,9 +30,9 @@
         { "id": "w009", "form": "meus", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "m" }, "post": ",", "head": "w008" },
         { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011" },
         { "id": "w011", "form": "mánibus", "lemma": "manus", "morph": { "case": "abl", "decl": 4, "gender": "f", "number": "pl", "pos": "noun" } },
-        { "id": "w012", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "substantive": true },
-        { "id": "w013", "form": "témpora", "lemma": "tempus", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 3 } },
-        { "id": "w014", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "post": ".", "substantive": true }
+        { "id": "w012", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "f" }, "head": "w011" },
+        { "id": "w013", "form": "témpora", "lemma": "tempus", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "pl", "decl": 3 } },
+        { "id": "w014", "form": "mea", "post": ".", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "head": "w013" }
       ],
       "participation": {
         "cantu": {
@@ -63,7 +63,12 @@
       "apparatus": "witnesses/proprium.dominica-xiii-post-pentecosten-offertorium/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

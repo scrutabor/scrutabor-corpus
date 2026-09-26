@@ -43,7 +43,7 @@
         { "id": "w022", "form": "requiéscant", "lemma": "requiesco", "morph": { "conj": 3, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w023", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024" },
         { "id": "w024", "form": "labóribus", "lemma": "labor", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "pl", "decl": 3 } },
-        { "id": "w025", "form": "suis", "lemma": "suus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "post": ":", "substantive": true },
+        { "id": "w025", "form": "suis", "post": ":", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "m" }, "head": "w024" },
         { "id": "w026", "form": "ópera", "lemma": "opus", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" } },
         { "id": "w027", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
         { "id": "w028", "form": "illórum", "lemma": "ille", "morph": { "pos": "pron", "case": "gen", "number": "pl" } },
@@ -61,7 +61,10 @@
       "apparatus": "witnesses/proprium.commemoratio-omnium-fidelium-defunctorum-missa-iii-epistola/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

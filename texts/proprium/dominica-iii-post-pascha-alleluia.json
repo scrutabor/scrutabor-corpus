@@ -39,7 +39,7 @@
         { "id": "w018", "form": "intráre", "lemma": "intro", "morph": { "conj": 1, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w019", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w020" },
         { "id": "w020", "form": "glóriam", "lemma": "gloria", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w021", "form": "suam", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "post": ".", "substantive": true },
+        { "id": "w021", "form": "suam", "post": ".", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w020" },
         { "id": "w022", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
       ],
       "participation": {
@@ -68,7 +68,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

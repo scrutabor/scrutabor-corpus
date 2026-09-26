@@ -27,7 +27,7 @@
         { "id": "w006", "form": "Vírginis", "lemma": "virgo", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w007", "form": "útero", "lemma": "uterus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w008", "form": "Verbum", "lemma": "verbum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
-        { "id": "w009", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w009", "form": "tuum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w008" },
         { "id": "w010", "form": "Ángelo", "lemma": "angelus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w011", "form": "nuntiánte", "lemma": "nuntio", "morph": { "case": "abl", "conj": 1, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "post": ",", "head": "w010" },
         { "id": "w012", "form": "carnem", "lemma": "caro", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
@@ -35,7 +35,7 @@
         { "id": "w014", "form": "voluísti", "lemma": "volo", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "perf", "voice": "act" }, "post": ":" },
         { "id": "w015", "form": "præsta", "lemma": "praesto", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w016", "form": "supplícibus", "lemma": "supplex", "morph": { "pos": "adj", "case": "dat", "gender": "m", "number": "pl" }, "substantive": true },
-        { "id": "w017", "form": "tuis", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "post": ";", "substantive": true },
+        { "id": "w017", "form": "tuis", "post": ";", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "head": "w016" },
         { "id": "w018", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "post": "," },
         { "id": "w019", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w020", "form": "vere", "lemma": "vere", "morph": { "pos": "adv" } },
@@ -116,7 +116,9 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

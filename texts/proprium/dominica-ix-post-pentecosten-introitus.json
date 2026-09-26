@@ -36,7 +36,7 @@
         { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w016", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w017" },
         { "id": "w017", "form": "veritáte", "lemma": "veritas", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w018", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w018", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w017" },
         { "id": "w019", "form": "dispérde", "lemma": "disperdo", "morph": { "pos": "verb", "mood": "imp", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 3 } },
         { "id": "w020", "form": "illos", "lemma": "ille", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "pron" }, "post": "," },
         { "id": "w021", "form": "protéctor", "lemma": "protector", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
@@ -45,14 +45,14 @@
         { "id": "w024", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w025", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w026" },
         { "id": "w026", "form": "nómine", "lemma": "nomen", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w027", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "substantive": true },
+        { "id": "w027", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "head": "w026" },
         { "id": "w028", "form": "salvum", "lemma": "salvus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w029" },
         { "id": "w029", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w030", "form": "fac", "lemma": "facio", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":" },
         { "id": "w031", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w032", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w033" },
         { "id": "w033", "form": "virtúte", "lemma": "virtus", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w034", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w034", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w033" },
         { "id": "w035", "form": "líbera", "lemma": "libero", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w036", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": "." },
         { "id": "w037", "form": "Glória", "lemma": "gloria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
@@ -92,7 +92,7 @@
         { "id": "w071", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w072", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w073" },
         { "id": "w073", "form": "veritáte", "lemma": "veritas", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w074", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w074", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w073" },
         { "id": "w075", "form": "dispérde", "lemma": "disperdo", "morph": { "pos": "verb", "mood": "imp", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 3 } },
         { "id": "w076", "form": "illos", "lemma": "ille", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "pron" }, "post": "," },
         { "id": "w077", "form": "protéctor", "lemma": "protector", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
@@ -131,7 +131,11 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w027": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w034": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w074": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

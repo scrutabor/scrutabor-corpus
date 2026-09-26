@@ -23,8 +23,8 @@
         { "id": "w002", "form": "cor", "lemma": "cor", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg", "decl": 3 } },
         { "id": "w003", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "head": "w002" },
         { "id": "w004", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w008" },
-        { "id": "w005", "form": "salutári", "lemma": "salutaris", "morph": { "case": "abl", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
-        { "id": "w006", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "post": ":", "substantive": true },
+        { "id": "w005", "form": "salutári", "lemma": "salutaris", "morph": { "case": "abl", "gender": "n", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w006", "form": "tuo", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "head": "w005" },
         { "id": "w007", "form": "cantábo", "lemma": "canto", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w008", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w009", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
@@ -39,7 +39,7 @@
         { "id": "w018", "form": "Mémores", "lemma": "memor", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
         { "id": "w019", "form": "erunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w020", "form": "nóminis", "lemma": "nomen", "morph": { "case": "gen", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
-        { "id": "w021", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "substantive": true },
+        { "id": "w021", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w020" },
         { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024" },
         { "id": "w023", "form": "omni", "lemma": "omnis", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w024" },
         { "id": "w024", "form": "generatióne", "lemma": "generatio", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -83,7 +83,10 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

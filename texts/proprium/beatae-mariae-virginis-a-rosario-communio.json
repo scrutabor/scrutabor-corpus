@@ -37,7 +37,7 @@
         { "id": "w016", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w017", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w018" },
         { "id": "w018", "form": "opéribus", "lemma": "opus", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "pl", "decl": 3 } },
-        { "id": "w019", "form": "suis", "lemma": "suus", "morph": { "pos": "adj", "case": "dat", "number": "pl", "gender": "m" }, "post": ".", "substantive": true }
+        { "id": "w019", "form": "suis", "post": ".", "lemma": "suus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w018" }
       ],
       "participation": {
         "cantu": {
@@ -70,7 +70,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

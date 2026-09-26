@@ -30,8 +30,8 @@
         { "id": "w009", "form": "sedet", "lemma": "sedeo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w010", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w011" },
         { "id": "w011", "form": "sedem", "lemma": "sedes", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w012", "form": "sanctam", "lemma": "sanctus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "substantive": true },
-        { "id": "w013", "form": "suam", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "post": ".", "substantive": true },
+        { "id": "w012", "form": "sanctam", "lemma": "sanctus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w011" },
+        { "id": "w013", "form": "suam", "post": ".", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w011" },
         { "id": "w014", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w015", "form": "Non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w016", "form": "vos", "lemma": "vos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
@@ -74,7 +74,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

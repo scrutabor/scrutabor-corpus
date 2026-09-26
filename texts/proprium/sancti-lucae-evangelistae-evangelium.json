@@ -62,7 +62,7 @@
         { "id": "w041", "form": "operários", "lemma": "operarius", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "pl", "decl": 2 } },
         { "id": "w042", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w043" },
         { "id": "w043", "form": "messem", "lemma": "messis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w044", "form": "suam", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "post": ".", "substantive": true },
+        { "id": "w044", "form": "suam", "post": ".", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w043" },
         { "id": "w045", "form": "Ite", "lemma": "eo", "morph": { "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":" },
         { "id": "w046", "form": "ecce", "lemma": "ecce", "morph": { "pos": "intj" }, "post": "," },
         { "id": "w047", "form": "ego", "lemma": "ego", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
@@ -126,7 +126,7 @@
         { "id": "w105", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
         { "id": "w106", "form": "operárius", "lemma": "operarius", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w107", "form": "mercéde", "lemma": "merces", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 3 } },
-        { "id": "w108", "form": "sua", "lemma": "suus", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "post": ".", "substantive": true },
+        { "id": "w108", "form": "sua", "post": ".", "lemma": "suus", "morph": { "case": "abl", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w107" },
         { "id": "w109", "form": "Nolíte", "lemma": "nolo", "morph": { "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w110", "form": "transíre", "lemma": "transeo", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w111", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w112" },
@@ -174,7 +174,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w092": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w092": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w044": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w108": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

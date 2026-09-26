@@ -20,7 +20,7 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Fidéles", "lemma": "fidelis", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
-        { "id": "w002", "form": "tui", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "post": ",", "substantive": true },
+        { "id": "w002", "form": "tui", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w001" },
         { "id": "w003", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w004", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w006" },
         { "id": "w005", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "head": "w006" },
@@ -105,7 +105,8 @@
       "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
-      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

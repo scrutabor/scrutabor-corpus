@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w002" },
         { "id": "w002", "form": "voluntáte", "lemma": "voluntas", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w003", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w003", "form": "tua", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w002" },
         { "id": "w004", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w005", "form": "univérsa", "lemma": "universus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "substantive": true },
         { "id": "w006", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -33,7 +33,7 @@
         { "id": "w012", "form": "possit", "lemma": "possum", "morph": { "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w013", "form": "resístere", "lemma": "resisto", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 3 } },
         { "id": "w014", "form": "voluntáti", "lemma": "voluntas", "morph": { "case": "dat", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w015", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "post": ":", "substantive": true },
+        { "id": "w015", "form": "tuæ", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "f" }, "head": "w014" },
         { "id": "w016", "form": "tu", "lemma": "tu", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
         { "id": "w017", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
         { "id": "w018", "form": "fecísti", "lemma": "facio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "perf", "voice": "act" } },
@@ -82,7 +82,7 @@
         { "id": "w061", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w062", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w063" },
         { "id": "w063", "form": "voluntáte", "lemma": "voluntas", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w064", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w064", "form": "tua", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w063" },
         { "id": "w065", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w066", "form": "univérsa", "lemma": "universus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "substantive": true },
         { "id": "w067", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -94,7 +94,7 @@
         { "id": "w073", "form": "possit", "lemma": "possum", "morph": { "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w074", "form": "resístere", "lemma": "resisto", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 3 } },
         { "id": "w075", "form": "voluntáti", "lemma": "voluntas", "morph": { "case": "dat", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w076", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "post": ":", "substantive": true },
+        { "id": "w076", "form": "tuæ", "post": ":", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "f" }, "head": "w075" },
         { "id": "w077", "form": "tu", "lemma": "tu", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
         { "id": "w078", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
         { "id": "w079", "form": "fecísti", "lemma": "facio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "perf", "voice": "act" } },
@@ -142,7 +142,13 @@
       "apparatus": "witnesses/proprium.dominica-xxi-post-pentecosten-introitus/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w064": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w076": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

@@ -19,8 +19,8 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Múnera", "lemma": "munus", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" } },
-        { "id": "w002", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "substantive": true },
+        { "id": "w001", "form": "Múnera", "lemma": "munus", "morph": { "case": "nom", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" } },
+        { "id": "w002", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "head": "w001" },
         { "id": "w003", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": "," },
         { "id": "w004", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w005", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w006" },
@@ -100,7 +100,9 @@
     "words": {
       "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

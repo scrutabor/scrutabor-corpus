@@ -87,7 +87,7 @@
         { "id": "w066", "form": "hódie", "lemma": "hodie", "morph": { "pos": "adv" } },
         { "id": "w067", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w068" },
         { "id": "w068", "form": "domo", "lemma": "domus", "morph": { "case": "abl", "decl": 4, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w069", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w069", "form": "tua", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w068" },
         { "id": "w070", "form": "opórtet", "lemma": "oporteo", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 2 } },
         { "id": "w071", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w072", "form": "manére", "lemma": "maneo", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 2 }, "post": "." },
@@ -117,8 +117,8 @@
         { "id": "w096", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w097", "form": "Ecce", "lemma": "ecce", "morph": { "pos": "intj" } },
         { "id": "w098", "form": "dimídium", "lemma": "dimidium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
-        { "id": "w099", "form": "bonórum", "lemma": "bonus", "morph": { "pos": "adj", "case": "gen", "gender": "m", "number": "pl" }, "substantive": true },
-        { "id": "w100", "form": "meórum", "lemma": "meus", "morph": { "case": "gen", "gender": "n", "number": "pl", "pos": "adj" }, "post": ",", "substantive": true },
+        { "id": "w099", "form": "bonórum", "lemma": "bonus", "morph": { "pos": "adj", "case": "gen", "gender": "n", "number": "pl" }, "substantive": true },
+        { "id": "w100", "form": "meórum", "post": ",", "lemma": "meus", "morph": { "case": "gen", "gender": "n", "number": "pl", "pos": "adj" }, "head": "w099" },
         { "id": "w101", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w102", "form": "do", "lemma": "do", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w103", "form": "paupéribus", "lemma": "pauper", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "pl" }, "post": ":" },
@@ -181,7 +181,10 @@
       "w138": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w048": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w083": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w083": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w069": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w099": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w100": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
