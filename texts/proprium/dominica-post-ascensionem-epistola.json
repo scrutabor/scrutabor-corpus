@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "Caríssimi", "lemma": "carus", "morph": { "case": "voc", "degree": "sup", "gender": "m", "number": "pl", "pos": "adj" }, "post": ":", "substantive": true },
         { "id": "w002", "form": "Estóte", "lemma": "sum", "morph": { "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" } },
-        { "id": "w003", "form": "prudéntes", "lemma": "prudens", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true, "post": "," },
+        { "id": "w003", "form": "prudéntes", "lemma": "prudens", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "post": ",", "head": "w002" },
         { "id": "w004", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w005", "form": "vigiláte", "lemma": "vigilo", "morph": { "conj": 1, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w006", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007" },
@@ -34,13 +34,13 @@
         { "id": "w013", "form": "vobismetípsis", "lemma": "vosmetipse", "morph": { "case": "abl", "number": "pl", "pos": "pron" } },
         { "id": "w014", "form": "caritátem", "lemma": "caritas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w015", "form": "contínuam", "lemma": "continuus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w014" },
-        { "id": "w016", "form": "habéntes", "lemma": "habeo", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 2 }, "post": ":", "substantive": true },
+        { "id": "w016", "form": "habéntes", "lemma": "habeo", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 2 }, "post": ":", "ellipsis": "subject" },
         { "id": "w017", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
         { "id": "w018", "form": "cáritas", "lemma": "caritas", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w019", "form": "óperit", "lemma": "operio", "morph": { "conj": 4, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w020", "form": "multitúdinem", "lemma": "multitudo", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w021", "form": "peccatórum", "lemma": "peccator", "morph": { "pos": "noun", "case": "gen", "gender": "m", "number": "pl", "decl": 3 }, "post": "." },
-        { "id": "w022", "form": "Hospitáles", "lemma": "hospitalis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "substantive": true },
+        { "id": "w022", "form": "Hospitáles", "lemma": "hospitalis", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "ellipsis": "predicate" },
         { "id": "w023", "form": "ínvicem", "lemma": "invicem", "morph": { "pos": "adv" } },
         { "id": "w024", "form": "sine", "lemma": "sine", "morph": { "governs": "abl", "pos": "prep" }, "head": "w025" },
         { "id": "w025", "form": "murmuratióne", "lemma": "murmuratio", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 3 }, "post": ":" },
@@ -51,7 +51,7 @@
         { "id": "w030", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w031" },
         { "id": "w031", "form": "altérutrum", "lemma": "alteruter", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "pron" } },
         { "id": "w032", "form": "illam", "lemma": "ille", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "pron" } },
-        { "id": "w033", "form": "administrántes", "lemma": "administro", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "post": ",", "substantive": true },
+        { "id": "w033", "form": "administrántes", "lemma": "administro", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "post": ",", "ellipsis": "subject" },
         { "id": "w034", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
         { "id": "w035", "form": "boni", "lemma": "bonus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "head": "w036" },
         { "id": "w036", "form": "dispensatóres", "lemma": "dispensator", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
@@ -98,9 +98,13 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w013": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w031": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w033": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w056": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w059": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w052": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
@@ -110,6 +114,17 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w016": {
+
+      },
+      "w022": {
+
+      },
+      "w033": {
+
+      }
+    }
   }
 }

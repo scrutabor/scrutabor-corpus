@@ -19,7 +19,7 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Propítius", "lemma": "propitius", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w001", "form": "Propítius", "lemma": "propitius", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w002" },
         { "id": "w002", "form": "esto", "lemma": "sum", "morph": { "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" }, "post": "," },
         { "id": "w003", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w004", "form": "peccátis", "lemma": "peccatum", "morph": { "case": "dat", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
@@ -77,6 +77,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
