@@ -368,6 +368,14 @@ MODIFIER_RULINGS: dict[tuple[str, str], str] = {
     ("proprium.dominica-i-adventus-graduale", "w011"): (
         "notas fac: uczynić takes an instrumental complement"
     ),
+    (
+        "proprium.dominica-ii-passionis-evangelium",
+        "w1225",
+    ): "zbawionymi is an instrumental predicate after uczynił",
+    (
+        "proprium.dominica-ii-post-epiphaniam-evangelium",
+        "w069",
+    ): "każda renders the distributive síngulæ, each of the jars",
     ("proprium.nativitas-domini-in-die-graduale", "w012"): (
         "Notum fecit: uczynić takes an instrumental complement"
     ),
@@ -384,8 +392,6 @@ MODIFIER_RULINGS: dict[tuple[str, str], str] = {
         "proprium.dominica-infra-octavam-nativitatis-epistola",
         "w005",
     ): "dzieckiem is a predicate complement after jest",
-    ("proprium.dominica-ix-post-pentecosten-evangelium", "w098"): "mój modifies the preceding dom",
-    ("proprium.dominica-post-ascensionem-evangelium", "w052"): "każdy is substantival before kto",
     ("proprium.dominica-v-post-pentecosten-epistola", "w090"): "dobra is governed by miłośnikami",
     (
         "proprium.dominica-viii-post-pentecosten-offertorium",
