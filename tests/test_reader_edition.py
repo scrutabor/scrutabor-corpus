@@ -155,10 +155,10 @@ def test_rejected_citation_attachments_do_not_reach_the_reader(tmp_path):
 def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
     written = emit(CORPUS, tmp_path / "build")
     assert written["citation_projection"] == {
-        "legacy": 2773,
+        "legacy": 2770,
         "mapped": 2041,
         "kept": 2041,
-        "excluded": 732,
+        "excluded": 729,
         "unresolved": 0,
         "rejected_exposed": 0,
     }
