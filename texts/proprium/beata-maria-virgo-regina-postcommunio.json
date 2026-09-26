@@ -35,7 +35,7 @@
         { "id": "w014", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
         { "id": "w015", "form": "intercessióne", "lemma": "intercessio", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w016", "form": "fiant", "lemma": "fio", "morph": { "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w017", "form": "salutária", "lemma": "salutaris", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "post": ";", "substantive": true },
+        { "id": "w017", "form": "salutária", "lemma": "salutaris", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "post": ";", "head": "w016" },
         { "id": "w018", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w020" },
         { "id": "w019", "form": "cuius", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
         { "id": "w020", "form": "honóre", "lemma": "honor", "morph": { "case": "abl", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -110,6 +110,7 @@
     "words": {
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
       "w013": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },

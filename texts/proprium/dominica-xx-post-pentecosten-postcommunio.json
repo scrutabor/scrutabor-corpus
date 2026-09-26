@@ -23,7 +23,7 @@
         { "id": "w002", "form": "sacris", "post": ",", "lemma": "sacer", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w006" },
         { "id": "w003", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w004", "form": "reddámur", "lemma": "reddo", "morph": { "conj": 3, "mood": "subj", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "pass" } },
-        { "id": "w005", "form": "digni", "lemma": "dignus", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
+        { "id": "w005", "form": "digni", "lemma": "dignus", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w004" },
         { "id": "w006", "form": "munéribus", "lemma": "munus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" }, "post": ":" },
         { "id": "w007", "form": "fac", "lemma": "facio", "morph": { "conj": 3, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w008", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": "," },
@@ -98,6 +98,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w009": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },

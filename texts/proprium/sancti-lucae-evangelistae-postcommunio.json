@@ -40,7 +40,7 @@
         { "id": "w019", "form": "nostras", "lemma": "noster", "morph": { "case": "acc", "gender": "f", "number": "pl", "pos": "adj" }, "post": ",", "head": "w018" },
         { "id": "w020", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w021" },
         { "id": "w021", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
-        { "id": "w022", "form": "tuti", "lemma": "tutus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "substantive": true },
+        { "id": "w022", "form": "tuti", "lemma": "tutus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "head": "w024" },
         { "id": "w023", "form": "esse", "lemma": "sum", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w024", "form": "possímus", "lemma": "possum", "morph": { "mood": "subj", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." },
         { "id": "w025", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w026" },
@@ -110,6 +110,7 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
