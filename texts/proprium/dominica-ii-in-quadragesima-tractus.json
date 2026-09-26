@@ -22,7 +22,7 @@
         { "id": "w001", "form": "Confitémini", "lemma": "confiteor", "morph": { "conj": 2, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "dep" } },
         { "id": "w002", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w003", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
-        { "id": "w004", "form": "bonus", "lemma": "bonus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "post": ":", "substantive": true },
+        { "id": "w004", "form": "bonus", "lemma": "bonus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "post": ":", "ellipsis": "predicate" },
         { "id": "w005", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
         { "id": "w006", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w007" },
         { "id": "w007", "form": "sǽculum", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
@@ -86,6 +86,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w030": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
@@ -101,6 +102,11 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w004": {
+
+      }
+    }
   }
 }

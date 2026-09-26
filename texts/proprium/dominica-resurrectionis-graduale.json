@@ -32,7 +32,7 @@
         { "id": "w011", "form": "Confitémini", "lemma": "confiteor", "morph": { "conj": 2, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "dep" } },
         { "id": "w012", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w013", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
-        { "id": "w014", "form": "bonus", "lemma": "bonus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "post": ":", "substantive": true },
+        { "id": "w014", "form": "bonus", "lemma": "bonus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "post": ":", "ellipsis": "predicate" },
         { "id": "w015", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
         { "id": "w016", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w017" },
         { "id": "w017", "form": "sǽculum", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
@@ -72,10 +72,16 @@
     "words": {
       "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w014": {
+
+      }
+    }
   }
 }
