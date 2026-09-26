@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "Dispérsit", "lemma": "dispergo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": "," },
         { "id": "w002", "form": "dedit", "lemma": "do", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w003", "form": "paupéribus", "lemma": "pauper", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "pl" }, "post": ":" },
+        { "id": "w003", "form": "paupéribus", "lemma": "pauper", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "pl", "decl": 3 }, "post": ":" },
         { "id": "w004", "form": "iustítia", "lemma": "iustitia", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w005", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w006", "form": "manet", "lemma": "maneo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
@@ -65,7 +65,7 @@
         { "id": "w044", "form": "Amen", "lemma": "amen", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w045", "form": "Dispérsit", "lemma": "dispergo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": "," },
         { "id": "w046", "form": "dedit", "lemma": "do", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w047", "form": "paupéribus", "lemma": "pauper", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "pl" }, "post": ":" },
+        { "id": "w047", "form": "paupéribus", "lemma": "pauper", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "pl", "decl": 3 }, "post": ":" },
         { "id": "w048", "form": "iustítia", "lemma": "iustitia", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w049", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w050", "form": "manet", "lemma": "maneo", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act", "conj": 2 } },
@@ -109,7 +109,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w047": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w054": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
