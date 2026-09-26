@@ -27,7 +27,7 @@
         { "id": "w006", "form": "dona", "lemma": "donum", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 } },
         { "id": "w007", "form": "firméntur", "lemma": "firmo", "morph": { "conj": 1, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" }, "post": ":" },
         { "id": "w008", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
-        { "id": "w009", "form": "éadem", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w009", "form": "éadem", "lemma": "idem", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
         { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w011", "form": "percipiéndo", "lemma": "percipio", "morph": { "pos": "verb", "case": "abl", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "ger", "conj": 3 } },
         { "id": "w012", "form": "requírant", "lemma": "requiro", "morph": { "conj": 3, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
@@ -38,7 +38,7 @@
         { "id": "w017", "form": "percípiant", "lemma": "percipio", "morph": { "conj": 3, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." },
         { "id": "w018", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w019" },
         { "id": "w019", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w020", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w021" },
+        { "id": "w020", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w019" },
         { "id": "w021", "form": "Iesum", "lemma": "Iesus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w022", "form": "Christum", "lemma": "Christus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w023", "form": "Fílium", "lemma": "filius", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -102,11 +102,12 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -33,7 +33,7 @@
         { "id": "w012", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
         { "id": "w013", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w014", "form": "potest", "lemma": "possum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w015", "form": "salva", "lemma": "salvo", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
+        { "id": "w015", "form": "salva", "lemma": "salvus", "morph": { "case": "nom", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w014" },
         { "id": "w016", "form": "consístere", "lemma": "consisto", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 3 }, "post": ";" },
         { "id": "w017", "form": "tuo", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "head": "w019" },
         { "id": "w018", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
@@ -41,7 +41,7 @@
         { "id": "w020", "form": "gubernétur", "lemma": "guberno", "morph": { "conj": 1, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" }, "post": "." },
         { "id": "w021", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w022" },
         { "id": "w022", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w023", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w024" },
+        { "id": "w023", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w022" },
         { "id": "w024", "form": "Iesum", "lemma": "Iesus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w025", "form": "Christum", "lemma": "Christus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w026", "form": "Fílium", "lemma": "filius", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -103,7 +103,11 @@
       "apparatus": "witnesses/proprium.dominica-xv-post-pentecosten-collecta/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

@@ -220,7 +220,7 @@
         { "id": "w071", "form": "Vírgine", "post": ":", "lemma": "virgo", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 3 } },
         { "id": "w072", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w073", "form": "homo", "lemma": "homo", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
-        { "id": "w074", "form": "factus", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w073" },
+        { "id": "w074", "form": "factus", "lemma": "facio", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "pass", "case": "nom", "number": "sg", "gender": "m", "conj": 3 }, "head": "w075" },
         { "id": "w075", "form": "est", "post": ".", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } }
       ]
     },
@@ -358,7 +358,7 @@
         { "id": "w119", "form": "Sanctum", "post": ",", "lemma": "sanctus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w118" },
         { "id": "w120", "form": "Dóminum", "lemma": "dominus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } },
         { "id": "w121", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w122", "form": "vivificántem", "post": ":", "lemma": "vivifico", "morph": { "pos": "verb", "mood": "part", "tense": "pres", "voice": "act", "case": "acc", "number": "sg", "gender": "m", "conj": 1 }, "head": "w120" },
+        { "id": "w122", "form": "vivificántem", "post": ":", "lemma": "vivifico", "morph": { "pos": "verb", "mood": "part", "tense": "pres", "voice": "act", "case": "acc", "number": "sg", "gender": "m", "conj": 1 }, "substantive": true },
         { "id": "w123", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w124", "form": "ex", "lemma": "ex", "morph": { "pos": "prep", "governs": "abl" }, "head": "w125" },
         { "id": "w125", "form": "Patre", "lemma": "pater", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 3 }, "post": "," },
@@ -509,9 +509,10 @@
     },
     "words": {
       "w050": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
-      "w074": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w074": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
       "w099": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w136": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w136": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w122": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

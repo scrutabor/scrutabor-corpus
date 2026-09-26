@@ -29,10 +29,11 @@ def test_dictionary_retains_distinct_contextually_needed_senses(lemma, senses):
     assert senses <= set(entries[lemma]["senses"])
 
 
-def test_invisible_adjective_displays_a_real_nominative_not_its_identifier():
+def test_invisible_adjective_has_one_headword_with_a_real_nominative():
     entries = json.loads((ROOT / "lexicon/lemmata.json").read_text())["entries"]
-    assert entries["invisibil"]["head"] == "invisíbilis, -e"
-    assert entries["invisibil"]["pos"] == "adj"
+    assert "invisibil" not in entries
+    assert entries["invisibilis"]["head"] == "invisíbilis, -e"
+    assert entries["invisibilis"]["pos"] == "adj"
 
 
 @pytest.mark.parametrize(
@@ -41,7 +42,7 @@ def test_invisible_adjective_displays_a_real_nominative_not_its_identifier():
         ("intendo", "n24136"),
         ("consto", "n10640"),
         ("sors", "n44805"),
-        ("invisibil", "n24782"),
+        ("invisibilis", "n24782"),
         ("formido", "n18588"),
         ("diffamo", "n13854"),
         ("mansio", "n27904"),

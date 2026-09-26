@@ -374,10 +374,6 @@ MODIFIER_RULINGS: dict[tuple[str, str], str] = {
     ("proprium.purificatio-beatae-mariae-virginis-evangelium", "w032"): (
         "sanctum vocábitur: świętym is an instrumental predicate after będzie nazwany"
     ),
-    ("proprium.corporis-christi-sequentia", "w039"): "dwunastu modifies braci in Polish",
-    ("proprium.d-n-iesu-christi-regis-collecta", "w024"): "najsłodszemu panowaniu",
-    ("proprium.dominica-ii-passionis-evangelium", "w206"): "starszych is a coordinated substantive",
-    ("proprium.dominica-ii-passionis-evangelium", "w1281"): "do godziny dziewiątej",
     ("proprium.dominica-ii-post-pascha-introitus", "w003"): "pełna predicates ziemia in Polish",
     ("proprium.dominica-ii-post-pascha-introitus", "w043"): "pełna predicates ziemia in Polish",
     ("proprium.dominica-in-septuagesima-evangelium", "w230"): (
@@ -390,40 +386,17 @@ MODIFIER_RULINGS: dict[tuple[str, str], str] = {
         "proprium.dominica-infra-octavam-nativitatis-epistola",
         "w005",
     ): "dzieckiem is a predicate complement after jest",
-    ("proprium.dominica-iv-post-pentecosten-collecta", "w016"): "Twój modifies Kościół in Polish",
-    ("proprium.dominica-iv-post-pentecosten-communio", "w011"): "mój modifies Bóg in Polish",
     ("proprium.dominica-ix-post-pentecosten-evangelium", "w098"): "mój modifies the preceding dom",
     ("proprium.dominica-post-ascensionem-evangelium", "w052"): "każdy is substantival before kto",
-    (
-        "proprium.dominica-resurrectionis-collecta",
-        "w006",
-    ): "Jednorodzonego is substantival after przez",
-    (
-        "proprium.dominica-resurrectionis-collecta",
-        "w007",
-    ): "Twojego modifies the substantival Jednorodzonego",
     ("proprium.dominica-v-post-pentecosten-epistola", "w090"): "dobra is governed by miłośnikami",
-    (
-        "proprium.dominica-viii-post-pentecosten-introitus",
-        "w021",
-    ): "pełna predicates prawica in Polish",
-    (
-        "proprium.dominica-viii-post-pentecosten-introitus",
-        "w078",
-    ): "pełna predicates prawica in Polish",
     (
         "proprium.dominica-viii-post-pentecosten-offertorium",
         "w003",
     ): "ocalonym is an instrumental predicate after uczynisz",
     (
-        "proprium.dominica-xi-post-pentecosten-communio",
-        "w014",
-    ): "twoje modifies spichlerze in Polish",
-    (
         "proprium.dominica-xi-post-pentecosten-evangelium",
         "w016",
     ): "środek is governed by przez in the recast phrase",
-    ("proprium.dominica-xi-post-pentecosten-graduale", "w016"): "mojej modifies woli in Polish",
     (
         "proprium.dominica-xiii-post-pentecosten-evangelium",
         "w011",
@@ -436,6 +409,9 @@ MODIFIER_RULINGS: dict[tuple[str, str], str] = {
         "proprium.dominica-xv-post-pentecosten-introitus",
         "w068",
     ): "ocalonym is an instrumental predicate after uczyń",
+    ("proprium.dominica-xix-post-pentecosten-secreta", "w010"): (
+        "zbawiennymi is an instrumental predicate after być"
+    ),
     (
         "proprium.dominica-xviii-post-pentecosten-introitus",
         "w009",
@@ -452,19 +428,12 @@ MODIFIER_RULINGS: dict[tuple[str, str], str] = {
         "proprium.exaltatio-sanctae-crucis-offertorium",
         "w020",
     ): "miłą is an instrumental predicate after stała się",
-    ("proprium.immaculatum-cor-beatae-mariae-virginis-epistola", "w056"): "słodki predicates Duch",
-    ("proprium.nativitas-domini-in-die-secreta", "w004"): "nowym modifies Narodzeniem",
     (
         "proprium.nativitas-sancti-ioannis-baptistae-collecta",
         "w005",
     ): "czcigodnym is an instrumental predicate after uczyniłeś",
-    ("proprium.omnium-sanctorum-communio", "w008"): "Błogosławieni predicates pokój czyniący",
-    ("proprium.purificatio-beatae-mariae-virginis-collecta", "w013"): "dzisiejszego modifies dnia",
     ("proprium.purificatio-beatae-mariae-virginis-epistola", "w015"): "moim modifies obliczem",
-    ("proprium.sancta-familia-collecta", "w016"): "obojga is substantival for Mary and Joseph",
-    ("proprium.sancti-andreae-apostoli-postcommunio", "w003"): "Boskie modifies Tajemnice",
     ("proprium.sancti-bartholomaei-apostoli-evangelium", "w087"): "wybrzeża is substantival",
-    ("proprium.sancti-ioachim-confessoris-secreta", "w014"): "Twojemu modifies majestatowi",
     ("proprium.sancti-lucae-evangelistae-evangelium", "w016"): "sobą completes przed sobą",
     (
         "proprium.sanctorum-simonis-et-iudae-apostolorum-epistola",
@@ -480,7 +449,6 @@ MODIFIER_RULINGS: dict[tuple[str, str], str] = {
     ): "pełen miłosierdzia recasts the Latin genitive phrase",
     ("proprium.transfiguratio-domini-introitus", "w003"): "Twoje modifies błyskawice",
     ("proprium.transfiguratio-domini-introitus", "w047"): "Twoje modifies błyskawice",
-    ("proprium.transfiguratio-domini-secreta", "w005"): "chwalebnym modifies Przemienieniem",
     ("proprium.visitatio-beatae-mariae-virginis-epistola", "w103"): "słodki predicates głos",
 }
 

@@ -39,17 +39,17 @@
         { "id": "w018", "form": "quǽsumus", "lemma": "quaeso", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ";" },
         { "id": "w019", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w020", "form": "illi", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" } },
-        { "id": "w021", "form": "devótum", "lemma": "devotus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w030" },
+        { "id": "w021", "form": "devótum", "lemma": "devotus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w025" },
         { "id": "w022", "form": "pietátis", "lemma": "pietas", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w023", "form": "nostræ", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w022" },
         { "id": "w024", "form": "præstántes", "lemma": "praesto", "morph": { "pos": "verb", "number": "pl", "case": "nom", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 1 }, "substantive": true },
-        { "id": "w025", "form": "obséquium", "lemma": "obsequium", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "post": "," },
+        { "id": "w025", "form": "obséquium", "post": ",", "lemma": "obsequium", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w026", "form": "dignæ", "lemma": "dignus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w028" },
         { "id": "w027", "form": "quoque", "lemma": "quoque", "morph": { "pos": "adv" } },
         { "id": "w028", "form": "satisfactiónis", "lemma": "satisfactio", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w029", "form": "exhibeámus", "lemma": "exhibeo", "morph": { "conj": 2, "mood": "subj", "number": "pl", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w030", "form": "offícium", "lemma": "officium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 }, "post": "." },
-        { "id": "w031", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w032" },
+        { "id": "w031", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w033" },
         { "id": "w032", "form": "eúndem", "lemma": "idem", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w033", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w034", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w033" },
@@ -119,7 +119,10 @@
       "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w018": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } }
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w031": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
