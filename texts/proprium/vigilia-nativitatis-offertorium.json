@@ -24,7 +24,7 @@
         { "id": "w003", "form": "príncipes", "lemma": "princeps", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "pl", "decl": 3 }, "post": "," },
         { "id": "w004", "form": "vestras", "lemma": "vester", "morph": { "case": "acc", "gender": "f", "number": "pl", "pos": "adj" }, "post": ":", "head": "w002" },
         { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w006", "form": "elevámini", "lemma": "elevo", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 2, "tense": "pres", "voice": "pass", "conj": 1 }, "post": "," },
+        { "id": "w006", "form": "elevámini", "post": ",", "lemma": "elevo", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "pass", "conj": 1 } },
         { "id": "w007", "form": "portæ", "lemma": "porta", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "pl", "decl": 1 } },
         { "id": "w008", "form": "æternáles", "lemma": "aeternalis", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "pl" }, "post": ",", "head": "w007" },
         { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -63,7 +63,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
