@@ -129,7 +129,7 @@ def test_the_authored_graph_accounts_for_every_audited_legacy_citation():
         "mapped": 1871,
         "removed": 899,
         "unmapped": 0,
-        "sha256": "3440413badcc48c2359db71c8618dade5dfbde7d730ed233a96d41d4492b93ed",
+        "sha256": "ed59b943b0c3f2241002df4d6ccd4c48e9a8f673e9503dc340bbc6761c297a5c",
         "complete": True,
     }
 
