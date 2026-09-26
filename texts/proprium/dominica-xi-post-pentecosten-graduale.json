@@ -22,8 +22,8 @@
         { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w002" },
         { "id": "w002", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w003", "form": "sperávit", "lemma": "spero", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w004", "form": "cor", "lemma": "cor", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 3 } },
-        { "id": "w005", "form": "meum", "lemma": "meus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "post": ",", "head": "w004" },
+        { "id": "w004", "form": "cor", "lemma": "cor", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg", "decl": 3 } },
+        { "id": "w005", "form": "meum", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "head": "w004" },
         { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w007", "form": "adiútus", "lemma": "adiuvo", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
         { "id": "w008", "form": "sum", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":" },
@@ -34,7 +34,7 @@
         { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w014", "form": "ex", "lemma": "ex", "morph": { "governs": "abl", "pos": "prep" }, "head": "w015" },
         { "id": "w015", "form": "voluntáte", "lemma": "voluntas", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w016", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w011" },
+        { "id": "w016", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "f" }, "head": "w015" },
         { "id": "w017", "form": "confitébor", "lemma": "confiteor", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "dep" } },
         { "id": "w018", "form": "illi", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "sg", "gender": "m" }, "post": "." },
         { "id": "w019", "form": "Ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w020" },
@@ -83,7 +83,10 @@
     "words": {
       "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w024": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } }
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

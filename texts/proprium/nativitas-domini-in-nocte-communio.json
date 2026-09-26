@@ -27,7 +27,7 @@
         { "id": "w006", "form": "ante", "lemma": "ante", "morph": { "governs": "acc", "pos": "prep" }, "head": "w007" },
         { "id": "w007", "form": "lucíferum", "lemma": "lucifer", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w008", "form": "génui", "lemma": "gigno", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w009", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "." }
+        { "id": "w009", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } }
       ],
       "participation": {
         "cantu": {
@@ -58,7 +58,10 @@
       "apparatus": "witnesses/proprium.nativitas-domini-in-nocte-communio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

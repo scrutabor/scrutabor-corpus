@@ -33,8 +33,8 @@
         { "id": "w012", "form": "Móysi", "lemma": "Moyses", "morph": { "pos": "noun", "case": "gen", "gender": "m", "number": "sg", "decl": 3 }, "post": "," },
         { "id": "w013", "form": "tulérunt", "lemma": "fero", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w014", "form": "Iesum", "lemma": "Iesus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w019" },
-        { "id": "w016", "form": "Ierúsalem", "lemma": "Ierusalem", "morph": { "gender": "f", "pos": "noun" }, "post": "," },
+        { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w016" },
+        { "id": "w016", "form": "Ierúsalem", "post": ",", "lemma": "Ierusalem", "morph": { "gender": "f", "pos": "noun", "case": "acc", "number": "sg" } },
         { "id": "w017", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w018", "form": "sísterent", "lemma": "sisto", "morph": { "conj": 3, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w019", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
@@ -171,7 +171,7 @@
         { "id": "w150", "form": "glóriam", "lemma": "gloria", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w151", "form": "plebis", "lemma": "plebs", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w152", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "head": "w151" },
-        { "id": "w153", "form": "Israël", "post": ".", "lemma": "Israel", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" } }
+        { "id": "w153", "form": "Israël", "post": ".", "lemma": "Israel", "morph": { "pos": "noun", "case": "gen", "gender": "m", "number": "sg" } }
       ]
     }
   ],
@@ -200,8 +200,8 @@
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
@@ -337,7 +337,7 @@
       "w150": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w151": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w152": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w153": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w153": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w058": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },

@@ -92,7 +92,7 @@
       "voice": "secreto",
       "words": [
         { "id": "w029", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w030" },
-        { "id": "w030", "form": "primis", "post": ",", "lemma": "primus", "morph": { "pos": "adj", "case": "abl", "number": "pl" }, "substantive": true },
+        { "id": "w030", "form": "primis", "post": ",", "lemma": "primus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "substantive": true },
         { "id": "w031", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
         { "id": "w032", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
         { "id": "w033", "form": "offérimus", "lemma": "offero", "morph": { "pos": "verb", "person": 1, "number": "pl", "tense": "pres", "mood": "ind", "voice": "act" } },
@@ -158,7 +158,8 @@
     },
     "words": {
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w030": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

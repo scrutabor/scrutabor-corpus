@@ -115,7 +115,7 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w060", "form": "Cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 }, "post": "," },
+        { "id": "w060", "form": "Cæli", "post": ",", "lemma": "caelum", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 } },
         { "id": "w061", "form": "cælorúmque", "lemma": "caelum", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w062", "form": "Virtútes", "lemma": "virtus", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" }, "post": "," },
         { "id": "w063", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
@@ -158,7 +158,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w060": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } }
     }
   },
   "localization": {

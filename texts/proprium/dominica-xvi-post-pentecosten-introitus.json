@@ -41,7 +41,7 @@
         { "id": "w020", "form": "misericórdia", "lemma": "misericordia", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w021", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "gender": "m", "number": "pl" }, "head": "w022" },
         { "id": "w022", "form": "invocántibus", "lemma": "invoco", "morph": { "case": "dat", "conj": 1, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
-        { "id": "w023", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "." },
+        { "id": "w023", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w024", "form": "Inclína", "lemma": "inclino", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w025", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w026", "form": "aurem", "lemma": "auris", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -51,7 +51,7 @@
         { "id": "w030", "form": "exáudi", "lemma": "exaudio", "morph": { "conj": 4, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w031", "form": "me", "lemma": "ego", "morph": { "pos": "pron", "case": "acc", "number": "sg" }, "post": ":" },
         { "id": "w032", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
-        { "id": "w033", "form": "inops", "lemma": "inops", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "post": ",", "head": "w035" },
+        { "id": "w033", "form": "inops", "post": ",", "lemma": "inops", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "substantive": true },
         { "id": "w034", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w035", "form": "pauper", "lemma": "pauper", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" } },
         { "id": "w036", "form": "sum", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -98,7 +98,7 @@
         { "id": "w077", "form": "misericórdia", "lemma": "misericordia", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w078", "form": "ómnibus", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "gender": "m", "number": "pl" }, "head": "w079" },
         { "id": "w079", "form": "invocántibus", "lemma": "invoco", "morph": { "case": "dat", "conj": 1, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
-        { "id": "w080", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "." }
+        { "id": "w080", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } }
       ],
       "participation": {
         "cantu": {
@@ -138,7 +138,10 @@
       "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w065": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w066": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w078": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w078": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w033": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w080": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

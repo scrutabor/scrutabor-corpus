@@ -19,9 +19,9 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w001", "form": "Hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "n" } },
         { "id": "w002", "form": "corpus", "lemma": "corpus", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg", "decl": 3 }, "post": "," },
-        { "id": "w003", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
+        { "id": "w003", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "n" } },
         { "id": "w004", "form": "pro", "lemma": "pro", "morph": { "governs": "abl", "pos": "prep" }, "head": "w005" },
         { "id": "w005", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
         { "id": "w006", "form": "tradétur", "lemma": "trado", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "fut", "mood": "ind", "voice": "pass", "conj": 3 }, "post": ":" },
@@ -74,9 +74,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },

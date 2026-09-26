@@ -23,16 +23,16 @@
         { "id": "w002", "form": "Móyses", "lemma": "Moyses", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
         { "id": "w003", "form": "altáre", "lemma": "altare", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w004", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
-        { "id": "w005", "form": "ófferens", "lemma": "offero", "morph": { "case": "acc", "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "head": "w003" },
+        { "id": "w005", "form": "ófferens", "lemma": "offero", "morph": { "case": "nom", "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "head": "w002" },
         { "id": "w006", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w007" },
         { "id": "w007", "form": "illud", "lemma": "ille", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "pron" } },
         { "id": "w008", "form": "holocáusta", "lemma": "holocaustum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 2 }, "post": "," },
         { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w010", "form": "ímmolans", "lemma": "immolo", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
+        { "id": "w010", "form": "ímmolans", "lemma": "immolo", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "head": "w002" },
         { "id": "w011", "form": "víctimas", "lemma": "victima", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" }, "post": ":" },
         { "id": "w012", "form": "fecit", "lemma": "facio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w013", "form": "sacrifícium", "lemma": "sacrificium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
-        { "id": "w014", "form": "vespertínum", "lemma": "vespertinus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w016" },
+        { "id": "w014", "form": "vespertínum", "lemma": "vespertinus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w013" },
         { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w016" },
         { "id": "w016", "form": "odórem", "lemma": "odor", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w017", "form": "suavitátis", "lemma": "suavitas", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -41,7 +41,7 @@
         { "id": "w020", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w021" },
         { "id": "w021", "form": "conspéctu", "lemma": "conspectus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w022", "form": "filiórum", "lemma": "filius", "morph": { "pos": "noun", "case": "gen", "number": "pl", "gender": "m", "decl": 2 } },
-        { "id": "w023", "form": "Israël", "post": ".", "lemma": "Israel", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" } }
+        { "id": "w023", "form": "Israël", "post": ".", "lemma": "Israel", "morph": { "pos": "noun", "case": "gen", "gender": "m", "number": "sg" } }
       ],
       "participation": {
         "cantu": {
@@ -74,9 +74,10 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -26,7 +26,7 @@
         { "id": "w005", "form": "cælo", "lemma": "caelum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w007", "form": "dixit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w008", "form": "muliéribus", "lemma": "mulier", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" }, "post": ":" },
+        { "id": "w008", "form": "muliéribus", "post": ":", "lemma": "mulier", "morph": { "case": "dat", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
         { "id": "w009", "form": "Quem", "lemma": "qui", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w010", "form": "quǽritis", "lemma": "quaero", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w011", "form": "surréxit", "lemma": "surgo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
@@ -65,7 +65,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

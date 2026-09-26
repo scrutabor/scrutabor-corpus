@@ -34,7 +34,7 @@
         { "id": "w013", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": "." },
         { "id": "w014", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w015", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w016", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "post": "," },
+        { "id": "w016", "form": "terra", "post": ",", "lemma": "terra", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
         { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w018", "form": "plenitúdo", "lemma": "plenitudo", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w019", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": ":" },
@@ -42,7 +42,7 @@
         { "id": "w021", "form": "terrárum", "lemma": "terra", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" }, "post": "," },
         { "id": "w022", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w023", "form": "univérsi", "lemma": "universus", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "post": ",", "substantive": true },
-        { "id": "w024", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
+        { "id": "w024", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
         { "id": "w025", "form": "hábitant", "lemma": "habito", "morph": { "conj": 1, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w026", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w027" },
         { "id": "w027", "form": "eo", "lemma": "is", "morph": { "case": "abl", "gender": "m", "number": "sg", "pos": "pron" }, "post": "." },
@@ -112,7 +112,9 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w057": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w057": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

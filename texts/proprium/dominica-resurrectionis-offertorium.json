@@ -19,7 +19,7 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w001", "form": "Terra", "lemma": "terra", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
         { "id": "w002", "form": "trémuit", "lemma": "tremo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": "," },
         { "id": "w003", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w004", "form": "quiévit", "lemma": "quiesco", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": "," },
@@ -61,7 +61,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

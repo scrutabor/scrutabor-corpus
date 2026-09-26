@@ -25,7 +25,7 @@
         { "id": "w004", "form": "tuórum", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "gender": "n", "number": "pl" }, "head": "w003" },
         { "id": "w005", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w006", "form": "satiábitur", "lemma": "satio", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "fut", "voice": "pass", "conj": 1 } },
-        { "id": "w007", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 }, "post": ":" },
+        { "id": "w007", "form": "terra", "post": ":", "lemma": "terra", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
         { "id": "w008", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w009", "form": "edúcas", "lemma": "educo", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 3 } },
         { "id": "w010", "form": "panem", "lemma": "panis", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -34,7 +34,7 @@
         { "id": "w013", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w014", "form": "vinum", "lemma": "vinum", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
         { "id": "w015", "form": "lætíficet", "lemma": "laetifico", "morph": { "conj": 1, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w016", "form": "cor", "lemma": "cor", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "sg", "decl": 3 } },
+        { "id": "w016", "form": "cor", "lemma": "cor", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 3 } },
         { "id": "w017", "form": "hóminis", "lemma": "homo", "morph": { "case": "gen", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w018", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w019", "form": "exhílaret", "lemma": "exhilaro", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 1 } },
@@ -78,7 +78,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

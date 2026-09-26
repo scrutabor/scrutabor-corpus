@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w002" },
         { "id": "w002", "form": "diébus", "lemma": "dies", "morph": { "case": "abl", "decl": 5, "gender": "m", "number": "pl", "pos": "noun" } },
-        { "id": "w003", "form": "illis", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "post": ":" },
+        { "id": "w003", "form": "illis", "post": ":", "lemma": "ille", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "m" } },
         { "id": "w004", "form": "Factum", "lemma": "fio", "morph": { "pos": "verb", "case": "nom", "gender": "n", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part" }, "substantive": true },
         { "id": "w005", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w006", "form": "cum", "lemma": "cum", "morph": { "pos": "conj" } },
@@ -77,7 +77,7 @@
         { "id": "w056", "form": "Paulus", "lemma": "Paulus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w057", "form": "Ioánnes", "lemma": "Ioannes", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w058", "form": "baptizávit", "lemma": "baptizo", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w059", "form": "baptísmo", "lemma": "baptisma", "morph": { "pos": "noun", "case": "dat", "gender": "n", "number": "sg", "decl": 3 } },
+        { "id": "w059", "form": "baptísmo", "lemma": "baptisma", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 3 } },
         { "id": "w060", "form": "pæniténtiæ", "lemma": "paenitentia", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w061", "form": "pópulum", "lemma": "populus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w062", "form": "dicens", "post": ":", "lemma": "dico", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
@@ -153,7 +153,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w059": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w059": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
       "w106": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w102": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w103": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
@@ -166,7 +166,8 @@
       "w092": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w105": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w113": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w112": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w112": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -20,7 +20,7 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Exaltábo", "lemma": "exalto", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "fut", "voice": "act" } },
-        { "id": "w002", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "," },
+        { "id": "w002", "form": "te", "post": ",", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w003", "form": "Dómine", "lemma": "dominus", "morph": { "case": "voc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w004", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
         { "id": "w005", "form": "suscepísti", "lemma": "suscipio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "perf", "voice": "act" } },
@@ -71,7 +71,8 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

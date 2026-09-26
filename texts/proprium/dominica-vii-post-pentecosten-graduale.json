@@ -31,7 +31,7 @@
         { "id": "w010", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w011" },
         { "id": "w011", "form": "eum", "lemma": "is", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" }, "post": "," },
         { "id": "w012", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w013", "form": "illuminámini", "lemma": "illumino", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 2, "tense": "pres", "voice": "pass", "conj": 1 }, "post": ":" },
+        { "id": "w013", "form": "illuminámini", "post": ":", "lemma": "illumino", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "pass", "conj": 1 } },
         { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w015", "form": "fácies", "lemma": "facies", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "pl", "decl": 5 } },
         { "id": "w016", "form": "vestræ", "lemma": "vester", "morph": { "case": "nom", "gender": "f", "number": "pl", "pos": "adj" }, "head": "w015" },
@@ -69,7 +69,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

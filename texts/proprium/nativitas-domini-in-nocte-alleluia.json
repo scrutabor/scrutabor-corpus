@@ -32,7 +32,7 @@
         { "id": "w011", "form": "ego", "lemma": "ego", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
         { "id": "w012", "form": "hódie", "lemma": "hodie", "morph": { "pos": "adv" } },
         { "id": "w013", "form": "génui", "lemma": "gigno", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w014", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "." },
+        { "id": "w014", "form": "te", "post": ".", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w015", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
       ],
       "participation": {
@@ -59,7 +59,10 @@
       "apparatus": "witnesses/proprium.nativitas-domini-in-nocte-alleluia/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

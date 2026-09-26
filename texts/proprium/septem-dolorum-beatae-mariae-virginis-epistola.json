@@ -20,7 +20,7 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Benedíxit", "lemma": "benedico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w002", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w002", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
         { "id": "w003", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w004", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
         { "id": "w005", "form": "virtúte", "lemma": "virtus", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -36,7 +36,7 @@
         { "id": "w015", "form": "Benedícta", "lemma": "benedictus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "substantive": true },
         { "id": "w016", "form": "es", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w017", "form": "tu", "lemma": "tu", "morph": { "case": "nom", "number": "sg", "pos": "pron" }, "post": "," },
-        { "id": "w018", "form": "fília", "lemma": "filia", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 }, "post": "," },
+        { "id": "w018", "form": "fília", "post": ",", "lemma": "filia", "morph": { "pos": "noun", "case": "voc", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w019", "form": "a", "lemma": "a", "morph": { "pos": "prep", "governs": "abl" }, "head": "w020" },
         { "id": "w020", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w021", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
@@ -114,7 +114,9 @@
       "w061": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w067": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
