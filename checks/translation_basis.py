@@ -5,6 +5,11 @@ registry answers a different reader-facing question: whether the displayed
 wording is exact, normalized, revised, or a traditional composite. Records are
 grouped by text and optional segment selection so the same fact is not repeated
 at every translation site.
+
+An exact or normalized site says that a page prints its wording. At least one
+retained use in the language's bibliography must therefore name a page as the
+wording basis of the site or of its text; a comparator only controlled a
+revision and cannot carry that claim.
 """
 
 from __future__ import annotations
@@ -18,6 +23,32 @@ from checks.translation_provenance import load as load_provenance
 
 RELATIONSHIPS = frozenset(("exact", "normalized", "revised", "traditional-composite"))
 INHERITED = frozenset(("public-domain", "traditional"))
+PRINTED = frozenset(("exact", "normalized"))
+WORDING_BASIS = "historical_wording_basis"
+
+
+def wording_bases(uses: list, language: str) -> tuple[set[str], set[str]]:
+    """Sites and texts that a retained use names as a page's wording basis."""
+    sites: set[str] = set()
+    texts: set[str] = set()
+    for use in uses:
+        if use.get("decision") == "REMOVE" or use.get("role") != WORDING_BASIS:
+            continue
+        address = use.get("address") or {}
+        if address.get("kind") == "segment":
+            sites.add(f"{address.get('text')}.{address.get('segment')}.{language}")
+        elif address.get("kind") == "text":
+            texts.add(str(address.get("text")))
+    return sites, texts
+
+
+def unbased(expanded: dict[str, str], sites: set[str], texts: set[str]) -> list[str]:
+    """Exact or normalized sites whose wording no retained basis use names."""
+    return sorted(
+        site
+        for site, relationship in expanded.items()
+        if relationship in PRINTED and site not in sites and site.rsplit(".", 2)[0] not in texts
+    )
 
 
 def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
@@ -43,6 +74,7 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
             continue
 
         covered = set(store.language_manifest(corpus, language).get("texts") or [])
+        language_sites: dict[str, str] = {}
         for index, record in enumerate(records):
             label = f"{where}:records[{index}]"
             if not isinstance(record, dict) or set(record) - {
@@ -93,7 +125,15 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
                         errors.append(f"{site}: translation-basis records overlap")
                     else:
                         expanded[site] = relationship
+                        language_sites[site] = relationship
                         tally[relationship] += 1
+
+        bibliography = corpus / "languages" / language / "bibliography.json"
+        uses = json.loads(bibliography.read_text(encoding="utf-8")).get("uses") or []
+        for site in unbased(language_sites, *wording_bases(uses, language)):
+            errors.append(
+                f"{site}: {language_sites[site]} wording needs a retained {WORDING_BASIS} use"
+            )
 
     missing = sorted(expected - set(expanded))
     extra = sorted(set(expanded) - expected)
