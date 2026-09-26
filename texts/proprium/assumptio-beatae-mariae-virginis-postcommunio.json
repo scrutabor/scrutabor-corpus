@@ -34,7 +34,7 @@
         { "id": "w013", "form": "Maríæ", "lemma": "Maria", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w014", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w015" },
         { "id": "w015", "form": "cælum", "lemma": "caelum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
-        { "id": "w016", "form": "assúmptæ", "lemma": "adsumo", "morph": { "pos": "verb", "case": "nom", "gender": "f", "mood": "part", "number": "pl", "tense": "perf", "voice": "pass", "conj": 3 }, "post": ",", "substantive": true },
+        { "id": "w016", "form": "assúmptæ", "post": ",", "lemma": "adsumo", "morph": { "pos": "verb", "case": "gen", "gender": "f", "mood": "part", "number": "sg", "tense": "perf", "voice": "pass", "conj": 3 }, "head": "w013" },
         { "id": "w017", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w019" },
         { "id": "w018", "form": "resurrectiónis", "lemma": "resurrectio", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w019", "form": "glóriam", "lemma": "gloria", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -106,7 +106,7 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w006": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
-      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

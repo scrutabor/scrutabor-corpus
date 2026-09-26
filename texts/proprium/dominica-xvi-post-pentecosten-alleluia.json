@@ -24,7 +24,7 @@
         { "id": "w003", "form": "Cantáte", "lemma": "canto", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "act", "conj": 1 } },
         { "id": "w004", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w005", "form": "cánticum", "lemma": "canticum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
-        { "id": "w006", "form": "novum", "lemma": "novus", "morph": { "case": "nom", "gender": "n", "number": "sg", "pos": "adj" }, "post": ":", "substantive": true },
+        { "id": "w006", "form": "novum", "post": ":", "lemma": "novus", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "head": "w005" },
         { "id": "w007", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
         { "id": "w008", "form": "mirabília", "lemma": "mirabilis", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "substantive": true },
         { "id": "w009", "form": "fecit", "lemma": "facio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
@@ -55,7 +55,10 @@
       "apparatus": "witnesses/proprium.dominica-xvi-post-pentecosten-alleluia/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

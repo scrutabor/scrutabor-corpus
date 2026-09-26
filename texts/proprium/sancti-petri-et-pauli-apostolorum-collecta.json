@@ -21,8 +21,8 @@
       "words": [
         { "id": "w001", "form": "Deus", "post": ",", "lemma": "deus", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w002", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w003", "form": "hodiérnam", "lemma": "hodiernus", "morph": { "pos": "adj", "case": "acc", "gender": "f", "number": "sg" }, "substantive": true },
-        { "id": "w004", "form": "diem", "lemma": "dies", "morph": { "case": "acc", "decl": 5, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w003", "form": "hodiérnam", "lemma": "hodiernus", "morph": { "pos": "adj", "case": "acc", "gender": "f", "number": "sg" }, "head": "w004" },
+        { "id": "w004", "form": "diem", "lemma": "dies", "morph": { "case": "acc", "decl": 5, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w005", "form": "Apostolórum", "lemma": "apostolus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w006", "form": "tuórum", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "gender": "m", "number": "pl" }, "head": "w005" },
         { "id": "w007", "form": "Petri", "lemma": "Petrus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -110,7 +110,9 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -30,7 +30,7 @@
         { "id": "w009", "form": "Iacob", "lemma": "Iacob", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w010", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w011" },
         { "id": "w011", "form": "pópulo", "lemma": "populus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w012", "form": "bárbaro", "lemma": "barbarus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "post": ".", "substantive": true },
+        { "id": "w012", "form": "bárbaro", "post": ".", "lemma": "barbarus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "head": "w011" },
         { "id": "w013", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
       ],
       "participation": {
@@ -59,7 +59,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

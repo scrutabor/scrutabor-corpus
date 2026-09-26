@@ -35,7 +35,7 @@
         { "id": "w014", "form": "Ascéndens", "lemma": "ascendo", "morph": { "case": "acc", "conj": 3, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
         { "id": "w015", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w019" },
         { "id": "w016", "form": "altum", "lemma": "altus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "post": ",", "substantive": true },
-        { "id": "w017", "form": "captívam", "lemma": "captivus", "morph": { "pos": "adj", "case": "acc", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w017", "form": "captívam", "lemma": "captivus", "morph": { "pos": "adj", "case": "acc", "gender": "f", "number": "sg" }, "head": "w019" },
         { "id": "w018", "form": "duxit", "lemma": "duco", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 3 } },
         { "id": "w019", "form": "captivitátem", "lemma": "captivitas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w020", "form": "dedit", "lemma": "do", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
@@ -52,7 +52,7 @@
         { "id": "w031", "form": "descéndit", "lemma": "descendo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w032", "form": "primum", "lemma": "primum", "morph": { "pos": "adv" } },
         { "id": "w033", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w035" },
-        { "id": "w034", "form": "inferióres", "lemma": "inferus", "morph": { "pos": "adj", "case": "acc", "degree": "comp", "gender": "m", "number": "pl" }, "substantive": true },
+        { "id": "w034", "form": "inferióres", "lemma": "inferus", "morph": { "pos": "adj", "case": "acc", "degree": "comp", "gender": "f", "number": "pl" }, "head": "w035" },
         { "id": "w035", "form": "partes", "lemma": "pars", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "pl", "decl": 3 } },
         { "id": "w036", "form": "terræ", "lemma": "terra", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "?" },
         { "id": "w037", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
@@ -107,7 +107,7 @@
         { "id": "w086", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w087", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w088" },
         { "id": "w088", "form": "virum", "lemma": "vir", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w089", "form": "perféctum", "lemma": "perfectus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "post": ",", "substantive": true },
+        { "id": "w089", "form": "perféctum", "post": ",", "lemma": "perfectus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "head": "w088" },
         { "id": "w090", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w091" },
         { "id": "w091", "form": "mensúram", "lemma": "mensura", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w092", "form": "ætátis", "lemma": "aetas", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "sg", "decl": 3 } },
@@ -133,7 +133,10 @@
       "w079": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w034": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w089": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

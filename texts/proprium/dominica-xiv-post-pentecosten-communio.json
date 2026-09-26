@@ -24,7 +24,7 @@
         { "id": "w003", "form": "regnum", "lemma": "regnum", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w004", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w005", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w006", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "substantive": true },
+        { "id": "w006", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "n" }, "substantive": true },
         { "id": "w007", "form": "adiiciéntur", "lemma": "adiicio", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "fut", "voice": "pass", "conj": 3 } },
         { "id": "w008", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" }, "post": "," },
         { "id": "w009", "form": "dicit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -61,7 +61,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

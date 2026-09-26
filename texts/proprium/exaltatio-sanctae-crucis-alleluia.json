@@ -21,17 +21,17 @@
       "words": [
         { "id": "w001", "form": "Allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
         { "id": "w002", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
-        { "id": "w003", "form": "Dulce", "lemma": "dulcis", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "sg" }, "head": "w004" },
-        { "id": "w004", "form": "lignum", "lemma": "lignum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 }, "post": "," },
+        { "id": "w003", "form": "Dulce", "lemma": "dulcis", "morph": { "pos": "adj", "case": "voc", "gender": "n", "number": "sg" }, "head": "w004" },
+        { "id": "w004", "form": "lignum", "post": ",", "lemma": "lignum", "morph": { "pos": "noun", "case": "voc", "gender": "n", "number": "sg", "decl": 2 } },
         { "id": "w005", "form": "dulces", "lemma": "dulcis", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "pl" }, "head": "w006" },
         { "id": "w006", "form": "clavos", "lemma": "clavus", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "pl", "decl": 2 }, "post": "," },
         { "id": "w007", "form": "dúlcia", "lemma": "dulcis", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "head": "w009" },
-        { "id": "w008", "form": "ferens", "lemma": "fero", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w008", "form": "ferens", "lemma": "fero", "morph": { "pos": "verb", "case": "voc", "gender": "n", "number": "sg", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "head": "w004" },
         { "id": "w009", "form": "póndera", "lemma": "pondus", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 3 }, "post": ":" },
         { "id": "w010", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w011", "form": "sola", "lemma": "solus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "substantive": true },
         { "id": "w012", "form": "fuísti", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w013", "form": "digna", "lemma": "dignus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "substantive": true },
+        { "id": "w013", "form": "digna", "lemma": "dignus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "substantive": true },
         { "id": "w014", "form": "sustinére", "lemma": "sustineo", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 2 } },
         { "id": "w015", "form": "Regem", "lemma": "rex", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w016", "form": "cælórum", "lemma": "caelum", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" } },
@@ -63,7 +63,13 @@
       "apparatus": "witnesses/proprium.exaltatio-sanctae-crucis-alleluia/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

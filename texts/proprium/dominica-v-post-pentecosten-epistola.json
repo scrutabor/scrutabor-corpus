@@ -25,7 +25,7 @@
         { "id": "w004", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
         { "id": "w005", "form": "oratióne", "lemma": "oratio", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w006", "form": "estóte", "lemma": "sum", "morph": { "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" }, "post": "," },
-        { "id": "w007", "form": "compatiéntes", "lemma": "compatior", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "dep", "mood": "part", "conj": 3 }, "post": ",", "substantive": true },
+        { "id": "w007", "form": "compatiéntes", "post": ",", "lemma": "compatior", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "dep", "mood": "part", "conj": 3 }, "head": "w009" },
         { "id": "w008", "form": "fraternitátis", "lemma": "fraternitas", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "sg", "decl": 3 } },
         { "id": "w009", "form": "amatóres", "post": ",", "lemma": "amator", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 3 } },
         { "id": "w010", "form": "misericórdes", "post": ",", "lemma": "misericors", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w006" },
@@ -59,9 +59,9 @@
         { "id": "w038", "form": "vitam", "lemma": "vita", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w039", "form": "dilígere", "lemma": "diligo", "morph": { "pos": "verb", "mood": "inf", "tense": "pres", "voice": "act", "conj": 3 }, "post": "," },
         { "id": "w040", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w041", "form": "dies", "lemma": "dies", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 5 } },
+        { "id": "w041", "form": "dies", "lemma": "dies", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 5 } },
         { "id": "w042", "form": "vidére", "lemma": "video", "morph": { "conj": 2, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w043", "form": "bonos", "lemma": "bonus", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "post": ",", "substantive": true },
+        { "id": "w043", "form": "bonos", "post": ",", "lemma": "bonus", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w041" },
         { "id": "w044", "form": "coérceat", "lemma": "coerceo", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 2 } },
         { "id": "w045", "form": "linguam", "lemma": "lingua", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w046", "form": "suam", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "f" }, "head": "w045" },
@@ -118,7 +118,7 @@
         { "id": "w097", "form": "patímini", "lemma": "patior", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 2, "tense": "pres", "voice": "dep", "conj": 3 } },
         { "id": "w098", "form": "propter", "lemma": "propter", "morph": { "governs": "acc", "pos": "prep" }, "head": "w099" },
         { "id": "w099", "form": "iustítiam", "lemma": "iustitia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
-        { "id": "w100", "form": "beáti", "lemma": "beatus", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "adj" }, "post": ".", "substantive": true },
+        { "id": "w100", "form": "beáti", "post": ".", "lemma": "beatus", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
         { "id": "w101", "form": "Timórem", "lemma": "timor", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w102", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w103", "form": "eórum", "lemma": "is", "morph": { "case": "gen", "gender": "m", "number": "pl", "pos": "pron" } },
@@ -158,7 +158,11 @@
       "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w115": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w115": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w041": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w043": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w100": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

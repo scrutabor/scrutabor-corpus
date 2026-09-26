@@ -33,13 +33,13 @@
         { "id": "w012", "form": "munímine", "lemma": "munimen", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w013", "form": "contulísti", "lemma": "confero", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "perf", "voice": "act" }, "post": ";" },
         { "id": "w014", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w015", "form": "præsens", "lemma": "praesens", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w015", "form": "præsens", "lemma": "praesens", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "head": "w017" },
         { "id": "w016", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
-        { "id": "w017", "form": "remédium", "lemma": "remedium", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
+        { "id": "w017", "form": "remédium", "lemma": "remedium", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w018", "form": "esse", "lemma": "sum", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w019", "form": "fácias", "lemma": "facio", "morph": { "conj": 3, "mood": "subj", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w020", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w021", "form": "futúrum", "lemma": "futurus", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "post": ".", "substantive": true },
+        { "id": "w021", "form": "futúrum", "post": ".", "lemma": "futurus", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "adj" }, "head": "w017" },
         { "id": "w022", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w023" },
         { "id": "w023", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w024", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w025" },
@@ -110,7 +110,10 @@
       "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

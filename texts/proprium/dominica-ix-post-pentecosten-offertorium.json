@@ -19,10 +19,10 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Iustítiæ", "lemma": "iustitia", "morph": { "case": "gen", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w001", "form": "Iustítiæ", "lemma": "iustitia", "morph": { "case": "nom", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" } },
         { "id": "w002", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w003", "form": "rectæ", "lemma": "rectus", "morph": { "pos": "adj", "case": "gen", "gender": "f", "number": "sg" }, "post": ",", "head": "w001" },
-        { "id": "w004", "form": "lætificántes", "lemma": "laetifico", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "substantive": true },
+        { "id": "w003", "form": "rectæ", "post": ",", "lemma": "rectus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "pl" }, "head": "w001" },
+        { "id": "w004", "form": "lætificántes", "lemma": "laetifico", "morph": { "pos": "verb", "case": "nom", "gender": "f", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "head": "w001" },
         { "id": "w005", "form": "corda", "lemma": "cor", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" }, "post": "," },
         { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w007", "form": "iudícia", "lemma": "iudicium", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
@@ -68,7 +68,12 @@
       "apparatus": "witnesses/proprium.dominica-ix-post-pentecosten-offertorium/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

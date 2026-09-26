@@ -99,7 +99,7 @@
         { "id": "w078", "form": "mei", "lemma": "meus", "morph": { "pos": "adj", "case": "voc", "gender": "m", "number": "pl" }, "head": "w077" },
         { "id": "w079", "form": "caríssimi", "lemma": "carus", "morph": { "pos": "adj", "case": "voc", "degree": "sup", "gender": "m", "number": "pl" }, "head": "w077", "post": "," },
         { "id": "w080", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w081", "form": "desideratíssimi", "lemma": "desideratus", "morph": { "pos": "adj", "case": "nom", "degree": "sup", "gender": "m", "number": "pl" }, "post": ",", "substantive": true },
+        { "id": "w081", "form": "desideratíssimi", "post": ",", "lemma": "desideratus", "morph": { "pos": "adj", "case": "voc", "degree": "sup", "gender": "m", "number": "pl" }, "head": "w077" },
         { "id": "w082", "form": "gáudium", "lemma": "gaudium", "morph": { "case": "voc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w083", "form": "meum", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "voc", "gender": "n", "number": "sg" }, "head": "w082" },
         { "id": "w084", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -123,8 +123,8 @@
         { "id": "w102", "form": "rogo", "lemma": "rogo", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w103", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w104", "form": "te", "lemma": "tu", "morph": { "pos": "pron", "case": "abl", "number": "sg" }, "post": "," },
-        { "id": "w105", "form": "germáne", "lemma": "germanus", "morph": { "pos": "adj", "case": "voc", "gender": "m", "number": "sg" }, "substantive": true },
-        { "id": "w106", "form": "compar", "lemma": "compar", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 }, "post": "," },
+        { "id": "w105", "form": "germáne", "lemma": "germanus", "morph": { "pos": "adj", "case": "voc", "gender": "m", "number": "sg" }, "head": "w106" },
+        { "id": "w106", "form": "compar", "post": ",", "lemma": "compar", "morph": { "pos": "noun", "case": "voc", "gender": "m", "number": "sg", "decl": 3 } },
         { "id": "w107", "form": "ádiuva", "lemma": "adiuvo", "morph": { "conj": 1, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w108", "form": "illas", "lemma": "ille", "morph": { "case": "acc", "gender": "f", "number": "pl", "pos": "pron" }, "post": "," },
         { "id": "w109", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
@@ -175,7 +175,10 @@
       "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w032": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w083": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w086": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w086": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w081": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w105": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w106": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

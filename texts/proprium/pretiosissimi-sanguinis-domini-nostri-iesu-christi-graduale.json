@@ -48,8 +48,8 @@
         { "id": "w027", "form": "Pater", "lemma": "pater", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 }, "post": "," },
         { "id": "w028", "form": "Verbum", "lemma": "verbum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w029", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w030", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
-        { "id": "w031", "form": "Sanctus", "lemma": "sanctus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "post": ":", "substantive": true },
+        { "id": "w030", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w031", "form": "Sanctus", "post": ":", "lemma": "sanctus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w030" },
         { "id": "w032", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w033", "form": "hi", "lemma": "hic", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "pron" } },
         { "id": "w034", "form": "tres", "lemma": "tres", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "head": "w033" },
@@ -104,7 +104,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w027": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w027": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w030": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w031": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

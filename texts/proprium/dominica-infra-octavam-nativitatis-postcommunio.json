@@ -29,8 +29,8 @@
         { "id": "w008", "form": "nostra", "lemma": "noster", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "head": "w007" },
         { "id": "w009", "form": "purgéntur", "lemma": "purgo", "morph": { "conj": 1, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "pass" }, "post": "," },
         { "id": "w010", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w011", "form": "iusta", "lemma": "iustus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "substantive": true },
-        { "id": "w012", "form": "desidéria", "lemma": "desiderium", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
+        { "id": "w011", "form": "iusta", "lemma": "iustus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "head": "w012" },
+        { "id": "w012", "form": "desidéria", "lemma": "desiderium", "morph": { "case": "nom", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
         { "id": "w013", "form": "compleántur", "lemma": "compleo", "morph": { "pos": "verb", "mood": "subj", "number": "pl", "person": 3, "tense": "pres", "voice": "pass", "conj": 2 }, "post": "." },
         { "id": "w014", "form": "Per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w015" },
         { "id": "w015", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -96,7 +96,11 @@
       "apparatus": "witnesses/proprium.dominica-infra-octavam-nativitatis-postcommunio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

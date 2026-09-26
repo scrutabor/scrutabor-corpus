@@ -28,7 +28,7 @@
         { "id": "w007", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w008" },
         { "id": "w008", "form": "sǽculum", "lemma": "saeculum", "morph": { "case": "acc", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w009", "form": "sǽculi", "lemma": "saeculum", "morph": { "case": "gen", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "post": "." },
-        { "id": "w010", "form": "Potens", "lemma": "potens", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "sg" }, "substantive": true },
+        { "id": "w010", "form": "Potens", "lemma": "potens", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "head": "w014" },
         { "id": "w011", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w012" },
         { "id": "w012", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
         { "id": "w013", "form": "erit", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
@@ -67,7 +67,10 @@
       "apparatus": "witnesses/proprium.sancti-ioachim-confessoris-graduale/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

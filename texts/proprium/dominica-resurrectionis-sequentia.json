@@ -19,8 +19,8 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Víctimæ", "lemma": "victima", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "pl", "decl": 1 } },
-        { "id": "w002", "form": "pascháli", "lemma": "paschalis", "morph": { "pos": "adj", "case": "dat", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w001", "form": "Víctimæ", "lemma": "victima", "morph": { "pos": "noun", "case": "dat", "gender": "f", "number": "sg", "decl": 1 } },
+        { "id": "w002", "form": "pascháli", "lemma": "paschalis", "morph": { "pos": "adj", "case": "dat", "gender": "f", "number": "sg" }, "head": "w001" },
         { "id": "w003", "form": "laudes", "lemma": "laus", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "pl", "pos": "noun" } },
         { "id": "w004", "form": "ímmolent", "lemma": "immolo", "morph": { "conj": 1, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w005", "form": "Christiáni", "lemma": "christianus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "post": ".", "substantive": true },
@@ -57,8 +57,8 @@
         { "id": "w036", "form": "glóriam", "lemma": "gloria", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w037", "form": "vidi", "lemma": "video", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w038", "form": "resurgéntis", "lemma": "resurgo", "morph": { "pos": "verb", "case": "gen", "gender": "m", "number": "sg", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "post": ".", "substantive": true },
-        { "id": "w039", "form": "Angélicos", "lemma": "angelicus", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
-        { "id": "w040", "form": "testes", "lemma": "testis", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" }, "post": "," },
+        { "id": "w039", "form": "Angélicos", "lemma": "angelicus", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w040" },
+        { "id": "w040", "form": "testes", "post": ",", "lemma": "testis", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w041", "form": "sudárium", "lemma": "sudarium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w042", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w043", "form": "vestes", "lemma": "vestis", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "pl", "decl": 3 }, "post": "." },
@@ -113,7 +113,11 @@
       "w019": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
       "w055": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w058": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w039": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

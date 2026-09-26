@@ -32,8 +32,8 @@
         { "id": "w011", "form": "habérent", "lemma": "habeo", "morph": { "conj": 2, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w012", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
         { "id": "w013", "form": "manducárent", "lemma": "manduco", "morph": { "conj": 1, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" }, "post": "," },
-        { "id": "w014", "form": "convocátis", "lemma": "convoco", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "substantive": true },
-        { "id": "w015", "form": "discípulis", "lemma": "discipulus", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 2 }, "post": "," },
+        { "id": "w014", "form": "convocátis", "lemma": "convoco", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 1 }, "head": "w015" },
+        { "id": "w015", "form": "discípulis", "post": ",", "lemma": "discipulus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } },
         { "id": "w016", "form": "ait", "lemma": "aio", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w017", "form": "illis", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" }, "post": ":" },
         { "id": "w018", "form": "Miséreor", "lemma": "misereor", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 1, "tense": "pres", "voice": "dep", "conj": 2 } },
@@ -133,7 +133,7 @@
         { "id": "w112", "form": "superáverat", "lemma": "supero", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "plup", "voice": "act", "conj": 1 } },
         { "id": "w113", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w114" },
         { "id": "w114", "form": "fragméntis", "lemma": "fragmentum", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "pl", "decl": 2 }, "post": "," },
-        { "id": "w115", "form": "septem", "lemma": "septem", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w115", "form": "septem", "lemma": "septem", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "f" }, "head": "w116" },
         { "id": "w116", "form": "sportas", "lemma": "sporta", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "pl", "decl": 1 }, "post": "." },
         { "id": "w117", "form": "Erant", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w118", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
@@ -167,7 +167,10 @@
       "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w123": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w038": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w038": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w115": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

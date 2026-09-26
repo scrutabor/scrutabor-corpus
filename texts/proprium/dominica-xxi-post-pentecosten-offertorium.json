@@ -30,7 +30,7 @@
         { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w010", "form": "rectus", "lemma": "rectus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true, "post": "," },
         { "id": "w011", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
-        { "id": "w012", "form": "timens", "lemma": "timeo", "morph": { "case": "acc", "conj": 2, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
+        { "id": "w012", "form": "timens", "lemma": "timeo", "morph": { "case": "nom", "conj": 2, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
         { "id": "w013", "form": "Deum", "lemma": "deus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w014", "form": "quem", "lemma": "qui", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w015", "form": "Satan", "lemma": "Satan", "morph": { "pos": "noun", "gender": "m", "case": "nom", "number": "sg" } },
@@ -59,7 +59,7 @@
         { "id": "w038", "form": "carnem", "lemma": "caro", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
         { "id": "w039", "form": "quoque", "lemma": "quoque", "morph": { "pos": "adv" } },
         { "id": "w040", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
-        { "id": "w041", "form": "gravi", "lemma": "gravis", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w041", "form": "gravi", "lemma": "gravis", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "head": "w042" },
         { "id": "w042", "form": "úlcere", "lemma": "ulcus", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 3 } },
         { "id": "w043", "form": "vulnerávit", "lemma": "vulnero", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": "." }
       ],
@@ -97,7 +97,9 @@
       "w005": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
-      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } }
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w041": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

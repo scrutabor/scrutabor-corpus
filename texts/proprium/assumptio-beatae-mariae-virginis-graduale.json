@@ -32,8 +32,8 @@
         { "id": "w011", "form": "Rex", "lemma": "rex", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
         { "id": "w012", "form": "pulchritúdinem", "lemma": "pulchritudo", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 3 } },
         { "id": "w013", "form": "tuam", "lemma": "tuus", "morph": { "case": "acc", "gender": "f", "number": "sg", "pos": "adj" }, "post": ".", "head": "w012" },
-        { "id": "w014", "form": "Tota", "lemma": "totus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "substantive": true },
-        { "id": "w015", "form": "decóra", "lemma": "decorum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 2 } },
+        { "id": "w014", "form": "Tota", "lemma": "totus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "head": "w017" },
+        { "id": "w015", "form": "decóra", "lemma": "decorus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "head": "w017" },
         { "id": "w016", "form": "ingréditur", "lemma": "ingredior", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "dep", "conj": 3 } },
         { "id": "w017", "form": "fília", "lemma": "filia", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w018", "form": "Regis", "lemma": "rex", "morph": { "pos": "noun", "case": "gen", "gender": "m", "number": "sg", "decl": 3 }, "post": "," },
@@ -72,7 +72,11 @@
       "apparatus": "witnesses/proprium.assumptio-beatae-mariae-virginis-graduale/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

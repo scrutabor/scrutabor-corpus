@@ -31,12 +31,12 @@
         { "id": "w010", "form": "eis", "lemma": "is", "morph": { "case": "dat", "gender": "m", "number": "pl", "pos": "pron" }, "post": "." },
         { "id": "w011", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w012" },
         { "id": "w012", "form": "memória", "lemma": "memoria", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 } },
-        { "id": "w013", "form": "ætérna", "lemma": "aeternus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w013", "form": "ætérna", "lemma": "aeternus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w012" },
         { "id": "w014", "form": "erit", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
         { "id": "w015", "form": "iustus", "lemma": "iustus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "post": ":", "substantive": true },
         { "id": "w016", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w017" },
         { "id": "w017", "form": "auditióne", "lemma": "auditio", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 3 } },
-        { "id": "w018", "form": "mala", "lemma": "malus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w018", "form": "mala", "lemma": "malus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "sg" }, "head": "w017" },
         { "id": "w019", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w020", "form": "timébit", "lemma": "timeo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" }, "post": "." }
       ],
@@ -71,7 +71,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

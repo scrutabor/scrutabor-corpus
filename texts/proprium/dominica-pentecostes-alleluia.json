@@ -58,8 +58,8 @@
       "voice": "clara",
       "words": [
         { "id": "w013", "form": "Veni", "lemma": "venio", "morph": { "conj": 4, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
-        { "id": "w014", "form": "Sancte", "lemma": "sanctus", "morph": { "case": "voc", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
-        { "id": "w015", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 }, "post": "," },
+        { "id": "w014", "form": "Sancte", "lemma": "sanctus", "morph": { "case": "voc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w015" },
+        { "id": "w015", "form": "Spíritus", "post": ",", "lemma": "spiritus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 4 } },
         { "id": "w016", "form": "reple", "lemma": "repleo", "morph": { "conj": 2, "mood": "imp", "number": "sg", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w017", "form": "tuórum", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "gender": "m", "number": "pl" }, "head": "w019" },
         { "id": "w018", "form": "corda", "lemma": "cor", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "pl", "pos": "noun" } },
@@ -98,7 +98,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

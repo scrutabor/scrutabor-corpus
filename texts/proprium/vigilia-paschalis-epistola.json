@@ -34,7 +34,7 @@
         { "id": "w013", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w014" },
         { "id": "w014", "form": "déxtera", "lemma": "dextera", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w015", "form": "Dei", "lemma": "deus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w016", "form": "sedens", "lemma": "sedeo", "morph": { "case": "acc", "conj": 2, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":", "substantive": true },
+        { "id": "w016", "form": "sedens", "post": ":", "lemma": "sedeo", "morph": { "case": "nom", "conj": 2, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "head": "w011" },
         { "id": "w017", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
         { "id": "w018", "form": "sursum", "lemma": "sursum", "morph": { "pos": "adv" } },
         { "id": "w019", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -50,7 +50,7 @@
         { "id": "w029", "form": "vita", "lemma": "vita", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
         { "id": "w030", "form": "vestra", "lemma": "vester", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "head": "w029" },
         { "id": "w031", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w032", "form": "abscóndita", "lemma": "absconditus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w032", "form": "abscóndita", "lemma": "absconditus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "head": "w029" },
         { "id": "w033", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w034" },
         { "id": "w034", "form": "Christo", "lemma": "Christus", "morph": { "case": "abl", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w035", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w036" },
@@ -82,7 +82,9 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w032": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -27,13 +27,13 @@
         { "id": "w006", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": ":" },
         { "id": "w007", "form": "verbo", "lemma": "verbum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w008", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w009", "form": "cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w010", "form": "firmáti", "lemma": "firmo", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
+        { "id": "w009", "form": "cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w010", "form": "firmáti", "lemma": "firmo", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w009" },
         { "id": "w011", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w012", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
         { "id": "w013", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." },
         { "id": "w014", "form": "Exsultáte", "lemma": "exsulto", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act", "conj": 1 }, "post": "," },
-        { "id": "w015", "form": "iusti", "lemma": "iustus", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "adj" }, "post": ",", "substantive": true },
+        { "id": "w015", "form": "iusti", "post": ",", "lemma": "iustus", "morph": { "case": "voc", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
         { "id": "w016", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w017" },
         { "id": "w017", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 }, "post": ":" },
         { "id": "w018", "form": "rectos", "lemma": "rectus", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
@@ -67,8 +67,8 @@
         { "id": "w046", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": ":" },
         { "id": "w047", "form": "verbo", "lemma": "verbum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w048", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w049", "form": "cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
-        { "id": "w050", "form": "firmáti", "lemma": "firmo", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
+        { "id": "w049", "form": "cæli", "lemma": "caelum", "morph": { "pos": "noun", "case": "nom", "number": "pl", "gender": "m", "decl": 2 } },
+        { "id": "w050", "form": "firmáti", "lemma": "firmo", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w049" },
         { "id": "w051", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w052", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
         { "id": "w053", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
@@ -104,7 +104,11 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w049": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
+      "w050": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

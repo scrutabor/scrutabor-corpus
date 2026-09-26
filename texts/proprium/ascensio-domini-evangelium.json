@@ -22,9 +22,9 @@
         { "id": "w001", "form": "In", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w002" },
         { "id": "w002", "form": "illo", "lemma": "ille", "morph": { "case": "abl", "gender": "n", "number": "sg", "pos": "pron" } },
         { "id": "w003", "form": "témpore", "lemma": "tempus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" }, "post": ":" },
-        { "id": "w004", "form": "Recumbéntibus", "lemma": "recumbo", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
-        { "id": "w005", "form": "úndecim", "lemma": "undecim", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "substantive": true },
-        { "id": "w006", "form": "discípulis", "lemma": "discipulus", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 2 }, "post": "," },
+        { "id": "w004", "form": "Recumbéntibus", "lemma": "recumbo", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "head": "w006" },
+        { "id": "w005", "form": "úndecim", "lemma": "undecim", "morph": { "case": "abl", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w006" },
+        { "id": "w006", "form": "discípulis", "post": ",", "lemma": "discipulus", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "m", "decl": 2 } },
         { "id": "w007", "form": "appáruit", "lemma": "appareo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
         { "id": "w008", "form": "illis", "lemma": "ille", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" } },
         { "id": "w009", "form": "Iesus", "lemma": "Iesus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
@@ -49,7 +49,7 @@
         { "id": "w028", "form": "Eúntes", "lemma": "eo", "morph": { "case": "nom", "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
         { "id": "w029", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w030" },
         { "id": "w030", "form": "mundum", "lemma": "mundus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w031", "form": "univérsum", "lemma": "universus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "post": ",", "substantive": true },
+        { "id": "w031", "form": "univérsum", "post": ",", "lemma": "universus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w030" },
         { "id": "w032", "form": "prædicáte", "lemma": "praedico", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "act", "conj": 1 } },
         { "id": "w033", "form": "Evangélium", "lemma": "evangelium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
         { "id": "w034", "form": "omni", "lemma": "omnis", "morph": { "pos": "adj", "case": "dat", "number": "sg", "gender": "f" }, "head": "w035" },
@@ -80,7 +80,7 @@
         { "id": "w059", "form": "eiícient", "lemma": "eiicio", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" }, "post": ":" },
         { "id": "w060", "form": "linguis", "lemma": "lingua", "morph": { "case": "abl", "decl": 1, "gender": "f", "number": "pl", "pos": "noun" } },
         { "id": "w061", "form": "loquéntur", "lemma": "loquor", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "fut", "voice": "dep", "conj": 3 } },
-        { "id": "w062", "form": "novis", "lemma": "novus", "morph": { "pos": "adj", "case": "dat", "gender": "m", "number": "pl" }, "post": ":", "substantive": true },
+        { "id": "w062", "form": "novis", "post": ":", "lemma": "novus", "morph": { "pos": "adj", "case": "abl", "gender": "f", "number": "pl" }, "head": "w060" },
         { "id": "w063", "form": "serpéntes", "lemma": "serpens", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 3 } },
         { "id": "w064", "form": "tollent", "lemma": "tollo", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" }, "post": ":" },
         { "id": "w065", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -125,7 +125,7 @@
         { "id": "w104", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w105", "form": "sermónem", "lemma": "sermo", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w106", "form": "confirmánte", "lemma": "confirmo", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "sg", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "post": ",", "head": "w102" },
-        { "id": "w107", "form": "sequéntibus", "lemma": "sequor", "morph": { "case": "abl", "conj": 3, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "dep" }, "substantive": true },
+        { "id": "w107", "form": "sequéntibus", "lemma": "sequor", "morph": { "case": "abl", "conj": 3, "gender": "n", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "dep" }, "head": "w108" },
         { "id": "w108", "form": "signis", "lemma": "signum", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 }, "post": "." }
       ]
     },
@@ -151,7 +151,13 @@
       "w088": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w057": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w034": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w005": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w031": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w062": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w107": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

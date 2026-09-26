@@ -22,7 +22,7 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Beáta", "lemma": "beatus", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "substantive": true },
+        { "id": "w001", "form": "Beáta", "lemma": "beatus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "pl" }, "head": "w002" },
         { "id": "w002", "form": "víscera", "lemma": "viscus", "morph": { "pos": "noun", "case": "nom", "gender": "n", "number": "pl", "decl": 3 } },
         { "id": "w003", "form": "Maríæ", "lemma": "Maria", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w004", "form": "Vírginis", "lemma": "virgo", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
@@ -61,7 +61,10 @@
       "apparatus": "witnesses/proprium.visitatio-beatae-mariae-virginis-communio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
-    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
+    "words": {
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+    }
   },
   "localization": {
     "about": true

@@ -429,11 +429,35 @@ MODIFIER_RULINGS: dict[tuple[str, str], str] = {
         "w011",
     ): "środek is governed by przez in the recast phrase",
     (
+        "proprium.dominica-xv-post-pentecosten-introitus",
+        "w010",
+    ): "ocalonym is an instrumental predicate after uczyń",
+    (
+        "proprium.dominica-xv-post-pentecosten-introitus",
+        "w068",
+    ): "ocalonym is an instrumental predicate after uczyń",
+    (
+        "proprium.dominica-xviii-post-pentecosten-introitus",
+        "w009",
+    ): "wiernymi is an instrumental predicate after się okazali",
+    (
+        "proprium.dominica-xviii-post-pentecosten-introitus",
+        "w059",
+    ): "wiernymi is an instrumental predicate after się okazali",
+    (
         "proprium.dominica-xxiv-post-pentecosten-evangelium",
         "w227",
     ): "wielką modifies mocą in Polish",
+    (
+        "proprium.exaltatio-sanctae-crucis-offertorium",
+        "w020",
+    ): "miłą is an instrumental predicate after stała się",
     ("proprium.immaculatum-cor-beatae-mariae-virginis-epistola", "w056"): "słodki predicates Duch",
     ("proprium.nativitas-domini-in-die-secreta", "w004"): "nowym modifies Narodzeniem",
+    (
+        "proprium.nativitas-sancti-ioannis-baptistae-collecta",
+        "w005",
+    ): "czcigodnym is an instrumental predicate after uczyniłeś",
     ("proprium.omnium-sanctorum-communio", "w008"): "Błogosławieni predicates pokój czyniący",
     ("proprium.purificatio-beatae-mariae-virginis-collecta", "w013"): "dzisiejszego modifies dnia",
     ("proprium.purificatio-beatae-mariae-virginis-epistola", "w015"): "moim modifies obliczem",

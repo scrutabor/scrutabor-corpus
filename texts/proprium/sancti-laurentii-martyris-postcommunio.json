@@ -32,7 +32,7 @@
         { "id": "w011", "form": "servitútis", "lemma": "servitus", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w012", "form": "celebrámus", "lemma": "celebro", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 1, "tense": "pres", "voice": "act", "conj": 1 } },
         { "id": "w013", "form": "offício", "lemma": "officium", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 2 }, "post": "," },
-        { "id": "w014", "form": "intercedénte", "lemma": "intercedo", "morph": { "case": "abl", "conj": 3, "gender": "f", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
+        { "id": "w014", "form": "intercedénte", "lemma": "intercedo", "morph": { "case": "abl", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "head": "w016" },
         { "id": "w015", "form": "beáto", "lemma": "beatus", "morph": { "pos": "adj", "case": "abl", "gender": "m", "number": "sg" }, "head": "w016" },
         { "id": "w016", "form": "Lauréntio", "lemma": "Laurentius", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w017", "form": "Mártyre", "lemma": "martyr", "morph": { "case": "abl", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -107,7 +107,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } }
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
