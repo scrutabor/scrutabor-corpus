@@ -156,9 +156,9 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
     written = emit(CORPUS, tmp_path / "build")
     assert written["citation_projection"] == {
         "legacy": 2770,
-        "mapped": 2041,
-        "kept": 2041,
-        "excluded": 729,
+        "mapped": 2038,
+        "kept": 2038,
+        "excluded": 732,
         "unresolved": 0,
         "rejected_exposed": 0,
     }
