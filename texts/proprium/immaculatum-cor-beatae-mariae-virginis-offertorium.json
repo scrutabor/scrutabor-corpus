@@ -31,7 +31,7 @@
         { "id": "w010", "form": "mihi", "lemma": "ego", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
         { "id": "w011", "form": "magna", "lemma": "magnus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "substantive": true },
         { "id": "w012", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
-        { "id": "w013", "form": "potens", "lemma": "possum", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "sg", "tense": "pres", "voice": "act", "mood": "part" }, "head": "w012" },
+        { "id": "w013", "form": "potens", "lemma": "potens", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w012" },
         { "id": "w014", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w016", "form": "sanctum", "lemma": "sanctus", "morph": { "pos": "adj", "case": "nom", "gender": "n", "number": "sg" }, "head": "w017" },
@@ -69,7 +69,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },

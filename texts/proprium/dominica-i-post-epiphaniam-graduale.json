@@ -26,17 +26,17 @@
         { "id": "w005", "form": "qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w006", "form": "facit", "lemma": "facio", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w007", "form": "mirabília", "lemma": "mirabilis", "morph": { "case": "acc", "gender": "n", "number": "pl", "pos": "adj" }, "substantive": true },
-        { "id": "w008", "form": "magna", "lemma": "magnus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "substantive": true },
-        { "id": "w009", "form": "solus", "lemma": "solus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "substantive": true },
+        { "id": "w008", "form": "magna", "lemma": "magnus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "head": "w007" },
+        { "id": "w009", "form": "solus", "lemma": "solus", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w005" },
         { "id": "w010", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011" },
         { "id": "w011", "form": "sǽculo", "lemma": "saeculum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "post": "." },
         { "id": "w012", "form": "Suscípiant", "lemma": "suscipio", "morph": { "conj": 3, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w013", "form": "montes", "lemma": "mons", "morph": { "pos": "noun", "case": "acc", "gender": "m", "number": "pl", "decl": 3 } },
+        { "id": "w013", "form": "montes", "lemma": "mons", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 3 } },
         { "id": "w014", "form": "pacem", "lemma": "pax", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w015", "form": "pópulo", "lemma": "populus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 } },
         { "id": "w016", "form": "tuo", "post": ",", "lemma": "tuus", "morph": { "pos": "adj", "case": "dat", "gender": "m", "number": "sg" }, "head": "w015" },
         { "id": "w017", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w018", "form": "colles", "lemma": "collis", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
+        { "id": "w018", "form": "colles", "lemma": "collis", "morph": { "case": "nom", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" } },
         { "id": "w019", "form": "iustítiam", "lemma": "iustitia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." }
       ],
       "participation": {
@@ -71,7 +71,11 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w004": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
-      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

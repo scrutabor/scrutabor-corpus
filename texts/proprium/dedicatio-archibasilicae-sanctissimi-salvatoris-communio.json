@@ -23,7 +23,7 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Domus", "lemma": "domus", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 4 } },
-        { "id": "w002", "form": "mea", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w003", "post": "," },
+        { "id": "w002", "form": "mea", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "nom", "number": "sg", "gender": "f" }, "head": "w001" },
         { "id": "w003", "form": "domus", "lemma": "domus", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 4 } },
         { "id": "w004", "form": "oratiónis", "lemma": "oratio", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w005", "form": "vocábitur", "lemma": "voco", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "pass" }, "post": "," },
@@ -74,7 +74,8 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
