@@ -32,7 +32,7 @@
         { "id": "w011", "form": "cum", "lemma": "cum", "morph": { "pos": "conj" } },
         { "id": "w012", "form": "sit", "lemma": "sum", "morph": { "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w013", "form": "dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w014", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "m" }, "post": ":", "substantive": true },
+        { "id": "w014", "form": "ómnium", "lemma": "omnis", "morph": { "pos": "adj", "case": "gen", "number": "pl", "gender": "n" }, "post": ":", "substantive": true },
         { "id": "w015", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
         { "id": "w016", "form": "sub", "lemma": "sub", "morph": { "pos": "prep", "governs": "abl" }, "head": "w017" },
         { "id": "w017", "form": "tutóribus", "lemma": "tutor", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "pl", "decl": 3 } },
@@ -125,6 +125,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w071": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w072": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w067": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
