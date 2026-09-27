@@ -39,7 +39,7 @@ def test_delayed_intercession_is_realized_once(language):
     markers = (
         ["ducha", "jej świętych towarzyszy", "zasługi Twojej śmierci", "nagrodę"]
         if language == "pl"
-        else ["soul", "her holy companions", "merits of Your death", "reward"]
+        else ["spirit", "her holy companions", "merits of Your death", "reward"]
     )
     for marker in markers:
         assert marker in translation
