@@ -331,3 +331,20 @@ def test_a_sense_list_is_a_list():
 
     assert check_note_prose({"entries": {"sinus": {"senses": ["womb", "bosom"]}}}) == []
     assert check_note_prose({"entries": {"sinus": {"senses": ["womb; bosom"]}}})
+
+
+def test_english_senses_and_notes_type_the_typographic_apostrophe():
+    from checks.lexicon import check_note_prose
+
+    def english(senses, note=None):
+        entry = {"senses": senses} | ({"note": note} if note else {})
+        return {"language": "en", "entries": {"dominicus": entry}}
+
+    assert check_note_prose(english(["the Lord’s"], "The Lord’s day.")) == []
+    assert check_note_prose(english(["the Lord's"]))
+    assert check_note_prose(english(["the Lord’s"], "The Lord's day."))
+    # the rule is the English layer's: a Polish entry is not read for it
+    assert (
+        check_note_prose({"language": "pl", "entries": {"dominicus": {"senses": ["Pański'"]}}})
+        == []
+    )

@@ -155,6 +155,32 @@ def check_usque_junctions(doc: dict, gloss: dict) -> list[str]:
     return errors
 
 
+def check_apostrophes(gloss: dict) -> list[str]:
+    """The English layer types the typographic apostrophe (’) in what a reader meets.
+
+    The redrafts and the older lines had come to mix ’ with the straight ' of a
+    keyboard (Lord's beside Lord’s). The straight mark is never a quotation
+    mark in this prose, so the rule is exact: none in the translation, the
+    narrative, the gloss line, the aligned glosses, the word help or the about.
+    Citations are bibliographic data and keep the form of the title they cite.
+    """
+    where = gloss.get("text", "?")
+    fields: list[tuple[str, object]] = [("about", gloss.get("about"))]
+    for sid, segment in (gloss.get("segments") or {}).items():
+        fields.append((f"{sid}.translation", segment.get("translation")))
+        fields.append((f"{sid}.narrative", segment.get("narrative")))
+        for alignment in segment.get("alignments") or []:
+            fields.append((f"{sid}.alignment {alignment['words'][0]}", alignment.get("gloss")))
+    for wid, word in (gloss.get("words") or {}).items():
+        for key in ("gloss", "explanation", "note"):
+            fields.append((f"{wid}.{key}", word.get(key)))
+    return [
+        f"{where}:{field}: straight apostrophe — the English layer types ’"
+        for field, value in fields
+        if isinstance(value, str) and "'" in value
+    ]
+
+
 def check(doc: dict, gloss: dict) -> list[str]:
     if gloss.get("lang") != "en":
         return []
@@ -162,6 +188,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
         check_doubled_preposition(doc, gloss)
         + check_usque_junctions(doc, gloss)
         + check_conclusion_gloss(doc, gloss)
+        + check_apostrophes(gloss)
     )
 
 

@@ -141,3 +141,35 @@ def test_usque_check_does_not_cross_segments_or_languages():
 
 def test_usque_adhuc_is_outside_the_connective_check():
     assert check(doc(_usque("adhuc")), gloss({"w1": "until", "w2": "now"})) == []
+
+
+def test_the_english_layer_types_the_typographic_apostrophe():
+    from checks.english import check_apostrophes
+
+    layer = {
+        "lang": "en",
+        "text": "t.t",
+        "about": "The Lord’s Prayer.",
+        "segments": {
+            "s01": {
+                "translation": "the Lord’s house",
+                "alignments": [{"words": ["w1", "w2"], "anchor": "w1", "gloss": "the King’s Son"}],
+            }
+        },
+        "words": {"w1": {"gloss": "David’s", "explanation": "Mary’s help."}},
+    }
+    assert check_apostrophes(layer) == []
+    layer["segments"]["s01"]["translation"] = "the Lord's house"
+    layer["words"]["w1"]["gloss"] = "David's"
+    errors = check_apostrophes(layer)
+    assert len(errors) == 2
+    assert any("s01.translation" in e for e in errors)
+    assert any("w1.gloss" in e for e in errors)
+    # citations are bibliographic data, transcribed as their titles print them
+    layer = gloss({})
+    layer["segments"] = {"s01": {"translation_citations": [{"title": "The Catholic Girl's Guide"}]}}
+    assert check_apostrophes(layer) == []
+    # and the rule is English: a Polish layer is not read
+    layer = gloss({"w1": "Dawid's"})
+    layer["lang"] = "pl"
+    assert check(doc([]), layer) == []

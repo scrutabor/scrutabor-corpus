@@ -345,6 +345,7 @@ def check_note_prose(lex: dict) -> list[str]:
     a reader met every one of them on a lemma page.
     """
     errors = []
+    english = lex.get("language") == "en"
     for lemma, entry in sorted((lex.get("entries") or {}).items()):
         # senses are checked on EVERY entry: gating them behind `note` would
         # have covered 329 of 878.
@@ -354,9 +355,13 @@ def check_note_prose(lex: dict) -> list[str]:
                     f"lexicon sense {sense!r} under {lemma!r} packs two senses into one string: "
                     f"the senses field is a LIST"
                 )
+            if english and "'" in sense:
+                errors.append(f"lexicon sense {sense!r} under {lemma!r}: straight apostrophe")
         note = entry.get("note")
         if not note:
             continue
+        if english and "'" in note:
+            errors.append(f"lexicon note {lemma!r}: straight apostrophe")
         if ";" in note:
             errors.append(f"lexicon note {lemma!r} uses a semicolon: use a full stop or an 'and'")
         if not note.rstrip().endswith((".", "?", "!", "”", '"', "’")):
