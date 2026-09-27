@@ -20,7 +20,7 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Sanctificávit", "lemma": "sanctifico", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w002", "form": "Móyses", "lemma": "Moyses", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
+        { "id": "w002", "form": "Móyses", "lemma": "Moyses", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" } },
         { "id": "w003", "form": "altáre", "lemma": "altare", "morph": { "case": "acc", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" } },
         { "id": "w004", "form": "Dómino", "lemma": "dominus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w005", "form": "ófferens", "lemma": "offero", "morph": { "case": "nom", "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "head": "w002" },
@@ -74,6 +74,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },

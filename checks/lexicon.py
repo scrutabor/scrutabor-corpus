@@ -474,6 +474,7 @@ INDECLINABLE = {
     "phase",
     "kyrie",  # Greek, declined on their own pattern
     "Parasceve",  # Greek liturgical name for the day of preparation
+    "Moyses",  # the Vulgate declines it on its own pattern: Móysi, Móyse
 }
 IRREGULAR_VERBS = {
     "absum",

@@ -20,7 +20,7 @@
       "voice": "clara",
       "words": [
         { "id": "w001", "form": "Caríssimi", "lemma": "carus", "morph": { "pos": "adj", "case": "voc", "degree": "sup", "gender": "m", "number": "pl" }, "post": ":", "substantive": true },
-        { "id": "w002", "form": "Omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "substantive": true },
+        { "id": "w002", "form": "Omnes", "lemma": "omnis", "morph": { "pos": "adj", "case": "nom", "number": "pl", "gender": "m" }, "head": "w006" },
         { "id": "w003", "form": "unánimes", "lemma": "unanimis", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w006" },
         { "id": "w004", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
         { "id": "w005", "form": "oratióne", "lemma": "oratio", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -32,7 +32,7 @@
         { "id": "w011", "form": "modésti", "post": ",", "lemma": "modestus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "head": "w006" },
         { "id": "w012", "form": "húmiles", "post": ":", "lemma": "humilis", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w006" },
         { "id": "w013", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w014", "form": "reddéntes", "lemma": "reddo", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w014", "form": "reddéntes", "lemma": "reddo", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "head": "w006" },
         { "id": "w015", "form": "malum", "lemma": "malum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
         { "id": "w016", "form": "pro", "lemma": "pro", "morph": { "governs": "abl", "pos": "prep" }, "head": "w017" },
         { "id": "w017", "form": "malo", "lemma": "malum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" }, "post": "," },
@@ -43,7 +43,7 @@
         { "id": "w022", "form": "sed", "lemma": "sed", "morph": { "pos": "conj" } },
         { "id": "w023", "form": "e", "lemma": "e", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024" },
         { "id": "w024", "form": "contrário", "lemma": "contrarius", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "sg" }, "substantive": true },
-        { "id": "w025", "form": "benedicéntes", "lemma": "benedico", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "post": ":", "substantive": true },
+        { "id": "w025", "form": "benedicéntes", "lemma": "benedico", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "post": ":", "head": "w006" },
         { "id": "w026", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
         { "id": "w027", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w028" },
         { "id": "w028", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
@@ -108,7 +108,7 @@
         { "id": "w087", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
         { "id": "w088", "form": "nóceat", "lemma": "noceo", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 2 }, "post": "," },
         { "id": "w089", "form": "si", "lemma": "si", "morph": { "pos": "conj" } },
-        { "id": "w090", "form": "boni", "lemma": "bonus", "morph": { "pos": "adj", "case": "nom", "gender": "m", "number": "pl" }, "head": "w091" },
+        { "id": "w090", "form": "boni", "lemma": "bonus", "morph": { "pos": "adj", "case": "gen", "gender": "n", "number": "sg" }, "substantive": true },
         { "id": "w091", "form": "æmulatóres", "lemma": "aemulator", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "pl", "decl": 3 } },
         { "id": "w092", "form": "fuéritis", "lemma": "sum", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 2, "tense": "futperf", "voice": "act" }, "post": "?" },
         { "id": "w093", "form": "Sed", "lemma": "sed", "morph": { "pos": "conj" } },
@@ -118,7 +118,7 @@
         { "id": "w097", "form": "patímini", "lemma": "patior", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 2, "tense": "pres", "voice": "dep", "conj": 3 } },
         { "id": "w098", "form": "propter", "lemma": "propter", "morph": { "governs": "acc", "pos": "prep" }, "head": "w099" },
         { "id": "w099", "form": "iustítiam", "lemma": "iustitia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
-        { "id": "w100", "form": "beáti", "post": ".", "lemma": "beatus", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
+        { "id": "w100", "form": "beáti", "post": ".", "lemma": "beatus", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "ellipsis": "predicate" },
         { "id": "w101", "form": "Timórem", "lemma": "timor", "morph": { "case": "acc", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w102", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w103", "form": "eórum", "lemma": "is", "morph": { "case": "gen", "gender": "m", "number": "pl", "pos": "pron" } },
@@ -149,6 +149,7 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
@@ -158,6 +159,7 @@
       "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w011": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w090": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w115": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w041": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
@@ -171,6 +173,11 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w100": {
+
+      }
+    }
   }
 }

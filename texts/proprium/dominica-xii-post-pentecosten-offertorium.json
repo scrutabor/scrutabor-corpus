@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "Precátus", "lemma": "precor", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "perf", "mood": "part", "voice": "dep", "conj": 1 }, "head": "w003" },
         { "id": "w002", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w003", "form": "Móyses", "lemma": "Moyses", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 3 } },
+        { "id": "w003", "form": "Móyses", "lemma": "Moyses", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg" } },
         { "id": "w004", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
         { "id": "w005", "form": "conspéctu", "lemma": "conspectus", "morph": { "case": "abl", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w006", "form": "Dómini", "lemma": "dominus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -96,6 +96,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },

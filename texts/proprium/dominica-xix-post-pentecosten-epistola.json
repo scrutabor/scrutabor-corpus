@@ -40,7 +40,7 @@
         { "id": "w019", "form": "veritátis", "lemma": "veritas", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." },
         { "id": "w020", "form": "Propter", "lemma": "propter", "morph": { "governs": "acc", "pos": "prep" }, "head": "w021" },
         { "id": "w021", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
-        { "id": "w022", "form": "deponéntes", "lemma": "depono", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "substantive": true },
+        { "id": "w022", "form": "deponéntes", "lemma": "depono", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 3 }, "head": "w024" },
         { "id": "w023", "form": "mendácium", "lemma": "mendacium", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w024", "form": "loquímini", "lemma": "loquor", "morph": { "pos": "verb", "mood": "imp", "number": "pl", "person": 2, "tense": "pres", "voice": "dep", "conj": 3 } },
         { "id": "w025", "form": "veritátem", "lemma": "veritas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -100,6 +100,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w052": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w056": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
