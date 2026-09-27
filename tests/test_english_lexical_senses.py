@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
         ("comparo", "compare, liken"),
         ("concilio", "win favor for, commend"),
         ("concilium", "assembly, council"),
-        ("concludo", "enclose, confine"),
+        ("concludo", "to enclose, confine"),
         ("congero", "heap up, pile on"),
         ("consisto", "stand, take a position"),
         ("constituo", "appoint, ordain"),
