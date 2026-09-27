@@ -304,8 +304,8 @@ def test_requiem_epistle_keeps_the_scope_of_all_and_not_all(language):
         assert "Nie wszyscy wprawdzie zaśniemy" not in translation
         assert doc["words"]["w027"]["gloss"] == "niezniszczalni"
     else:
-        assert "we will indeed all rise, but we will not all be changed" in translation
-        assert "when this mortal body has put on immortality" in translation
+        assert "All of us will indeed rise again, but not all of us will be changed" in translation
+        assert "when this mortal has put on immortality" in translation
         assert doc["words"]["w076"]["gloss"] == "of sin"
     assert all(
         "explanation" in doc["words"][wid] for wid in ("w011", "w027", "w033", "w046", "w077")
