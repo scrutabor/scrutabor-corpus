@@ -938,7 +938,7 @@ def test_maundy_thursday_does_not_insert_an_unprinted_conclusion(language, part)
 def test_non_erubescam_carries_one_negative_petition(language, text, segment, ids):
     target = layer(language, f"proprium/{text}")
     alignment = next(a for a in target["segments"][segment]["alignments"] if a["words"] == ids)
-    expected = "niech nie będę zawstydzony" if language == "pl" else "let me not be put to shame"
+    expected = "niech nie będę zawstydzony" if language == "pl" else "let me not be ashamed"
     assert alignment["gloss"] == expected
     assert all("gloss" not in target["words"][wid] for wid in ids)
 
