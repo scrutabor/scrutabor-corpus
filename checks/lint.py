@@ -209,6 +209,7 @@ PROPER_LEMMAS = {
     "Cilicia",
     "Cleophas",
     "Cyrenaeus",
+    "Cyrenensis",
     "Cyrinus",
     "Deipara",
     "Daniel",
@@ -251,6 +252,7 @@ PROPER_LEMMAS = {
     "Issachar",
     "Iuda",
     "Iudas",
+    "Iustus",  # the cognomen of Joseph Barsabas (Acts 1:23)
     "Libanus",
     "Lucas",
     "Levi",

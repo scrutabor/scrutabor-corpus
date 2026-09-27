@@ -39,7 +39,7 @@
         { "id": "w018", "form": "facti", "lemma": "facio", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 3 }, "head": "w007" },
         { "id": "w019", "form": "illíus", "lemma": "ille", "morph": { "case": "gen", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w020", "form": "magnitúdinis", "lemma": "magnitudo", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "sg", "decl": 3 }, "post": "." },
-        { "id": "w021", "form": "Accípiens", "lemma": "accipio", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "substantive": true },
+        { "id": "w021", "form": "Accípiens", "lemma": "accipio", "morph": { "case": "nom", "conj": 3, "gender": "m", "mood": "part", "number": "sg", "pos": "verb", "tense": "pres", "voice": "act" }, "ellipsis": "subject" },
         { "id": "w022", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
         { "id": "w023", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w024" },
         { "id": "w024", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "abl", "gender": "m", "number": "sg", "decl": 2 } },
@@ -120,6 +120,7 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
       "w018": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w033": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w055": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
       "w066": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
@@ -139,6 +140,11 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w021": {
+
+      }
+    }
   }
 }
