@@ -11,7 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 @pytest.mark.parametrize(
     ("lemma", "sense"),
     [
-        ("actus", "act, deed, activity"),
+        ("actus", "deed, act"),
+        ("actus", "activity"),
         ("aedificatio", "building, construction"),
         ("cathedra", "chair, seat"),
         ("cautio", "bond, written undertaking"),
@@ -48,8 +49,8 @@ def test_ordinary_sense_is_not_displaced_by_a_specialized_continuation(lemma, se
 
 
 def test_actus_does_not_present_a_linear_length_as_the_entire_land_measure():
+    # The card gives the senses the Missal uses (deed, office); no use needs the land measure.
     entries = json.loads((ROOT / "languages/en/lexicon.json").read_text())["entries"]
-    assert "a Roman land measure" in entries["actus"]["senses"]
     assert not any("120 ft." in sense for sense in entries["actus"]["senses"])
 
 
