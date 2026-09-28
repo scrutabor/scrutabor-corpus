@@ -419,7 +419,7 @@ def test_lateran_psalm_keeps_the_inhabitant_and_realizes_each_circuitu_once(lang
     doc = json.loads(
         (path / "dedicatio-archibasilicae-sanctissimi-salvatoris-tractus.json").read_text()
     )
-    assert doc["words"]["w031"]["gloss"] == ("ten, kto" if language == "pl" else "whoever")
+    assert doc["words"]["w031"]["gloss"] == ("ten, kto" if language == "pl" else "he who")
     assert doc["words"]["w032"]["gloss"] == ("mieszka" if language == "pl" else "dwells")
     groups = doc["segments"]["s01"]["alignments"]
     assert next(a for a in groups if a["words"] == ["w036", "w037"])["gloss"] == (
