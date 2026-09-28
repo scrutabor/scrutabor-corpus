@@ -1005,7 +1005,7 @@ def test_easter_alleluia_records_the_printed_comma_and_digital_omission():
     assert reading["witnesses"]["do"] == "mórtuis"
 
 
-@pytest.mark.parametrize("language,sense", [("pl", "prawy"), ("en", "right-hand")])
+@pytest.mark.parametrize("language,sense", [("pl", "prawy"), ("en", "right, right-hand")])
 def test_dexter_card_includes_the_spatial_adjective(language, sense):
     lexicon = json.loads((CORPUS / "languages" / language / "lexicon.json").read_text())
     assert lexicon["entries"]["dexter"]["senses"][0] == sense
