@@ -57,6 +57,23 @@ EDITORIAL_SELF_REFERENCE = re.compile(
     re.IGNORECASE,
 )
 WORD_ID = re.compile(r"\bw\d{3,}\b")
+# Only an explicit quotation of the displayed shared predicate is checked.
+# Source quotations, alternative readings and unaligned constructions still
+# need contextual review; arbitrary quoted phrases are not target assertions.
+SHARED_PREDICATE_QUOTE = re.compile(
+    r"(?:tworzy jedno orzeczenie|forms the single predicate)\s*:?\s*[„“]([^”]+)”",
+    re.IGNORECASE,
+)
+
+
+def _shared_predicate(where: str, prose: str, gloss: str | None) -> list[str]:
+    if not isinstance(prose, str) or not gloss:
+        return []
+    if not (match := SHARED_PREDICATE_QUOTE.search(prose)):
+        return []
+    if " ".join(match[1].casefold().split()) == " ".join(gloss.casefold().split()):
+        return []
+    return [f"{where}: quoted shared predicate {match[1]!r} differs from its gloss {gloss!r}"]
 
 
 def _word_help(where: str, prose: str, *, plain_note: bool = False) -> list[str]:
@@ -135,12 +152,20 @@ def check(doc: dict) -> list[str]:
     for sid, segment in (doc.get("segments") or {}).items():
         if narrative := segment.get("narrative"):
             errors += _sweep(f"{tid}:{sid}.narrative.{lang}", narrative)
+    shared_glosses = {
+        wid: group["gloss"]
+        for segment in (doc.get("segments") or {}).values()
+        for group in segment.get("alignments", [])
+        if group.get("gloss")
+        for wid in group["words"]
+    }
     for wid, word in (doc.get("words") or {}).items():
         for key in ("explanation", "note"):
             if prose := word.get(key):
                 where = f"{tid}:{wid}.{key}.{lang}"
                 errors += _sweep(where, prose)
                 errors += _word_help(where, prose, plain_note=key == "note")
+                errors += _shared_predicate(where, prose, shared_glosses.get(wid))
         errors += _duplicate_help(
             f"{tid}:{wid}.{lang}", word.get("explanation", ""), word.get("note", "")
         )

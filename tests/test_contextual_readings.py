@@ -1147,3 +1147,25 @@ def test_anne_secret_nested_genitive_keeps_the_son_relation():
     alignment = next(a for a in target["segments"]["s01"]["alignments"] if "w014" in a["words"])
     assert alignment == {"words": ["w014", "w015"], "anchor": "w014", "gloss": "of Thy Son"}
     assert "gloss" not in target["words"]["w014"]
+
+
+def test_pentecost_dixero_help_does_not_defend_a_retired_translation():
+    text = "proprium/dominica-pentecostes-evangelium"
+    assert word(text, "w076")["morph"]["tense"] == "futperf"
+    target = layer("pl", text)
+    assert target["words"]["w076"]["gloss"] == "powiem"
+    assert "co wam powiem" in target["segments"]["s01"]["translation"]
+    assert "Przekład „powiedziałem”" not in target["words"]["w076"]["explanation"]
+
+
+def test_lavabo_english_perfect_does_not_repeat_the_auxiliary():
+    target = layer("en", "ordinarium/lavabo")
+    assert target["words"]["w058"]["gloss"] == "walked"
+    assert target["words"]["w059"]["gloss"] == "have"
+    assert "I have walked" in target["words"]["w059"]["explanation"]
+
+
+def test_passion_english_passive_does_not_repeat_the_auxiliary():
+    target = layer("en", "proprium/dominica-ii-passionis-evangelium")
+    assert target["words"]["w1262"]["gloss"] == "crucified"
+    assert target["words"]["w1263"]["gloss"] == "were"

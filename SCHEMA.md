@@ -271,6 +271,10 @@ without making a cited doctrinal explanation sound equally uncertain.
 raw word IDs in plain notes, and exact explanation/note duplication. Semantic
 agreement across the whole card still requires contextual review in each
 language. Bibliographic references to an actual named edition are not banned.
+When an explanation explicitly quotes the single predicate represented by a
+shared-gloss group, that quote must match the group's current gloss. The prose
+check ignores case and whitespace in this comparison; it does not infer that
+arbitrary source quotations or alternative readings describe the current gloss.
 
 ## Word IDs (binding rules)
 

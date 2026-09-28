@@ -214,3 +214,59 @@ def test_complementary_explanation_and_uncertainty_note_are_allowed():
         },
     }
     assert check(doc) == []
+
+
+@pytest.fixture(params=["pl", "en"])
+def shared_predicate_layer(request):
+    lang = request.param
+    gloss = "powiedział" if lang == "pl" else "has spoken"
+    explanation = (
+        f"Z „locútus” tworzy jedno orzeczenie: „{gloss}”."
+        if lang == "pl"
+        else f"With “locútus” it forms the single predicate “{gloss}”."
+    )
+    return {
+        "text": "orationes.test",
+        "language": lang,
+        "segments": {
+            "s01": {"alignments": [{"words": ["w001", "w002"], "anchor": "w001", "gloss": gloss}]}
+        },
+        "words": {"w001": {}, "w002": {"explanation": explanation}},
+    }
+
+
+def test_shared_predicate_explanation_matches_displayed_gloss(shared_predicate_layer):
+    assert check(shared_predicate_layer) == []
+
+
+@pytest.mark.parametrize("change", ["quote", "gloss"])
+def test_shared_predicate_rejects_stale_quote_or_gloss(shared_predicate_layer, change):
+    doc = shared_predicate_layer
+    group = doc["segments"]["s01"]["alignments"][0]
+    if change == "quote":
+        word = doc["words"]["w002"]
+        word["explanation"] = word["explanation"].replace(group["gloss"], "obsolete wording")
+    else:
+        group["gloss"] = "new wording"
+    errors = check(doc)
+    assert len(errors) == 1
+    assert "w002.explanation" in errors[0]
+    assert "shared predicate" in errors[0]
+
+
+def test_shared_predicate_tolerates_citation_case_and_space(shared_predicate_layer):
+    group = shared_predicate_layer["segments"]["s01"]["alignments"][0]
+    group["gloss"] = "  " + group["gloss"].upper().replace(" ", "  ") + "  "
+    assert check(shared_predicate_layer) == []
+
+
+def test_other_quoted_readings_are_not_forced_to_match_gloss(shared_predicate_layer):
+    shared_predicate_layer["words"]["w002"]["explanation"] = (
+        "An older translation reads “different wording”."
+    )
+    assert check(shared_predicate_layer) == []
+
+
+def test_unaligned_predicate_requires_contextual_review(shared_predicate_layer):
+    shared_predicate_layer["segments"]["s01"]["alignments"] = []
+    assert check(shared_predicate_layer) == []
