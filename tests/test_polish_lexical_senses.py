@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
         ("suggero", {"przypominać", "proponować", "sugerować"}),
         ("suscito", {"budzić", "wskrzeszać", "pobudzać"}),
         ("quisquam", {"ktokolwiek", "ktoś", "cokolwiek"}),
-        ("forma", {"postać, kształt", "wzór, przykład", "wygląd", "uroda"}),
+        ("forma", {"postać", "kształt", "wzór", "uroda"}),
         ("simulacrum", {"bożek", "posąg", "obraz", "podobieństwo"}),
     ],
 )
