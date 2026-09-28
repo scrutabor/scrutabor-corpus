@@ -38,7 +38,7 @@ ROOT = Path(__file__).resolve().parents[1]
         ("delectatio", "delight, pleasure"),
         ("devoro", "to devour, swallow"),
         ("fideliter", "faithfully, loyally"),
-        ("genus", "race, people, stock"),
+        ("genus", "race, people"),
         ("idoneus", "suitable, fitting"),
         ("inaestimabilis", "inestimable, beyond measure"),
     ],

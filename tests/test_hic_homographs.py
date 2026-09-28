@@ -16,7 +16,7 @@ def test_neutral_cards_do_not_merge_demonstrative_and_adverb():
 
 
 @pytest.mark.parametrize(
-    "language,pronoun,adverb", [("pl", "ten", "tutaj"), ("en", "this", "here")]
+    "language,pronoun,adverb", [("pl", "ten", "tutaj"), ("en", "this, these", "here")]
 )
 def test_localized_senses_follow_the_correct_homograph(language, pronoun, adverb):
     cards = json.loads((ROOT / "languages" / language / "lexicon.json").read_text())["entries"]
