@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 @pytest.mark.parametrize(
     ("lemma", "senses"),
     [
-        ("intendo", {"kierować", "zwracać uwagę", "nakłaniać"}),
+        ("intendo", {"kierować", "zwracać uwagę", "nakłonić ucha"}),
         ("consto", {"trwać", "składać się", "być wiadomym", "być pewnym"}),
         ("sors", {"los", "udział"}),
         ("formido", {"bać się", "lękać się"}),
