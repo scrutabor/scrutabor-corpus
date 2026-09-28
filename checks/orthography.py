@@ -76,6 +76,8 @@ BRITISH = {
     # Found by the word-card reads of 2026-09-28 in the Easter Gospels and Judith.
     "sepulchre": "sepulcher",
     "nought": "naught",
+    "marvelled": "marveled",
+    "marvelling": "marveling",
 }
 
 # A word, for this purpose, is a run of letters. The declared forms are all
