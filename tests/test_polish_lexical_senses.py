@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
         ("sors", {"los", "udział"}),
         ("formido", {"bać się", "lękać się"}),
         ("diffamo", {"rozgłaszać", "rozpowszechniać", "zniesławiać", "oczerniać"}),
-        ("mansio", {"mieszkanie, siedziba", "pozostawanie", "pobyt", "postój"}),
+        ("mansio", {"mieszkanie", "siedziba", "pobyt", "postój"}),
         ("suggero", {"przypominać", "proponować", "sugerować"}),
         ("suscito", {"budzić", "wskrzeszać", "pobudzać"}),
         ("quisquam", {"ktokolwiek", "ktoś", "cokolwiek"}),
