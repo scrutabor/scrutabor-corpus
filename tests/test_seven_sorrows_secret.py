@@ -49,9 +49,9 @@ def test_delayed_intercession_is_realized_once(language):
 @pytest.mark.parametrize("language", ["pl", "en"])
 def test_lexicon_explains_intercession_and_reward(language):
     entries = json.loads((ROOT / "languages" / language / "lexicon.json").read_text())["entries"]
-    assert ("wstawiennictwo" if language == "pl" else "intercession") in entries["interventus"][
-        "senses"
-    ]
+    assert ("wstawiennictwo" if language == "pl" else "intercession, mediation") in entries[
+        "interventus"
+    ]["senses"]
     assert ("nagroda" if language == "pl" else "reward") in entries["meritum"]["senses"]
 
 
