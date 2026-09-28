@@ -1014,7 +1014,7 @@ def test_dexter_card_includes_the_spatial_adjective(language, sense):
 def test_easter_alleluia_polish_continuous_text_preserves_future_dominion():
     target = layer("pl", "proprium/dominica-iv-post-pascha-alleluia")
     assert "śmierć nie będzie już nad Nim panować" in target["segments"]["s01"]["translation"]
-    assert target["words"]["w023"]["gloss"] == "zapanuje"
+    assert target["words"]["w023"]["gloss"] == "będzie panować"
 
 
 @pytest.mark.parametrize(
