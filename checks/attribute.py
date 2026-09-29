@@ -50,11 +50,10 @@ from checks.raw_binding import BindingError, resolve_binding
 
 CORPUS = Path(__file__).resolve().parent.parent
 
-# The archived sources mark the speaker: S. sacerdos, M. minister, V. and
-# R. a versicle and its response, O. omnes. The markers come in both cases
-# — the Ordo prints the priest's own Confiteor as a lowercase "v." — and
-# lowercase is by far the commonest, so reading only capitals threw away
-# 140 marked lines and left the most attributable text in the book blank.
+# Speaker prefixes are case-sensitive: S. sacerdos, M. minister, V. and R.
+# a versicle and its response, O. omnes. In the source renderer's resolve_refs,
+# lowercase r./v. format an initial letter; they do not identify its speaker.
+# They remain removable framing for textual coverage, not attribution evidence.
 MARKERS = {"S": "sacerdos", "M": "minister", "V": "sacerdos", "R": "minister", "O": "omnes"}
 
 # Outside the Mass only "all" means anything. V. and R. mark priest and
@@ -454,9 +453,9 @@ def marked_lines(text_id: str, mass: bool = True) -> list[tuple[str, str]]:
     out = []
     for lines in files:
         for line in lines:
-            m = re.match(r"^([SMVROsmvro])\.\s+(.*)$", line.strip())
+            m = re.match(r"^([SMVRO])\.\s+(.*)$", line.strip())
             if m and m.group(2).strip():
-                marker = m.group(1).upper()
+                marker = m.group(1)
                 if not mass and marker not in SPEAKER_MARKERS_ONLY:
                     continue
                 out.append((MARKERS[marker], flatten(m.group(2))))

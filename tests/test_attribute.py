@@ -17,7 +17,9 @@ the file over the correct reading.
 import json
 from pathlib import Path
 
-from checks.attribute import propose, span_covers, witness_ranges
+import pytest
+
+from checks.attribute import flatten, marked_lines, propose, span_covers, witness_ranges
 
 CORPUS = Path(__file__).resolve().parent.parent
 
@@ -35,6 +37,67 @@ def a_text(*lines):
             for i, line in enumerate(lines, 1)
         ],
     }
+
+
+class TestSpeakerMarkerCase:
+    @pytest.mark.parametrize(
+        ("marker", "speaker"),
+        [
+            ("S", "sacerdos"),
+            ("M", "minister"),
+            ("V", "sacerdos"),
+            ("R", "minister"),
+            ("O", "omnes"),
+        ],
+    )
+    @pytest.mark.parametrize("mass", [True, False])
+    def test_only_supported_uppercase_markers_name_a_speaker(
+        self, tmp_path, monkeypatch, marker, speaker, mass
+    ):
+        raw = tmp_path / "source.txt"
+        raw.write_text(f"  {marker}. Dóminus vobíscum.\n", encoding="utf-8")
+        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
+        expected = [(speaker, flatten("Dóminus vobíscum."))] if mass or marker == "O" else []
+        assert marked_lines("ordinarium.test", mass=mass) == expected
+
+    @pytest.mark.parametrize("marker", ["r", "v", "s", "m", "o"])
+    @pytest.mark.parametrize("mass", [True, False])
+    def test_initials_and_unsupported_lowercase_prefixes_do_not_name_speakers(
+        self, tmp_path, monkeypatch, marker, mass
+    ):
+        raw = tmp_path / "source.txt"
+        raw.write_text(f"  {marker}. Dóminus vobíscum.\n", encoding="utf-8")
+        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
+        assert marked_lines("ordinarium.test", mass=mass) == []
+
+    @pytest.mark.parametrize("marker", ["r", "v"])
+    @pytest.mark.parametrize("explicit", [True, False])
+    def test_initial_framing_is_still_removed_when_checking_text_coverage(
+        self, tmp_path, monkeypatch, marker, explicit
+    ):
+        raw = tmp_path / "source.txt"
+        raw.write_text(f"{marker}. Dóminus vobíscum.\nR. Et cum spíritu tuo.\n", encoding="utf-8")
+        monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [(raw, 1, 2, explicit)])
+        assert span_covers(a_text("Dóminus vobíscum", "Et cum spíritu tuo"))
+        assert marked_lines("ordinarium.test") == [("minister", flatten("Et cum spíritu tuo"))]
+
+    def test_a_formatted_conclusion_is_not_the_servers_response(self):
+        text_id = "proprium.dominica-xxii-post-pentecosten-postcommunio"
+        doc = json.loads(
+            (CORPUS / "texts/proprium" / f"{text_id.split('.', 1)[1]}.json").read_text()
+        )
+        assert span_covers(doc)
+        assert marked_lines(text_id) == [("minister", flatten("Amen."))]
+        assert propose(doc) == {
+            "s01": {"speaker": "sacerdos", "voice": "clara"},
+            "s02": {"speaker": "minister", "voice": "clara"},
+        }
+
+    def test_an_initial_does_not_turn_the_baptist_communion_into_a_response(self):
+        path = CORPUS / "texts/proprium/nativitas-sancti-ioannis-baptistae-communio.json"
+        doc = json.loads(path.read_text())
+        assert span_covers(doc)
+        assert propose(doc) == {"s01": {"speaker": "sacerdos", "voice": "clara"}}
 
 
 class TestSpanCoverage:
