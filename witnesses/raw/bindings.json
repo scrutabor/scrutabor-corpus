@@ -102,6 +102,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-Tempora-Epi4-0.txt",
       "sha256": "fbc74053a33bcaafe98995fa4f4ea3a0a28e08116549057f8071757703f41ebe"
+    },
+    "all-saints": {
+      "upstream": "web/www/missa/Latin/Sancti/11-01.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-Sancti-11-01.txt",
+      "sha256": "b6e49964e28e5a136b4733ef923255e1c2a279e9818a21247e8315abc58e4112"
     }
   },
   "bindings": {
@@ -663,6 +669,27 @@
           "archive": "prayers",
           "first": 96,
           "last": 97
+        }
+      ]
+    },
+    "all-saints-epistle": {
+      "witness": "witnesses/proprium.omnium-sanctorum-epistola/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "all-saints",
+          "first": 25,
+          "last": 26,
+          "section": "Lectio",
+          "section_line": 23
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "all-saints",
+          "first": 26,
+          "last": 26
         }
       ]
     }

@@ -39563,6 +39563,26 @@
       "evidence_sha256": "20588aa7297835fcc189c0f4c0ee6eacde2ed282f1dfd2f69cdebd36cf7de71a"
     },
     {
+      "id": "use.proprium.omnium-sanctorum-epistola.body-continuation.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.omnium-sanctorum-epistola"
+      },
+      "locator": {
+        "printed": "p. 719",
+        "scan": "leaf n800 / PDF p. 801",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n800/mode/1up"
+      },
+      "claim": "The top-left column continues the preceding page at millia signati and completes the reading through the last Amen before the Gradual. Both Amen occurrences belong to the quoted heavenly praise, not an added response.",
+      "verified_on": "2026-09-29",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "20588aa7297835fcc189c0f4c0ee6eacde2ed282f1dfd2f69cdebd36cf7de71a",
+      "decision_reason": "Separately inspected continuation image, not full prayer, ritual-participation or parent-formulary approval."
+    },
+    {
       "id": "use.proprium.omnium-sanctorum-epistola.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -39572,12 +39592,13 @@
         "text": "proprium.omnium-sanctorum-epistola"
       },
       "locator": {
-        "section": "pinned source key Sancti/11-01; resolved section [Lectio] with declared inherited references"
+        "section": "Latin/Sancti/11-01.txt [Lectio]: marker23, liturgical heading24, Apocalypse7:2–12 reference25, complete reading26. Bound reading evidence25–26; the unprefixed liturgical heading24 is not scripture."
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The exact pinned digital reading supplies 223 words directly from line26, with no inherited reference or expansion. Its forty accidental differences from selected Latin are recorded, including four house accents also absent from print.",
       "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "b6e49964e28e5a136b4733ef923255e1c2a279e9818a21247e8315abc58e4112"
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "b6e49964e28e5a136b4733ef923255e1c2a279e9818a21247e8315abc58e4112",
+      "decision_reason": "Exact original-byte binding and direct scope clarified on 2026-09-29. Twelve prior transcript normalizations removed; historical fetched and verification dates are retained, not source acceptance."
     },
     {
       "id": "use.proprium.omnium-sanctorum-epistola.mr1962",
@@ -39589,15 +39610,15 @@
         "text": "proprium.omnium-sanctorum-epistola"
       },
       "locator": {
-        "printed": "pp. 718–719",
-        "scan": "leaves n799–n800 / PDF pp. 800–801",
+        "printed": "p. 718",
+        "scan": "leaf n799 / PDF p. 800",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n799/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The Benziger 1962 Editio iuxta typicam prints the Apocalypse reading opening on this page through Ex tribu Manasse duodecim. The remaining reading has a separate continuation-image source use.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "24e8e8b46714abfddaa2ea9b5f36db10ec8a4014335c4612e009e08ff79e689b",
-      "decision_reason": "Locator corrected against the page image: the text is printed on the leaves now cited, from its opening to its end."
+      "decision_reason": "Scope clarified on 2026-09-29: the primary image supplies the opening, not the full reading alone. Historical verification date retained, not renewed approval."
     },
     {
       "id": "use.proprium.omnium-sanctorum-evangelium.do44667ff",
@@ -75585,12 +75606,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "521dbe0734dd9c0814aa85de7dc88d1dd25aa10be07d123021a3a9a05bad35a9",
+      "transcription_sha256": "479d197892f3fe4d1d17144a5a705409c45580b64847aff72807c536c0f85941",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Independently maintained pinned digital source, now bound to its exact original direct reading; a derived comparison, not the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "all-saints-epistle"
       }
     },
     {
@@ -75601,12 +75626,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "4df7b71e226befe2dd168b3c22ef72a3e7c4d8ee49fc259b66a627088eb29083",
+      "transcription_sha256": "d66c17785be0ffe39976b6040c633452fe83c9184e0e436aff15568a7816c849",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "Directly compared Benziger 1962 page images, including the separately bound continuation; prior transcription dates retained without approval.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.omnium-sanctorum-epistola.body-continuation.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -99419,14 +99450,14 @@
     {
       "id": "collation.proprium.omnium-sanctorum-epistola.mr1962-do44667ff",
       "text": "proprium.omnium-sanctorum-epistola",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "Benziger 1962 reading across two pages, without expansion, with four selected house accents, compared against the exact pinned digital reading",
       "selected_text_sha256": "fc60cdef248c5a81efd4913208826f60f71533aea9fd3a7a4a1438a6590b344e",
       "witnesses": [
         "witness.proprium.omnium-sanctorum-epistola.do44667ff",
         "witness.proprium.omnium-sanctorum-epistola.mr1962"
       ],
       "apparatus": {
-        "entries": 35,
+        "entries": 40,
         "classes": [
           "accent",
           "capital-accent",
@@ -99434,7 +99465,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "2e8c411508bec96215f1aeb003b5fbb9601233d9583bb34c28b681f00b274653",
+      "apparatus_sha256": "4c2e62965b86c339743da0415bf4923b759b268116217eaf8470666933b8af3d",
       "review": {
         "status": "pending"
       }
