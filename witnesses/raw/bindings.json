@@ -78,6 +78,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pent06-0.txt",
       "sha256": "e83a9f1330d0f1ff1902fea97694ae5a42efc3423b535f57aaa04e3be6b410fe"
+    },
+    "saint-lawrence": {
+      "upstream": "web/www/missa/Latin/Sancti/08-10.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/08-10.txt",
+      "sha256": "577639de3553a6213cf028e2213c19189bb8f182c3ce2b20e4634cf2828899da"
     }
   },
   "bindings": {
@@ -453,6 +459,46 @@
           "archive": "pentecost-vi",
           "first": 22,
           "last": 22
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "lawrence-postcommunion": {
+      "witness": "witnesses/proprium.sancti-laurentii-martyris-postcommunio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "saint-lawrence",
+          "first": 51,
+          "last": 53,
+          "section": "Postcommunio",
+          "section_line": 51
+        },
+        {
+          "archive": "prayers",
+          "first": 95,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "saint-lawrence",
+          "line": 53,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "saint-lawrence",
+          "first": 52,
+          "last": 52
         },
         {
           "archive": "prayers",

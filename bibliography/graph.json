@@ -45184,6 +45184,28 @@
       "evidence_sha256": "577639de3553a6213cf028e2213c19189bb8f182c3ce2b20e4634cf2828899da"
     },
     {
+      "id": "use.proprium.sancti-laurentii-martyris-postcommunio.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "segment",
+        "text": "proprium.sancti-laurentii-martyris-postcommunio",
+        "segment": "s01"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales, 115 a",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "The prescribed Father-directed conclusion supplies Per Dominum nostrum through per omnia saecula saeculorum (w023–w043), whereas the proper page has only the cue. Reader accents and tuum: Qui punctuation and capitalization are supplied separately.",
+      "verified_on": "2026-09-29",
+      "decision": "RETAIN",
+      "decision_reason": "The directly viewed rubric supplies the expanded conclusion, not the proper body or the separate response's performer and voice.",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"
+    },
+    {
       "id": "use.proprium.sancti-laurentii-martyris-postcommunio.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -45193,14 +45215,16 @@
         "text": "proprium.sancti-laurentii-martyris-postcommunio"
       },
       "locator": {
-        "printed": "p. 634",
-        "scan": "leaf n715 / PDF p. 716",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n715/mode/1up"
+        "printed": "p. 636",
+        "scan": "leaf n717 / PDF p. 718",
+        "section": "S. Laurentii Martyris, Postcommunio",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n717/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper page prints the 22-word body and the Per Dominum cue, not the full expanded conclusion. The prescribed expansion has a separate source use.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
-      "evidence_sha256": "8fb32a6db38adf3e8c07f77679c117f912a87c500b2665daf943279fa0c28e2d"
+      "evidence_sha256": "aac23f3f37427c8aff65a49bc0eaeb5ee9070032f741feb6ecd8c6249ee2eaf1",
+      "decision_reason": "Corrected on 2026-09-29 from the unrelated vigil page 634/n715 to the directly viewed Postcommunio page 636/n717. The historical preparation date is retained, not renewed as source acceptance. The previous complete-component claim is narrowed to the printed body and cue."
     },
     {
       "id": "use.proprium.sancti-laurentii-martyris-postcommunio.oration-boundaries.mr1962",
@@ -79615,7 +79639,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "9dd111ef91ce347266aae90221cff3efba9dd1aa625d6755033e32a994209e1c",
+      "transcription_sha256": "a2650b45a986446626ebba8e05d5e67db123bc48fa0d12de3d8829c4d617ab25",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
@@ -79631,9 +79655,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "e33f62aa0ca8e77e28003fbdd6d01b264ca92509db871813e03b42b55e616034",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "a8d497b4ddf90bc7bfa75a9688b14292626343848acc1ad9252101d567ff985e",
+      "orthography_profile": "exact-page-body-with-declared-expansion",
+      "independence_basis": "The directly viewed Benziger 1962 page establishes the body and cue; Rubricae generales 115 a supplies the expansion, with declared house accidentals. Historical preparation notes do not constitute the pending source-binding review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -101865,12 +101889,14 @@
         "witness.proprium.sancti-laurentii-martyris-postcommunio.mr1962"
       ],
       "apparatus": {
-        "entries": 1,
+        "entries": 4,
         "classes": [
+          "capitalization",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "738d2707a35f555c189c6df48296a99f0222ef0ee7f5d0efeb72a45aea150f58",
+      "apparatus_sha256": "87620c9b60586e611deaaf4592f48259229e3d2ca21ba770c7b809ef340c691e",
       "review": {
         "status": "pending"
       }
