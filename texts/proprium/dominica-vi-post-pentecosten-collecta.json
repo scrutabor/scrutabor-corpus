@@ -40,14 +40,14 @@
         { "id": "w019", "form": "religiónis", "lemma": "religio", "morph": { "pos": "noun", "case": "gen", "gender": "f", "number": "sg", "decl": 3 } },
         { "id": "w020", "form": "augméntum", "lemma": "augmentum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 }, "post": ";" },
         { "id": "w021", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "post": "," },
-        { "id": "w022", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
+        { "id": "w022", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "n" } },
         { "id": "w023", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w024", "form": "bona", "post": ",", "lemma": "bonus", "morph": { "case": "nom", "gender": "n", "number": "pl", "pos": "adj" }, "head": "w022" },
         { "id": "w025", "form": "nútrias", "lemma": "nutrio", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 2, "tense": "pres", "voice": "act", "conj": 4 }, "post": "," },
         { "id": "w026", "form": "ac", "lemma": "ac", "morph": { "pos": "conj" } },
         { "id": "w027", "form": "pietátis", "lemma": "pietas", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w028", "form": "stúdio", "lemma": "studium", "morph": { "pos": "noun", "case": "abl", "gender": "n", "number": "sg", "decl": 2 }, "post": "," },
-        { "id": "w029", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
+        { "id": "w029", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "n" } },
         { "id": "w030", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w031", "form": "nutríta", "lemma": "nutrio", "morph": { "pos": "verb", "case": "nom", "gender": "n", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 4 }, "post": ",", "head": "w029" },
         { "id": "w032", "form": "custódias", "lemma": "custodio", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 4 }, "post": "." },
@@ -108,9 +108,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "notes": "The prayer body crosses pp. 378–379 within pectoribus (pe- / ctoribus). The proper prints only the Per Dominum cue; Rubricae generales 115 a supplies the full Father-directed conclusion. House accidentals and the separate response are distinguished in the witness record.",
     "source": {
-      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The directly viewed Benziger 1962 Missale Romanum (Editio iuxta typicam), pp. 378–379, establishes the body and abbreviated conclusion. Rubricae generales 115 a, p. xvii, supplies the expansion, with reader accents and house conclusion accidentals declared separately. The pinned digital witness is reconstructed from exact proper and shared-prayer spans; its five accidental differences are recorded in the apparatus. Historical preparation dates and pending source reviews are not renewed.",
       "witnesses": "witnesses/proprium.dominica-vi-post-pentecosten-collecta/",
       "apparatus": "witnesses/proprium.dominica-vi-post-pentecosten-collecta/apparatus.json"
     },
@@ -125,10 +125,17 @@
       "w006": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w027": {
+
+      }
+    }
   }
 }

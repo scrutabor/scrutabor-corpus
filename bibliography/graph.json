@@ -27344,6 +27344,28 @@
       "evidence_sha256": "e99c61760982eec4427ac4b65732a529d86c3400ba63e3aa58f8246af37eb4ed"
     },
     {
+      "id": "use.proprium.dominica-vi-post-pentecosten-collecta.continued-body.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "segment",
+        "text": "proprium.dominica-vi-post-pentecosten-collecta",
+        "segment": "s01"
+      },
+      "locator": {
+        "printed": "p. 379",
+        "scan": "leaf n460 / PDF p. 461",
+        "section": "Dominica VI post Pentecosten, Oratio (continued)",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n460/mode/1up"
+      },
+      "claim": "The page continues pectoribus with ctóribus after pe- on p. 378, then prints nostris through custodias (w011–w032) and the Per Dominum cue. It does not print the full expanded conclusion.",
+      "verified_on": "2026-09-29",
+      "decision": "RETAIN",
+      "decision_reason": "The directly viewed continuation completes the proper body; joining the page-end fragments preserves one word pectoribus.",
+      "evidence_sha256": "e99c61760982eec4427ac4b65732a529d86c3400ba63e3aa58f8246af37eb4ed"
+    },
+    {
       "id": "use.proprium.dominica-vi-post-pentecosten-collecta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -27361,6 +27383,28 @@
       "evidence_sha256": "e83a9f1330d0f1ff1902fea97694ae5a42efc3423b535f57aaa04e3be6b410fe"
     },
     {
+      "id": "use.proprium.dominica-vi-post-pentecosten-collecta.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "segment",
+        "text": "proprium.dominica-vi-post-pentecosten-collecta",
+        "segment": "s01"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales, 115 a",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "The prescribed Father-directed conclusion supplies Per Dominum nostrum through per omnia saecula saeculorum (w033–w053), whereas the proper page has only the cue. Reader accents and tuum: Qui punctuation and capitalization are supplied separately.",
+      "verified_on": "2026-09-29",
+      "decision": "RETAIN",
+      "decision_reason": "The directly viewed rubric supplies the expanded conclusion, not the proper body or the separate response's performer and voice.",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"
+    },
+    {
       "id": "use.proprium.dominica-vi-post-pentecosten-collecta.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -27374,11 +27418,11 @@
         "scan": "leaves n459–n460 / PDF pp. 460–461",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n459/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The two cited proper pages print the 32-word body and the Per Dominum cue, not the full expanded conclusion. The linked first page ends with pe- within pectoribus; the continuation and prescribed expansion have separate source uses.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "edee41c702ffd91f8efe571e2fd6375602311c1f1baa4596ad282e33347f6a64",
-      "decision_reason": "Locator corrected against the page image: the text is printed on the leaves now cited, from its opening to its end."
+      "decision_reason": "The historical locator correction is retained; its complete-component claim is narrowed to the printed body and cue. The evidence digest identifies the opening page only, not both pages or the expanded conclusion."
     },
     {
       "id": "use.proprium.dominica-vi-post-pentecosten-collecta.oration-boundaries.mr1962",
@@ -66355,7 +66399,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "ea5b510f6d669cf927510cd004939cf12304a0cf731d69262bd14e027e47cf89",
+      "transcription_sha256": "69943bd876e82a804c79b942a1a80d151d95060f07f4bd7af9240f629c930b3a",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
@@ -66371,9 +66415,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "34814aaaa8294b170e6fd2c841e85f40e7a7edfe40e6e1be8079b094c1ac7b20",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "5a3ada89f463176e867682973dffc7f68b3b23dc2ca42e5d0baea81d39a109c9",
+      "orthography_profile": "exact-page-body-with-declared-expansion",
+      "independence_basis": "Directly viewed Benziger 1962 pages establish the body and cue; Rubricae generales 115 a supplies the expansion, with declared house accidentals. Historical preparation notes do not constitute the pending source-binding review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -93527,12 +93571,14 @@
         "witness.proprium.dominica-vi-post-pentecosten-collecta.mr1962"
       ],
       "apparatus": {
-        "entries": 1,
+        "entries": 5,
         "classes": [
+          "capitalization",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "e0ba6344b996999b2edc90b14e31d7c1fb60a4e2d441fd0b64e5c0c83cd8f49a",
+      "apparatus_sha256": "6adf92bffd5d20120e4155e43a5fe91a09dd15b2e291dd7ec47247200d563779",
       "review": {
         "status": "pending"
       }

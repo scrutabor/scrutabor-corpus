@@ -72,6 +72,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pent13-0.txt",
       "sha256": "506bb7cacc56c5ba3c07119cf458d3d7663bc8c860bf80d3eaab6c2db4c528bb"
+    },
+    "pentecost-vi": {
+      "upstream": "web/www/missa/Latin/Tempora/Pent06-0.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pent06-0.txt",
+      "sha256": "e83a9f1330d0f1ff1902fea97694ae5a42efc3423b535f57aaa04e3be6b410fe"
     }
   },
   "bindings": {
@@ -407,6 +413,46 @@
           "archive": "pentecost-xiii",
           "first": 55,
           "last": 55
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "pentecost-vi-collect": {
+      "witness": "witnesses/proprium.dominica-vi-post-pentecosten-collecta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "pentecost-vi",
+          "first": 21,
+          "last": 23,
+          "section": "Oratio",
+          "section_line": 21
+        },
+        {
+          "archive": "prayers",
+          "first": 95,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "pentecost-vi",
+          "line": 23,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "pentecost-vi",
+          "first": 22,
+          "last": 22
         },
         {
           "archive": "prayers",
