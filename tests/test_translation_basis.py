@@ -37,6 +37,34 @@ def test_historical_wording_distinguishes_revision_from_spelling(
 
 
 @pytest.mark.parametrize(
+    ("text", "segment", "relationship"),
+    [
+        ("ordinarium.credo", "s02", "revised"),
+        ("ordinarium.credo", "s04", "revised"),
+        ("ordinarium.credo", "s05", "revised"),
+        ("ordinarium.credo", "s10", "revised"),
+        ("ordinarium.credo", "s12", "revised"),
+        ("ordinarium.credo", "s14", "revised"),
+        ("orationes.angelus-domini", "s11", "revised"),
+        ("orationes.sub-tuum-praesidium", "s01", "revised"),
+        ("orationes.sub-tuum-praesidium", "s02", "revised"),
+        ("orationes.sub-tuum-praesidium", "s03", "revised"),
+        ("ordinarium.gloria", "s06", "revised"),
+        ("ordinarium.gloria", "s11", "revised"),
+        ("ordinarium.credo", "s03", "normalized"),
+        ("ordinarium.iudica-me", "s10", "normalized"),
+        ("orationes.symbolum-apostolorum", "s11", "normalized"),
+    ],
+)
+def test_polish_wording_distinguishes_revision_from_spelling(
+    text: str, segment: str, relationship: str
+) -> None:
+    # Reordering, finite constructions and pronoun/preposition changes are
+    # revisions. The controls' Jak and powszechny are already in their bases.
+    assert store.translation_relationships(CORPUS, "pl")[f"{text}.{segment}.pl"] == relationship
+
+
+@pytest.mark.parametrize(
     ("use_id", "printed", "scan"),
     [
         ("use.en.8837e83b38b72875de7e", "p. 12", "scan p. 39"),
