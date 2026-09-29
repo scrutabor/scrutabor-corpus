@@ -18,7 +18,9 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
-SCHEMA = "1.3.0"
+from .bibliography_bindings import BindingError, unique_json_keys, validate_bindings
+
+SCHEMA = "1.4.0"
 
 GRAPH_KEYS = {
     "schema_version",
@@ -87,7 +89,9 @@ WITNESS_KEYS = {
     "use",
     "role",
     "coverage",
+    "transcription",
     "transcription_sha256",
+    "review",
     "orthography_profile",
     "independence_basis",
 }
@@ -97,6 +101,8 @@ COLLATION_KEYS = {
     "text",
     "recension",
     "selected_text_sha256",
+    "apparatus_sha256",
+    "review",
     "witnesses",
     "apparatus",
 }
@@ -199,9 +205,14 @@ def language_graph_path(corpus: Path, language: str) -> Path:
 
 
 def load(corpus: Path) -> tuple[dict, dict[str, dict]]:
-    graph = json.loads(graph_path(corpus).read_text(encoding="utf-8"))
+    graph = json.loads(
+        graph_path(corpus).read_text(encoding="utf-8"), object_pairs_hook=unique_json_keys
+    )
     language_graphs = {
-        language: json.loads(language_graph_path(corpus, language).read_text(encoding="utf-8"))
+        language: json.loads(
+            language_graph_path(corpus, language).read_text(encoding="utf-8"),
+            object_pairs_hook=unique_json_keys,
+        )
         for language in _language_ids(corpus)
     }
     return graph, language_graphs
@@ -605,7 +616,7 @@ def validate(
     if graph is None or language_graphs is None:
         try:
             loaded_graph, loaded_languages = load(corpus)
-        except (OSError, json.JSONDecodeError) as exc:
+        except (OSError, json.JSONDecodeError, BindingError) as exc:
             return [f"bibliography: cannot load evidence graph — {exc}"]
         graph = loaded_graph if graph is None else graph
         language_graphs = loaded_languages if language_graphs is None else language_graphs
@@ -815,6 +826,7 @@ def validate(
             if (
                 not isinstance(segments, list)
                 or not segments
+                or any(not isinstance(value, str) for value in segments)
                 or len(segments) != len(set(segments))
             ):
                 errors.append(f"{where}.coverage.segments: must be a unique nonempty array")
@@ -829,6 +841,7 @@ def validate(
             if (
                 not isinstance(covered_words, list)
                 or not covered_words
+                or any(not isinstance(value, str) for value in covered_words)
                 or len(covered_words) != len(set(covered_words))
             ):
                 errors.append(f"{where}.coverage.words: must be a unique nonempty array")
@@ -866,6 +879,7 @@ def validate(
         if (
             not isinstance(witness_ids, list)
             or len(witness_ids) < 2
+            or any(not isinstance(value, str) for value in witness_ids)
             or len(witness_ids) != len(set(witness_ids))
         ):
             errors.append(f"{where}.witnesses: must name at least two unique witnesses")
@@ -881,7 +895,7 @@ def validate(
         apparatus = _unknown(
             collation.get("apparatus"), APPARATUS_KEYS, f"{where}.apparatus", errors
         )
-        if not isinstance(apparatus.get("entries"), int) or apparatus.get("entries", -1) < 0:
+        if type(apparatus.get("entries")) is not int or apparatus.get("entries", -1) < 0:
             errors.append(f"{where}.apparatus.entries: must be a nonnegative integer")
         classes = apparatus.get("classes")
         if not isinstance(classes, list) or any(not _nonempty(value) for value in classes):
@@ -944,6 +958,8 @@ def validate(
         errors.append(
             f"bibliography parity: migration is complete but {len(unresolved)} references remain"
         )
+    if not errors:
+        errors.extend(validate_bindings(corpus, graph))
     return errors
 
 
@@ -1229,7 +1245,9 @@ def public_text_evidence(graph: dict, language_graph: dict | None = None) -> dic
     public_witnesses = [
         witness
         for witness in graph.get("witnesses") or []
-        if language_graph is None and witness.get("use") in {use["id"] for use in uses}
+        if language_graph is None
+        and witness.get("use") in {use["id"] for use in uses}
+        and (witness.get("review") or {}).get("status") == "reviewed"
     ]
     witnesses_by_text: dict[str, list[dict]] = defaultdict(list)
     for witness in public_witnesses:
@@ -1237,7 +1255,8 @@ def public_text_evidence(graph: dict, language_graph: dict | None = None) -> dic
     collations = {
         collation["text"]: _project_collation(collation)
         for collation in graph.get("collations") or []
-        if set(collation.get("witnesses") or []) <= {witness["id"] for witness in public_witnesses}
+        if (collation.get("review") or {}).get("status") == "reviewed"
+        and set(collation.get("witnesses") or []) <= {witness["id"] for witness in public_witnesses}
     }
     text_ids = sorted(set(by_text) | set(witnesses_by_text) | set(collations))
     records = []

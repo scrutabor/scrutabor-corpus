@@ -174,6 +174,52 @@ lists deliberately are not compressed to numeric ranges: ids record allocation
 history rather than position, so a range could silently change meaning after a
 later insertion.
 
+Since bibliography schema **1.4.0**, witness and collation identity is checked
+against current files, separately from source review:
+
+- A witness's required `transcription` is its local name without `.txt`,
+  resolving only to `witnesses/<text>/<transcription>.txt`. The single
+  `# witness:` header must equal that name; duplicate bindings, missing files,
+  path components and symlinks are rejected. Partial graph coverage must agree
+  with the transcript's explicit `# covers:` span in canonical word order.
+- `transcription_sha256` covers the **complete** UTF-8 transcript, including
+  all headers. Only CRLF and CR are normalized to LF for checkout portability;
+  no other whitespace, punctuation or Unicode normalization is applied.
+  The pre-1.4 body-only digest is not the same contract.
+- `selected_text_sha256` hashes canonical JSON of `{id, segments}`. Each
+  segment retains its present `id`, `type`, `text`, `verse`, `speaker`,
+  `voice`, `delivery`, `parentheses` and `words`; each word retains its present
+  `id`, `form`, `pre`, and `post`. All array order and literal strings matter.
+  Morphology, dependencies, localized content and unrelated editorial prose
+  are explicitly outside this Latin/ritual identity, not certified by it.
+- `apparatus_sha256` hashes the complete apparatus JSON, including readings
+  and rulings. The collation's `apparatus` summary must equal the count and
+  sorted classes derived from its actual `adjudicated` entries. JSON hashing
+  uses UTF-8, unescaped Unicode, sorted object keys and compact separators;
+  array order is preserved. File formatting is immaterial.
+  Duplicate object keys are rejected in bound text/apparatus JSON and authored
+  bibliography graphs; a later key cannot hide an earlier conflicting value.
+  Every witness named by an apparatus entry must be among the collation's
+  explicitly bound transcripts; removing a dependency cannot preserve review.
+
+Both record types require `review: {status: "pending"}` or
+`review: {status: "reviewed", sha256: "…"}`. Pending records still must pass
+all current-file integrity checks. A witness review digest binds its complete
+record except `review`, its exact use/work/edition/digital item, and the selected
+Latin/ritual subject under `witness-review-1`. A collation review binds its
+record except `review` and every witness subject under `collation-review-1`;
+every dependency must itself be reviewed. The exact payloads are defined in
+`build_reader/bibliography_bindings.py`. Changing dependencies requires a new
+source review or an explicit return to pending; updating derived hashes alone
+does not preserve approval. These are source-binding reviews, not acceptance
+of morphology, translations, assembled formularies or external expert review.
+
+Pending witness and collation records are withheld from the reader projection.
+Separately dated bibliographic uses retain their own decisions. Migrating an
+old digest to the stronger identity contract does not renew a use's verification
+date or certify its claim; unresolved associations enter as pending. Historical
+subjects remain in version history, not as false current assertions.
+
 `role`, `decision`, and acquisition state are separate facts. A strong official
 edition does not support a claim merely by being relevant to its subject, and a
 historical wording comparator is not thereby a source of the published

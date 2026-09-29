@@ -222,18 +222,13 @@ def test_a_scanned_print_requires_both_printed_and_scan_locators():
 def test_partial_witness_can_name_an_explicit_stable_word_set():
     graph, languages = sample()
     graph["uses"][0]["role"] = "direct_approved_print"
-    graph["witnesses"] = [
-        {
-            "id": "witness-partial",
-            "text": "orationes.benedic-domine",
-            "use": "use-neutral",
-            "role": "approved_corroboration",
-            "coverage": {"kind": "words", "words": ["w001", "w002", "w003"]},
-            "transcription_sha256": "a" * 64,
-            "orthography_profile": "The source is transcribed without editorial accents.",
-            "independence_basis": "The witness is an independently printed approved edition.",
-        }
-    ]
+    authored, _ = load(CORPUS)
+    partial = copy.deepcopy(
+        next(w for w in authored["witnesses"] if w["coverage"]["kind"] == "words")
+    )
+    partial.update(id="witness-partial", use="use-neutral", review={"status": "pending"})
+    graph["uses"][0]["address"] = {"kind": "text", "text": partial["text"]}
+    graph["witnesses"] = [partial]
     assert validate(CORPUS, graph, languages) == []
 
 
