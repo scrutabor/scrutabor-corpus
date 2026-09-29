@@ -84,6 +84,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/08-10.txt",
       "sha256": "577639de3553a6213cf028e2213c19189bb8f182c3ce2b20e4634cf2828899da"
+    },
+    "saint-luke": {
+      "upstream": "web/www/missa/Latin/Sancti/10-18.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/10-18.txt",
+      "sha256": "7b1db0fe056275ba13aa9321c33c0c4c584955612f3cc5902fb881b71ce2fc8f"
     }
   },
   "bindings": {
@@ -525,6 +531,46 @@
           "archive": "pentecost-vi",
           "first": 28,
           "last": 28
+        }
+      ]
+    },
+    "luke-postcommunion": {
+      "witness": "witnesses/proprium.sancti-lucae-evangelistae-postcommunio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "saint-luke",
+          "first": 47,
+          "last": 49,
+          "section": "Postcommunio",
+          "section_line": 47
+        },
+        {
+          "archive": "prayers",
+          "first": 95,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "saint-luke",
+          "line": 49,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "saint-luke",
+          "first": 48,
+          "last": 48
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
         }
       ]
     }
