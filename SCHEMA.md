@@ -210,14 +210,54 @@ against current files, separately from source review:
 Both record types require `review: {status: "pending"}` or
 `review: {status: "reviewed", sha256: "…"}`. Pending records still must pass
 all current-file integrity checks. A witness review digest binds its complete
-record except `review`, its exact use/work/edition/digital item, and the selected
-Latin/ritual subject under `witness-review-1`. A collation review binds its
-record except `review` and every witness subject under `collation-review-1`;
+record except `review`, its exact source dependencies, and the selected
+Latin/ritual subject under `witness-review-2`. A collation review binds its
+record except `review` and every witness subject under `collation-review-2`;
 every dependency must itself be reviewed. The exact payloads are defined in
 `build_reader/bibliography_bindings.py`. Changing dependencies requires a new
 source review or an explicit return to pending; updating derived hashes alone
 does not preserve approval. These are source-binding reviews, not acceptance
 of morphology, translations, assembled formularies or external expert review.
+
+Since bibliography schema **1.5.0**, a reviewable witness requires an explicit
+`source_dependencies: {uses: [...], raw_binding: id|null}` inventory. `uses`
+contains sorted, unique neutral use IDs, excluding the primary `use`. They
+must address this text (or one of its actual segments/words), have a Latin
+textual or explicit ritual-control role, and resolve to the same edition as
+the primary use. Different digital items of that edition are allowed. Every
+complete use/work/edition/item record contributes to the review digest.
+No dependency is inferred from an ID suffix or an equal file hash.
+
+`raw_binding` must match the exact registered and marked derivation checked
+by `checks/raw_binding.py`. Its full plan, revision and all referenced archive
+records and byte digests contribute to the subject, including source bytes
+outside the selected lines. Supported Divinum Officium sources require this
+explicit binding; a null value cannot conceal an unresolved digital source.
+The item revision and provider must agree. Generic bibliographic evidence
+digests retain their existing meaning; they are not reinterpreted as the
+digest of the first raw archive. Other providers are not forced into this
+provider-specific raw format. Until an appropriate evidence contract exists,
+an explicit inventory containing an unsupported born-digital item is rejected,
+whether that item is primary or supplemental. Its legacy pending record may
+remain without an inventory; it cannot receive a reviewed subject. A scan
+witness with an explicitly inventoried derivation may use null. The raw
+registry remains version1.
+
+An absent inventory is permitted only while review remains pending. It is
+unknown, not an empty inventory. Pending identities cannot be used as reviewed
+subjects or included in a reviewed collation. Adding inventory or recomputing
+hashes never constitutes source adjudication. Cross-edition derivations need
+a separate explicit contract. A false editorial assertion that an inventory
+is complete cannot be disproved by hashing: actual source review is required.
+
+Validation indexes graph identities and resolves raw archives once per run,
+using copied records and immutable checked archive contents, without a global
+path cache. A fresh run checks current files. Raw paths keep their existing
+rule allowing symlinks only within the confinement boundary; transcript paths
+remain stricter and reject symlinks. Registry and source hashing use the same
+validated snapshot. These internal declarations and raw paths never enter the
+reader projection. A witness or collation is withheld if any declared source
+use is not publishable; the emitter validates the full graph before projection.
 
 Pending witness and collation records are withheld from the reader projection.
 Separately dated bibliographic uses retain their own decisions. Migrating an

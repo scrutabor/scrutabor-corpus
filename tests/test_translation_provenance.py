@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from build_reader.bibliography import DECISIONS
+from build_reader.bibliography import DECISIONS, SCHEMA
 from checks.translation_provenance import canonical_hash, check, initialize, protected
 
 
@@ -65,7 +65,7 @@ def write_text(corpus, target="Words.", cited_pl=False):
             )
         )
         (root / "bibliography.json").write_text(
-            json.dumps({"schema_version": "1.4.0", "language": language, "uses": []})
+            json.dumps({"schema_version": SCHEMA, "language": language, "uses": []})
         )
 
 

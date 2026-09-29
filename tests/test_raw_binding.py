@@ -9,7 +9,7 @@ from pathlib import Path
 import pytest
 
 from checks import attribute
-from checks.raw_binding import BindingError, load_registry, resolve_binding
+from checks.raw_binding import BindingError, RawBindingSnapshot, load_registry, resolve_binding
 from checks.transcription import check_transcriptions
 from checks.witness_archive import check as check_archives
 
@@ -33,6 +33,69 @@ def bound_corpus(tmp_path, monkeypatch):
 
 def save(root, data):
     (root / REGISTRY).write_text(json.dumps(data), encoding="utf-8")
+
+
+def test_returned_raw_closure_cannot_mutate_a_validation_snapshot(bound_corpus):
+    root, data = bound_corpus
+    snapshot = RawBindingSnapshot(root)
+    path = witness(root, data, "pentecost-vi-collect")
+    first = snapshot.resolve(path)
+    assert first is not None
+    original = copy.deepcopy(first.source)
+    assert set(original["archives"]) == {"pentecost-vi", "prayers"}
+    assert original["binding"] == data["bindings"]["pentecost-vi-collect"]
+    first.source["binding"]["reading"].clear()
+    first.source["archives"]["prayers"]["sha256"] = "0" * 64
+    again = snapshot.resolve(path)
+    assert again is not None and again.source == original
+
+
+def test_snapshot_is_per_run_not_a_process_global_file_cache(bound_corpus):
+    root, data = bound_corpus
+    path = witness(root, data)
+    snapshot = RawBindingSnapshot(root)
+    original = snapshot.resolve(path)
+    assert original is not None
+    archive = root / data["archives"]["rosary"]["path"]
+    archive.write_bytes(archive.read_bytes() + b"\n# changed later\n")
+    # The old run returns only its old checked contents, not a mixed new claim.
+    assert snapshot.resolve(path) == original
+    with pytest.raises(BindingError, match="SHA-256 mismatch"):
+        resolve_binding(path, root)
+
+
+def test_registry_is_not_reloaded_between_resolution_and_source_subject(bound_corpus):
+    root, data = bound_corpus
+    path = witness(root, data)
+    snapshot = RawBindingSnapshot(root)
+    data["bindings"]["rosary-introit"]["reading"].clear()
+    save(root, data)
+    reading = snapshot.resolve(path)
+    assert reading is not None and reading.source["binding"]["reading"]
+    with pytest.raises(BindingError, match="nonempty"):
+        resolve_binding(path, root)
+
+
+def test_raw_in_boundary_symlink_remains_allowed_and_byte_checked(bound_corpus):
+    root, data = bound_corpus
+    path = root / data["archives"]["rosary"]["path"]
+    destination = path.with_suffix(".retained")
+    path.rename(destination)
+    path.symlink_to(destination)
+    assert resolve_binding(witness(root, data), root) is not None
+    destination.write_bytes(destination.read_bytes() + b"changed")
+    with pytest.raises(BindingError, match="SHA-256 mismatch"):
+        resolve_binding(witness(root, data), root)
+
+
+def test_raw_registry_cannot_escape_its_boundary_via_symlink(bound_corpus):
+    root, data = bound_corpus
+    registry = root / REGISTRY
+    outside = root / "outside-registry.json"
+    registry.rename(outside)
+    registry.symlink_to(outside)
+    with pytest.raises(BindingError, match="escapes"):
+        resolve_binding(witness(root, data), root)
 
 
 def witness(root, data, key="rosary-introit"):

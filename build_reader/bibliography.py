@@ -18,9 +18,17 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
-from .bibliography_bindings import BindingError, unique_json_keys, validate_bindings
+from .bibliography_bindings import (
+    DIGITAL_KINDS,
+    LATIN_SOURCE_ROLES,
+    BindingError,
+    source_dependencies,
+    unique_json_keys,
+    validate_bindings,
+)
+from .bibliography_bindings import IDENTITY as ID_RE
 
-SCHEMA = "1.4.0"
+SCHEMA = "1.5.0"
 
 GRAPH_KEYS = {
     "schema_version",
@@ -94,6 +102,7 @@ WITNESS_KEYS = {
     "review",
     "orthography_profile",
     "independence_basis",
+    "source_dependencies",
 }
 COVERAGE_KEYS = {"kind", "segments", "words"}
 COLLATION_KEYS = {
@@ -134,7 +143,6 @@ AUTHORITIES = {
     "secondary_study",
 }
 RIGHTS_STATUSES = {"public-domain", "own", "permission", "unverified"}
-DIGITAL_KINDS = {"scan", "born-digital"}
 ACCESS_STATES = {"open", "restricted", "owner-held"}
 DECISIONS = {
     "RETAIN",
@@ -144,12 +152,7 @@ DECISIONS = {
     "UNVERIFIED_NO_DIRECT_EVIDENCE",
 }
 
-LATIN_ROLES = {
-    "official_text",
-    "corroborating_latin_witness",
-    "direct_approved_print",
-    "derived_digital_collation_aid",
-}
+LATIN_ROLES = LATIN_SOURCE_ROLES
 WORDING_ROLES = {"historical_wording_basis", "historical_wording_comparator"}
 OFFICIAL_ROLES = {
     "official_liturgical_context",
@@ -190,7 +193,6 @@ ROLE_ORDER = {
     for role_number, role in enumerate(sorted(SECTION_ROLES[section]))
 }
 
-ID_RE = re.compile(r"^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 LANGUAGE_RE = re.compile(r"^[a-z]{2,3}(?:-[A-Za-z0-9]+)*$")
 SUPPORTED_READER_LANGUAGES = {"en", "la", "pl"}
@@ -1235,6 +1237,9 @@ def public_text_evidence(graph: dict, language_graph: dict | None = None) -> dic
     Source identities live in the manifest-declared catalogue. Repeating the
     same edition and digital-item records in every text slice would make the
     lazy layout larger than its authored source without making it more useful.
+    Input must pass validate() first: this pure projection cannot read source
+    files or certify a supplied review digest. It still fails closed on unknown
+    dependency inventories and nonpublishable supplemental uses.
     """
     uses = _package_uses(graph, language_graph)
     by_text: dict[str, list[dict]] = defaultdict(list)
@@ -1242,12 +1247,29 @@ def public_text_evidence(graph: dict, language_graph: dict | None = None) -> dic
         text_id = (use.get("address") or {}).get("text")
         if text_id:
             by_text[text_id].append(use)
+    public_use_ids = {use["id"] for use in uses}
+
+    def publishable_inventory(witness: dict) -> bool:
+        try:
+            dependencies = source_dependencies(witness)
+        except BindingError:
+            return False
+        return {witness.get("use"), *dependencies["uses"]} <= public_use_ids
+
+    def reviewed(record: dict) -> bool:
+        review = record.get("review")
+        return (
+            isinstance(review, dict)
+            and set(review) == {"status", "sha256"}
+            and review.get("status") == "reviewed"
+            and isinstance(review.get("sha256"), str)
+            and SHA256_RE.fullmatch(review["sha256"]) is not None
+        )
+
     public_witnesses = [
         witness
         for witness in graph.get("witnesses") or []
-        if language_graph is None
-        and witness.get("use") in {use["id"] for use in uses}
-        and (witness.get("review") or {}).get("status") == "reviewed"
+        if language_graph is None and publishable_inventory(witness) and reviewed(witness)
     ]
     witnesses_by_text: dict[str, list[dict]] = defaultdict(list)
     for witness in public_witnesses:
@@ -1255,7 +1277,8 @@ def public_text_evidence(graph: dict, language_graph: dict | None = None) -> dic
     collations = {
         collation["text"]: _project_collation(collation)
         for collation in graph.get("collations") or []
-        if (collation.get("review") or {}).get("status") == "reviewed"
+        if reviewed(collation)
+        and len(collation.get("witnesses") or []) >= 2
         and set(collation.get("witnesses") or []) <= {witness["id"] for witness in public_witnesses}
     }
     text_ids = sorted(set(by_text) | set(witnesses_by_text) | set(collations))

@@ -10,14 +10,26 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+from copy import deepcopy
 from pathlib import Path
+from urllib.parse import urlparse
 
 from checks.apparatus import derived_summary
+from checks.raw_binding import RawBindingSnapshot
 
 SEGMENT_FIELDS = ("id", "type", "text", "verse", "speaker", "voice", "delivery", "parentheses")
 WORD_FIELDS = ("id", "form", "pre", "post")
 NAME = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
 TEXT_ID = re.compile(r"[a-z0-9-]+\.[a-z0-9-]+")
+IDENTITY = re.compile(r"[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*")
+DIGITAL_KINDS = {"scan", "born-digital"}
+LATIN_SOURCE_ROLES = {
+    "official_text",
+    "corroborating_latin_witness",
+    "direct_approved_print",
+    "derived_digital_collation_aid",
+}
+SUPPLEMENT_ROLES = LATIN_SOURCE_ROLES | {"official_liturgical_context", "rubric_control"}
 
 
 class BindingError(ValueError):
@@ -137,12 +149,122 @@ def _coverage(witness: dict, text: str, doc: dict) -> None:
         raise BindingError("graph and transcript coverage disagree")
 
 
-def witness_subject(root: Path, witness: dict, graph: dict, doc: dict) -> dict:
-    """Read the exact declared file; never infer identity from an equal digest."""
+def source_dependencies(witness: dict) -> dict:
+    """Unknown inventory is not the same as a deliberately empty inventory."""
+    value = witness.get("source_dependencies")
+    if not isinstance(value, dict) or set(value) != {"uses", "raw_binding"}:
+        raise BindingError("complete explicit source_dependencies declaration required")
+    uses, raw = value["uses"], value["raw_binding"]
+    if (
+        not isinstance(uses, list)
+        or any(not isinstance(item, str) or not IDENTITY.fullmatch(item) for item in uses)
+        or uses != sorted(set(uses))
+        or witness.get("use") in uses
+    ):
+        raise BindingError("supplemental uses must be sorted unique IDs excluding the primary")
+    if raw is not None and (not isinstance(raw, str) or not NAME.fullmatch(raw)):
+        raise BindingError("raw_binding must be a binding ID or null")
+    return value
+
+
+def _index(graph: dict, field: str) -> dict[str, dict]:
+    values = graph.get(field)
+    if not isinstance(values, list):
+        raise BindingError(f"{field} must be an array")
+    indexed = {}
+    for value in values:
+        if (
+            not isinstance(value, dict)
+            or not isinstance(value.get("id"), str)
+            or not IDENTITY.fullmatch(value["id"])
+        ):
+            raise BindingError(f"invalid {field} identity")
+        if value["id"] in indexed:
+            raise BindingError(f"duplicate {field} identity: {value['id']}")
+        indexed[value["id"]] = deepcopy(value)
+    return indexed
+
+
+def _lookup(index: dict[str, dict], key: object, label: str) -> dict:
+    if not isinstance(key, str) or key not in index:
+        raise BindingError(f"unknown {label}")
+    return index[key]
+
+
+def _source_address(address: object, doc: dict) -> None:
+    if not isinstance(address, dict) or address.get("text") != doc["id"]:
+        raise BindingError("source use and document must address the same text")
+    kind = address.get("kind")
+    expected = {
+        "text": {"kind", "text"},
+        "segment": {"kind", "text", "segment"},
+        "word": {"kind", "text", "word"},
+    }
+    if not isinstance(kind, str) or kind not in expected or set(address) != expected[kind]:
+        raise BindingError("invalid source use address")
+    if kind == "segment" and address["segment"] not in [s["id"] for s in doc["segments"]]:
+        raise BindingError("source use addresses an unknown segment")
+    if kind == "word" and address["word"] not in [
+        w["id"] for s in doc["segments"] for w in s.get("words", [])
+    ]:
+        raise BindingError("source use addresses an unknown word")
+
+
+def _digital_provider(source: dict) -> bool:
+    if source["work"]["id"] == "work.divinum-officium":
+        return True
+    url = urlparse(str(source["digital_item"].get("record_url", "")))
+    return url.hostname in {"github.com", "raw.githubusercontent.com"} and (
+        url.path.lower().startswith("/divinumofficium/divinum-officium/")
+    )
+
+
+class _SourceSnapshot:
+    """Private, indexed graph snapshot shared only within one validation run."""
+
+    def __init__(self, root: Path, graph: dict):
+        self.root = root
+        self.uses = _index(graph, "uses")
+        self.works = _index(graph, "works")
+        self.editions = _index(graph, "editions")
+        self.items = _index(graph, "digital_items")
+        self.witnesses = _index(graph, "witnesses")
+        _index(graph, "collations")
+        self.raw: RawBindingSnapshot | None = None
+
+    def source(self, identifier: object, doc: dict, *, supplemental: bool = False) -> dict:
+        use = _lookup(self.uses, identifier, "source use")
+        _source_address(use.get("address"), doc)
+        roles = SUPPLEMENT_ROLES if supplemental else LATIN_SOURCE_ROLES
+        if not isinstance(use.get("role"), str) or use["role"] not in roles:
+            raise BindingError("source use has an incompatible role")
+        edition = _lookup(self.editions, use.get("edition"), "source edition")
+        item = _lookup(self.items, use.get("digital_item"), "source digital item")
+        if item.get("edition") != edition["id"]:
+            raise BindingError("digital item belongs to another edition")
+        if not isinstance(item.get("kind"), str) or item["kind"] not in DIGITAL_KINDS:
+            raise BindingError("invalid digital item kind")
+        work = _lookup(self.works, edition.get("work"), "source work")
+        return {"use": use, "work": work, "edition": edition, "digital_item": item}
+
+    def reading(self, path: Path):
+        if self.raw is None:
+            self.raw = RawBindingSnapshot(self.root)
+        return self.raw.resolve(path)
+
+
+def _witness_subject(
+    root: Path, witness: dict, doc: dict, snapshot: _SourceSnapshot, *, reviewable: bool
+) -> dict:
     name = witness.get("transcription")
     if not isinstance(name, str) or not NAME.fullmatch(name):
         raise BindingError("transcription must be a local witness name without a path or extension")
     text_id = _text_id(witness.get("text"))
+    if doc.get("id") != text_id:
+        raise BindingError("document and witness text differ")
+    known = _lookup(snapshot.witnesses, witness.get("id"), "witness identity")
+    if known.get("text") != text_id:
+        raise BindingError("witness identity belongs to another text")
     path = _confined(root, f"witnesses/{text_id}/{name}.txt")
     text = path.read_text(encoding="utf-8")
     if _headers(text, "witness") != [name]:
@@ -150,30 +272,72 @@ def witness_subject(root: Path, witness: dict, graph: dict, doc: dict) -> dict:
     _coverage(witness, text, doc)
     if witness.get("transcription_sha256") != transcript_digest(text):
         raise BindingError("transcription_sha256 differs from the complete bound transcript")
-    uses = {use["id"]: use for use in graph["uses"]}
-    use = uses.get(witness.get("use"))
-    if use is None:
-        raise BindingError("unknown witness source use")
-    edition = next((e for e in graph["editions"] if e["id"] == use.get("edition")), None)
-    item = next((i for i in graph["digital_items"] if i["id"] == use.get("digital_item")), None)
-    if edition is None or item is None:
-        raise BindingError("unknown witness edition or digital item")
-    work = next((work for work in graph["works"] if work["id"] == edition.get("work")), None)
-    if work is None:
-        raise BindingError("unknown witness work")
-    return {
-        "contract": "witness-review-1",
+    primary = snapshot.source(witness.get("use"), doc)
+    subject: dict = {
+        "contract": "witness-identity-2",
         "witness": {key: value for key, value in witness.items() if key != "review"},
-        "use": use,
-        "work": work,
-        "edition": edition,
-        "digital_item": item,
+        "source_uses": {witness["use"]: primary},
         "selected_text": selected_text(doc),
     }
+    if not reviewable and "source_dependencies" not in witness:
+        return deepcopy(subject)
+    declaration = source_dependencies(witness)
+    for identifier in declaration["uses"]:
+        source = snapshot.source(identifier, doc, supplemental=True)
+        if source["edition"]["id"] != primary["edition"]["id"]:
+            raise BindingError("supplemental source belongs to another edition")
+        subject["source_uses"][identifier] = source
+    if any(
+        source["digital_item"]["kind"] == "born-digital" and not _digital_provider(source)
+        for source in subject["source_uses"].values()
+    ):
+        raise BindingError("unsupported born-digital source requires its own evidence contract")
+    reading = snapshot.reading(path)
+    if (
+        reading is not None
+        and reading.source["transcription_sha256"] != witness["transcription_sha256"]
+    ):
+        raise BindingError("transcription changed while resolving its raw binding")
+    raw = declaration["raw_binding"]
+    if raw is None:
+        if reading is not None or _digital_provider(primary):
+            raise BindingError("source requires its explicit exact raw binding")
+    else:
+        if reading is None or reading.source["binding_id"] != raw:
+            raise BindingError("declared raw binding differs from registered resolution")
+        if not _digital_provider(primary):
+            raise BindingError("raw binding requires the matching digital source provider")
+        revision = reading.source["binding"]["revision"]
+        if any(
+            s["digital_item"].get("revision") != revision
+            or s["digital_item"].get("kind") != "born-digital"
+            for s in subject["source_uses"].values()
+        ):
+            raise BindingError("digital item revision or kind differs from raw binding")
+    subject["raw_resolution"] = reading.source if reading is not None else None
+    subject["contract"] = "witness-review-2"
+    return deepcopy(subject)
+
+
+def witness_subject(root: Path, witness: dict, graph: dict, doc: dict) -> dict:
+    """Build a reviewable subject only from an explicit, fully resolved inventory."""
+    return _witness_subject(root, witness, doc, _SourceSnapshot(root, graph), reviewable=True)
 
 
 def collation_subject(root: Path, collation: dict, doc: dict, witnesses: dict) -> dict:
+    """A public review subject may not contain unresolved identity-only witnesses."""
+    return _collation_subject(root, collation, doc, witnesses, reviewable=True)
+
+
+def _collation_subject(
+    root: Path, collation: dict, doc: dict, witnesses: dict, *, reviewable: bool
+) -> dict:
+    identifier = collation.get("id")
+    if not isinstance(identifier, str) or not IDENTITY.fullmatch(identifier):
+        raise BindingError("invalid collation identity")
     text_id = _text_id(collation.get("text"))
+    if doc.get("id") != text_id:
+        raise BindingError("document and collation text differ")
     selected = selected_text(doc)
     if collation.get("selected_text_sha256") != digest(selected):
         raise BindingError("selected_text_sha256 differs from the current Latin/ritual subject")
@@ -200,19 +364,31 @@ def collation_subject(root: Path, collation: dict, doc: dict, witnesses: dict) -
     ids = collation.get("witnesses")
     if (
         not isinstance(ids, list)
-        or not ids
+        or len(ids) < 2
         or any(not isinstance(i, str) or i not in witnesses for i in ids)
+        or len(set(ids)) != len(ids)
     ):
-        raise BindingError("collation has an unbound witness")
+        raise BindingError("collation has an unbound or duplicate witness")
+    for identifier in ids:
+        bound = witnesses[identifier]
+        if bound["witness"].get("text") != text_id or bound["witness"].get("id") != identifier:
+            raise BindingError("collation witness identity or text differs")
+        if digest(bound.get("selected_text")) != digest(selected):
+            raise BindingError("collation and witness selected text differ")
+    complete = all(witnesses[i].get("contract") == "witness-review-2" for i in ids)
+    if reviewable and not complete:
+        raise BindingError("reviewable collation requires complete witness source inventories")
     named = {witnesses[identifier]["witness"]["transcription"] for identifier in ids}
     omitted = {name for entry in entries for name in entry["witnesses"]} - named
     if omitted:
         raise BindingError(f"collation omits apparatus witness dependencies: {sorted(omitted)}")
-    return {
-        "contract": "collation-review-1",
-        "collation": {key: value for key, value in collation.items() if key != "review"},
-        "witnesses": {identifier: witnesses[identifier] for identifier in ids},
-    }
+    return deepcopy(
+        {
+            "contract": "collation-review-2" if complete else "collation-identity-2",
+            "collation": {key: value for key, value in collation.items() if key != "review"},
+            "witnesses": {identifier: witnesses[identifier] for identifier in ids},
+        }
+    )
 
 
 def _review(record: dict, subject: dict, *, dependencies_reviewed: bool = True) -> None:
@@ -227,6 +403,8 @@ def _review(record: dict, subject: dict, *, dependencies_reviewed: bool = True) 
         raise BindingError("review must be pending or an exact reviewed subject")
     if not dependencies_reviewed:
         raise BindingError("reviewed collation requires reviewed witness bindings")
+    if subject.get("contract") not in {"witness-review-2", "collation-review-2"}:
+        raise BindingError("review requires a complete source inventory")
     if review["sha256"] != digest(subject):
         raise BindingError("reviewed subject changed; re-review or mark pending explicitly")
 
@@ -236,6 +414,10 @@ def validate_bindings(root: Path, graph: dict) -> list[str]:
     errors: list[str] = []
     docs, subjects, reviews = {}, {}, {}
     bound_files: set[tuple[str, str]] = set()
+    try:
+        snapshot = _SourceSnapshot(root, graph)
+    except (ValueError, KeyError, TypeError) as exc:
+        return [f"bibliography source identities: {exc}"]
 
     def doc(text_id):
         if text_id not in docs:
@@ -244,11 +426,13 @@ def validate_bindings(root: Path, graph: dict) -> list[str]:
 
     for witness in graph.get("witnesses", []):
         try:
-            subject = witness_subject(root, witness, graph, doc(witness.get("text")))
             key = (witness["text"], witness["transcription"])
             if key in bound_files:
                 raise BindingError("multiple witness records bind the same transcript")
             bound_files.add(key)
+            subject = _witness_subject(
+                root, witness, doc(witness.get("text")), snapshot, reviewable=False
+            )
             _review(witness, subject)
             subjects[witness["id"]] = subject
             reviews[witness["id"]] = witness["review"]["status"] == "reviewed"
@@ -256,7 +440,9 @@ def validate_bindings(root: Path, graph: dict) -> list[str]:
             errors.append(f"bibliography witness {witness.get('id')}: {exc}")
     for collation in graph.get("collations", []):
         try:
-            subject = collation_subject(root, collation, doc(collation.get("text")), subjects)
+            subject = _collation_subject(
+                root, collation, doc(collation.get("text")), subjects, reviewable=False
+            )
             _review(
                 collation,
                 subject,

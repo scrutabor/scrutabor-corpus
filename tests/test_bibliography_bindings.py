@@ -18,9 +18,14 @@ from build_reader.bibliography_bindings import (
     witness_subject,
 )
 from checks.apparatus import derived_summary
+from checks.raw_binding import REGISTRY
 
 CORPUS = Path(__file__).resolve().parent.parent
-TEXT = "proprium.sancti-ioannis-apostoli-et-evangelistae-postcommunio"
+TEXT = "proprium.dominica-vi-post-pentecosten-collecta"
+SUPPLEMENTS = sorted(
+    f"use.{TEXT}.{suffix}.mr1962"
+    for suffix in ("continued-body", "expanded-conclusion", "oration-boundaries")
+)
 
 
 @pytest.mark.parametrize("change", ["witness", "selected", "apparatus"])
@@ -59,6 +64,8 @@ def fixture(root, text_id=TEXT):
     graph["witnesses"] = [w for w in graph["witnesses"] if w["text"] == text_id]
     graph["collations"] = [c for c in graph["collations"] if c["text"] == text_id]
     use_ids = {w["use"] for w in graph["witnesses"]}
+    if text_id == TEXT:
+        use_ids.update(SUPPLEMENTS)
     graph["uses"] = [u for u in graph["uses"] if u["id"] in use_ids]
     category, slug = text_id.split(".", 1)
     relative = f"texts/{category}/{slug}.json"
@@ -66,6 +73,12 @@ def fixture(root, text_id=TEXT):
     path.parent.mkdir(parents=True)
     shutil.copyfile(CORPUS / relative, path)
     shutil.copytree(CORPUS / "witnesses" / text_id, root / "witnesses" / text_id)
+    shutil.copytree(CORPUS / "witnesses/raw", root / "witnesses/raw")
+    registry = json.loads((root / REGISTRY).read_text())
+    for binding in registry["bindings"].values():
+        destination = root / binding["witness"]
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(CORPUS / binding["witness"], destination)
     doc = json.loads(path.read_text())
     aliases = {"mr1962": "mr", "do44667ff": "do", "lu1961": "lu"}
     for witness in graph["witnesses"]:
@@ -95,6 +108,11 @@ def bound(tmp_path):
 def reviewed(root, graph, doc):
     subjects = {}
     for witness in graph["witnesses"]:
+        assert witness["text"] == TEXT
+        witness["source_dependencies"] = {
+            "uses": SUPPLEMENTS.copy() if witness["transcription"] == "mr" else [],
+            "raw_binding": "pentecost-vi-collect" if witness["transcription"] == "do" else None,
+        }
         subject = witness_subject(root, witness, graph, doc)
         witness["review"] = {"status": "reviewed", "sha256": digest(subject)}
         subjects[witness["id"]] = subject
@@ -117,13 +135,21 @@ def test_reviewed_exact_bindings_publish_without_internal_fields(bound):
     reviewed(root, graph, doc)
     record = public_text_evidence(graph)["texts"][0]
     assert len(record["witnesses"]) == 2
-    assert record["collation"]["apparatus"] == {
-        "entries": 2,
-        "classes": ["punctuation", "substantive"],
-    }
+    apparatus = json.loads((root / "witnesses" / TEXT / "apparatus.json").read_text())
+    assert record["collation"]["apparatus"] == derived_summary(apparatus)
     serialized = json.dumps(record)
-    for field in ("transcription", "transcription_sha256", "apparatus_sha256", "review"):
+    for field in (
+        "transcription",
+        "transcription_sha256",
+        "apparatus_sha256",
+        "review",
+        "source_dependencies",
+        "source_uses",
+        "raw_resolution",
+        "raw_binding",
+    ):
         assert f'"{field}":' not in serialized
+    assert "witnesses/raw/" not in serialized
 
 
 @pytest.mark.parametrize(
@@ -151,7 +177,7 @@ def test_transcript_changes_fail_closed(bound, change):
         path.rename(other)
         path.symlink_to(other)
     elif change == "body":
-        path.write_text(text.replace("cibo", "verbo"))
+        path.write_text(text + "Alterum verbum.\n")
     elif change == "header":
         path.write_text(text.replace("# source:", "# altered-source:"))
     else:

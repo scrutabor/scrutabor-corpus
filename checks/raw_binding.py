@@ -11,6 +11,7 @@ import hashlib
 import json
 import re
 from collections import Counter
+from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 
@@ -25,6 +26,7 @@ class BindingError(ValueError):
 class BoundReading:
     spans: tuple[tuple[Path, int, int], ...]
     text: str
+    source: dict
 
 
 def _keys(value, required: set[str], label: str) -> None:
@@ -65,7 +67,7 @@ def _hex(value, length: int) -> bool:
 
 def load_registry(root: Path) -> dict:
     """Validate record identities even if a bound witness/marker was deleted."""
-    path = root / REGISTRY
+    path = _path(root, REGISTRY, "witnesses/raw")
     if not path.exists():
         return {"version": 1, "archives": {}, "bindings": {}}
     try:
@@ -139,14 +141,57 @@ def _space(text: str) -> str:
     return " ".join(text.split())
 
 
+class RawBindingSnapshot:
+    """One validation run's registry and checked archive bytes.
+
+    No process-global path cache: a new run always checks the current files.
+    Raw paths may follow symlinks within their existing confinement boundary;
+    transcript review has the separate, stricter no-symlink identity rule.
+    Returned readings never share mutable objects with this snapshot.
+    """
+
+    def __init__(self, root: Path):
+        self._root = root
+        self._registry = deepcopy(load_registry(root))
+        self._bindings = {item["witness"]: key for key, item in self._registry["bindings"].items()}
+        self._loaded: dict[str, tuple[Path, tuple[str, ...]]] = {}
+
+    def _archive(self, key: str, revision: str) -> tuple[Path, tuple[str, ...]]:
+        archives = self._registry["archives"]
+        if not isinstance(key, str) or key not in archives:
+            raise BindingError(f"unknown archive: {key}")
+        record = archives[key]
+        if record["revision"] != revision:
+            raise BindingError(f"archive {key}: revision differs from binding")
+        if key not in self._loaded:
+            path = _path(self._root, record["path"], "witnesses/raw")
+            try:
+                data = path.read_bytes()
+                lines = tuple(data.decode("utf-8").splitlines())
+            except (OSError, UnicodeError) as error:
+                raise BindingError(f"unreadable archive {key}: {error}") from error
+            if hashlib.sha256(data).hexdigest() != record["sha256"]:
+                raise BindingError(f"archive {key}: SHA-256 mismatch")
+            self._loaded[key] = (path, lines)
+        return self._loaded[key]
+
+    def resolve(self, witness: Path) -> BoundReading | None:
+        return _resolve_binding(witness, self)
+
+
 def resolve_binding(witness: Path, root: Path) -> BoundReading | None:
     """Return a fully checked reading, None for legacy, or fail closed."""
-    registry = load_registry(root)
+    return RawBindingSnapshot(root).resolve(witness)
+
+
+def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReading | None:
+    registry = snapshot._registry
     text = witness.read_text(encoding="utf-8")
     headers = _headers(text)
     markers = headers.get("raw-binding", [])
-    relative = witness.relative_to(root).as_posix()
-    matches = [key for key, item in registry["bindings"].items() if item["witness"] == relative]
+    relative = witness.relative_to(snapshot._root).as_posix()
+    registered = snapshot._bindings.get(relative)
+    matches = [registered] if registered is not None else []
     if not markers and not matches:
         return None
     if len(markers) != 1 or markers != matches:
@@ -155,28 +200,11 @@ def resolve_binding(witness: Path, root: Path) -> BoundReading | None:
     if headers.get("revision") != [binding["revision"]]:
         raise BindingError("witness revision differs from its raw binding")
     archives = registry["archives"]
-    loaded: dict[str, tuple[Path, list[str]]] = {}
-
-    def archive(key):
-        if not isinstance(key, str) or key not in archives:
-            raise BindingError(f"unknown archive: {key}")
-        if key not in loaded:
-            record = archives[key]
-            if record["revision"] != binding["revision"]:
-                raise BindingError(f"archive {key}: revision differs from binding")
-            path = _path(root, record["path"], "witnesses/raw")
-            try:
-                data = path.read_bytes()
-                lines = data.decode("utf-8").splitlines()
-            except (OSError, UnicodeError) as error:
-                raise BindingError(f"unreadable archive {key}: {error}") from error
-            if hashlib.sha256(data).hexdigest() != record["sha256"]:
-                raise BindingError(f"archive {key}: SHA-256 mismatch")
-            loaded[key] = (path, lines)
-        return loaded[key]
+    used_archives: set[str] = set()
 
     def bounds(item):
-        path, lines = archive(item["archive"])
+        path, lines = snapshot._archive(item["archive"], binding["revision"])
+        used_archives.add(item["archive"])
         first, last = item["first"], item["last"]
         if type(first) is not int or type(last) is not int or not 1 <= first <= last <= len(lines):
             raise BindingError("invalid source line range")
@@ -285,4 +313,12 @@ def resolve_binding(witness: Path, root: Path) -> BoundReading | None:
     body = _space("\n".join(line for line in text.splitlines() if not line.startswith("#")))
     if not body or body != reading:
         raise BindingError("transcription differs from its exact ordered raw reading")
-    return BoundReading(tuple(spans), reading)
+    source = {
+        "contract": "raw-reading-1",
+        "registry_version": registry["version"],
+        "binding_id": markers[0],
+        "transcription_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+        "binding": binding,
+        "archives": {key: archives[key] for key in sorted(used_archives)},
+    }
+    return BoundReading(tuple(spans), reading, deepcopy(source))
