@@ -71,6 +71,7 @@ def rejected(root, path):
         "transfiguration-gradual",
         "visitation-introit",
         "pentecost-xxii-postcommunion",
+        "pentecost-xiii-postcommunion",
     ],
 )
 def test_actual_complete_readings_and_attribution(bound_corpus, key):
@@ -87,16 +88,18 @@ def test_actual_complete_readings_and_attribution(bound_corpus, key):
 @pytest.mark.parametrize(
     "change", ["missing", "wrong-name", "wrong-target", "wrong-book", "read-control"]
 )
-def test_shared_prayer_reference_is_exact_and_not_sacred_text(bound_corpus, change):
+@pytest.mark.parametrize("key", ["pentecost-xxii-postcommunion", "pentecost-xiii-postcommunion"])
+def test_shared_prayer_reference_is_exact_and_not_sacred_text(bound_corpus, change, key):
     root, data = bound_corpus
-    key = "pentecost-xxii-postcommunion"
     binding = data["bindings"][key]
     # A mutation must begin from a verified complete positive control.
     assert resolve_binding(witness(root, data, key), root) is not None
     if change == "missing":
         binding["references"] = []
     elif change == "wrong-name":
-        binding["references"][0]["text"] = "$Per Dominum"
+        binding["references"][0]["text"] = (
+            "$Per Dominum" if binding["references"][0]["text"] == "$Qui vivis" else "$Qui vivis"
+        )
     elif change == "wrong-target":
         binding["references"][0]["target"] = 0
     elif change == "wrong-book":
@@ -109,7 +112,7 @@ def test_shared_prayer_reference_is_exact_and_not_sacred_text(bound_corpus, chan
             )
         )
     else:
-        binding["reading"][0]["last"] = 57
+        binding["reading"][0]["last"] = binding["references"][0]["line"]
     save(root, data)
     rejected(root, witness(root, data, key))
 

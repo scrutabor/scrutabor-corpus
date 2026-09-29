@@ -66,6 +66,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pent22-0.txt",
       "sha256": "80c5f096e5d0b8a2df8f01c58e231905008f94d305882a461bfd9f439e7018bf"
+    },
+    "pentecost-xiii": {
+      "upstream": "web/www/missa/Latin/Tempora/Pent13-0.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pent13-0.txt",
+      "sha256": "506bb7cacc56c5ba3c07119cf458d3d7663bc8c860bf80d3eaab6c2db4c528bb"
     }
   },
   "bindings": {
@@ -366,6 +372,46 @@
           "archive": "epiphany-vi-epistle",
           "first": 22,
           "last": 22
+        }
+      ]
+    },
+    "pentecost-xiii-postcommunion": {
+      "witness": "witnesses/proprium.dominica-xiii-post-pentecosten-postcommunio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "pentecost-xiii",
+          "first": 54,
+          "last": 56,
+          "section": "Postcommunio",
+          "section_line": 54
+        },
+        {
+          "archive": "prayers",
+          "first": 95,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "pentecost-xiii",
+          "line": 56,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "pentecost-xiii",
+          "first": 55,
+          "last": 55
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
         }
       ]
     }

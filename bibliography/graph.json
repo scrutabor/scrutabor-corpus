@@ -30163,6 +30163,28 @@
       "evidence_sha256": "506bb7cacc56c5ba3c07119cf458d3d7663bc8c860bf80d3eaab6c2db4c528bb"
     },
     {
+      "id": "use.proprium.dominica-xiii-post-pentecosten-postcommunio.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "segment",
+        "text": "proprium.dominica-xiii-post-pentecosten-postcommunio",
+        "segment": "s01"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales, 115 a",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "The prescribed Father-directed conclusion supplies the expansion from Per Dominum nostrum through per omnia saecula saeculorum (w011–w031), while the proper page prints only Per Dominum. Reader accents and the house tuum: Qui punctuation and capitalization are supplied separately.",
+      "verified_on": "2026-09-29",
+      "decision": "RETAIN",
+      "decision_reason": "The directly inspected rubric supplies the full conclusion after the proper's abbreviated cue; this use does not claim the prayer body, the separate response, or its performer and voice.",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"
+    },
+    {
       "id": "use.proprium.dominica-xiii-post-pentecosten-postcommunio.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -30176,7 +30198,7 @@
         "scan": "leaf n470 / PDF p. 471",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n470/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper page prints the ten-word prayer body (w001–w010) and the abbreviated Per Dominum cue. The full conclusion is supplied separately from Rubricae generales 115 a, with declared house accidentals.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
       "evidence_sha256": "2d64cdf35fdaab64a07c579c9505d20eeb2a5da4db5529ab89dee687c631d83e"
@@ -68445,7 +68467,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "ac5835c53a3764142759bdf12a2d267a6126527afaec2981ba0fa001a9afc6a8",
+      "transcription_sha256": "12b00527daeef8ab1e90046cb413a2a229239ed05c34d12d42f9c0e9888c9cac",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
@@ -68461,9 +68483,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "9ca5dd9b475b9f62d5528c33d1d0619026df1fb8c42925dffc20f374aad01c53",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "b8d1200cc02211055ad4658c4ca92c6aca74cacf36d859cbe55f5b45d25f4e57",
+      "orthography_profile": "exact-page-body-with-declared-expansion",
+      "independence_basis": "The body and Per Dominum cue are checked against the identified Benziger 1962 page image. Rubricae generales 115 a supplies the full conclusion; the expansion has declared house accidentals. Historical preparation claims remain separate from this pending source-binding review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -94807,12 +94829,14 @@
         "witness.proprium.dominica-xiii-post-pentecosten-postcommunio.mr1962"
       ],
       "apparatus": {
-        "entries": 1,
+        "entries": 5,
         "classes": [
+          "capitalization",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "3f4931428afe8aad6dbb3eb982785bbd330ce8c5d56db723a105e8d9298b363b",
+      "apparatus_sha256": "64f7c1287b3fcd56028e6350d4e947329109a5cf867723e0a8cbeb0924815cf0",
       "review": {
         "status": "pending"
       }
