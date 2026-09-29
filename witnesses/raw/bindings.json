@@ -90,6 +90,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/10-18.txt",
       "sha256": "7b1db0fe056275ba13aa9321c33c0c4c584955612f3cc5902fb881b71ce2fc8f"
+    },
+    "christ-the-king": {
+      "upstream": "web/www/missa/Latin/Sancti/10-DU.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-sancti-10-DU.txt",
+      "sha256": "fde044df8be6b9f539df6cb80f6af4f33d4d392eb32c253f64341aa8b5a6c969"
     }
   },
   "bindings": {
@@ -571,6 +577,46 @@
           "archive": "prayers",
           "first": 96,
           "last": 97
+        }
+      ]
+    },
+    "king-postcommunion": {
+      "witness": "witnesses/proprium.d-n-iesu-christi-regis-postcommunio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "christ-the-king",
+          "first": 65,
+          "last": 67,
+          "section": "Postcommunio",
+          "section_line": 65
+        },
+        {
+          "archive": "prayers",
+          "first": 119,
+          "last": 121,
+          "section": "Qui tecum",
+          "section_line": 119
+        }
+      ],
+      "references": [
+        {
+          "archive": "christ-the-king",
+          "line": 67,
+          "text": "$Qui tecum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "christ-the-king",
+          "first": 66,
+          "last": 66
+        },
+        {
+          "archive": "prayers",
+          "first": 120,
+          "last": 121
         }
       ]
     }
