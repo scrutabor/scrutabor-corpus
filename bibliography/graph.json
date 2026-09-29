@@ -23549,6 +23549,26 @@
       "evidence_sha256": "d488e370334185fcafd8882ed61df4971f88f6c2cbaaeb298da3d22d97ecd27d"
     },
     {
+      "id": "use.proprium.dominica-iv-post-epiphaniam-collecta.body-continuation.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-iv-post-epiphaniam-collecta"
+      },
+      "locator": {
+        "printed": "p. 47",
+        "scan": "leaf n126 / PDF p. 127",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n126/mode/1up"
+      },
+      "claim": "The top-left continuation completes patimur across the page break and the remaining collect body through vincamus, followed by Per Dominum. It belongs to the IV Sunday collect begun on page 46 despite the later running heading.",
+      "verified_on": "2026-09-29",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "fddfc5942a9c7772130b1e5d335f34c01392d17b03ed9b2ea25aebb8f4451a60",
+      "decision_reason": "Separate directly inspected source scope. This use does not grant complete prayer, response-participation or parent-formulary acceptance."
+    },
+    {
       "id": "use.proprium.dominica-iv-post-epiphaniam-collecta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -23558,12 +23578,52 @@
         "text": "proprium.dominica-iv-post-epiphaniam-collecta"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi4-0.txt (section [Oratio]); resolved spans: web/www/missa/Latin/Tempora/Epi4-0.txt (lines 16-17); web/www/missa/Latin/Ordo/Prayers.txt (lines 97-98)"
+        "section": "Latin/Tempora/Epi4-0.txt [Oratio], heading line 15, proper body line 16, $Per Dominum reference line 17"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The pinned file provides the thirty-word proper body and an explicit call to the shared Per Dominum formula. The full ending is established by its separate original-byte source use and raw binding.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "evidence_sha256": "fbc74053a33bcaafe98995fa4f4ea3a0a28e08116549057f8071757703f41ebe",
+      "decision_reason": "Proper and shared-formula scopes separated on 2026-09-29. Exact original bytes replace ambiguity with prepared-local line coordinates. Historical date preserved."
+    },
+    {
+      "id": "use.proprium.dominica-iv-post-epiphaniam-collecta.expanded-conclusion.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-iv-post-epiphaniam-collecta"
+      },
+      "locator": {
+        "section": "Latin/Ordo/Prayers.txt [Per Dominum], heading line 95, conclusion line 96, response line 97. Original evidence lines 95–97."
+      },
+      "claim": "The unmodified pinned shared formula supplies the twenty-one-word conclusion and distinct Amen after resolving $Per Dominum. Its original coordinates are 96–97. Earlier coordinates 97–98 referred to a local copy with an inserted preparation comment. Speaker markers are framing.",
+      "verified_on": "2026-09-29",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b",
+      "decision_reason": "Separate directly inspected source scope. This use does not grant complete prayer, response-participation or parent-formulary acceptance."
+    },
+    {
+      "id": "use.proprium.dominica-iv-post-epiphaniam-collecta.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-iv-post-epiphaniam-collecta"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "The Father-directed formula supplies the twenty-one-word conclusion and separate Amen. Its unaccented rubric prints tuum, qui. House accents, ligatures, tuum: Qui and terminal Amen. are declared in the witness, not represented as a literal proper-page reading.",
+      "verified_on": "2026-09-29",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision_reason": "Separate directly inspected source scope. This use does not grant complete prayer, response-participation or parent-formulary acceptance."
     },
     {
       "id": "use.proprium.dominica-iv-post-epiphaniam-collecta.mr1962",
@@ -23579,11 +23639,11 @@
         "scan": "leaves n125–n126 / PDF pp. 126–127",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n125/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The Benziger 1962 Editio iuxta typicam prints the beginning of this collect on page 46 and continues it on page 47, ending with the Per Dominum cue. The continuation image and prescribed full ending have separate source uses.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "cf71abd0d2131b4d701713d47a40e488318a477e5484b5a036de8261f4ead039",
-      "decision_reason": "Locator corrected against the page image: the text is printed on the leaves now cited, from its opening to its end."
+      "decision_reason": "Scope clarified on 2026-09-29: the proper body crosses the page and the full conclusion is an expansion. Historical preparation date retained, not renewed as complete source acceptance."
     },
     {
       "id": "use.proprium.dominica-iv-post-epiphaniam-collecta.oration-boundaries.mr1962",
@@ -23595,15 +23655,16 @@
         "text": "proprium.dominica-iv-post-epiphaniam-collecta"
       },
       "locator": {
-        "printed": "pp. xxxii–xxxiv, 226",
-        "scan": "PDF scans 38–40, 306",
-        "section": "RG 480–481, 511 d/i, 513–514; Ordo conclusion"
+        "printed": "p. lii; pp. xxxiii–xxxiv",
+        "scan": "leaf n57 / PDF p. 58; leaves n38–n39 / PDF pp. 39–40",
+        "section": "Ritus servandus V 1–2; RG 511 d, 513 a and 514",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n57/mode/1up"
       },
-      "claim": "The final secret has an audible Per omnia saecula saeculorum followed by the response Amen. Collects and postcommunions are priestly orations with a separate response. These rules determine the modeled boundaries, not the completeness of a date-specific commemoration inventory.",
+      "claim": "The collect is a priestly oration after Oremus. These rubrics establish its audible delivery in a read Mass and sung delivery in a solemn or sung Mass. The prescribed conclusion and Amen are supplied by the separate RG 115 a source. These loci alone do not certify the complete response-participation map or date-specific commemoration inventory.",
       "verified_on": "2026-09-19",
-      "evidence_sha256": "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
+      "evidence_sha256": "beace17715923bcbb21c5e213ff92bbda4bda317b80e90a1752b5d851a1ba7ea",
       "decision": "RETAIN",
-      "decision_reason": "Source-defined ritual boundary only. The complete word sequence and existing word IDs are unchanged."
+      "decision_reason": "Claim narrowed on 2026-09-29 to directly inspected collect rules, removing secret-specific rules and the unrelated preface-page locator. Historical date preserved; ritual metadata unchanged."
     },
     {
       "id": "use.proprium.dominica-iv-post-epiphaniam-epistola.do44667ff",
@@ -63670,12 +63731,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "f8c737f2fcf8b5feea6bd7487340502bd988c297c9a6d838f2ecfa5e65277ee8",
+      "transcription_sha256": "ee86f645c08e57fc7cfd71a7cb5e0fdcd9603b456b43ad4fa72a22325aa16a91",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus, used as a derived comparison rather than the controlling edition. Both original body and shared conclusion are explicitly bound.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-iv-post-epiphaniam-collecta.expanded-conclusion.do44667ff"
+        ],
+        "raw_binding": "epiphany-iv-collect"
       }
     },
     {
@@ -63686,12 +63753,20 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "8dfe9253217504231cfd0a9663366408d1c83d2f7b8398066e8ca59c2afdb803",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "4a61df73b8d8282fc53cfba491128892044d167cb33dda7f885501ccfc0d48f2",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "Directly compared Benziger 1962 body across pages 46–47, with RG 115 a expansion and declared house accidentals. Historical preparation notes remain qualified in the witness, not renewed as approval.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-iv-post-epiphaniam-collecta.body-continuation.mr1962",
+          "use.proprium.dominica-iv-post-epiphaniam-collecta.expanded-conclusion.mr1962",
+          "use.proprium.dominica-iv-post-epiphaniam-collecta.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -91861,7 +91936,7 @@
     {
       "id": "collation.proprium.dominica-iv-post-epiphaniam-collecta.mr1962-do44667ff",
       "text": "proprium.dominica-iv-post-epiphaniam-collecta",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "Benziger 1962 proper body across two pages, with declared RG 115 a expansion and house accidentals, compared with the exact pinned digital body and shared formula",
       "selected_text_sha256": "ee5b04ae897b7b13c323dd69791ea301afd6811a2d579f47345944b72fed1960",
       "witnesses": [
         "witness.proprium.dominica-iv-post-epiphaniam-collecta.do44667ff",
@@ -91875,7 +91950,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "b9e33a0a046dc1ca295858fe9c9907a8b8f3ea55c965ec87ec16759c5f812f1d",
+      "apparatus_sha256": "e104a640eb1d32e7c7fb6d94224f72f9ffa4e23422437051efdaab9d499d7cf6",
       "review": {
         "status": "pending"
       }

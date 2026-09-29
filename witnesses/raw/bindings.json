@@ -96,6 +96,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-sancti-10-DU.txt",
       "sha256": "fde044df8be6b9f539df6cb80f6af4f33d4d392eb32c253f64341aa8b5a6c969"
+    },
+    "epiphany-iv": {
+      "upstream": "web/www/missa/Latin/Tempora/Epi4-0.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-Tempora-Epi4-0.txt",
+      "sha256": "fbc74053a33bcaafe98995fa4f4ea3a0a28e08116549057f8071757703f41ebe"
     }
   },
   "bindings": {
@@ -617,6 +623,46 @@
           "archive": "prayers",
           "first": 120,
           "last": 121
+        }
+      ]
+    },
+    "epiphany-iv-collect": {
+      "witness": "witnesses/proprium.dominica-iv-post-epiphaniam-collecta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "epiphany-iv",
+          "first": 15,
+          "last": 17,
+          "section": "Oratio",
+          "section_line": 15
+        },
+        {
+          "archive": "prayers",
+          "first": 95,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "epiphany-iv",
+          "line": 17,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "epiphany-iv",
+          "first": 16,
+          "last": 16
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
         }
       ]
     }

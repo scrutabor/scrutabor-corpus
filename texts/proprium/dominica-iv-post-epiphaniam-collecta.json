@@ -40,8 +40,8 @@
         { "id": "w019", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w020", "form": "córporis", "lemma": "corpus", "morph": { "case": "gen", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" }, "post": ";" },
         { "id": "w021", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
-        { "id": "w022", "form": "ea", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": "," },
-        { "id": "w023", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w022", "form": "ea", "lemma": "is", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" }, "post": "," },
+        { "id": "w023", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
         { "id": "w024", "form": "pro", "lemma": "pro", "morph": { "governs": "abl", "pos": "prep" }, "head": "w025" },
         { "id": "w025", "form": "peccátis", "lemma": "peccatum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "pl", "pos": "noun" } },
         { "id": "w026", "form": "nostris", "lemma": "noster", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "head": "w025" },
@@ -106,9 +106,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "notes": "The thirty-word collect body follows the Benziger 1962 Editio iuxta typicam. Its Per Dominum cue is expanded under Rubricae generales 115 a, with declared house accentuation and punctuation. Amen remains a separate response.",
     "source": {
-      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The body was checked across Benziger 1962 pages 46–47 (leaves n125–n126). The complete conclusion and Amen follow Rubricae generales 115 a on page xvii (leaf n22), not a fully printed conclusion on the proper pages. The exact digital body and shared formula have checksum-bound original line ranges. Six accidental differences are recorded. Historical preparation statements are preserved, not renewed as source acceptance.",
       "witnesses": "witnesses/proprium.dominica-iv-post-epiphaniam-collecta/",
       "apparatus": "witnesses/proprium.dominica-iv-post-epiphaniam-collecta/apparatus.json"
     },
@@ -120,7 +120,9 @@
       "w026": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w033": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w033": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
