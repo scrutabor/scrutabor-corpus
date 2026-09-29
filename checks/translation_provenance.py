@@ -23,6 +23,7 @@ from pathlib import Path
 
 from build_reader import store
 
+WORDING_BASIS = "historical_wording_basis"
 ORIGINS = frozenset(("working-unsettled", "own", "public-domain", "traditional", "trivial"))
 REVIEWS = frozenset(("working", "internally-reviewed", "expert-reviewed"))
 
@@ -136,7 +137,30 @@ def protected(text_id: str, language: str) -> bool:
     return False
 
 
+def wording_bases(uses: list, language: str) -> tuple[set[str], set[str]]:
+    """Sites and texts that a retained use names as a page's wording basis."""
+    sites: set[str] = set()
+    texts: set[str] = set()
+    for use in uses:
+        if (
+            use.get("decision") not in {"RETAIN", "RETAIN_WITH_CORRECTION"}
+            or use.get("role") != WORDING_BASIS
+        ):
+            continue
+        address = use.get("address") or {}
+        if address.get("kind") == "segment":
+            sites.add(f"{address.get('text')}.{address.get('segment')}.{language}")
+        elif address.get("kind") == "text":
+            texts.add(str(address.get("text")))
+    return sites, texts
+
+
 def corpus_sites(corpus: Path) -> dict[str, dict]:
+    bases = {}
+    for language in store.language_ids(corpus):
+        path = corpus / "languages" / language / "bibliography.json"
+        uses = json.loads(path.read_text(encoding="utf-8")).get("uses") or []
+        bases[language] = wording_bases(uses, language)
     sites: dict[str, dict] = {}
     for doc, layers in store.all_texts(corpus):
         for segment in doc["segments"]:
@@ -148,6 +172,7 @@ def corpus_sites(corpus: Path) -> dict[str, dict]:
                 if not isinstance(target, str):
                     continue
                 site = f"{doc['id']}.{segment['id']}.{language}"
+                cited_sites, cited_texts = bases[language]
                 sites[site] = {
                     "site": site,
                     "text": doc["id"],
@@ -156,7 +181,11 @@ def corpus_sites(corpus: Path) -> dict[str, dict]:
                     "familiar_core": protected(doc["id"], language),
                     "source_sha256": canonical_hash(source_payload(segment)),
                     "target_sha256": canonical_hash(target),
-                    "has_wording_citations": bool(localized.get("translation_citations")),
+                    # Legacy attachments remain a frozen compatibility input;
+                    # new bases are authored only in the normalized graph.
+                    "has_wording_citations": bool(localized.get("translation_citations"))
+                    or site in cited_sites
+                    or doc["id"] in cited_texts,
                 }
     return sites
 

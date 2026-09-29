@@ -19,30 +19,12 @@ from collections import Counter
 from pathlib import Path
 
 from build_reader import store
+from checks.translation_provenance import WORDING_BASIS, wording_bases
 from checks.translation_provenance import load as load_provenance
 
 RELATIONSHIPS = frozenset(("exact", "normalized", "revised", "traditional-composite"))
 INHERITED = frozenset(("public-domain", "traditional"))
 PRINTED = frozenset(("exact", "normalized"))
-WORDING_BASIS = "historical_wording_basis"
-
-
-def wording_bases(uses: list, language: str) -> tuple[set[str], set[str]]:
-    """Sites and texts that a retained use names as a page's wording basis."""
-    sites: set[str] = set()
-    texts: set[str] = set()
-    for use in uses:
-        if (
-            use.get("decision") not in {"RETAIN", "RETAIN_WITH_CORRECTION"}
-            or use.get("role") != WORDING_BASIS
-        ):
-            continue
-        address = use.get("address") or {}
-        if address.get("kind") == "segment":
-            sites.add(f"{address.get('text')}.{address.get('segment')}.{language}")
-        elif address.get("kind") == "text":
-            texts.add(str(address.get("text")))
-    return sites, texts
 
 
 def unbased(expanded: dict[str, str], sites: set[str], texts: set[str]) -> list[str]:

@@ -29,7 +29,12 @@ Each entry carries:
 
 `working-unsettled` is a working-edition provenance state, not a legal verdict.
 An inherited origin requires a wording citation; `own` and `trivial` prohibit
-one. `checks/translation_provenance.py` rejects missing, duplicated, orphaned,
+one. This includes a `historical_wording_basis` use in the same language's
+bibliography, retained with `RETAIN` or `RETAIN_WITH_CORRECTION` and addressed
+to that segment or its text. Comparators, other scopes/languages and
+non-retained uses do not count. Frozen legacy inline citations remain
+supported; new source uses belong only in the normalized bibliography.
+`checks/translation_provenance.py` rejects missing, duplicated, orphaned,
 or stale entries. A source or target change therefore makes review provenance
 stale rather than silently inheriting it.
 

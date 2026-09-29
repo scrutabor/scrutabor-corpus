@@ -1,5 +1,8 @@
 import json
 
+import pytest
+
+from build_reader.bibliography import DECISIONS
 from checks.translation_provenance import canonical_hash, check, initialize, protected
 
 
@@ -60,6 +63,9 @@ def write_text(corpus, target="Words.", cited_pl=False):
                     "texts": ["orationes.test"],
                 }
             )
+        )
+        (root / "bibliography.json").write_text(
+            json.dumps({"schema_version": "1.4.0", "language": language, "uses": []})
         )
 
 
@@ -126,3 +132,81 @@ def test_paschal_pair_protects_its_inherited_greeting_in_both_languages():
     assert protected(text_id, "pl")
     assert protected(text_id, "en")
     assert not protected(text_id, "la")
+
+
+def set_origin(corpus, origin, language="pl"):
+    path = corpus / "languages" / language / "translation-provenance.json"
+    ledger = json.loads(path.read_text())
+    ledger["sites"][0]["origin"] = origin
+    path.write_text(json.dumps(ledger))
+
+
+def set_basis(corpus, address, decision="RETAIN", role="historical_wording_basis", language="pl"):
+    path = corpus / "languages" / language / "bibliography.json"
+    graph = json.loads(path.read_text())
+    graph["uses"] = [{"role": role, "decision": decision, "address": address}]
+    path.write_text(json.dumps(graph))
+
+
+@pytest.mark.parametrize("origin", ["public-domain", "traditional", "own", "trivial"])
+@pytest.mark.parametrize("decision", sorted(DECISIONS))
+@pytest.mark.parametrize("role", ["historical_wording_basis", "historical_wording_comparator"])
+@pytest.mark.parametrize("kind", ["segment", "text"])
+def test_graph_only_wording_origin_matches_retained_basis(tmp_path, origin, decision, role, kind):
+    write_text(tmp_path)
+    initialize_all(tmp_path)
+    set_origin(tmp_path, origin)
+    address = {"kind": kind, "text": "orationes.test"}
+    if kind == "segment":
+        address["segment"] = "s01"
+    set_basis(tmp_path, address, decision, role)
+    cited = role == "historical_wording_basis" and decision in {"RETAIN", "RETAIN_WITH_CORRECTION"}
+    errors, _ = check(tmp_path)
+    inherited = origin in {"public-domain", "traditional"}
+    if inherited == cited:
+        assert errors == []
+    else:
+        diagnostic = (
+            "requires a wording citation" if inherited else "cannot carry a wording citation"
+        )
+        assert errors == [f"orationes.test.s01.pl: origin={origin} {diagnostic}"]
+
+
+@pytest.mark.parametrize(
+    ("address", "language"),
+    [
+        ({"kind": "segment", "text": "orationes.test", "segment": "s02"}, "pl"),
+        ({"kind": "segment", "text": "orationes.other", "segment": "s01"}, "pl"),
+        ({"kind": "text", "text": "orationes.other"}, "pl"),
+        ({"kind": "word", "text": "orationes.test", "word": "w001"}, "pl"),
+        ({"kind": "lemma", "lemma": "amen"}, "pl"),
+        ({"kind": "segment", "text": "orationes.test", "segment": "s01"}, "en"),
+        ({"kind": "text", "text": "orationes.test"}, "en"),
+    ],
+)
+def test_unrelated_graph_basis_does_not_cover_a_site(tmp_path, address, language):
+    write_text(tmp_path)
+    initialize_all(tmp_path)
+    set_origin(tmp_path, "public-domain")
+    set_basis(tmp_path, address, language=language)
+    errors, _ = check(tmp_path)
+    assert errors == ["orationes.test.s01.pl: origin=public-domain requires a wording citation"]
+
+
+@pytest.mark.parametrize("language", ["pl", "en"])
+def test_graph_basis_does_not_promote_unsettled_origin(tmp_path, language):
+    write_text(tmp_path)
+    initialize_all(tmp_path)
+    set_basis(tmp_path, {"kind": "text", "text": "orationes.test"}, language=language)
+    errors, tally = check(tmp_path)
+    assert errors == []
+    assert tally == {"working-unsettled": 2}
+
+
+@pytest.mark.parametrize("origin", ["public-domain", "traditional"])
+def test_legacy_wording_citation_remains_supported(tmp_path, origin):
+    write_text(tmp_path, cited_pl=True)
+    initialize_all(tmp_path)
+    set_origin(tmp_path, origin)
+    errors, _ = check(tmp_path)
+    assert errors == []
