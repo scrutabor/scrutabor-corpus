@@ -27490,9 +27490,9 @@
         "text": "proprium.dominica-vi-post-pentecosten-epistola"
       },
       "locator": {
-        "section": "pinned source key Tempora/Pent06-0; resolved section [Lectio] with declared inherited references"
+        "section": "web/www/missa/Latin/Tempora/Pent06-0.txt [Lectio], lines 27–28; complete reading at line 28, announcement at line 26 excluded"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The pinned Latin Mass data contain the complete epistle body at line 28, independently maintained as a derived comparison witness. Nine word positions differ accidentally from the selected printed reading; no inherited text is expanded.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
       "evidence_sha256": "e83a9f1330d0f1ff1902fea97694ae5a42efc3423b535f57aaa04e3be6b410fe"
@@ -27511,7 +27511,7 @@
         "scan": "leaf n460 / PDF p. 461",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n460/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited Benziger 1962 (Editio iuxta typicam) page prints the complete 132-word epistle body, Romans 6:3–11 with Fratres, without shared expansions. The announcement and scripture reference are outside the standalone reading.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
       "evidence_sha256": "e99c61760982eec4427ac4b65732a529d86c3400ba63e3aa58f8246af37eb4ed"
@@ -66487,7 +66487,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "e2860b597dd093f022c3580d43d14dfef06d8f861282c75f2f56135d444fa9af",
+      "transcription_sha256": "737a9632fc07c3b155049d33474dd8294ecd469627e70b2babdcab6a88dc6abb",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
@@ -66503,9 +66503,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "856b26756a99af7485e0b58b0b3e8a73688aed537611c2afc67c2842acdc78d6",
+      "transcription_sha256": "61917a75779c878495f71793286ca60671296a171cddff65bcc6384ed0d05ed7",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The directly viewed Benziger 1962 (Editio iuxta typicam) page establishes the complete epistle body without shared expansions. Current page verification does not authenticate the historical preparation narrative or renew the pending source-binding review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -93630,19 +93630,21 @@
     {
       "id": "collation.proprium.dominica-vi-post-pentecosten-epistola.mr1962-do44667ff",
       "text": "proprium.dominica-vi-post-pentecosten-epistola",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The Benziger 1962 (Editio iuxta typicam) epistle body, Romans 6:3–11 with Fratres, without shared expansions",
       "selected_text_sha256": "b18db5049d48b0f4f321ed7d5f0f08d4d14725f32daa678b8832510e9b23a0f3",
       "witnesses": [
         "witness.proprium.dominica-vi-post-pentecosten-epistola.do44667ff",
         "witness.proprium.dominica-vi-post-pentecosten-epistola.mr1962"
       ],
       "apparatus": {
-        "entries": 4,
+        "entries": 9,
         "classes": [
+          "accent",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "dd0a8a6eeaa368bc1b17f63cc6cffacf317bbad412be48998bdbaf25e10caf87",
+      "apparatus_sha256": "ec65309c224125f48d4b31d8d05eb8386773fceb9c542b2e40418092f88f250d",
       "review": {
         "status": "pending"
       }
