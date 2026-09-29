@@ -13,6 +13,7 @@ the guard was written.
 
 import pytest
 
+from build_reader.layers import enrich_layer, expand_core
 from checks.orthography import BRITISH, _hits, check, check_lexicon
 
 
@@ -110,3 +111,68 @@ class TestWhereItReads:
     def test_the_lexicon_answers_to_the_same_rule(self):
         found = check_lexicon({"centrum": {"senses": ["centre"], "derivatives": ["theatre"]}})
         assert len(found) == 2
+
+
+@pytest.mark.parametrize("field", ["note", "alignment"])
+@pytest.mark.parametrize("cited", [False, True])
+@pytest.mark.parametrize("spelling,errors", [("honor", 0), ("honour", 1)])
+def test_own_word_help_is_checked_beside_quoted_verses(field, cited, spelling, errors):
+    core = {
+        "id": TEXT["id"],
+        "segments": [{"id": "s01", "words": [{"id": "w001"}, {"id": "w002"}]}],
+    }
+    layer = {
+        "language": "en",
+        "text": TEXT["id"],
+        "words": {"w001": {}, "w002": {}},
+        "segments": {"s01": {"translation": "In honor."}},
+    }
+    if cited:
+        layer["segments"]["s01"].update(
+            translation="In honour.",
+            translation_citations=[{"title": "Historical spelling control"}],
+        )
+    if field == "note":
+        layer["words"]["w001"]["note"] = f"In {spelling}."
+    else:
+        layer["segments"]["s01"]["alignments"] = [
+            {"words": ["w001", "w002"], "anchor": "w002", "gloss": f"in {spelling}"}
+        ]
+    found = check(expand_core(core), enrich_layer(core, layer))
+    assert len(found) == errors
+    if errors:
+        assert field in found[0] and "honour" in found[0]
+
+
+def test_alignment_spelling_uses_its_own_segment_and_word_locator():
+    data = gloss(
+        segments={
+            "s01": {
+                "alignments": [
+                    {"words": ["w001"], "reason": "idiom"},
+                    {"words": ["w002", "w003"], "anchor": "w003", "gloss": "in honor"},
+                ]
+            },
+            "s02": {
+                "alignments": [{"words": ["w004", "w005"], "anchor": "w005", "gloss": "in honour"}]
+            },
+        }
+    )
+    found = check(TEXT, data)
+    assert found == [
+        "ordinarium.test:s02 alignment w004–w005: 'honour' is British, "
+        "and this edition writes American — 'honor'"
+    ]
+
+
+def test_polish_notes_and_alignments_are_not_english_spelling():
+    data = gloss(
+        lang="pl",
+        words={"w001": {"note": "Honour"}},
+        segments={
+            "s01": {
+                "alignments": [{"words": ["w001", "w002"], "anchor": "w002", "gloss": "honour"}]
+            }
+        },
+    )
+    assert check(TEXT, data) == []

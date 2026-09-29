@@ -137,8 +137,13 @@ def check(doc: dict, gloss: dict) -> list[str]:
     for wid, entry in (gloss.get("words") or {}).items():
         report(wid, entry.get("gloss") or "")
         report(f"{wid} explanation", entry.get("explanation") or "")
+        report(f"{wid} note", entry.get("note") or "")
     for sid, segment in (gloss.get("segments") or {}).items():
         report(f"{sid} rubric", segment.get("narrative") or "")
+        # Shared word help is our own wording even beside a quoted verse.
+        for alignment in segment.get("alignments") or []:
+            words = "–".join(alignment.get("words") or [])
+            report(f"{sid} alignment {words}", alignment.get("gloss") or "")
         # a cited verse quotes its source, spelling and all
         if not segment.get("translation_citations"):
             report(f"{sid} verse", segment.get("translation") or "")
