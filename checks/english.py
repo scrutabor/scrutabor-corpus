@@ -6,7 +6,7 @@ rather than to the Latin case — *believe IN one God* renders an accusative,
 *have mercy ON us* a dative, and neither is a mistake. So this module asserts
 only what is decidable without English morphology, and says nothing else.
 
-Two repeated-preposition patterns are checked:
+Three narrow gloss patterns are checked:
 
 - **A preposition rendered twice.** When *de* is glossed *from* and its own
   object *cælis* is glossed *of heaven*, the gloss line reads *Father from of
@@ -15,6 +15,10 @@ Two repeated-preposition patterns are checked:
   glosses such as *until unto* or *as far to* do not express the Latin phrase
   in English. Only the specific malformed junctions below are rejected;
   this is not a general English grammar or translation validator.
+- **A modal negation rendered twice.** Adjacent direct glosses for *non*
+  and *possum* may not read *not* plus *cannot*, *could not*, or a contracted
+  equivalent, including when a complement or punctuation follows. Other
+  negation scopes and shared alignments require separate checks or review.
 
 The Latin case of a two-case preposition is still useful as an editorial
 diagnostic, but it is not an English correctness gate.  Natural English often
@@ -155,6 +159,38 @@ def check_usque_junctions(doc: dict, gloss: dict) -> list[str]:
     return errors
 
 
+def check_modal_negation_junctions(doc: dict, gloss: dict) -> list[str]:
+    """Reject one Latin non realized twice in adjacent direct English glosses.
+
+    Match a complete negative can/could predicate at the start of the right
+    gloss, allowing a following complement or punctuation. Shared alignments,
+    other negative words, non-adjacent scopes and general English word order
+    belong to separate checks/editorial review.
+    """
+    errors: list[str] = []
+    glosses = gloss.get("words", {})
+    for segment in doc.get("segments", []):
+        for first, second in pairwise(segment.get("words") or []):
+            if (first.get("lemma"), second.get("lemma")) != ("non", "possum"):
+                continue
+            left = str((glosses.get(first["id"]) or {}).get("gloss") or "").strip()
+            right = str((glosses.get(second["id"]) or {}).get("gloss") or "").strip()
+            if left.casefold() != "not" or not re.match(
+                r"(?:(?:I|you|he|she|it|we|they)\s+)?"
+                r"(?:cannot|can\s+not|can’t|could\s+not|couldn’t)\b",
+                right,
+                re.IGNORECASE,
+            ):
+                continue
+            errors.append(
+                f"{doc['id']}:{first['id']}–{second['id']} "
+                f"({first['form']} {second['form']}): separate glosses "
+                f"{left!r} + {right!r} render the modal negation twice — "
+                "use one negative predicate or a shared interlinear alignment"
+            )
+    return errors
+
+
 def check_apostrophes(gloss: dict) -> list[str]:
     """The English layer types the typographic apostrophe (’) in what a reader meets.
 
@@ -187,6 +223,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
     return (
         check_doubled_preposition(doc, gloss)
         + check_usque_junctions(doc, gloss)
+        + check_modal_negation_junctions(doc, gloss)
         + check_conclusion_gloss(doc, gloss)
         + check_apostrophes(gloss)
     )
