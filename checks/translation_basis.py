@@ -32,7 +32,10 @@ def wording_bases(uses: list, language: str) -> tuple[set[str], set[str]]:
     sites: set[str] = set()
     texts: set[str] = set()
     for use in uses:
-        if use.get("decision") == "REMOVE" or use.get("role") != WORDING_BASIS:
+        if (
+            use.get("decision") not in {"RETAIN", "RETAIN_WITH_CORRECTION"}
+            or use.get("role") != WORDING_BASIS
+        ):
             continue
         address = use.get("address") or {}
         if address.get("kind") == "segment":

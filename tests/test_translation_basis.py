@@ -6,6 +6,7 @@ from pathlib import Path
 import pytest
 
 from build_reader import store
+from build_reader.bibliography import DECISIONS
 from checks.translation_basis import check, unbased, wording_bases
 
 CORPUS = Path(__file__).resolve().parent.parent
@@ -116,3 +117,21 @@ def test_printed_wording_needs_a_basis_use_not_a_comparator() -> None:
         "t.b.s01.en": "normalized",
     }
     assert unbased(expanded, *wording_bases(uses, "en")) == ["t.a.s02.en", "t.a.s03.en"]
+
+
+@pytest.mark.parametrize("decision", sorted(DECISIONS))
+@pytest.mark.parametrize("kind", ["segment", "text"])
+@pytest.mark.parametrize(
+    "relationship", ["exact", "normalized", "revised", "traditional-composite"]
+)
+def test_only_retained_evidence_supports_a_printed_wording_claim(
+    decision: str, kind: str, relationship: str
+) -> None:
+    address = {"kind": kind, "text": "t.a"}
+    if kind == "segment":
+        address["segment"] = "s01"
+    uses = [{"role": "historical_wording_basis", "decision": decision, "address": address}]
+    required = relationship in {"exact", "normalized"}
+    retained = decision in {"RETAIN", "RETAIN_WITH_CORRECTION"}
+    expected = ["t.a.s01.en"] if required and not retained else []
+    assert unbased({"t.a.s01.en": relationship}, *wording_bases(uses, "en")) == expected
