@@ -46,6 +46,65 @@ def witnesses(tmp_path, pages: dict[str, str], apparatus=None):
 PAIR = {"a": "cum beato Ioseph", "b": "cum beato Ioseph"}
 
 
+@pytest.mark.parametrize("span", [False, True])
+@pytest.mark.parametrize(
+    ("note", "contradiction"),
+    [
+        ("The witnesses agree on the substantive text.", True),
+        ("Accidental variants follow. The witnesses agree on the substantive text.", True),
+        ("THE WITNESSES  AGREE ON\nTHE SUBSTANTIVE TEXT.", True),
+        ("Source differences and selected readings are recorded below.", False),
+        ("Apart from these variants, the witnesses agree on the substantive text.", False),
+        (
+            "An old note claimed ‘The witnesses agree on the substantive text.’ "
+            "That claim is superseded below.",
+            False,
+        ),
+    ],
+)
+def test_apparatus_summary_cannot_deny_its_substantive_variants(
+    tmp_path, span, note, contradiction
+):
+    ours = "da pacem" if span else "deprecamur"
+    other = "dona pacem nobis" if span else "exoramus"
+    entry = {
+        "at": "w001",
+        "ours": ours,
+        "witnesses": {"b": other},
+        "class": "substantive-span" if span else "substantive",
+        "ruling": "The complete selected wording is printed by witness a.",
+    }
+    if span:
+        entry["through"] = "w002"
+    directory = witnesses(tmp_path, {"a": ours, "b": other}, [entry])
+    path = directory / "apparatus.json"
+    apparatus = json.loads(path.read_text())
+    apparatus["note"] = note
+    path.write_text(json.dumps(apparatus))
+    errors, _, _ = collate(a_text(*ours.split()), directory)
+    if contradiction:
+        assert len(errors) == 1 and "summary claims substantive agreement" in errors[0]
+    else:
+        assert errors == []
+
+
+def test_substantive_agreement_summary_allows_accidental_only_variants(tmp_path):
+    entry = {
+        "at": "w001",
+        "ours": "Deo",
+        "witnesses": {"b": "Deo,"},
+        "class": "punctuation",
+        "ruling": "The selected punctuation follows witness a.",
+    }
+    directory = witnesses(tmp_path, {"a": "Deo", "b": "Deo,"}, [entry])
+    path = directory / "apparatus.json"
+    apparatus = json.loads(path.read_text())
+    apparatus["note"] = "The witnesses agree on the substantive text."
+    path.write_text(json.dumps(apparatus))
+    errors, _, _ = collate(a_text("Deo"), directory)
+    assert errors == []
+
+
 class TestTheEasyCase:
     def test_two_pages_that_agree_pass(self, tmp_path):
         errors, _, stats = collate(a_text("cum", "beato", "Ioseph"), witnesses(tmp_path, PAIR))

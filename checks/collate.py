@@ -420,6 +420,16 @@ def collate(doc, witness_dir: Path):
             else:
                 adjudicated[key] = entry
 
+    note = apparatus.get("note")
+    if isinstance(note, str):
+        statements = re.split(r"(?<=\.)\s+", " ".join(note.split()).casefold())
+        if "the witnesses agree on the substantive text." in statements and any(
+            entry.get("class") in {"substantive", "substantive-span"} for entry in valid_entries
+        ):
+            errors.append(
+                "apparatus summary claims substantive agreement but records substantive variants"
+            )
+
     spans = _spans(valid_entries, toks, errors)
 
     witness_files = sorted(p for p in witness_dir.glob("*.txt"))
