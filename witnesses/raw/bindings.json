@@ -60,9 +60,55 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Epi6-0.txt",
       "sha256": "f2e1dbe62b235504f395637720b6955a6e034897b8ff5945c35a72d63ed89158"
+    },
+    "pentecost-xxii": {
+      "upstream": "web/www/missa/Latin/Tempora/Pent22-0.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pent22-0.txt",
+      "sha256": "80c5f096e5d0b8a2df8f01c58e231905008f94d305882a461bfd9f439e7018bf"
     }
   },
   "bindings": {
+    "pentecost-xxii-postcommunion": {
+      "witness": "witnesses/proprium.dominica-xxii-post-pentecosten-postcommunio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "pentecost-xxii",
+          "first": 55,
+          "last": 57,
+          "section": "Postcommunio",
+          "section_line": 55
+        },
+        {
+          "archive": "prayers",
+          "first": 115,
+          "last": 117,
+          "section": "Qui vivis",
+          "section_line": 115
+        }
+      ],
+      "references": [
+        {
+          "archive": "pentecost-xxii",
+          "line": 57,
+          "text": "$Qui vivis",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "pentecost-xxii",
+          "first": 56,
+          "last": 56
+        },
+        {
+          "archive": "prayers",
+          "first": 116,
+          "last": 117
+        }
+      ]
+    },
     "rosary-introit": {
       "witness": "witnesses/proprium.beatae-mariae-virginis-a-rosario-introitus/do.txt",
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",

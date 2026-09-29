@@ -64,7 +64,15 @@ def rejected(root, path):
     assert "speaker" not in attribute.propose(doc).get("s01", {})
 
 
-@pytest.mark.parametrize("key", ["rosary-introit", "transfiguration-gradual", "visitation-introit"])
+@pytest.mark.parametrize(
+    "key",
+    [
+        "rosary-introit",
+        "transfiguration-gradual",
+        "visitation-introit",
+        "pentecost-xxii-postcommunion",
+    ],
+)
 def test_actual_complete_readings_and_attribution(bound_corpus, key):
     root, data = bound_corpus
     path = witness(root, data, key)
@@ -74,6 +82,36 @@ def test_actual_complete_readings_and_attribution(bound_corpus, key):
     assert attribute.witness_ranges(path.parent.name) == list(result.spans)
     assert attribute.marked_lines(path.parent.name)
     assert check_archives(root) == []
+
+
+@pytest.mark.parametrize(
+    "change", ["missing", "wrong-name", "wrong-target", "wrong-book", "read-control"]
+)
+def test_shared_prayer_reference_is_exact_and_not_sacred_text(bound_corpus, change):
+    root, data = bound_corpus
+    key = "pentecost-xxii-postcommunion"
+    binding = data["bindings"][key]
+    # A mutation must begin from a verified complete positive control.
+    assert resolve_binding(witness(root, data, key), root) is not None
+    if change == "missing":
+        binding["references"] = []
+    elif change == "wrong-name":
+        binding["references"][0]["text"] = "$Per Dominum"
+    elif change == "wrong-target":
+        binding["references"][0]["target"] = 0
+    elif change == "wrong-book":
+        data["archives"]["prayers"]["upstream"] = "web/www/horas/Latin/Ordo/Prayers.txt"
+        path = witness(root, data, key)
+        path.write_text(
+            path.read_text().replace(
+                "web/www/missa/Latin/Ordo/Prayers.txt",
+                "web/www/horas/Latin/Ordo/Prayers.txt",
+            )
+        )
+    else:
+        binding["reading"][0]["last"] = 57
+    save(root, data)
+    rejected(root, witness(root, data, key))
 
 
 def test_whitespace_only_variation_is_allowed(bound_corpus):

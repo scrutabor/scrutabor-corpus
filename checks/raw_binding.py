@@ -204,7 +204,7 @@ def resolve_binding(witness: Path, root: Path) -> BoundReading | None:
         for number in range(first, last + 1):
             line = lines[number - 1].strip()
             coordinate = (item["archive"], number)
-            if line.startswith(("&", "@")):
+            if line.startswith(("&", "@", "$")):
                 if coordinate in controls:
                     raise BindingError("overlapping reference evidence")
                 controls[coordinate] = line
@@ -235,7 +235,20 @@ def resolve_binding(witness: Path, root: Path) -> BoundReading | None:
             raise BindingError("invalid reference target")
         destination = binding["evidence"][target]
         directive = reference["text"]
-        if directive.startswith("&"):
+        if directive.startswith("$"):
+            source = archives[key]["upstream"]
+            prayer_source = (
+                "web/www/missa/Latin/Ordo/Prayers.txt"
+                if source.startswith("web/www/missa/")
+                else "web/www/horas/Latin/Psalterium/Common/Prayers.txt"
+            )
+            name = directive[1:]
+            valid = (
+                not name.startswith(("rubrica ", "Preces "))
+                and name == destination["section"]
+                and archives[destination["archive"]]["upstream"] == prayer_source
+            )
+        elif directive.startswith("&"):
             valid = directive[1:] == destination["section"]
         else:
             origin = next(

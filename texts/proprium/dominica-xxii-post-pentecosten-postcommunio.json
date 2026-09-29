@@ -27,7 +27,7 @@
         { "id": "w006", "form": "humíliter", "lemma": "humiliter", "morph": { "pos": "adv" } },
         { "id": "w007", "form": "deprecántes", "post": ":", "lemma": "deprecor", "morph": { "case": "nom", "conj": 1, "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "dep" }, "head": "w001" },
         { "id": "w008", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
-        { "id": "w009", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w009", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
         { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w012" },
         { "id": "w011", "form": "tui", "lemma": "tu", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
         { "id": "w012", "form": "commemoratiónem", "lemma": "commemoratio", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "f", "decl": 3 } },
@@ -91,15 +91,16 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "notes": "The proper on p. 411 prints the prayer body followed by the abbreviated conclusion Qui vivis. The reader expands that cue using Rubricae generales 115 d, with house accentuation; Amen is a separate response.",
     "source": {
-      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The prayer body has been verified against p. 411 of the Benziger 1962 Missale Romanum (Editio iuxta typicam); the expanded conclusion is supplied by Rubricae generales 115 d, p. xviii. Comparison with the pinned Divinum Officium body and shared conclusion is recorded in the apparatus.",
       "witnesses": "witnesses/proprium.dominica-xxii-post-pentecosten-postcommunio/",
       "apparatus": "witnesses/proprium.dominica-xxii-post-pentecosten-postcommunio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
