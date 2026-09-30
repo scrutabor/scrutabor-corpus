@@ -1167,5 +1167,9 @@ def test_lavabo_english_perfect_does_not_repeat_the_auxiliary():
 
 def test_passion_english_passive_does_not_repeat_the_auxiliary():
     target = layer("en", "proprium/dominica-ii-passionis-evangelium")
-    assert target["words"]["w1262"]["gloss"] == "crucified"
-    assert target["words"]["w1263"]["gloss"] == "were"
+    members = ["w1262", "w1263"]
+    groups = target["segments"]["s83"]["alignments"]
+    assert [group for group in groups if set(group["words"]) & set(members)] == [
+        {"words": members, "anchor": "w1262", "gloss": "had been crucified"}
+    ]
+    assert all("gloss" not in target["words"][member] for member in members)
