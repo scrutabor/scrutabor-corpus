@@ -19,8 +19,9 @@ import functools
 import re
 import unicodedata
 
+from checks.personal_negatives import check_personal_negatives
 from checks.polish_clauses import check_clause_junctions
-from checks.polish_negatives import check_negative_predicates
+from checks.polish_negatives import check_negative_predicates, check_quantifier_predicates
 from checks.syntax import check_conclusion_gloss
 
 # What each Polish preposition governs. Where a preposition takes more than one
@@ -647,6 +648,8 @@ def check(doc: dict, gloss: dict) -> list[str]:
         + check_reflexive_marker(doc, gloss)
         + check_clause_junctions(doc, gloss)
         + check_negative_predicates(doc, gloss)
+        + check_personal_negatives(doc, gloss)
+        + check_quantifier_predicates(doc, gloss)
     )
 
 

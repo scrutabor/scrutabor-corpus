@@ -70,6 +70,25 @@ def check_contextual_repetitions(doc: dict, layer: dict) -> list[str]:
                         and right[0] in left
                     ):
                         report([first, second], "adjacent direct glosses repeat the demonstrative")
+                    if (
+                        first.get("lemma") == "oporteo"
+                        and fm.get("pos") == "verb"
+                        and fm.get("mood") in {"ind", "subj"}
+                        and fm.get("person") == 3
+                        and fm.get("number") == "sg"
+                        and second.get("lemma") == "vos"
+                        and sm.get("pos") == "pron"
+                        and sm.get("case") == "acc"
+                        and sm.get("number") == "pl"
+                        and i + 2 < len(words)
+                        and words[i + 2].get("morph", {}).get("pos") == "verb"
+                        and words[i + 2].get("morph", {}).get("mood") == "inf"
+                        and _bounded(words[i : i + 3])
+                        and words[i + 2]["id"] not in grouped
+                        and left in (["ye", "ought"], ["you", "ought"], ["you", "must"])
+                        and right in (["you"], ["ye"])
+                    ):
+                        report([first, second], "the necessity gloss repeats its explicit subject")
                     connector = {"enim": "for", "autem": "but"}.get(second.get("lemma"))
                     if (
                         fm.get("pos") == "verb"

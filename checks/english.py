@@ -55,6 +55,7 @@ from itertools import pairwise
 
 from checks.english_arguments import check_contextual_repetitions
 from checks.english_predicates import check_predicate_junctions
+from checks.personal_negatives import check_personal_negatives
 from checks.syntax import check_conclusion_gloss
 
 LEADING_PREPOSITION = re.compile(
@@ -117,11 +118,56 @@ def _index(doc: dict) -> dict[str, dict]:
     return {w["id"]: w for s in doc.get("segments", []) for w in (s.get("words") or [])}
 
 
+def _nominalized_middle_objects(doc: dict, layer: dict) -> set[tuple[str, str]]:
+    """Recognize direct inter/medius/noun as through/the midst/of a region.
+
+    English of belongs to the nominalized adjective, not to inter. This is
+    not a general exemption for a modifier between a preposition and its
+    object: require the exact linked, agreeing Latin and English realization.
+    """
+    result: set[tuple[str, str]] = set()
+    entries = layer.get("words", {})
+    for segment in doc.get("segments", []):
+        words = segment.get("words") or []
+        groups = (layer.get("segments", {}).get(segment.get("id")) or {}).get("alignments", [])
+        grouped = {wid for group in groups for wid in group["words"]}
+        for prep, middle, noun in zip(words, words[1:], words[2:], strict=False):
+            pm, mm, nm = (word.get("morph", {}) for word in (prep, middle, noun))
+            if (
+                prep.get("lemma") != "inter"
+                or pm.get("pos") != "prep"
+                or pm.get("governs") != "acc"
+                or middle.get("lemma") != "medius"
+                or mm.get("pos") != "adj"
+                or nm.get("pos") != "noun"
+                or nm.get("case") != "acc"
+                or prep.get("head") != noun["id"]
+                or middle.get("head") != noun["id"]
+                or any(
+                    mm.get(k) is None or mm[k] != nm.get(k) for k in ("case", "number", "gender")
+                )
+                or any(word["id"] in grouped for word in (prep, middle, noun))
+                or any(
+                    a.get("post", "").strip() or b.get("pre", "").strip()
+                    for a, b in pairwise((prep, middle, noun))
+                )
+            ):
+                continue
+            own, modifier, obj = (
+                str((entries.get(word["id"]) or {}).get("gloss") or "").strip().casefold()
+                for word in (prep, middle, noun)
+            )
+            if own == "through" and modifier == "the midst" and re.match(r"of\s+\S", obj):
+                result.add((prep["id"], noun["id"]))
+    return result
+
+
 def check_doubled_preposition(doc: dict, gloss: dict) -> list[str]:
     """A preposition glossed once by itself and again inside its object."""
     errors: list[str] = []
     words = gloss.get("words", {})
     index = _index(doc)
+    middle_objects = _nominalized_middle_objects(doc, gloss)
     for w in index.values():
         if w["morph"].get("pos") != "prep":
             continue
@@ -130,6 +176,8 @@ def check_doubled_preposition(doc: dict, gloss: dict) -> list[str]:
             continue
         own = (words.get(w["id"]) or {}).get("gloss") or ""
         obj = (words.get(head_id) or {}).get("gloss") or ""
+        if (w["id"], head_id) in middle_objects:
+            continue
         if LEADING_PREPOSITION.match(own) and LEADING_PREPOSITION.match(obj):
             errors.append(
                 f"{doc['id']}:{w['id']} ({w['form']}): glossed {own.strip()!r} over "
@@ -695,6 +743,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
         + check_clause_junctions(doc, gloss)
         + check_predicate_junctions(doc, gloss)
         + check_contextual_repetitions(doc, gloss)
+        + check_personal_negatives(doc, gloss)
         + check_conclusion_gloss(doc, gloss)
         + check_apostrophes(gloss)
     )
