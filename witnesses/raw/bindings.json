@@ -156,6 +156,42 @@
       "revision": "b5e250b0af79bc3fb4fc3ac631a622d8cb0f2a19",
       "path": "witnesses/raw/do-Adv1-0.txt",
       "sha256": "db065ed4bb77f9100aa0dacce7ac11668a331d6defd3ff5331aed19cfb7283f9"
+    },
+    "christmas-day": {
+      "upstream": "web/www/missa/Latin/Sancti/12-25m3.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-Sancti-12-25m3.txt",
+      "sha256": "6b8d02a09684d6c487306c3b6dd637d1a577c65a9e86d463f9213b7cd3bec88a"
+    },
+    "christmas-inherited": {
+      "upstream": "web/www/missa/Latin/Tempora/Nat30.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-Tempora-Nat30.txt",
+      "sha256": "334008bd0ee93707791550aec47203758d5b9fdd6a015b46d2093432ac3da959"
+    },
+    "baptist-day": {
+      "upstream": "web/www/missa/Latin/Sancti/06-24.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/06-24.txt",
+      "sha256": "b3e80d75de9ec39ab27bf8d774d15a5ae5cc7e81306f35d8577ed1adf2542439"
+    },
+    "precious-blood": {
+      "upstream": "web/www/missa/Latin/Sancti/07-01.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/07-01.txt",
+      "sha256": "56ca08946a5ce4a47d7a8058b3aabde46d0e584c3f27b02e51d9ed1aa66ff5d0"
+    },
+    "purification-day": {
+      "upstream": "web/www/missa/Latin/Sancti/02-02.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/02-02.txt",
+      "sha256": "f149348ebd31599a32e17cccfc950d0f4eef24886d86bad6fd00bc3ef772520f"
+    },
+    "sacred-heart-day": {
+      "upstream": "web/www/missa/Latin/Tempora/Pent02-5.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-Pent02-5.txt",
+      "sha256": "91ec8c8bad8090b84ac63ba2cf77d2b3a24f94dd85b2e48440bd0ad66b25082c"
     }
   },
   "bindings": {
@@ -931,6 +967,193 @@
           "archive": "visitation",
           "first": 19,
           "last": 19
+        }
+      ]
+    },
+    "christmas-day-introit": {
+      "witness": "witnesses/proprium.nativitas-domini-in-die-introitus/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "christmas-day",
+          "first": 12,
+          "last": 12,
+          "section": "Introitus",
+          "section_line": 11
+        },
+        {
+          "archive": "christmas-inherited",
+          "first": 18,
+          "last": 22,
+          "section": "Introitus",
+          "section_line": 16
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14,
+          "section": "Gloria",
+          "section_line": 12
+        }
+      ],
+      "references": [
+        {
+          "archive": "christmas-day",
+          "line": 12,
+          "text": "@Tempora/Nat30",
+          "target": 1
+        },
+        {
+          "archive": "christmas-inherited",
+          "line": 21,
+          "text": "&Gloria",
+          "target": 2
+        }
+      ],
+      "reading": [
+        {
+          "archive": "christmas-inherited",
+          "first": 18,
+          "last": 18
+        },
+        {
+          "archive": "christmas-inherited",
+          "first": 20,
+          "last": 20
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14
+        },
+        {
+          "archive": "christmas-inherited",
+          "first": 22,
+          "last": 22
+        }
+      ]
+    },
+    "baptist-gospel": {
+      "witness": "witnesses/proprium.nativitas-sancti-ioannis-baptistae-evangelium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "baptist-day",
+          "first": 51,
+          "last": 51,
+          "section": "Evangelium",
+          "section_line": 48
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "baptist-day",
+          "first": 51,
+          "last": 51
+        }
+      ]
+    },
+    "precious-blood-communion": {
+      "witness": "witnesses/proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-communio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "precious-blood",
+          "first": 61,
+          "last": 61,
+          "section": "Communio",
+          "section_line": 59
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "precious-blood",
+          "first": 61,
+          "last": 61
+        }
+      ]
+    },
+    "precious-blood-gospel": {
+      "witness": "witnesses/proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-evangelium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "precious-blood",
+          "first": 49,
+          "last": 49,
+          "section": "Evangelium",
+          "section_line": 46
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "precious-blood",
+          "first": 49,
+          "last": 49
+        }
+      ]
+    },
+    "purification-collect": {
+      "witness": "witnesses/proprium.purificatio-beatae-mariae-virginis-collecta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "purification-day",
+          "first": 165,
+          "last": 166,
+          "section": "Oratio",
+          "section_line": 164
+        },
+        {
+          "archive": "prayers",
+          "first": 112,
+          "last": 113,
+          "section": "Per eundem",
+          "section_line": 111
+        }
+      ],
+      "references": [
+        {
+          "archive": "purification-day",
+          "line": 166,
+          "text": "$Per eundem",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "purification-day",
+          "first": 165,
+          "last": 165
+        },
+        {
+          "archive": "prayers",
+          "first": 112,
+          "last": 113
+        }
+      ]
+    },
+    "sacred-heart-gospel": {
+      "witness": "witnesses/proprium.sacratissimi-cordis-iesu-evangelium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "sacred-heart-day",
+          "first": 54,
+          "last": 54,
+          "section": "Evangelium",
+          "section_line": 51
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "sacred-heart-day",
+          "first": 54,
+          "last": 54
         }
       ]
     }

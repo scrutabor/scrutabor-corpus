@@ -38586,12 +38586,92 @@
         "text": "proprium.nativitas-domini-in-die-introitus"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Sancti/12-25m3.txt (section [Introitus]); resolved spans: web/www/missa/Latin/Tempora/Nat30.txt (lines 17-21); web/www/missa/Latin/Ordo/Prayers.txt (lines 14-15)"
+        "section": "Latin/Sancti/12-25m3.txt: Christmas heading11/reference12; inherited heading16/reference17 and psalm reference19; textual lines18,20,22 surround &Gloria21; shared Gloria heading12/body13-14. The repetition is material, not deduplicated."
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The Christmas source directs this introit to Tempora/Nat30; inherited body and shared doxology have separately declared dependencies.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Exact original boundaries verified on 2026-09-30; historical date and decision retained, source review pending."
+    },
+    {
+      "id": "use.proprium.nativitas-domini-in-die-introitus.expanded-doxology.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.nativitas-domini-in-die-introitus"
+      },
+      "locator": {
+        "section": "Latin/Ordo/Prayers.txt [Gloria], heading12, text13-14"
+      },
+      "claim": "The called Gloria supplies exactly lines13-14, including Amen. Uppercase V./R. source markers are preserved as framing evidence, not an automatic introit performance assignment.",
+      "verified_on": "2026-09-30",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "Separate directly inspected source scope; source review remains pending and no complete prayer or parent acceptance is inferred.",
+      "evidence_sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    },
+    {
+      "id": "use.proprium.nativitas-domini-in-die-introitus.expanded-doxology.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "segment",
+        "text": "proprium.nativitas-domini-in-die-introitus",
+        "segment": "s01"
+      },
+      "locator": {
+        "printed": "p. 219",
+        "scan": "leaf n298 / PDF p. 299",
+        "section": "Ordo Missae: Gloria Patri",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
+      },
+      "claim": "The full Gloria Patri through Amen supplies words w029-w048 after the proper's cue. Declared house punctuation and accents are applied; the Ordo's S./M. performers are not transferred to the introit.",
+      "verified_on": "2026-09-30",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "Separate directly inspected source scope; source review remains pending and no complete prayer or parent acceptance is inferred.",
+      "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55"
+    },
+    {
+      "id": "use.proprium.nativitas-domini-in-die-introitus.inherited-body.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.nativitas-domini-in-die-introitus"
+      },
+      "locator": {
+        "section": "Latin/Tempora/Nat30.txt [Introitus], heading16, reference17, body18-22"
+      },
+      "claim": "The inherited Introitus supplies antiphon18, psalm20, &Gloria21 and repeated antiphon22; the shared doxology is a separate declared dependency.",
+      "verified_on": "2026-09-30",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "Separate directly inspected source scope; source review remains pending and no complete prayer or parent acceptance is inferred.",
+      "evidence_sha256": "334008bd0ee93707791550aec47203758d5b9fdd6a015b46d2093432ac3da959"
+    },
+    {
+      "id": "use.proprium.nativitas-domini-in-die-introitus.introit-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "proprium.nativitas-domini-in-die-introitus"
+      },
+      "locator": {
+        "printed": "p. xxix",
+        "scan": "leaf n34 / PDF p. 35",
+        "section": "Rubricae generales 427",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "RG427 prescribes antiphon, psalm, Gloria Patri and repeated antiphon; it supports this Christmas expansion, not a new performance map or complete seasonal-formulary approval.",
+      "verified_on": "2026-09-30",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "Separate directly inspected source scope; source review remains pending and no complete prayer or parent acceptance is inferred.",
+      "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786"
     },
     {
       "id": "use.proprium.nativitas-domini-in-die-introitus.mr1962",
@@ -38607,10 +38687,11 @@
         "scan": "leaf n99 / PDF p. 100",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n99/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The Benziger 1962 proper prints the 21-word antiphon, seven-word psalm and abbreviated Gloria Patri and repetition cues. The complete 69-word witness explicitly expands the doxology from Ordo p. 219 and repeats the antiphon under RG427; house expansion accidentals are declared.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
-      "evidence_sha256": "a3f856818fa5f0e8332c324616e49e07cb7bb30dedcf897177f1dfa131fefc1b"
+      "evidence_sha256": "a3f856818fa5f0e8332c324616e49e07cb7bb30dedcf897177f1dfa131fefc1b",
+      "decision_reason": "Scope clarified after direct image inspection on 2026-09-30; historical verification date retained, not renewed approval."
     },
     {
       "id": "use.proprium.nativitas-domini-in-die-offertorium.do44667ff",
@@ -39377,12 +39458,13 @@
         "text": "proprium.nativitas-sancti-ioannis-baptistae-evangelium"
       },
       "locator": {
-        "section": "pinned source key Sancti/06-24; resolved section [Evangelium] with declared inherited references"
+        "section": "Latin/Sancti/06-24.txt: Evangelium heading48, announcement49, scripture reference50; direct body51."
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The exact pinned direct 156-word body is preserved as a derived comparison, including its declared variants. No inherited text or concluding response is included.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
-      "evidence_sha256": "b3e80d75de9ec39ab27bf8d774d15a5ae5cc7e81306f35d8577ed1adf2542439"
+      "evidence_sha256": "b3e80d75de9ec39ab27bf8d774d15a5ae5cc7e81306f35d8577ed1adf2542439",
+      "decision_reason": "Exact original boundaries verified on 2026-09-30; historical date and decision retained, source review pending."
     },
     {
       "id": "use.proprium.nativitas-sancti-ioannis-baptistae-evangelium.mr1962",
@@ -39398,10 +39480,11 @@
         "scan": "leaf n653 / PDF p. 654",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n653/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The Benziger 1962 Editio iuxta typicam page prints the complete 156-word body. Announcement, scripture reference and adjacent components are excluded; no expansion or concluding response is added.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
-      "evidence_sha256": "31d3a99570d7acbc6220e4972a95fbb53eaf48d8800613930177979e964ba265"
+      "evidence_sha256": "31d3a99570d7acbc6220e4972a95fbb53eaf48d8800613930177979e964ba265",
+      "decision_reason": "Scope clarified after direct image inspection on 2026-09-30; historical verification date retained, not renewed approval."
     },
     {
       "id": "use.proprium.nativitas-sancti-ioannis-baptistae-graduale.do44667ff",
@@ -40169,12 +40252,13 @@
         "text": "proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-communio"
       },
       "locator": {
-        "section": "pinned source key Sancti/07-01; resolved section [Communio] with declared inherited references"
+        "section": "Latin/Sancti/07-01.txt: Communio heading59, scripture reference60; direct body61."
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The exact pinned direct 16-word body is preserved as a derived comparison, including its declared variants. No inherited text or concluding response is included.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
-      "evidence_sha256": "56ca08946a5ce4a47d7a8058b3aabde46d0e584c3f27b02e51d9ed1aa66ff5d0"
+      "evidence_sha256": "56ca08946a5ce4a47d7a8058b3aabde46d0e584c3f27b02e51d9ed1aa66ff5d0",
+      "decision_reason": "Exact original boundaries verified on 2026-09-30; historical date and decision retained, source review pending."
     },
     {
       "id": "use.proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-communio.mr1962",
@@ -40190,10 +40274,11 @@
         "scan": "leaf n664 / PDF p. 665",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n664/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The Benziger 1962 Editio iuxta typicam page prints the complete 16-word body. Announcement, scripture reference and adjacent components are excluded; no expansion or concluding response is added.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
-      "evidence_sha256": "126e23ddc71af249ff014f728f66e020f966147094cd8d68f0faf51d5f82c409"
+      "evidence_sha256": "126e23ddc71af249ff014f728f66e020f966147094cd8d68f0faf51d5f82c409",
+      "decision_reason": "Scope clarified after direct image inspection on 2026-09-30; historical verification date retained, not renewed approval."
     },
     {
       "id": "use.proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-epistola.do44667ff",
@@ -40241,12 +40326,13 @@
         "text": "proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-evangelium"
       },
       "locator": {
-        "section": "pinned source key Sancti/07-01; resolved section [Evangelium] with declared inherited references"
+        "section": "Latin/Sancti/07-01.txt: Evangelium heading46, announcement47, scripture reference48; direct body49. Standalone hyphens and adjacent commas remain exact source punctuation."
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The exact pinned direct 93-word body is preserved as a derived comparison, including its declared variants. No inherited text or concluding response is included.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
-      "evidence_sha256": "56ca08946a5ce4a47d7a8058b3aabde46d0e584c3f27b02e51d9ed1aa66ff5d0"
+      "evidence_sha256": "56ca08946a5ce4a47d7a8058b3aabde46d0e584c3f27b02e51d9ed1aa66ff5d0",
+      "decision_reason": "Exact original boundaries verified on 2026-09-30; historical date and decision retained, source review pending."
     },
     {
       "id": "use.proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-evangelium.mr1962",
@@ -40262,10 +40348,11 @@
         "scan": "leaf n664 / PDF p. 665",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n664/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The Benziger 1962 Editio iuxta typicam page prints the complete 93-word body. Announcement, scripture reference and adjacent components are excluded; no expansion or concluding response is added.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
-      "evidence_sha256": "126e23ddc71af249ff014f728f66e020f966147094cd8d68f0faf51d5f82c409"
+      "evidence_sha256": "126e23ddc71af249ff014f728f66e020f966147094cd8d68f0faf51d5f82c409",
+      "decision_reason": "Scope clarified after direct image inspection on 2026-09-30; historical verification date retained, not renewed approval."
     },
     {
       "id": "use.proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-graduale.do44667ff",
@@ -40570,12 +40657,52 @@
         "text": "proprium.purificatio-beatae-mariae-virginis-collecta"
       },
       "locator": {
-        "section": "pinned source key Sancti/02-02; resolved section [Oratio] with declared inherited references"
+        "section": "Latin/Sancti/02-02.txt: Oratio heading164/body165/$Per eundem166; actual called shared section heading111, formula112, response113. Lowercase r. formats the initial; uppercase R. marks the response."
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The direct collect body calls $Per eundem; the exact shared conclusion and Amen have a separate declared dependency.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
-      "evidence_sha256": "f149348ebd31599a32e17cccfc950d0f4eef24886d86bad6fd00bc3ef772520f"
+      "evidence_sha256": "f149348ebd31599a32e17cccfc950d0f4eef24886d86bad6fd00bc3ef772520f",
+      "decision_reason": "Exact original boundaries verified on 2026-09-30; historical date and decision retained, source review pending."
+    },
+    {
+      "id": "use.proprium.purificatio-beatae-mariae-virginis-collecta.expanded-conclusion.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.purificatio-beatae-mariae-virginis-collecta"
+      },
+      "locator": {
+        "section": "Latin/Ordo/Prayers.txt [Per eundem], heading111, conclusion112, response113"
+      },
+      "claim": "The actual called Per eundem section supplies conclusion112 and response113. Lowercase r. is initial formatting, uppercase R. marks Amen; neither is a Latin word.",
+      "verified_on": "2026-09-30",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "Separate directly inspected source scope; source review remains pending and no complete prayer or parent acceptance is inferred.",
+      "evidence_sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    },
+    {
+      "id": "use.proprium.purificatio-beatae-mariae-virginis-collecta.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.purificatio-beatae-mariae-virginis-collecta"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "The shared Father-directed formula supplies conclusion words w030-w051 and response w052 Amen. It does not print the proper body or by itself establish response participation. House accents, ligatures, tuum: Qui and terminal Amen. are declared in the transcript.",
+      "verified_on": "2026-09-30",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "Separate directly inspected source scope; source review remains pending and no complete prayer or parent acceptance is inferred.",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"
     },
     {
       "id": "use.proprium.purificatio-beatae-mariae-virginis-collecta.mr1962",
@@ -40591,11 +40718,11 @@
         "scan": "leaf n547 / PDF p. 548",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n547/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The Benziger 1962 proper prints the 29-word collect body and Per eundem Dominum cue. The 52-word witness explicitly expands RG115a-b, including Amen, with declared house accidentals.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "34d729047ef19017022448be8704ff1dd629d474302a107771a66e672a8a282d",
-      "decision_reason": "Locator corrected against the page image; the text is printed on the leaf now cited."
+      "decision_reason": "Scope clarified after direct image inspection on 2026-09-30; historical verification date retained, not renewed approval."
     },
     {
       "id": "use.proprium.purificatio-beatae-mariae-virginis-collecta.oration-boundaries.mr1962",
@@ -40616,6 +40743,28 @@
       "evidence_sha256": "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
       "decision": "RETAIN",
       "decision_reason": "Source-defined ritual boundary only. The complete word sequence and existing word IDs are unchanged."
+    },
+    {
+      "id": "use.proprium.purificatio-beatae-mariae-virginis-collecta.same-lord-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.purificatio-beatae-mariae-virginis-collecta",
+        "word": "w031"
+      },
+      "locator": {
+        "printed": "p. xviii",
+        "scan": "leaf n23 / PDF p. 24",
+        "section": "Rubricae generales 115 b",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n23/mode/1up"
+      },
+      "claim": "RG115b prescribes Per eundem Dominum nostrum when the Father-directed prayer mentions the Son at its beginning; this supports eundem at w031 in the proper's abbreviated cue.",
+      "verified_on": "2026-09-30",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "Separate directly inspected source scope; source review remains pending and no complete prayer or parent acceptance is inferred.",
+      "evidence_sha256": "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132"
     },
     {
       "id": "use.proprium.purificatio-beatae-mariae-virginis-communio.do44667ff",
@@ -41132,12 +41281,13 @@
         "text": "proprium.sacratissimi-cordis-iesu-evangelium"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Pent02-5.txt (lines 51-54)"
+        "section": "Latin/Tempora/Pent02-5.txt: Evangelium heading51, announcement52, scripture reference53; direct body54. Standalone hyphens and adjacent commas remain exact source punctuation."
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The exact pinned direct 111-word body is preserved as a derived comparison, including its declared variants. No inherited text or concluding response is included.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
-      "evidence_sha256": "91ec8c8bad8090b84ac63ba2cf77d2b3a24f94dd85b2e48440bd0ad66b25082c"
+      "evidence_sha256": "91ec8c8bad8090b84ac63ba2cf77d2b3a24f94dd85b2e48440bd0ad66b25082c",
+      "decision_reason": "Exact original boundaries verified on 2026-09-30; historical date and decision retained, source review pending."
     },
     {
       "id": "use.proprium.sacratissimi-cordis-iesu-evangelium.mr1962",
@@ -41153,11 +41303,11 @@
         "scan": "leaf n455 / PDF p. 456",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n455/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The Benziger 1962 Editio iuxta typicam page prints the complete 111-word body. Announcement, scripture reference and adjacent components are excluded; no expansion or concluding response is added.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "8c39d5e3e0aa4f50c1a19d85985af1d5a01ab9ec802bff00eebd937ded6db8b9",
-      "decision_reason": "Locator corrected against the page image; the text is printed on the leaf now cited."
+      "decision_reason": "Scope clarified after direct image inspection on 2026-09-30; historical verification date retained, not renewed approval."
     },
     {
       "id": "use.proprium.sacratissimi-cordis-iesu-graduale.do44667ff",
@@ -75036,12 +75186,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "f3766727ac7fbb9f73c8f6faa3ffc678e394db093c660eea703d0966b6e198f0",
-      "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "transcription_sha256": "2278f67d571eeb5f324f2b580f76319f5d6afedd47760bb18ce7fffbe5e2a541",
+      "orthography_profile": "exact-pinned-ordered-reading",
+      "independence_basis": "Exact original pinned Latin data, independently maintained and used only as a derived comparison; the complete ordered raw source plan and all inherited references are explicit.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.nativitas-domini-in-die-introitus.expanded-doxology.do44667ff",
+          "use.proprium.nativitas-domini-in-die-introitus.inherited-body.do44667ff"
+        ],
+        "raw_binding": "christmas-day-introit"
       }
     },
     {
@@ -75052,12 +75209,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "d3f5dcf93dfa931203244a05af2b2b4f4af3c27b2e735548d4216a6fbe6e9ede",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "850289d60723787ba385e4e9a0157654a694f1bb0633027579fc0b44e3ab483c",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "Direct comparison with the identified Benziger 1962 proper page, with any separately declared printed formula/rubric expansions; historical preparation remains distinct from pending source review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.nativitas-domini-in-die-introitus.expanded-doxology.mr1962",
+          "use.proprium.nativitas-domini-in-die-introitus.introit-expansion.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -75612,12 +75776,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "2541b6681edd9841970d592b5b04042b334463bcf5e74be7cd597fc44ff65970",
-      "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "transcription_sha256": "c8d7fe36e1f2f5333abf5ee5ce753fc5100f671a610530ecdbbb4f622f52b73b",
+      "orthography_profile": "exact-pinned-ordered-reading",
+      "independence_basis": "Exact original pinned Latin data, independently maintained and used only as a derived comparison; the complete ordered raw source plan and all inherited references are explicit.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "baptist-gospel"
       }
     },
     {
@@ -75628,12 +75796,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "8d6857b9517432f0154e1deee07ef5010a9b862e5f8a7ead9fd998c7aa84d75f",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "f701c0730b2a5bedea7427654ca5a64ca29ede6d4f5708f80dbc5ee01643138a",
+      "orthography_profile": "diplomatic-page-body",
+      "independence_basis": "Direct comparison with the identified Benziger 1962 proper page, with any separately declared printed formula/rubric expansions; historical preparation remains distinct from pending source review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -76198,12 +76370,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "47303a0ce4137568f4138fb0d3fea11734893491965a4aa0e39c4500f5b53758",
-      "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "transcription_sha256": "084a6ba63fe953daeffb7fc9ed6bfe4cf39d542b7523514e013e1b9a325d47a0",
+      "orthography_profile": "exact-pinned-ordered-reading",
+      "independence_basis": "Exact original pinned Latin data, independently maintained and used only as a derived comparison; the complete ordered raw source plan and all inherited references are explicit.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "precious-blood-communion"
       }
     },
     {
@@ -76214,12 +76390,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "bcae82c9fc0bece091586ff83a5894bdbb82ddbc97da3d51dbdedf1bc8030380",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "dfc44379dffdfd50038ec5cbd30735dddefba644398a33f6507d1da6db60671d",
+      "orthography_profile": "diplomatic-page-body",
+      "independence_basis": "Direct comparison with the identified Benziger 1962 proper page, with any separately declared printed formula/rubric expansions; historical preparation remains distinct from pending source review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -76262,12 +76442,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "fe2a9c48372913fb27de9c7b6fabac67ed0fc03c838e4bf6aaaac934bc102d37",
-      "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "transcription_sha256": "ce66c72d2b06e13c87dfbc65f673754ddc8d3c9b244af9fc2cefdf785fa58a0b",
+      "orthography_profile": "exact-pinned-ordered-reading",
+      "independence_basis": "Exact original pinned Latin data, independently maintained and used only as a derived comparison; the complete ordered raw source plan and all inherited references are explicit.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "precious-blood-gospel"
       }
     },
     {
@@ -76278,12 +76462,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "3c46aece9d246d509e7114a02bf510330072687ed379dea5990ea751a758acef",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "92f860f823cd5723ff50f636c3b48fdb82584800d2967a3336b3a7ee44a2d3fd",
+      "orthography_profile": "diplomatic-page-body",
+      "independence_basis": "Direct comparison with the identified Benziger 1962 proper page, with any separately declared printed formula/rubric expansions; historical preparation remains distinct from pending source review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -76518,12 +76706,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "f92b3e14df7a626d44ad32e9932f0447bff5398f4bfb9bf79b1fa8085c516fc3",
-      "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "transcription_sha256": "2ee8fb601d12ebc3501cc68e319f4e3d3c117178876058b7d83273601106f025",
+      "orthography_profile": "exact-pinned-ordered-reading",
+      "independence_basis": "Exact original pinned Latin data, independently maintained and used only as a derived comparison; the complete ordered raw source plan and all inherited references are explicit.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.purificatio-beatae-mariae-virginis-collecta.expanded-conclusion.do44667ff"
+        ],
+        "raw_binding": "purification-collect"
       }
     },
     {
@@ -76534,12 +76728,20 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "8b4c63dd9d6d3a377aca1974921015942027bcdfe73e4f34ff33124dd8059bb7",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "980e22caf881385bad40cad411bb7c6a2d146c42073e22528cd1c7f9c665565e",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "Direct comparison with the identified Benziger 1962 proper page, with any separately declared printed formula/rubric expansions; historical preparation remains distinct from pending source review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.purificatio-beatae-mariae-virginis-collecta.expanded-conclusion.mr1962",
+          "use.proprium.purificatio-beatae-mariae-virginis-collecta.oration-boundaries.mr1962",
+          "use.proprium.purificatio-beatae-mariae-virginis-collecta.same-lord-conclusion.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -76934,12 +77136,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "239563e810a858bce32aaae1c498fdbd9802d26ee4ca812d641889acf764a397",
-      "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "transcription_sha256": "1ffaa172a39d0502e476e048f289716a37bf70bdf5e2cd33dd2bb07ed739c777",
+      "orthography_profile": "exact-pinned-ordered-reading",
+      "independence_basis": "Exact original pinned Latin data, independently maintained and used only as a derived comparison; the complete ordered raw source plan and all inherited references are explicit.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "sacred-heart-gospel"
       }
     },
     {
@@ -76950,12 +77156,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "04f6537785eae9c375be92fb59c27d33f8f225fcd19a7190d7b748fd739919cf",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "3c4797527f200b00779a91b94873a7713f39bd328d94b2ad15e2469759545051",
+      "orthography_profile": "diplomatic-page-body",
+      "independence_basis": "Direct comparison with the identified Benziger 1962 proper page, with any separately declared printed formula/rubric expansions; historical preparation remains distinct from pending source review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -99238,7 +99448,7 @@
     {
       "id": "collation.proprium.nativitas-domini-in-die-introitus.mr1962-do44667ff",
       "text": "proprium.nativitas-domini-in-die-introitus",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The Benziger 1962 proper prints the 21-word antiphon, seven-word psalm and abbreviated Gloria Patri and repetition cues. The complete 69-word witness explicitly expands the doxology from Ordo p. 219 and repeats the antiphon under RG427; house expansion accidentals are declared. Selected Latin and ritual segmentation are unchanged.",
       "selected_text_sha256": "7f1099dbbc2b3b5c20e62ef957445f5d9c37b6025387f78ce8713b557a1e5707",
       "witnesses": [
         "witness.proprium.nativitas-domini-in-die-introitus.do44667ff",
@@ -99251,7 +99461,7 @@
           "orthography"
         ]
       },
-      "apparatus_sha256": "9c830d8f008fa9b4e2625335ba4297fc606abea3206d5031e86f3affe1e62ae3",
+      "apparatus_sha256": "a266e6529a3b81733311b793ea055305321048463429600a58448bc579f26044",
       "review": {
         "status": "pending"
       }
@@ -99608,21 +99818,22 @@
     {
       "id": "collation.proprium.nativitas-sancti-ioannis-baptistae-evangelium.mr1962-do44667ff",
       "text": "proprium.nativitas-sancti-ioannis-baptistae-evangelium",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete 156-word component on the Benziger 1962 Editio iuxta typicam page was compared with the exact pinned digital source. Selected Latin and ritual segmentation are unchanged.",
       "selected_text_sha256": "c121828ee563b2f78c5eb9f04a768b8343501f69b85291eacaaf4b577f40862b",
       "witnesses": [
         "witness.proprium.nativitas-sancti-ioannis-baptistae-evangelium.do44667ff",
         "witness.proprium.nativitas-sancti-ioannis-baptistae-evangelium.mr1962"
       ],
       "apparatus": {
-        "entries": 11,
+        "entries": 17,
         "classes": [
           "accent",
           "capital-accent",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "99b1f94af62386668cbb45ca0606cc5f26a846c261ec08a2094e10882cfff46e",
+      "apparatus_sha256": "679fc9b1b50c50abcd4b08c6a9c8e00f9b6a31d9155b4e6d83dd9aac0b92d118",
       "review": {
         "status": "pending"
       }
@@ -99975,7 +100186,7 @@
     {
       "id": "collation.proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-communio.mr1962-do44667ff",
       "text": "proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-communio",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete 16-word component on the Benziger 1962 Editio iuxta typicam page was compared with the exact pinned digital source. Selected Latin and ritual segmentation are unchanged.",
       "selected_text_sha256": "94a06f5cee1fb44f7b0cdc52d94409482e7838b119acdad3d89d5619e5435bbc",
       "witnesses": [
         "witness.proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-communio.do44667ff",
@@ -100014,20 +100225,21 @@
     {
       "id": "collation.proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-evangelium.mr1962-do44667ff",
       "text": "proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-evangelium",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete 93-word component on the Benziger 1962 Editio iuxta typicam page was compared with the exact pinned digital source. Selected Latin and ritual segmentation are unchanged.",
       "selected_text_sha256": "b1efa863460e4c802ea3171905ffaa653cd5724731423dae364b07557cf2e30e",
       "witnesses": [
         "witness.proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-evangelium.do44667ff",
         "witness.proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-evangelium.mr1962"
       ],
       "apparatus": {
-        "entries": 9,
+        "entries": 16,
         "classes": [
           "accent",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "915f2b5d3e940c2b74ea6b755b5d95f72a04f9399c21597f101206a9d16a7b4d",
+      "apparatus_sha256": "5165f009c742279f6c771a83f3215b40e39322e65b76fec13859aa2c63cd0de0",
       "review": {
         "status": "pending"
       }
@@ -100172,19 +100384,21 @@
     {
       "id": "collation.proprium.purificatio-beatae-mariae-virginis-collecta.mr1962-do44667ff",
       "text": "proprium.purificatio-beatae-mariae-virginis-collecta",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The Benziger 1962 proper prints the 29-word collect body and Per eundem Dominum cue. The 52-word witness explicitly expands RG115a-b, including Amen, with declared house accidentals. The exact digital source resolves $Per eundem; selected Latin and ritual boundaries remain unchanged. Selected Latin and ritual segmentation are unchanged.",
       "selected_text_sha256": "79c8df72a32e7f8801cb736cbfc18fb0e4afef06cb5703e0b74441d87b5f7d8a",
       "witnesses": [
         "witness.proprium.purificatio-beatae-mariae-virginis-collecta.do44667ff",
         "witness.proprium.purificatio-beatae-mariae-virginis-collecta.mr1962"
       ],
       "apparatus": {
-        "entries": 1,
+        "entries": 4,
         "classes": [
+          "capitalization",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "d7c315a53eebce0afb7ebd3f7407f1770b8927e059451512c62a59bce729d149",
+      "apparatus_sha256": "b22cb33d95d69f242adee853851946ea90548603fa10611f814495e1e0474471",
       "review": {
         "status": "pending"
       }
@@ -100433,7 +100647,7 @@
     {
       "id": "collation.proprium.sacratissimi-cordis-iesu-evangelium.mr1962-do44667ff",
       "text": "proprium.sacratissimi-cordis-iesu-evangelium",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete 111-word component on the Benziger 1962 Editio iuxta typicam page was compared with the exact pinned digital source. Selected Latin and ritual segmentation are unchanged.",
       "selected_text_sha256": "1c5d16aa33cee612fbea5a3f5798a7da0b7c0a2e2f1bbf25c05009a0aeae19cc",
       "witnesses": [
         "witness.proprium.sacratissimi-cordis-iesu-evangelium.do44667ff",
@@ -100447,7 +100661,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "d5a16808cbcee2780ac50198249c6b4a5cae31b6ea6212228df16919876f9402",
+      "apparatus_sha256": "b65e0c9444711ff78f365038ad82d1753bad1d78aecfb38bd40354b3ee6dcd76",
       "review": {
         "status": "pending"
       }
