@@ -26169,12 +26169,13 @@
         "text": "proprium.dominica-v-post-epiphaniam-epistola"
       },
       "locator": {
-        "section": "pinned source key Tempora/Epi5-0; resolved section [Lectio] with declared inherited references"
+        "section": "Latin/Tempora/Epi5-0.txt [Lectio], marker 19 and reference 20; inherited Latin/Tempora/Epi1-0.txt [Lectio], marker 32, title 33, reference 34 and complete body 35"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The source key refers to the Holy Family Epistle. The inherited body has 108 words and ends per ipsum; its seven word-level accidental differences and the complete closing-span variant are recorded.",
       "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "adc567b711b3ffdd82bb68e4131c60337bc055b325cf864ce20aaafc9cab36d2"
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "adc567b711b3ffdd82bb68e4131c60337bc055b325cf864ce20aaafc9cab36d2",
+      "decision_reason": "Complete source boundaries checked on 2026-09-30; the historical verification date remains unchanged and pending source review is not renewed."
     },
     {
       "id": "use.proprium.dominica-v-post-epiphaniam-epistola.mr1962",
@@ -26190,10 +26191,11 @@
         "scan": "leaf n496 / PDF p. 497",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n496/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "Benziger 1962 page 415 prints the complete 111-word Epistle for the resumed Fifth Sunday after Epiphany, including per Iesum Christum Dominum nostrum. Its punctuation controls this transcript.",
       "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "a137a543aec688e98d9344d2ee93aec6dd81a53530d4ce5d085eef3961a41499"
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "a137a543aec688e98d9344d2ee93aec6dd81a53530d4ce5d085eef3961a41499",
+      "decision_reason": "Complete source boundaries checked on 2026-09-30; the historical verification date remains unchanged and pending source review is not renewed."
     },
     {
       "id": "use.proprium.dominica-v-post-epiphaniam-evangelium.do44667ff",
@@ -65716,12 +65718,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "1e8eb129f0bed888e3121b2f61c1197c842b794f0a0afeba1e71c1bf92ad125e",
+      "transcription_sha256": "f3c03afaedc421023cb368d645888fabde1668748491466544f70dcac56290ab",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "epiphany-v-epistle"
       }
     },
     {
@@ -65732,12 +65738,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "02a150a245d28a6ea95c346dd847515c3799a4733cdee6094f4126ee30edb509",
+      "transcription_sha256": "64ccb9be83b588c349164f5b31129c51cd9b16d1fae6ff7c666460f923b8da73",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "Direct comparison with the complete Benziger 1962 Editio iuxta typicam page 415, independently of the inherited pinned digital comparison. The page-48 punctuation is distinguished from the selected resumed-Sunday locus.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -93252,20 +93262,21 @@
     {
       "id": "collation.proprium.dominica-v-post-epiphaniam-epistola.mr1962-do44667ff",
       "text": "proprium.dominica-v-post-epiphaniam-epistola",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "Complete Benziger 1962 page-415 Epistle with 111 selected words; inherited 108-word digital reading and eight declared variants, including the four-word versus one-word ending.",
       "selected_text_sha256": "e2dc3ac1ddd55d4aa06620c8d8a9126e867f2eae283f7761c810ee66e20622d6",
       "witnesses": [
         "witness.proprium.dominica-v-post-epiphaniam-epistola.do44667ff",
         "witness.proprium.dominica-v-post-epiphaniam-epistola.mr1962"
       ],
       "apparatus": {
-        "entries": 7,
+        "entries": 8,
         "classes": [
+          "orthography",
           "punctuation",
           "substantive-span"
         ]
       },
-      "apparatus_sha256": "921ce821e3606b921601af6a0607818fb1ccfecc7712902591cd30f1dcc4bf9c",
+      "apparatus_sha256": "5ffdb6955bef1ca3437ab99ecc90eaa43a23c552c34f4402d9c597bcc3fcfc5c",
       "review": {
         "status": "pending"
       }

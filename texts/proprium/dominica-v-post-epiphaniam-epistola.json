@@ -42,7 +42,7 @@
         { "id": "w021", "form": "si", "lemma": "si", "morph": { "pos": "conj" } },
         { "id": "w022", "form": "quis", "lemma": "quis", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w023", "form": "advérsus", "lemma": "adversus_prep", "morph": { "pos": "prep", "governs": "acc" }, "head": "w024" },
-        { "id": "w024", "form": "áliquem", "lemma": "aliquis", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w024", "form": "áliquem", "lemma": "aliquis", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "m" } },
         { "id": "w025", "form": "habet", "lemma": "habeo", "morph": { "conj": 2, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w026", "form": "querélam", "lemma": "querela", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 1 }, "post": ":" },
         { "id": "w027", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
@@ -56,7 +56,7 @@
         { "id": "w035", "form": "Super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w038" },
         { "id": "w036", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w038" },
         { "id": "w037", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
-        { "id": "w038", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl" }, "post": "," },
+        { "id": "w038", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" }, "post": "," },
         { "id": "w039", "form": "caritátem", "lemma": "caritas", "morph": { "case": "acc", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w040", "form": "habéte", "lemma": "habeo", "morph": { "conj": 2, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w041", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "n" } },
@@ -107,7 +107,7 @@
         { "id": "w086", "form": "vestris", "lemma": "vester", "morph": { "pos": "adj", "case": "abl", "gender": "n", "number": "pl" }, "head": "w085" },
         { "id": "w087", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "sg", "decl": 2 }, "post": "." },
         { "id": "w088", "form": "Omne", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "substantive": true },
-        { "id": "w089", "form": "quodcúmque", "lemma": "quicumque", "morph": { "pos": "pron", "case": "acc", "number": "sg" } },
+        { "id": "w089", "form": "quodcúmque", "lemma": "quicumque", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
         { "id": "w090", "form": "fácitis", "lemma": "facio", "morph": { "conj": 3, "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w091", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w092" },
         { "id": "w092", "form": "verbo", "lemma": "verbum", "morph": { "case": "abl", "decl": 2, "gender": "n", "number": "sg", "pos": "noun" } },
@@ -135,9 +135,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "notes": "The 111-word Epistle is printed on Benziger 1962 page 415 for the resumed Fifth Sunday after Epiphany. Its full closing per Iesum Christum Dominum nostrum is part of the printed reading. The digital comparison inherits the Holy Family reading and has 108 words, ending per ipsum; the complete variant is recorded.",
     "source": {
-      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The complete Benziger 1962 Editio iuxta typicam page 415 and the pinned Latin inheritance from Tempora/Epi5-0.txt line 20 to Tempora/Epi1-0.txt line 35 were checked. The selected punctuation follows page 415; page 48 supplies the same words with an additional comma after vobismetipsis. This source correction does not renew historical acceptance.",
       "witnesses": "witnesses/proprium.dominica-v-post-epiphaniam-epistola/",
       "apparatus": "witnesses/proprium.dominica-v-post-epiphaniam-epistola/apparatus.json"
     },
@@ -170,7 +170,10 @@
       "w109": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w110": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w111": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w088": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w088": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w038": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w089": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

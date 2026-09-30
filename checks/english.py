@@ -28,6 +28,10 @@ Narrow gloss patterns are checked:
   *testimonium perhibere* must not repeat *witness* or *testimony*. This rule
   does not judge nonadjacent subjects, synonyms or coordinated predicates.
 
+- **A person treated as the garment.** The adjacent direct rendering of
+  imperative *induite vos* must not read *put on yourselves*. This narrow
+  rule leaves other forms, clause boundaries and shared providers alone.
+
 The Latin case of a two-case preposition is still useful as an editorial
 diagnostic, but it is not an English correctness gate.  Natural English often
 selects a preposition from the governing verb or idiom rather than mechanically
@@ -341,6 +345,58 @@ def check_repeated_arguments(doc: dict, gloss: dict) -> list[str]:
     return errors
 
 
+def check_reflexive_clothing(doc: dict, gloss: dict) -> list[str]:
+    """Reject direct ``put on / yourselves`` for adjacent imperative induite vos.
+
+    English clothes a person and puts on a garment. This narrow diagnostic
+    does not infer a garment from a later gloss or judge other inflections,
+    metaphors, paraphrases, or grouped/zero providers. Never join clauses.
+    """
+    errors: list[str] = []
+    glosses = gloss.get("words") or {}
+    localized = gloss.get("segments") or {}
+
+    def normalized(value: object) -> str:
+        if not isinstance(value, str):
+            return ""
+        return " ".join(unicodedata.normalize("NFKC", value).casefold().split())
+
+    for segment in doc.get("segments", []):
+        grouped = {
+            wid
+            for group in (localized.get(segment.get("id")) or {}).get("alignments", [])
+            for wid in group["words"]
+        }
+        for verb, pronoun in pairwise(segment.get("words") or []):
+            vm, pm = verb.get("morph", {}), pronoun.get("morph", {})
+            if (
+                verb.get("lemma") != "induo"
+                or vm.get("pos") != "verb"
+                or vm.get("mood") != "imp"
+                or vm.get("person") != 2
+                or vm.get("number") != "pl"
+                or pronoun.get("lemma") != "vos"
+                or pm.get("pos") != "pron"
+                or pm.get("case") != "acc"
+                or pm.get("number") != "pl"
+                or verb.get("post", "").strip()
+                or pronoun.get("pre", "").strip()
+                or verb["id"] in grouped
+                or pronoun["id"] in grouped
+            ):
+                continue
+            left = (glosses.get(verb["id"]) or {}).get("gloss")
+            right = (glosses.get(pronoun["id"]) or {}).get("gloss")
+            if normalized(left) == "put on" and normalized(right) == "yourselves":
+                errors.append(
+                    f"{doc['id']}:{verb['id']}–{pronoun['id']} "
+                    f"({verb['form']} {pronoun['form']}): separate glosses "
+                    f"{left!r} + {right!r} treat the person as a garment — "
+                    "use a coherent clothing construction"
+                )
+    return errors
+
+
 def check_apostrophes(gloss: dict) -> list[str]:
     """The English layer types the typographic apostrophe (’) in what a reader meets.
 
@@ -376,6 +432,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
         + check_usque_junctions(doc, gloss)
         + check_modal_negation_junctions(doc, gloss)
         + check_repeated_arguments(doc, gloss)
+        + check_reflexive_clothing(doc, gloss)
         + check_conclusion_gloss(doc, gloss)
         + check_apostrophes(gloss)
     )
