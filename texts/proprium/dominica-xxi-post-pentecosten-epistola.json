@@ -101,7 +101,7 @@
         { "id": "w080", "form": "scutum", "lemma": "scutum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "sg", "decl": 2 } },
         { "id": "w081", "form": "fídei", "lemma": "fides", "morph": { "case": "gen", "decl": 5, "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w082", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w083" },
-        { "id": "w083", "form": "quo", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "sg" } },
+        { "id": "w083", "form": "quo", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "n" } },
         { "id": "w084", "form": "possítis", "lemma": "possum", "morph": { "mood": "subj", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w085", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w086" },
         { "id": "w086", "form": "tela", "lemma": "telum", "morph": { "pos": "noun", "case": "acc", "gender": "n", "number": "pl", "decl": 2 } },
@@ -124,9 +124,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "notes": "The 100-word Epistle spans Benziger 1962 pages 408–409 (leaves n489–n490). The title, scripture reference and following Gradual are framing. At word 85 the scan prints ómnis; the selected ómnia is attested by the pinned digital witness and agrees with tela. The complete difference is recorded, not silently normalized.",
     "source": {
-      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "Both Benziger 1962 Editio iuxta typicam page images and the complete pinned digital body at Latin/Tempora/Pent21-0.txt line 28 were checked. The apparatus records nine digital spelling, accent and punctuation differences and one grammatical reading from the scan. This correction does not renew historical source acceptance.",
       "witnesses": "witnesses/proprium.dominica-xxi-post-pentecosten-epistola/",
       "apparatus": "witnesses/proprium.dominica-xxi-post-pentecosten-epistola/apparatus.json"
     },
@@ -149,7 +149,8 @@
       "w067": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w071": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w053": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w097": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w097": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w083": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

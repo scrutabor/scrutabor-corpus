@@ -114,6 +114,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-Sancti-01-13.txt",
       "sha256": "b06d9034a18a98c9024c17db007c9c483bd1bb0f1627171f25f6b69ca41e7b4d"
+    },
+    "pentecost-xxi": {
+      "upstream": "web/www/missa/Latin/Tempora/Pent21-0.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pent21-0.txt",
+      "sha256": "194cff1f5d5d07c50e131b2938cc7867cc6c463a52f67d419d8c976a038d5762"
     }
   },
   "bindings": {
@@ -717,6 +723,27 @@
           "archive": "baptism",
           "first": 29,
           "last": 29
+        }
+      ]
+    },
+    "pentecost-xxi-epistle": {
+      "witness": "witnesses/proprium.dominica-xxi-post-pentecosten-epistola/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "pentecost-xxi",
+          "first": 28,
+          "last": 28,
+          "section": "Lectio",
+          "section_line": 25
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "pentecost-xxi",
+          "first": 28,
+          "last": 28
         }
       ]
     }
