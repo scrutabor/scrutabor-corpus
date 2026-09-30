@@ -6,11 +6,15 @@ rather than to the Latin case — *believe IN one God* renders an accusative,
 *have mercy ON us* a dative, and neither is a mistake. So this module asserts
 only what is decidable without English morphology, and says nothing else.
 
-Three narrow gloss patterns are checked:
+Four narrow gloss patterns are checked:
 
 - **A preposition rendered twice.** When *de* is glossed *from* and its own
   object *cælis* is glossed *of heaven*, the gloss line reads *Father from of
   heaven*. Exact, because the Latin `head` says which word is the object.
+- **A noun rendered twice across its preposition.** Adjacent direct glosses
+  such as *with water* plus *water* duplicate the explicitly linked noun.
+  Only an English preposition plus that complete noun gloss is matched;
+  modifiers, synonyms and nonadjacent constituents need editorial review.
 - **Usque and its following connective rendered redundantly.** Separate
   glosses such as *until unto* or *as far to* do not express the Latin phrase
   in English. Only the specific malformed junctions below are rejected;
@@ -29,12 +33,34 @@ copying Latin spatial case (*wait for*, *rejoice in*, *upon the Cross*).
 from __future__ import annotations
 
 import re
+import unicodedata
 from itertools import pairwise
 
 from checks.syntax import check_conclusion_gloss
 
 LEADING_PREPOSITION = re.compile(
     r"^\s*(of|to|unto|for|with|by|in|from|at|on|into|through|upon)\b", re.IGNORECASE
+)
+SIMPLE_PREPOSITIONS = frozenset(
+    [
+        "at",
+        "by",
+        "for",
+        "from",
+        "in",
+        "into",
+        "of",
+        "on",
+        "onto",
+        "to",
+        "unto",
+        "upon",
+        "with",
+        "without",
+        "within",
+        "among",
+        "through",
+    ]
 )
 
 # What a two-case preposition may be glossed with, per case it governs.
@@ -91,6 +117,58 @@ def check_doubled_preposition(doc: dict, gloss: dict) -> list[str]:
                 f"{index[head_id]['form']!r} glossed {obj.strip()!r} — the gloss line "
                 f"renders the preposition twice"
             )
+    return errors
+
+
+def check_doubled_noun_head(doc: dict, gloss: dict) -> list[str]:
+    """Reject a linked noun repeated in two adjacent direct realizations.
+
+    This deliberately narrow rule matches one simple English preposition and
+    the entire separately glossed noun, not arbitrary overlapping phrases.
+    Shared/zero providers are handled by the interlinear validator. The rule
+    does not infer lexical equivalence, missing dependencies or English case.
+    """
+    errors: list[str] = []
+    glosses = gloss.get("words") or {}
+    segments = gloss.get("segments") or {}
+
+    def tokens(value: object) -> list[str]:
+        if not isinstance(value, str):
+            return []
+        return re.findall(
+            r"[^\W_]+(?:[’'][^\W_]+)*", unicodedata.normalize("NFKC", value).casefold()
+        )
+
+    for segment in doc.get("segments", []):
+        grouped = {
+            wid
+            for group in (segments.get(segment.get("id")) or {}).get("alignments", [])
+            for wid in group["words"]
+        }
+        for prep, noun in pairwise(segment.get("words") or []):
+            if (
+                prep.get("morph", {}).get("pos") != "prep"
+                or noun.get("morph", {}).get("pos") != "noun"
+                or prep.get("head") != noun["id"]
+                or prep["id"] in grouped
+                or noun["id"] in grouped
+            ):
+                continue
+            left = (glosses.get(prep["id"]) or {}).get("gloss")
+            right = (glosses.get(noun["id"]) or {}).get("gloss")
+            own, head = tokens(left), tokens(right)
+            if (
+                head
+                and len(own) == len(head) + 1
+                and own[0] in SIMPLE_PREPOSITIONS
+                and own[1:] == head
+            ):
+                errors.append(
+                    f"{doc['id']}:{prep['id']}–{noun['id']} "
+                    f"({prep['form']} {noun['form']}): separate glosses "
+                    f"{left!r} + {right!r} render the noun twice — "
+                    "use a coherent split or a shared interlinear alignment"
+                )
     return errors
 
 
@@ -222,6 +300,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
         return []
     return (
         check_doubled_preposition(doc, gloss)
+        + check_doubled_noun_head(doc, gloss)
         + check_usque_junctions(doc, gloss)
         + check_modal_negation_junctions(doc, gloss)
         + check_conclusion_gloss(doc, gloss)
