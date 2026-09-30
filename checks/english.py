@@ -287,6 +287,61 @@ def check_modal_negation_junctions(doc: dict, gloss: dict) -> list[str]:
     return errors
 
 
+def check_knowledge_negation(doc: dict, gloss: dict) -> list[str]:
+    """Reject adjacent direct not + an already negative nosco predicate.
+
+    This is not a general double-negation rule: lexical negatives such as
+    nescio may legitimately follow non. Do not cross punctuation or segments,
+    skip Latin words, or judge a shared/zero provider as two direct glosses.
+    Other predicates, negative expressions and tense choices require review.
+    """
+    errors: list[str] = []
+    glosses = gloss.get("words") or {}
+    localized = gloss.get("segments") or {}
+    for segment in doc.get("segments", []):
+        grouped = {
+            wid
+            for group in (localized.get(segment.get("id")) or {}).get("alignments", [])
+            for wid in group["words"]
+        }
+        for first, second in pairwise(segment.get("words") or []):
+            morph = second.get("morph") or {}
+            if (
+                (first.get("lemma"), second.get("lemma")) != ("non", "nosco")
+                or morph.get("pos") != "verb"
+                or morph.get("mood") not in {"ind", "subj", "imp"}
+                or first.get("post", "").strip()
+                or second.get("pre", "").strip()
+                or first["id"] in grouped
+                or second["id"] in grouped
+            ):
+                continue
+            left = (glosses.get(first["id"]) or {}).get("gloss")
+            right = (glosses.get(second["id"]) or {}).get("gloss")
+            if not isinstance(left, str) or not isinstance(right, str):
+                continue
+            left = unicodedata.normalize("NFKC", left).strip().casefold()
+            right = unicodedata.normalize("NFKC", right).strip()
+            negative_predicate = re.match(
+                r"(?:(?:I|you|he|she|it|we|they)\s+)?"
+                r"(?:(?:know|knows|knew)\s+not\b|"
+                r"never\s+(?:know|knows|knew)\b|"
+                r"(?:(?:do|does|did|have|has|had)\s+not|"
+                r"(?:do|does|did|have|has|had)n[’']t)\s+(?:know|known)\b|"
+                r"(?:cannot|can\s+not|can[’']t|could\s+not|couldn[’']t)\s+know\b)",
+                right,
+                re.I,
+            )
+            if left == "not" and negative_predicate:
+                errors.append(
+                    f"{doc['id']}:{first['id']}–{second['id']} "
+                    f"({first['form']} {second['form']}): separate glosses "
+                    f"{left!r} + {right!r} render the knowledge negation twice — "
+                    "use one negative predicate or a shared interlinear alignment"
+                )
+    return errors
+
+
 def check_repeated_arguments(doc: dict, gloss: dict) -> list[str]:
     """Reject two narrow duplicated arguments in adjacent direct providers.
 
@@ -632,6 +687,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
         + check_doubled_noun_head(doc, gloss)
         + check_usque_junctions(doc, gloss)
         + check_modal_negation_junctions(doc, gloss)
+        + check_knowledge_negation(doc, gloss)
         + check_repeated_arguments(doc, gloss)
         + check_reflexive_clothing(doc, gloss)
         + check_lexical_complements(doc, gloss)
