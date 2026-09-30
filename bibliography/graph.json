@@ -15284,12 +15284,70 @@
         "text": "proprium.dedicatio-sancti-michaelis-archangeli-collecta"
       },
       "locator": {
-        "section": "pinned source key Sancti/09-29; resolved section [Oratio] with declared inherited references"
+        "section": "Latin/Sancti/09-29.txt [Oratio], heading22 and @Sancti/05-08 reference23"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The September file directs this collect to the May source. The complete body and shared conclusion have separate source uses and explicit raw-file reference resolution.",
       "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "e0a500e272427a7ef983417ff91e488182038b92bcf92f36b3f381fec2eb53f2"
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "e0a500e272427a7ef983417ff91e488182038b92bcf92f36b3f381fec2eb53f2",
+      "decision_reason": "Exact source chain checked on 2026-09-30; historical date retained and source review remains pending."
+    },
+    {
+      "id": "use.proprium.dedicatio-sancti-michaelis-archangeli-collecta.expanded-conclusion.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dedicatio-sancti-michaelis-archangeli-collecta"
+      },
+      "locator": {
+        "section": "Latin/Ordo/Prayers.txt [Per Dominum], heading95, conclusion96, response97"
+      },
+      "claim": "The exact shared formula supplies twenty-one conclusion words and Amen after resolving $Per Dominum. The lowercase r. initial-format marker and uppercase R. response marker are framing, not Latin words.",
+      "verified_on": "2026-09-30",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b",
+      "decision_reason": "Separate directly inspected source scope; not complete prayer or parent acceptance."
+    },
+    {
+      "id": "use.proprium.dedicatio-sancti-michaelis-archangeli-collecta.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dedicatio-sancti-michaelis-archangeli-collecta"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "The Father-directed formula supplies the twenty-one-word conclusion and Amen. The unaccented rubric prints tuum, qui and Sancti, Deus; house accents, ligatures, tuum: Qui and terminal Amen. are declared in the witness.",
+      "verified_on": "2026-09-30",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision_reason": "Separate directly inspected source scope; not complete prayer or parent acceptance."
+    },
+    {
+      "id": "use.proprium.dedicatio-sancti-michaelis-archangeli-collecta.inherited-body.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dedicatio-sancti-michaelis-archangeli-collecta"
+      },
+      "locator": {
+        "section": "Latin/Sancti/05-08.txt [Oratio], heading19, body20, $Per Dominum command21"
+      },
+      "claim": "The May file supplies the twenty-six-word body reached from the September reference, then calls the separately bound shared conclusion.",
+      "verified_on": "2026-09-30",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "25bb858d23b6e493b268cfd9a2a40f9765ee50fd5c446b572b4c5d8e3fbd2adc",
+      "decision_reason": "Separate directly inspected source scope; not complete prayer or parent acceptance."
     },
     {
       "id": "use.proprium.dedicatio-sancti-michaelis-archangeli-collecta.mr1962",
@@ -15305,10 +15363,32 @@
         "scan": "leaf n765 / PDF p. 766",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n765/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The left-column Oratio prints the twenty-six-word collect body and Per Dominum cue. The full conclusion is supplied by the separately bound RG115a source, not printed here in full.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
-      "evidence_sha256": "60a8d0e5538192672cc2236c87835a89ce44bc383a5cdda2bf7fd3877e0e1095"
+      "evidence_sha256": "60a8d0e5538192672cc2236c87835a89ce44bc383a5cdda2bf7fd3877e0e1095",
+      "decision_reason": "Scope clarified on 2026-09-30 after direct image inspection; historical date retained, not renewed as acceptance."
+    },
+    {
+      "id": "use.proprium.dedicatio-sancti-michaelis-archangeli-collecta.oration-audible.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dedicatio-sancti-michaelis-archangeli-collecta"
+      },
+      "locator": {
+        "printed": "p. xxxiii",
+        "scan": "leaf n38 / PDF p. 39",
+        "section": "RG 511 d",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n38/mode/1up"
+      },
+      "claim": "In a read Mass the priest says the orations aloud. This establishes the collect's audible delivery, not a response-participation map.",
+      "verified_on": "2026-09-30",
+      "evidence_sha256": "a6d9b2554ebb911a8a6ae9ea6e6e5e882307bedeab8e326ae2f7ef602ec2fd7e",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "Separate directly inspected source scope; not complete prayer or parent acceptance."
     },
     {
       "id": "use.proprium.dedicatio-sancti-michaelis-archangeli-collecta.oration-boundaries.mr1962",
@@ -15320,15 +15400,37 @@
         "text": "proprium.dedicatio-sancti-michaelis-archangeli-collecta"
       },
       "locator": {
-        "printed": "pp. xxxii–xxxiv, 226",
-        "scan": "PDF scans 38–40, 306",
-        "section": "RG 480–481, 511 d/i, 513–514; Ordo conclusion"
+        "printed": "p. lii",
+        "scan": "leaf n57 / PDF p. 58",
+        "section": "Ritus servandus V 1-2",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n57/mode/1up"
       },
-      "claim": "The final secret has an audible Per omnia saecula saeculorum followed by the response Amen. Collects and postcommunions are priestly orations with a separate response. These rules determine the modeled boundaries, not the completeness of a date-specific commemoration inventory.",
+      "claim": "The celebrant says the collect after Oremus with prescribed gestures through its conclusion. Audible or sung delivery is supported by separately bound RG511d and RG513a/514. These loci do not alone certify response participation or date-specific commemorations.",
       "verified_on": "2026-09-19",
-      "evidence_sha256": "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
-      "decision": "RETAIN",
-      "decision_reason": "Source-defined ritual boundary only. The complete word sequence and existing word IDs are unchanged."
+      "evidence_sha256": "beace17715923bcbb21c5e213ff92bbda4bda317b80e90a1752b5d851a1ba7ea",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "Claim narrowed on 2026-09-30 to directly inspected collect rules; secret-specific and unrelated preface loci removed. Historical date retained; ritual metadata unchanged."
+    },
+    {
+      "id": "use.proprium.dedicatio-sancti-michaelis-archangeli-collecta.oration-sung.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dedicatio-sancti-michaelis-archangeli-collecta"
+      },
+      "locator": {
+        "printed": "p. xxxiv",
+        "scan": "leaf n39 / PDF p. 40",
+        "section": "RG 513 a and 514",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n39/mode/1up"
+      },
+      "claim": "The celebrant sings the orations in solemn Mass; the corresponding rule extends to sung Mass without sacred ministers.",
+      "verified_on": "2026-09-30",
+      "evidence_sha256": "c03be5250068f8c9c262983bc7689a18d0180b88b0c4476d21fac383c8f07993",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "Separate directly inspected source scope; not complete prayer or parent acceptance."
     },
     {
       "id": "use.proprium.dedicatio-sancti-michaelis-archangeli-communio.do44667ff",
@@ -58013,12 +58115,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "34fe2d0648e8ef89e9a36e7fbf25bbf0f8d90a0a88145fba33261609f48dad66",
+      "transcription_sha256": "9dc3064fe744bbac4eacfb2088d5aefb4d892725cf256f830d8f2fcf94e8b014",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dedicatio-sancti-michaelis-archangeli-collecta.expanded-conclusion.do44667ff",
+          "use.proprium.dedicatio-sancti-michaelis-archangeli-collecta.inherited-body.do44667ff"
+        ],
+        "raw_binding": "michael-collect"
       }
     },
     {
@@ -58029,12 +58138,21 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "07dca7255964fdf007cda7a1d50612e2ca677c10cdfc39b5ece6a746cc58a055",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "af60afe1c0030dc242aa3a7c3fd17d87fa0953a7bf73851aa4cdd0ba349d39db",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "Direct comparison with the Benziger 1962 proper image, separately expanded from RG115a with declared house accidentals; digital comparison was checked separately. Historical preparation is not renewed as acceptance.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dedicatio-sancti-michaelis-archangeli-collecta.expanded-conclusion.mr1962",
+          "use.proprium.dedicatio-sancti-michaelis-archangeli-collecta.oration-audible.mr1962",
+          "use.proprium.dedicatio-sancti-michaelis-archangeli-collecta.oration-boundaries.mr1962",
+          "use.proprium.dedicatio-sancti-michaelis-archangeli-collecta.oration-sung.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -88244,19 +88362,21 @@
     {
       "id": "collation.proprium.dedicatio-sancti-michaelis-archangeli-collecta.mr1962-do44667ff",
       "text": "proprium.dedicatio-sancti-michaelis-archangeli-collecta",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "Benziger 1962 proper body with declared RG115a house-expanded conclusion, compared with the exact pinned September-to-May-to-shared-formula digital chain; selected Latin unchanged.",
       "selected_text_sha256": "8480a6a7f69ffafa91a9e93337fa2c6cca2438f924b92741c890e603d171b5b9",
       "witnesses": [
         "witness.proprium.dedicatio-sancti-michaelis-archangeli-collecta.do44667ff",
         "witness.proprium.dedicatio-sancti-michaelis-archangeli-collecta.mr1962"
       ],
       "apparatus": {
-        "entries": 1,
+        "entries": 6,
         "classes": [
+          "accent",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "e596f602efe9873bf3ecf80103fab590a583228c95bc1b9c1ad2846cc8fbb0d4",
+      "apparatus_sha256": "83b896ea1bad6d47ded75d72167aca934b93cd0f87490d0d3fac2e6ad35d3e9d",
       "review": {
         "status": "pending"
       }

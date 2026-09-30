@@ -1,13 +1,42 @@
 {
   "text": "proprium.dedicatio-sancti-michaelis-archangeli-collecta",
-  "note": "Adjudicated accidental and house-orthography variants. The witnesses agree on the substantive text.",
+  "note": "Six accidental loci distinguish the exact digital body and shared formula from the directly checked Benziger proper body with its declared RG115a house expansion. Selected Latin is unchanged. The proper page prints only the conclusion cue.",
   "summary": {
-    "entries": 1,
+    "entries": 6,
     "classes": [
+      "accent",
+      "orthography",
       "punctuation"
     ]
   },
   "adjudicated": [
+    {
+      "at": "w004",
+      "ours": "órdine,",
+      "witnesses": {
+        "do": "ordine,"
+      },
+      "class": "accent",
+      "ruling": "The Benziger body prints ordine with an accent; the exact pinned May body omits that accent."
+    },
+    {
+      "at": "w017",
+      "ours": "cælo",
+      "witnesses": {
+        "do": "cœlo"
+      },
+      "class": "orthography",
+      "ruling": "The Benziger body prints caelo with the ae ligature; the exact pinned May body uses the oe ligature. The same word is intended."
+    },
+    {
+      "at": "w030",
+      "ours": "Iesum",
+      "witnesses": {
+        "do": "Jesum"
+      },
+      "class": "orthography",
+      "ruling": "RG115a has Iesum; the exact pinned shared formula has Jesum, the same name with j spelling."
+    },
     {
       "at": "w031",
       "ours": "Christum",
@@ -15,7 +44,25 @@
         "do": "Christum,"
       },
       "class": "punctuation",
-      "ruling": "The typical edition's punctuation is retained. The difference marks phrasing and does not change the words."
+      "ruling": "RG115a has no comma after Christum; the exact pinned shared formula adds a comma here."
+    },
+    {
+      "at": "w034",
+      "ours": "Qui",
+      "witnesses": {
+        "do": "qui"
+      },
+      "class": "orthography",
+      "ruling": "The house expansion retains Qui after tuum:; RG115a itself prints tuum, qui. The exact digital formula has lowercase qui after its colon."
+    },
+    {
+      "at": "w042",
+      "ours": "Sancti,",
+      "witnesses": {
+        "do": "Sancti"
+      },
+      "class": "punctuation",
+      "ruling": "The selected comma after Sancti agrees with RG115a; the exact digital formula has no comma here."
     }
   ]
 }

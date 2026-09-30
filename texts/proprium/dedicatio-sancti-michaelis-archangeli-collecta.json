@@ -31,7 +31,7 @@
         { "id": "w010", "form": "propítius", "lemma": "propitius", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "adj" }, "post": ";", "head": "w009" },
         { "id": "w011", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" }, "post": "," },
         { "id": "w012", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w013" },
-        { "id": "w013", "form": "quibus", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
+        { "id": "w013", "form": "quibus", "lemma": "qui", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "m" } },
         { "id": "w014", "form": "tibi", "lemma": "tu", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
         { "id": "w015", "form": "ministrántibus", "lemma": "ministro", "morph": { "pos": "verb", "case": "abl", "gender": "m", "number": "pl", "tense": "pres", "voice": "act", "mood": "part", "conj": 1 }, "head": "w013" },
         { "id": "w016", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w017" },
@@ -39,7 +39,7 @@
         { "id": "w018", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
         { "id": "w019", "form": "assístitur", "lemma": "assisto", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "pass", "conj": 3 }, "post": "," },
         { "id": "w020", "form": "ab", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w021" },
-        { "id": "w021", "form": "his", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "pl" } },
+        { "id": "w021", "form": "his", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "pl", "gender": "m" } },
         { "id": "w022", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w023" },
         { "id": "w023", "form": "terra", "lemma": "terra", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "f", "decl": 1 } },
         { "id": "w024", "form": "vita", "lemma": "vita", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
@@ -102,9 +102,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "notes": "The twenty-six-word collect body follows Benziger 1962 page 684. Its Per Dominum cue is expanded under Rubricae generales 115 a with declared house accents and punctuation. Amen remains a separate response.",
     "source": {
-      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The Benziger 1962 Editio iuxta typicam proper body on page 684 and full conclusion in Rubricae generales 115 a, page xvii, were checked separately. The pinned digital September reference resolves to the May body and shared Per Dominum formula; all three original files and six accidental differences are explicitly bound. Historical preparation statements are preserved, not renewed as source acceptance.",
       "witnesses": "witnesses/proprium.dedicatio-sancti-michaelis-archangeli-collecta/",
       "apparatus": "witnesses/proprium.dedicatio-sancti-michaelis-archangeli-collecta/apparatus.json"
     },
@@ -117,7 +117,9 @@
       "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w025": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w029": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w013": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

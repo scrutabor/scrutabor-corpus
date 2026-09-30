@@ -138,6 +138,18 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/06-29.txt",
       "sha256": "0434f293595cb2757c22979c2d88f1e1a1f3a43919973b0dd524ef022801b68f"
+    },
+    "michael-apparition": {
+      "upstream": "web/www/missa/Latin/Sancti/05-08.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/05-08.txt",
+      "sha256": "25bb858d23b6e493b268cfd9a2a40f9765ee50fd5c446b572b4c5d8e3fbd2adc"
+    },
+    "michael-dedication": {
+      "upstream": "web/www/missa/Latin/Sancti/09-29.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/09-29.txt",
+      "sha256": "e0a500e272427a7ef983417ff91e488182038b92bcf92f36b3f381fec2eb53f2"
     }
   },
   "bindings": {
@@ -818,6 +830,59 @@
           "archive": "peter-paul",
           "first": 30,
           "last": 30
+        }
+      ]
+    },
+    "michael-collect": {
+      "witness": "witnesses/proprium.dedicatio-sancti-michaelis-archangeli-collecta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "michael-dedication",
+          "first": 22,
+          "last": 23,
+          "section": "Oratio",
+          "section_line": 22
+        },
+        {
+          "archive": "michael-apparition",
+          "first": 19,
+          "last": 21,
+          "section": "Oratio",
+          "section_line": 19
+        },
+        {
+          "archive": "prayers",
+          "first": 95,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "michael-dedication",
+          "line": 23,
+          "text": "@Sancti/05-08",
+          "target": 1
+        },
+        {
+          "archive": "michael-apparition",
+          "line": 21,
+          "text": "$Per Dominum",
+          "target": 2
+        }
+      ],
+      "reading": [
+        {
+          "archive": "michael-apparition",
+          "first": 20,
+          "last": 20
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
         }
       ]
     }
