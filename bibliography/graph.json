@@ -52568,9 +52568,9 @@
         "text": "proprium.visitatio-beatae-mariae-virginis-epistola"
       },
       "locator": {
-        "section": "pinned source key Sancti/07-02; resolved section [Lectio] with declared inherited references"
+        "section": "Latin/Sancti/07-02.txt [Lectio]: section marker16, announcement17, reference18, complete direct body19; Graduale starts21"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The exact pinned 107-word direct reading differs from the selected Latin at seven punctuation loci, the spelling Jam and the substantive inflection petra. No inherited text, macro or concluding response is part of this body.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
       "evidence_sha256": "50ce2d7211d611714925a97be541a0adb02d7057338723dbf70a97790dc2ea93"
@@ -52589,7 +52589,7 @@
         "scan": "leaf n665 / PDF p. 666",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n665/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The Benziger 1962 Editio iuxta typicam page prints the complete 107-word Epistle, beginning in the lower left column and ending in the upper right before Graduale. The announcement and scripture reference are framing; no expansion or concluding response is included.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
       "evidence_sha256": "87ec14fc5f7b699d3b5c14ae49342d914df19d6f00bb476b6eca1a2f72a74d04"
@@ -85149,12 +85149,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "77ff2b25a694d9b840e1ba2270d28730aeb6372c334754781214a2b135203c46",
+      "transcription_sha256": "bdbc953e501138a28676ae942f7863e74dd2032b5c489b05433776508c735b50",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Exact pinned upstream direct Latin reading, used as a derived comparison rather than the controlling edition; its inflectional difference remains explicitly recorded.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "visitation-epistle"
       }
     },
     {
@@ -85165,12 +85169,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "ed5849c1259da07d4eb80d468de9ffbb888626e1fa000f08be01eeff3c899d32",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "87d92d78527b31e429b97810d2973ad45d1ac90f6ec37cbb37e0fc1768ee3317",
+      "orthography_profile": "diplomatic-page-body",
+      "independence_basis": "Direct comparison with the complete identified Benziger 1962 page, separately from the pinned digital reading. Historical preparation statements remain in the transcript and are not renewed as acceptance.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -105615,20 +105623,21 @@
     {
       "id": "collation.proprium.visitatio-beatae-mariae-virginis-epistola.mr1962-do44667ff",
       "text": "proprium.visitatio-beatae-mariae-virginis-epistola",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "Complete Benziger 1962 Epistle, compared with the exact pinned direct digital body; nine declared loci, selected Latin and ritual segmentation unchanged.",
       "selected_text_sha256": "70c717e6fe7481f44aa845eab430da6b872c6f94f2f86029bbc24fc730ac3c6d",
       "witnesses": [
         "witness.proprium.visitatio-beatae-mariae-virginis-epistola.do44667ff",
         "witness.proprium.visitatio-beatae-mariae-virginis-epistola.mr1962"
       ],
       "apparatus": {
-        "entries": 8,
+        "entries": 9,
         "classes": [
+          "orthography",
           "punctuation",
           "substantive"
         ]
       },
-      "apparatus_sha256": "4d94186633627fd489f059276e148e3aa7328779f0fb468391c24996e02497ac",
+      "apparatus_sha256": "e7ce72068abdba45bf5ed33c6035cf98ed16fc9f7842ccf2db98ca6a258ed02e",
       "review": {
         "status": "pending"
       }

@@ -37,6 +37,10 @@ Narrow gloss patterns are checked:
   rejected within precisely bounded Latin constructions. Subjects needed
   in a separate finite clause are not mistaken for duplicated arguments.
 
+- **Two malformed predicates.** Exact direct *like is* and *let sound voice
+  your* are rejected within bounded Latin comparison and jussive constructions.
+  Other comparisons, result-state tenses and shared providers need review.
+
 The Latin case of a two-case preposition is still useful as an editorial
 diagnostic, but it is not an English correctness gate.  Natural English often
 selects a preposition from the governing verb or idiom rather than mechanically
@@ -49,6 +53,7 @@ import re
 import unicodedata
 from itertools import pairwise
 
+from checks.english_predicates import check_predicate_junctions
 from checks.syntax import check_conclusion_gloss
 
 LEADING_PREPOSITION = re.compile(
@@ -631,6 +636,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
         + check_reflexive_clothing(doc, gloss)
         + check_lexical_complements(doc, gloss)
         + check_clause_junctions(doc, gloss)
+        + check_predicate_junctions(doc, gloss)
         + check_conclusion_gloss(doc, gloss)
         + check_apostrophes(gloss)
     )

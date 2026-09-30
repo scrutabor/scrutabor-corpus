@@ -918,6 +918,31 @@ def lint_text(doc):
     return errors, len(words)
 
 
+def _distinct_possessive_heads(group: dict | None, neighbor: dict, words: dict) -> bool:
+    """Two explicit possessive adjectives may qualify different nouns.
+
+    A shared phrase owns its modifier only when both it and its noun belong
+    to that phrase. Require the neighbor to qualify a separate noun outside
+    it; arbitrary groups or missing dependencies never excuse absorption.
+    """
+    if not group or neighbor.get("morph", {}).get("pos") != "adj":
+        return False
+    lemma = neighbor.get("lemma")
+    if lemma not in {"meus", "tuus", "suus", "noster", "vester"}:
+        return False
+    members = set(group.get("words", []))
+    outside = neighbor.get("head")
+    if outside in members or words.get(outside, {}).get("morph", {}).get("pos") != "noun":
+        return False
+    return any(
+        (modifier := words.get(member, {})).get("lemma") == lemma
+        and modifier.get("morph", {}).get("pos") == "adj"
+        and modifier.get("head") in members
+        and words.get(modifier.get("head"), {}).get("morph", {}).get("pos") == "noun"
+        for member in members
+    )
+
+
 def lint_gloss(doc, text_doc):
     errors = []
     lang = doc["lang"]
@@ -937,6 +962,10 @@ def lint_gloss(doc, text_doc):
     conj = GLOSS_CONJUNCTIONS.get(lang, set())
     for seg in text_doc["segments"]:
         ws = seg.get("words") or []
+        groups = {
+            group.get("anchor"): group
+            for group in (doc.get("segments", {}).get(seg["id"], {}).get("alignments") or [])
+        }
         # A short shared expression can have its own genitive pronoun.
         # In post eam / proximae eius, the two English occurrences of her
         # belong to different Latin pronouns, not to an absorbed neighbor.
@@ -972,6 +1001,7 @@ def lint_gloss(doc, text_doc):
                     and key in parts
                     and g.lower() != ng.lower()
                     and not separate_personal_pronoun
+                    and not _distinct_possessive_heads(groups.get(w["id"]), ws[j], words)
                 ):
                     errors.append(
                         f"{text_doc['id']}:{w['id']}: the {lang} gloss "
@@ -1105,7 +1135,8 @@ def lint_gloss(doc, text_doc):
             errors.append(f"{lang}:{wid}: bare word-id {bare.group(0)!r} in reader-facing prose")
     for sid, seg in doc.get("segments", {}).items():
         check_prose(
-            sid, (seg.get("translation", "") or "") + " " + (seg.get("narrative", "") or "")
+            sid,
+            (seg.get("translation", "") or "") + " " + (seg.get("narrative", "") or ""),
         )
         check_narrative(sid, seg.get("narrative", "") or "")
         if "narrative_citations" in seg:
