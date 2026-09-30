@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import functools
 import re
+import unicodedata
 
 from checks.syntax import check_conclusion_gloss
 
@@ -569,6 +570,62 @@ def check_divine_address(doc: dict, gloss: dict) -> list[str]:
     return errors
 
 
+def check_reflexive_marker(doc: dict, gloss: dict) -> list[str]:
+    """Do not teach accusative se as the Polish conjunction że.
+
+    An accusative-and-infinitive clause may become a Polish finite clause,
+    with the subject carried by the verb. That needs an explicit shared or
+    inflection provider, not a direct pronoun gloss consisting only of że.
+    This diagnostic deliberately does not judge other pronouns, cases,
+    paraphrases, or the semantic completeness of an aligned construction.
+    """
+    errors: list[str] = []
+    localized = gloss.get("segments") or {}
+    glosses = gloss.get("words") or {}
+
+    def normalized(value: object) -> str:
+        if not isinstance(value, str):
+            return ""
+        return " ".join(unicodedata.normalize("NFKC", value).casefold().split())
+
+    def target_word(value: object) -> str:
+        value = normalized(value)
+
+        def outer(char: str) -> bool:
+            return char.isspace() or unicodedata.category(char).startswith("P")
+
+        left, right = 0, len(value)
+        while left < right and outer(value[left]):
+            left += 1
+        while right > left and outer(value[right - 1]):
+            right -= 1
+        return value[left:right]
+
+    for segment in doc.get("segments", []):
+        grouped = {
+            wid
+            for group in (localized.get(segment.get("id")) or {}).get("alignments", [])
+            for wid in group["words"]
+        }
+        for word in segment.get("words") or []:
+            morph = word.get("morph", {})
+            direct = (glosses.get(word["id"]) or {}).get("gloss")
+            if (
+                word["id"] not in grouped
+                and word.get("lemma") == "sui"
+                and morph.get("pos") == "pron"
+                and morph.get("case") == "acc"
+                and normalized(word.get("form")) == "se"
+                and target_word(direct) == "że"
+            ):
+                errors.append(
+                    f"{doc['id']}:{word['id']} ({word['form']}): direct gloss "
+                    f"{direct!r} replaces a reflexive pronoun with a conjunction — "
+                    "represent the subject in the gloss or its aligned construction"
+                )
+    return errors
+
+
 def check(doc: dict, gloss: dict) -> list[str]:
     if gloss.get("lang") != "pl":
         return []
@@ -585,6 +642,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
         + check_divine_address(doc, gloss)
         + check_purpose_clauses(doc, gloss)
         + check_conclusion_gloss(doc, gloss)
+        + check_reflexive_marker(doc, gloss)
     )
 
 

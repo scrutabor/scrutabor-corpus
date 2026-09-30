@@ -28,7 +28,7 @@
         { "id": "w007", "form": "manus", "lemma": "manus", "morph": { "case": "acc", "decl": 4, "gender": "f", "number": "pl", "pos": "noun" }, "post": "," },
         { "id": "w008", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w009", "form": "afflígeret", "lemma": "affligo", "morph": { "pos": "verb", "mood": "subj", "number": "sg", "person": 3, "tense": "impf", "voice": "act", "conj": 3 } },
-        { "id": "w010", "form": "quosdam", "lemma": "quidam", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w010", "form": "quosdam", "lemma": "quidam", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "m" } },
         { "id": "w011", "form": "de", "lemma": "de", "morph": { "governs": "abl", "pos": "prep" }, "head": "w012" },
         { "id": "w012", "form": "ecclésia", "lemma": "ecclesia", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 }, "post": "." },
         { "id": "w013", "form": "Occídit", "lemma": "occido", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "perf", "voice": "act", "conj": 3 } },
@@ -185,11 +185,11 @@
         { "id": "w164", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w165" },
         { "id": "w165", "form": "portam", "lemma": "porta", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w166", "form": "férream", "post": ",", "lemma": "ferreus", "morph": { "pos": "adj", "case": "acc", "gender": "f", "number": "sg" }, "head": "w165" },
-        { "id": "w167", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w167", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" } },
         { "id": "w168", "form": "ducit", "lemma": "duco", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "pres", "voice": "act", "conj": 3 } },
         { "id": "w169", "form": "ad", "lemma": "ad", "morph": { "governs": "acc", "pos": "prep" }, "head": "w170" },
         { "id": "w170", "form": "civitátem", "lemma": "civitas", "morph": { "pos": "noun", "case": "acc", "gender": "f", "number": "sg", "decl": 3 }, "post": ":" },
-        { "id": "w171", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w171", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" } },
         { "id": "w172", "form": "ultro", "lemma": "ultro", "morph": { "pos": "adv" } },
         { "id": "w173", "form": "apérta", "lemma": "aperio", "morph": { "pos": "verb", "case": "nom", "gender": "f", "number": "sg", "tense": "perf", "voice": "pass", "mood": "part", "conj": 4 }, "head": "w171" },
         { "id": "w174", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -236,9 +236,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "notes": "The complete 212-word Epistle is printed across Benziger 1962 pages 576–577. Its reading begins at In diebus illis and ends at plebis Iudaeorum before the Gradual; the printed announcement and reference are framing.",
     "source": {
-      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The full Benziger 1962 Editio iuxta typicam pages 576–577 and the pinned Sancti/06-29.txt reading at line 30 were checked. The five unaccented capital Angelus/Angelum forms in both witnesses are retained diplomatically; all sixteen differing digital loci are explicit. Historical preparation statements are preserved, not renewed as acceptance.",
       "witnesses": "witnesses/proprium.sancti-petri-et-pauli-apostolorum-epistola/",
       "apparatus": "witnesses/proprium.sancti-petri-et-pauli-apostolorum-epistola/apparatus.json"
     },
@@ -280,7 +280,10 @@
       "w148": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w159": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w161": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w162": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w162": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w010": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w167": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w171": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

@@ -397,6 +397,99 @@ def check_reflexive_clothing(doc: dict, gloss: dict) -> list[str]:
     return errors
 
 
+def check_lexical_complements(doc: dict, gloss: dict) -> list[str]:
+    """Reject two precise, incompatible direct-gloss combinations.
+
+    A quaternion counts four soldiers, not four 'of soldiers'. Discedo
+    permits departure from a person, but English 'left from him' combines
+    two different verb frames. Only adjacent complements, optionally after
+    one explicit nominative subject, are considered. Never scan across
+    another verb, conjunction, punctuation boundary, or aligned provider.
+    This is not a general English grammar or Latin attachment checker.
+    """
+    errors: list[str] = []
+    localized = gloss.get("segments") or {}
+    glosses = gloss.get("words") or {}
+
+    def normalized(value: object) -> str:
+        if not isinstance(value, str):
+            return ""
+        return " ".join(unicodedata.normalize("NFKC", value).casefold().split())
+
+    for segment in doc.get("segments", []):
+        words = segment.get("words") or []
+        grouped = {
+            wid
+            for group in (localized.get(segment.get("id")) or {}).get("alignments", [])
+            for wid in group["words"]
+        }
+
+        def direct(word: dict, *, members: set[str] = grouped) -> str:
+            if word["id"] in members:
+                return ""
+            return normalized((glosses.get(word["id"]) or {}).get("gloss"))
+
+        for unit, soldiers in pairwise(words):
+            um, sm = unit.get("morph", {}), soldiers.get("morph", {})
+            if (
+                unit.get("lemma") == "quaternio"
+                and um.get("pos") == "noun"
+                and um.get("number") == "pl"
+                and soldiers.get("lemma") == "miles"
+                and sm.get("pos") == "noun"
+                and sm.get("case") == "gen"
+                and sm.get("number") == "pl"
+                and soldiers.get("head") in (None, unit["id"])
+                and not unit.get("post", "").strip()
+                and not soldiers.get("pre", "").strip()
+                and direct(unit) in {"detachments of four", "squads of four"}
+                and direct(soldiers) == "of soldiers"
+            ):
+                errors.append(
+                    f"{doc['id']}:{unit['id']}–{soldiers['id']}: quaternion "
+                    "glosses produce 'four of soldiers' — preserve the count "
+                    "without duplicating its complement marker"
+                )
+        for index, verb in enumerate(words):
+            if (
+                verb.get("lemma") != "discedo"
+                or verb.get("morph", {}).get("pos") != "verb"
+                or direct(verb) != "left"
+            ):
+                continue
+            start = index + 1
+            if start < len(words):
+                subject = words[start]
+                morph = subject.get("morph", {})
+                if (
+                    morph.get("pos") == "noun"
+                    and morph.get("case") == "nom"
+                    and subject.get("head") in (None, verb["id"])
+                    and direct(subject)
+                ):
+                    start += 1
+            if start + 1 >= len(words):
+                continue
+            prep, person = words[start : start + 2]
+            pm = person.get("morph", {})
+            if (
+                prep.get("lemma") == "ab"
+                and prep.get("morph", {}).get("pos") == "prep"
+                and prep.get("head") == person["id"]
+                and pm.get("pos") == "pron"
+                and pm.get("case") == "abl"
+                and not any(w.get("post", "").strip() for w in words[index : start + 1])
+                and not any(w.get("pre", "").strip() for w in words[index + 1 : start + 2])
+                and direct(prep) == "from"
+                and direct(person) in {"him", "her", "me", "us", "them", "you"}
+            ):
+                errors.append(
+                    f"{doc['id']}:{verb['id']}–{person['id']}: departure glosses "
+                    "combine 'left' with 'from' a person — use a coherent verb frame"
+                )
+    return errors
+
+
 def check_apostrophes(gloss: dict) -> list[str]:
     """The English layer types the typographic apostrophe (’) in what a reader meets.
 
@@ -433,6 +526,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
         + check_modal_negation_junctions(doc, gloss)
         + check_repeated_arguments(doc, gloss)
         + check_reflexive_clothing(doc, gloss)
+        + check_lexical_complements(doc, gloss)
         + check_conclusion_gloss(doc, gloss)
         + check_apostrophes(gloss)
     )

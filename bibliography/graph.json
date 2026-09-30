@@ -46983,6 +46983,26 @@
       "decision_reason": "The earlier transcription carried an Alleluia that this page does not print, or prints only as a Paschaltide addition (T. P.) on a feast that never falls in Paschaltide; the chant was rechecked on the page image and the recorded corrections applied."
     },
     {
+      "id": "use.proprium.sancti-petri-et-pauli-apostolorum-epistola.body-continuation.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-petri-et-pauli-apostolorum-epistola"
+      },
+      "locator": {
+        "printed": "p. 577",
+        "scan": "leaf n658 / PDF p. 659",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n658/mode/1up"
+      },
+      "claim": "The left column continues the reading from vinctus (word 82) through plebis Iudaeorum (word 212), before the Gradual. The complete original image was read.",
+      "verified_on": "2026-09-30",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "08ecba0abfb2e2dcfb4a9e5e2dab09320721c6d45a541023215d6f18db1b6d07",
+      "decision_reason": "Separately bound continuation image; pending witness and collation review remain pending."
+    },
+    {
       "id": "use.proprium.sancti-petri-et-pauli-apostolorum-epistola.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -46992,12 +47012,13 @@
         "text": "proprium.sancti-petri-et-pauli-apostolorum-epistola"
       },
       "locator": {
-        "section": "pinned source key Sancti/06-29; resolved section [Lectio] with declared inherited references"
+        "section": "Latin/Sancti/06-29.txt [Lectio], marker27, announcement28, reference29, complete body30; Gradual starts32"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The complete pinned 212-word body has sixteen differing loci against the selected reading; spelling, accents and punctuation are preserved in the transcript and apparatus.",
       "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "0434f293595cb2757c22979c2d88f1e1a1f3a43919973b0dd524ef022801b68f"
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "0434f293595cb2757c22979c2d88f1e1a1f3a43919973b0dd524ef022801b68f",
+      "decision_reason": "Exact raw reading and framing checked on 2026-09-30; historical date retained and pending source review unchanged."
     },
     {
       "id": "use.proprium.sancti-petri-et-pauli-apostolorum-epistola.mr1962",
@@ -47009,15 +47030,15 @@
         "text": "proprium.sancti-petri-et-pauli-apostolorum-epistola"
       },
       "locator": {
-        "printed": "pp. 576–577",
-        "scan": "leaves n657–n658 / PDF pp. 658–659",
+        "printed": "p. 576",
+        "scan": "leaf n657 / PDF p. 658",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n657/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The right column begins the complete Epistle at In diebus illis and continues through milites (word 81); words 82–212 are printed on the separately bound next page.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "6ae8343a8996e30e9dc12833fb3f352a8910e7d02f903cb88945c8a781f60151",
-      "decision_reason": "Locator corrected against the page image: the text is printed on the leaves now cited, from its opening to its end."
+      "decision_reason": "The two images are separately bound on 2026-09-30; historical verification date retained, not renewed."
     },
     {
       "id": "use.proprium.sancti-petri-et-pauli-apostolorum-evangelium.do44667ff",
@@ -81055,12 +81076,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "d1ea3c35ecc67a426a2eb88a95625b4a4aa37c368dd4ca265cb815ba1a535980",
+      "transcription_sha256": "e5ce5c0dcdfb807aaa3cff1d5843d55b4e9137025552d39cbb0ea2ec12bd63f9",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "peter-paul-epistle"
       }
     },
     {
@@ -81071,12 +81096,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "58a85bc613413ab5ab2459b1453b6952a164c668b02d275dfa62a6afa93849bc",
+      "transcription_sha256": "2a28bb6c8a02b8722014e322c498327294b6e4be7301b5078fabe04a270d4ccf",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "Direct comparison with both complete Benziger 1962 Editio iuxta typicam page images, independently of the pinned digital comparison.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.sancti-petri-et-pauli-apostolorum-epistola.body-continuation.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -102866,20 +102897,22 @@
     {
       "id": "collation.proprium.sancti-petri-et-pauli-apostolorum-epistola.mr1962-do44667ff",
       "text": "proprium.sancti-petri-et-pauli-apostolorum-epistola",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "Complete 212-word Benziger 1962 Epistle, two printed pages, compared with the exact complete pinned digital body; sixteen declared loci, selected Latin unchanged.",
       "selected_text_sha256": "c2a88435078c4daaf30432ee5fdc895c19c03dbaabf01af4583b84b1b43cdf42",
       "witnesses": [
         "witness.proprium.sancti-petri-et-pauli-apostolorum-epistola.do44667ff",
         "witness.proprium.sancti-petri-et-pauli-apostolorum-epistola.mr1962"
       ],
       "apparatus": {
-        "entries": 10,
+        "entries": 16,
         "classes": [
+          "accent",
           "capital-accent",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "c3e33a657f553aa03e24f089de0edd72ddaa84578750fab095e7306426a26e36",
+      "apparatus_sha256": "3fee7349381e2745e47488b73f7482250f54f6d0604242ba4504293743cf0273",
       "review": {
         "status": "pending"
       }
