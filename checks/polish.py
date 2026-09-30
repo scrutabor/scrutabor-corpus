@@ -19,6 +19,7 @@ import functools
 import re
 import unicodedata
 
+from checks.polish_clauses import check_clause_junctions
 from checks.syntax import check_conclusion_gloss
 
 # What each Polish preposition governs. Where a preposition takes more than one
@@ -643,6 +644,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
         + check_purpose_clauses(doc, gloss)
         + check_conclusion_gloss(doc, gloss)
         + check_reflexive_marker(doc, gloss)
+        + check_clause_junctions(doc, gloss)
     )
 
 

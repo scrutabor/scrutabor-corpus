@@ -150,6 +150,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/09-29.txt",
       "sha256": "e0a500e272427a7ef983417ff91e488182038b92bcf92f36b3f381fec2eb53f2"
+    },
+    "advent-i-b5e250b": {
+      "upstream": "web/www/missa/Latin/Tempora/Adv1-0.txt",
+      "revision": "b5e250b0af79bc3fb4fc3ac631a622d8cb0f2a19",
+      "path": "witnesses/raw/do-Adv1-0.txt",
+      "sha256": "db065ed4bb77f9100aa0dacce7ac11668a331d6defd3ff5331aed19cfb7283f9"
     }
   },
   "bindings": {
@@ -883,6 +889,27 @@
           "archive": "prayers",
           "first": 96,
           "last": 97
+        }
+      ]
+    },
+    "advent-i-gospel": {
+      "witness": "witnesses/proprium.dominica-i-adventus-evangelium/do.txt",
+      "revision": "b5e250b0af79bc3fb4fc3ac631a622d8cb0f2a19",
+      "evidence": [
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 44,
+          "last": 44,
+          "section": "Evangelium",
+          "section_line": 41
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 44,
+          "last": 44
         }
       ]
     }

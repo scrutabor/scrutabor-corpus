@@ -32,6 +32,11 @@ Narrow gloss patterns are checked:
   imperative *induite vos* must not read *put on yourselves*. This narrow
   rule leaves other forms, clause boundaries and shared providers alone.
 
+- **Three malformed clause junctions.** Direct temporal *when see*,
+  perception *see these things to happen*, and additive *so and you* are
+  rejected within precisely bounded Latin constructions. Subjects needed
+  in a separate finite clause are not mistaken for duplicated arguments.
+
 The Latin case of a two-case preposition is still useful as an editorial
 diagnostic, but it is not an English correctness gate.  Natural English often
 selects a preposition from the governing verb or idiom rather than mechanically
@@ -490,6 +495,104 @@ def check_lexical_complements(doc: dict, gloss: dict) -> list[str]:
     return errors
 
 
+def check_clause_junctions(doc: dict, gloss: dict) -> list[str]:
+    """Reject three specific malformed direct-gloss combinations.
+
+    A temporal cum/finite video clause needs an English subject after when;
+    an earlier main-clause vos does not supply it. Active seeing takes these
+    things happening/happen, not these things to happen. Ita et vos needs
+    additive also/too, not so and you. These are narrow phrase diagnostics,
+    not a general English parser. Never cross Latin punctuation, segment
+    boundaries, or shared/zero providers. Only listed English phrases match.
+    """
+    if gloss.get("lang") != "en":
+        return []
+    errors: list[str] = []
+    localized = gloss.get("segments") or {}
+    glosses = gloss.get("words") or {}
+
+    def normalized(value: object) -> str:
+        if not isinstance(value, str):
+            return ""
+        text = " ".join(unicodedata.normalize("NFKC", value).casefold().split())
+        return text.rstrip(".,;:!?…").rstrip()
+
+    for segment in doc.get("segments", []):
+        words = segment.get("words") or []
+        grouped = {
+            wid
+            for group in (localized.get(segment.get("id")) or {}).get("alignments", [])
+            for wid in group["words"]
+        }
+
+        def direct(window: list[dict], *, members: set[str] = grouped) -> tuple[str, ...] | None:
+            if (
+                any(w["id"] in members for w in window)
+                or any(w.get("post", "").strip() for w in window[:-1])
+                or any(w.get("pre", "").strip() for w in window[1:])
+            ):
+                return None
+            return tuple(normalized((glosses.get(w["id"]) or {}).get("gloss")) for w in window)
+
+        for i in range(len(words) - 1):
+            conj, verb = words[i : i + 2]
+            cm, vm = conj.get("morph", {}), verb.get("morph", {})
+            if (
+                conj.get("lemma") == "cum"
+                and cm.get("pos") == "conj"
+                and verb.get("lemma") == "video"
+                and vm.get("pos") == "verb"
+                and vm.get("mood") == "ind"
+                and vm.get("voice") == "act"
+                and vm.get("person") == 2
+                and vm.get("number") == "pl"
+                and direct([conj, verb]) == ("when", "see")
+            ):
+                errors.append(
+                    f"{doc['id']}:{conj['id']}–{verb['id']}: temporal glosses "
+                    "produce 'when see' — preserve the finite clause’s subject"
+                )
+        for i in range(len(words) - 2):
+            a, b, c = words[i : i + 3]
+            am, bm, cm = a.get("morph", {}), b.get("morph", {}), c.get("morph", {})
+            gs = direct([a, b, c])
+            if gs is None:
+                continue
+            if (
+                (a.get("lemma"), b.get("lemma"), c.get("lemma")) == ("video", "hic", "fio")
+                and am.get("pos") == "verb"
+                and am.get("mood") == "ind"
+                and am.get("voice") == "act"
+                and bm.get("pos") == "pron"
+                and bm.get("case") == "acc"
+                and bm.get("gender") == "n"
+                and bm.get("number") == "pl"
+                and cm.get("pos") == "verb"
+                and cm.get("mood") == "inf"
+                and cm.get("tense") == "pres"
+                and gs[0] in {"see", "you see", "you have seen", "you will see", "you shall see"}
+                and gs[1:] == ("these things", "to happen")
+            ):
+                errors.append(
+                    f"{doc['id']}:{a['id']}–{c['id']}: perception glosses "
+                    "produce 'see these things to happen' — use a coherent complement"
+                )
+            if (
+                (a.get("lemma"), b.get("lemma"), c.get("lemma")) == ("ita", "et", "vos")
+                and am.get("pos") == "adv"
+                and bm.get("pos") == "conj"
+                and cm.get("pos") == "pron"
+                and cm.get("case") == "nom"
+                and cm.get("number") == "pl"
+                and gs == ("so", "and", "you")
+            ):
+                errors.append(
+                    f"{doc['id']}:{a['id']}–{c['id']}: additive glosses "
+                    "produce 'so and you' — preserve the additive force of et"
+                )
+    return errors
+
+
 def check_apostrophes(gloss: dict) -> list[str]:
     """The English layer types the typographic apostrophe (’) in what a reader meets.
 
@@ -527,6 +630,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
         + check_repeated_arguments(doc, gloss)
         + check_reflexive_clothing(doc, gloss)
         + check_lexical_complements(doc, gloss)
+        + check_clause_junctions(doc, gloss)
         + check_conclusion_gloss(doc, gloss)
         + check_apostrophes(gloss)
     )

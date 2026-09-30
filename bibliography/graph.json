@@ -3876,6 +3876,23 @@
       }
     },
     {
+      "id": "edition.divinum-officium-missa.b5e250b",
+      "work": "work.divinum-officium",
+      "recension": "Latin Mass data at commit b5e250b0af79bc3fb4fc3ac631a622d8cb0f2a19",
+      "title": "Divinum Officium: Missa, Latin data",
+      "edition_statement": "Pinned source revision",
+      "year": "2026",
+      "publication_type": "web_resource",
+      "authority": "reference_work",
+      "languages": [
+        "la"
+      ],
+      "rights": {
+        "status": "permission",
+        "basis": "The pinned revision's README.md contains the project's MIT permission notice."
+      }
+    },
+    {
       "id": "edition.douay-rheims-bible-challoner",
       "work": "work.douay-rheims-bible-challoner",
       "title": "The Holy Bible: Douay-Rheims Version",
@@ -4379,6 +4396,16 @@
       "record_url": "https://github.com/DivinumOfficium/divinum-officium/commit/44667ff518b8ff1439780470828b39714f5306a2",
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "sha256": "b091db3afa9a4d469a2af11888fb7cf7abd7972d2320b7053a48c13c97ce7ddf",
+      "access": "open"
+    },
+    {
+      "id": "item.divinum-officium-missa.b5e250b.advent-i",
+      "edition": "edition.divinum-officium-missa.b5e250b",
+      "repository": "GitHub",
+      "kind": "born-digital",
+      "record_url": "https://raw.githubusercontent.com/DivinumOfficium/divinum-officium/b5e250b0af79bc3fb4fc3ac631a622d8cb0f2a19/web/www/missa/Latin/Tempora/Adv1-0.txt",
+      "revision": "b5e250b0af79bc3fb4fc3ac631a622d8cb0f2a19",
+      "sha256": "db065ed4bb77f9100aa0dacce7ac11668a331d6defd3ff5331aed19cfb7283f9",
       "access": "open"
     },
     {
@@ -15781,6 +15808,44 @@
       "evidence_sha256": "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
       "decision": "RETAIN",
       "decision_reason": "Source-defined ritual boundary only. The complete word sequence and existing word IDs are unchanged."
+    },
+    {
+      "id": "use.proprium.dominica-i-adventus-evangelium.dob5e250b",
+      "edition": "edition.divinum-officium-missa.b5e250b",
+      "digital_item": "item.divinum-officium-missa.b5e250b.advent-i",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-i-adventus-evangelium"
+      },
+      "locator": {
+        "section": "Latin/Tempora/Adv1-0.txt [Evangelium], marker41, announcement42, reference43, complete body44; Offertorium starts46"
+      },
+      "claim": "The exact pinned 119-word reading has fifteen spelling or punctuation differences from the selected Latin. No inherited text, macro or concluding response is part of this reading.",
+      "verified_on": "2026-09-30",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "db065ed4bb77f9100aa0dacce7ac11668a331d6defd3ff5331aed19cfb7283f9",
+      "decision_reason": "Separately scoped source identity and complete reading; witness and collation acceptance remain pending."
+    },
+    {
+      "id": "use.proprium.dominica-i-adventus-evangelium.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-i-adventus-evangelium"
+      },
+      "locator": {
+        "printed": "p. 2",
+        "scan": "leaf n81 / PDF p. 82",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n81/mode/1up"
+      },
+      "claim": "The complete 119-word Gospel begins in the lower left column and ends in the upper right before Credo. The announcement, cross and scripture reference are framing; the selected reading retains the printed spelling and punctuation.",
+      "verified_on": "2026-09-30",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "74024809651777137230a0f8bbc0e54165ff8c26a55027b28c9d6cae430d78b8",
+      "decision_reason": "Separately scoped source identity and complete reading; witness and collation acceptance remain pending."
     },
     {
       "id": "use.proprium.dominica-i-adventus-postcommunio.conclusion-macro.do44667ff",
@@ -58412,6 +58477,46 @@
       }
     },
     {
+      "id": "witness.proprium.dominica-i-adventus-evangelium.dob5e250b",
+      "text": "proprium.dominica-i-adventus-evangelium",
+      "use": "use.proprium.dominica-i-adventus-evangelium.dob5e250b",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "41d0130eed828757254dacde8fdd3cf64c358282208a11481701a38835c5bf16",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Exact pinned upstream Latin reading, used as a derived comparison and not the controlling edition.",
+      "transcription": "do",
+      "review": {
+        "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "advent-i-gospel"
+      }
+    },
+    {
+      "id": "witness.proprium.dominica-i-adventus-evangelium.mr1962",
+      "text": "proprium.dominica-i-adventus-evangelium",
+      "use": "use.proprium.dominica-i-adventus-evangelium.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "7c9b91f679fd91eb0e1501be7a3e5d64d9983e83c7ce550b0827338a76115702",
+      "orthography_profile": "diplomatic-page-body",
+      "independence_basis": "Direct comparison with the complete Benziger page, separately from the digital witness.",
+      "transcription": "mr",
+      "review": {
+        "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
+      }
+    },
+    {
       "id": "witness.proprium.dominica-i-adventus-postcommunio.do44667ff",
       "text": "proprium.dominica-i-adventus-postcommunio",
       "use": "use.proprium.dominica-i-adventus-postcommunio.do44667ff",
@@ -88542,6 +88647,27 @@
         ]
       },
       "apparatus_sha256": "85d41a76a480431ff78e24634bb541dd2089206204e0161efa2691383ecf22c7",
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "collation.proprium.dominica-i-adventus-evangelium.mr1962-dob5e250b",
+      "text": "proprium.dominica-i-adventus-evangelium",
+      "recension": "Complete Benziger 1962 Gospel, compared with the exact b5e250b digital body; fifteen declared accidentals, selected Latin unchanged.",
+      "selected_text_sha256": "81969daba3a5e279490c24b2faa8619c4fa184a70143cc86679556a357073fa5",
+      "witnesses": [
+        "witness.proprium.dominica-i-adventus-evangelium.dob5e250b",
+        "witness.proprium.dominica-i-adventus-evangelium.mr1962"
+      ],
+      "apparatus": {
+        "entries": 15,
+        "classes": [
+          "orthography",
+          "punctuation"
+        ]
+      },
+      "apparatus_sha256": "d651678e6de54b5d4294169fee550b1cd0d7fda8b053bc8997f47d6fe0aff373",
       "review": {
         "status": "pending"
       }
