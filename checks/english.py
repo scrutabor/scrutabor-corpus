@@ -6,7 +6,7 @@ rather than to the Latin case — *believe IN one God* renders an accusative,
 *have mercy ON us* a dative, and neither is a mistake. So this module asserts
 only what is decidable without English morphology, and says nothing else.
 
-Four narrow gloss patterns are checked:
+Narrow gloss patterns are checked:
 
 - **A preposition rendered twice.** When *de* is glossed *from* and its own
   object *cælis* is glossed *of heaven*, the gloss line reads *Father from of
@@ -23,6 +23,10 @@ Four narrow gloss patterns are checked:
   and *possum* may not read *not* plus *cannot*, *could not*, or a contracted
   equivalent, including when a complement or punctuation follows. Other
   negation scopes and shared alignments require separate checks or review.
+- **An explicit subject or witness object rendered twice.** Adjacent direct
+  glosses of *ego* and a first-person verb must not repeat *I*. Likewise,
+  *testimonium perhibere* must not repeat *witness* or *testimony*. This rule
+  does not judge nonadjacent subjects, synonyms or coordinated predicates.
 
 The Latin case of a two-case preposition is still useful as an editorial
 diagnostic, but it is not an English correctness gate.  Natural English often
@@ -269,6 +273,74 @@ def check_modal_negation_junctions(doc: dict, gloss: dict) -> list[str]:
     return errors
 
 
+def check_repeated_arguments(doc: dict, gloss: dict) -> list[str]:
+    """Reject two narrow duplicated arguments in adjacent direct providers.
+
+    Match either Latin order, but never cross punctuation or segment bounds.
+    A shared/zero provider belongs to the interlinear validator. Coordinated
+    subjects, lexical synonyms and general argument structure require review.
+    """
+    errors: list[str] = []
+    glosses = gloss.get("words") or {}
+    localized_segments = gloss.get("segments") or {}
+
+    def normalized(value: object) -> str:
+        if not isinstance(value, str):
+            return ""
+        return " ".join(unicodedata.normalize("NFKC", value).casefold().split())
+
+    for segment in doc.get("segments", []):
+        grouped = {
+            wid
+            for group in (localized_segments.get(segment.get("id")) or {}).get("alignments", [])
+            for wid in group["words"]
+        }
+        for first, second in pairwise(segment.get("words") or []):
+            if (
+                first.get("post", "").strip()
+                or second.get("pre", "").strip()
+                or first["id"] in grouped
+                or second["id"] in grouped
+            ):
+                continue
+            for argument, verb in ((first, second), (second, first)):
+                noun_morph, verb_morph = argument.get("morph", {}), verb.get("morph", {})
+                if verb_morph.get("pos") != "verb" or verb_morph.get("mood") not in {"ind", "subj"}:
+                    continue
+                own = normalized((glosses.get(argument["id"]) or {}).get("gloss"))
+                predicate = normalized((glosses.get(verb["id"]) or {}).get("gloss"))
+                duplicate_subject = (
+                    argument.get("lemma") == "ego"
+                    and noun_morph.get("pos") == "pron"
+                    and noun_morph.get("case") == "nom"
+                    and noun_morph.get("number") == "sg"
+                    and verb_morph.get("person") == 1
+                    and verb_morph.get("number") == "sg"
+                    and own == "i"
+                    and re.match(r"^i\s+\S", predicate) is not None
+                )
+                predicate_words = re.findall(r"[^\W_]+(?:[’'][^\W_]+)*", predicate)
+                duplicate_witness = (
+                    argument.get("lemma") == "testimonium"
+                    and noun_morph.get("pos") == "noun"
+                    and noun_morph.get("case") == "acc"
+                    and noun_morph.get("number") == "sg"
+                    and verb.get("lemma") == "perhibeo"
+                    and own in {"witness", "testimony"}
+                    and len(predicate_words) > 1
+                    and predicate_words[-1] == own
+                )
+                if duplicate_subject or duplicate_witness:
+                    kind = "subject" if duplicate_subject else "witness object"
+                    errors.append(
+                        f"{doc['id']}:{first['id']}–{second['id']} "
+                        f"({first['form']} {second['form']}): separate glosses "
+                        f"{own!r} + {predicate!r} render the {kind} twice — "
+                        "use a coherent split or a shared interlinear alignment"
+                    )
+    return errors
+
+
 def check_apostrophes(gloss: dict) -> list[str]:
     """The English layer types the typographic apostrophe (’) in what a reader meets.
 
@@ -303,6 +375,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
         + check_doubled_noun_head(doc, gloss)
         + check_usque_junctions(doc, gloss)
         + check_modal_negation_junctions(doc, gloss)
+        + check_repeated_arguments(doc, gloss)
         + check_conclusion_gloss(doc, gloss)
         + check_apostrophes(gloss)
     )

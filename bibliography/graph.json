@@ -12540,12 +12540,13 @@
         "text": "proprium.commemoratio-baptismatis-domini-evangelium"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Sancti/01-13.txt (section [Evangelium]); resolved spans: web/www/missa/Latin/Sancti/01-13.txt (lines 27-29)"
+        "section": "Latin/Sancti/01-13.txt [Evangelium], heading 26, title 27, reference 28, body 29"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The exact pinned digital Gospel body is line 29. It agrees in substantive wording with the selected Latin and has the six recorded spelling and punctuation variants.",
       "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "b06d9034a18a98c9024c17db007c9c483bd1bb0f1627171f25f6b69ca41e7b4d"
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "b06d9034a18a98c9024c17db007c9c483bd1bb0f1627171f25f6b69ca41e7b4d",
+      "decision_reason": "The framing/body distinction and raw reading span were made explicit on 2026-09-30. The historical verification date is preserved, not renewed as source acceptance."
     },
     {
       "id": "use.proprium.commemoratio-baptismatis-domini-evangelium.mr1962",
@@ -12561,11 +12562,11 @@
         "scan": "leaf n122 / PDF p. 123",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n122/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited Benziger 1962 Editio iuxta typicam page prints the complete 110-word Gospel. The heading, scripture reference and following Credo instruction are outside this body.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "e595820146bf270afd05c3d4f2a03d8633c3107a07c3f86298220765b16af9e2",
-      "decision_reason": "Locator corrected against the page image; the text is printed on the leaf now cited."
+      "decision_reason": "Edition description and body scope corrected on 2026-09-30. The previously corrected locator and historical verification date remain; this is not renewed source acceptance."
     },
     {
       "id": "use.proprium.commemoratio-baptismatis-domini-postcommunio.do44667ff",
@@ -56091,12 +56092,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "b45286d1a4182cadcbaed0e793e6cefb6c30e7ae77dbd03c94d8bdcef329e917",
+      "transcription_sha256": "46a65b9fa5d155796d2ad022327d1567af66efbd2e62a630ab24a15000180ac2",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "baptism-gospel"
       }
     },
     {
@@ -56107,12 +56112,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "02025847124b7ff77715fa4bf19f6494dc00a9a54c231bfcaae81d0592dd596c",
+      "transcription_sha256": "84327848333254272dbdd4e116ea7dfb198caace16f5cb7e474bdfbd8e283333",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete Gospel was compared directly with the identified Benziger 1962 Editio iuxta typicam page image, independently of the derived digital comparison. Historical transcription statements remain in the witness header.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -86968,7 +86977,7 @@
     {
       "id": "collation.proprium.commemoratio-baptismatis-domini-evangelium.mr1962-do44667ff",
       "text": "proprium.commemoratio-baptismatis-domini-evangelium",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete Benziger 1962 Gospel body, compared with the exact pinned digital Gospel body; six accidental differences and no expansion.",
       "selected_text_sha256": "80fbc0510b62dd01d55dbe1608e27ce74e54eeb8699ce6b5efde7c959835e509",
       "witnesses": [
         "witness.proprium.commemoratio-baptismatis-domini-evangelium.do44667ff",
@@ -86981,7 +86990,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "753b893d5e2f124df5689f12bc7e9f4e632039fd52c9870cfc145af7fe2f06e0",
+      "apparatus_sha256": "a538022342e7416e63a554916ecdca77872ed31149403f2046a0fb0e7d9922fd",
       "review": {
         "status": "pending"
       }

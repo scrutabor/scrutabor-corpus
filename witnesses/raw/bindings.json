@@ -108,6 +108,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-Sancti-11-01.txt",
       "sha256": "b6e49964e28e5a136b4733ef923255e1c2a279e9818a21247e8315abc58e4112"
+    },
+    "baptism": {
+      "upstream": "web/www/missa/Latin/Sancti/01-13.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-Sancti-01-13.txt",
+      "sha256": "b06d9034a18a98c9024c17db007c9c483bd1bb0f1627171f25f6b69ca41e7b4d"
     }
   },
   "bindings": {
@@ -690,6 +696,27 @@
           "archive": "all-saints",
           "first": 26,
           "last": 26
+        }
+      ]
+    },
+    "baptism-gospel": {
+      "witness": "witnesses/proprium.commemoratio-baptismatis-domini-evangelium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "baptism",
+          "first": 29,
+          "last": 29,
+          "section": "Evangelium",
+          "section_line": 26
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "baptism",
+          "first": 29,
+          "last": 29
         }
       ]
     }
