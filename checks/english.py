@@ -53,6 +53,7 @@ import re
 import unicodedata
 from itertools import pairwise
 
+from checks.english_arguments import check_contextual_repetitions
 from checks.english_predicates import check_predicate_junctions
 from checks.syntax import check_conclusion_gloss
 
@@ -693,6 +694,7 @@ def check(doc: dict, gloss: dict) -> list[str]:
         + check_lexical_complements(doc, gloss)
         + check_clause_junctions(doc, gloss)
         + check_predicate_junctions(doc, gloss)
+        + check_contextual_repetitions(doc, gloss)
         + check_conclusion_gloss(doc, gloss)
         + check_apostrophes(gloss)
     )

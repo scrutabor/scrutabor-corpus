@@ -132,7 +132,10 @@ def test_shared_usque_alignment_is_not_read_as_two_direct_glosses():
 
 def test_usque_check_does_not_cross_segments_or_languages():
     first, second = _usque()
-    source = {"id": "t.t", "segments": [{"words": [first]}, {"words": [second]}]}
+    source = {
+        "id": "t.t",
+        "segments": [{"id": "s01", "words": [first]}, {"id": "s02", "words": [second]}],
+    }
     layer = gloss({"w1": "until", "w2": "to"})
     assert check(source, layer) == []
     layer["lang"] = "pl"
