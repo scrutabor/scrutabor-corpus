@@ -42776,18 +42776,19 @@
         "text": "proprium.sancti-andreae-apostoli-communio"
       },
       "locator": {
-        "section": "pinned source key Sancti/11-30; resolved section [Communio] with declared inherited references"
+        "section": "Sancti/11-30 [Communio], body line 50; heading line 48 and intervening framing excluded"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "9c48ca70603343e7c49b60eb57df2a1e3d13a1ed27606344865b81770f6b1ee0"
+      "claim": "The pinned Mass archive directly supplies the complete 16-word body at line 50, with the exact digital accidentals recorded in its transcript. No inherited reference or independent textual transmission is claimed.",
+      "verified_on": "2026-10-01",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "9c48ca70603343e7c49b60eb57df2a1e3d13a1ed27606344865b81770f6b1ee0",
+      "decision_reason": "Replaced the generic inherited-reference claim with exact direct-source boundaries and checksum-bound evidence; source review remains pending."
     },
     {
       "id": "use.proprium.sancti-andreae-apostoli-communio.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.sancti-andreae-apostoli-communio"
@@ -42797,11 +42798,11 @@
         "scan": "leaf n508 / PDF p. 509",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n508/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-25",
+      "claim": "The Benziger 1962 Editio iuxta typicam page directly prints this complete 16-word component; no shared conclusion or response expansion is needed.",
+      "verified_on": "2026-10-01",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "ca84a049221cd0131751cf3fc540db491087a410e0b7a18aa5ac942e30168d3b",
-      "decision_reason": "Locator corrected against the page image: the text is printed on the leaf now cited."
+      "decision_reason": "Edition impression and complete printed scope corrected; the legacy edition identity and historical witness dates are retained. This does not grant pending witness or collation review."
     },
     {
       "id": "use.proprium.sancti-andreae-apostoli-epistola.do44667ff",
@@ -42849,18 +42850,19 @@
         "text": "proprium.sancti-andreae-apostoli-evangelium"
       },
       "locator": {
-        "section": "pinned source key Sancti/11-30; resolved section [Evangelium] with declared inherited references"
+        "section": "Sancti/11-30 [Evangelium], body line 39; heading line 36 and intervening framing excluded"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "9c48ca70603343e7c49b60eb57df2a1e3d13a1ed27606344865b81770f6b1ee0"
+      "claim": "The pinned Mass archive directly supplies the complete 81-word body at line 39, with the exact digital accidentals recorded in its transcript. No inherited reference or independent textual transmission is claimed.",
+      "verified_on": "2026-10-01",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "9c48ca70603343e7c49b60eb57df2a1e3d13a1ed27606344865b81770f6b1ee0",
+      "decision_reason": "Replaced the generic inherited-reference claim with exact direct-source boundaries and checksum-bound evidence; source review remains pending."
     },
     {
       "id": "use.proprium.sancti-andreae-apostoli-evangelium.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.sancti-andreae-apostoli-evangelium"
@@ -42870,10 +42872,11 @@
         "scan": "leaf n507 / PDF p. 508",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n507/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "10d1cca696e03da4c70fac530e6e92977eabc0e3e816412c27cce4f964675e8f"
+      "claim": "The Benziger 1962 Editio iuxta typicam page directly prints this complete 81-word component; no shared conclusion or response expansion is needed.",
+      "verified_on": "2026-10-01",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "10d1cca696e03da4c70fac530e6e92977eabc0e3e816412c27cce4f964675e8f",
+      "decision_reason": "Edition impression and complete printed scope corrected; the legacy edition identity and historical witness dates are retained. This does not grant pending witness or collation review."
     },
     {
       "id": "use.proprium.sancti-andreae-apostoli-postcommunio.do44667ff",
@@ -78301,12 +78304,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "ca2d71c26f2198b2c3e39e4ca77a31c6b9277b17b0bc58c17ef47b049a12309d",
+      "transcription_sha256": "6b97c5172567a3440834e685f0faca7a39f427f87b09100577652f6fd78f66ea",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Exact pinned digital Mass data maintained separately from this corpus, used only as a derived comparison; independent textual transmission is not established.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "saint-andrew-communion"
       }
     },
     {
@@ -78317,12 +78324,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "ff55334a45907b16341ae3c354b2ba827f225c9114abed945decdf520143c80e",
+      "transcription_sha256": "2aee76475187067e2d3eebfeb595f1e9b370fed596eaeeb50378b4cb0a61d1f7",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -78365,12 +78376,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "cedae304440103b384be7f56f62cd5490555735d75c8ca1a2c266e8b3d30f5fe",
+      "transcription_sha256": "5ad5dc954187be363ca3b18e13cc9ee2984a83ab219b9a7c73c882f4bdf57b40",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Exact pinned digital Mass data maintained separately from this corpus, used only as a derived comparison; independent textual transmission is not established.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "saint-andrew-gospel"
       }
     },
     {
@@ -78381,12 +78396,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "a7b8075c1017015a29ad8d88535cd67e9cd0a729cab80ca52b1f670b00676125",
+      "transcription_sha256": "a06d0ff0515983e3aab6436239b8dbb65b951151774aadef22168e791bbb0b49",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -101505,7 +101524,7 @@
     {
       "id": "collation.proprium.sancti-andreae-apostoli-communio.mr1962-do44667ff",
       "text": "proprium.sancti-andreae-apostoli-communio",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "e10ea3abf4b27615e7e9abe78b8c99e34bbb3eb70cec9c014d51b622b7334305",
       "witnesses": [
         "witness.proprium.sancti-andreae-apostoli-communio.do44667ff",
@@ -101517,7 +101536,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "73ff1da51d8f42317cea6263df7471c31ff8a6f13d8d6fffc701a8fb768ddb05",
+      "apparatus_sha256": "709a39c009d34a0d40ef4887e8f0d09b42df8ced4b56cc44dec9430b7e84c98b",
       "review": {
         "status": "pending"
       }
@@ -101545,21 +101564,22 @@
     {
       "id": "collation.proprium.sancti-andreae-apostoli-evangelium.mr1962-do44667ff",
       "text": "proprium.sancti-andreae-apostoli-evangelium",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "b1edff6c7c38a2176f9cfe977003a978aeed272b2bcab3ffd097056538a149fd",
       "witnesses": [
         "witness.proprium.sancti-andreae-apostoli-evangelium.do44667ff",
         "witness.proprium.sancti-andreae-apostoli-evangelium.mr1962"
       ],
       "apparatus": {
-        "entries": 9,
+        "entries": 13,
         "classes": [
           "accent",
           "capital-accent",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "451358e72a3bf86e669da4c128d47b46e6d4a22283fb6481f2f4ac50f13e545c",
+      "apparatus_sha256": "adbeca3a6cc3881668edbed3acf2c3d73a766df6b71e8e3918e49f55db8e4317",
       "review": {
         "status": "pending"
       }

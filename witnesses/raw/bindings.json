@@ -210,6 +210,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pasc1-0.txt",
       "sha256": "e59095d1998c200ec4bf79668709b5aa98fa6bca02a3d18078dd7766652294f1"
+    },
+    "saint-andrew": {
+      "upstream": "web/www/missa/Latin/Sancti/11-30.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-Sancti-11-30.txt",
+      "sha256": "9c48ca70603343e7c49b60eb57df2a1e3d13a1ed27606344865b81770f6b1ee0"
     }
   },
   "bindings": {
@@ -1322,6 +1328,48 @@
           "archive": "prayers",
           "first": 96,
           "last": 97
+        }
+      ]
+    },
+    "saint-andrew-gospel": {
+      "witness": "witnesses/proprium.sancti-andreae-apostoli-evangelium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "saint-andrew",
+          "first": 39,
+          "last": 39,
+          "section": "Evangelium",
+          "section_line": 36
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "saint-andrew",
+          "first": 39,
+          "last": 39
+        }
+      ]
+    },
+    "saint-andrew-communion": {
+      "witness": "witnesses/proprium.sancti-andreae-apostoli-communio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "saint-andrew",
+          "first": 50,
+          "last": 50,
+          "section": "Communio",
+          "section_line": 48
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "saint-andrew",
+          "first": 50,
+          "last": 50
         }
       ]
     }
