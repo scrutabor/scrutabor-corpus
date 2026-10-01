@@ -474,6 +474,11 @@ localization, editorial
   explanation. This explicitly reviewed elliptical predicate has neither a
   `head` nor `substantive`: it must not be attached to an unrelated finite verb
   merely to fill a field. The marker does not claim an expressed Latin subject.
+  The same predicate marker can describe an accusative adjective whose infinitival
+  subject is understood: it requires explicit accusative, number and gender and
+  an immediately adjacent present active infinitive of sum in the same segment,
+  without punctuation between them. This narrow supported shape is not automatic
+  discovery of ellipsis; retain a genuine expressed agreement head when available.
   A nominative participle whose subject is understood, with no suitable expressed
   nominal controller or finite personal verb carrying that subject, may instead
   declare `ellipsis: "subject"`. This requires explicit case, number, gender,

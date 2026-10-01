@@ -10,7 +10,7 @@ It does now. Every adjective, numeral and participle carries either
 
     "head": "wNNN"        the word it must agree with, or
     "substantive": true   it heads its own phrase and agrees with nothing
-    "ellipsis": "predicate"   nominative predicate with an unexpressed subject/copula
+    "ellipsis": "predicate"   predicate with an unexpressed subject/copula
     "ellipsis": "subject"     nominative participle with an unexpressed subject
 
 and every preposition carries a `head` naming the word it governs. Both are
@@ -124,6 +124,40 @@ def candidates(segment: dict, word: dict) -> list[dict]:
     ]
 
 
+def _accusative_predicate(segment: dict, word: dict) -> bool:
+    """Constrain an explicitly reviewed omitted-subject predicate, not discover it."""
+    m = word["morph"]
+    if not (
+        m.get("pos") == "adj"
+        and m.get("case") == "acc"
+        and m.get("number") in ("sg", "pl")
+        and m.get("gender") in ("m", "f", "n")
+        and "head" not in word
+        and "substantive" not in word
+    ):
+        return False
+    words = segment.get("words") or []
+    index = next(i for i, item in enumerate(words) if item["id"] == word["id"])
+    for other in (index - 1, index + 1):
+        if not 0 <= other < len(words):
+            continue
+        copula = words[other]
+        cm = copula["morph"]
+        left, right = sorted((index, other))
+        if words[left].get("post") or words[right].get("pre"):
+            continue
+        if (
+            copula.get("lemma") == "sum"
+            and cm.get("pos") == "verb"
+            and cm.get("mood") == "inf"
+            and cm.get("tense") == "pres"
+            and cm.get("voice") == "act"
+            and not any(key in cm for key in ("case", "number", "gender", "person"))
+        ):
+            return True
+    return False
+
+
 def check(doc: dict) -> list[str]:
     """Return one message per broken claim. Empty means the syntax holds."""
     tid = doc["id"]
@@ -145,8 +179,14 @@ def check(doc: dict) -> list[str]:
                 # This is a contextual claim, not automatic discovery of ellipsis.
                 kind = word["ellipsis"]
                 if kind == "predicate":
-                    if m.get("pos") != "adj" or m.get("case") != "nom":
-                        fail(word, "predicate ellipsis requires a nominative adjective")
+                    if (m.get("pos") != "adj" or m.get("case") != "nom") and not (
+                        _accusative_predicate(segment, word)
+                    ):
+                        fail(
+                            word,
+                            "predicate ellipsis requires a nominative adjective or a fully "
+                            "specified accusative adjective adjacent to present infinitive sum",
+                        )
                 elif kind == "subject":
                     if not (
                         m.get("pos") == "verb"

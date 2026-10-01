@@ -61,7 +61,7 @@
         { "id": "w040", "form": "parum", "lemma": "parum", "morph": { "pos": "adv" } },
         { "id": "w041", "form": "vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
         { "id": "w042", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
-        { "id": "w043", "form": "moléstos", "lemma": "molestus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "pl" }, "substantive": true },
+        { "id": "w043", "form": "moléstos", "lemma": "molestus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "pl" }, "ellipsis": "predicate" },
         { "id": "w044", "form": "esse", "lemma": "sum", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w045", "form": "homínibus", "lemma": "homo", "morph": { "pos": "noun", "case": "dat", "gender": "m", "number": "pl", "decl": 3 }, "post": "," },
         { "id": "w046", "form": "quia", "lemma": "quia", "morph": { "pos": "conj" } },
@@ -104,9 +104,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "notes": "This Epistle contains the complete 80-word reading, including its liturgical opening. The heading and Isaias 7:10–15 reference are source framing. The Benziger page has no abbreviated conclusion or expansion within this body; a following response is not part of this text. Source and collation reviews remain pending.",
     "source": {
-      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The complete 80-word selected body has been checked against the Benziger 1962 Editio iuxta typicam page, printed p. 495, leaf n576. The pinned digital comparison is resolved through the three exact originals declared in its raw binding. All eleven spelling, accent, capitalization and punctuation differences are recorded in the apparatus; current conformity does not establish the original transcription workflow.",
       "witnesses": "witnesses/proprium.annuntiatio-beatae-mariae-virginis-epistola/",
       "apparatus": "witnesses/proprium.annuntiatio-beatae-mariae-virginis-epistola/apparatus.json"
     },
@@ -154,7 +154,7 @@
       "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w041": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w043": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w043": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w044": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w045": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w046": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
@@ -195,6 +195,11 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w043": {
+
+      }
+    }
   }
 }

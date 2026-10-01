@@ -9621,18 +9621,19 @@
         "text": "proprium.annuntiatio-beatae-mariae-virginis-epistola"
       },
       "locator": {
-        "section": "pinned source key Sancti/03-25; resolved section [Lectio] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/03-25.txt [Lectio] (lines 18-18); web/www/horas/Latin/Commune/C10a.txt [Lectio] (lines 22-22); web/www/missa/Latin/Tempora/Adv3-3.txt [Lectio] (lines 46-46); titles, headings and scripture reference excluded"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "f080dfb83537fe36ea2b696f25ddf01285debc84c2b00dbd01e39ce3fe6f2d01"
+      "claim": "The pinned Mass proper and Horae common references resolve to the complete 80-word Mass Advent reading. The three exact original files and both reference edges are bound in the declared raw reading; this is a derived comparison, not independent textual ancestry.",
+      "verified_on": "2026-10-01",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "f080dfb83537fe36ea2b696f25ddf01285debc84c2b00dbd01e39ce3fe6f2d01",
+      "decision_reason": "Replace the generic inherited locator with the exact three-file reference chain and restore the unnormalized digital reading."
     },
     {
       "id": "use.proprium.annuntiatio-beatae-mariae-virginis-epistola.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.annuntiatio-beatae-mariae-virginis-epistola"
@@ -9642,10 +9643,11 @@
         "scan": "leaf n576 / PDF p. 577",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n576/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "9d4e2b414fec277313c66f83ceb041f7381e3ea5d7535bd37eb11889d5b8237a"
+      "claim": "The Benziger 1962 Editio iuxta typicam page prints the complete 80-word Epistle body, including its liturgical opening, without an abbreviated conclusion or expansion. The heading and Isaias 7:10–15 reference are framing, not words of this child text.",
+      "verified_on": "2026-10-01",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "9d4e2b414fec277313c66f83ceb041f7381e3ea5d7535bd37eb11889d5b8237a",
+      "decision_reason": "Correct the impression identity and source role to the directly checked Benziger print; preserve the exact full-body locator."
     },
     {
       "id": "use.proprium.annuntiatio-beatae-mariae-virginis-evangelium.do44667ff",
@@ -54567,12 +54569,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "91db8226ddd3d12e8df4f1370f892592aaf9ee231a7651f1421206d62618f7c0",
+      "transcription_sha256": "d4c53cc9cb3fabaccd8b88f89ab8be84a7a54e884594bd93cad0a6ea93180d6b",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "The exact pinned upstream reading is resolved through the declared Mass/Horae/Mass reference chain. It is a derived digital comparison, not evidence of independent textual ancestry.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "annunciation-epistle"
       }
     },
     {
@@ -54583,12 +54589,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "8d7c7719cd6ce2a7e0beb6c54ced2c46844aba3de7e857358c546c401ea6df77",
+      "transcription_sha256": "6308baa7ccec5f9844ce54ac3920d7729fcad3e0bcbc8045cce4d462f4ad8d18",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the Benziger 1962 Editio iuxta typicam page image. This records current conformity, not independent original transcription or renewed approval of historical workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -86480,21 +86490,22 @@
     {
       "id": "collation.proprium.annuntiatio-beatae-mariae-virginis-epistola.mr1962-do44667ff",
       "text": "proprium.annuntiatio-beatae-mariae-virginis-epistola",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete 80-word Epistle body printed in the Benziger 1962 Editio iuxta typicam, without expansion",
       "selected_text_sha256": "e566edad20ecc7a4986a08db688b7705c7d99ec5ffe0ca6274486f645d857edc",
       "witnesses": [
         "witness.proprium.annuntiatio-beatae-mariae-virginis-epistola.do44667ff",
         "witness.proprium.annuntiatio-beatae-mariae-virginis-epistola.mr1962"
       ],
       "apparatus": {
-        "entries": 9,
+        "entries": 11,
         "classes": [
           "accent",
           "capitalization",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "b7a807dc14e5fdc653f57e84b3e898582513ace067250adf99bc7fbb3c4e5516",
+      "apparatus_sha256": "a95a95a7e021216ccec3a9671d466c2eedcd918bedb2fd7729447c1411f25f01",
       "review": {
         "status": "pending"
       }

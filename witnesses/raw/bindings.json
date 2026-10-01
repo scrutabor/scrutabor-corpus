@@ -222,6 +222,24 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-Tempora-Pasc6-6r.txt",
       "sha256": "8d1675512b6403ee5dcd795d3c4deed3a9a3a29fffbe085189b1f4a7870a77f9"
+    },
+    "annunciation-proper": {
+      "upstream": "web/www/missa/Latin/Sancti/03-25.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/03-25.txt",
+      "sha256": "f080dfb83537fe36ea2b696f25ddf01285debc84c2b00dbd01e39ce3fe6f2d01"
+    },
+    "annunciation-common": {
+      "upstream": "web/www/horas/Latin/Commune/C10a.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C10a.txt",
+      "sha256": "df13f105a1f5a6be6a56885a6013d41577c4eda8e21970e92a4b75726336af2c"
+    },
+    "annunciation-reading": {
+      "upstream": "web/www/missa/Latin/Tempora/Adv3-3.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Adv3-3.txt",
+      "sha256": "e610a54e0088e49c801127f4dfa0366d2a6f72cf83ef3a5efe4223238df89cb1"
     }
   },
   "bindings": {
@@ -1397,6 +1415,54 @@
           "archive": "pentecost-vigil-epistle",
           "first": 29,
           "last": 29
+        }
+      ]
+    },
+    "annunciation-epistle": {
+      "witness": "witnesses/proprium.annuntiatio-beatae-mariae-virginis-epistola/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "annunciation-proper",
+          "first": 18,
+          "last": 18,
+          "section": "Lectio",
+          "section_line": 17
+        },
+        {
+          "archive": "annunciation-common",
+          "first": 22,
+          "last": 22,
+          "section": "Lectio",
+          "section_line": 21
+        },
+        {
+          "archive": "annunciation-reading",
+          "first": 46,
+          "last": 46,
+          "section": "Lectio",
+          "section_line": 43
+        }
+      ],
+      "references": [
+        {
+          "archive": "annunciation-proper",
+          "line": 18,
+          "text": "@Commune/C10a",
+          "target": 1
+        },
+        {
+          "archive": "annunciation-common",
+          "line": 22,
+          "text": "@Tempora/Adv3-3",
+          "target": 2
+        }
+      ],
+      "reading": [
+        {
+          "archive": "annunciation-reading",
+          "first": 46,
+          "last": 46
         }
       ]
     }
