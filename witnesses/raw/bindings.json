@@ -192,6 +192,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-Pent02-5.txt",
       "sha256": "91ec8c8bad8090b84ac63ba2cf77d2b3a24f94dd85b2e48440bd0ad66b25082c"
+    },
+    "saint-ignatius": {
+      "upstream": "web/www/missa/Latin/Sancti/02-01.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/02-01.txt",
+      "sha256": "215f72971fdf0bbbaaa99c908e2109aefbd56e9e41690ad27e9c48a13da04bdc"
     }
   },
   "bindings": {
@@ -1154,6 +1160,41 @@
           "archive": "sacred-heart-day",
           "first": 54,
           "last": 54
+        }
+      ]
+    },
+    "saint-lawrence-gospel": {
+      "witness": "witnesses/proprium.sancti-laurentii-martyris-evangelium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "saint-lawrence",
+          "first": 37,
+          "last": 37,
+          "section": "Evangelium",
+          "section_line": 36
+        },
+        {
+          "archive": "saint-ignatius",
+          "first": 60,
+          "last": 60,
+          "section": "Evangelium",
+          "section_line": 57
+        }
+      ],
+      "references": [
+        {
+          "archive": "saint-lawrence",
+          "line": 37,
+          "text": "@Sancti/02-01",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "saint-ignatius",
+          "first": 60,
+          "last": 60
         }
       ]
     }

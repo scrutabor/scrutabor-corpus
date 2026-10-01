@@ -45558,12 +45558,31 @@
         "text": "proprium.sancti-laurentii-martyris-evangelium"
       },
       "locator": {
-        "section": "pinned source key Sancti/08-10; resolved section [Evangelium] with declared inherited references"
+        "section": "Latin/Sancti/08-10.txt [Evangelium], heading36, reference37 to Sancti/02-01"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The pinned source supplies the inheritance directive, not the Gospel body itself. The exact body in Sancti/02-01 is a separately declared derived digital dependency; independent textual transmission is not claimed.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
-      "evidence_sha256": "577639de3553a6213cf028e2213c19189bb8f182c3ce2b20e4634cf2828899da"
+      "evidence_sha256": "577639de3553a6213cf028e2213c19189bb8f182c3ce2b20e4634cf2828899da",
+      "decision_reason": "Reference and inherited body distinguished on 2026-10-01; historical verification date retained and source review pending."
+    },
+    {
+      "id": "use.proprium.sancti-laurentii-martyris-evangelium.inherited-body.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-laurentii-martyris-evangelium"
+      },
+      "locator": {
+        "section": "Latin/Sancti/02-01.txt [Evangelium], heading57, announcement58, reference59, body60"
+      },
+      "claim": "The exact inherited 71-word body is a derived digital comparison, not an independent printed witness. Source framing on lines57-59 is excluded; Jesus, amen comma and ministrat accent are preserved as printed in the pinned data.",
+      "verified_on": "2026-10-01",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "Explicit inherited source scope and exact raw reading; no source-review promotion.",
+      "evidence_sha256": "215f72971fdf0bbbaaa99c908e2109aefbd56e9e41690ad27e9c48a13da04bdc"
     },
     {
       "id": "use.proprium.sancti-laurentii-martyris-evangelium.mr1962",
@@ -45579,10 +45598,11 @@
         "scan": "leaf n716 / PDF p. 717",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n716/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The Benziger 1962 Editio iuxta typicam page prints the complete 71-word Gospel body, John12:24-26. The announcement, reference and adjacent components are excluded; no conclusion or response is expanded.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
-      "evidence_sha256": "5bfbd5e8217c580cf17c94651e6a112020fdc7fb880e01c945377ae96ecc4f20"
+      "evidence_sha256": "5bfbd5e8217c580cf17c94651e6a112020fdc7fb880e01c945377ae96ecc4f20",
+      "decision_reason": "Direct page scope clarified on 2026-10-01; historical verification date retained and source review pending."
     },
     {
       "id": "use.proprium.sancti-laurentii-martyris-graduale.do44667ff",
@@ -80319,12 +80339,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "da61d541947e248e7c59ccad966c3b1dfecf4f7e0a11928a162b442bbfe65e3a",
-      "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "transcription_sha256": "bcd2b518e8387ac3d71fe5c0ef46f60bd59ddf33f807d100f4d1bde0eab3f18d",
+      "orthography_profile": "exact-pinned-ordered-reading",
+      "independence_basis": "Exact pinned Latin data with explicit inheritance and ordered raw reading; used as a derived digital comparison, without claiming independent textual transmission.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.sancti-laurentii-martyris-evangelium.inherited-body.do44667ff"
+        ],
+        "raw_binding": "saint-lawrence-gospel"
       }
     },
     {
@@ -80335,12 +80361,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "febbd6494a9d91210e868fcc20474ccec9dcc30aa8b936359d9d2843d7ce84dc",
+      "transcription_sha256": "63399fad54f6170580cc647c282867ce8653357bf899b632e185c18dd2084ec3",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "Direct comparison with the identified Benziger 1962 Editio iuxta typicam page; the complete body is printed there and has no formula expansion. Historical preparation remains distinct from pending source review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -102679,20 +102709,21 @@
     {
       "id": "collation.proprium.sancti-laurentii-martyris-evangelium.mr1962-do44667ff",
       "text": "proprium.sancti-laurentii-martyris-evangelium",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete 71-word Gospel body in the Benziger 1962 Editio iuxta typicam, John12:24-26; no shared expansion. Selected Latin and ritual segmentation remain unchanged.",
       "selected_text_sha256": "8296e23082580b54cc535ceedfe6f40044451d30551cf93cefbc31bad0a9b274",
       "witnesses": [
         "witness.proprium.sancti-laurentii-martyris-evangelium.do44667ff",
         "witness.proprium.sancti-laurentii-martyris-evangelium.mr1962"
       ],
       "apparatus": {
-        "entries": 2,
+        "entries": 3,
         "classes": [
           "accent",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "d95a8483b3e7f2766ea18ae8f4c7a9c2391a7f5b733fb15cd25d2e772a21d209",
+      "apparatus_sha256": "f5dd23bd0898258a64834313ba3dda7db4ac485dd45e07fc6b81218466e1e66b",
       "review": {
         "status": "pending"
       }

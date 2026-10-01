@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 from itertools import pairwise
 
+from checks.english_death import check_death_auxiliaries
 from checks.interlinear import TECHNICAL_GLOSS
 from checks.normalize import strip_accents
 
@@ -105,4 +106,5 @@ def check(doc: dict, gloss: dict) -> list[str]:
                         f"glosses {line!r} duplicate the auxiliary of a Latin future "
                         "periphrastic; assign the tense once and mark or fuse the helper"
                     )
+    errors.extend(check_death_auxiliaries(doc, gloss))
     return errors
