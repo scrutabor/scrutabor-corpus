@@ -12,7 +12,7 @@ a term already listed.
 
 | concept | term | banned variants |
 |---|---|---|
-| cases with PL equivalents | mianownik, dopełniacz, celownik, biernik, wołacz | — |
+| cases with PL equivalents | mianownik, dopełniacz, celownik, biernik, wołacz, miejscownik | — |
 | ablative (no PL case) | **ablativus** (odm. z „v”: ablativu, ablativie, ablativem, ablativów) | ablatiwus, ablatiw, ablatyw |
 | deponent | deponens (opis: forma bierna, znaczenie czynne) | — |
 | perfect | perfectum | czas przeszły dokonany (samodzielnie) |
@@ -29,7 +29,7 @@ a term already listed.
 
 | concept | term | banned variants |
 |---|---|---|
-| cases | nominative, genitive, dative, accusative, ablative, vocative | — |
+| cases | nominative, genitive, dative, accusative, ablative, vocative, locative | — |
 | declension/conjugation | 1st–5th declension, 1st–4th conjugation | Roman numerals |
 | deponent | deponent (passive form, active meaning) | — |
 | ablative of means / of cause | ablative of means, ablative of cause | — |

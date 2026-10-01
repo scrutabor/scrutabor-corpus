@@ -674,7 +674,7 @@ localization, editorial
   (deus, dominus, pater, spiritus) are lowercase common-noun lemmas. (0.4.0 removed the 0.2.0
   `tier` field: hand-judged per-word difficulty proved unreviewable.)
 - `morph`: `pos` (verb|noun|adj|pron|adv|conj|prep|intj) plus per-pos fields —
-  nouns/adjs/prons: `case` (nom|gen|dat|acc|abl|voc), `number` (sg|pl),
+  nouns/adjs/prons: `case` (nom|gen|dat|acc|abl|voc|loc), `number` (sg|pl),
   `gender` (m|f|n), nouns also `decl` (1–5, omitted for Greek/irregular
   declensions such as Iesus); adjs: `degree` (comp|sup) when not positive;
   verbs: `person`, `number`, `tense` (pres|impf|fut|perf|plup|futperf),
@@ -689,6 +689,11 @@ localization, editorial
   (comparative conjunction) although several dictionaries head it as an
   adverb — analyzer disagreement at integration is expected there, not a
   silent error.
+
+The additive locative value `loc` is documented within schema 0.21.0; the
+object and compact transport shapes are unchanged. It records place where,
+as in town-name Corínthi. A form also admitting a genitive analysis must
+be resolved from its contextual function, not from the form alone.
 
 ### Homograph lemma keys
 

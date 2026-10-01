@@ -22,7 +22,7 @@ from .punctuation import check_parentheses
 
 MORPH_ENUMS = {
     "pos": {"verb", "noun", "adj", "pron", "adv", "conj", "prep", "intj"},
-    "case": {"nom", "gen", "dat", "acc", "abl", "voc"},
+    "case": {"nom", "gen", "dat", "acc", "abl", "voc", "loc"},
     "number": {"sg", "pl"},
     "gender": {"m", "f", "n"},
     "tense": {"pres", "impf", "fut", "perf", "plup", "futperf"},

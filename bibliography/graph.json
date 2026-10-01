@@ -52525,18 +52525,19 @@
         "text": "proprium.vigilia-pentecostes-epistola"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Pasc6-6r.txt (section [Lectio]); resolved spans: web/www/missa/Latin/Tempora/Pasc6-6r.txt (lines 27-29)"
+        "section": "web/www/missa/Latin/Tempora/Pasc6-6r.txt [Lectio], body line 29; heading 26, title 27 and reference 28 excluded"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "8d1675512b6403ee5dcd795d3c4deed3a9a3a29fffbe085189b1f4a7870a77f9"
+      "claim": "The pinned Mass data directly print the complete 120-word reading on line 29, without inherited reference or expansion. The exact digital spelling and punctuation provide a comparison witness.",
+      "verified_on": "2026-10-01",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "8d1675512b6403ee5dcd795d3c4deed3a9a3a29fffbe085189b1f4a7870a77f9",
+      "decision_reason": "Correct the locator to the directly printed body on line 29, excluding the heading, reading title and scripture reference from textual coverage."
     },
     {
       "id": "use.proprium.vigilia-pentecostes-epistola.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.vigilia-pentecostes-epistola"
@@ -52546,10 +52547,11 @@
         "scan": "leaf n429 / PDF p. 430",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n429/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "cd7efd3f759b569058fcb1dbe560dded2408e9a3c98508cc906986cb913b4eb7"
+      "claim": "The Benziger 1962 Editio iuxta typicam page prints the complete 120-word Epistle body, without abbreviated conclusion or shared expansion. The heading and Acts 19:1–8 reference are framing.",
+      "verified_on": "2026-10-01",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "cd7efd3f759b569058fcb1dbe560dded2408e9a3c98508cc906986cb913b4eb7",
+      "decision_reason": "Correct the impression identity and source role to the directly checked Benziger Editio iuxta typicam, and limit the claim to its complete body without expansion."
     },
     {
       "id": "use.proprium.vigilia-pentecostes-evangelium.do44667ff",
@@ -85329,12 +85331,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "73100f785b1fa5782f998767fc72b4e46f12ac74a603c660f92b6ee0e44b85c8",
+      "transcription_sha256": "b16d938cb9d199d7f999ff532f0f7211ec2f92b089bbd8d58054c932114ed01e",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "The pinned upstream Mass data provide a direct comparison reading on line 29. Their textual derivation is not claimed independent of the printed liturgical tradition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "pentecost-vigil-epistle"
       }
     },
     {
@@ -85345,12 +85351,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "653a3a0284e4c3484466b6ca83a8b92688d8cf006bdf3de8051900bf08430036",
+      "transcription_sha256": "4d979519469f26285a7a0766dd98a1eca3eda111a4ea40ac8fab4318289d980e",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the Benziger 1962 Editio iuxta typicam page image. This records current conformity to the print, not independent original transcription or renewed approval of the historical workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -105926,7 +105936,7 @@
     {
       "id": "collation.proprium.vigilia-pentecostes-epistola.mr1962-do44667ff",
       "text": "proprium.vigilia-pentecostes-epistola",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete Epistle body of the Benziger 1962 Editio iuxta typicam, with selected capital accentuation and no shared expansion",
       "selected_text_sha256": "7bb7946d63cc6a311938a62eb9242647e0be4fd3e1f924d46b4f80361fcb5f81",
       "witnesses": [
         "witness.proprium.vigilia-pentecostes-epistola.do44667ff",
@@ -105940,7 +105950,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "9f8d6ddcf5e1dc5ceeb6695605556732a36b6ae2fd95f02e91281cf6d35bed5a",
+      "apparatus_sha256": "a8c0d7821a1fee6127002f5c754b33ee8661bfdec9dfedd0583f4f579cce135f",
       "review": {
         "status": "pending"
       }
