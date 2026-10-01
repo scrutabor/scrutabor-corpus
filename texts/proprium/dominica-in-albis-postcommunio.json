@@ -26,7 +26,7 @@
         { "id": "w005", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w006", "form": "sacrosáncta", "lemma": "sacrosanctus", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "head": "w007" },
         { "id": "w007", "form": "mystéria", "lemma": "mysterium", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "n", "decl": 2 }, "post": "," },
-        { "id": "w008", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w008", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "n" } },
         { "id": "w009", "form": "pro", "lemma": "pro", "morph": { "governs": "abl", "pos": "prep" }, "head": "w012" },
         { "id": "w010", "form": "reparatiónis", "lemma": "reparatio", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w011", "form": "nostræ", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "gender": "f", "number": "sg" }, "head": "w010" },
@@ -97,9 +97,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "notes": "The Benziger 1962 Missale Romanum (Editio iuxta typicam) prints the 21-word postcommunion body followed by Per Dóminum. on p. 335. The full conclusion and Amen are expanded from general rubric 115 a; the response remains a separate segment. The witness headers distinguish the printed body, shared expansion, house presentation and ritual framing.",
     "source": {
-      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The body follows the Benziger page image, p. 335 (leaf n416); the abbreviated conclusion is expanded from Rubricae generales 115 a, p. xvii (leaf n22), with declared house accents, ligatures, punctuation and capitalization. The pinned Divinum Officium comparison is bound to Tempora/Pasc1-0.txt [Postcommunio], body and reference at lines 53–54, and Ordo/Prayers.txt [Per Dominum], lines 96–97. Six accidental differences are recorded in the apparatus.",
       "witnesses": "witnesses/proprium.dominica-in-albis-postcommunio/",
       "apparatus": "witnesses/proprium.dominica-in-albis-postcommunio/apparatus.json"
     },
@@ -114,7 +114,8 @@
       "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w021": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w024": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {

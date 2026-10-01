@@ -263,6 +263,14 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
             raise BindingError("invalid reference target")
         destination = binding["evidence"][target]
         directive = reference["text"]
+        # The pinned Mass renderer removes periods before expanding $ and &.
+        # Exact directive bytes were checked above and remain in the source record.
+        if (
+            archives[key]["upstream"].startswith("web/www/missa/")
+            and directive.startswith(("$", "&"))
+            and not re.search(r"callpopup|rubrics", directive, re.IGNORECASE)
+        ):
+            directive = directive.replace(".", "")
         if directive.startswith("$"):
             source = archives[key]["upstream"]
             prayer_source = (

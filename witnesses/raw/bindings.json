@@ -204,6 +204,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C3a-1.txt",
       "sha256": "1d4af72b67c07b1ed3233615c2ea0a40eb5dfc27dd9e50ecfa569c51f711c48e"
+    },
+    "in-albis-day": {
+      "upstream": "web/www/missa/Latin/Tempora/Pasc1-0.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pasc1-0.txt",
+      "sha256": "e59095d1998c200ec4bf79668709b5aa98fa6bca02a3d18078dd7766652294f1"
     }
   },
   "bindings": {
@@ -1271,6 +1277,46 @@
           "archive": "purification-day",
           "first": 207,
           "last": 207
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "in-albis-postcommunion": {
+      "witness": "witnesses/proprium.dominica-in-albis-postcommunio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "in-albis-day",
+          "first": 53,
+          "last": 54,
+          "section": "Postcommunio",
+          "section_line": 52
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "in-albis-day",
+          "line": 54,
+          "text": "$Per Dominum.",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "in-albis-day",
+          "first": 53,
+          "last": 53
         },
         {
           "archive": "prayers",

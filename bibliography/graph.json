@@ -21553,6 +21553,43 @@
       "evidence_sha256": "b92b3b4f88504afd6431f0a8ec80178f35efc2b72639c9cce26252c5b4688af9"
     },
     {
+      "id": "use.proprium.dominica-in-albis-postcommunio.conclusion-macro.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-albis-postcommunio"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Ordo/Prayers.txt [Per Dominum], heading 95, conclusion 96, response 97"
+      },
+      "claim": "The referenced shared formula supplies the 21 conclusion words w022–w042 and the separate Amen w043. Lowercase r. formats an initial, while uppercase R. marks a response; neither prefix is a Latin token.",
+      "verified_on": "2026-10-01",
+      "decision": "RETAIN",
+      "evidence_sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    },
+    {
+      "id": "use.proprium.dominica-in-albis-postcommunio.conclusion-rg115a.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-albis-postcommunio"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up",
+        "section": "RG 115 a; expanded conclusion w022–w042 and textual Amen w043"
+      },
+      "claim": "General rubric 115 a prints the Father-directed conclusion and Amen. It supplies w022–w043 after expansion of the printed abbreviation. The witness declares house accents, ligatures, tuum: Qui and separate response punctuation; response role is supported separately by ritual evidence.",
+      "verified_on": "2026-10-01",
+      "decision": "RETAIN",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"
+    },
+    {
       "id": "use.proprium.dominica-in-albis-postcommunio.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -21562,12 +21599,12 @@
         "text": "proprium.dominica-in-albis-postcommunio"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Pasc1-0.txt (section [Postcommunio]); resolved spans: web/www/missa/Latin/Tempora/Pasc1-0.txt (line 21); web/www/missa/Latin/Tempora/Pasc1-0.txt (line 53); web/www/missa/Latin/Ordo/Prayers.txt (lines 97-98)"
+        "section": "web/www/missa/Latin/Tempora/Pasc1-0.txt [Postcommunio], heading 52, body 53 and reference 54"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The pinned Mass file supplies the 21-word body and its own explicit reference to the shared conclusion. The separately identified Ordo/Prayers use supplies the conclusion and response. The raw binding declares their complete ordered derivation.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "evidence_sha256": "e59095d1998c200ec4bf79668709b5aa98fa6bca02a3d18078dd7766652294f1"
     },
     {
       "id": "use.proprium.dominica-in-albis-postcommunio.mr1962",
@@ -21583,7 +21620,7 @@
         "scan": "leaf n416 / PDF p. 417",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n416/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The Benziger page prints the 21-word body (w001–w021) and the abbreviation Per Dóminum. The separately identified RG 115 a use supplies the expanded conclusion and Amen; these are not directly printed on p. 335.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "b92b3b4f88504afd6431f0a8ec80178f35efc2b72639c9cce26252c5b4688af9"
@@ -21600,7 +21637,7 @@
       "locator": {
         "printed": "pp. xxxii–xxxiv, 226",
         "scan": "PDF scans 38–40, 306",
-        "section": "RG 480–481, 511 d/i, 513–514; Ordo conclusion"
+        "section": "RG 480–481, 511 d/i, 513–514; preface opening dialogue"
       },
       "claim": "The final secret has an audible Per omnia saecula saeculorum followed by the response Amen. Collects and postcommunions are priestly orations with a separate response. These rules determine the modeled boundaries, not the completeness of a date-specific commemoration inventory.",
       "verified_on": "2026-09-19",
@@ -62864,12 +62901,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "edc78427d23a814819901785195d3dee2f4eeb00f0f3ddc7aca64f964a555815",
+      "transcription_sha256": "94693e4cf91ff1f57dea46b32d2dc9db5c5c0653345749542d7cd40ffe011139",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-in-albis-postcommunio.conclusion-macro.do44667ff"
+        ],
+        "raw_binding": "in-albis-postcommunion"
       }
     },
     {
@@ -62880,12 +62923,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "8d5fcd7dd5ebb655fd293f0675659786c7b032d6d1460faa7792b85b414a3802",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "5a671e9f044cf0b8614d5778fcd067848247876182587bfade908c08b4f4a195",
+      "orthography_profile": "page-body-with-declared-expanded-conclusion",
+      "independence_basis": "The Benziger body on p. 335 and the same edition's RG 115 a were independently read from registered page images. The witness expands the printed abbreviation in declared house presentation; it is not a diplomatic transcript of p. 335 alone.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-in-albis-postcommunio.conclusion-rg115a.mr1962",
+          "use.proprium.dominica-in-albis-postcommunio.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -91736,7 +91786,7 @@
     {
       "id": "collation.proprium.dominica-in-albis-postcommunio.mr1962-do44667ff",
       "text": "proprium.dominica-in-albis-postcommunio",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "Benziger 1962 (Editio iuxta typicam) body, with the Per Dominum conclusion and Amen expanded from RG 115 a in declared house presentation",
       "selected_text_sha256": "9cccceea152012da90a00086c2352852338f7147f33720f2336d344c975144e6",
       "witnesses": [
         "witness.proprium.dominica-in-albis-postcommunio.do44667ff",
@@ -91750,7 +91800,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "0fa5770a87aee5257bb66eafdbb0328b54d0d756c0c45e768d469191b4ea9814",
+      "apparatus_sha256": "bfb2162dce8ff9d53c04eb962d58900f6f22afe0519fcd74473804b659a818e0",
       "review": {
         "status": "pending"
       }
