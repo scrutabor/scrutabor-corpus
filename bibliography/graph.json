@@ -4369,6 +4369,16 @@
       "access": "open"
     },
     {
+      "id": "item.divinum-officium-horae.44667ff.doc3a-1",
+      "edition": "edition.divinum-officium-horae.44667ff",
+      "repository": "GitHub",
+      "kind": "born-digital",
+      "record_url": "https://raw.githubusercontent.com/DivinumOfficium/divinum-officium/44667ff518b8ff1439780470828b39714f5306a2/web/www/horas/Latin/Commune/C3a-1.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "sha256": "1d4af72b67c07b1ed3233615c2ea0a40eb5dfc27dd9e50ecfa569c51f711c48e",
+      "access": "open"
+    },
+    {
       "id": "item.divinum-officium-horae.44667ff.prayers",
       "edition": "edition.divinum-officium-horae.44667ff",
       "repository": "GitHub",
@@ -40053,12 +40063,31 @@
         "text": "proprium.omnium-sanctorum-offertorium"
       },
       "locator": {
-        "section": "pinned source key Sancti/11-01; resolved section [Offertorium] with declared inherited references"
+        "section": "Mass Latin/Sancti/11-01.txt [Offertorium], heading 38, reference 39 to Commune/C3a-1"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "This pinned Mass source supplies the inheritance directive, not the antiphon body itself. The exact body in Horae/Latin/Commune/C3a-1 is declared separately as a derived digital dependency; independent textual transmission is not claimed.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
-      "evidence_sha256": "b6e49964e28e5a136b4733ef923255e1c2a279e9818a21247e8315abc58e4112"
+      "evidence_sha256": "b6e49964e28e5a136b4733ef923255e1c2a279e9818a21247e8315abc58e4112",
+      "decision_reason": "Reference and inherited body distinguished on 2026-10-01; historical verification date retained and source review pending."
+    },
+    {
+      "id": "use.proprium.omnium-sanctorum-offertorium.inherited-body.do44667ff",
+      "edition": "edition.divinum-officium-horae.44667ff",
+      "digital_item": "item.divinum-officium-horae.44667ff.doc3a-1",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.omnium-sanctorum-offertorium"
+      },
+      "locator": {
+        "section": "Horae/Latin/Commune/C3a-1.txt [Offertorium], heading 55, reference 56, body 57; seasonal rubric 58 and replacement 59 excluded"
+      },
+      "claim": "The exact inherited 23-word antiphon is a derived digital comparison, not an independent printed witness. Justórum and allelúja are preserved; no post-Septuagesima substitution is used for November 1.",
+      "verified_on": "2026-10-01",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "Explicit inherited source scope and exact raw reading; no source-review promotion.",
+      "evidence_sha256": "1d4af72b67c07b1ed3233615c2ea0a40eb5dfc27dd9e50ecfa569c51f711c48e"
     },
     {
       "id": "use.proprium.omnium-sanctorum-offertorium.mr1962",
@@ -40074,10 +40103,11 @@
         "scan": "leaf n800 / PDF p. 801",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n800/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The Benziger 1962 Editio iuxta typicam page prints the complete 23-word offertory antiphon including alleluia, Sap 3:1–2, 3. Heading and scripture reference are excluded; no shared conclusion, response or formula is expanded.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
-      "evidence_sha256": "20588aa7297835fcc189c0f4c0ee6eacde2ed282f1dfd2f69cdebd36cf7de71a"
+      "evidence_sha256": "20588aa7297835fcc189c0f4c0ee6eacde2ed282f1dfd2f69cdebd36cf7de71a",
+      "decision_reason": "Direct page scope clarified on 2026-10-01; historical verification date retained and source review pending."
     },
     {
       "id": "use.proprium.omnium-sanctorum-postcommunio.do44667ff",
@@ -76328,17 +76358,21 @@
     {
       "id": "witness.proprium.omnium-sanctorum-offertorium.do44667ff",
       "text": "proprium.omnium-sanctorum-offertorium",
-      "use": "use.proprium.omnium-sanctorum-offertorium.do44667ff",
+      "use": "use.proprium.omnium-sanctorum-offertorium.inherited-body.do44667ff",
       "role": "derived_comparison",
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "a9cd43fa28c8b1f4d3a7055cb18d365767e3e5085b87aa096cf193bd6852be45",
-      "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "transcription_sha256": "7a202650cbd192d293922ddc120c2c0712e761e2f972a4ecd1003233e2ae4fcb",
+      "orthography_profile": "exact-pinned-ordered-reading",
+      "independence_basis": "Exact pinned Latin data with declared inheritance from the Office-data file; a derived comparison, without claiming independent textual transmission.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "all-saints-offertory"
       }
     },
     {
@@ -76349,12 +76383,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "530c57f14c982431355386c53eb116f6b8c8e46c77cefacd02b44e2651745ab1",
+      "transcription_sha256": "8491382e9863feec28bb5eaf17c3af94d5bee7e159c9f7ae2ef4a40dcb426eb6",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "Direct comparison with the identified Benziger Editio iuxta typicam page, which prints all 23 words without expansion. Historical preparation remains distinct from pending source review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -100219,17 +100257,19 @@
     {
       "id": "collation.proprium.omnium-sanctorum-offertorium.mr1962-do44667ff",
       "text": "proprium.omnium-sanctorum-offertorium",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete 23-word November 1 offertory antiphon in the Benziger 1962 Editio iuxta typicam, Sap 3:1–2, 3, including alleluia; no shared expansion. Selected Latin and ritual segmentation remain unchanged.",
       "selected_text_sha256": "559a3b4ac5cbaf20cabea0f59d4b4681424a3f6decebe54c7c6ad45ae5cd8828",
       "witnesses": [
         "witness.proprium.omnium-sanctorum-offertorium.do44667ff",
         "witness.proprium.omnium-sanctorum-offertorium.mr1962"
       ],
       "apparatus": {
-        "entries": 0,
-        "classes": []
+        "entries": 2,
+        "classes": [
+          "orthography"
+        ]
       },
-      "apparatus_sha256": "b332df04497aa3ed2cd43681a012bdc9faba6bda3f1b9856d3931e399f909d0f",
+      "apparatus_sha256": "7d761013018e17a40b897ff65ca762bd8e14649d2f59675b5ad323fdfb901f0a",
       "review": {
         "status": "pending"
       }

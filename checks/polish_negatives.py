@@ -1,7 +1,7 @@
 """Polish negative predicates in explicitly bounded Latin constructions.
 
-This checks bounded nihil, numquam and nullus realizations, not general Polish grammar. A nominal
-predicate such as niczym + sum can be affirmative. Elliptical shared copulas,
+This checks bounded nihil, non, numquam and nullus realizations, not general Polish grammar.
+A nominal predicate such as niczym + sum can be affirmative. Elliptical shared copulas,
 ad nihilum, nihil non and non nihil require their own contextual reading.
 """
 
@@ -169,9 +169,13 @@ def _quantifier_scopes(words: list[dict]) -> Iterator[tuple[list[dict], list[dic
     """
     for i, word in enumerate(words):
         rest = words[i:]
-        if word.get("lemma") not in {"numquam", "nullus"}:
+        if word.get("lemma") not in {"non", "numquam", "nullus"}:
             continue
         if i and words[i - 1].get("lemma") == "non":
+            continue
+        if word.get("lemma") == "non":
+            if word.get("morph", {}).get("pos") == "adv" and len(rest) > 1 and _finite(rest[1]):
+                yield rest[:2], rest[:2], False
             continue
         if word.get("lemma") == "numquam" and word.get("morph", {}).get("pos") == "adv":
             if len(rest) > 1 and _finite(rest[1]):
@@ -247,7 +251,7 @@ def _quantifier_scopes(words: list[dict]) -> Iterator[tuple[list[dict], list[dic
 
 
 def check_quantifier_predicates(doc: dict, layer: dict) -> list[str]:
-    """Check bounded numquam/nullus concord, not all negation or government."""
+    """Check local non/numquam/nullus concord, not all negation or government."""
     if layer.get("lang") != "pl":
         return []
     errors: list[str] = []

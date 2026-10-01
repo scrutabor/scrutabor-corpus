@@ -198,6 +198,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/02-01.txt",
       "sha256": "215f72971fdf0bbbaaa99c908e2109aefbd56e9e41690ad27e9c48a13da04bdc"
+    },
+    "commune-c3a-1": {
+      "upstream": "web/www/horas/Latin/Commune/C3a-1.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C3a-1.txt",
+      "sha256": "1d4af72b67c07b1ed3233615c2ea0a40eb5dfc27dd9e50ecfa569c51f711c48e"
     }
   },
   "bindings": {
@@ -1195,6 +1201,41 @@
           "archive": "saint-ignatius",
           "first": 60,
           "last": 60
+        }
+      ]
+    },
+    "all-saints-offertory": {
+      "witness": "witnesses/proprium.omnium-sanctorum-offertorium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "all-saints",
+          "first": 39,
+          "last": 39,
+          "section": "Offertorium",
+          "section_line": 38
+        },
+        {
+          "archive": "commune-c3a-1",
+          "first": 57,
+          "last": 57,
+          "section": "Offertorium",
+          "section_line": 55
+        }
+      ],
+      "references": [
+        {
+          "archive": "all-saints",
+          "line": 39,
+          "text": "@Commune/C3a-1",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "commune-c3a-1",
+          "first": 57,
+          "last": 57
         }
       ]
     }
