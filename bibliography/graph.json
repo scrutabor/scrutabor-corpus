@@ -49680,10 +49680,10 @@
         "text": "proprium.sanctorum-innocentium-martyrum-evangelium"
       },
       "locator": {
-        "section": "pinned source key Sancti/12-28; resolved section [Evangelium] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/12-28.txt [Evangelium], direct body line 61; heading 58, title 59, reference 60"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
+      "claim": "The exact pinned inline Latin Gospel corroborates the substantive 136-word body. Its source spelling, accent, capitalization and punctuation variants are recorded in the apparatus; this is a derived comparison source, not the controlling print or an inherited reading.",
+      "verified_on": "2026-10-01",
       "decision": "RETAIN",
       "evidence_sha256": "28f4f262a6e8471df524e2905b681b7b3a59485e37fea5c69060e34764533cd5"
     },
@@ -49691,7 +49691,7 @@
       "id": "use.proprium.sanctorum-innocentium-martyrum-evangelium.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.sanctorum-innocentium-martyrum-evangelium"
@@ -49701,8 +49701,8 @@
         "scan": "leaf n107 / PDF p. 108",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n107/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
+      "claim": "The Benziger 1962 Editio iuxta typicam page prints the complete 136-word Matt 2:13–18 Gospel for the Holy Innocents. The reading title, reference, separate Credo rubric and following offertory are framing or other components. No conclusion is expanded.",
+      "verified_on": "2026-10-01",
       "decision": "RETAIN",
       "evidence_sha256": "16e6ed11378ac7377d9dac8e87f4e77a2fc3c7fd7184f2434c75d3a87fa59628"
     },
@@ -83357,7 +83357,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "f08b2fbe54e613b2aa2ce1f4bbf32c6838a2f8a2c311f5119d708bb3471f1d2d",
+      "transcription_sha256": "c1744b98f41af0796b3234747b1147591e93b3e9965980c6dc5c09c819bec884",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
@@ -83373,9 +83373,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "b118f55211fe41e3ba24524a6da22eae90d6892eeab83fd985a75c6732d97f4a",
+      "transcription_sha256": "50cdf24f050c285f8b38fb52acf0dce893ed78cfefa5ff8ae272e042fd737340",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed Gospel body has been checked directly against the Benziger 1962 Editio iuxta typicam page image. This current verification does not establish the historical transcription workflow. No expansion is supplied.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -104660,21 +104660,22 @@
     {
       "id": "collation.proprium.sanctorum-innocentium-martyrum-evangelium.mr1962-do44667ff",
       "text": "proprium.sanctorum-innocentium-martyrum-evangelium",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete Holy Innocents Gospel in the Benziger 1962 Editio iuxta typicam, with declared house capital accent and no expansion",
       "selected_text_sha256": "35c4347aecbc738d59659f48e7c1d847b941d9014c2f56a27847dc9476dd3f3e",
       "witnesses": [
         "witness.proprium.sanctorum-innocentium-martyrum-evangelium.do44667ff",
         "witness.proprium.sanctorum-innocentium-martyrum-evangelium.mr1962"
       ],
       "apparatus": {
-        "entries": 13,
+        "entries": 18,
         "classes": [
           "capital-accent",
           "capitalization",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "b88dfd121acecc892c35d486c87b0748aebd0272934d089f704a88a898946c93",
+      "apparatus_sha256": "3a15152ddf8cf6436b75b86eece69ec5a9c06e1939697f299d4c16bcdf50a10f",
       "review": {
         "status": "pending"
       }
