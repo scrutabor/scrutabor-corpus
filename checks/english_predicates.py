@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import re
 import unicodedata
+from itertools import pairwise
 
 
 def check_predicate_junctions(doc: dict, gloss: dict) -> list[str]:
@@ -91,5 +93,59 @@ def check_predicate_junctions(doc: dict, gloss: dict) -> list[str]:
                 errors.append(
                     f"{doc['id']}:{a['id']}–{c['id']}: jussive glosses produce "
                     "'let sound voice your' — preserve the subject in a coherent English clause"
+                )
+    return errors + check_dependent_jussive(doc, gloss)
+
+
+def check_dependent_jussive(doc: dict, gloss: dict) -> list[str]:
+    """Reject the direct dependent/imperative hybrid 'that / let them rest'.
+
+    Only adjacent ut plus a present active third-person subjunctive is examined.
+    Do not infer a junction across punctuation, segments, or shared/zero providers.
+    This does not choose a translation for ut or reject free quoted imperatives.
+    Other persons, tenses, voices, longer connectives and quoted glosses need review.
+    """
+    if gloss.get("lang") != "en":
+        return []
+    errors: list[str] = []
+    entries = gloss.get("words") or {}
+    localized = gloss.get("segments") or {}
+
+    def normalized(value: object) -> str:
+        if not isinstance(value, str):
+            return ""
+        return " ".join(unicodedata.normalize("NFKC", value).casefold().split())
+
+    for segment in doc.get("segments", []):
+        words = segment.get("words") or []
+        members = {
+            wid
+            for group in (localized.get(segment.get("id")) or {}).get("alignments", [])
+            for wid in group["words"]
+        }
+        for conjunction, verb in pairwise(words):
+            morph = verb.get("morph") or {}
+            if (
+                conjunction.get("lemma") != "ut"
+                or conjunction.get("morph", {}).get("pos") != "conj"
+                or morph.get("pos") != "verb"
+                or morph.get("mood") != "subj"
+                or morph.get("tense") != "pres"
+                or morph.get("voice") != "act"
+                or morph.get("person") != 3
+                or morph.get("number") not in {"sg", "pl"}
+                or conjunction.get("post", "").strip()
+                or verb.get("pre", "").strip()
+                or conjunction["id"] in members
+                or verb["id"] in members
+            ):
+                continue
+            left = normalized((entries.get(conjunction["id"]) or {}).get("gloss"))
+            right = normalized((entries.get(verb["id"]) or {}).get("gloss"))
+            if left in {"that", "so that"} and re.match(r"let (?:him|her|it|them) [^\W\d_]", right):
+                errors.append(
+                    f"{doc['id']}:{conjunction['id']}–{verb['id']}: dependent glosses "
+                    f"produce {left!r} + {right!r} — use one coherent dependent clause "
+                    "rather than appending an independent let-imperative"
                 )
     return errors

@@ -13547,10 +13547,10 @@
         "text": "proprium.commemoratio-omnium-fidelium-defunctorum-missa-iii-epistola"
       },
       "locator": {
-        "section": "pinned source key Sancti/11-02m3; resolved section [Lectio] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/11-02m3.txt [Lectio], direct body line 19; heading 16, title 17, reference 18"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
+      "claim": "The exact pinned inline Latin reading corroborates the substantive body and records cœlo, Amodo and jam for collation. It is a derived comparison source, not the controlling print or an inherited reading.",
+      "verified_on": "2026-10-01",
       "decision": "RETAIN",
       "evidence_sha256": "5df3f33ec73be46350101304e0438d8d71d2864a08bbb2d7799fd01c61de60df"
     },
@@ -13558,7 +13558,7 @@
       "id": "use.proprium.commemoratio-omnium-fidelium-defunctorum-missa-iii-epistola.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.commemoratio-omnium-fidelium-defunctorum-missa-iii-epistola"
@@ -13568,8 +13568,8 @@
         "scan": "leaf n807 / PDF p. 808",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n807/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
+      "claim": "The Benziger 1962 Editio iuxta typicam page prints the complete 30-word Apoc 14:13 reading for the third All Souls Mass. The title and reference are framing; no shared expansion is needed.",
+      "verified_on": "2026-10-01",
       "decision": "RETAIN",
       "evidence_sha256": "18ffb3bd77c82f7c76ba31aefe6ae991e16af91de5946e41c8e11d1522649e88"
     },
@@ -57343,7 +57343,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "61cd9ccabb570ade6acfe90bfed3b44e1fbbb1e3b45a59c453e41267f7616768",
+      "transcription_sha256": "6d2e83356d72589b7ca93503e6b639debea62f4b491b8ea7e5e421dc85314c10",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
@@ -57359,9 +57359,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "4aa315d40d32e48e06ac117733493ff52cb80258ca8f28cd32ce525b803dea01",
+      "transcription_sha256": "0c18cb3a75e3706679a4fc4f4ed238ac5e422b33ab229024010b6473423821ba",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the Benziger 1962 Editio iuxta typicam page image. This current verification does not establish the historical transcription workflow. No conclusion or response is expanded.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -88209,19 +88209,20 @@
     {
       "id": "collation.proprium.commemoratio-omnium-fidelium-defunctorum-missa-iii-epistola.mr1962-do44667ff",
       "text": "proprium.commemoratio-omnium-fidelium-defunctorum-missa-iii-epistola",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete third All Souls Mass reading in the Benziger 1962 Editio iuxta typicam, with declared house capital accent and no expansion",
       "selected_text_sha256": "98f711c12135370788efc8b90d1ccebdb24becc544706b5de43b15026d9ecb53",
       "witnesses": [
         "witness.proprium.commemoratio-omnium-fidelium-defunctorum-missa-iii-epistola.do44667ff",
         "witness.proprium.commemoratio-omnium-fidelium-defunctorum-missa-iii-epistola.mr1962"
       ],
       "apparatus": {
-        "entries": 1,
+        "entries": 3,
         "classes": [
-          "capital-accent"
+          "capital-accent",
+          "orthography"
         ]
       },
-      "apparatus_sha256": "c71a0bef2cb2a07ebf3b182ac1c6ede0f4a2344de6fcb7b602cbef3c157a6900",
+      "apparatus_sha256": "97a3498b0dfd0e631b404d7d7c1aab2fd683e8aa4d8d5ed9e0b818c994e0d36d",
       "review": {
         "status": "pending"
       }
