@@ -36,10 +36,12 @@ def subject(language):
             [
                 (["w009", "w010"], "is like"),
                 (["w014", "w015"], "and a young deer"),
+                (["w043", "w044"], "For now"),
                 (["w061", "w062"], "has been heard"),
                 (["w094", "w095", "w096"], "let your voice sound"),
+                (["w100", "w101", "w102"], "for your voice"),
             ],
-            98,
+            93,
         ),
     ],
 )
