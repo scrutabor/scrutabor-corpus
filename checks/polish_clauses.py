@@ -15,6 +15,33 @@ Token = tuple[str, dict[str, str | int]]
 Rule = tuple[str, tuple[Token, ...], tuple[str, ...], tuple[tuple[int, int], ...]]
 RULES: tuple[Rule, ...] = (
     (
+        "medial relation",
+        (
+            ("in", {"pos": "prep", "governs": "abl"}),
+            ("medius", {"pos": "adj", "case": "abl", "number": "sg", "gender": "n"}),
+        ),
+        ("w", "pośrodku"),
+        ((0, 1),),
+    ),
+    (
+        "medial relation",
+        (
+            ("in", {"pos": "prep", "governs": "abl"}),
+            ("medius", {"pos": "adj", "case": "abl", "number": "sg", "gender": "n"}),
+        ),
+        ("w", "pośród"),
+        ((0, 1),),
+    ),
+    (
+        "medial separation",
+        (
+            ("de", {"pos": "prep", "governs": "abl"}),
+            ("medius", {"pos": "adj", "case": "abl", "number": "sg", "gender": "n"}),
+        ),
+        ("spośród", "środka"),
+        ((0, 1),),
+    ),
+    (
         "noise genitive",
         (
             ("confusio", {"pos": "noun", "case": "abl", "number": "sg"}),
@@ -96,7 +123,7 @@ def _normalized(value: object) -> str:
 
 
 def check_clause_junctions(doc: dict, gloss: dict) -> list[str]:
-    """Match four direct-gloss phrases without crossing source/provider bounds."""
+    """Match attested direct-gloss phrases within source/provider bounds."""
     if gloss.get("lang") != "pl":
         return []
     errors: list[str] = []

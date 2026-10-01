@@ -144,7 +144,7 @@ def test_middle_exception_does_not_hide_unproven_preposition_overlap(kind):
     doc, layer = middle()
     words = doc["segments"][0]["words"]
     if kind == "prep":
-        words[0]["lemma"] = "per"
+        words[0]["lemma"] = "contra"
     elif kind == "government":
         words[0]["morph"]["governs"] = "abl"
     elif kind == "modifier":

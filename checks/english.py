@@ -119,9 +119,9 @@ def _index(doc: dict) -> dict[str, dict]:
 
 
 def _nominalized_middle_objects(doc: dict, layer: dict) -> set[tuple[str, str]]:
-    """Recognize direct inter/medius/noun as through/the midst/of a region.
+    """Recognize inter/per + medius + noun as through/the midst (or middle)/of a region.
 
-    English of belongs to the nominalized adjective, not to inter. This is
+    English of belongs to the nominalized adjective, not to the preposition. This is
     not a general exemption for a modifier between a preposition and its
     object: require the exact linked, agreeing Latin and English realization.
     """
@@ -134,7 +134,7 @@ def _nominalized_middle_objects(doc: dict, layer: dict) -> set[tuple[str, str]]:
         for prep, middle, noun in zip(words, words[1:], words[2:], strict=False):
             pm, mm, nm = (word.get("morph", {}) for word in (prep, middle, noun))
             if (
-                prep.get("lemma") != "inter"
+                prep.get("lemma") not in {"inter", "per"}
                 or pm.get("pos") != "prep"
                 or pm.get("governs") != "acc"
                 or middle.get("lemma") != "medius"
@@ -154,10 +154,14 @@ def _nominalized_middle_objects(doc: dict, layer: dict) -> set[tuple[str, str]]:
             ):
                 continue
             own, modifier, obj = (
-                str((entries.get(word["id"]) or {}).get("gloss") or "").strip().casefold()
+                " ".join(str((entries.get(word["id"]) or {}).get("gloss") or "").casefold().split())
                 for word in (prep, middle, noun)
             )
-            if own == "through" and modifier == "the midst" and re.match(r"of\s+\S", obj):
+            if (
+                own == "through"
+                and modifier in {"the midst", "the middle"}
+                and re.match(r"of\s+\S", obj)
+            ):
                 result.add((prep["id"], noun["id"]))
     return result
 
