@@ -40911,31 +40911,33 @@
         "text": "proprium.purificatio-beatae-mariae-virginis-communio"
       },
       "locator": {
-        "section": "pinned source key Sancti/02-02; resolved section [Communio] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/02-02.txt [Communio]; heading 202, Luke 2:26 reference 203, complete direct body 204; next section 206"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
+      "claim": "The exact pinned Latin Mass body corroborates the complete Communion as a derived digital witness. This section is direct, not an inherited reference or an independent controlling print; its framing is excluded.",
+      "verified_on": "2026-10-02",
       "decision": "RETAIN",
-      "evidence_sha256": "f149348ebd31599a32e17cccfc950d0f4eef24886d86bad6fd00bc3ef772520f"
+      "evidence_sha256": "f149348ebd31599a32e17cccfc950d0f4eef24886d86bad6fd00bc3ef772520f",
+      "decision_reason": "Current bounded source-unit and body verification only; existing decision and pending witness/collation states are retained."
     },
     {
       "id": "use.proprium.purificatio-beatae-mariae-virginis-communio.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.purificatio-beatae-mariae-virginis-communio"
       },
       "locator": {
-        "printed": "p. 466",
-        "scan": "leaf n547 / PDF p. 548",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n547/mode/1up"
+        "printed": "p. 467",
+        "scan": "leaf n548 / PDF p. 549",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n548/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
+      "claim": "The Benziger Brothers 1962 Editio iuxta typicam page prints the complete 14-word Communion at its lower right after the Gospel. The longer processional antiphon on the preceding page is a different unit. Framing is excluded; no shared expansion is supplied.",
+      "verified_on": "2026-10-02",
       "decision": "RETAIN",
-      "evidence_sha256": "34d729047ef19017022448be8704ff1dd629d474302a107771a66e672a8a282d"
+      "evidence_sha256": "1d03b85122869acb77a773f78debebbc7c8f87bef4e0acc7088a77d6f8ecf9b6",
+      "decision_reason": "Current bounded source-unit and body verification only; existing decision and pending witness/collation states are retained."
     },
     {
       "id": "use.proprium.purificatio-beatae-mariae-virginis-epistola.do44667ff",
@@ -77040,12 +77042,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "67b6cd1970706335cbfe0305dc91e71dc4c63c0ff776dbbc4b6f29422ad71520",
+      "transcription_sha256": "611911c8feeee51cf60d82fd5972b4d34658127635d48f5a6e437a9fcd563a88",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Pinned Latin Mass data are used as a derived comparison witness. The complete direct Communio body is bound to its exact raw archive and section; this is not an independent controlling print.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "purification-communion"
       }
     },
     {
@@ -77056,12 +77062,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "2eb5d105e81e158960d4305bf8fb57d64609f9130672fc70971cdab98806bcd2",
+      "transcription_sha256": "342f28ab09764bc0df716204b14d1f1de25770e3ca95698c40158967154e454c",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed Communion body has been checked directly against the Benziger Brothers 1962 Editio iuxta typicam page, printed p. 467, leaf n548. This establishes current conformity, not the original transcription workflow. No expansion is supplied.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -100769,7 +100779,7 @@
     {
       "id": "collation.proprium.purificatio-beatae-mariae-virginis-communio.mr1962-do44667ff",
       "text": "proprium.purificatio-beatae-mariae-virginis-communio",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "Complete Purification Communion checked in the Benziger Brothers 1962 Editio iuxta typicam impression, without shared expansion; the exact pinned direct digital body agrees.",
       "selected_text_sha256": "14f63ded6a76a84a77cff611676169006bc1d6b5c8d06e9cd0c0a27aeaadb8dc",
       "witnesses": [
         "witness.proprium.purificatio-beatae-mariae-virginis-communio.do44667ff",
@@ -100779,7 +100789,7 @@
         "entries": 0,
         "classes": []
       },
-      "apparatus_sha256": "bc582c4b5714da5132d04da9d34d0f9ed430d5fba8844b5d233618b178118d45",
+      "apparatus_sha256": "5c8dffb569639768ee3082d60dbabf1408c1a176b4be602980afb7208b10fa6b",
       "review": {
         "status": "pending"
       }
