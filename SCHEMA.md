@@ -488,8 +488,29 @@ localization, editorial
   It cannot also carry `head` or `substantive: true`. Apply it only after reading
   the complete construction; prefer a real agreement head when one is expressed.
   The validator constrains this claim's shape, not its contextual truth.
-  Every preposition carries a `head` naming the word
-  it governs. `checks/syntax.py` then verifies on every build that a modifier
+  An ordinary preposition carries a `head` naming the word it governs.
+  The additive `clause_head` annotation in schema 0.21.0 instead names the
+  relative introducing a substantival clause with an understood antecedent.
+  The first supported shape is deliberately narrow: *secundum [id] quod
+  dictum est*. The accusative declared by `secundum` belongs to the understood
+  external antecedent, not to the nominative relative subject. `quod` points
+  to finite `est`; `dictum` agrees with `quod` and is not substantive.
+  The three clause words must immediately follow `secundum` in the same
+  segment, with no internal punctuation (including paired-parenthesis
+  boundaries); parentheses around the whole construction are allowed. The
+  relative and perfect passive participle must both be neuter nominative
+  singular, and `sum` must be
+  present indicative active, third-person singular. This is not permission
+  for an arbitrary preposition to govern a nominative or a remote verb.
+  `clause_head` is mutually exclusive with `head`, `substantive` and `ellipsis`,
+  and requires localized explanations for both the preposition and relative.
+  An expressed antecedent instead uses ordinary government. Other structures
+  (including a defensible attracted relative) are not automatically retagged.
+  These checks constrain an explicit analysis, not discover its contextual
+  truth. Reader 5.8.0 carries this optional relation as `ch`. The relation is
+  included in translation source signatures only where present; its absence
+  does not change existing source payloads.
+  `checks/syntax.py` then verifies on every build that a modifier
   matches its head in case, number and gender, that a preposition's object
   stands in a case that preposition governs, and that a predicate complement or
   a nominative relative matches its verb in number.

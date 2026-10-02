@@ -119,6 +119,7 @@ def source_payload(segment: dict) -> dict:
                     "lemma",
                     "morph",
                     "head",
+                    "clause_head",
                     "substantive",
                     "ellipsis",
                 )

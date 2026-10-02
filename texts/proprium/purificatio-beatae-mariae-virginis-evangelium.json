@@ -57,9 +57,9 @@
         { "id": "w036", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w037", "form": "darent", "lemma": "do", "morph": { "conj": 1, "mood": "subj", "number": "pl", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w038", "form": "hóstiam", "lemma": "hostia", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" } },
-        { "id": "w039", "form": "secúndum", "lemma": "secundum", "morph": { "governs": "acc", "pos": "prep" }, "head": "w040" },
-        { "id": "w040", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "acc", "number": "sg", "gender": "n" } },
-        { "id": "w041", "form": "dictum", "lemma": "dico", "morph": { "case": "nom", "conj": 3, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "substantive": true },
+        { "id": "w039", "form": "secúndum", "lemma": "secundum", "morph": { "governs": "acc", "pos": "prep" }, "clause_head": "w040" },
+        { "id": "w040", "form": "quod", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "n" }, "head": "w042" },
+        { "id": "w041", "form": "dictum", "lemma": "dico", "morph": { "case": "nom", "conj": 3, "gender": "n", "mood": "part", "number": "sg", "pos": "verb", "tense": "perf", "voice": "pass" }, "head": "w040" },
         { "id": "w042", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w043", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w044" },
         { "id": "w044", "form": "lege", "lemma": "lex", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
@@ -177,9 +177,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "notes": "The Gospel runs from the lower left column to the upper right of printed p. 467, leaf n548, and ends with Israel before the Credo rubric. The Luke 2:22–32 reference and surrounding headings are framing, not body words. No Anna continuation, conclusion or response is supplied. The clausal complement at secundum quod dictum est distinguishes external government from the relative clause subject; its three affected analyses remain pending. Other historical review states are retained, not renewed.",
     "source": {
-      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The complete 153-word Gospel body has been checked directly against the Benziger Brothers 1962 Editio iuxta typicam page, printed p. 467, leaf n548, and the exact pinned Divinum Officium Latin Mass reading. This records current comparison, not the original transcription workflow. The selected Latin retains the checked printed reading; thirteen digital accidentals are recorded in the apparatus.",
       "witnesses": "witnesses/proprium.purificatio-beatae-mariae-virginis-evangelium/",
       "apparatus": "witnesses/proprium.purificatio-beatae-mariae-virginis-evangelium/apparatus.json"
     },
@@ -224,9 +224,9 @@
       "w036": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w037": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w038": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w039": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
-      "w041": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
+      "w039": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
+      "w040": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
+      "w041": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "pending" } },
       "w042": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w043": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
       "w044": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus", "whitakers"], "review": "accepted" } },
@@ -341,6 +341,14 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w039": {
+
+      },
+      "w040": {
+
+      }
+    }
   }
 }

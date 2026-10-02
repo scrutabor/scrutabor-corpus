@@ -40986,18 +40986,19 @@
         "text": "proprium.purificatio-beatae-mariae-virginis-evangelium"
       },
       "locator": {
-        "section": "pinned source key Sancti/02-02; resolved section [Evangelium] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/02-02.txt [Evangelium]; heading 190, title 191, Luke 2:22–32 reference 192, complete direct body 193; next section 195"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
+      "claim": "The exact pinned Latin Mass body corroborates the complete Gospel as a derived digital comparison witness. This unit is direct, not inherited and not an independent controlling print; its thirteen accidentals are declared in the apparatus.",
+      "verified_on": "2026-10-02",
       "decision": "RETAIN",
-      "evidence_sha256": "f149348ebd31599a32e17cccfc950d0f4eef24886d86bad6fd00bc3ef772520f"
+      "evidence_sha256": "f149348ebd31599a32e17cccfc950d0f4eef24886d86bad6fd00bc3ef772520f",
+      "decision_reason": "Current bounded unit and body verification only; existing decisions and pending witness/collation review are retained."
     },
     {
       "id": "use.proprium.purificatio-beatae-mariae-virginis-evangelium.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.purificatio-beatae-mariae-virginis-evangelium"
@@ -41007,11 +41008,11 @@
         "scan": "leaf n548 / PDF p. 549",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n548/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-25",
+      "claim": "The Benziger Brothers 1962 Editio iuxta typicam page prints the complete 153-word Gospel on p. 467, leaf n548, from the lower left into the upper right column, ending with Israel before Credo. Framing is excluded; no shared expansion is supplied.",
+      "verified_on": "2026-10-02",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "1d03b85122869acb77a773f78debebbc7c8f87bef4e0acc7088a77d6f8ecf9b6",
-      "decision_reason": "Locator corrected against the page image; the text is printed on the leaf now cited."
+      "decision_reason": "Current bounded unit and body verification only; existing decisions and pending witness/collation review are retained."
     },
     {
       "id": "use.proprium.purificatio-beatae-mariae-virginis-graduale.do44667ff",
@@ -77114,12 +77115,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "1e2cc3116cc930be2159cfe2b6cce76d1f277693438c93307bf2231c051b3adf",
+      "transcription_sha256": "17ac1c2ef05ff02cf5e808b60f7eff569f8b2c94ccd658a26db7f52866030110",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Pinned Latin Mass data are a derived comparison witness. The complete direct Evangelium body is bound to the exact raw archive and section; it is not an independent controlling print.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "purification-gospel"
       }
     },
     {
@@ -77130,12 +77135,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "033437f8912357a75a1928442968b49fb8de893853a5a6388dbce61e3363612d",
+      "transcription_sha256": "312b750d780d95d5b4958fcd6dcfb11c45b9768ae87144b49d84656d9a50e958",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed Gospel body has been checked directly against the Benziger Brothers 1962 Editio iuxta typicam page, printed p. 467, leaf n548. This establishes current conformity, not the original transcription workflow. No expansion is supplied.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -100818,20 +100827,21 @@
     {
       "id": "collation.proprium.purificatio-beatae-mariae-virginis-evangelium.mr1962-do44667ff",
       "text": "proprium.purificatio-beatae-mariae-virginis-evangelium",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "Complete Purification Gospel checked in the Benziger Brothers 1962 Editio iuxta typicam impression, without shared expansion; the exact pinned direct digital witness supplies the declared accidental variants.",
       "selected_text_sha256": "90df0faf7bd2b150c9209187aa9da037fe6fb245a5452f332b66e1f403857cf8",
       "witnesses": [
         "witness.proprium.purificatio-beatae-mariae-virginis-evangelium.do44667ff",
         "witness.proprium.purificatio-beatae-mariae-virginis-evangelium.mr1962"
       ],
       "apparatus": {
-        "entries": 7,
+        "entries": 13,
         "classes": [
           "accent",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "9e1826783314ede96c3c8872e7f14bbd81f2a47fb39ea2bf5603775f14aff2cb",
+      "apparatus_sha256": "831d53451e22c3b8c0399624d3ede6e3f7c9beb5a4c1801ff4794ebd63793e77",
       "review": {
         "status": "pending"
       }

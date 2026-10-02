@@ -13,7 +13,8 @@ It does now. Every adjective, numeral and participle carries either
     "ellipsis": "predicate"   predicate with an unexpressed subject/copula
     "ellipsis": "subject"     nominative participle with an unexpressed subject
 
-and every preposition carries a `head` naming the word it governs. Both are
+and every preposition carries a `head` naming the word it governs, or an
+explicit `clause_head` for a supported substantival relative clause. These are
 CLAIMS, checked here on every build:
 
 - a modifier matches its head in case, number and gender;
@@ -28,6 +29,7 @@ is exactly the kind of quiet assumption that hid *omnibus* = all people among
 from __future__ import annotations
 
 from .normalize import substantive
+from .punctuation import word_faces
 
 # What each preposition may govern. Two-case prepositions list both; the check
 # speaks only when the object stands in neither.
@@ -124,6 +126,17 @@ def candidates(segment: dict, word: dict) -> list[dict]:
     ]
 
 
+def _unpunctuated_span(segment: dict, first: int, last: int) -> bool:
+    """Keep narrow adjacency claims inside actual displayed punctuation boundaries."""
+    try:
+        faces = word_faces(segment)[first : last + 1]
+    except ValueError:
+        return False
+    return not any(face.prefix for face in faces[1:]) and not any(
+        face.suffix for face in faces[:-1]
+    )
+
+
 def _accusative_predicate(segment: dict, word: dict) -> bool:
     """Constrain an explicitly reviewed omitted-subject predicate, not discover it."""
     m = word["morph"]
@@ -144,7 +157,7 @@ def _accusative_predicate(segment: dict, word: dict) -> bool:
         copula = words[other]
         cm = copula["morph"]
         left, right = sorted((index, other))
-        if words[left].get("post") or words[right].get("pre"):
+        if words[right].get("pre") or not _unpunctuated_span(segment, left, right):
             continue
         if (
             copula.get("lemma") == "sum"
@@ -156,6 +169,69 @@ def _accusative_predicate(segment: dict, word: dict) -> bool:
         ):
             return True
     return False
+
+
+def _clausal_complement(segment: dict, word: dict) -> bool:
+    """Constrain a declared clause object, never infer one from a case mismatch.
+
+    The supported shape is deliberately small: secundum [id] quod dictum est.
+    The omitted antecedent supplies the external accusative relation; quod is
+    the nominative subject of the passive. A normal head would falsely claim
+    that secundum governs that nominative token. Other clause shapes need their
+    own reviewed representation, not a general waiver of government.
+    """
+    if (
+        word.get("lemma") != "secundum"
+        or word["morph"].get("pos") != "prep"
+        or word["morph"].get("governs") != "acc"
+        or not isinstance(word.get("clause_head"), str)
+        or any(key in word for key in ("head", "substantive", "ellipsis"))
+    ):
+        return False
+    words = segment.get("words") or []
+    index = next(i for i, item in enumerate(words) if item["id"] == word["id"])
+    clause = words[index + 1 : index + 4]
+    if len(clause) != 3 or not _unpunctuated_span(segment, index, index + 3):
+        return False
+    relative, predicate, auxiliary = clause
+    rm, pm, am = (item["morph"] for item in clause)
+    return (
+        relative["id"] == word["clause_head"]
+        and relative.get("lemma") == "qui"
+        and substantive(relative["form"]) == "quod"
+        and all(
+            rm.get(key) == value
+            for key, value in {"pos": "pron", "case": "nom", "number": "sg", "gender": "n"}.items()
+        )
+        and relative.get("head") == auxiliary["id"]
+        and not any(key in relative for key in ("substantive", "ellipsis", "clause_head"))
+        and all(
+            pm.get(key) == value
+            for key, value in {
+                "pos": "verb",
+                "mood": "part",
+                "tense": "perf",
+                "voice": "pass",
+                "case": "nom",
+                "number": "sg",
+                "gender": "n",
+            }.items()
+        )
+        and predicate.get("head") == relative["id"]
+        and not any(key in predicate for key in ("substantive", "ellipsis", "clause_head"))
+        and auxiliary.get("lemma") == "sum"
+        and all(
+            am.get(key) == value
+            for key, value in {
+                "pos": "verb",
+                "mood": "ind",
+                "tense": "pres",
+                "voice": "act",
+                "number": "sg",
+                "person": 3,
+            }.items()
+        )
+    )
 
 
 def check(doc: dict) -> list[str]:
@@ -173,6 +249,14 @@ def check(doc: dict) -> list[str]:
             m = word["morph"]
             head_id = word.get("head")
             substantive = word.get("substantive")
+            if "clause_head" in word:
+                if not _clausal_complement(segment, word):
+                    fail(
+                        word,
+                        "unsupported clausal complement: requires an adjacent neuter "
+                        "relative subject, agreeing perfect passive predicate and finite sum",
+                    )
+                continue
             if "ellipsis" in word:
                 # An unexpressed subject is not substantivization, nor permission
                 # to invent an agreement head in a different clause.
@@ -449,6 +533,11 @@ def coverage(doc: dict) -> tuple[int, int]:
             m = word["morph"]
             if m.get("pos") == "prep" or is_modifier(word):
                 total += 1
-                if word.get("head") is not None or word.get("substantive") or word.get("ellipsis"):
+                if (
+                    word.get("head") is not None
+                    or word.get("clause_head") is not None
+                    or word.get("substantive")
+                    or word.get("ellipsis")
+                ):
                     declared += 1
     return declared, total

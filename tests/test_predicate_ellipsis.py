@@ -126,6 +126,38 @@ def test_punctuation_breaks_the_narrow_adjacent_shape(index, field, mark):
     assert check(doc)
 
 
+@pytest.mark.parametrize("reverse", [False, True])
+@pytest.mark.parametrize("member", ["w001", "w002"])
+def test_parentheses_cannot_separate_an_accusative_predicate_from_its_copula(reverse, member):
+    doc = example()
+    segment = doc["segments"][0]
+    if reverse:
+        segment["words"].reverse()
+    segment["parentheses"] = [{"from": member, "through": member}]
+    assert check_core(doc) == []
+    assert check(doc)
+
+
+@pytest.mark.parametrize("reverse", [False, True])
+def test_parentheses_can_enclose_the_complete_predicate_and_copula(reverse):
+    doc = example()
+    segment = doc["segments"][0]
+    if reverse:
+        segment["words"].reverse()
+    first, last = segment["words"]
+    last["post"] = "."
+    segment["parentheses"] = [{"from": first["id"], "through": last["id"], "closing": "after-post"}]
+    assert check_core(doc) == []
+    assert check(doc) == []
+
+
+@pytest.mark.parametrize("pairs", [[], None, [{"from": "w001", "through": "missing"}]])
+def test_accusative_predicate_does_not_ignore_malformed_paired_punctuation(pairs):
+    doc = example()
+    doc["segments"][0]["parentheses"] = pairs
+    assert check(doc)
+
+
 @pytest.mark.parametrize(
     "field,value",
     [

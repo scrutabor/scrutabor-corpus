@@ -33,7 +33,8 @@ from build_reader import bibliography, store
 # 5.5.0 preserves explicit elliptical-predicate annotations.
 # 5.6.0 also carries a nominative participle's understood-subject annotation.
 # 5.7.0 carries explicit same-verse source parentheses as segment ranges.
-SCHEMA = "5.7.0"
+# 5.8.0 preserves declared clausal complements separately from ordinary heads.
+SCHEMA = "5.8.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -288,6 +289,8 @@ def core_artifact(
                 cell["m"] = parses.intern(word["morph"])
                 if word.get("head"):
                     cell["h"] = word["head"]
+                if word.get("clause_head"):
+                    cell["ch"] = word["clause_head"]
                 if word.get("substantive"):
                     cell["s"] = True
                 if word.get("ellipsis"):
@@ -506,6 +509,8 @@ def expand(
                 word["morph"] = parses[cell["m"]]
                 if "h" in cell:
                     word["head"] = cell["h"]
+                if "ch" in cell:
+                    word["clause_head"] = cell["ch"]
                 if cell.get("s"):
                     word["substantive"] = True
                 if "el" in cell:

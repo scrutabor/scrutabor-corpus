@@ -121,6 +121,13 @@ def check_core(core: dict) -> list[str]:
         for word in segment.get("words") or []:
             if word.get("ellipsis") and word["id"] not in explanations:
                 errors.append(f"{text_id}:{word['id']}: ellipsis requires a contextual explanation")
+            if "clause_head" in word:
+                for identifier in (word["id"], word["clause_head"]):
+                    if not isinstance(identifier, str) or identifier not in explanations:
+                        errors.append(
+                            f"{text_id}:{word['id']}: clausal complement requires contextual "
+                            "explanations for the preposition and relative"
+                        )
     for word_id, requirement in explanations.items():
         if word_id not in word_ids:
             errors.append(f"{text_id}: explanation requirement for unknown word {word_id}")
