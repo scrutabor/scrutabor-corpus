@@ -72,7 +72,7 @@ def test_purification_petition_and_conclusion_retain_their_relations():
         "grant us to be presented to You with purified minds",
         "Through the same Jesus Christ, our Lord, Your Son",
         "who lives and reigns with You in the unity of the Holy Spirit",
-        "God, for ever and ever",
+        "God, forever and ever",
     ):
         assert phrase in prose
     assert layer["segments"]["s02"]["translation"] == "Amen."

@@ -40825,7 +40825,7 @@
       "id": "use.proprium.purificatio-beatae-mariae-virginis-collecta.expanded-conclusion.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.purificatio-beatae-mariae-virginis-collecta"
@@ -40837,16 +40837,16 @@
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
       },
       "claim": "The shared Father-directed formula supplies conclusion words w030-w051 and response w052 Amen. It does not print the proper body or by itself establish response participation. House accents, ligatures, tuum: Qui and terminal Amen. are declared in the transcript.",
-      "verified_on": "2026-09-30",
+      "verified_on": "2026-10-02",
       "decision": "RETAIN_WITH_CORRECTION",
-      "decision_reason": "Separate directly inspected source scope; source review remains pending and no complete prayer or parent acceptance is inferred.",
+      "decision_reason": "Role corrected: the scan is the Benziger Brothers 1962 editio iuxta typicam, an approved edition, not the typical edition itself; Rubricae generales 115 a, p. xvii, leaf n22, re-read directly on the page image. Source review remains pending and no complete prayer or parent acceptance is inferred.",
       "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"
     },
     {
       "id": "use.proprium.purificatio-beatae-mariae-virginis-collecta.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.purificatio-beatae-mariae-virginis-collecta"
@@ -40857,10 +40857,10 @@
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n547/mode/1up"
       },
       "claim": "The Benziger 1962 proper prints the 29-word collect body and Per eundem Dominum cue. The 52-word witness explicitly expands RG115a-b, including Amen, with declared house accidentals.",
-      "verified_on": "2026-09-25",
+      "verified_on": "2026-10-02",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "34d729047ef19017022448be8704ff1dd629d474302a107771a66e672a8a282d",
-      "decision_reason": "Scope clarified after direct image inspection on 2026-09-30; historical verification date retained, not renewed approval."
+      "decision_reason": "Role corrected: the scan is the Benziger Brothers 1962 editio iuxta typicam, an approved edition, not the typical edition itself; the 29-word body and the Per eundem Dominum cue, printed p. 466, leaf n547, re-read directly on the page image. The scope clarified on 2026-09-30 is unchanged."
     },
     {
       "id": "use.proprium.purificatio-beatae-mariae-virginis-collecta.oration-boundaries.mr1962",
@@ -40886,7 +40886,7 @@
       "id": "use.proprium.purificatio-beatae-mariae-virginis-collecta.same-lord-conclusion.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "rubric_control",
       "address": {
         "kind": "word",
         "text": "proprium.purificatio-beatae-mariae-virginis-collecta",
@@ -40899,9 +40899,9 @@
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n23/mode/1up"
       },
       "claim": "RG115b prescribes Per eundem Dominum nostrum when the Father-directed prayer mentions the Son at its beginning; this supports eundem at w031 in the proper's abbreviated cue.",
-      "verified_on": "2026-09-30",
+      "verified_on": "2026-10-02",
       "decision": "RETAIN_WITH_CORRECTION",
-      "decision_reason": "Separate directly inspected source scope; source review remains pending and no complete prayer or parent acceptance is inferred.",
+      "decision_reason": "Role corrected: the rubric prescribes the Per eundem form for a Father-directed prayer that mentions the Son at its beginning, which supports eundem at w031; Rubricae generales 115 b re-read directly on the page image, p. xviii, leaf n23. Source review remains pending and no complete prayer or parent acceptance is inferred.",
       "evidence_sha256": "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132"
     },
     {
@@ -41216,18 +41216,58 @@
         "text": "proprium.purificatio-beatae-mariae-virginis-secreta"
       },
       "locator": {
-        "section": "pinned source key Sancti/02-02; resolved section [Secreta] with declared inherited references"
+        "section": "Latin/Sancti/02-02.txt: Secreta heading 198, body 199, $Per Dominum 200; the called shared section is declared separately"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
+      "claim": "The direct secret body calls $Per Dominum; the exact shared conclusion and Amen have a separate declared dependency.",
+      "verified_on": "2026-10-02",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "f149348ebd31599a32e17cccfc950d0f4eef24886d86bad6fd00bc3ef772520f",
+      "decision_reason": "The source remains relevant, but its locator now names the exact lines and the called conclusion, and the earlier witness had normalized the source’s consonantal j, one capital and one comma."
+    },
+    {
+      "id": "use.proprium.purificatio-beatae-mariae-virginis-secreta.expanded-conclusion.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.purificatio-beatae-mariae-virginis-secreta"
+      },
+      "locator": {
+        "section": "Latin/Ordo/Prayers.txt [Per Dominum], heading 95, conclusion 96, response 97"
+      },
+      "claim": "The called Per Dominum section supplies conclusion line 96 and response line 97. Lowercase r. is initial formatting, uppercase R. marks Amen; neither is a Latin word.",
+      "verified_on": "2026-10-02",
       "decision": "RETAIN",
-      "evidence_sha256": "f149348ebd31599a32e17cccfc950d0f4eef24886d86bad6fd00bc3ef772520f"
+      "decision_reason": "Separate directly inspected source scope; source review remains pending and no complete prayer or parent acceptance is inferred.",
+      "evidence_sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    },
+    {
+      "id": "use.proprium.purificatio-beatae-mariae-virginis-secreta.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.purificatio-beatae-mariae-virginis-secreta"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "The shared Father-directed formula supplies conclusion words w020–w040 and response w041 Amen. It does not print the proper body or by itself establish response participation. House accents, ligatures, tuum: Qui and terminal Amen. are declared in the transcript.",
+      "verified_on": "2026-10-02",
+      "decision": "RETAIN",
+      "decision_reason": "Separate directly inspected source scope; source review remains pending and no complete prayer or parent acceptance is inferred.",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"
     },
     {
       "id": "use.proprium.purificatio-beatae-mariae-virginis-secreta.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.purificatio-beatae-mariae-virginis-secreta"
@@ -41237,11 +41277,11 @@
         "scan": "leaf n548 / PDF p. 549",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n548/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-25",
+      "claim": "The Benziger Brothers 1962 Editio iuxta typicam page, printed p. 467, leaf n548, prints the 19-word Secret body and the cue Per Dóminum; the 41-word witness explicitly expands Rubricae generales 115 a, including Amen. This states current conformity, not original transcription genesis.",
+      "verified_on": "2026-10-02",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "1d03b85122869acb77a773f78debebbc7c8f87bef4e0acc7088a77d6f8ecf9b6",
-      "decision_reason": "Locator corrected against the page image; the text is printed on the leaf now cited."
+      "decision_reason": "Locator corrected against the page image (p. 467, leaf n548); edition identity and claim scope corrected: the scan is the Benziger editio iuxta typicam, the page prints only the cue for the conclusion, and the claim states current conformity rather than transcription genesis."
     },
     {
       "id": "use.proprium.purificatio-beatae-mariae-virginis-secreta.oration-boundaries.mr1962",
@@ -77315,12 +77355,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "809d720515cf960c335d3601c3a75b7f19dc53b5eb1dffd9f03c37d8069af70b",
-      "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "transcription_sha256": "02a3019c5c2a2d9a4b5c82d8627c306e5bbc467f79e26c7cfeaf4bf7863da117",
+      "orthography_profile": "exact-pinned-ordered-reading",
+      "independence_basis": "Exact original pinned Latin data, independently maintained and used only as a derived comparison; the complete ordered raw source plan and the called conclusion are explicit.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.purificatio-beatae-mariae-virginis-secreta.expanded-conclusion.do44667ff"
+        ],
+        "raw_binding": "purification-secret"
       }
     },
     {
@@ -77331,12 +77377,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "943c4be4e3143ed3df974907b30730a139310eec48d37607c83dbeb7d3623d34",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "8883d94e9537f751b90ccf8411ecc759b9c934055213237dc4b5c83b4c1ed458",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "Direct comparison with the Benziger Brothers 1962 Editio iuxta typicam page, printed p. 467, leaf n548, with the separately declared Rubricae generales 115 a conclusion; this establishes current conformity, not the original transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.purificatio-beatae-mariae-virginis-secreta.expanded-conclusion.mr1962",
+          "use.proprium.purificatio-beatae-mariae-virginis-secreta.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -100971,19 +101024,21 @@
     {
       "id": "collation.proprium.purificatio-beatae-mariae-virginis-secreta.mr1962-do44667ff",
       "text": "proprium.purificatio-beatae-mariae-virginis-secreta",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The Benziger 1962 proper prints the 19-word secret body and the Per Dóminum cue. The 41-word witness explicitly expands Rubricae generales 115 a, including Amen, with declared house accidentals. The exact digital source resolves $Per Dominum; selected Latin and ritual segmentation are unchanged.",
       "selected_text_sha256": "3d200ef41286451c641e6446bfe076f49bd1fc6215610e2bbb79558a5405c357",
       "witnesses": [
         "witness.proprium.purificatio-beatae-mariae-virginis-secreta.do44667ff",
         "witness.proprium.purificatio-beatae-mariae-virginis-secreta.mr1962"
       ],
       "apparatus": {
-        "entries": 1,
+        "entries": 5,
         "classes": [
+          "capitalization",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "a466a73482a0988bc9fa76baf140d67703f42f75f76be5a5c12a84495fafd636",
+      "apparatus_sha256": "3207ccad57f6e5028fadaa43e4e887dc833508dae6c58727ba5881be8574b79e",
       "review": {
         "status": "pending"
       }

@@ -1,9 +1,12 @@
 # witness: do
-# description: Divinum Officium Latin Mass data, pinned revision
-# source: https://github.com/DivinumOfficium/divinum-officium
+# description: Divinum Officium, exact pinned Latin Mass Secret with its called conclusion
+# source: https://raw.githubusercontent.com/DivinumOfficium/divinum-officium/44667ff518b8ff1439780470828b39714f5306a2/web/www/missa/Latin/Sancti/02-02.txt
 # revision: 44667ff518b8ff1439780470828b39714f5306a2
-# fetched: 2026-08-31
-# path: pinned source key Sancti/02-02; resolved section [Secreta] with declared inherited references
-# orthography: exact source spelling, accents, capitalization, and punctuation
-# note: section labels, scripture references, speaker markers, and runtime control characters are edition framing and are not transcribed
-Exáudi, Dómine, preces nostras: et, ut digna sint múnera, quæ óculis tuæ maiestátis offérimus, subsídium nobis tuæ pietátis impénde. Per Dóminum nostrum Iesum Christum, Fílium tuum: Qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sǽcula sæculórum. Amen.
+# fetched: 2026-08-31; exact source dependency rechecked 2026-10-02
+# path: web/www/missa/Latin/Sancti/02-02.txt [Secreta] (lines 199-200); web/www/missa/Latin/Ordo/Prayers.txt [Per Dominum] (lines 96-97)
+# orthography: exact source spelling, accents, capitalization, and punctuation of the resolved lines
+# note: $Per Dominum at line 200 calls Ordo/Prayers lines 96–97; lowercase r. formats the initial and uppercase R. marks the response; neither is a Latin word
+# raw-binding: purification-secret
+# verified: 2026-10-02; complete 41-word reading from line 199 and Prayers 96–97
+# boundary: Secreta heading 198 is framing; the following Communio section starts at 202
+Exáudi, Dómine, preces nostras: et, ut digna sint múnera, quæ óculis tuæ majestátis offérimus, subsídium nobis tuæ pietátis impénde. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti Deus, per ómnia sǽcula sæculórum. Amen.
