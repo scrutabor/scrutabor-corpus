@@ -264,6 +264,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pent09-0.txt",
       "sha256": "ea1d892229c27e1cfab8ce501b5b6b01152c941cca9a73e55a56832613227c65"
+    },
+    "pentecost-viii": {
+      "upstream": "web/www/missa/Latin/Tempora/Pent08-0.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pent08-0.txt",
+      "sha256": "ab3233793a0f44c51dcc6365c21a9274f05f77d0a5e2edb316829ef05b257b43"
     }
   },
   "bindings": {
@@ -1711,6 +1717,98 @@
           "archive": "purification-day",
           "first": 185,
           "last": 188
+        }
+      ]
+    },
+    "purification-gradual": {
+      "witness": "witnesses/proprium.purificatio-beatae-mariae-virginis-graduale/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "purification-day",
+          "first": 175,
+          "last": 176,
+          "section": "Graduale",
+          "section_line": 173
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "purification-day",
+          "first": 175,
+          "last": 176
+        }
+      ]
+    },
+    "purification-alleluia": {
+      "witness": "witnesses/proprium.purificatio-beatae-mariae-virginis-alleluia/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "purification-day",
+          "first": 177,
+          "last": 178,
+          "section": "Graduale",
+          "section_line": 173
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "purification-day",
+          "first": 177,
+          "last": 178
+        }
+      ]
+    },
+    "pentecost-viii-introit": {
+      "witness": "witnesses/proprium.dominica-viii-post-pentecosten-introitus/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "pentecost-viii",
+          "first": 13,
+          "last": 19,
+          "section": "Introitus",
+          "section_line": 13
+        },
+        {
+          "archive": "prayers",
+          "first": 12,
+          "last": 14,
+          "section": "Gloria",
+          "section_line": 12
+        }
+      ],
+      "references": [
+        {
+          "archive": "pentecost-viii",
+          "line": 18,
+          "text": "&Gloria",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "pentecost-viii",
+          "first": 15,
+          "last": 15
+        },
+        {
+          "archive": "pentecost-viii",
+          "first": 17,
+          "last": 17
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14
+        },
+        {
+          "archive": "pentecost-viii",
+          "first": 19,
+          "last": 19
         }
       ]
     }
