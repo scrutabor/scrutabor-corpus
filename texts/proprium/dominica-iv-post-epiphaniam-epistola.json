@@ -21,7 +21,7 @@
       "words": [
         { "id": "w001", "form": "Fratres", "lemma": "frater", "morph": { "case": "voc", "decl": 3, "gender": "m", "number": "pl", "pos": "noun" }, "post": ":" },
         { "id": "w002", "form": "Némini", "lemma": "nemo", "morph": { "case": "dat", "decl": 3, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w003", "form": "quidquam", "lemma": "quisquam", "morph": { "case": "acc", "number": "sg", "pos": "pron" } },
+        { "id": "w003", "form": "quidquam", "lemma": "quisquam", "morph": { "case": "acc", "gender": "n", "number": "sg", "pos": "pron" } },
         { "id": "w004", "form": "debeátis", "lemma": "debeo", "morph": { "conj": 2, "mood": "subj", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w005", "form": "nisi", "lemma": "nisi", "morph": { "pos": "conj" } },
         { "id": "w006", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
@@ -37,7 +37,7 @@
         { "id": "w016", "form": "Non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w017", "form": "adulterábis", "lemma": "adultero", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "fut", "voice": "act", "conj": 1 }, "post": ":" },
         { "id": "w018", "form": "Non", "lemma": "non", "morph": { "pos": "adv" } },
-        { "id": "w019", "form": "occídes", "lemma": "occido", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" }, "post": "," },
+        { "id": "w019", "form": "occídes", "lemma": "occido", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 2, "pos": "verb", "tense": "fut", "voice": "act" }, "post": ":" },
         { "id": "w020", "form": "Non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w021", "form": "furáberis", "lemma": "furor", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 2, "tense": "fut", "voice": "dep", "conj": 1 }, "post": ":" },
         { "id": "w022", "form": "Non", "lemma": "non", "morph": { "pos": "adv" } },
@@ -76,9 +76,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "notes": "This Epistle belongs to the Fourth Sunday after Epiphany, whose heading begins on printed p. 46, leaf n125. Its complete body follows the collect on p. 47 and ends before the Gradual. The running header for the Fifth Sunday does not identify this preceding reading. Headings and Romans 13:8–10 are framing, not body words. No conclusion, shared expansion or Amen is supplied. Source review, ritual assembly and historical analysis states are not promoted.",
     "source": {
-      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The complete 52-word body has been checked against the Benziger Brothers Editio iuxta typicam page (printed p. 47, leaf n126) and the exact pinned Divinum Officium Latin Mass reading. The apparatus records four digital punctuation differences. This describes current comparison, not original transcription genesis.",
       "witnesses": "witnesses/proprium.dominica-iv-post-epiphaniam-epistola/",
       "apparatus": "witnesses/proprium.dominica-iv-post-epiphaniam-epistola/apparatus.json"
     },
@@ -97,7 +97,8 @@
       "w030": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w033": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w034": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w035": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
