@@ -174,7 +174,7 @@ BOUNDARIES = [
     (
         "en",
         "sanctorum-innocentium-martyrum-epistola",
-        {83: ("qui", "who"), 84: ("cum", "with"), 85: ("mulier", "women")},
+        {83: ("qui", "those who"), 84: ("cum", "with"), 85: ("mulier", "women")},
         [([89, 90, 91], 89, "for they are virgins")],
     ),
     (
