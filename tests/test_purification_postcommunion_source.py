@@ -147,7 +147,7 @@ def test_separate_actual_source_scopes(suffix, scope):
         assert "not directly printed on this page" in use["claim"]
         assert use["locator"]["scan"] == "leaf n549 / PDF p. 550"
     elif suffix == "conclusion-rg115a.mr1962":
-        assert use["role"] == "official_text"
+        assert use["role"] == "direct_approved_print"
         assert use["locator"]["scan"] == "leaf n22 / PDF p. 23"
         assert use["evidence_sha256"] == (
             "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"

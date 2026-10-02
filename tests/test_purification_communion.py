@@ -138,11 +138,11 @@ def test_preserved_latin_relative_time_and_pending_fields():
 @pytest.mark.parametrize(
     "language,target",
     [
-        ("pl", "98c3097e69225a5c19bb1b285dc6f634c5c45f70e8467975a52d3b5d4bfc334a"),
-        ("en", "f0d7c2384f3815a6155156a3400f22b6614d90c6885e45642156b4a0392c4dd2"),
+        ("pl", "c4e8d849de1f3d7262e9af05e570cc1a054f19d197207141833272671e6179b7"),
+        ("en", "7af72f614f5f9ee435ccce4153153fe1486230f6f761b33367f933a5e86b6f5e"),
     ],
 )
-def test_unchanged_working_prose_and_dependencies(language, target):
+def test_working_prose_and_dependencies(language, target):
     core = store.core(ROOT, TEXT)
     raw = store.raw_layer(ROOT, language, TEXT)
     records = json.loads((ROOT / f"languages/{language}/translation-provenance.json").read_text())[

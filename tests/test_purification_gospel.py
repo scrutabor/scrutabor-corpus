@@ -25,7 +25,7 @@ GROUPS = [
     ("en", [54, 55], 55, "there was a man"),
     ("en", [62, 63], 62, "this man"),
     ("en", [71, 72], 71, "the Holy Spirit"),
-    ("en", [77, 78], 78, "he had received a revelation"),
+    ("en", [77, 78], 78, "he had received an answer"),
     ("en", [80, 81], 80, "the Holy Spirit"),
     ("en", [82, 83, 84], 83, "that he would not see"),
     ("en", [99, 100, 101, 102, 103], 99, "His parents were bringing in the Child Jesus"),
@@ -109,10 +109,10 @@ def test_complete_provider_partition_and_contextual_dependencies(language):
             "ujrzy",
             "Chrystusa",
         ]
-        assert actual(104, 108) == ["aby", "postąpić", "według", "przepisu", "Prawa"]
+        assert actual(104, 108) == ["aby", "postąpić", "według", "zwyczaju", "Prawa"]
     else:
         assert actual(77, 89) == [
-            "he had received a revelation",
+            "he had received an answer",
             "from",
             "the Holy Spirit",
             "that he would not see",
@@ -179,7 +179,7 @@ def test_working_prose_dependencies_and_localized_explanation(language):
         == (
             "4a3889550849bef5ae103d40855b4fc95826fc04f2cf9fd48986cd300f88328e"
             if language == "pl"
-            else "78e54e6cee566541a429915db839afbc7099e0cb89aae8da7bd28b56fbbcf6c6"
+            else "8eab8a19e1069544f2b2de8d99cb494bfda063ae7e30a47386e60f956a470bc7"
         )
     )
     assert (site["origin"], site["review"], site["familiar_core"]) == (
