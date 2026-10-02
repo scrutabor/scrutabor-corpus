@@ -446,6 +446,7 @@ def test_printed_identity_is_benziger_and_current_conformity(text):
     header = (ROOT / "witnesses" / text / "mr.txt").read_text()
     assert "editio iuxta typicam" in header and "typical edition" not in header
     assert "local-archive:" not in header
+    assert "typical edition" not in (ROOT / "witnesses" / text / "do.txt").read_text()
     core = store.core(ROOT, text)["editorial"]
     assert (
         "typical edition" not in core["notes"] and "typical-edition" not in core["source"]["method"]
