@@ -40952,18 +40952,19 @@
         "text": "proprium.purificatio-beatae-mariae-virginis-epistola"
       },
       "locator": {
-        "section": "pinned source key Sancti/02-02; resolved section [Lectio] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/02-02.txt [Lectio], body line 171; title 169 and reference 170 are framing"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "f149348ebd31599a32e17cccfc950d0f4eef24886d86bad6fd00bc3ef772520f"
+      "claim": "The exact pinned direct Latin Mass body at line 171 corroborates the complete 100-word lesson as a derived digital witness; no inherited reference or expansion supplies it.",
+      "verified_on": "2026-10-02",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "f149348ebd31599a32e17cccfc950d0f4eef24886d86bad6fd00bc3ef772520f",
+      "decision_reason": "The source remains relevant, but its locator named inherited references the section does not have, and the earlier witness had normalized the source’s consonantal j and accents; both are corrected."
     },
     {
       "id": "use.proprium.purificatio-beatae-mariae-virginis-epistola.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.purificatio-beatae-mariae-virginis-epistola"
@@ -40973,11 +40974,11 @@
         "scan": "leaves n547–n548 / PDF pp. 548–549",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n547/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-25",
+      "claim": "The complete 100-word lesson has been checked directly on the Benziger Brothers 1962 Editio iuxta typicam pages, printed pp. 466–467, leaves n547–n548: it begins at the foot of p. 466 and ends at the top of p. 467. This states current conformity, not original transcription genesis.",
+      "verified_on": "2026-10-02",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "34d729047ef19017022448be8704ff1dd629d474302a107771a66e672a8a282d",
-      "decision_reason": "Locator corrected against the page image: the text is printed on the leaves now cited, from its opening to its end."
+      "decision_reason": "Locator corrected against the page images (pp. 466–467, leaves n547–n548); edition identity and claim scope corrected: the scan is the Benziger editio iuxta typicam, and the claim states current conformity rather than transcription genesis."
     },
     {
       "id": "use.proprium.purificatio-beatae-mariae-virginis-evangelium.do44667ff",
@@ -77162,12 +77163,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "59a70cb853cd6d4600fd2ddc29f098e61a2840e4d103a6cf13c9eb95a0a4a416",
+      "transcription_sha256": "4088111d1c850ce6f4768dfec941aa40d748124ecd309c5612234b2ed47f74df",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Pinned Latin Mass data are used as a derived comparison witness. The complete direct lesson body is bound to its exact raw archive and section; this is not an independent controlling print.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "purification-epistle"
       }
     },
     {
@@ -77178,12 +77183,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "8d09dbf5fb7024d23bc40efabb8c1ca96cfa2cf08b8c621fa0267a6834b8a0a9",
+      "transcription_sha256": "681092f6ac1447d4744171ef4745a67d8ab805a7e4ee8f85d2849687139c16f9",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed lesson has been checked directly against the Benziger Brothers 1962 Editio iuxta typicam pages, printed pp. 466–467, leaves n547–n548. This establishes current conformity, not the original transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -100921,20 +100930,22 @@
     {
       "id": "collation.proprium.purificatio-beatae-mariae-virginis-epistola.mr1962-do44667ff",
       "text": "proprium.purificatio-beatae-mariae-virginis-epistola",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "Lesson of the Benziger 1962 editio iuxta typicam with its printed opening and close; printed punctuation, house i spelling and house accents on capitals.",
       "selected_text_sha256": "eb0f770acb5c829389c0b0453bfde28ab2e7d1c6f087426c1fb240184a9a3a10",
       "witnesses": [
         "witness.proprium.purificatio-beatae-mariae-virginis-epistola.do44667ff",
         "witness.proprium.purificatio-beatae-mariae-virginis-epistola.mr1962"
       ],
       "apparatus": {
-        "entries": 9,
+        "entries": 13,
         "classes": [
+          "accent",
           "capital-accent",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "a490d02500c8b1121d441104ddd8b8bc1dcf85f49065e05eb64036ec3b5c7ea5",
+      "apparatus_sha256": "390314d83b989d94bbb6a624e3a338759dc59e712ba2899022fafa89d2db7e36",
       "review": {
         "status": "pending"
       }
