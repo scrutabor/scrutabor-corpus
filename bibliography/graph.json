@@ -49716,18 +49716,19 @@
         "text": "proprium.sanctorum-innocentium-martyrum-graduale"
       },
       "locator": {
-        "section": "pinned source key Sancti/12-28; resolved section [Graduale] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/12-28.txt [Graduale] (lines 38-39)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
+      "claim": "The exact pinned Latin Mass reading corroborates the complete chant body as a derived digital witness; its literal accidentals and reference chain are preserved, without claiming independent original transcription.",
+      "verified_on": "2026-10-02",
       "decision": "RETAIN",
-      "evidence_sha256": "28f4f262a6e8471df524e2905b681b7b3a59485e37fea5c69060e34764533cd5"
+      "evidence_sha256": "28f4f262a6e8471df524e2905b681b7b3a59485e37fea5c69060e34764533cd5",
+      "decision_reason": "Current bounded body, identity and dependency verification only; historical decision and pending witness/collation states are retained."
     },
     {
       "id": "use.proprium.sanctorum-innocentium-martyrum-graduale.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.sanctorum-innocentium-martyrum-graduale"
@@ -49737,11 +49738,11 @@
         "scan": "leaf n106 / PDF p. 107",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n106/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-25",
+      "claim": "The Benziger Brothers Editio iuxta typicam page directly prints this complete 26-word chant body. Framing is excluded; no abbreviated conclusion, shared expansion or Amen is supplied.",
+      "verified_on": "2026-10-02",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "a074d446cc3ce11efbab41c36b96ac9ce396e668e1989b9557ac0e647098cbaa",
-      "decision_reason": "Locator corrected against the page image: the text is printed on the leaves now cited, from its opening to its end."
+      "decision_reason": "Current bounded body, identity and dependency verification only; historical decision and pending witness/collation states are retained."
     },
     {
       "id": "use.proprium.sanctorum-innocentium-martyrum-introitus.do44667ff",
@@ -49789,18 +49790,19 @@
         "text": "proprium.sanctorum-innocentium-martyrum-offertorium"
       },
       "locator": {
-        "section": "pinned source key Sancti/12-28; resolved section [Offertorium] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/12-28.txt [Offertorium] (lines 64-64); web/www/missa/Latin/Sancti/06-18t.txt [Offertorium] (lines 35-35)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
+      "claim": "The exact pinned Latin Mass reading corroborates the complete chant body as a derived digital witness; its literal accidentals and reference chain are preserved, without claiming independent original transcription.",
+      "verified_on": "2026-10-02",
       "decision": "RETAIN",
-      "evidence_sha256": "28f4f262a6e8471df524e2905b681b7b3a59485e37fea5c69060e34764533cd5"
+      "evidence_sha256": "28f4f262a6e8471df524e2905b681b7b3a59485e37fea5c69060e34764533cd5",
+      "decision_reason": "Current bounded body, identity and dependency verification only; historical decision and pending witness/collation states are retained."
     },
     {
       "id": "use.proprium.sanctorum-innocentium-martyrum-offertorium.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.sanctorum-innocentium-martyrum-offertorium"
@@ -49810,10 +49812,11 @@
         "scan": "leaf n107 / PDF p. 108",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n107/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
+      "claim": "The Benziger Brothers Editio iuxta typicam page directly prints this complete 16-word chant body. Framing is excluded; no abbreviated conclusion, shared expansion or Amen is supplied.",
+      "verified_on": "2026-10-02",
       "decision": "RETAIN",
-      "evidence_sha256": "16e6ed11378ac7377d9dac8e87f4e77a2fc3c7fd7184f2434c75d3a87fa59628"
+      "evidence_sha256": "16e6ed11378ac7377d9dac8e87f4e77a2fc3c7fd7184f2434c75d3a87fa59628",
+      "decision_reason": "Current bounded body, identity and dependency verification only; historical decision and pending witness/collation states are retained."
     },
     {
       "id": "use.proprium.sanctorum-innocentium-martyrum-postcommunio.do44667ff",
@@ -83389,12 +83392,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "89b4fac4686f9dc9e7fbbe52c5a26ee7adae81acbae3af55e90833a87b4abb23",
+      "transcription_sha256": "e377bbef46d0c46558ad109c0ab17a94ebce915411cdf100f77c372d909d1f40",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Pinned upstream Latin Mass data used as a derived comparison witness. Exact direct or inherited body and source bytes are bound explicitly; this is not an independent controlling print.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "holy-innocents-gradual"
       }
     },
     {
@@ -83405,12 +83412,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "8b60f3b5fbeba6678bf13c61ffadc5ce09a6d2d92169c928a1f51a69646f11a7",
+      "transcription_sha256": "1b00fdb02fbb15b86fbe451a2efdefc71d0377a8e8a4d770721d5beff7cbf52b",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the Benziger Brothers Editio iuxta typicam page, printed p. 27, leaf n106. This records current conformity, not the original transcription workflow; no shared expansion is used.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -83453,12 +83464,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "f51eab1f75e785daaf41fad217880d0a18ab22c0826957ba1a1086949daaa9f7",
+      "transcription_sha256": "c826434c2736f9384961716f7c3edcdca9a7af3716aa019a41638a6ffe0e3d48",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Pinned upstream Latin Mass data used as a derived comparison witness. Exact direct or inherited body and source bytes are bound explicitly; this is not an independent controlling print.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "holy-innocents-offertory"
       }
     },
     {
@@ -83469,12 +83484,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "803bbef98b95b551c2f1ca22e555285f9d077ea8c6c51513469ae5222639e2ae",
+      "transcription_sha256": "234777159f789de7917c2fb951edd66e963dcb220ffe10ba270275d5fd0214d2",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the Benziger Brothers Editio iuxta typicam page, printed p. 28, leaf n107. This records current conformity, not the original transcription workflow; no shared expansion is used.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -104683,21 +104702,21 @@
     {
       "id": "collation.proprium.sanctorum-innocentium-martyrum-graduale.mr1962-do44667ff",
       "text": "proprium.sanctorum-innocentium-martyrum-graduale",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "Complete chant body as checked in the Benziger Editio iuxta typicam impression, with selected house accents and explicit digital accidentals; no shared expansion.",
       "selected_text_sha256": "de03bc3c4c0349b3d9509e79dd5391bd0260dce996be251db17eab6d489cf0a8",
       "witnesses": [
         "witness.proprium.sanctorum-innocentium-martyrum-graduale.do44667ff",
         "witness.proprium.sanctorum-innocentium-martyrum-graduale.mr1962"
       ],
       "apparatus": {
-        "entries": 3,
+        "entries": 4,
         "classes": [
           "capital-accent",
-          "capitalization",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "a9099681fd0aa2f7fc02af477931bbd1792457c0d39ab0bf310e66c3e63103fe",
+      "apparatus_sha256": "ed926c8e21a976335b6f60d9bfa79928319e6254ae09412248dc8e0afbdf4eea",
       "review": {
         "status": "pending"
       }
@@ -104725,7 +104744,7 @@
     {
       "id": "collation.proprium.sanctorum-innocentium-martyrum-offertorium.mr1962-do44667ff",
       "text": "proprium.sanctorum-innocentium-martyrum-offertorium",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "Complete chant body as checked in the Benziger Editio iuxta typicam impression, with selected house accents and explicit digital accidentals; no shared expansion.",
       "selected_text_sha256": "ed0f20c2965bb584d3c56928862eb0c73122c18c800b1045867cfc1619b4a7a8",
       "witnesses": [
         "witness.proprium.sanctorum-innocentium-martyrum-offertorium.do44667ff",
@@ -104737,7 +104756,7 @@
           "capital-accent"
         ]
       },
-      "apparatus_sha256": "8ebcfbf6b11c7bc5b7525666dc4bd0d64b2cf4cead49ee1b1fd48599df4ff6f3",
+      "apparatus_sha256": "a413394f32a48c352b174c6d7f0637bf986c7db73c315470ad0c927a52b0eb3c",
       "review": {
         "status": "pending"
       }

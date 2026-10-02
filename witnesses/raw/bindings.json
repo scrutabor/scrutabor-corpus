@@ -252,6 +252,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-12-28.txt",
       "sha256": "28f4f262a6e8471df524e2905b681b7b3a59485e37fea5c69060e34764533cd5"
+    },
+    "holy-innocents-offertory-source": {
+      "upstream": "web/www/missa/Latin/Sancti/06-18t.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/06-18t.txt",
+      "sha256": "76680e7683fade106dee4b5da48ce4f7fec074cfebe984b6d1118eebaeb6eab9"
     }
   },
   "bindings": {
@@ -1517,6 +1523,62 @@
           "archive": "holy-innocents-gospel",
           "first": 61,
           "last": 61
+        }
+      ]
+    },
+    "holy-innocents-gradual": {
+      "witness": "witnesses/proprium.sanctorum-innocentium-martyrum-graduale/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "holy-innocents-gospel",
+          "first": 38,
+          "last": 39,
+          "section": "Graduale",
+          "section_line": 36
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "holy-innocents-gospel",
+          "first": 38,
+          "last": 39
+        }
+      ]
+    },
+    "holy-innocents-offertory": {
+      "witness": "witnesses/proprium.sanctorum-innocentium-martyrum-offertorium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "holy-innocents-gospel",
+          "first": 64,
+          "last": 64,
+          "section": "Offertorium",
+          "section_line": 63
+        },
+        {
+          "archive": "holy-innocents-offertory-source",
+          "first": 35,
+          "last": 35,
+          "section": "Offertorium",
+          "section_line": 33
+        }
+      ],
+      "references": [
+        {
+          "archive": "holy-innocents-gospel",
+          "line": 64,
+          "text": "@Sancti/06-18t",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "holy-innocents-offertory-source",
+          "first": 35,
+          "last": 35
         }
       ]
     }
