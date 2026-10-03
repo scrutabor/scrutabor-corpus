@@ -750,7 +750,7 @@ def test_from_my_youth_has_an_ablative_possessive():
         ("orationes/memorare", "en", "s02", ["w022", "w023"], "was abandoned"),
         ("orationes/memorare", "en", "s01", ["w009", "w010"], "since time immemorial"),
         ("orationes/benedic-domine", "pl", "s03", ["w012", "w013"], "mamy spożywać"),
-        ("proprium/dominica-ii-adventus-evangelium", "en", "s02", ["w021", "w022"], "art to come"),
+        ("proprium/dominica-ii-adventus-evangelium", "en", "s02", ["w021", "w022"], "are to come"),
         ("proprium/vigilia-pentecostes-communio", "en", "s01", ["w023", "w024"], "were to receive"),
     ],
 )
@@ -1129,7 +1129,7 @@ def test_joachim_beloved_modifies_the_son_not_the_mother():
     assert alignment == {
         "words": ["w018", "w019", "w020"],
         "anchor": "w019",
-        "gloss": "of Thy beloved Son",
+        "gloss": "of Your beloved Son",
     }
 
 
@@ -1145,7 +1145,7 @@ def test_joseph_secret_restores_the_explicit_son_title():
 def test_anne_secret_nested_genitive_keeps_the_son_relation():
     target = layer("en", "proprium/sanctae-annae-matris-beatae-mariae-virginis-secreta")
     alignment = next(a for a in target["segments"]["s01"]["alignments"] if "w014" in a["words"])
-    assert alignment == {"words": ["w014", "w015"], "anchor": "w014", "gloss": "of Thy Son"}
+    assert alignment == {"words": ["w014", "w015"], "anchor": "w014", "gloss": "of Your Son"}
     assert "gloss" not in target["words"]["w014"]
 
 

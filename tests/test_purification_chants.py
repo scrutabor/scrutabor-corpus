@@ -55,7 +55,7 @@ SHARED = {
         "also",
         "praise",
         "Your",
-        "unto",
+        "to",
         "the ends",
         "of the earth",
     ],

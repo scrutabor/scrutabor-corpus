@@ -108,7 +108,7 @@ LINES = {
         "of the Spirit",
         "Holy",
         "God",
-        "unto",
+        "for",
         "all",
         "ages",
         "of ages",

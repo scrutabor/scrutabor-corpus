@@ -88,6 +88,6 @@ def test_anne_english_restores_the_petition_and_two_benefits():
     assert "both our devotion and our salvation" in prose
     assert "holiness" not in prose
     assert target["words"]["w025"]["gloss"] == "they may benefit"
-    assert "Through the same our Lord Jesus Christ, Thy Son," in prose
-    assert target["segments"]["s02"]["translation"] == "world without end."
+    assert "Through the same Jesus Christ, our Lord, Your Son," in prose
+    assert target["segments"]["s02"]["translation"] == "forever and ever."
     assert target["segments"]["s03"]["translation"] == "Amen."

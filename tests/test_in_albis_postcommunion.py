@@ -127,7 +127,7 @@ def test_direct_roles_time_and_bestowal_remain_complete():
         "w031": "lives",
         "w033": "reigns",
         "w038": "God",
-        "w039": "through",
+        "w039": "for",
     }
 
 

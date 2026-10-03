@@ -41,7 +41,7 @@ def test_minimal_construction(language, words, anchor, gloss):
         ("w035", "with You"),
         ("w036", "lives"),
         ("w038", "reigns"),
-        ("w044", "through"),
+        ("w044", "for"),
     ],
 )
 def test_contextual_english_realization(word, gloss):
