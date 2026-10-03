@@ -130,8 +130,8 @@ LINES = {
         "wieki",
         "i",
         "na",
-        "wiek",
-        "wieku",
+        "wieki",
+        "wieków",
     ],
     (OFFERTORY, "en"): [
         "Poured out",
