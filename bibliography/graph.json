@@ -30044,6 +30044,45 @@
       "decision_reason": "Source-defined ritual boundary only. The complete word sequence and existing word IDs are unchanged."
     },
     {
+      "id": "use.proprium.dominica-vii-post-pentecosten-secreta.conclusion-macro.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-vii-post-pentecosten-secreta",
+        "word": "w035"
+      },
+      "locator": {
+        "section": "Latin/Ordo/Prayers.txt [Per Dominum], lines96-97"
+      },
+      "claim": "Exact full conclusion and separate Amen response called by the proper's macro; this is a dependency of one digital witness, not another independent witness.",
+      "verified_on": "2026-10-04",
+      "decision": "RETAIN",
+      "evidence_sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    },
+    {
+      "id": "use.proprium.dominica-vii-post-pentecosten-secreta.conclusion-rg115a.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-vii-post-pentecosten-secreta",
+        "word": "w035"
+      },
+      "locator": {
+        "printed": "p.xvii",
+        "scan": "leaf n22 / PDF23",
+        "section": "RG115a",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "Full formula prescribed for a prayer addressed to the Father. The composite witness retains this printed formula's unaccented spelling, ligatures and list punctuation.",
+      "verified_on": "2026-10-04",
+      "decision": "RETAIN",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"
+    },
+    {
       "id": "use.proprium.dominica-vii-post-pentecosten-secreta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -30053,18 +30092,19 @@
         "text": "proprium.dominica-vii-post-pentecosten-secreta"
       },
       "locator": {
-        "section": "pinned source key Tempora/Pent07-0; resolved section [Secreta] with declared inherited references"
+        "section": "Latin/Tempora/Pent07-0.txt [Secreta], lines48-49; proper body and Per Dominum macro cue"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "9cfeb0c8e239a739a62818cd6db3a74ce3d4034bc948bab1d39694be0b64d46f"
+      "claim": "The pinned proper supplies the body and exact conclusion cue. The separately cited macro completes this derived comparison witness, without a claim of independent printed ancestry.",
+      "verified_on": "2026-10-04",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "9cfeb0c8e239a739a62818cd6db3a74ce3d4034bc948bab1d39694be0b64d46f",
+      "decision_reason": "The exact original and claimed scope were rechecked; this does not renew the pending witness or collation review."
     },
     {
       "id": "use.proprium.dominica-vii-post-pentecosten-secreta.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-vii-post-pentecosten-secreta"
@@ -30074,10 +30114,11 @@
         "scan": "leaf n462 / PDF p. 463",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n462/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "f2dcd76ad1929745b0835a63448a59d716726dcbc1fb68665c6194fd2bb1f706"
+      "claim": "The approved Benziger printing supplies this Secret's 34-word body and abbreviated Per Dominum cue; the separately cited RG115a formula supplies its expanded ending.",
+      "verified_on": "2026-10-04",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "f2dcd76ad1929745b0835a63448a59d716726dcbc1fb68665c6194fd2bb1f706",
+      "decision_reason": "The exact original and claimed scope were rechecked; this does not renew the pending witness or collation review."
     },
     {
       "id": "use.proprium.dominica-vii-post-pentecosten-secreta.oration-boundaries.mr1962",
@@ -30089,15 +30130,58 @@
         "text": "proprium.dominica-vii-post-pentecosten-secreta"
       },
       "locator": {
-        "printed": "pp. xxxii–xxxiv, 226",
-        "scan": "PDF scans 38–40, 306",
-        "section": "RG 480–481, 511 d/i, 513–514; Ordo conclusion"
+        "printed": "p.xxxii",
+        "scan": "leaf n37 / PDF38",
+        "section": "RG480-481",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n37/mode/1up"
       },
-      "claim": "The final secret has an audible Per omnia saecula saeculorum followed by the response Amen. Collects and postcommunions are priestly orations with a separate response. These rules determine the modeled boundaries, not the completeness of a date-specific commemoration inventory.",
-      "verified_on": "2026-09-19",
+      "claim": "The Secret is said quietly without Dominus vobiscum or Oremus. The conclusion of the final Secret remains quiet until Per omnia saecula saeculorum, which is audible. This does not establish a date-specific inventory of additional prayers.",
+      "verified_on": "2026-10-04",
       "evidence_sha256": "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "The exact original and claimed scope were rechecked; this does not renew the pending witness or collation review."
+    },
+    {
+      "id": "use.proprium.dominica-vii-post-pentecosten-secreta.ordo-secret-order.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "segment",
+        "text": "proprium.dominica-vii-post-pentecosten-secreta",
+        "segment": "s01"
+      },
+      "locator": {
+        "printed": "p.225",
+        "scan": "leaf n304 / PDF305",
+        "section": "After Suscipiat and before the Preface",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n304/mode/1up"
+      },
+      "claim": "The priest's quiet Amen after Suscipiat precedes the Secrets and is not their concluding response. After the Secrets the audible Per omnia begins the transition to the Preface.",
+      "verified_on": "2026-10-04",
       "decision": "RETAIN",
-      "decision_reason": "Source-defined ritual boundary only. The complete word sequence and existing word IDs are unchanged."
+      "evidence_sha256": "c8e1c105fbccab5b133d072bcdc255ff482824182be5e53597e5d2bfbb94e3ee"
+    },
+    {
+      "id": "use.proprium.dominica-vii-post-pentecosten-secreta.ordo-secret-response.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "segment",
+        "text": "proprium.dominica-vii-post-pentecosten-secreta",
+        "segment": "s03"
+      },
+      "locator": {
+        "printed": "p.226",
+        "scan": "leaf n305 / PDF306",
+        "section": "Sung Per omnia and response before Dominus vobiscum",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up"
+      },
+      "claim": "The shared sung opening shows Per omnia saecula saeculorum followed by the response Amen. This opening is printed with the Christmas Preface; its Christmas body is not selected for this Sunday.",
+      "verified_on": "2026-10-04",
+      "decision": "RETAIN",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58"
     },
     {
       "id": "use.proprium.dominica-viii-post-pentecosten-alleluia.do44667ff",
@@ -69680,12 +69764,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "dd43f73c01bd538af01cb6ec83edd8900a5b25cdccce4411b7efe78b437297a2",
+      "transcription_sha256": "8ae1d74f7e606acf9aec28945562dbfb2897a5b3d7cbb4ba7f3ff0066c0f1bfa",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Pinned upstream proper and its explicit full-conclusion macro, used as a derived digital comparison; no independent printed lineage is asserted.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-vii-post-pentecosten-secreta.conclusion-macro.do44667ff"
+        ],
+        "raw_binding": "pentecost-vii-secret"
       }
     },
     {
@@ -69696,12 +69786,21 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "23d96e3d85a463b78248bf385602a4cee64f79c15b88ad341da358bec838bd54",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "e2de123a8250b680974a74c5fcadb4a1c1cd9286b36478278615755a05f1517d",
+      "orthography_profile": "exact-approved-print-composite",
+      "independence_basis": "Direct page-image transcription of the approved Benziger1962 proper plus its prescribed RG115a ending; one edition and one explicit composite, not a Vatican scan.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-vii-post-pentecosten-secreta.conclusion-rg115a.mr1962",
+          "use.proprium.dominica-vii-post-pentecosten-secreta.oration-boundaries.mr1962",
+          "use.proprium.dominica-vii-post-pentecosten-secreta.ordo-secret-order.mr1962",
+          "use.proprium.dominica-vii-post-pentecosten-secreta.ordo-secret-response.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -96932,20 +97031,22 @@
     {
       "id": "collation.proprium.dominica-vii-post-pentecosten-secreta.mr1962-do44667ff",
       "text": "proprium.dominica-vii-post-pentecosten-secreta",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The 1962 Roman Missal recension, with explicitly sourced conclusion and house orthography; approved Benziger print and derived digital comparison",
       "selected_text_sha256": "0cdeb8385838cb1a323dcdaed43a612394bb96f1bda75c1917dd24b768aac045",
       "witnesses": [
         "witness.proprium.dominica-vii-post-pentecosten-secreta.do44667ff",
         "witness.proprium.dominica-vii-post-pentecosten-secreta.mr1962"
       ],
       "apparatus": {
-        "entries": 2,
+        "entries": 18,
         "classes": [
           "accent",
+          "capitalization",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "dfa1a7dae59ee76b139394c3951fe0968178c8a811b3e5cb04fbcc0781e60229",
+      "apparatus_sha256": "1b77fb010b5f575e1db607ce40d1f8009687002403fb928ac9479d8a3d9e774d",
       "review": {
         "status": "pending"
       }

@@ -270,6 +270,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pent08-0.txt",
       "sha256": "ab3233793a0f44c51dcc6365c21a9274f05f77d0a5e2edb316829ef05b257b43"
+    },
+    "pentecost-vii": {
+      "upstream": "web/www/missa/Latin/Tempora/Pent07-0.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pent07-0.txt",
+      "sha256": "9cfeb0c8e239a739a62818cd6db3a74ce3d4034bc948bab1d39694be0b64d46f"
     }
   },
   "bindings": {
@@ -1910,6 +1916,46 @@
           "archive": "prayers",
           "first": 120,
           "last": 121
+        }
+      ]
+    },
+    "pentecost-vii-secret": {
+      "witness": "witnesses/proprium.dominica-vii-post-pentecosten-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "pentecost-vii",
+          "first": 48,
+          "last": 49,
+          "section": "Secreta",
+          "section_line": 47
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "pentecost-vii",
+          "line": 49,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "pentecost-vii",
+          "first": 48,
+          "last": 48
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
         }
       ]
     }
