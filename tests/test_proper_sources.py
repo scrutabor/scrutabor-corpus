@@ -132,7 +132,13 @@ def test_baptist_secret_declares_its_abbreviated_print_and_separate_expansion():
             w for w in sources["witnesses"] if w["id"] == f"witness.{JOHN_SECRET}.{source}"
         )
         dependency = f"use.{JOHN_SECRET}.expanded-conclusion.{source}"
-        assert witness["source_dependencies"] == {"uses": [dependency], "raw_binding": raw}
+        dependencies = [dependency]
+        if source == "mr1962":
+            dependencies += [f"use.{JOHN_SECRET}.{suffix}.mr1962" for suffix in JOHN_RITUAL]
+        assert witness["source_dependencies"] == {
+            "uses": sorted(dependencies),
+            "raw_binding": raw,
+        }
         assert uses[dependency]["edition"] == uses[witness["use"]]["edition"]
         assert witness["review"] == {"status": "pending"}
     formula = uses[f"use.{JOHN_SECRET}.expanded-conclusion.mr1962"]
@@ -162,3 +168,63 @@ def test_baptist_secret_apparatus_quotes_original_accidentals_without_changing_l
     assert words["w020"]["form"] == "monstrávit"
     assert words["w023"]["form"] == "Iesum"
     assert words["w001"]["head"] == "w004"
+
+
+JOHN_RITUAL = {
+    "oration-boundaries": (
+        37,
+        "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
+    ),
+    "secret-preface-transition": (
+        304,
+        "c8e1c105fbccab5b133d072bcdc255ff482824182be5e53597e5d2bfbb94e3ee",
+    ),
+    "secret-response-pattern": (
+        305,
+        "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58",
+    ),
+    "secret-sung-delivery": (
+        39,
+        "c03be5250068f8c9c262983bc7689a18d0180b88b0c4476d21fac383c8f07993",
+    ),
+}
+
+
+@pytest.mark.parametrize("suffix", JOHN_RITUAL)
+def test_baptist_secret_ritual_uses_bind_each_actual_page(suffix):
+    uses = {use["id"]: use for use in graph()["uses"]}
+    use = uses[f"use.{JOHN_SECRET}.{suffix}.mr1962"]
+    leaf, digest = JOHN_RITUAL[suffix]
+    assert use["role"] == "rubric_control"
+    assert use["locator"]["scan"] == f"leaf n{leaf} / PDF p. {leaf + 1}"
+    assert use["locator"]["page_url"].endswith(f"/page/n{leaf}/mode/1up")
+    assert use["evidence_sha256"] == digest
+
+
+def test_baptist_secret_sources_distinguish_the_two_amens_and_seasonal_preface():
+    uses = {use["id"]: use for use in graph()["uses"]}
+    transition = uses[f"use.{JOHN_SECRET}.secret-preface-transition.mr1962"]
+    response = uses[f"use.{JOHN_SECRET}.secret-response-pattern.mr1962"]
+    assert transition["locator"]["printed"] == "p. 225"
+    assert "Ordo Missae" in transition["locator"]["section"]
+    assert "after the priest's subdued Amen" in transition["claim"]
+    assert response["locator"]["printed"] == "p. 226"
+    assert "de Nativitate Domini" in response["locator"]["section"]
+    assert "not the seasonal Preface assigned to John's feast" in response["claim"]
+    assert response["address"] == {
+        "kind": "segment",
+        "text": JOHN_SECRET,
+        "segment": "s03",
+    }
+
+
+def test_baptist_secret_does_not_assign_the_audible_tail_to_every_secret():
+    uses = {use["id"]: use for use in graph()["uses"]}
+    quiet = uses[f"use.{JOHN_SECRET}.oration-boundaries.mr1962"]
+    sung = uses[f"use.{JOHN_SECRET}.secret-sung-delivery.mr1962"]
+    assert "For the final Secret" in quiet["claim"]
+    assert "remains quiet until Per omnia" in quiet["claim"]
+    assert quiet["verified_on"] == "2026-09-19"
+    assert quiet["decision"] == "RETAIN_WITH_CORRECTION"
+    assert "final Secret's Per omnia" in sung["claim"]
+    assert "Missa cantata" in sung["claim"]
