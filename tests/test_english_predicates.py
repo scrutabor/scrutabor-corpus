@@ -11,6 +11,34 @@ from checks import english, interlinear
 ROOT = Path(__file__).resolve().parents[1]
 
 
+@pytest.mark.parametrize(
+    "text,segment,ids,gloss",
+    [
+        ("ordinarium.deus-qui-humanae", "s02", ["w027", "w028"], "deigned"),
+        ("ordinarium.supra-quae", "s02", ["w015", "w016"], "You deigned"),
+        (
+            "proprium.sanctae-annae-matris-beatae-mariae-virginis-collecta",
+            "s01",
+            ["w007", "w008"],
+            "deigned",
+        ),
+    ],
+)
+def test_perfect_dignor_has_one_realization(text, segment, ids, gloss):
+    category, name = text.split(".", 1)
+    core = json.loads((ROOT / f"texts/{category}/{name}.json").read_bytes())
+    layer = json.loads((ROOT / f"languages/en/texts/{category}/{name}.json").read_bytes())
+    words = {w["id"]: w for s in core["segments"] for w in s.get("words", [])}
+    assert [words[wid]["lemma"] for wid in ids] == ["dignor", "sum"]
+    assert words[ids[0]]["morph"]["tense"] == "perf"
+    groups = layer["segments"][segment].get("alignments", [])
+    assert [g for g in groups if g["words"] == ids] == [
+        {"words": ids, "anchor": ids[0], "gloss": gloss}
+    ]
+    assert all("gloss" not in layer["words"][wid] for wid in ids)
+    assert interlinear.check(core, layer) == []
+
+
 def example(kind):
     rows = {
         "comparison": [

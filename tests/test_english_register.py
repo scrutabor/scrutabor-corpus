@@ -189,6 +189,58 @@ def test_the_check_sees_a_traditional_gloss_in_a_contemporary_prayer():
     assert mixed_fields(doc) == [(("words", word, "gloss"), "Thy")]
 
 
+def test_king_gospel_distinguishes_jesus_and_pilate():
+    path = "languages/en/texts/proprium/d-n-iesu-christi-regis-evangelium.json"
+    words = json.loads((ROOT / path).read_bytes())["words"]
+    assert words["w015"]["gloss"] == "yourself"
+    assert words["w021"]["gloss"] == "you"
+    # Pilate addresses Christ in these three occurrences.
+    assert all(words[wid]["gloss"] == "You" for wid in ("w008", "w035", "w077"))
+    # Jesus addresses Pilate, but this word begins a sentence.
+    assert words["w080"]["gloss"] == "You"
+
+
+def test_rosary_secret_conclusion_returns_to_the_son():
+    path = "languages/en/texts/proprium/beatae-mariae-virginis-a-rosario-secreta.json"
+    prose = json.loads((ROOT / path).read_bytes())["segments"]["s01"]["translation"]
+    assert "His promises. He lives and reigns with You" in prose
+    assert "His promises, who" not in prose
+    assert "You live and reign" not in prose
+
+
+def test_holy_cross_postcommunion_preserves_its_petition():
+    name = "exaltatio-sanctae-crucis-postcommunio"
+    core = json.loads((ROOT / f"texts/proprium/{name}.json").read_bytes())
+    layer = json.loads((ROOT / f"languages/en/texts/proprium/{name}.json").read_bytes())
+    body = core["segments"][0]["words"][:17]
+    assert [w["lemma"] for w in body] == [
+        "adsum",
+        "nos",
+        "dominus",
+        "deus",
+        "noster",
+        "et",
+        "qui",
+        "sanctus",
+        "crux",
+        "laetor",
+        "facio",
+        "honor",
+        "is",
+        "quoque",
+        "perpetuus",
+        "defendo",
+        "subsidium",
+    ]
+    prose = layer["segments"]["s01"]["translation"]
+    assert prose.startswith(
+        "Stand by us, O Lord our God, and also defend, with the unceasing aid of the "
+        "holy Cross, those whom You make rejoice in its honor. Through our Lord"
+    )
+    assert "sacrament" not in prose
+    assert layer["segments"]["s02"]["translation"] == "Amen."
+
+
 def test_contemporary_orations_conclude_in_the_same_register():
     seen = 0
     for text in CONTEMPORARY:
