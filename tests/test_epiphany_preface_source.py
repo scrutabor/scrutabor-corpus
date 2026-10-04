@@ -128,14 +128,17 @@ def test_epiphany_witness_declares_same_edition_dependencies_without_raw_expansi
     data = graph()
     witness = mr_witness(data)
     assert witness["source_dependencies"] == {
-        "uses": sorted(f"use.{TID}.{page[0]}.mr1962" for page in PAGES),
+        "uses": sorted(
+            [f"use.{TID}.{page[0]}.mr1962" for page in PAGES]
+            + [f"use.{TID}.hand-position-rubric.mr1962"]
+        ),
         "raw_binding": None,
     }
     assert (
         witness["orthography_profile"] == "exact-page-image-with-declared-substantive-discontinuity"
     )
     subject = witness_subject(CORPUS, witness, data, core())
-    assert len(subject["source_uses"]) == 3
+    assert len(subject["source_uses"]) == 4
     assert subject["raw_resolution"] is None
 
 

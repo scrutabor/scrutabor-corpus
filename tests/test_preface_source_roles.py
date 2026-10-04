@@ -73,7 +73,7 @@ READINGS = {
     "paschalis-in-nocte": "85c9ad9e2d31aadb026d7c139a608a4f407a294202555ef1a4b9b7493c906bf7",
 }
 PROTECTED = {
-    "epiphaniae": "60eb1455703f1c9bb650c94b9a5132b772e6ebcfb074770407be04c7dd1974cd",
+    "epiphaniae": "499413333c2f3adfc3857c35dec5638fe1fe7c15be252d2c09cbbe2951603b27",
     "dialogus": "51dca28f78ac069bd61013ab1820537ed44c187853d57caf30916b7c1017a939",
 }
 
