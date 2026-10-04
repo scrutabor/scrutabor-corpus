@@ -8893,7 +8893,7 @@
       "id": "use.ordinarium.praefatio-epiphaniae.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "ordinarium.praefatio-epiphaniae"
@@ -8903,10 +8903,53 @@
         "scan": "leaf n366 / PDF p. 367",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n366/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The approved Benziger 1962 printing identifies and prints this Preface body on p. 287, but the image has a substantive discontinuity between Et ideo and Thronis. The transcript preserves that reading; the selected phrase is separately supported by the same printing's sung Preface on pp. 228-229. This page does not support the imported hand-position rubric.",
       "verified_on": "2026-09-12",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "c971c665b11859fdd1937d9ea5ddd6e307c1bf799529d20e3e9589a742874f1c",
+      "decision_reason": "Role and scope corrected after direct page inspection on 2026-10-04: this is an approved Editio iuxta typicam, not the typical edition itself, and the visible damaged span is not the complete selected wording. The historical verification date and pending reviews remain."
+    },
+    {
+      "id": "use.ordinarium.praefatio-epiphaniae.sung-continuation.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "ordinarium.praefatio-epiphaniae",
+        "word": "w030"
+      },
+      "locator": {
+        "printed": "p. 229",
+        "scan": "leaf n308 / PDF p. 309",
+        "section": "Praefatio solemnis de Epiphania Domini, continuation",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n308/mode/1up"
+      },
+      "claim": "The same approved Benziger printing continues the sung Epiphany Preface from apparuit through sine fine dicentes. Its intact cum Angelis et Archangelis, cum supports the selected w039-w043 phrase where the p. 287 image is discontinuous. The following Sanctus is outside this Preface body; this is same-edition support, not an independent edition.",
+      "verified_on": "2026-10-04",
       "decision": "RETAIN",
-      "evidence_sha256": "c971c665b11859fdd1937d9ea5ddd6e307c1bf799529d20e3e9589a742874f1c"
+      "evidence_sha256": "f434444228715dd8707f6999d60b3346e27cd9de0122cd962605834e4e29b039"
+    },
+    {
+      "id": "use.ordinarium.praefatio-epiphaniae.sung-opening.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "ordinarium.praefatio-epiphaniae",
+        "word": "w001"
+      },
+      "locator": {
+        "printed": "p. 228",
+        "scan": "leaf n307 / PDF p. 308",
+        "section": "Praefatio solemnis de Epiphania Domini, opening",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n307/mode/1up"
+      },
+      "claim": "The same approved Benziger printing identifies the sung Epiphany Preface and gives its body from Vere dignum through nostrae mortalitatis; the body continues on p. 229. This is the opening-page dependency of the sung parallel, not an independent edition or a hand-position rubric.",
+      "verified_on": "2026-10-04",
+      "decision": "RETAIN",
+      "evidence_sha256": "ab402bcd5f486c76235b97450bd3f94c702ce1a2f87baa515ed911f6b1712aec"
     },
     {
       "id": "use.ordinarium.praefatio-nativitatis.do44667ff",
@@ -55356,12 +55399,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "dc63e33c752bad5578d926c453d07a39f82ff29846d8248e49b1ee1bd0ef72c6",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "4529c9f9fbe97ef9fe673e7cd3d1491a6567df70d7e1478b19621a23d3fa974d",
+      "orthography_profile": "exact-page-image-with-declared-substantive-discontinuity",
+      "independence_basis": "Direct transcription of the approved Benziger 1962 p. 287 image, preserving its visible discontinuity. The separately cited sung Preface on pp. 228-229 supports the selected phrase within the same edition; it is not an independent second edition. The pending review is not completed by this dependency inventory.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.ordinarium.praefatio-epiphaniae.sung-continuation.mr1962",
+          "use.ordinarium.praefatio-epiphaniae.sung-opening.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -87534,14 +87584,15 @@
         "witness.ordinarium.praefatio-epiphaniae.mr1962"
       ],
       "apparatus": {
-        "entries": 8,
+        "entries": 9,
         "classes": [
           "capital-accent",
           "orthography",
-          "punctuation"
+          "punctuation",
+          "substantive-span"
         ]
       },
-      "apparatus_sha256": "18d77e2de5b3371e12956a27ce208697c9e971a16894983c8f718f90e064c76d",
+      "apparatus_sha256": "b99aa995be2328d7393cb9ad67177ec5b102f9858185a23a054a81cc2f46fb36",
       "review": {
         "status": "pending"
       }
