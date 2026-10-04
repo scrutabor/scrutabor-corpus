@@ -353,7 +353,7 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "sanctissimae-trinitatis": {
-            "protected_digest": "1899175761551d42aca2ce9625e96d7d7f6a67c9644c9d68e41b07b2c297e121",
+            "protected_digest": "6c56c4c7de0d7cc5626c269070676326cde462c647a590b94e35f48b1c21e2e8",
             "words": {"w051": {"gloss": "by the revelation of"}, "w052": {"gloss": "Your"}},
             "had_alignments": {"s05": True},
             "absorbed": {"s05": []},
