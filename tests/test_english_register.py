@@ -13,6 +13,8 @@ from pathlib import Path
 
 import pytest
 
+from checks import interlinear
+
 ROOT = Path(__file__).resolve().parents[1]
 ARCHAIC = re.compile(
     r"\b(?:thou|thee|thy|thine|thyself|art|hast|hath|doth|dost|saith|didst|wouldst|shouldst|mayst"
@@ -260,3 +262,55 @@ def test_contemporary_orations_conclude_in_the_same_register():
                     assert prose.endswith(english), (text, seg["id"])
                     seen += 1
     assert seen > 150
+
+
+def test_baptist_secret_retains_due_honor_and_identifies_the_son_after_both_actions():
+    name = "nativitas-sancti-ioannis-baptistae-secreta"
+    core = json.loads((ROOT / f"texts/proprium/{name}.json").read_bytes())
+    layer = json.loads((ROOT / f"languages/en/texts/proprium/{name}.json").read_bytes())
+    words = {w["id"]: w for s in core["segments"] for w in s.get("words", [])}
+    assert [words[w]["lemma"] for w in ["w008", "w009"]] == ["honor", "debeo"]
+    prose = layer["segments"]["s01"]["translation"]
+    assert "celebrating with due honor the birth of him" in prose
+    assert (
+        "both foretold the coming of the Savior of the world and made His presence known" in prose
+    )
+    assert "known: our Lord Jesus Christ, Your Son. He lives and reigns with You" in prose
+    assert "You live and reign" not in prose
+    # Plural altaria can name one altar; grammar alone must not force a rewrite.
+    assert "Your altar with gifts" in prose and words["w004"]["morph"]["number"] == "pl"
+    assert layer["segments"]["s02"]["translation"] == "forever and ever."
+    assert layer["segments"]["s03"]["translation"] == "Amen."
+
+
+@pytest.mark.parametrize(
+    "segment,members,anchor,gloss",
+    [
+        ("s01", ["w006", "w007"], "w007", "his birth"),
+        ("s01", ["w008", "w009"], "w008", "with due honor"),
+        ("s01", ["w021", "w022"], "w021", "our Lord"),
+        ("s01", ["w025", "w026"], "w025", "Your Son"),
+        ("s01", ["w034", "w035"], "w034", "of the Holy Spirit"),
+        ("s02", ["w037", "w038", "w039", "w040"], "w039", "forever and ever"),
+    ],
+)
+def test_baptist_secret_natural_groups_keep_one_complete_realization(
+    segment, members, anchor, gloss
+):
+    name = "nativitas-sancti-ioannis-baptistae-secreta"
+    core = json.loads((ROOT / f"texts/proprium/{name}.json").read_bytes())
+    layer = json.loads((ROOT / f"languages/en/texts/proprium/{name}.json").read_bytes())
+    groups = layer["segments"][segment].get("alignments", [])
+    assert {"words": members, "anchor": anchor, "gloss": gloss} in groups
+    assert all("gloss" not in layer["words"][wid] for wid in members)
+    assert layer["words"]["w001"]["gloss"] == "Your"
+    assert layer["words"]["w003"]["gloss"] == "with gifts"
+    assert interlinear.check(core, layer) == []
+
+
+def test_baptist_postcommunion_keeps_its_valid_immediate_christ_relative():
+    name = "nativitas-sancti-ioannis-baptistae-postcommunio"
+    prose = json.loads((ROOT / f"languages/en/texts/proprium/{name}.json").read_bytes())[
+        "segments"
+    ]["s01"]["translation"]
+    assert "Your Son, our Lord Jesus Christ, who lives and reigns with You" in prose

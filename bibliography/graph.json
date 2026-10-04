@@ -40794,18 +40794,58 @@
         "text": "proprium.nativitas-sancti-ioannis-baptistae-secreta"
       },
       "locator": {
-        "section": "pinned source key Sancti/06-24; resolved section [Secreta] with declared inherited references"
+        "section": "Latin/Sancti/06-24.txt [Secreta], heading 56, body 57, $Qui tecum reference 58"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The pinned proper supplies the Secret body and a reference to the separately identified shared conclusion. Exact source spelling and accentuation are retained in the bound witness.",
       "verified_on": "2026-08-31",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "b3e80d75de9ec39ab27bf8d774d15a5ae5cc7e81306f35d8577ed1adf2542439",
+      "decision_reason": "Claim corrected after direct original inspection on 2026-10-04; historical verification date and pending source-review status preserved."
+    },
+    {
+      "id": "use.proprium.nativitas-sancti-ioannis-baptistae-secreta.expanded-conclusion.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.nativitas-sancti-ioannis-baptistae-secreta"
+      },
+      "locator": {
+        "section": "Latin/Ordo/Prayers.txt [Qui tecum], heading 119, conclusion 120, response 121"
+      },
+      "claim": "The exact shared formula resolves $Qui tecum, including the distinct Amen. It has no commas after Sancti or Deus. Speaker prefixes are framing, not recited words.",
+      "verified_on": "2026-10-04",
       "decision": "RETAIN",
-      "evidence_sha256": "b3e80d75de9ec39ab27bf8d774d15a5ae5cc7e81306f35d8577ed1adf2542439"
+      "evidence_sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b",
+      "decision_reason": "Directly inspected dependency, not complete text, ritual assembly, wording-origin or release acceptance."
+    },
+    {
+      "id": "use.proprium.nativitas-sancti-ioannis-baptistae-secreta.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.nativitas-sancti-ioannis-baptistae-secreta"
+      },
+      "locator": {
+        "printed": "p. xviii",
+        "scan": "leaf n23 / PDF p. 24",
+        "section": "Rubricae generales, 115 c",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n23/mode/1up"
+      },
+      "claim": "The Father-directed conclusion referring to the Son named at the end supplies the complete ending and separate Amen. RG 115 c is unaccented and uses ae; house accents, ligatures and terminal punctuation are declared in the witness.",
+      "verified_on": "2026-10-04",
+      "decision": "RETAIN",
+      "evidence_sha256": "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132",
+      "decision_reason": "Directly inspected dependency, not complete text, ritual assembly, wording-origin or release acceptance."
     },
     {
       "id": "use.proprium.nativitas-sancti-ioannis-baptistae-secreta.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.nativitas-sancti-ioannis-baptistae-secreta"
@@ -40815,10 +40855,11 @@
         "scan": "leaf n653 / PDF p. 654",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n653/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The Benziger approved 1962 Editio iuxta typicam prints this Secret's body and only the Qui tecum vivit. cue. The complete conclusion has a separately identified same-edition use.",
       "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "31d3a99570d7acbc6220e4972a95fbb53eaf48d8800613930177979e964ba265"
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "31d3a99570d7acbc6220e4972a95fbb53eaf48d8800613930177979e964ba265",
+      "decision_reason": "Claim corrected after direct original inspection on 2026-10-04; historical verification date and pending source-review status preserved."
     },
     {
       "id": "use.proprium.nativitas-sancti-ioannis-baptistae-secreta.oration-boundaries.mr1962",
@@ -77336,12 +77377,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "010808cce95b6ae116ddd9fce807ce5335d8772c048c423668a42fc8bacb9c90",
+      "transcription_sha256": "0fd6451bc80696425028ab446dc52ea31bb3ab8f77575e3cef64143ee5ebbdd9",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.nativitas-sancti-ioannis-baptistae-secreta.expanded-conclusion.do44667ff"
+        ],
+        "raw_binding": "baptist-secret"
       }
     },
     {
@@ -77352,12 +77399,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "904dec2fa1c3f3ae8bdea0d1d1333ba7badc1ee194a59cf57e5b1eec7015827b",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "e3dbb3b8ede1a962f71bd09c6d4582e06af18df4df3c77c42d5c8aecff4894c7",
+      "orthography_profile": "page-body-with-declared-expanded-conclusion",
+      "independence_basis": "Directly inspected Benziger approved printing, proper p572 and same-edition RG115c. These are not two independent witnesses; expansion orthography is declared.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.nativitas-sancti-ioannis-baptistae-secreta.expanded-conclusion.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -101457,21 +101510,22 @@
     {
       "id": "collation.proprium.nativitas-sancti-ioannis-baptistae-secreta.mr1962-do44667ff",
       "text": "proprium.nativitas-sancti-ioannis-baptistae-secreta",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The Benziger 1962 Editio iuxta typicam proper with its declared same-edition full conclusion and house orthography",
       "selected_text_sha256": "331b46d89750cabaf2091e0ce80b1e59c78ebb3ef293af25d8d1ff96aaeacd8e",
       "witnesses": [
         "witness.proprium.nativitas-sancti-ioannis-baptistae-secreta.do44667ff",
         "witness.proprium.nativitas-sancti-ioannis-baptistae-secreta.mr1962"
       ],
       "apparatus": {
-        "entries": 3,
+        "entries": 6,
         "classes": [
           "accent",
+          "orthography",
           "punctuation",
           "substantive-span"
         ]
       },
-      "apparatus_sha256": "1755ba4e1251d8e5754dcea1890b6cc49c0b865ed6ba426e45fac46130710c23",
+      "apparatus_sha256": "38a4ea9cb380f126fd4685893c24d5ef64e4a00ab2911c01fc54ec655b8e523b",
       "review": {
         "status": "pending"
       }

@@ -11,6 +11,8 @@ from pathlib import Path
 
 import pytest
 
+from checks.raw_binding import resolve_binding
+
 ROOT = Path(__file__).resolve().parents[1]
 MISSAL = "edition.missale-romanum.1962-typica"
 PRINTS = {"official_text", "direct_approved_print"}
@@ -102,3 +104,61 @@ def test_missal_page_locators_name_their_leaf():
         assert f"/page/{first[1]}/" in locator["page_url"], use["id"]
         seen += 1
     assert seen > 40
+
+
+JOHN_SECRET = "proprium.nativitas-sancti-ioannis-baptistae-secreta"
+
+
+def test_baptist_secret_binds_the_actual_digital_body_and_conclusion():
+    witness = ROOT / f"witnesses/{JOHN_SECRET}/do.txt"
+    bound = resolve_binding(witness, ROOT)
+    assert bound is not None
+    assert bound.source["binding_id"] == "baptist-secret"
+    assert [(first, last) for _, first, last in bound.spans] == [(57, 57), (120, 121)]
+    assert "cécinit ad futúrum et adésse monstravit," in bound.text
+    assert "nostrum Jesum Christum, Fílium tuum:" in bound.text
+    assert "Spíritus Sancti Deus per" in bound.text
+    assert "mónstravit" not in bound.text
+
+
+def test_baptist_secret_declares_its_abbreviated_print_and_separate_expansion():
+    sources = graph()
+    uses = {u["id"]: u for u in sources["uses"]}
+    printed_body = uses[f"use.{JOHN_SECRET}.mr1962"]
+    assert printed_body["role"] == "direct_approved_print"
+    assert printed_body["locator"]["printed"] == "p. 572"
+    for source, raw in [("mr1962", None), ("do44667ff", "baptist-secret")]:
+        witness = next(
+            w for w in sources["witnesses"] if w["id"] == f"witness.{JOHN_SECRET}.{source}"
+        )
+        dependency = f"use.{JOHN_SECRET}.expanded-conclusion.{source}"
+        assert witness["source_dependencies"] == {"uses": [dependency], "raw_binding": raw}
+        assert uses[dependency]["edition"] == uses[witness["use"]]["edition"]
+        assert witness["review"] == {"status": "pending"}
+    formula = uses[f"use.{JOHN_SECRET}.expanded-conclusion.mr1962"]
+    assert formula["locator"]["scan"] == "leaf n23 / PDF p. 24"
+    assert formula["role"] == "direct_approved_print"
+    transcript = (ROOT / f"witnesses/{JOHN_SECRET}/mr.txt").read_text()
+    assert "Qui tecum vivit. only" in transcript
+    assert "house accents" in transcript
+
+
+def test_baptist_secret_apparatus_quotes_original_accidentals_without_changing_latin():
+    apparatus = json.loads((ROOT / f"witnesses/{JOHN_SECRET}/apparatus.json").read_bytes())
+    entries = {entry["at"]: entry for entry in apparatus["adjudicated"]}
+    for wid, selected, digital in [
+        ("w017", "adfutúrum,", "ad futúrum"),
+        ("w020", "monstrávit,", "monstravit,"),
+        ("w023", "Iesum", "Jesum"),
+        ("w024", "Christum", "Christum,"),
+        ("w035", "Sancti,", "Sancti"),
+        ("w036", "Deus,", "Deus"),
+    ]:
+        assert entries[wid]["ours"] == selected
+        assert entries[wid]["witnesses"]["do"] == digital
+    core = json.loads((ROOT / f"texts/{JOHN_SECRET.replace('.', '/')}.json").read_bytes())
+    words = {w["id"]: w for s in core["segments"] for w in s.get("words", [])}
+    assert len(words) == 40 and core["ids"]["retired"] == {"w016": "s01"}
+    assert words["w020"]["form"] == "monstrávit"
+    assert words["w023"]["form"] == "Iesum"
+    assert words["w001"]["head"] == "w004"
