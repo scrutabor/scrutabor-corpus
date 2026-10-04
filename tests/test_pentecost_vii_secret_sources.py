@@ -103,6 +103,15 @@ def test_literal_approved_print_composite_is_not_a_normalized_ending():
 
 def test_exact_raw_archive_reference_and_complete_resolution():
     registry = raw_binding.load_registry(ROOT)
+    prayers = registry["archives"]["prayers"]
+    prayers_raw = (ROOT / prayers["path"]).read_bytes()
+    assert len(prayers_raw) == 10922
+    assert (
+        hashlib.sha256(prayers_raw).hexdigest()
+        == prayers["sha256"]
+        == use(graph(), "conclusion-macro.do44667ff")["evidence_sha256"]
+        == "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    )
     archive = registry["archives"]["pentecost-vii"]
     raw = (ROOT / archive["path"]).read_bytes()
     assert len(raw) == 3135
@@ -135,6 +144,18 @@ def test_each_source_has_its_actual_scope_and_page_binding():
     assert use(data, "mr1962")["role"] == "direct_approved_print"
     assert "34-word body and abbreviated" in use(data, "mr1962")["claim"]
     assert use(data, "do44667ff")["role"] == "derived_digital_collation_aid"
+    assert use(data, "conclusion-rg115a.mr1962")["role"] == "direct_approved_print"
+    assert use(data, "conclusion-macro.do44667ff")["role"] == "derived_digital_collation_aid"
+    for suffix, segment in (
+        ("ordo-secret-order.mr1962", "s01"),
+        ("ordo-secret-response.mr1962", "s03"),
+    ):
+        assert use(data, suffix)["address"] == {
+            "kind": "segment",
+            "text": TEXT,
+            "segment": segment,
+        }
+        assert use(data, suffix)["role"] == "official_liturgical_context"
     assert witness(data, "do")["source_dependencies"] == {
         "uses": [PREFIX + "conclusion-macro.do44667ff"],
         "raw_binding": "pentecost-vii-secret",
