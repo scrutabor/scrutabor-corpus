@@ -47,8 +47,16 @@ def test_our_passover_and_sacrificed_christ_have_distinct_agreement(text, base):
 def test_sacrifice_is_one_finite_realization(text, base, language, gloss):
     doc = json.loads((ROOT / "languages" / language / "texts" / f"{text}.json").read_text())
     members = [f"w{base + 2:03d}", f"w{base + 3:03d}"]
-    matching = [a for a in doc["segments"]["s01"]["alignments"] if a["words"] == members]
+    if language == "en" and text in {
+        "ordinarium/praefatio-paschalis-in-die",
+        "ordinarium/praefatio-paschalis-in-nocte",
+    }:
+        # The complete clause contains the passive, with no second realization.
+        members = [f"w{i:03d}" for i in range(21, 27)]
+        gloss = "for Christ, our Passover, has been sacrificed"
+    matching = [a for a in doc["segments"]["s01"]["alignments"] if set(a["words"]) & set(members)]
     assert len(matching) == 1
+    assert matching[0]["words"] == members
     assert matching[0]["gloss"] == gloss
     assert all("gloss" not in doc["words"][wid] for wid in members)
 

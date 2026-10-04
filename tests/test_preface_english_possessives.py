@@ -1,7 +1,7 @@
 """Keep selected English possessives in complete, source-bound constituents.
 
 These are reviewed local fixtures, not a rule that every Latin possessive
-requires a group. Held constructions remain visible and require separate work.
+requires a group. Nonlocal constructions have separately reviewed contracts.
 """
 
 import hashlib
@@ -87,7 +87,7 @@ SITES = [
     ("spiritus-sancti", "s02", 61, 62, 61, "of Your glory"),
 ]
 SLUGS = sorted({site[0] for site in SITES})
-HELD_PAIRS = {
+NONLOCAL_PAIRS = {
     ("apostolorum", "w034"),
     ("ascensionis", "w045"),
     ("epiphaniae", "w034"),
@@ -95,64 +95,64 @@ HELD_PAIRS = {
     ("paschalis-in-die", "w023"),
     ("paschalis-in-nocte", "w023"),
 }
-# Exact held word objects and intersecting alignments, not approval of wording.
-# Update only with a separately reviewed repair of the named complete clause.
-HELD = [
+# Reviewed clause word objects and intersecting alignments. These replace the
+# earlier held-payload controls after complete-clause repair, not by deletion.
+CLAUSE_CONTROLS = [
     (
         "apostolorum",
         "s04",
         28,
         39,
-        "929589f5aa6e9b0c79627479da9bb6bfad275e50683541b3c9c48d1be9421070",
+        "b50379d2cec0aec38c676e2357c463c739557ee3bf3803496af94b45eea89a0a",
     ),
     (
         "ascensionis",
         "s02",
         42,
         48,
-        "3b8afc751f4bb8880e966f31c9b3354394eee30698a21d133c89c163f3a7ed99",
+        "d1a2b566df44f2021554fb98fd8372689a3b050792fb2490b51a9476628ddda1",
     ),
     (
         "epiphaniae",
         "s04",
         31,
         36,
-        "104679e5b03b7be4cac1286e21adfa7a6091537848149b10b31f94e065b96b61",
+        "b4e4519466860779f9971b20daaa1594f3e0b148be2351f8af0e10df9b87d50b",
     ),
     (
         "nativitatis",
         "s04",
         27,
         34,
-        "e4875f116e8a7e9011a41b3052d4f050467a53a3f70987b36c2bd85326945d2d",
+        "77a843f1c82c708c971ab0ede4f6f3aa16547c67f763d98d85d84ef9b977d918",
     ),
     (
         "paschalis-in-die",
         "s01",
-        22,
+        21,
         26,
-        "c6bbd327e2f4c962f636b68c3af65ff77ef80d9dce899de4e3f4a0f93d1b123b",
+        "f4301b47a5eaa354f389360e0b69ae665bce1eb25f65bb8b647b4abf686cd1db",
     ),
     (
         "paschalis-in-nocte",
         "s01",
-        22,
+        21,
         26,
-        "c6bbd327e2f4c962f636b68c3af65ff77ef80d9dce899de4e3f4a0f93d1b123b",
+        "f4301b47a5eaa354f389360e0b69ae665bce1eb25f65bb8b647b4abf686cd1db",
     ),
     (
         "d-n-iesu-christi-regis",
         "s04",
         53,
         57,
-        "73a002ae4238e7a7c2d182abb79043d4edae4bf24156a72f39c73f14be27400c",
+        "eb42ca77fdef2d6cf41147a6ed7fa24037932d93ee044bef9022a30570e86fd2",
     ),
     (
         "d-n-iesu-christi-regis",
         "s04",
         58,
         65,
-        "6193465edeea6448c0698b82ea0a9e729e3681345ae8480a62c30a61eff7210f",
+        "6ea338ccb44ed4c113db789ad4647a148409e2489907f4718409904be277dc6d",
     ),
 ]
 PATTERNS = {
@@ -242,7 +242,7 @@ def protected_payload(layer, slug):
     return value
 
 
-def held_payload(layer, segment, first, last):
+def clause_payload(layer, segment, first, last):
     members = ids(first, last)
     return {
         "words": {wid: layer["words"][wid] for wid in members},
@@ -259,7 +259,7 @@ def digest(value):
     return hashlib.sha256(raw.encode()).hexdigest()
 
 
-def test_population_distinguishes_selected_and_held_pairs():
+def test_population_distinguishes_selected_and_nonlocal_pairs():
     found = set()
     for slug in SLUGS:
         doc, _ = load(slug)
@@ -275,8 +275,8 @@ def test_population_distinguishes_selected_and_held_pairs():
     selected = {(slug, f"w{last:03}") for slug, _, _, last, _, _ in SITES}
     assert len(SLUGS) == 23
     assert len(SITES) == len(selected) == 61
-    assert selected.isdisjoint(HELD_PAIRS)
-    assert len(found) == 67 and found == selected | HELD_PAIRS
+    assert selected.isdisjoint(NONLOCAL_PAIRS)
+    assert len(found) == 67 and found == selected | NONLOCAL_PAIRS
     assert sum(last - first + 1 for _, _, first, last, _, _ in SITES) == 127
 
 
@@ -295,10 +295,10 @@ def test_full_layer_keeps_required_word_objects_and_valid_existing_groups(slug):
     assert check(doc, layer) == []
 
 
-@pytest.mark.parametrize("slug,segment,first,last,expected", HELD)
-def test_held_clause_is_not_silently_regrouped(slug, segment, first, last, expected):
+@pytest.mark.parametrize("slug,segment,first,last,expected", CLAUSE_CONTROLS)
+def test_reviewed_clause_control_is_preserved(slug, segment, first, last, expected):
     _, layer = load(slug)
-    assert digest(held_payload(layer, segment, first, last)) == expected
+    assert digest(clause_payload(layer, segment, first, last)) == expected
 
 
 def test_preposed_petitions_and_requiem_group_remain_separate():
@@ -430,8 +430,8 @@ def test_protected_payload_mutations_are_not_hidden(mutation):
         assert protected_payload(before, slug) != protected_payload(after, slug)
 
 
-@pytest.mark.parametrize("slug,segment,first,last,expected", HELD)
-def test_held_clause_mutation_is_detected(slug, segment, first, last, expected):
+@pytest.mark.parametrize("slug,segment,first,last,expected", CLAUSE_CONTROLS)
+def test_reviewed_clause_mutation_is_detected(slug, segment, first, last, expected):
     _, layer = load(slug)
     layer["words"][f"w{first:03}"]["gloss"] = "changed"
-    assert digest(held_payload(layer, segment, first, last)) != expected
+    assert digest(clause_payload(layer, segment, first, last)) != expected
