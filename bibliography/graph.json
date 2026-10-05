@@ -3607,6 +3607,16 @@
   },
   "works": [
     {
+      "id": "work.adam.rudiments",
+      "title": "Rudiments of Latin and English Grammar",
+      "responsible": "Alexander Adam"
+    },
+    {
+      "id": "work.allen-greenough.latin-grammar",
+      "title": "Allen and Greenough's New Latin Grammar",
+      "responsible": "J. H. Allen and J. B. Greenough"
+    },
+    {
       "id": "work.biblia-sacra-vulgatae-editionis",
       "title": "Biblia Sacra Vulgatae Editionis",
       "responsible": "Michael Hetzenauer"
@@ -3630,6 +3640,11 @@
       "id": "work.catechismus-catholicae-ecclesiae",
       "title": "Catechismus Catholicae Ecclesiae",
       "responsible": "Catholic Church"
+    },
+    {
+      "id": "work.clementine-text-project",
+      "title": "Biblia Sacra juxta Vulgatam Clementinam, editio electronica",
+      "responsible": "Michael Tweedale and the Clementine Text Project"
     },
     {
       "id": "work.compendium-of-the-catechism-of-the-catholic-church",
@@ -3744,6 +3759,53 @@
   ],
   "editions": [
     {
+      "id": "edition.adam-johnson.1831",
+      "work": "work.adam.rudiments",
+      "title": "Dr. A. Adam's Rudiments of Latin and English Grammar",
+      "edition_statement": "With expansions and additions by James D. Johnson",
+      "contributors": [
+        "James D. Johnson"
+      ],
+      "place": "Philadelphia",
+      "publisher": "Key & Mielke",
+      "year": "1831",
+      "publication_type": "grammar",
+      "authority": "reference_work",
+      "languages": [
+        "en",
+        "la"
+      ],
+      "rights": {
+        "status": "unverified",
+        "basis": "The repository identifies this 1831 printing as public domain in the United States. Bibliographic and grammatical reference only; neither the scan nor its prose is republished and no worldwide republication permission is asserted."
+      }
+    },
+    {
+      "id": "edition.allen-greenough.1903",
+      "work": "work.allen-greenough.latin-grammar",
+      "title": "Allen and Greenough's New Latin Grammar for Schools and Colleges",
+      "edition_statement": "1903 edition; the consulted scan has an undated title and a 1903 copyright notice, without an identified later impression date",
+      "contributors": [
+        "J. B. Greenough",
+        "G. L. Kittredge",
+        "A. A. Howard",
+        "Benj. L. D'Ooge"
+      ],
+      "place": "Boston / New York / Chicago / London",
+      "publisher": "Ginn & Company",
+      "year": "1903",
+      "publication_type": "grammar",
+      "authority": "reference_work",
+      "languages": [
+        "en",
+        "la"
+      ],
+      "rights": {
+        "status": "unverified",
+        "basis": "The repository identifies the historical grammar as public domain in the United States. Bibliographic and grammatical reference only; neither the scan nor its prose is republished and no worldwide republication permission is asserted."
+      }
+    },
+    {
       "id": "edition.biblia-sacra-vulgatae-editionis-1914",
       "work": "work.biblia-sacra-vulgatae-editionis",
       "title": "Biblia Sacra Vulgatae Editionis",
@@ -3823,6 +3885,23 @@
       "rights": {
         "status": "unverified",
         "basis": "Copyright Libreria Editrice Vaticana. Cited for doctrinal context only, without reproducing its text or claiming permission to republish it."
+      }
+    },
+    {
+      "id": "edition.clementine-text-project.electronic-2005",
+      "work": "work.clementine-text-project",
+      "title": "Biblia Sacra juxta Vulgatam Clementinam",
+      "edition_statement": "Electronic edition, London 2005 title; two-column project PDF at website revision 48da7dbf64990b44afb7fb809dc7e28bc119817f",
+      "place": "London",
+      "year": "2005",
+      "publication_type": "scripture",
+      "authority": "scriptural_edition",
+      "languages": [
+        "la"
+      ],
+      "rights": {
+        "status": "public-domain",
+        "basis": "The Clementine Text Project's publisher statement dedicates its electronic biblical text to the public domain. This does not include the separately licensed project software or unrelated website assets."
       }
     },
     {
@@ -4252,6 +4331,26 @@
   ],
   "digital_items": [
     {
+      "id": "item.adam-johnson.1831.commons",
+      "edition": "edition.adam-johnson.1831",
+      "repository": "Wikimedia Commons; Library of Congress / Internet Archive scan",
+      "kind": "scan",
+      "record_url": "https://commons.wikimedia.org/w/index.php?title=File:Dr._A._Adam%27s_Rudiments_of_Latin_and_English_grammar_(IA_draadamsrudiment00adam).pdf&oldid=1134331977",
+      "scan_url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Dr._A._Adam%27s_Rudiments_of_Latin_and_English_grammar_%28IA_draadamsrudiment00adam%29.pdf",
+      "sha256": "db7ac2ae7946ac28ce5fd210508815029e6c00841df772d5e87ba2f4852992f4",
+      "access": "open"
+    },
+    {
+      "id": "item.allen-greenough.1903.commons",
+      "edition": "edition.allen-greenough.1903",
+      "repository": "Wikimedia Commons; California Digital Library / Internet Archive scan",
+      "kind": "scan",
+      "record_url": "https://commons.wikimedia.org/w/index.php?title=File:Allen_and_Greenough%27s_New_Latin_grammar_for_schools_and_colleges,_founded_on_comparative_grammar;_(IA_allengreenoughsn00alleiala).pdf&oldid=873200795",
+      "scan_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Allen_and_Greenough%27s_New_Latin_grammar_for_schools_and_colleges%2C_founded_on_comparative_grammar%3B_%28IA_allengreenoughsn00alleiala%29.pdf",
+      "sha256": "6dc77a255e6bee1253b1ae3fd033597e7d25c677c42a1b44cb76cff41478135d",
+      "access": "open"
+    },
+    {
       "id": "item.biblia-sacra-vulgatae-1914.scan",
       "edition": "edition.biblia-sacra-vulgatae-editionis-1914",
       "repository": "Internet Archive",
@@ -4291,6 +4390,15 @@
       "access": "open"
     },
     {
+      "id": "item.catechismus-catholicae-ecclesiae.iesus-christus",
+      "edition": "edition.catechismus-catholicae-ecclesiae.latin-1997",
+      "repository": "Holy See official website",
+      "kind": "born-digital",
+      "record_url": "https://www.vatican.va/archive/catechism_lt/p1s2c2a2_lt.htm",
+      "sha256": "76aef6945ae518f3d6c7b59b6e3733372bad5518e0c43310907a3ac3b4ffb2bc",
+      "access": "open"
+    },
+    {
       "id": "item.catechismus-catholicae-ecclesiae.septem-petitiones",
       "edition": "edition.catechismus-catholicae-ecclesiae.latin-1997",
       "repository": "The Holy See",
@@ -4318,6 +4426,16 @@
       "access": "open",
       "scan_url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The%20Catholic%20prayer%20book.djvu",
       "sha256": "0cf85d5a91603c3d0309fe5b0b4164ac7c79faa058a47a516a1dcd7202bf0978"
+    },
+    {
+      "id": "item.clementine-text-project.48da7db.two-column",
+      "edition": "edition.clementine-text-project.electronic-2005",
+      "repository": "Clementine Text Project / original Bitbucket website repository",
+      "kind": "born-digital",
+      "record_url": "https://bitbucket.org/clementinetextproject/website/src/48da7dbf64990b44afb7fb809dc7e28bc119817f/htdocs/index.html",
+      "revision": "48da7dbf64990b44afb7fb809dc7e28bc119817f",
+      "sha256": "46f99326b8fc081102ebda9f91d2a0078b86a643247194da6130cb2eab1d8d7a",
+      "access": "open"
     },
     {
       "id": "item.compendium-of-the-catechism-2005.html",
@@ -4912,6 +5030,45 @@
       "evidence_sha256": "027fbf35ae1871e33d95b218c9343e03587931072d9b8958737395948994a76b"
     },
     {
+      "id": "use.lemma.abel.clementine.genesis",
+      "edition": "edition.clementine-text-project.electronic-2005",
+      "digital_item": "item.clementine-text-project.48da7db.two-column",
+      "role": "scripture_text",
+      "address": {
+        "kind": "lemma",
+        "lemma": "Abel"
+      },
+      "locator": {
+        "printed": "p. 2",
+        "scan": "Physical PDF page 13",
+        "section": "Genesis 4:1–5",
+        "page_url": "https://api.bitbucket.org/2.0/repositories/clementinetextproject/website/src/48da7dbf64990b44afb7fb809dc7e28bc119817f/htdocs/vulgata-2col.pdf#page=13"
+      },
+      "claim": "The narrative presents Abel as the son born after Cain, a keeper of sheep whose flock offering receives God's regard in contrast to Cain's. It supports the card's narrative summary, not Latin inflection or the name's etymology.",
+      "verified_on": "2026-10-05",
+      "evidence_sha256": "46f99326b8fc081102ebda9f91d2a0078b86a643247194da6130cb2eab1d8d7a",
+      "decision": "RETAIN",
+      "decision_reason": "The complete biblical passage and exact electronic edition were checked. The birth sequence, not an explicit ordinal, supports the second-son description."
+    },
+    {
+      "id": "use.lemma.abel.lewis-short.1879",
+      "edition": "edition.lewis-short.1879",
+      "digital_item": "item.lewis-short.perseus.40038e4.eng1",
+      "role": "lexical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "Abel"
+      },
+      "locator": {
+        "section": "Perseus TEI entry n60, Abel"
+      },
+      "claim": "The entry attests indeclinable Abel alongside inflected variants. It supports the indeclinable name form used here, without excluding other historical Latin variants.",
+      "verified_on": "2026-10-05",
+      "evidence_sha256": "ccbd2f79db1006edc607fe51227babab6872fbdaa4e925f4c1999a3b978041ee",
+      "decision": "RETAIN",
+      "decision_reason": "A distinct Latin-form claim; the separate biblical narrative is not grammatical evidence."
+    },
+    {
       "id": "use.lemma.absolvo.lewis-short.1879",
       "edition": "edition.lewis-short.1879",
       "digital_item": "item.lewis-short.perseus.40038e4.eng1",
@@ -5018,6 +5175,24 @@
       "evidence_sha256": "ccbd2f79db1006edc607fe51227babab6872fbdaa4e925f4c1999a3b978041ee",
       "decision": "RETAIN",
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
+    },
+    {
+      "id": "use.lemma.amen.lewis-short.1879",
+      "edition": "edition.lewis-short.1879",
+      "digital_item": "item.lewis-short.perseus.40038e4.eng1",
+      "role": "lexical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "amen"
+      },
+      "locator": {
+        "section": "Perseus TEI entry n2207, amen: confirming and introductory uses"
+      },
+      "claim": "The entry distinguishes the confirming response 'so be it' from introductory 'truly', with biblical examples. These are different speech acts, not interchangeable translations in every context.",
+      "verified_on": "2026-10-05",
+      "evidence_sha256": "ccbd2f79db1006edc607fe51227babab6872fbdaa4e925f4c1999a3b978041ee",
+      "decision": "RETAIN",
+      "decision_reason": "Supports the displayed senses only; no claim that the entry explicitly states Latin indeclinability."
     },
     {
       "id": "use.lemma.appareo.lewis-short.1879",
@@ -5180,6 +5355,24 @@
       "evidence_sha256": "ccbd2f79db1006edc607fe51227babab6872fbdaa4e925f4c1999a3b978041ee",
       "decision": "RETAIN",
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
+    },
+    {
+      "id": "use.lemma.christus.catechism.436",
+      "edition": "edition.catechismus-catholicae-ecclesiae.latin-1997",
+      "digital_item": "item.catechismus-catholicae-ecclesiae.iesus-christus",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "lemma",
+        "lemma": "Christus"
+      },
+      "locator": {
+        "section": "436"
+      },
+      "claim": "The Catechism explains Christ as the Greek rendering of the Hebrew messianic title and its meaning of anointing.",
+      "verified_on": "2026-10-05",
+      "evidence_sha256": "76aef6945ae518f3d6c7b59b6e3733372bad5518e0c43310907a3ac3b4ffb2bc",
+      "decision": "RETAIN",
+      "decision_reason": "Exact official paragraph supports the title relation on the card; redundant lexical attachments are omitted."
     },
     {
       "id": "use.lemma.collegium.lewis-short.1879",
@@ -5704,6 +5897,27 @@
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
     },
     {
+      "id": "use.lemma.deus.allen-greenough.1903",
+      "edition": "edition.allen-greenough.1903",
+      "digital_item": "item.allen-greenough.1903.commons",
+      "role": "grammatical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "deus"
+      },
+      "locator": {
+        "printed": "p. 23",
+        "scan": "Physical PDF page 41",
+        "section": "49.g, note on the Vulgate vocative",
+        "page_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Allen_and_Greenough%27s_New_Latin_grammar_for_schools_and_colleges%2C_founded_on_comparative_grammar%3B_%28IA_allengreenoughsn00alleiala%29.pdf#page=41"
+      },
+      "claim": "The note identifies the Vulgate vocative Deus as identical in form to the nominative. Equal spelling does not imply the same grammatical function.",
+      "verified_on": "2026-10-05",
+      "evidence_sha256": "6dc77a255e6bee1253b1ae3fd033597e7d25c677c42a1b44cb76cff41478135d",
+      "decision": "RETAIN",
+      "decision_reason": "Exact printed note checked; this scan is not the later Dickinson electronic presentation and no later impression date is inferred."
+    },
+    {
       "id": "use.lemma.devoro.lewis-short.1879",
       "edition": "edition.lewis-short.1879",
       "digital_item": "item.lewis-short.perseus.40038e4.eng1",
@@ -6188,6 +6402,45 @@
       "evidence_sha256": "ccbd2f79db1006edc607fe51227babab6872fbdaa4e925f4c1999a3b978041ee",
       "decision": "RETAIN",
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
+    },
+    {
+      "id": "use.lemma.iesus.adam-johnson.1831",
+      "edition": "edition.adam-johnson.1831",
+      "digital_item": "item.adam-johnson.1831.commons",
+      "role": "grammatical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "Iesus"
+      },
+      "locator": {
+        "printed": "p. 43",
+        "scan": "Physical PDF page 49",
+        "section": "Fourth declension, exception 3: singular Jesus paradigm",
+        "page_url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Dr._A._Adam%27s_Rudiments_of_Latin_and_English_grammar_%28IA_draadamsrudiment00adam%29.pdf#page=49"
+      },
+      "claim": "The six-case singular paradigm gives Jesus, Jesum and Jesu in the genitive, dative, vocative and ablative. These correspond to Iesus, Iesum and Iesu in the card's I/J spelling convention.",
+      "verified_on": "2026-10-05",
+      "evidence_sha256": "db7ac2ae7946ac28ce5fd210508815029e6c00841df772d5e87ba2f4852992f4",
+      "decision": "RETAIN",
+      "decision_reason": "The complete printed paradigm supplies the irregular inflection, not the name's theological or historical etymology."
+    },
+    {
+      "id": "use.lemma.iesus.catechism.430",
+      "edition": "edition.catechismus-catholicae-ecclesiae.latin-1997",
+      "digital_item": "item.catechismus-catholicae-ecclesiae.iesus-christus",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "lemma",
+        "lemma": "Iesus"
+      },
+      "locator": {
+        "section": "430"
+      },
+      "claim": "The Catechism explains the salvation meaning of the name Jesus with reference to Matthew 1:21. This supports the theological explanation, not the complete Latin paradigm or every historical etymological reconstruction.",
+      "verified_on": "2026-10-05",
+      "evidence_sha256": "76aef6945ae518f3d6c7b59b6e3733372bad5518e0c43310907a3ac3b4ffb2bc",
+      "decision": "RETAIN",
+      "decision_reason": "Exact official article and paragraph checked; no Catechism prose is reproduced."
     },
     {
       "id": "use.lemma.immortalitas.lewis-short.1879",
@@ -6854,6 +7107,24 @@
       "evidence_sha256": "ccbd2f79db1006edc607fe51227babab6872fbdaa4e925f4c1999a3b978041ee",
       "decision": "RETAIN",
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
+    },
+    {
+      "id": "use.lemma.saeculum.lewis-short.1879",
+      "edition": "edition.lewis-short.1879",
+      "digital_item": "item.lewis-short.perseus.40038e4.eng1",
+      "role": "lexical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "saeculum"
+      },
+      "locator": {
+        "section": "Perseus TEI entry n42210, saeculum: duration formulas and ecclesiastical world sense"
+      },
+      "claim": "The entry distinguishes age or generation from the ecclesiastical world sense and attests in saecula saeculorum as an everlasting-duration formula.",
+      "verified_on": "2026-10-05",
+      "evidence_sha256": "ccbd2f79db1006edc607fe51227babab6872fbdaa4e925f4c1999a3b978041ee",
+      "decision": "RETAIN",
+      "decision_reason": "Supports the formula's sense, not an assertion that every occurrence means eternity or that the entry expressly explains the mechanism of intensification."
     },
     {
       "id": "use.lemma.saturitas.lewis-short.1879",
