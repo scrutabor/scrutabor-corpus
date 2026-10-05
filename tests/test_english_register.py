@@ -116,8 +116,8 @@ NOT_ARCHAIC = {
 GLORIA_PATRI_END = "As it was in the beginning, is now, and ever shall be, world without end."
 # Saint John's Postcommunion keeps the conclusion of its recorded historical wording basis.
 HISTORICAL_CONCLUSION = {"proprium.sancti-ioannis-apostoli-et-evangelistae-postcommunio"}
-# "forever and ever" here; two reviewed prayers spell it "for ever and ever" as the Canon does
-# (CANON-TERMINOLOGY); one spelling is an open owner question.
+# "forever and ever" is the contemporary standard. Keep legacy spacing detectable
+# separately while unrevised texts still retain their recorded wording.
 ENDINGS = (" forever and ever.", " for ever and ever.")
 CONCLUSIONS = {
     "per dominum nostrum iesum christum filium tuum qui tecum vivit et regnat in unitate"
@@ -243,6 +243,49 @@ def test_holy_cross_postcommunion_preserves_its_petition():
     assert layer["segments"]["s02"]["translation"] == "Amen."
 
 
+def conclusion_matches(prose, english, *, duration):
+    variants = (english,)
+    if english.startswith("Through the same "):
+        variants += (english.replace("Through the same ", "Through this same ", 1),)
+    endings = ENDINGS if duration else ("",)
+    return prose.endswith(tuple(variant + ending for variant in variants for ending in endings))
+
+
+@pytest.mark.parametrize("determiner", ["the", "this"])
+@pytest.mark.parametrize("duration", [False, True])
+def test_eundem_keeps_both_contemporary_anaphoric_forms(determiner, duration):
+    english = next(value for key, value in CONCLUSIONS.items() if " eundem " in key)
+    prose = english.replace("Through the same ", f"Through {determiner} same ", 1)
+    if duration:
+        prose += " forever and ever."
+    assert conclusion_matches(prose, english, duration=duration)
+
+
+@pytest.mark.parametrize(
+    "old,new",
+    [
+        ("Your Son", "Thy Son"),
+        ("our Lord", "Lord"),
+        ("who lives", "who will live"),
+        ("the same", "another"),
+    ],
+)
+def test_eundem_alternative_does_not_erase_register_or_meaning(old, new):
+    english = next(value for key, value in CONCLUSIONS.items() if " eundem " in key)
+    assert not conclusion_matches(
+        english.replace(old, new) + " forever and ever.", english, duration=True
+    )
+
+
+def test_plain_dominum_does_not_acquire_an_unsupported_same():
+    english = next(value for key, value in CONCLUSIONS.items() if " eundem " not in key)
+    assert not conclusion_matches(
+        english.replace("Through our", "Through this same") + " forever and ever.",
+        english,
+        duration=True,
+    )
+
+
 def test_contemporary_orations_conclude_in_the_same_register():
     seen = 0
     for text in CONTEMPORARY:
@@ -256,10 +299,10 @@ def test_contemporary_orations_conclude_in_the_same_register():
             prose = en["segments"].get(seg["id"], {}).get("translation") or ""
             for incipit, english in CONCLUSIONS.items():
                 if forms.endswith(incipit + " per omnia saecula saeculorum"):
-                    assert prose.endswith(tuple(english + e for e in ENDINGS)), (text, seg["id"])
+                    assert conclusion_matches(prose, english, duration=True), (text, seg["id"])
                     seen += 1
                 elif forms.endswith(incipit):
-                    assert prose.endswith(english), (text, seg["id"])
+                    assert conclusion_matches(prose, english, duration=False), (text, seg["id"])
                     seen += 1
     assert seen > 150
 

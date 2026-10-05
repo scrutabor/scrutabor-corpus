@@ -276,6 +276,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pent07-0.txt",
       "sha256": "9cfeb0c8e239a739a62818cd6db3a74ce3d4034bc948bab1d39694be0b64d46f"
+    },
+    "holy-name": {
+      "upstream": "web/www/missa/Latin/Tempora/Nat2-0.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-Tempora-Nat2-0.txt",
+      "sha256": "3e2ca79322d0baa0f3dbd804f80d753507c2cc55367736b6dd1c04ecbd7f8c7b"
     }
   },
   "bindings": {
@@ -1956,6 +1962,46 @@
           "archive": "prayers",
           "first": 96,
           "last": 97
+        }
+      ]
+    },
+    "holy-name-collect": {
+      "witness": "witnesses/proprium.sanctissimi-nominis-iesu-collecta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "holy-name",
+          "first": 21,
+          "last": 22,
+          "section": "Oratio",
+          "section_line": 20
+        },
+        {
+          "archive": "prayers",
+          "first": 108,
+          "last": 109,
+          "section": "Per eumdem",
+          "section_line": 107
+        }
+      ],
+      "references": [
+        {
+          "archive": "holy-name",
+          "line": 22,
+          "text": "$Per eumdem",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "holy-name",
+          "first": 21,
+          "last": 21
+        },
+        {
+          "archive": "prayers",
+          "first": 108,
+          "last": 109
         }
       ]
     }
