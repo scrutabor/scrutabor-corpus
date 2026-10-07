@@ -71,7 +71,7 @@
         { "id": "w050", "form": "a", "lemma": "ab", "morph": { "pos": "prep", "governs": "abl" }, "head": "w051" },
         { "id": "w051", "form": "mórtuis", "lemma": "mortuus", "morph": { "case": "abl", "gender": "m", "number": "pl", "pos": "adj" }, "post": ",", "substantive": true },
         { "id": "w052", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w053" },
-        { "id": "w053", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "n" } },
+        { "id": "w053", "form": "hoc", "lemma": "hic", "morph": { "pos": "pron", "case": "abl", "number": "sg", "gender": "m" } },
         { "id": "w054", "form": "iste", "lemma": "iste", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w055", "form": "astat", "lemma": "asto", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w056", "form": "coram", "lemma": "coram", "morph": { "governs": "abl", "pos": "prep" }, "head": "w057" },
@@ -113,15 +113,15 @@
         { "id": "w092", "form": "opórteat", "lemma": "oporteo", "morph": { "conj": 2, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w093", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w094", "form": "salvos", "lemma": "salvus", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w093" },
-        { "id": "w095", "form": "fíeri", "lemma": "fio", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," }
+        { "id": "w095", "form": "fíeri", "lemma": "fio", "morph": { "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" }, "post": "." }
       ]
     }
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the 1962 typical edition.",
+    "notes": "Lesson Acts 4:8–12, beginning with In diébus illis as printed.",
     "source": {
-      "method": "Transcribed from the directly viewed 1962 typical-edition page image and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The complete 95-word lesson has been checked directly against the Benziger Brothers 1962 Editio iuxta typicam page, printed p. 34, leaf n113, and the exact pinned Divinum Officium Latin Mass body at line 27; both end with a full stop after fíeri. This states current whole-body conformity, not the original transcription workflow. The digital source's consonantal j, its spelling cœlo, two unaccented words and four punctuation differences are recorded in the apparatus.",
       "witnesses": "witnesses/proprium.sanctissimi-nominis-iesu-epistola/",
       "apparatus": "witnesses/proprium.sanctissimi-nominis-iesu-epistola/apparatus.json"
     },
@@ -145,13 +145,14 @@
       "w088": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w015": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w052": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w053": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w053": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } },
       "w058": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w067": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w078": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "notes": ["w053"]
   }
 }

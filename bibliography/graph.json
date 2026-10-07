@@ -9518,12 +9518,13 @@
         "text": "ordinarium.praefatio-nativitatis"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Ordo/Prefationes.txt (section [Nat], lines 7); resolved spans: web/www/missa/Latin/Ordo/Prefationes.txt (line 8)"
+        "section": "web/www/missa/Latin/Ordo/Prefationes.txt [Nat], section line 5; reading line 7"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "cdcc5bb39df5043a85f17a6ebab0483bfad1a360fd31940878c09c67b5d22c80"
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "cdcc5bb39df5043a85f17a6ebab0483bfad1a360fd31940878c09c67b5d22c80",
+      "decision_reason": "Corrects the locator recorded 2026-09-12: the [Nat] reading is line 7 of the pinned file; line 8 was counted in a corpus copy that inserts one line. The evidence digest is that of the named file."
     },
     {
       "id": "use.ordinarium.praefatio-nativitatis.hand-position-rubric.mr1962",
@@ -39223,10 +39224,31 @@
       "evidence_sha256": "3e2ca79322d0baa0f3dbd804f80d753507c2cc55367736b6dd1c04ecbd7f8c7b"
     },
     {
+      "id": "use.proprium.in-octava-nativitatis-evangelium.holy-name-reprint.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.in-octava-nativitatis-evangelium"
+      },
+      "locator": {
+        "printed": "p. 35",
+        "scan": "leaf n114 / PDF p. 115",
+        "section": "Sanctissimi Nominis Iesu, Sequentia sancti Evangelii secundum Lucam, Luc. 2, 21",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n114/mode/1up"
+      },
+      "claim": "The Mass of the Most Holy Name of Jesus prints this Gospel in full, identical in letters, accents and punctuation to page 33.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "ab007486404889c449fddf69d8327921f4c712f9d58bea6579bafb458d15f773",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.in-octava-nativitatis-evangelium.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.in-octava-nativitatis-evangelium"
@@ -39236,10 +39258,11 @@
         "scan": "leaf n112 / PDF p. 113",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n112/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "12d2260df496cbd02b2eb863d27c2180de728e5abe37f1564846ff0bf57f63ca"
+      "claim": "The approved Benziger printing gives the complete Gospel Luc. 2, 21 on page 33; the Mass of the Most Holy Name of Jesus reprints it identically on page 35, cited separately.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "12d2260df496cbd02b2eb863d27c2180de728e5abe37f1564846ff0bf57f63ca",
+      "decision_reason": "Corrects the use previously dated 2026-09-12. The component is directly printed in the ecclesiastically approved Benziger edition iuxta typicam identified by its approval on leaf n8, not in the promulgating typical printing. The locator is retained."
     },
     {
       "id": "use.proprium.in-octava-nativitatis-postcommunio.do44667ff",
@@ -51245,18 +51268,19 @@
         "text": "proprium.sanctissimi-nominis-iesu-alleluia"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Nat2-0.txt (section [Allelúia]); resolved spans: web/www/missa/Latin/Tempora/Nat2-0.txt (lines 33-35)"
+        "section": "web/www/missa/Latin/Tempora/Nat2-0.txt [Graduale], the closing Allelúja, allelúja of line 33 and the verse at line 35"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "3e2ca79322d0baa0f3dbd804f80d753507c2cc55367736b6dd1c04ecbd7f8c7b"
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "3e2ca79322d0baa0f3dbd804f80d753507c2cc55367736b6dd1c04ecbd7f8c7b",
+      "decision_reason": "Corrects the locator recorded 2026-09-12: the pinned file has no [Allelúia] section; the Alleluia is the end of its [Graduale] section."
     },
     {
       "id": "use.proprium.sanctissimi-nominis-iesu-alleluia.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.sanctissimi-nominis-iesu-alleluia"
@@ -51266,10 +51290,11 @@
         "scan": "leaf n114 / PDF p. 115",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n114/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "ab007486404889c449fddf69d8327921f4c712f9d58bea6579bafb458d15f773"
+      "claim": "The approved Benziger printing gives the complete Alleluia with its verse Ps. 144, 21 on page 35.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "ab007486404889c449fddf69d8327921f4c712f9d58bea6579bafb458d15f773",
+      "decision_reason": "Corrects the use previously dated 2026-09-12. The component is directly printed in the ecclesiastically approved Benziger edition iuxta typicam identified by its approval on leaf n8, not in the promulgating typical printing. The locator is retained."
     },
     {
       "id": "use.proprium.sanctissimi-nominis-iesu-collecta.conclusion-middle.mr1962",
@@ -51306,14 +51331,14 @@
       "locator": {
         "printed": "p. xvii",
         "scan": "leaf n22 / PDF p. 23",
-        "section": "Rubricae generales 115 a; Father-addressed oration conclusion and response",
+        "section": "Rubricae generales 115 a; Father-addressed oration conclusion",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
       },
-      "claim": "RG 115 a supplies the full Father-addressed conclusion and the separate Amen response. It controls the expansion rule, not the selected composite transcript's accents or its accidental seams.",
-      "verified_on": "2026-10-05",
+      "claim": "RG 115 a supplies the full Father-addressed conclusion, ending with Amen. It controls the expansion rule, not the selected composite transcript's accents or its accidental seams.",
+      "verified_on": "2026-10-07",
       "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
-      "decision": "RETAIN",
-      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "Claim and locator label narrowed on 2026-10-07: the rubric prints Amen inline and marks no separate response; the response is evidenced by the terminal formula on p. 226."
     },
     {
       "id": "use.proprium.sanctissimi-nominis-iesu-collecta.conclusion-selection.mr1962",
@@ -51481,7 +51506,7 @@
       "id": "use.proprium.sanctissimi-nominis-iesu-communio.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.sanctissimi-nominis-iesu-communio"
@@ -51491,10 +51516,11 @@
         "scan": "leaf n114 / PDF p. 115",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n114/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "ab007486404889c449fddf69d8327921f4c712f9d58bea6579bafb458d15f773"
+      "claim": "The approved Benziger printing gives the complete Communion antiphon Ps. 85, 9-10 on page 35.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "ab007486404889c449fddf69d8327921f4c712f9d58bea6579bafb458d15f773",
+      "decision_reason": "Corrects the use previously dated 2026-09-12. The component is directly printed in the ecclesiastically approved Benziger edition iuxta typicam identified by its approval on leaf n8, not in the promulgating typical printing. The locator is retained."
     },
     {
       "id": "use.proprium.sanctissimi-nominis-iesu-epistola.do44667ff",
@@ -51517,7 +51543,7 @@
       "id": "use.proprium.sanctissimi-nominis-iesu-epistola.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.sanctissimi-nominis-iesu-epistola"
@@ -51527,10 +51553,11 @@
         "scan": "leaf n113 / PDF p. 114",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n113/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "af86df236a2b37258b7c35e782c1fdf596c5434238d292b5bc344ad9f8ac0663"
+      "claim": "The approved Benziger printing gives the complete Lesson Act. 4, 8-12 on page 34, ending with a full stop after fíeri.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "af86df236a2b37258b7c35e782c1fdf596c5434238d292b5bc344ad9f8ac0663",
+      "decision_reason": "Corrects the use previously dated 2026-09-12. The component is directly printed in the ecclesiastically approved Benziger edition iuxta typicam identified by its approval on leaf n8, not in the promulgating typical printing. The locator is retained."
     },
     {
       "id": "use.proprium.sanctissimi-nominis-iesu-graduale.do44667ff",
@@ -51553,7 +51580,7 @@
       "id": "use.proprium.sanctissimi-nominis-iesu-graduale.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.sanctissimi-nominis-iesu-graduale"
@@ -51563,11 +51590,11 @@
         "scan": "leaves n113–n114 / PDF pp. 114–115",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n113/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-25",
+      "claim": "The approved Benziger printing gives the complete Gradual and its verse Isai. 63, 16 across pages 34 and 35.",
+      "verified_on": "2026-10-07",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "af86df236a2b37258b7c35e782c1fdf596c5434238d292b5bc344ad9f8ac0663",
-      "decision_reason": "Locator corrected against the page image: the text is printed on the leaves now cited, from its opening to its end."
+      "decision_reason": "Corrects the use previously dated 2026-09-25. The component is directly printed in the ecclesiastically approved Benziger edition iuxta typicam identified by its approval on leaf n8, not in the promulgating typical printing. The locator corrected on 2026-09-25 is retained."
     },
     {
       "id": "use.proprium.sanctissimi-nominis-iesu-introitus.do44667ff",
@@ -51579,18 +51606,41 @@
         "text": "proprium.sanctissimi-nominis-iesu-introitus"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Nat2-0.txt (section [Introitus]); resolved spans: web/www/missa/Latin/Tempora/Nat2-0.txt (lines 13-17); web/www/missa/Latin/Ordo/Prayers.txt (lines 14-15)"
+        "section": "web/www/missa/Latin/Tempora/Nat2-0.txt [Introitus], lines 14, 16 and 18, with &Gloria at line 17 expanded from Ordo/Prayers.txt [Gloria], lines 13–14"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
+      "claim": "The exact pinned Latin Mass reading corroborates the complete 77-word Introit as a derived digital witness: the antiphon, the verse, the Gloria Patri resolved from the shared Mass prayers, and the repeated antiphon.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "3e2ca79322d0baa0f3dbd804f80d753507c2cc55367736b6dd1c04ecbd7f8c7b",
+      "decision_reason": "Corrects the use previously dated 2026-09-12: the resolved lines now include the repeated antiphon at line 18 and the Gloria section lines 13–14 of the pinned files, and the evidence digest is that of the named Nat2-0.txt rather than an unrelated file."
+    },
+    {
+      "id": "use.proprium.sanctissimi-nominis-iesu-introitus.gloria-formula.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sanctissimi-nominis-iesu-introitus",
+        "word": "w037"
+      },
+      "locator": {
+        "printed": "p. 1",
+        "scan": "leaf n80 / PDF p. 81",
+        "section": "Dominica prima Adventus, Antiphona ad Introitum; full Gloria Patri and the repetition rule",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n80/mode/1up"
+      },
+      "claim": "The approved Benziger printing gives the full Gloria Patri at the Introit of the first Sunday of Advent, with et semper, et in sǽcula, followed by the rubric that the antiphon is repeated in this way throughout the year. The composite completes the Holy Name cue Glória Patri from this printing.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "215182ac2415d178917c183486c716ce352777a6084da024e7293a95649b60c7",
       "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
     },
     {
       "id": "use.proprium.sanctissimi-nominis-iesu-introitus.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.sanctissimi-nominis-iesu-introitus"
@@ -51598,12 +51648,36 @@
       "locator": {
         "printed": "p. 34",
         "scan": "leaf n113 / PDF p. 114",
+        "section": "Sanctissimi Nominis Iesu, Antiphona ad Introitum with its cues",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n113/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
+      "claim": "The approved Benziger printing gives the antiphon Phil. 2, 10-11 and the verse Ps. 8, 2 on page 34, then only the cues Glória Patri and In nómine; the full Gloria Patri stands on page 1, and the antiphon is repeated under page 1's year-round repetition rule and general rubric 427. Page 34 prints Iesu once for Iesus; the witness declares that slip as a corrigendum.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "af86df236a2b37258b7c35e782c1fdf596c5434238d292b5bc344ad9f8ac0663",
+      "decision_reason": "Corrects the use previously dated 2026-09-12. The component is directly printed in the ecclesiastically approved Benziger edition iuxta typicam identified by its approval on leaf n8, not in the promulgating typical printing. The page prints cues rather than the complete expanded component."
+    },
+    {
+      "id": "use.proprium.sanctissimi-nominis-iesu-introitus.repetition-rule.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sanctissimi-nominis-iesu-introitus",
+        "word": "w057"
+      },
+      "locator": {
+        "printed": "p. xxix",
+        "scan": "leaf n34 / PDF p. 35",
+        "section": "Rubricae generales 427; Introit antiphon, psalm verse, Gloria Patri and repetition",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "RG 427 prescribes the Introit antiphon with its psalm verse and Gloria Patri, after which the antiphon is repeated. It governs the expansion of the cue In nómine, not the accidentals of the repeated words.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786",
       "decision": "RETAIN",
-      "evidence_sha256": "af86df236a2b37258b7c35e782c1fdf596c5434238d292b5bc344ad9f8ac0663"
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
     },
     {
       "id": "use.proprium.sanctissimi-nominis-iesu-offertorium.do44667ff",
@@ -51626,7 +51700,7 @@
       "id": "use.proprium.sanctissimi-nominis-iesu-offertorium.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.sanctissimi-nominis-iesu-offertorium"
@@ -51636,10 +51710,11 @@
         "scan": "leaf n114 / PDF p. 115",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n114/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "ab007486404889c449fddf69d8327921f4c712f9d58bea6579bafb458d15f773"
+      "claim": "The approved Benziger printing gives the complete Offertory antiphon on page 35; its printed reference Ps. 85, 12 et 15 names verse 15 where the text is verse 5.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "ab007486404889c449fddf69d8327921f4c712f9d58bea6579bafb458d15f773",
+      "decision_reason": "Corrects the use previously dated 2026-09-12. The component is directly printed in the ecclesiastically approved Benziger edition iuxta typicam identified by its approval on leaf n8, not in the promulgating typical printing. The locator is retained."
     },
     {
       "id": "use.proprium.sanctissimi-nominis-iesu-postcommunio.conclusion-middle.mr1962",
@@ -51676,14 +51751,14 @@
       "locator": {
         "printed": "p. xvii",
         "scan": "leaf n22 / PDF p. 23",
-        "section": "Rubricae generales 115 a; Father-addressed oration conclusion and response",
+        "section": "Rubricae generales 115 a; Father-addressed oration conclusion",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
       },
-      "claim": "RG 115 a supplies the full Father-addressed conclusion and separate Amen response. It controls expansion, not every accent or accidental seam of the selected printed composite.",
-      "verified_on": "2026-10-05",
+      "claim": "RG 115 a supplies the full Father-addressed conclusion, ending with Amen. It controls the expansion rule, not the selected composite transcript's accents or its accidental seams.",
+      "verified_on": "2026-10-07",
       "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
-      "decision": "RETAIN",
-      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "Claim and locator label narrowed on 2026-10-07: the rubric prints Amen inline and marks no separate response; the response is evidenced by the terminal formula on p. 226."
     },
     {
       "id": "use.proprium.sanctissimi-nominis-iesu-postcommunio.conclusion-selection.mr1962",
@@ -51831,6 +51906,112 @@
       "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
     },
     {
+      "id": "use.proprium.sanctissimi-nominis-iesu-secreta.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sanctissimi-nominis-iesu-secreta",
+        "word": "w040"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "section": "Postcommunio continuing Monday after the first Sunday of the Passion, above the Tuesday heading; Dominum nostrum through Deus.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up"
+      },
+      "claim": "This separate Postcommunion prints the accented middle conclusion, including no comma after Christum and the colon and uppercase Qui after tuum, ending with Deus. The composite uses Dominum nostrum through Deus.; this page supplies neither eundem nor the final duration or Amen.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.sanctissimi-nominis-iesu-secreta.conclusion-rule.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sanctissimi-nominis-iesu-secreta",
+        "word": "w038"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a; Father-addressed oration conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a supplies the full Father-addressed conclusion, ending with Amen. It controls the expansion rule, not the selected composite transcript's accents or its accidental seams.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.sanctissimi-nominis-iesu-secreta.conclusion-selection.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sanctissimi-nominis-iesu-secreta",
+        "word": "w038"
+      },
+      "locator": {
+        "printed": "p. xviii",
+        "scan": "leaf n23 / PDF p. 24",
+        "section": "Rubricae generales 115 b; mention of the Son in an oration addressed to the Father",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n23/mode/1up"
+      },
+      "claim": "RG 115 b prescribes Per eundem Dominum nostrum, etc., ut supra when an oration addressed to the Father mentions the Son at its beginning. The Secret names the Son within its body, and the printed cue Per eúndem Dóminum on p. 35 shows this form; the end-mention rule of 115 c is not used here.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.sanctissimi-nominis-iesu-secreta.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sanctissimi-nominis-iesu-secreta",
+        "word": "w056"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "section": "Top conclusion and response before the Nativity preface dialogue; Per omnia saecula saeculorum. R. Amen.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up"
+      },
+      "claim": "The top chant line prints Per omnia saecula saeculorum and the response Amen. The composite joins musical syllable divisions and omits the response marker. Only these five words are used; the Nativity preface dialogue and body are excluded.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.sanctissimi-nominis-iesu-secreta.conclusion.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sanctissimi-nominis-iesu-secreta",
+        "word": "w038"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Ordo/Prayers.txt [Per eumdem], section line 107; full conclusion and R. Amen. at lines 108–109"
+      },
+      "claim": "The literal $Per eumdem directive in Nat2-0.txt resolves to this full conclusion and Amen response. The equal-text Per eundem alias at lines 111–113 is not the invoked section.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN",
+      "evidence_sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    },
+    {
       "id": "use.proprium.sanctissimi-nominis-iesu-secreta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -51840,18 +52021,19 @@
         "text": "proprium.sanctissimi-nominis-iesu-secreta"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Nat2-0.txt (section [Secreta]); resolved spans: web/www/missa/Latin/Tempora/Nat2-0.txt (line 22); web/www/missa/Latin/Tempora/Nat2-0.txt (line 60); web/www/missa/Latin/Ordo/Prayers.txt (lines 113-114)"
+        "section": "web/www/missa/Latin/Tempora/Nat2-0.txt [Secreta], section line 59; body line 60 and $Per eumdem reference line 61"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "claim": "The pinned Latin Mass file supplies the Secret body and its literal $Per eumdem reference. The conclusion is separately resolved from the declared Prayers.txt dependency; this file alone is not a continuous full-text witness.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "3e2ca79322d0baa0f3dbd804f80d753507c2cc55367736b6dd1c04ecbd7f8c7b",
+      "decision_reason": "Corrects the use previously dated 2026-09-12: the Secret's own reference is line 61, not the Collect's line 22; the invoked Per eumdem section has its heading at line 107 and reading at 108–109, not 113–114; the evidence digest is that of the named file."
     },
     {
       "id": "use.proprium.sanctissimi-nominis-iesu-secreta.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.sanctissimi-nominis-iesu-secreta"
@@ -51859,12 +52041,14 @@
       "locator": {
         "printed": "p. 35",
         "scan": "leaf n114 / PDF p. 115",
+        "section": "Sanctissimi Nominis Iesu, Secreta; body and abbreviated Per eundem Dominum cue",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n114/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "ab007486404889c449fddf69d8327921f4c712f9d58bea6579bafb458d15f773"
+      "claim": "The approved Benziger printing gives the 37-word Secret body followed by the abbreviated Per eundem Dominum cue. It does not print the complete expanded conclusion on this page.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "ab007486404889c449fddf69d8327921f4c712f9d58bea6579bafb458d15f773",
+      "decision_reason": "Corrects the use previously dated 2026-09-12. The component is directly printed in the ecclesiastically approved Benziger edition iuxta typicam identified by its approval on leaf n8, not in the promulgating typical printing. The conclusion is a declared same-edition composite."
     },
     {
       "id": "use.proprium.sanctissimi-nominis-iesu-secreta.oration-boundaries.mr1962",
@@ -51876,15 +52060,15 @@
         "text": "proprium.sanctissimi-nominis-iesu-secreta"
       },
       "locator": {
-        "printed": "pp. xxxii–xxxiv, 226",
-        "scan": "PDF scans 38–40, 306",
-        "section": "RG 480–481, 511 d/i, 513–514; Ordo conclusion"
+        "printed": "pp. xxxii–xxxiv, 225–226",
+        "scan": "leaves n37–n39, n304–n305 / PDF pp. 38–40, 305–306",
+        "section": "RG 480–481, 511 d/i, 513–514; Ordo Missae rubric and chant formula after the secrets"
       },
       "claim": "The final secret has an audible Per omnia saecula saeculorum followed by the response Amen. Collects and postcommunions are priestly orations with a separate response. These rules determine the modeled boundaries, not the completeness of a date-specific commemoration inventory.",
-      "verified_on": "2026-09-19",
+      "verified_on": "2026-10-07",
       "evidence_sha256": "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
-      "decision": "RETAIN",
-      "decision_reason": "Source-defined ritual boundary only. The complete word sequence and existing word IDs are unchanged."
+      "decision": "RETAIN_WITH_CORRECTION",
+      "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
     },
     {
       "id": "use.proprium.sanctorum-innocentium-martyrum-alleluia.do44667ff",
@@ -56547,12 +56731,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "73cc2c9c37dbcd34d6b540ed2b6a4896171aae76a7daadce193ad82f5ca06c5c",
+      "transcription_sha256": "96ac5b1398904ff123d60e5924765847dd9da0a11a079c5e370a3ad8ba81453a",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "nativity-preface"
       }
     },
     {
@@ -56563,9 +56751,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "94f860ac09360deb6cb32d62911ad23aba04b1bf5e40c0f55868be39c721994b",
+      "transcription_sha256": "b72f495d35922814facf688d866596ffc01a1b083ccb649fb96c7432b8344ab2",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "Direct transcription from the identified page image of the approved Benziger 1962 edition iuxta typicam; OCR was used only to locate the page.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -76910,9 +77098,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "b049cd0aed7a57585bb2e57d1d10f3fccb948fa8d49ed5ab475393f27743a70c",
+      "transcription_sha256": "6f3957cd027c9b7449a4acdf719931faee909ccb65c3de7ddb02908154cfc7d4",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete text has been checked directly against the Benziger Brothers 1962 Editio iuxta typicam page, printed p. 33, leaf n112, and its identical reprint on p. 35, leaf n114. This establishes current conformity, not the original transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -85483,9 +85671,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "c5cdd5b987d0c0d144d49484661c5484be1e53b0a1eb8d5c1d3050e24413affb",
+      "transcription_sha256": "a047522fdf5570363ff9b2432889ffaa64b14ef609b2094d4a617464fc5ae694",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete text has been checked directly against the Benziger Brothers 1962 Editio iuxta typicam page, printed p. 35, leaf n114. This establishes current conformity, not the original transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -85521,7 +85709,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "b4eb89b07fd58cc0e699869e1f0f2cbd67bea1a963f4feaeded952c81b703701",
+      "transcription_sha256": "21a6ae7558dfdb9b458c35ae55c419492e8eb96e0054c581ff25c94a87a3ffea",
       "orthography_profile": "declared-same-edition-composite",
       "independence_basis": "Directly read approved Benziger page images supply the body and cue, expansion rules, middle and terminal formulae, and Collect delivery rules. This is one declared composite witness of that edition, not seven independent witnesses or one continuous printing.",
       "transcription": "mr",
@@ -85564,9 +85752,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "a1af04411260f310d9c8c2ae1e094517a134483cee668f8a82e906e157c17683",
+      "transcription_sha256": "d7df029a5ffda68147123f5c4166e0509250bf6bc02a99e4796103808916b27d",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete text has been checked directly against the Benziger Brothers 1962 Editio iuxta typicam page, printed p. 35, leaf n114. This establishes current conformity, not the original transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -85596,9 +85784,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "77007e34a0904dba9a7ca53f26c52df1abc54347129013637be0ebfd2b7cf859",
+      "transcription_sha256": "ec38cba64030ec10fd50a4894b58d247593b2c197467267d4613a36fc67e3116",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete text has been checked directly against the Benziger Brothers 1962 Editio iuxta typicam page, printed p. 34, leaf n113. This establishes current conformity, not the original transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -85628,9 +85816,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "1703462736374eea1243ba2f5157a5eddf9043a5fe05c239af0774e625f67056",
+      "transcription_sha256": "718540b7181dbdd1d1326868ebc986cafcf2ae0b7fa51cd068756cd813937c79",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete text has been checked directly against the Benziger Brothers 1962 Editio iuxta typicam pages, printed pp. 34–35, leaves n113–n114. This establishes current conformity, not the original transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -85644,12 +85832,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "a157b3939e3dfddd60077e619abdb13070eeb8bc65718b1b80e42e68b4934fbf",
+      "transcription_sha256": "f18a146c2898e2b12ad73e86d2b7e3899b0db355e49b5f15a01d3566fbdb93ab",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Pinned Latin Mass data are used as a derived comparison witness. The complete reading is bound to its exact raw archives, sections and the &Gloria reference; this is not an independent controlling print.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "holy-name-introit"
       }
     },
     {
@@ -85660,12 +85852,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "17e9ecf90c051eea49d6b8960f497906d230a0be01cad38400ff21b295dea48d",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "bb641403c89f089fcc05a9b124406b66d2097cafd35a9340e27aaab811ce02ba",
+      "orthography_profile": "declared-same-edition-composite",
+      "independence_basis": "Directly read approved Benziger page images supply the proper antiphon and verse with the cues on page 34, the full Gloria Patri on page 1, and the repetition rule of general rubric 427. The component ranges and the one declared corrigendum are recorded in the header; no expansion is copied from the digital comparison source.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.sanctissimi-nominis-iesu-introitus.gloria-formula.mr1962",
+          "use.proprium.sanctissimi-nominis-iesu-introitus.repetition-rule.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -85692,9 +85891,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "12c7fa372f8187f640be8837aa38c8d6e2f26a2fa71f90955ca320989aa08dbd",
+      "transcription_sha256": "7ec3567d64c6e00b4ce48d931b22487a4d6e530132fc4eb99724453539265398",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete text has been checked directly against the Benziger Brothers 1962 Editio iuxta typicam page, printed p. 35, leaf n114. This establishes current conformity, not the original transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -85757,12 +85956,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "963a0307ddf79ca639a3962812e6534435b6722289ff3f7c3a264d93e8cddbd2",
+      "transcription_sha256": "fde341827256ab2b0c4bccb2945bff3b4f9824037d992e19af81c0e5ab41258d",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.sanctissimi-nominis-iesu-secreta.conclusion.do44667ff"
+        ],
+        "raw_binding": "holy-name-secret"
       }
     },
     {
@@ -85773,12 +85978,22 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "01534e233155974a38501c752c8e06d175896145e7b92940c317fe79090f996f",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "1677e6b3df19a59d4dcb83a460f7d527c095e03467e211caf53b09d531e6705e",
+      "orthography_profile": "declared-same-edition-composite",
+      "independence_basis": "Directly read approved Benziger page images supply the body and cue, expansion rules, middle and terminal formulae, and the audible-ending rules. This is one declared composite witness of that edition, not several independent witnesses or one continuous printing.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.sanctissimi-nominis-iesu-secreta.conclusion-middle.mr1962",
+          "use.proprium.sanctissimi-nominis-iesu-secreta.conclusion-rule.mr1962",
+          "use.proprium.sanctissimi-nominis-iesu-secreta.conclusion-selection.mr1962",
+          "use.proprium.sanctissimi-nominis-iesu-secreta.conclusion-terminal.mr1962",
+          "use.proprium.sanctissimi-nominis-iesu-secreta.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -88786,7 +89001,7 @@
     {
       "id": "collation.ordinarium.praefatio-nativitatis.mr1962-do44667ff",
       "text": "ordinarium.praefatio-nativitatis",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The 1962 Nativity preface in the approved Benziger printing, with house orthography",
       "selected_text_sha256": "2b3a6fb8831f9a421207b4082a29b8d71c0a6668563b3707c4f9e5c3d5e0c244",
       "witnesses": [
         "witness.ordinarium.praefatio-nativitatis.do44667ff",
@@ -88801,7 +89016,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "f2b145d7e0d56ac7b83c714819f722169f369db12a56333e4b6f345c03d218b7",
+      "apparatus_sha256": "7dc5eee0f7cb4ca1d5e12a60b705015a554452f69f79f810904cd82a09c5175c",
       "review": {
         "status": "pending"
       }
@@ -101703,7 +101918,7 @@
     {
       "id": "collation.proprium.in-octava-nativitatis-evangelium.mr1962-do44667ff",
       "text": "proprium.in-octava-nativitatis-evangelium",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The 1962 Gospel of the Octave Day of the Nativity in the approved Benziger printing, reprinted identically for the Holy Name, with house orthography",
       "selected_text_sha256": "a1340c2f0a0c113cec97d9c8e6afdaa0c7cd748f1cc65adcc0b41503e52f8a92",
       "witnesses": [
         "witness.proprium.in-octava-nativitatis-evangelium.do44667ff",
@@ -101717,7 +101932,7 @@
           "orthography"
         ]
       },
-      "apparatus_sha256": "a1f2b6539accb281391194f556ed1a0c86054a9bb0dad5934f5d71ac6e26a66b",
+      "apparatus_sha256": "efbef1f3ad836723ee20ab0f9e2e0f78a095844e0b3896d14757ef0958389d2c",
       "review": {
         "status": "pending"
       }
@@ -106989,7 +107204,7 @@
     {
       "id": "collation.proprium.sanctissimi-nominis-iesu-alleluia.mr1962-do44667ff",
       "text": "proprium.sanctissimi-nominis-iesu-alleluia",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The 1962 Holy Name Alleluia in the approved Benziger printing, with house orthography",
       "selected_text_sha256": "b8798fdd9daa50a33090dcf2383384503f3c3bf4b0bd32fa84709c62d445d33a",
       "witnesses": [
         "witness.proprium.sanctissimi-nominis-iesu-alleluia.do44667ff",
@@ -107001,7 +107216,7 @@
           "orthography"
         ]
       },
-      "apparatus_sha256": "a58e295f0d5deb7fd9e57af658df8c0ce55cdc57669ba6c18164ff7f79eb61af",
+      "apparatus_sha256": "17b3f779c864cc2d253a9fdc213aa758de69cf7cab6b0e69fd41315f51855c62",
       "review": {
         "status": "pending"
       }
@@ -107031,7 +107246,7 @@
     {
       "id": "collation.proprium.sanctissimi-nominis-iesu-communio.mr1962-do44667ff",
       "text": "proprium.sanctissimi-nominis-iesu-communio",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The 1962 Holy Name Communion antiphon in the approved Benziger printing, with house orthography",
       "selected_text_sha256": "b7b96ae4aa1b94c49feea0551b2ae359bfc691dc18a5d4534228bc0ba7df18aa",
       "witnesses": [
         "witness.proprium.sanctissimi-nominis-iesu-communio.do44667ff",
@@ -107044,7 +107259,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "6b44a7c6852b846fcd0d31f5f47e72f16e6f9b1135dd4b350561656f1c08a44c",
+      "apparatus_sha256": "36c9c0eef8bef1c5855b5cdaf1473de57dfc6fcbf5d705fc23a8885b56144a7c",
       "review": {
         "status": "pending"
       }
@@ -107052,21 +107267,21 @@
     {
       "id": "collation.proprium.sanctissimi-nominis-iesu-epistola.mr1962-do44667ff",
       "text": "proprium.sanctissimi-nominis-iesu-epistola",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
-      "selected_text_sha256": "16b9920acc4cf92236910692c904e9f43598e439b0eb03b4f341e91a6fde2aae",
+      "recension": "The 1962 Holy Name Lesson in the approved Benziger printing, with house orthography",
+      "selected_text_sha256": "e3d6f5309214ad1e44672364dca319bf9de11088ed1674c4e305f150a60a3230",
       "witnesses": [
         "witness.proprium.sanctissimi-nominis-iesu-epistola.do44667ff",
         "witness.proprium.sanctissimi-nominis-iesu-epistola.mr1962"
       ],
       "apparatus": {
-        "entries": 10,
+        "entries": 9,
         "classes": [
           "accent",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "8db25346ad404bbca92f6be43b64097a79971651f95eb41d0dec92eb63b9c994",
+      "apparatus_sha256": "217492cc854a9a13b33564f274039ba5d07ea492487ea7011bab73c4fda3e2bf",
       "review": {
         "status": "pending"
       }
@@ -107074,7 +107289,7 @@
     {
       "id": "collation.proprium.sanctissimi-nominis-iesu-graduale.mr1962-do44667ff",
       "text": "proprium.sanctissimi-nominis-iesu-graduale",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The 1962 Holy Name Gradual in the approved Benziger printing, with house orthography",
       "selected_text_sha256": "ce4c3755f8afd5ec5da1d3c0ad1fb4a281ed88035c215e8b4e1370c20c7e52ba",
       "witnesses": [
         "witness.proprium.sanctissimi-nominis-iesu-graduale.do44667ff",
@@ -107087,7 +107302,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "38db7d66b59891fbb8983367ab0a2009a8f7c045728878fce3bccad63b2e06de",
+      "apparatus_sha256": "1ec2cebeebde1b175d85a35935ba41b9634ddaebbe19754c7e4a9b24b3453ab5",
       "review": {
         "status": "pending"
       }
@@ -107095,7 +107310,7 @@
     {
       "id": "collation.proprium.sanctissimi-nominis-iesu-introitus.mr1962-do44667ff",
       "text": "proprium.sanctissimi-nominis-iesu-introitus",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The 1962 Holy Name Introit in the approved Benziger printing, with a declared same-edition expansion of its cues and one declared printer's slip",
       "selected_text_sha256": "df7d12dd5e9d152d32e79d9fd4cd503cb36c5f8df88bfa70c5d72d3d50eb4e1a",
       "witnesses": [
         "witness.proprium.sanctissimi-nominis-iesu-introitus.do44667ff",
@@ -107108,7 +107323,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "2c7a8c2d4dd2ecfa76c2bf06f8c8e2042f7db32b638cc5e0d7a4c02661d322b0",
+      "apparatus_sha256": "01b568ef07a896261ed473e83e5f9ceb4500c19b9fd6688b2847078c9f584e9d",
       "review": {
         "status": "pending"
       }
@@ -107116,7 +107331,7 @@
     {
       "id": "collation.proprium.sanctissimi-nominis-iesu-offertorium.mr1962-do44667ff",
       "text": "proprium.sanctissimi-nominis-iesu-offertorium",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The 1962 Holy Name Offertory antiphon in the approved Benziger printing, with house orthography",
       "selected_text_sha256": "fbedb22e803e268a5aa2a2d64367b44b4db89da8947fcedc80a5e7a33a6bd081",
       "witnesses": [
         "witness.proprium.sanctissimi-nominis-iesu-offertorium.do44667ff",
@@ -107129,7 +107344,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "8adcdfb8a9db79f56f5bf01e6450a779ffdd4d43efcf2bab463fdb72a8abfefd",
+      "apparatus_sha256": "3260e49fa5d24ea9d12ac88fa31f77248c0fa66e7d9b8b1b0111bbba24f3b091",
       "review": {
         "status": "pending"
       }
@@ -107160,21 +107375,21 @@
     {
       "id": "collation.proprium.sanctissimi-nominis-iesu-secreta.mr1962-do44667ff",
       "text": "proprium.sanctissimi-nominis-iesu-secreta",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The 1962 Holy Name Secret in the approved Benziger printing, with explicitly sourced same-edition expansion and separately adjudicated composite accidentals",
       "selected_text_sha256": "a404b47cabc23f99245e9fd9ca185f628d4a5f02b6b35dba4e2c225a986e3075",
       "witnesses": [
         "witness.proprium.sanctissimi-nominis-iesu-secreta.do44667ff",
         "witness.proprium.sanctissimi-nominis-iesu-secreta.mr1962"
       ],
       "apparatus": {
-        "entries": 5,
+        "entries": 7,
         "classes": [
           "capitalization",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "c677d91678beac55e0fa17a132dde93fc8b7c186ae946f237808b79128d79983",
+      "apparatus_sha256": "c623c53a7f41746be6f3ef2d1447395435de38923df4852b240c09e31edb6ec0",
       "review": {
         "status": "pending"
       }

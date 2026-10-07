@@ -282,6 +282,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-Tempora-Nat2-0.txt",
       "sha256": "3e2ca79322d0baa0f3dbd804f80d753507c2cc55367736b6dd1c04ecbd7f8c7b"
+    },
+    "prefaces": {
+      "upstream": "web/www/missa/Latin/Ordo/Prefationes.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Ordo/Prefationes.txt",
+      "sha256": "cdcc5bb39df5043a85f17a6ebab0483bfad1a360fd31940878c09c67b5d22c80"
     }
   },
   "bindings": {
@@ -2042,6 +2048,117 @@
           "archive": "prayers",
           "first": 108,
           "last": 109
+        }
+      ]
+    },
+    "holy-name-introit": {
+      "witness": "witnesses/proprium.sanctissimi-nominis-iesu-introitus/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "holy-name",
+          "first": 13,
+          "last": 18,
+          "section": "Introitus",
+          "section_line": 12
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14,
+          "section": "Gloria",
+          "section_line": 12
+        }
+      ],
+      "references": [
+        {
+          "archive": "holy-name",
+          "line": 17,
+          "text": "&Gloria",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "holy-name",
+          "first": 14,
+          "last": 14
+        },
+        {
+          "archive": "holy-name",
+          "first": 16,
+          "last": 16
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14
+        },
+        {
+          "archive": "holy-name",
+          "first": 18,
+          "last": 18
+        }
+      ]
+    },
+    "holy-name-secret": {
+      "witness": "witnesses/proprium.sanctissimi-nominis-iesu-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "holy-name",
+          "first": 60,
+          "last": 61,
+          "section": "Secreta",
+          "section_line": 59
+        },
+        {
+          "archive": "prayers",
+          "first": 108,
+          "last": 109,
+          "section": "Per eumdem",
+          "section_line": 107
+        }
+      ],
+      "references": [
+        {
+          "archive": "holy-name",
+          "line": 61,
+          "text": "$Per eumdem",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "holy-name",
+          "first": 60,
+          "last": 60
+        },
+        {
+          "archive": "prayers",
+          "first": 108,
+          "last": 109
+        }
+      ]
+    },
+    "nativity-preface": {
+      "witness": "witnesses/ordinarium.praefatio-nativitatis/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "prefaces",
+          "first": 6,
+          "last": 7,
+          "section": "Nat",
+          "section_line": 5
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "prefaces",
+          "first": 7,
+          "last": 7
         }
       ]
     }

@@ -1,13 +1,24 @@
 # witness: mr
-# description: Missale Romanum, 1962 typical edition
+# description: Missale Romanum, Benziger Brothers, New York, 1962, editio iuxta typicam; declared same-edition composite
 # source: https://archive.org/details/missale-romanum-1962
-# location: printed p. 34; leaf n113 / PDF p. 114
+# location: proper p. 34, leaf n113, PDF p. 114; full Gloria Patri and annual repetition rule p. 1, leaf n80, PDF p. 81; general rubric 427 p. xxix, leaf n34, PDF p. 35
 # page-image: https://archive.org/details/missale-romanum-1962/page/n113/mode/1up
+# formula-page-image: https://archive.org/details/missale-romanum-1962/page/n80/mode/1up
+# rubric-page-image: https://archive.org/details/missale-romanum-1962/page/n34/mode/1up
 # local-archive: ../private/witnesses/missale-romanum-1962/pages-jp2/
-# path: p. 34 (leaf n113 / PDF p. 114)
-# transcribed: 2026-09-12 from the 600 dpi page image, not from OCR
-# orthography: exact printed accents, ligatures, capitalization, and punctuation
-# note: headings, scripture references, typographic crosses, and rubrics outside the text boundary are edition framing
+# path: p. 34 (leaf n113 / PDF p. 114); p. 1 (leaf n80 / PDF p. 81); p. xxix (leaf n34 / PDF p. 35)
+# historical-transcribed: 2026-09-12 from the 600 dpi page image, not from OCR
+# correction: 2026-10-07 the scanned book is the Benziger Brothers editio iuxta typicam (title page leaf n6, approbation leaf n8), not the typical edition; the item's scandata.xml and item-meta.xml record its page images at 300 dpi
+# orthography: exact printed forms and punctuation in each declared component, apart from the declared corrigendum
+# composite: w001–w036 from p. 34, the antiphon Phil. 2, 10-11, the verse Ps. 8, 2 and the cue words Glória Patri; w037–w054 from p. 1, the rest of the Gloria Patri; w055–w077 the repeated antiphon, the cue words In nómine from p. 34 continued as w003–w023 in the emended form
+# expansion: the cue Glória Patri. is completed by the formula printed on p. 1, and the cue In nómine. by the antiphon itself, under the repetition rule on p. 1 and general rubric 427 on p. xxix
+# normalization: on p. 34 a full stop closes each cue and marks the abbreviation; at w036 and w056 the body takes the continuous punctuation of the expanded text, with the comma after Patri printed on p. 1
+# note: this is an explicit same-edition composite, not a claim that p. 34 prints the full formula or the full repeat; headings, scripture references, typographic crosses and rubrics outside the text boundary are edition framing
 # recollated: 2026-09-25, punctuation re-read from the page image at 4 places; the earlier file had followed the digital source there
 # recollated: 2026-09-25 against the page image, a second comparison with a column-ordered reading: the page prints terréstrium,, Dómine. The earlier file had followed the digital source there
-In nómine Iesu omne genu flectátur, cæléstium, terréstrium, et infernórum: et omnis lingua confiteátur: quia Dóminus Iesus Christus in glória est Dei Patris. Dómine Dóminus noster, quam admirábile est nomen tuum in univérsa terra! Glória Patri, et Fílio, et Spirítui Sancto. Sicut erat in princípio, et nunc, et semper, et in sǽcula sæculórum. Amen. In nómine Iesu omne genu flectátur, cæléstium, terréstrium, et infernórum: et omnis lingua confiteátur: quia Dóminus Iesus Christus in glória est Dei Patris.
+# correction: 2026-10-07 the preceding line's terréstrium,, Dómine. stands for two readings: the page prints terréstrium, with a comma and Dómine without one
+# recollated: 2026-10-07 against the native-resolution page image: the antiphon prints Iesu Christus at its second Iesu, declared below
+# corrigendum: Iesu#2 -> Iesus (the page's slip on p. 34: in Phil. 2, 11 Dominus Iesus Christus is the subject of the clause, and witness do has the nominative Jesus)
+# verified: 2026-10-07; the 38 printed words of p. 34, including both cues, and the Gloria Patri of p. 1 checked directly against leaves n113 and n80
+# verification-scope: current conformity of the printed parts and of the declared composite, not original transcription genesis; the earlier transcription claim remains historical
+In nómine Iesu omne genu flectátur, cæléstium, terréstrium, et infernórum: et omnis lingua confiteátur: quia Dóminus Iesu Christus in glória est Dei Patris. Dómine Dóminus noster, quam admirábile est nomen tuum in univérsa terra! Glória Patri, et Fílio, et Spirítui Sancto. Sicut erat in princípio, et nunc, et semper, et in sǽcula sæculórum. Amen. In nómine Iesu omne genu flectátur, cæléstium, terréstrium, et infernórum: et omnis lingua confiteátur: quia Dóminus Iesus Christus in glória est Dei Patris.
