@@ -63,6 +63,7 @@ PROTECTED_PL_TEXTS = frozenset(
         "proprium.annuntiatio-beatae-mariae-virginis-introitus",
         "proprium.annuntiatio-beatae-mariae-virginis-extra-tempus-paschale-offertorium",
         "proprium.annuntiatio-beatae-mariae-virginis-offertorium",
+        "proprium.dominica-iv-adventus-offertorium",
     }
 )
 
@@ -89,6 +90,7 @@ PROTECTED_EN_TEXTS = frozenset(
         "proprium.annuntiatio-beatae-mariae-virginis-introitus",
         "proprium.annuntiatio-beatae-mariae-virginis-extra-tempus-paschale-offertorium",
         "proprium.annuntiatio-beatae-mariae-virginis-offertorium",
+        "proprium.dominica-iv-adventus-offertorium",
     }
 )
 

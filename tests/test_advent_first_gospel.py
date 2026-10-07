@@ -26,6 +26,8 @@ GROUPS = {
         ("s01", ["w017", "w018"], "w018", "on earth"),
         ("s01", ["w027", "w028"], "w027", "people fainting"),
         ("s03", ["w054", "w055", "w056", "w057"], "w057", "but when these things begin to happen"),
+        ("s03", ["w061", "w062"], "w061", "your heads"),
+        ("s03", ["w065", "w066"], "w065", "your redemption"),
         ("s06", ["w104", "w105"], "w105", "will not pass away"),
         ("s07", ["w118", "w119"], "w119", "will not pass away"),
     ],
@@ -56,7 +58,7 @@ def test_minimal_groups_have_one_provider_and_preserve_every_card(lang):
     doc, data = core(), layer(lang)
     assert interlinear.check(doc, data) == []
     assert len(data["words"]) == 119
-    assert sum("gloss" in w for w in data["words"].values()) == (109 if lang == "pl" else 107)
+    assert sum("gloss" in w for w in data["words"].values()) == (109 if lang == "pl" else 103)
     assert sum(len(s.get("alignments", [])) for s in data["segments"].values()) == len(GROUPS[lang])
     for sid, ids, anchor, wording in GROUPS[lang]:
         expected = {"words": ids, "anchor": anchor, "gloss": wording}
