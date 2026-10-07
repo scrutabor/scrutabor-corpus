@@ -29,7 +29,7 @@ import re
 import unicodedata
 from pathlib import Path
 
-from .raw_binding import BindingError, load_registry, resolve_binding
+from .raw_binding import BindingError, RawBindingSnapshot
 from .transcription import OPTIONAL_ALLELUIA, seasonal_mode
 
 RAW_REF = re.compile(r"(?:\.\./raw/|witnesses/raw/)(\S+?\.txt)")
@@ -58,7 +58,8 @@ def body_of(path: Path) -> str:
 def check(root: Path) -> list[str]:
     """One message per bound witness with missing archives or unattested words."""
     try:
-        load_registry(root)
+        # One validation run: the registry and each archive are checked once for all witnesses.
+        snapshot = RawBindingSnapshot(root)
     except BindingError as error:
         return [str(error)]
     raw_dir = root / "witnesses" / "raw"
@@ -77,7 +78,7 @@ def check(root: Path) -> list[str]:
         if path.is_relative_to(raw_dir):
             continue
         try:
-            bound = resolve_binding(path, root)
+            bound = snapshot.resolve(path)
         except BindingError as error:
             errors.append(f"{path}: {error}")
             continue

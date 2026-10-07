@@ -17,7 +17,7 @@ import unicodedata
 from pathlib import Path
 
 from .attribute import _range_declarations, _raw_archive_for, declared_sources
-from .raw_binding import BindingError, resolve_binding
+from .raw_binding import BindingError, RawBindingSnapshot
 
 
 def _signature(text: str, *, terminal_punctuation: bool) -> str:
@@ -68,6 +68,7 @@ def _body(text: str) -> str:
 def check_transcriptions(witness_dir: Path) -> tuple[list[str], int]:
     errors: list[str] = []
     checked = 0
+    snapshot: RawBindingSnapshot | None = None
     for witness in sorted(witness_dir.glob("*.txt")):
         text = witness.read_text(encoding="utf-8")
         try:
@@ -76,7 +77,11 @@ def check_transcriptions(witness_dir: Path) -> tuple[list[str], int]:
             errors.append(f"{witness.name}: {error}")
             continue
         try:
-            bound = resolve_binding(witness, witness_dir.parent.parent)
+            # One snapshot per call, built inside the try so a broken registry is still
+            # reported for every witness.
+            if snapshot is None:
+                snapshot = RawBindingSnapshot(witness_dir.parent.parent)
+            bound = snapshot.resolve(witness)
         except BindingError as error:
             errors.append(f"{witness.name}: {error}")
             continue
