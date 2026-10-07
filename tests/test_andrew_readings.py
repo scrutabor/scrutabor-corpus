@@ -78,7 +78,7 @@ def test_direct_contextual_readings(language, word, gloss):
     "language,kind,direct,groups",
     [
         ("pl", "evangelium", 75, 3),
-        ("pl", "communio", 14, 1),
+        ("pl", "communio", 12, 2),
         ("en", "evangelium", 65, 8),
         ("en", "communio", 14, 1),
     ],

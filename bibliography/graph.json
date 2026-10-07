@@ -45193,12 +45193,13 @@
         "text": "proprium.sancti-andreae-apostoli-alleluia"
       },
       "locator": {
-        "section": "pinned source key Sancti/11-30; resolved section [Allelúia] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/11-30.txt [Graduale], lines 33–34; no inherited reference"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "9c48ca70603343e7c49b60eb57df2a1e3d13a1ed27606344865b81770f6b1ee0"
+      "claim": "The exact pinned Latin Mass reading corroborates the 9-word Alleluia and verse (printed after the gradual in the same section of the pinned file) as a derived digital witness, bound to its raw archives; its spellings, accents and punctuation are recorded in the apparatus.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "9c48ca70603343e7c49b60eb57df2a1e3d13a1ed27606344865b81770f6b1ee0",
+      "decision_reason": "Corrects the use recorded 2026-08-31: the witness now transcribes the pinned reading exactly, names every resolved section and reference, and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.sancti-andreae-apostoli-alleluia.mr1962",
@@ -45210,14 +45211,99 @@
         "text": "proprium.sancti-andreae-apostoli-alleluia"
       },
       "locator": {
-        "printed": "p. 427",
-        "scan": "leaf n508 / PDF p. 509",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n508/mode/1up"
+        "printed": "p. 426",
+        "scan": "leaf n507 / PDF p. 508",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n507/mode/1up"
       },
       "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "10d1cca696e03da4c70fac530e6e92977eabc0e3e816412c27cce4f964675e8f",
+      "decision_reason": "Locator corrected against the page image on 2026-10-07: the text is printed on p. 426, leaf n507; the earlier locator named p. 427, leaf n508. The claim is unchanged."
+    },
+    {
+      "id": "use.proprium.sancti-andreae-apostoli-collecta.conclusion-macro.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancti-andreae-apostoli-collecta",
+        "word": "w025"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Ordo/Prayers.txt [Per Dominum], lines 96–97"
+      },
+      "claim": "Exact full conclusion and separate Amen response called by the proper's macro; this is a dependency of one digital witness, not another independent witness.",
+      "verified_on": "2026-10-07",
       "decision": "RETAIN",
-      "evidence_sha256": "ca84a049221cd0131751cf3fc540db491087a410e0b7a18aa5ac942e30168d3b"
+      "evidence_sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    },
+    {
+      "id": "use.proprium.sancti-andreae-apostoli-collecta.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancti-andreae-apostoli-collecta",
+        "word": "w027"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "section": "Postcommunio continuing Monday after the first Sunday of the Passion, above the Tuesday heading; Per Dominum nostrum through Deus.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up"
+      },
+      "claim": "This separate Postcommunion prints the accented conclusion with no comma after Christum and the colon and uppercase Qui after tuum, ending with Deus. The composite uses nostrum through Deus.; the cue words Per Dóminum come from p. 426, and this page supplies neither the final duration nor Amen.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.sancti-andreae-apostoli-collecta.conclusion-rg115a.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancti-andreae-apostoli-collecta",
+        "word": "w025"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a; Father-addressed oration conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a supplies the full Father-addressed conclusion, ending with Amen. It controls the expansion rule, not the selected composite transcript's accents or its accidental seams.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.sancti-andreae-apostoli-collecta.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancti-andreae-apostoli-collecta",
+        "word": "w042"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "section": "Top conclusion and response before the Nativity preface dialogue; Per omnia saecula saeculorum. R. Amen.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up"
+      },
+      "claim": "The top chant line prints Per omnia saecula saeculorum and the response Amen. The composite joins musical syllable divisions and omits the response marker. Only these five words are used; the Nativity preface dialogue and body are excluded.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
     },
     {
       "id": "use.proprium.sancti-andreae-apostoli-collecta.do44667ff",
@@ -45229,12 +45315,13 @@
         "text": "proprium.sancti-andreae-apostoli-collecta"
       },
       "locator": {
-        "section": "pinned source key Sancti/11-30; resolved section [Oratio] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/11-30.txt [Oratio], line 21, with $Per Dominum at line 22 expanded from Ordo/Prayers.txt [Per Dominum], lines 96–97"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "9c48ca70603343e7c49b60eb57df2a1e3d13a1ed27606344865b81770f6b1ee0"
+      "claim": "The exact pinned Latin Mass reading corroborates the 46-word Collect (the proper body and the full conclusion called by its macro) as a derived digital witness, bound to its raw archives; its spellings, accents and punctuation are recorded in the apparatus.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "9c48ca70603343e7c49b60eb57df2a1e3d13a1ed27606344865b81770f6b1ee0",
+      "decision_reason": "Corrects the use recorded 2026-08-31: the witness now transcribes the pinned reading exactly, names every resolved section and reference, and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.sancti-andreae-apostoli-collecta.mr1962",
@@ -45248,12 +45335,14 @@
       "locator": {
         "printed": "p. 426",
         "scan": "leaf n507 / PDF p. 508",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n507/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n507/mode/1up",
+        "section": "Proper body and abbreviated conclusion cue; full ending supplied from the printed formulae on pp. 123 and 226 under RG 115 a"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "10d1cca696e03da4c70fac530e6e92977eabc0e3e816412c27cce4f964675e8f"
+      "claim": "This proper-page locus supplies the body and the abbreviated conclusion cue, not the expanded ending.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "10d1cca696e03da4c70fac530e6e92977eabc0e3e816412c27cce4f964675e8f",
+      "decision_reason": "Corrects the use recorded 2026-08-31: the page prints only the cue Per Dóminum.; the expanded ending is taken from the edition's full printings on pp. 123 and 226, as for the other expanded conclusions."
     },
     {
       "id": "use.proprium.sancti-andreae-apostoli-collecta.oration-boundaries.mr1962",
@@ -45388,6 +45477,90 @@
       "decision_reason": "Edition impression and complete printed scope corrected; the legacy edition identity and historical witness dates are retained. This does not grant pending witness or collation review."
     },
     {
+      "id": "use.proprium.sancti-andreae-apostoli-postcommunio.conclusion-macro.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancti-andreae-apostoli-postcommunio",
+        "word": "w023"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Ordo/Prayers.txt [Per Dominum], lines 96–97"
+      },
+      "claim": "Exact full conclusion and separate Amen response called by the proper's macro; this is a dependency of one digital witness, not another independent witness.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN",
+      "evidence_sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    },
+    {
+      "id": "use.proprium.sancti-andreae-apostoli-postcommunio.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancti-andreae-apostoli-postcommunio",
+        "word": "w025"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "section": "Postcommunio continuing Monday after the first Sunday of the Passion, above the Tuesday heading; Per Dominum nostrum through Deus.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up"
+      },
+      "claim": "This separate Postcommunion prints the accented conclusion with no comma after Christum and the colon and uppercase Qui after tuum, ending with Deus. The composite uses nostrum through Deus.; the cue words Per Dóminum come from p. 427, and this page supplies neither the final duration nor Amen.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.sancti-andreae-apostoli-postcommunio.conclusion-rg115a.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancti-andreae-apostoli-postcommunio",
+        "word": "w023"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a; Father-addressed oration conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a supplies the full Father-addressed conclusion, ending with Amen. It controls the expansion rule, not the selected composite transcript's accents or its accidental seams.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.sancti-andreae-apostoli-postcommunio.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancti-andreae-apostoli-postcommunio",
+        "word": "w040"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "section": "Top conclusion and response before the Nativity preface dialogue; Per omnia saecula saeculorum. R. Amen.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up"
+      },
+      "claim": "The top chant line prints Per omnia saecula saeculorum and the response Amen. The composite joins musical syllable divisions and omits the response marker. Only these five words are used; the Nativity preface dialogue and body are excluded.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.sancti-andreae-apostoli-postcommunio.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -45397,12 +45570,13 @@
         "text": "proprium.sancti-andreae-apostoli-postcommunio"
       },
       "locator": {
-        "section": "pinned source key Sancti/11-30; resolved section [Postcommunio] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/11-30.txt [Postcommunio], line 53, with $Per Dominum at line 54 expanded from Ordo/Prayers.txt [Per Dominum], lines 96–97"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "9c48ca70603343e7c49b60eb57df2a1e3d13a1ed27606344865b81770f6b1ee0"
+      "claim": "The exact pinned Latin Mass reading corroborates the 44-word Postcommunion (the proper body and the full conclusion called by its macro) as a derived digital witness, bound to its raw archives; its spellings, accents and punctuation are recorded in the apparatus.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "9c48ca70603343e7c49b60eb57df2a1e3d13a1ed27606344865b81770f6b1ee0",
+      "decision_reason": "Corrects the use recorded 2026-08-31: the witness now transcribes the pinned reading exactly, names every resolved section and reference, and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.sancti-andreae-apostoli-postcommunio.mr1962",
@@ -45416,12 +45590,14 @@
       "locator": {
         "printed": "p. 427",
         "scan": "leaf n508 / PDF p. 509",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n508/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n508/mode/1up",
+        "section": "Proper body and abbreviated conclusion cue; full ending supplied from the printed formulae on pp. 123 and 226 under RG 115 a"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "ca84a049221cd0131751cf3fc540db491087a410e0b7a18aa5ac942e30168d3b"
+      "claim": "This proper-page locus supplies the body and the abbreviated conclusion cue, not the expanded ending.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "ca84a049221cd0131751cf3fc540db491087a410e0b7a18aa5ac942e30168d3b",
+      "decision_reason": "Corrects the use recorded 2026-08-31: the page prints only the cue Per Dóminum.; the expanded ending is taken from the edition's full printings on pp. 123 and 226, as for the other expanded conclusions."
     },
     {
       "id": "use.proprium.sancti-andreae-apostoli-postcommunio.oration-boundaries.mr1962",
@@ -45444,6 +45620,90 @@
       "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
     },
     {
+      "id": "use.proprium.sancti-andreae-apostoli-secreta.conclusion-macro.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancti-andreae-apostoli-secreta",
+        "word": "w022"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Ordo/Prayers.txt [Per Dominum], lines 96–97"
+      },
+      "claim": "Exact full conclusion and separate Amen response called by the proper's macro; this is a dependency of one digital witness, not another independent witness.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN",
+      "evidence_sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    },
+    {
+      "id": "use.proprium.sancti-andreae-apostoli-secreta.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancti-andreae-apostoli-secreta",
+        "word": "w024"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "section": "Postcommunio continuing Monday after the first Sunday of the Passion, above the Tuesday heading; Per Dominum nostrum through Deus.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up"
+      },
+      "claim": "This separate Postcommunion prints the accented conclusion with no comma after Christum and the colon and uppercase Qui after tuum, ending with Deus. The composite uses nostrum through Deus.; the cue words Per Dóminum come from p. 427, and this page supplies neither the final duration nor Amen.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.sancti-andreae-apostoli-secreta.conclusion-rg115a.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancti-andreae-apostoli-secreta",
+        "word": "w022"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a; Father-addressed oration conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a supplies the full Father-addressed conclusion, ending with Amen. It controls the expansion rule, not the selected composite transcript's accents or its accidental seams.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.sancti-andreae-apostoli-secreta.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancti-andreae-apostoli-secreta",
+        "word": "w039"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "section": "Top conclusion and response before the Nativity preface dialogue; Per omnia saecula saeculorum. R. Amen.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up"
+      },
+      "claim": "The top chant line prints Per omnia saecula saeculorum and the response Amen. The composite joins musical syllable divisions and omits the response marker. Only these five words are used; the Nativity preface dialogue and body are excluded.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.sancti-andreae-apostoli-secreta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -45453,12 +45713,13 @@
         "text": "proprium.sancti-andreae-apostoli-secreta"
       },
       "locator": {
-        "section": "pinned source key Sancti/11-30; resolved section [Secreta] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/11-30.txt [Secreta], line 45, with $Per Dominum at line 46 expanded from Ordo/Prayers.txt [Per Dominum], lines 96–97"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "9c48ca70603343e7c49b60eb57df2a1e3d13a1ed27606344865b81770f6b1ee0"
+      "claim": "The exact pinned Latin Mass reading corroborates the 43-word Secret (the proper body and the full conclusion called by its macro) as a derived digital witness, bound to its raw archives; its spellings, accents and punctuation are recorded in the apparatus.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "9c48ca70603343e7c49b60eb57df2a1e3d13a1ed27606344865b81770f6b1ee0",
+      "decision_reason": "Corrects the use recorded 2026-08-31: the witness now transcribes the pinned reading exactly, names every resolved section and reference, and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.sancti-andreae-apostoli-secreta.mr1962",
@@ -45472,12 +45733,14 @@
       "locator": {
         "printed": "p. 427",
         "scan": "leaf n508 / PDF p. 509",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n508/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n508/mode/1up",
+        "section": "Proper body and abbreviated conclusion cue; full ending supplied from the printed formulae on pp. 123 and 226 under RG 115 a"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "ca84a049221cd0131751cf3fc540db491087a410e0b7a18aa5ac942e30168d3b"
+      "claim": "This proper-page locus supplies the body and the abbreviated conclusion cue, not the expanded ending.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "ca84a049221cd0131751cf3fc540db491087a410e0b7a18aa5ac942e30168d3b",
+      "decision_reason": "Corrects the use recorded 2026-08-31: the page prints only the cue Per Dóminum.; the expanded ending is taken from the edition's full printings on pp. 123 and 226, as for the other expanded conclusions."
     },
     {
       "id": "use.proprium.sancti-andreae-apostoli-secreta.oration-boundaries.mr1962",
@@ -45665,6 +45928,27 @@
       "decision_reason": "Locator corrected against the page image: the text is printed on the leaves now cited, from its opening to its end."
     },
     {
+      "id": "use.proprium.sancti-bartholomaei-apostoli-graduale.andrew-reprint.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-bartholomaei-apostoli-graduale"
+      },
+      "locator": {
+        "printed": "p. 426",
+        "scan": "leaf n507 / PDF p. 508",
+        "section": "Sancti Andreæ Apostoli, Graduale Ps. 44, 17-18",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n507/mode/1up"
+      },
+      "claim": "The Mass of St Andrew prints this Gradual in full, identical in letters, accents and punctuation to page 649.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "10d1cca696e03da4c70fac530e6e92977eabc0e3e816412c27cce4f964675e8f",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.sancti-bartholomaei-apostoli-graduale.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -45674,12 +45958,13 @@
         "text": "proprium.sancti-bartholomaei-apostoli-graduale"
       },
       "locator": {
-        "section": "pinned source key Sancti/08-24; resolved section [Graduale] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/08-24.txt [Graduale], lines 29–30; the Alleluia lines 31–32 excluded"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "bfa73019a5017fb67ee02a9df2ae42c9e2ecef0342036a7f801c8a63ef5694c1"
+      "claim": "The exact pinned Latin Mass reading corroborates the 22-word Gradual as a derived digital witness, bound to its raw archives; its spellings, accents and punctuation are recorded in the apparatus.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "bfa73019a5017fb67ee02a9df2ae42c9e2ecef0342036a7f801c8a63ef5694c1",
+      "decision_reason": "Corrects the use recorded 2026-08-31: the witness now transcribes the pinned reading exactly, names every resolved section and reference, and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.sancti-bartholomaei-apostoli-graduale.mr1962",
@@ -45701,6 +45986,27 @@
       "evidence_sha256": "7b6808cf70b798b67e7f1aa1ed1aeda2765bca31987f0bbe27323d1c2fe446ea"
     },
     {
+      "id": "use.proprium.sancti-bartholomaei-apostoli-offertorium.andrew-reprint.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-bartholomaei-apostoli-offertorium"
+      },
+      "locator": {
+        "printed": "p. 426",
+        "scan": "leaf n507 / PDF p. 508",
+        "section": "Sancti Andreæ Apostoli, Antiphona ad Offertorium, Ps. 138, 17",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n507/mode/1up"
+      },
+      "claim": "The Mass of St Andrew prints this Offertory in full, identical in letters, accents and punctuation to page 650.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "10d1cca696e03da4c70fac530e6e92977eabc0e3e816412c27cce4f964675e8f",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.sancti-bartholomaei-apostoli-offertorium.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -45710,12 +46016,13 @@
         "text": "proprium.sancti-bartholomaei-apostoli-offertorium"
       },
       "locator": {
-        "section": "pinned source key Sancti/08-24; resolved section [Offertorium] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/08-24.txt [Offertorium], line 40, @Sancti/01-25 to Sancti/01-25.txt [Offertorium], line 67"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "bfa73019a5017fb67ee02a9df2ae42c9e2ecef0342036a7f801c8a63ef5694c1"
+      "claim": "The exact pinned Latin Mass reading corroborates the 13-word Offertory as a derived digital witness, bound to its raw archives; its spellings, accents and punctuation are recorded in the apparatus.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "bfa73019a5017fb67ee02a9df2ae42c9e2ecef0342036a7f801c8a63ef5694c1",
+      "decision_reason": "Corrects the use recorded 2026-08-31: the witness now transcribes the pinned reading exactly, names every resolved section and reference, and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.sancti-bartholomaei-apostoli-offertorium.mr1962",
@@ -45727,14 +46034,15 @@
         "text": "proprium.sancti-bartholomaei-apostoli-offertorium"
       },
       "locator": {
-        "printed": "p. 649",
-        "scan": "leaf n730 / PDF p. 731",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n730/mode/1up"
+        "printed": "p. 650",
+        "scan": "leaf n731 / PDF p. 732",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n731/mode/1up"
       },
       "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "7b6808cf70b798b67e7f1aa1ed1aeda2765bca31987f0bbe27323d1c2fe446ea"
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "55e0552cd0d62ffbb308271c65b6cdc3b685750af29d3a85e8c5dd996f18f6d9",
+      "decision_reason": "Locator corrected against the page image on 2026-10-07: the text is printed on p. 650, leaf n731; the earlier locator named p. 649, leaf n730. The claim is unchanged."
     },
     {
       "id": "use.proprium.sancti-bartholomaei-apostoli-postcommunio.do44667ff",
@@ -46049,6 +46357,27 @@
       "evidence_sha256": "bf7bf777c00a445ec91c8e994fefdbaa8387279f61a418869d20624e7d395fae"
     },
     {
+      "id": "use.proprium.sancti-iacobi-apostoli-introitus.andrew-reprint.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-iacobi-apostoli-introitus"
+      },
+      "locator": {
+        "printed": "p. 426",
+        "scan": "leaf n507 / PDF p. 508",
+        "section": "Sancti Andreæ Apostoli, Antiphona ad Introitum, Ps. 138, 17 and ibid., 1-2; cues ℣. Glória Patri. and Mihi.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n507/mode/1up"
+      },
+      "claim": "The Mass of St Andrew prints this Introit's antiphon and verse in full, identical in letters, accents and punctuation to page 611; the Gloria Patri and the repetition are cues on both pages (Mihi. here, Mihi autem. on page 611).",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "10d1cca696e03da4c70fac530e6e92977eabc0e3e816412c27cce4f964675e8f",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.sancti-iacobi-apostoli-introitus.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -46058,12 +46387,13 @@
         "text": "proprium.sancti-iacobi-apostoli-introitus"
       },
       "locator": {
-        "section": "pinned source key Sancti/07-25; resolved section [Introitus] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/07-25.txt [Introitus], line 16, @Sancti/02-24 to Sancti/02-24.txt [Introitus], lines 20, 22 and 24, with &Gloria at line 23 expanded from Ordo/Prayers.txt [Gloria], lines 13–14"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "5407719424535ff0515746320cee351e819a8891c6ed5d7c7acdea24c92234af"
+      "claim": "The exact pinned Latin Mass reading corroborates the 59-word Introit (the antiphon, the verse, the Gloria Patri resolved from the shared Mass prayers and the repeated antiphon) as a derived digital witness, bound to its raw archives; its spellings, accents and punctuation are recorded in the apparatus.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "5407719424535ff0515746320cee351e819a8891c6ed5d7c7acdea24c92234af",
+      "decision_reason": "Corrects the use recorded 2026-08-31: the witness now transcribes the pinned reading exactly, names every resolved section and reference, and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.sancti-iacobi-apostoli-introitus.mr1962",
@@ -81335,12 +81665,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "11467892345b7759388cc1e3e43169001214fb1412f60037de36ee2472e04525",
+      "transcription_sha256": "dd0eebcb3cee0e9cabe26949384290172b722322f99f0bf351a3e46eff9dd527",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Exact pinned digital Mass data maintained separately from this corpus, bound to the archived files, sections and references it resolves; a derived comparison, not an independent controlling print.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "saint-andrew-alleluia"
       }
     },
     {
@@ -81351,9 +81685,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "ecc24a7532e394309a07fd9aad1f224c74baf791b1f44aacfcec5cc18c8c3f3c",
+      "transcription_sha256": "676fc6d229e7dad7968e68bdf5ad522ef3c4c1c888f258af9d3fa44e04fd4b2e",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81367,12 +81701,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "c9eeceebc7bbba158fb5e64d6e8ad17e9de44cf4fa632f69d0b02abd6a4a2dd2",
+      "transcription_sha256": "a590b09c92cce516e9b9283f7039de771b0b2fc7db9d3ddec7c4fa92410dc3f2",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Exact pinned digital Mass data maintained separately from this corpus, bound to the archived files, sections and references it resolves; a derived comparison, not an independent controlling print.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.sancti-andreae-apostoli-collecta.conclusion-macro.do44667ff"
+        ],
+        "raw_binding": "saint-andrew-collect"
       }
     },
     {
@@ -81383,9 +81723,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "3dbaf9726a6d99fdafe37b7d68005d6813e7ff014e4536a8e6cc0ed7d19fc489",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "fb17a9c51e9b08cfa6a503e323f6b0d8447c642b27a0e4f447e5a092882ce681",
+      "orthography_profile": "exact-declared-composite",
+      "independence_basis": "Proper body plus prescribed full conclusion, explicitly assembled from the named loci. One controlling printed edition and one derived digital comparison; no second full printed proper witness is asserted.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81455,9 +81795,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "547ac5ace8e9ba0aaef2d043cfe57df7e934a0343f62b39bb712fdd7cb6ec5b9",
+      "transcription_sha256": "ddf6811a336bbbe223e600e50b9fa10d61b9e44fb64079e91b80361dcfbd2d62",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81511,12 +81851,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "8ba2082a33e1d39e6ccf5fc86632ac6cb75424df682b088cb153bd0d10007053",
+      "transcription_sha256": "51abc23fa2cf8de35e58cfeded7b23c445d2a42bdc524c38f3e3f60946f5b0ae",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Exact pinned digital Mass data maintained separately from this corpus, bound to the archived files, sections and references it resolves; a derived comparison, not an independent controlling print.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.sancti-andreae-apostoli-postcommunio.conclusion-macro.do44667ff"
+        ],
+        "raw_binding": "saint-andrew-postcommunion"
       }
     },
     {
@@ -81527,9 +81873,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "cee5c3909fd3295c1b8d98a655dc0702d74b8c501b25627cf8f3e4e0bf721488",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "050ddb4bf5e42661fd2b54786485beb2899bfa4c51e6de95134550e7bbdfa4c5",
+      "orthography_profile": "exact-declared-composite",
+      "independence_basis": "Proper body plus prescribed full conclusion, explicitly assembled from the named loci. One controlling printed edition and one derived digital comparison; no second full printed proper witness is asserted.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81543,12 +81889,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "13492440da4141309b2be9d1bd9ac7e0a0bee3da3af5f1eaee7bb91a0847c37a",
+      "transcription_sha256": "065738a0bf5cf78b7046c4f2a670892523716f0873a8fff266794e10dd434bc9",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Exact pinned digital Mass data maintained separately from this corpus, bound to the archived files, sections and references it resolves; a derived comparison, not an independent controlling print.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.sancti-andreae-apostoli-secreta.conclusion-macro.do44667ff"
+        ],
+        "raw_binding": "saint-andrew-secret"
       }
     },
     {
@@ -81559,9 +81911,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "72f2ef50214bf25bf40be106287655ca02b5988879f463e5a5d5f8b66e16d8dc",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "transcription_sha256": "5a2154b3d5f6c4a675fc942fb70ac7d4f5ded375255d11943e607dcaaa6434a2",
+      "orthography_profile": "exact-declared-composite",
+      "independence_basis": "Proper body plus prescribed full conclusion, explicitly assembled from the named loci. One controlling printed edition and one derived digital comparison; no second full printed proper witness is asserted.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81703,12 +82055,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "26e54802a335e4577d6842e8cd5be2bcef0ebd639a39f38c659b1d52f450a506",
+      "transcription_sha256": "92bddae4e36fdce6dfbce804f89cd76e669387b1283a990adc3721746c7de7c5",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Exact pinned digital Mass data maintained separately from this corpus, bound to the archived files, sections and references it resolves; a derived comparison, not an independent controlling print.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "saint-bartholomew-gradual"
       }
     },
     {
@@ -81719,9 +82075,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "f5f9fde84a5e296202b2151d737ca4ec7f7a48ad7f94a0a23cd34cedb74b08c0",
+      "transcription_sha256": "288681ebcb32a651fbd84ddb2345d0f8c3c560fa10b215830322bb1fe1102a37",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81735,12 +82091,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "841ee284095062c55759d6280d46b07cd1053ca260bf6a5c0d2d261a6d5b983b",
+      "transcription_sha256": "d1a13b6a68923c0bbc073e20ff368d932ca5eeb380ee8de031b356d169b0c053",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Exact pinned digital Mass data maintained separately from this corpus, bound to the archived files, sections and references it resolves; a derived comparison, not an independent controlling print.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "saint-bartholomew-offertory"
       }
     },
     {
@@ -81751,9 +82111,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "2fcd78eea30e9cb45d7964a083a324dbcd0a975c71bfd79800a677625402a30c",
+      "transcription_sha256": "9c03e58845be2a1658b85e5ce8e358d9fcc3db6c16631112f3ce153d5577aeb2",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81991,12 +82351,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "60eb36210179d88fa22a849568f93ec9818449e6a877e54757025b9bf58d222d",
+      "transcription_sha256": "3cd653b91c019d88d9cb8d28ce5e986007697555ea8fef1b4e8fc101a6fdd2d0",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Exact pinned digital Mass data maintained separately from this corpus, bound to the archived files, sections and references it resolves; a derived comparison, not an independent controlling print.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "saint-james-introit"
       }
     },
     {
@@ -82007,9 +82371,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "2f7b1282ce814c033dd921ba46d21ad9335d1e007d56bd57569b9bd4da12c8bb",
+      "transcription_sha256": "89467bd5231227ab747e5751d5ea3b148b9e1662de483bcb862d539a143a288b",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified 1962 typical-edition page image; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image; the Gloria Patri and the repeated antiphon are declared expansions of the printed cues. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -104692,17 +105056,19 @@
     {
       "id": "collation.proprium.sancti-andreae-apostoli-alleluia.mr1962-do44667ff",
       "text": "proprium.sancti-andreae-apostoli-alleluia",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "d75faf450783ee80d40b3fbe566c124385f40eb93802185ba184ecdeefec74c3",
       "witnesses": [
         "witness.proprium.sancti-andreae-apostoli-alleluia.do44667ff",
         "witness.proprium.sancti-andreae-apostoli-alleluia.mr1962"
       ],
       "apparatus": {
-        "entries": 0,
-        "classes": []
+        "entries": 3,
+        "classes": [
+          "orthography"
+        ]
       },
-      "apparatus_sha256": "516d37f776876df290eb24a4eee8102aa551646e3aab5bea0ac182563be03e0f",
+      "apparatus_sha256": "1c120b47447516bfb076229fba4c5d8172e0f5362d6b06324c590e3fa8283ca0",
       "review": {
         "status": "pending"
       }
@@ -104710,19 +105076,21 @@
     {
       "id": "collation.proprium.sancti-andreae-apostoli-collecta.mr1962-do44667ff",
       "text": "proprium.sancti-andreae-apostoli-collecta",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The 1962 St Andrew Collect in the approved Benziger printing, with its cue completed from the edition's own full printings of the conclusion",
       "selected_text_sha256": "134bdff3469c1a9cd503bae260e0dcfea8c5a7a206417ba2d625ebe31a7808e9",
       "witnesses": [
         "witness.proprium.sancti-andreae-apostoli-collecta.do44667ff",
         "witness.proprium.sancti-andreae-apostoli-collecta.mr1962"
       ],
       "apparatus": {
-        "entries": 1,
+        "entries": 7,
         "classes": [
+          "capitalization",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "a7ba0adbd21387db1d9cf2d5189aa7db030b987abd7026ecfb5fc33ba607a181",
+      "apparatus_sha256": "c3ecde619b1aaaf58f435d38bcb97f66ddf63ae8dd8758cd0f2f6e6865ebfece",
       "review": {
         "status": "pending"
       }
@@ -104750,7 +105118,7 @@
     {
       "id": "collation.proprium.sancti-andreae-apostoli-epistola.mr1962-do44667ff",
       "text": "proprium.sancti-andreae-apostoli-epistola",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "ae94a954ab354d625e793d3b300380ac51a8c2c7ed1fe03d745f5bba367a6ce2",
       "witnesses": [
         "witness.proprium.sancti-andreae-apostoli-epistola.do44667ff",
@@ -104762,7 +105130,7 @@
           "orthography"
         ]
       },
-      "apparatus_sha256": "37ec2c7f65611d3aef52da0a422afe415c16d12b80315144771889d2eccaba01",
+      "apparatus_sha256": "efd08d88e4857cae3578ac3727c15b7d5a84f05c6ee3327884b1d377f716fe66",
       "review": {
         "status": "pending"
       }
@@ -104793,19 +105161,21 @@
     {
       "id": "collation.proprium.sancti-andreae-apostoli-postcommunio.mr1962-do44667ff",
       "text": "proprium.sancti-andreae-apostoli-postcommunio",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The 1962 St Andrew Postcommunion in the approved Benziger printing, with its cue completed from the edition's own full printings of the conclusion",
       "selected_text_sha256": "f5ef0b9264836881f2a36f0dc73ad0d23e63938aea991e0b01cd376c8fc5721a",
       "witnesses": [
         "witness.proprium.sancti-andreae-apostoli-postcommunio.do44667ff",
         "witness.proprium.sancti-andreae-apostoli-postcommunio.mr1962"
       ],
       "apparatus": {
-        "entries": 2,
+        "entries": 7,
         "classes": [
+          "capitalization",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "e366b352e80b236c17fbabcc63e985f04b869f3e4cba10cf50ea8888def485cf",
+      "apparatus_sha256": "64f6f27ae1c35335483fa9ceae253f86b9ca54736759a4884206c4951b18b4de",
       "review": {
         "status": "pending"
       }
@@ -104813,20 +105183,22 @@
     {
       "id": "collation.proprium.sancti-andreae-apostoli-secreta.mr1962-do44667ff",
       "text": "proprium.sancti-andreae-apostoli-secreta",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The 1962 St Andrew Secret in the approved Benziger printing, with its cue completed from the edition's own full printings of the conclusion",
       "selected_text_sha256": "c4df2b302e589496abfe84839092d0c44065b2e04fe858b6ed85152c52455906",
       "witnesses": [
         "witness.proprium.sancti-andreae-apostoli-secreta.do44667ff",
         "witness.proprium.sancti-andreae-apostoli-secreta.mr1962"
       ],
       "apparatus": {
-        "entries": 2,
+        "entries": 10,
         "classes": [
+          "accent",
+          "capitalization",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "4d1d147c6cd147cdf75e8d8b37f87e9dae6ec9d3c70f970a1d064b84ffe4950e",
+      "apparatus_sha256": "339458a4e2ea7369592338ff952a4c44685a9222ee7e3bd4794014627f7eb4e6",
       "review": {
         "status": "pending"
       }
@@ -104916,17 +105288,19 @@
     {
       "id": "collation.proprium.sancti-bartholomaei-apostoli-graduale.mr1962-do44667ff",
       "text": "proprium.sancti-bartholomaei-apostoli-graduale",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "c24e4f64d134f788cb0c7539a3c7d0c325b2cd663125fa79fb819b483daacfd6",
       "witnesses": [
         "witness.proprium.sancti-bartholomaei-apostoli-graduale.do44667ff",
         "witness.proprium.sancti-bartholomaei-apostoli-graduale.mr1962"
       ],
       "apparatus": {
-        "entries": 0,
-        "classes": []
+        "entries": 1,
+        "classes": [
+          "accent"
+        ]
       },
-      "apparatus_sha256": "8adb44ecb60767805c816e6017d1929d3662bc3c314fd378683467fe9ea68106",
+      "apparatus_sha256": "b9b865eda1e6c522ffd82ce480a28841b180a5878139a671613757e6c3358554",
       "review": {
         "status": "pending"
       }
@@ -104934,7 +105308,7 @@
     {
       "id": "collation.proprium.sancti-bartholomaei-apostoli-offertorium.mr1962-do44667ff",
       "text": "proprium.sancti-bartholomaei-apostoli-offertorium",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "570ec2e050dfcf25e6806eb887616d35d09e4dca0185a329fdc15518dbfaf12b",
       "witnesses": [
         "witness.proprium.sancti-bartholomaei-apostoli-offertorium.do44667ff",
@@ -104944,7 +105318,7 @@
         "entries": 0,
         "classes": []
       },
-      "apparatus_sha256": "817e957a0ad1bda511e45261e90b12e1c8b379c11c5b306dc4473f44ad4f3c7e",
+      "apparatus_sha256": "90117a9c9a2c4b7f8baaf8545de893ca28dad4571e60c310e5bb389336d50a22",
       "review": {
         "status": "pending"
       }
@@ -105094,7 +105468,7 @@
     {
       "id": "collation.proprium.sancti-iacobi-apostoli-introitus.mr1962-do44667ff",
       "text": "proprium.sancti-iacobi-apostoli-introitus",
-      "recension": "The 1962 typical-edition component, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography; the Gloria Patri and the repeated antiphon are declared expansions of the printed cues",
       "selected_text_sha256": "8e5a31378e01bb6901294a30698e5c6c39b5dd681490d21cd7635fe337570318",
       "witnesses": [
         "witness.proprium.sancti-iacobi-apostoli-introitus.do44667ff",
@@ -105106,7 +105480,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "105ae925cb18b46a4d09da538e86f4de5ebb8fa373b0682ba07b1a9e64402f90",
+      "apparatus_sha256": "a2472efd3d106a8254af68e66859780803ec16ed41f63359f1b248b4aa0025df",
       "review": {
         "status": "pending"
       }
