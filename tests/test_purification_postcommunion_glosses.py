@@ -18,6 +18,12 @@ TEXT = "proprium.purificatio-beatae-mariae-virginis-postcommunio"
         ("pl", ["w023", "w024"], "w024", "uczynił"),
         ("en", ["w010", "w011"], "w010", "our restoration’s"),
         ("en", ["w023", "w024"], "w024", "You may make"),
+        ("en", ["w003", "w004"], "w003", "our God"),
+        ("en", ["w028", "w029"], "w028", "our Lord"),
+        ("en", ["w030", "w031"], "w030", "Jesus Christ"),
+        ("en", ["w032", "w033"], "w032", "Your Son"),
+        ("en", ["w034", "w035", "w036", "w037", "w038"], "w036", "who lives and reigns with You"),
+        ("en", ["w044", "w045", "w046", "w047"], "w046", "forever and ever"),
     ],
 )
 def test_minimal_construction(language, words, anchor, gloss):
@@ -32,16 +38,12 @@ def test_minimal_construction(language, words, anchor, gloss):
 @pytest.mark.parametrize(
     "word,gloss",
     [
+        ("w006", "the most holy"),
         ("w012", "safeguard"),
         ("w013", "You have bestowed"),
         ("w020", "now"),
         ("w022", "a remedy"),
         ("w026", "in the future"),
-        ("w033", "Your"),
-        ("w035", "with You"),
-        ("w036", "lives"),
-        ("w038", "reigns"),
-        ("w044", "for"),
     ],
 )
 def test_contextual_english_realization(word, gloss):
@@ -58,8 +60,8 @@ def test_every_word_has_one_provider(language):
     assert list(layer["words"]) == [w["id"] for s in core["segments"] for w in s["words"]]
     assert interlinear.check(core, layer) == []
     groups = layer["segments"]["s01"]["alignments"]
-    assert len(groups) == (2 if language == "pl" else 3)
-    assert sum(len(a["words"]) for a in groups) == (5 if language == "pl" else 6)
+    assert len(groups) == (2 if language == "pl" else 9)
+    assert sum(len(a["words"]) for a in groups) == (5 if language == "pl" else 23)
     assert layer["words"]["w048"]["gloss"] == "Amen"
     assert layer["segments"]["s02"]["translation"] == "Amen."
     assert not layer["segments"]["s02"].get("alignments")

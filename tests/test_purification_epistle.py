@@ -28,17 +28,17 @@ LINES = {
         " | starodawne | mówi | Pan | wszechmogący"
     ),
     "en": (
-        "Thus | says | the Lord | God | Behold | I | am sending | angel | My | and | shall prepare"
-        " | the way | before | face | My | And | at once | will come | to | temple | His own"
+        "Thus | says | the Lord | God | Behold | I | am sending | My angel | and | he shall prepare"
+        " | the way | before | My face | And | at once | will come | to | His own temple"
         " | the Ruler | whom | you | seek | and | the Angel | of the Covenant | whom | you | desire"
-        " | Behold | comes | says | the Lord | of hosts | and | who | will be able | to comprehend"
-        " | the day | of the coming | His | and | who | will stand | to | see | Him"
+        " | Behold | He comes | says | the Lord | of hosts | and | who | will be able"
+        " | to comprehend | the day | of His coming | and | who | will stand | to | see | Him"
         " | For He Himself is | like | fire | refining | and | like | herb | of fullers | and"
         " | will sit | refining | and | purifying | silver | and | will purify | the sons | of Levi"
-        " | and | will refine | them | like | gold | and | like | silver | and | shall be"
-        " | to the Lord | offering | sacrifices | in | justice | And | will please | the Lord"
-        " | the sacrifice | of Judah | and | Jerusalem | as | the days | of old | and | as | years"
-        " | ancient | says | the Lord | almighty"
+        " | and | will refine | them | like | gold | and | like | silver | and | they shall be"
+        " | to the Lord | offering | sacrifices | in | justice | And | it will please | the Lord"
+        " | the sacrifice | of Judah | and | Jerusalem | as | the days | of old | and | as"
+        " | ancient years | says | the Lord | almighty"
     ),
 }
 
@@ -67,11 +67,19 @@ def test_selected_complete_line(language):
     assert line(doc, layers[language]) == LINES[language].split(" | ")
 
 
-def test_only_the_existing_english_group_and_no_zero():
+def test_selected_english_groups_and_no_polish_group():
+    # Possessives and an adjective grouped with their nouns (the line criterion of 2026-10-07).
     _, layers = store.load(ROOT, TEXT)
     assert not [g for s in layers["pl"]["segments"].values() for g in s.get("alignments", [])]
     groups = [g for s in layers["en"]["segments"].values() for g in s.get("alignments", [])]
-    assert groups == [{"words": ["w050", "w051"], "anchor": "w050", "gloss": "For He Himself is"}]
+    assert groups == [
+        {"words": ["w008", "w009"], "anchor": "w008", "gloss": "My angel"},
+        {"words": ["w014", "w015"], "anchor": "w014", "gloss": "My face"},
+        {"words": ["w020", "w021"], "anchor": "w020", "gloss": "His own temple"},
+        {"words": ["w042", "w043"], "anchor": "w042", "gloss": "of His coming"},
+        {"words": ["w050", "w051"], "anchor": "w050", "gloss": "For He Himself is"},
+        {"words": ["w096", "w097"], "anchor": "w096", "gloss": "ancient years"},
+    ]
 
 
 def test_retained_latin_analyses():

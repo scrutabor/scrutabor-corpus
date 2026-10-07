@@ -78,6 +78,14 @@ def test_selected_direct_realization(language, number, gloss):
     assert store.raw_layer(ROOT, language, TEXT)["words"][wid(number)]["gloss"] == gloss
 
 
+def test_polish_child_jesus_is_one_group():
+    # *puerum Iesum*: the apposition as one caption, not a genitive (*Dzieciątko Jezusa*).
+    raw = store.raw_layer(ROOT, "pl", TEXT)
+    ids = {"w100", "w101"}
+    matches = [g for g in raw["segments"]["s01"]["alignments"] if set(g["words"]) & ids]
+    assert matches == [{"words": ["w100", "w101"], "anchor": "w100", "gloss": "Dzieciątko Jezus"}]
+
+
 @pytest.mark.parametrize("language", ["pl", "en"])
 def test_complete_provider_partition_and_contextual_dependencies(language):
     doc, layers = store.load(ROOT, TEXT)
@@ -90,7 +98,7 @@ def test_complete_provider_partition_and_contextual_dependencies(language):
         len(groups),
         sum(len(g["words"]) for g in groups),
         sum("gloss" in w for w in raw["words"].values()),
-    ) == ((4, 8, 145) if language == "pl" else (17, 43, 110))
+    ) == ((5, 10, 143) if language == "pl" else (17, 43, 110))
 
     def actual(first, last):
         return [
@@ -307,5 +315,6 @@ def test_valid_contextual_alternatives_are_not_blanket_guard_failures(mode):
         next(g for g in groups if "w099" in g["words"])["gloss"] = (
             "His parents brought in the Child Jesus"
         )
+    groups.sort(key=lambda g: g["words"][0])
     assert interlinear.check(doc, layer) == []
     assert (polish.check(doc, layer) if language == "pl" else english.check(doc, layer)) == []

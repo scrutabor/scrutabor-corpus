@@ -41,20 +41,16 @@ SHARED = {
     "en": [
         "We have received",
         "God",
-        "mercy",
-        "Your",
+        "Your mercy",
         "in",
         "the midst",
-        "of temple",
-        "Your",
+        "of Your temple",
         "according to",
-        "name",
-        "Your",
+        "Your name",
         "God",
         "so",
         "also",
-        "praise",
-        "Your",
+        "Your praise",
         "to",
         "the ends",
         "of the earth",
@@ -86,12 +82,9 @@ LINES = {
         "we have seen",
         "in",
         "the city",
-        "of God",
-        "our",
+        "of our God",
         "on",
-        "the mountain",
-        "holy",
-        "His",
+        "His holy mountain",
     ],
     (ALLELUIA, "pl"): [
         "Alleluja",
@@ -134,12 +127,9 @@ LINES = {
         "wieków",
     ],
     (OFFERTORY, "en"): [
-        "Poured out",
-        "has been",
-        "grace",
+        "Grace has been poured out",
         "upon",
-        "lips",
-        "your",
+        "your lips",
         "therefore",
         "God has blessed you",
         "for",
@@ -152,7 +142,7 @@ LINES = {
 }
 INTROIT_ANTIPHON = {
     "pl": SHARED["pl"] + ["sprawiedliwości", "pełna", "jest", "prawica", "Twoja"],
-    "en": SHARED["en"] + ["of justice", "full", "is", "right hand", "Your"],
+    "en": SHARED["en"] + ["full of justice", "is", "Your right hand"],
 }
 INTROIT_VERSE = {
     "pl": [
@@ -174,27 +164,52 @@ INTROIT_VERSE = {
         "Great",
         "the Lord",
         "and",
-        "praiseworthy",
-        "exceedingly",
+        "exceedingly praiseworthy",
         "in",
         "the city",
-        "of God",
-        "our",
+        "of our God",
         "on",
-        "the mountain",
-        "holy",
-        "His",
+        "His holy mountain",
     ],
 }
-# Only agency is regrouped; Latin-order possessives and adjectives stay direct.
+# Agency, possessives, adjectives and genitives are grouped where the English line needs
+# them (the line criterion of 2026-10-07).
 GROUPS = {
-    GRADUAL: [],
+    GRADUAL: [
+        ([3, 4], 3, "Your mercy"),
+        ([7, 8], 7, "of Your temple"),
+        ([10, 11], 10, "Your name"),
+        ([15, 16], 15, "Your praise"),
+        ([27, 28], 27, "of our God"),
+        ([30, 31, 32], 30, "His holy mountain"),
+    ],
     ALLELUIA: [
         ([4, 5], 5, "was carrying the Child"),
         ([8, 9], 9, "was ruling the old man"),
     ],
-    OFFERTORY: [([8, 9, 10], 8, "God has blessed you")],
-    INTROIT: [([43, 44], 43, "to the Holy Spirit")],
+    OFFERTORY: [
+        ([1, 2, 3], 1, "Grace has been poured out"),
+        ([5, 6], 5, "your lips"),
+        ([8, 9, 10], 8, "God has blessed you"),
+    ],
+    INTROIT: [
+        ([3, 4], 3, "Your mercy"),
+        ([7, 8], 7, "of Your temple"),
+        ([10, 11], 10, "Your name"),
+        ([15, 16], 15, "Your praise"),
+        ([20, 21], 21, "full of justice"),
+        ([23, 24], 23, "Your right hand"),
+        ([28, 29], 28, "exceedingly praiseworthy"),
+        ([32, 33], 32, "of our God"),
+        ([35, 36, 37], 35, "His holy mountain"),
+        ([43, 44], 43, "to the Holy Spirit"),
+        ([60, 61], 60, "Your mercy"),
+        ([64, 65], 64, "of Your temple"),
+        ([67, 68], 67, "Your name"),
+        ([72, 73], 72, "Your praise"),
+        ([77, 78], 78, "full of justice"),
+        ([80, 81], 80, "Your right hand"),
+    ],
 }
 
 
@@ -524,7 +539,7 @@ def _mutate(layer, text, mode):
         for w, g in {"w008": "has blessed", "w009": "you", "w010": "God"}.items():
             layer["words"][w]["gloss"] = g
     elif mode == "archaic-possessive":
-        layer["words"]["w004"]["gloss"] = "Thy"
+        next(g for g in groups if g["anchor"] == "w003")["gloss"] = "Thy mercy"
     elif mode == "silent-also":
         layer["words"]["w023"].pop("gloss")
         groups.append({"words": ["w023"], "reason": "idiom"})
@@ -567,7 +582,7 @@ def test_escaped_classes_pass_generic_checks_but_not_context(text, language, mod
         (ALLELUIA, "en", {"w009": "was guiding the old man"}),
         (GRADUAL, "en", {"w014": "too", "w023": "too"}),
         (GRADUAL, "pl", {"w023": "też"}),
-        (OFFERTORY, "en", {"w006": "Your", "w008": "God has blessed You"}),
+        (OFFERTORY, "en", {"w005": "Your lips", "w008": "God has blessed You"}),
     ],
 )
 def test_legitimate_alternatives_remain_valid(text, language, changes):
@@ -585,17 +600,14 @@ def test_legitimate_alternatives_remain_valid(text, language, changes):
 
 
 @pytest.mark.parametrize("text,pairs", [(GRADUAL, [3, 7, 10, 15]), (INTROIT, [3, 7, 10, 15, 23])])
-def test_grouped_possessives_remain_a_legitimate_alternative(text, pairs):
+def test_possessives_are_grouped_with_their_nouns(text, pairs):
     doc, layers = store.load(ROOT, text)
-    layer = deepcopy(layers["en"])
-    groups = layer["segments"]["s01"].setdefault("alignments", [])
+    layer = layers["en"]
+    groups = {g["words"][0]: g for g in layer["segments"]["s01"].get("alignments", [])}
     for n in pairs:
-        ids = [wid(n), wid(n + 1)]
-        noun = layer["words"][ids[0]].pop("gloss")
-        assert layer["words"][ids[1]].pop("gloss") == "Your"
-        gloss = noun.replace("of ", "of Your ") if noun.startswith("of ") else "Your " + noun
-        groups.append({"words": ids, "anchor": ids[0], "gloss": gloss})
-    groups.sort(key=lambda g: g["words"][0])
+        group = groups[wid(n)]
+        assert group["words"] == [wid(n), wid(n + 1)] and "Your" in group["gloss"]
+        assert all("gloss" not in layer["words"][w] for w in group["words"])
     assert not interlinear.check(doc, layer)
     assert not english.check(doc, layer)
 

@@ -24,21 +24,16 @@ LINES = {
         "Almighty",
         "eternal",
         "God",
-        "majesty",
-        "Your",
+        "Your majesty",
         "as suppliants",
         "we beseech",
         "that",
         "as",
-        "only-begotten",
-        "Son",
-        "Your",
+        "Your only-begotten Son",
         "this",
         "day",
         "with",
-        "of our",
-        "flesh",
-        "the substance",
+        "the substance of our flesh",
         "in",
         "the temple",
         "was",
@@ -48,33 +43,20 @@ LINES = {
         "may You cause",
         "to be presented to You with purified minds",
         "Through",
-        "the same",
-        "Lord",
-        "our",
-        "Jesus",
-        "Christ",
-        "Son",
-        "Your",
-        "Who",
-        "with You",
-        "lives",
-        "and",
-        "reigns",
+        "this same Jesus Christ, our Lord",
+        "Your Son",
+        "who lives and reigns with You",
         "in",
         "the unity",
         "of the Holy Spirit",
         "God",
-        "for",
-        "all",
-        "ages",
-        "of ages",
+        "forever and ever",
         "Amen",
     ],
     (SECRET, "en"): [
         "Graciously hear",
         "Lord",
-        "prayers",
-        "our",
+        "our prayers",
         "and",
         "that",
         "worthy",
@@ -91,34 +73,39 @@ LINES = {
         "loving-kindness",
         "bestow",
         "Through",
-        "Lord",
-        "our",
-        "Jesus",
-        "Christ",
-        "Son",
-        "Your",
-        "Who",
-        "with You",
-        "lives",
-        "and",
-        "reigns",
+        "our Lord",
+        "Jesus Christ",
+        "Your Son",
+        "who lives and reigns with You",
         "in",
         "the unity",
         "of the Holy Spirit",
         "God",
-        "for",
-        "all",
-        "ages",
-        "of ages",
+        "forever and ever",
         "Amen",
     ],
 }
 GROUPS = {
     COLLECT: [
+        ([4, 5], 4, "Your majesty"),
+        ([10, 11, 12], 11, "Your only-begotten Son"),
+        ([16, 17, 18], 18, "the substance of our flesh"),
         ([26, 27, 28, 29], 29, "to be presented to You with purified minds"),
+        ([31, 32, 33, 34, 35], 32, "this same Jesus Christ, our Lord"),
+        ([36, 37], 36, "Your Son"),
+        ([38, 39, 40, 41, 42], 40, "who lives and reigns with You"),
         ([45, 46], 45, "of the Holy Spirit"),
+        ([48, 49, 50, 51], 50, "forever and ever"),
     ],
-    SECRET: [([34, 35], 34, "of the Holy Spirit")],
+    SECRET: [
+        ([3, 4], 3, "our prayers"),
+        ([21, 22], 21, "our Lord"),
+        ([23, 24], 23, "Jesus Christ"),
+        ([25, 26], 25, "Your Son"),
+        ([27, 28, 29, 30, 31], 29, "who lives and reigns with You"),
+        ([34, 35], 34, "of the Holy Spirit"),
+        ([37, 38, 39, 40], 39, "forever and ever"),
+    ],
 }
 ARCHAIC = ("Thy", "Thee", "Thou", "liveth", "reigneth", "Holy Ghost", "world without end")
 
@@ -147,10 +134,10 @@ def test_selected_english_line(text):
 
 
 @pytest.mark.parametrize("text", [COLLECT, SECRET])
-def test_only_the_split_relation_is_grouped(text):
-    # Latin-order possessives, adjectives and genitives stay direct; only the
-    # dative of præsentári, separated from it by the ablative, is regrouped, and
-    # the name of the Holy Spirit is one alignment.
+def test_selected_english_groups(text):
+    # The dative of præsentári, separated from it by the ablative, is regrouped;
+    # possessives, the genitive of *carnis* and the conclusion are grouped where the
+    # English line needs them (the line criterion of 2026-10-07).
     _, layers = store.load(ROOT, text)
     groups = [g for s in layers["en"]["segments"].values() for g in s.get("alignments", [])]
     assert groups == [
@@ -314,7 +301,8 @@ def test_mixed_register_passes_generic_checks_but_not_this_file():
         "Through our Lord Jesus Christ, Thy Son, who liveth and reigneth with Thee in the unity of "
         "the Holy Ghost, God,",
     )
-    layer["words"]["w026"]["gloss"] = "Thy"
+    son = next(g for g in layer["segments"]["s01"]["alignments"] if g["anchor"] == "w025")
+    son["gloss"] = "Thy Son"
     assert not interlinear.check(doc, layer)
     assert not english.check(doc, layer)
     prose = " ".join(s["translation"] for s in layer["segments"].values())
