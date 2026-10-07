@@ -109,7 +109,7 @@ def test_literal_printed_seams_do_not_change_the_selected_latin_or_delivery():
     assert printed == selected.replace("Deus, per ómnia", "Deus. Per ómnia")
     assert printed.startswith("Omnípotens")
     assert "Editio iuxta typicam" in meta["description"]
-    assert "w057–w072 from p. 123" in meta["composite"]
+    assert "w058–w072 from p. 123" in meta["composite"]
     assert "w073–w077 from p. 226" in meta["composite"]
 
 

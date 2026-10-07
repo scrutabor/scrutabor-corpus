@@ -114,7 +114,7 @@ def test_latin_and_ritual_are_not_rewritten_to_hide_the_printed_seam():
     assert len(printed.split()) == 51
     assert "Editio iuxta typicam" in meta["description"]
     assert "not one continuous Holy Name printing" in meta["orthography"]
-    assert "w031–w046 from p. 123" in meta["composite"]
+    assert "w032–w046 from p. 123" in meta["composite"]
     assert "w047–w051 from p. 226" in meta["composite"]
 
 

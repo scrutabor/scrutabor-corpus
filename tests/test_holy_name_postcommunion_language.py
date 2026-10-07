@@ -15,7 +15,7 @@ TEXT = "proprium.sanctissimi-nominis-iesu-postcommunio"
 GROUPS = [
     ("pl", 9, 10, 9, ("wejrzyj łaskawie na", "wejrzyj miłościwie na")),
     ("pl", 34, 35, 35, ("racz przyjąć",)),
-    ("pl", 45, 47, 47, ("z tytułu wiecznego przeznaczenia",)),
+    ("pl", 45, 47, 47, ("na mocy wiecznego przeznaczenia",)),
     ("pl", 51, 52, 51, ("są zapisane",)),
     ("en", 9, 10, 9, ("look graciously upon", "look with favor upon")),
     ("en", 11, 12, 11, ("our desires",)),
@@ -155,9 +155,10 @@ def test_polish_manner_and_content_link_do_not_change_the_received_prose():
     assert layer["words"]["w030"] == {"gloss": "z pogodnym"}
     assert layer["words"]["w048"] == {"gloss": "radowali się, że"}
     prose = layer["segments"]["s01"]["translation"]
-    assert "z tytułu wiecznego przeznaczenia nasze imiona są zapisane w niebie" in prose
+    assert "na mocy wiecznego przeznaczenia nasze imiona są zapisane w niebie" in prose
+    # The verse and the w045–w047 group read "na mocy" for the administrative "z tytułu".
     assert canonical_hash(prose) == (
-        "89b28f08aa8e697fc6bd5f095a6117032a2590c0681ae892634dbd624eba1fad"
+        "653950a5a16348fd7e2398ea2af740ceb5aa0490bd621981330e8a10e32548cf"
     )
 
 
