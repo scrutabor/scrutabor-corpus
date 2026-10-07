@@ -36,12 +36,6 @@ FIXTURES: dict[str, Any] = {
         "en": [
             {
                 "segment": "s02",
-                "words": ["w002", "w003", "w004", "w005"],
-                "anchor": "w005",
-                "gloss": "it is right and just",
-            },
-            {
-                "segment": "s02",
                 "words": ["w010", "w011", "w012", "w013", "w014", "w015"],
                 "anchor": "w015",
                 "gloss": "always and everywhere give thanks to You",
@@ -132,7 +126,7 @@ FIXTURES: dict[str, Any] = {
             "groups": {"s01": [], "s02": [], "s03": [], "s04": [], "s05": [], "s06": [], "s07": []},
         },
         "en": {
-            "before_sha256": "7c5432f42977fe135bc7bf1de3ec91656d19fc49863ea62b90441aa2fa8af0d8",
+            "before_sha256": "063a0f8000361af8e011c8ef145b4125c4f6a5a2e426eb2246dddc55d5bd03d1",
             "before_digest": "18e85ee11ea180a304e4b1061d83781ad4fa87f13e29b71b7a5fb1ae6f03fdf0",
             "words": {
                 "w002": {"gloss": "right"},
@@ -512,7 +506,7 @@ def assert_provenance(core, layer, records, english_records):
 
 
 def test_exact_bounded_population():
-    assert len(GROUPS["en"]) == 13 and sum(len(g["words"]) for g in GROUPS["en"]) == 43
+    assert len(GROUPS["en"]) == 12 and sum(len(g["words"]) for g in GROUPS["en"]) == 39
     assert len(GROUPS["pl"]) == 2 and sum(len(g["words"]) for g in GROUPS["pl"]) == 6
     assert len(BASELINES["en"]["words"]) == 44 and len(BASELINES["pl"]["words"]) == 9
     assert sum(len(g) for g in BASELINES["en"]["groups"].values()) == 4

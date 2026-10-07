@@ -89,7 +89,7 @@ FIXTURES: dict[str, Any] = {
     ],
     "baselines": {
         "apostolorum": {
-            "protected_digest": "16eca2ad6f9d3a24ed41061f98610d26b80000b6eeca0b929013564b5a23defb",
+            "protected_digest": "5bb196c048a922e07a5a269d033098993e707a09f5ff97020fd3737d41ae8a9b",
             "words": {},
             "had_alignments": {"s04": True},
             "absorbed": {"s04": []},
@@ -98,7 +98,7 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "ascensionis": {
-            "protected_digest": "0d9de544a327cf33f8f646cf3d4a68798174b57edff12db87313aa7bb8205e11",
+            "protected_digest": "63fa3d28ea0a15a19a566d2b68f2503f7dbf924ba9a277139291ee5405300fa0",
             "words": {
                 "w042": {"gloss": "that"},
                 "w043": {"gloss": "us"},
@@ -115,7 +115,7 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "d-n-iesu-christi-regis": {
-            "protected_digest": "88077ae262680274331b3a45267033e94b5938da619cfd9209872e005b73d38a",
+            "protected_digest": "296f6177d1132a103d257fe2a2e22151855e3490a177a1e0697020c418e5e2bd",
             "words": {
                 "w053": {"gloss": "His"},
                 "w054": {"gloss": "having been subjected"},
@@ -138,7 +138,7 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "epiphaniae": {
-            "protected_digest": "0d6b47b756252c50c42267642caa3c3a8e29c89fd69c473a51d24db90276922d",
+            "protected_digest": "8bc618957f1e2f8dc87ae5e753b6654f853e84489b123821e2516c8da239009a",
             "words": {
                 "w031": {"gloss": "new"},
                 "w032": {"gloss": "us"},
@@ -154,7 +154,7 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "nativitatis": {
-            "protected_digest": "2b1e99b89ace48c1ef63ba8b8b9c05fbd33ddd064f8b4808ab4cb570601acd92",
+            "protected_digest": "afb21ea161957dc9f6bf3ccfe7e4ea79d2e4cd49aa31a0c715838e4a200f600a",
             "words": {
                 "w027": {"gloss": "new"},
                 "w028": {"gloss": "of mind"},
@@ -172,7 +172,7 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "paschalis-in-die": {
-            "protected_digest": "4511ee06c90ad90ac51eb09ba80d917a5f1f3f8a94716f3a7778617ecb7c5f0c",
+            "protected_digest": "692910b77020e92ae1aa5f1e55f449a2bbd021fdcbf482135ce1b2f1e3bf576a",
             "words": {
                 "w021": {"gloss": "when"},
                 "w022": {"gloss": "Pasch"},
@@ -239,7 +239,7 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "paschalis-in-nocte": {
-            "protected_digest": "ac47dd630ec6a43674f1de9cea1a291310bcef94ead164f3ce1c884e610201f1",
+            "protected_digest": "6a1592df0d7ac3975611c6647374724b4fa36c63f76b07f7e1beb9d2d716bfb9",
             "words": {
                 "w021": {"gloss": "when"},
                 "w022": {"gloss": "Pasch"},
@@ -308,7 +308,7 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "sancti-ioseph-in-festivitate": {
-            "protected_digest": "9898839d9fc959764a9139ddaf7f137114416eaab1f55ea91e53bc9b51c566fb",
+            "protected_digest": "812e55e2f74904700dbbfea9c25f90430d9c7895043849220ba131325cd634cd",
             "words": {"w062": {"gloss": "with a father’s"}, "w063": {"gloss": "stead"}},
             "had_alignments": {"s05": True},
             "absorbed": {"s05": []},
@@ -317,7 +317,7 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "sancti-ioseph-in-solemnitate": {
-            "protected_digest": "57765a8dc96aa041f6a9ba26e342d4f7fa67685bc6d836f7d4ce07be05131d16",
+            "protected_digest": "f1fe102c2dc2e309dda99fef1791b44a85d1738004ae3611669183d83bec10dd",
             "words": {"w062": {"gloss": "with a father’s"}, "w063": {"gloss": "stead"}},
             "had_alignments": {"s05": True},
             "absorbed": {"s05": []},
@@ -326,7 +326,7 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "sanctissimae-trinitatis": {
-            "protected_digest": "2ec33ed45ef3c86f3d593d269b9078da1c74717a406f78feb4907717ee6020b0",
+            "protected_digest": "3cb0d1c96de85951d3fc8c51e21e5f277974194eae559e4ca39dd2d373374b6d",
             "words": {"w051": {"gloss": "by the revelation of"}, "w052": {"gloss": "Your"}},
             "had_alignments": {"s05": True},
             "absorbed": {"s05": []},

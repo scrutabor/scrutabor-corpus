@@ -58,7 +58,8 @@ def test_english_relative_and_prayer_possessor_are_explicitly_connected():
             "anchor": "w017",
             "gloss": "we may also be protected by the prayers of the one "
             "in whose commemoration we have received these gifts",
-        }
+        },
+        {"words": ["w034", "w035"], "anchor": "w034", "gloss": "of the Holy Spirit"},
     ]
 
 

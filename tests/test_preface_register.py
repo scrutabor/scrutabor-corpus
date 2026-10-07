@@ -119,12 +119,18 @@ ORDERS = {
 def test_angelic_orders_have_one_name_in_word_help(language):
     found = {}
     for name in NAMES:
-        layer = load("languages", language, "texts/ordinarium", f"{name}.json")["words"]
-        for words in segments(name).values():
+        data = load("languages", language, "texts/ordinarium", f"{name}.json")
+        layer = data["words"]
+        for sid, words in segments(name).items():
+            groups = (data["segments"].get(sid) or {}).get("alignments") or []
             for w in words:
                 form = norm(w["form"])
                 if form in ORDERS[language]:
-                    found.setdefault(form, set()).add(layer[w["id"]]["gloss"])
+                    gloss = layer[w["id"]].get("gloss")
+                    if gloss is None:  # inside a clause group such as "the Dominions adore"
+                        caption = next(g["gloss"] for g in groups if w["id"] in g["words"])
+                        gloss = next(n for n in sorted(ORDERS[language][form]) if n in caption)
+                    found.setdefault(form, set()).add(gloss)
     assert found == ORDERS[language]
 
 

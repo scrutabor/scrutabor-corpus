@@ -194,7 +194,7 @@ GROUPS = {
         ([8, 9], 9, "was ruling the old man"),
     ],
     OFFERTORY: [([8, 9, 10], 8, "God has blessed you")],
-    INTROIT: [],
+    INTROIT: [([43, 44], 43, "to the Holy Spirit")],
 }
 
 
@@ -595,6 +595,7 @@ def test_grouped_possessives_remain_a_legitimate_alternative(text, pairs):
         assert layer["words"][ids[1]].pop("gloss") == "Your"
         gloss = noun.replace("of ", "of Your ") if noun.startswith("of ") else "Your " + noun
         groups.append({"words": ids, "anchor": ids[0], "gloss": gloss})
+    groups.sort(key=lambda g: g["words"][0])
     assert not interlinear.check(doc, layer)
     assert not english.check(doc, layer)
 

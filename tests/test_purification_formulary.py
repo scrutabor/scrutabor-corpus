@@ -126,19 +126,18 @@ def test_every_preface_opening_reads_as_one_polish_clause():
             "abyśmy",
             "składali",
         ), text
-        expected_agere = "give"
-        if text == "ordinarium.praefatio-sanctissimae-trinitatis":
-            assert (nos, agere) == ("w009", "w015"), text
-            members = [wid(n) for n in range(10, 16)]
-            expected_agere = "always and everywhere give thanks to You"
-            touching = [
-                group
-                for segment in en["segments"].values()
-                for group in segment.get("alignments", [])
-                if set(group["words"]) & set(members)
-            ]
-            assert touching == [{"words": members, "anchor": agere, "gloss": expected_agere}], text
-            assert all("gloss" not in en["words"][word] for word in members), text
+        # Every English opening groups the split *tibi … ágere* (the Trinity preface's form).
+        assert (nos, agere) == ("w009", "w015"), text
+        members = [wid(n) for n in range(10, 16)]
+        expected_agere = "always and everywhere give thanks to You"
+        touching = [
+            group
+            for segment in en["segments"].values()
+            for group in segment.get("alignments", [])
+            if set(group["words"]) & set(members)
+        ]
+        assert touching == [{"words": members, "anchor": agere, "gloss": expected_agere}], text
+        assert all("gloss" not in en["words"][word] for word in members), text
         assert (interlinear.effective_gloss(en, nos), interlinear.effective_gloss(en, agere)) == (
             "that we should",
             expected_agere,

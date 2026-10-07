@@ -62,8 +62,7 @@ LINES = {
         "reigns",
         "in",
         "the unity",
-        "of the Spirit",
-        "Holy",
+        "of the Holy Spirit",
         "God",
         "for",
         "all",
@@ -105,8 +104,7 @@ LINES = {
         "reigns",
         "in",
         "the unity",
-        "of the Spirit",
-        "Holy",
+        "of the Holy Spirit",
         "God",
         "for",
         "all",
@@ -116,8 +114,11 @@ LINES = {
     ],
 }
 GROUPS = {
-    COLLECT: [([26, 27, 28, 29], 29, "to be presented to You with purified minds")],
-    SECRET: [],
+    COLLECT: [
+        ([26, 27, 28, 29], 29, "to be presented to You with purified minds"),
+        ([45, 46], 45, "of the Holy Spirit"),
+    ],
+    SECRET: [([34, 35], 34, "of the Holy Spirit")],
 }
 ARCHAIC = ("Thy", "Thee", "Thou", "liveth", "reigneth", "Holy Ghost", "world without end")
 
@@ -148,7 +149,8 @@ def test_selected_english_line(text):
 @pytest.mark.parametrize("text", [COLLECT, SECRET])
 def test_only_the_split_relation_is_grouped(text):
     # Latin-order possessives, adjectives and genitives stay direct; only the
-    # dative of præsentári, separated from it by the ablative, is regrouped.
+    # dative of præsentári, separated from it by the ablative, is regrouped, and
+    # the name of the Holy Spirit is one alignment.
     _, layers = store.load(ROOT, text)
     groups = [g for s in layers["en"]["segments"].values() for g in s.get("alignments", [])]
     assert groups == [

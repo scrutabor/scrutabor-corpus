@@ -58,8 +58,8 @@ def test_every_word_has_one_provider(language):
     assert list(layer["words"]) == [w["id"] for s in core["segments"] for w in s["words"]]
     assert interlinear.check(core, layer) == []
     groups = layer["segments"]["s01"]["alignments"]
-    assert len(groups) == 2
-    assert sum(len(a["words"]) for a in groups) == (5 if language == "pl" else 4)
+    assert len(groups) == (2 if language == "pl" else 3)
+    assert sum(len(a["words"]) for a in groups) == (5 if language == "pl" else 6)
     assert layer["words"]["w048"]["gloss"] == "Amen"
     assert layer["segments"]["s02"]["translation"] == "Amen."
     assert not layer["segments"]["s02"].get("alignments")

@@ -119,6 +119,23 @@ GROUPS = [
         105,
         ("this generation will not pass away",),
     ),
+    (P + "sanctissimi-nominis-iesu-introitus", "en", "s01", 19, 21, 21, ("is in the glory",)),
+    (P + "sanctissimi-nominis-iesu-introitus", "en", "s01", 73, 75, 75, ("is in the glory",)),
+    (P + "sanctissimi-nominis-iesu-alleluia", "en", "s01", 5, 7, 5, ("my mouth will speak",)),
+    (P + "sanctissimi-nominis-iesu-alleluia", "en", "s01", 9, 11, 9, ("let all flesh bless",)),
+    (P + "dominica-ii-adventus-introitus", "en", "s01", 10, 12, 11, ("the Lord will make heard",)),
+    (P + "dominica-iv-adventus-epistola", "en", "s01", 4, 5, 4, ("let a man account",)),
+    (P + "dominica-iv-adventus-evangelium", "en", "s02", 84, 85, 84, ("the crooked will become",)),
+    (P + "dominica-iv-adventus-communio", "en", "s01", 8, 10, 8, ("His name will be called",)),
+    (
+        P + "sancti-andreae-apostoli-postcommunio",
+        "pl",
+        "s01",
+        5,
+        8,
+        8,
+        ("uroczystością świętego Andrzeja Apostoła",),
+    ),
 ]
 DIRECT = [
     # Large groups replaced by single glosses that compose (smallest sufficient realization).

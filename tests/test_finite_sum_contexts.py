@@ -111,7 +111,7 @@ def test_other_faithful_tenses_do_not_create_provider_errors(
             "sanctorum-simonis-et-iudae-apostolorum-evangelium",
             95,
             "spoken",
-            {"w091": "If I", "w093": "had come", "w094": "and"},
+            {"w091": "If I", "w093": "had not come", "w094": "and"},
         ),
     ],
 )
@@ -120,7 +120,7 @@ def test_existing_auxiliary_is_shared_not_duplicated(slug, first, gloss, externa
     layer = layers["en"]
     assert_reading(doc, layer, [first, first + 1], first, {gloss})
     for wid, expected in external.items():
-        assert layer["words"][wid]["gloss"] == expected
+        assert interlinear.effective_gloss(layer, wid) == expected
 
 
 def test_polish_present_copula_ellipsis_is_retained():

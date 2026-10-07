@@ -35,7 +35,7 @@ FIXTURES: dict[str, Any] = {
             "before_sha256": "6a4acdb7276d7297aba3eb726098a3c8c6340ca136a10be3d8db343f0aae74c2",
             # Covers the s01 hand rubric (lower-case præfationis, p. 225) and the edition name.
             "core_digest": "cdaf030f35949c5efc3084da616d7c5e15c8950e021a38749eea1b4a401b0263",
-            "english_digest": "16eca2ad6f9d3a24ed41061f98610d26b80000b6eeca0b929013564b5a23defb",
+            "english_digest": "5bb196c048a922e07a5a269d033098993e707a09f5ff97020fd3737d41ae8a9b",
             "words": {
                 "w014": {"gloss": "trzodę"},
                 "w015": {"gloss": "Twą"},
@@ -88,7 +88,7 @@ FIXTURES: dict[str, Any] = {
             "before_sha256": "393e9002e25378b23669a34f3c179ebe45f799ad1c4cc501e7145779326e5496",
             # Covers the s01 hand rubric (lower-case præfationis, p. 225) and the edition name.
             "core_digest": "9680fdba10efaee8be16101f3da6cd2412aace184136335788307a55457be4d2",
-            "english_digest": "c438ebaa034fc9a948f33dfe748d5e15dbcaaaf5d8f1b10c425d89d270aa3c10",
+            "english_digest": "0050d837d4c07aa4e3966a67411690409182c032a9e33e3eb39458d7736e729e",
             "words": {
                 "w044": {"gloss": "Twoich"},
                 "w046": {"gloss": "wiernych"},

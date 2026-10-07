@@ -29,6 +29,7 @@ from checks.identity import check as check_identity
 from checks.identity import check_against_history, check_registry_history, resolve_ref
 from checks.incipit import check as check_incipit
 from checks.interlinear_quality import check as check_interlinear_quality
+from checks.interlinear_sequence import check as check_interlinear_sequence
 from checks.kalendarium import check as check_kalendarium
 from checks.language_packs import check_core as check_language_core
 from checks.language_packs import check_layer as check_language_layer
@@ -261,6 +262,7 @@ def main(text_id: str) -> int:
         all_errors += check_translation_names(doc, gdoc)
         all_errors += lint_gloss(gdoc, doc)
         all_errors += check_interlinear_quality(doc, gdoc)
+        all_errors += check_interlinear_sequence(doc, gdoc)
         # The gloss line read AS POLISH: a preposition governing the case
         # beside it, a modifier agreeing with what it modifies, the divine
         # second person capitalised as the verse capitalises it.
