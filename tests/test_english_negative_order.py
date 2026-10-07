@@ -26,18 +26,6 @@ CASES = [
     ),
     (
         "proprium.dominica-i-adventus-evangelium",
-        "s06",
-        [104, 105],
-        105,
-        "praetereo",
-        "fut",
-        "ind",
-        "sg",
-        3,
-        "will not pass away",
-    ),
-    (
-        "proprium.dominica-i-adventus-evangelium",
         "s07",
         [118, 119],
         119,

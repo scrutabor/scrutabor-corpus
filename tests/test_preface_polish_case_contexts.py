@@ -32,10 +32,10 @@ FIXTURES: dict[str, Any] = {
     "baselines": {
         "apostolorum": {
             "segment": "s03",
-            "before_sha256": "bccb92091da1ea1f306cdcc01f865e6ebfe40aca340f94256807598912342cf4",
+            "before_sha256": "6a4acdb7276d7297aba3eb726098a3c8c6340ca136a10be3d8db343f0aae74c2",
             # Covers the s01 hand rubric (lower-case præfationis, p. 225) and the edition name.
             "core_digest": "cdaf030f35949c5efc3084da616d7c5e15c8950e021a38749eea1b4a401b0263",
-            "english_digest": "942c834a8db2486647106fe7e09e191337e79812dc90f8a34cc4b3ded5a37a2d",
+            "english_digest": "16eca2ad6f9d3a24ed41061f98610d26b80000b6eeca0b929013564b5a23defb",
             "words": {
                 "w014": {"gloss": "trzodę"},
                 "w015": {"gloss": "Twą"},

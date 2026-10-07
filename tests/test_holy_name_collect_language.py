@@ -18,8 +18,6 @@ from checks.translation_provenance import canonical_hash
 TEXT = "proprium.sanctissimi-nominis-iesu-collecta"
 SOURCE = "64dda22f4b0753135be1112b8bd36eab7fbb9c92586c2fc2d831c0a4b7f65d8a"
 GROUPS = [
-    ("pl", 17, 22, 20, ("my, którzy czcimy na ziemi Jego święte imię",)),
-    ("pl", 23, 26, 26, ("cieszyli się także oglądaniem Go",)),
     ("en", 3, 6, 6, ("appointed Your only-begotten Son",)),
     ("en", 7, 9, 9, ("as Savior of the human race", "as the Savior of the human race")),
     ("en", 11, 13, 13, ("commanded that He be called Jesus", "commanded Him to be called Jesus")),
@@ -77,7 +75,7 @@ def test_grammatical_alternatives_are_not_false_failures(case):
         assert_construction(core, candidate, case)
 
 
-@pytest.mark.parametrize("language,members,groups", [("pl", 13, 3), ("en", 33, 9)])
+@pytest.mark.parametrize("language,members,groups", [("pl", 3, 1), ("en", 33, 9)])
 def test_all_fifty_one_study_identities_and_separate_assent_remain(language, members, groups):
     core, layer = load(language)
     assert list(layer["words"]) == [w["id"] for s in core["segments"] for w in s["words"]]
@@ -92,8 +90,19 @@ def test_all_fifty_one_study_identities_and_separate_assent_remain(language, mem
 @pytest.mark.parametrize("language", ["pl", "en"])
 def test_heaven_belongs_to_enjoyment_not_to_earthly_veneration(language):
     _, layer = load(language)
-    assert group_for(layer, 17)["words"][-1] == "w022"
-    assert group_for(layer, 23)["words"][-1] == "w026"
+    if language == "en":
+        assert group_for(layer, 17)["words"][-1] == "w022"
+        assert group_for(layer, 23)["words"][-1] == "w026"
+    else:
+        # Polish keeps the correlative word by word: czyje … imię czcimy na ziemi,
+        # Tego … oglądaniem cieszyli się w niebie.
+        assert group_for(layer, 17) is None and group_for(layer, 23) is None
+        assert [layer["words"][f"w{i:03d}"]["gloss"] for i in (17, 22, 23, 26)] == [
+            "czyje",
+            "ziemi",
+            "Tego",
+            "cieszyli się",
+        ]
     assert layer["words"]["w027"]["gloss"] == ("w" if language == "pl" else "in")
     assert layer["words"]["w028"]["gloss"] == ("niebie" if language == "pl" else "heaven")
 
@@ -102,7 +111,7 @@ def test_heaven_belongs_to_enjoyment_not_to_earthly_veneration(language):
     "mutation", ["missing-member", "duplicate-gloss", "wrong-referent", "missing-word"]
 )
 def test_relative_construction_regressions_are_rejected(mutation):
-    case = GROUPS[5]
+    case = GROUPS[3]
     core, layer = load("en")
     group = group_for(layer, 17)
     assert group is not None

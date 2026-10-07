@@ -17,20 +17,6 @@ from checks.translation_provenance import canonical_hash, source_payload
 FIXTURES: dict[str, Any] = {
     "sites": [
         {
-            "slug": "apostolorum",
-            "segment": "s04",
-            "words": ["w028", "w029", "w030", "w031"],
-            "anchor": "w031",
-            "gloss": "that it may be governed by those same leaders",
-        },
-        {
-            "slug": "apostolorum",
-            "segment": "s04",
-            "words": ["w032", "w033", "w034", "w035", "w036", "w037", "w038", "w039"],
-            "anchor": "w037",
-            "gloss": "whom You appointed to preside over it as shepherds, deputies in Your work",
-        },
-        {
             "slug": "ascensionis",
             "segment": "s02",
             "words": ["w042", "w043", "w044", "w045", "w046", "w047", "w048"],
@@ -103,22 +89,9 @@ FIXTURES: dict[str, Any] = {
     ],
     "baselines": {
         "apostolorum": {
-            "protected_digest": "3af0afbc1db7fe07e1502f8cd3b409f8ab40f03a9d59d6bce6205c015989cf0b",
-            "words": {
-                "w028": {"gloss": "that"},
-                "w029": {"gloss": "by those same"},
-                "w030": {"gloss": "rulers"},
-                "w031": {"gloss": "may be governed"},
-                "w032": {"gloss": "whom"},
-                "w033": {"gloss": "work"},
-                "w034": {"gloss": "Your"},
-                "w035": {"gloss": "vicars"},
-                "w036": {"gloss": "over it"},
-                "w037": {"gloss": "appointed"},
-                "w038": {"gloss": "to preside"},
-                "w039": {"gloss": "as pastors"},
-            },
-            "had_alignments": {"s04": False},
+            "protected_digest": "16eca2ad6f9d3a24ed41061f98610d26b80000b6eeca0b929013564b5a23defb",
+            "words": {},
+            "had_alignments": {"s04": True},
             "absorbed": {"s04": []},
             "source_contexts": {
                 "s04": "49d97120a9e49b56a35a801596088feb3c5fb6e37617a352f893ecc61d8fefdc"
@@ -181,7 +154,7 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "nativitatis": {
-            "protected_digest": "a4d9055b76831a9a123a2d8100eda85a31060dd99c65a05b47894481890c8410",
+            "protected_digest": "2b1e99b89ace48c1ef63ba8b8b9c05fbd33ddd064f8b4808ab4cb570601acd92",
             "words": {
                 "w027": {"gloss": "new"},
                 "w028": {"gloss": "of mind"},
@@ -192,7 +165,7 @@ FIXTURES: dict[str, Any] = {
                 "w033": {"gloss": "of glory"},
                 "w034": {"gloss": "has shone"},
             },
-            "had_alignments": {"s04": False},
+            "had_alignments": {"s04": True},
             "absorbed": {"s04": []},
             "source_contexts": {
                 "s04": "43379d47ec2a5834c227408c971686546e103b16dce65bc0c17faef7b200077f"
@@ -353,7 +326,7 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "sanctissimae-trinitatis": {
-            "protected_digest": "6c56c4c7de0d7cc5626c269070676326cde462c647a590b94e35f48b1c21e2e8",
+            "protected_digest": "2ec33ed45ef3c86f3d593d269b9078da1c74717a406f78feb4907717ee6020b0",
             "words": {"w051": {"gloss": "by the revelation of"}, "w052": {"gloss": "Your"}},
             "had_alignments": {"s05": True},
             "absorbed": {"s05": []},
@@ -392,9 +365,6 @@ def group_for(layer, site):
 def supported(site):
     chosen = site["gloss"]
     alternatives = {
-        "whom You appointed to preside over it as shepherds, deputies in Your work": {
-            "whom You appointed to preside over it as shepherds, vicars in Your work"
-        },
         "that He might grant us a share in His divinity": {
             "that He might grant us to be partakers of His divinity"
         },
@@ -483,9 +453,9 @@ def assert_provenance(record, doc, layer, slug):
 
 
 def test_population_and_distinct_construction_boundaries():
-    assert len(SLUGS) == 10 and len(SITES) == 12
-    assert sum(len(s["words"]) for s in SITES) == 64
-    assert len({(s["slug"], w) for s in SITES for w in s["words"]}) == 64
+    assert len(SLUGS) == 10 and len(SITES) == 10
+    assert sum(len(s["words"]) for s in SITES) == 52
+    assert len({(s["slug"], w) for s in SITES for w in s["words"]}) == 52
     assert (
         sum(len(groups) for row in BASELINES.values() for groups in row["absorbed"].values()) == 2
     )
@@ -567,17 +537,6 @@ def test_malformed_realization_is_rejected(site, mutation):
 
 
 SEMANTIC_MUTATIONS = [
-    ("apostolorum", "w028", "that those same leaders may be governed"),
-    (
-        "apostolorum",
-        "w032",
-        "whom He appointed to preside over it as shepherds, deputies in Your work",
-    ),
-    (
-        "apostolorum",
-        "w032",
-        "whom You appointed to preside over it as shepherds, deputies in our work",
-    ),
     ("ascensionis", "w042", "that we might share in His divinity"),
     ("ascensionis", "w042", "that He might grant us a portion of His divinity"),
     ("epiphaniae", "w031", "He renewed the new light by our immortality"),

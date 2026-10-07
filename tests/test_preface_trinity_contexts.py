@@ -132,7 +132,7 @@ FIXTURES: dict[str, Any] = {
             "groups": {"s01": [], "s02": [], "s03": [], "s04": [], "s05": [], "s06": [], "s07": []},
         },
         "en": {
-            "before_sha256": "776b2ff4d66c80bbc2b9c0cdcb1a498e545348c327752c3c4e528921a570c153",
+            "before_sha256": "7c5432f42977fe135bc7bf1de3ec91656d19fc49863ea62b90441aa2fa8af0d8",
             "before_digest": "18e85ee11ea180a304e4b1061d83781ad4fa87f13e29b71b7a5fb1ae6f03fdf0",
             "words": {
                 "w002": {"gloss": "right"},
@@ -197,7 +197,7 @@ FIXTURES: dict[str, Any] = {
                     {
                         "words": ["w055", "w056", "w057"],
                         "anchor": "w056",
-                        "gloss": "about Your Son",
+                        "gloss": "of Your Son",
                     },
                 ],
                 "s06": [],

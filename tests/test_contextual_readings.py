@@ -750,7 +750,7 @@ def test_from_my_youth_has_an_ablative_possessive():
         ("orationes/memorare", "en", "s02", ["w022", "w023"], "was abandoned"),
         ("orationes/memorare", "en", "s01", ["w009", "w010"], "since time immemorial"),
         ("orationes/benedic-domine", "pl", "s03", ["w012", "w013"], "mamy spożywać"),
-        ("proprium/dominica-ii-adventus-evangelium", "en", "s02", ["w021", "w022"], "are to come"),
+        ("proprium/dominica-ii-adventus-evangelium", "en", "s02", ["w021", "w022"], "is to come"),
         ("proprium/vigilia-pentecostes-communio", "en", "s01", ["w023", "w024"], "were to receive"),
     ],
 )

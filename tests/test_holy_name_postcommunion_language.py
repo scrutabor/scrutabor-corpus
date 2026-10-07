@@ -19,16 +19,9 @@ GROUPS = [
     ("pl", 51, 52, 51, ("są zapisane",)),
     ("en", 9, 10, 9, ("look graciously upon", "look with favor upon")),
     ("en", 11, 12, 11, ("our desires",)),
-    (
-        "en",
-        17,
-        29,
-        29,
-        (
-            "which we have offered to Your majesty in honor of the name of Your Son, "
-            "our Lord Jesus Christ",
-        ),
-    ),
+    ("en", 21, 22, 21, ("of Your Son",)),
+    ("en", 23, 24, 23, ("our Lord",)),
+    ("en", 27, 28, 27, ("to Your majesty",)),
     (
         "en",
         30,
@@ -96,7 +89,7 @@ def test_supported_alternative_captions_are_not_false_failures(case):
         assert_construction(core, candidate, case)
 
 
-@pytest.mark.parametrize("language,members,groups", [("pl", 9, 4), ("en", 47, 12)])
+@pytest.mark.parametrize("language,members,groups", [("pl", 9, 4), ("en", 40, 14)])
 def test_all_word_identities_and_separate_assent_remain(language, members, groups):
     core, layer = load(language)
     ids = [w["id"] for s in core["segments"] for w in s["words"]]
@@ -115,7 +108,18 @@ def test_offering_relative_and_divine_reception_have_separate_predicates():
         "of the saving",
         "Victim",
     ]
-    assert group_for(layer, 17)["words"] == [f"w{i:03d}" for i in range(17, 30)]
+    # Latin order composes as English: which in honor of the name of Your Son, our Lord
+    # Jesus Christ, to Your majesty we have offered; the manner phrase stays with the
+    # reception group, after which it cannot attach to the offering.
+    assert [effective_gloss(layer, f"w{i:03d}") for i in (17, 18, 19, 20, 25, 26, 29)] == [
+        "which",
+        "in",
+        "honor",
+        "of the name",
+        "Jesus",
+        "Christ",
+        "we have offered",
+    ]
     assert group_for(layer, 30)["words"] == [f"w{i:03d}" for i in range(30, 36)]
     assert layer["words"]["w036"] == {"gloss": "that"}
     assert layer["words"]["w048"] == {"gloss": "we may rejoice that"}
@@ -128,18 +132,18 @@ def test_offering_relative_and_divine_reception_have_separate_predicates():
 )
 def test_relative_clause_regressions_are_rejected(mutation):
     core, layer = load("en")
-    group = group_for(layer, 17)
+    group = group_for(layer, 27)
     assert group is not None
     if mutation == "missing-member":
-        group["words"].remove("w027")
+        group["words"].remove("w028")
     elif mutation == "duplicate-caption":
-        layer["words"]["w029"]["gloss"] = "we have offered"
+        layer["words"]["w028"]["gloss"] = "Your"
     elif mutation == "wrong-agent":
-        group["gloss"] = group["gloss"].replace("we have offered", "You have offered")
+        group["gloss"] = "by Your majesty"
     else:
         del layer["words"]["w019"]
     with pytest.raises((AssertionError, KeyError)):
-        assert_construction(core, layer, GROUPS[6])
+        assert_construction(core, layer, GROUPS[8])
 
 
 def test_missing_polish_valency_carrier_is_rejected():

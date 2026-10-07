@@ -23,12 +23,15 @@ GROUPS = {
         ("s05", ["w092", "w093"], "w093", "że to się dzieje"),
     ],
     "en": [
+        ("s01", ["w006", "w007"], "w006", "to His disciples"),
         ("s01", ["w017", "w018"], "w018", "on earth"),
         ("s01", ["w027", "w028"], "w027", "people fainting"),
+        ("s02", ["w050", "w051"], "w050", "great power"),
         ("s03", ["w054", "w055", "w056", "w057"], "w057", "but when these things begin to happen"),
         ("s03", ["w061", "w062"], "w061", "your heads"),
-        ("s03", ["w065", "w066"], "w065", "your redemption"),
-        ("s06", ["w104", "w105"], "w105", "will not pass away"),
+        ("s03", ["w064", "w065", "w066"], "w064", "your redemption draws near"),
+        ("s06", ["w104", "w105", "w106", "w107"], "w105", "this generation will not pass away"),
+        ("s07", ["w115", "w116", "w117"], "w115", "but My words"),
         ("s07", ["w118", "w119"], "w119", "will not pass away"),
     ],
 }
@@ -58,7 +61,7 @@ def test_minimal_groups_have_one_provider_and_preserve_every_card(lang):
     doc, data = core(), layer(lang)
     assert interlinear.check(doc, data) == []
     assert len(data["words"]) == 119
-    assert sum("gloss" in w for w in data["words"].values()) == (109 if lang == "pl" else 103)
+    assert sum("gloss" in w for w in data["words"].values()) == (109 if lang == "pl" else 93)
     assert sum(len(s.get("alignments", [])) for s in data["segments"].values()) == len(GROUPS[lang])
     for sid, ids, anchor, wording in GROUPS[lang]:
         expected = {"words": ids, "anchor": anchor, "gloss": wording}
