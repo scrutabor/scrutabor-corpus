@@ -156,9 +156,10 @@ def test_epiphany_source_reviews_remain_pending_and_unpublished():
 def test_epiphany_canonical_latin_and_ritual_identity_are_unchanged():
     doc = core()
     assert len(corpus_tokens(doc)) == 58
+    # Covers the s01 hand rubric, which keeps the printed lower-case præfationis (p. 225).
     assert (
         digest(selected_text(doc))
-        == "f2d97fe19f19dba5e3af942a94841fb56ef6d57b181ca49b4ca16865b89169ff"
+        == "da0a41a726cf5b2aef214b4c1091e369c83e838e81864a98696a9cb187a0715d"
     )
     assert " ".join(word for _, word in corpus_tokens(doc)[38:43]) == CHOSEN
 

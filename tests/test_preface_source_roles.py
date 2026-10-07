@@ -73,7 +73,8 @@ READINGS = {
     "paschalis-in-nocte": "85c9ad9e2d31aadb026d7c139a608a4f407a294202555ef1a4b9b7493c906bf7",
 }
 PROTECTED = {
-    "epiphaniae": "499413333c2f3adfc3857c35dec5638fe1fe7c15be252d2c09cbbe2951603b27",
+    # Covers all Epiphany graph records, incl. the hand-rubric claim (lower-case præfationis).
+    "epiphaniae": "0ca5659aa28670e3fbc1d86c9caaad4a4aeb2de76a7f19478d7ef884b85ca67a",
     "dialogus": "51dca28f78ac069bd61013ab1820537ed44c187853d57caf30916b7c1017a939",
 }
 

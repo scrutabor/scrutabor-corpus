@@ -68,11 +68,7 @@ def expected_use(slug):
         "support for s01, not a body-text witness or proof of the corpus's historical "
         "import workflow. "
     )
-    claim += (
-        "The selected rubric retains the printed lower-case præfationis."
-        if slug == "communis"
-        else "The selected rubric capitalizes Præfationis; the print has lower-case præfationis."
-    )
+    claim += "The selected rubric retains the printed lower-case præfationis."
     return {
         "id": uid(slug),
         "edition": EDITION,
@@ -89,7 +85,7 @@ def expected_use(slug):
             "page_url": "https://archive.org/details/missale-romanum-1962/page/n304/mode/1up",
         },
         "claim": claim,
-        "verified_on": "2026-10-04",
+        "verified_on": "2026-10-04" if slug == "communis" else "2026-10-07",
         "decision": "RETAIN",
         "evidence_sha256": PAGE_HASH,
     }
@@ -109,8 +105,7 @@ def check_population(data, documents):
         if slug in EASTER:
             assert not rubrics
         else:
-            text = RUBRIC if slug == "communis" else RUBRIC.replace("præfationis", "Præfationis")
-            assert rubrics == [{"id": "s01", "type": "rubric", "text": text}]
+            assert rubrics == [{"id": "s01", "type": "rubric", "text": RUBRIC}]
             rubric_ids.add(tid(slug))
     uses = [u for u in data["uses"] if u["id"].endswith(SUFFIX)]
     assert len(uses) == 21
@@ -251,7 +246,10 @@ def test_source_claim_mutations_are_rejected(mutation):
     elif mutation == "rejected-use":
         value["decision"] = "REMOVE"
     else:
-        value["claim"] = expected_use("epiphaniae")["claim"]
+        value["claim"] = value["claim"].replace(
+            "retains the printed lower-case præfationis.",
+            "capitalizes Præfationis; the print has lower-case præfationis.",
+        )
     with pytest.raises(AssertionError):
         check_use(data, slug)
 

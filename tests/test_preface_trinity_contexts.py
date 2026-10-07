@@ -16,7 +16,8 @@ from checks.translation_provenance import canonical_hash, source_payload
 FIXTURES: dict[str, Any] = {
     "text": "ordinarium.praefatio-sanctissimae-trinitatis",
     "name": "praefatio-sanctissimae-trinitatis.json",
-    "core_digest": "8149d95ee64200be40f1caa4bb99f91c2c179ea75d22902e283b64aff3027c18",
+    # Covers the s01 hand rubric, which keeps the printed lower-case præfationis (p. 225).
+    "core_digest": "471b77a06d1400cde5f2b351f4a0b6fa0ff2a46f6701615586ae0537c8485666",
     "groups": {
         "pl": [
             {
