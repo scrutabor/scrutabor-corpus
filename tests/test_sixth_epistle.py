@@ -233,7 +233,10 @@ def test_actual_edition_and_pending_source_states():
     witnesses = [w for w in graph["witnesses"] if w["text"] == TEXT]
     assert len(witnesses) == 2
     for w in witnesses:
-        assert w["review"] == {"status": "pending"} and "source_dependencies" not in w
+        assert w["review"] == {"status": "pending"}
+        # The DO witness names its raw binding; the Missal witness has none.
+        bound = {"uses": [], "raw_binding": KEY} if w["id"].endswith(".do44667ff") else None
+        assert w.get("source_dependencies") == bound
         raw = (ROOT / f"witnesses/{TEXT}/{w['transcription']}.txt").read_text()
         assert w["transcription_sha256"] == transcript_digest(raw)
     collation = next(c for c in graph["collations"] if c["text"] == TEXT)
