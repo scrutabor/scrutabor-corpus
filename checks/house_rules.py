@@ -34,10 +34,10 @@ CORPUS = Path(__file__).resolve().parent.parent
 
 IJ_RULING = (
     "The j-form against this edition's i-form, by the house rule in ORTHOGRAPHY.md. This edition "
-    "prints i because the books it edits do: the 1962 typical edition sets Iesu, Ioánnem, iube and "
-    "maiestátis throughout, and so does the Ordo Missae of Pallottinum, Poznań 1963, which is the "
-    "book a Polish reader is most likely to hold. The mid-century hand missals print j; neither "
-    "spelling is a different word, and the apparatus records theirs."
+    "prints i because the books it edits do: the approved 1962 Benziger printing sets Iesu, "
+    "Ioánnem, iube and maiestátis throughout, and so does the Ordo Missae of Pallottinum, Poznań "
+    "1963, which is the book a Polish reader is most likely to hold. The mid-century hand missals "
+    "print j; neither spelling is a different word, and the apparatus records theirs."
 )
 CAPITAL_RULING = (
     "This edition accents capitals, by the house rule in ORTHOGRAPHY.md, because the accent "

@@ -33,8 +33,8 @@ FIXTURES: dict[str, Any] = {
         "apostolorum": {
             "segment": "s03",
             "before_sha256": "bccb92091da1ea1f306cdcc01f865e6ebfe40aca340f94256807598912342cf4",
-            # Covers the s01 hand rubric, which keeps the printed lower-case præfationis (p. 225).
-            "core_digest": "b47b2b7ef7dbc0b2bfd5c1171e48707b3da391dce04e1785210fe1ed973d257e",
+            # Covers the s01 hand rubric (lower-case præfationis, p. 225) and the edition name.
+            "core_digest": "cdaf030f35949c5efc3084da616d7c5e15c8950e021a38749eea1b4a401b0263",
             "english_digest": "942c834a8db2486647106fe7e09e191337e79812dc90f8a34cc4b3ded5a37a2d",
             "words": {
                 "w014": {"gloss": "trzodę"},
@@ -86,8 +86,8 @@ FIXTURES: dict[str, Any] = {
         "defunctorum": {
             "segment": "s05",
             "before_sha256": "393e9002e25378b23669a34f3c179ebe45f799ad1c4cc501e7145779326e5496",
-            # Covers the s01 hand rubric, which keeps the printed lower-case præfationis (p. 225).
-            "core_digest": "bd14970bf3b42eebefce6c4124b9491ec2593d5e47d99f10250bdae883b93031",
+            # Covers the s01 hand rubric (lower-case præfationis, p. 225) and the edition name.
+            "core_digest": "9680fdba10efaee8be16101f3da6cd2412aace184136335788307a55457be4d2",
             "english_digest": "c438ebaa034fc9a948f33dfe748d5e15dbcaaaf5d8f1b10c425d89d270aa3c10",
             "words": {
                 "w044": {"gloss": "Twoich"},

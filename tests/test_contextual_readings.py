@@ -714,7 +714,7 @@ def test_future_participles_keep_their_expressed_subject(
 
 
 def test_discussurus_stands_in_its_own_printed_sentence():
-    # The typical edition prints "ventúrus." so "Cuncta stricte discussúrus!" is a
+    # The approved Benziger printing prints "ventúrus." so "Cuncta stricte discussúrus!" is a
     # sentence of its own; a head must stand in the same sentence (SCHEMA), so the
     # participle declares its understood subject, the Judge, with an explanation.
     token = word("proprium/commemoratio-omnium-fidelium-defunctorum-missa-i-sequentia", "w023")
