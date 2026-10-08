@@ -124,6 +124,19 @@ def test_the_conclusions_are_declared_composites(text):
     clean(text)
 
 
+@pytest.mark.parametrize("text", ORATIONS)
+def test_the_composite_ranges_meet_at_the_printed_seams(text):
+    line = next(x for x in witness(text).splitlines() if x.startswith("# composite: "))
+    spans = [part.split(" from ")[0].strip() for part in line[len("# composite: ") :].split("; ")]
+    ranges = [tuple(int(end[1:]) for end in span.split("–")) for span in spans]
+    forms = [w["form"] for s in core(text)["segments"] for w in s.get("words", [])]
+    assert [r[0] for r in ranges] == [1] + [r[1] + 1 for r in ranges[:-1]]
+    assert ranges[-1][1] == len(forms)
+    assert forms[ranges[0][1] - 1].rstrip(".") == "Dóminum"
+    assert forms[ranges[1][1] - 1].startswith("Deus")
+    assert forms[ranges[2][0] - 1] == "per"
+
+
 @pytest.mark.parametrize("text,mass,printed,formulary", PRINTINGS)
 def test_the_masses_record_their_printings_of_shared_texts(text, mass, printed, formulary):
     use = next(u for u in graph()["uses"] if u["id"] == f"use.{text}.{mass}-reprint.mr1962")
