@@ -138,7 +138,7 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "epiphaniae": {
-            "protected_digest": "8bc618957f1e2f8dc87ae5e753b6654f853e84489b123821e2516c8da239009a",
+            "protected_digest": "c1f7047246653f59d96e14ce24b0eb123e828bd6417991df1370898301b23951",
             "words": {
                 "w031": {"gloss": "new"},
                 "w032": {"gloss": "us"},

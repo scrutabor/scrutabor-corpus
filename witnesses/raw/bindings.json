@@ -792,6 +792,18 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C4a.txt",
       "sha256": "e9e10cbe520e5f6f6f0075dd534cb970d1c8269912e69b9d2a80b4dc9240942d"
+    },
+    "do-tempora-epi1-0a": {
+      "upstream": "web/www/missa/Latin/Tempora/Epi1-0a.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Epi1-0a.txt",
+      "sha256": "9fd72b197bdc79898207c50fe9f7a7d362c52d726578b4356b8a4e58cf5c7068"
+    },
+    "do-sancti-01-06": {
+      "upstream": "web/www/missa/Latin/Sancti/01-06.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/01-06.txt",
+      "sha256": "16d259422a82d5df58a8e66bd555dc40498446e8dd0ef0c74dd0d70c89dbffd6"
     }
   },
   "bindings": {
@@ -24155,6 +24167,867 @@
           "archive": "do-horas-commune-c4a",
           "first": 163,
           "last": 163
+        }
+      ]
+    },
+    "do-ordinarium-praefatio-epiphaniae": {
+      "witness": "witnesses/ordinarium.praefatio-epiphaniae/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "prefaces",
+          "first": 10,
+          "last": 11,
+          "section": "Epi",
+          "section_line": 9
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "prefaces",
+          "first": 11,
+          "last": 11
+        }
+      ]
+    },
+    "do-proprium-commemoratio-baptismatis-domini-collecta": {
+      "witness": "witnesses/proprium.commemoratio-baptismatis-domini-collecta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "baptism",
+          "first": 17,
+          "last": 18,
+          "section": "Oratio",
+          "section_line": 16
+        },
+        {
+          "archive": "prayers",
+          "first": 120,
+          "last": 121,
+          "section": "Qui tecum",
+          "section_line": 119
+        }
+      ],
+      "references": [
+        {
+          "archive": "baptism",
+          "line": 18,
+          "text": "$Qui tecum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "baptism",
+          "first": 17,
+          "last": 17
+        },
+        {
+          "archive": "prayers",
+          "first": 120,
+          "last": 121
+        }
+      ]
+    },
+    "do-proprium-commemoratio-baptismatis-domini-postcommunio": {
+      "witness": "witnesses/proprium.commemoratio-baptismatis-domini-postcommunio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "baptism",
+          "first": 42,
+          "last": 43,
+          "section": "Postcommunio",
+          "section_line": 41
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "baptism",
+          "line": 43,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "baptism",
+          "first": 42,
+          "last": 42
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "do-proprium-commemoratio-baptismatis-domini-secreta": {
+      "witness": "witnesses/proprium.commemoratio-baptismatis-domini-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "baptism",
+          "first": 35,
+          "last": 36,
+          "section": "Secreta",
+          "section_line": 34
+        },
+        {
+          "archive": "prayers",
+          "first": 120,
+          "last": 121,
+          "section": "Qui tecum",
+          "section_line": 119
+        }
+      ],
+      "references": [
+        {
+          "archive": "baptism",
+          "line": 36,
+          "text": "$Qui tecum.",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "baptism",
+          "first": 35,
+          "last": 35
+        },
+        {
+          "archive": "prayers",
+          "first": 120,
+          "last": 121
+        }
+      ]
+    },
+    "do-proprium-dominica-i-post-epiphaniam-collecta": {
+      "witness": "witnesses/proprium.dominica-i-post-epiphaniam-collecta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 21,
+          "last": 22,
+          "section": "Oratio",
+          "section_line": 20
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "line": 22,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 21,
+          "last": 21
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "do-proprium-dominica-i-post-epiphaniam-communio": {
+      "witness": "witnesses/proprium.dominica-i-post-epiphaniam-communio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 58,
+          "last": 59,
+          "section": "Communio",
+          "section_line": 57
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 59,
+          "last": 59
+        }
+      ]
+    },
+    "do-proprium-dominica-i-post-epiphaniam-epistola": {
+      "witness": "witnesses/proprium.dominica-i-post-epiphaniam-epistola/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 30,
+          "last": 31,
+          "section": "Lectio",
+          "section_line": 28
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 31,
+          "last": 31
+        }
+      ]
+    },
+    "do-proprium-dominica-i-post-epiphaniam-introitus": {
+      "witness": "witnesses/proprium.dominica-i-post-epiphaniam-introitus/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 14,
+          "last": 18,
+          "section": "Introitus",
+          "section_line": 13
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14,
+          "section": "Gloria",
+          "section_line": 12
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "line": 17,
+          "text": "&Gloria",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 14,
+          "last": 14
+        },
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 16,
+          "last": 16
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14
+        },
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 18,
+          "last": 18
+        }
+      ]
+    },
+    "do-proprium-dominica-i-post-epiphaniam-offertorium": {
+      "witness": "witnesses/proprium.dominica-i-post-epiphaniam-offertorium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 46,
+          "last": 47,
+          "section": "Offertorium",
+          "section_line": 45
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 47,
+          "last": 47
+        }
+      ]
+    },
+    "do-proprium-dominica-i-post-epiphaniam-postcommunio": {
+      "witness": "witnesses/proprium.dominica-i-post-epiphaniam-postcommunio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 62,
+          "last": 63,
+          "section": "Postcommunio",
+          "section_line": 61
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "line": 63,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 62,
+          "last": 62
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "do-proprium-dominica-i-post-epiphaniam-secreta": {
+      "witness": "witnesses/proprium.dominica-i-post-epiphaniam-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 50,
+          "last": 51,
+          "section": "Secreta",
+          "section_line": 49
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "line": 51,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-tempora-epi1-0a",
+          "first": 50,
+          "last": 50
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "do-proprium-epiphania-domini-collecta": {
+      "witness": "witnesses/proprium.epiphania-domini-collecta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-sancti-01-06",
+          "first": 18,
+          "last": 19,
+          "section": "Oratio",
+          "section_line": 17
+        },
+        {
+          "archive": "prayers",
+          "first": 108,
+          "last": 109,
+          "section": "Per eumdem",
+          "section_line": 107
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-sancti-01-06",
+          "line": 19,
+          "text": "$Per eumdem",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-sancti-01-06",
+          "first": 18,
+          "last": 18
+        },
+        {
+          "archive": "prayers",
+          "first": 108,
+          "last": 109
+        }
+      ]
+    },
+    "do-proprium-epiphania-domini-communio": {
+      "witness": "witnesses/proprium.epiphania-domini-communio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-sancti-01-06",
+          "first": 47,
+          "last": 48,
+          "section": "Communio",
+          "section_line": 46
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "do-sancti-01-06",
+          "first": 48,
+          "last": 48
+        }
+      ]
+    },
+    "do-proprium-epiphania-domini-epistola": {
+      "witness": "witnesses/proprium.epiphania-domini-epistola/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-sancti-01-06",
+          "first": 23,
+          "last": 24,
+          "section": "Lectio",
+          "section_line": 21
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "do-sancti-01-06",
+          "first": 24,
+          "last": 24
+        }
+      ]
+    },
+    "do-proprium-epiphania-domini-introitus": {
+      "witness": "witnesses/proprium.epiphania-domini-introitus/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-sancti-01-06",
+          "first": 10,
+          "last": 15,
+          "section": "Introitus",
+          "section_line": 9
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14,
+          "section": "Gloria",
+          "section_line": 12
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-sancti-01-06",
+          "line": 14,
+          "text": "&Gloria",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-sancti-01-06",
+          "first": 11,
+          "last": 11
+        },
+        {
+          "archive": "do-sancti-01-06",
+          "first": 13,
+          "last": 13
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14
+        },
+        {
+          "archive": "do-sancti-01-06",
+          "first": 15,
+          "last": 15
+        }
+      ]
+    },
+    "do-proprium-epiphania-domini-offertorium": {
+      "witness": "witnesses/proprium.epiphania-domini-offertorium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-sancti-01-06",
+          "first": 39,
+          "last": 40,
+          "section": "Offertorium",
+          "section_line": 38
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "do-sancti-01-06",
+          "first": 40,
+          "last": 40
+        }
+      ]
+    },
+    "do-proprium-epiphania-domini-postcommunio": {
+      "witness": "witnesses/proprium.epiphania-domini-postcommunio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-sancti-01-06",
+          "first": 51,
+          "last": 52,
+          "section": "Postcommunio",
+          "section_line": 50
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-sancti-01-06",
+          "line": 52,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-sancti-01-06",
+          "first": 51,
+          "last": 51
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "do-proprium-epiphania-domini-secreta": {
+      "witness": "witnesses/proprium.epiphania-domini-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-sancti-01-06",
+          "first": 43,
+          "last": 44,
+          "section": "Secreta",
+          "section_line": 42
+        },
+        {
+          "archive": "prayers",
+          "first": 120,
+          "last": 121,
+          "section": "Qui tecum",
+          "section_line": 119
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-sancti-01-06",
+          "line": 44,
+          "text": "$Qui tecum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-sancti-01-06",
+          "first": 43,
+          "last": 43
+        },
+        {
+          "archive": "prayers",
+          "first": 120,
+          "last": 121
+        }
+      ]
+    },
+    "do-proprium-sancta-familia-collecta": {
+      "witness": "witnesses/proprium.sancta-familia-collecta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "holy-family",
+          "first": 24,
+          "last": 25,
+          "section": "Oratio",
+          "section_line": 23
+        },
+        {
+          "archive": "prayers",
+          "first": 116,
+          "last": 117,
+          "section": "Qui vivis",
+          "section_line": 115
+        }
+      ],
+      "references": [
+        {
+          "archive": "holy-family",
+          "line": 25,
+          "text": "$Qui vivis",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "holy-family",
+          "first": 24,
+          "last": 24
+        },
+        {
+          "archive": "prayers",
+          "first": 116,
+          "last": 117
+        }
+      ]
+    },
+    "do-proprium-sancta-familia-communio": {
+      "witness": "witnesses/proprium.sancta-familia-communio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "holy-family",
+          "first": 79,
+          "last": 80,
+          "section": "Communio",
+          "section_line": 78
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "holy-family",
+          "first": 80,
+          "last": 80
+        }
+      ]
+    },
+    "do-proprium-sancta-familia-evangelium": {
+      "witness": "witnesses/proprium.sancta-familia-evangelium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "holy-family",
+          "first": 62,
+          "last": 63,
+          "section": "Evangelium",
+          "section_line": 60
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "holy-family",
+          "first": 63,
+          "last": 63
+        }
+      ]
+    },
+    "do-proprium-sancta-familia-introitus": {
+      "witness": "witnesses/proprium.sancta-familia-introitus/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "holy-family",
+          "first": 16,
+          "last": 21,
+          "section": "Introitus",
+          "section_line": 15
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14,
+          "section": "Gloria",
+          "section_line": 12
+        }
+      ],
+      "references": [
+        {
+          "archive": "holy-family",
+          "line": 20,
+          "text": "&Gloria",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "holy-family",
+          "first": 17,
+          "last": 17
+        },
+        {
+          "archive": "holy-family",
+          "first": 19,
+          "last": 19
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14
+        },
+        {
+          "archive": "holy-family",
+          "first": 21,
+          "last": 21
+        }
+      ]
+    },
+    "do-proprium-sancta-familia-offertorium": {
+      "witness": "witnesses/proprium.sancta-familia-offertorium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "holy-family",
+          "first": 66,
+          "last": 67,
+          "section": "Offertorium",
+          "section_line": 65
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "holy-family",
+          "first": 67,
+          "last": 67
+        }
+      ]
+    },
+    "do-proprium-sancta-familia-postcommunio": {
+      "witness": "witnesses/proprium.sancta-familia-postcommunio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "holy-family",
+          "first": 83,
+          "last": 84,
+          "section": "Postcommunio",
+          "section_line": 82
+        },
+        {
+          "archive": "prayers",
+          "first": 116,
+          "last": 117,
+          "section": "Qui vivis",
+          "section_line": 115
+        }
+      ],
+      "references": [
+        {
+          "archive": "holy-family",
+          "line": 84,
+          "text": "$Qui vivis",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "holy-family",
+          "first": 83,
+          "last": 83
+        },
+        {
+          "archive": "prayers",
+          "first": 116,
+          "last": 117
+        }
+      ]
+    },
+    "do-proprium-sancta-familia-secreta": {
+      "witness": "witnesses/proprium.sancta-familia-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "holy-family",
+          "first": 70,
+          "last": 71,
+          "section": "Secreta",
+          "section_line": 69
+        },
+        {
+          "archive": "prayers",
+          "first": 108,
+          "last": 109,
+          "section": "Per eumdem",
+          "section_line": 107
+        }
+      ],
+      "references": [
+        {
+          "archive": "holy-family",
+          "line": 71,
+          "text": "$Per eumdem",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "holy-family",
+          "first": 70,
+          "last": 70
+        },
+        {
+          "archive": "prayers",
+          "first": 108,
+          "last": 109
+        }
+      ]
+    },
+    "holy-family-epistle": {
+      "witness": "witnesses/proprium.sancta-familia-epistola/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "holy-family",
+          "first": 35,
+          "last": 35,
+          "section": "Lectio",
+          "section_line": 32
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "holy-family",
+          "first": 35,
+          "last": 35
         }
       ]
     }

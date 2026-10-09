@@ -50,7 +50,7 @@ def test_minimal_constructions_have_one_provider(language, ids, anchor, gloss):
         assert interlinear.check(expand_core(core), enrich_layer(core, missing))
 
 
-@pytest.mark.parametrize("language,direct", [("pl", 109), ("en", 105)])
+@pytest.mark.parametrize("language,direct", [("pl", 106), ("en", 94)])
 def test_all_111_words_and_construction_notes_reach_reader(language, direct):
     core, data = load(f"texts/proprium/{NAME}.json"), layer(language)
     doc, gloss = expand_core(core), enrich_layer(core, data)

@@ -9419,12 +9419,13 @@
         "text": "ordinarium.praefatio-epiphaniae"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Ordo/Prefationes.txt (section [Epi], lines 9-11); resolved spans: web/www/missa/Latin/Ordo/Prefationes.txt (line 12)"
+        "section": "web/www/missa/Latin/Ordo/Prefationes.txt [Epi] (lines 10-11)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "cdcc5bb39df5043a85f17a6ebab0483bfad1a360fd31940878c09c67b5d22c80"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "cdcc5bb39df5043a85f17a6ebab0483bfad1a360fd31940878c09c67b5d22c80",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.ordinarium.praefatio-epiphaniae.hand-position-rubric.mr1962",
@@ -13372,6 +13373,28 @@
       "decision_reason": "The source remains relevant, but the selected chant boundary, source locator, and transcription evidence have been corrected to distinguish the separately printed tract from the gradual."
     },
     {
+      "id": "use.proprium.commemoratio-baptismatis-domini-collecta.conclusion-rg115c.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.commemoratio-baptismatis-domini-collecta",
+        "word": "w022"
+      },
+      "locator": {
+        "printed": "p. xviii",
+        "scan": "n23 / PDF24",
+        "section": "RG115c full Qui tecum conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n23/mode/1up"
+      },
+      "claim": "Prescribes the complete conclusion supplied after the proper-page abbreviation. Its unaccented spelling and list-final semicolon remain explicit in the composite witness.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.commemoratio-baptismatis-domini-collecta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -13381,12 +13404,13 @@
         "text": "proprium.commemoratio-baptismatis-domini-collecta"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Sancti/01-13.txt (section [Oratio]); resolved spans: web/www/missa/Latin/Sancti/01-13.txt (lines 17-18); web/www/missa/Latin/Ordo/Prayers.txt (lines 121-122)"
+        "section": "web/www/missa/Latin/Sancti/01-13.txt [Oratio] (lines 17-18); web/www/missa/Latin/Ordo/Prayers.txt [Qui tecum] (lines 120-121)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.commemoratio-baptismatis-domini-collecta.mr1962",
@@ -13400,12 +13424,14 @@
       "locator": {
         "printed": "p. 42",
         "scan": "leaf n121 / PDF p. 122",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n121/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n121/mode/1up",
+        "section": "Proper body and abbreviation only; full formula at RG115c, printed xviii / n23 / PDF24"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "ac6c09d354467aa7bce085f7d44604e7512e84d6791710c7cea73ed2a3f610f7"
+      "claim": "The proper page supplies the body and Qui tecum abbreviation. The complete comparison joins that body to the exact full conclusion prescribed in RG115c, declared separately.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "ac6c09d354467aa7bce085f7d44604e7512e84d6791710c7cea73ed2a3f610f7",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the page prints only the cue Qui tecum.; the full conclusion is the formula of Rubricae generales 115 c, declared as a separate locus."
     },
     {
       "id": "use.proprium.commemoratio-baptismatis-domini-collecta.oration-boundaries.mr1962",
@@ -13466,6 +13492,72 @@
       "decision_reason": "Edition description and body scope corrected on 2026-09-30. The previously corrected locator and historical verification date remain; this is not renewed source acceptance."
     },
     {
+      "id": "use.proprium.commemoratio-baptismatis-domini-postcommunio.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.commemoratio-baptismatis-domini-postcommunio",
+        "word": "w027"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "section": "Postcommunio continuing Monday after the first Sunday of the Passion, above the Tuesday heading; Per Dominum nostrum through Deus.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up"
+      },
+      "claim": "This separate Postcommunion prints the accented conclusion with no comma after Christum and the colon and uppercase Qui after tuum, ending with Deus. The composite uses nostrum through Deus.; the cue words Per Dóminum come from p. 43, and this page supplies neither the final duration nor Amen.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.commemoratio-baptismatis-domini-postcommunio.conclusion-rg115a.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.commemoratio-baptismatis-domini-postcommunio",
+        "word": "w025"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a; Father-addressed oration conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a supplies the full Father-addressed conclusion, ending with Amen. It controls the expansion rule, not the selected composite transcript's accents or its accidental seams.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.commemoratio-baptismatis-domini-postcommunio.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.commemoratio-baptismatis-domini-postcommunio",
+        "word": "w042"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "section": "Top conclusion and response before the Nativity preface dialogue; Per omnia saecula saeculorum. R. Amen.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up"
+      },
+      "claim": "The top chant line prints Per omnia saecula saeculorum and the response Amen. The composite joins musical syllable divisions and omits the response marker. Only these five words are used; the Nativity preface dialogue and body are excluded.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.commemoratio-baptismatis-domini-postcommunio.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -13475,12 +13567,13 @@
         "text": "proprium.commemoratio-baptismatis-domini-postcommunio"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Sancti/01-13.txt (section [Postcommunio]); resolved spans: web/www/missa/Latin/Sancti/01-13.txt (lines 42-43); web/www/missa/Latin/Ordo/Prayers.txt (lines 97-98)"
+        "section": "web/www/missa/Latin/Sancti/01-13.txt [Postcommunio] (lines 42-43); web/www/missa/Latin/Ordo/Prayers.txt [Per Dominum] (lines 96-97)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.commemoratio-baptismatis-domini-postcommunio.mr1962",
@@ -13494,13 +13587,14 @@
       "locator": {
         "printed": "p. 43",
         "scan": "leaf n122 / PDF p. 123",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n122/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n122/mode/1up",
+        "section": "Proper body and abbreviated conclusion cue; full ending supplied from the printed formulae on pp. 123 and 226 under RG 115 a"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-25",
+      "claim": "This proper-page locus supplies the body and the abbreviated conclusion cue, not the expanded ending.",
+      "verified_on": "2026-10-07",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "e595820146bf270afd05c3d4f2a03d8633c3107a07c3f86298220765b16af9e2",
-      "decision_reason": "Locator corrected against the page image; the text is printed on the leaf now cited."
+      "decision_reason": "Corrects the use recorded 2026-09-25: the page prints only the cue Per Dóminum.; the expanded ending is taken from the edition's full printings on pp. 123 and 226, as for the other expanded conclusions."
     },
     {
       "id": "use.proprium.commemoratio-baptismatis-domini-postcommunio.oration-boundaries.mr1962",
@@ -13523,6 +13617,28 @@
       "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
     },
     {
+      "id": "use.proprium.commemoratio-baptismatis-domini-secreta.conclusion-rg115c.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.commemoratio-baptismatis-domini-secreta",
+        "word": "w029"
+      },
+      "locator": {
+        "printed": "p. xviii",
+        "scan": "n23 / PDF24",
+        "section": "RG115c full Qui tecum conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n23/mode/1up"
+      },
+      "claim": "Prescribes the complete conclusion supplied after the proper-page abbreviation. Its unaccented spelling and list-final semicolon remain explicit in the composite witness.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.commemoratio-baptismatis-domini-secreta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -13532,12 +13648,13 @@
         "text": "proprium.commemoratio-baptismatis-domini-secreta"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Sancti/01-13.txt (section [Secreta]); resolved spans: web/www/missa/Latin/Sancti/01-13.txt (lines 35-36); web/www/missa/Latin/Ordo/Prayers.txt (lines 121-122)"
+        "section": "web/www/missa/Latin/Sancti/01-13.txt [Secreta] (lines 35-36); web/www/missa/Latin/Ordo/Prayers.txt [Qui tecum] (lines 120-121)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.commemoratio-baptismatis-domini-secreta.mr1962",
@@ -13551,13 +13668,14 @@
       "locator": {
         "printed": "p. 43",
         "scan": "leaf n122 / PDF p. 123",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n122/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n122/mode/1up",
+        "section": "Proper body and abbreviation only; full formula at RG115c, printed xviii / n23 / PDF24"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-25",
+      "claim": "The proper page supplies the body and Qui tecum abbreviation. The complete comparison joins that body to the exact full conclusion prescribed in RG115c, declared separately.",
+      "verified_on": "2026-10-07",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "e595820146bf270afd05c3d4f2a03d8633c3107a07c3f86298220765b16af9e2",
-      "decision_reason": "Locator corrected against the page image; the text is printed on the leaf now cited."
+      "decision_reason": "Corrects the use recorded 2026-09-25: the page prints only the cue Qui tecum.; the full conclusion is the formula of Rubricae generales 115 c, declared as a separate locus."
     },
     {
       "id": "use.proprium.commemoratio-baptismatis-domini-secreta.oration-boundaries.mr1962",
@@ -18150,6 +18268,72 @@
       "evidence_sha256": "e6f2e65318fa606063396ac267b3c3a0c92d3196b6d6895ee7c5025335091bab"
     },
     {
+      "id": "use.proprium.dominica-i-post-epiphaniam-collecta.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-i-post-epiphaniam-collecta",
+        "word": "w023"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "section": "Postcommunio continuing Monday after the first Sunday of the Passion, above the Tuesday heading; Per Dominum nostrum through Deus.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up"
+      },
+      "claim": "This separate Postcommunion prints the accented conclusion with no comma after Christum and the colon and uppercase Qui after tuum, ending with Deus. The composite uses nostrum through Deus.; the cue words Per Dóminum come from p. 41, and this page supplies neither the final duration nor Amen.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.dominica-i-post-epiphaniam-collecta.conclusion-rg115a.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-i-post-epiphaniam-collecta",
+        "word": "w021"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a; Father-addressed oration conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a supplies the full Father-addressed conclusion, ending with Amen. It controls the expansion rule, not the selected composite transcript's accents or its accidental seams.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.dominica-i-post-epiphaniam-collecta.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-i-post-epiphaniam-collecta",
+        "word": "w038"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "section": "Top conclusion and response before the Nativity preface dialogue; Per omnia saecula saeculorum. R. Amen.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up"
+      },
+      "claim": "The top chant line prints Per omnia saecula saeculorum and the response Amen. The composite joins musical syllable divisions and omits the response marker. Only these five words are used; the Nativity preface dialogue and body are excluded.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.dominica-i-post-epiphaniam-collecta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -18159,12 +18343,13 @@
         "text": "proprium.dominica-i-post-epiphaniam-collecta"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi1-0a.txt (section [Oratio]); resolved spans: web/www/missa/Latin/Tempora/Epi1-0a.txt (lines 21-22); web/www/missa/Latin/Ordo/Prayers.txt (lines 97-98)"
+        "section": "web/www/missa/Latin/Tempora/Epi1-0a.txt [Oratio] (lines 21-22); web/www/missa/Latin/Ordo/Prayers.txt [Per Dominum] (lines 96-97)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.dominica-i-post-epiphaniam-collecta.mr1962",
@@ -18178,12 +18363,14 @@
       "locator": {
         "printed": "p. 41",
         "scan": "leaf n120 / PDF p. 121",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n120/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n120/mode/1up",
+        "section": "Proper body and abbreviated conclusion cue; full ending supplied from the printed formulae on pp. 123 and 226 under RG 115 a"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "e6f2e65318fa606063396ac267b3c3a0c92d3196b6d6895ee7c5025335091bab"
+      "claim": "This proper-page locus supplies the body and the abbreviated conclusion cue, not the expanded ending.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "e6f2e65318fa606063396ac267b3c3a0c92d3196b6d6895ee7c5025335091bab",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the page prints only the cue Per Dóminum.; the expanded ending is taken from the edition's full printings on pp. 123 and 226, as for the other expanded conclusions."
     },
     {
       "id": "use.proprium.dominica-i-post-epiphaniam-collecta.oration-boundaries.mr1962",
@@ -18215,12 +18402,13 @@
         "text": "proprium.dominica-i-post-epiphaniam-communio"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi1-0a.txt (section [Communio]); resolved spans: web/www/missa/Latin/Tempora/Epi1-0a.txt (lines 58-59)"
+        "section": "web/www/missa/Latin/Tempora/Epi1-0a.txt [Communio] (lines 58-59)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "9fd72b197bdc79898207c50fe9f7a7d362c52d726578b4356b8a4e58cf5c7068"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "9fd72b197bdc79898207c50fe9f7a7d362c52d726578b4356b8a4e58cf5c7068",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.dominica-i-post-epiphaniam-communio.mr1962",
@@ -18251,12 +18439,13 @@
         "text": "proprium.dominica-i-post-epiphaniam-epistola"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi1-0a.txt (section [Lectio]); resolved spans: web/www/missa/Latin/Tempora/Epi1-0a.txt (lines 29-31)"
+        "section": "web/www/missa/Latin/Tempora/Epi1-0a.txt [Lectio] (lines 30-31)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "9fd72b197bdc79898207c50fe9f7a7d362c52d726578b4356b8a4e58cf5c7068"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "9fd72b197bdc79898207c50fe9f7a7d362c52d726578b4356b8a4e58cf5c7068",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.dominica-i-post-epiphaniam-epistola.mr1962",
@@ -18323,12 +18512,56 @@
         "text": "proprium.dominica-i-post-epiphaniam-introitus"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi1-0a.txt (section [Introitus]); resolved spans: web/www/missa/Latin/Tempora/Epi1-0a.txt (lines 14-17); web/www/missa/Latin/Ordo/Prayers.txt (lines 14-15)"
+        "section": "web/www/missa/Latin/Tempora/Epi1-0a.txt [Introitus] (lines 14-18); web/www/missa/Latin/Ordo/Prayers.txt [Gloria] (lines 13-14)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
+    },
+    {
+      "id": "use.proprium.dominica-i-post-epiphaniam-introitus.expanded-doxology.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "segment",
+        "text": "proprium.dominica-i-post-epiphaniam-introitus",
+        "segment": "s01"
+      },
+      "locator": {
+        "printed": "p. 219",
+        "scan": "leaf n298 / PDF p. 299",
+        "section": "Ordo Missae: Gloria Patri",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
+      },
+      "claim": "The full Gloria Patri through Amen supplies words w029–w048 after the proper's cue; the Ordo prints semper: where the selected text has the house comma.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55",
       "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.dominica-i-post-epiphaniam-introitus.introit-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-i-post-epiphaniam-introitus"
+      },
+      "locator": {
+        "printed": "p. xxix",
+        "scan": "leaf n34 / PDF p. 35",
+        "section": "Rubricae generales 427",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "RG 427 prescribes antiphon, psalm, Gloria Patri and repeated antiphon; it supports this expansion of the printed cues.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
     },
     {
       "id": "use.proprium.dominica-i-post-epiphaniam-introitus.mr1962",
@@ -18360,12 +18593,13 @@
         "text": "proprium.dominica-i-post-epiphaniam-offertorium"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi1-0a.txt (section [Offertorium]); resolved spans: web/www/missa/Latin/Tempora/Epi1-0a.txt (lines 46-47)"
+        "section": "web/www/missa/Latin/Tempora/Epi1-0a.txt [Offertorium] (lines 46-47)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "9fd72b197bdc79898207c50fe9f7a7d362c52d726578b4356b8a4e58cf5c7068"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "9fd72b197bdc79898207c50fe9f7a7d362c52d726578b4356b8a4e58cf5c7068",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.dominica-i-post-epiphaniam-offertorium.mr1962",
@@ -18387,6 +18621,72 @@
       "evidence_sha256": "e6f2e65318fa606063396ac267b3c3a0c92d3196b6d6895ee7c5025335091bab"
     },
     {
+      "id": "use.proprium.dominica-i-post-epiphaniam-postcommunio.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-i-post-epiphaniam-postcommunio",
+        "word": "w020"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "section": "Postcommunio continuing Monday after the first Sunday of the Passion, above the Tuesday heading; Per Dominum nostrum through Deus.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up"
+      },
+      "claim": "This separate Postcommunion prints the accented conclusion with no comma after Christum and the colon and uppercase Qui after tuum, ending with Deus. The composite uses nostrum through Deus.; the cue words Per Dóminum come from p. 42, and this page supplies neither the final duration nor Amen.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.dominica-i-post-epiphaniam-postcommunio.conclusion-rg115a.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-i-post-epiphaniam-postcommunio",
+        "word": "w018"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a; Father-addressed oration conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a supplies the full Father-addressed conclusion, ending with Amen. It controls the expansion rule, not the selected composite transcript's accents or its accidental seams.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.dominica-i-post-epiphaniam-postcommunio.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-i-post-epiphaniam-postcommunio",
+        "word": "w035"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "section": "Top conclusion and response before the Nativity preface dialogue; Per omnia saecula saeculorum. R. Amen.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up"
+      },
+      "claim": "The top chant line prints Per omnia saecula saeculorum and the response Amen. The composite joins musical syllable divisions and omits the response marker. Only these five words are used; the Nativity preface dialogue and body are excluded.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.dominica-i-post-epiphaniam-postcommunio.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -18396,12 +18696,13 @@
         "text": "proprium.dominica-i-post-epiphaniam-postcommunio"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi1-0a.txt (section [Postcommunio]); resolved spans: web/www/missa/Latin/Tempora/Epi1-0a.txt (line 22); web/www/missa/Latin/Tempora/Epi1-0a.txt (line 62); web/www/missa/Latin/Ordo/Prayers.txt (lines 97-98)"
+        "section": "web/www/missa/Latin/Tempora/Epi1-0a.txt [Postcommunio] (lines 62-63); web/www/missa/Latin/Ordo/Prayers.txt [Per Dominum] (lines 96-97)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.dominica-i-post-epiphaniam-postcommunio.mr1962",
@@ -18415,12 +18716,14 @@
       "locator": {
         "printed": "p. 42",
         "scan": "leaf n121 / PDF p. 122",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n121/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n121/mode/1up",
+        "section": "Proper body and abbreviated conclusion cue; full ending supplied from the printed formulae on pp. 123 and 226 under RG 115 a"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "ac6c09d354467aa7bce085f7d44604e7512e84d6791710c7cea73ed2a3f610f7"
+      "claim": "This proper-page locus supplies the body and the abbreviated conclusion cue, not the expanded ending.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "ac6c09d354467aa7bce085f7d44604e7512e84d6791710c7cea73ed2a3f610f7",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the page prints only the cue Per Dóminum.; the expanded ending is taken from the edition's full printings on pp. 123 and 226, as for the other expanded conclusions."
     },
     {
       "id": "use.proprium.dominica-i-post-epiphaniam-postcommunio.oration-boundaries.mr1962",
@@ -18443,6 +18746,72 @@
       "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
     },
     {
+      "id": "use.proprium.dominica-i-post-epiphaniam-secreta.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-i-post-epiphaniam-secreta",
+        "word": "w012"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "section": "Postcommunio continuing Monday after the first Sunday of the Passion, above the Tuesday heading; Per Dominum nostrum through Deus.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up"
+      },
+      "claim": "This separate Postcommunion prints the accented conclusion with no comma after Christum and the colon and uppercase Qui after tuum, ending with Deus. The composite uses nostrum through Deus.; the cue words Per Dóminum come from p. 42, and this page supplies neither the final duration nor Amen.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.dominica-i-post-epiphaniam-secreta.conclusion-rg115a.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-i-post-epiphaniam-secreta",
+        "word": "w010"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a; Father-addressed oration conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a supplies the full Father-addressed conclusion, ending with Amen. It controls the expansion rule, not the selected composite transcript's accents or its accidental seams.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.dominica-i-post-epiphaniam-secreta.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-i-post-epiphaniam-secreta",
+        "word": "w027"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "section": "Top conclusion and response before the Nativity preface dialogue; Per omnia saecula saeculorum. R. Amen.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up"
+      },
+      "claim": "The top chant line prints Per omnia saecula saeculorum and the response Amen. The composite joins musical syllable divisions and omits the response marker. Only these five words are used; the Nativity preface dialogue and body are excluded.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.dominica-i-post-epiphaniam-secreta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -18452,12 +18821,13 @@
         "text": "proprium.dominica-i-post-epiphaniam-secreta"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi1-0a.txt (section [Secreta]); resolved spans: web/www/missa/Latin/Tempora/Epi1-0a.txt (line 22); web/www/missa/Latin/Tempora/Epi1-0a.txt (line 50); web/www/missa/Latin/Ordo/Prayers.txt (lines 97-98)"
+        "section": "web/www/missa/Latin/Tempora/Epi1-0a.txt [Secreta] (lines 50-51); web/www/missa/Latin/Ordo/Prayers.txt [Per Dominum] (lines 96-97)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.dominica-i-post-epiphaniam-secreta.mr1962",
@@ -18471,12 +18841,14 @@
       "locator": {
         "printed": "p. 42",
         "scan": "leaf n121 / PDF p. 122",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n121/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n121/mode/1up",
+        "section": "Proper body and abbreviated conclusion cue; full ending supplied from the printed formulae on pp. 123 and 226 under RG 115 a"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "ac6c09d354467aa7bce085f7d44604e7512e84d6791710c7cea73ed2a3f610f7"
+      "claim": "This proper-page locus supplies the body and the abbreviated conclusion cue, not the expanded ending.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "ac6c09d354467aa7bce085f7d44604e7512e84d6791710c7cea73ed2a3f610f7",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the page prints only the cue Per Dóminum.; the expanded ending is taken from the edition's full printings on pp. 123 and 226, as for the other expanded conclusions."
     },
     {
       "id": "use.proprium.dominica-i-post-epiphaniam-secreta.oration-boundaries.mr1962",
@@ -38077,6 +38449,27 @@
       "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
     },
     {
+      "id": "use.proprium.epiphania-domini-alleluia.baptism-reprint.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.epiphania-domini-alleluia"
+      },
+      "locator": {
+        "printed": "p. 43",
+        "scan": "leaf n122 / PDF p. 123",
+        "section": "In Commemoratione Baptismatis D.N.I.C., Allelúia, allelúia. ℣. Matth. 2, 2",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n122/mode/1up"
+      },
+      "claim": "The Mass of the Commemoration of the Baptism prints this Alleluia and its verse in full, identical in letters, accents and punctuation to page 38 and the selected text.",
+      "verified_on": "2026-10-09",
+      "evidence_sha256": "e595820146bf270afd05c3d4f2a03d8633c3107a07c3f86298220765b16af9e2",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.epiphania-domini-alleluia.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -38113,6 +38506,94 @@
       "evidence_sha256": "e8d6a255a0e7c41940dbbf225f22db2fcc0cc5b7bc46203064243d338b599973"
     },
     {
+      "id": "use.proprium.epiphania-domini-collecta.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.epiphania-domini-collecta",
+        "word": "w030"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "section": "Postcommunio continuing Monday after the first Sunday of the Passion, above the Tuesday heading; Per Dominum nostrum through Deus.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up"
+      },
+      "claim": "This separate Postcommunion prints the accented conclusion with no comma after Christum and the colon and uppercase Qui after tuum, ending with Deus. The composite uses nostrum through Deus.; the cue words Per eúndem Dóminum come from p. 37, and this page supplies neither the final duration nor Amen.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.epiphania-domini-collecta.conclusion-rg115a.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.epiphania-domini-collecta",
+        "word": "w027"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a; Father-addressed oration conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a supplies the full Father-addressed conclusion, ending with Amen. It controls the expansion rule, not the selected composite transcript's accents or its accidental seams.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.epiphania-domini-collecta.conclusion-rg115b.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.epiphania-domini-collecta",
+        "word": "w027"
+      },
+      "locator": {
+        "printed": "p. xviii",
+        "scan": "leaf n23 / PDF p. 24",
+        "section": "Rubricae generales 115 b; mention of the Son at the beginning of an oration",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n23/mode/1up"
+      },
+      "claim": "RG 115 b prescribes Per eundem Dominum nostrum, etc. ut supra when an oration addressed to the Father mentions the Son at its beginning. This Collect names the Son in its opening clause (Unigénitum tuum géntibus stella duce revelásti), and its printed cue instantiates the rule. The end-mention rule in 115 c is not used here.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.epiphania-domini-collecta.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.epiphania-domini-collecta",
+        "word": "w045"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "section": "Top conclusion and response before the Nativity preface dialogue; Per omnia saecula saeculorum. R. Amen.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up"
+      },
+      "claim": "The top chant line prints Per omnia saecula saeculorum and the response Amen. The composite joins musical syllable divisions and omits the response marker. Only these five words are used; the Nativity preface dialogue and body are excluded.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.epiphania-domini-collecta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -38122,12 +38603,13 @@
         "text": "proprium.epiphania-domini-collecta"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Sancti/01-06.txt (section [Oratio]); resolved spans: web/www/missa/Latin/Sancti/01-06.txt (lines 18-19); web/www/missa/Latin/Ordo/Prayers.txt (lines 113-114)"
+        "section": "web/www/missa/Latin/Sancti/01-06.txt [Oratio] (lines 18-19); web/www/missa/Latin/Ordo/Prayers.txt [Per eumdem] (lines 108-109)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.epiphania-domini-collecta.mr1962",
@@ -38141,12 +38623,14 @@
       "locator": {
         "printed": "p. 37",
         "scan": "leaf n116 / PDF p. 117",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n116/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n116/mode/1up",
+        "section": "Proper body and abbreviated conclusion cue; full ending supplied from the printed formulae on pp. 123 and 226 under RG 115 a–b"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "0e8a7d95c159a1fee761288eef0806efea6e37a8ce887bbf4a59f9c057118ec3"
+      "claim": "This proper-page locus supplies the body and the abbreviated conclusion cue, not the expanded ending.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "0e8a7d95c159a1fee761288eef0806efea6e37a8ce887bbf4a59f9c057118ec3",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the page prints only the cue Per eúndem Dóminum.; the expanded ending is taken from the edition's full printings on pp. 123 and 226, as for the other expanded conclusions."
     },
     {
       "id": "use.proprium.epiphania-domini-collecta.oration-boundaries.mr1962",
@@ -38169,6 +38653,27 @@
       "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
     },
     {
+      "id": "use.proprium.epiphania-domini-communio.baptism-reprint.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.epiphania-domini-communio"
+      },
+      "locator": {
+        "printed": "p. 43",
+        "scan": "leaf n122 / PDF p. 123",
+        "section": "In Commemoratione Baptismatis D.N.I.C., Antiphona ad Communionem, Matth. 2, 2",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n122/mode/1up"
+      },
+      "claim": "The Mass of the Commemoration of the Baptism prints this Communion in full. Its words equal page 38 and the selected text; it prints Oríente, with the accent misplaced, and no comma after it (in Oríente et vénimus), where page 38 and the selected text have Oriénte, et.",
+      "verified_on": "2026-10-09",
+      "evidence_sha256": "e595820146bf270afd05c3d4f2a03d8633c3107a07c3f86298220765b16af9e2",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.epiphania-domini-communio.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -38178,12 +38683,13 @@
         "text": "proprium.epiphania-domini-communio"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Sancti/01-06.txt (section [Communio]); resolved spans: web/www/missa/Latin/Sancti/01-06.txt (lines 30-31)"
+        "section": "web/www/missa/Latin/Sancti/01-06.txt [Communio] (lines 47-48)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "16d259422a82d5df58a8e66bd555dc40498446e8dd0ef0c74dd0d70c89dbffd6"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "16d259422a82d5df58a8e66bd555dc40498446e8dd0ef0c74dd0d70c89dbffd6",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.epiphania-domini-communio.mr1962",
@@ -38205,6 +38711,27 @@
       "evidence_sha256": "e8d6a255a0e7c41940dbbf225f22db2fcc0cc5b7bc46203064243d338b599973"
     },
     {
+      "id": "use.proprium.epiphania-domini-epistola.baptism-reprint.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.epiphania-domini-epistola"
+      },
+      "locator": {
+        "printed": "pp. 42–43",
+        "scan": "leaf n121 / PDF p. 122",
+        "section": "In Commemoratione Baptismatis D.N.I.C., Léctio Isaíæ Prophétæ, Isai. 60, 1-6 (leaves n121–n122)",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n121/mode/1up"
+      },
+      "claim": "The Mass of the Commemoration of the Baptism prints this lesson in full. Its letters and accents equal pages 37–38 and the selected text; it has no comma after illumináre (Surge, illumináre Ierúsalem) and none after tuos (óculos tuos et vide), where pages 37–38 and the selected text have both.",
+      "verified_on": "2026-10-09",
+      "evidence_sha256": "ac6c09d354467aa7bce085f7d44604e7512e84d6791710c7cea73ed2a3f610f7",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.epiphania-domini-epistola.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -38214,12 +38741,13 @@
         "text": "proprium.epiphania-domini-epistola"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Sancti/01-06.txt (section [Lectio]); resolved spans: web/www/missa/Latin/Sancti/01-06.txt (lines 22-24)"
+        "section": "web/www/missa/Latin/Sancti/01-06.txt [Lectio] (lines 23-24)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "16d259422a82d5df58a8e66bd555dc40498446e8dd0ef0c74dd0d70c89dbffd6"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "16d259422a82d5df58a8e66bd555dc40498446e8dd0ef0c74dd0d70c89dbffd6",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.epiphania-domini-epistola.mr1962",
@@ -38278,6 +38806,27 @@
       "evidence_sha256": "e8d6a255a0e7c41940dbbf225f22db2fcc0cc5b7bc46203064243d338b599973"
     },
     {
+      "id": "use.proprium.epiphania-domini-graduale.baptism-reprint.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.epiphania-domini-graduale"
+      },
+      "locator": {
+        "printed": "p. 43",
+        "scan": "leaf n122 / PDF p. 123",
+        "section": "In Commemoratione Baptismatis D.N.I.C., Graduale Ibid., 6 et 1",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n122/mode/1up"
+      },
+      "claim": "The Mass of the Commemoration of the Baptism prints this Gradual in full, identical in letters, accents and punctuation to page 38 and the selected text.",
+      "verified_on": "2026-10-09",
+      "evidence_sha256": "e595820146bf270afd05c3d4f2a03d8633c3107a07c3f86298220765b16af9e2",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.epiphania-domini-graduale.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -38314,6 +38863,27 @@
       "evidence_sha256": "e8d6a255a0e7c41940dbbf225f22db2fcc0cc5b7bc46203064243d338b599973"
     },
     {
+      "id": "use.proprium.epiphania-domini-introitus.baptism-reprint.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.epiphania-domini-introitus"
+      },
+      "locator": {
+        "printed": "p. 42",
+        "scan": "leaf n121 / PDF p. 122",
+        "section": "In Commemoratione Baptismatis D.N.I.C., Antiphona ad Introitum, Malach. 3, 1; I Par. 29, 12 and Ps. 71, 1; cues ℣. Glória Patri. and Ecce.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n121/mode/1up"
+      },
+      "claim": "The Mass of the Commemoration of the Baptism prints this Introit's antiphon and verse in full, identical in letters, accents and punctuation to page 37 and the selected text (Ecce advénit without a comma); only the locus line differs (I Par. for 1 Par.). The Gloria Patri and the repetition are cues on both pages (Ecce.).",
+      "verified_on": "2026-10-09",
+      "evidence_sha256": "ac6c09d354467aa7bce085f7d44604e7512e84d6791710c7cea73ed2a3f610f7",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.epiphania-domini-introitus.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -38323,12 +38893,56 @@
         "text": "proprium.epiphania-domini-introitus"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Sancti/01-06.txt (section [Introitus]); resolved spans: web/www/missa/Latin/Sancti/01-06.txt (lines 10-14); web/www/missa/Latin/Ordo/Prayers.txt (lines 14-15)"
+        "section": "web/www/missa/Latin/Sancti/01-06.txt [Introitus] (lines 10-15); web/www/missa/Latin/Ordo/Prayers.txt [Gloria] (lines 13-14)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
+    },
+    {
+      "id": "use.proprium.epiphania-domini-introitus.expanded-doxology.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "segment",
+        "text": "proprium.epiphania-domini-introitus",
+        "segment": "s01"
+      },
+      "locator": {
+        "printed": "p. 219",
+        "scan": "leaf n298 / PDF p. 299",
+        "section": "Ordo Missae: Gloria Patri",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
+      },
+      "claim": "The full Gloria Patri through Amen supplies words w024–w043 after the proper's cue; the Ordo prints semper: where the selected text has the house comma.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55",
       "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.epiphania-domini-introitus.introit-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "proprium.epiphania-domini-introitus"
+      },
+      "locator": {
+        "printed": "p. xxix",
+        "scan": "leaf n34 / PDF p. 35",
+        "section": "Rubricae generales 427",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "RG 427 prescribes antiphon, psalm, Gloria Patri and repeated antiphon; it supports this expansion of the printed cues.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
     },
     {
       "id": "use.proprium.epiphania-domini-introitus.mr1962",
@@ -38350,6 +38964,27 @@
       "evidence_sha256": "0e8a7d95c159a1fee761288eef0806efea6e37a8ce887bbf4a59f9c057118ec3"
     },
     {
+      "id": "use.proprium.epiphania-domini-offertorium.baptism-reprint.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.epiphania-domini-offertorium"
+      },
+      "locator": {
+        "printed": "p. 43",
+        "scan": "leaf n122 / PDF p. 123",
+        "section": "In Commemoratione Baptismatis D.N.I.C., Antiphona ad Offertorium, Ps. 71, 10-11",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n122/mode/1up"
+      },
+      "claim": "The Mass of the Commemoration of the Baptism prints this Offertory in full, identical in letters, accents and punctuation to page 38 (Arabum without the capital accent the edition supplies).",
+      "verified_on": "2026-10-09",
+      "evidence_sha256": "e595820146bf270afd05c3d4f2a03d8633c3107a07c3f86298220765b16af9e2",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.epiphania-domini-offertorium.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -38359,12 +38994,13 @@
         "text": "proprium.epiphania-domini-offertorium"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Sancti/01-06.txt (section [Offertorium]); resolved spans: web/www/missa/Latin/Sancti/01-06.txt (lines 39-40)"
+        "section": "web/www/missa/Latin/Sancti/01-06.txt [Offertorium] (lines 39-40)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "16d259422a82d5df58a8e66bd555dc40498446e8dd0ef0c74dd0d70c89dbffd6"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "16d259422a82d5df58a8e66bd555dc40498446e8dd0ef0c74dd0d70c89dbffd6",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.epiphania-domini-offertorium.mr1962",
@@ -38386,6 +39022,72 @@
       "evidence_sha256": "e8d6a255a0e7c41940dbbf225f22db2fcc0cc5b7bc46203064243d338b599973"
     },
     {
+      "id": "use.proprium.epiphania-domini-postcommunio.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.epiphania-domini-postcommunio",
+        "word": "w016"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "section": "Postcommunio continuing Monday after the first Sunday of the Passion, above the Tuesday heading; Per Dominum nostrum through Deus.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up"
+      },
+      "claim": "This separate Postcommunion prints the accented conclusion with no comma after Christum and the colon and uppercase Qui after tuum, ending with Deus. The composite uses nostrum through Deus.; the cue words Per Dóminum come from p. 39, and this page supplies neither the final duration nor Amen.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.epiphania-domini-postcommunio.conclusion-rg115a.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.epiphania-domini-postcommunio",
+        "word": "w014"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a; Father-addressed oration conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a supplies the full Father-addressed conclusion, ending with Amen. It controls the expansion rule, not the selected composite transcript's accents or its accidental seams.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.epiphania-domini-postcommunio.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.epiphania-domini-postcommunio",
+        "word": "w031"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "section": "Top conclusion and response before the Nativity preface dialogue; Per omnia saecula saeculorum. R. Amen.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up"
+      },
+      "claim": "The top chant line prints Per omnia saecula saeculorum and the response Amen. The composite joins musical syllable divisions and omits the response marker. Only these five words are used; the Nativity preface dialogue and body are excluded.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.epiphania-domini-postcommunio.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -38395,12 +39097,13 @@
         "text": "proprium.epiphania-domini-postcommunio"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Sancti/01-06.txt (section [Postcommunio]); resolved spans: web/www/missa/Latin/Sancti/01-06.txt (lines 51-52); web/www/missa/Latin/Ordo/Prayers.txt (lines 97-98)"
+        "section": "web/www/missa/Latin/Sancti/01-06.txt [Postcommunio] (lines 51-52); web/www/missa/Latin/Ordo/Prayers.txt [Per Dominum] (lines 96-97)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.epiphania-domini-postcommunio.mr1962",
@@ -38414,12 +39117,14 @@
       "locator": {
         "printed": "p. 39",
         "scan": "leaf n118 / PDF p. 119",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n118/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n118/mode/1up",
+        "section": "Proper body and abbreviated conclusion cue; full ending supplied from the printed formulae on pp. 123 and 226 under RG 115 a"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "5939773f2db82551cc7a514aca2a1c8cac2f4b7f05e15e0f7476cb40ba329c68"
+      "claim": "This proper-page locus supplies the body and the abbreviated conclusion cue, not the expanded ending.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "5939773f2db82551cc7a514aca2a1c8cac2f4b7f05e15e0f7476cb40ba329c68",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the page prints only the cue Per Dóminum.; the expanded ending is taken from the edition's full printings on pp. 123 and 226, as for the other expanded conclusions."
     },
     {
       "id": "use.proprium.epiphania-domini-postcommunio.oration-boundaries.mr1962",
@@ -38442,6 +39147,28 @@
       "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
     },
     {
+      "id": "use.proprium.epiphania-domini-secreta.conclusion-rg115c.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.epiphania-domini-secreta",
+        "word": "w030"
+      },
+      "locator": {
+        "printed": "p. xviii",
+        "scan": "n23 / PDF24",
+        "section": "RG115c full Qui tecum conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n23/mode/1up"
+      },
+      "claim": "Prescribes the complete conclusion supplied after the proper-page abbreviation. Its unaccented spelling and list-final semicolon remain explicit in the composite witness.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.epiphania-domini-secreta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -38451,12 +39178,13 @@
         "text": "proprium.epiphania-domini-secreta"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Sancti/01-06.txt (section [Secreta]); resolved spans: web/www/missa/Latin/Sancti/01-06.txt (lines 43-44); web/www/missa/Latin/Ordo/Prayers.txt (lines 121-122)"
+        "section": "web/www/missa/Latin/Sancti/01-06.txt [Secreta] (lines 43-44); web/www/missa/Latin/Ordo/Prayers.txt [Qui tecum] (lines 120-121)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.epiphania-domini-secreta.mr1962",
@@ -38470,12 +39198,14 @@
       "locator": {
         "printed": "p. 38",
         "scan": "leaf n117 / PDF p. 118",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n117/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n117/mode/1up",
+        "section": "Proper body and abbreviation only; full formula at RG115c, printed xviii / n23 / PDF24"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "e8d6a255a0e7c41940dbbf225f22db2fcc0cc5b7bc46203064243d338b599973"
+      "claim": "The proper page supplies the body and Qui tecum abbreviation. The complete comparison joins that body to the exact full conclusion prescribed in RG115c, declared separately.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "e8d6a255a0e7c41940dbbf225f22db2fcc0cc5b7bc46203064243d338b599973",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the page prints only the cue Qui tecum.; the full conclusion is the formula of Rubricae generales 115 c, declared as a separate locus."
     },
     {
       "id": "use.proprium.epiphania-domini-secreta.oration-boundaries.mr1962",
@@ -46471,6 +47201,28 @@
       "decision_reason": "Locator corrected against the page image: the text is printed on the leaves now cited, from its opening to its end."
     },
     {
+      "id": "use.proprium.sancta-familia-collecta.conclusion-rg115d.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancta-familia-collecta",
+        "word": "w027"
+      },
+      "locator": {
+        "printed": "p. xviii",
+        "scan": "n23 / PDF24",
+        "section": "RG115d full Qui vivis conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n23/mode/1up"
+      },
+      "claim": "Prescribes the complete conclusion of a prayer addressed to the Son, supplied after the proper-page abbreviation. Its unaccented spelling and list-final semicolon remain explicit in the composite witness.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.sancta-familia-collecta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -46480,12 +47232,13 @@
         "text": "proprium.sancta-familia-collecta"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi1-0.txt (section [Oratio]); resolved spans: web/www/missa/Latin/Tempora/Epi1-0.txt (lines 24-25); web/www/missa/Latin/Ordo/Prayers.txt (lines 117-118)"
+        "section": "web/www/missa/Latin/Tempora/Epi1-0.txt [Oratio] (lines 24-25); web/www/missa/Latin/Ordo/Prayers.txt [Qui vivis] (lines 116-117)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.sancta-familia-collecta.mr1962",
@@ -46499,12 +47252,14 @@
       "locator": {
         "printed": "p. 39",
         "scan": "leaf n118 / PDF p. 119",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n118/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n118/mode/1up",
+        "section": "Proper body and abbreviation only; full formula at RG115d, printed xviii / n23 / PDF24"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "5939773f2db82551cc7a514aca2a1c8cac2f4b7f05e15e0f7476cb40ba329c68"
+      "claim": "The proper page supplies the body and Qui vivis abbreviation. The complete comparison joins that body to the exact full conclusion prescribed in RG115d, declared separately.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "5939773f2db82551cc7a514aca2a1c8cac2f4b7f05e15e0f7476cb40ba329c68",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the page prints only the cue Qui vivis.; the full conclusion is the formula of Rubricae generales 115 d, declared as a separate locus."
     },
     {
       "id": "use.proprium.sancta-familia-collecta.oration-boundaries.mr1962",
@@ -46536,12 +47291,13 @@
         "text": "proprium.sancta-familia-communio"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi1-0.txt (section [Communio]); resolved spans: web/www/missa/Latin/Tempora/Epi1-0.txt (lines 79-80)"
+        "section": "web/www/missa/Latin/Tempora/Epi1-0.txt [Communio] (lines 79-80)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "e38bed6663295db08917f46ba26cf6904c88b0b614c4fe717ca548a1fd5e489f"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "e38bed6663295db08917f46ba26cf6904c88b0b614c4fe717ca548a1fd5e489f",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.sancta-familia-communio.mr1962",
@@ -46563,6 +47319,44 @@
       "evidence_sha256": "77e05c4acbb9027387c4528cf4c9019af68cf633961e57ba86a53f0ae629b3d8"
     },
     {
+      "id": "use.proprium.sancta-familia-epistola.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancta-familia-epistola"
+      },
+      "locator": {
+        "section": "Latin/Tempora/Epi1-0.txt [Lectio], marker 32, title 33, reference 34 and complete body 35"
+      },
+      "claim": "The pinned Holy Family Lesson has 108 words ending per ipsum, as page 39 does; its six punctuation differences and its spelling Jesu are recorded.",
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN",
+      "evidence_sha256": "e38bed6663295db08917f46ba26cf6904c88b0b614c4fe717ca548a1fd5e489f",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.sancta-familia-epistola.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancta-familia-epistola"
+      },
+      "locator": {
+        "printed": "p. 39",
+        "scan": "leaf n118 / PDF p. 119",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n118/mode/1up"
+      },
+      "claim": "Benziger 1962 page 39 prints the Holy Family's Epistle in full, 108 words ending per ipsum. Its punctuation controls this transcript.",
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN",
+      "evidence_sha256": "5939773f2db82551cc7a514aca2a1c8cac2f4b7f05e15e0f7476cb40ba329c68",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.sancta-familia-evangelium.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -46572,12 +47366,34 @@
         "text": "proprium.sancta-familia-evangelium"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi1-0.txt (section [Evangelium]); resolved spans: web/www/missa/Latin/Tempora/Epi1-0.txt (lines 61-63)"
+        "section": "web/www/missa/Latin/Tempora/Epi1-0.txt [Evangelium] (lines 62-63)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "e38bed6663295db08917f46ba26cf6904c88b0b614c4fe717ca548a1fd5e489f",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
+    },
+    {
+      "id": "use.proprium.sancta-familia-evangelium.epiphany-i-reprint.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancta-familia-evangelium"
+      },
+      "locator": {
+        "printed": "p. 41",
+        "scan": "leaf n120 / PDF p. 121",
+        "section": "Missa dominicæ I post Epiphaniam, Sequéntia sancti Evangélii secúndum Lucam, Luc. 2, 42-52",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n120/mode/1up"
+      },
+      "claim": "The Mass of the First Sunday after the Epiphany prints this Gospel in full. Its letters and accents equal page 40 and the selected text; it has commas after cognátos (inter cognátos, et notos), illos (audiéntem illos, et interrogántem), tuus (pater tuus, et ego) and his (in his, quæ), and lower-case ecce and nesciebátis after the question marks, where page 40 and the selected text have none of these commas and Ecce, Nesciebátis.",
+      "verified_on": "2026-10-09",
+      "evidence_sha256": "e6f2e65318fa606063396ac267b3c3a0c92d3196b6d6895ee7c5025335091bab",
       "decision": "RETAIN",
-      "evidence_sha256": "e38bed6663295db08917f46ba26cf6904c88b0b614c4fe717ca548a1fd5e489f"
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
     },
     {
       "id": "use.proprium.sancta-familia-evangelium.mr1962",
@@ -46644,12 +47460,56 @@
         "text": "proprium.sancta-familia-introitus"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi1-0.txt (section [Introitus]); resolved spans: web/www/missa/Latin/Tempora/Epi1-0.txt (lines 16-21); web/www/missa/Latin/Ordo/Prayers.txt (lines 14-15)"
+        "section": "web/www/missa/Latin/Tempora/Epi1-0.txt [Introitus] (lines 16-21); web/www/missa/Latin/Ordo/Prayers.txt [Gloria] (lines 13-14)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
+    },
+    {
+      "id": "use.proprium.sancta-familia-introitus.expanded-doxology.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "segment",
+        "text": "proprium.sancta-familia-introitus",
+        "segment": "s01"
+      },
+      "locator": {
+        "printed": "p. 219",
+        "scan": "leaf n298 / PDF p. 299",
+        "section": "Ordo Missae: Gloria Patri",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
+      },
+      "claim": "The full Gloria Patri through Amen supplies words w030–w049 after the proper's cue; the Ordo prints semper: where the selected text has the house comma.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55",
       "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.sancta-familia-introitus.introit-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancta-familia-introitus"
+      },
+      "locator": {
+        "printed": "p. xxix",
+        "scan": "leaf n34 / PDF p. 35",
+        "section": "Rubricae generales 427",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "RG 427 prescribes antiphon, psalm, Gloria Patri and repeated antiphon; it supports this expansion of the printed cues.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
     },
     {
       "id": "use.proprium.sancta-familia-introitus.mr1962",
@@ -46680,12 +47540,13 @@
         "text": "proprium.sancta-familia-offertorium"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi1-0.txt (section [Offertorium]); resolved spans: web/www/missa/Latin/Tempora/Epi1-0.txt (lines 66-67)"
+        "section": "web/www/missa/Latin/Tempora/Epi1-0.txt [Offertorium] (lines 66-67)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "e38bed6663295db08917f46ba26cf6904c88b0b614c4fe717ca548a1fd5e489f"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "e38bed6663295db08917f46ba26cf6904c88b0b614c4fe717ca548a1fd5e489f",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.sancta-familia-offertorium.mr1962",
@@ -46707,6 +47568,28 @@
       "evidence_sha256": "77e05c4acbb9027387c4528cf4c9019af68cf633961e57ba86a53f0ae629b3d8"
     },
     {
+      "id": "use.proprium.sancta-familia-postcommunio.conclusion-rg115d.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancta-familia-postcommunio",
+        "word": "w034"
+      },
+      "locator": {
+        "printed": "p. xviii",
+        "scan": "n23 / PDF24",
+        "section": "RG115d full Qui vivis conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n23/mode/1up"
+      },
+      "claim": "Prescribes the complete conclusion of a prayer addressed to the Son, supplied after the proper-page abbreviation. Its unaccented spelling and list-final semicolon remain explicit in the composite witness.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.sancta-familia-postcommunio.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -46716,12 +47599,13 @@
         "text": "proprium.sancta-familia-postcommunio"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi1-0.txt (section [Postcommunio]); resolved spans: web/www/missa/Latin/Tempora/Epi1-0.txt (line 25); web/www/missa/Latin/Tempora/Epi1-0.txt (line 83); web/www/missa/Latin/Ordo/Prayers.txt (lines 117-118)"
+        "section": "web/www/missa/Latin/Tempora/Epi1-0.txt [Postcommunio] (lines 83-84); web/www/missa/Latin/Ordo/Prayers.txt [Qui vivis] (lines 116-117)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.sancta-familia-postcommunio.mr1962",
@@ -46735,12 +47619,14 @@
       "locator": {
         "printed": "p. 40",
         "scan": "leaf n119 / PDF p. 120",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n119/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n119/mode/1up",
+        "section": "Proper body and abbreviation only; full formula at RG115d, printed xviii / n23 / PDF24"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "77e05c4acbb9027387c4528cf4c9019af68cf633961e57ba86a53f0ae629b3d8"
+      "claim": "The proper page supplies the body and Qui vivis abbreviation. The complete comparison joins that body to the exact full conclusion prescribed in RG115d, declared separately.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "77e05c4acbb9027387c4528cf4c9019af68cf633961e57ba86a53f0ae629b3d8",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the page prints only the cue Qui vivis.; the full conclusion is the formula of Rubricae generales 115 d, declared as a separate locus."
     },
     {
       "id": "use.proprium.sancta-familia-postcommunio.oration-boundaries.mr1962",
@@ -46763,6 +47649,94 @@
       "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
     },
     {
+      "id": "use.proprium.sancta-familia-secreta.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancta-familia-secreta",
+        "word": "w027"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "section": "Postcommunio continuing Monday after the first Sunday of the Passion, above the Tuesday heading; Per Dominum nostrum through Deus.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up"
+      },
+      "claim": "This separate Postcommunion prints the accented conclusion with no comma after Christum and the colon and uppercase Qui after tuum, ending with Deus. The composite uses nostrum through Deus.; the cue words Per eúndem Dóminum come from p. 40, and this page supplies neither the final duration nor Amen.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.sancta-familia-secreta.conclusion-rg115a.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancta-familia-secreta",
+        "word": "w024"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a; Father-addressed oration conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a supplies the full Father-addressed conclusion, ending with Amen. It controls the expansion rule, not the selected composite transcript's accents or its accidental seams.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.sancta-familia-secreta.conclusion-rg116.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancta-familia-secreta",
+        "word": "w024"
+      },
+      "locator": {
+        "printed": "p. xviii",
+        "scan": "leaf n23 / PDF p. 24",
+        "section": "Rubricae generales 116; other particular conclusions noted in the liturgical books",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n23/mode/1up"
+      },
+      "claim": "RG 116 keeps the particular conclusions the liturgical books note. Page 40 prints Per eúndem Dóminum. for this Secret, which does not name the Son in its opening clause (its later clause names Him only through His Mother, Deíparæ Vírginis), so RG 115 b does not prescribe it; the printed cue controls, and RG 115 a supplies the formula it abbreviates.",
+      "verified_on": "2026-10-09",
+      "evidence_sha256": "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.sancta-familia-secreta.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancta-familia-secreta",
+        "word": "w042"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "section": "Top conclusion and response before the Nativity preface dialogue; Per omnia saecula saeculorum. R. Amen.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up"
+      },
+      "claim": "The top chant line prints Per omnia saecula saeculorum and the response Amen. The composite joins musical syllable divisions and omits the response marker. Only these five words are used; the Nativity preface dialogue and body are excluded.",
+      "verified_on": "2026-10-07",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.sancta-familia-secreta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -46772,12 +47746,13 @@
         "text": "proprium.sancta-familia-secreta"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi1-0.txt (section [Secreta]); resolved spans: web/www/missa/Latin/Tempora/Epi1-0.txt (lines 70-71); web/www/missa/Latin/Ordo/Prayers.txt (lines 113-114)"
+        "section": "web/www/missa/Latin/Tempora/Epi1-0.txt [Secreta] (lines 70-71); web/www/missa/Latin/Ordo/Prayers.txt [Per eumdem] (lines 108-109)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
+      "verified_on": "2026-10-09",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
       "id": "use.proprium.sancta-familia-secreta.mr1962",
@@ -46791,12 +47766,14 @@
       "locator": {
         "printed": "p. 40",
         "scan": "leaf n119 / PDF p. 120",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n119/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n119/mode/1up",
+        "section": "Proper body and abbreviated conclusion cue; full ending supplied from the printed formulae on pp. 123 and 226 under RG 115 a and RG 116"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "77e05c4acbb9027387c4528cf4c9019af68cf633961e57ba86a53f0ae629b3d8"
+      "claim": "This proper-page locus supplies the body and the abbreviated conclusion cue, not the expanded ending.",
+      "verified_on": "2026-10-07",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "77e05c4acbb9027387c4528cf4c9019af68cf633961e57ba86a53f0ae629b3d8",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the page prints only the cue Per eúndem Dóminum.; the expanded ending is taken from the edition's full printings on pp. 123 and 226, as for the other expanded conclusions."
     },
     {
       "id": "use.proprium.sancta-familia-secreta.oration-boundaries.mr1962",
@@ -60880,12 +61857,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "1590662564e22416a5cc291d48f56a3680e38dc55bfec97c75709266890e96fd",
+      "transcription_sha256": "4f76373a653fdc9fe951180c407f9512662faff53805e6eab17e584412cec371",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-ordinarium-praefatio-epiphaniae"
       }
     },
     {
@@ -63614,12 +64595,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "ff7bfff47cf9e49e8246adfcded175df0fc3a2395369d572410276c0eb9ebad8",
+      "transcription_sha256": "e03c80236d2bdccd53d98143c6c59b60db4f7d795a90f6ea71cfcccaf9998f00",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-commemoratio-baptismatis-domini-collecta"
       }
     },
     {
@@ -63630,9 +64615,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "9671e41f56f59a940183919503e96145851ad9cb812ccc715356bbeb55b7863f",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "e71f2ec831beb2d6604b4383258149bbc6fa7293a7dd18ab3d83cfd45db87101",
+      "orthography_profile": "exact-multi-locus-transcription",
+      "independence_basis": "Directly read MR1962 proper body p. 42 and its prescribed full conclusion RG115c p.xviii. Same-edition composite, not two independent printed witnesses.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -63686,12 +64671,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "c893e35ebe5623650551d439cc4f1838b17f3892fcd7f0d156bf253ad7efd338",
+      "transcription_sha256": "8381ad26424df6465e5872c99755cddf9becda5e74209e6afa80e44f17f1fb23",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-commemoratio-baptismatis-domini-postcommunio"
       }
     },
     {
@@ -63702,9 +64691,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "8c8186ce879640913e2f12840f9040e9b5b5056d2ca19cb8158efac502b952c6",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "b833b2165906a5d833a58f73d3ac26260221c610e40d09fbbfde19fc7a813641",
+      "orthography_profile": "exact-declared-composite",
+      "independence_basis": "Proper body plus prescribed full conclusion, explicitly assembled from the named loci. One controlling printed edition and one derived digital comparison; no second full printed proper witness is asserted.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -63718,12 +64707,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "a5a39c93496f3e0cac0fb1c2bd2a172056bd7abac01d33d1fe354d54857535fa",
+      "transcription_sha256": "c19e13e8897cff43ce3b33f49a59af89362452125e990c1b7427ef49b399a93e",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-commemoratio-baptismatis-domini-secreta"
       }
     },
     {
@@ -63734,9 +64727,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "784d49f70116534739d0d78031b26970e54dd8b8ce574320a4a23decad168aa0",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "e4bf2f0954609090a0e274bc130fd67575ff3c5e706f2dfe56cd843065558691",
+      "orthography_profile": "exact-multi-locus-transcription",
+      "independence_basis": "Directly read MR1962 proper body p. 43 and its prescribed full conclusion RG115c p.xviii. Same-edition composite, not two independent printed witnesses.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -66735,7 +67728,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "7c5541f70fbd47131928dae83ba99d957bfb9facae00e894e8dba63903e4e0e6",
+      "transcription_sha256": "7a6ccfc56c570010415c617ece39bf12cf726ca2cf9fc8909674451a2c4fbe0c",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
@@ -66751,9 +67744,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "06048f2548d21b8b61294e3d6d6319c87ec02ab4065e1c412582967005ed7e81",
+      "transcription_sha256": "2387c747d5fc20e9d55044c3c1dd4554dd7e07c00393b8178b5d3c214a3af705",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -66767,12 +67760,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "ab7bd817e9556630a78a9876bca2712164619c5230e214b1e5ec95971cf09f6d",
+      "transcription_sha256": "24719312e52242bd168968fdabbcc606b36e3b4aa4aa9d2853ae08a7e90b36de",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-dominica-i-post-epiphaniam-collecta"
       }
     },
     {
@@ -66783,9 +67780,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "e6a05b81496fb9bc56c1ab85dd8532949ecac050b33ab2b099c5fee97accd922",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "9ec47ae6c39f6e87d18246169d6634c462a01e4252c5d359580c283b6f748641",
+      "orthography_profile": "exact-declared-composite",
+      "independence_basis": "Proper body plus prescribed full conclusion, explicitly assembled from the named loci. One controlling printed edition and one derived digital comparison; no second full printed proper witness is asserted.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -66799,12 +67796,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "5f556eb0ef11d040282040a33ccf69e63fe368ce2638c4c009842b97de3ee299",
+      "transcription_sha256": "e6202fe78548d3ce8709e3d4b372f4eb7f60c790ed796cc0970e29c4213f618b",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-dominica-i-post-epiphaniam-communio"
       }
     },
     {
@@ -66815,9 +67816,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "7d67e5e1ecd910fc04fc89e3e5052bb624beba266940f49b1b4705ad7e7461c3",
+      "transcription_sha256": "05cd8767a84ed3319681e8f44589107ef7f55f04e700f1b83ed436ab2112970d",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -66831,12 +67832,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "dbaf2e36e3d8bd131d9a5832c79e6f9d06e8244023375aa747cf83a7f05e80cb",
+      "transcription_sha256": "8d5c6710334d5ffaffa3ac7246cbcf8db2467b6de6e81ffe6ed53c96a5bfed49",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-dominica-i-post-epiphaniam-epistola"
       }
     },
     {
@@ -66847,9 +67852,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "c1e7d78272d2624930a1ae88679301ffc24e586734f4f5eca39f80f1782bea58",
+      "transcription_sha256": "a60d133dc1e365ba17662338f61ef98a949d93357de1a6f920ecff213165ec97",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -66863,7 +67868,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "2ce9c56506179ffe8e0ad53c952dce16a6872761dc0f4fd708db21e3c697fd44",
+      "transcription_sha256": "c537f331ef4e850c7dce0f46f3ddf75608e0ea936000142e097cd29be573cc6e",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
@@ -66879,9 +67884,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "fb5aece2764ed99d01cc4239203a1af5565d16cf280ba1a97e4445c1c0ab0d52",
+      "transcription_sha256": "8503118d98b58655cf6f5fc7935712cc5a042f9fd3e677c0e9ee5c7a5f4021b2",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -66895,12 +67900,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "220254888f7646f3b7f1cbd6eebcf2124ac01a2ae20ed324c82507801bb071b4",
+      "transcription_sha256": "498d07f022ea4e5334198cde28ab8869fb9648b6205d4cee0a9841067b8fe48d",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-dominica-i-post-epiphaniam-introitus"
       }
     },
     {
@@ -66911,12 +67920,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "ec838e74fbd2757d995ba15f182b27e38f0392cf1024dd9d3445101882753b73",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "001a53eac4df711f622f86704e1dd37e5ebe2e67456c9bc36069fede938d52e9",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "Direct comparison with the identified Benziger 1962 proper page, with any separately declared printed formula/rubric expansions; historical preparation remains distinct from pending source review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-i-post-epiphaniam-introitus.expanded-doxology.mr1962",
+          "use.proprium.dominica-i-post-epiphaniam-introitus.introit-expansion.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -66927,12 +67943,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "efe8d06fe4fbd2d5cdc371566e8327511362124b5507f1e851855acab390f003",
+      "transcription_sha256": "ae4b67b3b5a516a0cdd4ef4e2f0945e016857b0348be47411f18bc427829ff82",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-dominica-i-post-epiphaniam-offertorium"
       }
     },
     {
@@ -66943,9 +67963,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "b9250b243d5a592113a86e0d402499d9314339b8fd420542a9673d6a0c8b25d4",
+      "transcription_sha256": "6a868eff0fa234e03c818a2830b55a4c69af25cf97277c6d077053805d87f80d",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -66959,12 +67979,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "01b460c039ba693833163e2080fbd24bc0581344603560938c1997afdc0dc93c",
+      "transcription_sha256": "4e55e8aaf35c9143b4181c1bd44cbd40fca9eae8ec86c52ca20f912703fa21f5",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-dominica-i-post-epiphaniam-postcommunio"
       }
     },
     {
@@ -66975,9 +67999,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "2c1a9b818b9f8a51632d38cf4cd877e8fece810b266fb8be5da3a92e6f453e15",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "6dae3d90af7ffb0e1dc88459cb3f6d2923314e638fb7ae488bc1646c66fdd6bf",
+      "orthography_profile": "exact-declared-composite",
+      "independence_basis": "Proper body plus prescribed full conclusion, explicitly assembled from the named loci. One controlling printed edition and one derived digital comparison; no second full printed proper witness is asserted.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -66991,12 +68015,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "fded2def08b8f2fb5816c5d911f99646d56a93b83180fcfb2d89005f0663f8a7",
+      "transcription_sha256": "ef8f462d8bae63daef50882a3d8979c572f70c4b4f6692aaddc8d426cfaac780",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-dominica-i-post-epiphaniam-secreta"
       }
     },
     {
@@ -67007,9 +68035,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "1dcef73ee15bb9f8a9439e1729091a235efe4577b6caf9b721e986927cfd24c3",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "82de65c4476b976a399ba214b67fae3d2372267ea2df698ce986565c91ca9b2c",
+      "orthography_profile": "exact-declared-composite",
+      "independence_basis": "Proper body plus prescribed full conclusion, explicitly assembled from the named loci. One controlling printed edition and one derived digital comparison; no second full printed proper witness is asserted.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81415,7 +82443,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "a3538e2d1f2f3c7fd24132c1c284d1ae4d5cc4107bf44122776b7e29b83bee1b",
+      "transcription_sha256": "dea4aa427b203826bdc1301a49a7b88f49d2c15a89805c015c02333e271d77b9",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
@@ -81431,9 +82459,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "17d02331ac77d4b99bd9c77e637258718c0df164a2812595ed70700f1c07e44a",
+      "transcription_sha256": "e4c2f704c7a3d7f7cae897d0aec5daf2f1c24c65990eb3e0c97f9c27e422e35b",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81447,12 +82475,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "63967aaa5c41901b87a98458a54c53383a0c1c190d9b30b577f5b2f5c1bc832c",
+      "transcription_sha256": "a63c0d6e4ca5d799a5529f075583f2eb908a88a466e2d737560273cf7dcd9aa0",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-epiphania-domini-collecta"
       }
     },
     {
@@ -81463,9 +82495,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "3a18fc032a40693807f77988d4cf37f0a3132b08c40604c71e5e5f5c6fab3535",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "2b63e7068cb853ba23306e502fdbdef29e5ae047dd42098f2ca14546156ac8bf",
+      "orthography_profile": "exact-declared-composite",
+      "independence_basis": "Proper body plus prescribed full conclusion, explicitly assembled from the named loci. One controlling printed edition and one derived digital comparison; no second full printed proper witness is asserted.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81479,12 +82511,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "3303debe345254ad6b17bccb788cc78cb36fb9c0bd539a904a195911e142235a",
+      "transcription_sha256": "f920b3319cce109dd02cc68cbcde62eaba1c414dc1a55c77f2d1f23f38ebb908",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-epiphania-domini-communio"
       }
     },
     {
@@ -81495,9 +82531,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "3372c27c75aa165a264f5571f35ca5cda79e541100fae6566b297a38522229f4",
+      "transcription_sha256": "45eb0f2e261fe820da53fa5971ef71ff9c44d68b57c09d80010239c77a6b5822",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81511,12 +82547,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "671c27149279778c04f4c2d2fd8d0b4f891f908cdf2e6ae14355d4c85fca8c32",
+      "transcription_sha256": "c9dcd2e2b33d55e93d9cedeaddb21a426d0aaa84396fa5c6a5ddccb0c8657807",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-epiphania-domini-epistola"
       }
     },
     {
@@ -81527,9 +82567,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "e64e1004b6b54163af3d175f6eb889306bb33cb185a4cef9d2c3cf4ce4a28d8d",
+      "transcription_sha256": "10ff29ad9ccd3d59fc244159cf3790f548b75fc428429b5e4f023f408b294b9d",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81543,7 +82583,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "c93bc9582de321acf07116c0f6993d43430fd88270eba468efa953137a38fe55",
+      "transcription_sha256": "caf74ab58fa5214692dc0680eb0ea21f6276b731a12aa0a6ce44da9b4dd7c564",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
@@ -81559,9 +82599,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "b5bef8894aa0330dbf988b46157eae9407de8001da8150eac9d2dc09938c65af",
+      "transcription_sha256": "91a75207b4b4e007beb2b1160dcc60b32c5c78708cb08a0f6bd25bfb5e86079d",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81575,7 +82615,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "c908723e3bea2d6d324841a84f82de564762aa738eb71f32e0510e8af577f4ef",
+      "transcription_sha256": "e812c5ea78f88c67b42ffc63c583670cce22540df7213e710315511c3d8600d1",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
@@ -81591,9 +82631,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "7aa441239473c50ef1e345faf55b776f4a979fb98338fbcc875ffd22c03adf04",
+      "transcription_sha256": "7434fba66a62b95757ece1d8e6c6da82fe89150fb86546378a8d1fe50371abcb",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81607,12 +82647,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "3df1523cdc342190507ce287dc375a298bc3a18901add7ae4922140e9ed1c646",
+      "transcription_sha256": "33791c7bb53f19d05840058d5c984198e52e30604ef34f58555fa7839e1accb6",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-epiphania-domini-introitus"
       }
     },
     {
@@ -81623,12 +82667,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "56c4a21ad7e29227b0f9b86f505ff88273e2430ca6b139172117999e413aa287",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "6f10da3d95f188baa5422a4810d3bd16df0477363b2d712665ab02aaf01a1fd4",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "Direct comparison with the identified Benziger 1962 proper page, with any separately declared printed formula/rubric expansions; historical preparation remains distinct from pending source review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.epiphania-domini-introitus.expanded-doxology.mr1962",
+          "use.proprium.epiphania-domini-introitus.introit-expansion.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -81639,12 +82690,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "02392c3255ba43c422a9d5131470b20d9d71d71cb4da41b193d60dfb9a2d2ce2",
+      "transcription_sha256": "4bccd32d0c0cbf0190d40116b99832f026af1cb79b6b93918be19fa5f30316f0",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-epiphania-domini-offertorium"
       }
     },
     {
@@ -81655,9 +82710,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "6b2e4b2711e1d841db0e9a2f241096e1133a46a29faa800c7c673bcbb16d9341",
+      "transcription_sha256": "8cd54a5cc4fd0849a9b1dd247acc3ced6345934e830ddccbf2bad2357e1e839c",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81671,12 +82726,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "b41cb56edd5f559b1363e1ac82a88de3c0f9dbcdda883fdeff3eee7000c5f86e",
+      "transcription_sha256": "67f1c7501f92df18f7f7189b2073f03227992d3eb6a17f80b3b34bffc5f423be",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-epiphania-domini-postcommunio"
       }
     },
     {
@@ -81687,9 +82746,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "1a2dd30e1918df099787086811d57d13e5d914ebc5d62c82dbb921303331112e",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "6fec3bf4284675f91f4100bcb1bf6f70d2ae0b0792488e733515aa483af0b8a6",
+      "orthography_profile": "exact-declared-composite",
+      "independence_basis": "Proper body plus prescribed full conclusion, explicitly assembled from the named loci. One controlling printed edition and one derived digital comparison; no second full printed proper witness is asserted.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -81703,12 +82762,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "3cdac18522887d8b1ea39fc1d701e30b8db6444bff9dc4c23dc986197c6f25ed",
+      "transcription_sha256": "3a6f9810f45fa6d5171d0cded9c91dad3cf8c4d3d0d95f4edfc429a68391b4e0",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-epiphania-domini-secreta"
       }
     },
     {
@@ -81719,9 +82782,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "326fadbb62dad50ade1e09b1dc684efb7cb850aea623855a284552bfa3fc27bc",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "fce124eeb4bb581879d2407b5a7e51509204fab9b2b967db1b465fcef78c1925",
+      "orthography_profile": "exact-multi-locus-transcription",
+      "independence_basis": "Directly read MR1962 proper body p. 38 and its prescribed full conclusion RG115c p.xviii. Same-edition composite, not two independent printed witnesses.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -86611,7 +87674,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "74f88964219ddb956fb43bb4ef9708ebc057d0c99e9f350c97501742308dad72",
+      "transcription_sha256": "9b49af9d220f9c4be907d47819659b47320e60ff6ac4ecedd0678f3b3752102d",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
@@ -86627,9 +87690,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "dcfa84b4ca7b43aeb7ccd94c4251fb9463300c9bc20c6e4b3dd6dcd40b4ae8c8",
+      "transcription_sha256": "b7a86612579300405df2f0e302e119045e70053b47e9dc7871d37c5e1ea7f344",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -86643,12 +87706,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "48c0a04a427615fd59e45f7675ba2fc85b64609780be23908443d954df397404",
+      "transcription_sha256": "21ada0017a45709ca79b486e3eb7d578f71716d2ac04e6d20d816e48b5e35eac",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-sancta-familia-collecta"
       }
     },
     {
@@ -86659,9 +87726,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "39243f777f1e0e7e184113b99b9d89940700c6d9e26dd7572820efaafcc825b4",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "61d092e8e01dbbf0eec822b2c3fcbd256fe0fff7756fa61b499432ec9ff582c6",
+      "orthography_profile": "exact-multi-locus-transcription",
+      "independence_basis": "Directly read MR1962 proper body p. 39 and its prescribed full conclusion RG115d p.xviii. Same-edition composite, not two independent printed witnesses.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -86675,12 +87742,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "791c5003adcdc68e4d6c98875e023c265934d3ebaeef76dcf3caf5ceb13208f9",
+      "transcription_sha256": "eaf44fa65e6421fff16bfb1b0e778d640cdb6f394e77a9a7c2b16526c1623f06",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-sancta-familia-communio"
       }
     },
     {
@@ -86691,12 +87762,52 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "1fa3528814d01fa7e92187003b2dac26a0da7b7a39d4bf31ee63c475480749e3",
+      "transcription_sha256": "7326babf84cb18ae2825515936902890eb50f3cf796f4789fc40b0e49e7e3530",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      }
+    },
+    {
+      "id": "witness.proprium.sancta-familia-epistola.do44667ff",
+      "text": "proprium.sancta-familia-epistola",
+      "use": "use.proprium.sancta-familia-epistola.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "a6abc1f068c91be6c74e6164d43387acf6eec73626aec722ebadd0ed9633aba3",
+      "orthography_profile": "pinned-digital-source",
+      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "transcription": "do",
+      "review": {
+        "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "holy-family-epistle"
+      }
+    },
+    {
+      "id": "witness.proprium.sancta-familia-epistola.mr1962",
+      "text": "proprium.sancta-familia-epistola",
+      "use": "use.proprium.sancta-familia-epistola.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "ea57fd8667148fe945ff47846baffc0ae0cadbea7c7b3ba6172e421123080cf8",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct comparison with the complete Benziger 1962 Editio iuxta typicam page 39, independently of the inherited pinned digital comparison.",
+      "transcription": "mr",
+      "review": {
+        "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -86707,12 +87818,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "b2d11c1426206eb55a05e4c764c5e6a851d623cefbab21bd9c81f0d359c6b694",
+      "transcription_sha256": "52c527ba690504368bda11a29d5e725df708c972a0462c1fd37287b22eda638c",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-sancta-familia-evangelium"
       }
     },
     {
@@ -86723,9 +87838,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "a301a165732f2e10af43a7ce68c5cb5e94931672ff5d0a2e59aac87d907151a8",
+      "transcription_sha256": "d355883121c3f741ec62b306dcdd7b0a485ee4d4ab48ff339abf58c7b4af9142",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -86739,7 +87854,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "80a5893f239c111805f9eac036bad8db1e8ffcffbd61e3bb2fa7a8c8a1e5fca6",
+      "transcription_sha256": "1d15ccbac293d96158769a28c8d1cab79ab8c12d6637be2f1f3c22338c381ddb",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
@@ -86755,9 +87870,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "5ba5e8260d92dd8152a691db7fde82222a2474843a3c3afcfa15779772c0f307",
+      "transcription_sha256": "c55a37ba2bd33a0e3fc69f46d92dfbf64a39e50c1d558c56492c2ca5e86c4c3b",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -86771,12 +87886,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "de8b8f15c23e4eb39e3197bc0dc15f4967f8a2021fb8dc28715c7621e856f894",
+      "transcription_sha256": "368aa78ad7e92d09d49ff7b43c425df8ecdeccd39d35c6f069386c76ea208325",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-sancta-familia-introitus"
       }
     },
     {
@@ -86787,12 +87906,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "be40b0df53177d4a1009fc2da6adad280d5ca0eb0a32f427aa4b111894a97d74",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "2550151ba6090cab9487657c8457b08f9c664c13f71d09777d7bd7b2828f9f80",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "Direct comparison with the identified Benziger 1962 proper page, with any separately declared printed formula/rubric expansions; historical preparation remains distinct from pending source review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.sancta-familia-introitus.expanded-doxology.mr1962",
+          "use.proprium.sancta-familia-introitus.introit-expansion.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -86803,12 +87929,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "9125c3da4bcf97eecea2e016918b3405b66ba44f2faf7bb48fa6f36ee3c05fa0",
+      "transcription_sha256": "4992f7acbc35c5d7cb81ec6349efa7d2382086120c8f3274eba07a8be63b23e8",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-sancta-familia-offertorium"
       }
     },
     {
@@ -86819,9 +87949,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "1d6a89e75f3869d0b0122058d3f53753ba6c6549cc778022141d5a9f2c74199a",
+      "transcription_sha256": "6db4d7a2f7ea466b7782b13f75f6d2e4ada250ed8323696533035e2c0c75e125",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -86835,12 +87965,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "091ac50afa4d1520e4933896f8375fb3224936c530ac7b992b8cb5d7b218a8fa",
+      "transcription_sha256": "888cb2219e023c1435a62dc3d8204d3eee19d6c1d48f7a86da3cb658c53175ef",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-sancta-familia-postcommunio"
       }
     },
     {
@@ -86851,9 +87985,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "8ca965aa5e268698b8d82423c4f6513359b3b5d792539d542f1d7c1cae801997",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "209fd4333f289e2ac5cd5edcb693364927ca8fff5f9bfc2ca25151b20a31c23e",
+      "orthography_profile": "exact-multi-locus-transcription",
+      "independence_basis": "Directly read MR1962 proper body p. 40 and its prescribed full conclusion RG115d p.xviii. Same-edition composite, not two independent printed witnesses.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -86867,12 +88001,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "fc0b903e4f1c8672e8ab07e374be8acf957812c8dc1f13330c077d75b02bc66b",
+      "transcription_sha256": "2a6794d9c77d5f63545ba00c5ff83c67965b2e7a3d273a912e5958d673e1cf76",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-sancta-familia-secreta"
       }
     },
     {
@@ -86883,9 +88021,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "cfa1e8cbe8582374466ce4a25807115f74a7f6baf0b3e97f2a7175d86c73db1b",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "237ed670fd14a6f4cfae846ceea5775e9831fbab633e4ec0f98d93201dedbbf8",
+      "orthography_profile": "exact-declared-composite",
+      "independence_basis": "Proper body plus prescribed full conclusion, explicitly assembled from the named loci. One controlling printed edition and one derived digital comparison; no second full printed proper witness is asserted.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -97585,20 +98723,21 @@
     {
       "id": "collation.proprium.commemoratio-baptismatis-domini-collecta.mr1962-do44667ff",
       "text": "proprium.commemoratio-baptismatis-domini-collecta",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 Baptism Collect in the approved Benziger printing, with its cue completed from the conclusion formula of Rubricae generales 115 c",
       "selected_text_sha256": "830291d4ddcdee3af090436fe9295b95fe6a936b30d30009299332fd3cce3009",
       "witnesses": [
         "witness.proprium.commemoratio-baptismatis-domini-collecta.do44667ff",
         "witness.proprium.commemoratio-baptismatis-domini-collecta.mr1962"
       ],
       "apparatus": {
-        "entries": 3,
+        "entries": 9,
         "classes": [
+          "accent",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "0d4e548ef4bc93088ee558a9dcdf3982d43f499fb7d763dd3e7d6189f5481d55",
+      "apparatus_sha256": "09dc83c732eea22bf806932c5bd7ba8c8f6ae0efe58f393ec6eca9bad21224d5",
       "review": {
         "status": "pending"
       }
@@ -97627,14 +98766,14 @@
     {
       "id": "collation.proprium.commemoratio-baptismatis-domini-postcommunio.mr1962-do44667ff",
       "text": "proprium.commemoratio-baptismatis-domini-postcommunio",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 Baptism Postcommunion in the approved Benziger printing, with its cue completed from the edition's own full printings of the conclusion",
       "selected_text_sha256": "cb9688b5d6d0be49eeb8f40856cfd702f621ef6c5cdd972f56c9dcade88876c1",
       "witnesses": [
         "witness.proprium.commemoratio-baptismatis-domini-postcommunio.do44667ff",
         "witness.proprium.commemoratio-baptismatis-domini-postcommunio.mr1962"
       ],
       "apparatus": {
-        "entries": 8,
+        "entries": 10,
         "classes": [
           "accent",
           "capitalization",
@@ -97642,7 +98781,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "468436b8954ac93f24cb315fb92ce40320a9605c7f13f5228806232f1ea2cf34",
+      "apparatus_sha256": "f2a58694a3651725ae84aadf93ad884ff99766a4537fa175d86f5a915036658f",
       "review": {
         "status": "pending"
       }
@@ -97650,20 +98789,21 @@
     {
       "id": "collation.proprium.commemoratio-baptismatis-domini-secreta.mr1962-do44667ff",
       "text": "proprium.commemoratio-baptismatis-domini-secreta",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 Baptism Secret in the approved Benziger printing, with its cue completed from the conclusion formula of Rubricae generales 115 c",
       "selected_text_sha256": "361cfbb934f4d2a6599da5e87182f0b0ae5bf7ee4341a0aefdfcd229b71bcd66",
       "witnesses": [
         "witness.proprium.commemoratio-baptismatis-domini-secreta.do44667ff",
         "witness.proprium.commemoratio-baptismatis-domini-secreta.mr1962"
       ],
       "apparatus": {
-        "entries": 4,
+        "entries": 10,
         "classes": [
+          "accent",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "04901961a38e3e7f3d9b9fdb5d48620115fcd9b53f92206f0c0c46a5e4dd03c1",
+      "apparatus_sha256": "ba3d899018b8a57ca248e0b24c3f0c763fd36a28211ef6da4a779cd94cf9c253",
       "review": {
         "status": "pending"
       }
@@ -99497,7 +100637,7 @@
     {
       "id": "collation.proprium.dominica-i-post-epiphaniam-alleluia.mr1962-do44667ff",
       "text": "proprium.dominica-i-post-epiphaniam-alleluia",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "1a5e717628b9c4d7e1e9a7e388a2168fae4363b5f555d6224e914a614e501470",
       "witnesses": [
         "witness.proprium.dominica-i-post-epiphaniam-alleluia.do44667ff",
@@ -99509,7 +100649,7 @@
           "orthography"
         ]
       },
-      "apparatus_sha256": "18e17ae85b8f145272cfa9632056670fa834e528a9822cafe3bc1c6e28640a2b",
+      "apparatus_sha256": "6288bc386747e381182fb3324a82c694c899dcb914670140c75d17d7cb8db5b4",
       "review": {
         "status": "pending"
       }
@@ -99517,21 +100657,21 @@
     {
       "id": "collation.proprium.dominica-i-post-epiphaniam-collecta.mr1962-do44667ff",
       "text": "proprium.dominica-i-post-epiphaniam-collecta",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 Epiphany I Collect in the approved Benziger printing, with its cue completed from the edition's own full printings of the conclusion",
       "selected_text_sha256": "46c2d4eba000890a5f73c353162309c4ac48eb19ab20ecc5f49112afb3b9fe5a",
       "witnesses": [
         "witness.proprium.dominica-i-post-epiphaniam-collecta.do44667ff",
         "witness.proprium.dominica-i-post-epiphaniam-collecta.mr1962"
       ],
       "apparatus": {
-        "entries": 7,
+        "entries": 9,
         "classes": [
           "capitalization",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "c09c49d6531dad7f46c5854532049d582939db24f6cfd4036653466353a6a061",
+      "apparatus_sha256": "b135673c2eb28f57cec01915229920ae55d25f3a7c3cd3f67f50418580e37286",
       "review": {
         "status": "pending"
       }
@@ -99539,19 +100679,20 @@
     {
       "id": "collation.proprium.dominica-i-post-epiphaniam-communio.mr1962-do44667ff",
       "text": "proprium.dominica-i-post-epiphaniam-communio",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "5eec0c417cacbed32c9c65a41ed0a6493dcde3f7015a4cbfee3de70a2506773e",
       "witnesses": [
         "witness.proprium.dominica-i-post-epiphaniam-communio.do44667ff",
         "witness.proprium.dominica-i-post-epiphaniam-communio.mr1962"
       ],
       "apparatus": {
-        "entries": 2,
+        "entries": 3,
         "classes": [
+          "accent",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "ba0faefe5174c032f8ca8bc274a1614719471af3ba4a2dbe3cfe66d9bdc813ea",
+      "apparatus_sha256": "d071a0063fe49185dd18e8f488601705c50ec5cf296312af60abfb5c8b0113f0",
       "review": {
         "status": "pending"
       }
@@ -99559,7 +100700,7 @@
     {
       "id": "collation.proprium.dominica-i-post-epiphaniam-epistola.mr1962-do44667ff",
       "text": "proprium.dominica-i-post-epiphaniam-epistola",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "7431cb0b7605457d545ace22922c8169c6985602d652b750fd1798ce136c8158",
       "witnesses": [
         "witness.proprium.dominica-i-post-epiphaniam-epistola.do44667ff",
@@ -99573,7 +100714,7 @@
           "orthography"
         ]
       },
-      "apparatus_sha256": "3df5dc7fac350c5592a2791d449b26207dfbe2a06fbd017940aafb2c4609c9f4",
+      "apparatus_sha256": "2534510c1dd100ad6ac2b8083fb545b0605c7bac741e7c56566970732e8d2863",
       "review": {
         "status": "pending"
       }
@@ -99581,7 +100722,7 @@
     {
       "id": "collation.proprium.dominica-i-post-epiphaniam-graduale.mr1962-do44667ff",
       "text": "proprium.dominica-i-post-epiphaniam-graduale",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "e42d18ca28e39513f26a5391b5fb1958918f02d6d7b3f628d9d2d22c917d185d",
       "witnesses": [
         "witness.proprium.dominica-i-post-epiphaniam-graduale.do44667ff",
@@ -99602,20 +100743,20 @@
     {
       "id": "collation.proprium.dominica-i-post-epiphaniam-introitus.mr1962-do44667ff",
       "text": "proprium.dominica-i-post-epiphaniam-introitus",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
-      "selected_text_sha256": "c0b43dafa5bedb545fc446cded8d36dac0804b8d9ed1641aac47e948a1465ff8",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography; the Gloria Patri (Ordo p. 219) and the repeated antiphon (RG 427) are declared expansions of the printed cues",
+      "selected_text_sha256": "19e78f4adb0223a3c11ed0ffeea132fba04945c99fc7d450aebc366f82c6fcd7",
       "witnesses": [
         "witness.proprium.dominica-i-post-epiphaniam-introitus.do44667ff",
         "witness.proprium.dominica-i-post-epiphaniam-introitus.mr1962"
       ],
       "apparatus": {
-        "entries": 6,
+        "entries": 7,
         "classes": [
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "2197200a33aa49b6178e23704da9c85dfd5261d903cba870ac25f089ad313677",
+      "apparatus_sha256": "86707a72d39b5ef9293604dbb3d4d337a01f7df096949f850353b1454c8a3a7b",
       "review": {
         "status": "pending"
       }
@@ -99623,7 +100764,7 @@
     {
       "id": "collation.proprium.dominica-i-post-epiphaniam-offertorium.mr1962-do44667ff",
       "text": "proprium.dominica-i-post-epiphaniam-offertorium",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "5b66a08a49acc7c29725d48a837448fecf9c6961a5de52649ab0d9f80920bcca",
       "witnesses": [
         "witness.proprium.dominica-i-post-epiphaniam-offertorium.do44667ff",
@@ -99643,21 +100784,21 @@
     {
       "id": "collation.proprium.dominica-i-post-epiphaniam-postcommunio.mr1962-do44667ff",
       "text": "proprium.dominica-i-post-epiphaniam-postcommunio",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 Epiphany I Postcommunion in the approved Benziger printing, with its cue completed from the edition's own full printings of the conclusion",
       "selected_text_sha256": "5ae96edfe7e2d8237108d3ea3c882da880dd9d02ebe94af6e51b57a12792a245",
       "witnesses": [
         "witness.proprium.dominica-i-post-epiphaniam-postcommunio.do44667ff",
         "witness.proprium.dominica-i-post-epiphaniam-postcommunio.mr1962"
       ],
       "apparatus": {
-        "entries": 5,
+        "entries": 7,
         "classes": [
           "capitalization",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "3d887534c84e4c38fc857517f02143fc001ce7bd5dfe89908706fab53e3929ca",
+      "apparatus_sha256": "92499561d3b98fcb2ade1fcbd87e4c754fd3ac2e4b625fcc725aa56fdcead061",
       "review": {
         "status": "pending"
       }
@@ -99665,21 +100806,21 @@
     {
       "id": "collation.proprium.dominica-i-post-epiphaniam-secreta.mr1962-do44667ff",
       "text": "proprium.dominica-i-post-epiphaniam-secreta",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 Epiphany I Secret in the approved Benziger printing, with its cue completed from the edition's own full printings of the conclusion",
       "selected_text_sha256": "678266cbfa98d0919cc99593ec3991fb75e5783cf307b7ac47b52e69f2ec81b0",
       "witnesses": [
         "witness.proprium.dominica-i-post-epiphaniam-secreta.do44667ff",
         "witness.proprium.dominica-i-post-epiphaniam-secreta.mr1962"
       ],
       "apparatus": {
-        "entries": 5,
+        "entries": 7,
         "classes": [
           "capitalization",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "cefb7c4400053da1870f03b535d9314c0979f1ac5d344b3411462254d2d618e4",
+      "apparatus_sha256": "dd66c0fb4953eb67d1db90e90244a639f922fc885712155fc00704c0eb260235",
       "review": {
         "status": "pending"
       }
@@ -108183,7 +109324,7 @@
     {
       "id": "collation.proprium.epiphania-domini-alleluia.mr1962-do44667ff",
       "text": "proprium.epiphania-domini-alleluia",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "16dc385985e1c56b68fc98b0970a4ed303d091172c3789baf5a164c39982a6e5",
       "witnesses": [
         "witness.proprium.epiphania-domini-alleluia.do44667ff",
@@ -108195,7 +109336,7 @@
           "orthography"
         ]
       },
-      "apparatus_sha256": "1936b3a89a3b167d6b7e934a262f791752f427840ee8384ac9e5539ae00ddb55",
+      "apparatus_sha256": "11c9a44ec175a5f3d5dd2a23ccad819e217f948e6b42b276fb5315c5f8015c84",
       "review": {
         "status": "pending"
       }
@@ -108203,21 +109344,21 @@
     {
       "id": "collation.proprium.epiphania-domini-collecta.mr1962-do44667ff",
       "text": "proprium.epiphania-domini-collecta",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 Epiphany Collect in the approved Benziger printing, with its cue completed from the edition's own full printings of the conclusion",
       "selected_text_sha256": "3d7f123beb9df76677bedddc45cd6a32e34d6bbaa89d51d5f655b04803c14553",
       "witnesses": [
         "witness.proprium.epiphania-domini-collecta.do44667ff",
         "witness.proprium.epiphania-domini-collecta.mr1962"
       ],
       "apparatus": {
-        "entries": 4,
+        "entries": 6,
         "classes": [
           "capitalization",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "f2e9c8ef5f9d07e8a8717286a9c9de9e1e68f65d41c56bd9921737c60d1ccb1d",
+      "apparatus_sha256": "5f68fdc366833e0646bdb0f889cc7df605b03f4bc29a4c5be1d903c613ceede1",
       "review": {
         "status": "pending"
       }
@@ -108225,7 +109366,7 @@
     {
       "id": "collation.proprium.epiphania-domini-communio.mr1962-do44667ff",
       "text": "proprium.epiphania-domini-communio",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "5a4619fae4497034ac6922cbdab4b3a90640b8ccfc034bde64d204976cfdcc8e",
       "witnesses": [
         "witness.proprium.epiphania-domini-communio.do44667ff",
@@ -108245,7 +109386,7 @@
     {
       "id": "collation.proprium.epiphania-domini-epistola.mr1962-do44667ff",
       "text": "proprium.epiphania-domini-epistola",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "ae5257ca414659a6ae76f68ab91640844504756591a0ec5eddf3b0cad38ca412",
       "witnesses": [
         "witness.proprium.epiphania-domini-epistola.do44667ff",
@@ -108266,7 +109407,7 @@
     {
       "id": "collation.proprium.epiphania-domini-evangelium.mr1962-do44667ff",
       "text": "proprium.epiphania-domini-evangelium",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "7542d951966b2577965bcaa10e35ef00217fd6689cce529e74ffcb513fd53393",
       "witnesses": [
         "witness.proprium.epiphania-domini-evangelium.do44667ff",
@@ -108282,7 +109423,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "51c117615397d2ef7c24fae281182569ebf7b81c019711cd871d04f2d2369a5e",
+      "apparatus_sha256": "9ca70a1a0bb5c769ee19ad2cf576b3096318d932fb193253ed03b445f58ae0ac",
       "review": {
         "status": "pending"
       }
@@ -108290,7 +109431,7 @@
     {
       "id": "collation.proprium.epiphania-domini-graduale.mr1962-do44667ff",
       "text": "proprium.epiphania-domini-graduale",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "a9495904192328c424fcfbc842943d276a434435f859998514820ff7f3e061b8",
       "witnesses": [
         "witness.proprium.epiphania-domini-graduale.do44667ff",
@@ -108311,20 +109452,20 @@
     {
       "id": "collation.proprium.epiphania-domini-introitus.mr1962-do44667ff",
       "text": "proprium.epiphania-domini-introitus",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
-      "selected_text_sha256": "cf227a389e9e65525621841ced98ebe2f5bc7866fc17fa63d2b93d46d27b8598",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography; the Gloria Patri (Ordo p. 219) and the repeated antiphon (RG 427) are declared expansions of the printed cues",
+      "selected_text_sha256": "fb5875b0bef054b7b3149e9153f11dd2ac18641db8cf3d81deee3de122a1da49",
       "witnesses": [
         "witness.proprium.epiphania-domini-introitus.do44667ff",
         "witness.proprium.epiphania-domini-introitus.mr1962"
       ],
       "apparatus": {
-        "entries": 6,
+        "entries": 8,
         "classes": [
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "25b43d642ef34a6f6bf97234334c6a9c6dc1b8038f660f541a784bbc142873ce",
+      "apparatus_sha256": "dc194ba4936fb08fa99a8df21b1c5f26c638280f02d51d6f0d30c82fe34683e6",
       "review": {
         "status": "pending"
       }
@@ -108332,7 +109473,7 @@
     {
       "id": "collation.proprium.epiphania-domini-offertorium.mr1962-do44667ff",
       "text": "proprium.epiphania-domini-offertorium",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "d91e233dd66fc329f942f877e5dd8edb7d42b4bca77df1a934230cfd1b55e248",
       "witnesses": [
         "witness.proprium.epiphania-domini-offertorium.do44667ff",
@@ -108352,14 +109493,14 @@
     {
       "id": "collation.proprium.epiphania-domini-postcommunio.mr1962-do44667ff",
       "text": "proprium.epiphania-domini-postcommunio",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 Epiphany Postcommunion in the approved Benziger printing, with its cue completed from the edition's own full printings of the conclusion",
       "selected_text_sha256": "9c8b7238417b90418250b4411e6ddf04dcdf30da33fc94db19df22057d731fd8",
       "witnesses": [
         "witness.proprium.epiphania-domini-postcommunio.do44667ff",
         "witness.proprium.epiphania-domini-postcommunio.mr1962"
       ],
       "apparatus": {
-        "entries": 7,
+        "entries": 9,
         "classes": [
           "accent",
           "capitalization",
@@ -108367,7 +109508,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "b31e1dc9d33b453fd4896b94d76496e1c62100c88f6ea595f829fa66d7539ac7",
+      "apparatus_sha256": "e132af8419393ca9875de6b6239478fd1c60d531a357f9563bdf8e37ab897a40",
       "review": {
         "status": "pending"
       }
@@ -108375,14 +109516,14 @@
     {
       "id": "collation.proprium.epiphania-domini-secreta.mr1962-do44667ff",
       "text": "proprium.epiphania-domini-secreta",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 Epiphany Secret in the approved Benziger printing, with its cue completed from the conclusion formula of Rubricae generales 115 c",
       "selected_text_sha256": "d7558b045ac7b60ebd65d047aff319503cab8969c334e750996904d8926f9afc",
       "witnesses": [
         "witness.proprium.epiphania-domini-secreta.do44667ff",
         "witness.proprium.epiphania-domini-secreta.mr1962"
       ],
       "apparatus": {
-        "entries": 11,
+        "entries": 17,
         "classes": [
           "accent",
           "capitalization",
@@ -108390,7 +109531,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "ea4cae8501bd2e4ac667b351e7819ee6439da07b084c2eaa77c35047bf2228ac",
+      "apparatus_sha256": "27dabffbce5fe32505e04a993994482c30bf5c9335a2c2987f188759c1859929",
       "review": {
         "status": "pending"
       }
@@ -111256,7 +112397,7 @@
     {
       "id": "collation.proprium.sancta-familia-alleluia.mr1962-do44667ff",
       "text": "proprium.sancta-familia-alleluia",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "1e232dd3cf756b9c1c44ae25fe6a81152e8245aedd57250ed89288de29004e7e",
       "witnesses": [
         "witness.proprium.sancta-familia-alleluia.do44667ff",
@@ -111268,7 +112409,7 @@
           "orthography"
         ]
       },
-      "apparatus_sha256": "b55ff4d74e7376fc3568c57fe41d74ddc6916afda61a43aabf7d56bb9d63dfe1",
+      "apparatus_sha256": "956fd3ab604d6a874d8d50af371b4479959e13846e8b1343a543b08da74e333e",
       "review": {
         "status": "pending"
       }
@@ -111276,20 +112417,21 @@
     {
       "id": "collation.proprium.sancta-familia-collecta.mr1962-do44667ff",
       "text": "proprium.sancta-familia-collecta",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 Holy Family Collect in the approved Benziger printing, with its cue completed from the conclusion formula of Rubricae generales 115 d",
       "selected_text_sha256": "5560589ef628cda2bf32faaaba86761f5859477e12ee51bd2044997c97251ab2",
       "witnesses": [
         "witness.proprium.sancta-familia-collecta.do44667ff",
         "witness.proprium.sancta-familia-collecta.mr1962"
       ],
       "apparatus": {
-        "entries": 4,
+        "entries": 10,
         "classes": [
+          "accent",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "80131ed2e6be349e37e8c9b4d8ecd0624537bb3a597228e262dc760cc9a14bbc",
+      "apparatus_sha256": "2c8bf145f0b1593cb2b04120014e7e88ac9622bc04ec39e1c07c3f0cec06db47",
       "review": {
         "status": "pending"
       }
@@ -111297,7 +112439,7 @@
     {
       "id": "collation.proprium.sancta-familia-communio.mr1962-do44667ff",
       "text": "proprium.sancta-familia-communio",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "55730d1ea204ff010a1dfd522526e0b5949b5f41ea1bff353bdca31a8d315dd5",
       "witnesses": [
         "witness.proprium.sancta-familia-communio.do44667ff",
@@ -111315,9 +112457,30 @@
       }
     },
     {
+      "id": "collation.proprium.sancta-familia-epistola.mr1962-do44667ff",
+      "text": "proprium.sancta-familia-epistola",
+      "recension": "The Holy Family's Epistle as printed on Benziger 1962 page 39, 108 words; the pinned digital Holy Family Lesson agrees in its words and differs in seven accidentals.",
+      "selected_text_sha256": "3f5dba0195c37ffa982c1046ca8369d3f5b52e4f772b911df1f78b79439c4cb1",
+      "witnesses": [
+        "witness.proprium.sancta-familia-epistola.do44667ff",
+        "witness.proprium.sancta-familia-epistola.mr1962"
+      ],
+      "apparatus": {
+        "entries": 7,
+        "classes": [
+          "orthography",
+          "punctuation"
+        ]
+      },
+      "apparatus_sha256": "3e67b2ff2e84a2212cabd6188a7a1a0eb1b512805b4570ea2baad72a74fc0a02",
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
       "id": "collation.proprium.sancta-familia-evangelium.mr1962-do44667ff",
       "text": "proprium.sancta-familia-evangelium",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "fc9d42f38ec42ab6d6302f855806861a10e67d89f3a0c5748d370051ed176fd3",
       "witnesses": [
         "witness.proprium.sancta-familia-evangelium.do44667ff",
@@ -111339,7 +112502,7 @@
     {
       "id": "collation.proprium.sancta-familia-graduale.mr1962-do44667ff",
       "text": "proprium.sancta-familia-graduale",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "99f38d63b18df115ad3e961cec77bfeebcf24b9d623c9cdb95b46d6a90967b9f",
       "witnesses": [
         "witness.proprium.sancta-familia-graduale.do44667ff",
@@ -111359,7 +112522,7 @@
     {
       "id": "collation.proprium.sancta-familia-introitus.mr1962-do44667ff",
       "text": "proprium.sancta-familia-introitus",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography; the Gloria Patri (Ordo p. 219) and the repeated antiphon (RG 427) are declared expansions of the printed cues",
       "selected_text_sha256": "d0e62e24b56d4b1df05e270c0fc5cec521535c0ee970f6c04cc2c1f52970c8e0",
       "witnesses": [
         "witness.proprium.sancta-familia-introitus.do44667ff",
@@ -111380,7 +112543,7 @@
     {
       "id": "collation.proprium.sancta-familia-offertorium.mr1962-do44667ff",
       "text": "proprium.sancta-familia-offertorium",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography and no shared expansion",
       "selected_text_sha256": "5347cb2ca7a7939bc9b16ee9a125f623fa5294d1dc5e80c9ca861f17d7ebf742",
       "witnesses": [
         "witness.proprium.sancta-familia-offertorium.do44667ff",
@@ -111400,20 +112563,21 @@
     {
       "id": "collation.proprium.sancta-familia-postcommunio.mr1962-do44667ff",
       "text": "proprium.sancta-familia-postcommunio",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 Holy Family Postcommunion in the approved Benziger printing, with its cue completed from the conclusion formula of Rubricae generales 115 d",
       "selected_text_sha256": "01b302fe9aa4ba7f96ac334ad008407199aac75784ba53ce53726489852a6f59",
       "witnesses": [
         "witness.proprium.sancta-familia-postcommunio.do44667ff",
         "witness.proprium.sancta-familia-postcommunio.mr1962"
       ],
       "apparatus": {
-        "entries": 6,
+        "entries": 12,
         "classes": [
+          "accent",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "a3c3698ec74eeef29db765dbf457709fd0c40940b2bdcece09d4ff20a41763b8",
+      "apparatus_sha256": "6bbe6e766069d18003c4b7e212d5b24eba3ac67bb4298815367184ba4477ad51",
       "review": {
         "status": "pending"
       }
@@ -111421,22 +112585,23 @@
     {
       "id": "collation.proprium.sancta-familia-secreta.mr1962-do44667ff",
       "text": "proprium.sancta-familia-secreta",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
-      "selected_text_sha256": "e6f83cd3880a8563647f21059b9021d155d87fd149fcfa265cca6d62a76cbdd4",
+      "recension": "The 1962 Holy Family Secret in the approved Benziger printing, with its cue completed from the edition's own full printings of the conclusion",
+      "selected_text_sha256": "f0a9f723dee799fdf90bd0e5de39219eb710886cbd0782a0e77d754bac4d7552",
       "witnesses": [
         "witness.proprium.sancta-familia-secreta.do44667ff",
         "witness.proprium.sancta-familia-secreta.mr1962"
       ],
       "apparatus": {
-        "entries": 5,
+        "entries": 8,
         "classes": [
           "accent",
           "capitalization",
+          "omission",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "83204c8a5e346faac2afa4947eee85e5e66f5a6f782500c4a8b15717be09d08e",
+      "apparatus_sha256": "ea6e731c40f7cb5049cc94114e332c83861475c3ac676ff5ce7d7bc06d290b64",
       "review": {
         "status": "pending"
       }
