@@ -46,14 +46,20 @@ PER = {
     D + "postcommunio": None,
     B + "postcommunio": None,
 }
+SAME = ("identical in letters, accents and punctuation",)
 REPRINTS = [
-    (F + "evangelium", "epiphany-i-reprint", "p. 41"),
-    (E + "introitus", "baptism-reprint", "p. 42"),
-    (E + "epistola", "baptism-reprint", "pp. 42–43"),
-    (E + "graduale", "baptism-reprint", "p. 43"),
-    (E + "alleluia", "baptism-reprint", "p. 43"),
-    (E + "offertorium", "baptism-reprint", "p. 43"),
-    (E + "communio", "baptism-reprint", "p. 43"),
+    (
+        F + "evangelium",
+        "epiphany-i-reprint",
+        "p. 41",
+        ("cognátos", "illos", "tuus", "his", "ecce", "nesciebátis"),
+    ),
+    (E + "introitus", "baptism-reprint", "p. 42", ("Malach. for Malach", "I Par. for 1 Par.")),
+    (E + "epistola", "baptism-reprint", "pp. 42–43", ("illumináre", "tuos")),
+    (E + "graduale", "baptism-reprint", "p. 43", SAME),
+    (E + "alleluia", "baptism-reprint", "p. 43", SAME),
+    (E + "offertorium", "baptism-reprint", "p. 43", ("Arabum",)),
+    (E + "communio", "baptism-reprint", "p. 43", ("Oríente",)),
 ]
 BASES = {
     E + "epistola": "husenbeth1853",
@@ -140,6 +146,7 @@ def test_the_epiphany_introit_prints_ecce_without_a_comma():
     ]
     body = " ".join(bodies(text))
     assert body.count("Ecce advénit") == 2 and "Ecce," not in body
+    assert core(text)["title"] == "Ecce advénit dominátor Dóminus: et regnum in"
     entries = [
         (e["at"], e["witnesses"], e["class"]) for e in apparatus(text) if e["ours"] == "Ecce"
     ]
@@ -164,6 +171,8 @@ def test_the_holy_family_secret_has_the_printed_deprecantes():
         "w003",
     )
     assert doc["ids"]["next"] == 48
+    assert doc["title"].endswith("Dómine, supplíciter deprecántes")
+    assert "except the participle deprecántes" in uses(text)["do44667ff"]["claim"]
     assert layer("pl", text)["words"]["w047"]["gloss"] == "prosząc"
     assert layer("en", text)["words"]["w047"]["gloss"] == "beseeching"
     assert "pokornie prosząc, abyś" in layer("pl", text)["segments"]["s01"]["translation"]
@@ -204,6 +213,7 @@ def test_the_holy_family_reads_its_own_epistle():
     bound = resolve_binding(ROOT / "witnesses" / EPISTLE / "do.txt", ROOT)
     assert bound is not None and bound.text.endswith("per ipsum.")
     assert len(bound.text.split()) == 108
+    assert uses(EPISTLE)["do44667ff"]["decision_reason"].startswith("Exact pinned original")
     clean(EPISTLE)
 
 
@@ -257,6 +267,9 @@ def test_the_per_conclusions_are_declared_composites(text):
     if PER[text]:
         expected.add(f"conclusion-{PER[text]}.mr1962")
     assert {key for key in found if "conclusion-" in key} == expected
+    if PER[text] == "rg116":
+        claim = found["conclusion-rg116.mr1962"]["claim"]
+        assert "does not name the Son in its opening clause" in claim
     assert found["mr1962"]["decision"] == "RETAIN_WITH_CORRECTION"
     assert record(text)["orthography_profile"] == "exact-declared-composite"
     assert bodies(text)[-1].endswith("Deus. Per ómnia sǽcula sæculórum. Amen.")
@@ -280,11 +293,11 @@ def test_the_composite_ranges_meet_at_the_printed_seams(text):
     assert sequence[terminal[1]]["form"] == "Amen"
 
 
-@pytest.mark.parametrize("text,key,printed", REPRINTS)
-def test_the_reprints_are_recorded_with_their_differences(text, key, printed):
+@pytest.mark.parametrize("text,key,printed,named", REPRINTS)
+def test_the_reprints_are_recorded_with_their_differences(text, key, printed, named):
     use = uses(text)[f"{key}.mr1962"]
     assert (use["role"], use["locator"]["printed"]) == ("direct_approved_print", printed)
-    assert use["claim"]
+    assert all(word in use["claim"] for word in named)
 
 
 @pytest.mark.parametrize("text", sorted(BASES))
@@ -293,8 +306,18 @@ def test_the_revised_english_names_its_historical_basis(text):
     bibliography = load("languages/en/bibliography.json")
     use = next(u for u in bibliography["uses"] if u["id"] == f"use.en.{text}.body.{source}")
     assert (use["role"], use["edition"]) == ("historical_wording_basis", EDITIONS[source])
+    head, _, changes = use["claim"].partition(": ")
+    assert "revised" in head and changes
     assert use["address"] == {"kind": "segment", "text": text, "segment": "s01"}
     basis = load("languages/en/translation-basis.json")["records"]
     assert {"texts": [text], "segments": ["s01"], "relationship": "revised"} in basis
     sites = load("languages/en/translation-provenance.json")["sites"]
     assert next(s for s in sites if s["site"] == f"{text}.s01.en")["origin"] == "public-domain"
+
+
+def test_the_basis_claims_list_only_revisions():
+    found = {u["id"]: u["claim"] for u in load("languages/en/bibliography.json")["uses"]}
+    assert "for ye" not in found[f"use.en.{D}epistola.body.laity1846"]
+    assert "and ye" not in found[f"use.en.{E}evangelium.body.husenbeth1853"]
+    introit = found[f"use.en.{D}introitus.body.husenbeth1853"]
+    assert "Sing joyfully" not in introit and "the psalm verse's punctuation" in introit

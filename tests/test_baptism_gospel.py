@@ -48,7 +48,7 @@ def test_minimal_construction_has_one_provider(language, start, end, anchor, glo
     assert all(data["words"][wid] == {} for wid in ids)
 
 
-@pytest.mark.parametrize("language,members,direct", [("pl", 6, 104), ("en", 15, 95)])
+@pytest.mark.parametrize("language,members,direct", [("pl", 7, 103), ("en", 15, 95)])
 def test_all_110_tokens_remain_accounted_for(language, members, direct):
     core = load(f"texts/proprium/{NAME}.json")
     data = layer(language)
@@ -58,7 +58,7 @@ def test_all_110_tokens_remain_accounted_for(language, members, direct):
     groups = data["segments"]["s01"]["alignments"]
     assert sum(len(g["words"]) for g in groups) == members
     zeros = [g for g in groups if "gloss" not in g]
-    assert zeros == ([{"words": ["w058"], "reason": "punctuation"}] if language == "en" else [])
+    assert zeros == [{"words": ["w058"], "reason": "punctuation"}]
     assert all("gloss" in g and "reason" not in g for g in groups if g not in zeros)
     assert sum("gloss" in w for w in data["words"].values()) == direct
     assert interlinear.check(expand_core(core), enrich_layer(core, data)) == []
@@ -69,6 +69,7 @@ def test_polish_explicit_subject_and_predicative_cases():
     data = layer("pl")
     expected = {"w048": "przyszedłem", "w049": "ja", "w095": "Tym, który", "w109": "Synem"}
     assert {wid: data["words"][wid]["gloss"] for wid in expected} == expected
+    assert data["words"]["w059"]["gloss"] == "Ujrzałem"
     assert (
         "Ten, nad kim zobaczysz Ducha zstępującego i pozostającego na Nim, jest Tym, "
         "który chrzci w Duchu Świętym."

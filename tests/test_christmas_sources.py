@@ -263,3 +263,12 @@ def test_the_dawn_per_eundem_cues_name_rg116_beside_rg115b(text):
     assert use["locator"]["printed"] == "p. xviii"
     assert use["evidence_sha256"] == found["conclusion-rg115b.mr1962"]["evidence_sha256"]
     assert "page 20 prints Per eúndem Dóminum., and the printed cue controls" in use["claim"]
+    editorial = core(text)["editorial"]
+    assert "115 a–b and 116" in editorial["source"]["method"]
+    assert "115 a–b and 116" in editorial["notes"]
+
+
+def test_the_midnight_gospel_basis_claim_names_its_changes():
+    found = {u["id"]: u["claim"] for u in load("languages/en/bibliography.json")["uses"]}
+    claim = found[f"use.en.{N}evangelium.body.laity1846"]
+    assert "there went forth for There went out" in claim and "betrothed for espoused" in claim

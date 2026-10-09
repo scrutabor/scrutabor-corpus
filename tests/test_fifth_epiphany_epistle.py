@@ -19,6 +19,7 @@ NAME = "dominica-v-post-epiphaniam-epistola"
 TEXT = f"proprium.{NAME}"
 GROUPS = [
     ("pl", ["w010", "w011"], "w010", "w serdeczne miłosierdzie"),
+    ("en", ["w052", "w053"], "w053", "in which peace"),
     ("en", ["w055", "w056"], "w055", "you were called"),
     ("en", ["w088", "w089"], "w089", "Whatever"),
     ("en", ["w102", "w103"], "w103", "giving thanks"),
@@ -50,7 +51,7 @@ def test_minimal_constructions_have_one_provider(language, ids, anchor, gloss):
         assert interlinear.check(expand_core(core), enrich_layer(core, missing))
 
 
-@pytest.mark.parametrize("language,direct", [("pl", 106), ("en", 94)])
+@pytest.mark.parametrize("language,direct", [("pl", 106), ("en", 92)])
 def test_all_111_words_and_construction_notes_reach_reader(language, direct):
     core, data = load(f"texts/proprium/{NAME}.json"), layer(language)
     doc, gloss = expand_core(core), enrich_layer(core, data)

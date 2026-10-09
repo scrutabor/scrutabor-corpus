@@ -328,3 +328,12 @@ def test_a_printed_lower_case_accent_is_ruled_as_an_accent(text, word):
     entry = next(e for e in apparatus(text) if e["at"] == word)
     assert entry["class"] == "accent"
     assert entry["ruling"].startswith("The selected accentuation follows the approved Benziger")
+
+
+def test_the_sunday_gospel_writes_mother_in_lower_case_as_the_missal_prints_it():
+    data = load(f"languages/en/texts/{DO.replace('.', '/', 1)}evangelium.json")
+    assert data["words"]["w008"]["gloss"] == "the mother"
+    group = {"words": ["w025", "w026"], "anchor": "w025", "gloss": "His mother"}
+    assert group in data["segments"]["s01"]["alignments"]
+    verse = data["segments"]["s01"]["translation"]
+    assert "Mary, the mother of Jesus" in verse and "Mary His mother" in verse
