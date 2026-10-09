@@ -5,6 +5,7 @@ from copy import deepcopy
 from typing import Any
 
 import pytest
+from preface_glory_fixture import restore_glory_layer
 
 from checks.interlinear import check, effective_gloss
 from checks.language_packs import check_layer
@@ -403,7 +404,9 @@ def assert_site(doc, layer, site):
 
 def restore_reviewed_fields(layer, slug):
     """Reverse only the named groups/glosses/prose; never mask new metadata."""
-    restored = deepcopy(layer)
+    restored = (
+        restore_glory_layer(layer, "en") if slug == "sanctissimae-trinitatis" else deepcopy(layer)
+    )
     baseline = BASELINES[slug]
     for site in selected(slug):
         group = group_for(restored, site)

@@ -6,6 +6,12 @@ from copy import deepcopy
 from typing import Any
 
 import pytest
+from preface_glory_fixture import (
+    EN_AFTER,
+    current_english_rows,
+    restore_glory_core,
+    restore_glory_layer,
+)
 
 from checks.interlinear import check, effective_gloss
 from checks.language_packs import check_layer
@@ -435,7 +441,7 @@ def prepare(layer, language):
 
 def restore(core, layer, language, *, alternatives=False):
     """Reverse exactly the selected fields; preserve every unexpected field."""
-    result = deepcopy(layer)
+    result = restore_glory_layer(layer, language)
     assert list(result["words"]) == [w["id"] for s in core["segments"] for w in s.get("words", [])]
     for site in GROUPS[language]:
         assert_group(core, result, site, alternatives=alternatives)
@@ -496,7 +502,7 @@ def expected_records():
 
 def assert_provenance(core, layer, records, english_records):
     assert records == expected_records()
-    assert english_records == FIXTURES["english_provenance"]
+    assert english_records == current_english_rows(FIXTURES["english_provenance"])
     row = next(r for r in records if r["segment"] == "s05")
     segment = next(s for s in core["segments"] if s["id"] == "s05")
     assert row["source_sha256"] == canonical_hash(source_payload(segment))
@@ -516,7 +522,7 @@ def test_exact_bounded_population():
 
 def test_latin_relations_and_all_source_objects_remain_exact():
     core, _ = load("en")
-    assert canonical_hash(core) == FIXTURES["core_digest"]
+    assert canonical_hash(restore_glory_core(core)) == FIXTURES["core_digest"]
     words = {w["id"]: w for s in core["segments"] for w in s.get("words", [])}
     assert len(words) == 101
     for adjective, noun in (("w038", "w040"), ("w043", "w045")):
@@ -563,7 +569,7 @@ def test_selected_polish_prose_and_revelation_relation():
     assert_supported_polish(layer, layer["segments"]["s05"]["translation"])
 
 
-def test_provenance_invalidates_only_the_changed_polish_observation():
+def test_provenance_preserves_the_two_bounded_target_revisions():
     core, layer = load("pl")
 
     def sites(language):
@@ -726,20 +732,23 @@ def test_provenance_changes_cannot_promote_or_misbind_the_paragraph(field, value
     records = expected_records()
     next(r for r in records if r["segment"] == "s05")[field] = value
     with pytest.raises(AssertionError):
-        assert_provenance(core, layer, records, FIXTURES["english_provenance"])
+        assert_provenance(
+            core, layer, records, current_english_rows(FIXTURES["english_provenance"])
+        )
 
 
-def test_other_eleven_provenance_sites_stay_exact():
+def test_every_other_provenance_site_rejects_unsupported_promotion():
     core, old = load("pl")
     layer = prepare(old, "pl")
-    for language, original in (("pl", expected_records()), ("en", FIXTURES["english_provenance"])):
+    english = current_english_rows(FIXTURES["english_provenance"])
+    for language, original in (("pl", expected_records()), ("en", english)):
         for index, row in enumerate(original):
             if language == "pl" and row["segment"] == "s05":
                 continue
             changed = deepcopy(original)
             changed[index]["review"] = "accepted"
             pl = changed if language == "pl" else expected_records()
-            en = changed if language == "en" else FIXTURES["english_provenance"]
+            en = changed if language == "en" else english
             with pytest.raises(AssertionError):
                 assert_provenance(core, layer, pl, en)
 
@@ -767,5 +776,5 @@ def test_unchanged_formal_english_and_polish_antecedent_are_retained():
     _, pl = load("pl")
     assert en["words"]["w048"]["gloss"] == en["words"]["w059"]["gloss"] == "of"
     assert en["words"]["w065"]["gloss"] == "we understand"
-    assert "without difference arising from distinction" in en["segments"]["s05"]["translation"]
+    assert en["segments"]["s05"]["translation"] == EN_AFTER
     assert pl["segments"]["s07"]["translation"].startswith("Tę równość")
