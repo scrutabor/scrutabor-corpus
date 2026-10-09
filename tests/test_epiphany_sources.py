@@ -52,7 +52,7 @@ REPRINTS = [
         F + "evangelium",
         "epiphany-i-reprint",
         "p. 41",
-        ("cognátos", "illos", "tuus", "his", "ecce", "nesciebátis"),
+        ("cognátos", "illos", "tuus", "(in his, quæ)", "ecce", "nesciebátis"),
     ),
     (E + "introitus", "baptism-reprint", "p. 42", ("Malach. for Malach", "I Par. for 1 Par.")),
     (E + "epistola", "baptism-reprint", "pp. 42–43", ("illumináre", "tuos")),
