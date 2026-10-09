@@ -56,7 +56,9 @@ LAITY_1846 = [
     A + "evangelium",
     A + "offertorium",
     D + "introitus",
+    D + "graduale",
     D + "offertorium",
+    D + "secreta",
 ]
 
 
@@ -170,6 +172,8 @@ def test_the_commemoration_of_st_anastasia_is_announced_as_printed():
 @pytest.mark.parametrize("text,cue", INTROITS)
 def test_the_introits_declare_their_expanded_cues(text, cue):
     assert f"as cues only (℣. Glória Patri. {cue}.);" in witness(text)
+    assert "explicitly declared house-expanded formula" in witness(text)
+    assert record(text)["orthography_profile"] == "page-body-with-declared-house-expansion"
     collation = next(c for c in graph()["collations"] if c["text"] == text)
     assert collation["recension"].endswith("declared expansions of the printed cues")
     assert {"expanded-doxology.mr1962", "introit-expansion.mr1962"} <= set(uses(text))
@@ -203,6 +207,8 @@ def test_the_per_conclusions_are_declared_composites(text):
     expected = {f"conclusion-{kind}.mr1962" for kind in [*kinds, "rg115b"]}
     if two:
         expected |= {f"commemoration-conclusion-{kind}.mr1962" for kind in kinds}
+    if text in (A + "secreta", A + "postcommunio"):
+        expected.add("conclusion-rg116.mr1962")
     assert {key for key in found if "conclusion-" in key} == expected
     assert found["mr1962"]["decision"] == "RETAIN_WITH_CORRECTION"
     assert record(text)["orthography_profile"] == "exact-declared-composite"
@@ -243,3 +249,12 @@ def test_the_revised_english_names_its_historical_basis(text):
     assert {"texts": [text], "segments": ["s01"], "relationship": "revised"} in basis
     sites = load("languages/en/translation-provenance.json")["sites"]
     assert next(s for s in sites if s["site"] == f"{text}.s01.en")["origin"] == "public-domain"
+
+
+@pytest.mark.parametrize("text", [A + "secreta", A + "postcommunio"])
+def test_the_dawn_per_eundem_cues_name_rg116_beside_rg115b(text):
+    found = uses(text)
+    assert {"conclusion-rg115b.mr1962", "conclusion-rg116.mr1962"} <= set(found)
+    use = found["conclusion-rg116.mr1962"]
+    assert use["locator"]["printed"] == "p. xviii"
+    assert "the printed cue controls" in use["claim"]
