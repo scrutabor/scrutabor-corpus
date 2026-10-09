@@ -12,7 +12,7 @@ import json
 import re
 from collections import Counter
 from copy import deepcopy
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path, PurePosixPath
 
 REGISTRY = "witnesses/raw/bindings.json"
@@ -23,10 +23,26 @@ class BindingError(ValueError):
 
 
 @dataclass(frozen=True)
+class RawFragment:
+    path: Path
+    line: int
+    start: int
+    end: int
+    raw: str
+    text: str
+    marker: str | None
+    whole_line: bool
+    partial_contract: bool = False
+    binding_id: str | None = None
+    marker_scope_verified: bool = True
+
+
+@dataclass(frozen=True)
 class BoundReading:
     spans: tuple[tuple[Path, int, int], ...]
     text: str
     source: dict
+    fragments: tuple[RawFragment, ...] = ()
 
 
 def _keys(value, required: set[str], label: str) -> None:
@@ -99,7 +115,12 @@ def load_registry(root: Path) -> dict:
         local_paths.add(archive["path"])
     witnesses = set()
     for key, binding in data["bindings"].items():
-        _keys(binding, {"witness", "revision", "evidence", "references", "reading"}, key)
+        fields = {"witness", "revision", "evidence", "references", "reading"}
+        if isinstance(binding, dict) and "contract" in binding:
+            fields.add("contract")
+            if binding["contract"] != "raw-reading-2":
+                raise BindingError("unsupported per-binding contract")
+        _keys(binding, fields, key)
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", key):
             raise BindingError(f"invalid binding ID: {key}")
         witness = _path(root, binding["witness"], "witnesses")
@@ -201,6 +222,7 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
         raise BindingError("witness revision differs from its raw binding")
     archives = registry["archives"]
     used_archives: set[str] = set()
+    partial_contract = binding.get("contract") == "raw-reading-2"
 
     def bounds(item):
         path, lines = snapshot._archive(item["archive"], binding["revision"])
@@ -210,12 +232,90 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
             raise BindingError("invalid source line range")
         return path, lines, first, last
 
+    def fragments(item, *, evidence):
+        fields = {"archive", "first", "last"}
+        if evidence:
+            fields |= {"section", "section_line"}
+        sliced = isinstance(item, dict) and "fragment" in item
+        if sliced:
+            if not partial_contract:
+                raise BindingError("partial fragment requires raw-reading-2")
+            fields.add("fragment")
+        _keys(item, fields, "evidence" if evidence else "reading")
+        path, lines, first, last = bounds(item)
+        result = []
+        for number in range(first, last + 1):
+            line = lines[number - 1]
+            prefix = re.match(r"^\s*([SMVROsmvro])\.\s+", line)
+            marker = prefix[1] if prefix else None
+            start, end = 0, len(line)
+            if sliced:
+                if first != last:
+                    raise BindingError("fragment must name one physical line")
+                fragment = item["fragment"]
+                _keys(
+                    fragment,
+                    {"start", "end", "text", "marker", "reason"} if evidence else {"start", "end"},
+                    "fragment",
+                )
+                start, end = fragment["start"], fragment["end"]
+                if (
+                    type(start) is not int
+                    or type(end) is not int
+                    or not 0 <= start < end <= len(line)
+                ):
+                    raise BindingError("invalid fragment coordinates")
+                if (start and not line[start - 1].isspace()) or (
+                    end < len(line) and not line[end].isspace()
+                ):
+                    raise BindingError("fragment splits a source token")
+                if prefix and start not in (0, prefix.end()) and start < prefix.end():
+                    raise BindingError("fragment splits a source marker")
+                if prefix and start == 0 and end <= prefix.end():
+                    raise BindingError("fragment has no text beyond its source marker")
+                # Multiple marker-shaped clauses on one physical line have no
+                # established scope model. Do not invent a performer context.
+                if evidence and (
+                    fragment["text"] != line[start:end]
+                    or fragment["marker"] != marker
+                    or not isinstance(fragment["reason"], str)
+                    or not fragment["reason"].strip()
+                ):
+                    raise BindingError("fragment text, marker context or boundary reason differs")
+            if partial_contract:
+                tail = line[prefix.end() :] if prefix else line
+                if re.search(r"(?:^|\s)[SMVROsmvro]\.\s+", tail):
+                    raise BindingError("ambiguous inline source marker")
+            raw = line[start:end]
+            body = re.sub(r"^[SMVROsmvro]\.\s+", "", raw.strip()) if start == 0 else raw.strip()
+            if sliced and not body:
+                raise BindingError("empty textual fragment")
+            result.append(
+                RawFragment(
+                    path,
+                    number,
+                    start,
+                    end,
+                    raw,
+                    body,
+                    marker,
+                    not sliced,
+                    partial_contract,
+                    markers[0],
+                    not partial_contract
+                    or marker is None
+                    or start == 0
+                    or (prefix is not None and start == prefix.end()),
+                )
+            )
+        return path, lines, first, last, result
+
     expected_text: Counter = Counter()
     controls = {}
     declarations = []
+    expected_order = []
     for item in binding["evidence"]:
-        _keys(item, {"archive", "first", "last", "section", "section_line"}, "evidence")
-        _, lines, first, last = bounds(item)
+        _, lines, first, last, selected = fragments(item, evidence=True)
         section_line = item["section_line"]
         if (
             not isinstance(item["section"], str)
@@ -226,24 +326,35 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
             or any(line.startswith("[") for line in lines[section_line : first - 1])
         ):
             raise BindingError("source section does not match evidence")
+        extent = f"lines {first}-{last}"
+        if "fragment" in item:
+            extent = f"line {first}, chars {item['fragment']['start']}:{item['fragment']['end']}"
         declarations.append(
-            f"{archives[item['archive']]['upstream']} [{item['section']}] (lines {first}-{last})"
+            f"{archives[item['archive']]['upstream']} [{item['section']}] ({extent})"
         )
-        for number in range(first, last + 1):
+        for fragment in selected:
+            number = fragment.line
             line = lines[number - 1].strip()
-            coordinate = (item["archive"], number)
+            coordinate = (item["archive"], number, fragment.start, fragment.end)
             if line.startswith(("&", "@", "$")):
-                if coordinate in controls:
+                if not fragment.whole_line or (item["archive"], number) in controls:
                     raise BindingError("overlapping reference evidence")
-                controls[coordinate] = line
+                controls[(item["archive"], number)] = line
             elif line and not line.startswith(("!", "[", "#", "_")):
                 expected_text[coordinate] += 1
+                expected_order.append(coordinate)
             elif line.startswith("[") and number != section_line:
                 raise BindingError("evidence crosses a source section boundary")
     if headers.get("path") != ["; ".join(declarations)]:
         raise BindingError("witness path declarations differ from bound evidence")
     if any(count != 1 for count in expected_text.values()):
         raise BindingError("overlapping textual evidence")
+    for index, a in enumerate(expected_order):
+        if any(
+            a[:2] == b[:2] and max(a[2], b[2]) < min(a[3], b[3])
+            for b in expected_order[index + 1 :]
+        ):
+            raise BindingError("overlapping textual fragments")
 
     seen = set()
     for reference in binding["references"]:
@@ -251,14 +362,14 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
         key, number, target = reference["archive"], reference["line"], reference["target"]
         if not isinstance(key, str) or type(number) is not int or type(target) is not int:
             raise BindingError("invalid reference identity")
-        coordinate = (key, number)
+        reference_coordinate = (key, number)
         if (
-            coordinate in seen
-            or coordinate not in controls
-            or controls[coordinate] != reference["text"]
+            reference_coordinate in seen
+            or reference_coordinate not in controls
+            or controls[reference_coordinate] != reference["text"]
         ):
             raise BindingError("reference differs from source evidence")
-        seen.add(coordinate)
+        seen.add(reference_coordinate)
         if not 0 <= target < len(binding["evidence"]):
             raise BindingError("invalid reference target")
         destination = binding["evidence"][target]
@@ -303,30 +414,62 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
     if seen != set(controls):
         raise BindingError("incomplete source reference coverage")
 
-    spans, output = [], []
+    spans, output, actual_order = [], [], []
+    resolved: list[RawFragment] = []
     actual_text: Counter = Counter()
     for item in binding["reading"]:
-        _keys(item, {"archive", "first", "last"}, "reading")
-        path, lines, first, last = bounds(item)
-        spans.append((path, first, last))
-        for number in range(first, last + 1):
-            coordinate = (item["archive"], number)
+        path, lines, first, last, selected = fragments(item, evidence=False)
+        if "fragment" not in item:
+            spans.append((path, first, last))
+        for fragment in selected:
+            coordinate = (item["archive"], fragment.line, fragment.start, fragment.end)
             if coordinate not in expected_text:
                 raise BindingError("reading contains framing or lies outside textual evidence")
             actual_text[coordinate] += 1
-            output.append(re.sub(r"^[SMVROsmvro]\.\s+", "", lines[number - 1].strip()))
+            actual_order.append(coordinate)
+            output.append(fragment.text)
+            if not fragment.marker_scope_verified and resolved:
+                previous = resolved[-1]
+                if (
+                    previous.marker_scope_verified
+                    and previous.path == fragment.path
+                    and previous.line == fragment.line
+                    and previous.end <= fragment.start
+                    and lines[fragment.line - 1][previous.end : fragment.start].isspace()
+                ):
+                    fragment = replace(fragment, marker_scope_verified=True)
+            resolved.append(fragment)
     if actual_text != expected_text:
         raise BindingError("reading omits or repeats source text")
+    if partial_contract and actual_order != expected_order:
+        raise BindingError("reading reorders textual fragments")
     reading = _space(" ".join(output))
     body = _space("\n".join(line for line in text.splitlines() if not line.startswith("#")))
     if not body or body != reading:
         raise BindingError("transcription differs from its exact ordered raw reading")
     source = {
-        "contract": "raw-reading-1",
+        "contract": "raw-reading-2" if partial_contract else "raw-reading-1",
         "registry_version": registry["version"],
         "binding_id": markers[0],
         "transcription_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
         "binding": binding,
         "archives": {key: archives[key] for key in sorted(used_archives)},
     }
-    return BoundReading(tuple(spans), reading, deepcopy(source))
+    if partial_contract:
+        source["resolved_fragments"] = [
+            {
+                "path": f.path.relative_to(snapshot._root).as_posix(),
+                "line": f.line,
+                "start": f.start,
+                "end": f.end,
+                "raw": f.raw,
+                "text": f.text,
+                "marker": f.marker,
+                "whole_line": f.whole_line,
+                "marker_scope_verified": f.marker_scope_verified,
+            }
+            for f in resolved
+        ]
+    return BoundReading(
+        () if partial_contract else tuple(spans), reading, deepcopy(source), tuple(resolved)
+    )

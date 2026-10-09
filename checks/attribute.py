@@ -46,7 +46,7 @@ from pathlib import Path
 
 from checks.attribution_alignment import AttributionAlignment, align_unmarked_reading
 from checks.orations import base_attributes as oration_attributes
-from checks.raw_binding import BindingError, resolve_binding
+from checks.raw_binding import BindingError, RawFragment, resolve_binding
 
 CORPUS = Path(__file__).resolve().parent.parent
 
@@ -407,16 +407,18 @@ def _raw_archive_for(declared_path: str) -> Path | None:
     return max(candidates)[4] if candidates else None
 
 
-def _source_ranges(text_id: str) -> list[tuple[Path, int, int, bool]]:
+def _source_ranges(text_id: str) -> list[tuple[Path | RawFragment, int, int, bool]]:
     """Source spans with their explicit/legacy framing policy preserved."""
-    out: list[tuple[Path, int, int, bool]] = []
+    out: list[tuple[Path | RawFragment, int, int, bool]] = []
     wdir = CORPUS / "witnesses" / text_id
     if not wdir.is_dir():
         return out
     for wf in sorted(wdir.glob("*.txt")):
         bound = resolve_binding(wf, CORPUS)
         if bound is not None:
-            out.extend((raw, first, last, True) for raw, first, last in bound.spans)
+            out.extend(
+                (fragment, fragment.line, fragment.line, True) for fragment in bound.fragments
+            )
             continue
         header = wf.read_text(encoding="utf-8")
         # A comma-separated range is intentionally read as one enclosing
@@ -431,7 +433,22 @@ def _source_ranges(text_id: str) -> list[tuple[Path, int, int, bool]]:
 
 def witness_ranges(text_id: str) -> list[tuple[Path, int, int]]:
     """(raw file, first line, last line) for every declared source span."""
-    return [(raw, first, last) for raw, first, last, _ in _source_ranges(text_id)]
+    ranges = _source_ranges(text_id)
+    if any(isinstance(raw, RawFragment) and not raw.whole_line for raw, *_ in ranges):
+        raise BindingError("partial source evidence cannot be represented as whole-line ranges")
+    # Preserve original grouping for legacy callers; no partial range is exposed.
+    out: list[tuple[Path, int, int]] = []
+    wdir = CORPUS / "witnesses" / text_id
+    for wf in sorted(wdir.glob("*.txt")):
+        bound = resolve_binding(wf, CORPUS)
+        if bound is not None:
+            out.extend(bound.spans)
+    out.extend(
+        (raw, first, last)
+        for raw, first, last, explicit in ranges
+        if not explicit and isinstance(raw, Path)
+    )
+    return out
 
 
 def marked_lines(text_id: str, mass: bool = True) -> list[tuple[str, str]]:
@@ -439,18 +456,46 @@ def marked_lines(text_id: str, mass: bool = True) -> list[tuple[str, str]]:
     span in the archived sources; falls back to every archive when a
     witness records no line range."""
     try:
-        spans = witness_ranges(text_id)
+        spans = _source_ranges(text_id)
     except BindingError:
         return []  # Invalid explicit evidence must never scan unrelated archives.
     files: list[list[str]] = []
+    partial_groups: list[tuple[str | None, str | None, str]] = []
+    if any(
+        isinstance(raw, RawFragment) and raw.partial_contract and not raw.marker_scope_verified
+        for raw, *_ in spans
+    ):
+        return []
     if spans:
-        for raw, first, last in spans:
+        for raw, first, last, _ in spans:
+            if isinstance(raw, RawFragment):
+                if raw.partial_contract:
+                    speaker = MARKERS.get(raw.marker or "")
+                    if mass and speaker is None:
+                        speaker = "sacerdos"  # Existing Mass rule, not an invented raw marker.
+                    if not mass and raw.marker not in SPEAKER_MARKERS_ONLY:
+                        speaker = None
+                    identity = (raw.binding_id, speaker)
+                    if partial_groups and partial_groups[-1][:2] == identity:
+                        partial_groups[-1] = (*identity, partial_groups[-1][2] + flatten(raw.text))
+                    else:
+                        partial_groups.append((*identity, flatten(raw.text)))
+                    continue
+                # Marker identity is the verified physical-line context, not
+                # an invented prefix at the selected fragment's left boundary.
+                if raw.marker in MARKERS and (mass or raw.marker in SPEAKER_MARKERS_ONLY):
+                    files.append([f"{raw.marker}. {raw.text}"])
+                continue
             lines = raw.read_text(encoding="utf-8").splitlines()
             files.append(lines[max(0, first - 1) : last])
     elif not _declares_ranges(text_id):
         for raw in sorted((CORPUS / "witnesses" / "raw").glob("*.txt")):
             files.append(raw.read_text(encoding="utf-8").splitlines())
     out = []
+    if partial_groups:
+        # Only selected, binding-specific contexts can support a partial
+        # contract. A different legacy witness must not widen its performer proof.
+        return [(speaker, text) for _, speaker, text in partial_groups if speaker is not None]
     for lines in files:
         for line in lines:
             m = re.match(r"^([SMVRO])\.\s+(.*)$", line.strip())
@@ -501,7 +546,24 @@ def span_covers(doc) -> bool:
         # verified provenance.
         return not _declares_ranges(doc["id"])
     span = ""
+    partial_contexts: list[tuple[tuple[str | None, str | None], str]] = []
     for raw, first, last, explicit in spans:
+        if isinstance(raw, RawFragment):
+            if raw.partial_contract and not raw.marker_scope_verified:
+                return False
+            span += flatten(raw.text)
+            if raw.partial_contract:
+                context = (
+                    MARKERS.get(raw.marker or "", "sacerdos")
+                    if doc.get("category") in {"ordinarium", "proprium"}
+                    else raw.marker
+                )
+                identity = (raw.binding_id, context)
+                if partial_contexts and partial_contexts[-1][0] == identity:
+                    partial_contexts[-1] = (identity, partial_contexts[-1][1] + flatten(raw.text))
+                else:
+                    partial_contexts.append((identity, flatten(raw.text)))
+            continue
         lines = raw.read_text(encoding="utf-8").splitlines()[max(0, first - 1) : last]
         if explicit:
             # These are already verified textual lines, not a legacy span
@@ -567,6 +629,12 @@ def span_covers(doc) -> bool:
         # Genetrice/Genitrice and negligentia/neglegentia spellings pass while
         # an unrelated one-letter typo still fails closed.
         if not any(key in span for key in keys):
+            return False
+        # A partial contract cannot turn one verse spanning incompatible
+        # source-marker contexts into the unmarked-celebrant fallback.
+        if partial_contexts and not any(
+            key in text for _, text in partial_contexts for key in keys
+        ):
             return False
     return True
 

@@ -7,9 +7,7 @@ complete unmodified witness. Partial or length-changing readings are ineligible.
 
 from __future__ import annotations
 
-import hashlib
 import json
-import re
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -87,14 +85,13 @@ def align_unmarked_reading(doc: dict, root: Path) -> AttributionAlignment | None
             bound = resolve_binding(witness, root)
         except BindingError:
             return None
-        if bound is None or len(bound.spans) != 1:
+        if bound is None or bound.source["contract"] != "raw-reading-1" or len(bound.spans) != 1:
             continue
         raw, first, last = bound.spans[0]
         if first != last:
             continue
-        raw_bytes = raw.read_bytes()
-        line = raw_bytes.decode("utf-8").splitlines()[first - 1]
-        if re.match(r"^[SMVROsmvro]\.\s+", line.strip()):
+        fragment = bound.fragments[0]
+        if not fragment.whole_line or fragment.marker is not None:
             continue
         entries = [entry for entry in apparatus["adjudicated"] if witness_id in entry["witnesses"]]
         if any(entry["class"] in {"omission", "substantive-span"} for entry in entries):
@@ -137,7 +134,11 @@ def align_unmarked_reading(doc: dict, root: Path) -> AttributionAlignment | None
                 witness,
                 raw,
                 first,
-                hashlib.sha256(raw_bytes).hexdigest(),
+                next(
+                    a["sha256"]
+                    for a in bound.source["archives"].values()
+                    if root / a["path"] == raw
+                ),
                 supporting,
                 tuple(aligned),
                 bound.text == " ".join(face for _, face in selected),

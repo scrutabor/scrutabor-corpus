@@ -463,6 +463,36 @@ localization, editorial
   in transcription, archive and attribution checks. Deleting a marker does not
   downgrade a registered witness to legacy checking. New raw snapshots belong
   in subdirectories so existing top-level filename bindings remain unchanged.
+- An individual binding may opt into **`contract: "raw-reading-2"`** without
+  changing registry version 1 or other bindings. Evidence and reading items
+  may then add a `fragment` on one physical line (`first == last`). Coordinates
+  are zero-based Unicode code-point offsets into the decoded physical line,
+  excluding its newline, with a half-open `[start, end)` interval; no Unicode
+  normalization occurs. Both offsets are integers, never booleans. Evidence
+  fragments require exactly `start`, `end`, `text`, `marker`, and `reason`;
+  reading fragments require exactly `start`, `end`. `text` asserts the exact
+  selected characters; `marker` asserts the actual case-sensitive line-initial
+  source prefix letter, or null if absent; `reason` is a nonempty reviewed
+  boundary rationale. A fragment cannot split a whitespace-delimited source
+  token/marker, select empty text, frame a control line as sacred text, or use a
+  line with ambiguous inline speaker markers. Its exact path declaration is
+  `upstream [Section] (line N, chars START:END)`. Whole-line declarations are
+  unchanged. Selected fragments must have identical ordered once-only evidence
+  and reading coverage; overlapping, duplicated or reordered extents fail.
+  The full archived SHA, revision, section and reference checks remain binding.
+  Resolved immutable fragments carry selected text and independently verified
+  marker context to attribution; no partial claim exposes an enclosing range
+  through the whole-line accessor. Incompatible performer contexts within one
+  verse fail closed, and source-specific variant alignment does not accept this
+  contract. A marker before omitted sacred words is retained as raw context but
+  cannot establish performer scope for a later mid-line component. Scope is
+  verified only from the start of the line/body, or from a preceding verified
+  fragment separated solely by whitespace on that same line. Resolved fragments
+  explicitly record `marker_scope_verified`; an unproved scope makes performer
+  evidence unavailable, without invalidating exact transcription. Its source
+  subject adds `resolved_fragments`; existing v1 source
+  subjects and review digests are unchanged. This is an evidence mechanism,
+  not an automatic source review or permission to retain old approvals.
 - **`head`** and **`substantive`** (since 0.13.0) state the SYNTAX, which is
   the one thing that settles a reading the form permits and the sentence
   forbids. Every adjective, numeral and

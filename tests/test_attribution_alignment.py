@@ -304,3 +304,12 @@ def test_direct_coverage_does_not_invoke_alignment(reading, monkeypatch):
 
     monkeypatch.setattr(attribute, "align_unmarked_reading", forbidden)
     assert attribute.propose(data["document"])["s01"]["speaker"] == "sacerdos"
+
+
+def test_partial_contract_cannot_widen_single_line_variant_alignment(reading):
+    root, folder, data = reading
+    registry = json.loads((root / REGISTRY).read_text())
+    registry["bindings"][KEY]["contract"] = "raw-reading-2"
+    save(root / REGISTRY, registry)
+    source_checks(root, folder, data["document"])
+    assert align_unmarked_reading(data["document"], root) is None

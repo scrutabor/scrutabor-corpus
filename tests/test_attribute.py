@@ -56,7 +56,7 @@ class TestSpeakerMarkerCase:
     ):
         raw = tmp_path / "source.txt"
         raw.write_text(f"  {marker}. Dóminus vobíscum.\n", encoding="utf-8")
-        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
+        monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [(raw, 1, 1, False)])
         expected = [(speaker, flatten("Dóminus vobíscum."))] if mass or marker == "O" else []
         assert marked_lines("ordinarium.test", mass=mass) == expected
 
@@ -67,7 +67,7 @@ class TestSpeakerMarkerCase:
     ):
         raw = tmp_path / "source.txt"
         raw.write_text(f"  {marker}. Dóminus vobíscum.\n", encoding="utf-8")
-        monkeypatch.setattr("checks.attribute.witness_ranges", lambda _: [(raw, 1, 1)])
+        monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [(raw, 1, 1, False)])
         assert marked_lines("ordinarium.test", mass=mass) == []
 
     @pytest.mark.parametrize("marker", ["r", "v"])
