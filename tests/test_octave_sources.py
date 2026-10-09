@@ -171,6 +171,10 @@ def test_the_introits_declare_their_expanded_cues(text, cue):
         text
     )
     assert record(text)["orthography_profile"] == "page-body-with-declared-house-expansion"
+    assert record(text)["source_dependencies"] == {
+        "uses": [f"use.{text}.expanded-doxology.mr1962", f"use.{text}.introit-expansion.mr1962"],
+        "raw_binding": None,
+    }
     collation = next(c for c in graph()["collations"] if c["text"] == text)
     assert collation["recension"].endswith("declared expansions of the printed cues")
     assert {"expanded-doxology.mr1962", "introit-expansion.mr1962"} <= set(uses(text))
@@ -222,7 +226,8 @@ def test_the_octave_day_postcommunion_keeps_its_printed_per_eundem_under_rg116()
     assert "115 a–b" not in header
     use = uses(text)["conclusion-rg116.mr1962"]
     assert use["locator"]["printed"] == "p. xviii"
-    assert "names the Virgin, not the Son, at its beginning" in use["claim"]
+    assert "Page 34 prints Per eúndem Dóminum." in use["claim"]
+    assert "names neither the Son nor His birth in its opening clause" in use["claim"]
     assert "Rubricae generales 115 a and 116" in core(text)["editorial"]["notes"]
 
 
