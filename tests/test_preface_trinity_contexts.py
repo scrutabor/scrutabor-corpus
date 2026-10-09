@@ -6,6 +6,7 @@ from copy import deepcopy
 from typing import Any
 
 import pytest
+from preface_caption_fixture import current_caption_site, restore_caption_layer
 from preface_glory_fixture import (
     EN_AFTER,
     current_english_rows,
@@ -96,7 +97,16 @@ FIXTURES: dict[str, Any] = {
             },
             {
                 "segment": "s07",
-                "words": ["w086", "w087", "w088", "w089", "w090", "w091", "w092", "w093"],
+                "words": [
+                    "w086",
+                    "w087",
+                    "w088",
+                    "w089",
+                    "w090",
+                    "w091",
+                    "w092",
+                    "w093",
+                ],
                 "anchor": "w086",
                 "gloss": "the Angels and Archangels, and also the Cherubim and Seraphim, praise",
             },
@@ -129,7 +139,15 @@ FIXTURES: dict[str, Any] = {
                 "w053": {"gloss": "wierzymy"},
                 "w065": {"gloss": "pojmujemy"},
             },
-            "groups": {"s01": [], "s02": [], "s03": [], "s04": [], "s05": [], "s06": [], "s07": []},
+            "groups": {
+                "s01": [],
+                "s02": [],
+                "s03": [],
+                "s04": [],
+                "s05": [],
+                "s06": [],
+                "s07": [],
+            },
         },
         "en": {
             "before_sha256": "063a0f8000361af8e011c8ef145b4125c4f6a5a2e426eb2246dddc55d5bd03d1",
@@ -193,7 +211,11 @@ FIXTURES: dict[str, Any] = {
                 ],
                 "s05": [
                     {"words": ["w046", "w047"], "anchor": "w046", "gloss": "For what"},
-                    {"words": ["w051", "w052"], "anchor": "w051", "gloss": "by Your revelation"},
+                    {
+                        "words": ["w051", "w052"],
+                        "anchor": "w051",
+                        "gloss": "by Your revelation",
+                    },
                     {
                         "words": ["w055", "w056", "w057"],
                         "anchor": "w056",
@@ -206,7 +228,11 @@ FIXTURES: dict[str, Any] = {
         },
     },
     "zero": {"segment": "s06", "words": ["w072"], "reason": "idiom"},
-    "direct": {"w046": "co", "w053": "przyjmujemy za prawdę", "w065": "uznajemy za prawdę"},
+    "direct": {
+        "w046": "co",
+        "w053": "przyjmujemy za prawdę",
+        "w065": "uznajemy za prawdę",
+    },
     "prose": {
         "segment": "s05",
         "before": "Co bowiem dzięki Twemu objawieniu wierzymy o Twojej chwale, to samo "
@@ -389,7 +415,9 @@ def supported(site):
     return values
 
 
-def assert_group(core, layer, site, *, alternatives=False):
+def assert_group(core, layer, site, *, alternatives=False, caption_current=True):
+    if caption_current:
+        site = current_caption_site(site)
     groups = touching(layer, site)
     assert len(groups) == 1
     group = groups[0]
@@ -405,7 +433,9 @@ def assert_group(core, layer, site, *, alternatives=False):
     ]
 
 
-def assert_zero(layer):
+def assert_zero(layer, *, caption_current=True):
+    if caption_current:
+        layer = restore_caption_layer(layer, "en")
     assert touching(layer, ZERO) == [group_value(ZERO)]
     assert "w072" in layer["words"] and "gloss" not in layer["words"]["w072"]
     assert effective_gloss(layer, "w072") == ""
@@ -424,6 +454,7 @@ def prepare(layer, language):
     """A selected fixture for counterexamples, not a validator of live data."""
     result = deepcopy(layer)
     for site in GROUPS[language] + ([ZERO] if language == "en" else []):
+        site = current_caption_site(site) if language == "en" else site
         entry = result["segments"][site["segment"]]
         entry["alignments"] = [
             g for g in entry.get("alignments", []) if not set(g["words"]) & set(site["words"])
@@ -441,15 +472,15 @@ def prepare(layer, language):
 
 def restore(core, layer, language, *, alternatives=False):
     """Reverse exactly the selected fields; preserve every unexpected field."""
-    result = restore_glory_layer(layer, language)
+    result = restore_glory_layer(restore_caption_layer(layer, language), language)
     assert list(result["words"]) == [w["id"] for s in core["segments"] for w in s.get("words", [])]
     for site in GROUPS[language]:
-        assert_group(core, result, site, alternatives=alternatives)
+        assert_group(core, result, site, alternatives=alternatives, caption_current=False)
         result["segments"][site["segment"]]["alignments"].remove(touching(result, site)[0])
         for wid in site["words"]:
             result["words"][wid]["gloss"] = BASELINES[language]["words"][wid]["gloss"]
     if language == "en":
-        assert_zero(result)
+        assert_zero(result, caption_current=False)
         result["segments"]["s06"]["alignments"].remove(group_value(ZERO))
         result["words"]["w072"]["gloss"] = BASELINES["en"]["words"]["w072"]["gloss"]
     else:
@@ -583,7 +614,8 @@ def test_provenance_preserves_the_two_bounded_target_revisions():
 
 @pytest.mark.parametrize("language,site", SITES)
 @pytest.mark.parametrize(
-    "mutation", ["duplicate", "missing-member", "order", "anchor", "direct", "missing-object"]
+    "mutation",
+    ["duplicate", "missing-member", "order", "anchor", "direct", "missing-object"],
 )
 def test_structural_mutations_are_rejected(language, site, mutation):
     core, original = load(language)
@@ -667,7 +699,8 @@ def test_shape_correct_semantic_counterexamples_are_rejected(language, first, gl
 
 @pytest.mark.parametrize("language", ["pl", "en"])
 @pytest.mark.parametrize(
-    "mutation", ["prose", "note", "word", "about", "status", "order", "existing", "extra"]
+    "mutation",
+    ["prose", "note", "word", "about", "status", "order", "existing", "extra"],
 )
 def test_unselected_payload_cannot_be_masked_by_restoration(language, mutation):
     core, old = load(language)

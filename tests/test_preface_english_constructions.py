@@ -5,6 +5,7 @@ from copy import deepcopy
 from typing import Any
 
 import pytest
+from preface_caption_fixture import restore_caption_layer
 from preface_glory_fixture import restore_glory_layer
 
 from checks.interlinear import check, effective_gloss
@@ -185,7 +186,11 @@ FIXTURES: dict[str, Any] = {
             "had_alignments": {"s01": True},
             "absorbed": {
                 "s01": [
-                    {"words": ["w024", "w025"], "anchor": "w024", "gloss": "has been sacrificed"}
+                    {
+                        "words": ["w024", "w025"],
+                        "anchor": "w024",
+                        "gloss": "has been sacrificed",
+                    }
                 ]
             },
             "source_contexts": {
@@ -252,7 +257,11 @@ FIXTURES: dict[str, Any] = {
             "had_alignments": {"s01": True},
             "absorbed": {
                 "s01": [
-                    {"words": ["w024", "w025"], "anchor": "w024", "gloss": "has been sacrificed"}
+                    {
+                        "words": ["w024", "w025"],
+                        "anchor": "w024",
+                        "gloss": "has been sacrificed",
+                    }
                 ]
             },
             "source_contexts": {
@@ -328,7 +337,10 @@ FIXTURES: dict[str, Any] = {
         },
         "sanctissimae-trinitatis": {
             "protected_digest": "3cb0d1c96de85951d3fc8c51e21e5f277974194eae559e4ca39dd2d373374b6d",
-            "words": {"w051": {"gloss": "by the revelation of"}, "w052": {"gloss": "Your"}},
+            "words": {
+                "w051": {"gloss": "by the revelation of"},
+                "w052": {"gloss": "Your"},
+            },
             "had_alignments": {"s05": True},
             "absorbed": {"s05": []},
             "source_contexts": {
@@ -405,7 +417,9 @@ def assert_site(doc, layer, site):
 def restore_reviewed_fields(layer, slug):
     """Reverse only the named groups/glosses/prose; never mask new metadata."""
     restored = (
-        restore_glory_layer(layer, "en") if slug == "sanctissimae-trinitatis" else deepcopy(layer)
+        restore_glory_layer(restore_caption_layer(layer, "en"), "en")
+        if slug == "sanctissimae-trinitatis"
+        else deepcopy(layer)
     )
     baseline = BASELINES[slug]
     for site in selected(slug):
@@ -543,7 +557,11 @@ SEMANTIC_MUTATIONS = [
     ("ascensionis", "w042", "that we might share in His divinity"),
     ("ascensionis", "w042", "that He might grant us a portion of His divinity"),
     ("epiphaniae", "w031", "He renewed the new light by our immortality"),
-    ("nativitatis", "w027", "a new light of our glory has shone upon the eyes of Your mind"),
+    (
+        "nativitatis",
+        "w027",
+        "a new light of our glory has shone upon the eyes of Your mind",
+    ),
     ("paschalis-in-die", "w021", "for Christ, our Passover, has sacrificed"),
     ("paschalis-in-nocte", "w021", "for Christ, our Passover, has sacrificed"),
     ("d-n-iesu-christi-regis", "w053", "all creatures having subjected His dominion"),
@@ -675,6 +693,17 @@ def test_untouched_passive_and_true_zero_controls():
         _, layer = load(slug)
         groups = layer["segments"]["s05"]["alignments"]
         assert {"words": ["w035"], "reason": "idiom"} in groups
-        assert {"words": ["w043", "w044"], "anchor": "w044", "gloss": "was given"} in groups
-        assert {"words": ["w053", "w054"], "anchor": "w054", "gloss": "was appointed"} in groups
-        assert [len(g["words"]) for g in layer["segments"]["s08"]["alignments"]] == [9, 3]
+        assert {
+            "words": ["w043", "w044"],
+            "anchor": "w044",
+            "gloss": "was given",
+        } in groups
+        assert {
+            "words": ["w053", "w054"],
+            "anchor": "w054",
+            "gloss": "was appointed",
+        } in groups
+        assert [len(g["words"]) for g in layer["segments"]["s08"]["alignments"]] == [
+            9,
+            3,
+        ]

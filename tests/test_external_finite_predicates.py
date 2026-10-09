@@ -1,4 +1,4 @@
-"""Compound finite predicates retain natural order and their contextual tense."""
+"""Latin compound predicates retain their meaning within natural English groups."""
 
 from pathlib import Path
 
@@ -15,7 +15,13 @@ READINGS = [
     ("proprium.dominica-i-post-epiphaniam-epistola", "s01", 46, 47, "is given"),
     ("proprium.dominica-ii-passionis-evangelium", "s79", 1173, 1174, "were crucified"),
     ("proprium.dominica-ii-passionis-evangelium", "s83", 1262, 1263, "had been crucified"),
-    ("proprium.dominica-ii-post-epiphaniam-epistola", "s01", 7, 8, "is given"),
+    (
+        "proprium.dominica-ii-post-epiphaniam-epistola",
+        "s01",
+        3,
+        10,
+        "different gifts according to the grace given to us",
+    ),
     ("proprium.dominica-in-albis-epistola", "s01", 4, 5, "is born"),
     ("proprium.dominica-xi-post-pentecosten-evangelium", "s01", 63, 64, "were opened"),
     ("proprium.dominica-xiii-post-pentecosten-epistola", "s01", 98, 99, "had been given"),
@@ -59,7 +65,7 @@ READINGS = [
 
 
 @pytest.mark.parametrize("text,segment,first,last,gloss", READINGS)
-def test_finite_realization_keeps_auxiliary_and_context(text, segment, first, last, gloss):
+def test_compound_predicate_keeps_meaning_and_context(text, segment, first, last, gloss):
     core, layers = store.load(ROOT, text)
     layer = layers["en"]
     members = [f"w{n:03}" for n in range(first, last + 1)]

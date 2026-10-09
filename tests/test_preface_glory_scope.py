@@ -5,7 +5,13 @@ import json
 from copy import deepcopy
 
 import pytest
-from preface_glory_fixture import EN_AFTER, EN_TARGET, restore_glory_core, restore_glory_layer
+from preface_caption_fixture import restore_caption_layer
+from preface_glory_fixture import (
+    EN_AFTER,
+    EN_TARGET,
+    restore_glory_core,
+    restore_glory_layer,
+)
 
 from checks.interlinear import check
 from checks.language_packs import check_layer
@@ -31,7 +37,11 @@ def assert_exact_inverse(core, layer, language):
         hashlib.sha256(formatted(restore_glory_core(core)).encode()).hexdigest() == PREVIOUS["core"]
     )
     assert (
-        hashlib.sha256(formatted(restore_glory_layer(layer, language)).encode()).hexdigest()
+        hashlib.sha256(
+            formatted(
+                restore_glory_layer(restore_caption_layer(layer, language), language)
+            ).encode()
+        ).hexdigest()
         == PREVIOUS[language]
     )
 
