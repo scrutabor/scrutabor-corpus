@@ -54,33 +54,44 @@ def test_english_relative_and_prayer_possessor_are_explicitly_connected():
     data = layer("en")
     assert data["segments"]["s01"].get("alignments") == [
         {
+            "words": ["w002", "w003", "w004"],
+            "anchor": "w002",
+            "gloss": "with heavenly food and drink",
+        },
+        {"words": ["w005", "w006"], "anchor": "w005", "gloss": "our God"},
+        {
             "words": [f"w{number:03}" for number in range(11, 20)],
             "anchor": "w017",
             "gloss": "we may also be protected by the prayers of the one "
             "in whose commemoration we have received these gifts",
         },
+        {"words": ["w021", "w022"], "anchor": "w021", "gloss": "our Lord"},
+        {"words": ["w023", "w024"], "anchor": "w023", "gloss": "Jesus Christ"},
+        {"words": ["w025", "w026"], "anchor": "w025", "gloss": "Your Son"},
+        {
+            "words": ["w027", "w028", "w029", "w030", "w031"],
+            "anchor": "w029",
+            "gloss": "who lives and reigns with You",
+        },
         {"words": ["w034", "w035"], "anchor": "w034", "gloss": "of the Holy Spirit"},
+        {"words": ["w037", "w038", "w039", "w040"], "anchor": "w039", "gloss": "forever and ever"},
     ]
 
 
 def test_english_address_and_conclusion_have_one_contemporary_register():
     data = layer("en")
-    expected = {
-        "w007": "You",
-        "w020": "Through",
-        "w026": "Your",
-        "w027": "who",
-        "w028": "with You",
-        "w029": "lives",
-        "w031": "reigns",
-        "w037": "for",
-    }
+    expected = {"w007": "You", "w020": "Through", "w036": "God"}
     assert {word: data["words"][word]["gloss"] for word in expected} == expected
+    alignments = data["segments"]["s01"]["alignments"]
+    groups = {tuple(group["words"]): group["gloss"] for group in alignments}
+    assert groups[("w025", "w026")] == "Your Son"
+    assert groups[("w027", "w028", "w029", "w030", "w031")] == "who lives and reigns with You"
+    assert groups[("w037", "w038", "w039", "w040")] == "forever and ever"
     assert data["segments"]["s01"]["translation"] == (
         "Refreshed with heavenly food and drink, we humbly implore You, our God, "
         "that we may also be protected by the prayers of the one in whose memory "
         "we have received these gifts. Through our Lord Jesus Christ, Your Son, "
-        "who is God and lives and reigns with You in the unity of the Holy Spirit "
+        "who lives and reigns with You in the unity of the Holy Spirit, God, "
         "forever and ever."
     )
 

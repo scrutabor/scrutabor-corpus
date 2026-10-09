@@ -37,7 +37,7 @@ def english_contract(layer, role):
         "from",
         "the snare",
         "of the fowlers",
-        "The snare",
+        "The snare" if role == "graduale" else "the snare",
         "has been broken",
         "and",
         "we",
