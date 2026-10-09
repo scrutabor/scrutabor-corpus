@@ -8,7 +8,7 @@ from checks.kalendarium import check
 from kalendarium.computus import advent_i, easter
 from kalendarium.temporale import FORMULARIES, sundays_after_pentecost, year
 
-YEARS = range(1961, 2101)
+YEARS = range(1961, 2102)
 
 
 def test_the_book_verifies_the_computation():
@@ -76,7 +76,7 @@ def test_n18_sends_the_leftover_sundays_after_epiphany_to_the_end(total, transfe
             day = after[23 + offset]
             if day.formulary == "d-n-iesu-christi-regis":
                 continue
-            assert day.formulary == f"dominica-{roman}-post-epiphaniam", (y, offset)
+            assert day.formulary == f"dominica-{roman}-quae-superfuit-post-epiphaniam", (y, offset)
     assert tested, f"no year in {YEARS} has {total} Sundays after Pentecost"
 
 
@@ -96,7 +96,7 @@ def test_christ_the_king_can_swallow_a_transferred_sunday():
             if day.formulary == "d-n-iesu-christi-regis":
                 swallowed.append(y)
                 assert day.when.month == 10
-    assert 10 <= len(swallowed) <= 20, f"{len(swallowed)} years in 140 — the shape has changed"
+    assert 10 <= len(swallowed) <= 20, f"{len(swallowed)} years in 141 — the shape has changed"
     assert 1967 in swallowed, "1967 is the worked example: 28 Sundays, the King on 29 October"
 
 
@@ -118,6 +118,8 @@ def test_no_mass_is_said_twice_and_none_is_invented():
         said = [d.formulary for d in year(y)]
         assert len(said) == len(set(said)), y
         assert set(said) <= FORMULARIES, y
+        families = [name.replace("-quae-superfuit-", "-") for name in said]
+        assert len(families) == len(set(families)), y
 
 
 def test_the_four_sundays_that_belong_to_a_feast_keep_their_own_position():

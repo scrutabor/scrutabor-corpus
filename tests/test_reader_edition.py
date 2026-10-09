@@ -391,7 +391,7 @@ def test_formulary_assemblies_are_explicit_localized_and_calendar_addressable(tm
     manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
     catalog = json.loads((out / manifest["base"]["formularies"]).read_text(encoding="utf-8"))
     by_id = {formulary["id"]: formulary for formulary in catalog["formularies"]}
-    assert len(by_id) == 109
+    assert len(by_id) == 113
 
     corpus_christi = by_id["corporis-christi"]
     assert corpus_christi["calendar"] == {"key": "corpus-christi", "default": True}
@@ -451,9 +451,9 @@ def test_metrics_are_the_single_derived_denominator(tmp_path):
         "texts": {"total": 1106, "proprium": 1001, "words": 62202, "verse_segments": 2613},
         "languages": {"en": {"texts": 1106}, "pl": {"texts": 1106}},
         "formularies": {
-            "total": 109,
-            "observances": 105,
-            "component_uses": 1221,
+            "total": 113,
+            "observances": 109,
+            "component_uses": 1265,
             "unique_component_texts": 1024,
         },
     }

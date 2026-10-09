@@ -74,6 +74,7 @@ FORMULARIES = frozenset(
         "commemoratio-baptismatis-domini",
     ]
     + [f"dominica-{ROMAN[i]}-post-epiphaniam" for i in range(1, 7)]
+    + [f"dominica-{ROMAN[i]}-quae-superfuit-post-epiphaniam" for i in range(3, 7)]
     + [f"dominica-in-{n}" for n in ("septuagesima", "sexagesima", "quinquagesima")]
     + [f"dominica-{ROMAN[i]}-in-quadragesima" for i in range(1, 5)]
     + ["dominica-i-passionis", "dominica-ii-passionis", "feria-v-in-cena-domini"]
@@ -274,7 +275,11 @@ def year(ending: int) -> list[Dies]:
         elif index == total:
             formulary, dies_class = "dominica-xxiv-post-pentecosten", 2
         elif index > 23:
-            formulary = f"dominica-{ROMAN[6 - (spare - (index - 23))]}-post-epiphaniam"
+            roman = ROMAN[6 - (spare - (index - 23))]
+            # The resumed printing has the XXIII Sunday's chants, unlike
+            # the same Sunday's before-Septuagesima printing (pp. 45–50,
+            # 412–417). Distinct keys keep those assemblies date-specific.
+            formulary = f"dominica-{roman}-quae-superfuit-post-epiphaniam"
             dies_class = 2
         else:
             formulary, dies_class = position, 2
@@ -293,7 +298,7 @@ def year(ending: int) -> list[Dies]:
     # A leftover post-Epiphany formulary can only be said once. The Sundays
     # that DID occur used II upwards; the transfer uses VI downwards, and the
     # two must not meet.
-    said = [d.formulary for d in days]
+    said = [d.formulary.replace("-quae-superfuit-", "-") for d in days]
     assert len(said) == len(set(said)), f"{ending}: a formulary is said twice"
     assert used_after_epiphany + spare <= 6, (
         f"{ending}: {used_after_epiphany}+{spare} Sundays after Epiphany"
