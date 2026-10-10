@@ -94,3 +94,38 @@ def test_new_senses_have_individually_identified_lexical_evidence():
         assert use["address"] == {"kind": "lemma", "lemma": lemma}
         assert use["evidence_sha256"]
         assert "Perseus TEI entry" in use["locator"]["section"]
+
+
+REGISTER_SENSES = {
+    "tu": ["you (singular)", "thou (traditional English)"],
+    "tuus": ["your (traditional English: thy)", "yours (traditional English: thine)"],
+    "in": ["in, on", "into, to (traditional English: unto)", "at, among", "for, with"],
+}
+
+
+def modern_register_contract(entries, lemma):
+    assert entries[lemma]["senses"] == REGISTER_SENSES[lemma]
+
+
+@pytest.mark.parametrize("lemma", REGISTER_SENSES)
+def test_shared_english_cards_lead_with_modern_and_qualify_traditional_forms(lemma):
+    entries = json.loads((ROOT / "languages/en/lexicon.json").read_text())["entries"]
+    modern_register_contract(entries, lemma)
+
+
+@pytest.mark.parametrize("lemma", REGISTER_SENSES)
+@pytest.mark.parametrize("damage", ["unqualified-traditional", "only-traditional"])
+def test_shared_english_cards_reject_unqualified_archaic_defaults(lemma, damage):
+    import copy
+
+    entries = json.loads((ROOT / "languages/en/lexicon.json").read_text())["entries"]
+    modern_register_contract(entries, lemma)
+    bad = copy.deepcopy(entries)
+    old = {"tu": ["thou, you"], "tuus": ["thy, your", "thine, yours"], "in": ["into, unto"]}
+    bad[lemma]["senses"] = (
+        old[lemma]
+        if damage == "unqualified-traditional"
+        else [{"tu": "thou", "tuus": "thy, thine", "in": "unto"}[lemma]]
+    )
+    with pytest.raises(AssertionError):
+        modern_register_contract(bad, lemma)
