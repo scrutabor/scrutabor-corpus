@@ -65,6 +65,24 @@ NEUTER_PRONOUN_FORMS = {
     "ecquod": {"ecquis"},
 }
 
+# These two surfaces determine gender only with the selected case/number.
+# Nominative plural is contextual: quae and even rare haec can be feminine.
+# A genuinely unresolved nominative plural may retain no gender label.
+HAEC_QUAE_LEMMAS = {"haec": "hic", "quae": "qui"}
+
+
+def haec_quae_features_valid(morph):
+    case_number = (morph.get("case"), morph.get("number"))
+    gender = morph.get("gender")
+    if case_number == ("nom", "sg"):
+        return gender == "f"
+    if case_number == ("acc", "pl"):
+        return gender == "n"
+    if case_number == ("nom", "pl"):
+        return gender in {None, "f", "n"}
+    return False
+
+
 FORM_RE = re.compile(r"^[A-Za-zÁÉÍÓÚÝáéíóúýÆæŒœǼǽËë\u0301]+$")
 POST_RE = re.compile(r"^[,.;:?!]$")
 REF_RE = re.compile(r"\((w\d{3,})\)")
@@ -887,6 +905,16 @@ def lint_text(doc):
                 errors.append(f"{wid}: morph.{k}={v!r} not in enum")
         m = w["morph"]
         surface = fold_ligatures(strip_accents(f)).lower()
+        if (
+            m.get("pos") in {"pron", "adj"}
+            and HAEC_QUAE_LEMMAS.get(surface) == lemma
+            and not haec_quae_features_valid(m)
+        ):
+            errors.append(
+                f"{wid}: haec/quae form {f!r} ({lemma}) requires feminine singular "
+                "nominative or neuter plural accusative; plural nominative "
+                "allows feminine, neuter, or explicitly unsettled gender"
+            )
         if (
             m.get("pos") in {"pron", "adj"}
             and lemma in NEUTER_PRONOUN_FORMS.get(surface, set())
