@@ -2,6 +2,8 @@
 
 from copy import deepcopy
 
+from preface_note_fixture import restore_note_layer
+
 CAPTION_GROUPS = {
     "s02": [
         {
@@ -61,7 +63,7 @@ def current_caption_site(site):
 
 
 def restore_caption_layer(layer, language):
-    result = deepcopy(layer)
+    result = restore_note_layer(layer, language)
     if language == "pl":
         return result
     assert language == "en" and result["text"] == "ordinarium.praefatio-sanctissimae-trinitatis"

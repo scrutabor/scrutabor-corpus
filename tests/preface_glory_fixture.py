@@ -2,6 +2,8 @@
 
 from copy import deepcopy
 
+from preface_note_fixture import restore_note_core
+
 WORDS = ["w062", "w063", "w064"]
 OLD_GLOSSES = {
     "pl": ["bez", "różnicy", "rozróżnienia"],
@@ -56,7 +58,7 @@ def restore_glory_layer(layer, language):
 
 
 def restore_glory_core(core):
-    result = deepcopy(core)
+    result = restore_note_core(core)
     assert result["localization"] == {"about": True, "explanations": {"w064": {}}}
     assert list(result["localization"]) == ["about", "explanations"]
     del result["localization"]["explanations"]

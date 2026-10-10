@@ -8,6 +8,7 @@ import pytest
 import test_preface_glory_scope as glory
 import test_preface_trinity_contexts as trinity
 from preface_caption_fixture import CAPTION_GROUPS, restore_caption_layer
+from preface_note_fixture import restore_note_layer
 
 from checks.interlinear import check
 from checks.language_packs import check_layer
@@ -37,7 +38,7 @@ def test_current_caption_positive_and_old_inverse_are_not_already_red():
     assert_current(core, layer)
     trinity.restore(core, layer, "en")
     glory.assert_exact_inverse(core, layer, "en")
-    assert layer["words"]["w085"] == {"gloss": "which"}
+    assert restore_note_layer(layer, "en")["words"]["w085"] == {"gloss": "which"}
     assert layer["words"]["w094"] == {"gloss": "and they"}
     assert layer["words"]["w076"] == layer["words"]["w080"] == {"gloss": "and"}
     assert layer["segments"]["s06"]["alignments"][1] == {
