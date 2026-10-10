@@ -24829,6 +24829,27 @@
       "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
     },
     {
+      "id": "use.proprium.dominica-in-quinquagesima-collecta.common-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-quinquagesima-collecta"
+      },
+      "locator": {
+        "printed": "p. xvii; p. 123",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "RG 115 a, leaf n22; full Father-addressed conclusion, leaf n202",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a supplies the full Father-addressed long conclusion cued after this proper body. Page 123 supplies an accented punctuation comparator. Neither proper page prints the full expansion or a separate terminal response marker.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision_reason": "The separately printed common text and ritual context are distinguished from the proper body. Witness and collation review remain pending."
+    },
+    {
       "id": "use.proprium.dominica-in-quinquagesima-collecta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -24841,10 +24862,10 @@
         "section": "web/www/missa/Latin/Tempora/Quadp3-0.txt [Oratio] (lines 28-29); web/www/missa/Latin/Ordo/Prayers.txt [Per Dominum] (lines 96-97)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-10-07",
+      "verified_on": "2026-10-10",
       "decision": "RETAIN_WITH_CORRECTION",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
-      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
+      "evidence_sha256": "089dedaf240816aaba4ba9bf1714f384aea26c4ec36ff982688c7bbf7de9ffe8",
+      "decision_reason": "The key-file digest identifies the retained Quadp3-0 original. The locator separately names the resolved Prayers section used for the common expansion; the digital transcript and source bytes are unchanged."
     },
     {
       "id": "use.proprium.dominica-in-quinquagesima-collecta.mr1962",
@@ -24860,10 +24881,11 @@
         "scan": "leaf n133 / PDF p. 134",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n133/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "ac98d913ec204d6f1a663b1529607bd58967e555dd9975cbb3c26e84a6032ec8"
+      "claim": "Printed p. 54 supplies the proper body w001–w016 and a short Per Dominum cue. The selected long Father-addressed conclusion is supplied separately from RG 115 a, p. xvii, with accented punctuation comparator p. 123; terminal Amen is a separate response, not a marker on the proper page.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "ac98d913ec204d6f1a663b1529607bd58967e555dd9975cbb3c26e84a6032ec8",
+      "decision_reason": "The proper body and abbreviated cue are distinguished from separately supplied common text and response; the selected Latin is unchanged."
     },
     {
       "id": "use.proprium.dominica-in-quinquagesima-collecta.oration-boundaries.mr1962",
@@ -24875,15 +24897,37 @@
         "text": "proprium.dominica-in-quinquagesima-collecta"
       },
       "locator": {
-        "printed": "pp. xxxii–xxxiv, 225–226",
-        "scan": "leaves n37–n39, n304–n305 / PDF pp. 38–40, 305–306",
-        "section": "RG 480–481, 511 d/i, 513–514; Ordo Missae rubric and chant formula after the secrets"
+        "printed": "pp. xxxiv, lii",
+        "scan": "leaves n39, n57 / PDF pp. 40, 58",
+        "section": "RG 511 d, 513–514; Ritus V 1",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n39/mode/1up"
       },
-      "claim": "The final secret has an audible Per omnia saecula saeculorum followed by the response Amen. Collects and postcommunions are priestly orations with a separate response. These rules determine the modeled boundaries, not the completeness of a date-specific commemoration inventory.",
-      "verified_on": "2026-10-07",
-      "evidence_sha256": "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
+      "claim": "Ritus V 1 identifies the priestly opening oration; RG 511 d and 513–514 distinguish its spoken and sung delivery. A separate responsive Amen is supported by the common prayer-tone comparator, not printed after the proper cue.",
+      "verified_on": "2026-10-10",
+      "evidence_sha256": "c03be5250068f8c9c262983bc7689a18d0180b88b0c4476d21fac383c8f07993",
       "decision": "RETAIN_WITH_CORRECTION",
-      "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
+      "decision_reason": "The cited rubrics describe this prayer, not the Secret transition. The prayer body, common ending and separate response have distinct source coverage; no complete commemoration inventory or new ritual approval is inferred."
+    },
+    {
+      "id": "use.proprium.dominica-in-quinquagesima-collecta.prayer-response.lu1961",
+      "edition": "edition.liber-usualis.1961",
+      "digital_item": "item.liber-usualis.1961.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-quinquagesima-collecta"
+      },
+      "locator": {
+        "printed": "pp. 98–100",
+        "scan": "PDF pp. 210–212",
+        "section": "Common prayer tones, festal and ancient tones; the long conclusion followed by the response Amen",
+        "page_url": "https://archive.org/details/TheLiberUsualis1961"
+      },
+      "claim": "The 1961 common prayer-tone pages print a responsive Amen after the long Father-addressed ending. This corroborates the response boundary only; it is not the controlling 1962 calendar or rubric system, and the proper page does not print this response.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "a3d5fdb3308dcabc0474eb99d2f8a5509e52c76380ae41ec373ab3aa3e7db6b9",
+      "decision_reason": "The separately printed common text and ritual context are distinguished from the proper body. Witness and collation review remain pending."
     },
     {
       "id": "use.proprium.dominica-in-quinquagesima-communio.do44667ff",
@@ -24897,11 +24941,11 @@
       "locator": {
         "section": "web/www/missa/Latin/Tempora/Quadp3-0.txt [Communio] (lines 65-66)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-10-07",
+      "claim": "The pinned Communion agrees apart from the declared w003 saturári letter error; the controlling print and selected participle read saturáti.",
+      "verified_on": "2026-10-10",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "089dedaf240816aaba4ba9bf1714f384aea26c4ec36ff982688c7bbf7de9ffe8",
-      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
+      "decision_reason": "The exact digital reading is preserved. The previously header-declared corrigendum is now also explained in the apparatus; it is not silently treated as substantive agreement."
     },
     {
       "id": "use.proprium.dominica-in-quinquagesima-communio.mr1962",
@@ -25047,10 +25091,31 @@
         "section": "web/www/missa/Latin/Tempora/Quadp3-0.txt [Introitus] (lines 20-25); web/www/missa/Latin/Ordo/Prayers.txt [Gloria] (lines 13-14)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-10-07",
+      "verified_on": "2026-10-10",
       "decision": "RETAIN_WITH_CORRECTION",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
-      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
+      "evidence_sha256": "089dedaf240816aaba4ba9bf1714f384aea26c4ec36ff982688c7bbf7de9ffe8",
+      "decision_reason": "The key-file digest identifies the retained Quadp3-0 original. The locator separately names the resolved Prayers section used for the common expansion; the digital transcript and source bytes are unchanged."
+    },
+    {
+      "id": "use.proprium.dominica-in-quinquagesima-introitus.doxology.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-quinquagesima-introitus"
+      },
+      "locator": {
+        "printed": "p. 1; p. lii",
+        "scan": "leaf n80 / PDF p. 81",
+        "section": "Sunday within the Octave of Christmas Introit; Ritus IV 2, leaf n57",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n80/mode/1up"
+      },
+      "claim": "The fully printed Gloria Patri and Sicut erat on p. 1 supply the doxology cued on p. 54. Ritus IV 2 prescribes the doxology and repeated antiphon; this does not make the expanded text continuously printed on p. 54.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "215182ac2415d178917c183486c716ce352777a6084da024e7293a95649b60c7",
+      "decision_reason": "The separately printed common text and ritual context are distinguished from the proper body. Witness and collation review remain pending."
     },
     {
       "id": "use.proprium.dominica-in-quinquagesima-introitus.mr1962",
@@ -25066,10 +25131,11 @@
         "scan": "leaf n133 / PDF p. 134",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n133/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "ac98d913ec204d6f1a663b1529607bd58967e555dd9975cbb3c26e84a6032ec8"
+      "claim": "Printed p. 54 supplies w001–w047, the Gloria Patri cue at w048–w049 and the repeat cue at w068–w069. The full doxology w050–w067 comes from p. 1; w070–w098 repeats the cued antiphon.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "ac98d913ec204d6f1a663b1529607bd58967e555dd9975cbb3c26e84a6032ec8",
+      "decision_reason": "The proper body and abbreviated cue are distinguished from separately supplied common text and response; the selected Latin is unchanged."
     },
     {
       "id": "use.proprium.dominica-in-quinquagesima-offertorium.do44667ff",
@@ -25109,6 +25175,27 @@
       "evidence_sha256": "869d4b71c0ba05533e9c42abd53ec9db3d24110c1a095ac3a5ed7907f76979e3"
     },
     {
+      "id": "use.proprium.dominica-in-quinquagesima-postcommunio.common-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-quinquagesima-postcommunio"
+      },
+      "locator": {
+        "printed": "p. xvii; p. 123",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "RG 115 a, leaf n22; full Father-addressed conclusion, leaf n202",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a supplies the full Father-addressed long conclusion cued after this proper body. Page 123 supplies an accented punctuation comparator. Neither proper page prints the full expansion or a separate terminal response marker.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision_reason": "The separately printed common text and ritual context are distinguished from the proper body. Witness and collation review remain pending."
+    },
+    {
       "id": "use.proprium.dominica-in-quinquagesima-postcommunio.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -25121,10 +25208,10 @@
         "section": "web/www/missa/Latin/Tempora/Quadp3-0.txt [Postcommunio] (lines 69-70); web/www/missa/Latin/Ordo/Prayers.txt [Per Dominum] (lines 96-97)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-10-07",
+      "verified_on": "2026-10-10",
       "decision": "RETAIN_WITH_CORRECTION",
-      "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d",
-      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
+      "evidence_sha256": "089dedaf240816aaba4ba9bf1714f384aea26c4ec36ff982688c7bbf7de9ffe8",
+      "decision_reason": "The key-file digest identifies the retained Quadp3-0 original. The locator separately names the resolved Prayers section used for the common expansion; the digital transcript and source bytes are unchanged."
     },
     {
       "id": "use.proprium.dominica-in-quinquagesima-postcommunio.mr1962",
@@ -25140,10 +25227,11 @@
         "scan": "leaf n134 / PDF p. 135",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n134/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "869d4b71c0ba05533e9c42abd53ec9db3d24110c1a095ac3a5ed7907f76979e3"
+      "claim": "Printed p. 55 supplies the proper body w001–w014 and a short Per Dominum cue. The selected long Father-addressed conclusion is supplied separately from RG 115 a, p. xvii, with accented punctuation comparator p. 123; terminal Amen is a separate response, not a marker on the proper page.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "869d4b71c0ba05533e9c42abd53ec9db3d24110c1a095ac3a5ed7907f76979e3",
+      "decision_reason": "The proper body and abbreviated cue are distinguished from separately supplied common text and response; the selected Latin is unchanged."
     },
     {
       "id": "use.proprium.dominica-in-quinquagesima-postcommunio.oration-boundaries.mr1962",
@@ -25155,15 +25243,37 @@
         "text": "proprium.dominica-in-quinquagesima-postcommunio"
       },
       "locator": {
-        "printed": "pp. xxxii–xxxiv, 225–226",
-        "scan": "leaves n37–n39, n304–n305 / PDF pp. 38–40, 305–306",
-        "section": "RG 480–481, 511 d/i, 513–514; Ordo Missae rubric and chant formula after the secrets"
+        "printed": "pp. xxxiii–xxxiv, lviii",
+        "scan": "leaves n38–n39, n63 / PDF pp. 39–40, 64",
+        "section": "RG 505, 511 i, 513–514; Ritus XI 1",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n38/mode/1up"
       },
-      "claim": "The final secret has an audible Per omnia saecula saeculorum followed by the response Amen. Collects and postcommunions are priestly orations with a separate response. These rules determine the modeled boundaries, not the completeness of a date-specific commemoration inventory.",
-      "verified_on": "2026-10-07",
-      "evidence_sha256": "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
+      "claim": "RG 505 and Ritus XI 1 give the Postcommunion the number, mode and order of the opening orations; RG 511 i and 513–514 distinguish spoken and sung delivery. The separate responsive Amen follows from that relationship and the common prayer-tone comparator, not a response marker on p. 55.",
+      "verified_on": "2026-10-10",
+      "evidence_sha256": "a6d9b2554ebb911a8a6ae9ea6e6e5e882307bedeab8e326ae2f7ef602ec2fd7e",
       "decision": "RETAIN_WITH_CORRECTION",
-      "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
+      "decision_reason": "The cited rubrics describe this prayer, not the Secret transition. The prayer body, common ending and separate response have distinct source coverage; no complete commemoration inventory or new ritual approval is inferred."
+    },
+    {
+      "id": "use.proprium.dominica-in-quinquagesima-postcommunio.prayer-response.lu1961",
+      "edition": "edition.liber-usualis.1961",
+      "digital_item": "item.liber-usualis.1961.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-quinquagesima-postcommunio"
+      },
+      "locator": {
+        "printed": "pp. 98–100",
+        "scan": "PDF pp. 210–212",
+        "section": "Common prayer tones, festal and ancient tones; the long conclusion followed by the response Amen",
+        "page_url": "https://archive.org/details/TheLiberUsualis1961"
+      },
+      "claim": "The 1961 common prayer-tone pages print a responsive Amen after the long Father-addressed ending. This corroborates the response boundary only; it is not the controlling 1962 calendar or rubric system, and the proper page does not print this response.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "a3d5fdb3308dcabc0474eb99d2f8a5509e52c76380ae41ec373ab3aa3e7db6b9",
+      "decision_reason": "The separately printed common text and ritual context are distinguished from the proper body. Witness and collation review remain pending."
     },
     {
       "id": "use.proprium.dominica-in-quinquagesima-tractus.do44667ff",
@@ -73398,12 +73508,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "dda19b8e824333c2e61bdabd748cd3e98d2ab223e940f8e1dd9ce870155bf718",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "4f3cc3c2eefa25bf941284cd36412b5f11c10e81c42a7ebb60c45fff17503a21",
+      "orthography_profile": "printed-body-composite-expansion",
+      "independence_basis": "The proper body and cues were checked against their owning page. Common expansions are supplied from the separately identified loci in the same Benziger printing; current conformity does not establish the historical transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-in-quinquagesima-collecta.common-conclusion.mr1962",
+          "use.proprium.dominica-in-quinquagesima-collecta.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -73578,12 +73695,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "ff484b55063a467706d9a18a2318b11b7c53bf8b7010ded109641d4bb939d7b1",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "21b399146825ff8af022967653db01d39875ee756c72d246c94c473d211f8bf6",
+      "orthography_profile": "printed-body-composite-expansion",
+      "independence_basis": "The proper body and cues were checked against their owning page. Common expansions are supplied from the separately identified loci in the same Benziger printing; current conformity does not establish the historical transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-in-quinquagesima-introitus.doxology.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -73650,12 +73773,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "dc9e5246554cf5f15fba4f461b53fe4d8afd54529d2bca402d10bbb8afe7ecdc",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "7fdf52fbb6f44ca18c135a6cd3f91729222c5eaf5b4793ec6b1046b01ca218cf",
+      "orthography_profile": "printed-body-composite-expansion",
+      "independence_basis": "The proper body and cues were checked against their owning page. Common expansions are supplied from the separately identified loci in the same Benziger printing; current conformity does not establish the historical transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-in-quinquagesima-postcommunio.common-conclusion.mr1962",
+          "use.proprium.dominica-in-quinquagesima-postcommunio.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -105029,7 +105159,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "9313882fa6e86eaf81bcb3358073cce4604d3618876748a981e3a3a851107bac",
+      "apparatus_sha256": "32c4f6c3d64d6e3fdc7870d8f462fa1311c73d8c24d16e4874c639e27dd233ec",
       "review": {
         "status": "pending"
       }
@@ -105047,7 +105177,7 @@
         "entries": 0,
         "classes": []
       },
-      "apparatus_sha256": "e5bd7c6628004bb8988d2e66be69f53af610e3fce45d1496dc9dc0d4d8324633",
+      "apparatus_sha256": "441b7b5b2ab30b4799a2d9eda1f8ddfdfb603525b4a51a7cd97b43b446a60b74",
       "review": {
         "status": "pending"
       }
@@ -105135,7 +105265,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "a105a7b7f5b69c7deed34406afdc7d6d9bdbee3fd40423a18f7430a3fb37a8d6",
+      "apparatus_sha256": "725fc02bf2c24bbdbfdca59be0bdd4dc11b33268085192c864ff615d39c0078e",
       "review": {
         "status": "pending"
       }
@@ -105178,7 +105308,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "7f9315db55d132cd0dad8687aeb0e9baa3ef1fa21c7725d72aaad5b4d2cb93ea",
+      "apparatus_sha256": "641e20b77158a0b57d5f243f599f1732c3efad23f0a00dfaadc8eddbdfc70c14",
       "review": {
         "status": "pending"
       }

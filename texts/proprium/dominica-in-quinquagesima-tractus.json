@@ -45,7 +45,7 @@
         { "id": "w024", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w025", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w026", "form": "ipsi", "lemma": "ipse", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "m" } },
-        { "id": "w027", "form": "nos", "post": ":", "lemma": "nos", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
+        { "id": "w027", "form": "nos", "post": ":", "lemma": "nos", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
         { "id": "w028", "form": "nos", "lemma": "nos", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
         { "id": "w029", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w030", "form": "pópulus", "lemma": "populus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
@@ -87,10 +87,15 @@
       "w028": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w033": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w027": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w027": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w027": {
+
+      }
+    }
   }
 }
