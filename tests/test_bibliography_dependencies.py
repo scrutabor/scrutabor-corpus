@@ -105,6 +105,10 @@ def test_complete_raw_archive_not_only_selected_lines_is_bound(composite):
     path.write_bytes(data)
     record["sha256"] = hashlib.sha256(data).hexdigest()
     write_json(root / REGISTRY, registry)
+    assert any("digital evidence_sha256" in e for e in validate_bindings(root, graph))
+    # A coherent new source digest still cannot preserve the prior review.
+    use = next(u for u in graph["uses"] if u["id"] == f"use.{TEXT}.do44667ff")
+    use["evidence_sha256"] = record["sha256"]
     assert any("reviewed subject changed" in e for e in validate_bindings(root, graph))
 
 

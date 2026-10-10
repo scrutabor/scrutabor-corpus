@@ -243,6 +243,18 @@ remain without an inventory; it cannot receive a reviewed subject. A scan
 witness with an explicitly inventoried derivation may use null. The raw
 registry remains version1.
 
+For a supported Divinum Officium use in an explicit raw-bound inventory,
+`evidence_sha256` must identify either the complete bytes of an archive in
+that checked resolution, or the complete ordered resolved reading followed
+by one LF (UTF-8, with the raw resolver's whitespace collapse). This applies
+to primary and supplemental uses, including pending witnesses. It does not
+certify that a single contributing archive contains an entire composite
+reading: the claim and locator must identify its actual scope, and the full
+plan still binds every contribution and reference. A missing digest or a
+digest of an unrelated object is rejected. There is no inferred first-archive
+subject and no new review approval. Scan and other-provider evidence digests
+retain their own existing meanings; absent legacy inventories remain unknown.
+
 An absent inventory is permitted only while review remains pending. It is
 unknown, not an empty inventory. Pending identities cannot be used as reviewed
 subjects or included in a reviewed collation. Adding inventory or recomputing

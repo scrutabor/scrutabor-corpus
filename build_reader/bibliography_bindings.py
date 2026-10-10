@@ -314,6 +314,22 @@ def _witness_subject(
             for s in subject["source_uses"].values()
         ):
             raise BindingError("digital item revision or kind differs from raw binding")
+        # A generic evidence hash need not name the first archive. Existing
+        # digital uses identify either a contributing archive's complete bytes
+        # or the complete ordered reading with one terminal LF. Both subjects
+        # must come from this checked resolution, never an unrelated real file.
+        evidence_hashes = {archive["sha256"] for archive in reading.source["archives"].values()} | {
+            hashlib.sha256((reading.text + "\n").encode("utf-8")).hexdigest()
+        }
+        for source in subject["source_uses"].values():
+            evidence = source["use"].get("evidence_sha256")
+            if _digital_provider(source) and (
+                not isinstance(evidence, str) or evidence not in evidence_hashes
+            ):
+                raise BindingError(
+                    "digital evidence_sha256 identifies neither a bound archive "
+                    "nor the complete resolved reading"
+                )
     subject["raw_resolution"] = reading.source if reading is not None else None
     subject["contract"] = "witness-review-2"
     return deepcopy(subject)
