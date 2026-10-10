@@ -20456,18 +20456,19 @@
         "text": "proprium.dominica-ii-post-epiphaniam-graduale"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Epi2-0.txt (section [Graduale]); resolved spans: web/www/missa/Latin/Tempora/Epi2-0.txt (lines 30-32)"
+        "section": "web/www/missa/Latin/Tempora/Epi2-0.txt [Graduale] (lines 31-31); web/www/missa/Latin/Tempora/Epi2-0.txt [Graduale] (line 32, chars 0:75)"
       },
       "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "cd2fd9a96f5042f86fdecd8cde39488e8f7a7e9f8541d92dc6db4df002ebef01"
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "cd2fd9a96f5042f86fdecd8cde39488e8f7a7e9f8541d92dc6db4df002ebef01",
+      "decision_reason": "Exact selected source characters bind the Gradual without the adjacent Alleluia refrain; the previous whole-line declaration was not an exact component boundary."
     },
     {
       "id": "use.proprium.dominica-ii-post-epiphaniam-graduale.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-ii-post-epiphaniam-graduale"
@@ -20477,10 +20478,11 @@
         "scan": "leaf n123 / PDF p. 124",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n123/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "53ad3aade54b8c8cdc3b7ccfe71cb4cb828139b5b2fbb962eab2664989a36a47"
+      "claim": "The approved Benziger 1962 printing on p. 44 contains the complete 22-word Gradual from Misit through hominum. The following Alleluia belongs to the next component and is not part of this witness.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "53ad3aade54b8c8cdc3b7ccfe71cb4cb828139b5b2fbb962eab2664989a36a47",
+      "decision_reason": "This is a directly checked approved Benziger printing, not the official typica itself. The component ends at hominum before the following Alleluia."
     },
     {
       "id": "use.proprium.dominica-ii-post-epiphaniam-introitus.do44667ff",
@@ -20501,10 +20503,50 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
+      "id": "use.proprium.dominica-ii-post-epiphaniam-introitus.gloria-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-ii-post-epiphaniam-introitus"
+      },
+      "locator": {
+        "printed": "p. 1",
+        "scan": "leaf n80 / PDF p. 81",
+        "section": "First Advent Sunday Introit, Gloria Patri through Amen and repeat rubric",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n80/mode/1up"
+      },
+      "claim": "The page prints the complete accented Gloria Patri–Amen retained at words w026–w045; its following rubric directs the antiphon repeat up to the psalm and states that this mode applies throughout the year.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN",
+      "evidence_sha256": "215182ac2415d178917c183486c716ce352777a6084da024e7293a95649b60c7"
+    },
+    {
+      "id": "use.proprium.dominica-ii-post-epiphaniam-introitus.introit-repeat.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-ii-post-epiphaniam-introitus"
+      },
+      "locator": {
+        "printed": "p. xxix",
+        "scan": "leaf n34 / PDF p. 35",
+        "section": "Rubricae generales427–428",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "Rubricae generales427 directs the antiphon with psalm verse and Gloria Patri, followed by repetition of the antiphon;428 states the particular seasonal/Requiem omissions. This is rubric control, not the II proper words printed on this page.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN",
+      "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786"
+    },
+    {
       "id": "use.proprium.dominica-ii-post-epiphaniam-introitus.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-ii-post-epiphaniam-introitus"
@@ -20514,10 +20556,11 @@
         "scan": "leaf n123 / PDF p. 124",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n123/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "53ad3aade54b8c8cdc3b7ccfe71cb4cb828139b5b2fbb962eab2664989a36a47"
+      "claim": "The p. 44 image prints the 25-word proper antiphon and psalm verse, followed only by the Glória Patri. Omnis. expansion/repetition cues. The full doxology and repeated antiphon are declared separately in the witness.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "53ad3aade54b8c8cdc3b7ccfe71cb4cb828139b5b2fbb962eab2664989a36a47",
+      "decision_reason": "Corrects the earlier complete-page claim; actual proper words/cues were reread visually. No source-review or rights approval is inferred."
     },
     {
       "id": "use.proprium.dominica-ii-post-epiphaniam-offertorium.do44667ff",
@@ -69156,12 +69199,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "b880d26a02c5c432245fc8212eee6f236d91b95efc13a4c0280381c42fd166a0",
+      "transcription_sha256": "d004985c4779fca8ddb928940970ad8b290e22f3ca9a903269adc57bf1c3c56e",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-dominica-ii-post-epiphaniam-graduale"
       }
     },
     {
@@ -69208,12 +69255,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "e41ca390e1479462dbd3bc8ac6c338c3306fe6abc188c7a1bee6ac72db3f634b",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "8aa521afdcf4c04a5070215f3125187a74091921046adfcbef3c0da928fe453b",
+      "orthography_profile": "exact-declared-composite",
+      "independence_basis": "Direct reading of same-edition p. 44 proper words/cues, p. 1 full doxology/repeat rubric, and Rubricae generales427. The full witness declares assembly, not a continuous proper-page printing or proven original drafting genesis.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-ii-post-epiphaniam-introitus.gloria-expansion.mr1962",
+          "use.proprium.dominica-ii-post-epiphaniam-introitus.introit-repeat.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -101694,7 +101748,7 @@
     {
       "id": "collation.proprium.dominica-ii-post-epiphaniam-introitus.mr1962-do44667ff",
       "text": "proprium.dominica-ii-post-epiphaniam-introitus",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "Declared Benziger 1962 same-edition Introit composite: p. 44 proper, p. 1 full Gloria Patri, and antiphon repeat under the printed cues/rules",
       "selected_text_sha256": "96f63ff905630d10498750e148e40d1858c21417cdd57d0f990ce2a244e39f28",
       "witnesses": [
         "witness.proprium.dominica-ii-post-epiphaniam-introitus.do44667ff",
@@ -101706,7 +101760,7 @@
           "orthography"
         ]
       },
-      "apparatus_sha256": "148fb306c2036199c1b9b92e7715bff21edc91347b26e407b116d7be02200af9",
+      "apparatus_sha256": "9e2727912d4c477c0397a7f5ddcf41b7677af7d5974124035a195f609192af56",
       "review": {
         "status": "pending"
       }

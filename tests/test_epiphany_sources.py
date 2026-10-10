@@ -390,3 +390,362 @@ def test_the_second_sunday_conclusions_name_only_their_actual_printed_sources(
     bound = resolve_binding(ROOT / "witnesses" / text / "do.txt", ROOT)
     assert bound is not None and bound.text.endswith("Amen.")
     clean(text)
+
+
+CHANT_SEGMENTS = {
+    "introitus": "40172f8ce6a94deff0d32ae7f14acfb6931780489c3e413f4c56d2671b37f9d1",
+    "graduale": "cbc144f5cc423488ce85953b7a1dc3f227a5683c887738ff12e00900d1210e76",
+}
+CHANT_CAPTIONS = {
+    ("pl", "introitus"): (
+        "cała | ziemia | niech oddaje pokłon | Ci | Boże | i | niech śpiewa | Ci | "
+        "niech śpiewa psalm | Twojemu imieniu | Najwyższy | Wykrzykujcie radośnie | Bogu | "
+        "cała | ziemio | śpiewajcie psalm | Jego imieniu | oddajcie | chwałę | Jego chwale | "
+        "Chwała | Ojcu | i | Synowi | i | Duchowi | Świętemu | Jak | była | na | początku | "
+        "i | teraz | i | zawsze | i | na | wieki | wieków | Amen | cała | ziemia | "
+        "niech oddaje pokłon | Ci | Boże | i | niech śpiewa | Ci | niech śpiewa psalm | "
+        "Twojemu imieniu | Najwyższy"
+    ),
+    ("en", "introitus"): (
+        "Let all the earth adore | You | God | and | let it sing | to You | "
+        "let it sing a psalm to Your name | Most High | Sing joyfully | to God | all | "
+        "the earth | sing a psalm | to His name | give | glory | to His praise | Glory | "
+        "to the Father | and | to the Son | and | to the Holy Spirit | As | it was | "
+        "in | the beginning | and | now | and | always | and | unto | ages | of ages | Amen | "
+        "Let all the earth adore | You | God | and | let it sing | to You | "
+        "let it sing a psalm to Your name | Most High"
+    ),
+    ("pl", "graduale"): (
+        "posłał | Pan | słowo | swoje | i | uzdrowił | ich | i | ocalił | ich | od | "
+        "ich zagłady | Niech Jego dzieła miłosierdzia i Jego cuda dla ludzi wysławiają Pana"
+    ),
+    ("en", "graduale"): (
+        "The Lord sent | His word | and | healed | them | and | rescued | them | from | "
+        "their destruction | "
+        "Let His mercies and His wonderful works for mankind give glory to the Lord"
+    ),
+}
+CHANT_GROUPS = {
+    ("pl", "introitus"): [
+        (9, 10, 10),
+        (11, 12, 11),
+        (18, 19, 19),
+        (20, 21, 20),
+        (24, 25, 24),
+        (54, 55, 55),
+        (56, 57, 56),
+    ],
+    ("en", "introitus"): [
+        (1, 3, 3),
+        (9, 12, 10),
+        (18, 19, 19),
+        (20, 21, 20),
+        (24, 25, 24),
+        (31, 32, 31),
+        (46, 48, 48),
+        (54, 57, 55),
+    ],
+    ("pl", "graduale"): [(12, 13, 12), (14, 22, 14)],
+    ("en", "graduale"): [(1, 2, 1), (3, 4, 3), (12, 13, 12), (14, 22, 14)],
+}
+
+
+def chant_contract(slug, language, doc, target):
+    import hashlib
+
+    from checks.interlinear import check
+    from checks.language_packs import check_layer
+
+    digest = hashlib.sha256(
+        json.dumps(
+            doc["segments"], ensure_ascii=False, sort_keys=True, separators=(",", ":")
+        ).encode()
+    ).hexdigest()
+    assert digest == CHANT_SEGMENTS[slug]
+    assert check(doc, target) == []
+    path = ROOT / f"languages/{language}/texts/{doc['id'].replace('.', '/', 1)}.json"
+    assert check_layer(doc, target, path) == []
+    groups = target["segments"]["s01"]["alignments"]
+    assert [(g["words"], g["anchor"]) for g in groups] == [
+        ([f"w{i:03}" for i in range(first, last + 1)], f"w{anchor:03}")
+        for first, last, anchor in CHANT_GROUPS[language, slug]
+    ]
+    by_first = {g["words"][0]: g for g in groups}
+    covered = {word for g in groups for word in g["words"]}
+    captions = []
+    for word in ordered(doc):
+        if word["id"] in by_first:
+            captions.append(by_first[word["id"]]["gloss"])
+        elif word["id"] not in covered:
+            captions.append(target["words"][word["id"]]["gloss"])
+    assert " | ".join(captions) == CHANT_CAPTIONS[language, slug]
+
+
+@pytest.mark.parametrize("language,slug", sorted(CHANT_CAPTIONS))
+def test_second_sunday_chants_keep_complete_captions_and_latin_analysis(language, slug):
+    chant_contract(slug, language, core(II + slug), layer(language, II + slug))
+
+
+@pytest.mark.parametrize("language", ["pl", "en"])
+@pytest.mark.parametrize("damage", ["duplicate-provider", "wrong-anchor", "changed-gloria"])
+def test_second_sunday_introit_rejects_caption_and_protected_doxology_drift(language, damage):
+    import copy
+
+    doc, target = core(II + "introitus"), layer(language, II + "introitus")
+    chant_contract("introitus", language, doc, target)
+    bad = copy.deepcopy(target)
+    if damage == "duplicate-provider":
+        bad["words"]["w009"]["gloss"] = "psalm"
+    elif damage == "wrong-anchor":
+        group = next(g for g in bad["segments"]["s01"]["alignments"] if g["words"][0] == "w009")
+        group["anchor"] = "w009"
+    else:
+        bad["words"]["w026"]["gloss"] = "arbitrary"
+    with pytest.raises(AssertionError):
+        chant_contract("introitus", language, doc, bad)
+
+
+@pytest.mark.parametrize("slug", ["introitus", "graduale"])
+def test_second_sunday_chants_reject_changed_latin_analysis(slug):
+    import copy
+
+    doc, target = core(II + slug), layer("en", II + slug)
+    chant_contract(slug, "en", doc, target)
+    bad = copy.deepcopy(doc)
+    bad["segments"][0]["words"][0]["morph"]["number"] = "arbitrary"
+    with pytest.raises(AssertionError):
+        chant_contract(slug, "en", bad, target)
+
+
+@pytest.mark.parametrize("language", ["pl", "en"])
+@pytest.mark.parametrize(
+    "damage",
+    [
+        "old-junction",
+        "human-subject",
+        "human-recipient",
+        "duplicate-and",
+        "wrong-anchor",
+        "truncated-group",
+    ],
+)
+def test_second_sunday_gradual_rejects_broken_clause_captions(language, damage):
+    import copy
+
+    doc, target = core(II + "graduale"), layer(language, II + "graduale")
+    chant_contract("graduale", language, doc, target)
+    bad = copy.deepcopy(target)
+    group = bad["segments"]["s01"]["alignments"][-1]
+    if damage == "old-junction":
+        group["words"] = [f"w{i:03}" for i in range(14, 18)]
+        group["gloss"] = (
+            "Niech Jego dzieła miłosierdzia wysławiają Pana"
+            if language == "pl"
+            else "Let His mercies give glory to the Lord"
+        )
+        bad["words"]["w018"]["gloss"] = "i" if language == "pl" else "and"
+        bad["segments"]["s01"]["alignments"].append(
+            {
+                "words": [f"w{i:03}" for i in range(19, 23)],
+                "anchor": "w019",
+                "gloss": "Jego cuda dla ludzi"
+                if language == "pl"
+                else "His wonderful works for mankind",
+            }
+        )
+    elif damage == "human-subject":
+        group["gloss"] = (
+            "Niech ludzie wysławiają Pana"
+            if language == "pl"
+            else "Let mankind give glory to the Lord"
+        )
+    elif damage == "human-recipient":
+        group["gloss"] = (
+            "Niech Jego cuda wysławiają ludzi"
+            if language == "pl"
+            else "Let His wonderful works give glory to mankind"
+        )
+    elif damage == "duplicate-and":
+        bad["words"]["w018"]["gloss"] = "i" if language == "pl" else "and"
+    elif damage == "wrong-anchor":
+        group["anchor"] = "w019"
+    else:
+        group["words"].pop()
+    with pytest.raises(AssertionError):
+        chant_contract("graduale", language, doc, bad)
+
+
+def second_sunday_source_contract(doc, mr, data):
+    text = II + "introitus"
+    sequence = ordered(doc)
+    assert len(sequence) == 58
+    assert [(w["form"], w.get("post")) for w in sequence[45:]] == [
+        (w["form"], w.get("post")) for w in sequence[:13]
+    ]
+    assert (
+        "# composite: w001–w025 from p. 44; w026–w045 Gloria Patri through Amen from p. 1; "
+        "w046–w058 repeat w001–w013" in mr
+    )
+    found = {u["id"]: u for u in data["uses"]}
+    for suffix, printed, scan, digest in [
+        (
+            "mr1962",
+            "p. 44",
+            "leaf n123 / PDF p. 124",
+            "53ad3aade54b8c8cdc3b7ccfe71cb4cb828139b5b2fbb962eab2664989a36a47",
+        ),
+        (
+            "gloria-expansion.mr1962",
+            "p. 1",
+            "leaf n80 / PDF p. 81",
+            "215182ac2415d178917c183486c716ce352777a6084da024e7293a95649b60c7",
+        ),
+        (
+            "introit-repeat.mr1962",
+            "p. xxix",
+            "leaf n34 / PDF p. 35",
+            "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786",
+        ),
+    ]:
+        use = found[f"use.{text}.{suffix}"]
+        assert (use["locator"]["printed"], use["locator"]["scan"], use["evidence_sha256"]) == (
+            printed,
+            scan,
+            digest,
+        )
+        assert use["role"] == (
+            "rubric_control" if suffix.startswith("introit-repeat") else "direct_approved_print"
+        )
+    assert "25-word proper" in found[f"use.{text}.mr1962"]["claim"]
+    wit = next(w for w in data["witnesses"] if w["id"] == f"witness.{text}.mr1962")
+    assert wit["orthography_profile"] == "exact-declared-composite"
+    assert wit["source_dependencies"] == {
+        "uses": [f"use.{text}.gloria-expansion.mr1962", f"use.{text}.introit-repeat.mr1962"],
+        "raw_binding": None,
+    }
+    assert wit["review"] == {"status": "pending"}
+    col = next(c for c in data["collations"] if c["text"] == text)
+    assert col["review"] == {"status": "pending"}
+    use = found[f"use.{II}graduale.mr1962"]
+    assert use["role"] == "direct_approved_print" and use["locator"]["printed"] == "p. 44"
+    assert (
+        use["evidence_sha256"] == "53ad3aade54b8c8cdc3b7ccfe71cb4cb828139b5b2fbb962eab2664989a36a47"
+    )
+    assert "complete 22-word Gradual" in use["claim"] and "following Alleluia" in use["claim"]
+    for w in data["witnesses"]:
+        if w["text"] == II + "graduale":
+            assert w["review"] == {"status": "pending"}
+
+
+def test_second_sunday_chants_declare_only_the_printed_component_and_expansions():
+    second_sunday_source_contract(core(II + "introitus"), witness(II + "introitus"), graph())
+    clean(II + "introitus")
+    clean(II + "graduale")
+
+
+@pytest.mark.parametrize(
+    "damage",
+    [
+        "wrong-seam",
+        "repeat",
+        "missing-expansion",
+        "wrong-digest",
+        "wrong-page",
+        "old-role",
+        "review-promotion",
+        "wrong-gradual-boundary",
+    ],
+)
+def test_second_sunday_chants_reject_false_source_composite_claims(damage):
+    import copy
+
+    doc, mr, data = core(II + "introitus"), witness(II + "introitus"), graph()
+    second_sunday_source_contract(doc, mr, data)
+    bad = copy.deepcopy(data)
+    found = {u["id"]: u for u in bad["uses"]}
+    if damage == "wrong-seam":
+        mr = mr.replace("w001–w025", "w001–w024")
+    elif damage == "repeat":
+        doc = copy.deepcopy(doc)
+        doc["segments"][0]["words"][-1]["form"] = "arbitrary"
+    elif damage == "missing-expansion":
+        bad["uses"].remove(found[f"use.{II}introitus.gloria-expansion.mr1962"])
+    elif damage == "wrong-digest":
+        found[f"use.{II}introitus.gloria-expansion.mr1962"]["evidence_sha256"] = "0" * 64
+    elif damage == "wrong-page":
+        found[f"use.{II}introitus.introit-repeat.mr1962"]["locator"]["printed"] = "p. 44"
+    elif damage == "old-role":
+        found[f"use.{II}graduale.mr1962"]["role"] = "official_text"
+    elif damage == "review-promotion":
+        next(w for w in bad["witnesses"] if w["id"] == f"witness.{II}introitus.mr1962")[
+            "review"
+        ] = {"status": "reviewed", "sha256": "0" * 64}
+    else:
+        found[f"use.{II}graduale.mr1962"]["claim"] = "Complete Gradual and Alleluia."
+    with pytest.raises((AssertionError, KeyError)):
+        second_sunday_source_contract(doc, mr, bad)
+
+
+def test_second_sunday_gradual_raw_boundary_is_exact():
+    bound = resolve_binding(ROOT / "witnesses" / (II + "graduale") / "do.txt", ROOT)
+    assert bound is not None and len(bound.text.split()) == 22 and "Allelúja" not in bound.text
+    assert [
+        (f.line, f.start, f.end, f.marker, f.marker_scope_verified) for f in bound.fragments
+    ] == [(31, 0, 76, None, True), (32, 0, 75, "V", True)]
+    registry = load("witnesses/raw/bindings.json")
+    key = "do-proprium-dominica-ii-post-epiphaniam-graduale"
+    binding = registry["bindings"][key]
+    assert binding["contract"] == "raw-reading-2"
+    assert binding["revision"] == "44667ff518b8ff1439780470828b39714f5306a2"
+    assert (
+        binding["evidence"][1]["fragment"]["text"]
+        == "V. Confiteántur Dómino misericórdiæ ejus: et mirabília ejus fíliis hóminum."
+    )
+
+
+@pytest.mark.parametrize(
+    "damage",
+    ["neighbor-coherent-header", "truncate-coherent-header", "wrong-marker", "wrong-section"],
+)
+def test_second_sunday_gradual_raw_body_rejects_neighbor_and_scope_drift(tmp_path, damage):
+    import copy
+
+    from checks.raw_binding import REGISTRY, BindingError
+
+    key = "do-proprium-dominica-ii-post-epiphaniam-graduale"
+    data = load("witnesses/raw/bindings.json")
+    binding = copy.deepcopy(data["bindings"][key])
+    aid = binding["evidence"][0]["archive"]
+    archive = copy.deepcopy(data["archives"][aid])
+    registry = {"version": 1, "archives": {aid: archive}, "bindings": {key: binding}}
+
+    def put(name, value):
+        path = tmp_path / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(value, encoding="utf-8")
+        return path
+
+    put(archive["path"], (ROOT / archive["path"]).read_text())
+    path = put(binding["witness"], witness(II + "graduale", "do"))
+    put(REGISTRY, json.dumps(registry, ensure_ascii=False))
+    assert (
+        resolve_binding(path, tmp_path).text
+        == resolve_binding(ROOT / binding["witness"], ROOT).text
+    )
+    fragment = binding["evidence"][1]["fragment"]
+    if damage in {"neighbor-coherent-header", "truncate-coherent-header"}:
+        line = (tmp_path / archive["path"]).read_text().splitlines()[31]
+        end = len(line) if damage.startswith("neighbor") else line.index(" hóminum.")
+        fragment["end"], fragment["text"] = end, line[:end]
+        binding["reading"][1]["fragment"]["end"] = end
+        path.write_text(path.read_text().replace("chars 0:75", f"chars 0:{end}"), encoding="utf-8")
+        error = "transcription differs from its exact ordered raw reading"
+    elif damage == "wrong-marker":
+        fragment["marker"] = "R"
+        error = "marker"
+    else:
+        binding["evidence"][1]["section"] = "Alleluia"
+        error = "section"
+    put(REGISTRY, json.dumps(registry, ensure_ascii=False))
+    with pytest.raises(BindingError, match=error):
+        resolve_binding(path, tmp_path)
