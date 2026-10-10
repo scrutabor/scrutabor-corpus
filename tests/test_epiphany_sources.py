@@ -28,6 +28,7 @@ E = "proprium.epiphania-domini-"
 F = "proprium.sancta-familia-"
 D = "proprium.dominica-i-post-epiphaniam-"
 B = "proprium.commemoratio-baptismatis-domini-"
+II = "proprium.dominica-ii-post-epiphaniam-"
 EPISTLE = "proprium.sancta-familia-epistola"
 FIFTH = "proprium.dominica-v-post-epiphaniam-epistola"
 INTROITS = [
@@ -45,6 +46,8 @@ PER = {
     D + "secreta": None,
     D + "postcommunio": None,
     B + "postcommunio": None,
+    II + "secreta": None,
+    II + "postcommunio": None,
 }
 SAME = ("identical in letters, accents and punctuation",)
 REPRINTS = [
@@ -321,3 +324,69 @@ def test_the_basis_claims_list_only_revisions():
     assert "and ye" not in found[f"use.en.{E}evangelium.body.husenbeth1853"]
     introit = found[f"use.en.{D}introitus.body.husenbeth1853"]
     assert "Sing joyfully" not in introit and "the psalm verse's punctuation" in introit
+
+
+@pytest.mark.parametrize(
+    "slug,body,deus,terminal,control,leaf",
+    [
+        ("secreta", 10, "w027", "w028", "secret-delivery", 59),
+        ("postcommunio", 19, "w036", "w037", "postcommunion-mode", 38),
+    ],
+)
+def test_the_second_sunday_conclusions_name_only_their_actual_printed_sources(
+    slug, body, deus, terminal, control, leaf
+):
+    text = II + slug
+    found = uses(text)
+    assert found["mr1962"]["role"] == "direct_approved_print"
+    assert found["mr1962"]["locator"]["printed"] == "p. 45"
+    assert f"{body}-word proper body" in found["mr1962"]["claim"]
+    expected = {
+        "conclusion-rg115a": (
+            22,
+            "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+        ),
+        "conclusion-middle": (
+            202,
+            "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774",
+        ),
+        "conclusion-terminal": (
+            305,
+            "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58",
+        ),
+        "oration-boundaries": (
+            39,
+            "c03be5250068f8c9c262983bc7689a18d0180b88b0c4476d21fac383c8f07993",
+        ),
+        control: (
+            leaf,
+            {
+                59: "006ff7776f1693072a9dc6895e6ca7f538b131a3733b7ed0603cf22c34811558",
+                38: "a6d9b2554ebb911a8a6ae9ea6e6e5e882307bedeab8e326ae2f7ef602ec2fd7e",
+            }[leaf],
+        ),
+    }
+    assert record(text)["source_dependencies"] == {
+        "uses": sorted(f"use.{text}.{key}.mr1962" for key in expected),
+        "raw_binding": None,
+    }
+    for key, (n, digest) in expected.items():
+        use = found[key + ".mr1962"]
+        assert use["locator"]["scan"] == f"leaf n{n} / PDF p. {n + 1}"
+        assert use["evidence_sha256"] == digest
+    seams = [
+        (a["at"], a["ours"], a["witnesses"], a["class"])
+        for a in apparatus(text)
+        if "mr" in a["witnesses"]
+    ]
+    assert seams == [
+        (deus, "Deus,", {"mr": "Deus."}, "punctuation"),
+        (terminal, "per", {"mr": "Per"}, "capitalization"),
+    ]
+    assert len(apparatus(text)) == 7
+    assert record(text)["review"] == {"status": "pending"}
+    if slug == "postcommunio":
+        assert "direct speaker citation remains pending" in found[control + ".mr1962"]["claim"]
+    bound = resolve_binding(ROOT / "witnesses" / text / "do.txt", ROOT)
+    assert bound is not None and bound.text.endswith("Amen.")
+    clean(text)
