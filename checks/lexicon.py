@@ -302,8 +302,8 @@ def check_text_against_lexicon(text_doc, lemmata):
             if (
                 morph["pos"] == "verb"
                 and "conj" in morph
-                and "conj" not in e
                 and lemma in IRREGULAR_VERBS
+                and ("conj" not in e or lemma == "odi")
             ):
                 errors.append(
                     f"{tid}:{wid}: irregular lemma {lemma!r} has no numbered conjugation; "
@@ -503,6 +503,7 @@ IRREGULAR_VERBS = {
     "fio",
     "volo",
     "memini",
+    "odi",  # defective paradigm, with later collateral present forms
     "prosum",
     "possum",
     "aufero",
@@ -539,6 +540,8 @@ def check_paradigm(lemmata: dict) -> list[str]:
                     f"lexicon:{name}: third conjugation conflicts with infinitive "
                     f"{parts[1]!r}; verify the paradigm independently"
                 )
+        if pos == "verb" and name == "odi" and "conj" in entry:
+            errors.append("lexicon:odi: defective paradigm has no numbered conjugation; omit conj")
         if pos == "noun" and "decl" not in entry and name not in INDECLINABLE:
             errors.append(
                 f"lexicon:{name}: a noun with no declension recorded — add it, or name "
