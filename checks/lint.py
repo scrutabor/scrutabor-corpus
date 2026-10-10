@@ -35,6 +35,36 @@ MORPH_ENUMS = {
     "governs": {"acc", "abl"},
 }
 
+# Nominative/accusative neuter singular forms, selected by both surface and
+# lemma. Shared obliques and personal quis/quisquis are not this class;
+# conjunction quod is also excluded. Context must still choose nom or acc.
+NEUTER_PRONOUN_FORMS = {
+    "quid": {"quis"},
+    "quod": {"qui", "quis"},
+    "quidquid": {"quisquis"},
+    "quicquid": {"quisquis"},
+    "quodcumque": {"quicumque"},
+    "quodcunque": {"quicumque"},
+    "quidquam": {"quisquam"},
+    "quicquam": {"quisquam"},
+    "aliquid": {"aliquis"},
+    "aliquod": {"aliquis", "aliqui"},
+    "quiddam": {"quidam"},
+    "quoddam": {"quidam"},
+    "quidpiam": {"quispiam"},
+    "quodpiam": {"quispiam"},
+    "quidvis": {"quivis"},
+    "quodvis": {"quivis"},
+    "quidlibet": {"quilibet"},
+    "quodlibet": {"quilibet"},
+    "quidque": {"quisque"},
+    "quodque": {"quisque"},
+    "quidnam": {"quisnam"},
+    "quodnam": {"quisnam"},
+    "ecquid": {"ecquis"},
+    "ecquod": {"ecquis"},
+}
+
 FORM_RE = re.compile(r"^[A-Za-zÁÉÍÓÚÝáéíóúýÆæŒœǼǽËë\u0301]+$")
 POST_RE = re.compile(r"^[,.;:?!]$")
 REF_RE = re.compile(r"\((w\d{3,})\)")
@@ -856,6 +886,20 @@ def lint_text(doc):
             if k in MORPH_ENUMS and v not in MORPH_ENUMS[k]:
                 errors.append(f"{wid}: morph.{k}={v!r} not in enum")
         m = w["morph"]
+        surface = fold_ligatures(strip_accents(f)).lower()
+        if (
+            m.get("pos") in {"pron", "adj"}
+            and lemma in NEUTER_PRONOUN_FORMS.get(surface, set())
+            and (
+                m.get("gender") != "n"
+                or m.get("number") != "sg"
+                or m.get("case") not in {"nom", "acc"}
+            )
+        ):
+            errors.append(
+                f"{wid}: neuter pronoun form {f!r} ({lemma}) must be "
+                "neuter singular nominative or accusative"
+            )
         if m.get("pos") == "verb" and m.get("mood") == "part":
             # Participles agree like nominals and have no person (SCHEMA.md).
             for req in ("case", "number", "gender", "tense", "voice"):
