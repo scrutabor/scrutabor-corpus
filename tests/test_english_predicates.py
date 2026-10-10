@@ -197,7 +197,6 @@ def test_other_jussives_are_not_this_diagnostic(replacement):
 @pytest.mark.parametrize(
     "name,pairs,comparands",
     [
-        ("dominica-in-septuagesima-evangelium", [10], {14: "a man"}),
         (
             "dominica-vi-post-epiphaniam-evangelium",
             [(9, 12, 10), (53, 56, 54)],
@@ -231,3 +230,58 @@ def test_comparisons_and_comparands_are_coherent(name, pairs, comparands):
         assert all("gloss" not in layer["words"][wid] for wid in ids)
     for n, expected in comparands.items():
         assert layer["words"][f"w{n:03}"]["gloss"] == expected
+
+
+def verify_septuagesima_householder_comparison(core, layer):
+    ids = [f"w{n:03}" for n in range(10, 16)]
+    words = next(s for s in core["segments"] if s["id"] == "s01")["words"]
+    assert [w["lemma"] for w in words if w["id"] in ids] == [
+        "similis",
+        "sum",
+        "regnum",
+        "caelum",
+        "homo",
+        "paterfamilias",
+    ]
+    selected = [
+        g for g in layer["segments"]["s01"].get("alignments", []) if set(g["words"]) & set(ids)
+    ]
+    assert selected == [
+        {"words": ids, "anchor": "w010", "gloss": "The kingdom of heaven is like a householder"}
+    ]
+    assert all("gloss" not in layer["words"][wid] for wid in ids)
+    assert interlinear.check(core, layer) == []
+
+
+def test_septuagesima_comparison_retains_subject_and_comparand():
+    core = json.loads(
+        (ROOT / "texts/proprium/dominica-in-septuagesima-evangelium.json").read_bytes()
+    )
+    layer = json.loads(
+        (ROOT / "languages/en/texts/proprium/dominica-in-septuagesima-evangelium.json").read_bytes()
+    )
+    verify_septuagesima_householder_comparison(core, layer)
+
+
+@pytest.mark.parametrize("damage", ["meaning", "anchor", "member", "duplicate"])
+def test_septuagesima_comparison_controls(damage):
+    core = json.loads(
+        (ROOT / "texts/proprium/dominica-in-septuagesima-evangelium.json").read_bytes()
+    )
+    target = json.loads(
+        (ROOT / "languages/en/texts/proprium/dominica-in-septuagesima-evangelium.json").read_bytes()
+    )
+    verify_septuagesima_householder_comparison(core, target)
+    bad = deepcopy(target)
+    group = next(g for g in bad["segments"]["s01"]["alignments"] if "w010" in g["words"])
+    if damage == "meaning":
+        group["gloss"] = "The householder is like the kingdom of heaven"
+    elif damage == "anchor":
+        group["anchor"] = "w011"
+    elif damage == "member":
+        group["words"].remove("w014")
+    else:
+        bad["segments"]["s01"]["alignments"].append(deepcopy(group))
+    with pytest.raises(AssertionError):
+        verify_septuagesima_householder_comparison(core, bad)
+    verify_septuagesima_householder_comparison(core, target)

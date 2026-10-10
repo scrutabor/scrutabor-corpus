@@ -25179,10 +25179,31 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
+      "id": "use.proprium.dominica-in-septuagesima-collecta.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-septuagesima-collecta"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "RG 115 a, common long conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a prints the common twenty-one-word Per Dominum ending and Amen. The proper page abbreviates the conclusion; the expanded text here retains house accents, ligatures and punctuation.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision_reason": "RG 115 a prints the common twenty-one-word Per Dominum ending and Amen. The proper page abbreviates the conclusion; the expanded text here retains house accents, ligatures and punctuation."
+    },
+    {
       "id": "use.proprium.dominica-in-septuagesima-collecta.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-in-septuagesima-collecta"
@@ -25192,30 +25213,53 @@
         "scan": "leaf n129 / PDF p. 130",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n129/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "3b36c77b53407cfafa97b2690b957a1f9bb6d2c7131bdc0d94be3c86f420cb05"
+      "claim": "The proper prints the twenty-word Collect body followed by the short Per Dominum conclusion cue. Its complete common ending and Amen are supplied from the separately identified loci.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "3b36c77b53407cfafa97b2690b957a1f9bb6d2c7131bdc0d94be3c86f420cb05",
+      "decision_reason": "The proper prints the twenty-word Collect body followed by the short Per Dominum conclusion cue. Its complete common ending and Amen are supplied from the separately identified loci."
     },
     {
       "id": "use.proprium.dominica-in-septuagesima-collecta.oration-boundaries.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_liturgical_context",
+      "role": "rubric_control",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-in-septuagesima-collecta"
       },
       "locator": {
-        "printed": "pp. xxxii–xxxiv, 225–226",
-        "scan": "leaves n37–n39, n304–n305 / PDF pp. 38–40, 305–306",
-        "section": "RG 480–481, 511 d/i, 513–514; Ordo Missae rubric and chant formula after the secrets"
+        "printed": "p. xxxiv",
+        "scan": "leaf n39 / PDF p. 40",
+        "section": "RG 511 d/i, 513–514",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n39/mode/1up"
       },
-      "claim": "The final secret has an audible Per omnia saecula saeculorum followed by the response Amen. Collects and postcommunions are priestly orations with a separate response. These rules determine the modeled boundaries, not the completeness of a date-specific commemoration inventory.",
-      "verified_on": "2026-10-07",
-      "evidence_sha256": "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
+      "claim": "Collects and postcommunions are spoken aloud in a read Mass and sung in a sung Mass. The separate Amen follows the common responsive-oration pattern; the proper page does not itself identify its responder.",
+      "verified_on": "2026-10-10",
+      "evidence_sha256": "c03be5250068f8c9c262983bc7689a18d0180b88b0c4476d21fac383c8f07993",
       "decision": "RETAIN_WITH_CORRECTION",
-      "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
+      "decision_reason": "These rules concern delivery of orations; the common conclusion and response are supplied from their separately identified loci, not from the proper page or the Secret-to-Preface boundary."
+    },
+    {
+      "id": "use.proprium.dominica-in-septuagesima-collecta.responsive-oration.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-septuagesima-collecta"
+      },
+      "locator": {
+        "printed": "p. 1",
+        "scan": "leaf n80 / PDF p. 81",
+        "section": "First Sunday of Advent Collect, long conclusion and response",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n80/mode/1up"
+      },
+      "claim": "The opening Sunday Collect prints the long conclusion with a separate response Amen. This is a common-oratio comparison, not a response marker printed beside the Septuagesima proper.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "215182ac2415d178917c183486c716ce352777a6084da024e7293a95649b60c7",
+      "decision_reason": "The opening Sunday Collect prints the long conclusion with a separate response Amen. This is a common-oratio comparison, not a response marker printed beside the Septuagesima proper."
     },
     {
       "id": "use.proprium.dominica-in-septuagesima-communio.do44667ff",
@@ -25239,7 +25283,7 @@
       "id": "use.proprium.dominica-in-septuagesima-communio.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-in-septuagesima-communio"
@@ -25249,10 +25293,11 @@
         "scan": "leaf n130 / PDF p. 131",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n130/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "db5bf4ff82ef0674c7404ba72d5486b158ee479ed0bab53b9174ed4db8cb8421"
+      "claim": "The proper page prints the complete selected communio body, distinct from its heading, citation and neighboring rubrics.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "db5bf4ff82ef0674c7404ba72d5486b158ee479ed0bab53b9174ed4db8cb8421",
+      "decision_reason": "The proper page prints the complete selected communio body, distinct from its heading, citation and neighboring rubrics."
     },
     {
       "id": "use.proprium.dominica-in-septuagesima-epistola.do44667ff",
@@ -25276,7 +25321,7 @@
       "id": "use.proprium.dominica-in-septuagesima-epistola.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-in-septuagesima-epistola"
@@ -25286,10 +25331,11 @@
         "scan": "leaf n129 / PDF p. 130",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n129/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "3b36c77b53407cfafa97b2690b957a1f9bb6d2c7131bdc0d94be3c86f420cb05"
+      "claim": "The proper page prints the complete selected epistola body, distinct from its heading, citation and neighboring rubrics.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "3b36c77b53407cfafa97b2690b957a1f9bb6d2c7131bdc0d94be3c86f420cb05",
+      "decision_reason": "The proper page prints the complete selected epistola body, distinct from its heading, citation and neighboring rubrics."
     },
     {
       "id": "use.proprium.dominica-in-septuagesima-evangelium.do44667ff",
@@ -25313,7 +25359,7 @@
       "id": "use.proprium.dominica-in-septuagesima-evangelium.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-in-septuagesima-evangelium"
@@ -25323,10 +25369,32 @@
         "scan": "leaf n130 / PDF p. 131",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n130/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "db5bf4ff82ef0674c7404ba72d5486b158ee479ed0bab53b9174ed4db8cb8421"
+      "claim": "The proper page prints the complete selected evangelium body, distinct from its heading, citation and neighboring rubrics.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "db5bf4ff82ef0674c7404ba72d5486b158ee479ed0bab53b9174ed4db8cb8421",
+      "decision_reason": "The proper page prints the complete selected evangelium body, distinct from its heading, citation and neighboring rubrics."
+    },
+    {
+      "id": "use.proprium.dominica-in-septuagesima-graduale.continuation.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-septuagesima-graduale"
+      },
+      "locator": {
+        "printed": "p. 51",
+        "scan": "leaf n130 / PDF p. 131",
+        "section": "Septuagesima Gradual continuation",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n130/mode/1up"
+      },
+      "claim": "The Gradual continues from p. 50 onto p. 51, beginning Quoniam non in finem oblivio erit pauperis. The complete thirty-five-word body therefore needs both leaves.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "db5bf4ff82ef0674c7404ba72d5486b158ee479ed0bab53b9174ed4db8cb8421",
+      "decision_reason": "The Gradual continues from p. 50 onto p. 51, beginning Quoniam non in finem oblivio erit pauperis. The complete thirty-five-word body therefore needs both leaves."
     },
     {
       "id": "use.proprium.dominica-in-septuagesima-graduale.do44667ff",
@@ -25350,21 +25418,22 @@
       "id": "use.proprium.dominica-in-septuagesima-graduale.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-in-septuagesima-graduale"
       },
       "locator": {
-        "printed": "pp. 50–51",
-        "scan": "leaves n129–n130 / PDF pp. 130–131",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n129/mode/1up"
+        "printed": "p. 50",
+        "scan": "leaf n129 / PDF p. 130",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n129/mode/1up",
+        "section": "Opening portion of Septuagesima Gradual; continuation on p. 51"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-25",
+      "claim": "The Gradual starts on p. 50 and continues on p. 51. Both leaves together print the complete thirty-five-word body; this primary use identifies the opening leaf.",
+      "verified_on": "2026-10-10",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "3b36c77b53407cfafa97b2690b957a1f9bb6d2c7131bdc0d94be3c86f420cb05",
-      "decision_reason": "Locator corrected against the page image; the text is printed on the leaf now cited."
+      "decision_reason": "The Gradual starts on p. 50 and continues on p. 51. Both leaves together print the complete thirty-five-word body; this primary use identifies the opening leaf."
     },
     {
       "id": "use.proprium.dominica-in-septuagesima-introitus.do44667ff",
@@ -25385,10 +25454,52 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
+      "id": "use.proprium.dominica-in-septuagesima-introitus.gloria-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-septuagesima-introitus"
+      },
+      "locator": {
+        "printed": "p. 1",
+        "scan": "leaf n80 / PDF p. 81",
+        "section": "First Sunday of Advent Introit, common Gloria Patri",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n80/mode/1up"
+      },
+      "claim": "The common Introit prints the twenty-word Gloria Patri ending. The Septuagesima proper gives only its opening cue; this edition supplies the complete formula.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "215182ac2415d178917c183486c716ce352777a6084da024e7293a95649b60c7",
+      "decision_reason": "The common Introit prints the twenty-word Gloria Patri ending. The Septuagesima proper gives only its opening cue; this edition supplies the complete formula."
+    },
+    {
+      "id": "use.proprium.dominica-in-septuagesima-introitus.introit-repeat.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-septuagesima-introitus"
+      },
+      "locator": {
+        "printed": "p. xxix",
+        "scan": "leaf n34 / PDF p. 35",
+        "section": "RG 427–428",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "After the psalm verse and Gloria Patri, the Introit antiphon is repeated. The Septuagesima cue Circumdederunt is expanded as the same twenty-two-word antiphon, not as another psalm verse.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786",
+      "decision_reason": "After the psalm verse and Gloria Patri, the Introit antiphon is repeated. The Septuagesima cue Circumdederunt is expanded as the same twenty-two-word antiphon, not as another psalm verse."
+    },
+    {
       "id": "use.proprium.dominica-in-septuagesima-introitus.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-in-septuagesima-introitus"
@@ -25398,10 +25509,11 @@
         "scan": "leaf n129 / PDF p. 130",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n129/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "3b36c77b53407cfafa97b2690b957a1f9bb6d2c7131bdc0d94be3c86f420cb05"
+      "claim": "The proper prints the twenty-two-word antiphon and fourteen-word psalm verse, followed by Gloria Patri and Circumdederunt cues. It does not continuously print the complete seventy-eight-word expanded Introit.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "3b36c77b53407cfafa97b2690b957a1f9bb6d2c7131bdc0d94be3c86f420cb05",
+      "decision_reason": "The proper prints the twenty-two-word antiphon and fourteen-word psalm verse, followed by Gloria Patri and Circumdederunt cues. It does not continuously print the complete seventy-eight-word expanded Introit."
     },
     {
       "id": "use.proprium.dominica-in-septuagesima-offertorium.do44667ff",
@@ -25425,7 +25537,7 @@
       "id": "use.proprium.dominica-in-septuagesima-offertorium.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-in-septuagesima-offertorium"
@@ -25435,10 +25547,11 @@
         "scan": "leaf n130 / PDF p. 131",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n130/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "db5bf4ff82ef0674c7404ba72d5486b158ee479ed0bab53b9174ed4db8cb8421"
+      "claim": "The proper page prints the complete selected offertorium body, distinct from its heading, citation and neighboring rubrics.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "db5bf4ff82ef0674c7404ba72d5486b158ee479ed0bab53b9174ed4db8cb8421",
+      "decision_reason": "The proper page prints the complete selected offertorium body, distinct from its heading, citation and neighboring rubrics."
     },
     {
       "id": "use.proprium.dominica-in-septuagesima-postcommunio.do44667ff",
@@ -25459,10 +25572,31 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
+      "id": "use.proprium.dominica-in-septuagesima-postcommunio.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-septuagesima-postcommunio"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "RG 115 a, common long conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a prints the common twenty-one-word Per Dominum ending and Amen. The proper page abbreviates the conclusion; the expanded text here retains house accents, ligatures and punctuation.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision_reason": "RG 115 a prints the common twenty-one-word Per Dominum ending and Amen. The proper page abbreviates the conclusion; the expanded text here retains house accents, ligatures and punctuation."
+    },
+    {
       "id": "use.proprium.dominica-in-septuagesima-postcommunio.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-in-septuagesima-postcommunio"
@@ -25472,30 +25606,95 @@
         "scan": "leaf n130 / PDF p. 131",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n130/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "db5bf4ff82ef0674c7404ba72d5486b158ee479ed0bab53b9174ed4db8cb8421"
+      "claim": "The proper prints the seventeen-word Postcommunion body followed by the short Per Dominum conclusion cue. Its complete common ending and Amen are supplied from the separately identified loci.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "db5bf4ff82ef0674c7404ba72d5486b158ee479ed0bab53b9174ed4db8cb8421",
+      "decision_reason": "The proper prints the seventeen-word Postcommunion body followed by the short Per Dominum conclusion cue. Its complete common ending and Amen are supplied from the separately identified loci."
     },
     {
       "id": "use.proprium.dominica-in-septuagesima-postcommunio.oration-boundaries.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_liturgical_context",
+      "role": "rubric_control",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-in-septuagesima-postcommunio"
       },
       "locator": {
-        "printed": "pp. xxxii–xxxiv, 225–226",
-        "scan": "leaves n37–n39, n304–n305 / PDF pp. 38–40, 305–306",
-        "section": "RG 480–481, 511 d/i, 513–514; Ordo Missae rubric and chant formula after the secrets"
+        "printed": "p. xxxiv",
+        "scan": "leaf n39 / PDF p. 40",
+        "section": "RG 511 d/i, 513–514",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n39/mode/1up"
       },
-      "claim": "The final secret has an audible Per omnia saecula saeculorum followed by the response Amen. Collects and postcommunions are priestly orations with a separate response. These rules determine the modeled boundaries, not the completeness of a date-specific commemoration inventory.",
-      "verified_on": "2026-10-07",
-      "evidence_sha256": "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
+      "claim": "Collects and postcommunions are spoken aloud in a read Mass and sung in a sung Mass. The separate Amen follows the common responsive-oration pattern; the proper page does not itself identify its responder.",
+      "verified_on": "2026-10-10",
+      "evidence_sha256": "c03be5250068f8c9c262983bc7689a18d0180b88b0c4476d21fac383c8f07993",
       "decision": "RETAIN_WITH_CORRECTION",
-      "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
+      "decision_reason": "These rules concern delivery of orations; the common conclusion and response are supplied from their separately identified loci, not from the proper page or the Secret-to-Preface boundary."
+    },
+    {
+      "id": "use.proprium.dominica-in-septuagesima-postcommunio.postcommunion-mode.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-septuagesima-postcommunio"
+      },
+      "locator": {
+        "printed": "p. xxxiii",
+        "scan": "leaf n38 / PDF p. 39",
+        "section": "RG 505",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n38/mode/1up"
+      },
+      "claim": "Postcommunions follow the rules for the opening orations. This mode rule supports the common-oratio comparison but does not itself print a terminal response speaker.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "a6d9b2554ebb911a8a6ae9ea6e6e5e882307bedeab8e326ae2f7ef602ec2fd7e",
+      "decision_reason": "Postcommunions follow the rules for the opening orations. This mode rule supports the common-oratio comparison but does not itself print a terminal response speaker."
+    },
+    {
+      "id": "use.proprium.dominica-in-septuagesima-postcommunio.postcommunion-ritus.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-septuagesima-postcommunio"
+      },
+      "locator": {
+        "printed": "p. lviii",
+        "scan": "leaf n63 / PDF p. 64",
+        "section": "Ritus servandus XI 1",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n63/mode/1up"
+      },
+      "claim": "After Communion the priest says the Postcommunions in the same mode, number and order as the opening orations. The terminal response is not printed in this rubric.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "25e7f5cdb76858f6b866450d3ea7836d831c0b77e4104d6091d128a01ed390ed",
+      "decision_reason": "After Communion the priest says the Postcommunions in the same mode, number and order as the opening orations. The terminal response is not printed in this rubric."
+    },
+    {
+      "id": "use.proprium.dominica-in-septuagesima-postcommunio.responsive-oration.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-septuagesima-postcommunio"
+      },
+      "locator": {
+        "printed": "p. 1",
+        "scan": "leaf n80 / PDF p. 81",
+        "section": "First Sunday of Advent Collect, long conclusion and response",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n80/mode/1up"
+      },
+      "claim": "The opening Sunday Collect prints the long conclusion with a separate response Amen. This is a common-oratio comparison, not a response marker printed beside the Septuagesima proper.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "215182ac2415d178917c183486c716ce352777a6084da024e7293a95649b60c7",
+      "decision_reason": "The opening Sunday Collect prints the long conclusion with a separate response Amen. This is a common-oratio comparison, not a response marker printed beside the Septuagesima proper."
     },
     {
       "id": "use.proprium.dominica-in-septuagesima-tractus.do44667ff",
@@ -25519,7 +25718,7 @@
       "id": "use.proprium.dominica-in-septuagesima-tractus.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-in-septuagesima-tractus"
@@ -25529,10 +25728,11 @@
         "scan": "leaf n130 / PDF p. 131",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n130/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "db5bf4ff82ef0674c7404ba72d5486b158ee479ed0bab53b9174ed4db8cb8421"
+      "claim": "The proper page prints the complete selected tractus body, distinct from its heading, citation and neighboring rubrics.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "db5bf4ff82ef0674c7404ba72d5486b158ee479ed0bab53b9174ed4db8cb8421",
+      "decision_reason": "The proper page prints the complete selected tractus body, distinct from its heading, citation and neighboring rubrics."
     },
     {
       "id": "use.proprium.dominica-in-sexagesima-collecta.do44667ff",
@@ -73231,12 +73431,20 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "be2117c78c2123fce448cf103c79bb9eb515efa4f43af7ccb505d44e030e40fc",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "416278426b4eb778496ee56717e0e879aab93cbcb1076d1c478b7457edc8c701",
+      "orthography_profile": "declared-print-and-common-expansion",
+      "independence_basis": "Current comparison with the registered Benziger page images, separate from the pinned digital comparison. Earlier direct-transcription origin is not established by this conformity check.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-in-septuagesima-collecta.expanded-conclusion.mr1962",
+          "use.proprium.dominica-in-septuagesima-collecta.oration-boundaries.mr1962",
+          "use.proprium.dominica-in-septuagesima-collecta.responsive-oration.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -73267,12 +73475,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "fd54b46cbbf63fb918070db294240ec59e4fbd06f1b87870cd5d802dd391f5cf",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "4ce49f7010f80b02884da51696cd295b176697a633ce1ef0fdfbfc923fb434a3",
+      "orthography_profile": "declared-house-print",
+      "independence_basis": "Current comparison with the registered Benziger page images, separate from the pinned digital comparison. Earlier direct-transcription origin is not established by this conformity check.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -73303,12 +73515,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "86ae94ecd7f61b2bd3e06f9026ce2732b3861861cf4d1164adeb9d2b1358560d",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "624a77760aa19a3b182792162d16020ca8306ec6174adad528065641799b9658",
+      "orthography_profile": "declared-house-print",
+      "independence_basis": "Current comparison with the registered Benziger page images, separate from the pinned digital comparison. Earlier direct-transcription origin is not established by this conformity check.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -73339,12 +73555,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "f04a0d2befdf6826b3209e3b8bae3cf65c91e9987e7c6dc00e91b84d7ce16a05",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "600f151bb1351853624384099f40fae37b10103f6af2159a730f4cf81f107037",
+      "orthography_profile": "declared-house-print",
+      "independence_basis": "Current comparison with the registered Benziger page images, separate from the pinned digital comparison. Earlier direct-transcription origin is not established by this conformity check.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -73375,12 +73595,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "451ed66757dfe25251ab4c574315d64a3b652b51e44d1c9fb30dd2569a544839",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "426644295e20df8ed6b2440ab1b3ca0596686787d55d65bb473848ebf3f3ba90",
+      "orthography_profile": "declared-house-print",
+      "independence_basis": "Current comparison with the registered Benziger page images, separate from the pinned digital comparison. Earlier direct-transcription origin is not established by this conformity check.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-in-septuagesima-graduale.continuation.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -73411,12 +73637,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "e4dc11a0592a19590496a6252974ffa43e57f6af093480e57319ea397b8c8291",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "b5a941359d314743adbc1bcefddbf920bf09d2d30de4e7bac4fdd0e0f7ae5df2",
+      "orthography_profile": "declared-print-and-common-expansion",
+      "independence_basis": "Current comparison with the registered Benziger page images, separate from the pinned digital comparison. Earlier direct-transcription origin is not established by this conformity check.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-in-septuagesima-introitus.gloria-expansion.mr1962",
+          "use.proprium.dominica-in-septuagesima-introitus.introit-repeat.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -73447,12 +73680,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "6a32dcaf941ee73b6d51b2664105d7cce4a2e45e008c7d3bbbe577de27452056",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "64a72cb73a0f20e980a72c0e45b62237ad7f33ef96b6e7c0f1707654deb4762e",
+      "orthography_profile": "declared-house-print",
+      "independence_basis": "Current comparison with the registered Benziger page images, separate from the pinned digital comparison. Earlier direct-transcription origin is not established by this conformity check.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -73483,12 +73720,22 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "ed9007da0a29f3e71f42880fe48fafd24404994a3be20730a6a1a38675464e69",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "fbff0dccbe55f02d7099c3f5500e417016e5fe3653872ff99d09cb63bc305081",
+      "orthography_profile": "declared-print-and-common-expansion",
+      "independence_basis": "Current comparison with the registered Benziger page images, separate from the pinned digital comparison. Earlier direct-transcription origin is not established by this conformity check.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-in-septuagesima-postcommunio.expanded-conclusion.mr1962",
+          "use.proprium.dominica-in-septuagesima-postcommunio.oration-boundaries.mr1962",
+          "use.proprium.dominica-in-septuagesima-postcommunio.postcommunion-mode.mr1962",
+          "use.proprium.dominica-in-septuagesima-postcommunio.postcommunion-ritus.mr1962",
+          "use.proprium.dominica-in-septuagesima-postcommunio.responsive-oration.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -73519,12 +73766,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "22fb1665c618026d30f4d5ea20e5ff51abef841305f52c250f94e4c977d42f3f",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "9c910fb1ef6d70a27bed8417bb51db134e28e5f3478122a5466803bac9825903",
+      "orthography_profile": "declared-house-print",
+      "independence_basis": "Current comparison with the registered Benziger page images, separate from the pinned digital comparison. Earlier direct-transcription origin is not established by this conformity check.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -104635,7 +104886,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "267fd74a0036443364b415658dbb150722abed8abd90f80dac96f70145c48ac3",
+      "apparatus_sha256": "a229d98303b121de62f978fea35add95da12ccd997476ea1934516db256f895a",
       "review": {
         "status": "pending"
       }
@@ -104735,7 +104986,7 @@
         "entries": 0,
         "classes": []
       },
-      "apparatus_sha256": "0bc6f3e67dc42f3cf92b357c82067b9570b596550a56223e003cf7b37349f1ca",
+      "apparatus_sha256": "70733818cff5989eedc2afac816d9114a521cfc153658ef519eac856152d2f75",
       "review": {
         "status": "pending"
       }
@@ -104776,7 +105027,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "a1e0f9b5f786e500818f901bf201e889772cf580732f215b6964721e9dc4120d",
+      "apparatus_sha256": "634f3b241b544e22ec3d2be5e8518f286e3fda50c69521bf195a3a078c196aad",
       "review": {
         "status": "pending"
       }

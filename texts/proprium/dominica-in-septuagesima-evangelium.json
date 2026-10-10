@@ -223,7 +223,7 @@
         { "id": "w202", "form": "volo", "lemma": "volo", "morph": { "mood": "ind", "number": "sg", "person": 1, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w203", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w204", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
-        { "id": "w205", "form": "huic", "lemma": "hic", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
+        { "id": "w205", "form": "huic", "lemma": "hic", "morph": { "case": "dat", "number": "sg", "pos": "pron", "gender": "m" } },
         { "id": "w206", "form": "novíssimo", "lemma": "novissimus", "morph": { "case": "dat", "degree": "sup", "gender": "m", "number": "sg", "pos": "adj" }, "head": "w205" },
         { "id": "w207", "form": "dare", "lemma": "do", "morph": { "conj": 1, "mood": "inf", "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w208", "form": "sicut", "lemma": "sicut", "morph": { "pos": "conj" } },
@@ -264,9 +264,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the approved 1962 Benziger printing.",
+    "notes": "The witness files identify the proper body and any common expansions, together with the component’s liturgical function. Shared conclusion cues are not represented as complete endings printed on the proper page.",
     "source": {
-      "method": "Transcribed from the directly viewed page image of the Benziger Brothers 1962 Editio iuxta typicam and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The selected Latin is compared with the identified Benziger 1962 page images and the pinned Divinum Officium reading. The witness record distinguishes the proper body, abbreviated cues, common expansions and declared house spelling; this current comparison does not establish the origin of the earlier transcription.",
       "witnesses": "witnesses/proprium.dominica-in-septuagesima-evangelium/",
       "apparatus": "witnesses/proprium.dominica-in-septuagesima-evangelium/apparatus.json"
     },
@@ -320,7 +320,7 @@
       "w161": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w163": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w174": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w179": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w179": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w194": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w197": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w198": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
@@ -334,10 +334,23 @@
       "w229": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w191": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w089": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w089": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w061": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w205": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w061": {
+
+      },
+      "w179": {
+
+      },
+      "w205": {
+
+      }
+    }
   }
 }
