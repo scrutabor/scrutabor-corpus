@@ -150,7 +150,6 @@ def test_one_token_preposition_does_not_invent_a_duplicated_empty_noun(missing_n
         ("commemoratio-baptismatis-domini-evangelium", "w045", "w046", "to", "Israel"),
         ("commemoratio-baptismatis-domini-evangelium", "w050", "w051", "with", "water"),
         ("commemoratio-baptismatis-domini-evangelium", "w079", "w080", "with", "water"),
-        ("dominica-iii-post-epiphaniam-epistola", "w079", "w080", "with", "good"),
     ],
 )
 def test_real_noun_retained_and_individual_regression_rejected(slug, word, head, prep, noun):
@@ -165,3 +164,23 @@ def test_real_noun_retained_and_individual_regression_rejected(slug, word, head,
     errors = check_doubled_noun_head(doc, localized)
     assert len(errors) == 1 and f"{word}–{head}" in errors[0]
     assert any("noun twice" in error for error in check(doc, localized))
+
+
+@pytest.mark.parametrize("word,gloss", [("w079", "with good"), ("w080", "good")])
+def test_real_group_keeps_good_once_and_rejects_a_second_provider(word, gloss):
+    path = "texts/proprium/dominica-iii-post-epiphaniam-epistola.json"
+    doc = json.loads((ROOT / path).read_text())
+    localized = json.loads((ROOT / "languages/en" / path).read_text())
+    ids = ["w078", "w079", "w080", "w081"]
+    actual = [g for g in localized["segments"]["s01"]["alignments"] if set(ids) & set(g["words"])]
+    assert actual == [{"words": ids, "anchor": "w078", "gloss": "overcome evil with good"}]
+    assert all("gloss" not in localized["words"][wid] for wid in ids)
+    assert check(doc, localized) == []
+    assert check_interlinear(doc, localized) == []
+    changed = deepcopy(localized)
+    changed["words"][word]["gloss"] = gloss
+    assert any(
+        f":{word}:en: expected exactly one direct gloss or alignment" in error
+        for error in check_interlinear(doc, changed)
+    )
+    assert check_interlinear(doc, localized) == []

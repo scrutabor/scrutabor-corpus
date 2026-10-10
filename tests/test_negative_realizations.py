@@ -30,7 +30,12 @@ DIRECT = (
 GROUPS = (
     ("proprium/dominica-ii-in-quadragesima-epistola", "w015 w016", "w015", "you ought"),
     ("proprium/transfiguratio-domini-evangelium", "w126 w127", "w127", "they saw no one"),
-    ("proprium/dominica-iii-post-epiphaniam-evangelium", "w047 w048", "w048", "tell no one"),
+    (
+        "proprium/dominica-iii-post-epiphaniam-evangelium",
+        "w046 w047 w048",
+        "w046",
+        "See that you tell no one",
+    ),
     ("proprium/transfiguratio-domini-communio", "w004 w005", "w005", "tell no one"),
     ("proprium/transfiguratio-domini-evangelium", "w140 w141", "w141", "tell no one"),
     ("proprium/dominica-ii-in-quadragesima-epistola", "w070 w071", "w071", "that no one"),
