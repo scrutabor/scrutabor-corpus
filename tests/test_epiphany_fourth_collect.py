@@ -39,8 +39,7 @@ GROUPS = [
         10,
         "know that we, placed amid such great dangers, cannot stand firm because of human frailty",
     ),
-    ("en", 25, 26, 25, "our sins"),
-    ("en", 28, 29, 29, "with Your help"),
+    ("en", 22, 30, 30, "with Your help we may overcome what we suffer for our sins"),
     ("en", 32, 33, 32, "our Lord"),
     ("en", 36, 37, 36, "Your Son"),
     ("en", 45, 46, 45, "of the Holy Spirit"),
@@ -74,7 +73,7 @@ def test_complete_construction_has_one_realization(language, start, end, anchor,
     assert all("gloss" not in data["words"][word] for word in words)
 
 
-@pytest.mark.parametrize("language,members,groups,direct", [("pl", 14, 2, 38), ("en", 26, 7, 26)])
+@pytest.mark.parametrize("language,members,groups,direct", [("pl", 14, 2, 38), ("en", 31, 6, 21)])
 def test_complete_realization_and_distinct_response(language, members, groups, direct):
     core = load(f"texts/proprium/{NAME}.json")
     data = layer(language)

@@ -27623,7 +27623,7 @@
       "id": "use.proprium.dominica-iv-post-epiphaniam-evangelium.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-iv-post-epiphaniam-evangelium"
@@ -27633,10 +27633,11 @@
         "scan": "leaf n126 / PDF p. 127",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n126/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "fddfc5942a9c7772130b1e5d335f34c01392d17b03ed9b2ea25aebb8f4451a60"
+      "claim": "Proper page 47 prints all 76 Gospel words with no shared expansion; the IV heading on 46 controls identity despite the V running header. Resumed414 repeats the complete body.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "fddfc5942a9c7772130b1e5d335f34c01392d17b03ed9b2ea25aebb8f4451a60",
+      "decision_reason": "The Gospel is printed completely on its proper page and has no abbreviated conclusion to expand."
     },
     {
       "id": "use.proprium.dominica-iv-post-epiphaniam-postcommunio.do44667ff",
@@ -27657,10 +27658,31 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
+      "id": "use.proprium.dominica-iv-post-epiphaniam-postcommunio.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-iv-post-epiphaniam-postcommunio"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "RG115a",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG115a supplies the 21-word Father-addressed conclusion and Amen. Its unaccented rubric prints tuum, qui; selected accents, ligatures, tuum: Qui and Amen stop are house realization, not the proper-page reading.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision_reason": "Separate source for the declared expansion or delivery; it does not print the complete proper text."
+    },
+    {
       "id": "use.proprium.dominica-iv-post-epiphaniam-postcommunio.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-iv-post-epiphaniam-postcommunio"
@@ -27670,10 +27692,11 @@
         "scan": "leaf n126 / PDF p. 127",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n126/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "fddfc5942a9c7772130b1e5d335f34c01392d17b03ed9b2ea25aebb8f4451a60"
+      "claim": "Proper page 47 prints the 13-word body and short Per Dominum cue, not the complete conclusion or terminal Amen. The full ending is a separately declared RG115a house-accented expansion. The IV heading, not the V running header, determines identity.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "fddfc5942a9c7772130b1e5d335f34c01392d17b03ed9b2ea25aebb8f4451a60",
+      "decision_reason": "The proper printing stops at its short cue; the complete prescribed ending comes from the separately identified formula."
     },
     {
       "id": "use.proprium.dominica-iv-post-epiphaniam-postcommunio.oration-boundaries.mr1962",
@@ -27685,15 +27708,58 @@
         "text": "proprium.dominica-iv-post-epiphaniam-postcommunio"
       },
       "locator": {
-        "printed": "pp. xxxii–xxxiv, 225–226",
-        "scan": "leaves n37–n39, n304–n305 / PDF pp. 38–40, 305–306",
-        "section": "RG 480–481, 511 d/i, 513–514; Ordo Missae rubric and chant formula after the secrets"
+        "printed": "p. lviii",
+        "scan": "leaf n63 / PDF p. 64",
+        "section": "RitusXI1; compare RG505 on xxxiii",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n63/mode/1up"
       },
-      "claim": "The final secret has an audible Per omnia saecula saeculorum followed by the response Amen. Collects and postcommunions are priestly orations with a separate response. These rules determine the modeled boundaries, not the completeness of a date-specific commemoration inventory.",
-      "verified_on": "2026-10-07",
-      "evidence_sha256": "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
+      "claim": "RitusXI1 applies the opening-orations mode to Postcommunion; RG505 gives the same number, mode and order. This does not print a dedicated terminal response or speaker on proper 47; the common responsive-orations/participation chain is separate.",
+      "verified_on": "2026-10-10",
+      "evidence_sha256": "25e7f5cdb76858f6b866450d3ea7836d831c0b77e4104d6091d128a01ed390ed",
       "decision": "RETAIN_WITH_CORRECTION",
-      "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
+      "decision_reason": "This locus establishes the named prayer mode or terminal boundary, not a cloned complete source or every response speaker."
+    },
+    {
+      "id": "use.proprium.dominica-iv-post-epiphaniam-postcommunio.oration-delivery.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-iv-post-epiphaniam-postcommunio"
+      },
+      "locator": {
+        "printed": "p. xxxiv",
+        "scan": "leaf n39 / PDF p. 40",
+        "section": "RG511i/513–514",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n39/mode/1up"
+      },
+      "claim": "RG511i/513–514 specify clear or sung oration delivery; this rule alone does not identify the terminal responder.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN",
+      "evidence_sha256": "c03be5250068f8c9c262983bc7689a18d0180b88b0c4476d21fac383c8f07993",
+      "decision_reason": "Separate source for the declared expansion or delivery; it does not print the complete proper text."
+    },
+    {
+      "id": "use.proprium.dominica-iv-post-epiphaniam-postcommunio.postcommunion-mode.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-iv-post-epiphaniam-postcommunio"
+      },
+      "locator": {
+        "printed": "p. xxxiii",
+        "scan": "leaf n38 / PDF p. 39",
+        "section": "RG505",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n38/mode/1up"
+      },
+      "claim": "RG505 applies the number, mode and order of the opening orations to the Postcommunions, not a separately printed proper-page response speaker.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN",
+      "evidence_sha256": "a6d9b2554ebb911a8a6ae9ea6e6e5e882307bedeab8e326ae2f7ef602ec2fd7e",
+      "decision_reason": "Separate source for the declared expansion or delivery; it does not print the complete proper text."
     },
     {
       "id": "use.proprium.dominica-iv-post-epiphaniam-secreta.do44667ff",
@@ -27714,10 +27780,31 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
+      "id": "use.proprium.dominica-iv-post-epiphaniam-secreta.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-iv-post-epiphaniam-secreta"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "RG115a",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG115a supplies the 21-word Father-addressed conclusion and Amen. Its unaccented rubric prints tuum, qui; selected accents, ligatures, tuum: Qui and Amen stop are house realization, not the proper-page reading.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision_reason": "Separate source for the declared expansion or delivery; it does not print the complete proper text."
+    },
+    {
       "id": "use.proprium.dominica-iv-post-epiphaniam-secreta.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-iv-post-epiphaniam-secreta"
@@ -27727,10 +27814,11 @@
         "scan": "leaf n126 / PDF p. 127",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n126/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "fddfc5942a9c7772130b1e5d335f34c01392d17b03ed9b2ea25aebb8f4451a60"
+      "claim": "Proper page 47 prints the 18-word body and short Per Dominum cue, not the complete conclusion or terminal Amen. The full ending is a separately declared RG115a house-accented expansion. The IV heading, not the V running header, determines identity.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "fddfc5942a9c7772130b1e5d335f34c01392d17b03ed9b2ea25aebb8f4451a60",
+      "decision_reason": "The proper printing stops at its short cue; the complete prescribed ending comes from the separately identified formula."
     },
     {
       "id": "use.proprium.dominica-iv-post-epiphaniam-secreta.oration-boundaries.mr1962",
@@ -27742,15 +27830,37 @@
         "text": "proprium.dominica-iv-post-epiphaniam-secreta"
       },
       "locator": {
-        "printed": "pp. xxxii–xxxiv, 225–226",
-        "scan": "leaves n37–n39, n304–n305 / PDF pp. 38–40, 305–306",
-        "section": "RG 480–481, 511 d/i, 513–514; Ordo Missae rubric and chant formula after the secrets"
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "section": "Ordo Secret/Preface terminal and response",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up"
       },
-      "claim": "The final secret has an audible Per omnia saecula saeculorum followed by the response Amen. Collects and postcommunions are priestly orations with a separate response. These rules determine the modeled boundaries, not the completeness of a date-specific commemoration inventory.",
-      "verified_on": "2026-10-07",
-      "evidence_sha256": "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
+      "claim": "Ordo 226 explicitly prints the audible Per omnia saecula saeculorum and response Amen after the Secret. This is distinct from the earlier priest Amen after Suscipiat, and is not direct evidence for a Postcommunion terminal speaker.",
+      "verified_on": "2026-10-10",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58",
       "decision": "RETAIN_WITH_CORRECTION",
-      "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
+      "decision_reason": "This locus establishes the named prayer mode or terminal boundary, not a cloned complete source or every response speaker."
+    },
+    {
+      "id": "use.proprium.dominica-iv-post-epiphaniam-secreta.secret-delivery.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-iv-post-epiphaniam-secreta"
+      },
+      "locator": {
+        "printed": "p. liv",
+        "scan": "leaf n59 / PDF p. 60",
+        "section": "RitusVII7–8",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n59/mode/1up"
+      },
+      "claim": "RitusVII8 separates quiet Secret from its audible ending. VII7 priest Amen is the preceding Suscipiat assent, not terminal Secret response.",
+      "verified_on": "2026-10-10",
+      "decision": "RETAIN",
+      "evidence_sha256": "006ff7776f1693072a9dc6895e6ca7f538b131a3733b7ed0603cf22c34811558",
+      "decision_reason": "Separate source for the declared expansion or delivery; it does not print the complete proper text."
     },
     {
       "id": "use.proprium.dominica-iv-post-pascha-alleluia.do44667ff",
@@ -74019,12 +74129,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "1c5c95758ab715de118ae46c4242b0aa69cb7e1e8dd0cebf12e9e902490dfc1b",
+      "transcription_sha256": "cfd4b02c3981558e6c4e4e61547ee096f4c01a946b13c7d379e5927494a38b59",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "Current complete body checked against normal 47 and resumed 414; no shared expansion. Original transcription genesis and translation rights are not established.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -74055,12 +74169,21 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "1c38bfca84d3d8c41c8b063d8bb802e1cef02e7a5739d166bb40af80b5474ff9",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "392d90a0139fb7af8feba73366a28ad22fcd438f599c57faead6b79a21cb42e7",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "Current normal/resumed proper-body conformity, separately prescribed RG115a ending and explicitly declared house accidentals; no historical transcription-genesis or rights assertion.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-iv-post-epiphaniam-postcommunio.expanded-conclusion.mr1962",
+          "use.proprium.dominica-iv-post-epiphaniam-postcommunio.oration-boundaries.mr1962",
+          "use.proprium.dominica-iv-post-epiphaniam-postcommunio.oration-delivery.mr1962",
+          "use.proprium.dominica-iv-post-epiphaniam-postcommunio.postcommunion-mode.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -74091,12 +74214,20 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "83e7c167c7de745d6a5ce7f5ec47bd18b77a0e2320691d718de70d553e577551",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "08b7efb69455e53fe20937a84a448c3e9b251822f42d9fe3fa33c1a1eeff9ca3",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "Current normal/resumed proper-body conformity, separately prescribed RG115a ending and explicitly declared house accidentals; no historical transcription-genesis or rights assertion.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-iv-post-epiphaniam-secreta.expanded-conclusion.mr1962",
+          "use.proprium.dominica-iv-post-epiphaniam-secreta.oration-boundaries.mr1962",
+          "use.proprium.dominica-iv-post-epiphaniam-secreta.secret-delivery.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -104782,7 +104913,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "05e8e371b7167ddde5adda98125388d0ae7d74d9614eaf46ea24c01c6129dc88",
+      "apparatus_sha256": "8c5f9b69df08dd8eb8312d797eb435c4ccb7d126880211baf3264f3c77830a1e",
       "review": {
         "status": "pending"
       }
@@ -104804,7 +104935,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "850f9a28a94b94e7774ba164c1cee4332134d0d9475d85056456dd3c77ef061c",
+      "apparatus_sha256": "9630c687b61cb4019da49ddad672a6973c1665df748f7eac7bfc15320dc2d6ae",
       "review": {
         "status": "pending"
       }

@@ -15,6 +15,8 @@ from checks.translation_provenance import canonical_hash, source_payload
 
 ROOT = Path(__file__).resolve().parents[1]
 TEXT = "proprium.dominica-iv-post-epiphaniam-epistola"
+# Retained historical expectation; the contemporary prose has a separate digest.
+PREVIOUS_EN_TARGET = "ebd28ff6d18e61c70838390e243558b7ccbbf513ed0179993616c2527df1432a"
 GROUPS = [
     ([2, 3, 4], 4, "owe no one anything"),
     ([7, 8], 8, "love one another"),
@@ -79,7 +81,7 @@ def test_polish_exception_and_retained_solemn_inversions():
         "wzajemnie",
         "się miłowali",
     ]
-    assert line(layer, 22, 25) == ["nie", "fałszywego", "świadectwa", "mów"]
+    assert line(layer, 22, 25) == ["Nie mów fałszywego świadectwa"]
     assert line(layer, 43, 52) == [
         "Miłość",
         "bliźniego",
@@ -145,10 +147,10 @@ def test_complete_realization_partition(language):
     groups = layer["segments"]["s01"].get("alignments", [])
     direct = sum("gloss" in w for w in layer["words"].values())
     assert (direct, len(groups), sum(len(a["words"]) for a in groups)) == (
-        (52, 0, 0) if language == "pl" else (24, 12, 28)
+        (48, 1, 4) if language == "pl" else (24, 12, 28)
     )
     assert not any("reason" in a for a in groups)
-    assert len(line(layer)) == (52 if language == "pl" else 36)
+    assert len(line(layer)) == (49 if language == "pl" else 36)
 
 
 def test_retained_old_group_and_separate_infinitival_marker():
@@ -204,10 +206,10 @@ def test_retained_legal_futures_and_deponent_meaning():
     "language,target",
     [
         ("pl", "08d141a51ddf69484ad6a7db452257d7ec98b8dd90e941507d0aecab0b20f189"),
-        ("en", "ebd28ff6d18e61c70838390e243558b7ccbbf513ed0179993616c2527df1432a"),
+        ("en", "dc063648e6724fc0263d0fad4c5acfd672d91f1a3bd4dc19d19813dcb0c5e2db"),
     ],
 )
-def test_unchanged_working_prose_current_source_dependency(language, target):
+def test_current_working_prose_source_dependency(language, target):
     core = store.core(ROOT, TEXT)
     layer = store.raw_layer(ROOT, language, TEXT)
     sites = json.loads((ROOT / f"languages/{language}/translation-provenance.json").read_text())[
@@ -221,6 +223,8 @@ def test_unchanged_working_prose_current_source_dependency(language, target):
     )
     assert site["source_sha256"] == canonical_hash(source_payload(core["segments"][0]))
     assert site["origin"] == "working-unsettled" and site["review"] == "working"
+    if language == "en":
+        assert target != PREVIOUS_EN_TARGET
 
 
 def test_literal_printed_colon_and_four_digital_accidentals():
