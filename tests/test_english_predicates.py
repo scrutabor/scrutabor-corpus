@@ -198,7 +198,11 @@ def test_other_jussives_are_not_this_diagnostic(replacement):
     "name,pairs,comparands",
     [
         ("dominica-in-septuagesima-evangelium", [10], {14: "a man"}),
-        ("dominica-vi-post-epiphaniam-evangelium", [9, 53], {13: "a grain", 57: "leaven"}),
+        (
+            "dominica-vi-post-epiphaniam-evangelium",
+            [(9, 12, 10), (53, 56, 54)],
+            {13: "a grain", 57: "leaven"},
+        ),
         ("dominica-xvii-post-pentecosten-evangelium", [54], {56: "this"}),
         (
             "sanctae-annae-matris-beatae-mariae-virginis-evangelium",
@@ -212,10 +216,18 @@ def test_comparisons_and_comparands_are_coherent(name, pairs, comparands):
     layer = json.loads((ROOT / f"languages/en/texts/proprium/{name}.json").read_bytes())
     assert interlinear.check(core, layer) == []
     for n in pairs:
-        ids = [f"w{n:03}", f"w{n + 1:03}"]
+        if isinstance(n, tuple):
+            first, last, anchor = n
+            ids = [f"w{i:03}" for i in range(first, last + 1)]
+            expected = "The kingdom of heaven is like"
+            anchor_id = f"w{anchor:03}"
+        else:
+            ids = [f"w{n:03}", f"w{n + 1:03}"]
+            expected = "is like"
+            anchor_id = ids[0]
         selected = [g for g in layer["segments"]["s01"]["alignments"] if g["words"] == ids]
-        assert len(selected) == 1 and selected[0]["anchor"] == ids[0]
-        assert selected[0]["gloss"].casefold() == "is like"
+        assert len(selected) == 1 and selected[0]["anchor"] == anchor_id
+        assert selected[0]["gloss"].casefold() == expected.casefold()
         assert all("gloss" not in layer["words"][wid] for wid in ids)
     for n, expected in comparands.items():
         assert layer["words"][f"w{n:03}"]["gloss"] == expected

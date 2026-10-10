@@ -27,7 +27,7 @@
         { "id": "w006", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
         { "id": "w007", "form": "rationabília", "lemma": "rationabilis", "morph": { "pos": "adj", "case": "acc", "gender": "n", "number": "pl" }, "substantive": true },
         { "id": "w008", "form": "meditántes", "post": ",", "lemma": "meditor", "morph": { "pos": "verb", "case": "nom", "gender": "m", "number": "pl", "tense": "pres", "voice": "dep", "mood": "part", "conj": 1 }, "head": "w015" },
-        { "id": "w009", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl" } },
+        { "id": "w009", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "n" } },
         { "id": "w010", "form": "tibi", "lemma": "tu", "morph": { "case": "dat", "number": "sg", "pos": "pron" } },
         { "id": "w011", "form": "sunt", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w012", "form": "plácita", "post": ",", "lemma": "placeo", "morph": { "pos": "verb", "case": "nom", "gender": "n", "number": "pl", "tense": "perf", "voice": "pass", "mood": "part", "conj": 2 }, "head": "w009" },
@@ -93,9 +93,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the approved 1962 Benziger printing.",
+    "notes": "The 17-word proper body and short Per Dominum cue are printed on normal page 49 and resumed page 416. The complete ending and Amen are separately expanded under RG115a with declared house accents and punctuation; source/collation reviews remain pending.",
     "source": {
-      "method": "Transcribed from the directly viewed page image of the Benziger Brothers 1962 Editio iuxta typicam and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "Current body conformity checked against normal page 49 and resumed page 416; the full conclusion is an explicit RG115a house-accented expansion, not a continuous proper-page transcription. The exact pinned digital comparison is separately bound; historical transcription genesis is not established.",
       "witnesses": "witnesses/proprium.dominica-vi-post-epiphaniam-collecta/",
       "apparatus": "witnesses/proprium.dominica-vi-post-epiphaniam-collecta/apparatus.json"
     },
@@ -108,10 +108,16 @@
       "w008": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w012": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w017": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
-      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w020": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w009": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w012": {
+
+      }
+    }
   }
 }

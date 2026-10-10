@@ -126,9 +126,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the approved 1962 Benziger printing.",
+    "notes": "Normal pages 49–50 and resumed pages 416–417 print the complete 102-word reading body, without a shared conclusion expansion. Normal p. 49 omits the comma after sinapis; resumed p. 416 prints it. The selected resumed comma is retained, and Aliam receives the declared house capital accent. Source/collation reviews remain pending.",
     "source": {
-      "method": "Transcribed from the directly viewed page image of the Benziger Brothers 1962 Editio iuxta typicam and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "Current complete 102-word body conformity checked against normal pages 49–50, resumed pages 416–417, and exact pinned digital reading; no shared expansion or historical transcription-genesis assertion.",
       "witnesses": "witnesses/proprium.dominica-vi-post-epiphaniam-evangelium/",
       "apparatus": "witnesses/proprium.dominica-vi-post-epiphaniam-evangelium/apparatus.json"
     },
@@ -156,7 +156,7 @@
       "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w022": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w030": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w030": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w031": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w047": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w050": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
@@ -166,6 +166,11 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w030": {
+
+      }
+    }
   }
 }
