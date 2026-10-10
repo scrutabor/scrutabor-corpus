@@ -345,8 +345,14 @@ REGISTRY_FILES = (
 
 
 def is_exact_prefix(old: list, new: list) -> bool:
-    """Append-only means the past is byte-for-byte the front of the present."""
-    return len(new) >= len(old) and new[: len(old)] == old
+    """Preserve old JSON values and types, using the reader table's keys.
+
+    Python equality conflates 1, 1.0 and True; the reader's interned JSON
+    records do not. Object key order is not identity, but array order is.
+    """
+    return len(new) >= len(old) and json.dumps(
+        new[: len(old)], sort_keys=True, separators=(",", ":")
+    ) == json.dumps(old, sort_keys=True, separators=(",", ":"))
 
 
 def check_registry_history(corpus: Path, ref: str = "HEAD") -> list[str]:
