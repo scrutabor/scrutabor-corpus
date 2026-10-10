@@ -190,7 +190,14 @@ CONSTRUCTIONS = [
     (TEXTS[36], "s01", "w071", ["w070", "w071"], "w070", "For I do not want"),
     (TEXTS[37], "s01", "w235", ["w234", "w235"], "w234", "For many"),
     (TEXTS[38], "s01", "w010", ["w009", "w010"], "w009", "For you bear it"),
-    (TEXTS[38], "s01", "w311", ["w310", "w311"], "w310", "for the truth"),
+    (
+        TEXTS[38],
+        "s01",
+        "w311",
+        ["w310", "w311", "w312"],
+        "w312",
+        "for I will speak the truth",
+    ),
     (TEXTS[39], "s01", "w013", ["w011", "w012", "w013"], "w011", "for they are dead"),
     (
         TEXTS[40],

@@ -107,7 +107,7 @@
         { "id": "w086", "form": "esset", "lemma": "sum", "morph": { "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w087", "form": "hæc", "lemma": "hic", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" } },
         { "id": "w088", "form": "parábola", "lemma": "parabola", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 }, "post": "." },
-        { "id": "w089", "form": "Quibus", "lemma": "qui", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
+        { "id": "w089", "form": "Quibus", "lemma": "qui", "morph": { "pos": "pron", "case": "dat", "number": "pl", "gender": "m" } },
         { "id": "w090", "form": "ipse", "lemma": "ipse", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w091", "form": "dixit", "lemma": "dico", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": ":" },
         { "id": "w092", "form": "Vobis", "lemma": "vos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
@@ -224,7 +224,7 @@
         { "id": "w203", "form": "rétinent", "lemma": "retineo", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "pres", "voice": "act", "conj": 2 }, "post": "," },
         { "id": "w204", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w205", "form": "fructum", "lemma": "fructus", "morph": { "case": "acc", "decl": 4, "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w206", "form": "éfferunt", "lemma": "effero", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "pres", "voice": "act", "conj": 3 } },
+        { "id": "w206", "form": "áfferunt", "lemma": "affero", "morph": { "pos": "verb", "mood": "ind", "number": "pl", "person": 3, "tense": "pres", "voice": "act", "conj": 3 } },
         { "id": "w207", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w208" },
         { "id": "w208", "form": "patiéntia", "lemma": "patientia", "morph": { "pos": "noun", "case": "abl", "gender": "f", "number": "sg", "decl": 1 }, "post": "." }
       ]
@@ -255,7 +255,7 @@
       "w114": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "accepted" } },
       "w137": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w138": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w146": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
+      "w146": { "analysis": { "confidence": "medium", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w173": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w078": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
@@ -289,10 +289,17 @@
       "w201": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w072": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w087": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w113": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w113": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w089": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w206": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w146": {
+
+      }
+    }
   }
 }
