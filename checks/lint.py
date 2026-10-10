@@ -1015,6 +1015,39 @@ def _distinct_possessive_heads(group: dict | None, neighbor: dict, words: dict) 
     )
 
 
+def _internal_eternity_conjunction(lang, gloss, group, neighbor, segment_words):
+    """The internal 'and' in this idiom does not translate a preceding et.
+
+    Require the exact source span and its separate preceding connective;
+    neither arbitrary internal conjunctions nor a prefixed 'and' qualify.
+    """
+    if lang != "en" or gloss.lower() != "forever and ever" or not group:
+        return False
+    ids = group.get("words", [])
+    positions = {word["id"]: i for i, word in enumerate(segment_words)}
+    if len(ids) != 3 or group.get("anchor") != ids[0] or ids[0] not in positions:
+        return False
+    start = positions[ids[0]]
+    if start == 0 or segment_words[start - 1]["id"] != neighbor["id"]:
+        return False
+    span = segment_words[start : start + 3]
+    if [word["id"] for word in span] != ids:
+        return False
+    forms = [fold_ligatures(strip_accents(word["form"])).lower() for word in span]
+    return (
+        forms == ["in", "saecula", "saeculorum"]
+        and [word.get("lemma") for word in span] == ["in", "saeculum", "saeculum"]
+        and span[0].get("morph", {}).get("pos") == "prep"
+        and span[0].get("morph", {}).get("governs") == "acc"
+        and all(word.get("morph", {}).get("pos") == "noun" for word in span[1:])
+        and [word["morph"].get("case") for word in span[1:]] == ["acc", "gen"]
+        and all(word["morph"].get("number") == "pl" for word in span[1:])
+        and neighbor.get("form", "").lower() == "et"
+        and neighbor.get("lemma") == "et"
+        and neighbor.get("morph", {}).get("pos") == "conj"
+    )
+
+
 def lint_gloss(doc, text_doc):
     errors = []
     lang = doc["lang"]
@@ -1095,6 +1128,7 @@ def lint_gloss(doc, text_doc):
                     and key in parts
                     and g.lower() != ng.lower()
                     and not bare.endswith(("que", "ve"))
+                    and not _internal_eternity_conjunction(lang, g, groups.get(w["id"]), ws[j], ws)
                 ):
                     errors.append(
                         f"{text_doc['id']}:{w['id']}: the {lang} gloss "
