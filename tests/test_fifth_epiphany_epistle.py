@@ -51,7 +51,7 @@ def test_minimal_constructions_have_one_provider(language, ids, anchor, gloss):
         assert interlinear.check(expand_core(core), enrich_layer(core, missing))
 
 
-@pytest.mark.parametrize("language,direct", [("pl", 106), ("en", 92)])
+@pytest.mark.parametrize("language,direct", [("pl", 100), ("en", 78)])
 def test_all_111_words_and_construction_notes_reach_reader(language, direct):
     core, data = load(f"texts/proprium/{NAME}.json"), layer(language)
     doc, gloss = expand_core(core), enrich_layer(core, data)
@@ -79,9 +79,14 @@ def test_english_clothing_jussive_and_human_subject():
         "w003": "yourselves",
         "w010": "with a heart",
         "w011": "of mercy",
-        "w065": "may dwell",
     }.items():
         assert data["words"][wid]["gloss"] == value
+    assert {
+        "words": ["w063", "w064", "w065"],
+        "anchor": "w065",
+        "gloss": "May Christ’s word dwell",
+    } in data["segments"]["s01"]["alignments"]
+    assert all("gloss" not in data["words"][wid] for wid in ("w063", "w064", "w065"))
     assert "as you teach and admonish one another" in data["segments"]["s01"]["translation"]
     assert data["about"].startswith("The Epistle")
     assert layer("pl")["about"].startswith("Epistoła")
