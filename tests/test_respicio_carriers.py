@@ -213,8 +213,8 @@ COUNTEREXAMPLES = [
     ("proprium.visitatio-beatae-mariae-virginis-epistola", "en", "w022", "gazing"),
     ("proprium.dominica-iii-post-pentecosten-secreta", "en", "w001", "Look upon"),
     ("ordinarium.supra-quae", "en", "w007", "to look"),
-    ("proprium.dominica-iii-in-quadragesima-introitus", "en", "w013", "Look"),
-    ("proprium.dominica-iii-in-quadragesima-introitus", "en", "w070", "Look"),
+    ("proprium.dominica-iii-in-quadragesima-introitus", "en", "w013", "look"),
+    ("proprium.dominica-iii-in-quadragesima-introitus", "en", "w070", "look"),
     (
         "proprium.sanctissimi-nominis-iesu-postcommunio",
         "pl",

@@ -13,9 +13,6 @@ DIRECT = (
     ("pl", "sancti-matthiae-apostoli-epistola", "w008", "braci"),
     ("en", "dedicatio-sancti-michaelis-archangeli-evangelium", "w022", "in"),
     ("en", "dedicatio-sancti-michaelis-archangeli-evangelium", "w024", "of them"),
-    ("en", "dominica-i-in-quadragesima-postcommunio", "w012", "into"),
-    ("en", "dominica-i-in-quadragesima-postcommunio", "w013", "of the mystery"),
-    ("en", "dominica-i-in-quadragesima-postcommunio", "w017", "fellowship"),
     ("en", "dominica-pentecostes-offertorium", "w014", "in"),
     ("en", "dominica-resurrectionis-collecta", "w005", "through"),
     ("en", "dominica-resurrectionis-evangelium", "w055", "on"),
@@ -38,6 +35,13 @@ DIRECT = (
     ("pl", "sancti-petri-et-pauli-apostolorum-secreta", "w012", "której"),
 )
 GROUPS = (
+    (
+        "en",
+        "dominica-i-in-quadragesima-postcommunio",
+        "w012 w013 w014 w015 w016 w017",
+        "w015",
+        "may cause us to pass into the fellowship of the saving mystery",
+    ),
     ("pl", "beatae-mariae-virginis-a-rosario-epistola", "w018 w019", "w019", "od pradawna"),
     ("en", "beatae-mariae-virginis-a-rosario-epistola", "w018 w019", "w019", "of old"),
     ("pl", "nativitas-beatae-mariae-virginis-epistola", "w018 w019", "w019", "od pradawna"),

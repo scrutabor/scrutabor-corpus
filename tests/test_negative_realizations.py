@@ -37,7 +37,7 @@ GROUPS = (
         "See that you tell no one",
     ),
     ("proprium/transfiguratio-domini-communio", "w004 w005", "w005", "tell no one"),
-    ("proprium/transfiguratio-domini-evangelium", "w140 w141", "w141", "tell no one"),
+    ("proprium/transfiguratio-domini-evangelium", "w140 w141", "w141", "Tell no one"),
     ("proprium/dominica-ii-in-quadragesima-epistola", "w070 w071", "w071", "that no one"),
     (
         "proprium/dominica-xi-post-pentecosten-evangelium",
