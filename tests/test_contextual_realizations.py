@@ -57,7 +57,7 @@ GROUPS = (
     ("en", PASSION, "s41", "w572 w573 w574", "w572", "But as he went out"),
     ("en", PASSION, "s48", "w707 w708 w709", "w707", "What is that to us?"),
     ("en", PASSION, "s49", "w721 w722", "w722", "he hanged himself"),
-    ("en", PASSION, "s50", "w729 w730", "w730", "it is not lawful"),
+    ("en", PASSION, "s50", "w729 w730", "w730", "It is not lawful"),
     ("en", PASSION, "s50", "w731 w732", "w732", "to put them"),
     ("en", PASSION, "s50", "w736 w737 w738", "w738", "it is the price of blood"),
     ("en", PASSION, "s51", "w739 w740 w741", "w741", "Now after taking counsel"),

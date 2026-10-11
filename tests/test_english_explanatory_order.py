@@ -441,7 +441,19 @@ RETAINED = [
         [{"words": ["w883", "w884"], "anchor": "w883", "gloss": "For he knew"}],
         None,
     ),
-    (TEXTS[28], "s70", "w961", [], "then"),
+    (
+        TEXTS[28],
+        "s70",
+        "w961",
+        [
+            {
+                "words": ["w960", "w961", "w962"],
+                "anchor": "w962",
+                "gloss": "What evil, then,",
+            }
+        ],
+        None,
+    ),
     (
         TEXTS[51],
         "s01",

@@ -36,7 +36,7 @@ CASES = [
         "dominica-ii-passionis-evangelium",
         "s82",
         [
-            (["w1228", "w1229"], "w1229", "cannot"),
+            (["w1228", "w1229"], "w1229", "He cannot"),
         ],
         {},
     ),

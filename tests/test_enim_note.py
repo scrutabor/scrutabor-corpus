@@ -94,10 +94,13 @@ def test_actual_direct_and_shared_members_keep_the_dictionary_note(language, tex
     assert emit.lexicon_slice(ROOT, language, {word["lemma"]})["enim"]["note"] == NOTES[language]
 
 
-@pytest.mark.parametrize(("language", "gloss"), [("pl", "więc"), ("en", "then")])
+@pytest.mark.parametrize(("language", "gloss"), [("pl", "więc"), ("en", "What evil, then,")])
 def test_rhetorical_context_is_not_forced_into_one_lexical_equivalent(language, gloss):
     doc, languages = store.load(ROOT, "proprium.dominica-ii-passionis-evangelium")
     assert interlinear.check(doc, languages[language]) == []
     word = next(w for s in doc["segments"] for w in s.get("words", []) if w["id"] == "w961")
     assert word["lemma"] == "enim"
-    assert languages[language]["words"]["w961"]["gloss"] == gloss
+    layer = languages[language]
+    member = interlinear.alignment_by_word(layer).get("w961")
+    realized = member["gloss"] if member else layer["words"]["w961"]["gloss"]
+    assert realized == gloss

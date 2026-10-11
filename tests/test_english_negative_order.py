@@ -51,26 +51,26 @@ CASES = [
     (
         "proprium.dominica-ii-passionis-communio",
         "s01",
-        [3, 4],
+        [3, 4, 5, 6, 7],
         4,
         "possum",
         "pres",
         "ind",
         "sg",
         3,
-        "cannot",
+        "this chalice cannot pass away",
     ),
     (
         "proprium.dominica-ii-passionis-evangelium",
         "s10",
-        [120, 121],
+        [120, 121, 122, 123, 124],
         121,
         "possum",
         "pres",
         "ind",
         "sg",
         3,
-        "cannot",
+        "this chalice cannot pass away",
     ),
     (
         "proprium.septem-dolorum-beatae-mariae-virginis-sequentia",
@@ -121,9 +121,10 @@ def test_selected_negative_predicate(
     ids = [f"w{n:03}" for n in nums]
     indices = [next(i for i, w in enumerate(words) if w["id"] == wid) for wid in ids]
     assert indices == list(range(indices[0], indices[0] + len(ids)))
-    assert [words[i]["lemma"] for i in indices] == ["non", lemma] + (
-        ["ego"] if len(ids) == 3 else []
-    )
+    complement = ["ego"] if len(ids) == 3 else []
+    if lemma == "possum":
+        complement = ["hic", "calix", "transeo"]
+    assert [words[i]["lemma"] for i in indices] == ["non", lemma, *complement]
     finite = words[indices[1]]["morph"]
     assert (finite["tense"], finite["mood"], finite["number"], finite["person"]) == (
         tense,
