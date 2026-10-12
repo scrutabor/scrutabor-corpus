@@ -3733,6 +3733,11 @@
       "responsible": "Patrick Francis Moran"
     },
     {
+      "id": "work.sacra-rituum-congregatio.de-s-ioseph",
+      "title": "De S. Joseph nomine Canoni Missae inserendo",
+      "responsible": "Sacra Rituum Congregatio"
+    },
+    {
       "id": "work.the-family-prayer-book",
       "title": "The Family Prayer-book",
       "responsible": "John Richard Best (Philalethes)"
@@ -4218,6 +4223,23 @@
       }
     },
     {
+      "id": "edition.missale-romanum.1962-vatican-joseph-bearing",
+      "work": "work.missale-romanum",
+      "title": "Missale Romanum, editio typica (Saint Joseph-bearing reproduction)",
+      "recension": "Roman Missal with the Saint Joseph amendment effective 8 December 1962",
+      "edition_statement": "Editio typica. The manifestation lacks a printed production year; 1962 identifies the underlying typical text, not a proved reproduction date.",
+      "year": "1962",
+      "publication_type": "missal",
+      "authority": "typical_liturgical_edition",
+      "languages": [
+        "la"
+      ],
+      "rights": {
+        "status": "unverified",
+        "basis": "Underlying liturgical text and digitized reproduction are distinct. Repository licensing is not independently established as publication authority; no scan or OCR redistribution is authorized."
+      }
+    },
+    {
       "id": "edition.pamiatka-missyi-dla-ludu-katolickiego-1903",
       "work": "work.pamiatka-missyi-dla-ludu-katolickiego",
       "title": "Pamiątka Missyi dla ludu katolickiego",
@@ -4247,6 +4269,22 @@
       "languages": [
         "en"
       ]
+    },
+    {
+      "id": "edition.sacra-rituum-congregatio.de-s-ioseph.1962-aas54",
+      "work": "work.sacra-rituum-congregatio.de-s-ioseph",
+      "title": "Acta Apostolicae Sedis LIV (1962), De S. Joseph nomine Canoni Missae inserendo",
+      "volume": "54",
+      "year": "1962",
+      "publication_type": "official_act",
+      "authority": "official_document",
+      "languages": [
+        "la"
+      ],
+      "rights": {
+        "status": "unverified",
+        "basis": "Retained official act consulted locally. No independent reproduction-rights adjudication or public scan/extraction permission is claimed."
+      }
     },
     {
       "id": "edition.the-family-prayer-book-1839",
@@ -4705,6 +4743,17 @@
       "access": "open"
     },
     {
+      "id": "item.missale-romanum.1962-vatican-joseph-bearing.ia",
+      "edition": "edition.missale-romanum.1962-vatican-joseph-bearing",
+      "repository": "Internet Archive",
+      "kind": "scan",
+      "record_url": "https://archive.org/details/missale_romanum-1962",
+      "scan_url": "https://archive.org/download/missale_romanum-1962/missale_romanum-1962.pdf",
+      "sha256": "648fdb8fe830ed65a08aa4a95de6f94424c533ddf2398c8fc26b18735fd3518a",
+      "access": "open",
+      "digitization_rights": "Repository assertion CC BY-NC-ND 3.0 is retained as an assertion, not a new rights determination."
+    },
+    {
       "id": "item.pamiatka-missyi-dla-ludu-katolickiego-1903.sbc",
       "edition": "edition.pamiatka-missyi-dla-ludu-katolickiego-1903",
       "repository": "Śląska Biblioteka Cyfrowa",
@@ -4722,6 +4771,17 @@
       "access": "open",
       "scan_url": "https://archive.org/download/theraccoltaorcol00unknuoft/theraccoltaorcol00unknuoft.pdf",
       "sha256": "c9809a19f94297b103f773e26129d932f4a0eaa99796e398155dc35a92e2fa7b"
+    },
+    {
+      "id": "item.sacra-rituum-congregatio.de-s-ioseph.1962-aas54.vatican",
+      "edition": "edition.sacra-rituum-congregatio.de-s-ioseph.1962-aas54",
+      "repository": "Holy See",
+      "kind": "scan",
+      "record_url": "https://www.vatican.va/archive/aas/documents/AAS-54-1962-ocr.pdf",
+      "scan_url": "https://www.vatican.va/archive/aas/documents/AAS-54-1962-ocr.pdf",
+      "sha256": "fb64f5f96696b5dd2aa6dce86dfc6e6437246732c303824d659277cf88646208",
+      "access": "open",
+      "digitization_rights": "Unverified; local consultation only."
     },
     {
       "id": "item.valla.elegantiae.1538.mateo",
@@ -8085,6 +8145,120 @@
       "evidence_sha256": "0b99a536f076395d0078dc2636f147ed99bd28a51d5c9f600a78bf56998f1f47"
     },
     {
+      "id": "use.ordinarium.communicantes-in-cena-domini.benziger-proper",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.communicantes-in-cena-domini"
+      },
+      "locator": {
+        "printed": "161",
+        "scan": "Archive leaf n240",
+        "section": "In Cena Domini — communicantes"
+      },
+      "claim": "Complete proper occurrence before the Saint Joseph insertion; the original printed setting is not claimed to contain the later amendment.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "5d0419e327d503127da21e5a5e526659310e0ae98d0e14e43bdc03fe03ba0b21",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.communicantes-in-cena-domini.canon-secreto",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.communicantes-in-cena-domini"
+      },
+      "locator": {
+        "printed": "xxxiii",
+        "scan": "Archive leaf n38",
+        "section": "Rubricae generales 500"
+      },
+      "claim": "Canon is spoken secreto; the priest is the ritual speaker, not automatically the subject of the words he quotes.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "a6d9b2554ebb911a8a6ae9ea6e6e5e882307bedeab8e326ae2f7ef602ec2fd7e",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.communicantes-in-cena-domini.general-rite",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.communicantes-in-cena-domini"
+      },
+      "locator": {
+        "printed": "lv",
+        "scan": "Archive leaf n60",
+        "section": "Ritus servandus VIII 4"
+      },
+      "claim": "Communicantes is continued with hands extended; inclination at Iesu Christi and joining hands at Per eundem are separately authorized by the ordinary rite.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "3d1acaa2bf969767d282833ca571179f5618184f03e6a899c16668b1ba8c75b1",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.communicantes-in-cena-domini.joseph-amendment",
+      "edition": "edition.sacra-rituum-congregatio.de-s-ioseph.1962-aas54",
+      "digital_item": "item.sacra-rituum-congregatio.de-s-ioseph.1962-aas54.vatican",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.communicantes-in-cena-domini"
+      },
+      "locator": {
+        "printed": "873",
+        "scan": "PDF page 873",
+        "section": "Decree of 13 November 1962, effective 8 December 1962"
+      },
+      "claim": "Requires sed et beati Ioseph eiusdem Virginis Sponsi after Christi, then et beatorum; expressly extends to peculiar Communicantes. The later rule does not alter the literal earlier Benziger setting.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "fb64f5f96696b5dd2aa6dce86dfc6e6437246732c303824d659277cf88646208",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.communicantes-in-cena-domini.name-inclinations",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.communicantes-in-cena-domini"
+      },
+      "locator": {
+        "printed": "lii",
+        "scan": "Archive leaf n57",
+        "section": "Ritus servandus V 2"
+      },
+      "claim": "Head inclination at the names Jesus and Mary applies anywhere in Mass, including these proper additions; named-saint inclination is restricted to the saint of the Mass or commemoration, not every saint in the list.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "beace17715923bcbb21c5e213ff92bbda4bda317b80e90a1752b5d851a1ba7ea",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.communicantes-in-cena-domini.vatican-proper",
+      "edition": "edition.missale-romanum.1962-vatican-joseph-bearing",
+      "digital_item": "item.missale-romanum.1962-vatican-joseph-bearing.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.communicantes-in-cena-domini"
+      },
+      "locator": {
+        "printed": "158",
+        "scan": "PDF page 239",
+        "section": "In Cena Domini, item 916"
+      },
+      "claim": "Complete proper spoken Latin occurrence; source-local readings and punctuation are retained with declared linearization, excluding ritual rubrics and cross separation.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "648fdb8fe830ed65a08aa4a95de6f94424c533ddf2398c8fc26b18735fd3518a",
+      "decision": "RETAIN"
+    },
+    {
       "id": "use.ordinarium.confiteor-sacerdotis.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -8273,6 +8447,101 @@
       "verified_on": "2026-09-25",
       "decision": "RETAIN",
       "evidence_sha256": "d19d9834500a40f86a762522c3c99e89ffabeaba8aa3141495190b6049e70a4c"
+    },
+    {
+      "id": "use.ordinarium.hanc-igitur-in-cena-domini.benziger-proper",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.hanc-igitur-in-cena-domini"
+      },
+      "locator": {
+        "printed": "161",
+        "scan": "Archive leaf n240",
+        "section": "In Cena Domini — hanc-igitur"
+      },
+      "claim": "Complete proper occurrence, including literal éripe and Per eundem; éripe is not silently transcribed as éripi.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "5d0419e327d503127da21e5a5e526659310e0ae98d0e14e43bdc03fe03ba0b21",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.hanc-igitur-in-cena-domini.canon-secreto",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.hanc-igitur-in-cena-domini"
+      },
+      "locator": {
+        "printed": "xxxiii",
+        "scan": "Archive leaf n38",
+        "section": "Rubricae generales 500"
+      },
+      "claim": "Canon is spoken secreto; the priest is the ritual speaker, not automatically the subject of the words he quotes.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "a6d9b2554ebb911a8a6ae9ea6e6e5e882307bedeab8e326ae2f7ef602ec2fd7e",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.hanc-igitur-in-cena-domini.general-rite",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.hanc-igitur-in-cena-domini"
+      },
+      "locator": {
+        "printed": "lv",
+        "scan": "Archive leaf n60",
+        "section": "Ritus servandus VIII 4"
+      },
+      "claim": "Hands are held extended over the offerings during Hanc igitur; hands are joined at the proper conclusion.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "3d1acaa2bf969767d282833ca571179f5618184f03e6a899c16668b1ba8c75b1",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.hanc-igitur-in-cena-domini.name-inclinations",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.hanc-igitur-in-cena-domini"
+      },
+      "locator": {
+        "printed": "lii",
+        "scan": "Archive leaf n57",
+        "section": "Ritus servandus V 2"
+      },
+      "claim": "Head inclination at the names Jesus and Mary applies anywhere in Mass, including these proper additions; named-saint inclination is restricted to the saint of the Mass or commemoration, not every saint in the list.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "beace17715923bcbb21c5e213ff92bbda4bda317b80e90a1752b5d851a1ba7ea",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.hanc-igitur-in-cena-domini.vatican-proper",
+      "edition": "edition.missale-romanum.1962-vatican-joseph-bearing",
+      "digital_item": "item.missale-romanum.1962-vatican-joseph-bearing.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.hanc-igitur-in-cena-domini"
+      },
+      "locator": {
+        "printed": "158",
+        "scan": "PDF page 239",
+        "section": "In Cena Domini, item 917"
+      },
+      "claim": "Complete proper spoken Latin occurrence; source-local readings and punctuation are retained with declared linearization, excluding ritual rubrics and cross separation.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "648fdb8fe830ed65a08aa4a95de6f94424c533ddf2398c8fc26b18735fd3518a",
+      "decision": "RETAIN"
     },
     {
       "id": "use.ordinarium.hanc-igitur.mr1962",
@@ -10109,6 +10378,102 @@
       "verified_on": "2026-09-25",
       "decision": "RETAIN",
       "evidence_sha256": "f0fa9f9cb03ac8959d1f1498bacc3d9f8e4fa1cc3b9b01642ee08446884c03e4"
+    },
+    {
+      "id": "use.ordinarium.qui-pridie-in-cena-domini.benziger-proper",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.qui-pridie-in-cena-domini"
+      },
+      "locator": {
+        "printed": "161",
+        "scan": "Archive leaf n240",
+        "section": "In Cena Domini — qui-pridie"
+      },
+      "claim": "Complete proper bread-institution occurrence through Corpus meum; retains the occurrence-local sanctas and dedítque commas.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "5d0419e327d503127da21e5a5e526659310e0ae98d0e14e43bdc03fe03ba0b21",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.qui-pridie-in-cena-domini.canon-secreto",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.qui-pridie-in-cena-domini"
+      },
+      "locator": {
+        "printed": "xxxiii",
+        "scan": "Archive leaf n38",
+        "section": "Rubricae generales 500"
+      },
+      "claim": "Canon is spoken secreto; the priest is the ritual speaker, not automatically the subject of the words he quotes.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "a6d9b2554ebb911a8a6ae9ea6e6e5e882307bedeab8e326ae2f7ef602ec2fd7e",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.qui-pridie-in-cena-domini.general-rite",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.qui-pridie-in-cena-domini"
+      },
+      "locator": {
+        "printed": "lv",
+        "scan": "Archive leaf n60",
+        "section": "Ritus servandus VIII 4–5"
+      },
+      "claim": "Ordinary institution rite supplies taking the host, raising eyes, bowing, signing, attentive formula and ensuing adoration/elevation; proper additions do not replace that sequence.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "3d1acaa2bf969767d282833ca571179f5618184f03e6a899c16668b1ba8c75b1",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.qui-pridie-in-cena-domini.post-formula-rubric",
+      "edition": "edition.missale-romanum.1962-vatican-joseph-bearing",
+      "digital_item": "item.missale-romanum.1962-vatican-joseph-bearing.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "segment",
+        "text": "ordinarium.qui-pridie-in-cena-domini",
+        "segment": "s13"
+      },
+      "locator": {
+        "printed": "306",
+        "scan": "PDF page 387",
+        "section": "Ordo Missae, item 1102"
+      },
+      "claim": "The post-formula rubric in s13 is supplied from the same typical-edition ordinary, not falsely claimed as freshly printed in the proper item 919.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "648fdb8fe830ed65a08aa4a95de6f94424c533ddf2398c8fc26b18735fd3518a",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.qui-pridie-in-cena-domini.vatican-proper",
+      "edition": "edition.missale-romanum.1962-vatican-joseph-bearing",
+      "digital_item": "item.missale-romanum.1962-vatican-joseph-bearing.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.qui-pridie-in-cena-domini"
+      },
+      "locator": {
+        "printed": "159",
+        "scan": "PDF page 240",
+        "section": "In Cena Domini, item 919"
+      },
+      "claim": "Complete proper spoken Latin occurrence; source-local readings and punctuation are retained with declared linearization, excluding ritual rubrics and cross separation.",
+      "verified_on": "2026-10-12",
+      "evidence_sha256": "648fdb8fe830ed65a08aa4a95de6f94424c533ddf2398c8fc26b18735fd3518a",
+      "decision": "RETAIN"
     },
     {
       "id": "use.ordinarium.qui-pridie.mr1962",
@@ -64925,6 +65290,86 @@
       }
     },
     {
+      "id": "witness.ordinarium.communicantes-in-cena-domini.mr-benziger",
+      "text": "ordinarium.communicantes-in-cena-domini",
+      "use": "use.ordinarium.communicantes-in-cena-domini.benziger-proper",
+      "role": "approved_corroboration",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "mr-benziger",
+      "transcription_sha256": "d61e1995405bafe09b927a04f45de7326acc1034fdc469547c14417b7a729ad4",
+      "orthography_profile": "full",
+      "independence_basis": "Different publisher setting from the Vatican reproduction, directly checked in the retained page; legal/textual common ancestry is not statistical independence.",
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
+      },
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "witness.ordinarium.communicantes-in-cena-domini.mr-vatican",
+      "text": "ordinarium.communicantes-in-cena-domini",
+      "use": "use.ordinarium.communicantes-in-cena-domini.vatican-proper",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "mr-vatican",
+      "transcription_sha256": "c811c92950d09c62e3922a4fc07381cb19a959ec8a6f284bab83265204209aca",
+      "orthography_profile": "full",
+      "independence_basis": "Distinct retained typical-edition reproduction, directly checked in the proper occurrence; its printing date remains unproved.",
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
+      },
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "witness.ordinarium.hanc-igitur-in-cena-domini.mr-benziger",
+      "text": "ordinarium.hanc-igitur-in-cena-domini",
+      "use": "use.ordinarium.hanc-igitur-in-cena-domini.benziger-proper",
+      "role": "approved_corroboration",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "mr-benziger",
+      "transcription_sha256": "b391212319306d3f60e276c6a85b0df1ac58cc29c38f85e03984629e7e01a6d5",
+      "orthography_profile": "full",
+      "independence_basis": "Different publisher setting from the Vatican reproduction, directly checked in the retained page; legal/textual common ancestry is not statistical independence.",
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
+      },
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "witness.ordinarium.hanc-igitur-in-cena-domini.mr-vatican",
+      "text": "ordinarium.hanc-igitur-in-cena-domini",
+      "use": "use.ordinarium.hanc-igitur-in-cena-domini.vatican-proper",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "mr-vatican",
+      "transcription_sha256": "784c9887f3791814e0485586986e53297937655601146bc428033d49c5d10315",
+      "orthography_profile": "full",
+      "independence_basis": "Distinct retained typical-edition reproduction, directly checked in the proper occurrence; its printing date remains unproved.",
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
+      },
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
       "id": "witness.ordinarium.praefatio-apostolorum.do44667ff",
       "text": "ordinarium.praefatio-apostolorum",
       "use": "use.ordinarium.praefatio-apostolorum.do44667ff",
@@ -65664,6 +66109,46 @@
       "orthography_profile": "exact-page-image",
       "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
       "transcription": "mr",
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "witness.ordinarium.qui-pridie-in-cena-domini.mr-benziger",
+      "text": "ordinarium.qui-pridie-in-cena-domini",
+      "use": "use.ordinarium.qui-pridie-in-cena-domini.benziger-proper",
+      "role": "approved_corroboration",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "mr-benziger",
+      "transcription_sha256": "696aafff530d985a4782c3fe42c0ba22543b92b00f9579780bcc57c5ca647b8a",
+      "orthography_profile": "full",
+      "independence_basis": "Different publisher setting from the Vatican reproduction, directly checked in the retained page; legal/textual common ancestry is not statistical independence.",
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
+      },
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "witness.ordinarium.qui-pridie-in-cena-domini.mr-vatican",
+      "text": "ordinarium.qui-pridie-in-cena-domini",
+      "use": "use.ordinarium.qui-pridie-in-cena-domini.vatican-proper",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "mr-vatican",
+      "transcription_sha256": "b3c9b7fcbcce161121b389dbd20e1224dec962a8be3c1dfa545764addbc74698",
+      "orthography_profile": "full",
+      "independence_basis": "Distinct retained typical-edition reproduction, directly checked in the proper occurrence; its printing date remains unproved.",
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
+      },
       "review": {
         "status": "pending"
       }
@@ -100899,6 +101384,46 @@
       }
     },
     {
+      "id": "collation.ordinarium.communicantes-in-cena-domini.benziger-vatican",
+      "text": "ordinarium.communicantes-in-cena-domini",
+      "recension": "Holy Thursday proper, selected Joseph-bearing 1962 canonical wording with occurrence-local apparatus",
+      "selected_text_sha256": "0559a8cee6df32a18776443d32956d4c3494d73523e96a9c84239fa8d6714ad3",
+      "witnesses": [
+        "witness.ordinarium.communicantes-in-cena-domini.mr-benziger",
+        "witness.ordinarium.communicantes-in-cena-domini.mr-vatican"
+      ],
+      "apparatus": {
+        "entries": 6,
+        "classes": [
+          "omission"
+        ]
+      },
+      "apparatus_sha256": "016feb2bd0e6ece7df932179fa3ca261ce999a254fe564fe66a19d7b855ecd91",
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "collation.ordinarium.hanc-igitur-in-cena-domini.benziger-vatican",
+      "text": "ordinarium.hanc-igitur-in-cena-domini",
+      "recension": "Holy Thursday proper Hanc igitur, selected Vatican typical-edition reproduction with occurrence-local apparatus",
+      "selected_text_sha256": "cc7b5b6cfd1428aed9742df305c849785bab31a149b255803adf9399237b4ffd",
+      "witnesses": [
+        "witness.ordinarium.hanc-igitur-in-cena-domini.mr-benziger",
+        "witness.ordinarium.hanc-igitur-in-cena-domini.mr-vatican"
+      ],
+      "apparatus": {
+        "entries": 1,
+        "classes": [
+          "substantive"
+        ]
+      },
+      "apparatus_sha256": "94f4ebb553d80594c55db1f3cef7d723901f76b3e2d85cedbfd854618446de83",
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
       "id": "collation.ordinarium.praefatio-apostolorum.mr1962-do44667ff",
       "text": "ordinarium.praefatio-apostolorum",
       "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
@@ -101385,6 +101910,26 @@
         ]
       },
       "apparatus_sha256": "2f93c38bcfeb29458a2d487d2e3ccaae34a4d770436797a127a4d0cd9ea84806",
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "collation.ordinarium.qui-pridie-in-cena-domini.benziger-vatican",
+      "text": "ordinarium.qui-pridie-in-cena-domini",
+      "recension": "Holy Thursday proper Qui pridie bread-institution, selected Vatican typical-edition reproduction with occurrence-local apparatus",
+      "selected_text_sha256": "197ddc0140a83f11f5f691768dedd163ecda527fc3dc033a4e0ed8db5ccadbbd",
+      "witnesses": [
+        "witness.ordinarium.qui-pridie-in-cena-domini.mr-benziger",
+        "witness.ordinarium.qui-pridie-in-cena-domini.mr-vatican"
+      ],
+      "apparatus": {
+        "entries": 3,
+        "classes": [
+          "punctuation"
+        ]
+      },
+      "apparatus_sha256": "8a43d639ba8fad39712117a8489b412ec701d0322a51684cccce063e6dcfca58",
       "review": {
         "status": "pending"
       }

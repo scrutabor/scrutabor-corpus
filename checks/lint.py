@@ -1015,6 +1015,63 @@ def _distinct_possessive_heads(group: dict | None, neighbor: dict, words: dict) 
     )
 
 
+def _enclitic_predicate_coordination(group, segment_words):
+    """Count real coordination owned by a contiguous enclitic noun/predicate group."""
+    if not group or not group.get("gloss"):
+        return 0
+    members = group.get("words") or []
+    positions = {word["id"]: index for index, word in enumerate(segment_words)}
+    if not members or any(member not in positions for member in members):
+        return 0
+    indices = [positions[member] for member in members]
+    if indices != list(range(indices[0], indices[0] + len(indices))):
+        return 0
+    selected = [segment_words[index] for index in indices]
+    first = selected[0]
+    bare = (
+        unicodedata.normalize("NFD", first.get("form", ""))
+        .encode("ascii", "ignore")
+        .decode()
+        .lower()
+    )
+    if not (
+        bare.endswith("que")
+        and not first.get("lemma", "").lower().endswith("que")
+        and first.get("morph", {}).get("pos") in {"noun", "adj", "pron"}
+        and any(
+            word.get("morph", {}).get("pos") == "verb"
+            and word.get("morph", {}).get("mood") in {"ind", "subj"}
+            for word in selected
+        )
+    ):
+        return 0
+    return 1 + sum(
+        word.get("lemma") in {"et", "atque", "ac"} and word.get("morph", {}).get("pos") == "conj"
+        for word in selected[1:]
+    )
+
+
+def _english_coordination_count(gloss):
+    normalized = re.sub(r"\band also\b", "and", gloss.lower())
+    return len(re.findall(r"\b(?:and|also|as well|too)\b", normalized))
+
+
+def _owned_enclitic_conjunction(lang, gloss, group, neighbor, segment_words):
+    """A group's own -que does not absorb a different following conjunction."""
+    if lang != "en" or _enclitic_predicate_coordination(group, segment_words) != 1:
+        return False
+    if _english_coordination_count(gloss) != 1:
+        return False
+    positions = {word["id"]: index for index, word in enumerate(segment_words)}
+    end = positions[group["words"][-1]]
+    return (
+        end + 1 < len(segment_words)
+        and segment_words[end + 1]["id"] == neighbor["id"]
+        and neighbor.get("lemma") in {"et", "atque", "ac"}
+        and neighbor.get("morph", {}).get("pos") == "conj"
+    )
+
+
 def _internal_eternity_conjunction(lang, gloss, group, neighbor, segment_words):
     """The internal 'and' in this idiom does not translate a preceding et.
 
@@ -1083,6 +1140,14 @@ def lint_gloss(doc, text_doc):
                 for member in group.get("words", [])
             )
         }
+        if lang == "en":
+            for group in groups.values():
+                required = _enclitic_predicate_coordination(group, ws)
+                if required and _english_coordination_count(group.get("gloss", "")) < required:
+                    errors.append(
+                        f"{text_doc['id']}:{group.get('anchor')}: English gloss "
+                        "omits enclosed source conjunction coordination"
+                    )
         for i, w in enumerate(ws):
             g = effective_gloss(doc, w["id"]).strip()
             parts = [p.lower().rstrip(".,") for p in g.split()[:2]]
@@ -1128,6 +1193,7 @@ def lint_gloss(doc, text_doc):
                     and key in parts
                     and g.lower() != ng.lower()
                     and not bare.endswith(("que", "ve"))
+                    and not _owned_enclitic_conjunction(lang, g, groups.get(w["id"]), ws[j], ws)
                     and not _internal_eternity_conjunction(lang, g, groups.get(w["id"]), ws[j], ws)
                 ):
                     errors.append(
