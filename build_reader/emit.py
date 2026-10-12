@@ -8,7 +8,8 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
-from build_reader import bibliography, store
+from build_reader import bibliography, canon, store
+from kalendarium.canon import calendar_table
 
 # The reader edition's OWN version. It moves when this file changes what it
 # writes, which is a different event from the corpus changing what it stores —
@@ -34,7 +35,8 @@ from build_reader import bibliography, store
 # 5.6.0 also carries a nominative participle's understood-subject annotation.
 # 5.7.0 carries explicit same-verse source parentheses as segment ranges.
 # 5.8.0 preserves declared clausal complements separately from ordinary heads.
-SCHEMA = "5.8.0"
+# 5.9.0 adds the declared, explicit date/Mass Canon selection resource.
+SCHEMA = "5.9.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -951,6 +953,8 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
     # The three tables are written LAST because interning fills them as texts
     # are emitted, and a table written first would be the previous run's.
     (out / "tables").mkdir(parents=True, exist_ok=True)
+    calendar = kalendarium()
+    formularies = formulary_catalog(corpus)
     outputs = (
         ("tables/morphology.json", _record_array(parses.edition())),
         ("tables/analysis.json", _record_array(analyses.edition())),
@@ -960,14 +964,15 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
             "lexicon/heads.json",
             _entries_json(lexicon_slice(corpus, projection=projection)),
         ),
-        ("calendar.json", _calendar_json(kalendarium())),
+        ("calendar.json", _calendar_json(calendar)),
+        ("canon.json", canon.artifact_json(calendar_table(formularies["formularies"], calendar))),
         (
             "normalization.json",
             json.dumps(NORMALIZATION_VECTORS, ensure_ascii=False, indent=1) + "\n",
         ),
         (
             "formularies.json",
-            json.dumps(formulary_catalog(corpus), ensure_ascii=False, indent=1) + "\n",
+            json.dumps(formularies, ensure_ascii=False, indent=1) + "\n",
         ),
         (
             "metrics.json",
@@ -1106,6 +1111,7 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
         "base": {
             "concordance": "concordance.json",
             "calendar": "calendar.json",
+            "canon": "canon.json",
             "lexicon": "lexicon/heads.json",
             "morphology": "tables/morphology.json",
             "analysis": "tables/analysis.json",
@@ -1299,6 +1305,24 @@ def verify_edition_artifacts(
     errors: list[str] = []
     manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
 
+    expected_calendar = kalendarium()
+    expected_formularies = formulary_catalog(corpus)
+    errors.extend(
+        canon.verify(
+            out,
+            manifest,
+            expected_formularies,
+            expected_calendar,
+            {
+                language: set(store.language_manifest(corpus, language)["texts"])
+                for language in store.language_ids(corpus)
+            },
+            SCHEMA,
+        )
+    )
+    if errors:
+        return errors  # Canon dependencies must resolve before global index checks
+
     declared: set[str] = {"manifest.json"}
     declared.update(manifest["base"].values())
     declared.update(manifest["bibliography"].values())
@@ -1451,7 +1475,6 @@ def verify_edition_artifacts(
             )
 
     calendar = json.loads((out / manifest["base"]["calendar"]).read_text(encoding="utf-8"))
-    expected_calendar = kalendarium()
     if calendar != expected_calendar:
         errors.append(
             "calendar: " + _first_difference(expected_calendar, calendar, "emitted calendar")
@@ -1462,7 +1485,6 @@ def verify_edition_artifacts(
             errors.append(f"calendar: declared year {year} is missing or empty")
 
     formularies = json.loads((out / manifest["base"]["formularies"]).read_text(encoding="utf-8"))
-    expected_formularies = formulary_catalog(corpus)
     if formularies != expected_formularies:
         errors.append(
             "formularies: "

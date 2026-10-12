@@ -42,7 +42,7 @@ checks/, run_checks.py        mechanical validation (see below)
 ```
 
 The reader edition uses descriptive base paths (`texts/`, `tables/`,
-`lexicon/heads.json`, `calendar.json`, `formularies.json`, `metrics.json`, and
+`lexicon/heads.json`, `calendar.json`, `canon.json`, `formularies.json`, `metrics.json`, and
 `concordance.json`) and mirrors each
 published language under `languages/<lang>/`. Root and language manifests make
 the base and every language independently packageable for mobile downloads or
@@ -58,6 +58,16 @@ logical record per line. Table and text addresses come from tracked append-only 
 under `build_reader/registry/`; after adding a genuinely new record, run
 `python -m build_reader.update_registry` and review only the appended lines.
 Ordinary builds refuse to invent or renumber those addresses.
+
+Reader 5.9.0 also declares `base.canon: "canon.json"`. This independent 1.0.0
+selection table names all three Canon bodies explicitly for each represented
+civil-date/Mass pair, including ordinary bodies; absence never means ordinary.
+It uses authored Mass identities, not preface, filename or clock inference.
+The table references existing dotted text IDs, whose neutral bodies and both
+current language packages are verified by the build. Future partial packages
+retain exactly their authored coverage, without another-language fallback.
+The table carries no duplicate text,
+lexicon or bibliography content. See the Canon contract in `SCHEMA.md`.
 
 The reader also exposes a normalized bibliography catalogue, a functional
 source index, and independently loadable evidence files beside the texts that

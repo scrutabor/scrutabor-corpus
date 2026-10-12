@@ -151,6 +151,44 @@ It is the shared denominator for text, word, verse-segment, language-package,
 formulary, observance and component-use counts; consumers do not maintain
 independent copies of those totals.
 
+## Reader Canon selection
+
+Reader edition 5.9.0 adds root-manifest `base.canon: "canon.json"`. This is a
+derived selection resource, not an authored text or a change to corpus schema
+0.21.0. Its independently versioned selection schema is 1.0.0:
+
+- `schema_version`: `"1.0.0"`;
+- `roles`: the ordered strings `communicantes`, `hanc-igitur`, `qui-pridie`;
+- `profiles`: ordered records with stable `id` and a `texts` object naming
+  one existing **dotted corpus text ID** for each role;
+- `masses`: sorted authored Mass IDs (distinct from calendar keys);
+- `pairs`: sorted `[civil_date, mass_index, profile_index]` rows. Dates are
+  canonical `YYYY-MM-DD`; indexes are zero-based integers, never booleans.
+
+All represented date/Mass pairs are enumerated, including positive ordinary
+choices. An absent pair is unsupported, not an ordinary fallback. The separate
+Ordinary-only view (`missa=none`) is not a Mass and is not a table row. The
+table is not a resolver for arbitrary ferial, votive, ritual or Chrism Masses.
+Christmas night and day are distinct Mass identities, not clock-dependent
+variants. Epiphany, Ascension and octave endpoints follow the proper Canon
+rubrics, not the longer preface ranges. The table is derived from the same
+computed calendar and authored catalogue as their reader resources.
+
+The nine profiles name fourteen existing bodies, with all three roles explicit
+even when a role uses an ordinary body. No text, evidence, lexicon or localized
+wording is repeated in this resource. Body IDs resolve through the neutral
+manifest and, where authored, the selected language manifest. The current
+Polish and English packages carry every required body. A partial language
+package is required to transport the Canon bodies in its **authored** coverage;
+corrupt emitted declarations cannot erase that expectation. Partial coverage
+does not make that package a full dated-Ordo language or authorize fallback to
+another language. The ordinary build independently rebuilds
+the expected table from source inputs, rejects wrong/missing/empty/corrupt
+selection data, and checks actual body declarations, paths and identities.
+The existing full artifact and round-trip checks retain exact source parity,
+lexical coverage and bibliography/evidence closure. This contract does not
+implement client loading, caching, offline downloads or dated UI selection.
+
 ## Bibliography and evidence graph
 
 The bibliography is an identity graph rather than a list keyed by display
