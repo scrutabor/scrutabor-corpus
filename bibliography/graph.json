@@ -24277,6 +24277,27 @@
       "decision_reason": "Directly reread registered original; bounded source use only, no review or rights approval."
     },
     {
+      "id": "use.proprium.dominica-iii-post-epiphaniam-offertorium.cena-domini-reprint.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-iii-post-epiphaniam-offertorium"
+      },
+      "locator": {
+        "printed": "p. 161",
+        "scan": "leaf n240 / PDF p. 241",
+        "section": "Feria V in Cena Domini, Antiphona ad Offertorium, Ps. 117, 16 et 17",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n240/mode/1up"
+      },
+      "claim": "Holy Thursday prints this Offertory in full, identical in letters, accents and punctuation to page 46 and the selected text.",
+      "verified_on": "2026-10-11",
+      "evidence_sha256": "5d0419e327d503127da21e5a5e526659310e0ae98d0e14e43bdc03fe03ba0b21",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.dominica-iii-post-epiphaniam-offertorium.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -42641,6 +42662,27 @@
       "evidence_sha256": "e6928ea8b2c78db8649d11b3c797204ec5d5d5180730fa784124e155a34ca74e"
     },
     {
+      "id": "use.proprium.exaltatio-sanctae-crucis-graduale.cena-domini-reprint.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.exaltatio-sanctae-crucis-graduale"
+      },
+      "locator": {
+        "printed": "p. 158",
+        "scan": "leaf n237 / PDF p. 238",
+        "section": "Feria V in Cena Domini, Graduale, Phil. 2, 8-9",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n237/mode/1up"
+      },
+      "claim": "Holy Thursday prints this Gradual in full. Its letters, accents and marks equal page 669 and the selected text but for one: a colon after illum (exaltávit illum : et dedit), where page 669 and the selected text have a comma (exaltávit illum, et dedit); page 669 continues with the Alleluia, which is not part of this text.",
+      "verified_on": "2026-10-11",
+      "evidence_sha256": "4d061636327afbbf3b4e1a7e24b34c6e97d7041a2c4a35f267876e7e392f0f0a",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.exaltatio-sanctae-crucis-graduale.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -42650,12 +42692,13 @@
         "text": "proprium.exaltatio-sanctae-crucis-graduale"
       },
       "locator": {
-        "section": "pinned source key Sancti/09-14; resolved section [Graduale] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/09-14.txt [Graduale] (lines 36-36); web/www/missa/Latin/Sancti/09-14.txt [Graduale] (line 37, chars 0:88)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "bd8fe4b9db12a47593cc1b1017655c4b50d35cf891f3c173e34a5aa920f0174a"
+      "claim": "Current bounded collation of the complete selected 27-word Gradual against the pinned independently maintained Latin data; the adjacent Alleluia is excluded. The evidence digest identifies the complete Sancti/09-14 archive, not just this body.",
+      "verified_on": "2026-10-11",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "bd8fe4b9db12a47593cc1b1017655c4b50d35cf891f3c173e34a5aa920f0174a",
+      "decision_reason": "Corrects the earlier unresolved declaration with an exact Gradual-body raw binding to the already registered archive; does not assert original transcription genesis or promote pending witness/collation review."
     },
     {
       "id": "use.proprium.exaltatio-sanctae-crucis-graduale.mr1962",
@@ -42866,6 +42909,28 @@
       "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
     },
     {
+      "id": "use.proprium.feria-v-in-cena-domini-collecta.conclusion-rg115c.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.feria-v-in-cena-domini-collecta",
+        "word": "w043"
+      },
+      "locator": {
+        "printed": "p. xviii",
+        "scan": "n23 / PDF24",
+        "section": "RG115c full Qui tecum conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n23/mode/1up"
+      },
+      "claim": "Prescribes the complete conclusion supplied after the proper-page abbreviation. Its unaccented spelling and list-final semicolon remain explicit in the composite witness.",
+      "verified_on": "2026-10-11",
+      "evidence_sha256": "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.feria-v-in-cena-domini-collecta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -42895,12 +42960,14 @@
       "locator": {
         "printed": "p. 157",
         "scan": "leaf n236 / PDF p. 237",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n236/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n236/mode/1up",
+        "section": "Proper body and abbreviation only; full formula at RG115c, printed xviii / n23 / PDF24"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "5049e6b8039d495346800c9bb2575f4b8697bcd67b0193767857a04b0c06e6e8"
+      "claim": "The proper page supplies the body and Qui tecum abbreviation. The complete comparison joins that body to the exact full conclusion prescribed in RG115c, declared separately.",
+      "verified_on": "2026-10-11",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "5049e6b8039d495346800c9bb2575f4b8697bcd67b0193767857a04b0c06e6e8",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the page prints only the cue Qui tecum.; the full conclusion is the formula of Rubricae generales 115 c, declared as a separate locus."
     },
     {
       "id": "use.proprium.feria-v-in-cena-domini-collecta.oration-boundaries.mr1962",
@@ -42939,6 +43006,27 @@
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "46740acbdb28314e71415c3b57becdff07caa322feb3aa5fe454d5ce8e1017a0",
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
+    },
+    {
+      "id": "use.proprium.feria-v-in-cena-domini-communio.lotio-pedum-reprint.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.feria-v-in-cena-domini-communio"
+      },
+      "locator": {
+        "printed": "p. 159",
+        "scan": "leaf n238 / PDF p. 239",
+        "section": "Feria V in Cena Domini, De lotione pedum, Antiphona 3, Ioann. 13, 12, 13 et 15",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n238/mode/1up"
+      },
+      "claim": "The washing of the feet prints this text in full as its third antiphon, identical in letters, accents and punctuation to page 162 and the selected text, with a space before the colon after illis; its Psalm verse (Ps. 84, 2) and the repeat that follow are not part of this text.",
+      "verified_on": "2026-10-11",
+      "evidence_sha256": "10f1d48909a6af0976383f9c144036704f0d762e7b3a2d38b193d3c4c4908d53",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
     },
     {
       "id": "use.proprium.feria-v-in-cena-domini-communio.mr1962",
@@ -43054,6 +43142,27 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
+      "id": "use.proprium.feria-v-in-cena-domini-introitus.introit-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "proprium.feria-v-in-cena-domini-introitus"
+      },
+      "locator": {
+        "printed": "p. xxix",
+        "scan": "leaf n34 / PDF p. 35",
+        "section": "Rubricae generales 427–428",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "RG 427 prescribes the repeated antiphon; RG 428 omits the Gloria Patri at the Introit in the Masses of the season from Passion Sunday to Holy Thursday. Together they support this expansion of the printed cue.",
+      "verified_on": "2026-10-11",
+      "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
       "id": "use.proprium.feria-v-in-cena-domini-introitus.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -43071,6 +43180,72 @@
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "5049e6b8039d495346800c9bb2575f4b8697bcd67b0193767857a04b0c06e6e8"
+    },
+    {
+      "id": "use.proprium.feria-v-in-cena-domini-postcommunio.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.feria-v-in-cena-domini-postcommunio",
+        "word": "w021"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "section": "Postcommunio continuing Monday after the first Sunday of the Passion, above the Tuesday heading; Per Dominum nostrum through Deus.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up"
+      },
+      "claim": "This separate Postcommunion prints the accented conclusion with no comma after Christum and the colon and uppercase Qui after tuum, ending with Deus. The composite uses Iesum through Deus.; the cue words Per Dóminum nostrum come from pp. 162–163, and this page supplies neither the final duration nor Amen.",
+      "verified_on": "2026-10-11",
+      "evidence_sha256": "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.feria-v-in-cena-domini-postcommunio.conclusion-rg115a.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.feria-v-in-cena-domini-postcommunio",
+        "word": "w018"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a; Father-addressed oration conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a supplies the full Father-addressed conclusion, ending with Amen. It controls the expansion rule, not the selected composite transcript's accents or its accidental seams.",
+      "verified_on": "2026-10-11",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
+    },
+    {
+      "id": "use.proprium.feria-v-in-cena-domini-postcommunio.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.feria-v-in-cena-domini-postcommunio",
+        "word": "w035"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "section": "Top conclusion and response before the Nativity preface dialogue; Per omnia saecula saeculorum. R. Amen.",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up"
+      },
+      "claim": "The top chant line prints Per omnia saecula saeculorum and the response Amen. The composite joins musical syllable divisions and omits the response marker. Only these five words are used; the Nativity preface dialogue and body are excluded.",
+      "verified_on": "2026-10-11",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
     },
     {
       "id": "use.proprium.feria-v-in-cena-domini-postcommunio.do44667ff",
@@ -43102,13 +43277,14 @@
       "locator": {
         "printed": "pp. 162–163",
         "scan": "leaves n241–n242 / PDF pp. 242–243",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n241/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n241/mode/1up",
+        "section": "Proper body and abbreviated conclusion cue; full ending supplied from the printed formulae on pp. 123 and 226 under RG 115 a"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-25",
+      "claim": "This proper-page locus supplies the body and the abbreviated conclusion cue, not the expanded ending.",
+      "verified_on": "2026-10-11",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "0e9bb0d7ebe3535f10cfc48855eb87e8b93ee184a15787d26303cf02d8203636",
-      "decision_reason": "Locator corrected against the page image; the text is printed on the leaf now cited."
+      "decision_reason": "Corrects the use recorded 2026-09-25: the page prints only the cue Per Dóminum nostrum.; the expanded ending is taken from the edition's full printings on pp. 123 and 226, as for the other expanded conclusions."
     },
     {
       "id": "use.proprium.feria-v-in-cena-domini-postcommunio.oration-boundaries.mr1962",
@@ -43129,6 +43305,28 @@
       "evidence_sha256": "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
       "decision": "RETAIN_WITH_CORRECTION",
       "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
+    },
+    {
+      "id": "use.proprium.feria-v-in-cena-domini-secreta.conclusion-rg115c.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.feria-v-in-cena-domini-secreta",
+        "word": "w031"
+      },
+      "locator": {
+        "printed": "p. xviii",
+        "scan": "n23 / PDF24",
+        "section": "RG115c full Qui tecum conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n23/mode/1up"
+      },
+      "claim": "Prescribes the complete conclusion supplied after the proper-page abbreviation. Its unaccented spelling and list-final semicolon remain explicit in the composite witness.",
+      "verified_on": "2026-10-11",
+      "evidence_sha256": "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
     },
     {
       "id": "use.proprium.feria-v-in-cena-domini-secreta.do44667ff",
@@ -43160,12 +43358,14 @@
       "locator": {
         "printed": "p. 161",
         "scan": "leaf n240 / PDF p. 241",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n240/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n240/mode/1up",
+        "section": "Proper body and abbreviation only; full formula at RG115c, printed xviii / n23 / PDF24"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "5d0419e327d503127da21e5a5e526659310e0ae98d0e14e43bdc03fe03ba0b21"
+      "claim": "The proper page supplies the body and Qui tecum abbreviation. The complete comparison joins that body to the exact full conclusion prescribed in RG115c, declared separately.",
+      "verified_on": "2026-10-11",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "5d0419e327d503127da21e5a5e526659310e0ae98d0e14e43bdc03fe03ba0b21",
+      "decision_reason": "Corrects the use recorded 2026-09-12: the page prints only the cue Qui tecum.; the full conclusion is the formula of Rubricae generales 115 c, declared as a separate locus."
     },
     {
       "id": "use.proprium.feria-v-in-cena-domini-secreta.oration-boundaries.mr1962",
@@ -86759,12 +86959,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "becd625f7e29cd8f7813679ab68dc6d729b3c4a8e3994591070ce0ff6e55b656",
+      "transcription_sha256": "c040dadd01171752a7cf534751fd05d6357ca801a5603355a17246a9838c4d1b",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-exaltatio-sanctae-crucis-graduale"
       }
     },
     {
@@ -86955,12 +87159,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "1a0cc3bf70b75d43a3e028d95aee768519a2064279a125626c4f345c0798e7ed",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "9fe50466ff4ac14a86050d9a526e9398f18ce2605ffbab85edbb4caa7df647a0",
+      "orthography_profile": "exact-multi-locus-transcription",
+      "independence_basis": "Directly read MR1962 proper body p. 157 and its prescribed full conclusion RG115c p.xviii. Same-edition composite, not two independent printed witnesses.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.feria-v-in-cena-domini-collecta.conclusion-rg115c.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -86991,7 +87201,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "b52d137a3769d0dd1794746825d6dd1c70e2861b4c46e1f6375fef7f0feb6a63",
+      "transcription_sha256": "f7ab1fbf36c3eba54f6a34d903abf5ad1b137d57ec5983fb37981203354e1c4d",
       "orthography_profile": "exact-page-image",
       "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
       "transcription": "mr",
@@ -87027,7 +87237,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "271170c8e04c2c4cdc5c52f216c909df5cd880403231141a59158518acc7f137",
+      "transcription_sha256": "8b324f40b574d5e110736149209ee6eaa95ed487f428b12a3d9901716b319147",
       "orthography_profile": "exact-page-image",
       "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
       "transcription": "mr",
@@ -87063,7 +87273,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "8e2fe0a4767563f6aeb73351fb3223e5e1d89dc7e2143f8b2e04e9471ce4b504",
+      "transcription_sha256": "22179fb2470ddf9cff36ab591680165744b65abb504bbd9365ef407cba94b88b",
       "orthography_profile": "exact-page-image",
       "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
       "transcription": "mr",
@@ -87099,12 +87309,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "3ca5e6cc6939a656ddfa89c4068b014cd4a59d3b4f3daa65639709c94a714596",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "097949105a3ea969527e8aff9f8229177242a9198a757cbf55b790236f1a3629",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "Direct comparison with the identified Benziger 1962 proper page, with any separately declared printed formula/rubric expansions; historical preparation remains distinct from pending source review.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.feria-v-in-cena-domini-introitus.introit-expansion.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -87135,12 +87351,20 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "d856117718e62882fc49dde285b96f8ad66000981090a58050785c8ee51a3f99",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "e68619c236471dd7d1af702711d2b20bf1a0c7408c918b18869a885f78739bd3",
+      "orthography_profile": "exact-declared-composite",
+      "independence_basis": "Proper body plus prescribed full conclusion, explicitly assembled from the named loci. One controlling printed edition and one derived digital comparison; no second full printed proper witness is asserted.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.feria-v-in-cena-domini-postcommunio.conclusion-middle.mr1962",
+          "use.proprium.feria-v-in-cena-domini-postcommunio.conclusion-rg115a.mr1962",
+          "use.proprium.feria-v-in-cena-domini-postcommunio.conclusion-terminal.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -87171,12 +87395,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "93ed4c6b837875b82e7903c85697ae7b974f97116db2b3f0f4f8f97885c2828e",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "c41bcc021bcb793b8a8e6163bc387ad18289283f2842891457d84ada50c1cfcb",
+      "orthography_profile": "exact-multi-locus-transcription",
+      "independence_basis": "Directly read MR1962 proper body p. 161 and its prescribed full conclusion RG115c p.xviii. Same-edition composite, not two independent printed witnesses.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.feria-v-in-cena-domini-secreta.conclusion-rg115c.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -106068,7 +106298,7 @@
           "accent"
         ]
       },
-      "apparatus_sha256": "9d11fca3735242aa5655fe76695ffd47287ca99576f30de5e92afaae5210d497",
+      "apparatus_sha256": "42c4039c965f909e421e1a258ba2a1cd40505515d70bd37cf0a29ac65b862183",
       "review": {
         "status": "pending"
       }
@@ -113598,20 +113828,21 @@
     {
       "id": "collation.proprium.feria-v-in-cena-domini-collecta.mr1962-do44667ff",
       "text": "proprium.feria-v-in-cena-domini-collecta",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 Holy Thursday Collect in the approved Benziger printing, with its cue completed from the conclusion formula of Rubricae generales 115 c",
       "selected_text_sha256": "915b65bf6e093c034de26c776464cee1d5ca92c793c9ae9dd0eb9e3ce49921d7",
       "witnesses": [
         "witness.proprium.feria-v-in-cena-domini-collecta.do44667ff",
         "witness.proprium.feria-v-in-cena-domini-collecta.mr1962"
       ],
       "apparatus": {
-        "entries": 4,
+        "entries": 10,
         "classes": [
+          "accent",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "cb554eb7a2684457b7683815280e090a291a4931bf9635b1f78ebbea23761d91",
+      "apparatus_sha256": "81e048d1aa921c6c5552026c2d81ff34ff9a6b7914484c7b31d75c826576806d",
       "review": {
         "status": "pending"
       }
@@ -113628,12 +113859,12 @@
       "apparatus": {
         "entries": 4,
         "classes": [
-          "capital-accent",
+          "accent",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "85b6cb87b933da138df2d542c79ace11318a5400313bd65ddbdf4a1c457eae0a",
+      "apparatus_sha256": "b9c074b5bd41663c30402254e88d2c3580ea70bca47c3400778d5d55b14f232e",
       "review": {
         "status": "pending"
       }
@@ -113657,7 +113888,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "4a7b76844563278ba0d1344ed4ca4fa34211080f034530929881bf00ff64a667",
+      "apparatus_sha256": "8c26715c4794ba8c281f071c82abf2bca7011858d3ae7d3ae985bad8e758189d",
       "review": {
         "status": "pending"
       }
@@ -113675,12 +113906,11 @@
         "entries": 22,
         "classes": [
           "accent",
-          "capital-accent",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "dd1ca15498c2c14e65770f2a917dc9f3fa020e5bb9e694cbce8653dbb21b7264",
+      "apparatus_sha256": "5e31af36c16bc05c6cd496d3a527f8c8f36fcb479232ee2469f50a493c7721a0",
       "review": {
         "status": "pending"
       }
@@ -113688,7 +113918,7 @@
     {
       "id": "collation.proprium.feria-v-in-cena-domini-introitus.mr1962-do44667ff",
       "text": "proprium.feria-v-in-cena-domini-introitus",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The complete component as printed in Benziger 1962 Editio iuxta typicam, with declared house orthography; the repeated antiphon (RG 427) is a declared expansion of the printed cue, and the Gloria Patri is omitted (RG 428)",
       "selected_text_sha256": "f53dc095582851bb1199fe23464ae578e0703c1c5156bd4185cba87b40e6b5bf",
       "witnesses": [
         "witness.proprium.feria-v-in-cena-domini-introitus.do44667ff",
@@ -113709,21 +113939,21 @@
     {
       "id": "collation.proprium.feria-v-in-cena-domini-postcommunio.mr1962-do44667ff",
       "text": "proprium.feria-v-in-cena-domini-postcommunio",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 Holy Thursday Postcommunion in the approved Benziger printing, with its cue completed from the edition's own full printings of the conclusion",
       "selected_text_sha256": "2e53353477b55bcaed4ce404088b5bc6074e3db02a1a81981324324cbac22d9e",
       "witnesses": [
         "witness.proprium.feria-v-in-cena-domini-postcommunio.do44667ff",
         "witness.proprium.feria-v-in-cena-domini-postcommunio.mr1962"
       ],
       "apparatus": {
-        "entries": 5,
+        "entries": 7,
         "classes": [
           "capitalization",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "df0fe98ee10986d5fc866a836e01a3a53d3cb1bf52a0aa122f84f91f1523707c",
+      "apparatus_sha256": "6729e8874cf084d88a90076c912e3540f58b1a81ac57d879d7f74cbf726ee667",
       "review": {
         "status": "pending"
       }
@@ -113731,20 +113961,21 @@
     {
       "id": "collation.proprium.feria-v-in-cena-domini-secreta.mr1962-do44667ff",
       "text": "proprium.feria-v-in-cena-domini-secreta",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 Holy Thursday Secret in the approved Benziger printing, with its cue completed from the conclusion formula of Rubricae generales 115 c",
       "selected_text_sha256": "62f18ab37655589a2ba16d30c903dd980d5c76e47fe42ef5a3a62a15c107e7f8",
       "witnesses": [
         "witness.proprium.feria-v-in-cena-domini-secreta.do44667ff",
         "witness.proprium.feria-v-in-cena-domini-secreta.mr1962"
       ],
       "apparatus": {
-        "entries": 7,
+        "entries": 13,
         "classes": [
+          "accent",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "a868870b0668ac02204cd62bf1d7edc12e66a9225bc486a3befb3d32ee9dee07",
+      "apparatus_sha256": "f7048d1628d028b07acebbdbed026e4e62b53fbf7da77700927b6ad3010fb0e9",
       "review": {
         "status": "pending"
       }
