@@ -29,6 +29,21 @@ def realization(layer, wid):
     return direct if direct is not None else matches[0]["gloss"]
 
 
+def gloss_address(layer, wid):
+    """Mutate the actual realization, whether direct or explicitly grouped."""
+    # This is test setup, not a relaxation of the known referent checks.
+    if "gloss" in layer["words"][wid]:
+        return ["words", wid, "gloss"]
+    matches = [
+        ["segments", sid, "alignments", index, "gloss"]
+        for sid, segment in layer["segments"].items()
+        for index, alignment in enumerate(segment.get("alignments", []))
+        if wid in alignment["words"]
+    ]
+    assert len(matches) == 1
+    return matches[0]
+
+
 def context_errors(slug, language, core, layer):
     """Explicitly known sites; not automatic inference of arbitrary referents."""
     errors = []
@@ -142,6 +157,8 @@ def test_wrong_case_or_preservation_mutations_are_refused(slug, language, addres
     core, layer = subject(slug, language)
     assert context_errors(slug, language, core, layer) == []
     changed = deepcopy(layer)
+    if address[0] == "words" and address[-1] == "gloss":
+        address = gloss_address(changed, address[1])
     field = changed
     for key in address[:-1]:
         field = field[key]
