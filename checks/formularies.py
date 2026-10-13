@@ -35,6 +35,8 @@ ROLES = (
     "secreta",
     "praefatio",
     "communio",
+    "laudes-psalmus",
+    "laudes-canticum",
     "postcommunio",
 )
 RELATIONS = ("proper", "shared", "reference")

@@ -97,6 +97,10 @@ the stable dotted text id, and its relationship to this assembly:
 - `shared` is a non-Proper text such as a common preface;
 - `reference` explicitly transfers a Proper text from another formulary.
 
+The Easter Vigil additionally uses `laudes-psalmus` and `laudes-canticum`
+between `communio` and `postcommunio`. These are Office components, not
+ordinary Proper chant genera or a resolution of automatic Ordinary inclusion.
+
 Transferred parts are never inferred from a missing filename. Every Proper
 text must be reached by at least one assembly, every target must exist, and
 component order follows the order of Mass. A multi-Mass observance gives every
@@ -727,6 +731,12 @@ localization, editorial
   In a sung Passion the traditional parts use `chronista`, `christus`, and
   `synagoga`; the base speaker remains `sacerdos`, because at low Mass the
   celebrant reads the whole Passion.
+  The exact Easter Vigil Lauds texts are a separate sung Office case: all
+  their verse segments carry `delivery.cantu.voice: "cantus"`; only the
+  Benedictus antiphon's opening `s01` names `sacerdos`, and its continuation
+  `s02` names `schola`. Their base `speaker` and `voice` remain absent. The
+  other segments, including the whole antiphon reprise, have no assigned
+  performer, and no Mass participation grade is inferred for these texts.
 - Segment: **`participation`** (since 0.10.0) is who among the FAITHFUL makes
   this line, and on whose authority. `speaker` answers a different question —
   whom the Missale charges with the line — and at low Mass the answer is
@@ -1061,6 +1071,11 @@ entries{ <lemma>: { head, pos, gender?, gender_pl?, decl?, conj?, analysis? } }
   carry `conj` (omitted for irregulars such as sum, fio). These are
   auto-compared against every token's morph — the lemma layer and the token
   layer must never disagree silently.
+  The compound `iusiurandum` has two simultaneously inflected members
+  (`ius` + `iurándum`, genitive `iurisiurándi`). It carries no single `decl`
+  or `decl_alt` at either lemma or token level. This exact irregular-compound
+  exception is distinct from indeclinability; other nouns retain the ordinary
+  paradigm requirements.
 - `gender_pl`: dictionary gender of the plural where it differs (heteroclite
   cælum: `gender: "n"`, `gender_pl: "m"`) — keeps the consistency check
   strict instead of exempting the word.

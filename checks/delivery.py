@@ -15,6 +15,8 @@ from pathlib import Path
 from typing import Any
 
 from checks.layout import formatted
+from checks.office import base_errors, is_office
+from checks.office import sung_delivery as office_delivery
 from checks.orations import structure, sung_delivery
 from checks.participation import CANTU_III_PROPER, proper_genus
 
@@ -38,6 +40,8 @@ PALM_PASSION_DELIVERY = {
 
 def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
     """Return the form-specific override required by this segment."""
+    if is_office(doc):
+        return office_delivery(doc, seg)
     _, orations = structure(doc)
     if seg.get("id") in orations:
         return sung_delivery(orations[seg["id"]])
@@ -60,7 +64,7 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
 
 def check_doc(doc: dict[str, Any]) -> tuple[list[str], int]:
     """Compare stored delivery with the derived liturgical role."""
-    errors, overridden = [], 0
+    errors, overridden = base_errors(doc), 0
     for seg in doc.get("segments", []):
         want, have = derive(doc, seg), seg.get("delivery") or {}
         if want != have:
@@ -77,6 +81,14 @@ def run(write: bool = False) -> int:
     problems, written, carried = 0, 0, 0
     for path in sorted(ROOT.glob("texts/*/*.json")):
         doc = json.loads(path.read_text(encoding="utf-8"))
+        invalid_base = base_errors(doc)
+        if invalid_base:
+            problems += len(invalid_base)
+            for error in invalid_base:
+                print(f"delivery: {doc['id']} {error}")
+            # An unknown Office performer cannot be repaired by guessing.
+            # Refuse the document in write mode as well as in check mode.
+            continue
         changed = False
         for seg in doc.get("segments", []):
             want, have = derive(doc, seg), seg.get("delivery") or {}
@@ -100,8 +112,9 @@ def run(write: bool = False) -> int:
 
     if write:
         print(f"delivery: wrote {written} segments")
-        return 0
-    print(f"delivery: OK {carried} form-specific segment overrides")
+        return problems
+    verdict = "FAIL" if problems else "OK"
+    print(f"delivery: {verdict} {carried} form-specific segment overrides")
     return problems
 
 

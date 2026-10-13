@@ -45,6 +45,7 @@ import unicodedata
 from pathlib import Path
 
 from checks.attribution_alignment import AttributionAlignment, align_unmarked_reading
+from checks.office import is_office
 from checks.orations import base_attributes as oration_attributes
 from checks.raw_binding import BindingError, RawFragment, resolve_binding
 
@@ -694,6 +695,8 @@ def _propose(
     sourced: bool,
     alignment: AttributionAlignment | None,
 ) -> dict[str, dict]:
+    if is_office(doc):
+        return {}  # Office performers belong only to the source-defined sung override.
     is_mass = doc.get("category") in {"ordinarium", "proprium"}
     # The new path uses only its one verified, unmarked source line. Never
     # borrow pooled markers from other witnesses for source-specific alignment.

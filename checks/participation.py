@@ -47,6 +47,7 @@ from pathlib import Path
 from typing import Any
 
 from checks.layout import formatted
+from checks.office import is_office
 from checks.orations import genus as oration_genus
 from checks.orations import structure as oration_structure
 
@@ -187,7 +188,7 @@ def unknown_genus(doc: dict[str, Any]) -> str | None:
     silently unattributed: the law covers the whole Proper, so a piece it
     cannot place means this module is behind the corpus, not that the piece
     is nobody's."""
-    if doc.get("category") != "proprium":
+    if doc.get("category") != "proprium" or is_office(doc):
         return None
     piece = proper_genus(doc["id"])
     known = LECTA_IV_PROPER | CANTU_III_PROPER | PROPER_SPOKEN
@@ -196,7 +197,7 @@ def unknown_genus(doc: dict[str, Any]) -> str | None:
 
 def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
     """What the law gives the faithful in this segment. Empty if nothing."""
-    if doc.get("category") not in MASS_CATEGORIES or seg.get("type") == "rubric":
+    if is_office(doc) or doc.get("category") not in MASS_CATEGORIES or seg.get("type") == "rubric":
         return {}
     if oration_genus(doc):
         _, roles = oration_structure(doc)

@@ -391,7 +391,7 @@ def test_genuinely_partial_authored_package_round_trips_without_erasing_emitted_
     # wording uses; the neutral source and all other translations are unchanged.
     out = tmp_path / "partial-reader"
     written = emit.emit(source, out)
-    assert written["language_texts"] == 2233
+    assert written["language_texts"] == 2237
     assert emit.verify(source, out) == []
     package_path = out / "languages/en/manifest.json"
     package = json.loads(package_path.read_text(encoding="utf-8"))

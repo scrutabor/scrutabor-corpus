@@ -24,6 +24,10 @@ LEMMATA_ENTRY_KEYS = {
 }
 SENSE_ENTRY_KEYS = {"senses", "note", "note_citations", "derivatives", "analysis"}
 
+# Both members inflect simultaneously: ius + iurandum, iurisiurandi.
+# This is neither indeclinability nor a choice between two ordinary paradigms.
+IRREGULAR_COMPOUND_NOUNS = frozenset({"iusiurandum"})
+
 # Dictionary export notation is not a reader-facing meaning. Ordinary
 # parentheses ("shoot (of a vine)") and lexical slash alternatives remain valid.
 SENSE_APPARATUS = re.compile(
@@ -142,6 +146,11 @@ def lint_lemmata(entries):
         errors.append("lexicon: zero lemmata entries — refusing to pass on zero")
         return errors
     for lemma, e in entries.items():
+        if lemma in IRREGULAR_COMPOUND_NOUNS:
+            if e.get("pos") != "noun" or e.get("gender") != "n":
+                errors.append(f"lexicon:{lemma}: compound must be a neuter noun")
+            if "decl" in e or "decl_alt" in e:
+                errors.append(f"lexicon:{lemma}: compound has no single ordinary declension")
         unknown = set(e) - LEMMATA_ENTRY_KEYS
         if unknown:
             errors.append(f"lexicon:{lemma}: unknown keys {sorted(unknown)}")
@@ -264,6 +273,8 @@ def check_text_against_lexicon(text_doc, lemmata):
     for seg in text_doc["segments"]:
         for w in seg.get("words") or []:
             lemma, morph, wid = w["lemma"], w["morph"], w["id"]
+            if lemma in IRREGULAR_COMPOUND_NOUNS and ("decl" in morph or "decl_alt" in morph):
+                errors.append(f"{tid}:{wid}: compound has no single ordinary declension")
             e = lemmata.get(lemma)
             if e is None:
                 errors.append(f"{tid}:{wid}: lemma {lemma!r} has no lexicon entry")
@@ -531,6 +542,8 @@ def check_paradigm(lemmata: dict) -> list[str]:
     entries = lemmata.get("entries") if "entries" in lemmata else lemmata
     errors = []
     for name, entry in sorted((entries or {}).items()):
+        if name in IRREGULAR_COMPOUND_NOUNS and ("decl" in entry or "decl_alt" in entry):
+            errors.append(f"lexicon:{name}: compound has no single ordinary declension")
         pos = entry.get("pos")
         parts = entry.get("head", "").split(", ")
         if pos == "verb" and entry.get("conj") == 3 and len(parts) > 1:
@@ -542,7 +555,11 @@ def check_paradigm(lemmata: dict) -> list[str]:
                 )
         if pos == "verb" and name == "odi" and "conj" in entry:
             errors.append("lexicon:odi: defective paradigm has no numbered conjugation; omit conj")
-        if pos == "noun" and "decl" not in entry and name not in INDECLINABLE:
+        if (
+            pos == "noun"
+            and "decl" not in entry
+            and name not in INDECLINABLE | IRREGULAR_COMPOUND_NOUNS
+        ):
             errors.append(
                 f"lexicon:{name}: a noun with no declension recorded — add it, or name "
                 f"the word in INDECLINABLE if it has none"

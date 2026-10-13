@@ -27,6 +27,11 @@ WORDING_BASIS = "historical_wording_basis"
 ORIGINS = frozenset(("working-unsettled", "own", "public-domain", "traditional", "trivial"))
 REVIEWS = frozenset(("working", "internally-reviewed", "expert-reviewed"))
 
+PROTECTED_PL_SEGMENTS = {
+    "proprium.vigilia-paschalis-laudes-psalmus": frozenset({"s07", "s08"}),
+    "proprium.vigilia-paschalis-laudes-canticum": frozenset({"s15", "s16"}),
+}
+
 PROTECTED_PL_TEXTS = frozenset(
     {
         "defunctorum.requiem-aeternam",
@@ -134,9 +139,9 @@ def source_payload(segment: dict) -> dict:
     }
 
 
-def protected(text_id: str, language: str) -> bool:
+def protected(text_id: str, language: str, segment_id: str | None = None) -> bool:
     if language == "pl":
-        return text_id in PROTECTED_PL_TEXTS
+        return text_id in PROTECTED_PL_TEXTS or segment_id in PROTECTED_PL_SEGMENTS.get(text_id, ())
     if language == "en":
         return text_id in PROTECTED_EN_TEXTS
     return False
@@ -183,7 +188,7 @@ def corpus_sites(corpus: Path) -> dict[str, dict]:
                     "text": doc["id"],
                     "segment": segment["id"],
                     "language": language,
-                    "familiar_core": protected(doc["id"], language),
+                    "familiar_core": protected(doc["id"], language, segment["id"]),
                     "source_sha256": canonical_hash(source_payload(segment)),
                     "target_sha256": canonical_hash(target),
                     # Legacy attachments remain a frozen compatibility input;

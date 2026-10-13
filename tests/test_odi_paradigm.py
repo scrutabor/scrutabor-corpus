@@ -9,6 +9,7 @@ import pytest
 from checks.lexicon import check_paradigm, check_text_against_lexicon, load_lexicon
 
 ROOT = Path(__file__).resolve().parents[1]
+LAUDS_PATH = "texts/proprium/vigilia-paschalis-laudes-canticum.json"
 EXPECTED = [
     (
         "texts/proprium/dominica-ii-post-epiphaniam-epistola.json",
@@ -316,10 +317,33 @@ def test_odi_inventory_and_existing_group():
             for word in segment.get("words", []):
                 if word["lemma"] == "odi":
                     found.append((str(path.relative_to(ROOT)), word["id"]))
-    assert found == [(row[0], row[1]) for row in EXPECTED]
+    assert found == [(row[0], row[1]) for row in EXPECTED] + [(LAUDS_PATH, "w055")]
     layer = read("languages/en/texts/proprium/dominica-xxiii-post-pentecosten-graduale.json")
     group = next(g for g in layer["segments"]["s01"]["alignments"] if "w011" in g["words"])
     assert group == {"words": ["w010", "w011"], "anchor": "w011", "gloss": "hate us"}
+
+
+def test_lauds_odi_keeps_present_meaning_without_inheriting_old_review_evidence():
+    doc = read(LAUDS_PATH)
+    word = next(w for s in doc["segments"] for w in s.get("words", []) if w["id"] == "w055")
+    assert word["form"] == "odérunt"
+    assert word["lemma"] == "odi"
+    assert word["morph"] == {
+        "pos": "verb",
+        "tense": "perf",
+        "mood": "ind",
+        "voice": "act",
+        "person": 3,
+        "number": "pl",
+    }
+    assert doc["editorial"]["words"]["w055"]["analysis"] == {
+        "confidence": "medium",
+        "sources": ["whitakers"],
+        "review": "pending",
+    }
+    assert read("languages/pl/" + LAUDS_PATH)["words"]["w055"]["gloss"] == "nienawidzą"
+    assert read("languages/en/" + LAUDS_PATH)["words"]["w055"]["gloss"] == "hate"
+    assert check_text_against_lexicon(doc, read("lexicon/lemmata.json")["entries"]) == []
 
 
 @pytest.mark.parametrize("number", [1, 2, 3, 4])
