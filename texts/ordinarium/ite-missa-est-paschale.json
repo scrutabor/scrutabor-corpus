@@ -1,0 +1,117 @@
+{
+  "schema_version": "0.21.0",
+  "id": "ordinarium.ite-missa-est-paschale",
+  "title": "Ite, missa est, allelúia, allelúia",
+  "category": "ordinarium",
+  "section": "missa-fidelium",
+  "variant": "paschale",
+  "sung": true,
+  "ids": {
+    "next": 16,
+    "segments": {
+      "next": 8
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Deinde celebrans dicit:"
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "words": [
+        { "id": "w001", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w002", "form": "vobíscum", "post": ".", "lemma": "vos", "morph": { "pos": "pron", "case": "abl", "number": "pl" } }
+      ],
+      "delivery": {
+        "cantu": {
+          "voice": "cantus",
+          "speaker": "sacerdos"
+        }
+      }
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "words": [
+        { "id": "w003", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w004", "form": "cum", "lemma": "cum", "morph": { "pos": "prep", "governs": "abl" }, "head": "w005" },
+        { "id": "w005", "form": "spíritu", "lemma": "spiritus", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "m", "decl": 4 } },
+        { "id": "w006", "form": "tuo", "post": ".", "lemma": "tuus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "m" }, "head": "w005" }
+      ],
+      "delivery": {
+        "cantu": {
+          "voice": "cantus",
+          "speaker": "omnes"
+        }
+      }
+    },
+    {
+      "id": "s04",
+      "type": "rubric",
+      "text": "Et diaconus, vertens se ad populum, seu ipse sacerdos, cantat:"
+    },
+    {
+      "id": "s05",
+      "type": "verse",
+      "words": [
+        { "id": "w007", "form": "Ite", "post": ",", "lemma": "eo", "morph": { "pos": "verb", "person": 2, "number": "pl", "tense": "pres", "mood": "imp", "voice": "act" } },
+        { "id": "w008", "form": "missa", "lemma": "missa", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w009", "form": "est", "post": ",", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "ind", "voice": "act" } },
+        { "id": "w012", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w013", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "delivery": {
+        "cantu": {
+          "voice": "cantus"
+        }
+      }
+    },
+    {
+      "id": "s06",
+      "type": "verse",
+      "words": [
+        { "id": "w010", "form": "Deo", "lemma": "deus", "morph": { "pos": "noun", "case": "dat", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w011", "form": "grátias", "post": ",", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
+        { "id": "w014", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "," },
+        { "id": "w015", "form": "allelúia", "lemma": "alleluia", "morph": { "pos": "intj" }, "post": "." }
+      ],
+      "delivery": {
+        "cantu": {
+          "voice": "cantus",
+          "speaker": "omnes"
+        }
+      }
+    },
+    {
+      "id": "s07",
+      "type": "rubric",
+      "text": "Infra octavam Paschatis, in Missis de Tempore, ad Ite, missa est et ad sequens Deo gratias duplex additur Alleluia."
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The Paschal dismissal and response each add two Alleluias. The sung dismissal is assigned to the deacon or celebrant by its rubric; no sole dismissal performer or low-Mass delivery is inferred.",
+    "source": {
+      "method": "The complete final greeting, dismissal and response follow the 1962 Roman Missal, checked against the Benziger edition and the separate Vatican setting. The temporal-octave restriction follows Rubricae generales 507 b.",
+      "witnesses": "witnesses/ordinarium.ite-missa-est-paschale/",
+      "apparatus": "witnesses/ordinarium.ite-missa-est-paschale/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+    "words": {
+      "w002": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers"], "review": "pending" } },
+      "w008": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "disputed" } }
+    }
+  },
+  "localization": {
+    "about": true,
+    "explanations": {
+      "w011": {
+
+      }
+    },
+    "notes": ["w008"]
+  }
+}

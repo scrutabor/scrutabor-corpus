@@ -201,7 +201,7 @@ def test_clause_field_cannot_be_hidden_on_a_nonpreposition():
 
 
 def test_clause_relation_survives_reader_transport_without_inventing_an_antecedent():
-    assert SCHEMA == "5.9.0"
+    assert SCHEMA == "5.10.0"
     stored = subject_clause()
     doc = deepcopy(stored)
     doc.pop("localization")

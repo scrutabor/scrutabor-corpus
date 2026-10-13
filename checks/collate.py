@@ -391,6 +391,19 @@ def collate(doc, witness_dir: Path):
                 errors.append(f"apparatus text must be {doc['id']!r}")
         elif declared_apparatus is not None:
             errors.append(f"source.apparatus points to missing file {declared_apparatus!r}")
+    from checks.ritual import execution
+
+    selected_count = len(toks)
+    try:
+        performed = execution(doc, apparatus)
+    except ValueError as error:
+        errors.append(str(error))
+        performed = None
+    if performed:
+        literal_ids = set(performed["literal_words"])
+        toks = [(identifier, face) for identifier, face in toks if identifier in literal_ids]
+        ours_raw = [t for _, t in toks]
+        ours_sub = substantive(" ".join(ours_raw)).split()
     entries = apparatus.get("adjudicated")
     if not isinstance(entries, list):
         errors.append("apparatus.adjudicated must be an array")
@@ -772,7 +785,7 @@ def collate(doc, witness_dir: Path):
     stats = {
         "witnesses": len(witness_files) - n_partial,
         "partial": n_partial,
-        "words": len(toks),
+        "words": selected_count,
         "variants_adjudicated": n_variants,
         "corrigenda": n_corrigenda,
         "orthographic": n_orthographic,
@@ -782,4 +795,6 @@ def collate(doc, witness_dir: Path):
         "recensions": n_recensions,
         "omissions": n_omissions,
     }
+    if performed:
+        stats.update(literal_words=len(toks), derived_words=selected_count - len(toks))
     return errors, warnings, stats

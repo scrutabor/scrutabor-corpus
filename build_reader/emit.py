@@ -8,8 +8,9 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
-from build_reader import bibliography, canon, store
+from build_reader import bibliography, canon, dismissal, store
 from kalendarium.canon import calendar_table
+from kalendarium.dismissal import calendar_table as dismissal_table
 
 # The reader edition's OWN version. It moves when this file changes what it
 # writes, which is a different event from the corpus changing what it stores —
@@ -36,7 +37,7 @@ from kalendarium.canon import calendar_table
 # 5.7.0 carries explicit same-verse source parentheses as segment ranges.
 # 5.8.0 preserves declared clausal complements separately from ordinary heads.
 # 5.9.0 adds the declared, explicit date/Mass Canon selection resource.
-SCHEMA = "5.9.0"
+SCHEMA = "5.10.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -846,6 +847,7 @@ def update_registry(corpus: Path) -> dict[str, int]:
 
 def emit(corpus: Path, out: Path) -> dict[str, Any]:
     """Write the whole reader edition. Returns what it wrote."""
+    dismissal.input_bodies(corpus)
     corpus_docs = read_corpus(corpus)
     evidence_graph, language_evidence = bibliography.load(corpus)
     evidence_errors = bibliography.validate(corpus, evidence_graph, language_evidence)
@@ -966,6 +968,12 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
         ),
         ("calendar.json", _calendar_json(calendar)),
         ("canon.json", canon.artifact_json(calendar_table(formularies["formularies"], calendar))),
+        (
+            "dismissal.json",
+            canon.artifact_json(
+                dismissal_table(formularies["formularies"], calendar, corpus=corpus)
+            ),
+        ),
         (
             "normalization.json",
             json.dumps(NORMALIZATION_VECTORS, ensure_ascii=False, indent=1) + "\n",
@@ -1112,6 +1120,7 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
             "concordance": "concordance.json",
             "calendar": "calendar.json",
             "canon": "canon.json",
+            "dismissal": "dismissal.json",
             "lexicon": "lexicon/heads.json",
             "morphology": "tables/morphology.json",
             "analysis": "tables/analysis.json",
@@ -1320,6 +1329,7 @@ def verify_edition_artifacts(
             SCHEMA,
         )
     )
+    errors.extend(dismissal.verify(corpus, out, manifest, SCHEMA))
     if errors:
         return errors  # Canon dependencies must resolve before global index checks
 

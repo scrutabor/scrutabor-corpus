@@ -695,6 +695,13 @@ def _propose(
     sourced: bool,
     alignment: AttributionAlignment | None,
 ) -> dict[str, dict]:
+    from checks import ritual
+
+    if doc.get("id") in ritual.TEXTS:
+        errors = ritual.base_errors(doc)
+        if errors:
+            raise ValueError("; ".join(errors))
+        return {}  # Exact sung source roles are not low-Mass attributions.
     if is_office(doc):
         return {}  # Office performers belong only to the source-defined sung override.
     is_mass = doc.get("category") in {"ordinarium", "proprium"}

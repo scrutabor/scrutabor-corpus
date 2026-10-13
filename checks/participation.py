@@ -197,6 +197,10 @@ def unknown_genus(doc: dict[str, Any]) -> str | None:
 
 def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
     """What the law gives the faithful in this segment. Empty if nothing."""
+    from checks import ritual
+
+    if doc.get("id") in ritual.TEXTS:
+        return {}  # Source performers do not establish an unsupported Mass degree.
     if is_office(doc) or doc.get("category") not in MASS_CATEGORIES or seg.get("type") == "rubric":
         return {}
     if oration_genus(doc):
@@ -276,6 +280,14 @@ def run(write: bool = False) -> int:
     problems, written, carried = 0, 0, 0
     for path in _texts():
         doc = json.loads(path.read_text(encoding="utf-8"))
+        from checks import ritual
+
+        invalid = ritual.base_errors(doc)
+        if invalid:
+            problems += len(invalid)
+            for error in invalid:
+                print(f"participation: {doc['id']} {error}")
+            continue
         changed = False
         for seg in doc.get("segments", []):
             want, have = derive(doc, seg), seg.get("participation")
@@ -313,7 +325,9 @@ if __name__ == "__main__":
 
 def check_doc(doc: dict[str, Any]) -> tuple[list[str], int]:
     """For run_checks: what this text carries against what the law gives."""
-    errors, attributed = [], 0
+    from checks import ritual
+
+    errors, attributed = ritual.base_errors(doc), 0
     stray = unknown_genus(doc)
     if stray:
         errors.append(

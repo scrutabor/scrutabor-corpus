@@ -279,6 +279,28 @@ def _witness_subject(
         "source_uses": {witness["use"]: primary},
         "selected_text": selected_text(doc),
     }
+    # Optional means absent, not null: unrelated historical subjects retain
+    # their exact byte identity and do not acquire a new review dependency.
+    from checks.ritual import ALLELUIA, RUBRIC_SOURCES, execution
+
+    if text_id == ALLELUIA:
+        apparatus = _json(_confined(root, f"witnesses/{text_id}/apparatus.json"))
+        try:
+            mapping = execution(doc, apparatus)
+        except ValueError as exc:
+            raise BindingError(str(exc)) from exc
+        if mapping is None:
+            raise BindingError("affected Alleluia requires its execution mapping")
+        rubric_use = mapping["rubric_uses"].get(name)
+        dependencies = source_dependencies(witness)
+        if rubric_use not in dependencies["uses"]:
+            raise BindingError("execution rubric use is missing from witness source dependencies")
+        use = _lookup(snapshot.uses, rubric_use, "execution rubric source")
+        if any(use.get(key) != value for key, value in RUBRIC_SOURCES[name].items()):
+            raise BindingError(
+                "execution rubric source differs from its exact inspected source/use"
+            )
+        subject["ritual_execution"] = mapping
     if not reviewable and "source_dependencies" not in witness:
         return deepcopy(subject)
     declaration = source_dependencies(witness)

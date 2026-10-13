@@ -193,6 +193,26 @@ The existing full artifact and round-trip checks retain exact source parity,
 lexical coverage and bibliography/evidence closure. This contract does not
 implement client loading, caching, offline downloads or dated UI selection.
 
+## Reader dismissal selection
+
+Reader edition 5.10.0 adds `base.dismissal: "dismissal.json"`, independently
+versioned selection schema 1.0.0. Exact fields are `schema_version`, `role`
+(`ite-missa-est`), `profiles`, `masses`, and `pairs`. Two ordered profiles name
+the dotted bodies explicitly: ordinary → `ordinarium.ite-missa-est`, paschale
+→ `ordinarium.ite-missa-est-paschale`. Mass IDs are sorted unique nonempty
+authored identities; pair rows are sorted unique `[YYYY-MM-DD, mass, profile]`
+with canonical dates and nonnegative integer indexes (never booleans).
+
+Every represented pair has an explicit decision. The named Vigil at Easter−1
+and De Tempore Masses at Easter0–6 use paschale; Low Sunday and sanctoral
+coincidences do not. Ordinary-only `none` bypasses this resource; unsupported
+pairs do not fall back. The producer establishes canonical validity by exact
+typed input equality with a fresh reconstruction from the existing Roman
+calendar and authored catalogue. The artifact verifier independently iterates
+the canonical days and Masses without calling the producer selector. Both
+neutral and current PL/EN packages must declare and transport both complete
+bodies. Missing resource, body or localized declaration fails closed.
+
 ## Bibliography and evidence graph
 
 The bibliography is an identity graph rather than a list keyed by display
@@ -885,6 +905,26 @@ about a particular celebration — every one of these is spoken at a low
 Mass, and much else is sung at a solemn one. The chant policy (v1 carries
 the texts, not the notation) is what this field serves: it says which
 texts a reader will meet as music.
+
+### Rubric-derived ritual execution
+
+An optional `ritual_execution` object in the Alleluia apparatus has version
+1.0.0 and the exact rule `paschal-three-intonations-with-responses`. It binds
+32 ordered literal word IDs, written source word w001, six ordered performed
+IDs w001/w033–w037, alternating sacerdos/omnes roles, rubric s01 and exact
+same-edition rubric-use dependencies for each literal transcription. This is
+a supported exact-text rule, not an arbitrary repetition/omission facility.
+The collation compares the collapsed literal32 while reporting selected37 and
+derived5 separately. Neither raw witness, raw registry nor literal transcript
+is expanded. A reading/span ruling cannot manufacture these five occurrences.
+Missing, duplicated, misordered, wrong-source or wrong-role maps fail.
+
+Only affected witness subjects bind this optional object: unrelated subjects
+do not acquire a null dependency or new digest. The complete apparatus digest
+also binds it in the affected collation. Changed dependencies return affected
+reviews to pending; recomputed hashes are not editorial approval. Public source
+claims distinguish written wording from ritual performance; pending witnesses
+remain withheld from the reviewed-witness projection.
 
 ### Apparatus classes
 

@@ -14,6 +14,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from checks import ritual
 from checks.layout import formatted
 from checks.office import base_errors, is_office
 from checks.office import sung_delivery as office_delivery
@@ -40,6 +41,8 @@ PALM_PASSION_DELIVERY = {
 
 def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
     """Return the form-specific override required by this segment."""
+    if doc.get("id") in ritual.TEXTS:
+        return ritual.delivery(doc, seg)
     if is_office(doc):
         return office_delivery(doc, seg)
     _, orations = structure(doc)
@@ -64,7 +67,7 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
 
 def check_doc(doc: dict[str, Any]) -> tuple[list[str], int]:
     """Compare stored delivery with the derived liturgical role."""
-    errors, overridden = base_errors(doc), 0
+    errors, overridden = base_errors(doc) + ritual.base_errors(doc), 0
     for seg in doc.get("segments", []):
         want, have = derive(doc, seg), seg.get("delivery") or {}
         if want != have:
@@ -81,7 +84,7 @@ def run(write: bool = False) -> int:
     problems, written, carried = 0, 0, 0
     for path in sorted(ROOT.glob("texts/*/*.json")):
         doc = json.loads(path.read_text(encoding="utf-8"))
-        invalid_base = base_errors(doc)
+        invalid_base = base_errors(doc) + ritual.base_errors(doc)
         if invalid_base:
             problems += len(invalid_base)
             for error in invalid_base:

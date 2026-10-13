@@ -28,6 +28,7 @@ ORIGINS = frozenset(("working-unsettled", "own", "public-domain", "traditional",
 REVIEWS = frozenset(("working", "internally-reviewed", "expert-reviewed"))
 
 PROTECTED_PL_SEGMENTS = {
+    "ordinarium.ite-missa-est-paschale": frozenset({"s02", "s03", "s05", "s06"}),
     "proprium.vigilia-paschalis-laudes-psalmus": frozenset({"s07", "s08"}),
     "proprium.vigilia-paschalis-laudes-canticum": frozenset({"s15", "s16"}),
 }
