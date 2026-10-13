@@ -23,6 +23,15 @@ class BindingError(ValueError):
 
 
 @dataclass(frozen=True)
+class RawFraming:
+    start: int
+    end: int
+    text: str
+    kind: str
+    reason: str
+
+
+@dataclass(frozen=True)
 class RawFragment:
     path: Path
     line: int
@@ -35,6 +44,7 @@ class RawFragment:
     partial_contract: bool = False
     binding_id: str | None = None
     marker_scope_verified: bool = True
+    framing: tuple[RawFraming, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -118,8 +128,12 @@ def load_registry(root: Path) -> dict:
         fields = {"witness", "revision", "evidence", "references", "reading"}
         if isinstance(binding, dict) and "contract" in binding:
             fields.add("contract")
-            if binding["contract"] != "raw-reading-2":
+            if binding["contract"] not in ("raw-reading-2", "raw-reading-3"):
                 raise BindingError("unsupported per-binding contract")
+            if binding["contract"] == "raw-reading-3":
+                fields.add("framing")
+                if not isinstance(binding.get("framing"), list) or not binding["framing"]:
+                    raise BindingError("raw-reading-3 requires nonempty explicit framing")
         _keys(binding, fields, key)
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", key):
             raise BindingError(f"invalid binding ID: {key}")
@@ -222,7 +236,38 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
         raise BindingError("witness revision differs from its raw binding")
     archives = registry["archives"]
     used_archives: set[str] = set()
-    partial_contract = binding.get("contract") == "raw-reading-2"
+    framed_contract = binding.get("contract") == "raw-reading-3"
+    partial_contract = binding.get("contract") in {"raw-reading-2", "raw-reading-3"}
+    framing = {}
+    framing_order = []
+    for item in binding.get("framing", []):
+        _keys(item, {"archive", "line", "start", "end", "text", "kind", "reason"}, "framing")
+        _, lines = snapshot._archive(item["archive"], binding["revision"])
+        number, start, end = item["line"], item["start"], item["end"]
+        if (
+            type(number) is not int
+            or not 1 <= number <= len(lines)
+            or type(start) is not int
+            or type(end) is not int
+        ):
+            raise BindingError("invalid framing coordinates")
+        line = lines[number - 1]
+        if (
+            not 0 < start < end == len(line)
+            or end - start != 1
+            or item["text"] != "~"
+            or line[start:end] != item["text"]
+            or item["kind"] != "terminal-continuation-tilde"
+            or not (line[start - 1].isalpha() or line[start - 1] in ",.!?;:")
+            or not isinstance(item["reason"], str)
+            or not item["reason"].strip()
+        ):
+            raise BindingError("framing must assert one exact terminal continuation tilde")
+        key = (item["archive"], number)
+        if key in framing:
+            raise BindingError("duplicate framing declaration")
+        framing[key] = RawFraming(start, end, item["text"], item["kind"], item["reason"])
+        framing_order.append((item["archive"], number, 0, len(line)))
 
     def bounds(item):
         path, lines = snapshot._archive(item["archive"], binding["revision"])
@@ -238,6 +283,8 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
             fields |= {"section", "section_line"}
         sliced = isinstance(item, dict) and "fragment" in item
         if sliced:
+            if framed_contract:
+                raise BindingError("raw-reading-3 framing requires whole physical lines")
             if not partial_contract:
                 raise BindingError("partial fragment requires raw-reading-2")
             fields.add("fragment")
@@ -288,7 +335,10 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
                     raise BindingError("ambiguous inline source marker")
             raw = line[start:end]
             body = re.sub(r"^[SMVROsmvro]\.\s+", "", raw.strip()) if start == 0 else raw.strip()
-            if sliced and not body:
+            applied = framing.get((item["archive"], number))
+            if applied is not None:
+                body = body[:-1]
+            if (sliced or applied is not None) and not body:
                 raise BindingError("empty textual fragment")
             result.append(
                 RawFragment(
@@ -306,6 +356,7 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
                     or marker is None
                     or start == 0
                     or (prefix is not None and start == prefix.end()),
+                    (applied,) if applied is not None else (),
                 )
             )
         return path, lines, first, last, result
@@ -355,6 +406,13 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
             for b in expected_order[index + 1 :]
         ):
             raise BindingError("overlapping textual fragments")
+
+    if framed_contract:
+        if any(coordinate not in expected_text for coordinate in framing_order):
+            raise BindingError("framing is not fully selected textual evidence")
+        indexes = [expected_order.index(coordinate) for coordinate in framing_order]
+        if indexes != sorted(indexes):
+            raise BindingError("framing declarations reorder source evidence")
 
     seen = set()
     for reference in binding["references"]:
@@ -425,6 +483,8 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
             coordinate = (item["archive"], fragment.line, fragment.start, fragment.end)
             if coordinate not in expected_text:
                 raise BindingError("reading contains framing or lies outside textual evidence")
+            if framed_contract and "~" in fragment.text:
+                raise BindingError("reading contains undeclared continuation framing")
             actual_text[coordinate] += 1
             actual_order.append(coordinate)
             output.append(fragment.text)
@@ -448,7 +508,7 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
     if not body or body != reading:
         raise BindingError("transcription differs from its exact ordered raw reading")
     source = {
-        "contract": "raw-reading-2" if partial_contract else "raw-reading-1",
+        "contract": binding.get("contract", "raw-reading-1"),
         "registry_version": registry["version"],
         "binding_id": markers[0],
         "transcription_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
@@ -467,6 +527,22 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
                 "marker": f.marker,
                 "whole_line": f.whole_line,
                 "marker_scope_verified": f.marker_scope_verified,
+                **(
+                    {
+                        "framing": [
+                            {
+                                "start": c.start,
+                                "end": c.end,
+                                "text": c.text,
+                                "kind": c.kind,
+                                "reason": c.reason,
+                            }
+                            for c in f.framing
+                        ]
+                    }
+                    if framed_contract
+                    else {}
+                ),
             }
             for f in resolved
         ]

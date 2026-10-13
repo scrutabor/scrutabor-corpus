@@ -434,8 +434,12 @@ def _source_ranges(text_id: str) -> list[tuple[Path | RawFragment, int, int, boo
 def witness_ranges(text_id: str) -> list[tuple[Path, int, int]]:
     """(raw file, first line, last line) for every declared source span."""
     ranges = _source_ranges(text_id)
-    if any(isinstance(raw, RawFragment) and not raw.whole_line for raw, *_ in ranges):
-        raise BindingError("partial source evidence cannot be represented as whole-line ranges")
+    if any(
+        isinstance(raw, RawFragment) and (not raw.whole_line or raw.framing) for raw, *_ in ranges
+    ):
+        raise BindingError(
+            "partial or framed source evidence cannot be represented as whole-line ranges"
+        )
     # Preserve original grouping for legacy callers; no partial range is exposed.
     out: list[tuple[Path, int, int]] = []
     wdir = CORPUS / "witnesses" / text_id

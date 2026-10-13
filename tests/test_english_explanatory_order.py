@@ -390,10 +390,10 @@ CONSTRUCTIONS = [
         "w075",
         "for He Himself will save",
     ),
-    (TEXTS[106], "s01", "w026", ["w025", "w026"], "w025", "For you are dead"),
+    (TEXTS[106], "s01", "w026", ["w025", "w026", "w027"], "w025", "For you have died"),
     (TEXTS[107], "s01", "w024", ["w023", "w024"], "w023", "For an angel"),
     (TEXTS[107], "s01", "w069", ["w068", "w069"], "w068", "for I know"),
-    (TEXTS[107], "s01", "w080", ["w079", "w080"], "w079", "for He is risen"),
+    (TEXTS[107], "s01", "w080", ["w079", "w080"], "w079", "for He has risen"),
     (TEXTS[108], "s01", "w044", ["w043", "w044"], "w043", "For now"),
     (TEXTS[108], "s01", "w101", ["w100", "w101", "w102"], "w100", "for your voice"),
     (TEXTS[109], "s01", "w068", ["w067", "w068"], "w067", "For behold"),
@@ -586,12 +586,18 @@ def test_explanatory_readings_pass_language_checks(text):
     assert not lint.lint_gloss(en, doc)
 
 
-def test_colossians_state_retains_separate_zero_copula():
+def test_colossians_perfect_retains_one_realized_auxiliary():
     doc, layers = reading("proprium.vigilia-paschalis-epistola")
     en = layers["en"]
     word = next(w for s in doc["segments"] for w in s.get("words", []) if w["id"] == "w025")
-    assert word["lemma"] == "mortuus" and word["morph"]["pos"] == "adj"
-    assert {"words": ["w027"], "reason": "inflection"} in en["segments"]["s01"]["alignments"]
+    assert word["lemma"] == "morior" and word["morph"]["mood"] == "part"
+    assert word["morph"]["tense"] == "perf"
+    assert_construction(
+        doc, en, "s01", "w026", ["w025", "w026", "w027"], "w025", "For you have died"
+    )
+    assert not any(
+        g.get("reason") for g in en["segments"]["s01"]["alignments"] if "w027" in g["words"]
+    )
     assert "gloss" not in en["words"]["w027"]
 
 

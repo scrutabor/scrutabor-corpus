@@ -38,7 +38,7 @@
         { "id": "w017", "form": "Dóminum", "lemma": "dominus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w018", "form": "nostrum", "lemma": "noster", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "m" }, "head": "w017" },
         { "id": "w019", "form": "Iesum", "lemma": "Iesus", "morph": { "case": "acc", "gender": "m", "number": "sg", "pos": "noun" } },
-        { "id": "w020", "form": "Christum", "lemma": "Christus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
+        { "id": "w020", "form": "Christum", "lemma": "Christus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w021", "form": "Fílium", "lemma": "filius", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w022", "form": "tuum", "lemma": "tuus", "morph": { "pos": "adj", "case": "acc", "gender": "m", "number": "sg" }, "post": ":", "head": "w021" },
         { "id": "w023", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
@@ -50,7 +50,7 @@
         { "id": "w029", "form": "unitáte", "lemma": "unitas", "morph": { "case": "abl", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w030", "form": "eiúsdem", "lemma": "idem", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" } },
         { "id": "w031", "form": "Spíritus", "lemma": "spiritus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 4 } },
-        { "id": "w032", "form": "Sancti", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "post": ",", "head": "w031" },
+        { "id": "w032", "form": "Sancti", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w031" },
         { "id": "w033", "form": "Deus", "lemma": "deus", "morph": { "pos": "noun", "case": "nom", "gender": "m", "number": "sg", "decl": 2 }, "post": "," },
         { "id": "w034", "form": "per", "lemma": "per", "morph": { "governs": "acc", "pos": "prep" }, "head": "w036" },
         { "id": "w035", "form": "ómnia", "lemma": "omnis", "morph": { "pos": "adj", "case": "acc", "number": "pl", "gender": "n" }, "head": "w036" },
@@ -94,7 +94,7 @@
     "status": "working-edition",
     "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the approved 1962 Benziger printing.",
     "source": {
-      "method": "Transcribed from the directly viewed page image of the Benziger Brothers 1962 Editio iuxta typicam and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "Controlling Latin is based on the Benziger Brothers 1962 Editio iuxta typicam page images. A same-recension digital comparison is reconstructed from Divinum Officium revision44667ff518b8ff1439780470828b39714f5306a2; its dependent fragments and explicit conclusion expansions are identified in the witness headers. Transcription lineage independence is not asserted. Source-binding review remains pending.",
       "witnesses": "witnesses/proprium.vigilia-paschalis-postcommunio/",
       "apparatus": "witnesses/proprium.vigilia-paschalis-postcommunio/apparatus.json"
     },
@@ -109,6 +109,20 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w006": {
+        "languages": ["en"]
+      },
+      "w007": {
+        "languages": ["pl"]
+      },
+      "w013": {
+        "languages": ["en"]
+      },
+      "w033": {
+        "languages": ["en"]
+      }
+    }
   }
 }

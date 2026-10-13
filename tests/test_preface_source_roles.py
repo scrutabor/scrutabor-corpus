@@ -110,8 +110,15 @@ def check_primary(data, slug):
         date = "2026-09-12"
     if slug in {*EASTER, "communis", "sacratissimi-cordis-iesu"}:
         date = "2026-09-25"
+    if slug == "paschalis-in-nocte":
+        date = "2026-10-13"
     assert value["verified_on"] == date
-    if slug in {*EASTER, "sacratissimi-cordis-iesu"}:
+    if slug == "paschalis-in-nocte":
+        assert value["decision_reason"] == (
+            "Authority role narrowed to the approved Editio iuxta typicam; full-body "
+            "and framing claims corrected without granting source-review acceptance."
+        )
+    elif slug in {*EASTER, "sacratissimi-cordis-iesu"}:
         assert OLD_REASON in value["decision_reason"]
     leaf = PAGES[slug]
     assert value["locator"] == {
@@ -126,7 +133,15 @@ def check_primary(data, slug):
         assert "complete 1962 liturgical component" not in claim
     else:
         assert "hand-position rubric" not in claim
-        assert "w001-w020" in claim and "continues on p. 237" in claim
+        if slug == "paschalis-in-nocte":
+            assert claim == (
+                "This opening page of the approved Benziger printing supplies the Easter "
+                "Preface from Vere dignum through praedicare (w001–w020), with the rubric "
+                "prescribing in hac potissimum nocte for the Easter Vigil. The continuation "
+                "on p. 237 is bound separately; the preceding dialogue is outside this text."
+            )
+        else:
+            assert "w001-w020" in claim and "continues on p. 237" in claim
         assert value["evidence_sha256"] == N315
         choice = "in hac potissimum die" if slug.endswith("-die") else "in hac potissimum nocte"
         assert choice in claim
@@ -175,8 +190,45 @@ def check_protected(data, slug):
     assert digest(records) == PROTECTED[slug]
 
 
+NIGHT_RULINGS = {
+    "w004": (
+        "The chosen I spelling and digital J spelling identify the same word; "
+        "they are orthographic, not stress differences."
+    ),
+    "w040": (
+        "The controlling page has “destrúxit,”; the digital witness has “destrúxit”. "
+        "The chosen proper-page mark is retained."
+    ),
+    "w048": (
+        "House stress is supplied on the capital vowel in “Ángelis”; the witness capital "
+        "type without that accent is preserved in the comparison."
+    ),
+    "w054": (
+        "The controlling page has “Dominatiónibus,”; the digital witness has “Dominatiónibus”. "
+        "The chosen proper-page mark is retained."
+    ),
+    "w058": (
+        "The chosen cæléstis and digital cœléstis differ in ligature spelling; "
+        "the witness spelling is retained for comparison."
+    ),
+    "w059": (
+        "The controlling page has “exércitus,”; the digital witness has “exércitus”. "
+        "The chosen proper-page mark is retained."
+    ),
+}
+
+
 def check_readings(data, slug):
     without_rulings = deepcopy(data)
+    if slug == "paschalis-in-nocte":
+        assert data["note"] == (
+            "Comparison of this component with its declared printed and digital witnesses; "
+            "the component has no standard-conclusion expansion."
+        )
+        without_rulings["note"] = (
+            "Adjudicated accidental and house-orthography variants. The witnesses agree "
+            "on the substantive text."
+        )
     for entry in without_rulings["adjudicated"]:
         entry.pop("ruling")
     assert digest(without_rulings) == READINGS[slug]
@@ -185,7 +237,9 @@ def check_readings(data, slug):
         "classes": ["capital-accent", "orthography", "punctuation"],
     }
     for entry in data["adjudicated"]:
-        if entry["at"] == "w048":
+        if slug == "paschalis-in-nocte":
+            assert entry["ruling"] == NIGHT_RULINGS[entry["at"]]
+        elif entry["at"] == "w048":
             assert entry["ruling"] == (
                 "The lexical accent is restored in the working text under the edition's house "
                 "convention; the witness's capital typography is recorded exactly."
@@ -401,6 +455,12 @@ def test_easter_apparatus_mutations_are_rejected(slug, mutation):
     elif mutation == "class":
         entry["class"] = "substantive"
     else:
-        entry["ruling"] = entry["ruling"].replace("approved Benziger printing", "typical edition")
+        old = entry["ruling"]
+        entry["ruling"] = (
+            old.replace("orthographic", "substantive")
+            if slug == "paschalis-in-nocte"
+            else old.replace("approved Benziger printing", "typical edition")
+        )
+        assert entry["ruling"] != old
     with pytest.raises(AssertionError):
         check_readings(data, slug)

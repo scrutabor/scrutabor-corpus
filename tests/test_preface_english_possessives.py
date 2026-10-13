@@ -188,6 +188,13 @@ def accepted(gloss):
     return {gloss, "of Your Son"} if gloss == "about Your Son" else {gloss}
 
 
+def realization(site):
+    slug, _segment, first, last, anchor, gloss = site
+    if slug == "paschalis-in-nocte" and (first, last) == (37, 38):
+        return ids(37, 40), 40, "has destroyed our death by dying"
+    return ids(first, last), anchor, gloss
+
+
 def assert_site(doc, layer, site):
     _slug, segment, first, last, anchor, gloss = site
     members = ids(first, last)
@@ -204,6 +211,7 @@ def assert_site(doc, layer, site):
     assert all(
         possessive["morph"][key] == head["morph"][key] for key in ("case", "number", "gender")
     )
+    members, anchor, gloss = realization(site)
     groups = layer["segments"][segment].get("alignments", [])
     touching = [g for g in groups if set(g["words"]) & set(members)]
     assert len(touching) == 1
@@ -222,8 +230,8 @@ def protected_payload(layer, slug):
     """Remove only the selected new fields; retain even unexpected overlaps."""
     value = deepcopy(layer)
     for site in (s for s in SITES if s[0] == slug):
-        _slug, segment, first, last, anchor, gloss = site
-        members = ids(first, last)
+        _slug, segment, _first, _last, anchor, gloss = site
+        members, anchor, gloss = realization(site)
         entry = value["segments"][segment]
         entry["alignments"] = [
             group
@@ -346,7 +354,7 @@ def test_direct_gloss_reintroduction_is_rejected(site):
 def test_overlapping_realization_is_rejected(site):
     doc, layer = load(site[0])
     groups = layer["segments"][site[1]]["alignments"]
-    group = next(g for g in groups if g["words"] == ids(site[2], site[3]))
+    group = next(g for g in groups if g["words"] == realization(site)[0])
     groups.append(deepcopy(group))
     assert any("overlap" in error or "more than one" in error for error in check(doc, layer))
     with pytest.raises(AssertionError):

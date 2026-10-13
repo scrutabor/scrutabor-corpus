@@ -543,6 +543,28 @@ localization, editorial
   subject adds `resolved_fragments`; existing v1 source
   subjects and review digests are unchanged. This is an evidence mechanism,
   not an automatic source review or permission to retain old approvals.
+- An individual binding may opt into **`contract: "raw-reading-3"`** for
+  whole physical textual lines with explicitly reviewed terminal continuation
+  tildes. Registry version1 and all older contracts retain their exact meaning.
+  This contract requires a nonempty ordered `framing` array; each entry has
+  exactly `archive`, `line`, `start`, `end`, `text`, `kind`, and `reason`.
+  Coordinates are zero-based Unicode-code-point offsets on that physical line,
+  excluding the newline, and integers never booleans. The only supported kind
+  is `terminal-continuation-tilde`: `text` must be literal `~`, `end == start+1`
+  must be the actual physical line end, and the preceding character must be a
+  letter or retained ordinary terminal punctuation. The reason must be nonempty.
+  The complete line must occur exactly once in textual evidence and the ordered
+  reading. References, rubric/control lines, fragments, duplicate or reordered
+  framing, undeclared tildes in the resolved reading, and arbitrary character
+  deletion are rejected. The exact original
+  archive SHA/revision, section, path, reference, reading order and multiplicity
+  checks remain binding. No strict global normalizer is changed.
+  Resolved immutable fragments preserve full original coordinates and `raw`,
+  expose clean `text` and exact applied `framing`, and use the existing verified
+  marker context/scope rules. Whole-line range access rejects framed evidence;
+  source-specific variant attribution remains raw-reading-1 only. The source
+  subject binds the complete framing plan and resolved fragments, without
+  altering old source-subject shapes or granting source/child approval.
 - **`head`** and **`substantive`** (since 0.13.0) state the SYNTAX, which is
   the one thing that settles a reading the form permits and the sentence
   forbids. Every adjective, numeral and
@@ -1136,6 +1158,13 @@ words{ <word-id>: { gloss?, explanation?, note? } }
   Omit the key entirely when the gloss, form row, and lexicon already say
   everything. Required sites are declared by `localization.explanations` in
   the neutral core.
+  Each requirement defaults to both Polish and English. An optional
+  `languages` list may restrict a contextual note to the language whose wording
+  it explains. The list must be nonempty, sorted and unique, using `en` and
+  `pl`. It declares actual note presence, never translated prose. Explanations
+  required by ellipsis or a clausal complement must still cover both languages.
+  Language-scoped explanation citations are not supported: a scoped site may
+  not carry citations until their projection has a separate language contract.
   **Self-contained prose** — each entry is read
   in isolation. The only permitted cross-reference is the quoted-form
   pattern `„form” (wNNN)` (EN: `“form” (wNNN)`): the app renders the quoted

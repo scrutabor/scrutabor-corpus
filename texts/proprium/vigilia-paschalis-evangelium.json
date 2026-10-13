@@ -111,7 +111,7 @@
         { "id": "w090", "form": "Dóminus", "lemma": "dominus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "." },
         { "id": "w091", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w092", "form": "cito", "lemma": "cito", "morph": { "pos": "adv" } },
-        { "id": "w093", "form": "eúntes", "post": ",", "lemma": "eo", "morph": { "case": "nom", "gender": "m", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "act" }, "head": "w094" },
+        { "id": "w093", "form": "eúntes", "post": ",", "lemma": "eo", "morph": { "case": "nom", "gender": "f", "mood": "part", "number": "pl", "pos": "verb", "tense": "pres", "voice": "act" }, "head": "w094" },
         { "id": "w094", "form": "dícite", "lemma": "dico", "morph": { "conj": 3, "mood": "imp", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" } },
         { "id": "w095", "form": "discípulis", "lemma": "discipulus", "morph": { "pos": "noun", "case": "dat", "number": "pl", "gender": "m", "decl": 2 } },
         { "id": "w096", "form": "eius", "lemma": "is", "morph": { "pos": "pron", "case": "gen", "number": "sg", "gender": "m" }, "post": "," },
@@ -136,7 +136,7 @@
     "status": "working-edition",
     "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the approved 1962 Benziger printing.",
     "source": {
-      "method": "Transcribed from the directly viewed page image of the Benziger Brothers 1962 Editio iuxta typicam and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "Controlling Latin is based on the Benziger Brothers 1962 Editio iuxta typicam page images. A same-recension digital comparison is reconstructed from Divinum Officium revision44667ff518b8ff1439780470828b39714f5306a2; its dependent fragments and explicit conclusion expansions are identified in the witness headers. Transcription lineage independence is not asserted. Source-binding review remains pending.",
       "witnesses": "witnesses/proprium.vigilia-paschalis-evangelium/",
       "apparatus": "witnesses/proprium.vigilia-paschalis-evangelium/apparatus.json"
     },
@@ -162,6 +162,20 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w005": {
+
+      },
+      "w031": {
+        "languages": ["pl"]
+      },
+      "w065": {
+        "languages": ["en"]
+      },
+      "w109": {
+        "languages": ["en"]
+      }
+    }
   }
 }

@@ -298,6 +298,16 @@ def test_contemporary_orations_conclude_in_the_same_register():
             forms = " ".join(norm(w["form"]) for w in seg.get("words", []))
             prose = en["segments"].get(seg["id"], {}).get("translation") or ""
             for incipit, english in CONCLUSIONS.items():
+                if text in {
+                    "proprium.vigilia-paschalis-collecta",
+                    "proprium.vigilia-paschalis-secreta",
+                }:
+                    english = (
+                        "Through "
+                        + ("the same " if " eundem " in incipit else "")
+                        + "Jesus Christ, our Lord, Your Son, who, as God, "
+                        "lives and reigns with You in the unity of the Holy Spirit"
+                    )
                 if forms.endswith(incipit + " per omnia saecula saeculorum"):
                     assert conclusion_matches(prose, english, duration=True), (text, seg["id"])
                     seen += 1

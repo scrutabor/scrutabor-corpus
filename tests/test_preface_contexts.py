@@ -54,6 +54,13 @@ def test_sacrifice_is_one_finite_realization(text, base, language, gloss):
         # The complete clause contains the passive, with no second realization.
         members = [f"w{i:03d}" for i in range(21, 27)]
         gloss = "for Christ, our Passover, has been sacrificed"
+    if language == "pl" and text == "ordinarium/praefatio-paschalis-in-nocte":
+        members = [f"w{i:03d}" for i in range(22, 27)]
+        gloss = "Chrystus, nasza Pascha, został ofiarowany"
+    assert_sacrifice(doc, members, gloss)
+
+
+def assert_sacrifice(doc, members, gloss):
     matching = [a for a in doc["segments"]["s01"]["alignments"] if set(a["words"]) & set(members)]
     assert len(matching) == 1
     assert matching[0]["words"] == members

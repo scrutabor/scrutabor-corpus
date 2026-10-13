@@ -48,7 +48,13 @@ READINGS = [
         11,
         {"has been broken", "was broken", "is broken"},
     ),
-    ("en", "vigilia-paschalis-evangelium", [73, 74], 73, {"was crucified", "has been crucified"}),
+    (
+        "en",
+        "vigilia-paschalis-evangelium",
+        [71, 72, 73, 74, 75],
+        75,
+        {"you seek Jesus, who was crucified", "you seek Jesus, who has been crucified"},
+    ),
     (
         "en",
         "vigilia-paschalis-evangelium",
@@ -182,13 +188,10 @@ BOUNDARIES = [
         "vigilia-paschalis-evangelium",
         {
             70: ("quod", "that"),
-            71: ("Iesus", "Jesus"),
-            72: ("qui", "who"),
-            75: ("quaero", "you seek"),
             86: ("locus", "the place"),
             87: ("ubi", "where"),
         },
-        [],
+        [([71, 72, 73, 74, 75], 75, "you seek Jesus, who was crucified")],
     ),
     (
         "en",
@@ -220,6 +223,18 @@ def assert_boundary(doc, layer, direct, groups):
         assert wid not in aligned
         assert layer["words"][wid]["gloss"] == gloss
     for numbers, anchor, gloss in groups:
+        if numbers == [71, 72, 73, 74, 75]:
+            assert [words[f"w{n:03d}"]["lemma"] for n in numbers] == [
+                "Iesus",
+                "qui",
+                "crucifigo",
+                "sum",
+                "quaero",
+            ]
+            assert words["w071"]["morph"]["case"] == "acc"
+            assert words["w072"]["morph"]["case"] == "nom"
+            assert words["w075"]["morph"]["person"] == 2
+            assert words["w075"]["morph"]["number"] == "pl"
         assert_reading(doc, layer, numbers, anchor, {gloss})
     assert interlinear.check(doc, layer) == []
 

@@ -7,6 +7,7 @@ from typing import Any
 import pytest
 from preface_caption_fixture import restore_caption_layer
 from preface_glory_fixture import restore_glory_layer
+from vigil_preface_fixture import TARGET, current_prose, restore_vigil_preface
 
 from checks.interlinear import check, effective_gloss
 from checks.language_packs import check_layer
@@ -419,6 +420,8 @@ def restore_reviewed_fields(layer, slug):
     restored = (
         restore_glory_layer(restore_caption_layer(layer, "en"), "en")
         if slug == "sanctissimae-trinitatis"
+        else restore_vigil_preface(layer)
+        if slug == "paschalis-in-nocte"
         else deepcopy(layer)
     )
     baseline = BASELINES[slug]
@@ -460,7 +463,7 @@ def assert_protected(doc, layer, slug):
 def assert_provenance(record, doc, layer, slug):
     prose = BASELINES[slug]["prose"]
     expected = deepcopy(prose["provenance_before"])
-    expected["target_sha256"] = prose["target_after"]
+    expected["target_sha256"] = TARGET if slug == "paschalis-in-nocte" else prose["target_after"]
     assert record == expected
     segment = next(s for s in doc["segments"] if s["id"] == prose["segment"])
     assert record["source_sha256"] == canonical_hash(source_payload(segment))
@@ -518,7 +521,10 @@ def test_easter_prose_has_only_the_reviewed_clause_substitution(slug):
     )
     assert prose["before"].count(old) == 1
     assert prose["after"] == prose["before"].replace(old, new)
-    assert layer["segments"]["s01"]["translation"] == prose["after"]
+    restored = restore_vigil_preface(layer) if slug == "paschalis-in-nocte" else layer
+    assert restored["segments"]["s01"]["translation"] == prose["after"]
+    if slug == "paschalis-in-nocte":
+        assert layer["segments"]["s01"]["translation"] == current_prose()
 
 
 @pytest.mark.parametrize("slug", ["paschalis-in-die", "paschalis-in-nocte"])

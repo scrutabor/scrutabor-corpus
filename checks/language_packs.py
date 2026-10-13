@@ -131,9 +131,40 @@ def check_core(core: dict) -> list[str]:
     for word_id, requirement in explanations.items():
         if word_id not in word_ids:
             errors.append(f"{text_id}: explanation requirement for unknown word {word_id}")
-        if not isinstance(requirement, dict) or set(requirement) - {"citations"}:
+        if not isinstance(requirement, dict) or set(requirement) - {"citations", "languages"}:
             errors.append(f"{text_id}:{word_id}: explanation requirement has unknown shape")
             continue
+        if "languages" in requirement:
+            languages = requirement["languages"]
+            if (
+                not isinstance(languages, list)
+                or not languages
+                or any(not isinstance(lang, str) or lang not in {"en", "pl"} for lang in languages)
+                or languages != sorted(set(languages))
+            ):
+                errors.append(
+                    f"{text_id}:{word_id}: explanation languages must be sorted unique en/pl values"
+                )
+            elif languages != ["en", "pl"]:
+                required = {
+                    identifier
+                    for segment in core.get("segments") or []
+                    for word in segment.get("words") or []
+                    for identifier in (
+                        ([word["id"]] if word.get("ellipsis") else [])
+                        + ([word["id"], word["clause_head"]] if "clause_head" in word else [])
+                    )
+                    if isinstance(identifier, str)
+                }
+                if word_id in required:
+                    errors.append(
+                        f"{text_id}:{word_id}: required structural explanation must cover en and pl"
+                    )
+                if requirement.get("citations"):
+                    errors.append(
+                        f"{text_id}:{word_id}: language-scoped explanation citations "
+                        "are unsupported"
+                    )
         if citations := requirement.get("citations"):
             errors += lint_citations(citations, f"{text_id}:{word_id}:explanation")
 
@@ -229,7 +260,16 @@ def check_layer(core: dict, layer: dict, path: Path) -> list[str]:
     core_word_ids = [word["id"] for segment in core_segments for word in segment.get("words") or []]
     if list(words) != core_word_ids:
         errors.append(f"{where}: word coverage or order differs from the neutral core")
-    expected_explanations = set((core.get("localization") or {}).get("explanations") or {})
+    expected_explanations = {
+        word_id
+        for word_id, requirement in (
+            (core.get("localization") or {}).get("explanations") or {}
+        ).items()
+        if not isinstance(requirement, dict)
+        or "languages" not in requirement
+        or not isinstance(requirement["languages"], list)
+        or language in requirement["languages"]
+    }
     expected_notes = set((core.get("localization") or {}).get("notes") or [])
     actual_explanations: set[str] = set()
     actual_notes: set[str] = set()

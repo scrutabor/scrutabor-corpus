@@ -43,7 +43,7 @@
         { "id": "w022", "form": "quæ", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "pl", "gender": "n" } },
         { "id": "w023", "form": "super", "lemma": "super", "morph": { "pos": "prep", "governs": "acc" }, "head": "w024" },
         { "id": "w024", "form": "terram", "lemma": "terra", "morph": { "case": "acc", "decl": 1, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." },
-        { "id": "w025", "form": "Mórtui", "lemma": "mortuus", "morph": { "case": "nom", "gender": "m", "number": "pl", "pos": "adj" }, "head": "w027" },
+        { "id": "w025", "form": "Mórtui", "lemma": "morior", "morph": { "pos": "verb", "mood": "part", "tense": "perf", "voice": "dep", "conj": 3, "case": "nom", "gender": "m", "number": "pl" }, "head": "w027" },
         { "id": "w026", "form": "enim", "lemma": "enim", "morph": { "pos": "conj" } },
         { "id": "w027", "form": "estis", "lemma": "sum", "morph": { "mood": "ind", "number": "pl", "person": 2, "pos": "verb", "tense": "pres", "voice": "act" }, "post": "," },
         { "id": "w028", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
@@ -75,7 +75,7 @@
     "status": "working-edition",
     "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the approved 1962 Benziger printing.",
     "source": {
-      "method": "Transcribed from the directly viewed page image of the Benziger Brothers 1962 Editio iuxta typicam and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "Controlling Latin is based on the Benziger Brothers 1962 Editio iuxta typicam page images. A same-recension digital comparison is reconstructed from Divinum Officium revision44667ff518b8ff1439780470828b39714f5306a2; its dependent fragments and explicit conclusion expansions are identified in the witness headers. Transcription lineage independence is not asserted. Source-binding review remains pending.",
       "witnesses": "witnesses/proprium.vigilia-paschalis-epistola/",
       "apparatus": "witnesses/proprium.vigilia-paschalis-epistola/apparatus.json"
     },
@@ -93,6 +93,17 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w003": {
+
+      },
+      "w025": {
+
+      },
+      "w039": {
+        "languages": ["en"]
+      }
+    }
   }
 }
