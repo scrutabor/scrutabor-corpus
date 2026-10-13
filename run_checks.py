@@ -338,160 +338,149 @@ def discover() -> list:
     return ids
 
 
+def run_all() -> int:
+    ids = discover()
+    if not ids:
+        print("VERDICT FAIL no texts discovered under texts/ — refusing to pass on zero")
+        return 1
+    used = set()
+    for tid in ids:
+        tdoc = store.load(CORPUS, tid)[0]
+        for s in tdoc["segments"]:
+            for w in s.get("words") or []:
+                used.add(w["lemma"])
+    rc = lexicon_suite(used)
+    for tid in ids:
+        rc |= main(tid)
+    # Global neutral checks must include every discovered core, even
+    # when a text has no English layer. Per-text language errors already
+    # contribute to rc; missing targets must not abort the remaining checks.
+    corpus_docs = [store.load(CORPUS, tid)[0] for tid in ids]
+    doubt_errors = check_uncertainty(corpus_docs)
+    for message in doubt_errors:
+        print(f"ERROR: {message}")
+    rc |= 1 if doubt_errors else 0
+    # Identity across TIME, which one snapshot cannot answer. Compared
+    # against the base the workflow names in CI and against HEAD locally,
+    # where it guards uncommitted work. The base is PRINTED because a
+    # comparison whose reference nobody can see is how this check ran as
+    # HEAD-against-itself in CI for a month — a green with no sha is not
+    # evidence.
+    base = os.environ.get("SCRUTABOR_BASE", "HEAD")
+    print(f"IDENTITY compared against {base} ({resolve_ref(CORPUS, base)})")
+    history_errors = check_against_history(CORPUS, base)
+    for message in history_errors:
+        print(f"ERROR: {message}")
+    rc |= 1 if history_errors else 0
+
+    registry_errors = check_registry_history(CORPUS, base)
+    for message in registry_errors:
+        print(f"ERROR: {message}")
+    rc |= 1 if registry_errors else 0
+
+    # A text id is the other half of every word's global address.
+    address_errors = check_addresses(CORPUS, {d["id"] for d in corpus_docs})
+    for message in address_errors:
+        print(f"ERROR: {message}")
+    rc |= 1 if address_errors else 0
+
+    witness_errors = check_witness_archive(CORPUS)
+    for message in witness_errors:
+        print(f"ERROR: {message}")
+    rc |= 1 if witness_errors else 0
+
+    bibliography_errors = check_bibliography(CORPUS)
+    for message in bibliography_errors:
+        print(f"ERROR: {message}")
+    rc |= 1 if bibliography_errors else 0
+    # One work, one title. The bibliography groups citations on the title
+    # string, so this only shows up with the whole corpus in hand — two
+    # correct spellings of one dictionary list it twice for the reader.
+    cited = (
+        corpus_docs
+        + [g for _doc, layers in store.all_texts(CORPUS) for g in layers.values()]
+        + [
+            {"language": lang, "entries": entries}
+            for lang, entries in load_lexicon(CORPUS)[1].items()
+        ]
+    )
+    # What this edition may reproduce, counted rather than assumed. Every
+    # cited work must say what it is (checks/rights.py).
+    works, rights_errors = load_rights(CORPUS)
+    rights_errors += check_rights(cited, works)
+    for message in rights_errors:
+        print(f"ERROR: {message}")
+    rc |= 1 if rights_errors else 0
+
+    title_errors = check_citation_titles(cited)
+    for message in title_errors:
+        print(f"ERROR: {message}")
+    rc |= 1 if title_errors else 0
+    wording = rights_exposure(cited, works)
+    print(
+        f"RIGHTS translation sites total={sum(wording.values())} — "
+        + " ".join(f"{k}={v}" for k, v in sorted(wording.items()) if v)
+    )
+    floor_errors = check_explanation_floor(CORPUS)
+    for message in floor_errors:
+        print(f"ERROR: {message}")
+    rc |= 1 if floor_errors else 0
+    provenance_errors, provenance_tally = check_translation_provenance(CORPUS)
+    for message in provenance_errors:
+        print(f"ERROR: {message}")
+    rc |= 1 if provenance_errors else 0
+    print(
+        f"TRANSLATION PROVENANCE sites={sum(provenance_tally.values())} — "
+        + " ".join(f"{key}={value}" for key, value in provenance_tally.items())
+    )
+    basis_errors, basis_tally = check_translation_basis(CORPUS)
+    for message in basis_errors:
+        print(f"ERROR: {message}")
+    rc |= 1 if basis_errors else 0
+    print(
+        f"TRANSLATION BASIS sites={sum(basis_tally.values())} — "
+        + " ".join(f"{key}={value}" for key, value in basis_tally.items())
+    )
+    # The temporal cycle, held against the table the Missale prints itself
+    # (checks/kalendarium.py). A wrong Sunday is the first error a reader
+    # would notice and the last one they would forgive.
+    kal_errors, kal_compared, kal_misprints = check_kalendarium(CORPUS)
+    for message in kal_errors:
+        print(f"ERROR: {message}")
+    rc |= 1 if kal_errors else 0
+    print(
+        f"KALENDARIUM verified={kal_compared} against the Missale's own table "
+        f"misprints={kal_misprints} articles=cited-and-printed"
+    )
+
+    formulary_errors, formulary_counts = check_formularies(CORPUS)
+    for message in formulary_errors:
+        print(f"ERROR: {message}")
+    rc |= 1 if formulary_errors else 0
+    print("FORMULARIES " + " ".join(f"{key}={value}" for key, value in formulary_counts.items()))
+
+    attested = readings(corpus_docs)
+    print(
+        f"UNCERTAINTY exposure>={sum(exposure(d, attested) for d in corpus_docs)} "
+        f"stored={sum(stored(d) for d in corpus_docs)}"
+    )
+    from checks.disputed import collect
+
+    found = collect()
+    n_tokens = sum(len(v) for v in found.values())
+    print(
+        f"SUITE {'OK' if rc == 0 else 'FAIL'} texts={len(ids)} "
+        f"disputed={n_tokens}/{len(found)} forms"
+    )
+    return rc
+
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("usage: run_checks.py <text-id> | --all")
         sys.exit(2)
     if sys.argv[1] == "--all":
-        ids = discover()
-        if not ids:
-            print("VERDICT FAIL no texts discovered under texts/ — refusing to pass on zero")
-            sys.exit(1)
-        used = set()
-        for tid in ids:
-            tdoc = store.load(CORPUS, tid)[0]
-            for s in tdoc["segments"]:
-                for w in s.get("words") or []:
-                    used.add(w["lemma"])
-        rc = lexicon_suite(used)
-        for tid in ids:
-            rc |= main(tid)
-        # Keep the English pairs for corpus-wide checks below.  Number is not
-        # inferred from repeated surface glosses: English nouns may be
-        # uninflected, collective, idiomatic, or attached to an ambiguous
-        # Latin parse, so that comparison is an editorial diagnostic rather
-        # than a correctness gate.
-        pairs = []
-        for tid in ids:
-            category, name = tid.split(".", 1)
-            pairs.append(
-                (
-                    store.load(CORPUS, tid)[0],
-                    store.load(CORPUS, tid)[1]["en"],
-                )
-            )
-        # What the edition does not know, stated as a number rather than left
-        # to be inferred from a silent default.
-        corpus_docs = [t for t, _ in pairs]
-        doubt_errors = check_uncertainty(corpus_docs)
-        for message in doubt_errors:
-            print(f"ERROR: {message}")
-        rc |= 1 if doubt_errors else 0
-        # Identity across TIME, which one snapshot cannot answer. Compared
-        # against the base the workflow names in CI and against HEAD locally,
-        # where it guards uncommitted work. The base is PRINTED because a
-        # comparison whose reference nobody can see is how this check ran as
-        # HEAD-against-itself in CI for a month — a green with no sha is not
-        # evidence.
-        base = os.environ.get("SCRUTABOR_BASE", "HEAD")
-        print(f"IDENTITY compared against {base} ({resolve_ref(CORPUS, base)})")
-        history_errors = check_against_history(CORPUS, base)
-        for message in history_errors:
-            print(f"ERROR: {message}")
-        rc |= 1 if history_errors else 0
-
-        registry_errors = check_registry_history(CORPUS, base)
-        for message in registry_errors:
-            print(f"ERROR: {message}")
-        rc |= 1 if registry_errors else 0
-
-        # A text id is the other half of every word's global address.
-        address_errors = check_addresses(CORPUS, {d["id"] for d in corpus_docs})
-        for message in address_errors:
-            print(f"ERROR: {message}")
-        rc |= 1 if address_errors else 0
-
-        witness_errors = check_witness_archive(CORPUS)
-        for message in witness_errors:
-            print(f"ERROR: {message}")
-        rc |= 1 if witness_errors else 0
-
-        bibliography_errors = check_bibliography(CORPUS)
-        for message in bibliography_errors:
-            print(f"ERROR: {message}")
-        rc |= 1 if bibliography_errors else 0
-        # One work, one title. The bibliography groups citations on the title
-        # string, so this only shows up with the whole corpus in hand — two
-        # correct spellings of one dictionary list it twice for the reader.
-        cited = (
-            corpus_docs
-            + [g for _doc, layers in store.all_texts(CORPUS) for g in layers.values()]
-            + [
-                {"language": lang, "entries": entries}
-                for lang, entries in load_lexicon(CORPUS)[1].items()
-            ]
-        )
-        # What this edition may reproduce, counted rather than assumed. Every
-        # cited work must say what it is (checks/rights.py).
-        works, rights_errors = load_rights(CORPUS)
-        rights_errors += check_rights(cited, works)
-        for message in rights_errors:
-            print(f"ERROR: {message}")
-        rc |= 1 if rights_errors else 0
-
-        title_errors = check_citation_titles(cited)
-        for message in title_errors:
-            print(f"ERROR: {message}")
-        rc |= 1 if title_errors else 0
-        wording = rights_exposure(cited, works)
-        print(
-            f"RIGHTS translation sites total={sum(wording.values())} — "
-            + " ".join(f"{k}={v}" for k, v in sorted(wording.items()) if v)
-        )
-        floor_errors = check_explanation_floor(CORPUS)
-        for message in floor_errors:
-            print(f"ERROR: {message}")
-        rc |= 1 if floor_errors else 0
-        provenance_errors, provenance_tally = check_translation_provenance(CORPUS)
-        for message in provenance_errors:
-            print(f"ERROR: {message}")
-        rc |= 1 if provenance_errors else 0
-        print(
-            f"TRANSLATION PROVENANCE sites={sum(provenance_tally.values())} — "
-            + " ".join(f"{key}={value}" for key, value in provenance_tally.items())
-        )
-        basis_errors, basis_tally = check_translation_basis(CORPUS)
-        for message in basis_errors:
-            print(f"ERROR: {message}")
-        rc |= 1 if basis_errors else 0
-        print(
-            f"TRANSLATION BASIS sites={sum(basis_tally.values())} — "
-            + " ".join(f"{key}={value}" for key, value in basis_tally.items())
-        )
-        # The temporal cycle, held against the table the Missale prints itself
-        # (checks/kalendarium.py). A wrong Sunday is the first error a reader
-        # would notice and the last one they would forgive.
-        kal_errors, kal_compared, kal_misprints = check_kalendarium(CORPUS)
-        for message in kal_errors:
-            print(f"ERROR: {message}")
-        rc |= 1 if kal_errors else 0
-        print(
-            f"KALENDARIUM verified={kal_compared} against the Missale's own table "
-            f"misprints={kal_misprints} articles=cited-and-printed"
-        )
-
-        formulary_errors, formulary_counts = check_formularies(CORPUS)
-        for message in formulary_errors:
-            print(f"ERROR: {message}")
-        rc |= 1 if formulary_errors else 0
-        print(
-            "FORMULARIES " + " ".join(f"{key}={value}" for key, value in formulary_counts.items())
-        )
-
-        attested = readings(corpus_docs)
-        print(
-            f"UNCERTAINTY exposure>={sum(exposure(d, attested) for d in corpus_docs)} "
-            f"stored={sum(stored(d) for d in corpus_docs)}"
-        )
-        from checks.disputed import collect
-
-        found = collect()
-        n_tokens = sum(len(v) for v in found.values())
-        print(
-            f"SUITE {'OK' if rc == 0 else 'FAIL'} texts={len(ids)} "
-            f"disputed={n_tokens}/{len(found)} forms"
-        )
-        sys.exit(rc)
+        sys.exit(run_all())
     # Single-text mode still runs the global lexicon shape checks (orphan
     # detection needs every text, so it is --all only).
     rc = lexicon_suite(None) | main(sys.argv[1])
