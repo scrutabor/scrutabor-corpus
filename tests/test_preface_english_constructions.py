@@ -5,6 +5,8 @@ from copy import deepcopy
 from typing import Any
 
 import pytest
+from day_preface_fixture import TARGET as DAY_TARGET
+from day_preface_fixture import restore_day_preface
 from preface_caption_fixture import restore_caption_layer
 from preface_glory_fixture import restore_glory_layer
 from vigil_preface_fixture import TARGET, current_prose, restore_vigil_preface
@@ -422,6 +424,8 @@ def restore_reviewed_fields(layer, slug):
         if slug == "sanctissimae-trinitatis"
         else restore_vigil_preface(layer)
         if slug == "paschalis-in-nocte"
+        else restore_day_preface(layer)
+        if slug == "paschalis-in-die"
         else deepcopy(layer)
     )
     baseline = BASELINES[slug]
@@ -463,7 +467,7 @@ def assert_protected(doc, layer, slug):
 def assert_provenance(record, doc, layer, slug):
     prose = BASELINES[slug]["prose"]
     expected = deepcopy(prose["provenance_before"])
-    expected["target_sha256"] = TARGET if slug == "paschalis-in-nocte" else prose["target_after"]
+    expected["target_sha256"] = TARGET if slug == "paschalis-in-nocte" else DAY_TARGET
     assert record == expected
     segment = next(s for s in doc["segments"] if s["id"] == prose["segment"])
     assert record["source_sha256"] == canonical_hash(source_payload(segment))
@@ -521,7 +525,9 @@ def test_easter_prose_has_only_the_reviewed_clause_substitution(slug):
     )
     assert prose["before"].count(old) == 1
     assert prose["after"] == prose["before"].replace(old, new)
-    restored = restore_vigil_preface(layer) if slug == "paschalis-in-nocte" else layer
+    restored = (
+        restore_vigil_preface(layer) if slug == "paschalis-in-nocte" else restore_day_preface(layer)
+    )
     assert restored["segments"]["s01"]["translation"] == prose["after"]
     if slug == "paschalis-in-nocte":
         assert layer["segments"]["s01"]["translation"] == current_prose()
@@ -682,7 +688,8 @@ def test_provenance_promotion_or_stale_bindings_are_rejected(field, value):
     slug = "paschalis-in-die"
     doc, layer = load(slug)
     record = deepcopy(BASELINES[slug]["prose"]["provenance_before"])
-    record["target_sha256"] = BASELINES[slug]["prose"]["target_after"]
+    record["target_sha256"] = DAY_TARGET
+    assert_provenance(record, doc, layer, slug)
     record[field] = value
     with pytest.raises(AssertionError):
         assert_provenance(record, doc, layer, slug)
@@ -713,3 +720,19 @@ def test_untouched_passive_and_true_zero_controls():
             9,
             3,
         ]
+
+
+@pytest.mark.parametrize("slug", ["paschalis-in-die", "paschalis-in-nocte"])
+@pytest.mark.parametrize("mutation", ["note", "about", "group-anchor", "new-status"])
+def test_preface_inverse_cannot_hide_unreviewed_changes(slug, mutation):
+    doc, layer = load(slug)
+    if mutation == "note":
+        layer["words"]["w001"]["explanation"] = "Unreviewed addition."
+    elif mutation == "about":
+        layer["about"] += " Unreviewed addition."
+    elif mutation == "group-anchor":
+        layer["segments"]["s01"]["alignments"][0]["anchor"] = "w002"
+    else:
+        layer["status"] = "accepted"
+    with pytest.raises((AssertionError, KeyError)):
+        assert_protected(doc, layer, slug)

@@ -23,7 +23,7 @@
         { "id": "w002", "form": "illo", "lemma": "ille", "morph": { "case": "abl", "gender": "n", "number": "sg", "pos": "pron" } },
         { "id": "w003", "form": "témpore", "lemma": "tempus", "morph": { "case": "abl", "decl": 3, "gender": "n", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w004", "form": "María", "lemma": "Maria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
-        { "id": "w005", "form": "Magdaléne", "lemma": "Magdalene", "morph": { "case": "nom", "gender": "f", "number": "sg", "pos": "noun" } },
+        { "id": "w005", "form": "Magdaléne", "lemma": "Magdalene", "morph": { "case": "nom", "gender": "f", "number": "sg", "pos": "noun" }, "post": "," },
         { "id": "w006", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w007", "form": "María", "lemma": "Maria", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 1 } },
         { "id": "w008", "form": "Iacóbi", "lemma": "Iacobus", "morph": { "case": "gen", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": "," },
@@ -92,7 +92,7 @@
         { "id": "w071", "form": "surréxit", "lemma": "surgo", "morph": { "conj": 3, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" }, "post": "," },
         { "id": "w072", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
         { "id": "w073", "form": "est", "lemma": "sum", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
-        { "id": "w074", "form": "hic", "post": ",", "lemma": "hic_adverbium", "morph": { "pos": "adv" } },
+        { "id": "w074", "form": "hic", "post": ";", "lemma": "hic_adverbium", "morph": { "pos": "adv" } },
         { "id": "w075", "form": "ecce", "lemma": "ecce", "morph": { "pos": "intj" } },
         { "id": "w076", "form": "locus", "lemma": "locus", "morph": { "case": "nom", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w077", "form": "ubi", "lemma": "ubi", "morph": { "pos": "conj" } },
@@ -150,6 +150,14 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w025": {
+        "languages": ["en"]
+      },
+      "w088": {
+        "languages": ["pl"]
+      }
+    }
   }
 }

@@ -300,6 +300,7 @@ def test_contemporary_orations_conclude_in_the_same_register():
             for incipit, english in CONCLUSIONS.items():
                 if text in {
                     "proprium.vigilia-paschalis-collecta",
+                    "proprium.dominica-resurrectionis-collecta",
                     "proprium.vigilia-paschalis-secreta",
                 }:
                     english = (

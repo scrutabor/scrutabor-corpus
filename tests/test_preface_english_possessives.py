@@ -190,7 +190,7 @@ def accepted(gloss):
 
 def realization(site):
     slug, _segment, first, last, anchor, gloss = site
-    if slug == "paschalis-in-nocte" and (first, last) == (37, 38):
+    if slug in {"paschalis-in-die", "paschalis-in-nocte"} and (first, last) == (37, 38):
         return ids(37, 40), 40, "has destroyed our death by dying"
     return ids(first, last), anchor, gloss
 

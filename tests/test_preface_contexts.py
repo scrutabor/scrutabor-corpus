@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 import pytest
+from preface_transition_fixture import ALTERNATIVES
 
 ROOT = Path(__file__).resolve().parents[1]
 MARIAN = [
@@ -41,22 +42,19 @@ def test_our_passover_and_sacrificed_christ_have_distinct_agreement(text, base):
 
 
 @pytest.mark.parametrize("text,base", PASCHAL)
-@pytest.mark.parametrize(
-    "language,gloss", [("pl", "został ofiarowany"), ("en", "has been sacrificed")]
-)
-def test_sacrifice_is_one_finite_realization(text, base, language, gloss):
+@pytest.mark.parametrize("language", ["pl", "en"])
+def test_sacrifice_is_one_finite_realization(text, base, language):
     doc = json.loads((ROOT / "languages" / language / "texts" / f"{text}.json").read_text())
-    members = [f"w{base + 2:03d}", f"w{base + 3:03d}"]
-    if language == "en" and text in {
-        "ordinarium/praefatio-paschalis-in-die",
-        "ordinarium/praefatio-paschalis-in-nocte",
-    }:
-        # The complete clause contains the passive, with no second realization.
-        members = [f"w{i:03d}" for i in range(21, 27)]
-        gloss = "for Christ, our Passover, has been sacrificed"
-    if language == "pl" and text == "ordinarium/praefatio-paschalis-in-nocte":
-        members = [f"w{i:03d}" for i in range(22, 27)]
-        gloss = "Chrystus, nasza Pascha, został ofiarowany"
+    # The passive is expressed once inside the complete subject-apposition clause.
+    members = [f"w{i:03d}" for i in range(base, base + 5)]
+    gloss = (
+        "Chrystus, nasza Pascha, został ofiarowany"
+        if language == "pl"
+        else "Christ, our Passover, has been sacrificed"
+    )
+    if language == "en" and text.startswith("ordinarium/"):
+        members = [f"w{i:03d}" for i in range(base - 1, base + 5)]
+        gloss = ALTERNATIVES
     assert_sacrifice(doc, members, gloss)
 
 
@@ -64,7 +62,8 @@ def assert_sacrifice(doc, members, gloss):
     matching = [a for a in doc["segments"]["s01"]["alignments"] if set(a["words"]) & set(members)]
     assert len(matching) == 1
     assert matching[0]["words"] == members
-    assert matching[0]["gloss"] == gloss
+    allowed = {gloss} if isinstance(gloss, str) else gloss
+    assert matching[0]["gloss"] in allowed
     assert all("gloss" not in doc["words"][wid] for wid in members)
 
 
