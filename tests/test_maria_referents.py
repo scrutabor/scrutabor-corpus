@@ -53,9 +53,17 @@ def test_purification_prose_is_still_a_hash_bound_working_translation():
     assert entry["review"] == "working"
 
 
-def test_familiar_easter_prose_is_not_rewritten_with_the_interlinear():
+def test_easter_prose_preserves_its_bounded_contextual_corrections():
     prose = store.raw_layer(ROOT, "pl", EASTER)["segments"]["s01"]["translation"]
-    assert "Powiedz nam, Maryjo, coś widziała w drodze?" in prose
+    assert prose == (
+        "Niech chrześcijanie składają uwielbienie paschalnej Ofierze. Baranek odkupił "
+        "owce; Chrystus niewinny pojednał grzeszników z Ojcem. Śmierć i życie starły się "
+        "w przedziwnym boju; Wódz życia umarły króluje żywy. Powiedz nam, Mario, coś "
+        "widziała w drodze? Grób żyjącego Chrystusa i chwałę Zmartwychwstałego. "
+        "Anielskich świadków, chustę i szaty. Zmartwychwstał Chrystus, nadzieja moja; "
+        "pójdzie przed wami do Galilei. Wiemy, że Chrystus prawdziwie zmartwychwstał; Ty, "
+        "zwycięski Królu, zmiłuj się nad nami. Amen. Alleluja."
+    )
 
 
 @pytest.mark.parametrize("text", [DEAD, EASTER, PURIF])

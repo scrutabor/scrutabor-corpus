@@ -106,8 +106,8 @@ def test_every_et_ideo_closing_reads_alike():
 ORDERS = {
     "en": {"dominationes": {"the Dominions"}, "dominationibus": {"Dominions"}},
     "pl": {
-        "dominationes": {"Państwa"},
-        "dominationibus": {"Państwami"},
+        "dominationes": {"Panowania"},
+        "dominationibus": {"Panowaniami"},
         "militia": {"rycerstwem"},
         "exercitus": {"zastępu"},
         "seraphim": {"Serafini"},
@@ -139,3 +139,18 @@ def test_english_prose_names_the_dominions():
         en = load("languages/en/texts/ordinarium", f"{name}.json")["segments"]
         for seg in en.values():
             assert "Dominations" not in (seg.get("translation") or ""), name
+
+
+def test_polish_preface_choirs_keep_their_case_in_prose():
+    seen = {"nom": 0, "abl": 0}
+    for name in NAMES:
+        pl = load("languages/pl/texts/ordinarium", f"{name}.json")["segments"]
+        for sid, words in segments(name).items():
+            for word in words:
+                if word.get("lemma") != "dominatio":
+                    continue
+                case = word["morph"]["case"]
+                phrase = "Panowania go uwielbiają" if case == "nom" else "z Tronami i Panowaniami"
+                assert phrase in pl[sid]["translation"], (name, sid)
+                seen[case] += 1
+    assert seen == {"nom": 12, "abl": 10}

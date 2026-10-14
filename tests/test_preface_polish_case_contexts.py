@@ -32,7 +32,8 @@ FIXTURES: dict[str, Any] = {
     "baselines": {
         "apostolorum": {
             "segment": "s03",
-            "before_sha256": "6a4acdb7276d7297aba3eb726098a3c8c6340ca136a10be3d8db343f0aae74c2",
+            # Retains Panowaniami in the shared closing's prose and word help.
+            "before_sha256": "13b9288e98c998b25539f84ef4eb54f8a3e3a6e707c8c82f6d38e07e29ee5cfa",
             # Covers the s01 hand rubric (lower-case præfationis, p. 225) and the edition name.
             "core_digest": "cdaf030f35949c5efc3084da616d7c5e15c8950e021a38749eea1b4a401b0263",
             "english_digest": "5bb196c048a922e07a5a269d033098993e707a09f5ff97020fd3737d41ae8a9b",
@@ -85,7 +86,8 @@ FIXTURES: dict[str, Any] = {
         },
         "defunctorum": {
             "segment": "s05",
-            "before_sha256": "393e9002e25378b23669a34f3c179ebe45f799ad1c4cc501e7145779326e5496",
+            # Retains Panowaniami in the shared closing's prose and word help.
+            "before_sha256": "e243f2a33c292c43af15b0db980afaed2ad3cb5fa531630e85ef392b52b38471",
             # Covers the s01 hand rubric (lower-case præfationis, p. 225) and the edition name.
             "core_digest": "9680fdba10efaee8be16101f3da6cd2412aace184136335788307a55457be4d2",
             "english_digest": "0050d837d4c07aa4e3966a67411690409182c032a9e33e3eb39458d7736e729e",
@@ -288,6 +290,25 @@ def test_full_context_preserves_government_and_referents(slug):
 def test_every_unselected_layer_field_is_preserved(slug):
     core, layer, _ = load(slug)
     assert_protected(core, layer, slug)
+
+
+@pytest.mark.parametrize(
+    "slug,segment,word", [("apostolorum", "s05", "w049"), ("defunctorum", "s06", "w072")]
+)
+@pytest.mark.parametrize("field", ["prose", "gloss"])
+@pytest.mark.parametrize("wrong", ["Państwami", "Panowania"])
+def test_shared_choir_name_is_not_hidden_by_restoration(slug, segment, word, field, wrong):
+    core, layer, _ = load(slug)
+    assert_protected(core, layer, slug)
+    if field == "prose":
+        before = layer["segments"][segment]["translation"]
+        assert before.count("Panowaniami") == 1
+        layer["segments"][segment]["translation"] = before.replace("Panowaniami", wrong)
+    else:
+        assert layer["words"][word]["gloss"] == "Panowaniami"
+        layer["words"][word]["gloss"] = wrong
+    with pytest.raises(AssertionError):
+        assert_protected(core, layer, slug)
 
 
 @pytest.mark.parametrize("slug", SLUGS)
