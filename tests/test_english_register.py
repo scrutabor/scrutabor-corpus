@@ -301,6 +301,7 @@ def test_contemporary_orations_conclude_in_the_same_register():
                 if text in {
                     "proprium.vigilia-paschalis-collecta",
                     "proprium.dominica-resurrectionis-collecta",
+                    "proprium.dominica-ii-post-pascha-collecta",
                     "proprium.vigilia-paschalis-secreta",
                 }:
                     english = (
@@ -368,3 +369,10 @@ def test_baptist_postcommunion_keeps_its_valid_immediate_christ_relative():
         "segments"
     ]["s01"]["translation"]
     assert "Your Son, our Lord Jesus Christ, who lives and reigns with You" in prose
+
+
+def test_second_paschal_collect_cannot_self_exempt_from_contemporary_register():
+    path = "languages/en/texts/proprium/dominica-ii-post-pascha-collecta.json"
+    doc = json.loads((ROOT / path).read_bytes())
+    assert contemporary(doc)
+    assert mixed_fields(doc) == []

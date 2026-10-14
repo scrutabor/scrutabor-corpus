@@ -1,0 +1,163 @@
+"""II Sunday proper pages declare their common expansions and digital framing."""
+
+import json
+from pathlib import Path
+
+import pytest
+
+from build_reader import bibliography, store
+from build_reader.bibliography_bindings import transcript_digest, witness_subject
+from checks.apparatus import derived_summary
+from checks.collate import collate
+from checks.raw_binding import resolve_binding
+
+ROOT = Path(__file__).resolve().parents[1]
+PREFIX = "proprium.dominica-ii-post-pascha-"
+NAMES = (
+    "introitus",
+    "collecta",
+    "epistola",
+    "alleluia",
+    "evangelium",
+    "offertorium",
+    "secreta",
+    "communio",
+    "postcommunio",
+)
+EXPANDED = {
+    "introitus": (20, 53, ["doxology.mr1962", "reprise-rubric.mr1962"]),
+    "collecta": (24, 47, ["conclusion-rg115a-base.mr1962", "conclusion-rg115b.mr1962"]),
+    "secreta": (14, 36, ["conclusion-rg115a.mr1962"]),
+    "postcommunio": (15, 37, ["conclusion-rg115a.mr1962"]),
+}
+PAGES = {
+    22: ("xvii", "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"),
+    23: ("xviii", "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132"),
+    80: ("1", "215182ac2415d178917c183486c716ce352777a6084da024e7293a95649b60c7"),
+}
+LOCI = (
+    ("introitus", "doxology.mr1962", 80, "w021", "direct_approved_print"),
+    ("introitus", "reprise-rubric.mr1962", 80, "w041", "rubric_control"),
+    ("collecta", "conclusion-rg115a-base.mr1962", 22, "w025", "direct_approved_print"),
+    ("collecta", "conclusion-rg115b.mr1962", 23, "w026", "rubric_control"),
+    ("secreta", "conclusion-rg115a.mr1962", 22, "w015", "direct_approved_print"),
+    ("postcommunio", "conclusion-rg115a.mr1962", 22, "w016", "direct_approved_print"),
+)
+
+
+def graph():
+    return json.loads((ROOT / "bibliography/graph.json").read_bytes())
+
+
+def use(data, name, suffix):
+    return next(u for u in data["uses"] if u["id"] == "use." + PREFIX + name + "." + suffix)
+
+
+@pytest.mark.parametrize("name", NAMES)
+def test_nine_proper_uses_name_the_approved_print(name):
+    entry = use(graph(), name, "mr1962")
+    assert entry["role"] == "direct_approved_print"
+    assert entry["edition"] == "edition.missale-romanum.1962-typica"
+    assert entry["digital_item"] == "item.missale-romanum.1962-typica.ia"
+
+
+@pytest.mark.parametrize("name", EXPANDED)
+def test_expansion_is_not_claimed_as_a_complete_proper_page(name):
+    data = graph()
+    body, full, dependencies = EXPANDED[name]
+    tid = PREFIX + name
+    core = store.core(ROOT, tid)
+    assert len([w for s in core["segments"] for w in s["words"]]) == full
+    entry = use(data, name, "mr1962")
+    assert "Benziger" in entry["claim"] and "not fully printed" in entry["claim"]
+    assert f"{body}-word" in entry["claim"]
+    assert "complete 1962 liturgical component" not in entry["claim"]
+    witness = next(w for w in data["witnesses"] if w["text"] == tid and w["transcription"] == "mr")
+    assert witness["orthography_profile"] == "page-body-with-declared-common-expansion"
+    assert witness["source_dependencies"] == {
+        "uses": sorted("use." + tid + "." + d for d in dependencies),
+        "raw_binding": None,
+    }
+    transcript = (ROOT / "witnesses" / tid / "mr.txt").read_text()
+    assert "# expansion:" in transcript and "# orthography: proper-page body" in transcript
+    assert witness["transcription_sha256"] == transcript_digest(transcript)
+    assert "exact printed accents" not in transcript
+    assert "expan" in core["editorial"]["source"]["method"]
+    assert "expan" in core["editorial"]["notes"]
+    witness_subject(ROOT, witness, data, core)
+
+
+@pytest.mark.parametrize("name,suffix,leaf,word,role", LOCI)
+def test_common_sources_keep_exact_page_word_and_role(name, suffix, leaf, word, role):
+    entry = use(graph(), name, suffix)
+    printed, expected_hash = PAGES[leaf]
+    assert entry["address"] == {"kind": "word", "text": PREFIX + name, "word": word}
+    assert entry["locator"]["printed"] == "p. " + printed
+    assert entry["locator"]["scan"] == f"leaf n{leaf} / PDF p. {leaf + 1}"
+    assert entry["locator"]["page_url"].endswith(f"/page/n{leaf}/mode/1up")
+    assert entry["evidence_sha256"] == expected_hash
+    assert entry["role"] == role
+
+
+def test_eundem_condition_and_100_common_words_are_bounded():
+    data = graph()
+    assert sum(full - body for body, full, _ in EXPANDED.values()) == 100
+    collect = use(data, "collecta", "conclusion-rg115b.mr1962")
+    assert "Filii tui" in collect["claim"] and "RG 115 a" in collect["claim"]
+    for name in ("secreta", "postcommunio"):
+        assert "no eundem" in use(data, name, "conclusion-rg115a.mr1962")["claim"]
+    reprise = use(data, "introitus", "reprise-rubric.mr1962")
+    assert "w041–w053" in reprise["claim"] and "does not print" in reprise["claim"]
+
+
+def test_no_witness_or_collation_review_is_promoted():
+    data = graph()
+    witnesses = [w for w in data["witnesses"] if w["text"] in {PREFIX + n for n in NAMES}]
+    collations = [c for c in data["collations"] if c["text"] in {PREFIX + n for n in NAMES}]
+    assert len(witnesses) == 18 and len(collations) == 9
+    assert all(w["review"] == {"status": "pending"} for w in witnesses)
+    assert all(c["review"] == {"status": "pending"} for c in collations)
+    for entry in bibliography.public_text_evidence(data)["texts"]:
+        if entry["id"] in {PREFIX + n for n in NAMES}:
+            assert entry["witnesses"] == [] and "collation" not in entry
+
+
+def test_exact_terminal_tilde_disposition_retains_raw_pastor_stop():
+    name = PREFIX + "evangelium"
+    resolution = resolve_binding(ROOT / "witnesses" / name / "do.txt", ROOT)
+    assert resolution.source["contract"] == "raw-reading-3"
+    assert resolution.text.endswith("pastor.") and not resolution.text.endswith("~")
+    assert len(resolution.fragments) == 1
+    fragment = resolution.fragments[0]
+    assert fragment.raw.endswith("pastor.~") and fragment.text.endswith("pastor.")
+    framing = fragment.framing
+    assert len(framing) == 1 and framing[0].text == "~"
+    assert framing[0].kind == "terminal-continuation-tilde"
+    assert framing[0].end == framing[0].start + 1 == len(fragment.raw)
+    assert fragment.line == 39
+    apparatus = json.loads((ROOT / "witnesses" / name / "apparatus.json").read_bytes())
+    assert not any(e["at"] == "w109" for e in apparatus["adjudicated"])
+    assert apparatus["summary"] == derived_summary(apparatus)
+    assert apparatus["summary"]["entries"] == 9
+
+
+def test_alleluia_exact_pair_explains_spelling_and_stop():
+    apparatus = json.loads(
+        (ROOT / "witnesses" / (PREFIX + "alleluia") / "apparatus.json").read_bytes()
+    )
+    entry = next(e for e in apparatus["adjudicated"] if e["at"] == "w010")
+    assert (entry["ours"], entry["witnesses"]["do"], entry["class"]) == (
+        "Allelúia.",
+        "Allelúja",
+        "orthography",
+    )
+    assert "i/j" in entry["ruling"] and "terminal full stop" in entry["ruling"]
+    assert apparatus["summary"] == derived_summary(apparatus)
+
+
+@pytest.mark.parametrize("name", NAMES)
+def test_complete_neutral_collation_stays_exact(name):
+    assert collate(store.core(ROOT, PREFIX + name), ROOT / "witnesses" / (PREFIX + name))[:2] == (
+        [],
+        [],
+    )
