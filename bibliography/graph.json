@@ -11725,6 +11725,43 @@
       "evidence_sha256": "63022b76b0fb2fc62a65e467bd823ac303c71a13d43a6c3f27edd67b3d3f075e"
     },
     {
+      "id": "use.ordinarium.praefatio-paschalis.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.praefatio-paschalis"
+      },
+      "locator": {
+        "printed": "p. 291",
+        "scan": "leaf n370 / PDF p. 371",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n370/mode/1up"
+      },
+      "claim": "The approved Benziger printing supplies the complete Easter Preface from Vere dignum through sine fine dicentes, with the seasonal alternative in hoc potissimum. Its adjoining rubric distinguishes this wording from the night and day alternatives. The preceding dialogue, following Sanctus and surrounding rubrics are outside the selected body.",
+      "verified_on": "2026-10-14",
+      "decision": "RETAIN",
+      "evidence_sha256": "df68284a7593c5cff1632eb1b03cf6489cdb036f1c240364dc4ba4c77a1c69f6"
+    },
+    {
+      "id": "use.ordinarium.praefatio-paschalis.vatican1962",
+      "edition": "edition.missale-romanum.1962-vatican-joseph-bearing",
+      "digital_item": "item.missale-romanum.1962-vatican-joseph-bearing.ia",
+      "role": "corroborating_latin_witness",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.praefatio-paschalis"
+      },
+      "locator": {
+        "printed": "p. 288",
+        "scan": "physical PDF p. 369"
+      },
+      "claim": "The retained Vatican typical-text reproduction supplies the complete same seasonal Easter Preface and its in hoc potissimum alternative. The comparison setting lacks the Benziger comma after destruxit. Its unproved reproduction date is distinct from the underlying 1962 text; dialogue, Sanctus and rubrics remain outside this body.",
+      "verified_on": "2026-10-14",
+      "decision": "RETAIN",
+      "evidence_sha256": "3278690c843e2d22252670fbf501d505eef0b369f3e3eab259d581b32372e2c3"
+    },
+    {
       "id": "use.ordinarium.praefatio-quadragesimae.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -27912,17 +27949,57 @@
       "locator": {
         "section": "web/www/missa/Latin/Tempora/Pasc1-0.txt [Introitus] (lines 12-17); web/www/missa/Latin/Ordo/Prayers.txt [Gloria] (lines 13-14)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-10-07",
+      "claim": "The pinned digital reading supplies a derived comparison with the printed component, including substantive rationabiles at both antiphon occurrences and the declared accidental differences; it does not corroborate the printed singular at those two places.",
+      "verified_on": "2026-10-14",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "e59095d1998c200ec4bf79668709b5aa98fa6bca02a3d18078dd7766652294f1",
-      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence checksum identifies the complete web/www/missa/Latin/Tempora/Pasc1-0.txt file, not the whole composite reading. The complete derivation remains separately bound by its explicit source inventory."
+      "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence checksum identifies the complete web/www/missa/Latin/Tempora/Pasc1-0.txt file, not the whole composite reading. The complete derivation remains separately bound by its explicit source inventory. The substantive plural is now explicitly distinguished from the printed singular. The exact raw digital transcript and binding remain unchanged."
+    },
+    {
+      "id": "use.proprium.dominica-in-albis-introitus.gloria-patri.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-albis-introitus"
+      },
+      "locator": {
+        "printed": "p. 1",
+        "scan": "leaf n80 / PDF p. 81",
+        "section": "First Sunday of Advent — full Introit doxology",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n80/mode/1up"
+      },
+      "claim": "The common printed doxology supplies Gloria Patri through Amen for the Low Sunday cue, including the retained comma after semper.",
+      "verified_on": "2026-10-14",
+      "decision": "RETAIN",
+      "evidence_sha256": "215182ac2415d178917c183486c716ce352777a6084da024e7293a95649b60c7"
+    },
+    {
+      "id": "use.proprium.dominica-in-albis-introitus.introit-repetition.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-in-albis-introitus"
+      },
+      "locator": {
+        "printed": "p. xxix",
+        "scan": "leaf n34 / PDF p. 35",
+        "section": "RG 427–429",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "The Introit rules govern antiphon, psalm verse, complete doxology and repeated antiphon, with the stated exceptions.",
+      "verified_on": "2026-10-14",
+      "decision": "RETAIN",
+      "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786"
     },
     {
       "id": "use.proprium.dominica-in-albis-introitus.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-in-albis-introitus"
@@ -27932,10 +28009,11 @@
         "scan": "leaf n415 / PDF p. 416",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n415/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "b611eb97076c2ab3a3b9ec4453cec4fd3673db2c0e5374252093581ecd1a4ccf"
+      "claim": "The approved printing gives the complete Low Sunday antiphon and psalm verse, including singular rationabile, followed by Gloria Patri and antiphon-repetition cues; the separately identified common page and rubric supply the expansions.",
+      "verified_on": "2026-10-14",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "b611eb97076c2ab3a3b9ec4453cec4fd3673db2c0e5374252093581ecd1a4ccf",
+      "decision_reason": "Corrects the previous imported plural and distinguishes the directly printed body from the declared common doxology and antiphon reprise. The Benziger setting is an approved edition, not the Vatican typical printing."
     },
     {
       "id": "use.proprium.dominica-in-albis-offertorium.do44667ff",
@@ -68479,6 +68557,46 @@
       }
     },
     {
+      "id": "witness.ordinarium.praefatio-paschalis.mr1962",
+      "text": "ordinarium.praefatio-paschalis",
+      "use": "use.ordinarium.praefatio-paschalis.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "mr",
+      "transcription_sha256": "f33b0ab7fbf7732d559e5a6940f726e765141012d2711553bb72040be01f28e8",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "The Benziger and Vatican settings were separately transcribed. They witness the same received liturgical recension; independent transmission families are not claimed. The seasonal option is selected explicitly, not added to the unselected day or night wording.",
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
+      },
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "witness.ordinarium.praefatio-paschalis.vatican1962",
+      "text": "ordinarium.praefatio-paschalis",
+      "use": "use.ordinarium.praefatio-paschalis.vatican1962",
+      "role": "approved_corroboration",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "vatican",
+      "transcription_sha256": "c358faa7361ea6e3ae24ac8a71da1a13e1a217d0d81f28ec697c5f7906808a07",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "The Benziger and Vatican settings were separately transcribed. They witness the same received liturgical recension; independent transmission families are not claimed. The seasonal option is selected explicitly, not added to the unselected day or night wording.",
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
+      },
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
       "id": "witness.ordinarium.praefatio-quadragesimae.do44667ff",
       "text": "ordinarium.praefatio-quadragesimae",
       "use": "use.ordinarium.praefatio-quadragesimae.do44667ff",
@@ -78190,12 +78308,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "e6f46145a59fd4f1aead469a1d40bbdd18a0d7a16d044ad5115ac74973ba590e",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "3a7778ca99b553fadb2bf118f732033bc45b1eeb4c92cd0ee022388e06d4fbe3",
+      "orthography_profile": "page-image-with-declared-expansions",
+      "independence_basis": "Direct reading of the approved Benziger proper page, expanded from its separately identified common doxology and rubric; the digital comparison is not the source of the printed singular.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-in-albis-introitus.gloria-patri.mr1962",
+          "use.proprium.dominica-in-albis-introitus.introit-repetition.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -104746,6 +104871,27 @@
       }
     },
     {
+      "id": "collation.ordinarium.praefatio-paschalis.mr1962-vatican1962",
+      "text": "ordinarium.praefatio-paschalis",
+      "recension": "The seasonal Easter Preface of the 1962 Roman rite, selecting in hoc potissimum from the approved Benziger printing with declared house orthography",
+      "selected_text_sha256": "fdeb5d0c7281b71d7ce1102989c4e17b9196b0908637663b3df5bfad1ad1141f",
+      "witnesses": [
+        "witness.ordinarium.praefatio-paschalis.mr1962",
+        "witness.ordinarium.praefatio-paschalis.vatican1962"
+      ],
+      "apparatus": {
+        "entries": 2,
+        "classes": [
+          "capital-accent",
+          "punctuation"
+        ]
+      },
+      "apparatus_sha256": "aa23de6d4171e7e5468260c098f8c5c9461fd05d7bc3030e3edfcc6b4df528fd",
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
       "id": "collation.ordinarium.praefatio-quadragesimae.mr1962-do44667ff",
       "text": "ordinarium.praefatio-quadragesimae",
       "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
@@ -110389,19 +110535,20 @@
       "id": "collation.proprium.dominica-in-albis-introitus.mr1962-do44667ff",
       "text": "proprium.dominica-in-albis-introitus",
       "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
-      "selected_text_sha256": "03d9a372465185460e2a78cd3942012f4faf9dec029071cc93eebc179f984c5b",
+      "selected_text_sha256": "696fb8b909f8138d5c65781f74d73e473f5dfa59ae783cd6f746e8f0d2e3b86c",
       "witnesses": [
         "witness.proprium.dominica-in-albis-introitus.do44667ff",
         "witness.proprium.dominica-in-albis-introitus.mr1962"
       ],
       "apparatus": {
-        "entries": 12,
+        "entries": 14,
         "classes": [
           "orthography",
-          "punctuation"
+          "punctuation",
+          "substantive"
         ]
       },
-      "apparatus_sha256": "847060c2e2c9371e18fc4844cb8e38a5b270306324c2453d48f92f6dd0372d13",
+      "apparatus_sha256": "58c8f8e30c462f3d2ce507fbd35d7e51006eb242a0af15bdd364a74e2c736361",
       "review": {
         "status": "pending"
       }

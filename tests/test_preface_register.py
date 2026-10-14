@@ -3,7 +3,7 @@
 Owner decision 2026-09-28 (contemporary You/Your in own and working translations,
 including glosses and word explanations, without mixing registers inside a prayer).
 The formulas that repeat the Common Preface's Latin read as the Common Preface reads;
-the nine *Et ídeo* closings read alike; the angelic orders have one name in each
+the ten *Et ídeo* closings read alike; the angelic orders have one name in each
 language, in prose and in word help.
 """
 
@@ -61,8 +61,8 @@ def archaic_fields(doc):
     return [(path, value) for path, value in strings(doc) if ARCHAIC.search(value)]
 
 
-def test_there_are_twenty_four_prefaces():
-    assert len(NAMES) == 24
+def test_preface_inventory_includes_all_variants():
+    assert len(NAMES) == 25
 
 
 @pytest.mark.parametrize("name", NAMES)
@@ -100,7 +100,7 @@ def test_every_et_ideo_closing_reads_alike():
             if text.startswith("Et ídeo cum Ángelis") or " Et ídeo cum Ángelis" in text:
                 assert en[sid]["translation"].endswith(ET_IDEO), (name, sid)
                 seen += 1
-    assert seen == 9
+    assert seen == 10
 
 
 ORDERS = {

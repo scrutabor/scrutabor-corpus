@@ -32,7 +32,7 @@ SLUGS = (
     "sanctissimae-trinitatis",
     "spiritus-sancti",
 )
-EASTER = ("paschalis-in-die", "paschalis-in-nocte")
+EASTER = ("paschalis", "paschalis-in-die", "paschalis-in-nocte")
 EDITION = "edition.missale-romanum.1962-typica"
 ITEM = "item.missale-romanum.1962-typica.ia"
 SUFFIX = ".hand-position-rubric.mr1962"
@@ -97,7 +97,7 @@ def check_use(data, slug):
 
 
 def check_population(data, documents):
-    assert len(SLUGS) == 21 and len(EASTER) == 2
+    assert len(SLUGS) == 21 and len(EASTER) == 3
     assert set(documents) == {tid(s) for s in (*SLUGS, *EASTER)}
     rubric_ids = set()
     for slug in (*SLUGS, *EASTER):
@@ -151,7 +151,7 @@ def test_preface_rubric_has_its_own_exact_printed_source(slug):
     check_use(graph(), slug)
 
 
-def test_hand_rubric_population_excludes_both_easter_bodies():
+def test_hand_rubric_population_excludes_all_easter_bodies():
     documents = {
         doc["id"]: doc
         for path in (CORPUS / "texts/ordinarium").glob("praefatio-*.json")

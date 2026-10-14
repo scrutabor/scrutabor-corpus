@@ -22,7 +22,7 @@ READINGS = [
         10,
         "different gifts according to the grace given to us",
     ),
-    ("proprium.dominica-in-albis-epistola", "s01", 4, 5, "is born"),
+    ("proprium.dominica-in-albis-epistola", "s01", 4, 5, "has been born"),
     ("proprium.dominica-xi-post-pentecosten-evangelium", "s01", 63, 64, "were opened"),
     ("proprium.dominica-xiii-post-pentecosten-epistola", "s01", 98, 99, "had been given"),
     ("proprium.dominica-xix-post-pentecosten-evangelium", "s01", 139, 140, "was filled"),
@@ -81,3 +81,21 @@ def test_compound_predicate_keeps_meaning_and_context(text, segment, first, last
 def test_whole_finite_reading_has_one_provider_per_word(text):
     core, layers = store.load(ROOT, text)
     assert interlinear.check(core, layers["en"]) == []
+
+
+def test_in_albis_birth_keeps_perfect_predicate_and_divine_origin():
+    core, layers = store.load(ROOT, "proprium.dominica-in-albis-epistola")
+    words = {w["id"]: w for s in core["segments"] for w in s["words"]}
+    assert (words["w004"]["lemma"], words["w004"]["morph"]["tense"]) == ("nascor", "perf")
+    assert (words["w004"]["morph"]["mood"], words["w004"]["morph"]["voice"]) == (
+        "part",
+        "dep",
+    )
+    assert (words["w005"]["lemma"], words["w005"]["morph"]["tense"]) == ("sum", "pres")
+    assert words["w005"]["morph"]["mood"] == "ind"
+    assert [interlinear.effective_gloss(layers["en"], f"w{n:03}") for n in range(4, 8)] == [
+        "has been born",
+        "",
+        "of",
+        "God",
+    ]

@@ -26,13 +26,14 @@ GROUPS = {
         (["w023", "w024"], "w023", "our Lord"),
         (["w027", "w028"], "w027", "Your Son"),
         (["w036", "w037"], "w036", "of the Holy Spirit"),
+        (["w039", "w040", "w041", "w042"], "w041", "forever and ever"),
     ],
 }
 EN_PROSE = (
     "We ask You, Lord our God, to make the most holy mysteries, which You have "
     "bestowed to safeguard our restoration, a remedy for us both now and in the future. "
     "Through our Lord Jesus Christ, Your Son, who lives and reigns with You in the unity "
-    "of the Holy Spirit, God, for ever and ever."
+    "of the Holy Spirit, God, forever and ever."
 )
 PL_PROSE = (
     "Prosimy, Panie, Boże nasz, abyś przenajświętsze tajemnice, których udzieliłeś dla "
@@ -71,7 +72,7 @@ def test_complete_minimal_groups_and_every_card(lang):
     doc, layer = store.core(ROOT, TEXT), store.raw_layer(ROOT, lang, TEXT)
     assert interlinear.check(doc, layer) == []
     assert len(layer["words"]) == 43
-    assert sum("gloss" in w for w in layer["words"].values()) == (38 if lang == "pl" else 28)
+    assert sum("gloss" in w for w in layer["words"].values()) == (38 if lang == "pl" else 24)
     expected = [
         {"words": ids, "anchor": anchor, "gloss": gloss} for ids, anchor, gloss in GROUPS[lang]
     ]
@@ -100,6 +101,7 @@ def test_direct_roles_time_and_bestowal_remain_complete():
     assert {
         w: en["words"][w]["gloss"]
         for w in [
+            "w001",
             "w006",
             "w007",
             "w009",
@@ -108,13 +110,14 @@ def test_direct_roles_time_and_bestowal_remain_complete():
             "w014",
             "w020",
             "w021",
+            "w029",
             "w030",
             "w031",
             "w033",
             "w038",
-            "w039",
         ]
     } == {
+        "w001": "We ask",
         "w006": "most holy",
         "w007": "mysteries",
         "w009": "as",
@@ -123,12 +126,18 @@ def test_direct_roles_time_and_bestowal_remain_complete():
         "w014": "both",
         "w020": "and",
         "w021": "a future one",
+        "w029": "who",
         "w030": "with You",
         "w031": "lives",
         "w033": "reigns",
         "w038": "God",
-        "w039": "for",
     }
+    assert [interlinear.effective_gloss(en, f"w{n:03}") for n in range(39, 43)] == [
+        "",
+        "",
+        "forever and ever",
+        "",
+    ]
 
 
 @pytest.mark.parametrize("lang,prose", [("pl", PL_PROSE), ("en", EN_PROSE)])

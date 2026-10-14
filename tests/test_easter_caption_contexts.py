@@ -15,6 +15,7 @@ PASCHA = {
     EASTER + "epistola": 13,
     EASTER + "alleluia": 3,
     EASTER + "communio": 1,
+    "ordinarium.praefatio-paschalis": 21,
     "ordinarium.praefatio-paschalis-in-die": 22,
     "ordinarium.praefatio-paschalis-in-nocte": 22,
 }
