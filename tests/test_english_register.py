@@ -1,14 +1,16 @@
-"""A prayer whose English prose is contemporary is contemporary throughout.
+"""Check English register without letting changed prose exclude its own text.
 
-Owner decision 2026-09-28 (STYLE-EN): contemporary You/Your in own and working
-translations, including prayer conclusions, interlinear glosses and word explanations,
-without mixing registers inside one prayer. Texts whose prose still keeps the traditional
-register (retained formulas and texts not yet revised) are outside this check.
+Every localized text is checked, including new texts and legacy wording. The exact-field
+legacy fixture is unresolved debt, not approval of a translation or traditional formula.
+An existing flagged field may remain byte-identical pending review, but new, changed and
+obsolete allowances fail. This lexical detector does not replace contextual review.
 """
 
+import hashlib
 import json
 import re
 import unicodedata
+from copy import deepcopy
 from pathlib import Path
 
 import pytest
@@ -169,18 +171,129 @@ def mixed_fields(doc):
     return [(path, value) for path, value in strings(doc) if stale(value)]
 
 
-CONTEMPORARY = [doc["text"] for doc in layers() if contemporary(doc)]
+def legacy_inventory(payload):
+    assert payload["schema_version"] == 1
+    assert payload["status"] == "unreviewed_legacy_fields"
+    inventory = {}
+    for record in payload["records"]:
+        text = record["text"]
+        assert isinstance(text, str) and text not in inventory, text
+        fields = {}
+        assert record["fields"], text
+        for field in record["fields"]:
+            path = tuple(field["path"])
+            digest = field["sha256"]
+            assert path and all(isinstance(key, (str, int)) for key in path), (
+                text,
+                path,
+            )
+            assert path not in fields, (text, path)
+            assert isinstance(digest, str) and re.fullmatch(r"[0-9a-f]{64}", digest)
+            fields[path] = digest
+        inventory[text] = fields
+    return inventory
 
 
-def test_most_of_the_book_is_contemporary():
-    assert len(CONTEMPORARY) > 700
+def register_changes(doc, inventory):
+    expected = inventory.get(doc["text"], {})
+    actual = {path: hashlib.sha256(value.encode()).hexdigest() for path, value in mixed_fields(doc)}
+    return {
+        "new": set(actual) - set(expected),
+        "changed": {
+            path for path in actual.keys() & expected.keys() if actual[path] != expected[path]
+        },
+        "obsolete": set(expected) - set(actual),
+    }
 
 
-@pytest.mark.parametrize("text", CONTEMPORARY)
-def test_contemporary_prose_has_contemporary_word_help(text):
-    category, name = text.split(".", 1)
-    doc = json.loads((ROOT / "languages/en/texts" / category / f"{name}.json").read_text())
-    assert mixed_fields(doc) == []
+LEGACY_PAYLOAD = json.loads((ROOT / "tests/fixtures/english-register-legacy.json").read_text())
+LEGACY = legacy_inventory(LEGACY_PAYLOAD)
+DOCUMENTS = list(layers())
+TEXT_IDS = {doc["text"] for doc in DOCUMENTS}
+# Keep the existing conclusion contract independent of current prose: only an explicit
+# legacy prose field can defer it, and that field itself is checked by the all-text gate.
+CONCLUSION_TEXTS = [
+    doc["text"]
+    for doc in DOCUMENTS
+    if not any(
+        path[0] == "segments" and path[-1] == "translation" for path in LEGACY.get(doc["text"], {})
+    )
+]
+
+
+def test_register_inventory_has_subjects_and_no_missing_or_duplicate_texts():
+    assert DOCUMENTS
+    assert len(DOCUMENTS) == len(TEXT_IDS)
+    assert set(LEGACY) <= TEXT_IDS
+    assert len(CONCLUSION_TEXTS) > 700
+
+
+@pytest.mark.parametrize("doc", DOCUMENTS, ids=lambda doc: doc["text"])
+def test_every_text_preserves_english_register(doc):
+    assert not any(register_changes(doc, LEGACY).values()), doc["text"]
+
+
+def test_no_prose_change_can_exempt_any_existing_text():
+    for doc in DOCUMENTS:
+        mutant = deepcopy(doc)
+        segment = next(key for key, value in mutant["segments"].items() if value.get("translation"))
+        mutant["segments"][segment]["translation"] += " Thy"
+        changes = register_changes(mutant, LEGACY)
+        assert ("segments", segment, "translation") in changes["new"] | changes["changed"], doc[
+            "text"
+        ]
+
+
+def test_changed_and_obsolete_legacy_fields_are_not_blanket_exceptions():
+    documents = {doc["text"]: doc for doc in DOCUMENTS}
+    for text, fields in LEGACY.items():
+        for path in fields:
+            for replacement, expected in [
+                (None, "changed"),
+                ("A contemporary control", "obsolete"),
+            ]:
+                mutant = deepcopy(documents[text])
+                parent = mutant
+                for key in path[:-1]:
+                    parent = parent[key]
+                parent[path[-1]] = (
+                    replacement if replacement is not None else parent[path[-1]] + " Thy"
+                )
+                assert path in register_changes(mutant, LEGACY)[expected], (
+                    text,
+                    path,
+                    expected,
+                )
+
+
+@pytest.mark.parametrize("text", ["control.new", next(iter(LEGACY))])
+@pytest.mark.parametrize("field", ["translation", "gloss", "note"])
+def test_new_fields_are_checked_in_new_and_legacy_texts(text, field):
+    doc = {"text": text, "segments": {}, "words": {}}
+    if field == "translation":
+        doc["segments"]["new"] = {field: "Your mercy"}
+        path = ("segments", "new", field)
+    else:
+        doc["words"]["new"] = {field: "Your mercy"}
+        path = ("words", "new", field)
+    assert path not in register_changes(doc, LEGACY)["new"]
+    doc[path[0]][path[1]][path[2]] = "Thy mercy"
+    assert path in register_changes(doc, LEGACY)["new"]
+
+
+@pytest.mark.parametrize("mutation", ["text", "field", "hash", "status"])
+def test_invalid_or_duplicate_legacy_allowances_are_rejected(mutation):
+    payload = deepcopy(LEGACY_PAYLOAD)
+    if mutation == "text":
+        payload["records"].append(deepcopy(payload["records"][0]))
+    elif mutation == "field":
+        payload["records"][0]["fields"].append(deepcopy(payload["records"][0]["fields"][0]))
+    elif mutation == "hash":
+        payload["records"][0]["fields"][0]["sha256"] = "invalid"
+    else:
+        payload["status"] = "approved"
+    with pytest.raises(AssertionError):
+        legacy_inventory(payload)
 
 
 def test_the_check_sees_a_traditional_gloss_in_a_contemporary_prayer():
@@ -288,7 +401,7 @@ def test_plain_dominum_does_not_acquire_an_unsupported_same():
 
 def test_contemporary_orations_conclude_in_the_same_register():
     seen = 0
-    for text in CONTEMPORARY:
+    for text in CONCLUSION_TEXTS:
         if text in HISTORICAL_CONCLUSION:
             continue
         category, name = text.split(".", 1)
@@ -311,10 +424,16 @@ def test_contemporary_orations_conclude_in_the_same_register():
                         "lives and reigns with You in the unity of the Holy Spirit"
                     )
                 if forms.endswith(incipit + " per omnia saecula saeculorum"):
-                    assert conclusion_matches(prose, english, duration=True), (text, seg["id"])
+                    assert conclusion_matches(prose, english, duration=True), (
+                        text,
+                        seg["id"],
+                    )
                     seen += 1
                 elif forms.endswith(incipit):
-                    assert conclusion_matches(prose, english, duration=False), (text, seg["id"])
+                    assert conclusion_matches(prose, english, duration=False), (
+                        text,
+                        seg["id"],
+                    )
                     seen += 1
     assert seen > 150
 
