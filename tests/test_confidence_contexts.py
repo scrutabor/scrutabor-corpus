@@ -173,7 +173,7 @@ CASES = [
         None,
         (80, 82),
         "w Tobie pokładającym ufność",
-        "in Thee trusting",
+        "in You trusting",
     ),
     (
         "dominica-vii-post-pentecosten-offertorium",

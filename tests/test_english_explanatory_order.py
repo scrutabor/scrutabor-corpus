@@ -234,7 +234,7 @@ CONSTRUCTIONS = [
         "w139",
         ["w138", "w139", "w140", "w141", "w142"],
         "w138",
-        "For the ruler of this world is coming",
+        "For the prince of this world is coming",
     ),
     (TEXTS[50], "s01", "w030", ["w029", "w030"], "w029", "for he beheld"),
     (TEXTS[52], "s01", "w036", ["w035", "w036"], "w035", "For he who"),
