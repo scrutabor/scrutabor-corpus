@@ -61346,6 +61346,27 @@
       "evidence_sha256": "1e4659d2b0dc8b7801bd16759fb45ec22c6fa26f7553582cb26943ef9375cf30"
     },
     {
+      "id": "use.proprium.sanctissimae-trinitatis-collecta.conclusion-rg115a.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sanctissimae-trinitatis-collecta",
+        "word": "w032"
+      },
+      "locator": {
+        "printed": "p.xvii",
+        "scan": "n22/PDF23",
+        "section": "RG115a",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "Prescribed full conclusion or its explicit reference to the preceding formula. The composite witness retains literal unaccented RG spelling and list punctuation.",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "verified_on": "2026-10-16",
+      "decision": "RETAIN"
+    },
+    {
       "id": "use.proprium.sanctissimae-trinitatis-collecta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -61372,14 +61393,16 @@
         "text": "proprium.sanctissimae-trinitatis-collecta"
       },
       "locator": {
-        "printed": "p. 366 and Rubricae generales p. xvii",
-        "scan": "leaf n447 / PDF p. 448; leaf n22 / PDF p. 23",
+        "printed": "p. 366",
+        "scan": "leaf n447 / PDF p. 448",
+        "section": "Proper Collect body and abbreviated conclusion cue",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n447/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "1e4659d2b0dc8b7801bd16759fb45ec22c6fa26f7553582cb26943ef9375cf30"
+      "claim": "The proper page prints the body and an abbreviated conclusion, not the expanded formula. The full conclusion is separately bound to RG115a in the declared composite witness.",
+      "verified_on": "2026-10-16",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "1e4659d2b0dc8b7801bd16759fb45ec22c6fa26f7553582cb26943ef9375cf30",
+      "decision_reason": "The earlier locator and claim conflated the proper page with the separately printed conclusion. No selected Latin word is changed."
     },
     {
       "id": "use.proprium.sanctissimae-trinitatis-collecta.oration-boundaries.mr1962",
@@ -100666,9 +100689,9 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "690f610ddbf0235279f03ff1ac645b164844843032f6c101b4dc73dc4fd2cd5c",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "8a0541b3030de18f4cf87ec315492bcd0e5a7d1bbd891a03f2d2dbf3b189822b",
+      "orthography_profile": "exact-declared-composite",
+      "independence_basis": "Direct reading of two identified loci in the Benziger Brothers 1962 Editio iuxta typicam: proper body with abbreviated cue, then the prescribed RG115a conclusion. The two loci are one printed witness, not independent corroboration.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -123621,7 +123644,7 @@
         "witness.proprium.sanctissimae-trinitatis-collecta.mr1962"
       ],
       "apparatus": {
-        "entries": 11,
+        "entries": 19,
         "classes": [
           "capital-accent",
           "capitalization",
@@ -123629,7 +123652,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "a68c151ef3a0ace672fe3aba7cb366293b4ae9eaafcc2aabb0e8fd5c6b2a4365",
+      "apparatus_sha256": "456858df27a4e90c497ab0283483c39c5e5a6d17c16c5e77f7bc67237a91ecc0",
       "review": {
         "status": "pending"
       }
