@@ -68,3 +68,12 @@ def test_zero_realization_requires_a_declared_reason():
     data = layer()
     del data["segments"]["s01"]["alignments"][1]["reason"]
     assert any("reason" in error for error in check(DOC, data))
+
+
+def test_zero_realization_contains_exactly_one_source_word():
+    data = layer()
+    data["segments"]["s01"]["alignments"][0] = {
+        "words": ["w1", "w2"],
+        "reason": "word-order",
+    }
+    assert any("exactly one source word" in error for error in check(DOC, data))

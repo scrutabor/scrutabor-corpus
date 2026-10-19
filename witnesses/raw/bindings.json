@@ -810,6 +810,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-Tempora-Quad6-6r.txt",
       "sha256": "ed02ec52034eb46099622477bf6067216a7494fa4122dfbd39f4c7f2f03770ca"
+    },
+    "missa-ordo-44667ff": {
+      "upstream": "web/www/missa/Latin/Ordo/Ordo.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/missa-44667ff/Ordo/Ordo.txt",
+      "sha256": "a7f63e8030325b809f74dd4587c649bf8eb45cdd150fc9a2817fe2a1ed6a42e3"
     }
   },
   "bindings": {
@@ -26725,6 +26731,104 @@
         }
       ],
       "contract": "raw-reading-2"
+    },
+    "munda-cor-meum-priest": {
+      "contract": "raw-reading-4",
+      "witness": "witnesses/ordinarium.munda-cor-meum/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "missa-ordo-44667ff",
+          "first": 121,
+          "last": 121,
+          "section": "Evangelium",
+          "section_line": 119,
+          "heading": {
+            "format": "hash-space",
+            "text": "# Evangelium"
+          },
+          "branch": {
+            "line": 118,
+            "text": "!*RnD"
+          },
+          "context": [
+            {
+              "line": 120,
+              "text": "!Si vero Sacerdos sine Diacono et Subdiacono celebrat, delato libro ad aliud cornu Altaris, inclinatus in medio, junctis manibus dicit:"
+            }
+          ]
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "missa-ordo-44667ff",
+          "first": 121,
+          "last": 121
+        }
+      ]
+    },
+    "iube-domine-benedicere-priest": {
+      "contract": "raw-reading-5",
+      "witness": "witnesses/ordinarium.iube-domine-benedicere/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "missa-ordo-44667ff",
+          "first": 122,
+          "last": 122,
+          "section": "Evangelium",
+          "section_line": 119,
+          "heading": {
+            "format": "hash-space",
+            "text": "# Evangelium"
+          },
+          "branch": {
+            "line": 118,
+            "text": "!*RnD"
+          },
+          "context": [
+            {
+              "line": 120,
+              "text": "!Si vero Sacerdos sine Diacono et Subdiacono celebrat, delato libro ad aliud cornu Altaris, inclinatus in medio, junctis manibus dicit:"
+            }
+          ],
+          "preceding_text": {
+            "line": 121,
+            "text": "v. Munda cor meum ac lábia mea, omnípotens Deus, qui lábia Isaíæ Prophétæ cálculo mundásti igníto: ita me tua grata miseratióne dignáre mundáre, ut sanctum Evangélium tuum digne váleam nuntiáre. Per Christum, Dóminum nostrum. Amen.",
+            "marker": "v"
+          }
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "missa-ordo-44667ff",
+          "first": 122,
+          "last": 122
+        }
+      ]
+    },
+    "do-ordinarium-iube-domne-benedicere-in-passione": {
+      "witness": "witnesses/ordinarium.iube-domne-benedicere-in-passione/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-tempora-quad6-0r",
+          "first": 242,
+          "last": 244,
+          "section": "Munda Cor Passionis",
+          "section_line": 240
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "do-tempora-quad6-0r",
+          "first": 242,
+          "last": 244
+        }
+      ]
     }
   }
 }

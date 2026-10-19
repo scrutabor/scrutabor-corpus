@@ -803,10 +803,29 @@ def test_contextual_verbal_nouns_are_not_passive_participles(text, identifiers):
         assert "head" not in token
 
 
-def test_agreeing_liberandum_remains_a_gerundive():
+def test_te_deum_purpose_has_a_gerund_and_the_assumption_is_prospective():
+    # Hominem completes suscepturus; ad governs the verbal noun liberandum.
     token = word("orationes/te-deum", "w086")
-    assert token["head"] == "w088"
+    assert "head" not in token
+    assert (token["morph"]["mood"], token["morph"]["voice"]) == ("ger", "act")
+    assert word("orationes/te-deum", "w085")["head"] == "w086"
+    assumption = word("orationes/te-deum", "w087")
+    assert assumption["head"] == "w084"
+    assert (assumption["morph"]["tense"], assumption["morph"]["voice"]) == ("fut", "act")
+
+
+def test_agreeing_imitandum_remains_a_gerundive():
+    # A deponent gerund is active, but this gerundive agrees with exemplum.
+    text = "proprium/dominica-ii-passionis-collecta"
+    token = word(text, "w008")
+    assert (token["form"], token["head"]) == ("imitándum", "w010")
     assert (token["morph"]["mood"], token["morph"]["voice"]) == ("part", "pass")
+    assert tuple(token["morph"][k] for k in ("case", "number", "gender")) == (
+        "acc",
+        "sg",
+        "n",
+    )
+    assert word(text, "w007")["head"] == "w010"
 
 
 def test_the_gifts_are_to_be_received_not_the_sanctification():

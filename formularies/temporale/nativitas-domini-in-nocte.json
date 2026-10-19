@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.2.0",
+  "formulary_schema": "1.3.0",
   "id": "nativitas-domini-in-nocte",
   "order": 5,
   "collection": "temporale",
@@ -11,6 +11,16 @@
     "default": false
   },
   "title": "In Nativitate Domini — Missa in nocte",
+  "ordinary": {
+    "gloria": {
+      "sunday": "required",
+      "not-sunday": "required"
+    },
+    "credo": {
+      "sunday": "required",
+      "not-sunday": "required"
+    }
+  },
   "components": [
     {
       "key": "introitus",

@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.2.0",
+  "formulary_schema": "1.3.0",
   "id": "dominica-ii-passionis",
   "order": 28,
   "collection": "temporale",
@@ -10,6 +10,16 @@
     "default": true
   },
   "title": "Dominica II Passionis seu in Palmis",
+  "ordinary": {
+    "gloria": {
+      "sunday": "omitted",
+      "not-sunday": "omitted"
+    },
+    "credo": {
+      "sunday": "required",
+      "not-sunday": "unresolved"
+    }
+  },
   "components": [
     {
       "key": "introitus",

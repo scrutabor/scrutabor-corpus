@@ -4,9 +4,12 @@ These are the cases that would be wrong if the rule were written loosely —
 each one is a line the corpus actually carries.
 """
 
+import copy
 import json
 from pathlib import Path
 from typing import Any, ClassVar
+
+import pytest
 
 from checks.participation import LAW, check_doc, derive
 
@@ -196,6 +199,109 @@ class TestWhatTheLawDoesNotReach:
     def test_a_rubric_is_nobody_s_line(self):
         doc = text("ordinarium.pater-noster")
         assert derive(doc, segment(doc, "s01")) == {}
+
+
+class TestMinisterialPreparation:
+    @pytest.mark.parametrize(
+        "text_id,amen_actor",
+        [
+            ("ordinarium.iube-domne-benedicere", "sacerdos"),
+            ("ordinarium.iube-domne-benedicere-in-passione", "minister"),
+        ],
+        ids=["ordinary", "palm"],
+    )
+    def test_the_complete_preparation_is_not_congregational(self, text_id, amen_actor):
+        doc = text(text_id)
+        before = copy.deepcopy(doc)
+        assert [(s["id"], s["speaker"]) for s in doc["segments"]] == [
+            ("s01", "minister"),
+            ("s02", "sacerdos"),
+            ("s03", "sacerdos"),
+            ("s04", amen_actor),
+        ]
+        for seg in doc["segments"]:
+            assert "participation" not in seg
+            assert derive(doc, seg) == {}, seg["id"]
+        assert check_doc(doc) == ([], 0)
+        assert doc == before
+
+    @pytest.mark.parametrize(
+        "text_id,seg_id,unsupported",
+        [
+            (
+                "ordinarium.iube-domne-benedicere",
+                "s01",
+                {"lecta": {"gradus": 2, "source": "DMS 31 b"}},
+            ),
+            (
+                "ordinarium.iube-domne-benedicere-in-passione",
+                "s01",
+                {"lecta": {"gradus": 2, "source": "DMS 31 b"}},
+            ),
+            (
+                "ordinarium.iube-domne-benedicere-in-passione",
+                "s04",
+                {
+                    "lecta": {"gradus": 1, "source": "DMS 31 a"},
+                    "cantu": {"gradus": 1, "source": "DMS 25 a"},
+                },
+            ),
+        ],
+        ids=["ordinary-request", "palm-request", "palm-amen"],
+    )
+    def test_false_people_participation_is_rejected_and_restored(
+        self, text_id, seg_id, unsupported
+    ):
+        doc = text(text_id)
+        before = copy.deepcopy(doc)
+        assert check_doc(doc) == ([], 0)
+        seg = segment(doc, seg_id)
+        seg["participation"] = unsupported
+        errors, attributed = check_doc(doc)
+        assert errors == [f"{seg_id}: participation {unsupported} — the law gives none (see {LAW})"]
+        assert attributed == 0
+        del seg["participation"]
+        assert doc == before
+        assert check_doc(doc) == ([], 0)
+
+    @pytest.mark.parametrize(
+        "text_id,seg_id,expected",
+        [
+            ("ordinarium.orate-fratres", "s04", {"lecta": {"gradus": 2, "source": "DMS 31 b"}}),
+            ("ordinarium.confiteor", "s02", {"lecta": {"gradus": 2, "source": "DMS 31 b"}}),
+            (
+                "ordinarium.kyrie",
+                "s03",
+                {
+                    "lecta": {"gradus": 2, "source": "DMS 31 b"},
+                    "cantu": {"gradus": 2, "source": "DMS 25 b"},
+                },
+            ),
+            (
+                "ordinarium.per-ipsum",
+                "s09",
+                {
+                    "lecta": {"gradus": 1, "source": "DMS 31 a"},
+                    "cantu": {"gradus": 1, "source": "DMS 25 a"},
+                },
+            ),
+            (
+                "ordinarium.pater-noster",
+                "s14",
+                {"lecta": {"source": "DMS 32", "conditional": True}},
+            ),
+        ],
+        ids=["suscipiat", "confiteor", "kyrie", "amen", "pater"],
+    )
+    def test_real_server_responses_and_pater_keep_their_titles(self, text_id, seg_id, expected):
+        assert part(text_id, seg_id) == expected
+
+    def test_priest_alone_preparation_remains_private(self):
+        doc = text("ordinarium.iube-domine-benedicere")
+        assert [s["speaker"] for s in doc["segments"]] == ["sacerdos"] * 3
+        assert [s["voice"] for s in doc["segments"]] == ["secreto"] * 3
+        assert all(derive(doc, seg) == {} for seg in doc["segments"])
+        assert check_doc(doc) == ([], 0)
 
 
 class TestTheCorpusAgrees:

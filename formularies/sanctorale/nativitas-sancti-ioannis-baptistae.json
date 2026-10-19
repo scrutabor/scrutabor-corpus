@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.2.0",
+  "formulary_schema": "1.3.0",
   "id": "nativitas-sancti-ioannis-baptistae",
   "order": 73,
   "collection": "sanctorale",
@@ -10,6 +10,16 @@
     "default": true
   },
   "title": "In Nativitate Sancti Ioannis Baptistæ",
+  "ordinary": {
+    "gloria": {
+      "sunday": "required",
+      "not-sunday": "required"
+    },
+    "credo": {
+      "sunday": "required",
+      "not-sunday": "required"
+    }
+  },
   "components": [
     {
       "key": "introitus",

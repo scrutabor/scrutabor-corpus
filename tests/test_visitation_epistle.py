@@ -147,8 +147,14 @@ def test_selected_printed_reading_and_digital_variants_are_distinct():
 
 def test_source_specific_attribution_keeps_the_full_reading():
     core, _ = subject("en")
-    literal, alignment = attribute._coverage(core)
-    assert literal is False and alignment is not None
+    assessment = attribute.assess(core)
+    assert assessment.scope == "ALIGNED" and assessment.write_eligible
+    alignment = assessment.alignment
+    assert alignment is not None and alignment.literal_text_equal is False
+    assert attribute.span_covers(core) is False
+    assert [word.word_id for word in alignment.words] == [
+        word["id"] for word in core["segments"][0]["words"]
+    ]
     assert len(alignment.words) == 107
     assert alignment.source_line == 19 and alignment.supporting_witnesses == ("mr",)
     assert alignment.substantive_variants == 1

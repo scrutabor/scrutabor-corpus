@@ -3,7 +3,9 @@
 Every localized text is checked, including new texts and legacy wording. The exact-field
 legacy fixture is unresolved debt, not approval of a translation or traditional formula.
 An existing flagged field may remain byte-identical pending review, but new, changed and
-obsolete allowances fail. This lexical detector does not replace contextual review.
+obsolete allowances fail. Deliberately retained historical register has a separate,
+disjoint exact-field inventory. Neither inventory exempts a whole text.
+This lexical detector does not replace contextual review.
 """
 
 import hashlib
@@ -171,9 +173,9 @@ def mixed_fields(doc):
     return [(path, value) for path, value in strings(doc) if stale(value)]
 
 
-def legacy_inventory(payload):
+def field_inventory(payload, *, status):
     assert payload["schema_version"] == 1
-    assert payload["status"] == "unreviewed_legacy_fields"
+    assert payload["status"] == status
     inventory = {}
     for record in payload["records"]:
         text = record["text"]
@@ -194,6 +196,33 @@ def legacy_inventory(payload):
     return inventory
 
 
+def legacy_inventory(payload):
+    return field_inventory(payload, status="unreviewed_legacy_fields")
+
+
+def historical_inventory(payload):
+    inventory = field_inventory(payload, status="retained_historical_register_fields")
+    for record in payload["records"]:
+        assert isinstance(record.get("reason"), str) and record["reason"].strip()
+        assert isinstance(record.get("basis_use"), str) and record["basis_use"].startswith(
+            "use.en."
+        )
+        for field in record["fields"]:
+            path = field["path"]
+            assert len(path) == 3 and path[0] == "segments" and path[2] == "translation"
+    return inventory
+
+
+def combine_inventories(legacy, historical, subjects):
+    assert set(legacy) | set(historical) <= subjects
+    combined = deepcopy(legacy)
+    for text, fields in historical.items():
+        existing = combined.setdefault(text, {})
+        assert not existing.keys() & fields.keys(), text
+        existing.update(fields)
+    return combined
+
+
 def register_changes(doc, inventory):
     expected = inventory.get(doc["text"], {})
     actual = {path: hashlib.sha256(value.encode()).hexdigest() for path, value in mixed_fields(doc)}
@@ -208,8 +237,13 @@ def register_changes(doc, inventory):
 
 LEGACY_PAYLOAD = json.loads((ROOT / "tests/fixtures/english-register-legacy.json").read_text())
 LEGACY = legacy_inventory(LEGACY_PAYLOAD)
+HISTORICAL_PAYLOAD = json.loads(
+    (ROOT / "tests/fixtures/english-register-historical.json").read_text()
+)
+HISTORICAL = historical_inventory(HISTORICAL_PAYLOAD)
 DOCUMENTS = list(layers())
 TEXT_IDS = {doc["text"] for doc in DOCUMENTS}
+ALLOWANCES = combine_inventories(LEGACY, HISTORICAL, TEXT_IDS)
 # Keep the existing conclusion contract independent of current prose: only an explicit
 # legacy prose field can defer it, and that field itself is checked by the all-text gate.
 CONCLUSION_TEXTS = [
@@ -230,7 +264,7 @@ def test_register_inventory_has_subjects_and_no_missing_or_duplicate_texts():
 
 @pytest.mark.parametrize("doc", DOCUMENTS, ids=lambda doc: doc["text"])
 def test_every_text_preserves_english_register(doc):
-    assert not any(register_changes(doc, LEGACY).values()), doc["text"]
+    assert not any(register_changes(doc, ALLOWANCES).values()), doc["text"]
 
 
 def test_no_prose_change_can_exempt_any_existing_text():
@@ -238,7 +272,7 @@ def test_no_prose_change_can_exempt_any_existing_text():
         mutant = deepcopy(doc)
         segment = next(key for key, value in mutant["segments"].items() if value.get("translation"))
         mutant["segments"][segment]["translation"] += " Thy"
-        changes = register_changes(mutant, LEGACY)
+        changes = register_changes(mutant, ALLOWANCES)
         assert ("segments", segment, "translation") in changes["new"] | changes["changed"], doc[
             "text"
         ]
@@ -246,7 +280,7 @@ def test_no_prose_change_can_exempt_any_existing_text():
 
 def test_changed_and_obsolete_legacy_fields_are_not_blanket_exceptions():
     documents = {doc["text"]: doc for doc in DOCUMENTS}
-    for text, fields in LEGACY.items():
+    for text, fields in ALLOWANCES.items():
         for path in fields:
             for replacement, expected in [
                 (None, "changed"),
@@ -259,7 +293,7 @@ def test_changed_and_obsolete_legacy_fields_are_not_blanket_exceptions():
                 parent[path[-1]] = (
                     replacement if replacement is not None else parent[path[-1]] + " Thy"
                 )
-                assert path in register_changes(mutant, LEGACY)[expected], (
+                assert path in register_changes(mutant, ALLOWANCES)[expected], (
                     text,
                     path,
                     expected,
@@ -294,6 +328,133 @@ def test_invalid_or_duplicate_legacy_allowances_are_rejected(mutation):
         payload["status"] = "approved"
     with pytest.raises(AssertionError):
         legacy_inventory(payload)
+
+
+@pytest.mark.parametrize("mutation", ["status", "hash", "duplicate", "reason", "basis", "path"])
+def test_invalid_historical_register_records_are_rejected(mutation):
+    payload = deepcopy(HISTORICAL_PAYLOAD)
+    record = payload["records"][0]
+    if mutation == "status":
+        payload["status"] = "approved"
+    elif mutation == "hash":
+        record["fields"][0]["sha256"] = "invalid"
+    elif mutation == "duplicate":
+        record["fields"].append(deepcopy(record["fields"][0]))
+    elif mutation == "reason":
+        record["reason"] = " "
+    elif mutation == "basis":
+        del record["basis_use"]
+    else:
+        record["fields"][0]["path"] = ["words", "w347", "gloss"]
+    with pytest.raises(AssertionError):
+        historical_inventory(payload)
+
+
+def test_register_inventories_reject_overlap_and_unknown_subjects():
+    with pytest.raises(AssertionError):
+        combine_inventories(HISTORICAL, HISTORICAL, TEXT_IDS)
+    with pytest.raises(AssertionError):
+        combine_inventories(LEGACY, {"missing.text": next(iter(HISTORICAL.values()))}, TEXT_IDS)
+
+
+def assert_historical_wording_bases(payload, uses):
+    historical_inventory(payload)
+    for record in payload["records"]:
+        assert record["basis_use"] in uses
+        use = uses[record["basis_use"]]
+        assert use["role"] == "historical_wording_basis"
+        assert use["decision"] in {"RETAIN", "RETAIN_WITH_CORRECTION"}
+        assert use["address"]["kind"] == "segment"
+        assert use["address"]["text"] == record["text"]
+        assert [field["path"] for field in record["fields"]] == [
+            ["segments", use["address"]["segment"], "translation"]
+        ]
+
+
+def test_historical_register_remains_bound_to_its_exact_wording_basis():
+    uses = {
+        use["id"]: use
+        for use in json.loads((ROOT / "languages/en/bibliography.json").read_text())["uses"]
+    }
+    assert_historical_wording_bases(HISTORICAL_PAYLOAD, uses)
+
+
+@pytest.mark.parametrize(
+    "damage",
+    [
+        "COMPARATOR",
+        "REMOVE",
+        "REPLACE",
+        "UNVERIFIED_NO_DIRECT_EVIDENCE",
+        "text",
+        "segment",
+        "text-wide",
+        "missing-basis",
+        "unknown-basis",
+        "multiple-fields",
+    ],
+)
+def test_exact_historical_source_binding_rejects_damage_then_restores(damage):
+    payload = deepcopy(HISTORICAL_PAYLOAD)
+    uses = {
+        use["id"]: use
+        for use in json.loads((ROOT / "languages/en/bibliography.json").read_text())["uses"]
+    }
+    saved_payload, saved_uses = deepcopy(payload), deepcopy(uses)
+    assert_historical_wording_bases(payload, uses)
+    record = payload["records"][0]
+    use = uses[record["basis_use"]]
+    if damage == "COMPARATOR":
+        use["role"] = "historical_wording_comparator"
+    elif damage in {"REMOVE", "REPLACE", "UNVERIFIED_NO_DIRECT_EVIDENCE"}:
+        use["decision"] = damage
+    elif damage == "text":
+        use["address"]["text"] = "orationes.magnificat"
+    elif damage == "segment":
+        use["address"]["segment"] = "s087"
+    elif damage == "text-wide":
+        use["address"] = {"kind": "text", "text": record["text"]}
+    elif damage == "missing-basis":
+        del record["basis_use"]
+    elif damage == "unknown-basis":
+        record["basis_use"] = "use.en.missing-historical-basis"
+    else:
+        additional = deepcopy(record["fields"][0])
+        additional["path"] = ["segments", "s087", "translation"]
+        record["fields"].append(additional)
+    with pytest.raises(AssertionError):
+        assert_historical_wording_bases(payload, uses)
+    payload.clear()
+    payload.update(saved_payload)
+    uses.clear()
+    uses.update(saved_uses)
+    assert payload == HISTORICAL_PAYLOAD
+    assert uses == saved_uses
+    assert_historical_wording_bases(payload, uses)
+
+
+def test_historical_field_deletion_change_and_same_text_additions_are_detected():
+    documents = {doc["text"]: doc for doc in DOCUMENTS}
+    for text, fields in HISTORICAL.items():
+        original = documents[text]
+        assert not any(register_changes(original, ALLOWANCES).values())
+        for field in fields:
+            mutant = deepcopy(original)
+            del mutant[field[0]][field[1]][field[2]]
+            assert field in register_changes(mutant, ALLOWANCES)["obsolete"]
+            mutant[field[0]][field[1]][field[2]] = original[field[0]][field[1]][field[2]] + " Thy"
+            assert field in register_changes(mutant, ALLOWANCES)["changed"]
+            mutant[field[0]][field[1]][field[2]] = original[field[0]][field[1]][field[2]]
+            assert not any(register_changes(mutant, ALLOWANCES).values())
+        for section, key, name in [
+            ("segments", "new", "translation"),
+            ("words", "w347", "gloss"),
+            ("words", "w347", "explanation"),
+        ]:
+            mutant = deepcopy(original)
+            mutant[section].setdefault(key, {})[name] = "Thy mercy"
+            assert (section, key, name) in register_changes(mutant, ALLOWANCES)["new"]
+            assert not any(register_changes(original, ALLOWANCES).values())
 
 
 def test_the_check_sees_a_traditional_gloss_in_a_contemporary_prayer():

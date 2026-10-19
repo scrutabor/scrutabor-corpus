@@ -234,4 +234,31 @@ def test_new_archive_is_not_discovered_as_a_legacy_source(tmp_path, monkeypatch)
     top_level = tmp_path / "witnesses/raw/do-Tempora-Pent21-0.txt"
     shutil.copyfile(destination, top_level)
     assert attribute._raw_archive_for(archive["upstream"]) == top_level
-    assert attribute.marked_lines("proprium.unbound-control")
+    assert attribute.marked_lines("proprium.unbound-control") == []
+    unbound = {
+        "id": "proprium.unbound-control",
+        "category": "proprium",
+        "segments": [{"id": "s01", "type": "verse", "words": [{"id": "w001", "form": "Amen"}]}],
+    }
+    assessment = attribute.assess(unbound)
+    assert assessment.scope == "UNSCOPED" and not assessment.write_eligible
+    assert assessment.reasons == ("NO_OWN_SCOPE",)
+    assert assessment.proposals == {}
+    assert attribute.span_covers(unbound) is False
+
+    # A real marked line supplies a bounded parser positive only when this
+    # controlled witness explicitly owns that line; it is not a new corpus actor.
+    line = destination.read_text(encoding="utf-8").splitlines()[32]
+    assert line.startswith("V. Priúsquam montes")
+    folder = tmp_path / "witnesses/proprium.bound-control"
+    folder.mkdir(parents=True)
+    witness = folder / "control.txt"
+    header = f"# witness: control\n# path: {archive['upstream']} (line 33)\n{line}\n"
+    witness.write_text(header, encoding="utf-8")
+    expected = [("sacerdos", attribute.flatten(line.removeprefix("V. ")))]
+    assert attribute.marked_lines("proprium.bound-control") == expected
+    witness.write_text("# witness: control\n" + line + "\n", encoding="utf-8")
+    assert attribute.marked_lines("proprium.bound-control") == []
+    witness.write_text(header, encoding="utf-8")
+    assert attribute.marked_lines("proprium.bound-control") == expected
+    assert attribute.marked_lines("proprium.unbound-control") == []

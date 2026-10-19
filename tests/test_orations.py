@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 import pytest
+from test_attribution_scope import bind_document_source
 
 from checks import attribute, delivery, orations, participation
 
@@ -199,31 +200,36 @@ def test_nonfinal_dawn_keeps_priest_role_even_when_labels_are_changed():
 
 
 @pytest.mark.parametrize("piece", ["collecta", "postcommunio", "secreta"])
-def test_attribute_proposes_correct_split_roles_not_genus_wide_silence(piece, monkeypatch):
+def test_attribute_proposes_correct_split_roles_not_genus_wide_silence(
+    piece, tmp_path, monkeypatch
+):
     doc = corrected(DAWN + piece)
     # Isolate the general-rubric rule, not a claimed new textual collation.
-    monkeypatch.setattr(attribute, "marked_lines", lambda *_a, **_k: [])
-    monkeypatch.setattr(attribute, "span_covers", lambda _d: True)
+    bind_document_source(tmp_path, monkeypatch, doc)
     for seg in verses(doc):
         seg.pop("speaker", None)
         seg.pop("voice", None)
     assert attribute.propose(doc) == orations.base_attributes(doc)
 
 
-def test_attribute_does_not_override_stale_witness_safety(monkeypatch):
+def test_attribute_does_not_override_stale_witness_safety(tmp_path, monkeypatch):
     doc = corrected(NIGHT + "secreta")
+    bind_document_source(tmp_path, monkeypatch, doc)
     monkeypatch.setattr(attribute, "marked_lines", lambda *_a, **_k: [])
     monkeypatch.setattr(attribute, "span_covers", lambda _d: False)
     proposed = attribute.propose(doc)
     assert all(p.get("speaker") != "minister" for p in proposed.values())
-    assert proposed[verses(doc)[1]["id"]].get("voice") != "clara"
+    assert proposed.get(verses(doc)[1]["id"], {}).get("voice") != "clara"
+    assert attribute.assess(doc).scope == "STALE_SCOPE"
+    assert proposed == {}
 
 
-def test_attribute_reports_the_actual_boundary_ruling_against_a_secret_rubric(monkeypatch):
+def test_attribute_reports_the_actual_boundary_ruling_against_a_secret_rubric(
+    tmp_path, monkeypatch
+):
     doc = corrected(NIGHT + "secreta")
     doc["segments"].insert(0, {"id": "s99", "type": "rubric", "text": "Secreto"})
-    monkeypatch.setattr(attribute, "marked_lines", lambda *_a, **_k: [])
-    monkeypatch.setattr(attribute, "span_covers", lambda _d: True)
+    bind_document_source(tmp_path, monkeypatch, doc)
     disagreements = []
     attribute.propose(doc, disagreements)
     assert len(disagreements) == 2

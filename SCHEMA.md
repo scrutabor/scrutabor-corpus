@@ -106,7 +106,7 @@ text must be reached by at least one assembly, every target must exist, and
 component order follows the order of Mass. A multi-Mass observance gives every
 member a distinct `variant` and exactly one calendar default.
 
-Formulary schema `1.2.0` permits only these component conditions:
+Neutral formulary schema `1.3.0` retains the component conditions of `1.2.0`:
 
 - `{"weekday": "sunday"}` or `{"weekday": "not-sunday"}` for the printed
   weekday distinction, such as the Christmas Vigil's preface (MR1962 p. 16);
@@ -142,6 +142,27 @@ same two conditions. Its text id is
 `proprium.<text_prefix>-<recension>-<role>`. The base recension retains its
 original text id. Every recension has its own stable words, complete Latin and
 target-language layers, source evidence, and translation provenance.
+
+Neutral schema `1.3.0` also requires an `ordinary` object with exactly
+`gloria` and `credo`. Each contains exactly `sunday` and `not-sunday`,
+whose values are `required`, `omitted` or `unresolved`. These are explicit
+source-derived prescriptions within that formulary's matching calendar/Office
+context, not generic rules inferred from its name, rank or season. No missing
+branch defaults to required. An unresolved branch is not an omission decision.
+
+The neutral reader catalogue has schema `1.3.0` and transports these values
+unchanged. It does not duplicate them into language title catalogues. Those
+unchanged title-only authored documents and their emitted catalogues retain
+schema `1.2.0`; they may not author `ordinary` prescriptions.
+
+The application may evaluate a branch only for a valid actual date/Mass pair
+with a settled payload matching the selected Mass and language. A Sunday
+condition never overrides an explicit omission or unresolved branch. A
+catalogue-only formulary gains no date from its prescription. Where a part is
+omitted, unresolved or not yet confirmed, its complete words remain reference
+material without current-performance cues. The canonical body, actor, voice,
+participation and target fields are not removed by this presentation choice.
+Standalone study pages are outside that dated-Ordo presentation contract.
 
 Each language package mirrors the neutral path with a small document carrying
 the same formulary id, language id and localized title. The reader edition
@@ -370,8 +391,15 @@ may be claimed once by a normalized use or once by an explicit removal;
 setting migration `complete` is rejected while any pointer remains unresolved.
 A `migration.removals` entry therefore records an attachment excluded from the
 published reader projection, not deletion of the canonical citation object
-from the authored corpus. The build filters by exact legacy pointer (never by
-source title), fails if a rejected attachment remains reader-visible, and
+from the authored corpus. An attachment mapped to a normalized use is also
+withheld unless that use is `RETAIN` or `RETAIN_WITH_CORRECTION`; its frozen
+mapping remains accounted for. Unmapped attachments retain the transitional
+compatibility behavior and remain unresolved, not newly verified. For wording
+provenance, mapped attachments defer to retained `historical_wording_basis`
+uses at the exact language/site or text scope; a retained comparator cannot
+supply a legacy fallback basis, nor can an explicit removal. The build filters
+by exact legacy pointer (never by source title), fails if a rejected attachment
+remains reader-visible, and
 reports normalized-evidence coverage separately for the neutral, Polish, and
 English packages.
 
@@ -532,6 +560,11 @@ localization, editorial
   The whole witness body must equal that ordered reading, allowing only
   whitespace normalization and removal of line-initial source speaker markers.
   All punctuation, spelling, accents, case and ligatures are significant.
+  Textual prefixes are uppercase `D./S./M./V./R./O.` and lowercase
+  `s./m./v./r./o.`; lowercase `d.` remains literal text. Uppercase `D.`
+  supplies `minister` only for Mass attribution, not a non-Mass speaker
+  or a delivery/voice claim. Outside Mass only `O.` supplies an actor.
+  A source action sign such as `+` is not removed by this marker rule.
   Missing records/markers, drifted revisions/hashes/ranges, ambiguous identities,
   escaping paths, stale references and incomplete/reordered readings fail closed
   in transcription, archive and attribution checks. Deleting a marker does not
@@ -589,6 +622,61 @@ localization, editorial
   source-specific variant attribution remains raw-reading-1 only. The source
   subject binds the complete framing plan and resolved fragments, without
   altering old source-subject shapes or granting source/child approval.
+- An individual binding may opt into **`contract: "raw-reading-4"`** for
+  exact whole textual lines beneath literal hash-space headings in
+  `web/www/missa/Latin/Ordo/Ordo.txt`. Registry version1 and contracts1–3
+  retain their exact meanings and source-subject shapes. Other upstream paths,
+  fragments, framing deletions and runtime references are unsupported. Exactly
+  one evidence range is required; composites spanning different branches are
+  unsupported. Every
+  evidence item adds exactly `heading: {format: "hash-space", text: "# Section"}`,
+  `branch: {line: N, text: "!*RnD"}` and a nonempty `context` array of exact
+  `{line, text}` rubric records. The literal heading must equal `"# " + section`
+  at `section_line`; its branch control must be the immediately preceding
+  physical line and match `!*` followed by an ASCII letter and ASCII letters,
+  digits or `&`. Neither heading nor control is normalized. Section names use
+  ASCII letters, digits, spaces and hyphens, start with a letter and have no
+  outer whitespace. Every line between the heading and the first selected
+  textual line must be asserted once in increasing order as a literal `!`
+  rubric, never a branch control. Hash/bracket headings or branch controls may
+  not intervene between the heading and the last selected line. Selected lines
+  must contain only whole nonempty text, not rubric/reference/control lines or
+  continuation tildes. Integers never include booleans. The exact path header
+  is `upstream {hash-space:Section@H; branch:!*RnD@B} (lines N-M)`.
+  Full archive/revision/digest, identity/path/marker, exact body, overlap,
+  once-only multiplicity and evidence/reading order checks remain binding.
+  The complete source plan and resolved immutable fragments enter the new
+  subject; old subjects gain no fields. A repeated heading does not identify a
+  branch by title alone: its exact occurrence, adjacent control and intervening
+  rubric bytes are bound. This is textual identity only, not source approval
+  or performer/voice proof. Attribution rejects this contract explicitly, and
+  source-specific unmarked alignment remains contract1-only; no lowercase
+  `v.` marker or Mass fallback can manufacture a priest attribution from it.
+- An individual binding may opt into **`contract: "raw-reading-5"`** for
+  one whole textual line immediately after another spoken line under the
+  same literal Mass Ordo hash heading. Contracts1–4 retain their exact
+  meanings, path formats and source subjects. This narrow shape uses the
+  contract4 archive, heading, branch and exact ordered rubric checks, but
+  adds exactly `preceding_text: {line, text, marker}` to its sole evidence
+  item. Its line is the integer `first - 1`, never a boolean, and its text
+  is the exact complete original physical line. Its marker is literal
+  lowercase `v`; both it and the selected line must start with `v. `
+  and contain nonempty unframed text, not a control/reference prefix,
+  continuation tilde or ambiguous inline marker. `first == last` is
+  required. Every line between the heading and this boundary is asserted
+  exactly once as an ordered literal rubric; at least one rubric is required.
+  The preceding spoken line is explicitly context, not a rubric or part of
+  the selected textual evidence, reading, resolved fragments or spans.
+  Hash/bracket/branch boundaries still cannot intervene. No fragments,
+  framing, runtime references or multiple evidence ranges are supported.
+  Its exact path declaration is
+  `upstream {hash-space:Section@H; branch:!*RnD@B; preceding-text:P} (lines N-N)`.
+  Full original archive/revision, identity, header, exact body, once-only
+  coverage and order checks remain binding. The complete context/boundary
+  assertions enter only this new subject; previous subjects are unchanged.
+  Like contract4 this proves textual identity only. Attribution explicitly
+  rejects it, and source-specific unmarked alignment remains contract1-only;
+  lowercase `v.` cannot establish a priest, deacon or voice attribution.
 - **`head`** and **`substantive`** (since 0.13.0) state the SYNTAX, which is
   the one thing that settles a reading the form permits and the sentence
   forbids. Every adjective, numeral and
@@ -732,13 +820,17 @@ localization, editorial
   the law (n. 500), and never repeated on the page. Where a text's own
   rubric disagrees with the law the tool REPORTS it rather than choosing
   quietly; n. 512 defines the terms, `secreto` being said "ut ipsemet se
-  audiat, et a circumstantibus non audiatur". — the speaker from the witnesses' own markers (S. sacerdos,
-  M. minister, V./R. a versicle and its response, O. omnes), which the
-  transcriptions strip and every witness header says so; the voice from
-  the rubrics this corpus already carries. Both are OPTIONAL, and their
-  absence is meaningful: it says the sources have not been read for this
-  segment yet, which the reader's app must render as unmarked rather than
-  guess. `run_checks` reports the coverage as `speakers=N/M`.
+  audiat, et a circumstantibus non audiatur". The speaker comes from the
+  witnesses' own markers (D. deacon, represented as minister within Mass;
+  S. sacerdos; M. minister; V./R. a versicle and its response; O. omnes),
+  which the transcriptions strip as recorded in their witness headers.
+  Voice comes from the rubrics. Both fields are OPTIONAL. Absence can mean
+  that the relevant sources have not yet been read, or that inspected
+  sources do not justify an available category. Render an absent value as
+  unmarked rather than guessing. In particular, a direction such as
+  *media voce* remains in guidance when no supported voice category matches
+  it; do not silently convert it to `clara` or `secreto`. `run_checks`
+  reports the coverage as `speakers=N/M`.
   **`delivery`** (since 0.15.0) records a form-specific exception to those
   base values: `{ lecta?: {speaker?, voice?}, cantu?: {speaker?, voice?} }`.
   It exists because the Proper is read aloud by the celebrant at low Mass but
@@ -1193,6 +1285,7 @@ words{ <word-id>: { gloss?, explanation?, note? } }
   { "words": ["w015", "w016"], "anchor": "w016", "gloss": "będzie" }
   ```
 
+  A zero alignment contains exactly one source word in `words`.
   A source particle with no separate target word omits `anchor` and `gloss`
   and declares why with `reason`: `idiom`, `inflection`, `punctuation`, or
   `word-order`. Every Latin word has exactly one realization: a direct gloss

@@ -12,9 +12,9 @@ Two forms of Mass, graded separately, because they are not the same event:
 
   * `lecta` — low Mass, n. 31. Four degrees: (a) the easier responses, by
     their own text; (b) the parts which by the rubrics are the SERVER's —
-    which is exactly what `speaker: minister` records, so that degree is
-    structural rather than a list; (c) the Ordinary recited with the
-    celebrant; (d) the Proper, which this corpus does not carry yet.
+    recorded here with `speaker: minister`. That label can also denote a
+    sacred minister, whose preparation is excluded below; (c) the Ordinary
+    recited with the celebrant; (d) the four named chants of the Proper.
     n. 32 adds the whole Pater noster, in Latin, with the Amen by all.
   * `cantu` — sung Mass, n. 25, extended verbatim to the Missa cantata by
     n. 26 ("eadem prorsus valent etiam pro Missa cantata"), which is the
@@ -22,19 +22,20 @@ Two forms of Mass, graded separately, because they are not the same event:
     feasts be sung. Three degrees, and the first is NOT the same list as
     n. 31 a — it does not carry Laus tibi, Christe.
 
-Derived here, never remembered in the files: every attribution is computed
-from the text a segment prints and the speaker the witnesses gave it, and
-`--check` fails if what a file carries is not what this module derives.
+Every attribution is derived here from the segment, its source actor and
+ritual context. Validation fails if a file carries a different participation;
+the explicit write operation can store the derived field in the corpus.
 
 WHY THE SPEAKER IS PART OF THE TEST, and not the text alone: the corpus
-holds eight segments reading Amen and three of them are the priest's. Two
-take nothing from n. 31 a — the Amen he answers the server's Misereatur
-with, and the one he says submissa voce after the Suscipiat. A rule that
+includes Amens spoken by the priest or sacred ministers. For example, the
+priest's Amen answering the server's Misereatur takes nothing from n. 31 a,
+as does the one he says submissa voce after the Suscipiat. A rule that
 read the enumeration as a list of strings would have handed the people both.
-The third, the Amen closing the Pater noster, IS theirs — not by n. 31 a but
+The Amen closing the Pater noster IS theirs — not by n. 31 a but
 by n. 32, which gives them the whole prayer and says the Amen is added by
 all. The law enumerates RESPONSES, and a response is a line answering the
-celebrant, which in this corpus is a line he does not say himself.
+celebrant. The actor and the ritual context both matter: the qualified
+ministers' Amen after the Passion blessing is not a response of the faithful.
 """
 
 from __future__ import annotations
@@ -127,10 +128,17 @@ NON_SUM_DIGNUS = ("ordinarium.ecce-agnus-dei", ("s04", "s05", "s06"))
 
 # The instruction legislates for the Mass. The devotional prayers this corpus
 # also carries — the Leonine prayers after low Mass, the Marian antiphons —
-# are outside nn. 25 and 31, and take no attribution from it: an absent
-# `participation` says the sources have not been read for that segment, which
-# is true of them.
+# are outside nn. 25 and 31, and take no attribution from this instruction.
+# Absence of this derived field is not evidence of an unread source.
 MASS_CATEGORIES = {"ordinarium", "proprium"}
+
+# These requests belong to sacred ministers, not the server parts of DMS31b.
+# The Ordinary Amen is the celebrant's; Palm's Amen is the qualified ministers'.
+# The source actor enum alone does not confer a congregational participation.
+MINISTERIAL_PREPARATIONS = {
+    "ordinarium.iube-domne-benedicere",
+    "ordinarium.iube-domne-benedicere-in-passione",
+}
 
 # n. 31 d — the fourth degree at low Mass, and the law names FOUR pieces:
 # "Introitum; Graduale; Offertorium; Communionem". The Alleluia is not among
@@ -142,7 +150,7 @@ LECTA_IV_PROPER = {"introitus", "graduale", "offertorium", "communio"}
 # no list here, so this one does: the CHANTS of the Proper, which is what
 # can be sung by a congregation. The Tract and the Sequence are on it
 # because the year has them (a Tract from Septuagesima to Easter, a Sequence
-# on a few days) even though this corpus carries neither yet.
+# on a few days).
 CANTU_III_PROPER = {
     "introitus",
     "graduale",
@@ -201,6 +209,8 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
 
     if doc.get("id") in ritual.TEXTS:
         return {}  # Source performers do not establish an unsupported Mass degree.
+    if doc.get("id") in MINISTERIAL_PREPARATIONS:
+        return {}  # Ministerial preparation is not a response of the faithful.
     if is_office(doc) or doc.get("category") not in MASS_CATEGORIES or seg.get("type") == "rubric":
         return {}
     if oration_genus(doc):

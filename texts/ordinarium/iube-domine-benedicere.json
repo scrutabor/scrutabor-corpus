@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.21.0",
+  "id": "ordinarium.iube-domine-benedicere",
+  "title": "Iube, Dómine, benedícere",
+  "category": "ordinarium",
+  "section": "missa-catechumenorum",
+  "variant": "missae",
+  "sung": false,
+  "ids": {
+    "next": 21,
+    "segments": {
+      "next": 4
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "secreto",
+      "words": [
+        { "id": "w001", "form": "Iube", "post": ",", "lemma": "iubeo", "morph": { "pos": "verb", "person": 2, "number": "sg", "tense": "pres", "mood": "imp", "voice": "act", "conj": 2 } },
+        { "id": "w002", "form": "Dómine", "post": ",", "lemma": "dominus", "morph": { "pos": "noun", "case": "voc", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w003", "form": "benedícere", "post": ".", "lemma": "benedico", "morph": { "pos": "verb", "tense": "pres", "mood": "inf", "voice": "act", "conj": 3 } }
+      ]
+    },
+    {
+      "id": "s02",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "secreto",
+      "words": [
+        { "id": "w004", "form": "Dóminus", "lemma": "dominus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "sit", "lemma": "sum", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
+        { "id": "w006", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w007" },
+        { "id": "w007", "form": "corde", "lemma": "cor", "morph": { "pos": "noun", "case": "abl", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w008", "form": "meo", "post": ",", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "sg", "gender": "n" }, "head": "w007" },
+        { "id": "w009", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w010", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "abl" }, "head": "w011" },
+        { "id": "w011", "form": "lábiis", "lemma": "labium", "morph": { "pos": "noun", "case": "abl", "number": "pl", "gender": "n", "decl": 2 } },
+        { "id": "w012", "form": "meis", "post": ":", "lemma": "meus", "morph": { "pos": "adj", "case": "abl", "number": "pl", "gender": "n" }, "head": "w011" },
+        { "id": "w013", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
+        { "id": "w014", "form": "digne", "lemma": "digne", "morph": { "pos": "adv" } },
+        { "id": "w015", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
+        { "id": "w016", "form": "competénter", "lemma": "competenter", "morph": { "pos": "adv" } },
+        { "id": "w017", "form": "annúntiem", "lemma": "annuntio", "morph": { "pos": "verb", "person": 1, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act", "conj": 1 } },
+        { "id": "w018", "form": "Evangélium", "lemma": "evangelium", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w019", "form": "suum", "post": ".", "lemma": "suus", "morph": { "pos": "adj", "case": "acc", "number": "sg", "gender": "n" }, "head": "w018" }
+      ]
+    },
+    {
+      "id": "s03",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "secreto",
+      "words": [
+        { "id": "w020", "form": "Amen", "post": ".", "lemma": "amen", "morph": { "pos": "intj" } }
+      ]
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "source": {
+      "witnesses": "witnesses/ordinarium.iube-domine-benedicere/",
+      "apparatus": "witnesses/ordinarium.iube-domine-benedicere/apparatus.json",
+      "method": "The Latin body follows the Benziger Brothers 1962 editio iuxta typicam, printed p. 223 (IA leaf n302 / one-based PDF p. 303). The request, petition and Amen are distinct segments of the priest-alone preparation before the Gospel. Source review remains pending."
+    },
+    "analysis_defaults_words": { "sources": ["editorial", "whitakers", "collatinus"], "confidence": "high", "review": "pending" }
+  },
+  "localization": {
+    "about": true,
+    "explanations": {
+      "w001": {
+
+      },
+      "w005": {
+        "languages": ["pl"]
+      },
+      "w017": {
+        "languages": ["pl"]
+      },
+      "w019": {
+
+      }
+    }
+  }
+}

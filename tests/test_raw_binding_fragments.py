@@ -423,16 +423,39 @@ def test_one_response_spanning_two_selected_fragments_stays_minister(tmp_path, m
         )
     )
     put(tmp_path, REGISTRY, data)
-    assert resolve_binding(witness, tmp_path)
+    bound = resolve_binding(witness, tmp_path)
+    assert bound
     assert attribute.span_covers(doc("Ámen. Ámen."))
     assert attribute.propose(doc("Ámen. Ámen."))["s01"]["speaker"] == "minister"
-    # An unrelated legacy witness cannot lend a broader or different marker.
-    put(
+    before = {p: p.read_bytes() for p in tmp_path.rglob("*") if p.is_file()}
+    # This same-text witness is competing own evidence, not an unrelated pool.
+    other_witness = put(
         tmp_path,
         "witnesses/proprium.test/other.txt",
         "# path: web/www/missa/Latin/Tempora/Other.txt (lines 1-1)\nÁmen. Ámen.\n",
     )
-    put(tmp_path, "witnesses/raw/do-Other.txt", "S. Ámen. Ámen. Allelúja.\n")
+    other_raw = put(tmp_path, "witnesses/raw/do-Other.txt", "S. Ámen. Ámen. Allelúja.\n")
+    result = attribute.assess(doc("Ámen. Ámen."))
+    assert result.scope == "COMPOSITE_TEXT_ONLY"
+    assert result.proposals == {} and not result.write_eligible
+    assert result.reasons and result.reasons[0].startswith("CONFLICTING_OWNERS:")
+    assert attribute.propose(doc("Ámen. Ámen.")) == {}
+    assert resolve_binding(witness, tmp_path) == bound
+    assert not attribute.span_covers(doc("Ámen. Ámen. Allelúja."))
+    assert {
+        p: p.read_bytes()
+        for p in tmp_path.rglob("*")
+        if p.is_file() and p not in {other_witness, other_raw}
+    } == before
+    # Restore only the two test-created additions, then rerun the real positive.
+    other_witness.unlink()
+    other_raw.unlink()
+    assert {p: p.read_bytes() for p in tmp_path.rglob("*") if p.is_file()} == before
+    assert resolve_binding(witness, tmp_path) == bound
+    assert attribute.span_covers(doc("Ámen. Ámen."))
+    assert attribute.marked_lines("proprium.test") == [
+        ("minister", attribute.flatten("Ámen. Ámen."))
+    ]
     assert attribute.propose(doc("Ámen. Ámen."))["s01"]["speaker"] == "minister"
     assert not attribute.span_covers(doc("Ámen. Ámen. Allelúja."))
 

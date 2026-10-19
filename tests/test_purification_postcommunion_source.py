@@ -1,12 +1,14 @@
 """Exact postcommunion source boundaries, expansion and unpromoted evidence."""
 
 import json
+import sys
 from pathlib import Path
 
 import pytest
 
 from build_reader import bibliography, store
 from checks import attribute, raw_binding
+from checks.collate import collate
 
 ROOT = Path(__file__).resolve().parents[1]
 TEXT = "proprium.purificatio-beatae-mariae-virginis-postcommunio"
@@ -178,10 +180,64 @@ def test_ritual_locator_and_actual_response_proposal():
     use = next(u for u in graph["uses"] if u["id"] == PREFIX + "oration-boundaries.mr1962")
     assert "preface opening dialogue" in use["locator"]["section"]
     core, _ = store.load(ROOT, TEXT)
-    assert attribute.propose(core) == {
-        "s01": {"speaker": "sacerdos", "voice": "clara"},
-        "s02": {"speaker": "minister", "voice": "clara"},
-    }
+    before = json.dumps(core, ensure_ascii=False, sort_keys=True)
+    assessment = attribute.assess(core)
+    assert assessment.scope == "COMPOSITE_TEXT_ONLY" and not assessment.write_eligible
+    assert assessment.reasons == ("COMPOSITE_RAW_READING:do.txt",)
+    assert assessment.alignment is None and assessment.proposals == {}
+    assert attribute.propose(core) == {}
+    assert attribute.span_covers(core) is True
+    assert [(s["speaker"], s["voice"]) for s in core["segments"]] == [
+        ("sacerdos", "clara"),
+        ("minister", "clara"),
+    ]
+    assert json.dumps(core, ensure_ascii=False, sort_keys=True) == before
+
+
+def test_composite_source_writer_preserves_actual_authored_fields(tmp_path, monkeypatch, capsys):
+    # Actual complete dependencies, narrowed only to this owned test corpus.
+    registry = json.loads((ROOT / "witnesses/raw/bindings.json").read_bytes())
+    binding = registry["bindings"]["purification-postcommunion"]
+    archives = {entry["archive"] for entry in binding["evidence"]}
+    registry["bindings"] = {"purification-postcommunion": binding}
+    registry["archives"] = {key: registry["archives"][key] for key in archives}
+    for archive in registry["archives"].values():
+        relative = archive["path"]
+        destination = tmp_path / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes((ROOT / relative).read_bytes())
+    (tmp_path / "witnesses/raw/bindings.json").write_text(
+        json.dumps(registry, ensure_ascii=False), encoding="utf-8"
+    )
+    folder = tmp_path / "witnesses" / TEXT
+    folder.mkdir(parents=True)
+    for name in ("do.txt", "mr.txt", "apparatus.json"):
+        (folder / name).write_bytes((WITNESS / name).read_bytes())
+    relative = "texts/" + TEXT.replace(".", "/", 1) + ".json"
+    destination = tmp_path / relative
+    destination.parent.mkdir(parents=True)
+    destination.write_bytes((ROOT / relative).read_bytes())
+    core = json.loads(destination.read_bytes())
+    resolved = raw_binding.resolve_binding(folder / "do.txt", tmp_path)
+    assert resolved is not None and len(resolved.text.split()) == 48
+    assert len(resolved.spans) == 2 and resolved.spans[0][0] != resolved.spans[1][0]
+    errors, warnings, stats = collate(core, folder)
+    assert errors == warnings == []
+    assert stats["words"] == 48 and stats["witnesses"] == 2
+    before = {p.relative_to(tmp_path): p.read_bytes() for p in tmp_path.rglob("*") if p.is_file()}
+    monkeypatch.setattr(attribute, "CORPUS", tmp_path)
+    assessment = attribute.assess(core)
+    assert assessment.scope == "COMPOSITE_TEXT_ONLY" and not assessment.write_eligible
+    assert assessment.reasons == ("COMPOSITE_RAW_READING:do.txt",)
+    assert assessment.proposals == {}
+    monkeypatch.setattr(sys, "argv", ["attribute", "--write"])
+    assert attribute.main() == 1
+    output = capsys.readouterr().out
+    assert f"COMPOSITE_TEXT_ONLY  {TEXT}:" in output
+    assert "changed 0 fields; preserved 1 unresolved texts" in output
+    assert {
+        p.relative_to(tmp_path): p.read_bytes() for p in tmp_path.rglob("*") if p.is_file()
+    } == before
 
 
 def test_pending_evidence_remains_withheld_from_reader():

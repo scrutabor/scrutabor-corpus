@@ -17,7 +17,6 @@ DIRECT = [
     ("proprium.dominica-ii-passionis-tractus", "s01", "w062"),
     ("proprium.dominica-ii-post-epiphaniam-evangelium", "s01", "w137"),
     ("proprium.dominica-iii-in-quadragesima-evangelium", "s01", "w044"),
-    ("proprium.dominica-iii-post-pascha-evangelium", "s01", "w105"),
     ("proprium.dominica-in-albis-evangelium", "s01", "w105"),
     ("proprium.dominica-ix-post-pentecosten-evangelium", "s01", "w103"),
     ("proprium.dominica-xii-post-pentecosten-evangelium", "s01", "w105"),
@@ -151,3 +150,54 @@ def test_quinquagesima_created_people_contrast_controls(damage):
     with pytest.raises(AssertionError):
         verify_quinquagesima_created_people_contrast(doc, bad)
     verify_quinquagesima_created_people_contrast(doc, target)
+
+
+def verify_third_paschal_sorrow_contrast(doc, en):
+    segment = next(s for s in doc["segments"] if s["id"] == "s01")
+    words = {w["id"]: w for w in segment["words"]}
+    ids = ["w104", "w105", "w106"]
+    source_ids = [w["id"] for w in segment["words"]]
+    start = source_ids.index("w104")
+    assert source_ids[start : start + 3] == ids
+    assert [words[wid]["lemma"] for wid in ids] == ["vos", "autem", "contristo"]
+    assert words["w104"]["morph"] == {"pos": "pron", "case": "nom", "number": "pl"}
+    assert words["w106"]["morph"]["person"] == 2
+    assert words["w106"]["morph"]["tense"] == "fut"
+    assert words["w106"]["morph"]["voice"] == "pass"
+    groups = [g for g in en["segments"]["s01"].get("alignments", []) if set(g["words"]) & set(ids)]
+    assert groups == [{"words": ids, "anchor": "w106", "gloss": "but you will be sorrowful"}]
+    assert all("gloss" not in en["words"][wid] for wid in ids)
+    assert (
+        "but the world will rejoice; you will be sorrowful"
+        in (en["segments"]["s01"]["translation"])
+    )
+    assert not interlinear.check(doc, en)
+
+
+def test_third_paschal_sorrow_keeps_person_and_contrast():
+    doc, layers = store.load(ROOT, "proprium.dominica-iii-post-pascha-evangelium")
+    verify_third_paschal_sorrow_contrast(doc, layers["en"])
+
+
+@pytest.mark.parametrize("damage", ["meaning", "member", "anchor", "duplicate", "direct"])
+def test_third_paschal_sorrow_contrast_controls(damage):
+    from copy import deepcopy
+
+    doc, layers = store.load(ROOT, "proprium.dominica-iii-post-pascha-evangelium")
+    target = layers["en"]
+    verify_third_paschal_sorrow_contrast(doc, target)
+    bad = deepcopy(target)
+    group = next(g for g in bad["segments"]["s01"]["alignments"] if "w105" in g["words"])
+    if damage == "meaning":
+        group["gloss"] = "but they will rejoice"
+    elif damage == "member":
+        group["words"].remove("w104")
+    elif damage == "anchor":
+        group["anchor"] = "w105"
+    elif damage == "duplicate":
+        bad["segments"]["s01"]["alignments"].append(deepcopy(group))
+    else:
+        bad["words"]["w105"]["gloss"] = "however"
+    with pytest.raises(AssertionError):
+        verify_third_paschal_sorrow_contrast(doc, bad)
+    verify_third_paschal_sorrow_contrast(doc, target)

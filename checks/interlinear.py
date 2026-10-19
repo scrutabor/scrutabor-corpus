@@ -92,6 +92,10 @@ def check(doc: dict, layer: dict) -> list[str]:
                 if reason is not None:
                     errors.append(f"{where}: a realized alignment may not also have a zero reason")
             else:
+                if len(ids) != 1:
+                    errors.append(
+                        f"{where}: an unrealized alignment must contain exactly one source word"
+                    )
                 if anchor is not None:
                     errors.append(f"{where}: an unrealized alignment may not have an anchor")
                 if reason not in ZERO_REASONS:

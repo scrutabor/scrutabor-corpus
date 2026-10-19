@@ -157,16 +157,16 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
     assert written["citation_projection"] == {
         "legacy": 2771,
         "mapped": 1872,
-        "kept": 1872,
-        "excluded": 899,
+        "kept": 1620,
+        "excluded": 1151,
         "unresolved": 0,
         "rejected_exposed": 0,
     }
     assert written["evidence_coverage"] == {
-        "neutral": {"normalized": 1110, "texts": 1121},
+        "neutral": {"normalized": 1114, "texts": 1125},
         "languages": {
-            "en": {"normalized": 207, "effective": 1121, "texts": 1121},
-            "pl": {"normalized": 69, "effective": 1117, "texts": 1121},
+            "en": {"normalized": 212, "effective": 1125, "texts": 1125},
+            "pl": {"normalized": 74, "effective": 1121, "texts": 1125},
         },
     }
 
@@ -448,8 +448,8 @@ def test_metrics_are_the_single_derived_denominator(tmp_path):
     metrics = json.loads((out / manifest["base"]["metrics"]).read_text(encoding="utf-8"))
     assert metrics == {
         "schema_version": "1.0.0",
-        "texts": {"total": 1121, "proprium": 1003, "words": 63479, "verse_segments": 2745},
-        "languages": {"en": {"texts": 1121}, "pl": {"texts": 1121}},
+        "texts": {"total": 1125, "proprium": 1003, "words": 63589, "verse_segments": 2758},
+        "languages": {"en": {"texts": 1125}, "pl": {"texts": 1125}},
         "formularies": {
             "total": 113,
             "observances": 109,
@@ -758,6 +758,28 @@ def test_verify_catches_what_the_round_trip_cannot(tmp_path):
     assert any(
         "emitted localized assemblies" in e for e in broken(altered_localized_formulary, "b17")
     )
+
+    def altered_ordinary(out, fault):
+        p = out / "formularies.json"
+        catalog = json.loads(p.read_text(encoding="utf-8"))
+        form = catalog["formularies"][0]
+        if fault == "missing":
+            del form["ordinary"]
+        elif fault == "changed":
+            before = form["ordinary"]["gloria"]["sunday"]
+            form["ordinary"]["gloria"]["sunday"] = "omitted" if before != "omitted" else "required"
+        else:
+            catalog["schema_version"] = "1.2.0"
+        p.write_text(json.dumps(catalog), encoding="utf-8")
+
+    for fault in ("missing", "changed", "old-version"):
+        assert any(
+            "emitted assemblies" in error
+            for error in broken(
+                lambda out, fault=fault: altered_ordinary(out, fault), f"ordinary-{fault}"
+            )
+        )
+    assert verify(CORPUS, clean) == []
 
     def altered_metrics(out):
         p = out / "metrics.json"

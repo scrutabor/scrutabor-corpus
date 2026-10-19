@@ -68,8 +68,8 @@ def test_polish_wording_distinguishes_revision_from_spelling(
 @pytest.mark.parametrize(
     ("use_id", "printed", "scan"),
     [
-        ("use.en.8837e83b38b72875de7e", "p. 12", "scan p. 39"),
-        ("use.en.d847653074f03f178208", "pp. 38–39", "PDF pp. 50–51"),
+        ("use.en.8837e83b38b72875de7e", "p. 12", "PDF pages 39 (one-based)"),
+        ("use.en.d847653074f03f178208", "pp. 38–39", "PDF pages 50, 51 (one-based)"),
     ],
 )
 def test_wording_locator_covers_the_complete_clause(use_id: str, printed: str, scan: str) -> None:

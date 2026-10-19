@@ -270,7 +270,54 @@ def legacy_digest(records: list[dict]) -> str:
     return hashlib.sha256(body).hexdigest()
 
 
-class ReaderCitationProjection:
+def legacy_reference(relative_path: str, pointer_parts: tuple[str, ...], index: int) -> str:
+    """Name an original citation attachment without reindexing its siblings."""
+    return f"{relative_path}#/{_pointer(pointer_parts)}/{index}"
+
+
+class LegacyCitationDecisions:
+    """Exact attachment decisions shared by emission and provenance checking.
+
+    Input graphs must pass graph validation separately. Accounting for a
+    legacy pointer does not mean that its mapped use remains publishable.
+    """
+
+    def __init__(self, graph: dict, language_graphs: dict[str, dict]) -> None:
+        uses = [
+            *(graph.get("uses") or []),
+            *(
+                use
+                for language_graph in language_graphs.values()
+                for use in (language_graph.get("uses") or [])
+            ),
+        ]
+        self.mapped = {reference for use in uses for reference in (use.get("legacy_refs") or [])}
+        self.removed = {
+            record["legacy_ref"] for record in (graph.get("migration") or {}).get("removals") or []
+        }
+        self.rejected = self.removed | {
+            reference
+            for use in uses
+            if not _publishable([use])
+            for reference in (use.get("legacy_refs") or [])
+        }
+
+    def has_unmapped_citation(
+        self, relative_path: str, pointer_parts: tuple[str, ...], values: list[dict]
+    ) -> bool:
+        """Preserve unresolved compatibility, never revive a mapped or removed basis.
+
+        Mapped wording attachments defer to retained normalized basis uses at
+        their exact language/site or text scope, not merely a retained title.
+        """
+        for index in range(len(values)):
+            reference = legacy_reference(relative_path, pointer_parts, index)
+            if reference not in self.mapped and reference not in self.removed:
+                return True
+        return False
+
+
+class ReaderCitationProjection(LegacyCitationDecisions):
     """Keep audited legacy citations and exclude exact rejected attachments.
 
     Migration decisions address citation *attachments*, not titles.  The same
@@ -280,23 +327,9 @@ class ReaderCitationProjection:
     """
 
     def __init__(self, corpus: Path, graph: dict, language_graphs: dict[str, dict]) -> None:
+        super().__init__(graph, language_graphs)
         inventory = legacy_inventory(corpus)
         self.known = {record["ref"] for record in inventory}
-        self.mapped = {
-            reference
-            for use in [
-                *(graph.get("uses") or []),
-                *(
-                    use
-                    for language_graph in language_graphs.values()
-                    for use in (language_graph.get("uses") or [])
-                ),
-            ]
-            for reference in (use.get("legacy_refs") or [])
-        }
-        self.removed = {
-            record["legacy_ref"] for record in (graph.get("migration") or {}).get("removals") or []
-        }
         self.seen: set[str] = set()
         self.kept: set[str] = set()
         self.excluded: set[str] = set()
@@ -309,11 +342,10 @@ class ReaderCitationProjection:
     ) -> list[dict]:
         """Project one authored citation list while retaining original indices."""
         kept = []
-        prefix = _pointer(pointer_parts)
         for index, value in enumerate(values):
-            reference = f"{relative_path}#/{prefix}/{index}"
+            reference = legacy_reference(relative_path, pointer_parts, index)
             self.seen.add(reference)
-            if reference in self.removed:
+            if reference in self.rejected:
                 self.excluded.add(reference)
             else:
                 self.kept.add(reference)
@@ -332,12 +364,12 @@ class ReaderCitationProjection:
                 "reader citation projection inspected unknown attachments: "
                 f"{len(unknown)}, first={unknown[:3]}"
             )
-        if exposed := sorted(self.kept & self.removed):
+        if exposed := sorted(self.kept & self.rejected):
             errors.append(
                 "reader citation projection retained rejected attachments: "
                 f"{len(exposed)}, first={exposed[:3]}"
             )
-        if missed := sorted(self.removed - self.excluded):
+        if missed := sorted(self.rejected - self.excluded):
             errors.append(
                 "reader citation projection did not exclude every rejected attachment: "
                 f"{len(missed)} missing, first={missed[:3]}"
@@ -351,7 +383,7 @@ class ReaderCitationProjection:
             "kept": len(self.kept),
             "excluded": len(self.excluded),
             "unresolved": len(self.known - self.mapped - self.removed),
-            "rejected_exposed": len(self.kept & self.removed),
+            "rejected_exposed": len(self.kept & self.rejected),
         }
 
 

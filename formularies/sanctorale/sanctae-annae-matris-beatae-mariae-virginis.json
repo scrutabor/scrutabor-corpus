@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.2.0",
+  "formulary_schema": "1.3.0",
   "id": "sanctae-annae-matris-beatae-mariae-virginis",
   "order": 78,
   "collection": "sanctorale",
@@ -10,6 +10,16 @@
     "default": true
   },
   "title": "Sanctæ Annæ Matris Beatæ Mariæ Virginis",
+  "ordinary": {
+    "gloria": {
+      "sunday": "required",
+      "not-sunday": "required"
+    },
+    "credo": {
+      "sunday": "required",
+      "not-sunday": "omitted"
+    }
+  },
   "components": [
     {
       "key": "introitus",

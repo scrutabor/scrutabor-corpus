@@ -13,6 +13,8 @@ names its basis. *Cena facta* reads "during supper" in both languages, with a wo
 
 import json
 import re
+import sys
+from copy import deepcopy
 from pathlib import Path
 
 import pytest
@@ -165,9 +167,45 @@ def glosses(language, text):
     ]
 
 
+# The oration conclusion `… Fílium tuum: Qui tecum vivit et regnat …`: the relative `Qui`
+# after the Latin colon continues the sentence. Finite reviewed addresses (the exact English
+# groups; the Polish sentence-internal `który` of 2026-10-16, pinned by
+# test_polish_relative_captions), not a rule for every Latin colon or every `który`.
+CONCLUSION_RELATIVE = {
+    CE + "collecta": [f"w{i:03d}" for i in range(43, 48)],
+    CE + "secreta": [f"w{i:03d}" for i in range(31, 36)],
+    CE + "postcommunio": [f"w{i:03d}" for i in range(25, 30)],
+}
+WHO_LIVES = "who lives and reigns with You"
+
+
+def conclusion_relative(language, text, index, prev, first, group, gloss):
+    """None away from a reviewed conclusion address, or when its Latin context changed (then the
+    plain opening rule decides); otherwise whether the caption has the one reviewed shape.
+    English: the exact five-word group `who lives and reigns with You` keeps its lower case, and
+    any other caption falls back to the plain rule. Polish: the unaligned relative `Qui` after the
+    Latin colon must read `który`, so a capital, another form or a group there is a miss."""
+    words = CONCLUSION_RELATIVE.get(text)
+    if words is None or first["id"] != words[0]:
+        return None
+    bound = (
+        index > 0
+        and prev.rstrip().endswith(":")
+        and first["form"] == "Qui"
+        and first["lemma"] == "qui"
+    )
+    if not bound:
+        return None
+    if language == "pl":
+        return group is None and gloss == "który"
+    exempt = group is not None and group["words"] == words and gloss == WHO_LIVES
+    return True if exempt else None
+
+
 def missed_openings(language, text):
     """Latin capitals after a stop (or a segment's first word) whose realized gloss starts lower
-    case: the house exempts only the English conclusion's `who lives and reigns with You`."""
+    case, except the reviewed conclusion relative (`conclusion_relative`), which must read as
+    reviewed in either language."""
     doc, lay, out = core(text), layer(language, text), []
     for seg in doc["segments"]:
         ws = seg.get("words", [])
@@ -181,12 +219,13 @@ def missed_openings(language, text):
                 prev.rstrip().endswith((".", ":", "?", "!")) and first["form"][:1].isupper()
             )
             gloss = group.get("gloss") if group else lay["words"][first["id"]].get("gloss")
+            reviewed = conclusion_relative(language, text, i, prev, first, group, gloss)
             prev, i = last.get("post", ""), i + n
-            if gloss is None:
+            if gloss is None and reviewed is not False:
                 pending = opens
                 continue
             pending = False
-            if opens and gloss[:1].islower() and gloss != "who lives and reigns with You":
+            if reviewed is False or (reviewed is None and opens and gloss[:1].islower()):
                 out.append((seg["id"], first["id"], gloss))
     return out
 
@@ -409,6 +448,89 @@ def test_the_english_verses_and_glosses_are_in_the_contemporary_register(text):
 @pytest.mark.parametrize("text", TEXTS)
 def test_every_sentence_opening_takes_a_capital(language, text):
     assert missed_openings(language, text) == []
+
+
+def served(monkeypatch, text, doc=None, **layers):
+    """Serve edited copies of one text's documents in place of its files."""
+    module, real_core, real_layer = sys.modules[__name__], core, layer
+    monkeypatch.setattr(
+        module, "core", lambda t: doc if doc is not None and t == text else real_core(t)
+    )
+    monkeypatch.setattr(
+        module,
+        "layer",
+        lambda lang, t: layers[lang] if t == text and lang in layers else real_layer(lang, t),
+    )
+
+
+def caption(lay, word, value):
+    edited = deepcopy(lay)
+    edited["words"][word]["gloss"] = value
+    return edited
+
+
+def test_conclusion_relative_allowance_is_context_bound(monkeypatch):
+    for text, words in CONCLUSION_RELATIVE.items():
+        qui, doc, polish, english = words[0], core(text), layer("pl", text), layer("en", text)
+        (where,) = [
+            n for n, s in enumerate(doc["segments"]) if qui in [w["id"] for w in s["words"]]
+        ]
+        segment = doc["segments"][where]
+        index = [w["id"] for w in segment["words"]].index(qui)
+        before, word = segment["words"][index - 1 : index + 1]
+        assert (before["post"], word["form"], word["lemma"]) == (":", "Qui", "qui")
+        assert polish["words"][qui]["gloss"] == "który"
+        (group,) = [
+            a for a in english["segments"][segment["id"]]["alignments"] if qui in a["words"]
+        ]
+        assert group["words"] == words and group["gloss"].lower() == WHO_LIVES.lower()
+        for language in ("pl", "en"):
+            assert missed_openings(language, text) == []
+        miss = [(segment["id"], qui, "który")]
+        # Wrong language: the Polish allowance never covers an English caption.
+        with monkeypatch.context() as patch:
+            served(patch, text, en=polish)
+            assert missed_openings("en", text) == miss
+        # Identity: a capital or another relative form at the address is a miss.
+        for wrong in ("Który", "którzy"):
+            with monkeypatch.context() as patch:
+                served(patch, text, pl=caption(polish, qui, wrong))
+                assert missed_openings("pl", text) == [(segment["id"], qui, wrong)]
+        # Clause boundary and changed Latin context: the reviewed context is `…: Qui`.
+        for field, value, at in (("post", ".", index - 1), ("form", "Quae", index)):
+            edited = deepcopy(doc)
+            edited["segments"][where]["words"][at][field] = value
+            with monkeypatch.context() as patch:
+                served(patch, text, doc=edited)
+                assert missed_openings("pl", text) == miss
+        # Actual initial: the conclusion served as its own segment opens with `Qui`.
+        edited = deepcopy(doc)
+        edited["segments"][where]["words"] = segment["words"][index:]
+        with monkeypatch.context() as patch:
+            served(patch, text, doc=edited)
+            assert missed_openings("pl", text) == miss
+        # English binding: only the exact group with the exact caption keeps its lower case.
+        for shape in ("words", "gloss"):
+            edited = deepcopy(english)
+            (grp,) = [
+                a for a in edited["segments"][segment["id"]]["alignments"] if a["words"][0] == qui
+            ]
+            grp["gloss"] = WHO_LIVES
+            if shape == "words":
+                grp["words"] = [*words, segment["words"][index + 5]["id"]]
+            else:
+                grp["gloss"] = WHO_LIVES.replace("You", "you")
+            with monkeypatch.context() as patch:
+                served(patch, text, en=edited)
+                assert missed_openings("en", text) == [(segment["id"], qui, grp["gloss"])]
+    # Identity across texts: a colon-initial direct speech elsewhere keeps its capital caption.
+    gospel, site = CE + "evangelium", "w155"
+    polish = layer("pl", gospel)
+    assert polish["words"][site]["gloss"] == "Kto"
+    with monkeypatch.context() as patch:
+        served(patch, gospel, pl=caption(polish, site, "kto"))
+        assert missed_openings("pl", gospel) == [("s01", site, "kto")]
+    assert missed_openings("pl", gospel) == []
 
 
 def test_the_major_line_repairs_read_in_order():

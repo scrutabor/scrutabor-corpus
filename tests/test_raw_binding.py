@@ -144,7 +144,18 @@ def test_actual_complete_readings_and_attribution(bound_corpus, key):
     assert result is not None and result.text
     assert check_transcriptions(path.parent) == ([], 1)
     assert attribute.witness_ranges(path.parent.name) == list(result.spans)
-    assert attribute.marked_lines(path.parent.name)
+    if key == "transfiguration-gradual":
+        # One contiguous physical reading retains its actual marker candidates.
+        assert attribute.marked_lines(path.parent.name)
+    else:
+        # A complete expanded text is not one performer occurrence.
+        assert attribute.marked_lines(path.parent.name) == []
+        category, slug = path.parent.name.split(".", 1)
+        doc = json.loads((CORPUS / "texts" / category / f"{slug}.json").read_text())
+        assessment = attribute.assess(doc)
+        assert assessment.scope == "COMPOSITE_TEXT_ONLY"
+        assert not assessment.write_eligible and assessment.proposals == {}
+        assert assessment.reasons == ("COMPOSITE_RAW_READING:do.txt",)
     assert check_archives(root) == []
 
 
@@ -454,7 +465,9 @@ def test_explicit_sacred_parentheses_survive_attribution_projection(bound_corpus
     assert bound is not None and "(Fílium Dei.)" in bound.text
     doc = {
         "id": path.parent.name,
-        "segments": [{"type": "verse", "words": [{"id": "w001", "form": "Fílium Dei."}]}],
+        "segments": [
+            {"id": "s01", "type": "verse", "words": [{"id": "w001", "form": "Fílium Dei."}]}
+        ],
     }
     assert attribute.span_covers(doc)
     doc["segments"][0]["words"][0]["form"] = "Fílium alienum Dei."

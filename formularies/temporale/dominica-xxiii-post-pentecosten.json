@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.2.0",
+  "formulary_schema": "1.3.0",
   "id": "dominica-xxiii-post-pentecosten",
   "order": 65,
   "collection": "temporale",
@@ -10,6 +10,16 @@
     "default": true
   },
   "title": "Dominica XXIII post Pentecosten",
+  "ordinary": {
+    "gloria": {
+      "sunday": "required",
+      "not-sunday": "unresolved"
+    },
+    "credo": {
+      "sunday": "required",
+      "not-sunday": "unresolved"
+    }
+  },
   "components": [
     {
       "key": "introitus",

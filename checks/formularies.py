@@ -10,7 +10,11 @@ from kalendarium.roman import FORMULARIES as CALENDAR_FORMULARIES
 
 from .normalize import substantive
 
-SCHEMA = "1.2.0"
+SCHEMA = "1.3.0"
+TITLE_SCHEMA = "1.2.0"
+ORDINARY_PARTS = ("gloria", "credo")
+ORDINARY_BRANCHES = ("sunday", "not-sunday")
+ORDINARY_STATES = ("required", "omitted", "unresolved")
 COLLECTIONS = ("temporale", "sanctorale", "commune", "votive", "ritual", "local")
 SEASONS = (
     "adventus",
@@ -94,6 +98,23 @@ def component_applies(
     return False
 
 
+def ordinary_errors(value: object) -> list[str]:
+    """Neutral explicit branches, with no liturgical default or inferred state."""
+    if not isinstance(value, dict) or set(value) != set(ORDINARY_PARTS):
+        return ["ordinary must contain exactly gloria and credo"]
+    errors = []
+    for part in ORDINARY_PARTS:
+        branches = value[part]
+        if not isinstance(branches, dict) or set(branches) != set(ORDINARY_BRANCHES):
+            errors.append(f"ordinary.{part} must contain exactly sunday and not-sunday")
+            continue
+        for branch in ORDINARY_BRANCHES:
+            state = branches[branch]
+            if not isinstance(state, str) or state not in ORDINARY_STATES:
+                errors.append(f"ordinary.{part}.{branch} must be required, omitted or unresolved")
+    return errors
+
+
 def _documents(corpus: Path) -> list[tuple[Path, dict]]:
     rows = []
     for path in sorted((corpus / "formularies").glob("*/*.json")):
@@ -144,6 +165,7 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
         collection = path.parent.name
         if doc.get("formulary_schema") != SCHEMA:
             errors.append(f"{relative}: formulary_schema must be {SCHEMA}")
+        errors.extend(f"{relative}: {error}" for error in ordinary_errors(doc.get("ordinary")))
         if formulary_id != expected_id:
             errors.append(f"{relative}: id={formulary_id!r}, path says {expected_id!r}")
         if not isinstance(formulary_id, str) or not formulary_id:
@@ -320,8 +342,10 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
             errors.append(f"formularies:{language}: unknown titles for {', '.join(extra)}")
         for formulary_id, (path, doc) in localized.items():
             relative = path.relative_to(corpus)
-            if doc.get("formulary_schema") != SCHEMA:
-                errors.append(f"{relative}: formulary_schema must be {SCHEMA}")
+            if doc.get("formulary_schema") != TITLE_SCHEMA:
+                errors.append(f"{relative}: formulary_schema must be {TITLE_SCHEMA}")
+            if "ordinary" in doc:
+                errors.append(f"{relative}: ordinary belongs only to the neutral formulary")
             if path.stem != formulary_id or doc.get("language") != language:
                 errors.append(f"{relative}: id/language does not match its path")
             if not isinstance(doc.get("title"), str) or not doc["title"].strip():

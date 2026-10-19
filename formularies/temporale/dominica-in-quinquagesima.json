@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.2.0",
+  "formulary_schema": "1.3.0",
   "id": "dominica-in-quinquagesima",
   "order": 22,
   "collection": "temporale",
@@ -10,6 +10,16 @@
     "default": true
   },
   "title": "Dominica in Quinquagesima",
+  "ordinary": {
+    "gloria": {
+      "sunday": "omitted",
+      "not-sunday": "omitted"
+    },
+    "credo": {
+      "sunday": "required",
+      "not-sunday": "unresolved"
+    }
+  },
   "components": [
     {
       "key": "introitus",

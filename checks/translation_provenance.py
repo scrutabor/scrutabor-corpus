@@ -21,7 +21,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from build_reader import store
+from build_reader import bibliography, store
 
 WORDING_BASIS = "historical_wording_basis"
 ORIGINS = frozenset(("working-unsettled", "own", "public-domain", "traditional", "trivial"))
@@ -29,8 +29,15 @@ REVIEWS = frozenset(("working", "internally-reviewed", "expert-reviewed"))
 
 PROTECTED_PL_SEGMENTS = {
     "ordinarium.ite-missa-est-paschale": frozenset({"s02", "s03", "s05", "s06"}),
+    "ordinarium.iube-domne-benedicere": frozenset({"s03"}),
+    "ordinarium.iube-domne-benedicere-in-passione": frozenset({"s03"}),
     "proprium.vigilia-paschalis-laudes-psalmus": frozenset({"s07", "s08"}),
     "proprium.vigilia-paschalis-laudes-canticum": frozenset({"s15", "s16"}),
+}
+
+PROTECTED_EN_SEGMENTS = {
+    "ordinarium.iube-domne-benedicere": frozenset({"s03"}),
+    "ordinarium.iube-domne-benedicere-in-passione": frozenset({"s03"}),
 }
 
 PROTECTED_PL_TEXTS = frozenset(
@@ -144,7 +151,7 @@ def protected(text_id: str, language: str, segment_id: str | None = None) -> boo
     if language == "pl":
         return text_id in PROTECTED_PL_TEXTS or segment_id in PROTECTED_PL_SEGMENTS.get(text_id, ())
     if language == "en":
-        return text_id in PROTECTED_EN_TEXTS
+        return text_id in PROTECTED_EN_TEXTS or segment_id in PROTECTED_EN_SEGMENTS.get(text_id, ())
     return False
 
 
@@ -167,11 +174,12 @@ def wording_bases(uses: list, language: str) -> tuple[set[str], set[str]]:
 
 
 def corpus_sites(corpus: Path) -> dict[str, dict]:
-    bases = {}
-    for language in store.language_ids(corpus):
-        path = corpus / "languages" / language / "bibliography.json"
-        uses = json.loads(path.read_text(encoding="utf-8")).get("uses") or []
-        bases[language] = wording_bases(uses, language)
+    graph, languages = bibliography.load(corpus)
+    decisions = bibliography.LegacyCitationDecisions(graph, languages)
+    bases = {
+        language: wording_bases(package.get("uses") or [], language)
+        for language, package in languages.items()
+    }
     sites: dict[str, dict] = {}
     for doc, layers in store.all_texts(corpus):
         for segment in doc["segments"]:
@@ -192,9 +200,14 @@ def corpus_sites(corpus: Path) -> dict[str, dict]:
                     "familiar_core": protected(doc["id"], language, segment["id"]),
                     "source_sha256": canonical_hash(source_payload(segment)),
                     "target_sha256": canonical_hash(target),
-                    # Legacy attachments remain a frozen compatibility input;
-                    # new bases are authored only in the normalized graph.
-                    "has_wording_citations": bool(localized.get("translation_citations"))
+                    # Only genuinely unmapped legacy attachments retain the
+                    # compatibility fallback. A mapped comparator or rejected
+                    # use cannot masquerade as an inherited wording basis.
+                    "has_wording_citations": decisions.has_unmapped_citation(
+                        f"languages/{language}/texts/{doc['id'].replace('.', '/', 1)}.json",
+                        ("segments", segment["id"], "translation_citations"),
+                        localized.get("translation_citations") or [],
+                    )
                     or site in cited_sites
                     or doc["id"] in cited_texts,
                 }

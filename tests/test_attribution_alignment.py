@@ -296,8 +296,31 @@ def test_writer_distinguishes_alignment_from_unresolved_source(reading, monkeypa
 
 
 def test_direct_coverage_does_not_invoke_alignment(reading, monkeypatch):
-    _, _, data = reading
-    monkeypatch.setattr(attribute, "span_covers", lambda doc: True)
+    root, folder, data = reading
+    # Make this test-created direct occurrence literal; do not fake eligibility.
+    literal = " ".join(
+        word["form"] + word.get("post", "") for word in data["document"]["segments"][0]["words"]
+    )
+    raw = root / data["archive"]["path"]
+    lines = data["raw"].splitlines(keepends=True)
+    lines[38] = literal + "\n"
+    save(raw, "".join(lines))
+    header = "\n".join(line for line in data["do_witness"].splitlines() if line.startswith("#"))
+    save(folder / "do.txt", header + "\n" + literal + "\n")
+    registry = json.loads((root / REGISTRY).read_text())
+    registry["archives"][KEY]["sha256"] = hashlib.sha256(raw.read_bytes()).hexdigest()
+    save(root / REGISTRY, registry)
+    # This controlled direct-reading branch has no remaining witness differences.
+    save(
+        folder / "apparatus.json",
+        {
+            "text": data["document"]["id"],
+            "adjudicated": [],
+            "summary": {"entries": 0, "classes": []},
+        },
+    )
+    assert resolve_binding(folder / "do.txt", root).text == literal
+    assert attribute.span_covers(data["document"])
 
     def forbidden(*args, **kwargs):
         pytest.fail("direct coverage unnecessarily invoked variant alignment")
@@ -313,3 +336,18 @@ def test_partial_contract_cannot_widen_single_line_variant_alignment(reading):
     save(root / REGISTRY, registry)
     source_checks(root, folder, data["document"])
     assert align_unmarked_reading(data["document"], root) is None
+
+
+def test_alignment_cannot_hide_another_stale_own_occurrence(reading):
+    root, folder, data = reading
+    literal = " ".join(
+        word["form"] + word.get("post", "") for word in data["document"]["segments"][0]["words"]
+    )
+    save(root / "witnesses/raw/stale.txt", "Alienum.\n")
+    save(folder / "stale.txt", "# witness: stale\n# path: stale.txt (line 1)\n" + literal + "\n")
+    assert align_unmarked_reading(data["document"], root) is not None
+    assert attribute.propose(data["document"]) == {}
+    result = attribute.assess(data["document"])
+    assert result.scope == "STALE_SCOPE" and not result.write_eligible
+    assert result.reasons[0].startswith("OWN_OCCURRENCE_REQUIRED:")
+    assert "witnesses/raw/stale.txt:1-1" in result.reasons[0]

@@ -17,6 +17,9 @@ from pathlib import Path, PurePosixPath
 
 REGISTRY = "witnesses/raw/bindings.json"
 
+# Lowercase initials are textual framing, not performer declarations.
+TEXT_MARKER_CHARS = "DSMVROsmvro"
+
 
 class BindingError(ValueError):
     """An explicit source claim cannot be verified; never try legacy fallback."""
@@ -128,7 +131,12 @@ def load_registry(root: Path) -> dict:
         fields = {"witness", "revision", "evidence", "references", "reading"}
         if isinstance(binding, dict) and "contract" in binding:
             fields.add("contract")
-            if binding["contract"] not in ("raw-reading-2", "raw-reading-3"):
+            if binding["contract"] not in (
+                "raw-reading-2",
+                "raw-reading-3",
+                "raw-reading-4",
+                "raw-reading-5",
+            ):
                 raise BindingError("unsupported per-binding contract")
             if binding["contract"] == "raw-reading-3":
                 fields.add("framing")
@@ -174,6 +182,19 @@ def _headers(text: str) -> dict[str, list[str]]:
 
 def _space(text: str) -> str:
     return " ".join(text.split())
+
+
+def _whole_v_text(line: str) -> bool:
+    """One unframed lowercase-v textual line, not performer evidence."""
+    if not line.startswith("v. "):
+        return False
+    body = line[3:]
+    return (
+        bool(body.strip())
+        and not body.lstrip().startswith(("!", "[", "#", "_", "&", "@", "$"))
+        and "~" not in line
+        and re.search(r"(?:^|\s)[DSMVROdsmvro]\.\s+", body) is None
+    )
 
 
 class RawBindingSnapshot:
@@ -238,6 +259,12 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
     used_archives: set[str] = set()
     framed_contract = binding.get("contract") == "raw-reading-3"
     partial_contract = binding.get("contract") in {"raw-reading-2", "raw-reading-3"}
+    boundary_contract = binding.get("contract") == "raw-reading-5"
+    hash_contract = binding.get("contract") in {"raw-reading-4", "raw-reading-5"}
+    if hash_contract and (binding["references"] or len(binding["evidence"]) != 1):
+        raise BindingError(
+            f"{binding['contract']} requires one evidence range without runtime references"
+        )
     framing = {}
     framing_order = []
     for item in binding.get("framing", []):
@@ -281,6 +308,10 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
         fields = {"archive", "first", "last"}
         if evidence:
             fields |= {"section", "section_line"}
+            if hash_contract:
+                fields |= {"heading", "branch", "context"}
+                if boundary_contract:
+                    fields.add("preceding_text")
         sliced = isinstance(item, dict) and "fragment" in item
         if sliced:
             if framed_contract:
@@ -293,7 +324,7 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
         result = []
         for number in range(first, last + 1):
             line = lines[number - 1]
-            prefix = re.match(r"^\s*([SMVROsmvro])\.\s+", line)
+            prefix = re.match(rf"^\s*([{TEXT_MARKER_CHARS}])\.\s+", line)
             marker = prefix[1] if prefix else None
             start, end = 0, len(line)
             if sliced:
@@ -329,12 +360,16 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
                     or not fragment["reason"].strip()
                 ):
                     raise BindingError("fragment text, marker context or boundary reason differs")
-            if partial_contract:
+            if partial_contract or hash_contract:
                 tail = line[prefix.end() :] if prefix else line
-                if re.search(r"(?:^|\s)[SMVROsmvro]\.\s+", tail):
+                if re.search(rf"(?:^|\s)[{TEXT_MARKER_CHARS}]\.\s+", tail):
                     raise BindingError("ambiguous inline source marker")
             raw = line[start:end]
-            body = re.sub(r"^[SMVROsmvro]\.\s+", "", raw.strip()) if start == 0 else raw.strip()
+            body = (
+                re.sub(rf"^[{TEXT_MARKER_CHARS}]\.\s+", "", raw.strip())
+                if start == 0
+                else raw.strip()
+            )
             applied = framing.get((item["archive"], number))
             if applied is not None:
                 body = body[:-1]
@@ -368,7 +403,73 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
     for item in binding["evidence"]:
         _, lines, first, last, selected = fragments(item, evidence=True)
         section_line = item["section_line"]
-        if (
+        if hash_contract:
+            # Only the retained Mass Ordo's literal hash-space format is supported.
+            # Context is asserted source data, not a claim about performer identity.
+            if archives[item["archive"]]["upstream"] != "web/www/missa/Latin/Ordo/Ordo.txt":
+                raise BindingError(f"{binding['contract']} supports only the Latin Mass Ordo")
+            heading, branch, context = item["heading"], item["branch"], item["context"]
+            _keys(heading, {"format", "text"}, "heading")
+            _keys(branch, {"line", "text"}, "branch")
+            if (
+                not isinstance(item["section"], str)
+                or re.fullmatch(r"[A-Za-z][A-Za-z0-9 -]*", item["section"]) is None
+                or item["section"] != item["section"].strip()
+                or heading["format"] != "hash-space"
+                or heading["text"] != "# " + item["section"]
+                or type(section_line) is not int
+                or not 2 <= section_line < first - 1
+                or lines[section_line - 1] != heading["text"]
+                or type(branch["line"]) is not int
+                or branch["line"] != section_line - 1
+                or not isinstance(branch["text"], str)
+                or re.fullmatch(r"!\*[A-Za-z][A-Za-z0-9&]*", branch["text"]) is None
+                or lines[branch["line"] - 1] != branch["text"]
+            ):
+                raise BindingError("hash heading or adjacent branch differs from source evidence")
+            context_end = first
+            if boundary_contract:
+                preceding = item["preceding_text"]
+                _keys(preceding, {"line", "text", "marker"}, "preceding_text")
+                if (
+                    first != last
+                    or type(preceding["line"]) is not int
+                    or preceding["line"] != first - 1
+                    or not isinstance(preceding["text"], str)
+                    or preceding["text"] != lines[first - 2]
+                    or preceding["marker"] != "v"
+                    or not _whole_v_text(preceding["text"])
+                    or not _whole_v_text(lines[first - 1])
+                ):
+                    raise BindingError("invalid adjacent whole-line spoken-text boundary")
+                context_end = first - 1
+                if context_end <= section_line + 1:
+                    raise BindingError("spoken-text boundary requires a preceding rubric")
+            if not isinstance(context, list) or len(context) != context_end - section_line - 1:
+                raise BindingError("hash heading requires every intervening rubric line")
+            for number, clause in enumerate(context, section_line + 1):
+                _keys(clause, {"line", "text"}, "context")
+                if (
+                    type(clause["line"]) is not int
+                    or clause["line"] != number
+                    or not isinstance(clause["text"], str)
+                    or lines[number - 1] != clause["text"]
+                    or not clause["text"].startswith("!")
+                    or clause["text"].startswith("!*")
+                ):
+                    raise BindingError("hash heading context differs from the exact rubric")
+            # Hash/bracket headings and runtime branch controls govern boundaries;
+            # none may intervene or be selected as (or silently skipped over) text.
+            if any(line.startswith(("#", "[", "!*")) for line in lines[section_line:last]):
+                raise BindingError("hash evidence crosses a heading or branch boundary")
+            if any(
+                not line.strip()
+                or line.lstrip().startswith(("!", "[", "#", "_", "&", "@", "$"))
+                or "~" in line
+                for line in lines[first - 1 : last]
+            ):
+                raise BindingError(f"{binding['contract']} requires unframed whole textual lines")
+        elif (
             not isinstance(item["section"], str)
             or not item["section"]
             or type(section_line) is not int
@@ -380,9 +481,19 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
         extent = f"lines {first}-{last}"
         if "fragment" in item:
             extent = f"line {first}, chars {item['fragment']['start']}:{item['fragment']['end']}"
-        declarations.append(
-            f"{archives[item['archive']]['upstream']} [{item['section']}] ({extent})"
-        )
+        if hash_contract:
+            boundary = (
+                f"; preceding-text:{item['preceding_text']['line']}" if boundary_contract else ""
+            )
+            declarations.append(
+                f"{archives[item['archive']]['upstream']} "
+                f"{{hash-space:{item['section']}@{section_line}; "
+                f"branch:{branch['text']}@{branch['line']}{boundary}}} ({extent})"
+            )
+        else:
+            declarations.append(
+                f"{archives[item['archive']]['upstream']} [{item['section']}] ({extent})"
+            )
         for fragment in selected:
             number = fragment.line
             line = lines[number - 1].strip()
@@ -501,7 +612,7 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
             resolved.append(fragment)
     if actual_text != expected_text:
         raise BindingError("reading omits or repeats source text")
-    if partial_contract and actual_order != expected_order:
+    if (partial_contract or hash_contract) and actual_order != expected_order:
         raise BindingError("reading reorders textual fragments")
     reading = _space(" ".join(output))
     body = _space("\n".join(line for line in text.splitlines() if not line.startswith("#")))
@@ -515,7 +626,7 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
         "binding": binding,
         "archives": {key: archives[key] for key in sorted(used_archives)},
     }
-    if partial_contract:
+    if partial_contract or hash_contract:
         source["resolved_fragments"] = [
             {
                 "path": f.path.relative_to(snapshot._root).as_posix(),

@@ -9,6 +9,9 @@ from pathlib import Path
 from typing import Any
 
 from build_reader import bibliography, canon, dismissal, store
+from checks.formularies import SCHEMA as FORMULARY_SCHEMA
+from checks.formularies import TITLE_SCHEMA as FORMULARY_TITLE_SCHEMA
+from checks.formularies import ordinary_errors
 from kalendarium.canon import calendar_table
 from kalendarium.dismissal import calendar_table as dismissal_table
 
@@ -37,7 +40,8 @@ from kalendarium.dismissal import calendar_table as dismissal_table
 # 5.7.0 carries explicit same-verse source parentheses as segment ranges.
 # 5.8.0 preserves declared clausal complements separately from ordinary heads.
 # 5.9.0 adds the declared, explicit date/Mass Canon selection resource.
-SCHEMA = "5.10.0"
+# 5.11.0 carries Ordinary branches in neutral formulary schema 1.3.0.
+SCHEMA = "5.11.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -113,6 +117,11 @@ def formulary_catalog(corpus: Path) -> dict:
     """Project authored assembly ids to the reader's slash-addressed texts."""
     formularies = []
     for authored in sorted(store.formularies(corpus), key=lambda value: value["order"]):
+        errors = ordinary_errors(authored.get("ordinary"))
+        if authored.get("formulary_schema") != FORMULARY_SCHEMA:
+            errors.append(f"formulary_schema must be {FORMULARY_SCHEMA}")
+        if errors:
+            raise ValueError(f"{authored.get('id')}: {'; '.join(errors)}")
         formulary = {
             key: copy.deepcopy(value)
             for key, value in authored.items()
@@ -121,18 +130,19 @@ def formulary_catalog(corpus: Path) -> dict:
         for component in formulary["components"]:
             component["text"] = component["text"].replace(".", "/", 1)
         formularies.append(formulary)
-    return {"schema_version": "1.2.0", "formularies": formularies}
+    return {"schema_version": FORMULARY_SCHEMA, "formularies": formularies}
 
 
 def language_formulary_catalog(corpus: Path, language: str) -> dict:
     """Project localized titles without duplicating neutral assembly data."""
+    authored_titles = store.language_formularies(corpus, language)
+    for title in authored_titles:
+        if title.get("formulary_schema") != FORMULARY_TITLE_SCHEMA or "ordinary" in title:
+            raise ValueError("invalid localized formulary title contract")
     return {
-        "schema_version": "1.2.0",
+        "schema_version": FORMULARY_TITLE_SCHEMA,
         "language": language,
-        "titles": [
-            {"id": authored["id"], "title": authored["title"]}
-            for authored in store.language_formularies(corpus, language)
-        ],
+        "titles": [{"id": title["id"], "title": title["title"]} for title in authored_titles],
     }
 
 

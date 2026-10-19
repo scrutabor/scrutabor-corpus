@@ -1072,6 +1072,68 @@ def _owned_enclitic_conjunction(lang, gloss, group, neighbor, segment_words):
     )
 
 
+def _owned_adversative_conjunction(lang, gloss, group, neighbor, segment_words):
+    """A contiguous predicate group may own one but distinct from its neighbor's.
+
+    This licenses connective ownership only, not group size or translation
+    quality. Ordinary interlinear and group-quality checks remain binding.
+    """
+    if lang != "en" or not group or group.get("gloss") != gloss:
+        return False
+    members = group.get("words")
+    positions = {word["id"]: index for index, word in enumerate(segment_words)}
+    if (
+        not isinstance(members, list)
+        or not members
+        or any(not isinstance(member, str) or member not in positions for member in members)
+        or group.get("anchor") not in members
+    ):
+        return False
+    indices = [positions[member] for member in members]
+    if indices != list(range(indices[0], indices[0] + len(indices))):
+        return False
+    start, end = indices[0], indices[-1]
+    if positions.get(neighbor.get("id")) not in {start - 1, end + 1}:
+        return False
+    selected = [segment_words[index] for index in indices]
+    supported = {"autem", "sed"}
+
+    def supported_connector(word):
+        return (
+            word.get("morph", {}).get("pos") == "conj"
+            and word.get("lemma") in supported
+            and fold_ligatures(strip_accents(word.get("form", ""))).lower() == word["lemma"]
+        )
+
+    connectors = [word for word in selected if word.get("morph", {}).get("pos") == "conj"]
+    if len(connectors) != 1 or not supported_connector(connectors[0]):
+        return False
+    if not supported_connector(neighbor):
+        return False
+    # A fused extra connective is not an uncounted license for another target one.
+    if any(
+        fold_ligatures(strip_accents(word.get("form", ""))).lower().endswith(("que", "ve"))
+        and not word.get("lemma", "").lower().endswith(("que", "ve"))
+        for word in selected
+    ):
+        return False
+    if not any(
+        word.get("morph", {}).get("pos") == "verb"
+        and word["morph"].get("mood") in {"ind", "subj", "imp"}
+        and type(word["morph"].get("person")) is int
+        and word["morph"]["person"] in {1, 2, 3}
+        and word["morph"].get("number") in {"sg", "pl"}
+        for word in selected
+    ):
+        return False
+    connectives = re.findall(
+        r"\b(?:and|or|but|nor|yet|however|nevertheless|although|though|"
+        r"if|unless|because|therefore|so)\b",
+        gloss.casefold(),
+    )
+    return connectives == ["but"]
+
+
 def _internal_eternity_conjunction(lang, gloss, group, neighbor, segment_words):
     """The internal 'and' in this idiom does not translate a preceding et.
 
@@ -1194,6 +1256,7 @@ def lint_gloss(doc, text_doc):
                     and g.lower() != ng.lower()
                     and not bare.endswith(("que", "ve"))
                     and not _owned_enclitic_conjunction(lang, g, groups.get(w["id"]), ws[j], ws)
+                    and not _owned_adversative_conjunction(lang, g, groups.get(w["id"]), ws[j], ws)
                     and not _internal_eternity_conjunction(lang, g, groups.get(w["id"]), ws[j], ws)
                 ):
                     errors.append(

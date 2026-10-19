@@ -3637,6 +3637,11 @@
       "responsible": "Ecclesia Catholica"
     },
     {
+      "id": "work.britt.dictionary-psalter",
+      "title": "A Dictionary of the Psalter",
+      "responsible": "Dom Matthew Britt, O.S.B."
+    },
+    {
       "id": "work.catechismus-catholicae-ecclesiae",
       "title": "Catechismus Catholicae Ecclesiae",
       "responsible": "Catholic Church"
@@ -3875,6 +3880,29 @@
       "languages": [
         "la"
       ]
+    },
+    {
+      "id": "edition.britt.dictionary-psalter.1928",
+      "work": "work.britt.dictionary-psalter",
+      "title": "A Dictionary of the Psalter",
+      "edition_statement": "1928 Benziger Brothers printing",
+      "contributors": [
+        "Dom Matthew Britt, O.S.B.",
+        "John B. Peterson (preface)"
+      ],
+      "place": "New York / Cincinnati / Chicago",
+      "publisher": "Benziger Brothers",
+      "year": "1928",
+      "publication_type": "lexicon",
+      "authority": "reference_work",
+      "languages": [
+        "en",
+        "la"
+      ],
+      "rights": {
+        "status": "unverified",
+        "basis": "Bibliographic and narrow grammatical reference to the consulted 1928 printing only. No scan, dictionary prose, English translation wording or worldwide republication permission is supplied by this reference."
+      }
     },
     {
       "id": "edition.catechismus-catholicae-ecclesiae.latin-1997",
@@ -4248,8 +4276,8 @@
       "publication_type": "prayer_book",
       "authority": "approved_ecclesiastical_edition",
       "rights": {
-        "status": "unverified",
-        "basis": "Bibliographic and factual citation only; this audit does not assert permission to reproduce the digitized manifestation."
+        "status": "public-domain",
+        "basis": "The Śląska Biblioteka Cyfrowa record identifies this unattributed 1903 edition as public domain. Only page-verified historical wording is used; this statement does not grant rights in scan images or later editions."
       },
       "languages": [
         "pl"
@@ -4425,6 +4453,16 @@
       "record_url": "https://archive.org/details/breviariumromanu04cath",
       "scan_url": "https://archive.org/download/breviariumromanu04cath/breviariumromanu04cath.pdf",
       "sha256": "f811359bce60aa34cf5554e6a86a0b5a94877c18fd81870b39b8758913964e28",
+      "access": "open"
+    },
+    {
+      "id": "item.britt.dictionary-psalter.1928.cmaa426cb896",
+      "edition": "edition.britt.dictionary-psalter.1928",
+      "repository": "Church Music Association of America",
+      "kind": "scan",
+      "record_url": "https://churchmusicassociation.org/resources/resource-list-complete/",
+      "scan_url": "https://media.musicasacra.com/pdf/dictionarypsalter.pdf",
+      "sha256": "426cb8963cc4ff877a6e39b47333fadb1f4f77112656f9e31172a5f2acd1b129",
       "access": "open"
     },
     {
@@ -5449,6 +5487,27 @@
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
     },
     {
+      "id": "use.lemma.cherubim.shared-note.britt.1928",
+      "edition": "edition.britt.dictionary-psalter.1928",
+      "digital_item": "item.britt.dictionary-psalter.1928.cmaa426cb896",
+      "role": "lexical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "cherubim"
+      },
+      "locator": {
+        "printed": "pp. xxxvi and 39",
+        "scan": "Physical PDF pages 36 and 75 (one-based)",
+        "section": "Abbreviation table indecl.; s.v. Cherub, head and plural identification",
+        "page_url": "https://media.musicasacra.com/pdf/dictionarypsalter.pdf#page=75"
+      },
+      "claim": "The Latin dictionary marks the Cherub entry indeclinable and identifies Cherubim as its Hebrew plural; the abbreviation table explicitly expands indecl. This supports that entry treatment, not an invented full Latin paradigm, speculative etymology or classification of angelic choirs.",
+      "verified_on": "2026-10-17",
+      "evidence_sha256": "426cb8963cc4ff877a6e39b47333fadb1f4f77112656f9e31172a5f2acd1b129",
+      "decision": "RETAIN",
+      "decision_reason": "The located original dictionary entry supplies this narrow grammatical statement. Neither unrelated interpretations nor the source English translations are adopted."
+    },
+    {
       "id": "use.lemma.chorda.lewis-short.1879",
       "edition": "edition.lewis-short.1879",
       "digital_item": "item.lewis-short.perseus.40038e4.eng1",
@@ -5917,6 +5976,25 @@
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
     },
     {
+      "id": "use.lemma.credo.shared-note.lewis-short.1879",
+      "edition": "edition.lewis-short.1879",
+      "digital_item": "item.lewis-short.perseus.40038e4.eng2",
+      "role": "lexical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "credo"
+      },
+      "locator": {
+        "section": "Perseus TEI entry n11525, personal dative and ecclesiastical in with accusative constructions",
+        "page_url": "https://github.com/PerseusDL/lexica/blob/40038e40937fa639639802e73dac15e6c938496b/CTS_XML_TEI/perseus/pdllex/lat/ls/lat.ls.perseus-eng2.xml#L11904"
+      },
+      "claim": "The entry attests credere with a personal dative in believing someone, and ecclesiastical credere in with the accusative in believing or trusting in someone. These examples do not classify every participial or passive occurrence.",
+      "verified_on": "2026-10-17",
+      "evidence_sha256": "01c723e98720910ba834e84b52a4e7b32ce1f84270d948fe5a4c3c2678629284",
+      "decision": "RETAIN",
+      "decision_reason": "The specified original dictionary entry or section was checked at the pinned revision. This supports the shared Latin lexical or construction fact, not prayer translation wording or every contextual occurrence."
+    },
+    {
       "id": "use.lemma.crepito.lewis-short.1879",
       "edition": "edition.lewis-short.1879",
       "digital_item": "item.lewis-short.perseus.40038e4.eng1",
@@ -6136,6 +6214,27 @@
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
     },
     {
+      "id": "use.lemma.dies.shared-note.allen-greenough.1903",
+      "edition": "edition.allen-greenough.1903",
+      "digital_item": "item.allen-greenough.1903.commons",
+      "role": "grammatical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "dies"
+      },
+      "locator": {
+        "printed": "pp. 39–40",
+        "scan": "Physical PDF pages 57–58 (one-based)",
+        "section": "§§95–98, especially §97a",
+        "page_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Allen_and_Greenough%27s_New_Latin_grammar_for_schools_and_colleges%2C_founded_on_comparative_grammar%3B_%28IA_allengreenoughsn00alleiala%29.pdf#page=58"
+      },
+      "claim": "The grammar gives the fifth-declension paradigm of dies and says it is usually masculine, with feminine singular especially in fixed-time expressions. A reference to an appointed day does not by itself force feminine agreement.",
+      "verified_on": "2026-10-17",
+      "evidence_sha256": "6dc77a255e6bee1253b1ae3fd033597e7d25c677c42a1b44cb76cff41478135d",
+      "decision": "RETAIN",
+      "decision_reason": "The specified sections were checked on the retained page images. The claim concerns Latin grammar only; it does not reproduce source prose or renew any contextual translation review."
+    },
+    {
       "id": "use.lemma.diffamo.lewis-short.1879",
       "edition": "edition.lewis-short.1879",
       "digital_item": "item.lewis-short.perseus.40038e4.eng1",
@@ -6170,6 +6269,25 @@
       "evidence_sha256": "ccbd2f79db1006edc607fe51227babab6872fbdaa4e925f4c1999a3b978041ee",
       "decision": "RETAIN",
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
+    },
+    {
+      "id": "use.lemma.dignor.shared-note.lewis-short.1879",
+      "edition": "edition.lewis-short.1879",
+      "digital_item": "item.lewis-short.perseus.40038e4.eng2",
+      "role": "lexical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "dignor"
+      },
+      "locator": {
+        "section": "Perseus TEI entry n13933, deponent head, dignus derivation and infinitival construction",
+        "page_url": "https://github.com/PerseusDL/lexica/blob/40038e40937fa639639802e73dac15e6c938496b/CTS_XML_TEI/perseus/pdllex/lat/ls/lat.ls.perseus-eng2.xml#L14318"
+      },
+      "claim": "The entry identifies dignor as deponent, relates it to dignus and attests the deigning construction with an infinitive, including si digneris audire. The polite English example is not an analysis of the distinct imperative dignare.",
+      "verified_on": "2026-10-17",
+      "evidence_sha256": "01c723e98720910ba834e84b52a4e7b32ce1f84270d948fe5a4c3c2678629284",
+      "decision": "RETAIN",
+      "decision_reason": "The specified original dictionary entry or section was checked at the pinned revision. This supports the shared Latin lexical or construction fact, not prayer translation wording or every contextual occurrence."
     },
     {
       "id": "use.lemma.dolor.lewis-short.1879",
@@ -6316,6 +6434,25 @@
       "decision_reason": "Exact complete entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
     },
     {
+      "id": "use.lemma.facio.shared-note.lewis-short.1879",
+      "edition": "edition.lewis-short.1879",
+      "digital_item": "item.lewis-short.perseus.40038e4.eng2",
+      "role": "lexical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "facio"
+      },
+      "locator": {
+        "section": "Perseus TEI entry n17516, introductory passive forms, before sense n17516.1",
+        "page_url": "https://github.com/PerseusDL/lexica/blob/40038e40937fa639639802e73dac15e6c938496b/CTS_XML_TEI/perseus/pdllex/lat/ls/lat.ls.perseus-eng2.xml#L17916"
+      },
+      "claim": "The introductory grammatical information gives fio, factus and fieri as passive forms of facio, supporting the usual present-system and perfect-participle distinction in the note. The same introduction records archaic alternatives; the summary is not an exceptionless claim for all periods.",
+      "verified_on": "2026-10-17",
+      "evidence_sha256": "01c723e98720910ba834e84b52a4e7b32ce1f84270d948fe5a4c3c2678629284",
+      "decision": "RETAIN",
+      "decision_reason": "The specified original dictionary entry or section was checked at the pinned revision. This supports the shared Latin lexical or construction fact, not prayer translation wording or every contextual occurrence."
+    },
+    {
       "id": "use.lemma.felix.lewis-short.1879",
       "edition": "edition.lewis-short.1879",
       "digital_item": "item.lewis-short.perseus.40038e4.eng1",
@@ -6386,6 +6523,25 @@
       "evidence_sha256": "ccbd2f79db1006edc607fe51227babab6872fbdaa4e925f4c1999a3b978041ee",
       "decision": "RETAIN",
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
+    },
+    {
+      "id": "use.lemma.fio.shared-note.lewis-short.1879",
+      "edition": "edition.lewis-short.1879",
+      "digital_item": "item.lewis-short.perseus.40038e4.eng2",
+      "role": "lexical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "fio"
+      },
+      "locator": {
+        "section": "Perseus TEI entry n17516, introductory passive forms; fio n18209 cross-reference to facio init.",
+        "page_url": "https://github.com/PerseusDL/lexica/blob/40038e40937fa639639802e73dac15e6c938496b/CTS_XML_TEI/perseus/pdllex/lat/ls/lat.ls.perseus-eng2.xml#L17916"
+      },
+      "claim": "The fio entry directs the reader to the beginning of facio, where fio, factus and fieri are given as its passive forms. This supports the irregular passive counterpart in the usual system, without denying independent intransitive uses of fio.",
+      "verified_on": "2026-10-17",
+      "evidence_sha256": "01c723e98720910ba834e84b52a4e7b32ce1f84270d948fe5a4c3c2678629284",
+      "decision": "RETAIN",
+      "decision_reason": "The specified original dictionary entry or section was checked at the pinned revision. This supports the shared Latin lexical or construction fact, not prayer translation wording or every contextual occurrence."
     },
     {
       "id": "use.lemma.floreo.lewis-short.1879",
@@ -6895,6 +7051,25 @@
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
     },
     {
+      "id": "use.lemma.iste.shared-note.lewis-short.1879",
+      "edition": "edition.lewis-short.1879",
+      "digital_item": "item.lewis-short.perseus.40038e4.eng2",
+      "role": "lexical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "iste"
+      },
+      "locator": {
+        "section": "Perseus TEI entry n25082, opening description of the second-person demonstrative, with wider uses",
+        "page_url": "https://github.com/PerseusDL/lexica/blob/40038e40937fa639639802e73dac15e6c938496b/CTS_XML_TEI/perseus/pdllex/lat/ls/lat.ls.perseus-eng2.xml#L25493"
+      },
+      "claim": "The entry characterizes iste as especially associated with the person addressed, while also recording more general demonstrative uses. The note is a Classical tendency, not an ownership rule for every liturgical isto.",
+      "verified_on": "2026-10-17",
+      "evidence_sha256": "01c723e98720910ba834e84b52a4e7b32ce1f84270d948fe5a4c3c2678629284",
+      "decision": "RETAIN",
+      "decision_reason": "The specified original dictionary entry or section was checked at the pinned revision. This supports the shared Latin lexical or construction fact, not prayer translation wording or every contextual occurrence."
+    },
+    {
       "id": "use.lemma.iusiurandum.lewis-short.1879",
       "edition": "edition.lewis-short.1879",
       "digital_item": "item.lewis-short.perseus.40038e4.eng1",
@@ -7021,6 +7196,27 @@
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
     },
     {
+      "id": "use.lemma.misereor.shared-note.britt.1928",
+      "edition": "edition.britt.dictionary-psalter.1928",
+      "digital_item": "item.britt.dictionary-psalter.1928.cmaa426cb896",
+      "role": "lexical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "misereor"
+      },
+      "locator": {
+        "printed": "p. 167",
+        "scan": "Physical PDF page 201 (one-based)",
+        "section": "s.v. misereor, complete entry",
+        "page_url": "https://media.musicasacra.com/pdf/dictionarypsalter.pdf#page=201"
+      },
+      "claim": "The entry records both genitive and dative government and specifically identifies the dative as familiar from the Mass and litanies. It does not say the dative is exclusive to liturgical Latin.",
+      "verified_on": "2026-10-17",
+      "evidence_sha256": "426cb8963cc4ff877a6e39b47333fadb1f4f77112656f9e31172a5f2acd1b129",
+      "decision": "RETAIN",
+      "decision_reason": "The located original dictionary entry supplies this narrow grammatical statement. Neither unrelated interpretations nor the source English translations are adopted."
+    },
+    {
       "id": "use.lemma.momentum.lewis-short.1879",
       "edition": "edition.lewis-short.1879",
       "digital_item": "item.lewis-short.perseus.40038e4.eng1",
@@ -7111,6 +7307,25 @@
       "decision_reason": "Exact complete entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
     },
     {
+      "id": "use.lemma.orbis.shared-note.lewis-short.1879",
+      "edition": "edition.lewis-short.1879",
+      "digital_item": "item.lewis-short.perseus.40038e4.eng2",
+      "role": "lexical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "orbis"
+      },
+      "locator": {
+        "section": "Perseus TEI entry n32899, literal senses, orbis terrarum/terrae idiom",
+        "page_url": "https://github.com/PerseusDL/lexica/blob/40038e40937fa639639802e73dac15e6c938496b/CTS_XML_TEI/perseus/pdllex/lat/ls/lat.ls.perseus-eng2.xml#L33340"
+      },
+      "claim": "The entry gives the circular-shape sense of orbis and the established orbis terrarum/terrae expression for the world. The idiom does not impose a geometrical interpretation on every occurrence.",
+      "verified_on": "2026-10-17",
+      "evidence_sha256": "01c723e98720910ba834e84b52a4e7b32ce1f84270d948fe5a4c3c2678629284",
+      "decision": "RETAIN",
+      "decision_reason": "The specified original dictionary entry or section was checked at the pinned revision. This supports the shared Latin lexical or construction fact, not prayer translation wording or every contextual occurrence."
+    },
+    {
       "id": "use.lemma.organum.lewis-short.1879",
       "edition": "edition.lewis-short.1879",
       "digital_item": "item.lewis-short.perseus.40038e4.eng1",
@@ -7181,6 +7396,25 @@
       "evidence_sha256": "ccbd2f79db1006edc607fe51227babab6872fbdaa4e925f4c1999a3b978041ee",
       "decision": "RETAIN",
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
+    },
+    {
+      "id": "use.lemma.propheta.shared-note.lewis-short.1879",
+      "edition": "edition.lewis-short.1879",
+      "digital_item": "item.lewis-short.perseus.40038e4.eng2",
+      "role": "lexical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "propheta"
+      },
+      "locator": {
+        "section": "Perseus TEI entry n38894, propheta/prophetes head and grammatical information",
+        "page_url": "https://github.com/PerseusDL/lexica/blob/40038e40937fa639639802e73dac15e6c938496b/CTS_XML_TEI/perseus/pdllex/lat/ls/lat.ls.perseus-eng2.xml#L39347"
+      },
+      "claim": "The entry marks propheta/prophetes with genitive -ae and masculine gender, supporting the masculine first-declension noun described in the shared note.",
+      "verified_on": "2026-10-17",
+      "evidence_sha256": "01c723e98720910ba834e84b52a4e7b32ce1f84270d948fe5a4c3c2678629284",
+      "decision": "RETAIN",
+      "decision_reason": "The specified original dictionary entry or section was checked at the pinned revision. This supports the shared Latin lexical or construction fact, not prayer translation wording or every contextual occurrence."
     },
     {
       "id": "use.lemma.prophetia.lewis-short.1879",
@@ -7273,6 +7507,27 @@
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
     },
     {
+      "id": "use.lemma.quaeso.shared-note.allen-greenough.1903",
+      "edition": "edition.allen-greenough.1903",
+      "digital_item": "item.allen-greenough.1903.commons",
+      "role": "grammatical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "quaeso"
+      },
+      "locator": {
+        "printed": "p. 119",
+        "scan": "Physical PDF page 137 (one-based)",
+        "section": "§206e and its note",
+        "page_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Allen_and_Greenough%27s_New_Latin_grammar_for_schools_and_colleges%2C_founded_on_comparative_grammar%3B_%28IA_allengreenoughsn00alleiala%29.pdf#page=137"
+      },
+      "claim": "The defective-verb discussion gives quaeso and quaesumus as request forms and notes occasional other forms in early Latin. The learner summary does not deny those exceptions.",
+      "verified_on": "2026-10-17",
+      "evidence_sha256": "6dc77a255e6bee1253b1ae3fd033597e7d25c677c42a1b44cb76cff41478135d",
+      "decision": "RETAIN",
+      "decision_reason": "The specified sections were checked on the retained page images. The claim concerns Latin grammar only; it does not reproduce source prose or renew any contextual translation review."
+    },
+    {
       "id": "use.lemma.quisquam.lewis-short.1879",
       "edition": "edition.lewis-short.1879",
       "digital_item": "item.lewis-short.perseus.40038e4.eng1",
@@ -7289,6 +7544,25 @@
       "evidence_sha256": "ccbd2f79db1006edc607fe51227babab6872fbdaa4e925f4c1999a3b978041ee",
       "decision": "RETAIN",
       "decision_reason": "Exact complete entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
+    },
+    {
+      "id": "use.lemma.quoque.shared-note.lewis-short.1879",
+      "edition": "edition.lewis-short.1879",
+      "digital_item": "item.lewis-short.perseus.40038e4.eng2",
+      "role": "lexical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "quoque"
+      },
+      "locator": {
+        "section": "Perseus TEI entry n40282, additive quoque, opening construction statement",
+        "page_url": "https://github.com/PerseusDL/lexica/blob/40038e40937fa639639802e73dac15e6c938496b/CTS_XML_TEI/perseus/pdllex/lat/ls/lat.ls.perseus-eng2.xml#L40738"
+      },
+      "claim": "The additive quoque is described as following the emphasized word. The separate quoque homograph formed from quo and -que is not the subject of this positional note.",
+      "verified_on": "2026-10-17",
+      "evidence_sha256": "01c723e98720910ba834e84b52a4e7b32ce1f84270d948fe5a4c3c2678629284",
+      "decision": "RETAIN",
+      "decision_reason": "The specified original dictionary entry or section was checked at the pinned revision. This supports the shared Latin lexical or construction fact, not prayer translation wording or every contextual occurrence."
     },
     {
       "id": "use.lemma.recenseo.lewis-short.1879",
@@ -7453,6 +7727,25 @@
       "decision_reason": "Complete primary entry consulted in the pinned dictionary transcription; supports the lexical semantic range, not target-language prayer wording."
     },
     {
+      "id": "use.lemma.sine.shared-note.lewis-short.1879",
+      "edition": "edition.lewis-short.1879",
+      "digital_item": "item.lewis-short.perseus.40038e4.eng2",
+      "role": "lexical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "sine"
+      },
+      "locator": {
+        "section": "Perseus TEI entry n44372, prepositional head and governed-case examples",
+        "page_url": "https://github.com/PerseusDL/lexica/blob/40038e40937fa639639802e73dac15e6c938496b/CTS_XML_TEI/perseus/pdllex/lat/ls/lat.ls.perseus-eng2.xml#L44839"
+      },
+      "claim": "The entry identifies sine as a preposition with the ablative and supplies corresponding examples. Elliptical and idiomatic constructions do not turn the ordinary government into an accusative rule.",
+      "verified_on": "2026-10-17",
+      "evidence_sha256": "01c723e98720910ba834e84b52a4e7b32ce1f84270d948fe5a4c3c2678629284",
+      "decision": "RETAIN",
+      "decision_reason": "The specified original dictionary entry or section was checked at the pinned revision. This supports the shared Latin lexical or construction fact, not prayer translation wording or every contextual occurrence."
+    },
+    {
       "id": "use.lemma.sors.lewis-short.1879",
       "edition": "edition.lewis-short.1879",
       "digital_item": "item.lewis-short.perseus.40038e4.eng1",
@@ -7487,6 +7780,27 @@
       "evidence_sha256": "ccbd2f79db1006edc607fe51227babab6872fbdaa4e925f4c1999a3b978041ee",
       "decision": "RETAIN",
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
+    },
+    {
+      "id": "use.lemma.spero.shared-note.britt.1928",
+      "edition": "edition.britt.dictionary-psalter.1928",
+      "digital_item": "item.britt.dictionary-psalter.1928.cmaa426cb896",
+      "role": "lexical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "spero"
+      },
+      "locator": {
+        "printed": "p. 259",
+        "scan": "Physical PDF page 293 (one-based)",
+        "section": "s.v. spero, complete entry",
+        "page_url": "https://media.musicasacra.com/pdf/dictionarypsalter.pdf#page=293"
+      },
+      "claim": "The entry attests spero with in and the ablative in the hope or trust sense, while also allowing accusative government. This supports a possible construction, not an exclusive case rule.",
+      "verified_on": "2026-10-17",
+      "evidence_sha256": "426cb8963cc4ff877a6e39b47333fadb1f4f77112656f9e31172a5f2acd1b129",
+      "decision": "RETAIN",
+      "decision_reason": "The located original dictionary entry supplies this narrow grammatical statement. Neither unrelated interpretations nor the source English translations are adopted."
     },
     {
       "id": "use.lemma.spiritus.lewis-short.1879",
@@ -7793,6 +8107,27 @@
       "evidence_sha256": "ccbd2f79db1006edc607fe51227babab6872fbdaa4e925f4c1999a3b978041ee",
       "decision": "RETAIN",
       "decision_reason": "Exact entry consulted in the pinned dictionary transcription; supports lexical form or semantic range, not target-language prayer wording."
+    },
+    {
+      "id": "use.lemma.veneror.shared-note.allen-greenough.1903",
+      "edition": "edition.allen-greenough.1903",
+      "digital_item": "item.allen-greenough.1903.commons",
+      "role": "grammatical_support",
+      "address": {
+        "kind": "lemma",
+        "lemma": "veneror"
+      },
+      "locator": {
+        "printed": "pp. 103–105",
+        "scan": "Physical PDF pages 121–123 (one-based)",
+        "section": "§190 and §190d",
+        "page_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Allen_and_Greenough%27s_New_Latin_grammar_for_schools_and_colleges%2C_founded_on_comparative_grammar%3B_%28IA_allengreenoughsn00alleiala%29.pdf#page=123"
+      },
+      "claim": "The deponent paradigm has passive forms with normally active or reflexive meaning; its gerundive retains passive meaning. This distinguishes the gerundive from the active gerund and does not make every form ending in -ndo passive.",
+      "verified_on": "2026-10-17",
+      "evidence_sha256": "6dc77a255e6bee1253b1ae3fd033597e7d25c677c42a1b44cb76cff41478135d",
+      "decision": "RETAIN",
+      "decision_reason": "The specified sections were checked on the retained page images. The claim concerns Latin grammar only; it does not reproduce source prose or renew any contextual translation review."
     },
     {
       "id": "use.lemma.vero.lewis-short.1879",
@@ -10391,6 +10726,280 @@
       "evidence_sha256": "a280b9c554590e9d158401f120b5fe4d69948b83f1088aa2a1aa2067025584d5"
     },
     {
+      "id": "use.ordinarium.iube-domine-benedicere.do44667ff-body",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.iube-domine-benedicere"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Ordo/Ordo.txt. Branch !*RnD at line 118, # Evangelium at line 119, exact priest-alone rubric at line 120, preceding Munda at line 121 and complete blessing body at line 122."
+      },
+      "claim": "Prints the complete 20-word priest-alone request and blessing through Amen, after the separate Munda. Compared with the selected Benziger print, it writes Jube in place of Iube and omits the comma after meo. This is derived digital textual comparison, not an independent print family or performer or voice proof.",
+      "evidence_sha256": "a7f63e8030325b809f74dd4587c649bf8eb45cdd150fc9a2817fe2a1ed6a42e3",
+      "verified_on": "2026-10-17",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.iube-domine-benedicere.mr1962-body",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.iube-domine-benedicere"
+      },
+      "locator": {
+        "printed": "223",
+        "scan": "IA leaf n302; one-based PDF page 303",
+        "section": "Ordo Missae; priest without deacon and subdeacon, Gospel preparation",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n302/mode/1up"
+      },
+      "claim": "Prints the complete 20-word priest-alone request and blessing through its Amen, after the separate Munda and before the Gospel greeting. The selected spelling, accents, capitalization and comma after meo follow this printing.",
+      "evidence_sha256": "f84bcc646cfc3b9908a50a4f86e3d1c0ee21738df7afd9230fd343b801f658ff",
+      "decision": "RETAIN",
+      "verified_on": "2026-10-17"
+    },
+    {
+      "id": "use.ordinarium.iube-domine-benedicere.mr1962-ritual-boundary",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.iube-domine-benedicere"
+      },
+      "locator": {
+        "printed": "223",
+        "scan": "IA leaf n302; one-based PDF page 303",
+        "section": "Ordo Missae; priest-alone branch and following Masses of the dead rubric",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n302/mode/1up"
+      },
+      "claim": "Places the request and blessing after the separate Munda in the priest-without-deacon-and-subdeacon branch. The following rubric retains Munda but says that blessing is not requested in Masses of the dead.",
+      "evidence_sha256": "f84bcc646cfc3b9908a50a4f86e3d1c0ee21738df7afd9230fd343b801f658ff",
+      "decision": "RETAIN",
+      "verified_on": "2026-10-17"
+    },
+    {
+      "id": "use.ordinarium.iube-domine-benedicere.mr1962-ritual-voice",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.iube-domine-benedicere"
+      },
+      "locator": {
+        "printed": "LIII",
+        "scan": "IA leaf n58; one-based PDF page 59",
+        "section": "Ritus servandus VI.2; celebrant’s Gospel preparation",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n58/mode/1up"
+      },
+      "claim": "Directs the celebrant, after the preceding chants and before the Gospel greeting, to say Munda cor meum, Iube Domine benedicere and Dominus sit in corde meo secreto. This supports the priest actor, quiet voice and placement, not a full-body transcription or a general omission rule.",
+      "evidence_sha256": "2a36919facc2289b087996678556a69eede8d916177be3a461a6aa2ef7a6b434",
+      "decision": "RETAIN",
+      "verified_on": "2026-10-17"
+    },
+    {
+      "id": "use.ordinarium.iube-domne-benedicere-in-passione.do44667ff-body",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.iube-domne-benedicere-in-passione"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Tempora/Quad6-0r.txt [Munda Cor Passionis], heading240, separate preceding spoken Munda241, complete request/blessing/Amen242-244."
+      },
+      "claim": "Contains the complete 28-word plural request, blessing and Amen. The pinned digital body writes Jube, lacks the first vestris comma, has a colon after the second vestris and capital In. D./S. labels and + are source actor/action framing, not additional spoken tokens. This is derived digital comparison, not an independent genealogical print or preparation voice authority.",
+      "evidence_sha256": "5ef21bb1bb36d0be7bd01d872bd1142013a21e5a0718b28562c54a7b2bff97be",
+      "verified_on": "2026-10-17",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.iube-domne-benedicere-in-passione.mr1962-partial-body",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "corroborating_latin_witness",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.iube-domne-benedicere-in-passione"
+      },
+      "locator": {
+        "printed": "139",
+        "scan": "IA leaf n218; one-based PDF page 219",
+        "section": "Palm Passion preparation, rubric 8; fully visible blessing start",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n218/mode/1up"
+      },
+      "claim": "Directly corroborates only the complete visible local words w004-w018, Dóminus through evangélium. Its lower-case evangélium differs from selected V. The unresolved request accent and clipped w019-w024 receive no full diplomatic collation credit. This is not a complete second print witness.",
+      "evidence_sha256": "37a28836c69226f84f07f5f4ec79b9b3d98604d212dd3910cff65402774bcb99",
+      "verified_on": "2026-10-17",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.iube-domne-benedicere-in-passione.mr1962-ritual-boundary",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.iube-domne-benedicere-in-passione"
+      },
+      "locator": {
+        "printed": "139",
+        "scan": "IA leaf n218; one-based PDF page 219",
+        "section": "Palm Passion preparation, rubric 8, left and right columns",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n218/mode/1up"
+      },
+      "claim": "The visible rubric identifies the qualified ministers and the celebrant's media voce response, followed by Et illi dicunt Amen. The right-column continuation et Spíritus Sancti and Amen is visible but is not stitched across the clipped line into a complete Benziger transcript.",
+      "evidence_sha256": "37a28836c69226f84f07f5f4ec79b9b3d98604d212dd3910cff65402774bcb99",
+      "verified_on": "2026-10-17",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.iube-domne-benedicere-in-passione.vatican1962-body",
+      "edition": "edition.missale-romanum.1962-vatican-joseph-bearing",
+      "digital_item": "item.missale-romanum.1962-vatican-joseph-bearing.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.iube-domne-benedicere-in-passione"
+      },
+      "locator": {
+        "printed": "136",
+        "scan": "IA leaf n216; one-based PDF page 217",
+        "section": "Dominica II Passionis seu in palmis; Passion preparation, rubric 8",
+        "page_url": "https://archive.org/details/missale_romanum-1962/page/n216/mode/1up"
+      },
+      "claim": "Prints the complete 28-word request, plural blessing and Amen selected here, including the visible Trinitarian ending and non-spoken cross between local w024 and w025. The underlying Latin rite is distinguished from the unproved reproduction date and scan rights.",
+      "evidence_sha256": "37daa0648aa9e1e1978246b8022fcf275aa5ec2c37515650ca11dc76a02a4e05",
+      "verified_on": "2026-10-17",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.iube-domne-benedicere-in-passione.vatican1962-ritual-boundary",
+      "edition": "edition.missale-romanum.1962-vatican-joseph-bearing",
+      "digital_item": "item.missale-romanum.1962-vatican-joseph-bearing.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.iube-domne-benedicere-in-passione"
+      },
+      "locator": {
+        "printed": "136",
+        "scan": "IA leaf n216; one-based PDF page 217",
+        "section": "Dominica II Passionis seu in palmis; full rubric 8 and following Et illi dicunt",
+        "page_url": "https://archive.org/details/missale_romanum-1962/page/n216/mode/1up"
+      },
+      "claim": "Qualified ministers at least in the diaconate recite Munda and request the celebrant's blessing. Submissa voce immediately modifies recitant and naturally extends in context to the conjoined request, without a separately repeated request label. The celebrant explicitly responds media voce. Et illi dicunt assigns Amen to the ministers, without a separate Amen voice label. No app enum equivalence is established.",
+      "evidence_sha256": "37daa0648aa9e1e1978246b8022fcf275aa5ec2c37515650ca11dc76a02a4e05",
+      "verified_on": "2026-10-17",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.iube-domne-benedicere.mr1962-body",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.iube-domne-benedicere"
+      },
+      "locator": {
+        "printed": "222",
+        "scan": "IA leaf n301; one-based PDF page 302",
+        "section": "Ordo Missae; ministerial Gospel preparation",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n301/mode/1up"
+      },
+      "claim": "Prints the complete 28-word ministerial request and singular blessing including Amen. The selected accents, punctuation and capitalization retain this printing. The cross between local w024 and w025 is a non-spoken action sign, not a lexical word.",
+      "evidence_sha256": "ec6bcc03fe7879c158e34bc9c17e5e760d3659682b6a1c29c48473383a911f74",
+      "verified_on": "2026-10-17",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.iube-domne-benedicere.mr1962-requiem-boundary",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.iube-domne-benedicere"
+      },
+      "locator": {
+        "printed": "223",
+        "scan": "IA leaf n302; one-based PDF page 303",
+        "section": "Ordo Missae; continuation and Masses of the dead exception",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n302/mode/1up"
+      },
+      "claim": "The continuation distinguishes the ministerial Gospel preparation from the priest-without-deacon-and-subdeacon branch. In Masses of the dead Munda is retained but the blessing is not requested. This is not permission to omit Munda.",
+      "evidence_sha256": "f84bcc646cfc3b9908a50a4f86e3d1c0ee21738df7afd9230fd343b801f658ff",
+      "verified_on": "2026-10-17",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.iube-domne-benedicere.mr1962-ritual-boundary",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.iube-domne-benedicere"
+      },
+      "locator": {
+        "printed": "222",
+        "scan": "IA leaf n301; one-based PDF page 302",
+        "section": "Ordo Missae; request and Sacerdos respondet speech block",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n301/mode/1up"
+      },
+      "claim": "The deacon requests the celebrant's blessing. Sacerdos respondet introduces the whole singular blessing through Amen before the next action rubric. No preparation voice category is independently specified at this locus.",
+      "evidence_sha256": "ec6bcc03fe7879c158e34bc9c17e5e760d3659682b6a1c29c48473383a911f74",
+      "verified_on": "2026-10-17",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.iube-domne-benedicere.vatican1962-body",
+      "edition": "edition.missale-romanum.1962-vatican-joseph-bearing",
+      "digital_item": "item.missale-romanum.1962-vatican-joseph-bearing.ia",
+      "role": "corroborating_latin_witness",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.iube-domne-benedicere"
+      },
+      "locator": {
+        "printed": "219",
+        "scan": "IA leaf n299; one-based PDF page 300",
+        "section": "Ordo Missae; ministerial Gospel preparation",
+        "page_url": "https://archive.org/details/missale_romanum-1962/page/n299/mode/1up"
+      },
+      "claim": "Prints the complete same 28 lexical words with three selected-accidental differences: no comma after tuo, capital Evangélium and capital In after suum. A separately set print of this rite, not proof of another genealogical tradition or of scan redistribution rights.",
+      "evidence_sha256": "1ebd45fb07f11a958247d7af32fb0336bace3e6cc7dea2fa00a4170d8d619612",
+      "verified_on": "2026-10-17",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.iube-domne-benedicere.vatican1962-ritual-boundary",
+      "edition": "edition.missale-romanum.1962-vatican-joseph-bearing",
+      "digital_item": "item.missale-romanum.1962-vatican-joseph-bearing.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.iube-domne-benedicere"
+      },
+      "locator": {
+        "printed": "219",
+        "scan": "IA leaf n299; one-based PDF page 300",
+        "section": "Ordo Missae; deacon request and Sacerdos respondet speech block",
+        "page_url": "https://archive.org/details/missale_romanum-1962/page/n299/mode/1up"
+      },
+      "claim": "Attributes the request to the deacon and introduces the singular blessing with Sacerdos respondet. Amen remains inside that introduced speech block with no intervening actor change. No Ordinary preparation voice category is supplied by this paragraph.",
+      "evidence_sha256": "1ebd45fb07f11a958247d7af32fb0336bace3e6cc7dea2fa00a4170d8d619612",
+      "verified_on": "2026-10-17",
+      "decision": "RETAIN"
+    },
+    {
       "id": "use.ordinarium.iudica-me.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -10541,6 +11150,63 @@
       "verified_on": "2026-09-25",
       "decision": "RETAIN",
       "evidence_sha256": "f2974f65b87ab6c98e437417413c181b9e10094a20a50181bd8d865abd383600"
+    },
+    {
+      "id": "use.ordinarium.munda-cor-meum.do44667ff-body",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.github",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.munda-cor-meum"
+      },
+      "locator": {
+        "section": "web/www/missa/Latin/Ordo/Ordo.txt; priest branch !*RnD at line 118, # Evangelium at line 119; complete prayer body at line 121"
+      },
+      "claim": "Prints the complete 34-word prayer in the priest branch, excluding the separate blessing on the following line. Compared with the selected print, it omits one comma, capitalizes two nouns, and adds one comma. It is a derived digital comparison, not proof of an independent manuscript family.",
+      "evidence_sha256": "a7f63e8030325b809f74dd4587c649bf8eb45cdd150fc9a2817fe2a1ed6a42e3",
+      "verified_on": "2026-10-16",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.munda-cor-meum.mr1962-body",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.munda-cor-meum"
+      },
+      "locator": {
+        "printed": "222",
+        "scan": "IA leaf n301; one-based PDF page 302",
+        "section": "Ordo Missae; prayer before the Gospel",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n301/mode/1up"
+      },
+      "claim": "Prints the complete 34-word prayer, including its short conclusion and Amen, with the spelling, accents, ligatures, capitalization, and punctuation selected here. The paragraph is printed in the solemn deacon context; priest reuse is established separately on the following page.",
+      "evidence_sha256": "ec6bcc03fe7879c158e34bc9c17e5e760d3659682b6a1c29c48473383a911f74",
+      "verified_on": "2026-10-16",
+      "decision": "RETAIN"
+    },
+    {
+      "id": "use.ordinarium.munda-cor-meum.mr1962-ritual-boundary",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.munda-cor-meum"
+      },
+      "locator": {
+        "printed": "223",
+        "scan": "IA leaf n302; one-based PDF page 303",
+        "section": "Ordo Missae; priest without deacon and subdeacon, and Masses of the dead",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n302/mode/1up"
+      },
+      "claim": "Directs the priest without deacon and subdeacon to say the preceding Munda cor meum before a separate request for blessing and blessing. In Masses of the dead the prayer is retained but the blessing is not requested. The separate blessing is not part of this text.",
+      "evidence_sha256": "f84bcc646cfc3b9908a50a4f86e3d1c0ee21738df7afd9230fd343b801f658ff",
+      "verified_on": "2026-10-16",
+      "decision": "RETAIN"
     },
     {
       "id": "use.ordinarium.nobis-quoque.mr1962",
@@ -19893,7 +20559,7 @@
         "scan": "leaf n142 / PDF p. 143",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n142/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "4eb7c964ff347690ed6eb1afc5acdd2c3c4662fa8771f4a02a4ce4b8395d38ad"
@@ -20548,7 +21214,7 @@
         "scan": "leaf n199 / PDF p. 200",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n199/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with a cue for the repeated antiphon. The reader supplies the repetition in full, without a Gloria Patri. The repetition is not printed in full at this locus.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "505778fe81650d20e536f6aeae5c34a9dcd0d73c0dd2293fc7f0274f3e22cf0c"
@@ -21223,7 +21889,7 @@
         "scan": "leaves n119–n120 / PDF pp. 120–121",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n119/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "77e05c4acbb9027387c4528cf4c9019af68cf633961e57ba86a53f0ae629b3d8",
@@ -22508,7 +23174,7 @@
         "scan": "leaf n158 / PDF p. 159",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n158/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "584aa774bef5b7a540aba3f5d6046be19ddcf9719aa0872bebbb9efcddb799dc"
@@ -23045,7 +23711,7 @@
         "scan": "leaf n217 / PDF p. 218",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n217/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with a cue for the repeated antiphon. The reader supplies the repetition in full, without a Gloria Patri. The repetition is not printed in full at this locus.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "208d04db09fd578f7fcd747a546f0f11391554052aea4ae35a1381a07b74d9d3"
@@ -25967,7 +26633,7 @@
         "scan": "leaf n171 / PDF p. 172",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n171/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "579840494562a96ec3de860db80f27d9d44e50b1c7cae432a520e821ec5fe80d"
@@ -27077,6 +27743,27 @@
       "evidence_sha256": "2e8abb7da1ab2e7322c79edef9df9ebfc2c5b13b3b0511f98493e5b694ab3a45"
     },
     {
+      "id": "use.proprium.dominica-iii-post-pascha-collecta.conclusion-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-iii-post-pascha-collecta",
+        "word": "w034"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a, conclusion addressed to the Father; literal list punctuation retained",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "This same-edition common passage supplies the full literal w034–w055 expansion of its Per Dóminum cue. RG 115 a applies to an oration addressed to the Father in Mass or Office; its unaccented word forms, tuum, qui and final list semicolon remain literal in mr, while canonical house typography is declared in apparatus. This is not an independent edition.",
+      "verified_on": "2026-10-16",
+      "decision": "RETAIN",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"
+    },
+    {
       "id": "use.proprium.dominica-iii-post-pascha-collecta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -27108,10 +27795,11 @@
         "scan": "leaf n418 / PDF p. 419",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n418/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "2e8abb7da1ab2e7322c79edef9df9ebfc2c5b13b3b0511f98493e5b694ab3a45"
+      "claim": "The approved Benziger proper page prints the complete petition/body through w033 and its abbreviation control Per Dóminum. The full w034–w055 conclusion is supplied by the separately cited RG 115 a, not printed on this proper leaf.",
+      "verified_on": "2026-10-16",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2e8abb7da1ab2e7322c79edef9df9ebfc2c5b13b3b0511f98493e5b694ab3a45",
+      "decision_reason": "Narrows the former complete-page claim to directly printed proper text and controls; shared expansion is now explicit and separately bound. No source review approval is created."
     },
     {
       "id": "use.proprium.dominica-iii-post-pascha-collecta.oration-boundaries.mr1962",
@@ -27264,6 +27952,27 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence checksum identifies the complete web/www/missa/Latin/Tempora/Pasc3-0.txt file, not the whole composite reading. The complete derivation remains separately bound by its explicit source inventory."
     },
     {
+      "id": "use.proprium.dominica-iii-post-pascha-introitus.gloria-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-iii-post-pascha-introitus",
+        "word": "w034"
+      },
+      "locator": {
+        "printed": "p. 219",
+        "scan": "leaf n298 / PDF p. 299",
+        "section": "Ordo Missae, full Gloria Patri wording; role signs excluded",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
+      },
+      "claim": "This same-edition common passage supplies the full literal w034–w053 expansion of the proper page’s Glória Patri cue. The following repeated antiphon comes from the proper page’s Iubiláte cue, not from the Ordo’s different antiphon. Reuse of the wording does not import the Ordo role distribution or constitute an independent edition.",
+      "verified_on": "2026-10-16",
+      "decision": "RETAIN",
+      "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55"
+    },
+    {
       "id": "use.proprium.dominica-iii-post-pascha-introitus.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -27277,10 +27986,11 @@
         "scan": "leaf n418 / PDF p. 419",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n418/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "2e8abb7da1ab2e7322c79edef9df9ebfc2c5b13b3b0511f98493e5b694ab3a45"
+      "claim": "The approved Benziger proper page prints the complete petition/body through w033 and its abbreviation controls Glória Patri and Iubiláte. The latter directs repetition of w001–w017; the former is expanded from the separately cited common Gloria. This leaf does not print the full expanded 70-word component.",
+      "verified_on": "2026-10-16",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "2e8abb7da1ab2e7322c79edef9df9ebfc2c5b13b3b0511f98493e5b694ab3a45",
+      "decision_reason": "Narrows the former complete-page claim to directly printed proper text and controls; shared expansion is now explicit and separately bound. No source review approval is created."
     },
     {
       "id": "use.proprium.dominica-iii-post-pascha-offertorium.do44667ff",
@@ -27320,6 +28030,27 @@
       "evidence_sha256": "55a29d492afb1ecfa6559e83ecd71fcd6729a7aca02d73f80c63164ac2e28fcd"
     },
     {
+      "id": "use.proprium.dominica-iii-post-pascha-postcommunio.conclusion-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-iii-post-pascha-postcommunio",
+        "word": "w015"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a, conclusion addressed to the Father; literal list punctuation retained",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "This same-edition common passage supplies the full literal w015–w036 expansion of its Per Dóminum cue. RG 115 a applies to an oration addressed to the Father in Mass or Office; its unaccented word forms, tuum, qui and final list semicolon remain literal in mr, while canonical house typography is declared in apparatus. This is not an independent edition.",
+      "verified_on": "2026-10-16",
+      "decision": "RETAIN",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"
+    },
+    {
       "id": "use.proprium.dominica-iii-post-pascha-postcommunio.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -27351,10 +28082,11 @@
         "scan": "leaf n419 / PDF p. 420",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n419/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "55a29d492afb1ecfa6559e83ecd71fcd6729a7aca02d73f80c63164ac2e28fcd"
+      "claim": "The approved Benziger proper page prints the complete petition/body through w014 and its abbreviation control Per Dóminum. The full w015–w036 conclusion is supplied by the separately cited RG 115 a, not printed on this proper leaf.",
+      "verified_on": "2026-10-16",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "55a29d492afb1ecfa6559e83ecd71fcd6729a7aca02d73f80c63164ac2e28fcd",
+      "decision_reason": "Narrows the former complete-page claim to directly printed proper text and controls; shared expansion is now explicit and separately bound. No source review approval is created."
     },
     {
       "id": "use.proprium.dominica-iii-post-pascha-postcommunio.oration-boundaries.mr1962",
@@ -27375,6 +28107,27 @@
       "evidence_sha256": "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
       "decision": "RETAIN_WITH_CORRECTION",
       "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
+    },
+    {
+      "id": "use.proprium.dominica-iii-post-pascha-secreta.conclusion-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-iii-post-pascha-secreta",
+        "word": "w013"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a, conclusion addressed to the Father; literal list punctuation retained",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "This same-edition common passage supplies the full literal w013–w034 expansion of its Per Dóminum cue. RG 115 a applies to an oration addressed to the Father in Mass or Office; its unaccented word forms, tuum, qui and final list semicolon remain literal in mr, while canonical house typography is declared in apparatus. This is not an independent edition.",
+      "verified_on": "2026-10-16",
+      "decision": "RETAIN",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"
     },
     {
       "id": "use.proprium.dominica-iii-post-pascha-secreta.do44667ff",
@@ -27408,10 +28161,11 @@
         "scan": "leaf n419 / PDF p. 420",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n419/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-12",
-      "decision": "RETAIN",
-      "evidence_sha256": "55a29d492afb1ecfa6559e83ecd71fcd6729a7aca02d73f80c63164ac2e28fcd"
+      "claim": "The approved Benziger proper page prints the complete petition/body through w012 and its abbreviation control Per Dóminum. The full w013–w034 conclusion is supplied by the separately cited RG 115 a, not printed on this proper leaf.",
+      "verified_on": "2026-10-16",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "55a29d492afb1ecfa6559e83ecd71fcd6729a7aca02d73f80c63164ac2e28fcd",
+      "decision_reason": "Narrows the former complete-page claim to directly printed proper text and controls; shared expansion is now explicit and separately bound. No source review approval is created."
     },
     {
       "id": "use.proprium.dominica-iii-post-pascha-secreta.oration-boundaries.mr1962",
@@ -30182,7 +30936,7 @@
         "scan": "leaf n101 / PDF p. 102",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n101/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "bb56815bd3ba91c8282d5bee4b6af786ecff0433c6877073a1c677f49adabf2b"
@@ -31426,7 +32180,7 @@
         "scan": "leaf n184 / PDF p. 185",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n184/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "f7035296bfe155bbb6ad5c29930a50d2b0b39f12df68aac377999d25ca350087"
@@ -32104,6 +32858,28 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence checksum identifies the complete web/www/missa/Latin/Tempora/Pasc4-0.txt file, not the whole composite reading. The complete derivation remains separately bound by its explicit source inventory."
     },
     {
+      "id": "use.proprium.dominica-iv-post-pascha-collecta.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-iv-post-pascha-collecta",
+        "word": "w032"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a: Father-directed common conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "Rubricae generales 115 a prints the full twenty-one-word Per Dominum nostrum Iesum Christum Filium tuum conclusion through per omnia saecula saeculorum and following Amen. It supports the supplied wording at w032–w052 and the separate w053 Amen after the proper page’s Per Dominum cue. Reader accents, ligatures, colon after tuum and uppercase Qui are declared editorial accidentals, not exact typography from this rubric. This use does not assign the response performer or prayer voice.",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "decision_reason": "The identified common text directly supplies the bounded expansion; proper-page cues and reader typography are distinguished. This use does not certify the complete prayer or its translation."
+    },
+    {
       "id": "use.proprium.dominica-iv-post-pascha-collecta.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -32117,7 +32893,7 @@
         "scan": "leaf n419 / PDF p. 420",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n419/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited page prints this prayer’s proper body and the abbreviated conclusion “Per Dóminum”. The full common conclusion and Amen are supplied separately in the reader, with its own accentuation, capitalization and punctuation.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "55a29d492afb1ecfa6559e83ecd71fcd6729a7aca02d73f80c63164ac2e28fcd"
@@ -32273,6 +33049,49 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence checksum identifies the complete web/www/missa/Latin/Tempora/Pasc4-0.txt file, not the whole composite reading. The complete derivation remains separately bound by its explicit source inventory."
     },
     {
+      "id": "use.proprium.dominica-iv-post-pascha-introitus.expanded-doxology.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-iv-post-pascha-introitus",
+        "word": "w028"
+      },
+      "locator": {
+        "printed": "p. 225",
+        "scan": "leaf n304 / PDF p. 305",
+        "section": "Ordo Missae, Lavabo: Gloria Patri",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n304/mode/1up"
+      },
+      "claim": "The common Ordo Missae prints the complete twenty-word Gloria Patri through Amen corresponding to w028–w047. The proper Introit page prints only its cue. This supports the common Latin wording, not the proper antiphon, Introit performer, or exact reader typography; the printed colon after semper differs from the reader comma.",
+      "evidence_sha256": "c8e1c105fbccab5b133d072bcdc255ff482824182be5e53597e5d2bfbb94e3ee",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "decision_reason": "The identified common text directly supplies the bounded expansion; proper-page cues and reader typography are distinguished. This use does not certify the complete prayer or its translation."
+    },
+    {
+      "id": "use.proprium.dominica-iv-post-pascha-introitus.introit-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-iv-post-pascha-introitus"
+      },
+      "locator": {
+        "printed": "pp. xxix, lii",
+        "scan": "leaves n34, n57 / PDF pp. 35, 58",
+        "section": "Rubricae generales 427; Ritus servandus IV 2",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "Rubricae generales 427 prescribes the Introit antiphon, psalm verse, Gloria Patri and repeated antiphon. Ritus servandus IV 2 also describes the Introit, Gloria Patri and repeated antiphon before Kyrie. These same-edition rubrics support the reader expansion and reprise at w028–w066, not their exact accidentals, a continuous full transcription of the proper page, or a new claim about all performers. The proper antiphon itself remains supported by the proper-page use.",
+      "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "decision_reason": "The identified same-edition rubrics support the stated Introit sequence and repetition. The common wording and proper antiphon have separate textual sources."
+    },
+    {
       "id": "use.proprium.dominica-iv-post-pascha-introitus.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -32286,7 +33105,7 @@
         "scan": "leaf n419 / PDF p. 420",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n419/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited page prints the proper antiphon and psalm verse of this Introit, with cues for the common doxology and antiphon reprise. It does not print those expansions in full. The reader supplies them with its own accentuation, capitalization and punctuation.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "55a29d492afb1ecfa6559e83ecd71fcd6729a7aca02d73f80c63164ac2e28fcd"
@@ -32347,6 +33166,28 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence checksum identifies the complete web/www/missa/Latin/Tempora/Pasc4-0.txt file, not the whole composite reading. The complete derivation remains separately bound by its explicit source inventory."
     },
     {
+      "id": "use.proprium.dominica-iv-post-pascha-postcommunio.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-iv-post-pascha-postcommunio",
+        "word": "w021"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a: Father-directed common conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "Rubricae generales 115 a prints the full twenty-one-word Per Dominum nostrum Iesum Christum Filium tuum conclusion through per omnia saecula saeculorum and following Amen. It supports the supplied wording at w021–w041 and the separate w042 Amen after the proper page’s Per Dominum cue. Reader accents, ligatures, colon after tuum and uppercase Qui are declared editorial accidentals, not exact typography from this rubric. This use does not assign the response performer or prayer voice.",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "decision_reason": "The identified common text directly supplies the bounded expansion; proper-page cues and reader typography are distinguished. This use does not certify the complete prayer or its translation."
+    },
+    {
       "id": "use.proprium.dominica-iv-post-pascha-postcommunio.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -32360,7 +33201,7 @@
         "scan": "leaf n420 / PDF p. 421",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n420/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited page prints this prayer’s proper body and the abbreviated conclusion “Per Dóminum”. The full common conclusion and Amen are supplied separately in the reader, with its own accentuation, capitalization and punctuation.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "63d696bcd7bfae640ff9798c69eeb81836b3f448cbee2eb64316dce7d1956356"
@@ -32404,6 +33245,28 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence checksum identifies the complete web/www/missa/Latin/Tempora/Pasc4-0.txt file, not the whole composite reading. The complete derivation remains separately bound by its explicit source inventory."
     },
     {
+      "id": "use.proprium.dominica-iv-post-pascha-secreta.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-iv-post-pascha-secreta",
+        "word": "w026"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a: Father-directed common conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "Rubricae generales 115 a prints the full twenty-one-word Per Dominum nostrum Iesum Christum Filium tuum conclusion through per omnia saecula saeculorum and following Amen. It supports the supplied wording at w026–w046 and the separate w047 Amen after the proper page’s Per Dominum cue. Reader accents, ligatures, colon after tuum and uppercase Qui are declared editorial accidentals, not exact typography from this rubric. This use does not assign the response performer or prayer voice.",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "decision_reason": "The identified common text directly supplies the bounded expansion; proper-page cues and reader typography are distinguished. This use does not certify the complete prayer or its translation."
+    },
+    {
       "id": "use.proprium.dominica-iv-post-pascha-secreta.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -32417,7 +33280,7 @@
         "scan": "leaf n420 / PDF p. 421",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n420/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited page prints this prayer’s proper body and the abbreviated conclusion “Per Dóminum”. The full common conclusion and Amen are supplied separately in the reader, with its own accentuation, capitalization and punctuation.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "63d696bcd7bfae640ff9798c69eeb81836b3f448cbee2eb64316dce7d1956356"
@@ -35011,6 +35874,28 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence checksum identifies the complete web/www/missa/Latin/Tempora/Pasc5-0.txt file, not the whole composite reading. The complete derivation remains separately bound by its explicit source inventory."
     },
     {
+      "id": "use.proprium.dominica-v-post-pascha-collecta.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-v-post-pascha-collecta",
+        "word": "w022"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a: Father-directed common conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "Rubricae generales 115 a prints the full twenty-one-word Per Dominum nostrum Iesum Christum Filium tuum conclusion through per omnia saecula saeculorum and following Amen. It supports the supplied wording at w022–w042 and the separate w043 Amen after the proper page’s Per Dominum cue. Reader accents, ligatures, colon after tuum and uppercase Qui are declared editorial accidentals, not exact typography from this rubric. This use does not assign the response performer or prayer voice.",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "decision_reason": "The identified common text directly supplies the bounded expansion; proper-page cues and reader typography are distinguished. This use does not certify the complete prayer or its translation."
+    },
+    {
       "id": "use.proprium.dominica-v-post-pascha-collecta.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -35024,7 +35909,7 @@
         "scan": "leaf n420 / PDF p. 421",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n420/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited page prints this prayer’s proper body and the abbreviated conclusion “Per Dóminum”. The full common conclusion and Amen are supplied separately in the reader, with its own accentuation, capitalization and punctuation.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "63d696bcd7bfae640ff9798c69eeb81836b3f448cbee2eb64316dce7d1956356"
@@ -35179,6 +36064,49 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence checksum identifies the complete web/www/missa/Latin/Tempora/Pasc5-0.txt file, not the whole composite reading. The complete derivation remains separately bound by its explicit source inventory."
     },
     {
+      "id": "use.proprium.dominica-v-post-pascha-introitus.expanded-doxology.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-v-post-pascha-introitus",
+        "word": "w030"
+      },
+      "locator": {
+        "printed": "p. 225",
+        "scan": "leaf n304 / PDF p. 305",
+        "section": "Ordo Missae, Lavabo: Gloria Patri",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n304/mode/1up"
+      },
+      "claim": "The common Ordo Missae prints the complete twenty-word Gloria Patri through Amen corresponding to w030–w049. The proper Introit page prints only its cue. This supports the common Latin wording, not the proper antiphon, Introit performer, or exact reader typography; the printed colon after semper differs from the reader comma.",
+      "evidence_sha256": "c8e1c105fbccab5b133d072bcdc255ff482824182be5e53597e5d2bfbb94e3ee",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "decision_reason": "The identified common text directly supplies the bounded expansion; proper-page cues and reader typography are distinguished. This use does not certify the complete prayer or its translation."
+    },
+    {
+      "id": "use.proprium.dominica-v-post-pascha-introitus.introit-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-v-post-pascha-introitus"
+      },
+      "locator": {
+        "printed": "pp. xxix, lii",
+        "scan": "leaves n34, n57 / PDF pp. 35, 58",
+        "section": "Rubricae generales 427; Ritus servandus IV 2",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "Rubricae generales 427 prescribes the Introit antiphon, psalm verse, Gloria Patri and repeated antiphon. Ritus servandus IV 2 also describes the Introit, Gloria Patri and repeated antiphon before Kyrie. These same-edition rubrics support the reader expansion and reprise at w030–w066, not their exact accidentals, a continuous full transcription of the proper page, or a new claim about all performers. The proper antiphon itself remains supported by the proper-page use.",
+      "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "decision_reason": "The identified same-edition rubrics support the stated Introit sequence and repetition. The common wording and proper antiphon have separate textual sources."
+    },
+    {
       "id": "use.proprium.dominica-v-post-pascha-introitus.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -35192,7 +36120,7 @@
         "scan": "leaf n420 / PDF p. 421",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n420/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited page prints the proper antiphon and psalm verse of this Introit, with cues for the common doxology and antiphon reprise. It does not print those expansions in full. The reader supplies them with its own accentuation, capitalization and punctuation.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "63d696bcd7bfae640ff9798c69eeb81836b3f448cbee2eb64316dce7d1956356"
@@ -35253,6 +36181,28 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence checksum identifies the complete web/www/missa/Latin/Tempora/Pasc5-0.txt file, not the whole composite reading. The complete derivation remains separately bound by its explicit source inventory."
     },
     {
+      "id": "use.proprium.dominica-v-post-pascha-postcommunio.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-v-post-pascha-postcommunio",
+        "word": "w016"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a: Father-directed common conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "Rubricae generales 115 a prints the full twenty-one-word Per Dominum nostrum Iesum Christum Filium tuum conclusion through per omnia saecula saeculorum and following Amen. It supports the supplied wording at w016–w036 and the separate w037 Amen after the proper page’s Per Dominum cue. Reader accents, ligatures, colon after tuum and uppercase Qui are declared editorial accidentals, not exact typography from this rubric. This use does not assign the response performer or prayer voice.",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "decision_reason": "The identified common text directly supplies the bounded expansion; proper-page cues and reader typography are distinguished. This use does not certify the complete prayer or its translation."
+    },
+    {
       "id": "use.proprium.dominica-v-post-pascha-postcommunio.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -35266,7 +36216,7 @@
         "scan": "leaf n421 / PDF p. 422",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n421/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited page prints this prayer’s proper body and the abbreviated conclusion “Per Dóminum”. The full common conclusion and Amen are supplied separately in the reader, with its own accentuation, capitalization and punctuation.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "7cadffed0a87541f0498fb1ccfa7a696c94746dd7c69e0a1b6ec5027ba391c75"
@@ -35310,6 +36260,28 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence checksum identifies the complete web/www/missa/Latin/Tempora/Pasc0-2.txt file, not the whole composite reading. The complete derivation remains separately bound by its explicit source inventory."
     },
     {
+      "id": "use.proprium.dominica-v-post-pascha-secreta.expanded-conclusion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-v-post-pascha-secreta",
+        "word": "w018"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a: Father-directed common conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "Rubricae generales 115 a prints the full twenty-one-word Per Dominum nostrum Iesum Christum Filium tuum conclusion through per omnia saecula saeculorum and following Amen. It supports the supplied wording at w018–w038 and the separate w039 Amen after the proper page’s Per Dominum cue. Reader accents, ligatures, colon after tuum and uppercase Qui are declared editorial accidentals, not exact typography from this rubric. This use does not assign the response performer or prayer voice.",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "decision_reason": "The identified common text directly supplies the bounded expansion; proper-page cues and reader typography are distinguished. This use does not certify the complete prayer or its translation."
+    },
+    {
       "id": "use.proprium.dominica-v-post-pascha-secreta.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -35323,7 +36295,7 @@
         "scan": "leaf n421 / PDF p. 422",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n421/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited page prints this prayer’s proper body and the abbreviated conclusion “Per Dóminum”. The full common conclusion and Amen are supplied separately in the reader, with its own accentuation, capitalization and punctuation.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "7cadffed0a87541f0498fb1ccfa7a696c94746dd7c69e0a1b6ec5027ba391c75"
@@ -43309,6 +44281,28 @@
       "evidence_sha256": "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132"
     },
     {
+      "id": "use.proprium.dominica-xxii-post-pentecosten-postcommunio.expanded-response.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-xxii-post-pentecosten-postcommunio",
+        "word": "w037"
+      },
+      "locator": {
+        "printed": "p. xviii",
+        "scan": "leaf n23 / PDF p. 24",
+        "section": "Rubricae generales 115 d, terminal Amen",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n23/mode/1up"
+      },
+      "claim": "The same-edition Son-directed common conclusion in Rubricae generales 115 d ends with the printed word Amen. It supplies the Latin wording of the reader’s separate w037 response after the expanded Qui vivis conclusion. This use does not establish the response performer, voice or date-specific liturgical applicability; those are distinct ritual claims.",
+      "evidence_sha256": "db99d725287dbdb233ff9c22c94cd027ec6b5105f2f64817ec828778805ff132",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "decision_reason": "The identified same-edition common locus directly supplies the bounded Latin wording, not a response performer or a complete prayer approval."
+    },
+    {
       "id": "use.proprium.dominica-xxii-post-pentecosten-postcommunio.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -43322,7 +44316,7 @@
         "scan": "leaf n492 / PDF p. 493",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n492/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited page prints this Postcommunion’s proper body and the abbreviated conclusion “Qui vivis”. The full conclusion follows Rubricae generales 115 d, with reader-supplied accentuation. Amen is shown separately as a response. The proper page does not print the full conclusion or that response.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
       "evidence_sha256": "94fdf9be563e6fcf9a4297892555c23d92e84d2b022e07e1b72b65f55cb9f7ed"
@@ -44636,7 +45630,7 @@
         "scan": "leaf n116 / PDF p. 117",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n116/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "0e8a7d95c159a1fee761288eef0806efea6e37a8ce887bbf4a59f9c057118ec3"
@@ -45644,7 +46638,7 @@
         "scan": "leaf n236 / PDF p. 237",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n236/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with a cue for the repeated antiphon. The reader supplies the repetition in full, without a Gloria Patri. The repetition is not printed in full at this locus.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "5049e6b8039d495346800c9bb2575f4b8697bcd67b0193767857a04b0c06e6e8"
@@ -46169,6 +47163,49 @@
       "decision_reason": "Corrects the use recorded 2026-08-31: the witness now transcribes the pinned reading exactly, names every resolved section and reference, and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
+      "id": "use.proprium.immaculata-conceptio-introitus.expanded-doxology.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.immaculata-conceptio-introitus",
+        "word": "w039"
+      },
+      "locator": {
+        "printed": "p. 219",
+        "scan": "leaf n298 / PDF p. 299",
+        "section": "Ordo Missae, Psalmus 42, Gloria Patri and Sicut erat",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
+      },
+      "claim": "The same-edition Ordo Missae prints the complete twenty-word Gloria Patri through Amen corresponding to w039–w058. The proper Introit page prints only the Gloria Patri cue. This use supports the common Latin wording, not an Introit performer or exact reader typography; the Ordo colon after semper is a reader comma here.",
+      "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "decision_reason": "The identified same-edition common locus directly supplies the bounded Latin wording, not a response performer or a complete prayer approval."
+    },
+    {
+      "id": "use.proprium.immaculata-conceptio-introitus.introit-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.immaculata-conceptio-introitus"
+      },
+      "locator": {
+        "printed": "pp. xxix, lii",
+        "scan": "leaves n34, n57 / PDF pp. 35, 58",
+        "section": "Rubricae generales 427; Ritus servandus IV 2",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "Rubricae generales 427 prescribes the Introit antiphon, psalm verse, Gloria Patri and repeated antiphon. Ritus servandus IV 2 also describes the Introit, Gloria Patri and repetition before Kyrie. These same-edition rubrics support the declared common expansion and reprise at w039–w084, not exact reader accidentals or a further independent print witness. The complete proper antiphon and verse remain supported by their own proper-page use.",
+      "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "decision_reason": "The same-edition rubrics directly support the stated Introit sequence and repetition; proper and common wording have separate textual uses."
+    },
+    {
       "id": "use.proprium.immaculata-conceptio-introitus.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -46182,7 +47219,7 @@
         "scan": "leaf n516 / PDF p. 517",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n516/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
       "evidence_sha256": "19bccc5495d8b5ba817d19df75fe725e54076dabfd843022f2f0ed5c4a64ae09"
@@ -48548,7 +49585,7 @@
         "scan": "leaf n98 / PDF p. 99",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n98/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "d18b0740368026d7ca0c031b3a9b3c4572bd849e2de7e7bb08a97f7530add1c6"
@@ -50236,7 +51273,7 @@
         "scan": "leaf n96 / PDF p. 97",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n96/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "59652fd150d131096125cc0df8cec59cc01040c2339db640a8ed21e119362892"
@@ -53403,7 +54440,7 @@
         "scan": "leaf n118 / PDF p. 119",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n118/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "5939773f2db82551cc7a514aca2a1c8cac2f4b7f05e15e0f7476cb40ba329c68"
@@ -55429,6 +56466,49 @@
       "decision_reason": "Corrects the use recorded 2026-08-31: the witness now transcribes the pinned reading exactly, names every resolved section and reference, and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
+      "id": "use.proprium.sancti-iacobi-apostoli-introitus.expanded-doxology.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sancti-iacobi-apostoli-introitus",
+        "word": "w027"
+      },
+      "locator": {
+        "printed": "p. 219",
+        "scan": "leaf n298 / PDF p. 299",
+        "section": "Ordo Missae, Psalmus 42, Gloria Patri and Sicut erat",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
+      },
+      "claim": "The same-edition Ordo Missae prints the complete twenty-word Gloria Patri through Amen corresponding to w027–w046. The proper Introit page prints only the Gloria Patri cue. This use supports the common Latin wording, not an Introit performer or exact reader typography; the Ordo colon after semper is a reader comma here.",
+      "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "decision_reason": "The identified same-edition common locus directly supplies the bounded Latin wording, not a response performer or a complete prayer approval."
+    },
+    {
+      "id": "use.proprium.sancti-iacobi-apostoli-introitus.introit-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-iacobi-apostoli-introitus"
+      },
+      "locator": {
+        "printed": "pp. xxix, lii",
+        "scan": "leaves n34, n57 / PDF pp. 35, 58",
+        "section": "Rubricae generales 427; Ritus servandus IV 2",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "Rubricae generales 427 prescribes the Introit antiphon, psalm verse, Gloria Patri and repeated antiphon. Ritus servandus IV 2 also describes the Introit, Gloria Patri and repetition before Kyrie. These same-edition rubrics support the declared common expansion and reprise at w027–w059, not exact reader accidentals or a further independent print witness. The complete proper antiphon and verse remain supported by their own proper-page use.",
+      "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "decision_reason": "The same-edition rubrics directly support the stated Introit sequence and repetition; proper and common wording have separate textual uses."
+    },
+    {
       "id": "use.proprium.sancti-iacobi-apostoli-introitus.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -55442,7 +56522,7 @@
         "scan": "leaf n692 / PDF p. 693",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n692/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
       "evidence_sha256": "211e1568ea7c7fb87d57a71f7e491429f6ddcf64e2d928bf31af68483c63475e"
@@ -56535,7 +57615,7 @@
         "scan": "leaf n104 / PDF p. 105",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n104/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "c456ed198e1c2f52ddc22897072318ed6e6b2197150682bcb1472f037fd981bb",
@@ -58594,6 +59674,66 @@
       "decision_reason": "Locator corrected against the page image: the text is printed on the leaves now cited, from its opening to its end."
     },
     {
+      "id": "use.proprium.sancti-marci-evangelistae-collecta.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-marci-evangelistae-collecta"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up",
+        "section": "Postcommunion, top-right: complete first17 formula words through Deus."
+      },
+      "claim": "The Postcommunion on printed p.123 prints Per Dominum nostrum ... Deus. in full. Only the middle wording nostrum through Deus (w024–w038) is supplied from this locus; the proper cue supplies Per Dominum. Current Deus, instead of the printed Deus. is declared editorial assembly.",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "evidence_sha256": "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774"
+    },
+    {
+      "id": "use.proprium.sancti-marci-evangelistae-collecta.conclusion-rule.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-marci-evangelistae-collecta"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up",
+        "section": "Rubricae generales115a, Father-directed conclusion"
+      },
+      "claim": "RG115a prescribes the full Father-directed conclusion, including Amen. It supports the common wording supplied after this proper page’s abbreviated cue; its own punctuation/case/accent treatment is not the current continuous reader typography.",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"
+    },
+    {
+      "id": "use.proprium.sancti-marci-evangelistae-collecta.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-marci-evangelistae-collecta"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up",
+        "section": "First chant line: terminal four words and response Amen; later dialogue excluded"
+      },
+      "claim": "The first chant line on printed p.226 prints Per omnia saecula saeculorum followed by the marked response Amen. This supports the terminal wording w039–w043 after joining chant syllables; current lowercase per is an editorial join. No Mark-specific response actor or first/last commemoration position is inferred.",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58"
+    },
+    {
       "id": "use.proprium.sancti-marci-evangelistae-collecta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -58625,7 +59765,7 @@
         "scan": "leaf n592 / PDF p. 593",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n592/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited Benziger proper page prints the 21-word prayer body (w001–w021) and the abbreviated Per Dominum cue (w022–w023). The supplied middle and terminal conclusion wording and Amen are not printed in full on this proper page and have separate same-edition dependencies.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
       "evidence_sha256": "7cb580b89deb468293fafa854e1ea935b772ab6d0f3dc62865b291692f22c837"
@@ -58761,6 +59901,66 @@
       "evidence_sha256": "80d5a1a2f913643ef1d90a85214395807453711523880162bdfa47fe37935d8a"
     },
     {
+      "id": "use.proprium.sancti-marci-evangelistae-postcommunio.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-marci-evangelistae-postcommunio"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up",
+        "section": "Postcommunion, top-right: complete first17 formula words through Deus."
+      },
+      "claim": "The Postcommunion on printed p.123 prints Per Dominum nostrum ... Deus. in full. Only the middle wording nostrum through Deus (w023–w037) is supplied from this locus; the proper cue supplies Per Dominum. Current Deus, instead of the printed Deus. is declared editorial assembly.",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "evidence_sha256": "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774"
+    },
+    {
+      "id": "use.proprium.sancti-marci-evangelistae-postcommunio.conclusion-rule.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-marci-evangelistae-postcommunio"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up",
+        "section": "Rubricae generales115a, Father-directed conclusion"
+      },
+      "claim": "RG115a prescribes the full Father-directed conclusion, including Amen. It supports the common wording supplied after this proper page’s abbreviated cue; its own punctuation/case/accent treatment is not the current continuous reader typography.",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"
+    },
+    {
+      "id": "use.proprium.sancti-marci-evangelistae-postcommunio.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-marci-evangelistae-postcommunio"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up",
+        "section": "First chant line: terminal four words and response Amen; later dialogue excluded"
+      },
+      "claim": "The first chant line on printed p.226 prints Per omnia saecula saeculorum followed by the marked response Amen. This supports the terminal wording w038–w042 after joining chant syllables; current lowercase per is an editorial join. No Mark-specific response actor or first/last commemoration position is inferred.",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58"
+    },
+    {
       "id": "use.proprium.sancti-marci-evangelistae-postcommunio.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -58792,7 +59992,7 @@
         "scan": "leaf n593 / PDF p. 594",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n593/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited Benziger proper page prints the 20-word prayer body (w001–w020) and the abbreviated Per Dominum cue (w021–w022). The supplied middle and terminal conclusion wording and Amen are not printed in full on this proper page and have separate same-edition dependencies.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
       "evidence_sha256": "80d5a1a2f913643ef1d90a85214395807453711523880162bdfa47fe37935d8a"
@@ -58816,6 +60016,66 @@
       "evidence_sha256": "6c08d654bc198380aad5673bc6f06fdb44076acdfff67087e74aaf4943d23946",
       "decision": "RETAIN_WITH_CORRECTION",
       "decision_reason": "Locator corrected on 2026-10-07: the Ordo rubric for the audible ending of the secrets is on p. 225, leaf n304; p. 226 prints the chant formula and response. The ritual boundary and word IDs are unchanged."
+    },
+    {
+      "id": "use.proprium.sancti-marci-evangelistae-secreta.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-marci-evangelistae-secreta"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up",
+        "section": "Postcommunion, top-right: complete first17 formula words through Deus."
+      },
+      "claim": "The Postcommunion on printed p.123 prints Per Dominum nostrum ... Deus. in full. Only the middle wording nostrum through Deus (w031–w045) is supplied from this locus; the proper cue supplies Per Dominum. Current Deus, instead of the printed Deus. is declared editorial assembly.",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "evidence_sha256": "38c3d082c3cf4e7f82f87cf9f87595e62e3765cb625c1305005f1435cc985774"
+    },
+    {
+      "id": "use.proprium.sancti-marci-evangelistae-secreta.conclusion-rule.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-marci-evangelistae-secreta"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up",
+        "section": "Rubricae generales115a, Father-directed conclusion"
+      },
+      "claim": "RG115a prescribes the full Father-directed conclusion, including Amen. It supports the common wording supplied after this proper page’s abbreviated cue; its own punctuation/case/accent treatment is not the current continuous reader typography.",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "evidence_sha256": "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c"
+    },
+    {
+      "id": "use.proprium.sancti-marci-evangelistae-secreta.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.sancti-marci-evangelistae-secreta"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up",
+        "section": "First chant line: terminal four words and response Amen; later dialogue excluded"
+      },
+      "claim": "The first chant line on printed p.226 prints Per omnia saecula saeculorum followed by the marked response Amen. This supports the terminal wording w046–w050 after joining chant syllables; current lowercase per is an editorial join. No Mark-specific response actor or first/last commemoration position is inferred.",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "evidence_sha256": "c8a123467dd47ace390100a021fdcdd61752a5c42635583b92d72cd636027f58"
     },
     {
       "id": "use.proprium.sancti-marci-evangelistae-secreta.do44667ff",
@@ -58849,7 +60109,7 @@
         "scan": "leaf n593 / PDF p. 594",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n593/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited Benziger proper page prints the 28-word prayer body (w001–w028) and the abbreviated Per Dominum cue (w029–w030). The supplied middle and terminal conclusion wording and Amen are not printed in full on this proper page and have separate same-edition dependencies.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
       "evidence_sha256": "80d5a1a2f913643ef1d90a85214395807453711523880162bdfa47fe37935d8a"
@@ -60418,7 +61678,7 @@
         "scan": "leaf n102 / PDF p. 103",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n102/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
       "evidence_sha256": "9dbd3f2de495b7f73030761d64114196caaff0d84315731fe32a113136216fee"
@@ -63038,7 +64298,7 @@
         "scan": "leaf n106 / PDF p. 107",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n106/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
       "evidence_sha256": "a074d446cc3ce11efbab41c36b96ac9ce396e668e1989b9557ac0e647098cbaa"
@@ -65484,7 +66744,7 @@
         "scan": "leaf n94 / PDF p. 95",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n94/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "9c20dc2cc332194d2564eaaf9f736dd2827c95053058917e088ff5145e448ef1"
@@ -68187,6 +69447,224 @@
       "independence_basis": "Distinct Benziger and Vatican settings, separately visually transcribed; independence of the underlying typical text and transmission is not claimed.",
       "source_dependencies": {
         "uses": [],
+        "raw_binding": null
+      },
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "witness.ordinarium.iube-domine-benedicere.do44667ff",
+      "text": "ordinarium.iube-domine-benedicere",
+      "use": "use.ordinarium.iube-domine-benedicere.do44667ff-body",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "do",
+      "transcription_sha256": "552eb5dd9df48e8555d0b51f848d75fd341a67a23c93074aa765414479f60d05",
+      "orthography_profile": "exact-source; lowercase v. marker excluded",
+      "independence_basis": "One pinned derived digital comparison in the same Roman liturgical tradition. This record does not claim another independent print setting or a separate manuscript family.",
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "iube-domine-benedicere-priest"
+      },
+      "review": {
+        "status": "reviewed",
+        "sha256": "ea2795dd2bbda8caba5be2ef5ba36912ab20addb14ee93f065c283113ff9a41e"
+      }
+    },
+    {
+      "id": "witness.ordinarium.iube-domine-benedicere.mr1962",
+      "text": "ordinarium.iube-domine-benedicere",
+      "use": "use.ordinarium.iube-domine-benedicere.mr1962-body",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "mr",
+      "transcription_sha256": "9f08f61a13a01655e7a9fd3c499ea843a73da2710cc78a84660cce0636b89b20",
+      "orthography_profile": "exact-print; typographic line endings joined",
+      "independence_basis": "Direct transcription of the approved Benziger 1962 printing selected here. This record does not claim a separate manuscript family from the derived digital comparison.",
+      "source_dependencies": {
+        "uses": [
+          "use.ordinarium.iube-domine-benedicere.mr1962-ritual-boundary",
+          "use.ordinarium.iube-domine-benedicere.mr1962-ritual-voice"
+        ],
+        "raw_binding": null
+      },
+      "review": {
+        "status": "reviewed",
+        "sha256": "1da32642157dd96caa14d87f131bd44d6d6d46a55e4e10bcf1650f44cb6d613e"
+      }
+    },
+    {
+      "id": "witness.ordinarium.iube-domne-benedicere-in-passione.do44667ff",
+      "text": "ordinarium.iube-domne-benedicere-in-passione",
+      "use": "use.ordinarium.iube-domne-benedicere-in-passione.do44667ff-body",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "do",
+      "transcription_sha256": "47a19557bcc978a42a20ff2f77de09797c4a050eff488860c7070c96ba063dff",
+      "orthography_profile": "exact pinned digital lexical spelling and punctuation; literal + retained as non-spoken source framing",
+      "independence_basis": "Direct excerpt of the already registered pinned derived digital archive, not a second independent print tradition or a repair of Benziger's clipped line.",
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-ordinarium-iube-domne-benedicere-in-passione"
+      },
+      "review": {
+        "status": "reviewed",
+        "sha256": "f991d70b0e005791afaa7e62c31f689c5e5d1f916cbfd28c0a01ec0c8f3730aa"
+      }
+    },
+    {
+      "id": "witness.ordinarium.iube-domne-benedicere-in-passione.mr1962-partial",
+      "text": "ordinarium.iube-domne-benedicere-in-passione",
+      "use": "use.ordinarium.iube-domne-benedicere-in-passione.mr1962-partial-body",
+      "role": "approved_corroboration",
+      "coverage": {
+        "kind": "words",
+        "words": [
+          "w004",
+          "w005",
+          "w006",
+          "w007",
+          "w008",
+          "w009",
+          "w010",
+          "w011",
+          "w012",
+          "w013",
+          "w014",
+          "w015",
+          "w016",
+          "w017",
+          "w018"
+        ]
+      },
+      "transcription": "mr-partial",
+      "transcription_sha256": "2d3f28a117fabafb000c39be33d07f5a3cec0fa25c9824caff70986a34bfc800",
+      "orthography_profile": "exact-print; typographic line endings joined",
+      "independence_basis": "Direct transcription of the separately set Benziger print at the recorded page, not derived from the other transcript. No independent genealogical text tradition is established.",
+      "source_dependencies": {
+        "uses": [
+          "use.ordinarium.iube-domne-benedicere-in-passione.mr1962-ritual-boundary"
+        ],
+        "raw_binding": null
+      },
+      "review": {
+        "status": "reviewed",
+        "sha256": "6b1fbd91ea24effbdd775c6c56e663f8ce67df99e98f610c59e8baffef90f054"
+      }
+    },
+    {
+      "id": "witness.ordinarium.iube-domne-benedicere-in-passione.vatican1962",
+      "text": "ordinarium.iube-domne-benedicere-in-passione",
+      "use": "use.ordinarium.iube-domne-benedicere-in-passione.vatican1962-body",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "vatican1962",
+      "transcription_sha256": "c90295d7f5f6592142987ce1b3129dc3313f67d9a0592481e06eb2c02a1ff211",
+      "orthography_profile": "exact-print; typographic line endings joined",
+      "independence_basis": "Direct transcription of the separately set Vatican manifestation at the recorded page, not derived from Benziger. Underlying 1962 recension is distinguished from unproved reproduction date and rights. No independent genealogical text tradition is established.",
+      "source_dependencies": {
+        "uses": [
+          "use.ordinarium.iube-domne-benedicere-in-passione.vatican1962-ritual-boundary"
+        ],
+        "raw_binding": null
+      },
+      "review": {
+        "status": "reviewed",
+        "sha256": "39d8899fd0a24b6ca89a28a92b77c00db863b3353eec5dc2a44d596382da4a27"
+      }
+    },
+    {
+      "id": "witness.ordinarium.iube-domne-benedicere.mr1962",
+      "text": "ordinarium.iube-domne-benedicere",
+      "use": "use.ordinarium.iube-domne-benedicere.mr1962-body",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "mr",
+      "transcription_sha256": "cba133fc578718af4bf65aa9e777b3f2198c75767e6af07e59f1beb25c6a9e32",
+      "orthography_profile": "exact-print; typographic line endings joined",
+      "independence_basis": "Direct transcription of the separately set Benziger print at the recorded page, not derived from the other transcript. No independent genealogical text tradition is established.",
+      "source_dependencies": {
+        "uses": [
+          "use.ordinarium.iube-domne-benedicere.mr1962-requiem-boundary",
+          "use.ordinarium.iube-domne-benedicere.mr1962-ritual-boundary"
+        ],
+        "raw_binding": null
+      },
+      "review": {
+        "status": "reviewed",
+        "sha256": "f546a57a1ac161cc7445a4782379938eba8b1a003a95868a2c6e8256f56f56d1"
+      }
+    },
+    {
+      "id": "witness.ordinarium.iube-domne-benedicere.vatican1962",
+      "text": "ordinarium.iube-domne-benedicere",
+      "use": "use.ordinarium.iube-domne-benedicere.vatican1962-body",
+      "role": "approved_corroboration",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "vatican1962",
+      "transcription_sha256": "d5c30c4f315c99d8e58ef976ee04728b9d8b3534b778ece7b4f22ea707a015a0",
+      "orthography_profile": "exact-print; typographic line endings joined",
+      "independence_basis": "Direct transcription of the separately set Vatican manifestation at the recorded page, not derived from Benziger. Underlying 1962 recension is distinguished from unproved reproduction date and rights. No independent genealogical text tradition is established.",
+      "source_dependencies": {
+        "uses": [
+          "use.ordinarium.iube-domne-benedicere.vatican1962-ritual-boundary"
+        ],
+        "raw_binding": null
+      },
+      "review": {
+        "status": "reviewed",
+        "sha256": "a314dd18b7a958e140bf0d395fae77190fff159569c6732394425362f10b01a3"
+      }
+    },
+    {
+      "id": "witness.ordinarium.munda-cor-meum.do44667ff",
+      "text": "ordinarium.munda-cor-meum",
+      "use": "use.ordinarium.munda-cor-meum.do44667ff-body",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "do",
+      "transcription_sha256": "df4d2936df7e72c3c7a8d11262c676afc3f3e681ee14e093ea12acf4abb9d2b7",
+      "orthography_profile": "exact-source; speaker marker excluded",
+      "independence_basis": "One pinned digital source in the same Roman liturgical tradition. Its three contextual occurrences are not three witnesses, and direct derivation from this particular Benziger copy has not been established.",
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "munda-cor-meum-priest"
+      },
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "witness.ordinarium.munda-cor-meum.mr1962",
+      "text": "ordinarium.munda-cor-meum",
+      "use": "use.ordinarium.munda-cor-meum.mr1962-body",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "mr",
+      "transcription_sha256": "8fa919b8b49348043f05270fbe109182393d57626a9933626633b245ce6f8203",
+      "orthography_profile": "exact-print; typographic line endings joined",
+      "independence_basis": "Direct transcription of one approved 1962 printing. This record does not claim a separate manuscript family from the derived digital comparison.",
+      "source_dependencies": {
+        "uses": [
+          "use.ordinarium.munda-cor-meum.mr1962-ritual-boundary"
+        ],
         "raw_binding": null
       },
       "review": {
@@ -77667,12 +79145,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "dfde641200367e1e0ad60763b9aaddcd8179f8982fc4108bdaa0b798a8e048b4",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "9224773ece7420a62721379f36d4f47d4ade0ae178c867d3b70780a3ada170ea",
+      "orthography_profile": "literal-printed-proper-common-composite",
+      "independence_basis": "Literal same-edition composite: proper body and abbreviation controls from the identified proper leaf; full common wording from the explicitly inventoried supplement. This is independent of the pinned digital transcription, not independent print editions. Existing review remains pending.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-iii-post-pascha-collecta.conclusion-expansion.mr1962",
+          "use.proprium.dominica-iii-post-pascha-collecta.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -77811,12 +79296,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "b2f44ccd819e3c3e66eef06293dbd716e1af2cde3772b2766832002efbd4e226",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "47e6af8dfea662b6e05cf4b1a0fbd11d08e43a0055896f2ac50653febe61b1e1",
+      "orthography_profile": "literal-printed-proper-common-composite",
+      "independence_basis": "Literal same-edition composite: proper body and abbreviation controls from the identified proper leaf; full common wording from the explicitly inventoried supplement; repeated antiphon from the primary proper leaf. This is independent of the pinned digital transcription, not independent print editions. Existing review remains pending.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-iii-post-pascha-introitus.gloria-expansion.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -77883,12 +79374,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "98a9fef7b492edc36c7e85b66993d417ef70225b62d36db93fdc5ab95a41d5ad",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "e755aa7ca52e6f0d265cfd24213182ce5935937239541b9d59f512969aff3037",
+      "orthography_profile": "literal-printed-proper-common-composite",
+      "independence_basis": "Literal same-edition composite: proper body and abbreviation controls from the identified proper leaf; full common wording from the explicitly inventoried supplement. This is independent of the pinned digital transcription, not independent print editions. Existing review remains pending.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-iii-post-pascha-postcommunio.conclusion-expansion.mr1962",
+          "use.proprium.dominica-iii-post-pascha-postcommunio.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -77919,12 +79417,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "e9200811c8c57dfd22b4e08acf850ac8db262acc71285ead03e3aed8c902c106",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "4059eb909ea55d9f09198af567311783ccdc57985057f071f115fb11398e5c37",
+      "orthography_profile": "literal-printed-proper-common-composite",
+      "independence_basis": "Literal same-edition composite: proper body and abbreviation controls from the identified proper leaf; full common wording from the explicitly inventoried supplement. This is independent of the pinned digital transcription, not independent print editions. Existing review remains pending.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-iii-post-pascha-secreta.conclusion-expansion.mr1962",
+          "use.proprium.dominica-iii-post-pascha-secreta.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -80579,6 +82084,10 @@
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -80609,12 +82118,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "36512677fae0e166cc9f4544ccec92ed29050f4a526c6cb16c59426da87311af",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "79f47345a59665d8268b3a239fe58a666ed830b7fcf77465c9a93f86b8bbe8ae",
+      "orthography_profile": "Proper-body page-image accidentals with a declared reader-expanded common conclusion and Amen; the expansion is not an exact single-page transcription.",
+      "independence_basis": "The proper prayer is directly collated against the identified page image of the Benziger Brothers 1962 editio iuxta typicam. The complete MR transcript expands the Per Dominum cue with the 21-word common conclusion and following Amen at w032–w053. Rubricae generales 115a, printed p. xvii, supports the common wording; the expanded reading retains the reader accents, ligatures, colon after tuum and uppercase Qui declared in the transcript, rather than claiming those accidentals from the proper-page cue. This composite reading is not a further independent witness.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-iv-post-pascha-collecta.expanded-conclusion.mr1962",
+          "use.proprium.dominica-iv-post-pascha-collecta.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -80651,6 +82167,10 @@
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -80687,6 +82207,10 @@
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -80723,6 +82247,10 @@
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -80753,12 +82281,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "cfcb9d6e6a14a09132da9e7adce84f1e639af53c1108fd47cdf0ce83512a4e8e",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "0093620ef7ee33366a05c7387c717922e4aa0af7206538b78dd42569f5043649",
+      "orthography_profile": "Proper-body page-image accidentals with declared reader-expanded Gloria Patri and antiphon reprise; not a single-page diplomatic transcript.",
+      "independence_basis": "The proper body is directly collated against the identified page image of the Benziger Brothers 1962 editio iuxta typicam. The complete MR transcript is composite: the Gloria Patri at w028–w047 expands the proper-page cue using common Ordo Missae wording, and w048–w066 repeats the antiphon. The common doxology retains the reader punctuation declared in the transcript. This is not a continuous transcription of the proper page or a further independent witness.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-iv-post-pascha-introitus.expanded-doxology.mr1962",
+          "use.proprium.dominica-iv-post-pascha-introitus.introit-expansion.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -80795,6 +82330,10 @@
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -80825,12 +82364,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "e97ae6e9ab7321c33418fb361838ed9b5e1902d56416de5ccf11275355a984ec",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "e5be31455c48908601f71a61a682e29353cafb995d4ef0708ee680cb7d5bf97d",
+      "orthography_profile": "Proper-body page-image accidentals with a declared reader-expanded common conclusion and Amen; the expansion is not an exact single-page transcription.",
+      "independence_basis": "The proper prayer is directly collated against the identified page image of the Benziger Brothers 1962 editio iuxta typicam. The complete MR transcript expands the Per Dominum cue with the 21-word common conclusion and following Amen at w021–w042. Rubricae generales 115a, printed p. xvii, supports the common wording; the expanded reading retains the reader accents, ligatures, colon after tuum and uppercase Qui declared in the transcript, rather than claiming those accidentals from the proper-page cue. This composite reading is not a further independent witness.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-iv-post-pascha-postcommunio.expanded-conclusion.mr1962",
+          "use.proprium.dominica-iv-post-pascha-postcommunio.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -80861,12 +82407,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "9fe6b62c56484665b81554dbaff3ec05b1a7aa25b23d18a6dc84574b4410caa5",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "b49c4d99a4086d08dfbd5ef314f5062772d3775effbc87a4b567d613b9c49998",
+      "orthography_profile": "Proper-body page-image accidentals with a declared reader-expanded common conclusion and Amen; the expansion is not an exact single-page transcription.",
+      "independence_basis": "The proper prayer is directly collated against the identified page image of the Benziger Brothers 1962 editio iuxta typicam. The complete MR transcript expands the Per Dominum cue with the 21-word common conclusion and following Amen at w026–w047. Rubricae generales 115a, printed p. xvii, supports the common wording; the expanded reading retains the reader accents, ligatures, colon after tuum and uppercase Qui declared in the transcript, rather than claiming those accidentals from the proper-page cue. This composite reading is not a further independent witness.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-iv-post-pascha-secreta.expanded-conclusion.mr1962",
+          "use.proprium.dominica-iv-post-pascha-secreta.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -82752,6 +84305,10 @@
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -82782,12 +84339,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "fa4cb750df02a650b40da84c70a033e2d9ca18bb638fe96a0561b0cb0a2c1edd",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "8380f88d98349bde55fd9fbf31271230ffaec878bb48a4736fc3208a19329223",
+      "orthography_profile": "Proper-body page-image accidentals with a declared reader-expanded common conclusion and Amen; the expansion is not an exact single-page transcription.",
+      "independence_basis": "The proper prayer is directly collated against the identified page image of the Benziger Brothers 1962 editio iuxta typicam. The complete MR transcript expands the Per Dominum cue with the 21-word common conclusion and following Amen at w022–w043. Rubricae generales 115a, printed p. xvii, supports the common wording; the expanded reading retains the reader accents, ligatures, colon after tuum and uppercase Qui declared in the transcript, rather than claiming those accidentals from the proper-page cue. This composite reading is not a further independent witness.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-v-post-pascha-collecta.expanded-conclusion.mr1962",
+          "use.proprium.dominica-v-post-pascha-collecta.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -82824,6 +84388,10 @@
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -82860,6 +84428,10 @@
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -82896,6 +84468,10 @@
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -82926,12 +84502,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "ee8300119ca4743cdcfed72de4f4dd58a1e8057a6bc9d0231ebce09978bc10cb",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "26e5a1fbe62bb0190a1a65128e9c460c0d6b687c249cd2ab15d2ffb2d12b23de",
+      "orthography_profile": "Proper-body page-image accidentals with declared reader-expanded Gloria Patri and antiphon reprise; not a single-page diplomatic transcript.",
+      "independence_basis": "The proper body is directly collated against the identified page image of the Benziger Brothers 1962 editio iuxta typicam. The complete MR transcript is composite: the Gloria Patri at w030–w049 expands the proper-page cue using common Ordo Missae wording, and w050–w066 repeats the antiphon. The common doxology retains the reader punctuation declared in the transcript. This is not a continuous transcription of the proper page or a further independent witness.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-v-post-pascha-introitus.expanded-doxology.mr1962",
+          "use.proprium.dominica-v-post-pascha-introitus.introit-expansion.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -82968,6 +84551,10 @@
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -82998,12 +84585,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "7cfd3fe322f1cd5fe9ba06367483366aa7a5b425052ffbbfaea994e4b1d0cd6d",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "26127eca050ba86247fafb917dc6989040eb54135f758e2493e067f0bc72318b",
+      "orthography_profile": "Proper-body page-image accidentals with a declared reader-expanded common conclusion and Amen; the expansion is not an exact single-page transcription.",
+      "independence_basis": "The proper prayer is directly collated against the identified page image of the Benziger Brothers 1962 editio iuxta typicam. The complete MR transcript expands the Per Dominum cue with the 21-word common conclusion and following Amen at w016–w037. Rubricae generales 115a, printed p. xvii, supports the common wording; the expanded reading retains the reader accents, ligatures, colon after tuum and uppercase Qui declared in the transcript, rather than claiming those accidentals from the proper-page cue. This composite reading is not a further independent witness.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-v-post-pascha-postcommunio.expanded-conclusion.mr1962",
+          "use.proprium.dominica-v-post-pascha-postcommunio.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -83034,12 +84628,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "bbbf585e00bc08d1c5a132cb8c55fd0ae8e98a7363c8991da95e7927450e5048",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "6988b1be079fe0f66e73cc2d0fe5a7c7c373bf0700d1ee100ab25be3e5513cd3",
+      "orthography_profile": "Proper-body page-image accidentals with a declared reader-expanded common conclusion and Amen; the expansion is not an exact single-page transcription.",
+      "independence_basis": "The proper prayer is directly collated against the identified page image of the Benziger Brothers 1962 editio iuxta typicam. The complete MR transcript expands the Per Dominum cue with the 21-word common conclusion and following Amen at w018–w039. Rubricae generales 115a, printed p. xvii, supports the common wording; the expanded reading retains the reader accents, ligatures, colon after tuum and uppercase Qui declared in the transcript, rather than claiming those accidentals from the proper-page cue. This composite reading is not a further independent witness.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-v-post-pascha-secreta.expanded-conclusion.mr1962",
+          "use.proprium.dominica-v-post-pascha-secreta.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -89249,6 +90850,14 @@
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-xxii-post-pentecosten-postcommunio.expanded-conclusion.mr1962",
+          "use.proprium.dominica-xxii-post-pentecosten-postcommunio.expanded-response.mr1962",
+          "use.proprium.dominica-xxii-post-pentecosten-postcommunio.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -91027,12 +92636,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "6ad28375df9caf0e705de95822328a44a16066a6e0929dcf77164231ae66457e",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image; the Gloria Patri and the repeated antiphon are declared expansions of the printed cues. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
+      "transcription_sha256": "f35f79c48d64ae2645ffbfbffbbefdd4499c7defa82e9d527211898b827db2e1",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "The proper antiphon and psalm verse are directly collated against the identified Benziger 1962 Editio iuxta typicam proper page (p. 435, leaf n516). The complete MR transcript is composite: its twenty-word Gloria Patri (w039–w058) follows common same-edition Ordo Missae wording, retaining the reader comma after semper in place of the source colon; w059–w084 repeats the proper antiphon under the same-edition rubrics. These common loci are not further independent witnesses. This describes current verification scope, not original transcript genesis or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.immaculata-conceptio-introitus.expanded-doxology.mr1962",
+          "use.proprium.immaculata-conceptio-introitus.introit-expansion.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -96594,12 +98210,20 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "89467bd5231227ab747e5751d5ea3b148b9e1662de483bcb862d539a143a288b",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "The complete transcribed body has been checked directly against the identified Benziger 1962 Editio iuxta typicam page image; the Gloria Patri and the repeated antiphon are declared expansions of the printed cues. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
+      "transcription_sha256": "f75a21655ec82088eeca06a049f0e10c7e82ee4d5b480a13664d9159dd3eb4f2",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "The proper antiphon and psalm verse are directly collated against the identified Benziger 1962 Editio iuxta typicam proper page (p. 611, leaf n692; the named St Andrew reprint at p. 426, leaf n507 also corroborates that proper body). The complete MR transcript is composite: its twenty-word Gloria Patri (w027–w046) follows common same-edition Ordo Missae wording, retaining the reader comma after semper in place of the source colon; w047–w059 repeats the proper antiphon under the same-edition rubrics. These common and reprint loci are not further independent witnesses. This describes current verification scope, not original transcript genesis or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.sancti-iacobi-apostoli-introitus.andrew-reprint.mr1962",
+          "use.proprium.sancti-iacobi-apostoli-introitus.expanded-doxology.mr1962",
+          "use.proprium.sancti-iacobi-apostoli-introitus.introit-expansion.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -98856,12 +100480,21 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "390e26cdffa086f817afbbb01a6a6a1b6650364aeda872619e4afbc4fc71d4c6",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "c6ec35d5dfc164002686fcca5ed1993c50c1e7a6153f2c7d552a0b770bdf3304",
+      "orthography_profile": "declared-composite-with-normalized-common-accidentals",
+      "independence_basis": "One controlling Benziger1962 printed edition: proper body and cue plus prescribed common conclusion assembled from the explicitly inventoried same-edition loci. Common punctuation, case and chant divisions are qualified; no independent second printed source family or original-transcription workflow is asserted.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.sancti-marci-evangelistae-collecta.conclusion-middle.mr1962",
+          "use.proprium.sancti-marci-evangelistae-collecta.conclusion-rule.mr1962",
+          "use.proprium.sancti-marci-evangelistae-collecta.conclusion-terminal.mr1962",
+          "use.proprium.sancti-marci-evangelistae-collecta.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -98996,12 +100629,21 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "81badb820d4d979ace55d28861de67fc200d38dc2a8ac77a1050835863346574",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "7b3d3dab87e0651c5378c6e25200fe7857e3f01b76e8413e63407897930d8fc4",
+      "orthography_profile": "declared-composite-with-normalized-common-accidentals",
+      "independence_basis": "One controlling Benziger1962 printed edition: proper body and cue plus prescribed common conclusion assembled from the explicitly inventoried same-edition loci. Common punctuation, case and chant divisions are qualified; no independent second printed source family or original-transcription workflow is asserted.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.sancti-marci-evangelistae-postcommunio.conclusion-middle.mr1962",
+          "use.proprium.sancti-marci-evangelistae-postcommunio.conclusion-rule.mr1962",
+          "use.proprium.sancti-marci-evangelistae-postcommunio.conclusion-terminal.mr1962",
+          "use.proprium.sancti-marci-evangelistae-postcommunio.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -99032,12 +100674,21 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "917d811a07dc1f93c4b3b85787e6e0f4208d03dc26dff73d4546060f54738d59",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "d8679b4ced8640f77172170507987f0adaaded2419dae10533ba9a9c12a98e6e",
+      "orthography_profile": "declared-composite-with-normalized-common-accidentals",
+      "independence_basis": "One controlling Benziger1962 printed edition: proper body and cue plus prescribed common conclusion assembled from the explicitly inventoried same-edition loci. Common punctuation, case and chant divisions are qualified; no independent second printed source family or original-transcription workflow is asserted.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.sancti-marci-evangelistae-secreta.conclusion-middle.mr1962",
+          "use.proprium.sancti-marci-evangelistae-secreta.conclusion-rule.mr1962",
+          "use.proprium.sancti-marci-evangelistae-secreta.conclusion-terminal.mr1962",
+          "use.proprium.sancti-marci-evangelistae-secreta.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -104717,6 +106368,95 @@
       }
     },
     {
+      "id": "collation.ordinarium.iube-domine-benedicere.mr1962-do44667ff",
+      "text": "ordinarium.iube-domine-benedicere",
+      "recension": "Roman Missal governed by the 1960 Code of Rubrics; Benziger Brothers 1962 editio iuxta typicam selected accidentals",
+      "selected_text_sha256": "856c954ad4686f424db341248a0c2bf0896c7be4d275906c021b32147b0c6ebe",
+      "apparatus_sha256": "338c7069c7a2d886522245440b548546ee1e20853397b9b8c03389ec64c63054",
+      "review": {
+        "status": "reviewed",
+        "sha256": "63ac8c4c49897c9ac10a690dc0264f7beaf42b9947b4696dd311ed7f59aff253"
+      },
+      "witnesses": [
+        "witness.ordinarium.iube-domine-benedicere.do44667ff",
+        "witness.ordinarium.iube-domine-benedicere.mr1962"
+      ],
+      "apparatus": {
+        "entries": 2,
+        "classes": [
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.ordinarium.iube-domne-benedicere-in-passione.vatican1962-mr1962-do44667ff",
+      "text": "ordinarium.iube-domne-benedicere-in-passione",
+      "recension": "Roman Missal governed by the 1960 Code of Rubrics; complete Vatican Palm body and accidentals selected, Benziger partial and pinned derived DO compared",
+      "selected_text_sha256": "79ddb04da3f72088778f505baee0585db0d29f51bedd2a9ca659b277f1ad3385",
+      "apparatus_sha256": "87b0a1c87d0b4ee9f86ddc979332415744249007870785cf557590ebc58bd954",
+      "review": {
+        "status": "reviewed",
+        "sha256": "73b566c59c68ff00d61d7a10b3bd886c43b9a20641ec061d3c752e97b35068fb"
+      },
+      "witnesses": [
+        "witness.ordinarium.iube-domne-benedicere-in-passione.do44667ff",
+        "witness.ordinarium.iube-domne-benedicere-in-passione.mr1962-partial",
+        "witness.ordinarium.iube-domne-benedicere-in-passione.vatican1962"
+      ],
+      "apparatus": {
+        "entries": 5,
+        "classes": [
+          "capitalization",
+          "orthography",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.ordinarium.iube-domne-benedicere.mr1962-vatican1962",
+      "text": "ordinarium.iube-domne-benedicere",
+      "recension": "Roman Missal governed by the 1960 Code of Rubrics; Benziger 1962 selected complete ministerial body and accidentals",
+      "selected_text_sha256": "12077122c3d3b59feb80c452598b7a21ebb8255926c7e66a6402ffe73089f315",
+      "apparatus_sha256": "9e969e42e18c47524a83d8712775a339fd17f520a1c73dcd5801eab625008cf0",
+      "review": {
+        "status": "reviewed",
+        "sha256": "baf3a406b051794c316d25755fad41a7d3506689e65eadaf96fb9e37328e382f"
+      },
+      "witnesses": [
+        "witness.ordinarium.iube-domne-benedicere.mr1962",
+        "witness.ordinarium.iube-domne-benedicere.vatican1962"
+      ],
+      "apparatus": {
+        "entries": 3,
+        "classes": [
+          "capitalization",
+          "punctuation"
+        ]
+      }
+    },
+    {
+      "id": "collation.ordinarium.munda-cor-meum.mr1962-do44667ff",
+      "text": "ordinarium.munda-cor-meum",
+      "recension": "Roman Missal governed by the 1960 Code of Rubrics; Benziger Brothers 1962 editio iuxta typicam selected accidentals",
+      "selected_text_sha256": "657eebbab4e0f9aa8ad1a2102a566b2297aad91a828e3cbbda5b1bb582d40255",
+      "apparatus_sha256": "e73e01fd5dd87ab42b7d06cbe032a2ff4156e71b9f519893d2f3a4fd5c826de1",
+      "review": {
+        "status": "pending"
+      },
+      "witnesses": [
+        "witness.ordinarium.munda-cor-meum.do44667ff",
+        "witness.ordinarium.munda-cor-meum.mr1962"
+      ],
+      "apparatus": {
+        "entries": 4,
+        "classes": [
+          "capitalization",
+          "punctuation"
+        ]
+      }
+    },
+    {
       "id": "collation.ordinarium.praefatio-apostolorum.mr1962-do44667ff",
       "text": "ordinarium.praefatio-apostolorum",
       "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
@@ -110232,21 +111972,22 @@
     {
       "id": "collation.proprium.dominica-iii-post-pascha-collecta.mr1962-do44667ff",
       "text": "proprium.dominica-iii-post-pascha-collecta",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 approved Benziger proper/common composite with explicitly declared working-edition orthography and punctuation; no substantive proper-body change",
       "selected_text_sha256": "6ad48177cf37f20faeac64107dd9fd908ac5906aaef67bd90bfda09fb6d62bec",
       "witnesses": [
         "witness.proprium.dominica-iii-post-pascha-collecta.do44667ff",
         "witness.proprium.dominica-iii-post-pascha-collecta.mr1962"
       ],
       "apparatus": {
-        "entries": 7,
+        "entries": 16,
         "classes": [
+          "accent",
           "capitalization",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "c233d5d199e4a7a684814608786c3cb17bceb19798189978038fede4d965dfe0",
+      "apparatus_sha256": "792a0b5d5e3faf995630c70489a5b15b35c43ef52f1108cac4af4215d088435d",
       "review": {
         "status": "pending"
       }
@@ -110317,19 +112058,20 @@
     {
       "id": "collation.proprium.dominica-iii-post-pascha-introitus.mr1962-do44667ff",
       "text": "proprium.dominica-iii-post-pascha-introitus",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 approved Benziger proper/common composite with explicitly declared working-edition orthography and punctuation; no substantive proper-body change",
       "selected_text_sha256": "92ef2460f05968cb9bf35a295dda114f93f5177a5552030c6893e5ef2f745ea4",
       "witnesses": [
         "witness.proprium.dominica-iii-post-pascha-introitus.do44667ff",
         "witness.proprium.dominica-iii-post-pascha-introitus.mr1962"
       ],
       "apparatus": {
-        "entries": 16,
+        "entries": 17,
         "classes": [
-          "orthography"
+          "orthography",
+          "punctuation"
         ]
       },
-      "apparatus_sha256": "2f93992ab6a505306def0c91f328a0fa55a18cbdf7b8ad151bb1135261a95235",
+      "apparatus_sha256": "9c5272ef0630fb37bb0b219802335506e010ed45caea5e8750abe2c5783785eb",
       "review": {
         "status": "pending"
       }
@@ -110357,21 +112099,22 @@
     {
       "id": "collation.proprium.dominica-iii-post-pascha-postcommunio.mr1962-do44667ff",
       "text": "proprium.dominica-iii-post-pascha-postcommunio",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 approved Benziger proper/common composite with explicitly declared working-edition orthography and punctuation; no substantive proper-body change",
       "selected_text_sha256": "aa59887463ffc0c96ff9439bac4c020adcbf95f451b635bf4a5c4b9092333975",
       "witnesses": [
         "witness.proprium.dominica-iii-post-pascha-postcommunio.do44667ff",
         "witness.proprium.dominica-iii-post-pascha-postcommunio.mr1962"
       ],
       "apparatus": {
-        "entries": 4,
+        "entries": 13,
         "classes": [
+          "accent",
           "capitalization",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "0a36aa435b96f661b60eea321af045b7b25a2310fe30592b888d70bfdb298f75",
+      "apparatus_sha256": "001ea12f70488dcb35530d631c048d16c0cbd5e29edb8c40e12f1fe575c7c0ae",
       "review": {
         "status": "pending"
       }
@@ -110379,21 +112122,22 @@
     {
       "id": "collation.proprium.dominica-iii-post-pascha-secreta.mr1962-do44667ff",
       "text": "proprium.dominica-iii-post-pascha-secreta",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The 1962 approved Benziger proper/common composite with explicitly declared working-edition orthography and punctuation; no substantive proper-body change",
       "selected_text_sha256": "55b4dc53902675b3a26b0f36de3132cae43bdd18b0be7030eb47d69b8a7a53c3",
       "witnesses": [
         "witness.proprium.dominica-iii-post-pascha-secreta.do44667ff",
         "witness.proprium.dominica-iii-post-pascha-secreta.mr1962"
       ],
       "apparatus": {
-        "entries": 6,
+        "entries": 15,
         "classes": [
+          "accent",
           "capitalization",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "f16e91b93746d43de850639d0224e7c6d1b18d4024eec2397158122c4f47ac71",
+      "apparatus_sha256": "e8e7d000ebdb7576a5cc9296b78fe90270d13cd0effa69151f025da3afad54b6",
       "review": {
         "status": "pending"
       }
@@ -111900,7 +113644,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "d8e633f7bcb4cb5a2c77462173e106fc6d8e0d3f3b56e41141abee441ea03761",
+      "apparatus_sha256": "052d69f2bdb8b09c29aadb63296f07824b18affdb5d6556734be5b3b624ab61d",
       "review": {
         "status": "pending"
       }
@@ -112027,7 +113771,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "a97f8c0229bb63678b49b7ae6fd9d7fabe884422d2a534ec0c590e52fa7a5365",
+      "apparatus_sha256": "d7579bdfacd902d75857c7cfe9e087d2506a04d1aebdb325db0b71035def4e3c",
       "review": {
         "status": "pending"
       }
@@ -112049,7 +113793,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "bc7db6e6aa8e04e74d2c254317685595b30ed5dea7bc89b22b140df0dbe65590",
+      "apparatus_sha256": "1e3fad2d0854591baf83e4f4bbb0ada8064b9392a6aaacb3502f97f2fe048c1f",
       "review": {
         "status": "pending"
       }
@@ -113153,7 +114897,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "a383b8e28342fd692f2016fd005b3082386744bf4fdd76a1767e95cffafb6ac4",
+      "apparatus_sha256": "400b71dce0f87552c7bcdb9ecb21eaadc98eddee02243f7db351f2abe3f17e36",
       "review": {
         "status": "pending"
       }
@@ -113196,7 +114940,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "ae83f60b06c67b12a69fe3245397d27297c2dc2f8dd846da1496a530ca48b63c",
+      "apparatus_sha256": "a23f6a2a2af13e1ed0a1ab0a5c579ac2cf3563aacb489cee02ff6ea9401ee493",
       "review": {
         "status": "pending"
       }
@@ -113281,7 +115025,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "915e670b0f9ef0d2de54906ba6674eb2e566326434fbd78a427717545cb5d33b",
+      "apparatus_sha256": "7778e04a8aac7e74d520ec44062543feb6a90fabee1a6979cdf00e08a4dc72b7",
       "review": {
         "status": "pending"
       }
@@ -113303,7 +115047,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "825df4aa80811daf300ff4e5cb22b1cf4d17df1864c20283fd61a76b11d82b7d",
+      "apparatus_sha256": "cafec95258903507c1d28eb35a70903a859fcfc31c1a0c200336f3786279646a",
       "review": {
         "status": "pending"
       }

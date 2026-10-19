@@ -108,9 +108,9 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the approved 1962 Benziger printing.",
+    "notes": "The proper page prints the Gloria Patri and Vocem incipits. The complete 20-word doxology and 17-word reprise are supplied in full for reading. Their wording and source scope are distinguished from the proper-page transcription. No source description changes the Latin, punctuation or ritual model.",
     "source": {
-      "method": "Transcribed from the directly viewed page image of the Benziger Brothers 1962 Editio iuxta typicam and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The proper Latin at w001-w029 is transcribed from the Benziger Brothers 1962 Editio iuxta typicam, printed p. 339. The full doxology at w030-w049 is a common-text expansion supported by Ordo Missae p. 225. The antiphon at w050-w066 expands the printed Vocem cue by repeating w001-w017. The expanded passages retain reader accidentals rather than claiming page-exact typography. The pinned Divinum Officium data provide a derived digital comparison, with the recorded MR/DO variants in the apparatus.",
       "witnesses": "witnesses/proprium.dominica-v-post-pascha-introitus/",
       "apparatus": "witnesses/proprium.dominica-v-post-pascha-introitus/apparatus.json"
     },
@@ -122,6 +122,11 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w028": {
+        "languages": ["pl"]
+      }
+    }
   }
 }

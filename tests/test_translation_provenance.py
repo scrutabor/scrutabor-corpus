@@ -1,9 +1,20 @@
+import copy
 import json
+from pathlib import Path
 
 import pytest
 
+from build_reader import bibliography
 from build_reader.bibliography import DECISIONS, SCHEMA
-from checks.translation_provenance import canonical_hash, check, initialize, protected
+from checks.translation_provenance import (
+    canonical_hash,
+    check,
+    corpus_sites,
+    initialize,
+    load,
+    protected,
+    source_payload,
+)
 
 
 def text():
@@ -46,6 +57,11 @@ def layer(language, target="Words.", cited=False):
 
 
 def write_text(corpus, target="Words.", cited_pl=False):
+    graph = corpus / "bibliography" / "graph.json"
+    graph.parent.mkdir(parents=True, exist_ok=True)
+    graph.write_text(
+        json.dumps({"schema_version": SCHEMA, "uses": [], "migration": {"removals": []}})
+    )
     path = corpus / "texts" / "orationes" / "test.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(text()))
@@ -210,3 +226,230 @@ def test_legacy_wording_citation_remains_supported(tmp_path, origin):
     set_origin(tmp_path, origin)
     errors, _ = check(tmp_path)
     assert errors == []
+
+
+def attach_legacy(corpus, language, count=1):
+    path = corpus / "languages" / language / "texts" / "orationes" / "test.json"
+    doc = json.loads(path.read_text())
+    doc["segments"]["s01"]["translation_citations"] = [
+        {"title": "A", "locator": str(index)} for index in range(count)
+    ]
+    path.write_text(json.dumps(doc))
+    return [
+        f"languages/{language}/texts/orationes/test.json#/segments/s01/translation_citations/{index}"
+        for index in range(count)
+    ]
+
+
+def mapped_uses(corpus, language, refs, decisions, roles=None, addresses=None):
+    path = corpus / "languages" / language / "bibliography.json"
+    graph = json.loads(path.read_text())
+    graph["uses"] = [
+        {
+            "decision": decision,
+            "role": roles[index] if roles else "historical_wording_basis",
+            "address": addresses[index]
+            if addresses
+            else {"kind": "segment", "text": "orationes.test", "segment": "s01"},
+            "legacy_refs": [refs[index]],
+        }
+        for index, decision in enumerate(decisions)
+    ]
+    path.write_text(json.dumps(graph))
+
+
+@pytest.mark.parametrize("language", ["pl", "en"])
+@pytest.mark.parametrize("origin", ["public-domain", "traditional"])
+@pytest.mark.parametrize(
+    ("decision", "supported"),
+    [
+        ("RETAIN", True),
+        ("RETAIN_WITH_CORRECTION", True),
+        ("REMOVE", False),
+        ("REPLACE", False),
+        ("UNVERIFIED_NO_DIRECT_EVIDENCE", False),
+    ],
+)
+def test_mapped_legacy_cannot_mask_a_rejected_inherited_basis(
+    tmp_path, language, origin, decision, supported
+):
+    write_text(tmp_path)
+    refs = attach_legacy(tmp_path, language)
+    initialize_all(tmp_path)
+    set_origin(tmp_path, origin, language)
+    mapped_uses(tmp_path, language, refs, [decision])
+    site = f"orationes.test.s01.{language}"
+    assert corpus_sites(tmp_path)[site]["has_wording_citations"] is supported
+    errors, _ = check(tmp_path)
+    assert errors == ([] if supported else [f"{site}: origin={origin} requires a wording citation"])
+
+
+@pytest.mark.parametrize("language", ["pl", "en"])
+@pytest.mark.parametrize("decision", ["RETAIN", "RETAIN_WITH_CORRECTION"])
+def test_retained_comparator_does_not_become_basis_via_its_legacy_ref(tmp_path, language, decision):
+    write_text(tmp_path)
+    refs = attach_legacy(tmp_path, language)
+    initialize_all(tmp_path)
+    set_origin(tmp_path, "public-domain", language)
+    mapped_uses(tmp_path, language, refs, [decision], ["historical_wording_comparator"])
+    errors, _ = check(tmp_path)
+    assert errors == [
+        f"orationes.test.s01.{language}: origin=public-domain requires a wording citation"
+    ]
+
+
+@pytest.mark.parametrize("language", ["pl", "en"])
+@pytest.mark.parametrize(
+    ("decisions", "roles", "supported"),
+    [
+        (["REMOVE"], None, True),  # The second attachment is genuinely unmapped.
+        (["REMOVE", "RETAIN"], None, True),
+        (["REMOVE", "REPLACE"], None, False),
+        (
+            ["REMOVE", "RETAIN"],
+            ["historical_wording_basis", "historical_wording_comparator"],
+            False,
+        ),
+    ],
+)
+def test_mixed_legacy_inputs_preserve_only_the_actual_basis_routes(
+    tmp_path, language, decisions, roles, supported
+):
+    write_text(tmp_path)
+    refs = attach_legacy(tmp_path, language, 2)
+    initialize_all(tmp_path)
+    set_origin(tmp_path, "traditional", language)
+    mapped_uses(tmp_path, language, refs, decisions, roles)
+    errors, _ = check(tmp_path)
+    assert errors == (
+        []
+        if supported
+        else [f"orationes.test.s01.{language}: origin=traditional requires a wording citation"]
+    )
+
+
+@pytest.mark.parametrize("language", ["pl", "en"])
+def test_explicit_migration_removal_cannot_supply_unmapped_legacy_basis(tmp_path, language):
+    write_text(tmp_path)
+    refs = attach_legacy(tmp_path, language)
+    initialize_all(tmp_path)
+    set_origin(tmp_path, "public-domain", language)
+    path = tmp_path / "bibliography" / "graph.json"
+    graph = json.loads(path.read_text())
+    graph["migration"]["removals"] = [{"legacy_ref": refs[0], "reason": "Unsupported wording."}]
+    path.write_text(json.dumps(graph))
+    errors, _ = check(tmp_path)
+    assert errors == [
+        f"orationes.test.s01.{language}: origin=public-domain requires a wording citation"
+    ]
+
+
+@pytest.mark.parametrize(
+    ("address", "package"),
+    [
+        ({"kind": "segment", "text": "orationes.test", "segment": "s02"}, "pl"),
+        ({"kind": "text", "text": "orationes.other"}, "pl"),
+        ({"kind": "word", "text": "orationes.test", "word": "w001"}, "pl"),
+        ({"kind": "lemma", "lemma": "amen"}, "pl"),
+        ({"kind": "segment", "text": "orationes.test", "segment": "s01"}, "en"),
+    ],
+)
+def test_mapped_pointer_cannot_bypass_exact_language_or_address_scope(tmp_path, address, package):
+    write_text(tmp_path)
+    refs = attach_legacy(tmp_path, "pl")
+    initialize_all(tmp_path)
+    set_origin(tmp_path, "public-domain")
+    mapped_uses(tmp_path, package, refs, ["RETAIN"], addresses=[address])
+    errors, _ = check(tmp_path)
+    assert errors == ["orationes.test.s01.pl: origin=public-domain requires a wording citation"]
+
+
+def test_mapped_text_scope_basis_and_separate_new_basis_remain_supported(tmp_path):
+    write_text(tmp_path)
+    refs = attach_legacy(tmp_path, "pl")
+    initialize_all(tmp_path)
+    set_origin(tmp_path, "public-domain")
+    mapped_uses(
+        tmp_path, "pl", refs, ["RETAIN"], addresses=[{"kind": "text", "text": "orationes.test"}]
+    )
+    assert check(tmp_path)[0] == []
+    path = tmp_path / "languages/pl/bibliography.json"
+    graph = json.loads(path.read_text())
+    graph["uses"][0]["decision"] = "REMOVE"
+    graph["uses"].append(
+        {
+            "role": "historical_wording_basis",
+            "decision": "RETAIN",
+            "legacy_refs": [],
+            "address": {"kind": "segment", "text": "orationes.test", "segment": "s01"},
+        }
+    )
+    path.write_text(json.dumps(graph))
+    assert check(tmp_path)[0] == []
+
+
+def test_missing_neutral_decision_input_does_not_silently_enable_legacy_fallback(tmp_path):
+    write_text(tmp_path, cited_pl=True)
+    (tmp_path / "bibliography/graph.json").unlink()
+    with pytest.raises(FileNotFoundError):
+        corpus_sites(tmp_path)
+
+
+@pytest.mark.parametrize(
+    "mutation", ["REMOVE", "REPLACE", "UNVERIFIED_NO_DIRECT_EVIDENCE", "COMPARATOR"]
+)
+def test_real_only_basis_rejection_exposes_inherited_origin_and_restoration(monkeypatch, mutation):
+    corpus = Path(__file__).resolve().parent.parent
+    graph, languages = bibliography.load(corpus)
+    original = copy.deepcopy((graph, languages))
+    site = "ordinarium.misereatur.s06.en"
+    recorded = copy.deepcopy(load(corpus)[0][site])
+    assert recorded["origin"] in {"public-domain", "traditional"}
+    assert corpus_sites(corpus)[site]["has_wording_citations"] is True
+    target = next(
+        use for use in languages["en"]["uses"] if use["id"] == "use.en.20c386fcb82abb0ee345"
+    )
+    assert target["legacy_refs"] == [
+        "languages/en/texts/ordinarium/misereatur.json#/segments/s06/translation_citations/0"
+    ]
+    if mutation == "COMPARATOR":
+        target["role"] = "historical_wording_comparator"
+    else:
+        target["decision"] = mutation
+        target["decision_reason"] = "This use is withheld."
+    monkeypatch.setattr(bibliography, "load", lambda _corpus: (graph, languages))
+    assert corpus_sites(corpus)[site]["has_wording_citations"] is False
+    diagnostic = f"{site}: origin={recorded['origin']} requires a wording citation"
+    assert diagnostic in check(corpus)[0]
+    monkeypatch.setattr(bibliography, "load", lambda _corpus: original)
+    assert corpus_sites(corpus)[site]["has_wording_citations"] is True
+    assert diagnostic not in check(corpus)[0]
+    assert load(corpus)[0][site] == recorded
+
+
+@pytest.mark.parametrize("review", ["working", "internally-reviewed", "expert-reviewed"])
+def test_source_change_is_stale_until_explicit_rebinding_at_a_permitted_review(tmp_path, review):
+    write_text(tmp_path)
+    initialize_all(tmp_path)
+    for language in ("pl", "en"):
+        set_origin(tmp_path, "own", language)
+    assert check(tmp_path)[0] == []
+    source = tmp_path / "texts/orationes/test.json"
+    document = json.loads(source.read_text())
+    document["segments"][0]["words"][0]["morph"] = {"pos": "adv"}
+    source.write_text(json.dumps(document))
+    expected = [f"orationes.test.s01.{language}: stale source_sha256" for language in ("en", "pl")]
+    assert check(tmp_path)[0] == expected
+    current = canonical_hash(source_payload(document["segments"][0]))
+    for language in ("pl", "en"):
+        path = tmp_path / "languages" / language / "translation-provenance.json"
+        ledger = json.loads(path.read_text())
+        site = ledger["sites"][0]
+        assert site["source_sha256"] != current
+        inherited_target = site["target_sha256"]
+        site["source_sha256"] = current
+        # Fixture-only explicit review evidence; this does not review any real text.
+        site["review"] = review
+        assert site["target_sha256"] == inherited_target
+        path.write_text(json.dumps(ledger))
+    assert check(tmp_path)[0] == []

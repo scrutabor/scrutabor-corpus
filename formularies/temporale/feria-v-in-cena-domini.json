@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.2.0",
+  "formulary_schema": "1.3.0",
   "id": "feria-v-in-cena-domini",
   "order": 29,
   "collection": "temporale",
@@ -10,6 +10,16 @@
     "default": true
   },
   "title": "Feria V in Cena Domini",
+  "ordinary": {
+    "gloria": {
+      "sunday": "required",
+      "not-sunday": "required"
+    },
+    "credo": {
+      "sunday": "omitted",
+      "not-sunday": "omitted"
+    }
+  },
   "components": [
     {
       "key": "introitus",

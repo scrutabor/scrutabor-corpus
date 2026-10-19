@@ -5,9 +5,10 @@ say: who is speaking, and whether it is said aloud. Both are recoverable
 rather than remembered.
 
 WHO comes from the witnesses' own markers. The Divinum Officium files
-print S. (sacerdos), M. (minister), V. and R. (a versicle and its
-response, the priest's voice and the answering one), O. (omnes); the
-transcriptions strip them, and every witness header says so. Each witness
+print D. (deacon, represented as minister within Mass), S. (sacerdos),
+M. (minister), V. and R. (a versicle and its response, the priest's
+voice and the answering one), O. (omnes); the transcriptions strip
+these prefixes, and every witness header says so. Each witness
 header also records the lines it was taken from, so a text's segments are
 matched against exactly those lines and not against the whole book.
 
@@ -15,16 +16,18 @@ HOW LOUDLY comes from the rubrics the corpus already carries. A rubric
 saying *secreto* governs what follows until another rubric lifts it;
 *clara voce* and *intellegibili voce* restore the ordinary voice; *elata
 aliquantulum voce* is the raised-but-not-full voice of Domine non sum
-dignus. A text whose rubrics say nothing is left unattributed rather than
-assumed — silence here means "not read yet", not "spoken aloud".
+dignus. An absent voice can mean either that the relevant sources have
+not yet been read or that inspected sources do not justify an available
+voice category. Leave it unmarked; neither case means "spoken aloud".
 
 Run it to see the proposal, or with --write to apply it:
 
     python3 -m checks.attribute            # print
     python3 -m checks.attribute --write    # apply
 
-It never guesses: a segment it cannot source stays empty, and the check
-in run_checks reports the coverage so the gap is visible.
+Unsupported performer evidence is reported explicitly. It cannot supply a
+proposal or overwrite existing facts. run_checks separately reports authored
+field coverage; neither report is an editorial source approval.
 
 And it checks its own footing. A witness header's line range is written by
 hand, and a stale one does not fail loudly — the markers simply run out,
@@ -42,20 +45,65 @@ import json
 import re
 import sys
 import unicodedata
+from dataclasses import dataclass
+from itertools import pairwise
 from pathlib import Path
+from typing import Literal
 
 from checks.attribution_alignment import AttributionAlignment, align_unmarked_reading
 from checks.office import is_office
 from checks.orations import base_attributes as oration_attributes
-from checks.raw_binding import BindingError, RawFragment, resolve_binding
+from checks.raw_binding import TEXT_MARKER_CHARS, BindingError, RawFragment, resolve_binding
 
 CORPUS = Path(__file__).resolve().parent.parent
 
-# Speaker prefixes are case-sensitive: S. sacerdos, M. minister, V. and R.
-# a versicle and its response, O. omnes. In the source renderer's resolve_refs,
+AttributionScope = Literal[
+    "SCOPED",
+    "ALIGNED",
+    "UNSCOPED",
+    "INVALID_SCOPE",
+    "STALE_SCOPE",
+    "COMPOSITE_TEXT_ONLY",
+    "RAW_TEXT_ONLY",
+    "EXCLUDED",
+]
+SourceSpan = tuple[Path | RawFragment, int, int, bool]
+
+
+@dataclass(frozen=True)
+class AttributionAssessment:
+    """Supported values and their mechanical scope, never editorial approval."""
+
+    scope: AttributionScope
+    proposals: dict[str, dict]
+    reasons: tuple[str, ...] = ()
+    alignment: AttributionAlignment | None = None
+
+    @property
+    def write_eligible(self) -> bool:
+        return self.scope in {"SCOPED", "ALIGNED"}
+
+
+@dataclass(frozen=True)
+class _ActorSources:
+    scope: AttributionScope
+    units: tuple[tuple[SourceSpan, ...], ...]
+    reasons: tuple[str, ...] = ()
+
+
+# Speaker prefixes are case-sensitive: D. deacon (minister within Mass),
+# S. sacerdos, M. minister, V. and R. a versicle and its response, O. omnes.
+# D. supplies no voice category or non-Mass actor. In the renderer's resolve_refs,
 # lowercase r./v. format an initial letter; they do not identify its speaker.
 # They remain removable framing for textual coverage, not attribution evidence.
-MARKERS = {"S": "sacerdos", "M": "minister", "V": "sacerdos", "R": "minister", "O": "omnes"}
+MARKERS = {
+    "D": "minister",
+    "S": "sacerdos",
+    "M": "minister",
+    "V": "sacerdos",
+    "R": "minister",
+    "O": "omnes",
+}
 
 # Outside the Mass only "all" means anything. V. and R. mark priest and
 # answer INSIDE the rite; in a prayer book they are the shape of a
@@ -310,6 +358,11 @@ def _indent(line: str) -> str:
 
 
 SOURCE_FILE = re.compile(r"[\w./-]+\.txt", re.IGNORECASE)
+SOURCE_RANGES = re.compile(
+    r"([\w./-]+\.txt)(?:(?![\w./-]+\.txt).){0,240}?"
+    r"\([^)]*\blines?\s+([\d,\s-]+)\)",
+    re.IGNORECASE,
+)
 
 
 def _path_values(header: str) -> list[str]:
@@ -358,11 +411,7 @@ def _range_declarations(header: str) -> list[tuple[str, list[int]]]:
     ``line N`` is valid too.
     """
     declarations: list[tuple[str, list[int]]] = []
-    pattern = re.compile(
-        r"([\w./-]+\.txt)(?:(?![\w./-]+\.txt).){0,240}?"
-        r"\([^)]*\blines?\s+([\d,\s-]+)\)",
-        re.IGNORECASE,
-    )
+    pattern = SOURCE_RANGES
     for value in _path_values(header):
         for match in pattern.finditer(value):
             numbers = [int(n) for n in re.findall(r"\d+", match.group(2))]
@@ -417,19 +466,158 @@ def _source_ranges(text_id: str) -> list[tuple[Path | RawFragment, int, int, boo
     for wf in sorted(wdir.glob("*.txt")):
         bound = resolve_binding(wf, CORPUS)
         if bound is not None:
+            if bound.source["contract"] in {"raw-reading-4", "raw-reading-5"}:
+                # Exact hash-heading text does not establish performer context.
+                # In particular lowercase v. is not a priest/deacon distinction.
+                raise BindingError("hash-heading evidence supports textual identity only")
             out.extend(
                 (fragment, fragment.line, fragment.line, True) for fragment in bound.fragments
             )
             continue
         header = wf.read_text(encoding="utf-8")
-        # A comma-separated range is intentionally read as one enclosing
-        # span.  It may include a rubric between the named lines; that is a
-        # safe superset and avoids silently scanning the whole archive.
+        # Preserve legacy textual transport, not performer authority.
+        # The actor consumer separately quarantines composite selections.
         for declared_path, numbers in _range_declarations(header):
             raw = _raw_archive_for(declared_path)
             if raw:
                 out.append((raw, min(numbers), max(numbers), False))
     return out
+
+
+def _fragments_contiguous(fragments: tuple[RawFragment, ...]) -> bool:
+    """Selected parts must not skip words inside one performer occurrence."""
+    lines_by_path: dict[Path, list[str]] = {}
+    for first, second in pairwise(fragments):
+        if first.path != second.path or second.line not in {first.line, first.line + 1}:
+            return False
+        if first.path not in lines_by_path:
+            try:
+                lines_by_path[first.path] = first.path.read_text(encoding="utf-8").splitlines()
+            except (OSError, UnicodeError):
+                return False
+        lines = lines_by_path[first.path]
+        for fragment in (first, second):
+            if not 1 <= fragment.line <= len(lines):
+                return False
+            physical = lines[fragment.line - 1]
+            if (
+                not 0 <= fragment.start < fragment.end <= len(physical)
+                or physical[fragment.start : fragment.end] != fragment.raw
+            ):
+                return False
+        if first.line == second.line:
+            if second.start < first.end:
+                return False
+            gap = lines[first.line - 1][first.end : second.start]
+        else:
+            gap = lines[first.line - 1][first.end :]
+            prefix = lines[second.line - 1][: second.start]
+            if prefix.strip() and not (
+                second.marker_scope_verified
+                and second.marker is not None
+                and re.fullmatch(rf"\s*{re.escape(second.marker)}\.\s+", prefix)
+            ):
+                return False
+        if gap.strip():
+            return False
+    return True
+
+
+def _actor_sources(text_id: str) -> _ActorSources:
+    """Keep source occurrences separate; textual reuse does not transfer actors."""
+    if not isinstance(text_id, str) or re.fullmatch(r"[a-z0-9-]+\.[a-z0-9-]+", text_id) is None:
+        return _ActorSources("INVALID_SCOPE", (), ("INVALID_TEXT_ID",))
+    units: list[tuple[SourceSpan, ...]] = []
+    problems: list[tuple[AttributionScope, str]] = []
+    folder = CORPUS / "witnesses" / text_id
+    pattern = SOURCE_RANGES
+    for witness in sorted(folder.glob("*.txt")):
+        label = witness.name
+        try:
+            bound = resolve_binding(witness, CORPUS)
+        except BindingError as error:
+            problems.append(("INVALID_SCOPE", f"INVALID_BINDING:{label}: {error}"))
+            continue
+        if bound is not None:
+            contract = bound.source["contract"]
+            if contract in {"raw-reading-4", "raw-reading-5"}:
+                problems.append(("RAW_TEXT_ONLY", f"TEXT_ONLY_CONTRACT:{label}: {contract}"))
+            elif contract == "raw-reading-1" and (
+                not bound.spans
+                or any(
+                    first[0] != second[0] or second[1] != first[2] + 1
+                    for first, second in pairwise(bound.spans)
+                )
+            ):
+                problems.append(("COMPOSITE_TEXT_ONLY", f"COMPOSITE_RAW_READING:{label}"))
+            elif contract in {"raw-reading-2", "raw-reading-3"} and not _fragments_contiguous(
+                bound.fragments
+            ):
+                problems.append(("COMPOSITE_TEXT_ONLY", f"COMPOSITE_RAW_CONTEXT:{label}"))
+            elif not bound.fragments or any(
+                fragment.partial_contract and not fragment.marker_scope_verified
+                for fragment in bound.fragments
+            ):
+                problems.append(("INVALID_SCOPE", f"UNVERIFIED_MARKER_CONTEXT:{label}"))
+            else:
+                units.append(tuple((f, f.line, f.line, True) for f in bound.fragments))
+            continue
+        header = witness.read_text(encoding="utf-8")
+        declarations = []
+        for value in _path_values(header):
+            range_matches = list(pattern.finditer(value))
+            # Match every occurrence, not a filename set: a valid first claim
+            # cannot hide a malformed repeated or different local source.
+            claims = [match.span() for match in SOURCE_FILE.finditer(value)]
+            selections = [match.span(1) for match in range_matches]
+            if claims != selections:
+                problems.append(("INVALID_SCOPE", f"UNPARSED_LOCAL_SOURCE_CLAIM:{label}"))
+            declarations.extend(range_matches)
+        if not declarations:
+            if declared_sources(header):
+                problems.append(("INVALID_SCOPE", f"MISSING_LINE_SELECTION:{label}"))
+            continue
+        if len(declarations) != 1:
+            problems.append(("COMPOSITE_TEXT_ONLY", f"MULTIPLE_LEGACY_SELECTIONS:{label}"))
+        spans: list[SourceSpan] = []
+        for match in declarations:
+            expression = match.group(2).strip()
+            chunks = expression.split(",")
+            intervals: list[tuple[int, int]] = []
+            for chunk in chunks:
+                parsed = re.fullmatch(r"\s*([1-9]\d*)(?:\s*-\s*([1-9]\d*))?\s*", chunk)
+                if parsed is None:
+                    problems.append(
+                        ("INVALID_SCOPE", f"MALFORMED_LINE_SELECTION:{label}: {expression}")
+                    )
+                    continue
+                first = int(parsed.group(1))
+                last = int(parsed.group(2) or first)
+                if last < first or any(first <= end and last >= start for start, end in intervals):
+                    problems.append(("INVALID_SCOPE", f"INVALID_LINE_ORDER:{label}: {expression}"))
+                intervals.append((first, last))
+            if len(chunks) != 1:
+                problems.append(
+                    ("COMPOSITE_TEXT_ONLY", f"COMPOSITE_LEGACY_READING:{label}: {expression}")
+                )
+            raw = _raw_archive_for(match.group(1))
+            if raw is None:
+                problems.append(("INVALID_SCOPE", f"MISSING_ARCHIVE:{label}: {match.group(1)}"))
+                continue
+            length = len(raw.read_text(encoding="utf-8").splitlines())
+            for first, last in intervals:
+                if last > length:
+                    problems.append(("INVALID_SCOPE", f"OUT_OF_BOUNDS:{label}: {expression}"))
+                spans.append((raw, first, last, False))
+        if spans:
+            units.append(tuple(spans))
+    if problems:
+        priority = {"INVALID_SCOPE": 0, "RAW_TEXT_ONLY": 1, "COMPOSITE_TEXT_ONLY": 2}
+        scope = min(problems, key=lambda item: priority[item[0]])[0]
+        return _ActorSources(scope, (), tuple(reason for _, reason in problems))
+    if not units:
+        return _ActorSources("UNSCOPED", (), ("NO_OWN_SCOPE",))
+    return _ActorSources("SCOPED", tuple(units))
 
 
 def witness_ranges(text_id: str) -> list[tuple[Path, int, int]]:
@@ -456,14 +644,8 @@ def witness_ranges(text_id: str) -> list[tuple[Path, int, int]]:
     return out
 
 
-def marked_lines(text_id: str, mass: bool = True) -> list[tuple[str, str]]:
-    """(speaker, flattened text) for the marked lines of this text's own
-    span in the archived sources; falls back to every archive when a
-    witness records no line range."""
-    try:
-        spans = _source_ranges(text_id)
-    except BindingError:
-        return []  # Invalid explicit evidence must never scan unrelated archives.
+def _marked_from_spans(spans: list[SourceSpan], mass: bool) -> list[tuple[str, str]]:
+    """Parse only the supplied physical contexts; not whole-text actor coverage."""
     files: list[list[str]] = []
     partial_groups: list[tuple[str | None, str | None, str]] = []
     if any(
@@ -493,9 +675,6 @@ def marked_lines(text_id: str, mass: bool = True) -> list[tuple[str, str]]:
                 continue
             lines = raw.read_text(encoding="utf-8").splitlines()
             files.append(lines[max(0, first - 1) : last])
-    elif not _declares_ranges(text_id):
-        for raw in sorted((CORPUS / "witnesses" / "raw").glob("*.txt")):
-            files.append(raw.read_text(encoding="utf-8").splitlines())
     out = []
     if partial_groups:
         # Only selected, binding-specific contexts can support a partial
@@ -503,13 +682,71 @@ def marked_lines(text_id: str, mass: bool = True) -> list[tuple[str, str]]:
         return [(speaker, text) for _, speaker, text in partial_groups if speaker is not None]
     for lines in files:
         for line in lines:
-            m = re.match(r"^([SMVRO])\.\s+(.*)$", line.strip())
+            m = re.match(rf"^([{''.join(MARKERS)}])\.\s+(.*)$", line.strip())
             if m and m.group(2).strip():
                 marker = m.group(1)
                 if not mass and marker not in SPEAKER_MARKERS_ONLY:
                     continue
                 out.append((MARKERS[marker], flatten(m.group(2))))
     return out
+
+
+def marked_lines(text_id: str, mass: bool = True) -> list[tuple[str, str]]:
+    """Own supported marker candidates, never an archive-wide discovery pool."""
+    sources = _actor_sources(text_id)
+    if sources.scope != "SCOPED":
+        return []
+    return [item for unit in sources.units for item in _marked_from_spans(list(unit), mass)]
+
+
+def _legacy_text_line(line: str) -> str:
+    stripped = line.lstrip()
+    if stripped.startswith("!!!"):
+        line = stripped[3:]
+        stripped = line.lstrip()
+    if stripped.startswith(("!", "&", "#", "_", "wait")):
+        return ""
+    line = re.sub(rf"^[{TEXT_MARKER_CHARS}]\.\s*", "", line.strip())
+    line = re.sub(r"\([^)]*\)", " ", line)
+    line = re.sub(r"N\.[a-z]?\s+et\s+N\.[a-z]?", " ", line)
+    line = re.sub(r"N\.[a-z]?", " ", line)
+    return re.sub(r"wait\d+", " ", line)
+
+
+def _segment_readings(doc: dict) -> list[tuple[str, set[str]]]:
+    apparatus_entries = []
+    source = doc.get("source") or (doc.get("editorial") or {}).get("source") or {}
+    apparatus_pointer = source.get("apparatus")
+    if apparatus_pointer:
+        apparatus_path = CORPUS / apparatus_pointer
+        if apparatus_path.is_file():
+            apparatus_entries = json.loads(apparatus_path.read_text(encoding="utf-8")).get(
+                "adjudicated", []
+            )
+    readings_by_segment = []
+    for seg in doc["segments"]:
+        if seg.get("type") != "verse" or not seg.get("words"):
+            continue
+        keys = {""}
+        for word in seg["words"]:
+            form = flatten(word["form"])
+            readings = {form}
+            for entry in apparatus_entries:
+                if (
+                    entry.get("at") != word["id"]
+                    or entry.get("class") != "orthography"
+                    or flatten(entry.get("ours", "")) != form
+                ):
+                    continue
+                readings.update(
+                    flatten(reading)
+                    for reading in entry.get("witnesses", {}).values()
+                    if isinstance(reading, str) and reading
+                )
+            keys = {prefix + reading for prefix in keys for reading in readings}
+
+        readings_by_segment.append((seg["id"], keys))
+    return readings_by_segment
 
 
 def span_covers(doc) -> bool:
@@ -545,11 +782,8 @@ def span_covers(doc) -> bool:
     except BindingError:
         return False
     if not spans:
-        # A text that names no raw lines may use the deliberate whole-archive
-        # fallback.  A text that *tries* to name them in unreadable syntax is
-        # unsourced: malformed provenance must never buy the same trust as
-        # verified provenance.
-        return not _declares_ranges(doc["id"])
+        # Missing own scope is unknown, never positive performer coverage.
+        return False
     span = ""
     partial_contexts: list[tuple[tuple[str | None, str | None], str]] = []
     for raw, first, last, explicit in spans:
@@ -575,7 +809,9 @@ def span_covers(doc) -> bool:
             # mixing sacred text with parenthetical rubrics or runtime calls.
             # Keep every printed word, including words inside parentheses.
             span += flatten(
-                " ".join(re.sub(r"^[SMVROsmvro]\.\s+", "", line.strip()) for line in lines)
+                " ".join(
+                    re.sub(rf"^[{TEXT_MARKER_CHARS}]\.\s+", "", line.strip()) for line in lines
+                )
             )
             continue
         # The archived Ordo interleaves directions and macro calls with the
@@ -583,52 +819,9 @@ def span_covers(doc) -> bool:
         # to break an otherwise exact span. Inline parenthetical rubrics are
         # framing too. Keep unmarked continuation lines: several prayers run
         # across them.
-        textual = []
-        for line in lines:
-            stripped = line.lstrip()
-            if stripped.startswith("!!!"):
-                line = stripped[3:]
-                stripped = line.lstrip()
-            if stripped.startswith(("!", "&", "#", "_", "wait")):
-                continue
-            line = re.sub(r"^[SMVROsmvro]\.\s*", "", line.strip())
-            line = re.sub(r"\([^)]*\)", " ", line)
-            line = re.sub(r"N\.[a-z]?\s+et\s+N\.[a-z]?", " ", line)
-            line = re.sub(r"N\.[a-z]?", " ", line)
-            line = re.sub(r"wait\d+", " ", line)
-            textual.append(line)
-        span += flatten(" ".join(textual))
+        span += flatten(" ".join(_legacy_text_line(line) for line in lines))
 
-    apparatus_entries = []
-    source = doc.get("source") or (doc.get("editorial") or {}).get("source") or {}
-    apparatus_pointer = source.get("apparatus")
-    if apparatus_pointer:
-        apparatus_path = CORPUS / apparatus_pointer
-        if apparatus_path.is_file():
-            apparatus_entries = json.loads(apparatus_path.read_text(encoding="utf-8")).get(
-                "adjudicated", []
-            )
-    for seg in doc["segments"]:
-        if seg.get("type") != "verse" or not seg.get("words"):
-            continue
-        keys = {""}
-        for word in seg["words"]:
-            form = flatten(word["form"])
-            readings = {form}
-            for entry in apparatus_entries:
-                if (
-                    entry.get("at") != word["id"]
-                    or entry.get("class") != "orthography"
-                    or flatten(entry.get("ours", "")) != form
-                ):
-                    continue
-                readings.update(
-                    flatten(reading)
-                    for reading in entry.get("witnesses", {}).values()
-                    if isinstance(reading, str) and reading
-                )
-            keys = {prefix + reading for prefix in keys for reading in readings}
-
+    for _, keys in _segment_readings(doc):
         # Apparatus entries license their recorded witness readings, not an
         # arbitrary number of edits near the ruled word. Thus the established
         # Genetrice/Genitrice and negligentia/neglegentia spellings pass while
@@ -680,52 +873,225 @@ def align_speakers(doc, lines) -> dict[str, str]:
     return out
 
 
-def _coverage(doc: dict) -> tuple[bool, AttributionAlignment | None]:
-    sourced = span_covers(doc)
-    return sourced, None if sourced else align_unmarked_reading(doc, CORPUS)
+def _owned_speakers(doc: dict, unit: tuple[SourceSpan, ...]) -> dict[str, str] | None:
+    """Match the whole verse body at one occurrence, retaining physical owners."""
+    mass = doc.get("category") in {"ordinarium", "proprium"}
+    text = ""
+    boundaries = {0}
+    owners: list[tuple[int, int, str | None]] = []
+    for raw, first, last, _ in unit:
+        if isinstance(raw, RawFragment):
+            pieces = [(raw.text, raw.marker)]
+        else:
+            source_lines = raw.read_text(encoding="utf-8").splitlines()[first - 1 : last]
+            pieces = []
+            for line in source_lines:
+                marker_match = re.match(rf"^([{''.join(MARKERS)}])\.\s+", line.strip())
+                pieces.append(
+                    (_legacy_text_line(line), marker_match.group(1) if marker_match else None)
+                )
+        for body, marker in pieces:
+            start = len(text)
+            for word in body.split():
+                key = flatten(word)
+                if key:
+                    boundaries.add(len(text))
+                    text += key
+                    boundaries.add(len(text))
+            speaker = MARKERS.get(marker or "")
+            if not mass and marker not in SPEAKER_MARKERS_ONLY:
+                speaker = None
+            elif mass and marker is None:
+                speaker = "sacerdos"
+            owners.append((start, len(text), speaker))
+    readings = _segment_readings(doc)
+    if not readings or any(not keys or "" in keys for _, keys in readings):
+        return None
+    for _, keys in readings:
+        if any(a != b and a.startswith(b) for a in keys for b in keys):
+            return None  # An ambiguous segmentation cannot establish performer ownership.
+    pattern = (
+        "(?=("
+        + "".join(
+            "(" + "|".join(re.escape(key) for key in sorted(keys)) + ")" for _, keys in readings
+        )
+        + "))"
+    )
+    matches = [
+        match
+        for match in re.finditer(pattern, text)
+        if all(
+            start in boundaries and end in boundaries
+            for start, end in (match.span(index + 2) for index in range(len(readings)))
+        )
+    ]
+    if len(matches) != 1:
+        return None
+    result = {}
+    for index, (segment_id, _) in enumerate(readings):
+        start, end = matches[0].span(index + 2)
+        actors = {actor for a, b, actor in owners if a < end and b > start}
+        if len(actors) != 1:
+            return None
+        actor = actors.pop()
+        if actor is not None:
+            result[segment_id] = actor
+    return result
 
 
-def propose(doc, disagreements: list[str] | None = None) -> dict[str, dict]:
-    return _propose(doc, disagreements, *_coverage(doc))
+def _occurrence_labels(units: tuple[tuple[SourceSpan, ...], ...]) -> tuple[str, ...]:
+    labels = []
+    for unit in units:
+        parts = []
+        for raw, first, last, _ in unit:
+            path = raw.path if isinstance(raw, RawFragment) else raw
+            label = f"{path.relative_to(CORPUS).as_posix()}:{first}-{last}"
+            if isinstance(raw, RawFragment) and not raw.whole_line:
+                label += f"[{raw.start}:{raw.end}]"
+            parts.append(label)
+        labels.append(",".join(parts))
+    return tuple(labels)
 
 
-def _propose(
-    doc: dict,
-    disagreements: list[str] | None,
-    sourced: bool,
-    alignment: AttributionAlignment | None,
-) -> dict[str, dict]:
+def _alignment_owns_occurrence(
+    units: tuple[tuple[SourceSpan, ...], ...], alignment: AttributionAlignment
+) -> bool:
+    """The variant exception belongs to exactly its one physical occurrence."""
+    if len(units) != 1 or len(units[0]) != 1:
+        return False
+    raw, first, last, _ = units[0][0]
+    return (
+        isinstance(raw, RawFragment)
+        and raw.whole_line
+        and not raw.partial_contract
+        and raw.marker is None
+        and raw.path == alignment.source_path
+        and raw.line == first == last == alignment.source_line
+    )
+
+
+def _assess_scope(doc: dict) -> AttributionAssessment:
+    """Resolve source eligibility before any actor proposal or canonical write."""
     from checks import ritual
 
     if doc.get("id") in ritual.TEXTS:
         errors = ritual.base_errors(doc)
         if errors:
             raise ValueError("; ".join(errors))
-        return {}  # Exact sung source roles are not low-Mass attributions.
-    if is_office(doc):
-        return {}  # Office performers belong only to the source-defined sung override.
-    is_mass = doc.get("category") in {"ordinarium", "proprium"}
-    # The new path uses only its one verified, unmarked source line. Never
-    # borrow pooled markers from other witnesses for source-specific alignment.
-    lines = [] if alignment is not None else marked_lines(doc["id"], mass=is_mass)
-    positional = align_speakers(doc, lines)
-    # If the declared range no longer holds this text's words, the markers
-    # read out of it are the wrong markers, and the rule that supplies the
-    # celebrant for unmarked text would be supplying him for text the book
-    # marks otherwise. Propose only what was matched positionally, and let
-    # main report the text.
+        return AttributionAssessment("EXCLUDED", {}, ("EXCLUDED_RITUAL_EXECUTION",))
+    if is_office(doc) or not any(
+        s.get("type") == "verse" and s.get("words") for s in doc.get("segments", [])
+    ):
+        return AttributionAssessment("EXCLUDED", {}, ("EXCLUDED_ORDINARY_ATTRIBUTION",))
+    sources = _actor_sources(doc["id"])
+    if sources.scope != "SCOPED":
+        return AttributionAssessment(sources.scope, {}, sources.reasons)
+    location = ";".join(_occurrence_labels(sources.units))
+    evidence = [_owned_speakers(doc, unit) for unit in sources.units]
+    if any(
+        found is None and any(isinstance(raw, Path) or raw.partial_contract for raw, *_ in unit)
+        for unit, found in zip(sources.units, evidence, strict=True)
+    ):
+        return AttributionAssessment("STALE_SCOPE", {}, (f"OWN_OCCURRENCE_REQUIRED:{location}",))
+    if not span_covers(doc):
+        alignment = align_unmarked_reading(doc, CORPUS)
+        if alignment is None:
+            return AttributionAssessment("STALE_SCOPE", {}, (f"BODY_NOT_COVERED:{location}",))
+        if not _alignment_owns_occurrence(sources.units, alignment):
+            return AttributionAssessment(
+                "STALE_SCOPE", {}, (f"ALIGNED_OCCURRENCE_REQUIRED:{location}",)
+            )
+        proposal = _propose_rules(doc, False, alignment, {})
+        return AttributionAssessment("ALIGNED", proposal, (), alignment)
+    if any(item is None for item in evidence):
+        return AttributionAssessment("STALE_SCOPE", {}, (f"AMBIGUOUS_BODY_OR_OWNER:{location}",))
+    speakers: dict[str, str] = {}
+    for item in evidence:
+        assert item is not None
+        for segment, speaker in item.items():
+            if segment in speakers and speakers[segment] != speaker:
+                return AttributionAssessment(
+                    "COMPOSITE_TEXT_ONLY", {}, (f"CONFLICTING_OWNERS:{location}",)
+                )
+            speakers[segment] = speaker
+    proposal = _propose_rules(doc, True, None, speakers)
+    return AttributionAssessment("SCOPED", proposal, (f"OWN_OCCURRENCE:{location}",))
+
+
+def assess(doc: dict, disagreements: list[str] | None = None) -> AttributionAssessment:
+    """Report rule disagreements independently, without widening write eligibility."""
+    assessment = _assess_scope(doc)
+    if (
+        disagreements is not None
+        and assessment.scope != "EXCLUDED"
+        and "INVALID_TEXT_ID" not in assessment.reasons
+    ):
+        # A modeled oration is diagnostic knowledge, not performer evidence.
+        # Preserve the existing ALIGNED rule path's lack of oration overrides.
+        orations = oration_attributes(doc) if assessment.scope != "ALIGNED" else {}
+        voices = _voice_rules(doc, orations)
+        for index, seg in enumerate(doc["segments"]):
+            if seg.get("type") != "verse" or not seg.get("words"):
+                continue
+            if seg["id"] not in voices:
+                continue
+            voice, cite = voices[seg["id"]]
+            from_rubric = voice_of(doc, index)
+            if from_rubric and from_rubric != voice:
+                disagreements.append(
+                    f"{doc['id']}.{seg['id']}: the text's rubric reads {from_rubric}, "
+                    f"{cite} rules {voice}"
+                )
+    return assessment
+
+
+def propose(doc, disagreements: list[str] | None = None) -> dict[str, dict]:
+    """Values only; callers needing coverage must inspect assess, not truthiness."""
+    return assess(doc, disagreements).proposals
+
+
+def _voice_rules(doc: dict, orations: dict[str, dict[str, str]]) -> dict[str, tuple[str, str]]:
+    """Resolve the existing voice precedence, never performer/source eligibility."""
     ruled = voice_ruling(doc)
+    out: dict[str, tuple[str, str]] = {}
+    for index, seg in enumerate(doc["segments"]):
+        if seg.get("type") != "verse" or not seg.get("words"):
+            continue
+        ref = f"{doc['id']}.{seg['id']}"
+        if seg["id"] in orations:
+            out[seg["id"]] = (
+                orations[seg["id"]]["voice"],
+                "RG 480–481, 511 d/i; Ordo Missae conclusion",
+            )
+        elif ref in VOICE_UNSETTLED:
+            continue  # No single voice is true of this segment.
+        elif ref in VOICE_SEGMENT_RULINGS:
+            out[seg["id"]] = VOICE_SEGMENT_RULINGS[ref]
+        elif ruled:
+            out[seg["id"]] = ruled
+        elif from_rubric := voice_of(doc, index):
+            out[seg["id"]] = (from_rubric, "?")
+    return out
+
+
+def _propose_rules(
+    doc: dict,
+    sourced: bool,
+    alignment: AttributionAlignment | None,
+    speakers: dict[str, str],
+) -> dict[str, dict]:
+    # This pure rule layer does not grant source eligibility to its callers.
     # General rubric rulings apply only after the actual body/tail/answer
     # boundaries are modeled. Never infer a public response inside old prose.
     orations = oration_attributes(doc) if sourced else {}
+    voices = _voice_rules(doc, orations)
     out: dict[str, dict] = {}
-    for i, seg in enumerate(doc["segments"]):
+    for seg in doc["segments"]:
         if seg.get("type") != "verse":
             continue
         words = seg.get("words") or []
         if not words:
             continue
-        key = flatten("".join(w["form"] for w in words))
         proposal = {}
         ref_s = f"{doc['id']}.{seg['id']}"
         if seg["id"] in orations:
@@ -734,94 +1100,39 @@ def _propose(
             proposal["speaker"] = SPEAKER_RULINGS[ref_s][0]
         elif alignment is not None:
             proposal["speaker"] = "sacerdos"
-        elif seg["id"] in positional:
-            proposal["speaker"] = positional[seg["id"]]
-        else:
-            hits = {speaker for speaker, line in lines if key and (key == line or key in line)}
-            if len(hits) == 1:
-                proposal["speaker"] = hits.pop()
-            # …and only where the markers were actually read: `sourced`.
-            # See span_covers — a stale range makes the markers run out,
-            # and this rule would then hand the celebrant a line the book
-            # marks otherwise.
-            elif sourced and is_mass:
-                # The Ordo prints the CELEBRANT's text unmarked and gives
-                # every other voice a marker — S. and M., V. and R., O. for
-                # all — as the archived source shows: the ministers'
-                # Confiteor is M., the Suscipiat is M., the responses are R.
-                # So unmarked text in the Mass is the priest's, and the
-                # Ritus servandus agrees, naming sacerdos or celebrans as
-                # the actor throughout its own prescriptions.
-                #
-                # A passage with no markers at all is not a passage this
-                # rule cannot see — it is a passage with no other voice in
-                # it, which is the strongest case of all: Aufer a nobis,
-                # the Lavabo, Quid retribuam are the priest alone.
-                proposal["speaker"] = "sacerdos"
+        elif seg["id"] in speakers:
+            proposal["speaker"] = speakers[seg["id"]]
 
-        ref = f"{doc['id']}.{seg['id']}"
-        # The law first, then what the text's own rubrics say. Where the two
-        # disagree the law wins and the disagreement is REPORTED, because a
-        # rubric read one way and a rubric read the other way is a finding,
-        # not a detail to settle silently.
-        from_rubric = voice_of(doc, i)
-        if seg["id"] in orations:
-            proposal["voice"] = orations[seg["id"]]["voice"]
-        elif ref in VOICE_UNSETTLED:
-            pass  # named in the table above: no single value is true of it
-        elif ref in VOICE_SEGMENT_RULINGS:
-            proposal["voice"] = VOICE_SEGMENT_RULINGS[ref][0]
-        elif ruled:
-            proposal["voice"] = ruled[0]
-        elif from_rubric:
-            proposal["voice"] = from_rubric
-
-        if (
-            disagreements is not None
-            and from_rubric
-            and "voice" in proposal
-            and from_rubric != proposal["voice"]
-        ):
-            cite = (
-                "RG 480–481, 511 d/i; Ordo Missae conclusion"
-                if seg["id"] in orations
-                else (VOICE_SEGMENT_RULINGS.get(ref) or ruled or ("", "?"))[1]
-            )
-            disagreements.append(
-                f"{ref}: the text's rubric reads {from_rubric}, {cite} rules {proposal['voice']}"
-            )
+        if seg["id"] in voices:
+            proposal["voice"] = voices[seg["id"]][0]
         if proposal:
             out[seg["id"]] = proposal
     return out
 
 
-def main() -> None:
+def main() -> int:
     write = "--write" in sys.argv
-    total = attributed = voiced = 0
+    total = attributed = voiced = changed_fields = 0
     disagreements: list[str] = []
-    unsourced: list[str] = []
+    unresolved: list[tuple[str, AttributionAssessment]] = []
+    excluded = 0
     aligned: list[tuple[str, AttributionAlignment]] = []
     for path in sorted((CORPUS / "texts").rglob("*.json")):
         doc = json.loads(path.read_text(encoding="utf-8"))
-        sourced, alignment = _coverage(doc)
-        stale = not sourced and alignment is None
-        if stale:
-            unsourced.append(doc["id"])
-        elif alignment is not None:
-            aligned.append((doc["id"], alignment))
-        proposal = _propose(doc, disagreements, sourced, alignment)
+        assessment = assess(doc, disagreements)
+        if assessment.scope == "EXCLUDED":
+            excluded += 1
+        elif not assessment.write_eligible:
+            unresolved.append((doc["id"], assessment))
+        if assessment.alignment is not None:
+            aligned.append((doc["id"], assessment.alignment))
+        proposal = assessment.proposals
         verses = [s for s in doc["segments"] if s.get("type") == "verse" and s.get("words")]
         total += len(verses)
         attributed += sum(1 for p in proposal.values() if "speaker" in p)
         voiced += sum(1 for p in proposal.values() if "voice" in p)
-        # Without direct coverage or a verified source-specific alignment, a
-        # text is READ but never WRITTEN. Its proposal is still shown, because it is
-        # what a person needs in order to fix the range; it is not applied,
-        # because what is already in the file was written when the range was
-        # right, and a run that quietly replaced it with a thinner reading
-        # would lose the better one. Run without --write, mend the header,
-        # and the text stops appearing here.
-        if write and stale:
+        # Unknown evidence is not a revocation of an authored fact.
+        if write and not assessment.write_eligible:
             continue
         if not write:
             if proposal:
@@ -862,11 +1173,12 @@ def main() -> None:
                 key = m_key.group(2)
                 value = (proposal.get(current) or {}).get(key)
                 if value is None:
-                    changed = True  # no longer proposed: drop the stale claim
+                    out.append(line)
                     continue
                 replacement = f'{_indent(line)}"{key}": "{value}",\n'
                 if replacement != line:
                     changed = True
+                    changed_fields += 1
                 out.append(replacement)
                 continue
             out.append(line)
@@ -876,6 +1188,7 @@ def main() -> None:
                     if key in p_ and key not in existing.get(current, set()):
                         out.append(f'{_indent(line)}"{key}": "{p_[key]}",\n')
                         changed = True
+                        changed_fields += 1
         if changed:
             path.write_text("".join(out), encoding="utf-8")
     for line in disagreements:
@@ -887,16 +1200,21 @@ def main() -> None:
             f"{alignment.substantive_variants} substantive variants); "
             "not literal source coverage"
         )
-    for text_id in unsourced:
-        print(f"UNSOURCED  {text_id}: the declared line range no longer holds this text's words")
-    verb = "applied" if write else "proposed"
+    for text_id, assessment in unresolved:
+        label: str = assessment.scope
+        if assessment.scope in {"STALE_SCOPE", "INVALID_SCOPE"}:
+            label = "UNSOURCED"
+        print(f"{label}  {text_id}: {assessment.scope}; {'; '.join(assessment.reasons)}")
     print(
-        f"\n{verb} {attributed}/{total} speakers, {voiced}/{total} voices"
+        f"\nproposed {attributed}/{total} speakers, {voiced}/{total} voices"
         f" ({len(disagreements)} rubric/law disagreements,"
-        f" {len(unsourced)} texts with a stale line range,"
+        f" {len(unresolved)} unresolved texts, {excluded} excluded texts,"
         f" {len(aligned)} texts with source-specific attribution alignment)"
     )
+    if write:
+        print(f"changed {changed_fields} fields; preserved {len(unresolved)} unresolved texts")
+    return int(write and bool(unresolved))
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

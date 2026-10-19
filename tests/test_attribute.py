@@ -18,6 +18,7 @@ import json
 from pathlib import Path
 
 import pytest
+from test_attribution_scope import bind_document_source, marker_source, own_source
 
 from checks.attribute import flatten, marked_lines, propose, span_covers, witness_ranges
 
@@ -56,6 +57,7 @@ class TestSpeakerMarkerCase:
     ):
         raw = tmp_path / "source.txt"
         raw.write_text(f"  {marker}. Dóminus vobíscum.\n", encoding="utf-8")
+        marker_source(tmp_path, monkeypatch, raw)
         monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [(raw, 1, 1, False)])
         expected = [(speaker, flatten("Dóminus vobíscum."))] if mass or marker == "O" else []
         assert marked_lines("ordinarium.test", mass=mass) == expected
@@ -67,6 +69,7 @@ class TestSpeakerMarkerCase:
     ):
         raw = tmp_path / "source.txt"
         raw.write_text(f"  {marker}. Dóminus vobíscum.\n", encoding="utf-8")
+        marker_source(tmp_path, monkeypatch, raw)
         monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [(raw, 1, 1, False)])
         assert marked_lines("ordinarium.test", mass=mass) == []
 
@@ -77,15 +80,32 @@ class TestSpeakerMarkerCase:
     ):
         raw = tmp_path / "source.txt"
         raw.write_text(f"{marker}. Dóminus vobíscum.\nR. Et cum spíritu tuo.\n", encoding="utf-8")
+        marker_source(tmp_path, monkeypatch, raw)
         monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [(raw, 1, 2, explicit)])
         assert span_covers(a_text("Dóminus vobíscum", "Et cum spíritu tuo"))
         assert marked_lines("ordinarium.test") == [("minister", flatten("Et cum spíritu tuo"))]
 
-    def test_a_formatted_conclusion_is_not_the_servers_response(self):
+    def test_a_formatted_conclusion_is_not_the_servers_response(self, tmp_path, monkeypatch):
         text_id = "proprium.dominica-xxii-post-pentecosten-postcommunio"
         doc = json.loads(
             (CORPUS / "texts/proprium" / f"{text_id.split('.', 1)[1]}.json").read_text()
         )
+        assert span_covers(doc)
+        # The real source assembles two physical occurrences; it remains textual only.
+        from checks import attribute
+
+        assert attribute.assess(doc).scope == "COMPOSITE_TEXT_ONLY"
+        assert propose(doc) == {}
+        assert marked_lines(text_id) == []
+        # Keep the original formatting/response rule positive in one controlled occurrence.
+        body = "\n".join(
+            prefix + " ".join(word["form"] for word in segment["words"])
+            for prefix, segment in zip(
+                ("v. ", "R. "), [s for s in doc["segments"] if s["type"] == "verse"], strict=True
+            )
+        )
+        own_source(tmp_path, doc, body + "\n")
+        monkeypatch.setattr(attribute, "CORPUS", tmp_path)
         assert span_covers(doc)
         assert marked_lines(text_id) == [("minister", flatten("Amen."))]
         assert propose(doc) == {
@@ -102,10 +122,9 @@ class TestSpeakerMarkerCase:
 
 class TestSpanCoverage:
     def test_a_text_that_declares_no_range_is_not_faulted_for_it(self, monkeypatch):
-        # The tool then reads the whole archive, which is its own fallback
-        # and not this check's business.
+        # Absence is unresolved, not a positive source comparison.
         monkeypatch.setattr("checks.attribute._source_ranges", lambda _: [])
-        assert span_covers(a_text("Introibo ad altare Dei")) is True
+        assert span_covers(a_text("Introibo ad altare Dei")) is False
 
     def test_a_range_holding_every_segment_passes(self, tmp_path, monkeypatch):
         raw = tmp_path / "src.txt"
@@ -301,7 +320,7 @@ class TestSpanCoverage:
 
 
 class TestProperAttribution:
-    def test_the_proper_is_inside_the_mass(self, monkeypatch):
+    def test_the_proper_is_inside_the_mass(self, tmp_path, monkeypatch):
         doc = {
             "id": "proprium.dominica-i-adventus-communio",
             "category": "proprium",
@@ -313,11 +332,10 @@ class TestProperAttribution:
                 }
             ],
         }
-        monkeypatch.setattr("checks.attribute.marked_lines", lambda _id, mass: [])
-        monkeypatch.setattr("checks.attribute.span_covers", lambda _doc: True)
+        bind_document_source(tmp_path, monkeypatch, doc)
         assert propose(doc) == {"s01": {"speaker": "sacerdos", "voice": "clara"}}
 
-    def test_the_ruling_applies_to_later_formularies(self, monkeypatch):
+    def test_the_ruling_applies_to_later_formularies(self, tmp_path, monkeypatch):
         doc = {
             "id": "proprium.dominica-iv-adventus-offertorium",
             "category": "proprium",
@@ -329,8 +347,7 @@ class TestProperAttribution:
                 }
             ],
         }
-        monkeypatch.setattr("checks.attribute.marked_lines", lambda _id, mass: [])
-        monkeypatch.setattr("checks.attribute.span_covers", lambda _doc: True)
+        bind_document_source(tmp_path, monkeypatch, doc)
         assert propose(doc) == {"s01": {"speaker": "sacerdos", "voice": "clara"}}
 
 
@@ -342,16 +359,22 @@ class TestTheCorpusItself:
         # never written. If this list ever shrinks to nothing the check
         # still holds; what must not happen is a text being written from a
         # range that no longer contains it.
-        stale = [
-            json.loads(p.read_text(encoding="utf-8"))["id"]
-            for p in sorted((CORPUS / "texts").rglob("*.json"))
-            if not span_covers(json.loads(p.read_text(encoding="utf-8")))
-        ]
-        # Every stale result must come from a witness that actually declares
-        # source lines.  A text with no such declaration uses the deliberate
-        # whole-archive fallback and is not mislabeled as malformed
-        # provenance.
-        for text_id in stale:
-            wdir = CORPUS / "witnesses" / text_id
-            headers = "".join(p.read_text(encoding="utf-8") for p in wdir.glob("*.txt"))
-            assert "# path:" in headers and "line" in headers, text_id
+        from checks.attribute import assess
+
+        allowed = {
+            "SCOPED",
+            "ALIGNED",
+            "UNSCOPED",
+            "INVALID_SCOPE",
+            "STALE_SCOPE",
+            "COMPOSITE_TEXT_ONLY",
+            "RAW_TEXT_ONLY",
+            "EXCLUDED",
+        }
+        for path in sorted((CORPUS / "texts").rglob("*.json")):
+            before = path.read_bytes()
+            result = assess(json.loads(before))
+            assert result.scope in allowed
+            if not result.write_eligible:
+                assert result.proposals == {} and result.reasons
+            assert path.read_bytes() == before
