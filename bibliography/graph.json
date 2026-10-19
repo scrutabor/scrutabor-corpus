@@ -10205,7 +10205,7 @@
         "scan": "leaves n298–n299 / PDF pp. 299–300",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The Ordo Missae prints the celebrant’s Confiteor across pp. 219–220. The rubric on p. 220 directs the ministers to repeat it with tibi, pater and te, pater in place of vobis, fratres and vos, fratres. The selected ministerial form applies those substitutions; it is not a second complete printed formula.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN",
       "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55"
@@ -10300,7 +10300,7 @@
         "scan": "leaf n62 / PDF p. 63",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n62/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "Ritus servandus X.6 prints Ecce Agnus Dei, one complete Domine, non sum dignus petition, and the distribution formula ending animam tuam. Its direction Quibus verbis tertio repetitis supplies the threefold petition in the selected reading; the seventy-one-word expansion is not printed consecutively.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN",
       "evidence_sha256": "3949cb8eadab9642b6f1d99baef1a7bed87bf84b4ab225c79fa83a58a4d215e9"
@@ -11279,7 +11279,7 @@
         "scan": "leaves n395–n396 / PDF pp. 396–397",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n395/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "Pages 314–315 print Panem caelestem, one complete Domine, non sum dignus petition under ter dicit, and the communion formula ending animam meam. The selected reading expands that petition three times according to the rubric; three complete copies are not printed there.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN",
       "evidence_sha256": "54b8eff70c464fed19219b37427a121119c904112e1a72506d92989ecd22cafd"
@@ -63005,6 +63005,26 @@
       "evidence_sha256": "2701acd15dc559283b10e5f1d7f6831ce9b5db34938dbae319cdc48d95e70e6d"
     },
     {
+      "id": "use.proprium.sanctissimae-trinitatis-introitus.expanded-doxology.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.sanctissimae-trinitatis-introitus",
+        "word": "w026"
+      },
+      "locator": {
+        "printed": "p. 219, Ordo Missae, Gloria Patri / Sicut erat",
+        "scan": "leaf n298 / PDF p. 299",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
+      },
+      "claim": "The page prints the twenty words of Gloria Patri and Sicut erat consecutively, through Amen, supplying the wording of w026–w045 expanded from the Trinity proper’s Gloria Patri cue. Its S./M. framing is not evidence for the Trinity Introit’s performer.",
+      "verified_on": "2026-10-18",
+      "decision": "RETAIN",
+      "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55"
+    },
+    {
       "id": "use.proprium.sanctissimae-trinitatis-introitus.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -63018,7 +63038,7 @@
         "scan": "leaf n447 / PDF p. 448; leaf n482 / PDF p. 483",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n447/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "Page 366 prints the fourteen-word antiphon and eleven-word psalm verse, followed by Gloria Patri and Benedicta cues. The selected reading expands the twenty-word doxology and repeats the antiphon. Page 401 attests the doxology in two halves separated by an Et laudabili refrain, not as one uninterrupted Introit formula.",
       "verified_on": "2026-08-31",
       "decision": "RETAIN",
       "evidence_sha256": "1e4659d2b0dc8b7801bd16759fb45ec22c6fa26f7553582cb26943ef9375cf30"
@@ -102756,12 +102776,18 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "98cb0c152ce2e342868c3f205f8f0e2799ad09771d22a3633cee55e82b610903",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "cfa6fccf9a9132bd76b08c4c79746f26afbf13802333b25e1b4c68f360ded54f",
+      "orthography_profile": "exact-source-with-declared-expansion",
+      "independence_basis": "Directly viewed Benziger 1962 proper, with explicit common doxology and antiphon-reprise expansion; pp. 401 and 219 are additional loci within the same edition, not independent printed witness families.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.sanctissimae-trinitatis-introitus.expanded-doxology.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
