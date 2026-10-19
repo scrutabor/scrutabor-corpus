@@ -198,8 +198,10 @@ def conclusion_relative(language, text, index, prev, first, group, gloss):
         return None
     if language == "pl":
         return group is None and gloss == "który"
-    exempt = group is not None and group["words"] == words and gloss == WHO_LIVES
-    return True if exempt else None
+    if language == "en":
+        exempt = group is not None and group["words"] == words and gloss == WHO_LIVES
+        return True if exempt else None
+    return None
 
 
 def missed_openings(language, text):
@@ -497,12 +499,46 @@ def test_conclusion_relative_allowance_is_context_bound(monkeypatch):
                 served(patch, text, pl=caption(polish, qui, wrong))
                 assert missed_openings("pl", text) == [(segment["id"], qui, wrong)]
         # Clause boundary and changed Latin context: the reviewed context is `…: Qui`.
-        for field, value, at in (("post", ".", index - 1), ("form", "Quae", index)):
+        for field, value, at in (
+            ("post", ".", index - 1),
+            ("form", "Quae", index),
+            ("lemma", "quis", index),
+        ):
             edited = deepcopy(doc)
             edited["segments"][where]["words"][at][field] = value
             with monkeypatch.context() as patch:
                 served(patch, text, doc=edited)
                 assert missed_openings("pl", text) == miss
+        # Identity: the allowance never leaves its address. A Polish group or a missing caption
+        # there is a miss; so is `który` at a `: Qui` one word later or in an untabled text.
+        grouped = deepcopy(polish)
+        following = segment["words"][index + 1]["id"]
+        grouped["segments"][segment["id"]].setdefault("alignments", []).append(
+            {"words": [qui, following], "anchor": qui, "gloss": "który"}
+        )
+        with monkeypatch.context() as patch:
+            served(patch, text, pl=grouped)
+            assert missed_openings("pl", text) == [(segment["id"], qui, "który")]
+        with monkeypatch.context() as patch:
+            served(patch, text, pl=caption(polish, qui, None))
+            assert missed_openings("pl", text) == [(segment["id"], qui, None)]
+        shifted = deepcopy(doc)
+        shifted["segments"][where]["words"][index]["post"] = ":"
+        shifted["segments"][where]["words"][index + 1].update({"form": "Qui", "lemma": "qui"})
+        with monkeypatch.context() as patch:
+            served(patch, text, doc=shifted, pl=caption(polish, following, "który"))
+            assert missed_openings("pl", text) == [(segment["id"], following, "który")]
+        unaligned = deepcopy(english)
+        unaligned["segments"][segment["id"]]["alignments"] = [
+            a for a in unaligned["segments"][segment["id"]]["alignments"] if a["words"][0] != qui
+        ]
+        for member, gloss in zip(
+            words, (WHO_LIVES, "with You", "lives", "and", "reigns"), strict=True
+        ):
+            unaligned["words"][member] = {"gloss": gloss}
+        with monkeypatch.context() as patch:
+            served(patch, text, en=unaligned)
+            assert missed_openings("en", text) == [(segment["id"], qui, WHO_LIVES)]
         # Actual initial: the conclusion served as its own segment opens with `Qui`.
         edited = deepcopy(doc)
         edited["segments"][where]["words"] = segment["words"][index:]
@@ -531,6 +567,11 @@ def test_conclusion_relative_allowance_is_context_bound(monkeypatch):
         served(patch, gospel, pl=caption(polish, site, "kto"))
         assert missed_openings("pl", gospel) == [("s01", site, "kto")]
     assert missed_openings("pl", gospel) == []
+    # The same adopted caption at a `: Qui` of a text outside this file's table is a miss here:
+    # the allowance is bound to the table, and that text's caption is pinned by the relative suite.
+    untabled = "proprium.dominica-ii-passionis-collecta"
+    assert layer("pl", untabled)["words"]["w039"] == {"gloss": "który"}
+    assert missed_openings("pl", untabled) == [("s01", "w039", "który")]
 
 
 def test_the_major_line_repairs_read_in_order():

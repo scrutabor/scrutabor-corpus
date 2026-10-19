@@ -8,11 +8,12 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
-from build_reader import bibliography, canon, dismissal, store
+from build_reader import bibliography, canon, commemorationes, dismissal, store
 from checks.formularies import SCHEMA as FORMULARY_SCHEMA
 from checks.formularies import TITLE_SCHEMA as FORMULARY_TITLE_SCHEMA
 from checks.formularies import ordinary_errors
 from kalendarium.canon import calendar_table
+from kalendarium.commemorationes import calendar_table as commemoration_table
 from kalendarium.dismissal import calendar_table as dismissal_table
 
 # The reader edition's OWN version. It moves when this file changes what it
@@ -41,7 +42,8 @@ from kalendarium.dismissal import calendar_table as dismissal_table
 # 5.8.0 preserves declared clausal complements separately from ordinary heads.
 # 5.9.0 adds the declared, explicit date/Mass Canon selection resource.
 # 5.11.0 carries Ordinary branches in neutral formulary schema 1.3.0.
-SCHEMA = "5.11.0"
+# 5.12.0 adds the declared commemoration occurrence/activation resource and its localized titles.
+SCHEMA = "5.12.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -858,6 +860,7 @@ def update_registry(corpus: Path) -> dict[str, int]:
 def emit(corpus: Path, out: Path) -> dict[str, Any]:
     """Write the whole reader edition. Returns what it wrote."""
     dismissal.input_bodies(corpus)
+    commemorationes.input_bodies(corpus)
     corpus_docs = read_corpus(corpus)
     evidence_graph, language_evidence = bibliography.load(corpus)
     evidence_errors = bibliography.validate(corpus, evidence_graph, language_evidence)
@@ -985,6 +988,12 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
             ),
         ),
         (
+            "commemorationes.json",
+            canon.artifact_json(
+                commemoration_table(formularies["formularies"], calendar, corpus=corpus)
+            ),
+        ),
+        (
             "normalization.json",
             json.dumps(NORMALIZATION_VECTORS, ensure_ascii=False, indent=1) + "\n",
         ),
@@ -1044,6 +1053,15 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
                 + "\n",
             ),
             (
+                f"languages/{language}/commemorationes.json",
+                json.dumps(
+                    commemorationes.language_catalog(corpus, language),
+                    ensure_ascii=False,
+                    indent=1,
+                )
+                + "\n",
+            ),
+            (
                 f"languages/{language}/bibliography/catalog.json",
                 json.dumps(
                     bibliography.public_catalog_delta(evidence_graph, language_evidence[language]),
@@ -1076,6 +1094,7 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
             "citations": f"languages/{language}/citations.json",
             "concordance": f"languages/{language}/concordance.json",
             "formularies": f"languages/{language}/formularies.json",
+            "commemorationes": f"languages/{language}/commemorationes.json",
             "bibliography": {
                 "catalog": f"languages/{language}/bibliography/catalog.json",
                 "index": f"languages/{language}/bibliography/index.json",
@@ -1131,6 +1150,7 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
             "calendar": "calendar.json",
             "canon": "canon.json",
             "dismissal": "dismissal.json",
+            "commemorationes": "commemorationes.json",
             "lexicon": "lexicon/heads.json",
             "morphology": "tables/morphology.json",
             "analysis": "tables/analysis.json",
@@ -1340,6 +1360,7 @@ def verify_edition_artifacts(
         )
     )
     errors.extend(dismissal.verify(corpus, out, manifest, SCHEMA))
+    errors.extend(commemorationes.verify(corpus, out, manifest, SCHEMA))
     if errors:
         return errors  # Canon dependencies must resolve before global index checks
 
@@ -1352,7 +1373,8 @@ def verify_edition_artifacts(
         declared.add(language["path"])
         language_manifest = json.loads((out / language["path"]).read_text(encoding="utf-8"))
         declared.update(
-            language_manifest[key] for key in ("lexicon", "citations", "concordance", "formularies")
+            language_manifest[key]
+            for key in ("lexicon", "citations", "concordance", "formularies", "commemorationes")
         )
         declared.update(language_manifest["bibliography"].values())
         declared.update(entry["path"] for entry in language_manifest["texts"])

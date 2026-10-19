@@ -19,6 +19,7 @@ from checks.bibliography import check as check_bibliography
 from checks.capitals import check as check_capitals
 from checks.citations import check as check_citation_titles
 from checks.collate import collate
+from checks.commemorationes import check as check_commemorationes
 from checks.conventions import check as check_conventions
 from checks.delivery import check_doc as check_delivery
 from checks.document import check as check_document
@@ -458,6 +459,15 @@ def run_all() -> int:
         print(f"ERROR: {message}")
     rc |= 1 if formulary_errors else 0
     print("FORMULARIES " + " ".join(f"{key}={value}" for key, value in formulary_counts.items()))
+
+    commemoration_errors, commemoration_counts = check_commemorationes(CORPUS)
+    for message in commemoration_errors:
+        print(f"ERROR: {message}")
+    rc |= 1 if commemoration_errors else 0
+    print(
+        "COMMEMORATIONES "
+        + " ".join(f"{key}={value}" for key, value in commemoration_counts.items())
+    )
 
     attested = readings(corpus_docs)
     print(

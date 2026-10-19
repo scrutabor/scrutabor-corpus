@@ -129,7 +129,9 @@ def test_the_authored_graph_accounts_for_every_audited_legacy_citation():
         "mapped": 1872,
         "removed": 899,
         "unmapped": 0,
-        "sha256": "7ea774696dd362efcaaf6921239d9ec898bf9a569a9e6fbaf86baab58816b48c",
+        # The seal follows the one adopted legacy-citation change: the Lewis and Short
+        # locator of the amen note, `s.v. amen, I` -> `s.v. amen, III.A–B` (2026-10-19).
+        "sha256": "7d7019f4a409297c093dda8aa5f7615342c81b20c77731212477d679bcdcf017",
         "complete": True,
     }
 

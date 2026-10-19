@@ -33,6 +33,19 @@ CASES = [
         "Those who trust in the Lord",
     ),
     (
+        "litaniae-maiores-collecta",
+        "s01",
+        13,
+        "confídimus",
+        "ind",
+        "pres",
+        "pl",
+        1,
+        (10, 13),
+        "Twojej dobroci ufamy",
+        "trust in Your compassion",
+    ),
+    (
         "dominica-i-adventus-introitus",
         "s01",
         10,
@@ -340,7 +353,7 @@ def realized(doc, layer, segment, first, last):
 
 def test_complete_confido_denominator():
     expected = {(text_id(c), c[1], word_id(c[2])) for c in CASES}
-    assert len(expected) == 21 and len({c[0] for c in expected}) == 19
+    assert len(expected) == 22 and len({c[0] for c in expected}) == 20
     forms = {
         unicodedata.normalize("NFD", c[3]).encode("ascii", "ignore").decode().lower() for c in CASES
     }

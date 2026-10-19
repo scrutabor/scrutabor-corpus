@@ -176,6 +176,39 @@ It is the shared denominator for text, word, verse-segment, language-package,
 formulary, observance and component-use counts; consumers do not maintain
 independent copies of those totals.
 
+## Commemoration assemblies
+
+`commemorationes/<id>.json` (commemoration schema `1.0.0`) is the canonical
+contract for a set of orations that joins a Mass of the day under the rubrics
+and is addressed by its own occurrence rule, not by the winning Mass. The first
+is the Greater Litanies: Rubricae generales 80 fix it on April 25, moved to the
+following Tuesday only when that day is Easter Sunday or Easter Monday; 81 keep
+it in the Mass alone and outside the de Tempore class; 108–109 f make it a
+privileged commemoration, made in all Masses; 111 and 434 admit one privileged
+commemoration on first-class days, on second-class Sundays in place of the
+second-class feast, and on other second-class days; 436–437 give each
+commemoration oration its own conclusion after the corresponding Mass oration.
+
+Exact fields: `commemoration_schema`, `id` (the file name), `title`, `rank`
+(`privileged` or `ordinary`), `scope` (`missa`), `occurrence` (`month`, `day`,
+`transfer`: `easter-sunday-or-monday-to-tuesday`), `conclusion` (`separate`),
+`slots` and `rubrics`. The three `slots` are ordered `collecta`, `secreta`,
+`postcommunio`; each names the Mass role it follows (`after`), the dotted text
+id and its relation: `proper` addresses `proprium.<id>-<key>`, `reference`
+transfers another Proper text (the Rogation Secret is the printed Haec munera,
+`proprium.dominica-i-passionis-secreta`). `rubrics` records the citations for
+`date`, `scope`, `rank`, `admission` and `conclusion` as nonempty strings. A
+Proper text reached only by a commemoration slot counts as reached. Each
+published language carries `languages/<lang>/commemorationes/<id>.json` with
+`commemoration_schema`, `id`, `language` and the localized `title`.
+
+Nothing here infers a procession or locally mandated supplication, a
+particular calendar, an Office commemoration, the impeded-votive
+single-conclusion route or any ceremony selector; those remain explicit and
+out of this contract. The delivery of a non-final Secret's terminal and Amen
+is a presentation rule of the assembled Mass (RG 480–481), not a change to any
+canonical text.
+
 ## Reader Canon selection
 
 Reader edition 5.9.0 adds root-manifest `base.canon: "canon.json"`. This is a
@@ -233,6 +266,32 @@ calendar and authored catalogue. The artifact verifier independently iterates
 the canonical days and Masses without calling the producer selector. Both
 neutral and current PL/EN packages must declare and transport both complete
 bodies. Missing resource, body or localized declaration fails closed.
+
+## Reader commemoration selection
+
+Reader edition 5.12.0 adds `base.commemorationes: "commemorationes.json"`,
+independently versioned selection schema 1.0.0, and in each language manifest
+`commemorationes: "languages/<lang>/commemorationes.json"` with the localized
+titles. Exact fields of the neutral resource are `schema_version`,
+`commemorations` (ordered by identity: `id`, the Latin `title`, `rank`,
+`conclusion`, `slots` with `key`, `after` and the slash text address), `profiles` (one profile,
+`ordinary-separate-conclusions`), `masses` (sorted authored Mass identities),
+`occurrences` (sorted unique `[YYYY-MM-DD, commemoration]` rows for every
+year of the supported span, published whether or not a Mass is represented on
+that day) and `pairs` (sorted unique `[YYYY-MM-DD, mass, commemoration,
+profile]` rows for every represented Mass on an occurrence date).
+
+An occurrence without a pair is an acknowledged date, not permission to
+assemble: no substitute Mass, no previous Sunday, no Mark transfer. A pair is
+a positive decision that the commemoration's slots follow the corresponding
+orations of that Mass under separate conclusions. Ordinary-only `none`
+bypasses this resource; unsupported pairs do not fall back. The producer
+establishes validity by exact typed input equality with a fresh reconstruction
+from the Roman calendar and authored catalogue; the artifact verifier iterates
+the canonical days anew and reapplies the transfer rule without calling the
+producer. Neutral and every published language package must declare and
+transport all slot bodies and the localized titles. Missing resource, body or
+declaration fails closed.
 
 ## Bibliography and evidence graph
 

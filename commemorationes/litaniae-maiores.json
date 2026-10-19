@@ -1,0 +1,40 @@
+{
+  "commemoration_schema": "1.0.0",
+  "id": "litaniae-maiores",
+  "title": "Litaniæ maiores",
+  "rank": "privileged",
+  "scope": "missa",
+  "occurrence": {
+    "month": 4,
+    "day": 25,
+    "transfer": "easter-sunday-or-monday-to-tuesday"
+  },
+  "conclusion": "separate",
+  "slots": [
+    {
+      "key": "collecta",
+      "after": "collecta",
+      "text": "proprium.litaniae-maiores-collecta",
+      "relation": "proper"
+    },
+    {
+      "key": "secreta",
+      "after": "secreta",
+      "text": "proprium.dominica-i-passionis-secreta",
+      "relation": "reference"
+    },
+    {
+      "key": "postcommunio",
+      "after": "postcommunio",
+      "text": "proprium.litaniae-maiores-postcommunio",
+      "relation": "proper"
+    }
+  ],
+  "rubrics": {
+    "date": "Rubricae generales 80: April 25; when that day is Easter Sunday or Easter Monday, the following Tuesday.",
+    "scope": "Rubricae generales 81: observed in the Mass only, not in the Office, and not a commemoration de Tempore.",
+    "rank": "Rubricae generales 108–109 f: a privileged commemoration, made in all Masses.",
+    "admission": "Rubricae generales 111 a–c and 434 a–c: one privileged commemoration is admitted on first-class days, on second-class Sundays in place of the second-class feast, and on other second-class days.",
+    "conclusion": "Rubricae generales 436–437: each commemoration oration follows the corresponding Mass oration under its own, separate conclusion; 480–481: only the last Secret's terminal is audible."
+  }
+}

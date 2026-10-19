@@ -327,7 +327,11 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
             elif len(names) != len(set(names)):
                 errors.append(f"{observance}: duplicate variants {names}")
 
-    missing_propers = sorted(proper_ids - set(used_texts))
+    # A commemoration slot reaches its proper exactly as a Mass component does: the
+    # Rogation orations join the Mass of the day under the rubrics (checks/commemorationes.py).
+    from checks.commemorationes import slot_texts
+
+    missing_propers = sorted(proper_ids - set(used_texts) - set(slot_texts(corpus)))
     if missing_propers:
         errors.append(
             "formularies: proprium texts outside every assembly: " + ", ".join(missing_propers)
