@@ -22,13 +22,13 @@ LATIN = {
     COLLECT: (
         "Præsta, quǽsumus, omnípotens Deus: ut qui in afflictióne nostra de tua pietáte "
         "confídimus; contra advérsa ómnia, tua semper protectióne muniámur. Per Dóminum nostrum "
-        "Iesum Christum, Fílium tuum, qui tecum vivit et regnat in unitáte Spíritus Sancti, "
+        "Iesum Christum Fílium tuum: Qui tecum vivit et regnat in unitáte Spíritus Sancti, "
         "Deus, per ómnia sǽcula sæculórum. Amen."
     ),
     POSTCOMMUNION: (
         "Vota nostra, quǽsumus, Dómine, pio favóre proséquere: ut, dum dona tua in tribulatióne "
         "percípimus, de consolatióne nostra in tuo amóre crescámus. Per Dóminum nostrum Iesum "
-        "Christum, Fílium tuum, qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per "
+        "Christum Fílium tuum: Qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per "
         "ómnia sǽcula sæculórum. Amen."
     ),
 }
@@ -44,8 +44,10 @@ ACCIDENTALS = {
     COLLECT: [
         ("w005", "ut", {"vatican": "ut,"}, "punctuation"),
         ("w022", "Dóminum", {"mr": "Dominum"}, "accent"),
-        ("w025", "Christum,", {"mr": "Christum"}, "punctuation"),
+        ("w025", "Christum", {"vatican": "Christum,"}, "punctuation"),
         ("w026", "Fílium", {"mr": "Filium"}, "accent"),
+        ("w027", "tuum:", {"mr": "tuum,", "vatican": "tuum,"}, "punctuation"),
+        ("w028", "Qui", {"mr": "qui", "vatican": "qui"}, "capitalization"),
         ("w034", "unitáte", {"mr": "unitate"}, "accent"),
         ("w035", "Spíritus", {"mr": "Spiritus"}, "accent"),
         ("w039", "ómnia", {"mr": "omnia"}, "accent"),
@@ -55,8 +57,10 @@ ACCIDENTALS = {
     ],
     POSTCOMMUNION: [
         ("w023", "Dóminum", {"mr": "Dominum"}, "accent"),
-        ("w026", "Christum,", {"mr": "Christum"}, "punctuation"),
+        ("w026", "Christum", {"vatican": "Christum,"}, "punctuation"),
         ("w027", "Fílium", {"mr": "Filium"}, "accent"),
+        ("w028", "tuum:", {"mr": "tuum,", "vatican": "tuum,"}, "punctuation"),
+        ("w029", "Qui", {"mr": "qui", "vatican": "qui"}, "capitalization"),
         ("w035", "unitáte", {"mr": "unitate"}, "accent"),
         ("w036", "Spíritus", {"mr": "Spiritus"}, "accent"),
         ("w040", "ómnia", {"mr": "omnia"}, "accent"),
@@ -65,13 +69,23 @@ ACCIDENTALS = {
         ("w043", "Amen.", {"mr": "Amen;", "vatican": "Amen;"}, "punctuation"),
     ],
 }
+# Latin part names, the corpus majority measured 2026-10-20 (SM-ABOUT-1).
 ABOUT = {
-    ("pl", COLLECT): "Kolekta wspomnienia Litanii Większych w Mszale Rzymskim z 1962 roku.",
+    ("pl", COLLECT): "Collecta wspomnienia Litanii Większych w Mszale Rzymskim z 1962 roku.",
     (
         "en",
         COLLECT,
-    ): "The collect for the commemoration of the Greater Litanies in the 1962 Roman Missal.",
+    ): "The collecta of the commemoration of the Greater Litanies in the 1962 Roman Missal.",
+    (
+        "pl",
+        POSTCOMMUNION,
+    ): "Postcommunio wspomnienia Litanii Większych w Mszale Rzymskim z 1962 roku.",
+    (
+        "en",
+        POSTCOMMUNION,
+    ): "The postcommunio of the commemoration of the Greater Litanies in the 1962 Roman Missal.",
 }
+CLASSES = ["accent", "capitalization", "punctuation"]
 NOTE = {
     "pl": (
         "Przyjmowane dary i doświadczana pociecha uzasadniają prośbę o wzrost miłości do Boga. "
@@ -122,11 +136,13 @@ def test_the_body_and_the_supplied_conclusion_are_exactly_inventoried(text):
     cue = first["words"][body]
     assert (cue["form"], cue["lemma"], cue["head"]) == ("Per", "per", f"w{body + 2:03d}")
     relative = first["words"][body + 7]
+    # House conclusion of the corpus's other orations (SM-LAT-1): `Fílium tuum: Qui tecum`.
     assert (relative["form"], relative["lemma"], first["words"][body + 6]["post"]) == (
+        "Qui",
         "qui",
-        "qui",
-        ",",
+        ":",
     )
+    assert "post" not in first["words"][body + 4] and first["words"][body + 4]["form"] == "Christum"
     assert amen["words"][0] == {
         "form": "Amen",
         "lemma": "amen",
@@ -187,7 +203,7 @@ def test_the_witnesses_are_declared_same_edition_composites(text):
     apparatus = load(f"witnesses/{text}/apparatus.json")
     assert apparatus["summary"] == {
         "entries": len(ACCIDENTALS[text]),
-        "classes": ["accent", "punctuation"],
+        "classes": CLASSES,
     }
     assert [
         (e["at"], e["ours"], e["witnesses"], e["class"]) for e in apparatus["adjudicated"]
@@ -228,7 +244,7 @@ def test_the_graph_records_stay_bounded_and_pending(text):
     assert collation["apparatus_sha256"] == digest(load(f"witnesses/{text}/apparatus.json"))
     assert collation["apparatus"] == {
         "entries": len(ACCIDENTALS[text]),
-        "classes": ["accent", "punctuation"],
+        "classes": CLASSES,
     }
     assert collation["review"] == {"status": "pending"}
 
@@ -246,12 +262,25 @@ def test_the_captions_keep_the_sentence_internal_relative_and_the_english_group(
     assert polish["words"]["w029"] == {"gloss": "który"} and english["words"]["w029"] == {
         "gloss": "who"
     }
-    (opening,) = [a for a in english["segments"]["s01"]["alignments"] if a["words"][0] == "w001"]
-    assert opening == {
-        "words": [f"w{i:03d}" for i in range(1, 8)],
-        "anchor": "w007",
-        "gloss": "Attend to our prayers with loving favor, we pray, Lord",
-    }
+    # EN-12 (2026-10-20): smallest natural groups; quǽsumus stands alone; no vocative O.
+    opening = [
+        a
+        for a in english["segments"]["s01"]["alignments"]
+        if set(a["words"]) & {f"w{i:03d}" for i in range(1, 8)}
+    ]
+    assert opening == [
+        {"words": ["w001", "w002"], "anchor": "w001", "gloss": "Our prayers"},
+        {"words": ["w005", "w006"], "anchor": "w006", "gloss": "with loving favor"},
+    ]
+    assert [english["words"][w].get("gloss") for w in ("w003", "w004", "w007")] == [
+        "we pray",
+        "Lord",
+        "attend to",
+    ]
+    assert (polish["about"], english["about"]) == (
+        ABOUT["pl", POSTCOMMUNION],
+        ABOUT["en", POSTCOMMUNION],
+    )
     assert polish["words"]["w020"] == {"explanation": NOTE["pl"]}
     assert english["words"]["w020"] == {"explanation": NOTE["en"]}
     for language in ("pl", "en"):

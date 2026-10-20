@@ -94,7 +94,8 @@ FIXTURES: dict[str, Any] = {
     ],
     "baselines": {
         "apostolorum": {
-            "protected_digest": "5bb196c048a922e07a5a269d033098993e707a09f5ff97020fd3737d41ae8a9b",
+            # Successor of 2026-10-20 (St Mark audit EN-11: about-note without successors).
+            "protected_digest": "ec15d958bc085f7fb0eff2407ae2c50aea50697278ff072c8aac5f0a39be536f",
             "words": {},
             "had_alignments": {"s04": True},
             "absorbed": {"s04": []},

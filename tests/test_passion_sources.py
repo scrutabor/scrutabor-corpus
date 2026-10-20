@@ -255,8 +255,9 @@ def test_the_major_line_repairs_read_in_order():
     assert "Himself | offered | unspotted | to God" in epistle
     assert "[those who are called may receive the promise of the eternal inheritance]" in epistle
     secret = line("en", PA + "secreta")
-    assert "both | [may loose the bonds of our perversity] | and" in secret
-    assert "[may obtain for us the gifts of Your mercy]" in secret
+    # St Mark audit EN-12 (2026-10-20): the smallest natural groups and word captions.
+    assert "both | the bonds | [of our perversity] | may loose | and" in secret
+    assert "and | of Your | for us | mercy | the gifts | may obtain | Through" in secret
     assert "[their iniquities] | [the just Lord] | has cut" in line("en", PA + "tractus")
     gospel = line("pl", PA + "evangelium")
     assert "zachowa | śmierci | nie | ujrzy" in gospel

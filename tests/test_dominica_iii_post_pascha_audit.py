@@ -339,13 +339,6 @@ VOCATIVE_GROUPS = [
         "May this Communion, Lord, cleanse us",
     ),
     (
-        "proprium.litaniae-maiores-postcommunio",
-        1,
-        7,
-        7,
-        "Attend to our prayers with loving favor, we pray, Lord",
-    ),
-    (
         "proprium.nativitas-domini-in-aurora-postcommunio",
         1,
         8,
@@ -361,6 +354,10 @@ VOCATIVE_GROUPS = [
         "May the gracious prayer of Your saints not fail us, Lord",
     ),
 ]
+# Successor of 2026-10-20 (St Mark audit EN-12): the Litanies Postcommunion's 7-word group was
+# split into the smallest natural groups, so its vocative is now a bare word caption. The same
+# particle guard and restored-particle control apply to that word.
+VOCATIVE_WORDS = [("proprium.litaniae-maiores-postcommunio", "s01", "w004", "Lord")]
 PARTICLE = re.compile(r"(?<![A-Za-z])O (?=[A-Z])")
 
 
@@ -414,6 +411,34 @@ def test_restored_particle_is_rejected(site):
     with pytest.raises(AssertionError):
         assert_vocative_group(doc, bad, site)
     assert_vocative_group(doc, lay, site)
+
+
+def assert_vocative_word(doc, lay, site):
+    _, segment, wid, gloss = site
+    latin = words(doc)
+    assert latin[wid]["morph"].get("case") == "voc"
+    assert lay["words"][wid] == {"gloss": gloss}
+    assert touching(lay, [wid], segment) == []
+    assert re.search(r"\b(Lord|God)\b", gloss)
+    assert vocative_particles(doc, lay) == []
+    assert interlinear.check(doc, lay) == []
+
+
+@pytest.mark.parametrize("site", VOCATIVE_WORDS, ids=[s[0] for s in VOCATIVE_WORDS])
+def test_english_vocative_word_has_no_particle(site):
+    assert_vocative_word(core(site[0]), layer("en", site[0]), site)
+
+
+@pytest.mark.parametrize("site", VOCATIVE_WORDS, ids=[s[0] for s in VOCATIVE_WORDS])
+def test_restored_word_particle_is_rejected(site):
+    doc, lay = core(site[0]), layer("en", site[0])
+    assert_vocative_word(doc, lay, site)
+    bad = deepcopy(lay)
+    bad["words"][site[2]]["gloss"] = "O " + site[3]
+    assert vocative_particles(doc, bad) == [(site[0], site[2], "O " + site[3])]
+    with pytest.raises(AssertionError):
+        assert_vocative_word(doc, bad, site)
+    assert_vocative_word(doc, lay, site)
 
 
 def english_texts():
@@ -915,6 +940,7 @@ def test_preface_witness_damage_is_rejected(damage, tmp_path):
 CHANGED = {
     "pl": [III + "introitus", III + "postcommunio", GOSPEL, III + "communio", *PREFACES],
     "en": [text for text, *_ in VOCATIVE_GROUPS if text != III + "secreta"]
+    + [text for text, *_ in VOCATIVE_WORDS]
     + [III + "secreta", III + "alleluia", III + "epistola", GOSPEL, III + "communio", *SPLIT],
 }
 

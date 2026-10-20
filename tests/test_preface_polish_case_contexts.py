@@ -32,11 +32,13 @@ FIXTURES: dict[str, Any] = {
     "baselines": {
         "apostolorum": {
             "segment": "s03",
-            # Retains Panowaniami in the shared closing's prose and word help.
-            "before_sha256": "13b9288e98c998b25539f84ef4eb54f8a3e3a6e707c8c82f6d38e07e29ee5cfa",
+            # Retains Panowaniami in the shared closing's prose and word help. Successor of
+            # 2026-10-20 (St Mark audit PL-10 pokornie, PL-11 about without successors).
+            "before_sha256": "c01c00c328f7518807f1dd7123de3d9c2b8892e10f29f1b17cb2a410e1100b6e",
             # Covers the s01 hand rubric (lower-case præfationis, p. 225) and the edition name.
             "core_digest": "cdaf030f35949c5efc3084da616d7c5e15c8950e021a38749eea1b4a401b0263",
-            "english_digest": "5bb196c048a922e07a5a269d033098993e707a09f5ff97020fd3737d41ae8a9b",
+            # Successor of 2026-10-20 (St Mark audit EN-11 about without successors).
+            "english_digest": "ec15d958bc085f7fb0eff2407ae2c50aea50697278ff072c8aac5f0a39be536f",
             "words": {
                 "w014": {"gloss": "trzodę"},
                 "w015": {"gloss": "Twą"},
@@ -49,7 +51,7 @@ FIXTURES: dict[str, Any] = {
             "context": {
                 "w009": "Ciebie",
                 "w010": "Panie",
-                "w011": "błagalnie",
+                "w011": "pokornie",
                 "w012": "błagać",
                 "w013": "abyś",
                 "w014": "trzodę",

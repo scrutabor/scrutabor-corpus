@@ -43,7 +43,8 @@ CASES = [
         1,
         (10, 13),
         "Twojej dobroci ufamy",
-        "trust in Your compassion",
+        # St Mark audit EN-12 (2026-10-20): word captions in Latin order, no clause group.
+        "in Your compassion trust",
     ),
     (
         "dominica-i-adventus-introitus",
