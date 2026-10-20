@@ -104,7 +104,9 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "ascensionis": {
-            "protected_digest": "63fa3d28ea0a15a19a566d2b68f2503f7dbf924ba9a277139291ee5405300fa0",
+            # Successor of 2026-10-20 (Ascension audit): captions w001, w026, w049 (EN-CAP)
+            # and the about-note (EN-ABOUT-1).
+            "protected_digest": "39800ee8102a783f4fb4c0bacdb60776a8cf16ff82a92c1ad75431a9b5072d28",
             "words": {
                 "w042": {"gloss": "that"},
                 "w043": {"gloss": "us"},

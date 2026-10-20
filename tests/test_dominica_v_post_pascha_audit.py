@@ -442,7 +442,10 @@ def test_the_three_introits_read_the_psalm_verse_alike(language):
 def test_the_introit_verses_keep_their_wording():
     assert "make His praise glorious" in layer("en", INTROIT)["segments"]["s01"]["translation"]
     epiphany = layer("en", EPIPHANY_INTROIT)["segments"]["s01"]["translation"]
-    assert "Sing joyfully to God, all the earth;" in epiphany
+    # Ascension audit successor (2026-10-20): V-RES-1 aligns this verse with its
+    # caption (Iubiláte, Shout for joy).
+    assert "Shout for joy to God, all the earth;" in epiphany
+    assert "Sing joyfully" not in epiphany
     assert "give glory to His praise" in epiphany
     assert (
         "oddajcie Mu chwałę, wysławiając Go"

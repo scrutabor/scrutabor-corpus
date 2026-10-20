@@ -14169,6 +14169,24 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
+      "id": "use.proprium.ascensio-domini-offertorium.lu1961",
+      "edition": "edition.liber-usualis.1961",
+      "digital_item": "item.liber-usualis.1961.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.ascensio-domini-offertorium"
+      },
+      "locator": {
+        "printed": "p. 849",
+        "scan": "PDF p. 1037"
+      },
+      "claim": "The chant book prints the complete Offertory of the Ascension without et before Dóminus. The directly viewed page forms this declared complete comparison; the edition follows the Missal.",
+      "verified_on": "2026-10-20",
+      "evidence_sha256": "a3d5fdb3308dcabc0474eb99d2f8a5509e52c76380ae41ec373ab3aa3e7db6b9",
+      "decision": "RETAIN"
+    },
+    {
       "id": "use.proprium.ascensio-domini-offertorium.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -14186,6 +14204,27 @@
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
       "evidence_sha256": "7ba3cbda913ef676345c1846e4208928954d88a024d5dd750f48f97327f166bf"
+    },
+    {
+      "id": "use.proprium.ascensio-domini-offertorium.sunday-after-ascension-reprint.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.ascensio-domini-offertorium"
+      },
+      "locator": {
+        "printed": "p. 347",
+        "scan": "leaf n428 / PDF p. 429",
+        "section": "Dominica post Ascensionem Domini, Antiphona ad Offertorium, Ps. 46, 6",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n428/mode/1up"
+      },
+      "claim": "The Mass of the Sunday after the Ascension prints this Offertory in full, identical in letters, accents and punctuation to page 346 and the selected text.",
+      "verified_on": "2026-10-20",
+      "evidence_sha256": "1d20acd1bce0b46b4fecb58142b9373df6ba9184bbe420498d84eaccaa24ab25",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded directly read evidence from the approved Benziger printing; no witness or collation review is promoted."
     },
     {
       "id": "use.proprium.ascensio-domini-postcommunio.do44667ff",
@@ -71449,7 +71488,7 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "14fa2c46c71c95e812e7818314683b69206d79f82d1ed457c7bb0543d137a2bf",
+      "transcription_sha256": "c33d6a65c11f242f4dc51af56e3d15ff4dcaa8ac84f064f96a03cedeff17d131",
       "orthography_profile": "received-transcription-with-bounded-source-correction",
       "independence_basis": "Controlling printed edition identified at pp. 345–346, n426–n427. The received transcription was checked at w037 against the page image on 2026-09-19; the digital witness has a distinct reading. A fresh complete transcription and full punctuation collation are not asserted.",
       "transcription": "mr",
@@ -71547,6 +71586,26 @@
       "source_dependencies": {
         "uses": [],
         "raw_binding": "do-proprium-ascensio-domini-offertorium"
+      }
+    },
+    {
+      "id": "witness.proprium.ascensio-domini-offertorium.lu1961",
+      "text": "proprium.ascensio-domini-offertorium",
+      "use": "use.proprium.ascensio-domini-offertorium.lu1961",
+      "role": "approved_corroboration",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "b1b2b315952114166f11b5964375e6ec87b6010653402207c812e2e0bf936950",
+      "orthography_profile": "exact-musical-lyric",
+      "independence_basis": "Separate 1961 printed liturgical book, read directly on its page image; no assertion of genealogical independence from the Roman liturgical tradition.",
+      "transcription": "lu",
+      "review": {
+        "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -107845,7 +107904,7 @@
           "substantive"
         ]
       },
-      "apparatus_sha256": "a64b2293c4cbda568cd042d20d52ba4c9d7422039763401c2593d7580b68e781",
+      "apparatus_sha256": "7cfd0fafc9c1632cdd0fa145a08d9b5af41d92e24fd82e5d19ecf2408737a8c8",
       "review": {
         "status": "pending"
       }
@@ -107867,7 +107926,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "c8d7c7f0aa36bfefef4b64c470c10911636cd95c424d4b3197eb289ebfd79b84",
+      "apparatus_sha256": "169692932d8151a0ee13f89d30cd406ef3b4af258544dff990e8b21b083b7b4f",
       "review": {
         "status": "pending"
       }
@@ -107899,15 +107958,18 @@
       "selected_text_sha256": "6b6fdbba8c99ea5da7391523adbb8822c7abbc9fdb12acebc6f0dc7f25de6b64",
       "witnesses": [
         "witness.proprium.ascensio-domini-offertorium.do44667ff",
+        "witness.proprium.ascensio-domini-offertorium.lu1961",
         "witness.proprium.ascensio-domini-offertorium.mr1962"
       ],
       "apparatus": {
-        "entries": 2,
+        "entries": 7,
         "classes": [
+          "accent",
+          "omission",
           "orthography"
         ]
       },
-      "apparatus_sha256": "cd036603bd28e63babbbc2cebf7a73fcfc5a75274db57a4cdc10234f793f9b0d",
+      "apparatus_sha256": "2ed43b2c0fab22987d84fd5c1d9105881a470c88f05680188468e418c047c029",
       "review": {
         "status": "pending"
       }
