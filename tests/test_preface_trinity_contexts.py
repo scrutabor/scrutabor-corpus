@@ -523,23 +523,43 @@ def assert_supported_polish(layer, prose):
     assert prose in {PROSE["after"], FORMAL_PROSE}
 
 
+# The 2026-10-20 relabel (second round): the preface address is trivial and the unproven `own`
+# claims are held as unsettled working wording (tests/test_own_relabel_2026_10_20_round_2.py).
+RELABEL_2026_10_20 = {
+    "ordinarium.praefatio-sanctissimae-trinitatis.s03.en": ("trivial", "working"),
+    "ordinarium.praefatio-sanctissimae-trinitatis.s03.pl": ("trivial", "working"),
+    "ordinarium.praefatio-sanctissimae-trinitatis.s05.pl": ("working-unsettled", "working"),
+    "ordinarium.praefatio-sanctissimae-trinitatis.s06.pl": ("working-unsettled", "working"),
+    "ordinarium.praefatio-sanctissimae-trinitatis.s07.en": ("working-unsettled", "working"),
+}
+
+
+def relabelled(rows):
+    result = deepcopy(rows)
+    for row in result:
+        if row["site"] in RELABEL_2026_10_20:
+            row["origin"], row["review"] = RELABEL_2026_10_20[row["site"]]
+    return result
+
+
 def expected_records():
     result = deepcopy(FIXTURES["provenance_before"])
     row = next(r for r in result if r["segment"] == "s05")
     row["target_sha256"] = canonical_hash(PROSE["after"])
     row["review"] = "working"
-    return result
+    return relabelled(result)
 
 
 def assert_provenance(core, layer, records, english_records):
     assert records == expected_records()
-    assert english_records == current_english_rows(FIXTURES["english_provenance"])
+    assert english_records == relabelled(current_english_rows(FIXTURES["english_provenance"]))
     row = next(r for r in records if r["segment"] == "s05")
     segment = next(s for s in core["segments"] if s["id"] == "s05")
     assert row["source_sha256"] == canonical_hash(source_payload(segment))
     assert row["target_sha256"] == canonical_hash(layer["segments"]["s05"]["translation"])
     assert row["target_sha256"] == FIXTURES["target_hash"]
-    assert row["origin"] == "own" and row["review"] == "working" and row["familiar_core"] is False
+    assert row["origin"] == "working-unsettled" and row["review"] == "working"
+    assert row["familiar_core"] is False
 
 
 def test_exact_bounded_population():
@@ -752,7 +772,7 @@ def test_polish_prose_sense_and_scope_counterexamples(before, after):
 @pytest.mark.parametrize(
     "field,value",
     [
-        ("origin", "working-unsettled"),
+        ("origin", "own"),
         ("review", "internally-reviewed"),
         ("familiar_core", True),
         ("source_sha256", "0" * 64),
@@ -766,14 +786,14 @@ def test_provenance_changes_cannot_promote_or_misbind_the_paragraph(field, value
     next(r for r in records if r["segment"] == "s05")[field] = value
     with pytest.raises(AssertionError):
         assert_provenance(
-            core, layer, records, current_english_rows(FIXTURES["english_provenance"])
+            core, layer, records, relabelled(current_english_rows(FIXTURES["english_provenance"]))
         )
 
 
 def test_every_other_provenance_site_rejects_unsupported_promotion():
     core, old = load("pl")
     layer = prepare(old, "pl")
-    english = current_english_rows(FIXTURES["english_provenance"])
+    english = relabelled(current_english_rows(FIXTURES["english_provenance"]))
     for language, original in (("pl", expected_records()), ("en", english)):
         for index, row in enumerate(original):
             if language == "pl" and row["segment"] == "s05":

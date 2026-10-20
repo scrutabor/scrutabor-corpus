@@ -879,7 +879,8 @@ def test_the_challenge_repairs_stay():
     origins = {
         lang: provenance(lang)[f"{PA}communio.s01.{lang}"]["origin"] for lang in ("en", "pl")
     }
-    assert origins["en"] == "own"
+    # Held as unsettled working wording since the 2026-10-20 relabel (second round).
+    assert origins["en"] == "working-unsettled"
     assert origins["pl"] == provenance("pl")[f"{PA}evangelium.s10.pl"]["origin"]
 
 

@@ -1152,8 +1152,9 @@ CHANGED["en"] += [POSTCOMMUNION, II_EPI_INTROIT, I_EPI_ALLELUIA, I_EPI_INTROIT, 
 CHANGED["en"].append(QUINQ_TRACT)
 
 
-# The Polish Communion verse is the edition's own reviewed wording; only its caption changes here.
-REVIEWED_SITES = {f"{COMMUNION}.s01.pl": ("own", "internally-reviewed")}
+# The Polish Communion verse is held as unsettled working wording since the 2026-10-20 relabel
+# (second round); only its caption changes here.
+REVIEWED_SITES = {f"{COMMUNION}.s01.pl": ("working-unsettled", "working")}
 
 
 def test_changed_sites_are_outside_the_protected_formulas_and_their_provenance_is_current():

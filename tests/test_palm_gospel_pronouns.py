@@ -365,5 +365,28 @@ def test_current_uncited_wording_scope_and_state_classes():
     sites = [r for r in read(LEDGER_PATH)["sites"] if r["text"] == TEXT]
     assert len(sites) == 94
     assert all(not r["familiar_core"] for r in sites)
-    assert all(r["origin"] in {"own", "working-unsettled"} for r in sites)
+    # Short speech headings and replies dictated by the Latin are trivial since the 2026-10-20
+    # relabel (second round); every other site keeps the earlier condition.
+    trivial = {
+        "s16",
+        "s29",
+        "s33",
+        "s46",
+        "s47",
+        "s53",
+        "s54",
+        "s63",
+        "s64",
+        "s65",
+        "s69",
+        "s70",
+        "s75",
+        "s78",
+        "s84",
+        "s85",
+    }
+    assert {r["segment"] for r in sites if r["origin"] == "trivial"} == trivial
+    assert all(
+        r["origin"] in {"own", "working-unsettled"} for r in sites if r["segment"] not in trivial
+    )
     assert all(r["review"] in {"working", "internally-reviewed", "expert-reviewed"} for r in sites)

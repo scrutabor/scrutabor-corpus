@@ -157,8 +157,8 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
     assert written["citation_projection"] == {
         "legacy": 2771,
         "mapped": 1872,
-        "kept": 1620,
-        "excluded": 1151,
+        "kept": 1618,
+        "excluded": 1153,
         "unresolved": 0,
         "rejected_exposed": 0,
     }
@@ -166,7 +166,7 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
         "neutral": {"normalized": 1116, "texts": 1127},
         "languages": {
             "en": {"normalized": 212, "effective": 1127, "texts": 1127},
-            "pl": {"normalized": 74, "effective": 1123, "texts": 1127},
+            "pl": {"normalized": 76, "effective": 1123, "texts": 1127},
         },
     }
 
