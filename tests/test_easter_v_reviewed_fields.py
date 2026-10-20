@@ -160,10 +160,11 @@ CLAUSES = (
         "becoming not a forgetful hearer but a doer of the work",
         id="en-epistola-11",
     ),
+    # V Sunday after Easter audit successor (2026-10-20): Jn 16:25 is redrafted from the Latin.
     pytest.param(
         "en",
         "evangelium",
-        "but will tell you plainly about the Father",
+        "but will tell you openly of the Father",
         id="en-evangelium-12",
     ),
     pytest.param(
@@ -263,29 +264,16 @@ GROUPS = (
         "zwiastujcie",
         id="pl-communio-w010",
     ),
+    # V Sunday after Easter audit successor (2026-10-20): the Introit groups w001-w003,
+    # w026-w029 and w050-w052 are word captions now (pinned in
+    # test_dominica_v_post_pascha_audit.py); laudi eius keeps a group.
     pytest.param(
         "en",
         "introitus",
-        ["w001", "w002", "w003"],
-        "w003",
-        "Proclaim the joyful news",
-        id="en-introitus-w001",
-    ),
-    pytest.param(
-        "en",
-        "introitus",
-        ["w026", "w027", "w028", "w029"],
-        "w026",
-        "make His praise glorious",
-        id="en-introitus-w026",
-    ),
-    pytest.param(
-        "en",
-        "introitus",
-        ["w050", "w051", "w052"],
-        "w052",
-        "Proclaim the joyful news",
-        id="en-introitus-w050",
+        ["w028", "w029"],
+        "w028",
+        "to His praise",
+        id="en-introitus-w028",
     ),
     pytest.param(
         "en",
@@ -295,13 +283,16 @@ GROUPS = (
         "what he was like",
         id="en-epistola-w038",
     ),
+    # V Sunday after Easter audit successor (2026-10-20): the Epistle groups w051-w054
+    # and w059-w063 are word captions now (pinned in
+    # test_dominica_v_post_pascha_audit.py); facto suo keeps a group.
     pytest.param(
         "en",
         "epistola",
-        ["w051", "w052", "w053", "w054"],
-        "w054",
-        "having become not a forgetful hearer",
-        id="en-epistola-w051",
+        ["w061", "w062"],
+        "w061",
+        "his deed",
+        id="en-epistola-w061",
     ),
     pytest.param(
         "en",
@@ -311,13 +302,16 @@ GROUPS = (
         "this man’s religion is vain",
         id="en-epistola-w079",
     ),
+    # V Sunday after Easter audit successor (2026-10-20): the Gospel group w053-w057 is
+    # word captions now (pinned in test_dominica_v_post_pascha_audit.py); iam non keeps a
+    # group.
     pytest.param(
         "en",
         "evangelium",
-        ["w053", "w054", "w055", "w056", "w057"],
-        "w056",
-        "I will tell you plainly about the Father",
-        id="en-evangelium-w053",
+        ["w046", "w047"],
+        "w046",
+        "no longer",
+        id="en-evangelium-w046",
     ),
     pytest.param(
         "en",
@@ -327,13 +321,16 @@ GROUPS = (
         "I do not say",
         id="en-evangelium-w066",
     ),
+    # V Sunday after Easter audit successor (2026-10-20): the Gospel group w135-w137 is
+    # word captions now (pinned in test_dominica_v_post_pascha_audit.py); discípuli eius
+    # keeps a group.
     pytest.param(
         "en",
         "evangelium",
-        ["w135", "w136", "w137"],
-        "w137",
-        "You came forth from God",
-        id="en-evangelium-w135",
+        ["w107", "w108"],
+        "w107",
+        "His disciples",
+        id="en-evangelium-w107",
     ),
     pytest.param(
         "en",
@@ -343,13 +340,16 @@ GROUPS = (
         "proclaim as good news",
         id="en-communio-w010",
     ),
+    # V Sunday after Easter audit successor (2026-10-20): the Postcommunion group
+    # w004-w007 and the Offertory group w012-w016 are word captions now (pinned in
+    # test_dominica_v_post_pascha_audit.py); ánimam meam keeps a group.
     pytest.param(
         "en",
-        "postcommunio",
-        ["w004", "w005", "w006", "w007"],
-        "w007",
-        "having been filled with the strength of the heavenly table",
-        id="en-postcommunio-w004",
+        "offertorium",
+        ["w013", "w014"],
+        "w013",
+        "my soul",
+        id="en-offertorium-w013",
     ),
 )
 CARDS = (
@@ -504,7 +504,9 @@ def test_every_word_has_one_caption_realization(texts, language):
             total_words += len(segment["words"])
             total_segments += 1
     assert (total_words, total_segments) == (509, 13)
-    assert (direct, groups, members) == {"pl": (494, 7, 15), "en": (273, 89, 236)}[language]
+    # V Sunday after Easter audit successor (2026-10-20): English (273, 89, 236)
+    # before the minimal groups.
+    assert (direct, groups, members) == {"pl": (494, 7, 15), "en": (338, 75, 171)}[language]
 
 
 @pytest.mark.parametrize("language", ["pl", "en"])

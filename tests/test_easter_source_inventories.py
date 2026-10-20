@@ -37,10 +37,12 @@ def sources():
 def test_easter_source_inventories_resolve(sources, sunday, part):
     text_id = f"proprium.dominica-{sunday}-post-pascha-{part}"
     records = [row for row in sources["witnesses"] if row["text"] == text_id]
-    assert {row["id"] for row in records} == {
-        f"witness.{text_id}.mr1962",
-        f"witness.{text_id}.do44667ff",
-    }
+    expected = {f"witness.{text_id}.mr1962", f"witness.{text_id}.do44667ff"}
+    if sunday == "v" and part in {"introitus", "communio"}:
+        # V Sunday after Easter audit successor (2026-10-20): the Liber Usualis is a third
+        # witness of the Introit antiphon (partial) and of the Communion (complete).
+        expected.add(f"witness.{text_id}.lu1961")
+    assert {row["id"] for row in records} == expected
     supplements = []
     if part == "introitus":
         supplements = ["expanded-doxology", "introit-expansion"]

@@ -35995,6 +35995,24 @@
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
+      "id": "use.proprium.dominica-v-post-pascha-communio.lu1961",
+      "edition": "edition.liber-usualis.1961",
+      "digital_item": "item.liber-usualis.1961.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-v-post-pascha-communio"
+      },
+      "locator": {
+        "printed": "p. 833",
+        "scan": "PDF p. 1019"
+      },
+      "claim": "The chant book prints the complete Communion of the Fifth Sunday after Easter without et before benedícite. The directly viewed page forms this declared complete comparison; the edition follows the Missal.",
+      "verified_on": "2026-10-20",
+      "evidence_sha256": "a3d5fdb3308dcabc0474eb99d2f8a5509e52c76380ae41ec373ab3aa3e7db6b9",
+      "decision": "RETAIN"
+    },
+    {
       "id": "use.proprium.dominica-v-post-pascha-communio.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -36147,6 +36165,24 @@
       "verified_on": "2026-10-18",
       "decision": "RETAIN",
       "decision_reason": "The identified same-edition rubrics support the stated Introit sequence and repetition. The common wording and proper antiphon have separate textual sources."
+    },
+    {
+      "id": "use.proprium.dominica-v-post-pascha-introitus.lu1961",
+      "edition": "edition.liber-usualis.1961",
+      "digital_item": "item.liber-usualis.1961.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "text",
+        "text": "proprium.dominica-v-post-pascha-introitus"
+      },
+      "locator": {
+        "printed": "p. 830",
+        "scan": "PDF p. 1016"
+      },
+      "claim": "The chant book prints the Introit antiphon of the Fifth Sunday after Easter with nuntiáte where the Missal repeats annuntiáte. The directly viewed antiphon forms this declared partial comparison; the edition follows the Missal.",
+      "verified_on": "2026-10-20",
+      "evidence_sha256": "a3d5fdb3308dcabc0474eb99d2f8a5509e52c76380ae41ec373ab3aa3e7db6b9",
+      "decision": "RETAIN"
     },
     {
       "id": "use.proprium.dominica-v-post-pascha-introitus.mr1962",
@@ -84656,6 +84692,26 @@
       }
     },
     {
+      "id": "witness.proprium.dominica-v-post-pascha-communio.lu1961",
+      "text": "proprium.dominica-v-post-pascha-communio",
+      "use": "use.proprium.dominica-v-post-pascha-communio.lu1961",
+      "role": "approved_corroboration",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "ea01dd55eeef2fb4087b90d5393b287af10c19a6e7dc2600fa58c3f6970b4595",
+      "orthography_profile": "exact-musical-lyric",
+      "independence_basis": "Separate 1961 printed liturgical book, read directly on its page image; no assertion of genealogical independence from the Roman liturgical tradition.",
+      "transcription": "lu",
+      "review": {
+        "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
+      }
+    },
+    {
       "id": "witness.proprium.dominica-v-post-pascha-communio.mr1962",
       "text": "proprium.dominica-v-post-pascha-communio",
       "use": "use.proprium.dominica-v-post-pascha-communio.mr1962",
@@ -84773,6 +84829,45 @@
       "source_dependencies": {
         "uses": [],
         "raw_binding": "do-proprium-dominica-v-post-pascha-introitus"
+      }
+    },
+    {
+      "id": "witness.proprium.dominica-v-post-pascha-introitus.lu1961",
+      "text": "proprium.dominica-v-post-pascha-introitus",
+      "use": "use.proprium.dominica-v-post-pascha-introitus.lu1961",
+      "role": "approved_corroboration",
+      "coverage": {
+        "kind": "words",
+        "words": [
+          "w001",
+          "w002",
+          "w003",
+          "w004",
+          "w005",
+          "w006",
+          "w007",
+          "w008",
+          "w009",
+          "w010",
+          "w011",
+          "w012",
+          "w013",
+          "w014",
+          "w015",
+          "w016",
+          "w017"
+        ]
+      },
+      "transcription_sha256": "ff69ab9046bbf4e1823b1c16521a040c2402ad82eefa7196fe5bbf21586fd23b",
+      "orthography_profile": "exact-musical-lyric",
+      "independence_basis": "Separate 1961 printed liturgical book, read directly on its page image; no assertion of genealogical independence from the Roman liturgical tradition.",
+      "transcription": "lu",
+      "review": {
+        "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -115284,16 +115379,19 @@
       "selected_text_sha256": "7dafc61d5b5bc88039d91d5bc9890806e74324e9ea11bbd8ce96c916a2935b22",
       "witnesses": [
         "witness.proprium.dominica-v-post-pascha-communio.do44667ff",
+        "witness.proprium.dominica-v-post-pascha-communio.lu1961",
         "witness.proprium.dominica-v-post-pascha-communio.mr1962"
       ],
       "apparatus": {
-        "entries": 6,
+        "entries": 12,
         "classes": [
+          "accent",
+          "omission",
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "a27fa126c7fe2952984b1ab13f966f99efe7dc0e0d19e3a5f429535ab2a2b304",
+      "apparatus_sha256": "ab600a47b2b74267b9d6388f686aefd8ffe8ffc2423c777a9def33956d498182",
       "review": {
         "status": "pending"
       }
@@ -115349,15 +115447,18 @@
       "selected_text_sha256": "c90fa6fe0cd0deb9d1a4de127196d4cdc75ea6314222642e3d0f84ec40678522",
       "witnesses": [
         "witness.proprium.dominica-v-post-pascha-introitus.do44667ff",
+        "witness.proprium.dominica-v-post-pascha-introitus.lu1961",
         "witness.proprium.dominica-v-post-pascha-introitus.mr1962"
       ],
       "apparatus": {
-        "entries": 11,
+        "entries": 15,
         "classes": [
-          "orthography"
+          "accent",
+          "orthography",
+          "substantive"
         ]
       },
-      "apparatus_sha256": "e1a33dbdbaed82241bbcff8ef25f9b3b5852d32b799c809621cee29fda12376e",
+      "apparatus_sha256": "1ccb3f19754529d4eea6bc14aacc62c7c7f0a4fdfd2d3c2e4f42158988a1200b",
       "review": {
         "status": "pending"
       }

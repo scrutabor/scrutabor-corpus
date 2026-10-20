@@ -27,8 +27,11 @@ LATIN = {
 }
 # These contextual groups are deliberately local, not preferred synonyms elsewhere.
 GROUPS = [
-    ("introitus", "en", 11, 14, 11, "make His praise glorious"),
-    ("introitus", "en", 64, 67, 64, "make His praise glorious"),
+    # V Sunday after Easter audit successor (2026-10-20): date glóriam are word
+    # captions (give | glory) and laudi eius one group, as the V Sunday and II Sunday after
+    # Epiphany Introits read the identical psalm verse; the verse keeps its wording (PROSE).
+    ("introitus", "en", 13, 14, 13, "to His praise"),
+    ("introitus", "en", 66, 67, 66, "to His praise"),
     ("collecta", "pl", 17, 19, 19, "z wyznania noszą miano chrześcijan"),
     ("epistola", "pl", 33, 37, 37, "oceniając was po dobrych uczynkach"),
     ("epistola", "en", 33, 37, 37, "judging you by your good works"),

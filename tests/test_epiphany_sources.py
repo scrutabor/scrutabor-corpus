@@ -399,8 +399,11 @@ CHANT_SEGMENTS = {
 CHANT_CAPTIONS = {
     ("pl", "introitus"): (
         "cała | ziemia | niech oddaje pokłon | Ci | Boże | i | niech śpiewa | Ci | "
-        "niech śpiewa psalm | Twojemu imieniu | Najwyższy | Wykrzykujcie radośnie | Bogu | "
-        "cała | ziemio | śpiewajcie psalm | Jego imieniu | oddajcie | chwałę | Jego chwale | "
+        # V Sunday after Easter audit successor (2026-10-20): the psalm verse reads
+        # as in the V Sunday after Easter.
+        "niech śpiewa psalm | Twojemu imieniu | Najwyższy | Wykrzykujcie | Bogu | "
+        "cała | ziemio | psalm | śpiewajcie | imieniu | Jego | oddajcie | chwałę | uwielbieniu | "
+        "Jego | "
         "Chwała | Ojcu | i | Synowi | i | Duchowi | Świętemu | Jak | była | na | początku | "
         "i | teraz | i | zawsze | i | na | wieki | wieków | Amen | cała | ziemia | "
         "niech oddaje pokłon | Ci | Boże | i | niech śpiewa | Ci | niech śpiewa psalm | "
@@ -408,7 +411,9 @@ CHANT_CAPTIONS = {
     ),
     ("en", "introitus"): (
         "Let all the earth adore | You | God | and | let it sing | to You | "
-        "let it sing a psalm to Your name | Most High | Sing joyfully | to God | all | "
+        # V Sunday after Easter audit successor (2026-10-20): Iubiláte reads as in the
+        # V Sunday after Easter.
+        "let it sing a psalm to Your name | Most High | Shout for joy | to God | all | "
         "the earth | sing a psalm | to His name | give | glory | to His praise | Glory | "
         "to the Father | and | to the Son | and | to the Holy Spirit | As | it was | "
         "in | the beginning | and | now | and | always | and | unto | ages | of ages | Amen | "
@@ -429,9 +434,8 @@ CHANT_GROUPS = {
     ("pl", "introitus"): [
         (9, 10, 10),
         (11, 12, 11),
-        (18, 19, 19),
-        (20, 21, 20),
-        (24, 25, 24),
+        # V Sunday after Easter audit successor (2026-10-20): w018-w025 are word
+        # captions.
         (54, 55, 55),
         (56, 57, 56),
     ],
