@@ -322,7 +322,8 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "sancti-ioseph-in-festivitate": {
-            "protected_digest": "812e55e2f74904700dbbfea9c25f90430d9c7895043849220ba131325cd634cd",
+            # Successor of 2026-10-20 (St Joseph the Worker audit): the same on the 19 March twin.
+            "protected_digest": "228e5457b90a4364e1a881bd0e64410f8b8400a822616c764023666a77eb2931",
             "words": {"w062": {"gloss": "with a father’s"}, "w063": {"gloss": "stead"}},
             "had_alignments": {"s05": True},
             "absorbed": {"s05": []},
@@ -331,7 +332,8 @@ FIXTURES: dict[str, Any] = {
             },
         },
         "sancti-ioseph-in-solemnitate": {
-            "protected_digest": "f1fe102c2dc2e309dda99fef1791b44a85d1738004ae3611669183d83bec10dd",
+            # Successor of 2026-10-20 (St Joseph the Worker audit): XL-CAP-1, EN-DUP-1, XL-ABOUT-1.
+            "protected_digest": "0597fa1d425cbeeace83903fa45e6ff9155b5cba3050065b42311e9f4ac8d6c1",
             "words": {"w062": {"gloss": "with a father’s"}, "w063": {"gloss": "stead"}},
             "had_alignments": {"s05": True},
             "absorbed": {"s05": []},
