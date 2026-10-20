@@ -65,7 +65,7 @@ GROUPS = [
     ("evangelium", "en", 63, 65, 64, "three measures of flour"),
     ("evangelium", "en", 67, 69, 67, "the whole was leavened"),
     ("secreta", "pl", 1, 3, 3, "Ta ofiara nas"),
-    ("secreta", "en", 1, 6, 5, "May this offering, O God, we beseech You, cleanse us"),
+    ("secreta", "en", 1, 6, 5, "May this offering, God, we beseech You, cleanse us"),
     ("postcommunio", "pl", 1, 4, 3, "Nakarmieni niebieskimi rozkoszami, Panie,"),
     (
         "postcommunio",
@@ -75,7 +75,7 @@ GROUPS = [
         13,
         "abyśmy zawsze pragnęli tego samego, przez co prawdziwie żyjemy",
     ),
-    ("postcommunio", "en", 1, 4, 3, "Nourished by heavenly delights, O Lord,"),
+    ("postcommunio", "en", 1, 4, 3, "Nourished by heavenly delights, Lord,"),
     (
         "postcommunio",
         "en",

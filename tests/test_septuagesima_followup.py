@@ -33,7 +33,7 @@ GROUPS = [
         1,
         7,
         7,
-        "We beseech You, O Lord, graciously hear the prayers of Your people",
+        "We beseech You, Lord, graciously hear the prayers of Your people",
     ),
     ("epistola", "pl", 51, 53, 53, "jakbym bił powietrze"),
     ("epistola", "pl", 121, 127, 125, "większość z nich nie znalazła upodobania u Boga"),

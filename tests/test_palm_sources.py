@@ -348,7 +348,6 @@ REVERSE_NAMED = {
     ("pl", PA + "evangelium", "w301"): "Mi",
     ("pl", PA + "evangelium", "w1298"): "Mój",
     ("pl", PA + "evangelium", "w1300"): "Mój",
-    ("en", PA + "postcommunio", "w002"): "O Lord, the working of this mystery",
 }
 
 

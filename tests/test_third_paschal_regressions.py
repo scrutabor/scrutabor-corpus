@@ -27,20 +27,24 @@ LATIN = {
 }
 # These contextual groups are deliberately local, not preferred synonyms elsewhere.
 GROUPS = [
-    ("introitus", "pl", 11, 14, 11, "oddajcie Mu chwałę, wysławiając Go"),
-    ("introitus", "pl", 64, 67, 64, "oddajcie Mu chwałę, wysławiając Go"),
     ("introitus", "en", 11, 14, 11, "make His praise glorious"),
     ("introitus", "en", 64, 67, 64, "make His praise glorious"),
     ("collecta", "pl", 17, 19, 19, "z wyznania noszą miano chrześcijan"),
     ("epistola", "pl", 33, 37, 37, "oceniając was po dobrych uczynkach"),
     ("epistola", "en", 33, 37, 37, "judging you by your good works"),
     ("secreta", "pl", 1, 5, 5, "Niech przez te tajemnice będzie nam dane, Panie"),
-    ("secreta", "en", 1, 5, 5, "By these mysteries, O Lord, may it be granted to us"),
+    ("secreta", "en", 1, 5, 5, "By these mysteries, Lord, may it be granted to us"),
     ("postcommunio", "pl", 7, 10, 9, "niech odnawiają nas duchowym pokarmem"),
-    ("postcommunio", "pl", 12, 14, 13, "niech chronią nas, niosąc pomoc ciału"),
     ("collecta", "en", 41, 45, 43, "who lives and reigns with You"),
     ("secreta", "en", 20, 24, 22, "who lives and reigns with You"),
     ("postcommunio", "en", 22, 26, 24, "who lives and reigns with You"),
+]
+# Successor of the 2026-10-16 Polish groups (2026-10-20 audit): the word layer glosses each word,
+# as the V Sunday Introit does for the identical Latin; the verse keeps its wording (PROSE below).
+TOKENS = [
+    ("introitus", 11, ["oddajcie", "chwałę", "uwielbieniu", "Jego"]),
+    ("introitus", 64, ["oddajcie", "chwałę", "uwielbieniu", "Jego"]),
+    ("postcommunio", 12, ["cielesną", "niech chronią", "pomocą"]),
 ]
 PROSE = [
     ("introitus", "pl", "oddajcie Mu chwałę, wysławiając Go", 2),
@@ -170,6 +174,61 @@ def test_group_damage_is_rejected_then_original_restored(
     with pytest.raises(AssertionError):
         assert_group(doc, bad, first, last, anchor, gloss)
     assert_group(doc, good, first, last, anchor, gloss)
+
+
+def assert_tokens(doc, layer, first, glosses):
+    ids = [f"w{first + offset:03d}" for offset in range(len(glosses))]
+    segment = next(s for s in doc["segments"] if s["id"] == "s01")
+    ordered = [w["id"] for w in segment["words"]]
+    start = ordered.index(ids[0])
+    assert ordered[start : start + len(ids)] == ids
+    groups = layer["segments"]["s01"].get("alignments", [])
+    assert not [g for g in groups if set(g["words"]) & set(ids)]
+    assert [layer["words"][wid].get("gloss") for wid in ids] == glosses
+    assert interlinear.check(doc, layer) == []
+
+
+@pytest.mark.parametrize("role,first,glosses", TOKENS)
+def test_polish_words_are_glossed_one_by_one(role, first, glosses):
+    doc, layer = reading(role, "pl")
+    assert_tokens(doc, layer, first, glosses)
+    if role == "postcommunio":
+        assert words(doc)["w012"]["morph"]["pos"] == "adj"
+
+
+@pytest.mark.parametrize("role,first,glosses", TOKENS)
+@pytest.mark.parametrize("damage", ["meaning", "regroup", "missing", "overlap"])
+def test_token_damage_is_rejected_then_original_restored(role, first, glosses, damage):
+    doc, good = reading(role, "pl")
+    assert_tokens(doc, good, first, glosses)
+    bad = deepcopy(good)
+    ids = [f"w{first + offset:03d}" for offset in range(len(glosses))]
+    if damage == "meaning":
+        bad["words"][ids[2 if role == "introitus" else 0]]["gloss"] = (
+            "wysławiając Go" if role == "introitus" else "ciału"
+        )
+    elif damage == "regroup":
+        for wid in ids:
+            bad["words"][wid].pop("gloss")
+        bad["segments"]["s01"].setdefault("alignments", []).append(
+            {
+                "words": ids,
+                "anchor": ids[0] if role == "introitus" else ids[1],
+                "gloss": "oddajcie Mu chwałę, wysławiając Go"
+                if role == "introitus"
+                else "niech chronią nas, niosąc pomoc ciału",
+            }
+        )
+    elif damage == "missing":
+        bad["words"][ids[-1]].pop("gloss")
+    else:
+        bad["segments"]["s01"].setdefault("alignments", []).append(
+            {"words": ids[:2], "anchor": ids[0], "gloss": " ".join(glosses[:2])}
+        )
+    assert bad != good
+    with pytest.raises(AssertionError):
+        assert_tokens(doc, bad, first, glosses)
+    assert_tokens(doc, good, first, glosses)
 
 
 def assert_prose(layer, phrase, count):

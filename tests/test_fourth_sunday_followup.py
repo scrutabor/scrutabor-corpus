@@ -25,7 +25,7 @@ GROUPS = [
     ("secreta", "en", 6, 9, 8, "the offered gift of this sacrifice"),
     ("secreta", "en", 10, 16, 15, "may always cleanse our frailty from all evil"),
     ("postcommunio", "en", 1, 2, 1, "Your gifts"),
-    ("postcommunio", "en", 3, 8, 8, "may free us, O God, from earthly delights"),
+    ("postcommunio", "en", 3, 8, 8, "may free us, God, from earthly delights"),
     ("postcommunio", "en", 10, 13, 12, "always renew us with heavenly nourishment"),
     ("secreta", "en", 20, 21, 20, "our Lord"),
     ("secreta", "en", 24, 25, 24, "Your Son"),

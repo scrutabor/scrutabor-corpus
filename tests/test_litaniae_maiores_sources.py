@@ -250,7 +250,7 @@ def test_the_captions_keep_the_sentence_internal_relative_and_the_english_group(
     assert opening == {
         "words": [f"w{i:03d}" for i in range(1, 8)],
         "anchor": "w007",
-        "gloss": "Attend to our prayers with loving favor, we pray, O Lord",
+        "gloss": "Attend to our prayers with loving favor, we pray, Lord",
     }
     assert polish["words"]["w020"] == {"explanation": NOTE["pl"]}
     assert english["words"]["w020"] == {"explanation": NOTE["en"]}
