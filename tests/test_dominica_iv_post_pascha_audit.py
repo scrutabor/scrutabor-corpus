@@ -110,12 +110,10 @@ CAPTIONS: list[tuple[Any, ...]] = [
     ("salvation", "pl", INTROIT, "w020", "Salvávit", "Zbawiła", "przyniosła zwycięstwo"),
     ("caption case", "pl", GOSPEL, "w004", "Dixit", "powiedział", "Powiedział"),
     ("correlative", "pl", POSTCOMMUNION, "w012", "et", "i", None),
-    *[("Communion", "en", COMMUNION, w, "de", "of", "about") for w in ids(9, 12, 15)],
+    *[("Communion", "en", COMMUNION, w, "de", "concerning", "of") for w in ids(9, 12, 15)],
     ("Gospel", "en", GOSPEL, "w032", "Sed", "But", "Yet"),
-    *[("Gospel", "en", GOSPEL, w, "de", "of", "about") for w in ids(64, 67, 70)],
-    ("Gospel", "en", GOSPEL, "w072", "De", "Of", "about"),
-    ("Gospel", "en", GOSPEL, "w125", "a", "from", "on"),
-    ("Gospel", "en", GOSPEL, "w126", "semetípso", "Himself", "His own"),
+    *[("Gospel", "en", GOSPEL, w, "de", "concerning", "of") for w in ids(64, 67, 70)],
+    ("Gospel", "en", GOSPEL, "w072", "De", "Concerning", "Of"),
     ("Gospel", "en", GOSPEL, "w145", "annuntiábit", "will announce it", "will declare it"),
     ("Iubilate", "en", EPIPHANY_OFFERTORY, "w001", "Iubiláte", "Shout for joy", "Sing joyfully"),
 ]
@@ -156,13 +154,13 @@ REALIZATIONS = """
 Communion|en|communio|[w002-w005 @w002] the Paraclete, the Spirit of truth, comes
     w002 comes; w003 the Paraclete; w004 the Spirit; w005 of truth
 Communion|en|communio|[w007-w008 @w007] will prove the world wrong
-    w007 will convict; w008 the world
+    [w007 w008 @w007] will expose the world’s error
 Gospel|en|evangelium|[w024-w027 @w025] I have spoken these things to you
     w024 these things; [w025 w026 @w025] I have spoken; w027 to you
 Gospel|en|evangelium|[w037-w038 @w037] it is for your good
-    w037 it is expedient; w038 for you
+    [w037 w038 @w037] it is to your advantage
 Gospel|en|evangelium|[w062-w063 @w062] He will prove the world wrong
-    w062 He will convict; w063 the world
+    [w062 w063 @w062] He will expose the world’s error
 Gospel|en|evangelium|[w114-w117 @w114] He, the Spirit of truth, comes
     [w114 w115 @w114] He comes; w116 the Spirit; w117 of truth
 Gospel|en|evangelium|[w128-w130 @w130] He will speak whatever He hears
@@ -324,12 +322,13 @@ def test_predecessor_group_is_rejected(row):
     rejects(assert_regroup, doc, lay, row, message=f"{row[0]} realization")
 
 
-# --- existing groups whose caption changed ------------------------------------------------------
+# --- selected minimal groups and their contextual captions --------------------------------------
 # (tag, text, first member, last member, anchor, selected, predecessor)
 GROUP_CAPTIONS = [
     ("Gospel", GOSPEL, 51, 53, "w053", "but if I go away", "but if I go"),
-    ("Gospel", GOSPEL, 80, 82, "w081", "but of justice", "but about justice"),
-    ("Gospel", GOSPEL, 92, 94, "w093", "and of judgment", "and about judgment"),
+    ("Gospel", GOSPEL, 80, 82, "w081", "but concerning justice", "but of justice"),
+    ("Gospel", GOSPEL, 92, 94, "w093", "and concerning judgment", "and of judgment"),
+    ("source of speech", GOSPEL, 125, 126, "w126", "on His own authority", "from Himself"),
     ("caption case", GOSPEL, 112, 113, "w112", "But when", "but when"),
     ("caption case", EPISTLE, 2, 4, "w003", "Every excellent gift", "every excellent gift"),
     ("caption case", ALLELUIA, 3, 4, "w003", "The Lord’s right hand", "the Lord’s right hand"),
@@ -357,6 +356,22 @@ def test_predecessor_group_caption_is_rejected(row):
     (target,) = [g for g in alignments(lay) if g["words"] == span(row[2], row[3])]
     target["gloss"] = row[6]
     rejects(assert_group_caption, doc, lay, row, message=f"{row[0]} group caption")
+
+
+def test_the_source_of_speech_has_one_minimal_realization():
+    doc, lay = core(GOSPEL), layer("en", GOSPEL)
+    assert [words(doc)[w]["form"] for w in ids(125, 126)] == ["a", "semetípso"]
+    row = next(r for r in GROUP_CAPTIONS if r[0] == "source of speech")
+    assert_group_caption(doc, lay, row)
+    # The preceding negative predicate remains a separate complete unit.
+    assert group(ids(122, 123, 124), "w124", "For He will not speak") in alignments(lay)
+    bad = deepcopy(lay)
+    bad["segments"]["s01"]["alignments"] = [
+        g for g in alignments(bad) if not set(g["words"]) & set(ids(125, 126))
+    ]
+    bad["words"]["w125"]["gloss"] = "from"
+    bad["words"]["w126"]["gloss"] = "Himself"
+    rejects(assert_group_caption, doc, bad, row, message="source of speech group caption")
 
 
 # --- the three oration conclusions ----------------------------------------------------------------
@@ -470,43 +485,41 @@ VERSES = [
         "Communion",
         "en",
         COMMUNION,
+        "When the Paraclete, the Spirit of truth, comes, He will expose the world’s error "
+        "concerning sin, and concerning justice, and concerning judgment, alleluia, alleluia.",
         "When the Paraclete comes, the Spirit of truth, He will convict the world of sin, and of "
         "justice, and of judgment, alleluia, alleluia.",
-        "When the Paraclete, the Spirit of truth, comes, He will prove the world wrong about sin, "
-        "and about justice, and about judgment, alleluia, alleluia.",
     ),
     (
         "Gospel",
         "en",
         GOSPEL,
+        "But I tell you the truth: it is to your advantage that I go; for if I do not go away, "
+        "the Paraclete will not come to you; but if I go away, I will send Him to you.",
         "But I tell you the truth: it is expedient for you that I go; for if I do not go away, "
         "the Paraclete will not come to you; but if I go away, I will send Him to you.",
-        "Yet I tell you the truth: it is for your good that I go. For if I do not go, the "
-        "Paraclete will not come to you; but if I go, I will send Him to you.",
     ),
     (
         "Gospel",
         "en",
         GOSPEL,
+        "And when He comes, He will expose the world’s error concerning sin, and concerning "
+        "justice, and concerning judgment. Concerning sin, because they have not believed in Me; "
+        "concerning justice, because I go to the Father, and you will see Me no longer; and "
+        "concerning judgment, because the prince of this world has already been judged.",
         "And when He comes, He will convict the world of sin, and of justice, and of judgment. Of "
         "sin, because they have not believed in Me; of justice, because I go to the Father, and "
-        "you "
-        "will see Me no longer; and of judgment, because the prince of this world has already been "
-        "judged.",
-        "And when He comes, He will prove the world wrong about sin, and about justice, and about "
-        "judgment: about sin, because they have not believed in Me; about justice, because I go to "
-        "the Father and you will no longer see Me; and about judgment, because the prince of this "
-        "world has already been judged.",
+        "you will see Me no longer; and of judgment, because the prince of this world has already "
+        "been judged.",
     ),
     (
         "Gospel",
         "en",
         GOSPEL,
-        "For He will not speak from Himself, but whatever He hears, He will speak; and the things "
-        "that are to come He will announce to you.",
-        "For He will not speak on His own, but whatever He hears He will speak, and the things "
-        "that "
-        "are to come He will declare to you.",
+        "For He will not speak on His own authority, but whatever He hears, He will speak; "
+        "and the things that are to come He will announce to you.",
+        "For He will not speak from Himself, but whatever He hears, He will speak; and the "
+        "things that are to come He will announce to you.",
     ),
     (
         "Gospel",
@@ -578,13 +591,8 @@ def test_the_gospel_keeps_its_other_sentences():
     assert gospel.endswith("will announce it to you.")
 
 
-# --- the English Communion and Gospel no longer carry the replaced renderings ---------------------
-REPLACED = (
-    "prove the world wrong",
-    "wrong about",
-    "on his own",
-    "declare to you the things that are to come",
-)
+# --- a bounded regression check, not an authorship or rights detector ---------------------------
+REPLACED = ("convict the world of sin, and of justice, and of judgment",)
 
 
 def english_strings(lay):
@@ -603,7 +611,7 @@ def replaced_renderings(lay):
     return sorted(phrase for phrase in REPLACED if phrase in joined)
 
 
-@pytest.mark.parametrize("text", PROPERS)
+@pytest.mark.parametrize("text", [COMMUNION, GOSPEL])
 def test_no_english_layer_of_this_mass_carries_the_replaced_renderings(text):
     assert replaced_renderings(layer("en", text)) == []
 
@@ -617,9 +625,18 @@ def test_a_reintroduced_rendering_is_detected(phrase):
     assert phrase in replaced_renderings(bad)
 
 
+def test_common_english_phrases_are_not_treated_as_copying():
+    candidate = layer("en", GOSPEL)
+    candidate["words"]["w126"]["explanation"] = "The phrase concerns speaking on His own authority."
+    assert replaced_renderings(candidate) == []
+
+
 def test_the_communion_and_gospel_render_the_shared_clause_alike():
     communion, gospel = layer("en", COMMUNION), layer("en", GOSPEL)
-    clause = "He will convict the world of sin, and of justice, and of judgment"
+    clause = (
+        "He will expose the world’s error concerning sin, and concerning justice, "
+        "and concerning judgment"
+    )
     assert clause in communion["segments"]["s01"]["translation"]
     assert clause in gospel["segments"]["s01"]["translation"]
     latin_c, latin_g = words(core(COMMUNION)), words(core(GOSPEL))
@@ -627,13 +644,18 @@ def test_the_communion_and_gospel_render_the_shared_clause_alike():
     assert all(latin_c[c]["lemma"] == latin_g[g]["lemma"] for c, g in pairs)
 
     def captions(lay, side):
-        return [lay["words"][pair[side]]["gloss"] for pair in pairs[1:]]
+        return [lay["words"][pair[side]]["gloss"] for pair in pairs[2:]]
 
     assert captions(communion, 0) == captions(gospel, 1)
-    assert (communion["words"]["w007"]["gloss"], gospel["words"]["w062"]["gloss"]) == (
-        "will convict",
-        "He will convict",
-    )
+    for lay, members, gloss in (
+        (communion, ids(7, 8), "will expose the world’s error"),
+        (gospel, ids(62, 63), "He will expose the world’s error"),
+    ):
+        assert [g for g in alignments(lay) if set(g["words"]) & set(members)] == [
+            group(members, members[0], gloss)
+        ]
+        assert all("gloss" not in lay["words"][wid] for wid in members)
+        clean(core(lay["text"]), lay)
     bad = deepcopy(gospel)
     bad["words"]["w064"]["gloss"] = "about"
     assert captions(communion, 0) != captions(bad, 1)
@@ -698,6 +720,7 @@ def test_the_two_jubilate_offertories_read_alike():
 # --- no clause-sized group remains in the nine proper texts ---------------------------------------
 # Every group of three or more words left in this Mass, with its caption.
 LONG_GROUPS = {
+    ("pl", GOSPEL): [("w122", "Nie będzie bowiem mówił")],
     ("en", INTROIT): [("w025", "His holy arm"), ("w044", "forever and ever")],
     ("pl", COLLECT): [("w005", "jednoczysz w jednej woli")],
     ("en", COLLECT): [
@@ -715,10 +738,10 @@ LONG_GROUPS = {
     ("en", GOSPEL): [
         ("w001", "At that time"),
         ("w051", "but if I go away"),
-        ("w080", "but of justice"),
+        ("w080", "but concerning justice"),
         ("w084", "I go to the Father"),
         ("w088", "you will no longer see"),
-        ("w092", "and of judgment"),
+        ("w092", "and concerning judgment"),
         ("w096", "the prince of this world"),
         ("w099", "has already been judged"),
         ("w102", "Yet I have many things"),
@@ -756,8 +779,7 @@ CONTINUATIONS = {
     },
     ("pl", GOSPEL, "w004"): "powiedział",
 }
-# A capital inside a Latin sentence where the Polish verse opens its own sentence: the open owner
-# question of 2026-10-19 on prose-and-Latin sentence boundaries covers it (recorded, unchanged).
+# A reviewed target-language sentence opening, independent of the Latin punctuation.
 RESIDUAL = {("pl", GOSPEL, "w042"): "Jeśli"}
 # Capitals a lower-case Latin word may carry here: words for God, Christ and the Spirit, English I.
 NAMED = {
@@ -832,7 +854,7 @@ CAP_SITES = [
     ("en", EPISTLE, "w002", "Every excellent gift", "Dearly beloved: ", "Every excellent gift"),
     ("en", EPISTLE, "w039", "And let", "my dearest brothers. ", "And let every man"),
     ("en", ALLELUIA, "w003", "The Lord’s right hand", "alleluia. ", "The right hand of the Lord"),
-    ("en", GOSPEL, "w072", "Of", "and of judgment. ", "Of sin, because"),
+    ("en", GOSPEL, "w072", "Concerning", "concerning judgment. ", "Concerning sin, because"),
     ("en", GOSPEL, "w112", "But when", "bear them now. ", "But when He"),
 ]
 CAP_IDS = [f"{s[0]}-{s[1].split('-')[-1]}-{s[2]}" for s in CAP_SITES]

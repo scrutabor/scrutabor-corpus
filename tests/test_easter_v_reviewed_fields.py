@@ -160,11 +160,11 @@ CLAUSES = (
         "becoming not a forgetful hearer but a doer of the work",
         id="en-epistola-11",
     ),
-    # V Sunday after Easter audit successor (2026-10-20): Jn 16:25 is redrafted from the Latin.
+    # De Patre names the subject of the promised open speech (Jn 16:25).
     pytest.param(
         "en",
         "evangelium",
-        "but will tell you openly of the Father",
+        "but will tell you openly about the Father",
         id="en-evangelium-12",
     ),
     pytest.param(
@@ -504,9 +504,9 @@ def test_every_word_has_one_caption_realization(texts, language):
             total_words += len(segment["words"])
             total_segments += 1
     assert (total_words, total_segments) == (509, 13)
-    # V Sunday after Easter audit successor (2026-10-20): English (273, 89, 236)
-    # before the minimal groups.
-    assert (direct, groups, members) == {"pl": (494, 7, 15), "en": (338, 75, 171)}[language]
+    # Proverbium nullum dicis shares one natural English caption: adding dicis
+    # to that group moves one token from the direct to the grouped inventory.
+    assert (direct, groups, members) == {"pl": (494, 7, 15), "en": (337, 75, 172)}[language]
 
 
 @pytest.mark.parametrize("language", ["pl", "en"])
