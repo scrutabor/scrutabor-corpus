@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from provenance_successor_fixture import assert_protection_scope
 
 from build_reader import bibliography, store
 from build_reader.bibliography_bindings import digest, selected_text, transcript_digest
@@ -437,12 +438,15 @@ def working_record(lang, role):
 def assert_working(record, doc, layer, lang, role):
     segment = next(s for s in doc["segments"] if s["id"] == "s01")
     assert canonical_hash(source_payload(segment)) == SOURCE_HASHES[role]
+    target = layer["segments"]["s01"]["translation"]
+    expected_protection = (lang, role) == ("pl", "introitus")
+    assert assert_protection_scope(doc["id"], lang, "s01", target) is expected_protection
     assert record == {
         "site": f"{PREFIX}{role}.s01.{lang}",
         "text": PREFIX + role,
         "segment": "s01",
         "language": lang,
-        "familiar_core": False,
+        "familiar_core": expected_protection,
         "origin": "working-unsettled",
         "review": "working",
         "source_sha256": SOURCE_HASHES[role],
@@ -469,10 +473,37 @@ def test_working_record_cannot_reseal_rebind_or_keep_stale_target(lang, role, da
     elif damage == "review":
         bad["review"] = "internally-reviewed"
     else:
-        bad["familiar_core"] = True
+        bad["familiar_core"] = not good["familiar_core"]
+    assert bad != good
     with pytest.raises(AssertionError):
         assert_working(bad, doc, layer, lang, role)
     assert_working(good, doc, layer, lang, role)
+
+
+def test_introit_protection_covers_only_the_formula_without_promoting_working_provenance():
+    doc, layer = reading("introitus", "pl")
+    original = deepcopy(layer)
+    record = working_record("pl", "introitus")
+    assert_working(record, doc, layer, "pl", "introitus")
+    outside = deepcopy(layer)
+    outside["segments"]["s01"]["translation"] = (
+        "Próba przed. " + outside["segments"]["s01"]["translation"] + " Próba po."
+    )
+    outside_record = deepcopy(record)
+    outside_record["target_sha256"] = canonical_hash(outside["segments"]["s01"]["translation"])
+    assert outside != original and outside_record != record
+    assert_working(outside_record, doc, outside, "pl", "introitus")
+    damaged = deepcopy(layer)
+    target = damaged["segments"]["s01"]["translation"]
+    assert target.count("Chwała Ojcu") == 1
+    damaged["segments"]["s01"]["translation"] = target.replace("Chwała Ojcu", "Chwała", 1)
+    damaged_record = deepcopy(record)
+    damaged_record["target_sha256"] = canonical_hash(damaged["segments"]["s01"]["translation"])
+    assert damaged != original and damaged_record != record
+    with pytest.raises(AssertionError, match="protected Gloria Patri"):
+        assert_working(damaged_record, doc, damaged, "pl", "introitus")
+    assert layer == original and working_record("pl", "introitus") == record
+    assert_working(record, doc, layer, "pl", "introitus")
 
 
 def assert_context_note(doc, layer, role, lang):

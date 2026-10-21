@@ -165,8 +165,8 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
     assert written["evidence_coverage"] == {
         "neutral": {"normalized": 1116, "texts": 1127},
         "languages": {
-            "en": {"normalized": 212, "effective": 1127, "texts": 1127},
-            "pl": {"normalized": 76, "effective": 1123, "texts": 1127},
+            "en": {"normalized": 222, "effective": 1127, "texts": 1127},
+            "pl": {"normalized": 88, "effective": 1123, "texts": 1127},
         },
     }
 

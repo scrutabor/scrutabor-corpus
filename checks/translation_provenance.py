@@ -35,6 +35,105 @@ PROTECTED_PL_SEGMENTS = {
     "proprium.vigilia-paschalis-laudes-canticum": frozenset({"s15", "s16"}),
 }
 
+# Fixed Gloria Patri embedded in Polish Introits; independent of the current target wording.
+PROTECTED_PL_INTROIT_SEGMENTS = {
+    "proprium.annuntiatio-beatae-mariae-virginis-extra-tempus-paschale-introitus": frozenset(
+        {"s01"}
+    ),
+    "proprium.annuntiatio-beatae-mariae-virginis-introitus": frozenset({"s01"}),
+    "proprium.ascensio-domini-introitus": frozenset({"s01"}),
+    "proprium.assumptio-beatae-mariae-virginis-introitus": frozenset({"s01"}),
+    "proprium.beata-maria-virgo-regina-extra-tempus-paschale-introitus": frozenset({"s01"}),
+    "proprium.beata-maria-virgo-regina-introitus": frozenset({"s01"}),
+    "proprium.beatae-mariae-virginis-a-rosario-introitus": frozenset({"s01"}),
+    "proprium.cathedra-sancti-petri-introitus": frozenset({"s01"}),
+    "proprium.corporis-christi-introitus": frozenset({"s03"}),
+    "proprium.d-n-iesu-christi-regis-introitus": frozenset({"s01"}),
+    "proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-introitus": frozenset({"s01"}),
+    "proprium.dedicatio-sancti-michaelis-archangeli-introitus": frozenset({"s01"}),
+    "proprium.dominica-i-adventus-introitus": frozenset({"s03"}),
+    "proprium.dominica-i-in-quadragesima-introitus": frozenset({"s01"}),
+    "proprium.dominica-i-post-epiphaniam-introitus": frozenset({"s01"}),
+    "proprium.dominica-ii-adventus-introitus": frozenset({"s03"}),
+    "proprium.dominica-ii-in-quadragesima-introitus": frozenset({"s01"}),
+    "proprium.dominica-ii-post-epiphaniam-introitus": frozenset({"s01"}),
+    "proprium.dominica-ii-post-pascha-introitus": frozenset({"s01"}),
+    "proprium.dominica-ii-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-iii-adventus-introitus": frozenset({"s03"}),
+    "proprium.dominica-iii-in-quadragesima-introitus": frozenset({"s01"}),
+    "proprium.dominica-iii-post-epiphaniam-introitus": frozenset({"s01"}),
+    "proprium.dominica-iii-post-pascha-introitus": frozenset({"s01"}),
+    "proprium.dominica-iii-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-in-albis-introitus": frozenset({"s01"}),
+    "proprium.dominica-in-quinquagesima-introitus": frozenset({"s01"}),
+    "proprium.dominica-in-septuagesima-introitus": frozenset({"s01"}),
+    "proprium.dominica-in-sexagesima-introitus": frozenset({"s01"}),
+    "proprium.dominica-infra-octavam-nativitatis-introitus": frozenset({"s01"}),
+    "proprium.dominica-iv-adventus-introitus": frozenset({"s03"}),
+    "proprium.dominica-iv-in-quadragesima-introitus": frozenset({"s01"}),
+    "proprium.dominica-iv-post-pascha-introitus": frozenset({"s01"}),
+    "proprium.dominica-iv-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-ix-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-pentecostes-introitus": frozenset({"s01"}),
+    "proprium.dominica-post-ascensionem-introitus": frozenset({"s01"}),
+    "proprium.dominica-resurrectionis-introitus": frozenset({"s01"}),
+    "proprium.dominica-v-post-pascha-introitus": frozenset({"s01"}),
+    "proprium.dominica-v-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-vi-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-vii-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-viii-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-x-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-xi-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-xii-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-xiii-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-xiv-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-xix-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-xv-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-xvi-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-xvii-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-xviii-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-xx-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-xxi-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-xxii-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.dominica-xxiii-post-pentecosten-introitus": frozenset({"s01"}),
+    "proprium.epiphania-domini-introitus": frozenset({"s01"}),
+    "proprium.exaltatio-sanctae-crucis-introitus": frozenset({"s01"}),
+    "proprium.immaculata-conceptio-introitus": frozenset({"s01"}),
+    "proprium.immaculatum-cor-beatae-mariae-virginis-introitus": frozenset({"s01"}),
+    "proprium.maternitas-beatae-mariae-virginis-introitus": frozenset({"s01"}),
+    "proprium.nativitas-domini-in-aurora-introitus": frozenset({"s01"}),
+    "proprium.nativitas-domini-in-die-introitus": frozenset({"s01"}),
+    "proprium.nativitas-domini-in-nocte-introitus": frozenset({"s01"}),
+    "proprium.nativitas-sancti-ioannis-baptistae-introitus": frozenset({"s01"}),
+    "proprium.omnium-sanctorum-introitus": frozenset({"s01"}),
+    "proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-introitus": frozenset({"s01"}),
+    "proprium.sacratissimi-cordis-iesu-introitus": frozenset({"s03"}),
+    "proprium.sancta-familia-introitus": frozenset({"s01"}),
+    "proprium.sanctae-annae-matris-beatae-mariae-virginis-introitus": frozenset({"s01"}),
+    "proprium.sancti-iacobi-apostoli-introitus": frozenset({"s01"}),
+    "proprium.sancti-ioachim-confessoris-introitus": frozenset({"s01"}),
+    "proprium.sancti-ioannis-apostoli-et-evangelistae-introitus": frozenset({"s01"}),
+    "proprium.sancti-ioseph-opificis-introitus": frozenset({"s01"}),
+    (
+        "proprium.sancti-ioseph-sponsi-beatae-mariae-virginis-extra-tempus-paschale-introitus"
+    ): frozenset({"s01"}),
+    "proprium.sancti-ioseph-sponsi-beatae-mariae-virginis-introitus": frozenset({"s01"}),
+    "proprium.sancti-laurentii-martyris-introitus": frozenset({"s01"}),
+    "proprium.sancti-marci-evangelistae-introitus": frozenset({"s01"}),
+    "proprium.sancti-matthaei-apostoli-et-evangelistae-introitus": frozenset({"s01"}),
+    "proprium.sancti-petri-et-pauli-apostolorum-introitus": frozenset({"s01"}),
+    "proprium.sancti-stephani-protomartyris-introitus": frozenset({"s01"}),
+    "proprium.sanctissimae-trinitatis-introitus": frozenset({"s03"}),
+    "proprium.sanctissimi-nominis-iesu-introitus": frozenset({"s01"}),
+    "proprium.sanctorum-innocentium-martyrum-introitus": frozenset({"s01"}),
+    "proprium.sanctorum-philippi-et-iacobi-apostolorum-introitus": frozenset({"s01"}),
+    "proprium.septem-dolorum-beatae-mariae-virginis-introitus": frozenset({"s01"}),
+    "proprium.transfiguratio-domini-introitus": frozenset({"s01"}),
+    "proprium.vigilia-nativitatis-introitus": frozenset({"s01"}),
+    "proprium.vigilia-pentecostes-introitus": frozenset({"s01"}),
+    "proprium.visitatio-beatae-mariae-virginis-introitus": frozenset({"s01"}),
+}
+
 PROTECTED_EN_SEGMENTS = {
     "ordinarium.iube-domne-benedicere": frozenset({"s03"}),
     "ordinarium.iube-domne-benedicere-in-passione": frozenset({"s03"}),
@@ -149,7 +248,11 @@ def source_payload(segment: dict) -> dict:
 
 def protected(text_id: str, language: str, segment_id: str | None = None) -> bool:
     if language == "pl":
-        return text_id in PROTECTED_PL_TEXTS or segment_id in PROTECTED_PL_SEGMENTS.get(text_id, ())
+        return (
+            text_id in PROTECTED_PL_TEXTS
+            or segment_id in PROTECTED_PL_SEGMENTS.get(text_id, ())
+            or segment_id in PROTECTED_PL_INTROIT_SEGMENTS.get(text_id, ())
+        )
     if language == "en":
         return text_id in PROTECTED_EN_TEXTS or segment_id in PROTECTED_EN_SEGMENTS.get(text_id, ())
     return False

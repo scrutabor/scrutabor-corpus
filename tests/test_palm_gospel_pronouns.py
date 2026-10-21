@@ -6,6 +6,7 @@ import re
 from pathlib import Path
 
 import pytest
+from provenance_successor_fixture import FIXTURE as SUCCESSOR
 
 from checks.translation_provenance import canonical_hash, check
 
@@ -365,9 +366,13 @@ def test_current_uncited_wording_scope_and_state_classes():
     sites = [r for r in read(LEDGER_PATH)["sites"] if r["text"] == TEXT]
     assert len(sites) == 94
     assert all(not r["familiar_core"] for r in sites)
-    # Short speech headings and replies dictated by the Latin are trivial since the 2026-10-20
-    # relabel (second round); every other site keeps the earlier condition.
-    trivial = {
+    assert_current_wording_classes(sites)
+
+
+def assert_current_wording_classes(sites):
+    # The historical trivial set is preserved; three expressive utterances now
+    # remain unsettled, without changing their wording or review state.
+    historical_trivial = {
         "s16",
         "s29",
         "s33",
@@ -385,8 +390,44 @@ def test_current_uncited_wording_scope_and_state_classes():
         "s84",
         "s85",
     }
-    assert {r["segment"] for r in sites if r["origin"] == "trivial"} == trivial
+    by_site = {row["site"]: row for row in sites}
+    assert len(by_site) == len(sites)
+    withdrawn = {"s46", "s70", "s78"}
+    for segment in withdrawn:
+        site = f"{TEXT}.{segment}.pl"
+        previous = SUCCESSOR["before_rows"][site]
+        expected = SUCCESSOR["after_rows"][site]
+        assert previous["origin"] == "trivial"
+        assert expected == {**previous, "origin": "working-unsettled"}
+        assert by_site[site] == expected, "Passion successor state"
+    trivial = historical_trivial - withdrawn
+    assert len(trivial) == 13
+    assert {r["segment"] for r in sites if r["origin"] == "trivial"} == trivial, (
+        "trivial Passion scope"
+    )
     assert all(
         r["origin"] in {"own", "working-unsettled"} for r in sites if r["segment"] not in trivial
     )
     assert all(r["review"] in {"working", "internally-reviewed", "expert-reviewed"} for r in sites)
+
+
+def test_withdrawn_passion_labels_and_remaining_trivial_scope_cannot_regress():
+    sites = [r for r in read(LEDGER_PATH)["sites"] if r["text"] == TEXT]
+    original = copy.deepcopy(sites)
+    frozen = copy.deepcopy(SUCCESSOR)
+    assert_current_wording_classes(sites)
+    for segment in ("s46", "s70", "s78"):
+        bad = copy.deepcopy(sites)
+        row = next(r for r in bad if r["segment"] == segment)
+        row.clear()
+        row.update(copy.deepcopy(SUCCESSOR["before_rows"][f"{TEXT}.{segment}.pl"]))
+        assert bad != original
+        with pytest.raises(AssertionError, match="Passion successor state"):
+            assert_current_wording_classes(bad)
+    bad = copy.deepcopy(sites)
+    next(r for r in bad if r["segment"] == "s16")["origin"] = "working-unsettled"
+    assert bad != original
+    with pytest.raises(AssertionError, match="trivial Passion scope"):
+        assert_current_wording_classes(bad)
+    assert sites == original and frozen == SUCCESSOR
+    assert_current_wording_classes(sites)

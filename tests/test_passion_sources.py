@@ -16,9 +16,11 @@ the raw binding of its Divinum Officium reading is pending.
 
 import json
 import re
+from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from provenance_successor_fixture import FIXTURE as SUCCESSOR
 
 from checks import transcription
 from checks.collate import collate
@@ -292,10 +294,55 @@ def test_the_common_preface_tail_names_its_basis_in_every_preface(text):
         assert use["edition"] == "edition.the-family-prayer-book-1839"
         assert use["locator"] == {"printed": "p. 79", "scan": "scan p. 110"}
         assert use["evidence_sha256"] == FPB_SHA
-    basis = [
-        r for r in load("languages/en/translation-basis.json")["records"] if text in r["texts"]
+    assert_tail_basis_scope(text, load("languages/en/translation-basis.json")["records"])
+
+
+def assert_tail_basis_scope(text, records):
+    historical_tail = {"texts": [text], "segments": list(TAIL[text]), "relationship": "revised"}
+    expected = [historical_tail]
+    successors = [
+        row
+        for row in SUCCESSOR["projections"]
+        if row["provenance"]["text"] == text and row["provenance"]["language"] == "en"
     ]
-    assert basis == [{"texts": [text], "segments": list(TAIL[text]), "relationship": "revised"}]
+    ending = "s07" if text.endswith(("quadragesimae", "sanctae-crucis")) else "s08"
+    assert {row["provenance"]["segment"] for row in successors} == {"s02", ending}
+    assert len(successors) == 2
+    for row in successors:
+        basis = deepcopy(row["basis"])
+        assert text in basis["texts"]
+        assert basis["segments"] == [row["provenance"]["segment"]]
+        assert not set(basis["segments"]) & set(TAIL[text])
+        assert basis["relationship"] == "revised"
+        expected.append(basis)
+    actual = [record for record in records if text in record["texts"]]
+    assert actual == expected, "preface basis scope"
+    for segment in TAIL[text]:
+        covering = [
+            record for record in actual if "segments" not in record or segment in record["segments"]
+        ]
+        assert covering == [historical_tail], "historical tail coverage"
+
+
+@pytest.mark.parametrize("damage", ["historical-tail", "successor-scope", "extra-record"])
+def test_preface_tail_and_successor_scopes_reject_real_damage(damage):
+    text = "ordinarium.praefatio-beatae-mariae-virginis"
+    records = load("languages/en/translation-basis.json")["records"]
+    original, frozen = deepcopy(records), deepcopy(SUCCESSOR)
+    assert_tail_basis_scope(text, records)
+    bad = deepcopy(records)
+    selected = [record for record in bad if text in record["texts"]]
+    if damage == "historical-tail":
+        selected[0]["relationship"] = "exact"
+    elif damage == "successor-scope":
+        selected[1]["segments"].append(TAIL[text][0])
+    else:
+        bad.append({"texts": [text], "relationship": "revised"})
+    assert bad != original
+    with pytest.raises(AssertionError, match="preface basis scope"):
+        assert_tail_basis_scope(text, bad)
+    assert records == original and frozen == SUCCESSOR
+    assert_tail_basis_scope(text, records)
 
 
 def test_the_introit_method_states_that_its_raw_binding_is_pending():

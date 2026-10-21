@@ -13,6 +13,7 @@ from preface_glory_fixture import (
     restore_glory_core,
     restore_glory_layer,
 )
+from provenance_successor_fixture import metadata_successors
 
 from checks.interlinear import check, effective_gloss
 from checks.language_packs import check_layer
@@ -539,7 +540,7 @@ def relabelled(rows):
     for row in result:
         if row["site"] in RELABEL_2026_10_20:
             row["origin"], row["review"] = RELABEL_2026_10_20[row["site"]]
-    return result
+    return metadata_successors(result)
 
 
 def expected_records():

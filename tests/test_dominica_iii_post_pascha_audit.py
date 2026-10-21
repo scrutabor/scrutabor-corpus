@@ -11,6 +11,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from provenance_successor_fixture import assert_protection_scope
 
 from build_reader import store
 from build_reader.bibliography_bindings import transcript_digest
@@ -936,7 +937,7 @@ def test_preface_witness_damage_is_rejected(damage, tmp_path):
     assert_witness(doc, WITNESS, graph())
 
 
-# None of the changed sites is a protected familiar formula.
+# Changed text may contain a fixed formula without protecting its surroundings.
 CHANGED = {
     "pl": [III + "introitus", III + "postcommunio", GOSPEL, III + "communio", *PREFACES],
     "en": [text for text, *_ in VOCATIVE_GROUPS if text != III + "secreta"]
@@ -945,12 +946,16 @@ CHANGED = {
 }
 
 
-def test_changed_sites_are_outside_the_protected_formulas():
+def test_changed_sites_preserve_fixed_formula_scope():
     assert protected("orationes.gloria-patri", "pl") and protected("orationes.pater-noster", "pl")
     assert protected("ordinarium.iube-domne-benedicere", "en", "s03")
     assert sum(len(texts) for texts in CHANGED.values()) == 29
     for language, texts in CHANGED.items():
         assert len(set(texts)) == len(texts)
         for text in texts:
-            for segment in layer(language, text)["segments"]:
-                assert not protected(text, language, segment), (text, segment)
+            for segment, value in layer(language, text)["segments"].items():
+                if "translation" in value:
+                    assert_protection_scope(text, language, segment, value["translation"])
+                else:
+                    assert "narrative" in value
+                    assert not protected(text, language, segment)

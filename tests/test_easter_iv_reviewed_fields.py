@@ -202,8 +202,8 @@ def test_embedded_gloria_has_only_its_word_scoped_wording_basis(language, embedd
 
     site = f"{INTROIT}.s01.{language}"
     assert recorded[site]["origin"] == "working-unsettled"
-    assert recorded[site]["familiar_core"] is False
-    assert not translation_provenance.protected(INTROIT, language, "s01")
+    assert recorded[site]["familiar_core"] is (language == "pl")
+    assert translation_provenance.protected(INTROIT, language, "s01") is (language == "pl")
     assert current[site]["has_wording_citations"] is False
     assert recorded[site]["target_sha256"] == translation_provenance.canonical_hash(target)
     assert recorded[site]["source_sha256"] == current[site]["source_sha256"]

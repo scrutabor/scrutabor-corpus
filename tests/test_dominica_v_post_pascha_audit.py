@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from provenance_successor_fixture import assert_protection_scope
 
 from build_reader import store
 from build_reader.bibliography_bindings import (
@@ -483,7 +484,8 @@ def assert_verse(lay, row):
     assert target.count(present) == 1 and absent not in target, f"{tag} verse"
     site = provenance(language)[f"{text}.s01.{language}"]
     assert site["target_sha256"] == canonical_hash(target), f"{tag} provenance"
-    assert site["review"] == "working" and not protected(text, language, "s01")
+    assert site["review"] == "working"
+    assert_protection_scope(text, language, "s01", target)
 
 
 @pytest.mark.parametrize("row", VERSES, ids=VERSE_IDS)
@@ -611,25 +613,25 @@ def test_a_dictionary_sense_is_not_treated_as_copying():
 
 
 # --- provenance of the English Gospel ------------------------------------------------------------
-UNSETTLED = f"{GOSPEL}.s01.en"
+REVISED = f"{GOSPEL}.s01.en"
 
 
-def assert_unsettled(sites):
-    row = sites[UNSETTLED]
+def assert_revised(sites):
+    row = sites[REVISED]
     actual = (row["origin"], row["review"], row["familiar_core"])
-    assert actual == ("working-unsettled", "working", False), "English origin"
+    assert actual == ("public-domain", "working", False), "English origin"
 
 
-def test_the_gospel_is_held_as_unsettled_working_wording():
-    assert_unsettled(provenance("en"))
+def test_the_gospel_has_a_revised_historical_basis():
+    assert_revised(provenance("en"))
     errors, _tally = check(ROOT)
-    assert not [e for e in errors if UNSETTLED in e]
+    assert not [e for e in errors if REVISED in e]
 
 
 def test_an_own_claim_is_rejected():
     sites = provenance("en")
-    sites[UNSETTLED]["origin"] = "own"
-    rejects(assert_unsettled, sites, message="English origin")
+    sites[REVISED]["origin"] = "own"
+    rejects(assert_revised, sites, message="English origin")
 
 
 # --- no clause-sized group remains in the nine proper texts ---------------------------------------
@@ -959,7 +961,7 @@ CHANGED = {
 CHANGED["en"].append(EPIPHANY_INTROIT)
 
 
-def test_changed_sites_are_outside_the_protected_formulas_and_their_provenance_is_current():
+def test_changed_sites_preserve_fixed_formula_scope_and_current_provenance():
     assert protected("orationes.gloria-patri", "pl") and protected("orationes.pater-noster", "pl")
     for language, texts in CHANGED.items():
         sites = provenance(language)
@@ -971,9 +973,11 @@ def test_changed_sites_are_outside_the_protected_formulas_and_their_provenance_i
             for segment in doc["segments"]:
                 if segment["type"] != "verse":
                     continue
-                assert not protected(text, language, segment["id"]), (text, segment["id"])
+                expected_protection = assert_protection_scope(
+                    text, language, segment["id"], lay["segments"][segment["id"]]["translation"]
+                )
                 site = sites[f"{text}.{segment['id']}.{language}"]
-                assert site["familiar_core"] is False and site["review"] == "working"
+                assert site["familiar_core"] is expected_protection and site["review"] == "working"
                 assert site["source_sha256"] == canonical_hash(source_payload(segment))
                 target = lay["segments"][segment["id"]]["translation"]
                 assert site["target_sha256"] == canonical_hash(target)
@@ -1005,3 +1009,9 @@ def test_every_consumer_of_a_changed_text_reads_cleanly(text, expected):
             lay = layer(language, component["text"])
             assert interlinear.check(body, lay) == [], (component["text"], language)
             assert check_layer(body, lay, layer_path(language, component["text"])) == []
+
+
+def test_removing_the_historical_origin_is_rejected():
+    sites = provenance("en")
+    sites[REVISED]["origin"] = "working-unsettled"
+    rejects(assert_revised, sites, message="English origin")

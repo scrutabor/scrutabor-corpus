@@ -9,6 +9,7 @@ from day_preface_fixture import TARGET as DAY_TARGET
 from day_preface_fixture import restore_day_preface
 from preface_caption_fixture import restore_caption_layer
 from preface_glory_fixture import restore_glory_layer
+from provenance_successor_fixture import restore_preface_prose
 from vigil_preface_fixture import TARGET, current_prose, restore_vigil_preface
 
 from checks.interlinear import check, effective_gloss
@@ -433,6 +434,7 @@ def restore_reviewed_fields(layer, slug):
         if slug == "paschalis-in-die"
         else deepcopy(layer)
     )
+    restored = restore_preface_prose(restored, slug)
     baseline = BASELINES[slug]
     for site in selected(slug):
         group = group_for(restored, site)

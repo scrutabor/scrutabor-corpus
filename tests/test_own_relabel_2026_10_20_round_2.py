@@ -19,6 +19,7 @@ from functools import cache
 from pathlib import Path
 
 import pytest
+from provenance_successor_fixture import FIXTURE as SUCCESSOR
 
 from build_reader import store
 from checks import translation_basis
@@ -35,7 +36,18 @@ ROOT = Path(__file__).resolve().parents[1]
 FIXTURE = json.loads(
     (ROOT / "tests/fixtures/own-relabel-2026-10-20-round-2.json").read_text(encoding="utf-8")
 )
-LABELS = FIXTURE["sites"]
+HISTORICAL_LABELS = FIXTURE["sites"]
+LABELS = deepcopy(HISTORICAL_LABELS)
+SUCCESSOR_SITES = set(LABELS) & set(SUCCESSOR["after_rows"])
+assert len(SUCCESSOR_SITES) == 11
+for _site in SUCCESSOR_SITES:
+    _row = SUCCESSOR["after_rows"][_site]
+    assert LABELS[_site] == {key: SUCCESSOR["before_rows"][_site][key] for key in LABELS[_site]}
+    LABELS[_site].update({key: _row[key] for key in LABELS[_site]})
+for _site in LABELS:
+    LABELS[_site]["familiar_core"] = (
+        SUCCESSOR["after_rows"].get(_site, {}).get("familiar_core", False)
+    )
 SITES = sorted(LABELS)
 SAMPLE = FIXTURE["wording_sample"]
 DOXOLOGY = FIXTURE["doxology_uses"]
@@ -93,7 +105,7 @@ def rejects(check_fn, *args, message):
 def assert_label(site, row):
     assert row["origin"] == LABELS[site]["origin"], "pinned origin"
     assert row["review"] == LABELS[site]["review"], "pinned review"
-    assert row["familiar_core"] is False, "familiar core"
+    assert row["familiar_core"] is LABELS[site]["familiar_core"], "familiar core"
 
 
 def assert_wording_unchanged(site, row, target):
@@ -117,8 +129,8 @@ def test_inventory():
         text, segment, language = site.rsplit(".", 2)
         row = rows[site]
         assert (row["text"], row["segment"], row["language"]) == (text, segment, language)
-        assert not protected(text, language, segment)
-        counts.setdefault(language, Counter())[LABELS[site]["origin"]] += 1
+        assert protected(text, language, segment) is LABELS[site]["familiar_core"]
+        counts.setdefault(language, Counter())[HISTORICAL_LABELS[site]["origin"]] += 1
     assert {language: dict(c) for language, c in counts.items()} == COUNTS
     assert {LABELS[site]["review"] for site in SITES} == {"working"}
     assert len(SAMPLE) >= 40 and set(SAMPLE) <= set(SITES)
@@ -215,7 +227,7 @@ def test_the_polish_introit_doxology_carries_its_scoped_basis(site):
         "segments": [segment],
         "relationship": gloria_record["relationship"],
     }
-    assert not protected(text, "pl", segment) and ledger()[site]["familiar_core"] is False
+    assert protected(text, "pl", segment) and ledger()[site]["familiar_core"] is True
 
 
 @pytest.mark.parametrize("language", ["en", "pl"])
@@ -234,3 +246,39 @@ def test_the_common_preface_address_asserts_no_wording_basis(language):
     ] == []
     assert covering_records(language, text, segment) == []
     assert sites_in_corpus()[site]["has_wording_citations"] is False
+
+
+def test_successor_changes_only_three_passion_labels_and_eight_introit_flags():
+    passion = {site for site in SUCCESSOR_SITES if "-evangelium.s" in site}
+    introits = SUCCESSOR_SITES - passion
+    assert passion == {
+        f"proprium.dominica-ii-passionis-evangelium.{segment}.pl"
+        for segment in ("s46", "s70", "s78")
+    }
+    assert len(introits) == 8 and all("-introitus." in site for site in introits)
+    for site in passion:
+        assert HISTORICAL_LABELS[site]["origin"] == "trivial"
+        assert LABELS[site]["origin"] == "working-unsettled"
+        assert LABELS[site]["familiar_core"] is False
+    for site in introits:
+        assert LABELS[site]["origin"] == HISTORICAL_LABELS[site]["origin"]
+        assert LABELS[site]["familiar_core"] is True
+    for site in SITES:
+        assert LABELS[site]["target_sha256"] == HISTORICAL_LABELS[site]["target_sha256"]
+    current_counts = {
+        language: dict(
+            Counter(LABELS[site]["origin"] for site in SITES if site.endswith("." + language))
+        )
+        for language in ("en", "pl")
+    }
+    assert current_counts == {
+        "en": {"trivial": 22, "working-unsettled": 145},
+        "pl": {"traditional": 3, "trivial": 35, "working-unsettled": 201},
+    }
+
+
+@pytest.mark.parametrize("site", SITES)
+def test_a_changed_protection_flag_is_rejected(site):
+    row = ledger()[site]
+    row["familiar_core"] = not row["familiar_core"]
+    rejects(assert_label, site, row, message="familiar core")

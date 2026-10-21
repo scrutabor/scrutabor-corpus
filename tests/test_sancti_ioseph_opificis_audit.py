@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from provenance_successor_fixture import assert_protection_scope
 
 from build_reader import store
 from build_reader.bibliography_bindings import digest, selected_text, transcript_digest
@@ -439,7 +440,8 @@ def assert_verse(lay, row):
     assert present in target and absent not in target, f"{finding} verse"
     site = provenance(language)[f"{text}.{segment}.{language}"]
     assert site["target_sha256"] == canonical_hash(target), f"{finding} provenance"
-    assert site["review"] == "working" and not protected(text, language, segment)
+    assert site["review"] == "working"
+    assert_protection_scope(text, language, segment, target)
 
 
 @pytest.mark.parametrize("row", VERSES, ids=[f"{r[0]}-{r[2].split('.', 1)[1]}" for r in VERSES])
@@ -989,7 +991,7 @@ CHANGED = {
 }
 
 
-def test_changed_sites_are_outside_the_protected_formulas_and_their_provenance_is_current():
+def test_changed_sites_preserve_fixed_formula_scope_and_current_provenance():
     assert protected("orationes.gloria-patri", "pl") and protected("orationes.pater-noster", "pl")
     for language, texts in CHANGED.items():
         sites = provenance(language)
@@ -1000,9 +1002,11 @@ def test_changed_sites_are_outside_the_protected_formulas_and_their_provenance_i
             for segment in doc["segments"]:
                 if segment["type"] != "verse":
                     continue
-                assert not protected(text, language, segment["id"]), (text, segment["id"])
+                expected_protection = assert_protection_scope(
+                    text, language, segment["id"], lay["segments"][segment["id"]]["translation"]
+                )
                 site = sites[f"{text}.{segment['id']}.{language}"]
-                assert site["familiar_core"] is False and site["review"] == "working"
+                assert site["familiar_core"] is expected_protection and site["review"] == "working"
                 assert site["source_sha256"] == canonical_hash(source_payload(segment))
                 assert site["target_sha256"] == canonical_hash(
                     lay["segments"][segment["id"]]["translation"]
