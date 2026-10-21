@@ -10,6 +10,7 @@ from copy import deepcopy
 from itertools import pairwise
 
 import pytest
+from post_ascension_fixture import FIXTURE as ASCENSION
 
 from checks.interlinear import check, effective_gloss
 from checks.language_packs import check_layer
@@ -86,6 +87,13 @@ SITES = [
     ("spiritus-sancti", "s02", 33, 34, 33, "Your right hand"),
     ("spiritus-sancti", "s02", 61, 62, 61, "of Your glory"),
 ]
+HISTORICAL_SITES = SITES
+SITES = [
+    (slug, sid, 31, last, anchor, "His disciples")
+    if slug == "ascensionis" and first == 30
+    else (slug, sid, first, last, anchor, gloss)
+    for slug, sid, first, last, anchor, gloss in HISTORICAL_SITES
+]
 SLUGS = sorted({site[0] for site in SITES})
 NONLOCAL_PAIRS = {
     ("apostolorum", "w034"),
@@ -155,7 +163,15 @@ CLAUSE_CONTROLS = [
         "6ea338ccb44ed4c113db789ad4647a148409e2489907f4718409904be277dc6d",
     ),
 ]
+HISTORICAL_CLAUSE_CONTROLS = CLAUSE_CONTROLS
+CLAUSE_CONTROLS = [
+    (slug, sid, first, last, ASCENSION["ascension_clause_42_48"])
+    if slug == "ascensionis"
+    else (slug, sid, first, last, expected)
+    for slug, sid, first, last, expected in HISTORICAL_CLAUSE_CONTROLS
+]
 PATTERNS = {
+    "His disciples": {("discipulus", "suus")},
     "our Lord": {("dominus", "noster")},
     "of Your glory": {("gloria", "tuus")},
     "Your majesty": {("maiestas", "tuus")},
@@ -285,7 +301,8 @@ def test_population_distinguishes_selected_and_nonlocal_pairs():
     assert len(SITES) == len(selected) == 61
     assert selected.isdisjoint(NONLOCAL_PAIRS)
     assert len(found) == 67 and found == selected | NONLOCAL_PAIRS
-    assert sum(last - first + 1 for _, _, first, last, _, _ in SITES) == 127
+    assert sum(last - first + 1 for _, _, first, last, _, _ in HISTORICAL_SITES) == 127
+    assert sum(last - first + 1 for _, _, first, last, _, _ in SITES) == 126
 
 
 @pytest.mark.parametrize("site", SITES)

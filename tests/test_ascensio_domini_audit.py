@@ -717,6 +717,12 @@ NAMED = {
 }
 
 
+HISTORICAL_CONTINUATIONS = dict(CONTINUATIONS)
+HISTORICAL_REVIEWED_CAPITALS = dict(REVIEWED_CAPITALS)
+CONTINUATIONS.pop(("en", OFFERTORY, "w001"))
+REVIEWED_CAPITALS.pop(("pl", PREFACE, "w044"))
+
+
 def caption_case(doc, lay):
     language, misses, examined = lay["language"], [], 0
     for segment in doc["segments"]:

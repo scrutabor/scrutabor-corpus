@@ -7,6 +7,7 @@ from typing import Any
 import pytest
 from day_preface_fixture import TARGET as DAY_TARGET
 from day_preface_fixture import restore_day_preface
+from post_ascension_fixture import restore_layer as restore_ascension_layer
 from preface_caption_fixture import restore_caption_layer
 from preface_glory_fixture import restore_glory_layer
 from provenance_successor_fixture import restore_preface_prose
@@ -358,7 +359,11 @@ FIXTURES: dict[str, Any] = {
         },
     },
 }
-SITES = FIXTURES["sites"]
+SITES = deepcopy(FIXTURES["sites"])
+for _site in SITES:
+    if _site["slug"] == "ascensionis":
+        _site["words"] = _site["words"][1:]
+        _site["gloss"] = "He might grant us a share in His divinity"
 BASELINES = FIXTURES["baselines"]
 SLUGS = sorted(BASELINES)
 
@@ -387,6 +392,9 @@ def group_for(layer, site):
 def supported(site):
     chosen = site["gloss"]
     alternatives = {
+        "He might grant us a share in His divinity": {
+            "He might grant us to be partakers of His divinity"
+        },
         "that He might grant us a share in His divinity": {
             "that He might grant us to be partakers of His divinity"
         },
@@ -434,9 +442,17 @@ def restore_reviewed_fields(layer, slug):
         if slug == "paschalis-in-die"
         else deepcopy(layer)
     )
+    if slug == "ascensionis":
+        site = selected(slug)[0]
+        group = group_for(restored, site)
+        assert group["gloss"] in supported(site)
+        group["gloss"] = site["gloss"]
+        restored = restore_ascension_layer(
+            restored, "languages/en/texts/ordinarium/praefatio-ascensionis.json"
+        )
     restored = restore_preface_prose(restored, slug)
     baseline = BASELINES[slug]
-    for site in selected(slug):
+    for site in (site for site in FIXTURES["sites"] if site["slug"] == slug):
         group = group_for(restored, site)
         assert set(group) == {"words", "anchor", "gloss"}
         assert group["words"] == site["words"]
@@ -485,8 +501,9 @@ def assert_provenance(record, doc, layer, slug):
 
 def test_population_and_distinct_construction_boundaries():
     assert len(SLUGS) == 10 and len(SITES) == 10
-    assert sum(len(s["words"]) for s in SITES) == 52
-    assert len({(s["slug"], w) for s in SITES for w in s["words"]}) == 52
+    assert sum(len(s["words"]) for s in FIXTURES["sites"]) == 52
+    assert sum(len(s["words"]) for s in SITES) == 51
+    assert len({(s["slug"], w) for s in SITES for w in s["words"]}) == 51
     assert (
         sum(len(groups) for row in BASELINES.values() for groups in row["absorbed"].values()) == 2
     )
@@ -592,6 +609,12 @@ SEMANTIC_MUTATIONS = [
     ("sanctissimae-trinitatis", "w051", "by our revelation"),
     ("sancti-ioseph-in-festivitate", "w062", "by the Father"),
     ("sancti-ioseph-in-solemnitate", "w062", "by the Father"),
+]
+
+
+SEMANTIC_MUTATIONS = [
+    (slug, "w043", gloss.removeprefix("that ")) if slug == "ascensionis" else (slug, first, gloss)
+    for slug, first, gloss in SEMANTIC_MUTATIONS
 ]
 
 

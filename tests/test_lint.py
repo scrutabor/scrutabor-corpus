@@ -129,6 +129,75 @@ class TestTheIntroduction:
         assert lint_gloss(gloss(), TEXT) == []
 
 
+class TestLocalizedWordNoteTerminology:
+    @pytest.mark.parametrize(
+        "language,note",
+        [
+            ("pl", "Forma może mieć dwa odczytania. Sama końcówka nie wyklucza drugiego."),
+            ("en", "The form permits two readings. Its ending alone does not exclude the second."),
+        ],
+    )
+    def test_qualified_uncertainty_is_not_a_banned_term(self, language, note):
+        layer = gloss(lang=language, words={"w001": {"gloss": "salve", "note": note}})
+        original = deepcopy((TEXT, layer))
+        assert lint_gloss(layer, TEXT) == []
+        assert (TEXT, layer) == original
+
+    def test_note_only_spelling_mutation_is_local_and_reversible(self):
+        layers = {
+            "pl": gloss(
+                words={
+                    "w001": {"gloss": "witaj", "note": "Postać ablativu dopuszcza dwa odczytania."}
+                }
+            ),
+            "en": gloss(
+                lang="en",
+                words={"w001": {"gloss": "hail", "note": "The form permits two readings."}},
+            ),
+        }
+        original = deepcopy((TEXT, layers))
+        for layer in layers.values():
+            assert lint_gloss(layer, TEXT) == []
+        changed = deepcopy(layers["pl"])
+        before = changed["words"]["w001"]["note"]
+        assert before.count("ablativu") == 1
+        changed["words"]["w001"]["note"] = before.replace("ablativu", "ablatiwu")
+        assert changed != layers["pl"]
+        assert changed["words"]["w001"]["note"] != before
+        assert lint_gloss(changed, TEXT) == [
+            "pl:w001.note: banned terminology/typography 'ablatiw' (TERMINOLOGY.md)"
+        ]
+        assert lint_gloss(layers["en"], TEXT) == []
+        assert (TEXT, layers) == original
+        changed["words"]["w001"]["note"] = before
+        assert changed == layers["pl"]
+        assert lint_gloss(changed, TEXT) == []
+        assert (TEXT, layers) == original
+
+    def test_note_does_not_inherit_explanation_or_layout_policies(self):
+        # Synthetic field-scope probes, not admitted contextual readings.
+        probes = {
+            "pl": "Dopełniacz liczby mnogiej jest możliwy. To zdanie nie rozstrzyga.\u00a0",
+            "en": "The genitive plural is possible. The sentence does not resolve this.\u00a0",
+        }
+        for language, note in probes.items():
+            layer = gloss(lang=language, words={"w001": {"gloss": "salve", "note": note}})
+            original = deepcopy((TEXT, layer))
+            assert lint_gloss(layer, TEXT) == []
+            explanation = deepcopy(layer)
+            explanation["words"]["w001"]["explanation"] = explanation["words"]["w001"].pop("note")
+            assert explanation != layer
+            errors = lint_gloss(explanation, TEXT)
+            assert len(errors) == 3
+            assert any("leaves the edition unresolved" in error for error in errors)
+            assert any(
+                "explanation merely restates structured grammar" in error for error in errors
+            )
+            assert any("non-breaking space" in error for error in errors)
+            assert lint_gloss(layer, TEXT) == []
+            assert (TEXT, layer) == original
+
+
 class TestNoteReferences:
     def test_a_multiword_range_names_every_token(self):
         text = {

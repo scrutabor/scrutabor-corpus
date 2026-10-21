@@ -19,6 +19,7 @@ from functools import cache
 from pathlib import Path
 
 import pytest
+from post_ascension_fixture import expected_row_successor
 from provenance_successor_fixture import FIXTURE as SUCCESSOR
 
 from build_reader import store
@@ -48,6 +49,8 @@ for _site in LABELS:
     LABELS[_site]["familiar_core"] = (
         SUCCESSOR["after_rows"].get(_site, {}).get("familiar_core", False)
     )
+PRE_ASCENSION_LABELS = deepcopy(LABELS)
+LABELS = {site: expected_row_successor(row, site) for site, row in LABELS.items()}
 SITES = sorted(LABELS)
 SAMPLE = FIXTURE["wording_sample"]
 DOXOLOGY = FIXTURE["doxology_uses"]
@@ -162,7 +165,7 @@ def test_a_reviewed_claim_is_rejected(site):
 
 
 @pytest.mark.parametrize("site", SITES)
-def test_the_relabel_changes_no_wording(site):
+def test_current_wording_matches_its_historical_or_exact_successor_hash(site):
     assert_wording_unchanged(site, ledger()[site], verse(site))
 
 
@@ -264,7 +267,9 @@ def test_successor_changes_only_three_passion_labels_and_eight_introit_flags():
         assert LABELS[site]["origin"] == HISTORICAL_LABELS[site]["origin"]
         assert LABELS[site]["familiar_core"] is True
     for site in SITES:
-        assert LABELS[site]["target_sha256"] == HISTORICAL_LABELS[site]["target_sha256"]
+        assert (
+            PRE_ASCENSION_LABELS[site]["target_sha256"] == HISTORICAL_LABELS[site]["target_sha256"]
+        )
     current_counts = {
         language: dict(
             Counter(LABELS[site]["origin"] for site in SITES if site.endswith("." + language))

@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from post_ascension_fixture import expected_row_successor
 from provenance_successor_fixture import (
     FIXTURE,
     INTROITS,
@@ -211,7 +212,7 @@ def test_the_provenance_validator_rejects_a_cleared_flag(site, baseline, monkeyp
 
 def test_all_173_successor_rows_match_exactly(baseline):
     for site, row in FIXTURE["after_rows"].items():
-        assert baseline["rows"][site] == row
+        assert baseline["rows"][site] == expected_row_successor(row)
     fixture_before = deepcopy(FIXTURE)
     before = deepcopy(list(FIXTURE["before_rows"].values()))
     assert {row["site"]: row for row in metadata_successors(before)} == FIXTURE["after_rows"]

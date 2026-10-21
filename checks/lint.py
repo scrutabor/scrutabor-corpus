@@ -1306,7 +1306,7 @@ def lint_gloss(doc, text_doc):
                     f"({sentence[:40]!r}) — name the priest"
                 )
 
-    def check_prose(where, prose):
+    def check_terminology(where, prose):
         for pat in banned:
             # IGNORECASE: a capitalized sentence-initial variant is the same
             # banned term (proven necessary by mutation, 2026-08-03).
@@ -1314,6 +1314,9 @@ def lint_gloss(doc, text_doc):
                 errors.append(
                     f"{lang}:{where}: banned terminology/typography {pat!r} (TERMINOLOGY.md)"
                 )
+
+    def check_prose(where, prose):
+        check_terminology(where, prose)
         for pat in UNRESOLVED_READER_CLAIMS.get(lang, []):
             if re.search(pat, prose, re.IGNORECASE):
                 errors.append(
@@ -1346,6 +1349,9 @@ def lint_gloss(doc, text_doc):
             errors += lint_citations(entry["explanation_citations"], f"{lang}:{wid}")
         explanation = entry.get("explanation", "")
         check_prose(wid, entry.get("gloss", "") + " " + explanation)
+        note = entry.get("note")
+        if isinstance(note, str) and note.strip():
+            check_terminology(f"{wid}.note", note)
         for pattern in REDUNDANT_EXPLANATION_OPENINGS.get(lang, []):
             if re.search(pattern, explanation, re.IGNORECASE):
                 errors.append(
