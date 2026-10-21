@@ -35,6 +35,7 @@ a term already listed.
 | ablative of means / of cause | ablative of means, ablative of cause | — |
 | participle | participle; qualified: future participle, deponent participle | verbal adjective (as the term) |
 | quotes in prose | “…” (English quotes) | „…” |
+| commas and periods in English prose | inside closing quotation marks | outside closing quotation marks |
 
 ## Linter hooks
 

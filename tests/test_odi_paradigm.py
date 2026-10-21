@@ -244,7 +244,7 @@ PL_NOTE = (
     "w tym imiesłów odientes. Znaczenie czasowe konkretnej formy wynika z jej kontekstu."
 )
 EN_NOTE = (
-    "A defective verb. Perfect forms often express a present state, as in odi, “I hate”. "
+    "A defective verb. Perfect forms often express a present state, as in odi, “I hate.” "
     "Later Latin also has present forms, including the participle odientes. "
     "The time reference of a particular form depends on its context."
 )

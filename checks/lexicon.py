@@ -28,6 +28,11 @@ SENSE_ENTRY_KEYS = {"senses", "note", "note_citations", "derivatives", "analysis
 # This is neither indeclinability nor a choice between two ordinary paradigms.
 IRREGULAR_COMPOUND_NOUNS = frozenset({"iusiurandum"})
 
+# This entry selects the neuter indeclinable, not the distinct feminine -ae
+# paradigm. The broader INDECLINABLE completeness list also contains irregular
+# Greek/Hebrew declensions, so it must not become a blanket ban on numbers.
+STRICT_INDECLINABLE_NOUNS = frozenset({"manna"})
+
 # Dictionary export notation is not a reader-facing meaning. Ordinary
 # parentheses ("shoot (of a vine)") and lexical slash alternatives remain valid.
 SENSE_APPARATUS = re.compile(
@@ -140,12 +145,28 @@ def _lint_head(lemma, head, errors):
             errors.append(f"lexicon:{lemma}: head token {token!r} carries {n_marks} accents")
 
 
+def _indeclinable_noun_errors(lemma, facts, where, *, lexical=False):
+    if lemma not in STRICT_INDECLINABLE_NOUNS:
+        return []
+    errors = []
+    if facts.get("pos") != "noun" or facts.get("gender") != "n":
+        errors.append(f"{where}: selected indeclinable paradigm must be a neuter noun")
+    if any(key in facts and facts[key] != "n" for key in ("gender_alt", "gender_pl")):
+        errors.append(f"{where}: indeclinable neuter has no alternate or plural gender")
+    if "decl" in facts or "decl_alt" in facts:
+        errors.append(f"{where}: indeclinable noun has no numbered declension; omit both fields")
+    if lexical and facts.get("head") != lemma:
+        errors.append(f"{where}: indeclinable dictionary head must be {lemma!r}")
+    return errors
+
+
 def lint_lemmata(entries):
     errors = []
     if not entries:
         errors.append("lexicon: zero lemmata entries — refusing to pass on zero")
         return errors
     for lemma, e in entries.items():
+        errors += _indeclinable_noun_errors(lemma, e, f"lexicon:{lemma}", lexical=True)
         if lemma in IRREGULAR_COMPOUND_NOUNS:
             if e.get("pos") != "noun" or e.get("gender") != "n":
                 errors.append(f"lexicon:{lemma}: compound must be a neuter noun")
@@ -231,6 +252,10 @@ def lint_senses(lang, entries, lemmata, required=None):
                     f"{pat!r} (TERMINOLOGY.md)"
                 )
         note = e.get("note", "")
+        if lang == "en" and re.search(r"”[,.]", note):
+            errors.append(
+                f"lexicon:{lang}:{lemma}: commas and periods belong inside closing quotation marks"
+            )
         if "note_citations" in e:
             if not note:
                 errors.append(f"lexicon:{lang}:{lemma}: citations without a note")
@@ -273,6 +298,7 @@ def check_text_against_lexicon(text_doc, lemmata):
     for seg in text_doc["segments"]:
         for w in seg.get("words") or []:
             lemma, morph, wid = w["lemma"], w["morph"], w["id"]
+            errors += _indeclinable_noun_errors(lemma, morph, f"{tid}:{wid}")
             if lemma in IRREGULAR_COMPOUND_NOUNS and ("decl" in morph or "decl_alt" in morph):
                 errors.append(f"{tid}:{wid}: compound has no single ordinary declension")
             e = lemmata.get(lemma)
@@ -542,6 +568,7 @@ def check_paradigm(lemmata: dict) -> list[str]:
     entries = lemmata.get("entries") if "entries" in lemmata else lemmata
     errors = []
     for name, entry in sorted((entries or {}).items()):
+        errors += _indeclinable_noun_errors(name, entry, f"lexicon:{name}", lexical=True)
         if name in IRREGULAR_COMPOUND_NOUNS and ("decl" in entry or "decl_alt" in entry):
             errors.append(f"lexicon:{name}: compound has no single ordinary declension")
         pos = entry.get("pos")
@@ -558,7 +585,7 @@ def check_paradigm(lemmata: dict) -> list[str]:
         if (
             pos == "noun"
             and "decl" not in entry
-            and name not in INDECLINABLE | IRREGULAR_COMPOUND_NOUNS
+            and name not in INDECLINABLE | IRREGULAR_COMPOUND_NOUNS | STRICT_INDECLINABLE_NOUNS
         ):
             errors.append(
                 f"lexicon:{name}: a noun with no declension recorded — add it, or name "

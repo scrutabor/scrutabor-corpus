@@ -22,7 +22,7 @@ TRADITIONAL_EXPLANATIONS = {
     ("tuus", "senses", 0): "your (traditional English: thy)",
     ("tuus", "senses", 1): "yours (traditional English: thine)",
     ("venter", "note", None): (
-        "In the received English of the Ave María the word is “womb”: “fruit of thy womb”."
+        "In the received English of the Ave María the word is “womb”: “fruit of thy womb.”"
     ),
 }
 

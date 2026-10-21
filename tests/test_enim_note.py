@@ -64,7 +64,7 @@ def test_enim_keeps_its_neutral_note_requirement():
         (
             "en",
             "ex",
-            "Before a vowel always “ex”. Before a consonant both “e” and “ex” occur "
+            "Before a vowel always “ex.” Before a consonant both “e” and “ex” occur "
             "(ex María Vírgine).",
         ),
     ],
