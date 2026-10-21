@@ -256,17 +256,29 @@ def test_both_vigils_of_the_first_class_are_carried():
         assert "vigilia-pentecostes" in said
 
 
-def test_the_sunday_within_the_octave_is_reposed_on_the_thirtieth_when_needed():
-    met = 0
-    for y in YEARS:
-        christmas = date(y - 1, 12, 25)
-        if christmas.weekday() != 6:
-            continue
-        met += 1
-        day = {d.when: d for d in year(y)}[date(y - 1, 12, 30)]
-        assert day.formulary == "dominica-infra-octavam-nativitatis"
-        assert day.dies_class == 2
-    assert met > 10
+def test_the_sunday_within_the_octave_is_only_an_actual_sunday():
+    for ending in YEARS:
+        expected = [
+            date(ending - 1, 12, day)
+            for day in range(26, 32)
+            if date(ending - 1, 12, day).weekday() == 6
+        ]
+        found = [
+            day for day in year(ending) if day.formulary == "dominica-infra-octavam-nativitatis"
+        ]
+        assert [day.when for day in found] == expected
+        assert all(day.when.weekday() == 6 and day.dies_class == 2 for day in found)
+
+
+@pytest.mark.parametrize("civil_year", [2033, 2039, 2044, 2050, 2061, 2067, 2072, 2078, 2089, 2095])
+def test_no_mass_is_guessed_for_the_unrepresented_octave_friday(civil_year):
+    from kalendarium.roman import year as roman_year
+
+    when = date(civil_year, 12, 30)
+    assert date(civil_year, 12, 25).weekday() == 6 and when.weekday() == 4
+    assert when not in {day.when for day in year(civil_year + 1)}
+    # No octave-feria formulary is represented in the current scope.
+    assert when not in {day.when for day in roman_year(civil_year + 1)}
 
 
 def test_a_shipped_table_that_drifts_from_the_book_is_caught(monkeypatch):

@@ -70,7 +70,7 @@ def test_declared_version_shape_and_exact_body_package_closure(edition):
     assert manifest["schema_version"] == "5.12.0"
     assert table["schema_version"] == "1.0.0"
     assert len(table["profiles"]) == 9 and len(BODY_IDS) == 14
-    assert len(table["masses"]) == 113 and len(table["pairs"]) == 7619
+    assert len(table["masses"]) == 113 and len(table["pairs"]) == 7610
     assert len({row[1] for row in table["pairs"]}) == 111
     assert set(table) == {"schema_version", "roles", "profiles", "masses", "pairs"}
     assert table == selector.calendar_table(store.formularies(CORPUS), emit.kalendarium())

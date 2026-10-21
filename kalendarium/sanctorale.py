@@ -8,6 +8,7 @@ cycle comes from the table at General Rubrics n. 91.
 
 from __future__ import annotations
 
+from calendar import isleap
 from dataclasses import dataclass
 from datetime import date, timedelta
 
@@ -96,7 +97,11 @@ def occurrences(ending: int) -> list[tuple[date, Festum]]:
     end = _advent_start(ending) - timedelta(days=1)
     for civil_year in (ending - 1, ending):
         for feast in FESTA:
-            when = date(civil_year, feast.month, feast.day)
+            proper_day = feast.day
+            # The printed calendar gives Matthias 25 February in leap years.
+            if feast.formulary == "sancti-matthiae-apostoli" and isleap(civil_year):
+                proper_day = 25
+            when = date(civil_year, feast.month, proper_day)
             if feast.monday_after_sunday and when.weekday() == 6:
                 # n. 96 b calls the following Monday its proper transferred seat.
                 when += timedelta(days=1)

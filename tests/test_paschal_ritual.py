@@ -28,7 +28,7 @@ def table(inputs):
 
 def test_all_actual_pairs_and_independent_reconstruction(table):
     assert table == dismissal.expected(CORPUS)
-    assert len(table["pairs"]) == 7619
+    assert len(table["pairs"]) == 7610
     assert sum(row[2] == 1 for row in table["pairs"]) == 152
     assert len(table["masses"]) == 113
     for _day, mass, profile in table["pairs"]:

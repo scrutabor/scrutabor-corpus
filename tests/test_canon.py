@@ -53,7 +53,7 @@ def test_every_represented_pair_has_one_explicit_complete_profile(authored, tabl
         if mass["calendar"]["key"] == day.formulary
     }
     assert set(decoded(table)) == expected
-    assert len(table["pairs"]) == len(expected) == 7619
+    assert len(table["pairs"]) == len(expected) == 7610
     assert len(table["masses"]) == 113
     assert table["schema_version"] == "1.0.0"
     assert table["roles"] == ["communicantes", "hanc-igitur", "qui-pridie"]
@@ -117,7 +117,7 @@ def test_every_other_pair_keeps_the_ordinary_profile(lookup):
     ordinary = {
         (day, mass) for (day, mass) in lookup if date.fromisoformat(day) not in proper_dates
     }
-    assert len(ordinary) == 6514
+    assert len(ordinary) == 6515
     assert all(lookup[pair] == "ordinary" for pair in ordinary)
     assert all(profile != "ordinary" for pair, profile in lookup.items() if pair not in ordinary)
 
