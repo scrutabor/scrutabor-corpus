@@ -1021,7 +1021,17 @@ def test_the_adjective_card_lists_adjective_senses_and_the_text_keeps_its_noun()
     for text in CONSUMERS_OF_ULTERIOR:
         hits = [w for w in words(core(text)).values() if w["lemma"] == "ulterior"]
         assert len(hits) == 1, text
-        found[text] = (hits[0]["id"], layer("pl", text)["words"][hits[0]["id"]]["gloss"])
+        local = layer("pl", text)
+        if text == "proprium.vigilia-pentecostes-communio":
+            assert {
+                "words": ["w001", "w002", "w003"],
+                "anchor": "w003",
+                "gloss": "W ostatnim dniu święta",
+            } in local["segments"]["s01"]["alignments"]
+            assert all("gloss" not in local["words"][wid] for wid in ("w001", "w002", "w003"))
+            found[text] = (hits[0]["id"], "W ostatnim dniu święta")
+        else:
+            found[text] = (hits[0]["id"], local["words"][hits[0]["id"]]["gloss"])
         clean(core(text), layer("pl", text))
     assert found[EPISTLE] == ("w135", "kraniec")
     assert words(core(EPISTLE))["w135"].get("substantive") is True

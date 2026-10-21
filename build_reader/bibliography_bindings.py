@@ -247,10 +247,35 @@ class _SourceSnapshot:
         work = _lookup(self.works, edition.get("work"), "source work")
         return {"use": use, "work": work, "edition": edition, "digital_item": item}
 
+    def binding_contract(self, path: Path) -> str | None:
+        if self.raw is None:
+            self.raw = RawBindingSnapshot(self.root)
+        return self.raw.inspect_contract(path)
+
     def reading(self, path: Path):
         if self.raw is None:
             self.raw = RawBindingSnapshot(self.root)
         return self.raw.resolve(path)
+
+
+def _preface_variant_sources(reading, primary: dict, sources: dict) -> None:
+    """Each contribution names its own source role and full archive bytes."""
+    binding = reading.source["binding"]
+    extras = [value for key, value in sources.items() if key != primary["use"]["id"]]
+    if len(sources) != 2 or len(extras) != 1:
+        raise BindingError("raw-reading-6 requires exactly template and variant-rule uses")
+    rule = extras[0]
+    if (
+        primary["use"]["role"] != "derived_digital_collation_aid"
+        or rule["use"]["role"] != "rubric_control"
+    ):
+        raise BindingError("raw-reading-6 source-use role differs from its contribution")
+    archives = reading.source["archives"]
+    if (
+        primary["use"].get("evidence_sha256") != archives[binding["template"]["archive"]]["sha256"]
+        or rule["use"].get("evidence_sha256") != archives[binding["variant"]["archive"]]["sha256"]
+    ):
+        raise BindingError("raw-reading-6 source-use evidence differs from its contribution")
 
 
 def _witness_subject(
@@ -301,7 +326,8 @@ def _witness_subject(
                 "execution rubric source differs from its exact inspected source/use"
             )
         subject["ritual_execution"] = mapping
-    if not reviewable and "source_dependencies" not in witness:
+    contract = snapshot.binding_contract(path)
+    if not reviewable and "source_dependencies" not in witness and contract != "raw-reading-6":
         return deepcopy(subject)
     declaration = source_dependencies(witness)
     for identifier in declaration["uses"]:
@@ -336,6 +362,8 @@ def _witness_subject(
             for s in subject["source_uses"].values()
         ):
             raise BindingError("digital item revision or kind differs from raw binding")
+        if reading.source["contract"] == "raw-reading-6":
+            _preface_variant_sources(reading, primary, subject["source_uses"])
         # A generic evidence hash need not name the first archive. Existing
         # digital uses identify either a contributing archive's complete bytes
         # or the complete ordered reading with one terminal LF. Both subjects

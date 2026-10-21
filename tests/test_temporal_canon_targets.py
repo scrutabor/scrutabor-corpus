@@ -142,31 +142,64 @@ def context_errors(slug, language, core, layer):
             if re.search(r"ognist|fire|flame|siedem|seven", caption + prose, re.I):
                 errors.append("no unattested fire adjective or number")
     else:
-        dependent = line(core, layer, {"s04", "s05"})
-        group = alignment(layer, "w052")
-        if group["words"] != [f"w{i:03}" for i in range(43, 55)]:
-            errors.append("delayed common command/passive group boundaries")
+        dependent = line(core, layer, {"s02", "s05"})
+        # Sentence grammar belongs to complete prose; the short source-order
+        # captions separately retain every command/outcome contribution.
         if language == "pl":
-            if not re.search(
+            pattern = (
                 r"abyś łaskawie przyjął.*uporządkował.*nakazał, byśmy zostali uwolnieni"
-                r".*i zaliczeni do trzody Twoich wybranych",
-                dependent,
-            ):
+                r".*i zaliczeni do trzody Twoich wybranych"
+            )
+            if not re.search(pattern, prose):
                 errors.append("dependent Father petitions and two passive We outcomes/flock")
             if re.search(r"abyś.*\bracz\b", dependent):
                 errors.append("imperative cannot be stranded under abyś")
-            if "i nasze dni" not in dependent or "a także" not in dependent:
-                errors.append("-que and external atque both retained")
         else:
             if not re.search(
                 r"that You graciously accept.*and order our days.*and command that we be rescued"
                 r".*and counted in the flock of Your chosen",
-                dependent,
+                prose,
             ):
                 errors.append("shared dependent Father and passive We/flock")
             if "accept;" in prose:
                 errors.append("semicolon detaches the continuing dependent petitions")
-        if not layer["segments"]["s04"]["translation"].endswith(","):
+        if not alignment(layer, "w036")["gloss"].startswith(
+            "i nasze dni" if language == "pl" else "and order our days"
+        ) or effective_gloss(layer, "w042") != ("a także" if language == "pl" else "and"):
+            errors.append("-que and external atque both retained")
+        if effective_gloss(layer, "w052") != ("nakazał" if language == "pl" else "command"):
+            errors.append("one common command remains independent")
+        if effective_gloss(layer, "w053") != ("trzody" if language == "pl" else "the flock"):
+            errors.append("flock caption retained")
+        if effective_gloss(layer, "w047") != (
+            "uwolnić" if language == "pl" else "to be rescued"
+        ) or effective_gloss(layer, "w054") != (
+            "zaliczyć" if language == "pl" else "to be counted"
+        ):
+            errors.append("shared passive infinitive contributions retained")
+        if effective_gloss(layer, "w046") != ("nas" if language == "pl" else "us"):
+            errors.append("one shared beneficiary of both commanded outcomes")
+        if alignment(layer, "w043")["words"] != ["w043", "w044", "w045"] or alignment(
+            layer, "w050"
+        )["words"] != ["w050", "w051"]:
+            errors.append("condemnation and chosen phrases retain their local boundaries")
+        if any(
+            len(group["words"]) > 3
+            for group in layer["segments"]["s05"].get("alignments", [])
+            if set(group["words"]) & {f"w{i:03}" for i in range(43, 55)}
+        ):
+            errors.append("common command is not hidden in a clause-wide caption")
+        detail = layer["words"]["w052"].get("explanation", "")
+        if not all(
+            token in detail
+            for token in (
+                ("nakazał", "uwolnić", "zaliczyć", "jednym nakazem")
+                if language == "pl"
+                else ("command", "rescue", "inclusion", "same command")
+            )
+        ):
+            errors.append("detail explains both outcomes under their common command")
+        if not layer["segments"]["s02"]["translation"].endswith(","):
             errors.append("continued dependent request punctuation")
         if (
             "Tego samego" in layer["segments"]["s07"]["translation"]
@@ -266,33 +299,51 @@ def test_complete_context_layer_and_pending_provenance(slug, language):
 def test_real_context_mutants(language, kind):
     slug = "hanc-igitur-paschale"
     core, layer = subject(slug, language)
-    group = alignment(layer, "w052")
+    snapshot = deepcopy((core, layer))
+    assert context_errors(slug, language, core, layer) == []
     if kind == "wrong-regeneration-actor":
         alignment(layer, "w019")["gloss"] = (
             "zostałeś odrodzony" if language == "pl" else "You were regenerated"
         )
+        expected = "completed Father regeneration, not Himself regenerated"
     elif kind == "missing-flock":
-        group["gloss"] = group["gloss"].replace("trzody", "grona").replace("flock", "number")
+        layer["words"]["w053"]["gloss"] = "grona" if language == "pl" else "the number"
+        expected = "flock caption retained"
     elif kind == "lost-passive-outcome":
-        group["gloss"] = group["gloss"].replace("i zaliczeni", "").replace("and counted", "")
+        layer["words"]["w054"]["gloss"] = ""
+        expected = "shared passive infinitive contributions retained"
     elif kind == "lost-que":
-        g = alignment(layer, "w036")
-        g["gloss"] = g["gloss"].removeprefix("i ").removeprefix("and ")
+        group = alignment(layer, "w036")
+        group["gloss"] = group["gloss"].removeprefix("i ").removeprefix("and ")
+        expected = "-que and external atque both retained"
     elif kind == "lost-atque":
         layer["words"]["w042"]["gloss"] = ""
+        expected = "-que and external atque both retained"
     elif kind == "detached-request":
-        layer["segments"]["s04"]["translation"] = (
-            layer["segments"]["s04"]["translation"].removesuffix(",") + ";"
+        layer["segments"]["s02"]["translation"] = (
+            layer["segments"]["s02"]["translation"].removesuffix(",") + ";"
         )
-    assert context_errors(slug, language, core, layer)
+        expected = "continued dependent request punctuation"
+    else:
+        raise AssertionError("unhandled contextual mutation")
+    assert layer != snapshot[1], "the selected mutation must change its subject"
+    assert expected in context_errors(slug, language, core, layer)
+    assert core == snapshot[0]
+    assert context_errors(slug, language, *snapshot) == []
+    assert subject(slug, language) == snapshot
 
 
 def test_polish_imperative_under_abys_is_rejected():
     core, layer = subject("hanc-igitur-paschale", "pl")
-    alignment(layer, "w052")["gloss"] = alignment(layer, "w052")["gloss"].replace(
-        "nakazał", "racz nakazać"
+    snapshot = deepcopy((core, layer))
+    assert context_errors("hanc-igitur-paschale", "pl", core, layer) == []
+    layer["words"]["w052"]["gloss"] = "racz nakazać"
+    assert layer != snapshot[1]
+    assert "imperative cannot be stranded under abyś" in context_errors(
+        "hanc-igitur-paschale", "pl", core, layer
     )
-    assert context_errors("hanc-igitur-paschale", "pl", core, layer)
+    assert context_errors("hanc-igitur-paschale", "pl", *snapshot) == []
+    assert subject("hanc-igitur-paschale", "pl") == snapshot
 
 
 @pytest.mark.parametrize("language", ["pl", "en"])

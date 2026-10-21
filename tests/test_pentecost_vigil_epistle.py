@@ -51,12 +51,12 @@ def test_contextual_constructions(language, first, last, anchor, gloss):
 @pytest.mark.parametrize(
     "language,ident,gloss",
     [
-        ("pl", "w045", "czym"),
+        ("pl", "w044", "Jakim chrztem"),
         ("en", "w029", "But"),
         ("en", "w030", "they"),
-        ("en", "w051", "In"),
+        ("en", "w051", "Into"),
         ("en", "w096", "they spoke"),
-        ("en", "w060", "of penance"),
+        ("en", "w060", "of repentance"),
         ("en", "w069", "him"),
         ("en", "w108", "into the synagogue"),
         ("pl", "w047", "ochrzczeni"),
@@ -64,10 +64,18 @@ def test_contextual_constructions(language, first, last, anchor, gloss):
     ],
 )
 def test_direct_readings_and_retained_alternatives(language, ident, gloss):
-    assert store.raw_layer(ROOT, language, TEXT)["words"][ident]["gloss"] == gloss
+    layer = store.raw_layer(ROOT, language, TEXT)
+    if (language, ident) == ("pl", "w044"):
+        assert {"words": ["w044", "w045"], "anchor": "w044", "gloss": gloss} in layer["segments"][
+            "s01"
+        ]["alignments"]
+        assert all("gloss" not in layer["words"][wid] for wid in ("w044", "w045"))
+        assert interlinear.effective_gloss(layer, ident) == gloss
+    else:
+        assert layer["words"][ident]["gloss"] == gloss
 
 
-@pytest.mark.parametrize("language,direct,groups", [("pl", 108, 4), ("en", 79, 15)])
+@pytest.mark.parametrize("language,direct,groups", [("pl", 105, 5), ("en", 79, 15)])
 def test_provider_coverage_and_transport(language, direct, groups):
     raw = store.core(ROOT, TEXT)
     core = expand_core(raw)
@@ -131,7 +139,7 @@ def test_locative_contract_rejects_unknown_case_and_preserves_genuine_genitives(
         "for three months",
         "about twelve men",
         "with tongues and prophesied",
-        "disputing and persuading",
+        "reasoning about the kingdom of God and persuading his listeners",
     ],
 )
 def test_working_english_prose_preserves_context(phrase):
@@ -162,7 +170,7 @@ def test_localized_about_and_current_working_provenance(language):
     if language == "pl":
         assert (
             site["target_sha256"]
-            == "d1997a28b0bff8206933435b4d73ee94781e26da075f77afca09e19e3002af54"
+            == "08417f1e3e61cb2b80b22028776c2295e7b39c2ebebb630978cf179466de9480"
         )
 
 

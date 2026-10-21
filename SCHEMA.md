@@ -736,6 +736,34 @@ localization, editorial
   Like contract4 this proves textual identity only. Attribution explicitly
   rejects it, and source-specific unmarked alignment remains contract1-only;
   lowercase `v.` cannot establish a priest, deacon or voice attribution.
+- An individual binding may opt into **`raw-reading-6`** for one explicit
+  text-only Holy Spirit Preface composition at pinned Latin revision
+  44667ff518b8ff1439780470828b39714f5306a2. Contracts1–5 retain their
+  exact source-subject payloads and fragment boundaries. Registry version
+  remains1. This contract is not an upstream runtime or generic template engine.
+  Its closed fields are witness, revision, contract, template and variant.
+  Template names one archive, section Spiritu at47, line49, exact text and
+  literal placeholder "* *". Variant names the other archive, section Rule
+  at7, line11, exact text "Prefatio=Spiritu=hodierna die;", key Prefatio,
+  selector Spiritu and replacement "hodierna die". Coordinates are integers,
+  never booleans; all common registry/witness/path/revision/hash checks apply.
+  Only Latin Ordo/Prefationes.txt and Tempora/Pasc6-6r.txt are supported.
+  Exactly one literal placeholder in the whole v.-prefixed template is replaced,
+  and only that initial textual prefix is removed. Every other character and
+  the literal unaccented insertion are preserved. The whole transcript must
+  equal the derived reading, normalizing whitespace only. Its path header lists
+  the template [Spiritu] and assignment [Rule] physical line ranges in that order.
+  Resolved source identity contains both archives and resolved_composition;
+  no physical textual fragments or whole-line performer spans are fabricated.
+  Attribution rejects this text-only contract before accessing performer data;
+  lowercase v. supplies no actor or voice. Source-specific variant alignment
+  remains contract1-only. Pending bibliography identities require the complete
+  explicit inventory: the template use binds its archive as a derived digital
+  collation aid, and exactly one supplementary rubric-control use binds the
+  separate assignment archive. The latter records selection data, not normative
+  printed law. Neither source-use role may borrow the other archive's hash or
+  the whole derived-reading hash. This mechanism confers no source-review,
+  linguistic, ritual, or release approval.
 - **`head`** and **`substantive`** (since 0.13.0) state the SYNTAX, which is
   the one thing that settles a reading the form permits and the sentence
   forbids. Every adjective, numeral and

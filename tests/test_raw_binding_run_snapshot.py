@@ -26,7 +26,12 @@ def test_a_corrupt_archive_is_reported_for_every_witness_it_binds(tmp_path):
     registry = copy_bound(tmp_path)
     users: dict[str, set[str]] = {}
     for binding in registry["bindings"].values():
-        for item in binding["evidence"]:
+        evidence = (
+            [binding["template"], binding["variant"]]
+            if binding.get("contract") == "raw-reading-6"
+            else binding["evidence"]
+        )
+        for item in evidence:
             users.setdefault(item["archive"], set()).add(binding["witness"])
     key, witnesses = max(users.items(), key=lambda pair: (len(pair[1]), pair[0]))
     assert len(witnesses) > 1

@@ -448,7 +448,7 @@ def test_metrics_are_the_single_derived_denominator(tmp_path):
     metrics = json.loads((out / manifest["base"]["metrics"]).read_text(encoding="utf-8"))
     assert metrics == {
         "schema_version": "1.0.0",
-        "texts": {"total": 1127, "proprium": 1005, "words": 63674, "verse_segments": 2762},
+        "texts": {"total": 1127, "proprium": 1005, "words": 63674, "verse_segments": 2760},
         "languages": {"en": {"texts": 1127}, "pl": {"texts": 1127}},
         "formularies": {
             "total": 113,

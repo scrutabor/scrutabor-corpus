@@ -136,12 +136,15 @@ def load_registry(root: Path) -> dict:
                 "raw-reading-3",
                 "raw-reading-4",
                 "raw-reading-5",
+                "raw-reading-6",
             ):
                 raise BindingError("unsupported per-binding contract")
             if binding["contract"] == "raw-reading-3":
                 fields.add("framing")
                 if not isinstance(binding.get("framing"), list) or not binding["framing"]:
                     raise BindingError("raw-reading-3 requires nonempty explicit framing")
+        if isinstance(binding, dict) and binding.get("contract") == "raw-reading-6":
+            fields = {"witness", "revision", "contract", "template", "variant"}
         _keys(binding, fields, key)
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", key):
             raise BindingError(f"invalid binding ID: {key}")
@@ -155,7 +158,31 @@ def load_registry(root: Path) -> dict:
         witnesses.add(binding["witness"])
         if not _hex(binding["revision"], 40):
             raise BindingError(f"invalid binding revision: {key}")
-        for field in ("evidence", "references", "reading"):
+        if binding.get("contract") == "raw-reading-6":
+            _keys(
+                binding["template"],
+                {"archive", "section", "section_line", "line", "text", "placeholder"},
+                "raw-reading-6 template",
+            )
+            _keys(
+                binding["variant"],
+                {
+                    "archive",
+                    "section",
+                    "section_line",
+                    "line",
+                    "text",
+                    "key",
+                    "selector",
+                    "replacement",
+                },
+                "raw-reading-6 variant",
+            )
+        for field in (
+            ()
+            if binding.get("contract") == "raw-reading-6"
+            else ("evidence", "references", "reading")
+        ):
             if not isinstance(binding[field], list) or (
                 field != "references" and not binding[field]
             ):
@@ -231,8 +258,134 @@ class RawBindingSnapshot:
             self._loaded[key] = (path, lines)
         return self._loaded[key]
 
+    def _identity(self, witness: Path, headers: dict) -> tuple[str, dict] | None:
+        markers = headers.get("raw-binding", [])
+        relative = witness.relative_to(self._root).as_posix()
+        registered = self._bindings.get(relative)
+        matches = [registered] if registered is not None else []
+        if not markers and not matches:
+            return None
+        if len(markers) != 1 or markers != matches:
+            raise BindingError("raw-binding marker and registered witness identity disagree")
+        binding = self._registry["bindings"][markers[0]]
+        if headers.get("revision") != [binding["revision"]]:
+            raise BindingError("witness revision differs from its raw binding")
+        return markers[0], binding
+
+    def inspect_contract(self, witness: Path) -> str | None:
+        """Check the common identity without resolving a derived body."""
+        identity = self._identity(witness, _headers(witness.read_text(encoding="utf-8")))
+        return identity[1].get("contract", "raw-reading-1") if identity else None
+
     def resolve(self, witness: Path) -> BoundReading | None:
         return _resolve_binding(witness, self)
+
+
+def _preface_variant(
+    text: str, headers: dict, identity: str, binding: dict, snapshot: RawBindingSnapshot
+) -> BoundReading:
+    """One text-only Spiritu template with the Vigil's literal Rule assignment."""
+    template, variant = binding["template"], binding["variant"]
+    _keys(
+        template,
+        {"archive", "section", "section_line", "line", "text", "placeholder"},
+        "raw-reading-6 template",
+    )
+    _keys(
+        variant,
+        {"archive", "section", "section_line", "line", "text", "key", "selector", "replacement"},
+        "raw-reading-6 variant",
+    )
+    if binding["revision"] != "44667ff518b8ff1439780470828b39714f5306a2":
+        raise BindingError("raw-reading-6 requires the pinned Latin revision")
+    if (
+        template["section"] != "Spiritu"
+        or variant["section"] != "Rule"
+        or any(
+            type(item[field]) is not int
+            for item in (template, variant)
+            for field in ("section_line", "line")
+        )
+        or (template["section_line"], template["line"]) != (47, 49)
+        or (variant["section_line"], variant["line"]) != (7, 11)
+    ):
+        raise BindingError("raw-reading-6 requires the exact Spiritu and Rule coordinates")
+    if (variant["key"], variant["selector"], variant["replacement"], variant["text"]) != (
+        "Prefatio",
+        "Spiritu",
+        "hodierna die",
+        "Prefatio=Spiritu=hodierna die;",
+    ):
+        raise BindingError("raw-reading-6 variant must be the literal Spiritu rule")
+    if (
+        not isinstance(template["text"], str)
+        or not _whole_v_text(template["text"])
+        or template["placeholder"] != "* *"
+        or template["text"].count("* *") != 1
+        or template["text"].count("*") != 2
+    ):
+        raise BindingError("raw-reading-6 requires one literal * * placeholder in a v. text line")
+    if template["archive"] == variant["archive"]:
+        raise BindingError("raw-reading-6 requires two distinct archives")
+    declarations, contributions, archives = [], {}, {}
+    for role, item, upstream in (
+        ("template", template, "web/www/missa/Latin/Ordo/Prefationes.txt"),
+        ("variant", variant, "web/www/missa/Latin/Tempora/Pasc6-6r.txt"),
+    ):
+        path, lines = snapshot._archive(item["archive"], binding["revision"])
+        record = snapshot._registry["archives"][item["archive"]]
+        if record["upstream"] != upstream:
+            raise BindingError("raw-reading-6 source role has the wrong upstream path")
+        if (
+            item["line"] > len(lines)
+            or lines[item["section_line"] - 1] != f"[{item['section']}]"
+            or any(line.startswith("[") for line in lines[item["section_line"] : item["line"] - 1])
+            or lines[item["line"] - 1] != item["text"]
+        ):
+            raise BindingError(f"raw-reading-6 {role} differs from its exact source line")
+        section_end = next(
+            (number for number in range(item["line"], len(lines)) if lines[number].startswith("[")),
+            len(lines),
+        )
+        section = lines[item["section_line"] : section_end]
+        if role == "template" and [
+            line for line in section if line.strip() and not line.startswith("!")
+        ] != [item["text"]]:
+            raise BindingError("raw-reading-6 requires one complete Spiritu template line")
+        if role == "variant" and sum(line.startswith("Prefatio=") for line in section) != 1:
+            raise BindingError("raw-reading-6 requires one Prefatio assignment in the Rule section")
+        declarations.append(f"{upstream} [{item['section']}] (lines {item['line']}-{item['line']})")
+        archives[item["archive"]] = record
+        contributions[role] = {
+            "path": path.relative_to(snapshot._root).as_posix(),
+            "section": item["section"],
+            "section_line": item["section_line"],
+            "line": item["line"],
+            "raw": item["text"],
+        }
+    if headers.get("path") != ["; ".join(declarations)]:
+        raise BindingError("witness path declarations differ from bound evidence")
+    reading = _space(template["text"][3:].replace("* *", variant["replacement"], 1))
+    body = _space("\n".join(line for line in text.splitlines() if not line.startswith("#")))
+    if not body or body != reading:
+        raise BindingError("transcription differs from its exact derived preface reading")
+    source = {
+        "contract": "raw-reading-6",
+        "registry_version": snapshot._registry["version"],
+        "binding_id": identity,
+        "transcription_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+        "binding": binding,
+        "archives": {key: archives[key] for key in sorted(archives)},
+        "resolved_composition": {
+            **contributions,
+            "operation": "replace-one-literal-placeholder",
+            "remove_prefix": "v. ",
+            "placeholder": "* *",
+            "replacement": variant["replacement"],
+            "text": reading,
+        },
+    }
+    return BoundReading((), reading, deepcopy(source), ())
 
 
 def resolve_binding(witness: Path, root: Path) -> BoundReading | None:
@@ -244,17 +397,13 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
     registry = snapshot._registry
     text = witness.read_text(encoding="utf-8")
     headers = _headers(text)
-    markers = headers.get("raw-binding", [])
-    relative = witness.relative_to(snapshot._root).as_posix()
-    registered = snapshot._bindings.get(relative)
-    matches = [registered] if registered is not None else []
-    if not markers and not matches:
+    identity = snapshot._identity(witness, headers)
+    if identity is None:
         return None
-    if len(markers) != 1 or markers != matches:
-        raise BindingError("raw-binding marker and registered witness identity disagree")
-    binding = registry["bindings"][markers[0]]
-    if headers.get("revision") != [binding["revision"]]:
-        raise BindingError("witness revision differs from its raw binding")
+    binding_id, binding = identity
+    if binding.get("contract") == "raw-reading-6":
+        return _preface_variant(text, headers, binding_id, binding, snapshot)
+    markers = [binding_id]
     archives = registry["archives"]
     used_archives: set[str] = set()
     framed_contract = binding.get("contract") == "raw-reading-3"
