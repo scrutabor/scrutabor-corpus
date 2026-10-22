@@ -19,6 +19,13 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from ascension_postcommunion_wording import (
+    assert_postcommunion_constructions,
+    assert_postcommunion_subject,
+    current_regroup_items,
+    current_verse_phrase,
+    is_current_postcommunion_subject,
+)
 from provenance_successor_fixture import assert_protection_scope
 
 from build_reader import store
@@ -218,8 +225,11 @@ for _line in CAPTION_TABLE.strip().splitlines():
 def assert_caption(doc, lay, row):
     tag, _language, _text, wid, form, gloss, _old = row
     assert words(doc)[wid]["form"] == form, f"{tag} Latin context"
-    assert not [g for g in alignments(lay) if wid in g["words"]], f"{tag} caption"
-    assert lay["words"][wid].get("gloss") == gloss, f"{tag} caption"
+    if is_current_postcommunion_subject(row):
+        assert_postcommunion_subject(doc, lay, row)
+    else:
+        assert not [g for g in alignments(lay) if wid in g["words"]], f"{tag} caption"
+        assert lay["words"][wid].get("gloss") == gloss, f"{tag} caption"
     assert interlinear.check(doc, lay) == [], f"{tag} interlinear line"
 
 
@@ -242,8 +252,19 @@ def test_selected_caption(row):
 def test_predecessor_caption_is_rejected(row):
     doc, lay = core(row[2]), layer(row[1], row[2])
     assert_caption(doc, lay, row)
-    lay["words"][row[3]]["gloss"] = row[6]
+    pristine = deepcopy(lay)
+    if is_current_postcommunion_subject(row):
+        selected = [g for g in alignments(lay) if "w015" in g["words"]]
+        assert len(selected) == 1, "subject mutation address"
+        prior = selected[0]["gloss"]
+        selected[0]["gloss"] = prior.replace(row[5], row[6], 1)
+        assert selected[0]["gloss"] != prior, "nonvacuous subject mutation"
+    else:
+        lay["words"][row[3]]["gloss"] = row[6]
+    assert lay != pristine, "nonvacuous caption mutation"
     rejects(assert_caption, doc, lay, row, message=f"{row[0]} caption")
+    assert layer(row[1], row[2]) == pristine, "caption sibling fixture unchanged"
+    assert_caption(doc, pristine, row)
 
 
 def test_the_polish_collect_reads_its_subject_in_the_nominative():
@@ -350,7 +371,8 @@ def regroup_id(row):
 
 
 def assert_realization(doc, lay, row):
-    tag, _language, _text, _old, items = row
+    tag, _language, _text, _old, _historical_items = row
+    items = current_regroup_items(row)
     members = members_of(items)
     touching = [g for g in alignments(lay) if set(g["words"]) & set(members)]
     expected = [
@@ -522,7 +544,8 @@ VERSE_IDS = [f"{r[1]}-{r[2].split('.')[-1]}" for r in VERSES]
 
 
 def assert_verse(lay, row):
-    tag, language, text, present, absent = row
+    tag, language, text, _historical_present, absent = row
+    present = current_verse_phrase(row)
     target = lay["segments"]["s01"]["translation"]
     assert target.count(present) == 1 and absent not in target, f"{tag} verse"
     site = provenance(language)[f"{text}.s01.{language}"]
@@ -540,8 +563,14 @@ def test_selected_verse(row):
 def test_predecessor_verse_is_rejected(row):
     lay = layer(row[1], row[2])
     target = lay["segments"]["s01"]["translation"]
-    selected = row[3] if row[0] != "Iubilate" else "Shout for joy to God, all the earth;"
+    selected = (
+        current_verse_phrase(row)
+        if row[0] != "Iubilate"
+        else "Shout for joy to God, all the earth;"
+    )
+    assert target.count(selected) == 1, "verse mutation address"
     lay["segments"]["s01"]["translation"] = target.replace(selected, row[4])
+    assert lay["segments"]["s01"]["translation"] != target, "nonvacuous verse mutation"
     rejects(assert_verse, lay, row, message=f"{row[0]} verse")
 
 
@@ -549,17 +578,22 @@ def test_a_silently_edited_verse_is_rejected():
     """A verse change with its provenance hash left behind is caught by the hash pin."""
     lay = layer("en", POSTCOMMUNION)
     target = lay["segments"]["s01"]["translation"]
-    lay["segments"]["s01"]["translation"] = target.replace("by invisible", "by the invisible")
+    pristine = deepcopy(lay)
+    assert_verse(lay, VERSES[0])
+    assert target.count("in the unity") == 1, "provenance mutation address"
+    lay["segments"]["s01"]["translation"] = target.replace("in the unity", "in unity")
+    assert lay["segments"]["s01"]["translation"] != target, "nonvacuous provenance mutation"
     rejects(assert_verse, lay, VERSES[0], message="sumenda provenance")
+    lay["segments"]["s01"]["translation"] = target
+    assert lay == pristine, "provenance fixture restored"
+    assert_verse(lay, VERSES[0])
 
 
 def test_the_postcommunion_line_renders_the_gerundive():
     lay = layer("en", POSTCOMMUNION)
-    line = [lay["words"][w]["gloss"] for w in ids(*range(9, 17))]
-    assert line == [
-        *("what", "under visible", "mysteries", "to be taken", "we have received", "by invisible"),
-        *("we may obtain", "effect"),
-    ]
+    line = [lay["words"][w].get("gloss") for w in ids(*range(9, 17))]
+    assert line == ["what", "under visible", "mysteries", None, None, None, None, None]
+    assert_postcommunion_constructions(core(POSTCOMMUNION), lay)
     assert words(core(POSTCOMMUNION))["w012"]["morph"]["mood"] == "part"
 
 
