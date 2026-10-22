@@ -178,7 +178,7 @@ independent copies of those totals.
 
 ## Commemoration assemblies
 
-`commemorationes/<id>.json` (commemoration schema `1.0.0`) is the canonical
+`commemorationes/<id>.json` (commemoration schema `1.1.0`) is the canonical
 contract for a set of orations that joins a Mass of the day under the rubrics
 and is addressed by its own occurrence rule, not by the winning Mass. The first
 is the Greater Litanies: Rubricae generales 80 fix it on April 25, moved to the
@@ -188,19 +188,30 @@ privileged commemoration, made in all Masses; 111 and 434 admit one privileged
 commemoration on first-class days, on second-class Sundays in place of the
 second-class feast, and on other second-class days; 436–437 give each
 commemoration oration its own conclusion after the corresponding Mass oration.
+The second is St Petronilla, Virgin, printed after the Queenship of the Blessed
+Virgin Mary on 31 May (Benziger pp. 543–544, Vatican pp. 540–541): an ordinary
+commemoration (RG 106–109), fixed to its day, made in low and sung conventual
+Masses and not in a sung Mass that is not conventual (108).
 
 Exact fields: `commemoration_schema`, `id` (the file name), `title`, `rank`
 (`privileged` or `ordinary`), `scope` (`missa`), `occurrence` (`month`, `day`,
-`transfer`: `easter-sunday-or-monday-to-tuesday`), `conclusion` (`separate`),
-`slots` and `rubrics`. The three `slots` are ordered `collecta`, `secreta`,
+`transfer`), `conclusion` (`separate`), `slots` and `rubrics`, with the optional
+`text_prefix`. The transfer rule is `easter-sunday-or-monday-to-tuesday` for the
+one privileged occurrence this edition models and `none` for an ordinary
+commemoration, which is never transferred. An ordinary commemoration is admitted
+only on a fixed date whose competing commemorations the selector models (at
+present 31 May). The three `slots` are ordered `collecta`, `secreta`,
 `postcommunio`; each names the Mass role it follows (`after`), the dotted text
-id and its relation: `proper` addresses `proprium.<id>-<key>`, `reference`
+id and its relation: `proper` addresses `proprium.<text_prefix>-<key>`, where
+`text_prefix` defaults to the id and is stated when the texts carry the saint's
+genitive name (`sanctae-petronillae` for `sancta-petronilla`); `reference`
 transfers another Proper text (the Rogation Secret is the printed Haec munera,
 `proprium.dominica-i-passionis-secreta`). `rubrics` records the citations for
 `date`, `scope`, `rank`, `admission` and `conclusion` as nonempty strings. A
 Proper text reached only by a commemoration slot counts as reached. Each
 published language carries `languages/<lang>/commemorationes/<id>.json` with
-`commemoration_schema`, `id`, `language` and the localized `title`.
+`commemoration_schema` (title schema `1.0.0`), `id`, `language` and the
+localized `title`.
 
 Nothing here infers a procession or locally mandated supplication, a
 particular calendar, an Office commemoration, the impeded-votive
@@ -269,29 +280,59 @@ bodies. Missing resource, body or localized declaration fails closed.
 
 ## Reader commemoration selection
 
-Reader edition 5.12.0 adds `base.commemorationes: "commemorationes.json"`,
-independently versioned selection schema 1.0.0, and in each language manifest
-`commemorationes: "languages/<lang>/commemorationes.json"` with the localized
-titles. Exact fields of the neutral resource are `schema_version`,
-`commemorations` (ordered by identity: `id`, the Latin `title`, `rank`,
-`conclusion`, `slots` with `key`, `after` and the slash text address), `profiles` (one profile,
-`ordinary-separate-conclusions`), `masses` (sorted authored Mass identities),
-`occurrences` (sorted unique `[YYYY-MM-DD, commemoration]` rows for every
-year of the supported span, published whether or not a Mass is represented on
-that day) and `pairs` (sorted unique `[YYYY-MM-DD, mass, commemoration,
-profile]` rows for every represented Mass on an occurrence date).
+Reader edition 5.12.0 added `base.commemorationes: "commemorationes.json"` and
+in each language manifest `commemorationes: "languages/<lang>/commemorationes.json"`
+with the localized titles (title schema 1.0.0, unchanged). Reader edition 6.0.0
+publishes the independently versioned selection schema 2.0.0, a breaking
+successor of 1.0.0: a pair is now an explicit decision for each Mass situation.
+Exact fields of the neutral resource are `schema_version`, `commemorations`
+(ordered by identity: `id`, the Latin `title`, `rank`, `conclusion`, `slots`
+with `key`, `after` and the slash text address), `profiles` (one profile,
+`ordinary-separate-conclusions`), `situations` (the ordered `lecta`,
+`cantu-conventualis`, `cantu-non-conventualis`), `decisions` (the ordered
+`admitted`, `not-admitted`, `omitted-required-de-tempore-unavailable`),
+`masses` (sorted authored Mass identities), `occurrences` (sorted unique
+`[YYYY-MM-DD, commemoration]` rows for every year of the supported span,
+published whether or not a Mass is represented on that day) and `pairs` (sorted
+unique `[YYYY-MM-DD, mass, commemoration, profile, lecta, cantu-conventualis,
+cantu-non-conventualis]` rows whose last three values index `decisions`). Rows
+compare as typed tuples: dates as canonical strings, indexes as integers, never
+as interpolated strings.
+
+The three situations are those of RG 108: a low Mass, conventual or not (one
+decision serves both), a sung conventual Mass and a sung Mass that is not
+conventual. The reader's low/sung choice does not establish conventual status;
+where the two sung decisions differ, both are published so that a reader can
+describe them rather than guess. A privileged commemoration is decided
+`admitted` in all three situations on every represented Mass of its occurrence
+date. The ordinary commemorations carried here are not themselves second-class
+feasts, so each is decided only on a second-class weekday; on a first-class day
+or a Sunday no pair is published for it (RG 111 a–b, 434, and 30 for the Vigil
+of Pentecost). On that weekday it is `admitted` in low and sung conventual
+Masses and `not-admitted` in a sung Mass that is not conventual, unless a de
+Tempore commemoration takes the single second-class place (RG 111 c, 113–114).
+The impeded Vigil of the Ascension is such a day (RG 31–33); its orations are
+not in this edition, so the decision is `omitted-required-de-tempore-unavailable`:
+the Mass owes a commemoration the edition cannot yet supply, and the ordinary
+one is omitted. It is never an empty plan. For St Petronilla this gives 43 admitted dates with the Queenship
+as principal and the one marker on 2079-05-31.
 
 An occurrence without a pair is an acknowledged date, not permission to
-assemble: no substitute Mass, no previous Sunday, no Mark transfer. A pair is
-a positive decision that the commemoration's slots follow the corresponding
-orations of that Mass under separate conclusions. Ordinary-only `none`
-bypasses this resource; unsupported pairs do not fall back. The producer
-establishes validity by exact typed input equality with a fresh reconstruction
-from the Roman calendar and authored catalogue; the artifact verifier iterates
-the canonical days anew and reapplies the transfer rule without calling the
-producer. Neutral and every published language package must declare and
-transport all slot bodies and the localized titles. Missing resource, body or
-declaration fails closed.
+assemble: no substitute Mass, no previous Sunday, no Mark transfer, and no
+Petronilla under a Sunday or first-class principal. A pair binds its decisions
+only to that date and Mass. At most one commemoration may be admitted for a
+date, Mass and situation, and none beside an unavailable de Tempore marker: a
+second would need an order and a conclusion plan this contract does not model.
+A privileged pair must be admitted in all three situations, and an ordinary pair
+must have one decision for low and sung conventual Masses and be `not-admitted`
+in a sung Mass that is not conventual. Ordinary-only `none` bypasses this
+resource; unsupported pairs do not fall back. The producer establishes validity
+by exact typed input equality with a fresh reconstruction from the Roman
+calendar and authored catalogue; the artifact verifier iterates the canonical
+days anew, reapplies the transfer rule and restates the admission without
+calling the producer. Neutral and every published language package must declare
+and transport all slot bodies and the localized titles. Missing resource, body
+or declaration fails closed.
 
 ## Bibliography and evidence graph
 

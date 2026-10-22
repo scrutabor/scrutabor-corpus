@@ -1,10 +1,14 @@
 """Authored commemoration assemblies: a privileged or ordinary set of orations that joins a
 Mass of the day under the rubrics, addressed by its own occurrence rule rather than by the
-winning Mass. The first is the Greater Litanies (Rubricae generales 80–81, 108–109 f, 111,
-434–437): three orations, each after the corresponding Mass oration under its own conclusion.
+winning Mass. The Greater Litanies (Rubricae generales 80–81, 108–109 f, 111, 434–437) are
+privileged; St Petronilla on 31 May (proper of the Saints, after the Queenship of the Blessed
+Virgin Mary) is ordinary. Each has three orations, each after the corresponding Mass oration
+under its own conclusion.
 
 The authored document owns identity, rank, occurrence rule and the three ordered slots; the
 calendar computes the dates; nothing here infers a procession, a local calendar or an Office.
+The scope is closed: the one privileged occurrence rule this edition models, and an ordinary
+commemoration only on a fixed date whose competing commemorations the selector models.
 """
 
 from __future__ import annotations
@@ -17,7 +21,7 @@ from pathlib import Path
 
 from build_reader import store
 
-SCHEMA = "1.0.0"
+SCHEMA = "1.1.0"
 TITLE_SCHEMA = "1.0.0"
 KEYS = {
     "commemoration_schema",
@@ -30,6 +34,9 @@ KEYS = {
     "slots",
     "rubrics",
 }
+# A proper slot addresses proprium.<text_prefix>-<key>; the prefix defaults to the identity
+# (the Greater Litanies) and is stated when the texts carry the saint's genitive name.
+OPTIONAL_KEYS = {"text_prefix"}
 TITLE_KEYS = {"commemoration_schema", "id", "language", "title"}
 OCCURRENCE_KEYS = {"month", "day", "transfer"}
 SLOT_KEYS = {"key", "after", "text", "relation"}
@@ -37,7 +44,17 @@ RUBRIC_KEYS = {"date", "scope", "rank", "admission", "conclusion"}
 RANKS = ("privileged", "ordinary")
 SCOPES = ("missa",)
 CONCLUSIONS = ("separate",)
-TRANSFERS = ("easter-sunday-or-monday-to-tuesday",)
+TRANSFERS = ("easter-sunday-or-monday-to-tuesday", "none")
+# The rule each rank may use. The Greater Litanies are the one privileged occurrence this
+# edition models; an ordinary commemoration is fixed to its day and never transferred.
+RANK_TRANSFERS = {
+    "privileged": ("easter-sunday-or-monday-to-tuesday",),
+    "ordinary": ("none",),
+}
+# Fixed dates on which the selector models every commemoration that can compete for the
+# single second-class place (kalendarium/commemorationes.py): 31 May, where the impeded Vigil
+# of the Ascension is the only de Tempore day that can meet a second-class feast.
+ORDINARY_DATES = ((5, 31),)
 SLOT_ORDER = ("collecta", "secreta", "postcommunio")
 RELATIONS = ("proper", "reference")
 IDENTITY = re.compile(r"[a-z][a-z0-9]*(?:-[a-z0-9]+)*\Z")
@@ -80,8 +97,11 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
     relations: Counter[str] = Counter()
     for path, doc in rows:
         where = path.relative_to(corpus).as_posix()
-        if not isinstance(doc, dict) or set(doc) != KEYS:
-            errors.append(f"{where}: exact commemoration fields required {sorted(KEYS)}")
+        if not isinstance(doc, dict) or not KEYS <= set(doc) <= KEYS | OPTIONAL_KEYS:
+            errors.append(
+                f"{where}: exact commemoration fields required {sorted(KEYS)} "
+                f"(optional {sorted(OPTIONAL_KEYS)})"
+            )
             continue
         identity = doc["id"]
         if (
@@ -94,6 +114,12 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
         if identity in seen:
             errors.append(f"{where}: duplicate commemoration {identity}")
         seen.add(identity)
+        prefix = doc.get("text_prefix", identity)
+        if "text_prefix" in doc and (
+            not isinstance(prefix, str) or not IDENTITY.fullmatch(prefix) or prefix == identity
+        ):
+            errors.append(f"{identity}: text_prefix must be a distinct valid identity")
+            prefix = identity
         if doc["commemoration_schema"] != SCHEMA:
             errors.append(f"{identity}: commemoration_schema must be {SCHEMA}")
         if not _nonempty(doc["title"]):
@@ -117,6 +143,16 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
                 errors.append(f"{identity}: occurrence month/day is not a civil date")
             if occurrence["transfer"] not in TRANSFERS:
                 errors.append(f"{identity}: unknown transfer rule {occurrence['transfer']!r}")
+            elif doc["rank"] in RANKS and occurrence["transfer"] not in RANK_TRANSFERS[doc["rank"]]:
+                errors.append(
+                    f"{identity}: a {doc['rank']} commemoration cannot use transfer rule "
+                    f"{occurrence['transfer']!r}"
+                )
+            if doc["rank"] == "ordinary" and (month, day) not in ORDINARY_DATES:
+                errors.append(
+                    f"{identity}: an ordinary commemoration on {month}/{day} is outside the "
+                    "fixed dates whose competing commemorations the selector models"
+                )
         slots = doc["slots"]
         if not isinstance(slots, list) or len(slots) != len(SLOT_ORDER):
             errors.append(f"{identity}: exactly {len(SLOT_ORDER)} ordered slots required")
@@ -141,7 +177,7 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
                 errors.append(f"{identity}:{slot['key']}: unknown relation {relation!r}")
                 continue
             relations[relation] += 1
-            own = f"proprium.{identity}-{expected_key}"
+            own = f"proprium.{prefix}-{expected_key}"
             if relation == "proper" and target != own:
                 errors.append(f"{identity}:{slot['key']}: proper relation must address {own}")
             if relation == "reference" and (not target.startswith("proprium.") or target == own):

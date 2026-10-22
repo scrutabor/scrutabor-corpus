@@ -43,7 +43,9 @@ from kalendarium.dismissal import calendar_table as dismissal_table
 # 5.9.0 adds the declared, explicit date/Mass Canon selection resource.
 # 5.11.0 carries Ordinary branches in neutral formulary schema 1.3.0.
 # 5.12.0 adds the declared commemoration occurrence/activation resource and its localized titles.
-SCHEMA = "5.12.0"
+# 6.0.0 replaces that resource's pairs with explicit decisions for three Mass situations
+# (commemoration selection schema 2.0.0), a breaking change for its consumers.
+SCHEMA = "6.0.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.

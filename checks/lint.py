@@ -421,6 +421,7 @@ PROPER_LEMMAS = {
     "Paulus",
     "Parasceve",
     "Perpetua",
+    "Petronilla",
     "Petrus",
     "Polonia",
     "Simon",

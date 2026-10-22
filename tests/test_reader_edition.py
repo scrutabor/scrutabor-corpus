@@ -163,10 +163,10 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
         "rejected_exposed": 0,
     }
     assert written["evidence_coverage"] == {
-        "neutral": {"normalized": 1116, "texts": 1127},
+        "neutral": {"normalized": 1119, "texts": 1130},
         "languages": {
-            "en": {"normalized": 224, "effective": 1127, "texts": 1127},
-            "pl": {"normalized": 88, "effective": 1123, "texts": 1127},
+            "en": {"normalized": 224, "effective": 1130, "texts": 1130},
+            "pl": {"normalized": 88, "effective": 1126, "texts": 1130},
         },
     }
 
@@ -448,8 +448,8 @@ def test_metrics_are_the_single_derived_denominator(tmp_path):
     metrics = json.loads((out / manifest["base"]["metrics"]).read_text(encoding="utf-8"))
     assert metrics == {
         "schema_version": "1.0.0",
-        "texts": {"total": 1127, "proprium": 1005, "words": 63674, "verse_segments": 2760},
-        "languages": {"en": {"texts": 1127}, "pl": {"texts": 1127}},
+        "texts": {"total": 1130, "proprium": 1008, "words": 63793, "verse_segments": 2771},
+        "languages": {"en": {"texts": 1130}, "pl": {"texts": 1130}},
         "formularies": {
             "total": 113,
             "observances": 109,

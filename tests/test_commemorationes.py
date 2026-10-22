@@ -1,7 +1,8 @@
 """The Greater-Litanies commemoration: authored contract, computed occurrences, dated
 activation on the edition's Mass rows, and the owned negative controls. The cases follow the
 sealed assembly audit (weekday Mark, ordinary second-class Sunday, Easter Sunday and Monday
-transfers, another octave weekday, Low Sunday)."""
+transfers, another octave weekday, Low Sunday). St Petronilla's ordinary commemoration has its
+own module (tests/test_petronilla_commemoration.py)."""
 
 import copy
 import json
@@ -52,7 +53,8 @@ def authored():
 
 def test_the_authored_contract_is_exact_and_reaches_its_propers():
     doc = authored()
-    assert doc["commemoration_schema"] == "1.0.0" and doc["id"] == LM
+    assert doc["commemoration_schema"] == "1.1.0" and doc["id"] == LM
+    assert "text_prefix" not in doc
     assert (doc["rank"], doc["scope"], doc["conclusion"]) == ("privileged", "missa", "separate")
     assert doc["occurrence"] == {
         "month": 4,
@@ -65,10 +67,10 @@ def test_the_authored_contract_is_exact_and_reaches_its_propers():
     assert "80" in doc["rubrics"]["date"] and "109" in doc["rubrics"]["rank"]
     assert checker.check(CORPUS) == (
         [],
-        {"commemorations": 1, "slot_uses": 3, "proper_slots": 2, "reference_slots": 1},
+        {"commemorations": 2, "slot_uses": 6, "proper_slots": 5, "reference_slots": 1},
     )
     errors, counts = check_formularies(CORPUS)
-    assert errors == [] and counts["proper_texts"] == 1005
+    assert errors == [] and counts["proper_texts"] == 1008
     for language, title in (("pl", "Litanie Większe"), ("en", "Greater Litanies")):
         localized = json.loads(
             (CORPUS / "languages" / language / "commemorationes" / f"{LM}.json").read_text(
@@ -90,18 +92,22 @@ def test_the_occurrence_follows_rubric_80(civil_year):
 
 
 def test_every_occurrence_is_published_and_only_represented_masses_pair(table):
-    assert table["schema_version"] == "1.0.0"
+    assert table["schema_version"] == "2.0.0"
     assert table["profiles"] == [{"id": "ordinary-separate-conclusions"}]
-    assert [(entry["id"], entry["title"]) for entry in table["commemorations"]] == [
-        (LM, "Litaniæ maiores")
-    ]
+    assert table["situations"] == ["lecta", "cantu-conventualis", "cantu-non-conventualis"]
+    assert table["decisions"][0] == {"id": "admitted"}
+    first = table["commemorations"][0]
+    assert (first["id"], first["title"]) == (LM, "Litaniæ maiores")
     assert [s["text"] for s in table["commemorations"][0]["slots"]] == [
         text.replace(".", "/", 1) for _key, text, _relation in SLOTS
     ]
     occurrences = {day for day, index in table["occurrences"] if index == 0}
-    assert len(table["occurrences"]) == len(producer.YEARS) == 76
-    pairs = {(day, table["masses"][mass]) for day, mass, index, profile in table["pairs"]}
-    assert all(profile == 0 for *_rest, profile in table["pairs"])
+    assert len(occurrences) == len(producer.YEARS) == 76
+    rows = [row for row in table["pairs"] if row[2] == 0]
+    pairs = {(row[0], table["masses"][row[1]]) for row in rows}
+    # A privileged commemoration: profile 0 and admitted in every Mass situation (RG 108-109).
+    assert all(row[3] == 0 and row[4:] == [0, 0, 0] for row in rows)
+    assert len(pairs) == len(rows)
     for expected, mass in CASES.values():
         assert expected in occurrences
         on_day = {m for d, m in pairs if d == expected}
@@ -113,7 +119,7 @@ def test_every_occurrence_is_published_and_only_represented_masses_pair(table):
         "dominica-iii-post-pascha",
         "dominica-iv-post-pascha",
     }
-    assert len(table["pairs"]) == 63
+    assert len(rows) == 63
     assert len(occurrences - {d for d, _m in pairs}) == 13
 
 
@@ -124,7 +130,7 @@ def test_the_resource_equals_the_independent_reconstruction(table):
 @pytest.mark.parametrize(
     "mutation",
     [
-        lambda t: t["pairs"].append(["2026-04-26", 0, 0, 0]),
+        lambda t: t["pairs"].append(["2026-04-26", 0, 0, 0, 0, 0, 0]),
         lambda t: t["pairs"].append(copy.deepcopy(t["pairs"][0])),
         lambda t: t["pairs"].reverse(),
         lambda t: t["pairs"][0].__setitem__(3, 1),

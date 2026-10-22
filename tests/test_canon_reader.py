@@ -67,7 +67,7 @@ def test_full_artifact_and_round_trip_gates_accept_the_edition(edition):
 def test_declared_version_shape_and_exact_body_package_closure(edition):
     manifest = read(edition, "manifest.json")
     table = read(edition, manifest["base"]["canon"])
-    assert manifest["schema_version"] == "5.12.0"
+    assert manifest["schema_version"] == "6.0.0"
     assert table["schema_version"] == "1.0.0"
     assert len(table["profiles"]) == 9 and len(BODY_IDS) == 14
     assert len(table["masses"]) == 113 and len(table["pairs"]) == 7610
@@ -399,7 +399,7 @@ def test_genuinely_partial_authored_package_round_trips_without_erasing_emitted_
     # wording uses; the neutral source and all other translations are unchanged.
     out = tmp_path / "partial-reader"
     written = emit.emit(source, out)
-    assert written["language_texts"] == 2253  # 1127 complete bilingual bodies minus one.
+    assert written["language_texts"] == 2259  # 1130 complete bilingual bodies minus one.
     assert emit.verify(source, out) == []
     package_path = out / "languages/en/manifest.json"
     package = json.loads(package_path.read_text(encoding="utf-8"))

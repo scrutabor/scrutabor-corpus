@@ -86,6 +86,68 @@ def joined(doc: dict[str, Any]) -> set[str]:
     }
 
 
+def _separate_conclusion(doc: dict[str, Any]) -> tuple[list[str], dict[str, str]] | None:
+    """Three expressly segmented standalone prayers, not a generic tail splitter."""
+    layouts = {
+        "proprium.sanctae-petronillae-collecta": (
+            ("s01", 1, 19, "body"),
+            ("s02", 20, 40, "body"),
+            ("s03", 41, 41, "response"),
+        ),
+        "proprium.sanctae-petronillae-secreta": (
+            ("s01", 1, 19, "secret-body"),
+            ("s02", 20, 36, "secret-body"),
+            ("s03", 37, 40, "tail"),
+            ("s04", 41, 41, "response"),
+        ),
+        "proprium.sanctae-petronillae-postcommunio": (
+            ("s01", 1, 15, "body"),
+            ("s02", 16, 32, "body"),
+            ("s03", 33, 36, "tail"),
+            ("s04", 37, 37, "response"),
+        ),
+    }
+    plan = layouts.get(doc.get("id", ""))
+    if plan is None:
+        return None
+    segments = doc.get("segments", [])
+    expected = [
+        (sid, [f"w{number:03d}" for number in range(first, last + 1)])
+        for sid, first, last, _ in plan
+    ]
+    actual = [
+        (seg.get("id"), [word.get("id") for word in seg.get("words", [])]) for seg in segments
+    ]
+    if actual != expected or any(seg.get("type") != "verse" for seg in segments):
+        return ["separate conclusion requires its exact body/ending/response boundaries"], {}
+    conclusion = tuple(token for seg in segments[1:-1] for token in tokens(seg))
+    ordinary = (
+        "per",
+        "dominum",
+        "nostrum",
+        "iesum",
+        "christum",
+        "filium",
+        "tuum",
+        "qui",
+        "tecum",
+        "vivit",
+        "et",
+        "regnat",
+        "in",
+        "unitate",
+        "spiritus",
+        "sancti",
+        "deus",
+        *TAIL,
+    )
+    if conclusion != ordinary or tokens(segments[-1]) != ("amen",):
+        return ["separate conclusion requires the complete ordinary formula and Amen"], {}
+    if any(token in {"amen"} for token in tokens(segments[0])):
+        return ["separate conclusion body cannot absorb its response"], {}
+    return [], {sid: role for sid, _, _, role in plan}
+
+
 def structure(doc: dict[str, Any]) -> tuple[list[str], dict[str, str]]:
     """Return shape errors and segment roles, independent of stored labels.
 
@@ -97,6 +159,9 @@ def structure(doc: dict[str, Any]) -> tuple[list[str], dict[str, str]]:
     piece = genus(doc)
     if piece is None:
         return [], {}
+    separate = _separate_conclusion(doc)
+    if separate is not None:
+        return separate
     verses = [s for s in doc.get("segments", []) if s.get("type") == "verse"]
     errors: list[str] = []
     roles: dict[str, str] = {}

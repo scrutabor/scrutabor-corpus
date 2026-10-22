@@ -6,7 +6,16 @@ import json
 from datetime import date, timedelta
 from pathlib import Path
 
-from kalendarium.commemorationes import PROFILES, SCHEMA, YEARS, authored, entries, validate
+from kalendarium.commemorationes import (
+    DECISIONS,
+    PROFILES,
+    SCHEMA,
+    SITUATIONS,
+    YEARS,
+    authored,
+    entries,
+    validate,
+)
 from kalendarium.computus import easter
 from kalendarium.dismissal import canonical_inputs
 from kalendarium.roman import year
@@ -73,17 +82,23 @@ def language_catalog(corpus: Path, language: str) -> dict:
 
 
 def expected(corpus: Path) -> dict:
-    """No call to the producer: iterate the computed years anew and apply RG 80 again."""
+    """No call to the producer: iterate the computed years anew, apply RG 80 again for the
+    transferred occurrence, and restate the admission of RG 108–114 from the computed days."""
     forms, _ = canonical_inputs(corpus)
     masses = sorted(form["id"] for form in forms)
     commemorations = authored(corpus)
+    names = [decision["id"] for decision in DECISIONS]
+    admitted = names.index("admitted")
+    not_admitted = names.index("not-admitted")
+    unavailable = names.index("omitted-required-de-tempore-unavailable")
     occurrences = []
     for index, doc in enumerate(commemorations):
         rule = doc["occurrence"]
         for civil_year in YEARS:
             when = date(civil_year, rule["month"], rule["day"])
             pascha = easter(civil_year)
-            if when == pascha or when == pascha + timedelta(days=1):
+            moved = when == pascha or when == pascha + timedelta(days=1)
+            if rule["transfer"] != "none" and moved:
                 when = pascha + timedelta(days=2)
             occurrences.append([when.isoformat(), index])
     dates = {(day, index) for day, index in occurrences}
@@ -91,16 +106,27 @@ def expected(corpus: Path) -> dict:
     for ending in YEARS:
         for day in year(ending):
             iso = day.when.isoformat()
-            for index in range(len(commemorations)):
+            for index, doc in enumerate(commemorations):
                 if (iso, index) not in dates:
                     continue
+                if doc["rank"] == "privileged":
+                    plan = [admitted] * len(SITUATIONS)
+                elif day.dies_class == 1 or day.when.isoweekday() == 7:
+                    continue
+                elif day.when + timedelta(days=1) == easter(day.when.year) + timedelta(days=39):
+                    # The eve of Ascension Thursday: its Vigil, absent here, takes the place.
+                    plan = [unavailable, unavailable, not_admitted]
+                else:
+                    plan = [admitted, admitted, not_admitted]
                 for form in forms:
                     if form["calendar"]["key"] == day.formulary:
-                        pairs.append([iso, masses.index(form["id"]), index, 0])
+                        pairs.append([iso, masses.index(form["id"]), index, 0, *plan])
     return {
         "schema_version": SCHEMA,
         "commemorations": entries(commemorations),
         "profiles": PROFILES,
+        "situations": SITUATIONS,
+        "decisions": DECISIONS,
         "masses": masses,
         "occurrences": sorted(occurrences),
         "pairs": sorted(pairs),
