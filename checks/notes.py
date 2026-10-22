@@ -72,7 +72,7 @@ MOOD_WORDS = {
     "en": {"imperative": "imp", "subjunctive": "subj", "infinitive": "inf", "participle": "part"},
 }
 GOVERNED = re.compile(
-    r"rządz\w+|łącz\w+ się z|wymaga|govern\w*|takes? a|takes? the|forma\b|the form\b|"
+    r"rządz\w+|łącz\w+ się (?:tu )?z|wymaga|govern\w*|takes? a|takes? the|forma\b|the form\b|"
     r"zarazem|at once|both\b|odczytujemy|is read as",
     re.I,
 )

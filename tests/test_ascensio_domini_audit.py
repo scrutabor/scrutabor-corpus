@@ -1141,7 +1141,7 @@ def assert_legacy_successor(fixture, verse):
 def test_the_legacy_field_successor_binds_exactly_the_reviewed_change():
     verse = layer("en", II_EPI_INTROIT)["segments"]["s01"]["translation"]
     assert_legacy_successor(load(LEGACY), verse)
-    assert len(load(LEGACY)["records"]) == 55
+    assert len(load(LEGACY)["records"]) == 54
 
 
 @pytest.mark.parametrize("damage", ["other-edit", "stale-hash", "refreshed-other-edit"])

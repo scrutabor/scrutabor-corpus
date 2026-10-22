@@ -12,6 +12,21 @@ from pathlib import Path
 
 CORPUS = Path(__file__).resolve().parent.parent
 
+# A withdrawn template on accent-only entries is not a general prose classifier.
+DEPRECATED_ACCENT_RULING = (
+    "The lexical accent is restored in the working text under the edition's house convention; "
+    "the witness's capital typography is recorded exactly."
+)
+
+
+def deprecated_accent_rulings(apparatus: dict) -> list[str]:
+    """Reject one complete withdrawn statement, not its words or other classes."""
+    return [
+        f"apparatus.adjudicated[{index}]: withdrawn accent ruling template"
+        for index, entry in enumerate(apparatus.get("adjudicated", []))
+        if entry.get("class") == "accent" and entry.get("ruling") == DEPRECATED_ACCENT_RULING
+    ]
+
 
 def derived_summary(apparatus: dict) -> dict:
     entries = apparatus.get("adjudicated", [])
@@ -27,12 +42,13 @@ def lint_apparatus_summary(path: Path) -> list[str]:
     apparatus = json.loads(path.read_text(encoding="utf-8"))
     expected = derived_summary(apparatus)
     actual = apparatus.get("summary")
+    errors = deprecated_accent_rulings(apparatus)
     if actual != expected:
-        return [
+        errors.append(
             f"{path.name}: apparatus summary must be derived from adjudicated: "
             f"expected {expected!r}, got {actual!r}"
-        ]
-    return []
+        )
+    return errors
 
 
 def write_summaries(corpus: Path = CORPUS) -> int:

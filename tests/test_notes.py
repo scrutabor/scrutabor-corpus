@@ -1,5 +1,10 @@
 """The prose a reader reads and the data a reader parses must agree."""
 
+import re
+
+import pytest
+
+from checks import notes
 from checks.notes import check
 
 
@@ -126,3 +131,59 @@ def test_the_check_reports_a_real_disagreement():
     gloss = {"lang": "en", "words": {"w001": {"explanation": "Ablative after “in”."}}}
     errors = check(doc, gloss)
     assert errors and "case='abl'" in errors[0] and "'dat'" in errors[0]
+
+
+def reus_case(explanation):
+    return (
+        {
+            "id": "t.t",
+            "segments": [
+                {
+                    "id": "s01",
+                    "words": [
+                        {
+                            "id": "w001",
+                            "form": "reus",
+                            "lemma": "reus",
+                            "morph": {"pos": "adj", "case": "nom", "number": "sg", "gender": "m"},
+                        }
+                    ],
+                }
+            ],
+        },
+        {"lang": "pl", "words": {"w001": {"explanation": explanation}}},
+    )
+
+
+@pytest.mark.parametrize("qualifier", ("", "tu "), ids=("unqualified", "contextual-tu"))
+def test_polish_government_does_not_change_the_governing_words_case(qualifier):
+    note = f"„Reus” łączy się {qualifier}z dopełniaczami „córporis et sánguinis”."
+    assert check(*reus_case(note)) == []
+
+
+@pytest.mark.parametrize(
+    "case_name,tag",
+    (("dopełniaczem", "gen"), ("biernikiem", "acc"), ("celownikiem", "dat")),
+    ids=("genitive", "accusative", "dative"),
+)
+def test_contextual_qualifier_does_not_hide_actual_case_contradictions(case_name, tag):
+    note = f"„Reus” jest tu {case_name}."
+    assert check(*reus_case(note)) == [
+        f"t.t:w001 (reus): the pl explanation calls it case='{tag}', but the tag says 'nom'"
+    ]
+
+
+def test_government_predecessor_false_positive_and_exact_restore(monkeypatch):
+    note = "„Reus” łączy się tu z dopełniaczami „córporis et sánguinis”."
+    args = reus_case(note)
+    assert check(*args) == []
+    current = notes.GOVERNED
+    assert current.pattern.count("(?:tu )?") == 1
+    with monkeypatch.context() as patch:
+        patch.setattr(
+            notes, "GOVERNED", re.compile(current.pattern.replace("(?:tu )?", ""), current.flags)
+        )
+        assert check(*args) == [
+            "t.t:w001 (reus): the pl explanation calls it case='gen', but the tag says 'nom'"
+        ]
+    assert notes.GOVERNED is current and check(*args) == []

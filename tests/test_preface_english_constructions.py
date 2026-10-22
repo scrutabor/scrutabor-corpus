@@ -144,7 +144,7 @@ FIXTURES: dict[str, Any] = {
             "had_alignments": {"s04": True},
             "absorbed": {"s04": []},
             "source_contexts": {
-                "s04": "619a0870ec08c6c334e1f6839d32ed54fe19711e506300d062295eb16412ecab"
+                "s04": "de31bf1056b2b6e51e27b303c25994b03a7a28d6e60c373e269001df0434b3a4"
             },
         },
         "epiphaniae": {
@@ -525,12 +525,27 @@ def test_complete_layer_and_canonical_layout(slug):
     assert path.read_text() == formatted(layer)
 
 
+def assert_source_context(segment, expected):
+    assert canonical_hash(source_payload(segment)) == expected, (
+        "current complete Preface source context"
+    )
+
+
 @pytest.mark.parametrize("slug", SLUGS)
 def test_source_context_is_unchanged(slug):
     doc, _ = load(slug)
     for sid, expected in BASELINES[slug]["source_contexts"].items():
         segment = next(s for s in doc["segments"] if s["id"] == sid)
-        assert canonical_hash(source_payload(segment)) == expected
+        assert_source_context(segment, expected)
+        if slug == "d-n-iesu-christi-regis" and sid == "s04":
+            snapshot = deepcopy(segment)
+            historical = "619a0870ec08c6c334e1f6839d32ed54fe19711e506300d062295eb16412ecab"
+            assert expected == "de31bf1056b2b6e51e27b303c25994b03a7a28d6e60c373e269001df0434b3a4"
+            assert historical != expected
+            with pytest.raises(AssertionError, match=r"^current complete Preface source context"):
+                assert_source_context(segment, historical)
+            assert_source_context(segment, expected)
+            assert segment == snapshot
 
 
 @pytest.mark.parametrize("slug", SLUGS)

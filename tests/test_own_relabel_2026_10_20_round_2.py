@@ -19,6 +19,7 @@ from functools import cache
 from pathlib import Path
 
 import pytest
+from corpus_christi_epistle_fixture import expected_corpus_christi_epistle_row
 from marian_chant_fixture import expected_marian_row
 from pentecost_successor_fixture import expected_pentecost_row
 from post_ascension_fixture import expected_row_successor
@@ -57,6 +58,7 @@ LABELS = {site: expected_row_successor(row, site) for site, row in LABELS.items(
 LABELS = {site: expected_communion_row(row, site) for site, row in LABELS.items()}
 LABELS = {site: expected_pentecost_row(row, site) for site, row in LABELS.items()}
 LABELS = {site: expected_marian_row(row, site) for site, row in LABELS.items()}
+LABELS = {site: expected_corpus_christi_epistle_row(row, site) for site, row in LABELS.items()}
 SITES = sorted(LABELS)
 SAMPLE = FIXTURE["wording_sample"]
 DOXOLOGY = FIXTURE["doxology_uses"]
