@@ -46,7 +46,9 @@ from kalendarium.dismissal import calendar_table as dismissal_table
 # 6.0.0 replaces that resource's pairs with explicit decisions for three Mass situations
 # (commemoration selection schema 2.0.0), a breaking change for its consumers.
 # 6.1.0 adds the declared Ordo introduction units and events (introductiones schema 1.0.0).
-SCHEMA = "6.1.0"
+# 6.2.0 adds the impeded-Sunday commemoration (commemoration selection schema 2.1.0): a pair
+# also names the formulary whose orations a resolved commemoration says, null for the others.
+SCHEMA = "6.2.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.

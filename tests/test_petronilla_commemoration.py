@@ -62,8 +62,13 @@ FIRST_CLASS_WEEKDAYS = {
     "2057-05-31": "ascensio-domini",
     "2068-05-31": "ascensio-domini",
 }
-# The 63 Greater-Litanies (date, Mass) pairs of selection schema 1.0.0, unchanged in 2.0.0.
+# The 63 Greater-Litanies (date, Mass) pairs of selection schema 1.0.0, unchanged in 2.0.0 and
+# 2.1.0.
 LITANIES_SHA256 = "99f31b8d14c69419dc53a46df618fa10ced665db90bf0fddcbd35c396f69be7f"
+# Identity order of the resource: dominica-impedita, litaniae-maiores, sancta-petronilla.
+LITANIES_INDEX, SP_INDEX = 1, 2
+# The impeded Sunday's pairs (tests/test_dominica_impedita.py).
+IMPEDED_SUNDAY_PAIRS = 75
 
 
 @pytest.fixture(scope="module")
@@ -88,7 +93,7 @@ def decided(table):
         row[0]: (
             table["masses"][row[1]],
             row[3],
-            dict(zip(table["situations"], (names[v] for v in row[4:]), strict=True)),
+            dict(zip(table["situations"], (names[v] for v in row[4:7]), strict=True)),
         )
         for row in table["pairs"]
         if row[2] == index
@@ -117,7 +122,7 @@ def assert_plan(table):
 
 def test_the_authored_contract_is_exact_and_reaches_its_three_propers():
     doc = authored()
-    assert doc["commemoration_schema"] == "1.1.0" and doc["id"] == SP
+    assert doc["commemoration_schema"] == "1.2.0" and doc["id"] == SP
     assert doc["title"] == "S. Petronillæ Virginis"
     assert (doc["rank"], doc["scope"], doc["conclusion"]) == ("ordinary", "missa", "separate")
     assert doc["occurrence"] == {"month": 5, "day": 31, "transfer": "none"}
@@ -150,7 +155,7 @@ def test_the_authored_contract_is_exact_and_reaches_its_three_propers():
 
 def test_she_occurs_every_31_may_and_is_never_transferred(table):
     index = [entry["id"] for entry in table["commemorations"]].index(SP)
-    assert index == 1 and table["commemorations"][index]["rank"] == "ordinary"
+    assert index == SP_INDEX and table["commemorations"][index]["rank"] == "ordinary"
     assert sorted(day for day, i in table["occurrences"] if i == index) == [
         f"{y}-05-31" for y in producer.YEARS
     ]
@@ -217,12 +222,12 @@ def test_both_sung_situations_are_published_separately(table):
 
 
 def test_the_greater_litanies_decisions_are_unchanged(table):
-    rows = [row for row in table["pairs"] if row[2] == 0]
+    rows = [row for row in table["pairs"] if row[2] == LITANIES_INDEX]
     pairs = sorted([row[0], table["masses"][row[1]]] for row in rows)
     raw = json.dumps(pairs, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     assert hashlib.sha256(raw.encode()).hexdigest() == LITANIES_SHA256
-    assert all(row[3:] == [0, 0, 0, 0] for row in rows)
-    assert len(table["pairs"]) == len(rows) + 1 + len(ADMITTED)
+    assert all(row[3:] == [0, 0, 0, 0, None] for row in rows)
+    assert len(table["pairs"]) == len(rows) + 1 + len(ADMITTED) + IMPEDED_SUNDAY_PAIRS
 
 
 def test_the_resource_equals_the_independent_reconstruction(table):
@@ -264,15 +269,19 @@ def test_an_ignored_single_place_is_rejected(table, inputs, monkeypatch):
     assert_plan(producer.calendar_table(forms, calendar, corpus=CORPUS))
     # A second commemoration admitted beside the first on one date, Mass and situation.
     crowded = copy.deepcopy(table)
-    litany = next(r for r in crowded["pairs"] if r[2] == 0)
-    crowded["occurrences"] = sorted([*crowded["occurrences"], [litany[0], 1]])
-    crowded["pairs"] = sorted([*crowded["pairs"], [litany[0], litany[1], 1, 0, 0, 0, 1]])
+    litany = next(r for r in crowded["pairs"] if r[2] == LITANIES_INDEX)
+    crowded["occurrences"] = sorted([*crowded["occurrences"], [litany[0], SP_INDEX]])
+    crowded["pairs"] = sorted(
+        [*crowded["pairs"], [litany[0], litany[1], SP_INDEX, 0, 0, 0, 1, None]]
+    )
     with pytest.raises(ValueError, match="single commemoration"):
         producer.validate(crowded)
     beside_marker = copy.deepcopy(table)
     marker = next(r for r in beside_marker["pairs"] if r[0] == MARKER)
-    beside_marker["occurrences"] = sorted([*beside_marker["occurrences"], [MARKER, 0]])
-    beside_marker["pairs"] = sorted([*beside_marker["pairs"], [MARKER, marker[1], 0, 0, 0, 0, 0]])
+    beside_marker["occurrences"] = sorted([*beside_marker["occurrences"], [MARKER, LITANIES_INDEX]])
+    beside_marker["pairs"] = sorted(
+        [*beside_marker["pairs"], [MARKER, marker[1], LITANIES_INDEX, 0, 0, 0, 0, None]]
+    )
     with pytest.raises(ValueError, match="single commemoration"):
         producer.validate(beside_marker)
     producer.validate(table)
@@ -286,7 +295,7 @@ def test_a_wrong_date_is_rejected(table, inputs, monkeypatch):
     assert calendar["formularies"][trinity[1]] == "sanctissimae-trinitatis"
     substituted["pairs"] = sorted(
         [r for r in substituted["pairs"] if r[0] != ADMITTED[0]]
-        + [["2026-05-31", mass, 1, 0, 0, 0, 1]]
+        + [["2026-05-31", mass, SP_INDEX, 0, 0, 0, 1, None]]
     )
     producer.validate(substituted)  # well formed, same count
     assert len(substituted["pairs"]) == len(table["pairs"])
@@ -369,6 +378,7 @@ def test_a_slot_body_missing_from_a_language_package_fails_before_emission(tmp_p
         s["text"]
         for path in (CORPUS / "commemorationes").glob("*.json")
         for s in json.loads(path.read_text(encoding="utf-8"))["slots"]
+        if s["text"] is not None  # the impeded Sunday's slots are resolved per date
     ]
     for text in slots:
         relative = f"{text.replace('.', '/', 1)}.json"

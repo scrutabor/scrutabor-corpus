@@ -2,13 +2,15 @@
 Mass of the day under the rubrics, addressed by its own occurrence rule rather than by the
 winning Mass. The Greater Litanies (Rubricae generales 80–81, 108–109 f, 111, 434–437) are
 privileged; St Petronilla on 31 May (proper of the Saints, after the Queenship of the Blessed
-Virgin Mary) is ordinary. Each has three orations, each after the corresponding Mass oration
-under its own conclusion.
+Virgin Mary) is ordinary; the impeded Sunday (RG 15–18, 108–109 a) is privileged and joins the
+Mass of the first-class feast that takes its place. Each has three orations, each after the
+corresponding Mass oration under its own conclusion.
 
 The authored document owns identity, rank, occurrence rule and the three ordered slots; the
 calendar computes the dates; nothing here infers a procession, a local calendar or an Office.
-The scope is closed: the one privileged occurrence rule this edition models, and an ordinary
-commemoration only on a fixed date whose competing commemorations the selector models.
+The scope is closed: the one privileged fixed-date rule this edition models, the impeded Sunday
+under the first-class feasts that owe its commemoration, and an ordinary commemoration only on
+a fixed date whose competing commemorations the selector models.
 """
 
 from __future__ import annotations
@@ -21,7 +23,7 @@ from pathlib import Path
 
 from build_reader import store
 
-SCHEMA = "1.1.0"
+SCHEMA = "1.2.0"
 TITLE_SCHEMA = "1.0.0"
 KEYS = {
     "commemoration_schema",
@@ -39,24 +41,49 @@ KEYS = {
 OPTIONAL_KEYS = {"text_prefix"}
 TITLE_KEYS = {"commemoration_schema", "id", "language", "title"}
 OCCURRENCE_KEYS = {"month", "day", "transfer"}
+# The second occurrence kind names no date: the commemoration occurs wherever one of the named
+# feasts is kept on a Sunday it impedes, and the calendar resolves which Sunday that is.
+DISPLACED_KEYS = {"kind", "feasts"}
+DISPLACED_SUNDAY = "displaced-sunday"
+# RG 15–16 and 109 a: a first-class feast that is not a feast of the Lord takes the place of a
+# Sunday, which is then commemorated (the Immaculate Conception even the Second Sunday of
+# Advent, 15). A feast of the Lord and the feasts of 17 take the place with no commemoration
+# (16 a, 17, 112 b), so the Precious Blood is not here; St Joseph, Spouse, and the Annunciation
+# always meet a first-class Sunday of Lent or Passiontide and are transferred (96), and a Sunday
+# is preferred to All Souls, which moves to the Monday (16 b, 96 b). These are the remaining
+# first-class days of this calendar's sanctoral, in identity order.
+DISPLACED_SUNDAY_FEASTS = (
+    "assumptio-beatae-mariae-virginis",
+    "dedicatio-sancti-michaelis-archangeli",
+    "immaculata-conceptio",
+    "nativitas-sancti-ioannis-baptistae",
+    "omnium-sanctorum",
+    "sancti-ioseph-opificis",
+    "sancti-petri-et-pauli-apostolorum",
+)
 SLOT_KEYS = {"key", "after", "text", "relation"}
 RUBRIC_KEYS = {"date", "scope", "rank", "admission", "conclusion"}
 RANKS = ("privileged", "ordinary")
 SCOPES = ("missa",)
 CONCLUSIONS = ("separate",)
 TRANSFERS = ("easter-sunday-or-monday-to-tuesday", "none")
-# The rule each rank may use. The Greater Litanies are the one privileged occurrence this
-# edition models; an ordinary commemoration is fixed to its day and never transferred.
+# The rule each rank may use. The Greater Litanies are the one privileged fixed-date occurrence
+# this edition models; an ordinary commemoration is fixed to its day and never transferred.
 RANK_TRANSFERS = {
     "privileged": ("easter-sunday-or-monday-to-tuesday",),
     "ordinary": ("none",),
 }
+# The occurrence kinds each rank may use besides a fixed date: the commemoration of a Sunday
+# is privileged (RG 109 a).
+RANK_KINDS: dict[str, tuple[str, ...]] = {"privileged": (DISPLACED_SUNDAY,), "ordinary": ()}
 # Fixed dates on which the selector models every commemoration that can compete for the
 # single second-class place (kalendarium/commemorationes.py): 31 May, where the impeded Vigil
 # of the Ascension is the only de Tempore day that can meet a second-class feast.
 ORDINARY_DATES = ((5, 31),)
 SLOT_ORDER = ("collecta", "secreta", "postcommunio")
-RELATIONS = ("proper", "reference")
+# `calendar` names no text: the calendar resolves it per date to the impeded Sunday's own
+# oration of that role, as the Sunday's formulary assembles it.
+RELATIONS = ("proper", "reference", "calendar")
 IDENTITY = re.compile(r"[a-z][a-z0-9]*(?:-[a-z0-9]+)*\Z")
 
 
@@ -86,6 +113,33 @@ def slot_texts(corpus: Path) -> Counter[str]:
 
 def _nonempty(value: object) -> bool:
     return isinstance(value, str) and bool(value.strip())
+
+
+def _displaced_errors(identity: str, doc: dict, occurrence: dict) -> list[str]:
+    """The impeded-Sunday occurrence: the closed feast list, a privileged rank, no prefix."""
+    from kalendarium.sanctorale import FESTA
+
+    errors = []
+    if set(occurrence) != DISPLACED_KEYS or occurrence["kind"] != DISPLACED_SUNDAY:
+        errors.append(
+            f"{identity}: occurrence kind needs exactly kind {DISPLACED_SUNDAY!r} and feasts"
+        )
+    elif occurrence["feasts"] != list(DISPLACED_SUNDAY_FEASTS):
+        errors.append(
+            f"{identity}: feasts must be exactly the first-class feasts that impede a Sunday "
+            "and commemorate it, in identity order"
+        )
+    first_class = {feast.formulary for feast in FESTA if feast.dies_class == 1}
+    if not set(DISPLACED_SUNDAY_FEASTS) <= first_class:
+        errors.append(f"{identity}: an impeding feast is not a first-class feast of the calendar")
+    if doc["rank"] in RANKS and DISPLACED_SUNDAY not in RANK_KINDS[doc["rank"]]:
+        errors.append(
+            f"{identity}: a {doc['rank']} commemoration cannot use occurrence kind "
+            f"{DISPLACED_SUNDAY!r}"
+        )
+    if "text_prefix" in doc:
+        errors.append(f"{identity}: text_prefix addresses proper slots, which this kind has not")
+    return errors
 
 
 def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
@@ -131,7 +185,10 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
         if doc["conclusion"] not in CONCLUSIONS:
             errors.append(f"{identity}: unknown conclusion rule {doc['conclusion']!r}")
         occurrence = doc["occurrence"]
-        if not isinstance(occurrence, dict) or set(occurrence) != OCCURRENCE_KEYS:
+        displaced = isinstance(occurrence, dict) and "kind" in occurrence
+        if displaced:
+            errors.extend(_displaced_errors(identity, doc, occurrence))
+        elif not isinstance(occurrence, dict) or set(occurrence) != OCCURRENCE_KEYS:
             errors.append(f"{identity}: occurrence needs exactly month, day and transfer")
         else:
             month, day = occurrence["month"], occurrence["day"]
@@ -170,6 +227,20 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
                     f"after the Mass {expected_key}"
                 )
             target, relation = slot["text"], slot["relation"]
+            if displaced or relation == "calendar":
+                if not displaced or relation != "calendar":
+                    errors.append(
+                        f"{identity}:{slot['key']}: the calendar relation is used by, and only "
+                        "by, the impeded-Sunday occurrence"
+                    )
+                elif target is not None:
+                    errors.append(
+                        f"{identity}:{slot['key']}: a calendar slot names no text; the calendar "
+                        "resolves it per date"
+                    )
+                else:
+                    relations[relation] += 1
+                continue
             if not isinstance(target, str) or target not in text_ids:
                 errors.append(f"{identity}:{slot['key']}: missing text {target!r}")
                 continue
@@ -212,5 +283,6 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
         "slot_uses": sum(relations.values()),
         "proper_slots": relations["proper"],
         "reference_slots": relations["reference"],
+        "calendar_slots": relations["calendar"],
     }
     return errors, counts

@@ -2,8 +2,10 @@
 
 The authored commemoration owns its occurrence rule and its three ordered slots: the Greater
 Litanies (Rubricae generales 80: April 25, or the following Tuesday when that day is Easter
-Sunday or Easter Monday) and St Petronilla (31 May, never transferred). Every occurrence in the
-supported span is published, whether or not a Mass row is represented on that day.
+Sunday or Easter Monday), St Petronilla (31 May, never transferred) and the impeded Sunday (RG
+15–18: a Sunday on which one of the first-class feasts named by its authored rule is kept).
+Every occurrence in the supported span is published, whether or not a Mass row is represented
+on that day.
 
 A pair is an explicit decision for one represented Mass on an occurrence date, stated for each
 of three situations: a low Mass (lecta), a sung conventual Mass and a sung Mass that is not
@@ -19,6 +21,13 @@ are not yet in this edition, so the decision states that a required de Tempore c
 unavailable and the ordinary one is omitted, rather than presenting the Mass as complete. At
 most one commemoration is admitted for a date, Mass and situation: a second would need an
 order and a conclusion plan this contract does not model.
+
+The impeded Sunday's three orations are not fixed texts. Each pair names the formulary of the
+Sunday that the calendar would have kept that day, which is not always its position in the
+year: a Sunday after Epiphany resumed after the Twenty-third Sunday after Pentecost keeps its
+own formulary (RG 18). Its orations are the Collect, Secret and Postcommunion that formulary
+assembles. Where that formulary or one of its orations is not in this edition, the pair states
+that the required de Tempore commemoration is unavailable instead of admitting a gap.
 No procession, local calendar or Office commemoration is inferred.
 """
 
@@ -32,8 +41,11 @@ from pathlib import Path
 
 from kalendarium.computus import easter
 from kalendarium.dismissal import canonical_inputs
+from kalendarium.roman import year
+from kalendarium.temporale import Dies
+from kalendarium.temporale import year as temporal_year
 
-SCHEMA = "2.0.0"
+SCHEMA = "2.1.0"
 PROFILES = [{"id": "ordinary-separate-conclusions"}]
 SITUATIONS = ["lecta", "cantu-conventualis", "cantu-non-conventualis"]
 DECISIONS = [
@@ -57,6 +69,8 @@ FIELDS = {
 ENTRY_FIELDS = {"id", "title", "rank", "conclusion", "slots"}
 SLOT_FIELDS = {"key", "after", "text"}
 RANKS = ("privileged", "ordinary")
+# The Mass roles a commemoration slot follows, in order.
+ORATIONS = ("collecta", "secreta", "postcommunio")
 # De Tempore days this edition does not yet carry that take the single second-class place on
 # the fixed dates an ordinary commemoration may use (checks.commemorationes.ORDINARY_DATES),
 # by their distance from Easter Sunday: the Vigil of the Ascension, a second-class vigil
@@ -64,9 +78,16 @@ RANKS = ("privileged", "ordinary")
 UNAVAILABLE_DE_TEMPORE = {"vigilia-ascensionis": 38}
 
 
+def displaced(commemoration: dict) -> bool:
+    """True for the impeded-Sunday occurrence kind, whose dates the calendar supplies."""
+    return commemoration["occurrence"].get("kind") == "displaced-sunday"
+
+
 def occurrence(commemoration: dict, civil_year: int) -> date:
     """The civil date of one commemoration in one year, after its transfer rule."""
     rule = commemoration["occurrence"]
+    if displaced(commemoration):  # pragma: no cover — its dates come from impeded_sundays()
+        raise ValueError("commemorationes: an impeded Sunday has no fixed civil date")
     when = date(civil_year, rule["month"], rule["day"])
     if rule["transfer"] == "easter-sunday-or-monday-to-tuesday":
         pascha = easter(civil_year)
@@ -75,6 +96,56 @@ def occurrence(commemoration: dict, civil_year: int) -> date:
     elif rule["transfer"] != "none":  # pragma: no cover — the checker admits only these rules
         raise ValueError(f"commemorationes: unknown transfer rule {rule['transfer']!r}")
     return when
+
+
+def impeded_sunday(day: Dies, ending: int) -> str:
+    """The formulary of the Sunday that the feast kept on `day` impedes (RG 15–18).
+
+    The temporal cycle names that Sunday's own formulary, including a Sunday after Epiphany
+    resumed after the Twenty-third Sunday after Pentecost (18). Where the temporal cycle has
+    already given the day to the feast itself (the Immaculate Conception over the Second Sunday
+    of Advent, 15), the Sunday is the day's position.
+    """
+    for temporal in temporal_year(ending):
+        if temporal.when == day.when:
+            own = temporal.formulary == day.formulary
+            sunday = temporal.position if own else temporal.formulary
+            if (
+                day.when.weekday() != 6
+                or temporal.position != day.position
+                or not sunday.startswith("dominica-")
+            ):
+                raise ValueError(f"commemorationes: {day.when} has no impeded Sunday")
+            return sunday
+    raise ValueError(f"commemorationes: {day.when} is not a day of the temporal cycle")
+
+
+def impeded_sundays(commemoration: dict) -> dict[str, str]:
+    """Each date of the supported span on which a named feast impedes a Sunday, with the
+    formulary of that Sunday."""
+    feasts = commemoration["occurrence"]["feasts"]
+    return {
+        day.when.isoformat(): impeded_sunday(day, ending)
+        for ending in YEARS
+        for day in year(ending)
+        if day.formulary in feasts and day.when.weekday() == 6
+    }
+
+
+def sunday_orations(form: dict | None) -> list[str] | None:
+    """The Collect, Secret and Postcommunion texts a Sunday formulary assembles, in slot order,
+    or None when the formulary or one of those orations is not in this edition."""
+    if form is None:
+        return None
+    texts = []
+    for role in ORATIONS:
+        components = [c for c in form["components"] if c["role"] == role]
+        if not components:
+            return None
+        if len(components) != 1 or "condition" in components[0]:
+            raise ValueError(f"commemorationes: {form['id']} has no single unconditional {role}")
+        texts.append(components[0]["text"])
+    return texts
 
 
 def unavailable_de_tempore(when: date) -> str | None:
@@ -140,7 +211,7 @@ def entries(commemorations: list[dict]) -> list[dict]:
                 {
                     "key": slot["key"],
                     "after": slot["after"],
-                    "text": slot["text"].replace(".", "/", 1),
+                    "text": None if slot["text"] is None else slot["text"].replace(".", "/", 1),
                 }
                 for slot in doc["slots"]
             ],
@@ -163,13 +234,23 @@ def calendar_table(forms: list[dict], calendar: dict, *, corpus: Path) -> dict:
             "commemorationes: inputs differ from canonical authored catalogue/calendar"
         )
     commemorations = authored(corpus)
+    sundays = {
+        index: impeded_sundays(doc) for index, doc in enumerate(commemorations) if displaced(doc)
+    }
     occurrences = sorted(
-        [occurrence(doc, civil_year).isoformat(), index]
-        for index, doc in enumerate(commemorations)
-        for civil_year in YEARS
+        [
+            *(
+                [occurrence(doc, civil_year).isoformat(), index]
+                for index, doc in enumerate(commemorations)
+                if index not in sundays
+                for civil_year in YEARS
+            ),
+            *([day, index] for index, found in sundays.items() for day in found),
+        ]
     )
     dates = {(day, index) for day, index in occurrences}
     by_key: dict[str, list[dict]] = {}
+    by_id = {form["id"]: form for form in forms}
     for form in forms:
         by_key.setdefault(form["calendar"]["key"], []).append(form)
     pairs = []
@@ -178,11 +259,18 @@ def calendar_table(forms: list[dict], calendar: dict, *, corpus: Path) -> dict:
             for index, doc in enumerate(commemorations):
                 if (row[0], index) not in dates:
                     continue
-                plan = decision(doc, date.fromisoformat(row[0]), row[3])
+                resolved: str | None = None
+                plan: list[int] | None
+                if index in sundays:
+                    resolved = sundays[index][row[0]]
+                    available = sunday_orations(by_id.get(resolved)) is not None
+                    plan = [ADMITTED if available else DE_TEMPORE_UNAVAILABLE] * len(SITUATIONS)
+                else:
+                    plan = decision(doc, date.fromisoformat(row[0]), row[3])
                 if plan is None:
                     continue
                 for form in by_key.get(calendar["formularies"][row[1]], []):
-                    pairs.append([row[0], masses.index(form["id"]), index, 0, *plan])
+                    pairs.append([row[0], masses.index(form["id"]), index, 0, *plan, resolved])
     table = {
         "schema_version": SCHEMA,
         "commemorations": entries(commemorations),
@@ -214,6 +302,9 @@ def validate(table: dict) -> None:
         raise ValueError("commemorationes: at least one commemoration required")
     identities: list[str] = []
     ranks: list[str] = []
+    # A commemoration whose slots name no text is resolved per pair: each of its pairs names
+    # the formulary whose orations are said, and no other pair names one.
+    resolved: list[bool] = []
     for entry in commemorations:
         if not isinstance(entry, dict) or set(entry) != ENTRY_FIELDS:
             raise ValueError("commemorationes: exact commemoration entry fields required")
@@ -237,14 +328,27 @@ def validate(table: dict) -> None:
                 raise ValueError(
                     f"commemorationes: {entry['id']} slot fields differ from the contract"
                 )
-            if not all(isinstance(slot[key], str) and slot[key] for key in SLOT_FIELDS):
+            if not all(isinstance(slot[key], str) and slot[key] for key in ("key", "after")):
                 raise ValueError(
                     f"commemorationes: {entry['id']} slot values must be nonempty strings"
                 )
-            if not re.fullmatch(r"[a-z]+/[a-z0-9-]+", slot["text"]):
+            if slot["text"] is not None and (
+                not isinstance(slot["text"], str)
+                or not re.fullmatch(r"[a-z]+/[a-z0-9-]+", slot["text"])
+            ):
                 raise ValueError(
                     f"commemorationes: {entry['id']} slot text must be a slash address"
                 )
+        unaddressed = [slot["text"] is None for slot in slots]
+        if any(unaddressed) and not all(unaddressed):
+            raise ValueError(
+                f"commemorationes: {entry['id']} slots are all addressed or all resolved per pair"
+            )
+        if all(unaddressed) and [slot["key"] for slot in slots] != list(ORATIONS):
+            raise ValueError(
+                f"commemorationes: {entry['id']} resolved slots must be " + ", ".join(ORATIONS)
+            )
+        resolved.append(all(unaddressed))
     if identities != sorted(identities):
         raise ValueError("commemorationes: commemorations must be in identity order")
     masses = table["masses"]
@@ -288,20 +392,25 @@ def validate(table: dict) -> None:
         raise ValueError("commemorationes: pairs must be a sorted list")
     used: set[tuple[str, int, int]] = set()
     places: dict[tuple[str, int, int], list[int]] = {}
+    width = 4 + len(SITUATIONS)
     for row in pairs:
         if (
             not isinstance(row, list)
-            or len(row) != 4 + len(SITUATIONS)
-            or any(type(value) is not int for value in row[1:])
+            or len(row) != width + 1
+            or any(type(value) is not int for value in row[1:width])
             or not 0 <= row[1] < len(masses)
             or not 0 <= row[2] < len(identities)
             or not 0 <= row[3] < len(PROFILES)
-            or any(not 0 <= value < len(DECISIONS) for value in row[4:])
+            or any(not 0 <= value < len(DECISIONS) for value in row[4:width])
+            or not (
+                row[width] is None
+                or (isinstance(row[width], str) and IDENTITY.fullmatch(row[width]))
+            )
         ):
             raise ValueError(
                 "commemorationes: pair rows are [date, mass, commemoration, profile, "
                 + ", ".join(SITUATIONS)
-                + "]"
+                + ", resolved formulary or null]"
             )
         day = civil(row[0])
         if (day, row[2]) not in seen:
@@ -310,9 +419,26 @@ def validate(table: dict) -> None:
         if triple in used:
             raise ValueError("commemorationes: duplicate pair")
         used.add(triple)
-        plan = row[4:]
-        if ranks[row[2]] == "privileged" and plan != [ADMITTED] * len(SITUATIONS):
-            raise ValueError("commemorationes: a privileged commemoration is made in all Masses")
+        plan, formulary = row[4:width], row[width]
+        if resolved[row[2]] != (formulary is not None):
+            raise ValueError(
+                "commemorationes: a pair names its formulary exactly when its commemoration's "
+                "slots are resolved per pair"
+            )
+        if formulary is not None and ADMITTED in plan and formulary not in masses:
+            raise ValueError(
+                "commemorationes: an admitted resolved commemoration needs an authored formulary"
+            )
+        unavailable = formulary is not None and plan == [DE_TEMPORE_UNAVAILABLE] * len(SITUATIONS)
+        if (
+            ranks[row[2]] == "privileged"
+            and plan != [ADMITTED] * len(SITUATIONS)
+            and not unavailable
+        ):
+            raise ValueError(
+                "commemorationes: a privileged commemoration is made in all Masses, or stated "
+                "unavailable in all where its resolved formulary is not in this edition"
+            )
         if ranks[row[2]] == "ordinary" and (plan[0] != plan[1] or plan[2] != NOT_ADMITTED):
             raise ValueError(
                 "commemorationes: an ordinary commemoration has one decision for low and sung "

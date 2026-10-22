@@ -2,7 +2,8 @@
 activation on the edition's Mass rows, and the owned negative controls. The cases follow the
 sealed assembly audit (weekday Mark, ordinary second-class Sunday, Easter Sunday and Monday
 transfers, another octave weekday, Low Sunday). St Petronilla's ordinary commemoration has its
-own module (tests/test_petronilla_commemoration.py)."""
+own module (tests/test_petronilla_commemoration.py), and so has the impeded Sunday
+(tests/test_dominica_impedita.py)."""
 
 import copy
 import json
@@ -20,6 +21,8 @@ from kalendarium.dismissal import canonical_inputs
 
 CORPUS = Path(store.__file__).resolve().parent.parent
 LM = "litaniae-maiores"
+# Its place in the identity-ordered resource (dominica-impedita, litaniae-maiores, ...).
+LM_INDEX = 1
 SLOTS = [
     ("collecta", "proprium.litaniae-maiores-collecta", "proper"),
     ("secreta", "proprium.dominica-i-passionis-secreta", "reference"),
@@ -53,7 +56,7 @@ def authored():
 
 def test_the_authored_contract_is_exact_and_reaches_its_propers():
     doc = authored()
-    assert doc["commemoration_schema"] == "1.1.0" and doc["id"] == LM
+    assert doc["commemoration_schema"] == "1.2.0" and doc["id"] == LM
     assert "text_prefix" not in doc
     assert (doc["rank"], doc["scope"], doc["conclusion"]) == ("privileged", "missa", "separate")
     assert doc["occurrence"] == {
@@ -67,7 +70,13 @@ def test_the_authored_contract_is_exact_and_reaches_its_propers():
     assert "80" in doc["rubrics"]["date"] and "109" in doc["rubrics"]["rank"]
     assert checker.check(CORPUS) == (
         [],
-        {"commemorations": 2, "slot_uses": 6, "proper_slots": 5, "reference_slots": 1},
+        {
+            "commemorations": 3,
+            "slot_uses": 9,
+            "proper_slots": 5,
+            "reference_slots": 1,
+            "calendar_slots": 3,
+        },
     )
     errors, counts = check_formularies(CORPUS)
     assert errors == [] and counts["proper_texts"] == 1008
@@ -92,21 +101,27 @@ def test_the_occurrence_follows_rubric_80(civil_year):
 
 
 def test_every_occurrence_is_published_and_only_represented_masses_pair(table):
-    assert table["schema_version"] == "2.0.0"
+    assert table["schema_version"] == "2.1.0"
     assert table["profiles"] == [{"id": "ordinary-separate-conclusions"}]
     assert table["situations"] == ["lecta", "cantu-conventualis", "cantu-non-conventualis"]
     assert table["decisions"][0] == {"id": "admitted"}
-    first = table["commemorations"][0]
+    assert [entry["id"] for entry in table["commemorations"]] == [
+        "dominica-impedita",
+        LM,
+        "sancta-petronilla",
+    ]
+    first = table["commemorations"][LM_INDEX]
     assert (first["id"], first["title"]) == (LM, "Litaniæ maiores")
-    assert [s["text"] for s in table["commemorations"][0]["slots"]] == [
+    assert [s["text"] for s in table["commemorations"][LM_INDEX]["slots"]] == [
         text.replace(".", "/", 1) for _key, text, _relation in SLOTS
     ]
-    occurrences = {day for day, index in table["occurrences"] if index == 0}
+    occurrences = {day for day, index in table["occurrences"] if index == LM_INDEX}
     assert len(occurrences) == len(producer.YEARS) == 76
-    rows = [row for row in table["pairs"] if row[2] == 0]
+    rows = [row for row in table["pairs"] if row[2] == LM_INDEX]
     pairs = {(row[0], table["masses"][row[1]]) for row in rows}
-    # A privileged commemoration: profile 0 and admitted in every Mass situation (RG 108-109).
-    assert all(row[3] == 0 and row[4:] == [0, 0, 0] for row in rows)
+    # A privileged commemoration: profile 0 and admitted in every Mass situation (RG 108-109);
+    # its slots are addressed, so no pair names a resolved formulary.
+    assert all(row[3] == 0 and row[4:] == [0, 0, 0, None] for row in rows)
     assert len(pairs) == len(rows)
     for expected, mass in CASES.values():
         assert expected in occurrences
@@ -130,17 +145,17 @@ def test_the_resource_equals_the_independent_reconstruction(table):
 @pytest.mark.parametrize(
     "mutation",
     [
-        lambda t: t["pairs"].append(["2026-04-26", 0, 0, 0, 0, 0, 0]),
+        lambda t: t["pairs"].append(["2026-04-26", 0, LM_INDEX, 0, 0, 0, 0, None]),
         lambda t: t["pairs"].append(copy.deepcopy(t["pairs"][0])),
         lambda t: t["pairs"].reverse(),
         lambda t: t["pairs"][0].__setitem__(3, 1),
         lambda t: t["pairs"][0].__setitem__(1, len(t["masses"])),
-        lambda t: t["occurrences"].append(["2026-04-25", 0]),
-        lambda t: t["occurrences"].__setitem__(0, ["2026-4-25", 0]),
+        lambda t: t["occurrences"].append(["2026-04-25", LM_INDEX]),
+        lambda t: t["occurrences"].__setitem__(0, ["2026-4-25", LM_INDEX]),
         lambda t: t.__setitem__("profiles", [{"id": "single-conclusion"}]),
-        lambda t: t["commemorations"][0]["slots"][0].__setitem__("text", "litaniae-maiores"),
+        lambda t: t["commemorations"][LM_INDEX]["slots"][0].__setitem__("text", LM),
         lambda t: t.pop("occurrences"),
-        lambda t: t["commemorations"][0].__setitem__("title", ""),
+        lambda t: t["commemorations"][LM_INDEX].__setitem__("title", ""),
     ],
     ids=[
         "pair-off-occurrence",

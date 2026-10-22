@@ -13,60 +13,78 @@ from kalendarium.commemorationes import (
     SITUATIONS,
     YEARS,
     authored,
+    displaced,
     entries,
+    impeded_sundays,
+    sunday_orations,
     validate,
 )
 from kalendarium.computus import easter
 from kalendarium.dismissal import canonical_inputs
 from kalendarium.roman import year
+from kalendarium.temporale import Dies
 
 TITLE_SCHEMA = "1.0.0"
+# RG 18: the resumed Sundays after Epiphany take the places after the Twenty-third Sunday after
+# Pentecost so that the one before the last is the Sixth; the last is always the Twenty-fourth.
+RESUMED = {3: "iii", 4: "iv", 5: "v", 6: "vi"}
+ROLES = ("collecta", "secreta", "postcommunio")
+
+
+def slot_bodies(corpus: Path) -> list[str]:
+    """Every dotted text a commemoration may say: the addressed slots, and the orations of
+    each impeded Sunday whose formulary is in this edition."""
+    from build_reader import store
+
+    forms = {form["id"]: form for form in store.formularies(corpus)}
+    found: list[str] = []
+    for doc in authored(corpus):
+        if displaced(doc):
+            for sunday in sorted(set(impeded_sundays(doc).values())):
+                texts = sunday_orations(forms.get(sunday)) or []
+                found.extend(text.replace("/", ".", 1) for text in texts)
+        else:
+            found.extend(slot["text"] for slot in doc["slots"])
+    return list(dict.fromkeys(found))
 
 
 def input_bodies(corpus: Path) -> None:
     """Fail before emission if any slot body is unavailable in the neutral core or in PL/EN."""
     from build_reader import store
 
-    for doc in authored(corpus):
-        for slot in doc["slots"]:
-            identity = slot["text"]
-            core = store.core(corpus, identity)
-            if core.get("id") != identity or not any(
-                s.get("words") for s in core.get("segments", [])
+    for identity in slot_bodies(corpus):
+        core = store.core(corpus, identity)
+        if core.get("id") != identity or not any(s.get("words") for s in core.get("segments", [])):
+            raise ValueError(f"commemorationes: {identity} requires a nonempty neutral body")
+        for language in ("pl", "en"):
+            manifest = json.loads(
+                (corpus / f"languages/{language}/manifest.json").read_text(encoding="utf-8")
+            )
+            if (
+                not isinstance(manifest.get("texts"), list)
+                or manifest["texts"].count(identity) != 1
             ):
-                raise ValueError(f"commemorationes: {identity} requires a nonempty neutral body")
-            for language in ("pl", "en"):
-                manifest = json.loads(
-                    (corpus / f"languages/{language}/manifest.json").read_text(encoding="utf-8")
+                raise ValueError(f"commemorationes: {identity} requires a declared {language} body")
+            layer = json.loads(
+                (
+                    corpus / f"languages/{language}/texts/{identity.replace('.', '/', 1)}.json"
+                ).read_text(encoding="utf-8")
+            )
+            if layer.get("text") != identity or layer.get("language") != language:
+                raise ValueError(
+                    f"commemorationes: {identity} requires a correctly identified {language} body"
                 )
-                if (
-                    not isinstance(manifest.get("texts"), list)
-                    or manifest["texts"].count(identity) != 1
-                ):
-                    raise ValueError(
-                        f"commemorationes: {identity} requires a declared {language} body"
-                    )
-                layer = json.loads(
-                    (
-                        corpus / f"languages/{language}/texts/{identity.replace('.', '/', 1)}.json"
-                    ).read_text(encoding="utf-8")
-                )
-                if layer.get("text") != identity or layer.get("language") != language:
-                    raise ValueError(
-                        f"commemorationes: {identity} requires a correctly identified "
-                        f"{language} body"
-                    )
-                for segment in core["segments"]:
-                    if segment.get("words"):
-                        localized = layer.get("segments", {}).get(segment["id"], {})
-                        if (
-                            not isinstance(localized.get("translation"), str)
-                            or not localized["translation"].strip()
-                        ):
-                            raise ValueError(
-                                f"commemorationes: {identity}/{language}/{segment['id']} "
-                                "has no translation"
-                            )
+            for segment in core["segments"]:
+                if segment.get("words"):
+                    localized = layer.get("segments", {}).get(segment["id"], {})
+                    if (
+                        not isinstance(localized.get("translation"), str)
+                        or not localized["translation"].strip()
+                    ):
+                        raise ValueError(
+                            f"commemorationes: {identity}/{language}/{segment['id']} "
+                            "has no translation"
+                        )
 
 
 def language_catalog(corpus: Path, language: str) -> dict:
@@ -81,11 +99,25 @@ def language_catalog(corpus: Path, language: str) -> dict:
     return {"schema_version": TITLE_SCHEMA, "language": language, "titles": titles}
 
 
+def _sunday(day: Dies, after: list[date]) -> str:
+    """RG 18 restated from the year's own count of Sundays after Pentecost, Trinity first."""
+    if day.when not in after:
+        return day.position
+    place, total = after.index(day.when) + 1, len(after)
+    if place == total:
+        return "dominica-xxiv-post-pentecosten"
+    if place > 23:
+        return f"dominica-{RESUMED[6 - (total - 1 - place)]}-quae-superfuit-post-epiphaniam"
+    return day.position
+
+
 def expected(corpus: Path) -> dict:
     """No call to the producer: iterate the computed years anew, apply RG 80 again for the
-    transferred occurrence, and restate the admission of RG 108–114 from the computed days."""
+    transferred occurrence, restate the admission of RG 108–114 from the computed days, and
+    restate RG 15–18 for the impeded Sunday from the computed positions."""
     forms, _ = canonical_inputs(corpus)
     masses = sorted(form["id"] for form in forms)
+    by_id = {form["id"]: form for form in forms}
     commemorations = authored(corpus)
     names = [decision["id"] for decision in DECISIONS]
     admitted = names.index("admitted")
@@ -94,6 +126,8 @@ def expected(corpus: Path) -> dict:
     occurrences = []
     for index, doc in enumerate(commemorations):
         rule = doc["occurrence"]
+        if "kind" in rule:
+            continue
         for civil_year in YEARS:
             when = date(civil_year, rule["month"], rule["day"])
             pascha = easter(civil_year)
@@ -104,12 +138,30 @@ def expected(corpus: Path) -> dict:
     dates = {(day, index) for day, index in occurrences}
     pairs = []
     for ending in YEARS:
-        for day in year(ending):
+        days = year(ending)
+        after = [
+            day.when
+            for day in days
+            if day.position.startswith("dominica-") and day.position.endswith("-post-pentecosten")
+        ]
+        for day in days:
             iso = day.when.isoformat()
             for index, doc in enumerate(commemorations):
-                if (iso, index) not in dates:
+                rule = doc["occurrence"]
+                resolution: str | None = None
+                if "kind" in rule:
+                    if day.formulary not in rule["feasts"] or day.when.isoweekday() != 7:
+                        continue
+                    occurrences.append([iso, index])
+                    resolution = _sunday(day, after)
+                    sunday = by_id.get(resolution)
+                    complete = sunday is not None and all(
+                        any(c["role"] == role for c in sunday["components"]) for role in ROLES
+                    )
+                    plan = [admitted if complete else unavailable] * len(SITUATIONS)
+                elif (iso, index) not in dates:
                     continue
-                if doc["rank"] == "privileged":
+                elif doc["rank"] == "privileged":
                     plan = [admitted] * len(SITUATIONS)
                 elif day.dies_class == 1 or day.when.isoweekday() == 7:
                     continue
@@ -120,7 +172,7 @@ def expected(corpus: Path) -> dict:
                     plan = [admitted, admitted, not_admitted]
                 for form in forms:
                     if form["calendar"]["key"] == day.formulary:
-                        pairs.append([iso, masses.index(form["id"]), index, 0, *plan])
+                        pairs.append([iso, masses.index(form["id"]), index, 0, *plan, resolution])
     return {
         "schema_version": SCHEMA,
         "commemorations": entries(commemorations),
@@ -161,7 +213,29 @@ def verify(corpus: Path, out: Path, manifest: dict, reader_schema: str) -> list[
         slot["text"].replace("/", ".", 1)
         for entry in (table or {}).get("commemorations") or []
         for slot in entry.get("slots") or []
+        if isinstance(slot.get("text"), str)
     ]
+    # An admitted impeded Sunday says the orations its formulary assembles: read them from the
+    # authored formularies rather than from the emitted catalogue.
+    from build_reader import store
+
+    forms = {form["id"]: form for form in store.formularies(corpus)}
+    width = 4 + len(SITUATIONS)
+    admitted = [decision["id"] for decision in DECISIONS].index("admitted")
+    for row in (table or {}).get("pairs") or []:
+        if not isinstance(row, list) or len(row) != width + 1 or row[width] is None:
+            continue
+        if admitted in row[4:width]:
+            try:
+                texts = sunday_orations(forms.get(row[width]))
+            except ValueError as exc:
+                texts = None
+                errors.append(str(exc))
+            if texts is None:
+                errors.append(f"commemorationes: {row[0]} admits {row[width]} without its orations")
+            else:
+                slots.extend(texts)
+    slots = list(dict.fromkeys(slots))
 
     def bodies(package, prefix, language=None):
         if not isinstance(package, dict):
