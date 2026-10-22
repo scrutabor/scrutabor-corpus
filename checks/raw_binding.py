@@ -20,6 +20,14 @@ REGISTRY = "witnesses/raw/bindings.json"
 # Lowercase initials are textual framing, not performer declarations.
 TEXT_MARKER_CHARS = "DSMVROsmvro"
 
+# raw-reading-8 closed record shapes; checks.raw_binding_common checks their values.
+LITERAL_COMMON_SHAPE = {
+    "selection": {"archive", "rank_heading", "rank", "rule_heading", "rule", "absent_heading"},
+    "body": {"archive", "heading", "text", "cue"},
+    "conclusion": {"archive", "heading", "formula", "amen"},
+}
+PREFIXED_RECORDS = {"formula", "amen"}
+
 
 class BindingError(ValueError):
     """An explicit source claim cannot be verified; never try legacy fallback."""
@@ -138,6 +146,7 @@ def load_registry(root: Path) -> dict:
                 "raw-reading-5",
                 "raw-reading-6",
                 "raw-reading-7",
+                "raw-reading-8",
             ):
                 raise BindingError("unsupported per-binding contract")
             if binding["contract"] == "raw-reading-3":
@@ -156,6 +165,16 @@ def load_registry(root: Path) -> dict:
                 "context",
                 "reading",
                 "framing",
+            }
+        if isinstance(binding, dict) and binding.get("contract") == "raw-reading-8":
+            fields = {
+                "witness",
+                "revision",
+                "contract",
+                "profile",
+                "selection",
+                "body",
+                "conclusion",
             }
         _keys(binding, fields, key)
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", key):
@@ -190,9 +209,30 @@ def load_registry(root: Path) -> dict:
                 },
                 "raw-reading-6 variant",
             )
+        if binding.get("contract") == "raw-reading-8":
+            if not isinstance(binding["profile"], str):
+                raise BindingError("raw-reading-8 profile must be a string")
+            for role, shape in LITERAL_COMMON_SHAPE.items():
+                _keys(binding[role], shape, f"raw-reading-8 {role}")
+                if not isinstance(binding[role]["archive"], str):
+                    raise BindingError(f"raw-reading-8 {role}: archive must be a string")
+                for name in sorted(shape - {"archive", "absent_heading"}):
+                    record = binding[role][name]
+                    expected = (
+                        {"line", "text", "prefix"} if name in PREFIXED_RECORDS else {"line", "text"}
+                    )
+                    _keys(record, expected, f"raw-reading-8 {role} {name}")
+                    if type(record["line"]) is not int or any(
+                        not isinstance(record[field], str) for field in expected - {"line"}
+                    ):
+                        raise BindingError(
+                            "raw-reading-8 records require integer lines and strings"
+                        )
+            if not isinstance(binding["selection"]["absent_heading"], str):
+                raise BindingError("raw-reading-8 selection: absent_heading must be a string")
         for field in (
             ()
-            if binding.get("contract") in {"raw-reading-6", "raw-reading-7"}
+            if binding.get("contract") in {"raw-reading-6", "raw-reading-7", "raw-reading-8"}
             else ("evidence", "references", "reading")
         ):
             if not isinstance(binding[field], list) or (
@@ -419,6 +459,10 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
         from .raw_binding_inline import resolve_inline
 
         return resolve_inline(text, headers, binding_id, binding, snapshot)
+    if binding.get("contract") == "raw-reading-8":
+        from .raw_binding_common import resolve_literal_common
+
+        return resolve_literal_common(text, headers, binding_id, binding, snapshot)
     markers = [binding_id]
     archives = registry["archives"]
     used_archives: set[str] = set()

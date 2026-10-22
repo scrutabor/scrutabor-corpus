@@ -10,6 +10,7 @@ from checks.witness_archive import check as check_archives
 
 CORPUS = Path(__file__).resolve().parent.parent
 REGISTRY = "witnesses/raw/bindings.json"
+LATERAN = "witnesses/proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-postcommunio/do.txt"
 
 
 def copy_bound(tmp_path):
@@ -24,17 +25,21 @@ def copy_bound(tmp_path):
     return registry
 
 
-@pytest.mark.parametrize("selection", ["most-shared", "inline-rubric"])
+@pytest.mark.parametrize("selection", ["most-shared", "inline-rubric", "literal-common"])
 def test_a_corrupt_archive_is_reported_for_every_witness_it_binds(tmp_path, selection):
     registry = copy_bound(tmp_path)
     users: dict[str, set[str]] = {}
     inline_archives = set()
+    common_archives = set()
     for binding in registry["bindings"].values():
         if binding.get("contract") == "raw-reading-6":
             evidence = [binding["template"], binding["variant"]]
         elif binding.get("contract") == "raw-reading-7":
             evidence = [binding]
             inline_archives.add(binding["archive"])
+        elif binding.get("contract") == "raw-reading-8":
+            evidence = [binding["selection"], binding["body"], binding["conclusion"]]
+            common_archives.add(binding["body"]["archive"])
         else:
             evidence = binding["evidence"]
         for item in evidence:
@@ -43,9 +48,17 @@ def test_a_corrupt_archive_is_reported_for_every_witness_it_binds(tmp_path, sele
         (key,) = inline_archives
         witnesses = users[key]
         assert "witnesses/ordinarium.aufer-a-nobis/do.txt" in witnesses
+        assert len(witnesses) > 1
+    elif selection == "literal-common":
+        # The Common archive has one user; its feast and Mass archives are shared.
+        (key,) = common_archives
+        witnesses = users[key]
+        assert key == "common-c8" and witnesses == {LATERAN}
+        assert LATERAN in users["do-sancti-11-09"] and LATERAN in users["prayers"]
+        assert len(users["prayers"]) > 1
     else:
         key, witnesses = max(users.items(), key=lambda pair: (len(pair[1]), pair[0]))
-    assert len(witnesses) > 1
+        assert len(witnesses) > 1
     archive = tmp_path / registry["archives"][key]["path"]
     original = archive.read_bytes()
     try:

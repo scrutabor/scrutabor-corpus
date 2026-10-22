@@ -779,6 +779,34 @@ localization, editorial
   rejects it before range access. Exactly one derived digital source use and
   an explicit complete inventory are required even while pending. Contracts1–6,
   their payloads and provider meanings are unchanged; no approval is inferred.
+- An individual binding may opt into **`raw-reading-8`** for one closed literal
+  source-context profile, `roman1960-latin-missa-c8-postcommunio`, at pinned Latin
+  revision 44667ff518b8ff1439780470828b39714f5306a2. Registry version remains1 and
+  contracts1–7 keep their exact payloads. Its closed fields are witness, revision,
+  contract, profile, selection, body and conclusion; unknown profiles, fields and
+  options fail closed, and integers never include booleans. Each contribution names
+  its own registered archive and exact `{line, text}` records. The profile pins each
+  role's upstream path and complete archive SHA; the registry bytes are checked too,
+  and the three archives must be distinct. Selection is context only: it binds the
+  feast file's complete Rank2 and Rule5 lines declaring `ex C8` and proves that file
+  has no Postcommunio section. Body binds the unique Common C8 `[Postcommunio]`
+  section at640 through its literal `$Per Dominum` cue at642 and nothing after it,
+  never the nearby alternative sections. Conclusion binds the Mass Ordo
+  `[Per Dominum]` section at95, the cue's only destination, whose lines96 and97
+  carry the literal prefixes `r. ` and `R. `. The reading is the body line, then the
+  conclusion and Amen without those prefixes, normalizing whitespace only: no
+  accent, case, punctuation, Unicode or i/j change. The whole transcript must equal
+  it. Its exact path header names the three roles with their sections and physical
+  lines, the feast marked context only. The source subject adds the three archive
+  records, the complete profile and resolved_literal_composition. Like contracts6
+  and7 it returns no performer spans or fragments: attribution rejects it before
+  range access, `r.`/`R.` supply no actor or voice, and source-specific variant
+  alignment remains contract1-only. Pending bibliography identities require the
+  complete explicit inventory: the primary use binds the Common archive as a derived
+  digital collation aid, one rubric-control use binds the feast archive as selection
+  data, and one further derived digital collation aid binds the Mass Ordo archive.
+  No use may borrow another contribution's hash or the whole-reading hash. This
+  mechanism confers no source-review, linguistic, ritual, or release approval.
 - An explicit source_dependencies inventory may additionally opt into a
   nonempty sorted-unique `documents` list. Each declaration has exactly contract,
   use, digital_item, sha256, media_type, pdf_page, printed, region and

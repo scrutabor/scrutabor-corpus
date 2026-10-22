@@ -471,9 +471,14 @@ def _source_ranges(text_id: str) -> list[tuple[Path | RawFragment, int, int, boo
                 "raw-reading-5",
                 "raw-reading-6",
                 "raw-reading-7",
+                "raw-reading-8",
             }:
                 # Exact hash-heading text does not establish performer context.
                 # In particular lowercase v. is not a priest/deacon distinction.
+                if bound.source["contract"] == "raw-reading-8":
+                    raise BindingError(
+                        "literal source-context evidence supports textual identity only"
+                    )
                 if bound.source["contract"] == "raw-reading-7":
                     raise BindingError("inline-rubric evidence supports textual identity only")
                 if bound.source["contract"] == "raw-reading-6":
@@ -549,7 +554,13 @@ def _actor_sources(text_id: str) -> _ActorSources:
             continue
         if bound is not None:
             contract = bound.source["contract"]
-            if contract in {"raw-reading-4", "raw-reading-5", "raw-reading-6", "raw-reading-7"}:
+            if contract in {
+                "raw-reading-4",
+                "raw-reading-5",
+                "raw-reading-6",
+                "raw-reading-7",
+                "raw-reading-8",
+            }:
                 problems.append(("RAW_TEXT_ONLY", f"TEXT_ONLY_CONTRACT:{label}: {contract}"))
             elif contract == "raw-reading-1" and (
                 not bound.spans

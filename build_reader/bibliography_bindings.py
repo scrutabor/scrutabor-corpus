@@ -288,6 +288,31 @@ def _preface_variant_sources(reading, primary: dict, sources: dict) -> None:
         raise BindingError("raw-reading-6 source-use evidence differs from its contribution")
 
 
+def _literal_common_sources(reading, primary: dict, sources: dict) -> None:
+    """The Common body, feast selection and Mass conclusion each name their own archive."""
+    binding = reading.source["binding"]
+    extras = [value for key, value in sources.items() if key != primary["use"]["id"]]
+    if len(sources) != 3 or len(extras) != 2:
+        raise BindingError("raw-reading-8 requires exactly body, selection and conclusion uses")
+    roles = {source["use"]["role"]: source for source in extras}
+    if primary["use"]["role"] != "derived_digital_collation_aid" or set(roles) != {
+        "rubric_control",
+        "derived_digital_collation_aid",
+    }:
+        raise BindingError("raw-reading-8 source-use role differs from its contribution")
+    archives = reading.source["archives"]
+    contributions = (
+        (primary, "body"),
+        (roles["rubric_control"], "selection"),
+        (roles["derived_digital_collation_aid"], "conclusion"),
+    )
+    if any(
+        source["use"].get("evidence_sha256") != archives[binding[role]["archive"]]["sha256"]
+        for source, role in contributions
+    ):
+        raise BindingError("raw-reading-8 source-use evidence differs from its contribution")
+
+
 def _witness_subject(
     root: Path, witness: dict, doc: dict, snapshot: _SourceSnapshot, *, reviewable: bool
 ) -> dict:
@@ -340,7 +365,7 @@ def _witness_subject(
     if (
         not reviewable
         and "source_dependencies" not in witness
-        and contract not in {"raw-reading-6", "raw-reading-7"}
+        and contract not in {"raw-reading-6", "raw-reading-7", "raw-reading-8"}
     ):
         return deepcopy(subject)
     declaration = source_dependencies(witness)
@@ -394,6 +419,8 @@ def _witness_subject(
             or primary["use"]["role"] != "derived_digital_collation_aid"
         ):
             raise BindingError("raw-reading-7 requires one derived digital source use")
+        if reading.source["contract"] == "raw-reading-8":
+            _literal_common_sources(reading, primary, subject["source_uses"])
         # A generic evidence hash need not name the first archive. Existing
         # digital uses identify either a contributing archive's complete bytes
         # or the complete ordered reading with one terminal LF. Both subjects

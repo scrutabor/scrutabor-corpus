@@ -816,6 +816,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/missa-44667ff/Ordo/Ordo.txt",
       "sha256": "a7f63e8030325b809f74dd4587c649bf8eb45cdd150fc9a2817fe2a1ed6a42e3"
+    },
+    "common-c8": {
+      "upstream": "web/www/horas/Latin/Commune/C8.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C8.txt",
+      "sha256": "4259d9ddd8669a6a6dcb8de2ac7bfd918e3e39a4e8fe8a5bc04b28afdb97c5c8"
     }
   },
   "bindings": {
@@ -27021,6 +27027,64 @@
           "reason": "Literal altar-kiss rubric, excluded from the spoken prayer body."
         }
       ]
+    },
+    "do-proprium-dedicatio-archibasilicae-sanctissimi-salvatoris-postcommunio": {
+      "witness": "witnesses/proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-postcommunio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "contract": "raw-reading-8",
+      "profile": "roman1960-latin-missa-c8-postcommunio",
+      "selection": {
+        "archive": "do-sancti-11-09",
+        "rank_heading": {
+          "line": 1,
+          "text": "[Rank]"
+        },
+        "rank": {
+          "line": 2,
+          "text": "In Dedicatione Basilicæ Ss. Salvatoris;;Duplex 2nd class;;5.5;;ex C8"
+        },
+        "rule_heading": {
+          "line": 4,
+          "text": "[Rule]"
+        },
+        "rule": {
+          "line": 5,
+          "text": "ex C8;"
+        },
+        "absent_heading": "[Postcommunio]"
+      },
+      "body": {
+        "archive": "common-c8",
+        "heading": {
+          "line": 640,
+          "text": "[Postcommunio]"
+        },
+        "text": {
+          "line": 641,
+          "text": "Deus, qui de vivis et electis lapídibus ætérnum majestáti tuæ prǽparas habitáculum: auxiliáre pópulo tuo supplicánti; ut, quod Ecclésiæ tuæ corporálibus próficit spátiis, spirituálibus amplificétur augméntis."
+        },
+        "cue": {
+          "line": 642,
+          "text": "$Per Dominum"
+        }
+      },
+      "conclusion": {
+        "archive": "prayers",
+        "heading": {
+          "line": 95,
+          "text": "[Per Dominum]"
+        },
+        "formula": {
+          "line": 96,
+          "text": "r. Per Dóminum nostrum Jesum Christum, Fílium tuum: qui tecum vivit et regnat in unitáte Spíritus Sancti Deus, per ómnia sǽcula sæculórum.",
+          "prefix": "r. "
+        },
+        "amen": {
+          "line": 97,
+          "text": "R. Amen.",
+          "prefix": "R. "
+        }
+      }
     }
   }
 }
