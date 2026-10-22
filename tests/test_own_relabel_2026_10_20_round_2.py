@@ -19,6 +19,7 @@ from functools import cache
 from pathlib import Path
 
 import pytest
+from marian_chant_fixture import expected_marian_row
 from post_ascension_fixture import expected_row_successor
 from provenance_successor_fixture import FIXTURE as SUCCESSOR
 from test_pentecost_vigil_successors import expected_communion_row
@@ -53,6 +54,7 @@ for _site in LABELS:
 PRE_ASCENSION_LABELS = deepcopy(LABELS)
 LABELS = {site: expected_row_successor(row, site) for site, row in LABELS.items()}
 LABELS = {site: expected_communion_row(row, site) for site, row in LABELS.items()}
+LABELS = {site: expected_marian_row(row, site) for site, row in LABELS.items()}
 SITES = sorted(LABELS)
 SAMPLE = FIXTURE["wording_sample"]
 DOXOLOGY = FIXTURE["doxology_uses"]

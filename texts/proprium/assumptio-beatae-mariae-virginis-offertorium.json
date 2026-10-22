@@ -56,7 +56,7 @@
     "status": "working-edition",
     "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the approved 1962 Benziger printing.",
     "source": {
-      "method": "Transcribed from the directly viewed page image of the Benziger Brothers 1962 Editio iuxta typicam and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The selected Latin was checked directly against the Benziger Brothers 1962 Editio iuxta typicam, printed p. 641, leaf n722. The exact pinned digital Offertorium line is bound to its archived source and agrees substantively, with capitalization differences recorded in the apparatus. This states current conformity, not the original transcription workflow.",
       "witnesses": "witnesses/proprium.assumptio-beatae-mariae-virginis-offertorium/",
       "apparatus": "witnesses/proprium.assumptio-beatae-mariae-virginis-offertorium/apparatus.json"
     },
@@ -64,6 +64,11 @@
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w012": {
+        "languages": ["en", "pl"]
+      }
+    }
   }
 }
