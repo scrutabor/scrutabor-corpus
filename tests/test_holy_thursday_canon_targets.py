@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from cena_hanc_fixture import hanc_polish_errors
 
 from build_reader.layers import enrich_layer, expand_core
 from checks.interlinear import check, effective_gloss
@@ -109,22 +110,15 @@ def context_errors(slug, language, core, layer):
             dependent,
         ):
             errors.append("You acceptance/disposition/command share upstream that")
-        group = alignment(layer, "w052")
-        if not set(f"w{i:03}" for i in range(43, 55)) <= set(group["words"]):
-            errors.append("chosen caption model strands common governor or passive dependents")
-        target = group["gloss"]
         if language == "pl":
-            if not re.search(
-                r"(?:nakazał|polecił|rozkazał),? byśmy.*zostali (?:wyrwani|wybawieni)"
-                r".*i (?:zaliczeni|policzeni)",
-                target,
-            ):
-                errors.append("dependent governor and shared passive We")
-            if "trzody" not in target or "Twoich" not in target:
-                errors.append("Father elect flock membership")
+            errors.extend(hanc_polish_errors(core, layer))
             if not layer["segments"]["s06"]["translation"].startswith("I "):
                 errors.append("verse drops diesque coordination")
         else:
+            group = alignment(layer, "w052")
+            if not set(f"w{i:03}" for i in range(43, 55)) <= set(group["words"]):
+                errors.append("chosen caption model strands common governor or passive dependents")
+            target = group["gloss"]
             verbal = re.search(
                 r"(?:command|bid) that we be (?:delivered|rescued)"
                 r".*and (?:counted|numbered|reckoned)",
@@ -138,7 +132,7 @@ def context_errors(slug, language, core, layer):
         body = alignment(layer, "w030")["gloss"]
         if language == "en" and ("His Body and Blood" not in body or "celebrat" not in body):
             errors.append("His Body AND Blood mysteries commissioned for celebration")
-        if language == "pl" and ("Swojego Ciała i Krwi" not in body or "sprawowania" not in body):
+        if language == "pl" and ("swojego Ciała i Krwi" not in body or "sprawowania" not in body):
             errors.append("His Body AND Blood mysteries commissioned for celebration")
     if slug == "qui-pridie":
         if language == "en" and re.search(r"holy.*venerable His hands", line):
@@ -266,11 +260,19 @@ def test_wrong_eiusdem_referents_are_refused(language):
 
 def test_polish_imperative_under_abys_is_refused_in_actual_full_caption():
     core, layer = subject("hanc-igitur", "pl")
+    assert context_errors("hanc-igitur", "pl", core, layer) == []
     group = alignment(layer, "w052")
-    group["gloss"] = group["gloss"].replace("nakazał,", "racz nakazać,")
+    before = group["gloss"]
+    assert "nakazał" in before
+    group["gloss"] = before.replace("nakazał", "racz nakazać")
+    assert group["gloss"] != before
     assert check(core, layer) == []  # Structure alone cannot prove whole-clause grammar.
     assert "abyś" in captions(core, layer) and "racz" in captions(core, layer)
-    assert context_errors("hanc-igitur", "pl", core, layer)
+    assert "independent imperative stranded under upstream abyś" in context_errors(
+        "hanc-igitur", "pl", core, layer
+    )
+    group["gloss"] = before
+    assert context_errors("hanc-igitur", "pl", core, layer) == []
 
 
 def test_wrong_english_possessive_position_is_refused_in_actual_caption():

@@ -1174,12 +1174,18 @@ def test_anne_secret_nested_genitive_keeps_the_son_relation():
     assert "gloss" not in target["words"]["w014"]
 
 
-def test_pentecost_dixero_help_does_not_defend_a_retired_translation():
+def test_pentecost_dixero_separates_form_from_anterior_prose():
     text = "proprium/dominica-pentecostes-evangelium"
     assert word(text, "w076")["morph"]["tense"] == "futperf"
     target = layer("pl", text)
     assert target["words"]["w076"]["gloss"] == "powiem"
-    assert "co wam powiem" in target["segments"]["s01"]["translation"]
+    assert (
+        "przypomni wam wszystko, co wam powiedziałem." in target["segments"]["s01"]["translation"]
+    )
+    assert target["words"]["w076"]["explanation"] == (
+        "Jezus mówi o słowach, które do czasu przypomnienia ich przez Ducha Świętego "
+        "będą już wypowiedziane. Obejmuje to także nauczanie, które uczniowie już usłyszeli."
+    )
     assert "Przekład „powiedziałem”" not in target["words"]["w076"]["explanation"]
 
 

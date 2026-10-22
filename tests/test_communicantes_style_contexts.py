@@ -71,7 +71,7 @@ def context_errors(slug, language, core, layer):
             errors.append("Christ-referent caption requires divine capitalization")
         if ordinary:
             about = layer["about"]
-            if "prosi Boga, aby" not in about or "otaczał wiernych Swoją opieką" not in about:
+            if "prosi Boga, aby" not in about or "otaczał wiernych swoją opieką" not in about:
                 errors.append("God remains the agent of His protection in the introduction")
             if layer["segments"][conclusion]["translation"] != (
                 "Przez tegoż Chrystusa, Pana naszego. Amen."
@@ -103,7 +103,7 @@ def test_actual_known_referents_and_retained_counterexamples(slug, language):
 
 
 BAD_CASES = [
-    ("communicantes", "pl", ["about"], "Swoją", "swoją"),
+    ("communicantes", "pl", ["about"], "swoją", "Swoją"),
     ("communicantes", "pl", ["words", "w061", "gloss"], "świętych", "Świętych"),
     ("communicantes", "en", ["words", "w061", "gloss"], "saints", "Saints"),
     ("communicantes", "pl", ["words", "w075", "gloss"], "Tegoż", "tegoż"),

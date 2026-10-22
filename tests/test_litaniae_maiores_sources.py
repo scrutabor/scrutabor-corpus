@@ -215,7 +215,7 @@ def test_the_witnesses_are_declared_same_edition_composites(text):
 def test_the_graph_records_stay_bounded_and_pending(text):
     doc = core(text)
     for edition, role in (
-        ("mr1962", "official_text"),
+        ("mr1962", "direct_approved_print"),
         ("vatican1962", "corroborating_latin_witness"),
     ):
         page = record("uses", f"use.{text}.{edition}")

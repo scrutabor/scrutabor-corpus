@@ -87,6 +87,16 @@ EXPECTED_NOTES = {
         "of a request. With the indicative, it commonly means “as.”"
     ),
     "venter": "In the received English of the Ave María the word is “womb”: “fruit of thy womb.”",
+    "quis": (
+        "After si, nisi, ne and num, quis usually has the indefinite sense "
+        "“someone” or “something.”"
+    ),
+    "sabaoth": (
+        "Sabaoth is an indeclinable transcription of a plural Hebrew noun meaning “hosts.” "
+        "In Deus Sabaoth it means “God of Hosts.”"
+    ),
+    "socius": "Used as a noun, sócius means “companion.”",
+    "una": "An adverb formed from the ablative of unus. Una cum means “together with.”",
 }
 
 
@@ -132,3 +142,58 @@ def test_polish_note_keeps_polish_sentence_punctuation():
         )
         == []
     )
+
+
+@pytest.mark.parametrize(
+    "note",
+    [
+        (
+            "After si, nisi, ne and num, quis usually has the indefinite sense ‘someone’ "
+            "or ‘something’."
+        ),
+        (
+            "Sabaoth is an indeclinable transcription of a plural Hebrew noun meaning "
+            "‘hosts’. In Deus Sabaoth it means ‘God of Hosts’."
+        ),
+        "Used as a noun, sócius means ‘companion’.",
+        "An adverb formed from the ablative of unus. Una cum means ‘together with’.",
+        "It means ‘good’, and is a name.",
+        "An incomplete “outer with ‘inner’ quotations.",
+    ],
+)
+def test_english_note_rejects_primary_single_quotations(note):
+    errors = lint_senses("en", {"name": {"senses": ["name"], "note": note}}, {"name": {}})
+    assert any("primary quotations use English double quotation marks" in error for error in errors)
+
+
+@pytest.mark.parametrize(
+    "note",
+    [
+        "It describes “the ‘good’ life.”",
+        "The quoted phrase is “someone’s ‘own’ name.”",
+        "The elision ’tis does not open a quotation.",
+    ],
+)
+def test_nested_single_quotations_and_elision_are_not_primary_quotations(note):
+    assert lint_senses("en", {"name": {"senses": ["name"], "note": note}}, {"name": {}}) == []
+
+
+@pytest.mark.parametrize(
+    "lemma",
+    [
+        "Abel",
+        "Melchisedech",
+        "Michael",
+        "advocata",
+        "agnus",
+        "dextera",
+        "iustificatio",
+        "quotidianus",
+        "spero",
+    ],
+)
+def test_existing_lexical_apostrophes_are_not_single_quotations(lemma):
+    entries = json.loads((ROOT / "languages/en/lexicon.json").read_text())["entries"]
+    note = entries[lemma]["note"]
+    assert "’" in note and "‘" not in note
+    assert lint_senses("en", {"name": {"senses": ["name"], "note": note}}, {"name": {}}) == []

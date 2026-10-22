@@ -6,14 +6,19 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from pentecost_successor_fixture import expected_pentecost_row
 from post_ascension_fixture import expected_row_successor
 from provenance_successor_fixture import (
     FIXTURE,
     INTROITS,
+    REFLEXIVE,
     assert_formula,
     assert_protection_scope,
+    current_expected_reflexive_row,
     metadata_successors,
     restore_preface_prose,
+    restore_reflexive_prose,
+    restore_reflexive_rows,
 )
 
 from build_reader import bibliography, store
@@ -212,7 +217,9 @@ def test_the_provenance_validator_rejects_a_cleared_flag(site, baseline, monkeyp
 
 def test_all_173_successor_rows_match_exactly(baseline):
     for site, row in FIXTURE["after_rows"].items():
-        assert baseline["rows"][site] == expected_row_successor(row)
+        assert baseline["rows"][site] == expected_pentecost_row(
+            expected_row_successor(current_expected_reflexive_row(row))
+        )
     fixture_before = deepcopy(FIXTURE)
     before = deepcopy(list(FIXTURE["before_rows"].values()))
     assert {row["site"]: row for row in metadata_successors(before)} == FIXTURE["after_rows"]
@@ -428,3 +435,77 @@ def test_trinity_ending_and_embedded_full_prefaces_are_outside_the_shared_route(
         "praefatio-de-spiritu-sancto" in site or "praefatio-ascensionis" in site
         for site in PREFACES
     )
+
+
+def test_reflexive_current_expectation_and_inverse_preserve_the_173_historical_rows():
+    site = "proprium.dominica-resurrectionis-introitus.s01.pl"
+    assert set(REFLEXIVE["rows"]) == set(REFLEXIVE["prose"]) == {site}
+    historical = deepcopy(list(FIXTURE["after_rows"].values()))
+    current = [current_expected_reflexive_row(row) for row in historical]
+    assert len(historical) == len(current) == 173
+    assert [row["site"] for row in current] == [row["site"] for row in historical]
+    assert [a["site"] for a, b in zip(current, historical, strict=True) if a != b] == [site]
+    assert restore_reflexive_rows(current) == historical
+    assert historical == list(FIXTURE["after_rows"].values())
+    change = REFLEXIVE["rows"][site]
+    assert change["before"] == FIXTURE["after_rows"][site]
+    assert change["before"]["target_sha256"] != change["after"]["target_sha256"]
+    assert {k: v for k, v in change["before"].items() if k != "target_sha256"} == {
+        k: v for k, v in change["after"].items() if k != "target_sha256"
+    }
+    assert change["after"]["origin"] == "working-unsettled"
+    assert change["after"]["review"] == "working"
+    assert change["after"]["familiar_core"] is True
+    with pytest.raises(AssertionError, match="historical reflexive expected row"):
+        current_expected_reflexive_row(change["after"])
+
+
+@pytest.mark.parametrize("field", ["source_sha256", "target_sha256", "review", "origin"])
+def test_reflexive_row_inverse_refuses_a_damaged_current_preimage(field):
+    change = next(iter(REFLEXIVE["rows"].values()))
+    wrong = deepcopy(change["after"])
+    wrong[field] += "-changed"
+    with pytest.raises(AssertionError, match="current reflexive row inverse"):
+        restore_reflexive_rows([wrong])
+    historical = deepcopy(change["before"])
+    historical[field] += "-changed"
+    with pytest.raises(AssertionError, match="historical reflexive expected row"):
+        current_expected_reflexive_row(historical)
+
+
+def test_reflexive_prose_inverse_preserves_the_formula_and_unrelated_fields():
+    site = next(iter(REFLEXIVE["prose"]))
+    text, segment, language = site.rsplit(".", 2)
+    current = store.raw_layer(ROOT, language, text)
+    snapshot = deepcopy(current)
+    wording, rows = REFLEXIVE["prose"][site], REFLEXIVE["rows"][site]
+    assert current["segments"][segment]["translation"] == wording["after"]
+    restored = restore_reflexive_prose(current, text)
+    expected = deepcopy(current)
+    expected["segments"][segment]["translation"] = wording["before"]
+    assert restored == expected
+    assert current == snapshot
+    for state in ("before", "after"):
+        assert_formula(wording[state])
+        assert provenance.canonical_hash(wording[state]) == rows[state]["target_sha256"]
+    outside = deepcopy(current)
+    outside["about"] += " Additional context."
+    assert restore_reflexive_prose(outside, text)["about"] == outside["about"]
+    assert restore_reflexive_prose(current, "proprium.other-text") == current
+    unrelated_site = next(s for s in INTROITS if s in FIXTURE["after_rows"] and s != site)
+    unrelated = deepcopy(FIXTURE["after_rows"][unrelated_site])
+    assert current_expected_reflexive_row(unrelated) == unrelated
+    assert restore_reflexive_rows([unrelated]) == [unrelated]
+
+
+@pytest.mark.parametrize("damage", ["old-case", "unrelated-wording"])
+def test_reflexive_prose_inverse_refuses_wrong_case_and_unrelated_changes(damage):
+    site = next(iter(REFLEXIVE["prose"]))
+    text, segment, language = site.rsplit(".", 2)
+    current = store.raw_layer(ROOT, language, text)
+    wording = REFLEXIVE["prose"][site]
+    current["segments"][segment]["translation"] = (
+        wording["before"] if damage == "old-case" else wording["after"] + " Changed."
+    )
+    with pytest.raises(AssertionError, match="current reflexive prose inverse"):
+        restore_reflexive_prose(current, text)

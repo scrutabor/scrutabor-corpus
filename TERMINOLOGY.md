@@ -14,7 +14,7 @@ a term already listed.
 |---|---|---|
 | cases with PL equivalents | mianownik, dopełniacz, celownik, biernik, wołacz, miejscownik | — |
 | ablative (no PL case) | **ablativus** (odm. z „v”: ablativu, ablativie, ablativem, ablativów) | ablatiwus, ablatiw, ablatyw |
-| deponent | deponens (opis: forma bierna, znaczenie czynne) | — |
+| deponent | deponens | — |
 | perfect | perfectum | czas przeszły dokonany (samodzielnie) |
 | declension/conjugation | deklinacja I–V, koniugacja I–IV (rzymskie) | 1. deklinacja |
 | apposition | apozycja (dopowiedzenie) — parenthetical at first mention per note or page; bare „apozycja” may follow anaphorically | przydawka rzeczowna |
@@ -31,7 +31,7 @@ a term already listed.
 |---|---|---|
 | cases | nominative, genitive, dative, accusative, ablative, vocative, locative | — |
 | declension/conjugation | 1st–5th declension, 1st–4th conjugation | Roman numerals |
-| deponent | deponent (passive form, active meaning) | — |
+| deponent | deponent | — |
 | ablative of means / of cause | ablative of means, ablative of cause | — |
 | participle | participle; qualified: future participle, deponent participle | verbal adjective (as the term) |
 | quotes in prose | “…” (English quotes) | „…” |

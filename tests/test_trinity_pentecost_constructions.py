@@ -76,7 +76,7 @@ def group(tid, language, first, last):
         (SEQUENCE, 39, 40, 40, "the inmost depths of the heart"),
         (SEQUENCE, 41, 42, 42, "of Your faithful"),
         (SEQUENCE, 80, 82, 82, "trusting in You"),
-        (SEQUENCE, 86, 87, 87, "the merit of virtue"),
+        (SEQUENCE, 86, 87, 87, "the reward of virtue"),
         (SEQUENCE, 89, 90, 90, "a saving end"),
     ],
 )

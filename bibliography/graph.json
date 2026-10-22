@@ -34298,18 +34298,19 @@
         "text": "proprium.dominica-pentecostes-alleluia"
       },
       "locator": {
-        "section": "web/www/missa/Latin/Tempora/Pasc7-0.txt (section [Graduale]); resolved spans: web/www/missa/Latin/Tempora/Pasc7-0.txt (lines 31-34)"
+        "section": "web/www/missa/Latin/Tempora/Pasc7-0.txt [Graduale] (lines 31-32); web/www/missa/Latin/Tempora/Pasc7-0.txt [Graduale] (line 33, chars 0:73); web/www/missa/Latin/Tempora/Pasc7-0.txt [Graduale] (lines 34-34)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The pinned Latin Mass data supply the two sacred Alleluia verses as a derived digital comparison reading, with line33 limited to chars0:73. The excluded literal inline Hic genuflectitur rubric remains source evidence and is represented separately in neutral s02. This is not an independent printed witness.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
-      "evidence_sha256": "b82047ee1044c54a8b127e887ba3f4ea823e73921b38f6e55c4c9699533ea304"
+      "evidence_sha256": "b82047ee1044c54a8b127e887ba3f4ea823e73921b38f6e55c4c9699533ea304",
+      "decision_reason": "The earlier unbound whole-section assertion is replaced by an explicit raw-reading-2 prefix fragment and complete archive digest. The old dated witness correction is retained as history; source reviews remain pending."
     },
     {
       "id": "use.proprium.dominica-pentecostes-alleluia.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-pentecostes-alleluia"
@@ -34325,6 +34326,94 @@
       "evidence_sha256": "b87eae39c61069223ba208a01c5dbc9c682f93dbed66bd44ea054144d85fdd35"
     },
     {
+      "id": "use.proprium.dominica-pentecostes-collecta.conclusion-middle.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-pentecostes-collecta",
+        "word": "w026"
+      },
+      "locator": {
+        "printed": "p. 123",
+        "scan": "leaf n202 / PDF p. 203",
+        "section": "Postcommunion above Feria Tertia; accented relative conclusion through Deus",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n202/mode/1up"
+      },
+      "claim": "The accented formula middle supplies w026–w035 and w039–w041. It has no comma after Christum, prints tuum: Qui and Sancti, Deus. The selected eiusdem is supplied by the Pentecost proper cue and RG 115 e, not by an unprinted eiusdem here. Printed Deus. is reintegrated as Deus, before the terminal duration.",
+      "verified_on": "2026-10-21",
+      "evidence_sha256": "8e5311d636452dcfb0d5651b426702571114570969efe46a42594bdd05d01716",
+      "decision": "RETAIN",
+      "decision_reason": "The specified passages support this bounded source use. Witness and collation reviews remain pending."
+    },
+    {
+      "id": "use.proprium.dominica-pentecostes-collecta.conclusion-rg115a.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-pentecostes-collecta",
+        "word": "w024"
+      },
+      "locator": {
+        "printed": "p. xvii",
+        "scan": "leaf n22 / PDF p. 23",
+        "section": "Rubricae generales 115 a; Father-addressed full conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n22/mode/1up"
+      },
+      "claim": "RG 115 a supplies the Father-addressed conclusion rule and Amen. Its unaccented rubric typography is not a direct witness to every selected accent or house punctuation seam.",
+      "verified_on": "2026-10-21",
+      "evidence_sha256": "8e5311d636452dcfb0d5651b426702571114570969efe46a42594bdd05d01716",
+      "decision": "RETAIN",
+      "decision_reason": "The specified passages support this bounded source use. Witness and collation reviews remain pending."
+    },
+    {
+      "id": "use.proprium.dominica-pentecostes-collecta.conclusion-rg115e.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-pentecostes-collecta",
+        "word": "w038"
+      },
+      "locator": {
+        "printed": "p. xviii",
+        "scan": "leaf n23 / PDF p. 24",
+        "section": "Rubricae generales 115 e; same Spirit in the conclusion",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n23/mode/1up"
+      },
+      "claim": "The Collect names the Holy Spirit in its body. RG 115 e requires in unitate eiusdem Spiritus Sancti. The proper cue on p350 positively supplies accented eiusdem; this rule establishes applicability, not that accent.",
+      "verified_on": "2026-10-21",
+      "evidence_sha256": "8e5311d636452dcfb0d5651b426702571114570969efe46a42594bdd05d01716",
+      "decision": "RETAIN",
+      "decision_reason": "The specified passages support this bounded source use. Witness and collation reviews remain pending."
+    },
+    {
+      "id": "use.proprium.dominica-pentecostes-collecta.conclusion-terminal.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-pentecostes-collecta",
+        "word": "w042"
+      },
+      "locator": {
+        "printed": "p. 226",
+        "scan": "leaf n305 / PDF p. 306",
+        "section": "Top chant line: Per omnia saecula saeculorum and response Amen",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n305/mode/1up"
+      },
+      "claim": "The printed terminal formula and response supply w042–w046. Chant syllable divisions are joined, the response marker is excluded, and uppercase Per becomes selected per. This textual use does not by itself determine the modeled ritual voice.",
+      "verified_on": "2026-10-21",
+      "evidence_sha256": "8e5311d636452dcfb0d5651b426702571114570969efe46a42594bdd05d01716",
+      "decision": "RETAIN",
+      "decision_reason": "The specified passages support this bounded source use. Witness and collation reviews remain pending."
+    },
+    {
       "id": "use.proprium.dominica-pentecostes-collecta.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.github",
@@ -34336,7 +34425,7 @@
       "locator": {
         "section": "web/www/missa/Latin/Tempora/Pasc7-0.txt [Oratio] (lines 22-23); web/www/missa/Latin/Ordo/Prayers.txt [Per Dominum eiusdem] (lines 100-101)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The pinned Latin Mass data supply a derived digital comparison reading for this component. They are not an independent printed witness of the controlling 1962 edition. Exact source readings and declared framing remain separately attributable.",
       "verified_on": "2026-10-07",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "b82047ee1044c54a8b127e887ba3f4ea823e73921b38f6e55c4c9699533ea304",
@@ -34346,7 +34435,7 @@
       "id": "use.proprium.dominica-pentecostes-collecta.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-pentecostes-collecta"
@@ -34354,12 +34443,14 @@
       "locator": {
         "printed": "p. 350",
         "scan": "leaf n431 / PDF p. 432",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n431/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n431/mode/1up",
+        "section": "Proper body w001–w023, abbreviated Per Dominum cue w024–w025 and in unitate eiusdem cue w036–w038; the missing formula middle and terminal response are separately expanded."
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The identified proper page prints the bounded body and abbreviated cues described in the locator, not the whole contiguous expanded selected text. Same-edition formula/rule dependencies and house reintegration are separately declared in the witness record.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
-      "evidence_sha256": "79f40072e094cc1803c33369eccdbc7b3de241a2b5caef796a8cf25119066e5d"
+      "evidence_sha256": "79f40072e094cc1803c33369eccdbc7b3de241a2b5caef796a8cf25119066e5d",
+      "decision_reason": "The whole-proper-page claim is bounded to its actually printed body and cues. The historical verification date is preserved; witness and collation reviews remain pending."
     },
     {
       "id": "use.proprium.dominica-pentecostes-collecta.oration-boundaries.mr1962",
@@ -34393,7 +34484,7 @@
       "locator": {
         "section": "web/www/missa/Latin/Tempora/Pasc7-0.txt [Communio] (lines 92-93)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The pinned Latin Mass data supply a derived digital comparison reading for this component. They are not an independent printed witness of the controlling 1962 edition. Exact source readings and declared framing remain separately attributable.",
       "verified_on": "2026-10-07",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "b82047ee1044c54a8b127e887ba3f4ea823e73921b38f6e55c4c9699533ea304",
@@ -34403,7 +34494,7 @@
       "id": "use.proprium.dominica-pentecostes-communio.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-pentecostes-communio"
@@ -34430,7 +34521,7 @@
       "locator": {
         "section": "web/www/missa/Latin/Tempora/Pasc7-0.txt [Lectio] (lines 27-28)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The pinned Latin Mass data supply a derived digital comparison reading for this component. They are not an independent printed witness of the controlling 1962 edition. Exact source readings and declared framing remain separately attributable.",
       "verified_on": "2026-10-07",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "b82047ee1044c54a8b127e887ba3f4ea823e73921b38f6e55c4c9699533ea304",
@@ -34440,7 +34531,7 @@
       "id": "use.proprium.dominica-pentecostes-epistola.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-pentecostes-epistola"
@@ -34478,7 +34569,7 @@
       "id": "use.proprium.dominica-pentecostes-evangelium.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-pentecostes-evangelium"
@@ -34526,17 +34617,39 @@
       "locator": {
         "section": "web/www/missa/Latin/Tempora/Pasc7-0.txt [Introitus] (lines 14-19); web/www/missa/Latin/Ordo/Prayers.txt [Gloria] (lines 13-14)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The pinned Latin Mass data supply a derived digital comparison reading for this component. They are not an independent printed witness of the controlling 1962 edition. Exact source readings and declared framing remain separately attributable.",
       "verified_on": "2026-10-07",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "b82047ee1044c54a8b127e887ba3f4ea823e73921b38f6e55c4c9699533ea304",
       "decision_reason": "Corrects the use recorded 2026-09-12: the witness already transcribed the pinned reading exactly; it now names every resolved section and reference and is bound to the archived files; the evidence checksum identifies the complete web/www/missa/Latin/Tempora/Pasc7-0.txt file, not the whole composite reading. The complete derivation remains separately bound by its explicit source inventory."
     },
     {
+      "id": "use.proprium.dominica-pentecostes-introitus.doxology.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "direct_approved_print",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-pentecostes-introitus",
+        "word": "w032"
+      },
+      "locator": {
+        "printed": "p. 1",
+        "scan": "leaf n80 / PDF p. 81",
+        "section": "First Sunday of Advent Introit; complete Gloria Patri through Amen",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n80/mode/1up"
+      },
+      "claim": "The complete same-edition doxology supplies w032–w051 for the Pentecost Gloria Patri cue. This Introit occurrence prints semper, matching the selected comma. Its unrelated antiphon and speaker framing are not imported.",
+      "verified_on": "2026-10-21",
+      "evidence_sha256": "8e5311d636452dcfb0d5651b426702571114570969efe46a42594bdd05d01716",
+      "decision": "RETAIN",
+      "decision_reason": "The specified passages support this bounded source use. Witness and collation reviews remain pending."
+    },
+    {
       "id": "use.proprium.dominica-pentecostes-introitus.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-pentecostes-introitus"
@@ -34544,12 +34657,36 @@
       "locator": {
         "printed": "p. 350",
         "scan": "leaf n431 / PDF p. 432",
-        "page_url": "https://archive.org/details/missale-romanum-1962/page/n431/mode/1up"
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n431/mode/1up",
+        "section": "Proper antiphon w001–w017 and Psalm w018–w031, followed by abbreviated Gloria Patri and Spiritus reprise cues; complete doxology w032–w051 and antiphon w052–w068 are separately expanded."
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The identified proper page prints the bounded body and abbreviated cues described in the locator, not the whole contiguous expanded selected text. Same-edition formula/rule dependencies and house reintegration are separately declared in the witness record.",
       "verified_on": "2026-09-12",
       "decision": "RETAIN",
-      "evidence_sha256": "79f40072e094cc1803c33369eccdbc7b3de241a2b5caef796a8cf25119066e5d"
+      "evidence_sha256": "79f40072e094cc1803c33369eccdbc7b3de241a2b5caef796a8cf25119066e5d",
+      "decision_reason": "The whole-proper-page claim is bounded to its actually printed body and cues. The historical verification date is preserved; witness and collation reviews remain pending."
+    },
+    {
+      "id": "use.proprium.dominica-pentecostes-introitus.reprise-rg427.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_liturgical_context",
+      "address": {
+        "kind": "word",
+        "text": "proprium.dominica-pentecostes-introitus",
+        "word": "w052"
+      },
+      "locator": {
+        "printed": "p. xxix",
+        "scan": "leaf n34 / PDF p. 35",
+        "section": "Rubricae generales 427–429; complete Introit reprise",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "RG 427 prescribes the complete w001–w017 antiphon repeated as w052–w068 after the doxology. The abbreviated Spiritus cue on p350 identifies this reprise, not another complete printing of it. RG 428 omission exceptions do not apply here; RG 429 does not add Alleluias already printed.",
+      "verified_on": "2026-10-21",
+      "evidence_sha256": "8e5311d636452dcfb0d5651b426702571114570969efe46a42594bdd05d01716",
+      "decision": "RETAIN",
+      "decision_reason": "The specified passages support this bounded source use. Witness and collation reviews remain pending."
     },
     {
       "id": "use.proprium.dominica-pentecostes-offertorium.do44667ff",
@@ -34563,7 +34700,7 @@
       "locator": {
         "section": "web/www/missa/Latin/Tempora/Pasc7-0.txt [Offertorium] (lines 84-85)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The pinned Latin Mass data supply a derived digital comparison reading for this component. They are not an independent printed witness of the controlling 1962 edition. Exact source readings and declared framing remain separately attributable.",
       "verified_on": "2026-10-07",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "b82047ee1044c54a8b127e887ba3f4ea823e73921b38f6e55c4c9699533ea304",
@@ -34573,7 +34710,7 @@
       "id": "use.proprium.dominica-pentecostes-offertorium.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-pentecostes-offertorium"
@@ -34600,7 +34737,7 @@
       "locator": {
         "section": "web/www/missa/Latin/Tempora/Pasc7-0.txt [Sequentia] (lines 37-76)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The pinned Latin Mass data supply a derived digital comparison reading for this component. They are not an independent printed witness of the controlling 1962 edition. Exact source readings and declared framing remain separately attributable.",
       "verified_on": "2026-10-07",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "b82047ee1044c54a8b127e887ba3f4ea823e73921b38f6e55c4c9699533ea304",
@@ -34610,7 +34747,7 @@
       "id": "use.proprium.dominica-pentecostes-sequentia.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.dominica-pentecostes-sequentia"
@@ -48895,7 +49032,7 @@
       "id": "use.proprium.litaniae-maiores-collecta.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.litaniae-maiores-collecta"
@@ -48994,7 +49131,7 @@
       "id": "use.proprium.litaniae-maiores-postcommunio.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.litaniae-maiores-postcommunio"
@@ -68703,7 +68840,7 @@
       "locator": {
         "section": "web/www/missa/Latin/Tempora/Pasc6-6r.txt [Postcommunio] (lines 57-58); web/www/missa/Latin/Ordo/Prayers.txt [Per Dominum eiusdem] (lines 100-101)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The pinned Latin Mass data supply a derived digital comparison reading for this component. They are not an independent printed witness of the controlling 1962 edition. Exact source readings and declared framing remain separately attributable.",
       "verified_on": "2026-10-07",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "8d1675512b6403ee5dcd795d3c4deed3a9a3a29fffbe085189b1f4a7870a77f9",
@@ -68713,7 +68850,7 @@
       "id": "use.proprium.vigilia-pentecostes-postcommunio.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.vigilia-pentecostes-postcommunio"
@@ -68850,7 +68987,7 @@
       "locator": {
         "section": "web/www/missa/Latin/Tempora/Pasc6-6r.txt [Secreta] (lines 49-50); web/www/missa/Latin/Ordo/Prayers.txt [Per Dominum eiusdem] (lines 100-101)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+      "claim": "The pinned Latin Mass data supply a derived digital comparison reading for this component. They are not an independent printed witness of the controlling 1962 edition. Exact source readings and declared framing remain separately attributable.",
       "verified_on": "2026-10-07",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "8d1675512b6403ee5dcd795d3c4deed3a9a3a29fffbe085189b1f4a7870a77f9",
@@ -68860,7 +68997,7 @@
       "id": "use.proprium.vigilia-pentecostes-secreta.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "proprium.vigilia-pentecostes-secreta"
@@ -84124,12 +84261,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "bb0fe986e99997d44855d9766b72071e2ae9519409cba0463334f4c4258913cc",
+      "transcription_sha256": "34d044ddee58d0cc1979c75c096eb6fcd1dc9444883882296123fe6475ffebc5",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-dominica-pentecostes-alleluia"
       }
     },
     {
@@ -84142,7 +84283,7 @@
       },
       "transcription_sha256": "8601503e38296145672f546e53974af0e83413a676c736527724070d92a1c665",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The identified approved Benziger printing supplies this page-image witness. It is not a separate typical impression; this record does not establish the original transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -84176,12 +84317,22 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "cf2addab38f825b1170953b8ce5fb5bccbaa77a5af91dc9e0de416ff2104736c",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "b80b07b19d4e5cfff7f59021d1a3b567880bf3e5a23acdf3cf9448a65e0c2717",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "One approved printed edition with explicitly declared same-edition formula expansion and house reintegration, not another independent full printing of the proper or evidence of original transcription genesis.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-pentecostes-collecta.conclusion-middle.mr1962",
+          "use.proprium.dominica-pentecostes-collecta.conclusion-rg115a.mr1962",
+          "use.proprium.dominica-pentecostes-collecta.conclusion-rg115e.mr1962",
+          "use.proprium.dominica-pentecostes-collecta.conclusion-terminal.mr1962",
+          "use.proprium.dominica-pentecostes-collecta.oration-boundaries.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -84214,7 +84365,7 @@
       },
       "transcription_sha256": "520d8092e54769d63f7d1699a4d7116dfb4c79bd43c0f20bb45addecdf381ec8",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The identified approved Benziger printing supplies this page-image witness. It is not a separate typical impression; this record does not establish the original transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -84250,7 +84401,7 @@
       },
       "transcription_sha256": "1992b085990ba9d0b28fdbb0fc63808a34f497fca17d8209cc802a6843c72d56",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The identified approved Benziger printing supplies this page-image witness. It is not a separate typical impression; this record does not establish the original transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -84320,12 +84471,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "2cd719c48dbfb01a9eb6da348c0f3be984d15829b7205271bdd58b8591110787",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "5f06945881e2c8c10714d76e203bfa808bb016146a79dd69ace4ae3cd5299c09",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "One approved printed edition with explicitly declared same-edition formula expansion and house reintegration, not another independent full printing of the proper or evidence of original transcription genesis.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.dominica-pentecostes-introitus.doxology.mr1962",
+          "use.proprium.dominica-pentecostes-introitus.reprise-rg427.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -84358,7 +84516,7 @@
       },
       "transcription_sha256": "440f7fd4fc5d1c95d869ab34675d02f2b2f15cd032b71b04e20ed56987d5e01c",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The identified approved Benziger printing supplies this page-image witness. It is not a separate typical impression; this record does not establish the original transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -84394,7 +84552,7 @@
       },
       "transcription_sha256": "8f920c5787eba06688cfec15a3a3bb59bc16e3be70971fe5a59fd2e6dee637d3",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The identified approved Benziger printing supplies this page-image witness. It is not a separate typical impression; this record does not establish the original transcription workflow.",
       "transcription": "mr",
       "review": {
         "status": "pending"
@@ -115451,7 +115609,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "eae58b2d0666b0c275ba5ed52cfd4957ffe3b31b3df2320277c85d3449dc1d3d",
+      "apparatus_sha256": "dfb080a9a520a706a50c6fd770551abe03f05ecedc646e4bd87cbe7141287707",
       "review": {
         "status": "pending"
       }
@@ -115473,7 +115631,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "81f938eceb3e14332a685d1ef5255687bef2dbe0d5636028b2be9043fddadfe9",
+      "apparatus_sha256": "bd4802e5ff5713276474ed6f66e244d7087830419fdfbbe6513af889c5a964b5",
       "review": {
         "status": "pending"
       }
@@ -115557,7 +115715,7 @@
           "orthography"
         ]
       },
-      "apparatus_sha256": "954aba7e9760e69eb394f08a633687f6f3f7ba741e4a0e4215a68a306505f907",
+      "apparatus_sha256": "d331c0c7e8dad03649c1b407262f59ec517974d1106193d4de1de8bce2bebe14",
       "review": {
         "status": "pending"
       }
@@ -121362,7 +121520,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "5db673c30cb048482ea9772d9a63b2e27a3dad7762703c8de43838729202f60a",
+      "apparatus_sha256": "ca0d9dca2b06fa37bfb1f795653172889039d3e8979682d6fe9c9536a07d51c7",
       "review": {
         "status": "pending"
       }
@@ -121384,7 +121542,7 @@
           "punctuation"
         ]
       },
-      "apparatus_sha256": "fa83a8bc99d5c82c2dec573c08ede8f2df902547f45912d5f012deecc8164942",
+      "apparatus_sha256": "530dcacb814a05cff929e2f34e8b3eab295e158438b829068eebfb3fffe73364",
       "review": {
         "status": "pending"
       }

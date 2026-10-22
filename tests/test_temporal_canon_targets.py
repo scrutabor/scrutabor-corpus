@@ -125,7 +125,7 @@ def context_errors(slug, language, core, layer):
                 errors.append("two coherent minimum English manifestation spans")
         if "ascensione" in slug:
             pattern = (
-                r"Twój Jednorodzony Syn.*umieścił.*naszą słabą naturę zjednoczoną z Sobą"
+                r"Twój Jednorodzony Syn.*umieścił.*naszą słabą naturę zjednoczoną z sobą"
                 if language == "pl"
                 else (
                     r"Your Only-begotten Son.*placed our frail human nature, united to Himself, "

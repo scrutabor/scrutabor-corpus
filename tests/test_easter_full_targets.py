@@ -80,9 +80,9 @@ def test_english_preface_reuses_its_opening_caption():
     assert groups[0] == groups[1]
 
 
-def test_collect_help_caption_capitalizes_the_divine_possessive():
+def test_collect_help_caption_keeps_the_reflexive_lowercase():
     layer = document(PREFIX + "collecta", "pl")
-    assert layer["words"]["w020"]["gloss"] == "Swą pomocą"
+    assert layer["words"]["w020"]["gloss"] == "swą pomocą"
 
 
 def assert_binding(record, segment, translation):
@@ -122,3 +122,9 @@ def test_paschal_collects_reuse_the_same_conclusion(language, incipit, divinity)
     conclusion = night[night.index(incipit) :]
     assert day.endswith(conclusion)
     assert divinity in conclusion
+
+
+@pytest.mark.parametrize("part", ["graduale", "introitus"])
+def test_advent_reflexive_at_a_target_sentence_start_retains_its_capital(part):
+    layer = document("proprium.dominica-i-adventus-" + part, "pl")
+    assert layer["segments"]["s02"]["translation"].startswith("Swoje drogi, Panie,")

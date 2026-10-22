@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from cena_secret_fixture import assert_secret_scope
 
 from build_reader import store
 from build_reader.bibliography_bindings import BindingError as GraphBindingError
@@ -48,20 +49,16 @@ EN = [
     ("epistola", 6, 11, 8, "this is no longer eating the Lord’s supper"),
     ("epistola", 14, 18, 16, "begins to eat his own supper first"),
     ("evangelium", 219, 225, 220, "I, the Lord and Master, have washed your feet"),
-    (
-        "secreta",
-        1,
-        13,
-        12,
-        "We pray, Lord, holy Father, almighty eternal God, "
-        "that He Himself may make our sacrifice acceptable to You",
-    ),
+    ("secreta", 12, 13, 12, "may make acceptable"),
 ]
 
 
 @pytest.mark.parametrize("name,first,last,anchor,caption", EN)
 def test_complete_english_constructions(name, first, last, anchor, caption):
-    assert_group(layer("en", CE + name), first, last, anchor, caption)
+    data = layer("en", CE + name)
+    assert_group(data, first, last, anchor, caption)
+    if name == "secreta":
+        assert_secret_scope(data)
 
 
 @pytest.mark.parametrize("index", range(len(EN)))
@@ -112,17 +109,22 @@ def test_all_component_words_have_one_realization(language, text):
 
 
 def test_negative_control_swapped_secret_agent_and_addressee():
-    data = deepcopy(layer("en", CE + "secreta"))
-    group = next(a for a in data["segments"]["s01"]["alignments"] if a["words"][0] == "w001")
-    group["gloss"] = "May the Father make our sacrifice acceptable to His Son"
-    _, first, last, anchor, caption = EN[-1]
-    with pytest.raises(AssertionError):
-        assert_group(data, first, last, anchor, caption)
+    data = layer("en", CE + "secreta")
+    frozen = deepcopy(data)
+    assert_secret_scope(data)
+    bad = deepcopy(data)
+    bad["words"]["w001"]["gloss"] = "the Father"
+    bad["words"]["w002"]["gloss"] = "to His Son"
+    assert bad != data
+    with pytest.raises(AssertionError, match=r"^Secret emphatic Christ subject(?:\n|$)"):
+        assert_secret_scope(bad)
+    assert_secret_scope(data)
+    assert data == frozen
 
 
 PL = [
     (CE + "collecta", 29, 33, 31, "obydwu odpłacił odmiennie według tego, na co zasłużyli"),
-    (CE + "collecta", 39, 41, 41, "łaskę Swojego zmartwychwstania"),
+    (CE + "collecta", 39, 41, 41, "łaskę swojego zmartwychwstania"),
     (GR, 10, 11, 10, "i to śmierci"),
     (CE + "epistola", 184, 186, 186, "gdybyśmy sami siebie osądzali"),
     (CE + "epistola", 14, 18, 16, "zaczyna wcześniej jeść swoją wieczerzę"),

@@ -68,6 +68,16 @@ CONTEXT_DEIXIS = {
 }
 
 
+def _has_primary_single_quotation(note):
+    # Single quotations are valid inside complete double quotations.
+    # A right apostrophe (U+2019) is not itself a quotation error.
+    outer = [match.span() for match in re.finditer(r"“[^“”]*”", note)]
+    return any(
+        char == "‘" and not any(start < index < end for start, end in outer)
+        for index, char in enumerate(note)
+    )
+
+
 def load_lexicon(corpus_dir):
     """Return neutral heads and independently covered language senses.
 
@@ -255,6 +265,10 @@ def lint_senses(lang, entries, lemmata, required=None):
         if lang == "en" and re.search(r"”[,.]", note):
             errors.append(
                 f"lexicon:{lang}:{lemma}: commas and periods belong inside closing quotation marks"
+            )
+        if lang == "en" and _has_primary_single_quotation(note):
+            errors.append(
+                f"lexicon:{lang}:{lemma}: primary quotations use English double quotation marks"
             )
         if "note_citations" in e:
             if not note:

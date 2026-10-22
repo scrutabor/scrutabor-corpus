@@ -291,6 +291,7 @@ ALIGNMENTS = {
     (LM_C, "s01"): [
         g(8, 9, 8, "our affliction"),
         g(15, 16, 15, "all adversity"),
+        g(17, 19, 19, "always by Your protection"),
         g(22, 23, 22, "our Lord"),
         g(26, 27, 26, "Your Son"),
         g(35, 36, 35, "of the Holy Spirit"),
@@ -322,9 +323,6 @@ WORD_LINES = {
         "w011": "Your",
         "w012": "compassion",
         "w013": "trust",
-        "w017": "by Your",
-        "w018": "always",
-        "w019": "protection",
         "w020": "may be shielded",
     },
     LM_P: {
@@ -362,8 +360,8 @@ def assert_alignments(doc, lay, text):
 
 
 def assert_group_rules(doc, lay, text):
-    """The rule behind the exact pins: quǽsumus alone, no vocative O, at most two words per group
-    in an oration body, and clean language checks."""
+    """Keep short groups and the single complete three-word protection phrase,
+    quǽsumus alone, no vocative O, and clean language checks."""
     latin = words(doc)
     body_end = next((w for w, word in latin.items() if word["form"] == "Per"), None)
     for segment in lay["segments"].values():
@@ -372,7 +370,9 @@ def assert_group_rules(doc, lay, text):
             assert not any(m["lemma"] == "quaeso" for m in members), "quaesumus stands alone"
             assert not re.search(r"(?<![A-Za-z])O (?=[A-Z])", group["gloss"]), "no vocative O"
             if body_end and text != GOSPEL and group["words"][-1] < body_end:
-                assert len(group["words"]) <= 2, "smallest natural groups"
+                assert len(group["words"]) <= 2 or (
+                    text == LM_C and group == g(17, 19, 19, "always by Your protection")
+                ), "smallest natural groups"
     assert interlinear.check(doc, lay) == [], "interlinear line"
     assert english.check(doc, lay) == [] and interlinear_quality.check(doc, lay) == []
 

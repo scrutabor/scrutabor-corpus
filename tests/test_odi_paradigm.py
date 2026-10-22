@@ -304,7 +304,17 @@ def test_odi_tokens_keep_complete_other_morphology_and_meaning(path, wid, form, 
         "review": "pending",
     }
     assert read("languages/pl/" + path)["words"][wid].get("gloss") == pl
-    assert read("languages/en/" + path)["words"][wid].get("gloss") == en
+    english = read("languages/en/" + path)
+    if (path, wid) == ("texts/proprium/dominica-pentecostes-introitus.json", "w027"):
+        words = ["w025", "w026", "w027", "w028"]
+        assert [
+            group
+            for group in english["segments"]["s01"]["alignments"]
+            if set(group["words"]) & set(words)
+        ] == [{"words": words, "anchor": "w025", "gloss": f"let those who {en} Him flee"}]
+        assert all("gloss" not in english["words"][word_id] for word_id in words)
+    else:
+        assert english["words"][wid].get("gloss") == en
     entries = read("lexicon/lemmata.json")["entries"]
     assert check_text_against_lexicon(doc, entries) == []
 

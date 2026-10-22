@@ -785,7 +785,7 @@ CONTINUATIONS = {
 RESIDUAL = {("pl", GOSPEL, "w042"): "Jeśli"}
 # Capitals a lower-case Latin word may carry here: words for God, Christ and the Spirit, English I.
 NAMED = {
-    "pl": {"Mu", "Jego", "Twoim", "Twojego", "Tego", "Mnie", "Ja", "Go", "On", "Prawdy", "Siebie"}
+    "pl": {"Mu", "Jego", "Twoim", "Twojego", "Tego", "Mnie", "Ja", "Go", "On", "Prawdy"}
     | {"Bóstwa", "Twoją", "Twojej"},
     "en": {"He", "Him", "His", "Himself", "I", "Me", "You", "Your", "Godhead"},
 }
@@ -1007,3 +1007,13 @@ def test_removing_the_historical_origin_is_rejected(site):
     sites = provenance("en")
     sites[site]["origin"] = "working-unsettled"
     rejects(assert_revised, sites, message="English origin")
+
+
+def test_spirit_reflexive_is_lowercase_without_lowering_divine_nonreflexives():
+    doc, lay = core(GOSPEL), layer("pl", GOSPEL)
+    assert caption_at(lay, "w126") == "siebie samego"
+    assert "nie będzie mówił sam od siebie" in lay["segments"]["s01"]["translation"]
+    for wid, caption in [("w010", "Tego"), ("w013", "Mnie"), ("w055", "Go")]:
+        assert caption_at(lay, wid) == caption
+    wrong = with_caption(lay, "w126", "Siebie samego")
+    assert caption_case(doc, wrong)[0] == [("w126", "Siebie samego")]
