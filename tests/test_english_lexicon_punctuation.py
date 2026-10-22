@@ -44,7 +44,10 @@ EXPECTED_NOTES = {
     ),
     "angelus": "Greek ángelos means “messenger.” The word entered Latin through Greek.",
     "aufero": "The case name ablative comes from ablátum, “taken away.”",
-    "dignor": "A deponent verb from dignus — worthy. Dignéris means “be pleased to.”",
+    "dignor": (
+        "A deponent verb derived from dignus — worthy. In a deferential request, "
+        "it can take an infinitive with the sense “be pleased to do something.”"
+    ),
     "eleison": "Greek ἐλέησον, the imperative of ἐλεέω, “to have mercy.”",
     "eucharistia": "A Greek noun, “the giving of thanks.”",
     "ex": (

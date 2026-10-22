@@ -3676,6 +3676,11 @@
       "responsible": "Paenitentiaria Apostolica"
     },
     {
+      "id": "work.extraordinaryform.handmissal-chant",
+      "title": "Latin-English Hand Missal for the Traditional Latin Mass (with Kyriale for 4 Masses)",
+      "responsible": "ExtraordinaryForm.org"
+    },
+    {
       "id": "work.francis-x-lasance-the-catholic-girl-s-guide",
       "title": "The Catholic Girl's Guide",
       "responsible": "Francis X. Lasance"
@@ -4066,6 +4071,25 @@
       "languages": [
         "la"
       ]
+    },
+    {
+      "id": "edition.extraordinaryform.handmissal-chant.2025-12-12",
+      "work": "work.extraordinaryform.handmissal-chant",
+      "title": "Latin-English Hand Missal for the Traditional Latin Mass (with Kyriale for 4 Masses)",
+      "recension": "Cover revision 12/12/2025 of the hand missal first issued at Epiphany 2020",
+      "edition_statement": "First edition Epiphany 2020; revised 12/12/2025",
+      "publisher": "ExtraordinaryForm.org",
+      "year": "2025",
+      "publication_type": "missal",
+      "authority": "reference_work",
+      "languages": [
+        "en",
+        "la"
+      ],
+      "rights": {
+        "status": "unverified",
+        "basis": "Retained for private Latin comparison. No permission for public PDF redistribution or reuse of its modern English wording is established by this bibliographic record."
+      }
     },
     {
       "id": "edition.francis-x-lasance-the-catholic-girl-s-guide-1906",
@@ -4603,6 +4627,16 @@
       "access": "open"
     },
     {
+      "id": "item.divinum-officium-missa.44667ff.ordo",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "repository": "GitHub",
+      "kind": "born-digital",
+      "record_url": "https://raw.githubusercontent.com/DivinumOfficium/divinum-officium/44667ff518b8ff1439780470828b39714f5306a2/web/www/missa/Latin/Ordo/Ordo.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "sha256": "a7f63e8030325b809f74dd4587c649bf8eb45cdd150fc9a2817fe2a1ed6a42e3",
+      "access": "open"
+    },
+    {
       "id": "item.divinum-officium-missa.b5e250b.advent-i",
       "edition": "edition.divinum-officium-missa.b5e250b",
       "repository": "GitHub",
@@ -4649,6 +4683,15 @@
       "record_url": "https://archive.org/details/enchiridion_indulgentiarum_1952",
       "scan_url": "https://archive.org/download/enchiridion_indulgentiarum_1952/enchiridion_indulgentiarum_1952.pdf",
       "sha256": "027fbf35ae1871e33d95b218c9343e03587931072d9b8958737395948994a76b",
+      "access": "open"
+    },
+    {
+      "id": "item.extraordinaryform.handmissal-chant.2025-12-12.pdf",
+      "edition": "edition.extraordinaryform.handmissal-chant.2025-12-12",
+      "repository": "ExtraordinaryForm.org",
+      "kind": "born-digital",
+      "record_url": "https://extraordinaryform.org/handmissals/HandMissalChant.pdf",
+      "sha256": "43e21a0356b4ab1641c8dfa3927d8e29b53f3b26f926b23080842d601e07d84d",
       "access": "open"
     },
     {
@@ -8767,10 +8810,46 @@
       "evidence_sha256": "d19d9834500a40f86a762522c3c99e89ffabeaba8aa3141495190b6049e70a4c"
     },
     {
+      "id": "use.ordinarium.aufer-a-nobis.do44667ff",
+      "edition": "edition.divinum-officium-missa.44667ff",
+      "digital_item": "item.divinum-officium-missa.44667ff.ordo",
+      "role": "derived_digital_collation_aid",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.aufer-a-nobis"
+      },
+      "locator": {
+        "section": "Ordo Missae, Incipit; spoken lines 55–56 and 58 within complete local context 53–61 at the pinned revision"
+      },
+      "claim": "The exact retained pinned Latin Ordo supplies these 42 spoken words after exclusion of its literal v. markers and the two explicitly bound inline rubrics. This is a derived digital comparison, not independent transmission or ritual-performance evidence.",
+      "verified_on": "2026-10-22",
+      "decision": "RETAIN",
+      "evidence_sha256": "a7f63e8030325b809f74dd4587c649bf8eb45cdd150fc9a2817fe2a1ed6a42e3"
+    },
+    {
+      "id": "use.ordinarium.aufer-a-nobis.handmissal-eo2025",
+      "edition": "edition.extraordinaryform.handmissal-chant.2025-12-12",
+      "digital_item": "item.extraordinaryform.handmissal-chant.2025-12-12.pdf",
+      "role": "corroborating_latin_witness",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.aufer-a-nobis"
+      },
+      "locator": {
+        "printed": "p. 4",
+        "scan": "physical PDF p. 6, left half",
+        "section": "Orémus, Aufer a nobis and Orámus te, including their conclusions, on the left half of physical PDF page 6"
+      },
+      "claim": "The left half of physical PDF page 6, printed page 4, of the hand missal revised 12/12/2025 prints the invitation Orémus, Aufer a nobis and Orámus te with their conclusions. The 42 Latin spoken words were checked manually against the page image. This is not an English wording basis or a claim of genealogical independence.",
+      "verified_on": "2026-10-22",
+      "decision": "RETAIN",
+      "evidence_sha256": "e554421da2c8241462b4f3d3bf46a64ee1f1a873362ff2623983da81ba3e07fe"
+    },
+    {
       "id": "use.ordinarium.aufer-a-nobis.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
-      "role": "official_text",
+      "role": "direct_approved_print",
       "address": {
         "kind": "text",
         "text": "ordinarium.aufer-a-nobis"
@@ -8780,8 +8859,8 @@
         "scan": "leaf n299 / PDF p. 300",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n299/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-09-25",
+      "claim": "The cited approved 1962 printing contains the invitation Orémus, both prayers, their conclusions, and the accompanying rubrics. Its comma after Orémus differs from the selected full stop, as recorded in the apparatus.",
+      "verified_on": "2026-10-22",
       "decision": "RETAIN",
       "evidence_sha256": "f2974f65b87ab6c98e437417413c181b9e10094a20a50181bd8d865abd383600"
     },
@@ -70025,6 +70104,79 @@
       }
     },
     {
+      "id": "witness.ordinarium.aufer-a-nobis.do44667ff",
+      "text": "ordinarium.aufer-a-nobis",
+      "use": "use.ordinarium.aufer-a-nobis.do44667ff",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "do",
+      "transcription_sha256": "0049e77347fd2d7dc1d5d22b8ec8be3b5ee487a3a2966da957e092ee165406b7",
+      "orthography_profile": "exact-pinned-digital",
+      "independence_basis": "Derived digital witness from the explicitly pinned source; no independent-transmission claim or ritual-performance evidence.",
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "aufer-a-nobis-44667ff-inline"
+      },
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "witness.ordinarium.aufer-a-nobis.handmissal-eo2025",
+      "text": "ordinarium.aufer-a-nobis",
+      "use": "use.ordinarium.aufer-a-nobis.handmissal-eo2025",
+      "role": "derived_comparison",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "handmissal-eo",
+      "transcription_sha256": "7df1f22711f5439ec72a5e32eebb9592577c4dcc2c566d23c71eb3b5cb754871",
+      "orthography_profile": "exact-typeset-page-image",
+      "independence_basis": "Separately checked current typesetting; source lineage relative to the controlling printing is not established. The current PDF is not identified with the earlier August acquisition.",
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null,
+        "documents": [
+          {
+            "contract": "paginated-pdf-1",
+            "use": "use.ordinarium.aufer-a-nobis.handmissal-eo2025",
+            "digital_item": "item.extraordinaryform.handmissal-chant.2025-12-12.pdf",
+            "sha256": "43e21a0356b4ab1641c8dfa3927d8e29b53f3b26f926b23080842d601e07d84d",
+            "media_type": "application/pdf",
+            "pdf_page": 6,
+            "printed": "4",
+            "region": "left-half",
+            "page_image_sha256": "e554421da2c8241462b4f3d3bf46a64ee1f1a873362ff2623983da81ba3e07fe"
+          }
+        ]
+      },
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "witness.ordinarium.aufer-a-nobis.mr1962",
+      "text": "ordinarium.aufer-a-nobis",
+      "use": "use.ordinarium.aufer-a-nobis.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription": "mr",
+      "transcription_sha256": "f40ed12a9bb3294b195d85444c87a4bbff87cef6eea42232895bf3f7284efa6f",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct comparison with the cited Benziger printing; no claim about genealogical independence of the shared Latin text.",
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
+      },
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
       "id": "witness.ordinarium.communicantes-in-ascensione-domini.mr-benziger-table",
       "text": "ordinarium.communicantes-in-ascensione-domini",
       "use": "use.ordinarium.communicantes-in-ascensione-domini.mr-benziger-table",
@@ -107504,6 +107656,27 @@
         "classes": []
       },
       "apparatus_sha256": "d941985156fb90955016af33c78a8a73dbcc11187f48919aacbbb791fa27b6d3",
+      "review": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "collation.ordinarium.aufer-a-nobis.mr1962-do44667ff-eo2025",
+      "text": "ordinarium.aufer-a-nobis",
+      "recension": "The selected 1962 Aufer a nobis and Orámus te with their introductory Orémus, conclusions and declared ritual segmentation; punctuation differences are recorded in the apparatus.",
+      "selected_text_sha256": "03c928e81f416b9cd528201c731dcf2434030546d054e79f2d210009c83ccc0b",
+      "witnesses": [
+        "witness.ordinarium.aufer-a-nobis.do44667ff",
+        "witness.ordinarium.aufer-a-nobis.handmissal-eo2025",
+        "witness.ordinarium.aufer-a-nobis.mr1962"
+      ],
+      "apparatus": {
+        "entries": 4,
+        "classes": [
+          "punctuation"
+        ]
+      },
+      "apparatus_sha256": "9e36e854d694e8bbf1f8c23cfbdf6cc5249d1f828af8254ca83e37d07d463b3a",
       "review": {
         "status": "pending"
       }

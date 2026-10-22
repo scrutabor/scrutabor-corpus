@@ -764,6 +764,36 @@ localization, editorial
   printed law. Neither source-use role may borrow the other archive's hash or
   the whole derived-reading hash. This mechanism confers no source-review,
   linguistic, ritual, or release approval.
+- An individual binding may opt into **`raw-reading-7`** for the exact pinned
+  Mass Ordo Aufer occurrence only. It binds the complete original archive,
+  literal enclosing heading and complete physical local context53–61, ordered
+  spoken lines55/56/58, and exactly the two reviewed inline parenthetical rubrics
+  at55[11:52] and58[51:78]. Coordinates are Unicode code points, excluding newline;
+  integers never include booleans. The closed framing inventory preserves the
+  source typo `ei`, and never strips other parentheses or sacred words. Every
+  other character remains, apart from the initial literal `v. ` on each spoken
+  line and whitespace normalization. The exact path header uses
+  `upstream {inline-rubric-occurrence:53-61} (lines 55-56; line 58)`.
+  The complete plan and resolved_extraction enter only this new source subject.
+  Like contract6 it returns no physical performer spans/fragments and attribution
+  rejects it before range access. Exactly one derived digital source use and
+  an explicit complete inventory are required even while pending. Contracts1–6,
+  their payloads and provider meanings are unchanged; no approval is inferred.
+- An explicit source_dependencies inventory may additionally opt into a
+  nonempty sorted-unique `documents` list. Each declaration has exactly contract,
+  use, digital_item, sha256, media_type, pdf_page, printed, region and
+  page_image_sha256. The initial `paginated-pdf-1` contract supports only the
+  retained ExtraordinaryForm.org typeset HandMissalChant PDF43e21a03… and page
+  imagee554421d… (physical PDF6, printed4, left half). Full digests are required
+  in data; abbreviations here are not accepted values. The item stays born-digital,
+  with its exact original PDF URL and full SHA, and the corroborating Latin use
+  binds its exact page-image SHA. The inventory must cover all and only non-DO
+  born-digital uses, never borrow a raw binding, and enters document_resolution
+  in the source subject. It identifies assertions, not automatic visual reading,
+  PDF extraction, rights, ecclesiastical approval or historical byte equivalence.
+  Other born-digital manifestations still fail closed. Existing inventories
+  acquire no new fields and no review digest is renewed. Private paths/objects
+  remain outside the allowlisted reader projection.
 - **`head`** and **`substantive`** (since 0.13.0) state the SYNTAX, which is
   the one thing that settles a reading the form permits and the sentence
   forbids. Every adjective, numeral and

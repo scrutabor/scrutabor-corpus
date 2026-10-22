@@ -157,8 +157,8 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
     assert written["citation_projection"] == {
         "legacy": 2771,
         "mapped": 1872,
-        "kept": 1618,
-        "excluded": 1153,
+        "kept": 1617,
+        "excluded": 1154,
         "unresolved": 0,
         "rejected_exposed": 0,
     }

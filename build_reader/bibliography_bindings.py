@@ -152,7 +152,10 @@ def _coverage(witness: dict, text: str, doc: dict) -> None:
 def source_dependencies(witness: dict) -> dict:
     """Unknown inventory is not the same as a deliberately empty inventory."""
     value = witness.get("source_dependencies")
-    if not isinstance(value, dict) or set(value) != {"uses", "raw_binding"}:
+    if not isinstance(value, dict) or set(value) not in (
+        {"uses", "raw_binding"},
+        {"uses", "raw_binding", "documents"},
+    ):
         raise BindingError("complete explicit source_dependencies declaration required")
     uses, raw = value["uses"], value["raw_binding"]
     if (
@@ -164,6 +167,13 @@ def source_dependencies(witness: dict) -> dict:
         raise BindingError("supplemental uses must be sorted unique IDs excluding the primary")
     if raw is not None and (not isinstance(raw, str) or not NAME.fullmatch(raw)):
         raise BindingError("raw_binding must be a binding ID or null")
+    if "documents" in value:
+        from .paginated_documents import declarations
+
+        try:
+            declarations(value["documents"])
+        except ValueError as error:
+            raise BindingError(str(error)) from error
     return value
 
 
@@ -327,7 +337,11 @@ def _witness_subject(
             )
         subject["ritual_execution"] = mapping
     contract = snapshot.binding_contract(path)
-    if not reviewable and "source_dependencies" not in witness and contract != "raw-reading-6":
+    if (
+        not reviewable
+        and "source_dependencies" not in witness
+        and contract not in {"raw-reading-6", "raw-reading-7"}
+    ):
         return deepcopy(subject)
     declaration = source_dependencies(witness)
     for identifier in declaration["uses"]:
@@ -335,11 +349,22 @@ def _witness_subject(
         if source["edition"]["id"] != primary["edition"]["id"]:
             raise BindingError("supplemental source belongs to another edition")
         subject["source_uses"][identifier] = source
-    if any(
-        source["digital_item"]["kind"] == "born-digital" and not _digital_provider(source)
-        for source in subject["source_uses"].values()
-    ):
+    documents = {
+        identifier: source
+        for identifier, source in subject["source_uses"].items()
+        if source["digital_item"]["kind"] == "born-digital" and not _digital_provider(source)
+    }
+    if documents and "documents" not in declaration:
         raise BindingError("unsupported born-digital source requires its own evidence contract")
+    if "documents" in declaration:
+        from .paginated_documents import resolve_documents
+
+        if declaration["raw_binding"] is not None:
+            raise BindingError("paginated documents cannot borrow a raw binding")
+        try:
+            subject["document_resolution"] = resolve_documents(declaration["documents"], documents)
+        except ValueError as error:
+            raise BindingError(str(error)) from error
     reading = snapshot.reading(path)
     if (
         reading is not None
@@ -364,6 +389,11 @@ def _witness_subject(
             raise BindingError("digital item revision or kind differs from raw binding")
         if reading.source["contract"] == "raw-reading-6":
             _preface_variant_sources(reading, primary, subject["source_uses"])
+        if reading.source["contract"] == "raw-reading-7" and (
+            len(subject["source_uses"]) != 1
+            or primary["use"]["role"] != "derived_digital_collation_aid"
+        ):
+            raise BindingError("raw-reading-7 requires one derived digital source use")
         # A generic evidence hash need not name the first archive. Existing
         # digital uses identify either a contributing archive's complete bytes
         # or the complete ordered reading with one terminal LF. Both subjects

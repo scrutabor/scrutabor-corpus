@@ -137,6 +137,7 @@ def load_registry(root: Path) -> dict:
                 "raw-reading-4",
                 "raw-reading-5",
                 "raw-reading-6",
+                "raw-reading-7",
             ):
                 raise BindingError("unsupported per-binding contract")
             if binding["contract"] == "raw-reading-3":
@@ -145,6 +146,17 @@ def load_registry(root: Path) -> dict:
                     raise BindingError("raw-reading-3 requires nonempty explicit framing")
         if isinstance(binding, dict) and binding.get("contract") == "raw-reading-6":
             fields = {"witness", "revision", "contract", "template", "variant"}
+        if isinstance(binding, dict) and binding.get("contract") == "raw-reading-7":
+            fields = {
+                "witness",
+                "revision",
+                "contract",
+                "archive",
+                "heading",
+                "context",
+                "reading",
+                "framing",
+            }
         _keys(binding, fields, key)
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", key):
             raise BindingError(f"invalid binding ID: {key}")
@@ -180,7 +192,7 @@ def load_registry(root: Path) -> dict:
             )
         for field in (
             ()
-            if binding.get("contract") == "raw-reading-6"
+            if binding.get("contract") in {"raw-reading-6", "raw-reading-7"}
             else ("evidence", "references", "reading")
         ):
             if not isinstance(binding[field], list) or (
@@ -403,6 +415,10 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
     binding_id, binding = identity
     if binding.get("contract") == "raw-reading-6":
         return _preface_variant(text, headers, binding_id, binding, snapshot)
+    if binding.get("contract") == "raw-reading-7":
+        from .raw_binding_inline import resolve_inline
+
+        return resolve_inline(text, headers, binding_id, binding, snapshot)
     markers = [binding_id]
     archives = registry["archives"]
     used_archives: set[str] = set()
