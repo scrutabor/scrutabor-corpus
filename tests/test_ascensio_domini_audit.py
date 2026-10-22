@@ -222,11 +222,27 @@ for _line in CAPTION_TABLE.strip().splitlines():
     CAPTIONS.append((_tag, _language, TEXTS[_role], _wid, _form, _gloss, _old))
 
 
+# A later compact construction absorbed one selected caption. The table keeps the
+# historical selection, and the current group must still open with it.
+ABSORBED_CAPTIONS = {
+    (GOSPEL, "w061"): group(ids(60, 61, 62), "w061", "they will speak with new tongues"),
+}
+
+
+def assert_absorbed_caption(lay, row, expected):
+    tag, _language, _text, wid, _form, gloss, _old = row
+    assert [g for g in alignments(lay) if wid in g["words"]] == [expected], f"{tag} caption"
+    assert expected["gloss"].startswith(f"{gloss} "), f"{tag} caption"
+    assert all("gloss" not in lay["words"][w] for w in expected["words"]), f"{tag} caption"
+
+
 def assert_caption(doc, lay, row):
-    tag, _language, _text, wid, form, gloss, _old = row
+    tag, _language, text, wid, form, gloss, _old = row
     assert words(doc)[wid]["form"] == form, f"{tag} Latin context"
     if is_current_postcommunion_subject(row):
         assert_postcommunion_subject(doc, lay, row)
+    elif (text, wid) in ABSORBED_CAPTIONS:
+        assert_absorbed_caption(lay, row, ABSORBED_CAPTIONS[(text, wid)])
     else:
         assert not [g for g in alignments(lay) if wid in g["words"]], f"{tag} caption"
         assert lay["words"][wid].get("gloss") == gloss, f"{tag} caption"
@@ -259,6 +275,9 @@ def test_predecessor_caption_is_rejected(row):
         prior = selected[0]["gloss"]
         selected[0]["gloss"] = prior.replace(row[5], row[6], 1)
         assert selected[0]["gloss"] != prior, "nonvacuous subject mutation"
+    elif (row[2], row[3]) in ABSORBED_CAPTIONS:
+        (absorbed,) = [g for g in alignments(lay) if row[3] in g["words"]]
+        absorbed["gloss"] = absorbed["gloss"].replace(row[5], row[6], 1)
     else:
         lay["words"][row[3]]["gloss"] = row[6]
     assert lay != pristine, "nonvacuous caption mutation"
