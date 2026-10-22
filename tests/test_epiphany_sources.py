@@ -416,7 +416,7 @@ CHANT_CAPTIONS = {
         "let it sing a psalm to Your name | Most High | Shout for joy | to God | all | "
         "the earth | sing a psalm | to His name | give | glory | to His praise | Glory | "
         "to the Father | and | to the Son | and | to the Holy Spirit | As | it was | "
-        "in | the beginning | and | now | and | always | and | unto | ages | of ages | Amen | "
+        "in | the beginning | and | now | and | always | and | for | ages | of ages | Amen | "
         "Let all the earth adore | You | God | and | let it sing | to You | "
         "let it sing a psalm to Your name | Most High"
     ),

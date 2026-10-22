@@ -116,6 +116,10 @@ NOT_ARCHAIC = {
     "darkest",
     "coldest",
     "tenderest",
+    "closest",
+    "farthest",
+    "furthest",
+    "teeth",
 }
 GLORIA_PATRI_END = "As it was in the beginning, is now, and ever shall be, world without end."
 # Saint John's Postcommunion keeps the conclusion of its recorded historical wording basis.

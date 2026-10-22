@@ -237,7 +237,7 @@ def unrelated_english(layer):
 def assert_preserved_english(layer):
     assert len(unrelated_english(layer)["segments"]) == 88
     assert canonical_hash(unrelated_english(layer)) == (
-        "be4a8b8fa9925bbb4ed1c1ad8b9f22b477ed081b027c3ade732408fc5656dc52"
+        "cd29b72c8077e238793f35c93f374e13270a0cb3b2ebf3d42f0e393c79d4b196"
     )
 
 
