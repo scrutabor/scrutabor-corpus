@@ -31,6 +31,7 @@ from checks.identity import check_against_history, check_registry_history, resol
 from checks.incipit import check as check_incipit
 from checks.interlinear_quality import check as check_interlinear_quality
 from checks.interlinear_sequence import check as check_interlinear_sequence
+from checks.introductiones import check as check_introductiones
 from checks.kalendarium import check as check_kalendarium
 from checks.language_packs import check_core as check_language_core
 from checks.language_packs import check_layer as check_language_layer
@@ -467,6 +468,16 @@ def run_all() -> int:
     print(
         "COMMEMORATIONES "
         + " ".join(f"{key}={value}" for key, value in commemoration_counts.items())
+    )
+
+    # The spoken introductions before the Collect, the Gospel, the Offertory and the prayers
+    # after Communion, addressed in their owner texts (checks/introductiones.py).
+    introduction_errors, introduction_counts = check_introductiones(CORPUS)
+    for message in introduction_errors:
+        print(f"ERROR: {message}")
+    rc |= 1 if introduction_errors else 0
+    print(
+        "INTRODUCTIONES " + " ".join(f"{key}={value}" for key, value in introduction_counts.items())
     )
 
     attested = readings(corpus_docs)

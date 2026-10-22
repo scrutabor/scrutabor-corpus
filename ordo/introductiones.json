@@ -1,0 +1,221 @@
+{
+  "introduction_schema": "1.0.0",
+  "units": [
+    {
+      "id": "invitatio-oremus",
+      "role": "invitation",
+      "text": "ordinarium.aufer-a-nobis",
+      "segment": "s02",
+      "first": "w001",
+      "last": "w001",
+      "source": "Ritus servandus V, 1; VII, 1"
+    },
+    {
+      "id": "responsio-gloria-tibi",
+      "role": "gospel-response",
+      "text": "ordinarium.evangelium-ultimum",
+      "segment": "s06",
+      "first": "w012",
+      "last": "w014",
+      "source": "Ritus servandus VI, 2"
+    },
+    {
+      "id": "responsio-salutationis",
+      "role": "response",
+      "text": "ordinarium.praefatio-dialogus",
+      "segment": "s03",
+      "first": "w003",
+      "last": "w006",
+      "source": "Ritus servandus V, 1; VI, 2"
+    },
+    {
+      "id": "salutatio",
+      "role": "greeting",
+      "text": "ordinarium.praefatio-dialogus",
+      "segment": "s02",
+      "first": "w001",
+      "last": "w002",
+      "source": "Ritus servandus V, 1; VI, 2; VII, 1; XI, 1"
+    }
+  ],
+  "events": [
+    {
+      "id": "collecta-introductio",
+      "before": "collecta",
+      "source": "Ritus servandus V, 1",
+      "occurrences": [
+        {
+          "unit": "salutatio",
+          "lecta": {
+            "speaker": "sacerdos",
+            "voice": "clara",
+            "source": "RG 511 d"
+          },
+          "cantu": {
+            "speaker": "sacerdos",
+            "voice": "cantus",
+            "source": "RG 513 a, 514"
+          }
+        },
+        {
+          "unit": "responsio-salutationis",
+          "lecta": {
+            "speaker": "minister",
+            "voice": "clara",
+            "source": "Ritus servandus V, 1"
+          },
+          "cantu": {
+            "speaker": "schola",
+            "voice": "cantus",
+            "source": "DMS 16 b, 25 a, 26"
+          }
+        },
+        {
+          "unit": "invitatio-oremus",
+          "lecta": {
+            "speaker": "sacerdos",
+            "voice": "clara",
+            "source": "RG 511 d"
+          },
+          "cantu": {
+            "speaker": "sacerdos",
+            "voice": "cantus",
+            "source": "RG 513 a, 514"
+          }
+        }
+      ]
+    },
+    {
+      "id": "evangelium-salutatio",
+      "before": "evangelium",
+      "source": "Ritus servandus VI, 2",
+      "occurrences": [
+        {
+          "unit": "salutatio",
+          "lecta": {
+            "speaker": "sacerdos",
+            "voice": "clara",
+            "source": "Ritus servandus VI, 2"
+          },
+          "cantu": {
+            "speaker": "sacerdos",
+            "voice": "cantus",
+            "source": "RG 513 a, 514"
+          }
+        },
+        {
+          "unit": "responsio-salutationis",
+          "lecta": {
+            "speaker": "minister",
+            "voice": "clara",
+            "source": "Ritus servandus VI, 2"
+          },
+          "cantu": {
+            "speaker": "schola",
+            "voice": "cantus",
+            "source": "DMS 16 b, 25 a, 26"
+          }
+        }
+      ]
+    },
+    {
+      "id": "offertorium-introductio",
+      "before": "offertorium",
+      "source": "Ritus servandus VII, 1",
+      "occurrences": [
+        {
+          "unit": "salutatio",
+          "lecta": {
+            "speaker": "sacerdos",
+            "voice": "clara",
+            "source": "RG 511 g"
+          },
+          "cantu": {
+            "speaker": "sacerdos",
+            "voice": "cantus",
+            "source": "RG 513 a, 514"
+          }
+        },
+        {
+          "unit": "responsio-salutationis",
+          "lecta": {
+            "speaker": "minister",
+            "voice": "clara",
+            "source": "Ordo Missae, before the Offertory antiphon"
+          },
+          "cantu": {
+            "speaker": "schola",
+            "voice": "cantus",
+            "source": "DMS 16 b, 25 a, 26"
+          }
+        },
+        {
+          "unit": "invitatio-oremus",
+          "lecta": {
+            "speaker": "sacerdos",
+            "voice": "clara",
+            "source": "RG 511 g"
+          },
+          "cantu": {
+            "speaker": "sacerdos",
+            "voice": "cantus",
+            "source": "RG 513 a, 514"
+          }
+        }
+      ]
+    },
+    {
+      "id": "postcommunio-introductio",
+      "before": "postcommunio",
+      "source": "Ritus servandus XI, 1 and V, 1",
+      "occurrences": [
+        {
+          "unit": "salutatio",
+          "lecta": {
+            "speaker": "sacerdos",
+            "voice": "clara",
+            "source": "RG 511 i"
+          },
+          "cantu": {
+            "speaker": "sacerdos",
+            "voice": "cantus",
+            "source": "RG 513 a, 514"
+          }
+        },
+        {
+          "unit": "responsio-salutationis",
+          "lecta": {
+            "speaker": "minister",
+            "voice": "clara",
+            "source": "Ritus servandus XI, 1 and V, 1"
+          },
+          "cantu": {
+            "speaker": "schola",
+            "voice": "cantus",
+            "source": "DMS 16 b, 25 a, 26"
+          }
+        },
+        {
+          "unit": "invitatio-oremus",
+          "lecta": {
+            "speaker": "sacerdos",
+            "voice": "clara",
+            "source": "Ritus servandus XI, 1 and V, 1"
+          },
+          "cantu": {
+            "speaker": "sacerdos",
+            "voice": "cantus",
+            "source": "RG 513 a, 514"
+          }
+        }
+      ]
+    }
+  ],
+  "rubrics": {
+    "scope": "The events describe the priest-led Ordo. Ritus servandus V, 1 (editio typica 1962, p. LVII) has a bishop greet with Pax vobis when the Gloria has been said; episcopal forms are not described here. Ritus servandus VI, 5 (p. LVIII) and Rubricae generales 513 f (p. XXXV): at a solemn Mass the deacon says the Gospel greeting and the celebrant omits it. At a Missa cantata the celebrant sings it (Rubricae generales 514).",
+    "secret": "Ritus servandus VII, 7 (p. LIX): the Secret is said without Orémus and without any other interposition, so no introduction precedes it.",
+    "passion": "Dominica II Passionis seu in palmis, nn. 8 and 8 a (p. 136): the Passion begins without the Gospel greeting, and neither the book nor the reader is signed. The Gospel greeting does not precede it.",
+    "easter-vigil": "Missa Vigiliae paschalis, rubric after the Gospel (p. 212): the celebrant says the greeting and Orémus, and no Offertory antiphon is said. The Offertory introduction stands without its antiphon.",
+    "prayer-groups": "Ritus servandus V, 1 and XI, 1 give one introduction before the opening prayers and one before the prayers after Communion. Whether Orémus is said again before a second group of prayers is not settled by these pages and is not encoded here."
+  }
+}

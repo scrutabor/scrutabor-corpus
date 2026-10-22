@@ -22,6 +22,7 @@ LATE = (
     "basis",
     "kalendarium",
     "formularies",
+    "introductiones",
 )
 
 
@@ -115,6 +116,9 @@ def configured(monkeypatch, tmp_path):
         monkeypatch.setattr(runner, "check_translation_basis", lambda root: (event("basis"), {}))
         monkeypatch.setattr(runner, "check_kalendarium", lambda root: (event("kalendarium"), 0, 0))
         monkeypatch.setattr(runner, "check_formularies", lambda root: (event("formularies"), {}))
+        monkeypatch.setattr(
+            runner, "check_introductiones", lambda root: (event("introductiones"), {})
+        )
 
         def readings(corpus_docs):
             assert corpus_docs == docs
@@ -150,6 +154,7 @@ def assert_all_checks(fixture):
         "basis",
         "kalendarium",
         "formularies",
+        "introductiones",
         "readings",
         "disputed",
     ]

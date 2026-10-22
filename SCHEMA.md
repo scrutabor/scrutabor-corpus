@@ -220,6 +220,49 @@ out of this contract. The delivery of a non-final Secret's terminal and Amen
 is a presentation rule of the assembled Mass (RG 480–481), not a change to any
 canonical text.
 
+## Ordo introductions
+
+`ordo/introductiones.json` (introduction schema `1.0.0`) is the canonical library of the
+spoken introductions that open a part of the Mass in the priest-led Ordo, and of the events
+made of them. The Ritus servandus prints the greeting, its answer and the invitation before
+the opening prayers (V, 1), before the Offertory antiphon (VII, 1) and before the prayers after
+Communion (XI, 1, in the manner of V, 1), and the greeting and answer before the Gospel (VI, 2).
+Exact fields: `introduction_schema`, `units`, `events` and `rubrics`.
+
+A unit (`id`, `role`, `text`, `segment`, `first`, `last`, `source`) addresses one complete
+verse segment of an existing owner text: the dotted owner id, the segment id, and the
+segment's first and last word ids in stored order. It never copies a word. A partial segment,
+reversed or foreign endpoints, a rubric and a missing owner are errors. The roles are
+`greeting`, `response`, `invitation` and `gospel-response`. The units are `salutatio`
+(`ordinarium.praefatio-dialogus` s02), `responsio-salutationis` (s03 of the same text),
+`invitatio-oremus` (`ordinarium.aufer-a-nobis` s02) and `responsio-gloria-tibi`
+(`ordinarium.evangelium-ultimum` s06). The owner's base `speaker` and `voice` must be the
+role's low-Mass actor with `clara`. An answer's owner carries the faithful's participation in
+both forms and a celebrant's line carries none. These are read from the owner and never stored
+in the library. Every published language package must publish the owner text with a nonempty
+translation of the segment, and an alignment group that touches the segment must lie wholly
+inside it.
+
+An event (`id`, `before`, `source`, `occurrences`) is the ordered sequence of units before one
+Mass part, and `before` names the formulary role it precedes. `collecta-introductio`,
+`offertorium-introductio` and `postcommunio-introductio` are greeting, answer and invitation.
+`evangelium-salutatio` is greeting and answer; the reading announcements are not yet corpus
+texts. Each occurrence carries its own delivery: `lecta` (`clara`, by `sacerdos` or
+`minister`) and `cantu` (`cantus`, by `sacerdos` or `schola`), each with a `source` citation.
+The role fixes the performer: the celebrant says and sings the greeting and the invitation
+(RG 511, 513 a, 514), the server answers at the low Mass, and the schola with the faithful
+answers at the sung Mass (DMS 16 b, 25 a, 26). Where the owner carries its own sung override,
+as the Preface dialogue does, the occurrence must agree with it. The invitation's delivery is
+authored for each event and takes nothing from the foot of the altar, where Aufer a nobis is
+said.
+
+`rubrics` records `scope`, `secret`, `passion`, `easter-vigil` and `prayer-groups` as
+nonempty citations: the episcopal greeting and the deacon at a solemn Gospel are outside the
+priest-led events, no introduction precedes the Secret, the Passion takes no Gospel greeting,
+the Offertory introduction of the Easter Vigil stands without its antiphon, and whether the
+invitation is repeated before a second group of prayers is not encoded. Which events a given
+date and Mass use is decided by the reader, not by this library.
+
 ## Reader Canon selection
 
 Reader edition 5.9.0 adds root-manifest `base.canon: "canon.json"`. This is a
@@ -333,6 +376,20 @@ days anew, reapplies the transfer rule and restates the admission without
 calling the producer. Neutral and every published language package must declare
 and transport all slot bodies and the localized titles. Missing resource, body
 or declaration fails closed.
+
+## Reader Ordo introductions
+
+Reader edition 6.1.0 adds `base.introductiones: "introductiones.json"`, independently
+versioned schema 1.0.0. Exact fields are `schema_version`, `units` and `events`, each list
+ordered by identity. A unit carries `id`, `role`, the owner's slash `text` address,
+`segment`, `words` (the owner's word ids in stored order) and `source`. An event carries `id`,
+`before`, `source` and `occurrences`, each with `unit`, `lecta` and `cantu`. No word, gloss or
+translation is repeated: the owner texts already travel in the neutral and every language
+package, and the resource requires each owner segment to be declared there, to carry exactly
+the unit's words in the neutral package and to have a nonempty translation in each language
+package. Language packages gain no file. The producer projects the validated library; the
+verifier restates the resource from the stored library and owner texts without calling the
+producer or the checker. A missing resource, owner, segment, word or translation fails closed.
 
 ## Bibliography and evidence graph
 

@@ -8,7 +8,7 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
-from build_reader import bibliography, canon, commemorationes, dismissal, store
+from build_reader import bibliography, canon, commemorationes, dismissal, introductiones, store
 from checks.formularies import SCHEMA as FORMULARY_SCHEMA
 from checks.formularies import TITLE_SCHEMA as FORMULARY_TITLE_SCHEMA
 from checks.formularies import ordinary_errors
@@ -45,7 +45,8 @@ from kalendarium.dismissal import calendar_table as dismissal_table
 # 5.12.0 adds the declared commemoration occurrence/activation resource and its localized titles.
 # 6.0.0 replaces that resource's pairs with explicit decisions for three Mass situations
 # (commemoration selection schema 2.0.0), a breaking change for its consumers.
-SCHEMA = "6.0.0"
+# 6.1.0 adds the declared Ordo introduction units and events (introductiones schema 1.0.0).
+SCHEMA = "6.1.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -863,6 +864,7 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
     """Write the whole reader edition. Returns what it wrote."""
     dismissal.input_bodies(corpus)
     commemorationes.input_bodies(corpus)
+    introductiones.input_bodies(corpus)
     corpus_docs = read_corpus(corpus)
     evidence_graph, language_evidence = bibliography.load(corpus)
     evidence_errors = bibliography.validate(corpus, evidence_graph, language_evidence)
@@ -995,6 +997,7 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
                 commemoration_table(formularies["formularies"], calendar, corpus=corpus)
             ),
         ),
+        ("introductiones.json", introductiones.artifact_json(introductiones.resource(corpus))),
         (
             "normalization.json",
             json.dumps(NORMALIZATION_VECTORS, ensure_ascii=False, indent=1) + "\n",
@@ -1153,6 +1156,7 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
             "canon": "canon.json",
             "dismissal": "dismissal.json",
             "commemorationes": "commemorationes.json",
+            "introductiones": "introductiones.json",
             "lexicon": "lexicon/heads.json",
             "morphology": "tables/morphology.json",
             "analysis": "tables/analysis.json",
@@ -1363,6 +1367,7 @@ def verify_edition_artifacts(
     )
     errors.extend(dismissal.verify(corpus, out, manifest, SCHEMA))
     errors.extend(commemorationes.verify(corpus, out, manifest, SCHEMA))
+    errors.extend(introductiones.verify(corpus, out, manifest, SCHEMA))
     if errors:
         return errors  # Canon dependencies must resolve before global index checks
 
