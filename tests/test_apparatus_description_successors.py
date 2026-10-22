@@ -39,7 +39,36 @@ NON_ADDITIONS = [
     for row in FIXTURE["rows"]
     if row["category"] in {"accent-removal", "accent-shift", "mixed-case-plus-accent"}
 ]
-COLLATIONS = [pytest.param(row, id=row["id"]) for row in FIXTURE["collations"]]
+SUCCESSORS = json.loads(
+    (ROOT / "tests/fixtures/capital-accent-positions.json").read_text(encoding="utf-8")
+)["description_successor_collations"]
+
+
+def current_collation_rows(rows, successors):
+    """The historical expected rows, each superseded one replaced by its exact current
+    successor by stable ID. The historical row must still be complete and exact."""
+    by_id: dict[str, dict] = {}
+    for successor in successors:
+        identity = successor["current"]["id"]
+        assert successor["superseded"]["id"] == identity and identity not in by_id
+        by_id[identity] = successor
+    composed = []
+    for row in rows:
+        successor = by_id.pop(row["id"], None)
+        if successor is None:
+            composed.append(row)
+            continue
+        assert row == successor["superseded"], "superseded expected collation row"
+        assert successor["current"]["before_sha256"] == row["before_sha256"]
+        composed.append(successor["current"])
+    assert not by_id, "every successor names a historical expected row"
+    return composed
+
+
+COLLATIONS = [
+    pytest.param(row, id=row["id"])
+    for row in current_collation_rows(FIXTURE["collations"], SUCCESSORS)
+]
 
 
 def apparatus(text):
@@ -204,6 +233,30 @@ def test_template_gate_is_exact_and_class_scoped_not_a_ban_on_words_or_other_cla
     # A paraphrase can evade this mechanical guard; no semantic acceptance follows.
     entry["ruling"] = DEPRECATED_ACCENT_RULING + " "
     assert deprecated_accent_rulings({"adjudicated": [entry]}) == []
+
+
+@pytest.mark.parametrize("successor", [pytest.param(s, id=s["current"]["id"]) for s in SUCCESSORS])
+def test_current_collation_overlay_requires_the_exact_superseded_row(successor):
+    rows = deepcopy(FIXTURE["collations"])
+    original = deepcopy(rows)
+    identity = successor["current"]["id"]
+    position = next(i for i, row in enumerate(rows) if row["id"] == identity)
+    stale = deepcopy(rows)
+    stale[position]["after_sha256"] = successor["current"]["after_sha256"]
+    assert stale[position] != successor["superseded"]
+    with pytest.raises(AssertionError, match=r"^superseded expected collation row"):
+        current_collation_rows(stale, SUCCESSORS)
+    missing = [row for row in rows if row["id"] != identity]
+    with pytest.raises(AssertionError, match=r"^every successor names a historical expected row"):
+        current_collation_rows(missing, SUCCESSORS)
+    composed = current_collation_rows(rows, SUCCESSORS)
+    assert [row["id"] for row in composed] == [row["id"] for row in rows]
+    assert composed[position] == successor["current"]
+    replaced = {s["current"]["id"] for s in SUCCESSORS}
+    assert [row for row in composed if row["id"] not in replaced] == [
+        row for row in rows if row["id"] not in replaced
+    ]
+    assert rows == original
 
 
 def test_bad_summary_does_not_hide_the_deprecated_template_or_vice_versa(tmp_path):
