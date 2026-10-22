@@ -38,7 +38,7 @@ LINES = {
         "moje",
         "zbawienie",
         "Twoje",
-        "Które",
+        "które",
         "przygotowałeś",
         "przed",
         "obliczem",

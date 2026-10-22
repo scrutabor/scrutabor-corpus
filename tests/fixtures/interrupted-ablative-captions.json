@@ -312,6 +312,16 @@
             ],
             "anchor": "w011",
             "gloss": "zostali oczyszczeni z naszych ukrytych win"
+          },
+          {
+            "words": [
+              "w014",
+              "w015",
+              "w016",
+              "w017"
+            ],
+            "anchor": "w016",
+            "gloss": "zostali wyzwoleni od zasadzek nieprzyjaciół"
           }
         ]
       }
@@ -2798,7 +2808,7 @@
     "languages/pl/texts/proprium/cathedra-sancti-petri-secreta.json": "d10f9cf8ca8e576b25dfa3be118c617199129ceb106d6d91610785e25e35c2a9",
     "languages/pl/texts/proprium/commemoratio-baptismatis-domini-postcommunio.json": "62665abab0cdbf6b1cd4965c9776ac4b0d021a32039ed0f32d45e9c3edd18a33",
     "languages/pl/texts/proprium/dominica-iii-in-quadragesima-postcommunio.json": "883731db897e5c50511ae980fe6f7d44521ff802f2fb21c8ab94be97cf416bc7",
-    "languages/pl/texts/proprium/dominica-v-post-pentecosten-postcommunio.json": "5b6251fdbd45c376f377e373f726e2c2f9d608e8e664889ae033dca0afaea2af",
+    "languages/pl/texts/proprium/dominica-v-post-pentecosten-postcommunio.json": "345a4124290ae7c7df7b2f129cce8c9d6c9c4f47af8254f4e387dbfa3a6f2ff0",
     "languages/pl/texts/proprium/dominica-x-post-pentecosten-postcommunio.json": "31e4c9d62a0ba00d9414c77976ebb091450924513d70876514abcf36797bd0da",
     "languages/pl/texts/proprium/dominica-xx-post-pentecosten-collecta.json": "703d50291f37c40c432cffd7b89a613b34d994ab447f94a7cd1f74600b0e754b",
     "languages/pl/texts/proprium/dominica-xx-post-pentecosten-postcommunio.json": "68ecdeb71a734d868a661694dcca505d6e7dcb65d66e9b6caa7b928e1afbb53d",
@@ -4574,12 +4584,19 @@
         "w018",
         "w019"
       ],
-      "direct": {
-        "w017": "wszystkich",
-        "w018": "broniła",
-        "w019": "przeciwności"
-      },
-      "groups": []
+      "direct": {},
+      "groups": [
+        {
+          "words": [
+            "w016",
+            "w017",
+            "w018",
+            "w019"
+          ],
+          "anchor": "w018",
+          "gloss": "broniła przed wszystkimi przeciwnościami"
+        }
+      ]
     },
     {
       "class": "inflected order",
@@ -4631,12 +4648,20 @@
         "w016",
         "w017"
       ],
-      "direct": {
-        "w015": "nieustanną",
-        "w016": "broń",
-        "w017": "pomocą"
-      },
-      "groups": []
+      "direct": {},
+      "groups": [
+        {
+          "words": [
+            "w013",
+            "w014",
+            "w015",
+            "w016",
+            "w017"
+          ],
+          "anchor": "w016",
+          "gloss": "broń także jego nieustanną pomocą"
+        }
+      ]
     },
     {
       "class": "inflected order",
@@ -4928,22 +4953,29 @@
         "w029",
         "w030"
       ],
-      "direct": {},
+      "direct": {
+        "w022": "jej"
+      },
       "groups": [
         {
           "words": [
-            "w022",
             "w023",
             "w024",
             "w025",
             "w026",
-            "w027",
+            "w027"
+          ],
+          "anchor": "w027",
+          "gloss": "i jej świętych towarzyszy pod Krzyżem"
+        },
+        {
+          "words": [
             "w028",
             "w029",
             "w030"
           ],
           "anchor": "w030",
-          "gloss": "dzięki wzmożonemu, najłaskawszemu wstawiennictwu jej i jej świętych towarzyszy pod Krzyżem"
+          "gloss": "dzięki wzmożonemu, najłaskawszemu wstawiennictwu"
         }
       ]
     },
