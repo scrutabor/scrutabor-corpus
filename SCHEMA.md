@@ -994,6 +994,13 @@ localization, editorial
   `s02` names `schola`. Their base `speaker` and `voice` remain absent. The
   other segments, including the whole antiphon reprise, have no assigned
   performer, and no Mass participation grade is inferred for these texts.
+  The Preface dialogue (`ordinarium.praefatio-dialogus`) has an exact rule of
+  its own (RG 511 h, 513 a, 514; DMS 16 b, 25 a, 26): the celebrant's three
+  calls carry `delivery.cantu: {speaker: "sacerdos", voice: "cantus"}`, and
+  the three answers carry `{speaker: "schola", voice: "cantus"}`, as an
+  oration's Amen does, beside their unchanged low-Mass base and DMS
+  participation. The rule is bound to that text's six printed verses; the
+  same words elsewhere in the Ordinary take nothing from it.
 - Segment: **`participation`** (since 0.10.0) is who among the FAITHFUL makes
   this line, and on whose authority. `speaker` answers a different question —
   whom the Missale charges with the line — and at low Mass the answer is

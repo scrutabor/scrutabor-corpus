@@ -18,10 +18,38 @@ from checks import ritual
 from checks.layout import formatted
 from checks.office import base_errors, is_office
 from checks.office import sung_delivery as office_delivery
-from checks.orations import structure, sung_delivery
+from checks.orations import PREFACE as PREFACE_DIALOGUE
+from checks.orations import structure, sung_delivery, tokens
 from checks.participation import CANTU_III_PROPER, proper_genus
 
 ROOT = Path(__file__).resolve().parent.parent
+
+# The Preface dialogue. RG 511 h gives the Preface an audible low-Mass base:
+# the celebrant says his three calls and the server answers, all clara.
+# RG 513 a has the celebrant sing the Preface at a solemn Mass and RG 514
+# extends that to the Missa cantata; DMS 16 b has the schola and people
+# answer him in the prescribed melody, and DMS 25 a and 26 name these three
+# answers among those sung by all the faithful. The answers take the actor
+# an oration's sung Amen has (checks.orations.sung_delivery), schola, and
+# the faithful's part stays in their separately derived DMS participation.
+#
+# The rule is bound to this one text and its printed six verses, never to
+# their words. Dominus vobiscum and Et cum spiritu tuo stand elsewhere too,
+# among other places at the foot of the altar (the versicles RG 513 a
+# excepts), at the dismissal and before the Last Gospel, and an Oremus opens
+# Aufer a nobis: none of them takes anything from this rule. Each row is the
+# segment, its low-Mass speaker, its sung performer and its printed words;
+# the word ids run on from w001 without a gap. A stored text that differs
+# from these rows in any of them is reported and receives no override,
+# rather than having its labels copied into the sung form.
+PREFACE_DIALOGUE_VERSES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
+    ("s02", "sacerdos", "sacerdos", ("dominus", "vobiscum")),
+    ("s03", "minister", "schola", ("et", "cum", "spiritu", "tuo")),
+    ("s04", "sacerdos", "sacerdos", ("sursum", "corda")),
+    ("s05", "minister", "schola", ("habemus", "ad", "dominum")),
+    ("s06", "sacerdos", "sacerdos", ("gratias", "agamus", "domino", "deo", "nostro")),
+    ("s07", "minister", "schola", ("dignum", "et", "iustum", "est")),
+)
 
 # The solemn Passion has three traditional parts.  The printed role sequence
 # is fixed here independently of the text files, just as the chant genera
@@ -39,12 +67,52 @@ PALM_PASSION_DELIVERY = {
 }
 
 
+def preface_dialogue_errors(doc: dict[str, Any]) -> list[str]:
+    """Where the stored Preface dialogue differs from its six printed verses."""
+    if doc.get("id") != PREFACE_DIALOGUE:
+        return []
+    segments = doc.get("segments", [])
+    expected = ["s01", *(row[0] for row in PREFACE_DIALOGUE_VERSES)]
+    if [s.get("id") for s in segments] != expected or segments[0].get("type") != "rubric":
+        return ["preface dialogue: segments must be the rubric s01 and the six verses s02-s07"]
+    errors: list[str] = []
+    first = 1
+    for seg, (sid, speaker, _performer, said) in zip(
+        segments[1:], PREFACE_DIALOGUE_VERSES, strict=True
+    ):
+        ids = [f"w{number:03d}" for number in range(first, first + len(said))]
+        first += len(said)
+        if (
+            seg.get("type") != "verse"
+            or tokens(seg) != said
+            or [w.get("id") for w in seg.get("words", [])] != ids
+        ):
+            errors.append(
+                f"{sid}: preface dialogue verse must read {' '.join(said)!r} as {ids[0]}-{ids[-1]}"
+            )
+        if (seg.get("speaker"), seg.get("voice")) != (speaker, "clara"):
+            errors.append(f"{sid}: preface dialogue low-Mass base must be {speaker}/clara")
+    return errors
+
+
+def preface_dialogue_delivery(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
+    """The sung-Mass performer of one verse of the intact Preface dialogue."""
+    if preface_dialogue_errors(doc):
+        return {}
+    for row in PREFACE_DIALOGUE_VERSES:
+        if seg.get("id") == row[0]:
+            return {"cantu": {"speaker": row[2], "voice": "cantus"}}
+    return {}
+
+
 def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
     """Return the form-specific override required by this segment."""
     if doc.get("id") in ritual.TEXTS:
         return ritual.delivery(doc, seg)
     if is_office(doc):
         return office_delivery(doc, seg)
+    if doc.get("id") == PREFACE_DIALOGUE:
+        return preface_dialogue_delivery(doc, seg)
     _, orations = structure(doc)
     if seg.get("id") in orations:
         return sung_delivery(orations[seg["id"]])
@@ -67,7 +135,8 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
 
 def check_doc(doc: dict[str, Any]) -> tuple[list[str], int]:
     """Compare stored delivery with the derived liturgical role."""
-    errors, overridden = base_errors(doc) + ritual.base_errors(doc), 0
+    errors = base_errors(doc) + ritual.base_errors(doc) + preface_dialogue_errors(doc)
+    overridden = 0
     for seg in doc.get("segments", []):
         want, have = derive(doc, seg), seg.get("delivery") or {}
         if want != have:
@@ -84,7 +153,7 @@ def run(write: bool = False) -> int:
     problems, written, carried = 0, 0, 0
     for path in sorted(ROOT.glob("texts/*/*.json")):
         doc = json.loads(path.read_text(encoding="utf-8"))
-        invalid_base = base_errors(doc) + ritual.base_errors(doc)
+        invalid_base = base_errors(doc) + ritual.base_errors(doc) + preface_dialogue_errors(doc)
         if invalid_base:
             problems += len(invalid_base)
             for error in invalid_base:
