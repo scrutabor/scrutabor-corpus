@@ -12,6 +12,11 @@ from pathlib import Path
 
 import pytest
 from post_ascension_fixture import FIXTURE, expected_row_successor, restore_layer, value_at
+from preface_delivery_fixture import (
+    current_expected_row,
+    current_source_hash,
+    without_preface_delivery,
+)
 from provenance_successor_fixture import assert_protection_scope
 
 from build_reader import bibliography, store
@@ -88,7 +93,10 @@ def test_full_subject_and_bilingual_denominator():
     words = verses = rubrics = 0
     for text in TEXTS:
         core = store.core(ROOT, text)
-        assert canonical_hash(core["segments"]) == FIXTURE["segment_hashes"][text]
+        assert (
+            canonical_hash(without_preface_delivery(core)["segments"])
+            == FIXTURE["segment_hashes"][text]
+        )
         for field in FIXTURE["core_fields"].get(text, []):
             assert value_at(core, field["keys"]) == field["after"]
         words += sum(len(segment.get("words", [])) for segment in core["segments"])
@@ -245,15 +253,17 @@ def test_all_eight_current_rows_preserve_route_and_exact_signatures():
     assert len(FIXTURE["historical_english_uses"]) == 2
     for site, expected in FIXTURE["verse_rows"].items():
         row = ledger[site]
-        assert row == expected["after"]
-        assert expected_row_successor(expected["before"]) == row
+        assert row == current_expected_row(expected["after"])
+        assert current_expected_row(expected_row_successor(expected["before"])) == row
         text, segment, language = site.rsplit(".", 2)
         source = next(s for s in store.core(ROOT, text)["segments"] if s["id"] == segment)
         target = store.raw_layer(ROOT, language, text)["segments"][segment]["translation"]
         assert row["source_sha256"] == canonical_hash(source_payload(source))
         assert row["target_sha256"] == canonical_hash(target)
         assert row["target_sha256"] != hashlib.sha256(target.encode()).hexdigest()
-        assert row["source_sha256"] == expected["before"]["source_sha256"]
+        assert row["source_sha256"] == current_source_hash(
+            text, segment, expected["before"]["source_sha256"]
+        )
         assert row["review"] == "working"
     public_domain = {
         site

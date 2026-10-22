@@ -1000,7 +1000,13 @@ localization, editorial
   the three answers carry `{speaker: "schola", voice: "cantus"}`, as an
   oration's Amen does, beside their unchanged low-Mass base and DMS
   participation. The rule is bound to that text's six printed verses; the
-  same words elsewhere in the Ordinary take nothing from it.
+  same words elsewhere in the Ordinary take nothing from it. Each of the 24
+  Prefaces the formularies select (`ordinarium.praefatio-*`) has a rule of
+  the same kind (RG 511 h, 513 a, 514): every verse carries
+  `delivery.cantu: {speaker: "sacerdos", voice: "cantus"}` beside its
+  unchanged `sacerdos`/`clara` base, with no participation, and the hand
+  rubric `s01` takes nothing. The rule is bound to a closed inventory of each
+  Preface's verse segments and word ids; a Preface outside it is reported.
 - Segment: **`participation`** (since 0.10.0) is who among the FAITHFUL makes
   this line, and on whose authority. `speaker` answers a different question —
   whom the Missale charges with the line — and at low Mass the answer is

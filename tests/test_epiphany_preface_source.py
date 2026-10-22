@@ -4,6 +4,7 @@ import json
 from copy import deepcopy
 
 import pytest
+from preface_delivery_fixture import current_selected_hash
 
 from build_reader import bibliography
 from build_reader.bibliography_bindings import BindingError, digest, selected_text, witness_subject
@@ -157,9 +158,8 @@ def test_epiphany_canonical_latin_and_ritual_identity_are_unchanged():
     doc = core()
     assert len(corpus_tokens(doc)) == 58
     # Covers the s01 hand rubric, which keeps the printed lower-case præfationis (p. 225).
-    assert (
-        digest(selected_text(doc))
-        == "da0a41a726cf5b2aef214b4c1091e369c83e838e81864a98696a9cb187a0715d"
+    assert digest(selected_text(doc)) == current_selected_hash(
+        TID, "da0a41a726cf5b2aef214b4c1091e369c83e838e81864a98696a9cb187a0715d"
     )
     assert " ".join(word for _, word in corpus_tokens(doc)[38:43]) == CHOSEN
 

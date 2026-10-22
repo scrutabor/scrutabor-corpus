@@ -8,6 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from preface_delivery_fixture import current_witness_hash
 
 from build_reader.bibliography import public_text_evidence
 from build_reader.bibliography_bindings import (
@@ -403,7 +404,7 @@ def test_existing_raw_and_witness_subjects_keep_exact_bytes(row):
     category, slug = witness["text"].split(".", 1)
     doc = json.loads((ROOT / "texts" / category / (slug + ".json")).read_text())
     subject = _witness_subject(ROOT, witness, doc, _SourceSnapshot(ROOT, graph), reviewable=False)
-    assert digest(subject) == row["witness_subject_sha256"]
+    assert digest(subject) == current_witness_hash(row["witness"], row["witness_subject_sha256"])
 
 
 @pytest.mark.parametrize("mode", ["inline", "pdf"])

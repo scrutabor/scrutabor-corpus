@@ -6,6 +6,7 @@ from copy import deepcopy
 from typing import Any
 
 import pytest
+from preface_delivery_fixture import current_expected_row, without_preface_delivery
 
 from checks.interlinear import check, effective_gloss
 from checks.language_packs import check_layer
@@ -235,7 +236,7 @@ def assert_protected(core, layer, slug):
 
 def assert_prose_provenance(core, layer, record, slug):
     expected = BASELINES[slug]
-    assert record == expected["provenance"]
+    assert record == current_expected_row(expected["provenance"])
     segment = next(s for s in core["segments"] if s["id"] == expected["segment"])
     prose = layer["segments"][expected["segment"]]["translation"]
     assert prose == expected["prose"]
@@ -244,7 +245,7 @@ def assert_prose_provenance(core, layer, record, slug):
 
 
 def assert_source_and_english(core, english, slug):
-    assert canonical_hash(core) == BASELINES[slug]["core_digest"]
+    assert canonical_hash(without_preface_delivery(core)) == BASELINES[slug]["core_digest"]
     assert canonical_hash(english) == BASELINES[slug]["english_digest"]
 
 
@@ -515,7 +516,7 @@ def test_unrelated_payload_is_not_hidden_by_restoration(slug, mutation):
 )
 def test_provenance_cannot_be_resealed(slug, field, wrong):
     core, layer, _ = load(slug)
-    record = deepcopy(BASELINES[slug]["provenance"])
+    record = current_expected_row(BASELINES[slug]["provenance"])
     record[field] = wrong
     with pytest.raises(AssertionError):
         assert_prose_provenance(core, layer, record, slug)

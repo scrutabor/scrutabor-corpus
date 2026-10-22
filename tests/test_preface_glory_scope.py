@@ -6,6 +6,7 @@ from copy import deepcopy
 
 import pytest
 from preface_caption_fixture import restore_caption_layer
+from preface_delivery_fixture import current_source_hash
 from preface_glory_fixture import (
     EN_AFTER,
     EN_TARGET,
@@ -136,7 +137,11 @@ def assert_english_provenance(row, segment, translated):
     assert (
         row["source_sha256"]
         == canonical_hash(source_payload(segment))
-        == ("88d4fe9af744ad39978d27b4f8f6e137fd42d0cea4205ff8b89f551165587bd3")
+        == current_source_hash(
+            "ordinarium.praefatio-sanctissimae-trinitatis",
+            "s05",
+            "88d4fe9af744ad39978d27b4f8f6e137fd42d0cea4205ff8b89f551165587bd3",
+        )
     )
     assert row["target_sha256"] == canonical_hash(translated) == EN_TARGET
 

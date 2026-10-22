@@ -51,6 +51,52 @@ PREFACE_DIALOGUE_VERSES: tuple[tuple[str, str, str, tuple[str, ...]], ...] = (
     ("s07", "minister", "schola", ("dignum", "et", "iustum", "est")),
 )
 
+# The Preface itself. RG 511 h lists the Preface among what the celebrant
+# says clara voce at low Mass; RG 513 a has him sing the Per omnia saecula
+# saeculorum with the Preface at a solemn Mass, and RG 514 extends that to
+# the Missa cantata. Every verse of every Preface the formularies select is
+# therefore the celebrant's in both forms: sacerdos/clara at low Mass, and
+# sacerdos/cantus when the Mass is sung. The rule adds no participation of
+# the faithful.
+#
+# As with the dialogue, the rule is bound to a closed inventory, never to
+# words. Each row gives the number of the first verse segment and the word
+# count of every verse; the verse segments follow one another, and their
+# word ids run on from w001 without a gap. A Preface whose verses begin at
+# s02 opens with the hand rubric s01; the three Paschal Prefaces carry no
+# such rubric, and their single verse is s01. A stored Preface that differs
+# from its row is reported and receives no override, and a Preface id
+# without a row is reported rather than left unmodeled in silence. Other
+# texts take nothing from this rule, whatever their words.
+PREFACE_PREFIX = "ordinarium.praefatio-"
+PREFACE_BODIES: dict[str, tuple[int, tuple[int, ...]]] = {
+    "apostolorum": (2, (8, 19, 12, 22)),
+    "ascensionis": (2, (70,)),
+    "beatae-mariae-virginis": (2, (15, 6, 12, 20, 10, 9, 12)),
+    "beatae-mariae-virginis-in-annuntiatione": (2, (15, 6, 12, 20, 10, 9, 12)),
+    "beatae-mariae-virginis-in-assumptione": (2, (15, 6, 12, 20, 10, 9, 12)),
+    "beatae-mariae-virginis-in-conceptione-immaculata": (2, (15, 6, 13, 20, 10, 9, 12)),
+    "beatae-mariae-virginis-in-nativitate": (2, (15, 6, 12, 20, 10, 9, 12)),
+    "beatae-mariae-virginis-in-transfixione": (2, (15, 6, 12, 20, 10, 9, 12)),
+    "beatae-mariae-virginis-in-visitatione": (2, (15, 6, 12, 20, 10, 9, 12)),
+    "communis": (2, (15, 10, 10, 9, 12)),
+    "d-n-iesu-christi-regis": (2, (15, 6, 57, 22)),
+    "defunctorum": (2, (15, 10, 18, 19, 22)),
+    "epiphaniae": (2, (15, 6, 15, 22)),
+    "nativitatis": (2, (15, 6, 24, 22)),
+    "paschalis": (1, (65,)),
+    "paschalis-in-die": (1, (66,)),
+    "paschalis-in-nocte": (1, (66,)),
+    "quadragesimae": (2, (15, 6, 15, 10, 9, 12)),
+    "sacratissimi-cordis-iesu": (2, (15, 6, 37, 22)),
+    "sanctae-crucis": (2, (15, 6, 28, 10, 9, 12)),
+    "sancti-ioseph-in-festivitate": (2, (15, 6, 12, 35, 10, 9, 12)),
+    "sancti-ioseph-in-solemnitate": (2, (15, 6, 12, 35, 10, 9, 12)),
+    "sanctissimae-trinitatis": (2, (15, 6, 24, 20, 19, 17)),
+    "spiritus-sancti": (2, (66,)),
+}
+assert all(first in (1, 2) and counts for first, counts in PREFACE_BODIES.values())
+
 # The solemn Passion has three traditional parts.  The printed role sequence
 # is fixed here independently of the text files, just as the chant genera
 # below are fixed independently of their stored overrides.  At low Mass the
@@ -105,6 +151,48 @@ def preface_dialogue_delivery(doc: dict[str, Any], seg: dict[str, Any]) -> dict[
     return {}
 
 
+def preface_body_errors(doc: dict[str, Any]) -> list[str]:
+    """Where a stored Preface differs from its row of the closed inventory."""
+    text_id = doc.get("id", "")
+    if not text_id.startswith(PREFACE_PREFIX) or text_id == PREFACE_DIALOGUE:
+        return []
+    row = PREFACE_BODIES.get(text_id.removeprefix(PREFACE_PREFIX))
+    if row is None:
+        return ["preface: this Preface has no row in the closed inventory of sung Prefaces"]
+    first, counts = row
+    verses = [f"s{number:02d}" for number in range(first, first + len(counts))]
+    segments = doc.get("segments", [])
+    rubric = ["s01"] if first == 2 else []
+    if [s.get("id") for s in segments] != rubric + verses or (
+        rubric and segments[0].get("type") != "rubric"
+    ):
+        named = f"verses {verses[0]}-{verses[-1]}" if len(verses) > 1 else f"verse {verses[0]}"
+        opening = "the rubric s01 and " if rubric else ""
+        return [f"preface: segments must be {opening}the {named}"]
+    errors: list[str] = []
+    word = 1
+    for seg, count in zip(segments[len(rubric) :], counts, strict=True):
+        ids = [f"w{number:03d}" for number in range(word, word + count)]
+        word += count
+        if seg.get("type") != "verse" or [w.get("id") for w in seg.get("words", [])] != ids:
+            errors.append(f"{seg['id']}: preface verse must hold {ids[0]}-{ids[-1]}")
+        if (seg.get("speaker"), seg.get("voice")) != ("sacerdos", "clara"):
+            errors.append(f"{seg['id']}: preface low-Mass base must be sacerdos/clara")
+    return errors
+
+
+def preface_body_delivery(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
+    """The sung-Mass delivery of one segment of an intact, inventoried Preface."""
+    if preface_body_errors(doc) or seg.get("type") != "verse":
+        return {}
+    return {"cantu": {"speaker": "sacerdos", "voice": "cantus"}}
+
+
+def preface_errors(doc: dict[str, Any]) -> list[str]:
+    """Where a stored Preface or its dialogue differs from its closed rule."""
+    return preface_dialogue_errors(doc) + preface_body_errors(doc)
+
+
 def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
     """Return the form-specific override required by this segment."""
     if doc.get("id") in ritual.TEXTS:
@@ -113,6 +201,8 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
         return office_delivery(doc, seg)
     if doc.get("id") == PREFACE_DIALOGUE:
         return preface_dialogue_delivery(doc, seg)
+    if doc.get("id", "").startswith(PREFACE_PREFIX):
+        return preface_body_delivery(doc, seg)
     _, orations = structure(doc)
     if seg.get("id") in orations:
         return sung_delivery(orations[seg["id"]])
@@ -135,7 +225,7 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
 
 def check_doc(doc: dict[str, Any]) -> tuple[list[str], int]:
     """Compare stored delivery with the derived liturgical role."""
-    errors = base_errors(doc) + ritual.base_errors(doc) + preface_dialogue_errors(doc)
+    errors = base_errors(doc) + ritual.base_errors(doc) + preface_errors(doc)
     overridden = 0
     for seg in doc.get("segments", []):
         want, have = derive(doc, seg), seg.get("delivery") or {}
@@ -153,7 +243,7 @@ def run(write: bool = False) -> int:
     problems, written, carried = 0, 0, 0
     for path in sorted(ROOT.glob("texts/*/*.json")):
         doc = json.loads(path.read_text(encoding="utf-8"))
-        invalid_base = base_errors(doc) + ritual.base_errors(doc) + preface_dialogue_errors(doc)
+        invalid_base = base_errors(doc) + ritual.base_errors(doc) + preface_errors(doc)
         if invalid_base:
             problems += len(invalid_base)
             for error in invalid_base:

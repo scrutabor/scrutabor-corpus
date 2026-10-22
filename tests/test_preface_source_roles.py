@@ -5,6 +5,7 @@ import json
 from copy import deepcopy
 
 import pytest
+from preface_delivery_fixture import current_graph_hash, current_selected_hash
 
 from build_reader import bibliography
 from build_reader.bibliography_bindings import (
@@ -172,7 +173,7 @@ def check_easter(data, slug, doc):
     assert witness["coverage"] == {"kind": "full"}
     assert witness["review"] == {"status": "pending"}
     assert not any(s["type"] == "rubric" for s in doc["segments"])
-    assert digest(selected_text(doc)) == SELECTED[slug]
+    assert digest(selected_text(doc)) == current_selected_hash(tid(slug), SELECTED[slug])
     words = [w for s in doc["segments"] for w in s.get("words", [])]
     assert len(words) == 66
     assert [(w["id"], w["form"]) for w in (words[19], words[20], words[-1])] == [
@@ -187,7 +188,7 @@ def check_protected(data, slug):
         key: [r for r in data[key] if r.get("text", r.get("address", {}).get("text")) == tid(slug)]
         for key in ("uses", "witnesses", "collations")
     }
-    assert digest(records) == PROTECTED[slug]
+    assert digest(records) == current_graph_hash(tid(slug), PROTECTED[slug])
 
 
 NIGHT_RULINGS = {

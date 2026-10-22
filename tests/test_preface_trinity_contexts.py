@@ -7,6 +7,7 @@ from typing import Any
 
 import pytest
 from preface_caption_fixture import current_caption_site, restore_caption_layer
+from preface_delivery_fixture import current_expected_row
 from preface_glory_fixture import (
     EN_AFTER,
     current_english_rows,
@@ -540,7 +541,7 @@ def relabelled(rows):
     for row in result:
         if row["site"] in RELABEL_2026_10_20:
             row["origin"], row["review"] = RELABEL_2026_10_20[row["site"]]
-    return metadata_successors(result)
+    return [current_expected_row(row) for row in metadata_successors(result)]
 
 
 def expected_records():

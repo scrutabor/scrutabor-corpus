@@ -2,6 +2,8 @@
 
 from copy import deepcopy
 
+from preface_delivery_fixture import without_preface_delivery
+
 QUAM_GLOSSES = {"pl": "którą", "en": "which"}
 QUAM_NOTES = {
     "pl": "Quam nawiązuje do poprzednich słów: może odnosić się do wspomnianej równości "
@@ -25,7 +27,7 @@ def restore_note_layer(layer, language):
 
 
 def restore_note_core(core):
-    result = deepcopy(core)
+    result = without_preface_delivery(core)
     assert result["id"] == "ordinarium.praefatio-sanctissimae-trinitatis"
     declarations = result["localization"]["explanations"]
     assert list(declarations) == ["w064", "w085"]

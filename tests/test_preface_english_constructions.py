@@ -9,6 +9,7 @@ from day_preface_fixture import TARGET as DAY_TARGET
 from day_preface_fixture import restore_day_preface
 from post_ascension_fixture import restore_layer as restore_ascension_layer
 from preface_caption_fixture import restore_caption_layer
+from preface_delivery_fixture import current_expected_row, current_source_hash
 from preface_glory_fixture import restore_glory_layer
 from provenance_successor_fixture import restore_preface_prose
 from vigil_preface_fixture import TARGET, current_prose, restore_vigil_preface
@@ -491,7 +492,7 @@ def assert_provenance(record, doc, layer, slug):
     prose = BASELINES[slug]["prose"]
     expected = deepcopy(prose["provenance_before"])
     expected["target_sha256"] = TARGET if slug == "paschalis-in-nocte" else DAY_TARGET
-    assert record == expected
+    assert record == current_expected_row(expected)
     segment = next(s for s in doc["segments"] if s["id"] == prose["segment"])
     assert record["source_sha256"] == canonical_hash(source_payload(segment))
     assert record["target_sha256"] == canonical_hash(
@@ -525,10 +526,10 @@ def test_complete_layer_and_canonical_layout(slug):
     assert path.read_text() == formatted(layer)
 
 
-def assert_source_context(segment, expected):
-    assert canonical_hash(source_payload(segment)) == expected, (
-        "current complete Preface source context"
-    )
+def assert_source_context(doc, segment, expected):
+    assert canonical_hash(source_payload(segment)) == current_source_hash(
+        doc["id"], segment["id"], expected
+    ), "current complete Preface source context"
 
 
 @pytest.mark.parametrize("slug", SLUGS)
@@ -536,15 +537,15 @@ def test_source_context_is_unchanged(slug):
     doc, _ = load(slug)
     for sid, expected in BASELINES[slug]["source_contexts"].items():
         segment = next(s for s in doc["segments"] if s["id"] == sid)
-        assert_source_context(segment, expected)
+        assert_source_context(doc, segment, expected)
         if slug == "d-n-iesu-christi-regis" and sid == "s04":
             snapshot = deepcopy(segment)
             historical = "619a0870ec08c6c334e1f6839d32ed54fe19711e506300d062295eb16412ecab"
             assert expected == "de31bf1056b2b6e51e27b303c25994b03a7a28d6e60c373e269001df0434b3a4"
             assert historical != expected
-            with pytest.raises(AssertionError, match=r"^current complete Preface source context"):
-                assert_source_context(segment, historical)
-            assert_source_context(segment, expected)
+            with pytest.raises(AssertionError, match=r"^historical Preface source hash"):
+                assert_source_context(doc, segment, historical)
+            assert_source_context(doc, segment, expected)
             assert segment == snapshot
 
 
@@ -732,7 +733,7 @@ def test_absorbed_passive_must_not_reappear_as_an_overlap(slug):
 def test_provenance_promotion_or_stale_bindings_are_rejected(field, value):
     slug = "paschalis-in-die"
     doc, layer = load(slug)
-    record = deepcopy(BASELINES[slug]["prose"]["provenance_before"])
+    record = current_expected_row(BASELINES[slug]["prose"]["provenance_before"])
     record["target_sha256"] = DAY_TARGET
     assert_provenance(record, doc, layer, slug)
     record[field] = value

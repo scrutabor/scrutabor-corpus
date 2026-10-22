@@ -264,10 +264,33 @@ def test_an_identical_segment_in_another_text_takes_nothing(text_id):
         assert delivery.derive(other, segment(other, sid)) == {}
 
 
+def selected_prefaces() -> set[str]:
+    """The Preface texts the formularies select in their Preface role."""
+    found: set[str] = set()
+
+    def visit(value: object) -> None:
+        if isinstance(value, dict):
+            if value.get("role") == "praefatio":
+                found.add(value["text"])
+            for child in value.values():
+                visit(child)
+        elif isinstance(value, list):
+            for child in value:
+                visit(child)
+
+    for path in sorted((CORPUS / "formularies").rglob("*.json")):
+        visit(json.loads(path.read_text(encoding="utf-8")))
+    return found
+
+
 def test_no_other_ordinary_text_is_modeled_by_implication():
     modeled: set[str] = set()
     for path in sorted((CORPUS / "texts" / "ordinarium").glob("*.json")):
         doc = json.loads(path.read_text(encoding="utf-8"))
         if any(delivery.derive(doc, s) for s in doc["segments"]):
             modeled.add(doc["id"])
-    assert modeled == {DIALOGUE, "ordinarium.ite-missa-est-paschale"}
+    # The Prefaces themselves have their own closed rule, which
+    # tests/test_preface_body_delivery.py pins row by row.
+    prefaces = selected_prefaces()
+    assert len(prefaces) == 24 and DIALOGUE not in prefaces
+    assert modeled == {DIALOGUE, "ordinarium.ite-missa-est-paschale"} | prefaces
