@@ -65,10 +65,13 @@ FIRST_CLASS_WEEKDAYS = {
 # The 63 Greater-Litanies (date, Mass) pairs of selection schema 1.0.0, unchanged in 2.0.0 and
 # 2.1.0.
 LITANIES_SHA256 = "99f31b8d14c69419dc53a46df618fa10ced665db90bf0fddcbd35c396f69be7f"
-# Identity order of the resource: dominica-impedita, litaniae-maiores, sancta-petronilla.
-LITANIES_INDEX, SP_INDEX = 1, 2
+# Identity order of the resource: dominica-impedita, festum-impeditum, litaniae-maiores,
+# sancta-petronilla.
+LITANIES_INDEX, SP_INDEX = 2, 3
 # The impeded Sunday's pairs (tests/test_dominica_impedita.py).
 IMPEDED_SUNDAY_PAIRS = 75
+# The impeded feast's pairs (tests/test_festum_impeditum.py).
+IMPEDED_FEAST_PAIRS = 206
 
 
 @pytest.fixture(scope="module")
@@ -122,7 +125,7 @@ def assert_plan(table):
 
 def test_the_authored_contract_is_exact_and_reaches_its_three_propers():
     doc = authored()
-    assert doc["commemoration_schema"] == "1.2.0" and doc["id"] == SP
+    assert doc["commemoration_schema"] == "1.3.0" and doc["id"] == SP
     assert doc["title"] == "S. Petronillæ Virginis"
     assert (doc["rank"], doc["scope"], doc["conclusion"]) == ("ordinary", "missa", "separate")
     assert doc["occurrence"] == {"month": 5, "day": 31, "transfer": "none"}
@@ -227,7 +230,10 @@ def test_the_greater_litanies_decisions_are_unchanged(table):
     raw = json.dumps(pairs, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     assert hashlib.sha256(raw.encode()).hexdigest() == LITANIES_SHA256
     assert all(row[3:] == [0, 0, 0, 0, None] for row in rows)
-    assert len(table["pairs"]) == len(rows) + 1 + len(ADMITTED) + IMPEDED_SUNDAY_PAIRS
+    assert (
+        len(table["pairs"])
+        == len(rows) + 1 + len(ADMITTED) + IMPEDED_SUNDAY_PAIRS + IMPEDED_FEAST_PAIRS
+    )
 
 
 def test_the_resource_equals_the_independent_reconstruction(table):
@@ -378,7 +384,7 @@ def test_a_slot_body_missing_from_a_language_package_fails_before_emission(tmp_p
         s["text"]
         for path in (CORPUS / "commemorationes").glob("*.json")
         for s in json.loads(path.read_text(encoding="utf-8"))["slots"]
-        if s["text"] is not None  # the impeded Sunday's slots are resolved per date
+        if s["text"] is not None  # the impeded Sunday's and feast's slots are resolved per date
     ]
     for text in slots:
         relative = f"{text.replace('.', '/', 1)}.json"

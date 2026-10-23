@@ -48,7 +48,9 @@ from kalendarium.dismissal import calendar_table as dismissal_table
 # 6.1.0 adds the declared Ordo introduction units and events (introductiones schema 1.0.0).
 # 6.2.0 adds the impeded-Sunday commemoration (commemoration selection schema 2.1.0): a pair
 # also names the formulary whose orations a resolved commemoration says, null for the others.
-SCHEMA = "6.2.0"
+# 6.3.0 adds the impeded-feast commemoration under the same selection schema 2.1.0: an ordinary
+# commemoration resolved per pair to the second-class feast that a second-class Sunday impedes.
+SCHEMA = "6.3.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.

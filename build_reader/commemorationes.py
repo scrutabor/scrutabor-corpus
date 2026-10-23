@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from calendar import isleap
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -15,6 +16,9 @@ from kalendarium.commemorationes import (
     authored,
     displaced,
     entries,
+    formulary_orations,
+    impeded,
+    impeded_feasts,
     impeded_sundays,
     sunday_orations,
     validate,
@@ -22,6 +26,7 @@ from kalendarium.commemorationes import (
 from kalendarium.computus import easter
 from kalendarium.dismissal import canonical_inputs
 from kalendarium.roman import year
+from kalendarium.sanctorale import FESTA
 from kalendarium.temporale import Dies
 
 TITLE_SCHEMA = "1.0.0"
@@ -29,11 +34,13 @@ TITLE_SCHEMA = "1.0.0"
 # Pentecost so that the one before the last is the Sixth; the last is always the Twenty-fourth.
 RESUMED = {3: "iii", 4: "iv", 5: "v", 6: "vi"}
 ROLES = ("collecta", "secreta", "postcommunio")
+# The sanctoral feasts' printed fixed dates (month, day).
+FIXED = {feast.formulary: (feast.month, feast.day) for feast in FESTA}
 
 
 def slot_bodies(corpus: Path) -> list[str]:
     """Every dotted text a commemoration may say: the addressed slots, and the orations of
-    each impeded Sunday whose formulary is in this edition."""
+    each impeded Sunday and each impeded feast whose formulary is in this edition."""
     from build_reader import store
 
     forms = {form["id"]: form for form in store.formularies(corpus)}
@@ -42,6 +49,10 @@ def slot_bodies(corpus: Path) -> list[str]:
         if displaced(doc):
             for sunday in sorted(set(impeded_sundays(doc).values())):
                 texts = sunday_orations(forms.get(sunday)) or []
+                found.extend(text.replace("/", ".", 1) for text in texts)
+        elif impeded(doc):
+            for feast in sorted(set(impeded_feasts(doc).values())):
+                texts = formulary_orations(forms.get(feast)) or []
                 found.extend(text.replace("/", ".", 1) for text in texts)
         else:
             found.extend(slot["text"] for slot in doc["slots"])
@@ -99,6 +110,15 @@ def language_catalog(corpus: Path, language: str) -> dict:
     return {"schema_version": TITLE_SCHEMA, "language": language, "titles": titles}
 
 
+def _printed(feast: str, civil_year: int) -> date:
+    """A sanctoral feast's printed fixed date: the calendar gives St Matthias 25 February in a
+    leap year."""
+    month, day = FIXED[feast]
+    if feast == "sancti-matthiae-apostoli" and isleap(civil_year):
+        day = 25
+    return date(civil_year, month, day)
+
+
 def _sunday(day: Dies, after: list[date]) -> str:
     """RG 18 restated from the year's own count of Sundays after Pentecost, Trinity first."""
     if day.when not in after:
@@ -113,8 +133,9 @@ def _sunday(day: Dies, after: list[date]) -> str:
 
 def expected(corpus: Path) -> dict:
     """No call to the producer: iterate the computed years anew, apply RG 80 again for the
-    transferred occurrence, restate the admission of RG 108–114 from the computed days, and
-    restate RG 15–18 for the impeded Sunday from the computed positions."""
+    transferred occurrence, restate the admission of RG 108–114 from the computed days,
+    restate RG 15–18 for the impeded Sunday from the computed positions, and restate RG 16 for
+    the impeded feast from the feasts' printed dates and the computed second-class Sundays."""
     forms, _ = canonical_inputs(corpus)
     masses = sorted(form["id"] for form in forms)
     by_id = {form["id"]: form for form in forms}
@@ -149,7 +170,27 @@ def expected(corpus: Path) -> dict:
             for index, doc in enumerate(commemorations):
                 rule = doc["occurrence"]
                 resolution: str | None = None
-                if "kind" in rule:
+                if rule.get("kind") == "impeded-feast":
+                    if (
+                        day.when.isoweekday() != 7
+                        or day.dies_class != 2
+                        or not day.formulary.startswith("dominica-")
+                    ):
+                        continue
+                    named = [f for f in rule["feasts"] if _printed(f, day.when.year) == day.when]
+                    if not named:
+                        continue
+                    if len(named) != 1:
+                        raise ValueError(f"commemorationes: {iso} falls on more than one feast")
+                    occurrences.append([iso, index])
+                    resolution = named[0]
+                    feast = by_id.get(resolution)
+                    if feast is None or not all(
+                        any(c["role"] == role for c in feast["components"]) for role in ROLES
+                    ):
+                        raise ValueError(f"commemorationes: {resolution} is not in this edition")
+                    plan = [admitted, admitted, not_admitted]
+                elif "kind" in rule:
                     if day.formulary not in rule["feasts"] or day.when.isoweekday() != 7:
                         continue
                     occurrences.append([iso, index])
@@ -215,8 +256,8 @@ def verify(corpus: Path, out: Path, manifest: dict, reader_schema: str) -> list[
         for slot in entry.get("slots") or []
         if isinstance(slot.get("text"), str)
     ]
-    # An admitted impeded Sunday says the orations its formulary assembles: read them from the
-    # authored formularies rather than from the emitted catalogue.
+    # An admitted impeded Sunday or impeded feast says the orations its formulary assembles:
+    # read them from the authored formularies rather than from the emitted catalogue.
     from build_reader import store
 
     forms = {form["id"]: form for form in store.formularies(corpus)}
@@ -227,7 +268,7 @@ def verify(corpus: Path, out: Path, manifest: dict, reader_schema: str) -> list[
             continue
         if admitted in row[4:width]:
             try:
-                texts = sunday_orations(forms.get(row[width]))
+                texts = formulary_orations(forms.get(row[width]))
             except ValueError as exc:
                 texts = None
                 errors.append(str(exc))

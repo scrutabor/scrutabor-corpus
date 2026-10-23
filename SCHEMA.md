@@ -178,7 +178,7 @@ independent copies of those totals.
 
 ## Commemoration assemblies
 
-`commemorationes/<id>.json` (commemoration schema `1.2.0`) is the canonical
+`commemorationes/<id>.json` (commemoration schema `1.3.0`) is the canonical
 contract for a set of orations that joins a Mass of the day under the rubrics
 and is addressed by its own occurrence rule, not by the winning Mass. The first
 is the Greater Litanies: Rubricae generales 80 fix it on April 25, moved to the
@@ -198,13 +198,20 @@ second-class Sunday, and the Immaculate Conception that of the Second Sunday of
 Advent (RG 15, the table at 91), and the Sunday is commemorated in the feast's
 Mass as a privileged commemoration, made in all Masses (108–109 a); a feast of
 the Lord and the feasts of 17 take a Sunday's place with no commemoration of it
-(16 a, 17, 112 b).
+(16 a, 17, 112 b). The fourth is the impeded feast (`festum-impeditum`, schema
+`1.3.0`): a second-class Sunday is preferred to a second-class feast of the
+universal Church that is not a feast of the Lord (RG 16, the table at 91), the
+feast is not transferred (95), and it is commemorated in the Sunday's Mass as
+an ordinary commemoration (107–109), the one commemoration a second-class
+Sunday admits (111 b, 434 b); the Mass of the Sunday within the octave of the
+Nativity commemorates the occurring feast and not the octave (Vatican p. 22).
 
 Exact fields: `commemoration_schema`, `id` (the file name), `title`, `rank`
 (`privileged` or `ordinary`), `scope` (`missa`), `occurrence`, `conclusion`
 (`separate`), `slots` and `rubrics`, with the optional `text_prefix`. An
-occurrence is either a fixed date (`month`, `day`, `transfer`) or the kind
-`{"kind": "displaced-sunday", "feasts": [...]}`, and nothing else. The transfer
+occurrence is a fixed date (`month`, `day`, `transfer`), the kind
+`{"kind": "displaced-sunday", "feasts": [...]}` or the kind
+`{"kind": "impeded-feast", "feasts": [...]}`, and nothing else. The transfer
 rule is `easter-sunday-or-monday-to-tuesday` for the one privileged fixed-date
 occurrence this edition models and `none` for an ordinary commemoration, which
 is never transferred. An ordinary commemoration is admitted only on a fixed date
@@ -217,7 +224,17 @@ Paul; St Joseph, Spouse, and the Annunciation always meet a first-class Sunday
 and are transferred, a Sunday is preferred to All Souls, and the Precious Blood
 is a feast of the Lord), and the calendar supplies every date on which one of
 them is kept on a Sunday. Only a
-privileged commemoration without `text_prefix` may use it. The three `slots` are
+privileged commemoration without `text_prefix` may use it. The `impeded-feast`
+kind names no date either: `feasts` lists, in identity order, exactly the
+calendar keys of the twenty second-class feasts that a second-class Sunday
+impedes and commemorates (St Andrew and St Thomas only meet a first-class
+Sunday of Advent, Sts Simon and Jude only Christ the King, St Mark on a
+second-class Sunday always meets the privileged Greater Litanies, which take
+the single place, and the Purification, the Transfiguration, the Exaltation of
+the Cross and the Dedication of the Lateran Basilica are feasts of the Lord
+that take the Sunday's place), and the calendar supplies every date on which
+one of them falls on a second-class Sunday. Only an ordinary commemoration
+without `text_prefix` may use it. The three `slots` are
 ordered `collecta`, `secreta`, `postcommunio`; each names the Mass role it
 follows (`after`), the dotted text id and its relation: `proper` addresses
 `proprium.<text_prefix>-<key>`, where `text_prefix` defaults to the id and is
@@ -225,9 +242,10 @@ stated when the texts carry the saint's genitive name (`sanctae-petronillae` for
 `sancta-petronilla`); `reference` transfers another Proper text (the Rogation
 Secret is the printed Haec munera, `proprium.dominica-i-passionis-secreta`);
 `calendar` names no text (`text` is `null`): the calendar resolves the slot per
-date to the oration of that role which the impeded Sunday's own formulary
-assembles, never a copy. The `calendar` relation is used by all three slots of
-the `displaced-sunday` kind and by nothing else. `rubrics` records the citations
+date to the oration of that role which the impeded Sunday's or the impeded
+feast's own formulary assembles, never a copy. The `calendar` relation is used
+by all three slots of the `displaced-sunday` and `impeded-feast` kinds and by
+nothing else. `rubrics` records the citations
 for `date`, `scope`, `rank`, `admission` and `conclusion` as nonempty strings. A
 Proper text reached only by a commemoration slot counts as reached. Each
 published language carries `languages/<lang>/commemorationes/<id>.json` with
@@ -352,7 +370,9 @@ successor of 1.0.0: a pair is now an explicit decision for each Mass situation.
 Reader edition 6.2.0 publishes selection schema 2.1.0, an additive successor
 of 2.0.0: each pair row gains an eighth element, the formulary whose orations a
 resolved commemoration says, and a resolved commemoration's slots carry a
-`null` text. Exact fields of the neutral resource are `schema_version`,
+`null` text. Reader edition 6.3.0 adds the impeded feast, an ordinary
+commemoration resolved per pair, with selection schema 2.1.0 unchanged. Exact
+fields of the neutral resource are `schema_version`,
 `commemorations` (ordered by identity: `id`, the Latin `title`, `rank`,
 `conclusion`, `slots` with `key`, `after` and the slash text address, or `null`
 for every slot of a commemoration resolved per pair), `profiles` (one profile,
@@ -375,12 +395,13 @@ conventual. The reader's low/sung choice does not establish conventual status;
 where the two sung decisions differ, both are published so that a reader can
 describe them rather than guess. A privileged commemoration is decided
 `admitted` in all three situations on every represented Mass of its occurrence
-date. The ordinary commemorations carried here are not themselves second-class
-feasts, so each is decided only on a second-class weekday; on a first-class day
-or a Sunday no pair is published for it (RG 111 a–b, 434, and 30 for the Vigil
-of Pentecost). On that weekday it is `admitted` in low and sung conventual
-Masses and `not-admitted` in a sung Mass that is not conventual, unless a de
-Tempore commemoration takes the single second-class place (RG 111 c, 113–114).
+date. The fixed-date ordinary commemorations carried here are not themselves
+second-class feasts, so each is decided only on a second-class weekday; on a
+first-class day or a Sunday no pair is published for it (RG 111 a–b, 434, and
+30 for the Vigil of Pentecost). On that weekday it is `admitted` in low and
+sung conventual Masses and `not-admitted` in a sung Mass that is not
+conventual, unless a de Tempore commemoration takes the single second-class
+place (RG 111 c, 113–114).
 The impeded Vigil of the Ascension is such a day (RG 31–33); its orations are
 not in this edition, so the decision is `omitted-required-de-tempore-unavailable`:
 the Mass owes a commemoration the edition cannot yet supply, and the ordinary
@@ -403,9 +424,26 @@ on the seven feasts' Masses (the Assumption 12, All Saints 11, the Nativity of
 St John the Baptist 11, Sts Peter and Paul 11, St Michael 10, the Immaculate
 Conception 10, St Joseph the Worker 10), resolved to 22 Sundays.
 
+The impeded feast is resolved per pair as well. Its pair is the Mass of the
+second-class Sunday and names the second-class feast that falls on that Sunday;
+the reader says the Collect, Secret and Postcommunion that the feast's
+formulary assembles in `formularies.json` and composes the heading from that
+formulary's title, as for the impeded Sunday. The Chair of St Peter's orations
+join St Paul's to St Peter's under one conclusion, the two counted as one (RG
+110), and the Nativity of the Blessed Virgin Mary's Postcommunion is the
+Visitation's, by its formulary's reference. It is an ordinary commemoration:
+the pair is `admitted` in low and sung conventual Masses and `not-admitted` in
+a sung Mass that is not conventual (RG 108, 111 b, 434 b). A feast that a
+first-class Sunday impedes has no pair (111 a), and a feast whose formulary or
+orations this edition lacks stops the selection rather than publishing a gap.
+In the supported span this gives 206 pairs on the Masses of 28 Sundays for the
+twenty feasts (35 under the Sunday within the octave of the Nativity: St
+Stephen 12, St John 11, the Holy Innocents 12).
+
 An occurrence without a pair is an acknowledged date, not permission to
-assemble: no substitute Mass, no previous Sunday, no Mark transfer, and no
-Petronilla under a Sunday or first-class principal. A pair binds its decisions
+assemble: no substitute Mass, no previous Sunday, no Mark transfer, no
+Petronilla under a Sunday or first-class principal, and no impeded feast under
+a first-class Sunday. A pair binds its decisions
 only to that date and Mass. At most one commemoration may be admitted for a
 date, Mass and situation, and none beside an unavailable de Tempore marker: a
 second would need an order and a conclusion plan this contract does not model.
@@ -413,14 +451,17 @@ A privileged pair must be admitted in all three situations, or, when it names a
 resolved formulary that is not in this edition,
 `omitted-required-de-tempore-unavailable` in all three; an ordinary pair must
 have one decision for low and sung conventual Masses and be `not-admitted` in a
-sung Mass that is not conventual. A pair names a formulary exactly when its
-commemoration is resolved per pair, and an admitted one names an authored Mass
-identity. Ordinary-only `none` bypasses this resource; unsupported pairs do not
-fall back. The producer establishes validity by exact typed input equality with
+sung Mass that is not conventual, and when it names a resolved formulary it is
+`admitted` in low and sung conventual Masses. A pair names a formulary exactly
+when its commemoration is resolved per pair, and an admitted one names an
+authored Mass identity. Ordinary-only `none` bypasses this resource;
+unsupported pairs do not fall back. The producer establishes validity by exact
+typed input equality with
 a fresh reconstruction from the Roman calendar and authored catalogue; the
 artifact verifier iterates the canonical days anew, reapplies the transfer rule,
 restates the admission and restates RG 18 from the year's own count of Sundays
-after Pentecost without calling the producer. Neutral and every published
+after Pentecost and RG 16 from the feasts' printed dates without calling the
+producer. Neutral and every published
 language package must declare and transport all slot bodies, the orations of
 every admitted resolved formulary (read from the authored formularies) and the
 localized titles. Missing resource, body or declaration fails closed.

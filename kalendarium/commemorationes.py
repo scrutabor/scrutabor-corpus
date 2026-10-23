@@ -2,25 +2,26 @@
 
 The authored commemoration owns its occurrence rule and its three ordered slots: the Greater
 Litanies (Rubricae generales 80: April 25, or the following Tuesday when that day is Easter
-Sunday or Easter Monday), St Petronilla (31 May, never transferred) and the impeded Sunday (RG
-15–18: a Sunday on which one of the first-class feasts named by its authored rule is kept).
-Every occurrence in the supported span is published, whether or not a Mass row is represented
-on that day.
+Sunday or Easter Monday), St Petronilla (31 May, never transferred), the impeded Sunday (RG
+15–18: a Sunday on which one of the first-class feasts named by its authored rule is kept) and
+the impeded feast (RG 16, 95: a second-class Sunday on which one of the second-class feasts
+named by its authored rule falls). Every occurrence in the supported span is published, whether
+or not a Mass row is represented on that day.
 
 A pair is an explicit decision for one represented Mass on an occurrence date, stated for each
 of three situations: a low Mass (lecta), a sung conventual Mass and a sung Mass that is not
 conventual. Low conventual and non-conventual Masses receive the same decision (RG 108), so the
 low situation is stated once. A privileged commemoration is admitted in all three (RG 108–109).
-The ordinary commemorations carried here are not themselves second-class feasts, so each is
-decided on a second-class weekday only: a first-class day admits no ordinary commemoration and a
-second-class Sunday only a second-class feast (RG 111 a–b, 434), and no pair is published for
-it there. On that weekday it is admitted in low and sung conventual Masses and not in a sung
-Mass that is not conventual (RG 108), unless a de Tempore commemoration takes the single place
-(RG 111 c, 113–114). The impeded Vigil of the Ascension is such a day (RG 31–33); its orations
-are not yet in this edition, so the decision states that a required de Tempore commemoration is
-unavailable and the ordinary one is omitted, rather than presenting the Mass as complete. At
-most one commemoration is admitted for a date, Mass and situation: a second would need an
-order and a conclusion plan this contract does not model.
+The fixed-date ordinary commemorations carried here are not themselves second-class feasts, so
+each is decided on a second-class weekday only: a first-class day admits no ordinary
+commemoration and a second-class Sunday only a second-class feast (RG 111 a–b, 434), and no pair
+is published for it there. On that weekday it is admitted in low and sung conventual Masses and
+not in a sung Mass that is not conventual (RG 108), unless a de Tempore commemoration takes the
+single place (RG 111 c, 113–114). The impeded Vigil of the Ascension is such a day (RG 31–33);
+its orations are not yet in this edition, so the decision states that a required de Tempore
+commemoration is unavailable and the ordinary one is omitted, rather than presenting the Mass as
+complete. At most one commemoration is admitted for a date, Mass and situation: a second would
+need an order and a conclusion plan this contract does not model.
 
 The impeded Sunday's three orations are not fixed texts. Each pair names the formulary of the
 Sunday that the calendar would have kept that day, which is not always its position in the
@@ -28,7 +29,15 @@ year: a Sunday after Epiphany resumed after the Twenty-third Sunday after Pentec
 own formulary (RG 18). Its orations are the Collect, Secret and Postcommunion that formulary
 assembles. Where that formulary or one of its orations is not in this edition, the pair states
 that the required de Tempore commemoration is unavailable instead of admitting a gap.
-No procession, local calendar or Office commemoration is inferred.
+
+The impeded feast's three orations are not fixed texts either. Each pair is the second-class
+Sunday's Mass and names the formulary of the second-class feast that falls on it; its orations
+are the Collect, Secret and Postcommunion that formulary assembles (those of the Chair of St
+Peter join St Paul's oration to St Peter's, RG 110). It is the single commemoration that Sunday
+admits, an ordinary one, made in low and sung conventual Masses and not in a sung Mass that is
+not conventual (RG 108, 111 b, 434 b); a feast that a first-class Sunday impedes has no pair
+(111 a). A feast whose formulary or orations this edition lacks stops the selection rather than
+leaving a gap. No procession, local calendar or Office commemoration is inferred.
 """
 
 from __future__ import annotations
@@ -42,6 +51,7 @@ from pathlib import Path
 from kalendarium.computus import easter
 from kalendarium.dismissal import canonical_inputs
 from kalendarium.roman import year
+from kalendarium.sanctorale import occurrences as sanctoral_occurrences
 from kalendarium.temporale import Dies
 from kalendarium.temporale import year as temporal_year
 
@@ -83,11 +93,18 @@ def displaced(commemoration: dict) -> bool:
     return commemoration["occurrence"].get("kind") == "displaced-sunday"
 
 
+def impeded(commemoration: dict) -> bool:
+    """True for the impeded-feast occurrence kind, whose dates the calendar supplies."""
+    return commemoration["occurrence"].get("kind") == "impeded-feast"
+
+
 def occurrence(commemoration: dict, civil_year: int) -> date:
     """The civil date of one commemoration in one year, after its transfer rule."""
     rule = commemoration["occurrence"]
     if displaced(commemoration):  # pragma: no cover — its dates come from impeded_sundays()
         raise ValueError("commemorationes: an impeded Sunday has no fixed civil date")
+    if impeded(commemoration):  # pragma: no cover — its dates come from impeded_feasts()
+        raise ValueError("commemorationes: an impeded feast has no fixed civil date")
     when = date(civil_year, rule["month"], rule["day"])
     if rule["transfer"] == "easter-sunday-or-monday-to-tuesday":
         pascha = easter(civil_year)
@@ -132,9 +149,33 @@ def impeded_sundays(commemoration: dict) -> dict[str, str]:
     }
 
 
-def sunday_orations(form: dict | None) -> list[str] | None:
-    """The Collect, Secret and Postcommunion texts a Sunday formulary assembles, in slot order,
-    or None when the formulary or one of those orations is not in this edition."""
+def impeded_feasts(commemoration: dict) -> dict[str, str]:
+    """Each date of the supported span on which one of the named second-class feasts falls on a
+    second-class Sunday, which is preferred to it (RG 16), with the feast's formulary. A feast
+    on a first-class Sunday, or on a Sunday whose place a feast of the Lord takes, is not here."""
+    feasts = commemoration["occurrence"]["feasts"]
+    found: dict[str, str] = {}
+    for ending in YEARS:
+        kept = {day.when: day for day in year(ending)}
+        for when, feast in sanctoral_occurrences(ending):
+            day = kept.get(when)
+            if (
+                feast.formulary not in feasts
+                or day is None
+                or when.weekday() != 6
+                or day.dies_class != 2
+                or not day.formulary.startswith("dominica-")
+            ):
+                continue
+            if when.isoformat() in found:
+                raise ValueError(f"commemorationes: {when} impedes more than one named feast")
+            found[when.isoformat()] = feast.formulary
+    return found
+
+
+def formulary_orations(form: dict | None) -> list[str] | None:
+    """The Collect, Secret and Postcommunion texts a formulary assembles, in slot order, or None
+    when the formulary or one of those orations is not in this edition."""
     if form is None:
         return None
     texts = []
@@ -146,6 +187,23 @@ def sunday_orations(form: dict | None) -> list[str] | None:
             raise ValueError(f"commemorationes: {form['id']} has no single unconditional {role}")
         texts.append(components[0]["text"])
     return texts
+
+
+def sunday_orations(form: dict | None) -> list[str] | None:
+    """The orations an impeded Sunday's formulary assembles (formulary_orations)."""
+    return formulary_orations(form)
+
+
+def impeded_feast_decision(form: dict | None, day: str, dies_class: int) -> list[int]:
+    """The decision for the second-class feast that a second-class Sunday impedes: an ordinary
+    commemoration, made in low and sung conventual Masses and not in a sung Mass that is not
+    conventual (RG 108, 111 b, 434 b). A feast whose formulary or orations this edition lacks
+    stops the selection rather than publishing a gap."""
+    if dies_class != 2:
+        raise ValueError(f"commemorationes: {day} is not a second-class Sunday")
+    if formulary_orations(form) is None:
+        raise ValueError(f"commemorationes: the feast impeded on {day} is not in this edition")
+    return [ADMITTED, ADMITTED, NOT_ADMITTED]
 
 
 def unavailable_de_tempore(when: date) -> str | None:
@@ -234,18 +292,20 @@ def calendar_table(forms: list[dict], calendar: dict, *, corpus: Path) -> dict:
             "commemorationes: inputs differ from canonical authored catalogue/calendar"
         )
     commemorations = authored(corpus)
-    sundays = {
-        index: impeded_sundays(doc) for index, doc in enumerate(commemorations) if displaced(doc)
+    resolutions = {
+        index: impeded_sundays(doc) if displaced(doc) else impeded_feasts(doc)
+        for index, doc in enumerate(commemorations)
+        if displaced(doc) or impeded(doc)
     }
     occurrences = sorted(
         [
             *(
                 [occurrence(doc, civil_year).isoformat(), index]
                 for index, doc in enumerate(commemorations)
-                if index not in sundays
+                if index not in resolutions
                 for civil_year in YEARS
             ),
-            *([day, index] for index, found in sundays.items() for day in found),
+            *([day, index] for index, found in resolutions.items() for day in found),
         ]
     )
     dates = {(day, index) for day, index in occurrences}
@@ -261,10 +321,13 @@ def calendar_table(forms: list[dict], calendar: dict, *, corpus: Path) -> dict:
                     continue
                 resolved: str | None = None
                 plan: list[int] | None
-                if index in sundays:
-                    resolved = sundays[index][row[0]]
+                if index in resolutions and displaced(doc):
+                    resolved = resolutions[index][row[0]]
                     available = sunday_orations(by_id.get(resolved)) is not None
                     plan = [ADMITTED if available else DE_TEMPORE_UNAVAILABLE] * len(SITUATIONS)
+                elif index in resolutions:
+                    resolved = resolutions[index][row[0]]
+                    plan = impeded_feast_decision(by_id.get(resolved), row[0], row[3])
                 else:
                     plan = decision(doc, date.fromisoformat(row[0]), row[3])
                 if plan is None:
@@ -443,6 +506,15 @@ def validate(table: dict) -> None:
             raise ValueError(
                 "commemorationes: an ordinary commemoration has one decision for low and sung "
                 "conventual Masses and is not admitted in a sung Mass that is not conventual"
+            )
+        if (
+            ranks[row[2]] == "ordinary"
+            and formulary is not None
+            and plan != [ADMITTED, ADMITTED, NOT_ADMITTED]
+        ):
+            raise ValueError(
+                "commemorationes: a resolved ordinary commemoration is admitted in low and sung "
+                "conventual Masses, its formulary being in this edition"
             )
         for situation, value in enumerate(plan):
             places.setdefault((day, row[1], situation), []).append(value)

@@ -67,7 +67,7 @@ def test_full_artifact_and_round_trip_gates_accept_the_edition(edition):
 def test_declared_version_shape_and_exact_body_package_closure(edition):
     manifest = read(edition, "manifest.json")
     table = read(edition, manifest["base"]["canon"])
-    assert manifest["schema_version"] == "6.2.0"
+    assert manifest["schema_version"] == "6.3.0"
     assert table["schema_version"] == "1.0.0"
     assert len(table["profiles"]) == 9 and len(BODY_IDS) == 14
     assert len(table["masses"]) == 113 and len(table["pairs"]) == 7610
