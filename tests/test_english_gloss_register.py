@@ -5,7 +5,7 @@ contemporary English. A pronoun or possessive of God or Christ reads You/Your, a
 of a human or creaturely addressee (Mary, the angel, Sion, the disciples, the mother of the
 sons of Zebedee) reads you/your. A second-person verb whose Latin subject is a relative or an
 expressed tu keeps only the verb (who live, You give); one whose subject is only the ending
-carries the pronoun (you will receive, You forsake). A third-person present ends in -s, a
+carries the pronoun (you will receive, You deprive). A third-person present ends in -s, a
 perfect reads has + participle. The conclusion and doxology prepositions of in/per saecula
 saeculorum read "for", a goal reads "to" or "for", and no caption uses "unto".
 
@@ -72,8 +72,8 @@ SITES = {
         ("s145", ("w437",), "You", "D", "tu", "acc sg"),
         ("s145", ("w446",), "Your", "D", "tuus", "abl sg"),
         ("s146", ("w452",), "Your", "D", "tuus", "gen sg"),
-        ("s146", ("w464",), "Your", "D", "tuus", "abl sg"),
-        ("s146", ("w466",), "You forsake", "V2D", "destituo", "2sg pres ind"),
+        ("s146", ("w464", "w465"), "of Your guidance", "D", "tuus", "abl sg"),
+        ("s146", ("w466",), "You deprive", "V2D", "destituo", "2sg pres ind"),
         ("s146", ("w470",), "of Your", "D", "tuus", "gen sg"),
         ("s146", ("w472",), "You establish", "V2D", "instituo", "2sg pres ind"),
         ("s146", ("w474",), "live", "V2", "vivo", "2sg pres ind"),
@@ -269,7 +269,7 @@ SITES = {
         ("s01", ("w051",), "are", "V2", "sum", "2sg pres ind"),
     ),
     P + "visitatio-beatae-mariae-virginis-offertorium": (
-        ("s01", ("w016",), "remain", "V2", "permaneo", "2sg pres ind"),
+        ("s01", ("w016",), "you remain", "V2H", "permaneo", "2sg pres ind"),
     ),
 }
 
@@ -290,9 +290,8 @@ LINES = (
         (
             "for",
             "never",
-            "Your",
-            "guidance",
-            "You forsake",
+            "of Your guidance",
+            "You deprive",
             "those whom",
             "in",
             "steadfastness",
@@ -366,7 +365,7 @@ LINES = (
             "life",
             "everlasting",
             "springing up",
-            "Who",
+            "who",
             "with You",
             "lives",
             "and",

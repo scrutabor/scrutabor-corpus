@@ -110,8 +110,8 @@ def test_complete_historical_objects_survive_the_narrow_inverse(documents):
     assert {path: canonical_hash(value) for path, value in restored.items()} == (
         FIXTURE["historical_object_sha256"]
     )
-    assert len(FIXTURE["operations"]) == 46
-    assert len({(op["path"], op["pointer"]) for op in FIXTURE["operations"]}) == 46
+    assert len(FIXTURE["operations"]) == 47
+    assert len({(op["path"], op["pointer"]) for op in FIXTURE["operations"]}) == 47
     assert snapshot == FIXTURE
 
 

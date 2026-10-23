@@ -32,18 +32,18 @@ def test_delayed_intercession_is_realized_once(language):
     layer = json.loads((ROOT / "languages" / language / "texts" / REL).read_text())
     expected = [f"w{n:03}" for n in range(22, 31)]
     groups = [a for a in layer["segments"]["s01"]["alignments"] if set(a["words"]) & set(expected)]
+    # The possessor, the companions and the intercession have separate captions.
+    assert [(g["words"], g["anchor"]) for g in groups] == [
+        (expected[1:6], "w027"),
+        (expected[6:], "w030"),
+    ]
+    assert all("gloss" not in layer["words"][wid] for wid in expected[1:])
     if language == "pl":
-        # The possessor, the companions and the intercession have separate captions.
-        assert [(g["words"], g["anchor"]) for g in groups] == [
-            (expected[1:6], "w027"),
-            (expected[6:], "w030"),
-        ]
         assert layer["words"]["w022"]["gloss"] == "jej"
         assert "„intervéntu”" in layer["words"]["w022"]["explanation"]
-        assert all("gloss" not in layer["words"][wid] for wid in expected[1:])
     else:
-        assert [(g["words"], g["anchor"]) for g in groups] == [(expected, "w030")]
-        assert all("gloss" not in layer["words"][wid] for wid in expected)
+        assert layer["words"]["w022"]["gloss"] == "her"
+        assert "“suo” (w022)" in layer["words"]["w030"]["explanation"]
     translation = layer["segments"]["s01"]["translation"]
     markers = (
         ["ducha", "jej świętych towarzyszy", "zasługi Twojej śmierci", "nagrodę"]
