@@ -3,7 +3,8 @@ activation on the edition's Mass rows, and the owned negative controls. The case
 sealed assembly audit (weekday Mark, ordinary second-class Sunday, Easter Sunday and Monday
 transfers, another octave weekday, Low Sunday). St Petronilla's ordinary commemoration has its
 own module (tests/test_petronilla_commemoration.py), and so have the impeded Sunday
-(tests/test_dominica_impedita.py) and the impeded feast (tests/test_festum_impeditum.py)."""
+(tests/test_dominica_impedita.py), the impeded feast (tests/test_festum_impeditum.py) and the
+Advent feria (tests/test_feria_adventus.py)."""
 
 import copy
 import json
@@ -21,9 +22,9 @@ from kalendarium.dismissal import canonical_inputs
 
 CORPUS = Path(store.__file__).resolve().parent.parent
 LM = "litaniae-maiores"
-# Its place in the identity-ordered resource (dominica-impedita, festum-impeditum,
-# litaniae-maiores, ...).
-LM_INDEX = 2
+# Its place in the identity-ordered resource (dominica-impedita, feria-adventus,
+# festum-impeditum, litaniae-maiores, ...).
+LM_INDEX = 3
 SLOTS = [
     ("collecta", "proprium.litaniae-maiores-collecta", "proper"),
     ("secreta", "proprium.dominica-i-passionis-secreta", "reference"),
@@ -57,7 +58,7 @@ def authored():
 
 def test_the_authored_contract_is_exact_and_reaches_its_propers():
     doc = authored()
-    assert doc["commemoration_schema"] == "1.3.0" and doc["id"] == LM
+    assert doc["commemoration_schema"] == "1.4.0" and doc["id"] == LM
     assert "text_prefix" not in doc
     assert (doc["rank"], doc["scope"], doc["conclusion"]) == ("privileged", "missa", "separate")
     assert doc["occurrence"] == {
@@ -72,11 +73,11 @@ def test_the_authored_contract_is_exact_and_reaches_its_propers():
     assert checker.check(CORPUS) == (
         [],
         {
-            "commemorations": 4,
-            "slot_uses": 12,
+            "commemorations": 5,
+            "slot_uses": 15,
             "proper_slots": 5,
             "reference_slots": 1,
-            "calendar_slots": 6,
+            "calendar_slots": 9,
         },
     )
     errors, counts = check_formularies(CORPUS)
@@ -108,6 +109,7 @@ def test_every_occurrence_is_published_and_only_represented_masses_pair(table):
     assert table["decisions"][0] == {"id": "admitted"}
     assert [entry["id"] for entry in table["commemorations"]] == [
         "dominica-impedita",
+        "feria-adventus",
         "festum-impeditum",
         LM,
         "sancta-petronilla",

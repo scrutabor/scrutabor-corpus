@@ -379,7 +379,7 @@ def derived_from_the_calendar():
 
 def test_the_authored_contract_is_exact_and_resolves_its_slots_by_the_calendar():
     doc = authored()
-    assert set(doc) == checker.KEYS and doc["commemoration_schema"] == "1.3.0"
+    assert set(doc) == checker.KEYS and doc["commemoration_schema"] == "1.4.0"
     assert (doc["id"], doc["title"]) == (FI, "Festum impeditum")
     assert (doc["rank"], doc["scope"], doc["conclusion"]) == ("ordinary", "missa", "separate")
     assert doc["occurrence"] == {"kind": "impeded-feast", "feasts": FEASTS}
@@ -411,11 +411,11 @@ def test_the_authored_contract_is_exact_and_resolves_its_slots_by_the_calendar()
     assert checker.check(CORPUS) == (
         [],
         {
-            "commemorations": 4,
-            "slot_uses": 12,
+            "commemorations": 5,
+            "slot_uses": 15,
             "proper_slots": 5,
             "reference_slots": 1,
-            "calendar_slots": 6,
+            "calendar_slots": 9,
         },
     )
 

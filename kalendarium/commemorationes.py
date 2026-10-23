@@ -3,10 +3,11 @@
 The authored commemoration owns its occurrence rule and its three ordered slots: the Greater
 Litanies (Rubricae generales 80: April 25, or the following Tuesday when that day is Easter
 Sunday or Easter Monday), St Petronilla (31 May, never transferred), the impeded Sunday (RG
-15–18: a Sunday on which one of the first-class feasts named by its authored rule is kept) and
-the impeded feast (RG 16, 95: a second-class Sunday on which one of the second-class feasts
-named by its authored rule falls). Every occurrence in the supported span is published, whether
-or not a Mass row is represented on that day.
+15–18: a Sunday on which one of the first-class feasts named by its authored rule is kept), the
+impeded feast (RG 16, 95: a second-class Sunday on which one of the second-class feasts named by
+its authored rule falls) and the Advent feria (RG 24–25: a weekday of Advent on which one of the
+feasts named by its authored rule is kept). Every occurrence in the supported span is published,
+whether or not a Mass row is represented on that day.
 
 A pair is an explicit decision for one represented Mass on an occurrence date, stated for each
 of three situations: a low Mass (lecta), a sung conventual Mass and a sung Mass that is not
@@ -37,7 +38,15 @@ Peter join St Paul's oration to St Peter's, RG 110). It is the single commemorat
 admits, an ordinary one, made in low and sung conventual Masses and not in a sung Mass that is
 not conventual (RG 108, 111 b, 434 b); a feast that a first-class Sunday impedes has no pair
 (111 a). A feast whose formulary or orations this edition lacks stops the selection rather than
-leaving a gap. No procession, local calendar or Office commemoration is inferred.
+leaving a gap.
+
+The Advent feria's three orations are those of the feria's own Mass. Each pair is the feast's
+Mass and names that Mass: the ferias of Advent say the Mass of the preceding Sunday, and the
+Ember days of Advent have a Mass of their own (RG 299). It is a privileged commemoration, made
+in all Masses (RG 108–109 e). An Ember day's Mass is not yet in this edition, so its pair names
+that absent Mass and states that the required de Tempore commemoration is unavailable, never
+the Sunday's orations in its place; a Sunday whose orations this edition lacks stops the
+selection. No procession, local calendar or Office commemoration is inferred.
 """
 
 from __future__ import annotations
@@ -86,6 +95,15 @@ ORATIONS = ("collecta", "secreta", "postcommunio")
 # by their distance from Easter Sunday: the Vigil of the Ascension, a second-class vigil
 # commemorated when impeded (RG 31–33).
 UNAVAILABLE_DE_TEMPORE = {"vigilia-ascensionis": 38}
+# The Ember days of Advent, the Wednesday, Friday and Saturday of the week of the Third Sunday of
+# Advent (by weekday, Monday 0), have their own Masses (RG 24 b, 299), which this edition does
+# not yet carry. A pair names each by a stable identity in the form of the Missal's Ember-day
+# headings; none is an authored Mass.
+ADVENT_EMBER_DAYS = {
+    2: "feria-quarta-quatuor-temporum-adventus",
+    4: "feria-sexta-quatuor-temporum-adventus",
+    5: "sabbato-quatuor-temporum-adventus",
+}
 
 
 def displaced(commemoration: dict) -> bool:
@@ -98,6 +116,11 @@ def impeded(commemoration: dict) -> bool:
     return commemoration["occurrence"].get("kind") == "impeded-feast"
 
 
+def advent_feria(commemoration: dict) -> bool:
+    """True for the Advent-feria occurrence kind, whose dates the calendar supplies."""
+    return commemoration["occurrence"].get("kind") == "advent-feria"
+
+
 def occurrence(commemoration: dict, civil_year: int) -> date:
     """The civil date of one commemoration in one year, after its transfer rule."""
     rule = commemoration["occurrence"]
@@ -105,6 +128,8 @@ def occurrence(commemoration: dict, civil_year: int) -> date:
         raise ValueError("commemorationes: an impeded Sunday has no fixed civil date")
     if impeded(commemoration):  # pragma: no cover — its dates come from impeded_feasts()
         raise ValueError("commemorationes: an impeded feast has no fixed civil date")
+    if advent_feria(commemoration):  # pragma: no cover — its dates come from advent_ferias()
+        raise ValueError("commemorationes: an Advent feria has no fixed civil date")
     when = date(civil_year, rule["month"], rule["day"])
     if rule["transfer"] == "easter-sunday-or-monday-to-tuesday":
         pascha = easter(civil_year)
@@ -173,6 +198,32 @@ def impeded_feasts(commemoration: dict) -> dict[str, str]:
     return found
 
 
+def advent_ferias(commemoration: dict) -> dict[str, str]:
+    """Each date of the supported span on which one of the named feasts is kept on a weekday of
+    Advent (RG 21), with the Mass of the feria it impedes: the Ember day's own Mass on the
+    Wednesday, Friday and Saturday of the week of the Third Sunday of Advent, and otherwise the
+    Mass of the preceding Sunday (RG 299), named by that Sunday's position in the temporal cycle.
+    """
+    feasts = commemoration["occurrence"]["feasts"]
+    found: dict[str, str] = {}
+    for ending in YEARS:
+        sundays = [
+            temporal
+            for temporal in temporal_year(ending)
+            if temporal.position.startswith("dominica-") and temporal.position.endswith("-adventus")
+        ]
+        for day in year(ending):
+            if day.formulary not in feasts or day.when.weekday() == 6 or day.season != "adventus":
+                continue
+            before = [sunday for sunday in sundays if sunday.when < day.when]
+            if not before:
+                raise ValueError(f"commemorationes: {day.when} follows no Sunday of Advent")
+            sunday = before[-1].position
+            ember = sunday == "dominica-iii-adventus" and day.when.weekday() in ADVENT_EMBER_DAYS
+            found[day.when.isoformat()] = ADVENT_EMBER_DAYS[day.when.weekday()] if ember else sunday
+    return found
+
+
 def formulary_orations(form: dict | None) -> list[str] | None:
     """The Collect, Secret and Postcommunion texts a formulary assembles, in slot order, or None
     when the formulary or one of those orations is not in this edition."""
@@ -204,6 +255,24 @@ def impeded_feast_decision(form: dict | None, day: str, dies_class: int) -> list
     if formulary_orations(form) is None:
         raise ValueError(f"commemorationes: the feast impeded on {day} is not in this edition")
     return [ADMITTED, ADMITTED, NOT_ADMITTED]
+
+
+def advent_feria_decision(form: dict | None, mass: str, day: str) -> list[int]:
+    """The decision for the Advent feria that the feast kept on `day` impedes: a privileged
+    commemoration, made in all Masses (RG 108–109 e), with the orations of the feria's Mass.
+    An Ember day's own Mass, absent from this edition, is stated unavailable in all three
+    situations and never replaced by the Sunday's; its commemoration takes the first of its
+    Collects, which this rule does not model, so an authored Ember Mass stops the selection, as
+    does a preceding Sunday whose orations this edition lacks."""
+    if mass in ADVENT_EMBER_DAYS.values():
+        if form is not None:
+            raise ValueError(f"commemorationes: {mass} needs its own commemoration rule")
+        return [DE_TEMPORE_UNAVAILABLE] * len(SITUATIONS)
+    if formulary_orations(form) is None:
+        raise ValueError(
+            f"commemorationes: the Mass of the Advent feria on {day} is not in this edition"
+        )
+    return [ADMITTED] * len(SITUATIONS)
 
 
 def unavailable_de_tempore(when: date) -> str | None:
@@ -293,9 +362,15 @@ def calendar_table(forms: list[dict], calendar: dict, *, corpus: Path) -> dict:
         )
     commemorations = authored(corpus)
     resolutions = {
-        index: impeded_sundays(doc) if displaced(doc) else impeded_feasts(doc)
+        index: (
+            impeded_sundays(doc)
+            if displaced(doc)
+            else impeded_feasts(doc)
+            if impeded(doc)
+            else advent_ferias(doc)
+        )
         for index, doc in enumerate(commemorations)
-        if displaced(doc) or impeded(doc)
+        if displaced(doc) or impeded(doc) or advent_feria(doc)
     }
     occurrences = sorted(
         [
@@ -325,6 +400,9 @@ def calendar_table(forms: list[dict], calendar: dict, *, corpus: Path) -> dict:
                     resolved = resolutions[index][row[0]]
                     available = sunday_orations(by_id.get(resolved)) is not None
                     plan = [ADMITTED if available else DE_TEMPORE_UNAVAILABLE] * len(SITUATIONS)
+                elif index in resolutions and advent_feria(doc):
+                    resolved = resolutions[index][row[0]]
+                    plan = advent_feria_decision(by_id.get(resolved), resolved, row[0])
                 elif index in resolutions:
                     resolved = resolutions[index][row[0]]
                     plan = impeded_feast_decision(by_id.get(resolved), row[0], row[3])
@@ -491,6 +569,13 @@ def validate(table: dict) -> None:
         if formulary is not None and ADMITTED in plan and formulary not in masses:
             raise ValueError(
                 "commemorationes: an admitted resolved commemoration needs an authored formulary"
+            )
+        if formulary in ADVENT_EMBER_DAYS.values() and (
+            formulary in masses or plan != [DE_TEMPORE_UNAVAILABLE] * len(SITUATIONS)
+        ):
+            raise ValueError(
+                "commemorationes: a pair resolved to an Ember day of Advent names its own Mass, "
+                "not authored in this edition, and is unavailable in all three situations"
             )
         unavailable = formulary is not None and plan == [DE_TEMPORE_UNAVAILABLE] * len(SITUATIONS)
         if (

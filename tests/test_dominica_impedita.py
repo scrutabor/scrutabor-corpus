@@ -194,7 +194,7 @@ def derived_from_the_calendar():
 
 def test_the_authored_contract_is_exact_and_resolves_its_slots_by_the_calendar():
     doc = authored()
-    assert set(doc) == checker.KEYS and doc["commemoration_schema"] == "1.3.0"
+    assert set(doc) == checker.KEYS and doc["commemoration_schema"] == "1.4.0"
     assert (doc["id"], doc["title"]) == (DI, "Dominica impedita")
     assert (doc["rank"], doc["scope"], doc["conclusion"]) == ("privileged", "missa", "separate")
     assert doc["occurrence"] == {"kind": "displaced-sunday", "feasts": FEASTS}
@@ -222,8 +222,9 @@ def test_the_authored_contract_is_exact_and_resolves_its_slots_by_the_calendar()
             "title": title,
         }
     errors, counts = checker.check(CORPUS)
-    # Three calendar slots here and three in the impeded feast (tests/test_festum_impeditum.py).
-    assert errors == [] and counts["calendar_slots"] == 6
+    # Three calendar slots here, three in the impeded feast (tests/test_festum_impeditum.py) and
+    # three in the Advent feria (tests/test_feria_adventus.py).
+    assert errors == [] and counts["calendar_slots"] == 9
 
 
 def test_the_feasts_are_the_first_class_feasts_that_commemorate_the_sunday_they_impede():
@@ -511,9 +512,10 @@ def test_a_resolved_oration_missing_from_a_language_package_fails_before_emissio
     ):
         shutil.copytree(CORPUS / directory, corpus / directory)
     bodies = reader.slot_bodies(CORPUS)
-    # The six addressed slots, the 22 Sundays' orations and the twenty impeded feasts' 59
-    # (tests/test_festum_impeditum.py).
-    assert len(bodies) == 6 + 3 * 22 + 59
+    # The six addressed slots, the 22 Sundays' orations, the twenty impeded feasts' 59
+    # (tests/test_festum_impeditum.py) and those of the First, Third and Fourth Sundays of Advent
+    # that the Advent feria says (tests/test_feria_adventus.py; the Second is among the 22).
+    assert len(bodies) == 6 + 3 * 22 + 59 + 3 * 3
     for text in bodies:
         relative = f"{text.replace('.', '/', 1)}.json"
         for prefix in ("texts/", "languages/pl/texts/", "languages/en/texts/"):

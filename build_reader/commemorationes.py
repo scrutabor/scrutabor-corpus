@@ -13,6 +13,8 @@ from kalendarium.commemorationes import (
     SCHEMA,
     SITUATIONS,
     YEARS,
+    advent_feria,
+    advent_ferias,
     authored,
     displaced,
     entries,
@@ -36,11 +38,21 @@ RESUMED = {3: "iii", 4: "iv", 5: "v", 6: "vi"}
 ROLES = ("collecta", "secreta", "postcommunio")
 # The sanctoral feasts' printed fixed dates (month, day).
 FIXED = {feast.formulary: (feast.month, feast.day) for feast in FESTA}
+# RG 24 b and 299: the Ember days of Advent, the Wednesday, Friday and Saturday (ISO weekdays 3,
+# 5 and 6) of the week of the Third Sunday of Advent, each have a Mass of their own, which this
+# edition does not yet carry; every other weekday of Advent says the preceding Sunday's Mass.
+EMBER = {
+    3: "feria-quarta-quatuor-temporum-adventus",
+    5: "feria-sexta-quatuor-temporum-adventus",
+    6: "sabbato-quatuor-temporum-adventus",
+}
+ADVENT_WEEKS = ("i", "ii", "iii", "iv")
 
 
 def slot_bodies(corpus: Path) -> list[str]:
     """Every dotted text a commemoration may say: the addressed slots, and the orations of
-    each impeded Sunday and each impeded feast whose formulary is in this edition."""
+    each impeded Sunday, each impeded feast and each Advent feria's Mass whose formulary is in
+    this edition."""
     from build_reader import store
 
     forms = {form["id"]: form for form in store.formularies(corpus)}
@@ -53,6 +65,10 @@ def slot_bodies(corpus: Path) -> list[str]:
         elif impeded(doc):
             for feast in sorted(set(impeded_feasts(doc).values())):
                 texts = formulary_orations(forms.get(feast)) or []
+                found.extend(text.replace("/", ".", 1) for text in texts)
+        elif advent_feria(doc):
+            for mass in sorted(set(advent_ferias(doc).values())):
+                texts = formulary_orations(forms.get(mass)) or []
                 found.extend(text.replace("/", ".", 1) for text in texts)
         else:
             found.extend(slot["text"] for slot in doc["slots"])
@@ -134,8 +150,10 @@ def _sunday(day: Dies, after: list[date]) -> str:
 def expected(corpus: Path) -> dict:
     """No call to the producer: iterate the computed years anew, apply RG 80 again for the
     transferred occurrence, restate the admission of RG 108–114 from the computed days,
-    restate RG 15–18 for the impeded Sunday from the computed positions, and restate RG 16 for
-    the impeded feast from the feasts' printed dates and the computed second-class Sundays."""
+    restate RG 15–18 for the impeded Sunday from the computed positions, restate RG 16 for the
+    impeded feast from the feasts' printed dates and the computed second-class Sundays, and
+    restate RG 21, 24–25 and 299 for the Advent feria by counting weeks from the year's First
+    Sunday of Advent."""
     forms, _ = canonical_inputs(corpus)
     masses = sorted(form["id"] for form in forms)
     by_id = {form["id"]: form for form in forms}
@@ -165,6 +183,8 @@ def expected(corpus: Path) -> dict:
             for day in days
             if day.position.startswith("dominica-") and day.position.endswith("-post-pentecosten")
         ]
+        first = next(day.when for day in days if day.position == "dominica-i-adventus")
+        christmas = date(first.year, 12, 25)
         for day in days:
             iso = day.when.isoformat()
             for index, doc in enumerate(commemorations):
@@ -190,6 +210,30 @@ def expected(corpus: Path) -> dict:
                     ):
                         raise ValueError(f"commemorationes: {resolution} is not in this edition")
                     plan = [admitted, admitted, not_admitted]
+                elif rule.get("kind") == "advent-feria":
+                    if (
+                        day.formulary not in rule["feasts"]
+                        or day.when.isoweekday() == 7
+                        or not first < day.when < christmas
+                    ):
+                        continue
+                    occurrences.append([iso, index])
+                    week = (day.when - first).days // 7 + 1
+                    if week == 3 and day.when.isoweekday() in EMBER:
+                        resolution = EMBER[day.when.isoweekday()]
+                        if resolution in by_id:
+                            raise ValueError(f"commemorationes: {resolution} needs its own rule")
+                        plan = [unavailable] * len(SITUATIONS)
+                    else:
+                        resolution = f"dominica-{ADVENT_WEEKS[week - 1]}-adventus"
+                        sunday = by_id.get(resolution)
+                        if sunday is None or not all(
+                            any(c["role"] == role for c in sunday["components"]) for role in ROLES
+                        ):
+                            raise ValueError(
+                                f"commemorationes: {resolution} is not in this edition"
+                            )
+                        plan = [admitted] * len(SITUATIONS)
                 elif "kind" in rule:
                     if day.formulary not in rule["feasts"] or day.when.isoweekday() != 7:
                         continue
@@ -256,8 +300,8 @@ def verify(corpus: Path, out: Path, manifest: dict, reader_schema: str) -> list[
         for slot in entry.get("slots") or []
         if isinstance(slot.get("text"), str)
     ]
-    # An admitted impeded Sunday or impeded feast says the orations its formulary assembles:
-    # read them from the authored formularies rather than from the emitted catalogue.
+    # An admitted impeded Sunday, impeded feast or Advent feria says the orations its formulary
+    # assembles: read them from the authored formularies rather than from the emitted catalogue.
     from build_reader import store
 
     forms = {form["id"]: form for form in store.formularies(corpus)}
