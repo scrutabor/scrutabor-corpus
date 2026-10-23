@@ -42,12 +42,13 @@ def check_manifests(corpus: Path) -> list[str]:
         if not isinstance(texts, list) or not texts:
             errors.append(f"{where}: texts must be a nonempty list")
             continue
-        if len(texts) != len(set(texts)):
+        covered = set(texts)
+        if len(texts) != len(covered):
             errors.append(f"{where}: text ids must be unique")
-        unknown = sorted(set(texts) - known)
+        unknown = sorted(covered - known)
         if unknown:
             errors.append(f"{where}: unknown text ids {unknown}")
-        expected_order = [text_id for text_id in all_texts if text_id in set(texts)]
+        expected_order = [text_id for text_id in all_texts if text_id in covered]
         if texts != expected_order:
             errors.append(f"{where}: texts must follow the neutral manifest order")
 
@@ -55,16 +56,16 @@ def check_manifests(corpus: Path) -> list[str]:
             f"{path.parent.name}.{path.stem}"
             for path in (corpus / "languages" / language / "texts").glob("*/*.json")
         }
-        if set(texts) != actual:
+        if covered != actual:
             errors.append(
                 f"{where}: manifest/file coverage differs — "
-                f"missing={sorted(set(texts) - actual)} orphaned={sorted(actual - set(texts))}"
+                f"missing={sorted(covered - actual)} orphaned={sorted(actual - covered)}"
             )
         titles = manifest.get("titles") or {}
         if not isinstance(titles, dict):
             errors.append(f"{where}: titles must be an object")
             titles = {}
-        unknown_titles = sorted(set(titles) - set(texts))
+        unknown_titles = sorted(set(titles) - covered)
         if unknown_titles:
             errors.append(f"{where}: titles name uncovered texts {unknown_titles}")
         for text_id, metadata in titles.items():

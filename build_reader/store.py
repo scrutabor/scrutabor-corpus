@@ -60,6 +60,12 @@ def translation_relationships(corpus: Path, language: str) -> dict[str, str]:
     return _translation_relationships(str(corpus), language)
 
 
+def clear_caches() -> None:
+    """Start a fresh observation after on-disk inputs may have changed."""
+    _manifest.cache_clear()
+    _translation_relationships.cache_clear()
+
+
 def layer_path(corpus: Path, language: str, text_id: str) -> Path:
     category, name = text_id.split(".", 1)
     return corpus / "languages" / language / "texts" / category / f"{name}.json"

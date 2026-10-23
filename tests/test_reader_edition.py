@@ -25,16 +25,10 @@ from build_reader.emit import (
 CORPUS = Path(__file__).resolve().parent.parent
 
 
-def build(tmp_path) -> Path:
-    out = tmp_path / "build"
-    emit(CORPUS, out)
-    return out
-
-
-def test_every_word_gloss_and_translation_round_trips(tmp_path):
+def test_every_word_gloss_and_translation_round_trips(reader_out):
     # The gate that makes the compression trustworthy. Without it the edition
     # is a second, quieter version of the same book.
-    assert verify(CORPUS, build(tmp_path)) == []
+    assert verify(CORPUS, reader_out) == []
 
 
 def test_a_partial_language_pack_needs_only_its_covered_lemmas():
@@ -66,32 +60,31 @@ def test_a_partial_language_pack_needs_only_its_covered_lemmas():
     assert unknown == {"ghost"}
 
 
-def test_the_build_is_deterministic(tmp_path):
-    first, second = tmp_path / "a", tmp_path / "b"
-    emit(CORPUS, first)
+def test_the_build_is_deterministic(reader_out, tmp_path):
+    first, second = reader_out, tmp_path / "b"
     emit(CORPUS, second)
     for path in sorted(first.rglob("*.json")):
         twin = second / path.relative_to(first)
         assert path.read_bytes() == twin.read_bytes(), path.name
 
 
-def test_nothing_a_reader_never_sees_survives(tmp_path):
+def test_nothing_a_reader_never_sees_survives(reader_out):
     # The apparatus, the mint and the editorial notes are written for someone
     # reading a diff. They are the whole reason the authored corpus and the
     # shipped one are different documents.
-    out = build(tmp_path)
+    out = reader_out
     for path in out.glob("texts/*/*.json"):
         art = json.loads(path.read_text(encoding="utf-8"))
         for gone in ("source", "ids", "notes", "schema_version"):
             assert gone not in art, f"{path.name} still carries {gone}"
 
 
-def test_what_a_reader_is_shown_does_survive(tmp_path):
+def test_what_a_reader_is_shown_does_survive(reader_out):
     # The other half, and the one the first draft got wrong: it dropped the
     # analysis and every citation, which are exactly what the word panel and
     # the source notes render. An edition that ships the doubt and withholds
     # the note of it is not the edition this corpus claims to be.
-    out = build(tmp_path)
+    out = reader_out
     art = json.loads((out / "texts/orationes/pater-noster.json").read_text(encoding="utf-8"))
     assert isinstance(art["ad"], int), "the analysis default is an index into the table"
     assert art["st"], "the working-edition label travels with the text"
@@ -123,8 +116,8 @@ def test_what_a_reader_is_shown_does_survive(tmp_path):
     assert seen > 1000, f"the source notes did not survive the build ({seen} references)"
 
 
-def test_rejected_citation_attachments_do_not_reach_the_reader(tmp_path):
-    out = build(tmp_path)
+def test_rejected_citation_attachments_do_not_reach_the_reader(reader_out):
+    out = reader_out
     shared = json.loads((out / "tables/citations.json").read_text(encoding="utf-8"))
     pl = json.loads((out / "languages/pl/citations.json").read_text(encoding="utf-8"))
 
@@ -152,8 +145,8 @@ def test_rejected_citation_attachments_do_not_reach_the_reader(tmp_path):
     assert all(value is None or "legacy_ref" not in value for value in [*shared, *pl])
 
 
-def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
-    written = emit(CORPUS, tmp_path / "build")
+def test_reader_build_names_evidence_coverage_and_rejected_exposure(emitted_book):
+    _, written = emitted_book
     assert written["citation_projection"] == {
         "legacy": 2771,
         "mapped": 1872,
@@ -171,8 +164,8 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(tmp_path):
     }
 
 
-def test_translation_relationship_travels_only_with_its_language_text(tmp_path):
-    out = build(tmp_path)
+def test_translation_relationship_travels_only_with_its_language_text(reader_out):
+    out = reader_out
     pl = json.loads(
         (out / "languages/pl/texts/orationes/benedic-domine.json").read_text(encoding="utf-8")
     )
@@ -181,8 +174,8 @@ def test_translation_relationship_travels_only_with_its_language_text(tmp_path):
     assert all("tb" not in row for row in base["seg"])
 
 
-def test_the_tables_are_tables_and_not_lists_of_everything(tmp_path):
-    out = build(tmp_path)
+def test_the_tables_are_tables_and_not_lists_of_everything(reader_out):
+    out = reader_out
     manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
     words = sum(
         len(s.get("words") or []) for doc, _ in read_corpus(CORPUS) for s in doc["segments"]
@@ -191,10 +184,10 @@ def test_the_tables_are_tables_and_not_lists_of_everything(tmp_path):
     assert manifest["citations"] < words / 10, "the same works are cited over and over"
 
 
-def test_the_edition_expands_back_into_what_the_corpus_stores(tmp_path):
+def test_the_edition_expands_back_into_what_the_corpus_stores(reader_out):
     # `verify` runs this over all 111 texts; this states the property in one
     # place so that what the round trip means is readable without reading it.
-    out = build(tmp_path)
+    out = reader_out
     parses = json.loads((out / "tables/morphology.json").read_text(encoding="utf-8"))
     analyses = json.loads((out / "tables/analysis.json").read_text(encoding="utf-8"))
     citations = json.loads((out / "tables/citations.json").read_text(encoding="utf-8"))
@@ -209,8 +202,8 @@ def test_the_edition_expands_back_into_what_the_corpus_stores(tmp_path):
     assert got_gloss["words"] == glosses["pl"]["words"]
 
 
-def test_the_parse_table_is_shared_and_small(tmp_path):
-    out = build(tmp_path)
+def test_the_parse_table_is_shared_and_small(reader_out):
+    out = reader_out
     table = json.loads((out / "tables/morphology.json").read_text(encoding="utf-8"))
     words = sum(
         len(s.get("words") or []) for doc, _ in read_corpus(CORPUS) for s in doc["segments"]
@@ -218,11 +211,11 @@ def test_the_parse_table_is_shared_and_small(tmp_path):
     assert len(table) < words / 10, "a table that big is not a table"
 
 
-def test_the_edition_is_much_smaller_than_its_source(tmp_path):
+def test_the_edition_is_much_smaller_than_its_source(reader_out):
     # The texts, source graph and the tables they are addressed through, against
     # the authored data they came from. calendar.json is left out on purpose: the
     # calendar is derived from the rubrics and has no authored counterpart.
-    out = build(tmp_path)
+    out = reader_out
     source = (
         sum(p.stat().st_size for p in CORPUS.glob("texts/*/*.json"))
         + sum(p.stat().st_size for p in CORPUS.glob("languages/*/texts/*/*.json"))
@@ -243,7 +236,7 @@ def test_the_edition_is_much_smaller_than_its_source(tmp_path):
     assert made < source * 0.76, f"localized search made the edition too large: {made}"
 
 
-def test_the_saving_is_in_the_bytes_parsed_and_not_the_bytes_sent(tmp_path):
+def test_the_saving_is_in_the_bytes_parsed_and_not_the_bytes_sent(reader_out):
     # STATED, because it is a surprise and would otherwise be assumed the
     # other way. The authored corpus repeats one parse object at every one of
     # 6,143 words, and gzip is very good at exactly that -- so compressed, the
@@ -258,7 +251,7 @@ def test_the_saving_is_in_the_bytes_parsed_and_not_the_bytes_sent(tmp_path):
     def packed(paths) -> int:
         return len(gzip.compress(b"".join(p.read_bytes() for p in sorted(paths)), 9))
 
-    out = build(tmp_path)
+    out = reader_out
     authored = (
         list(CORPUS.glob("texts/*/*.json"))
         + list(CORPUS.glob("languages/*/texts/*/*.json"))
@@ -308,7 +301,7 @@ def test_search_keys_expand_the_accented_ligature():
     assert tokenize_search("in sǽcula sæculórum") == ["in", "saecula", "saeculorum"]
 
 
-def test_the_emitted_vectors_are_the_normalizers_truth(tmp_path):
+def test_the_emitted_vectors_are_the_normalizers_truth(reader_out):
     # The vectors are hand-authored expected outputs, shipped in the edition
     # so the app can assert its own normalizers against the identical pairs.
     from build_reader.emit import NORMALIZATION_VECTORS
@@ -317,7 +310,7 @@ def test_the_emitted_vectors_are_the_normalizers_truth(tmp_path):
         assert normalize_latin(probe) == expected, probe
     for probe, expected in NORMALIZATION_VECTORS["search"]:
         assert normalize_search(probe) == expected, probe
-    out = build(tmp_path)
+    out = reader_out
     emitted = json.loads((out / "normalization.json").read_text(encoding="utf-8"))
     assert emitted == NORMALIZATION_VECTORS
     manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
@@ -368,14 +361,14 @@ def test_language_index_finds_a_piously_capitalized_prayer_title_phrase():
     assert [number, "s01", 1] in chrystusowa
 
 
-def test_the_index_compresses_to_something_a_phone_can_hold(tmp_path):
-    out = build(tmp_path)
+def test_the_index_compresses_to_something_a_phone_can_hold(reader_out):
+    out = reader_out
     packed = len(gzip.compress((out / "concordance.json").read_bytes(), 9))
     assert packed < 650_000, "the index is what search and lemma pages both read"
 
 
-def test_language_indexes_are_small_and_independently_packaged(tmp_path):
-    out = build(tmp_path)
+def test_language_indexes_are_small_and_independently_packaged(reader_out):
+    out = reader_out
     for language in ("pl", "en"):
         path = out / f"languages/{language}/concordance.json"
         packed = len(gzip.compress(path.read_bytes(), 9))
@@ -386,8 +379,8 @@ def test_language_indexes_are_small_and_independently_packaged(tmp_path):
         assert manifest["concordance"] == f"languages/{language}/concordance.json"
 
 
-def test_formulary_assemblies_are_explicit_localized_and_calendar_addressable(tmp_path):
-    out = build(tmp_path)
+def test_formulary_assemblies_are_explicit_localized_and_calendar_addressable(reader_out):
+    out = reader_out
     manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
     catalog = json.loads((out / manifest["base"]["formularies"]).read_text(encoding="utf-8"))
     by_id = {formulary["id"]: formulary for formulary in catalog["formularies"]}
@@ -442,8 +435,8 @@ def test_formulary_assemblies_are_explicit_localized_and_calendar_addressable(tm
         assert {entry["id"] for entry in localized["titles"]} == set(by_id)
 
 
-def test_metrics_are_the_single_derived_denominator(tmp_path):
-    out = build(tmp_path)
+def test_metrics_are_the_single_derived_denominator(reader_out):
+    out = reader_out
     manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
     metrics = json.loads((out / manifest["base"]["metrics"]).read_text(encoding="utf-8"))
     assert metrics == {
@@ -478,8 +471,8 @@ def test_registry_is_current(tmp_path, monkeypatch):
     }
 
 
-def test_generated_json_has_descriptive_paths_and_logical_lines(tmp_path):
-    out = build(tmp_path)
+def test_generated_json_has_descriptive_paths_and_logical_lines(reader_out):
+    out = reader_out
     expected = {
         "manifest.json",
         "concordance.json",
@@ -517,10 +510,10 @@ def test_a_word_that_loses_a_language_is_caught(tmp_path):
     assert errors and "word coverage" in errors[0], errors[:1]
 
 
-def test_the_edition_carries_the_calendar_a_reader_can_look_today_up_in(tmp_path):
+def test_the_edition_carries_the_calendar_a_reader_can_look_today_up_in(reader_out):
     # Decision #6: apps never implement movable-feast logic. Three readers are
     # coming, and a rule implemented three times becomes three rules.
-    out = build(tmp_path)
+    out = reader_out
     kal = json.loads((out / "calendar.json").read_text(encoding="utf-8"))
     manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
     first, last = manifest["kalendarium"]
@@ -546,13 +539,13 @@ def test_the_edition_carries_the_calendar_a_reader_can_look_today_up_in(tmp_path
     assert kal["formularies"][by_date["2025-11-30"][1]] == "dominica-i-adventus"
 
 
-def test_the_calendar_costs_almost_nothing_to_ship(tmp_path):
-    out = build(tmp_path)
+def test_the_calendar_costs_almost_nothing_to_ship(reader_out):
+    out = reader_out
     packed = len(gzip.compress((out / "calendar.json").read_bytes(), 9))
     assert packed < 40_000, "seventy-six years of Sundays is not a large object"
 
 
-def test_retired_segments_reach_the_edition_and_verify_guards_them(tmp_path):
+def test_retired_segments_reach_the_edition_and_verify_guards_them(reader_copy):
     # A retired segment id must travel with the text, so the app can resolve
     # an old `?s=` link to the surviving verse — and the round-trip cannot
     # see it (its source, `ids`, is a declared drop), so `verify` holds the
@@ -572,7 +565,7 @@ def test_retired_segments_reach_the_edition_and_verify_guards_them(tmp_path):
     plain = core_artifact(sample, store.core(CORPUS, sample["id"]), Table(), Table(), Table())
     assert "rs" not in plain
 
-    out = build(tmp_path)
+    out = reader_copy
     assert verify(CORPUS, out) == []
     victim = out / "texts" / Path(*sample["id"].split(".")).with_suffix(".json")
     mutated = json.loads(victim.read_text(encoding="utf-8"))
@@ -582,7 +575,7 @@ def test_retired_segments_reach_the_edition_and_verify_guards_them(tmp_path):
     assert any("retired segments differ" in e for e in errors), errors
 
 
-def test_retired_words_reach_the_edition_and_verify_guards_them(tmp_path):
+def test_retired_words_reach_the_edition_and_verify_guards_them(reader_copy):
     docs = read_corpus(CORPUS)
     sample = docs[0][0]
     from build_reader import store
@@ -597,7 +590,7 @@ def test_retired_words_reach_the_edition_and_verify_guards_them(tmp_path):
     plain = core_artifact(sample, store.core(CORPUS, sample["id"]), Table(), Table(), Table())
     assert "rw" not in plain
 
-    out = build(tmp_path)
+    out = reader_copy
     assert verify(CORPUS, out) == []
     victim = out / "texts" / Path(*sample["id"].split(".")).with_suffix(".json")
     mutated = json.loads(victim.read_text(encoding="utf-8"))
@@ -607,12 +600,12 @@ def test_retired_words_reach_the_edition_and_verify_guards_them(tmp_path):
     assert any("retired words differ" in e for e in errors), errors
 
 
-def test_verify_catches_what_the_round_trip_cannot(tmp_path):
+def test_verify_catches_what_the_round_trip_cannot(reader_out, tmp_path):
     # Fault injection, one artifact class at a time. Every probe below passed
     # a round-trip-only verify when the review ran them; each must now fail.
     import shutil
 
-    clean = build(tmp_path)
+    clean = reader_out
     assert verify(CORPUS, clean) == []
 
     def broken(mutate, name):

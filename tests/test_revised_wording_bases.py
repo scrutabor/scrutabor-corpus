@@ -41,12 +41,40 @@ def baseline():
     assert bibliography.validate(ROOT, *graphs) == []
     recorded, errors = translation_provenance.load(ROOT)
     assert errors == []
-    return {
+    documents = store.all_texts(ROOT)
+    before = translation_provenance.canonical_hash(documents)
+    result = {
         "graphs": graphs,
+        "documents": documents,
         "sites": translation_provenance.corpus_sites(ROOT),
         "recorded": recorded,
         "check": translation_provenance.check(ROOT),
     }
+    assert {doc["id"] for doc, _ in documents} == set(store.text_ids(ROOT))
+    with pytest.MonkeyPatch.context() as patch:
+        patch.setattr(store, "all_texts", lambda _root: documents)
+        assert translation_provenance.corpus_sites(ROOT) == result["sites"]
+        assert translation_provenance.check(ROOT) == result["check"]
+    yield result
+    assert translation_provenance.canonical_hash(documents) == before
+    assert store.all_texts(ROOT) == documents
+
+
+@pytest.fixture
+def source_snapshot(baseline, monkeypatch):
+    """Reuse only unchanged source documents, never the mutated bibliography.
+
+    Every fault still runs the actual full-book site discovery and provenance
+    checker. This family changes bibliography graphs only, so rereading and
+    expanding all neutral/localized files for each probe adds no new subject.
+    The unpatched baseline and final disk comparison prove the cached input.
+    """
+    loader = store.all_texts
+
+    def all_texts(root):
+        return baseline["documents"] if root == ROOT else loader(root)
+
+    monkeypatch.setattr(store, "all_texts", all_texts)
 
 
 def test_revised_source_fixture_is_nonempty_and_covers_every_intended_site():
@@ -123,7 +151,9 @@ def test_revised_source_has_exact_identity_scope_claim_and_unchanged_target(reco
         "language",
     ],
 )
-def test_real_revised_basis_rejection_and_exact_restoration(record, damage, baseline, monkeypatch):
+def test_real_revised_basis_rejection_and_exact_restoration(
+    record, damage, baseline, source_snapshot, monkeypatch
+):
     original = baseline["graphs"]
     graph, packages = copy.deepcopy(original)
     language, site = record["language"], record["site"]

@@ -122,9 +122,10 @@ def check_schema_versions() -> list[str]:
 
 
 def lexicon_suite(used_lemmas=None) -> int:
-    """Global lexicon checks: shape, head orthography, language parity, and
-    (given the set of lemmas every text uses) orphan entries. The per-text
-    coverage/consistency half runs inside main()."""
+    return _lexicon_suite(used_lemmas, None)
+
+
+def _check_lexicon_holes() -> int:
     # Holes first, and alone if there are any: the checks below read the prose
     # they find, and a null `note` reaches checks/lexicon.py as a TypeError for
     # the same reason a null gloss reached checks/lint.py as one.
@@ -143,8 +144,16 @@ def lexicon_suite(used_lemmas=None) -> int:
             f"is not read further"
         )
         return 1
+    return 0
 
-    lemmata, langs, errors = load_lexicon(CORPUS)
+
+def _lexicon_suite(used_lemmas, loaded: tuple[dict, dict, list[str]] | None) -> int:
+    """Global lexicon checks, with optional inputs owned by this invocation."""
+    if _check_lexicon_holes():
+        return 1
+
+    lemmata, langs, load_errors = loaded if loaded is not None else load_lexicon(CORPUS)
+    errors = list(load_errors)
     errors += lint_lemmata(lemmata)
     errors += check_paradigm(lemmata)
     if "en" in langs:
@@ -176,6 +185,17 @@ def lexicon_suite(used_lemmas=None) -> int:
 
 
 def main(text_id: str) -> int:
+    # A public invocation is a fresh observation, including repeated calls in
+    # the same process after an edit. Nothing is cached across checking runs.
+    store.clear_caches()
+    if _check_lexicon_holes():
+        return 1
+    global_errors = check_language_manifests(CORPUS) + check_schema_versions()
+    lemmata, _, errors = load_lexicon(CORPUS)
+    return _check_text(text_id, lemmata, (*global_errors, *errors))
+
+
+def _check_text(text_id: str, lemmata: dict, global_errors: tuple[str, ...] = ()) -> int:
     text_path = store.path_of(CORPUS, text_id)
     # One neutral core and every published language layer in hand. Each check
     # still asks the language-specific question it was written to ask.
@@ -199,8 +219,7 @@ def main(text_id: str) -> int:
         )
         return 1
 
-    all_errors, all_warnings = [], []
-    all_errors += check_language_manifests(CORPUS)
+    all_errors, all_warnings = list(global_errors), []
     all_errors += check_language_core(stored)
     for language in store.languages_for(CORPUS, text_id):
         all_errors += check_language_layer(
@@ -249,10 +268,6 @@ def main(text_id: str) -> int:
     all_errors += duplicate_keys(text_path)
     for language in store.languages_for(CORPUS, text_id):
         all_errors += duplicate_keys(store.layer_path(CORPUS, language, text_id))
-    all_errors += check_schema_versions()
-
-    lemmata, _, lex_errors = load_lexicon(CORPUS)
-    all_errors += lex_errors
     all_errors += check_text_against_lexicon(doc, lemmata)
 
     gloss_docs = []
@@ -341,19 +356,31 @@ def discover() -> list:
 
 
 def run_all() -> int:
+    store.clear_caches()
     ids = discover()
     if not ids:
         print("VERDICT FAIL no texts discovered under texts/ — refusing to pass on zero")
         return 1
+    # Shape errors must be reported before the shared loader dereferences
+    # malformed entries. Dependent semantic checks cannot safely read holes.
+    if _check_lexicon_holes():
+        return 1
+    # Corpus-wide prerequisites have one subject and one verdict, not one
+    # complete disk scan per text. Keep their failures even when texts pass.
+    global_errors = check_language_manifests(CORPUS) + check_schema_versions()
+    for message in global_errors:
+        print(f"ERROR: {message}")
+    print(f"GLOBAL manifests/schema errors={len(global_errors)}")
+    lexicon = load_lexicon(CORPUS)
     used = set()
     for tid in ids:
         tdoc = store.load(CORPUS, tid)[0]
         for s in tdoc["segments"]:
             for w in s.get("words") or []:
                 used.add(w["lemma"])
-    rc = lexicon_suite(used)
+    rc = int(bool(global_errors)) | _lexicon_suite(used, lexicon)
     for tid in ids:
-        rc |= main(tid)
+        rc |= _check_text(tid, lexicon[0])
     # Global neutral checks must include every discovered core, even
     # when a text has no English layer. Per-text language errors already
     # contribute to rc; missing targets must not abort the remaining checks.
@@ -401,10 +428,7 @@ def run_all() -> int:
     cited = (
         corpus_docs
         + [g for _doc, layers in store.all_texts(CORPUS) for g in layers.values()]
-        + [
-            {"language": lang, "entries": entries}
-            for lang, entries in load_lexicon(CORPUS)[1].items()
-        ]
+        + [{"language": lang, "entries": entries} for lang, entries in lexicon[1].items()]
     )
     # What this edition may reproduce, counted rather than assumed. Every
     # cited work must say what it is (checks/rights.py).

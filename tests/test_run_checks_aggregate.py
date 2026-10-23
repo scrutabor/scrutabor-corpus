@@ -22,6 +22,7 @@ LATE = (
     "basis",
     "kalendarium",
     "formularies",
+    "commemorationes",
     "introductiones",
 )
 
@@ -49,18 +50,38 @@ def configured(monkeypatch, tmp_path):
         monkeypatch.setattr(
             runner.store, "all_texts", lambda root: list(zip(docs, layers, strict=True))
         )
-        monkeypatch.setattr(runner, "load_lexicon", lambda root: ({}, {}))
 
         def event(name, value=None):
             events.append(name)
             return ["injected " + name] if failure == name else []
 
-        def lexical(used):
-            assert used == set(ids)
-            event("lexicon")
-            return int(failure == "lexicon")
+        clear_caches = runner.store.clear_caches
 
-        def per_text(tid):
+        def fresh_inputs():
+            event("fresh_inputs")
+            clear_caches()
+
+        monkeypatch.setattr(runner.store, "clear_caches", fresh_inputs)
+        monkeypatch.setattr(runner, "_check_lexicon_holes", lambda: 0)
+
+        lemmata = {"fixture": {"pos": "noun"}}
+
+        def load_lexicon(root):
+            assert root == tmp_path
+            return lemmata, {}, event("lexicon_load")
+
+        monkeypatch.setattr(runner, "load_lexicon", load_lexicon)
+        monkeypatch.setattr(runner, "check_language_manifests", lambda root: event("manifests"))
+        monkeypatch.setattr(runner, "check_schema_versions", lambda: event("schema"))
+
+        def lexical(used, loaded):
+            assert used == set(ids)
+            assert loaded[0] is lemmata
+            event("lexicon")
+            return int(failure in ("lexicon", "lexicon_load"))
+
+        def per_text(tid, shared_lemmata):
+            assert shared_lemmata is lemmata
             event("text:" + tid)
             return int((missing is not None and tid == ids[1]) or failure == "per_text")
 
@@ -87,8 +108,8 @@ def configured(monkeypatch, tmp_path):
 
             return check
 
-        monkeypatch.setattr(runner, "lexicon_suite", lexical)
-        monkeypatch.setattr(runner, "main", per_text)
+        monkeypatch.setattr(runner, "_lexicon_suite", lexical)
+        monkeypatch.setattr(runner, "_check_text", per_text)
         monkeypatch.setattr(runner, "check_uncertainty", uncertainty)
         monkeypatch.setattr(runner, "resolve_ref", lambda root, base: "fixture-sha")
         for attr, name in [
@@ -117,6 +138,9 @@ def configured(monkeypatch, tmp_path):
         monkeypatch.setattr(runner, "check_kalendarium", lambda root: (event("kalendarium"), 0, 0))
         monkeypatch.setattr(runner, "check_formularies", lambda root: (event("formularies"), {}))
         monkeypatch.setattr(
+            runner, "check_commemorationes", lambda root: (event("commemorationes"), {})
+        )
+        monkeypatch.setattr(
             runner, "check_introductiones", lambda root: (event("introductiones"), {})
         )
 
@@ -136,6 +160,10 @@ def configured(monkeypatch, tmp_path):
 
 def assert_all_checks(fixture):
     assert fixture.events == [
+        "fresh_inputs",
+        "manifests",
+        "schema",
+        "lexicon_load",
         "lexicon",
         "text:fixture.complete",
         "text:fixture.incomplete",
@@ -154,6 +182,7 @@ def assert_all_checks(fixture):
         "basis",
         "kalendarium",
         "formularies",
+        "commemorationes",
         "introductiones",
         "readings",
         "disputed",
@@ -175,7 +204,9 @@ def test_missing_layer_upstream_failure_keeps_every_core_and_later_checks(config
     assert_all_checks(fixture)
 
 
-@pytest.mark.parametrize("failure", ["lexicon", "per_text", *LATE])
+@pytest.mark.parametrize(
+    "failure", ["manifests", "schema", "lexicon_load", "lexicon", "per_text", *LATE]
+)
 def test_any_earlier_or_later_failure_is_retained(configured, failure):
     fixture = configured(failure=failure)
     assert runner.run_all() == 1

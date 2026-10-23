@@ -29,7 +29,12 @@ jobs:
       - run: ruff check .
       - run: ruff format --check .
       - run: mypy
-      - run: python -m pytest -q
+      - name: record verification inputs
+        run: |
+          python --version
+          printf 'revision=%s\n' "$GITHUB_SHA"
+          pip freeze > "$RUNNER_TEMP/corpus-dependencies.txt"
+      - run: python -m pytest -q --durations=40 --junitxml="$RUNNER_TEMP/corpus-junit.xml"
       # The house layout, so that a diff over a text stays readable. It had
       # already slipped in five files kept by hand.
       - run: python -m checks.layout --check
@@ -59,11 +64,27 @@ jobs:
       # machine works; THIS step runs it with --strict because a word that
       # names an analyzer the analyzer contradicts is this repository's
       # defect — 67 such words shipped on 2026-08-18 and nothing here could
-      # go red for them. The clone is the pipeline's main, shallow, and the
-      # analyzers install from its own pinned requirements.
+      # go red for them. Pin the verifier as well as its dependencies so the
+      # result can be reproduced after the pipeline's main advances.
+      - uses: actions/checkout@v7
+        with:
+          repository: scrutabor/scrutabor-pipeline
+          ref: b065f7065648a56ae2c35dc99f252ab6b813203b
+          path: .ci-pipeline
+          persist-credentials: false
       - name: the analyzers confirm what the corpus claims
         run: |
-          git clone --depth 1 https://github.com/scrutabor/scrutabor-pipeline.git /tmp/pipeline
-          pip install -r /tmp/pipeline/requirements.txt
-          pip install /tmp/pipeline
+          git -C .ci-pipeline rev-parse HEAD
+          pip install -r .ci-pipeline/requirements.txt
+          pip install .ci-pipeline
           python -m scrutabor_pipeline.agreement --strict .
+      - name: publish verification timings
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: corpus-timings
+          path: |
+            ${{ runner.temp }}/corpus-junit.xml
+            ${{ runner.temp }}/corpus-dependencies.txt
+          if-no-files-found: warn
+          retention-days: 3

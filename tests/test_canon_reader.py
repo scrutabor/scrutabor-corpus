@@ -16,9 +16,11 @@ BODY_IDS = sorted({text for bodies in selector.PROFILES.values() for text in bod
 
 
 @pytest.fixture(scope="module")
-def edition(tmp_path_factory):
+def edition(tmp_path_factory, emitted_book):
     out = tmp_path_factory.mktemp("canon-reader")
-    emit.emit(CORPUS, out)
+    # Canon fault injection owns this copy; the session's emitted book stays
+    # read-only for the independent reader contracts and determinism check.
+    shutil.copytree(emitted_book[0], out, dirs_exist_ok=True)
     graph, languages = bibliography.load(CORPUS)
     projection = bibliography.ReaderCitationProjection(CORPUS, graph, languages)
     return out, graph, projection
@@ -40,9 +42,12 @@ def change(edition):
                 value if isinstance(value, str) else json.dumps(value), encoding="utf-8"
             )
 
-    yield mutate
-    for path, data in saved.items():
-        path.write_bytes(data)
+    try:
+        yield mutate
+    finally:
+        for path, data in saved.items():
+            path.write_bytes(data)
+        assert all(path.read_bytes() == data for path, data in saved.items())
 
 
 def read(edition, name):
