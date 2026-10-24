@@ -31,7 +31,7 @@ from kalendarium.roman import year
 from kalendarium.sanctorale import FESTA
 from kalendarium.temporale import Dies
 
-TITLE_SCHEMA = "1.0.0"
+TITLE_SCHEMA = "1.1.0"
 # RG 18: the resumed Sundays after Epiphany take the places after the Twenty-third Sunday after
 # Pentecost so that the one before the last is the Sixth; the last is always the Twenty-fourth.
 RESUMED = {3: "iii", 4: "iv", 5: "v", 6: "vi"}
@@ -115,15 +115,94 @@ def input_bodies(corpus: Path) -> None:
 
 
 def language_catalog(corpus: Path, language: str) -> dict:
-    """Localized titles only; the neutral resource carries the assembly data."""
-    from checks.commemorationes import language_documents
+    """Localized title/context prose only; the neutral resource owns assembly."""
+    from checks.commemorationes import check, language_documents
 
+    problems, _counts = check(corpus)
+    if problems:
+        raise ValueError("commemorationes: invalid authored documents: " + "; ".join(problems))
     titles = []
     for _path, doc in language_documents(corpus, language):
         if doc.get("commemoration_schema") != TITLE_SCHEMA or doc.get("language") != language:
             raise ValueError("invalid localized commemoration title contract")
-        titles.append({"id": doc["id"], "title": doc["title"]})
+        entry = {"id": doc["id"], "title": doc["title"]}
+        if "about" in doc:
+            entry["about"] = dict(doc["about"])
+        titles.append(entry)
     return {"schema_version": TITLE_SCHEMA, "language": language, "titles": titles}
+
+
+def verify_language_catalog(corpus: Path, language: str, value: object) -> list[str]:
+    """Reconstruct the localized entry/map directly from authored bytes, not the emitter.
+
+    Keep absence distinct from an explicit empty string. Reject raw ambiguity before using
+    the parsed object. This deliberately does not call language_catalog or its projection.
+    """
+    from checks.lint import duplicate_keys
+    from checks.prose import check as check_prose
+
+    prefix = f"commemorationes: languages/{language}/commemorationes.json"
+    expected = []
+    errors: list[str] = []
+    neutral = {
+        path.stem: json.loads(path.read_text(encoding="utf-8"))
+        for path in sorted((corpus / "commemorationes").glob("*.json"))
+    }
+    if not neutral:
+        errors.append("commemorationes: at least one commemoration required")
+    for path in sorted((corpus / "languages" / language / "commemorationes").glob("*.json")):
+        repeated = duplicate_keys(path)
+        if repeated:
+            errors.extend(f"{prefix}: {message}" for message in repeated)
+            continue
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        required = {"commemoration_schema", "id", "language", "title"}
+        if (
+            not isinstance(doc, dict)
+            or not required <= set(doc) <= required | {"about"}
+            or doc.get("commemoration_schema") != "1.1.0"
+            or doc.get("language") != language
+            or doc.get("id") != path.stem
+            or path.stem not in neutral
+            or not isinstance(doc.get("title"), str)
+            or not doc["title"].strip()
+        ):
+            errors.append(f"{prefix}: invalid authored context entry {path.name}")
+            continue
+        row = {"id": path.stem, "title": doc["title"]}
+        if "about" in doc:
+            about = doc["about"]
+            addressed = {
+                slot["key"] for slot in neutral[path.stem]["slots"] if slot["text"] is not None
+            }
+            if not isinstance(about, dict) or any(
+                key not in {"collecta", "secreta", "postcommunio"}
+                or key not in addressed
+                or not isinstance(prose, str)
+                or (prose != "" and not prose.strip())
+                for key, prose in (about.items() if isinstance(about, dict) else [])
+            ):
+                errors.append(f"{prefix}: invalid authored context about {path.name}")
+                continue
+            for key, prose in about.items():
+                errors.extend(
+                    check_prose(
+                        {
+                            "text": f"{path.relative_to(corpus).as_posix()}:{key}",
+                            "language": language,
+                            "about": prose,
+                        }
+                    )
+                )
+            row["about"] = {key: prose for key, prose in about.items()}
+        expected.append(row)
+    if {row["id"] for row in expected} != set(neutral):
+        errors.append(f"{prefix}: authored context identities incomplete")
+    if errors:
+        return errors
+    if value != {"schema_version": "1.1.0", "language": language, "titles": expected}:
+        return [f"{prefix} differs from authored context catalog"]
+    return []
 
 
 def _printed(feast: str, civil_year: int) -> date:
@@ -367,9 +446,6 @@ def verify(corpus: Path, out: Path, manifest: dict, reader_schema: str) -> list[
             errors.append(f"commemorationes: {name} has wrong package identity or declaration")
             continue
         titles = read(package["commemorationes"])
-        if titles != language_catalog(corpus, language) or {
-            t["id"] for t in titles.get("titles", [])
-        } != {entry["id"] for entry in (table or {}).get("commemorations") or []}:
-            errors.append(f"commemorationes: {package['commemorationes']} differs or is incomplete")
+        errors.extend(verify_language_catalog(corpus, language, titles))
         bodies(package, f"languages/{language}/", language)
     return errors

@@ -72,7 +72,7 @@ def test_full_artifact_and_round_trip_gates_accept_the_edition(edition):
 def test_declared_version_shape_and_exact_body_package_closure(edition):
     manifest = read(edition, "manifest.json")
     table = read(edition, manifest["base"]["canon"])
-    assert manifest["schema_version"] == "6.6.0"
+    assert manifest["schema_version"] == "6.7.0"
     assert table["schema_version"] == "1.0.0"
     assert len(table["profiles"]) == 9 and len(BODY_IDS) == 14
     assert len(table["masses"]) == 113 and len(table["pairs"]) == 7610
@@ -423,3 +423,45 @@ def test_genuinely_partial_authored_package_round_trips_without_erasing_emitted_
     assert any(
         "canon:" in message and required.replace(".", "/", 1) in message for message in errors
     )
+
+
+@pytest.mark.parametrize(
+    "name", ["manifest.json", "languages/pl/manifest.json", "languages/en/manifest.json"]
+)
+@pytest.mark.parametrize("version", ["6.6.0", "6.8.0"])
+def test_reader_version_boundaries_reject_and_restore_exact_bytes(edition, name, version):
+    assert emit.SCHEMA == "6.7.0"
+    assert errors(edition) == []
+    names = ("manifest.json", "languages/pl/manifest.json", "languages/en/manifest.json")
+    originals = {item: (edition[0] / item).read_bytes() for item in names}
+    assert all(json.loads(raw)["schema_version"] == "6.7.0" for raw in originals.values())
+    artifact = json.loads(originals[name])
+    artifact["schema_version"] = version
+    expected = (
+        [
+            "canon: root reader schema does not declare this contract",
+            "dismissal: root schema and base.dismissal declaration required",
+            "commemorationes: root schema and base.commemorationes declaration required",
+            "introductiones: root schema and base.introductiones declaration required",
+            "participation performance requires reader 6.7.0",
+        ]
+        if name == "manifest.json"
+        else [
+            f"canon: {name} has the wrong package identity/version",
+            f"dismissal: {name} has wrong package identity/version",
+            f"commemorationes: {name} has wrong package identity or declaration",
+            f"introductiones: {name} has the wrong package identity or version",
+        ]
+    )
+    try:
+        (edition[0] / name).write_text(json.dumps(artifact), encoding="utf-8")
+        assert all(
+            (edition[0] / other).read_bytes() == original
+            for other, original in originals.items()
+            if other != name
+        )
+        assert errors(edition) == expected
+    finally:
+        (edition[0] / name).write_bytes(originals[name])
+    assert all((edition[0] / item).read_bytes() == raw for item, raw in originals.items())
+    assert errors(edition) == []

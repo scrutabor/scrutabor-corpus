@@ -65,7 +65,8 @@ from kalendarium.dismissal import calendar_table as dismissal_table
 # the Epistle and Gospel announcement events with their slot, the Passion rule and a binding
 # for every reading; no consumer read the 1.0.0 shape.
 # 6.6.0 carries a sourced participation performance beside the retained base actor.
-SCHEMA = "6.6.0"
+# 6.7.0 adds optional localized commemoration context maps (catalogue schema 1.1.0).
+SCHEMA = "6.7.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.

@@ -89,7 +89,7 @@ def test_the_authored_contract_is_exact_and_reaches_its_propers():
             )
         )
         assert localized == {
-            "commemoration_schema": "1.0.0",
+            "commemoration_schema": "1.1.0",
             "id": LM,
             "language": language,
             "title": title,

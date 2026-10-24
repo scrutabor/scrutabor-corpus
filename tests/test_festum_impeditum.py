@@ -403,7 +403,7 @@ def test_the_authored_contract_is_exact_and_resolves_its_slots_by_the_calendar()
             )
         )
         assert localized == {
-            "commemoration_schema": "1.0.0",
+            "commemoration_schema": "1.1.0",
             "id": FI,
             "language": language,
             "title": title,

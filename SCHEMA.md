@@ -266,8 +266,18 @@ the citations
 for `date`, `scope`, `rank`, `admission` and `conclusion` as nonempty strings. A
 Proper text reached only by a commemoration slot counts as reached. Each
 published language carries `languages/<lang>/commemorationes/<id>.json` with
-`commemoration_schema` (title schema `1.0.0`), `id`, `language` and the
-localized `title`.
+`commemoration_schema` (localized context schema `1.1.0`), `id`, `language` and
+the localized `title`, with the optional `about` map. That map is keyed only by
+existing addressed oration slots (`collecta`, `secreta`, `postcommunio`), never
+by calendar-resolved slots. A missing map/key inherits the shared prayer
+description. A nonempty string replaces it only on this commemoration page; an
+explicit empty string suppresses only that paragraph. Null, nonstrings,
+whitespace-only strings, unknown keys and duplicate JSON keys are rejected.
+No title, sacred body, card, source identity or admission is inferred or
+changed by this view. The reader language title catalogue is also schema
+`1.1.0`, retaining the optional map on its `id`/`title` entry. The reader checks
+that map independently against the authored bytes. Neutral selection schema
+`2.1.0` and transport-pack body schema `1.0.0` are unchanged.
 
 Nothing here infers a procession or locally mandated supplication, a
 particular calendar, an Office commemoration, the impeded-votive
@@ -420,7 +430,10 @@ bodies. Missing resource, body or localized declaration fails closed.
 
 Reader edition 5.12.0 added `base.commemorationes: "commemorationes.json"` and
 in each language manifest `commemorationes: "languages/<lang>/commemorationes.json"`
-with the localized titles (title schema 1.0.0, unchanged). Reader edition 6.0.0
+with the localized titles (original title schema 1.0.0). The localized context
+successor 1.1.0 is published by reader edition 6.7.0 and adds the explicit
+optional per-slot about map described above. Neutral selection and text rows
+are unchanged. Reader edition 6.0.0
 publishes the independently versioned selection schema 2.0.0, a breaking
 successor of 1.0.0: a pair is now an explicit decision for each Mass situation.
 Reader edition 6.2.0 publishes selection schema 2.1.0, an additive successor

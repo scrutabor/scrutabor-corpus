@@ -27,9 +27,11 @@ from datetime import date
 from pathlib import Path
 
 from build_reader import store
+from checks.lint import duplicate_keys
+from checks.prose import check as check_prose
 
 SCHEMA = "1.4.0"
-TITLE_SCHEMA = "1.0.0"
+TITLE_SCHEMA = "1.1.0"
 KEYS = {
     "commemoration_schema",
     "id",
@@ -45,6 +47,7 @@ KEYS = {
 # (the Greater Litanies) and is stated when the texts carry the saint's genitive name.
 OPTIONAL_KEYS = {"text_prefix"}
 TITLE_KEYS = {"commemoration_schema", "id", "language", "title"}
+TITLE_OPTIONAL_KEYS = {"about"}
 OCCURRENCE_KEYS = {"month", "day", "transfer"}
 # The other occurrence kinds name no date: the commemoration occurs wherever one of the named
 # feasts is kept on a Sunday it impedes (displaced-sunday), falls on a second-class Sunday that
@@ -241,10 +244,41 @@ def _kind_errors(identity: str, doc: dict, occurrence: dict) -> list[str]:
     return errors
 
 
+def about_errors(doc: dict, neutral: dict | None, where: str) -> list[str]:
+    """An explicit localized slot view, not an inference from textual reuse."""
+    if "about" not in doc:
+        return []
+    about = doc["about"]
+    if not isinstance(about, dict):
+        return [f"{where}:about: map required"]
+    allowed = {
+        slot["key"]
+        for slot in (neutral or {}).get("slots", [])
+        if isinstance(slot, dict) and slot.get("text") is not None and slot.get("key") in SLOT_ORDER
+    }
+    errors = []
+    for key, prose in about.items():
+        if key not in allowed:
+            errors.append(f"{where}:about: unknown or calendar slot {key!r}")
+        if not isinstance(prose, str) or (prose != "" and not prose.strip()):
+            errors.append(
+                f"{where}:about:{key}: string required (empty suppresses, whitespace does not)"
+            )
+        else:
+            errors.extend(
+                check_prose(
+                    {"text": f"{where}:{key}", "language": doc.get("language"), "about": prose}
+                )
+            )
+    return errors
+
+
 def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
     """Return errors and non-vacuous denominators for the authored commemorations."""
     errors: list[str] = []
     rows = documents(corpus)
+    if not rows:
+        errors.append("commemorationes: at least one commemoration required")
     text_ids = {f"{path.parent.name}.{path.stem}" for path in (corpus / "texts").glob("*/*.json")}
     seen: set[str] = set()
     relations: Counter[str] = Counter()
@@ -361,8 +395,17 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
         localized = {}
         for path, doc in language_documents(corpus, language):
             where = path.relative_to(corpus).as_posix()
-            if not isinstance(doc, dict) or set(doc) != TITLE_KEYS:
-                errors.append(f"{where}: exact localized fields required {sorted(TITLE_KEYS)}")
+            repeated = duplicate_keys(path)
+            if repeated:
+                errors.extend(f"{where}: {message}" for message in repeated)
+                continue
+            if (
+                not isinstance(doc, dict)
+                or not TITLE_KEYS <= set(doc) <= TITLE_KEYS | TITLE_OPTIONAL_KEYS
+            ):
+                errors.append(
+                    f"{where}: localized fields require {sorted(TITLE_KEYS)}; optional about only"
+                )
                 continue
             if doc["commemoration_schema"] != TITLE_SCHEMA:
                 errors.append(f"{where}: commemoration_schema must be {TITLE_SCHEMA}")
@@ -370,6 +413,15 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
                 errors.append(f"{where}: id/language does not match its path")
             if not _nonempty(doc["title"]):
                 errors.append(f"{where}: localized title is empty")
+            neutral = next(
+                (
+                    item
+                    for _source, item in rows
+                    if isinstance(item, dict) and item.get("id") == path.stem
+                ),
+                None,
+            )
+            errors.extend(about_errors(doc, neutral, where))
             localized[path.stem] = doc
         missing = sorted(seen - set(localized))
         extra = sorted(set(localized) - seen)
