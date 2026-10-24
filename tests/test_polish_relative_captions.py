@@ -323,7 +323,9 @@ INITIAL_CAPITALS = (
     ("proprium.nativitas-domini-in-die-epistola", "s01", "w106", "Qui"),
 )
 
-# These caption relatives continue despite a separate continuous-prose sentence.
+# Relatives whose continuous Polish prose opens a separate sentence at the clause. The 29
+# oration conclusions (CONCLUSION_BOUNDARIES) follow that sentence with a capital caption;
+# the XVIII Epistle relative keeps its lowercase caption beside the prose sentence "On też".
 ADJUDICATED_BOUNDARIES = (
     ("proprium.beatae-mariae-virginis-a-rosario-postcommunio", "s01", "w024", "Qui"),
     ("proprium.beatae-mariae-virginis-a-rosario-secreta", "s01", "w028", "Qui"),
@@ -367,10 +369,17 @@ ADJUDICATED_BOUNDARIES = (
     ("proprium.vigilia-nativitatis-secreta", "s01", "w019", "Qui"),
 )
 
+ROSARY_POSTCOMMUNION = "proprium.beatae-mariae-virginis-a-rosario-postcommunio"
+EPISTLE_XVIII = "proprium.dominica-xviii-post-pentecosten-epistola"
+CONCLUSION_BOUNDARIES = tuple(case for case in ADJUDICATED_BOUNDARIES if case[0] != EPISTLE_XVIII)
+
 RELATIVES = (
     [(case, "który") for case in LOWERCASE_RELATIVES]
     + [(case, "Który") for case in INITIAL_CAPITALS]
-    + [(case, "który") for case in ADJUDICATED_BOUNDARIES]
+    + [
+        (case, "Który" if case in CONCLUSION_BOUNDARIES else "który")
+        for case in ADJUDICATED_BOUNDARIES
+    ]
 )
 MARK_SECRET = "proprium.sancti-marci-evangelistae-secreta"
 
@@ -411,7 +420,8 @@ def test_finite_relative_inventory_and_familiar_boundary():
         len(group) for group in (LOWERCASE_RELATIVES, INITIAL_CAPITALS, ADJUDICATED_BOUNDARIES)
     ] == [293, 5, 30]
     assert len({case[:3] for case, _ in RELATIVES}) == 328
-    assert sum(expected == "który" for _, expected in RELATIVES) == 323
+    assert sum(expected == "który" for _, expected in RELATIVES) == 294
+    assert sum(expected == "Który" for _, expected in RELATIVES) == 34
     assert len(CONCLUSION_BOUNDARIES) == 29
     provenance = json.loads((ROOT / "languages/pl/translation-provenance.json").read_text())
     sites = {site["site"]: site for site in provenance["sites"]}
@@ -439,7 +449,7 @@ CAPTION_CONTROLS = [
     ("litaniae.sanctissimi-nominis-iesu", "w473", "który"),
     ("ordinarium.qui-pridie-in-cena-domini", "w001", "który"),
     ("proprium.nativitas-domini-in-die-epistola", "w106", "który"),
-    ("proprium.beatae-mariae-virginis-a-rosario-postcommunio", "w024", "Który"),
+    ("proprium.beatae-mariae-virginis-a-rosario-postcommunio", "w024", "który"),
     ("proprium.dominica-xviii-post-pentecosten-epistola", "w055", "Który"),
 ]
 
@@ -504,13 +514,8 @@ def test_latin_period_does_not_decide_polish_sentence_boundary(documents):
     assert ". On jest błogosławiony" in epistle["segments"]["s01"]["translation"]
 
 
-ROSARY_POSTCOMMUNION = "proprium.beatae-mariae-virginis-a-rosario-postcommunio"
-EPISTLE_XVIII = "proprium.dominica-xviii-post-pentecosten-epistola"
-CONCLUSION_BOUNDARIES = tuple(case for case in ADJUDICATED_BOUNDARIES if case[0] != EPISTLE_XVIII)
-
-
 def assert_conclusion_prose_boundary(core, layer, case):
-    assert_relative(core, layer, case, "który")
+    assert_relative(core, layer, case, "Który")
     _, sid, wid, _ = case
     (segment,) = [segment for segment in core["segments"] if segment["id"] == sid]
     assert segment["speaker"] == "sacerdos"
@@ -615,7 +620,7 @@ def test_boundary_guard_rejects_only_the_changed_field(
     documents, defect, text, word, field, before, after, message
 ):
     case, expected = find_case(text, word)
-    assert expected == "który"
+    assert expected == ("Który" if text == ROSARY_POSTCOMMUNION else "który")
     core, layer = documents[text]
     saved = deepcopy(layer)
     verify = (

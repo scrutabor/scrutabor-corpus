@@ -1,7 +1,7 @@
 {
   "schema_version": "0.21.0",
   "id": "proprium.beatae-mariae-virginis-a-rosario-postcommunio",
-  "title": "Sacratíssimæ Genetrícis tuæ, cuius Rosárium celebrámus, quǽsumus",
+  "title": "Sanctíssimæ Genetrícis tuæ, cuius Rosárium celebrámus, quǽsumus",
   "category": "proprium",
   "section": "missa-fidelium",
   "variant": "beatae-mariae-virginis-a-rosario",
@@ -19,7 +19,7 @@
       "speaker": "sacerdos",
       "voice": "clara",
       "words": [
-        { "id": "w001", "form": "Sacratíssimæ", "lemma": "sacratus", "morph": { "pos": "adj", "case": "gen", "degree": "sup", "gender": "f", "number": "sg" }, "head": "w002" },
+        { "id": "w001", "form": "Sanctíssimæ", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "degree": "sup", "gender": "f", "number": "sg" }, "head": "w002" },
         { "id": "w002", "form": "Genetrícis", "lemma": "genetrix", "morph": { "case": "gen", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" } },
         { "id": "w003", "form": "tuæ", "lemma": "tuus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "f" }, "post": ",", "head": "w002" },
         { "id": "w004", "form": "cuius", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
@@ -94,16 +94,16 @@
   ],
   "editorial": {
     "status": "working-edition",
-    "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the approved 1962 Benziger printing.",
+    "notes": "The proper page prints the prayer body and abbreviated Qui vivis ending. The complete conclusion and separate Amen response are a declared same-edition expansion from RG 115 d, not literal text printed on that proper page.",
     "source": {
-      "method": "Transcribed from the directly viewed page image of the Benziger Brothers 1962 Editio iuxta typicam and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The 23-word proper body and two-word Qui vivis cue are read from the Benziger 1962 page. The 17-word conclusion and response are supplied separately by Rubricae generales 115 d; accents and final response punctuation follow house presentation. The pinned digital comparison retains its substantive Sacratissimae variant.",
       "witnesses": "witnesses/proprium.beatae-mariae-virginis-a-rosario-postcommunio/",
       "apparatus": "witnesses/proprium.beatae-mariae-virginis-a-rosario-postcommunio/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
-      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } },
+      "w001": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w016": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },

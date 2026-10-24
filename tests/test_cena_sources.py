@@ -176,6 +176,11 @@ CONCLUSION_RELATIVE = {
     CE + "secreta": [f"w{i:03d}" for i in range(31, 36)],
     CE + "postcommunio": [f"w{i:03d}" for i in range(25, 30)],
 }
+# Polish follows its own sentences: the prose of the Secret and of the Postcommunion continues
+# at the relative (`…, który z Tobą żyje …`) and keeps the reviewed lowercase caption; the
+# Collect's prose opens a new sentence (`… zmartwychwstania. Który z Tobą żyje …`), so its
+# caption takes the capital under the plain opening rule, as its English caption does.
+POLISH_CONTINUING = (CE + "secreta", CE + "postcommunio")
 WHO_LIVES = "who lives and reigns with You"
 
 
@@ -183,8 +188,10 @@ def conclusion_relative(language, text, index, prev, first, group, gloss):
     """None away from a reviewed conclusion address, or when its Latin context changed (then the
     plain opening rule decides); otherwise whether the caption has the one reviewed shape.
     English: the exact five-word group `who lives and reigns with You` keeps its lower case, and
-    any other caption falls back to the plain rule. Polish: the unaligned relative `Qui` after the
-    Latin colon must read `który`, so a capital, another form or a group there is a miss."""
+    any other caption falls back to the plain rule. Polish: where the prose continues the
+    sentence (POLISH_CONTINUING), the unaligned relative `Qui` after the Latin colon must read
+    `który`, so a capital, another form or a group there is a miss; where the prose opens a new
+    sentence, the plain rule decides."""
     words = CONCLUSION_RELATIVE.get(text)
     if words is None or first["id"] != words[0]:
         return None
@@ -197,6 +204,8 @@ def conclusion_relative(language, text, index, prev, first, group, gloss):
     if not bound:
         return None
     if language == "pl":
+        if text not in POLISH_CONTINUING:
+            return None
         return group is None and gloss == "który"
     if language == "en":
         exempt = group is not None and group["words"] == words and gloss == WHO_LIVES
@@ -471,7 +480,86 @@ def caption(lay, word, value):
     return edited
 
 
+def polish_allowance_is_bound(monkeypatch, text, doc, polish, where, index):
+    """The reviewed lowercase `który` where the Polish prose continues its sentence: the
+    allowance is bound to its language, caption, `…: Qui` context, address and table."""
+    segment = doc["segments"][where]
+    qui = segment["words"][index]["id"]
+    miss = [(segment["id"], qui, "który")]
+    # Wrong language: the Polish allowance never covers an English caption.
+    with monkeypatch.context() as patch:
+        served(patch, text, en=polish)
+        assert missed_openings("en", text) == miss
+    # Identity: a capital or another relative form at the address is a miss.
+    for wrong in ("Który", "którzy"):
+        with monkeypatch.context() as patch:
+            served(patch, text, pl=caption(polish, qui, wrong))
+            assert missed_openings("pl", text) == [(segment["id"], qui, wrong)]
+    # Clause boundary and changed Latin context: the reviewed context is `…: Qui`.
+    for field, value, at in (
+        ("post", ".", index - 1),
+        ("form", "Quae", index),
+        ("lemma", "quis", index),
+    ):
+        edited = deepcopy(doc)
+        edited["segments"][where]["words"][at][field] = value
+        with monkeypatch.context() as patch:
+            served(patch, text, doc=edited)
+            assert missed_openings("pl", text) == miss
+    # Identity: the allowance never leaves its address. A Polish group or a missing caption
+    # there is a miss; so is `który` at a `: Qui` one word later or in an untabled text.
+    grouped = deepcopy(polish)
+    following = segment["words"][index + 1]["id"]
+    grouped["segments"][segment["id"]].setdefault("alignments", []).append(
+        {"words": [qui, following], "anchor": qui, "gloss": "który"}
+    )
+    with monkeypatch.context() as patch:
+        served(patch, text, pl=grouped)
+        assert missed_openings("pl", text) == [(segment["id"], qui, "który")]
+    with monkeypatch.context() as patch:
+        served(patch, text, pl=caption(polish, qui, None))
+        assert missed_openings("pl", text) == [(segment["id"], qui, None)]
+    shifted = deepcopy(doc)
+    shifted["segments"][where]["words"][index]["post"] = ":"
+    shifted["segments"][where]["words"][index + 1].update({"form": "Qui", "lemma": "qui"})
+    with monkeypatch.context() as patch:
+        served(patch, text, doc=shifted, pl=caption(polish, following, "który"))
+        assert missed_openings("pl", text) == [(segment["id"], following, "który")]
+    # Actual initial: the conclusion served as its own segment opens with `Qui`.
+    edited = deepcopy(doc)
+    edited["segments"][where]["words"] = segment["words"][index:]
+    with monkeypatch.context() as patch:
+        served(patch, text, doc=edited)
+        assert missed_openings("pl", text) == miss
+
+
+def polish_opening_takes_the_capital(monkeypatch, text, polish, segment, index):
+    """Where the Polish prose opens a new sentence at the relative, the plain opening rule
+    decides: the capital passes, and a lowercase relative, another lowercase form, a lowercase
+    group or a missing caption that passes the opening to the next caption is a miss."""
+    qui, following = segment["words"][index]["id"], segment["words"][index + 1]["id"]
+    for wrong in ("który", "którzy"):
+        with monkeypatch.context() as patch:
+            served(patch, text, pl=caption(polish, qui, wrong))
+            assert missed_openings("pl", text) == [(segment["id"], qui, wrong)]
+    grouped = deepcopy(polish)
+    grouped["segments"][segment["id"]].setdefault("alignments", []).append(
+        {"words": [qui, following], "anchor": qui, "gloss": "który"}
+    )
+    with monkeypatch.context() as patch:
+        served(patch, text, pl=grouped)
+        assert missed_openings("pl", text) == [(segment["id"], qui, "który")]
+    with monkeypatch.context() as patch:
+        served(patch, text, pl=caption(polish, qui, None))
+        assert missed_openings("pl", text) == [
+            (segment["id"], following, polish["words"][following]["gloss"])
+        ]
+
+
 def test_conclusion_relative_allowance_is_context_bound(monkeypatch):
+    assert [text for text in CONCLUSION_RELATIVE if text not in POLISH_CONTINUING] == [
+        CE + "collecta"
+    ]
     for text, words in CONCLUSION_RELATIVE.items():
         qui, doc, polish, english = words[0], core(text), layer("pl", text), layer("en", text)
         (where,) = [
@@ -481,53 +569,18 @@ def test_conclusion_relative_allowance_is_context_bound(monkeypatch):
         index = [w["id"] for w in segment["words"]].index(qui)
         before, word = segment["words"][index - 1 : index + 1]
         assert (before["post"], word["form"], word["lemma"]) == (":", "Qui", "qui")
-        assert polish["words"][qui]["gloss"] == "który"
+        continuing = text in POLISH_CONTINUING
+        assert polish["words"][qui]["gloss"] == ("który" if continuing else "Który")
         (group,) = [
             a for a in english["segments"][segment["id"]]["alignments"] if qui in a["words"]
         ]
         assert group["words"] == words and group["gloss"].lower() == WHO_LIVES.lower()
         for language in ("pl", "en"):
             assert missed_openings(language, text) == []
-        miss = [(segment["id"], qui, "który")]
-        # Wrong language: the Polish allowance never covers an English caption.
-        with monkeypatch.context() as patch:
-            served(patch, text, en=polish)
-            assert missed_openings("en", text) == miss
-        # Identity: a capital or another relative form at the address is a miss.
-        for wrong in ("Który", "którzy"):
-            with monkeypatch.context() as patch:
-                served(patch, text, pl=caption(polish, qui, wrong))
-                assert missed_openings("pl", text) == [(segment["id"], qui, wrong)]
-        # Clause boundary and changed Latin context: the reviewed context is `…: Qui`.
-        for field, value, at in (
-            ("post", ".", index - 1),
-            ("form", "Quae", index),
-            ("lemma", "quis", index),
-        ):
-            edited = deepcopy(doc)
-            edited["segments"][where]["words"][at][field] = value
-            with monkeypatch.context() as patch:
-                served(patch, text, doc=edited)
-                assert missed_openings("pl", text) == miss
-        # Identity: the allowance never leaves its address. A Polish group or a missing caption
-        # there is a miss; so is `który` at a `: Qui` one word later or in an untabled text.
-        grouped = deepcopy(polish)
-        following = segment["words"][index + 1]["id"]
-        grouped["segments"][segment["id"]].setdefault("alignments", []).append(
-            {"words": [qui, following], "anchor": qui, "gloss": "który"}
-        )
-        with monkeypatch.context() as patch:
-            served(patch, text, pl=grouped)
-            assert missed_openings("pl", text) == [(segment["id"], qui, "który")]
-        with monkeypatch.context() as patch:
-            served(patch, text, pl=caption(polish, qui, None))
-            assert missed_openings("pl", text) == [(segment["id"], qui, None)]
-        shifted = deepcopy(doc)
-        shifted["segments"][where]["words"][index]["post"] = ":"
-        shifted["segments"][where]["words"][index + 1].update({"form": "Qui", "lemma": "qui"})
-        with monkeypatch.context() as patch:
-            served(patch, text, doc=shifted, pl=caption(polish, following, "który"))
-            assert missed_openings("pl", text) == [(segment["id"], following, "który")]
+        if continuing:
+            polish_allowance_is_bound(monkeypatch, text, doc, polish, where, index)
+        else:
+            polish_opening_takes_the_capital(monkeypatch, text, polish, segment, index)
         unaligned = deepcopy(english)
         unaligned["segments"][segment["id"]]["alignments"] = [
             a for a in unaligned["segments"][segment["id"]]["alignments"] if a["words"][0] != qui
@@ -539,12 +592,6 @@ def test_conclusion_relative_allowance_is_context_bound(monkeypatch):
         with monkeypatch.context() as patch:
             served(patch, text, en=unaligned)
             assert missed_openings("en", text) == [(segment["id"], qui, WHO_LIVES)]
-        # Actual initial: the conclusion served as its own segment opens with `Qui`.
-        edited = deepcopy(doc)
-        edited["segments"][where]["words"] = segment["words"][index:]
-        with monkeypatch.context() as patch:
-            served(patch, text, doc=edited)
-            assert missed_openings("pl", text) == miss
         # English binding: only the exact group with the exact caption keeps its lower case.
         for shape in ("words", "gloss"):
             edited = deepcopy(english)
