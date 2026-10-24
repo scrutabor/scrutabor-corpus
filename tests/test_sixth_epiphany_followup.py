@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from gospel_delivery_fixture import current_gospel_selected_hash
 
 from build_reader.bibliography_bindings import digest, selected_text
 from checks import attribute, interlinear
@@ -114,7 +115,7 @@ def test_coherent_construction(role, language, start, end, anchor, gloss):
 def test_complete_latin_realization_topology_and_pending_rows(role, language):
     doc, data = core(role), layer(role, language)
     assert sum(len(s["words"]) for s in doc["segments"]) == ROLES[role]
-    assert digest(selected_text(doc)) == SELECTED[role]
+    assert digest(selected_text(doc)) == current_gospel_selected_hash(doc["id"], SELECTED[role])
     assert check_core(doc) == []
     assert (
         check_layer(

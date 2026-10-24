@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.21.0",
+  "id": "ordinarium.lectio-libri-iudith",
+  "title": "Léctio libri Iudith",
+  "category": "ordinarium",
+  "section": "missa-catechumenorum",
+  "variant": "missae",
+  "sung": false,
+  "ids": {
+    "next": 4,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Léctio", "lemma": "lectio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w002", "form": "libri", "lemma": "liber_volumen", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w003", "form": "Iudith", "lemma": "Iudith", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f" } }
+      ]
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The heading printed over a reading from a book named by its title. LÉCTIO is the nominative of a heading: no verb is expressed or understood. LIBRI is the genitive of liber (book), and the second genitive is the title of the book. IUDITH is an indeclinable Hebrew name, here genitive.",
+    "source": {
+      "method": "The Latin follows the Benziger Brothers 1962 editio iuxta typicam, which prints this heading over the Epistle on printed p. 640 (IA leaf n721 / PDF p. 722) and over the 1 further reading named in the witness header; it is compared with the heading line of the pinned Divinum Officium file that the reading's own digital witness binds. Source review remains pending.",
+      "witnesses": "witnesses/ordinarium.lectio-libri-iudith/",
+      "apparatus": "witnesses/ordinarium.lectio-libri-iudith/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+    "words": {
+      "w003": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true
+  }
+}

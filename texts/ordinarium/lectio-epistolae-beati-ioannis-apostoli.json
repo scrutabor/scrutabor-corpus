@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.21.0",
+  "id": "ordinarium.lectio-epistolae-beati-ioannis-apostoli",
+  "title": "Léctio Epístolæ beáti Ioánnis Apóstoli",
+  "category": "ordinarium",
+  "section": "missa-catechumenorum",
+  "variant": "missae",
+  "sung": false,
+  "ids": {
+    "next": 6,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Léctio", "lemma": "lectio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w002", "form": "Epístolæ", "lemma": "epistola", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w003", "form": "beáti", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w004" },
+        { "id": "w004", "form": "Ioánnis", "lemma": "Ioannes", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 3 } },
+        { "id": "w005", "form": "Apóstoli", "lemma": "apostolus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } }
+      ]
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The heading printed over a reading from one of the Catholic Epistles. LÉCTIO is the nominative of a heading: no verb is expressed or understood. EPÍSTOLÆ is the genitive of the letter the reading is taken from; BEÁTI agrees with the apostle's name, and APÓSTOLI stands in apposition to it. The heading names the apostle, not the number of the letter.",
+    "source": {
+      "method": "The Latin follows the Benziger Brothers 1962 editio iuxta typicam, which prints this heading over the Epistle on printed p. 371 (IA leaf n452 / PDF p. 453) and over the 1 further reading named in the witness header; it is compared with the heading line of the pinned Divinum Officium file that the reading's own digital witness binds. Source review remains pending.",
+      "witnesses": "witnesses/ordinarium.lectio-epistolae-beati-ioannis-apostoli/",
+      "apparatus": "witnesses/ordinarium.lectio-epistolae-beati-ioannis-apostoli/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+    "words": {
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true
+  }
+}

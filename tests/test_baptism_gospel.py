@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from gospel_delivery_fixture import current_gospel_selected_hash
 
 from build_reader.bibliography_bindings import digest, selected_text, transcript_digest
 from build_reader.layers import enrich_layer, expand_core
@@ -152,9 +153,8 @@ def test_provenance_binds_current_words_without_new_approval(language):
 
 def test_selected_latin_and_all_six_witness_variants():
     core = load(f"texts/proprium/{NAME}.json")
-    assert (
-        digest(selected_text(core))
-        == "80fbc0510b62dd01d55dbe1608e27ce74e54eeb8699ce6b5efde7c959835e509"
+    assert digest(selected_text(core)) == current_gospel_selected_hash(
+        core["id"], "80fbc0510b62dd01d55dbe1608e27ce74e54eeb8699ce6b5efde7c959835e509"
     )
     selected = [
         w.get("pre", "") + w["form"] + w.get("post", "") for w in core["segments"][0]["words"]

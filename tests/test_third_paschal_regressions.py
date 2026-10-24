@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from gospel_delivery_fixture import current_gospel_selected_hash
 from provenance_successor_fixture import assert_protection_scope
 
 from build_reader import bibliography, store
@@ -290,7 +291,7 @@ def test_relative_case_or_person_regression_is_rejected(role, wid, bad_gloss):
 
 def assert_latin(doc, role):
     # Pin only the sacred/ritual subject, not editorial metadata or morphology.
-    assert digest(selected_text(doc)) == LATIN[role]
+    assert digest(selected_text(doc)) == current_gospel_selected_hash(doc["id"], LATIN[role])
 
 
 @pytest.mark.parametrize("role", LATIN)

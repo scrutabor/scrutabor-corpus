@@ -13,6 +13,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from gospel_delivery_fixture import current_gospel_selected_hash
 
 from build_reader import bibliography_bindings as bindings
 from build_reader import store
@@ -109,7 +110,9 @@ def assert_faces(row):
     """Canonical face, digital transcript locus and pinned raw source line of one entry."""
     core = store.core(ROOT, row["text"])
     selected = bindings.digest(bindings.selected_text(core))
-    assert selected == collation_row(row["text"])["selected_text_sha256"]
+    assert selected == current_gospel_selected_hash(
+        row["text"], collation_row(row["text"])["selected_text_sha256"]
+    )
     tokens = corpus_tokens(expand_core(core))
     assert tokens[row["canonical_ordinal"] - 1] == (row["at"], row["ours"])
     path = ROOT / f"witnesses/{row['text']}/do.txt"
@@ -358,7 +361,11 @@ def test_affected_collation_binds_its_corrected_apparatus(row, sources):
     assert current["apparatus_sha256"] == row["after_sha256"] == bindings.digest(value)
     core = store.core(ROOT, row["text"])
     selected = bindings.digest(bindings.selected_text(core))
-    assert current["selected_text_sha256"] == row["selected_text_sha256"] == selected
+    assert (
+        current["selected_text_sha256"]
+        == current_gospel_selected_hash(row["text"], row["selected_text_sha256"])
+        == selected
+    )
     records = {r["id"]: r for r in graph["witnesses"] if r["id"] in current["witnesses"]}
     assert {key: bindings.digest(r) for key, r in records.items()} == row["witness_records_sha256"]
     witnesses = {

@@ -7,7 +7,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from preface_delivery_fixture import current_record_hash, current_selected_hash
+from gospel_delivery_fixture import current_sung_record_hash, current_sung_selected_hash
 
 from build_reader import bibliography_bindings as bindings
 from build_reader import store
@@ -152,7 +152,7 @@ def test_each_exact_ruling_keeps_canonical_face_and_archived_witness_locator(row
     assert_entry(row, entry)
     assert_category(row)
     core = store.core(ROOT, row["text"])
-    assert bindings.digest(bindings.selected_text(core)) == current_selected_hash(
+    assert bindings.digest(bindings.selected_text(core)) == current_sung_selected_hash(
         row["text"], FIXTURE["texts"][row["text"]]["selected_sha256"]
     )
     tokens = corpus_tokens(expand_core(core))
@@ -301,7 +301,7 @@ def test_exact_pending_collation_hash_binds_full_apparatus_with_stale_inverse_co
     assert bindings.digest(apparatus(row["text"])) == row["after_sha256"]
     assert bindings.digest(
         {k: v for k, v in current.items() if k != "apparatus_sha256"}
-    ) == current_record_hash(row["id"], row["unchanged_record_fields_sha256"])
+    ) == current_sung_record_hash(row["id"], row["unchanged_record_fields_sha256"])
     subject = bindings._collation_subject(
         ROOT, current, docs[row["text"]], witnesses, reviewable=False
     )

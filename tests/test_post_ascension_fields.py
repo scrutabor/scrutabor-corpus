@@ -11,12 +11,12 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from post_ascension_fixture import FIXTURE, expected_row_successor, restore_layer, value_at
-from preface_delivery_fixture import (
-    current_expected_row,
-    current_source_hash,
-    without_preface_delivery,
+from gospel_delivery_fixture import (
+    current_sung_expected_row,
+    current_sung_source_hash,
+    without_sung_delivery,
 )
+from post_ascension_fixture import FIXTURE, expected_row_successor, restore_layer, value_at
 from provenance_successor_fixture import assert_protection_scope
 
 from build_reader import bibliography, store
@@ -94,7 +94,7 @@ def test_full_subject_and_bilingual_denominator():
     for text in TEXTS:
         core = store.core(ROOT, text)
         assert (
-            canonical_hash(without_preface_delivery(core)["segments"])
+            canonical_hash(without_sung_delivery(core)["segments"])
             == FIXTURE["segment_hashes"][text]
         )
         for field in FIXTURE["core_fields"].get(text, []):
@@ -152,7 +152,9 @@ def test_title_and_exact_eight_about_consumers():
 @pytest.mark.parametrize("language", LANGUAGES)
 def test_local_uncertainty_preserves_chosen_morphology(text, word, language):
     core, layer = store.core(ROOT, text), store.raw_layer(ROOT, language, text)
-    assert canonical_hash(core["segments"]) == FIXTURE["segment_hashes"][text]
+    assert (
+        canonical_hash(without_sung_delivery(core)["segments"]) == FIXTURE["segment_hashes"][text]
+    )
     assert_analysis(core, language, layer, word)
     expanded = expand_core(core)
     actual = next(
@@ -253,15 +255,15 @@ def test_all_eight_current_rows_preserve_route_and_exact_signatures():
     assert len(FIXTURE["historical_english_uses"]) == 2
     for site, expected in FIXTURE["verse_rows"].items():
         row = ledger[site]
-        assert row == current_expected_row(expected["after"])
-        assert current_expected_row(expected_row_successor(expected["before"])) == row
+        assert row == current_sung_expected_row(expected["after"])
+        assert current_sung_expected_row(expected_row_successor(expected["before"])) == row
         text, segment, language = site.rsplit(".", 2)
         source = next(s for s in store.core(ROOT, text)["segments"] if s["id"] == segment)
         target = store.raw_layer(ROOT, language, text)["segments"][segment]["translation"]
         assert row["source_sha256"] == canonical_hash(source_payload(source))
         assert row["target_sha256"] == canonical_hash(target)
         assert row["target_sha256"] != hashlib.sha256(target.encode()).hexdigest()
-        assert row["source_sha256"] == current_source_hash(
+        assert row["source_sha256"] == current_sung_source_hash(
             text, segment, expected["before"]["source_sha256"]
         )
         assert row["review"] == "working"

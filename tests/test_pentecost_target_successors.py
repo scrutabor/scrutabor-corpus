@@ -8,6 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from gospel_delivery_fixture import current_gospel_expected_row
 from pentecost_successor_fixture import FIXTURE, expected_pentecost_row
 from provenance_successor_fixture import assert_formula, assert_protection_scope
 
@@ -210,14 +211,15 @@ def test_ignis_keeps_selected_nominative_with_honest_uncertainty_and_no_source_p
 
 @pytest.mark.parametrize("row", ROWS)
 def test_prose_successor_binds_real_scanner_without_relabeling(row, monkeypatch):
-    expected = row["after"]
+    historical = row["after"]
+    expected = current_gospel_expected_row(historical)
     text, language, segment = expected["text"], expected["language"], expected["segment"]
     core, layer = store.core(ROOT, text), store.raw_layer(ROOT, language, text)
     snapshot, fixture_snapshot = deepcopy((core, layer)), deepcopy(FIXTURE)
     actual, errors = provenance.load(ROOT)
     assert errors == [] and actual[expected["site"]] == expected
     assert layer["segments"][segment]["translation"] == row["translation_after"]
-    assert {k: v for k, v in expected.items() if k != "target_sha256"} == {
+    assert {k: v for k, v in historical.items() if k != "target_sha256"} == {
         k: v for k, v in row["before"].items() if k != "target_sha256"
     }
     source = next(s for s in core["segments"] if s["id"] == segment)

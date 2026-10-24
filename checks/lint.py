@@ -446,6 +446,16 @@ PROPER_LEMMAS = {
     "Theophilus",
     "Xystus",
     "Israel",
+    "Colossensis",
+    "Corinthius",
+    "Ephesius",
+    "Ezechiel",
+    "Galata",
+    "Iudith",
+    "Machabaeus",
+    "Malachias",
+    "Philippensis",
+    "Thessalonicensis",
 }
 
 # Forms exempt from the SPELLING heuristics at the end of lint_text (the

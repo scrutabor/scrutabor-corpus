@@ -98,7 +98,7 @@ def test_liberandum_is_the_selected_gerund_not_an_agreeing_modifier():
             "s18",
             ["w109", "w110", "w111", "w112"],
             "w110",
-            "wierzymy, że przyjdziesz jako Sędzia",
+            "Wierzymy, że przyjdziesz jako Sędzia",
             id="pl-judge-role",
         ),
         pytest.param(
@@ -106,7 +106,7 @@ def test_liberandum_is_the_selected_gerund_not_an_agreeing_modifier():
             "s21",
             ["w123", "w124", "w125", "w126", "w127", "w128", "w129", "w130"],
             "w124",
-            "spraw, byśmy w wiecznej chwale zostali zaliczeni do grona Twoich Świętych",
+            "Spraw, byśmy w wiecznej chwale zostali zaliczeni do grona Twoich świętych",
             id="pl-eternal-glory",
         ),
         pytest.param(
@@ -252,7 +252,8 @@ def test_whole_caption_layer_covers_the_actual_source_once(language):
         (
             "en",
             "w112",
-            "The passive construction expresses the belief that You will come as judge.",
+            "The Latin addresses Christ in a passive construction. The caption recasts it "
+            "actively as the praying community’s confession: “We believe.”",
         ),
         (
             "en",
@@ -269,7 +270,7 @@ def test_whole_caption_layer_covers_the_actual_source_once(language):
         (
             "pl",
             "w130",
-            "Prosimy Boga, aby zaliczył nas do grona Świętych w wiecznej chwale.",
+            "Prosimy Boga, aby zaliczył nas do grona świętych w wiecznej chwale.",
         ),
     ],
 )

@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.21.0",
+  "id": "ordinarium.lectio-epistolae-beati-pauli-apostoli-ad-philippenses",
+  "title": "Léctio Epístolæ beáti Pauli Apóstoli ad Philippénses",
+  "category": "ordinarium",
+  "section": "missa-catechumenorum",
+  "variant": "missae",
+  "sung": false,
+  "ids": {
+    "next": 8,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Léctio", "lemma": "lectio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w002", "form": "Epístolæ", "lemma": "epistola", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w003", "form": "beáti", "lemma": "beatus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w004" },
+        { "id": "w004", "form": "Pauli", "lemma": "Paulus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w005", "form": "Apóstoli", "lemma": "apostolus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w006", "form": "ad", "lemma": "ad", "morph": { "pos": "prep", "governs": "acc" }, "head": "w007" },
+        { "id": "w007", "form": "Philippénses", "lemma": "Philippensis", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "m", "decl": 3 } }
+      ]
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The heading printed over an Epistle of St Paul. LÉCTIO is the nominative of a heading: no verb is expressed or understood. EPÍSTOLÆ is the genitive of the letter the reading is taken from; BEÁTI agrees with PAULI, and APÓSTOLI stands in apposition to it. AD with the accusative names those to whom the letter was written.",
+    "source": {
+      "method": "The Latin follows the Benziger Brothers 1962 editio iuxta typicam, which prints this heading over the Epistle on printed p. 410 (IA leaf n491 / PDF p. 492) and over the 3 further readings named in the witness header; it is compared with the heading line of the pinned Divinum Officium file that the reading's own digital witness binds. Source review remains pending.",
+      "witnesses": "witnesses/ordinarium.lectio-epistolae-beati-pauli-apostoli-ad-philippenses/",
+      "apparatus": "witnesses/ordinarium.lectio-epistolae-beati-pauli-apostoli-ad-philippenses/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+    "words": {
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers"], "review": "pending" } },
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true
+  }
+}

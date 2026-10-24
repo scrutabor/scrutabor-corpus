@@ -6,9 +6,9 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from gospel_delivery_fixture import current_sung_expected_row
 from pentecost_successor_fixture import expected_pentecost_row
 from post_ascension_fixture import expected_row_successor
-from preface_delivery_fixture import current_expected_row
 from provenance_successor_fixture import (
     FIXTURE,
     INTROITS,
@@ -41,7 +41,7 @@ def assert_mapping(mapping):
 
 
 def assert_projected(expected, actual, use, basis, source, target):
-    assert actual == current_expected_row(expected["provenance"]), "projected provenance"
+    assert actual == current_sung_expected_row(expected["provenance"]), "projected provenance"
     assert use == expected["use"], "segment source use"
     assert basis == expected["basis"], "revised relationship scope"
     assert actual["origin"] == "public-domain" and actual["review"] == "working"
@@ -219,7 +219,7 @@ def test_the_provenance_validator_rejects_a_cleared_flag(site, baseline, monkeyp
 def test_all_173_successor_rows_match_exactly(baseline):
     for site, row in FIXTURE["after_rows"].items():
         assert baseline["rows"][site] == expected_pentecost_row(
-            current_expected_row(expected_row_successor(current_expected_reflexive_row(row)))
+            current_sung_expected_row(expected_row_successor(current_expected_reflexive_row(row)))
         )
     fixture_before = deepcopy(FIXTURE)
     before = deepcopy(list(FIXTURE["before_rows"].values()))
@@ -304,7 +304,7 @@ def test_projection_source_population_has_no_missing_or_extra_successor_uses(bas
 def test_every_projection_rejects_label_source_scope_and_hash_mutations(site, damage):
     expected = PROJECTIONS[site]
     row, use, basis = (
-        current_expected_row(expected["provenance"]),
+        current_sung_expected_row(expected["provenance"]),
         deepcopy(expected["use"]),
         deepcopy(expected["basis"]),
     )

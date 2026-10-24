@@ -1,10 +1,14 @@
 """The selected neuter manna paradigm keeps its two existing contexts."""
 
-import copy
 import json
 from pathlib import Path
 
 import pytest
+from gospel_delivery_fixture import (
+    current_gospel_selected_hash,
+    current_gospel_source_hash,
+    without_gospel_delivery,
+)
 
 from build_reader.bibliography_bindings import digest, selected_text
 from build_reader.layers import expand_core
@@ -178,17 +182,23 @@ def test_existing_form_case_and_pending_editorial_analysis_are_preserved(context
 def test_annotation_change_rebinds_only_sources_not_targets_or_selected_latin(context):
     doc = core(context["text"])
     segment = next(s for s in doc["segments"] if s["id"] == context["segment"])
-    assert canonical_hash(source_payload(segment)) == context["source_after"]
-    legacy = copy.deepcopy(doc)
+    assert canonical_hash(source_payload(segment)) == current_gospel_source_hash(
+        context["text"], context["segment"], context["source_after"]
+    )
+    legacy = without_gospel_delivery(doc)
     old_segment = next(s for s in legacy["segments"] if s["id"] == context["segment"])
     next(w for w in old_segment["words"] if w["id"] == context["word"])["morph"]["decl"] = 3
     assert canonical_hash(source_payload(old_segment)) == context["source_before"]
-    assert selected_text(doc) == selected_text(legacy)
-    assert digest(selected_text(doc)) == context["selected"]
+    assert selected_text(without_gospel_delivery(doc)) == selected_text(legacy)
+    assert digest(selected_text(doc)) == current_gospel_selected_hash(
+        context["text"], context["selected"]
+    )
     graph = read("bibliography/graph.json")
     collations = [c for c in graph["collations"] if c["text"] == context["text"]]
     assert len(collations) == 1
-    assert collations[0]["selected_text_sha256"] == context["selected"]
+    assert collations[0]["selected_text_sha256"] == current_gospel_selected_hash(
+        context["text"], context["selected"]
+    )
     assert collations[0]["review"]["status"] == "pending"
     for language in ("pl", "en"):
         relative = context["text"].replace(".", "/", 1) + ".json"
@@ -205,7 +215,9 @@ def test_annotation_change_rebinds_only_sources_not_targets_or_selected_latin(co
         ]
         assert len(rows) == 1
         row = rows[0]
-        assert row["source_sha256"] == context["source_after"]
+        assert row["source_sha256"] == current_gospel_source_hash(
+            context["text"], context["segment"], context["source_after"]
+        )
         assert row["target_sha256"] == context["targets"][language]
         assert row["origin"] == "working-unsettled"
         assert row["review"] == "working"

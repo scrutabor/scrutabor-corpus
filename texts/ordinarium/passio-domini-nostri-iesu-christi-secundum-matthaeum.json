@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.21.0",
+  "id": "ordinarium.passio-domini-nostri-iesu-christi-secundum-matthaeum",
+  "title": "Pássio Dómini nostri Iesu Christi secúndum Matthǽum",
+  "category": "ordinarium",
+  "section": "missa-catechumenorum",
+  "variant": "missae",
+  "sung": false,
+  "ids": {
+    "next": 8,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Pássio", "lemma": "passio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w002", "form": "Dómini", "lemma": "dominus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w003", "form": "nostri", "lemma": "noster", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "m" }, "head": "w002" },
+        { "id": "w004", "form": "Iesu", "lemma": "Iesus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m" } },
+        { "id": "w005", "form": "Christi", "lemma": "Christus", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 2 } },
+        { "id": "w006", "form": "secúndum", "lemma": "secundum", "morph": { "pos": "prep", "governs": "acc" }, "head": "w007" },
+        { "id": "w007", "form": "Matthǽum", "lemma": "Matthaeus", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 2 } }
+      ]
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The heading of the Passion. PÁSSIO is the nominative of a heading, with no verb expressed or understood; NOSTRI agrees with DÓMINI, and IESU CHRISTI stands in apposition to it; SECÚNDUM with the accusative names the evangelist. Unlike the other Gospel headings it is printed without the cross.",
+    "source": {
+      "method": "The Latin follows the Benziger Brothers 1962 editio iuxta typicam, which prints this heading over the Passion on printed p. 139 (IA leaf n218 / PDF p. 219); it is compared with the heading line of the pinned Divinum Officium Palm Sunday file (Tempora/Quad6-0r), in the [Evangelium1] section that its [Evangelium] section calls. Source review remains pending.",
+      "witnesses": "witnesses/ordinarium.passio-domini-nostri-iesu-christi-secundum-matthaeum/",
+      "apparatus": "witnesses/ordinarium.passio-domini-nostri-iesu-christi-secundum-matthaeum/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+    "words": {
+      "w007": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true
+  }
+}

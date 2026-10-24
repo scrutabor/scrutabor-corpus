@@ -52,7 +52,10 @@ from kalendarium.dismissal import calendar_table as dismissal_table
 # commemoration resolved per pair to the second-class feast that a second-class Sunday impedes.
 # 6.4.0 adds the Advent-feria commemoration under the same selection schema 2.1.0: a privileged
 # commemoration resolved per pair to the feria's Mass, unavailable where that Mass is absent.
-SCHEMA = "6.4.0"
+# 6.5.0 publishes the reading announcements (introductiones schema 2.0.0): announcement units,
+# the Epistle and Gospel announcement events with their slot, the Passion rule and a binding
+# for every reading; no consumer read the 1.0.0 shape.
+SCHEMA = "6.5.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.

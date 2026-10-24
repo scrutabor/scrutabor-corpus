@@ -474,6 +474,7 @@ INDECLINABLE = {
     "Iosaphat",
     "Iosias",
     "Issachar",
+    "Iudith",
     "Magdalene",
     "Levi",
     "Madian",

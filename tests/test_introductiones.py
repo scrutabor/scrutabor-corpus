@@ -3,7 +3,9 @@
 Units address whole owner segments in stored order and read, never copy, their owners' base
 delivery and participation; each event carries the delivery of its own occurrences; the reader
 resource is restated from the stored files without its producer. Every negative control is a
-real mutation with its owned diagnostic, followed by restoration of the healthy state.
+real mutation with its owned diagnostic, followed by restoration of the healthy state. The
+reading announcements and their bindings have their own module
+(tests/test_reading_announcement_bindings.py).
 """
 
 import copy
@@ -28,16 +30,55 @@ DIALOGUE = "ordinarium.praefatio-dialogus"
 AUFER = "ordinarium.aufer-a-nobis"
 LAST_GOSPEL = "ordinarium.evangelium-ultimum"
 OWNERS = (AUFER, LAST_GOSPEL, DIALOGUE)
+FORMULAS = json.loads(
+    (CORPUS / "tests/fixtures/reading-announcement-formulas.json").read_text(encoding="utf-8")
+)["formulas"]
+ANNOUNCEMENT_TEXTS = tuple(formula["text"] for formula in FORMULAS)
 UNITS = {
     "invitatio-oremus": ("invitation", AUFER, "s02", ["w001"]),
     "responsio-gloria-tibi": ("gospel-response", LAST_GOSPEL, "s06", ["w012", "w013", "w014"]),
     "responsio-salutationis": ("response", DIALOGUE, "s03", ["w003", "w004", "w005", "w006"]),
     "salutatio": ("greeting", DIALOGUE, "s02", ["w001", "w002"]),
+    "initium-sancti-evangelii-secundum-ioannem": (
+        "announcement",
+        LAST_GOSPEL,
+        "s05",
+        ["w007", "w008", "w009", "w010", "w011"],
+    ),
+    **{
+        formula["text"].split(".", 1)[1]: (
+            "announcement",
+            formula["text"],
+            "s01",
+            [f"w{number:03d}" for number in range(1, formula["words"] + 1)],
+        )
+        for formula in FORMULAS
+    },
+}
+# Where the Missal prints each announcement unit in its role.
+LESSON = "the Proper's heading over each bound reading"
+ANNOUNCEMENT_SOURCES = {
+    "lectio": LESSON,
+    "sequentia": "RG 471; Ritus servandus VI, 2; " + LESSON,
+    "initium": "RG 471; Ritus servandus VI, 2; " + LESSON,
+    "passio": "RG 472; the Proper's heading over the bound reading",
 }
 INTRODUCTION = ["salutatio", "responsio-salutationis", "invitatio-oremus"]
+SLOT = None
+# The events in the order of the Mass; None marks the announcement slot.
 EVENTS = {
     "collecta-introductio": ("collecta", "Ritus servandus V, 1", INTRODUCTION),
+    "epistola-annuntiatio": (
+        "epistola",
+        "Ritus servandus VI, 1; the Proper's heading over each reading",
+        [SLOT],
+    ),
     "evangelium-salutatio": ("evangelium", "Ritus servandus VI, 2", INTRODUCTION[:2]),
+    "evangelium-annuntiatio": (
+        "evangelium",
+        "RG 471; Ritus servandus VI, 2",
+        [SLOT, "responsio-gloria-tibi"],
+    ),
     "offertorium-introductio": ("offertorium", "Ritus servandus VII, 1", INTRODUCTION),
     "postcommunio-introductio": ("postcommunio", "Ritus servandus XI, 1 and V, 1", INTRODUCTION),
 }
@@ -45,7 +86,9 @@ EVENTS = {
 # (511 d, g, i), otherwise the Ritus servandus or the Ordo Missae that prints them.
 LECTA_SOURCES = {
     "collecta-introductio": ["RG 511 d", "Ritus servandus V, 1", "RG 511 d"],
+    "epistola-annuntiatio": ["RG 511 e; Ritus servandus VI, 1"],
     "evangelium-salutatio": ["Ritus servandus VI, 2", "Ritus servandus VI, 2"],
+    "evangelium-annuntiatio": ["RG 511 e; Ritus servandus VI, 2", "Ritus servandus VI, 2"],
     "offertorium-introductio": [
         "RG 511 g",
         "Ordo Missae, before the Offertory antiphon",
@@ -61,13 +104,36 @@ SUNG = {
     "salutatio": ("sacerdos", "RG 513 a, 514"),
     "responsio-salutationis": ("schola", "DMS 16 b, 25 a, 26"),
     "invitatio-oremus": ("sacerdos", "RG 513 a, 514"),
+    "responsio-gloria-tibi": ("schola", "DMS 16 b, 25 a, 26"),
 }
 LOW = {
     "salutatio": "sacerdos",
     "responsio-salutationis": "minister",
     "invitatio-oremus": "sacerdos",
+    "responsio-gloria-tibi": "minister",
 }
-COUNTS = {"units": 4, "events": 4, "occurrences": 11, "owner_texts": 3}
+# The announcement slot of each event: its sung delivery, clara for the Epistle (RG 514).
+SLOT_SUNG = {
+    "epistola-annuntiatio": {"speaker": "sacerdos", "voice": "clara", "source": "RG 514"},
+    "evangelium-annuntiatio": {
+        "speaker": "sacerdos",
+        "voice": "cantus",
+        "source": "RG 473, 514; Ritus servandus VI, 5",
+    },
+}
+COUNTS = {"units": 31, "events": 6, "occurrences": 14, "owner_texts": 29, "announcements": 205}
+EMPTY = {"units": 0, "events": 0, "occurrences": 0, "owner_texts": 0, "announcements": 0}
+RUBRICS = {
+    "scope",
+    "secret",
+    "passion",
+    "easter-vigil",
+    "prayer-groups",
+    "announcements",
+    "sung-epistle",
+    "references",
+    "responses",
+}
 
 
 def library() -> dict[str, Any]:
@@ -93,23 +159,49 @@ def segment_of(doc: dict[str, Any], segment_id: str) -> dict[str, Any]:
 
 def test_the_library_is_exact_and_counted():
     doc = library()
-    assert set(doc) == {"introduction_schema", "units", "events", "rubrics"}
-    assert doc["introduction_schema"] == "1.0.0"
+    assert set(doc) == {
+        "introduction_schema",
+        "units",
+        "events",
+        "passion",
+        "announcements",
+        "rubrics",
+    }
+    assert doc["introduction_schema"] == "2.0.0"
     assert checker.check(CORPUS) == ([], COUNTS)
     assert [unit["id"] for unit in doc["units"]] == sorted(UNITS)
     for unit in doc["units"]:
         role, text, segment, words = UNITS[unit["id"]]
         assert (unit["role"], unit["text"], unit["segment"]) == (role, text, segment)
         assert (unit["first"], unit["last"]) == (words[0], words[-1])
-        assert unit["source"].startswith("Ritus servandus ")
-    assert [event["id"] for event in doc["events"]] == sorted(EVENTS)
+        if role == "announcement":
+            head = unit["id"].split("-", 1)[0]
+            expected = ANNOUNCEMENT_SOURCES[head]
+            if unit["text"] == LAST_GOSPEL:
+                expected = (
+                    "RG 471; Ritus servandus VI, 2; the Proper's heading over the bound reading"
+                )
+            assert unit["source"] == expected
+        else:
+            assert unit["source"].startswith("Ritus servandus ")
+    assert [event["id"] for event in doc["events"]] == list(EVENTS)
     for event in doc["events"]:
         before, source, units = EVENTS[event["id"]]
         assert (event["before"], event["source"]) == (before, source)
-        assert [occurrence["unit"] for occurrence in event["occurrences"]] == units
+        assert [occurrence.get("unit") for occurrence in event["occurrences"]] == units
         for occurrence, lecta_source in zip(
             event["occurrences"], LECTA_SOURCES[event["id"]], strict=True
         ):
+            if "slot" in occurrence:
+                assert set(occurrence) == {"slot", "lecta", "cantu"}
+                assert occurrence["slot"] == "announcement"
+                assert occurrence["lecta"] == {
+                    "speaker": "sacerdos",
+                    "voice": "clara",
+                    "source": lecta_source,
+                }
+                assert occurrence["cantu"] == SLOT_SUNG[event["id"]]
+                continue
             speaker, sung_source = SUNG[occurrence["unit"]]
             assert occurrence["lecta"] == {
                 "speaker": LOW[occurrence["unit"]],
@@ -121,13 +213,17 @@ def test_the_library_is_exact_and_counted():
                 "voice": "cantus",
                 "source": sung_source,
             }
-    assert set(doc["rubrics"]) == {"scope", "secret", "passion", "easter-vigil", "prayer-groups"}
+    assert set(doc["rubrics"]) == RUBRICS
     for key, citation in (
         ("scope", "VI, 5"),
         ("secret", "VII, 7"),
         ("passion", "8 a"),
         ("easter-vigil", "p. 212"),
         ("prayer-groups", "XI, 1"),
+        ("announcements", "p. 223"),
+        ("sung-epistle", "satius erit"),
+        ("references", "p. 335"),
+        ("responses", "p. 214"),
     ):
         assert citation in doc["rubrics"][key]
     assert (CORPUS / LIBRARY).read_text(encoding="utf-8") == (
@@ -160,7 +256,14 @@ def test_each_unit_is_a_whole_owner_segment_with_both_translations(identity):
             for group in entry.get("alignments") or []
             for word in group["words"]
         }
-        assert not aligned & set(words)
+        if role != "announcement":
+            assert not aligned & set(words)
+            continue
+        # An announcement's layer may group words of its own single verse, and only those.
+        for stored_under, entry in layer["segments"].items():
+            for group in entry.get("alignments") or []:
+                if set(group["words"]) & set(words):
+                    assert stored_under == segment_id and set(group["words"]) <= set(words)
 
 
 def test_the_dialogue_override_is_inherited_and_the_aufer_oremus_delivery_is_authored():
@@ -176,26 +279,37 @@ def test_the_dialogue_override_is_inherited_and_the_aufer_oremus_delivery_is_aut
     for event in library()["events"]:
         for occurrence in event["occurrences"]:
             sung = {key: occurrence["cantu"][key] for key in ("speaker", "voice")}
+            if "slot" in occurrence:
+                continue
             if occurrence["unit"] == "invitatio-oremus":
                 assert sung == {"speaker": "sacerdos", "voice": "cantus"}
                 assert occurrence["cantu"]["source"] == "RG 513 a, 514"
+            elif occurrence["unit"] == "responsio-gloria-tibi":
+                assert sung == {"speaker": "schola", "voice": "cantus"}
+                assert occurrence["cantu"]["source"] == "DMS 16 b, 25 a, 26"
             else:
                 segment = UNITS[occurrence["unit"]][2]
                 assert sung == segment_of(dialogue, segment)["delivery"]["cantu"]
 
 
 def test_the_library_writes_nothing_and_its_owners_keep_their_delivery():
-    paths = [store.path_of(CORPUS, text) for text in OWNERS] + [
-        store.layer_path(CORPUS, language, text) for language in ("pl", "en") for text in OWNERS
+    owners = OWNERS + ANNOUNCEMENT_TEXTS
+    paths = [store.path_of(CORPUS, text) for text in owners] + [
+        store.layer_path(CORPUS, language, text) for language in ("pl", "en") for text in owners
     ]
     before = {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}
     checker.check(CORPUS)
     reader.resource(CORPUS)
     reader.expected(CORPUS)
     assert before == {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}
-    overrides = {text: check_delivery(store.core(CORPUS, text)) for text in OWNERS}
-    assert overrides == {DIALOGUE: ([], 6), AUFER: ([], 0), LAST_GOSPEL: ([], 0)}
-    for text in OWNERS:
+    overrides = {text: check_delivery(store.core(CORPUS, text)) for text in owners}
+    assert overrides == {
+        DIALOGUE: ([], 6),
+        AUFER: ([], 0),
+        LAST_GOSPEL: ([], 0),
+        **{text: ([], 0) for text in ANNOUNCEMENT_TEXTS},
+    }
+    for text in owners:
         assert check_participation(store.core(CORPUS, text))[0] == []
 
 
@@ -204,12 +318,33 @@ def test_the_library_writes_nothing_and_its_owners_keep_their_delivery():
 # ---------------------------------------------------------------------------------------------
 
 
+def bound_readings() -> list[str]:
+    """Every text a formulary names as its Epistle or Gospel."""
+    return sorted(
+        {
+            component["text"]
+            for formulary in store.formularies(CORPUS)
+            for component in formulary["components"]
+            if component["role"] in ("epistola", "evangelium")
+        }
+    )
+
+
 def small_corpus(root: Path) -> Path:
-    """The library, its three owner texts and both published packages, copied byte for byte."""
+    """The library, its owner texts, both published packages, the formularies and every bound
+    reading with its printed witness, copied byte for byte."""
     corpus = root / "corpus"
     (corpus / "ordo").mkdir(parents=True)
     shutil.copyfile(CORPUS / LIBRARY, corpus / LIBRARY)
-    for text in OWNERS:
+    shutil.copytree(CORPUS / "formularies", corpus / "formularies")
+    for text in bound_readings():
+        target = store.path_of(corpus, text)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(store.path_of(CORPUS, text), target)
+        witness = corpus / "witnesses" / text / "mr.txt"
+        witness.parent.mkdir(parents=True)
+        shutil.copyfile(CORPUS / "witnesses" / text / "mr.txt", witness)
+    for text in OWNERS + ANNOUNCEMENT_TEXTS:
         target = store.path_of(corpus, text)
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(store.path_of(CORPUS, text), target)
@@ -379,7 +514,12 @@ LIBRARY_CASES: list[tuple[str, str, Callable[[Any], Any], str]] = [
         lambda d: d["events"].append(copy.deepcopy(d["events"][-1])),
         "duplicate event",
     ),
-    ("unsorted-events", "library", lambda d: d["events"].reverse(), "events must be in identity"),
+    (
+        "unsorted-events",
+        "library",
+        lambda d: d["events"].reverse(),
+        "events must be in the order of the Mass",
+    ),
     (
         "empty-event-source",
         "library",
@@ -578,7 +718,7 @@ def test_the_file_itself_is_refused_when_it_is_not_one_clean_object(tmp_path, co
     path.write_text(corrupt(healthy), encoding="utf-8")
     errors, counts = checker.check(corpus)
     assert any(message in error for error in errors), errors
-    assert counts == {"units": 0, "events": 0, "occurrences": 0, "owner_texts": 0}
+    assert counts == EMPTY
     path.write_text(healthy, encoding="utf-8")
     assert checker.check(corpus) == ([], COUNTS)
 
@@ -599,7 +739,7 @@ def test_a_missing_library_is_an_error_and_not_an_empty_pass(tmp_path):
 def pinned_resource() -> dict[str, Any]:
     doc = library()
     return {
-        "schema_version": "1.0.0",
+        "schema_version": "2.0.0",
         "units": [
             {
                 "id": identity,
@@ -612,6 +752,22 @@ def pinned_resource() -> dict[str, Any]:
             for identity in sorted(UNITS)
         ],
         "events": doc["events"],
+        "passion": doc["passion"],
+        "announcements": [
+            {
+                "reading": binding["reading"].replace(".", "/", 1),
+                "unit": binding["unit"],
+                "reference": binding["reference_as_printed"],
+                "pericope": binding["pericope"],
+                **{
+                    flag: True
+                    for flag in ("book_supplied", "misprint")
+                    if flag in binding and (flag != "misprint" or "uncertain" not in binding)
+                },
+                **({"reference_uncertain": True} if "uncertain" in binding else {}),
+            }
+            for binding in doc["announcements"]
+        ],
     }
 
 
@@ -638,6 +794,22 @@ def test_the_producer_equals_the_pinned_resource():
         for segment in store.core(CORPUS, text_id)["segments"]:
             for word in segment.get("words") or []:
                 assert f'"{word["form"]}"' not in text, "no owner word is copied"
+    # A pericope names its book with the Proper's abbreviation, which for Judith is the word.
+    bookless = reader.artifact_json(
+        {
+            **table,
+            "announcements": [
+                {**row, "pericope": {**row["pericope"], "book": ""}}
+                for row in table["announcements"]
+            ],
+        }
+    )
+    for text_id in ANNOUNCEMENT_TEXTS:
+        core = store.core(CORPUS, text_id)
+        heading = " ".join(word["form"] for word in core["segments"][0]["words"])
+        assert heading not in text, "no announcement is copied"
+        for word in core["segments"][0]["words"]:
+            assert f'"{word["form"]}"' not in bookless, "no owner word is copied"
 
 
 @pytest.mark.parametrize(
@@ -734,7 +906,7 @@ def artifact_errors(edition):
 def test_the_edition_declares_the_resource_and_reads_it_back_equal(edition):
     out = edition[0]
     manifest = read(edition, "manifest.json")
-    assert manifest["schema_version"] == emit.SCHEMA == "6.4.0"
+    assert manifest["schema_version"] == emit.SCHEMA == "6.5.0"
     assert manifest["base"]["introductiones"] == "introductiones.json"
     emitted = (out / "introductiones.json").read_text(encoding="utf-8")
     assert emitted == reader.artifact_json(reader.resource(CORPUS))
@@ -786,6 +958,17 @@ def _resource_with(edition, mutate):
     return table
 
 
+def _lost_reference_uncertainty(table, promote=False):
+    row = next(
+        row
+        for row in table["announcements"]
+        if row["reading"] == "proprium/dominica-in-albis-evangelium"
+    )
+    row.pop("reference_uncertain")
+    if promote:
+        row["misprint"] = True
+
+
 DIALOGUE_PATH = "texts/ordinarium/praefatio-dialogus.json"
 EMITTED_FAULTS: dict[str, Callable[[Any], tuple[str, Any]]] = {
     "no-file": lambda e: ("introductiones.json", None),
@@ -806,7 +989,7 @@ EMITTED_FAULTS: dict[str, Callable[[Any], tuple[str, Any]]] = {
     "authored-source-changed": lambda e: (
         "introductiones.json",
         _resource_with(
-            e, lambda t: t["events"][2]["occurrences"][2]["cantu"].__setitem__("source", "RG 511 g")
+            e, lambda t: t["events"][4]["occurrences"][2]["cantu"].__setitem__("source", "RG 511 g")
         ),
     ),
     "invalid-voice": lambda e: (
@@ -834,6 +1017,26 @@ EMITTED_FAULTS: dict[str, Callable[[Any], tuple[str, Any]]] = {
     "language-package-version": lambda e: (
         "languages/pl/manifest.json",
         {**read(e, "languages/pl/manifest.json"), "schema_version": "6.0.0"},
+    ),
+    "lost-reference-uncertainty": lambda e: (
+        "introductiones.json",
+        _resource_with(e, lambda t: _lost_reference_uncertainty(t)),
+    ),
+    "uncertainty-promoted-to-misprint": lambda e: (
+        "introductiones.json",
+        _resource_with(e, lambda t: _lost_reference_uncertainty(t, promote=True)),
+    ),
+    "dropped-announcement": lambda e: (
+        "introductiones.json",
+        _resource_with(e, lambda t: t["announcements"].pop()),
+    ),
+    "passion-source-changed": lambda e: (
+        "introductiones.json",
+        _resource_with(e, lambda t: t["passion"].__setitem__("source", "RG 471")),
+    ),
+    "announced-reading-undeclared": lambda e: (
+        "manifest.json",
+        _undeclared(e, "manifest.json", "proprium.dominica-i-adventus-epistola"),
     ),
 }
 

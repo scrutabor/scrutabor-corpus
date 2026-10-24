@@ -6,7 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from preface_delivery_fixture import current_source_hash, without_preface_delivery
+from gospel_delivery_fixture import current_sung_source_hash, without_sung_delivery
 
 from build_reader import store
 from build_reader.bibliography_bindings import selected_text
@@ -144,10 +144,10 @@ def test_lemma_inverse_preserves_selected_latin_and_current_targets(verse):
     doc = store.core(ROOT, verse["text"])
     original = deepcopy(doc)
     current = segment(doc, verse["segment"])
-    assert provenance.canonical_hash(provenance.source_payload(current)) == current_source_hash(
-        verse["text"], verse["segment"], verse["source_after"]
-    )
-    legacy = without_preface_delivery(doc)
+    assert provenance.canonical_hash(
+        provenance.source_payload(current)
+    ) == current_sung_source_hash(verse["text"], verse["segment"], verse["source_after"])
+    legacy = without_sung_delivery(doc)
     old_segment = segment(legacy, verse["segment"])
     affected = [w for w in old_segment["words"] if w["id"] in verse["words"]]
     assert len(affected) == len(verse["words"]) and affected
@@ -158,13 +158,13 @@ def test_lemma_inverse_preserves_selected_latin_and_current_targets(verse):
         provenance.canonical_hash(provenance.source_payload(old_segment)) == verse["source_before"]
     )
     assert verse["source_before"] != verse["source_after"]
-    assert selected_text(without_preface_delivery(doc)) == selected_text(legacy)
+    assert selected_text(without_sung_delivery(doc)) == selected_text(legacy)
     rows, errors = provenance.load(ROOT)
     assert errors == []
     for language in ("pl", "en"):
         site = f"{verse['text']}.{verse['segment']}.{language}"
         recorded = rows[site]
-        assert recorded["source_sha256"] == current_source_hash(
+        assert recorded["source_sha256"] == current_sung_source_hash(
             verse["text"], verse["segment"], verse["source_after"]
         )
         target = store.raw_layer(ROOT, language, verse["text"])["segments"][verse["segment"]][
@@ -190,7 +190,7 @@ def test_actual_provenance_consumer_rejects_all_fourteen_old_source_hashes(monke
     for verse in VERSES:
         for language in ("pl", "en"):
             site = f"{verse['text']}.{verse['segment']}.{language}"
-            assert damaged[site]["source_sha256"] == current_source_hash(
+            assert damaged[site]["source_sha256"] == current_sung_source_hash(
                 verse["text"], verse["segment"], verse["source_after"]
             )
             assert verse["source_before"] != verse["source_after"]

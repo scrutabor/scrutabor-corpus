@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.21.0",
+  "id": "ordinarium.sequentia-sancti-evangelii-secundum-lucam",
+  "title": "Sequéntia sancti Evangélii secúndum Lucam",
+  "category": "ordinarium",
+  "section": "missa-catechumenorum",
+  "variant": "missae",
+  "sung": false,
+  "ids": {
+    "next": 6,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Sequéntia", "lemma": "sequentia", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 1 } },
+        { "id": "w002", "form": "sancti", "lemma": "sanctus", "morph": { "pos": "adj", "case": "gen", "number": "sg", "gender": "n" }, "head": "w003" },
+        { "id": "w003", "form": "Evangélii", "lemma": "evangelium", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
+        { "id": "w004", "form": "secúndum", "lemma": "secundum", "morph": { "pos": "prep", "governs": "acc" }, "head": "w005" },
+        { "id": "w005", "form": "Lucam", "lemma": "Lucas", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 1 } }
+      ]
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The announcement of the Gospel. SEQUÉNTIA, from sequor, is the continuation: the passage read follows on in the Gospel, as distinct from INÍTIUM, its beginning. It is the nominative of a heading, with no verb expressed or understood. SANCTI agrees with EVANGÉLII; SECÚNDUM with the accusative names the evangelist.",
+    "source": {
+      "method": "The Latin follows the Benziger Brothers 1962 editio iuxta typicam, which prints this heading over the Gospel on printed p. 376 (IA leaf n457 / PDF p. 458) and over the 31 further readings named in the witness header; it is compared with the heading line of the pinned Divinum Officium file that the reading's own digital witness binds. Source review remains pending.",
+      "witnesses": "witnesses/ordinarium.sequentia-sancti-evangelii-secundum-lucam/",
+      "apparatus": "witnesses/ordinarium.sequentia-sancti-evangelii-secundum-lucam/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" }
+  },
+  "localization": {
+    "about": true
+  }
+}

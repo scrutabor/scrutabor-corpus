@@ -112,6 +112,134 @@ PALM_PASSION_DELIVERY = {
     for segment, role in zip(PALM_PASSION_SEGMENTS, PALM_PASSION_ROLES, strict=True)
 }
 
+# The Gospel. RG 511 e lists the Gospel among what the celebrant says clara
+# voce at low Mass, and Ritus servandus VI, 2 has him read it there. At a
+# sung Mass the Gospel is sung: by the deacon at a solemn Mass (Ritus
+# servandus VI, 5), and at a Missa cantata by the celebrant, who must sing
+# the parts proper to the sacred ministers (RG 514); RG 473 has the
+# celebrant omit what a minister sings by his own office. The two Mass
+# forms of this edition do not distinguish the solemn Mass from the Missa
+# cantata, so every verse of a Gospel is the celebrant's in both forms:
+# sacerdos/clara at low Mass, and sacerdos/cantus when the Mass is sung. The
+# rule adds no participation of the faithful. The Passion keeps its own three
+# parts above.
+#
+# As with the Prefaces, the rule is bound to a closed inventory, never to
+# words. Each row gives, segment by segment from s01, the word count of a
+# verse, or 0 for a rubric; the word ids of the verses run on from w001
+# without a gap. A stored Gospel that differs from its row is reported and
+# receives no override, and a Gospel id without a row is reported rather
+# than left unmodeled in silence. Other texts take nothing from this rule,
+# whatever their words.
+GOSPEL_PREFIX = "proprium."
+GOSPEL_SUFFIX = "-evangelium"
+GOSPEL_BODIES: dict[str, tuple[int, ...]] = {
+    "annuntiatio-beatae-mariae-virginis": (189,),
+    "ascensio-domini": (108, 0),
+    "assumptio-beatae-mariae-virginis": (114,),
+    "beata-maria-virgo-regina": (112,),
+    "beatae-mariae-virginis-a-rosario": (189,),
+    "commemoratio-baptismatis-domini": (110,),
+    "commemoratio-omnium-fidelium-defunctorum-missa-i": (84,),
+    "commemoratio-omnium-fidelium-defunctorum-missa-ii": (91,),
+    "commemoratio-omnium-fidelium-defunctorum-missa-iii": (90,),
+    "corporis-christi": (18, 15, 19, 7, 9, 7),
+    "d-n-iesu-christi-regis": (108,),
+    "dedicatio-archibasilicae-sanctissimi-salvatoris": (138,),
+    "dedicatio-sancti-michaelis-archangeli": (196,),
+    "dominica-i-adventus": (40, 13, 13, 20, 13, 11, 9),
+    "dominica-i-in-quadragesima": (170,),
+    "dominica-i-passionis": (237,),
+    "dominica-ii-adventus": (17, 8, 12, 21, 18, 7, 8, 12, 21),
+    "dominica-ii-post-epiphaniam": (160,),
+    "dominica-ii-post-pascha": (109,),
+    "dominica-ii-post-pentecosten": (150,),
+    "dominica-iii-adventus": (15, 3, 14, 8, 10, 17, 13, 7, 18, 15, 22, 11),
+    "dominica-iii-in-quadragesima": (240,),
+    "dominica-iii-post-epiphaniam": (213,),
+    "dominica-iii-post-pascha": (159,),
+    "dominica-iii-post-pentecosten": (160,),
+    "dominica-in-albis": (243,),
+    "dominica-in-quinquagesima": (160,),
+    "dominica-in-septuagesima": (240,),
+    "dominica-in-sexagesima": (208,),
+    "dominica-infra-octavam-nativitatis": (143,),
+    "dominica-iv-adventus": (42, 56),
+    "dominica-iv-in-quadragesima": (222,),
+    "dominica-iv-post-epiphaniam": (76,),
+    "dominica-iv-post-pascha": (146,),
+    "dominica-iv-post-pentecosten": (187,),
+    "dominica-ix-post-pentecosten": (113,),
+    "dominica-pentecostes": (163,),
+    "dominica-post-ascensionem": (85,),
+    "dominica-resurrectionis": (97,),
+    "dominica-v-post-epiphaniam": (122,),
+    "dominica-v-post-pascha": (137,),
+    "dominica-v-post-pentecosten": (100,),
+    "dominica-vi-post-epiphaniam": (102,),
+    "dominica-vi-post-pentecosten": (126,),
+    "dominica-vii-post-pentecosten": (107,),
+    "dominica-viii-post-pentecosten": (164,),
+    "dominica-x-post-pentecosten": (104,),
+    "dominica-xi-post-pentecosten": (104,),
+    "dominica-xii-post-pentecosten": (251,),
+    "dominica-xiii-post-pentecosten": (115,),
+    "dominica-xiv-post-pentecosten": (183,),
+    "dominica-xix-post-pentecosten": (197,),
+    "dominica-xv-post-pentecosten": (102,),
+    "dominica-xvi-post-pentecosten": (167,),
+    "dominica-xvii-post-pentecosten": (140,),
+    "dominica-xviii-post-pentecosten": (114,),
+    "dominica-xx-post-pentecosten": (128,),
+    "dominica-xxi-post-pentecosten": (212,),
+    "dominica-xxii-post-pentecosten": (101,),
+    "dominica-xxiii-post-pentecosten": (133,),
+    "dominica-xxiv-post-pentecosten": (306,),
+    "epiphania-domini": (170, 0, 32),
+    "exaltatio-sanctae-crucis": (98,),
+    "feria-v-in-cena-domini": (245,),
+    "immaculata-conceptio": (45,),
+    "immaculatum-cor-beatae-mariae-virginis": (50,),
+    "in-octava-nativitatis": (25,),
+    "maternitas-beatae-mariae-virginis": (133,),
+    "nativitas-domini-in-aurora": (91,),
+    "nativitas-domini-in-die": (151, 0, 22),
+    "nativitas-domini-in-nocte": (190,),
+    "nativitas-sancti-ioannis-baptistae": (156,),
+    "omnium-sanctorum": (111,),
+    "pretiosissimi-sanguinis-domini-nostri-iesu-christi": (93,),
+    "purificatio-beatae-mariae-virginis": (153,),
+    "sacratissimi-cordis-iesu": (28, 15, 27, 20, 21),
+    "sancta-familia": (167,),
+    "sanctae-annae-matris-beatae-mariae-virginis": (144,),
+    "sancti-andreae-apostoli": (81,),
+    "sancti-bartholomaei-apostoli": (122,),
+    "sancti-iacobi-apostoli": (85,),
+    "sancti-ioachim-confessoris": (200,),
+    "sancti-ioannis-apostoli-et-evangelistae": (106,),
+    "sancti-ioseph-opificis": (87,),
+    "sancti-laurentii-martyris": (71,),
+    "sancti-lucae-evangelistae": (141,),
+    "sancti-matthaei-apostoli-et-evangelistae": (83,),
+    "sancti-matthiae-apostoli": (98,),
+    "sancti-petri-et-pauli-apostolorum": (127,),
+    "sancti-stephani-protomartyris": (122,),
+    "sancti-thomae-apostoli": (126,),
+    "sanctissimae-trinitatis": (17, 22, 11),
+    "sanctorum-innocentium-martyrum": (136,),
+    "sanctorum-philippi-et-iacobi-apostolorum": (219,),
+    "sanctorum-simonis-et-iudae-apostolorum": (154,),
+    "septem-dolorum-beatae-mariae-virginis": (50,),
+    "transfiguratio-domini": (148,),
+    "vigilia-nativitatis": (80,),
+    "vigilia-paschalis": (110,),
+    "vigilia-pentecostes": (125,),
+    "visitatio-beatae-mariae-virginis": (112,),
+}
+assert all(any(counts) for counts in GOSPEL_BODIES.values())
+assert GOSPEL_PREFIX + "dominica-ii-passionis" + GOSPEL_SUFFIX == PALM_PASSION
+assert "dominica-ii-passionis" not in GOSPEL_BODIES
+
 
 def preface_dialogue_errors(doc: dict[str, Any]) -> list[str]:
     """Where the stored Preface dialogue differs from its six printed verses."""
@@ -193,6 +321,52 @@ def preface_errors(doc: dict[str, Any]) -> list[str]:
     return preface_dialogue_errors(doc) + preface_body_errors(doc)
 
 
+def is_gospel_body(doc: dict[str, Any]) -> bool:
+    """A Proper Gospel other than the solemn Passion."""
+    text_id = doc.get("id", "")
+    return (
+        text_id.startswith(GOSPEL_PREFIX)
+        and text_id.endswith(GOSPEL_SUFFIX)
+        and text_id != PALM_PASSION
+    )
+
+
+def gospel_body_errors(doc: dict[str, Any]) -> list[str]:
+    """Where a stored Gospel differs from its row of the closed inventory."""
+    if not is_gospel_body(doc):
+        return []
+    slug = doc["id"].removeprefix(GOSPEL_PREFIX).removesuffix(GOSPEL_SUFFIX)
+    row = GOSPEL_BODIES.get(slug)
+    if row is None:
+        return ["gospel: this Gospel has no row in the closed inventory of sung Gospels"]
+    segments = doc.get("segments", [])
+    expected = [f"s{number:02d}" for number in range(1, len(row) + 1)]
+    if [s.get("id") for s in segments] != expected:
+        span = expected[0] if len(expected) == 1 else f"{expected[0]}-{expected[-1]}"
+        return [f"gospel: segments must be {span}"]
+    errors: list[str] = []
+    word = 1
+    for seg, count in zip(segments, row, strict=True):
+        if count == 0:
+            if seg.get("type") != "rubric":
+                errors.append(f"{seg['id']}: gospel segment must be a rubric")
+            continue
+        ids = [f"w{number:03d}" for number in range(word, word + count)]
+        word += count
+        if seg.get("type") != "verse" or [w.get("id") for w in seg.get("words", [])] != ids:
+            errors.append(f"{seg['id']}: gospel verse must hold {ids[0]}-{ids[-1]}")
+        if (seg.get("speaker"), seg.get("voice")) != ("sacerdos", "clara"):
+            errors.append(f"{seg['id']}: gospel low-Mass base must be sacerdos/clara")
+    return errors
+
+
+def gospel_body_delivery(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
+    """The sung-Mass delivery of one segment of an intact, inventoried Gospel."""
+    if not is_gospel_body(doc) or gospel_body_errors(doc) or seg.get("type") != "verse":
+        return {}
+    return {"cantu": {"speaker": "sacerdos", "voice": "cantus"}}
+
+
 def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
     """Return the form-specific override required by this segment."""
     if doc.get("id") in ritual.TEXTS:
@@ -203,6 +377,8 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
         return preface_dialogue_delivery(doc, seg)
     if doc.get("id", "").startswith(PREFACE_PREFIX):
         return preface_body_delivery(doc, seg)
+    if is_gospel_body(doc):
+        return gospel_body_delivery(doc, seg)
     _, orations = structure(doc)
     if seg.get("id") in orations:
         return sung_delivery(orations[seg["id"]])
@@ -225,7 +401,9 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
 
 def check_doc(doc: dict[str, Any]) -> tuple[list[str], int]:
     """Compare stored delivery with the derived liturgical role."""
-    errors = base_errors(doc) + ritual.base_errors(doc) + preface_errors(doc)
+    errors = (
+        base_errors(doc) + ritual.base_errors(doc) + preface_errors(doc) + gospel_body_errors(doc)
+    )
     overridden = 0
     for seg in doc.get("segments", []):
         want, have = derive(doc, seg), seg.get("delivery") or {}
@@ -243,7 +421,12 @@ def run(write: bool = False) -> int:
     problems, written, carried = 0, 0, 0
     for path in sorted(ROOT.glob("texts/*/*.json")):
         doc = json.loads(path.read_text(encoding="utf-8"))
-        invalid_base = base_errors(doc) + ritual.base_errors(doc) + preface_errors(doc)
+        invalid_base = (
+            base_errors(doc)
+            + ritual.base_errors(doc)
+            + preface_errors(doc)
+            + gospel_body_errors(doc)
+        )
         if invalid_base:
             problems += len(invalid_base)
             for error in invalid_base:

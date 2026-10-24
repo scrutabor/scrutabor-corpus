@@ -278,21 +278,31 @@ canonical text.
 
 ## Ordo introductions
 
-`ordo/introductiones.json` (introduction schema `1.0.0`) is the canonical library of the
+`ordo/introductiones.json` (introduction schema `2.0.0`) is the canonical library of the
 spoken introductions that open a part of the Mass in the priest-led Ordo, and of the events
 made of them. The Ritus servandus prints the greeting, its answer and the invitation before
 the opening prayers (V, 1), before the Offertory antiphon (VII, 1) and before the prayers after
-Communion (XI, 1, in the manner of V, 1), and the greeting and answer before the Gospel (VI, 2).
-Exact fields: `introduction_schema`, `units`, `events` and `rubrics`.
+Communion (XI, 1, in the manner of V, 1), and the greeting and answer before the Gospel (VI, 2),
+which the announcement of the Gospel and Glória tibi, Dómine follow (RG 471). The Proper prints
+an announcement over every reading. Exact fields: `introduction_schema`, `units`, `events`,
+`passion`, `announcements` and `rubrics`. Schema 2.0.0 adds the announcement units, the two
+announcement events, the slot occurrence, the Passion rule and the bindings, and lists the
+events in the order of the Mass.
 
 A unit (`id`, `role`, `text`, `segment`, `first`, `last`, `source`) addresses one complete
 verse segment of an existing owner text: the dotted owner id, the segment id, and the
 segment's first and last word ids in stored order. It never copies a word. A partial segment,
 reversed or foreign endpoints, a rubric and a missing owner are errors. The roles are
-`greeting`, `response`, `invitation` and `gospel-response`. The units are `salutatio`
-(`ordinarium.praefatio-dialogus` s02), `responsio-salutationis` (s03 of the same text),
-`invitatio-oremus` (`ordinarium.aufer-a-nobis` s02) and `responsio-gloria-tibi`
-(`ordinarium.evangelium-ultimum` s06). The owner's base `speaker` and `voice` must be the
+`greeting`, `response`, `invitation`, `gospel-response` and `announcement`. The units are
+`salutatio` (`ordinarium.praefatio-dialogus` s02), `responsio-salutationis` (s03 of the same
+text), `invitatio-oremus` (`ordinarium.aufer-a-nobis` s02), `responsio-gloria-tibi`
+(`ordinarium.evangelium-ultimum` s06), and 27 announcements: the single verse of each of the
+26 announcement texts (`ordinarium.lectio-*`, `ordinarium.sequentia-*`,
+`ordinarium.initium-sancti-evangelii-secundum-matthaeum` and
+`ordinarium.passio-domini-nostri-iesu-christi-secundum-matthaeum`), each unit named as its
+text, and `initium-sancti-evangelii-secundum-ioannem` (`ordinarium.evangelium-ultimum` s05).
+An announcement's class is the lemma of its owner's first word, read from the owner: `lectio`
+heads an Epistle, `sequentia`, `initium` and `passio` a Gospel. The owner's base `speaker` and `voice` must be the
 role's low-Mass actor with `clara`. An answer's owner carries the faithful's participation in
 both forms and a celebrant's line carries none. These are read from the owner and never stored
 in the library. Every published language package must publish the owner text with a nonempty
@@ -300,11 +310,19 @@ translation of the segment, and an alignment group that touches the segment must
 inside it.
 
 An event (`id`, `before`, `source`, `occurrences`) is the ordered sequence of units before one
-Mass part, and `before` names the formulary role it precedes. `collecta-introductio`,
-`offertorium-introductio` and `postcommunio-introductio` are greeting, answer and invitation.
-`evangelium-salutatio` is greeting and answer; the reading announcements are not yet corpus
-texts. Each occurrence carries its own delivery: `lecta` (`clara`, by `sacerdos` or
-`minister`) and `cantu` (`cantus`, by `sacerdos` or `schola`), each with a `source` citation.
+Mass part, and `before` names the formulary role it precedes; the events are listed in the
+order of the Mass. `collecta-introductio`, `offertorium-introductio` and
+`postcommunio-introductio` are greeting, answer and invitation. `epistola-annuntiatio` is the
+announcement before the Epistle. Before the Gospel, `evangelium-salutatio` is greeting and
+answer, and `evangelium-annuntiatio` follows it: the announcement, then `responsio-gloria-tibi`.
+An announcement is always a slot occurrence (`slot: "announcement"`, `lecta`, `cantu`) that
+names no unit: the reader fills it for each reading from its binding. Each occurrence carries
+its own delivery: `lecta` (`clara`, by `sacerdos` or `minister`) and `cantu` (`cantus`, by
+`sacerdos` or `schola`), each with a `source` citation. The announcement role alone may keep
+`clara` under `cantu`, and an announcement's sung voice must be the sung voice of every verse
+of each reading bound to it: the Epistle's announcement stays `clara` because the celebrant of
+a Missa cantata better reads the Epistle without chant (RG 514), and the Gospel's is `cantus`
+as the Gospel is sung (RG 473, 514; Ritus servandus VI, 5).
 The role fixes the performer: the celebrant says and sings the greeting and the invitation
 (RG 511, 513 a, 514), the server answers at the low Mass, and the schola with the faithful
 answers at the sung Mass (DMS 16 b, 25 a, 26). Where the owner carries its own sung override,
@@ -312,12 +330,33 @@ as the Preface dialogue does, the occurrence must agree with it. The invitation'
 authored for each event and takes nothing from the foot of the altar, where Aufer a nobis is
 said.
 
-`rubrics` records `scope`, `secret`, `passion`, `easter-vigil` and `prayer-groups` as
-nonempty citations: the episcopal greeting and the deacon at a solemn Gospel are outside the
-priest-led events, no introduction precedes the Secret, the Passion takes no Gospel greeting,
-the Offertory introduction of the Easter Vigil stands without its antiphon, and whether the
-invitation is repeated before a second group of prayers is not encoded. Which events a given
-date and Mass use is decided by the reader, not by this library.
+`passion` (`units`, `omitted_events`, `omitted_units`, `lecta`, `cantu`, `source`) is the
+Passion rule (RG 472; Palm Sunday nn. 8, 8 a): a reading bound to one of `units` (exactly the
+`passio` announcements) takes its announcement alone, without `evangelium-salutatio` and
+without `responsio-gloria-tibi`, delivered `sacerdos`/`clara` at low Mass and
+`sacerdos`/`cantus` at a sung Mass, the priest-alone form of n. 8 a.
+
+`announcements` binds every reading a formulary names as its `epistola` or `evangelium`, once,
+ordered by reading: `reading` (dotted text id), `unit` (an announcement whose class fits the
+reading's role and whose closed table of books holds the pericope's book), `leaf` (the scan
+leaf of the printed heading, the first leaf the reading's printed witness names) and `page`
+(its printed page), `reference_as_printed` (verbatim) and `pericope` (`book`, `passages` of
+`chapter` and `verses` as `[first, last]` ranges, in the print's own divisions). Optional:
+`as_printed`, the heading as printed where it differs from the formula only by an accent, a
+capital or a closing full stop; `book_supplied: true` where the printed reference names no
+book; `misprint: true` with `comparator` (and `uncertain`, describing an unclear glyph) where
+the printed numbers contradict the reading, and the pericope follows the reading. Otherwise the
+pericope's numbers are the printed ones. A reading without exactly one binding is an error.
+
+`rubrics` records `scope`, `secret`, `passion`, `easter-vigil`, `prayer-groups`,
+`announcements`, `sung-epistle`, `references` and `responses` as nonempty citations: the
+episcopal greeting and the deacon at a solemn Gospel are outside the priest-led events, no
+introduction precedes the Secret, the Passion takes no Gospel greeting and is announced alone,
+the Offertory introduction of the Easter Vigil stands without its antiphon, whether the
+invitation is repeated before a second group of prayers is not encoded, how the Proper prints
+the announcements and their references, the sung Epistle of RG 514, and that Deo grátias and
+Laus tibi, Christe stay with the reader. Which events a given date and Mass use is decided by
+the reader, not by this library.
 
 ## Reader Canon selection
 
@@ -513,16 +552,26 @@ localized titles. Missing resource, body or declaration fails closed.
 ## Reader Ordo introductions
 
 Reader edition 6.1.0 adds `base.introductiones: "introductiones.json"`, independently
-versioned schema 1.0.0. Exact fields are `schema_version`, `units` and `events`, each list
-ordered by identity. A unit carries `id`, `role`, the owner's slash `text` address,
-`segment`, `words` (the owner's word ids in stored order) and `source`. An event carries `id`,
-`before`, `source` and `occurrences`, each with `unit`, `lecta` and `cantu`. No word, gloss or
-translation is repeated: the owner texts already travel in the neutral and every language
-package, and the resource requires each owner segment to be declared there, to carry exactly
-the unit's words in the neutral package and to have a nonempty translation in each language
-package. Language packages gain no file. The producer projects the validated library; the
-verifier restates the resource from the stored library and owner texts without calling the
-producer or the checker. A missing resource, owner, segment, word or translation fails closed.
+versioned schema 1.0.0. Reader edition 6.5.0 publishes schema 2.0.0, a breaking successor read
+by no consumer of 1.0.0. Exact fields are `schema_version`, `units`, `events`, `passion` and
+`announcements`. A unit (ordered by identity) carries `id`, `role`, the owner's slash `text`
+address, `segment`, `words` (the owner's word ids in stored order) and `source`. The events are
+the six of the library in the order of the Mass; an event carries `id`, `before`, `source`
+and `occurrences`, each with `unit` or `slot`, `lecta` and `cantu`. `passion` repeats the
+library's rule. An announcement row (ordered by reading) carries the reading's slash
+`reading` address, its `unit`, the printed `reference` and the `pericope`, and `book_supplied`
+(`true`) where the library records it. A definite reference correction emits
+`misprint: true`; a library binding with an `uncertain` glyph description instead emits
+`reference_uncertain: true`, never both flags. The literal `reference` and normalized
+`pericope` remain separate and unchanged. Leaves, pages, the print of the heading,
+comparator and detailed uncertainty description stay in the library. No word, gloss or translation is repeated:
+the owner texts already travel in the neutral and every language package, and the resource
+requires each owner segment to be declared there, to carry exactly the unit's words in the
+neutral package and to have a nonempty translation in each language package, and every
+announced reading to be declared in the neutral package. Language packages gain no file. The
+producer projects the validated library; the verifier restates the resource from the stored
+library and owner texts without calling the producer or the checker. A missing resource,
+owner, segment, word, translation or reading fails closed.
 
 ## Bibliography and evidence graph
 
@@ -1238,6 +1287,16 @@ localization, editorial
   unchanged `sacerdos`/`clara` base, with no participation, and the hand
   rubric `s01` takes nothing. The rule is bound to a closed inventory of each
   Preface's verse segments and word ids; a Preface outside it is reported.
+  Each of the 101 Gospels the formularies select other than the solemn
+  Passion (`proprium.*-evangelium`) has a rule of the same kind (RG 511 e,
+  473, 514; Ritus servandus VI, 2 and 5): every verse carries
+  `delivery.cantu: {speaker: "sacerdos", voice: "cantus"}` beside its
+  unchanged `sacerdos`/`clara` base, with no participation, and a rubric
+  takes nothing. The two Mass forms do not distinguish the deacon of a
+  solemn Mass from the celebrant of a Missa cantata, who sings the sacred
+  ministers' parts. The rule is bound to a closed inventory of each Gospel's
+  segments (a verse's word count, or a rubric) and word ids; a Gospel
+  outside it is reported. The Passion keeps its three parts.
 - Segment: **`participation`** (since 0.10.0) is who among the FAITHFUL makes
   this line, and on whose authority. `speaker` answers a different question —
   whom the Missale charges with the line — and at low Mass the answer is

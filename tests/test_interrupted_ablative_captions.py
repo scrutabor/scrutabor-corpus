@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from gospel_delivery_fixture import current_sung_source_hash
 
 from checks import interlinear, language_packs, prose
 from checks.translation_provenance import canonical_hash, source_payload
@@ -136,7 +137,11 @@ def assert_ledger(core, layer, entry, row):
         "ledger target identity",
     )
     keys = ("origin", "review", "familiar_core", "source_sha256", "target_sha256")
-    require({key: entry[key] for key in keys} == {key: row[key] for key in keys}, "ledger status")
+    expected = {key: row[key] for key in keys}
+    expected["source_sha256"] = current_sung_source_hash(
+        row["site"].rsplit(".", 2)[0], segment_id, row["source_sha256"]
+    )
+    require({key: entry[key] for key in keys} == expected, "ledger status")
 
 
 def test_keyed_operations_leave_latin_prose_and_provenance_alone():

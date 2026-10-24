@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import pytest
+from gospel_delivery_fixture import current_gospel_selected_hash
 
 from build_reader import bibliography_bindings as bb
 from build_reader import store
@@ -221,9 +222,8 @@ def test_prose_provenance_is_current_but_still_working(language, prefix):
 
 def test_selected_latin_ritual_and_complete_boundary_are_unchanged():
     raw = store.core(ROOT, TEXT)
-    assert (
-        bb.digest(bb.selected_text(raw))
-        == "35c4347aecbc738d59659f48e7c1d847b941d9014c2f56a27847dc9476dd3f3e"
+    assert bb.digest(bb.selected_text(raw)) == current_gospel_selected_hash(
+        raw["id"], "35c4347aecbc738d59659f48e7c1d847b941d9014c2f56a27847dc9476dd3f3e"
     )
     assert (raw["segments"][0]["speaker"], raw["segments"][0]["voice"], raw["sung"]) == (
         "sacerdos",

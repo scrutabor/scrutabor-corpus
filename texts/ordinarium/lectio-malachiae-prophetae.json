@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.21.0",
+  "id": "ordinarium.lectio-malachiae-prophetae",
+  "title": "Léctio Malachíæ Prophétæ",
+  "category": "ordinarium",
+  "section": "missa-catechumenorum",
+  "variant": "missae",
+  "sung": false,
+  "ids": {
+    "next": 4,
+    "segments": {
+      "next": 2
+    }
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "clara",
+      "words": [
+        { "id": "w001", "form": "Léctio", "lemma": "lectio", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
+        { "id": "w002", "form": "Malachíæ", "lemma": "Malachias", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 1 } },
+        { "id": "w003", "form": "Prophétæ", "lemma": "propheta", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "m", "decl": 1 } }
+      ]
+    }
+  ],
+  "editorial": {
+    "status": "working-edition",
+    "notes": "The heading printed over a lesson from a prophet. LÉCTIO is the nominative of a heading: no verb is expressed or understood. The prophet's name is a genitive of the author, with PROPHÉTÆ in apposition; the book itself is not named.",
+    "source": {
+      "method": "The Latin follows the Benziger Brothers 1962 editio iuxta typicam, which prints this heading over the Epistle on printed p. 466 (IA leaf n547 / PDF p. 548); it is compared with the heading line of the pinned Divinum Officium file that the reading's own digital witness binds. Source review remains pending.",
+      "witnesses": "witnesses/ordinarium.lectio-malachiae-prophetae/",
+      "apparatus": "witnesses/ordinarium.lectio-malachiae-prophetae/apparatus.json"
+    },
+    "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
+    "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" },
+    "words": {
+      "w002": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "pending" } }
+    }
+  },
+  "localization": {
+    "about": true
+  }
+}
