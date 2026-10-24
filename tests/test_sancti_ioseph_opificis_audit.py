@@ -351,19 +351,34 @@ FORMULA = "forever and ever"
 def long_groups(text, language, lay=None):
     lay = lay or layer(language, text)
     return [
-        (s, g["gloss"])
+        (s, g)
         for s, seg in lay["segments"].items()
         for g in seg.get("alignments", [])
         if len(g["words"]) >= 3
     ]
 
 
+def assert_bounded_groups(text, language, lay=None):
+    local_phrase = {
+        "words": ids(24, 25, 26, 27),
+        "anchor": "w026",
+        "gloss": {
+            "pl": "zawsze bezpieczne pod twoją opieką",
+            "en": "always safe under your protection",
+        }[language],
+    }
+    for segment, group in long_groups(text, language, lay):
+        assert group["gloss"] == FORMULA or (
+            text == ALLELUIA and segment == "s01" and group == local_phrase
+        ), "no clause-sized group"
+
+
 @pytest.mark.parametrize("language", ["pl", "en"])
 def test_the_proper_texts_keep_no_clause_sized_group(language):
     found = {text: long_groups(text, language) for text in PROPERS}
-    for text, groups in found.items():
-        assert all(gloss == FORMULA for _, gloss in groups), text
-    expected = {"pl": 0, "en": 4}[language]
+    for text in found:
+        assert_bounded_groups(text, language)
+    expected = {"pl": 1, "en": 5}[language]
     assert sum(len(groups) for groups in found.values()) == expected
     bad = layer("en", GOSPEL)
     seg = bad["segments"]["s01"]
@@ -371,7 +386,27 @@ def test_the_proper_texts_keep_no_clause_sized_group(language):
     seg["alignments"].append(
         {"words": ids(66, 67, 68), "anchor": "w067", "gloss": "A prophet is not"}
     )
-    assert ("s01", "A prophet is not") in long_groups(GOSPEL, "en", bad)
+    rejects(assert_bounded_groups, GOSPEL, "en", bad, message="no clause-sized group")
+
+
+@pytest.mark.parametrize("language", ["pl", "en"])
+@pytest.mark.parametrize("damage", ["members", "anchor", "caption", "whole-clause"])
+def test_the_local_protective_phrase_is_an_exact_exception(language, damage):
+    original = layer(language, ALLELUIA)
+    assert_bounded_groups(ALLELUIA, language, original)
+    bad = deepcopy(original)
+    group = next(g for g in bad["segments"]["s01"]["alignments"] if g["anchor"] == "w026")
+    if damage == "members":
+        group["words"] = ids(23, 24, 25, 26)
+    elif damage == "anchor":
+        group["anchor"] = "w024"
+    elif damage == "caption":
+        group["gloss"] += " always"
+    else:
+        group["words"] = ids(23, 24, 25, 26, 27)
+        group["gloss"] = "and may it always be safe under your protection"
+    rejects(assert_bounded_groups, ALLELUIA, language, bad, message="no clause-sized group")
+    assert_bounded_groups(ALLELUIA, language, original)
 
 
 def segment_shape(doc, lay, segment):

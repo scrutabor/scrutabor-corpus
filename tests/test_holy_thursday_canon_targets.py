@@ -150,9 +150,9 @@ def context_errors(slug, language, core, layer):
         if language == "pl":
             if layer["segments"]["s10"]["translation"] != "Bierzcie i jedzcie z tego wszyscy:":
                 errors.append("protected invitation changed without exact authority")
-            if layer["segments"]["s12"]["translation"] != "To jest bowiem Ciało moje.":
+            if layer["segments"]["s12"]["translation"] != "To jest bowiem Ciało Moje.":
                 errors.append("protected bread formula changed without exact authority")
-            if layer["words"]["w050"]["gloss"] != "moje":
+            if layer["words"]["w050"]["gloss"] != "Moje":
                 errors.append("protected meum caption changed")
         if "Amen" in layer["segments"]["s12"]["translation"]:
             errors.append("bread formula is not followed by Amen")
@@ -351,8 +351,8 @@ def test_touching_cannot_replace_handling_condition(language):
     "site,value",
     [
         ("s10", "Bierzcie i jedzcie wszyscy:"),
-        ("s12", "To jest bowiem Ciało Moje."),
-        ("w050", "Moje"),
+        ("s12", "To jest bowiem Ciało moje."),
+        ("w050", "moje"),
     ],
 )
 def test_unauthorized_protected_delta_is_refused(site, value):

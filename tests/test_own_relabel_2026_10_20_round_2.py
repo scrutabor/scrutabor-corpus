@@ -59,6 +59,12 @@ LABELS = {site: expected_communion_row(row, site) for site, row in LABELS.items(
 LABELS = {site: expected_pentecost_row(row, site) for site, row in LABELS.items()}
 LABELS = {site: expected_marian_row(row, site) for site, row in LABELS.items()}
 LABELS = {site: expected_corpus_christi_epistle_row(row, site) for site, row in LABELS.items()}
+PRE_JOSEPH_LABELS = deepcopy(LABELS)
+JOSEPH_SITE = "proprium.sancti-ioseph-opificis-alleluia.s01.en"
+JOSEPH_TARGET_BEFORE = "bc147f4ca9387fc9ebad464c97458bb11eeedc4dbc641cef1754dbbdfa89388d"
+JOSEPH_TARGET_AFTER = "1a1ade2c0bfee9129296789b80faeeb2bae207f5d485d2ff677b23e4c7a665f6"
+assert LABELS[JOSEPH_SITE]["target_sha256"] == JOSEPH_TARGET_BEFORE
+LABELS[JOSEPH_SITE]["target_sha256"] = JOSEPH_TARGET_AFTER
 SITES = sorted(LABELS)
 SAMPLE = FIXTURE["wording_sample"]
 DOXOLOGY = FIXTURE["doxology_uses"]
@@ -175,6 +181,26 @@ def test_a_reviewed_claim_is_rejected(site):
 @pytest.mark.parametrize("site", SITES)
 def test_current_wording_matches_its_historical_or_exact_successor_hash(site):
     assert_wording_unchanged(site, ledger()[site], verse(site))
+
+
+def test_joseph_successor_changes_only_its_exact_wording_hash():
+    assert set(LABELS) == set(PRE_JOSEPH_LABELS)
+    assert [site for site in LABELS if LABELS[site] != PRE_JOSEPH_LABELS[site]] == [JOSEPH_SITE]
+    recovered = deepcopy(LABELS)
+    recovered[JOSEPH_SITE]["target_sha256"] = JOSEPH_TARGET_BEFORE
+    assert recovered == PRE_JOSEPH_LABELS
+    assert canonical_hash(verse(JOSEPH_SITE)) == JOSEPH_TARGET_AFTER
+    assert_label(JOSEPH_SITE, ledger()[JOSEPH_SITE])
+
+
+def test_joseph_predecessor_hash_is_rejected_without_promoting_the_label():
+    row, target = ledger()[JOSEPH_SITE], verse(JOSEPH_SITE)
+    assert_wording_unchanged(JOSEPH_SITE, row, target)
+    before = deepcopy(row)
+    before["target_sha256"] = JOSEPH_TARGET_BEFORE
+    rejects(assert_wording_unchanged, JOSEPH_SITE, before, target, message="unchanged wording")
+    assert_wording_unchanged(JOSEPH_SITE, row, target)
+    assert_label(JOSEPH_SITE, row)
 
 
 @pytest.mark.parametrize("damage", ["ledger", "verse"])
