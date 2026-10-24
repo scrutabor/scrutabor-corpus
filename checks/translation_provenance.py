@@ -22,6 +22,7 @@ from collections import Counter
 from pathlib import Path
 
 from build_reader import bibliography, store
+from checks.participation_performance import source_fields
 
 WORDING_BASIS = "historical_wording_basis"
 ORIGINS = frozenset(("working-unsettled", "own", "public-domain", "traditional", "trivial"))
@@ -220,6 +221,7 @@ def source_payload(segment: dict) -> dict:
         "id": segment["id"],
         "speaker": segment.get("speaker"),
         "voice": segment.get("voice"),
+        **source_fields(segment),
         **({"delivery": segment["delivery"]} if "delivery" in segment else {}),
         # Preserve exact legacy payloads when no pair is present. Including
         # the explicit ranges binds placement as well as the displayed text;

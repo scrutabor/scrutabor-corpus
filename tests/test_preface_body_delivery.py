@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from common_preface_source_fixture import without_common_preface_source_chain
 from preface_delivery_fixture import (
     DATA,
     current_expected_row,
@@ -423,9 +424,23 @@ COUNTEREXAMPLES = (
 @pytest.mark.parametrize("text_id", COUNTEREXAMPLES)
 def test_other_ordinary_texts_take_nothing_from_the_rule(text_id):
     doc = text(text_id)
-    assert all("delivery" not in s for s in doc["segments"])
-    assert all(delivery.derive(doc, s) == {} for s in doc["segments"])
-    assert delivery.check_doc(doc) == ([], 0)
+    # No counterexample inherits the Preface rule. Sanctus instead has its own
+    # explicit quiet-priest rule: it is not a sung priestly Preface line.
+    assert not doc["id"].startswith(PREFIX)
+    expected = {}
+    if text_id == "ordinarium.sanctus":
+        assert [s["id"] for s in doc["segments"]] == ["s01", "s02", "s03", "s04", "s05", "s06"]
+        assert doc["segments"][0]["type"] == "rubric"
+        for s in doc["segments"][1:]:
+            assert s["type"] == "verse"
+            assert (s["speaker"], s["voice"]) == ("sacerdos", "clara")
+            expected[s["id"]] = {"cantu": {"voice": "secreto"}}
+    for s in doc["segments"]:
+        if s["id"] not in expected:
+            assert "delivery" not in s
+        assert s.get("delivery", {}) == expected.get(s["id"], {})
+        assert delivery.derive(doc, s) == expected.get(s["id"], {})
+    assert delivery.check_doc(doc) == ([], len(expected))
 
 
 @pytest.mark.parametrize("text_id", TEXTS)
@@ -485,6 +500,7 @@ def without_apparatus_hash(row: dict[str, Any]) -> dict[str, Any]:
 
 def test_the_graph_overlay_is_exactly_the_stored_selected_text_digests():
     graph = json.loads((CORPUS / "bibliography" / "graph.json").read_text(encoding="utf-8"))
+    graph = without_common_preface_source_chain(graph)
     collations = [row for row in graph["collations"] if row["text"] in DATA["source"]]
     assert len(collations) == 23
     assert sorted(row["id"] for row in collations) == sorted(DATA["collation_records"])
@@ -510,6 +526,7 @@ def test_the_graph_overlay_is_exactly_the_stored_selected_text_digests():
 
 def test_the_witness_overlay_is_exactly_the_current_and_historical_subjects():
     graph = json.loads((CORPUS / "bibliography" / "graph.json").read_text(encoding="utf-8"))
+    graph = without_common_preface_source_chain(graph)
     snapshot = bindings._SourceSnapshot(CORPUS, graph)
     rows = [row for row in graph["witnesses"] if row["text"] in DATA["source"]]
     assert len(rows) == 46

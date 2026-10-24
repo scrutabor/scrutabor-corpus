@@ -15,6 +15,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from checks.apparatus import derived_summary
+from checks.participation_performance import source_fields
 from checks.raw_binding import RawBindingSnapshot
 
 SEGMENT_FIELDS = ("id", "type", "text", "verse", "speaker", "voice", "delivery", "parentheses")
@@ -57,6 +58,7 @@ def selected_text(doc: dict) -> dict:
     segments = []
     for segment in doc["segments"]:
         selected = {key: segment[key] for key in SEGMENT_FIELDS if key in segment}
+        selected.update(source_fields(segment))
         if "words" in segment:
             selected["words"] = [
                 {key: word[key] for key in WORD_FIELDS if key in word} for word in segment["words"]

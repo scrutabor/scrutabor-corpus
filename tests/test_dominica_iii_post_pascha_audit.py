@@ -344,7 +344,7 @@ VOCATIVE_GROUPS = [
         1,
         8,
         8,
-        "May the newness of the birth of this Sacrament ever renew us, Lord",
+        "May the newness of the mystery of His birth ever renew us, Lord",
     ),
     ("proprium.nativitas-domini-in-die-secreta", 1, 3, 3, "The offered gifts, Lord,"),
     (

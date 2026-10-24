@@ -1,6 +1,6 @@
 """Contemporary register of English interlinear captions in texts with traditional prose.
 
-The prose of these texts keeps an inherited register; their interlinear captions use
+The prose of most of these texts keeps an inherited register; their interlinear captions use
 contemporary English. A pronoun or possessive of God or Christ reads You/Your, and one
 of a human or creaturely addressee (Mary, the angel, Sion, the disciples, the mother of the
 sons of Zebedee) reads you/your. A second-person verb whose Latin subject is a relative or an
@@ -194,7 +194,14 @@ SITES = {
         ("s01", ("w038",), "for", "DUR", "in", "prep acc"),
     ),
     P + "pretiosissimi-sanguinis-domini-nostri-iesu-christi-postcommunio": (
-        ("s01", ("w020",), "to", "GOAL", "in", "prep acc"),
+        (
+            "s01",
+            ("w019", "w020", "w021", "w022", "w023"),
+            "of water springing up to everlasting life",
+            "GOAL",
+            "in",
+            "prep acc",
+        ),
         ("s01", ("w025",), "with You", "D", "tu", "abl sg"),
         ("s01", ("w026",), "lives", "V3", "vivo", "3sg pres ind"),
         ("s01", ("w028",), "reigns", "V3", "regno", "3sg pres ind"),
@@ -360,12 +367,8 @@ LINES = (
         "w037",
         (
             "a fountain",
-            "of water",
-            "to",
-            "life",
-            "everlasting",
-            "springing up",
-            "who",
+            "of water springing up to everlasting life",
+            "Who",
             "with You",
             "lives",
             "and",
@@ -564,8 +567,15 @@ def class_diagnostics(where, caption, kind):
         found.append(f"person:{where}: third-person perfect needs has, not {caption!r}")
     if kind == "DUR" and caption != "for":
         found.append(f"preposition:{where}: in/per saecula saeculorum reads for, not {caption!r}")
-    if kind == "GOAL" and caption not in ("to", "for", "for salvation"):
-        found.append(f"preposition:{where}: goal or purpose reads to/for, not {caption!r}")
+    if kind == "GOAL":
+        allowed = ("to", "for", "for salvation")
+        if where == (
+            P + "pretiosissimi-sanguinis-domini-nostri-iesu-christi-postcommunio"
+            ":s01:w019+w020+w021+w022+w023"
+        ):
+            allowed = ("of water springing up to everlasting life",)
+        if caption not in allowed:
+            found.append(f"preposition:{where}: unsupported goal realization {caption!r}")
     return found
 
 

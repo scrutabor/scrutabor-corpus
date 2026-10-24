@@ -17,7 +17,13 @@ ROOT = Path(__file__).resolve().parents[1]
 FIXTURE = json.loads(
     (ROOT / "tests/fixtures/lateran-postcommunion-successor.json").read_text(encoding="utf-8")
 )
+CLARITY = json.loads(
+    (ROOT / "tests/fixtures/lateran-postcommunion-clarity-successor.json").read_text(
+        encoding="utf-8"
+    )
+)
 TEXT = FIXTURE["text"]
+assert CLARITY["text"] == TEXT
 CORE = "texts/" + TEXT.replace(".", "/", 1) + ".json"
 LAYERS = {language: f"languages/{language}/{CORE}" for language in ("pl", "en")}
 LANGUAGES = ["pl", "en"]
@@ -46,6 +52,12 @@ def parent_at(doc, pointer):
 
 def historical_objects(documents):
     result = deepcopy(documents)
+    # Undo the later, exact Polish clarity changes before the frozen original
+    # 47-operation inverse. Neither its operations nor historical hashes move.
+    for operation in reversed(CLARITY["operations"]):
+        parent, key = parent_at(result[operation["path"]], operation["pointer"])
+        require(parent[key] == operation["after"], "Lateran clarity field value")
+        parent[key] = deepcopy(operation["before"])
     for operation in reversed(FIXTURE["operations"]):
         parent, key = parent_at(result[operation["path"]], operation["pointer"])
         exists = key in parent if isinstance(parent, dict) else 0 <= key < len(parent)
@@ -79,7 +91,8 @@ def assert_reading(core, wid):
 
 def assert_constructions(target, language):
     require(
-        target["segments"]["s01"]["alignments"] == FIXTURE["groups"][language],
+        target["segments"]["s01"]["alignments"]
+        == CLARITY["groups"].get(language, FIXTURE["groups"][language]),
         "Lateran construction groups",
     )
     direct = {
@@ -88,6 +101,13 @@ def assert_constructions(target, language):
     }
     for wid, caption in direct[language].items():
         require(target["words"][wid].get("gloss") == caption, "Lateran direct construction")
+
+
+def ledger_successors(language, sid):
+    return {
+        **FIXTURE["ledger_hash_successors"][language].get(sid, {}),
+        **CLARITY["ledger_hash_successors"].get(language, {}).get(sid, {}),
+    }
 
 
 def assert_ledger(core, target, row, language):
@@ -100,7 +120,7 @@ def assert_ledger(core, target, row, language):
         "ledger target identity",
     )
     before = FIXTURE["ledger_before"][language][segment["id"]]
-    expected = {**before, **FIXTURE["ledger_hash_successors"][language].get(segment["id"], {})}
+    expected = {**before, **ledger_successors(language, segment["id"])}
     require(row == expected, "Lateran provenance has only declared hash successors")
 
 
@@ -113,6 +133,25 @@ def test_complete_historical_objects_survive_the_narrow_inverse(documents):
     assert len(FIXTURE["operations"]) == 47
     assert len({(op["path"], op["pointer"]) for op in FIXTURE["operations"]}) == 47
     assert snapshot == FIXTURE
+
+
+@pytest.mark.parametrize("index", range(4))
+def test_clarity_inverse_rejects_each_changed_field_after_a_healthy_positive(documents, index):
+    saved, fixture_saved = deepcopy(documents), deepcopy(CLARITY)
+    restored = historical_objects(documents)
+    assert {path: canonical_hash(value) for path, value in restored.items()} == (
+        FIXTURE["historical_object_sha256"]
+    )
+    assert len(CLARITY["operations"]) == 4
+    assert len({(op["path"], op["pointer"]) for op in CLARITY["operations"]}) == 4
+    operation = CLARITY["operations"][index]
+    broken = deepcopy(documents)
+    parent, key = parent_at(broken[operation["path"]], operation["pointer"])
+    parent[key] += " changed"
+    with pytest.raises(AssertionError, match=r"^Lateran clarity field value$"):
+        historical_objects(broken)
+    assert historical_objects(documents) == restored
+    assert documents == saved and fixture_saved == CLARITY
 
 
 def test_selected_latin_ritual_and_all_ids_are_unchanged(documents):
@@ -137,7 +176,7 @@ def test_possible_genitive_is_disclosed_once_in_each_language(documents, languag
     core, target = documents[CORE], documents[LAYERS[language]]
     assert core["localization"]["explanations"] == {"w019": {}}
     explanation = target["words"]["w019"]["explanation"]
-    assert explanation == FIXTURE["explanations"][language]
+    assert explanation == CLARITY["explanations"].get(language, FIXTURE["explanations"][language])
     assert ("dopełniaczem" if language == "pl" else "can be genitive") in explanation
     assert "explanation" not in target["words"]["w020"]
     assert language_packs.check_core(core) == []
@@ -289,7 +328,7 @@ def test_explanation_omission_fails_actual_localization_topology(documents, lang
 def test_stale_source_hash_cannot_retain_the_new_analysis(documents, language):
     saved = deepcopy(FIXTURE)
     before = FIXTURE["ledger_before"][language]["s01"]
-    row = {**deepcopy(before), **FIXTURE["ledger_hash_successors"][language]["s01"]}
+    row = {**deepcopy(before), **ledger_successors(language, "s01")}
     assert row["source_sha256"] != before["source_sha256"]
     assert_ledger(documents[CORE], documents[LAYERS[language]], row, language)
     broken = deepcopy(row)

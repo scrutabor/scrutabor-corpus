@@ -891,9 +891,18 @@ def test_sequence_translations_follow_their_own_latin_stanza():
 def test_postcommunion_conclusion_preserves_person_and_addressee():
     doc = layer("en", "proprium/pretiosissimi-sanguinis-domini-nostri-iesu-christi-postcommunio")
     target = doc["segments"]["s01"]["translation"]
-    assert "who liveth and reigneth with Thee" in target
-    # the conclusion speaks of the Son, not to Him
-    assert "livest" not in target
+    assert (
+        ". He lives and reigns with You in the unity of the Holy Spirit, God, forever and ever."
+        in target
+    )
+    # The conclusion speaks of the Son, not to Him; retain the actual Latin control.
+    assert (
+        word("proprium/pretiosissimi-sanguinis-domini-nostri-iesu-christi-postcommunio", "w026")[
+            "morph"
+        ]["person"]
+        == 3
+    )
+    assert "You live and reign" not in target and "livest" not in target
 
 
 def test_creaturae_preserves_the_witnessed_genitive():

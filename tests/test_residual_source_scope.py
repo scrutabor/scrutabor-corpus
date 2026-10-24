@@ -484,5 +484,51 @@ def test_source_reviews_stay_pending_and_unadmitted(data):
     with pytest.raises(BindingError, match="complete explicit source_dependencies"):
         witness_subject(ROOT, digital, data, text_document(ROOT, TRINITY))
     ordinary = {CONFITEOR, ECCE, PANEM}
-    assert [w["id"] for w in data["witnesses"] if w["text"] in ordinary] == []
+    ordinary_witnesses = [w for w in data["witnesses"] if w["text"] in ordinary]
+    assert ordinary_witnesses == [
+        {
+            "id": "witness.ordinarium.confiteor.handmissal-eo2025",
+            "text": "ordinarium.confiteor",
+            "use": "use.ordinarium.confiteor.handmissal-eo2025",
+            "role": "derived_comparison",
+            "coverage": {"kind": "full"},
+            "transcription_sha256": (
+                "192794ba3fc35fcfa1f33ad8408e5c77a963383ad2f6d4ec1ef19ae520e99d76"
+            ),
+            "orthography_profile": "exact-typeset-page",
+            "independence_basis": (
+                "Separately typeset current hand missal, manually compared throughout "
+                "the declared Latin body. No genealogical independence or identity with "
+                "the unretained August download is claimed."
+            ),
+            "transcription": "handmissal-eo2025",
+            "source_dependencies": {
+                "uses": [],
+                "raw_binding": None,
+                "documents": [
+                    {
+                        "contract": "paginated-pdf-1",
+                        "use": "use.ordinarium.confiteor.handmissal-eo2025",
+                        "digital_item": "item.extraordinaryform.handmissal-chant.2025-12-12.pdf",
+                        "sha256": (
+                            "43e21a0356b4ab1641c8dfa3927d8e29b53f3b26f926b23080842d601e07d84d"
+                        ),
+                        "media_type": "application/pdf",
+                        "pdf_page": 6,
+                        "printed": "4",
+                        "region": "left-half",
+                        "page_image_sha256": (
+                            "e554421da2c8241462b4f3d3bf46a64ee1f1a873362ff2623983da81ba3e07fe"
+                        ),
+                    }
+                ],
+            },
+            "review": {"status": "pending"},
+        }
+    ]
+    # A retained source use is not a reviewed witness or a collation approval.
+    for text_id in ordinary:
+        record = public_record(data, text_id)
+        assert record.get("witnesses", []) == []
+        assert "collation" not in record
     assert [c["id"] for c in data["collations"] if c["text"] in ordinary] == []

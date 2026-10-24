@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from michael_secret_fixture import explanation_expectation
 
 from checks import interlinear, language_packs, prose
 from checks.translation_provenance import canonical_hash, source_payload
@@ -83,7 +84,7 @@ SEVEN_FORMS = (
     "piíssimo",
     "intervéntu",
 )
-SEVEN_DIRECT = {"w022": "jej"}
+SEVEN_DIRECT = {"w022": "dzięki jej"}
 SEVEN_GROUPS = (
     {
         "words": ["w023", "w024", "w025", "w026", "w027"],
@@ -93,7 +94,7 @@ SEVEN_GROUPS = (
     {
         "words": ["w028", "w029", "w030"],
         "anchor": "w030",
-        "gloss": "dzięki wzmożonemu, najłaskawszemu wstawiennictwu",
+        "gloss": "wzmożonemu, najłaskawszemu wstawiennictwu",
     },
 )
 SEVEN_HISTORICAL = {
@@ -173,7 +174,7 @@ RELATIVES = (
         "cuius",
         "którego",
         "Którego",
-        "tego sakramentu, którego jedyne",
+        "tajemnicy Jego narodzin, gdyż Jego jedyne",
     ),
     (
         "purification-gospel-quod-parasti",
@@ -344,9 +345,21 @@ def test_mid_sentence_relative_is_lowercase(documents, row):
 def assert_explanation(core, layer, english, row):
     _, _, word, forms, note = row
     requirement = (core["localization"].get("explanations") or {}).get(word)
-    require(requirement == {"languages": ["pl"]}, "construction explanation scope")
-    require(layer["words"][word].get("explanation") == note, "construction explanation")
-    require("explanation" not in english["words"][word], "construction explanation scope")
+    expected = explanation_expectation(row)
+    if expected is None:
+        require(requirement == {"languages": ["pl"]}, "construction explanation scope")
+        require(layer["words"][word].get("explanation") == note, "construction explanation")
+        require("explanation" not in english["words"][word], "construction explanation scope")
+    else:
+        require(requirement == expected["requirement"], "construction explanation scope")
+        require(
+            layer["words"][word].get("explanation") == expected["pl"], "construction explanation"
+        )
+        require(
+            english["words"][word].get("explanation") == expected["en"],
+            "construction explanation scope",
+        )
+        note = expected["pl"]
     latin = {item["form"].rstrip(",.:;") for s in core["segments"] for item in s["words"]}
     require(set(forms) <= latin, "construction explanation")
     require(
@@ -467,6 +480,7 @@ def test_group_guard_rejects_the_split_caption_and_restores(documents, case):
 def test_seven_sorrows_guard_rejects_the_nine_word_group_and_restores(documents):
     core, layer = documents[SEVEN][None], documents[SEVEN]["pl"]
     snapshot = deepcopy(layer)
+    assert_seven(core, layer)
     broken = deepcopy(layer)
     broken["segments"]["s01"]["alignments"] = [deepcopy(SEVEN_HISTORICAL)]
     for word in SEVEN_SPAN:
@@ -565,3 +579,28 @@ def test_corpus_guard_sees_a_restored_mid_sentence_capital(tmp_path):
     assert (row[1], row[3]) in captions
     assert prose_sites == QUOTATION_AFTER_COLON
     assert capital_relative_sites(ROOT)[0] <= SEPARATELY_PINNED
+
+
+@pytest.mark.parametrize("defect", ["delayed", "duplicate", "missing", "reflexive"])
+def test_seven_sorrows_preposition_introduces_the_circumstance_once(documents, defect):
+    core, layer = documents[SEVEN][None], documents[SEVEN]["pl"]
+    snapshot = deepcopy(layer)
+    assert_seven(core, layer)
+    broken = deepcopy(layer)
+    groups = touching(broken, "s01", SEVEN_SPAN)
+    assert len(groups) == 2 and groups[-1]["anchor"] == "w030"
+    assert layer["words"]["w022"]["gloss"] == "dzięki jej"
+    assert "dzięki" not in groups[-1]["gloss"]
+    if defect in {"delayed", "missing"}:
+        broken["words"]["w022"]["gloss"] = "jej"
+    if defect in {"delayed", "duplicate"}:
+        groups[-1]["gloss"] = "dzięki " + groups[-1]["gloss"]
+    if defect == "reflexive":
+        broken["words"]["w022"]["gloss"] = "dzięki swemu"
+    assert broken != layer
+    assert interlinear.check(core, broken) == []
+    with pytest.raises(AssertionError) as caught:
+        assert_seven(core, broken)
+    assert str(caught.value) == "compact caption group"
+    assert_seven(core, layer)
+    assert layer == snapshot

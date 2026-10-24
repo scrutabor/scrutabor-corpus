@@ -1,0 +1,241 @@
+{
+  "text": "ordinarium.praefatio-communis",
+  "historical_raw_path": "witnesses/raw/do-prefationes.txt",
+  "historical_raw_sha256": "ce6633989b14e8ce498a1e1459e92d524641ffaae403b01e97c718631fc5844f",
+  "core_sha256": "e7d15250fd98a88275f3d36bab775bc1172af6b8068e9dbad3a080cbd2e0101e",
+  "selected_sha256": "2cd61fdda089cccda01d852d841a7f62e493f0e1dfa277e1cb43eb641133665e",
+  "apparatus_sha256": "31b4c9f125153245f534502ee56d808a9605c9c013db43a19f3ac26aa63dfa3f",
+  "historical_apparatus_sha256": "9dd06df1cab05e74c70d783cb8928333d268cbb77a36b12b011f4fad0a4deb8e",
+  "moves": [
+    {
+      "from": "witnesses/ordinarium.praefatio-communis/do.txt",
+      "to": "witnesses/ordinarium.praefatio-communis/historical-2026-10-24/do.txt",
+      "sha256": "43743a9a4799cea7200fcdb396a09422829ae57c1bcc9dcf57bb5f85b8fcd966",
+      "byte_exact": true
+    },
+    {
+      "from": "witnesses/ordinarium.praefatio-communis/handmissal-eo.txt",
+      "to": "witnesses/ordinarium.praefatio-communis/historical-2026-10-24/handmissal-eo.txt",
+      "sha256": "0b403d87503e1f941d4af9a1606695b0a24b393d27b1d1063507368b70162f8f",
+      "byte_exact": true
+    }
+  ],
+  "records_before": {
+    "uses": [
+      {
+        "id": "use.ordinarium.praefatio-communis.hand-position-rubric.mr1962",
+        "edition": "edition.missale-romanum.1962-typica",
+        "digital_item": "item.missale-romanum.1962-typica.ia",
+        "role": "rubric_control",
+        "address": {
+          "kind": "segment",
+          "text": "ordinarium.praefatio-communis",
+          "segment": "s01"
+        },
+        "locator": {
+          "printed": "p. 225",
+          "scan": "leaf n304 / PDF p. 305",
+          "section": "Ordo Missae, lower-right final paragraph: Deinde disiungit manus through Sanctus; excluding Et cum dicit: Benedictus qui venit",
+          "page_url": "https://archive.org/details/missale-romanum-1962/page/n304/mode/1up"
+        },
+        "claim": "The approved Benziger printing's Ordo Missae prints the hand-position rubric selected in s01, from Deinde disiungit manus through et inclinatus dicit: Sanctus. The following Benedictus sign-of-the-cross direction and the preceding dialogue directions are outside this use. This is ritual support for s01, not a body-text witness or proof of the corpus's historical import workflow. The selected rubric retains the printed lower-case præfationis.",
+        "verified_on": "2026-10-04",
+        "decision": "RETAIN",
+        "evidence_sha256": "c8e1c105fbccab5b133d072bcdc255ff482824182be5e53597e5d2bfbb94e3ee"
+      },
+      {
+        "id": "use.ordinarium.praefatio-communis.mr1962",
+        "edition": "edition.missale-romanum.1962-typica",
+        "digital_item": "item.missale-romanum.1962-typica.ia",
+        "role": "direct_approved_print",
+        "address": {
+          "kind": "text",
+          "text": "ordinarium.praefatio-communis"
+        },
+        "locator": {
+          "printed": "p. 300",
+          "scan": "leaf n379 / PDF p. 380",
+          "page_url": "https://archive.org/details/missale-romanum-1962/page/n379/mode/1up"
+        },
+        "claim": "The cited page of the approved Benziger printing identifies and prints the body of the Common Preface. The imported hand-position rubric is outside this use. Printed readings and declared selected-text variants remain distinct.",
+        "verified_on": "2026-09-25",
+        "decision": "RETAIN_WITH_CORRECTION",
+        "evidence_sha256": "e911b0f8cfb8ae6a24fbbce89d6d794d5d68f169df8260bf32559027ade2fed0",
+        "decision_reason": "Role and scope corrected on 2026-10-04: the source is the approved Benziger Editio iuxta typicam, not the typical edition itself. The claim is limited to the printed body and its stated same-page application, excluding the imported hand-position rubric; the historical verification date and pending reviews are preserved."
+      }
+    ],
+    "witnesses": [],
+    "collations": []
+  },
+  "additions": {
+    "uses": [
+      {
+        "id": "use.ordinarium.praefatio-communis.do44667ff",
+        "edition": "edition.divinum-officium-missa.44667ff",
+        "digital_item": "item.divinum-officium-missa.44667ff.github",
+        "role": "derived_digital_collation_aid",
+        "address": {
+          "kind": "text",
+          "text": "ordinarium.praefatio-communis"
+        },
+        "locator": {
+          "section": "web/www/missa/Latin/Ordo/Prefationes.txt [Communis], heading line67, label line68, complete body line69; textual v. cue excluded"
+        },
+        "claim": "The pinned Latin Mass data print the complete Common Preface body, including their declared accidental differences. This use does not establish the imported hand-position rubric or a sung performer.",
+        "verified_on": "2026-10-24",
+        "decision": "RETAIN",
+        "evidence_sha256": "cdcc5bb39df5043a85f17a6ebab0483bfad1a360fd31940878c09c67b5d22c80"
+      },
+      {
+        "id": "use.ordinarium.praefatio-communis.handmissal-eo2025",
+        "edition": "edition.extraordinaryform.handmissal-chant.2025-12-12",
+        "digital_item": "item.extraordinaryform.handmissal-chant.2025-12-12.pdf",
+        "role": "corroborating_latin_witness",
+        "address": {
+          "kind": "text",
+          "text": "ordinarium.praefatio-communis"
+        },
+        "locator": {
+          "printed": "p. 14",
+          "scan": "physical PDF p. 16, left half",
+          "section": "Complete Common Preface below the Sunday Preface and above Sanctus; printed47 Kyriale on the right is outside this use"
+        },
+        "claim": "The hand missal revised12/12/2025 prints the complete56-word Common Preface body on the left half of physical PDF16. Its literal ætérnæ is retained in transcription and separately declared as a corrigendum for comparison. This is Latin corroboration, not an English wording basis or proof of identity with an older download.",
+        "verified_on": "2026-10-24",
+        "decision": "RETAIN",
+        "evidence_sha256": "81210742f30a43cf67289f1911557fac6e052b800304533b82d51a7658fe7187"
+      }
+    ],
+    "witnesses": [
+      {
+        "id": "witness.ordinarium.praefatio-communis.do44667ff",
+        "text": "ordinarium.praefatio-communis",
+        "use": "use.ordinarium.praefatio-communis.do44667ff",
+        "role": "derived_comparison",
+        "coverage": {
+          "kind": "full"
+        },
+        "transcription_sha256": "504543b0cb9c94e7db0aeb8dcc4c12794cba6c69389f11f0c3e46385b2815488",
+        "orthography_profile": "pinned-digital-source",
+        "independence_basis": "The explicitly identified pinned Latin Mass data are an independently maintained digital comparison. This current reconstruction does not certify the revision or generation of the historical August transcript.",
+        "transcription": "do-44667ff",
+        "source_dependencies": {
+          "uses": [],
+          "raw_binding": "common-preface-44667ff"
+        },
+        "review": {
+          "status": "pending"
+        }
+      },
+      {
+        "id": "witness.ordinarium.praefatio-communis.handmissal-eo2025",
+        "text": "ordinarium.praefatio-communis",
+        "use": "use.ordinarium.praefatio-communis.handmissal-eo2025",
+        "role": "derived_comparison",
+        "coverage": {
+          "kind": "full"
+        },
+        "transcription_sha256": "32a34f5c4aa209a8ea321393c4669cc266a0fe6c1534c909980598780fea5950",
+        "orthography_profile": "exact-typeset-page",
+        "independence_basis": "Current independently typeset hand missal, visually compared at the declared page. This is not a claim of genealogical independence or byte identity with the unretained August download.",
+        "transcription": "handmissal-eo2025",
+        "source_dependencies": {
+          "uses": [],
+          "raw_binding": null,
+          "documents": [
+            {
+              "contract": "paginated-pdf-1",
+              "use": "use.ordinarium.praefatio-communis.handmissal-eo2025",
+              "digital_item": "item.extraordinaryform.handmissal-chant.2025-12-12.pdf",
+              "sha256": "43e21a0356b4ab1641c8dfa3927d8e29b53f3b26f926b23080842d601e07d84d",
+              "media_type": "application/pdf",
+              "pdf_page": 16,
+              "printed": "14",
+              "region": "left-half",
+              "page_image_sha256": "81210742f30a43cf67289f1911557fac6e052b800304533b82d51a7658fe7187"
+            }
+          ]
+        },
+        "review": {
+          "status": "pending"
+        }
+      },
+      {
+        "id": "witness.ordinarium.praefatio-communis.mr1962",
+        "text": "ordinarium.praefatio-communis",
+        "use": "use.ordinarium.praefatio-communis.mr1962",
+        "role": "controlling",
+        "coverage": {
+          "kind": "full"
+        },
+        "transcription_sha256": "1ef371f89cc32b7cd29a74c51961ec7a7bd26370de4720f8198c8ec1f16d2f74",
+        "orthography_profile": "exact-page-image",
+        "independence_basis": "The identified approved Benziger printing controls the body words; the separate retained rubric use supports the imported hand-position segment, not the body page.",
+        "transcription": "mr",
+        "source_dependencies": {
+          "uses": [
+            "use.ordinarium.praefatio-communis.hand-position-rubric.mr1962"
+          ],
+          "raw_binding": null
+        },
+        "review": {
+          "status": "pending"
+        }
+      }
+    ],
+    "collations": [
+      {
+        "id": "collation.ordinarium.praefatio-communis.mr1962-do44667ff-eo2025",
+        "text": "ordinarium.praefatio-communis",
+        "recension": "The Common Preface body in the approved Benziger1962 printing, with explicitly declared house accidentals and the current hand missal corrigendum; imported rubric and delivery retained as distinct source dependencies.",
+        "selected_text_sha256": "2cd61fdda089cccda01d852d841a7f62e493f0e1dfa277e1cb43eb641133665e",
+        "witnesses": [
+          "witness.ordinarium.praefatio-communis.do44667ff",
+          "witness.ordinarium.praefatio-communis.handmissal-eo2025",
+          "witness.ordinarium.praefatio-communis.mr1962"
+        ],
+        "apparatus": {
+          "entries": 22,
+          "classes": [
+            "accent",
+            "capital-accent",
+            "orthography",
+            "punctuation"
+          ]
+        },
+        "apparatus_sha256": "31b4c9f125153245f534502ee56d808a9605c9c013db43a19f3ac26aa63dfa3f",
+        "review": {
+          "status": "pending"
+        }
+      }
+    ]
+  },
+  "binding_id": "common-preface-44667ff",
+  "binding": {
+    "witness": "witnesses/ordinarium.praefatio-communis/do-44667ff.txt",
+    "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+    "evidence": [
+      {
+        "archive": "prefaces",
+        "first": 68,
+        "last": 69,
+        "section": "Communis",
+        "section_line": 67
+      }
+    ],
+    "references": [],
+    "reading": [
+      {
+        "archive": "prefaces",
+        "first": 69,
+        "last": 69
+      }
+    ]
+  },
+  "archive": {
+    "upstream": "web/www/missa/Latin/Ordo/Prefationes.txt",
+    "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+    "path": "witnesses/raw/do-44667ff/missa/Latin/Ordo/Prefationes.txt",
+    "sha256": "cdcc5bb39df5043a85f17a6ebab0483bfad1a360fd31940878c09c67b5d22c80"
+  }
+}

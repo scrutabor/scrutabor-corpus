@@ -8,10 +8,19 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
-from build_reader import bibliography, canon, commemorationes, dismissal, introductiones, store
+from build_reader import (
+    bibliography,
+    canon,
+    commemorationes,
+    dismissal,
+    introductiones,
+    participation_performance,
+    store,
+)
 from checks.formularies import SCHEMA as FORMULARY_SCHEMA
 from checks.formularies import TITLE_SCHEMA as FORMULARY_TITLE_SCHEMA
 from checks.formularies import ordinary_errors
+from checks.participation_performance import publication_errors
 from kalendarium.canon import calendar_table
 from kalendarium.commemorationes import calendar_table as commemoration_table
 from kalendarium.dismissal import calendar_table as dismissal_table
@@ -55,7 +64,8 @@ from kalendarium.dismissal import calendar_table as dismissal_table
 # 6.5.0 publishes the reading announcements (introductiones schema 2.0.0): announcement units,
 # the Epistle and Gospel announcement events with their slot, the Passion rule and a binding
 # for every reading; no consumer read the 1.0.0 shape.
-SCHEMA = "6.5.0"
+# 6.6.0 carries a sourced participation performance beside the retained base actor.
+SCHEMA = "6.6.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -875,6 +885,10 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
     commemorationes.input_bodies(corpus)
     introductiones.input_bodies(corpus)
     corpus_docs = read_corpus(corpus)
+    for document, _ in corpus_docs:
+        errors = publication_errors(document)
+        if errors:
+            raise ValueError(f"{document['id']}: {'; '.join(errors)}")
     evidence_graph, language_evidence = bibliography.load(corpus)
     evidence_errors = bibliography.validate(corpus, evidence_graph, language_evidence)
     if evidence_errors:
@@ -1377,6 +1391,7 @@ def verify_edition_artifacts(
     errors.extend(dismissal.verify(corpus, out, manifest, SCHEMA))
     errors.extend(commemorationes.verify(corpus, out, manifest, SCHEMA))
     errors.extend(introductiones.verify(corpus, out, manifest, SCHEMA))
+    errors.extend(participation_performance.verify(out, manifest))
     if errors:
         return errors  # Canon dependencies must resolve before global index checks
 

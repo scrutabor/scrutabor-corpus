@@ -1191,10 +1191,48 @@ def assert_legacy_successor(fixture, verse):
     assert "Holy Ghost" in verse, "legacy field"
 
 
+REMOVED_PRECIOUS_BLOOD_ALLOWANCE = {
+    "text": "proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-postcommunio",
+    "fields": [
+        {
+            "path": ["segments", "s01", "translation"],
+            "sha256": "4f59d82c6453208ce3953e450c7d2dde0a0d995e140a436858eb2210c8f19f39",
+        },
+    ],
+}
+
+
+def assert_legacy_inventory(fixture):
+    # This exact obsolete allowance was removed by the separate English
+    # Postcommunion revision, not by the Ascension Introit successor.
+    records = fixture["records"]
+    assert not any(row["text"] == REMOVED_PRECIOUS_BLOOD_ALLOWANCE["text"] for row in records), (
+        "obsolete Precious Blood allowance"
+    )
+    assert len([*records, REMOVED_PRECIOUS_BLOOD_ALLOWANCE]) == 45, "legacy inventory"
+
+
 def test_the_legacy_field_successor_binds_exactly_the_reviewed_change():
     verse = layer("en", II_EPI_INTROIT)["segments"]["s01"]["translation"]
     assert_legacy_successor(load(LEGACY), verse)
-    assert len(load(LEGACY)["records"]) == 45
+    assert_legacy_inventory(load(LEGACY))
+
+
+@pytest.mark.parametrize("damage", ["reintroduced", "unrelated-removal"])
+def test_current_legacy_inventory_rejects_undeclared_changes(damage):
+    fixture = load(LEGACY)
+    saved = deepcopy(fixture)
+    assert_legacy_inventory(fixture)
+    broken = deepcopy(fixture)
+    if damage == "reintroduced":
+        broken["records"].append(deepcopy(REMOVED_PRECIOUS_BLOOD_ALLOWANCE))
+        message = "obsolete Precious Blood allowance"
+    else:
+        broken["records"].pop(0)
+        message = "legacy inventory"
+    rejects(assert_legacy_inventory, broken, message=message)
+    assert_legacy_inventory(fixture)
+    assert fixture == saved
 
 
 @pytest.mark.parametrize("damage", ["other-edit", "stale-hash", "refreshed-other-edit"])

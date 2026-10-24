@@ -89,7 +89,11 @@ class TestTheOrdinary:
     def test_the_sanctus_is_theirs_at_both_kinds_of_mass(self):
         assert part("ordinarium.sanctus", "s02") == {
             "lecta": {"gradus": 3, "source": "DMS 31 c"},
-            "cantu": {"gradus": 2, "source": "DMS 25 b"},
+            "cantu": {
+                "gradus": 2,
+                "source": "DMS 25 b",
+                "performance": {"speaker": "schola", "voice": "cantus", "source": "DMS 25 b; 26"},
+            },
         }
 
     def test_the_kyrie_is_sung_by_all_but_not_recited_by_all(self):

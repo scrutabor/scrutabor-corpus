@@ -25,13 +25,6 @@ INTROIT = PREFIX + "introitus"
 FIELDS = (
     pytest.param(
         "collecta",
-        "w018",
-        "gloss",
-        "pod Twoim",
-        id="collecta-w018-gloss",
-    ),
-    pytest.param(
-        "collecta",
         "w029",
         "gloss",
         "który",
@@ -208,6 +201,22 @@ CLAUSES = (
     ),
 )
 GROUPS = (
+    pytest.param(
+        "pl",
+        "collecta",
+        ["w012", "w013"],
+        "w013",
+        "za Twoim natchnieniem",
+        id="pl-collecta-w012",
+    ),
+    pytest.param(
+        "pl",
+        "collecta",
+        ["w018", "w019"],
+        "w019",
+        "pod Twoim kierownictwem",
+        id="pl-collecta-w018",
+    ),
     pytest.param(
         "pl",
         "epistola",
@@ -506,7 +515,7 @@ def test_every_word_has_one_caption_realization(texts, language):
     assert (total_words, total_segments) == (509, 13)
     # Proverbium nullum dicis shares one natural English caption: adding dicis
     # to that group moves one token from the direct to the grouped inventory.
-    assert (direct, groups, members) == {"pl": (494, 7, 15), "en": (337, 75, 172)}[language]
+    assert (direct, groups, members) == {"pl": (490, 9, 19), "en": (337, 75, 172)}[language]
 
 
 @pytest.mark.parametrize("language", ["pl", "en"])

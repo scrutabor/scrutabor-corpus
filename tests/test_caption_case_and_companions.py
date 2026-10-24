@@ -125,10 +125,10 @@ CAPTIONS = (
         "pl",
         P + "nativitas-domini-in-aurora-postcommunio",
         "s01",
-        ("w004",),
-        None,
-        "sakramentu",
-        ("sacraménti",),
+        ("w004", "w005", "w006", "w007"),
+        "w006",
+        "nowość tajemnicy narodzin zawsze",
+        ("sacraménti", "semper", "nóvitas", "natális"),
     ),
     ("pl", P + "dominica-i-adventus-collecta", "s01", ("w009",), None, "z", ("ab",)),
     (
@@ -373,7 +373,6 @@ CONTINUING = {
     "omnium-sanctorum-postcommunio": "w023",
     "omnium-sanctorum-secreta": "w029",
     "pretiosissimi-sanguinis-domini-nostri-iesu-christi-collecta": "w049",
-    "pretiosissimi-sanguinis-domini-nostri-iesu-christi-postcommunio": "w024",
     "pretiosissimi-sanguinis-domini-nostri-iesu-christi-secreta": "w033",
     "sacratissimi-cordis-iesu-collecta": "w039",
     "sacratissimi-cordis-iesu-postcommunio": "w021",
@@ -421,6 +420,7 @@ CONTINUING = {
 # Conclusion relatives at a real English sentence start keep their capital.
 OPENING = (
     (P + "dominica-i-adventus-collecta", "w021", "Who"),
+    (P + "pretiosissimi-sanguinis-domini-nostri-iesu-christi-postcommunio", "w024", "Who"),
     (P + "dominica-xxii-post-pentecosten-postcommunio", "w021", "You who"),
     (P + "sancti-ioseph-sponsi-beatae-mariae-virginis-collecta", "w019", "Who"),
     (P + "septem-dolorum-beatae-mariae-virginis-collecta", "w043", "Who"),
@@ -530,7 +530,8 @@ def test_no_conclusion_caption_capitalizes_a_continuing_relative():
     for text in english_layers():
         found += who_diagnostics(text, load(text), load(text, "en"))
     assert found == []
-    assert len(CONTINUING) == 143
+    assert len(CONTINUING) == 142
+    assert len(OPENING) == 7
 
 
 def test_lateran_prose_matches_its_caption_and_ledger():

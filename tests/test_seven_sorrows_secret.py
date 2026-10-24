@@ -39,7 +39,7 @@ def test_delayed_intercession_is_realized_once(language):
     ]
     assert all("gloss" not in layer["words"][wid] for wid in expected[1:])
     if language == "pl":
-        assert layer["words"]["w022"]["gloss"] == "jej"
+        assert layer["words"]["w022"]["gloss"] == "dzięki jej"
         assert "„intervéntu”" in layer["words"]["w022"]["explanation"]
     else:
         assert layer["words"]["w022"]["gloss"] == "her"

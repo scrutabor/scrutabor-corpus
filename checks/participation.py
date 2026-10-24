@@ -47,6 +47,7 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
+from checks import participation_performance
 from checks.layout import formatted
 from checks.office import is_office
 from checks.orations import genus as oration_genus
@@ -140,6 +141,14 @@ MINISTERIAL_PREPARATIONS = {
     "ordinarium.iube-domne-benedicere-in-passione",
 }
 
+# RG 513 a excepts the post-confession versicles from the sung greetings;
+# 513 e distinguishes the other preparatory prayers from sung portions.
+# DMS 25 a grants sung responses, not every occurrence of their words.
+CANTU_UNSUNG_PREPARATIONS = {
+    "ordinarium.misereatur",
+    "ordinarium.deus-tu-conversus",
+}
+
 # n. 31 d — the fourth degree at low Mass, and the law names FOUR pieces:
 # "Introitum; Graduale; Offertorium; Communionem". The Alleluia is not among
 # them, and is not an oversight of ours: n. 25 c gives the faithful the
@@ -171,9 +180,9 @@ PROPER_SPOKEN = {"collecta", "secreta", "postcommunio", "epistola", "evangelium"
 
 def fold(text: str) -> str:
     """The corpus's own normalization: ligatures apart, accents off, j to i."""
-    text = text.replace("æ", "ae").replace("Æ", "Ae").replace("œ", "oe").replace("Œ", "Oe")
     text = unicodedata.normalize("NFD", text)
     text = "".join(c for c in text if unicodedata.category(c) != "Mn")
+    text = text.replace("æ", "ae").replace("Æ", "Ae").replace("œ", "oe").replace("Œ", "Oe")
     text = text.replace("j", "i").replace("J", "I")
     return re.sub(r"\s+", " ", re.sub(r"[^A-Za-z ]", " ", text)).strip().lower()
 
@@ -255,7 +264,7 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
             out["lecta"] = {"gradus": 1, "source": f"{DMS} 31 a"}
         else:
             out["lecta"] = {"gradus": 2, "source": f"{DMS} 31 b"}
-        if said in CANTU_I_FOLDED:
+        if said in CANTU_I_FOLDED and text_id not in CANTU_UNSUNG_PREPARATIONS:
             out["cantu"] = {"gradus": 1, "source": f"{DMS} 25 a"}
         elif text_id in CANTU_II:
             out["cantu"] = {"gradus": 2, "source": f"{DMS} 25 b"}
@@ -274,6 +283,7 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
         if text_id in CANTU_II:
             out["cantu"] = {"gradus": 2, "source": f"{DMS} 25 b"}
 
+    participation_performance.supplement(doc, seg, out)
     return out
 
 
@@ -292,7 +302,7 @@ def run(write: bool = False) -> int:
         doc = json.loads(path.read_text(encoding="utf-8"))
         from checks import ritual
 
-        invalid = ritual.base_errors(doc)
+        invalid = ritual.base_errors(doc) + participation_performance.base_errors(doc)
         if invalid:
             problems += len(invalid)
             for error in invalid:
@@ -337,7 +347,8 @@ def check_doc(doc: dict[str, Any]) -> tuple[list[str], int]:
     """For run_checks: what this text carries against what the law gives."""
     from checks import ritual
 
-    errors, attributed = ritual.base_errors(doc), 0
+    errors = ritual.base_errors(doc) + participation_performance.base_errors(doc)
+    attributed = 0
     stray = unknown_genus(doc)
     if stray:
         errors.append(

@@ -64,9 +64,9 @@ COMMA = [
 ]
 COLLATIONS = [pytest.param(row, id=row["id"]) for row in FIXTURE["collations"]]
 SUPPORT = [
-    ("ordinarium.confiteor", 3, "w038", "handmissal-eo", "Ídeo"),
-    ("ordinarium.confiteor-sacerdotis", 3, "w038", "handmissal-eo", "Ídeo"),
-    ("ordinarium.evangelium-ultimum", 1, "w034", "handmissal-eo", "Ómnia"),
+    ("ordinarium.confiteor", 3, "w038", "handmissal-eo2025", "Ídeo"),
+    ("ordinarium.confiteor-sacerdotis", 3, "w038", "handmissal-eo2025", "Ídeo"),
+    ("ordinarium.evangelium-ultimum", 1, "w034", "handmissal-eo2025", "Ómnia"),
 ]
 
 

@@ -4,6 +4,7 @@ import json
 from copy import deepcopy
 
 import pytest
+from common_preface_source_fixture import without_common_preface_source_chain
 
 from build_reader import bibliography
 from build_reader.bibliography_bindings import BindingError, witness_subject
@@ -125,6 +126,9 @@ def epiphany_inventory():
 
 
 def check_dependencies(data):
+    # Validate and undo only the complete, separately reviewed Common source
+    # additions. Keep the original 40/20 inventory and 19 unknown gaps intact.
+    data = without_common_preface_source_chain(data)
     ids = {tid(s) for s in SLUGS}
     witnesses = [w for w in data["witnesses"] if w["text"] in ids]
     collations = [c for c in data["collations"] if c["text"] in ids]
@@ -270,6 +274,7 @@ def test_source_claim_mutations_are_rejected(mutation):
 )
 def test_dependency_and_pending_gap_mutations_are_rejected(mutation):
     data = graph()
+    check_dependencies(data)
     witness = next(w for w in data["witnesses"] if w["id"] == f"witness.{tid('epiphaniae')}.mr1962")
     if mutation == "drop-sung":
         witness["source_dependencies"]["uses"] = [uid("epiphaniae")]
@@ -305,6 +310,29 @@ def test_dependency_and_pending_gap_mutations_are_rejected(mutation):
         digital["source_dependencies"] = {"uses": [uid("epiphaniae")], "raw_binding": None}
     with pytest.raises(AssertionError):
         check_dependencies(data)
+
+
+@pytest.mark.parametrize("mutation", ["missing", "changed", "duplicate", "foreign"])
+def test_common_source_successor_is_exact_before_recovering_old_inventory(mutation):
+    data = graph()
+    saved = deepcopy(data)
+    check_dependencies(data)
+    broken = deepcopy(data)
+    witness = next(w for w in broken["witnesses"] if w["id"] == f"witness.{tid('communis')}.mr1962")
+    if mutation == "missing":
+        broken["witnesses"].remove(witness)
+    elif mutation == "changed":
+        witness["review"] = {"status": "reviewed"}
+    elif mutation == "duplicate":
+        broken["witnesses"].append(deepcopy(witness))
+    else:
+        added = deepcopy(witness)
+        added["id"] += ".foreign"
+        broken["witnesses"].append(added)
+    with pytest.raises(AssertionError):
+        check_dependencies(broken)
+    check_dependencies(data)
+    assert data == saved
 
 
 @pytest.mark.parametrize("slug", EASTER)

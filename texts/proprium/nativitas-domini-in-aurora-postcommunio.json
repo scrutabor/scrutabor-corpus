@@ -25,7 +25,7 @@
         { "id": "w004", "form": "sacraménti", "lemma": "sacramentum", "morph": { "pos": "noun", "case": "gen", "number": "sg", "gender": "n", "decl": 2 } },
         { "id": "w005", "form": "semper", "lemma": "semper", "morph": { "pos": "adv" } },
         { "id": "w006", "form": "nóvitas", "lemma": "novitas", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "f", "decl": 3 } },
-        { "id": "w007", "form": "natális", "lemma": "natalis", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "head": "w006" },
+        { "id": "w007", "form": "natális", "lemma": "natalis", "morph": { "pos": "adj", "case": "gen", "gender": "n", "number": "sg" }, "head": "w004" },
         { "id": "w008", "form": "instáuret", "lemma": "instauro", "morph": { "conj": 1, "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" }, "post": ":" },
         { "id": "w009", "form": "cuius", "lemma": "qui", "morph": { "pos": "pron", "case": "gen", "number": "sg" } },
         { "id": "w010", "form": "Natívitas", "lemma": "nativitas", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 } },
@@ -180,6 +180,7 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "accepted" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "words": {
+      "w007": { "analysis": { "confidence": "medium", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w038": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
       "w045": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },
       "w047": { "analysis": { "confidence": "high", "sources": ["editorial", "collatinus"], "review": "accepted" } },
@@ -195,6 +196,12 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "explanations": {
+      "w007": {
+
+      }
+    },
+    "notes": ["w007"]
   }
 }

@@ -293,4 +293,14 @@ def test_no_other_ordinary_text_is_modeled_by_implication():
     # tests/test_preface_body_delivery.py pins row by row.
     prefaces = selected_prefaces()
     assert len(prefaces) == 24 and DIALOGUE not in prefaces
-    assert modeled == {DIALOGUE, "ordinarium.ite-missa-est-paschale"} | prefaces
+    # Sanctus is independently source-supported quiet priestly recitation;
+    # test_preface_body_delivery pins its five rows apart from the Preface rule.
+    assert (
+        modeled
+        == {
+            DIALOGUE,
+            "ordinarium.ite-missa-est-paschale",
+            "ordinarium.sanctus",
+        }
+        | prefaces
+    )

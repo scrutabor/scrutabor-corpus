@@ -387,6 +387,8 @@ GROUPS = FIXTURES["groups"]
 BASELINES = FIXTURES["baselines"]
 ZERO = FIXTURES["zero"]
 DIRECT = FIXTURES["direct"]
+# Current sentence case, while DIRECT retains the historical inverse fixture.
+CURRENT_DIRECT = {**DIRECT, "w046": "Co"}
 PROSE = FIXTURES["prose"]
 SITES = [(language, group) for language, groups in GROUPS.items() for group in groups]
 
@@ -466,7 +468,7 @@ def prepare(layer, language):
         for wid in site["words"]:
             result["words"][wid].pop("gloss", None)
     if language == "pl":
-        for wid, value in DIRECT.items():
+        for wid, value in CURRENT_DIRECT.items():
             result["words"][wid]["gloss"] = value
         result["segments"]["s05"]["translation"] = PROSE["after"]
     return result
@@ -508,6 +510,11 @@ SUPPORTED_GOVERNMENT = {
     ("w co", "wierzymy", "uznajemy za prawdę"),
     ("w co", "wierzymy", "sądzimy"),
 }
+CURRENT_GOVERNMENT = {
+    ("Co", "przyjmujemy za prawdę", "uznajemy za prawdę"),
+    ("W co", "wierzymy", "uznajemy za prawdę"),
+    ("W co", "wierzymy", "sądzimy"),
+}
 FORMAL_PROSE = (
     "To bowiem, w co dzięki Twemu objawieniu wierzymy o Twojej chwale, "
     "uznajemy również za prawdę o Twoim Synu i o Duchu Świętym, nie czyniąc żadnej różnicy."
@@ -516,9 +523,7 @@ FORMAL_PROSE = (
 
 def assert_supported_polish(layer, prose):
     """Finite contextual alternatives, not a general Polish grammar engine."""
-    assert (
-        tuple(layer["words"][w]["gloss"] for w in ("w046", "w053", "w065")) in SUPPORTED_GOVERNMENT
-    )
+    assert tuple(layer["words"][w]["gloss"] for w in ("w046", "w053", "w065")) in CURRENT_GOVERNMENT
     assert layer["words"]["w054"]["gloss"] == layer["words"]["w058"]["gloss"] == "to samo"
     assert layer["words"]["w051"]["gloss"] == "dzięki objawieniu"
     assert layer["words"]["w052"]["gloss"] == "Twojemu"
@@ -600,7 +605,7 @@ def test_initial_correlative_has_only_its_declared_zero():
     assert_zero(layer)
 
 
-@pytest.mark.parametrize("wid,value", DIRECT.items())
+@pytest.mark.parametrize("wid,value", CURRENT_DIRECT.items())
 def test_selected_polish_direct_gloss(wid, value):
     _, layer = load("pl")
     assert layer["words"][wid]["gloss"] == value
@@ -817,7 +822,7 @@ def test_supported_oneness_alternative_is_not_a_semantic_ban():
     restore(core, layer, "en", alternatives=True)
 
 
-@pytest.mark.parametrize("triple", sorted(SUPPORTED_GOVERNMENT))
+@pytest.mark.parametrize("triple", sorted(CURRENT_GOVERNMENT))
 def test_formal_polish_alternatives_are_not_automatically_errors(triple):
     _, old = load("pl")
     layer = prepare(old, "pl")

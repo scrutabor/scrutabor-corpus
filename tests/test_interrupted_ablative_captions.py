@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 from gospel_delivery_fixture import current_sung_source_hash
+from michael_secret_fixture import control_expectation, ledger_expectation, predecessor_documents
 
 from checks import interlinear, language_packs, prose
 from checks.translation_provenance import canonical_hash, source_payload
@@ -76,7 +77,7 @@ def parent_at(doc, pointer):
 
 
 def historical_objects(documents):
-    result = deepcopy(documents)
+    result = predecessor_documents(documents)
     for operation in reversed(FIXTURE["operations"]):
         parent, key = parent_at(result[operation["path"]], operation["pointer"])
         require((key in parent) == operation["after"]["exists"], "successor field presence")
@@ -119,6 +120,7 @@ def assert_note(core, layer, row):
 
 
 def assert_control(layer, row):
+    row = control_expectation(row)
     groups = layer["segments"][row["segment"]].get("alignments", [])
     touching = [g for g in groups if set(g["words"]) & set(row["span"])]
     grouped = {wid for g in touching for wid in g["words"]}
@@ -127,6 +129,7 @@ def assert_control(layer, row):
 
 
 def assert_ledger(core, layer, entry, row):
+    row = ledger_expectation(row)
     segment_id = row["site"].split(".")[-2]
     (segment,) = [s for s in core["segments"] if s["id"] == segment_id]
     require(

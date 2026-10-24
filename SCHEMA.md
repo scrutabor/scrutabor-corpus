@@ -1091,8 +1091,11 @@ localization, editorial
   nonempty sorted-unique `documents` list. Each declaration has exactly contract,
   use, digital_item, sha256, media_type, pdf_page, printed, region and
   page_image_sha256. The initial `paginated-pdf-1` contract supports only the
-  retained ExtraordinaryForm.org typeset HandMissalChant PDF43e21a03… and page
-  imagee554421d… (physical PDF6, printed4, left half). Full digests are required
+  retained ExtraordinaryForm.org typeset HandMissalChant PDF43e21a03… at exact
+  text/page keys: Aufer a nobis and ministers’ Confiteor on PDF6/printed4
+  (imagee554421d…), Common Preface on PDF16/printed14 (image81210742…),
+  priest’s Confiteor on PDF4/printed2 (image6f1ce1f0…), and Last Gospel
+  on PDF28/printed26 (image35e0cbcd…), all left half. Full digests are required
   in data; abbreviations here are not accepted values. The item stays born-digital,
   with its exact original PDF URL and full SHA, and the corroborating Latin use
   binds its exact page-image SHA. The inventory must cover all and only non-DO
@@ -1305,7 +1308,7 @@ localization, editorial
   over the line a congregation is about to say has answered the wrong
   question.
   Shape: `{ lecta?: {gradus?, source, conditional?}, cantu?: {gradus?, source,
-  conditional?} }`. The two
+  conditional?, performance?} }`. The two
   keys are the two forms of Mass the law grades separately — `lecta` the low
   Mass, `cantu` the sung Mass — because they are not the same event, and a
   reader at a sung Sunday Mass has more of the Ordinary than one at a said
@@ -1331,6 +1334,27 @@ localization, editorial
   the devotional prayers this corpus carries — the Leonine prayers, the
   Marian antiphons — take nothing from it. `run_checks` reports the coverage
   as `participation=N`.
+  Within canonical schema0.21.0, optional `cantu.performance` is a closed
+  adjunct with exactly `{speaker: "schola", voice: "cantus", source: "DMS 25 b; 26"}`.
+  It supplements, never overlays, a `sacerdos`/`clara` verse with the existing
+  unconditional degree2 `DMS 25 b` grant. It is derived only for Sanctus
+  s02–s06 with their unchanged25 stable words (RitusVII8/11; DMS25b/26).
+  Each verse also requires the distinct priestly `delivery.cantu: {voice: "secreto"}`
+  (RG511h/512/513e/514); its base remains sacerdos/clara. No actor override,
+  redundant speaker, other voice or extra delivery field is allowed.
+  Rubric, lecta, conflicting delivery, conditional, unknown/extra keys, altered
+  source identity and missing descriptors are errors. The faithful may join
+  the choir: an unconditional grant is not a claim that every person sings.
+  This is not an event clock, per-verse synchronization or permission to wait
+  for the choir before the priest begins the Canon. Reader6.6 transports the
+  nested metadata in its existing core; publication independently requires all
+  five descriptors. Consumers validate any received descriptor without a
+  second editorial text-ID inventory. No extra resource is fetched.
+  Legacy documents without the adjunct keep their canonical headers/body
+  identity; their translation/bibliography source payloads remain identical.
+  An adjunct binds its selected grant source and complete descriptor into the
+  source-bearing payload as `participation_performance`, invalidating prior
+  current-source review at those five verses, not silently resealing it.
 - Segment **`parentheses`** (since 0.21.0) records genuine paired punctuation
   in the selected Latin, not directions, optional readings or target-language
   prose. Omit the field when unused. Otherwise it is a nonempty array of

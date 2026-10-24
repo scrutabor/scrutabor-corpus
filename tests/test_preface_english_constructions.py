@@ -547,6 +547,19 @@ def test_source_context_is_unchanged(slug):
                 assert_source_context(doc, segment, historical)
             assert_source_context(doc, segment, expected)
             assert segment == snapshot
+            # Separate the stale expected-input guard above from a live source
+            # mutation. The current source must fail at the source comparison,
+            # not merely because the historical fixture input was rejected.
+            damaged = deepcopy(segment)
+            participle = next(w for w in damaged["words"] if w["id"] == "w054")
+            assert participle["head"] == "w057"
+            participle["head"] = "w055"
+            with pytest.raises(
+                AssertionError, match=r"(?m)^current complete Preface source context$"
+            ):
+                assert_source_context(doc, damaged, expected)
+            assert_source_context(doc, segment, expected)
+            assert segment == snapshot
 
 
 @pytest.mark.parametrize("slug", SLUGS)
