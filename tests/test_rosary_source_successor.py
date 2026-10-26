@@ -56,7 +56,7 @@ def validate(core, pl, en, graph, mr, apparatus):
         "w022": "may be obtained",
     }.items():
         assert en["words"][wid]["gloss"] == expected
-    assert en["words"]["w024"]["gloss"] == "Who"
+    assert en["words"]["w024"]["gloss"] == "You"
     groups = en["segments"]["s01"]["alignments"]
     assert groups == [
         {"words": ["w001", "w002", "w003"], "anchor": "w002", "gloss": "Of Your most holy Mother"},

@@ -1,0 +1,85 @@
+{
+  "formulary_schema": "1.3.0",
+  "id": "vigilia-ascensionis",
+  "order": 37,
+  "collection": "temporale",
+  "season": "paschale",
+  "observance": "vigilia-ascensionis",
+  "calendar": {
+    "key": "vigilia-ascensionis",
+    "default": true
+  },
+  "title": "In Vigilia Ascensionis",
+  "ordinary": {
+    "gloria": {
+      "sunday": "unresolved",
+      "not-sunday": "required"
+    },
+    "credo": {
+      "sunday": "unresolved",
+      "not-sunday": "omitted"
+    }
+  },
+  "components": [
+    {
+      "key": "introitus",
+      "role": "introitus",
+      "text": "proprium.dominica-v-post-pascha-introitus",
+      "relation": "reference"
+    },
+    {
+      "key": "collecta",
+      "role": "collecta",
+      "text": "proprium.dominica-v-post-pascha-collecta",
+      "relation": "reference"
+    },
+    {
+      "key": "epistola",
+      "role": "epistola",
+      "text": "proprium.sanctorum-simonis-et-iudae-apostolorum-epistola",
+      "relation": "reference"
+    },
+    {
+      "key": "alleluia",
+      "role": "alleluia",
+      "text": "proprium.dominica-v-post-pascha-alleluia",
+      "relation": "reference"
+    },
+    {
+      "key": "evangelium",
+      "role": "evangelium",
+      "text": "proprium.vigilia-ascensionis-evangelium",
+      "relation": "proper"
+    },
+    {
+      "key": "offertorium",
+      "role": "offertorium",
+      "text": "proprium.dominica-v-post-pascha-offertorium",
+      "relation": "reference"
+    },
+    {
+      "key": "secreta",
+      "role": "secreta",
+      "text": "proprium.dominica-v-post-pascha-secreta",
+      "relation": "reference"
+    },
+    {
+      "key": "praefatio",
+      "role": "praefatio",
+      "text": "ordinarium.praefatio-paschalis",
+      "relation": "shared"
+    },
+    {
+      "key": "communio",
+      "role": "communio",
+      "text": "proprium.dominica-v-post-pascha-communio",
+      "relation": "reference"
+    },
+    {
+      "key": "postcommunio",
+      "role": "postcommunio",
+      "text": "proprium.dominica-v-post-pascha-postcommunio",
+      "relation": "reference"
+    }
+  ]
+}

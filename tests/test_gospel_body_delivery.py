@@ -33,6 +33,7 @@ from gospel_delivery_fixture import (
     without_gospel_delivery,
     without_sung_delivery,
 )
+from witness_header_fixture import before_privacy
 
 from build_reader import bibliography_bindings as bindings
 from checks import delivery, participation
@@ -178,12 +179,27 @@ VERSES: dict[str, dict[str, int]] = {
     "sanctorum-simonis-et-iudae-apostolorum": {"s01": 154},
     "septem-dolorum-beatae-mariae-virginis": {"s01": 50},
     "transfiguratio-domini": {"s01": 148},
+    "vigilia-ascensionis": {
+        "s01": 20,
+        "s02": 15,
+        "s03": 16,
+        "s04": 12,
+        "s05": 16,
+        "s06": 19,
+        "s07": 10,
+        "s08": 23,
+        "s09": 17,
+        "s10": 14,
+        "s11": 16,
+    },
     "vigilia-nativitatis": {"s01": 80},
     "vigilia-paschalis": {"s01": 110},
     "vigilia-pentecostes": {"s01": 125},
     "visitatio-beatae-mariae-virginis": {"s01": 112},
 }
 TEXTS = [PREFIX + slug + SUFFIX for slug in sorted(VERSES)]
+# The source-hash inverse records only the 101 bodies that already existed.
+HISTORICAL_TEXTS = sorted(DATA["source"])
 VERSE_CASES = [
     pytest.param(PREFIX + slug + SUFFIX, sid, id=f"{slug}-{sid}")
     for slug in sorted(VERSES)
@@ -245,10 +261,12 @@ def selected_gospels() -> set[str]:
 
 
 def test_the_inventory_is_every_gospel_the_formularies_select():
-    assert len(VERSES) == 101
-    assert sum(count != RUBRIC for rows in VERSES.values() for count in rows.values()) == 140
+    assert len(VERSES) == 102
+    assert sum(count != RUBRIC for rows in VERSES.values() for count in rows.values()) == 151
     assert sum(count == RUBRIC for rows in VERSES.values() for count in rows.values()) == 3
-    assert sum(sum(rows.values()) for rows in VERSES.values()) == 13814
+    assert sum(sum(rows.values()) for rows in VERSES.values()) == 13992
+    assert len(HISTORICAL_TEXTS) == 101
+    assert set(TEXTS) - set(HISTORICAL_TEXTS) == {PREFIX + "vigilia-ascensionis" + SUFFIX}
     on_disk = {
         PREFIX + path.stem for path in (CORPUS / "texts" / "proprium").glob("*" + SUFFIX + ".json")
     }
@@ -543,7 +561,7 @@ def test_other_texts_take_nothing_from_the_rule(text_id):
     assert current_gospel_selected_hash(text_id, "unchanged") == "unchanged"
 
 
-@pytest.mark.parametrize("text_id", TEXTS)
+@pytest.mark.parametrize("text_id", HISTORICAL_TEXTS)
 def test_the_overlay_binds_exactly_the_delivery_additions(text_id):
     doc = text(text_id)
     change = DATA["source"][text_id]
@@ -611,7 +629,7 @@ def test_the_graph_overlay_is_exactly_the_stored_selected_text_digests():
         PREFIX + slug + SUFFIX
         for slug in ("dominica-ii-adventus", "dominica-iii-adventus", "dominica-iv-adventus")
     }
-    assert {row["text"] for row in collations} == set(TEXTS) - uncollated
+    assert {row["text"] for row in collations} == set(HISTORICAL_TEXTS) - uncollated
     historical = deepcopy(graph)
     for row in historical["collations"]:
         if row["text"] in DATA["source"]:
@@ -624,10 +642,10 @@ def test_the_graph_overlay_is_exactly_the_stored_selected_text_digests():
             assert bindings.digest(without_apparatus_hash(current)) == record["after"]
             assert bindings.digest(without_apparatus_hash(old)) == record["before"]
             assert current_gospel_record_hash(current["id"], record["before"]) == record["after"]
-    for text_id in TEXTS:
+    for text_id in HISTORICAL_TEXTS:
         sets = DATA["graph_sets"][text_id]
-        assert bindings.digest(graph_records(graph, text_id)) == sets["after"]
-        assert bindings.digest(graph_records(historical, text_id)) == sets["before"]
+        assert bindings.digest(before_privacy(graph_records(graph, text_id))) == sets["after"]
+        assert bindings.digest(before_privacy(graph_records(historical, text_id))) == sets["before"]
         assert current_gospel_graph_hash(text_id, sets["before"]) == sets["after"]
 
 
@@ -644,8 +662,8 @@ def test_the_witness_overlay_is_exactly_the_current_and_historical_subjects():
         old = bindings._witness_subject(
             CORPUS, row, without_gospel_delivery(doc), snapshot, reviewable=False
         )
-        assert bindings.digest(current) == expected["after"]
-        assert bindings.digest(old) == expected["before"]
+        assert bindings.digest(before_privacy(current)) == expected["after"]
+        assert bindings.digest(before_privacy(old)) == expected["before"]
         assert current_gospel_witness_hash(row["id"], expected["before"]) == expected["after"]
 
 

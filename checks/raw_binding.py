@@ -147,6 +147,7 @@ def load_registry(root: Path) -> dict:
                 "raw-reading-6",
                 "raw-reading-7",
                 "raw-reading-8",
+                "raw-reading-9",
             ):
                 raise BindingError("unsupported per-binding contract")
             if binding["contract"] == "raw-reading-3":
@@ -176,6 +177,8 @@ def load_registry(root: Path) -> dict:
                 "body",
                 "conclusion",
             }
+        if isinstance(binding, dict) and binding.get("contract") == "raw-reading-9":
+            fields = {"witness", "revision", "contract", "profile"}
         _keys(binding, fields, key)
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", key):
             raise BindingError(f"invalid binding ID: {key}")
@@ -230,9 +233,17 @@ def load_registry(root: Path) -> dict:
                         )
             if not isinstance(binding["selection"]["absent_heading"], str):
                 raise BindingError("raw-reading-8 selection: absent_heading must be a string")
+        if binding.get("contract") == "raw-reading-9" and not isinstance(binding["profile"], str):
+            raise BindingError("raw-reading-9 profile must be a string")
         for field in (
             ()
-            if binding.get("contract") in {"raw-reading-6", "raw-reading-7", "raw-reading-8"}
+            if binding.get("contract")
+            in {
+                "raw-reading-6",
+                "raw-reading-7",
+                "raw-reading-8",
+                "raw-reading-9",
+            }
             else ("evidence", "references", "reading")
         ):
             if not isinstance(binding[field], list) or (
@@ -463,6 +474,10 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
         from .raw_binding_common import resolve_literal_common
 
         return resolve_literal_common(text, headers, binding_id, binding, snapshot)
+    if binding.get("contract") == "raw-reading-9":
+        from .raw_binding_mass_secrets import resolve_mass_secret
+
+        return resolve_mass_secret(text, headers, binding_id, binding, snapshot)
     markers = [binding_id]
     archives = registry["archives"]
     used_archives: set[str] = set()
@@ -569,7 +584,15 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
                     or not fragment["reason"].strip()
                 ):
                     raise BindingError("fragment text, marker context or boundary reason differs")
-            if partial_contract or hash_contract:
+            # Nontext evidence is not a spoken marker context; slices remain strict.
+            whole_rubric_evidence = (
+                evidence
+                and partial_contract
+                and not sliced
+                and line.startswith("!")
+                and not line.startswith(("!*", "!!"))
+            )
+            if (partial_contract or hash_contract) and not whole_rubric_evidence:
                 tail = line[prefix.end() :] if prefix else line
                 if re.search(rf"(?:^|\s)[{TEXT_MARKER_CHARS}]\.\s+", tail):
                     raise BindingError("ambiguous inline source marker")
@@ -781,10 +804,14 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
                 for item in binding["evidence"]
                 if item["archive"] == key and item["first"] <= number <= item["last"]
             )
+            filename, separator, selector = directive.removeprefix("@").partition(":")
             valid = (
-                archives[destination["archive"]]["upstream"].endswith(
-                    "/" + directive.removeprefix("@") + ".txt"
+                bool(filename)
+                and (
+                    not separator
+                    or (bool(selector) and ":" not in selector and selector == origin["section"])
                 )
+                and archives[destination["archive"]]["upstream"].endswith("/" + filename + ".txt")
                 and destination["section"] == origin["section"]
             )
         if not valid:

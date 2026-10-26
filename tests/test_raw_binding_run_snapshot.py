@@ -13,6 +13,25 @@ REGISTRY = "witnesses/raw/bindings.json"
 LATERAN = "witnesses/proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-postcommunio/do.txt"
 
 
+# Independent archive inventory of the two closed Mass/Common chains.
+MASS_SECRETS = {
+    "secret-maternitas-do44667ff": (
+        "do-sancti-10-11",
+        "common-c10",
+        "common-c11",
+        "prayers",
+        "missa-ordo-44667ff",
+    ),
+    "secret-omnium-sanctorum-do44667ff": (
+        "all-saints",
+        "common-c3a",
+        "prayers",
+        "missa-ordo-44667ff",
+    ),
+}
+SECRET_ARCHIVES = sorted({key for keys in MASS_SECRETS.values() for key in keys})
+
+
 def copy_bound(tmp_path):
     registry = json.loads((CORPUS / REGISTRY).read_text())
     paths = [REGISTRY]
@@ -25,13 +44,16 @@ def copy_bound(tmp_path):
     return registry
 
 
-@pytest.mark.parametrize("selection", ["most-shared", "inline-rubric", "literal-common"])
+@pytest.mark.parametrize(
+    "selection", ["most-shared", "inline-rubric", "literal-common", *SECRET_ARCHIVES]
+)
 def test_a_corrupt_archive_is_reported_for_every_witness_it_binds(tmp_path, selection):
     registry = copy_bound(tmp_path)
+    assert check_archives(tmp_path) == []
     users: dict[str, set[str]] = {}
     inline_archives = set()
     common_archives = set()
-    for binding in registry["bindings"].values():
+    for identity, binding in registry["bindings"].items():
         if binding.get("contract") == "raw-reading-6":
             evidence = [binding["template"], binding["variant"]]
         elif binding.get("contract") == "raw-reading-7":
@@ -40,6 +62,8 @@ def test_a_corrupt_archive_is_reported_for_every_witness_it_binds(tmp_path, sele
         elif binding.get("contract") == "raw-reading-8":
             evidence = [binding["selection"], binding["body"], binding["conclusion"]]
             common_archives.add(binding["body"]["archive"])
+        elif binding.get("contract") == "raw-reading-9":
+            evidence = [{"archive": key} for key in MASS_SECRETS[identity]]
         else:
             evidence = binding["evidence"]
         for item in evidence:
@@ -56,6 +80,15 @@ def test_a_corrupt_archive_is_reported_for_every_witness_it_binds(tmp_path, sele
         assert key == "common-c8" and witnesses == {LATERAN}
         assert LATERAN in users["do-sancti-11-09"] and LATERAN in users["prayers"]
         assert len(users["prayers"]) > 1
+    elif selection in SECRET_ARCHIVES:
+        key = selection
+        witnesses = users[key]
+        expected_secrets = {
+            registry["bindings"][identity]["witness"]
+            for identity, keys in MASS_SECRETS.items()
+            if key in keys
+        }
+        assert expected_secrets and expected_secrets <= witnesses
     else:
         key, witnesses = max(users.items(), key=lambda pair: (len(pair[1]), pair[0]))
         assert len(witnesses) > 1

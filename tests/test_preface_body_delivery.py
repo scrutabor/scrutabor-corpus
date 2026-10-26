@@ -28,6 +28,7 @@ from preface_delivery_fixture import (
     current_witness_hash,
     without_preface_delivery,
 )
+from witness_header_fixture import before_privacy
 
 from build_reader import bibliography_bindings as bindings
 from checks import delivery, participation
@@ -487,6 +488,45 @@ def test_every_preface_ledger_row_advances_only_its_source_hash(language):
     assert current_expected_row(other) == other
 
 
+def without_ascension_vigil_preface_occurrence(graph):
+    """Assert the exact retained occurrence before recovering the historical subset."""
+    expected = {
+        "id": "use.ordinarium.praefatio-paschalis.ascension-vigil.selection.mr1962",
+        "edition": "edition.missale-romanum.1962-typica",
+        "digital_item": "item.missale-romanum.1962-typica.ia",
+        "role": "rubric_control",
+        "address": {
+            "kind": "text",
+            "text": "ordinarium.praefatio-paschalis",
+        },
+        "locator": {
+            "printed": "p.344",
+            "scan": "leaf n425 / PDF p.426",
+            "section": "In vigilia Ascensionis; Praefatio paschalis cue after the Secret",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n425/mode/1up",
+        },
+        "claim": (
+            "The Ascension Vigil explicitly directs Praefatio paschalis after its "
+            "Secret. This establishes Easter Preface selection for this proper. "
+            "The complete Preface wording and its performance remain supported by "
+            "their separate sources."
+        ),
+        "verified_on": "2026-10-25",
+        "evidence_sha256": "9601a7fc0b8994e3d490e74ecf9745eb3779fe8a6fae5e535d623a1ecf86c46f",
+        "decision": "RETAIN",
+        "decision_reason": (
+            "Benziger p.344 / leaf n425 explicitly directs Praefatio paschalis after the Vigil "
+            "Secret. Retain this selection cue only; complete Preface wording and performance "
+            "remain dependent on their separate sources."
+        ),
+    }
+    observed = [row for row in graph["uses"] if row["id"] == expected["id"]]
+    assert observed == [expected], "current Ascension Vigil Preface occurrence"
+    result = deepcopy(graph)
+    result["uses"] = [row for row in result["uses"] if row["id"] != expected["id"]]
+    return result
+
+
 def graph_records(graph: dict[str, Any], text_id: str) -> dict[str, list[dict[str, Any]]]:
     return {
         key: [r for r in graph[key] if r.get("text", r.get("address", {}).get("text")) == text_id]
@@ -501,6 +541,7 @@ def without_apparatus_hash(row: dict[str, Any]) -> dict[str, Any]:
 def test_the_graph_overlay_is_exactly_the_stored_selected_text_digests():
     graph = json.loads((CORPUS / "bibliography" / "graph.json").read_text(encoding="utf-8"))
     graph = without_common_preface_source_chain(graph)
+    graph = without_ascension_vigil_preface_occurrence(graph)
     collations = [row for row in graph["collations"] if row["text"] in DATA["source"]]
     assert len(collations) == 23
     assert sorted(row["id"] for row in collations) == sorted(DATA["collation_records"])
@@ -519,8 +560,8 @@ def test_the_graph_overlay_is_exactly_the_stored_selected_text_digests():
             assert current_record_hash(current["id"], record["before"]) == record["after"]
     for text_id in TEXTS:
         sets = DATA["graph_sets"][text_id]
-        assert bindings.digest(graph_records(graph, text_id)) == sets["after"]
-        assert bindings.digest(graph_records(historical, text_id)) == sets["before"]
+        assert bindings.digest(before_privacy(graph_records(graph, text_id))) == sets["after"]
+        assert bindings.digest(before_privacy(graph_records(historical, text_id))) == sets["before"]
         assert current_graph_hash(text_id, sets["before"]) == sets["after"]
 
 
@@ -538,8 +579,8 @@ def test_the_witness_overlay_is_exactly_the_current_and_historical_subjects():
         old = bindings._witness_subject(
             CORPUS, row, without_preface_delivery(doc), snapshot, reviewable=False
         )
-        assert bindings.digest(current) == expected["after"]
-        assert bindings.digest(old) == expected["before"]
+        assert bindings.digest(before_privacy(current)) == expected["after"]
+        assert bindings.digest(before_privacy(old)) == expected["before"]
         assert current_witness_hash(row["id"], expected["before"]) == expected["after"]
 
 

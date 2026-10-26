@@ -822,6 +822,42 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C8.txt",
       "sha256": "4259d9ddd8669a6a6dcb8de2ac7bfd918e3e39a4e8fe8a5bc04b28afdb97c5c8"
+    },
+    "common-c3a": {
+      "upstream": "web/www/horas/Latin/Commune/C3a.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C3a.txt",
+      "sha256": "023a499c135df597cd53da1232d042a2f3b603b432da704ad2c2739f56567312"
+    },
+    "do-tempora-adv1-0": {
+      "upstream": "web/www/missa/Latin/Tempora/Adv1-0.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Tempora/Adv1-0.txt",
+      "sha256": "db065ed4bb77f9100aa0dacce7ac11668a331d6defd3ff5331aed19cfb7283f9"
+    },
+    "do-tempora-adv2-0": {
+      "upstream": "web/www/missa/Latin/Tempora/Adv2-0.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-Adv2-0.txt",
+      "sha256": "3e1073ff293d70f43e5a7c1a200bff954471ca65f978532c422617f1cf833d59"
+    },
+    "do-tempora-adv3-0": {
+      "upstream": "web/www/missa/Latin/Tempora/Adv3-0.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-Adv3-0.txt",
+      "sha256": "8fc7d2e34ea5e90453812f3aec68cbd33aea663f65a8ec429f1da356162e6df4"
+    },
+    "do-tempora-adv4-0": {
+      "upstream": "web/www/missa/Latin/Tempora/Adv4-0.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-Adv4-0.txt",
+      "sha256": "acd9154d762b5a2dfa5ea3bc07109ebeec253d5dfec635f9e49cbcd7bd3e2a74"
+    },
+    "do-tempora-adv3-6": {
+      "upstream": "web/www/missa/Latin/Tempora/Adv3-6.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-Adv3-6.txt",
+      "sha256": "6489f012b7daf41c9112ebacf99ea1177c6581fa609d3062405c68b1ee4063e3"
     }
   },
   "bindings": {
@@ -27664,6 +27700,615 @@
           "archive": "prefaces",
           "first": 69,
           "last": 69
+        }
+      ]
+    },
+    "secret-maternitas-do44667ff": {
+      "witness": "witnesses/proprium.maternitas-beatae-mariae-virginis-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "contract": "raw-reading-9",
+      "profile": "roman1960-latin-missa-two-inherited-secrets"
+    },
+    "secret-omnium-sanctorum-do44667ff": {
+      "witness": "witnesses/proprium.omnium-sanctorum-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "contract": "raw-reading-9",
+      "profile": "roman1960-latin-missa-two-inherited-secrets"
+    },
+    "do-proprium-commemoratio-omnium-fidelium-defunctorum-missa-iii-secreta": {
+      "witness": "witnesses/proprium.commemoratio-omnium-fidelium-defunctorum-missa-iii-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "contract": "raw-reading-2",
+      "evidence": [
+        {
+          "archive": "all-souls-third-epistle",
+          "first": 27,
+          "last": 28,
+          "section": "Secreta",
+          "section_line": 26
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "all-souls-third-epistle",
+          "line": 28,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "all-souls-third-epistle",
+          "first": 27,
+          "last": 27
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "do-proprium-corporis-christi-secreta": {
+      "witness": "witnesses/proprium.corporis-christi-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "contract": "raw-reading-2",
+      "evidence": [
+        {
+          "archive": "do-tempora-pent01-4",
+          "first": 156,
+          "last": 157,
+          "section": "Secreta",
+          "section_line": 155
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-tempora-pent01-4",
+          "line": 157,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-tempora-pent01-4",
+          "first": 156,
+          "last": 156
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "do-proprium-dominica-i-adventus-secreta": {
+      "witness": "witnesses/proprium.dominica-i-adventus-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "contract": "raw-reading-2",
+      "evidence": [
+        {
+          "archive": "do-tempora-adv1-0",
+          "first": 51,
+          "last": 52,
+          "section": "Secreta",
+          "section_line": 50
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-tempora-adv1-0",
+          "line": 52,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-tempora-adv1-0",
+          "first": 51,
+          "last": 51
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "do-proprium-dominica-ii-adventus-secreta": {
+      "witness": "witnesses/proprium.dominica-ii-adventus-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "contract": "raw-reading-2",
+      "evidence": [
+        {
+          "archive": "do-tempora-adv2-0",
+          "first": 57,
+          "last": 58,
+          "section": "Secreta",
+          "section_line": 56
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-tempora-adv2-0",
+          "line": 58,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-tempora-adv2-0",
+          "first": 57,
+          "last": 57
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "do-proprium-dominica-iii-adventus-secreta": {
+      "witness": "witnesses/proprium.dominica-iii-adventus-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "contract": "raw-reading-2",
+      "evidence": [
+        {
+          "archive": "do-tempora-adv3-0",
+          "first": 56,
+          "last": 57,
+          "section": "Secreta",
+          "section_line": 55
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-tempora-adv3-0",
+          "line": 57,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-tempora-adv3-0",
+          "first": 56,
+          "last": 56
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "do-proprium-nativitas-domini-in-aurora-secreta": {
+      "witness": "witnesses/proprium.nativitas-domini-in-aurora-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "contract": "raw-reading-2",
+      "evidence": [
+        {
+          "archive": "do-sancti-12-25m2",
+          "first": 52,
+          "last": 53,
+          "section": "Secreta",
+          "section_line": 51
+        },
+        {
+          "archive": "prayers",
+          "first": 112,
+          "last": 113,
+          "section": "Per eundem",
+          "section_line": 111
+        },
+        {
+          "archive": "do-sancti-12-25m2",
+          "first": 56,
+          "last": 58,
+          "section": "Commemoratio Secreta",
+          "section_line": 55
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-sancti-12-25m2",
+          "line": 53,
+          "text": "$Per eundem",
+          "target": 1
+        },
+        {
+          "archive": "do-sancti-12-25m2",
+          "line": 58,
+          "text": "$Per Dominum",
+          "target": 3
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-sancti-12-25m2",
+          "first": 52,
+          "last": 52
+        },
+        {
+          "archive": "prayers",
+          "first": 112,
+          "last": 113
+        },
+        {
+          "archive": "do-sancti-12-25m2",
+          "first": 57,
+          "last": 57
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "do-proprium-nativitas-domini-in-nocte-secreta": {
+      "witness": "witnesses/proprium.nativitas-domini-in-nocte-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "contract": "raw-reading-2",
+      "evidence": [
+        {
+          "archive": "do-sancti-12-25m1",
+          "first": 42,
+          "last": 43,
+          "section": "Secreta",
+          "section_line": 41
+        },
+        {
+          "archive": "prayers",
+          "first": 120,
+          "last": 121,
+          "section": "Qui tecum",
+          "section_line": 119
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-sancti-12-25m1",
+          "line": 43,
+          "text": "$Qui tecum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-sancti-12-25m1",
+          "first": 42,
+          "last": 42
+        },
+        {
+          "archive": "prayers",
+          "first": 120,
+          "last": 121
+        }
+      ]
+    },
+    "do-proprium-sacratissimi-cordis-iesu-secreta": {
+      "witness": "witnesses/proprium.sacratissimi-cordis-iesu-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "contract": "raw-reading-2",
+      "evidence": [
+        {
+          "archive": "sacred-heart-day",
+          "first": 65,
+          "last": 66,
+          "section": "Secreta",
+          "section_line": 64
+        },
+        {
+          "archive": "prayers",
+          "first": 108,
+          "last": 109,
+          "section": "Per eumdem",
+          "section_line": 107
+        }
+      ],
+      "references": [
+        {
+          "archive": "sacred-heart-day",
+          "line": 66,
+          "text": "$Per eumdem",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "sacred-heart-day",
+          "first": 65,
+          "last": 65
+        },
+        {
+          "archive": "prayers",
+          "first": 108,
+          "last": 109
+        }
+      ]
+    },
+    "do-proprium-sanctissimae-trinitatis-secreta": {
+      "witness": "witnesses/proprium.sanctissimae-trinitatis-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "contract": "raw-reading-2",
+      "evidence": [
+        {
+          "archive": "do-tempora-pent01-0r",
+          "first": 51,
+          "last": 52,
+          "section": "Secreta",
+          "section_line": 50
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-tempora-pent01-0r",
+          "line": 52,
+          "text": "$Per Dominum",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-tempora-pent01-0r",
+          "first": 51,
+          "last": 51
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "do-proprium-dominica-iv-adventus-secreta": {
+      "witness": "witnesses/proprium.dominica-iv-adventus-secreta/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "contract": "raw-reading-2",
+      "evidence": [
+        {
+          "archive": "do-tempora-adv4-0",
+          "first": 54,
+          "last": 54,
+          "section": "Secreta",
+          "section_line": 53
+        },
+        {
+          "archive": "do-tempora-adv3-6",
+          "first": 115,
+          "last": 116,
+          "section": "Secreta",
+          "section_line": 114
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97,
+          "section": "Per Dominum",
+          "section_line": 95
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-tempora-adv4-0",
+          "line": 54,
+          "text": "@Tempora/Adv3-6:Secreta",
+          "target": 1
+        },
+        {
+          "archive": "do-tempora-adv3-6",
+          "line": 116,
+          "text": "$Per Dominum",
+          "target": 2
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-tempora-adv3-6",
+          "first": 115,
+          "last": 115
+        },
+        {
+          "archive": "prayers",
+          "first": 96,
+          "last": 97
+        }
+      ]
+    },
+    "corpus-christi-introit": {
+      "witness": "witnesses/proprium.corporis-christi-introitus/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-tempora-pent01-4",
+          "first": 16,
+          "last": 21,
+          "section": "Introitus",
+          "section_line": 15
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14,
+          "section": "Gloria",
+          "section_line": 12
+        }
+      ],
+      "references": [
+        {
+          "archive": "do-tempora-pent01-4",
+          "line": 20,
+          "text": "&Gloria",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "do-tempora-pent01-4",
+          "first": 17,
+          "last": 17
+        },
+        {
+          "archive": "do-tempora-pent01-4",
+          "first": 19,
+          "last": 19
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14
+        },
+        {
+          "archive": "do-tempora-pent01-4",
+          "first": 21,
+          "last": 21
+        }
+      ]
+    },
+    "sacred-heart-introit": {
+      "witness": "witnesses/proprium.sacratissimi-cordis-iesu-introitus/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "contract": "raw-reading-2",
+      "evidence": [
+        {
+          "archive": "sacred-heart-day",
+          "first": 17,
+          "last": 17,
+          "section": "Introitus",
+          "section_line": 16
+        },
+        {
+          "archive": "sacred-heart-day",
+          "first": 18,
+          "last": 18,
+          "section": "Introitus",
+          "section_line": 16,
+          "fragment": {
+            "start": 0,
+            "end": 110,
+            "text": "v. Cogitatiónes Cordis ejus in generatióne et generatiónem: ut éruat a morte ánimas eórum et alat eos in fame.",
+            "marker": "v",
+            "reason": "Selected non-Paschal feast reading under pinned Mass propers.pl getitem lines 870-874; complete source line ends with (Allelúja, allelúja.), retained as an excluded Paschal addition, not lost source text."
+          }
+        },
+        {
+          "archive": "sacred-heart-day",
+          "first": 19,
+          "last": 21,
+          "section": "Introitus",
+          "section_line": 16
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14,
+          "section": "Gloria",
+          "section_line": 12
+        },
+        {
+          "archive": "sacred-heart-day",
+          "first": 22,
+          "last": 22,
+          "section": "Introitus",
+          "section_line": 16,
+          "fragment": {
+            "start": 0,
+            "end": 110,
+            "text": "v. Cogitatiónes Cordis ejus in generatióne et generatiónem: ut éruat a morte ánimas eórum et alat eos in fame.",
+            "marker": "v",
+            "reason": "Selected non-Paschal feast reading under pinned Mass propers.pl getitem lines 870-874; complete source line ends with (Alleluia, alleluia.), retained as an excluded Paschal addition, not lost source text."
+          }
+        }
+      ],
+      "references": [
+        {
+          "archive": "sacred-heart-day",
+          "line": 21,
+          "text": "&Gloria",
+          "target": 3
+        }
+      ],
+      "reading": [
+        {
+          "archive": "sacred-heart-day",
+          "first": 18,
+          "last": 18,
+          "fragment": {
+            "start": 0,
+            "end": 110
+          }
+        },
+        {
+          "archive": "sacred-heart-day",
+          "first": 20,
+          "last": 20
+        },
+        {
+          "archive": "prayers",
+          "first": 13,
+          "last": 14
+        },
+        {
+          "archive": "sacred-heart-day",
+          "first": 22,
+          "last": 22,
+          "fragment": {
+            "start": 0,
+            "end": 110
+          }
         }
       ]
     }

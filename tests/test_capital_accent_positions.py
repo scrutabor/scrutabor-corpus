@@ -14,6 +14,7 @@ from pathlib import Path
 
 import pytest
 from gospel_delivery_fixture import current_gospel_selected_hash
+from witness_header_fixture import before_privacy, expected_header_lines, expected_transcript
 
 from build_reader import bibliography_bindings as bindings
 from build_reader import store
@@ -32,6 +33,9 @@ FIXTURE = json.loads(
     (ROOT / "tests/fixtures/capital-accent-positions.json").read_text(encoding="utf-8")
 )
 TRINITY = FIXTURE["trinity_collect"]
+CURRENT_TRINITY_TRANSCRIPT = expected_transcript(
+    f"witnesses/{TRINITY['text']}/mr.txt", TRINITY["transcription_sha256"]
+)
 LOWER = "changed acute on a lowercase letter"
 UNCHANGED = "no changed acute on a capital"
 UNALIGNED = "letters cannot align for a capital-accent comparison"
@@ -231,9 +235,10 @@ def assert_trinity_source(directory):
         "trinity opening follows the printed page"
     )
     header = [line for line in text.splitlines() if line.startswith("#")]
-    assert header == [*TRINITY["preceding_header"], TRINITY["correction"]], (
-        "trinity additive correction note"
-    )
+    assert header == [
+        *expected_header_lines("trinity_collect_prefix", TRINITY["preceding_header"]),
+        TRINITY["correction"],
+    ], "trinity additive correction note"
     value = json.loads((directory / "apparatus.json").read_text(encoding="utf-8"))
     assert all(entry["at"] != "w001" for entry in value["adjudicated"]), (
         "trinity phantom variant absent"
@@ -258,8 +263,8 @@ def test_trinity_collect_opening_binds_the_registered_page_evidence(tmp_path):
         TRINITY["scan"],
     )
     current_mr = (directory / "mr.txt").read_text(encoding="utf-8")
-    assert witness["transcription_sha256"] == TRINITY["transcription_sha256"]
-    assert bindings.transcript_digest(current_mr) == TRINITY["transcription_sha256"]
+    assert witness["transcription_sha256"] == CURRENT_TRINITY_TRANSCRIPT
+    assert bindings.transcript_digest(current_mr) == CURRENT_TRINITY_TRANSCRIPT
     core = store.core(ROOT, text)
     snapshot = bindings._SourceSnapshot(ROOT, graph)
     subject = bindings._witness_subject(ROOT, witness, core, snapshot, reviewable=False)
@@ -367,7 +372,9 @@ def test_affected_collation_binds_its_corrected_apparatus(row, sources):
         == selected
     )
     records = {r["id"]: r for r in graph["witnesses"] if r["id"] in current["witnesses"]}
-    assert {key: bindings.digest(r) for key, r in records.items()} == row["witness_records_sha256"]
+    assert {key: bindings.digest(before_privacy(r)) for key, r in records.items()} == row[
+        "witness_records_sha256"
+    ]
     witnesses = {
         key: bindings._witness_subject(ROOT, record, core, snapshot, reviewable=False)
         for key, record in records.items()
@@ -392,7 +399,7 @@ def test_affected_collation_binds_its_corrected_apparatus(row, sources):
         transcript = (ROOT / f"witnesses/{row['text']}/mr.txt").read_text(encoding="utf-8")
         record = deepcopy(records[TRINITY["witness"]])
         assert record["transcription_sha256"] == bindings.transcript_digest(transcript)
-        assert record["transcription_sha256"] == TRINITY["transcription_sha256"]
+        assert record["transcription_sha256"] == CURRENT_TRINITY_TRANSCRIPT
         record["transcription_sha256"] = TRINITY["former_transcription_sha256"]
         with pytest.raises(
             bindings.BindingError,

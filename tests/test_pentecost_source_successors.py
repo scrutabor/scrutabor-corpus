@@ -7,10 +7,11 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from witness_header_fixture import expected_review
 
 from build_reader import bibliography, store
 from build_reader.bibliography_bindings import BindingError as SubjectError
-from build_reader.bibliography_bindings import witness_subject
+from build_reader.bibliography_bindings import collation_subject, digest, witness_subject
 from checks.raw_binding import REGISTRY, BindingError, resolve_binding
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,6 +23,20 @@ FIXTURE = json.loads(
     (Path(__file__).with_name("fixtures") / "pentecost-successors.json").read_text()
 )
 SOURCE_CASES = ("P1", "N1", "N2", "N3", "N4", "N5", "N6", "N7", "N8", "C1", "C2", "N9", "C3")
+
+
+# These source subjects were reviewed; unrelated records remain pending.
+ADOPTED_SOURCE_REVIEWS = {
+    "witness.proprium.vigilia-pentecostes-secreta.do44667ff": (
+        "f21d7b74e86cf9ee5990eccd4a91b7f05a6548387d4ed43cb748fdbe317e26e2"
+    ),
+    "witness.proprium.vigilia-pentecostes-secreta.mr1962": (
+        "d5cc96e8569138bfe622175fc2e9a8719fcd2c6c96e5cd52befda7d988e77191"
+    ),
+    "collation.proprium.vigilia-pentecostes-secreta.mr1962-do44667ff": (
+        "c06a88773afc98990be4ce65abf3801cce5d73019b4d47cfe1822912d0c7fcd6"
+    ),
+}
 
 
 def write_json(root, name, value):
@@ -284,26 +299,80 @@ def test_source_identity_repairs_do_not_promote_pending_evidence():
     witnesses = [r for r in graph["witnesses"] if r["text"] in texts]
     collations = [r for r in graph["collations"] if r["text"] in texts]
 
-    def pending(rows):
-        assert all(r["review"] == {"status": "pending"} for r in rows), (
-            "pending evidence is not approval"
-        )
-
     assert len(witnesses) == 27 and len(collations) == 13
     assert sorted(r["id"] for r in witnesses) == FIXTURE["witnesses"]
     assert sorted(r["id"] for r in collations) == FIXTURE["collations"]
-    pending(witnesses + collations)
+
+    def bounded_reviews(rows):
+        for row in rows:
+            expected = ADOPTED_SOURCE_REVIEWS.get(row["id"])
+            if expected is not None:
+                expected = expected_review(row["id"], expected)
+            if expected is None:
+                assert row["review"] == {"status": "pending"}, "pending evidence is not approval"
+                continue
+            assert row["review"] == {"status": "reviewed", "sha256": expected}, (
+                "exact adopted source review"
+            )
+            doc = store.core(ROOT, row["text"])
+            if row["id"].startswith("witness."):
+                subject = witness_subject(ROOT, row, graph, doc)
+            else:
+                subjects = {
+                    w["id"]: witness_subject(ROOT, w, graph, doc)
+                    for w in graph["witnesses"]
+                    if w["id"] in row["witnesses"]
+                }
+                subject = collation_subject(ROOT, row, doc, subjects)
+            assert digest(subject) == expected, "adopted source subject changed"
+
+    assert set(ADOPTED_SOURCE_REVIEWS) <= {r["id"] for r in witnesses + collations}
+    bounded_reviews(witnesses + collations)
     bad = deepcopy(witnesses)
-    bad[0]["review"] = {"status": "reviewed", "sha256": "0" * 64}
+    pending_row = next(r for r in bad if r["id"] not in ADOPTED_SOURCE_REVIEWS)
+    pending_review = deepcopy(pending_row["review"])
+    pending_row["review"] = {"status": "reviewed", "sha256": "0" * 64}
     assert bad != witnesses
     with pytest.raises(AssertionError, match=r"^pending evidence is not approval(?:\n|$)"):
-        pending(bad)
-    pending(witnesses + collations)
+        bounded_reviews(bad)
+    pending_row["review"] = pending_review
+    assert bad == witnesses
+    bounded_reviews(bad)
+    stale = deepcopy(witnesses)
+    reviewed_row = next(r for r in stale if r["id"] in ADOPTED_SOURCE_REVIEWS)
+    reviewed_review = deepcopy(reviewed_row["review"])
+    reviewed_row["review"]["sha256"] = "0" * 64
+    assert stale != witnesses
+    with pytest.raises(AssertionError, match=r"^exact adopted source review(?:\n|$)"):
+        bounded_reviews(stale)
+    reviewed_row["review"] = reviewed_review
+    assert stale == witnesses
+    bounded_reviews(stale)
+    bounded_reviews(witnesses + collations)
     evidence = {r["id"]: r for r in bibliography.public_text_evidence(graph)["texts"]}
     assert texts <= evidence.keys()
-    assert all(
-        evidence[text]["witnesses"] == [] and "collation" not in evidence[text] for text in texts
-    )
+    for text in texts:
+        entry = evidence[text]
+        expected_witnesses = [
+            {
+                key: row[key]
+                for key in ("id", "text", "use", "role", "coverage", "independence_basis")
+            }
+            for row in sorted(witnesses, key=lambda row: row["id"])
+            if row["text"] == text and row["id"] in ADOPTED_SOURCE_REVIEWS
+        ]
+        assert entry["witnesses"] == expected_witnesses
+        expected_collations = [
+            row for row in collations if row["text"] == text and row["id"] in ADOPTED_SOURCE_REVIEWS
+        ]
+        if expected_collations:
+            assert len(expected_collations) == 1
+            assert entry["collation"] == {
+                key: expected_collations[0][key]
+                for key in ("id", "text", "recension", "witnesses", "apparatus")
+            }
+        else:
+            assert "collation" not in entry
     scoped_uses = [u for u in graph["uses"] if u["address"].get("text") in texts]
     assert not any(
         "connelly" in str(u[field]).lower()

@@ -1,8 +1,8 @@
 """The Ordo introduction library and its reader resource.
 
-Units address whole owner segments in stored order and read, never copy, their owners' base
-delivery and participation; each event carries the delivery of its own occurrences; the reader
-resource is restated from the stored files without its producer. Every negative control is a
+Units address whole owner segments and normally inherit their participation. The ordinary
+Gospel response instead has its own sourced occurrence grant. The reader resource is
+restated from the stored files without its producer. Every negative control is a
 real mutation with its owned diagnostic, followed by restoration of the healthy state. The
 reading announcements and their bindings have their own module
 (tests/test_reading_announcement_bindings.py).
@@ -121,7 +121,7 @@ SLOT_SUNG = {
         "source": "RG 473, 514; Ritus servandus VI, 5",
     },
 }
-COUNTS = {"units": 31, "events": 6, "occurrences": 14, "owner_texts": 29, "announcements": 205}
+COUNTS = {"units": 31, "events": 6, "occurrences": 14, "owner_texts": 29, "announcements": 206}
 EMPTY = {"units": 0, "events": 0, "occurrences": 0, "owner_texts": 0, "announcements": 0}
 RUBRICS = {
     "scope",
@@ -243,10 +243,10 @@ def test_each_unit_is_a_whole_owner_segment_with_both_translations(identity):
     assert (segment["speaker"], segment["voice"]) == (speaker, "clara")
     assert bool(segment.get("participation")) is answered
     if answered:
-        assert segment["participation"] == {
-            "lecta": {"gradus": 1, "source": "DMS 31 a"},
-            "cantu": {"gradus": 1, "source": "DMS 25 a"},
-        }
+        expected = {"lecta": {"gradus": 1, "source": "DMS 31 a"}}
+        if identity != "responsio-gloria-tibi":
+            expected["cantu"] = {"gradus": 1, "source": "DMS 25 a"}
+        assert segment["participation"] == expected
     for language in ("pl", "en"):
         layer = store.raw_layer(CORPUS, language, text)
         assert layer["segments"][segment_id]["translation"].strip()
@@ -1062,3 +1062,37 @@ def test_a_wrong_producer_cannot_supply_its_own_expectation(tmp_path, monkeypatc
     projection = bibliography.ReaderCitationProjection(CORPUS, graph, languages)
     errors = emit.verify_edition_artifacts(CORPUS, out, graph, projection)
     assert "introductiones: resource differs from the independent restatement" in errors
+
+
+@pytest.mark.parametrize("fault", ["event", "unit", "owner", "range", "source", "old-grant"])
+def test_borrowed_gospel_response_rejects_changed_context_and_recovers(tmp_path, fault):
+    corpus = small_corpus(tmp_path)
+    assert checker.check(corpus) == ([], COUNTS)
+    path = target_path(corpus, f"owner:{LAST_GOSPEL}" if fault == "old-grant" else "library")
+    healthy = path.read_bytes()
+
+    def damage(doc):
+        if fault == "old-grant":
+            segment_of(doc, "s06")["participation"]["cantu"] = {"gradus": 1, "source": "DMS 25 a"}
+            return
+        unit = unit_of(doc, "responsio-gloria-tibi")
+        event = next(e for e in doc["events"] if e["id"] == "evangelium-annuntiatio")
+        if fault == "event":
+            event["before"] = "offertorium"
+        elif fault == "unit":
+            unit["id"] = "responsio-gloria-tibi-foreign"
+        elif fault == "owner":
+            unit["text"] = DIALOGUE
+            unit["segment"] = "s03"
+        elif fault == "range":
+            unit["first"] = "w013"
+        elif fault == "source":
+            event["occurrences"][1]["cantu"]["source"] = "DMS 31 a"
+
+    edit(path, damage)
+    errors, _counts = checker.check(corpus)
+    assert any("ordinary Gospel response" in e or "lecta-only participation" in e for e in errors)
+    with pytest.raises(ValueError, match="invalid authored library"):
+        checker.authored(corpus)
+    path.write_bytes(healthy)
+    assert checker.check(corpus) == ([], COUNTS)

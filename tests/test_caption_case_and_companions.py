@@ -273,7 +273,6 @@ LATERAN = P + "dedicatio-archibasilicae-sanctissimi-salvatoris-postcommunio"
 
 # Conclusion relatives whose English caption continues its sentence (one word per text).
 CONTINUING = {
-    "corporis-christi-collecta": "w030",
     "d-n-iesu-christi-regis-collecta": "w027",
     "d-n-iesu-christi-regis-secreta": "w028",
     "dedicatio-sancti-michaelis-archangeli-secreta": "w031",
@@ -375,7 +374,6 @@ CONTINUING = {
     "pretiosissimi-sanguinis-domini-nostri-iesu-christi-collecta": "w049",
     "pretiosissimi-sanguinis-domini-nostri-iesu-christi-secreta": "w033",
     "sacratissimi-cordis-iesu-collecta": "w039",
-    "sacratissimi-cordis-iesu-postcommunio": "w021",
     "sanctae-annae-matris-beatae-mariae-virginis-collecta": "w036",
     "sanctae-annae-matris-beatae-mariae-virginis-postcommunio": "w032",
     "sanctae-annae-matris-beatae-mariae-virginis-secreta": "w036",
@@ -417,15 +415,33 @@ CONTINUING = {
     "visitatio-beatae-mariae-virginis-secreta": "w035",
 }
 
-# Conclusion relatives at a real English sentence start keep their capital.
+# These continuing relatives now share one short caption with their verbs.
+GROUPED_CONTINUING = {
+    "dominica-ii-post-pentecosten-secreta": (("w025", "w026", "w027", "w028", "w029"), "w027"),
+    "sacratissimi-cordis-iesu-collecta": (("w039", "w040", "w041", "w042", "w043"), "w041"),
+    "sancti-bartholomaei-apostoli-collecta": (("w036", "w037", "w038", "w039", "w040"), "w038"),
+    "sancti-matthiae-apostoli-collecta": (("w028", "w029", "w030", "w031", "w032"), "w030"),
+}
+
+# Direct-address conclusions whose English rendering starts its own sentence.
+OPENING_GROUPS = (
+    ("corporis-christi-collecta", ("w030", "w031", "w032", "w033"), "w031"),
+    ("corporis-christi-postcommunio", ("w019", "w020", "w021", "w022"), "w020"),
+    ("sacratissimi-cordis-iesu-postcommunio", ("w021", "w022", "w023", "w024"), "w022"),
+)
+
+# Sentence-opening captions keep their individually reviewed form of address.
 OPENING = (
-    (P + "dominica-i-adventus-collecta", "w021", "Who"),
+    (P + "dominica-i-adventus-collecta", "w021", "You"),
     (P + "pretiosissimi-sanguinis-domini-nostri-iesu-christi-postcommunio", "w024", "Who"),
     (P + "dominica-xxii-post-pentecosten-postcommunio", "w021", "You who"),
-    (P + "sancti-ioseph-sponsi-beatae-mariae-virginis-collecta", "w019", "Who"),
-    (P + "septem-dolorum-beatae-mariae-virginis-collecta", "w043", "Who"),
-    (P + "septem-dolorum-beatae-mariae-virginis-postcommunio", "w023", "Who"),
-    (P + "septem-dolorum-beatae-mariae-virginis-secreta", "w038", "Who"),
+    (P + "sancti-ioseph-sponsi-beatae-mariae-virginis-collecta", "w019", "You"),
+    (P + "septem-dolorum-beatae-mariae-virginis-collecta", "w043", "You"),
+    (P + "septem-dolorum-beatae-mariae-virginis-postcommunio", "w023", "You"),
+    (P + "septem-dolorum-beatae-mariae-virginis-secreta", "w038", "You"),
+    (P + "beatae-mariae-virginis-a-rosario-postcommunio", "w024", "You"),
+    (P + "commemoratio-omnium-fidelium-defunctorum-missa-i-collecta", "w023", "You"),
+    (P + "commemoratio-omnium-fidelium-defunctorum-missa-i-postcommunio", "w023", "You"),
 )
 
 
@@ -476,16 +492,31 @@ def conclusion_relatives(core):
                 yield segment["id"], w["id"]
 
 
+def relative_caption(layer, segment, wid):
+    """Resolve the actual caption, refusing duplicate or residual realizations."""
+    groups = [g for g in layer["segments"][segment].get("alignments", []) if wid in g["words"]]
+    if not groups:
+        return layer["words"].get(wid, {}).get("gloss")
+    if len(groups) != 1:
+        return None
+    group = groups[0]
+    if group["words"][0] != wid or any(
+        "gloss" in layer["words"].get(w, {}) for w in group["words"]
+    ):
+        return None
+    return group.get("gloss")
+
+
 def who_diagnostics(text, core, layer):
     """A conclusion relative continuing its English sentence carries a lowercase caption."""
     found = []
     for segment, wid in conclusion_relatives(core):
-        if any(wid in g["words"] for g in layer["segments"][segment].get("alignments", [])):
-            continue
-        gloss = layer["words"][wid].get("gloss") or ""
         prose = layer["segments"][segment].get("translation") or ""
         continues = ", who liv" in prose and ". Who liv" not in prose
-        if continues and gloss[:1] == "W":
+        gloss = relative_caption(layer, segment, wid)
+        if continues and not (
+            isinstance(gloss, str) and (gloss == "who" or gloss.startswith("who "))
+        ):
             found.append(f"who:{text}:{wid}: {gloss!r}")
     return found
 
@@ -510,9 +541,62 @@ def test_continuing_conclusion_relative_is_lowercase(name, wid):
     text = P + name
     core, layer = load(text), load(text, "en")
     assert (latin(core)[wid]["lemma"], latin(core)[wid]["form"].lower()) == ("qui", "qui")
-    assert layer["words"][wid]["gloss"] == "who"
     (segment,) = [s for s, w in conclusion_relatives(core) if w == wid]
     assert ", who liv" in layer["segments"][segment]["translation"]
+    if name in GROUPED_CONTINUING:
+        members, anchor = GROUPED_CONTINUING[name]
+        assert members[0] == wid
+        assert tuple(latin(core)[w]["form"].lower() for w in members) == (
+            "qui",
+            "tecum",
+            "vivit",
+            "et",
+            "regnat",
+        )
+        expected = "who lives and reigns with You"
+        touching = [
+            g for g in layer["segments"][segment]["alignments"] if set(g["words"]) & set(members)
+        ]
+        assert touching == [{"words": list(members), "anchor": anchor, "gloss": expected}]
+    else:
+        expected = "who"
+        assert not any(wid in g["words"] for g in layer["segments"][segment].get("alignments", []))
+    assert relative_caption(layer, segment, wid) == expected
+
+
+@pytest.mark.parametrize(
+    "name,members,anchor", OPENING_GROUPS, ids=[row[0] for row in OPENING_GROUPS]
+)
+def test_direct_address_conclusion_starts_its_english_sentence(name, members, anchor):
+    core, layer = load(P + name), load(P + name, "en")
+    (segment,) = [s for s, w in conclusion_relatives(core) if w == members[0]]
+    words = latin(core)
+    assert tuple(words[w]["form"].lower() for w in members) == ("qui", "vivis", "et", "regnas")
+    assert words[members[1]]["morph"]["person"] == words[members[3]]["morph"]["person"] == 2
+    assert ". You live and reign " in layer["segments"][segment]["translation"]
+    row = (
+        "en",
+        P + name,
+        segment,
+        members,
+        anchor,
+        "You live and reign",
+        tuple(words[w]["form"] for w in members),
+    )
+    assert caption_diagnostics(row, core, layer) == []
+    saved = deepcopy(layer)
+    group = next(g for g in layer["segments"][segment]["alignments"] if g["words"] == list(members))
+    for wrong in ("who live and reign", "Who live and reign"):
+        try:
+            group["gloss"] = wrong
+            assert layer != saved
+            assert caption_diagnostics(row, core, layer) == [
+                f"caption:en:{P + name}:{'+'.join(members)}: {wrong!r}"
+            ]
+        finally:
+            group["gloss"] = "You live and reign"
+            assert layer == saved
+            assert caption_diagnostics(row, core, layer) == []
 
 
 @pytest.mark.parametrize(
@@ -523,6 +607,28 @@ def test_conclusion_relative_at_an_english_sentence_start_keeps_its_capital(text
     (segment,) = [s for s, w in conclusion_relatives(core) if w == wid]
     assert layer["words"][wid]["gloss"] == expected
     assert ", who liv" not in layer["segments"][segment]["translation"]
+    if expected == "You":
+        words = next(s["words"] for s in core["segments"] if s["id"] == segment)
+        index = next(i for i, word in enumerate(words) if word["id"] == wid)
+        clause = words[index : index + 4]
+        assert tuple(word["form"].lower() for word in clause) == ("qui", "vivis", "et", "regnas")
+        assert clause[1]["morph"]["person"] == clause[3]["morph"]["person"] == 2
+        assert ". You live and reign " in layer["segments"][segment]["translation"]
+        assert not any(wid in g["words"] for g in layer["segments"][segment].get("alignments", []))
+        row = ("en", text, segment, (wid,), None, "You", (clause[0]["form"],))
+        assert caption_diagnostics(row, core, layer) == []
+        saved = deepcopy(layer)
+        for wrong in ("who", "Who"):
+            try:
+                layer["words"][wid]["gloss"] = wrong
+                assert layer != saved
+                assert caption_diagnostics(row, core, layer) == [
+                    f"caption:en:{text}:{wid}: {wrong!r}"
+                ]
+            finally:
+                layer["words"][wid]["gloss"] = expected
+                assert layer == saved
+                assert caption_diagnostics(row, core, layer) == []
 
 
 def test_no_conclusion_caption_capitalizes_a_continuing_relative():
@@ -530,8 +636,10 @@ def test_no_conclusion_caption_capitalizes_a_continuing_relative():
     for text in english_layers():
         found += who_diagnostics(text, load(text), load(text, "en"))
     assert found == []
-    assert len(CONTINUING) == 142
-    assert len(OPENING) == 7
+    assert len(CONTINUING) == 140
+    assert len(OPENING) == 10
+    assert len(GROUPED_CONTINUING) == 4
+    assert len(OPENING_GROUPS) == 3
 
 
 def test_lateran_prose_matches_its_caption_and_ledger():
@@ -676,14 +784,32 @@ def test_note_mutant_fails_and_restores():
 
 
 def test_who_mutant_fails_and_restores():
-    name, wid = sorted(CONTINUING.items())[0]
-    text = P + name
-    core, layer = load(text), load(text, "en")
-    assert who_diagnostics(text, core, layer) == []
-    layer["words"][wid]["gloss"] = "Who"
-    assert who_diagnostics(text, core, layer) == [f"who:{text}:{wid}: 'Who'"]
-    layer["words"][wid]["gloss"] = "who"
-    assert who_diagnostics(text, core, layer) == []
+    for name in ("d-n-iesu-christi-regis-collecta", "dominica-ii-post-pentecosten-secreta"):
+        wid, text = CONTINUING[name], P + name
+        core, layer = load(text), load(text, "en")
+        (segment,) = [s for s, w in conclusion_relatives(core) if w == wid]
+        groups = [g for g in layer["segments"][segment].get("alignments", []) if wid in g["words"]]
+        holder = groups[0] if groups else layer["words"][wid]
+        saved, before = deepcopy(layer), holder["gloss"]
+        assert who_diagnostics(text, core, layer) == []
+        for wrong in (before[0].upper() + before[1:], ""):
+            try:
+                holder["gloss"] = wrong
+                assert layer != saved
+                assert who_diagnostics(text, core, layer) == [f"who:{text}:{wid}: {wrong!r}"]
+            finally:
+                holder["gloss"] = before
+                assert layer == saved
+                assert who_diagnostics(text, core, layer) == []
+        if groups:
+            try:
+                layer["words"][wid]["gloss"] = "Who"
+                assert layer != saved
+                assert who_diagnostics(text, core, layer) == [f"who:{text}:{wid}: None"]
+            finally:
+                del layer["words"][wid]["gloss"]
+                assert layer == saved
+                assert who_diagnostics(text, core, layer) == []
 
 
 def test_lateran_ledger_mutant_fails_and_restores():

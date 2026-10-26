@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from witness_header_fixture import expected_transcript
 
 from build_reader import bibliography
 from build_reader.bibliography_bindings import (
@@ -86,7 +87,15 @@ def require_inventory(value):
         )
         require(word["review"] == {"status": "pending"}, "inventory:pending-witness")
         require(word["coverage"] == {"kind": "full"}, "inventory:full-coverage")
-        require(word["transcription_sha256"] == TRANSCRIPTS[name], "inventory:transcript-hash")
+        require(
+            word["transcription_sha256"]
+            == (
+                expected_transcript(f"{FOLDER}/mr.txt", TRANSCRIPTS[name])
+                if name == "mr"
+                else TRANSCRIPTS[name]
+            ),
+            "inventory:transcript-hash",
+        )
     require(
         witnesses[DO]["source_dependencies"] == {"uses": [], "raw_binding": KEY},
         "inventory:raw-declaration",
@@ -172,7 +181,15 @@ def test_actual_aufer_subjects_bind_selected_apparatus_and_transcripts(actual):
             "subjects:source-use-role",
         )
         text = (ROOT / FOLDER / (name + ".txt")).read_text()
-        require(transcript_digest(text) == TRANSCRIPTS[name], "subjects:current-transcript")
+        require(
+            transcript_digest(text)
+            == (
+                expected_transcript(f"{FOLDER}/mr.txt", TRANSCRIPTS[name])
+                if name == "mr"
+                else TRANSCRIPTS[name]
+            ),
+            "subjects:current-transcript",
+        )
     require(
         actual["subjects"][DO]["raw_resolution"]["binding"] == actual["inventory"]["bindings"][KEY],
         "subjects:registered-raw-binding",

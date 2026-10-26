@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 import pytest
+from witness_header_fixture import expected_transcript
 
 from build_reader import bibliography, dismissal, store
 from build_reader import bibliography_bindings as bindings
@@ -28,9 +29,9 @@ def table(inputs):
 
 def test_all_actual_pairs_and_independent_reconstruction(table):
     assert table == dismissal.expected(CORPUS)
-    assert len(table["pairs"]) == 7610
+    assert len(table["pairs"]) == 7682
     assert sum(row[2] == 1 for row in table["pairs"]) == 152
-    assert len(table["masses"]) == 113
+    assert len(table["masses"]) == 114
     for _day, mass, profile in table["pairs"]:
         assert table["masses"][mass] != "none"
         assert table["profiles"][profile]["text"] in {"ordinarium.ite-missa-est", ritual.DISMISSAL}
@@ -115,11 +116,12 @@ def test_literal_selected_derived_and_actual_ritual_rules():
                 "do": "d5af5afd6428d3fa1d64e64fac6731a6353de779560d81ada1697070693186c2",
             }
             for name in ["mr", "do"]:
-                assert (
-                    hashlib.sha256(
-                        (CORPUS / "witnesses" / text / f"{name}.txt").read_bytes()
-                    ).hexdigest()
-                    == literal_hashes[name]
+                assert hashlib.sha256(
+                    (CORPUS / "witnesses" / text / f"{name}.txt").read_bytes()
+                ).hexdigest() == (
+                    expected_transcript(f"witnesses/{text}/mr.txt", literal_hashes[name])
+                    if name == "mr"
+                    else literal_hashes[name]
                 )
         else:
             assert stats["words"] == 15

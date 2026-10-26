@@ -59,8 +59,8 @@ def assert_source(core):
         "w021": ("nomen", {"case": "dat", "number": "sg", "gender": "n"}, None),
         "w022": ("sum", {"mood": "subj", "tense": "pres", "person": 3}, None),
         "w023": (
-            "devoveo",
-            {"case": "nom", "number": "sg", "gender": "f", "mood": "part"},
+            "devotus",
+            {"pos": "adj", "case": "nom", "number": "sg", "gender": "f"},
             "w022",
         ),
     }

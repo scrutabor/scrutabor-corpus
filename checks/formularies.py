@@ -337,6 +337,16 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
             "formularies: proprium texts outside every assembly: " + ", ".join(missing_propers)
         )
     for language in ("pl", "en"):
+        declared_title_ids = [
+            json.loads(path.read_text(encoding="utf-8")).get("id")
+            for path in sorted((corpus / "languages" / language / "formularies").glob("*/*.json"))
+        ]
+        title_counts = Counter(value for value in declared_title_ids if isinstance(value, str))
+        for formulary_id, count in sorted(title_counts.items()):
+            if count > 1:
+                errors.append(
+                    f"formularies:{language}: duplicate localized formulary id {formulary_id}"
+                )
         localized = _language_documents(corpus, language)
         missing = sorted(seen_ids - set(localized))
         extra = sorted(set(localized) - seen_ids)

@@ -164,7 +164,16 @@ def test_complete_active_body_uses_real_collation_not_only_hashes(actual, row):
     if row["words"] == 189:
         assert literal.split()[165:170] == ["ET", "VERBUM", "CARO", "FACTUM", "EST"]
         dispute = next(e for e in apparatus["adjudicated"] if e["at"] == "w143")
-        assert "DISPUTED" in dispute["ruling"]
+        assert dispute["ours"] == "his"
+        assert dispute["witnesses"] == {
+            "do": "his,",
+            "mr": "his,",
+            "handmissal-eo2025": "his",
+        }
+        assert dispute["class"] == "punctuation"
+        assert dispute["ruling"].startswith("Retain the selected his without a following comma.")
+        assert "dative plural in explanatory apposition to eis" in dispute["ruling"]
+        assert "not singular eius" in dispute["ruling"]
 
 
 @pytest.mark.parametrize("row", CASES, ids=CASE_IDS)

@@ -10,9 +10,15 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from witness_header_fixture import expected_review
 
 from build_reader import bibliography, emit, store
-from build_reader.bibliography_bindings import BindingError, witness_subject
+from build_reader.bibliography_bindings import (
+    BindingError,
+    collation_subject,
+    digest,
+    witness_subject,
+)
 from build_reader.layers import enrich_layer, expand_core
 from checks import interlinear
 from checks.language_packs import check_layer
@@ -246,6 +252,20 @@ def dependency_suffixes(part):
     raise AssertionError("unsupported composite part")
 
 
+# These source subjects were reviewed; unrelated records remain pending.
+ADOPTED_SOURCE_REVIEWS = {
+    "witness.proprium.vigilia-pentecostes-secreta.do44667ff": (
+        "f21d7b74e86cf9ee5990eccd4a91b7f05a6548387d4ed43cb748fdbe317e26e2"
+    ),
+    "witness.proprium.vigilia-pentecostes-secreta.mr1962": (
+        "d5cc96e8569138bfe622175fc2e9a8719fcd2c6c96e5cd52befda7d988e77191"
+    ),
+    "collation.proprium.vigilia-pentecostes-secreta.mr1962-do44667ff": (
+        "c06a88773afc98990be4ce65abf3801cce5d73019b4d47cfe1822912d0c7fcd6"
+    ),
+}
+
+
 def assert_composite(graph, part):
     text = PREFIX + part
     witness = next(w for w in graph["witnesses"] if w["id"] == f"witness.{text}.mr1962")
@@ -260,14 +280,49 @@ def assert_composite(graph, part):
     assert (
         primary["verified_on"] == "2026-09-12" and primary["decision"] == "RETAIN_WITH_CORRECTION"
     )
-    assert witness["review"] == {"status": "pending"}
+    if part == "secreta":
+        assert witness["review"] == {
+            "status": "reviewed",
+            "sha256": expected_review(witness["id"], ADOPTED_SOURCE_REVIEWS[witness["id"]]),
+        }
+    else:
+        assert witness["review"] == {"status": "pending"}
     subject = witness_subject(ROOT, witness, graph, store.core(ROOT, text))
     assert set(subject["source_uses"]) == expected | {primary["id"]}
     assert subject["raw_resolution"] is None
     projected = next(
         r for r in bibliography.public_text_evidence(graph)["texts"] if r["id"] == text
     )
-    assert projected["witnesses"] == [] and "collation" not in projected
+    if part == "secreta":
+        rows = [w for w in graph["witnesses"] if w["text"] == text]
+        assert len(rows) == 2 and {r["id"] for r in rows} == {
+            f"witness.{text}.mr1962",
+            f"witness.{text}.do44667ff",
+        }
+        subjects = {}
+        for row in rows:
+            expected = expected_review(row["id"], ADOPTED_SOURCE_REVIEWS[row["id"]])
+            assert row["review"] == {"status": "reviewed", "sha256": expected}
+            subjects[row["id"]] = witness_subject(ROOT, row, graph, store.core(ROOT, text))
+            assert digest(subjects[row["id"]]) == expected
+        collation = next(c for c in graph["collations"] if c["text"] == text)
+        expected = expected_review(collation["id"], ADOPTED_SOURCE_REVIEWS[collation["id"]])
+        assert collation["review"] == {"status": "reviewed", "sha256": expected}
+        assert (
+            digest(collation_subject(ROOT, collation, store.core(ROOT, text), subjects)) == expected
+        )
+        assert projected["witnesses"] == [
+            {
+                key: row[key]
+                for key in ("id", "text", "use", "role", "coverage", "independence_basis")
+            }
+            for row in sorted(rows, key=lambda row: row["id"])
+        ]
+        assert projected["collation"] == {
+            key: collation[key] for key in ("id", "text", "recension", "witnesses", "apparatus")
+        }
+    else:
+        assert projected["witnesses"] == [] and "collation" not in projected
     return witness
 
 

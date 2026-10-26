@@ -57,7 +57,7 @@ CLASS_READINGS = {
     "lectio-actuum": 7,
     "lectio-libri": 18,
     "lectio-prophetae": 5,
-    "sequentia": 99,
+    "sequentia": 100,
     "initium": 2,
     "passio": 1,
 }
@@ -149,7 +149,7 @@ def pericope_numbers(pericope: dict[str, Any]) -> list[int]:
 
 
 def restated() -> list[dict[str, Any]]:
-    """The 205 bindings from the census and the announcement texts alone."""
+    """The 206 bindings from the census and the announcement texts alone."""
     units = formulas()
     by_fold = {fold(text): unit for unit, text in units.items()}
     assert len(by_fold) == len(units) == 27
@@ -183,11 +183,11 @@ def restated() -> list[dict[str, Any]]:
 
 def test_every_formulary_reading_is_bound_once_as_the_census_prints_it():
     doc = library()
-    assert len(READINGS) == 205
+    assert len(READINGS) == 206
     assert doc["announcements"] == restated()
     readings = roles()
     assert [b["reading"] for b in doc["announcements"]] == sorted(readings)
-    assert Counter(readings.values()) == {"epistola": 103, "evangelium": 102}
+    assert Counter(readings.values()) == {"epistola": 103, "evangelium": 103}
     units = {unit["id"]: unit for unit in doc["units"]}
     for binding, row in zip(doc["announcements"], READINGS, strict=True):
         unit = units[binding["unit"]]
@@ -755,7 +755,7 @@ def test_the_resource_reads_back_every_binding_and_the_passion_rule():
     assert table["schema_version"] == "2.0.0"
     assert table["passion"] == library()["passion"]
     rows = {row["reading"]: row for row in table["announcements"]}
-    assert len(rows) == 205
+    assert len(rows) == 206
     for binding in restated():
         row = rows[binding["reading"].replace(".", "/", 1)]
         expected = {

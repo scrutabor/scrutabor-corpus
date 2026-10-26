@@ -1202,13 +1202,236 @@ REMOVED_PRECIOUS_BLOOD_ALLOWANCE = {
 }
 
 
+# Complete retired records, with their positions in the historical inventory.
+RETIRED_LEGACY_ALLOWANCES: list[tuple[int, dict[str, Any]]] = [
+    (
+        17,
+        {
+            "text": "proprium.assumptio-beatae-mariae-virginis-secreta",
+            "fields": [
+                {
+                    "path": ["segments", "s01", "translation"],
+                    "sha256": "a24e813184d97671928f2fa97037a0df8da1889b98cc516c666cac3f8f859ae0",
+                },
+                {
+                    "path": ["segments", "s02", "translation"],
+                    "sha256": "0809249ecfa7eee6523ff878b2dbb2b78876dc39d25bd0b7f6c9c30c4ef341ff",
+                },
+            ],
+        },
+    ),
+    (
+        19,
+        {
+            "text": "proprium.corporis-christi-collecta",
+            "fields": [
+                {
+                    "path": ["segments", "s01", "translation"],
+                    "sha256": "770c207118c80489144ac3ed18cfa259f5172b997f04e6a4f7dd127760d26541",
+                }
+            ],
+        },
+    ),
+    (
+        22,
+        {
+            "text": "proprium.corporis-christi-graduale",
+            "fields": [
+                {
+                    "path": ["segments", "s01", "translation"],
+                    "sha256": "5a03633e5f026dff8c9f7942aabb3048c18237a7368fc3da587ff7e59f2fc1c6",
+                },
+                {
+                    "path": ["segments", "s02", "translation"],
+                    "sha256": "20c2588e7401a5bf64d3dc4b7c669a746361c30eadf6237b1b195d9c3a285588",
+                },
+            ],
+        },
+    ),
+    (
+        24,
+        {
+            "text": "proprium.corporis-christi-postcommunio",
+            "fields": [
+                {
+                    "path": ["segments", "s01", "translation"],
+                    "sha256": "cc685c74b35a4185c982eb32692c58ae346ed5bc2b5ff3e96f3c082350193cbd",
+                }
+            ],
+        },
+    ),
+    (
+        25,
+        {
+            "text": "proprium.corporis-christi-secreta",
+            "fields": [
+                {
+                    "path": ["segments", "s01", "translation"],
+                    "sha256": "8ce85820cf122ad4ab89160ab357d141a0d9d51a9b81af2625951b4fee03ddc2",
+                },
+                {
+                    "path": ["segments", "s02", "translation"],
+                    "sha256": "0809249ecfa7eee6523ff878b2dbb2b78876dc39d25bd0b7f6c9c30c4ef341ff",
+                },
+            ],
+        },
+    ),
+    (
+        26,
+        {
+            "text": "proprium.corporis-christi-sequentia",
+            "fields": [
+                {
+                    "path": ["segments", "s01", "translation"],
+                    "sha256": "e5fa2ca0dd1b2a41d8de0d97bea6e724bea0d1bdb65de458f88a1830cc7af4cd",
+                },
+                {
+                    "path": ["segments", "s02", "translation"],
+                    "sha256": "bad353f6b67b2149823b44dad57f461616e7bf48e8c5a54ce41991c8a10495d4",
+                },
+                {
+                    "path": ["segments", "s12", "translation"],
+                    "sha256": "d6cce9d855964fcbce55d9e781c4f7aff531ce114b1f38926d4bb6f5e47a5605",
+                },
+                {
+                    "path": ["segments", "s24", "translation"],
+                    "sha256": "2f6c04fd6e000fcae3c1384227acfb621d4567b9d5cb0b5ce9f52a24ccd70802",
+                },
+            ],
+        },
+    ),
+    (
+        28,
+        {
+            "text": "proprium.dominica-ii-post-pentecosten-secreta",
+            "fields": [
+                {
+                    "path": ["segments", "s01", "translation"],
+                    "sha256": "6e6ed69dada9a57847a864a5347d6edc0d4972e6da037ba8b545e8359bb48214",
+                },
+                {
+                    "path": ["segments", "s02", "translation"],
+                    "sha256": "0809249ecfa7eee6523ff878b2dbb2b78876dc39d25bd0b7f6c9c30c4ef341ff",
+                },
+            ],
+        },
+    ),
+    (
+        33,
+        {
+            "text": "proprium.sacratissimi-cordis-iesu-collecta",
+            "fields": [
+                {
+                    "path": ["segments", "s01", "translation"],
+                    "sha256": "0de02b26cb79f66b28bc92f7b126d62bcbeac5d6a626f9320a7d5ee7015fee61",
+                }
+            ],
+        },
+    ),
+    (
+        36,
+        {
+            "text": "proprium.sacratissimi-cordis-iesu-postcommunio",
+            "fields": [
+                {
+                    "path": ["segments", "s01", "translation"],
+                    "sha256": "c2761ed281d1c4e297af94859b39a0b619403c25f8d14a52f1d2519386d99133",
+                }
+            ],
+        },
+    ),
+    (
+        37,
+        {
+            "text": "proprium.sacratissimi-cordis-iesu-secreta",
+            "fields": [
+                {
+                    "path": ["segments", "s01", "translation"],
+                    "sha256": "bf78e9d7f62e3f641c8eb978b70d506765dfadc6e0204b096b07ce9e5db3d98d",
+                },
+                {
+                    "path": ["segments", "s02", "translation"],
+                    "sha256": "0809249ecfa7eee6523ff878b2dbb2b78876dc39d25bd0b7f6c9c30c4ef341ff",
+                },
+            ],
+        },
+    ),
+    (
+        38,
+        {
+            "text": "proprium.sancti-bartholomaei-apostoli-collecta",
+            "fields": [
+                {
+                    "path": ["segments", "s01", "translation"],
+                    "sha256": "2b0b298035118d834466d78dc03b3e0bf96e0b7a6260b37fa98310c531856b03",
+                }
+            ],
+        },
+    ),
+    (
+        39,
+        {
+            "text": "proprium.sancti-iacobi-apostoli-evangelium",
+            "fields": [
+                {
+                    "path": ["segments", "s01", "translation"],
+                    "sha256": "1a500081e79d0435efaf0338e6e5fee1fe2af93e2d797c121952fdb5baef583d",
+                }
+            ],
+        },
+    ),
+    (
+        40,
+        {
+            "text": "proprium.sancti-matthiae-apostoli-collecta",
+            "fields": [
+                {
+                    "path": ["segments", "s01", "translation"],
+                    "sha256": "b2c61a0e88df00e5cb388ac8ac37407b9e2f09516f047864df4498cbadf9b913",
+                }
+            ],
+        },
+    ),
+    (
+        41,
+        {
+            "text": "proprium.sancti-petri-et-pauli-apostolorum-evangelium",
+            "fields": [
+                {
+                    "path": ["segments", "s01", "translation"],
+                    "sha256": "2b6fe01b724eaa62a86ab41f9db399f9e0c2d22199eb03141983f60e46c70c56",
+                }
+            ],
+        },
+    ),
+    (
+        43,
+        {
+            "text": "proprium.visitatio-beatae-mariae-virginis-offertorium",
+            "fields": [
+                {
+                    "path": ["segments", "s01", "translation"],
+                    "sha256": "d3f1c55341b26324be3fd0996599b56766463ce397d321eda453ab319ca44c9e",
+                }
+            ],
+        },
+    ),
+]
+HISTORICAL_LEGACY_RECORDS = "8f679a6a3e0cf54e03f3f5a9bdbd20ec84a8ccb9de1ca4a6d9d49280e4a815be"
+
+
 def assert_legacy_inventory(fixture):
-    # This exact obsolete allowance was removed by the separate English
-    # Postcommunion revision, not by the Ascension Introit successor.
-    records = fixture["records"]
+    # Later complete wording revisions retired only these exact allowance records.
+    records = deepcopy(fixture["records"])
     assert not any(row["text"] == REMOVED_PRECIOUS_BLOOD_ALLOWANCE["text"] for row in records), (
         "obsolete Precious Blood allowance"
     )
+    assert len({row["text"] for row in records}) == len(records), "legacy inventory"
+    retired = {row["text"] for _, row in RETIRED_LEGACY_ALLOWANCES}
+    assert not any(row["text"] in retired for row in records), "retired legacy allowance"
+    for index, row in RETIRED_LEGACY_ALLOWANCES:
+        records.insert(index, deepcopy(row))
+    assert digest(records) == HISTORICAL_LEGACY_RECORDS, "legacy inventory"
     assert len([*records, REMOVED_PRECIOUS_BLOOD_ALLOWANCE]) == 45, "legacy inventory"
 
 
@@ -1223,15 +1446,23 @@ def test_current_legacy_inventory_rejects_undeclared_changes(damage):
     fixture = load(LEGACY)
     saved = deepcopy(fixture)
     assert_legacy_inventory(fixture)
-    broken = deepcopy(fixture)
     if damage == "reintroduced":
-        broken["records"].append(deepcopy(REMOVED_PRECIOUS_BLOOD_ALLOWANCE))
-        message = "obsolete Precious Blood allowance"
+        variants = [(REMOVED_PRECIOUS_BLOOD_ALLOWANCE, "obsolete Precious Blood allowance")]
+        variants += [(row, "retired legacy allowance") for _, row in RETIRED_LEGACY_ALLOWANCES]
     else:
-        broken["records"].pop(0)
-        message = "legacy inventory"
-    rejects(assert_legacy_inventory, broken, message=message)
-    assert_legacy_inventory(fixture)
+        variants = [(None, "legacy inventory")]
+    for retired, message in variants:
+        broken = deepcopy(fixture)
+        if retired is None:
+            broken["records"].pop(0)
+        else:
+            broken["records"].append(deepcopy(retired))
+        assert broken != saved, "legacy mutation changes its copy"
+        rejects(assert_legacy_inventory, broken, message=message)
+        broken.clear()
+        broken.update(deepcopy(saved))
+        assert_legacy_inventory(broken)
+        assert broken == saved
     assert fixture == saved
 
 

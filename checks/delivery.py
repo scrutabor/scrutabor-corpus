@@ -231,6 +231,7 @@ GOSPEL_BODIES: dict[str, tuple[int, ...]] = {
     "sanctorum-simonis-et-iudae-apostolorum": (154,),
     "septem-dolorum-beatae-mariae-virginis": (50,),
     "transfiguratio-domini": (148,),
+    "vigilia-ascensionis": (20, 15, 16, 12, 16, 19, 10, 23, 17, 14, 16),
     "vigilia-nativitatis": (80,),
     "vigilia-paschalis": (110,),
     "vigilia-pentecostes": (125,),

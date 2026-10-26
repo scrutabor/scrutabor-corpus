@@ -4,6 +4,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from witness_header_fixture import before_privacy
+
 DATA = json.loads((Path(__file__).parent / "fixtures/common-preface-source-chain.json").read_text())
 
 
@@ -16,7 +18,9 @@ def without_common_preface_source_chain(graph):
             (row for row in result[key] if row["id"] in identifiers),
             key=lambda row: row["id"],
         )
-        assert observed == rows, "current Common Preface source additions"
+        assert before_privacy(observed, "current Common Preface source additions") == rows, (
+            "current Common Preface source additions"
+        )
         result[key] = [row for row in result[key] if row["id"] not in identifiers]
         remaining = [
             row

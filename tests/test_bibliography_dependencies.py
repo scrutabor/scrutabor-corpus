@@ -389,6 +389,9 @@ def unsupported_html():
         for w in graph["witnesses"]
         if w["text"] == "orationes.angele-dei" and w["transcription"] == "compendium-2005"
     )
+    # Reconstruct the opt-out predecessor; source support never implies an inventory.
+    witness.pop("source_dependencies", None)
+    witness["review"] = {"status": "pending"}
     doc = json.loads((CORPUS / "texts/orationes/angele-dei.json").read_text())
     return graph, languages, witness, doc
 

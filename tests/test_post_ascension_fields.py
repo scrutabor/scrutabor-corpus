@@ -16,8 +16,20 @@ from gospel_delivery_fixture import (
     current_sung_source_hash,
     without_sung_delivery,
 )
-from post_ascension_fixture import FIXTURE, expected_row_successor, restore_layer, value_at
+from post_ascension_fixture import (
+    DEVOTED_COLLECT,
+    DEVOTED_SOURCE_AFTER,
+    DEVOTED_SOURCE_BEFORE,
+    FIXTURE,
+    expected_devoted_row,
+    expected_devoted_source_hash,
+    expected_row_successor,
+    historical_devoted_segments,
+    restore_layer,
+    value_at,
+)
 from provenance_successor_fixture import assert_protection_scope
+from witness_header_fixture import before_privacy, expected_transcript
 
 from build_reader import bibliography, store
 from build_reader.bibliography_bindings import selected_text, transcript_digest
@@ -68,17 +80,21 @@ def assert_analysis(core, language, layer, word):
 
 def assert_composite(text, graph, transcript):
     expected = FIXTURE["composites"][text]
-    assert hashlib.sha256(transcript.encode()).hexdigest() == expected["transcript_sha256"], (
-        "composite transcript"
-    )
+    assert hashlib.sha256(transcript.encode()).hexdigest() == expected_transcript(
+        f"witnesses/{text}/mr.txt", expected["transcript_sha256"]
+    ), "composite transcript"
     body = "\n".join(line for line in transcript.splitlines() if not line.startswith("#")) + "\n"
     assert hashlib.sha256(body.encode()).hexdigest() == expected["body_sha256"], "unchanged body"
     for collection in ("uses", "witnesses"):
         for row in expected[collection]:
             actual = [item for item in graph[collection] if item["id"] == row["id"]]
-            assert actual == [row], "composite source record"
+            assert before_privacy(actual, "composite source record") == [row], (
+                "composite source record"
+            )
     witness = expected["witnesses"][0]
-    assert witness["transcription_sha256"] == transcript_digest(transcript)
+    assert expected_transcript(
+        f"witnesses/{text}/mr.txt", witness["transcription_sha256"]
+    ) == transcript_digest(transcript)
     assert witness["review"] == {"status": "pending"}
     dependencies = witness["source_dependencies"]["uses"]
     assert dependencies and dependencies == sorted(set(dependencies))
@@ -94,7 +110,7 @@ def test_full_subject_and_bilingual_denominator():
     for text in TEXTS:
         core = store.core(ROOT, text)
         assert (
-            canonical_hash(without_sung_delivery(core)["segments"])
+            canonical_hash(historical_devoted_segments(without_sung_delivery(core)))
             == FIXTURE["segment_hashes"][text]
         )
         for field in FIXTURE["core_fields"].get(text, []):
@@ -255,7 +271,7 @@ def test_all_eight_current_rows_preserve_route_and_exact_signatures():
     assert len(FIXTURE["historical_english_uses"]) == 2
     for site, expected in FIXTURE["verse_rows"].items():
         row = ledger[site]
-        assert row == current_sung_expected_row(expected["after"])
+        assert row == current_sung_expected_row(expected_devoted_row(expected["after"]))
         assert current_sung_expected_row(expected_row_successor(expected["before"])) == row
         text, segment, language = site.rsplit(".", 2)
         source = next(s for s in store.core(ROOT, text)["segments"] if s["id"] == segment)
@@ -264,7 +280,9 @@ def test_all_eight_current_rows_preserve_route_and_exact_signatures():
         assert row["target_sha256"] == canonical_hash(target)
         assert row["target_sha256"] != hashlib.sha256(target.encode()).hexdigest()
         assert row["source_sha256"] == current_sung_source_hash(
-            text, segment, expected["before"]["source_sha256"]
+            text,
+            segment,
+            expected_devoted_source_hash(text, segment, expected["before"]["source_sha256"]),
         )
         assert row["review"] == "working"
     public_domain = {
@@ -443,3 +461,71 @@ def test_exact_inverse_never_erases_unreviewed_changes(damage):
         assert_layer(relative, bad)
     assert_layer(relative, layer)
     assert (FIXTURE, layer) == original
+
+
+def assert_devoted_historical_segments(core):
+    restored = historical_devoted_segments(without_sung_delivery(core))
+    assert canonical_hash(restored) == FIXTURE["segment_hashes"][core["id"]]
+    return restored
+
+
+def test_devoted_collect_historical_inverse_is_exact_and_nonmutating():
+    core = store.core(ROOT, DEVOTED_COLLECT)
+    original = deepcopy(core)
+    assert_devoted_historical_segments(core)
+    assert canonical_hash(core) == canonical_hash(original)
+    for language in LANGUAGES:
+        site = DEVOTED_COLLECT + ".s01." + language
+        historical = deepcopy(FIXTURE["verse_rows"][site]["after"])
+        expected = expected_devoted_row(historical)
+        assert historical["source_sha256"] == DEVOTED_SOURCE_BEFORE
+        assert expected["source_sha256"] == DEVOTED_SOURCE_AFTER
+        expected["source_sha256"] = DEVOTED_SOURCE_BEFORE
+        assert canonical_hash(expected) == canonical_hash(historical)
+
+
+@pytest.mark.parametrize("damage", ["lemma", "morph", "head", "other-word"])
+def test_devoted_inverse_does_not_erase_other_changes(damage):
+    core = store.core(ROOT, DEVOTED_COLLECT)
+    assert_devoted_historical_segments(core)
+    bad = deepcopy(core)
+    word = next(w for s in bad["segments"] for w in s.get("words", []) if w["id"] == "w009")
+    if damage == "lemma":
+        word["lemma"] = "devoveo"
+    elif damage == "morph":
+        word["morph"]["case"] = "nom"
+    elif damage == "head":
+        word["head"] = "w010"
+    else:
+        bad["segments"][0]["words"][0]["form"] += "x"
+    assert canonical_hash(bad) != canonical_hash(core)
+    with pytest.raises(AssertionError):
+        assert_devoted_historical_segments(bad)
+    bad.clear()
+    bad.update(deepcopy(core))
+    assert_devoted_historical_segments(bad)
+    assert canonical_hash(bad) == canonical_hash(core)
+
+
+@pytest.mark.parametrize("language", LANGUAGES)
+@pytest.mark.parametrize("damage", ["source", "review", "target"])
+def test_devoted_expected_rows_reject_unadmitted_predecessors(language, damage):
+    site = DEVOTED_COLLECT + ".s01." + language
+    historical = deepcopy(FIXTURE["verse_rows"][site]["after"])
+    expected = expected_devoted_row(historical)
+    bad = deepcopy(historical)
+    key = {"source": "source_sha256", "review": "review", "target": "target_sha256"}[damage]
+    saved = bad[key]
+    bad[key] = "expert-reviewed" if damage == "review" else "0" * 64
+    assert canonical_hash(bad) != canonical_hash(historical)
+    with pytest.raises(AssertionError, match="historical devoted Collect expected row"):
+        expected_devoted_row(bad)
+    bad[key] = saved
+    assert canonical_hash(expected_devoted_row(bad)) == canonical_hash(expected)
+    assert canonical_hash(bad) == canonical_hash(historical)
+
+
+def test_devoted_expected_overlay_leaves_other_sites_unchanged():
+    for site, change in FIXTURE["verse_rows"].items():
+        if not site.startswith(DEVOTED_COLLECT + ".s01."):
+            assert expected_devoted_row(change["after"]) == change["after"]

@@ -411,11 +411,11 @@ def test_the_authored_contract_is_exact_and_resolves_its_slots_by_the_calendar()
     assert checker.check(CORPUS) == (
         [],
         {
-            "commemorations": 5,
-            "slot_uses": 15,
-            "proper_slots": 5,
-            "reference_slots": 1,
-            "calendar_slots": 9,
+            "commemorations": 32,
+            "slot_uses": 96,
+            "proper_slots": 59,
+            "reference_slots": 25,
+            "calendar_slots": 12,
         },
     )
 
@@ -770,6 +770,9 @@ def test_a_resolved_feast_oration_missing_from_a_language_package_fails_before_e
         "languages/en/commemorationes",
     ):
         shutil.copytree(CORPUS / directory, corpus / directory)
+    binding = Path("kalendarium/ascension-vigil-orations.json")
+    (corpus / binding).parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(CORPUS / binding, corpus / binding)
     bodies = reader.slot_bodies(CORPUS)
     for text in bodies:
         relative = f"{text.replace('.', '/', 1)}.json"
@@ -785,13 +788,18 @@ def test_a_resolved_feast_oration_missing_from_a_language_package_fails_before_e
     assert reader.slot_bodies(corpus) == bodies
     reader.input_bodies(corpus)
     path = corpus / "languages/pl/manifest.json"
-    manifest = json.loads(path.read_text(encoding="utf-8"))
+    before = path.read_bytes()
+    manifest = json.loads(before)
     manifest["texts"].remove("proprium.visitatio-beatae-mariae-virginis-postcommunio")
-    path.write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
-    with pytest.raises(
-        ValueError, match="visitatio-beatae-mariae-virginis-postcommunio requires a declared pl"
-    ):
-        reader.input_bodies(corpus)
+    try:
+        path.write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
+        with pytest.raises(
+            ValueError, match="visitatio-beatae-mariae-virginis-postcommunio requires a declared pl"
+        ):
+            reader.input_bodies(corpus)
+    finally:
+        path.write_bytes(before)
+    reader.input_bodies(corpus)
 
 
 def emitted(tmp_path, table):

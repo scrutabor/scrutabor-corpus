@@ -80,7 +80,8 @@ SPEAKERS = {"lecta": ("sacerdos", "minister"), "cantu": ("sacerdos", "schola")}
 
 # A role fixes who says the unit in each form and whether its owner carries the faithful's
 # participation: the celebrant's greeting and invitation carry none, an answer carries the
-# DMS 31 a and 25 a grades that its own words earn wherever they stand.
+# DMS31a/25a grants in its own context. The borrowed Last-Gospel response
+# is lecta-only at home; the ordinary-Gospel occurrence has its own25a source.
 ROLES: dict[str, tuple[str, str, bool]] = {
     "greeting": ("sacerdos", "sacerdos", False),
     "response": ("minister", "schola", True),
@@ -267,6 +268,29 @@ def _unit_errors(corpus: Path, unit: dict[str, Any]) -> tuple[list[str], dict[st
         errors.append(f"{where}: unknown role {role!r}")
     if not _nonempty(unit["source"]):
         errors.append(f"{where}: source citation is empty")
+    borrowed_gospel = (
+        unit["id"] == "responsio-gloria-tibi"
+        or role == "gospel-response"
+        or (unit["text"], unit["segment"]) == ("ordinarium.evangelium-ultimum", "s06")
+    )
+    if borrowed_gospel and (
+        unit["id"],
+        role,
+        unit["text"],
+        unit["segment"],
+        unit["first"],
+        unit["last"],
+        unit["source"],
+    ) != (
+        "responsio-gloria-tibi",
+        "gospel-response",
+        "ordinarium.evangelium-ultimum",
+        "s06",
+        "w012",
+        "w014",
+        "Ritus servandus VI, 2",
+    ):
+        errors.append(f"{where}: ordinary Gospel response needs its exact borrowed owner")
     segment, problem = owner_segment(corpus, unit)
     if segment is None:
         return [*errors, problem], None
@@ -290,7 +314,16 @@ def _unit_errors(corpus: Path, unit: dict[str, Any]) -> tuple[list[str], dict[st
                 f"{speaker}/{VOICES['lecta']}"
             )
         participation = segment.get("participation") or {}
-        if answered and not all(participation.get(form) for form in FORMS):
+        if borrowed_gospel:
+            expected = {"lecta": {"gradus": 1, "source": "DMS 31 a"}}
+            if json.dumps(participation, sort_keys=True) != json.dumps(expected, sort_keys=True):
+                errors.append(
+                    f"{where}: borrowed Last-Gospel response needs lecta-only participation"
+                )
+            words = [(w.get("id"), w.get("form"), w.get("post", "")) for w in segment["words"]]
+            if words != [("w012", "Glória", ""), ("w013", "tibi", ","), ("w014", "Dómine", ".")]:
+                errors.append(f"{where}: ordinary Gospel response needs its exact borrowed words")
+        elif answered and not all(participation.get(form) for form in FORMS):
             errors.append(f"{where}: a {role} needs its owner's participation in both forms")
         if not answered and participation:
             errors.append(
@@ -394,12 +427,38 @@ def _delivery_errors(where: str, occurrence: dict[str, Any], role: str) -> list[
 
 
 def _occurrence_errors(
-    where: str, occurrence: dict[str, Any], role: str, unit: dict[str, Any]
+    where: str,
+    occurrence: dict[str, Any],
+    role: str,
+    unit: dict[str, Any],
+    event: dict[str, Any],
 ) -> list[str]:
     errors: list[str] = []
     if unit["role"] != role:
         errors.append(f"{where}: a {role} stands here, not the {unit['role']} {occurrence['unit']}")
     errors += _delivery_errors(where, occurrence, role)
+    if (role == "gospel-response" or occurrence["unit"] == "responsio-gloria-tibi") and (
+        event["id"],
+        event["before"],
+        event["source"],
+        occurrence["unit"],
+        role,
+        unit["text"],
+        unit["owner"]["id"],
+        occurrence["lecta"],
+        occurrence["cantu"],
+    ) != (
+        "evangelium-annuntiatio",
+        "evangelium",
+        "RG 471; Ritus servandus VI, 2",
+        "responsio-gloria-tibi",
+        "gospel-response",
+        "ordinarium.evangelium-ultimum",
+        "s06",
+        {"speaker": "minister", "voice": "clara", "source": "Ritus servandus VI, 2"},
+        {"speaker": "schola", "voice": "cantus", "source": "DMS 16 b, 25 a, 26"},
+    ):
+        errors.append(f"{where}: ordinary Gospel response context or source differs")
     inherited = (unit["owner"].get("delivery") or {}).get("cantu")
     sung = occurrence["cantu"]
     if (
@@ -465,7 +524,7 @@ def _events(events: Any, units: dict[str, dict[str, Any]]) -> tuple[int, int, li
             if unit is None:
                 errors.append(f"{here}: names no valid unit ({occurrence['unit']!r})")
                 continue
-            errors += _occurrence_errors(here, occurrence, role, unit)
+            errors += _occurrence_errors(here, occurrence, role, unit, event)
             occurrences += 1
     missing = sorted(set(EVENTS) - set(identities))
     if missing:

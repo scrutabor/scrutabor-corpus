@@ -222,15 +222,19 @@ def test_a_scanned_print_requires_both_printed_and_scan_locators():
 
 
 def test_partial_witness_can_name_an_explicit_stable_word_set():
-    graph, languages = sample()
-    graph["uses"][0]["role"] = "direct_approved_print"
-    authored, _ = load(CORPUS)
-    partial = copy.deepcopy(
-        next(w for w in authored["witnesses"] if w["coverage"]["kind"] == "words")
-    )
-    partial.update(id="witness-partial", use="use-neutral", review={"status": "pending"})
-    graph["uses"][0]["address"] = {"kind": "text", "text": partial["text"]}
+    graph, languages = load(CORPUS)
+    (partial,) = [
+        copy.deepcopy(w)
+        for w in graph["witnesses"]
+        if w["id"] == "witness.proprium.dominica-i-post-epiphaniam-postcommunio.mr-lent-ii"
+    ]
+    # A real printed proper subset retains its complete source identity.
+    assert partial["coverage"] == {
+        "kind": "words",
+        "words": [f"w{index:03d}" for index in range(1, 18)],
+    }
     graph["witnesses"] = [partial]
+    graph["collations"] = []
     assert validate(CORPUS, graph, languages) == []
 
 

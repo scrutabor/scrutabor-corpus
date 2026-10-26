@@ -110,7 +110,7 @@ CLASS_READINGS = {
     "lectio-prophetae": 5,
     "initium": 1,
     "passio": 1,
-    "sequentia": 99,
+    "sequentia": 100,
 }
 GOSPEL_CLASSES = {"initium", "passio", "sequentia"}
 
@@ -221,7 +221,7 @@ def test_classes_and_readings_follow_the_printed_headings():
     assert readings == CLASS_READINGS
     reused = FIXTURE["reused"]
     seen += [r["text"] for r in reused["readings"]]
-    assert len(seen) == len(set(seen)) == 205
+    assert len(seen) == len(set(seen)) == 206
     assert reused["readings"] == [
         {
             "text": "proprium.nativitas-domini-in-die-evangelium",

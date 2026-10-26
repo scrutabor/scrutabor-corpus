@@ -476,7 +476,7 @@ def test_raw_mutations_fail_at_their_owned_diagnostic_and_restore(source, mutati
         elif mutation == "duplicate-witness":
             source["registry"]["bindings"]["duplicate"] = copy.deepcopy(binding)
         elif mutation == "unsupported-contract":
-            binding["contract"] = "raw-reading-9"
+            binding["contract"] = "raw-reading-unsupported"
         elif mutation == "nonobject-binding":
             source["registry"]["bindings"][KEY] = []
         else:

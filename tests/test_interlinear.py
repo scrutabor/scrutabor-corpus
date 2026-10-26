@@ -1,5 +1,7 @@
 """Explicit interlinear alignments replace visible editorial placeholders."""
 
+import pytest
+
 from checks.interlinear import check, effective_gloss
 
 DOC = {
@@ -77,3 +79,25 @@ def test_zero_realization_contains_exactly_one_source_word():
         "reason": "word-order",
     }
     assert any("exactly one source word" in error for error in check(DOC, data))
+
+
+def direct_layer():
+    return {
+        "language": "pl",
+        "segments": {"s01": {"translation": "Czy jest przyszły?"}},
+        "words": {"w1": {"gloss": "jest"}, "w2": {"gloss": "przyszły"}, "w3": {"gloss": "Czy"}},
+    }
+
+
+def test_ordinary_direct_glosses_do_not_need_an_alignment_field():
+    assert check(DOC, direct_layer()) == []
+
+
+@pytest.mark.parametrize("invalid", [None, [], {}, "", "invalid", False, [None]])
+def test_empty_or_malformed_alignment_containers_fail_without_losing_direct_coverage(invalid):
+    data = direct_layer()
+    data["segments"]["s01"]["alignments"] = invalid
+    assert check(DOC, data) == [
+        "t.future:s01:pl: alignments must be a nonempty list of objects; "
+        "omit the field when no alignments are needed"
+    ]

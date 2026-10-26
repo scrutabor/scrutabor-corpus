@@ -170,7 +170,7 @@ def source_dependencies(witness: dict) -> dict:
     if raw is not None and (not isinstance(raw, str) or not NAME.fullmatch(raw)):
         raise BindingError("raw_binding must be a binding ID or null")
     if "documents" in value:
-        from .paginated_documents import declarations
+        from .source_documents import declarations
 
         try:
             declarations(value["documents"])
@@ -315,6 +315,28 @@ def _literal_common_sources(reading, primary: dict, sources: dict) -> None:
         raise BindingError("raw-reading-8 source-use evidence differs from its contribution")
 
 
+def _mass_secret_sources(reading, primary: dict, sources: dict) -> None:
+    """A literal comparison and its actual Mass Ordo context, not performer proof."""
+    text_id = reading.source["profile"]["text"]
+    primary_id = f"use.{text_id}.do44667ff"
+    context_id = f"use.{text_id}.oration-boundaries.do44667ff"
+    if primary["use"]["id"] != primary_id or set(sources) != {primary_id, context_id}:
+        raise BindingError("raw-reading-9 requires exactly literal-reading and Mass-context uses")
+    context = sources[context_id]
+    if (
+        primary["use"]["role"] != "derived_digital_collation_aid"
+        or context["use"]["role"] != "rubric_control"
+    ):
+        raise BindingError("raw-reading-9 source-use role differs from its contribution")
+    literal = hashlib.sha256((reading.text + "\n").encode("utf-8")).hexdigest()
+    ordo = reading.source["archives"]["missa-ordo-44667ff"]["sha256"]
+    if (
+        primary["use"].get("evidence_sha256") != literal
+        or context["use"].get("evidence_sha256") != ordo
+    ):
+        raise BindingError("raw-reading-9 source-use evidence differs from its contribution")
+
+
 def _witness_subject(
     root: Path, witness: dict, doc: dict, snapshot: _SourceSnapshot, *, reviewable: bool
 ) -> dict:
@@ -367,7 +389,7 @@ def _witness_subject(
     if (
         not reviewable
         and "source_dependencies" not in witness
-        and contract not in {"raw-reading-6", "raw-reading-7", "raw-reading-8"}
+        and contract not in {"raw-reading-6", "raw-reading-7", "raw-reading-8", "raw-reading-9"}
     ):
         return deepcopy(subject)
     declaration = source_dependencies(witness)
@@ -381,15 +403,19 @@ def _witness_subject(
         for identifier, source in subject["source_uses"].items()
         if source["digital_item"]["kind"] == "born-digital" and not _digital_provider(source)
     }
-    if documents and "documents" not in declaration:
+    from .source_documents import requires_compendium
+
+    if (documents or requires_compendium(witness)) and "documents" not in declaration:
         raise BindingError("unsupported born-digital source requires its own evidence contract")
     if "documents" in declaration:
-        from .paginated_documents import resolve_documents
+        from .source_documents import resolve_documents
 
         if declaration["raw_binding"] is not None:
             raise BindingError("paginated documents cannot borrow a raw binding")
         try:
-            subject["document_resolution"] = resolve_documents(declaration["documents"], documents)
+            subject["document_resolution"] = resolve_documents(
+                declaration["documents"], documents, witness=witness, doc=doc, transcript=text
+            )
         except ValueError as error:
             raise BindingError(str(error)) from error
     reading = snapshot.reading(path)
@@ -423,6 +449,8 @@ def _witness_subject(
             raise BindingError("raw-reading-7 requires one derived digital source use")
         if reading.source["contract"] == "raw-reading-8":
             _literal_common_sources(reading, primary, subject["source_uses"])
+        if reading.source["contract"] == "raw-reading-9":
+            _mass_secret_sources(reading, primary, subject["source_uses"])
         # A generic evidence hash need not name the first archive. Existing
         # digital uses identify either a contributing archive's complete bytes
         # or the complete ordered reading with one terminal LF. Both subjects

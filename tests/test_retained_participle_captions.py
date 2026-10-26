@@ -43,11 +43,11 @@ RETAINED = {
         "e63542282900c50217f3a838e56698e4b272b683b50309de77759b2daaf08dad",
     ),
     ("dominica-xxi-post-pentecosten-collecta", "en"): (
-        "e83e9696e37d8d8c16334a3328c35f91bb7337dd60fc49b336194a4a9d9ecb0b",
+        "f5d9ca717613f1a6356098bcf52ab40f58bdf5cada03ac312cf513bae79c4532",
         "5fa682326d532b2e5ce2370b3fc2e12c64a91aaa908814926609a08a99280973",
     ),
     ("dominica-xxi-post-pentecosten-collecta", "pl"): (
-        "e83e9696e37d8d8c16334a3328c35f91bb7337dd60fc49b336194a4a9d9ecb0b",
+        "f5d9ca717613f1a6356098bcf52ab40f58bdf5cada03ac312cf513bae79c4532",
         "661d04319248e8b9cfa607db90a6f61a6f52cc3ffc172f5222f2e692d7317b77",
     ),
     ("omnium-sanctorum-secreta", "en"): (
@@ -213,6 +213,8 @@ def test_undeclared_split_is_rejected_after_a_healthy_control(row):
     broken["segments"]["s01"]["alignments"] = [
         g for g in broken["segments"]["s01"]["alignments"] if not set(g["words"]) & set(row[2])
     ]
+    if not broken["segments"]["s01"]["alignments"]:
+        del broken["segments"]["s01"]["alignments"]
     for wid, gloss in zip(row[2], row[5], strict=True):
         broken["words"][wid]["gloss"] = gloss
     assert broken != layer

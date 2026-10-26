@@ -59,6 +59,50 @@ LABELS = {site: expected_communion_row(row, site) for site, row in LABELS.items(
 LABELS = {site: expected_pentecost_row(row, site) for site, row in LABELS.items()}
 LABELS = {site: expected_marian_row(row, site) for site, row in LABELS.items()}
 LABELS = {site: expected_corpus_christi_epistle_row(row, site) for site, row in LABELS.items()}
+VISITATION_SITE = "proprium.visitatio-beatae-mariae-virginis-offertorium.s01.en"
+VISITATION_TARGET_BEFORE = "956755748d0c14fbda4b9055d5e2d904b626345888262a58fd94cea855f35039"
+VISITATION_TARGET_AFTER = "98aa8cf65580a6d62c6572951ce9fb8f6f199cc2c9a74924a57e57fe57e24381"
+assert LABELS[VISITATION_SITE]["target_sha256"] == VISITATION_TARGET_BEFORE
+LABELS[VISITATION_SITE]["target_sha256"] = VISITATION_TARGET_AFTER
+PRE_CORPUS_CHRISTI_CHANT_LABELS = deepcopy(LABELS)
+CORPUS_CHRISTI_CHANT_TARGETS = {
+    "proprium.corporis-christi-graduale.s01.en": (
+        "37dceb6542dcda890f998f371c6dc6c2d1f961759f02302703d14c4d0565f7d8",
+        "766cc925932279ca12893c8fb504b2869105ffedb0bac5abf857b1f3800ad036",
+    ),
+    "proprium.corporis-christi-graduale.s02.en": (
+        "0007edff183c5e9ebd6498a26a76087804b7482375df2544a37dce0e43fc9c6a",
+        "ebc843c521b6443e57bbf8bd5f0e4f196fc0a1556234206535633dad1ea7a7c8",
+    ),
+    "proprium.corporis-christi-sequentia.s01.en": (
+        "668fb5dd6498f6575ea663ccee349d93640930a8858ad7b86dfae793841d7d69",
+        "c09246318e6d36b93a93d7f1dfbc2b113d5b8d4b55671da83336be10ce26fd78",
+    ),
+    "proprium.corporis-christi-sequentia.s02.en": (
+        "7608bbe750e91f5e212ef346d07608811647ff8c01aee79c84d0014fceaae067",
+        "eff13d6d1c188a9bc8ae636c902fd70a820f0acdcc2dd6c74ebcfdf8fdb7ce67",
+    ),
+    "proprium.corporis-christi-sequentia.s03.en": (
+        "70a2bf80ad1b5708ddf55607be80c200310a57beb314653e970655c7ad434329",
+        "8a0a00cf1bbde90c9d34f00a209610f1e62e563b3c08ec128ed499cc304a021e",
+    ),
+    "proprium.corporis-christi-sequentia.s12.en": (
+        "13963f01296ea1cf3e1a59ea05965dbd1e4322d939c2942cbb4a9fbae996aead",
+        "2921c98f2f457c69a92f9056f2b950b9aea9e56e80b328e63c6ca58e4c3c0a00",
+    ),
+    "proprium.corporis-christi-sequentia.s13.en": (
+        "e07ec269810fdaec02bb154435efe3990b9535ceafae84b79cca1c1f663764f5",
+        "f32d1bb26ec12872b3a1fa8ae62f4a553ee363d3ba08368a64622bdbc2b610b4",
+    ),
+    "proprium.corporis-christi-sequentia.s19.en": (
+        "ce649685973f811bad32dfef1c2877af1708a646e3c9b3f1dd7c2b7686eb04d0",
+        "0925505d461c9df85710814a8625f81684773fca5c0e6931b1d02ab9cced6adf",
+    ),
+}
+assert len(CORPUS_CHRISTI_CHANT_TARGETS) == 8
+for _site, (_before, _after) in CORPUS_CHRISTI_CHANT_TARGETS.items():
+    assert LABELS[_site]["target_sha256"] == _before
+    LABELS[_site]["target_sha256"] = _after
 PRE_JOSEPH_LABELS = deepcopy(LABELS)
 JOSEPH_SITE = "proprium.sancti-ioseph-opificis-alleluia.s01.en"
 JOSEPH_TARGET_BEFORE = "bc147f4ca9387fc9ebad464c97458bb11eeedc4dbc641cef1754dbbdfa89388d"
@@ -141,6 +185,15 @@ def covering_records(language, text, segment):
 def test_inventory():
     rows = ledger()
     assert len(SITES) == len(set(SITES)) == 406
+    assert {
+        site
+        for site in PRE_JOSEPH_LABELS
+        if PRE_JOSEPH_LABELS[site] != PRE_CORPUS_CHRISTI_CHANT_LABELS[site]
+    } == set(CORPUS_CHRISTI_CHANT_TARGETS)
+    recovered = deepcopy(PRE_JOSEPH_LABELS)
+    for site, (before, _after) in CORPUS_CHRISTI_CHANT_TARGETS.items():
+        recovered[site]["target_sha256"] = before
+    assert recovered == PRE_CORPUS_CHRISTI_CHANT_LABELS
     counts: dict[str, Counter[str]] = {}
     for site in SITES:
         text, segment, language = site.rsplit(".", 2)
@@ -180,7 +233,18 @@ def test_a_reviewed_claim_is_rejected(site):
 
 @pytest.mark.parametrize("site", SITES)
 def test_current_wording_matches_its_historical_or_exact_successor_hash(site):
-    assert_wording_unchanged(site, ledger()[site], verse(site))
+    row, target = ledger()[site], verse(site)
+    assert_wording_unchanged(site, row, target)
+    if site in CORPUS_CHRISTI_CHANT_TARGETS:
+        before, after = CORPUS_CHRISTI_CHANT_TARGETS[site]
+        original = deepcopy(row)
+        row["target_sha256"] = before
+        assert row != original
+        rejects(assert_wording_unchanged, site, row, target, message="unchanged wording")
+        row["target_sha256"] = after
+        assert row == original
+        assert_wording_unchanged(site, row, target)
+        assert_label(site, row)
 
 
 def test_joseph_successor_changes_only_its_exact_wording_hash():
@@ -201,6 +265,21 @@ def test_joseph_predecessor_hash_is_rejected_without_promoting_the_label():
     rejects(assert_wording_unchanged, JOSEPH_SITE, before, target, message="unchanged wording")
     assert_wording_unchanged(JOSEPH_SITE, row, target)
     assert_label(JOSEPH_SITE, row)
+
+
+def test_visitation_predecessor_hash_is_rejected_and_same_row_recovers():
+    assert HISTORICAL_LABELS[VISITATION_SITE]["target_sha256"] == VISITATION_TARGET_BEFORE
+    row, target = ledger()[VISITATION_SITE], verse(VISITATION_SITE)
+    original = deepcopy(row)
+    assert_wording_unchanged(VISITATION_SITE, row, target)
+    assert canonical_hash(target) == VISITATION_TARGET_AFTER
+    row["target_sha256"] = VISITATION_TARGET_BEFORE
+    assert canonical_hash(row) != canonical_hash(original)
+    rejects(assert_wording_unchanged, VISITATION_SITE, row, target, message="unchanged wording")
+    row["target_sha256"] = VISITATION_TARGET_AFTER
+    assert canonical_hash(row) == canonical_hash(original)
+    assert_wording_unchanged(VISITATION_SITE, row, target)
+    assert_label(VISITATION_SITE, row)
 
 
 @pytest.mark.parametrize("damage", ["ledger", "verse"])

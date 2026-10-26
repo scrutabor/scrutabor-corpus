@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 import test_english_gloss_register as captions
 import test_english_register as register
+from witness_header_fixture import before_privacy
 
 from build_reader import bibliography
 from build_reader.bibliography_bindings import (
@@ -78,7 +79,9 @@ def complete_reading(core, pl, en):
 def exact_source_inventory(graph):
     """An explicit inspected inventory is needed; hashes cannot infer its absence."""
     mr = next(w for w in graph["witnesses"] if w["id"] == DATA["mr_witness"]["id"])
-    assert mr == DATA["mr_witness"], "complete Precious-Blood source inventory"
+    assert before_privacy(mr, "complete Precious-Blood source inventory") == DATA["mr_witness"], (
+        "complete Precious-Blood source inventory"
+    )
     use = next(u for u in graph["uses"] if u["id"] == DATA["new_conclusion_use"]["id"])
     assert use == DATA["new_conclusion_use"], "exact conclusion source"
     return mr

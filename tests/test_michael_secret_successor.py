@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pytest
 from michael_secret_fixture import FIXTURE, predecessor_documents
+from witness_header_fixture import before_privacy, expected_transcript
 
 from build_reader.bibliography_bindings import selected_text
 from build_reader.emit import Table, core_artifact, expand, language_artifact
@@ -87,12 +88,17 @@ def source_records(graph):
 
 
 def assert_sources(graph):
-    require(source_records(graph) == FIXTURE["source_records"], "Michael exact source chain")
+    require(
+        before_privacy(source_records(graph), "Michael exact source chain")
+        == FIXTURE["source_records"],
+        "Michael exact source chain",
+    )
 
 
 def assert_transcript(text):
     require(
-        hashlib.sha256(text.encode()).hexdigest() == FIXTURE["mr_transcription_sha256"],
+        hashlib.sha256(text.encode()).hexdigest()
+        == expected_transcript(f"witnesses/{TEXT}/mr.txt", FIXTURE["mr_transcription_sha256"]),
         "Michael complete MR transcript",
     )
     reading = " ".join(line for line in text.splitlines() if not line.startswith("#"))

@@ -234,7 +234,84 @@ def unrelated_english(layer):
     }
 
 
+CAPTION_SUCCESSORS: list[tuple[str, dict, dict[str, str]]] = [
+    (
+        "s018",
+        {"words": ["w057", "w058"], "anchor": "w057", "gloss": "to the Word of God"},
+        {"w057": "Word", "w058": "of God"},
+    ),
+    (
+        "s044",
+        {"words": ["w164", "w165", "w166"], "anchor": "w166", "gloss": "was well pleased"},
+        {"w164": "to Himself", "w165": "well", "w166": "was well pleased"},
+    ),
+    (
+        "s046",
+        {"words": ["w175", "w176"], "anchor": "w176", "gloss": "we have received"},
+        {"w175": "we", "w176": "we have received"},
+    ),
+    (
+        "s056",
+        {"words": ["w216", "w217"], "anchor": "w216", "gloss": "our sins"},
+        {"w216": "sins", "w217": "our"},
+    ),
+    (
+        "s060",
+        {"words": ["w230", "w231"], "anchor": "w230", "gloss": "our offenses"},
+        {"w230": "offenses", "w231": "our"},
+    ),
+    (
+        "s068",
+        {
+            "words": ["w258", "w259", "w260", "w261"],
+            "anchor": "w258",
+            "gloss": "our life and resurrection",
+        },
+        {"w258": "life", "w259": "and", "w260": "resurrection", "w261": "our"},
+    ),
+    (
+        "s070",
+        {
+            "words": ["w266", "w267", "w268", "w269"],
+            "anchor": "w266",
+            "gloss": "our peace and reconciliation",
+        },
+        {"w266": "peace", "w267": "and", "w268": "reconciliation", "w269": "our"},
+    ),
+    (
+        "s087",
+        {"words": ["w333", "w334"], "anchor": "w333", "gloss": "our heart"},
+        {"w333": "heart", "w334": "our"},
+    ),
+    (
+        "s087",
+        {"words": ["w336", "w337"], "anchor": "w336", "gloss": "Your Heart"},
+        {"w336": "Heart", "w337": "Your"},
+    ),
+]
+
+
+def historical_english_for_collect_scope(layer: dict) -> dict:
+    """Undo only the separately reviewed invocation captions in a checked copy."""
+    projected = deepcopy(layer)
+    for segment_id, expected, previous_glosses in CAPTION_SUCCESSORS:
+        segment = projected["segments"][segment_id]
+        groups = segment.get("alignments", [])
+        matching = [g for g in groups if g.get("words") == expected["words"]]
+        assert matching == [expected], "reviewed litany caption successor"
+        groups.remove(matching[0])
+        if not groups:
+            del segment["alignments"]
+        for wid, previous in previous_glosses.items():
+            assert "gloss" not in projected["words"][wid], "reviewed litany caption successor"
+            projected["words"][wid]["gloss"] = previous
+    assert projected["words"]["w308"].get("gloss") == "us", "reviewed litany caption successor"
+    projected["words"]["w308"]["gloss"] = "to us"
+    return projected
+
+
 def assert_preserved_english(layer):
+    layer = historical_english_for_collect_scope(layer)
     assert len(unrelated_english(layer)["segments"]) == 88
     assert canonical_hash(unrelated_english(layer)) == (
         "cd29b72c8077e238793f35c93f374e13270a0cb3b2ebf3d42f0e393c79d4b196"

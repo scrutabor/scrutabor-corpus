@@ -522,9 +522,11 @@ def test_exact_apparatus(text, expected):
 
 def _mutate(layer, text, mode):
     segment = layer["segments"]["s01"]
-    groups = segment.setdefault("alignments", [])
+    groups = segment.get("alignments", [])
     if mode == "split-agency":  # restore Latin-order English for portábat / regébat
         segment["alignments"] = [g for g in groups if g["anchor"] not in ("w005", "w009")]
+        if not segment["alignments"]:
+            del segment["alignments"]
         for w, g in {
             "w004": "the Child",
             "w005": "was carrying",

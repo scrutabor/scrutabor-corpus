@@ -213,6 +213,8 @@ def test_the_per_conclusions_are_declared_composites(text):
         expected |= {f"commemoration-conclusion-{kind}.mr1962" for kind in kinds}
     if text in (A + "secreta", A + "postcommunio"):
         expected.add("conclusion-rg116.mr1962")
+    if text == A + "secreta":
+        expected.add("commemoration-conclusion-rg437a.mr1962")
     assert {key for key in found if "conclusion-" in key} == expected
     assert found["mr1962"]["decision"] == "RETAIN_WITH_CORRECTION"
     assert record(text)["orthography_profile"] == "exact-declared-composite"
@@ -262,7 +264,15 @@ def test_the_dawn_per_eundem_cues_name_rg116_beside_rg115b(text):
     use = found["conclusion-rg116.mr1962"]
     assert use["locator"]["printed"] == "p. xviii"
     assert use["evidence_sha256"] == found["conclusion-rg115b.mr1962"]["evidence_sha256"]
-    assert "page 20 prints Per eúndem Dóminum., and the printed cue controls" in use["claim"]
+    if text == A + "secreta":
+        assert use["claim"] == (
+            "RG 116 preserves particular conclusions noted in the liturgical books. "
+            "Page 20 explicitly prints Per eúndem Dóminum. for the Dawn Secret, "
+            "and this printed cue controls its conclusion. The full formula is supplied "
+            "from RG 115 a, with the Per eundem opening printed in RG 115 b."
+        )
+    else:
+        assert "page 20 prints Per eúndem Dóminum., and the printed cue controls" in use["claim"]
     editorial = core(text)["editorial"]
     assert "115 a–b and 116" in editorial["source"]["method"]
     assert "115 a–b and 116" in editorial["notes"]

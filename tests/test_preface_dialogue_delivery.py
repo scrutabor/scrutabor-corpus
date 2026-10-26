@@ -258,10 +258,28 @@ def test_the_same_words_elsewhere_take_nothing_from_the_rule(text_id, sid, said)
 def test_an_identical_segment_in_another_text_takes_nothing(text_id):
     dialogue = text(DIALOGUE)
     other = text(text_id)
+    pristine = deepcopy(other)
     for sid in ("s02", "s03"):
         same = {key: value for key, value in segment(dialogue, sid).items() if key != "delivery"}
-        assert segment(other, sid) == same
-        assert delivery.derive(other, segment(other, sid)) == {}
+        actual = segment(other, sid)
+        # The words and base actors agree; participation is occurrence-specific.
+        assert {k: v for k, v in actual.items() if k != "participation"} == {
+            k: v for k, v in same.items() if k != "participation"
+        }
+        assert participation.derive(other, actual) == actual.get("participation", {})
+        assert delivery.derive(other, actual) == {}
+
+        # Even an identical copied segment cannot borrow the Preface's delivery rule.
+        probe = deepcopy(other)
+        copied = segment(probe, sid)
+        copied.clear()
+        copied.update(deepcopy(same))
+        assert copied == same
+        assert delivery.derive(probe, copied) == {}
+        assert delivery.check_doc(probe) == ([], 0)
+        assert other == pristine
+    assert text(text_id) == pristine
+    assert text(DIALOGUE) == dialogue
 
 
 def selected_prefaces() -> set[str]:

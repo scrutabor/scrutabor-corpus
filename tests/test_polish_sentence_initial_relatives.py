@@ -47,6 +47,8 @@ SENTENCE_STARTS = (
     (P + "septem-dolorum-beatae-mariae-virginis-postcommunio", "s01", "w023"),
     (P + "septem-dolorum-beatae-mariae-virginis-secreta", "s01", "w038"),
     (P + "vigilia-nativitatis-secreta", "s01", "w019"),
+    ("proprium.sancti-bernardini-senensis-collecta", "s01", "w025"),
+    ("proprium.sancti-paschalis-baylon-collecta", "s01", "w034"),
 )
 # The closing prayer of the Litany of the Holy Name already reads `Który` at its prose sentence
 # start (familiar wording, pinned with the other initial capitals of the relative-caption suite).
@@ -204,7 +206,7 @@ def corpus_texts(corpus):
 
 def test_finite_inventory_is_complete_and_outside_the_familiar_core():
     sites = [site[:3] for site in (*SENTENCE_STARTS, *CONTINUATIONS)]
-    assert (len(SENTENCE_STARTS), len(CONTINUATIONS), len(set(sites))) == (29, 2, 31)
+    assert (len(SENTENCE_STARTS), len(CONTINUATIONS), len(set(sites))) == (31, 2, 33)
     provenance = json.loads((ROOT / "languages/pl/translation-provenance.json").read_text())
     rows = {row["site"]: row for row in provenance["sites"]}
     for text, segment_id, _ in sites:

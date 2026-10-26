@@ -30,6 +30,18 @@ from kalendarium.dismissal import canonical_inputs
 from kalendarium.roman import year
 from kalendarium.sanctorale import FESTA
 from kalendarium.temporale import Dies
+from kalendarium.weekday_vigil import (
+    IMPEDED as IMPEDED_VIGIL,
+)
+from kalendarium.weekday_vigil import (
+    UNDER as UNDER_VIGIL,
+)
+from kalendarium.weekday_vigil import (
+    VIGIL,
+)
+from kalendarium.weekday_vigil import (
+    require_inputs as require_vigil_inputs,
+)
 
 TITLE_SCHEMA = "1.1.0"
 # RG 18: the resumed Sundays after Epiphany take the places after the Twenty-third Sunday after
@@ -51,14 +63,21 @@ ADVENT_WEEKS = ("i", "ii", "iii", "iv")
 
 def slot_bodies(corpus: Path) -> list[str]:
     """Every dotted text a commemoration may say: the addressed slots, and the orations of
-    each impeded Sunday, each impeded feast and each Advent feria's Mass whose formulary is in
-    this edition."""
+    each impeded Sunday, each impeded feast, each Advent feria's Mass, and the required
+    weekday Vigil. Lower saints have addressed slots; missing bindings stop emission."""
     from build_reader import store
 
     forms = {form["id"]: form for form in store.formularies(corpus)}
     found: list[str] = []
-    for doc in authored(corpus):
-        if displaced(doc):
+    docs = authored(corpus)
+    require_vigil_inputs(corpus, docs, list(forms.values()), False)
+    for doc in docs:
+        if doc["occurrence"].get("kind") == IMPEDED_VIGIL:
+            texts = formulary_orations(forms.get(VIGIL))
+            if texts is None:
+                raise ValueError("commemorationes: required Vigil orations unavailable")
+            found.extend(text.replace("/", ".", 1) for text in texts)
+        elif displaced(doc):
             for sunday in sorted(set(impeded_sundays(doc).values())):
                 texts = sunday_orations(forms.get(sunday)) or []
                 found.extend(text.replace("/", ".", 1) for text in texts)
@@ -233,10 +252,15 @@ def expected(corpus: Path) -> dict:
     impeded feast from the feasts' printed dates and the computed second-class Sundays, and
     restate RG 21, 24–25 and 299 for the Advent feria by counting weeks from the year's First
     Sunday of Advent."""
-    forms, _ = canonical_inputs(corpus)
+    from build_reader import store
+
+    forms, calendar = canonical_inputs(corpus)
     masses = sorted(form["id"] for form in forms)
     by_id = {form["id"]: form for form in forms}
     commemorations = authored(corpus)
+    vigil_available = require_vigil_inputs(
+        corpus, commemorations, store.formularies(corpus), VIGIL in calendar["formularies"]
+    )
     names = [decision["id"] for decision in DECISIONS]
     admitted = names.index("admitted")
     not_admitted = names.index("not-admitted")
@@ -269,7 +293,31 @@ def expected(corpus: Path) -> dict:
             for index, doc in enumerate(commemorations):
                 rule = doc["occurrence"]
                 resolution: str | None = None
-                if rule.get("kind") == "impeded-feast":
+                if rule.get("kind") == IMPEDED_VIGIL:
+                    # Independent of the producer's occurrence map and temporal candidates.
+                    if (
+                        day.when != easter(ending) + timedelta(days=38)
+                        or day.when.isoweekday() != 3
+                        or day.dies_class != 2
+                        or day.formulary not in rule["feasts"]
+                        or _printed(day.formulary, day.when.year) != day.when
+                    ):
+                        continue
+                    occurrences.append([iso, index])
+                    resolution = VIGIL
+                    plan = [admitted, admitted, not_admitted]
+                elif rule.get("kind") == UNDER_VIGIL:
+                    if (
+                        day.formulary != VIGIL
+                        or day.dies_class != 2
+                        or day.when.isoweekday() != 3
+                        or day.when != easter(ending) + timedelta(days=38)
+                        or (day.when.month, day.when.day) != (rule["month"], rule["day"])
+                    ):
+                        continue
+                    occurrences.append([iso, index])
+                    plan = [admitted, admitted, not_admitted]
+                elif rule.get("kind") == "impeded-feast":
                     if (
                         day.when.isoweekday() != 7
                         or day.dies_class != 2
@@ -313,7 +361,7 @@ def expected(corpus: Path) -> dict:
                                 f"commemorationes: {resolution} is not in this edition"
                             )
                         plan = [admitted] * len(SITUATIONS)
-                elif "kind" in rule:
+                elif rule.get("kind") == "displaced-sunday":
                     if day.formulary not in rule["feasts"] or day.when.isoweekday() != 7:
                         continue
                     occurrences.append([iso, index])
@@ -323,6 +371,8 @@ def expected(corpus: Path) -> dict:
                         any(c["role"] == role for c in sunday["components"]) for role in ROLES
                     )
                     plan = [admitted if complete else unavailable] * len(SITUATIONS)
+                elif "kind" in rule:
+                    raise ValueError("commemorationes: unknown canonical occurrence kind")
                 elif (iso, index) not in dates:
                     continue
                 elif doc["rank"] == "privileged":
@@ -330,8 +380,13 @@ def expected(corpus: Path) -> dict:
                 elif day.dies_class == 1 or day.when.isoweekday() == 7:
                     continue
                 elif day.when + timedelta(days=1) == easter(day.when.year) + timedelta(days=39):
-                    # The eve of Ascension Thursday: its Vigil, absent here, takes the place.
-                    plan = [unavailable, unavailable, not_admitted]
+                    # De Tempore takes the sole place; retain the old absence branch only
+                    # while no canonical Vigil/dependency interface has been enabled.
+                    plan = (
+                        [not_admitted] * len(SITUATIONS)
+                        if vigil_available
+                        else [unavailable, unavailable, not_admitted]
+                    )
                 else:
                     plan = [admitted, admitted, not_admitted]
                 for form in forms:

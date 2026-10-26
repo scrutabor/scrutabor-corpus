@@ -2,6 +2,7 @@
 
 import json
 import shutil
+from copy import deepcopy
 from pathlib import Path
 
 import pytest
@@ -99,6 +100,39 @@ def body(path):
     )
 
 
+def historical_word_records(doc):
+    """Reverse only the exact later contextual adjective on a checked copy."""
+    expected = {
+        "id": "w022",
+        "form": "devóta",
+        "lemma": "devotus",
+        "morph": {"pos": "adj", "case": "abl", "gender": "f", "number": "sg"},
+        "head": "w023",
+    }
+    sequence = deepcopy(words(doc))
+    (selected,) = [word for word in sequence if word["id"] == "w022"]
+    assert selected == expected, "contextual adjective"
+    assert doc["editorial"]["words"]["w022"] == {
+        "analysis": {
+            "confidence": "high",
+            "sources": ["editorial", "whitakers", "collatinus"],
+            "review": "pending",
+        }
+    }, "pending adjective analysis"
+    selected["lemma"] = "devoveo"
+    selected["morph"] = {
+        "pos": "verb",
+        "case": "abl",
+        "gender": "f",
+        "number": "sg",
+        "tense": "perf",
+        "voice": "pass",
+        "mood": "part",
+        "conj": 2,
+    }
+    return sequence
+
+
 def assert_prayer(doc):
     sequence = words(doc)
     expected = [f"w{n:03d}" for n in range(1, 44)]
@@ -106,8 +140,9 @@ def assert_prayer(doc):
     assert [word["id"] for word in sequence] == expected
     assert doc["ids"]["next"] == 53
     assert sequence[43] == NEW_WORD
-    # Freeze all 51 pre-existing word records, not just their spellings.
-    assert digest([word for word in sequence if word["id"] != "w052"]) == LEGACY_WORDS
+    # Retain the original 51-record pin after the exact annotation-only inverse.
+    historical = historical_word_records(doc)
+    assert digest([word for word in historical if word["id"] != "w052"]) == LEGACY_WORDS
     assert (
         digest(
             [
@@ -184,7 +219,28 @@ def prayer(tmp_path):
 
 def test_stable_word_insertion_and_existing_prayer_are_exact(prayer):
     root, _ = prayer
-    assert_prayer(read(root / CORE))
+    doc = read(root / CORE)
+    saved = deepcopy(doc)
+    assert_prayer(doc)
+    for damage in ("old-lemma", "old-participle", "promoted-review", "lost-confirmation"):
+        changed = deepcopy(doc)
+        selected = next(word for word in words(changed) if word["id"] == "w022")
+        if damage == "old-lemma":
+            selected["lemma"] = "devoveo"
+        elif damage == "old-participle":
+            selected["morph"].update({"pos": "verb", "mood": "part"})
+        elif damage == "promoted-review":
+            changed["editorial"]["words"]["w022"]["analysis"]["review"] = "accepted"
+        else:
+            changed["editorial"]["words"]["w022"]["analysis"]["sources"] = ["editorial"]
+        assert changed != saved, "annotation mutation changes its copy"
+        with pytest.raises(AssertionError):
+            assert_prayer(changed)
+        changed.clear()
+        changed.update(deepcopy(saved))
+        assert_prayer(changed)
+        assert changed == saved
+    assert doc == saved
 
 
 @pytest.mark.parametrize("change", ["delete", "renumber", "move", "gender", "old-body"])

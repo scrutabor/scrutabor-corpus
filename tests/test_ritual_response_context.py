@@ -56,3 +56,56 @@ def test_sanctus_and_paschal_ritual_are_not_rewritten_by_preparation_exclusion()
         assert "speaker" not in seg and "voice" not in seg
         assert derive(dismissal, seg) == {}
     assert segment(dismissal, "s05")["delivery"] == {"cantu": {"voice": "cantus"}}
+
+
+@pytest.mark.parametrize(
+    "slug,sid,expected_words,voice",
+    [
+        ("deo-gratias-epistolae", "s01", [("w001", "Deo"), ("w002", "grátias")], None),
+        (
+            "evangelium-ultimum",
+            "s03",
+            [("w003", "Et"), ("w004", "cum"), ("w005", "spíritu"), ("w006", "tuo")],
+            "clara",
+        ),
+        (
+            "evangelium-ultimum",
+            "s06",
+            [("w012", "Glória"), ("w013", "tibi"), ("w014", "Dómine")],
+            "clara",
+        ),
+        ("evangelium-ultimum", "s15", [("w188", "Deo"), ("w189", "grátias")], "clara"),
+    ],
+    ids=["post-epistle", "last-gospel-greeting", "last-gospel-gloria", "last-gospel-deo-gratias"],
+)
+def test_occurrence_nongrant_preserves_source_and_rejects_old_sung_claim(
+    slug, sid, expected_words, voice
+):
+    doc = load(slug)
+    before = deepcopy(doc)
+    seg = segment(doc, sid)
+    assert [(word["id"], word["form"]) for word in seg["words"]] == expected_words
+    assert seg["speaker"] == "minister"
+    assert seg.get("voice") == voice
+    assert ("voice" in seg) is (voice is not None)
+    assert "delivery" not in seg
+    expected = {"lecta": {"gradus": 1, "source": "DMS 31 a"}}
+    assert seg["participation"] == derive(doc, seg) == expected
+    assert check_doc(doc)[0] == []
+    assert doc == before
+
+    damaged = deepcopy(doc)
+    segment(damaged, sid)["participation"]["cantu"] = {"gradus": 1, "source": "DMS 25 a"}
+    errors, _attributed = check_doc(damaged)
+    assert len(errors) == 1 and errors[0].startswith(f"{sid}: participation ")
+    damaged["segments"] = deepcopy(before["segments"])
+    assert damaged == before
+    assert check_doc(damaged)[0] == []
+
+
+def test_ordinary_sung_responses_are_not_excluded_by_formula():
+    for slug, sid in [("ite-missa-est", "s06"), ("praefatio-dialogus", "s03")]:
+        doc = load(slug)
+        before = deepcopy(doc)
+        assert derive(doc, segment(doc, sid))["cantu"] == {"gradus": 1, "source": "DMS 25 a"}
+        assert doc == before

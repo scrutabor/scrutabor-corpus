@@ -18,11 +18,14 @@ each is decided on a second-class weekday only: a first-class day admits no ordi
 commemoration and a second-class Sunday only a second-class feast (RG 111 a–b, 434), and no pair
 is published for it there. On that weekday it is admitted in low and sung conventual Masses and
 not in a sung Mass that is not conventual (RG 108), unless a de Tempore commemoration takes the
-single place (RG 111 c, 113–114). The impeded Vigil of the Ascension is such a day (RG 31–33);
-its orations are not yet in this edition, so the decision states that a required de Tempore
-commemoration is unavailable and the ordinary one is omitted, rather than presenting the Mass as
-complete. At most one commemoration is admitted for a date, Mass and situation: a second would
-need an order and a conclusion plan this contract does not model.
+single place (RG 111 c, 113–114). The impeded Ascension Vigil is such an ordinary day (RG 31–33):
+when enabled, its own canonical orations take that place and a competing Petronilla is not
+admitted. The explicit
+weekday-Vigil relations require their complete source-role/body bindings before any emission;
+missing lower saints are never relabelled unavailable de Tempore. The legacy unavailable branch
+remains only while the complete Vigil feature has not been enabled. At most one commemoration
+is admitted for a date, Mass and situation: a second would need an order and a conclusion plan
+this contract does not model.
 
 The impeded Sunday's three orations are not fixed texts. Each pair names the formulary of the
 Sunday that the calendar would have kept that day, which is not always its position in the
@@ -63,6 +66,24 @@ from kalendarium.roman import year
 from kalendarium.sanctorale import occurrences as sanctoral_occurrences
 from kalendarium.temporale import Dies
 from kalendarium.temporale import year as temporal_year
+from kalendarium.weekday_vigil import (
+    IMPEDED as IMPEDED_VIGIL,
+)
+from kalendarium.weekday_vigil import (
+    UNDER as UNDER_VIGIL,
+)
+from kalendarium.weekday_vigil import (
+    VIGIL,
+)
+from kalendarium.weekday_vigil import (
+    kind as vigil_kind,
+)
+from kalendarium.weekday_vigil import (
+    occurrences as weekday_vigil_occurrences,
+)
+from kalendarium.weekday_vigil import (
+    require_inputs as require_vigil_inputs,
+)
 
 SCHEMA = "2.1.0"
 PROFILES = [{"id": "ordinary-separate-conclusions"}]
@@ -276,7 +297,7 @@ def advent_feria_decision(form: dict | None, mass: str, day: str) -> list[int]:
 
 
 def unavailable_de_tempore(when: date) -> str | None:
-    """The de Tempore day absent from this edition that falls on `when`, if any."""
+    """Legacy de Tempore absence dates, used only while the Vigil feature is not enabled."""
     pascha = easter(when.year)
     for name, offset in UNAVAILABLE_DE_TEMPORE.items():
         if when == pascha + timedelta(days=offset):
@@ -284,7 +305,9 @@ def unavailable_de_tempore(when: date) -> str | None:
     return None
 
 
-def decision(commemoration: dict, when: date, dies_class: int) -> list[int] | None:
+def decision(
+    commemoration: dict, when: date, dies_class: int, *, vigil_available: bool = False
+) -> list[int] | None:
     """The decision in each situation for a represented Mass on an occurrence date.
 
     None means the day admits no such commemoration and no pair is published for it.
@@ -298,6 +321,8 @@ def decision(commemoration: dict, when: date, dies_class: int) -> list[int] | No
     if dies_class != 2 or when.weekday() == 6:
         return None
     if unavailable_de_tempore(when) is not None:
+        if vigil_available:
+            return [NOT_ADMITTED] * len(SITUATIONS)
         return [DE_TEMPORE_UNAVAILABLE, DE_TEMPORE_UNAVAILABLE, NOT_ADMITTED]
     return [ADMITTED, ADMITTED, NOT_ADMITTED]
 
@@ -348,6 +373,8 @@ def entries(commemorations: list[dict]) -> list[dict]:
 
 
 def calendar_table(forms: list[dict], calendar: dict, *, corpus: Path) -> dict:
+    from build_reader import store
+
     masses = _masses(forms)
     actual_forms, actual_calendar = canonical_inputs(corpus)
 
@@ -361,16 +388,28 @@ def calendar_table(forms: list[dict], calendar: dict, *, corpus: Path) -> dict:
             "commemorationes: inputs differ from canonical authored catalogue/calendar"
         )
     commemorations = authored(corpus)
+    vigil_available = require_vigil_inputs(
+        corpus, commemorations, store.formularies(corpus), VIGIL in calendar["formularies"]
+    )
     resolutions = {
         index: (
-            impeded_sundays(doc)
+            {
+                day: mass
+                for ending in YEARS
+                for day, mass in weekday_vigil_occurrences(doc, ending).items()
+            }
+            if vigil_kind(doc) in (IMPEDED_VIGIL, UNDER_VIGIL)
+            else impeded_sundays(doc)
             if displaced(doc)
             else impeded_feasts(doc)
             if impeded(doc)
             else advent_ferias(doc)
         )
         for index, doc in enumerate(commemorations)
-        if displaced(doc) or impeded(doc) or advent_feria(doc)
+        if displaced(doc)
+        or impeded(doc)
+        or advent_feria(doc)
+        or vigil_kind(doc) in (IMPEDED_VIGIL, UNDER_VIGIL)
     }
     occurrences = sorted(
         [
@@ -396,7 +435,12 @@ def calendar_table(forms: list[dict], calendar: dict, *, corpus: Path) -> dict:
                     continue
                 resolved: str | None = None
                 plan: list[int] | None
-                if index in resolutions and displaced(doc):
+                if index in resolutions and vigil_kind(doc) == UNDER_VIGIL:
+                    plan = [ADMITTED, ADMITTED, NOT_ADMITTED]
+                elif index in resolutions and vigil_kind(doc) == IMPEDED_VIGIL:
+                    resolved = resolutions[index][row[0]]
+                    plan = [ADMITTED, ADMITTED, NOT_ADMITTED]
+                elif index in resolutions and displaced(doc):
                     resolved = resolutions[index][row[0]]
                     available = sunday_orations(by_id.get(resolved)) is not None
                     plan = [ADMITTED if available else DE_TEMPORE_UNAVAILABLE] * len(SITUATIONS)
@@ -407,7 +451,9 @@ def calendar_table(forms: list[dict], calendar: dict, *, corpus: Path) -> dict:
                     resolved = resolutions[index][row[0]]
                     plan = impeded_feast_decision(by_id.get(resolved), row[0], row[3])
                 else:
-                    plan = decision(doc, date.fromisoformat(row[0]), row[3])
+                    plan = decision(
+                        doc, date.fromisoformat(row[0]), row[3], vigil_available=vigil_available
+                    )
                 if plan is None:
                     continue
                 for form in by_key.get(calendar["formularies"][row[1]], []):

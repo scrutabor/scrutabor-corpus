@@ -154,7 +154,7 @@ def test_unknown_or_conflicting_ownership_does_not_suppress_absorption(index, fi
 
 def test_direct_glosses_do_not_borrow_an_unrelated_group():
     text, layer = subject()
-    layer["segments"]["s01"]["alignments"] = []
+    del layer["segments"]["s01"]["alignments"]
     layer["words"].update(
         w003={"gloss": "let your voice sound"},
         w004={"gloss": "voice"},

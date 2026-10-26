@@ -175,7 +175,7 @@ def test_real_grouped_opening_and_admitted_relative_capital():
         "gloss": "Of Your most holy Mother",
     }
     assert unit(layer, "s01", ("w001", "w002", "w003")) == expected
-    assert unit(layer, "s01", ("w024",))["gloss"] == "Who"
+    assert unit(layer, "s01", ("w024",))["gloss"] == "You"
     broken = deepcopy(layer)
     broken["words"]["w001"]["gloss"] = "Of"
     with pytest.raises(AssertionError) as caught:

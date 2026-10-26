@@ -73,15 +73,15 @@ def test_the_authored_contract_is_exact_and_reaches_its_propers():
     assert checker.check(CORPUS) == (
         [],
         {
-            "commemorations": 5,
-            "slot_uses": 15,
-            "proper_slots": 5,
-            "reference_slots": 1,
-            "calendar_slots": 9,
+            "commemorations": 32,
+            "slot_uses": 96,
+            "proper_slots": 59,
+            "reference_slots": 25,
+            "calendar_slots": 12,
         },
     )
     errors, counts = check_formularies(CORPUS)
-    assert errors == [] and counts["proper_texts"] == 1008
+    assert errors == [] and counts["proper_texts"] == 1071
     for language, title in (("pl", "Litanie Większe"), ("en", "Greater Litanies")):
         localized = json.loads(
             (CORPUS / "languages" / language / "commemorationes" / f"{LM}.json").read_text(
@@ -111,8 +111,35 @@ def test_every_occurrence_is_published_and_only_represented_masses_pair(table):
         "dominica-impedita",
         "feria-adventus",
         "festum-impeditum",
-        LM,
+        "litaniae-maiores",
+        "sancta-angela-mericia",
+        "sancta-catharina-senensis",
+        "sancta-maria-magdalena-de-pazzis",
+        "sancta-monica",
         "sancta-petronilla",
+        "sancti-alexander-eventius-theodulus-et-iuvenalis",
+        "sancti-marcellinus-petrus-et-erasmus",
+        "sancti-nereus-achilleus-domitilla-et-pancratius",
+        "sanctus-antoninus",
+        "sanctus-athanasius",
+        "sanctus-augustinus-cantuariensis",
+        "sanctus-beda-venerabilis",
+        "sanctus-bernardinus-senensis",
+        "sanctus-bonifatius-martyr",
+        "sanctus-felix-i-papa",
+        "sanctus-gregorius-nazianzenus",
+        "sanctus-gregorius-vii",
+        "sanctus-ioannes-baptista-de-la-salle",
+        "sanctus-paschalis-baylon",
+        "sanctus-petrus-caelestinus",
+        "sanctus-petrus-martyr",
+        "sanctus-philippus-nerius",
+        "sanctus-pius-v",
+        "sanctus-robertus-bellarmino",
+        "sanctus-stanislaus",
+        "sanctus-ubaldus",
+        "sanctus-venantius-martyr",
+        "vigilia-ascensionis-impedita",
     ]
     first = table["commemorations"][LM_INDEX]
     assert (first["id"], first["title"]) == (LM, "Litaniæ maiores")

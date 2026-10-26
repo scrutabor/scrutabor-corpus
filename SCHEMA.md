@@ -178,7 +178,8 @@ independent copies of those totals.
 
 ## Commemoration assemblies
 
-`commemorationes/<id>.json` (commemoration schema `1.4.0`) is the canonical
+`commemorationes/<id>.json` (legacy commemoration schema `1.4.0`, or the closed
+weekday-Vigil branches of `1.5.0` described below) is the canonical
 contract for a set of orations that joins a Mass of the day under the rubrics
 and is addressed by its own occurrence rule, not by the winning Mass. The first
 is the Greater Litanies: Rubricae generales 80 fix it on April 25, moved to the
@@ -220,7 +221,9 @@ Exact fields: `commemoration_schema`, `id` (the file name), `title`, `rank`
 occurrence is a fixed date (`month`, `day`, `transfer`), the kind
 `{"kind": "displaced-sunday", "feasts": [...]}`, the kind
 `{"kind": "impeded-feast", "feasts": [...]}` or the kind
-`{"kind": "advent-feria", "feasts": [...]}`, and nothing else. The transfer
+`{"kind": "advent-feria", "feasts": [...]}`. The two explicitly defined
+weekday-Vigil branches below require `1.5.0`; no unknown kind is admitted.
+The transfer
 rule is `easter-sunday-or-monday-to-tuesday` for the one privileged fixed-date
 occurrence this edition models and `none` for an ordinary commemoration, which
 is never transferred. An ordinary commemoration is admitted only on a fixed date
@@ -261,7 +264,9 @@ Secret is the printed Haec munera, `proprium.dominica-i-passionis-secreta`);
 date to the oration of that role which the own formulary of the impeded Sunday,
 of the impeded feast or of the Advent feria's Mass assembles, never a copy. The
 `calendar` relation is used by all three slots of the `displaced-sunday`,
-`impeded-feast` and `advent-feria` kinds and by nothing else. `rubrics` records
+`impeded-feast`, `advent-feria` and `impeded-weekday-vigil` kinds and by
+nothing else. The `under-weekday-vigil` kind uses addressed slots, not null
+calendar slots. `rubrics` records
 the citations
 for `date`, `scope`, `rank`, `admission` and `conclusion` as nonempty strings. A
 Proper text reached only by a commemoration slot counts as reached. Each
@@ -313,9 +318,15 @@ text), `invitatio-oremus` (`ordinarium.aufer-a-nobis` s02), `responsio-gloria-ti
 text, and `initium-sancti-evangelii-secundum-ioannem` (`ordinarium.evangelium-ultimum` s05).
 An announcement's class is the lemma of its owner's first word, read from the owner: `lectio`
 heads an Epistle, `sequentia`, `initium` and `passio` a Gospel. The owner's base `speaker` and `voice` must be the
-role's low-Mass actor with `clara`. An answer's owner carries the faithful's participation in
-both forms and a celebrant's line carries none. These are read from the owner and never stored
-in the library. Every published language package must publish the owner text with a nonempty
+role's low-Mass actor with `clara`. An answer normally inherits the faithful's participation
+from its owner; a celebrant's line carries none. The closed exception is
+`responsio-gloria-tibi`: its Last-Gospel owner s06 carries only the low-Mass grant.
+The distinct ordinary-Gospel occurrence in `evangelium-annuntiatio` derives its own
+sung first-degree grant from its exact `DMS 16 b, 25 a, 26` occurrence source.
+It requires the exact unit, owner, whole word range, event and both deliveries;
+the cut is cloned and the owner is never changed. No other context gains a grant
+from those words. Participation is not copied into the library or guessed from
+a formula string. Every published language package must publish the owner text with a nonempty
 translation of the segment, and an alignment group that touches the segment must lie wholly
 inside it.
 
@@ -426,6 +437,60 @@ the canonical days and Masses without calling the producer selector. Both
 neutral and current PL/EN packages must declare and transport both complete
 bodies. Missing resource, body or localized declaration fails closed.
 
+## Closed weekday-Vigil relations
+
+The only new authored1.5 kinds are:
+
+* `{"kind":"impeded-weekday-vigil","vigil":"vigilia-ascensionis","feasts":[...]}`,
+  with exactly the identity-ordered keys `beata-maria-virgo-regina` and
+  `sanctorum-philippi-et-iacobi-apostolorum`. Its proposed commemoration
+  identity is `vigilia-ascensionis-impedita`, with ordinary rank, no
+  `text_prefix`, and three calendar/null slots. It occurs only where one of
+  those II-class feasts actually wins over the Easter+38 Wednesday Vigil.
+  A Sunday/I-class collision omits the Vigil entirely; it is not transferred.
+* `{"kind":"under-weekday-vigil","vigil":"vigilia-ascensionis","month":M,"day":D}`,
+  ordinary with three addressed proper/reference slots. It occurs only when
+  the actual winning calendar key is that Vigil on the declared source date.
+  No independent fixed-date III-class feast Mass is thereby introduced.
+
+All other exact fields, role order, proper/reference address rules, separate
+conclusions and localized title/context1.1 contracts remain unchanged. Legacy1.4
+documents retain their exact old kind/schema rules. Reader selection2.1
+remains unchanged: authored occurrence kinds do not enter the transport.
+
+The closed required dates are Apr29/30; May2/3/4/5/7/9/10/12/13/14/15/16/17/
+18/19/20/25/26/27/28/29/30; Jun1/2. Their 26 source identities include the
+printed joint groups. Only the one source-selected group may use the weekday's
+single ordinary place (RG 108–109, 111c); a secondary saint is not added.
+The Vigil's three orations reference the exact EasterV Collect, Secret and
+Postcommunion, while its own Mass identity and Ordinary rules remain distinct.
+
+Before any complete resource is emitted, the canonical source-role binding
+document `kalendarium/ascension-vigil-orations.json` must exist with exactly
+`schema_version:"1.0.0"`, `vigil:"vigilia-ascensionis"` and `routes`.
+The routes are exactly those26 dates in civil order; every row has exactly
+integer `month`, integer `day`, `commemoration` and `orations`.
+`orations` has exactly `collecta`, `secreta`, `postcommunio`, each a
+real dotted Proper text ID. A row binds one actual authored
+under-weekday-vigil commemoration and its exact three role targets.
+These must bind independently checked source-selected bodies, not placeholder
+IDs. Creating this document grants no source-review, rights or translation-
+review status. Its78 exact targets still need an independent source-role oracle,
+not regeneration from this same input. No unfilled binding document is valid.
+All neutral bodies, exactly declared PL/EN layers and nonblank translations
+for every selected neutral segment must exist. Missing bindings, a wholly
+deleted route or missing/wrong role/body stop emission before a resource can
+masquerade as an empty complete plan.
+
+The independent reader restates both weekday relations from actual dates and
+Roman winners, without consuming the producer's occurrence map. Its complete
+resource equality, existing typed invariants, body/manifest verification and
+single-place limit remain compulsory. The three decisions are always
+admitted/admitted/not-admitted for a selected ordinary commemoration.
+The application retains both described sung variants when they differ;
+low/sung does not infer conventual status. No new procession, local-calendar,
+conventual or ceremony setting follows from either relation.
+
 ## Reader commemoration selection
 
 Reader edition 5.12.0 added `base.commemorationes: "commemorationes.json"` and
@@ -473,11 +538,14 @@ first-class day or a Sunday no pair is published for it (RG 111 a–b, 434, and
 sung conventual Masses and `not-admitted` in a sung Mass that is not
 conventual, unless a de Tempore commemoration takes the single second-class
 place (RG 111 c, 113–114).
-The impeded Vigil of the Ascension is such a day (RG 31–33); its orations are
-not in this edition, so the decision is `omitted-required-de-tempore-unavailable`:
-the Mass owes a commemoration the edition cannot yet supply, and the ordinary
-one is omitted. It is never an empty plan. For St Petronilla this gives 43 admitted dates with the Queenship
-as principal and the one marker on 2079-05-31.
+The impeded Ascension Vigil is ordinary (RG 31–33, 107–109). Before that
+feature is enabled, the legacy absence decision truthfully states that a
+required de Tempore commemoration is unavailable. With the complete canonical
+Vigil and required body bindings enabled, its own resolved pair is admitted
+in low and sung conventual Masses; Petronilla on 2079-05-31 has three
+`not-admitted` decisions, not an unavailable marker or a second admitted
+place. Her other 43 admitted Queenship dates remain unchanged. A missing
+lower saint is never encoded as unavailable de Tempore; it stops emission.
 
 The impeded Sunday is resolved per pair. Its pair names the Sunday that the
 calendar would have kept that day, which is not always the day's position in the
@@ -689,6 +757,26 @@ plan still binds every contribution and reference. A missing digest or a
 digest of an unrelated object is rejected. There is no inferred first-archive
 subject and no new review approval. Scan and other-provider evidence digests
 retain their own existing meanings; absent legacy inventories remain unknown.
+
+The explicit `compendium-html-1` document contract covers only seven named Latin
+witnesses in the retained official English Compendium HTML. Its exact source
+item/URL/whole-original digest, section and Latin-container digest, selected
+literal digest, word coverage and transcript source headers must match the
+closed inspected scopes. The record fields are `contract`, `use`,
+`digital_item`, `sha256`, `media_type`, `section`,
+`container_sha256` and `reading_sha256`. The last digest covers the decoded
+selected literal with collapsed whitespace and one final LF; it is distinct
+from the complete transcript digest. Magnificat and the Apostolic Creed
+remain partial witnesses. Sub tuum's separate 24-word bibliographic use does
+not create another witness or support its devotional continuation.
+
+This is a `compendium-html-identity-inventory-1` assertion payload, not a
+runtime extraction of private original bytes. The complete modern publication
+is not distributed with the corpus. Source adjudication additionally requires
+independent private verification of the complete original and all eight
+cited Latin containers/ranges. Matching assertions do not promote pending
+review, renew historical viewing claims or establish publication permission.
+All earlier PDF/raw contracts and unsupported-provider rejection remain intact.
 
 An absent inventory is permitted only while review remains pending. It is
 unknown, not an empty inventory. Pending identities cannot be used as reviewed
@@ -922,6 +1010,14 @@ localization, editorial
   in transcription, archive and attribution checks. Deleting a marker does not
   downgrade a registered witness to legacy checking. New raw snapshots belong
   in subdirectories so existing top-level filename bindings remain unchanged.
+- A literal generic `@file:section` reference may explicitly repeat its
+  originating section. Exactly one colon is allowed; filename and selector
+  must both be nonempty, and explicit, originating and destination sections
+  must agree exactly. The full original cue remains evidence, and the real
+  destination upstream must end in the selected filename plus `.txt`.
+  Foreign/missing sections and substitution suffixes are unsupported. Plain
+  `@file` references keep their same-section behavior; `$` Mass/Office rules,
+  closed profiles, source-subject fields and performer boundaries do not change.
 - An individual binding may opt into **`contract: "raw-reading-2"`** without
   changing registry version 1 or other bindings. Evidence and reading items
   may then add a `fragment` on one physical line (`first == last`). Coordinates
@@ -1100,6 +1196,24 @@ localization, editorial
   data, and one further derived digital collation aid binds the Mass Ordo archive.
   No use may borrow another contribution's hash or the whole-reading hash. This
   mechanism confers no source-review, linguistic, ritual, or release approval.
+- An individual binding may opt into **`raw-reading-9`** for exactly the two
+  pinned inherited Mass Secrets: Maternity and All Saints. Closed fields are
+  witness, revision, contract and profile. The only profile is
+  `roman1960-latin-missa-two-inherited-secrets`; it fixes each witness identity,
+  every feast/Common section through its literal inheritance cue, complete
+  archive digests and physical upstream paths, the Mass Ordo Secret context,
+  and the complete Mass `[Per Dominum]` formula and response. No arbitrary
+  caller, cue, replacement, path alias or macro execution is accepted. The
+  three textual pieces are joined in fixed order with only literal initial
+  `r. ` and `R. ` removed and whitespace normalized. The complete witness
+  body and path header must agree. Source identity records the full closed
+  profile, all contributing archives and exact context/pieces. The primary
+  derived-digital use binds the whole reading plus LF; its sole supplemental
+  rubric-control use binds the actual Mass Ordo archive. Both uses must
+  address that text and the same edition/revision. This text-only contract
+  returns no performer spans/fragments and is rejected by attribution before
+  range access. Contracts1–8 and their payloads are unchanged. No review,
+  ritual, rights or release approval follows.
 - An explicit source_dependencies inventory may additionally opt into a
   nonempty sorted-unique `documents` list. Each declaration has exactly contract,
   use, digital_item, sha256, media_type, pdf_page, printed, region and

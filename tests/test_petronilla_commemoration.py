@@ -1,6 +1,6 @@
 """St Petronilla's ordinary commemoration at the Queenship Mass on 31 May: the authored contract,
 the explicit decision in each Mass situation, the omission on a Sunday or first-class day, the
-2079 marker where the impeded Vigil of the Ascension takes the single place, and the owned
+2079 marker where the available impeded Vigil takes the single place, and the owned
 negative controls. The 43 admitted dates are stated literally, as the printed rules give them
 (Rubricae generales 106–114; Benziger pp. 543–544, Vatican pp. 540–541), and are compared with
 the calendar's own derivation."""
@@ -65,9 +65,9 @@ FIRST_CLASS_WEEKDAYS = {
 # The 63 Greater-Litanies (date, Mass) pairs of selection schema 1.0.0, unchanged in 2.0.0 and
 # 2.1.0.
 LITANIES_SHA256 = "99f31b8d14c69419dc53a46df618fa10ced665db90bf0fddcbd35c396f69be7f"
-# Identity order of the resource: dominica-impedita, feria-adventus, festum-impeditum,
-# litaniae-maiores, sancta-petronilla.
-LITANIES_INDEX, SP_INDEX = 3, 4
+# The complete 32-entry resource is identity-ordered: Litanies remains index 3,
+# and Petronilla follows the four new sancta entries.
+LITANIES_INDEX, SP_INDEX = 3, 8
 # The impeded Sunday's pairs (tests/test_dominica_impedita.py).
 IMPEDED_SUNDAY_PAIRS = 75
 # The impeded feast's pairs (tests/test_festum_impeditum.py).
@@ -110,9 +110,9 @@ LOW_AND_CONVENTUAL = {
     "cantu-conventualis": "admitted",
     "cantu-non-conventualis": "not-admitted",
 }
-OMITTED_FOR_VIGIL = {
-    "lecta": "omitted-required-de-tempore-unavailable",
-    "cantu-conventualis": "omitted-required-de-tempore-unavailable",
+NOT_ADMITTED_FOR_VIGIL = {
+    "lecta": "not-admitted",
+    "cantu-conventualis": "not-admitted",
     "cantu-non-conventualis": "not-admitted",
 }
 
@@ -122,7 +122,7 @@ def assert_plan(table):
     assert sorted(plan) == sorted([*ADMITTED, MARKER]), "Petronilla decided on her dates"
     for day in ADMITTED:
         assert plan[day] == (QUEENSHIP, 0, LOW_AND_CONVENTUAL), "low and conventual only"
-    assert plan[MARKER] == (QUEENSHIP, 0, OMITTED_FOR_VIGIL), "2079 marker"
+    assert plan[MARKER] == (QUEENSHIP, 0, NOT_ADMITTED_FOR_VIGIL), "2079 marker"
 
 
 def test_the_authored_contract_is_exact_and_reaches_its_three_propers():
@@ -207,12 +207,29 @@ def test_a_first_class_weekday_publishes_no_pair_for_her(table, inputs, day):
     assert day not in decided(table)
 
 
-def test_2079_is_an_explicit_omission_for_the_unavailable_vigil_not_an_empty_plan(table):
+def test_2079_explicitly_prefers_the_available_vigil_in_the_single_place(table):
+    identities = [entry["id"] for entry in table["commemorations"]]
+    assert identities.index(SP) == SP_INDEX == 8
+    vigil = "vigilia-ascensionis-impedita"
+    assert identities.index(vigil) == 31
     rows = [row for row in table["pairs"] if row[0] == MARKER]
-    assert len(rows) == 1
+    assert len(rows) == 2
+    by_identity = {identities[row[2]]: row for row in rows}
+    assert set(by_identity) == {SP, vigil}
+    names = [decision["id"] for decision in table["decisions"]]
+    assert all(table["masses"][row[1]] == QUEENSHIP for row in rows)
+    assert all(row[3] == 0 for row in rows)
+    assert [names[value] for value in by_identity[SP][4:7]] == ["not-admitted"] * 3
+    assert by_identity[SP][7] is None
+    assert [names[value] for value in by_identity[vigil][4:7]] == [
+        "admitted",
+        "admitted",
+        "not-admitted",
+    ]
+    assert by_identity[vigil][7] == "vigilia-ascensionis"
+    assert decided(table)[MARKER][2] == NOT_ADMITTED_FOR_VIGIL
+    # The legacy absence helper does not describe the enabled feature's availability.
     assert producer.unavailable_de_tempore(date(2079, 5, 31)) == "vigilia-ascensionis"
-    assert table["decisions"][rows[0][4]] == {"id": "omitted-required-de-tempore-unavailable"}
-    assert decided(table)[MARKER][2] == OMITTED_FOR_VIGIL
     assert all(producer.unavailable_de_tempore(date.fromisoformat(d)) is None for d in ADMITTED)
 
 
@@ -240,6 +257,8 @@ def test_the_greater_litanies_decisions_are_unchanged(table):
         + IMPEDED_SUNDAY_PAIRS
         + IMPEDED_FEAST_PAIRS
         + ADVENT_FERIA_PAIRS
+        + 56  # lower saints beneath the 56 source-bound Vigil winners
+        + 4  # impeded Vigil beneath the four higher feast winners
     )
 
 
@@ -248,22 +267,21 @@ def test_the_resource_equals_the_independent_reconstruction(table):
 
 
 def test_an_all_masses_ordinary_commemoration_is_rejected(table, inputs, monkeypatch):
+    sp_index = [entry["id"] for entry in table["commemorations"]].index(SP)
+    assert sp_index == SP_INDEX == 8
     bad = copy.deepcopy(table)
-    row = next(r for r in bad["pairs"] if r[0] == ADMITTED[0])
+    row = next(r for r in bad["pairs"] if r[0] == ADMITTED[0] and r[2] == sp_index)
     row[6] = 0
     with pytest.raises(ValueError, match="not admitted in a sung Mass that is not conventual"):
         producer.validate(bad)
     producer.validate(table)
     real = producer.decision
-    monkeypatch.setattr(
-        producer,
-        "decision",
-        lambda doc, when, dies_class: (
-            [0, 0, 0]
-            if doc["rank"] == "ordinary" and real(doc, when, dies_class)
-            else real(doc, when, dies_class)
-        ),
-    )
+
+    def all_masses(doc, when, dies_class, *, vigil_available=False):
+        decisions = real(doc, when, dies_class, vigil_available=vigil_available)
+        return [0, 0, 0] if doc["id"] == SP and decisions == [0, 0, 1] else decisions
+
+    monkeypatch.setattr(producer, "decision", all_masses)
     forms, calendar = inputs
     with pytest.raises(ValueError, match="not admitted in a sung Mass that is not conventual"):
         producer.calendar_table(forms, calendar, corpus=CORPUS)
@@ -272,25 +290,25 @@ def test_an_all_masses_ordinary_commemoration_is_rejected(table, inputs, monkeyp
 
 
 def test_an_ignored_single_place_is_rejected(table, inputs, monkeypatch):
+    sp_index = [entry["id"] for entry in table["commemorations"]].index(SP)
+    assert sp_index == SP_INDEX == 8
     monkeypatch.setattr(producer, "unavailable_de_tempore", lambda when: None)
     forms, calendar = inputs
-    ignored = producer.calendar_table(forms, calendar, corpus=CORPUS)
-    with pytest.raises(AssertionError, match="2079 marker"):
-        assert_plan(ignored)
-    assert ignored != reader.expected(CORPUS)
+    with pytest.raises(ValueError, match="single commemoration"):
+        producer.calendar_table(forms, calendar, corpus=CORPUS)
     monkeypatch.undo()
     assert_plan(producer.calendar_table(forms, calendar, corpus=CORPUS))
     # A second commemoration admitted beside the first on one date, Mass and situation.
     crowded = copy.deepcopy(table)
     litany = next(r for r in crowded["pairs"] if r[2] == LITANIES_INDEX)
-    crowded["occurrences"] = sorted([*crowded["occurrences"], [litany[0], SP_INDEX]])
+    crowded["occurrences"] = sorted([*crowded["occurrences"], [litany[0], sp_index]])
     crowded["pairs"] = sorted(
-        [*crowded["pairs"], [litany[0], litany[1], SP_INDEX, 0, 0, 0, 1, None]]
+        [*crowded["pairs"], [litany[0], litany[1], sp_index, 0, 0, 0, 1, None]]
     )
     with pytest.raises(ValueError, match="single commemoration"):
         producer.validate(crowded)
     beside_marker = copy.deepcopy(table)
-    marker = next(r for r in beside_marker["pairs"] if r[0] == MARKER)
+    marker = next(r for r in beside_marker["pairs"] if r[0] == MARKER and r[2] == sp_index)
     beside_marker["occurrences"] = sorted([*beside_marker["occurrences"], [MARKER, LITANIES_INDEX]])
     beside_marker["pairs"] = sorted(
         [*beside_marker["pairs"], [MARKER, marker[1], LITANIES_INDEX, 0, 0, 0, 0, None]]
@@ -301,14 +319,16 @@ def test_an_ignored_single_place_is_rejected(table, inputs, monkeypatch):
 
 
 def test_a_wrong_date_is_rejected(table, inputs, monkeypatch):
+    sp_index = [entry["id"] for entry in table["commemorations"]].index(SP)
+    assert sp_index == SP_INDEX == 8
     substituted = copy.deepcopy(table)
     forms, calendar = inputs
     trinity = next(r for rows in calendar["years"].values() for r in rows if r[0] == "2026-05-31")
     mass = substituted["masses"].index("sanctissimae-trinitatis")
     assert calendar["formularies"][trinity[1]] == "sanctissimae-trinitatis"
     substituted["pairs"] = sorted(
-        [r for r in substituted["pairs"] if r[0] != ADMITTED[0]]
-        + [["2026-05-31", mass, SP_INDEX, 0, 0, 0, 1, None]]
+        [r for r in substituted["pairs"] if (r[0], r[2]) != (ADMITTED[0], sp_index)]
+        + [["2026-05-31", mass, sp_index, 0, 0, 0, 1, None]]
     )
     producer.validate(substituted)  # well formed, same count
     assert len(substituted["pairs"]) == len(table["pairs"])
@@ -316,7 +336,7 @@ def test_a_wrong_date_is_rejected(table, inputs, monkeypatch):
     with pytest.raises(AssertionError, match="Petronilla decided on her dates"):
         assert_plan(substituted)
     moved = copy.deepcopy(table)
-    row = next(r for r in moved["pairs"] if r[0] == ADMITTED[0])
+    row = next(r for r in moved["pairs"] if r[0] == ADMITTED[0] and r[2] == sp_index)
     row[0] = "2027-05-30"
     moved["pairs"].sort()
     with pytest.raises(ValueError, match="published occurrence"):
@@ -383,16 +403,16 @@ def test_a_slot_body_missing_from_a_language_package_fails_before_emission(tmp_p
     corpus = tmp_path / "corpus"
     for directory in (
         "commemorationes",
+        "formularies",
         "languages/pl/commemorationes",
         "languages/en/commemorationes",
     ):
         shutil.copytree(CORPUS / directory, corpus / directory)
-    slots = [
-        s["text"]
-        for path in (CORPUS / "commemorationes").glob("*.json")
-        for s in json.loads(path.read_text(encoding="utf-8"))["slots"]
-        if s["text"] is not None  # the impeded Sunday's and feast's slots are resolved per date
-    ]
+    binding = Path("kalendarium/ascension-vigil-orations.json")
+    (corpus / binding).parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(CORPUS / binding, corpus / binding)
+    slots = reader.slot_bodies(CORPUS)
+    assert len(slots) == 206
     for text in slots:
         relative = f"{text.replace('.', '/', 1)}.json"
         for prefix in ("texts/", "languages/pl/texts/", "languages/en/texts/"):
@@ -406,10 +426,25 @@ def test_a_slot_body_missing_from_a_language_package_fails_before_emission(tmp_p
         (corpus / f"languages/{language}/manifest.json").write_text(
             json.dumps(manifest, ensure_ascii=False), encoding="utf-8"
         )
+    assert reader.slot_bodies(corpus) == slots
     reader.input_bodies(corpus)
     path = corpus / "languages/pl/manifest.json"
-    manifest = json.loads(path.read_text(encoding="utf-8"))
+    before = path.read_bytes()
+    manifest = json.loads(before)
     manifest["texts"].remove("proprium.sanctae-petronillae-postcommunio")
-    path.write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
-    with pytest.raises(ValueError, match="sanctae-petronillae-postcommunio requires a declared pl"):
-        reader.input_bodies(corpus)
+    try:
+        path.write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
+        # This body is also bound to lower saints beneath the weekday Vigil,
+        # whose required-input guard runs before the general slot-body loop.
+        with pytest.raises(
+            ValueError,
+            match=(
+                r"^commemorationes: invalid authored documents: "
+                r"commemorationes: required Vigil body proprium\."
+                r"sanctae-petronillae-postcommunio: declared pl body required exactly once$"
+            ),
+        ):
+            reader.input_bodies(corpus)
+    finally:
+        path.write_bytes(before)
+    reader.input_bodies(corpus)

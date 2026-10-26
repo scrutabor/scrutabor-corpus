@@ -20,7 +20,7 @@ def binding(table, reading):
 def test_uncertain_scan_and_definite_numeric_error_project_differently():
     table = reader.resource(ROOT)
     assert table == reader.expected(ROOT)
-    assert len(table["announcements"]) == 205
+    assert len(table["announcements"]) == 206
     low = binding(table, LOW)
     assert low["reference"] == "Ioann. 80, 19-31"
     assert low["pericope"] == {"book": "Ioann", "passages": [{"chapter": 20, "verses": [[19, 31]]}]}

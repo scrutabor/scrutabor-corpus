@@ -71,10 +71,10 @@
         { "id": "w050", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w051", "form": "ipse", "lemma": "ipse", "morph": { "case": "nom", "gender": "m", "number": "sg", "pos": "pron" } },
         { "id": "w052", "form": "dedit", "lemma": "do", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "perf", "voice": "act" } },
-        { "id": "w053", "form": "quosdam", "lemma": "quidam", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w053", "form": "quosdam", "lemma": "quidam", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "m" } },
         { "id": "w054", "form": "quidem", "lemma": "quidem", "morph": { "pos": "adv" } },
         { "id": "w055", "form": "apóstolos", "lemma": "apostolus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "pl", "pos": "noun" }, "post": "," },
-        { "id": "w056", "form": "quosdam", "lemma": "quidam", "morph": { "pos": "pron", "case": "acc", "number": "pl" } },
+        { "id": "w056", "form": "quosdam", "lemma": "quidam", "morph": { "pos": "pron", "case": "acc", "number": "pl", "gender": "m" } },
         { "id": "w057", "form": "autem", "lemma": "autem", "morph": { "pos": "conj" } },
         { "id": "w058", "form": "prophétas", "lemma": "propheta", "morph": { "case": "acc", "decl": 1, "gender": "m", "number": "pl", "pos": "noun" }, "post": "," },
         { "id": "w059", "form": "álios", "lemma": "alius", "morph": { "case": "acc", "gender": "m", "number": "pl", "pos": "adj" }, "substantive": true },
@@ -142,10 +142,13 @@
       "w023": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w059": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
       "w062": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
-      "w026": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
+      "w026": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w053": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },
+      "w056": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } }
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "notes": ["w019", "w088"]
   }
 }

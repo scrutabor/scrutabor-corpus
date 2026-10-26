@@ -29,6 +29,28 @@ from pathlib import Path
 from build_reader import store
 from checks.lint import duplicate_keys
 from checks.prose import check as check_prose
+from kalendarium.weekday_vigil import (
+    FEASTS as VIGIL_FEASTS,
+)
+from kalendarium.weekday_vigil import (
+    IMPEDED as IMPEDED_VIGIL,
+)
+from kalendarium.weekday_vigil import (
+    IMPEDED_ID as IMPEDED_VIGIL_ID,
+)
+from kalendarium.weekday_vigil import (
+    LOWER_DATES as VIGIL_LOWER_DATES,
+)
+from kalendarium.weekday_vigil import (
+    UNDER as UNDER_VIGIL,
+)
+from kalendarium.weekday_vigil import (
+    VIGIL,
+    VIGIL_SCHEMA,
+)
+from kalendarium.weekday_vigil import (
+    require_inputs as require_vigil_inputs,
+)
 
 SCHEMA = "1.4.0"
 TITLE_SCHEMA = "1.1.0"
@@ -195,6 +217,36 @@ def _nonempty(value: object) -> bool:
     return isinstance(value, str) and bool(value.strip())
 
 
+def _vigil_kind_errors(identity: str, doc: dict, occurrence: dict) -> list[str]:
+    """Only the named weekday Vigil, not another Sunday/feria/feast engine."""
+    from kalendarium.sanctorale import FESTA
+
+    errors = []
+    kind = occurrence["kind"]
+    keys = (
+        {"kind", "vigil", "feasts"} if kind == IMPEDED_VIGIL else {"kind", "vigil", "month", "day"}
+    )
+    if set(occurrence) != keys or occurrence.get("vigil") != VIGIL:
+        errors.append(f"{identity}: exact named weekday Vigil occurrence fields required")
+    if doc["rank"] != "ordinary":
+        errors.append(f"{identity}: weekday Vigil relations are ordinary, not privileged")
+    if kind == IMPEDED_VIGIL:
+        if occurrence.get("feasts") != list(VIGIL_FEASTS):
+            errors.append(f"{identity}: exact two II-class Vigil-impeding feasts required")
+        second = {f.formulary for f in FESTA if f.dies_class == 2 and f.precedence == 16}
+        if not set(VIGIL_FEASTS) <= second:
+            errors.append(f"{identity}: a Vigil-impeding feast is not at precedence16")
+        if identity != IMPEDED_VIGIL_ID or "text_prefix" in doc:
+            errors.append(f"{identity}: exact impeded Vigil identity without text_prefix required")
+    elif (
+        type(occurrence.get("month")) is not int
+        or type(occurrence.get("day")) is not int
+        or (occurrence.get("month"), occurrence.get("day")) not in VIGIL_LOWER_DATES
+    ):
+        errors.append(f"{identity}: lower commemoration is outside the26 Vigil dates")
+    return errors
+
+
 def _kind_errors(identity: str, doc: dict, occurrence: dict) -> list[str]:
     """A calendar-resolved occurrence: one of the three kinds with its closed feast list, the
     rank that kind belongs to, no prefix. The impeded Sunday's feasts are first-class days of the
@@ -203,6 +255,8 @@ def _kind_errors(identity: str, doc: dict, occurrence: dict) -> list[str]:
     whose printed date falls from 27 November to 24 December."""
     from kalendarium.sanctorale import FESTA
 
+    if occurrence.get("kind") in (IMPEDED_VIGIL, UNDER_VIGIL):
+        return _vigil_kind_errors(identity, doc, occurrence)
     errors = []
     kind = occurrence["kind"] if isinstance(occurrence["kind"], str) else None
     if set(occurrence) != DISPLACED_KEYS or kind not in KINDS:
@@ -307,8 +361,14 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
         ):
             errors.append(f"{identity}: text_prefix must be a distinct valid identity")
             prefix = identity
-        if doc["commemoration_schema"] != SCHEMA:
-            errors.append(f"{identity}: commemoration_schema must be {SCHEMA}")
+        rule = doc.get("occurrence")
+        schema = (
+            VIGIL_SCHEMA
+            if isinstance(rule, dict) and rule.get("kind") in (IMPEDED_VIGIL, UNDER_VIGIL)
+            else SCHEMA
+        )
+        if doc["commemoration_schema"] != schema:
+            errors.append(f"{identity}: commemoration_schema must be {schema}")
         if not _nonempty(doc["title"]):
             errors.append(f"{identity}: title is empty")
         if doc["rank"] not in RANKS:
@@ -318,8 +378,9 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
         if doc["conclusion"] not in CONCLUSIONS:
             errors.append(f"{identity}: unknown conclusion rule {doc['conclusion']!r}")
         occurrence = doc["occurrence"]
-        by_calendar = isinstance(occurrence, dict) and "kind" in occurrence
-        if by_calendar:
+        has_kind = isinstance(occurrence, dict) and "kind" in occurrence
+        by_calendar = has_kind and occurrence.get("kind") != UNDER_VIGIL
+        if has_kind:
             errors.extend(_kind_errors(identity, doc, occurrence))
         elif not isinstance(occurrence, dict) or set(occurrence) != OCCURRENCE_KEYS:
             errors.append(f"{identity}: occurrence needs exactly month, day and transfer")
@@ -364,7 +425,8 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
                 if not by_calendar or relation != "calendar":
                     errors.append(
                         f"{identity}:{slot['key']}: the calendar relation is used by, and only "
-                        "by, the impeded-Sunday, impeded-feast and Advent-feria occurrences"
+                        "by, calendar-resolved Sunday, feast, Advent-feria or weekday-Vigil "
+                        "occurrences"
                     )
                 elif target is not None:
                     errors.append(
@@ -429,6 +491,13 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
             errors.append(f"commemorationes:{language}: missing titles for {', '.join(missing)}")
         if extra:
             errors.append(f"commemorationes:{language}: unknown titles for {', '.join(extra)}")
+    if not errors:
+        try:
+            require_vigil_inputs(
+                corpus, [doc for _path, doc in rows], store.formularies(corpus), False
+            )
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            errors.append(str(exc))
     counts = {
         "commemorations": len(rows),
         "slot_uses": sum(relations.values()),

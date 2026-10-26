@@ -349,9 +349,9 @@ GROUPS = (
         "proclaim as good news",
         id="en-communio-w010",
     ),
-    # V Sunday after Easter audit successor (2026-10-20): the Postcommunion group
-    # w004-w007 and the Offertory group w012-w016 are word captions now (pinned in
-    # test_dominica_v_post_pascha_audit.py); ánimam meam keeps a group.
+    # The Offertory w012-w016 split retains the ánimam meam group below.
+    # Postcommunion w004-w007 now share the reviewed participial caption, pinned
+    # independently in test_dominica_v_post_pascha_audit.py.
     pytest.param(
         "en",
         "offertorium",
@@ -515,7 +515,9 @@ def test_every_word_has_one_caption_realization(texts, language):
     assert (total_words, total_segments) == (509, 13)
     # Proverbium nullum dicis shares one natural English caption: adding dicis
     # to that group moves one token from the direct to the grouped inventory.
-    assert (direct, groups, members) == {"pl": (490, 9, 19), "en": (337, 75, 172)}[language]
+    # The reviewed Postcommunion w004-w007 caption moves four more direct
+    # captions into one group, preserving all 509 word realizations.
+    assert (direct, groups, members) == {"pl": (490, 9, 19), "en": (333, 76, 176)}[language]
 
 
 @pytest.mark.parametrize("language", ["pl", "en"])
@@ -567,7 +569,7 @@ def test_historical_wording_basis_is_only_embedded_gloria(language):
     assert published[0]["address"] == {"kind": "word", "word": "w030"}
     assert published[0]["claim"] == CLAIMS[language]
     coverage = bibliography.evidence_coverage(ROOT, graph, packages)["languages"][language]
-    assert coverage["normalized"] == {"pl": 88, "en": 224}[language]
+    assert coverage["normalized"] == {"pl": 102, "en": 239}[language]
 
 
 @pytest.mark.parametrize("language", ["pl", "en"])

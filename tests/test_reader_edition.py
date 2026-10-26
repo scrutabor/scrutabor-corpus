@@ -156,10 +156,10 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(emitted_book
         "rejected_exposed": 0,
     }
     assert written["evidence_coverage"] == {
-        "neutral": {"normalized": 1146, "texts": 1156},
+        "neutral": {"normalized": 1209, "texts": 1219},
         "languages": {
-            "en": {"normalized": 224, "effective": 1156, "texts": 1156},
-            "pl": {"normalized": 88, "effective": 1153, "texts": 1156},
+            "en": {"normalized": 239, "effective": 1219, "texts": 1219},
+            "pl": {"normalized": 102, "effective": 1216, "texts": 1219},
         },
     }
 
@@ -384,7 +384,7 @@ def test_formulary_assemblies_are_explicit_localized_and_calendar_addressable(re
     manifest = json.loads((out / "manifest.json").read_text(encoding="utf-8"))
     catalog = json.loads((out / manifest["base"]["formularies"]).read_text(encoding="utf-8"))
     by_id = {formulary["id"]: formulary for formulary in catalog["formularies"]}
-    assert len(by_id) == 113
+    assert len(by_id) == 114
 
     corpus_christi = by_id["corporis-christi"]
     assert corpus_christi["calendar"] == {"key": "corpus-christi", "default": True}
@@ -441,13 +441,13 @@ def test_metrics_are_the_single_derived_denominator(reader_out):
     metrics = json.loads((out / manifest["base"]["metrics"]).read_text(encoding="utf-8"))
     assert metrics == {
         "schema_version": "1.0.0",
-        "texts": {"total": 1156, "proprium": 1008, "words": 63931, "verse_segments": 2797},
-        "languages": {"en": {"texts": 1156}, "pl": {"texts": 1156}},
+        "texts": {"total": 1219, "proprium": 1071, "words": 66901, "verse_segments": 2949},
+        "languages": {"en": {"texts": 1219}, "pl": {"texts": 1219}},
         "formularies": {
-            "total": 113,
-            "observances": 109,
-            "component_uses": 1267,
-            "unique_component_texts": 1027,
+            "total": 114,
+            "observances": 110,
+            "component_uses": 1277,
+            "unique_component_texts": 1028,
         },
     }
 

@@ -44,6 +44,26 @@ SENSE_APPARATUS = re.compile(
 # "-a") and the deponent auxiliary carry no accent rules of their own.
 HEAD_TOKEN_RE = re.compile(r"^[A-Za-zÁÉÍÓÚÝáéíóúýÆæŒœǼǽËë\u0301]+$")
 
+# Formula readings are retained at these exact lemma/sense addresses, not as
+# exemptions for every sense under a head. Other English verb meanings use an
+# infinitive so that the shared dictionary does not read as a command.
+ENGLISH_VERB_FORMULAS = {
+    ("absum", "far be it"),
+    ("aveo", "hail, greetings"),
+    ("eleison", "have mercy"),
+    ("nolo", "do not"),
+    ("salveo", "hail, greetings"),
+}
+
+
+def _english_verb_sense(lemma, sense, head):
+    return (
+        head.get("pos") != "verb"
+        or sense.startswith(("to ", "not to "))
+        or (lemma, sense) in ENGLISH_VERB_FORMULAS
+    )
+
+
 # A lemma note is rendered on a dictionary page, without the verse or prayer
 # in which any one token occurs. Deictic prose therefore has no antecedent
 # there and usually signals that occurrence-specific commentary leaked out of
@@ -234,6 +254,14 @@ def lint_senses(lang, entries, lemmata, required=None):
                 f"lexicon:{lang}:{lemma}: {len(senses)} senses — SCHEMA.md allows at most 4"
             )
         for sense in senses or []:
+            if (
+                lang == "en"
+                and isinstance(sense, str)
+                and not _english_verb_sense(lemma, sense, lemmata.get(lemma, {}))
+            ):
+                errors.append(
+                    f"lexicon:{lang}:{lemma}: English verb senses use an infinitive: {sense!r}"
+                )
             if isinstance(sense, str) and SENSE_APPARATUS.search(sense):
                 errors.append(
                     f"lexicon:{lang}:{lemma}: sense {sense!r} contains dictionary apparatus; "

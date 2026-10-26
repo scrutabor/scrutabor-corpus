@@ -75,8 +75,8 @@ def test_declared_version_shape_and_exact_body_package_closure(edition):
     assert manifest["schema_version"] == "6.7.0"
     assert table["schema_version"] == "1.0.0"
     assert len(table["profiles"]) == 9 and len(BODY_IDS) == 14
-    assert len(table["masses"]) == 113 and len(table["pairs"]) == 7610
-    assert len({row[1] for row in table["pairs"]}) == 111
+    assert len(table["masses"]) == 114 and len(table["pairs"]) == 7682
+    assert len({row[1] for row in table["pairs"]}) == 112
     assert set(table) == {"schema_version", "roles", "profiles", "masses", "pairs"}
     assert table == selector.calendar_table(store.formularies(CORPUS), emit.kalendarium())
     for prefix in ("", "languages/pl/", "languages/en/"):
@@ -387,6 +387,9 @@ def test_genuinely_partial_authored_package_round_trips_without_erasing_emitted_
         "witnesses",
     ):
         shutil.copytree(CORPUS / directory, source / directory)
+    binding = Path("kalendarium/ascension-vigil-orations.json")
+    (source / binding).parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(CORPUS / binding, source / binding)
     omitted = "ordinarium.communicantes-in-ascensione-domini"
     manifest_path = source / "languages/en/manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -405,7 +408,7 @@ def test_genuinely_partial_authored_package_round_trips_without_erasing_emitted_
     # wording uses; the neutral source and all other translations are unchanged.
     out = tmp_path / "partial-reader"
     written = emit.emit(source, out)
-    assert written["language_texts"] == 2311  # 1156 complete bilingual bodies minus one.
+    assert written["language_texts"] == 2437  # 1219 complete bilingual bodies minus one.
     assert emit.verify(source, out) == []
     package_path = out / "languages/en/manifest.json"
     package = json.loads(package_path.read_text(encoding="utf-8"))

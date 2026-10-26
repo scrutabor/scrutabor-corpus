@@ -80,7 +80,12 @@ FORMULARIES = frozenset(
     + ["dominica-i-passionis", "dominica-ii-passionis", "feria-v-in-cena-domini"]
     + ["vigilia-paschalis", "dominica-resurrectionis", "dominica-in-albis"]
     + [f"dominica-{ROMAN[i]}-post-pascha" for i in range(2, 6)]
-    + ["ascensio-domini", "dominica-post-ascensionem", "dominica-pentecostes"]
+    + [
+        "vigilia-ascensionis",
+        "ascensio-domini",
+        "dominica-post-ascensionem",
+        "dominica-pentecostes",
+    ]
     + [
         "sanctissimae-trinitatis",
         "corpus-christi",
@@ -244,6 +249,9 @@ def year(ending: int) -> list[Dies]:
     add(pascha + timedelta(days=7), "dominica-in-albis", "paschale", 1)
     for i in range(2, 6):
         add(pascha + timedelta(days=7 * i), f"dominica-{ROMAN[i]}-post-pascha", "paschale", 2)
+    # n. 28 defines the preceding day; nn. 31-33 give this Vigil class II.
+    # Its occurrence is resolved against higher feasts by roman.year.
+    add(pascha + timedelta(days=38), "vigilia-ascensionis", "paschale", 2)
     add(pascha + timedelta(days=39), "ascensio-domini", "paschale", 1)
     add(pascha + timedelta(days=42), "dominica-post-ascensionem", "paschale", 2)
     # n. 30 b: the Vigil of Pentecost, the other vigil of the first class.

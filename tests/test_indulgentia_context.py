@@ -1,6 +1,6 @@
 """Bounded authored lexical/context controls; not a general grammar validator.
 
-The ten retained uses were read against their full Latin clauses. New uses
+The fifteen contextual uses were read against their full Latin clauses. New uses
 must receive contextual review before this exact oracle is expanded. This
 module does not label a complete prayer/source review accepted.
 """
@@ -96,6 +96,41 @@ CONTEXTS = (
         "w017",
         "przebaczenie",
         "Your pardon for us",
+    ),
+    (
+        "proprium.sanctae-monicae-collecta",
+        "s01",
+        "w031",
+        "w Twojej łasce znaleźć przebaczenie",
+        "pardon",
+    ),
+    (
+        "proprium.sancti-athanasii-postcommunio",
+        "s01",
+        "w018",
+        "przez modlitwy otrzymali przebaczenie",
+        "pardon",
+    ),
+    (
+        "proprium.sancti-gregorii-nazianzeni-secreta",
+        "s01",
+        "w021",
+        "przebaczenie",
+        "may always obtain Your pardon for us",
+    ),
+    (
+        "proprium.sancti-bedae-venerabilis-secreta",
+        "s01",
+        "w021",
+        "i Twoje przebaczenie dla nas",
+        "always obtain Your pardon for us",
+    ),
+    (
+        "proprium.sanctorum-nerei-achillei-domitillae-et-pancratii-secreta",
+        "s01",
+        "w023",
+        "zawsze wyprasza nam Twoje przebaczenie",
+        "always implore Your pardon for us",
     ),
 )
 

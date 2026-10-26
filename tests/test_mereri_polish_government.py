@@ -245,6 +245,75 @@ SITES = (
         (("w016", "introíre", "introeo", "mood", "inf"),),
         ((("w013", "w014", "w015"), "w014", "z czystymi umysłami byli godni"), ("w016", "wejść")),
     ),
+    (
+        "peter-martyr-collect",
+        "proprium.sancti-petri-martyris-collecta",
+        "s01",
+        "infinitive",
+        ("w021", "méruit", "mereo", 3, "sg", "perf", "ind"),
+        (("w022", "obtinére", "obtineo", "mood", "inf"),),
+        ((("w019", "w020", "w021", "w022"), "w021", "zasłużył na otrzymanie palmy męczeństwa"),),
+    ),
+    (
+        "athanasius-collect",
+        "proprium.sancti-athanasii-collecta",
+        "s01",
+        "infinitive",
+        ("w020", "méruit", "mereo", 3, "sg", "perf", "ind"),
+        (("w021", "famulári", "famulor", "mood", "inf"),),
+        ((("w018", "w019", "w020", "w021"), "w020", "zasłużył na to, by godnie Tobie służyć"),),
+    ),
+    (
+        "gregory-nazianzen-collect",
+        "proprium.sancti-gregorii-nazianzeni-collecta",
+        "s01",
+        "infinitive",
+        ("w022", "mereámur", "mereor", 1, "pl", "pres", "subj"),
+        (("w021", "habére", "habeo", "mood", "inf"),),
+        ((("w021", "w022"), "w022", "byli godni mieć"),),
+    ),
+    (
+        "paschal-baylon-collect",
+        "proprium.sancti-paschalis-baylon-collecta",
+        "s01",
+        "infinitive",
+        ("w033", "mereámur", "mereor", 1, "pl", "pres", "subj"),
+        (("w032", "percípere", "percipio", "mood", "inf"),),
+        (
+            (
+                ("w029", "w030", "w031", "w032", "w033"),
+                "w033",
+                "tak też my byli godni jej przyjęcia",
+            ),
+        ),
+    ),
+    (
+        "peter-celestine-collect",
+        "proprium.sancti-petri-caelestini-collecta",
+        "s01",
+        "infinitive",
+        ("w031", "mereámur", "mereor", 1, "pl", "pres", "subj"),
+        (
+            ("w023", "despícere", "despicio", "mood", "inf"),
+            ("w029", "perveníre", "pervenio", "mood", "inf"),
+        ),
+        (("w031", "byli godni"), ("w023", "wzgardzić"), ("w029", "dojść")),
+    ),
+    (
+        "angela-merici-collect",
+        "proprium.sanctae-angelae-mericiae-collecta",
+        "s01",
+        "infinitive",
+        ("w028", "mereámur", "mereor", 1, "pl", "pres", "subj"),
+        (("w027", "pérfrui", "perfruor", "mood", "inf"),),
+        (
+            (
+                ("w026", "w027", "w028", "w029"),
+                "w028",
+                "byli godni w pełni cieszyć się wiecznymi radościami",
+            ),
+        ),
+    ),
 )
 
 # The same row shape for constructions that were already natural, and the protected formula.
@@ -393,6 +462,30 @@ MUTANTS = (
         "jak i uczestniczyć w Jego zmartwychwstaniu",
         "governor",
     ),
+    (
+        "peter-martyr-bare",
+        "peter-martyr-collect",
+        "w021",
+        "zasłużył otrzymać palmę męczeństwa",
+        "governor",
+    ),
+    ("athanasius-bare", "athanasius-collect", "w020", "zasłużył godnie Tobie służyć", "governor"),
+    ("gregory-nazianzen-bare", "gregory-nazianzen-collect", "w022", "zasłużyli mieć", "governor"),
+    (
+        "paschal-baylon-bare",
+        "paschal-baylon-collect",
+        "w033",
+        "tak też my zasłużyli ją przyjąć",
+        "governor",
+    ),
+    ("peter-celestine-bare", "peter-celestine-collect", "w031", "zasłużyli", "governor"),
+    (
+        "angela-merici-bare",
+        "angela-merici-collect",
+        "w028",
+        "zasłużyli w pełni cieszyć się wiecznymi radościami",
+        "governor",
+    ),
 )
 
 # text, word, Latin forms the Polish note must quote, note.
@@ -537,11 +630,11 @@ def test_each_defect_fails_its_owned_assertion_and_restores(
 
 
 def test_inventory_covers_every_mereri_occurrence():
-    assert [len(SITES), len(CONTROLS), len(MUTANTS)] == [22, 3, 34]
-    assert [row[3] for row in SITES].count("infinitive") == 19
+    assert [len(SITES), len(CONTROLS), len(MUTANTS)] == [28, 3, 40]
+    assert [row[3] for row in SITES].count("infinitive") == 25
     assert [row[3] for row in SITES].count("object") == 3
     adjudicated = {(row[1], row[2], row[4][0]) for row in (*SITES, *CONTROLS)}
-    assert len(adjudicated) == 25
+    assert len(adjudicated) == 31
     occurrences = set()
     for path in sorted((ROOT / "texts").glob("*/*.json")):
         core = json.loads(path.read_text(encoding="utf-8"))

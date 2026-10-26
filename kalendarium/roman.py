@@ -13,27 +13,64 @@ from kalendarium.temporale import year as temporal_year
 
 FORMULARIES = TEMPORAL_FORMULARIES | SANCTORAL_FORMULARIES
 
-_FIRST_CLASS_FEASTS_OF_THE_LORD = frozenset(
-    {
-        "sanctissimae-trinitatis",
-        "corpus-christi",
-        "sacratissimi-cordis-iesu",
-        "d-n-iesu-christi-regis",
-    }
-)
+# Exact supported temporal class-I identities at n. 91, places 1-6 and 9.
+# The Paschal Vigil route is attached to Holy Saturday (Easter-1), a day of
+# the sacred Triduum, not a liturgical vigil of the Pentecost-Vigil place.
+_FIRST_CLASS_TEMPORAL_PRECEDENCE = {
+    "nativitas-domini": 1,
+    "dominica-resurrectionis": 1,
+    "dominica-pentecostes": 1,
+    "feria-v-in-cena-domini": 2,
+    "vigilia-paschalis": 2,
+    "epiphania-domini": 3,
+    "ascensio-domini": 3,
+    "sanctissimae-trinitatis": 3,
+    "corpus-christi": 3,
+    "sacratissimi-cordis-iesu": 3,
+    "d-n-iesu-christi-regis": 3,
+    "immaculata-conceptio": 4,
+    "vigilia-nativitatis": 5,
+    "in-octava-nativitatis": 5,
+    "dominica-i-adventus": 6,
+    "dominica-ii-adventus": 6,
+    "dominica-iii-adventus": 6,
+    "dominica-iv-adventus": 6,
+    "dominica-i-in-quadragesima": 6,
+    "dominica-ii-in-quadragesima": 6,
+    "dominica-iii-in-quadragesima": 6,
+    "dominica-iv-in-quadragesima": 6,
+    "dominica-i-passionis": 6,
+    "dominica-ii-passionis": 6,
+    "dominica-in-albis": 6,
+    "vigilia-pentecostes": 9,
+}
 
 
 def _temporal_precedence(day: Dies) -> int:
     """Return the numbered place of a temporal day in the table at n. 91."""
 
-    if day.formulary in _FIRST_CLASS_FEASTS_OF_THE_LORD:
-        return 3
+    # n. 91, place 21; nn. 31-33: this named weekday vigil never becomes
+    # a Sunday or acquires the first-class vigil precedence.
+    if day.formulary == "vigilia-ascensionis":
+        if (
+            day.position != day.formulary
+            or day.dies_class != 2
+            or day.season != "paschale"
+            or day.when.weekday() != 2
+            or day.when != easter(day.when.year) + timedelta(days=38)
+        ):
+            raise ValueError(
+                "calendar: Ascension Vigil requires its own Easter+38 Wednesday of class II"
+            )
+        return 21
     if day.dies_class == 1:
-        return 6
+        if day.formulary not in _FIRST_CLASS_TEMPORAL_PRECEDENCE:
+            raise ValueError("calendar: unsupported first-class temporal identity")
+        return _FIRST_CLASS_TEMPORAL_PRECEDENCE[day.formulary]
     if day.position.startswith("dominica-"):
         return 15
-    # The supported range has no other second-class temporal day, but keeping
-    # the table's next place makes a future addition fail conservatively.
+    # Other second-class temporal days retain the existing place. The named
+    # Ascension Vigil has its explicit table place above, not this fallback.
     return 18
 
 
@@ -112,6 +149,14 @@ def year(ending: int) -> list[Dies]:
         if current_precedence is None:
             days[when] = _as_day(when, feast, ending)
             precedence[when] = feast.precedence
+            continue
+
+        # The temporal cycle already contains the Immaculate Conception when
+        # it replaces Advent II. A second entry for that SAME observance is
+        # not a collision and must not transfer it again at equal precedence.
+        if current is not None and current.formulary == feast.formulary:
+            if current.dies_class != feast.dies_class or current_precedence != feast.precedence:
+                raise ValueError("calendar: repeated observance has inconsistent class/precedence")
             continue
 
         if feast.precedence < current_precedence:

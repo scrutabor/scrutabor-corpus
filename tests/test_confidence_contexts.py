@@ -306,6 +306,19 @@ CASES = [
         "dzięki którego opiece ufamy, że zostaniemy wyzwoleni",
         "by whose patronage we trust to be delivered",
     ),
+    (
+        "laudis-tibi-secreta",
+        "s01",
+        16,
+        "confídimus",
+        "ind",
+        "pres",
+        "pl",
+        1,
+        (12, 18),
+        "jesteśmy uwalniani zarówno od obecnego zła jak i od przyszłego, jak ufamy",
+        "are, we trust, freed from evils both present and future",
+    ),
 ]
 PRESERVED = [5, 9, 16, 18, 19, 20]
 
@@ -354,7 +367,7 @@ def realized(doc, layer, segment, first, last):
 
 def test_complete_confido_denominator():
     expected = {(text_id(c), c[1], word_id(c[2])) for c in CASES}
-    assert len(expected) == 22 and len({c[0] for c in expected}) == 20
+    assert len(expected) == 23 and len({c[0] for c in expected}) == 21
     forms = {
         unicodedata.normalize("NFD", c[3]).encode("ascii", "ignore").decode().lower() for c in CASES
     }

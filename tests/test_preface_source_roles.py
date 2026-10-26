@@ -6,6 +6,7 @@ from copy import deepcopy
 
 import pytest
 from preface_delivery_fixture import current_graph_hash, current_selected_hash
+from witness_header_fixture import before_privacy
 
 from build_reader import bibliography
 from build_reader.bibliography_bindings import (
@@ -188,7 +189,7 @@ def check_protected(data, slug):
         key: [r for r in data[key] if r.get("text", r.get("address", {}).get("text")) == tid(slug)]
         for key in ("uses", "witnesses", "collations")
     }
-    assert digest(records) == current_graph_hash(tid(slug), PROTECTED[slug])
+    assert digest(before_privacy(records)) == current_graph_hash(tid(slug), PROTECTED[slug])
 
 
 NIGHT_RULINGS = {

@@ -9,6 +9,112 @@ import pytest
 from checks.lint import HAEC_QUAE_LEMMAS, lint_text
 from checks.normalize import fold_ligatures, strip_accents
 
+NEW_CONTEXTS = {
+    ("proprium.haec-hostia-secreta", "w001"): {
+        "pos": "pron",
+        "case": "nom",
+        "number": "sg",
+        "gender": "f",
+    },
+    ("proprium.refecti-cibo-potuque-postcommunio", "w013"): {
+        "pos": "pron",
+        "case": "acc",
+        "number": "pl",
+        "gender": "n",
+    },
+    ("proprium.sanctae-catharinae-senensis-postcommunio", "w010"): {
+        "pos": "pron",
+        "case": "nom",
+        "number": "sg",
+        "gender": "f",
+    },
+    ("proprium.sancti-athanasii-secreta", "w018"): {
+        "pos": "pron",
+        "case": "acc",
+        "number": "pl",
+        "gender": "n",
+    },
+    ("proprium.sancti-augustini-cantuariensis-secreta", "w017"): {
+        "pos": "pron",
+        "case": "nom",
+        "number": "pl",
+        "gender": "f",
+    },
+    ("proprium.sancti-bedae-venerabilis-secreta", "w013"): {
+        "pos": "pron",
+        "case": "nom",
+        "number": "sg",
+        "gender": "f",
+    },
+    ("proprium.sancti-gregorii-nazianzeni-secreta", "w013"): {
+        "pos": "pron",
+        "case": "nom",
+        "number": "sg",
+        "gender": "f",
+    },
+    ("proprium.sancti-petri-martyris-postcommunio", "w006"): {
+        "pos": "pron",
+        "case": "acc",
+        "number": "pl",
+        "gender": "n",
+    },
+    ("proprium.sancti-philippi-nerii-postcommunio", "w017"): {
+        "pos": "pron",
+        "case": "acc",
+        "number": "pl",
+        "gender": "n",
+    },
+    ("proprium.sancti-roberti-bellarmino-postcommunio", "w002"): {
+        "pos": "pron",
+        "case": "acc",
+        "number": "pl",
+        "gender": "n",
+    },
+    ("proprium.sancti-stanislai-postcommunio", "w001"): {
+        "pos": "pron",
+        "case": "nom",
+        "number": "sg",
+        "gender": "f",
+    },
+    ("proprium.sanctorum-nerei-achillei-domitillae-et-pancratii-postcommunio", "w015"): {
+        "pos": "pron",
+        "case": "acc",
+        "number": "pl",
+        "gender": "n",
+    },
+    ("proprium.sanctorum-nerei-achillei-domitillae-et-pancratii-secreta", "w015"): {
+        "pos": "pron",
+        "case": "nom",
+        "number": "sg",
+        "gender": "f",
+    },
+    ("proprium.super-has-hostias-secreta", "w009"): {
+        "pos": "pron",
+        "case": "nom",
+        "number": "sg",
+        "gender": "f",
+    },
+    ("proprium.vigilia-ascensionis-evangelium", "w036"): {
+        "pos": "pron",
+        "case": "nom",
+        "number": "sg",
+        "gender": "f",
+    },
+    ("proprium.vigilia-ascensionis-evangelium", "w103"): {
+        "pos": "pron",
+        "case": "acc",
+        "number": "pl",
+        "gender": "n",
+    },
+    ("proprium.vigilia-ascensionis-evangelium", "w111"): {
+        "pos": "pron",
+        "case": "acc",
+        "number": "pl",
+        "gender": "n",
+    },
+}
+
+
 PAIRS = [("hæc", "hic"), ("quæ", "qui")]
 READINGS = [
     ("nom", "sg", "f"),
@@ -92,6 +198,7 @@ def test_unowned_lemma_surface_and_pos_are_not_forced(form, lemma, pos):
 def test_actual_corpus_class_and_local_ambiguity_are_not_silently_neuter():
     root = Path(__file__).resolve().parent.parent
     count = 0
+    new_seen = set()
     for path in sorted((root / "texts").rglob("*.json")):
         doc = json.loads(path.read_text())
         for segment in doc["segments"]:
@@ -101,12 +208,17 @@ def test_actual_corpus_class_and_local_ambiguity_are_not_silently_neuter():
                 surface = fold_ligatures(strip_accents(word["form"])).lower()
                 if HAEC_QUAE_LEMMAS.get(surface) == word["lemma"]:
                     count += 1
+                    site = (doc["id"], word["id"])
+                    if site in NEW_CONTEXTS:
+                        assert word["morph"] == NEW_CONTEXTS[site]
+                        new_seen.add(site)
                     if (doc["id"], word["id"]) != (
                         "proprium.dominica-iv-in-quadragesima-epistola",
                         "w035",
                     ):
                         assert word["morph"].get("gender") in {"f", "n"}
-    assert count == 334
+    assert count == 351
+    assert new_seen == set(NEW_CONTEXTS)
     doc = json.loads(
         (root / "texts/proprium/dominica-iv-in-quadragesima-epistola.json").read_text()
     )

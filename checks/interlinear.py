@@ -50,6 +50,19 @@ def check(doc: dict, layer: dict) -> list[str]:
         segment_id = segment["id"]
         words = segment.get("words") or []
         positions = {word["id"]: index for index, word in enumerate(words)}
+        localized = (layer.get("segments") or {}).get(segment_id) or {}
+        if "alignments" in localized:
+            groups = localized["alignments"]
+            if (
+                not isinstance(groups, list)
+                or not groups
+                or any(not isinstance(group, dict) for group in groups)
+            ):
+                errors.append(
+                    f"{doc['id']}:{segment_id}:{language}: alignments must be a nonempty "
+                    "list of objects; omit the field when no alignments are needed"
+                )
+                continue
         previous_end = -1
         for number, alignment in enumerate(alignments_for(layer, segment_id), 1):
             where = f"{doc['id']}:{segment_id}:alignment-{number}:{language}"

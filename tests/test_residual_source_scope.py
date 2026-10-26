@@ -205,7 +205,6 @@ HISTORICAL_HEADERS = [
         "p. 448; leaf n482 / PDF p. 483"
     ),
     "# page-image: https://archive.org/details/missale-romanum-1962/page/n447/mode/1up",
-    "# local-archive: ../private/witnesses/missale-romanum-1962/pages-jp2/",
     (
         "# path: p. 366; expanded doxology attested on p. 401 (leaf n447 / PDF p. 448; "
         "leaf n482 / PDF p. 483)"

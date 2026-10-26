@@ -119,6 +119,12 @@ def computed(y: int) -> list[str]:
 # false: the code cited n. 69 and the article was nowhere in the file.
 CITING = ("kalendarium/temporale.py", "kalendarium/computus.py", "kalendarium/__init__.py")
 CHARTER = "witnesses/raw/mr-rubricae-generales-temporale.txt"
+VIGIL_CHARTER = "witnesses/raw/mr-rubricae-ascension-vigil-benziger.txt"
+# The old extracts remain historical inputs, not silently relabelled originals.
+CHARTERS: dict[str, tuple[str, ...]] = {name: (CHARTER,) for name in CITING}
+CHARTERS["kalendarium/temporale.py"] = (CHARTER, VIGIL_CHARTER)
+CHARTERS["kalendarium/roman.py"] = (VIGIL_CHARTER,)
+CHARTERS["kalendarium/weekday_vigil.py"] = (VIGIL_CHARTER,)
 
 
 def charter(corpus: Path = ROOT) -> list[str]:
@@ -128,19 +134,45 @@ def charter(corpus: Path = ROOT) -> list[str]:
     an intention. It reads the citations out of the code — `n. 20`, `nn.
     67-69`, `n. 30 a` — and asks the witness for each number.
     """
-    printed = {
-        line.split(".", 1)[0]
-        for line in (corpus / CHARTER).read_text(encoding="utf-8").splitlines()
-        if line[:1].isdigit()
-    }
     errors = []
-    for name in CITING:
+    for name, sources in CHARTERS.items():
+        printed = {
+            line.split(".", 1)[0]
+            for source in sources
+            for line in (corpus / source).read_text(encoding="utf-8").splitlines()
+            if line[:1].isdigit()
+        }
         text = (corpus / name).read_text(encoding="utf-8")
         for match in re.finditer(r"\bnn?\.\s*(\d+)(?:\s*-\s*(\d+))?", text):
             first, last = match.group(1), match.group(2) or match.group(1)
             for number in range(int(first), int(last) + 1):
                 if str(number) not in printed:
-                    errors.append(f"{name} cites n. {number}, which {CHARTER} does not print")
+                    errors.append(
+                        f"{name} cites n. {number}, which {', '.join(sources)} does not print"
+                    )
+    supplement = (corpus / VIGIL_CHARTER).read_text(encoding="utf-8")
+    for place, reading in (
+        (
+            1,
+            "Festum Nativitatis Domini, dominica Resurrectionis et dominica Pentecostes "
+            "(I classis cum octava).",
+        ),
+        (2, "Triduum sacrum."),
+        (
+            3,
+            "Festa Epiphaniae et Ascensionis Domini, Ssmae Trinitatis, Corporis Christi, "
+            "Cordis Iesu et Christi Regis.",
+        ),
+        (4, "Festa Immaculatae Conceptionis et Assumptionis B. Mariae Virg."),
+        (5, "Vigilia et dies octavae Nativitatis Domini."),
+        (6, "Dominicae Adventus, Quadragesimae et Passionis, et dominica in albis."),
+        (9, "Vigilia Pentecostes."),
+        (15, "Dominicae II classis."),
+        (16, "Festa II classis Ecclesiae universae, quae non sunt Domini."),
+        (21, "Vigiliae II classis."),
+    ):
+        if f"# table-place{place}: {reading}" not in supplement.splitlines():
+            errors.append(f"{VIGIL_CHARTER}: missing selected precedence place {place}")
     return sorted(set(errors))
 
 

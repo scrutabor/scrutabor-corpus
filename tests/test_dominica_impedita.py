@@ -222,9 +222,9 @@ def test_the_authored_contract_is_exact_and_resolves_its_slots_by_the_calendar()
             "title": title,
         }
     errors, counts = checker.check(CORPUS)
-    # Three calendar slots here, three in the impeded feast (tests/test_festum_impeditum.py) and
-    # three in the Advent feria (tests/test_feria_adventus.py).
-    assert errors == [] and counts["calendar_slots"] == 9
+    # Three calendar slots each for the impeded Sunday, impeded feast, Advent feria
+    # and the now-available impeded weekday Vigil.
+    assert errors == [] and counts["calendar_slots"] == 12
 
 
 def test_the_feasts_are_the_first_class_feasts_that_commemorate_the_sunday_they_impede():
@@ -511,11 +511,13 @@ def test_a_resolved_oration_missing_from_a_language_package_fails_before_emissio
         "languages/en/commemorationes",
     ):
         shutil.copytree(CORPUS / directory, corpus / directory)
+    binding = Path("kalendarium/ascension-vigil-orations.json")
+    (corpus / binding).parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(CORPUS / binding, corpus / binding)
     bodies = reader.slot_bodies(CORPUS)
-    # The six addressed slots, the 22 Sundays' orations, the twenty impeded feasts' 59
-    # (tests/test_festum_impeditum.py) and those of the First, Third and Fourth Sundays of Advent
-    # that the Advent feria says (tests/test_feria_adventus.py; the Second is among the 22).
-    assert len(bodies) == 6 + 3 * 22 + 59 + 3 * 3
+    # The old 140-body union plus 63 new literal targets and three Vigil orations.
+    # The 69 current literal targets include the six old addressed bodies.
+    assert len(bodies) == 140 + (69 - 6) + 3 == 206
     for text in bodies:
         relative = f"{text.replace('.', '/', 1)}.json"
         for prefix in ("texts/", "languages/pl/texts/", "languages/en/texts/"):
@@ -530,13 +532,18 @@ def test_a_resolved_oration_missing_from_a_language_package_fails_before_emissio
     assert reader.slot_bodies(corpus) == bodies
     reader.input_bodies(corpus)
     path = corpus / "languages/en/manifest.json"
-    manifest = json.loads(path.read_text(encoding="utf-8"))
+    before = path.read_bytes()
+    manifest = json.loads(before)
     manifest["texts"].remove("proprium.dominica-iv-post-epiphaniam-secreta")
-    path.write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
-    with pytest.raises(
-        ValueError, match="dominica-iv-post-epiphaniam-secreta requires a declared en"
-    ):
-        reader.input_bodies(corpus)
+    try:
+        path.write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
+        with pytest.raises(
+            ValueError, match="dominica-iv-post-epiphaniam-secreta requires a declared en"
+        ):
+            reader.input_bodies(corpus)
+    finally:
+        path.write_bytes(before)
+    reader.input_bodies(corpus)
 
 
 def emitted(tmp_path, table):

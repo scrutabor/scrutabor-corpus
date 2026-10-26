@@ -202,7 +202,7 @@ Secret|en|secreta|[w014-w017 @w017] we may pass to heavenly glory
 PC|en|postcommunio|[w001-w003 @w001] Lord, grant us
     w001 Grant; w002 us; w003 Lord
 PC|en|postcommunio|[w004-w007 @w007] having been filled with the strength of the heavenly table
-    w004 of the heavenly; w005 table; w006 with the strength; w007 having been filled
+    [w004-w007 @w007] filled with the strength of the heavenly table
 psalm verse|pl|ii-epiphania-introitus|[w018-w019 @w019] śpiewajcie psalm
     w018 psalm; w019 śpiewajcie
 psalm verse|pl|ii-epiphania-introitus|[w020-w021 @w020] Jego imieniu
@@ -311,6 +311,19 @@ def test_predecessor_group_is_rejected(row):
     for wid in old["words"]:
         lay["words"][wid].pop("gloss", None)
     rejects(assert_regroup, doc, lay, row, message=f"{row[0]} realization")
+    if row[1] == "en" and row[2] == POSTCOMMUNION and old["words"] == span(4, 7):
+        # Also reject the actual split-caption predecessor, not only the
+        # historical group with a different, semantically faithful caption.
+        original = layer("en", POSTCOMMUNION)
+        split = deepcopy(original)
+        split["segments"]["s01"]["alignments"] = [
+            g for g in alignments(split) if not set(g["words"]) & set(span(4, 7))
+        ]
+        captions = ("of the heavenly", "table", "with the strength", "having been filled")
+        for wid, caption in zip(span(4, 7), captions, strict=True):
+            split["words"][wid]["gloss"] = caption
+        rejects(assert_regroup, doc, split, row, message=f"{row[0]} realization")
+        assert_regroup(doc, original, row)
 
 
 # --- the three oration conclusions ----------------------------------------------------------------
@@ -654,7 +667,11 @@ LONG_GROUPS = {
     ],
     ("en", OFFERTORY): [("w020", "my feet to falter")],
     ("en", SECRET): [("w010", "these duties of pious devotion"), ("w035", "forever and ever")],
-    ("en", POSTCOMMUNION): [("w010", "what is right"), ("w033", "forever and ever")],
+    ("en", POSTCOMMUNION): [
+        ("w004", "filled with the strength of the heavenly table"),
+        ("w010", "what is right"),
+        ("w033", "forever and ever"),
+    ],
 }
 
 
@@ -1001,14 +1018,30 @@ CONSUMED += [
 
 @pytest.mark.parametrize("text,expected", CONSUMED)
 def test_every_consumer_of_a_changed_text_reads_cleanly(text, expected):
+    vigil_references = {
+        P + role
+        for role in (
+            "introitus",
+            "collecta",
+            "alleluia",
+            "offertorium",
+            "secreta",
+            "communio",
+            "postcommunio",
+        )
+    }
+    expected_consumers = [expected]
+    if text in vigil_references:
+        expected_consumers.append("vigilia-ascensionis")
     found = consumers(text)
-    assert [path.stem for path in found] == [expected]
-    for component in json.loads(found[0].read_text(encoding="utf-8"))["components"]:
-        body = core(component["text"])
-        for language in ("pl", "en"):
-            lay = layer(language, component["text"])
-            assert interlinear.check(body, lay) == [], (component["text"], language)
-            assert check_layer(body, lay, layer_path(language, component["text"])) == []
+    assert [path.stem for path in found] == expected_consumers
+    for path in found:
+        for component in json.loads(path.read_text(encoding="utf-8"))["components"]:
+            body = core(component["text"])
+            for language in ("pl", "en"):
+                lay = layer(language, component["text"])
+                assert interlinear.check(body, lay) == [], (component["text"], language)
+                assert check_layer(body, lay, layer_path(language, component["text"])) == []
 
 
 def test_removing_the_historical_origin_is_rejected():

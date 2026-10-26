@@ -1,12 +1,19 @@
 """II Sunday proper pages declare their common expansions and digital framing."""
 
 import json
+from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from witness_header_fixture import expected_review
 
 from build_reader import bibliography, store
-from build_reader.bibliography_bindings import transcript_digest, witness_subject
+from build_reader.bibliography_bindings import (
+    collation_subject,
+    digest,
+    transcript_digest,
+    witness_subject,
+)
 from checks.apparatus import derived_summary
 from checks.collate import collate
 from checks.raw_binding import resolve_binding
@@ -27,7 +34,7 @@ NAMES = (
 EXPANDED = {
     "introitus": (20, 53, ["doxology.mr1962", "reprise-rubric.mr1962"]),
     "collecta": (24, 47, ["conclusion-rg115a-base.mr1962", "conclusion-rg115b.mr1962"]),
-    "secreta": (14, 36, ["conclusion-rg115a.mr1962"]),
+    "secreta": (14, 36, ["conclusion-rg115a.mr1962", "oration-boundaries.mr1962"]),
     "postcommunio": (15, 37, ["conclusion-rg115a.mr1962"]),
 }
 PAGES = {
@@ -43,6 +50,20 @@ LOCI = (
     ("secreta", "conclusion-rg115a.mr1962", 22, "w015", "direct_approved_print"),
     ("postcommunio", "conclusion-rg115a.mr1962", 22, "w016", "direct_approved_print"),
 )
+
+
+# These source subjects were reviewed; unrelated records remain pending.
+ADOPTED_SOURCE_REVIEWS = {
+    "witness.proprium.dominica-ii-post-pascha-secreta.do44667ff": (
+        "0af23cd3110a81155b9f0df1d4d4868d8249bc7407147dcdc75524e48a72eae8"
+    ),
+    "witness.proprium.dominica-ii-post-pascha-secreta.mr1962": (
+        "1855cf08d35ee9715677ab6e90ca592aab28f4e04fbb4200f2cea2f6d313c242"
+    ),
+    "collation.proprium.dominica-ii-post-pascha-secreta.mr1962-do44667ff": (
+        "b6a9b30668653ba5b3c2bce23a7d9ad55418e50fc4b8880298540e710dc511f0"
+    ),
+}
 
 
 def graph():
@@ -115,11 +136,77 @@ def test_no_witness_or_collation_review_is_promoted():
     witnesses = [w for w in data["witnesses"] if w["text"] in {PREFIX + n for n in NAMES}]
     collations = [c for c in data["collations"] if c["text"] in {PREFIX + n for n in NAMES}]
     assert len(witnesses) == 18 and len(collations) == 9
-    assert all(w["review"] == {"status": "pending"} for w in witnesses)
-    assert all(c["review"] == {"status": "pending"} for c in collations)
-    for entry in bibliography.public_text_evidence(data)["texts"]:
-        if entry["id"] in {PREFIX + n for n in NAMES}:
-            assert entry["witnesses"] == [] and "collation" not in entry
+
+    def bounded_reviews(rows):
+        for row in rows:
+            expected = ADOPTED_SOURCE_REVIEWS.get(row["id"])
+            if expected is not None:
+                expected = expected_review(row["id"], expected)
+            if expected is None:
+                assert row["review"] == {"status": "pending"}, "pending evidence is not approval"
+                continue
+            assert row["review"] == {"status": "reviewed", "sha256": expected}, (
+                "exact adopted source review"
+            )
+            doc = store.core(ROOT, row["text"])
+            if row["id"].startswith("witness."):
+                subject = witness_subject(ROOT, row, data, doc)
+            else:
+                subjects = {
+                    w["id"]: witness_subject(ROOT, w, data, doc)
+                    for w in data["witnesses"]
+                    if w["id"] in row["witnesses"]
+                }
+                subject = collation_subject(ROOT, row, doc, subjects)
+            assert digest(subject) == expected, "adopted source subject changed"
+
+    assert set(ADOPTED_SOURCE_REVIEWS) <= {r["id"] for r in witnesses + collations}
+    bounded_reviews(witnesses + collations)
+    bad = deepcopy(witnesses)
+    pending_row = next(r for r in bad if r["id"] not in ADOPTED_SOURCE_REVIEWS)
+    pending_review = deepcopy(pending_row["review"])
+    pending_row["review"] = {"status": "reviewed", "sha256": "0" * 64}
+    assert bad != witnesses
+    with pytest.raises(AssertionError, match=r"^pending evidence is not approval(?:\n|$)"):
+        bounded_reviews(bad)
+    pending_row["review"] = pending_review
+    assert bad == witnesses
+    bounded_reviews(bad)
+    stale = deepcopy(witnesses)
+    reviewed_row = next(r for r in stale if r["id"] in ADOPTED_SOURCE_REVIEWS)
+    reviewed_review = deepcopy(reviewed_row["review"])
+    reviewed_row["review"]["sha256"] = "0" * 64
+    assert stale != witnesses
+    with pytest.raises(AssertionError, match=r"^exact adopted source review(?:\n|$)"):
+        bounded_reviews(stale)
+    reviewed_row["review"] = reviewed_review
+    assert stale == witnesses
+    bounded_reviews(stale)
+    bounded_reviews(witnesses + collations)
+    texts = {PREFIX + n for n in NAMES}
+    evidence = {r["id"]: r for r in bibliography.public_text_evidence(data)["texts"]}
+    for text in texts:
+        entry = evidence[text]
+        expected_witnesses = [
+            {
+                key: row[key]
+                for key in ("id", "text", "use", "role", "coverage", "independence_basis")
+            }
+            for row in sorted(witnesses, key=lambda row: row["id"])
+            if row["text"] == text and row["id"] in ADOPTED_SOURCE_REVIEWS
+        ]
+        assert entry["witnesses"] == expected_witnesses
+        expected_collations = [
+            row for row in collations if row["text"] == text and row["id"] in ADOPTED_SOURCE_REVIEWS
+        ]
+        if expected_collations:
+            assert len(expected_collations) == 1
+            assert entry["collation"] == {
+                key: expected_collations[0][key]
+                for key in ("id", "text", "recension", "witnesses", "apparatus")
+            }
+        else:
+            assert "collation" not in entry
 
 
 def test_exact_terminal_tilde_disposition_retains_raw_pastor_stop():

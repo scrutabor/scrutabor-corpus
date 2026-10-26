@@ -32,6 +32,7 @@ ROOT = Path(__file__).resolve().parents[1]
 P = "proprium."
 
 # text: (segment, words, caption, class, Latin lemma, Latin parse) for each realization.
+# V3_PHRASE and DUR_PHRASE pin complete grouped conclusions and durations.
 # Classes: D divine pronoun/possessive; H human pronoun/possessive; N dative noun; V2 a
 # second-person verb with an expressed subject captioned apart; V2D/V2H a second-person verb
 # whose caption carries the subject, the ending alone or an expressed subject absorbed into the
@@ -39,46 +40,67 @@ P = "proprium."
 # of in/per saecula saeculorum; GOAL a preposition of goal or purpose; ART a noun whose article
 # replaces a supplied possessive.
 SITES = {
-    "litaniae.lauretanae": (("s133", ("w365",), "Your", "D", "tuus", "acc pl"),),
+    "litaniae.lauretanae": (("s133", ("w364", "w365"), "Your servants", "D", "tuus", "acc pl"),),
     "litaniae.sacratissimi-cordis-iesu": (
         ("s042", ("w153",), "dwells", "V3", "habito", "3sg pres ind"),
         ("s052", ("w201",), "You", "D", "tu", "acc sg"),
         ("s074", ("w282",), "You", "D", "tu", "abl sg"),
         ("s076", ("w290",), "You", "D", "tu", "abl sg"),
-        ("s087", ("w337",), "Your", "D", "tuus", "acc sg"),
+        ("s087", ("w336", "w337"), "Your Heart", "D", "tuus", "acc sg"),
     ),
     "litaniae.sanctissimi-nominis-iesu": (
-        ("s098", ("w255",), "Your", "D", "tuus", "abl sg"),
-        ("s106", ("w280",), "Your", "D", "tuus", "gen pl"),
-        ("s108", ("w288",), "Your", "D", "tuus", "gen sg"),
-        ("s110", ("w294",), "Your", "D", "tuus", "acc sg"),
-        ("s112", ("w300",), "Your", "D", "tuus", "acc sg"),
-        ("s114", ("w307",), "Your", "D", "tuus", "acc sg"),
-        ("s116", ("w313",), "Your", "D", "tuus", "acc pl"),
-        ("s118", ("w321",), "Your", "D", "tuus", "acc sg"),
-        ("s120", ("w329",), "Your", "D", "tuus", "acc sg"),
-        ("s122", ("w335",), "Your", "D", "tuus", "acc pl"),
-        ("s124", ("w343",), "Your", "D", "tuus", "acc sg"),
-        ("s126", ("w349",), "Your", "D", "tuus", "acc sg"),
-        ("s128", ("w355",), "Your", "D", "tuus", "acc sg"),
-        ("s130", ("w363",), "Your", "D", "tuus", "acc sg"),
-        ("s132", ("w369",), "Your", "D", "tuus", "acc pl"),
-        ("s134", ("w375",), "Your", "D", "tuus", "acc sg"),
+        ("s098", ("w254", "w255"), "Your wrath", "D", "tuus", "abl sg"),
+        ("s106", ("w279", "w280"), "of Your inspirations", "D", "tuus", "gen pl"),
+        ("s108", ("w286", "w287", "w288"), "of Your holy Incarnation", "D", "tuus", "gen sg"),
+        ("s110", ("w293", "w294"), "Your nativity", "D", "tuus", "acc sg"),
+        ("s112", ("w299", "w300"), "Your infancy", "D", "tuus", "acc sg"),
+        ("s114", ("w305", "w306", "w307"), "Your most divine life", "D", "tuus", "acc sg"),
+        ("s116", ("w312", "w313"), "Your labors", "D", "tuus", "acc pl"),
+        ("s118", ("w318", "w319", "w320", "w321"), "Your agony and Passion", "D", "tuus", "acc sg"),
+        (
+            "s120",
+            ("w326", "w327", "w328", "w329"),
+            "Your cross and abandonment",
+            "D",
+            "tuus",
+            "acc sg",
+        ),
+        ("s122", ("w334", "w335"), "Your sufferings", "D", "tuus", "acc pl"),
+        ("s124", ("w340", "w341", "w342", "w343"), "Your death and burial", "D", "tuus", "acc sg"),
+        ("s126", ("w348", "w349"), "Your resurrection", "D", "tuus", "acc sg"),
+        ("s128", ("w354", "w355"), "Your ascension", "D", "tuus", "acc sg"),
+        (
+            "s130",
+            ("w360", "w361", "w362", "w363"),
+            "Your institution of the Most Holy Eucharist",
+            "D",
+            "tuus",
+            "acc sg",
+        ),
+        ("s132", ("w368", "w369"), "Your joys", "D", "tuus", "acc pl"),
+        ("s134", ("w374", "w375"), "Your glory", "D", "tuus", "acc sg"),
         ("s145", ("w417",), "said", "V2", "dico", "2sg perf ind"),
         ("s145", ("w420",), "you will receive", "V2H", "accipio", "2pl fut ind"),
         ("s145", ("w423",), "you will find", "V2H", "invenio", "2pl fut ind"),
         ("s145", ("w427",), "to you", "H", "vos", "dat pl"),
-        ("s145", ("w433",), "Your", "D", "tuus", "gen sg"),
+        (
+            "s145",
+            ("w432", "w433", "w434", "w435"),
+            "affection of Your most divine love",
+            "D",
+            "tuus",
+            "gen sg",
+        ),
         ("s145", ("w437",), "You", "D", "tu", "acc sg"),
         ("s145", ("w446",), "Your", "D", "tuus", "abl sg"),
-        ("s146", ("w452",), "Your", "D", "tuus", "gen sg"),
+        ("s146", ("w450", "w451", "w452"), "of Your holy Name", "D", "tuus", "gen sg"),
         ("s146", ("w464", "w465"), "of Your guidance", "D", "tuus", "abl sg"),
         ("s146", ("w466",), "You deprive", "V2D", "destituo", "2sg pres ind"),
         ("s146", ("w470",), "of Your", "D", "tuus", "gen sg"),
         ("s146", ("w472",), "You establish", "V2D", "instituo", "2sg pres ind"),
         ("s146", ("w474",), "live", "V2", "vivo", "2sg pres ind"),
         ("s146", ("w476",), "reign", "V2", "regno", "2sg pres ind"),
-        ("s146", ("w477",), "for", "DUR", "in", "prep acc"),
+        ("s146", ("w477", "w478", "w479"), "forever and ever", "DUR_PHRASE", "in", "prep acc"),
     ),
     "orationes.angelus-domini": (
         ("s01", ("w004",), "to Mary", "N", "Maria", "dat sg"),
@@ -108,10 +130,31 @@ SITES = {
     P + "assumptio-beatae-mariae-virginis-secreta": (
         ("s01", ("w003",), "You", "D", "tu", "acc sg"),
         ("s01", ("w022",), "You", "D", "tu", "acc sg"),
-        ("s01", ("w031",), "Your", "D", "tuus", "acc sg"),
-        ("s01", ("w033",), "with You", "D", "tu", "abl sg"),
-        ("s01", ("w034",), "lives", "V3", "vivo", "3sg pres ind"),
-        ("s01", ("w036",), "reigns", "V3", "regno", "3sg pres ind"),
+        ("s01", ("w030", "w031"), "Your Son", "D", "tuus", "acc sg"),
+        (
+            "s01",
+            ("w032", "w033", "w034", "w035", "w036"),
+            "who lives and reigns with You",
+            "D",
+            "tu",
+            "abl sg",
+        ),
+        (
+            "s01",
+            ("w032", "w033", "w034", "w035", "w036"),
+            "who lives and reigns with You",
+            "V3_PHRASE",
+            "vivo",
+            "3sg pres ind",
+        ),
+        (
+            "s01",
+            ("w032", "w033", "w034", "w035", "w036"),
+            "who lives and reigns with You",
+            "V3_PHRASE",
+            "regno",
+            "3sg pres ind",
+        ),
     ),
     P + "corporis-christi-alleluia": (
         ("s02", ("w015",), "eats", "V3", "manduco", "3sg pres ind"),
@@ -119,12 +162,26 @@ SITES = {
         ("s02", ("w024",), "abides", "V3", "maneo", "3sg pres ind"),
     ),
     P + "corporis-christi-collecta": (
-        ("s01", ("w008",), "Your", "D", "tuus", "gen sg"),
+        ("s01", ("w007", "w008"), "of Your Passion", "D", "tuus", "gen sg"),
         ("s01", ("w010",), "have left", "V2", "relinquo", "2sg perf ind"),
-        ("s01", ("w018",), "Your", "D", "tuus", "gen sg"),
-        ("s01", ("w024",), "Your", "D", "tuus", "gen sg"),
-        ("s01", ("w031",), "live", "V2", "vivo", "2sg pres ind"),
-        ("s01", ("w033",), "reign", "V2", "regno", "2sg pres ind"),
+        ("s01", ("w015", "w016", "w017", "w018"), "of Your Body and Blood", "D", "tuus", "gen sg"),
+        ("s01", ("w023", "w024"), "of Your redemption", "D", "tuus", "gen sg"),
+        (
+            "s01",
+            ("w030", "w031", "w032", "w033"),
+            "You live and reign",
+            "V2_PHRASE",
+            "vivo",
+            "2sg pres ind",
+        ),
+        (
+            "s01",
+            ("w030", "w031", "w032", "w033"),
+            "You live and reign",
+            "V2_PHRASE",
+            "regno",
+            "2sg pres ind",
+        ),
     ),
     P + "corporis-christi-communio": (
         ("s01", ("w002",), "you eat", "V2H", "manduco", "2pl fut ind"),
@@ -143,18 +200,39 @@ SITES = {
         ("s01", ("w008",), "You", "D", "tu", "nom sg"),
         ("s01", ("w009",), "give", "V2", "do", "2sg pres ind"),
         ("s02", ("w015", "w016"), "You open", "V2D", "aperio", "2sg pres ind"),
-        ("s02", ("w018",), "Your", "D", "tuus", "acc sg"),
+        ("s02", ("w017", "w018"), "Your hand", "D", "tuus", "acc sg"),
         ("s02", ("w020",), "fill", "V2", "impleo", "2sg pres ind"),
     ),
     P + "corporis-christi-introitus": (("s03", ("w039",), "for", "DUR", "in", "prep acc"),),
     P + "corporis-christi-postcommunio": (
-        ("s01", ("w006",), "Your", "D", "tuus", "gen sg"),
-        ("s01", ("w015",), "Your", "D", "tuus", "gen sg"),
-        ("s01", ("w020",), "live", "V2", "vivo", "2sg pres ind"),
-        ("s01", ("w022",), "reign", "V2", "regno", "2sg pres ind"),
+        ("s01", ("w005", "w006"), "of Your divinity", "D", "tuus", "gen sg"),
+        (
+            "s01",
+            ("w011", "w012", "w013", "w014", "w015"),
+            "of Your precious Body and Blood",
+            "D",
+            "tuus",
+            "gen sg",
+        ),
+        (
+            "s01",
+            ("w019", "w020", "w021", "w022"),
+            "You live and reign",
+            "V2_PHRASE",
+            "vivo",
+            "2sg pres ind",
+        ),
+        (
+            "s01",
+            ("w019", "w020", "w021", "w022"),
+            "You live and reign",
+            "V2_PHRASE",
+            "regno",
+            "2sg pres ind",
+        ),
     ),
     P + "corporis-christi-secreta": (
-        ("s01", ("w002",), "Your", "D", "tuus", "dat sg"),
+        ("s01", ("w001", "w002"), "To Your Church", "D", "tuus", "dat sg"),
         ("s01", ("w022", "w023"), "Your Son", "D", "filius", "acc sg"),
         (
             "s01",
@@ -169,7 +247,14 @@ SITES = {
         ("s01", ("w003",), "the Savior", "ART", "salvator", "acc sg"),
         ("s01", ("w005",), "the Leader", "ART", "dux", "acc sg"),
         ("s02", ("w013",), "you can", "V2H", "possum", "2sg pres ind"),
-        ("s02", ("w022",), "can you", "V2H", "sufficio", "2sg pres ind"),
+        (
+            "s02",
+            ("w020", "w021", "w022"),
+            "nor can you praise enough",
+            "V2H",
+            "sufficio",
+            "2sg pres ind",
+        ),
         ("s23", ("w254",), "You", "D", "tu", "nom sg"),
         ("s23", ("w259",), "You", "D", "tu", "nom sg"),
         ("s24", ("w267",), "You", "D", "tu", "nom sg"),
@@ -184,11 +269,32 @@ SITES = {
         ("s01", ("w042",), "for", "DUR", "in", "prep acc"),
     ),
     P + "dominica-ii-post-pentecosten-secreta": (
-        ("s01", ("w004",), "Your", "D", "tuus", "dat sg"),
-        ("s01", ("w024",), "Your", "D", "tuus", "acc sg"),
-        ("s01", ("w026",), "with You", "D", "tu", "abl sg"),
-        ("s01", ("w027",), "lives", "V3", "vivo", "3sg pres ind"),
-        ("s01", ("w029",), "reigns", "V3", "regno", "3sg pres ind"),
+        ("s01", ("w004", "w005"), "to Your name", "D", "tuus", "dat sg"),
+        ("s01", ("w023", "w024"), "Your Son", "D", "tuus", "acc sg"),
+        (
+            "s01",
+            ("w025", "w026", "w027", "w028", "w029"),
+            "who lives and reigns with You",
+            "D",
+            "tu",
+            "abl sg",
+        ),
+        (
+            "s01",
+            ("w025", "w026", "w027", "w028", "w029"),
+            "who lives and reigns with You",
+            "V3_PHRASE",
+            "vivo",
+            "3sg pres ind",
+        ),
+        (
+            "s01",
+            ("w025", "w026", "w027", "w028", "w029"),
+            "who lives and reigns with You",
+            "V3_PHRASE",
+            "regno",
+            "3sg pres ind",
+        ),
     ),
     P + "dominica-iii-post-epiphaniam-introitus": (
         ("s01", ("w038",), "for", "DUR", "in", "prep acc"),
@@ -213,13 +319,41 @@ SITES = {
         ("s01", ("w038",), "has set forth", "P3", "propono", "3sg perf ind"),
     ),
     P + "sacratissimi-cordis-iesu-collecta": (
-        ("s01", ("w007",), "Your", "D", "tuus", "gen sg"),
-        ("s01", ("w016",), "deign", "V2", "dignor", "2sg pres ind"),
-        ("s01", ("w038",), "Your", "D", "tuus", "acc sg"),
-        ("s01", ("w040",), "with You", "D", "tu", "abl sg"),
-        ("s01", ("w041",), "lives", "V3", "vivo", "3sg pres ind"),
-        ("s01", ("w043",), "reigns", "V3", "regno", "3sg pres ind"),
-        ("s01", ("w049",), "for", "DUR", "per", "prep acc"),
+        ("s01", ("w006", "w007"), "of Your Son", "D", "tuus", "gen sg"),
+        ("s01", ("w015", "w016"), "are pleased to bestow", "V2", "dignor", "2sg pres ind"),
+        ("s01", ("w037", "w038"), "Your Son", "D", "tuus", "acc sg"),
+        (
+            "s01",
+            ("w039", "w040", "w041", "w042", "w043"),
+            "who lives and reigns with You",
+            "D",
+            "tu",
+            "abl sg",
+        ),
+        (
+            "s01",
+            ("w039", "w040", "w041", "w042", "w043"),
+            "who lives and reigns with You",
+            "V3_PHRASE",
+            "vivo",
+            "3sg pres ind",
+        ),
+        (
+            "s01",
+            ("w039", "w040", "w041", "w042", "w043"),
+            "who lives and reigns with You",
+            "V3_PHRASE",
+            "regno",
+            "3sg pres ind",
+        ),
+        (
+            "s01",
+            ("w049", "w050", "w051", "w052"),
+            "forever and ever",
+            "DUR_PHRASE",
+            "per",
+            "prep acc",
+        ),
     ),
     P + "sacratissimi-cordis-iesu-epistola": (("s06", ("w136",), "to", "GOAL", "in", "prep acc"),),
     P + "sacratissimi-cordis-iesu-introitus": (
@@ -227,14 +361,35 @@ SITES = {
         ("s03", ("w042",), "for", "DUR", "in", "prep acc"),
     ),
     P + "sacratissimi-cordis-iesu-postcommunio": (
-        ("s01", ("w006",), "Your", "D", "tuus", "nom pl"),
-        ("s01", ("w012",), "Your", "D", "tuus", "gen sg"),
-        ("s01", ("w022",), "live", "V2", "vivo", "2sg pres ind"),
-        ("s01", ("w024",), "reign", "V2", "regno", "2sg pres ind"),
-        ("s01", ("w033",), "for", "DUR", "per", "prep acc"),
+        ("s01", ("w006", "w007"), "Your holy gifts", "D", "tuus", "nom pl"),
+        ("s01", ("w010", "w011", "w012"), "of Your most sweet Heart", "D", "tuus", "gen sg"),
+        (
+            "s01",
+            ("w021", "w022", "w023", "w024"),
+            "You live and reign",
+            "V2_PHRASE",
+            "vivo",
+            "2sg pres ind",
+        ),
+        (
+            "s01",
+            ("w021", "w022", "w023", "w024"),
+            "You live and reign",
+            "V2_PHRASE",
+            "regno",
+            "2sg pres ind",
+        ),
+        (
+            "s01",
+            ("w033", "w034", "w035", "w036"),
+            "forever and ever",
+            "DUR_PHRASE",
+            "per",
+            "prep acc",
+        ),
     ),
     P + "sacratissimi-cordis-iesu-secreta": (
-        ("s01", ("w009",), "Your", "D", "tuus", "gen sg"),
+        ("s01", ("w007", "w008", "w009"), "of Your beloved Son", "D", "tuus", "gen sg"),
         ("s01", ("w015",), "to You", "D", "tu", "dat sg"),
         ("s01", ("w028", "w029"), "Your Son", "D", "filius", "acc sg"),
         (
@@ -247,29 +402,92 @@ SITES = {
         ),
     ),
     P + "sancti-bartholomaei-apostoli-collecta": (
-        ("s01", ("w013",), "Your", "D", "tuus", "gen sg"),
+        (
+            "s01",
+            ("w011", "w012", "w013", "w014"),
+            "of Your blessed Apostle Bartholomew",
+            "D",
+            "tuus",
+            "gen sg",
+        ),
         ("s01", ("w016",), "bestowed", "V2", "tribuo", "2sg perf ind"),
-        ("s01", ("w019",), "Your", "D", "tuus", "dat sg"),
-        ("s01", ("w035",), "Your", "D", "tuus", "acc sg"),
-        ("s01", ("w037",), "with You", "D", "tu", "abl sg"),
-        ("s01", ("w038",), "lives", "V3", "vivo", "3sg pres ind"),
-        ("s01", ("w040",), "reigns", "V3", "regno", "3sg pres ind"),
-        ("s01", ("w046",), "for", "DUR", "per", "prep acc"),
+        ("s01", ("w018", "w019"), "to Your Church", "D", "tuus", "dat sg"),
+        ("s01", ("w034", "w035"), "Your Son", "D", "tuus", "acc sg"),
+        (
+            "s01",
+            ("w036", "w037", "w038", "w039", "w040"),
+            "who lives and reigns with You",
+            "D",
+            "tu",
+            "abl sg",
+        ),
+        (
+            "s01",
+            ("w036", "w037", "w038", "w039", "w040"),
+            "who lives and reigns with You",
+            "V3_PHRASE",
+            "vivo",
+            "3sg pres ind",
+        ),
+        (
+            "s01",
+            ("w036", "w037", "w038", "w039", "w040"),
+            "who lives and reigns with You",
+            "V3_PHRASE",
+            "regno",
+            "3sg pres ind",
+        ),
+        (
+            "s01",
+            ("w046", "w047", "w048", "w049"),
+            "forever and ever",
+            "DUR_PHRASE",
+            "per",
+            "prep acc",
+        ),
     ),
     P + "sancti-iacobi-apostoli-evangelium": (
         ("s01", ("w023",), "do you want", "V2H", "volo", "2sg pres ind"),
-        ("s01", ("w036",), "Your", "D", "tuus", "acc sg"),
-        ("s01", ("w043",), "Your", "D", "tuus", "abl sg"),
+        ("s01", ("w035", "w036"), "Your right hand", "D", "tuus", "acc sg"),
+        ("s01", ("w042", "w043"), "Your kingdom", "D", "tuus", "abl sg"),
     ),
     P + "sancti-matthiae-apostoli-collecta": (
-        ("s01", ("w006",), "Your", "D", "tuus", "gen pl"),
+        ("s01", ("w005", "w006"), "of Your Apostles", "D", "tuus", "gen pl"),
         ("s01", ("w008",), "joined", "V2", "socio", "2sg perf ind"),
-        ("s01", ("w014",), "Your", "D", "tuus", "gen sg"),
-        ("s01", ("w027",), "Your", "D", "tuus", "acc sg"),
-        ("s01", ("w029",), "with You", "D", "tu", "abl sg"),
-        ("s01", ("w030",), "lives", "V3", "vivo", "3sg pres ind"),
-        ("s01", ("w032",), "reigns", "V3", "regno", "3sg pres ind"),
-        ("s01", ("w038",), "for", "DUR", "per", "prep acc"),
+        ("s01", ("w014", "w015", "w016", "w017"), "of Your mercy toward us", "D", "tuus", "gen sg"),
+        ("s01", ("w026", "w027"), "Your Son", "D", "tuus", "acc sg"),
+        (
+            "s01",
+            ("w028", "w029", "w030", "w031", "w032"),
+            "who lives and reigns with You",
+            "D",
+            "tu",
+            "abl sg",
+        ),
+        (
+            "s01",
+            ("w028", "w029", "w030", "w031", "w032"),
+            "who lives and reigns with You",
+            "V3_PHRASE",
+            "vivo",
+            "3sg pres ind",
+        ),
+        (
+            "s01",
+            ("w028", "w029", "w030", "w031", "w032"),
+            "who lives and reigns with You",
+            "V3_PHRASE",
+            "regno",
+            "3sg pres ind",
+        ),
+        (
+            "s01",
+            ("w038", "w039", "w040", "w041"),
+            "forever and ever",
+            "DUR_PHRASE",
+            "per",
+            "prep acc",
+        ),
     ),
     P + "sancti-petri-et-pauli-apostolorum-evangelium": (
         ("s01", ("w037",), "Says", "V3", "dico", "3sg pres ind"),
@@ -287,7 +505,7 @@ LINES = (
         "s02",
         "w015",
         "w023",
-        ("You open", "hand", "Your", "and", "fill", "every", "living creature", "with blessing"),
+        ("You open", "Your hand", "and", "fill", "every", "living creature", "with blessing"),
     ),
     (
         "litaniae.sanctissimi-nominis-iesu",
@@ -309,9 +527,7 @@ LINES = (
             "live",
             "and",
             "reign",
-            "for",
-            "ages",
-            "of ages",
+            "forever and ever",
         ),
     ),
     (
@@ -567,6 +783,12 @@ def class_diagnostics(where, caption, kind):
         found.append(f"person:{where}: third-person perfect needs has, not {caption!r}")
     if kind == "DUR" and caption != "for":
         found.append(f"preposition:{where}: in/per saecula saeculorum reads for, not {caption!r}")
+    if kind == "V2_PHRASE" and caption != "You live and reign":
+        found.append(f"conclusion-address:{where}: direct divine address {caption!r}")
+    if kind == "V3_PHRASE" and caption != "who lives and reigns with You":
+        found.append(f"conclusion-person:{where}: third-person conclusion {caption!r}")
+    if kind == "DUR_PHRASE" and caption != "forever and ever":
+        found.append(f"duration-phrase:{where}: complete duration needs forever and ever")
     if kind == "GOAL":
         allowed = ("to", "for", "for salvation")
         if where == (
@@ -716,7 +938,23 @@ MUTANTS = {
     ),
     "register": (LITANY, set_caption("s146", ("w474",), "livest")),
     "latin": (LITANY, set_person("w466", 3)),
-    "line": (GRADUALE, set_caption("s02", ("w017",), "hands")),
+    "line": (GRADUALE, set_caption("s02", ("w022",), "living creatures")),
+    "conclusion-address": (
+        P + "corporis-christi-collecta",
+        set_caption("s01", ("w030", "w031", "w032", "w033"), "who live and reign"),
+    ),
+    "conclusion-person": (
+        P + "assumptio-beatae-mariae-virginis-secreta",
+        set_caption(
+            "s01",
+            ("w032", "w033", "w034", "w035", "w036"),
+            "who live and reign with You",
+        ),
+    ),
+    "duration-phrase": (
+        P + "sacratissimi-cordis-iesu-collecta",
+        set_caption("s01", ("w049", "w050", "w051", "w052"), "forever"),
+    ),
 }
 
 
@@ -726,26 +964,31 @@ def test_mutant_fails_its_class_and_restores(kind):
     core, layer = load(text), load(text, "en")
     originals = deepcopy(core), deepcopy(layer)
     assert diagnostics(text, core, layer) == []
-    mutate(core, layer)
-    found = diagnostics(text, core, layer)
-    assert any(item.startswith(kind + ":") for item in found), found
-    assert {item.split(":", 1)[0] for item in found} <= {kind, "caption", "line"}, found
-    if kind == "line":
-        assert {item.split(":", 1)[0] for item in found} == {"line"}, found
-    if kind == "line":
-        assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
-    core.clear()
-    core.update(originals[0])
-    layer.clear()
-    layer.update(originals[1])
-    assert diagnostics(text, core, layer) == []
+    try:
+        mutate(core, layer)
+        assert json.dumps((core, layer), sort_keys=True) != json.dumps(originals, sort_keys=True), (
+            "mutation must change its copy"
+        )
+        found = diagnostics(text, core, layer)
+        assert any(item.startswith(kind + ":") for item in found), found
+        assert {item.split(":", 1)[0] for item in found} <= {kind, "caption", "line"}, found
+        if kind == "line":
+            assert {item.split(":", 1)[0] for item in found} == {"line"}, found
+        if kind == "line":
+            assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
+    finally:
+        core.clear()
+        core.update(originals[0])
+        layer.clear()
+        layer.update(originals[1])
+        assert diagnostics(text, core, layer) == []
 
 
 @pytest.mark.parametrize(
     "text,path",
     [
         (LITANY, ["words", "w466", "gloss"]),
-        (P + "corporis-christi-secreta", ["segments", "s01", "alignments", 3, "gloss"]),
+        (P + "corporis-christi-secreta", ["segments", "s01", "alignments", 6, "gloss"]),
         (P + "sancti-stephani-protomartyris-epistola", ["words", "w056", "gloss"]),
     ],
 )

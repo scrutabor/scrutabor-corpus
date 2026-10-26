@@ -16,6 +16,9 @@ ROOT = Path(__file__).resolve().parents[1]
 FIXTURE = json.loads(
     (ROOT / "tests/fixtures/interrupted-ablative-captions.json").read_text(encoding="utf-8")
 )
+SUCCESSORS = json.loads(
+    (ROOT / "tests/fixtures/interrupted-ablative-successors.json").read_text(encoding="utf-8")
+)
 CONSTRUCTIONS = FIXTURE["constructions"]
 CONTROLS = FIXTURE["controls"]
 LEDGER = FIXTURE["ledger"]
@@ -76,8 +79,25 @@ def parent_at(doc, pointer):
     return doc, parts[-1]
 
 
+def reviewed_predecessor_documents(documents):
+    """Undo exact reviewed captions/prose before the immutable historical inverse."""
+    result = deepcopy(documents)
+    for operation in reversed(SUCCESSORS["operations"]):
+        parent, key = parent_at(result[operation["path"]], operation["pointer"])
+        require(
+            (key in parent) == operation["after"]["exists"], "reviewed successor field presence"
+        )
+        if key in parent:
+            require(parent[key] == operation["after"]["value"], "reviewed successor field value")
+        if operation["before"]["exists"]:
+            parent[key] = deepcopy(operation["before"]["value"])
+        else:
+            del parent[key]
+    return result
+
+
 def historical_objects(documents):
-    result = predecessor_documents(documents)
+    result = predecessor_documents(reviewed_predecessor_documents(documents))
     for operation in reversed(FIXTURE["operations"]):
         parent, key = parent_at(result[operation["path"]], operation["pointer"])
         require((key in parent) == operation["after"]["exists"], "successor field presence")
@@ -129,6 +149,9 @@ def assert_control(layer, row):
 
 
 def assert_ledger(core, layer, entry, row):
+    if row["site"] == SUCCESSORS["ledger_before"]["site"]:
+        require(row == SUCCESSORS["ledger_before"], "reviewed historical ledger identity")
+        row = {**row, "target_sha256": SUCCESSORS["target_sha256"]}
     row = ledger_expectation(row)
     segment_id = row["site"].split(".")[-2]
     (segment,) = [s for s in core["segments"] if s["id"] == segment_id]
@@ -169,6 +192,51 @@ def test_complete_historical_objects_survive_the_narrow_inverse(documents):
         FIXTURE["historical_object_sha256"]
     )
     assert snapshot == FIXTURE
+    saved = deepcopy(documents)
+    successors = deepcopy(SUCCESSORS)
+    for path, pointer, value in (
+        (
+            "languages/en/texts/proprium/sacratissimi-cordis-iesu-collecta.json",
+            "/segments/s01/translation",
+            "stale reviewed prose",
+        ),
+        ("languages/en/texts/litaniae/lauretanae.json", "/segments/s016/alignments", None),
+        ("languages/en/texts/litaniae/lauretanae.json", "/segments/s016/alignments", []),
+    ):
+        broken = deepcopy(documents)
+        parent, key = parent_at(broken[path], pointer)
+        if value is None:
+            del parent[key]
+        else:
+            parent[key] = value
+        assert broken != saved
+        try:
+            with pytest.raises(AssertionError, match="reviewed successor field"):
+                historical_objects(broken)
+        finally:
+            broken.clear()
+            broken.update(deepcopy(saved))
+            assert broken == saved
+            recovered = historical_objects(broken)
+            assert {p: canonical_hash(recovered[p]) for p in sorted(touched)} == (
+                FIXTURE["historical_object_sha256"]
+            )
+    broken = deepcopy(documents)
+    path = "languages/en/texts/proprium/sacratissimi-cordis-iesu-collecta.json"
+    broken[path]["about"] += " unrelated"
+    assert broken != saved
+    assert (
+        canonical_hash(historical_objects(broken)[path])
+        != FIXTURE["historical_object_sha256"][path]
+    )
+    broken.clear()
+    broken.update(deepcopy(saved))
+    assert broken == saved
+    recovered = historical_objects(broken)
+    assert {p: canonical_hash(recovered[p]) for p in sorted(touched)} == (
+        FIXTURE["historical_object_sha256"]
+    )
+    assert documents == saved and successors == SUCCESSORS and snapshot == FIXTURE
 
 
 def test_construction_inventory_is_compact_and_per_language():
@@ -239,6 +307,25 @@ def test_ledger_keeps_status_and_exact_relations(documents, row):
     (entry,) = [site for site in ledger if site["site"] == row["site"]]
     core, layer = documents[core_path(text)], documents[layer_path(text, language)]
     assert_ledger(core, layer, entry, row)
+    if row["site"] == SUCCESSORS["ledger_before"]["site"]:
+        saved = deepcopy(entry)
+        broken = deepcopy(entry)
+        try:
+            broken["target_sha256"] = row["target_sha256"]
+            assert broken != saved
+            with pytest.raises(AssertionError, match="ledger target identity"):
+                assert_ledger(core, layer, broken, row)
+        finally:
+            broken.clear()
+            broken.update(deepcopy(saved))
+            assert broken == saved
+            assert_ledger(core, layer, broken, row)
+        historical = deepcopy(row)
+        historical["review"] = "expert-reviewed"
+        assert historical != row
+        with pytest.raises(AssertionError, match="reviewed historical ledger identity"):
+            assert_ledger(core, layer, entry, historical)
+        assert_ledger(core, layer, entry, row)
 
 
 def construction(text, language, first):

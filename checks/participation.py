@@ -149,6 +149,17 @@ CANTU_UNSUNG_PREPARATIONS = {
     "ordinarium.deus-tu-conversus",
 }
 
+# DMS25a names sung-response formulas, not every occurrence of their words.
+# Mills, Psallite Sapienter (2008), §49, and the Latin Mass Society's
+# Scholas' Guide (Gradual; Last Gospel) do not establish these four sung
+# congregational entitlements. Withholding a grant is not a universal ban.
+WITHHELD_CANTU_RESPONSES = {
+    ("ordinarium.deo-gratias-epistolae", "s01"),
+    ("ordinarium.evangelium-ultimum", "s03"),
+    ("ordinarium.evangelium-ultimum", "s06"),
+    ("ordinarium.evangelium-ultimum", "s15"),
+}
+
 # n. 31 d — the fourth degree at low Mass, and the law names FOUR pieces:
 # "Introitum; Graduale; Offertorium; Communionem". The Alleluia is not among
 # them, and is not an oversight of ours: n. 25 c gives the faithful the
@@ -264,7 +275,11 @@ def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
             out["lecta"] = {"gradus": 1, "source": f"{DMS} 31 a"}
         else:
             out["lecta"] = {"gradus": 2, "source": f"{DMS} 31 b"}
-        if said in CANTU_I_FOLDED and text_id not in CANTU_UNSUNG_PREPARATIONS:
+        if (
+            said in CANTU_I_FOLDED
+            and text_id not in CANTU_UNSUNG_PREPARATIONS
+            and (text_id, seg.get("id")) not in WITHHELD_CANTU_RESPONSES
+        ):
             out["cantu"] = {"gradus": 1, "source": f"{DMS} 25 a"}
         elif text_id in CANTU_II:
             out["cantu"] = {"gradus": 2, "source": f"{DMS} 25 b"}
