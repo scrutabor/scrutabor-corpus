@@ -112,3 +112,69 @@ def test_commemorating_does_not_absorb_the_next_petition():
         "today",
         "make",
     ]
+
+
+def assert_polish_offertory_relative_reprises(core, layer):
+    assert core["id"] == layer["text"] == OFFERTORY
+    assert layer["language"] == "pl"
+    words = {word["id"]: word for segment in core["segments"] for word in segment["words"]}
+    assert words["w038"]["lemma"] == "lux"
+    assert words["w070"]["lemma"] == "vita"
+    assert words["w039"]["post"] == ":"
+    assert words["w070"]["post"] == "."
+    for word in ("w040", "w071"):
+        assert words[word]["form"] == "Quam"
+        assert words[word]["morph"] == {"pos": "pron", "case": "acc", "number": "sg", "gender": "f"}
+    for word, expected in (
+        ("w038", "światłości"),
+        ("w040", "którą"),
+        ("w070", "życia"),
+        ("w071", "Które"),
+    ):
+        assert layer["words"][word]["gloss"] == expected, f"Polish Offertory reprise {word}"
+
+
+def test_polish_offertory_relatives_keep_their_local_antecedents():
+    core, layer = documents("pl", OFFERTORY)
+    saved = deepcopy((core, layer))
+    assert_polish_offertory_relative_reprises(core, layer)
+    assert check(core, layer) == []
+    assert (core, layer) == saved
+
+
+@pytest.mark.parametrize(
+    "word,wrong",
+    [
+        ("w038", "życia"),
+        ("w040", "które"),
+        ("w040", "Którą"),
+        ("w070", "światłości"),
+        ("w071", "którą"),
+        ("w071", "które"),
+    ],
+    ids=[
+        "first-antecedent",
+        "first-neuter",
+        "first-capital",
+        "second-antecedent",
+        "second-feminine",
+        "second-lowercase",
+    ],
+)
+def test_polish_offertory_reprise_mutation_is_rejected_and_restored(word, wrong):
+    core, layer = documents("pl", OFFERTORY)
+    saved = deepcopy((core, layer))
+    assert_polish_offertory_relative_reprises(core, layer)
+    broken = deepcopy(layer)
+    previous = broken["words"][word]["gloss"]
+    assert wrong != previous
+    broken["words"][word]["gloss"] = wrong
+    assert broken != layer
+    with pytest.raises(AssertionError) as caught:
+        assert_polish_offertory_relative_reprises(core, broken)
+    assert str(caught.value).splitlines()[0] == f"Polish Offertory reprise {word}"
+    broken["words"][word]["gloss"] = previous
+    assert broken == layer
+    assert_polish_offertory_relative_reprises(core, broken)
+    assert check(core, broken) == []
+    assert (core, layer) == saved
