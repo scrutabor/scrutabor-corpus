@@ -308,11 +308,15 @@ def test_the_lent_masses_record_their_reprints(text, key, printed):
 def test_the_revised_english_names_its_historical_basis(text):
     site = f"{text}.s01.en"
     provenance = {s["site"]: s for s in load("languages/en/translation-provenance.json")["sites"]}
-    assert provenance[site]["origin"] == "public-domain"
+    mixed = text == L3 + "introitus"
+    assert provenance[site]["origin"] == ("mixed" if mixed else "public-domain")
     basis = [
         r for r in load("languages/en/translation-basis.json")["records"] if text in r["texts"]
     ]
-    assert basis == [{"texts": [text], "segments": ["s01"], "relationship": "revised"}]
+    expected_basis = (
+        [] if mixed else [{"texts": [text], "segments": ["s01"], "relationship": "revised"}]
+    )
+    assert basis == expected_basis
     found = [
         u
         for u in load("languages/en/bibliography.json")["uses"]
@@ -322,6 +326,9 @@ def test_the_revised_english_names_its_historical_basis(text):
     locator = found[0]["locator"]
     assert (locator["printed"], locator["scan"]) == PD_LOCATORS[text]
     assert found[0]["evidence_sha256"] == LAITY_SHA
+    if mixed:
+        expected = load("tests/fixtures/mixed-translation-origins.json")["corrected_use"]
+        assert found[0] == expected["after"]
 
 
 @pytest.mark.parametrize("text", TEXTS)

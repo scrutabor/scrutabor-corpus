@@ -21,13 +21,22 @@ Each entry carries:
 - `site`, `text`, `segment`, and `language` — the complete stable address;
 - `familiar_core` — whether exact recognizability is being protected while the
   wording's history is established;
-- `origin` — `working-unsettled`, `own`, `public-domain`, `traditional`, or
-  `trivial`;
+- `origin` — `working-unsettled`, `own`, `public-domain`, `traditional`,
+  `trivial`, or `mixed`;
 - `review` — `working`, `internally-reviewed`, or `expert-reviewed`;
 - `source_sha256` and `target_sha256` — hashes binding the state to the Latin
   segment and target string actually reviewed.
 
 `working-unsettled` is a working-edition provenance state, not a legal verdict.
+Ledger schema 1.1.0 adds `mixed` for a segment containing newly translated
+wording and consciously received wording. Schema 1.0.0 remains supported
+for its existing origins; it cannot declare `mixed`. A mixed site requires
+an actual retained `historical_wording_basis` use in its language package,
+addressed to its segment or text. The use claims must identify the bounded
+received portions and any revisions, not attribute the whole segment to
+the historical source. Legacy inline citations alone do not satisfy mixed
+origin. Origin is not a rights or review grant; adopting mixed does not
+upgrade any existing row or waive source/target hash validation.
 An inherited origin requires a wording citation; `own` and `trivial` prohibit
 one. This includes a `historical_wording_basis` use in the same language's
 bibliography, retained with `RETAIN` or `RETAIN_WITH_CORRECTION` and addressed
@@ -47,7 +56,9 @@ edition expands it only into the lazily loaded language artifact for the text.
 An `exact` or `normalized` site says that a page prints its wording, so at least
 one retained use in the language's bibliography must name a page as the
 `historical_wording_basis` of the site or its text. A comparator cannot carry
-that claim.
+that claim. Mixed sites are excluded from this whole inherited-site registry;
+their partial received contributions are described by the bounded wording
+uses, without a whole-segment `revised` or `traditional-composite` label.
 
 Since 0.5.0 `schema_version` is corpus-wide: every text and lexicon document
 carries the same number.

@@ -25,7 +25,11 @@ from build_reader import bibliography, store
 from checks.participation_performance import source_fields
 
 WORDING_BASIS = "historical_wording_basis"
-ORIGINS = frozenset(("working-unsettled", "own", "public-domain", "traditional", "trivial"))
+ORIGINS = frozenset(
+    ("working-unsettled", "own", "public-domain", "traditional", "trivial", "mixed")
+)
+SCHEMA = "1.1.0"
+LEGACY_SCHEMA = "1.0.0"
 REVIEWS = frozenset(("working", "internally-reviewed", "expert-reviewed"))
 
 PROTECTED_PL_SEGMENTS = {
@@ -308,6 +312,8 @@ def corpus_sites(corpus: Path) -> dict[str, dict]:
                     # Only genuinely unmapped legacy attachments retain the
                     # compatibility fallback. A mapped comparator or rejected
                     # use cannot masquerade as an inherited wording basis.
+                    # Mixed origin needs a real retained normalized basis, not legacy fallback.
+                    "has_retained_wording_basis": (site in cited_sites or doc["id"] in cited_texts),
                     "has_wording_citations": decisions.has_unmapped_citation(
                         f"languages/{language}/texts/{doc['id'].replace('.', '/', 1)}.json",
                         ("segments", segment["id"], "translation_citations"),
@@ -329,8 +335,8 @@ def load(corpus: Path) -> tuple[dict, list[str]]:
             errors.append(f"{where} is missing")
             continue
         doc = json.loads(path.read_text(encoding="utf-8"))
-        if doc.get("schema_version") != "1.0.0":
-            errors.append(f"{where}: schema_version must be '1.0.0'")
+        if doc.get("schema_version") not in {LEGACY_SCHEMA, SCHEMA}:
+            errors.append(f"{where}: schema_version must be {LEGACY_SCHEMA!r} or {SCHEMA!r}")
         if doc.get("language") != language:
             errors.append(f"{where}: language does not match its directory")
         if doc.get("status") != "working-edition":
@@ -341,6 +347,12 @@ def load(corpus: Path) -> tuple[dict, list[str]]:
             continue
         for entry in entries:
             site = entry.get("site") if isinstance(entry, dict) else None
+            if (
+                isinstance(entry, dict)
+                and entry.get("origin") == "mixed"
+                and doc.get("schema_version") != SCHEMA
+            ):
+                errors.append(f"{site}: origin=mixed requires schema_version={SCHEMA!r}")
             if site in by_site:
                 errors.append(f"{where}: duplicate site key {site!r}")
             elif site is not None:
@@ -384,6 +396,8 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
             errors.append(f"{site}: origin={origin} cannot carry a wording citation")
         if origin in {"public-domain", "traditional"} and not cited:
             errors.append(f"{site}: origin={origin} requires a wording citation")
+        if origin == "mixed" and not actual["has_retained_wording_basis"]:
+            errors.append(f"{site}: origin=mixed requires a retained {WORDING_BASIS} use")
         if origin == "working-unsettled" and review != "working":
             errors.append(f"{site}: unsettled origin cannot claim review={review}")
     return errors, dict(sorted(tally.items()))
@@ -415,7 +429,7 @@ def initialize(corpus: Path, language: str) -> int:
     path.write_text(
         json.dumps(
             {
-                "schema_version": "1.0.0",
+                "schema_version": SCHEMA,
                 "language": language,
                 "status": "working-edition",
                 "sites": entries,

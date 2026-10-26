@@ -569,7 +569,7 @@ def test_historical_wording_basis_is_only_embedded_gloria(language):
     assert published[0]["address"] == {"kind": "word", "word": "w030"}
     assert published[0]["claim"] == CLAIMS[language]
     coverage = bibliography.evidence_coverage(ROOT, graph, packages)["languages"][language]
-    assert coverage["normalized"] == {"pl": 102, "en": 239}[language]
+    assert coverage["normalized"] == {"pl": 102, "en": 242}[language]
 
 
 @pytest.mark.parametrize("language", ["pl", "en"])
