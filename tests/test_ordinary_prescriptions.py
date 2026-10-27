@@ -163,8 +163,11 @@ def test_every_actual_neutral_form_and_both_title_catalogues_project_without_oth
         value = {key: deepcopy(item) for key, item in doc.items() if key != "formulary_schema"}
         for component in value["components"]:
             component["text"] = component["text"].replace(".", "/", 1)
+        value.setdefault("ordinary_omissions", [])
+        for omission in value["ordinary_omissions"]:
+            omission["text"] = omission["text"].replace(".", "/", 1)
         expected.append(value)
-    assert formulary_catalog(CORPUS) == {"schema_version": "1.3.0", "formularies": expected}
+    assert formulary_catalog(CORPUS) == {"schema_version": "1.4.0", "formularies": expected}
     for language in ("pl", "en"):
         catalogue = language_formulary_catalog(CORPUS, language)
         assert catalogue["schema_version"] == "1.2.0"

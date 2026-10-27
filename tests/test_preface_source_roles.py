@@ -5,6 +5,8 @@ import json
 from copy import deepcopy
 
 import pytest
+from main_ordo_consumer_fixture import DATA as MAIN_ORDO
+from main_ordo_consumer_fixture import before_main_ordo_records
 from preface_delivery_fixture import current_graph_hash, current_selected_hash
 from witness_header_fixture import before_privacy
 
@@ -189,6 +191,8 @@ def check_protected(data, slug):
         key: [r for r in data[key] if r.get("text", r.get("address", {}).get("text")) == tid(slug)]
         for key in ("uses", "witnesses", "collations")
     }
+    if slug == "dialogus":
+        records = before_main_ordo_records(records, tid(slug))
     assert digest(before_privacy(records)) == current_graph_hash(tid(slug), PROTECTED[slug])
 
 
@@ -300,7 +304,32 @@ def test_easter_metadata_changes_do_not_rewrite_raw_body_or_readings(slug):
 
 @pytest.mark.parametrize("slug", PROTECTED)
 def test_other_preface_source_units_remain_separate(slug):
-    check_protected(graph(), slug)
+    data = graph()
+    check_protected(data, slug)
+    if slug == "dialogus":
+        expected = MAIN_ORDO["texts"][tid(slug)]
+        faults = (
+            ("uses", "use_record", "claim", expected["use_record"]["claim"] + " Changed."),
+            ("witnesses", "witness_record", "review", {"status": "reviewed", "sha256": "0" * 64}),
+            (
+                "witnesses",
+                "witness_record",
+                "source_dependencies",
+                {"uses": [], "raw_binding": "foreign"},
+            ),
+        )
+        for collection, name, field, value in faults:
+            target = next(item for item in data[collection] if item["id"] == expected[name]["id"])
+            saved = deepcopy(target)
+            try:
+                target[field] = value
+                with pytest.raises(AssertionError, match="complete named main Ordo graph addition"):
+                    check_protected(data, slug)
+            finally:
+                target.clear()
+                target.update(saved)
+                assert target == saved
+                check_protected(data, slug)
 
 
 @pytest.mark.parametrize("slug", PAGES)

@@ -457,6 +457,13 @@ def test_preexisting_raw_registry_objects_are_unchanged():
         },
     }
 
+    # Fixed independent source plans, not an allowlist inferred from this registry.
+    ordo_rows = json.loads((ROOT / "tests/fixtures/main-ordo-source-oracle.json").read_bytes())[
+        "rows"
+    ]
+    ordo = {row["id"]: row["expected_source"]["binding"] for row in ordo_rows}
+    assert len(ordo) == len(ordo_rows) == 49
+
     def check():
         assert registry["bindings"].get(identity) == expected
         historical = deepcopy(registry)
@@ -465,6 +472,9 @@ def test_preexisting_raw_registry_objects_are_unchanged():
             for key, value in rows.items():
                 assert historical[field].get(key) == value, "C9 registry successor differs"
                 del historical[field][key]
+        for key, value in ordo.items():
+            assert historical["bindings"].get(key) == value, "main Ordo registry successor differs"
+            del historical["bindings"][key]
         for field in ("archives", "bindings"):
             new = set(EXPECTED["new_registry_keys"][field])
             assert new <= set(historical[field])
@@ -525,3 +535,40 @@ def test_preexisting_raw_registry_objects_are_unchanged():
                         assert registry[name] is container
                     assert registry == saved and digest(registry) == digest(saved)
                     check()
+
+    ordo_identity = next(row["id"] for row in ordo_rows if row["text"] == "ordinarium.per-ipsum")
+    for fault in (
+        "missing",
+        "wrong-profile",
+        "wrong-witness",
+        "wrong-revision",
+        "wrong-contract",
+        "extra-field",
+    ):
+        saved = deepcopy(registry)
+        same_bindings = registry["bindings"]
+        try:
+            row = same_bindings[ordo_identity]
+            if fault == "missing":
+                del same_bindings[ordo_identity]
+            elif fault == "wrong-profile":
+                row["profile"] += "-foreign"
+            elif fault == "wrong-witness":
+                row["witness"] = "witnesses/ordinarium.kyrie/do.txt"
+            elif fault == "wrong-revision":
+                row["revision"] = "0" * 40
+            elif fault == "wrong-contract":
+                row["contract"] = "raw-reading-unsupported"
+            else:
+                row["optional"] = True
+            assert digest(registry) != digest(saved)
+            with pytest.raises(
+                AssertionError, match=r"^main Ordo registry successor differs(?:\n|$)"
+            ):
+                check()
+        finally:
+            same_bindings.clear()
+            same_bindings.update(deepcopy(saved["bindings"]))
+            assert registry["bindings"] is same_bindings
+            assert registry == saved and digest(registry) == digest(saved)
+            check()

@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.3.0",
+  "formulary_schema": "1.4.0",
   "id": "commemoratio-omnium-fidelium-defunctorum-missa-iii",
   "order": 98,
   "collection": "sanctorale",
@@ -11,6 +11,16 @@
     "default": false
   },
   "title": "In Commemoratione Omnium Fidelium Defunctorum — Missa III",
+  "ordinary_omissions": [
+    {
+      "text": "ordinarium.lavabo",
+      "segments": [
+        "s09",
+        "s10"
+      ],
+      "reason": "lavabo-doxology"
+    }
+  ],
   "ordinary": {
     "gloria": {
       "sunday": "omitted",

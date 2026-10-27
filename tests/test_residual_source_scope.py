@@ -11,9 +11,11 @@ while the historical p. 401 locator stays where it was.
 
 import json
 import unicodedata
+from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from main_ordo_consumer_fixture import before_main_ordo_records
 
 from build_reader import bibliography
 from build_reader.bibliography_bindings import (
@@ -483,7 +485,12 @@ def test_source_reviews_stay_pending_and_unadmitted(data):
     with pytest.raises(BindingError, match="complete explicit source_dependencies"):
         witness_subject(ROOT, digital, data, text_document(ROOT, TRINITY))
     ordinary = {CONFITEOR, ECCE, PANEM}
-    ordinary_witnesses = [w for w in data["witnesses"] if w["text"] in ordinary]
+    ordinary_records = {
+        key: [r for r in data[key] if r.get("text", r.get("address", {}).get("text")) in ordinary]
+        for key in ("uses", "witnesses", "collations")
+    }
+    historical = before_main_ordo_records(ordinary_records, PANEM)
+    ordinary_witnesses = historical["witnesses"]
     assert ordinary_witnesses == [
         {
             "id": "witness.ordinarium.confiteor.handmissal-eo2025",
@@ -525,6 +532,18 @@ def test_source_reviews_stay_pending_and_unadmitted(data):
             "review": {"status": "pending"},
         }
     ]
+    # The new pending Panem record must match in full, not merely disappear by id.
+    added = one(data["witnesses"], f"witness.{PANEM}.main-ordo-do44667ff")
+    saved = deepcopy(added)
+    try:
+        added["review"] = {"status": "reviewed", "sha256": "0" * 64}
+        with pytest.raises(AssertionError, match="complete named main Ordo graph addition"):
+            before_main_ordo_records(ordinary_records, PANEM)
+    finally:
+        added.clear()
+        added.update(saved)
+        assert added == saved
+        assert before_main_ordo_records(ordinary_records, PANEM) == historical
     # A retained source use is not a reviewed witness or a collation approval.
     for text_id in ordinary:
         record = public_record(data, text_id)

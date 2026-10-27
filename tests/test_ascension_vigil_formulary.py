@@ -80,12 +80,14 @@ def test_actual_parent_passes_native_catalogue_only_with_real_dependencies():
 def test_actual_emitted_catalogues_and_metrics_preserve_exact_parent():
     doc = read(ROOT / PARENT)
     catalogue = emit.formulary_catalog(ROOT)
-    assert catalogue["schema_version"] == "1.3.0"
+    assert catalogue["schema_version"] == "1.4.0"
     rows = catalogue["formularies"]
     matches = [row for row in rows if row["id"] == ID]
     assert len(matches) == 1
+    assert "ordinary_omissions" not in doc
     projected = copy.deepcopy(doc)
     del projected["formulary_schema"]
+    projected["ordinary_omissions"] = []
     for component in projected["components"]:
         component["text"] = component["text"].replace(".", "/", 1)
     assert matches[0] == projected

@@ -161,10 +161,36 @@ source-derived prescriptions within that formulary's matching calendar/Office
 context, not generic rules inferred from its name, rank or season. No missing
 branch defaults to required. An unresolved branch is not an omission decision.
 
-The neutral reader catalogue has schema `1.3.0` and transports these values
-unchanged. It does not duplicate them into language title catalogues. Those
-unchanged title-only authored documents and their emitted catalogues retain
-schema `1.2.0`; they may not author `ordinary` prescriptions.
+The neutral reader catalogue has schema `1.4.0` (reader edition `6.8.0`).
+It preserves the `ordinary` branches unchanged and additionally carries the
+closed Lavabo-only `ordinary_omissions` descriptor. The six affected authored
+formularies use `formulary_schema: "1.4.0"`; unaffected authored formularies
+retain `1.3.0`. The exact descriptor is one row with
+`text: "ordinarium.lavabo"`, `segments: ["s09", "s10"]`, and
+`reason: "lavabo-doxology"`. The reader changes only the text address to
+`ordinarium/lavabo`. No arbitrary text, segment, whole-prayer exclusion or
+empty/default authored list is allowed. Every emitted catalogue row must carry
+this field: an explicit empty list means the validated Mass retains Lavabo;
+its absence is invalid, not an inferred retention. The source rule is Ritus servandus VII.6:
+Masses de Tempore during Passiontide through Holy Thursday inclusive, and
+Masses for the Dead (the represented three All Souls formularies).
+Sanctoral Masses within Passiontide and the Easter Vigil retain the doxology.
+The complete Lavabo has94 words; only s09/s10, w075–w094, are omitted from the
+selected Mass view. Its74 Psalm words and complete canonical/study text remain.
+
+Omission descriptors are canonical prescriptions, not source-review approval.
+The corpus validates their presence/absence against the authored Mass
+classification and their exact target body before emission. Consumers may
+activate them only for a real settled date/Mass/language, never a season alone,
+an absent/stale/failed payload or no-formulary view. Validate full localized
+bodies before making a nonmutating projection shared by flow, word addresses,
+captions, translations and print; unresolved contexts retain complete reference
+bodies. The hymn Gloria and its unchanged branches remain distinct from this
+doxology, especially on Holy Thursday. No full sacred wording is edited.
+
+The unchanged title-only authored documents and emitted language catalogues
+retain schema `1.2.0`; they may author neither `ordinary` nor
+`ordinary_omissions`. No corpus-wide text/lexicon schema bump is implied.
 
 The application may evaluate a branch only for a valid actual date/Mass pair
 with a settled payload matching the selected Mass and language. A Sunday

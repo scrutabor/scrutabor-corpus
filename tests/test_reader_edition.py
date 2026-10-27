@@ -156,7 +156,8 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(emitted_book
         "rejected_exposed": 0,
     }
     assert written["evidence_coverage"] == {
-        "neutral": {"normalized": 1210, "texts": 1219},
+        # Newly retained neutral uses: qui-dixisti, simili-modo, supplices-te-rogamus.
+        "neutral": {"normalized": 1213, "texts": 1219},
         "languages": {
             "en": {"normalized": 242, "effective": 1219, "texts": 1219},
             "pl": {"normalized": 102, "effective": 1217, "texts": 1219},

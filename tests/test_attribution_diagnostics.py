@@ -5,6 +5,7 @@ from pathlib import Path
 
 import pytest
 import test_attribution_alignment as alignment_tests
+from main_ordo_consumer_fixture import copy_attribution_sources, current_ordo_row
 from test_attribution_scope import core_path, document, own_source, snapshot, writer
 
 from checks import attribute, office, ritual
@@ -30,11 +31,12 @@ def ruled_document(monkeypatch, rubric="Secreto"):
     return doc
 
 
-def test_actual_panem_reports_both_disagreements_without_authority():
+def test_actual_panem_reports_both_disagreements_without_authority(tmp_path, monkeypatch):
     doc = json.loads((ROOT / "texts/ordinarium/panem-caelestem.json").read_text())
+    current_ordo_row(doc["id"])
     baseline = attribute.assess(doc)
-    assert baseline.scope == "COMPOSITE_TEXT_ONLY"
-    assert baseline.reasons == ("COMPOSITE_LEGACY_READING:do.txt: 328, 330-332, 335",)
+    assert baseline.scope == "RAW_TEXT_ONLY"
+    assert baseline.reasons == ("TEXT_ONLY_CONTRACT:do.txt: raw-reading-10",)
     assert baseline.proposals == {} and not baseline.write_eligible
     messages = ["existing finding"]
     measured = attribute.assess(doc, messages)
@@ -43,24 +45,35 @@ def test_actual_panem_reports_both_disagreements_without_authority():
     wrapped = []
     assert attribute.propose(doc, wrapped) == {}
     assert wrapped == PANEM_WARNINGS
+    # Preserve the old composite assertion as a separate exact historical fixture.
+    historical = tmp_path / "historical"
+    core_path(historical, doc)
+    copy_attribution_sources(historical, doc["id"], historical=True)
+    before = snapshot(historical)
+    with monkeypatch.context() as scoped:
+        scoped.setattr(attribute, "CORPUS", historical)
+        old = attribute.assess(doc)
+        assert old.scope == "COMPOSITE_TEXT_ONLY"
+        assert old.reasons == ("COMPOSITE_LEGACY_READING:do.txt: 328, 330-332, 335",)
+        assert old.proposals == {} and not old.write_eligible
+        messages = ["existing finding"]
+        assert attribute.assess(doc, messages) == old
+        assert messages == ["existing finding", *PANEM_WARNINGS]
+    assert snapshot(historical) == before
 
 
 def test_actual_panem_writer_reports_but_preserves_all_fixture_bytes(tmp_path, monkeypatch, capsys):
     path = ROOT / "texts/ordinarium/panem-caelestem.json"
+    doc = json.loads(path.read_bytes())
     target = tmp_path / path.relative_to(ROOT)
     target.parent.mkdir(parents=True)
     target.write_bytes(path.read_bytes())
-    for source in (ROOT / "witnesses/ordinarium.panem-caelestem").iterdir():
-        dest = tmp_path / source.relative_to(ROOT)
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        dest.write_bytes(source.read_bytes())
-    source = ROOT / "witnesses/raw/do-ordo-missae.txt"
-    dest = tmp_path / source.relative_to(ROOT)
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    dest.write_bytes(source.read_bytes())
+    copy_attribution_sources(tmp_path, doc["id"])
     monkeypatch.setattr(attribute, "CORPUS", tmp_path)
+    assert attribute.assess(doc).scope == "RAW_TEXT_ONLY"
     before = snapshot(tmp_path)
     assert writer(monkeypatch) == 1
+    assert target.read_bytes() == before[target.relative_to(tmp_path)]
     assert snapshot(tmp_path) == before
     printed = capsys.readouterr().out.splitlines()
     assert [line for line in printed if line.startswith("DISAGREES  ")] == [

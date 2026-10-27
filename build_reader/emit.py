@@ -17,9 +17,10 @@ from build_reader import (
     participation_performance,
     store,
 )
-from checks.formularies import SCHEMA as FORMULARY_SCHEMA
 from checks.formularies import TITLE_SCHEMA as FORMULARY_TITLE_SCHEMA
 from checks.formularies import ordinary_errors
+from checks.lavabo_omissions import CATALOG_SCHEMA as FORMULARY_SCHEMA
+from checks.lavabo_omissions import errors as lavabo_omission_errors
 from checks.participation_performance import publication_errors
 from kalendarium.canon import calendar_table
 from kalendarium.commemorationes import calendar_table as commemoration_table
@@ -66,7 +67,8 @@ from kalendarium.dismissal import calendar_table as dismissal_table
 # for every reading; no consumer read the 1.0.0 shape.
 # 6.6.0 carries a sourced participation performance beside the retained base actor.
 # 6.7.0 adds optional localized commemoration context maps (catalogue schema 1.1.0).
-SCHEMA = "6.7.0"
+# 6.8.0 carries the closed source-owned Lavabo segment omissions in neutral catalogue1.4.
+SCHEMA = "6.8.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -143,8 +145,7 @@ def formulary_catalog(corpus: Path) -> dict:
     formularies = []
     for authored in sorted(store.formularies(corpus), key=lambda value: value["order"]):
         errors = ordinary_errors(authored.get("ordinary"))
-        if authored.get("formulary_schema") != FORMULARY_SCHEMA:
-            errors.append(f"formulary_schema must be {FORMULARY_SCHEMA}")
+        errors.extend(lavabo_omission_errors(authored, corpus))
         if errors:
             raise ValueError(f"{authored.get('id')}: {'; '.join(errors)}")
         formulary = {
@@ -154,6 +155,9 @@ def formulary_catalog(corpus: Path) -> dict:
         }
         for component in formulary["components"]:
             component["text"] = component["text"].replace(".", "/", 1)
+        formulary.setdefault("ordinary_omissions", [])
+        for omission in formulary["ordinary_omissions"]:
+            omission["text"] = omission["text"].replace(".", "/", 1)
         formularies.append(formulary)
     return {"schema_version": FORMULARY_SCHEMA, "formularies": formularies}
 
@@ -162,7 +166,11 @@ def language_formulary_catalog(corpus: Path, language: str) -> dict:
     """Project localized titles without duplicating neutral assembly data."""
     authored_titles = store.language_formularies(corpus, language)
     for title in authored_titles:
-        if title.get("formulary_schema") != FORMULARY_TITLE_SCHEMA or "ordinary" in title:
+        if (
+            title.get("formulary_schema") != FORMULARY_TITLE_SCHEMA
+            or "ordinary" in title
+            or "ordinary_omissions" in title
+        ):
             raise ValueError("invalid localized formulary title contract")
     return {
         "schema_version": FORMULARY_TITLE_SCHEMA,

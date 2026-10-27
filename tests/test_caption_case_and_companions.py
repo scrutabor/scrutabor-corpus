@@ -891,3 +891,48 @@ def test_first_opening_caption_rejects_predecessor_and_restores(row):
             assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
             assert language_packs.check_core(core) == []
             assert language_packs.check_layer(core, layer, path_of(row[1], row[0])) == []
+
+
+# Explicit target-sentence decisions; the two Lauds comparatives continue after a comma.
+DOXOLOGY_CAPTIONS = tuple(
+    (language, text, segment, tuple(words), anchor, gloss, tuple(forms), tuple(wrong))
+    for language, text, segment, words, anchor, gloss, forms, wrong in json.loads(
+        (ROOT / "tests/fixtures/doxology-caption-boundaries.json").read_text(encoding="utf-8")
+    )
+)
+assert len(DOXOLOGY_CAPTIONS) == 276
+assert len({(r[1], r[2], r[3][0]) for r in DOXOLOGY_CAPTIONS}) == 276
+assert sum(bool(r[7]) for r in DOXOLOGY_CAPTIONS) == 34
+
+
+@pytest.mark.parametrize("row", DOXOLOGY_CAPTIONS, ids=lambda r: f"{r[0]}-{r[1]}-{r[2]}-{r[3][0]}")
+def test_doxology_caption_boundary_rejects_wrong_initial_and_recovers(row):
+    core, layer = load(row[1]), load(row[1], row[0])
+    saved = deepcopy(layer)
+    pin = row[:7]
+    if row[4] is None:
+        assert not any(
+            set(group["words"]) & set(row[3])
+            for group in layer["segments"][row[2]].get("alignments", [])
+        )
+    assert caption_diagnostics(pin, core, layer) == []
+    assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
+    assert language_packs.check_core(core) == []
+    assert language_packs.check_layer(core, layer, path_of(row[1], row[0])) == []
+    for wrong in row[7]:
+        assert wrong != row[5]
+        try:
+            set_caption(row[2], row[3], wrong)(core, layer)
+            assert layer != saved
+            assert caption_diagnostics(pin, core, layer) == [
+                f"caption:{row[0]}:{row[1]}:{'+'.join(row[3])}: {wrong!r}"
+            ]
+            with pytest.raises(AssertionError):
+                assert caption_diagnostics(pin, core, layer) == []
+        finally:
+            set_caption(row[2], row[3], row[5])(core, layer)
+            assert layer == saved
+            assert caption_diagnostics(pin, core, layer) == []
+            assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
+            assert language_packs.check_core(core) == []
+            assert language_packs.check_layer(core, layer, path_of(row[1], row[0])) == []

@@ -415,12 +415,51 @@ def test_two_exact_mr_comparison_inverses_reject_damage_and_same_object_recovers
 
 def test_only_two_new_plans_and_one_archive_extend_the_original_registry():
     current = json.loads((ROOT / REGISTRY).read_bytes())
-    before = deepcopy(current)
-    for case in FIXTURE["cases"].values():
-        assert before["bindings"].pop(case["binding_id"]) == case["binding"]
-    for key, archive in FIXTURE["archive"].items():
-        assert before["archives"].pop(key) == archive
-    raw = (json.dumps(before, ensure_ascii=False, indent=2) + "\n").encode()
-    assert hashlib.sha256(raw).hexdigest() == (
-        "bb880b8c2b91834f90dda703e3cd60b9ad562158fbaacce24886f8413e1d9661"
-    )
+    source_rows = json.loads((ROOT / "tests/fixtures/main-ordo-source-oracle.json").read_bytes())[
+        "rows"
+    ]
+    plans = {row["id"]: row["expected_source"]["binding"] for row in source_rows}
+    assert len(plans) == len(source_rows) == 49
+
+    def check():
+        before = deepcopy(current)
+        for identity, expected in plans.items():
+            assert before["bindings"].get(identity) == expected, "exact main Ordo plan"
+            del before["bindings"][identity]
+        for case in FIXTURE["cases"].values():
+            assert before["bindings"].pop(case["binding_id"]) == case["binding"]
+        for key, archive in FIXTURE["archive"].items():
+            assert before["archives"].pop(key) == archive
+        raw = (json.dumps(before, ensure_ascii=False, indent=2) + "\n").encode()
+        assert hashlib.sha256(raw).hexdigest() == (
+            "bb880b8c2b91834f90dda703e3cd60b9ad562158fbaacce24886f8413e1d9661"
+        )
+
+    check()
+    identity = next(row["id"] for row in source_rows if row["text"] == "ordinarium.per-ipsum")
+    for fault in ("missing", "profile", "witness", "revision", "contract", "extra"):
+        saved = deepcopy(current)
+        same_bindings = current["bindings"]
+        try:
+            plan = same_bindings[identity]
+            if fault == "missing":
+                del same_bindings[identity]
+            elif fault == "profile":
+                plan["profile"] += "-foreign"
+            elif fault == "witness":
+                plan["witness"] = "witnesses/ordinarium.kyrie/do.txt"
+            elif fault == "revision":
+                plan["revision"] = "0" * 40
+            elif fault == "contract":
+                plan["contract"] = "raw-reading-unsupported"
+            else:
+                plan["extra"] = True
+            assert digest(current) != digest(saved)
+            with pytest.raises(AssertionError, match=r"^exact main Ordo plan(?:\n|$)"):
+                check()
+        finally:
+            same_bindings.clear()
+            same_bindings.update(deepcopy(saved["bindings"]))
+            assert current["bindings"] is same_bindings
+            assert current == saved and digest(current) == digest(saved)
+            check()

@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 
 import pytest
+from main_ordo_consumer_fixture import copy_attribution_sources, current_ordo_row
 
 from checks import attribute
 from checks.raw_binding import resolve_binding
@@ -137,26 +138,50 @@ def test_one_broad_range_cannot_hide_reversed_ritual_occurrences(tmp_path, monke
 
 def test_actual_lavabo_keeps_the_whole_sicut_priest_and_secret(tmp_path, monkeypatch):
     doc = json.loads((ROOT / "texts/ordinarium/lavabo.json").read_text(encoding="utf-8"))
-    path = core_path(tmp_path, doc)
-    for source in (ROOT / "witnesses/ordinarium.lavabo").iterdir():
-        if source.is_file():
-            target = tmp_path / "witnesses/ordinarium.lavabo" / source.name
-            target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_bytes(source.read_bytes())
-    raw = ROOT / "witnesses/raw/do-ordo-missae.txt"
-    target = tmp_path / "witnesses/raw" / raw.name
-    target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_bytes(raw.read_bytes())
-    monkeypatch.setattr(attribute, "CORPUS", tmp_path)
-    before = snapshot(tmp_path)
+    root = tmp_path / "current"
+    path = core_path(root, doc)
+    copy_attribution_sources(root, doc["id"])
+    monkeypatch.setattr(attribute, "CORPUS", root)
+    before = snapshot(root)
     last = next(seg for seg in doc["segments"] if seg["id"] == "s10")
     assert len(last["words"]) == 13
     assert (last["speaker"], last["voice"]) == ("sacerdos", "secreto")
     assert "speaker" not in attribute.propose(doc).get("s10", {})
-    assert attribute.assess(doc).scope == "COMPOSITE_TEXT_ONLY"
+    baseline = attribute.assess(doc)
+    assert baseline.scope == "RAW_TEXT_ONLY"
+    assert baseline.reasons == ("TEXT_ONLY_CONTRACT:do.txt: raw-reading-10",)
+    assert baseline.proposals == {} and not baseline.write_eligible
+    witness = root / "witnesses/ordinarium.lavabo/do.txt"
+    saved = witness.read_bytes()
+    marker = b"# raw-binding: main-ordo-ordinarium-lavabo\n"
+    assert saved.count(marker) == 1
+    try:
+        witness.write_bytes(saved.replace(marker, b"# raw-binding: unregistered-lavabo\n", 1))
+        invalid = attribute.assess(doc)
+        assert invalid.scope == "INVALID_SCOPE"
+        assert invalid.reasons == (
+            "INVALID_BINDING:do.txt: raw-binding marker and registered witness identity disagree",
+        )
+        assert invalid.proposals == {} and not invalid.write_eligible
+    finally:
+        witness.write_bytes(saved)
+        assert attribute.assess(doc) == baseline
+        assert snapshot(root) == before
     assert writer(monkeypatch) == 1
-    assert path.read_bytes() == before[path.relative_to(tmp_path)]
-    assert snapshot(tmp_path) == before
+    assert path.read_bytes() == before[path.relative_to(root)]
+    assert snapshot(root) == before
+    # The historical composite remains quarantined, independently of the new contract.
+    historical = tmp_path / "historical"
+    old_path = core_path(historical, doc)
+    copy_attribution_sources(historical, doc["id"], historical=True)
+    old_before = snapshot(historical)
+    with monkeypatch.context() as scoped:
+        scoped.setattr(attribute, "CORPUS", historical)
+        assert "speaker" not in attribute.propose(doc).get("s10", {})
+        assert attribute.assess(doc).scope == "COMPOSITE_TEXT_ONLY"
+        assert writer(scoped) == 1
+        assert old_path.read_bytes() == old_before[old_path.relative_to(historical)]
+        assert snapshot(historical) == old_before
 
 
 @pytest.mark.parametrize("text_id", ["ordinarium.other-reuse", "proprium.other-secreta"])
@@ -239,11 +264,15 @@ def test_print_only_is_unknown_not_malformed(tmp_path, monkeypatch):
     assert not attribute.span_covers(doc)
 
 
-def test_actual_ordered_kyrie_keeps_all_nine_actors():
+def test_actual_ordered_kyrie_keeps_all_nine_actors(tmp_path, monkeypatch):
     doc = json.loads((ROOT / "texts/ordinarium/kyrie.json").read_text(encoding="utf-8"))
-    result = attribute.assess(doc)
-    assert result.scope == "SCOPED"
-    assert [result.proposals[f"s{index:02d}"]["speaker"] for index in range(2, 11)] == [
+    current_ordo_row(doc["id"])
+    before = copy.deepcopy(doc)
+    actual = attribute.assess(doc)
+    assert actual.scope == "RAW_TEXT_ONLY"
+    assert actual.reasons == ("TEXT_ONLY_CONTRACT:do.txt: raw-reading-10",)
+    assert actual.proposals == {} and not actual.write_eligible
+    expected = [
         "sacerdos",
         "minister",
         "sacerdos",
@@ -254,6 +283,19 @@ def test_actual_ordered_kyrie_keeps_all_nine_actors():
         "minister",
         "sacerdos",
     ]
+    assert [
+        next(seg for seg in doc["segments"] if seg["id"] == f"s{index:02d}")["speaker"]
+        for index in range(2, 11)
+    ] == expected
+    # Historical physical markers retain their original positive ordered-actor control.
+    core_path(tmp_path, doc)
+    copy_attribution_sources(tmp_path, doc["id"], historical=True)
+    saved = snapshot(tmp_path)
+    monkeypatch.setattr(attribute, "CORPUS", tmp_path)
+    result = attribute.assess(doc)
+    assert result.scope == "SCOPED"
+    assert [result.proposals[f"s{index:02d}"]["speaker"] for index in range(2, 11)] == expected
+    assert doc == before and snapshot(tmp_path) == saved
 
 
 @pytest.mark.parametrize("raw", ["S. Amen. Amen.\n", "S. Testamentum.\n"])

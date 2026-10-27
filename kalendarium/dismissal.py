@@ -34,6 +34,9 @@ def canonical_inputs(corpus: Path) -> tuple[list[dict], dict]:
         form = {k: copy.deepcopy(v) for k, v in authored.items() if k != "formulary_schema"}
         for component in form["components"]:
             component["text"] = component["text"].replace(".", "/", 1)
+        form.setdefault("ordinary_omissions", [])
+        for omission in form["ordinary_omissions"]:
+            omission["text"] = omission["text"].replace(".", "/", 1)
         forms.append(form)
     keys: list[str] = []
     seasons: list[str] = []

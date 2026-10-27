@@ -1200,9 +1200,16 @@ def test_pentecost_dixero_separates_form_from_anterior_prose():
 
 def test_lavabo_english_perfect_does_not_repeat_the_auxiliary():
     target = layer("en", "ordinarium/lavabo")
-    assert target["words"]["w058"]["gloss"] == "walked"
-    assert target["words"]["w059"]["gloss"] == "have"
-    assert "I have walked" in target["words"]["w059"]["explanation"]
+    members = ["w058", "w059"]
+    groups = target["segments"]["s07"]["alignments"]
+    assert [g for g in groups if set(g["words"]) & set(members)] == [
+        {"words": members, "anchor": "w058", "gloss": "have walked"}
+    ]
+    assert all("gloss" not in target["words"][wid] for wid in members)
+    assert target["words"]["w053"]["gloss"] == "I"
+    assert target["words"]["w059"]["explanation"] == (
+        "With “ingréssus” it forms the single predicate “have walked”."
+    )
 
 
 def test_passion_english_passive_does_not_repeat_the_auxiliary():

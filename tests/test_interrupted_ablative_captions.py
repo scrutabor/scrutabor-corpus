@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from dies_irae_caption_fixture import restore_dies_irae_layer
 from gospel_delivery_fixture import current_sung_source_hash
 from michael_secret_fixture import control_expectation, ledger_expectation, predecessor_documents
 from opening_caption_fixture import restore_opening_layer
@@ -85,7 +86,7 @@ def reviewed_predecessor_documents(documents):
     result = deepcopy(documents)
     for path, layer in result.items():
         if path.startswith("languages/en/texts/"):
-            result[path] = restore_opening_layer(layer)
+            result[path] = restore_opening_layer(restore_dies_irae_layer(layer))
     for operation in reversed(SUCCESSORS["operations"]):
         parent, key = parent_at(result[operation["path"]], operation["pointer"])
         require(
@@ -206,7 +207,14 @@ def test_complete_historical_objects_survive_the_narrow_inverse(documents):
         broken[path]["words"]["w001"]["gloss"] = stale
         assert broken != documents
         try:
-            with pytest.raises(AssertionError, match=r"^reviewed opening caption$"):
+            with pytest.raises(
+                AssertionError,
+                match=(
+                    r"^reviewed Dies irae whole predecessor layer$"
+                    if text == "proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-sequentia"
+                    else r"^reviewed opening caption$"
+                ),
+            ):
                 historical_objects(broken)
         finally:
             broken.clear()

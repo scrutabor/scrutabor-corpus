@@ -1,0 +1,213 @@
+{
+  "archive_id": "missa-ordo-44667ff",
+  "archive": {
+    "upstream": "web/www/missa/Latin/Ordo/Ordo.txt",
+    "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+    "path": "witnesses/raw/missa-44667ff/Ordo/Ordo.txt",
+    "sha256": "a7f63e8030325b809f74dd4587c649bf8eb45cdd150fc9a2817fe2a1ed6a42e3"
+  },
+  "legacy_archive": {
+    "path": "witnesses/raw/do-ordo-missae.txt",
+    "sha256": "bd5778de2004061180fcdbfe9195ed441b9f23fc8d75a609c1bc46e0269fd2e5"
+  },
+  "texts": {
+    "ordinarium.panem-caelestem": {
+      "witness": "witnesses/ordinarium.panem-caelestem/do.txt",
+      "binding_id": "main-ordo-ordinarium-panem-caelestem",
+      "binding": {
+        "witness": "witnesses/ordinarium.panem-caelestem/do.txt",
+        "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+        "contract": "raw-reading-10",
+        "profile": "main-ordo-ordinarium-panem-caelestem"
+      },
+      "after_sha256": "73079cec89fa86a59bca8abeb2838ff7e0fa2e1c34883261e0898690be67b4b6",
+      "use_record": {
+        "id": "use.ordinarium.panem-caelestem.main-ordo-literal.do44667ff",
+        "edition": "edition.divinum-officium-missa.44667ff",
+        "digital_item": "item.divinum-officium-missa.44667ff.ordo",
+        "role": "derived_digital_collation_aid",
+        "address": {
+          "kind": "text",
+          "text": "ordinarium.panem-caelestem"
+        },
+        "locator": {
+          "section": "web/www/missa/Latin/Ordo/Ordo.txt {main-ordo:main-ordo-ordinarium-panem-caelestem; closed-literal-selection} (line 327; line 329; line 330; line 331; line 334); complete source contexts 325–336"
+        },
+        "claim": "The pinned Mass Ordo supplies this 70-word literal selection in the stated selection order (327 → 329 → 330 → 331 → 334), with only the explicitly bound framing exclusions or cross joins and whitespace collapse. This is a derived textual comparison, not independent transmission, completion of name slots, seasonal selection or performer evidence.",
+        "verified_on": "2026-10-27",
+        "decision": "RETAIN",
+        "evidence_sha256": "a7f63e8030325b809f74dd4587c649bf8eb45cdd150fc9a2817fe2a1ed6a42e3"
+      },
+      "witness_record": {
+        "id": "witness.ordinarium.panem-caelestem.main-ordo-do44667ff",
+        "text": "ordinarium.panem-caelestem",
+        "use": "use.ordinarium.panem-caelestem.main-ordo-literal.do44667ff",
+        "role": "derived_comparison",
+        "coverage": {
+          "kind": "full"
+        },
+        "transcription": "do",
+        "transcription_sha256": "73079cec89fa86a59bca8abeb2838ff7e0fa2e1c34883261e0898690be67b4b6",
+        "orthography_profile": "exact-pinned-digital",
+        "independence_basis": "Derived literal selection from the pinned Mass Ordo object; no independent transmission or performer/seasonal attribution.",
+        "source_dependencies": {
+          "uses": [],
+          "raw_binding": "main-ordo-ordinarium-panem-caelestem"
+        },
+        "review": {
+          "status": "pending"
+        }
+      },
+      "before_utf8": "# witness: do\n# description: Divinum Officium project, Ordo Missae — the priest's Communion\n#   under the species of bread: Panem cæléstem, the threefold Dómine non sum\n#   dignus, and the form Corpus Dómini nostri\n# source: https://github.com/divinumofficium/divinum-officium\n# path: web/www/missa/Latin/Ordo/Ordo.txt (lines 328, 330-332, 335)\n# fetched: 2026-08-05 (master; archived at ../raw/do-ordo-missae.txt, whose\n#   head gained the fold-ji directive on 2026-08-06 — line refs count the\n#   current archive)\n# orthography: 1962 liturgical (j, æ-ligature, accents)\n# fold-ji: true\n# note: versicle markers stripped and the lines joined; the standalone rubric\n#   lines and the inline parenthetical rubric \"(Et secrete prosequitur:)\",\n#   which stands after dignus in each of the three lines, are stripped — they\n#   are rubrics, carried as segments in the text document\nPanem cæléstem accípiam, et nomen Dómini invocábo. Dómine, non sum dignus, ut\nintres sub tectum meum: sed tantum dic verbo, et sanábitur ánima mea. Dómine,\nnon sum dignus, ut intres sub tectum meum: sed tantum dic verbo, et sanábitur\nánima mea. Dómine, non sum dignus, ut intres sub tectum meum: sed tantum dic\nverbo, et sanábitur ánima mea. Corpus Dómini nostri Jesu Christi custódiat\nánimam meam in vitam ætérnam. Amen.\n",
+      "before_sha256": "5e102b0fbd99b402121eca5517ac314a9437ba309a88aa60784e33608040157a"
+    },
+    "ordinarium.lavabo": {
+      "witness": "witnesses/ordinarium.lavabo/do.txt",
+      "binding_id": "main-ordo-ordinarium-lavabo",
+      "binding": {
+        "witness": "witnesses/ordinarium.lavabo/do.txt",
+        "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+        "contract": "raw-reading-10",
+        "profile": "main-ordo-ordinarium-lavabo"
+      },
+      "after_sha256": "24e9a1821e94ea432ce0f51c048f72474dda8089636a041d25641869d2ede768",
+      "use_record": {
+        "id": "use.ordinarium.lavabo.main-ordo-literal.do44667ff",
+        "edition": "edition.divinum-officium-missa.44667ff",
+        "digital_item": "item.divinum-officium-missa.44667ff.ordo",
+        "role": "derived_digital_collation_aid",
+        "address": {
+          "kind": "text",
+          "text": "ordinarium.lavabo"
+        },
+        "locator": {
+          "section": "web/www/missa/Latin/Ordo/Ordo.txt {main-ordo:main-ordo-ordinarium-lavabo; literal-composite-not-macro-expansion} (line 183; line 22; line 23); complete source contexts 21–24, 181–185"
+        },
+        "claim": "The pinned Ordo supplies the complete 94-word literal composite: the Lavabo psalm at line183, then its own printed Gloria Patri at lines22–23, retaining semper: with a colon. This comparison does not execute &Gloria or claim a textual contribution from Prayers, seasonal performance or independent transmission.",
+        "verified_on": "2026-10-27",
+        "decision": "RETAIN",
+        "evidence_sha256": "a7f63e8030325b809f74dd4587c649bf8eb45cdd150fc9a2817fe2a1ed6a42e3"
+      },
+      "witness_record": {
+        "id": "witness.ordinarium.lavabo.main-ordo-do44667ff",
+        "text": "ordinarium.lavabo",
+        "use": "use.ordinarium.lavabo.main-ordo-literal.do44667ff",
+        "role": "derived_comparison",
+        "coverage": {
+          "kind": "full"
+        },
+        "transcription": "do",
+        "transcription_sha256": "24e9a1821e94ea432ce0f51c048f72474dda8089636a041d25641869d2ede768",
+        "orthography_profile": "exact-pinned-digital",
+        "independence_basis": "Derived literal selection from the pinned Mass Ordo object; no independent transmission or performer/seasonal attribution.",
+        "source_dependencies": {
+          "uses": [],
+          "raw_binding": "main-ordo-ordinarium-lavabo"
+        },
+        "review": {
+          "status": "pending"
+        }
+      },
+      "before_utf8": "# witness: do\n# description: Divinum Officium project, Ordo Missae — Psalm 25, 6-12 with\n#   the Glória Patri, said at the washing of the fingers\n# source: https://github.com/divinumofficium/divinum-officium\n# path: web/www/missa/Latin/Ordo/Ordo.txt (lines 182-186, 23-24)\n# fetched: 2026-08-05 (master; byte-identical to the raw file archived at\n#   ../raw/do-ordo-missae.txt)\n# orthography: 1962 liturgical (j, æ-ligature incl. accented ǽ, accents)\n# note: versicle marker (v.) stripped; the psalm reference line \"Ps. 25,\n#   6-12\" is edition framing, not text, and so is the conditional marker\n#   before the doxology, which records that the Glória Patri is omitted in\n#   Masses for the Dead. This edition does not print the doxology at this\n#   place but refers to its own shared block (&Gloria); it is expanded here\n#   from the same file's own setting of the Glória Patri at the Júdica me\n#   (lines 23-24), and that expansion is the whole of the difference between\n#   this transcription and the lines as they stand. Prints circúmdabo, no\n#   comma after the first tuæ and none after me (all adjudicated in the\n#   apparatus)\nLavábo inter innocéntes manus meas: et circúmdabo altáre tuum, Dómine: Ut áudiam vocem laudis, et enárrem univérsa mirabília tua. Dómine, diléxi decórem domus tuæ et locum habitatiónis glóriæ tuæ. Ne perdas cum ímpiis, Deus, ánimam meam, et cum viris sánguinum vitam meam: In quorum mánibus iniquitátes sunt: déxtera eórum repléta est munéribus. Ego autem in innocéntia mea ingréssus sum: rédime me et miserére mei. Pes meus stetit in dirécto: in ecclésiis benedícam te, Dómine. Glória Patri, et Fílio, et Spirítui Sancto. Sicut erat in princípio, et nunc, et semper: et in sǽcula sæculórum. Amen.\n",
+      "before_sha256": "ad76756bf34bb3e8d76c4577c8962213f8f48ecdd6ce8b89a7763413a62b311d"
+    },
+    "ordinarium.kyrie": {
+      "witness": "witnesses/ordinarium.kyrie/do.txt",
+      "binding_id": "main-ordo-ordinarium-kyrie",
+      "binding": {
+        "witness": "witnesses/ordinarium.kyrie/do.txt",
+        "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+        "contract": "raw-reading-10",
+        "profile": "main-ordo-ordinarium-kyrie"
+      },
+      "after_sha256": "e28ee9b78f728fbca5000dc30433b99b9a5b22c165e18e70a67c587d93ea7ba1",
+      "use_record": {
+        "id": "use.ordinarium.kyrie.main-ordo-literal.do44667ff",
+        "edition": "edition.divinum-officium-missa.44667ff",
+        "digital_item": "item.divinum-officium-missa.44667ff.ordo",
+        "role": "derived_digital_collation_aid",
+        "address": {
+          "kind": "text",
+          "text": "ordinarium.kyrie"
+        },
+        "locator": {
+          "section": "web/www/missa/Latin/Ordo/Ordo.txt {main-ordo:main-ordo-ordinarium-kyrie; closed-literal-selection} (line 76; line 77; line 78; line 79; line 80; line 81; line 82; line 83; line 84); complete source contexts 74–86"
+        },
+        "claim": "The pinned Mass Ordo supplies this 18-word literal selection in the stated selection order (76 → 77 → 78 → 79 → 80 → 81 → 82 → 83 → 84), with only the explicitly bound framing exclusions or cross joins and whitespace collapse. This is a derived textual comparison, not independent transmission, completion of name slots, seasonal selection or performer evidence.",
+        "verified_on": "2026-10-27",
+        "decision": "RETAIN",
+        "evidence_sha256": "a7f63e8030325b809f74dd4587c649bf8eb45cdd150fc9a2817fe2a1ed6a42e3"
+      },
+      "witness_record": {
+        "id": "witness.ordinarium.kyrie.main-ordo-do44667ff",
+        "text": "ordinarium.kyrie",
+        "use": "use.ordinarium.kyrie.main-ordo-literal.do44667ff",
+        "role": "derived_comparison",
+        "coverage": {
+          "kind": "full"
+        },
+        "transcription": "do",
+        "transcription_sha256": "e28ee9b78f728fbca5000dc30433b99b9a5b22c165e18e70a67c587d93ea7ba1",
+        "orthography_profile": "exact-pinned-digital",
+        "independence_basis": "Derived literal selection from the pinned Mass Ordo object; no independent transmission or performer/seasonal attribution.",
+        "source_dependencies": {
+          "uses": [],
+          "raw_binding": "main-ordo-ordinarium-kyrie"
+        },
+        "review": {
+          "status": "pending"
+        }
+      },
+      "before_utf8": "# witness: do\n# description: Divinum Officium project, Ordo Missae — the Kyrie\n# source: https://github.com/divinumofficium/divinum-officium\n# path: web/www/missa/Latin/Ordo/Ordo.txt (lines 77-85)\n# fetched: 2026-08-05 (master; byte-identical to the raw file archived at\n#   ../raw/do-ordo-missae.txt)\n# orthography: 1962 liturgical (j, æ-ligature, accents)\n# note: speaker markers (S./M.) stripped; the nine invocations joined into\n#   one line. The alternation they encode — celebrant and minister taking\n#   turns — is carried by the rubric, not by the text\nKýrie, eléison. Kýrie, eléison. Kýrie, eléison. Christe, eléison. Christe, eléison. Christe, eléison. Kýrie, eléison. Kýrie, eléison. Kýrie, eléison.\n",
+      "before_sha256": "b22175d09be90ee2e4904e17e6fef36826bf6d83672c4e0757762ab17510dc5b"
+    },
+    "ordinarium.praefatio-dialogus": {
+      "witness": "witnesses/ordinarium.praefatio-dialogus/do.txt",
+      "binding_id": "main-ordo-ordinarium-praefatio-dialogus",
+      "binding": {
+        "witness": "witnesses/ordinarium.praefatio-dialogus/do.txt",
+        "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+        "contract": "raw-reading-10",
+        "profile": "main-ordo-ordinarium-praefatio-dialogus"
+      },
+      "after_sha256": "548aff0b5a0efc438235571125873f8ebfe1ce2d78e43eca7e08a493dd8f86b0",
+      "use_record": {
+        "id": "use.ordinarium.praefatio-dialogus.main-ordo-literal.do44667ff",
+        "edition": "edition.divinum-officium-missa.44667ff",
+        "digital_item": "item.divinum-officium-missa.44667ff.ordo",
+        "role": "derived_digital_collation_aid",
+        "address": {
+          "kind": "text",
+          "text": "ordinarium.praefatio-dialogus"
+        },
+        "locator": {
+          "section": "web/www/missa/Latin/Ordo/Ordo.txt {main-ordo:main-ordo-ordinarium-praefatio-dialogus; closed-literal-selection} (line 203; line 204; line 205; line 206; line 207; line 208); complete source contexts 201–210"
+        },
+        "claim": "The pinned Mass Ordo supplies this 20-word literal selection in the stated selection order (203 → 204 → 205 → 206 → 207 → 208), with only the explicitly bound framing exclusions or cross joins and whitespace collapse. This is a derived textual comparison, not independent transmission, completion of name slots, seasonal selection or performer evidence.",
+        "verified_on": "2026-10-27",
+        "decision": "RETAIN",
+        "evidence_sha256": "a7f63e8030325b809f74dd4587c649bf8eb45cdd150fc9a2817fe2a1ed6a42e3"
+      },
+      "witness_record": {
+        "id": "witness.ordinarium.praefatio-dialogus.main-ordo-do44667ff",
+        "text": "ordinarium.praefatio-dialogus",
+        "use": "use.ordinarium.praefatio-dialogus.main-ordo-literal.do44667ff",
+        "role": "derived_comparison",
+        "coverage": {
+          "kind": "full"
+        },
+        "transcription": "do",
+        "transcription_sha256": "548aff0b5a0efc438235571125873f8ebfe1ce2d78e43eca7e08a493dd8f86b0",
+        "orthography_profile": "exact-pinned-digital",
+        "independence_basis": "Derived literal selection from the pinned Mass Ordo object; no independent transmission or performer/seasonal attribution.",
+        "source_dependencies": {
+          "uses": [],
+          "raw_binding": "main-ordo-ordinarium-praefatio-dialogus"
+        },
+        "review": {
+          "status": "pending"
+        }
+      }
+    }
+  }
+}

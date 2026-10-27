@@ -15,7 +15,7 @@ from build_reader.bibliography_bindings import (
     validate_bindings,
     witness_subject,
 )
-from checks import raw_binding
+from checks import raw_binding, raw_binding_ordo
 from checks.raw_binding import REGISTRY
 
 CORPUS = Path(__file__).resolve().parent.parent
@@ -296,7 +296,12 @@ def test_missing_legacy_digital_binding_is_not_an_explicit_empty_inventory():
 
 def test_validation_uses_one_registry_snapshot_and_each_archive_once(composite, monkeypatch):
     root, graph, _ = composite
-    registry_calls, archive_reads = [], []
+    registry_calls, byte_reads = [], []
+    expected_reads = (
+        root / "witnesses/raw/do-44667ff/missa/Latin/Tempora/Pent06-0.txt",
+        root / "witnesses/raw/do-44667ff/missa/Latin/Ordo/Prayers.txt",
+        raw_binding_ordo.PROFILE_PATH,
+    )
     original_load, original_read = raw_binding.load_registry, Path.read_bytes
 
     def counted_load(path):
@@ -304,14 +309,32 @@ def test_validation_uses_one_registry_snapshot_and_each_archive_once(composite, 
         return original_load(path)
 
     def counted_read(path):
-        archive_reads.append(path)
+        byte_reads.append(path)
         return original_read(path)
+
+    def checked_reads():
+        assert registry_calls == [root]
+        assert len(byte_reads) == len(expected_reads)
+        assert set(byte_reads) == set(expected_reads)
 
     monkeypatch.setattr(raw_binding, "load_registry", counted_load)
     monkeypatch.setattr(Path, "read_bytes", counted_read)
     assert validate_bindings(root, graph) == []
-    assert registry_calls == [root]
-    assert len(archive_reads) == len(set(archive_reads)) == 2
+    checked_reads()
+    saved_reads = byte_reads.copy()
+    for damaged_reads in (
+        *([*saved_reads, path] for path in expected_reads),
+        [root / "unexpected-read", *saved_reads[1:]],
+        saved_reads[1:],
+    ):
+        try:
+            byte_reads[:] = damaged_reads
+            assert byte_reads != saved_reads
+            with pytest.raises(AssertionError):
+                checked_reads()
+        finally:
+            byte_reads[:] = saved_reads
+        checked_reads()
 
 
 @pytest.mark.parametrize(

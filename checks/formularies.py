@@ -8,6 +8,7 @@ from pathlib import Path
 
 from kalendarium.roman import FORMULARIES as CALENDAR_FORMULARIES
 
+from .lavabo_omissions import errors as lavabo_omission_errors
 from .normalize import substantive
 
 SCHEMA = "1.3.0"
@@ -163,8 +164,7 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
         formulary_id = doc.get("id")
         expected_id = path.stem
         collection = path.parent.name
-        if doc.get("formulary_schema") != SCHEMA:
-            errors.append(f"{relative}: formulary_schema must be {SCHEMA}")
+        errors.extend(f"{relative}: {error}" for error in lavabo_omission_errors(doc, corpus))
         errors.extend(f"{relative}: {error}" for error in ordinary_errors(doc.get("ordinary")))
         if formulary_id != expected_id:
             errors.append(f"{relative}: id={formulary_id!r}, path says {expected_id!r}")
@@ -358,7 +358,7 @@ def check(corpus: Path) -> tuple[list[str], dict[str, int]]:
             relative = path.relative_to(corpus)
             if doc.get("formulary_schema") != TITLE_SCHEMA:
                 errors.append(f"{relative}: formulary_schema must be {TITLE_SCHEMA}")
-            if "ordinary" in doc:
+            if "ordinary" in doc or "ordinary_omissions" in doc:
                 errors.append(f"{relative}: ordinary belongs only to the neutral formulary")
             if path.stem != formulary_id or doc.get("language") != language:
                 errors.append(f"{relative}: id/language does not match its path")
