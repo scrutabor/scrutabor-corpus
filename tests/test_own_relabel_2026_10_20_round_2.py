@@ -123,6 +123,21 @@ CONTEXTUAL_NAME_TARGETS = {
 assert len(CONTEXTUAL_NAME_TARGETS) == 2
 for _site, (_before, _after) in CONTEXTUAL_NAME_TARGETS.items():
     assert LABELS[_site]["target_sha256"] == _before
+# Only the exact created-saints capitalization targets supersede these snapshots.
+ALL_SOULS_TARGETS = {
+    "proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-communio.s01.pl": [
+        "c15112c551ab9d8ac7372cf7ad8d277106c23b0b791b17530cde1ab6737b1375",
+        "36c490c9a65f7659a1269a6f862ea5f9013c8fbc688b9f5a4171900a2ecb1ae3",
+    ],
+    "proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-communio.s01.en": [
+        "3cd6cc3291e583a976cde17cc8aabf7e434733a4593d22a2be46ed0357d44776",
+        "1d1bd4432537725e6e4bc222f4f11ab462f8a4c3724de20b1d623baf9b13686d",
+    ],
+}
+assert len(ALL_SOULS_TARGETS) == 2
+for _site, (_before, _after) in ALL_SOULS_TARGETS.items():
+    assert LABELS[_site]["target_sha256"] == _before
+EXACT_WORDING_TARGETS = {**CONTEXTUAL_NAME_TARGETS, **ALL_SOULS_TARGETS}
 SITES = sorted(LABELS)
 SAMPLE = FIXTURE["wording_sample"]
 DOXOLOGY = FIXTURE["doxology_uses"]
@@ -185,8 +200,8 @@ def assert_label(site, row):
 
 def assert_wording_unchanged(site, row, target):
     expected = LABELS[site]["target_sha256"]
-    if site in CONTEXTUAL_NAME_TARGETS:
-        before, expected = CONTEXTUAL_NAME_TARGETS[site]
+    if site in EXACT_WORDING_TARGETS:
+        before, expected = EXACT_WORDING_TARGETS[site]
         assert LABELS[site]["target_sha256"] == before, "predecessor wording"
     assert row["target_sha256"] == expected, "unchanged wording"
     assert canonical_hash(target) == expected, "unchanged wording"
@@ -263,8 +278,8 @@ def test_current_wording_matches_its_historical_or_exact_successor_hash(site):
         assert row == original
         assert_wording_unchanged(site, row, target)
         assert_label(site, row)
-    elif site in CONTEXTUAL_NAME_TARGETS:
-        before, after = CONTEXTUAL_NAME_TARGETS[site]
+    elif site in EXACT_WORDING_TARGETS:
+        before, after = EXACT_WORDING_TARGETS[site]
         original = deepcopy(row)
         assert row["target_sha256"] == after
         try:

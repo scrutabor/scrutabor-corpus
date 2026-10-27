@@ -345,10 +345,126 @@ def test_preexisting_raw_registry_objects_are_unchanged():
         "reading": [{"archive": "prayers", "first": 82, "last": 82}],
     }
 
+    # Three complete C9 objects are later additions, not a new historical baseline.
+    c9 = {
+        "archives": {
+            "common-c9": {
+                "upstream": "web/www/horas/Latin/Commune/C9.txt",
+                "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+                "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C9.txt",
+                "sha256": ("fb739e09f1cef9fd0f917db8875bfd3444e0c1d588c03e884081250e4d242516"),
+            }
+        },
+        "bindings": {
+            ("do-proprium-commemoratio-omnium-fidelium-defunctorum-missa-i-communio"): {
+                "contract": "raw-reading-2",
+                "witness": (
+                    "witnesses/proprium.commemoratio-omnium-fidelium-defunct"
+                    "orum-missa-i-communio/do.txt"
+                ),
+                "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+                "evidence": [
+                    {
+                        "archive": "common-c9",
+                        "section": "Communio",
+                        "section_line": 417,
+                        "first": 419,
+                        "last": 419,
+                    },
+                    {
+                        "archive": "common-c9",
+                        "section": "Communio",
+                        "section_line": 417,
+                        "first": 420,
+                        "last": 420,
+                        "fragment": {
+                            "start": 2,
+                            "end": 44,
+                            "text": "Cum Sanctis tuis in ætérnum: quia pius es.",
+                            "marker": None,
+                            "reason": (
+                                "Exclude only the response asterisk and its following sp"
+                                "ace; retain the complete literal response."
+                            ),
+                        },
+                    },
+                    {
+                        "archive": "common-c9",
+                        "section": "Communio",
+                        "section_line": 417,
+                        "first": 421,
+                        "last": 421,
+                    },
+                    {
+                        "archive": "common-c9",
+                        "section": "Communio",
+                        "section_line": 417,
+                        "first": 422,
+                        "last": 422,
+                        "fragment": {
+                            "start": 2,
+                            "end": 44,
+                            "text": "Cum Sanctis tuis in ætérnum: quia pius es.",
+                            "marker": None,
+                            "reason": (
+                                "Exclude only the response asterisk and its following sp"
+                                "ace; retain the complete literal response."
+                            ),
+                        },
+                    },
+                ],
+                "references": [],
+                "reading": [
+                    {"archive": "common-c9", "first": 419, "last": 419},
+                    {
+                        "archive": "common-c9",
+                        "first": 420,
+                        "last": 420,
+                        "fragment": {"start": 2, "end": 44},
+                    },
+                    {"archive": "common-c9", "first": 421, "last": 421},
+                    {
+                        "archive": "common-c9",
+                        "first": 422,
+                        "last": 422,
+                        "fragment": {"start": 2, "end": 44},
+                    },
+                ],
+            },
+            ("do-proprium-commemoratio-omnium-fidelium-defunctorum-missa-i-introitus"): {
+                "contract": "raw-reading-2",
+                "witness": (
+                    "witnesses/proprium.commemoratio-omnium-fidelium-defunct"
+                    "orum-missa-i-introitus/do.txt"
+                ),
+                "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+                "evidence": [
+                    {
+                        "archive": "common-c9",
+                        "section": "Introitus",
+                        "section_line": 281,
+                        "first": 283,
+                        "last": 286,
+                    }
+                ],
+                "references": [],
+                "reading": [
+                    {"archive": "common-c9", "first": 283, "last": 283},
+                    {"archive": "common-c9", "first": 285, "last": 285},
+                    {"archive": "common-c9", "first": 286, "last": 286},
+                ],
+            },
+        },
+    }
+
     def check():
         assert registry["bindings"].get(identity) == expected
         historical = deepcopy(registry)
         del historical["bindings"][identity]
+        for field, rows in c9.items():
+            for key, value in rows.items():
+                assert historical[field].get(key) == value, "C9 registry successor differs"
+                del historical[field][key]
         for field in ("archives", "bindings"):
             new = set(EXPECTED["new_registry_keys"][field])
             assert new <= set(historical[field])
@@ -378,3 +494,34 @@ def test_preexisting_raw_registry_objects_are_unchanged():
             assert registry["bindings"] is bindings and registry == saved
             assert digest(registry) == digest(saved)
             check()
+
+    # These are exact expected-side inventory faults, not claimed raw API errors.
+    for field, rows in c9.items():
+        for key in rows:
+            for fault in ("missing", "wrong-revision", "extra-field", "source-span"):
+                saved = deepcopy(registry)
+                same = {name: registry[name] for name in ("archives", "bindings")}
+                try:
+                    row = registry[field][key]
+                    if fault == "missing":
+                        del registry[field][key]
+                    elif fault == "wrong-revision":
+                        row["revision"] = "0" * 40
+                    elif fault == "extra-field":
+                        row["optional"] = True
+                    elif field == "archives":
+                        row["upstream"] = "web/www/horas/Latin/Commune/C10.txt"
+                    else:
+                        row["reading"][0]["first"] -= 1
+                    assert digest(registry) != digest(saved)
+                    with pytest.raises(
+                        AssertionError, match=r"^C9 registry successor differs(?:\n|$)"
+                    ):
+                        check()
+                finally:
+                    for name, container in same.items():
+                        container.clear()
+                        container.update(deepcopy(saved[name]))
+                        assert registry[name] is container
+                    assert registry == saved and digest(registry) == digest(saved)
+                    check()

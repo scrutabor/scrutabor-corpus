@@ -31,6 +31,21 @@ PREFACES = {site: row for site, row in PROJECTIONS.items() if row["formula"] != 
 JOHN = set(PROJECTIONS) - set(PREFACES)
 
 
+MICHAEL_SITE = "proprium.dedicatio-sancti-michaelis-archangeli-introitus.s01.pl"
+MICHAEL_TARGET_BEFORE = "20c7a6e9c7845730e7c6d9d40cc8f68071a1c025b778ef1fa02dae3e7545bd54"
+MICHAEL_TARGET_AFTER = "a1254d7ddba2c84418718f1a0d4ef3875341c61bf3661e6a430b687ff7107351"
+
+
+def current_expected_michael_row(row):
+    """Advance one historical expected target, never normalize an actual row."""
+    result = deepcopy(row)
+    if result["site"] == MICHAEL_SITE:
+        assert result == FIXTURE["after_rows"][MICHAEL_SITE], "historical Michael expected row"
+        assert result["target_sha256"] == MICHAEL_TARGET_BEFORE
+        result["target_sha256"] = MICHAEL_TARGET_AFTER
+    return result
+
+
 def core_segment(text, segment):
     return next(s for s in store.core(ROOT, text)["segments"] if s["id"] == segment)
 
@@ -218,8 +233,12 @@ def test_the_provenance_validator_rejects_a_cleared_flag(site, baseline, monkeyp
 
 def test_all_173_successor_rows_match_exactly(baseline):
     for site, row in FIXTURE["after_rows"].items():
-        assert baseline["rows"][site] == expected_pentecost_row(
-            current_sung_expected_row(expected_row_successor(current_expected_reflexive_row(row)))
+        assert baseline["rows"][site] == current_expected_michael_row(
+            expected_pentecost_row(
+                current_sung_expected_row(
+                    expected_row_successor(current_expected_reflexive_row(row))
+                )
+            )
         )
     fixture_before = deepcopy(FIXTURE)
     before = deepcopy(list(FIXTURE["before_rows"].values()))
@@ -232,6 +251,33 @@ def test_all_173_successor_rows_match_exactly(baseline):
     with pytest.raises(AssertionError):
         metadata_successors(before)
     assert fixture_before == FIXTURE
+
+    expected = deepcopy(FIXTURE["after_rows"][MICHAEL_SITE])
+    saved = deepcopy(expected)
+    current = current_expected_michael_row(expected)
+    assert expected == saved
+    assert current == baseline["rows"][MICHAEL_SITE]
+    assert current["target_sha256"] == MICHAEL_TARGET_AFTER != MICHAEL_TARGET_BEFORE
+    assert {key: value for key, value in current.items() if key != "target_sha256"} == {
+        key: value for key, value in expected.items() if key != "target_sha256"
+    }
+    for field in ("target_sha256", "source_sha256", "origin", "review", "familiar_core", "extra"):
+        try:
+            expected[field] = "Changed."
+            assert expected != saved
+            with pytest.raises(AssertionError, match="historical Michael expected row"):
+                current_expected_michael_row(expected)
+        finally:
+            expected.clear()
+            expected.update(deepcopy(saved))
+        assert expected == saved
+        assert current_expected_michael_row(expected) == current
+    unrelated = deepcopy(
+        next(row for site, row in FIXTURE["after_rows"].items() if site != MICHAEL_SITE)
+    )
+    snapshot = deepcopy(unrelated)
+    assert current_expected_michael_row(unrelated) == snapshot
+    assert unrelated == snapshot
 
 
 @pytest.mark.parametrize("site", sorted(PROJECTIONS))

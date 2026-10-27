@@ -39,11 +39,35 @@ def expected_review(identifier, historical):
     return actual
 
 
+# This narrow content successor is separate from the immutable privacy snapshots.
+SOURCE_SCOPE = json.loads(
+    (Path(__file__).parent / "fixtures/all-souls-first-source-successors.json").read_text()
+)
+
+
+def before_source_scope_header(relative, raw):
+    """Verify actual new bytes, then invert one exact public header on a comparison copy."""
+    rule = SOURCE_SCOPE["scope_header"]
+    if relative != rule["relative"]:
+        return raw
+    assert hashlib.sha256(raw).hexdigest() == rule["after_sha256"], (
+        "source-scope complete transcript"
+    )
+    addition = rule["added_line"].encode("utf-8")
+    assert raw.count(addition) == 1, "source-scope single header"
+    comparison = raw.replace(addition, b"", 1)
+    assert hashlib.sha256(comparison).hexdigest() == rule["before_sha256"], (
+        "source-scope predecessor transcript"
+    )
+    return comparison
+
+
 def assert_transcript_content(root, relative):
     """Inspect real current bytes; no predecessor string is fabricated or installed."""
     assert relative in TRANSCRIPTS, "known transcript successor identity"
     row = TRANSCRIPTS[relative]
     raw = (root / relative).read_bytes()
+    raw = before_source_scope_header(relative, raw)
     assert hashlib.sha256(raw).hexdigest() == row["after_sha256"], (
         "current complete transcript digest"
     )
@@ -77,6 +101,11 @@ def before_privacy(value, diagnostic="exact transcript-header comparison inverse
                 visit(child)
         elif isinstance(item, dict):
             identifier = item.get("id")
+            if identifier in SOURCE_SCOPE["mr_records"] and "transcription_sha256" in item:
+                source = SOURCE_SCOPE["mr_records"][identifier]
+                assert item == source["after"], "exact source-scope comparison inverse"
+                item.clear()
+                item.update(deepcopy(source["before"]))
             if identifier in BY_ID and "transcription_sha256" in item:
                 row = BY_ID[identifier]
                 assert item["transcription_sha256"] == row["after_sha256"], diagnostic

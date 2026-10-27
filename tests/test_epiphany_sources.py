@@ -405,7 +405,7 @@ CHANT_CAPTIONS = {
         "cała | ziemio | psalm | śpiewajcie | imieniu | Jego | oddajcie | chwałę | uwielbieniu | "
         "Jego | "
         "Chwała | Ojcu | i | Synowi | i | Duchowi | Świętemu | Jak | była | na | początku | "
-        "i | teraz | i | zawsze | i | na | wieki | wieków | Amen | cała | ziemia | "
+        "i | teraz | i | zawsze | i | na | wieki | wieków | Amen | Cała | ziemia | "
         "niech oddaje pokłon | Ci | Boże | i | niech śpiewa | Ci | niech śpiewa psalm | "
         "Twojemu imieniu | Najwyższy"
     ),

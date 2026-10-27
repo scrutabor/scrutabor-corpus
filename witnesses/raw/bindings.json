@@ -894,6 +894,12 @@
       "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
       "path": "witnesses/raw/do-21cb2d37/missa/Latin/Ordo/Prayers.txt",
       "sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    },
+    "common-c9": {
+      "upstream": "web/www/horas/Latin/Commune/C9.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C9.txt",
+      "sha256": "fb739e09f1cef9fd0f917db8875bfd3444e0c1d588c03e884081250e4d242516"
     }
   },
   "bindings": {
@@ -29136,6 +29142,118 @@
           "archive": "prayers",
           "first": 82,
           "last": 82
+        }
+      ]
+    },
+    "do-proprium-commemoratio-omnium-fidelium-defunctorum-missa-i-communio": {
+      "contract": "raw-reading-2",
+      "witness": "witnesses/proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-communio/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "common-c9",
+          "section": "Communio",
+          "section_line": 417,
+          "first": 419,
+          "last": 419
+        },
+        {
+          "archive": "common-c9",
+          "section": "Communio",
+          "section_line": 417,
+          "first": 420,
+          "last": 420,
+          "fragment": {
+            "start": 2,
+            "end": 44,
+            "text": "Cum Sanctis tuis in ætérnum: quia pius es.",
+            "marker": null,
+            "reason": "Exclude only the response asterisk and its following space; retain the complete literal response."
+          }
+        },
+        {
+          "archive": "common-c9",
+          "section": "Communio",
+          "section_line": 417,
+          "first": 421,
+          "last": 421
+        },
+        {
+          "archive": "common-c9",
+          "section": "Communio",
+          "section_line": 417,
+          "first": 422,
+          "last": 422,
+          "fragment": {
+            "start": 2,
+            "end": 44,
+            "text": "Cum Sanctis tuis in ætérnum: quia pius es.",
+            "marker": null,
+            "reason": "Exclude only the response asterisk and its following space; retain the complete literal response."
+          }
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "common-c9",
+          "first": 419,
+          "last": 419
+        },
+        {
+          "archive": "common-c9",
+          "first": 420,
+          "last": 420,
+          "fragment": {
+            "start": 2,
+            "end": 44
+          }
+        },
+        {
+          "archive": "common-c9",
+          "first": 421,
+          "last": 421
+        },
+        {
+          "archive": "common-c9",
+          "first": 422,
+          "last": 422,
+          "fragment": {
+            "start": 2,
+            "end": 44
+          }
+        }
+      ]
+    },
+    "do-proprium-commemoratio-omnium-fidelium-defunctorum-missa-i-introitus": {
+      "contract": "raw-reading-2",
+      "witness": "witnesses/proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-introitus/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "common-c9",
+          "section": "Introitus",
+          "section_line": 281,
+          "first": 283,
+          "last": 286
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "common-c9",
+          "first": 283,
+          "last": 283
+        },
+        {
+          "archive": "common-c9",
+          "first": 285,
+          "last": 285
+        },
+        {
+          "archive": "common-c9",
+          "first": 286,
+          "last": 286
         }
       ]
     }

@@ -18914,12 +18914,13 @@
         "text": "proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-communio"
       },
       "locator": {
-        "section": "pinned source key Sancti/11-02m1; resolved section [Communio] with declared inherited references"
+        "section": "web/www/horas/Latin/Commune/C9.txt [Communio] (lines 419-419); web/www/horas/Latin/Commune/C9.txt [Communio] (line 420, chars 2:44); web/www/horas/Latin/Commune/C9.txt [Communio] (lines 421-421); web/www/horas/Latin/Commune/C9.txt [Communio] (line 422, chars 2:44)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "2cbb2804a9b3e2331334db66e7412355fe07b3144e37ba93e81c03e264c81894"
+      "claim": "The pinned Common C9 section supplies the complete literal chant comparison. This use does not independently establish the Mass I assignment, performer, or genealogical independence from the printed tradition.",
+      "verified_on": "2026-10-27",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "fb739e09f1cef9fd0f917db8875bfd3444e0c1d588c03e884081250e4d242516",
+      "decision_reason": "The literal comparison is located in the Common, not in an absent proper section; its exact accidental difference is retained."
     },
     {
       "id": "use.proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-communio.mr1962",
@@ -19082,12 +19083,13 @@
         "text": "proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-introitus"
       },
       "locator": {
-        "section": "pinned source key Sancti/11-02m1; resolved section [Introitus] with declared inherited references"
+        "section": "web/www/horas/Latin/Commune/C9.txt [Introitus] (lines 283-286)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "2cbb2804a9b3e2331334db66e7412355fe07b3144e37ba93e81c03e264c81894"
+      "claim": "The pinned Common C9 section supplies the complete literal chant comparison. This use does not independently establish the Mass I assignment, performer, or genealogical independence from the printed tradition.",
+      "verified_on": "2026-10-27",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "fb739e09f1cef9fd0f917db8875bfd3444e0c1d588c03e884081250e4d242516",
+      "decision_reason": "The literal comparison is located in the Common, not in an absent proper section; its exact accidental difference is retained."
     },
     {
       "id": "use.proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-introitus.mr1962",
@@ -19103,10 +19105,11 @@
         "scan": "leaf n803 / PDF p. 804",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n803/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "8eff5062084d66f035cfe14aa1076c941d2afb702b8861bc7be1c7e434fbc25e"
+      "claim": "The Mass I page prints the ten-word opening antiphon and twenty-word psalm, then directs repetition of the opening antiphon alone, without repeating the psalm. The final ten words follow that printed direction, not an uninterrupted forty-word setting.",
+      "verified_on": "2026-10-27",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "8eff5062084d66f035cfe14aa1076c941d2afb702b8861bc7be1c7e434fbc25e",
+      "decision_reason": "Distinguishes the printed thirty words from the ten-word reprise expressly directed by the same page."
     },
     {
       "id": "use.proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-offertorium.do44667ff",
@@ -85621,12 +85624,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "14c47bb581fb153235001cf710d779ae26827cad3609349b5811d1b5c0e3bcdd",
+      "transcription_sha256": "b887a572f81aff38cf8a1007852c4dbe0e4cdfdf817065f2b1127d90612ce5fb",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "A separately maintained digital Common chant, checked literally against its archived bytes; a textual comparison only, not proof of independent Mass assignment or genealogical independence.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-commemoratio-omnium-fidelium-defunctorum-missa-i-communio"
       }
     },
     {
@@ -85643,6 +85650,10 @@
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -85753,12 +85764,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "2c9ed059f2f2fd4c01d60b54a26e5564e20a2e5a0eb9019ce0d0a83ef1d5b6ad",
+      "transcription_sha256": "8268951c045a5776f6ae2cd17615b968931655cd451d096219db6c254879d4b8",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "A separately maintained digital Common chant, checked literally against its archived bytes; a textual comparison only, not proof of independent Mass assignment or genealogical independence.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-commemoratio-omnium-fidelium-defunctorum-missa-i-introitus"
       }
     },
     {
@@ -85769,12 +85784,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "2dfa6f23621d2823acfc644a28a6c3faf76ce452d7ca8b522786548e7fec673b",
+      "transcription_sha256": "c1d61da56a1e887f142a1f90eefe86937b178ef99e06e3c86d3bc3f890f2bb6e",
       "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "independence_basis": "The identified Mass I page prints the opening antiphon and psalm and expressly directs the final antiphon reprise; the current complete reading follows that rubric.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": null
       }
     },
     {
@@ -126172,17 +126191,19 @@
     {
       "id": "collation.proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-communio.mr1962-do44667ff",
       "text": "proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-communio",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The Benziger 1962 Mass I reading, including its directed reprise where present, compared with the literal Common C9 chant; not an independent Mass-occurrence adjudication",
       "selected_text_sha256": "7848a2c265f3c74e5590d6b5ab99d162f46bf5e2e882f3aa9f26e1e5f3ad7f7d",
       "witnesses": [
         "witness.proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-communio.do44667ff",
         "witness.proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-communio.mr1962"
       ],
       "apparatus": {
-        "entries": 0,
-        "classes": []
+        "entries": 1,
+        "classes": [
+          "accent"
+        ]
       },
-      "apparatus_sha256": "c755d993e4c135ac6e5ec17b5c2be415cde8cc70f3270411113f673d1b7404cd",
+      "apparatus_sha256": "1f1bdabb5402ad6b8b7742e1f56e6255dab92ea419ee1caac5f128d9d73a727b",
       "review": {
         "status": "pending"
       }
@@ -126252,17 +126273,19 @@
     {
       "id": "collation.proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-introitus.mr1962-do44667ff",
       "text": "proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-introitus",
-      "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+      "recension": "The Benziger 1962 Mass I reading, including its directed reprise where present, compared with the literal Common C9 chant; not an independent Mass-occurrence adjudication",
       "selected_text_sha256": "cd7671ee3875525008378846f8ab0622bd57c037ab905307b361101eb3335aca",
       "witnesses": [
         "witness.proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-introitus.do44667ff",
         "witness.proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-introitus.mr1962"
       ],
       "apparatus": {
-        "entries": 0,
-        "classes": []
+        "entries": 1,
+        "classes": [
+          "orthography"
+        ]
       },
-      "apparatus_sha256": "2f6e697790461ac865b26ceb9544be015575e5674d4219b7dcfaaa059a8d9e60",
+      "apparatus_sha256": "49e22d4a344880ca909f70203c664e385c95d3a3b79b5a0528832f496f73f03f",
       "review": {
         "status": "pending"
       }
@@ -127436,7 +127459,7 @@
           "orthography"
         ]
       },
-      "apparatus_sha256": "a76944a623864730f702fee1558feb889f333a8715a5a016a0290779c0c23266",
+      "apparatus_sha256": "6de8c2e97ab2cb2041be53e9dba124368e762324b565b4c515e4e193f8baf640",
       "review": {
         "status": "pending"
       }
