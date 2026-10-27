@@ -16,7 +16,7 @@ TEXT = f"proprium.{NAME}"
 GROUPS = [
     ("pl", 9, 13, 12, "w tym, co sprawujemy z obowiązku należnej służby"),
     ("pl", 19, 22, 21, "doświadczyli wzrostu zbawienia, którego udzielasz"),
-    ("en", 1, 3, 3, "filled with the sacred gift"),
+    ("en", 1, 3, 3, "Filled with the sacred gift"),
     ("en", 5, 7, 7, "we implore You, Lord"),
     ("en", 10, 13, 12, "we celebrate in fulfillment of the service we owe"),
     ("en", 17, 18, 17, "Your martyr"),

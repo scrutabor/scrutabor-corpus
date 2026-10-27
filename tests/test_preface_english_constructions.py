@@ -7,6 +7,7 @@ from typing import Any
 import pytest
 from day_preface_fixture import TARGET as DAY_TARGET
 from day_preface_fixture import restore_day_preface
+from opening_caption_fixture import restore_opening_layer
 from post_ascension_fixture import restore_layer as restore_ascension_layer
 from preface_caption_fixture import restore_caption_layer
 from preface_delivery_fixture import current_expected_row, current_source_hash
@@ -434,6 +435,7 @@ def assert_site(doc, layer, site):
 
 def restore_reviewed_fields(layer, slug):
     """Reverse only the named groups/glosses/prose; never mask new metadata."""
+    layer = restore_opening_layer(layer)
     restored = (
         restore_glory_layer(restore_caption_layer(layer, "en"), "en")
         if slug == "sanctissimae-trinitatis"
@@ -566,6 +568,18 @@ def test_source_context_is_unchanged(slug):
 def test_unselected_fields_restore_to_whole_layer_baseline(slug):
     doc, layer = load(slug)
     assert_protected(doc, layer, slug)
+    if slug in {"apostolorum", "d-n-iesu-christi-regis", "epiphaniae", "nativitatis"}:
+        broken = deepcopy(layer)
+        broken["words"]["w001"]["gloss"] = "truly"
+        assert broken != layer
+        try:
+            with pytest.raises(AssertionError, match=r"^reviewed opening caption$"):
+                assert_protected(doc, broken, slug)
+        finally:
+            broken.clear()
+            broken.update(deepcopy(layer))
+            assert broken == layer
+            assert_protected(doc, broken, slug)
 
 
 @pytest.mark.parametrize("slug", ["paschalis-in-die", "paschalis-in-nocte"])

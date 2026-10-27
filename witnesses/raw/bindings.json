@@ -858,6 +858,42 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-Adv3-6.txt",
       "sha256": "6489f012b7daf41c9112ebacf99ea1177c6581fa609d3062405c68b1ee4063e3"
+    },
+    "advent-i-prayers-b5e250b": {
+      "upstream": "web/www/missa/Latin/Ordo/Prayers.txt",
+      "revision": "b5e250b0af79bc3fb4fc3ac631a622d8cb0f2a19",
+      "path": "witnesses/raw/do-ordo-prayers-b5e250b.txt",
+      "sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
+    },
+    "advent-ii-21cb2d37": {
+      "upstream": "web/www/missa/Latin/Tempora/Adv2-0.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "path": "witnesses/raw/do-21cb2d37/missa/Latin/Tempora/Adv2-0.txt",
+      "sha256": "3e1073ff293d70f43e5a7c1a200bff954471ca65f978532c422617f1cf833d59"
+    },
+    "advent-iii-21cb2d37": {
+      "upstream": "web/www/missa/Latin/Tempora/Adv3-0.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "path": "witnesses/raw/do-21cb2d37/missa/Latin/Tempora/Adv3-0.txt",
+      "sha256": "8fc7d2e34ea5e90453812f3aec68cbd33aea663f65a8ec429f1da356162e6df4"
+    },
+    "advent-iv-21cb2d37": {
+      "upstream": "web/www/missa/Latin/Tempora/Adv4-0.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "path": "witnesses/raw/do-21cb2d37/missa/Latin/Tempora/Adv4-0.txt",
+      "sha256": "acd9154d762b5a2dfa5ea3bc07109ebeec253d5dfec635f9e49cbcd7bd3e2a74"
+    },
+    "advent-marian-common-21cb2d37": {
+      "upstream": "obsolete/missa/Latin/Commune/C10a.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "path": "witnesses/raw/do-21cb2d37/obsolete/missa/Latin/Commune/C10a.txt",
+      "sha256": "ba94e58d62dfe7c7e294bd33f373c3f7a66b8c5b7038108492000b4fe5f7ca0b"
+    },
+    "advent-prayers-21cb2d37": {
+      "upstream": "web/www/missa/Latin/Ordo/Prayers.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "path": "witnesses/raw/do-21cb2d37/missa/Latin/Ordo/Prayers.txt",
+      "sha256": "7bf86beb01c170212fa07438de45b16b321f117013321400d65c2229c6624d9b"
     }
   },
   "bindings": {
@@ -28309,6 +28345,797 @@
             "start": 0,
             "end": 110
           }
+        }
+      ]
+    },
+    "advent-i-communion": {
+      "witness": "witnesses/proprium.dominica-i-adventus-communio/do.txt",
+      "revision": "b5e250b0af79bc3fb4fc3ac631a622d8cb0f2a19",
+      "evidence": [
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 55,
+          "last": 56,
+          "section": "Communio",
+          "section_line": 54
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 56,
+          "last": 56
+        }
+      ]
+    },
+    "advent-i-alleluia": {
+      "witness": "witnesses/proprium.dominica-i-adventus-alleluia/do.txt",
+      "revision": "b5e250b0af79bc3fb4fc3ac631a622d8cb0f2a19",
+      "evidence": [
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 32,
+          "last": 32,
+          "section": "Graduale",
+          "section_line": 29,
+          "fragment": {
+            "start": 64,
+            "end": 83,
+            "text": "Allelúja, allelúja.",
+            "marker": "V",
+            "reason": "Only the Alleluia pair following the complete gradual verse; no performer scope is inferred across omitted words."
+          }
+        },
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 33,
+          "last": 34,
+          "section": "Graduale",
+          "section_line": 29
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 32,
+          "last": 32,
+          "fragment": {
+            "start": 64,
+            "end": 83
+          }
+        },
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 34,
+          "last": 34
+        }
+      ],
+      "contract": "raw-reading-2"
+    },
+    "advent-i-graduale": {
+      "witness": "witnesses/proprium.dominica-i-adventus-graduale/do.txt",
+      "revision": "b5e250b0af79bc3fb4fc3ac631a622d8cb0f2a19",
+      "evidence": [
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 30,
+          "last": 31,
+          "section": "Graduale",
+          "section_line": 29
+        },
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 32,
+          "last": 32,
+          "section": "Graduale",
+          "section_line": 29,
+          "fragment": {
+            "start": 0,
+            "end": 63,
+            "text": "V. Vias tuas, Dómine, notas fac mihi: et sémitas tuas édoce me.",
+            "marker": "V",
+            "reason": "Only the gradual verse; the following Alleluia pair is a different chant component."
+          }
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 31,
+          "last": 31
+        },
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 32,
+          "last": 32,
+          "fragment": {
+            "start": 0,
+            "end": 63
+          }
+        }
+      ],
+      "contract": "raw-reading-2"
+    },
+    "advent-i-introitus": {
+      "witness": "witnesses/proprium.dominica-i-adventus-introitus/do.txt",
+      "revision": "b5e250b0af79bc3fb4fc3ac631a622d8cb0f2a19",
+      "evidence": [
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 13,
+          "last": 17,
+          "section": "Introitus",
+          "section_line": 12
+        },
+        {
+          "archive": "advent-i-prayers-b5e250b",
+          "first": 13,
+          "last": 14,
+          "section": "Gloria",
+          "section_line": 12
+        },
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 18,
+          "last": 18,
+          "section": "Introitus",
+          "section_line": 12
+        }
+      ],
+      "references": [
+        {
+          "archive": "advent-i-b5e250b",
+          "line": 17,
+          "text": "&Gloria",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 14,
+          "last": 14
+        },
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 16,
+          "last": 16
+        },
+        {
+          "archive": "advent-i-prayers-b5e250b",
+          "first": 13,
+          "last": 14
+        },
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 18,
+          "last": 18
+        }
+      ]
+    },
+    "advent-i-offertorium": {
+      "witness": "witnesses/proprium.dominica-i-adventus-offertorium/do.txt",
+      "revision": "b5e250b0af79bc3fb4fc3ac631a622d8cb0f2a19",
+      "evidence": [
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 47,
+          "last": 48,
+          "section": "Offertorium",
+          "section_line": 46
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-i-b5e250b",
+          "first": 48,
+          "last": 48
+        }
+      ]
+    },
+    "advent-ii-alleluia": {
+      "witness": "witnesses/proprium.dominica-ii-adventus-alleluia/do.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "evidence": [
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 38,
+          "last": 38,
+          "section": "Graduale",
+          "section_line": 35,
+          "fragment": {
+            "start": 85,
+            "end": 104,
+            "text": "Allelúja, allelúja,",
+            "marker": "V",
+            "reason": "Only the Alleluia pair following the complete gradual verse; no performer scope is inferred across omitted words."
+          }
+        },
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 39,
+          "last": 40,
+          "section": "Graduale",
+          "section_line": 35
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 38,
+          "last": 38,
+          "fragment": {
+            "start": 85,
+            "end": 104
+          }
+        },
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 40,
+          "last": 40
+        }
+      ],
+      "contract": "raw-reading-2"
+    },
+    "advent-ii-communio": {
+      "witness": "witnesses/proprium.dominica-ii-adventus-communio/do.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "evidence": [
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 61,
+          "last": 62,
+          "section": "Communio",
+          "section_line": 60
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 62,
+          "last": 62
+        }
+      ]
+    },
+    "advent-ii-graduale": {
+      "witness": "witnesses/proprium.dominica-ii-adventus-graduale/do.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "evidence": [
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 36,
+          "last": 37,
+          "section": "Graduale",
+          "section_line": 35
+        },
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 38,
+          "last": 38,
+          "section": "Graduale",
+          "section_line": 35,
+          "fragment": {
+            "start": 0,
+            "end": 84,
+            "text": "V. Congregáte illi sanctos ejus, qui ordinavérunt testaméntum ejus super sacrifícia.",
+            "marker": "V",
+            "reason": "Only the gradual verse; the following Alleluia pair is a different chant component."
+          }
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 37,
+          "last": 37
+        },
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 38,
+          "last": 38,
+          "fragment": {
+            "start": 0,
+            "end": 84
+          }
+        }
+      ],
+      "contract": "raw-reading-2"
+    },
+    "advent-ii-introitus": {
+      "witness": "witnesses/proprium.dominica-ii-adventus-introitus/do.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "evidence": [
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 19,
+          "last": 23,
+          "section": "Introitus",
+          "section_line": 18
+        },
+        {
+          "archive": "advent-prayers-21cb2d37",
+          "first": 13,
+          "last": 14,
+          "section": "Gloria",
+          "section_line": 12
+        },
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 24,
+          "last": 24,
+          "section": "Introitus",
+          "section_line": 18
+        }
+      ],
+      "references": [
+        {
+          "archive": "advent-ii-21cb2d37",
+          "line": 23,
+          "text": "&Gloria",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 20,
+          "last": 20
+        },
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 22,
+          "last": 22
+        },
+        {
+          "archive": "advent-prayers-21cb2d37",
+          "first": 13,
+          "last": 14
+        },
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 24,
+          "last": 24
+        }
+      ]
+    },
+    "advent-ii-offertorium": {
+      "witness": "witnesses/proprium.dominica-ii-adventus-offertorium/do.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "evidence": [
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 53,
+          "last": 54,
+          "section": "Offertorium",
+          "section_line": 52
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-ii-21cb2d37",
+          "first": 54,
+          "last": 54
+        }
+      ]
+    },
+    "advent-iii-alleluia": {
+      "witness": "witnesses/proprium.dominica-iii-adventus-alleluia/do.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "evidence": [
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 38,
+          "last": 38,
+          "section": "Graduale",
+          "section_line": 35,
+          "fragment": {
+            "start": 63,
+            "end": 82,
+            "text": "Allelúja, allelúja,",
+            "marker": "V",
+            "reason": "Only the Alleluia pair following the complete gradual verse; no performer scope is inferred across omitted words."
+          }
+        },
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 39,
+          "last": 39,
+          "section": "Graduale",
+          "section_line": 35
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 38,
+          "last": 38,
+          "fragment": {
+            "start": 63,
+            "end": 82
+          }
+        },
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 39,
+          "last": 39
+        }
+      ],
+      "contract": "raw-reading-2"
+    },
+    "advent-iii-communio": {
+      "witness": "witnesses/proprium.dominica-iii-adventus-communio/do.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "evidence": [
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 60,
+          "last": 61,
+          "section": "Communio",
+          "section_line": 59
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 61,
+          "last": 61
+        }
+      ]
+    },
+    "advent-iii-graduale": {
+      "witness": "witnesses/proprium.dominica-iii-adventus-graduale/do.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "evidence": [
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 36,
+          "last": 37,
+          "section": "Graduale",
+          "section_line": 35
+        },
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 38,
+          "last": 38,
+          "section": "Graduale",
+          "section_line": 35,
+          "fragment": {
+            "start": 0,
+            "end": 62,
+            "text": "V. Qui regis Israël, inténde: qui dedúcis, velut ovem, Joseph.",
+            "marker": "V",
+            "reason": "Only the gradual verse; the following Alleluia pair is a different chant component."
+          }
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 37,
+          "last": 37
+        },
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 38,
+          "last": 38,
+          "fragment": {
+            "start": 0,
+            "end": 62
+          }
+        }
+      ],
+      "contract": "raw-reading-2"
+    },
+    "advent-iii-introitus": {
+      "witness": "witnesses/proprium.dominica-iii-adventus-introitus/do.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "evidence": [
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 19,
+          "last": 23,
+          "section": "Introitus",
+          "section_line": 18
+        },
+        {
+          "archive": "advent-prayers-21cb2d37",
+          "first": 13,
+          "last": 14,
+          "section": "Gloria",
+          "section_line": 12
+        },
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 24,
+          "last": 24,
+          "section": "Introitus",
+          "section_line": 18
+        }
+      ],
+      "references": [
+        {
+          "archive": "advent-iii-21cb2d37",
+          "line": 23,
+          "text": "&Gloria",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 20,
+          "last": 20
+        },
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 22,
+          "last": 22
+        },
+        {
+          "archive": "advent-prayers-21cb2d37",
+          "first": 13,
+          "last": 14
+        },
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 24,
+          "last": 24
+        }
+      ]
+    },
+    "advent-iii-offertorium": {
+      "witness": "witnesses/proprium.dominica-iii-adventus-offertorium/do.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "evidence": [
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 52,
+          "last": 53,
+          "section": "Offertorium",
+          "section_line": 51
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-iii-21cb2d37",
+          "first": 53,
+          "last": 53
+        }
+      ]
+    },
+    "advent-iv-alleluia": {
+      "witness": "witnesses/proprium.dominica-iv-adventus-alleluia/do.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "evidence": [
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 38,
+          "last": 38,
+          "section": "Graduale",
+          "section_line": 35,
+          "fragment": {
+            "start": 79,
+            "end": 98,
+            "text": "Allelúja, allelúja,",
+            "marker": "V",
+            "reason": "Only the Alleluia pair following the complete gradual verse; no performer scope is inferred across omitted words."
+          }
+        },
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 39,
+          "last": 39,
+          "section": "Graduale",
+          "section_line": 35
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 38,
+          "last": 38,
+          "fragment": {
+            "start": 79,
+            "end": 98
+          }
+        },
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 39,
+          "last": 39
+        }
+      ],
+      "contract": "raw-reading-2"
+    },
+    "advent-iv-communio": {
+      "witness": "witnesses/proprium.dominica-iv-adventus-communio/do.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "evidence": [
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 57,
+          "last": 57,
+          "section": "Communio",
+          "section_line": 56
+        },
+        {
+          "archive": "advent-marian-common-21cb2d37",
+          "first": 48,
+          "last": 49,
+          "section": "Communio",
+          "section_line": 47
+        }
+      ],
+      "references": [
+        {
+          "archive": "advent-iv-21cb2d37",
+          "line": 57,
+          "text": "@Commune/C10a:Communio",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "advent-marian-common-21cb2d37",
+          "first": 49,
+          "last": 49
+        }
+      ]
+    },
+    "advent-iv-graduale": {
+      "witness": "witnesses/proprium.dominica-iv-adventus-graduale/do.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "evidence": [
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 36,
+          "last": 37,
+          "section": "Graduale",
+          "section_line": 35
+        },
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 38,
+          "last": 38,
+          "section": "Graduale",
+          "section_line": 35,
+          "fragment": {
+            "start": 0,
+            "end": 78,
+            "text": "V. Laudem Dómini loquétur os meum: et benedícat omnis caro nomen sanctum ejus.",
+            "marker": "V",
+            "reason": "Only the gradual verse; the following Alleluia pair is a different chant component."
+          }
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 37,
+          "last": 37
+        },
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 38,
+          "last": 38,
+          "fragment": {
+            "start": 0,
+            "end": 78
+          }
+        }
+      ],
+      "contract": "raw-reading-2"
+    },
+    "advent-iv-introitus": {
+      "witness": "witnesses/proprium.dominica-iv-adventus-introitus/do.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "evidence": [
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 19,
+          "last": 23,
+          "section": "Introitus",
+          "section_line": 18
+        },
+        {
+          "archive": "advent-prayers-21cb2d37",
+          "first": 13,
+          "last": 14,
+          "section": "Gloria",
+          "section_line": 12
+        },
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 24,
+          "last": 24,
+          "section": "Introitus",
+          "section_line": 18
+        }
+      ],
+      "references": [
+        {
+          "archive": "advent-iv-21cb2d37",
+          "line": 23,
+          "text": "&Gloria",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 20,
+          "last": 20
+        },
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 22,
+          "last": 22
+        },
+        {
+          "archive": "advent-prayers-21cb2d37",
+          "first": 13,
+          "last": 14
+        },
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 24,
+          "last": 24
+        }
+      ]
+    },
+    "advent-iv-offertorium": {
+      "witness": "witnesses/proprium.dominica-iv-adventus-offertorium/do.txt",
+      "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+      "evidence": [
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 50,
+          "last": 51,
+          "section": "Offertorium",
+          "section_line": 49
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "advent-iv-21cb2d37",
+          "first": 51,
+          "last": 51
+        }
+      ]
+    },
+    "deo-gratias-epistolae-44667ff": {
+      "witness": "witnesses/ordinarium.deo-gratias-epistolae/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "prayers",
+          "first": 81,
+          "last": 82,
+          "section": "Deo gratias",
+          "section_line": 81
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "prayers",
+          "first": 82,
+          "last": 82
         }
       ]
     }

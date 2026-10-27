@@ -1418,6 +1418,17 @@ RETIRED_LEGACY_ALLOWANCES: list[tuple[int, dict[str, Any]]] = [
     ),
 ]
 HISTORICAL_LEGACY_RECORDS = "8f679a6a3e0cf54e03f3f5a9bdbd20ec84a8ccb9de1ca4a6d9d49280e4a815be"
+# Restore only the exact contextual name successor for the historical comparison.
+CONTEXTUAL_NAME_ALLOWANCE = {
+    "text": "proprium.dominica-iii-post-epiphaniam-introitus",
+    "fields": [
+        {
+            "path": ["segments", "s01", "translation"],
+            "sha256": "2b98fc27e281742d78fe2d8b047efcd44f7b18f7bd691ac8e1a24b65483dfad8",
+        }
+    ],
+}
+CONTEXTUAL_NAME_PREDECESSOR_SHA = "9e6c2beb04abe121c2ecdc8cd955c937e905301bcf0b202d04a351e882a1fc8a"
 
 
 def assert_legacy_inventory(fixture):
@@ -1429,6 +1440,9 @@ def assert_legacy_inventory(fixture):
     assert len({row["text"] for row in records}) == len(records), "legacy inventory"
     retired = {row["text"] for _, row in RETIRED_LEGACY_ALLOWANCES}
     assert not any(row["text"] in retired for row in records), "retired legacy allowance"
+    name_rows = [row for row in records if row["text"] == CONTEXTUAL_NAME_ALLOWANCE["text"]]
+    assert name_rows == [CONTEXTUAL_NAME_ALLOWANCE], "legacy name allowance"
+    name_rows[0]["fields"][0]["sha256"] = CONTEXTUAL_NAME_PREDECESSOR_SHA
     for index, row in RETIRED_LEGACY_ALLOWANCES:
         records.insert(index, deepcopy(row))
     assert digest(records) == HISTORICAL_LEGACY_RECORDS, "legacy inventory"
@@ -1437,8 +1451,30 @@ def assert_legacy_inventory(fixture):
 
 def test_the_legacy_field_successor_binds_exactly_the_reviewed_change():
     verse = layer("en", II_EPI_INTROIT)["segments"]["s01"]["translation"]
-    assert_legacy_successor(load(LEGACY), verse)
-    assert_legacy_inventory(load(LEGACY))
+    fixture = load(LEGACY)
+    saved = deepcopy(fixture)
+    assert_legacy_successor(fixture, verse)
+    assert_legacy_inventory(fixture)
+    for damage in ("stale-hash", "field-path", "extra-field"):
+        broken = deepcopy(fixture)
+        (record,) = [
+            row for row in broken["records"] if row["text"] == CONTEXTUAL_NAME_ALLOWANCE["text"]
+        ]
+        try:
+            if damage == "stale-hash":
+                record["fields"][0]["sha256"] = CONTEXTUAL_NAME_PREDECESSOR_SHA
+            elif damage == "field-path":
+                record["fields"][0]["path"][-1] = "note"
+            else:
+                record["fields"].append({"path": ["words", "w001", "gloss"], "sha256": "0" * 64})
+            assert broken != saved, "legacy name mutation changes its copy"
+            rejects(assert_legacy_inventory, broken, message="legacy name allowance")
+        finally:
+            broken.clear()
+            broken.update(deepcopy(saved))
+            assert broken == saved
+            assert_legacy_inventory(broken)
+    assert fixture == saved
 
 
 @pytest.mark.parametrize("damage", ["reintroduced", "unrelated-removal"])

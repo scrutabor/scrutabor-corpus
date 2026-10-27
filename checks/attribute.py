@@ -473,9 +473,12 @@ def _source_ranges(text_id: str) -> list[tuple[Path | RawFragment, int, int, boo
                 "raw-reading-7",
                 "raw-reading-8",
                 "raw-reading-9",
+                "raw-reading-10",
             }:
                 # Exact hash-heading text does not establish performer context.
                 # In particular lowercase v. is not a priest/deacon distinction.
+                if bound.source["contract"] == "raw-reading-10":
+                    raise BindingError("closed Ordo evidence supports textual identity only")
                 if bound.source["contract"] in {"raw-reading-8", "raw-reading-9"}:
                     raise BindingError(
                         "literal source-context evidence supports textual identity only"
@@ -562,6 +565,7 @@ def _actor_sources(text_id: str) -> _ActorSources:
                 "raw-reading-7",
                 "raw-reading-8",
                 "raw-reading-9",
+                "raw-reading-10",
             }:
                 problems.append(("RAW_TEXT_ONLY", f"TEXT_ONLY_CONTRACT:{label}: {contract}"))
             elif contract == "raw-reading-1" and (

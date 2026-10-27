@@ -122,7 +122,11 @@ def load_registry(root: Path) -> dict:
         upstream = archive["upstream"]
         if (
             not isinstance(upstream, str)
-            or not re.fullmatch(r"web/www/(?:missa|horas)/Latin/[A-Za-z0-9_./-]+\.txt", upstream)
+            or not re.fullmatch(
+                r"(?:web/www/(?:missa|horas)|obsolete/missa)/Latin/[A-Za-z0-9_./-]+\.txt",
+                upstream,
+            )
+            or (upstream.startswith("obsolete/") and str(PurePosixPath(upstream)) != upstream)
             or ".." in PurePosixPath(upstream).parts
         ):
             raise BindingError(f"invalid upstream path: {upstream}")
@@ -135,6 +139,7 @@ def load_registry(root: Path) -> dict:
         identities.add(identity)
         local_paths.add(archive["path"])
     witnesses = set()
+    ordo_profiles = None
     for key, binding in data["bindings"].items():
         fields = {"witness", "revision", "evidence", "references", "reading"}
         if isinstance(binding, dict) and "contract" in binding:
@@ -148,6 +153,7 @@ def load_registry(root: Path) -> dict:
                 "raw-reading-7",
                 "raw-reading-8",
                 "raw-reading-9",
+                "raw-reading-10",
             ):
                 raise BindingError("unsupported per-binding contract")
             if binding["contract"] == "raw-reading-3":
@@ -178,6 +184,8 @@ def load_registry(root: Path) -> dict:
                 "conclusion",
             }
         if isinstance(binding, dict) and binding.get("contract") == "raw-reading-9":
+            fields = {"witness", "revision", "contract", "profile"}
+        if isinstance(binding, dict) and binding.get("contract") == "raw-reading-10":
             fields = {"witness", "revision", "contract", "profile"}
         _keys(binding, fields, key)
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", key):
@@ -235,6 +243,24 @@ def load_registry(root: Path) -> dict:
                 raise BindingError("raw-reading-8 selection: absent_heading must be a string")
         if binding.get("contract") == "raw-reading-9" and not isinstance(binding["profile"], str):
             raise BindingError("raw-reading-9 profile must be a string")
+        if binding.get("contract") == "raw-reading-10" and not isinstance(binding["profile"], str):
+            raise BindingError("raw-reading-10 profile must be a string")
+        if binding.get("contract") == "raw-reading-10":
+            from .raw_binding_ordo import REVISION as ORDO_REVISION
+            from .raw_binding_ordo import load_profiles
+
+            if ordo_profiles is None:
+                ordo_profiles = load_profiles()
+            profile = ordo_profiles.get(key)
+            if (
+                profile is None
+                or binding["profile"] != key
+                or binding["witness"] != profile["witness"]
+                or binding["revision"] != ORDO_REVISION
+            ):
+                raise BindingError(
+                    "raw-reading-10 requires its exact profile, witness and revision"
+                )
         for field in (
             ()
             if binding.get("contract")
@@ -243,6 +269,7 @@ def load_registry(root: Path) -> dict:
                 "raw-reading-7",
                 "raw-reading-8",
                 "raw-reading-9",
+                "raw-reading-10",
             }
             else ("evidence", "references", "reading")
         ):
@@ -478,6 +505,10 @@ def _resolve_binding(witness: Path, snapshot: RawBindingSnapshot) -> BoundReadin
         from .raw_binding_mass_secrets import resolve_mass_secret
 
         return resolve_mass_secret(text, headers, binding_id, binding, snapshot)
+    if binding.get("contract") == "raw-reading-10":
+        from .raw_binding_ordo import resolve_ordo
+
+        return resolve_ordo(text, headers, binding_id, binding, snapshot)
     markers = [binding_id]
     archives = registry["archives"]
     used_archives: set[str] = set()

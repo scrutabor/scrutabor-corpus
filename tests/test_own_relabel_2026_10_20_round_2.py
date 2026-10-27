@@ -109,6 +109,20 @@ JOSEPH_TARGET_BEFORE = "bc147f4ca9387fc9ebad464c97458bb11eeedc4dbc641cef1754dbbd
 JOSEPH_TARGET_AFTER = "1a1ade2c0bfee9129296789b80faeeb2bae207f5d485d2ff677b23e4c7a665f6"
 assert LABELS[JOSEPH_SITE]["target_sha256"] == JOSEPH_TARGET_BEFORE
 LABELS[JOSEPH_SITE]["target_sha256"] = JOSEPH_TARGET_AFTER
+# Contextual name successors do not rewrite the historical label snapshots.
+CONTEXTUAL_NAME_TARGETS = {
+    "proprium.immaculata-conceptio-tractus.s01.en": (
+        "9b364c0745cba65972d229378eb14c584886fc4a9583ebb439f77a7860093408",
+        "3e60063e3cf60615de9d5cb472f8c8dcff6a1d9ac229f8695c26a64bbf3330be",
+    ),
+    "proprium.nativitas-domini-in-aurora-communio.s01.en": (
+        "8813ef0abe10d3a64eaeca0f5f85e89f1281b961a37ae29659fb2167e8a28da1",
+        "280511f8739c983513ac7d33d0a64d73825cfbf33fb0476379abb861ff2fc93d",
+    ),
+}
+assert len(CONTEXTUAL_NAME_TARGETS) == 2
+for _site, (_before, _after) in CONTEXTUAL_NAME_TARGETS.items():
+    assert LABELS[_site]["target_sha256"] == _before
 SITES = sorted(LABELS)
 SAMPLE = FIXTURE["wording_sample"]
 DOXOLOGY = FIXTURE["doxology_uses"]
@@ -170,8 +184,12 @@ def assert_label(site, row):
 
 
 def assert_wording_unchanged(site, row, target):
-    assert row["target_sha256"] == LABELS[site]["target_sha256"], "unchanged wording"
-    assert canonical_hash(target) == LABELS[site]["target_sha256"], "unchanged wording"
+    expected = LABELS[site]["target_sha256"]
+    if site in CONTEXTUAL_NAME_TARGETS:
+        before, expected = CONTEXTUAL_NAME_TARGETS[site]
+        assert LABELS[site]["target_sha256"] == before, "predecessor wording"
+    assert row["target_sha256"] == expected, "unchanged wording"
+    assert canonical_hash(target) == expected, "unchanged wording"
 
 
 def covering_records(language, text, segment):
@@ -245,6 +263,19 @@ def test_current_wording_matches_its_historical_or_exact_successor_hash(site):
         assert row == original
         assert_wording_unchanged(site, row, target)
         assert_label(site, row)
+    elif site in CONTEXTUAL_NAME_TARGETS:
+        before, after = CONTEXTUAL_NAME_TARGETS[site]
+        original = deepcopy(row)
+        assert row["target_sha256"] == after
+        try:
+            row["target_sha256"] = before
+            assert row != original
+            rejects(assert_wording_unchanged, site, row, target, message="unchanged wording")
+        finally:
+            row["target_sha256"] = after
+            assert row == original
+            assert_wording_unchanged(site, row, target)
+            assert_label(site, row)
 
 
 def test_joseph_successor_changes_only_its_exact_wording_hash():

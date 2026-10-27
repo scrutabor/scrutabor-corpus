@@ -556,7 +556,7 @@ LINES = (
         "w001",
         "w011",
         (
-            "as often as",
+            "As often as",
             "you eat",
             "Bread",
             "this",

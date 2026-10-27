@@ -1225,6 +1225,26 @@ localization, editorial
   returns no performer spans/fragments and is rejected by attribution before
   range access. Contracts1–8 and their payloads are unchanged. No review,
   ritual, rights or release approval follows.
+- An individual binding may opt into **`raw-reading-10`** for49 closed literal
+  Mass Ordo selections at revision44667ff. Its only fields are witness, revision,
+  contract and profile; the exact binding-ID/profile/witness tuple is mandatory.
+  A complete code-pinned profile DATA digest fixes the original archive, actual
+  headings/local contexts, ordered whole lines and every literal code-point
+  exclusion/join with reason. Unknown/duplicate/mixed fields and boolean offsets
+  reject. No arbitrary slicing, regex stripping, macro execution or sacred-word
+  replacement is allowed; only whitespace is normalized after the fixed edits.
+  Repeated invocations retain physical order and multiplicity. The exact path
+  header names the profile/kind and ordered pinned coordinates; the whole body
+  must equal the resolved reading. The subject retains full archive/profile and
+  raw pieces/edits/text, but no performer spans/fragments. Both actor consumers
+  quarantine it as text-only; variant attribution remains contract1-only.
+  Pending witnesses require complete explicit source inventories and one actual
+  same-revision Mass Ordo item/use, role derived_digital_collation_aid, with the
+  complete Ordo evidence digest. Prayers/whole-reading hashes cannot replace it.
+  Lavabo is expressly Ordo183→22→23 literal composite, not &Gloria execution or
+  a Prayers contribution. Historical acquisition uncertainty, name-slot modeling,
+  actual seasonal performance, review and rights remain separate. Registry1,
+  raw1–9 semantics/payloads and all old reviews remain unchanged.
 - An explicit source_dependencies inventory may additionally opt into a
   nonempty sorted-unique `documents` list. Each declaration has exactly contract,
   use, digital_item, sha256, media_type, pdf_page, printed, region and

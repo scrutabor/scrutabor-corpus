@@ -475,3 +475,195 @@ def test_explicit_sacred_parentheses_survive_attribution_projection(bound_corpus
     # Punctuation is significant for the witness even when edition alignment folds it.
     path.write_text(path.read_text().replace("(Fílium Dei.)", "Fílium Dei."))
     rejected(root, path)
+
+
+HISTORICAL_COMMON = "advent-marian-common-21cb2d37"
+HISTORICAL_CALLER = "advent-iv-21cb2d37"
+HISTORICAL_BINDING = "advent-iv-communio"
+
+
+@pytest.fixture
+def historical_mass_common(tmp_path):
+    original = json.loads((CORPUS / REGISTRY).read_text(encoding="utf-8"))
+    binding = copy.deepcopy(original["bindings"][HISTORICAL_BINDING])
+    assert binding["revision"] == "21cb2d370337ec1fd668e96d035622b4296c32cb"
+    archives = {item["archive"] for item in binding["evidence"]}
+    assert archives == {HISTORICAL_COMMON, HISTORICAL_CALLER}
+    data = {
+        "version": original["version"],
+        "archives": {key: copy.deepcopy(original["archives"][key]) for key in sorted(archives)},
+        "bindings": {HISTORICAL_BINDING: binding},
+    }
+    assert data["archives"][HISTORICAL_COMMON] == {
+        "upstream": "obsolete/missa/Latin/Commune/C10a.txt",
+        "revision": "21cb2d370337ec1fd668e96d035622b4296c32cb",
+        "path": "witnesses/raw/do-21cb2d37/obsolete/missa/Latin/Commune/C10a.txt",
+        "sha256": "ba94e58d62dfe7c7e294bd33f373c3f7a66b8c5b7038108492000b4fe5f7ca0b",
+    }
+    paths = [item["path"] for item in data["archives"].values()] + [binding["witness"]]
+    for name in paths:
+        destination = tmp_path / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(CORPUS / name, destination)
+    save(tmp_path, data)
+    return tmp_path, data, tmp_path / binding["witness"]
+
+
+def historical_state(root, data):
+    names = [REGISTRY, data["bindings"][HISTORICAL_BINDING]["witness"]]
+    names += [item["path"] for item in data["archives"].values()]
+    return copy.deepcopy(data), {name: (root / name).read_bytes() for name in names}
+
+
+def restore_historical_state(root, data, saved):
+    original, files = saved
+    data.clear()
+    data.update(copy.deepcopy(original))
+    for name, raw in files.items():
+        (root / name).write_bytes(raw)
+    assert data == original
+    assert all((root / name).read_bytes() == raw for name, raw in files.items())
+    assert load_registry(root) == original
+
+
+@pytest.mark.parametrize("key", ("rosary", "annunciation-common"), ids=("missa", "horas"))
+def test_existing_raw_upstream_roots_keep_their_actual_records(bound_corpus, key):
+    root, data = bound_corpus
+    assert load_registry(root) == data
+    assert data["archives"][key]["upstream"].startswith("web/www/")
+
+
+def test_actual_historical_mass_common_and_caller_resolve_together(historical_mass_common):
+    root, data, path = historical_mass_common
+    assert load_registry(root) == data
+    result = resolve_binding(path, root)
+    assert result is not None
+    assert result.text == (
+        "Ecce, Virgo concípiet et páriet fílium: et vocábitur nomen ejus Emmánuel."
+    )
+    assert result.source["binding"] == data["bindings"][HISTORICAL_BINDING]
+    assert result.source["archives"] == data["archives"]
+    assert check_transcriptions(path.parent) == ([], 1)
+
+
+HISTORICAL_BAD_UPSTREAMS = (
+    ("other-product", "obsolete/horas/Latin/Commune/C10a.txt"),
+    ("other-language", "obsolete/missa/English/Commune/C10a.txt"),
+    ("escape-language", "obsolete/missa/Latin/../../English/C10a.txt"),
+    ("parent-component", "obsolete/missa/Latin/Commune/../C10a.txt"),
+    ("absolute", "/obsolete/missa/Latin/Commune/C10a.txt"),
+    ("double-separator", "obsolete/missa/Latin//Commune/C10a.txt"),
+    ("dot-component", "obsolete/missa/Latin/./Commune/C10a.txt"),
+    ("backslashes", r"obsolete\missa\Latin\Commune\C10a.txt"),
+    ("query", "obsolete/missa/Latin/Commune/C10a.txt?raw=1"),
+    ("fragment", "obsolete/missa/Latin/Commune/C10a.txt#source"),
+    ("suffix", "obsolete/missa/Latin/Commune/C10a.txt/extra"),
+    ("whitespace", "obsolete/missa/Latin/Commune/C10a.txt "),
+)
+
+
+@pytest.mark.parametrize(
+    "case", HISTORICAL_BAD_UPSTREAMS, ids=[row[0] for row in HISTORICAL_BAD_UPSTREAMS]
+)
+def test_historical_root_does_not_accept_other_or_noncanonical_paths(historical_mass_common, case):
+    root, data, path = historical_mass_common
+    healthy = resolve_binding(path, root)
+    assert healthy is not None
+    saved = historical_state(root, data)
+    upstream = case[1]
+    try:
+        data["archives"][HISTORICAL_COMMON]["upstream"] = upstream
+        assert data != saved[0]
+        save(root, data)
+        with pytest.raises(BindingError) as caught:
+            load_registry(root)
+        assert str(caught.value) == f"invalid upstream path: {upstream}"
+    finally:
+        restore_historical_state(root, data, saved)
+        assert resolve_binding(path, root) == healthy
+
+
+HISTORICAL_BAD_LOCAL_PATHS = (
+    ("traversal", "witnesses/raw/../../escape.txt"),
+    ("absolute", "/private/tmp/unrelated-source.txt"),
+    ("noncanonical", "witnesses/raw//historical/C10a.txt"),
+    ("backslashes", r"witnesses/raw\historical\C10a.txt"),
+)
+
+
+@pytest.mark.parametrize(
+    "case", HISTORICAL_BAD_LOCAL_PATHS, ids=[row[0] for row in HISTORICAL_BAD_LOCAL_PATHS]
+)
+def test_historical_archive_still_requires_a_confined_local_path(historical_mass_common, case):
+    root, data, path = historical_mass_common
+    healthy = resolve_binding(path, root)
+    assert healthy is not None
+    saved = historical_state(root, data)
+    try:
+        data["archives"][HISTORICAL_COMMON]["path"] = case[1]
+        assert data != saved[0]
+        save(root, data)
+        with pytest.raises(BindingError) as caught:
+            load_registry(root)
+        assert str(caught.value) == f"invalid confined path: {case[1]}"
+    finally:
+        restore_historical_state(root, data, saved)
+        assert resolve_binding(path, root) == healthy
+
+
+@pytest.mark.parametrize(
+    "change", ("revision", "hash", "bytes", "missing", "reference", "selector", "duplicate")
+)
+def test_historical_allowance_preserves_identity_hash_and_reference_guards(
+    historical_mass_common, change
+):
+    root, data, path = historical_mass_common
+    healthy = resolve_binding(path, root)
+    assert healthy is not None
+    saved = historical_state(root, data)
+    common = data["archives"][HISTORICAL_COMMON]
+    raw = root / common["path"]
+    binding = data["bindings"][HISTORICAL_BINDING]
+    try:
+        if change == "revision":
+            common["revision"] = "0" * 40
+            expected = f"archive {HISTORICAL_COMMON}: revision differs from binding"
+        elif change == "hash":
+            common["sha256"] = "0" * 64
+            expected = f"archive {HISTORICAL_COMMON}: SHA-256 mismatch"
+        elif change == "bytes":
+            raw.write_bytes(raw.read_bytes() + b"\n# appended outside the selected range\n")
+            expected = f"archive {HISTORICAL_COMMON}: SHA-256 mismatch"
+        elif change == "missing":
+            raw.unlink()
+            expected = f"unreadable archive {HISTORICAL_COMMON}: "
+        elif change == "reference":
+            binding["references"].clear()
+            expected = "incomplete source reference coverage"
+        elif change == "selector":
+            caller = data["archives"][HISTORICAL_CALLER]
+            original = root / caller["path"]
+            body = original.read_bytes()
+            assert body.count(b"@Commune/C10a:Communio") == 1
+            changed = body.replace(b"@Commune/C10a:Communio", b"@Commune/C10a:Oratio")
+            original.write_bytes(changed)
+            caller["sha256"] = hashlib.sha256(changed).hexdigest()
+            binding["references"][0]["text"] = "@Commune/C10a:Oratio"
+            expected = "reference points to a different source or section"
+        else:
+            data["archives"]["duplicate-historical"] = copy.deepcopy(common)
+            expected = "duplicate archive identity or local path: duplicate-historical"
+        assert data != saved[0] or any(
+            not (root / name).exists() or (root / name).read_bytes() != value
+            for name, value in saved[1].items()
+        )
+        save(root, data)
+        with pytest.raises(BindingError) as caught:
+            resolve_binding(path, root)
+        if change == "missing":
+            assert str(caught.value).startswith(expected)
+        else:
+            assert str(caught.value) == expected
+    finally:
+        restore_historical_state(root, data, saved)
+        assert resolve_binding(path, root) == healthy

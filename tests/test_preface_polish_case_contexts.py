@@ -6,6 +6,7 @@ from copy import deepcopy
 from typing import Any
 
 import pytest
+from opening_caption_fixture import restore_opening_layer
 from preface_delivery_fixture import current_expected_row, without_preface_delivery
 
 from checks.interlinear import check, effective_gloss
@@ -246,7 +247,7 @@ def assert_prose_provenance(core, layer, record, slug):
 
 def assert_source_and_english(core, english, slug):
     assert canonical_hash(without_preface_delivery(core)) == BASELINES[slug]["core_digest"]
-    assert canonical_hash(english) == BASELINES[slug]["english_digest"]
+    assert canonical_hash(restore_opening_layer(english)) == BASELINES[slug]["english_digest"]
 
 
 def test_scoped_population():
@@ -327,6 +328,17 @@ def test_complete_shape_and_canonical_layout(slug):
 def test_core_and_english_stay_unchanged(slug):
     core, _, english = load(slug)
     assert_source_and_english(core, english, slug)
+    broken = deepcopy(english)
+    broken["words"]["w001"]["gloss"] = "truly"
+    assert broken != english
+    try:
+        with pytest.raises(AssertionError, match=r"^reviewed opening caption$"):
+            assert_source_and_english(core, broken, slug)
+    finally:
+        broken.clear()
+        broken.update(deepcopy(english))
+        assert broken == english
+        assert_source_and_english(core, broken, slug)
 
 
 @pytest.mark.parametrize("slug", SLUGS)

@@ -164,9 +164,16 @@ def context_errors(slug, language, core, layer):
             if "accept;" in prose:
                 errors.append("semicolon detaches the continuing dependent petitions")
         if not alignment(layer, "w036")["gloss"].startswith(
-            "i nasze dni" if language == "pl" else "and order our days"
+            "i nasze dni" if language == "pl" else "and our days"
         ) or effective_gloss(layer, "w042") != ("a także" if language == "pl" else "and"):
             errors.append("-que and external atque both retained")
+        if language == "en" and (
+            alignment(layer, "w036")["words"] != ["w036", "w037"]
+            or alignment(layer, "w038")["words"] != ["w038", "w039", "w040"]
+            or alignment(layer, "w038")["gloss"] != "in Your peace"
+            or effective_gloss(layer, "w041") != "order"
+        ):
+            errors.append("days object, Your peace and disposition remain separate short units")
         if effective_gloss(layer, "w052") != ("nakazał" if language == "pl" else "command"):
             errors.append("one common command remains independent")
         if effective_gloss(layer, "w053") != ("trzody" if language == "pl" else "the flock"):
@@ -329,7 +336,10 @@ def test_real_context_mutants(language, kind):
     assert layer != snapshot[1], "the selected mutation must change its subject"
     assert expected in context_errors(slug, language, core, layer)
     assert core == snapshot[0]
-    assert context_errors(slug, language, *snapshot) == []
+    layer.clear()
+    layer.update(deepcopy(snapshot[1]))
+    assert (core, layer) == snapshot
+    assert context_errors(slug, language, core, layer) == []
     assert subject(slug, language) == snapshot
 
 
@@ -342,7 +352,10 @@ def test_polish_imperative_under_abys_is_rejected():
     assert "imperative cannot be stranded under abyś" in context_errors(
         "hanc-igitur-paschale", "pl", core, layer
     )
-    assert context_errors("hanc-igitur-paschale", "pl", *snapshot) == []
+    layer.clear()
+    layer.update(deepcopy(snapshot[1]))
+    assert (core, layer) == snapshot
+    assert context_errors("hanc-igitur-paschale", "pl", core, layer) == []
     assert subject("hanc-igitur-paschale", "pl") == snapshot
 
 

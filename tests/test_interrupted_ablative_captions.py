@@ -8,6 +8,7 @@ from pathlib import Path
 import pytest
 from gospel_delivery_fixture import current_sung_source_hash
 from michael_secret_fixture import control_expectation, ledger_expectation, predecessor_documents
+from opening_caption_fixture import restore_opening_layer
 
 from checks import interlinear, language_packs, prose
 from checks.translation_provenance import canonical_hash, source_payload
@@ -82,6 +83,9 @@ def parent_at(doc, pointer):
 def reviewed_predecessor_documents(documents):
     """Undo exact reviewed captions/prose before the immutable historical inverse."""
     result = deepcopy(documents)
+    for path, layer in result.items():
+        if path.startswith("languages/en/texts/"):
+            result[path] = restore_opening_layer(layer)
     for operation in reversed(SUCCESSORS["operations"]):
         parent, key = parent_at(result[operation["path"]], operation["pointer"])
         require(
@@ -192,6 +196,26 @@ def test_complete_historical_objects_survive_the_narrow_inverse(documents):
         FIXTURE["historical_object_sha256"]
     )
     assert snapshot == FIXTURE
+    for text, stale in (
+        ("orationes.memorare", "be mindful"),
+        ("proprium.cathedra-sancti-petri-secreta", "of Church"),
+        ("proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-sequentia", "day"),
+    ):
+        broken = deepcopy(documents)
+        path = layer_path(text, "en")
+        broken[path]["words"]["w001"]["gloss"] = stale
+        assert broken != documents
+        try:
+            with pytest.raises(AssertionError, match=r"^reviewed opening caption$"):
+                historical_objects(broken)
+        finally:
+            broken.clear()
+            broken.update(deepcopy(documents))
+            assert broken == documents
+            recovered = historical_objects(broken)
+            assert {p: canonical_hash(recovered[p]) for p in sorted(touched)} == (
+                FIXTURE["historical_object_sha256"]
+            )
     saved = deepcopy(documents)
     successors = deepcopy(SUCCESSORS)
     for path, pointer, value in (

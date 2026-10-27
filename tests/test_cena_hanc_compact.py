@@ -49,8 +49,8 @@ def test_actual_compact_hanc_and_pending_source():
     )
     assert line == (
         "prosimy Panie abyś łaskawie przyjął i dni nasze w Twoim pokoju uporządkował "
-        "a także wyrwanie nas z wiecznego potępienia "
-        "i zaliczenie do trzody Twoich wybranych nakazał"
+        "a także z wiecznego potępienia nas wyrwać "
+        "i do Twoich wybranych nakazał trzody zaliczyć"
     )
     for key in ("analysis_defaults", "analysis_defaults_words"):
         assert core["editorial"][key]["review"] == "pending"
@@ -79,28 +79,32 @@ def test_all_sixty_actual_memberships_and_source_contiguity():
 def test_bounded_semantic_controls_are_not_only_literal_fixture_equality(kind):
     core, layer = subject()
     assert hanc_polish_errors(core, layer) == []
-    groups = layer["segments"]["s06"]["alignments"]
+    original = deepcopy(layer)
     if kind == "rescue-synonym":
-        groups[0]["gloss"] = "ocalenie nas od wiecznego potępienia"
+        layer["words"]["w047"]["gloss"] = "ocalić"
     else:
-        groups[1]["gloss"] = groups[1]["gloss"].replace("nakazał", "polecił")
+        layer["words"]["w052"]["gloss"] = "polecił"
+    assert layer != original
     assert check(core, layer) == []
     assert hanc_polish_errors(core, layer) == []
+    layer.clear()
+    layer.update(original)
+    assert check(core, layer) == [] and hanc_polish_errors(core, layer) == []
 
 
 @pytest.mark.parametrize(
     "site,before,after,diagnostic",
     [
-        (0, "nas ", "", "Hanc rescue keeps us as patients"),
-        (0, "wyrwanie nas", "wyrwanie innych przez nas", "Hanc rescue keeps us as patients"),
-        (0, "wiecznego potępienia", "doczesnej kary", "Hanc rescue keeps us as patients"),
-        (1, "zaliczenie", "zaliczamy", "Hanc second outcome remains nominal inclusion"),
-        (1, "do trzody", "do grona", "Hanc inclusion retains the Father's elect flock"),
-        (1, "Twoich", "naszych", "Hanc inclusion retains the Father's elect flock"),
-        (1, " nakazał", "", "Hanc one final finite governor"),
+        ("w046", "nas", "ich", "Hanc rescue keeps us as patients"),
+        ("w047", "wyrwać", "wyrwać innych przez nas", "Hanc rescue keeps us as patients"),
+        ("w045", "potępienia", "doczesnej kary", "Hanc rescue keeps us as patients"),
+        ("w054", "zaliczyć", "zaliczamy", "Hanc second outcome remains commanded inclusion"),
+        ("w053", "trzody", "grona", "Hanc inclusion retains the Father's elect flock"),
+        (0, "Twoich", "naszych", "Hanc inclusion retains the Father's elect flock"),
+        ("w052", "nakazał", "nakazujemy", "Hanc one final finite governor"),
         ("w033", "abyś", "aby", "Hanc acceptance, disposition and command share upstream abyś"),
         ("w048", "i", "lub", "Hanc both outcomes remain coordinated"),
-        ("w052", "bierne", "czynne", "Hanc detail distinguishes target nouns"),
+        ("w052", "bierne", "czynne", "Hanc detail distinguishes target infinitives"),
     ],
     ids=[
         "patient",
@@ -123,7 +127,7 @@ def test_named_semantic_losses_fail_and_restore(site, before, after, diagnostic)
         item, field = layer["segments"]["s06"]["alignments"][site], "gloss"
     else:
         item = layer["words"][site]
-        field = "explanation" if site == "w052" else "gloss"
+        field = "explanation" if site == "w052" and before == "bierne" else "gloss"
     value = item[field]
     assert before in value and before != after
     item[field] = value.replace(before, after)
@@ -174,12 +178,22 @@ def test_missing_actual_constituent_reports_its_every_member_and_restores(index)
     core, layer = subject()
     original = deepcopy(layer)
     assert check(core, layer) == []
-    group = layer["segments"]["s06"]["alignments"].pop(index)
+    members = ids(43, 47) if index == 0 else ids(49, 54)
+    layer["segments"]["s06"]["alignments"] = [
+        group
+        for group in layer["segments"]["s06"]["alignments"]
+        if not set(group["words"]) & set(members)
+    ]
+    if not layer["segments"]["s06"]["alignments"]:
+        del layer["segments"]["s06"]["alignments"]
+    for wid in members:
+        layer["words"][wid].pop("gloss", None)
     expected = {
-        f"{HANC}:{wid}:pl: expected exactly one direct gloss or alignment" for wid in group["words"]
+        f"{HANC}:{wid}:pl: expected exactly one direct gloss or alignment" for wid in members
     }
     assert Counter(check(core, layer)) == Counter(expected)
-    layer["segments"]["s06"]["alignments"].insert(index, group)
+    layer.clear()
+    layer.update(original)
     assert layer == original and check(core, layer) == []
 
 
@@ -188,20 +202,16 @@ def test_duplicate_providers_cover_both_groups_and_direct_conjunction(wid):
     core, layer = subject()
     original = deepcopy(layer)
     assert check(core, layer) == []
-    if wid == "w048":
-        layer["segments"]["s06"]["alignments"].insert(
-            1,
-            {"words": [wid], "reason": "word-order"},
-        )
-    else:
-        layer["words"][wid]["gloss"] = "dodatkowy podpis"
+    groups = layer["segments"]["s06"]["alignments"]
+    duplicate = {"words": [wid], "reason": "word-order"}
+    position = next(
+        (index for index, group in enumerate(groups) if wid < group["words"][0]), len(groups)
+    )
+    groups.insert(position, duplicate)
     assert check(core, layer) == [
         f"{HANC}:{wid}:pl: expected exactly one direct gloss or alignment"
     ]
-    if wid == "w048":
-        layer["segments"]["s06"]["alignments"].pop(1)
-    else:
-        del layer["words"][wid]["gloss"]
+    assert groups.pop(position) is duplicate
     assert layer == original and check(core, layer) == []
 
 
@@ -220,7 +230,7 @@ def test_actual_first_constituent_structural_controls(kind, diagnostic):
     assert check(core, layer) == []
     group = layer["segments"]["s06"]["alignments"][0]
     if kind == "noncontiguous":
-        group["words"].remove("w045")
+        group["words"].append("w053")
     elif kind == "anchor-outside":
         group["anchor"] = "w052"
     else:
@@ -245,15 +255,16 @@ def test_predecessor_twelve_word_polish_model_is_structurally_valid_but_not_curr
             ),
         }
     ]
-    layer["words"]["w048"] = {}
+    for wid in ids(43, 54):
+        layer["words"][wid].pop("gloss", None)
     assert check(core, layer) == []
-    with pytest.raises(AssertionError, match=r"^Hanc compact two groups$"):
+    with pytest.raises(AssertionError, match=r"^Hanc reviewed short groups$"):
         assert_hanc_scope(layer)
     assert hanc_polish_errors(core, layer) == [
-        "Hanc nominal model needs its two complete compact constituents"
+        "Hanc short model needs its complete elect constituent"
     ]
-    layer["segments"]["s06"]["alignments"] = original["segments"]["s06"]["alignments"]
-    layer["words"]["w048"] = original["words"]["w048"]
+    layer.clear()
+    layer.update(original)
     assert layer == original
     assert_hanc_scope(layer)
     assert layer["words"]["w052"]["explanation"] == DETAIL

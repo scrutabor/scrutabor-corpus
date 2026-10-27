@@ -64,6 +64,8 @@ def test_a_corrupt_archive_is_reported_for_every_witness_it_binds(tmp_path, sele
             common_archives.add(binding["body"]["archive"])
         elif binding.get("contract") == "raw-reading-9":
             evidence = [{"archive": key} for key in MASS_SECRETS[identity]]
+        elif binding.get("contract") == "raw-reading-10":
+            evidence = [{"archive": "missa-ordo-44667ff"}]
         else:
             evidence = binding["evidence"]
         for item in evidence:

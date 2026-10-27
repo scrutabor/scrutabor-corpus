@@ -297,7 +297,7 @@ GROUPS = {
         ("s02", [18, 19], 18, "Jego Ewangelię"),
     ],
     "en": [
-        ("s01", [1, 2, 3], 3, "please give your blessing, sir"),
+        ("s01", [1, 2, 3], 3, "Please give your blessing, sir"),
         ("s02", [4, 5], 5, "may the Lord be"),
         ("s02", [7, 8], 7, "your heart"),
         ("s02", [11, 12], 11, "your lips"),

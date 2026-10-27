@@ -9,6 +9,8 @@ import json
 from copy import deepcopy
 
 import pytest
+from test_hanc_igitur_captions import assert_hanc
+from test_hanc_igitur_captions import load as load_hanc
 
 from checks.interlinear import check, effective_gloss
 from checks.layout import CORPUS
@@ -18,28 +20,19 @@ GROUPS = [
         "ordinarium.hanc-igitur",
         "pl",
         "s03",
-        23,
-        34,
-        32,
-        (
-            "rozkazał wyrwać nas od wiecznego potępienia i zaliczyć do trzody Twoich wybranych",
-            "rozkazał, abyśmy zostali wyrwani od wiecznego potępienia "
-            "i zaliczeni do trzody Twoich wybranych",
-        ),
+        30,
+        31,
+        30,
+        ("Twoich wybranych",),
     ),
     (
         "ordinarium.hanc-igitur",
         "en",
         "s03",
-        23,
-        34,
-        32,
-        (
-            "command that we be rescued from eternal damnation "
-            "and counted in the flock of Your chosen ones",
-            "command that we be snatched from eternal damnation "
-            "and numbered in the flock of Your elect",
-        ),
+        30,
+        31,
+        30,
+        ("of Your chosen ones",),
     ),
     (
         "ordinarium.supplices-te-rogamus",
@@ -96,6 +89,27 @@ GROUPS = [
         ("nakazałeś, aby nazwano Go Jezusem", "nakazałeś nazywać Go Jezusem"),
     ),
 ]
+HANC_RETIRED_CAPTIONS = {
+    "pl": (
+        ("rozkazał wyrwać nas od wiecznego potępienia i zaliczyć do trzody Twoich wybranych"),
+        (
+            "rozkazał, abyśmy zostali wyrwani od wiecznego potępienia i zaliczeni do "
+            "trzody Twoich wybranych"
+        ),
+    ),
+    "en": (
+        (
+            "command that we be rescued from eternal damnation and counted in the flock "
+            "of Your chosen ones"
+        ),
+        (
+            "command that we be snatched from eternal damnation and numbered in the "
+            "flock of Your elect"
+        ),
+    ),
+}
+
+
 DIRECT = [
     ("ordinarium.hanc-igitur", "en", "w013", "that You"),
     ("proprium.dominica-vi-post-pentecosten-evangelium", "pl", "w090", "podawali"),
@@ -130,6 +144,15 @@ def group_for(layer, case):
 
 
 def assert_group(doc, layer, case):
+    if case[0] == "ordinarium.hanc-igitur":
+        _, language, segment, first, last, anchor, captions = case
+        assert (segment, first, last, anchor) == ("s03", 30, 31, 30)
+        assert captions == (("Twoich wybranych" if language == "pl" else "of Your chosen ones"),)
+        _, _, rows, fixture = load_hanc(language)
+        assert_hanc(doc, layer, rows, fixture)
+        assert check(doc, layer) == []
+        assert [effective_gloss(layer, word) for word in ("w030", "w031")] == [captions[0], ""]
+        return
     _, _, segment, first, last, anchor, captions = case
     members = [f"w{n:03d}" for n in range(first, last + 1)]
     source = next(s for s in doc["segments"] if s["id"] == segment)["words"]
@@ -163,6 +186,23 @@ def test_current_causative_context(text, language, word, caption):
 @pytest.mark.parametrize("case", GROUPS, ids=[f"{c[0]}-{c[1]}" for c in GROUPS])
 def test_supported_causative_alternatives(case):
     doc, layer = load(case[0], case[1])
+    if case[0] == "ordinarium.hanc-igitur":
+        original = deepcopy(layer)
+        for retired in HANC_RETIRED_CAPTIONS[case[1]]:
+            candidate = deepcopy(layer)
+            saved = deepcopy(candidate)
+            assert_group(doc, candidate, case)
+            group_for(candidate, case)["gloss"] = retired
+            assert candidate != saved
+            try:
+                with pytest.raises(AssertionError, match="Hanc exact short groups"):
+                    assert_group(doc, candidate, case)
+            finally:
+                candidate.clear()
+                candidate.update(deepcopy(saved))
+            assert candidate == saved
+            assert_group(doc, candidate, case)
+        assert layer == original
     for caption in case[-1]:
         candidate = deepcopy(layer)
         group_for(candidate, case)["gloss"] = caption

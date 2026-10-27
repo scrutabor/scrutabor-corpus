@@ -658,7 +658,28 @@ def test_lateran_prose_matches_its_caption_and_ledger():
     )
 
 
-TEXTS = sorted({(row[1], row[0]) for row in CAPTIONS} | {(row[1], row[0]) for row in NOTES})
+# Finite contextual Advent case decisions, including lowercase counterexamples.
+_CASE_ROWS = json.loads(
+    (ROOT / "tests/fixtures/caption-opening-cases.json").read_text(encoding="utf-8")
+)
+assert set(_CASE_ROWS) == {"advent", "first_openings"}
+ADVENT_CAPTIONS = tuple(
+    (language, text, segment, tuple(words), anchor, gloss, tuple(forms))
+    for language, text, segment, words, anchor, gloss, forms in _CASE_ROWS["advent"]
+)
+assert len(ADVENT_CAPTIONS) == 40
+
+# Exact contextual first-opening decisions and retained Canon continuations.
+FIRST_OPENING_CAPTIONS = tuple(
+    (language, text, segment, tuple(words), anchor, gloss, tuple(forms), tuple(wrong))
+    for language, text, segment, words, anchor, gloss, forms, wrong in _CASE_ROWS["first_openings"]
+)
+assert len(FIRST_OPENING_CAPTIONS) == 289
+del _CASE_ROWS
+
+TEXTS = sorted(
+    {(row[1], row[0]) for row in CAPTIONS + ADVENT_CAPTIONS} | {(row[1], row[0]) for row in NOTES}
+)
 
 
 @pytest.mark.parametrize("text,language", TEXTS, ids=[f"{lang}-{t}" for t, lang in TEXTS])
@@ -820,3 +841,53 @@ def test_lateran_ledger_mutant_fails_and_restores():
     (row,) = [r for r in ledger["sites"] if r["site"] == f"{LATERAN}.s01.en"]
     assert row["target_sha256"] != canonical_hash(stale)
     assert row["target_sha256"] == canonical_hash(prose)
+
+
+@pytest.mark.parametrize("row", ADVENT_CAPTIONS, ids=lambda r: f"{r[0]}-{r[1][len(P) :]}-{r[3][0]}")
+def test_advent_contextual_case_rejects_mutation_and_restores(row):
+    core, layer = load(row[1]), load(row[1], row[0])
+    saved = deepcopy(layer)
+    assert caption_diagnostics(row, core, layer) == []
+    expected = row[5]
+    wrong = expected[0].swapcase() + expected[1:]
+    assert wrong != expected
+    try:
+        set_caption(row[2], row[3], wrong)(core, layer)
+        assert layer != saved
+        assert caption_diagnostics(row, core, layer) == [
+            f"caption:{row[0]}:{row[1]}:{'+'.join(row[3])}: {wrong!r}"
+        ]
+    finally:
+        set_caption(row[2], row[3], expected)(core, layer)
+        assert layer == saved
+        assert caption_diagnostics(row, core, layer) == []
+
+
+@pytest.mark.parametrize(
+    "row",
+    FIRST_OPENING_CAPTIONS,
+    ids=lambda r: f"{r[0]}-{r[1]}-{r[2]}-{r[3][0]}",
+)
+def test_first_opening_caption_rejects_predecessor_and_restores(row):
+    core, layer = load(row[1]), load(row[1], row[0])
+    saved = deepcopy(layer)
+    pin = row[:7]
+    assert caption_diagnostics(pin, core, layer) == []
+    assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
+    assert language_packs.check_core(core) == []
+    assert language_packs.check_layer(core, layer, path_of(row[1], row[0])) == []
+    for wrong in row[7]:
+        assert wrong != row[5]
+        try:
+            set_caption(row[2], row[3], wrong)(core, layer)
+            assert canonical_hash(layer) != canonical_hash(saved)
+            assert caption_diagnostics(pin, core, layer) == [
+                f"caption:{row[0]}:{row[1]}:{'+'.join(row[3])}: {wrong!r}"
+            ]
+        finally:
+            set_caption(row[2], row[3], row[5])(core, layer)
+            assert layer == saved
+            assert caption_diagnostics(pin, core, layer) == []
+            assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
+            assert language_packs.check_core(core) == []
+            assert language_packs.check_layer(core, layer, path_of(row[1], row[0])) == []

@@ -5,15 +5,24 @@ import re
 from checks.interlinear import effective_gloss
 
 HANC = "ordinarium.hanc-igitur-in-cena-domini"
-GROUPS = (
-    (43, 47, 47, "wyrwanie nas z wiecznego potępienia"),
-    (49, 54, 52, "zaliczenie do trzody Twoich wybranych nakazał"),
-)
+GROUPS = ((50, 51, 50, "Twoich wybranych"),)
+DIRECT = {
+    "w043": "z",
+    "w044": "wiecznego",
+    "w045": "potępienia",
+    "w046": "nas",
+    "w047": "wyrwać",
+    "w048": "i",
+    "w049": "do",
+    "w052": "nakazał",
+    "w053": "trzody",
+    "w054": "zaliczyć",
+}
 DETAIL = (
-    "Prośba obejmuje dwa skutki Bożego rozkazu: wyrwanie nas z wiecznego potępienia "
-    "i zaliczenie do trzody Jego wybranych. W obu chodzi o tych samych modlących się. "
-    "Rzeczowniki w podpisach oddają bezokoliczniki bierne „éripi” i „numerári”, "
-    "oba zależne od „iúbeas” i mające wspólny podmiot „nos” w bierniku."
+    "„Nakazał” zależy od wcześniejszego „abyś” i łączy się z oboma bezokolicznikami: "
+    "„wyrwać nas” i „zaliczyć”. Łacińskie formy są bierne: prosimy, aby to nas wyrwano "
+    "i zaliczono. „Do” łączy się z dalszym „trzody”, a „Twoich wybranych” określa osoby "
+    "tworzące trzodę."
 )
 SOURCE = {
     "w043": {"form": "ab", "governs": "abl", "head": "w045"},
@@ -78,35 +87,44 @@ def assert_hanc_scope(layer):
         {"words": ids(first, last), "anchor": f"w{anchor:03}", "gloss": caption}
         for first, last, anchor, caption in GROUPS
     ]
-    assert layer["segments"]["s06"]["alignments"] == expected, "Hanc compact two groups"
+    assert layer["segments"]["s06"]["alignments"] == expected, "Hanc reviewed short groups"
     for group in expected:
         assert all(not layer["words"][wid].get("gloss") for wid in group["words"]), (
             "Hanc grouped words have one provider"
         )
-    assert layer["words"]["w048"].get("gloss") == "i", "Hanc direct coordination"
-    assert layer["words"]["w052"].get("explanation") == DETAIL, "Hanc nominal/passive detail"
+    assert {wid: layer["words"][wid].get("gloss") for wid in DIRECT} == DIRECT, (
+        "Hanc short direct contributions"
+    )
+    assert layer["words"]["w052"].get("explanation") == DETAIL, "Hanc shared passive detail"
 
 
 def hanc_polish_errors(core, layer):
-    """Recognize the local nominal model and its named source relations only."""
+    """Check the short model's relations, not arbitrary prayer translations."""
     groups = layer["segments"]["s06"].get("alignments", [])
     selected = [
         [group for group in groups if group.get("words") == ids(first, last)]
         for first, last, _, _ in GROUPS
     ]
     if any(len(matches) != 1 for matches in selected):
-        return ["Hanc nominal model needs its two complete compact constituents"]
-    first, second = (matches[0].get("gloss", "") for matches in selected)
+        return ["Hanc short model needs its complete elect constituent"]
+    elect = selected[0][0].get("gloss", "")
+    direct = {wid: layer["words"][wid].get("gloss", "") for wid in DIRECT}
     errors = []
-    if not re.fullmatch(r"(?:wyrwanie|ocalenie) nas (?:z|od) wiecznego potępienia", first):
+    if direct["w046"] != "nas" or not re.fullmatch(r"wyrwać|ocalić|uwolnić", direct["w047"]):
+        errors.append("Hanc rescue keeps us as patients of release from eternal condemnation")
+    if (
+        direct["w043"] not in {"z", "od"}
+        or direct["w044"] != "wiecznego"
+        or direct["w045"] != "potępienia"
+    ):
         errors.append("Hanc rescue keeps us as patients of release from eternal condemnation")
     if layer["words"]["w048"].get("gloss") != "i":
         errors.append("Hanc both outcomes remain coordinated")
-    if not re.match(r"(?:zaliczenie|policzenie)\b", second):
-        errors.append("Hanc second outcome remains nominal inclusion")
-    if "do trzody Twoich wybranych" not in second:
+    if direct["w054"] not in {"zaliczyć", "policzyć"}:
+        errors.append("Hanc second outcome remains commanded inclusion")
+    if direct["w049"] != "do" or direct["w053"] != "trzody" or elect != "Twoich wybranych":
         errors.append("Hanc inclusion retains the Father's elect flock")
-    if not re.search(r"\b(?:nakazał|polecił|rozkazał)$", second):
+    if direct["w052"] not in {"nakazał", "polecił", "rozkazał"}:
         errors.append("Hanc one final finite governor commands both nominal outcomes")
     line = " ".join(
         effective_gloss(layer, word["id"])
@@ -120,5 +138,7 @@ def hanc_polish_errors(core, layer):
     if re.search(r"\babyś\b.*\bracz\b", line):
         errors.append("Hanc independent imperative cannot stand under upstream abyś")
     if layer["words"]["w052"].get("explanation") != DETAIL:
-        errors.append("Hanc detail distinguishes target nouns from two Latin passive infinitives")
+        errors.append(
+            "Hanc detail distinguishes target infinitives and shared Latin passive patient"
+        )
     return errors

@@ -117,7 +117,7 @@ def test_whole_english_line_retains_external_dependencies():
         "I saw",
         "upon",
         "Mount",
-        "Sion",
+        "Zion",
         "the Lamb",
         "standing",
         "and",
@@ -285,6 +285,10 @@ def test_illa_contextual_gender_is_complete_and_pending():
     ],
 )
 def test_unchanged_working_prose_and_current_source_dependency(language, target):
+    # The English name spelling changed; the source and working label did not.
+    if language == "en":
+        assert target == "be117af05684db5ed1be0fc5b570688a09decdbe26583e304a9c5de20c8e569e"
+        target = "85a6d5020247f0636ca9536bbab43361bfc328e0fce1413c159d828168e0cfd3"
     core = store.core(ROOT, TEXT)
     layer = store.raw_layer(ROOT, language, TEXT)
     records = json.loads((ROOT / f"languages/{language}/translation-provenance.json").read_text())[

@@ -42,9 +42,11 @@ GROUPS = {
     "en": [
         (2, 3, 2, "my heart"),
         (5, 6, 5, "my lips"),
-        (10, 15, 14, "cleansed the lips of Isaiah the prophet with a glowing stone"),
-        (17, 22, 21, "be pleased to cleanse me through Your gracious mercy"),
-        (24, 29, 28, "I can proclaim Your holy Gospel worthily"),
+        (11, 12, 11, "of the prophet Isaiah"),
+        (13, 15, 14, "cleansed with a glowing stone"),
+        (18, 20, 20, "through Your gracious mercy"),
+        (21, 22, 21, "be pleased to cleanse"),
+        (24, 26, 25, "Your holy Gospel"),
         (32, 33, 32, "our Lord"),
     ],
 }
@@ -74,16 +76,21 @@ DIRECT = {
         34: "Amen",
     },
     "en": {
-        1: "cleanse",
+        1: "Cleanse",
         4: "and",
         7: "almighty",
         8: "God",
         9: "who",
+        10: "the lips",
         16: "likewise",
+        17: "me",
         23: "so that",
-        30: "through",
+        27: "worthily",
+        28: "I may be able",
+        29: "to proclaim",
+        30: "Through",
         31: "Christ",
-        34: "amen",
+        34: "Amen",
     },
 }
 
@@ -169,7 +176,13 @@ def test_localization_preserves_the_stated_uncertainty_not_an_added_heating_even
     assert core["localization"] == {
         "about": True,
         "notes": ["w015"],
-        "explanations": {"w013": {}, "w019": {}, "w021": {"languages": ["en"]}},
+        "explanations": {
+            "w013": {},
+            "w014": {"languages": ["en"]},
+            "w019": {},
+            "w021": {"languages": ["en"]},
+            "w028": {"languages": ["en"]},
+        },
     }
     analysis = core["editorial"]["words"]["w015"]["analysis"]
     assert (analysis["confidence"], analysis["review"]) == ("medium", "disputed")
@@ -184,6 +197,18 @@ def test_localization_preserves_the_stated_uncertainty_not_an_added_heating_even
     assert "does not narrate a separate act of heating" in layer("en")["words"]["w015"]["note"]
     assert "does not claim" in layer("en")["words"]["w021"]["explanation"]
     assert "not as grateful" in layer("en")["words"]["w019"]["explanation"]
+    english = layer("en")["words"]
+    assert english["w014"]["explanation"] == (
+        "The lips are the object of mundásti. Cálculo ... igníto names the glowing stone "
+        "as the means of cleansing, with the verb placed between the noun and its modifier."
+    )
+    assert english["w028"]["explanation"] == (
+        "Váleam expresses the ability sought in the purpose clause. Nuntiáre completes it, "
+        "and the object of nuntiáre, sanctum evangélium tuum, comes earlier in the Latin."
+    )
+    assert english["w021"]["explanation"].endswith(
+        " The earlier me is the object of mundáre, not the subject of this request."
+    )
 
 
 @pytest.mark.parametrize("lemma", ["calculus", "ignio"])
@@ -293,10 +318,14 @@ def test_finite_caption_controls_reject_defect_and_accept_restoration(language, 
     else:
         group = next(g for g in groups if "w021" in g["words"])
         group["gloss"] = "my merit allows me to cleanse myself"
-    with pytest.raises(AssertionError):
-        assert_captions(target, language)
-    target.clear()
-    target.update(original)
+    assert target != original
+    try:
+        with pytest.raises(AssertionError):
+            assert_captions(target, language)
+    finally:
+        target.clear()
+        target.update(original)
+    assert target == original
     assert_captions(target, language)
 
 

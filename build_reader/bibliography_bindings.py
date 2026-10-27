@@ -337,6 +337,31 @@ def _mass_secret_sources(reading, primary: dict, sources: dict) -> None:
         raise BindingError("raw-reading-9 source-use evidence differs from its contribution")
 
 
+def _literal_ordo_sources(reading, primary: dict, sources: dict) -> None:
+    """One real contributing Ordo object, never a fabricated macro contribution."""
+    from checks.raw_binding_ordo import ARCHIVE, REVISION
+
+    item = primary["digital_item"]
+    if (
+        len(sources) != 1
+        or primary["use"]["role"] != "derived_digital_collation_aid"
+        or primary["use"]["address"] != {"kind": "text", "text": reading.source["profile"]["text"]}
+        or primary["use"].get("evidence_sha256") != ARCHIVE["sha256"]
+        or primary["work"]["id"] != "work.divinum-officium"
+        or primary["edition"]["id"] != "edition.divinum-officium-missa.44667ff"
+        or item["id"] != "item.divinum-officium-missa.44667ff.ordo"
+        or item.get("sha256") != ARCHIVE["sha256"]
+        or item.get("record_url")
+        != (
+            "https://raw.githubusercontent.com/DivinumOfficium/divinum-officium/"
+            + REVISION
+            + "/"
+            + ARCHIVE["upstream"]
+        )
+    ):
+        raise BindingError("raw-reading-10 requires exactly its real derived Ordo source use")
+
+
 def _witness_subject(
     root: Path, witness: dict, doc: dict, snapshot: _SourceSnapshot, *, reviewable: bool
 ) -> dict:
@@ -389,7 +414,14 @@ def _witness_subject(
     if (
         not reviewable
         and "source_dependencies" not in witness
-        and contract not in {"raw-reading-6", "raw-reading-7", "raw-reading-8", "raw-reading-9"}
+        and contract
+        not in {
+            "raw-reading-6",
+            "raw-reading-7",
+            "raw-reading-8",
+            "raw-reading-9",
+            "raw-reading-10",
+        }
     ):
         return deepcopy(subject)
     declaration = source_dependencies(witness)
@@ -451,6 +483,8 @@ def _witness_subject(
             _literal_common_sources(reading, primary, subject["source_uses"])
         if reading.source["contract"] == "raw-reading-9":
             _mass_secret_sources(reading, primary, subject["source_uses"])
+        if reading.source["contract"] == "raw-reading-10":
+            _literal_ordo_sources(reading, primary, subject["source_uses"])
         # A generic evidence hash need not name the first archive. Existing
         # digital uses identify either a contributing archive's complete bytes
         # or the complete ordered reading with one terminal LF. Both subjects

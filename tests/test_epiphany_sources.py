@@ -398,7 +398,7 @@ CHANT_SEGMENTS = {
 }
 CHANT_CAPTIONS = {
     ("pl", "introitus"): (
-        "cała | ziemia | niech oddaje pokłon | Ci | Boże | i | niech śpiewa | Ci | "
+        "Cała | ziemia | niech oddaje pokłon | Ci | Boże | i | niech śpiewa | Ci | "
         # V Sunday after Easter audit successor (2026-10-20): the psalm verse reads
         # as in the V Sunday after Easter.
         "niech śpiewa psalm | Twojemu imieniu | Najwyższy | Wykrzykujcie | Bogu | "
@@ -421,7 +421,7 @@ CHANT_CAPTIONS = {
         "let it sing a psalm to Your name | Most High"
     ),
     ("pl", "graduale"): (
-        "posłał | Pan | słowo | swoje | i | uzdrowił | ich | i | ocalił | ich | od | "
+        "Posłał | Pan | słowo | swoje | i | uzdrowił | ich | i | ocalił | ich | od | "
         "ich zagłady | Niech Jego dzieła miłosierdzia i Jego cuda dla ludzi wysławiają Pana"
     ),
     ("en", "graduale"): (

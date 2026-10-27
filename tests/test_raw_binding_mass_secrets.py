@@ -359,7 +359,7 @@ def test_registry_and_context_admission_rejects_then_recovers(source, fault, mes
         elif fault == "nonstring-profile":
             binding["profile"] = False
         elif fault == "unsupported-contract":
-            binding["contract"] = "raw-reading-10"
+            binding["contract"] = "raw-reading-unsupported"
         elif fault == "extra-caller":
             binding["caller"] = "missa"
         elif fault == "wrong-revision":
