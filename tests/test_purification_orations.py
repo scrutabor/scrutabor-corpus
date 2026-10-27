@@ -36,8 +36,7 @@ LINES = {
         "the substance of our flesh",
         "in",
         "the temple",
-        "was",
-        "presented",
+        "was presented",
         "so",
         "us",
         "may You cause",
@@ -90,6 +89,7 @@ GROUPS = {
         ([4, 5], 4, "Your majesty"),
         ([10, 11, 12], 11, "Your only-begotten Son"),
         ([16, 17, 18], 18, "the substance of our flesh"),
+        ([21, 22], 22, "was presented"),
         ([26, 27, 28, 29], 29, "to be presented to You with purified minds"),
         ([31, 32, 33, 34, 35], 32, "this same Jesus Christ, our Lord"),
         ([36, 37], 36, "Your Son"),
@@ -315,3 +315,40 @@ def test_legitimate_spelling_alternative_remains_valid():
     layer["segments"]["s02"]["translation"] = "for ever and ever."
     assert not interlinear.check(doc, layer)
     assert not english.check(doc, layer)
+
+
+@pytest.mark.parametrize("fault", ("former-split", "wrong-caption"))
+def test_collect_compound_expectations_reject_damage_and_same_layer_recovers(fault):
+    doc, layers = store.load(ROOT, COLLECT)
+    layer = deepcopy(layers["en"])
+    saved = deepcopy(layer)
+    expected = [
+        {"words": [wid(n) for n in numbers], "anchor": wid(anchor), "gloss": gloss}
+        for numbers, anchor, gloss in GROUPS[COLLECT]
+    ]
+    groups = layer["segments"]["s01"]["alignments"]
+    (group,) = [g for g in groups if g["words"] == ["w021", "w022"]]
+    assert group == {"words": ["w021", "w022"], "anchor": "w022", "gloss": "was presented"}
+    assert not interlinear.check(doc, layer)
+    assert line(doc, layer) == LINES[(COLLECT, "en")]
+    assert groups == expected
+    try:
+        if fault == "former-split":
+            groups.remove(group)
+            layer["words"]["w021"]["gloss"] = "was"
+            layer["words"]["w022"]["gloss"] = "presented"
+        else:
+            group["gloss"] = "will be presented"
+        assert layer != saved
+        assert not interlinear.check(doc, layer)
+        with pytest.raises(AssertionError, match=r"^complete Collect line(?:\n|$)"):
+            assert line(doc, layer) == LINES[(COLLECT, "en")], "complete Collect line"
+        with pytest.raises(AssertionError, match=r"^complete Collect groups(?:\n|$)"):
+            assert layer["segments"]["s01"]["alignments"] == expected, "complete Collect groups"
+    finally:
+        layer.clear()
+        layer.update(saved)
+        assert layer == saved
+        assert not interlinear.check(doc, layer)
+        assert line(doc, layer) == LINES[(COLLECT, "en")]
+        assert layer["segments"]["s01"]["alignments"] == expected

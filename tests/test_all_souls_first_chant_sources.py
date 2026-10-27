@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pytest
 import witness_header_fixture as headers
+from chant_fragment_fixture import before_chant_registry
 
 from build_reader.bibliography import public_text_evidence
 from build_reader.bibliography_bindings import (
@@ -422,7 +423,7 @@ def test_only_two_new_plans_and_one_archive_extend_the_original_registry():
     assert len(plans) == len(source_rows) == 49
 
     def check():
-        before = deepcopy(current)
+        before = before_chant_registry(headers.before_joachim_registry(current))
         for identity, expected in plans.items():
             assert before["bindings"].get(identity) == expected, "exact main Ordo plan"
             del before["bindings"][identity]

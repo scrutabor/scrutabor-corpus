@@ -133,7 +133,67 @@ def fourth_passive_comparison(layer, language):
     return comparison
 
 
+def fifth_passive_comparison(layer, language):
+    fixture = json.loads(
+        (ROOT / "tests/fixtures/proper-fifth-twelve-passive-captions.json").read_text()
+    )
+    text = "proprium.dominica-xix-post-pentecosten-evangelium"
+    case = next(
+        row for row in fixture["layers"] if row["text"] == text and row["language"] == language
+    )
+    comparison = deepcopy(layer)
+    for wid, change in case["word_changes"].items():
+        assert comparison["words"][wid] == change["after"], "fifth passive predicate"
+        comparison["words"][wid] = deepcopy(change["before"])
+    change = case["alignment_changes"]["s01"]
+    assert comparison["segments"]["s01"]["alignments"] == change["after"], "fifth passive predicate"
+    comparison["segments"]["s01"]["alignments"] = deepcopy(change["before"])
+    historical = json.dumps(
+        comparison, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+    ).encode()
+    assert hashlib.sha256(historical).hexdigest() == case["before_sha256"], (
+        "fifth passive unchanged remainder"
+    )
+    return comparison
+
+
+def sixth_passive_comparison(layer, language):
+    fixture = json.loads(
+        (ROOT / "tests/fixtures/proper-sixth-twelve-passive-captions.json").read_text()
+    )
+    text = "proprium.dominica-xxiii-post-pentecosten-evangelium"
+    case = next(
+        row for row in fixture["layers"] if row["text"] == text and row["language"] == language
+    )
+    comparison = deepcopy(layer)
+    for wid, change in case["word_changes"].items():
+        assert comparison["words"][wid] == change["after"], "later healing predicate"
+        comparison["words"][wid] = deepcopy(change["before"])
+    for sid, change in case["alignment_changes"].items():
+        assert comparison["segments"][sid]["alignments"] == change["after"]
+        comparison["segments"][sid]["alignments"] = deepcopy(change["before"])
+    historical = json.dumps(
+        comparison, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+    ).encode()
+    assert hashlib.sha256(historical).hexdigest() == case["before_sha256"]
+    return comparison
+
+
 def healthy(row, core, layer):
+    if row["text"] == "proprium.dominica-xix-post-pentecosten-evangelium":
+        assert language_packs.check_core(core) == []
+        assert language_packs.check_layer(core, layer, path_of(row["text"], row["language"])) == []
+        assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
+        assert prose.check(layer) == []
+        historical_healthy(row, core, fifth_passive_comparison(layer, row["language"]))
+        return
+    if row["text"] == "proprium.dominica-xxiii-post-pentecosten-evangelium":
+        assert language_packs.check_core(core) == []
+        assert language_packs.check_layer(core, layer, path_of(row["text"], row["language"])) == []
+        assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
+        assert prose.check(layer) == []
+        historical_healthy(row, core, sixth_passive_comparison(layer, row["language"]))
+        return
     if row["text"] != "proprium.dominica-xiii-post-pentecosten-evangelium":
         historical_healthy(row, core, layer)
         return

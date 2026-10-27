@@ -50541,6 +50541,50 @@
       "decision_reason": "Corrects the use recorded 2026-08-31: the witness now transcribes the pinned reading exactly, names every resolved section and reference, and is bound to the archived files; the evidence digest remains that of the pinned key file."
     },
     {
+      "id": "use.proprium.exaltatio-sanctae-crucis-introitus.expanded-doxology.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.exaltatio-sanctae-crucis-introitus",
+        "word": "w039"
+      },
+      "locator": {
+        "printed": "p. 219",
+        "scan": "leaf n298 / PDF p. 299",
+        "section": "Ordo Missae: Gloria Patri; selected words w039–w058",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
+      },
+      "claim": "The full Gloria Patri through Amen supplies words w039–w058 after the proper's abbreviated cue; the Ordo prints semper: where the house-expanded witness and selected text have the house comma.",
+      "verified_on": "2026-10-27",
+      "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55",
+      "decision": "RETAIN",
+      "decision_reason": "Current inspected page evidence bounds this declared expansion; existing witness and collation reviews remain pending."
+    },
+    {
+      "id": "use.proprium.exaltatio-sanctae-crucis-introitus.introit-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "word",
+        "text": "proprium.exaltatio-sanctae-crucis-introitus",
+        "word": "w059"
+      },
+      "locator": {
+        "printed": "p. xxix",
+        "scan": "leaf n34 / PDF p. 35",
+        "section": "Rubricae generales 427; selected words w059–w082",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "RG 427 prescribes the antiphon, psalm, Gloria Patri and repeated antiphon; it supports words w059–w082 as the full antiphon reprise after the proper's printed cue, not as a second full printing on the proper page.",
+      "verified_on": "2026-10-27",
+      "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786",
+      "decision": "RETAIN",
+      "decision_reason": "Current inspected page evidence bounds this declared expansion; existing witness and collation reviews remain pending."
+    },
+    {
       "id": "use.proprium.exaltatio-sanctae-crucis-introitus.mr1962",
       "edition": "edition.missale-romanum.1962-typica",
       "digital_item": "item.missale-romanum.1962-typica.ia",
@@ -50554,11 +50598,11 @@
         "scan": "leaves n749–n750 / PDF pp. 750–751",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n749/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "41c3a4ebc2282e7ed9b732a42c89d01c617edbf03f42a538d03a2098c88a4262",
-      "decision_reason": "Locator corrected against the page image: the text is printed on the leaves now cited, from its opening to its end."
+      "decision_reason": "Locator corrected against the page image: the text is printed on the leaves now cited, from its opening to its end. Correction 2026-10-27: the proper passage prints the antiphon and psalm verse with abbreviated doxology and reprise cues, not the complete expanded 82-word transcript; the separately identified Ordo and RG 427 uses bound those expansions."
     },
     {
       "id": "use.proprium.exaltatio-sanctae-crucis-offertorium.do44667ff",
@@ -65064,12 +65108,13 @@
         "text": "proprium.sancti-ioachim-confessoris-epistola"
       },
       "locator": {
-        "section": "pinned source key Sancti/08-16; resolved section [Lectio] with declared inherited references"
+        "section": "web/www/horas/Latin/Commune/C5.txt [Lectio], heading346; title347, reference348; complete Mass comparison body349."
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "bdeb4acc0903fcb05c61589bc16697a56b0c6d2c7821b5b7a5259f5b122f0677"
+      "claim": "The pinned Common's Mass Lectio supplies the complete comparison reading; its literal accents and punctuation are recorded separately from the selected text.",
+      "verified_on": "2026-10-27",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "d2550ce56add61aec5d8e6477e0db20e8ee6d31b270654329103a4f2b3c1753e",
+      "decision_reason": "The previous locator was an unverified proper-key claim (recorded verification date 2026-08-31). This correction binds the Common's present literal Mass Lectio, not an executed feast-selection result or the original import workflow."
     },
     {
       "id": "use.proprium.sancti-ioachim-confessoris-epistola.mr1962",
@@ -72086,12 +72131,13 @@
         "text": "proprium.sancti-thomae-apostoli-graduale"
       },
       "locator": {
-        "section": "pinned source key Sancti/12-21; resolved section [Graduale] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/12-21.txt [Graduale] (lines 30-30); web/www/missa/Latin/Sancti/12-21.txt [Graduale] (line 31, chars 0:52)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "845bb9254b784ed0d67d7616add3a38e4cc017f7fe2659e7b6438ad33b1ebbba"
+      "claim": "The retained pinned Mass file prints the literal Gradual in the declared whole line and partial verse, ending before the neighboring Alleluia. Its unaccented honorati is retained for comparison with the selected Benziger text.",
+      "verified_on": "2026-10-27",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "845bb9254b784ed0d67d7616add3a38e4cc017f7fe2659e7b6438ad33b1ebbba",
+      "decision_reason": "Current literal component consultation corrects the earlier unverified locator and normalized transcript; it does not establish historical import generation, runtime selection or independent textual ancestry."
     },
     {
       "id": "use.proprium.sancti-thomae-apostoli-graduale.mr1962",
@@ -75960,12 +76006,13 @@
         "text": "proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia"
       },
       "locator": {
-        "section": "pinned source key Sancti/10-28; resolved section [Allelúia] with declared inherited references"
+        "section": "web/www/missa/Latin/Sancti/10-28.txt [Graduale] (line 28, chars 80:98); web/www/missa/Latin/Sancti/10-28.txt [Graduale] (lines 30-30)"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "4c0fc52e5a7ab1ef3c5a438b39d81df0061a00eeb464ebfd9c5891195f4cac41"
+      "claim": "The retained pinned Mass file prints this Alleluia as a suffix and subsequent verse under [Graduale], not an [Allelúia] heading. The literal j spelling and absent stop after the opening acclamation are retained for comparison with the selected Benziger text.",
+      "verified_on": "2026-10-27",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "4c0fc52e5a7ab1ef3c5a438b39d81df0061a00eeb464ebfd9c5891195f4cac41",
+      "decision_reason": "Current literal component consultation corrects the earlier unverified locator and normalized transcript; it does not establish historical import generation, runtime selection or independent textual ancestry."
     },
     {
       "id": "use.proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia.mr1962",
@@ -107584,12 +107631,19 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "f55af759fef388f982983b4a62660a310a3bad09221f0e1e31f6b76d8bb00da3",
-      "orthography_profile": "exact-page-image",
-      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription_sha256": "3384c9439e077e86588659389e68a5dc7671a614d4444f327a01ed70a8286535",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "The proper antiphon and psalm verse have been checked against the identified Benziger 1962 Editio iuxta typicam page images; the Gloria Patri and repeated antiphon are declared expansions of the printed cues, bounded by the separately identified Ordo and RG 427 uses. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
       "transcription": "mr",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.exaltatio-sanctae-crucis-introitus.expanded-doxology.mr1962",
+          "use.proprium.exaltatio-sanctae-crucis-introitus.introit-expansion.mr1962"
+        ],
+        "raw_binding": null
       }
     },
     {
@@ -115891,12 +115945,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "1a5787c3fa42420d4ff658138b02343ff19188599b6d09f0f44b3186ac0160e0",
+      "transcription_sha256": "354e6edd6985a730971fa1f366f8b26ac9be524db8a01c4fe78399e168fb569d",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-sancti-ioachim-confessoris-epistola"
       }
     },
     {
@@ -120380,12 +120438,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "1749dc97546398f238630c6e71a407ec5c0d80c5f15e2f1e33af28d28bce0cae",
+      "transcription_sha256": "6288a080a9fde3a783030fe0251c105c56d4f97f346cbd5b96df04466e45972d",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Literal comparison with the exact retained pinned digital component only; neither historical transcript derivation nor independent textual ancestry is established.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-sancti-thomae-apostoli-graduale"
       }
     },
     {
@@ -122449,12 +122511,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "bf927a82d2a1854209aaf64ecbb4ddb58df70189a303765978c17c4c1397fc42",
+      "transcription_sha256": "d851c58be65381796ee03a0ec8321ef69c5c9d984f6264d824fa6f90cf904fe1",
       "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "independence_basis": "Literal comparison with the exact retained pinned digital component only; neither historical transcript derivation nor independent textual ancestry is established.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-sanctorum-simonis-et-iudae-apostolorum-alleluia"
       }
     },
     {
@@ -143895,12 +143961,13 @@
         "witness.proprium.sancti-ioachim-confessoris-epistola.mr1962"
       ],
       "apparatus": {
-        "entries": 1,
+        "entries": 2,
         "classes": [
+          "accent",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "f12a6ea177688f03d33e03c8d15c8d488946f40dfa638a7a3b0291d3e3e45bc2",
+      "apparatus_sha256": "4522b1f39cb3a4cdcd8dd0e2416f01e25696e46e85db42ad8f655e4e7a6ee647",
       "review": {
         "status": "pending"
       }
@@ -146460,10 +146527,12 @@
         "witness.proprium.sancti-thomae-apostoli-graduale.mr1962"
       ],
       "apparatus": {
-        "entries": 0,
-        "classes": []
+        "entries": 1,
+        "classes": [
+          "accent"
+        ]
       },
-      "apparatus_sha256": "1ab43132648b58f921e0a90fc610cce29e3c743fd1b2d7d175f6620708bba871",
+      "apparatus_sha256": "1f672fc386bf7738fa69bdb828eb81a033b7e528dc61ebc32d204b6222541dfa",
       "review": {
         "status": "pending"
       }
@@ -147601,12 +147670,12 @@
         "witness.proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia.mr1962"
       ],
       "apparatus": {
-        "entries": 1,
+        "entries": 3,
         "classes": [
-          "punctuation"
+          "orthography"
         ]
       },
-      "apparatus_sha256": "ddb75203c6f2ed5d2a1d4a2c0be58d73188c3266cfd75c552dcd3ff0f8fe78a9",
+      "apparatus_sha256": "6af2f9dbe14c05f07ee1b2dde02e93468048c24a529f7ac88ac8b945d8aa71b2",
       "review": {
         "status": "pending"
       }

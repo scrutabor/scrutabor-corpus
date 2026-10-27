@@ -1,0 +1,666 @@
+{
+  "rows": [
+    {
+      "text": "proprium.sancti-thomae-apostoli-graduale",
+      "binding_id": "do-proprium-sancti-thomae-apostoli-graduale",
+      "binding": {
+        "contract": "raw-reading-2",
+        "witness": "witnesses/proprium.sancti-thomae-apostoli-graduale/do.txt",
+        "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+        "evidence": [
+          {
+            "archive": "do-sancti-12-21",
+            "first": 30,
+            "last": 30,
+            "section": "Graduale",
+            "section_line": 28
+          },
+          {
+            "archive": "do-sancti-12-21",
+            "first": 31,
+            "last": 31,
+            "section": "Graduale",
+            "section_line": 28,
+            "fragment": {
+              "start": 0,
+              "end": 52,
+              "text": "V. Dinumerábo eos, et super arénam multiplicabúntur.",
+              "marker": "V",
+              "reason": "Retain only the Gradual verse before the adjacent Alleluia opening on the same physical line."
+            }
+          }
+        ],
+        "references": [],
+        "reading": [
+          {
+            "archive": "do-sancti-12-21",
+            "first": 30,
+            "last": 30
+          },
+          {
+            "archive": "do-sancti-12-21",
+            "first": 31,
+            "last": 31,
+            "fragment": {
+              "start": 0,
+              "end": 52
+            }
+          }
+        ]
+      },
+      "archive_id": "do-sancti-12-21",
+      "archive": {
+        "upstream": "web/www/missa/Latin/Sancti/12-21.txt",
+        "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+        "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/12-21.txt",
+        "sha256": "845bb9254b784ed0d67d7616add3a38e4cc017f7fe2659e7b6438ad33b1ebbba"
+      },
+      "literal_body": "Nimis honorati sunt amíci tui, Deus: nimis confortátus est principátus eórum. Dinumerábo eos, et super arénam multiplicabúntur.",
+      "pieces": [
+        {
+          "line": 30,
+          "start": 0,
+          "end": 77,
+          "raw": "Nimis honorati sunt amíci tui, Deus: nimis confortátus est principátus eórum.",
+          "text": "Nimis honorati sunt amíci tui, Deus: nimis confortátus est principátus eórum.",
+          "partial": false,
+          "marker": null,
+          "marker_scope_verified": true
+        },
+        {
+          "line": 31,
+          "start": 0,
+          "end": 52,
+          "raw": "V. Dinumerábo eos, et super arénam multiplicabúntur.",
+          "text": "Dinumerábo eos, et super arénam multiplicabúntur.",
+          "partial": true,
+          "marker": "V",
+          "marker_scope_verified": true
+        }
+      ],
+      "witness": {
+        "before": {
+          "id": "witness.proprium.sancti-thomae-apostoli-graduale.do44667ff",
+          "text": "proprium.sancti-thomae-apostoli-graduale",
+          "use": "use.proprium.sancti-thomae-apostoli-graduale.do44667ff",
+          "role": "derived_comparison",
+          "coverage": {
+            "kind": "full"
+          },
+          "transcription_sha256": "1749dc97546398f238630c6e71a407ec5c0d80c5f15e2f1e33af28d28bce0cae",
+          "orthography_profile": "pinned-digital-source",
+          "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+          "transcription": "do",
+          "review": {
+            "status": "pending"
+          }
+        },
+        "after": {
+          "id": "witness.proprium.sancti-thomae-apostoli-graduale.do44667ff",
+          "text": "proprium.sancti-thomae-apostoli-graduale",
+          "use": "use.proprium.sancti-thomae-apostoli-graduale.do44667ff",
+          "role": "derived_comparison",
+          "coverage": {
+            "kind": "full"
+          },
+          "transcription_sha256": "6288a080a9fde3a783030fe0251c105c56d4f97f346cbd5b96df04466e45972d",
+          "orthography_profile": "pinned-digital-source",
+          "independence_basis": "Literal comparison with the exact retained pinned digital component only; neither historical transcript derivation nor independent textual ancestry is established.",
+          "transcription": "do",
+          "review": {
+            "status": "pending"
+          },
+          "source_dependencies": {
+            "uses": [],
+            "raw_binding": "do-proprium-sancti-thomae-apostoli-graduale"
+          }
+        }
+      },
+      "use": {
+        "before": {
+          "id": "use.proprium.sancti-thomae-apostoli-graduale.do44667ff",
+          "edition": "edition.divinum-officium-missa.44667ff",
+          "digital_item": "item.divinum-officium-missa.44667ff.github",
+          "role": "derived_digital_collation_aid",
+          "address": {
+            "kind": "text",
+            "text": "proprium.sancti-thomae-apostoli-graduale"
+          },
+          "locator": {
+            "section": "pinned source key Sancti/12-21; resolved section [Graduale] with declared inherited references"
+          },
+          "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+          "verified_on": "2026-08-31",
+          "decision": "RETAIN",
+          "evidence_sha256": "845bb9254b784ed0d67d7616add3a38e4cc017f7fe2659e7b6438ad33b1ebbba"
+        },
+        "after": {
+          "id": "use.proprium.sancti-thomae-apostoli-graduale.do44667ff",
+          "edition": "edition.divinum-officium-missa.44667ff",
+          "digital_item": "item.divinum-officium-missa.44667ff.github",
+          "role": "derived_digital_collation_aid",
+          "address": {
+            "kind": "text",
+            "text": "proprium.sancti-thomae-apostoli-graduale"
+          },
+          "locator": {
+            "section": "web/www/missa/Latin/Sancti/12-21.txt [Graduale] (lines 30-30); web/www/missa/Latin/Sancti/12-21.txt [Graduale] (line 31, chars 0:52)"
+          },
+          "claim": "The retained pinned Mass file prints the literal Gradual in the declared whole line and partial verse, ending before the neighboring Alleluia. Its unaccented honorati is retained for comparison with the selected Benziger text.",
+          "verified_on": "2026-10-27",
+          "decision": "RETAIN_WITH_CORRECTION",
+          "evidence_sha256": "845bb9254b784ed0d67d7616add3a38e4cc017f7fe2659e7b6438ad33b1ebbba",
+          "decision_reason": "Current literal component consultation corrects the earlier unverified locator and normalized transcript; it does not establish historical import generation, runtime selection or independent textual ancestry."
+        }
+      },
+      "collation": {
+        "before": {
+          "id": "collation.proprium.sancti-thomae-apostoli-graduale.mr1962-do44667ff",
+          "text": "proprium.sancti-thomae-apostoli-graduale",
+          "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+          "selected_text_sha256": "4a83b7e3bc7ca0cd8890409f38c378bb8bd0cdf74925c411089ec63e321c1e47",
+          "witnesses": [
+            "witness.proprium.sancti-thomae-apostoli-graduale.do44667ff",
+            "witness.proprium.sancti-thomae-apostoli-graduale.mr1962"
+          ],
+          "apparatus": {
+            "entries": 0,
+            "classes": []
+          },
+          "apparatus_sha256": "1ab43132648b58f921e0a90fc610cce29e3c743fd1b2d7d175f6620708bba871",
+          "review": {
+            "status": "pending"
+          }
+        },
+        "after": {
+          "id": "collation.proprium.sancti-thomae-apostoli-graduale.mr1962-do44667ff",
+          "text": "proprium.sancti-thomae-apostoli-graduale",
+          "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+          "selected_text_sha256": "4a83b7e3bc7ca0cd8890409f38c378bb8bd0cdf74925c411089ec63e321c1e47",
+          "witnesses": [
+            "witness.proprium.sancti-thomae-apostoli-graduale.do44667ff",
+            "witness.proprium.sancti-thomae-apostoli-graduale.mr1962"
+          ],
+          "apparatus": {
+            "entries": 1,
+            "classes": [
+              "accent"
+            ]
+          },
+          "apparatus_sha256": "1f672fc386bf7738fa69bdb828eb81a033b7e528dc61ebc32d204b6222541dfa",
+          "review": {
+            "status": "pending"
+          }
+        }
+      },
+      "apparatus": {
+        "before": {
+          "text": "proprium.sancti-thomae-apostoli-graduale",
+          "note": "Adjudicated accidental and house-orthography variants. The witnesses agree on the substantive text.",
+          "summary": {
+            "entries": 0,
+            "classes": []
+          },
+          "adjudicated": []
+        },
+        "after": {
+          "text": "proprium.sancti-thomae-apostoli-graduale",
+          "note": "Adjudicated accidental and house-orthography variants. The witnesses agree on the substantive text.",
+          "summary": {
+            "entries": 1,
+            "classes": [
+              "accent"
+            ]
+          },
+          "adjudicated": [
+            {
+              "at": "w002",
+              "ours": "honoráti",
+              "witnesses": {
+                "do": "honorati"
+              },
+              "class": "accent",
+              "ruling": "The controlling Benziger printing accents honoráti; the pinned digital reading is honorati. This accent-only difference does not alter the words."
+            }
+          ]
+        }
+      },
+      "transcript": {
+        "before": "# witness: do\n# description: Divinum Officium Latin Mass data, pinned revision\n# source: https://github.com/DivinumOfficium/divinum-officium\n# revision: 44667ff518b8ff1439780470828b39714f5306a2\n# fetched: 2026-08-31\n# path: pinned source key Sancti/12-21; resolved section [Graduale] with declared inherited references\n# orthography: as the import wrote it; see the correction line\n# correction: 2026-10-07 this line formerly claimed the exact source spelling; in the witnesses of the same import that are now bound, the import had written j as i, cœl as cæl and Allelúja as Allelúia and changed accents, capitals and punctuation; this body has not been verified against the pinned source, and its raw binding is pending; the path line is the import's unverified claim\n# note: section labels, scripture references, speaker markers, and runtime control characters are edition framing and are not transcribed\nNimis honoráti sunt amíci tui, Deus: nimis confortátus est principátus eórum. Dinumerábo eos, et super arénam multiplicabúntur.\n",
+        "after": "# witness: do\n# description: Divinum Officium Latin Mass data, pinned revision\n# source: https://github.com/DivinumOfficium/divinum-officium\n# revision: 44667ff518b8ff1439780470828b39714f5306a2\n# fetched: 2026-08-31\n# historical-path: pinned source key Sancti/12-21; resolved section [Graduale] with declared inherited references\n# path: web/www/missa/Latin/Sancti/12-21.txt [Graduale] (lines 30-30); web/www/missa/Latin/Sancti/12-21.txt [Graduale] (line 31, chars 0:52)\n# raw-binding: do-proprium-sancti-thomae-apostoli-graduale\n# historical-orthography: as the import wrote it; see the correction line\n# orthography: literal pinned source spelling, accents, capitalization, and punctuation; only declared source framing is excluded\n# correction: 2026-10-07 this line formerly claimed the exact source spelling; in the witnesses of the same import that are now bound, the import had written j as i, cœl as cæl and Allelúja as Allelúia and changed accents, capitals and punctuation; this body has not been verified against the pinned source, and its raw binding is pending; the path line is the import's unverified claim\n# note: section labels, scripture references, speaker markers, and runtime control characters are edition framing and are not transcribed\n# verified: 2026-10-27 the exact declared component spans were checked in the retained pinned source. The dated correction above records historical uncertainty; this current consultation does not establish historical import generation or runtime selection.\nNimis honorati sunt amíci tui, Deus: nimis confortátus est principátus eórum. Dinumerábo eos, et super arénam multiplicabúntur.\n"
+      },
+      "word_count": 17,
+      "core_sha256": "92c74d58439483a3b24ce5ca77e11ae7821b390c7bf6712bb49ad6e698767d79",
+      "expected_source": {
+        "contract": "raw-reading-2",
+        "registry_version": 1,
+        "binding_id": "do-proprium-sancti-thomae-apostoli-graduale",
+        "transcription_sha256": "6288a080a9fde3a783030fe0251c105c56d4f97f346cbd5b96df04466e45972d",
+        "binding": {
+          "contract": "raw-reading-2",
+          "witness": "witnesses/proprium.sancti-thomae-apostoli-graduale/do.txt",
+          "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+          "evidence": [
+            {
+              "archive": "do-sancti-12-21",
+              "first": 30,
+              "last": 30,
+              "section": "Graduale",
+              "section_line": 28
+            },
+            {
+              "archive": "do-sancti-12-21",
+              "first": 31,
+              "last": 31,
+              "section": "Graduale",
+              "section_line": 28,
+              "fragment": {
+                "start": 0,
+                "end": 52,
+                "text": "V. Dinumerábo eos, et super arénam multiplicabúntur.",
+                "marker": "V",
+                "reason": "Retain only the Gradual verse before the adjacent Alleluia opening on the same physical line."
+              }
+            }
+          ],
+          "references": [],
+          "reading": [
+            {
+              "archive": "do-sancti-12-21",
+              "first": 30,
+              "last": 30
+            },
+            {
+              "archive": "do-sancti-12-21",
+              "first": 31,
+              "last": 31,
+              "fragment": {
+                "start": 0,
+                "end": 52
+              }
+            }
+          ]
+        },
+        "archives": {
+          "do-sancti-12-21": {
+            "upstream": "web/www/missa/Latin/Sancti/12-21.txt",
+            "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+            "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/12-21.txt",
+            "sha256": "845bb9254b784ed0d67d7616add3a38e4cc017f7fe2659e7b6438ad33b1ebbba"
+          }
+        },
+        "resolved_fragments": [
+          {
+            "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/12-21.txt",
+            "line": 30,
+            "start": 0,
+            "end": 77,
+            "raw": "Nimis honorati sunt amíci tui, Deus: nimis confortátus est principátus eórum.",
+            "text": "Nimis honorati sunt amíci tui, Deus: nimis confortátus est principátus eórum.",
+            "marker": null,
+            "whole_line": true,
+            "marker_scope_verified": true
+          },
+          {
+            "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/12-21.txt",
+            "line": 31,
+            "start": 0,
+            "end": 52,
+            "raw": "V. Dinumerábo eos, et super arénam multiplicabúntur.",
+            "text": "Dinumerábo eos, et super arénam multiplicabúntur.",
+            "marker": "V",
+            "whole_line": false,
+            "marker_scope_verified": true
+          }
+        ]
+      }
+    },
+    {
+      "text": "proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia",
+      "binding_id": "do-proprium-sanctorum-simonis-et-iudae-apostolorum-alleluia",
+      "binding": {
+        "contract": "raw-reading-2",
+        "witness": "witnesses/proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia/do.txt",
+        "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+        "evidence": [
+          {
+            "archive": "do-sancti-10-28",
+            "first": 28,
+            "last": 28,
+            "section": "Graduale",
+            "section_line": 25,
+            "fragment": {
+              "start": 80,
+              "end": 98,
+              "text": "Allelúja, allelúja",
+              "marker": "V",
+              "reason": "Retain only the Alleluia opening after the preceding Gradual verse on the same physical line; the earlier V. does not establish its performer."
+            }
+          },
+          {
+            "archive": "do-sancti-10-28",
+            "first": 30,
+            "last": 30,
+            "section": "Graduale",
+            "section_line": 25
+          }
+        ],
+        "references": [],
+        "reading": [
+          {
+            "archive": "do-sancti-10-28",
+            "first": 28,
+            "last": 28,
+            "fragment": {
+              "start": 80,
+              "end": 98
+            }
+          },
+          {
+            "archive": "do-sancti-10-28",
+            "first": 30,
+            "last": 30
+          }
+        ]
+      },
+      "archive_id": "do-sancti-10-28",
+      "archive": {
+        "upstream": "web/www/missa/Latin/Sancti/10-28.txt",
+        "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+        "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/10-28.txt",
+        "sha256": "4c0fc52e5a7ab1ef3c5a438b39d81df0061a00eeb464ebfd9c5891195f4cac41"
+      },
+      "literal_body": "Allelúja, allelúja Nimis honoráti sunt amíci tui, Deus: nimis confortátus est principátus eórum. Allelúja.",
+      "pieces": [
+        {
+          "line": 28,
+          "start": 80,
+          "end": 98,
+          "raw": "Allelúja, allelúja",
+          "text": "Allelúja, allelúja",
+          "partial": true,
+          "marker": "V",
+          "marker_scope_verified": false
+        },
+        {
+          "line": 30,
+          "start": 0,
+          "end": 87,
+          "raw": "Nimis honoráti sunt amíci tui, Deus: nimis confortátus est principátus eórum. Allelúja.",
+          "text": "Nimis honoráti sunt amíci tui, Deus: nimis confortátus est principátus eórum. Allelúja.",
+          "partial": false,
+          "marker": null,
+          "marker_scope_verified": true
+        }
+      ],
+      "witness": {
+        "before": {
+          "id": "witness.proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia.do44667ff",
+          "text": "proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia",
+          "use": "use.proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia.do44667ff",
+          "role": "derived_comparison",
+          "coverage": {
+            "kind": "full"
+          },
+          "transcription_sha256": "bf927a82d2a1854209aaf64ecbb4ddb58df70189a303765978c17c4c1397fc42",
+          "orthography_profile": "pinned-digital-source",
+          "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+          "transcription": "do",
+          "review": {
+            "status": "pending"
+          }
+        },
+        "after": {
+          "id": "witness.proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia.do44667ff",
+          "text": "proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia",
+          "use": "use.proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia.do44667ff",
+          "role": "derived_comparison",
+          "coverage": {
+            "kind": "full"
+          },
+          "transcription_sha256": "d851c58be65381796ee03a0ec8321ef69c5c9d984f6264d824fa6f90cf904fe1",
+          "orthography_profile": "pinned-digital-source",
+          "independence_basis": "Literal comparison with the exact retained pinned digital component only; neither historical transcript derivation nor independent textual ancestry is established.",
+          "transcription": "do",
+          "review": {
+            "status": "pending"
+          },
+          "source_dependencies": {
+            "uses": [],
+            "raw_binding": "do-proprium-sanctorum-simonis-et-iudae-apostolorum-alleluia"
+          }
+        }
+      },
+      "use": {
+        "before": {
+          "id": "use.proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia.do44667ff",
+          "edition": "edition.divinum-officium-missa.44667ff",
+          "digital_item": "item.divinum-officium-missa.44667ff.github",
+          "role": "derived_digital_collation_aid",
+          "address": {
+            "kind": "text",
+            "text": "proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia"
+          },
+          "locator": {
+            "section": "pinned source key Sancti/10-28; resolved section [Allelúia] with declared inherited references"
+          },
+          "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
+          "verified_on": "2026-08-31",
+          "decision": "RETAIN",
+          "evidence_sha256": "4c0fc52e5a7ab1ef3c5a438b39d81df0061a00eeb464ebfd9c5891195f4cac41"
+        },
+        "after": {
+          "id": "use.proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia.do44667ff",
+          "edition": "edition.divinum-officium-missa.44667ff",
+          "digital_item": "item.divinum-officium-missa.44667ff.github",
+          "role": "derived_digital_collation_aid",
+          "address": {
+            "kind": "text",
+            "text": "proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia"
+          },
+          "locator": {
+            "section": "web/www/missa/Latin/Sancti/10-28.txt [Graduale] (line 28, chars 80:98); web/www/missa/Latin/Sancti/10-28.txt [Graduale] (lines 30-30)"
+          },
+          "claim": "The retained pinned Mass file prints this Alleluia as a suffix and subsequent verse under [Graduale], not an [Allelúia] heading. The literal j spelling and absent stop after the opening acclamation are retained for comparison with the selected Benziger text.",
+          "verified_on": "2026-10-27",
+          "decision": "RETAIN_WITH_CORRECTION",
+          "evidence_sha256": "4c0fc52e5a7ab1ef3c5a438b39d81df0061a00eeb464ebfd9c5891195f4cac41",
+          "decision_reason": "Current literal component consultation corrects the earlier unverified locator and normalized transcript; it does not establish historical import generation, runtime selection or independent textual ancestry."
+        }
+      },
+      "collation": {
+        "before": {
+          "id": "collation.proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia.mr1962-do44667ff",
+          "text": "proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia",
+          "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+          "selected_text_sha256": "727072eabb94f5bb8c425bb03143d63f3e5294b3e99a68b5dd2fbc1afe730fd2",
+          "witnesses": [
+            "witness.proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia.do44667ff",
+            "witness.proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia.mr1962"
+          ],
+          "apparatus": {
+            "entries": 1,
+            "classes": [
+              "punctuation"
+            ]
+          },
+          "apparatus_sha256": "ddb75203c6f2ed5d2a1d4a2c0be58d73188c3266cfd75c552dcd3ff0f8fe78a9",
+          "review": {
+            "status": "pending"
+          }
+        },
+        "after": {
+          "id": "collation.proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia.mr1962-do44667ff",
+          "text": "proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia",
+          "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+          "selected_text_sha256": "727072eabb94f5bb8c425bb03143d63f3e5294b3e99a68b5dd2fbc1afe730fd2",
+          "witnesses": [
+            "witness.proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia.do44667ff",
+            "witness.proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia.mr1962"
+          ],
+          "apparatus": {
+            "entries": 3,
+            "classes": [
+              "orthography"
+            ]
+          },
+          "apparatus_sha256": "6af2f9dbe14c05f07ee1b2dde02e93468048c24a529f7ac88ac8b945d8aa71b2",
+          "review": {
+            "status": "pending"
+          }
+        }
+      },
+      "apparatus": {
+        "before": {
+          "text": "proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia",
+          "note": "Adjudicated accidental and house-orthography variants. The witnesses agree on the substantive text.",
+          "summary": {
+            "entries": 1,
+            "classes": [
+              "punctuation"
+            ]
+          },
+          "adjudicated": [
+            {
+              "at": "w002",
+              "ours": "allelúia.",
+              "witnesses": {
+                "do": "allelúia"
+              },
+              "class": "punctuation",
+              "ruling": "The approved Benziger printing's punctuation is retained. The difference marks phrasing and does not change the words."
+            }
+          ]
+        },
+        "after": {
+          "text": "proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia",
+          "note": "Adjudicated accidental and house-orthography variants. The witnesses agree on the substantive text.",
+          "summary": {
+            "entries": 3,
+            "classes": [
+              "orthography"
+            ]
+          },
+          "adjudicated": [
+            {
+              "at": "w001",
+              "ours": "Allelúia,",
+              "witnesses": {
+                "do": "Allelúja,"
+              },
+              "class": "orthography",
+              "ruling": "The selected Benziger spelling uses i; the pinned digital source uses j. The words are unchanged."
+            },
+            {
+              "at": "w002",
+              "ours": "allelúia.",
+              "witnesses": {
+                "do": "allelúja"
+              },
+              "class": "orthography",
+              "ruling": "The selected Benziger spelling uses i and closes the opening acclamation with a full stop; the pinned digital source uses j without that full stop. Both literal differences are retained in this one word-level ruling."
+            },
+            {
+              "at": "w014",
+              "ours": "Allelúia.",
+              "witnesses": {
+                "do": "Allelúja."
+              },
+              "class": "orthography",
+              "ruling": "The selected Benziger spelling uses i; the pinned digital source uses j. The words are unchanged."
+            }
+          ]
+        }
+      },
+      "transcript": {
+        "before": "# witness: do\n# description: Divinum Officium Latin Mass data, pinned revision\n# source: https://github.com/DivinumOfficium/divinum-officium\n# revision: 44667ff518b8ff1439780470828b39714f5306a2\n# fetched: 2026-08-31\n# path: pinned source key Sancti/10-28; resolved section [Allelúia] with declared inherited references\n# orthography: as the import wrote it; see the correction line\n# correction: 2026-10-07 this line formerly claimed the exact source spelling; in the witnesses of the same import that are now bound, the import had written j as i, cœl as cæl and Allelúja as Allelúia and changed accents, capitals and punctuation; this body has not been verified against the pinned source, and its raw binding is pending; the path line is the import's unverified claim, and the pinned file Sancti/10-28.txt has no section [Allelúia]\n# note: section labels, scripture references, speaker markers, and runtime control characters are edition framing and are not transcribed\nAllelúia, allelúia Nimis honoráti sunt amíci tui, Deus: nimis confortátus est principátus eórum. Allelúia.\n",
+        "after": "# witness: do\n# description: Divinum Officium Latin Mass data, pinned revision\n# source: https://github.com/DivinumOfficium/divinum-officium\n# revision: 44667ff518b8ff1439780470828b39714f5306a2\n# fetched: 2026-08-31\n# historical-path: pinned source key Sancti/10-28; resolved section [Allelúia] with declared inherited references\n# path: web/www/missa/Latin/Sancti/10-28.txt [Graduale] (line 28, chars 80:98); web/www/missa/Latin/Sancti/10-28.txt [Graduale] (lines 30-30)\n# raw-binding: do-proprium-sanctorum-simonis-et-iudae-apostolorum-alleluia\n# historical-orthography: as the import wrote it; see the correction line\n# orthography: literal pinned source spelling, accents, capitalization, and punctuation; only declared source framing is excluded\n# correction: 2026-10-07 this line formerly claimed the exact source spelling; in the witnesses of the same import that are now bound, the import had written j as i, cœl as cæl and Allelúja as Allelúia and changed accents, capitals and punctuation; this body has not been verified against the pinned source, and its raw binding is pending; the path line is the import's unverified claim, and the pinned file Sancti/10-28.txt has no section [Allelúia]\n# note: section labels, scripture references, speaker markers, and runtime control characters are edition framing and are not transcribed\n# verified: 2026-10-27 the exact declared component spans were checked in the retained pinned source. The dated correction above records historical uncertainty; this current consultation does not establish historical import generation or runtime selection.\nAllelúja, allelúja Nimis honoráti sunt amíci tui, Deus: nimis confortátus est principátus eórum. Allelúja.\n"
+      },
+      "word_count": 14,
+      "core_sha256": "92bfe6904d8aa81ea744cd1ea07063098107c494eaeb950cae16b557ca3abfdf",
+      "expected_source": {
+        "contract": "raw-reading-2",
+        "registry_version": 1,
+        "binding_id": "do-proprium-sanctorum-simonis-et-iudae-apostolorum-alleluia",
+        "transcription_sha256": "d851c58be65381796ee03a0ec8321ef69c5c9d984f6264d824fa6f90cf904fe1",
+        "binding": {
+          "contract": "raw-reading-2",
+          "witness": "witnesses/proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia/do.txt",
+          "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+          "evidence": [
+            {
+              "archive": "do-sancti-10-28",
+              "first": 28,
+              "last": 28,
+              "section": "Graduale",
+              "section_line": 25,
+              "fragment": {
+                "start": 80,
+                "end": 98,
+                "text": "Allelúja, allelúja",
+                "marker": "V",
+                "reason": "Retain only the Alleluia opening after the preceding Gradual verse on the same physical line; the earlier V. does not establish its performer."
+              }
+            },
+            {
+              "archive": "do-sancti-10-28",
+              "first": 30,
+              "last": 30,
+              "section": "Graduale",
+              "section_line": 25
+            }
+          ],
+          "references": [],
+          "reading": [
+            {
+              "archive": "do-sancti-10-28",
+              "first": 28,
+              "last": 28,
+              "fragment": {
+                "start": 80,
+                "end": 98
+              }
+            },
+            {
+              "archive": "do-sancti-10-28",
+              "first": 30,
+              "last": 30
+            }
+          ]
+        },
+        "archives": {
+          "do-sancti-10-28": {
+            "upstream": "web/www/missa/Latin/Sancti/10-28.txt",
+            "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+            "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/10-28.txt",
+            "sha256": "4c0fc52e5a7ab1ef3c5a438b39d81df0061a00eeb464ebfd9c5891195f4cac41"
+          }
+        },
+        "resolved_fragments": [
+          {
+            "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/10-28.txt",
+            "line": 28,
+            "start": 80,
+            "end": 98,
+            "raw": "Allelúja, allelúja",
+            "text": "Allelúja, allelúja",
+            "marker": "V",
+            "whole_line": false,
+            "marker_scope_verified": false
+          },
+          {
+            "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/10-28.txt",
+            "line": 30,
+            "start": 0,
+            "end": 87,
+            "raw": "Nimis honoráti sunt amíci tui, Deus: nimis confortátus est principátus eórum. Allelúja.",
+            "text": "Nimis honoráti sunt amíci tui, Deus: nimis confortátus est principátus eórum. Allelúja.",
+            "marker": null,
+            "whole_line": true,
+            "marker_scope_verified": true
+          }
+        ]
+      }
+    }
+  ]
+}

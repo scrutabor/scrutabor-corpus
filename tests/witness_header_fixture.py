@@ -62,11 +62,92 @@ def before_source_scope_header(relative, raw):
     return comparison
 
 
+EXALTATION = json.loads(
+    (Path(__file__).parent / "fixtures/exaltation-introit-source-scope.json").read_text()
+)
+
+
+def before_exaltation_header(relative, raw):
+    """Invert only this exact qualified header on an expected-side comparison copy."""
+    if relative != EXALTATION["relative"]:
+        return raw
+    rule = EXALTATION["header"]
+    assert hashlib.sha256(raw).hexdigest() == rule["after_sha256"], "Exaltation transcript"
+    addition = rule["added_line"].encode()
+    after = rule["after_line"].encode()
+    assert raw.count(addition) == raw.count(after) == 1, "Exaltation exact header"
+    comparison = raw.replace(after, rule["before_line"].encode(), 1).replace(addition, b"", 1)
+    assert hashlib.sha256(comparison).hexdigest() == rule["before_sha256"], (
+        "Exaltation predecessor transcript"
+    )
+    return comparison
+
+
+JOACHIM_SOURCE = json.loads((Path(__file__).parent / "fixtures/joachim-source.json").read_text())
+
+
+def before_joachim_registry(value):
+    """Remove only two complete literal-source additions from a comparison copy."""
+    result = deepcopy(value)
+    for field, identity, expected in (
+        ("archives", JOACHIM_SOURCE["archive_id"], JOACHIM_SOURCE["archive"]),
+        ("bindings", JOACHIM_SOURCE["binding_id"], JOACHIM_SOURCE["binding"]),
+    ):
+        assert result[field].get(identity) == expected, "exact Joachim registry addition"
+        del result[field][identity]
+    return result
+
+
+def before_joachim_records(value):
+    """Reverse three exact current records, not native input or unrelated metadata."""
+    result = deepcopy(value)
+    rows = {r["after"]["id"]: r for r in JOACHIM_SOURCE["records"].values()}
+
+    def visit(item):
+        if isinstance(item, list):
+            for child in item:
+                visit(child)
+        elif isinstance(item, dict):
+            if item.get("id") in rows:
+                row = rows[item["id"]]
+                before, after = deepcopy(row["before"]), deepcopy(row["after"])
+                if "review" in after and "review" not in item:
+                    del before["review"]
+                    del after["review"]
+                assert item == after, "exact Joachim source comparison inverse"
+                item.clear()
+                item.update(before)
+            for child in item.values():
+                visit(child)
+
+    visit(result)
+    return result
+
+
+def before_joachim_transcript(relative, raw):
+    """Check real current bytes, then apply only the exact documentary inverse."""
+    if relative != JOACHIM_SOURCE["witness"]:
+        return raw
+    rule = JOACHIM_SOURCE["transcript"]
+    assert hashlib.sha256(raw).hexdigest() == rule["after_sha256"], (
+        "complete current Joachim transcript"
+    )
+    for change in reversed(rule["changes"]):
+        after, before = change["after"].encode(), change["before"].encode()
+        assert raw.count(after) == 1, "single exact Joachim transcript replacement"
+        raw = raw.replace(after, before, 1)
+    assert hashlib.sha256(raw).hexdigest() == rule["before_sha256"], (
+        "complete predecessor Joachim transcript"
+    )
+    return raw
+
+
 def assert_transcript_content(root, relative):
     """Inspect real current bytes; no predecessor string is fabricated or installed."""
     assert relative in TRANSCRIPTS, "known transcript successor identity"
     row = TRANSCRIPTS[relative]
     raw = (root / relative).read_bytes()
+    raw = before_exaltation_header(relative, raw)
     raw = before_source_scope_header(relative, raw)
     assert hashlib.sha256(raw).hexdigest() == row["after_sha256"], (
         "current complete transcript digest"
@@ -93,7 +174,7 @@ def expected_header_lines(identity, historical):
 
 def before_privacy(value, diagnostic="exact transcript-header comparison inverse"):
     """Reverse exact known scalars on comparison copies ONLY, never native arguments."""
-    result = deepcopy(value)
+    result = before_joachim_records(value)
 
     def visit(item):
         if isinstance(item, list):
@@ -101,6 +182,13 @@ def before_privacy(value, diagnostic="exact transcript-header comparison inverse
                 visit(child)
         elif isinstance(item, dict):
             identifier = item.get("id")
+            if (
+                identifier == EXALTATION["witness"]["after"]["id"]
+                and "transcription_sha256" in item
+            ):
+                assert item == EXALTATION["witness"]["after"], "exact Exaltation comparison inverse"
+                item.clear()
+                item.update(deepcopy(EXALTATION["witness"]["before"]))
             if identifier in SOURCE_SCOPE["mr_records"] and "transcription_sha256" in item:
                 source = SOURCE_SCOPE["mr_records"][identifier]
                 assert item == source["after"], "exact source-scope comparison inverse"

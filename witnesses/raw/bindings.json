@@ -900,6 +900,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C9.txt",
       "sha256": "fb739e09f1cef9fd0f917db8875bfd3444e0c1d588c03e884081250e4d242516"
+    },
+    "do-horas-commune-c5": {
+      "upstream": "web/www/horas/Latin/Commune/C5.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C5.txt",
+      "sha256": "d2550ce56add61aec5d8e6477e0db20e8ee6d31b270654329103a4f2b3c1753e"
     }
   },
   "bindings": {
@@ -29550,6 +29556,117 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "contract": "raw-reading-10",
       "profile": "main-ordo-ordinarium-unde-et-memores"
+    },
+    "do-proprium-sancti-ioachim-confessoris-epistola": {
+      "witness": "witnesses/proprium.sancti-ioachim-confessoris-epistola/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-horas-commune-c5",
+          "first": 349,
+          "last": 349,
+          "section": "Lectio",
+          "section_line": 346
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "do-horas-commune-c5",
+          "first": 349,
+          "last": 349
+        }
+      ]
+    },
+    "do-proprium-sancti-thomae-apostoli-graduale": {
+      "contract": "raw-reading-2",
+      "witness": "witnesses/proprium.sancti-thomae-apostoli-graduale/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-sancti-12-21",
+          "first": 30,
+          "last": 30,
+          "section": "Graduale",
+          "section_line": 28
+        },
+        {
+          "archive": "do-sancti-12-21",
+          "first": 31,
+          "last": 31,
+          "section": "Graduale",
+          "section_line": 28,
+          "fragment": {
+            "start": 0,
+            "end": 52,
+            "text": "V. Dinumerábo eos, et super arénam multiplicabúntur.",
+            "marker": "V",
+            "reason": "Retain only the Gradual verse before the adjacent Alleluia opening on the same physical line."
+          }
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "do-sancti-12-21",
+          "first": 30,
+          "last": 30
+        },
+        {
+          "archive": "do-sancti-12-21",
+          "first": 31,
+          "last": 31,
+          "fragment": {
+            "start": 0,
+            "end": 52
+          }
+        }
+      ]
+    },
+    "do-proprium-sanctorum-simonis-et-iudae-apostolorum-alleluia": {
+      "contract": "raw-reading-2",
+      "witness": "witnesses/proprium.sanctorum-simonis-et-iudae-apostolorum-alleluia/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-sancti-10-28",
+          "first": 28,
+          "last": 28,
+          "section": "Graduale",
+          "section_line": 25,
+          "fragment": {
+            "start": 80,
+            "end": 98,
+            "text": "Allelúja, allelúja",
+            "marker": "V",
+            "reason": "Retain only the Alleluia opening after the preceding Gradual verse on the same physical line; the earlier V. does not establish its performer."
+          }
+        },
+        {
+          "archive": "do-sancti-10-28",
+          "first": 30,
+          "last": 30,
+          "section": "Graduale",
+          "section_line": 25
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "do-sancti-10-28",
+          "first": 28,
+          "last": 28,
+          "fragment": {
+            "start": 80,
+            "end": 98
+          }
+        },
+        {
+          "archive": "do-sancti-10-28",
+          "first": 30,
+          "last": 30
+        }
+      ]
     }
   }
 }

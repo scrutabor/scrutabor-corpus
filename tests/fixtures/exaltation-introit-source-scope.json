@@ -1,0 +1,798 @@
+{
+  "text": "proprium.exaltatio-sanctae-crucis-introitus",
+  "relative": "witnesses/proprium.exaltatio-sanctae-crucis-introitus/mr.txt",
+  "header": {
+    "before_sha256": "f55af759fef388f982983b4a62660a310a3bad09221f0e1e31f6b76d8bb00da3",
+    "after_sha256": "3384c9439e077e86588659389e68a5dc7671a614d4444f327a01ed70a8286535",
+    "before_line": "# orthography: exact printed accents, ligatures, capitalization, and punctuation\n",
+    "after_line": "# orthography: printed proper body with explicitly declared house-expanded formula; not a diplomatic full-page transcript\n",
+    "added_line": "# note: w039–w058 expand the Gloria Patri from the Ordo, printed p. 219, leaf n298, after the proper's abbreviated cue; the Ordo prints semper: where this house-expanded body uses a house comma after semper; w059–w082 repeat the antiphon under Rubricae generales 427, printed p. xxix, leaf n34, after the proper's reprise cue\n",
+    "body_sha256": "2658a59ebeb8518af50450e23dfec9fe3a1f373d528d41d28d13d0dc11ba3f3a"
+  },
+  "witness": {
+    "before": {
+      "id": "witness.proprium.exaltatio-sanctae-crucis-introitus.mr1962",
+      "text": "proprium.exaltatio-sanctae-crucis-introitus",
+      "use": "use.proprium.exaltatio-sanctae-crucis-introitus.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "f55af759fef388f982983b4a62660a310a3bad09221f0e1e31f6b76d8bb00da3",
+      "orthography_profile": "exact-page-image",
+      "independence_basis": "Direct transcription from the identified page image of the Benziger Brothers 1962 Editio iuxta typicam; OCR was used only to locate the page.",
+      "transcription": "mr",
+      "review": {
+        "status": "pending"
+      }
+    },
+    "after": {
+      "id": "witness.proprium.exaltatio-sanctae-crucis-introitus.mr1962",
+      "text": "proprium.exaltatio-sanctae-crucis-introitus",
+      "use": "use.proprium.exaltatio-sanctae-crucis-introitus.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "3384c9439e077e86588659389e68a5dc7671a614d4444f327a01ed70a8286535",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "The proper antiphon and psalm verse have been checked against the identified Benziger 1962 Editio iuxta typicam page images; the Gloria Patri and repeated antiphon are declared expansions of the printed cues, bounded by the separately identified Ordo and RG 427 uses. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
+      "transcription": "mr",
+      "review": {
+        "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.exaltatio-sanctae-crucis-introitus.expanded-doxology.mr1962",
+          "use.proprium.exaltatio-sanctae-crucis-introitus.introit-expansion.mr1962"
+        ],
+        "raw_binding": null
+      }
+    }
+  },
+  "primary_use": {
+    "before": {
+      "id": "use.proprium.exaltatio-sanctae-crucis-introitus.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.exaltatio-sanctae-crucis-introitus"
+      },
+      "locator": {
+        "printed": "pp. 668–669",
+        "scan": "leaves n749–n750 / PDF pp. 750–751",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n749/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-09-25",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "41c3a4ebc2282e7ed9b732a42c89d01c617edbf03f42a538d03a2098c88a4262",
+      "decision_reason": "Locator corrected against the page image: the text is printed on the leaves now cited, from its opening to its end."
+    },
+    "after": {
+      "id": "use.proprium.exaltatio-sanctae-crucis-introitus.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "proprium.exaltatio-sanctae-crucis-introitus"
+      },
+      "locator": {
+        "printed": "pp. 668–669",
+        "scan": "leaves n749–n750 / PDF pp. 750–751",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n749/mode/1up"
+      },
+      "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
+      "verified_on": "2026-09-25",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "41c3a4ebc2282e7ed9b732a42c89d01c617edbf03f42a538d03a2098c88a4262",
+      "decision_reason": "Locator corrected against the page image: the text is printed on the leaves now cited, from its opening to its end. Correction 2026-10-27: the proper passage prints the antiphon and psalm verse with abbreviated doxology and reprise cues, not the complete expanded 82-word transcript; the separately identified Ordo and RG 427 uses bound those expansions."
+    }
+  },
+  "added_uses": [
+    {
+      "id": "use.proprium.exaltatio-sanctae-crucis-introitus.expanded-doxology.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "proprium.exaltatio-sanctae-crucis-introitus",
+        "word": "w039"
+      },
+      "locator": {
+        "printed": "p. 219",
+        "scan": "leaf n298 / PDF p. 299",
+        "section": "Ordo Missae: Gloria Patri; selected words w039–w058",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
+      },
+      "claim": "The full Gloria Patri through Amen supplies words w039–w058 after the proper's abbreviated cue; the Ordo prints semper: where the house-expanded witness and selected text have the house comma.",
+      "verified_on": "2026-10-27",
+      "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55",
+      "decision": "RETAIN",
+      "decision_reason": "Current inspected page evidence bounds this declared expansion; existing witness and collation reviews remain pending."
+    },
+    {
+      "id": "use.proprium.exaltatio-sanctae-crucis-introitus.introit-expansion.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "word",
+        "text": "proprium.exaltatio-sanctae-crucis-introitus",
+        "word": "w059"
+      },
+      "locator": {
+        "printed": "p. xxix",
+        "scan": "leaf n34 / PDF p. 35",
+        "section": "Rubricae generales 427; selected words w059–w082",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+      },
+      "claim": "RG 427 prescribes the antiphon, psalm, Gloria Patri and repeated antiphon; it supports words w059–w082 as the full antiphon reprise after the proper's printed cue, not as a second full printing on the proper page.",
+      "verified_on": "2026-10-27",
+      "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786",
+      "decision": "RETAIN",
+      "decision_reason": "Current inspected page evidence bounds this declared expansion; existing witness and collation reviews remain pending."
+    }
+  ],
+  "collation": {
+    "id": "collation.proprium.exaltatio-sanctae-crucis-introitus.mr1962-do44667ff",
+    "text": "proprium.exaltatio-sanctae-crucis-introitus",
+    "recension": "The 1962 component in the approved Benziger printing, with declared shared expansions and house orthography",
+    "selected_text_sha256": "5e262224163af336d194389503fe0f92994e645523ccec608f490e3c3d119a2b",
+    "witnesses": [
+      "witness.proprium.exaltatio-sanctae-crucis-introitus.do44667ff",
+      "witness.proprium.exaltatio-sanctae-crucis-introitus.mr1962"
+    ],
+    "apparatus": {
+      "entries": 6,
+      "classes": [
+        "orthography",
+        "punctuation"
+      ]
+    },
+    "apparatus_sha256": "f38f68fff0bc1e9be5c98b33a87c30811a24cef16f653e4091f82da2bb57e20b",
+    "review": {
+      "status": "pending"
+    }
+  },
+  "apparatus": {
+    "text": "proprium.exaltatio-sanctae-crucis-introitus",
+    "note": "Adjudicated accidental and house-orthography variants. The witnesses agree on the substantive text.",
+    "summary": {
+      "entries": 6,
+      "classes": [
+        "orthography",
+        "punctuation"
+      ]
+    },
+    "adjudicated": [
+      {
+        "at": "w009",
+        "ours": "Iesu",
+        "witnesses": {
+          "do": "Jesu"
+        },
+        "class": "orthography",
+        "ruling": "The j-form against this edition's i-form, by the house rule in ORTHOGRAPHY.md. This edition prints i because the books it edits do: the approved 1962 Benziger printing sets Iesu, Ioánnem, iube and maiestátis throughout, and so does the Ordo Missae of Pallottinum, Poznań 1963, which is the book a Polish reader is most likely to hold. The mid-century hand missals print j; neither spelling is a different word, and the apparatus records theirs."
+      },
+      {
+        "at": "w015",
+        "ours": "vita,",
+        "witnesses": {
+          "do": "vita"
+        },
+        "class": "punctuation",
+        "ruling": "The approved Benziger printing's punctuation is retained. The difference marks phrasing and does not change the words."
+      },
+      {
+        "at": "w021",
+        "ours": "salváti,",
+        "witnesses": {
+          "do": "salváti"
+        },
+        "class": "punctuation",
+        "ruling": "The approved Benziger printing's punctuation is retained. The difference marks phrasing and does not change the words."
+      },
+      {
+        "at": "w067",
+        "ours": "Iesu",
+        "witnesses": {
+          "do": "Jesu"
+        },
+        "class": "orthography",
+        "ruling": "The j-form against this edition's i-form, by the house rule in ORTHOGRAPHY.md. This edition prints i because the books it edits do: the approved 1962 Benziger printing sets Iesu, Ioánnem, iube and maiestátis throughout, and so does the Ordo Missae of Pallottinum, Poznań 1963, which is the book a Polish reader is most likely to hold. The mid-century hand missals print j; neither spelling is a different word, and the apparatus records theirs."
+      },
+      {
+        "at": "w073",
+        "ours": "vita,",
+        "witnesses": {
+          "do": "vita"
+        },
+        "class": "punctuation",
+        "ruling": "The approved Benziger printing's punctuation is retained. The difference marks phrasing and does not change the words."
+      },
+      {
+        "at": "w079",
+        "ours": "salváti,",
+        "witnesses": {
+          "do": "salváti"
+        },
+        "class": "punctuation",
+        "ruling": "The approved Benziger printing's punctuation is retained. The difference marks phrasing and does not change the words."
+      }
+    ]
+  },
+  "core_sha256": "920ce1398fce33ee04f0e599c3f2dabc509cc89158a1ed8e35720ae0c643472c",
+  "expected_source_subject": {
+    "contract": "witness-review-2",
+    "witness": {
+      "id": "witness.proprium.exaltatio-sanctae-crucis-introitus.mr1962",
+      "text": "proprium.exaltatio-sanctae-crucis-introitus",
+      "use": "use.proprium.exaltatio-sanctae-crucis-introitus.mr1962",
+      "role": "controlling",
+      "coverage": {
+        "kind": "full"
+      },
+      "transcription_sha256": "3384c9439e077e86588659389e68a5dc7671a614d4444f327a01ed70a8286535",
+      "orthography_profile": "page-body-with-declared-house-expansion",
+      "independence_basis": "The proper antiphon and psalm verse have been checked against the identified Benziger 1962 Editio iuxta typicam page images; the Gloria Patri and repeated antiphon are declared expansions of the printed cues, bounded by the separately identified Ordo and RG 427 uses. This records current image conformity, not the original transcription workflow or a Vatican typical-edition impression.",
+      "transcription": "mr",
+      "source_dependencies": {
+        "uses": [
+          "use.proprium.exaltatio-sanctae-crucis-introitus.expanded-doxology.mr1962",
+          "use.proprium.exaltatio-sanctae-crucis-introitus.introit-expansion.mr1962"
+        ],
+        "raw_binding": null
+      }
+    },
+    "source_uses": {
+      "use.proprium.exaltatio-sanctae-crucis-introitus.mr1962": {
+        "use": {
+          "id": "use.proprium.exaltatio-sanctae-crucis-introitus.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "proprium.exaltatio-sanctae-crucis-introitus"
+          },
+          "locator": {
+            "printed": "pp. 668–669",
+            "scan": "leaves n749–n750 / PDF pp. 750–751",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n749/mode/1up"
+          },
+          "claim": "The cited proper passage prints this Introit’s antiphon and psalm verse, with abbreviated cues for the Gloria Patri and the repeated antiphon. The reader supplies the common doxology and the antiphon’s repetition in full. Those expansions are not printed in full at this locus.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN_WITH_CORRECTION",
+          "evidence_sha256": "41c3a4ebc2282e7ed9b732a42c89d01c617edbf03f42a538d03a2098c88a4262",
+          "decision_reason": "Locator corrected against the page image: the text is printed on the leaves now cited, from its opening to its end. Correction 2026-10-27: the proper passage prints the antiphon and psalm verse with abbreviated doxology and reprise cues, not the complete expanded 82-word transcript; the separately identified Ordo and RG 427 uses bound those expansions."
+        },
+        "edition": {
+          "id": "edition.missale-romanum.1962-typica",
+          "work": "work.missale-romanum",
+          "recension": "Roman Missal governed by the 1960 Code of Rubrics",
+          "title": "Missale Romanum ex decreto SS. Concilii Tridentini restitutum",
+          "edition_statement": "Editio iuxta typicam",
+          "place": "New York",
+          "publisher": "Benziger Brothers",
+          "year": "1962",
+          "publication_type": "missal",
+          "authority": "approved_ecclesiastical_edition",
+          "languages": [
+            "la"
+          ],
+          "rights": {
+            "status": "public-domain",
+            "basis": "Liturgical Latin of the 1962 typical edition."
+          }
+        },
+        "work": {
+          "id": "work.missale-romanum",
+          "title": "Missale Romanum ex decreto SS. Concilii Tridentini restitutum",
+          "responsible": "Ecclesia Catholica"
+        },
+        "digital_item": {
+          "id": "item.missale-romanum.1962-typica.ia",
+          "edition": "edition.missale-romanum.1962-typica",
+          "repository": "Internet Archive",
+          "kind": "scan",
+          "record_url": "https://archive.org/details/missale-romanum-1962",
+          "scan_url": "https://archive.org/download/missale-romanum-1962/Missale%20Romanum%201962.pdf",
+          "access": "open"
+        }
+      },
+      "use.proprium.exaltatio-sanctae-crucis-introitus.expanded-doxology.mr1962": {
+        "use": {
+          "id": "use.proprium.exaltatio-sanctae-crucis-introitus.expanded-doxology.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "word",
+            "text": "proprium.exaltatio-sanctae-crucis-introitus",
+            "word": "w039"
+          },
+          "locator": {
+            "printed": "p. 219",
+            "scan": "leaf n298 / PDF p. 299",
+            "section": "Ordo Missae: Gloria Patri; selected words w039–w058",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
+          },
+          "claim": "The full Gloria Patri through Amen supplies words w039–w058 after the proper's abbreviated cue; the Ordo prints semper: where the house-expanded witness and selected text have the house comma.",
+          "verified_on": "2026-10-27",
+          "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55",
+          "decision": "RETAIN",
+          "decision_reason": "Current inspected page evidence bounds this declared expansion; existing witness and collation reviews remain pending."
+        },
+        "edition": {
+          "id": "edition.missale-romanum.1962-typica",
+          "work": "work.missale-romanum",
+          "recension": "Roman Missal governed by the 1960 Code of Rubrics",
+          "title": "Missale Romanum ex decreto SS. Concilii Tridentini restitutum",
+          "edition_statement": "Editio iuxta typicam",
+          "place": "New York",
+          "publisher": "Benziger Brothers",
+          "year": "1962",
+          "publication_type": "missal",
+          "authority": "approved_ecclesiastical_edition",
+          "languages": [
+            "la"
+          ],
+          "rights": {
+            "status": "public-domain",
+            "basis": "Liturgical Latin of the 1962 typical edition."
+          }
+        },
+        "work": {
+          "id": "work.missale-romanum",
+          "title": "Missale Romanum ex decreto SS. Concilii Tridentini restitutum",
+          "responsible": "Ecclesia Catholica"
+        },
+        "digital_item": {
+          "id": "item.missale-romanum.1962-typica.ia",
+          "edition": "edition.missale-romanum.1962-typica",
+          "repository": "Internet Archive",
+          "kind": "scan",
+          "record_url": "https://archive.org/details/missale-romanum-1962",
+          "scan_url": "https://archive.org/download/missale-romanum-1962/Missale%20Romanum%201962.pdf",
+          "access": "open"
+        }
+      },
+      "use.proprium.exaltatio-sanctae-crucis-introitus.introit-expansion.mr1962": {
+        "use": {
+          "id": "use.proprium.exaltatio-sanctae-crucis-introitus.introit-expansion.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "rubric_control",
+          "address": {
+            "kind": "word",
+            "text": "proprium.exaltatio-sanctae-crucis-introitus",
+            "word": "w059"
+          },
+          "locator": {
+            "printed": "p. xxix",
+            "scan": "leaf n34 / PDF p. 35",
+            "section": "Rubricae generales 427; selected words w059–w082",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n34/mode/1up"
+          },
+          "claim": "RG 427 prescribes the antiphon, psalm, Gloria Patri and repeated antiphon; it supports words w059–w082 as the full antiphon reprise after the proper's printed cue, not as a second full printing on the proper page.",
+          "verified_on": "2026-10-27",
+          "evidence_sha256": "7f1d0a363ab6d032183595433acb393de3e473dc34e95135467e0c7c1d5c9786",
+          "decision": "RETAIN",
+          "decision_reason": "Current inspected page evidence bounds this declared expansion; existing witness and collation reviews remain pending."
+        },
+        "edition": {
+          "id": "edition.missale-romanum.1962-typica",
+          "work": "work.missale-romanum",
+          "recension": "Roman Missal governed by the 1960 Code of Rubrics",
+          "title": "Missale Romanum ex decreto SS. Concilii Tridentini restitutum",
+          "edition_statement": "Editio iuxta typicam",
+          "place": "New York",
+          "publisher": "Benziger Brothers",
+          "year": "1962",
+          "publication_type": "missal",
+          "authority": "approved_ecclesiastical_edition",
+          "languages": [
+            "la"
+          ],
+          "rights": {
+            "status": "public-domain",
+            "basis": "Liturgical Latin of the 1962 typical edition."
+          }
+        },
+        "work": {
+          "id": "work.missale-romanum",
+          "title": "Missale Romanum ex decreto SS. Concilii Tridentini restitutum",
+          "responsible": "Ecclesia Catholica"
+        },
+        "digital_item": {
+          "id": "item.missale-romanum.1962-typica.ia",
+          "edition": "edition.missale-romanum.1962-typica",
+          "repository": "Internet Archive",
+          "kind": "scan",
+          "record_url": "https://archive.org/details/missale-romanum-1962",
+          "scan_url": "https://archive.org/download/missale-romanum-1962/Missale%20Romanum%201962.pdf",
+          "access": "open"
+        }
+      }
+    },
+    "selected_text": {
+      "id": "proprium.exaltatio-sanctae-crucis-introitus",
+      "segments": [
+        {
+          "id": "s01",
+          "type": "verse",
+          "speaker": "sacerdos",
+          "voice": "clara",
+          "delivery": {
+            "cantu": {
+              "speaker": "schola",
+              "voice": "cantus"
+            }
+          },
+          "words": [
+            {
+              "id": "w001",
+              "form": "Nos"
+            },
+            {
+              "id": "w002",
+              "form": "autem"
+            },
+            {
+              "id": "w003",
+              "form": "gloriári"
+            },
+            {
+              "id": "w004",
+              "form": "opórtet"
+            },
+            {
+              "id": "w005",
+              "form": "in"
+            },
+            {
+              "id": "w006",
+              "form": "Cruce"
+            },
+            {
+              "id": "w007",
+              "form": "Dómini"
+            },
+            {
+              "id": "w008",
+              "form": "nostri"
+            },
+            {
+              "id": "w009",
+              "form": "Iesu"
+            },
+            {
+              "id": "w010",
+              "form": "Christi",
+              "post": ":"
+            },
+            {
+              "id": "w011",
+              "form": "in"
+            },
+            {
+              "id": "w012",
+              "form": "quo"
+            },
+            {
+              "id": "w013",
+              "form": "est"
+            },
+            {
+              "id": "w014",
+              "form": "salus",
+              "post": ","
+            },
+            {
+              "id": "w015",
+              "form": "vita",
+              "post": ","
+            },
+            {
+              "id": "w016",
+              "form": "et"
+            },
+            {
+              "id": "w017",
+              "form": "resurréctio"
+            },
+            {
+              "id": "w018",
+              "form": "nostra",
+              "post": ":"
+            },
+            {
+              "id": "w019",
+              "form": "per"
+            },
+            {
+              "id": "w020",
+              "form": "quem"
+            },
+            {
+              "id": "w021",
+              "form": "salváti",
+              "post": ","
+            },
+            {
+              "id": "w022",
+              "form": "et"
+            },
+            {
+              "id": "w023",
+              "form": "liberáti"
+            },
+            {
+              "id": "w024",
+              "form": "sumus",
+              "post": "."
+            },
+            {
+              "id": "w025",
+              "form": "Deus"
+            },
+            {
+              "id": "w026",
+              "form": "misereátur"
+            },
+            {
+              "id": "w027",
+              "form": "nostri",
+              "post": ","
+            },
+            {
+              "id": "w028",
+              "form": "et"
+            },
+            {
+              "id": "w029",
+              "form": "benedícat"
+            },
+            {
+              "id": "w030",
+              "form": "nobis",
+              "post": ":"
+            },
+            {
+              "id": "w031",
+              "form": "illúminet"
+            },
+            {
+              "id": "w032",
+              "form": "vultum"
+            },
+            {
+              "id": "w033",
+              "form": "suum"
+            },
+            {
+              "id": "w034",
+              "form": "super"
+            },
+            {
+              "id": "w035",
+              "form": "nos",
+              "post": ","
+            },
+            {
+              "id": "w036",
+              "form": "et"
+            },
+            {
+              "id": "w037",
+              "form": "misereátur"
+            },
+            {
+              "id": "w038",
+              "form": "nostri",
+              "post": "."
+            },
+            {
+              "id": "w039",
+              "form": "Glória"
+            },
+            {
+              "id": "w040",
+              "form": "Patri",
+              "post": ","
+            },
+            {
+              "id": "w041",
+              "form": "et"
+            },
+            {
+              "id": "w042",
+              "form": "Fílio",
+              "post": ","
+            },
+            {
+              "id": "w043",
+              "form": "et"
+            },
+            {
+              "id": "w044",
+              "form": "Spirítui"
+            },
+            {
+              "id": "w045",
+              "form": "Sancto",
+              "post": "."
+            },
+            {
+              "id": "w046",
+              "form": "Sicut"
+            },
+            {
+              "id": "w047",
+              "form": "erat"
+            },
+            {
+              "id": "w048",
+              "form": "in"
+            },
+            {
+              "id": "w049",
+              "form": "princípio",
+              "post": ","
+            },
+            {
+              "id": "w050",
+              "form": "et"
+            },
+            {
+              "id": "w051",
+              "form": "nunc",
+              "post": ","
+            },
+            {
+              "id": "w052",
+              "form": "et"
+            },
+            {
+              "id": "w053",
+              "form": "semper",
+              "post": ","
+            },
+            {
+              "id": "w054",
+              "form": "et"
+            },
+            {
+              "id": "w055",
+              "form": "in"
+            },
+            {
+              "id": "w056",
+              "form": "sǽcula"
+            },
+            {
+              "id": "w057",
+              "form": "sæculórum",
+              "post": "."
+            },
+            {
+              "id": "w058",
+              "form": "Amen",
+              "post": "."
+            },
+            {
+              "id": "w059",
+              "form": "Nos"
+            },
+            {
+              "id": "w060",
+              "form": "autem"
+            },
+            {
+              "id": "w061",
+              "form": "gloriári"
+            },
+            {
+              "id": "w062",
+              "form": "opórtet"
+            },
+            {
+              "id": "w063",
+              "form": "in"
+            },
+            {
+              "id": "w064",
+              "form": "Cruce"
+            },
+            {
+              "id": "w065",
+              "form": "Dómini"
+            },
+            {
+              "id": "w066",
+              "form": "nostri"
+            },
+            {
+              "id": "w067",
+              "form": "Iesu"
+            },
+            {
+              "id": "w068",
+              "form": "Christi",
+              "post": ":"
+            },
+            {
+              "id": "w069",
+              "form": "in"
+            },
+            {
+              "id": "w070",
+              "form": "quo"
+            },
+            {
+              "id": "w071",
+              "form": "est"
+            },
+            {
+              "id": "w072",
+              "form": "salus",
+              "post": ","
+            },
+            {
+              "id": "w073",
+              "form": "vita",
+              "post": ","
+            },
+            {
+              "id": "w074",
+              "form": "et"
+            },
+            {
+              "id": "w075",
+              "form": "resurréctio"
+            },
+            {
+              "id": "w076",
+              "form": "nostra",
+              "post": ":"
+            },
+            {
+              "id": "w077",
+              "form": "per"
+            },
+            {
+              "id": "w078",
+              "form": "quem"
+            },
+            {
+              "id": "w079",
+              "form": "salváti",
+              "post": ","
+            },
+            {
+              "id": "w080",
+              "form": "et"
+            },
+            {
+              "id": "w081",
+              "form": "liberáti"
+            },
+            {
+              "id": "w082",
+              "form": "sumus",
+              "post": "."
+            }
+          ]
+        }
+      ]
+    },
+    "raw_resolution": null
+  },
+  "before_graph_sha256": "c70f488a0dfd77c9c46347c5d30ef40285081778e74c24303f0dac64ffc479f1",
+  "privacy_fixture_sha256": "62e3885cc2a724656b84d7a1e30b06aafa6956a146a4cf284581959e8cad7e3e"
+}

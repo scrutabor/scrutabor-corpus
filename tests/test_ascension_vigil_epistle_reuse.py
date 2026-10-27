@@ -117,7 +117,13 @@ def test_current_lesson_relations_and_exact94_cards_per_language():
         assert set(layer["words"]) == set(words(core))
         assert interlinear.check(doc, loaded[lang]) == []
         realized = [a for a in layer["segments"]["s01"]["alignments"] if "gloss" in a]
-        assert len(realized) == (2 if lang == "pl" else 11)
+        assert len(realized) == (3 if lang == "pl" else 12)
+        assert group(layer, 4, 5) == {
+            "words": ["w004", "w005"],
+            "anchor": "w004",
+            "gloss": "została dana" if lang == "pl" else "has been given",
+        }
+        assert all("gloss" not in layer["words"][w] for w in ("w004", "w005"))
         assert max(len(a["words"]) for a in realized) <= (3 if lang == "pl" else 4)
         assert core["localization"]["notes"] == ["w019", "w088"]
         assert all(layer["words"][w].get("note") for w in core["localization"]["notes"])
@@ -193,6 +199,31 @@ def test_legitimate_zero_is_preserved_and_undeclared_omission_rejects(lang, word
     core, layers = actual()
     layer = layers[lang]
     alignments = layer["segments"]["s01"]["alignments"]
+    if (lang, word, reason) == ("en", "w005", "inflection"):
+        assert group(layer, 4, 5) == {
+            "words": ["w004", "w005"],
+            "anchor": "w004",
+            "gloss": "has been given",
+        }
+        assert all("gloss" not in layer["words"][w] for w in ("w004", "w005"))
+        assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
+        broken = copy.deepcopy(layer)
+        saved = copy.deepcopy(broken)
+        try:
+            broken["segments"]["s01"]["alignments"] = [
+                a for a in alignments if a["words"] != ["w004", "w005"]
+            ]
+            assert broken != saved
+            assert any(
+                "expected exactly one direct gloss or alignment" in error
+                for error in interlinear.check(expand_core(core), enrich_layer(core, broken))
+            )
+        finally:
+            broken.clear()
+            broken.update(saved)
+            assert broken == layer
+            assert interlinear.check(expand_core(core), enrich_layer(core, broken)) == []
+        return
     assert {"words": [word], "reason": reason} in alignments
     assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
     broken = copy.deepcopy(layer)

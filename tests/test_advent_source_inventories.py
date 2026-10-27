@@ -7,6 +7,8 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from chant_fragment_fixture import before_chant_registry
+from witness_header_fixture import before_joachim_registry
 
 from build_reader.bibliography import public_text_evidence
 from build_reader.bibliography_bindings import (
@@ -466,7 +468,7 @@ def test_preexisting_raw_registry_objects_are_unchanged():
 
     def check():
         assert registry["bindings"].get(identity) == expected
-        historical = deepcopy(registry)
+        historical = before_chant_registry(before_joachim_registry(registry))
         del historical["bindings"][identity]
         for field, rows in c9.items():
             for key, value in rows.items():

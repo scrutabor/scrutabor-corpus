@@ -8,6 +8,8 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from chant_fragment_fixture import before_chant_graph, before_chant_registry
+from witness_header_fixture import EXALTATION, before_joachim_records, before_joachim_registry
 
 from build_reader import bibliography
 from build_reader.bibliography import public_text_evidence
@@ -65,8 +67,29 @@ def assert_registered_payload(root, graph, row):
     return actual, subject
 
 
+def before_exaltation_comparison(graph):
+    """Invert four guarded source records only on a historical comparison copy."""
+    result = deepcopy(graph)
+    for expected in EXALTATION["added_uses"]:
+        matches = [row for row in result["uses"] if row["id"] == expected["id"]]
+        assert matches == [expected], "exact Exaltation comparison source record"
+        result["uses"].remove(matches[0])
+    for field, rule in (
+        ("uses", EXALTATION["primary_use"]),
+        ("witnesses", EXALTATION["witness"]),
+    ):
+        matches = [row for row in result[field] if row["id"] == rule["after"]["id"]]
+        assert matches == [rule["after"]], "exact Exaltation comparison source record"
+        matches[0].clear()
+        matches[0].update(deepcopy(rule["before"]))
+    return result
+
+
 def before_registrations(graph, registry):
-    historical_graph, historical_raw = deepcopy(graph), deepcopy(registry)
+    historical_graph = before_exaltation_comparison(
+        before_chant_graph(before_joachim_records(graph))
+    )
+    historical_raw = before_chant_registry(before_joachim_registry(registry))
     for collection in ("uses", "witnesses"):
         for expected in EXPECTED["graph_additions"][collection]:
             actual = record(historical_graph, collection, expected["id"])
@@ -358,3 +381,51 @@ def test_real_lavabo_literal_composite_rejects_altered_body_and_recovers(tmp_pat
             match="transcription differs from its exact closed Ordo reading",
         ):
             raw_binding.resolve_binding(path, state["root"])
+
+
+@pytest.mark.parametrize("part", ("doxology", "reprise", "primary", "witness"))
+@pytest.mark.parametrize("fault", ("missing", "wrong", "extra", "duplicate"))
+def test_exaltation_comparison_rejects_exact_record_damage_and_same_graph_recovers(
+    graph, part, fault
+):
+    registry = json.loads((ROOT / REGISTRY).read_bytes())
+    saved, saved_registry = deepcopy(graph), deepcopy(registry)
+    before_registrations(graph, registry)
+    doc = json.loads(
+        (ROOT / ("texts/" + EXALTATION["text"].replace(".", "/", 1) + ".json")).read_bytes()
+    )
+    current_witness = record(graph, "witnesses", EXALTATION["witness"]["after"]["id"])
+    subject = witness_subject(ROOT, current_witness, graph, doc)
+    assert subject == EXALTATION["expected_source_subject"]
+    fields = {
+        "doxology": ("uses", EXALTATION["added_uses"][0]),
+        "reprise": ("uses", EXALTATION["added_uses"][1]),
+        "primary": ("uses", EXALTATION["primary_use"]["after"]),
+        "witness": ("witnesses", EXALTATION["witness"]["after"]),
+    }
+    field, expected = fields[part]
+    current = record(graph, field, expected["id"])
+    try:
+        if fault == "missing":
+            graph[field].remove(current)
+        elif fault == "wrong":
+            if field == "witnesses":
+                current["transcription_sha256"] = "0" * 64
+            else:
+                current["claim"] += " Changed."
+        elif fault == "extra":
+            current["unexpected"] = True
+        else:
+            graph[field].append(deepcopy(current))
+        assert graph != saved
+        with pytest.raises(
+            AssertionError, match=r"^exact Exaltation comparison source record(?:\n|$)"
+        ):
+            before_registrations(graph, registry)
+    finally:
+        graph.clear()
+        graph.update(saved)
+        assert graph == saved and registry == saved_registry
+        before_registrations(graph, registry)
+        current_witness = record(graph, "witnesses", EXALTATION["witness"]["after"]["id"])
+        assert witness_subject(ROOT, current_witness, graph, doc) == subject
