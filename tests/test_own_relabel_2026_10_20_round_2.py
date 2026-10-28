@@ -24,6 +24,14 @@ from marian_chant_fixture import expected_marian_row
 from pentecost_successor_fixture import expected_pentecost_row
 from post_ascension_fixture import expected_row_successor
 from provenance_successor_fixture import FIXTURE as SUCCESSOR
+from rosary_communion_fixture import (
+    TEXT as ROSARY_TEXT,
+)
+from rosary_communion_fixture import (
+    healthy_rosary,
+    predecessor_rosary_wording,
+    reviewed_rosary,
+)
 from test_pentecost_vigil_successors import expected_communion_row
 
 from build_reader import store
@@ -199,6 +207,12 @@ def assert_label(site, row):
 
 
 def assert_wording_unchanged(site, row, target):
+    if site == f"{ROSARY_TEXT}.s01.en":
+        current_core = store.core(ROOT, ROSARY_TEXT)
+        current_layer = store.raw_layer(ROOT, "en", ROSARY_TEXT)
+        healthy_rosary(current_core, current_layer)
+        reviewed_rosary(current_core, current_layer)
+        row, target = predecessor_rosary_wording(row, target)
     expected = LABELS[site]["target_sha256"]
     if site in EXACT_WORDING_TARGETS:
         before, expected = EXACT_WORDING_TARGETS[site]

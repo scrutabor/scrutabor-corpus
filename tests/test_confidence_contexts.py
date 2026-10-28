@@ -290,8 +290,8 @@ CASES = [
         "sg",
         3,
         (12, 14),
-        "pokłada ufność w niej",
-        "trusts in her",
+        "Pokłada ufność w niej",
+        "Trusts in her",
     ),
     (
         "sancti-ioannis-apostoli-et-evangelistae-secreta",

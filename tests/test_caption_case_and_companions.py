@@ -21,6 +21,8 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from anne_epistle_fixture import opening_case
+from rosary_communion_fixture import rosary_opening_case
 
 from build_reader.layers import enrich_layer, expand_core
 from checks import interlinear, language_packs
@@ -672,7 +674,9 @@ assert len(ADVENT_CAPTIONS) == 40
 # Exact contextual first-opening decisions and retained Canon continuations.
 FIRST_OPENING_CAPTIONS = tuple(
     (language, text, segment, tuple(words), anchor, gloss, tuple(forms), tuple(wrong))
-    for language, text, segment, words, anchor, gloss, forms, wrong in _CASE_ROWS["first_openings"]
+    for language, text, segment, words, anchor, gloss, forms, wrong in map(
+        rosary_opening_case, _CASE_ROWS["first_openings"]
+    )
 )
 assert len(FIRST_OPENING_CAPTIONS) == 289
 del _CASE_ROWS
@@ -870,12 +874,13 @@ def test_advent_contextual_case_rejects_mutation_and_restores(row):
 )
 def test_first_opening_caption_rejects_predecessor_and_restores(row):
     core, layer = load(row[1]), load(row[1], row[0])
-    saved = deepcopy(layer)
-    pin = row[:7]
-    assert caption_diagnostics(pin, core, layer) == []
     assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
     assert language_packs.check_core(core) == []
     assert language_packs.check_layer(core, layer, path_of(row[1], row[0])) == []
+    row = opening_case(row, core, layer)
+    saved = deepcopy(layer)
+    pin = row[:7]
+    assert caption_diagnostics(pin, core, layer) == []
     for wrong in row[7]:
         assert wrong != row[5]
         try:
@@ -936,3 +941,40 @@ def test_doxology_caption_boundary_rejects_wrong_initial_and_recovers(row):
             assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
             assert language_packs.check_core(core) == []
             assert language_packs.check_layer(core, layer, path_of(row[1], row[0])) == []
+
+
+@pytest.mark.parametrize("language", ["pl", "en"])
+def test_anne_and_rosary_opening_comparisons_reject_current_fault_and_recover(language):
+    subjects = (
+        P + "sanctae-annae-matris-beatae-mariae-virginis-epistola",
+        P + "beatae-mariae-virginis-a-rosario-communio",
+    )
+    for text in subjects:
+        core, layer = load(text), load(text, language)
+        (original,) = [r for r in FIRST_OPENING_CAPTIONS if (r[0], r[1]) == (language, text)]
+        assert language_packs.check_core(core) == []
+        assert language_packs.check_layer(core, layer, path_of(text, language)) == []
+        assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
+        row = opening_case(original, core, layer)
+        assert caption_diagnostics(row[:7], core, layer) == []
+        saved_core, saved_layer = deepcopy(core), deepcopy(layer)
+        try:
+            set_caption(row[2], row[3], "control")(core, layer)
+            assert core == saved_core and layer != saved_layer
+            assert language_packs.check_layer(core, layer, path_of(text, language)) == []
+            assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
+            assert caption_diagnostics(row[:7], core, layer) == [
+                f"caption:{language}:{text}:{'+'.join(row[3])}: 'control'"
+            ]
+            with pytest.raises(AssertionError, match=r"^composition opening caption(?:\n|$)"):
+                assert caption_diagnostics(row[:7], core, layer) == [], (
+                    "composition opening caption"
+                )
+        finally:
+            layer.clear()
+            layer.update(saved_layer)
+        assert core == saved_core and layer == saved_layer
+        assert language_packs.check_layer(core, layer, path_of(text, language)) == []
+        assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
+        assert opening_case(original, core, layer) == row
+        assert caption_diagnostics(row[:7], core, layer) == []

@@ -8,6 +8,7 @@ from dataclasses import asdict
 from pathlib import Path
 
 import pytest
+from documentary_successor_fixture import before_additional_records, before_additional_registry
 from lateran_epistle_source_fixture import before_lateran_graph, before_lateran_registry
 from marian_gospel_fixture import predecessor_core
 from rosary_gospel_source_fixture import (
@@ -239,9 +240,14 @@ def test_global_complete_comparison_inverses_keep_original_baselines():
     graph = json.loads((ROOT / "bibliography/graph.json").read_bytes())
     registry = json.loads((ROOT / REGISTRY).read_bytes())
     saved = deepcopy((graph, registry))
-    assert digest(before_rosary_graph(before_lateran_graph(graph))) == DATA["prior_graph_sha256"]
     assert (
-        digest(before_rosary_registry(before_lateran_registry(registry)))
+        digest(before_rosary_graph(before_lateran_graph(before_additional_records(graph))))
+        == DATA["prior_graph_sha256"]
+    )
+    assert (
+        digest(
+            before_rosary_registry(before_lateran_registry(before_additional_registry(registry)))
+        )
         == DATA["prior_registry_sha256"]
     )
     assert (graph, registry) == saved

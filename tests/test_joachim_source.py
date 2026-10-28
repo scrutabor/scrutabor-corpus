@@ -10,6 +10,7 @@ from pathlib import Path
 import pytest
 import witness_header_fixture as headers
 from chant_fragment_fixture import before_chant_graph, before_chant_registry
+from documentary_successor_fixture import before_language_successors
 from lateran_epistle_source_fixture import before_lateran_graph, before_lateran_registry
 from rosary_gospel_source_fixture import before_rosary_graph, before_rosary_registry
 from test_main_ordo_registrations import before_exaltation_comparison
@@ -24,8 +25,14 @@ from build_reader.bibliography_bindings import (
 from build_reader.layers import expand_core
 from checks.apparatus import capital_accent_positions
 from checks.collate import collate
-from checks.raw_binding import BindingError as RawBindingError
-from checks.raw_binding import RawBindingSnapshot, load_registry, resolve_binding
+from checks.raw_binding import (
+    BindingError as RawBindingError,
+)
+from checks.raw_binding import (
+    RawBindingSnapshot,
+    load_registry,
+    resolve_binding,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 F = json.loads((ROOT / "tests/fixtures/joachim-source.json").read_text())
@@ -758,10 +765,14 @@ def predecessor_target_input(relative, value):
     """Exact expected-side target inverse, never a native input or hash substitute."""
     rule = F["target_input_successors"][relative]
     assert F["unchanged"][relative] == rule["before_raw_sha256"]
-    comparison = deepcopy(value)
+    comparison = (
+        before_language_successors(relative, value)
+        if relative in CURRENT_LEDGER_PREDECESSORS
+        else deepcopy(value)
+    )
     if relative in CURRENT_LEDGER_PREDECESSORS:
         current = CURRENT_LEDGER_PREDECESSORS[relative]
-        assert digest(value) == current["after_value_sha256"], "exact Joachim target successor"
+        assert digest(comparison) == current["after_value_sha256"], "exact Joachim target successor"
         for change in current["rows"]:
             indices = [
                 i

@@ -6,7 +6,9 @@ import re
 from copy import deepcopy
 from pathlib import Path
 
+from anne_documentary_fixture import before_anne_records, before_anne_registry
 from lateran_epistle_source_fixture import before_lateran_records
+from michael_gospel_source_fixture import before_michael_records, before_michael_registry
 from rosary_gospel_source_fixture import before_rosary_records
 
 DATA = json.loads((Path(__file__).parent / "fixtures/witness-header-successors.json").read_text())
@@ -91,7 +93,7 @@ JOACHIM_SOURCE = json.loads((Path(__file__).parent / "fixtures/joachim-source.js
 
 def before_joachim_registry(value):
     """Remove only two complete literal-source additions from a comparison copy."""
-    result = deepcopy(value)
+    result = before_michael_registry(before_anne_registry(value))
     for field, identity, expected in (
         ("archives", JOACHIM_SOURCE["archive_id"], JOACHIM_SOURCE["archive"]),
         ("bindings", JOACHIM_SOURCE["binding_id"], JOACHIM_SOURCE["binding"]),
@@ -103,7 +105,7 @@ def before_joachim_registry(value):
 
 def before_joachim_records(value):
     """Reverse three exact current records, not native input or unrelated metadata."""
-    result = deepcopy(value)
+    result = before_michael_records(before_anne_records(value))
     rows = {r["after"]["id"]: r for r in JOACHIM_SOURCE["records"].values()}
 
     def visit(item):

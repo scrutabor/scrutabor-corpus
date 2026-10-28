@@ -34,6 +34,8 @@ from gospel_delivery_fixture import (
     without_sung_delivery,
 )
 from iste_gender_fixture import before_iste_gender, current_iste_source_hash
+from michael_gospel_fixture import predecessor_core, predecessor_row
+from michael_gospel_source_fixture import before_michael_records
 from rosary_gospel_source_fixture import before_rosary_records
 from witness_header_fixture import before_privacy
 
@@ -568,7 +570,9 @@ def test_the_overlay_binds_exactly_the_delivery_additions(text_id):
     doc = text(text_id)
     change = DATA["source"][text_id]
     assert list(change) == verse_ids(text_id)
-    comparison = before_iste_gender(doc)
+    assert delivery.check_doc(doc) == ([], len(verse_ids(text_id)))
+    assert participation.check_doc(doc) == ([], 0)
+    comparison = before_iste_gender(predecessor_core(doc))
     historical = without_gospel_delivery(comparison)
     assert historical["segments"] == [
         {key: value for key, value in s.items() if key != "delivery"}
@@ -603,13 +607,19 @@ def test_every_gospel_ledger_row_advances_only_its_source_hash(language):
     rows = [row for row in ledger if row["text"] in DATA["source"]]
     assert len(rows) == 140
     for row in rows:
-        change = DATA["source"][row["text"]][row["segment"]]
-        previous = {**row, "source_sha256": change["before"]}
         snapshot = deepcopy(row)
-        assert current_gospel_expected_row(previous) == row
-        assert current_sung_expected_row(previous) == row
+        observed = text(row["text"])
+        assert delivery.check_doc(observed) == ([], len(verse_ids(row["text"])))
+        assert row["source_sha256"] == canonical_hash(
+            source_payload(segment(observed, row["segment"]))
+        )
+        comparison = predecessor_row(row)
+        change = DATA["source"][row["text"]][row["segment"]]
+        previous = {**comparison, "source_sha256": change["before"]}
+        assert current_gospel_expected_row(previous) == comparison
+        assert current_sung_expected_row(previous) == comparison
         assert row == snapshot
-        assert row["source_sha256"] == current_iste_source_hash(
+        assert comparison["source_sha256"] == current_iste_source_hash(
             row["text"], row["segment"], change["after"]
         )
     other = next(row for row in ledger if row["text"] not in DATA["source"])
@@ -624,13 +634,13 @@ def graph_records(graph: dict[str, Any], text_id: str) -> dict[str, list[dict[st
 
 
 def without_apparatus_hash(row: dict[str, Any]) -> dict[str, Any]:
-    return {
-        key: value for key, value in before_rosary_records(row).items() if key != "apparatus_sha256"
-    }
+    comparison = before_michael_records(before_rosary_records(row))
+    return {key: value for key, value in comparison.items() if key != "apparatus_sha256"}
 
 
 def test_the_graph_overlay_is_exactly_the_stored_selected_text_digests():
     graph = json.loads((CORPUS / "bibliography" / "graph.json").read_text(encoding="utf-8"))
+    assert bindings.validate_bindings(CORPUS, graph) == []
     collations = [row for row in graph["collations"] if row["text"] in DATA["source"]]
     assert len(collations) == 98
     assert sorted(row["id"] for row in collations) == sorted(DATA["collation_records"])

@@ -9,6 +9,7 @@ from dataclasses import asdict
 from pathlib import Path
 
 import pytest
+from documentary_successor_fixture import before_additional_records, before_additional_registry
 from lateran_epistle_source_fixture import (
     DATA as F,
 )
@@ -26,8 +27,14 @@ from build_reader.bibliography_bindings import BindingError, validate_bindings, 
 from build_reader.layers import expand_core
 from checks import attribute
 from checks.collate import collate
-from checks.raw_binding import BindingError as RawBindingError
-from checks.raw_binding import RawBindingSnapshot, load_registry, resolve_binding
+from checks.raw_binding import (
+    BindingError as RawBindingError,
+)
+from checks.raw_binding import (
+    RawBindingSnapshot,
+    load_registry,
+    resolve_binding,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = "witnesses/raw/bindings.json"
@@ -352,7 +359,7 @@ def test_each_actual_variant_is_required_and_same_apparatus_recovers(source, wor
 def test_complete_current_graph_inverse_rejects_unlisted_fields_and_recovers(collection):
     current = json.loads((ROOT / GRAPH).read_bytes())
     saved = deepcopy(current)
-    before = before_lateran_graph(before_rosary_graph(current))
+    before = before_lateran_graph(before_rosary_graph(before_additional_records(current)))
     assert canonical_hash(before) == F["before_graph_canonical_sha256"]
     row = record(current, collection, F["records"][collection]["after"]["id"])
     original = deepcopy(row)
@@ -360,11 +367,15 @@ def test_complete_current_graph_inverse_rejects_unlisted_fields_and_recovers(col
         row["unexpected"] = True
         assert row != original
         with pytest.raises(AssertionError, match="exact Lateran source comparison inverse"):
-            before_lateran_graph(before_rosary_graph(current))
+            before_lateran_graph(before_rosary_graph(before_additional_records(current)))
     finally:
         row.clear()
         row.update(original)
-        assert current == saved and before_lateran_graph(before_rosary_graph(current)) == before
+        assert (
+            current == saved
+            and before_lateran_graph(before_rosary_graph(before_additional_records(current)))
+            == before
+        )
 
 
 @pytest.mark.parametrize("fault", ["missing", "reading", "extra", "archive"])
@@ -372,11 +383,16 @@ def test_one_binding_only_inverse_preserves_all_old_objects_and_recovers(fault):
     current = json.loads((ROOT / REGISTRY).read_bytes())
     saved = deepcopy(current)
     same_bindings, same_archives = current["bindings"], current["archives"]
-    before = before_lateran_registry(before_rosary_registry(current))
+    before = before_lateran_registry(before_rosary_registry(before_additional_registry(current)))
     assert canonical_hash(before) == F["before_registry_canonical_sha256"]
-    assert before["archives"] == before_rosary_registry(current)["archives"]
+    assert (
+        before["archives"]
+        == before_rosary_registry(before_additional_registry(current))["archives"]
+    )
     assert list(before["bindings"]) == [
-        key for key in before_rosary_registry(current)["bindings"] if key != F["binding_id"]
+        key
+        for key in before_rosary_registry(before_additional_registry(current))["bindings"]
+        if key != F["binding_id"]
     ]
     try:
         if fault == "missing":
@@ -389,7 +405,7 @@ def test_one_binding_only_inverse_preserves_all_old_objects_and_recovers(fault):
             same_archives[F["archive_id"]]["sha256"] = "0" * 64
         assert current != saved
         with pytest.raises(AssertionError, match="exact Lateran registry successor"):
-            before_lateran_registry(before_rosary_registry(current))
+            before_lateran_registry(before_rosary_registry(before_additional_registry(current)))
     finally:
         same_bindings.clear()
         same_bindings.update(deepcopy(saved["bindings"]))
@@ -397,7 +413,9 @@ def test_one_binding_only_inverse_preserves_all_old_objects_and_recovers(fault):
         same_archives.update(deepcopy(saved["archives"]))
         assert current["bindings"] is same_bindings and current["archives"] is same_archives
         assert (
-            current == saved and before_lateran_registry(before_rosary_registry(current)) == before
+            current == saved
+            and before_lateran_registry(before_rosary_registry(before_additional_registry(current)))
+            == before
         )
 
 

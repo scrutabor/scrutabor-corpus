@@ -22700,12 +22700,13 @@
         "text": "proprium.dedicatio-sancti-michaelis-archangeli-evangelium"
       },
       "locator": {
-        "section": "pinned source key Sancti/09-29; resolved section [Evangelium] with declared inherited references"
+        "section": "missa/Latin/Sancti/09-29.txt [Evangelium] line 36 literally references @Sancti/05-08; missa/Latin/Sancti/05-08.txt [Evangelium] heading 33, title/reference framing 34–35, complete body line 36"
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
-      "decision": "RETAIN",
-      "evidence_sha256": "e0a500e272427a7ef983417ff91e488182038b92bcf92f36b3f381fec2eb53f2"
+      "claim": "The complete pinned Latin Mass Gospel line directly corroborates the selected substantive reading after the single declared digital typo niitti is corrected to mitti against the controlling missal. Literal source spelling and accidental differences remain recorded. The 09-29 reference is source data, not proof of executed feast selection or historical transcription genesis.",
+      "verified_on": "2026-10-28",
+      "decision": "RETAIN_WITH_CORRECTION",
+      "evidence_sha256": "25bb858d23b6e493b268cfd9a2a40f9765ee50fd5c446b572b4c5d8e3fbd2adc",
+      "decision_reason": "Corrected from an unverified inherited-source claim to the directly checked complete 05-08 Gospel line and literal 09-29 reference, with niitti retained in the raw witness and corrected to mitti only for collation against the controlling missal."
     },
     {
       "id": "use.proprium.dedicatio-sancti-michaelis-archangeli-evangelium.mr1962",
@@ -60611,12 +60612,12 @@
         "text": "proprium.sanctae-annae-matris-beatae-mariae-virginis-epistola"
       },
       "locator": {
-        "section": "pinned source key Sancti/07-26; resolved section [Lectio] with declared inherited references"
+        "section": "Direct shared Common web/www/horas/Latin/Commune/C7a.txt [Lectio], section line 74, reference line 76 and body line 77. Heading line 75 is outside-body context. Proper Sancti/07-26 contains ex C7a and vide C7a, not a direct Lectio."
       },
-      "claim": "The pinned Latin Mass data independently corroborate the component's substantive Latin and expose accidental editorial variants for collation.",
-      "verified_on": "2026-08-31",
+      "claim": "The directly consulted pinned shared Common Lectio prints the complete comparison body. Its literal spelling and the selected edition’s differences are declared in the apparatus. This present documentary reading does not establish the original import route or an executed feast-selection result.",
+      "verified_on": "2026-10-28",
       "decision": "RETAIN",
-      "evidence_sha256": "ff6ea75b8d080698d950118596ede804f92441259f7469cfa6b6a567d95927fe"
+      "evidence_sha256": "266525fec5f4f4947bf66faf8bb76dd7e8a61fb3ee7b3c79338c087fe55c7398"
     },
     {
       "id": "use.proprium.sanctae-annae-matris-beatae-mariae-virginis-epistola.mr1962",
@@ -89523,12 +89524,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "75eea978441e80d57921bb8ea77e380c05cb19f9c1ac0708227efbff6ef8859f",
-      "orthography_profile": "pinned-digital-source",
-      "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
+      "transcription_sha256": "643977c384c010ada528a6111917e6046d43c2edd390f8599d7e4265167dc97b",
+      "orthography_profile": "literal-pinned-digital-with-declared-corrigendum-and-ji-fold",
+      "independence_basis": "Direct current comparison with the retained upstream Latin Mass line and literal reference; the digital body is not a transcription of the selected corpus. This does not establish the earlier import workflow or make the digital source the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-dedicatio-sancti-michaelis-archangeli-evangelium"
       }
     },
     {
@@ -113466,12 +113471,16 @@
       "coverage": {
         "kind": "full"
       },
-      "transcription_sha256": "6afc2f71494b2ff9135dc07e1f211336c325f5483a46db1e0ce8d3df9c21c8b3",
+      "transcription_sha256": "3e3994b79370a2d997c7258b5d3ce5d84fd0a069f66b46d7cc02d9296271cec8",
       "orthography_profile": "pinned-digital-source",
       "independence_basis": "Pinned upstream Latin data maintained independently of this corpus; used as a derived comparison witness, not as the controlling edition.",
       "transcription": "do",
       "review": {
         "status": "pending"
+      },
+      "source_dependencies": {
+        "uses": [],
+        "raw_binding": "do-proprium-sanctae-annae-matris-beatae-mariae-virginis-epistola"
       }
     },
     {
@@ -129299,14 +129308,15 @@
         "witness.proprium.dedicatio-sancti-michaelis-archangeli-evangelium.mr1962"
       ],
       "apparatus": {
-        "entries": 17,
+        "entries": 27,
         "classes": [
           "accent",
           "capital-accent",
+          "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "ac4c775a705b7e470de0d28e1ae8226c9ab672df53600770428764e7872cbc00",
+      "apparatus_sha256": "d1575d1c3c1134c0e50db03b66bd13b37ab5ca4f5dcddc8e3dd2bc7c16a942c3",
       "review": {
         "status": "pending"
       }
@@ -142637,13 +142647,13 @@
         "witness.proprium.sanctae-annae-matris-beatae-mariae-virginis-epistola.mr1962"
       ],
       "apparatus": {
-        "entries": 6,
+        "entries": 18,
         "classes": [
           "orthography",
           "punctuation"
         ]
       },
-      "apparatus_sha256": "a89fa3bc88195e729fa93e90db31d3026165b7da87b9bcd43ec21b776138b7b5",
+      "apparatus_sha256": "f9bd40bdb87337257b428aece305d354f0d63ff5620cd91ef7a4edd42989c61f",
       "review": {
         "status": "pending"
       }

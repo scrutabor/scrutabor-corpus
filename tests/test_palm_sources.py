@@ -297,6 +297,23 @@ def conclusion_relative(language, text, index, prev, first, group, gloss):
     return None
 
 
+def tract_continuation(language, text, ws, index, group, gloss):
+    """The translated clause continues with the recipient after Latin `eius. Pópulo`.
+
+    This exact continuation does not make every Latin full stop optional in a caption.
+    The complete translated sentence is pinned by the Tract's caption fixture.
+    """
+    expected = {"pl": "ludowi", "en": "to the people"}.get(language)
+    if text != PA + "tractus" or expected is None or index == 0:
+        return None
+    context = [
+        (w["id"], w["form"], w["lemma"], w.get("post", "")) for w in ws[index - 1 : index + 1]
+    ]
+    if context != [("w141", "eius", "is", "."), ("w142", "Pópulo", "populus", ",")]:
+        return None
+    return group is None and gloss == expected
+
+
 def opening_check(language, text):
     """Latin capitals after a stop (or a segment's first word) whose realized gloss starts lower
     case, except the reviewed conclusion relative (`conclusion_relative`), which must read as
@@ -315,6 +332,8 @@ def opening_check(language, text):
             )
             gloss = group.get("gloss") if group else lay["words"][first["id"]].get("gloss")
             reviewed = conclusion_relative(language, text, i, prev, first, group, gloss)
+            if reviewed is None:
+                reviewed = tract_continuation(language, text, ws, i, group, gloss)
             prev, i = last.get("post", ""), i + n
             if gloss is None and reviewed is not False:
                 pending = opens
@@ -349,6 +368,17 @@ REVERSE_NAMED = {
     ("pl", PA + "evangelium", "w1298"): "Mój",
     ("pl", PA + "evangelium", "w1300"): "Mój",
 }
+
+
+def tract_divine_group(language, text, ws, index, group):
+    """Polish `Panu` realizes the complete `in Dómino`, whose head names the Lord."""
+    return (
+        language == "pl"
+        and text == PA + "tractus"
+        and group == {"words": ["w086", "w087"], "anchor": "w087", "gloss": "Panu"}
+        and [(w["id"], w["form"], w["lemma"]) for w in ws[index : index + 2]]
+        == [("w086", "in", "in"), ("w087", "Dómino", "dominus")]
+    )
 
 
 def reverse_capitals(language, text):
@@ -415,6 +445,7 @@ def reverse_capitals(language, text):
                 prev.rstrip().endswith((".", ":", "?", "!")) and first["form"][:1].isupper()
             )
             gloss = group.get("gloss") if group else lay["words"][first["id"]].get("gloss")
+            divine_group = tract_divine_group(language, text, ws, i, group)
             prev, i = last.get("post", ""), i + n
             if gloss is None:
                 pending = opens
@@ -423,7 +454,13 @@ def reverse_capitals(language, text):
             if not opens and first["form"][:1].islower() and gloss:
                 start = re.search(r"[^\W\d_]+", gloss, re.UNICODE)
                 named = REVERSE_NAMED.get((language, text, first["id"])) == gloss
-                if start and start[0][:1].isupper() and start[0] not in allowed and not named:
+                if (
+                    start
+                    and start[0][:1].isupper()
+                    and start[0] not in allowed
+                    and not named
+                    and not divine_group
+                ):
                     out.append((seg["id"], first["id"], gloss))
     return out
 
@@ -720,6 +757,64 @@ def test_divine_reverse_capital_exception_is_context_bound(monkeypatch):
     with monkeypatch.context() as patch:
         patch.delitem(REVERSE_NAMED, ("pl", text, "w040"))
         assert reverse_capitals("pl", text) == [("s04", "w040", "Moja")]
+    assert reverse_capitals("pl", text) == []
+
+
+def test_tract_target_continuation_keeps_its_exact_context(monkeypatch):
+    text, doc = PA + "tractus", core(PA + "tractus")
+    for language, expected in (("pl", "ludowi"), ("en", "to the people")):
+        lay = layer(language, text)
+        assert missed_openings(language, text) == []
+        for wrong in (expected.capitalize(), "another"):
+            with monkeypatch.context() as patch:
+                served(patch, text, **{language: caption(lay, "w142", wrong)})
+                assert missed_openings(language, text) == [("s01", "w142", wrong)]
+        for at, field, value in (
+            (140, "post", ":"),
+            (141, "form", "Pópulus"),
+            (141, "lemma", "alius"),
+        ):
+            edited = deepcopy(doc)
+            edited["segments"][0]["words"][at][field] = value
+            with monkeypatch.context() as patch:
+                served(patch, text, doc=edited)
+                assert missed_openings(language, text) == [("s01", "w142", expected)]
+        grouped = deepcopy(lay)
+        grouped["segments"]["s01"]["alignments"].append(
+            {"words": ["w142", "w143"], "anchor": "w142", "gloss": expected}
+        )
+        with monkeypatch.context() as patch:
+            served(patch, text, **{language: grouped})
+            assert missed_openings(language, text) == [("s01", "w142", expected)]
+        initial = deepcopy(doc)
+        initial["segments"][0]["words"] = initial["segments"][0]["words"][141:]
+        with monkeypatch.context() as patch:
+            served(patch, text, doc=initial)
+            assert missed_openings(language, text) == [("s01", "w142", expected)]
+        assert missed_openings(language, text) == []
+
+
+def test_tract_divine_group_keeps_its_head_and_members(monkeypatch):
+    text, doc = PA + "tractus", core(PA + "tractus")
+    polish = layer("pl", text)
+    assert reverse_capitals("pl", text) == []
+    for at, field, value in ((85, "lemma", "ad"), (86, "form", "dómino"), (86, "lemma", "homo")):
+        edited = deepcopy(doc)
+        edited["segments"][0]["words"][at][field] = value
+        with monkeypatch.context() as patch:
+            served(patch, text, doc=edited)
+            assert reverse_capitals("pl", text) == [("s01", "w086", "Panu")]
+    for field, value in (
+        ("anchor", "w086"),
+        ("words", ["w086", "w087", "w088"]),
+        ("gloss", "Ludowi"),
+    ):
+        edited = deepcopy(polish)
+        (group,) = [g for g in edited["segments"]["s01"]["alignments"] if g["words"][0] == "w086"]
+        group[field] = value
+        with monkeypatch.context() as patch:
+            served(patch, text, pl=edited)
+            assert reverse_capitals("pl", text) == [("s01", "w086", group["gloss"])]
     assert reverse_capitals("pl", text) == []
 
 

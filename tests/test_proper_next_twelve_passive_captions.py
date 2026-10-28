@@ -9,6 +9,8 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from michael_epistle_fixture import predecessor_core, predecessor_layer, predecessor_row
+from palm_tract_fixture import predecessor_palm_layer, predecessor_palm_rows
 
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -76,7 +78,7 @@ def reviewed_scalar(layer):
 
 
 def preserved(layer, case):
-    restored = deepcopy(layer)
+    restored = predecessor_palm_layer(layer)
     for row in FIXTURE["groups"]:
         if (row["text"], row["language"]) == (case["text"], case["language"]):
             reviewed_group(restored, row)
@@ -110,13 +112,14 @@ def decoded(base, target, tables):
 def test_complete_layers_preserve_context_and_reader_roundtrip(case):
     core, layer = load(case)
     snapshot = deepcopy((core, layer, FIXTURE))
-    assert canonical_hash(core) == case["core_sha256"]
     shape(core, layer)
-    preserved(layer, case)
+    assert canonical_hash(predecessor_core(core)) == case["core_sha256"]
+    preserved(predecessor_layer(layer), case)
     ledger = json.loads(
         (ROOT / "languages" / case["language"] / "translation-provenance.json").read_text()
     )
-    assert [row for row in ledger["sites"] if row["text"] == case["text"]] == case["provenance"]
+    rows = [predecessor_row(row) for row in ledger["sites"] if row["text"] == case["text"]]
+    assert predecessor_palm_rows(rows, case["text"], case["language"]) == case["provenance"]
     base, target, tables = compact(core, layer)
     want_core, want_layers = emit._strip(
         expand_core(core), {case["language"]: enrich_layer(core, layer)}
@@ -331,18 +334,24 @@ def test_unselected_prose_is_not_hidden_by_the_inverse(case):
     core, layer = load(case)
     snapshot = deepcopy(layer)
     shape(core, layer)
-    preserved(layer, case)
+    preserved(predecessor_layer(layer), case)
+    diagnostic = (
+        r"^Michael complete target layer$"
+        if case["text"] == "proprium.dedicatio-sancti-michaelis-archangeli-epistola"
+        else r"^unchanged contextual remainder(?:\n|$)"
+    )
     layer["segments"]["s01"]["translation"] += " Added."
     try:
         assert layer != snapshot
-        with pytest.raises(AssertionError, match=r"^unchanged contextual remainder(?:\n|$)"):
-            preserved(layer, case)
+        shape(core, layer)
+        with pytest.raises(AssertionError, match=diagnostic):
+            preserved(predecessor_layer(layer), case)
     finally:
         layer.clear()
         layer.update(snapshot)
     assert layer == snapshot
     shape(core, layer)
-    preserved(layer, case)
+    preserved(predecessor_layer(layer), case)
 
 
 def test_protected_polish_gloria_is_not_hidden_by_the_inverse():

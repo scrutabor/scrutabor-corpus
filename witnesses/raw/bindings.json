@@ -912,6 +912,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/09-12.txt",
       "sha256": "fae511349b7648a9f785dacca07d1434eece2fbe24bfeab0e566de3369cb89bb"
+    },
+    "common-c7a": {
+      "upstream": "web/www/horas/Latin/Commune/C7a.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C7a.txt",
+      "sha256": "266525fec5f4f4947bf66faf8bb76dd7e8a61fb3ee7b3c79338c087fe55c7398"
     }
   },
   "bindings": {
@@ -29748,6 +29754,62 @@
           "archive": "common-c8",
           "first": 587,
           "last": 587
+        }
+      ]
+    },
+    "do-proprium-dedicatio-sancti-michaelis-archangeli-evangelium": {
+      "witness": "witnesses/proprium.dedicatio-sancti-michaelis-archangeli-evangelium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "michael-dedication",
+          "first": 36,
+          "last": 36,
+          "section": "Evangelium",
+          "section_line": 35
+        },
+        {
+          "archive": "michael-apparition",
+          "first": 35,
+          "last": 36,
+          "section": "Evangelium",
+          "section_line": 33
+        }
+      ],
+      "references": [
+        {
+          "archive": "michael-dedication",
+          "line": 36,
+          "text": "@Sancti/05-08",
+          "target": 1
+        }
+      ],
+      "reading": [
+        {
+          "archive": "michael-apparition",
+          "first": 36,
+          "last": 36
+        }
+      ]
+    },
+    "do-proprium-sanctae-annae-matris-beatae-mariae-virginis-epistola": {
+      "witness": "witnesses/proprium.sanctae-annae-matris-beatae-mariae-virginis-epistola/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "common-c7a",
+          "first": 76,
+          "last": 77,
+          "section": "Lectio",
+          "section_line": 74
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "common-c7a",
+          "first": 77,
+          "last": 77
         }
       ]
     }
