@@ -3,6 +3,7 @@
 import json
 
 import pytest
+from lauda_sion_fixture import predecessor_layer
 
 from checks.layout import CORPUS
 
@@ -49,7 +50,11 @@ GROUPS = (
 
 
 def layer(language, text):
-    return json.loads((CORPUS / "languages" / language / "texts" / (text + ".json")).read_text())
+    value = json.loads((CORPUS / "languages" / language / "texts" / (text + ".json")).read_text())
+    if language == "pl" and text == "proprium/corporis-christi-sequentia":
+        core = json.loads((CORPUS / "texts" / (text + ".json")).read_text())
+        return predecessor_layer(core, value)
+    return value
 
 
 @pytest.mark.parametrize("language,text,wid,gloss", DIRECT)

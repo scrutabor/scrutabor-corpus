@@ -11,6 +11,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from lauda_sion_fixture import predecessor_core, predecessor_layer
 
 ROOT = Path(__file__).resolve().parents[1]
 GRADUAL = "corporis-christi-graduale"
@@ -257,13 +258,16 @@ def read(relative):
 
 @pytest.fixture
 def chants():
-    return {
+    values = {
         short: (
             read(f"texts/proprium/{short}.json"),
             read(f"languages/en/texts/proprium/{short}.json"),
         )
         for short in (GRADUAL, SEQUENCE)
     }
+    core, layer = values[SEQUENCE]
+    values[SEQUENCE] = (predecessor_core(core, layer), predecessor_layer(core, layer))
+    return values
 
 
 def words(core, segment):

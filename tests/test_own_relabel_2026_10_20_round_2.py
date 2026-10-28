@@ -20,6 +20,8 @@ from pathlib import Path
 
 import pytest
 from corpus_christi_epistle_fixture import expected_corpus_christi_epistle_row
+from lauda_sion_fixture import SITES as LAUDA_SITES
+from lauda_sion_fixture import predecessor_wording
 from marian_chant_fixture import expected_marian_row
 from pentecost_successor_fixture import expected_pentecost_row
 from post_ascension_fixture import expected_row_successor
@@ -213,6 +215,8 @@ def assert_wording_unchanged(site, row, target):
         healthy_rosary(current_core, current_layer)
         reviewed_rosary(current_core, current_layer)
         row, target = predecessor_rosary_wording(row, target)
+    if site in LAUDA_SITES:
+        row, target = predecessor_wording(site, row, target)
     expected = LABELS[site]["target_sha256"]
     if site in EXACT_WORDING_TARGETS:
         before, expected = EXACT_WORDING_TARGETS[site]

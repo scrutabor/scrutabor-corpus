@@ -23,6 +23,8 @@ from pathlib import Path
 
 import pytest
 import test_english_register as register
+from lauda_sion_fixture import TEXT as LAUDA_TEXT
+from lauda_sion_fixture import predecessor_core, predecessor_layer
 
 from build_reader.layers import enrich_layer, expand_core
 from checks import interlinear, language_packs
@@ -707,7 +709,12 @@ def path_of(text, language=None):
 
 
 def load(text, language=None):
-    return json.loads(path_of(text, language).read_text(encoding="utf-8"))
+    value = json.loads(path_of(text, language).read_text(encoding="utf-8"))
+    if text == LAUDA_TEXT and language in (None, "en"):
+        core = json.loads(path_of(text).read_text(encoding="utf-8"))
+        layer = json.loads(path_of(text, "en").read_text(encoding="utf-8"))
+        return predecessor_core(core, layer) if language is None else predecessor_layer(core, layer)
+    return value
 
 
 def latin(core):

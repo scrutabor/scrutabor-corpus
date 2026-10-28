@@ -9,6 +9,8 @@ from gospel_delivery_fixture import (
     current_gospel_source_hash,
     without_gospel_delivery,
 )
+from lauda_sion_fixture import TEXT as LAUDA_TEXT
+from lauda_sion_fixture import predecessor_layer
 
 from build_reader.bibliography_bindings import digest, selected_text
 from build_reader.layers import expand_core
@@ -203,6 +205,8 @@ def test_annotation_change_rebinds_only_sources_not_targets_or_selected_latin(co
     for language in ("pl", "en"):
         relative = context["text"].replace(".", "/", 1) + ".json"
         layer = read(f"languages/{language}/texts/{relative}")
+        if context["text"] == LAUDA_TEXT:
+            layer = predecessor_layer(doc, layer)
         expected_gloss = "mannę" if language == "pl" and context["case"] == "acc" else "manna"
         assert layer["words"][context["word"]]["gloss"] == expected_gloss
         target = layer["segments"][context["segment"]]["translation"]

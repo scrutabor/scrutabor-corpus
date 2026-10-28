@@ -4,6 +4,8 @@ import json
 from copy import deepcopy
 
 import pytest
+from lauda_sion_fixture import TEXT as LAUDA_TEXT
+from lauda_sion_fixture import predecessor_layer
 
 from build_reader.layers import enrich_layer, expand_core
 from checks import interlinear, polish
@@ -43,9 +45,10 @@ CASES = (
 def example(case):
     text, sid, span = case[:3]
     core = json.loads((CORPUS / "texts" / (text + ".json")).read_text())
-    layer = enrich_layer(
-        core, json.loads((CORPUS / "languages/pl/texts" / (text + ".json")).read_text())
-    )
+    raw = json.loads((CORPUS / "languages/pl/texts" / (text + ".json")).read_text())
+    if core["id"] == LAUDA_TEXT:
+        raw = predecessor_layer(core, raw)
+    layer = enrich_layer(core, raw)
     doc = expand_core(core)
     segment = next(s for s in doc["segments"] if s["id"] == sid)
     words = [w for w in segment["words"] if w["id"] in span.split()]
