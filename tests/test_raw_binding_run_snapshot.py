@@ -11,6 +11,9 @@ from checks.witness_archive import check as check_archives
 CORPUS = Path(__file__).resolve().parent.parent
 REGISTRY = "witnesses/raw/bindings.json"
 LATERAN = "witnesses/proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-postcommunio/do.txt"
+LATERAN_EPISTLE = (
+    "witnesses/proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-epistola/do.txt"
+)
 
 
 # Independent archive inventory of the two closed Mass/Common chains.
@@ -76,10 +79,10 @@ def test_a_corrupt_archive_is_reported_for_every_witness_it_binds(tmp_path, sele
         assert "witnesses/ordinarium.aufer-a-nobis/do.txt" in witnesses
         assert len(witnesses) > 1
     elif selection == "literal-common":
-        # The Common archive has one user; its feast and Mass archives are shared.
+        # The Common archive has two users; only the Postcommunion uses feast and Mass.
         (key,) = common_archives
         witnesses = users[key]
-        assert key == "common-c8" and witnesses == {LATERAN}
+        assert key == "common-c8" and witnesses == {LATERAN, LATERAN_EPISTLE}
         assert LATERAN in users["do-sancti-11-09"] and LATERAN in users["prayers"]
         assert len(users["prayers"]) > 1
     elif selection in SECRET_ARCHIVES:

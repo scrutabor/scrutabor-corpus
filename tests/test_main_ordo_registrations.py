@@ -9,6 +9,8 @@ from pathlib import Path
 
 import pytest
 from chant_fragment_fixture import before_chant_graph, before_chant_registry
+from lateran_epistle_source_fixture import before_lateran_graph, before_lateran_registry
+from rosary_gospel_source_fixture import before_rosary_graph, before_rosary_registry
 from witness_header_fixture import EXALTATION, before_joachim_records, before_joachim_registry
 
 from build_reader import bibliography
@@ -87,9 +89,11 @@ def before_exaltation_comparison(graph):
 
 def before_registrations(graph, registry):
     historical_graph = before_exaltation_comparison(
-        before_chant_graph(before_joachim_records(graph))
+        before_chant_graph(before_joachim_records(before_rosary_graph(before_lateran_graph(graph))))
     )
-    historical_raw = before_chant_registry(before_joachim_registry(registry))
+    historical_raw = before_chant_registry(
+        before_joachim_registry(before_rosary_registry(before_lateran_registry(registry)))
+    )
     for collection in ("uses", "witnesses"):
         for expected in EXPECTED["graph_additions"][collection]:
             actual = record(historical_graph, collection, expected["id"])

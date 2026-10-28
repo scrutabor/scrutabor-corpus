@@ -44,6 +44,74 @@ SCALAR_LITERAL = {
     "companion-4": "will be fulfilled",
     "companion-5": "przez",
 }
+
+STABAT_SOURCE_SUCCESSOR = {
+    "text": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia",
+    "word_before": {
+        "id": "w108",
+        "form": "istud",
+        "lemma": "iste",
+        "morph": {"pos": "pron", "case": "acc", "number": "sg"},
+    },
+    "word_after": {
+        "id": "w108",
+        "form": "istud",
+        "lemma": "iste",
+        "morph": {"pos": "pron", "case": "acc", "number": "sg", "gender": "n"},
+    },
+    "before_core_sha256": "6cca0d3404612dfdeae665ac21c641968c5d0a75219ef1d41e26e32d39350709",
+    "after_core_sha256": "d67b4a1ed71ceef21066e29c3d08e34f04e5730dedded2a6a63409437ac8c672",
+    "rows": {
+        "pl": {
+            "before": {
+                "site": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia.s11.pl",
+                "text": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia",
+                "segment": "s11",
+                "language": "pl",
+                "familiar_core": False,
+                "origin": "working-unsettled",
+                "review": "working",
+                "source_sha256": "2b259455c503c95dfbad7f04569c87644045f3415353f44bf0014b32e8cae5f7",
+                "target_sha256": "308d590d9b1c97ef5e60a8ea929e1387de91dbb04efaf3b1214f751872be58fa",
+            },
+            "after": {
+                "site": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia.s11.pl",
+                "text": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia",
+                "segment": "s11",
+                "language": "pl",
+                "familiar_core": False,
+                "origin": "working-unsettled",
+                "review": "working",
+                "source_sha256": "494d83215bf818a7611197e465c5491e2361c235c6eec92149c1b0928f9fed28",
+                "target_sha256": "308d590d9b1c97ef5e60a8ea929e1387de91dbb04efaf3b1214f751872be58fa",
+            },
+        },
+        "en": {
+            "before": {
+                "site": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia.s11.en",
+                "text": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia",
+                "segment": "s11",
+                "language": "en",
+                "familiar_core": False,
+                "origin": "working-unsettled",
+                "review": "working",
+                "source_sha256": "2b259455c503c95dfbad7f04569c87644045f3415353f44bf0014b32e8cae5f7",
+                "target_sha256": "d529cc96e606dc7486b32ecd5a34d69838dc1b940c7378f3b587feb17177ccbd",
+            },
+            "after": {
+                "site": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia.s11.en",
+                "text": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia",
+                "segment": "s11",
+                "language": "en",
+                "familiar_core": False,
+                "origin": "working-unsettled",
+                "review": "working",
+                "source_sha256": "494d83215bf818a7611197e465c5491e2361c235c6eec92149c1b0928f9fed28",
+                "target_sha256": "d529cc96e606dc7486b32ecd5a34d69838dc1b940c7378f3b587feb17177ccbd",
+            },
+        },
+    },
+}
 LAYERS = [pytest.param(r, id=r["id"]) for r in DATA["layers"]]
 GROUPS = [pytest.param(r, id=r["id"]) for r in DATA["groups"]]
 CONTROLS = [pytest.param(r, id=r["id"]) for r in DATA["controls"]]
@@ -119,24 +187,106 @@ def compact(core, layer):
     )
 
 
+def predecessor_core(core, case):
+    """An exact comparison copy; native and reader consumers retain current input."""
+    if case["text"] != STABAT_SOURCE_SUCCESSOR["text"]:
+        return core
+    rule = STABAT_SOURCE_SUCCESSOR
+    assert canonical_hash(core) == rule["after_core_sha256"], "exact current Stabat core"
+    comparison = deepcopy(core)
+    words = [w for s in comparison["segments"] for w in s.get("words", []) if w["id"] == "w108"]
+    assert words == [rule["word_after"]], "exact current Stabat core"
+    del words[0]["morph"]["gender"]
+    assert words == [rule["word_before"]], "exact current Stabat core"
+    assert canonical_hash(comparison) == rule["before_core_sha256"] == case["core_sha256"]
+    return comparison
+
+
+def predecessor_provenance(rows, case):
+    if case["text"] != STABAT_SOURCE_SUCCESSOR["text"]:
+        return rows
+    rule = STABAT_SOURCE_SUCCESSOR["rows"][case["language"]]
+    expected = deepcopy(case["provenance"])
+    indices = [i for i, row in enumerate(expected) if row["site"] == rule["before"]["site"]]
+    assert len(indices) == 1 and expected[indices[0]] == rule["before"]
+    expected[indices[0]] = deepcopy(rule["after"])
+    assert rows == expected, "exact current Stabat provenance"
+    comparison = deepcopy(rows)
+    comparison[indices[0]] = deepcopy(rule["before"])
+    assert comparison == case["provenance"]
+    return comparison
+
+
+def exercise_source_comparison_guards(core, layer, rows, case):
+    """Comparison guards, not assertions that every mutation is native-invalid."""
+    saved_core, saved_rows = deepcopy(core), deepcopy(rows)
+    for fault in ("missing-gender", "wrong-gender", "unselected-form"):
+        try:
+            word = next(
+                w for s in core["segments"] for w in s.get("words", []) if w["id"] == "w108"
+            )
+            if fault == "missing-gender":
+                del word["morph"]["gender"]
+            elif fault == "wrong-gender":
+                word["morph"]["gender"] = "f"
+            else:
+                core["segments"][0]["words"][0]["form"] += "x"
+            assert core != saved_core
+            with pytest.raises(AssertionError, match=r"^exact current Stabat core(?:\n|$)"):
+                predecessor_core(core, case)
+        finally:
+            core.clear()
+            core.update(deepcopy(saved_core))
+            assert core == saved_core
+            healthy(core, layer)
+            assert canonical_hash(predecessor_core(core, case)) == case["core_sha256"]
+    for fault in ("source-sha", "target-sha", "extra-field"):
+        try:
+            selected = next(
+                r
+                for r in rows
+                if r["site"] == STABAT_SOURCE_SUCCESSOR["rows"][case["language"]]["after"]["site"]
+            )
+            if fault == "extra-field":
+                selected["unexpected_comparison_field"] = True
+            else:
+                selected["source_sha256" if fault == "source-sha" else "target_sha256"] = "0" * 64
+            assert rows != saved_rows
+            with pytest.raises(AssertionError, match=r"^exact current Stabat provenance(?:\n|$)"):
+                predecessor_provenance(rows, case)
+        finally:
+            assert len(rows) == len(saved_rows)
+            for row, original in zip(rows, saved_rows, strict=True):
+                row.clear()
+                row.update(deepcopy(original))
+            assert rows == saved_rows
+            healthy(core, layer)
+            assert predecessor_provenance(rows, case) == case["provenance"]
+
+
 @pytest.mark.parametrize("case", LAYERS)
 def test_complete_current_native_reader_prose_and_predecessor(case):
     core, layer = load(case)
     saved = deepcopy((core, layer, DATA))
     healthy(core, layer)
-    assert canonical_hash(core) == case["core_sha256"]
+    assert canonical_hash(predecessor_core(core, case)) == case["core_sha256"]
     preserved(layer, case)
     assert {sid: s.get("translation") for sid, s in layer["segments"].items()} == case["prose"]
     ledger = json.loads(
         (ROOT / "languages" / case["language"] / "translation-provenance.json").read_text()
     )
-    assert [r for r in ledger["sites"] if r["text"] == case["text"]] == case["provenance"]
+    saved_ledger = deepcopy(ledger)
+    rows = [r for r in ledger["sites"] if r["text"] == case["text"]]
+    assert predecessor_provenance(rows, case) == case["provenance"]
     base, target, tables = compact(core, layer)
     expected_core, expected_layers = emit._strip(
         expand_core(core), {case["language"]: enrich_layer(core, layer)}
     )
     assert emit.expand(base, target, *tables) == (expected_core, expected_layers[case["language"]])
+    if case["text"] == STABAT_SOURCE_SUCCESSOR["text"]:
+        exercise_source_comparison_guards(core, layer, rows, case)
     assert (core, layer, DATA) == saved
+    assert ledger == saved_ledger
 
 
 @pytest.mark.parametrize("case", GROUPS)

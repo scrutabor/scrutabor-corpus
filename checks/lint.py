@@ -63,7 +63,14 @@ NEUTER_PRONOUN_FORMS = {
     "quodnam": {"quisnam"},
     "ecquid": {"ecquis"},
     "ecquod": {"ecquis"},
+    "istud": {"iste"},
 }
+
+# Ordinary ista is feminine singular or neuter plural. Case remains
+# contextual; shared obliques of iste are deliberately outside this class.
+ISTA_FEATURE_TRIPLES = frozenset(
+    {("nom", "sg", "f"), ("abl", "sg", "f"), ("nom", "pl", "n"), ("acc", "pl", "n")}
+)
 
 # These two surfaces determine gender only with the selected case/number.
 # Nominative plural is contextual: quae and even rare haec can be feminine.
@@ -953,6 +960,16 @@ def lint_text(doc):
                 f"{wid}: haec/quae form {f!r} ({lemma}) requires feminine singular "
                 "nominative or neuter plural accusative; plural nominative "
                 "allows feminine, neuter, or explicitly unsettled gender"
+            )
+        if (
+            m.get("pos") in {"pron", "adj"}
+            and surface == "ista"
+            and lemma == "iste"
+            and (m.get("case"), m.get("number"), m.get("gender")) not in ISTA_FEATURE_TRIPLES
+        ):
+            errors.append(
+                f"{wid}: ista form {f!r} (iste) requires feminine singular "
+                "nominative or ablative, or neuter plural nominative or accusative"
             )
         if (
             m.get("pos") in {"pron", "adj"}

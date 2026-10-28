@@ -9,6 +9,8 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from iste_gender_fixture import before_iste_gender
+from marian_gospel_fixture import predecessor_core, predecessor_layer, predecessor_row
 
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -61,7 +63,7 @@ def group_in(layer, case):
 
 
 def preserved(layer, case):
-    restored = deepcopy(layer)
+    restored = predecessor_layer(layer)
     for group_case in FIXTURE["groups"]:
         if (group_case["text"], group_case["language"]) == (case["text"], case["language"]):
             reviewed_group(restored, group_case)
@@ -93,13 +95,15 @@ def decoded(base, target, tables):
 def test_complete_layers_preserve_context_and_reader_roundtrip(case):
     core, layer = load(case)
     snapshot = deepcopy((core, layer, FIXTURE))
-    assert canonical_hash(core) == case["core_sha256"]
     shape(core, layer)
+    assert canonical_hash(predecessor_core(core)) == case["core_sha256"]
     preserved(layer, case)
     ledger = json.loads(
         (ROOT / "languages" / case["language"] / "translation-provenance.json").read_text()
     )
-    assert [row for row in ledger["sites"] if row["text"] == case["text"]] == case["provenance"]
+    assert [predecessor_row(row) for row in ledger["sites"] if row["text"] == case["text"]] == case[
+        "provenance"
+    ]
     base, target, tables = compact(core, layer)
     want_core, want_layers = emit._strip(
         expand_core(core), {case["language"]: enrich_layer(core, layer)}
@@ -280,3 +284,42 @@ def test_unselected_prose_is_not_hidden_by_the_comparison_inverse(case):
     assert layer == snapshot
     shape(core, layer)
     preserved(layer, case)
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "proprium.annuntiatio-beatae-mariae-virginis-evangelium",
+        "proprium.beata-maria-virgo-regina-evangelium",
+        "proprium.beatae-mariae-virginis-a-rosario-evangelium",
+    ],
+    ids=["annunciation", "queenship", "rosary"],
+)
+@pytest.mark.parametrize("fault", ["missing", "wrong", "extra"])
+def test_gender_comparison_inverse_rejects_unadmitted_core_changes(text, fault):
+    case = next(row for row in FIXTURE["layers"] if row["text"] == text)
+    core, _layer = load(case)
+    original = deepcopy(core)
+    word = next(w for s in core["segments"] for w in s.get("words", []) if w["id"] == "w058")
+    morph = word["morph"]
+    assert canonical_hash(predecessor_core(core)) == case["core_sha256"]
+    baseline = deepcopy(morph)
+    try:
+        if fault == "missing":
+            morph.pop("gender")
+        elif fault == "wrong":
+            morph["gender"] = "n"
+        else:
+            core["unadmitted_gender_change"] = True
+        if fault == "extra":
+            with pytest.raises(AssertionError, match=r"^Marian Gospel core remainder(?:\n|$)"):
+                predecessor_core(core)
+        else:
+            with pytest.raises(AssertionError, match=r"^current iste gender features(?:\n|$)"):
+                before_iste_gender(core)
+    finally:
+        morph.clear()
+        morph.update(baseline)
+        core.pop("unadmitted_gender_change", None)
+    assert core == original and word["morph"] is morph
+    assert canonical_hash(predecessor_core(core)) == case["core_sha256"]

@@ -47,6 +47,7 @@ FORMS = [
     ("quodnam", "quisnam"),
     ("ecquid", "ecquis"),
     ("ecquod", "ecquis"),
+    ("istud", "iste"),
 ]
 HEALTHY = {"pos": "pron", "case": "acc", "number": "sg", "gender": "n"}
 

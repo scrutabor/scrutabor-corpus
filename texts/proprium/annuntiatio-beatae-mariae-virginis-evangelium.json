@@ -76,7 +76,7 @@
         { "id": "w055", "form": "cogitábat", "lemma": "cogito", "morph": { "conj": 1, "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
         { "id": "w056", "form": "qualis", "lemma": "qualis", "morph": { "case": "nom", "gender": "f", "number": "sg", "pos": "adj" }, "head": "w059" },
         { "id": "w057", "form": "esset", "lemma": "sum", "morph": { "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
-        { "id": "w058", "form": "ista", "lemma": "iste", "morph": { "case": "nom", "number": "sg", "pos": "pron" } },
+        { "id": "w058", "form": "ista", "lemma": "iste", "morph": { "case": "nom", "number": "sg", "pos": "pron", "gender": "f" } },
         { "id": "w059", "form": "salutátio", "lemma": "salutatio", "morph": { "case": "nom", "decl": 3, "gender": "f", "number": "sg", "pos": "noun" }, "post": "." },
         { "id": "w060", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w061", "form": "ait", "lemma": "aio", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -138,7 +138,7 @@
         { "id": "w117", "form": "Ángelum", "lemma": "angelus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w118", "form": "Quómodo", "lemma": "quomodo", "morph": { "pos": "adv" } },
         { "id": "w119", "form": "fiet", "lemma": "fio", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
-        { "id": "w120", "form": "istud", "lemma": "iste", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "post": "," },
+        { "id": "w120", "form": "istud", "lemma": "iste", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "n" }, "post": "," },
         { "id": "w121", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
         { "id": "w122", "form": "virum", "lemma": "vir", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w123", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
@@ -417,6 +417,7 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "notes": ["w124", "w146", "w178"]
   }
 }

@@ -19,6 +19,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import preface_delivery_fixture as preface
+from iste_gender_fixture import current_iste_source_hash
 
 DATA = json.loads(
     (Path(__file__).parent / "fixtures/gospel-delivery-source-successors.json").read_text(
@@ -34,7 +35,7 @@ def current_gospel_source_hash(text, segment, historical):
     assert segment in DATA["source"][text], "Gospel source segment identity"
     change = DATA["source"][text][segment]
     assert historical == change["before"], "historical Gospel source hash"
-    return change["after"]
+    return current_iste_source_hash(text, segment, change["after"])
 
 
 def current_gospel_expected_row(row):

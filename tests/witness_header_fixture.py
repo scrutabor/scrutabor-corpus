@@ -6,6 +6,9 @@ import re
 from copy import deepcopy
 from pathlib import Path
 
+from lateran_epistle_source_fixture import before_lateran_records
+from rosary_gospel_source_fixture import before_rosary_records
+
 DATA = json.loads((Path(__file__).parent / "fixtures/witness-header-successors.json").read_text())
 TRANSCRIPTS = DATA["transcripts"]
 BY_ID = {row["witness"]: row for row in TRANSCRIPTS.values()}
@@ -174,7 +177,7 @@ def expected_header_lines(identity, historical):
 
 def before_privacy(value, diagnostic="exact transcript-header comparison inverse"):
     """Reverse exact known scalars on comparison copies ONLY, never native arguments."""
-    result = before_joachim_records(value)
+    result = before_joachim_records(before_rosary_records(before_lateran_records(value)))
 
     def visit(item):
         if isinstance(item, list):

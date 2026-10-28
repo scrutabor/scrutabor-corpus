@@ -906,6 +906,12 @@
       "revision": "44667ff518b8ff1439780470828b39714f5306a2",
       "path": "witnesses/raw/do-44667ff/horas/Latin/Commune/C5.txt",
       "sha256": "d2550ce56add61aec5d8e6477e0db20e8ee6d31b270654329103a4f2b3c1753e"
+    },
+    "do-sancti-09-12": {
+      "upstream": "web/www/missa/Latin/Sancti/09-12.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "path": "witnesses/raw/do-44667ff/missa/Latin/Sancti/09-12.txt",
+      "sha256": "fae511349b7648a9f785dacca07d1434eece2fbe24bfeab0e566de3369cb89bb"
     }
   },
   "bindings": {
@@ -29665,6 +29671,83 @@
           "archive": "do-sancti-10-28",
           "first": 30,
           "last": 30
+        }
+      ]
+    },
+    "do-proprium-beatae-mariae-virginis-a-rosario-evangelium": {
+      "contract": "raw-reading-2",
+      "witness": "witnesses/proprium.beatae-mariae-virginis-a-rosario-evangelium/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "do-sancti-09-12",
+          "first": 33,
+          "last": 33,
+          "section": "Evangelium",
+          "section_line": 30,
+          "fragment": {
+            "start": 0,
+            "end": 184,
+            "text": "In illo témpore: Missus est Angelus Gábriel a Deo in civitátem Galilææ, cui nomen Názareth, ad Vírginem desponsátam viro, cui nomen erat Joseph, de domo David, et nomen Vírginis María.",
+            "marker": null,
+            "reason": "Exact Gospel text on this side of the single typographic paragraph marker. The complete original retains the marker, which the Mass Gospel function removes."
+          }
+        },
+        {
+          "archive": "do-sancti-09-12",
+          "first": 33,
+          "last": 33,
+          "section": "Evangelium",
+          "section_line": 30,
+          "fragment": {
+            "start": 187,
+            "end": 1181,
+            "text": "Et ingréssus Angelus ad eam, dixit: Ave, grátia plena; Dóminus tecum: benedícta tu in muliéribus. Quæ cum audísset, turbáta est in sermóne ejus: et cogitábat, qualis esset ista salutátio. Et ait Angelus ei: Ne tímeas, María, invenísti enim grátiam apud Deum: ecce, concípies in útero et páries fílium, et vocábis nomen ejus Jesum. Hic erit magnus, et Fílius Altíssimi vocábitur, et dabit illi Dóminus Deus sedem David, patris ejus: et regnábit in domo Jacob in ætérnum, et regni ejus non erit finis. Dixit autem María ad Angelum: Quómodo fiet istud, quóniam virum non cognósco? Et respóndens Angelus, dixit ei: Spíritus Sanctus supervéniet in te, et virtus Altíssimi obumbrábit tibi. Ideóque et quod nascétur ex te Sanctum, vocábitur Fílius Dei. Et ecce, Elisabeth, cognáta tua, et ipsa concépit fílium in senectúte sua: et hic mensis sextus est illi, quæ vocátur stérilis: quia non erit impossíbile apud Deum omne verbum. Dixit autem María: Ecce ancílla Dómini, fiat mihi secúndum verbum tuum.",
+            "marker": null,
+            "reason": "Exact Gospel text on this side of the single typographic paragraph marker. The complete original retains the marker, which the Mass Gospel function removes."
+          }
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "do-sancti-09-12",
+          "first": 33,
+          "last": 33,
+          "fragment": {
+            "start": 0,
+            "end": 184
+          }
+        },
+        {
+          "archive": "do-sancti-09-12",
+          "first": 33,
+          "last": 33,
+          "fragment": {
+            "start": 187,
+            "end": 1181
+          }
+        }
+      ]
+    },
+    "do-proprium-dedicatio-archibasilicae-sanctissimi-salvatoris-epistola": {
+      "witness": "witnesses/proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-epistola/do.txt",
+      "revision": "44667ff518b8ff1439780470828b39714f5306a2",
+      "evidence": [
+        {
+          "archive": "common-c8",
+          "first": 587,
+          "last": 587,
+          "section": "Lectio",
+          "section_line": 584
+        }
+      ],
+      "references": [],
+      "reading": [
+        {
+          "archive": "common-c8",
+          "first": 587,
+          "last": 587
         }
       ]
     }

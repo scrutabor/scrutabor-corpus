@@ -10,6 +10,8 @@ from pathlib import Path
 import pytest
 import witness_header_fixture as headers
 from chant_fragment_fixture import before_chant_graph, before_chant_registry
+from lateran_epistle_source_fixture import before_lateran_graph, before_lateran_registry
+from rosary_gospel_source_fixture import before_rosary_graph, before_rosary_registry
 from test_main_ordo_registrations import before_exaltation_comparison
 
 from build_reader.bibliography import public_text_evidence
@@ -30,6 +32,408 @@ F = json.loads((ROOT / "tests/fixtures/joachim-source.json").read_text())
 TEXT = "proprium.sancti-ioachim-confessoris-epistola"
 REGISTRY = "witnesses/raw/bindings.json"
 GRAPH = "bibliography/graph.json"
+CURRENT_LEDGER_PREDECESSORS = {
+    "languages/pl/translation-provenance.json": {
+        "after_value_sha256": "d9ffe7d688ce9ba513e1c5f36b5b79c89d9419fbb59731511473cf324538ec0b",
+        "before_value_sha256": "fcf387406346b15f30c19bb3c27c9f430687ef7e738a8af5d8752eb01fd52745",
+        "rows": [
+            {
+                "before": {
+                    "site": "proprium.annuntiatio-beatae-mariae-virginis-evangelium.s01.pl",
+                    "text": "proprium.annuntiatio-beatae-mariae-virginis-evangelium",
+                    "segment": "s01",
+                    "language": "pl",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "e293d21193cb63bd417401a9727c4fb27a0fb9e4742ade70ded946dea839dd4c"
+                    ),
+                    "target_sha256": (
+                        "16127203dd761b2579b3c3b078879294ccd596c6d29c6405b0bcd0f15cb72156"
+                    ),
+                },
+                "after": {
+                    "site": "proprium.annuntiatio-beatae-mariae-virginis-evangelium.s01.pl",
+                    "text": "proprium.annuntiatio-beatae-mariae-virginis-evangelium",
+                    "segment": "s01",
+                    "language": "pl",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "b58632c63a29a5c7fc234c527f1a34cb86124b1e553c4d2d2e3b71d37ef8d946"
+                    ),
+                    "target_sha256": (
+                        "b8ad1ab50d9c71e73b516ea482a80c0d2b3784f1f4300e3692629647ffe31fe3"
+                    ),
+                },
+            },
+            {
+                "before": {
+                    "site": "proprium.beata-maria-virgo-regina-evangelium.s01.pl",
+                    "text": "proprium.beata-maria-virgo-regina-evangelium",
+                    "segment": "s01",
+                    "language": "pl",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "85d3d5f9b0d38ddedc634d2f1a049b54dacbbf07953417c42f4ebc1d0aad1e58"
+                    ),
+                    "target_sha256": (
+                        "71cf8b8e6d36fa5305ce80626b4edd6c2626ab95cd47cb82f4bb76202f305233"
+                    ),
+                },
+                "after": {
+                    "site": "proprium.beata-maria-virgo-regina-evangelium.s01.pl",
+                    "text": "proprium.beata-maria-virgo-regina-evangelium",
+                    "segment": "s01",
+                    "language": "pl",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "fd17edb317d73fc2672186fb51b465dfbb06c71ad96a2c3efea4f2388861b2d3"
+                    ),
+                    "target_sha256": (
+                        "24c913dfdac06e1a319f2f3717ddbd9c977cbe584ea516b5b78abed60161f5f6"
+                    ),
+                },
+            },
+            {
+                "before": {
+                    "site": "proprium.beatae-mariae-virginis-a-rosario-evangelium.s01.pl",
+                    "text": "proprium.beatae-mariae-virginis-a-rosario-evangelium",
+                    "segment": "s01",
+                    "language": "pl",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "3880df2edc12b8b4219b336b8e421357259bfbf2ff13be3a7a000a4fcc65fdd3"
+                    ),
+                    "target_sha256": (
+                        "16127203dd761b2579b3c3b078879294ccd596c6d29c6405b0bcd0f15cb72156"
+                    ),
+                },
+                "after": {
+                    "site": "proprium.beatae-mariae-virginis-a-rosario-evangelium.s01.pl",
+                    "text": "proprium.beatae-mariae-virginis-a-rosario-evangelium",
+                    "segment": "s01",
+                    "language": "pl",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "86d74a23902a109831eeb1fbcec44656dcd8ba731e87ff842884b6443863f1b7"
+                    ),
+                    "target_sha256": (
+                        "b8ad1ab50d9c71e73b516ea482a80c0d2b3784f1f4300e3692629647ffe31fe3"
+                    ),
+                },
+            },
+            {
+                "before": {
+                    "site": "proprium.dominica-xxiv-post-pentecosten-evangelium.s01.pl",
+                    "text": "proprium.dominica-xxiv-post-pentecosten-evangelium",
+                    "segment": "s01",
+                    "language": "pl",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "2c95a576aaeaec41217c9c970d129664c25a126713ac9dbfe47134fc9c794254"
+                    ),
+                    "target_sha256": (
+                        "bc5d99be24fb266a756d9b43f06dad32e1efbcbed72f6cb7c1904b34a15697ef"
+                    ),
+                },
+                "after": {
+                    "site": "proprium.dominica-xxiv-post-pentecosten-evangelium.s01.pl",
+                    "text": "proprium.dominica-xxiv-post-pentecosten-evangelium",
+                    "segment": "s01",
+                    "language": "pl",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "2c95a576aaeaec41217c9c970d129664c25a126713ac9dbfe47134fc9c794254"
+                    ),
+                    "target_sha256": (
+                        "4e8892540d3150ebe4a5de4eb37cf173a857a113f000b701c38d48209e984e20"
+                    ),
+                },
+            },
+            {
+                "before": {
+                    "site": "proprium.nativitas-domini-in-aurora-graduale.s01.pl",
+                    "text": "proprium.nativitas-domini-in-aurora-graduale",
+                    "segment": "s01",
+                    "language": "pl",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "8a3c0942ae1ef4be868cdcbb2df9608ed492c2163f06c27c83b430be721c1801"
+                    ),
+                    "target_sha256": (
+                        "491a9a630a7f62cbe0999eb9c242b6b34ff33573ab637a82680e73479e0cfbec"
+                    ),
+                },
+                "after": {
+                    "site": "proprium.nativitas-domini-in-aurora-graduale.s01.pl",
+                    "text": "proprium.nativitas-domini-in-aurora-graduale",
+                    "segment": "s01",
+                    "language": "pl",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "5b0d2b7af8df2d37ace98a317f9fcc88cb935c222fe4eca33ed50fa916eb902f"
+                    ),
+                    "target_sha256": (
+                        "491a9a630a7f62cbe0999eb9c242b6b34ff33573ab637a82680e73479e0cfbec"
+                    ),
+                },
+            },
+            {
+                "before": {
+                    "site": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia.s11.pl",
+                    "text": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia",
+                    "segment": "s11",
+                    "language": "pl",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "2b259455c503c95dfbad7f04569c87644045f3415353f44bf0014b32e8cae5f7"
+                    ),
+                    "target_sha256": (
+                        "308d590d9b1c97ef5e60a8ea929e1387de91dbb04efaf3b1214f751872be58fa"
+                    ),
+                },
+                "after": {
+                    "site": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia.s11.pl",
+                    "text": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia",
+                    "segment": "s11",
+                    "language": "pl",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "494d83215bf818a7611197e465c5491e2361c235c6eec92149c1b0928f9fed28"
+                    ),
+                    "target_sha256": (
+                        "308d590d9b1c97ef5e60a8ea929e1387de91dbb04efaf3b1214f751872be58fa"
+                    ),
+                },
+            },
+        ],
+    },
+    "languages/en/translation-provenance.json": {
+        "after_value_sha256": "f7cf876220888f042e9c736ce0c5731e299b06edfae933b3297449cd4f578399",
+        "before_value_sha256": "9ec59f19ddb314d143acbc3b5af0b5930824ee634cacac9b8052058c30c924ac",
+        "rows": [
+            {
+                "before": {
+                    "site": "proprium.annuntiatio-beatae-mariae-virginis-evangelium.s01.en",
+                    "text": "proprium.annuntiatio-beatae-mariae-virginis-evangelium",
+                    "segment": "s01",
+                    "language": "en",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "e293d21193cb63bd417401a9727c4fb27a0fb9e4742ade70ded946dea839dd4c"
+                    ),
+                    "target_sha256": (
+                        "860ed75d5b56fb59860a25c9e43b77cd39df85f532e1545c69daaca7ca77e1f4"
+                    ),
+                },
+                "after": {
+                    "site": "proprium.annuntiatio-beatae-mariae-virginis-evangelium.s01.en",
+                    "text": "proprium.annuntiatio-beatae-mariae-virginis-evangelium",
+                    "segment": "s01",
+                    "language": "en",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "b58632c63a29a5c7fc234c527f1a34cb86124b1e553c4d2d2e3b71d37ef8d946"
+                    ),
+                    "target_sha256": (
+                        "d79167ed9cb963f3bdde68665616ac50057787fad209a3e19dc99992972b5e30"
+                    ),
+                },
+            },
+            {
+                "before": {
+                    "site": "proprium.beata-maria-virgo-regina-evangelium.s01.en",
+                    "text": "proprium.beata-maria-virgo-regina-evangelium",
+                    "segment": "s01",
+                    "language": "en",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "85d3d5f9b0d38ddedc634d2f1a049b54dacbbf07953417c42f4ebc1d0aad1e58"
+                    ),
+                    "target_sha256": (
+                        "33bd121023961bf6ac86275e6f93f467d22d8084006cb43f5f6d3a43e7929108"
+                    ),
+                },
+                "after": {
+                    "site": "proprium.beata-maria-virgo-regina-evangelium.s01.en",
+                    "text": "proprium.beata-maria-virgo-regina-evangelium",
+                    "segment": "s01",
+                    "language": "en",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "fd17edb317d73fc2672186fb51b465dfbb06c71ad96a2c3efea4f2388861b2d3"
+                    ),
+                    "target_sha256": (
+                        "987850df5eb30942765181bb0a974f46a41a857273aa3ec2f4c570d3d0e0daa0"
+                    ),
+                },
+            },
+            {
+                "before": {
+                    "site": "proprium.beatae-mariae-virginis-a-rosario-evangelium.s01.en",
+                    "text": "proprium.beatae-mariae-virginis-a-rosario-evangelium",
+                    "segment": "s01",
+                    "language": "en",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "3880df2edc12b8b4219b336b8e421357259bfbf2ff13be3a7a000a4fcc65fdd3"
+                    ),
+                    "target_sha256": (
+                        "860ed75d5b56fb59860a25c9e43b77cd39df85f532e1545c69daaca7ca77e1f4"
+                    ),
+                },
+                "after": {
+                    "site": "proprium.beatae-mariae-virginis-a-rosario-evangelium.s01.en",
+                    "text": "proprium.beatae-mariae-virginis-a-rosario-evangelium",
+                    "segment": "s01",
+                    "language": "en",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "86d74a23902a109831eeb1fbcec44656dcd8ba731e87ff842884b6443863f1b7"
+                    ),
+                    "target_sha256": (
+                        "d79167ed9cb963f3bdde68665616ac50057787fad209a3e19dc99992972b5e30"
+                    ),
+                },
+            },
+            {
+                "before": {
+                    "site": (
+                        "proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-epistola.s01.en"
+                    ),
+                    "text": "proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-epistola",
+                    "segment": "s01",
+                    "language": "en",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "1d95273d819c7494dadb75d2d63745734f619c1734fa5cfc6a04a69550cd1152"
+                    ),
+                    "target_sha256": (
+                        "b1f270ce23942e000fb04805343d7e74613f669678103972efb6ed69e188c240"
+                    ),
+                },
+                "after": {
+                    "site": (
+                        "proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-epistola.s01.en"
+                    ),
+                    "text": "proprium.dedicatio-archibasilicae-sanctissimi-salvatoris-epistola",
+                    "segment": "s01",
+                    "language": "en",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "1d95273d819c7494dadb75d2d63745734f619c1734fa5cfc6a04a69550cd1152"
+                    ),
+                    "target_sha256": (
+                        "ca9ecaa51c596d79cd06b325443b94848bc95acd99e1e9a29ce6e8f5b8d788b0"
+                    ),
+                },
+            },
+            {
+                "before": {
+                    "site": "proprium.nativitas-domini-in-aurora-graduale.s01.en",
+                    "text": "proprium.nativitas-domini-in-aurora-graduale",
+                    "segment": "s01",
+                    "language": "en",
+                    "familiar_core": False,
+                    "origin": "public-domain",
+                    "review": "working",
+                    "source_sha256": (
+                        "8a3c0942ae1ef4be868cdcbb2df9608ed492c2163f06c27c83b430be721c1801"
+                    ),
+                    "target_sha256": (
+                        "80e2af494f507a4bf60683116f246656194d384341b6f73b7fc484ae5aec7553"
+                    ),
+                },
+                "after": {
+                    "site": "proprium.nativitas-domini-in-aurora-graduale.s01.en",
+                    "text": "proprium.nativitas-domini-in-aurora-graduale",
+                    "segment": "s01",
+                    "language": "en",
+                    "familiar_core": False,
+                    "origin": "public-domain",
+                    "review": "working",
+                    "source_sha256": (
+                        "5b0d2b7af8df2d37ace98a317f9fcc88cb935c222fe4eca33ed50fa916eb902f"
+                    ),
+                    "target_sha256": (
+                        "80e2af494f507a4bf60683116f246656194d384341b6f73b7fc484ae5aec7553"
+                    ),
+                },
+            },
+            {
+                "before": {
+                    "site": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia.s11.en",
+                    "text": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia",
+                    "segment": "s11",
+                    "language": "en",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "2b259455c503c95dfbad7f04569c87644045f3415353f44bf0014b32e8cae5f7"
+                    ),
+                    "target_sha256": (
+                        "d529cc96e606dc7486b32ecd5a34d69838dc1b940c7378f3b587feb17177ccbd"
+                    ),
+                },
+                "after": {
+                    "site": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia.s11.en",
+                    "text": "proprium.septem-dolorum-beatae-mariae-virginis-sequentia",
+                    "segment": "s11",
+                    "language": "en",
+                    "familiar_core": False,
+                    "origin": "working-unsettled",
+                    "review": "working",
+                    "source_sha256": (
+                        "494d83215bf818a7611197e465c5491e2361c235c6eec92149c1b0928f9fed28"
+                    ),
+                    "target_sha256": (
+                        "d529cc96e606dc7486b32ecd5a34d69838dc1b940c7378f3b587feb17177ccbd"
+                    ),
+                },
+            },
+        ],
+    },
+}
 
 
 def write(root, relative, value):
@@ -354,8 +758,24 @@ def predecessor_target_input(relative, value):
     """Exact expected-side target inverse, never a native input or hash substitute."""
     rule = F["target_input_successors"][relative]
     assert F["unchanged"][relative] == rule["before_raw_sha256"]
-    assert digest(value) == rule["after_value_sha256"], "exact Joachim target successor"
     comparison = deepcopy(value)
+    if relative in CURRENT_LEDGER_PREDECESSORS:
+        current = CURRENT_LEDGER_PREDECESSORS[relative]
+        assert digest(value) == current["after_value_sha256"], "exact Joachim target successor"
+        for change in current["rows"]:
+            indices = [
+                i
+                for i, row in enumerate(comparison["sites"])
+                if row["site"] == change["after"]["site"]
+            ]
+            assert len(indices) == 1, "exact Joachim target successor"
+            i = indices[0]
+            assert comparison["sites"][i] == change["after"], "exact Joachim target successor"
+            comparison["sites"][i] = deepcopy(change["before"])
+        assert digest(comparison) == current["before_value_sha256"], (
+            "exact Joachim target successor"
+        )
+    assert digest(comparison) == rule["after_value_sha256"], "exact Joachim target successor"
     for change in reversed(rule["operations"]):
         field = comparison
         for key in change["key"][:-1]:
@@ -383,15 +803,29 @@ def test_real_collation_and_original_fields_remain_exact(source):
         saved = deepcopy(value)
         predecessor = predecessor_target_input(relative, value)
         assert value == saved and predecessor is not value
-        for fault in ("wrong", "missing", "extra"):
+        faults = ("wrong", "missing", "extra")
+        if relative in CURRENT_LEDGER_PREDECESSORS:
+            faults += ("source-digest", "target-digest", "row-extra")
+        for fault in faults:
             try:
                 if fault == "wrong":
                     key = next(iter(value))
                     value[key] = None
                 elif fault == "missing":
                     del value[next(iter(value))]
-                else:
+                elif fault == "extra":
                     value["unexpected_comparison_field"] = True
+                else:
+                    changes = CURRENT_LEDGER_PREDECESSORS[relative]["rows"]
+                    field = "source_sha256" if fault == "source-digest" else "target_sha256"
+                    change = next(
+                        r for r in changes if r["before"].get(field) != r["after"].get(field)
+                    )
+                    row = next(r for r in value["sites"] if r["site"] == change["after"]["site"])
+                    if fault == "row-extra":
+                        row["unexpected_comparison_field"] = True
+                    else:
+                        row[field] = "0" * 64
                 assert value != saved
                 with pytest.raises(
                     AssertionError, match=r"^exact Joachim target successor(?:\n|$)"
@@ -432,7 +866,9 @@ REGISTRY_FAULTS = (
 def test_exact_registry_comparison_inverse_rejects_changed_new_objects(fault):
     current = json.loads((ROOT / REGISTRY).read_bytes())
     saved = deepcopy(current)
-    before = before_chant_registry(headers.before_joachim_registry(current))
+    before = before_chant_registry(
+        headers.before_joachim_registry(before_rosary_registry(before_lateran_registry(current)))
+    )
     assert digest(before) == F["registry_before_canonical_sha256"]
     same_archives, same_bindings = current["archives"], current["bindings"]
     try:
@@ -472,7 +908,14 @@ def test_exact_registry_comparison_inverse_rejects_changed_new_objects(fault):
         same_bindings.update(deepcopy(saved["bindings"]))
         assert current["archives"] is same_archives and current["bindings"] is same_bindings
         assert current == saved
-        assert before_chant_registry(headers.before_joachim_registry(current)) == before
+        assert (
+            before_chant_registry(
+                headers.before_joachim_registry(
+                    before_rosary_registry(before_lateran_registry(current))
+                )
+            )
+            == before
+        )
 
 
 @pytest.mark.parametrize("field", ["uses", "witnesses", "collations"])
@@ -480,7 +923,9 @@ def test_exact_complete_graph_comparison_and_recovery(field):
     graph = json.loads((ROOT / GRAPH).read_bytes())
     saved = deepcopy(graph)
     historical = before_exaltation_comparison(
-        before_chant_graph(headers.before_joachim_records(graph))
+        before_chant_graph(
+            headers.before_joachim_records(before_rosary_graph(before_lateran_graph(graph)))
+        )
     )
     assert digest(historical) == F["graph_before_canonical_sha256"]
     row = record(graph, field, F["records"][field]["after"]["id"])
@@ -497,7 +942,11 @@ def test_exact_complete_graph_comparison_and_recovery(field):
         row.update(original)
         assert graph == saved
         assert (
-            before_exaltation_comparison(before_chant_graph(headers.before_joachim_records(graph)))
+            before_exaltation_comparison(
+                before_chant_graph(
+                    headers.before_joachim_records(before_rosary_graph(before_lateran_graph(graph)))
+                )
+            )
             == historical
         )
 

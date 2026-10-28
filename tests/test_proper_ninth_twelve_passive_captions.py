@@ -8,6 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from negative_government_fixture import predecessor_layer, predecessor_rows
 
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -132,7 +133,7 @@ def frame_readback(core, layer, frame):
 
 
 def preserved(layer, case):
-    comparison = deepcopy(layer)
+    comparison = predecessor_layer(layer, "unchanged ninth remainder")
     for group in FIXTURE["groups"]:
         if (group["text"], group["language"]) == (case["text"], case["language"]):
             reviewed_group(comparison, group)
@@ -170,13 +171,17 @@ def test_complete_real_layer_native_reader_and_predecessor_identity(case):
     assert canonical_hash(core) == case["core_sha256"]
     shape(core, layer)
     preserved(layer, case)
-    assert {sid: segment.get("translation") for sid, segment in layer["segments"].items()} == case[
-        "prose"
-    ]
+    assert {
+        sid: segment.get("translation")
+        for sid, segment in predecessor_layer(layer)["segments"].items()
+    } == case["prose"]
     ledger = json.loads(
         (ROOT / "languages" / case["language"] / "translation-provenance.json").read_text()
     )
-    assert [row for row in ledger["sites"] if row["text"] == case["text"]] == case["provenance"]
+    assert (
+        predecessor_rows([row for row in ledger["sites"] if row["text"] == case["text"]])
+        == case["provenance"]
+    )
     base, target, tables = compact(core, layer)
     expected_core, expected_layers = emit._strip(
         expand_core(core), {case["language"]: enrich_layer(core, layer)}

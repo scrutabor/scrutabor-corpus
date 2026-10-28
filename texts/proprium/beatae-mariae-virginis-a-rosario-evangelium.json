@@ -76,7 +76,7 @@
         { "id": "w055", "form": "cogitábat", "lemma": "cogito", "morph": { "pos": "verb", "mood": "ind", "number": "sg", "person": 3, "tense": "impf", "voice": "act", "conj": 1 } },
         { "id": "w056", "form": "qualis", "lemma": "qualis", "morph": { "pos": "adj", "case": "nom", "gender": "f", "number": "sg" }, "head": "w059" },
         { "id": "w057", "form": "esset", "lemma": "sum", "morph": { "mood": "subj", "number": "sg", "person": 3, "pos": "verb", "tense": "impf", "voice": "act" } },
-        { "id": "w058", "form": "ista", "lemma": "iste", "morph": { "pos": "pron", "case": "nom", "number": "sg" } },
+        { "id": "w058", "form": "ista", "lemma": "iste", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "f" } },
         { "id": "w059", "form": "salutátio", "lemma": "salutatio", "morph": { "pos": "noun", "case": "nom", "gender": "f", "number": "sg", "decl": 3 }, "post": "." },
         { "id": "w060", "form": "Et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w061", "form": "ait", "lemma": "aio", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "pres", "voice": "act" } },
@@ -138,7 +138,7 @@
         { "id": "w117", "form": "Ángelum", "lemma": "angelus", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" }, "post": ":" },
         { "id": "w118", "form": "Quómodo", "lemma": "quomodo", "morph": { "pos": "adv" } },
         { "id": "w119", "form": "fiet", "lemma": "fio", "morph": { "mood": "ind", "number": "sg", "person": 3, "pos": "verb", "tense": "fut", "voice": "act" } },
-        { "id": "w120", "form": "istud", "lemma": "iste", "morph": { "pos": "pron", "case": "nom", "number": "sg" }, "post": "," },
+        { "id": "w120", "form": "istud", "lemma": "iste", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "n" }, "post": "," },
         { "id": "w121", "form": "quóniam", "lemma": "quoniam", "morph": { "pos": "conj" } },
         { "id": "w122", "form": "virum", "lemma": "vir", "morph": { "case": "acc", "decl": 2, "gender": "m", "number": "sg", "pos": "noun" } },
         { "id": "w123", "form": "non", "lemma": "non", "morph": { "pos": "adv" } },
@@ -221,7 +221,7 @@
     "status": "working-edition",
     "notes": "The source boundary, liturgical function, and biblical or liturgical citation are recorded in the witness files. Printed rubrics and abbreviated conclusions are retained according to the approved 1962 Benziger printing.",
     "source": {
-      "method": "Transcribed from the directly viewed page image of the Benziger Brothers 1962 Editio iuxta typicam and independently collated against the pinned Divinum Officium witness; all divergences are declared in the apparatus.",
+      "method": "The controlling Latin is transcribed from the directly viewed page image of the Benziger Brothers 1962 Editio iuxta typicam. The present digital comparison uses the complete Luke 1:26–38 Gospel printed in the pinned Mass source Sancti/09-12, not a verified resolution of the Rosary proper reference Sancti/9-12. This records current textual corroboration, not the original transcription workflow. All differences between the selected Latin and the two current transcriptions are declared in the apparatus.",
       "witnesses": "witnesses/proprium.beatae-mariae-virginis-a-rosario-evangelium/",
       "apparatus": "witnesses/proprium.beatae-mariae-virginis-a-rosario-evangelium/apparatus.json"
     },
@@ -266,6 +266,7 @@
     }
   },
   "localization": {
-    "about": true
+    "about": true,
+    "notes": ["w124", "w146", "w178"]
   }
 }

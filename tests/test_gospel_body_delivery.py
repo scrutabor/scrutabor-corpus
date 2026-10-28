@@ -33,6 +33,8 @@ from gospel_delivery_fixture import (
     without_gospel_delivery,
     without_sung_delivery,
 )
+from iste_gender_fixture import before_iste_gender, current_iste_source_hash
+from rosary_gospel_source_fixture import before_rosary_records
 from witness_header_fixture import before_privacy
 
 from build_reader import bibliography_bindings as bindings
@@ -566,26 +568,29 @@ def test_the_overlay_binds_exactly_the_delivery_additions(text_id):
     doc = text(text_id)
     change = DATA["source"][text_id]
     assert list(change) == verse_ids(text_id)
-    historical = without_gospel_delivery(doc)
+    comparison = before_iste_gender(doc)
+    historical = without_gospel_delivery(comparison)
     assert historical["segments"] == [
-        {key: value for key, value in s.items() if key != "delivery"} for s in doc["segments"]
+        {key: value for key, value in s.items() if key != "delivery"}
+        for s in comparison["segments"]
     ]
     assert {key: value for key, value in historical.items() if key != "segments"} == {
-        key: value for key, value in doc.items() if key != "segments"
+        key: value for key, value in comparison.items() if key != "segments"
     }
-    for seg in verses(doc):
+    for seg in verses(comparison):
         entry = change[seg["id"]]
         assert entry["delivery"] == seg["delivery"] == CALL
         assert canonical_hash(source_payload(seg)) == entry["after"]
         assert canonical_hash(source_payload(segment(historical, seg["id"]))) == entry["before"]
-        assert current_gospel_source_hash(text_id, seg["id"], entry["before"]) == entry["after"]
-        assert current_sung_source_hash(text_id, seg["id"], entry["before"]) == entry["after"]
+        expected = current_iste_source_hash(text_id, seg["id"], entry["after"])
+        assert current_gospel_source_hash(text_id, seg["id"], entry["before"]) == expected
+        assert current_sung_source_hash(text_id, seg["id"], entry["before"]) == expected
     selected = DATA["selected"][text_id]
     assert bindings.digest(bindings.selected_text(doc)) == selected["after"]
     assert bindings.digest(bindings.selected_text(historical)) == selected["before"]
     assert current_gospel_selected_hash(text_id, selected["before"]) == selected["after"]
     assert current_sung_selected_hash(text_id, selected["before"]) == selected["after"]
-    assert without_sung_delivery(doc) == historical
+    assert without_sung_delivery(comparison) == historical
 
 
 @pytest.mark.parametrize("language", ("pl", "en"))
@@ -604,7 +609,9 @@ def test_every_gospel_ledger_row_advances_only_its_source_hash(language):
         assert current_gospel_expected_row(previous) == row
         assert current_sung_expected_row(previous) == row
         assert row == snapshot
-        assert row["source_sha256"] == change["after"]
+        assert row["source_sha256"] == current_iste_source_hash(
+            row["text"], row["segment"], change["after"]
+        )
     other = next(row for row in ledger if row["text"] not in DATA["source"])
     assert current_gospel_expected_row(other) == other
 
@@ -617,7 +624,9 @@ def graph_records(graph: dict[str, Any], text_id: str) -> dict[str, list[dict[st
 
 
 def without_apparatus_hash(row: dict[str, Any]) -> dict[str, Any]:
-    return {key: value for key, value in row.items() if key != "apparatus_sha256"}
+    return {
+        key: value for key, value in before_rosary_records(row).items() if key != "apparatus_sha256"
+    }
 
 
 def test_the_graph_overlay_is_exactly_the_stored_selected_text_digests():

@@ -8,6 +8,8 @@ from pathlib import Path
 
 import pytest
 from chant_fragment_fixture import before_chant_registry
+from lateran_epistle_source_fixture import before_lateran_registry
+from rosary_gospel_source_fixture import before_rosary_registry
 from witness_header_fixture import before_joachim_registry
 
 from build_reader.bibliography import public_text_evidence
@@ -468,7 +470,9 @@ def test_preexisting_raw_registry_objects_are_unchanged():
 
     def check():
         assert registry["bindings"].get(identity) == expected
-        historical = before_chant_registry(before_joachim_registry(registry))
+        historical = before_chant_registry(
+            before_joachim_registry(before_rosary_registry(before_lateran_registry(registry)))
+        )
         del historical["bindings"][identity]
         for field, rows in c9.items():
             for key, value in rows.items():
