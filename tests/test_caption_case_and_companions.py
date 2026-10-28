@@ -878,6 +878,14 @@ def test_first_opening_caption_rejects_predecessor_and_restores(row):
     assert language_packs.check_core(core) == []
     assert language_packs.check_layer(core, layer, path_of(row[1], row[0])) == []
     row = opening_case(row, core, layer)
+    if row[1] == P + "assumptio-beatae-mariae-virginis-postcommunio":
+        # Preserve the historical case/ID; only its expected wording has a successor.
+        before, after = {
+            "pl": ("Przyjąwszy", "Przyjęliśmy"),
+            "en": ("Having received", "We have received"),
+        }[row[0]]
+        assert row[2:] == ("s01", ("w001",), None, before, ("Sumptis",), (before.lower(),))
+        row = (*row[:5], after, row[6], (*row[7], before, after[0].lower() + after[1:]))
     saved = deepcopy(layer)
     pin = row[:7]
     assert caption_diagnostics(pin, core, layer) == []

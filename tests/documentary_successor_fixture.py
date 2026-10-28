@@ -52,9 +52,43 @@ LEDGER_FRAMES = {
 }
 
 
+AGENCY_EN_ROW = {
+    "site": "proprium.assumptio-beatae-mariae-virginis-postcommunio.s01.en",
+    "text": "proprium.assumptio-beatae-mariae-virginis-postcommunio",
+    "segment": "s01",
+    "language": "en",
+    "familiar_core": False,
+    "origin": "working-unsettled",
+    "review": "working",
+    "source_sha256": "71ac0007736a7cb9b41e4562cc6fdda51731b471830f4f959dea5d5b5d84475a",
+    "target_sha256": "76166504f422490971ae795696252da168e8e4357ef43e9b015d432c2d24eb47",
+}
+AGENCY_EN_AFTER_TARGET = "5304dfc0cef8c7797f7eeff966a994655d14084de5d521d3dc9656b4c556a1b4"
+AGENCY_EN_CURRENT = "b58e95b122b19efb9c36338996d99ccc8e844039b48850a0d819156728f02321"
+
+
+def before_agency_ledger(relative, value, diagnostic="agency current ledger"):
+    """Reverse one exact new target digest on an expected-side copy only."""
+    assert relative in LEDGER_FRAMES, diagnostic
+    if relative != "languages/en/translation-provenance.json":
+        return deepcopy(value)
+    assert digest(value) == AGENCY_EN_CURRENT, diagnostic
+    indices = [i for i, row in enumerate(value["sites"]) if row["site"] == AGENCY_EN_ROW["site"]]
+    assert len(indices) == 1, diagnostic
+    (index,) = indices
+    assert value["sites"][index] == {**AGENCY_EN_ROW, "target_sha256": AGENCY_EN_AFTER_TARGET}, (
+        diagnostic
+    )
+    result = deepcopy(value)
+    result["sites"][index] = deepcopy(AGENCY_EN_ROW)
+    assert digest(result) == LEDGER_FRAMES[relative]["current"], diagnostic
+    return result
+
+
 def predecessor_ledger(relative, value, diagnostic="Lauda current ledger"):
     """Unwind exactly six Lauda rows on a guarded comparison copy, never native input."""
     assert relative in LEDGER_FRAMES, diagnostic
+    value = before_agency_ledger(relative, value, diagnostic)
     rule = LEDGER_FRAMES[relative]
     assert rule["before"] == DATA["ledgers"][relative]["after_sha256"], diagnostic
     assert digest(value) == rule["current"], diagnostic
