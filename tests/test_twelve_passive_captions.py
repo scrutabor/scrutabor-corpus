@@ -47,6 +47,38 @@ def parent_at(value, pointer):
 
 def predecessor(layer):
     result = deepcopy(layer)
+    if layer["language"] == "en" and layer["text"] == CREED:
+        require(
+            canonical(result) == "d7de9f14766b37930719788ad05a5db9eef31775faf3478a044803dd68a24653",
+            "whole passive predecessor",
+        )
+        for segment, group, captions in (
+            (
+                "s13",
+                {"words": ["w113", "w114"], "anchor": "w114", "gloss": "there will be no"},
+                {"w113": "no", "w114": "there will be"},
+            ),
+            (
+                "s19",
+                {"words": ["w161", "w162"], "anchor": "w162", "gloss": "of the age to come"},
+                {"w161": "to come", "w162": "of the age"},
+            ),
+        ):
+            groups = result["segments"][segment]["alignments"]
+            require(groups[-1] == group, "whole passive predecessor")
+            require(
+                all("gloss" not in result["words"][wid] for wid in captions),
+                "whole passive predecessor",
+            )
+            groups.pop()
+            if not groups:
+                del result["segments"][segment]["alignments"]
+            for wid, gloss in captions.items():
+                result["words"][wid]["gloss"] = gloss
+        require(
+            canonical(result) == "c96b861ca17d25ad250ace5f1aede154afe94d3aa8e1fea2b21dd8a046ddbfd0",
+            "whole passive predecessor",
+        )
     path = DATA["layers"][layer["language"] + ":" + layer["text"]]["path"]
     for operation in reversed(DATA["operations"]):
         if operation["path"] != path:

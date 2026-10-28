@@ -886,6 +886,10 @@ def test_first_opening_caption_rejects_predecessor_and_restores(row):
         }[row[0]]
         assert row[2:] == ("s01", ("w001",), None, before, ("Sumptis",), (before.lower(),))
         row = (*row[:5], after, row[6], (*row[7], before, after[0].lower() + after[1:]))
+    elif row[:2] == ("pl", P + "commemoratio-omnium-fidelium-defunctorum-missa-i-secreta"):
+        # The original opening case stays immutable; its expected caption has a successor.
+        assert row[2:] == ("s01", ("w001",), None, "Ofiary", ("Hóstias",), ("ofiary",))
+        row = (*row[:5], "Na ofiary", row[6], (*row[7], "Ofiary", "na ofiary"))
     saved = deepcopy(layer)
     pin = row[:7]
     assert caption_diagnostics(pin, core, layer) == []
