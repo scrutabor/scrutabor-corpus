@@ -47,7 +47,7 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
-from checks import participation_performance
+from checks import participation_performance, requiem_dismissal
 from checks.layout import formatted
 from checks.office import is_office
 from checks.orations import genus as oration_genus
@@ -94,6 +94,7 @@ CANTU_II = (
     "ordinarium.credo",
     "ordinarium.sanctus",
     "ordinarium.agnus-dei",
+    "ordinarium.agnus-dei-defunctorum",
 )
 
 # n. 31 c — "una cum sacerdote celebrante recitant", low Mass, third degree.
@@ -102,6 +103,7 @@ LECTA_III = (
     "ordinarium.credo",
     "ordinarium.sanctus",
     "ordinarium.agnus-dei",
+    "ordinarium.agnus-dei-defunctorum",
 )
 
 # n. 32 — the whole Pater noster with the celebrant, at a low Mass, in Latin
@@ -317,7 +319,11 @@ def run(write: bool = False) -> int:
         doc = json.loads(path.read_text(encoding="utf-8"))
         from checks import ritual
 
-        invalid = ritual.base_errors(doc) + participation_performance.base_errors(doc)
+        invalid = (
+            ritual.base_errors(doc)
+            + participation_performance.base_errors(doc)
+            + requiem_dismissal.base_errors(doc)
+        )
         if invalid:
             problems += len(invalid)
             for error in invalid:
@@ -362,7 +368,11 @@ def check_doc(doc: dict[str, Any]) -> tuple[list[str], int]:
     """For run_checks: what this text carries against what the law gives."""
     from checks import ritual
 
-    errors = ritual.base_errors(doc) + participation_performance.base_errors(doc)
+    errors = (
+        ritual.base_errors(doc)
+        + participation_performance.base_errors(doc)
+        + requiem_dismissal.base_errors(doc)
+    )
     attributed = 0
     stray = unknown_genus(doc)
     if stray:

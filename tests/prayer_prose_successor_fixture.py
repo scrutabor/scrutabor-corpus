@@ -4,6 +4,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from requiem_successor_fixture import before_requiem_ledger
+
 from build_reader.bibliography_bindings import digest
 
 DATA = json.loads((Path(__file__).parent / "fixtures/prayer-prose-successors.json").read_bytes())
@@ -33,6 +35,7 @@ def before_prayer_prose_ledger(relative, value, diagnostic="prayer prose ledger"
         "languages/en/translation-provenance.json",
         "languages/pl/translation-provenance.json",
     ), diagnostic
+    value = before_requiem_ledger(relative, value, diagnostic)
     language = relative.split("/")[1]
     rule = DATA["ledgers"][language]
     assert rule["relative"] == relative, diagnostic

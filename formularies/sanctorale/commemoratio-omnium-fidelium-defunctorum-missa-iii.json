@@ -1,5 +1,5 @@
 {
-  "formulary_schema": "1.4.0",
+  "formulary_schema": "1.5.0",
   "id": "commemoratio-omnium-fidelium-defunctorum-missa-iii",
   "order": 98,
   "collection": "sanctorale",
@@ -19,6 +19,18 @@
         "s10"
       ],
       "reason": "lavabo-doxology"
+    },
+    {
+      "text": "ordinarium.iudica-me",
+      "reason": "requiem-iudica"
+    },
+    {
+      "text": "ordinarium.qui-dixisti",
+      "reason": "requiem-peace-prayer"
+    },
+    {
+      "text": "ordinarium.benedictio",
+      "reason": "requiem-blessing"
     }
   ],
   "ordinary": {
@@ -90,6 +102,12 @@
       "key": "praefatio",
       "role": "praefatio",
       "text": "ordinarium.praefatio-defunctorum",
+      "relation": "shared"
+    },
+    {
+      "key": "agnus-dei",
+      "role": "agnus-dei",
+      "text": "ordinarium.agnus-dei-defunctorum",
       "relation": "shared"
     },
     {

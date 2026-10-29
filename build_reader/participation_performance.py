@@ -7,10 +7,10 @@ from pathlib import Path
 
 
 def verify(out: Path, manifest: dict) -> list[str]:
-    """The current reader retains all five descriptors, even if the source also lost them."""
+    """The current reader retains all eleven descriptors, even if the source lost them."""
     errors = []
-    if manifest.get("schema_version") != "6.9.0":
-        return ["participation performance requires reader 6.9.0"]
+    if manifest.get("schema_version") != "6.10.0":
+        return ["participation performance requires reader 6.10.0"]
     entries = [
         entry for entry in manifest.get("texts", []) if entry.get("id") == "ordinarium.sanctus"
     ]
@@ -52,4 +52,57 @@ def verify(out: Path, manifest: dict) -> list[str]:
             or row.get("delivery") != {"cantu": {"voice": "secreto"}}
         ):
             errors.append(f"{row.get('id')}: published priestly base changed")
+    errors.extend(_agni(out, manifest))
+    return errors
+
+
+def _agni(out: Path, manifest: dict) -> list[str]:
+    # A separate literal inventory prevents the producer from accepting its own omission.
+    inventories = {
+        "agnus-dei": (["s01", "s02", "s03", "s04", "s05"], {"s02", "s03", "s04"}, 25),
+        "agnus-dei-defunctorum": (["s01", "s02", "s03"], {"s01", "s02", "s03"}, 28),
+    }
+    errors = []
+    for slug, (identities, verses, count) in inventories.items():
+        identity = "ordinarium." + slug
+        path = f"texts/ordinarium/{slug}.json"
+        entries = [e for e in manifest.get("texts", []) if e.get("id") == identity]
+        if len(entries) != 1 or entries[0].get("path") != path or not (out / path).is_file():
+            errors.append(f"performance requires one declared complete {identity} artifact")
+            continue
+        artifact = json.loads((out / path).read_text())
+        rows = artifact.get("seg", [])
+        if artifact.get("id") != identity or [r.get("id") for r in rows] != identities:
+            errors.append(f"{identity}: performance source rows differ")
+        # Compact words are tuples; stable IDs are verified by the full round-trip gate.
+        if sum(len(r.get("w", [])) for r in rows) != count:
+            errors.append(f"{identity}: performance word count differs")
+        for row in rows:
+            expected = (
+                {
+                    "lecta": {"gradus": 3, "source": "DMS 31 c"},
+                    "cantu": {
+                        "gradus": 2,
+                        "source": "DMS 25 b",
+                        "performance": {
+                            "speaker": "schola",
+                            "voice": "cantus",
+                            "source": "DMS 25 b; 26",
+                        },
+                    },
+                }
+                if row.get("id") in verses
+                else None
+            )
+            if row.get("participation") != expected:
+                errors.append(
+                    f"{identity}/{row.get('id')}: published performance differs or is absent"
+                )
+            if expected and (
+                row.get("type") != "verse"
+                or row.get("speaker") != "sacerdos"
+                or row.get("voice") != "clara"
+                or row.get("delivery") != {"cantu": {"voice": "secreto"}}
+            ):
+                errors.append(f"{identity}/{row.get('id')}: published priestly base changed")
     return errors

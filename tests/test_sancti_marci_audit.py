@@ -189,7 +189,7 @@ def polish_texts():
 
 def test_no_polish_nec_reads_ani_before_an_unnegated_verb():
     examined = polish_texts()
-    assert len(examined) == 1219
+    assert len(examined) == 1221
     assert [hit for text in examined for hit in nec_ani_sites(text)] == []
     # Positive control: the predecessor caption at the Lesson is found again.
     bad = layer("pl", LESSON)

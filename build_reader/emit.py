@@ -15,6 +15,7 @@ from build_reader import (
     dismissal,
     introductiones,
     participation_performance,
+    requiem,
     store,
 )
 from checks.formularies import TITLE_SCHEMA as FORMULARY_TITLE_SCHEMA
@@ -22,6 +23,7 @@ from checks.formularies import ordinary_errors
 from checks.lavabo_omissions import CATALOG_SCHEMA as FORMULARY_SCHEMA
 from checks.lavabo_omissions import errors as lavabo_omission_errors
 from checks.participation_performance import publication_errors
+from checks.requiem_dismissal import publication_errors as dismissal_publication_errors
 from kalendarium.canon import calendar_table
 from kalendarium.commemorationes import calendar_table as commemoration_table
 from kalendarium.dismissal import calendar_table as dismissal_table
@@ -69,7 +71,8 @@ from kalendarium.dismissal import calendar_table as dismissal_table
 # 6.7.0 adds optional localized commemoration context maps (catalogue schema 1.1.0).
 # 6.8.0 carries the closed source-owned Lavabo segment omissions in neutral catalogue1.4.
 # 6.9.0 exposes authored commemoration slot ownership (selection schema 2.2.0).
-SCHEMA = "6.9.0"
+# 6.10.0 adds complete Requiem assembly and closed Ordinary performance.
+SCHEMA = "6.10.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -896,7 +899,7 @@ def emit(corpus: Path, out: Path) -> dict[str, Any]:
     introductiones.input_bodies(corpus)
     corpus_docs = read_corpus(corpus)
     for document, _ in corpus_docs:
-        errors = publication_errors(document)
+        errors = publication_errors(document) + dismissal_publication_errors(document)
         if errors:
             raise ValueError(f"{document['id']}: {'; '.join(errors)}")
     evidence_graph, language_evidence = bibliography.load(corpus)
@@ -1402,6 +1405,7 @@ def verify_edition_artifacts(
     errors.extend(commemorationes.verify(corpus, out, manifest, SCHEMA))
     errors.extend(introductiones.verify(corpus, out, manifest, SCHEMA))
     errors.extend(participation_performance.verify(out, manifest))
+    errors.extend(requiem.manifest_errors(manifest))
     if errors:
         return errors  # Canon dependencies must resolve before global index checks
 
@@ -1430,6 +1434,8 @@ def verify_edition_artifacts(
         errors.append(f"manifest: {name} was written and no manifest declares it")
     if errors:
         return errors  # unresolvable paths would only cascade below
+
+    errors.extend(requiem.verify(corpus, out, manifest))
 
     corpus_docs = read_corpus(corpus)
     texts_by_number: list[dict] = []

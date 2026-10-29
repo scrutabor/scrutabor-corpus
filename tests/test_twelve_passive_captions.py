@@ -6,15 +6,17 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from requiem_successor_fixture import before_requiem_ledger
 
 from build_reader import emit
 from build_reader.layers import enrich_layer, expand_core
-from checks import interlinear, language_packs, prose
+from checks import interlinear, language_packs, prose, translation_provenance
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = json.loads(
     (ROOT / "tests/fixtures/twelve-passive-captions.json").read_text(encoding="utf-8")
 )
+CURRENT = json.loads((ROOT / "tests/fixtures/twelve-passive-current-successors.json").read_bytes())
 CASES = DATA["cases"]
 CONTROLS = DATA["controls"]
 LAYERS = list(DATA["layers"])
@@ -45,8 +47,25 @@ def parent_at(value, pointer):
     return value, pointer[-1]
 
 
-def predecessor(layer):
+def before_current_successor(layer):
+    """Undo only exact later Last-Gospel changes on a complete comparison copy."""
     result = deepcopy(layer)
+    if layer["text"] != CURRENT["text"]:
+        return result
+    message = "whole passive predecessor"
+    require(layer["language"] in CURRENT["layers"], message)
+    rule = CURRENT["layers"][layer["language"]]
+    require(canonical(layer) == rule["after_canonical_sha256"], message)
+    for operation in reversed(rule["operations"]):
+        parent, key = parent_at(result, operation["pointer"])
+        require(key in parent and parent[key] == operation["after"], message)
+        parent[key] = deepcopy(operation["before"])
+    require(canonical(result) == rule["before_canonical_sha256"], message)
+    return result
+
+
+def predecessor(layer):
+    result = before_current_successor(layer)
     if layer["language"] == "en" and layer["text"] == CREED:
         require(
             canonical(result) == "d7de9f14766b37930719788ad05a5db9eef31775faf3478a044803dd68a24653",
@@ -332,6 +351,7 @@ def test_actual_reader_payload_damage_rejects_then_recovers(case):
     artifact = artifact_for(core, layer)
     reader_case(core, artifact, case)
     saved = deepcopy(artifact)
+    same_input = artifact
     for fault in ("caption", "duplicate", "direct"):
         row, expected = reader_case(core, artifact, case)
         target = next(g for g in row["a"] if g == expected)
@@ -348,6 +368,7 @@ def test_actual_reader_payload_damage_rejects_then_recovers(case):
         finally:
             artifact.clear()
             artifact.update(deepcopy(saved))
+            assert artifact is same_input
             assert artifact == saved
             reader_case(core, artifact, case)
 
@@ -367,7 +388,8 @@ def test_unrelated_full_layer_change_cannot_hide_in_inverse(identity, fault):
         elif fault == "help":
             layer["words"]["w001"]["note"] = "Extra."
         else:
-            layer["words"]["w001"]["gloss"] += " extra"
+            outside_word = "w007" if identity == "en:ordinarium.evangelium-ultimum" else "w001"
+            layer["words"][outside_word]["gloss"] += " extra"
         assert layer != saved
         with pytest.raises(AssertionError, match=r"^whole passive predecessor$"):
             predecessor(layer)
@@ -379,8 +401,52 @@ def test_unrelated_full_layer_change_cannot_hide_in_inverse(identity, fault):
 
 
 @pytest.mark.parametrize("language", ["pl", "en"])
-def test_all_existing_provenance_rows_remain_exact(language):
-    path = ROOT / "languages" / language / "translation-provenance.json"
-    ledger = json.loads(path.read_bytes())
-    rows = [row for row in ledger["sites"] if row["text"] in DATA["cores"]]
+def test_all_existing_provenance_rows_remain_exact(language, monkeypatch):
+    relative = f"languages/{language}/translation-provenance.json"
+    path = ROOT / relative
+    raw = path.read_bytes()
+    ledger = json.loads(raw)
+    saved, same_input = deepcopy(ledger), ledger
+    site = f"{CURRENT['text']}.s02.{language}"
+    row = next(row for row in ledger["sites"] if row["site"] == site)
+    original, same_row = deepcopy(row), row
+    recorded, errors = translation_provenance.load(ROOT)
+    assert errors == [] and recorded[site] == row
+    recorded[site] = row
+    calls = []
+
+    def actual_recorded_input(corpus):
+        assert corpus == ROOT
+        calls.append(recorded)
+        return recorded, []
+
+    # Native source/target expectations remain the actual corpus. The same
+    # loaded current row is injected, with no historical comparison inverse.
+    monkeypatch.setattr(translation_provenance, "load", actual_recorded_input)
+    assert translation_provenance.check(ROOT)[0] == []
+    comparison = before_requiem_ledger(relative, ledger)
+    rows = [row for row in comparison["sites"] if row["text"] in DATA["cores"]]
     assert rows == DATA["provenance"][language]
+    assert comparison is not ledger and ledger == saved
+    try:
+        if language == "pl":
+            assert row["familiar_core"] is True
+            row["familiar_core"] = False
+            expected = f"{site}: stale or incorrect familiar_core"
+        else:
+            row["target_sha256"] = "0" * 64
+            expected = f"{site}: stale target_sha256"
+        messages, _ = translation_provenance.check(ROOT)
+        assert expected in messages
+        assert calls[-1] is recorded and recorded[site] is row and row != original
+        with pytest.raises(AssertionError, match=r"^passive ledger successor(?:\n|$)"):
+            before_requiem_ledger(relative, ledger, "passive ledger successor")
+        assert ledger is same_input and row is same_row and ledger != saved
+    finally:
+        row.clear()
+        row.update(deepcopy(original))
+    assert row is same_row and recorded[site] is row
+    assert ledger is same_input and ledger == saved
+    assert translation_provenance.check(ROOT)[0] == []
+    assert before_requiem_ledger(relative, ledger) == comparison
+    assert path.read_bytes() == raw

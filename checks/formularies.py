@@ -39,6 +39,7 @@ ROLES = (
     "offertorium",
     "secreta",
     "praefatio",
+    "agnus-dei",
     "communio",
     "laudes-psalmus",
     "laudes-canticum",

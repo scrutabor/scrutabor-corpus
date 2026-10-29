@@ -65,10 +65,10 @@ def copied_mass(root, mass="dominica-i-passionis"):
 
 
 def test_complete_catalogue_keeps_all_texts_and_explicit_retention_rows():
-    assert len(list((CORPUS / "texts").glob("*/*.json"))) == 1219
+    assert len(list((CORPUS / "texts").glob("*/*.json"))) == 1221
     authored = [read(path) for path in (CORPUS / "formularies").glob("*/*.json")]
     catalogue = formulary_catalog(CORPUS)
-    assert catalogue["schema_version"] == "1.4.0"
+    assert catalogue["schema_version"] == "1.5.0"
     assert len(authored) == len(catalogue["formularies"]) == 114
     assert {row["id"] for row in authored if row.get("ordinary_omissions")} == OMITTED
     assert {row["id"] for row in catalogue["formularies"] if row["ordinary_omissions"]} == OMITTED
@@ -76,10 +76,21 @@ def test_complete_catalogue_keeps_all_texts_and_explicit_retention_rows():
         sorted(authored, key=lambda row: row["order"]), catalogue["formularies"], strict=True
     ):
         assert emitted["ordinary"] == original["ordinary"]
-        assert emitted["ordinary_omissions"] == (
+        # Compare only the historical Lavabo seam on a fresh list. The new
+        # full All Souls prescriptions are independently covered in test_requiem_assembly.
+        lavabo = [
+            row for row in emitted["ordinary_omissions"] if row["reason"] == "lavabo-doxology"
+        ]
+        assert lavabo == (
             [{**DESCRIPTOR, "text": "ordinarium/lavabo"}] if original["id"] in OMITTED else []
         )
-        assert original["formulary_schema"] == ("1.4.0" if original["id"] in OMITTED else "1.3.0")
+        assert original["formulary_schema"] == (
+            "1.5.0"
+            if original["observance"] == "commemoratio-omnium-fidelium-defunctorum"
+            else "1.4.0"
+            if original["id"] in OMITTED
+            else "1.3.0"
+        )
         if original["id"] not in OMITTED:
             assert "ordinary_omissions" not in original
     for language in ("pl", "en"):

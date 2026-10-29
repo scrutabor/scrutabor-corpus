@@ -7,7 +7,7 @@ from pathlib import Path
 
 LEGACY_SCHEMA = "1.3.0"
 OMISSION_SCHEMA = "1.4.0"
-CATALOG_SCHEMA = "1.4.0"
+CATALOG_SCHEMA = "1.5.0"
 DESCRIPTOR = {
     "text": "ordinarium.lavabo",
     "segments": ["s09", "s10"],
@@ -32,9 +32,17 @@ def required(doc: dict) -> bool:
 
 
 def errors(doc: dict, corpus: Path) -> list[str]:
+    from checks.requiem_assembly import assembly_errors, is_requiem
+
+    if is_requiem(doc):
+        return assembly_errors(doc, corpus)
     needed = required(doc)
     schema = OMISSION_SCHEMA if needed else LEGACY_SCHEMA
     result = []
+    if isinstance(doc.get("components"), list) and any(
+        isinstance(c, dict) and c.get("role") == "agnus-dei" for c in doc["components"]
+    ):
+        result.append("agnus-dei component is not prescribed for this Mass")
     if doc.get("formulary_schema") != schema:
         result.append(f"formulary_schema must be {schema}")
     if needed:
@@ -44,6 +52,12 @@ def errors(doc: dict, corpus: Path) -> list[str]:
         result.append("ordinary_omissions is not prescribed for this Mass")
     if result or not needed:
         return result
+    return target_errors(corpus)
+
+
+def target_errors(corpus: Path) -> list[str]:
+    """The same complete canonical Lavabo boundary for either assembly schema."""
+    result = []
     try:
         text = json.loads((corpus / "texts/ordinarium/lavabo.json").read_text(encoding="utf-8"))
         segments = text["segments"]

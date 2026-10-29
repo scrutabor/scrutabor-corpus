@@ -65,20 +65,29 @@ def test_all_authored_fields_and_both_omission_shapes_project_independently(actu
         for component in row["components"]:
             component["text"] = component["text"].replace(".", "/", 1)
         if doc["id"] in OMITTED:
-            assert doc["ordinary_omissions"] == [
+            omissions = [
                 {
                     "text": "ordinarium.lavabo",
                     "segments": ["s09", "s10"],
                     "reason": "lavabo-doxology",
                 }
             ]
-            row["ordinary_omissions"] = [
-                {
-                    "text": "ordinarium/lavabo",
-                    "segments": ["s09", "s10"],
-                    "reason": "lavabo-doxology",
-                }
-            ]
+            if doc["id"] in {
+                "commemoratio-omnium-fidelium-defunctorum",
+                "commemoratio-omnium-fidelium-defunctorum-missa-ii",
+                "commemoratio-omnium-fidelium-defunctorum-missa-iii",
+            }:
+                omissions.extend(
+                    [
+                        {"text": "ordinarium.iudica-me", "reason": "requiem-iudica"},
+                        {"text": "ordinarium.qui-dixisti", "reason": "requiem-peace-prayer"},
+                        {"text": "ordinarium.benedictio", "reason": "requiem-blessing"},
+                    ]
+                )
+            assert doc["ordinary_omissions"] == omissions
+            row["ordinary_omissions"] = copy.deepcopy(omissions)
+            for omission in row["ordinary_omissions"]:
+                omission["text"] = omission["text"].replace(".", "/", 1)
         else:
             assert "ordinary_omissions" not in doc
             row["ordinary_omissions"] = []

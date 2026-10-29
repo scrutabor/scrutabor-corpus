@@ -177,6 +177,7 @@ VOICE_RULINGS: dict[str, tuple[str, str]] = {
     "ordinarium.pater-noster": (CLARA, "RG 511 i — oratio dominica cum sua praefatione"),
     "ordinarium.pax-domini": (CLARA, "RG 511 i"),
     "ordinarium.agnus-dei": (CLARA, "RG 511 i"),
+    "ordinarium.agnus-dei-defunctorum": (CLARA, "RG 511 i; Ritus X.4"),
     "ordinarium.ecce-agnus-dei": (CLARA, "RG 511 i — formulae ad Communionem fidelium"),
     # 511 l — the dismissal, the blessing, the last gospel
     "ordinarium.ite-missa-est": (CLARA, "RG 511 l"),
@@ -1131,6 +1132,13 @@ def _propose_rules(
 
         if seg["id"] in voices:
             proposal["voice"] = voices[seg["id"]][0]
+        if doc.get("id") == "ordinarium.ite-missa-est-defunctorum":
+            from checks.requiem_dismissal import ROWS, base_errors
+
+            if base_errors(doc):
+                continue  # An altered source identity cannot acquire a guessed actor.
+            _, _, actor, voice = ROWS[seg["id"]]
+            proposal = {"speaker": actor, "voice": voice} if actor and voice else {}
         if proposal:
             out[seg["id"]] = proposal
     return out

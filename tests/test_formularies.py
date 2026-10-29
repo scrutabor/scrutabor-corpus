@@ -18,10 +18,10 @@ def test_every_formulary_component_and_language_title_is_accounted_for():
     assert counts == {
         "formularies": 114,
         "observances": 110,
-        "components": 1277,
+        "components": 1280,
         "proper_texts": 1071,
         "proper_uses": 1162,
-        "shared_uses": 115,
+        "shared_uses": 118,
         "reference_uses": 158,
         "gradual_tract_pairs": 33,
     }

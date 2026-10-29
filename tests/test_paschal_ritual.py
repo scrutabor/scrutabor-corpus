@@ -32,9 +32,17 @@ def test_all_actual_pairs_and_independent_reconstruction(table):
     assert len(table["pairs"]) == 7682
     assert sum(row[2] == 1 for row in table["pairs"]) == 152
     assert len(table["masses"]) == 114
-    for _day, mass, profile in table["pairs"]:
-        assert table["masses"][mass] != "none"
-        assert table["profiles"][profile]["text"] in {"ordinarium.ite-missa-est", ritual.DISMISSAL}
+    # Historical two-profile comparison only. Native inputs and the full
+    # three-profile oracle above are unchanged; test_requiem_assembly owns the new rows.
+    legacy = copy.deepcopy(table)
+    legacy["schema_version"] = "1.0.0"
+    legacy["profiles"] = legacy["profiles"][:2]
+    for row in legacy["pairs"]:
+        if row[2] == 2:
+            row[2] = 0
+    for _day, mass, profile in legacy["pairs"]:
+        assert legacy["masses"][mass] != "none"
+        assert legacy["profiles"][profile]["text"] in {"ordinarium.ite-missa-est", ritual.DISMISSAL}
     by_pair = {(d, table["masses"][m]): p for d, m, p in table["pairs"]}
     assert by_pair["2027-03-27", "vigilia-paschalis"] == 1
     assert by_pair["2027-03-28", "dominica-resurrectionis"] == 1

@@ -80,7 +80,7 @@ def test_actual_parent_passes_native_catalogue_only_with_real_dependencies():
 def test_actual_emitted_catalogues_and_metrics_preserve_exact_parent():
     doc = read(ROOT / PARENT)
     catalogue = emit.formulary_catalog(ROOT)
-    assert catalogue["schema_version"] == "1.4.0"
+    assert catalogue["schema_version"] == "1.5.0"
     rows = catalogue["formularies"]
     matches = [row for row in rows if row["id"] == ID]
     assert len(matches) == 1

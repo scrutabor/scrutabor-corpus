@@ -6,8 +6,15 @@ import json
 from pathlib import Path
 
 from kalendarium.computus import easter
-from kalendarium.dismissal import PROFILES, YEARS, canonical_inputs, validate
+from kalendarium.dismissal import YEARS, canonical_inputs, validate
 from kalendarium.roman import year
+
+# Independently declared body/profile inventory; no producer projection or classifier.
+PROFILES = [
+    {"id": "ordinary", "text": "ordinarium.ite-missa-est"},
+    {"id": "paschale", "text": "ordinarium.ite-missa-est-paschale"},
+    {"id": "defunctorum", "text": "ordinarium.ite-missa-est-defunctorum"},
+]
 
 
 def input_bodies(corpus: Path) -> None:
@@ -18,7 +25,9 @@ def input_bodies(corpus: Path) -> None:
     for profile in PROFILES:
         identity = profile["text"]
         doc = store.core(corpus, identity)
-        errors = base_errors(doc)
+        from checks.requiem_dismissal import publication_errors
+
+        errors = base_errors(doc) + publication_errors(doc)
         if errors:
             raise ValueError("dismissal: invalid source ritual: " + "; ".join(errors))
         if doc.get("id") != identity or not any(s.get("words") for s in doc.get("segments", [])):
@@ -68,9 +77,20 @@ def expected(corpus: Path) -> dict:
                     form["collection"] == "temporale" and delta.days in range(7)
                 ):
                     profile = 1
+                if (
+                    form["id"]
+                    in {
+                        "commemoratio-omnium-fidelium-defunctorum",
+                        "commemoratio-omnium-fidelium-defunctorum-missa-ii",
+                        "commemoratio-omnium-fidelium-defunctorum-missa-iii",
+                    }
+                    and form["observance"] == "commemoratio-omnium-fidelium-defunctorum"
+                    and form["collection"] == "sanctorale"
+                ):
+                    profile = 2
                 pairs.append([day.when.isoformat(), masses.index(form["id"]), profile])
     return {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "role": "ite-missa-est",
         "profiles": PROFILES,
         "masses": masses,

@@ -14,6 +14,7 @@ from lauda_sion_fixture import FIXTURE as LAUDA
 from lauda_sion_fixture import SITES as LAUDA_SITES
 from michael_gospel_source_fixture import before_michael_records, before_michael_registry
 from prayer_prose_successor_fixture import before_prayer_prose_ledger
+from requiem_successor_fixture import before_requiem_graph
 from rosary_gospel_source_fixture import before_rosary_graph, before_rosary_registry
 
 from build_reader.bibliography_bindings import digest
@@ -24,6 +25,7 @@ DATA = json.loads(
 
 
 def before_additional_records(value):
+    value = before_requiem_graph(value)
     return before_michael_records(before_anne_records(value))
 
 
@@ -32,6 +34,7 @@ def before_additional_registry(value):
 
 
 def before_documentary_graph(value):
+    value = before_requiem_graph(value)
     return before_lateran_graph(
         before_rosary_graph(before_michael_records(before_anne_graph(value)))
     )

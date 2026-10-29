@@ -10,6 +10,10 @@ from pathlib import Path
 import pytest
 from chant_fragment_fixture import before_chant_graph, before_chant_registry
 from lateran_epistle_source_fixture import before_lateran_graph, before_lateran_registry
+from requiem_successor_fixture import (
+    before_ordinary_agnus_core_bytes,
+    before_requiem_graph,
+)
 from rosary_gospel_source_fixture import before_rosary_graph, before_rosary_registry
 from witness_header_fixture import EXALTATION, before_joachim_records, before_joachim_registry
 
@@ -50,8 +54,10 @@ def assert_registered_payload(root, graph, row):
     raw = path.read_bytes()
     assert hashlib.sha256(raw).hexdigest() == row["transcription_sha256"]
     core = root / ("texts/" + row["text"].replace(".", "/", 1) + ".json")
-    assert hashlib.sha256(core.read_bytes()).hexdigest() == row["core_sha256"]
-    doc = json.loads(core.read_bytes())
+    core_raw = core.read_bytes()
+    comparison_raw = before_ordinary_agnus_core_bytes(row["text"], core_raw)
+    assert hashlib.sha256(comparison_raw).hexdigest() == row["core_sha256"]
+    doc = json.loads(core_raw)
     actual = raw_binding.resolve_binding(path, root)
     assert actual is not None and actual.spans == actual.fragments == ()
     assert actual.source == expected_source(row), "complete registered raw10 source"
@@ -89,7 +95,11 @@ def before_exaltation_comparison(graph):
 
 def before_registrations(graph, registry):
     historical_graph = before_exaltation_comparison(
-        before_chant_graph(before_joachim_records(before_rosary_graph(before_lateran_graph(graph))))
+        before_chant_graph(
+            before_joachim_records(
+                before_rosary_graph(before_lateran_graph(before_requiem_graph(graph)))
+            )
+        )
     )
     historical_raw = before_chant_registry(
         before_joachim_registry(before_rosary_registry(before_lateran_registry(registry)))

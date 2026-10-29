@@ -167,7 +167,7 @@ def test_every_actual_neutral_form_and_both_title_catalogues_project_without_oth
         for omission in value["ordinary_omissions"]:
             omission["text"] = omission["text"].replace(".", "/", 1)
         expected.append(value)
-    assert formulary_catalog(CORPUS) == {"schema_version": "1.4.0", "formularies": expected}
+    assert formulary_catalog(CORPUS) == {"schema_version": "1.5.0", "formularies": expected}
     for language in ("pl", "en"):
         catalogue = language_formulary_catalog(CORPUS, language)
         assert catalogue["schema_version"] == "1.2.0"

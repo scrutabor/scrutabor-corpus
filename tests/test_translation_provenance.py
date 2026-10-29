@@ -453,3 +453,64 @@ def test_source_change_is_stale_until_explicit_rebinding_at_a_permitted_review(t
         assert site["target_sha256"] == inherited_target
         path.write_text(json.dumps(ledger))
     assert check(tmp_path)[0] == []
+
+
+def test_requiem_shared_formula_protection_is_language_and_segment_bounded():
+    expected = {
+        ("ordinarium.agnus-dei-defunctorum", "pl", "s01"): True,
+        ("ordinarium.agnus-dei-defunctorum", "pl", "s02"): True,
+        ("ordinarium.agnus-dei-defunctorum", "pl", "s03"): True,
+        ("ordinarium.ite-missa-est-defunctorum", "pl", "s01"): True,
+        ("ordinarium.ite-missa-est-defunctorum", "pl", "s02"): True,
+        ("ordinarium.ite-missa-est-defunctorum", "pl", "s03"): True,
+        ("ordinarium.ite-missa-est-defunctorum", "pl", "s04"): True,
+        ("ordinarium.ite-missa-est-defunctorum", "en", "s03"): True,
+        ("ordinarium.ite-missa-est-defunctorum", "en", "s04"): True,
+    }
+    for language in ("pl", "en"):
+        expected[("ordinarium.agnus-dei-defunctorum", language, "s99")] = False
+        expected[("ordinarium.ite-missa-est-defunctorum", language, "s99")] = False
+    for segment in ("s01", "s02", "s03"):
+        expected[("ordinarium.agnus-dei-defunctorum", "en", segment)] = False
+    for segment in ("s01", "s02"):
+        expected[("ordinarium.ite-missa-est-defunctorum", "en", segment)] = False
+    expected[("orationes.unrelated-amen", "pl", "s01")] = False
+    for (text, language, segment), required in expected.items():
+        assert protected(text, language, segment) is required
+
+
+def test_equivalent_polish_greetings_keep_exact_clause_and_language_boundaries():
+    from build_reader import store
+
+    root = Path(__file__).resolve().parents[1]
+    data = json.loads((root / "tests/fixtures/polish-greeting-protection.json").read_bytes())
+    ledgers = {
+        language: {
+            row["site"]: row
+            for row in json.loads(
+                (root / f"languages/{language}/translation-provenance.json").read_bytes()
+            )["sites"]
+        }
+        for language in ("pl", "en")
+    }
+    assert len(data["cases"]) == 10
+    for case in data["cases"]:
+        text, sid = case["text"], case["segment"]
+        core = store.core(root, text)
+        source = next(segment for segment in core["segments"] if segment["id"] == sid)
+        assert source["type"] == "verse"
+        assert [word["id"] for word in source["words"]] == case["words"]
+        assert [word["form"] for word in source["words"]] == case["forms"]
+        for language in ("pl", "en"):
+            layer = store.raw_layer(root, language, text)
+            target = layer["segments"][sid]["translation"]
+            assert target == case["polish" if language == "pl" else "english"]
+            row = ledgers[language][f"{text}.{sid}.{language}"]
+            assert row["source_sha256"] == canonical_hash(source_payload(source))
+            assert row["target_sha256"] == canonical_hash(target)
+            assert protected(text, language, sid) is (language == "pl")
+            assert row["familiar_core"] is (language == "pl")
+            assert not protected(text, language, "s99")
+    for case in data["negative_neighbours"]:
+        for language in ("pl", "en"):
+            assert not protected(case["text"], language, case["segment"])

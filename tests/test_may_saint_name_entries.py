@@ -184,7 +184,13 @@ def test_june_martyr_name_reuses_parse_and_appends_text_addresses():
     assert canonical(selected["morph"]) == canonical(expected)
     assert canonical(morphology[54]) == canonical(expected)
     # Stable addresses precede the exact newly authored text order.
-    assert len(texts) == 1219
+    assert len(texts) == 1221
+    assert set(texts[1219:]) == {
+        "ordinarium.agnus-dei-defunctorum",
+        "ordinarium.ite-missa-est-defunctorum",
+    }
+    # Preserve the exact historical prefix and its prior append sequence.
+    texts = texts[:1219]
     assert hashlib.sha256(canonical(texts[:1156]).encode()).hexdigest() == (
         "c1d9f8a2b0354062fd6aaa09fd0d62028908848d2eb7e7f123225d3dc687f6de"
     )

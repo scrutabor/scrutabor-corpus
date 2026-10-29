@@ -9,6 +9,7 @@ import pytest
 import witness_header_fixture as headers
 from chant_fragment_fixture import before_chant_graph
 from lateran_epistle_source_fixture import before_lateran_graph
+from requiem_successor_fixture import before_requiem_graph
 from rosary_gospel_source_fixture import before_rosary_graph
 
 from build_reader import bibliography, store
@@ -39,7 +40,9 @@ def exact_scope(graph):
         assert record(graph, "uses", use["id"]) == use, "exact declared source scope"
     assert record(graph, "collations", DATA["collation"]["id"]) == DATA["collation"]
     comparison = before_chant_graph(
-        headers.before_joachim_records(before_rosary_graph(before_lateran_graph(graph)))
+        headers.before_joachim_records(
+            before_rosary_graph(before_lateran_graph(before_requiem_graph(graph)))
+        )
     )
     for use in DATA["added_uses"]:
         comparison["uses"].remove(use)

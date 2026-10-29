@@ -11,11 +11,12 @@ from pathlib import Path
 from kalendarium.computus import easter
 from kalendarium.roman import year
 
-SCHEMA = "1.0.0"
+SCHEMA = "1.1.0"
 ROLE = "ite-missa-est"
 PROFILES = [
     {"id": "ordinary", "text": "ordinarium.ite-missa-est"},
     {"id": "paschale", "text": "ordinarium.ite-missa-est-paschale"},
+    {"id": "defunctorum", "text": "ordinarium.ite-missa-est-defunctorum"},
 ]
 YEARS = range(2026, 2102)
 IDENTITY = re.compile(r"[a-z][a-z0-9]*(?:-[a-z0-9]+)*\Z")
@@ -114,7 +115,10 @@ def calendar_table(forms: list[dict], calendar: dict, *, corpus: Path) -> dict:
                 paschal = (offset == -1 and form["id"] == "vigilia-paschalis") or (
                     0 <= offset <= 6 and form["collection"] == "temporale"
                 )
-                pairs.append([row[0], masses.index(form["id"]), int(paschal)])
+                from checks.requiem_assembly import is_requiem
+
+                profile = 2 if is_requiem(form) else int(paschal)
+                pairs.append([row[0], masses.index(form["id"]), profile])
     table = {
         "schema_version": SCHEMA,
         "role": ROLE,

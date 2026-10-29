@@ -161,22 +161,31 @@ source-derived prescriptions within that formulary's matching calendar/Office
 context, not generic rules inferred from its name, rank or season. No missing
 branch defaults to required. An unresolved branch is not an omission decision.
 
-The neutral reader catalogue has schema `1.4.0` (reader edition `6.8.0`).
-It preserves the `ordinary` branches unchanged and additionally carries the
-closed Lavabo-only `ordinary_omissions` descriptor. The six affected authored
-formularies use `formulary_schema: "1.4.0"`; unaffected authored formularies
-retain `1.3.0`. The exact descriptor is one row with
-`text: "ordinarium.lavabo"`, `segments: ["s09", "s10"]`, and
-`reason: "lavabo-doxology"`. The reader changes only the text address to
-`ordinarium/lavabo`. No arbitrary text, segment, whole-prayer exclusion or
-empty/default authored list is allowed. Every emitted catalogue row must carry
-this field: an explicit empty list means the validated Mass retains Lavabo;
-its absence is invalid, not an inferred retention. The source rule is Ritus servandus VII.6:
-Masses de Tempore during Passiontide through Holy Thursday inclusive, and
-Masses for the Dead (the represented three All Souls formularies).
-Sanctoral Masses within Passiontide and the Easter Vigil retain the doxology.
-The complete Lavabo has94 words; only s09/s10, w075–w094, are omitted from the
-selected Mass view. Its74 Psalm words and complete canonical/study text remain.
+The neutral reader catalogue has schema `1.5.0` (reader edition `6.10.0`).
+It preserves every `ordinary` branch. Passiontide de Tempore formularies retain
+authored schema1.4.0 and the exact Lavabo descriptor below; unaffected forms
+retain1.3.0. The three All Souls formularies use authored1.5.0, add one shared
+`agnus-dei` component between `praefatio` and `communio`, and carry exactly:
+
+```json
+[
+  {"text":"ordinarium.lavabo","segments":["s09","s10"],"reason":"lavabo-doxology"},
+  {"text":"ordinarium.iudica-me","reason":"requiem-iudica"},
+  {"text":"ordinarium.qui-dixisti","reason":"requiem-peace-prayer"},
+  {"text":"ordinarium.benedictio","reason":"requiem-blessing"}
+]
+```
+
+The reader changes only dotted text addresses to slash addresses. Every emitted
+row carries `ordinary_omissions`: `[]` means retention; the one Lavabo row means
+only its doxology is omitted; the exact four rows above mean the Requiem scope.
+Arbitrary bodies, subsets, reasons, segments and extra fields are forbidden.
+The source rules are Ritus VII.6, X.4 and XIII.1. Introibo, Pax Domini, Haec
+commixtio, Placeat and the next two Communion prayers remain. No unconditional
+Last Gospel omission is declared: RG509–510 makes its exception depend on the
+separate absolution over the tumulus. No ceremony is inferred from the date.
+The complete Lavabo has94 words; s09/s10, w075–w094, disappear only from the
+selected view. Whole omitted bodies retain their complete canonical study pages.
 
 Omission descriptors are canonical prescriptions, not source-review approval.
 The corpus validates their presence/absence against the authored Mass
@@ -457,10 +466,13 @@ implement client loading, caching, offline downloads or dated UI selection.
 ## Reader dismissal selection
 
 Reader edition 5.10.0 adds `base.dismissal: "dismissal.json"`, independently
-versioned selection schema 1.0.0. Exact fields are `schema_version`, `role`
-(`ite-missa-est`), `profiles`, `masses`, and `pairs`. Two ordered profiles name
+versioned selection schema 1.1.0. Exact fields are `schema_version`, `role`
+(`ite-missa-est`), `profiles`, `masses`, and `pairs`. Three ordered profiles name
 the dotted bodies explicitly: ordinary → `ordinarium.ite-missa-est`, paschale
-→ `ordinarium.ite-missa-est-paschale`. Mass IDs are sorted unique nonempty
+→ `ordinarium.ite-missa-est-paschale`, defunctorum →
+`ordinarium.ite-missa-est-defunctorum`. The third choice is derived from the
+exact three authored All Souls formularies, using the existing canonical date/Mass
+pairs; every other choice retains its ordinary/Paschal selection. Mass IDs are sorted unique nonempty
 authored identities; pair rows are sorted unique `[YYYY-MM-DD, mass, profile]`
 with canonical dates and nonnegative integer indexes (never booleans).
 
@@ -471,7 +483,7 @@ pairs do not fall back. The producer establishes canonical validity by exact
 typed input equality with a fresh reconstruction from the existing Roman
 calendar and authored catalogue. The artifact verifier independently iterates
 the canonical days and Masses without calling the producer selector. Both
-neutral and current PL/EN packages must declare and transport both complete
+neutral and current PL/EN packages must declare and transport all three complete
 bodies. Missing resource, body or localized declaration fails closed.
 
 ## Closed weekday-Vigil relations
@@ -1534,18 +1546,19 @@ localization, editorial
   Within canonical schema0.21.0, optional `cantu.performance` is a closed
   adjunct with exactly `{speaker: "schola", voice: "cantus", source: "DMS 25 b; 26"}`.
   It supplements, never overlays, a `sacerdos`/`clara` verse with the existing
-  unconditional degree2 `DMS 25 b` grant. It is derived only for Sanctus
-  s02–s06 with their unchanged25 stable words (RitusVII8/11; DMS25b/26).
+  unconditional degree2 `DMS 25 b` grant. It is derived for the closed Sanctus s02–s06 (25words), ordinary Agnus Dei
+  s02–s04 (25words, both rubric rows retained), and Requiem Agnus Dei s01–s03
+  (28words, no invented Latin rubric) inventories (RitusVII8/11, X2/4; DMS25b/26).
   Each verse also requires the distinct priestly `delivery.cantu: {voice: "secreto"}`
-  (RG511h/512/513e/514); its base remains sacerdos/clara. No actor override,
+  (RG511h–i/512/513e/514); its base remains sacerdos/clara. No actor override,
   redundant speaker, other voice or extra delivery field is allowed.
   Rubric, lecta, conflicting delivery, conditional, unknown/extra keys, altered
   source identity and missing descriptors are errors. The faithful may join
   the choir: an unconditional grant is not a claim that every person sings.
   This is not an event clock, per-verse synchronization or permission to wait
-  for the choir before the priest begins the Canon. Reader6.6 transports the
+  for the choir before the priest begins the Canon. Reader6.10 transports the
   nested metadata in its existing core; publication independently requires all
-  five descriptors. Consumers validate any received descriptor without a
+  eleven descriptors across the three bodies. Consumers validate any received descriptor without a
   second editorial text-ID inventory. No extra resource is fetched.
   Legacy documents without the adjunct keep their canonical headers/body
   identity; their translation/bibliography source payloads remain identical.
@@ -2030,3 +2043,13 @@ absolute HTTPS address. Language-independent citation metadata is stored once
 in the neutral core because the supported claim concerns the Latin text, not
 its Polish or English wording. Elementary grammar and statements directly
 visible in the displayed Latin do not receive decorative citations.
+
+Reader6.10.0 retains the four complete Requiem dismissal verses (10words).
+The greeting has the priest's audible base and sung priest override; its answer
+and the final Amen have the server's audible base, sung schola override, and
+DMS31a/25a first-degree participation. Requiescant in pace has no generic base
+actor/voice: explicit `delivery.lecta` supplies sacerdos/clara, while `delivery.cantu`
+supplies only cantus. RitusXI3 identifies the celebrant in a Missa cantata, but
+the two form choices cannot identify the solemn minister. No participation grade
+is invented for that petition. The edition accepts only the exact current reader
+and dismissal contracts; previous and future versions require explicit migration.

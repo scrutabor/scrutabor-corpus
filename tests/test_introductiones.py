@@ -257,7 +257,25 @@ def test_each_unit_is_a_whole_owner_segment_with_both_translations(identity):
             for word in group["words"]
         }
         if role != "announcement":
-            assert not aligned & set(words)
+            expected_groups = []
+            if language == "en" and identity == "salutatio":
+                expected_groups = [
+                    {"words": ["w001", "w002"], "anchor": "w001", "gloss": "The Lord be with you"}
+                ]
+            elif language == "en" and identity == "responsio-salutationis":
+                expected_groups = [
+                    {"words": ["w005", "w006"], "anchor": "w005", "gloss": "your spirit"}
+                ]
+            selected_groups = [
+                (stored_under, group)
+                for stored_under, entry in layer["segments"].items()
+                for group in entry.get("alignments") or []
+                if set(group["words"]) & set(words)
+            ]
+            assert selected_groups == [(segment_id, group) for group in expected_groups]
+            assert aligned & set(words) == {
+                word for group in expected_groups for word in group["words"]
+            }
             continue
         # An announcement's layer may group words of its own single verse, and only those.
         for stored_under, entry in layer["segments"].items():
@@ -906,7 +924,7 @@ def artifact_errors(edition):
 def test_the_edition_declares_the_resource_and_reads_it_back_equal(edition):
     out = edition[0]
     manifest = read(edition, "manifest.json")
-    assert manifest["schema_version"] == emit.SCHEMA == "6.9.0"
+    assert manifest["schema_version"] == emit.SCHEMA == "6.10.0"
     assert manifest["base"]["introductiones"] == "introductiones.json"
     emitted = (out / "introductiones.json").read_text(encoding="utf-8")
     assert emitted == reader.artifact_json(reader.resource(CORPUS))

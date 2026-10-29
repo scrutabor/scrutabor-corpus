@@ -156,11 +156,11 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(emitted_book
         "rejected_exposed": 0,
     }
     assert written["evidence_coverage"] == {
-        # Newly retained neutral uses: qui-dixisti, simili-modo, supplices-te-rogamus.
-        "neutral": {"normalized": 1213, "texts": 1219},
+        # Both Requiem texts have retained Latin and language-specific evidence.
+        "neutral": {"normalized": 1215, "texts": 1221},
         "languages": {
-            "en": {"normalized": 242, "effective": 1219, "texts": 1219},
-            "pl": {"normalized": 102, "effective": 1217, "texts": 1219},
+            "en": {"normalized": 244, "effective": 1221, "texts": 1221},
+            "pl": {"normalized": 104, "effective": 1219, "texts": 1221},
         },
     }
 
@@ -442,13 +442,13 @@ def test_metrics_are_the_single_derived_denominator(reader_out):
     metrics = json.loads((out / manifest["base"]["metrics"]).read_text(encoding="utf-8"))
     assert metrics == {
         "schema_version": "1.0.0",
-        "texts": {"total": 1219, "proprium": 1071, "words": 66901, "verse_segments": 2949},
-        "languages": {"en": {"texts": 1219}, "pl": {"texts": 1219}},
+        "texts": {"total": 1221, "proprium": 1071, "words": 66939, "verse_segments": 2956},
+        "languages": {"en": {"texts": 1221}, "pl": {"texts": 1221}},
         "formularies": {
             "total": 114,
             "observances": 110,
-            "component_uses": 1277,
-            "unique_component_texts": 1028,
+            "component_uses": 1280,
+            "unique_component_texts": 1029,
         },
     }
 

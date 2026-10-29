@@ -182,3 +182,11 @@ Project. The archived snapshot was checked at revision
 README grants the MIT License. Its required permission notice is preserved in
 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). These witness files are
 source evidence, not an endorsement by the Divinum Officium Project.
+
+Reader6.10.0 publishes the complete Agnus Dei and dismissal recensions for Masses
+for the Dead. The three All Souls formularies share the new Agnus component; the
+existing finite dismissal resource selects its Requiem profile. Neutral formulary
+catalogue1.5.0 transports the exact Iudica, first Communion peace prayer and final
+blessing omissions alongside the existing Lavabo doxology rule. Canonical study
+bodies remain complete. Last Gospel and minister conditions remain explicit; the
+reader does not infer unrecorded ceremonies from a calendar choice.

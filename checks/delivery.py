@@ -14,7 +14,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from checks import participation_performance, ritual
+from checks import participation_performance, requiem_dismissal, ritual
 from checks.layout import formatted
 from checks.office import base_errors, is_office
 from checks.office import sung_delivery as office_delivery
@@ -370,8 +370,10 @@ def gospel_body_delivery(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, 
 
 def derive(doc: dict[str, Any], seg: dict[str, Any]) -> dict[str, Any]:
     """Return the form-specific override required by this segment."""
-    if doc.get("id") == participation_performance.TEXT:
+    if doc.get("id") in participation_performance.TEXTS:
         return participation_performance.priestly_delivery(doc, seg)
+    if doc.get("id") == requiem_dismissal.TEXT:
+        return requiem_dismissal.delivery(doc, seg)
     if doc.get("id") in ritual.TEXTS:
         return ritual.delivery(doc, seg)
     if is_office(doc):
@@ -410,6 +412,7 @@ def check_doc(doc: dict[str, Any]) -> tuple[list[str], int]:
         + preface_errors(doc)
         + gospel_body_errors(doc)
         + participation_performance.base_errors(doc)
+        + requiem_dismissal.base_errors(doc)
     )
     overridden = 0
     for seg in doc.get("segments", []):
@@ -434,6 +437,7 @@ def run(write: bool = False) -> int:
             + preface_errors(doc)
             + gospel_body_errors(doc)
             + participation_performance.base_errors(doc)
+            + requiem_dismissal.base_errors(doc)
         )
         if invalid_base:
             problems += len(invalid_base)

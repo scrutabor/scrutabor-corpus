@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 from prayer_prose_successor_fixture import AFTER, BEFORE, DATA, SITES, before_prayer_prose_ledger
+from requiem_successor_fixture import before_requiem_bytes, before_requiem_ledger
 
 from build_reader import store
 from build_reader.layers import enrich_layer, expand_core
@@ -285,7 +286,9 @@ def test_anima_formula_about_and_inherited_source_decisions_are_kept():
 
 def test_exact_layer_and_ledger_byte_inverses_preserve_every_other_field():
     for relative, expected in DATA["unchanged"].items():
-        assert hashlib.sha256((ROOT / relative).read_bytes()).hexdigest() == expected
+        actual_raw = (ROOT / relative).read_bytes()
+        comparison_raw = before_requiem_bytes(relative, actual_raw)
+        assert hashlib.sha256(comparison_raw).hexdigest() == expected
     for rule in DATA["texts"].values():
         raw = (ROOT / rule["layer"]).read_bytes()
         assert hashlib.sha256(raw).hexdigest() == rule["after_sha256"]
@@ -311,7 +314,8 @@ def test_exact_layer_and_ledger_byte_inverses_preserve_every_other_field():
         comparison = comparison.replace(after, before, 1)
     assert hashlib.sha256(comparison).hexdigest() == polish["before_sha256"]
     for ledger_rule in DATA["ledgers"].values():
-        raw = (ROOT / ledger_rule["relative"]).read_bytes()
+        actual_raw = (ROOT / ledger_rule["relative"]).read_bytes()
+        raw = before_requiem_bytes(ledger_rule["relative"], actual_raw)
         assert hashlib.sha256(raw).hexdigest() == ledger_rule["after_sha256"]
         comparison = raw
         for change in reversed(ledger_rule["rows"]):
@@ -400,5 +404,5 @@ def test_exact_row_inverse_preserves_complete_prior_ledger_and_native_input(lang
     snapshot = deepcopy(ledger)
     comparison = before_prayer_prose_ledger(relative, ledger)
     assert comparison is not ledger and ledger == snapshot
-    assert canonical_hash(ledger) == AFTER[language]
+    assert canonical_hash(before_requiem_ledger(relative, ledger)) == AFTER[language]
     assert canonical_hash(comparison) == BEFORE[language]

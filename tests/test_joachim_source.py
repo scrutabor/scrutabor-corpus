@@ -12,6 +12,7 @@ import witness_header_fixture as headers
 from chant_fragment_fixture import before_chant_graph, before_chant_registry
 from documentary_successor_fixture import before_language_successors
 from lateran_epistle_source_fixture import before_lateran_graph, before_lateran_registry
+from requiem_successor_fixture import before_requiem_graph
 from rosary_gospel_source_fixture import before_rosary_graph, before_rosary_registry
 from test_main_ordo_registrations import before_exaltation_comparison
 
@@ -935,7 +936,9 @@ def test_exact_complete_graph_comparison_and_recovery(field):
     saved = deepcopy(graph)
     historical = before_exaltation_comparison(
         before_chant_graph(
-            headers.before_joachim_records(before_rosary_graph(before_lateran_graph(graph)))
+            headers.before_joachim_records(
+                before_rosary_graph(before_lateran_graph(before_requiem_graph(graph)))
+            )
         )
     )
     assert digest(historical) == F["graph_before_canonical_sha256"]
@@ -955,7 +958,9 @@ def test_exact_complete_graph_comparison_and_recovery(field):
         assert (
             before_exaltation_comparison(
                 before_chant_graph(
-                    headers.before_joachim_records(before_rosary_graph(before_lateran_graph(graph)))
+                    headers.before_joachim_records(
+                        before_rosary_graph(before_lateran_graph(before_requiem_graph(graph)))
+                    )
                 )
             )
             == historical

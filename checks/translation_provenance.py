@@ -33,6 +33,14 @@ LEGACY_SCHEMA = "1.0.0"
 REVIEWS = frozenset(("working", "internally-reviewed", "expert-reviewed"))
 
 PROTECTED_PL_SEGMENTS = {
+    "ordinarium.deus-tu-conversus": frozenset({"s08", "s09"}),
+    "ordinarium.evangelium-ultimum": frozenset({"s02", "s03"}),
+    "ordinarium.ite-missa-est": frozenset({"s02", "s03"}),
+    "ordinarium.pax-domini": frozenset({"s03"}),
+    "ordinarium.praefatio-dialogus": frozenset({"s02", "s03"}),
+    "ordinarium.qui-dixisti": frozenset({"s09"}),
+    "ordinarium.agnus-dei-defunctorum": frozenset({"s01", "s02", "s03"}),
+    "ordinarium.ite-missa-est-defunctorum": frozenset({"s01", "s02", "s03", "s04"}),
     "ordinarium.ite-missa-est-paschale": frozenset({"s02", "s03", "s05", "s06"}),
     "ordinarium.iube-domne-benedicere": frozenset({"s03"}),
     "ordinarium.iube-domne-benedicere-in-passione": frozenset({"s03"}),
@@ -140,6 +148,7 @@ PROTECTED_PL_INTROIT_SEGMENTS = {
 }
 
 PROTECTED_EN_SEGMENTS = {
+    "ordinarium.ite-missa-est-defunctorum": frozenset({"s03", "s04"}),
     "ordinarium.iube-domne-benedicere": frozenset({"s03"}),
     "ordinarium.iube-domne-benedicere-in-passione": frozenset({"s03"}),
 }
