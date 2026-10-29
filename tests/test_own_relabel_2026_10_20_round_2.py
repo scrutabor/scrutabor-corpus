@@ -24,6 +24,7 @@ from lauda_sion_fixture import SITES as LAUDA_SITES
 from lauda_sion_fixture import predecessor_wording
 from marian_chant_fixture import expected_marian_row
 from pentecost_successor_fixture import expected_pentecost_row
+from polish_reader_successor_fixture import before_polish_reader_wording
 from post_ascension_fixture import expected_row_successor
 from provenance_successor_fixture import FIXTURE as SUCCESSOR
 from rosary_communion_fixture import (
@@ -217,6 +218,7 @@ def assert_wording_unchanged(site, row, target):
         row, target = predecessor_rosary_wording(row, target)
     if site in LAUDA_SITES:
         row, target = predecessor_wording(site, row, target)
+    row, target = before_polish_reader_wording(site, row, target)
     expected = LABELS[site]["target_sha256"]
     if site in EXACT_WORDING_TARGETS:
         before, expected = EXACT_WORDING_TARGETS[site]

@@ -6,6 +6,10 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from english_possessive_successor_fixture import (
+    before_short_possessive_bytes,
+    before_short_possessive_caption_frame,
+)
 from prayer_prose_successor_fixture import AFTER, BEFORE, DATA, SITES, before_prayer_prose_ledger
 from requiem_successor_fixture import before_requiem_bytes, before_requiem_ledger
 
@@ -123,7 +127,13 @@ def meaning(core, layer):
         for segment, word, position, expected in ADDRESS_CASES:
             actual = layer["segments"][segment]["translation"].split()[position]
             assert actual == expected, f"direct divine case {word}"
-            assert layer["words"][word]["gloss"] == expected.rstrip(".,"), (
+            caption_layer = layer
+            if word == "w058":
+                relative = f"languages/en/texts/{ANIMA.replace('.', '/', 1)}.json"
+                caption_layer = before_short_possessive_caption_frame(
+                    relative, layer, f"direct divine caption {word}"
+                )
+            assert caption_layer["words"][word]["gloss"] == expected.rstrip(".,"), (
                 f"direct divine caption {word}"
             )
     actual = {sid: segment["translation"] for sid, segment in layer["segments"].items()}
@@ -290,7 +300,8 @@ def test_exact_layer_and_ledger_byte_inverses_preserve_every_other_field():
         comparison_raw = before_requiem_bytes(relative, actual_raw)
         assert hashlib.sha256(comparison_raw).hexdigest() == expected
     for rule in DATA["texts"].values():
-        raw = (ROOT / rule["layer"]).read_bytes()
+        actual_raw = (ROOT / rule["layer"]).read_bytes()
+        raw = before_short_possessive_bytes(rule["layer"], actual_raw)
         assert hashlib.sha256(raw).hexdigest() == rule["after_sha256"]
         comparison = raw
         for operation in reversed(rule["operations"]):
@@ -305,6 +316,7 @@ def test_exact_layer_and_ledger_byte_inverses_preserve_every_other_field():
                 (old, new) for old, new in zip(comparison, raw, strict=True) if old != new
             ]
             assert differences == [(ord("y"), ord("Y"))] * 5
+        assert (ROOT / rule["layer"]).read_bytes() == actual_raw
     polish = DATA["polish_row_subject"]
     comparison = raw = (ROOT / polish["layer"]).read_bytes()
     assert hashlib.sha256(raw).hexdigest() == polish["after_sha256"]

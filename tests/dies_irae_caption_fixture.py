@@ -5,6 +5,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from dies_irae_government_fixture import before_dies_irae_government_layer
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = json.loads(
     (ROOT / "tests/fixtures/dies-irae-contextual-captions.json").read_text(encoding="utf-8")
@@ -28,6 +30,7 @@ def parent_at(value, pointer):
 
 
 def restore_dies_irae_layer(layer):
+    layer = before_dies_irae_government_layer(layer)
     comparison = deepcopy(layer)
     if layer.get("text") != DATA["text"]:
         return comparison

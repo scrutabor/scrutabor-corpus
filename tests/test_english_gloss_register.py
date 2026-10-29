@@ -635,7 +635,7 @@ LINES = (
         "s01",
         "w001",
         "w006",
-        ("Father", "our", "who", "are", "in", "the heavens"),
+        ("Our Father", "who", "are", "in", "the heavens"),
     ),
     (
         "orationes.angelus-domini",

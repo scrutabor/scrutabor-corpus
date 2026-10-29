@@ -7,6 +7,8 @@ from pathlib import Path
 
 import pytest
 from documentary_successor_fixture import before_agency_ledger, before_language_successors
+from lent_easter_successor_fixture import before_lent_easter_bytes, before_lent_easter_ledger
+from polish_reader_successor_fixture import before_polish_reader_bytes, before_polish_reader_ledger
 from prayer_prose_successor_fixture import AFTER, BEFORE, before_prayer_prose_ledger
 from requiem_successor_fixture import (
     DATA,
@@ -64,7 +66,10 @@ def test_direct_and_documentary_ledger_entries_share_the_same_exact_successor(la
     relative, actual = ledger(language)
     saved = deepcopy(actual)
     current = before_requiem_ledger(relative, actual)
-    assert digest(actual) == DATA["ledgers"][relative]["after_sha256"]
+    assert (
+        digest(before_lent_easter_ledger(relative, before_polish_reader_ledger(relative, actual)))
+        == (DATA["ledgers"][relative]["after_sha256"])
+    )
     assert digest(current) == AFTER[language]
     assert digest(before_prayer_prose_ledger(relative, actual)) == BEFORE[language]
     assert before_agency_ledger(relative, actual) is not actual
@@ -77,7 +82,12 @@ def test_direct_and_documentary_ledger_entries_share_the_same_exact_successor(la
 def test_four_exact_raw_inverses_keep_every_prior_byte_and_current_input(relative):
     raw = (ROOT / relative).read_bytes()
     comparison = before_requiem_bytes(relative, raw)
-    assert hashlib.sha256(raw).hexdigest() == DATA["raw"][relative]["after_sha256"]
+    assert (
+        hashlib.sha256(
+            before_lent_easter_bytes(relative, before_polish_reader_bytes(relative, raw))
+        ).hexdigest()
+        == (DATA["raw"][relative]["after_sha256"])
+    )
     assert hashlib.sha256(comparison).hexdigest() == DATA["raw"][relative]["before_sha256"]
     assert raw == (ROOT / relative).read_bytes() and comparison != raw
     with pytest.raises(AssertionError, match=r"^exact Requiem comparison bytes$"):

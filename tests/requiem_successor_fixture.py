@@ -5,6 +5,9 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from lent_easter_successor_fixture import before_lent_easter_bytes, before_lent_easter_ledger
+from polish_reader_successor_fixture import before_polish_reader_bytes, before_polish_reader_ledger
+
 from build_reader.bibliography_bindings import digest
 
 DATA = json.loads(
@@ -20,6 +23,8 @@ def require(condition, diagnostic):
 def before_requiem_ledger(relative, value, diagnostic="Requiem current ledger"):
     """Guard the complete actual frame, then undo only exact rows on a copy."""
     require(relative in DATA["ledgers"], diagnostic)
+    value = before_polish_reader_ledger(relative, value, diagnostic)
+    value = before_lent_easter_ledger(relative, value, diagnostic)
     rule = DATA["ledgers"][relative]
     require(digest(value) == rule["after_sha256"], diagnostic)
     result = deepcopy(value)
@@ -65,6 +70,8 @@ def before_requiem_bytes(relative, raw, diagnostic="exact Requiem comparison byt
     """Invert four declared raw expected-side inputs, preserving every other byte."""
     if relative not in DATA["raw"]:
         return raw
+    raw = before_polish_reader_bytes(relative, raw, diagnostic)
+    raw = before_lent_easter_bytes(relative, raw, diagnostic)
     rule = DATA["raw"][relative]
     require(hashlib.sha256(raw).hexdigest() == rule["after_sha256"], diagnostic)
     comparison = raw

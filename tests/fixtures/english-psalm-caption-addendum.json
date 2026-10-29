@@ -1,0 +1,260 @@
+{
+  "relative": "languages/en/texts/ordinarium/iudica-me.json",
+  "text": "ordinarium.iudica-me",
+  "after_raw_sha256": "80a375020b7ecd5273cd1f7f5091c56483affe8db19ec6510beed7107bd3859b",
+  "before_raw_sha256": "ac1187a434defbaa27fadaee825e220193a95e8d7b4f014643f5ad097a4e5723",
+  "after_canonical_sha256": "8161d411a6f6e7f2b9c2623754b18c297c9b0a2e8f018978e6bf5e65376edc70",
+  "before_canonical_sha256": "9aa49c24cc8029a47b7807829e5be7dd62e65d5af98477e9978416fe3199c273",
+  "after_caption_sha256": "4388c0db8a63c01b7881656a3f062cd7189d947f561f7f3b12406d20f9ce1ac5",
+  "before_caption_sha256": "ea7b51966736367604142d3a31a230d944a4d3da9d6b3f12e79167a85b1bc3c8",
+  "operations": [
+    {
+      "pointer": [
+        "segments",
+        "s08",
+        "alignments"
+      ],
+      "before_exists": false,
+      "before": null,
+      "after_exists": true,
+      "after": [
+        {
+          "words": [
+            "w090",
+            "w091"
+          ],
+          "anchor": "w090",
+          "gloss": "of my countenance"
+        },
+        {
+          "words": [
+            "w093",
+            "w094"
+          ],
+          "anchor": "w093",
+          "gloss": "my God"
+        }
+      ]
+    },
+    {
+      "pointer": [
+        "words",
+        "w082",
+        "gloss"
+      ],
+      "before_exists": true,
+      "before": "hope",
+      "after_exists": true,
+      "after": "Hope"
+    },
+    {
+      "pointer": [
+        "words",
+        "w090",
+        "gloss"
+      ],
+      "before_exists": true,
+      "before": "of countenance",
+      "after_exists": false,
+      "after": null
+    },
+    {
+      "pointer": [
+        "words",
+        "w091",
+        "gloss"
+      ],
+      "before_exists": true,
+      "before": "my",
+      "after_exists": false,
+      "after": null
+    },
+    {
+      "pointer": [
+        "words",
+        "w093",
+        "gloss"
+      ],
+      "before_exists": true,
+      "before": "God",
+      "after_exists": false,
+      "after": null
+    },
+    {
+      "pointer": [
+        "words",
+        "w094",
+        "gloss"
+      ],
+      "before_exists": true,
+      "before": "my",
+      "after_exists": false,
+      "after": null
+    }
+  ],
+  "raw_operations": [
+    {
+      "before": "    \"s08\": { \"translation\": \"Hope in God, for I will yet praise Him. He is the salvation of my countenance and my God.\" },\n",
+      "after": "    \"s08\": { \"translation\": \"Hope in God, for I will yet praise Him. He is the salvation of my countenance and my God.\", \"alignments\": [{ \"words\": [\"w090\", \"w091\"], \"anchor\": \"w090\", \"gloss\": \"of my countenance\" }, { \"words\": [\"w093\", \"w094\"], \"anchor\": \"w093\", \"gloss\": \"my God\" }] },\n"
+    },
+    {
+      "before": "    \"w082\": { \"gloss\": \"hope\" },\n",
+      "after": "    \"w082\": { \"gloss\": \"Hope\" },\n"
+    },
+    {
+      "before": "    \"w090\": { \"gloss\": \"of countenance\" },\n",
+      "after": "    \"w090\": {  },\n"
+    },
+    {
+      "before": "    \"w091\": { \"gloss\": \"my\" },\n",
+      "after": "    \"w091\": {  },\n"
+    },
+    {
+      "before": "    \"w093\": { \"gloss\": \"God\" },\n",
+      "after": "    \"w093\": {  },\n"
+    },
+    {
+      "before": "    \"w094\": { \"gloss\": \"my\" },\n",
+      "after": "    \"w094\": {  },\n"
+    }
+  ],
+  "cases": [
+    {
+      "id": "psalm-countenance",
+      "text": "ordinarium.iudica-me",
+      "segment": "s08",
+      "source_sha256": "652496c7b6a641c5831873d244644aa48c73bf1e8e29d051a4a82cce14c8c0ce",
+      "source_words": [
+        {
+          "id": "w090",
+          "form": "vultus",
+          "lemma": "vultus",
+          "morph": {
+            "pos": "noun",
+            "case": "gen",
+            "number": "sg",
+            "gender": "m",
+            "decl": 4
+          }
+        },
+        {
+          "id": "w091",
+          "form": "mei",
+          "post": ",",
+          "lemma": "meus",
+          "morph": {
+            "pos": "adj",
+            "case": "gen",
+            "number": "sg",
+            "gender": "m"
+          },
+          "head": "w090"
+        }
+      ],
+      "translation": "Hope in God, for I will yet praise Him. He is the salvation of my countenance and my God.",
+      "group": {
+        "words": [
+          "w090",
+          "w091"
+        ],
+        "anchor": "w090",
+        "gloss": "of my countenance"
+      },
+      "after_entries": {
+        "w090": {},
+        "w091": {}
+      },
+      "wrong": "of Your countenance"
+    },
+    {
+      "id": "psalm-my-god",
+      "text": "ordinarium.iudica-me",
+      "segment": "s08",
+      "source_sha256": "652496c7b6a641c5831873d244644aa48c73bf1e8e29d051a4a82cce14c8c0ce",
+      "source_words": [
+        {
+          "id": "w093",
+          "form": "Deus",
+          "lemma": "deus",
+          "morph": {
+            "pos": "noun",
+            "case": "nom",
+            "number": "sg",
+            "gender": "m",
+            "decl": 2
+          }
+        },
+        {
+          "id": "w094",
+          "form": "meus",
+          "post": ".",
+          "lemma": "meus",
+          "morph": {
+            "pos": "adj",
+            "case": "nom",
+            "number": "sg",
+            "gender": "m"
+          },
+          "head": "w093"
+        }
+      ],
+      "translation": "Hope in God, for I will yet praise Him. He is the salvation of my countenance and my God.",
+      "group": {
+        "words": [
+          "w093",
+          "w094"
+        ],
+        "anchor": "w093",
+        "gloss": "my God"
+      },
+      "after_entries": {
+        "w093": {},
+        "w094": {}
+      },
+      "wrong": "Your God"
+    }
+  ],
+  "onset": {
+    "segment": "s08",
+    "source_word": {
+      "id": "w082",
+      "form": "Spera",
+      "lemma": "spero",
+      "morph": {
+        "pos": "verb",
+        "person": 2,
+        "number": "sg",
+        "tense": "pres",
+        "mood": "imp",
+        "voice": "act",
+        "conj": 1
+      }
+    },
+    "previous_segment": "s07",
+    "previous_terminal": {
+      "id": "w081",
+      "form": "me",
+      "post": "?",
+      "lemma": "ego",
+      "morph": {
+        "pos": "pron",
+        "case": "acc",
+        "number": "sg"
+      }
+    },
+    "gloss": "Hope"
+  },
+  "provenance": {
+    "site": "ordinarium.iudica-me.s08.en",
+    "text": "ordinarium.iudica-me",
+    "segment": "s08",
+    "language": "en",
+    "familiar_core": false,
+    "origin": "working-unsettled",
+    "review": "working",
+    "source_sha256": "652496c7b6a641c5831873d244644aa48c73bf1e8e29d051a4a82cce14c8c0ce",
+    "target_sha256": "2627dcc61840fd56df865f9bad46905a41a89645a2daa03f46df06cd77a1ccd0"
+  },
+  "six_fixture_sha256": "720116872fb1b3369a87393806cca1fa0b516b1f62ca6d6b1672c02a77ea1f7a",
+  "six_iudica_before_raw_sha256": "9aeb9ea897e8bf205ad64a253afce743664f3f05012ef53d108bb59c9eb35fff"
+}

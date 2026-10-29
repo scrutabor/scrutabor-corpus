@@ -7,6 +7,10 @@ from typing import Any
 
 import pytest
 from opening_caption_fixture import restore_opening_layer
+from polish_reader_successor_fixture import (
+    before_apostles_role_comparison,
+    before_polish_reader_core,
+)
 from preface_delivery_fixture import current_expected_row, without_preface_delivery
 
 from checks.interlinear import check, effective_gloss
@@ -230,6 +234,7 @@ def assert_protected(core, layer, slug):
         del restored["segments"]["s03"]["alignments"]
         for wid in GROUP["words"]:
             restored["words"][wid]["gloss"] = BASELINES[slug]["words"][wid]["gloss"]
+    restored = before_apostles_role_comparison(restored)
     assert (
         hashlib.sha256(formatted(restored).encode()).hexdigest() == BASELINES[slug]["before_sha256"]
     )
@@ -246,7 +251,10 @@ def assert_prose_provenance(core, layer, record, slug):
 
 
 def assert_source_and_english(core, english, slug):
-    assert canonical_hash(without_preface_delivery(core)) == BASELINES[slug]["core_digest"]
+    comparison_core = before_polish_reader_core(core)
+    assert (
+        canonical_hash(without_preface_delivery(comparison_core)) == BASELINES[slug]["core_digest"]
+    )
     assert canonical_hash(restore_opening_layer(english)) == BASELINES[slug]["english_digest"]
 
 

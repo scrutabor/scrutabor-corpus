@@ -343,14 +343,14 @@ def test_the_major_line_repairs_read_in_order():
     epistle = line("en", L1 + "epistola")
     assert "sorrowful | [yet always] | rejoicing" in epistle
     assert "needy | [yet enriching many]" in epistle
-    assert "[the restraint of bodily foods]" in line("en", L1 + "secreta")
+    assert "[the restriction of bodily food]" in line("en", L1 + "secreta")
     assert "[may cause us to pass into the fellowship of the saving mystery]" in line(
         "en", L1 + "postcommunio"
     )
     assert "[us to be bereft of all strength]" in line("en", L2 + "collecta")
     assert "[that these may eat]" in line("en", L4 + "evangelium")
     assert "[abyś przypadkiem nie] | uraził" in line("pl", L1 + "evangelium")
-    assert "[niech sprawi, że przejdziemy do wspólnoty zbawczego misterium]" in line(
+    assert "[niech sprawi, że dostąpimy udziału w zbawczym misterium]" in line(
         "pl", L1 + "postcommunio"
     )
     assert "abyśmy | od | wszystkich | przeciwności | byli chronieni" in line("pl", L2 + "collecta")
