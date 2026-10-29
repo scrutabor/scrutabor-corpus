@@ -6,6 +6,10 @@ from pathlib import Path
 
 import pytest
 import test_main_ordo_registrations as registration
+from pater_agnus_successor_fixture import (
+    before_pater_agnus_core_bytes,
+    before_pater_agnus_core_object,
+)
 from requiem_successor_fixture import DATA, before_ordinary_agnus_core_bytes
 
 from build_reader import bibliography
@@ -17,8 +21,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_ordinary_agnus_comparison_preserves_actual_native_input_and_recovers(monkeypatch):
     rule = DATA["ordinary_agnus_core"]
-    raw = (ROOT / rule["relative"]).read_bytes()
-    core = json.loads(raw)
+    actual_raw = (ROOT / rule["relative"]).read_bytes()
+    core = json.loads(actual_raw)
+    raw = before_pater_agnus_core_bytes(rule["text"], actual_raw)
     assert hashlib.sha256(raw).hexdigest() == rule["after_sha256"]
     assert publication_errors(core) == []
     graph, _ = bibliography.load(ROOT)
@@ -29,7 +34,10 @@ def test_ordinary_agnus_comparison_preserves_actual_native_input_and_recovers(mo
 
     def actual_source(*args, **kwargs):
         actual = args[3]
-        assert digest(actual) == rule["after_canonical_sha256"]
+        assert (
+            digest(before_pater_agnus_core_object(rule["text"], actual))
+            == rule["after_canonical_sha256"]
+        )
         assert publication_errors(actual) == []
         assert all(
             segment["delivery"] == rule["delivery"]
@@ -71,4 +79,4 @@ def test_ordinary_agnus_comparison_preserves_actual_native_input_and_recovers(mo
         assert publication_errors(json.loads(damaged)) == []
     assert registration.assert_registered_payload(ROOT, graph, row) == original_registration
     assert len(native_seen) == 2
-    assert (ROOT / rule["relative"]).read_bytes() == raw
+    assert (ROOT / rule["relative"]).read_bytes() == actual_raw

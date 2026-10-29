@@ -758,8 +758,11 @@ against current files, separately from source review:
   The pre-1.4 body-only digest is not the same contract.
 - `selected_text_sha256` hashes canonical JSON of `{id, segments}`. Each
   segment retains its present `id`, `type`, `text`, `verse`, `speaker`,
-  `voice`, `delivery`, `parentheses` and `words`; each word retains its present
-  `id`, `form`, `pre`, and `post`. All array order and literal strings matter.
+  `voice`, `delivery`, `parentheses` and `words`, and adds
+  `participation_performance` when a `participation` form carries a
+  `performance` adjunct: each such form mapped to its grant's `source` and
+  complete `performance`. Each word retains its present `id`, `form`, `pre`,
+  and `post`. All array order and literal strings matter.
   Morphology, dependencies, localized content and unrelated editorial prose
   are explicitly outside this Latin/ritual identity, not certified by it.
 - `apparatus_sha256` hashes the complete apparatus JSON, including readings
@@ -1564,7 +1567,9 @@ localization, editorial
   identity; their translation/bibliography source payloads remain identical.
   An adjunct binds its selected grant source and complete descriptor into the
   source-bearing payload as `participation_performance`, invalidating prior
-  current-source review at those five verses, not silently resealing it.
+  current-source review at those eleven verses in three bodies (Sanctus
+  s02–s06, ordinary Agnus Dei s02–s04, Requiem Agnus Dei s01–s03), not
+  silently resealing it.
 - Segment **`parentheses`** (since 0.21.0) records genuine paired punctuation
   in the selected Latin, not directions, optional readings or target-language
   prose. Omit the field when unused. Otherwise it is a nonempty array of

@@ -11,6 +11,7 @@ import pytest
 from chant_fragment_fixture import before_chant_graph, before_chant_registry
 from lateran_epistle_source_fixture import before_lateran_graph, before_lateran_registry
 from offertory_rubric_successor_fixture import before_offertory_core_bytes
+from pater_agnus_successor_fixture import before_pater_agnus_core_bytes
 from perceptio_purpose_successor_fixture import before_perceptio_core_bytes
 from quam_rationabilem_successor_fixture import before_quam_core_bytes
 from requiem_successor_fixture import (
@@ -60,6 +61,7 @@ def assert_registered_payload(root, graph, row):
     core_raw = core.read_bytes()
     comparison_raw = before_perceptio_core_bytes(row["text"], core_raw)
     comparison_raw = before_quam_core_bytes(row["text"], comparison_raw)
+    comparison_raw = before_pater_agnus_core_bytes(row["text"], comparison_raw)
     comparison_raw = before_ordinary_agnus_core_bytes(row["text"], comparison_raw)
     comparison_raw = before_offertory_core_bytes(row["text"], comparison_raw)
     assert hashlib.sha256(comparison_raw).hexdigest() == row["core_sha256"]
