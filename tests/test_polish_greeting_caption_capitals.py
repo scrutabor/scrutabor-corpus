@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from english_contract_successor_fixture import before_english_contract_layer
 
 from build_reader import store
 from build_reader.emit import Table, core_artifact, expand, language_artifact
@@ -117,11 +118,12 @@ def test_exact_seven_byte_inverses_keep_every_other_field_and_language():
         source = ROOT / "texts" / (case["text"].replace(".", "/", 1) + ".json")
         assert hashlib.sha256(source.read_bytes()).hexdigest() == case["source_sha256"]
         english = ROOT / "languages/en/texts" / (case["text"].replace(".", "/", 1) + ".json")
-        # English caption groups have their own controls; the complete prayers stay intact.
-        assert (
-            canonical_hash(prose_scope(json.loads(english.read_bytes())))
-            == case["english_prose_sha256"]
+        # English caption groups have their own controls; the complete prayers stay intact
+        # once a later exact English successor is undone on a copy.
+        previous = before_english_contract_layer(
+            str(english.relative_to(ROOT)), json.loads(english.read_bytes())
         )
+        assert canonical_hash(prose_scope(previous)) == case["english_prose_sha256"]
 
 
 @pytest.mark.parametrize("text", ["ordinarium.confiteor", "ordinarium.confiteor-sacerdotis"])

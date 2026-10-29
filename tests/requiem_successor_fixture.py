@@ -5,6 +5,7 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from english_contract_successor_fixture import before_english_contract_record_bytes
 from lent_easter_successor_fixture import before_lent_easter_bytes, before_lent_easter_ledger
 from polish_reader_successor_fixture import before_polish_reader_bytes, before_polish_reader_ledger
 
@@ -70,6 +71,7 @@ def before_requiem_bytes(relative, raw, diagnostic="exact Requiem comparison byt
     """Invert four declared raw expected-side inputs, preserving every other byte."""
     if relative not in DATA["raw"]:
         return raw
+    raw = before_english_contract_record_bytes(relative, raw, diagnostic)
     raw = before_polish_reader_bytes(relative, raw, diagnostic)
     raw = before_lent_easter_bytes(relative, raw, diagnostic)
     rule = DATA["raw"][relative]

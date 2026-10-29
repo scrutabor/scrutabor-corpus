@@ -9,6 +9,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from english_contract_successor_fixture import before_english_contract_text_layer
 from michael_epistle_fixture import predecessor_core, predecessor_layer, predecessor_row
 from palm_tract_fixture import predecessor_palm_layer, predecessor_palm_rows
 from polish_contract_fixture import before_polish_contract_layer, before_polish_contract_ledger
@@ -98,6 +99,13 @@ def preserved(layer, case):
     assert canonical_hash(restored) == case["before_sha256"], "unchanged contextual remainder"
 
 
+def previous(layer):
+    """Undo the newer exact English successor before the older predecessor oracles."""
+    return predecessor_layer(
+        before_english_contract_text_layer(layer, "unchanged contextual remainder")
+    )
+
+
 def compact(core, layer):
     doc, localized = expand_core(core), enrich_layer(core, layer)
     tables = [emit.Table() for _ in range(4)]
@@ -116,7 +124,7 @@ def test_complete_layers_preserve_context_and_reader_roundtrip(case):
     snapshot = deepcopy((core, layer, FIXTURE))
     shape(core, layer)
     assert canonical_hash(predecessor_core(core)) == case["core_sha256"]
-    preserved(predecessor_layer(layer), case)
+    preserved(previous(layer), case)
     relative = f"languages/{case['language']}/translation-provenance.json"
     ledger = before_polish_contract_ledger(relative, json.loads((ROOT / relative).read_text()))
     rows = [predecessor_row(row) for row in ledger["sites"] if row["text"] == case["text"]]
@@ -335,7 +343,7 @@ def test_unselected_prose_is_not_hidden_by_the_inverse(case):
     core, layer = load(case)
     snapshot = deepcopy(layer)
     shape(core, layer)
-    preserved(predecessor_layer(layer), case)
+    preserved(previous(layer), case)
     diagnostic = (
         r"^Michael complete target layer$"
         if case["text"] == "proprium.dedicatio-sancti-michaelis-archangeli-epistola"
@@ -346,13 +354,13 @@ def test_unselected_prose_is_not_hidden_by_the_inverse(case):
         assert layer != snapshot
         shape(core, layer)
         with pytest.raises(AssertionError, match=diagnostic):
-            preserved(predecessor_layer(layer), case)
+            preserved(previous(layer), case)
     finally:
         layer.clear()
         layer.update(snapshot)
     assert layer == snapshot
     shape(core, layer)
-    preserved(predecessor_layer(layer), case)
+    preserved(previous(layer), case)
 
 
 def test_protected_polish_gloria_is_not_hidden_by_the_inverse():

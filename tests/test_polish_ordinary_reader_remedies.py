@@ -9,6 +9,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from english_contract_successor_fixture import before_english_contract_layer
 
 from build_reader import emit
 from build_reader.layers import enrich_layer, expand_core
@@ -268,4 +269,7 @@ def test_semantic_and_context_damage_is_rejected_and_same_copy_recovers(case, fa
 def test_the_other_language_is_unchanged(case):
     spec = FIXTURE["cases"][case]
     path = ROOT / "languages/en/texts" / (spec["text"].replace(".", "/", 1) + ".json")
-    assert canonical_hash(json.loads(path.read_text(encoding="utf-8"))) == spec["english_sha256"]
+    english = json.loads(path.read_text(encoding="utf-8"))
+    # A later exact English successor is undone first; every other English field is compared.
+    previous = before_english_contract_layer(str(path.relative_to(ROOT)), english)
+    assert canonical_hash(previous) == spec["english_sha256"]

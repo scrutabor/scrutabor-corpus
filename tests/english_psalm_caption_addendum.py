@@ -5,6 +5,12 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from english_contract_successor_fixture import (
+    before_english_contract_frame,
+    before_english_contract_layer,
+    before_english_contract_layer_bytes,
+)
+
 from build_reader.bibliography_bindings import digest
 
 DATA = json.loads(
@@ -35,6 +41,7 @@ def reverse_operations(value, diagnostic):
 
 
 def before_psalm_caption_layer(relative, value, diagnostic):
+    value = before_english_contract_layer(relative, value, diagnostic)
     if relative != DATA["relative"]:
         return value
     require(digest(value) == DATA["after_canonical_sha256"], diagnostic)
@@ -45,6 +52,7 @@ def before_psalm_caption_layer(relative, value, diagnostic):
 
 def before_psalm_caption_frame(relative, value, project, diagnostic):
     """Keep actual unrelated prose faults for the original prose oracle."""
+    value = before_english_contract_frame(relative, value, project, diagnostic)
     if relative != DATA["relative"]:
         return value
     require(digest(project(value)) == DATA["after_caption_sha256"], diagnostic)
@@ -54,6 +62,7 @@ def before_psalm_caption_frame(relative, value, project, diagnostic):
 
 
 def before_psalm_caption_bytes(relative, raw, diagnostic):
+    raw = before_english_contract_layer_bytes(relative, raw, diagnostic)
     if relative != DATA["relative"]:
         return raw
     require(hashlib.sha256(raw).hexdigest() == DATA["after_raw_sha256"], diagnostic)

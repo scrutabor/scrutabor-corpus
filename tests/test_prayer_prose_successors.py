@@ -6,6 +6,10 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from english_contract_successor_fixture import (
+    before_english_contract_layer,
+    before_english_contract_prose,
+)
 from english_possessive_successor_fixture import (
     before_short_possessive_bytes,
     before_short_possessive_caption_frame,
@@ -138,6 +142,7 @@ def meaning(core, layer):
                 f"direct divine caption {word}"
             )
     actual = {sid: segment["translation"] for sid, segment in layer["segments"].items()}
+    actual = before_english_contract_prose(core["id"], actual)
     assert actual == DATA["texts"][core["id"]]["segments_after"], "complete reviewed prose"
 
 
@@ -283,7 +288,13 @@ def test_anima_formula_about_and_inherited_source_decisions_are_kept():
     core, layer = load(ANIMA)
     healthy(core, layer)
     meaning(core, layer)
-    assert layer["segments"]["s13"]["translation"] == "for ever and ever. Amen."
+    assert layer["segments"]["s13"]["translation"] == "forever and ever. Amen."
+    relative = f"languages/en/texts/{ANIMA.replace('.', '/', 1)}.json"
+    previous = before_english_contract_layer(relative, layer)
+    assert previous["segments"]["s13"]["translation"] == "for ever and ever. Amen."
+    assert {sid: row for sid, row in previous["segments"].items() if sid != "s13"} == {
+        sid: row for sid, row in layer["segments"].items() if sid != "s13"
+    }
     assert layer.get("about") == DATA["texts"][ANIMA]["about"]
     relationships = store.translation_relationships(ROOT, "en")
     assert all(

@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 from documentary_successor_fixture import before_agency_ledger, before_language_successors
+from english_contract_successor_fixture import before_english_contract_record_bytes
 from lent_easter_successor_fixture import before_lent_easter_bytes, before_lent_easter_ledger
 from polish_reader_successor_fixture import before_polish_reader_bytes, before_polish_reader_ledger
 from prayer_prose_successor_fixture import AFTER, BEFORE, before_prayer_prose_ledger
@@ -84,7 +85,12 @@ def test_four_exact_raw_inverses_keep_every_prior_byte_and_current_input(relativ
     comparison = before_requiem_bytes(relative, raw)
     assert (
         hashlib.sha256(
-            before_lent_easter_bytes(relative, before_polish_reader_bytes(relative, raw))
+            before_lent_easter_bytes(
+                relative,
+                before_polish_reader_bytes(
+                    relative, before_english_contract_record_bytes(relative, raw)
+                ),
+            )
         ).hexdigest()
         == (DATA["raw"][relative]["after_sha256"])
     )

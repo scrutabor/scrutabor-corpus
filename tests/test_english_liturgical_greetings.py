@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import pytest
+from english_contract_successor_fixture import before_english_contract_text_layer
 
 from build_reader import bibliography, emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -101,7 +102,8 @@ def test_actual_clause_has_exact_source_and_caption_provider_backmap(case):
 def test_full_prose_citations_and_pack_topology_remain_unchanged(row):
     core, layer = subject(row["text"])
     assert check_layer(core, layer, store.layer_path(CORPUS, "en", row["text"])) == []
-    assert canonical_hash(prose_subject(layer)) == row["prose_sha256"]
+    previous = before_english_contract_text_layer(layer)
+    assert canonical_hash(prose_subject(previous)) == row["prose_sha256"]
 
 
 @pytest.fixture(scope="module")

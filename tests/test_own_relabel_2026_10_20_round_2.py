@@ -148,7 +148,17 @@ ALL_SOULS_TARGETS = {
 assert len(ALL_SOULS_TARGETS) == 2
 for _site, (_before, _after) in ALL_SOULS_TARGETS.items():
     assert LABELS[_site]["target_sha256"] == _before
-EXACT_WORDING_TARGETS = {**CONTEXTUAL_NAME_TARGETS, **ALL_SOULS_TARGETS}
+# The revised Psalm 42 verse (set my cause apart) supersedes its snapshot by exact hash only.
+PSALM_CAUSE_TARGETS = {
+    "ordinarium.iudica-me.s03.en": (
+        "3d612d204ce83e62468b5342f568d5c2aa567504284f2eb0e96c1b2dc13eb8ca",
+        "d1ad04988c468c058133172e8e342df9e70b74f489aef1c3bd898aca0ecd9bee",
+    ),
+}
+assert len(PSALM_CAUSE_TARGETS) == 1
+for _site, (_before, _after) in PSALM_CAUSE_TARGETS.items():
+    assert LABELS[_site]["target_sha256"] == _before
+EXACT_WORDING_TARGETS = {**CONTEXTUAL_NAME_TARGETS, **ALL_SOULS_TARGETS, **PSALM_CAUSE_TARGETS}
 SITES = sorted(LABELS)
 SAMPLE = FIXTURE["wording_sample"]
 DOXOLOGY = FIXTURE["doxology_uses"]
