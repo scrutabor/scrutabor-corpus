@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from offertory_rubric_successor_fixture import before_offertory_core_bytes
 
 from build_reader.layers import enrich_layer, expand_core
 from checks import interlinear, language_packs, prose
@@ -82,7 +83,8 @@ def healthy(case, core, layer):
         indexed = {w["id"]: w for s in core["segments"] for w in s.get("words", [])}
         assert indexed["w016"]["morph"]["case"] == indexed["w017"]["morph"]["case"] == "gen"
         assert indexed["w017"]["head"] == "w016"
-    assert hashlib.sha256(path_of(text).read_bytes()).hexdigest() == saved["core_sha256"]
+    comparison = before_offertory_core_bytes(text, path_of(text).read_bytes())
+    assert hashlib.sha256(comparison).hexdigest() == saved["core_sha256"]
     assert hashlib.sha256(path_of(text, "pl").read_bytes()).hexdigest() == saved["pl_sha256"]
 
 

@@ -30,10 +30,12 @@ notice:
 
 ## Divinum Officium snapshot 44667ff
 
-The byte-identical source files in `witnesses/raw/do-44667ff/` and
-`witnesses/raw/do-Sancti-07-02.txt` are from revision
+The byte-identical source files in `witnesses/raw/do-44667ff/`,
+`witnesses/raw/missa-44667ff/` and `witnesses/raw/do-Sancti-07-02.txt` are
+from revision
 `44667ff518b8ff1439780470828b39714f5306a2` of the
 [Divinum Officium Project](https://github.com/DivinumOfficium/divinum-officium).
 The upstream [MIT License at that revision](https://github.com/DivinumOfficium/divinum-officium/blob/44667ff518b8ff1439780470828b39714f5306a2/LICENSE),
 including Copyright (c) 2026 Divinum Officium, is reproduced in
-[`witnesses/raw/do-44667ff/LICENSE`](witnesses/raw/do-44667ff/LICENSE).
+[`witnesses/raw/do-44667ff/LICENSE`](witnesses/raw/do-44667ff/LICENSE) and in
+[`witnesses/raw/missa-44667ff/LICENSE`](witnesses/raw/missa-44667ff/LICENSE).

@@ -258,16 +258,18 @@ def voice_ruling(doc: dict) -> tuple[str, str] | None:
 
 # Segments whose voice differs from their text's, and why. These are the
 # places the law names a few WORDS rather than a prayer.
-# Answers the matcher cannot reach, because our text and the source line
-# are not identical strings: the Suscipiat carries a "(vel meis)" variant
-# in the source, and the two Deo gratias and the Gospel response live in
-# files the Ordo calls in by reference. Each is marked in a witness — the
-# Divinum Officium Ordo with R. and M., the hand missal with its own S:
-# for the server — so these are readings, not guesses.
+# Answers the matcher cannot reach. The Suscipiat's answerer is printed in
+# the 1962 rubric before it, not read from a source speaker marker: its
+# pinned Ordo selection is text-only. The two Deo gratias and the Gospel
+# response live in files the Ordo calls in by reference; each is marked in
+# a witness — the Divinum Officium Ordo with R., the hand missal with its
+# own S: for the server — so these are readings, not guesses.
 SPEAKER_RULINGS: dict[str, tuple[str, str]] = {
     "ordinarium.orate-fratres.s04": (
         "minister",
-        'do marks it M. (the line carries a "vel meis" variant)',
+        'Missale Romanum 1962 (Benziger), Ordo Missae p. 225: "Minister, seu '
+        'circumstantes respondent: alioquin ipsemet sacerdos:"; Ritus servandus '
+        'VII.7, p. liv: "Et responso a ministro, vel a circumstantibus"',
     ),
     "ordinarium.ite-missa-est.s06": ("minister", "do marks the answer R. Deo grátias"),
     "ordinarium.evangelium-ultimum.s06": (

@@ -10,6 +10,7 @@ from pathlib import Path
 
 import pytest
 from english_contract_successor_fixture import before_english_contract_layer
+from offertory_rubric_successor_fixture import before_offertory_core_object
 
 from build_reader import emit
 from build_reader.layers import enrich_layer, expand_core
@@ -176,7 +177,10 @@ def assert_case(case, core, layer, row):
             "Suscipe parallel salvation",
         )
 
-    require(canonical_hash(core) == spec["core_sha256"], "complete Latin source preserved")
+    comparison_core = before_offertory_core_object(spec["text"], core)
+    require(
+        canonical_hash(comparison_core) == spec["core_sha256"], "complete Latin source preserved"
+    )
     require(len(source) == spec["word_count"], "complete source denominator")
     received, artifact = native_reader(core, layer)
     if case in {"supplices", "suscipe"}:
