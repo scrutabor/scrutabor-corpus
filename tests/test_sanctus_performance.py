@@ -118,7 +118,7 @@ def test_new_ritual_source_claim_is_bound_but_legacy_payload_is_unchanged():
 
 def test_actual_reader_supplement_and_full_round_trip(reader_out):
     manifest = json.loads((reader_out / "manifest.json").read_text(encoding="utf-8"))
-    assert manifest["schema_version"] == "6.8.0"
+    assert manifest["schema_version"] == "6.9.0"
     assert verify(reader_out, manifest) == []
     assert emit.verify(CORPUS, reader_out) == []
 

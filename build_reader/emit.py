@@ -68,7 +68,8 @@ from kalendarium.dismissal import calendar_table as dismissal_table
 # 6.6.0 carries a sourced participation performance beside the retained base actor.
 # 6.7.0 adds optional localized commemoration context maps (catalogue schema 1.1.0).
 # 6.8.0 carries the closed source-owned Lavabo segment omissions in neutral catalogue1.4.
-SCHEMA = "6.8.0"
+# 6.9.0 exposes authored commemoration slot ownership (selection schema 2.2.0).
+SCHEMA = "6.9.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.

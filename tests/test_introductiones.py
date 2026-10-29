@@ -906,7 +906,7 @@ def artifact_errors(edition):
 def test_the_edition_declares_the_resource_and_reads_it_back_equal(edition):
     out = edition[0]
     manifest = read(edition, "manifest.json")
-    assert manifest["schema_version"] == emit.SCHEMA == "6.8.0"
+    assert manifest["schema_version"] == emit.SCHEMA == "6.9.0"
     assert manifest["base"]["introductiones"] == "introductiones.json"
     emitted = (out / "introductiones.json").read_text(encoding="utf-8")
     assert emitted == reader.artifact_json(reader.resource(CORPUS))

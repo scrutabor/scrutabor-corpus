@@ -103,7 +103,7 @@ def test_the_occurrence_follows_rubric_80(civil_year):
 
 
 def test_every_occurrence_is_published_and_only_represented_masses_pair(table):
-    assert table["schema_version"] == "2.1.0"
+    assert table["schema_version"] == "2.2.0"
     assert table["profiles"] == [{"id": "ordinary-separate-conclusions"}]
     assert table["situations"] == ["lecta", "cantu-conventualis", "cantu-non-conventualis"]
     assert table["decisions"][0] == {"id": "admitted"}

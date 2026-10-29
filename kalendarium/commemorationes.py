@@ -85,7 +85,7 @@ from kalendarium.weekday_vigil import (
     require_inputs as require_vigil_inputs,
 )
 
-SCHEMA = "2.1.0"
+SCHEMA = "2.2.0"
 PROFILES = [{"id": "ordinary-separate-conclusions"}]
 SITUATIONS = ["lecta", "cantu-conventualis", "cantu-non-conventualis"]
 DECISIONS = [
@@ -107,7 +107,7 @@ FIELDS = {
     "pairs",
 }
 ENTRY_FIELDS = {"id", "title", "rank", "conclusion", "slots"}
-SLOT_FIELDS = {"key", "after", "text"}
+SLOT_FIELDS = {"key", "after", "text", "relation"}
 RANKS = ("privileged", "ordinary")
 # The Mass roles a commemoration slot follows, in order.
 ORATIONS = ("collecta", "secreta", "postcommunio")
@@ -364,6 +364,7 @@ def entries(commemorations: list[dict]) -> list[dict]:
                     "key": slot["key"],
                     "after": slot["after"],
                     "text": None if slot["text"] is None else slot["text"].replace(".", "/", 1),
+                    "relation": slot["relation"],
                 }
                 for slot in doc["slots"]
             ],
@@ -531,6 +532,13 @@ def validate(table: dict) -> None:
             raise ValueError(
                 f"commemorationes: {entry['id']} slots are all addressed or all resolved per pair"
             )
+        for slot in slots:
+            if slot["relation"] not in ("proper", "reference", "calendar") or (
+                (slot["text"] is None) != (slot["relation"] == "calendar")
+            ):
+                raise ValueError(
+                    f"commemorationes: {entry['id']} slot relation differs from its text"
+                )
         if all(unaddressed) and [slot["key"] for slot in slots] != list(ORATIONS):
             raise ValueError(
                 f"commemorationes: {entry['id']} resolved slots must be " + ", ".join(ORATIONS)

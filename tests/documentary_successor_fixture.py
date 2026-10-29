@@ -13,6 +13,7 @@ from lateran_epistle_source_fixture import before_lateran_graph, before_lateran_
 from lauda_sion_fixture import FIXTURE as LAUDA
 from lauda_sion_fixture import SITES as LAUDA_SITES
 from michael_gospel_source_fixture import before_michael_records, before_michael_registry
+from prayer_prose_successor_fixture import before_prayer_prose_ledger
 from rosary_gospel_source_fixture import before_rosary_graph, before_rosary_registry
 
 from build_reader.bibliography_bindings import digest
@@ -70,6 +71,7 @@ AGENCY_EN_CURRENT = "b58e95b122b19efb9c36338996d99ccc8e844039b48850a0d819156728f
 def before_agency_ledger(relative, value, diagnostic="agency current ledger"):
     """Reverse one exact new target digest on an expected-side copy only."""
     assert relative in LEDGER_FRAMES, diagnostic
+    value = before_prayer_prose_ledger(relative, value, diagnostic)
     if relative != "languages/en/translation-provenance.json":
         return deepcopy(value)
     assert digest(value) == AGENCY_EN_CURRENT, diagnostic

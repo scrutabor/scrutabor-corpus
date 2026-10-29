@@ -544,10 +544,23 @@ resolved commemoration says, and a resolved commemoration's slots carry a
 `null` text. Reader edition 6.3.0 adds the impeded feast, an ordinary
 commemoration resolved per pair, with selection schema 2.1.0 unchanged. Reader
 edition 6.4.0 adds the Advent feria, a privileged commemoration resolved per
-pair, with selection schema 2.1.0 unchanged. Exact fields of the neutral
+pair, with selection schema 2.1.0 unchanged. Reader edition 6.9.0 publishes
+selection schema 2.2.0: every slot also carries its authored `relation`, one
+of `proper`, `reference`, or `calendar`. A `calendar` slot has null text;
+`proper` and `reference` slots address a text. This adds ownership metadata
+without changing any existing declaration, pair, date, decision, text or
+transport body. Localized catalogue 1.1.0 and transport body 1.0.0 remain
+unchanged. Strict consumers validate the new version and all required fields;
+this is not a promise that an older exact-schema consumer accepts the resource.
+Canonical text links prefer the first proper owner, then the first reference
+in existing identity order, matching the formulary catalogue's ownership rule.
+Context-specific commemoration links still name their selected commemoration.
+The independent reader reconstructs ownership directly from authored slots,
+separately from the emitting projection; a shape-valid false relation is still
+rejected by exact authored-source equality. Exact fields of the neutral
 resource are `schema_version`,
 `commemorations` (ordered by identity: `id`, the Latin `title`, `rank`,
-`conclusion`, `slots` with `key`, `after` and the slash text address, or `null`
+`conclusion`, `slots` with `key`, `after`, `relation` and the slash text address, or `null`
 for every slot of a commemoration resolved per pair), `profiles` (one profile,
 `ordinary-separate-conclusions`), `situations` (the ordered `lecta`,
 `cantu-conventualis`, `cantu-non-conventualis`), `decisions` (the ordered

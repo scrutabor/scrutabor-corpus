@@ -36,7 +36,7 @@ def test_authored_preflight_rejects_transport_addresses_and_real_consumers_recov
     # preserving their canonical slash-addressed inputs and equality boundary.
     actual = producer.calendar_table(forms, calendar, corpus=ROOT)
     assert actual == reader.expected(ROOT)
-    assert actual["schema_version"] == "2.1.0"
+    assert actual["schema_version"] == "2.2.0"
 
 
 @pytest.mark.parametrize(

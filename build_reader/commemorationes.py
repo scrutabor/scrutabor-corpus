@@ -17,7 +17,6 @@ from kalendarium.commemorationes import (
     advent_ferias,
     authored,
     displaced,
-    entries,
     formulary_orations,
     impeded,
     impeded_feasts,
@@ -394,7 +393,28 @@ def expected(corpus: Path) -> dict:
                         pairs.append([iso, masses.index(form["id"]), index, 0, *plan, resolution])
     return {
         "schema_version": SCHEMA,
-        "commemorations": entries(commemorations),
+        "commemorations": [
+            {
+                "id": doc["id"],
+                "title": doc["title"],
+                "rank": doc["rank"],
+                "conclusion": doc["conclusion"],
+                "slots": [
+                    {
+                        "key": slot["key"],
+                        "after": slot["after"],
+                        "text": (
+                            slot["text"].replace(".", "/", 1)
+                            if isinstance(slot["text"], str)
+                            else None
+                        ),
+                        "relation": slot["relation"],
+                    }
+                    for slot in doc["slots"]
+                ],
+            }
+            for doc in commemorations
+        ],
         "profiles": PROFILES,
         "situations": SITUATIONS,
         "decisions": DECISIONS,

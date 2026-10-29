@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "cases": {
+    "quod": {
+      "text": "ordinarium.quod-ore-sumpsimus",
+      "core_sha256": "f11f220643260def53a8b680e20c3bd7df5368a97e548302472703224bf60d14",
+      "english_sha256": "ccfaf398aa9fe2bb7a6b29f9a46668f12a8125e8382d38164e64e4a0f2ffe073",
+      "before_layer_sha256": "0aae2081d601cce8d0f1c9d6ce537e71658164b042e23845723766562552e032",
+      "after_layer_sha256": "c739cc8399b831647fc516958b792e24810068e55135bcfce4e0d5166f0bd10d",
+      "word_count": 15,
+      "inverse": [
+        {
+          "path": [
+            "words",
+            "w007",
+            "gloss"
+          ],
+          "before": "przyjmiemy",
+          "after": "obyśmy przyjęli"
+        },
+        {
+          "path": [
+            "segments",
+            "s02",
+            "translation"
+          ],
+          "before": "Panie, niech to, co przyjęliśmy ustami, przyjmiemy czystym sercem, a dar otrzymany w czasie niech stanie się dla nas wiecznym lekarstwem.",
+          "after": "Spraw, Panie, abyśmy to, co przyjęliśmy ustami, przyjęli czystym sercem, a dar otrzymany w czasie niech stanie się dla nas wiecznym lekarstwem."
+        }
+      ]
+    },
+    "supplices": {
+      "text": "ordinarium.supplices-te-rogamus",
+      "core_sha256": "d2cb6e23b3a0bb5061d9329ced9577c1cc7868ce7f946c2b1329a4fa1aaa306a",
+      "english_sha256": "f877cd6fc95f0858a2e4b095e71ca622f164bbc0d155d3366a3f687b7acb9ed9",
+      "before_layer_sha256": "765306f4456aa44d2ef6d9916bb7555166b8212eed57f5f4ec6ac5fc5edf3ff3",
+      "after_layer_sha256": "8411d3c82d7359c6932bd889172e4a2754355ae22b11bad644ef99bd8231ac1b",
+      "word_count": 47,
+      "inverse": [
+        {
+          "path": [
+            "words",
+            "w014"
+          ],
+          "before": {
+            "gloss": "na"
+          },
+          "after": {}
+        },
+        {
+          "path": [
+            "words",
+            "w015"
+          ],
+          "before": {
+            "gloss": "na wysokości"
+          },
+          "after": {}
+        },
+        {
+          "path": [
+            "words",
+            "w016"
+          ],
+          "before": {
+            "gloss": "ołtarz"
+          },
+          "after": {}
+        },
+        {
+          "path": [
+            "words",
+            "w017"
+          ],
+          "before": {
+            "gloss": "Twój"
+          },
+          "after": {}
+        },
+        {
+          "path": [
+            "segments",
+            "s02",
+            "alignments"
+          ],
+          "before": [
+            {
+              "words": [
+                "w006",
+                "w007",
+                "w008"
+              ],
+              "anchor": "w006",
+              "gloss": "rozkaż, aby te dary zostały zaniesione"
+            }
+          ],
+          "after": [
+            {
+              "words": [
+                "w006",
+                "w007",
+                "w008"
+              ],
+              "anchor": "w006",
+              "gloss": "rozkaż, aby te dary zostały zaniesione"
+            },
+            {
+              "words": [
+                "w014",
+                "w015",
+                "w016",
+                "w017"
+              ],
+              "anchor": "w016",
+              "gloss": "na Twój ołtarz na wysokości"
+            }
+          ]
+        }
+      ]
+    },
+    "suscipe": {
+      "text": "ordinarium.suscipe-sancta-trinitas",
+      "core_sha256": "c98b91a143049d99408d8079440799c69d967d6ccbdb4efd637c8b5292dc2f25",
+      "english_sha256": "6668658922167ce968a355743102b6d198fc66e93ecf3cb29eed7426b95b5dac",
+      "before_layer_sha256": "edf171868f73fe1088c15bd7f03267644f809a43b1de896d7f1ced291d81824b",
+      "after_layer_sha256": "961dbafa9065a3185dc815e0332f5c014da35b604228ca14ed105626cb819bce",
+      "word_count": 68,
+      "inverse": [
+        {
+          "path": [
+            "words",
+            "w043",
+            "gloss"
+          ],
+          "before": "przyniosła",
+          "after": "służyła"
+        },
+        {
+          "path": [
+            "segments",
+            "s02",
+            "alignments"
+          ],
+          "before": [
+            {
+              "words": [
+                "w044",
+                "w045"
+              ],
+              "anchor": "w045",
+              "gloss": "na cześć"
+            },
+            {
+              "words": [
+                "w048",
+                "w049"
+              ],
+              "anchor": "w049",
+              "gloss": "ku zbawieniu"
+            }
+          ],
+          "after": [
+            {
+              "words": [
+                "w044",
+                "w045"
+              ],
+              "anchor": "w045",
+              "gloss": "ku czci"
+            },
+            {
+              "words": [
+                "w048",
+                "w049"
+              ],
+              "anchor": "w049",
+              "gloss": "ku zbawieniu"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "quod_provenance": {
+    "before": {
+      "site": "ordinarium.quod-ore-sumpsimus.s02.pl",
+      "text": "ordinarium.quod-ore-sumpsimus",
+      "segment": "s02",
+      "language": "pl",
+      "familiar_core": false,
+      "origin": "own",
+      "review": "internally-reviewed",
+      "source_sha256": "02aa2c9a3a8ef8a2829023cc689a49fe031eebfe2893e472e8ceeb6203e60a2c",
+      "target_sha256": "55f505671354bea039874c283543596b2d1fe72258d1a2797fc968fbf18425a3"
+    },
+    "after": {
+      "site": "ordinarium.quod-ore-sumpsimus.s02.pl",
+      "text": "ordinarium.quod-ore-sumpsimus",
+      "segment": "s02",
+      "language": "pl",
+      "familiar_core": false,
+      "origin": "own",
+      "review": "working",
+      "source_sha256": "02aa2c9a3a8ef8a2829023cc689a49fe031eebfe2893e472e8ceeb6203e60a2c",
+      "target_sha256": "35723da727108681fa52623bf6ccb3f03b6789afa867c29e947f228c4bfb516f"
+    }
+  }
+}

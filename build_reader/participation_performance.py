@@ -9,8 +9,8 @@ from pathlib import Path
 def verify(out: Path, manifest: dict) -> list[str]:
     """The current reader retains all five descriptors, even if the source also lost them."""
     errors = []
-    if manifest.get("schema_version") != "6.8.0":
-        return ["participation performance requires reader 6.8.0"]
+    if manifest.get("schema_version") != "6.9.0":
+        return ["participation performance requires reader 6.9.0"]
     entries = [
         entry for entry in manifest.get("texts", []) if entry.get("id") == "ordinarium.sanctus"
     ]
