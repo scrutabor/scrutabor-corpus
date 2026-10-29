@@ -7,6 +7,11 @@ from pathlib import Path
 
 import documentary_successor_fixture as documentary
 import pytest
+from polish_contract_fixture import (
+    before_polish_contract_bytes,
+    before_polish_contract_ledger,
+    current_polish_contract_value,
+)
 from polish_reader_successor_fixture import (
     DATA,
     RULE,
@@ -115,7 +120,10 @@ def assert_regions(case, core, layer):
         assert actual == region["providers"], "Polish adopted providers"
         assert [wid for provider in actual for wid in provider["words"]] == ids
     for wid, explanation in case["explanations"].items():
-        assert layer["words"][wid]["explanation"] == explanation, "Polish contextual explanation"
+        expected = current_polish_contract_value(
+            case["text"], ("words", wid, "explanation"), explanation
+        )
+        assert layer["words"][wid]["explanation"] == expected, "Polish contextual explanation"
     for sid, prose in case["prose"].items():
         assert layer["segments"][sid]["translation"] == prose, "Polish full prose"
 
@@ -179,7 +187,8 @@ def test_actual_polish_regions_keep_source_and_provider_backmap(case):
         hashlib.sha256((ROOT / case["source"]).read_bytes()).hexdigest()
         == (case["source_raw_sha256"])
     )
-    assert hashlib.sha256(path.read_bytes()).hexdigest() == case["layer_after_sha256"]
+    comparison_raw = before_polish_contract_bytes(case["layer"], path.read_bytes())
+    assert hashlib.sha256(comparison_raw).hexdigest() == case["layer_after_sha256"]
     if case["id"] == "lent-postcommunion":
         assert_postcommunion(layer)
     elif case["id"] == "lent-tract":
@@ -194,8 +203,8 @@ def test_actual_polish_regions_keep_source_and_provider_backmap(case):
 @pytest.mark.parametrize("case", TEXTS, ids=lambda case: case["id"])
 def test_exact_layer_inverses_keep_all_unselected_material(case):
     raw = (ROOT / case["layer"]).read_bytes()
-    assert hashlib.sha256(raw).hexdigest() == case["layer_after_sha256"]
-    comparison = raw
+    comparison = before_polish_contract_bytes(case["layer"], raw)
+    assert hashlib.sha256(comparison).hexdigest() == case["layer_after_sha256"]
     for operation in reversed(case["layer_inverse_operations"]):
         after, before = operation["after"].encode(), operation["before"].encode()
         assert comparison.count(after) == 1
@@ -391,14 +400,19 @@ def test_exact_polish_ledger_inverse_recovers_all_prior_frames():
     saved = deepcopy(actual)
     before = before_polish_reader_ledger(relative, actual)
     before_raw = before_polish_reader_bytes(relative, raw)
-    assert digest(actual) == RULE["after_canonical_sha256"]
-    assert hashlib.sha256(raw).hexdigest() == RULE["after_raw_sha256"]
+    # The later declared Polish wording successor is undone first, on a copy.
+    after = before_polish_contract_ledger(relative, actual)
+    assert digest(after) == RULE["after_canonical_sha256"]
+    assert (
+        hashlib.sha256(before_polish_contract_bytes(relative, raw)).hexdigest()
+        == (RULE["after_raw_sha256"])
+    )
     assert digest(before) == RULE["before_canonical_sha256"]
     assert hashlib.sha256(before_raw).hexdigest() == RULE["before_raw_sha256"]
     assert json.loads(before_raw) == before
     assert [
         i
-        for i, pair in enumerate(zip(actual["sites"], before["sites"], strict=True))
+        for i, pair in enumerate(zip(after["sites"], before["sites"], strict=True))
         if pair[0] != pair[1]
     ] == [row["index"] for row in RULE["rows"]]
     with pytest.raises(AssertionError, match=r"^Polish reader current ledger(?:\n|$)"):

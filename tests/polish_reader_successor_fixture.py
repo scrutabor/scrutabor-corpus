@@ -5,6 +5,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from polish_contract_fixture import before_polish_contract_bytes, before_polish_contract_ledger
+
 from build_reader.bibliography_bindings import digest
 
 DATA = json.loads((Path(__file__).parent / "fixtures/polish-reader-successors.json").read_bytes())
@@ -20,6 +22,7 @@ def before_polish_reader_ledger(relative, value, diagnostic="Polish reader curre
     """Bind the complete actual frame, then restore exactly three old rows on a copy."""
     if relative != RULE["relative"]:
         return value
+    value = before_polish_contract_ledger(relative, value, diagnostic)
     assert digest(value) == RULE["after_canonical_sha256"], diagnostic
     assert tuple(change["after"]["site"] for change in RULE["rows"]) == SITES, diagnostic
     result = deepcopy(value)
@@ -40,6 +43,7 @@ def before_polish_reader_bytes(relative, raw, diagnostic="exact Polish reader co
     """Require every new byte, then invert only the three complete declared row blocks."""
     if relative != RULE["relative"]:
         return raw
+    raw = before_polish_contract_bytes(relative, raw, diagnostic)
     assert hashlib.sha256(raw).hexdigest() == RULE["after_raw_sha256"], diagnostic
     assert tuple(change["after"]["site"] for change in RULE["rows"]) == SITES, diagnostic
     result = raw

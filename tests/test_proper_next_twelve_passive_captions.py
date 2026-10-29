@@ -11,6 +11,7 @@ from pathlib import Path
 import pytest
 from michael_epistle_fixture import predecessor_core, predecessor_layer, predecessor_row
 from palm_tract_fixture import predecessor_palm_layer, predecessor_palm_rows
+from polish_contract_fixture import before_polish_contract_layer, before_polish_contract_ledger
 
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -78,6 +79,7 @@ def reviewed_scalar(layer):
 
 
 def preserved(layer, case):
+    layer = before_polish_contract_layer(layer, "unchanged contextual remainder")
     restored = predecessor_palm_layer(layer)
     for row in FIXTURE["groups"]:
         if (row["text"], row["language"]) == (case["text"], case["language"]):
@@ -115,9 +117,8 @@ def test_complete_layers_preserve_context_and_reader_roundtrip(case):
     shape(core, layer)
     assert canonical_hash(predecessor_core(core)) == case["core_sha256"]
     preserved(predecessor_layer(layer), case)
-    ledger = json.loads(
-        (ROOT / "languages" / case["language"] / "translation-provenance.json").read_text()
-    )
+    relative = f"languages/{case['language']}/translation-provenance.json"
+    ledger = before_polish_contract_ledger(relative, json.loads((ROOT / relative).read_text()))
     rows = [predecessor_row(row) for row in ledger["sites"] if row["text"] == case["text"]]
     assert predecessor_palm_rows(rows, case["text"], case["language"]) == case["provenance"]
     base, target, tables = compact(core, layer)

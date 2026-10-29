@@ -890,6 +890,18 @@ def test_first_opening_caption_rejects_predecessor_and_restores(row):
         # The original opening case stays immutable; its expected caption has a successor.
         assert row[2:] == ("s01", ("w001",), None, "Ofiary", ("Hóstias",), ("ofiary",))
         row = (*row[:5], "Na ofiary", row[6], (*row[7], "Ofiary", "na ofiary"))
+    elif row[:2] == ("pl", "ordinarium.communicantes"):
+        # The original continuation case stays immutable; its caption has a successor.
+        assert row[2:] == (
+            "s01",
+            ("w001",),
+            None,
+            "zjednoczeni",
+            ("Communicántes",),
+            ("Zjednoczeni",),
+        )
+        after = "trwając we wspólnocie"
+        row = (*row[:5], after, row[6], (*row[7], "zjednoczeni", after[0].upper() + after[1:]))
     saved = deepcopy(layer)
     pin = row[:7]
     assert caption_diagnostics(pin, core, layer) == []

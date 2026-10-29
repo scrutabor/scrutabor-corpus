@@ -123,7 +123,7 @@ def assert_known_caption(core, layer, language):
         )
         # These formal Polish orders are valid counterexamples, not enforced EN symmetry.
         assert caption(core, layer, "s01").startswith(
-            "zjednoczeni | i | pamięć | czcząc | przede | wszystkim |"
+            "trwając we wspólnocie | i | pamięć | czcząc | przede | wszystkim |"
         )
         assert caption(core, layer, "s02") == (
             "a | także | błogosławionego | Józefa | tejże | Dziewicy | Oblubieńca"

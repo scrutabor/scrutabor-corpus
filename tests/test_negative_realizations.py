@@ -20,7 +20,7 @@ DIRECT = (
     ("pl", "proprium/dominica-ii-in-quadragesima-epistola", "w074", "nie oszukiwał"),
     ("pl", "litaniae/sanctissimi-nominis-iesu", "w449", "nie przestawali"),
     ("pl", "litaniae/sanctissimi-nominis-iesu", "w466", "nie pozbawiasz"),
-    ("pl", "ordinarium/fili-dei-vivi", "w047", "nie dopuść"),
+    ("pl", "ordinarium/fili-dei-vivi", "w047", "nie pozwól"),
     ("pl", "ordinarium/praefatio-sacratissimi-cordis-iesu", "w050", "nie przestało"),
     ("pl", "proprium/corporis-christi-sequentia", "w210", "nie dokonuje się"),
     ("pl", "proprium/dominica-ii-post-pentecosten-collecta", "w017", "nie pozbawiasz"),

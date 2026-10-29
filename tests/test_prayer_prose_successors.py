@@ -10,6 +10,7 @@ from english_possessive_successor_fixture import (
     before_short_possessive_bytes,
     before_short_possessive_caption_frame,
 )
+from polish_contract_fixture import before_polish_contract_bytes
 from prayer_prose_successor_fixture import AFTER, BEFORE, DATA, SITES, before_prayer_prose_ledger
 from requiem_successor_fixture import before_requiem_bytes, before_requiem_ledger
 
@@ -297,7 +298,9 @@ def test_anima_formula_about_and_inherited_source_decisions_are_kept():
 def test_exact_layer_and_ledger_byte_inverses_preserve_every_other_field():
     for relative, expected in DATA["unchanged"].items():
         actual_raw = (ROOT / relative).read_bytes()
-        comparison_raw = before_requiem_bytes(relative, actual_raw)
+        comparison_raw = before_requiem_bytes(
+            relative, before_polish_contract_bytes(relative, actual_raw)
+        )
         assert hashlib.sha256(comparison_raw).hexdigest() == expected
     for rule in DATA["texts"].values():
         actual_raw = (ROOT / rule["layer"]).read_bytes()
