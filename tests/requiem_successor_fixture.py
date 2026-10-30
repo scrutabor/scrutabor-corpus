@@ -8,6 +8,7 @@ from pathlib import Path
 from canon_consecration_successor_fixture import before_canon_graph
 from english_contract_successor_fixture import before_english_contract_record_bytes
 from english_register_successor_fixture import before_english_register_record_bytes
+from foot_communion_successor_fixture import before_foot_communion_graph
 from lent_easter_successor_fixture import before_lent_easter_bytes, before_lent_easter_ledger
 from polish_reader_successor_fixture import before_polish_reader_bytes, before_polish_reader_ledger
 
@@ -56,6 +57,7 @@ def before_requiem_graph(value, diagnostic="exact Requiem graph additions"):
     isolated witness/record objects, and does not claim an independent old-frame
     acceptance for arbitrary input.
     """
+    value = before_foot_communion_graph(value, diagnostic)
     result = deepcopy(before_canon_graph(value, diagnostic))
     for collection, additions in DATA["graph"].items():
         rows = result[collection]

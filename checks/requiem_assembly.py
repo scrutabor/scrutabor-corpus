@@ -16,7 +16,7 @@ OMISSIONS = [
 ]
 TARGETS = {
     "ordinarium.iudica-me": "ce480f23033dc3110cdcacd910945676d8440b610c6953371e11ef16fb21865b",
-    "ordinarium.qui-dixisti": "3e2c1d50d2af09518a87bfcf8c61a8d7e940f73dda4b9e990323f61985ad448c",
+    "ordinarium.qui-dixisti": "55b19faace7d84c1eefe7d43a11577bdc5e30794d518da821ad689e2f9b5a28d",
     "ordinarium.benedictio": "c43dbca818a84d849b213fc29e4a5216212bdd7608bbf169b34d383ff03e7410",
 }
 

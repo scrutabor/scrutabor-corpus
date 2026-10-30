@@ -153,7 +153,11 @@ VOICE_RULINGS: dict[str, tuple[str, str]] = {
     # 511 a — the prayers at the foot of the altar, up to Oremus inclusive
     "ordinarium.introibo": (CLARA, "RG 511 a"),
     "ordinarium.iudica-me": (CLARA, "RG 511 a"),
-    "ordinarium.adiutorium": (CLARA, 'RG 511 a — "ea quae sequuntur usque ad Oremus"'),
+    "ordinarium.adiutorium": (
+        CLARA,
+        'RG 511 a — not named there; it stands between "psalmus Iudica me, Deus, cum '
+        'sua antiphona" and "confessio", both clara (Ritus servandus III.7)',
+    ),
     "ordinarium.confiteor": (CLARA, "RG 511 a — confessio"),
     "ordinarium.misereatur": (CLARA, "RG 511 a"),
     "ordinarium.confiteor-sacerdotis": (CLARA, "RG 511 a — confessio"),

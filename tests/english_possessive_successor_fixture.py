@@ -15,6 +15,11 @@ from english_psalm_caption_addendum import (
     before_psalm_caption_frame,
     before_psalm_caption_layer,
 )
+from foot_communion_successor_fixture import (
+    before_foot_communion_bytes,
+    before_foot_communion_layer_frame,
+    before_foot_communion_object,
+)
 
 from build_reader.bibliography_bindings import digest
 
@@ -64,6 +69,7 @@ def inverse_groups(rule, value, diagnostic):
 
 def before_short_possessive_layer(relative, value, diagnostic="short possessive current layer"):
     """Bind the whole current layer before undoing six enrolled short groups."""
+    value = before_foot_communion_object(relative, value, diagnostic)
     value = before_psalm_caption_layer(relative, value, diagnostic)
     if relative not in LAYERS:
         return value
@@ -80,6 +86,7 @@ def before_short_possessive_caption_frame(
     relative, value, diagnostic="short possessive current caption frame"
 ):
     """Compare captions only, preserving every non-caption field and prose fault."""
+    value = before_foot_communion_layer_frame(value, diagnostic)
     value = before_psalm_caption_frame(relative, value, caption_frame, diagnostic)
     if relative not in LAYERS:
         return value
@@ -93,6 +100,7 @@ def before_short_possessive_caption_frame(
 
 def before_short_possessive_bytes(relative, raw, diagnostic="short possessive current bytes"):
     """Require exact actual bytes, then restore the exact declared old lines."""
+    raw = before_foot_communion_bytes(relative, raw, diagnostic)
     raw = before_psalm_caption_bytes(relative, raw, diagnostic)
     if relative not in LAYERS:
         return raw

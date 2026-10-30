@@ -12,6 +12,12 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from foot_communion_successor_fixture import (
+    before_foot_communion_bytes,
+    before_foot_communion_layer_frame,
+    before_foot_communion_object,
+)
+
 from build_reader.bibliography_bindings import digest
 
 DATA = json.loads(
@@ -67,6 +73,7 @@ def before_english_contract_object(relative, value, diagnostic="English contract
     rule = FILES.get(relative)
     if rule is None:
         return value
+    value = before_foot_communion_object(relative, value, diagnostic)
     require(digest(value) == rule["after_canonical_sha256"], diagnostic)
     result = inverse(rule, value, diagnostic)
     require(digest(result) == rule["before_canonical_sha256"], diagnostic)
@@ -81,6 +88,7 @@ def before_english_contract_frame(relative, value, project, diagnostic="English 
     rule = FILES.get(relative)
     if rule is None:
         return value
+    value = before_foot_communion_layer_frame(value, diagnostic)
     if "after_caption_sha256" in rule:
         require(digest(project(value)) == rule["after_caption_sha256"], diagnostic)
         result = inverse(rule, value, diagnostic, caption_operation)
@@ -103,6 +111,7 @@ def before_english_contract_bytes(relative, raw, diagnostic="English contract co
     rule = FILES.get(relative)
     if rule is None:
         return raw
+    raw = before_foot_communion_bytes(relative, raw, diagnostic)
     require(hashlib.sha256(raw).hexdigest() == rule["after_raw_sha256"], diagnostic)
     result = raw
     for operation in reversed(rule["raw_inverse"]):

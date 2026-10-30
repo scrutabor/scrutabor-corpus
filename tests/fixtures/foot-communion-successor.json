@@ -1,0 +1,700 @@
+{
+  "texts": {
+    "ordinarium.adiutorium": "texts/ordinarium/adiutorium.json",
+    "ordinarium.corpus-tuum": "texts/ordinarium/corpus-tuum.json",
+    "ordinarium.deus-tu-conversus": "texts/ordinarium/deus-tu-conversus.json",
+    "ordinarium.introibo": "texts/ordinarium/introibo.json",
+    "ordinarium.iudica-me": "texts/ordinarium/iudica-me.json",
+    "ordinarium.misereatur": "texts/ordinarium/misereatur.json",
+    "ordinarium.misereatur-tui": "texts/ordinarium/misereatur-tui.json",
+    "ordinarium.panem-caelestem": "texts/ordinarium/panem-caelestem.json",
+    "ordinarium.qui-dixisti": "texts/ordinarium/qui-dixisti.json",
+    "ordinarium.quid-retribuam": "texts/ordinarium/quid-retribuam.json",
+    "ordinarium.quod-ore-sumpsimus": "texts/ordinarium/quod-ore-sumpsimus.json"
+  },
+  "files": {
+    "bibliography/graph.json": {
+      "before_sha256": "e52e36a3ef7da63c985e50047ff54a5263639da3b3bfedec4812e1bcd0dbba43",
+      "after_sha256": "96989ab8c43afb0e4f20f08e15b7c0385041bcb86143e23ad3c1649ef143648d",
+      "raw_inverse": [
+        {
+          "after": "      \"evidence_sha256\": \"a7f63e8030325b809f74dd4587c649bf8eb45cdd150fc9a2817fe2a1ed6a42e3\"\n    },\n    {\n      \"id\": \"use.ordinarium.qui-dixisti.mr1962\",\n      \"edition\": \"edition.missale-romanum.1962-typica\",\n      \"digital_item\": \"item.missale-romanum.1962-typica.ia\",\n      \"role\": \"official_text\",\n      \"address\": {\n        \"kind\": \"text\",\n        \"text\": \"ordinarium.qui-dixisti\"\n      },\n      \"locator\": {\n        \"printed\": \"p. 314\",\n        \"scan\": \"leaf n395 / PDF p. 396\",\n        \"page_url\": \"https://archive.org/details/missale-romanum-1962/page/n395/mode/1up\"\n      },\n      \"claim\": \"The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.\",\n      \"verified_on\": \"2026-10-29\",\n      \"decision\": \"RETAIN\",\n      \"evidence_sha256\": \"54b8eff70c464fed19219b37427a121119c904112e1a72506d92989ecd22cafd\"\n    },\n",
+          "before": "      \"evidence_sha256\": \"a7f63e8030325b809f74dd4587c649bf8eb45cdd150fc9a2817fe2a1ed6a42e3\"\n    },\n",
+          "count": 1
+        }
+      ],
+      "layout": "plain",
+      "before_canonical_sha256": "8d147aad5019c9269e87d583e3aad20144fe425bd31d2f1911e99b20792b67b0",
+      "after_canonical_sha256": "24fe42e287da2521c6e2195aeb2ba7a6a2eaef2ef9c9b8b8089011f2652f50f3"
+    },
+    "checks/attribute.py": {
+      "before_sha256": "bb39a0c92c069631435986b7f6cf69ba08517a0d1025dd851a64c6a4e33beb18",
+      "after_sha256": "c530e4b2569cb83a0df558c56a1a427410a28e7409cb09cf347ab200f1f71f10",
+      "raw_inverse": [
+        {
+          "after": "    \"ordinarium.iudica-me\": (CLARA, \"RG 511 a\"),\n    \"ordinarium.adiutorium\": (\n        CLARA,\n        'RG 511 a — not named there; it stands between \"psalmus Iudica me, Deus, cum '\n        'sua antiphona\" and \"confessio\", both clara (Ritus servandus III.7)',\n    ),\n    \"ordinarium.confiteor\": (CLARA, \"RG 511 a — confessio\"),\n",
+          "before": "    \"ordinarium.iudica-me\": (CLARA, \"RG 511 a\"),\n    \"ordinarium.adiutorium\": (CLARA, 'RG 511 a — \"ea quae sequuntur usque ad Oremus\"'),\n    \"ordinarium.confiteor\": (CLARA, \"RG 511 a — confessio\"),\n",
+          "count": 1
+        }
+      ]
+    },
+    "checks/requiem_assembly.py": {
+      "before_sha256": "20a02e2087e7a798bde6f4bf4e69b65545f6c37e641500f2979c7d1f280e07f3",
+      "after_sha256": "01dbf5b2eb30354c9d4fbbd4f242c5a94f4925bd1d0b20913f18935715bd1e80",
+      "raw_inverse": [
+        {
+          "after": "    \"ordinarium.iudica-me\": \"ce480f23033dc3110cdcacd910945676d8440b610c6953371e11ef16fb21865b\",\n    \"ordinarium.qui-dixisti\": \"55b19faace7d84c1eefe7d43a11577bdc5e30794d518da821ad689e2f9b5a28d\",\n    \"ordinarium.benedictio\": \"c43dbca818a84d849b213fc29e4a5216212bdd7608bbf169b34d383ff03e7410\",\n",
+          "before": "    \"ordinarium.iudica-me\": \"ce480f23033dc3110cdcacd910945676d8440b610c6953371e11ef16fb21865b\",\n    \"ordinarium.qui-dixisti\": \"3e2c1d50d2af09518a87bfcf8c61a8d7e940f73dda4b9e990323f61985ad448c\",\n    \"ordinarium.benedictio\": \"c43dbca818a84d849b213fc29e4a5216212bdd7608bbf169b34d383ff03e7410\",\n",
+          "count": 1
+        }
+      ]
+    },
+    "languages/en/texts/ordinarium/introibo.json": {
+      "before_sha256": "0dd43e0424547b93d3adc41ba058dcf9ce0d31204c0b5c67c2904b1c115f304d",
+      "after_sha256": "d822cca2e1977e8295905b3c536b59f2cd39c19483c9d1def218ac2b055d0728",
+      "raw_inverse": [
+        {
+          "after": "    \"s04\": { \"translation\": \"I will go to the altar of God.\" },\n    \"s06\": { \"narrative\": \"The ministers answer.\" },\n    \"s05\": { \"translation\": \"To God, who gladdens my youth.\", \"alignments\": [{ \"words\": [\"w018\", \"w019\"], \"anchor\": \"w018\", \"gloss\": \"my youth\" }] }\n",
+          "before": "    \"s04\": { \"translation\": \"I will go to the altar of God.\" },\n    \"s05\": { \"translation\": \"To God, who gladdens my youth.\", \"alignments\": [{ \"words\": [\"w018\", \"w019\"], \"anchor\": \"w018\", \"gloss\": \"my youth\" }] }\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "896290288efe813d9aba5b5762cd978b8a8b6fde39d615a3fc5b9c1e85ce5cd4",
+      "after_canonical_sha256": "a846acbeb5d1a94d4dadf967c2b932d6ed830085ef9b894ba5d44f49928ff9e2"
+    },
+    "languages/en/texts/ordinarium/iudica-me.json": {
+      "before_sha256": "63ff2bd70db4056f1174d3d9d115ba49a0a700c59b55c06bb00c3cb2f9b52b86",
+      "after_sha256": "4c1f70e76d3e8f8c65c9dc6a65e0ea0a04c5fb447abb9efec500cd5235d8f26b",
+      "raw_inverse": [
+        {
+          "after": "  \"text\": \"ordinarium.iudica-me\",\n  \"about\": \"In the prayers at the foot of the altar, Psalm 42 in the Vulgate numbering (Psalm 43 in Hebrew) is said alternately by the priest and server. The antiphon “Introíbo ad altáre Dei” precedes it and is repeated after the doxology. In Masses for the Dead, and at Masses of the season from Passion Sunday through Maundy Thursday inclusive, the psalm is left out together with its Glória Patri and the repetition of the antiphon: the antiphon is then said only once, and the Adiutórium and the Confíteor follow it.\",\n  \"segments\": {\n",
+          "before": "  \"text\": \"ordinarium.iudica-me\",\n  \"about\": \"In the prayers at the foot of the altar, Psalm 42 in the Vulgate numbering (Psalm 43 in Hebrew) is said alternately by the priest and server. The antiphon “Introíbo ad altáre Dei” precedes it and is repeated after the doxology. In Masses for the Dead, and at Masses of the season from Passion Sunday through Maundy Thursday, the psalm is left out with its antiphon and the Confíteor follows at once.\",\n  \"segments\": {\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "e6053bf19eeac85d2f4b4ef5248a392bdfb4cea62f01e50ee5dece25539cf195",
+      "after_canonical_sha256": "17a0fc6f51afd4019da6ca8d0af72b3b19b5ee9e777ee340b6385972cfc9b0a1"
+    },
+    "languages/en/texts/ordinarium/misereatur-tui.json": {
+      "before_sha256": "b15f9a2a735addcd6861aaea00df693b8bf88242130bf03f8b20b4f792b3dd89",
+      "after_sha256": "ac46db5039e874148aea9b9ed229ffdda0946a77cb941a18ff8ac0fdd4050151",
+      "raw_inverse": [
+        {
+          "after": "  \"segments\": {\n    \"s05\": { \"narrative\": \"The ministers answer.\" },\n    \"s01\": { \"translation\": \"May almighty God have mercy on you and, having forgiven your sins, bring you to eternal life.\", \"translation_citations\": [{ \"title\": \"The Missal for the Laity (1846)\", \"locator\": \"printed p. 37\", \"url\": \"https://archive.org/details/TheMissalForTheLaity\" }] },\n",
+          "before": "  \"segments\": {\n    \"s01\": { \"translation\": \"May almighty God have mercy on you and, having forgiven your sins, bring you to eternal life.\", \"translation_citations\": [{ \"title\": \"The Missal for the Laity (1846)\", \"locator\": \"printed p. 37\", \"url\": \"https://archive.org/details/TheMissalForTheLaity\" }] },\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "d408ae8569a57796dd4d2a21243827b1646f1efc3903b33acc06a161be0a8c35",
+      "after_canonical_sha256": "7b33dd88cccf7556e7388ed716769b58b6c0490ab1b967db4387b8223cbbe96d"
+    },
+    "languages/en/translation-provenance.json": {
+      "before_sha256": "dc7bb90f5b1ddbeeeaa908c0a026f786a78265b023846e15c3d23913585b2b2c",
+      "after_sha256": "1f767fc8d231b97e37dd4589653e546fc221c0376ec7698109ac1ea2e44091e5",
+      "raw_inverse": [
+        {
+          "after": "      \"origin\": \"public-domain\",\n      \"review\": \"working\",\n      \"source_sha256\": \"e843001f695a905193625e8dca39431f2dff34a55ac1d00966f08ad9e9723e90\",\n      \"target_sha256\": \"e5267cb5b365df8746dfdb33aac5eb15fb4c9f142e3dd2e7f053675b263f40d0\"\n",
+          "before": "      \"origin\": \"public-domain\",\n      \"review\": \"internally-reviewed\",\n      \"source_sha256\": \"496de594418abaf87ef0e9e9ba567451163ae6d7b2452ace1f766eb01fbf3070\",\n      \"target_sha256\": \"e5267cb5b365df8746dfdb33aac5eb15fb4c9f142e3dd2e7f053675b263f40d0\"\n",
+          "count": 1
+        },
+        {
+          "after": "      \"origin\": \"public-domain\",\n      \"review\": \"working\",\n      \"source_sha256\": \"e7235ad32a924301d511fe1ad8781ba0eb73571a4ccc203cdeca736f55e6c4dc\",\n      \"target_sha256\": \"095728063e7cf247d7d5568cedeb169fa0a13c264cb8d76b7fda87edb23877c9\"\n",
+          "before": "      \"origin\": \"public-domain\",\n      \"review\": \"internally-reviewed\",\n      \"source_sha256\": \"18ef3d55acc8ab65311eb19204192ab9966c3bef88ac02b2bddb1a104799692b\",\n      \"target_sha256\": \"095728063e7cf247d7d5568cedeb169fa0a13c264cb8d76b7fda87edb23877c9\"\n",
+          "count": 1
+        }
+      ],
+      "layout": "plain",
+      "before_canonical_sha256": "e5b787b0cac17b510cb544ce53287d9a632d65068ed417b0b2076a2e7a5704c4",
+      "after_canonical_sha256": "5f9c855bf32b92e8b0d1bfd206cabf62564ed670a5a74e30eef9fd93a3422fab"
+    },
+    "languages/pl/texts/ordinarium/introibo.json": {
+      "before_sha256": "56c69d247a668a36252f0b61ad3a9f1a181fdbc0a10e4502085bab245c5ad8b5",
+      "after_sha256": "4e925566f8593d616a20ed1f889917a460d841b91d2bcd92b74e05bd9837aad6",
+      "raw_inverse": [
+        {
+          "after": "    \"s04\": { \"translation\": \"Przystąpię do ołtarza Bożego.\" },\n    \"s06\": { \"narrative\": \"Usługujący odpowiadają.\" },\n    \"s05\": { \"translation\": \"Do Boga, który rozwesela moją młodość.\" }\n",
+          "before": "    \"s04\": { \"translation\": \"Przystąpię do ołtarza Bożego.\" },\n    \"s05\": { \"translation\": \"Do Boga, który rozwesela moją młodość.\" }\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "2d5ed2ab447a97280b93ef2d8e98945feeafb1aaf7cc8a452eab4ab16dd2b1bf",
+      "after_canonical_sha256": "fde100c75647ab6f02bcb7f87740183cbe7f537214f832002f3c3d96ee66b784"
+    },
+    "languages/pl/texts/ordinarium/iudica-me.json": {
+      "before_sha256": "8d2795c67b1e1a6a12e9399d09589500f0c20e4f3c94717bc8f317a3501db9f3",
+      "after_sha256": "13a6af2df921a0e6314f5ee483ec2533f1567bfdcf1ab420eb89c371da6a9a8a",
+      "raw_inverse": [
+        {
+          "after": "  \"text\": \"ordinarium.iudica-me\",\n  \"about\": \"W modlitwach u stopni ołtarza Psalm 42 według numeracji Wulgaty (Ps 43 w numeracji hebrajskiej) odmawiają na przemian kapłan i usługujący. Poprzedza go antyfona „Introíbo ad altáre Dei”, powtarzana po doksologii. We Mszach za zmarłych oraz we Mszach okresowych od Niedzieli Męki Pańskiej do Wielkiego Czwartku włącznie opuszcza się psalm razem z „Glória Patri” i powtórzeniem antyfony: antyfonę mówi się wtedy tylko raz, a po niej następuje „Adiutórium” i Confíteor.\",\n  \"segments\": {\n",
+          "before": "  \"text\": \"ordinarium.iudica-me\",\n  \"about\": \"W modlitwach u stopni ołtarza Psalm 42 według numeracji Wulgaty (Ps 43 w numeracji hebrajskiej) odmawiają na przemian kapłan i usługujący. Poprzedza go antyfona „Introíbo ad altáre Dei”, powtarzana po doksologii. We Mszach za zmarłych oraz we Mszach okresowych od Niedzieli Męki Pańskiej do Wielkiego Czwartku włącznie psalm opuszcza się wraz z antyfoną, a od razu następuje Confíteor.\",\n  \"segments\": {\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "44e9cb3fdb2b4995ccbed4ddd1a20aea55f353e06bbb2a5af6d28870a5678816",
+      "after_canonical_sha256": "f05e25910dcbdcca11e9079745238aaab9ed3a68acd46ef8ace32313bf4f8a02"
+    },
+    "languages/pl/texts/ordinarium/misereatur-tui.json": {
+      "before_sha256": "5a9ce462802fa390f12375a09c0500bf5e743ac0c4e5a4a26f46dcefdedecb8f",
+      "after_sha256": "2dddb138622bb8c0a55f56eb0cf7342a472f0e571a78bd42b70ac56cbd1717b7",
+      "raw_inverse": [
+        {
+          "after": "  \"segments\": {\n    \"s05\": { \"narrative\": \"Usługujący odpowiadają.\" },\n    \"s01\": { \"translation\": \"Niech się zmiłuje nad tobą Bóg wszechmogący, a odpuściwszy ci grzechy, niech cię doprowadzi do życia wiecznego.\", \"translation_citations\": [{ \"title\": \"Pamiątka Missyi dla ludu katolickiego (1903)\", \"locator\": \"PDF scans 47–48 / printed pp. 44–45\", \"url\": \"https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego\" }] },\n",
+          "before": "  \"segments\": {\n    \"s01\": { \"translation\": \"Niech się zmiłuje nad tobą Bóg wszechmogący, a odpuściwszy ci grzechy, niech cię doprowadzi do życia wiecznego.\", \"translation_citations\": [{ \"title\": \"Pamiątka Missyi dla ludu katolickiego (1903)\", \"locator\": \"PDF scans 47–48 / printed pp. 44–45\", \"url\": \"https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego\" }] },\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "8e2011cad9c83a1accb9440b0ce47bd946de07ec03592b515db056cb3d308589",
+      "after_canonical_sha256": "eee8b2240b55339a57ea1e5658818c970ed8008b491399bd25e22228c4431d2c"
+    },
+    "languages/pl/translation-provenance.json": {
+      "before_sha256": "32306bd0e714b972764dff9b381bd4a5b1ace1f50e37cf0836c3023b9c606514",
+      "after_sha256": "912d8815f33a2c21e3063e7c2ee24873f9183ec3eb929e1dec929f8905e82184",
+      "raw_inverse": [
+        {
+          "after": "      \"origin\": \"public-domain\",\n      \"review\": \"working\",\n      \"source_sha256\": \"e843001f695a905193625e8dca39431f2dff34a55ac1d00966f08ad9e9723e90\",\n      \"target_sha256\": \"e5267cb5b365df8746dfdb33aac5eb15fb4c9f142e3dd2e7f053675b263f40d0\"\n",
+          "before": "      \"origin\": \"public-domain\",\n      \"review\": \"internally-reviewed\",\n      \"source_sha256\": \"496de594418abaf87ef0e9e9ba567451163ae6d7b2452ace1f766eb01fbf3070\",\n      \"target_sha256\": \"e5267cb5b365df8746dfdb33aac5eb15fb4c9f142e3dd2e7f053675b263f40d0\"\n",
+          "count": 1
+        },
+        {
+          "after": "      \"review\": \"working\",\n      \"source_sha256\": \"e7235ad32a924301d511fe1ad8781ba0eb73571a4ccc203cdeca736f55e6c4dc\",\n      \"target_sha256\": \"5d739dcde3a0eb08e27f204769ff10ebd8197bb623c0081e6c8608e14b737755\"\n",
+          "before": "      \"review\": \"working\",\n      \"source_sha256\": \"18ef3d55acc8ab65311eb19204192ab9966c3bef88ac02b2bddb1a104799692b\",\n      \"target_sha256\": \"5d739dcde3a0eb08e27f204769ff10ebd8197bb623c0081e6c8608e14b737755\"\n",
+          "count": 1
+        }
+      ],
+      "layout": "plain",
+      "before_canonical_sha256": "292900d89ba5556174b94e7789a87ba55318590c1eca92878c7e1fc38e1c2c62",
+      "after_canonical_sha256": "7ededde8bbf7ced16391bd05e95f898d7e1e49fbf00c4beff0ce3836f91047be"
+    },
+    "texts/ordinarium/adiutorium.json": {
+      "before_sha256": "b16a04e7ef3b2d46adc5f97f7c624a3a1f81ae3e98ba0f40f1f8ef7c9461f086",
+      "after_sha256": "82c3b584fa5c997d01ca13b1e476d3d25d9f300d726cf027fcc2ed532d2ecc67",
+      "raw_inverse": [
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    }\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    }\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "ae23dc076b13440cc9f237861d8568d67e8c6c1c817f4b0e0b8f5f076549d667",
+      "after_canonical_sha256": "699380297e4579206099148fe78041584430161b9926a71c6154210a6ccd5d8c"
+    },
+    "texts/ordinarium/corpus-tuum.json": {
+      "before_sha256": "49ed3c52df52d4e070fd5c76c1e497c4339a0026806a70fef82707dc0e57dad2",
+      "after_sha256": "8c73fc218bbb4b76a3056a7f2ca534ecf85f2887f46a212124a8b4a480849476",
+      "raw_inverse": [
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s05\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    }\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s05\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    }\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "3ea13741e174e9a65391cd12191f29edb5861142d77b8f487af0195ce0e66567",
+      "after_canonical_sha256": "0d523459759390100471dd38bc97143a5524c680d77883089fca26cd1e43fd97"
+    },
+    "texts/ordinarium/deus-tu-conversus.json": {
+      "before_sha256": "26cb5cbd31d6809d76d1c1bac5319ed83a8f2ae072eaec73447771ca99905c0b",
+      "after_sha256": "a489461455dc378cdf2e7281eb037b5f2a98dc4346e894188355c4a9ad4b4f71",
+      "raw_inverse": [
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    },\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    },\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "3e3cf31780aefd690d754c0a2906b103053d693bfe672069dd62c91ec84fb5af",
+      "after_canonical_sha256": "a6bdd2d2c6fc636da1be23ad5d3b93f9d5669ae5dfe5dae7963b4b0ad6f567db"
+    },
+    "texts/ordinarium/introibo.json": {
+      "before_sha256": "06574e0e7577a8b47471ef38424e588e0ea479fbfe439c82cf7b59a9390a563f",
+      "after_sha256": "2e0b8ab69b69d0f97d2088e473231f649c758da09e7d710901b450eaf91a09b7",
+      "raw_inverse": [
+        {
+          "after": "    \"segments\": {\n      \"next\": 7\n    }\n",
+          "before": "    \"segments\": {\n      \"next\": 6\n    }\n",
+          "count": 1
+        },
+        {
+          "after": "    {\n      \"id\": \"s06\",\n      \"type\": \"rubric\",\n      \"text\": \"Ministri respondent:\"\n    },\n    {\n      \"id\": \"s05\",\n",
+          "before": "    {\n      \"id\": \"s05\",\n",
+          "count": 1
+        },
+        {
+          "after": "    \"status\": \"working-edition\",\n    \"notes\": \"The opening of the prayers at the foot of the altar: the sign of the cross and the antiphon, said before the psalm. It is a text of its own because the 1962 rubric divides the block exactly here — in Requiem Masses and, in Masses of the season, from Passion Sunday through Maundy Thursday inclusive the psalm, the Glória Patri and the repetition of the antiphon are omitted, while In nómine Patris, Introíbo and Adiutórium are still said. What the rubric keeps and what it drops therefore cannot live in one document. The psalm follows as ordinarium.iudica-me, the versicle after it as ordinarium.adiutorium. Witness do prints a cross glyph inside the first sentence and handmissal-eo before it; the glyph is a direction for the hand, not a word, and is stripped as in the other ordinarium texts. FÍLII at w005 is the genitive singular, as the three-genitive formula requires. The Whitaker's port contradicts it — the port resolves filii as locative and plural only, reaching the genitive under the contracted spelling fili — though Whitaker's WORDS itself gives the genitive for filii first. Collatinus reads the form as we do. The divergence is a gap in the port, not a doubt about the case.\",\n    \"source\": {\n",
+          "before": "    \"status\": \"working-edition\",\n    \"notes\": \"The opening of the prayers at the foot of the altar: the sign of the cross and the antiphon, said before the psalm. It is a text of its own because the 1962 rubric divides the block exactly here — in Requiem Masses and, in Masses of the season, from Passion Sunday up to but not including Holy Saturday the psalm, the Glória Patri and the repetition of the antiphon are omitted, while In nómine Patris, Introíbo and Adiutórium are still said. What the rubric keeps and what it drops therefore cannot live in one document. The psalm follows as ordinarium.iudica-me, the versicle after it as ordinarium.adiutorium. Witness do prints a cross glyph inside the first sentence and handmissal-eo before it; the glyph is a direction for the hand, not a word, and is stripped as in the other ordinarium texts. FÍLII at w005 is the genitive singular, as the three-genitive formula requires. The Whitaker's port contradicts it — the port resolves filii as locative and plural only, reaching the genitive under the contracted spelling fili — though Whitaker's WORDS itself gives the genitive for filii first. Collatinus reads the form as we do. The divergence is a gap in the port, not a doubt about the case.\",\n    \"source\": {\n",
+          "count": 1
+        },
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s03\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s06\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    },\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s03\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    },\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "0f47d36194273f77d3ffcb1932d54e8af9cf717a4def880536d955eeaa1f179c",
+      "after_canonical_sha256": "97f2475159c7f4b50111db36559285df373e2cfa98b93d127b31f5744aeef886"
+    },
+    "texts/ordinarium/iudica-me.json": {
+      "before_sha256": "65b0ac546451173e445ae695b8e8905c509efcbbb00a9883901831b60fc3c15e",
+      "after_sha256": "a97f63db688b47f9227d1ac322d03425876ee239a79392b4822aa48ecdd20185",
+      "raw_inverse": [
+        {
+          "after": "    \"status\": \"working-edition\",\n    \"notes\": \"Psalm 42 as the Ordo prints it — verses 1-5, then the Glória Patri, then the antiphon repeated — said alternately by celebrant and ministers at the foot of the altar. It is a document of its own because the rubric omits exactly this much and no more (rubric s01): in Requiem Masses, and in Masses of the season from Passion Sunday through Maundy Thursday inclusive, the psalm, the doxology and the repeated antiphon fall away together while the sign of the cross, the antiphon's first statement and the Adiutórium stay. Rubric s01 gives the bound as the 1962 page prints it, a dominica I Passionis usque ad feriam V in Cena Domini inclusive; witness do keeps the pre-reform formula, a Dominica Passionis usque ad Sabbatum sanctum exclusive, in the rubric that precedes its selection. In the 1962 rite the two bounds select the same Masses: Good Friday has no Mass, and the evening Mass of Holy Thursday, which keeps the confession, falls within both. The psalm text is the Gallican psalter's, translated from the Greek rather than from the Hebrew, which is why w042 is neuter (see its note). TRISTIS at w030 is masculine in context: the Latin form itself is shared by masculine and feminine, but both the Hebrew participle and the Greek participle translated here are masculine. The same word at w074 is feminine because it stands with ánima. meus at w072 is the nominative form: the masculine possessive has no vocative but mi, which the psalter does not use here, so the address is carried by the note (the ruling the corpus made for Agnus). Latin's vocative of meus is mi: the phrase is address, the possessive follows its noun, and the nominative tag stands accepted, both analyzers confirming the form. The doxology here is the missal's setting of the same formula the corpus carries at orationes.gloria-patri, which the Hours punctuate differently (et semper, for et semper:); the two are separate witnesses of one text and are not collated against each other.\",\n    \"source\": {\n",
+          "before": "    \"status\": \"working-edition\",\n    \"notes\": \"Psalm 42 as the Ordo prints it — verses 1-5, then the Glória Patri, then the antiphon repeated — said alternately by celebrant and ministers at the foot of the altar. It is a document of its own because the rubric omits exactly this much and no more (rubric s01): in Requiem Masses, and in Masses of the season from Passion Sunday through Maundy Thursday inclusive, the psalm, the doxology and the repeated antiphon fall away together while the sign of the cross, the antiphon's first statement and the Adiutórium stay. The transcribed rubric closes a Dominica Passionis usque ad Sabbatum sanctum exclusive — the pre-reform formula — where the 1962 books read usque ad feriam V in Cena Domini inclusive; in the 1962 rite the two mark out the same days, since the reformed Triduum liturgies have no prayers at the foot, and the do header notes it. The psalm text is the Gallican psalter's, translated from the Greek rather than from the Hebrew, which is why w042 is neuter (see its note). TRISTIS at w030 is masculine in context: the Latin form itself is shared by masculine and feminine, but both the Hebrew participle and the Greek participle translated here are masculine. The same word at w074 is feminine because it stands with ánima. meus at w072 is the nominative form: the masculine possessive has no vocative but mi, which the psalter does not use here, so the address is carried by the note (the ruling the corpus made for Agnus). Latin's vocative of meus is mi: the phrase is address, the possessive follows its noun, and the nominative tag stands accepted, both analyzers confirming the form. The doxology here is the missal's setting of the same formula the corpus carries at orationes.gloria-patri, which the Hours punctuate differently (et semper, for et semper:); the two are separate witnesses of one text and are not collated against each other.\",\n    \"source\": {\n",
+          "count": 1
+        },
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s02\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s11\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    },\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s02\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s11\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    },\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "d7e25038111c42910c5d9a56beda71620d24a195dddd13e5f685d77f3c83e87d",
+      "after_canonical_sha256": "ce7b5c6ec4d4359bf5f235d93358d62c0506746f6a779e76d6d3f06dbd0c2887"
+    },
+    "texts/ordinarium/misereatur-tui.json": {
+      "before_sha256": "d8f2d927c41ec35330a03bde8e327f389bde10d02c791d959e30959148f2935b",
+      "after_sha256": "16732fc3f40ebd5a64c8c862b5fca2b6581a899a8684625f9a86c205aa170a67",
+      "raw_inverse": [
+        {
+          "after": "    \"segments\": {\n      \"next\": 6\n    }\n",
+          "before": "    \"segments\": {\n      \"next\": 5\n    }\n",
+          "count": 1
+        },
+        {
+          "after": "  \"segments\": [\n    {\n      \"id\": \"s05\",\n      \"type\": \"rubric\",\n      \"text\": \"Ministri respondent:\"\n    },\n    {\n",
+          "before": "  \"segments\": [\n    {\n",
+          "count": 1
+        },
+        {
+          "after": "      \"words\": [\n        { \"id\": \"w014\", \"form\": \"Amen\", \"lemma\": \"amen\", \"morph\": { \"pos\": \"intj\" } }\n      ]\n",
+          "before": "      \"words\": [\n        { \"id\": \"w014\", \"form\": \"Amen\", \"post\": \".\", \"lemma\": \"amen\", \"morph\": { \"pos\": \"intj\" } }\n      ]\n",
+          "count": 1
+        },
+        {
+          "after": "    \"source\": {\n      \"method\": \"Read word by word from the page image of the Benziger Brothers 1962 Editio iuxta typicam, which the Missal witness below transcribes, and collated against the other witnesses: zero substantive divergence. All accidental variants are declared in the apparatus.\",\n      \"witnesses\": \"witnesses/ordinarium.misereatur-tui/\",\n      \"apparatus\": \"witnesses/ordinarium.misereatur-tui/apparatus.json\"\n    },\n",
+          "before": "    \"source\": {\n      \"method\": \"Read word by word from the page image of the Benziger Brothers 1962 Editio iuxta typicam, which the Missal witness below transcribes, and collated against the other witnesses: zero substantive divergence and no accidental variant.\",\n      \"witnesses\": \"witnesses/ordinarium.misereatur-tui/\"\n    },\n",
+          "count": 1
+        },
+        {
+          "after": "    \"segments\": {\n      \"s02\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s04\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s05\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    }\n",
+          "before": "    \"segments\": {\n      \"s02\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s04\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    }\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "0ddcdc13115a319d595fce6dd0460cfac647b9f74593b40de2b34531332e6395",
+      "after_canonical_sha256": "fd99699ac12eba4144e4f28366caf6874add9962c72b67580609d2fba85d823d"
+    },
+    "texts/ordinarium/misereatur.json": {
+      "before_sha256": "12bbb9adcd0d10fda9612e7531269e2540687368ed7f0273ffae71dc9c8f8d4d",
+      "after_sha256": "2816e4c2abb4a51e6241b64bb2cb11406fbb8f97e2ae4dcfd103b03eea73516b",
+      "raw_inverse": [
+        {
+          "after": "    \"status\": \"working-edition\",\n    \"notes\": \"The two absolutions the priest pronounces after the ministers' confession, each with its Amen. The variant is ministrorum for the same reason as ordinarium.confiteor: this is the branch of the dialogue in which the ministers have just confessed, so the priest says vestri and vestris. After his own confession the ministers answer him with the same formula in the singular (Misereátur tui... peccátis tuis... perdúcat te), which belongs with the priest's Confíteor and stands as ordinarium.misereatur-tui — see the seam noted at ordinarium.confiteor-sacerdotis. Two of the witnesses print a cross glyph in the Indulgéntiam — do between Indulgéntiam and absolutiónem, the hand missal before Indulgéntiam — where the approved Benziger printing prints none; it is stripped as elsewhere in the ordinarium. VESTRI at w002 is the genitive of the pronoun vos, not the possessive adjective that supplies w008: misereor governs the genitive of the person pitied, and the two forms fall together in the possessive's paradigm — the note carries the distinction.\",\n    \"source\": {\n",
+          "before": "    \"status\": \"working-edition\",\n    \"notes\": \"The two absolutions the priest pronounces after the ministers' confession, each with its Amen. The variant is ministrorum for the same reason as ordinarium.confiteor: this is the branch of the dialogue in which the ministers have just confessed, so the priest says vestri and vestris. After his own confession the ministers answer him with the same formula in the singular (Misereátur tui... peccátis tuis... perdúcat te), which belongs with the priest's Confíteor and stands as ordinarium.misereatur-tui — see the seam noted at ordinarium.confiteor-sacerdotis. Both witnesses print a cross glyph in the Indulgéntiam — do inside the word, the hand missal before it; it is stripped as elsewhere in the ordinarium. VESTRI at w002 is the genitive of the pronoun vos, not the possessive adjective that supplies w008: misereor governs the genitive of the person pitied, and the two forms fall together in the possessive's paradigm — the note carries the distinction.\",\n    \"source\": {\n",
+          "count": 1
+        },
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s04\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    },\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s04\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    },\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "528ee10b430432d158470d04ccd3b45c57cec0ca18ff61c44e38798ebd1cd94d",
+      "after_canonical_sha256": "1a8c6cc57209688c09ca7922159c257f3453e016f07e24dd935a7d5253b7bf13"
+    },
+    "texts/ordinarium/panem-caelestem.json": {
+      "before_sha256": "3760930da8c0684dc70da0df35cb57b247b0a56b9c96afb20d20ceb425316a4a",
+      "after_sha256": "3b2b1bfd5b6cf46cb0f7586a240355af66a7da48d1c5a6679b511e9d0e649d96",
+      "raw_inverse": [
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s03\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s05\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s08\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s11\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s13\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s15\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    }\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s03\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s05\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s08\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s11\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s13\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s15\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    }\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "797f77c1b466479d37d18e97aa7b36a49633cbe3ef8424d5d6277ad4a3922dc4",
+      "after_canonical_sha256": "cab387d85a937447410104e0c53c8834357c25254551a995384af1824aa3a680"
+    },
+    "texts/ordinarium/qui-dixisti.json": {
+      "before_sha256": "a379216a20a9d8a759d42ac8d166b5277c9ac6582a1de75ea710b961b341351a",
+      "after_sha256": "2a45f112589698bfc652bace148f92f618fb4afd1b3f19b295675f925fa7939a",
+      "raw_inverse": [
+        {
+          "after": "      \"type\": \"rubric\",\n      \"text\": \"Deinde, iunctis manibus super altare, inclinatus dicit secrete sequentes orationes:\"\n    },\n",
+          "before": "      \"type\": \"rubric\",\n      \"text\": \"Deinde, iunctis manibus super Altare, inclinatus dicit secrete sequentes Orationes:\"\n    },\n",
+          "count": 1
+        },
+        {
+          "after": "        { \"id\": \"w021\", \"form\": \"Ecclésiæ\", \"lemma\": \"ecclesia\", \"morph\": { \"pos\": \"noun\", \"case\": \"gen\", \"number\": \"sg\", \"gender\": \"f\", \"decl\": 1 } },\n        { \"id\": \"w022\", \"form\": \"tuæ\", \"post\": \":\", \"lemma\": \"tuus\", \"morph\": { \"pos\": \"adj\", \"case\": \"gen\", \"number\": \"sg\", \"gender\": \"f\" }, \"head\": \"w021\" }\n      ]\n",
+          "before": "        { \"id\": \"w021\", \"form\": \"Ecclésiæ\", \"lemma\": \"ecclesia\", \"morph\": { \"pos\": \"noun\", \"case\": \"gen\", \"number\": \"sg\", \"gender\": \"f\", \"decl\": 1 } },\n        { \"id\": \"w022\", \"form\": \"tuæ\", \"post\": \";\", \"lemma\": \"tuus\", \"morph\": { \"pos\": \"adj\", \"case\": \"gen\", \"number\": \"sg\", \"gender\": \"f\" }, \"head\": \"w021\" }\n      ]\n",
+          "count": 1
+        },
+        {
+          "after": "      \"type\": \"rubric\",\n      \"text\": \"Si danda est pax, osculatur altare, et dans pacem, dicit:\"\n    },\n",
+          "before": "      \"type\": \"rubric\",\n      \"text\": \"Si danda est pax, osculatur Altare, et dans pacem, dicit:\"\n    },\n",
+          "count": 1
+        },
+        {
+          "after": "      \"type\": \"rubric\",\n      \"text\": \"In Missis defunctorum non datur pax, neque dicitur præcedens oratio.\"\n    }\n",
+          "before": "      \"type\": \"rubric\",\n      \"text\": \"In Missis Defunctorum non datur pax, neque dicitur oratio Domine Iesu Christe, qui dixisti.\"\n    }\n",
+          "count": 1
+        },
+        {
+          "after": "    \"source\": {\n      \"method\": \"Read word by word from the page image of the Benziger Brothers 1962 Editio iuxta typicam, which the Missal witness below transcribes, and collated against the other witnesses: zero substantive divergence. All accidental variants are declared in the apparatus.\",\n      \"witnesses\": \"witnesses/ordinarium.qui-dixisti/\",\n",
+          "before": "    \"source\": {\n      \"method\": \"Verified by collation against the independent witnesses below: zero substantive divergence. The accidental variants are adjudicated in the apparatus.\",\n      \"witnesses\": \"witnesses/ordinarium.qui-dixisti/\",\n",
+          "count": 1
+        },
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s07\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s10\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    }\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s07\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\", \"mr-ritus-servandus\"], \"review\": \"pending\" } },\n      \"s10\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    }\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "35880f1fb62d47babc9356236e6e44a44bf1b0286548f1ca81ca6266c584df80",
+      "after_canonical_sha256": "9b27f44f71647ca17cf9f9ee8dd8ccc52d807dd9272ec52f42417b5678a7663d"
+    },
+    "texts/ordinarium/quid-retribuam.json": {
+      "before_sha256": "558f6aea42001528828d9b2f4683dc46cca9005c18a2ff132cd6a632447688b7",
+      "after_sha256": "8fd4dd02b56d52de83c8e2a0aba7ef80ee5959057c596fa8396f6c3838ccd15d",
+      "raw_inverse": [
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s05\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s07\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    },\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s05\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s07\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    },\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "5463b7de132717a851e8ff6bf73849d4e65e68b9de9f19c3ab0a26eb0c22c060",
+      "after_canonical_sha256": "cd7de0a4119f8467f0500b9cf12e7325623d5113888f7fde2871d51c7d2bfe71"
+    },
+    "texts/ordinarium/quod-ore-sumpsimus.json": {
+      "before_sha256": "07c39e30f1889ef406fa1886b74130090d9bea71a1fb5005f99008a223437ca0",
+      "after_sha256": "90a6416388c4752bfcf1e3815771557083d268a41098bc63fb109b41e853595f",
+      "raw_inverse": [
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s03\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    }\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s03\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    }\n",
+          "count": 1
+        }
+      ],
+      "layout": "house",
+      "before_canonical_sha256": "f11f220643260def53a8b680e20c3bd7df5368a97e548302472703224bf60d14",
+      "after_canonical_sha256": "703780430b16042269c8f7721850be78e7325fd95b8b8248d1af2260e77d170a"
+    },
+    "witnesses/ordinarium.iudica-me/apparatus.json": {
+      "before_sha256": "b754b77db2e5d7312988c42ed040806c087e89e8903bd7f9a9b298c0d30bcd50",
+      "after_sha256": "8c56dc676370fedd0b909a3fbf76e4ad9ec71f3cf9df98e939f216662bbc6534",
+      "raw_inverse": [
+        {
+          "after": "        \"do\": \"tuam\"\n      },\n      \"class\": \"punctuation\",\n      \"ruling\": \"The approved Benziger printing's punctuation is retained. The difference marks phrasing and does not change the words.\"\n    },\n    {\n      \"at\": \"w050\",\n",
+          "before": "        \"do\": \"tuam\"\n      },\n      \"class\": \"punctuation\",\n      \"ruling\": \"No comma before the 'et' closing a two-member series, with DO and with the corpus ruling at ordinarium.confiteor w028: lucem tuam et veritátem tuam is one object pair, and the psalm's own colon after it already marks the break.\"\n    },\n    {\n      \"at\": \"w050\",\n",
+          "count": 1
+        },
+        {
+          "after": "        \"do\": \"tuum\"\n      },\n      \"class\": \"punctuation\",\n      \"ruling\": \"The approved Benziger printing's punctuation is retained. The difference marks phrasing and does not change the words.\"\n    },\n    {\n      \"at\": \"w061\",\n",
+          "before": "        \"do\": \"tuum\"\n      },\n      \"class\": \"punctuation\",\n      \"ruling\": \"No comma before the 'et' closing a two-member series, with DO — parallel to w038 in the same verse.\"\n    },\n    {\n      \"at\": \"w061\",\n",
+          "count": 1
+        }
+      ],
+      "layout": "plain",
+      "before_canonical_sha256": "3311e12329d6c640a2a7afa1417ec82b5428173cdf324c231116910edf1d84fb",
+      "after_canonical_sha256": "e94c2c9f5310a86ba6ec01e157a940d7691e5057db90b392a0a86ebcf628adf2"
+    },
+    "witnesses/ordinarium.misereatur-tui/mr.txt": {
+      "before_sha256": "7284cd380e4653ef81f108f1814d5eb4510373a4b7c0ebaafa115a2fb37ee5dd",
+      "after_sha256": "4909a99e4850f1580fa612712355bcb8a441c39c7051514065937bd8d600e99c",
+      "raw_inverse": [
+        {
+          "after": "# note: headings, rubrics, speaker signs, and typographic crosses are edition framing and are not transcribed\n# correction: 2026-10-29 the page prints the priest's Amen without a stop, running it into the rubric et erigit se. (p. 220); the earlier body closed it with a full stop\nMisereátur tui omnípotens Deus, et, dimíssis peccátis tuis, perdúcat te ad vitam ætérnam.\nAmen\n",
+          "before": "# note: headings, rubrics, speaker signs, and typographic crosses are edition framing and are not transcribed\nMisereátur tui omnípotens Deus, et, dimíssis peccátis tuis, perdúcat te ad vitam ætérnam.\nAmen.\n",
+          "count": 1
+        }
+      ]
+    },
+    "witnesses/ordinarium.misereatur/apparatus.json": {
+      "before_sha256": "53a807803112a71c070a2b663d5c8fe8d567ba2626b46af9a6295d3cd87a9afb",
+      "after_sha256": "baab45238c9cba362f7e77acc2d34ad46c0ebb7185d9782d3bea977f908cbb11",
+      "raw_inverse": [
+        {
+          "after": "      \"class\": \"punctuation\",\n      \"ruling\": \"The approved Benziger printing's punctuation is retained. The difference marks phrasing and does not change the words. Witness do agrees with the separately set Vatican printing of the 1962 Missal, which prints no comma here.\"\n    },\n",
+          "before": "      \"class\": \"punctuation\",\n      \"ruling\": \"No comma before the 'et' closing the series, with DO and with the corpus ruling at ordinarium.confiteor w028: indulgéntiam, absolutiónem et remissiónem is one three-member object of tríbuat.\"\n    },\n",
+          "count": 1
+        }
+      ],
+      "layout": "plain",
+      "before_canonical_sha256": "d317e917d4c6691ad846049f26a4a149c2d6c93827dc618ec44c0823abf426b2",
+      "after_canonical_sha256": "fd8dec6516d612fb38bf06b5a6e3b17df3bd824c256b811c06ebd745d8b826bb"
+    },
+    "witnesses/ordinarium.qui-dixisti/apparatus.json": {
+      "before_sha256": "c61aff889d96ed0506d0d76ec996803cba9826513c6fdaae756225f9f31cf905",
+      "after_sha256": "2ebcf92161b8e9a0b939eb42bfda5000f3ec0bd82a488ec95ee39aa89511f258",
+      "raw_inverse": [
+        {
+          "after": "      \"at\": \"w022\",\n      \"ours\": \"tuæ:\",\n      \"witnesses\": {\n        \"do\": \"tuæ;\"\n      },\n      \"class\": \"punctuation\",\n      \"ruling\": \"Colon, with the approved Benziger printing, which sets fidem Ecclésiæ tuæ: eámque (p. 314), and with handmissal-eo. Witness do and the separately set Vatican printing of the 1962 Missal set a semicolon here. The difference marks phrasing and does not change the words.\"\n    }\n",
+          "before": "      \"at\": \"w022\",\n      \"ours\": \"tuæ;\",\n      \"witnesses\": {\n        \"do\": \"tuæ;\",\n        \"handmissal-eo\": \"tuæ:\",\n        \"mr\": \"tuæ:\"\n      },\n      \"class\": \"punctuation\",\n      \"ruling\": \"Semicolon, with do and with the approved 1962 Benziger printing, which prints it here. The prayer has already spent one colon on the quotation from the Gospel and a second on the request; the semicolon keeps the third break lighter than either and marks the turn from what is asked to be overlooked to what is asked to be done.\"\n    }\n",
+          "count": 1
+        }
+      ],
+      "layout": "plain",
+      "before_canonical_sha256": "5d0dda54d9ad9fffd8895828b369095cb948e98b2723b04fbafcdbfa26bc0773",
+      "after_canonical_sha256": "dc489cd2f3cabb7b1c3f20268b769967e4dcfd1ac6d4493b045513f9f31b4acd"
+    }
+  },
+  "new_files": [
+    "witnesses/ordinarium.misereatur-tui/apparatus.json"
+  ],
+  "graph_use": {
+    "index": 565,
+    "row": {
+      "id": "use.ordinarium.qui-dixisti.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "text",
+        "text": "ordinarium.qui-dixisti"
+      },
+      "locator": {
+        "printed": "p. 314",
+        "scan": "leaf n395 / PDF p. 396",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n395/mode/1up"
+      },
+      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "verified_on": "2026-10-29",
+      "decision": "RETAIN",
+      "evidence_sha256": "54b8eff70c464fed19219b37427a121119c904112e1a72506d92989ecd22cafd"
+    }
+  },
+  "ledger_rows": [
+    {
+      "relative": "languages/en/translation-provenance.json",
+      "index": 777,
+      "site": "ordinarium.misereatur-tui.s03.en",
+      "before": {
+        "site": "ordinarium.misereatur-tui.s03.en",
+        "text": "ordinarium.misereatur-tui",
+        "segment": "s03",
+        "language": "en",
+        "familiar_core": false,
+        "origin": "public-domain",
+        "review": "internally-reviewed",
+        "source_sha256": "496de594418abaf87ef0e9e9ba567451163ae6d7b2452ace1f766eb01fbf3070",
+        "target_sha256": "e5267cb5b365df8746dfdb33aac5eb15fb4c9f142e3dd2e7f053675b263f40d0"
+      },
+      "after": {
+        "site": "ordinarium.misereatur-tui.s03.en",
+        "text": "ordinarium.misereatur-tui",
+        "segment": "s03",
+        "language": "en",
+        "familiar_core": false,
+        "origin": "public-domain",
+        "review": "working",
+        "source_sha256": "e843001f695a905193625e8dca39431f2dff34a55ac1d00966f08ad9e9723e90",
+        "target_sha256": "e5267cb5b365df8746dfdb33aac5eb15fb4c9f142e3dd2e7f053675b263f40d0"
+      }
+    },
+    {
+      "relative": "languages/en/translation-provenance.json",
+      "index": 955,
+      "site": "ordinarium.qui-dixisti.s04.en",
+      "before": {
+        "site": "ordinarium.qui-dixisti.s04.en",
+        "text": "ordinarium.qui-dixisti",
+        "segment": "s04",
+        "language": "en",
+        "familiar_core": false,
+        "origin": "public-domain",
+        "review": "internally-reviewed",
+        "source_sha256": "18ef3d55acc8ab65311eb19204192ab9966c3bef88ac02b2bddb1a104799692b",
+        "target_sha256": "095728063e7cf247d7d5568cedeb169fa0a13c264cb8d76b7fda87edb23877c9"
+      },
+      "after": {
+        "site": "ordinarium.qui-dixisti.s04.en",
+        "text": "ordinarium.qui-dixisti",
+        "segment": "s04",
+        "language": "en",
+        "familiar_core": false,
+        "origin": "public-domain",
+        "review": "working",
+        "source_sha256": "e7235ad32a924301d511fe1ad8781ba0eb73571a4ccc203cdeca736f55e6c4dc",
+        "target_sha256": "095728063e7cf247d7d5568cedeb169fa0a13c264cb8d76b7fda87edb23877c9"
+      }
+    },
+    {
+      "relative": "languages/pl/translation-provenance.json",
+      "index": 798,
+      "site": "ordinarium.misereatur-tui.s03.pl",
+      "before": {
+        "site": "ordinarium.misereatur-tui.s03.pl",
+        "text": "ordinarium.misereatur-tui",
+        "segment": "s03",
+        "language": "pl",
+        "familiar_core": false,
+        "origin": "public-domain",
+        "review": "internally-reviewed",
+        "source_sha256": "496de594418abaf87ef0e9e9ba567451163ae6d7b2452ace1f766eb01fbf3070",
+        "target_sha256": "e5267cb5b365df8746dfdb33aac5eb15fb4c9f142e3dd2e7f053675b263f40d0"
+      },
+      "after": {
+        "site": "ordinarium.misereatur-tui.s03.pl",
+        "text": "ordinarium.misereatur-tui",
+        "segment": "s03",
+        "language": "pl",
+        "familiar_core": false,
+        "origin": "public-domain",
+        "review": "working",
+        "source_sha256": "e843001f695a905193625e8dca39431f2dff34a55ac1d00966f08ad9e9723e90",
+        "target_sha256": "e5267cb5b365df8746dfdb33aac5eb15fb4c9f142e3dd2e7f053675b263f40d0"
+      }
+    },
+    {
+      "relative": "languages/pl/translation-provenance.json",
+      "index": 977,
+      "site": "ordinarium.qui-dixisti.s04.pl",
+      "before": {
+        "site": "ordinarium.qui-dixisti.s04.pl",
+        "text": "ordinarium.qui-dixisti",
+        "segment": "s04",
+        "language": "pl",
+        "familiar_core": false,
+        "origin": "working-unsettled",
+        "review": "working",
+        "source_sha256": "18ef3d55acc8ab65311eb19204192ab9966c3bef88ac02b2bddb1a104799692b",
+        "target_sha256": "5d739dcde3a0eb08e27f204769ff10ebd8197bb623c0081e6c8608e14b737755"
+      },
+      "after": {
+        "site": "ordinarium.qui-dixisti.s04.pl",
+        "text": "ordinarium.qui-dixisti",
+        "segment": "s04",
+        "language": "pl",
+        "familiar_core": false,
+        "origin": "working-unsettled",
+        "review": "working",
+        "source_sha256": "e7235ad32a924301d511fe1ad8781ba0eb73571a4ccc203cdeca736f55e6c4dc",
+        "target_sha256": "5d739dcde3a0eb08e27f204769ff10ebd8197bb623c0081e6c8608e14b737755"
+      }
+    }
+  ],
+  "layer_frames": {
+    "languages/en/texts/ordinarium/introibo.json": {
+      "fields": {},
+      "added": {
+        "s06": {
+          "narrative": "The ministers answer."
+        }
+      },
+      "order_before": [
+        "s01",
+        "s02",
+        "s03",
+        "s04",
+        "s05"
+      ]
+    },
+    "languages/en/texts/ordinarium/iudica-me.json": {
+      "fields": {
+        "about": {
+          "before": "In the prayers at the foot of the altar, Psalm 42 in the Vulgate numbering (Psalm 43 in Hebrew) is said alternately by the priest and server. The antiphon “Introíbo ad altáre Dei” precedes it and is repeated after the doxology. In Masses for the Dead, and at Masses of the season from Passion Sunday through Maundy Thursday, the psalm is left out with its antiphon and the Confíteor follows at once.",
+          "after": "In the prayers at the foot of the altar, Psalm 42 in the Vulgate numbering (Psalm 43 in Hebrew) is said alternately by the priest and server. The antiphon “Introíbo ad altáre Dei” precedes it and is repeated after the doxology. In Masses for the Dead, and at Masses of the season from Passion Sunday through Maundy Thursday inclusive, the psalm is left out together with its Glória Patri and the repetition of the antiphon: the antiphon is then said only once, and the Adiutórium and the Confíteor follow it."
+        }
+      },
+      "added": {},
+      "order_before": [
+        "s01",
+        "s02",
+        "s03",
+        "s04",
+        "s05",
+        "s06",
+        "s07",
+        "s08",
+        "s09",
+        "s10",
+        "s11",
+        "s12",
+        "s13"
+      ]
+    },
+    "languages/en/texts/ordinarium/misereatur-tui.json": {
+      "fields": {},
+      "added": {
+        "s05": {
+          "narrative": "The ministers answer."
+        }
+      },
+      "order_before": [
+        "s01",
+        "s02",
+        "s03",
+        "s04"
+      ]
+    },
+    "languages/pl/texts/ordinarium/introibo.json": {
+      "fields": {},
+      "added": {
+        "s06": {
+          "narrative": "Usługujący odpowiadają."
+        }
+      },
+      "order_before": [
+        "s01",
+        "s02",
+        "s03",
+        "s04",
+        "s05"
+      ]
+    },
+    "languages/pl/texts/ordinarium/iudica-me.json": {
+      "fields": {
+        "about": {
+          "before": "W modlitwach u stopni ołtarza Psalm 42 według numeracji Wulgaty (Ps 43 w numeracji hebrajskiej) odmawiają na przemian kapłan i usługujący. Poprzedza go antyfona „Introíbo ad altáre Dei”, powtarzana po doksologii. We Mszach za zmarłych oraz we Mszach okresowych od Niedzieli Męki Pańskiej do Wielkiego Czwartku włącznie psalm opuszcza się wraz z antyfoną, a od razu następuje Confíteor.",
+          "after": "W modlitwach u stopni ołtarza Psalm 42 według numeracji Wulgaty (Ps 43 w numeracji hebrajskiej) odmawiają na przemian kapłan i usługujący. Poprzedza go antyfona „Introíbo ad altáre Dei”, powtarzana po doksologii. We Mszach za zmarłych oraz we Mszach okresowych od Niedzieli Męki Pańskiej do Wielkiego Czwartku włącznie opuszcza się psalm razem z „Glória Patri” i powtórzeniem antyfony: antyfonę mówi się wtedy tylko raz, a po niej następuje „Adiutórium” i Confíteor."
+        }
+      },
+      "added": {},
+      "order_before": [
+        "s01",
+        "s02",
+        "s03",
+        "s04",
+        "s05",
+        "s06",
+        "s07",
+        "s08",
+        "s09",
+        "s10",
+        "s11",
+        "s12",
+        "s13"
+      ]
+    },
+    "languages/pl/texts/ordinarium/misereatur-tui.json": {
+      "fields": {},
+      "added": {
+        "s05": {
+          "narrative": "Usługujący odpowiadają."
+        }
+      },
+      "order_before": [
+        "s01",
+        "s02",
+        "s03",
+        "s04"
+      ]
+    }
+  }
+}

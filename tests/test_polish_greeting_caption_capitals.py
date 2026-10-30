@@ -7,6 +7,10 @@ from pathlib import Path
 
 import pytest
 from english_contract_successor_fixture import before_english_contract_layer
+from foot_communion_successor_fixture import (
+    before_foot_communion_core_bytes,
+    before_foot_communion_core_object,
+)
 from pater_agnus_successor_fixture import (
     before_pater_agnus_core_bytes,
     before_pater_agnus_core_object,
@@ -62,7 +66,11 @@ def native(core, raw):
 def response(case, core, raw):
     assert core["id"] == raw["text"] == case["text"]
     assert (
-        canonical_hash(before_pater_agnus_core_object(case["text"], core))
+        canonical_hash(
+            before_foot_communion_core_object(
+                case["text"], before_pater_agnus_core_object(case["text"], core)
+            )
+        )
         == case["source_canonical_sha256"]
     )
     source = next(segment for segment in core["segments"] if segment["id"] == case["segment"])
@@ -124,6 +132,7 @@ def test_exact_seven_byte_inverses_keep_every_other_field_and_language():
         assert comparison == json.loads(raw)
         source = ROOT / "texts" / (case["text"].replace(".", "/", 1) + ".json")
         source_raw = before_pater_agnus_core_bytes(case["text"], source.read_bytes())
+        source_raw = before_foot_communion_core_bytes(case["text"], source_raw)
         assert hashlib.sha256(source_raw).hexdigest() == case["source_sha256"]
         english = ROOT / "languages/en/texts" / (case["text"].replace(".", "/", 1) + ".json")
         # English caption groups have their own controls; the complete prayers stay intact

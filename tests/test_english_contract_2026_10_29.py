@@ -26,6 +26,7 @@ from english_register_successor_fixture import (
     before_english_register_ledger,
     before_english_register_object,
 )
+from foot_communion_successor_fixture import before_foot_communion_bytes
 
 from build_reader import store
 from build_reader.layers import enrich_layer, expand_core
@@ -382,7 +383,8 @@ def test_exact_predecessor_is_reachable_and_drift_is_rejected(relative):
     previous = before_english_contract_object(relative, actual)
     previous_raw = before_english_contract_bytes(relative, raw)
     assert actual == saved and previous is not actual and previous != actual
-    assert hashlib.sha256(raw).hexdigest() == rule["after_raw_sha256"]
+    current_raw = before_foot_communion_bytes(relative, raw)
+    assert hashlib.sha256(current_raw).hexdigest() == rule["after_raw_sha256"]
     assert hashlib.sha256(previous_raw).hexdigest() == rule["before_raw_sha256"]
     assert json.loads(previous_raw) == previous
     with pytest.raises(AssertionError, match=r"^English contract comparison$"):

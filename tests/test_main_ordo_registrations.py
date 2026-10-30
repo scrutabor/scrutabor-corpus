@@ -10,6 +10,7 @@ from pathlib import Path
 import pytest
 from canon_consecration_successor_fixture import before_canon_core_bytes
 from chant_fragment_fixture import before_chant_graph, before_chant_registry
+from foot_communion_successor_fixture import before_foot_communion_core_bytes
 from lateran_epistle_source_fixture import before_lateran_graph, before_lateran_registry
 from offertory_rubric_successor_fixture import before_offertory_core_bytes
 from pater_agnus_successor_fixture import before_pater_agnus_core_bytes
@@ -66,6 +67,7 @@ def assert_registered_payload(root, graph, row):
     comparison_raw = before_pater_agnus_core_bytes(row["text"], comparison_raw)
     comparison_raw = before_ordinary_agnus_core_bytes(row["text"], comparison_raw)
     comparison_raw = before_offertory_core_bytes(row["text"], comparison_raw)
+    comparison_raw = before_foot_communion_core_bytes(row["text"], comparison_raw)
     assert hashlib.sha256(comparison_raw).hexdigest() == row["core_sha256"]
     doc = json.loads(core_raw)
     actual = raw_binding.resolve_binding(path, root)

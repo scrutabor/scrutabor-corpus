@@ -10,6 +10,10 @@ from canon_consecration_successor_fixture import (
     before_canon_layer,
     before_canon_object,
 )
+from foot_communion_successor_fixture import (
+    before_foot_communion_bytes,
+    before_foot_communion_object,
+)
 
 from build_reader.bibliography_bindings import digest
 
@@ -50,6 +54,7 @@ def before_polish_contract_ledger(relative, value, diagnostic="Polish contract l
     """Bind the complete current Polish ledger, then restore the declared rows on a copy."""
     if relative != LEDGER["relative"]:
         return value
+    value = before_foot_communion_object(relative, value, diagnostic)
     value = before_canon_object(relative, value, diagnostic)
     require(digest(value) == LEDGER["after_canonical_sha256"], diagnostic)
     result = deepcopy(value)
@@ -71,6 +76,7 @@ def before_polish_contract_ledger(relative, value, diagnostic="Polish contract l
 def before_polish_contract_bytes(relative, raw, diagnostic="exact Polish contract bytes"):
     """Require every current byte, then invert only the declared fragments of one file."""
     if relative == LEDGER["relative"]:
+        raw = before_foot_communion_bytes(relative, raw, diagnostic)
         raw = before_canon_bytes(relative, raw, diagnostic)
         require(hashlib.sha256(raw).hexdigest() == LEDGER["after_raw_sha256"], diagnostic)
         result = raw

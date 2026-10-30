@@ -19,6 +19,12 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from foot_communion_successor_fixture import (
+    before_foot_communion_bytes,
+    before_foot_communion_graph,
+    before_foot_communion_object,
+)
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = json.loads(
     (Path(__file__).parent / "fixtures/canon-consecration-successor.json").read_bytes()
@@ -36,10 +42,12 @@ def before_canon_bytes(relative, raw, diagnostic=DIAGNOSTIC):
     """Require every current byte, then restore only the declared earlier fragments."""
     rule = DATA["files"].get(relative)
     if rule is None:
-        return raw
+        return before_foot_communion_bytes(relative, raw, diagnostic)
     digest = hashlib.sha256(raw).hexdigest()
     if digest == rule["before_sha256"]:
         return raw
+    raw = before_foot_communion_bytes(relative, raw, diagnostic)
+    digest = hashlib.sha256(raw).hexdigest()
     require(digest == rule["after_sha256"], diagnostic)
     result = raw
     for operation in reversed(rule["raw_inverse"]):
@@ -60,12 +68,13 @@ def before_canon_core_bytes(text, raw, diagnostic=DIAGNOSTIC):
 def before_canon_object(relative, value, diagnostic=DIAGNOSTIC):
     """Accept only the complete current file or its exact predecessor, as parsed JSON."""
     if relative not in DATA["files"]:
-        return value
-    raw = (ROOT / relative).read_bytes()
+        return before_foot_communion_object(relative, value, diagnostic)
+    raw = before_foot_communion_bytes(relative, (ROOT / relative).read_bytes(), diagnostic)
     previous = json.loads(before_canon_bytes(relative, raw, diagnostic))
     if value == previous:
         return value
-    require(value == json.loads(raw), diagnostic)
+    current = before_foot_communion_object(relative, value, diagnostic)
+    require(current == json.loads(raw), diagnostic)
     return previous
 
 
@@ -94,6 +103,7 @@ def before_canon_layer(layer, diagnostic=DIAGNOSTIC):
 
 def before_canon_graph(value, diagnostic=GRAPH_DIAGNOSTIC):
     """Remove the exact new uses; every other record stays for the older guards."""
+    value = before_foot_communion_graph(value, diagnostic)
     rules = DATA["graph_uses"]
     rows = value["uses"]
     found = [

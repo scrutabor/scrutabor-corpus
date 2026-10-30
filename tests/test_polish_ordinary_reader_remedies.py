@@ -11,6 +11,7 @@ from pathlib import Path
 import pytest
 from canon_consecration_successor_fixture import before_canon_core_object
 from english_contract_successor_fixture import before_english_contract_layer
+from foot_communion_successor_fixture import before_foot_communion_core_object
 from offertory_rubric_successor_fixture import before_offertory_core_object
 
 from build_reader import emit
@@ -181,6 +182,7 @@ def assert_case(case, core, layer, row):
     comparison_core = before_offertory_core_object(
         spec["text"], before_canon_core_object(spec["text"], core)
     )
+    comparison_core = before_foot_communion_core_object(spec["text"], comparison_core)
     require(
         canonical_hash(comparison_core) == spec["core_sha256"], "complete Latin source preserved"
     )

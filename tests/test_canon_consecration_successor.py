@@ -19,6 +19,10 @@ from canon_consecration_successor_fixture import (
     before_canon_layer_frame,
     current_canon_row,
 )
+from foot_communion_successor_fixture import (
+    before_foot_communion_bytes,
+    before_foot_communion_graph,
+)
 from quam_rationabilem_successor_fixture import before_quam_core_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -178,12 +182,13 @@ def test_successor_names_exactly_the_changed_files_and_texts():
 @pytest.mark.parametrize("relative", sorted(DATA["files"]))
 def test_every_changed_file_inverts_to_its_exact_predecessor(relative):
     rule = DATA["files"][relative]
-    raw = (ROOT / relative).read_bytes()
+    actual = (ROOT / relative).read_bytes()
+    raw = before_foot_communion_bytes(relative, actual)
     assert hashlib.sha256(raw).hexdigest() == rule["after_sha256"]
     previous = before_canon_bytes(relative, raw)
     assert hashlib.sha256(previous).hexdigest() == rule["before_sha256"] != rule["after_sha256"]
     assert before_canon_bytes(relative, previous) == previous, "a chain may reach it twice"
-    assert (ROOT / relative).read_bytes() == raw, "the actual source is never rewritten"
+    assert (ROOT / relative).read_bytes() == actual, "the actual source is never rewritten"
 
 
 @pytest.mark.parametrize("text", TEXTS)
@@ -398,7 +403,7 @@ def test_frames_keep_unrelated_faults_for_the_older_oracle():
 
 
 def test_graph_inverse_removes_only_the_new_uses():
-    graph = json.loads((ROOT / "bibliography/graph.json").read_bytes())
+    graph = before_foot_communion_graph(json.loads((ROOT / "bibliography/graph.json").read_bytes()))
     saved = deepcopy(graph)
     previous = before_canon_graph(graph)
     added = {rule["row"]["id"] for rule in DATA["graph_uses"]}
