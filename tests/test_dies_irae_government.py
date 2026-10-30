@@ -10,6 +10,11 @@ import test_dies_irae_contextual_captions as historical
 from dies_irae_caption_fixture import DATA as HISTORICAL
 from dies_irae_caption_fixture import restore_dies_irae_layer
 from dies_irae_government_fixture import DATA, before_dies_irae_government_layer, canonical
+from possessive_sweep_b2_successor_fixture import (
+    before_possessive_b2_layer,
+    before_possessive_b2_layer_frame,
+    possessive_b2_groups,
+)
 
 from build_reader import emit, store
 from checks import interlinear, language_packs, prose
@@ -37,7 +42,8 @@ def read(relative, root=CORPUS):
 def subject(language):
     raw = (CORPUS / DATA["core_path"]).read_bytes()
     assert hashlib.sha256(raw).hexdigest() == DATA["core_raw_sha256"]
-    return json.loads(raw), store.raw_layer(CORPUS, language, DATA["text"])
+    layer = store.raw_layer(CORPUS, language, DATA["text"])
+    return json.loads(raw), before_possessive_b2_layer(layer)
 
 
 def source_segment(core, identity):
@@ -354,6 +360,7 @@ def test_actual_whole_book_reader_roundtrip_retains_current_providers(reader_out
         read("tables/citations.json", reader_out),
         read(f"languages/{language}/citations.json", reader_out),
     )
+    layer = before_possessive_b2_layer_frame(layer)
     for case in CASES:
         if case["language"] == language:
             assert_case(case, core, layer)
@@ -375,9 +382,14 @@ def test_actual_complete_reader_rejects_caption_regression_then_recovers(
     artifact = json.loads(original)
     row = next(item for item in artifact["seg"] if item["id"] == segment)
     if language == "en":
-        assert row["a"] == [{"s": 7, "n": 2, "a": 1, "g": "spare the suppliant"}]
-        row["a"][0]["g"] = wrong
-        difference = f"en.segments.{segment}.alignments[0].gloss:"
+        (index,) = [i for i, group in enumerate(row["a"]) if group["s"] == 7]
+        assert row["a"][index] == {"s": 7, "n": 2, "a": 1, "g": "spare the suppliant"}
+        declared = possessive_b2_groups(language, DATA["text"])
+        assert [group["g"] for group in row["a"][:index]] == [
+            change["gloss"] for change in declared if change["segment"] == segment
+        ]
+        row["a"][index]["g"] = wrong
+        difference = f"en.segments.{segment}.alignments[{index}].gloss:"
     else:
         core, _layer = subject(language)
         ids = [token["id"] for token in source_segment(core, segment)["words"]]

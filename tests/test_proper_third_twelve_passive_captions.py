@@ -10,6 +10,7 @@ from pathlib import Path
 
 import pytest
 from english_register_successor_fixture import before_english_register_text_layer
+from possessive_sweep_b2_successor_fixture import before_possessive_b2_layer
 
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -72,6 +73,7 @@ def reviewed_keep(layer, case):
 
 
 def preserved(layer, case):
+    layer = before_possessive_b2_layer(layer)
     layer = before_english_register_text_layer(layer, "unchanged contextual remainder")
     restored = deepcopy(layer)
     for row in FIXTURE["groups"]:
@@ -182,6 +184,7 @@ def test_wrong_contextual_predicate_rejects_then_recovers(case):
 @pytest.mark.parametrize("case", GROUPS)
 def test_neighbor_scope_is_not_approved_by_structural_validity(case):
     core, layer = load(case)
+    layer = before_possessive_b2_layer(layer)
     snapshot = deepcopy(layer)
     shape(core, layer)
     reviewed_group(layer, case)

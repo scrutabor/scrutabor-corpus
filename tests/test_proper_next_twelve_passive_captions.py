@@ -14,6 +14,7 @@ from english_register_successor_fixture import before_english_register_text_laye
 from michael_epistle_fixture import predecessor_core, predecessor_layer, predecessor_row
 from palm_tract_fixture import predecessor_palm_layer, predecessor_palm_rows
 from polish_contract_fixture import before_polish_contract_layer, before_polish_contract_ledger
+from possessive_sweep_b2_successor_fixture import before_possessive_b2_layer
 
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -81,6 +82,7 @@ def reviewed_scalar(layer):
 
 
 def preserved(layer, case):
+    layer = before_possessive_b2_layer(layer)
     layer = before_english_register_text_layer(layer, "unchanged contextual remainder")
     layer = before_polish_contract_layer(layer, "unchanged contextual remainder")
     restored = predecessor_palm_layer(layer)

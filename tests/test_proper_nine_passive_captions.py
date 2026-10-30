@@ -15,6 +15,7 @@ from english_register_successor_fixture import (
 )
 from iste_gender_fixture import before_iste_gender
 from marian_gospel_fixture import predecessor_core, predecessor_layer, predecessor_row
+from possessive_sweep_b2_successor_fixture import before_possessive_b2_layer
 
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -67,6 +68,7 @@ def group_in(layer, case):
 
 
 def preserved(layer, case):
+    layer = before_possessive_b2_layer(layer)
     layer = before_english_register_text_layer(layer, "unchanged passive-layer remainder")
     restored = predecessor_layer(layer)
     for group_case in FIXTURE["groups"]:

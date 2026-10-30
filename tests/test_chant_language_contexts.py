@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from possessive_sweep_b2_successor_fixture import before_possessive_b2_layer
 
 from build_reader import store
 from checks import interlinear
@@ -35,13 +36,14 @@ def assert_addressee(layer, language):
 
 @pytest.mark.parametrize("language", ["pl", "en"])
 def test_annunciation_retains_its_marian_application_and_divine_agent(language):
-    assert_addressee(store.raw_layer(ROOT, language, ANNUNCIATION), language)
+    layer = store.raw_layer(ROOT, language, ANNUNCIATION)
+    assert_addressee(before_possessive_b2_layer(layer), language)
 
 
 @pytest.mark.parametrize("language", ["pl", "en"])
 @pytest.mark.parametrize("word", ["w006", "w009", "w021", "w024"])
 def test_divine_addressee_capital_does_not_silently_replace_this_reading(language, word):
-    original = store.raw_layer(ROOT, language, ANNUNCIATION)
+    original = before_possessive_b2_layer(store.raw_layer(ROOT, language, ANNUNCIATION))
     assert_addressee(original, language)
     changed = deepcopy(original)
     changed["words"][word]["gloss"] = changed["words"][word]["gloss"].capitalize()

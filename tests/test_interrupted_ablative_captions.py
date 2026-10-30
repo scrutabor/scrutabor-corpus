@@ -11,6 +11,7 @@ from gospel_delivery_fixture import current_sung_source_hash
 from michael_secret_fixture import control_expectation, ledger_expectation, predecessor_documents
 from opening_caption_fixture import restore_opening_layer
 from possessive_sweep_b1_successor_fixture import before_possessive_b1_layer
+from possessive_sweep_b2_successor_fixture import before_possessive_b2_layer
 
 from checks import interlinear, language_packs, prose
 from checks.translation_provenance import canonical_hash, source_payload
@@ -87,7 +88,7 @@ def reviewed_predecessor_documents(documents):
     result = deepcopy(documents)
     for path, layer in result.items():
         if path.startswith("languages/en/texts/"):
-            layer = before_possessive_b1_layer(layer)
+            layer = before_possessive_b1_layer(before_possessive_b2_layer(layer))
             result[path] = restore_opening_layer(restore_dies_irae_layer(layer))
     for operation in reversed(SUCCESSORS["operations"]):
         parent, key = parent_at(result[operation["path"]], operation["pointer"])

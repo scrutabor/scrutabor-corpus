@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 from english_register_successor_fixture import before_english_register_prose
+from possessive_sweep_b2_successor_fixture import before_possessive_b2_layer
 
 from build_reader.layers import expand_core
 from checks import interlinear
@@ -119,7 +120,7 @@ def test_english_keeps_manner_and_both_coordinated_possessors():
 
 
 def test_english_conclusion_uses_one_contemporary_register():
-    data = layer("en")
+    data = before_possessive_b2_layer(layer("en"))
     assert {
         w: data["words"][w]["gloss"]
         for w in ["w008", "w027", "w033", "w034", "w035", "w036", "w038"]
