@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 from offertory_rubric_successor_fixture import before_offertory_core_bytes
+from possessive_sweep_b1_successor_fixture import possessive_b1_groups
 
 from build_reader.layers import enrich_layer, expand_core
 from checks import interlinear, language_packs, prose
@@ -64,6 +65,8 @@ def healthy(case, core, layer):
     for other in CASES:
         if other["text"] == text:
             expected.setdefault(other["segment"], []).append(other["group"])
+    for change in possessive_b1_groups("en", text):
+        expected.setdefault(change["segment"], []).append(change["group"])
     source_order = {
         s["id"]: {w["id"]: i for i, w in enumerate(s.get("words", []))} for s in core["segments"]
     }

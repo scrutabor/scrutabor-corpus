@@ -16,6 +16,7 @@ from english_possessive_successor_fixture import (
 )
 from foot_communion_successor_fixture import before_foot_communion_bytes
 from polish_contract_fixture import before_polish_contract_bytes
+from possessive_sweep_b1_successor_fixture import before_possessive_b1_layer
 from prayer_prose_successor_fixture import AFTER, BEFORE, DATA, SITES, before_prayer_prose_ledger
 from requiem_successor_fixture import before_requiem_bytes, before_requiem_ledger
 
@@ -292,9 +293,10 @@ def test_anima_formula_about_and_inherited_source_decisions_are_kept():
     assert layer["segments"]["s13"]["translation"] == "forever and ever. Amen."
     relative = f"languages/en/texts/{ANIMA.replace('.', '/', 1)}.json"
     previous = before_english_contract_layer(relative, layer)
+    b1_layer = before_possessive_b1_layer(layer)
     assert previous["segments"]["s13"]["translation"] == "for ever and ever. Amen."
     assert {sid: row for sid, row in previous["segments"].items() if sid != "s13"} == {
-        sid: row for sid, row in layer["segments"].items() if sid != "s13"
+        sid: row for sid, row in b1_layer["segments"].items() if sid != "s13"
     }
     assert layer.get("about") == DATA["texts"][ANIMA]["about"]
     relationships = store.translation_relationships(ROOT, "en")

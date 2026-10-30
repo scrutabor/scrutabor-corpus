@@ -20,6 +20,7 @@ from foot_communion_successor_fixture import (
     current_foot_communion_row,
 )
 from ordo_notes_successor_fixture import before_ordo_notes_bytes, before_ordo_notes_graph
+from possessive_sweep_b1_successor_fixture import before_possessive_b1_bytes
 from reader_arrow_successor_fixture import before_arrow_bytes, before_arrow_graph
 
 from checks.requiem_assembly import TARGETS, target_errors
@@ -185,7 +186,8 @@ def test_successor_names_exactly_the_changed_files_and_texts():
 def test_every_changed_file_inverts_to_its_exact_predecessor(relative):
     rule = DATA["files"][relative]
     raw = (ROOT / relative).read_bytes()
-    notes_raw = before_arrow_bytes(relative, before_ordo_notes_bytes(relative, raw))
+    b1_raw = before_possessive_b1_bytes(relative, raw)
+    notes_raw = before_arrow_bytes(relative, before_ordo_notes_bytes(relative, b1_raw))
     assert hashlib.sha256(notes_raw).hexdigest() == rule["after_sha256"]
     previous = before_foot_communion_bytes(relative, raw)
     assert hashlib.sha256(previous).hexdigest() == rule["before_sha256"] != rule["after_sha256"]

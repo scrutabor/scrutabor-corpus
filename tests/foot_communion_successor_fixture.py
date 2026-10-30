@@ -26,6 +26,11 @@ from ordo_notes_successor_fixture import (
     before_ordo_notes_graph,
     before_ordo_notes_object,
 )
+from possessive_sweep_b1_successor_fixture import (
+    before_possessive_b1_bytes,
+    before_possessive_b1_layer_frame,
+    before_possessive_b1_object,
+)
 from reader_arrow_successor_fixture import before_arrow_bytes, before_arrow_object
 
 from build_reader.bibliography_bindings import digest
@@ -48,6 +53,7 @@ def carries_change(rule, raw):
 
 def before_foot_communion_bytes(relative, raw, diagnostic=DIAGNOSTIC):
     """Require every current byte, then restore only the declared earlier fragments."""
+    raw = before_possessive_b1_bytes(relative, raw)
     raw = before_ordo_notes_bytes(relative, raw)
     raw = before_arrow_bytes(relative, raw)
     rule = DATA["files"].get(relative)
@@ -80,6 +86,7 @@ def render(layout, value):
 
 def before_foot_communion_object(relative, value, diagnostic=DIAGNOSTIC):
     """Bind the complete current object, then parse its exact predecessor."""
+    value = before_possessive_b1_object(relative, value)
     value = before_ordo_notes_object(relative, value)
     value = before_arrow_object(relative, value)
     rule = DATA["files"].get(relative)
@@ -124,6 +131,7 @@ def before_foot_communion_layer_frame(layer, diagnostic=DIAGNOSTIC):
     Only the declared entries are bound; a fault anywhere else stays in the copy for
     the older oracle that reads it.
     """
+    layer = before_possessive_b1_layer_frame(layer)
     relative = layer_relative(layer)
     rule = DATA["layer_frames"].get(relative) if relative else None
     if rule is None:

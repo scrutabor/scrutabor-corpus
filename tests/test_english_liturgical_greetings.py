@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pytest
 from english_contract_successor_fixture import before_english_contract_text_layer
+from possessive_sweep_b1_successor_fixture import possessive_b1_caption, possessive_b1_realization
 
 from build_reader import bibliography, emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -242,7 +243,10 @@ def test_healthy_paschal_possessive_group_and_members_remain_exact():
 def test_human_reply_rule_does_not_rewrite_divine_address_or_different_greetings():
     control = FIXTURE["divine_address_control"]
     core, layer = subject(control["text"])
-    assert layer["words"][control["word"]]["gloss"] == control["gloss"] == "Your"
+    pinned = ("en", control["text"], [control["word"]], control["gloss"])
+    words, caption = possessive_b1_caption(*pinned)
+    assert control["gloss"] == "Your" and caption.split()[0] == "Your"
+    assert possessive_b1_realization(layer, words) == caption
     assert alignment_errors(core, layer) == []
     scope = {(case["text"], case["segment"]) for case in CLAUSES}
     for control in FIXTURE["different_greetings"]:

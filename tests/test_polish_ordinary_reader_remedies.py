@@ -13,6 +13,7 @@ from canon_consecration_successor_fixture import before_canon_core_object
 from english_contract_successor_fixture import before_english_contract_layer
 from foot_communion_successor_fixture import before_foot_communion_core_object
 from offertory_rubric_successor_fixture import before_offertory_core_object
+from possessive_sweep_b1_successor_fixture import before_possessive_b1_layer
 
 from build_reader import emit
 from build_reader.layers import enrich_layer, expand_core
@@ -279,6 +280,7 @@ def test_the_other_language_is_unchanged(case):
     spec = FIXTURE["cases"][case]
     path = ROOT / "languages/en/texts" / (spec["text"].replace(".", "/", 1) + ".json")
     english = json.loads(path.read_text(encoding="utf-8"))
+    english = before_possessive_b1_layer(english)
     # A later exact English successor is undone first; every other English field is compared.
     previous = before_english_contract_layer(str(path.relative_to(ROOT)), english)
     assert canonical_hash(previous) == spec["english_sha256"]

@@ -25,6 +25,7 @@ import pytest
 import test_english_register as register
 from lauda_sion_fixture import TEXT as LAUDA_TEXT
 from lauda_sion_fixture import predecessor_core, predecessor_layer
+from possessive_sweep_b1_successor_fixture import possessive_b1_caption
 
 from build_reader.layers import enrich_layer, expand_core
 from checks import interlinear, language_packs
@@ -813,6 +814,7 @@ def diagnostics(text, core, layer):
     found = []
     words = latin(core)
     for segment, ids, caption, kind, lemma, analysis in SITES.get(text, ()):
+        ids, caption = possessive_b1_caption("en", text, ids, caption)
         where = f"{text}:{segment}:{'+'.join(ids)}"
         anchor = next((w for w in ids if words.get(w, {}).get("lemma") == lemma), None)
         if anchor is None or parse(words[anchor]) != analysis:

@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pytest
 from anne_epistle_fixture import predecessor_layer
+from possessive_sweep_b1_successor_fixture import before_possessive_b1_layer
 from rosary_communion_fixture import (
     TEXT as ROSARY_TEXT,
 )
@@ -124,7 +125,7 @@ def test_all160_existing_contexts_keep_their_own_realizations():
         core = store.core(ROOT, row["text"])
         assert word_in(core, row["word"]["id"]) == row["word"]
         for language in ("pl", "en"):
-            layer = store.raw_layer(ROOT, language, row["text"])
+            layer = before_possessive_b1_layer(store.raw_layer(ROOT, language, row["text"]))
             assert occurrence_target(core, layer, row) == row["targets"][language]
 
 

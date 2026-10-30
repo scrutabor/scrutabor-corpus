@@ -119,7 +119,9 @@ def test_predecessor_and_wrong_relationship_fail_then_restore(case):
     for fault in faults:
         try:
             if case == "recipient":
-                group = layer["segments"]["s02"]["alignments"][0]
+                (group,) = [
+                    g for g in layer["segments"]["s02"]["alignments"] if "w013" in g["words"]
+                ]
                 if fault == "old":
                     del layer["segments"]["s02"]["alignments"]
                     layer["words"]["w013"]["gloss"] = "receiving"
