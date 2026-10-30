@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from ordo_notes_successor_fixture import before_ordo_notes_core_bytes, before_ordo_notes_core_object
 from requiem_successor_fixture import before_requiem_ledger
 
 from build_reader import emit
@@ -37,7 +38,8 @@ def canonical(value):
 def load(language, text):
     path = DATA["cores"][text]["path"]
     raw = (ROOT / path).read_bytes()
-    assert hashlib.sha256(raw).hexdigest() == DATA["cores"][text]["raw_sha256"]
+    comparison_raw = before_ordo_notes_core_bytes(text, raw)
+    assert hashlib.sha256(comparison_raw).hexdigest() == DATA["cores"][text]["raw_sha256"]
     return json.loads(raw), json.loads((ROOT / "languages" / language / path).read_bytes())
 
 
@@ -141,7 +143,11 @@ def retained(control, layer):
 
 def healthy(core, layer):
     text, language = layer["text"], layer["language"]
-    require(canonical(core) == DATA["cores"][text]["canonical_sha256"], "unchanged Latin core")
+    comparison_core = before_ordo_notes_core_object(text, core)
+    require(
+        canonical(comparison_core) == DATA["cores"][text]["canonical_sha256"],
+        "unchanged Latin core",
+    )
     indexed = {w["id"]: w for s in core["segments"] for w in s.get("words", [])}
     for case in CASES:
         if (case["text"], case["language"]) == (text, language):

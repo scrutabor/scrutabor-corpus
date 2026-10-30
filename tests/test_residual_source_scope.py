@@ -16,6 +16,7 @@ from pathlib import Path
 
 import pytest
 from main_ordo_consumer_fixture import before_main_ordo_records
+from ordo_notes_successor_fixture import before_ordo_notes_graph
 
 from build_reader import bibliography
 from build_reader.bibliography_bindings import (
@@ -270,7 +271,9 @@ PATH_MARKERS = ("/Users/", "../private", "private/witnesses", ".jp2", "file:")
 
 @pytest.fixture(scope="module")
 def data() -> dict:
-    return json.loads((ROOT / "bibliography" / "graph.json").read_text(encoding="utf-8"))
+    return before_ordo_notes_graph(
+        json.loads((ROOT / "bibliography" / "graph.json").read_text(encoding="utf-8"))
+    )
 
 
 def one(records: list[dict], identifier: str) -> dict:

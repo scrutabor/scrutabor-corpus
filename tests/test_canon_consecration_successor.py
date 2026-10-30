@@ -23,6 +23,7 @@ from foot_communion_successor_fixture import (
     before_foot_communion_bytes,
     before_foot_communion_graph,
 )
+from ordo_notes_successor_fixture import before_ordo_notes_bytes, before_ordo_notes_graph
 from quam_rationabilem_successor_fixture import before_quam_core_bytes
 from reader_arrow_successor_fixture import before_arrow_bytes, before_arrow_graph
 
@@ -184,7 +185,8 @@ def test_successor_names_exactly_the_changed_files_and_texts():
 def test_every_changed_file_inverts_to_its_exact_predecessor(relative):
     rule = DATA["files"][relative]
     actual = (ROOT / relative).read_bytes()
-    raw = before_foot_communion_bytes(relative, before_arrow_bytes(relative, actual))
+    notes_raw = before_ordo_notes_bytes(relative, actual)
+    raw = before_foot_communion_bytes(relative, before_arrow_bytes(relative, notes_raw))
     assert hashlib.sha256(raw).hexdigest() == rule["after_sha256"]
     previous = before_canon_bytes(relative, raw)
     assert hashlib.sha256(previous).hexdigest() == rule["before_sha256"] != rule["after_sha256"]
@@ -301,7 +303,7 @@ def test_new_ledger_sites_start_unclassified_and_changed_sites_return_to_working
 
 @pytest.mark.parametrize("identity,bound_by", PRINTED_BASES)
 def test_printed_basis_binds_the_page_already_bound(identity, bound_by):
-    graph = json.loads((ROOT / "bibliography/graph.json").read_bytes())
+    graph = before_ordo_notes_graph(json.loads((ROOT / "bibliography/graph.json").read_bytes()))
     uses = {use["id"]: use for use in graph["uses"]}
     use = uses[identity]
     assert use == next(rule["row"] for rule in DATA["graph_uses"] if rule["row"]["id"] == identity)

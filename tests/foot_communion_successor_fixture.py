@@ -21,6 +21,11 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from ordo_notes_successor_fixture import (
+    before_ordo_notes_bytes,
+    before_ordo_notes_graph,
+    before_ordo_notes_object,
+)
 from reader_arrow_successor_fixture import before_arrow_bytes, before_arrow_object
 
 from build_reader.bibliography_bindings import digest
@@ -43,6 +48,7 @@ def carries_change(rule, raw):
 
 def before_foot_communion_bytes(relative, raw, diagnostic=DIAGNOSTIC):
     """Require every current byte, then restore only the declared earlier fragments."""
+    raw = before_ordo_notes_bytes(relative, raw)
     raw = before_arrow_bytes(relative, raw)
     rule = DATA["files"].get(relative)
     if rule is None:
@@ -74,6 +80,7 @@ def render(layout, value):
 
 def before_foot_communion_object(relative, value, diagnostic=DIAGNOSTIC):
     """Bind the complete current object, then parse its exact predecessor."""
+    value = before_ordo_notes_object(relative, value)
     value = before_arrow_object(relative, value)
     rule = DATA["files"].get(relative)
     if rule is None or "layout" not in rule:
@@ -139,6 +146,7 @@ def before_foot_communion_layer_frame(layer, diagnostic=DIAGNOSTIC):
 
 def before_foot_communion_graph(value, diagnostic=GRAPH_DIAGNOSTIC):
     """Remove the exact new use; every other record stays for the older guards."""
+    value = before_ordo_notes_graph(value)
     rule = DATA["graph_use"]
     rows = value["uses"]
     indices = [i for i, row in enumerate(rows) if row.get("id") == rule["row"]["id"]]

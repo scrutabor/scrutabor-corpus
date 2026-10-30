@@ -11,6 +11,7 @@ from foot_communion_successor_fixture import (
     before_foot_communion_core_bytes,
     before_foot_communion_core_object,
 )
+from ordo_notes_successor_fixture import before_ordo_notes_core_bytes, before_ordo_notes_core_object
 from pater_agnus_successor_fixture import (
     before_pater_agnus_core_bytes,
     before_pater_agnus_core_object,
@@ -65,10 +66,11 @@ def native(core, raw):
 
 def response(case, core, raw):
     assert core["id"] == raw["text"] == case["text"]
+    notes_core = before_ordo_notes_core_object(case["text"], core)
     assert (
         canonical_hash(
             before_foot_communion_core_object(
-                case["text"], before_pater_agnus_core_object(case["text"], core)
+                case["text"], before_pater_agnus_core_object(case["text"], notes_core)
             )
         )
         == case["source_canonical_sha256"]
@@ -131,7 +133,8 @@ def test_exact_seven_byte_inverses_keep_every_other_field_and_language():
         comparison["words"][case["word"]]["gloss"] = "I"
         assert comparison == json.loads(raw)
         source = ROOT / "texts" / (case["text"].replace(".", "/", 1) + ".json")
-        source_raw = before_pater_agnus_core_bytes(case["text"], source.read_bytes())
+        notes_raw = before_ordo_notes_core_bytes(case["text"], source.read_bytes())
+        source_raw = before_pater_agnus_core_bytes(case["text"], notes_raw)
         source_raw = before_foot_communion_core_bytes(case["text"], source_raw)
         assert hashlib.sha256(source_raw).hexdigest() == case["source_sha256"]
         english = ROOT / "languages/en/texts" / (case["text"].replace(".", "/", 1) + ".json")

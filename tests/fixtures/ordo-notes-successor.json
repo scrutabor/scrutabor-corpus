@@ -1,0 +1,937 @@
+{
+  "schema_version": 1,
+  "description": "Ordo-witness notes successor: re-grounded notes and rubric provenance of eleven cores, apparatus prose, three English and Polish introductions, the Preface dialogue misprint record, the attribution rationale, the dialogue rubric use, eight leaf-bound continuation uses with their narrowed parents and two corrected Enchiridion records, each with its exact predecessor.",
+  "texts": {
+    "orationes.cor-iesu": "texts/orationes/cor-iesu.json",
+    "orationes.deus-refugium": "texts/orationes/deus-refugium.json",
+    "orationes.salve-regina": "texts/orationes/salve-regina.json",
+    "orationes.sancte-michael": "texts/orationes/sancte-michael.json",
+    "ordinarium.benedictio": "texts/ordinarium/benedictio.json",
+    "ordinarium.credo": "texts/ordinarium/credo.json",
+    "ordinarium.gloria": "texts/ordinarium/gloria.json",
+    "ordinarium.kyrie": "texts/ordinarium/kyrie.json",
+    "ordinarium.placeat-tibi": "texts/ordinarium/placeat-tibi.json",
+    "ordinarium.praefatio-dialogus": "texts/ordinarium/praefatio-dialogus.json",
+    "ordinarium.sanctus": "texts/ordinarium/sanctus.json"
+  },
+  "files": {
+    "bibliography/graph.json": {
+      "before_sha256": "b04e55b98eb58d111310fa26ffd7dfec901cc5b0dd2f5cabb51876c65e244428",
+      "after_sha256": "2751aec3d64146519b0433abf1392939c05dfd21ae9cc35c84356a0d18aa86ee",
+      "layout": "plain"
+    },
+    "checks/attribute.py": {
+      "before_sha256": "c530e4b2569cb83a0df558c56a1a427410a28e7409cb09cf347ab200f1f71f10",
+      "after_sha256": "9010af54822c44c7ac10f695632275fcc7c36bf537986593b4dcd4a9e7f8ca63",
+      "raw_inverse": [
+        {
+          "after": "# What a prayer book can tell us is that a prayer is said together.\n# For the prayers after low Mass that is also printed: the Enchiridion\n# Indulgentiarum (1952), n. 675, grants its indulgence to the faithful\n# who say them \"simul cum sacerdote\" (p. 521) and sets their versicle\n# and response with the versicle and response signs (p. 520). That page\n# is the print basis of the omnes values of the Salve Regina, Sancte\n# Michael and Cor Iesu, beside the Ordo's O. marker they were read from.\nSPEAKER_MARKERS_ONLY = {\"O\"}\n",
+          "before": "# What a prayer book can tell us is that a prayer is said together.\nSPEAKER_MARKERS_ONLY = {\"O\"}\n"
+        }
+      ]
+    },
+    "languages/en/texts/orationes/cor-iesu.json": {
+      "before_sha256": "fa21642dce3d0acee8f1f615ec000adbd524b8687b5985d482f6ab613c31fca0",
+      "after_sha256": "c8b2534cc8a16f4480e4c7f7e9c4f17aa0585f37ce811b68b874203606268c2d",
+      "raw_inverse": [
+        {
+          "after": "  \"text\": \"orationes.cor-iesu\",\n  \"about\": \"The invocation that closes the prayers of Leo XIII after low Mass. The 1952 Enchiridion Indulgentiarum attaches a separate indulgence of seven years to adding it three times, citing acts of the Sacred Congregation of Indulgences (17 June 1904) and the Apostolic Penitentiary (18 March 1932). This edition prints the invocation once.\",\n  \"segments\": {\n",
+          "before": "  \"text\": \"orationes.cor-iesu\",\n  \"about\": \"The invocation that closes the prayers of Leo XIII, added to them in 1904 under Pius X. It is said three times. This edition prints it once.\",\n  \"segments\": {\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "languages/en/texts/orationes/salve-regina.json": {
+      "before_sha256": "02725fde567dc9708aff9740e054478eb693f45cfaeacc9abc7dd2d068a3f1d2",
+      "after_sha256": "18464652b3eb6e35074afaebafebae0be6ae25d6ff183c20fec5de86e691903d",
+      "raw_inverse": [
+        {
+          "after": "  \"text\": \"orationes.salve-regina\",\n  \"about\": \"The Marian antiphon said after low Mass in the prayers of Leo XIII. It addresses the Blessed Virgin Mary as Queen and Mother of mercy, and the banished children of Eve ask her to turn her merciful eyes toward them and, after this exile, to show them Jesus. A versicle and response follow the antiphon.\",\n  \"segments\": {\n",
+          "before": "  \"text\": \"orationes.salve-regina\",\n  \"about\": \"The Marian antiphon said after low Mass in the prayers of Leo XIII, and at Compline through the long season after Pentecost. It addresses the Blessed Virgin Mary as Queen and Mother of mercy, and the banished children of Eve ask her to turn her merciful eyes toward them and, after this exile, to show them Jesus. A versicle and response follow the antiphon.\",\n  \"segments\": {\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "languages/en/texts/orationes/sancte-michael.json": {
+      "before_sha256": "e5b0e441c7912648d4c017a7ca5380c343548e671b38c5229467c8c7beace71d",
+      "after_sha256": "b0835a9d7db245c9ec63d68dfa1449657e3ac17508f14683ba9e03f5d0ceba1a",
+      "raw_inverse": [
+        {
+          "after": "  \"text\": \"orationes.sancte-michael\",\n  \"about\": \"The prayer placed among the prayers of Leo XIII after low Mass, where it follows the collect. It asks Saint Michael the Archangel to defend us in battle against the wickedness and snares of the devil. It then prays that God may rebuke the devil, and again addresses Saint Michael, as prince of the heavenly host, asking him by the power of God to cast Satan and the other evil spirits into hell.\",\n  \"segments\": {\n",
+          "before": "  \"text\": \"orationes.sancte-michael\",\n  \"about\": \"The prayer Leo XIII composed for the prayers said after low Mass, where it stands after the collect. It asks Saint Michael the Archangel to defend us in battle against the wickedness and snares of the devil. It then prays that God may rebuke the devil, and again addresses Saint Michael, as prince of the heavenly host, asking him by the power of God to cast Satan and the other evil spirits into hell.\",\n  \"segments\": {\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "languages/pl/texts/orationes/cor-iesu.json": {
+      "before_sha256": "8af1435deabeb526b35e74b52b4acca82e4bb622f2df0a4ff05f5394b294a23a",
+      "after_sha256": "57417afe1f43e72f98a92b5b7aa28beb0b900adb8fc12ed5263671718453cfe7",
+      "raw_inverse": [
+        {
+          "after": "  \"text\": \"orationes.cor-iesu\",\n  \"about\": \"Wezwanie zamykające modlitwy Leona XIII po Mszy cichej. Enchiridion Indulgentiarum z 1952 r. przewiduje za jego trzykrotne dodanie osobny odpust siedmiu lat i powołuje się na akty Świętej Kongregacji Odpustów (17 czerwca 1904 r.) oraz Penitencjarii Apostolskiej (18 marca 1932 r.). To wydanie drukuje wezwanie raz.\",\n  \"segments\": {\n",
+          "before": "  \"text\": \"orationes.cor-iesu\",\n  \"about\": \"Wezwanie zamykające modlitwy Leona XIII, dołączone do nich w 1904 r. za Piusa X. Powtarza się je trzy razy. To wydanie drukuje je raz.\",\n  \"segments\": {\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "languages/pl/texts/orationes/salve-regina.json": {
+      "before_sha256": "b99978e504fd7e0442573d2d57327a0876a962e0ab83dbf6407476c8ba5095c7",
+      "after_sha256": "b8527928dcd84b7e49d3cea2bf55080a9a9970cef8f60a67823aa4cf4c4a7756",
+      "raw_inverse": [
+        {
+          "after": "  \"text\": \"orationes.salve-regina\",\n  \"about\": \"Antyfona maryjna odmawiana po Mszy cichej w modlitwach Leona XIII. Zwraca się do Najświętszej Maryi Panny jako Królowej i Matki miłosierdzia, a wygnańcy, synowie Ewy, proszą Ją, aby zwróciła ku nim swoje miłosierne oczy i po tym wygnaniu ukazała im Jezusa. Po antyfonie następuje werset z odpowiedzią.\",\n  \"segments\": {\n",
+          "before": "  \"text\": \"orationes.salve-regina\",\n  \"about\": \"Antyfona maryjna odmawiana po Mszy cichej w modlitwach Leona XIII, a w komplecie przez długi okres po Zesłaniu Ducha Świętego. Zwraca się do Najświętszej Maryi Panny jako Królowej i Matki miłosierdzia, a wygnańcy, synowie Ewy, proszą Ją, aby zwróciła ku nim swoje miłosierne oczy i po tym wygnaniu ukazała im Jezusa. Po antyfonie następuje werset z odpowiedzią.\",\n  \"segments\": {\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "languages/pl/texts/orationes/sancte-michael.json": {
+      "before_sha256": "31f7425fa035a30d78f0c680f2ba44deb5d47ba3f8dbe7bdab12de3e4d210d4d",
+      "after_sha256": "148f2a12ac8203aea5c384e9df3b5e724b0b4dc323bebe7ea7667d75674427a5",
+      "raw_inverse": [
+        {
+          "after": "  \"text\": \"orationes.sancte-michael\",\n  \"about\": \"Modlitwa włączona do modlitw Leona XIII odmawianych po Mszy cichej, w których następuje po kolekcie. Prosi św. Michała Archanioła o obronę w walce przeciw niegodziwości i zasadzkom diabła. Następnie prosi, aby Bóg pogromił szatana, i ponownie zwraca się do św. Michała jako wodza wojska niebieskiego, aby mocą Bożą strącił do piekła szatana i inne złe duchy.\",\n  \"segments\": {\n",
+          "before": "  \"text\": \"orationes.sancte-michael\",\n  \"about\": \"Modlitwa, którą Leon XIII ułożył do modlitw odmawianych po Mszy cichej, gdzie stoi po kolekcie. Prosi św. Michała Archanioła o obronę w walce przeciw niegodziwości i zasadzkom diabła. Następnie prosi, aby Bóg pogromił szatana, i ponownie zwraca się do św. Michała jako wodza wojska niebieskiego, aby mocą Bożą strącił do piekła szatana i inne złe duchy.\",\n  \"segments\": {\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "texts/orationes/cor-iesu.json": {
+      "before_sha256": "0a1829d4bd5a09a1a86372b5c5e372a1763aa1f26207b04648387dd242a99e93",
+      "after_sha256": "fbd693b6625d0c2db536eaac18d91aea791ae3c4b4112bb4eee9ee31124c82fa",
+      "raw_inverse": [
+        {
+          "after": "    \"status\": \"working-edition\",\n    \"notes\": \"The invocation that closes the prayers of Leo XIII. The Enchiridion Indulgentiarum (1952, n. 675, p. 521) prints it once, as an addition said three times (Praeterea, si addatur ter) with its own indulgence, citing the Sacred Congregation of Indulgences, 17 June 1904, and the Apostolic Penitentiary, 18 March 1932. Five words, and it is said three times — which this edition states in the reader's introduction rather than printing three identical pairs. Witness do prints all three pairs; its literal selection is the first pair, pinned lines 410 and 411 of the Mass Ordo. The answer (s02) is said by all: the Enchiridion Indulgentiarum (1952, n. 675) grants its indulgence to the faithful who say these prayers simul cum sacerdote (p. 521); s01 carries no speaker. COR at w001 is nominative in the function of address, as AGNUS is in the Agnus Dei: the form is a neuter one that would not show the difference anyway, and this edition marks the case the analyzers head. IESU at w002 is genitive — one of the four cases this Greek-Latin name spells alike, and the only one the sense allows here.\",\n    \"source\": {\n      \"method\": \"Collated against the witnesses below: witness do, a derived literal selection from the pinned digital Divinum Officium Mass Ordo with no independent transmission, and witness handmissal-tlm, a hand-missal page fetched on 2026-08-07 whose copy is not archived with this edition. Zero substantive divergence, and the orthography each witness declares.\",\n      \"witnesses\": \"witnesses/orationes.cor-iesu/\",\n",
+          "before": "    \"status\": \"working-edition\",\n    \"notes\": \"The invocation that closes the prayers of Leo XIII, added to them by Pius X in 1904. Five words, and it is said three times — which this edition states in the reader's introduction rather than printing three identical pairs. Witness do prints all three; its transcription takes the first pair only and says so. COR at w001 is nominative in the function of address, as AGNUS is in the Agnus Dei: the form is a neuter one that would not show the difference anyway, and this edition marks the case the analyzers head. IESU at w002 is genitive — one of the four cases this Greek-Latin name spells alike, and the only one the sense allows here.\",\n    \"source\": {\n      \"method\": \"Verified by collation against the independent witnesses below: zero substantive divergence, and the orthography each witness declares.\",\n      \"witnesses\": \"witnesses/orationes.cor-iesu/\",\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "texts/orationes/deus-refugium.json": {
+      "before_sha256": "5c0b55bdf927afb8e609c23b42cdaf65c0cd06cb28ece6c01a81fb8ca81d8092",
+      "after_sha256": "ca82b0fda0c26c4cb5493980030b4c17a26caa49517ecaf2d9d22c74279b4bf8",
+      "raw_inverse": [
+        {
+          "after": "    \"source\": {\n      \"method\": \"Collated against the witnesses below: witness do, a derived literal selection from the pinned digital Divinum Officium Mass Ordo with no independent transmission, and witness handmissal-tlm, a hand-missal page fetched on 2026-08-07 whose copy is not archived with this edition. One substantive divergence, in the declension of a Hebrew name, adjudicated; the rest orthography of the two declared classes.\",\n      \"witnesses\": \"witnesses/orationes.deus-refugium/\",\n",
+          "before": "    \"source\": {\n      \"method\": \"Verified by collation against the independent witnesses below: one substantive divergence, in the declension of a Hebrew name, adjudicated; the rest orthography of the two declared classes.\",\n      \"witnesses\": \"witnesses/orationes.deus-refugium/\",\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "texts/orationes/salve-regina.json": {
+      "before_sha256": "36ed1bdd59571e5980e5cb80bd5209b68a80d80f559c565158d64fe97e0a229d",
+      "after_sha256": "004fdf0562a03e5b46fba474664cea8ccca847bb94689705e476e2f07a5cd939",
+      "raw_inverse": [
+        {
+          "after": "    \"status\": \"working-edition\",\n    \"notes\": \"The Marian antiphon with the versicle that follows it in the prayers of Leo XIII said after low Mass. The antiphon and its response are said by all: the Enchiridion Indulgentiarum (1952, n. 675) grants its indulgence to the faithful who say these prayers simul cum sacerdote (p. 521) and prints the versicle and response with ℣. and ℟. (p. 520); the versicle carries no speaker. The whole first half is address: the prayer opens on its verb — SALVE — and pours five vocative names after it before the sentence closes on salve again. EIA at w027 passes the accent heuristic on its own merits: two syllables, the i read as a glide (E-ia), below the three-syllable threshold. SALVE at w001 and w010 is the imperative of salveo, not an interjection: the analyzers head the verb. LACRYMÁRUM at w025 names Collatinus alone; Whitaker's carries only the i-spelling of lacrima. EVÆ at w016 needed the name added to the proper-lemma list. GÉNETRIX at w062 follows the corpus's standing ruling that one spelling of the noun is kept throughout, against witness do here. Witness tpl prints an Amen after Virgo María which the Leonine recension does not have; the witness file transcribes it, and a recension header declares that this edition omits it, and why.\",\n    \"source\": {\n      \"method\": \"Collated against the witnesses below: witness do, a derived literal selection from the pinned digital Divinum Officium Mass Ordo with no independent transmission, and witness tpl, a web page fetched on 2026-08-06 whose copy is not archived with this edition. Zero substantive divergence beyond five adjudicated spellings, each of them a real form of the word.\",\n      \"witnesses\": \"witnesses/orationes.salve-regina/\",\n",
+          "before": "    \"status\": \"working-edition\",\n    \"notes\": \"The Marian antiphon with the versicle that follows it in the prayers of Leo XIII said after low Mass, and at Compline through the long green season. The whole first half is address: the prayer opens on its verb — SALVE — and pours five vocative names after it before the sentence closes on salve again. EIA at w027 passes the accent heuristic on its own merits: two syllables, the i read as a glide (E-ia), below the three-syllable threshold. SALVE at w001 and w010 is the imperative of salveo, not an interjection: the analyzers head the verb. LACRYMÁRUM at w025 names Collatinus alone; Whitaker's carries only the i-spelling of lacrima. EVÆ at w016 needed the name added to the proper-lemma list. GÉNETRIX at w062 follows the corpus's standing ruling that one spelling of the noun is kept throughout, against witness do here. Witness tpl prints an Amen after Virgo María which the Leonine recension does not have; the witness file transcribes it, and a recension header declares that this edition omits it, and why.\",\n    \"source\": {\n      \"method\": \"Verified by collation against the independent witnesses below: zero substantive divergence beyond five adjudicated spellings, each of them a real form of the word.\",\n      \"witnesses\": \"witnesses/orationes.salve-regina/\",\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "texts/orationes/sancte-michael.json": {
+      "before_sha256": "4affe33ac20ec72c328d0718a9f9b8ab1d3be171c025eb50b448ed221909a25a",
+      "after_sha256": "bf822b411dc319b2cc18cf8ad848b45cfef5b3fb94f1a6829711d07c3147b572",
+      "raw_inverse": [
+        {
+          "after": "    \"status\": \"working-edition\",\n    \"notes\": \"The prayer placed among the prayers of Leo XIII said after low Mass; it stands fourth among them, after the threefold Ave María, the Salve Regína and the collect (Enchiridion Indulgentiarum, 1952, n. 675, pp. 520–521). It is said by all: the Enchiridion Indulgentiarum (1952, n. 675) grants its indulgence to the faithful who say these prayers simul cum sacerdote (p. 521). ÍMPERET at w015 carries its accent on the antepenult, which witness do omits as it omits accents on capitals throughout. Three petitions: a plea for defence, a wish that God command the enemy, and a call to Michael himself — TUQUE opens it. ESTO at w013 is the FUTURE imperative of sum — the form that lays a standing duty rather than an immediate one — and names Collatinus alone, Whitaker's not offering the tense. MÍCHAËL at w002 names Collatinus alone, as every form of the name does in this corpus. TUQUE at w020 is the nominative pronoun with the enclitic -que; the pronoun is expressed at all only because the sentence turns from God back to Michael. CÆLÉSTIS at w023 is genitive, agreeing with milítiæ, not nominative with Princeps. PERVAGÁNTUR at w032 and DEPRECÁMUR at w019 are deponents: passive in form, active in meaning.\",\n    \"source\": {\n      \"method\": \"Collated against the witnesses below: witness do, a derived literal selection from the pinned digital Divinum Officium Mass Ordo with no independent transmission, and witness tpl, a web page fetched on 2026-08-06 whose copy is not archived with this edition. Zero substantive divergence beyond one adjudicated spelling, which is a real form of the word.\",\n      \"witnesses\": \"witnesses/orationes.sancte-michael/\",\n",
+          "before": "    \"status\": \"working-edition\",\n    \"notes\": \"The prayer Leo XIII composed and assigned to be said after low Mass; it stands fourth among his prayers, after the Salve Regína and the collect. ÍMPERET at w015 carries its accent on the antepenult, which witness do omits as it omits accents on capitals throughout. Three petitions: a plea for defence, a wish that God command the enemy, and a call to Michael himself — TUQUE opens it. ESTO at w013 is the FUTURE imperative of sum — the form that lays a standing duty rather than an immediate one — and names Collatinus alone, Whitaker's not offering the tense. MÍCHAËL at w002 names Collatinus alone, as every form of the name does in this corpus. TUQUE at w020 is the nominative pronoun with the enclitic -que; the pronoun is expressed at all only because the sentence turns from God back to Michael. CÆLÉSTIS at w023 is genitive, agreeing with milítiæ, not nominative with Princeps. PERVAGÁNTUR at w032 and DEPRECÁMUR at w019 are deponents: passive in form, active in meaning.\",\n    \"source\": {\n      \"method\": \"Verified by collation against the independent witnesses below: zero substantive divergence beyond one adjudicated spelling, which is a real form of the word.\",\n      \"witnesses\": \"witnesses/orationes.sancte-michael/\",\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "texts/ordinarium/benedictio.json": {
+      "before_sha256": "93e6b49b63d8a18193eaa530131eb31da833fc9adc249ead998b6adbfa2da6da",
+      "after_sha256": "cce43d7a95cb4b98f53a0211bcdde58ca6887044a7132aed40389d6190c9af44",
+      "raw_inverse": [
+        {
+          "after": "    \"status\": \"working-edition\",\n    \"notes\": \"The blessing at the end of Mass. One sentence, cut in two by a rubric: the priest says Benedícat vos omnípotens Deus at the altar, turns to the people, and finishes the sentence while making the sign of the cross over them. PATER at w005, FÍLIUS at w007 and SPÍRITUS at w009 are all nominative in apposition to DEUS at w004 — they name the God who blesses, they are not a separate address. The two witnesses place the rubrical cross differently (do before et Spíritus Sanctus, handmissal-eo before Pater); it is a direction to the hand, not a reading, and is stripped in both transcriptions. The rubrics s01, s03 and s05 are the 1962 Ordo Missae as the approved Benziger printing sets them (p. 319). Rubric s05 joins the page's last two rubrics: the triple blessing at a pontifical Mass, and the rule that no blessing is given where Benedicámus Dómino or Requiéscant in pace has been said, the celebrant then reading the Gospel of Saint John si dicendum sit, as the Ritus servandus also has it (XII, 4); the Codex n. 510 omits that Gospel after Benedicámus Dómino and when the absolution follows a Requiem, and the narratives state the condition. The Amen at w011 is the answer, not the priest's: the page prints it after ℟., as the Ritus servandus does (XII, 1), and it stands as its own segment (s06).\",\n    \"source\": {\n",
+          "before": "    \"status\": \"working-edition\",\n    \"notes\": \"The blessing at the end of Mass. One sentence, cut in two by a rubric: the priest says Benedícat vos omnípotens Deus at the altar, turns to the people, and finishes the sentence while making the sign of the cross over them. PATER at w005, FÍLIUS at w007 and SPÍRITUS at w009 are all nominative in apposition to DEUS at w004 — they name the God who blesses, they are not a separate address. The two witnesses place the rubrical cross differently (do before et Spíritus Sanctus, handmissal-eo before Pater); it is a direction to the hand, not a reading, and is stripped in both transcriptions. The rubric at s03 is set with a single space where witness do's plain text sets two — a transcription artifact of that file, normalized. The rubric at s05 sets Trínitas with its accent, as the same witness sets it in the Pláceat above (raw 374). The s05 rubric preserves DO's pre-1960 unconditional wording; the 1962 Ritus servandus XII, 4 makes the Last Gospel conditional — si est dicendum — and the Codex n. 510 omits it after Benedicámus Dómino and when the absolution follows a Requiem; the narratives state the condition. The Amen at w011 is the answer, not the priest's: witness do marks it R., the hand missal S:, and the Ritus servandus prints R. Amen — it stands as its own segment (s06).\",\n    \"source\": {\n"
+        },
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s03\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s05\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    }\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s03\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s05\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    }\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "texts/ordinarium/credo.json": {
+      "before_sha256": "49cdfc3787aa677d878478e56ec4bc88d98ded2b07829594a47aa0f2cc1fe1bc",
+      "after_sha256": "547d3c8470b37eb7caf2dea6ab542c8a9c9ee06af8b7cf6207c60fa4cb13c086",
+      "raw_inverse": [
+        {
+          "after": "    \"status\": \"working-edition\",\n    \"notes\": \"The Nicene-Constantinopolitan Creed as sung in the 1962 Mass. Rubric s01 is the first sentence of the 1962 rubric as the approved Benziger printing sets it (Ordo Missae, p. 223). The rest of that rubric, with the bows at the holy names, the genuflection and the sign of the cross at the end, is not encoded; the narrative layer carries those gestures after the Ritus servandus (VI, 3). Rubric s08 is the page's own inline 'Hic genuflectitur:' before Et incarnátus est, as its own segment.\",\n    \"source\": {\n",
+          "before": "    \"status\": \"working-edition\",\n    \"notes\": \"The Nicene-Constantinopolitan Creed as sung in the 1962 Mass. Rubric s01 abridges the 1962 rubric as transcribed by witness do (line 142); the bows at the holy names and the sign of the cross at the end are carried by the narrative layer. Rubric s08 is DO's inline '(Hic genuflectitur)' as its own segment.\",\n    \"source\": {\n"
+        },
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } },\n      \"s08\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    },\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } },\n      \"s08\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    },\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "texts/ordinarium/gloria.json": {
+      "before_sha256": "e60c3776c0528c3089a4c33c072a142e8e097b0173e42cea8ba1266456c79213",
+      "after_sha256": "aaf81129dadffe0f4a4e6c46fee15f10a1cc45a471374ee5bc47a4b839e1b257",
+      "raw_inverse": [
+        {
+          "after": "    \"status\": \"working-edition\",\n    \"notes\": \"The Greater Doxology (hymnus angelicus), opening with the angels' song at Bethlehem (Lc 2:14). Rubric s01 is the first sentence of the 1962 rubric as the approved Benziger printing sets it (Ordo Missae, p. 220). The page's second sentence, with the bows at the named phrases and the sign of the cross at the end, is not encoded; the narrative layer carries those gestures after the Ritus servandus (IV, 3).\",\n    \"source\": {\n",
+          "before": "    \"status\": \"working-edition\",\n    \"notes\": \"The Greater Doxology (hymnus angelicus), opening with the angels' song at Bethlehem (Lc 2:14). Rubric s01 abridges the 1962 rubric as transcribed by witness do (line 89): the bows at the named phrases and the sign of the cross at the end are carried by the narrative layer.\",\n    \"source\": {\n"
+        },
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    },\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    },\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "texts/ordinarium/kyrie.json": {
+      "before_sha256": "e415486adaba041afc2d2bedaa9094d69e2f3cdab9883dbcccd342c6c1a8924a",
+      "after_sha256": "8248841e3aeea4ee86fc04f12fff9f26b3e0bed434bb146b74212b278d920e1f",
+      "raw_inverse": [
+        {
+          "after": "    \"status\": \"working-edition\",\n    \"notes\": \"Nine invocations in Greek, printed in Latin letters, between the Introit and the Gloria. They are encoded as separate words. Kýrie is parsed as the vocative of κύριος and eléison as the imperative of ἐλεέω; the Greek aorist is not represented in the Latin tense field. Christe is the ordinary Latin vocative of the naturalised Christus. The page prints no speaker signs for the invocations: their alternation, the priest first and the server answering, rests on its rubric alternatim cum ministris dicit (Ordo Missae, p. 220, in the approved Benziger printing) and on the Ritus servandus (IV, 2), which has the celebrant say them alternatim cum ministro.\",\n    \"source\": {\n",
+          "before": "    \"status\": \"working-edition\",\n    \"notes\": \"Nine invocations in Greek, printed in Latin letters, between the Introit and the Gloria. They are encoded as separate words. Kýrie is parsed as the vocative of κύριος and eléison as the imperative of ἐλεέω; the Greek aorist is not represented in the Latin tense field. Christe is the ordinary Latin vocative of the naturalised Christus.\",\n    \"source\": {\n"
+        },
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    },\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    },\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "texts/ordinarium/placeat-tibi.json": {
+      "before_sha256": "7be0b340096e9978979f1e4811b3c5580b516a146ec37cb9970a8370d9da28df",
+      "after_sha256": "8df9bfb57adb010aa2693ebffec3950fd9261141ad90542959639b43bb191638",
+      "raw_inverse": [
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    },\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    },\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "texts/ordinarium/praefatio-dialogus.json": {
+      "before_sha256": "6f01453edc2722fa7ffc3b17ebe0d57fcc31be5ff4649c1a23e3fbe0172177be",
+      "after_sha256": "96f60d23c32b6bf307aa89c5d996ca6b487d373ba67a13193f36f7c4dcc6df11",
+      "raw_inverse": [
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    },\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    },\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "texts/ordinarium/sanctus.json": {
+      "before_sha256": "6112699282d5c3017d282a40e5cc64e5909f5f3af91bfd70313cab5962be9b74",
+      "after_sha256": "5c468d9b7e738bec317b33b46e6ef1165bca81997d33a6817c0283dd2b5f97b6",
+      "raw_inverse": [
+        {
+          "after": "    \"status\": \"working-edition\",\n    \"notes\": \"The Sanctus with the Benedictus, closing the Preface at the threshold of the Canon: the seraphim's cry of Is 6:3 joined to the acclamation of Mt 21:9. Rubric s01 is the complete 1962 rubric as the approved Benziger printing sets it (Ordo Missae, p. 225), from Deinde disiungit manus to the sign of the cross at Benedíctus qui venit, so the bow and the sign of the cross stand in the rubric itself; the bell, which only the Ritus servandus prints (VII, 8), is carried by the narrative layer. Benedíctus (w017) is tagged as the lexicalized adjective, not as the perfect passive participle of benedícere: both readings are open to the analyzers, and the adjective follows the corpus ruling at orationes.ave-maria w007 and w012.\",\n    \"source\": {\n",
+          "before": "    \"status\": \"working-edition\",\n    \"notes\": \"The Sanctus with the Benedictus, closing the Preface at the threshold of the Canon: the seraphim's cry of Is 6:3 joined to the acclamation of Mt 21:9. Rubric s01 abridges the 1962 rubric as transcribed by witness do (line 203), which prints the comma at Benedíctus that the apparatus declines for the sung text; the bell is carried by the narrative layer; the bow and the sign of the cross stand in the rubric itself. Benedíctus (w017) is tagged as the lexicalized adjective, not as the perfect passive participle of benedícere: both readings are open to the analyzers, and the adjective follows the corpus ruling at orationes.ave-maria w007 and w012.\",\n    \"source\": {\n"
+        },
+        {
+          "after": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"mr\"], \"review\": \"pending\" } }\n    },\n",
+          "before": "    \"segments\": {\n      \"s01\": { \"analysis\": { \"confidence\": \"high\", \"sources\": [\"editorial\", \"do\"], \"review\": \"pending\" } }\n    },\n"
+        }
+      ],
+      "layout": "house"
+    },
+    "witnesses/orationes.salve-regina/apparatus.json": {
+      "before_sha256": "d68950661f9aaaba172106b0709dd6ae8eaebc457edb3d6560c605a6aaf810f5",
+      "after_sha256": "aa3deb0215c982759ec8a691f1965b411e0eb919f06187c54898a4688184a440",
+      "raw_inverse": [
+        {
+          "after": "      \"class\": \"orthography\",\n      \"ruling\": \"Evæ, with do. Both spellings are the same name: the Vulgate itself sets Hava at Genesis 3, 20 and Eva elsewhere, and the h is a Hebrew breathing that Latin took over unevenly. The corpus prints what witness do, a derived selection from the pinned digital Divinum Officium Mass Ordo and not a 1962 printing, prints and records the other page rather than correcting it.\"\n    },\n",
+          "before": "      \"class\": \"orthography\",\n      \"ruling\": \"Evæ, with do. Both spellings are the same name: the Vulgate itself sets Hava at Genesis 3, 20 and Eva elsewhere, and the h is a Hebrew breathing that Latin took over unevenly. The corpus prints what its 1962 witness prints and records the other page rather than correcting it.\"\n    },\n"
+        }
+      ],
+      "layout": "plain"
+    },
+    "witnesses/orationes.sancte-michael/apparatus.json": {
+      "before_sha256": "d080bd55f9d4cea6865da75dc741dde2b1dabad796d1c473853df8004b8b29cd",
+      "after_sha256": "896474837fa004eb56232a32d7d0b0e3ac2b40addaf4f874d9798739412f1990",
+      "raw_inverse": [
+        {
+          "after": "      \"class\": \"orthography\",\n      \"ruling\": \"Prǽlio, with do. Prælium and proelium are the same noun: proelium is the older spelling and prælium the one the liturgical books print, and the dictionaries head both. Both analyzers link the corpus's lemma, so nothing is lost by printing what witness do, a derived selection from the pinned digital Divinum Officium Mass Ordo and not a 1962 printing, prints.\"\n    },\n",
+          "before": "      \"class\": \"orthography\",\n      \"ruling\": \"Prǽlio, with do. Prælium and proelium are the same noun: proelium is the older spelling and prælium the one the liturgical books print, and the dictionaries head both. Both analyzers link the corpus's lemma, so nothing is lost by printing what the 1962 witness prints.\"\n    },\n"
+        }
+      ],
+      "layout": "plain"
+    },
+    "witnesses/ordinarium.credo/apparatus.json": {
+      "before_sha256": "3d9ddb7779a80cd230e5d87acccb4f9526159e7bf75f2e28b135b061e8dca98d",
+      "after_sha256": "d39694bccfef450f7280c4fd53f3de32a56ab05a03bd32a1b83007c57e996a17",
+      "raw_inverse": [
+        {
+          "after": "  \"text\": \"ordinarium.credo\",\n  \"note\": \"Ten adjudicated accidental variants: nine against witness do, and one against mr, where the page closes the chant intonation with a full stop (w004); handmissal-eo collates under the substantive-only profile. Substantive text agrees across all three witnesses with zero variants under handmissal-eo's declared fold-xs orthography.\",\n  \"summary\": {\n",
+          "before": "  \"text\": \"ordinarium.credo\",\n  \"note\": \"Adjudicated accidental variants against witness do (handmissal-eo collates under the substantive-only profile). Substantive text agrees across all three witnesses with zero variants under handmissal-eo's declared fold-xs orthography.\",\n  \"summary\": {\n"
+        }
+      ],
+      "layout": "plain"
+    },
+    "witnesses/ordinarium.gloria/apparatus.json": {
+      "before_sha256": "3645376b3e03754125bcda73f707c84b27091420a61814fe4dcb0f1ab7fc4d96",
+      "after_sha256": "44660c6efcefc95fa29963ef0c9c4c43a4ebd288c4070761af14720a6d8766fd",
+      "raw_inverse": [
+        {
+          "after": "      \"class\": \"punctuation\",\n      \"ruling\": \"The approved Benziger printing's punctuation is retained. The difference marks phrasing and does not change the words.\"\n    }\n",
+          "before": "      \"class\": \"punctuation\",\n      \"ruling\": \"No stop, with DO: the hand missal's comma marks the breath at the sign of the cross, not syntax — the prepositional phrases run on (with the Holy Spirit in the glory of God the Father).\"\n    }\n"
+        }
+      ],
+      "layout": "plain"
+    },
+    "witnesses/ordinarium.placeat-tibi/apparatus.json": {
+      "before_sha256": "1ec182a03915c79db6a57f6a8d0d0d9d070d41073b8efe513e8334433c6a4f13",
+      "after_sha256": "4fde9c5fbbfe962eb80811390623074f4bb7717f6ee1aebf66504a81fe1249bd",
+      "raw_inverse": [
+        {
+          "after": "{\n  \"text\": \"ordinarium.placeat-tibi\",\n  \"note\": \"Five adjudicated accidental entries against witnesses do and handmissal-eo, one of orthography and four of punctuation; the approved Benziger printing (p. 319) sides with the adopted reading at each. Substantive text agrees across all three witnesses with zero divergence.\",\n  \"summary\": {\n    \"entries\": 5,\n    \"classes\": [\n",
+          "before": "{\n  \"text\": \"ordinarium.placeat-tibi\",\n  \"note\": \"Three adjudicated accidental variants (punctuation, orthography). Substantive text agrees across all three witnesses with zero divergence.\",\n  \"summary\": {\n    \"entries\": 5,\n    \"classes\": [\n"
+        },
+        {
+          "after": "        \"handmissal-eo\": \"ómnibus\"\n      },\n      \"class\": \"punctuation\",\n      \"ruling\": \"The approved Benziger printing's punctuation is retained. The difference marks phrasing and does not change the words.\"\n    },\n    {\n      \"at\": \"w033\",\n",
+          "before": "        \"handmissal-eo\": \"ómnibus\"\n      },\n      \"class\": \"punctuation\",\n      \"ruling\": \"No comma before the relative, with handmissal-eo and with the corpus ruling at ordinarium.quid-retribuam w005 for the same word before the same kind of clause. Pro quibus illud óbtuli says which ómnibus are meant — the priest prayed for them by intention at the Memento — and defining the group is not a remark that can be lifted out of the sentence.\"\n    },\n    {\n      \"at\": \"w033\",\n"
+        }
+      ],
+      "layout": "plain"
+    },
+    "witnesses/ordinarium.praefatio-dialogus/mr.txt": {
+      "before_sha256": "b56961cbe0653d036fc552e34a28983b8c2eebcf313221147f1154c36cdfd2da",
+      "after_sha256": "c42ae508130b87bad01aada1cd57ce1f12e14736d3ef4aafc0371de65b2a47f0",
+      "raw_inverse": [
+        {
+          "after": "# note: headings, rubrics, speaker signs, and typographic crosses are edition framing and are not transcribed\n# speaker-sign: the page sets ℟. before Sursum corda, an isolated misprint. The same\n#   book sets ℣. there on pp. 287 and 288, the Ordo rubric on p. 225 (leaf n304)\n#   and the Ritus servandus VII, 8 give the words to the priest, and the Vatican\n#   setting prints ℣. (p. 284). Segment s04 keeps the priest, as they do\nDóminus vobíscum.\n",
+          "before": "# note: headings, rubrics, speaker signs, and typographic crosses are edition framing and are not transcribed\nDóminus vobíscum.\n"
+        }
+      ]
+    },
+    "witnesses/ordinarium.sanctus/apparatus.json": {
+      "before_sha256": "c71eab59d2f0a5dc0db811fda5dccdc964382fe9ed8cdf7fc9cc178bd123b453",
+      "after_sha256": "19cf80ec09c5c1ddaa3dfc31342f7f9f088ada6fbb2432a8cae9bc8c8266437a",
+      "raw_inverse": [
+        {
+          "after": "  \"text\": \"ordinarium.sanctus\",\n  \"note\": \"Adjudicated accidental variants (punctuation). Substantive text agrees across all three witnesses with zero variants. The adopted reading is the approved Benziger printing's (Ordo Missae, p. 286): no stop after the third Sanctus, and the divine title unbroken. The two other editions punctuate the opening title differently — do closes the threefold acclamation without a stop and detaches Deus Sábaoth, handmissal-eo does the reverse.\",\n  \"summary\": {\n",
+          "before": "  \"text\": \"ordinarium.sanctus\",\n  \"note\": \"Adjudicated accidental variants (punctuation). Substantive text agrees across all three witnesses with zero variants. The two editions punctuate the opening title differently — do closes the threefold acclamation without a stop and detaches Deus Sábaoth, handmissal-eo does the reverse — so the adopted reading takes an absence from each: no stop after the third Sanctus, and the divine title unbroken.\",\n  \"summary\": {\n"
+        },
+        {
+          "after": "      \"class\": \"punctuation\",\n      \"ruling\": \"No stop after the third Sanctus, with do and with the approved Benziger printing, which sets Sanctus Dóminus unbroken (Ordo Missae, p. 286): the third acclamation is not a member closing a list but the predicate of what follows — Sanctus Dóminus, 'holy (is) the Lord'. The hand missal's comma stands where its page prints a bell glyph and marks the ringing, not the syntax; its own chant page sets the phrase with no comma there.\"\n    },\n",
+          "before": "      \"class\": \"punctuation\",\n      \"ruling\": \"No stop after the third Sanctus, with DO: the third acclamation is not a member closing a list but the predicate of what follows — Sanctus Dóminus, 'holy (is) the Lord'. The hand missal's comma stands where its page prints a bell glyph and marks the ringing, not the syntax; its own chant page sets the phrase with no comma there.\"\n    },\n"
+        }
+      ],
+      "layout": "plain"
+    }
+  },
+  "graph": {
+    "added": [
+      {
+        "id": "use.ordinarium.confiteor-sacerdotis.continuation.mr1962",
+        "edition": "edition.missale-romanum.1962-typica",
+        "digital_item": "item.missale-romanum.1962-typica.ia",
+        "role": "official_text",
+        "address": {
+          "kind": "word",
+          "text": "ordinarium.confiteor-sacerdotis",
+          "word": "w016"
+        },
+        "locator": {
+          "printed": "p. 220",
+          "scan": "leaf n299 / PDF p. 300",
+          "page_url": "https://archive.org/details/missale-romanum-1962/page/n299/mode/1up"
+        },
+        "claim": "The cited page image prints the Confiteor from Petro et Paulo (w016) to its end, after a page turn inside s02.",
+        "verified_on": "2026-10-30",
+        "decision": "RETAIN",
+        "evidence_sha256": "f2974f65b87ab6c98e437417413c181b9e10094a20a50181bd8d865abd383600",
+        "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
+      },
+      {
+        "id": "use.ordinarium.confiteor.continuation.mr1962",
+        "edition": "edition.missale-romanum.1962-typica",
+        "digital_item": "item.missale-romanum.1962-typica.ia",
+        "role": "official_text",
+        "address": {
+          "kind": "word",
+          "text": "ordinarium.confiteor",
+          "word": "w016"
+        },
+        "locator": {
+          "printed": "p. 220",
+          "scan": "leaf n299 / PDF p. 300",
+          "page_url": "https://archive.org/details/missale-romanum-1962/page/n299/mode/1up"
+        },
+        "claim": "The cited page image prints the rest of the celebrant’s Confiteor, from Petro et Paulo (w016) to its end, after a page turn inside s02, and the rubric that directs the ministers to repeat it with tibi, pater and te, pater in place of vobis, fratres and vos, fratres. The selected ministerial form applies those substitutions; it is not a second complete printed formula.",
+        "verified_on": "2026-10-30",
+        "decision": "RETAIN",
+        "evidence_sha256": "f2974f65b87ab6c98e437417413c181b9e10094a20a50181bd8d865abd383600",
+        "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
+      },
+      {
+        "id": "use.ordinarium.gloria.continuation.mr1962",
+        "edition": "edition.missale-romanum.1962-typica",
+        "digital_item": "item.missale-romanum.1962-typica.ia",
+        "role": "official_text",
+        "address": {
+          "kind": "segment",
+          "text": "ordinarium.gloria",
+          "segment": "s03"
+        },
+        "locator": {
+          "printed": "p. 222",
+          "scan": "leaf n301 / PDF p. 302",
+          "page_url": "https://archive.org/details/missale-romanum-1962/page/n301/mode/1up"
+        },
+        "claim": "The cited page image prints the Gloria from s03 to its end, Et in terra pax through Amen, after two more chant intonations of s02, Missa XII and XV.",
+        "verified_on": "2026-10-30",
+        "decision": "RETAIN",
+        "evidence_sha256": "b7df421df1684232436ba62e3daf3e9b14f67ee641134cc311f8344560c16749",
+        "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
+      },
+      {
+        "id": "use.ordinarium.memento-defunctorum.continuation.mr1962",
+        "edition": "edition.missale-romanum.1962-typica",
+        "digital_item": "item.missale-romanum.1962-typica.ia",
+        "role": "official_text",
+        "address": {
+          "kind": "segment",
+          "text": "ordinarium.memento-defunctorum",
+          "segment": "s02"
+        },
+        "locator": {
+          "printed": "p. 309",
+          "scan": "leaf n390 / PDF p. 391",
+          "page_url": "https://archive.org/details/missale-romanum-1962/page/n390/mode/1up"
+        },
+        "claim": "The cited page image prints the Memento of the dead from s02 to its end: the rubric Iungit manus, orat aliquantulum, Ipsis, Domine and Per eundem Christum Dominum nostrum. Amen.",
+        "verified_on": "2026-10-30",
+        "decision": "RETAIN",
+        "evidence_sha256": "b83dcb2c742c348ef4eeeda4400cf167457494025228dbc34bedd489b002dbf6",
+        "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
+      },
+      {
+        "id": "use.ordinarium.panem-caelestem.continuation.mr1962",
+        "edition": "edition.missale-romanum.1962-typica",
+        "digital_item": "item.missale-romanum.1962-typica.ia",
+        "role": "official_text",
+        "address": {
+          "kind": "segment",
+          "text": "ordinarium.panem-caelestem",
+          "segment": "s04"
+        },
+        "locator": {
+          "printed": "p. 315",
+          "scan": "leaf n396 / PDF p. 397",
+          "page_url": "https://archive.org/details/missale-romanum-1962/page/n396/mode/1up"
+        },
+        "claim": "The cited page image prints Panem caelestem from s04 to its end, after the end of the rubric s03, which the page turn divides: one complete Domine, non sum dignus petition under ter dicit, and the communion formula ending animam meam. The selected reading expands that petition three times according to the rubric; three complete copies are not printed there.",
+        "verified_on": "2026-10-30",
+        "decision": "RETAIN",
+        "evidence_sha256": "956e54a557421ea1276f50669ca0096cec3f5f006e63b1fcaa4002a985950944",
+        "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
+      },
+      {
+        "id": "use.ordinarium.per-ipsum.continuation.mr1962",
+        "edition": "edition.missale-romanum.1962-typica",
+        "digital_item": "item.missale-romanum.1962-typica.ia",
+        "role": "official_text",
+        "address": {
+          "kind": "segment",
+          "text": "ordinarium.per-ipsum",
+          "segment": "s07"
+        },
+        "locator": {
+          "printed": "p. 310",
+          "scan": "leaf n391 / PDF p. 392",
+          "page_url": "https://archive.org/details/missale-romanum-1962/page/n391/mode/1up"
+        },
+        "claim": "The cited page image prints Per ipsum from s07 to its end: the rubric Reponit hostiam, the chant setting of Per omnia saecula saeculorum and the answer Amen.",
+        "verified_on": "2026-10-30",
+        "decision": "RETAIN",
+        "evidence_sha256": "8756ec3bd389f23992a0d83d0e1654e3c33cbed7c4527167b8fa513edf55ef39",
+        "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
+      },
+      {
+        "id": "use.ordinarium.praefatio-dialogus.hands-rubric.mr1962",
+        "edition": "edition.missale-romanum.1962-typica",
+        "digital_item": "item.missale-romanum.1962-typica.ia",
+        "role": "rubric_control",
+        "address": {
+          "kind": "segment",
+          "text": "ordinarium.praefatio-dialogus",
+          "segment": "s01"
+        },
+        "locator": {
+          "printed": "p. 225",
+          "scan": "leaf n304 / PDF p. 305",
+          "section": "Ordo Missae, complete Praefationem incipit rubric through Gratias agamus Domino Deo nostro",
+          "page_url": "https://archive.org/details/missale-romanum-1962/page/n304/mode/1up"
+        },
+        "claim": "This separate rubric supplies s01: both hands laid on the altar at the start of the Preface and raised a little at Sursum corda, then joined before the breast with a bow of the head at Gratias agamus Domino Deo nostro. It is not printed with the dialogue on p. 286.",
+        "verified_on": "2026-10-30",
+        "evidence_sha256": "c8e1c105fbccab5b133d072bcdc255ff482824182be5e53597e5d2bfbb94e3ee",
+        "decision": "RETAIN",
+        "decision_reason": "Bounded direct page-image comparison; no witness review or whole-text acceptance is promoted."
+      },
+      {
+        "id": "use.ordinarium.qui-pridie.continuation.mr1962",
+        "edition": "edition.missale-romanum.1962-typica",
+        "digital_item": "item.missale-romanum.1962-typica.ia",
+        "role": "official_text",
+        "address": {
+          "kind": "segment",
+          "text": "ordinarium.qui-pridie",
+          "segment": "s10"
+        },
+        "locator": {
+          "printed": "p. 307",
+          "scan": "leaf n388 / PDF p. 389",
+          "page_url": "https://archive.org/details/missale-romanum-1962/page/n388/mode/1up"
+        },
+        "claim": "The cited page image prints Qui pridie from s10 to its end: the rubric Tenens ambabus manibus, Hoc est enim Corpus meum and the adoration rubric that follows.",
+        "verified_on": "2026-10-30",
+        "decision": "RETAIN",
+        "evidence_sha256": "9d8f46853f3f5476f1620491ea99a0f212869f822bfcc646a778d18b052f64b7",
+        "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
+      },
+      {
+        "id": "use.ordinarium.unde-et-memores.continuation.mr1962",
+        "edition": "edition.missale-romanum.1962-typica",
+        "digital_item": "item.missale-romanum.1962-typica.ia",
+        "role": "official_text",
+        "address": {
+          "kind": "segment",
+          "text": "ordinarium.unde-et-memores",
+          "segment": "s02"
+        },
+        "locator": {
+          "printed": "p. 308",
+          "scan": "leaf n389 / PDF p. 390",
+          "page_url": "https://archive.org/details/missale-romanum-1962/page/n389/mode/1up"
+        },
+        "claim": "The cited page image prints Unde et memores from s02 to its end, through Calicem salutis perpetuae, with its signing rubrics.",
+        "verified_on": "2026-10-30",
+        "decision": "RETAIN",
+        "evidence_sha256": "944637186a14958ceebd4f58f465493ab1bf2580c60dfe848c250b770f818ce4",
+        "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
+      }
+    ],
+    "changed": [
+      {
+        "before": {
+          "id": "use.core.238c8cb41cdab59e8000",
+          "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
+          "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
+          "role": "official_liturgical_context",
+          "address": {
+            "kind": "text",
+            "text": "orationes.cor-iesu"
+          },
+          "locator": {
+            "printed": "p. 520",
+            "scan": "PDF scan 541",
+            "section": "n. 675"
+          },
+          "claim": "The invocation closes the prayers after low Mass and is directed to be recited three times.",
+          "verified_on": "2026-08-28",
+          "decision": "RETAIN_WITH_CORRECTION",
+          "legacy_refs": [
+            "texts/orationes/cor-iesu.json#/localization/about_citations/0"
+          ],
+          "decision_reason": "Keep the Enchiridion citation for the invocation's closing position and threefold recitation. Remove 'added in 1904 under Pius X' from the public about text until an official act has a verified title, page image, printed page, and stable URL. This historical flourish is not needed to identify or pray the text.",
+          "evidence_sha256": "027fbf35ae1871e33d95b218c9343e03587931072d9b8958737395948994a76b"
+        },
+        "after": {
+          "id": "use.core.238c8cb41cdab59e8000",
+          "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
+          "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
+          "role": "official_liturgical_context",
+          "address": {
+            "kind": "text",
+            "text": "orationes.cor-iesu"
+          },
+          "locator": {
+            "printed": "p. 521",
+            "scan": "PDF scan 542",
+            "section": "n. 675"
+          },
+          "claim": "The page prints the invocation once, after the prayers after private Mass and their grant, as an addition said three times (Praeterea, si addatur ter) that carries its own indulgence.",
+          "verified_on": "2026-10-30",
+          "decision": "RETAIN_WITH_CORRECTION",
+          "legacy_refs": [
+            "texts/orationes/cor-iesu.json#/localization/about_citations/0"
+          ],
+          "decision_reason": "Keep the Enchiridion citation for the invocation's closing position and threefold recitation. Remove 'added in 1904 under Pius X' from the public about text until an official act has a verified title, page image, printed page, and stable URL. This historical flourish is not needed to identify or pray the text.",
+          "evidence_sha256": "027fbf35ae1871e33d95b218c9343e03587931072d9b8958737395948994a76b"
+        }
+      },
+      {
+        "before": {
+          "id": "use.core.ab8ff3b4c96a69a66480",
+          "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
+          "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "orationes.deus-refugium"
+          },
+          "locator": {
+            "printed": "p. 520",
+            "scan": "scan p. 539",
+            "section": "n. 675"
+          },
+          "claim": "The source prints and identifies Deus, refúgium nostrum.",
+          "verified_on": "2026-08-28",
+          "decision": "RETAIN_WITH_CORRECTION",
+          "legacy_refs": [
+            "texts/orationes/deus-refugium.json#/localization/about_citations/0"
+          ],
+          "decision_reason": "Retain with correction. The live about text does not claim that Leo XIII authored this collect; it calls it the collect of the prayers of Leo XIII, locates it after Salve Regina and its versicle, and summarizes content visible in the text. The inspected Enchiridion page supports that identity and order. Harden the public locator to n. 675, printed p. 520, PDF scan 541, and do not broaden the wording to authorship.",
+          "evidence_sha256": "027fbf35ae1871e33d95b218c9343e03587931072d9b8958737395948994a76b"
+        },
+        "after": {
+          "id": "use.core.ab8ff3b4c96a69a66480",
+          "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
+          "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "orationes.deus-refugium"
+          },
+          "locator": {
+            "printed": "p. 520",
+            "scan": "PDF scan 541",
+            "section": "n. 675"
+          },
+          "claim": "The source prints and identifies Deus, refúgium nostrum.",
+          "verified_on": "2026-08-28",
+          "decision": "RETAIN_WITH_CORRECTION",
+          "legacy_refs": [
+            "texts/orationes/deus-refugium.json#/localization/about_citations/0"
+          ],
+          "decision_reason": "Retain with correction. The live about text does not claim that Leo XIII authored this collect; it calls it the collect of the prayers of Leo XIII, locates it after Salve Regina and its versicle, and summarizes content visible in the text. The inspected Enchiridion page supports that identity and order. Harden the public locator to n. 675, printed p. 520, PDF scan 541, and do not broaden the wording to authorship.",
+          "evidence_sha256": "027fbf35ae1871e33d95b218c9343e03587931072d9b8958737395948994a76b"
+        }
+      },
+      {
+        "before": {
+          "id": "use.ordinarium.confiteor-sacerdotis.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.confiteor-sacerdotis"
+          },
+          "locator": {
+            "printed": "pp. 219–220",
+            "scan": "leaves n298–n299 / PDF pp. 299–300",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
+          },
+          "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55"
+        },
+        "after": {
+          "id": "use.ordinarium.confiteor-sacerdotis.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.confiteor-sacerdotis"
+          },
+          "locator": {
+            "printed": "p. 219",
+            "scan": "leaf n298 / PDF p. 299",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
+          },
+          "claim": "The cited page image prints the Confiteor from Confiteor Deo through sanctis Apostolis (w001–w015); the page turns inside s02, and p. 220 prints the rest.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55"
+        }
+      },
+      {
+        "before": {
+          "id": "use.ordinarium.confiteor.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.confiteor"
+          },
+          "locator": {
+            "printed": "pp. 219–220",
+            "scan": "leaves n298–n299 / PDF pp. 299–300",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
+          },
+          "claim": "The Ordo Missae prints the celebrant’s Confiteor across pp. 219–220. The rubric on p. 220 directs the ministers to repeat it with tibi, pater and te, pater in place of vobis, fratres and vos, fratres. The selected ministerial form applies those substitutions; it is not a second complete printed formula.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55"
+        },
+        "after": {
+          "id": "use.ordinarium.confiteor.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.confiteor"
+          },
+          "locator": {
+            "printed": "p. 219",
+            "scan": "leaf n298 / PDF p. 299",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
+          },
+          "claim": "The cited page image prints the opening of the celebrant’s Confiteor, from Confiteor Deo through sanctis Apostolis (w001–w015), which the ministers repeat unchanged; the page turns inside s02, and p. 220 prints the rest.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55"
+        }
+      },
+      {
+        "before": {
+          "id": "use.ordinarium.gloria.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.gloria"
+          },
+          "locator": {
+            "printed": "pp. 221–222",
+            "scan": "leaves n300–n301 / PDF pp. 301–302",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n300/mode/1up"
+          },
+          "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "3dea429df749bd62c9a824bc2dadca1ddc74003e2c4fb93a6c2f260ffb4b89a2"
+        },
+        "after": {
+          "id": "use.ordinarium.gloria.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.gloria"
+          },
+          "locator": {
+            "printed": "p. 221",
+            "scan": "leaf n300 / PDF p. 301",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n300/mode/1up"
+          },
+          "claim": "The cited page image prints the opening Gloria in excelsis Deo (s02) in five chant intonations, Missa I, II, IV, IX and XI; the rubric s01 stands on p. 220 and the text from s03 on p. 222.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "3dea429df749bd62c9a824bc2dadca1ddc74003e2c4fb93a6c2f260ffb4b89a2"
+        }
+      },
+      {
+        "before": {
+          "id": "use.ordinarium.memento-defunctorum.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.memento-defunctorum"
+          },
+          "locator": {
+            "printed": "pp. 308–309",
+            "scan": "leaves n389–n390 / PDF pp. 390–391",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n389/mode/1up"
+          },
+          "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "944637186a14958ceebd4f58f465493ab1bf2580c60dfe848c250b770f818ce4"
+        },
+        "after": {
+          "id": "use.ordinarium.memento-defunctorum.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.memento-defunctorum"
+          },
+          "locator": {
+            "printed": "p. 308",
+            "scan": "leaf n389 / PDF p. 390",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n389/mode/1up"
+          },
+          "claim": "The cited page image prints the Memento of the dead from its opening through s01, Memento etiam, Domine to in somno pacis, with the name slots N. et N. that the witness record treats as framing.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "944637186a14958ceebd4f58f465493ab1bf2580c60dfe848c250b770f818ce4"
+        }
+      },
+      {
+        "before": {
+          "id": "use.ordinarium.panem-caelestem.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.panem-caelestem"
+          },
+          "locator": {
+            "printed": "pp. 314–315",
+            "scan": "leaves n395–n396 / PDF pp. 396–397",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n395/mode/1up"
+          },
+          "claim": "Pages 314–315 print Panem caelestem, one complete Domine, non sum dignus petition under ter dicit, and the communion formula ending animam meam. The selected reading expands that petition three times according to the rubric; three complete copies are not printed there.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "54b8eff70c464fed19219b37427a121119c904112e1a72506d92989ecd22cafd"
+        },
+        "after": {
+          "id": "use.ordinarium.panem-caelestem.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.panem-caelestem"
+          },
+          "locator": {
+            "printed": "p. 314",
+            "scan": "leaf n395 / PDF p. 396",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n395/mode/1up"
+          },
+          "claim": "The cited page image prints Panem caelestem from its opening rubric through the start of the rubric s03, Deinde parum inclinatus, which the page turn divides; the petition and the communion formula follow on p. 315.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "54b8eff70c464fed19219b37427a121119c904112e1a72506d92989ecd22cafd"
+        }
+      },
+      {
+        "before": {
+          "id": "use.ordinarium.per-ipsum.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.per-ipsum"
+          },
+          "locator": {
+            "printed": "pp. 309–310",
+            "scan": "leaves n390–n391 / PDF pp. 391–392",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n390/mode/1up"
+          },
+          "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "b83dcb2c742c348ef4eeeda4400cf167457494025228dbc34bedd489b002dbf6"
+        },
+        "after": {
+          "id": "use.ordinarium.per-ipsum.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.per-ipsum"
+          },
+          "locator": {
+            "printed": "p. 309",
+            "scan": "leaf n390 / PDF p. 391",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n390/mode/1up"
+          },
+          "claim": "The cited page image prints Per ipsum from its opening rubric through s06, omnis honor, et gloria, with the rubrics set within it.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "b83dcb2c742c348ef4eeeda4400cf167457494025228dbc34bedd489b002dbf6"
+        }
+      },
+      {
+        "before": {
+          "id": "use.ordinarium.qui-pridie.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.qui-pridie"
+          },
+          "locator": {
+            "printed": "pp. 306–307",
+            "scan": "leaves n387–n388 / PDF pp. 388–389",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n387/mode/1up"
+          },
+          "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "f0fa9f9cb03ac8959d1f1498bacc3d9f8e4fa1cc3b9b01642ee08446884c03e4"
+        },
+        "after": {
+          "id": "use.ordinarium.qui-pridie.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.qui-pridie"
+          },
+          "locator": {
+            "printed": "p. 306",
+            "scan": "leaf n387 / PDF p. 388",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n387/mode/1up"
+          },
+          "claim": "The cited page image prints Qui pridie from its opening through s09, Accipite, et manducate ex hoc omnes, with the rubrics set within it.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "f0fa9f9cb03ac8959d1f1498bacc3d9f8e4fa1cc3b9b01642ee08446884c03e4"
+        }
+      },
+      {
+        "before": {
+          "id": "use.ordinarium.unde-et-memores.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.unde-et-memores"
+          },
+          "locator": {
+            "printed": "pp. 307–308",
+            "scan": "leaves n388–n389 / PDF pp. 389–390",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n388/mode/1up"
+          },
+          "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "9d8f46853f3f5476f1620491ea99a0f212869f822bfcc646a778d18b052f64b7"
+        },
+        "after": {
+          "id": "use.ordinarium.unde-et-memores.mr1962",
+          "edition": "edition.missale-romanum.1962-typica",
+          "digital_item": "item.missale-romanum.1962-typica.ia",
+          "role": "official_text",
+          "address": {
+            "kind": "text",
+            "text": "ordinarium.unde-et-memores"
+          },
+          "locator": {
+            "printed": "p. 307",
+            "scan": "leaf n388 / PDF p. 389",
+            "page_url": "https://archive.org/details/missale-romanum-1962/page/n388/mode/1up"
+          },
+          "claim": "The cited page image prints only the rubric s01, Deinde disiunctis manibus dicit, which closes the rubric after the consecration of the chalice; the prayer begins on p. 308.",
+          "verified_on": "2026-09-25",
+          "decision": "RETAIN",
+          "evidence_sha256": "9d8f46853f3f5476f1620491ea99a0f212869f822bfcc646a778d18b052f64b7"
+        }
+      }
+    ]
+  }
+}

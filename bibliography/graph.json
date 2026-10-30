@@ -5069,12 +5069,12 @@
         "text": "orationes.cor-iesu"
       },
       "locator": {
-        "printed": "p. 520",
-        "scan": "PDF scan 541",
+        "printed": "p. 521",
+        "scan": "PDF scan 542",
         "section": "n. 675"
       },
-      "claim": "The invocation closes the prayers after low Mass and is directed to be recited three times.",
-      "verified_on": "2026-08-28",
+      "claim": "The page prints the invocation once, after the prayers after private Mass and their grant, as an addition said three times (Praeterea, si addatur ter) that carries its own indulgence.",
+      "verified_on": "2026-10-30",
       "decision": "RETAIN_WITH_CORRECTION",
       "legacy_refs": [
         "texts/orationes/cor-iesu.json#/localization/about_citations/0"
@@ -5184,7 +5184,7 @@
       },
       "locator": {
         "printed": "p. 520",
-        "scan": "scan p. 539",
+        "scan": "PDF scan 541",
         "section": "n. 675"
       },
       "claim": "The source prints and identifies Deus, refúgium nostrum.",
@@ -10717,6 +10717,27 @@
       "decision": "RETAIN"
     },
     {
+      "id": "use.ordinarium.confiteor-sacerdotis.continuation.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "ordinarium.confiteor-sacerdotis",
+        "word": "w016"
+      },
+      "locator": {
+        "printed": "p. 220",
+        "scan": "leaf n299 / PDF p. 300",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n299/mode/1up"
+      },
+      "claim": "The cited page image prints the Confiteor from Petro et Paulo (w016) to its end, after a page turn inside s02.",
+      "verified_on": "2026-10-30",
+      "decision": "RETAIN",
+      "evidence_sha256": "f2974f65b87ab6c98e437417413c181b9e10094a20a50181bd8d865abd383600",
+      "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
+    },
+    {
       "id": "use.ordinarium.confiteor-sacerdotis.handmissal-eo2025",
       "edition": "edition.extraordinaryform.handmissal-chant.2025-12-12",
       "digital_item": "item.extraordinaryform.handmissal-chant.2025-12-12.pdf",
@@ -10745,14 +10766,35 @@
         "text": "ordinarium.confiteor-sacerdotis"
       },
       "locator": {
-        "printed": "pp. 219–220",
-        "scan": "leaves n298–n299 / PDF pp. 299–300",
+        "printed": "p. 219",
+        "scan": "leaf n298 / PDF p. 299",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited page image prints the Confiteor from Confiteor Deo through sanctis Apostolis (w001–w015); the page turns inside s02, and p. 220 prints the rest.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN",
       "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55"
+    },
+    {
+      "id": "use.ordinarium.confiteor.continuation.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "word",
+        "text": "ordinarium.confiteor",
+        "word": "w016"
+      },
+      "locator": {
+        "printed": "p. 220",
+        "scan": "leaf n299 / PDF p. 300",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n299/mode/1up"
+      },
+      "claim": "The cited page image prints the rest of the celebrant’s Confiteor, from Petro et Paulo (w016) to its end, after a page turn inside s02, and the rubric that directs the ministers to repeat it with tibi, pater and te, pater in place of vobis, fratres and vos, fratres. The selected ministerial form applies those substitutions; it is not a second complete printed formula.",
+      "verified_on": "2026-10-30",
+      "decision": "RETAIN",
+      "evidence_sha256": "f2974f65b87ab6c98e437417413c181b9e10094a20a50181bd8d865abd383600",
+      "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
     },
     {
       "id": "use.ordinarium.confiteor.handmissal-eo2025",
@@ -10783,11 +10825,11 @@
         "text": "ordinarium.confiteor"
       },
       "locator": {
-        "printed": "pp. 219–220",
-        "scan": "leaves n298–n299 / PDF pp. 299–300",
+        "printed": "p. 219",
+        "scan": "leaf n298 / PDF p. 299",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n298/mode/1up"
       },
-      "claim": "The Ordo Missae prints the celebrant’s Confiteor across pp. 219–220. The rubric on p. 220 directs the ministers to repeat it with tibi, pater and te, pater in place of vobis, fratres and vos, fratres. The selected ministerial form applies those substitutions; it is not a second complete printed formula.",
+      "claim": "The cited page image prints the opening of the celebrant’s Confiteor, from Confiteor Deo through sanctis Apostolis (w001–w015), which the ministers repeat unchanged; the page turns inside s02, and p. 220 prints the rest.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN",
       "evidence_sha256": "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55"
@@ -11069,6 +11111,27 @@
       "decision_reason": "Benziger p.343 / leaf n424 explicitly directs Et dicitur Gloria in excelsis after the Vigil Introit. Retain Gloria inclusion, not a new transcription of its complete wording or a performance claim."
     },
     {
+      "id": "use.ordinarium.gloria.continuation.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "segment",
+        "text": "ordinarium.gloria",
+        "segment": "s03"
+      },
+      "locator": {
+        "printed": "p. 222",
+        "scan": "leaf n301 / PDF p. 302",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n301/mode/1up"
+      },
+      "claim": "The cited page image prints the Gloria from s03 to its end, Et in terra pax through Amen, after two more chant intonations of s02, Missa XII and XV.",
+      "verified_on": "2026-10-30",
+      "decision": "RETAIN",
+      "evidence_sha256": "b7df421df1684232436ba62e3daf3e9b14f67ee641134cc311f8344560c16749",
+      "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
+    },
+    {
       "id": "use.ordinarium.gloria.main-ordo-literal.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.ordo",
@@ -11095,11 +11158,11 @@
         "text": "ordinarium.gloria"
       },
       "locator": {
-        "printed": "pp. 221–222",
-        "scan": "leaves n300–n301 / PDF pp. 301–302",
+        "printed": "p. 221",
+        "scan": "leaf n300 / PDF p. 301",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n300/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited page image prints the opening Gloria in excelsis Deo (s02) in five chant intonations, Missa I, II, IV, IX and XI; the rubric s01 stands on p. 220 and the text from s03 on p. 222.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN",
       "evidence_sha256": "3dea429df749bd62c9a824bc2dadca1ddc74003e2c4fb93a6c2f260ffb4b89a2"
@@ -13477,6 +13540,27 @@
       "evidence_sha256": "f526d83df784b66e75624e82564087de081ba64d929da605d4038d956f23532c"
     },
     {
+      "id": "use.ordinarium.memento-defunctorum.continuation.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "segment",
+        "text": "ordinarium.memento-defunctorum",
+        "segment": "s02"
+      },
+      "locator": {
+        "printed": "p. 309",
+        "scan": "leaf n390 / PDF p. 391",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n390/mode/1up"
+      },
+      "claim": "The cited page image prints the Memento of the dead from s02 to its end: the rubric Iungit manus, orat aliquantulum, Ipsis, Domine and Per eundem Christum Dominum nostrum. Amen.",
+      "verified_on": "2026-10-30",
+      "decision": "RETAIN",
+      "evidence_sha256": "b83dcb2c742c348ef4eeeda4400cf167457494025228dbc34bedd489b002dbf6",
+      "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
+    },
+    {
       "id": "use.ordinarium.memento-defunctorum.main-ordo-literal.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.ordo",
@@ -13503,11 +13587,11 @@
         "text": "ordinarium.memento-defunctorum"
       },
       "locator": {
-        "printed": "pp. 308–309",
-        "scan": "leaves n389–n390 / PDF pp. 390–391",
+        "printed": "p. 308",
+        "scan": "leaf n389 / PDF p. 390",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n389/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited page image prints the Memento of the dead from its opening through s01, Memento etiam, Domine to in somno pacis, with the name slots N. et N. that the witness record treats as framing.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN",
       "evidence_sha256": "944637186a14958ceebd4f58f465493ab1bf2580c60dfe848c250b770f818ce4"
@@ -13786,6 +13870,27 @@
       "evidence_sha256": "c8e1c105fbccab5b133d072bcdc255ff482824182be5e53597e5d2bfbb94e3ee"
     },
     {
+      "id": "use.ordinarium.panem-caelestem.continuation.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "segment",
+        "text": "ordinarium.panem-caelestem",
+        "segment": "s04"
+      },
+      "locator": {
+        "printed": "p. 315",
+        "scan": "leaf n396 / PDF p. 397",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n396/mode/1up"
+      },
+      "claim": "The cited page image prints Panem caelestem from s04 to its end, after the end of the rubric s03, which the page turn divides: one complete Domine, non sum dignus petition under ter dicit, and the communion formula ending animam meam. The selected reading expands that petition three times according to the rubric; three complete copies are not printed there.",
+      "verified_on": "2026-10-30",
+      "decision": "RETAIN",
+      "evidence_sha256": "956e54a557421ea1276f50669ca0096cec3f5f006e63b1fcaa4002a985950944",
+      "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
+    },
+    {
       "id": "use.ordinarium.panem-caelestem.main-ordo-literal.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.ordo",
@@ -13812,11 +13917,11 @@
         "text": "ordinarium.panem-caelestem"
       },
       "locator": {
-        "printed": "pp. 314–315",
-        "scan": "leaves n395–n396 / PDF pp. 396–397",
+        "printed": "p. 314",
+        "scan": "leaf n395 / PDF p. 396",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n395/mode/1up"
       },
-      "claim": "Pages 314–315 print Panem caelestem, one complete Domine, non sum dignus petition under ter dicit, and the communion formula ending animam meam. The selected reading expands that petition three times according to the rubric; three complete copies are not printed there.",
+      "claim": "The cited page image prints Panem caelestem from its opening rubric through the start of the rubric s03, Deinde parum inclinatus, which the page turn divides; the petition and the communion formula follow on p. 315.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN",
       "evidence_sha256": "54b8eff70c464fed19219b37427a121119c904112e1a72506d92989ecd22cafd"
@@ -13968,6 +14073,27 @@
       "evidence_sha256": "d19d9834500a40f86a762522c3c99e89ffabeaba8aa3141495190b6049e70a4c"
     },
     {
+      "id": "use.ordinarium.per-ipsum.continuation.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "segment",
+        "text": "ordinarium.per-ipsum",
+        "segment": "s07"
+      },
+      "locator": {
+        "printed": "p. 310",
+        "scan": "leaf n391 / PDF p. 392",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n391/mode/1up"
+      },
+      "claim": "The cited page image prints Per ipsum from s07 to its end: the rubric Reponit hostiam, the chant setting of Per omnia saecula saeculorum and the answer Amen.",
+      "verified_on": "2026-10-30",
+      "decision": "RETAIN",
+      "evidence_sha256": "8756ec3bd389f23992a0d83d0e1654e3c33cbed7c4527167b8fa513edf55ef39",
+      "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
+    },
+    {
       "id": "use.ordinarium.per-ipsum.main-ordo-literal.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.ordo",
@@ -13994,11 +14120,11 @@
         "text": "ordinarium.per-ipsum"
       },
       "locator": {
-        "printed": "pp. 309–310",
-        "scan": "leaves n390–n391 / PDF pp. 391–392",
+        "printed": "p. 309",
+        "scan": "leaf n390 / PDF p. 391",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n390/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited page image prints Per ipsum from its opening rubric through s06, omnis honor, et gloria, with the rubrics set within it.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN",
       "evidence_sha256": "b83dcb2c742c348ef4eeeda4400cf167457494025228dbc34bedd489b002dbf6"
@@ -14826,6 +14952,28 @@
       "decision": "RETAIN_WITH_CORRECTION",
       "evidence_sha256": "89e18a856254999347a2316b6f82a1e0ebb335245443ffa09582c5ae1067824d",
       "decision_reason": "Role and scope corrected on 2026-10-04: the source is the approved Benziger Editio iuxta typicam, not the typical edition itself. The claim is limited to the printed body and its stated same-page application, excluding the imported hand-position rubric; the historical verification date and pending reviews are preserved."
+    },
+    {
+      "id": "use.ordinarium.praefatio-dialogus.hands-rubric.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "rubric_control",
+      "address": {
+        "kind": "segment",
+        "text": "ordinarium.praefatio-dialogus",
+        "segment": "s01"
+      },
+      "locator": {
+        "printed": "p. 225",
+        "scan": "leaf n304 / PDF p. 305",
+        "section": "Ordo Missae, complete Praefationem incipit rubric through Gratias agamus Domino Deo nostro",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n304/mode/1up"
+      },
+      "claim": "This separate rubric supplies s01: both hands laid on the altar at the start of the Preface and raised a little at Sursum corda, then joined before the breast with a bow of the head at Gratias agamus Domino Deo nostro. It is not printed with the dialogue on p. 286.",
+      "verified_on": "2026-10-30",
+      "evidence_sha256": "c8e1c105fbccab5b133d072bcdc255ff482824182be5e53597e5d2bfbb94e3ee",
+      "decision": "RETAIN",
+      "decision_reason": "Bounded direct page-image comparison; no witness review or whole-text acceptance is promoted."
     },
     {
       "id": "use.ordinarium.praefatio-dialogus.main-ordo-literal.do44667ff",
@@ -15792,6 +15940,27 @@
       "decision": "RETAIN"
     },
     {
+      "id": "use.ordinarium.qui-pridie.continuation.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "segment",
+        "text": "ordinarium.qui-pridie",
+        "segment": "s10"
+      },
+      "locator": {
+        "printed": "p. 307",
+        "scan": "leaf n388 / PDF p. 389",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n388/mode/1up"
+      },
+      "claim": "The cited page image prints Qui pridie from s10 to its end: the rubric Tenens ambabus manibus, Hoc est enim Corpus meum and the adoration rubric that follows.",
+      "verified_on": "2026-10-30",
+      "decision": "RETAIN",
+      "evidence_sha256": "9d8f46853f3f5476f1620491ea99a0f212869f822bfcc646a778d18b052f64b7",
+      "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
+    },
+    {
       "id": "use.ordinarium.qui-pridie.main-ordo-literal.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.ordo",
@@ -15818,11 +15987,11 @@
         "text": "ordinarium.qui-pridie"
       },
       "locator": {
-        "printed": "pp. 306–307",
-        "scan": "leaves n387–n388 / PDF pp. 388–389",
+        "printed": "p. 306",
+        "scan": "leaf n387 / PDF p. 388",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n387/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited page image prints Qui pridie from its opening through s09, Accipite, et manducate ex hoc omnes, with the rubrics set within it.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN",
       "evidence_sha256": "f0fa9f9cb03ac8959d1f1498bacc3d9f8e4fa1cc3b9b01642ee08446884c03e4"
@@ -16546,6 +16715,27 @@
       "evidence_sha256": "c4561b0c26e649908c13d4a181aae0cda0c1b35eabe807a70b825b828516a30a"
     },
     {
+      "id": "use.ordinarium.unde-et-memores.continuation.mr1962",
+      "edition": "edition.missale-romanum.1962-typica",
+      "digital_item": "item.missale-romanum.1962-typica.ia",
+      "role": "official_text",
+      "address": {
+        "kind": "segment",
+        "text": "ordinarium.unde-et-memores",
+        "segment": "s02"
+      },
+      "locator": {
+        "printed": "p. 308",
+        "scan": "leaf n389 / PDF p. 390",
+        "page_url": "https://archive.org/details/missale-romanum-1962/page/n389/mode/1up"
+      },
+      "claim": "The cited page image prints Unde et memores from s02 to its end, through Calicem salutis perpetuae, with its signing rubrics.",
+      "verified_on": "2026-10-30",
+      "decision": "RETAIN",
+      "evidence_sha256": "944637186a14958ceebd4f58f465493ab1bf2580c60dfe848c250b770f818ce4",
+      "decision_reason": "Bounded direct page-image comparison of the second leaf the primary use cites; no witness review or whole-text acceptance is promoted."
+    },
+    {
       "id": "use.ordinarium.unde-et-memores.main-ordo-literal.do44667ff",
       "edition": "edition.divinum-officium-missa.44667ff",
       "digital_item": "item.divinum-officium-missa.44667ff.ordo",
@@ -16572,11 +16762,11 @@
         "text": "ordinarium.unde-et-memores"
       },
       "locator": {
-        "printed": "pp. 307–308",
-        "scan": "leaves n388–n389 / PDF pp. 389–390",
+        "printed": "p. 307",
+        "scan": "leaf n388 / PDF p. 389",
         "page_url": "https://archive.org/details/missale-romanum-1962/page/n388/mode/1up"
       },
-      "claim": "The cited page image prints and identifies the complete 1962 liturgical component selected here; shared expansions are bounded in the witness record.",
+      "claim": "The cited page image prints only the rubric s01, Deinde disiunctis manibus dicit, which closes the rubric after the consecration of the chalice; the prayer begins on p. 308.",
       "verified_on": "2026-09-25",
       "decision": "RETAIN",
       "evidence_sha256": "9d8f46853f3f5476f1620491ea99a0f212869f822bfcc646a778d18b052f64b7"

@@ -13,6 +13,7 @@ from chant_fragment_fixture import before_chant_graph, before_chant_registry
 from foot_communion_successor_fixture import before_foot_communion_core_bytes
 from lateran_epistle_source_fixture import before_lateran_graph, before_lateran_registry
 from offertory_rubric_successor_fixture import before_offertory_core_bytes
+from ordo_notes_successor_fixture import before_ordo_notes_core_bytes, before_ordo_notes_use
 from pater_agnus_successor_fixture import before_pater_agnus_core_bytes
 from perceptio_purpose_successor_fixture import before_perceptio_core_bytes
 from quam_rationabilem_successor_fixture import before_quam_core_bytes
@@ -69,6 +70,7 @@ def assert_registered_payload(root, graph, row):
     comparison_raw = before_ordinary_agnus_core_bytes(row["text"], comparison_raw)
     comparison_raw = before_offertory_core_bytes(row["text"], comparison_raw)
     comparison_raw = before_foot_communion_core_bytes(row["text"], comparison_raw)
+    comparison_raw = before_ordo_notes_core_bytes(row["text"], comparison_raw)
     assert hashlib.sha256(comparison_raw).hexdigest() == row["core_sha256"]
     doc = json.loads(core_raw)
     actual = raw_binding.resolve_binding(path, root)
@@ -78,7 +80,8 @@ def assert_registered_payload(root, graph, row):
     assert hashlib.sha256((actual.text + "\n").encode()).hexdigest() == row["body_sha256"]
     witness = record(graph, "witnesses", row["witness_record"]["id"])
     assert witness == row["witness_record"]
-    assert before_arrow_use(record(graph, "uses", witness["use"])) == row["use_record"]
+    notes_use = before_ordo_notes_use(record(graph, "uses", witness["use"]))
+    assert before_arrow_use(notes_use) == row["use_record"]
     assert witness["review"] == {"status": "pending"}
     subject = witness_subject(root, witness, graph, doc)
     assert subject["contract"] == "witness-review-2"

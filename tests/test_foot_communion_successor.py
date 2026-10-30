@@ -19,6 +19,7 @@ from foot_communion_successor_fixture import (
     before_foot_communion_object,
     current_foot_communion_row,
 )
+from ordo_notes_successor_fixture import before_ordo_notes_bytes, before_ordo_notes_graph
 from reader_arrow_successor_fixture import before_arrow_bytes, before_arrow_graph
 
 from checks.requiem_assembly import TARGETS, target_errors
@@ -184,7 +185,8 @@ def test_successor_names_exactly_the_changed_files_and_texts():
 def test_every_changed_file_inverts_to_its_exact_predecessor(relative):
     rule = DATA["files"][relative]
     raw = (ROOT / relative).read_bytes()
-    assert hashlib.sha256(before_arrow_bytes(relative, raw)).hexdigest() == rule["after_sha256"]
+    notes_raw = before_arrow_bytes(relative, before_ordo_notes_bytes(relative, raw))
+    assert hashlib.sha256(notes_raw).hexdigest() == rule["after_sha256"]
     previous = before_foot_communion_bytes(relative, raw)
     assert hashlib.sha256(previous).hexdigest() == rule["before_sha256"] != rule["after_sha256"]
     assert before_foot_communion_bytes(relative, previous) == previous, "a chain may reach it twice"
@@ -422,7 +424,7 @@ def test_frames_keep_unrelated_faults_for_the_older_oracle():
 
 
 def test_graph_inverse_removes_only_the_new_use():
-    graph = json.loads((ROOT / "bibliography/graph.json").read_bytes())
+    graph = before_ordo_notes_graph(json.loads((ROOT / "bibliography/graph.json").read_bytes()))
     saved = deepcopy(graph)
     previous = before_foot_communion_graph(before_arrow_graph(graph))
     added = DATA["graph_use"]["row"]["id"]

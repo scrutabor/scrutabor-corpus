@@ -110,6 +110,12 @@ MARKERS = {
 # versicle, and S. and M. name officers a devotional prayer does not have
 # — the Gloria Patri said on its own has no server saying its second half.
 # What a prayer book can tell us is that a prayer is said together.
+# For the prayers after low Mass that is also printed: the Enchiridion
+# Indulgentiarum (1952), n. 675, grants its indulgence to the faithful
+# who say them "simul cum sacerdote" (p. 521) and sets their versicle
+# and response with the versicle and response signs (p. 520). That page
+# is the print basis of the omnes values of the Salve Regina, Sancte
+# Michael and Cor Iesu, beside the Ordo's O. marker they were read from.
 SPEAKER_MARKERS_ONLY = {"O"}
 
 # Rubric phrases that set the voice, longest first so that "elata
