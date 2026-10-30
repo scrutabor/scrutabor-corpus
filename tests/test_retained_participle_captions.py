@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from possessive_sweep_b3_successor_fixture import before_possessive_b3_layer
 
 from build_reader.layers import expand_core
 from checks import interlinear
@@ -259,6 +260,7 @@ def test_agency_and_anchor_mutants_are_rejected(defect):
 def test_actual_checker_rejects_membership_corruption(defect):
     row = GROUPS[1]
     core, layer, _ = load(*row[:2])
+    layer = before_possessive_b3_layer(layer)
     assert interlinear.check(expand_core(core), layer) == []
     broken = deepcopy(layer)
     group = next(g for g in broken["segments"]["s01"]["alignments"] if g["words"] == list(row[2]))

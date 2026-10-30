@@ -13,6 +13,7 @@ from english_register_successor_fixture import (
     before_english_register_prose,
     before_english_register_text_layer,
 )
+from possessive_sweep_b3_successor_fixture import before_possessive_b3_layer
 
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -88,6 +89,7 @@ def contribution(layer, wid):
 
 
 def frame_readback(core, layer, frame):
+    layer = before_possessive_b3_layer(layer)
     assert [
         word
         for segment in core["segments"]
@@ -100,6 +102,7 @@ def frame_readback(core, layer, frame):
 
 
 def preserved(layer, case):
+    layer = before_possessive_b3_layer(layer)
     layer = before_english_register_text_layer(layer, "unchanged sixth remainder")
     comparison = deepcopy(layer)
     for group in FIXTURE["groups"]:

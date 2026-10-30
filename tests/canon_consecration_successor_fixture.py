@@ -34,6 +34,10 @@ from possessive_sweep_b2_successor_fixture import (
     before_possessive_b2_bytes,
     before_possessive_b2_layer_frame,
 )
+from possessive_sweep_b3_successor_fixture import (
+    before_possessive_b3_bytes,
+    before_possessive_b3_layer_frame,
+)
 from reader_arrow_successor_fixture import before_arrow_bytes, before_arrow_object
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -51,6 +55,7 @@ def require(condition, diagnostic):
 
 def before_canon_bytes(relative, raw, diagnostic=DIAGNOSTIC):
     """Require every current byte, then restore only the declared earlier fragments."""
+    raw = before_possessive_b3_bytes(relative, raw)
     raw = before_possessive_b2_bytes(relative, raw)
     raw = before_possessive_b1_bytes(relative, raw)
     raw = before_ordo_notes_bytes(relative, raw)
@@ -170,6 +175,7 @@ def before_canon_core_frame(core, diagnostic=DIAGNOSTIC):
 
 def before_canon_layer_frame(layer, diagnostic=DIAGNOSTIC):
     """Rejoin the divided translations and narratives on a copy of a layer-shaped value."""
+    layer = before_possessive_b3_layer_frame(layer)
     layer = before_possessive_b2_layer_frame(layer)
     layer = before_possessive_b1_layer_frame(layer)
     relative = layer_relative(layer) if isinstance(layer, dict) else None

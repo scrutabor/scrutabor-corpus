@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from possessive_sweep_b3_successor_fixture import before_possessive_b3_layer
 
 from build_reader import bibliography
 from build_reader.bibliography_bindings import (
@@ -265,14 +266,15 @@ def test_stable_word_contract_rejects_regressions(prayer, change):
 @pytest.mark.parametrize("language", ["pl", "en"])
 def test_full_target_and_word_gloss_are_exact(prayer, language):
     root, _ = prayer
-    assert_target(read(root / CORE), read(root / f"languages/{language}/{CORE}"), language)
+    layer = before_possessive_b3_layer(read(root / f"languages/{language}/{CORE}"))
+    assert_target(read(root / CORE), layer, language)
 
 
 @pytest.mark.parametrize("change", ["pl-gloss", "pl-prose", "en-group", "en-prose"])
 def test_target_contract_rejects_lost_same_reference(prayer, change):
     root, _ = prayer
     language = change[:2]
-    layer = read(root / f"languages/{language}/{CORE}")
+    layer = before_possessive_b3_layer(read(root / f"languages/{language}/{CORE}"))
     segment = layer["segments"]["s01"]
     if change == "pl-gloss":
         layer["words"]["w052"]["gloss"] = "jego"

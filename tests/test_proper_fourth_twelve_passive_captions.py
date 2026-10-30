@@ -9,6 +9,7 @@ from pathlib import Path
 
 import pytest
 from english_register_successor_fixture import before_english_register_text_layer
+from possessive_sweep_b3_successor_fixture import before_possessive_b3_layer
 
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -77,6 +78,7 @@ def reviewed_control(layer, case):
 
 
 def preserved(layer, case):
+    layer = before_possessive_b3_layer(layer)
     layer = before_english_register_text_layer(layer, "unchanged contextual remainder")
     restored = deepcopy(layer)
     for row in FIXTURE["groups"]:
@@ -269,6 +271,7 @@ def test_relative_and_answer_initial_reject_then_recover(case):
 @pytest.mark.parametrize("case", CONTROLS)
 def test_neighbor_deponent_question_and_case_controls_reject_then_recover(case):
     core, layer = load(case)
+    layer = before_possessive_b3_layer(layer)
     snapshot = deepcopy(layer)
     shape(core, layer)
     reviewed_control(layer, case)

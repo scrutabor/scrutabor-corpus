@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 from english_register_successor_fixture import before_english_register_text_layer
+from possessive_sweep_b3_successor_fixture import before_possessive_b3_layer
 
 from build_reader.layers import enrich_layer, expand_core
 from checks import interlinear, language_packs, prose
@@ -120,6 +121,7 @@ def fourth_passive_comparison(layer, language):
     fixture = json.loads(
         (ROOT / "tests/fixtures/proper-fourth-twelve-passive-captions.json").read_text()
     )
+    layer = before_possessive_b3_layer(layer)
     text = "proprium.dominica-xiii-post-pentecosten-evangelium"
     case = next(
         row for row in fixture["layers"] if row["text"] == text and row["language"] == language
@@ -135,6 +137,7 @@ def fourth_passive_comparison(layer, language):
 
 
 def fifth_passive_comparison(layer, language):
+    layer = before_possessive_b3_layer(layer)
     layer = before_english_register_text_layer(layer, "fifth passive predicate")
     fixture = json.loads(
         (ROOT / "tests/fixtures/proper-fifth-twelve-passive-captions.json").read_text()
@@ -163,6 +166,7 @@ def sixth_passive_comparison(layer, language):
     fixture = json.loads(
         (ROOT / "tests/fixtures/proper-sixth-twelve-passive-captions.json").read_text()
     )
+    layer = before_possessive_b3_layer(layer)
     text = "proprium.dominica-xxiii-post-pentecosten-evangelium"
     case = next(
         row for row in fixture["layers"] if row["text"] == text and row["language"] == language
@@ -199,7 +203,7 @@ def healthy(row, core, layer):
     if row["text"] != "proprium.dominica-xiii-post-pentecosten-evangelium":
         # A later exact English register successor is undone on a copy first; the
         # current layer itself must still pass the product validators.
-        previous = before_english_register_text_layer(layer)
+        previous = before_english_register_text_layer(before_possessive_b3_layer(layer))
         if previous is not layer:
             assert language_packs.check_core(core) == []
             path = path_of(row["text"], row["language"])

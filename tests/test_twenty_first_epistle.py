@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from possessive_sweep_b3_successor_fixture import before_possessive_b3_layer
 
 from build_reader.bibliography_bindings import digest, selected_text, transcript_digest
 from build_reader.emit import Table, core_artifact, expand, language_artifact
@@ -57,7 +58,7 @@ def test_reviewed_predicate_has_one_provider(language, ids, anchor, gloss):
 @pytest.mark.parametrize("language,members,direct", [("pl", 8, 92), ("en", 4, 96)])
 def test_all_100_tokens_remain_present(language, members, direct):
     core = load(f"texts/proprium/{NAME}.json")
-    data = layer(language)
+    data = before_possessive_b3_layer(layer(language))
     ids = [w["id"] for w in core["segments"][0]["words"]]
     assert ids == [f"w{n:03}" for n in range(1, 101)]
     assert set(ids) == set(data["words"])
