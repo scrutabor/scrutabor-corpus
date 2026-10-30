@@ -24,6 +24,7 @@ from foot_communion_successor_fixture import (
     before_foot_communion_graph,
     before_foot_communion_object,
 )
+from reader_arrow_successor_fixture import before_arrow_bytes, before_arrow_object
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = json.loads(
@@ -40,6 +41,7 @@ def require(condition, diagnostic):
 
 def before_canon_bytes(relative, raw, diagnostic=DIAGNOSTIC):
     """Require every current byte, then restore only the declared earlier fragments."""
+    raw = before_arrow_bytes(relative, raw)
     rule = DATA["files"].get(relative)
     if rule is None:
         return before_foot_communion_bytes(relative, raw, diagnostic)
@@ -69,7 +71,10 @@ def before_canon_object(relative, value, diagnostic=DIAGNOSTIC):
     """Accept only the complete current file or its exact predecessor, as parsed JSON."""
     if relative not in DATA["files"]:
         return before_foot_communion_object(relative, value, diagnostic)
-    raw = before_foot_communion_bytes(relative, (ROOT / relative).read_bytes(), diagnostic)
+    value = before_arrow_object(relative, value)
+    raw = before_foot_communion_bytes(
+        relative, before_arrow_bytes(relative, (ROOT / relative).read_bytes()), diagnostic
+    )
     previous = json.loads(before_canon_bytes(relative, raw, diagnostic))
     if value == previous:
         return value

@@ -13,6 +13,7 @@ from english_register_successor_fixture import before_english_register_record_by
 from lent_easter_successor_fixture import before_lent_easter_bytes, before_lent_easter_ledger
 from polish_reader_successor_fixture import before_polish_reader_bytes, before_polish_reader_ledger
 from prayer_prose_successor_fixture import AFTER, BEFORE, before_prayer_prose_ledger
+from reader_arrow_successor_fixture import before_arrow_graph
 from requiem_successor_fixture import (
     DATA,
     before_requiem_bytes,
@@ -58,7 +59,8 @@ def test_real_current_inputs_validate_before_any_comparison_inverse():
     saved = deepcopy((graph, languages))
     assert bibliography.validate(ROOT, graph, languages) == []
     assert translation_provenance.check(ROOT)[0] == []
-    assert digest(before_canon_graph(graph)) == DATA["graph_frames"]["after"]
+    arrow_graph = before_arrow_graph(graph)
+    assert digest(before_canon_graph(arrow_graph)) == DATA["graph_frames"]["after"]
     comparison = before_requiem_graph(graph)
     assert digest(comparison) == DATA["graph_frames"]["before"]
     assert (graph, languages) == saved and comparison is not graph

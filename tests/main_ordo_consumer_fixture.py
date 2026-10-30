@@ -9,6 +9,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from reader_arrow_successor_fixture import before_arrow_graph
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = json.loads((ROOT / "tests/fixtures/main-ordo-consumer-history.json").read_bytes())
 
@@ -33,7 +35,7 @@ def before_main_ordo_records(records, text):
     """Invert only two complete named additions before the unchanged old oracle."""
     assert text in {"ordinarium.panem-caelestem", "ordinarium.praefatio-dialogus"}
     row = DATA["texts"][text]
-    result = deepcopy(records)
+    result = deepcopy(before_arrow_graph(records))
     for collection, name in (("uses", "use_record"), ("witnesses", "witness_record")):
         expected = row[name]
         matches = [item for item in result[collection] if item.get("id") == expected["id"]]

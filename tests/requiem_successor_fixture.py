@@ -11,6 +11,7 @@ from english_register_successor_fixture import before_english_register_record_by
 from foot_communion_successor_fixture import before_foot_communion_graph
 from lent_easter_successor_fixture import before_lent_easter_bytes, before_lent_easter_ledger
 from polish_reader_successor_fixture import before_polish_reader_bytes, before_polish_reader_ledger
+from reader_arrow_successor_fixture import before_arrow_graph
 
 from build_reader.bibliography_bindings import digest
 
@@ -68,7 +69,7 @@ def before_requiem_graph(value, diagnostic="exact Requiem graph additions"):
             require(rows[added["index"]] == added["row"], diagnostic)
         for added in reversed(additions):
             del rows[added["index"]]
-    return result
+    return before_arrow_graph(result)
 
 
 def before_requiem_bytes(relative, raw, diagnostic="exact Requiem comparison bytes"):

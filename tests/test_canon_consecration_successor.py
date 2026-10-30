@@ -24,6 +24,7 @@ from foot_communion_successor_fixture import (
     before_foot_communion_graph,
 )
 from quam_rationabilem_successor_fixture import before_quam_core_bytes
+from reader_arrow_successor_fixture import before_arrow_bytes, before_arrow_graph
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTERED = {
@@ -183,7 +184,7 @@ def test_successor_names_exactly_the_changed_files_and_texts():
 def test_every_changed_file_inverts_to_its_exact_predecessor(relative):
     rule = DATA["files"][relative]
     actual = (ROOT / relative).read_bytes()
-    raw = before_foot_communion_bytes(relative, actual)
+    raw = before_foot_communion_bytes(relative, before_arrow_bytes(relative, actual))
     assert hashlib.sha256(raw).hexdigest() == rule["after_sha256"]
     previous = before_canon_bytes(relative, raw)
     assert hashlib.sha256(previous).hexdigest() == rule["before_sha256"] != rule["after_sha256"]
@@ -405,7 +406,7 @@ def test_frames_keep_unrelated_faults_for_the_older_oracle():
 def test_graph_inverse_removes_only_the_new_uses():
     graph = before_foot_communion_graph(json.loads((ROOT / "bibliography/graph.json").read_bytes()))
     saved = deepcopy(graph)
-    previous = before_canon_graph(graph)
+    previous = before_canon_graph(before_arrow_graph(graph))
     added = {rule["row"]["id"] for rule in DATA["graph_uses"]}
     assert graph == saved and previous is not graph
     assert [u["id"] for u in previous["uses"]] == [

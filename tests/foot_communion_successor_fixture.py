@@ -21,6 +21,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from reader_arrow_successor_fixture import before_arrow_bytes, before_arrow_object
+
 from build_reader.bibliography_bindings import digest
 from checks.layout import formatted
 
@@ -41,6 +43,7 @@ def carries_change(rule, raw):
 
 def before_foot_communion_bytes(relative, raw, diagnostic=DIAGNOSTIC):
     """Require every current byte, then restore only the declared earlier fragments."""
+    raw = before_arrow_bytes(relative, raw)
     rule = DATA["files"].get(relative)
     if rule is None:
         return raw
@@ -71,6 +74,7 @@ def render(layout, value):
 
 def before_foot_communion_object(relative, value, diagnostic=DIAGNOSTIC):
     """Bind the complete current object, then parse its exact predecessor."""
+    value = before_arrow_object(relative, value)
     rule = DATA["files"].get(relative)
     if rule is None or "layout" not in rule:
         return value

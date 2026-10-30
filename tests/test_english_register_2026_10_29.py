@@ -29,6 +29,8 @@ from english_register_successor_fixture import (
     before_english_register_bytes,
     before_english_register_object,
 )
+from reader_arrow_successor_fixture import before_arrow_bytes
+from split_segment_uses_successor_fixture import before_split_uses_bytes
 
 from build_reader import store
 from build_reader.bibliography_bindings import digest
@@ -327,7 +329,8 @@ def test_exact_predecessor_is_reachable_and_drift_is_rejected(relative):
     previous = before_english_register_object(relative, actual)
     previous_raw = before_english_register_bytes(relative, raw)
     assert actual == saved and previous is not actual and previous != actual
-    current_raw = before_canon_bytes(relative, raw)
+    arrow_raw = before_arrow_bytes(relative, before_split_uses_bytes(relative, raw))
+    current_raw = before_canon_bytes(relative, arrow_raw)
     assert hashlib.sha256(current_raw).hexdigest() == rule["after_raw_sha256"]
     assert hashlib.sha256(previous_raw).hexdigest() == rule["before_raw_sha256"]
     assert json.loads(previous_raw) == previous

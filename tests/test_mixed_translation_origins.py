@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from reader_arrow_successor_fixture import before_arrow_use
 from test_translation_provenance import initialize_all, set_basis, set_origin, write_text
 
 from build_reader import bibliography, store
@@ -81,7 +82,11 @@ def test_lateran_reuse_keeps_its_distinct_source_and_working_state(baseline):
 
 @pytest.mark.parametrize("expected", BOUNDED_USES, ids=lambda use: use["id"])
 def test_each_received_source_keeps_its_exact_visible_scope(expected, baseline):
-    matches = [use for use in baseline["graphs"][1]["en"]["uses"] if use["id"] == expected["id"]]
+    matches = [
+        before_arrow_use(use)
+        for use in baseline["graphs"][1]["en"]["uses"]
+        if use["id"] == expected["id"]
+    ]
     assert matches == [expected]
     assert "only" in expected["locator"]["section"]
     assert expected["locator"]["section"] and expected["claim"]

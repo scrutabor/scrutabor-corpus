@@ -16,6 +16,7 @@ from offertory_rubric_successor_fixture import before_offertory_core_bytes
 from pater_agnus_successor_fixture import before_pater_agnus_core_bytes
 from perceptio_purpose_successor_fixture import before_perceptio_core_bytes
 from quam_rationabilem_successor_fixture import before_quam_core_bytes
+from reader_arrow_successor_fixture import before_arrow_use
 from requiem_successor_fixture import (
     before_ordinary_agnus_core_bytes,
     before_requiem_graph,
@@ -77,7 +78,7 @@ def assert_registered_payload(root, graph, row):
     assert hashlib.sha256((actual.text + "\n").encode()).hexdigest() == row["body_sha256"]
     witness = record(graph, "witnesses", row["witness_record"]["id"])
     assert witness == row["witness_record"]
-    assert record(graph, "uses", witness["use"]) == row["use_record"]
+    assert before_arrow_use(record(graph, "uses", witness["use"])) == row["use_record"]
     assert witness["review"] == {"status": "pending"}
     subject = witness_subject(root, witness, graph, doc)
     assert subject["contract"] == "witness-review-2"
