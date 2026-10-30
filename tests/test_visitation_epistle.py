@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 import pytest
+from possessive_sweep_b4_successor_fixture import before_possessive_b4_layer
 
 from build_reader import bibliography, emit
 from build_reader.layers import enrich_layer, expand_core
@@ -47,6 +48,7 @@ def subject(language):
 )
 def test_every_complete_construction_has_one_provider(language, groups, direct):
     core, layer = subject(language)
+    layer = before_possessive_b4_layer(layer)
     assert len(core["segments"]) == 1 and len(core["segments"][0]["words"]) == 107
     assert interlinear.check(core, layer) == []
     actual = layer["segments"]["s01"]["alignments"]

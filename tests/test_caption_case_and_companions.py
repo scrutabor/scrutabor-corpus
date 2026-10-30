@@ -25,6 +25,7 @@ from anne_epistle_fixture import opening_case
 from english_register_successor_fixture import english_register_caption_successor
 from possessive_sweep_b1_successor_fixture import possessive_b1_group
 from possessive_sweep_b2_successor_fixture import possessive_b2_group
+from possessive_sweep_b4_successor_fixture import possessive_b4_group
 from rosary_communion_fixture import rosary_opening_case
 
 from build_reader.layers import enrich_layer, expand_core
@@ -917,6 +918,13 @@ def test_first_opening_caption_rejects_predecessor_and_restores(row):
         row = (*row[:3], tuple(group["words"]), group["anchor"], gloss)
         row = (*row, tuple(change["latin"]), wrong)
     change = possessive_b2_group(row[0], row[1], row[3], row[5])
+    if change is not None:
+        # The opening case stays immutable; its word now shares the possessive's caption.
+        group, gloss = change["group"], change["group"]["gloss"]
+        wrong = (*row[7], row[5], gloss[0].lower() + gloss[1:])
+        row = (*row[:3], tuple(group["words"]), group["anchor"], gloss)
+        row = (*row, tuple(change["latin"]), wrong)
+    change = possessive_b4_group(row[0], row[1], row[3], row[5])
     if change is not None:
         # The opening case stays immutable; its word now shares the possessive's caption.
         group, gloss = change["group"], change["group"]["gloss"]

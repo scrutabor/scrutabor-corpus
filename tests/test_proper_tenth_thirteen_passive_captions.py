@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from possessive_sweep_b4_successor_fixture import before_possessive_b4_layer
 
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -161,6 +162,7 @@ def retained(layer, case):
 
 
 def preserved(layer, case):
+    layer = before_possessive_b4_layer(layer)
     comparison = deepcopy(layer)
     for g in DATA["groups"]:
         if (g["text"], g["language"]) == (case["text"], case["language"]):

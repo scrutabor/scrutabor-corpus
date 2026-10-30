@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from possessive_sweep_b4_successor_fixture import before_possessive_b4_layer
 
 from build_reader.layers import enrich_layer
 from checks.interlinear import check as check_interlinear
@@ -90,7 +91,7 @@ def test_actual_visitation_keeps_both_explicit_possessives():
     slug = "visitatio-beatae-mariae-virginis-epistola"
     text = json.loads((ROOT / "texts/proprium" / f"{slug}.json").read_bytes())
     layer = json.loads((ROOT / "languages/en/texts/proprium" / f"{slug}.json").read_bytes())
-    assert layer["words"]["w093"]["gloss"] == "your"
+    assert before_possessive_b4_layer(layer)["words"]["w093"]["gloss"] == "your"
     group = next(g for g in layer["segments"]["s01"]["alignments"] if g["anchor"] == "w094")
     assert group["words"] == ["w094", "w095", "w096"]
     assert group["gloss"] == "let your voice sound"

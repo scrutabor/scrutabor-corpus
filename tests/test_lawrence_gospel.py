@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 import pytest
+from possessive_sweep_b4_successor_fixture import before_possessive_b4_layer
 
 from build_reader import bibliography
 from checks import raw_binding, transcription, translation_provenance
@@ -93,7 +94,7 @@ def test_printed_scope_and_derived_dependency_are_distinct():
 @pytest.mark.parametrize("language,gloss", [("pl", "obumrze"), ("en", "dies")])
 @pytest.mark.parametrize("first,second", [("w018", "w019"), ("w025", "w026")])
 def test_each_death_predicate_has_one_minimal_realization(language, gloss, first, second):
-    data = layer(language)
+    data = before_possessive_b4_layer(layer(language))
     groups = data["segments"]["s01"]["alignments"]
     assert len(groups) == 2
     assert {"words": [first, second], "anchor": first, "gloss": gloss} in groups

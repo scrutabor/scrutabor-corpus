@@ -11,6 +11,7 @@ import pytest
 from english_register_successor_fixture import before_english_register_text_layer
 from negative_government_fixture import predecessor_layer, predecessor_rows
 from possessive_sweep_b3_successor_fixture import before_possessive_b3_layer
+from possessive_sweep_b4_successor_fixture import before_possessive_b4_layer
 
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -98,6 +99,7 @@ def frame_readback(core, layer, frame):
 
 
 def preserved(layer, case):
+    layer = before_possessive_b4_layer(layer)
     layer = before_possessive_b3_layer(layer)
     layer = before_english_register_text_layer(layer, "unchanged seventh remainder")
     comparison = predecessor_layer(layer, "unchanged seventh remainder")

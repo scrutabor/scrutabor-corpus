@@ -13,6 +13,7 @@ from functools import cache
 from pathlib import Path
 
 import pytest
+from possessive_sweep_b4_successor_fixture import before_possessive_b4_layer
 
 from build_reader import store
 from build_reader.bibliography_bindings import digest, selected_text, transcript_digest
@@ -128,12 +129,12 @@ def assert_gloss(doc, lay, row):
 
 @pytest.mark.parametrize("row", GLOSSES, ids=[f"{r[0]}-{r[2]}-{r[3]}" for r in GLOSSES])
 def test_selected_caption(row):
-    assert_gloss(core(row[2]), layer(row[1], row[2]), row)
+    assert_gloss(core(row[2]), before_possessive_b4_layer(layer(row[1], row[2])), row)
 
 
 @pytest.mark.parametrize("row", GLOSSES, ids=[f"{r[0]}-{r[2]}-{r[3]}" for r in GLOSSES])
 def test_predecessor_caption_is_rejected(row):
-    doc, lay = core(row[2]), layer(row[1], row[2])
+    doc, lay = core(row[2]), before_possessive_b4_layer(layer(row[1], row[2]))
     assert_gloss(doc, lay, row)
     lay["words"][row[3]]["gloss"] = row[6]
     rejects(assert_gloss, doc, lay, row, message=f"{row[0]} caption")
@@ -379,7 +380,7 @@ def assert_group_rules(doc, lay, text):
 
 @pytest.mark.parametrize("text", [GOSPEL, LM_C, LM_P, SECRET])
 def test_english_groups_are_the_smallest_natural_ones(text):
-    assert_alignments(core(text), layer("en", text), text)
+    assert_alignments(core(text), before_possessive_b4_layer(layer("en", text)), text)
 
 
 PREDECESSOR_GROUPS = {
