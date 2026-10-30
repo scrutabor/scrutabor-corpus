@@ -9,14 +9,14 @@
   "ids": {
     "next": 61,
     "segments": {
-      "next": 15
+      "next": 16
     }
   },
   "segments": [
     {
       "id": "s01",
       "type": "rubric",
-      "text": "Tunc, detecto Calice, dicit:"
+      "text": "Tunc, detecto calice, dicit:"
     },
     {
       "id": "s02",
@@ -34,7 +34,7 @@
     {
       "id": "s03",
       "type": "rubric",
-      "text": "Ambabus manibus accipit Calicem."
+      "text": "Ambabus manibus accipit calicem,"
     },
     {
       "id": "s04",
@@ -56,9 +56,18 @@
       ]
     },
     {
+      "id": "s15",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "secreto",
+      "words": [
+        { "id": "w017", "form": "item", "lemma": "item", "morph": { "pos": "adv" } }
+      ]
+    },
+    {
       "id": "s05",
       "type": "rubric",
-      "text": "Item caput inclinat."
+      "text": "Caput inclinat,"
     },
     {
       "id": "s06",
@@ -66,7 +75,6 @@
       "speaker": "sacerdos",
       "voice": "secreto",
       "words": [
-        { "id": "w017", "form": "item", "lemma": "item", "morph": { "pos": "adv" } },
         { "id": "w018", "form": "tibi", "lemma": "tu", "morph": { "pos": "pron", "case": "dat", "number": "sg" } },
         { "id": "w019", "form": "grátias", "lemma": "gratia", "morph": { "pos": "noun", "case": "acc", "number": "pl", "gender": "f", "decl": 1 } },
         { "id": "w020", "form": "agens", "post": ",", "lemma": "ago", "morph": { "pos": "verb", "case": "nom", "number": "sg", "gender": "m", "tense": "pres", "mood": "part", "voice": "act", "conj": 3 }, "head": "w021" }
@@ -75,7 +83,7 @@
     {
       "id": "s07",
       "type": "rubric",
-      "text": "Sinistra tenens Calicem, dextera signat super eum."
+      "text": "Sinistra tenens calicem, dextera signat super eum,"
     },
     {
       "id": "s08",
@@ -107,7 +115,7 @@
     {
       "id": "s10",
       "type": "rubric",
-      "text": "Profert verba consecrationis super Calicem, attente, continuate, et secrete, tenens illum parum elevatum."
+      "text": "Profert verba consecrationis super calicem, attente et continuate, tenens illum parum elevatum."
     },
     {
       "id": "s11",
@@ -142,7 +150,7 @@
     {
       "id": "s12",
       "type": "rubric",
-      "text": "Quibus verbis prolatis, deponit Calicem super Corporale, et dicens secrete:"
+      "text": "Quibus verbis prolatis, deponit calicem super corporale, et dicens:"
     },
     {
       "id": "s13",
@@ -169,20 +177,20 @@
     "status": "working-edition",
     "notes": "The consecration of the chalice, with the command to repeat it. The words of consecration are set as the approved Benziger printing prints them — Hic est enim Calix Sánguinis mei — for the reason given at Qui prídie; that edition capitalises the opening word, Calix and Sánguinis, and nothing else in the formula. CŒNÁTUM at w004 is the reading of the approved Benziger printing (p. 307). Witness do prints cenátum and witness handmissal-eo cænátum, the same word in other spellings, ruled in the apparatus. Cœnátum est is the impersonal perfect passive of ceno, after the meal had been eaten, and the gloss carries that sense. MYSTÉRIUM FÍDEI at w042-w043 stands in the nominative, taking its case from no governing word; the received reading holds it in apposition to CALIX, an older tradition hears it as an exclamation of its own — the question is old and open, and both words stand flagged for review. QUI at w044 is likewise flagged: Calix and Sánguinis are both masculine, so the form leaves the antecedent open (see the gloss note). FECÉRITIS at w056 is future perfect rather than perfect subjunctive; both analyzers offer the two, and the future indicative faciétis that answers it settles the choice.",
     "source": {
-      "method": "Verified by collation against the independent witnesses below: zero substantive divergence, apart from the orthographic variant adjudicated in the apparatus. Accidental variants adjudicated in the apparatus.",
+      "method": "Read word by word from the page image of the Benziger Brothers 1962 Editio iuxta typicam, which the Missal witness below transcribes, and collated against the other witnesses: zero substantive divergence. All accidental variants are declared in the apparatus.",
       "witnesses": "witnesses/ordinarium.simili-modo/",
       "apparatus": "witnesses/ordinarium.simili-modo/apparatus.json"
     },
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "segments": {
-      "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
-      "s03": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
-      "s05": { "analysis": { "confidence": "high", "sources": ["editorial", "do", "mr"], "review": "pending" } },
-      "s07": { "analysis": { "confidence": "high", "sources": ["editorial", "do", "mr"], "review": "pending" } },
-      "s10": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
-      "s12": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
-      "s14": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+      "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } },
+      "s03": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } },
+      "s05": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } },
+      "s07": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } },
+      "s10": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } },
+      "s12": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } },
+      "s14": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } }
     },
     "words": {
       "w031": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },

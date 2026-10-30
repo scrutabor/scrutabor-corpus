@@ -5,6 +5,7 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from canon_consecration_successor_fixture import before_canon_bytes, before_canon_object
 from perceptio_purpose_successor_fixture import before_perceptio_bytes, before_perceptio_object
 
 from build_reader.bibliography_bindings import digest
@@ -22,6 +23,7 @@ def require(condition, diagnostic):
 def before_quam_object(relative, value, diagnostic="Quam current comparison"):
     if relative not in DATA["objects"]:
         return value
+    value = before_canon_object(relative, value, diagnostic)
     value = before_perceptio_object(relative, value, diagnostic)
     rule = DATA["objects"][relative]
     require(digest(value) == rule["after_canonical_sha256"], diagnostic)
@@ -52,6 +54,7 @@ def before_quam_ledger(relative, value, diagnostic="Quam current ledger"):
 def before_quam_bytes(relative, raw, diagnostic="exact Quam comparison bytes"):
     if relative not in DATA["objects"]:
         return raw
+    raw = before_canon_bytes(relative, raw, diagnostic)
     raw = before_perceptio_bytes(relative, raw, diagnostic)
     rule = DATA["objects"][relative]
     require(hashlib.sha256(raw).hexdigest() == rule["after_raw_sha256"], diagnostic)

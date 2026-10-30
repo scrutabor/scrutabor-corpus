@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 import test_main_ordo_registrations as registrations
+from canon_consecration_successor_fixture import before_canon_object
 from english_contract_successor_fixture import (
     FILES,
     before_english_contract_bytes,
@@ -470,11 +471,12 @@ def test_composed_ledger_retains_the_two_earlier_successors():
     saved = deepcopy(actual)
     comparison = before_perceptio_ledger(rule["relative"], actual)
     assert digest(comparison) == rule["before_canonical_sha256"]
+    current = before_canon_object(rule["relative"], actual)
     register = before_english_register_object(rule["relative"], actual)
     newest = REGISTER_FILES[rule["relative"]]["object_inverse"]
     assert [
         i
-        for i, pair in enumerate(zip(actual["sites"], register["sites"], strict=True))
+        for i, pair in enumerate(zip(current["sites"], register["sites"], strict=True))
         if pair[0] != pair[1]
     ] == [operation["path"][1] for operation in newest]
     frame = before_english_contract_object(rule["relative"], register)

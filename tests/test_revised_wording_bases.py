@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import pytest
+from canon_consecration_successor_fixture import current_canon_row
 
 from build_reader import bibliography, store
 from checks import translation_provenance
@@ -94,7 +95,8 @@ def test_revised_source_has_exact_identity_scope_claim_and_unchanged_target(reco
     assert len(matches) == 1
     use = matches[0]
     assert_source_record(use, record)
-    assert baseline["recorded"][site] == record["provenance"]
+    provenance = current_canon_row(record["provenance"])
+    assert baseline["recorded"][site] == provenance
     assert record["provenance"]["origin"] == "public-domain"
     assert record["provenance"]["familiar_core"] is False
     assert record["relationship"] == "revised"
@@ -102,7 +104,7 @@ def test_revised_source_has_exact_identity_scope_claim_and_unchanged_target(reco
     current = baseline["sites"][site]
     assert current["has_wording_citations"] is True
     for field in ("source_sha256", "target_sha256"):
-        assert current[field] == record["provenance"][field]
+        assert current[field] == provenance[field]
     assert not any(error.startswith(site + ":") for error in baseline["check"][0])
 
     address = use["address"]
@@ -111,10 +113,10 @@ def test_revised_source_has_exact_identity_scope_claim_and_unchanged_target(reco
     localized = layers[language]["segments"][address["segment"]]
     assert (
         translation_provenance.canonical_hash(localized["translation"])
-        == (record["provenance"]["target_sha256"])
+        == (provenance["target_sha256"])
     )
     source = translation_provenance.source_payload(segment)
-    assert translation_provenance.canonical_hash(source) == record["provenance"]["source_sha256"]
+    assert translation_provenance.canonical_hash(source) == provenance["source_sha256"]
     decisions = bibliography.LegacyCitationDecisions(graph, packages)
     assert not decisions.has_unmapped_citation(
         f"languages/{language}/texts/{address['text'].replace('.', '/', 1)}.json",

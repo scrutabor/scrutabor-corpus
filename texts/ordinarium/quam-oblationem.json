@@ -9,7 +9,7 @@
   "ids": {
     "next": 28,
     "segments": {
-      "next": 8
+      "next": 10
     }
   },
   "segments": [
@@ -51,7 +51,7 @@
     {
       "id": "s04",
       "type": "rubric",
-      "text": "Signat semel super hostiam, et semel super calicem."
+      "text": "Signat semel super hostiam,"
     },
     {
       "id": "s05",
@@ -61,7 +61,20 @@
       "words": [
         { "id": "w015", "form": "ut", "lemma": "ut", "morph": { "pos": "conj" } },
         { "id": "w016", "form": "nobis", "lemma": "nos", "morph": { "pos": "pron", "case": "dat", "number": "pl" } },
-        { "id": "w017", "form": "Corpus", "post": ",", "lemma": "corpus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } },
+        { "id": "w017", "form": "Corpus", "post": ",", "lemma": "corpus", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "n", "decl": 3 } }
+      ]
+    },
+    {
+      "id": "s08",
+      "type": "rubric",
+      "text": "et semel super calicem,"
+    },
+    {
+      "id": "s09",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "secreto",
+      "words": [
         { "id": "w018", "form": "et", "lemma": "et", "morph": { "pos": "conj" } },
         { "id": "w019", "form": "Sanguis", "lemma": "sanguis", "morph": { "pos": "noun", "case": "nom", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w020", "form": "fiat", "lemma": "fio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "pres", "mood": "subj", "voice": "act" } },
@@ -99,9 +112,10 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "segments": {
-      "s02": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
-      "s04": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
-      "s06": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+      "s02": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } },
+      "s04": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } },
+      "s06": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } },
+      "s08": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } }
     },
     "words": {
       "w007": { "analysis": { "confidence": "high", "sources": ["editorial"], "review": "accepted" } },

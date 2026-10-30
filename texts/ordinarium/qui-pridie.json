@@ -9,15 +9,10 @@
   "ids": {
     "next": 44,
     "segments": {
-      "next": 13
+      "next": 14
     }
   },
   "segments": [
-    {
-      "id": "s01",
-      "type": "rubric",
-      "text": "Accipit hostiam."
-    },
     {
       "id": "s02",
       "type": "verse",
@@ -27,7 +22,20 @@
         { "id": "w001", "form": "Qui", "lemma": "qui", "morph": { "pos": "pron", "case": "nom", "number": "sg", "gender": "m" } },
         { "id": "w002", "form": "prídie", "lemma": "pridie", "morph": { "pos": "adv" } },
         { "id": "w003", "form": "quam", "lemma": "quam", "morph": { "pos": "conj" } },
-        { "id": "w004", "form": "paterétur", "post": ",", "lemma": "patior", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "subj", "voice": "dep", "conj": 3 } },
+        { "id": "w004", "form": "paterétur", "post": ",", "lemma": "patior", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "impf", "mood": "subj", "voice": "dep", "conj": 3 } }
+      ]
+    },
+    {
+      "id": "s01",
+      "type": "rubric",
+      "text": "Accipit hostiam."
+    },
+    {
+      "id": "s13",
+      "type": "verse",
+      "speaker": "sacerdos",
+      "voice": "secreto",
+      "words": [
         { "id": "w005", "form": "accépit", "lemma": "accipio", "morph": { "pos": "verb", "person": 3, "number": "sg", "tense": "perf", "mood": "ind", "voice": "act", "conj": 3 } },
         { "id": "w006", "form": "panem", "lemma": "panis", "morph": { "pos": "noun", "case": "acc", "number": "sg", "gender": "m", "decl": 3 } },
         { "id": "w007", "form": "in", "lemma": "in", "morph": { "pos": "prep", "governs": "acc" }, "head": "w011" },
@@ -146,12 +154,12 @@
     "analysis_defaults": { "confidence": "high", "sources": ["editorial"], "review": "pending" },
     "analysis_defaults_words": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "accepted" },
     "segments": {
-      "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
-      "s03": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
-      "s05": { "analysis": { "confidence": "high", "sources": ["editorial", "do", "mr"], "review": "pending" } },
-      "s07": { "analysis": { "confidence": "high", "sources": ["editorial", "do", "mr"], "review": "pending" } },
-      "s10": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } },
-      "s12": { "analysis": { "confidence": "high", "sources": ["editorial", "do"], "review": "pending" } }
+      "s01": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } },
+      "s03": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } },
+      "s05": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } },
+      "s07": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } },
+      "s10": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } },
+      "s12": { "analysis": { "confidence": "high", "sources": ["editorial", "mr"], "review": "pending" } }
     },
     "words": {
       "w014": { "analysis": { "confidence": "high", "sources": ["editorial", "whitakers", "collatinus"], "review": "pending" } },

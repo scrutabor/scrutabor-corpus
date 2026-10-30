@@ -20,6 +20,7 @@ from pathlib import Path
 
 import pytest
 import test_english_register as register
+from canon_consecration_successor_fixture import before_canon_bytes
 from english_register_successor_fixture import (
     ALLOWANCES,
     DATA,
@@ -326,7 +327,8 @@ def test_exact_predecessor_is_reachable_and_drift_is_rejected(relative):
     previous = before_english_register_object(relative, actual)
     previous_raw = before_english_register_bytes(relative, raw)
     assert actual == saved and previous is not actual and previous != actual
-    assert hashlib.sha256(raw).hexdigest() == rule["after_raw_sha256"]
+    current_raw = before_canon_bytes(relative, raw)
+    assert hashlib.sha256(current_raw).hexdigest() == rule["after_raw_sha256"]
     assert hashlib.sha256(previous_raw).hexdigest() == rule["before_raw_sha256"]
     assert json.loads(previous_raw) == previous
     with pytest.raises(AssertionError, match=r"^English register comparison$"):

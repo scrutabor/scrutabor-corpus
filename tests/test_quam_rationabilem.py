@@ -7,6 +7,12 @@ from pathlib import Path
 
 import pytest
 import test_main_ordo_registrations as registrations
+from canon_consecration_successor_fixture import (
+    before_canon_bytes,
+    before_canon_core_frame,
+    before_canon_layer_frame,
+    before_canon_object,
+)
 from communicantes_prose_successor_fixture import before_communicantes_ledger
 from lent_easter_successor_fixture import RULE as LENT
 from lent_easter_successor_fixture import before_lent_easter_ledger
@@ -43,6 +49,7 @@ def visible(entry):
 
 
 def assert_adopted(core, layer):
+    core, layer = before_canon_core_frame(core), before_canon_layer_frame(layer)
     segments = {s["id"]: s for s in core["segments"]}
     words = {w["id"]: w for s in core["segments"] for w in s.get("words", [])}
     assert core["id"] == DATA["text"] and len(words) == 27
@@ -262,7 +269,7 @@ def test_neutral_metadata_source_registration_inverse(monkeypatch):
     comparison = before_quam_core_bytes(DATA["text"], raw)
     old = before_quam_object(relative, core)
     assert json.loads(comparison) == old
-    assert selected_text(core) == selected_text(old)
+    assert selected_text(before_canon_object(relative, core)) == selected_text(old)
     row = next(r for r in registrations.ROWS if r["text"] == DATA["text"])
     assert hashlib.sha256(comparison).hexdigest() == row["core_sha256"]
     graph, _ = bibliography.load(ROOT)
@@ -354,10 +361,15 @@ def test_all_three_raw_and_object_inverses_keep_every_unselected_field():
         saved = deepcopy(actual)
         comparison = before_quam_object(relative, actual)
         before_raw = before_quam_bytes(relative, raw)
-        assert digest(before_perceptio_object(relative, actual)) == rule["after_canonical_sha256"]
+        assert (
+            digest(before_perceptio_object(relative, before_canon_object(relative, actual)))
+            == rule["after_canonical_sha256"]
+        )
         assert digest(comparison) == rule["before_canonical_sha256"]
         assert (
-            hashlib.sha256(before_perceptio_bytes(relative, raw)).hexdigest()
+            hashlib.sha256(
+                before_perceptio_bytes(relative, before_canon_bytes(relative, raw))
+            ).hexdigest()
             == (rule["after_raw_sha256"])
         )
         assert hashlib.sha256(before_raw).hexdigest() == rule["before_raw_sha256"]

@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from canon_consecration_successor_fixture import before_canon_graph, before_canon_object
 from documentary_successor_fixture import before_agency_ledger, before_language_successors
 from english_contract_successor_fixture import before_english_contract_record_bytes
 from english_register_successor_fixture import before_english_register_record_bytes
@@ -57,7 +58,7 @@ def test_real_current_inputs_validate_before_any_comparison_inverse():
     saved = deepcopy((graph, languages))
     assert bibliography.validate(ROOT, graph, languages) == []
     assert translation_provenance.check(ROOT)[0] == []
-    assert digest(graph) == DATA["graph_frames"]["after"]
+    assert digest(before_canon_graph(graph)) == DATA["graph_frames"]["after"]
     comparison = before_requiem_graph(graph)
     assert digest(comparison) == DATA["graph_frames"]["before"]
     assert (graph, languages) == saved and comparison is not graph
@@ -77,7 +78,7 @@ def test_direct_and_documentary_ledger_entries_share_the_same_exact_successor(la
     assert before_agency_ledger(relative, actual) is not actual
     assert before_language_successors(relative, actual) is not actual
     assert actual == saved and current is not actual
-    assert len(actual["sites"]) - len(current["sites"]) == 7
+    assert len(before_canon_object(relative, actual)["sites"]) - len(current["sites"]) == 7
 
 
 @pytest.mark.parametrize("relative", RAW_INPUTS)

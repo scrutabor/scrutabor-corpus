@@ -5,6 +5,7 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from canon_consecration_successor_fixture import before_canon_graph
 from english_contract_successor_fixture import before_english_contract_record_bytes
 from english_register_successor_fixture import before_english_register_record_bytes
 from lent_easter_successor_fixture import before_lent_easter_bytes, before_lent_easter_ledger
@@ -55,7 +56,7 @@ def before_requiem_graph(value, diagnostic="exact Requiem graph additions"):
     isolated witness/record objects, and does not claim an independent old-frame
     acceptance for arbitrary input.
     """
-    result = deepcopy(value)
+    result = deepcopy(before_canon_graph(value, diagnostic))
     for collection, additions in DATA["graph"].items():
         rows = result[collection]
         for added in additions:

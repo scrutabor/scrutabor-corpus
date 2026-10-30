@@ -6,6 +6,11 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from canon_consecration_successor_fixture import (
+    before_canon_bytes,
+    before_canon_layer,
+    before_canon_object,
+)
 from polish_contract_fixture import (
     DATA,
     LEDGER,
@@ -251,8 +256,9 @@ def test_exact_layer_inverse_restores_only_declared_fields(rule):
     raw = path.read_bytes()
     actual = json.loads(raw)
     saved = deepcopy(actual)
-    assert hashlib.sha256(raw).hexdigest() == rule["after_raw_sha256"]
-    assert digest(actual) == rule["after_canonical_sha256"]
+    current_raw = before_canon_bytes(rule["relative"], raw)
+    assert hashlib.sha256(current_raw).hexdigest() == rule["after_raw_sha256"]
+    assert digest(before_canon_layer(actual)) == rule["after_canonical_sha256"]
     before = before_polish_contract_layer(actual)
     before_raw = before_polish_contract_bytes(rule["relative"], raw)
     assert digest(before) == rule["before_canonical_sha256"]
@@ -297,8 +303,10 @@ def test_exact_ledger_inverse_restores_only_declared_rows():
     raw = (ROOT / relative).read_bytes()
     actual = json.loads(raw)
     saved = deepcopy(actual)
-    assert hashlib.sha256(raw).hexdigest() == LEDGER["after_raw_sha256"]
-    assert digest(actual) == LEDGER["after_canonical_sha256"]
+    current = before_canon_object(relative, actual)
+    current_raw = before_canon_bytes(relative, raw)
+    assert hashlib.sha256(current_raw).hexdigest() == LEDGER["after_raw_sha256"]
+    assert digest(current) == LEDGER["after_canonical_sha256"]
     before = before_polish_contract_ledger(relative, actual)
     before_raw = before_polish_contract_bytes(relative, raw)
     assert digest(before) == LEDGER["before_canonical_sha256"]
@@ -306,7 +314,7 @@ def test_exact_ledger_inverse_restores_only_declared_rows():
     assert json.loads(before_raw) == before
     assert [
         i
-        for i, pair in enumerate(zip(actual["sites"], before["sites"], strict=True))
+        for i, pair in enumerate(zip(current["sites"], before["sites"], strict=True))
         if pair[0] != pair[1]
     ] == [change["index"] for change in LEDGER["rows"]]
     assert before is not actual and actual == saved and (ROOT / relative).read_bytes() == raw

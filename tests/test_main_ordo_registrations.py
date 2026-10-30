@@ -8,6 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from canon_consecration_successor_fixture import before_canon_core_bytes
 from chant_fragment_fixture import before_chant_graph, before_chant_registry
 from lateran_epistle_source_fixture import before_lateran_graph, before_lateran_registry
 from offertory_rubric_successor_fixture import before_offertory_core_bytes
@@ -60,6 +61,7 @@ def assert_registered_payload(root, graph, row):
     core = root / ("texts/" + row["text"].replace(".", "/", 1) + ".json")
     core_raw = core.read_bytes()
     comparison_raw = before_perceptio_core_bytes(row["text"], core_raw)
+    comparison_raw = before_canon_core_bytes(row["text"], comparison_raw)
     comparison_raw = before_quam_core_bytes(row["text"], comparison_raw)
     comparison_raw = before_pater_agnus_core_bytes(row["text"], comparison_raw)
     comparison_raw = before_ordinary_agnus_core_bytes(row["text"], comparison_raw)

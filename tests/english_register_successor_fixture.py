@@ -12,6 +12,12 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from canon_consecration_successor_fixture import (
+    before_canon_bytes,
+    before_canon_layer_frame,
+    before_canon_object,
+)
+
 from build_reader.bibliography_bindings import digest
 
 DATA = json.loads(
@@ -67,6 +73,7 @@ def before_english_register_object(relative, value, diagnostic="English register
     rule = FILES.get(relative)
     if rule is None:
         return value
+    value = before_canon_object(relative, value, diagnostic)
     require(digest(value) == rule["after_canonical_sha256"], diagnostic)
     result = inverse(rule, value, diagnostic)
     require(digest(result) == rule["before_canonical_sha256"], diagnostic)
@@ -81,6 +88,7 @@ def before_english_register_frame(relative, value, project, diagnostic="English 
     rule = FILES.get(relative)
     if rule is None:
         return value
+    value = before_canon_layer_frame(value, diagnostic)
     if "after_caption_sha256" in rule:
         require(digest(project(value)) == rule["after_caption_sha256"], diagnostic)
         result = inverse(rule, value, diagnostic, caption_operation)
@@ -104,6 +112,7 @@ def before_english_register_bytes(relative, raw, diagnostic="English register co
     rule = FILES.get(relative)
     if rule is None:
         return raw
+    raw = before_canon_bytes(relative, raw, diagnostic)
     require(hashlib.sha256(raw).hexdigest() == rule["after_raw_sha256"], diagnostic)
     result = raw
     for operation in reversed(rule["raw_inverse"]):

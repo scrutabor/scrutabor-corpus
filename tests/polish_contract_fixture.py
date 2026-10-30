@@ -5,6 +5,12 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from canon_consecration_successor_fixture import (
+    before_canon_bytes,
+    before_canon_layer,
+    before_canon_object,
+)
+
 from build_reader.bibliography_bindings import digest
 
 DATA = json.loads((Path(__file__).parent / "fixtures/polish-contract-2026-10-29.json").read_bytes())
@@ -29,6 +35,7 @@ def before_polish_contract_layer(layer, diagnostic="Polish contract layer"):
     rule = TEXTS.get(layer.get("text")) if layer.get("language") == "pl" else None
     if rule is None:
         return layer
+    layer = before_canon_layer(layer, diagnostic)
     require(digest(layer) == rule["after_canonical_sha256"], diagnostic)
     result = deepcopy(layer)
     for operation in reversed(rule["operations"]):
@@ -43,6 +50,7 @@ def before_polish_contract_ledger(relative, value, diagnostic="Polish contract l
     """Bind the complete current Polish ledger, then restore the declared rows on a copy."""
     if relative != LEDGER["relative"]:
         return value
+    value = before_canon_object(relative, value, diagnostic)
     require(digest(value) == LEDGER["after_canonical_sha256"], diagnostic)
     result = deepcopy(value)
     for change in LEDGER["rows"]:
@@ -63,6 +71,7 @@ def before_polish_contract_ledger(relative, value, diagnostic="Polish contract l
 def before_polish_contract_bytes(relative, raw, diagnostic="exact Polish contract bytes"):
     """Require every current byte, then invert only the declared fragments of one file."""
     if relative == LEDGER["relative"]:
+        raw = before_canon_bytes(relative, raw, diagnostic)
         require(hashlib.sha256(raw).hexdigest() == LEDGER["after_raw_sha256"], diagnostic)
         result = raw
         for change in reversed(LEDGER["rows"]):
@@ -76,6 +85,7 @@ def before_polish_contract_bytes(relative, raw, diagnostic="exact Polish contrac
     rule = LAYERS.get(relative)
     if rule is None:
         return raw
+    raw = before_canon_bytes(relative, raw, diagnostic)
     require(hashlib.sha256(raw).hexdigest() == rule["after_raw_sha256"], diagnostic)
     result = raw
     for operation in reversed(rule["raw_operations"]):

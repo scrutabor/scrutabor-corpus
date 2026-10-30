@@ -5,6 +5,11 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from canon_consecration_successor_fixture import (
+    before_canon_bytes,
+    before_canon_layer_frame,
+    before_canon_object,
+)
 from english_psalm_caption_addendum import (
     before_psalm_caption_bytes,
     before_psalm_caption_frame,
@@ -62,6 +67,7 @@ def before_short_possessive_layer(relative, value, diagnostic="short possessive 
     value = before_psalm_caption_layer(relative, value, diagnostic)
     if relative not in LAYERS:
         return value
+    value = before_canon_object(relative, value, diagnostic)
     rule = LAYERS[relative]
     require(digest(value) == rule["after_canonical_sha256"], diagnostic)
     require(digest(caption_frame(value)) == rule["after_caption_sha256"], diagnostic)
@@ -77,6 +83,7 @@ def before_short_possessive_caption_frame(
     value = before_psalm_caption_frame(relative, value, caption_frame, diagnostic)
     if relative not in LAYERS:
         return value
+    value = before_canon_layer_frame(value, diagnostic)
     rule = LAYERS[relative]
     require(digest(caption_frame(value)) == rule["after_caption_sha256"], diagnostic)
     result = inverse_groups(rule, value, diagnostic)
@@ -89,6 +96,7 @@ def before_short_possessive_bytes(relative, raw, diagnostic="short possessive cu
     raw = before_psalm_caption_bytes(relative, raw, diagnostic)
     if relative not in LAYERS:
         return raw
+    raw = before_canon_bytes(relative, raw, diagnostic)
     rule = LAYERS[relative]
     require(hashlib.sha256(raw).hexdigest() == rule["after_raw_sha256"], diagnostic)
     result = raw
