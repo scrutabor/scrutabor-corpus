@@ -13,6 +13,11 @@ from english_contract_successor_fixture import (
     before_english_contract_object,
     before_english_contract_prose,
 )
+from english_register_successor_fixture import FILES as REGISTER_FILES
+from english_register_successor_fixture import (
+    before_english_register_bytes,
+    before_english_register_object,
+)
 from perceptio_purpose_successor_fixture import (
     DATA,
     before_perceptio_bytes,
@@ -392,8 +397,12 @@ def test_finite_full_raw_and_object_inverse_keeps_actual_current_input(kind):
     comparison_raw = before_perceptio_bytes(rule["relative"], raw)
     assert actual == saved and comparison is not actual
     # The Perceptio frame is the exact predecessor of the later English successor.
-    frame = before_english_contract_object(rule["relative"], actual)
-    frame_raw = before_english_contract_bytes(rule["relative"], raw)
+    frame = before_english_contract_object(
+        rule["relative"], before_english_register_object(rule["relative"], actual)
+    )
+    frame_raw = before_english_contract_bytes(
+        rule["relative"], before_english_register_bytes(rule["relative"], raw)
+    )
     assert (frame is actual) is (kind == "core") and actual == saved
     assert digest(frame) == rule["after_canonical_sha256"]
     assert hashlib.sha256(frame_raw).hexdigest() == rule["after_raw_sha256"]
@@ -461,11 +470,18 @@ def test_composed_ledger_retains_the_two_earlier_successors():
     saved = deepcopy(actual)
     comparison = before_perceptio_ledger(rule["relative"], actual)
     assert digest(comparison) == rule["before_canonical_sha256"]
-    frame = before_english_contract_object(rule["relative"], actual)
+    register = before_english_register_object(rule["relative"], actual)
+    newest = REGISTER_FILES[rule["relative"]]["object_inverse"]
+    assert [
+        i
+        for i, pair in enumerate(zip(actual["sites"], register["sites"], strict=True))
+        if pair[0] != pair[1]
+    ] == [operation["path"][1] for operation in newest]
+    frame = before_english_contract_object(rule["relative"], register)
     later = FILES[rule["relative"]]["object_inverse"]
     assert [
         i
-        for i, pair in enumerate(zip(actual["sites"], frame["sites"], strict=True))
+        for i, pair in enumerate(zip(register["sites"], frame["sites"], strict=True))
         if pair[0] != pair[1]
     ] == [operation["path"][1] for operation in later]
     assert [

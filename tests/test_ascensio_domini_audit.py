@@ -26,6 +26,7 @@ from ascension_postcommunion_wording import (
     current_verse_phrase,
     is_current_postcommunion_subject,
 )
+from english_register_successor_fixture import before_english_register_allowance_frame
 from provenance_successor_fixture import assert_protection_scope
 
 from build_reader import store
@@ -1432,6 +1433,8 @@ CONTEXTUAL_NAME_PREDECESSOR_SHA = "9e6c2beb04abe121c2ecdc8cd955c937e905301bcf0b2
 
 
 def assert_legacy_inventory(fixture):
+    # The later register successor retired eight exact allowances; restore them first.
+    fixture = before_english_register_allowance_frame(fixture, "retired legacy allowance")
     # Later complete wording revisions retired only these exact allowance records.
     records = deepcopy(fixture["records"])
     assert not any(row["text"] == REMOVED_PRECIOUS_BLOOD_ALLOWANCE["text"] for row in records), (

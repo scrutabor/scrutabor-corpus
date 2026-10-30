@@ -158,7 +158,54 @@ PSALM_CAUSE_TARGETS = {
 assert len(PSALM_CAUSE_TARGETS) == 1
 for _site, (_before, _after) in PSALM_CAUSE_TARGETS.items():
     assert LABELS[_site]["target_sha256"] == _before
-EXACT_WORDING_TARGETS = {**CONTEXTUAL_NAME_TARGETS, **ALL_SOULS_TARGETS, **PSALM_CAUSE_TARGETS}
+# The contemporary register prose supersedes its snapshot by exact hash only.
+REGISTER_TARGETS = {
+    "proprium.cathedra-sancti-petri-offertorium.s01.en": (
+        "fee56bf468f348c13561128b76f8183269496bf040e36bd14f4671e4d48b66bc",
+        "0834080900d5468a3367b01e7b0e35d27491cb682892d7a0c1d084f42e32709e",
+    ),
+    "proprium.corporis-christi-alleluia.s02.en": (
+        "4da9be47197dfa68c7a93392eddae2c4658e15b1a76483c6959e0eecba18ed36",
+        "8c5fb501d63c87e20e15f4eb4cea4db37765a29eb2652ac625bc68127f1bcef7",
+    ),
+    "proprium.corporis-christi-communio.s01.en": (
+        "1015ab9338d118a2bd6eeab3486d43d16124d709609f447840cc872c0e694220",
+        "95e0dfabf13b41eddb797918e02fe8f9d0d2cfa31e4348e148158201f50ff046",
+    ),
+    "proprium.nativitas-sancti-ioannis-baptistae-alleluia.s01.en": (
+        "9c681ecbf04ebab3b312b23b65d4b4308ca24153362a372bf977201e387616f0",
+        "dd46fdaccab18f8c5358ca03e2a697a6faad4953ded768528cc0cfe0b2120bda",
+    ),
+    "proprium.nativitas-sancti-ioannis-baptistae-communio.s01.en": (
+        "98a2d2ad9eeb0abcb0b1dbf3c9b1f746b1f9e2c64d16948cf172fc3303384ba6",
+        "6ac4256e7129bd53b645cf6c70d7cd8a9e0fdd0213e507d458588eea14bbf3ac",
+    ),
+    "proprium.omnium-sanctorum-communio.s01.en": (
+        "dbc407d3328112b1a000626eafc1095a1281a4648809269c09fd19b7e681ab63",
+        "05977bea3c1e89d8659fca289a072b46e2a28a76faf0f27143c8ce1562e04623",
+    ),
+    "proprium.sacratissimi-cordis-iesu-alleluia.s02.en": (
+        "e9a31e3206052b9d2f2d05e9ae85950f61344c9b37bea88dbe11353b8f3f3541",
+        "8429d410d766e35e6d017bd6eef98496788533eed972d22c3d5574c2e356aff6",
+    ),
+    "proprium.sacratissimi-cordis-iesu-introitus.s02.en": (
+        "e6fc963a7de7d075b32d106a090d6c7c91e101b2bf61afc125f8ed8e88a292f2",
+        "ccfe3c379d46c75ff2572e8866201104e9da01807142771a2581d81bf079cda9",
+    ),
+    "proprium.sancti-iacobi-apostoli-communio.s01.en": (
+        "afb178d7825a762af0be6fc0a36448f4e40d946135a76cc91bea0dece5a67974",
+        "3488c704976a17cba3180cdf80dd90fa2e9d778e0b9a9d5a218f3f8d659e5097",
+    ),
+}
+assert len(REGISTER_TARGETS) == 9
+for _site, (_before, _after) in REGISTER_TARGETS.items():
+    assert LABELS[_site]["target_sha256"] == _before
+EXACT_WORDING_TARGETS = {
+    **REGISTER_TARGETS,
+    **CONTEXTUAL_NAME_TARGETS,
+    **ALL_SOULS_TARGETS,
+    **PSALM_CAUSE_TARGETS,
+}
 SITES = sorted(LABELS)
 SAMPLE = FIXTURE["wording_sample"]
 DOXOLOGY = FIXTURE["doxology_uses"]

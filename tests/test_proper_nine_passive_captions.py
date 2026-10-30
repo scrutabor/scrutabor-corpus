@@ -9,6 +9,10 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from english_register_successor_fixture import (
+    before_english_register_ledger,
+    before_english_register_text_layer,
+)
 from iste_gender_fixture import before_iste_gender
 from marian_gospel_fixture import predecessor_core, predecessor_layer, predecessor_row
 
@@ -63,6 +67,7 @@ def group_in(layer, case):
 
 
 def preserved(layer, case):
+    layer = before_english_register_text_layer(layer, "unchanged passive-layer remainder")
     restored = predecessor_layer(layer)
     for group_case in FIXTURE["groups"]:
         if (group_case["text"], group_case["language"]) == (case["text"], case["language"]):
@@ -98,9 +103,9 @@ def test_complete_layers_preserve_context_and_reader_roundtrip(case):
     shape(core, layer)
     assert canonical_hash(predecessor_core(core)) == case["core_sha256"]
     preserved(layer, case)
-    ledger = json.loads(
-        (ROOT / "languages" / case["language"] / "translation-provenance.json").read_text()
-    )
+    relative = f"languages/{case['language']}/translation-provenance.json"
+    # A later exact English register successor is undone on a copy first.
+    ledger = before_english_register_ledger(relative, json.loads((ROOT / relative).read_text()))
     assert [predecessor_row(row) for row in ledger["sites"] if row["text"] == case["text"]] == case[
         "provenance"
     ]

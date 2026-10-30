@@ -9,6 +9,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from english_register_successor_fixture import before_english_register_text_layer
 
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -71,6 +72,7 @@ def reviewed_keep(layer, case):
 
 
 def preserved(layer, case):
+    layer = before_english_register_text_layer(layer, "unchanged contextual remainder")
     restored = deepcopy(layer)
     for row in FIXTURE["groups"]:
         if (row["text"], row["language"]) == (case["text"], case["language"]):

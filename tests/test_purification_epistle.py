@@ -5,9 +5,11 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from english_register_successor_fixture import before_english_register_text_layer
 
 from build_reader import bibliography, store
 from build_reader.bibliography_bindings import collation_subject, witness_subject
+from build_reader.layers import enrich_layer
 from checks import english, interlinear, polish
 from checks.raw_binding import resolve_binding
 from checks.translation_provenance import canonical_hash, source_payload
@@ -64,7 +66,12 @@ def line(doc, layer):
 def test_selected_complete_line(language):
     doc, layers = store.load(ROOT, TEXT)
     assert not interlinear.check(doc, layers[language])
-    assert line(doc, layers[language]) == LINES[language].split(" | ")
+    # A later exact English register successor is undone on a copy first.
+    previous = enrich_layer(
+        store.core(ROOT, TEXT),
+        before_english_register_text_layer(store.raw_layer(ROOT, language, TEXT)),
+    )
+    assert line(doc, previous) == LINES[language].split(" | ")
 
 
 def test_selected_english_groups_and_no_polish_group():

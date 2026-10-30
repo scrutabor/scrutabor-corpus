@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from english_register_successor_fixture import before_english_register_prose
 
 from build_reader.layers import expand_core
 from checks import interlinear
@@ -132,6 +133,12 @@ def test_english_conclusion_uses_one_contemporary_register():
         "w038": "reigns",
     }
     assert data["segments"]["s01"]["translation"].endswith(
+        "Through our Lord Jesus Christ, Your Son, who lives and reigns with You "
+        "in the unity of the Holy Spirit, God, forever and ever."
+    )
+    # The earlier spacing is reached only through the exact register successor.
+    previous = before_english_register_prose(TEXT, {"s01": data["segments"]["s01"]["translation"]})
+    assert previous["s01"].endswith(
         "Through our Lord Jesus Christ, Your Son, who lives and reigns with You "
         "in the unity of the Holy Spirit, God, for ever and ever."
     )

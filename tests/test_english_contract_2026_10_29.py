@@ -21,6 +21,11 @@ from english_contract_successor_fixture import (
     before_english_contract_bytes,
     before_english_contract_object,
 )
+from english_register_successor_fixture import (
+    before_english_register_bytes,
+    before_english_register_ledger,
+    before_english_register_object,
+)
 
 from build_reader import store
 from build_reader.layers import enrich_layer, expand_core
@@ -139,8 +144,17 @@ def latin(core, segment_id):
 
 
 def ledger():
-    path = ROOT / "languages/en/translation-provenance.json"
-    return {row["site"]: row for row in json.loads(path.read_bytes())["sites"]}
+    # The later English register successor is undone on a copy; its module pins the rest.
+    relative = "languages/en/translation-provenance.json"
+    current = before_english_register_ledger(relative, json.loads((ROOT / relative).read_bytes()))
+    return {row["site"]: row for row in current["sites"]}
+
+
+def register_uses():
+    """English source records with the later register successor undone on a copy."""
+    relative = "languages/en/bibliography.json"
+    current = json.loads((ROOT / relative).read_bytes())
+    return before_english_register_object(relative, current)["uses"]
 
 
 def conclusion_errors(text, layer):
@@ -262,7 +276,7 @@ def test_psalm_cause_clause_and_caption_group():
 def test_normalized_conclusions_keep_a_retained_page_basis():
     relationships = store.translation_relationships(ROOT, "en")
     assert {site: relationships[site] for site in RELATIONSHIPS} == RELATIONSHIPS
-    uses = json.loads((ROOT / "languages/en/bibliography.json").read_bytes())["uses"]
+    uses = register_uses()
     for text, segment in (("ordinarium.per-ipsum", "s08"), ("ordinarium.libera-nos", "s12")):
         retained = [
             use
@@ -279,7 +293,7 @@ def test_normalized_conclusions_keep_a_retained_page_basis():
 @pytest.mark.parametrize("text", sorted(PROSE))
 def test_source_records_quote_the_current_wording(text):
     segment, expected = PROSE[text]
-    uses = json.loads((ROOT / "languages/en/bibliography.json").read_bytes())["uses"]
+    uses = register_uses()
     quotes = 0
     for use in uses:
         if use["address"] != {"kind": "segment", "text": text, "segment": segment}:
@@ -360,7 +374,9 @@ def test_split_cause_caption_is_rejected_and_recovers():
 @pytest.mark.parametrize("relative", sorted(FILES))
 def test_exact_predecessor_is_reachable_and_drift_is_rejected(relative):
     rule = FILES[relative]
-    raw = (ROOT / relative).read_bytes()
+    current = (ROOT / relative).read_bytes()
+    # The later English register successor is undone first; its own module pins the rest.
+    raw = before_english_register_bytes(relative, current)
     actual = json.loads(raw)
     saved = deepcopy(actual)
     previous = before_english_contract_object(relative, actual)
@@ -374,4 +390,4 @@ def test_exact_predecessor_is_reachable_and_drift_is_rejected(relative):
     with pytest.raises(AssertionError, match=r"^English contract comparison bytes$"):
         before_english_contract_bytes(relative, raw + b" ")
     assert before_english_contract_object(relative, actual) == previous
-    assert (ROOT / relative).read_bytes() == raw
+    assert (ROOT / relative).read_bytes() == current

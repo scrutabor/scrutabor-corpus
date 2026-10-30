@@ -22,6 +22,7 @@ from pathlib import Path
 
 import pytest
 from anne_epistle_fixture import opening_case
+from english_register_successor_fixture import english_register_caption_successor
 from rosary_communion_fixture import rosary_opening_case
 
 from build_reader.layers import enrich_layer, expand_core
@@ -902,6 +903,10 @@ def test_first_opening_caption_rejects_predecessor_and_restores(row):
         )
         after = "trwając we wspólnocie"
         row = (*row[:5], after, row[6], (*row[7], "zjednoczeni", after[0].upper() + after[1:]))
+    successor = english_register_caption_successor(row[0], row[1], row[3], row[5])
+    if successor is not None:
+        # The opening case stays immutable; its expected caption has a register successor.
+        row = (*row[:5], successor, row[6], (*row[7], row[5], successor[0].lower() + successor[1:]))
     saved = deepcopy(layer)
     pin = row[:7]
     assert caption_diagnostics(pin, core, layer) == []

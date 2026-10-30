@@ -9,6 +9,10 @@ from english_contract_successor_fixture import (
     before_english_contract_bytes,
     before_english_contract_object,
 )
+from english_register_successor_fixture import (
+    before_english_register_bytes,
+    before_english_register_object,
+)
 
 from build_reader.bibliography_bindings import digest
 
@@ -27,6 +31,7 @@ def before_perceptio_object(relative, value, diagnostic="Perceptio current compa
     rules = {rule["relative"]: rule for rule in DATA["files"].values()}
     if relative not in rules:
         return value
+    value = before_english_register_object(relative, value, diagnostic)
     value = before_english_contract_object(relative, value, diagnostic)
     rule = rules[relative]
     require(digest(value) == rule["after_canonical_sha256"], diagnostic)
@@ -55,6 +60,7 @@ def before_perceptio_bytes(relative, raw, diagnostic="exact Perceptio comparison
     rules = {rule["relative"]: rule for rule in DATA["files"].values()}
     if relative not in rules:
         return raw
+    raw = before_english_register_bytes(relative, raw, diagnostic)
     raw = before_english_contract_bytes(relative, raw, diagnostic)
     rule = rules[relative]
     require(hashlib.sha256(raw).hexdigest() == rule["after_raw_sha256"], diagnostic)

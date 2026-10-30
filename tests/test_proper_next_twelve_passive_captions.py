@@ -10,6 +10,7 @@ from pathlib import Path
 
 import pytest
 from english_contract_successor_fixture import before_english_contract_text_layer
+from english_register_successor_fixture import before_english_register_text_layer
 from michael_epistle_fixture import predecessor_core, predecessor_layer, predecessor_row
 from palm_tract_fixture import predecessor_palm_layer, predecessor_palm_rows
 from polish_contract_fixture import before_polish_contract_layer, before_polish_contract_ledger
@@ -80,6 +81,7 @@ def reviewed_scalar(layer):
 
 
 def preserved(layer, case):
+    layer = before_english_register_text_layer(layer, "unchanged contextual remainder")
     layer = before_polish_contract_layer(layer, "unchanged contextual remainder")
     restored = predecessor_palm_layer(layer)
     for row in FIXTURE["groups"]:

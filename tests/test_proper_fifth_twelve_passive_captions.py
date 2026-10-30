@@ -8,6 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from english_register_successor_fixture import before_english_register_text_layer
 
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -95,6 +96,7 @@ def frame_readback(core, layer, frame):
 
 
 def preserved(layer, case):
+    layer = before_english_register_text_layer(layer, "unchanged fifth remainder")
     comparison = deepcopy(layer)
     for group in FIXTURE["groups"]:
         if (group["text"], group["language"]) == (case["text"], case["language"]):

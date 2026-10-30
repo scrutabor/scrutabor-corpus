@@ -8,6 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from english_register_successor_fixture import before_english_register_text_layer
 from negative_government_fixture import predecessor_layer, predecessor_rows
 
 from build_reader import emit, store
@@ -96,6 +97,7 @@ def frame_readback(core, layer, frame):
 
 
 def preserved(layer, case):
+    layer = before_english_register_text_layer(layer, "unchanged seventh remainder")
     comparison = predecessor_layer(layer, "unchanged seventh remainder")
     for group in FIXTURE["groups"]:
         if (group["text"], group["language"]) == (case["text"], case["language"]):

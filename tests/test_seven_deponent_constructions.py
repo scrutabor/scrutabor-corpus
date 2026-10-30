@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from english_register_successor_fixture import before_english_register_text_layer
 
 from build_reader.layers import enrich_layer, expand_core
 from checks import interlinear, language_packs, prose
@@ -134,6 +135,7 @@ def fourth_passive_comparison(layer, language):
 
 
 def fifth_passive_comparison(layer, language):
+    layer = before_english_register_text_layer(layer, "fifth passive predicate")
     fixture = json.loads(
         (ROOT / "tests/fixtures/proper-fifth-twelve-passive-captions.json").read_text()
     )
@@ -195,7 +197,16 @@ def healthy(row, core, layer):
         historical_healthy(row, core, sixth_passive_comparison(layer, row["language"]))
         return
     if row["text"] != "proprium.dominica-xiii-post-pentecosten-evangelium":
-        historical_healthy(row, core, layer)
+        # A later exact English register successor is undone on a copy first; the
+        # current layer itself must still pass the product validators.
+        previous = before_english_register_text_layer(layer)
+        if previous is not layer:
+            assert language_packs.check_core(core) == []
+            path = path_of(row["text"], row["language"])
+            assert language_packs.check_layer(core, layer, path) == []
+            assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
+            assert prose.check(layer) == []
+        historical_healthy(row, core, previous)
         return
     assert language_packs.check_core(core) == []
     assert language_packs.check_layer(core, layer, path_of(row["text"], row["language"])) == []
