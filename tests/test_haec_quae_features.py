@@ -217,7 +217,7 @@ def test_actual_corpus_class_and_local_ambiguity_are_not_silently_neuter():
                         "w035",
                     ):
                         assert word["morph"].get("gender") in {"f", "n"}
-    assert count == 351
+    assert count == 352  # 352 with Adoro te devote s02 w006 (Quæ), added 2026-11-01
     assert new_seen == set(NEW_CONTEXTS)
     doc = json.loads(
         (root / "texts/proprium/dominica-iv-in-quadragesima-epistola.json").read_text()

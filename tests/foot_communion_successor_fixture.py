@@ -21,6 +21,11 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from adoro_te_devote_successor_fixture import (
+    before_adoro_bytes,
+    before_adoro_graph,
+    before_adoro_object,
+)
 from caption_followups_successor_fixture import (
     before_followups_bytes,
     before_followups_layer,
@@ -73,6 +78,7 @@ def carries_change(rule, raw):
 
 def before_foot_communion_bytes(relative, raw, diagnostic=DIAGNOSTIC):
     """Require every current byte, then restore only the declared earlier fragments."""
+    raw = before_adoro_bytes(relative, raw)
     raw = before_followups_bytes(relative, raw)
     raw = before_possessive_b4_bytes(relative, raw)
     raw = before_possessive_b3_bytes(relative, raw)
@@ -110,6 +116,7 @@ def render(layout, value):
 
 def before_foot_communion_object(relative, value, diagnostic=DIAGNOSTIC):
     """Bind the complete current object, then parse its exact predecessor."""
+    value = before_adoro_object(relative, value)
     value = before_followups_object(relative, value)
     value = before_possessive_b4_object(relative, value)
     value = before_possessive_b3_object(relative, value)
@@ -186,7 +193,7 @@ def before_foot_communion_layer_frame(layer, diagnostic=DIAGNOSTIC):
 
 def before_foot_communion_graph(value, diagnostic=GRAPH_DIAGNOSTIC):
     """Remove the exact new use; every other record stays for the older guards."""
-    value = before_ordo_notes_graph(value)
+    value = before_ordo_notes_graph(before_adoro_graph(value))
     rule = DATA["graph_use"]
     rows = value["uses"]
     indices = [i for i, row in enumerate(rows) if row.get("id") == rule["row"]["id"]]

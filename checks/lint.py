@@ -538,6 +538,11 @@ STRESS_EXEMPT: dict[str, str] = {
     # stands on the antepenult; the syllabifier cannot know that and counts
     # the i as a vowel.
     "béniamin": "printed MR 1962 pp. 15 and 718; consonantal i (Ben-ia-min)",
+    # Printed súbiicit in the Rhythmus S. Thomae Aquinatis (MR 1962 p. lxx).
+    # A compound of iacio: sub + iicit, whose first i is the consonant
+    # (the 1961 Liber Usualis sets súbjicit), so the mark
+    # stands on the antepenult; the syllabifier counts that i as a vowel.
+    "súbiicit": "printed MR 1962 p. lxx; consonantal i (sub-ii-cit, compound of iacio)",
 }
 
 # Who a narrative may be about. Naming one of these in the opening sentence

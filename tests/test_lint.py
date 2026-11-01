@@ -702,11 +702,12 @@ class TestStressPosition:
     def test_the_exemption_table_holds_only_printed_forms(self):
         # Its first candidate, indúimini, was a transcription error the rule
         # itself exposed: the 600 dpi page image prints induímini, the accent
-        # on the antepenult. The one entry is a printed form whose consonantal
+        # on the antepenult. Each entry is a printed form whose consonantal
         # i the syllabifier cannot see; any other violating form is an error
         # unless someone names its page here.
-        assert set(STRESS_EXEMPT) == {"béniamin"}
+        assert set(STRESS_EXEMPT) == {"béniamin", "súbiicit"}
         assert stress_position("w030: 'Béniamin'", "Béniamin") == []
+        assert stress_position("w017: 'súbiicit'", "súbiicit") == []
         assert stress_position("w054: 'indúimini'", "indúimini") != []
 
 

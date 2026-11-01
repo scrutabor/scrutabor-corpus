@@ -7,6 +7,7 @@ from pathlib import Path
 
 import documentary_successor_fixture as documentary
 import pytest
+from adoro_te_devote_successor_fixture import before_adoro_object
 from communicantes_prose_successor_fixture import (
     before_communicantes_bytes,
     before_communicantes_ledger,
@@ -326,4 +327,5 @@ def test_native_provenance_guard_sees_actual_bad_target_and_recovers(monkeypatch
         row.update(deepcopy(original))
     assert recorded[site] is row and row == original and recorded == saved
     assert translation_provenance.check(ROOT)[0] == []
-    assert read(RULE["relative"])["sites"][RULE["index"]] == row
+    ledger = before_adoro_object(RULE["relative"], read(RULE["relative"]))
+    assert ledger["sites"][RULE["index"]] == row

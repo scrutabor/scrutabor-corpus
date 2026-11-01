@@ -7,6 +7,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from adoro_te_devote_successor_fixture import before_adoro_bytes
 from ordo_notes_successor_fixture import (
     ADDED,
     CHANGED,
@@ -163,7 +164,8 @@ def test_successor_names_exactly_the_changed_files_and_texts():
 @pytest.mark.parametrize("relative", sorted(DATA["files"]))
 def test_every_changed_file_inverts_to_its_exact_predecessor(relative):
     rule = DATA["files"][relative]
-    raw = (ROOT / relative).read_bytes()
+    actual_raw = (ROOT / relative).read_bytes()
+    raw = before_adoro_bytes(relative, actual_raw)
     assert sha(raw) == rule["after_sha256"]
     previous = before_ordo_notes_bytes(relative, raw)
     assert sha(previous) == rule["before_sha256"] != rule["after_sha256"]
@@ -175,7 +177,7 @@ def test_every_changed_file_inverts_to_its_exact_predecessor(relative):
         assert current == saved, "the actual object is never rewritten"
         older = json.loads(previous)
         assert before_ordo_notes_object(relative, older) is older
-    assert (ROOT / relative).read_bytes() == raw, "the actual source is never rewritten"
+    assert (ROOT / relative).read_bytes() == actual_raw, "the actual source is never rewritten"
 
 
 @pytest.mark.parametrize("text", TEXTS)

@@ -19,6 +19,7 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from adoro_te_devote_successor_fixture import before_adoro_bytes
 from caption_followups_successor_fixture import (
     before_followups_bytes,
     before_followups_layer,
@@ -63,6 +64,7 @@ def require(condition, diagnostic):
 
 def before_canon_bytes(relative, raw, diagnostic=DIAGNOSTIC):
     """Require every current byte, then restore only the declared earlier fragments."""
+    raw = before_adoro_bytes(relative, raw)
     raw = before_followups_bytes(relative, raw)
     raw = before_possessive_b4_bytes(relative, raw)
     raw = before_possessive_b3_bytes(relative, raw)

@@ -7,6 +7,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from adoro_te_devote_successor_fixture import before_adoro_bytes
 from communicantes_prose_successor_fixture import (
     DATA,
     before_communicantes_bytes,
@@ -125,7 +126,9 @@ def restore(actual, saved):
 def test_current_full_context_keeps_human_controller_and_all_source_roles():
     core, layer = current()
     rule = DATA["ledger"]
-    ledger = json.loads((ROOT / rule["relative"]).read_bytes())
+    ledger = json.loads(
+        before_adoro_bytes(rule["relative"], (ROOT / rule["relative"]).read_bytes())
+    )
     assert ledger["sites"][rule["index"]] == rule["after"]
     assert canonical_hash(layer["segments"]["s01"]["translation"]) == rule["after"]["target_sha256"]
     assert rule["before"]["source_sha256"] == rule["after"]["source_sha256"]

@@ -7,6 +7,7 @@ from pathlib import Path
 
 import documentary_successor_fixture as documentary
 import pytest
+from adoro_te_devote_successor_fixture import before_adoro_bytes
 from polish_contract_fixture import (
     before_polish_contract_bytes,
     before_polish_contract_ledger,
@@ -445,7 +446,7 @@ def test_exact_polish_ledger_inverse_recovers_all_prior_frames():
     ids=[f"{change['id']}-{fault}" for change, fault in LEDGER_FAULTS],
 )
 def test_current_ledger_drift_rejects_and_recovers_same_objects(change, fault):
-    raw = (ROOT / RULE["relative"]).read_bytes()
+    raw = before_adoro_bytes(RULE["relative"], (ROOT / RULE["relative"]).read_bytes())
     actual = json.loads(raw)
     saved, same_input = deepcopy(actual), actual
     sites, index = actual["sites"], change["index"]
@@ -497,8 +498,8 @@ def test_current_ledger_drift_rejects_and_recovers_same_objects(change, fault):
 )
 def test_native_provenance_sees_original_row_before_comparison(change, field, monkeypatch):
     relative, site = RULE["relative"], change["after"]["site"]
-    raw = (ROOT / relative).read_bytes()
-    ledger = json.loads(raw)
+    actual_raw = (ROOT / relative).read_bytes()
+    ledger = json.loads(before_adoro_bytes(relative, actual_raw))
     saved_ledger = deepcopy(ledger)
     recorded, errors = translation_provenance.load(ROOT)
     assert errors == [] and recorded[site] == change["after"]
@@ -545,7 +546,7 @@ def test_native_provenance_sees_original_row_before_comparison(change, field, mo
     assert row == original and recorded == saved_recorded and ledger == saved_ledger
     assert translation_provenance.check(ROOT)[0] == []
     assert before_polish_reader_ledger(relative, ledger) == expected
-    assert (ROOT / relative).read_bytes() == raw
+    assert (ROOT / relative).read_bytes() == actual_raw
 
 
 def test_inflected_zero_alternative_is_valid_native_topology():

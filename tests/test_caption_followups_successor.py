@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from adoro_te_devote_successor_fixture import before_adoro_bytes
 from canon_consecration_successor_fixture import before_canon_bytes
 from caption_followups_successor_fixture import (
     DATA,
@@ -94,7 +95,8 @@ def test_the_fixture_names_exactly_the_changed_files_and_pins_their_bytes():
     assert {rule["kind"] for rule in FILES.values()} == {"core", "layer", "ledger"}
     assert [len(kinds(kind)) for kind in ("core", "layer", "ledger")] == [8, 6, 15]
     for relative, rule in FILES.items():
-        raw = (ROOT / relative).read_bytes()
+        # The file as this successor left it: the newer declared successor is undone on a copy.
+        raw = before_adoro_bytes(relative, (ROOT / relative).read_bytes())
         assert sha(raw) == rule["after_sha256"] != rule["before_sha256"], relative
         assert sha(before_followups_bytes(relative, raw)) == rule["before_sha256"], relative
 

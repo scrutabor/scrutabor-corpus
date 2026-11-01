@@ -157,10 +157,13 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(emitted_book
     }
     assert written["evidence_coverage"] == {
         # Both Requiem texts have retained Latin and language-specific evidence.
-        "neutral": {"normalized": 1215, "texts": 1221},
+        "neutral": {
+            "normalized": 1216,
+            "texts": 1222,
+        },  # Adoro te devote carries normalized graph evidence (2026-11-01)
         "languages": {
-            "en": {"normalized": 244, "effective": 1221, "texts": 1221},
-            "pl": {"normalized": 104, "effective": 1219, "texts": 1221},
+            "en": {"normalized": 244, "effective": 1222, "texts": 1222},
+            "pl": {"normalized": 104, "effective": 1220, "texts": 1222},
         },
     }
 
@@ -442,8 +445,13 @@ def test_metrics_are_the_single_derived_denominator(reader_out):
     metrics = json.loads((out / manifest["base"]["metrics"]).read_text(encoding="utf-8"))
     assert metrics == {
         "schema_version": "1.0.0",
-        "texts": {"total": 1221, "proprium": 1071, "words": 66939, "verse_segments": 2959},
-        "languages": {"en": {"texts": 1221}, "pl": {"texts": 1221}},
+        "texts": {
+            "total": 1222,
+            "proprium": 1071,
+            "words": 67088,
+            "verse_segments": 2987,
+        },  # Adoro te devote: +1 text, +149 words, +28 verse segments (2026-11-01)
+        "languages": {"en": {"texts": 1222}, "pl": {"texts": 1222}},
         "formularies": {
             "total": 114,
             "observances": 110,

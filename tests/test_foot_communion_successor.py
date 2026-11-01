@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from adoro_te_devote_successor_fixture import before_adoro_bytes, before_adoro_graph
 from caption_followups_successor_fixture import before_followups_bytes
 from foot_communion_successor_fixture import (
     DATA,
@@ -187,7 +188,8 @@ def test_successor_names_exactly_the_changed_files_and_texts():
 def test_every_changed_file_inverts_to_its_exact_predecessor(relative):
     rule = DATA["files"][relative]
     raw = (ROOT / relative).read_bytes()
-    b1_raw = before_possessive_b1_bytes(relative, before_followups_bytes(relative, raw))
+    newer_raw = before_followups_bytes(relative, before_adoro_bytes(relative, raw))
+    b1_raw = before_possessive_b1_bytes(relative, newer_raw)
     notes_raw = before_arrow_bytes(relative, before_ordo_notes_bytes(relative, b1_raw))
     assert hashlib.sha256(notes_raw).hexdigest() == rule["after_sha256"]
     previous = before_foot_communion_bytes(relative, raw)
@@ -342,7 +344,8 @@ def test_requiem_assembly_binds_the_current_qui_dixisti_body():
 
 def test_changed_ledger_sites_return_to_working():
     for change in DATA["ledger_rows"]:
-        ledger = json.loads((ROOT / change["relative"]).read_bytes())
+        raw = (ROOT / change["relative"]).read_bytes()
+        ledger = json.loads(before_adoro_bytes(change["relative"], raw))
         rows = [row for row in ledger["sites"] if row["site"] == change["site"]]
         assert rows == [change["after"]] == [ledger["sites"][change["index"]]]
         assert change["after"]["review"] == "working"
@@ -427,7 +430,8 @@ def test_frames_keep_unrelated_faults_for_the_older_oracle():
 
 
 def test_graph_inverse_removes_only_the_new_use():
-    graph = before_ordo_notes_graph(json.loads((ROOT / "bibliography/graph.json").read_bytes()))
+    graph = json.loads((ROOT / "bibliography/graph.json").read_bytes())
+    graph = before_ordo_notes_graph(before_adoro_graph(graph))
     saved = deepcopy(graph)
     previous = before_foot_communion_graph(before_arrow_graph(graph))
     added = DATA["graph_use"]["row"]["id"]

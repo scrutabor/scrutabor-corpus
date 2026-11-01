@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 import test_main_ordo_registrations as registrations
+from adoro_te_devote_successor_fixture import before_adoro_bytes
 from canon_consecration_successor_fixture import before_canon_object
 from english_contract_successor_fixture import (
     FILES,
@@ -146,7 +147,9 @@ def test_actual_full_prayer_source_controller_and_purpose(monkeypatch):
     assert expand_core(old_core) == expand_core(core)
     assert enrich_layer(old_core, pl) == enrich_layer(core, pl)
     rule = DATA["ledger"]
-    actual = json.loads((ROOT / rule["relative"]).read_bytes())
+    actual = json.loads(
+        before_adoro_bytes(rule["relative"], (ROOT / rule["relative"]).read_bytes())
+    )
     assert actual["sites"][rule["index"]] == rule["after"]
     assert canonical_hash(layer["segments"]["s03"]["translation"]) == rule["after"]["target_sha256"]
     assert (rule["after"]["origin"], rule["after"]["review"], rule["after"]["familiar_core"]) == (
@@ -323,7 +326,7 @@ def test_actual_help_topology_and_own_voice_fault_then_same_inputs_recover(fault
 @pytest.mark.parametrize("fault", LEDGER_FAULTS)
 def test_same_actual_ledger_reaches_native_and_strict_inverse_then_recovers(fault, monkeypatch):
     rule = DATA["ledger"]
-    raw = (ROOT / rule["relative"]).read_bytes()
+    raw = before_adoro_bytes(rule["relative"], (ROOT / rule["relative"]).read_bytes())
     actual = json.loads(raw)
     rows = actual["sites"]
     row = rows[rule["index"]]
@@ -467,7 +470,9 @@ def test_comparison_cannot_sanitize_unrelated_drift_and_same_mapping_recovers(fa
 
 def test_composed_ledger_retains_the_two_earlier_successors():
     rule = DATA["files"]["ledger"]
-    actual = json.loads((ROOT / rule["relative"]).read_bytes())
+    actual = json.loads(
+        before_adoro_bytes(rule["relative"], (ROOT / rule["relative"]).read_bytes())
+    )
     saved = deepcopy(actual)
     comparison = before_perceptio_ledger(rule["relative"], actual)
     assert digest(comparison) == rule["before_canonical_sha256"]

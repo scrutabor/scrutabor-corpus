@@ -597,6 +597,7 @@ IRREGULAR_VERBS = {
     "praesum",  # compound of sum; its paradigm has no numbered conjugation
     "subeo",  # compound of eo
     "supersum",  # compound of sum
+    "queo",  # conjugated like eo (queunt, queam, quibam); no numbered conjugation
 }
 
 

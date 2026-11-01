@@ -65,7 +65,9 @@ def copied_mass(root, mass="dominica-i-passionis"):
 
 
 def test_complete_catalogue_keeps_all_texts_and_explicit_retention_rows():
-    assert len(list((CORPUS / "texts").glob("*/*.json"))) == 1221
+    assert (
+        len(list((CORPUS / "texts").glob("*/*.json"))) == 1222
+    )  # 1222 with Adoro te devote (orationes), added 2026-11-01
     authored = [read(path) for path in (CORPUS / "formularies").glob("*/*.json")]
     catalogue = formulary_catalog(CORPUS)
     assert catalogue["schema_version"] == "1.5.0"

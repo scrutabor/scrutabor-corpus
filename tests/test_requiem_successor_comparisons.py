@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from adoro_te_devote_successor_fixture import before_adoro_graph, before_adoro_object
 from canon_consecration_successor_fixture import before_canon_graph, before_canon_object
 from documentary_successor_fixture import before_agency_ledger, before_language_successors
 from english_contract_successor_fixture import before_english_contract_record_bytes
@@ -112,6 +113,8 @@ def test_four_exact_raw_inverses_keep_every_prior_byte_and_current_input(relativ
 @pytest.mark.parametrize("fault", LEDGER_FAULTS)
 def test_complete_ledger_guard_rejects_drift_and_recovers_same_input(language, fault):
     relative, actual = ledger(language)
+    # The ledger as the Requiem successors left it; the newer rows are undone on a copy.
+    actual = before_adoro_object(relative, actual)
     saved = deepcopy(actual)
     expected = before_requiem_ledger(relative, actual)
     rule = DATA["ledgers"][relative]
@@ -152,7 +155,8 @@ def test_complete_ledger_guard_rejects_drift_and_recovers_same_input(language, f
 
 @pytest.mark.parametrize("collection,fault", GRAPH_CASES)
 def test_exact_new_graph_membership_fields_and_order_reject_then_recover(collection, fault):
-    graph = json.loads((ROOT / "bibliography/graph.json").read_bytes())
+    # The graph as the Requiem successors left it; the newer records are undone on a copy.
+    graph = before_adoro_graph(json.loads((ROOT / "bibliography/graph.json").read_bytes()))
     saved = deepcopy(graph)
     expected = before_requiem_graph(graph)
     case = DATA["graph"][collection][0]
@@ -200,7 +204,9 @@ def test_unrelated_graph_fault_survives_comparison_and_public_validator_rejects_
 def test_new_graph_fault_reaches_public_validator_before_comparison_rejects_it():
     graph, languages = bibliography.load(ROOT)
     saved = deepcopy(graph)
-    index = DATA["graph"]["uses"][0]["index"]
+    # The validator reads the actual graph, where newer records stand before this one.
+    identity = DATA["graph"]["uses"][0]["row"]["id"]
+    index = next(i for i, use in enumerate(graph["uses"]) if use["id"] == identity)
     row = graph["uses"][index]
     original = deepcopy(row)
     try:

@@ -1,0 +1,1702 @@
+{
+  "schema_version": 1,
+  "description": "Adoro te devote enters the prayers: 28 provenance rows per language, five uses, five witnesses and one collation in the bibliography graph, eight new lexicon cards with one changed Polish and one added English sense of sapio, the manifest entry and title in both languages, eight lemmata, two morphology registry rows and the text registry row.",
+  "base": "8d54aed19eaef48cd639bc11bcef425be63e3a5c",
+  "files": {
+    "bibliography/graph.json": {
+      "layout": "indent2",
+      "changes": [
+        {
+          "path": [
+            "uses"
+          ],
+          "index": 191,
+          "insert": {
+            "id": "use.orationes.adoro-te-devote.benziger1962",
+            "edition": "edition.missale-romanum.1962-typica",
+            "digital_item": "item.missale-romanum.1962-typica.ia",
+            "role": "direct_approved_print",
+            "address": {
+              "kind": "text",
+              "text": "orationes.adoro-te-devote"
+            },
+            "locator": {
+              "printed": "p. lxx",
+              "scan": "leaf n75 / physical PDF p. 76",
+              "section": "Gratiarum actio post Missam; Rhythmus S. Thomae Aquinatis; right column, seven strophes and Amen",
+              "page_url": "https://archive.org/details/missale-romanum-1962/page/n75/mode/1up"
+            },
+            "claim": "Prints the complete seven-strophe Rhythmus S. Thomae Aquinatis with its closing Amen among the thanksgiving prayers after Mass. This page controls the selected letters, accents, capitals and punctuation of all 149 words; the heading and indulgence grant are not part of the text.",
+            "verified_on": "2026-11-01",
+            "evidence_sha256": "ba9d5f5767040aab7c9888448a70c684c61abc6c44a4d5fc79355421573475e2",
+            "decision": "RETAIN",
+            "decision_reason": "Direct reading of the page image of the approved 1962 print. Print authority is not scan-rights clearance; witness review remains separate.",
+            "legacy_refs": []
+          }
+        },
+        {
+          "path": [
+            "uses"
+          ],
+          "index": 192,
+          "insert": {
+            "id": "use.orationes.adoro-te-devote.enchiridion1952",
+            "edition": "edition.enchiridion-indulgentiarum.1952-editio-altera",
+            "digital_item": "item.enchiridion-indulgentiarum.1952.ia",
+            "role": "corroborating_latin_witness",
+            "address": {
+              "kind": "text",
+              "text": "orationes.adoro-te-devote"
+            },
+            "locator": {
+              "printed": "pp. 92–93",
+              "scan": "PDF pp. 109–110",
+              "section": "n. 166, Rhythmus"
+            },
+            "claim": "Prints the complete hymn under n. 166 with Amen, in unaccented type with ae digraphs; every one of the 149 selected words stands in the same order.",
+            "verified_on": "2026-11-01",
+            "evidence_sha256": "027fbf35ae1871e33d95b218c9343e03587931072d9b8958737395948994a76b",
+            "decision": "RETAIN",
+            "decision_reason": "Direct reading of both page images. The indulgence grant and attribution are not part of the claim.",
+            "legacy_refs": []
+          }
+        },
+        {
+          "path": [
+            "uses"
+          ],
+          "index": 193,
+          "insert": {
+            "id": "use.orationes.adoro-te-devote.liber-usualis1961",
+            "edition": "edition.liber-usualis.1961",
+            "digital_item": "item.liber-usualis.1961.ia",
+            "role": "corroborating_latin_witness",
+            "address": {
+              "kind": "text",
+              "text": "orationes.adoro-te-devote"
+            },
+            "locator": {
+              "printed": "pp. 1855–1856",
+              "scan": "PDF scans 2099–2100",
+              "section": "In Honour of the Blessed Sacrament, no. 5, Hymn of S. Thomas Aquinas"
+            },
+            "claim": "Prints the complete hymn with Amen, the first strophe under chant notation and the other six as text; every one of the 149 selected words stands in the same order, with j spellings.",
+            "verified_on": "2026-11-01",
+            "evidence_sha256": "a3d5fdb3308dcabc0474eb99d2f8a5509e52c76380ae41ec373ab3aa3e7db6b9",
+            "decision": "RETAIN",
+            "decision_reason": "Direct reading of both page images in the current Internet Archive PDF. Chant notation is outside the claim.",
+            "legacy_refs": []
+          }
+        },
+        {
+          "path": [
+            "uses"
+          ],
+          "index": 194,
+          "insert": {
+            "id": "use.orationes.adoro-te-devote.raccolta1910",
+            "edition": "edition.the-raccolta-1910",
+            "digital_item": "item.raccolta-1910.scan",
+            "role": "corroborating_latin_witness",
+            "address": {
+              "kind": "text",
+              "text": "orationes.adoro-te-devote"
+            },
+            "locator": {
+              "printed": "pp. 86–88",
+              "scan": "PDF scans 106–108",
+              "section": "n. 106, Hymn of St Thomas Aquinas; Latin column"
+            },
+            "claim": "The Latin column prints the complete hymn with Amen. It agrees with the selected text in every word except the accusative Jesum for the vocative Iesu at the head of the last strophe, and spells pelicane and pœnitens.",
+            "verified_on": "2026-11-01",
+            "evidence_sha256": "c9809a19f94297b103f773e26129d932f4a0eaa99796e398155dc35a92e2fa7b",
+            "decision": "RETAIN",
+            "decision_reason": "Direct reading of the Latin column on all three page images. The parallel English column is not part of this neutral Latin claim.",
+            "legacy_refs": []
+          }
+        },
+        {
+          "path": [
+            "uses"
+          ],
+          "index": 195,
+          "insert": {
+            "id": "use.orationes.adoro-te-devote.vatican1962",
+            "edition": "edition.missale-romanum.1962-vatican-joseph-bearing",
+            "digital_item": "item.missale-romanum.1962-vatican-joseph-bearing.ia",
+            "role": "corroborating_latin_witness",
+            "address": {
+              "kind": "text",
+              "text": "orationes.adoro-te-devote"
+            },
+            "locator": {
+              "printed": "p. LXXVII",
+              "scan": "physical PDF p. 79 / leaf n78",
+              "section": "Gratiarum actio post Missam; Rhythmus S. Thomae Aquinatis; right column, seven strophes ending Amen",
+              "page_url": "https://archive.org/details/missale_romanum-1962/page/n78/mode/1up"
+            },
+            "claim": "This separately set manifestation prints the same 149 words in the same order. It spells súbicit and pelicáne, capitalizes Sánguine, sets a comma after intúeor and a semicolon after sítio, and prints Amen on the last verse line. It corroborates one received tradition, not independent historical transmission.",
+            "verified_on": "2026-11-01",
+            "evidence_sha256": "648fdb8fe830ed65a08aa4a95de6f94424c533ddf2398c8fc26b18735fd3518a",
+            "decision": "RETAIN",
+            "decision_reason": "Direct reading of the page image of the separately set typical-edition page. No scan redistribution or independent ancestry is claimed.",
+            "legacy_refs": []
+          }
+        },
+        {
+          "path": [
+            "witnesses"
+          ],
+          "index": 3,
+          "insert": {
+            "id": "witness.orationes.adoro-te-devote.benziger1962",
+            "text": "orationes.adoro-te-devote",
+            "use": "use.orationes.adoro-te-devote.benziger1962",
+            "role": "controlling",
+            "coverage": {
+              "kind": "full"
+            },
+            "transcription": "mr",
+            "transcription_sha256": "d81aac0630a7564cf12eefcef9ee1d01a8e73c1d1f443ab041a1c920ee6f5e68",
+            "orthography_profile": "exact-page-image",
+            "independence_basis": "Direct page-image transcription of the Benziger 1962 setting; the Vatican setting is a separate manifestation of the same official tradition, not independent historical transmission.",
+            "source_dependencies": {
+              "uses": [],
+              "raw_binding": null
+            },
+            "review": {
+              "status": "pending"
+            }
+          }
+        },
+        {
+          "path": [
+            "witnesses"
+          ],
+          "index": 4,
+          "insert": {
+            "id": "witness.orationes.adoro-te-devote.enchiridion1952",
+            "text": "orationes.adoro-te-devote",
+            "use": "use.orationes.adoro-te-devote.enchiridion1952",
+            "role": "approved_corroboration",
+            "coverage": {
+              "kind": "full"
+            },
+            "transcription": "enchiridion-1952",
+            "transcription_sha256": "4fa24c3c30226202cc40b72156e3c18feafbfe90cb32e7d16bbc61e4051a01e1",
+            "orthography_profile": "substantive-only",
+            "independence_basis": "Direct page-image transcription of the 1952 Enchiridion; not derived from another retained witness.",
+            "source_dependencies": {
+              "uses": [],
+              "raw_binding": null
+            },
+            "review": {
+              "status": "pending"
+            }
+          }
+        },
+        {
+          "path": [
+            "witnesses"
+          ],
+          "index": 5,
+          "insert": {
+            "id": "witness.orationes.adoro-te-devote.liber-usualis1961",
+            "text": "orationes.adoro-te-devote",
+            "use": "use.orationes.adoro-te-devote.liber-usualis1961",
+            "role": "approved_corroboration",
+            "coverage": {
+              "kind": "full"
+            },
+            "transcription": "liber-usualis-1961",
+            "transcription_sha256": "31f3d4e592fd5105f1d8df4577a2c6b2b019ba83961eade4bb4d7370ac30b1b3",
+            "orthography_profile": "substantive-only",
+            "independence_basis": "Direct page-image transcription of the 1961 Liber Usualis; not derived from another retained witness.",
+            "source_dependencies": {
+              "uses": [],
+              "raw_binding": null
+            },
+            "review": {
+              "status": "pending"
+            }
+          }
+        },
+        {
+          "path": [
+            "witnesses"
+          ],
+          "index": 6,
+          "insert": {
+            "id": "witness.orationes.adoro-te-devote.raccolta1910",
+            "text": "orationes.adoro-te-devote",
+            "use": "use.orationes.adoro-te-devote.raccolta1910",
+            "role": "approved_corroboration",
+            "coverage": {
+              "kind": "full"
+            },
+            "transcription": "raccolta-1910",
+            "transcription_sha256": "9edadfe33dc3936bb7aac3d40f848185872ab8298293ee1955d48efb695a61c0",
+            "orthography_profile": "substantive-only",
+            "independence_basis": "Direct page-image transcription of the Latin column of the 1910 Raccolta; not derived from another retained witness.",
+            "source_dependencies": {
+              "uses": [],
+              "raw_binding": null
+            },
+            "review": {
+              "status": "pending"
+            }
+          }
+        },
+        {
+          "path": [
+            "witnesses"
+          ],
+          "index": 7,
+          "insert": {
+            "id": "witness.orationes.adoro-te-devote.vatican1962",
+            "text": "orationes.adoro-te-devote",
+            "use": "use.orationes.adoro-te-devote.vatican1962",
+            "role": "approved_corroboration",
+            "coverage": {
+              "kind": "full"
+            },
+            "transcription": "vatican",
+            "transcription_sha256": "1cfe8dba5c6b93ac521381292401598757a2b064e038e00eb76c3c3babb47eee",
+            "orthography_profile": "exact-page-image",
+            "independence_basis": "Direct page-image transcription of the separately set Vatican typical-edition page; same official tradition as the Benziger setting, not independent historical transmission.",
+            "source_dependencies": {
+              "uses": [],
+              "raw_binding": null
+            },
+            "review": {
+              "status": "pending"
+            }
+          }
+        },
+        {
+          "path": [
+            "collations"
+          ],
+          "index": 0,
+          "insert": {
+            "id": "collation.orationes.adoro-te-devote.benziger1962-vatican1962-ei1952-lu1961-raccolta1910",
+            "text": "orationes.adoro-te-devote",
+            "recension": "Complete Rhythmus of the 1962 Missal thanksgiving after Mass, selected from the Benziger setting and compared with the Vatican setting, the 1952 Enchiridion, the 1961 Liber Usualis and the 1910 Raccolta",
+            "selected_text_sha256": "91cd41dc5f078cabea7c48c1f840169e20e24c7b4043012d6d0cb003590f1597",
+            "apparatus_sha256": "53acfc8880999b38f8fcacec421def503ce761362b46ab05e22df669946c895d",
+            "witnesses": [
+              "witness.orationes.adoro-te-devote.benziger1962",
+              "witness.orationes.adoro-te-devote.enchiridion1952",
+              "witness.orationes.adoro-te-devote.liber-usualis1961",
+              "witness.orationes.adoro-te-devote.raccolta1910",
+              "witness.orationes.adoro-te-devote.vatican1962"
+            ],
+            "apparatus": {
+              "entries": 7,
+              "classes": [
+                "capitalization",
+                "orthography",
+                "punctuation",
+                "substantive"
+              ]
+            },
+            "review": {
+              "status": "pending"
+            }
+          }
+        }
+      ],
+      "before_sha256": "2751aec3d64146519b0433abf1392939c05dfd21ae9cc35c84356a0d18aa86ee",
+      "after_sha256": "87aad8084dc94badd08b6eb04c37aebd6ee574564d9cf19eb7f18aa16e561d9a"
+    },
+    "build_reader/registry/morphology.json": {
+      "layout": "records",
+      "changes": [
+        {
+          "path": [],
+          "index": 1057,
+          "insert": {
+            "case": "nom",
+            "conj": 1,
+            "gender": "n",
+            "mood": "part",
+            "number": "sg",
+            "pos": "verb",
+            "tense": "pres",
+            "voice": "dep"
+          }
+        },
+        {
+          "path": [],
+          "index": 1058,
+          "insert": {
+            "case": "nom",
+            "conj": 2,
+            "gender": "m",
+            "mood": "part",
+            "number": "sg",
+            "pos": "verb",
+            "tense": "pres",
+            "voice": "dep"
+          }
+        }
+      ],
+      "before_sha256": "36738b81e7021e671e8f15e8ed17cbcfdb4d3e88f1fa7b0c7305ca35616aedda",
+      "after_sha256": "dc5913d5619368a34e34e5b431bc02d8a99f3cb8de45d41d67fc677c878a5eae"
+    },
+    "build_reader/registry/texts.json": {
+      "layout": "records",
+      "changes": [
+        {
+          "path": [],
+          "index": 1221,
+          "insert": "orationes.adoro-te-devote"
+        }
+      ],
+      "before_sha256": "3076f8438aeb25c50210026b74919223ffbf5fedb89087f3773082d8a887d239",
+      "after_sha256": "d40525310d237d9f146b4f45d3bbf1d73362d70c97f234468cfa913f0e2bf254"
+    },
+    "languages/en/lexicon.json": {
+      "layout": "indent2",
+      "changes": [
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "gustus",
+          "insert": {
+            "senses": [
+              "taste, sense of taste",
+              "a tasting, a small taste",
+              "flavor",
+              "foretaste"
+            ]
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "latito",
+          "insert": {
+            "senses": [
+              "to lie hidden, be concealed",
+              "to hide, lurk"
+            ]
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "memoriale",
+          "insert": {
+            "senses": [
+              "memorial",
+              "that which keeps in remembrance"
+            ]
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "pelicanus",
+          "insert": {
+            "senses": [
+              "pelican"
+            ],
+            "derivatives": [
+              "pelican"
+            ]
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "queo",
+          "insert": {
+            "senses": [
+              "to be able, can"
+            ]
+          }
+        },
+        {
+          "path": [
+            "entries",
+            "sapio",
+            "senses"
+          ],
+          "index": 3,
+          "insert": "to taste of, have a flavor"
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "stilla",
+          "insert": {
+            "senses": [
+              "drop",
+              "a small quantity, a little"
+            ]
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "tuto",
+          "insert": {
+            "senses": [
+              "safely, securely",
+              "in safety, without danger"
+            ]
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "velo",
+          "insert": {
+            "senses": [
+              "to veil, cover",
+              "to wrap, envelop, clothe",
+              "to hide, conceal"
+            ]
+          }
+        }
+      ],
+      "before_sha256": "8718b0d646e8585afad7da35a83ac65d0abcf5580f73a807bae5443626f62092",
+      "after_sha256": "af6a77fdfae0e3090e2578389c6aadc532e3b6ba2e9d25b984599c70098c4217"
+    },
+    "languages/en/manifest.json": {
+      "layout": "indent2",
+      "changes": [
+        {
+          "path": [
+            "texts"
+          ],
+          "index": 6,
+          "insert": "orationes.adoro-te-devote"
+        },
+        {
+          "path": [
+            "titles"
+          ],
+          "key": "orationes.adoro-te-devote",
+          "insert": {
+            "title": "Adoro te devote",
+            "aliases": [
+              "I Adore You Devoutly"
+            ]
+          }
+        }
+      ],
+      "before_sha256": "5682855e070d1945bd1e27b49a1d6ba80093a44fee72fa810a4e8ef7f02cd5a2",
+      "after_sha256": "5af63f4adec606f1fbd4d8a46e5d0982662ac99a9285774bfcf6b052a3b438aa"
+    },
+    "languages/en/translation-provenance.json": {
+      "layout": "house",
+      "changes": [
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 386,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s01.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s01",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "79054db75e18a82eacc075828f2696224f657319075b49925f08603838aff0d2",
+            "target_sha256": "5915fcb30a75590e123f5557de4159374419504dce58bb302e79f1b5896b8762"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 387,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s02.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s02",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "e88f23564af2a4b150adcce087ff9e6ee3bb89e1a0ea7554a0455c51a304a58d",
+            "target_sha256": "0d26636af04139d2d372ea597f6dffd25b88a23e2738cfcdd2f55b75d3bf0e4d"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 388,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s03.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s03",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "45f300ac864cbe3c9e8ab71efeecec5c65f461fc713732e2f6211b27299608ae",
+            "target_sha256": "d3909f91670dbb87c940049d71e6e47294238d72b8a3fc88bd051048f7c3c8d5"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 389,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s04.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s04",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "17bc615e1adb21b82883be2be5a50c720052bcd6952dff7482774ec04584c096",
+            "target_sha256": "fd008691b3411e1a5b31dbde7eb60de747d785737e4b4693518a7d463baaca5e"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 390,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s05.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s05",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "a4644e998510c64a8e220b0dfd537e4349ab204f6a8905e8f7c93410d9d1c7f8",
+            "target_sha256": "9987f6aeaef4307039f5e4363eb2f8bcb35807d6eee5a15ff7f9072485187c7a"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 391,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s06.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s06",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "cd674e6a260ab14f7abf3361438ac5a7381bb1d6f4113036741113822fd559bc",
+            "target_sha256": "63fd6b7891543646bcc1ff2ecb911921a93cc245b714e47456bf751ac2e89bee"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 392,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s07.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s07",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "e9e61a98e43c292acb7e3c8ca279dc8364c814f555781a860162f00258e467ac",
+            "target_sha256": "ddc58ad3583363a031fda09deae674a0690a699ae47deaec34e088ceaea86dd4"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 393,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s08.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s08",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "f215d43b236aeeb82c0dfc4e8e1e90e56bb8251f41e430bd940556ed4ffb2b08",
+            "target_sha256": "4ece650f21bcdcb41baac2d9d30fb9fd0d64974af68516c4598be93839397160"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 394,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s09.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s09",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "1a3e2442a10f233a9ae2606b038b9a323dc95f3a7dc749421bc8a7efb75e6415",
+            "target_sha256": "cff516c356c9815046aa3d592ff0b3fb07382cd18369435d5448425aed8cc38d"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 395,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s10.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s10",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "3b311219e922b3238a4651827762291c43047e6f56c01d837e54590610ff7836",
+            "target_sha256": "d76b3ad615bfe95427ade9343bc57780de353a8ca12fb2aa1a2caccfd9f08ce0"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 396,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s11.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s11",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "e7011c40a902f3e2c175c3388838b9e80b353c4df1985fc6d63d88accce29fbb",
+            "target_sha256": "5c01b27c4a9f03b27c158eac628de1539b88cac2474fa79e427a9b1fe0aac751"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 397,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s12.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s12",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "1061a514008500eb483f9b2060b59a235570bb39d0f7f3b6696b3662005d560c",
+            "target_sha256": "08c3557266069dda3792a539f7ce901a14e3086e5ba8ddecc40d0ef1127f8a8f"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 398,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s13.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s13",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "266f11a459359b606d008bb388de180a0b25f32eddde22e8f23248237f9d5bb4",
+            "target_sha256": "4025a698223b44efa9206989f25271466637471c0634ac45bebe469f5075e974"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 399,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s14.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s14",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "67e2e348cd6ae85a6c700c0abef0ad1b69867087fbc52f98857ce73c31c2c5c4",
+            "target_sha256": "91a2e25b544eacc738b1ed20783f2994496d896705b4239c77a316c53f0db249"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 400,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s15.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s15",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "5e74b82fef0b079099d290cdbb4aa40b128b7c295deb8dd161f9464e95e7376e",
+            "target_sha256": "f599b82b3ccf4bd8c56dc4ca1bed3e72a60966ae085c1d8a6f3ca97877dacb21"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 401,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s16.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s16",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "dee8319cf1147a9ffb1903f25c6e250d40b8f0df2e25283e83afedfe66944a70",
+            "target_sha256": "f4a2481ae28889fa4b81ee1c887e78225ea654d8570ad975a92a16b479fdaa53"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 402,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s17.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s17",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "ce6f3404e259a2671d3a448f8c1a1812b07eea10b95cbb9776214e6c8dc97031",
+            "target_sha256": "d3f6c059f2efa8bf9338c39df47918ae0e3072227892fcdc2d93ab50d31ed90a"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 403,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s18.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s18",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "aa854b419184ba49af1d7a43be514ea2c17057ceead4dcfe32f3f7deab94db9a",
+            "target_sha256": "f83ed3fcc4aea8f863fd8639ab18ee463d066c2369f852df5f0f97416981a4b2"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 404,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s19.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s19",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "3227355b040c6cda4a9c25c8319c2c8b15ecc315475a700ce08b3adc23dabec4",
+            "target_sha256": "b6f90866aa25692a48a2f3f118046c6b2764ae17c2b0723cbaa9d14d47c880a4"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 405,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s20.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s20",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "3155c8eeb1f876ecc2585940b1cbd05633d0b589f695e06aaa71202913d0866c",
+            "target_sha256": "ad75e5fc2b98aad406ae697bf73ec495fef458ebe637ca7c4cf932e99144e9be"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 406,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s21.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s21",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "aa805c2b6b4ddc9c41b09615f756b2219c058c22111906c05ed7b6b9ff98362e",
+            "target_sha256": "4bb944912c9d4e3b30e2c78a004744804d193d8ede3a3d5d64df99c817b018cc"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 407,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s22.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s22",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "41fd3c2d4fba6b46518fcae6ec5e060a6759f61fba549ea7d8908c9d4e1d2aa8",
+            "target_sha256": "8e4fee4b775714088681071ee0801650c66b40ec52f9b2b66ff505970ace06da"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 408,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s23.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s23",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "1e8ae4a8a460631816f4b30c26e44992fca4b69ce3b8804e4006e2dbf4cb151b",
+            "target_sha256": "cf484b5a907be8863176469899de0e88d83bb4584f80dfb9416e3c1a04720eca"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 409,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s24.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s24",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "48b448bcbb9b9d7146cfc644f3547d3ece33bd143f36fdd85da61b4f54ad4077",
+            "target_sha256": "8d3def8e7533ef2176d0260fba5bc38b86bb05c1bab9c692e389236b7cb4f667"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 410,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s25.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s25",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "c4c05d3920f76ec02735d8803b4eb7cbacd1d2c6c267789ed32edc704f18449b",
+            "target_sha256": "eca2b5acc9f36e6059911974787ec7e66edb44cf63e401750cb1bc4c56903839"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 411,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s26.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s26",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "ff4b346282bb5258e5549893c3ddc39fb63b8f36fd89485e248e0de8799b6c4d",
+            "target_sha256": "156d96f8be7732b8fa0282f04324b6b01e62bb5b9694479edf3a68e21c050dab"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 412,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s27.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s27",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "9f7877fcb66026bedf897666dcfef7fe9410f323521602131197b3f0a5081b1e",
+            "target_sha256": "9d34a83bc01c8c011683a013003ae9ae78eca28f438146937a228dc8ed8b0b3c"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 413,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s28.en",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s28",
+            "language": "en",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "d23747bfba1770a4527bf960a5b9d04cb3d37d0bdb1e673d18e8514d5e5c05d4",
+            "target_sha256": "675ffedd8e233cb7595a8d05b8f33cb91dc6c1099bb614c88ac4b07f2c2f9186"
+          }
+        }
+      ],
+      "before_sha256": "3ee3288ca90ba2937559ff8c8de45c2993f2b43f9ec002649034cabc55e5b304",
+      "after_sha256": "a31c947936203db2790c92fd814c68dd5a117b4728d5d8f13157af0b1f7b3dba"
+    },
+    "languages/pl/lexicon.json": {
+      "layout": "indent2",
+      "changes": [
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "gustus",
+          "insert": {
+            "senses": [
+              "smak",
+              "kosztowanie"
+            ]
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "latito",
+          "insert": {
+            "senses": [
+              "ukrywać się",
+              "kryć się"
+            ]
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "memoriale",
+          "insert": {
+            "senses": [
+              "pamiątka",
+              "upamiętnienie"
+            ]
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "pelicanus",
+          "insert": {
+            "senses": [
+              "pelikan"
+            ]
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "queo",
+          "insert": {
+            "senses": [
+              "móc",
+              "zdołać"
+            ]
+          }
+        },
+        {
+          "path": [
+            "entries",
+            "sapio",
+            "senses",
+            2
+          ],
+          "before": "poznawać",
+          "after": "smakować"
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "stilla",
+          "insert": {
+            "senses": [
+              "kropla"
+            ]
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "tuto",
+          "insert": {
+            "senses": [
+              "bezpiecznie",
+              "bez niebezpieczeństwa"
+            ]
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "velo",
+          "insert": {
+            "senses": [
+              "zasłaniać",
+              "okrywać"
+            ]
+          }
+        }
+      ],
+      "before_sha256": "0809d0ecc933e69b77a7b717b31cbcd8258e6255059b32ff7f8233ef52418a76",
+      "after_sha256": "e55094722107d19b95607ecb6833fecdf7cd8ad6513d4bddd887812204fbc14b"
+    },
+    "languages/pl/manifest.json": {
+      "layout": "indent2",
+      "changes": [
+        {
+          "path": [
+            "texts"
+          ],
+          "index": 6,
+          "insert": "orationes.adoro-te-devote"
+        },
+        {
+          "path": [
+            "titles"
+          ],
+          "key": "orationes.adoro-te-devote",
+          "insert": {
+            "title": "Adoro te devote",
+            "aliases": [
+              "Adoruję Cię z oddaniem"
+            ]
+          }
+        }
+      ],
+      "before_sha256": "17744220f438360000a7b39720374d7f4ea8c1be0b1b5282bed3a382f5ff5036",
+      "after_sha256": "7075b8f8552f65418cb32daef867b48226b0228c586ac651f830340815681cb7"
+    },
+    "languages/pl/translation-provenance.json": {
+      "layout": "house",
+      "changes": [
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 386,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s01.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s01",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "79054db75e18a82eacc075828f2696224f657319075b49925f08603838aff0d2",
+            "target_sha256": "2181f4bdf34f7c0f673ef5f92195d0a756851bbd3943afc00972f8d3538b788e"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 387,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s02.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s02",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "e88f23564af2a4b150adcce087ff9e6ee3bb89e1a0ea7554a0455c51a304a58d",
+            "target_sha256": "507ff5659147ed74b1d7fe58b6d45a7c5e7820a346c0e7e1e55d73ee36b931a4"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 388,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s03.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s03",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "45f300ac864cbe3c9e8ab71efeecec5c65f461fc713732e2f6211b27299608ae",
+            "target_sha256": "c587871898589a64ad88303b9273326cf17dd79d9888e86f7851c74c584e41c2"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 389,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s04.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s04",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "17bc615e1adb21b82883be2be5a50c720052bcd6952dff7482774ec04584c096",
+            "target_sha256": "756e8d1cbc97b0a36bf7c448736ccd591438195a502744dc08a993fed01ae518"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 390,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s05.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s05",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "a4644e998510c64a8e220b0dfd537e4349ab204f6a8905e8f7c93410d9d1c7f8",
+            "target_sha256": "00aa423a68ad9f6e9138464f6000f5c12281ca6e164b92188d0be16df9fab776"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 391,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s06.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s06",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "cd674e6a260ab14f7abf3361438ac5a7381bb1d6f4113036741113822fd559bc",
+            "target_sha256": "518754828fcbd48089e4454b02eac37d70da2e533896f3167ff9100eb1c5e769"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 392,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s07.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s07",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "e9e61a98e43c292acb7e3c8ca279dc8364c814f555781a860162f00258e467ac",
+            "target_sha256": "2a9a08a00f43283a827354411e1cd1daf38192af59d7f3f3d941e548e338d769"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 393,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s08.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s08",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "f215d43b236aeeb82c0dfc4e8e1e90e56bb8251f41e430bd940556ed4ffb2b08",
+            "target_sha256": "f1508dfb34c44915015b1e936062493c3f23181b17b61b4702da4b34acd0590b"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 394,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s09.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s09",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "1a3e2442a10f233a9ae2606b038b9a323dc95f3a7dc749421bc8a7efb75e6415",
+            "target_sha256": "f563b9314ac3b71401c12db921aca7e2ddce6c3772970ae5692779a1e6e99b9f"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 395,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s10.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s10",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "3b311219e922b3238a4651827762291c43047e6f56c01d837e54590610ff7836",
+            "target_sha256": "a240b79e5a80d07cb56e081352bcc50080438881cda6e31e78dab47a613af6cb"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 396,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s11.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s11",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "e7011c40a902f3e2c175c3388838b9e80b353c4df1985fc6d63d88accce29fbb",
+            "target_sha256": "97aa2375e5f459fda19f76541785c7ba52e1e40e7c001a4fe085a9afffed0f0c"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 397,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s12.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s12",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "1061a514008500eb483f9b2060b59a235570bb39d0f7f3b6696b3662005d560c",
+            "target_sha256": "ff5b054b815e54982cdcb65531c3f11abec12a2e3c882324c84691285e25c0ab"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 398,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s13.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s13",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "266f11a459359b606d008bb388de180a0b25f32eddde22e8f23248237f9d5bb4",
+            "target_sha256": "0ba8e250ae49df41dabcd35db85e3439c15e9efa224d07d82252e99e5aa0f8c1"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 399,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s14.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s14",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "67e2e348cd6ae85a6c700c0abef0ad1b69867087fbc52f98857ce73c31c2c5c4",
+            "target_sha256": "3f70085ad9717f718c1065225af058691f35376b4bf881a612a0557b70fda1d7"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 400,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s15.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s15",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "5e74b82fef0b079099d290cdbb4aa40b128b7c295deb8dd161f9464e95e7376e",
+            "target_sha256": "2f21292b46f0be74b1ddd4d1c0adf6fa1b339a3ed71c804553afd2a60dc4269e"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 401,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s16.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s16",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "dee8319cf1147a9ffb1903f25c6e250d40b8f0df2e25283e83afedfe66944a70",
+            "target_sha256": "c38e672b6f35d626b32d5b84bd3e0a8c8b3eaa0f85d61aa9b9013c9d5e5dc2b6"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 402,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s17.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s17",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "ce6f3404e259a2671d3a448f8c1a1812b07eea10b95cbb9776214e6c8dc97031",
+            "target_sha256": "d8e525b7eaec5b57686727db8a28ba33f6ce0cc650d80e007e9d1175d3d8608c"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 403,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s18.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s18",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "aa854b419184ba49af1d7a43be514ea2c17057ceead4dcfe32f3f7deab94db9a",
+            "target_sha256": "7142cde293e338849d8712aa330b9b11797c75fa645f9814fb07e8271772609a"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 404,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s19.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s19",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "3227355b040c6cda4a9c25c8319c2c8b15ecc315475a700ce08b3adc23dabec4",
+            "target_sha256": "c1fbcdc348bec0d4aa72387cced2be61ab17a9684cfddd07fed1fcb5d888448d"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 405,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s20.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s20",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "3155c8eeb1f876ecc2585940b1cbd05633d0b589f695e06aaa71202913d0866c",
+            "target_sha256": "e21fefc7240801a2643eec54c96b8f14d5ef0c4802f875784b17597a6ee5d1aa"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 406,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s21.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s21",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "aa805c2b6b4ddc9c41b09615f756b2219c058c22111906c05ed7b6b9ff98362e",
+            "target_sha256": "6996e715e11fd01842821ccb6d0d9c1203707d1d49f676093116ba9178623053"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 407,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s22.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s22",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "41fd3c2d4fba6b46518fcae6ec5e060a6759f61fba549ea7d8908c9d4e1d2aa8",
+            "target_sha256": "b27c42ac32d50b8faa07fd5b525f150175a083dc95f5e01034ab991967bce885"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 408,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s23.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s23",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "1e8ae4a8a460631816f4b30c26e44992fca4b69ce3b8804e4006e2dbf4cb151b",
+            "target_sha256": "239a247dc70dc51fa91e1fc535b890b14756430f8c91ba3fcf21dc69ff41a431"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 409,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s24.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s24",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "48b448bcbb9b9d7146cfc644f3547d3ece33bd143f36fdd85da61b4f54ad4077",
+            "target_sha256": "e6dfe6b0e0683343ab2a42b3071e31f7360a7986f043b36c77e8ea4b093cf215"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 410,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s25.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s25",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "c4c05d3920f76ec02735d8803b4eb7cbacd1d2c6c267789ed32edc704f18449b",
+            "target_sha256": "5eb12b28bf71d70e3e88dcc44e7d9b21295e749df02777f3019e85a841bba223"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 411,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s26.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s26",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "ff4b346282bb5258e5549893c3ddc39fb63b8f36fd89485e248e0de8799b6c4d",
+            "target_sha256": "67254eb002cce71b9b0bfb5f80aab5b92973227ec84a3690469a3142e6b99b51"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 412,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s27.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s27",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "9f7877fcb66026bedf897666dcfef7fe9410f323521602131197b3f0a5081b1e",
+            "target_sha256": "c79c93743ac383a67154881536272fda3adcac45c4ab1b13e4638a3d9ee92f1d"
+          }
+        },
+        {
+          "path": [
+            "sites"
+          ],
+          "index": 413,
+          "insert": {
+            "site": "orationes.adoro-te-devote.s28.pl",
+            "text": "orationes.adoro-te-devote",
+            "segment": "s28",
+            "language": "pl",
+            "familiar_core": false,
+            "origin": "own",
+            "review": "working",
+            "source_sha256": "d23747bfba1770a4527bf960a5b9d04cb3d37d0bdb1e673d18e8514d5e5c05d4",
+            "target_sha256": "83d507bdc610f13b42c9a2f7c93ee09c60348e5e128b29b7355fa8c6a2f0bbb7"
+          }
+        }
+      ],
+      "before_sha256": "8d1b9abb1e9ab8a5ef98ef38efa4f4788a970ef44e2cb47a07707bb4276145b6",
+      "after_sha256": "88b5b5be106c8962c22871018087fac96234851a7dcc525ad5a9ddbbc2073fef"
+    },
+    "lexicon/lemmata.json": {
+      "layout": "indent2",
+      "changes": [
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "gustus",
+          "insert": {
+            "head": "gustus, gustus",
+            "pos": "noun",
+            "gender": "m",
+            "decl": 4
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "latito",
+          "insert": {
+            "head": "látito, latitáre, latitávi, latitátum",
+            "pos": "verb",
+            "conj": 1
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "memoriale",
+          "insert": {
+            "head": "memoriále, memoriális",
+            "pos": "noun",
+            "gender": "n",
+            "decl": 3
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "pelicanus",
+          "insert": {
+            "head": "pelicánus, -i",
+            "pos": "noun",
+            "gender": "m",
+            "decl": 2
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "queo",
+          "insert": {
+            "head": "queo, quire, quivi, quitum",
+            "pos": "verb"
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "stilla",
+          "insert": {
+            "head": "stilla, -æ",
+            "pos": "noun",
+            "gender": "f",
+            "decl": 1
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "tuto",
+          "insert": {
+            "head": "tuto",
+            "pos": "adv"
+          }
+        },
+        {
+          "path": [
+            "entries"
+          ],
+          "key": "velo",
+          "insert": {
+            "head": "velo, veláre, velávi, velátum",
+            "pos": "verb",
+            "conj": 1
+          }
+        }
+      ],
+      "before_sha256": "6c407b5e9fd2b67fa720d5ac10db529fdc2558ad2e1bb3842e6aa38b555847a5",
+      "after_sha256": "0f953272737dcf8b663cf2b4176c89ac02b7a7a444a824617a5313dd42e230a0"
+    }
+  }
+}
