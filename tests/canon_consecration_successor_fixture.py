@@ -19,6 +19,10 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from caption_followups_successor_fixture import (
+    before_followups_bytes,
+    before_followups_layer,
+)
 from foot_communion_successor_fixture import (
     before_foot_communion_bytes,
     before_foot_communion_graph,
@@ -59,6 +63,7 @@ def require(condition, diagnostic):
 
 def before_canon_bytes(relative, raw, diagnostic=DIAGNOSTIC):
     """Require every current byte, then restore only the declared earlier fragments."""
+    raw = before_followups_bytes(relative, raw)
     raw = before_possessive_b4_bytes(relative, raw)
     raw = before_possessive_b3_bytes(relative, raw)
     raw = before_possessive_b2_bytes(relative, raw)
@@ -180,6 +185,7 @@ def before_canon_core_frame(core, diagnostic=DIAGNOSTIC):
 
 def before_canon_layer_frame(layer, diagnostic=DIAGNOSTIC):
     """Rejoin the divided translations and narratives on a copy of a layer-shaped value."""
+    layer = before_followups_layer(layer)
     layer = before_possessive_b4_layer_frame(layer)
     layer = before_possessive_b3_layer_frame(layer)
     layer = before_possessive_b2_layer_frame(layer)

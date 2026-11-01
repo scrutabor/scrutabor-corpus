@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 from canon_consecration_successor_fixture import before_canon_bytes, before_canon_layer_frame
+from caption_followups_successor_fixture import before_followups_bytes
 from foot_communion_successor_fixture import (
     before_foot_communion_bytes,
     before_foot_communion_layer_frame,
@@ -46,8 +47,13 @@ def core(text):
     return store.core(ROOT, text)
 
 
+def b4_bytes(relative):
+    """The file as B4 left it: the newer declared successor is undone on a copy."""
+    return before_followups_bytes(relative, (ROOT / relative).read_bytes())
+
+
 def layer(relative):
-    return json.loads((ROOT / relative).read_bytes())
+    return json.loads(b4_bytes(relative))
 
 
 def segment_words(doc, segment):
@@ -77,7 +83,7 @@ def test_successor_names_exactly_the_changed_files_and_pins_their_bytes():
     assert len({change["row"] for _relative, change in GROUPS}) == len(GROUPS)
     for relative, rule in FILES.items():
         assert relative == f"languages/en/texts/{rule['text'].replace('.', '/', 1)}.json"
-        raw = (ROOT / relative).read_bytes()
+        raw = b4_bytes(relative)
         assert sha(raw) == rule["after_sha256"], relative
         assert rule["before_sha256"] != rule["after_sha256"]
 
@@ -208,7 +214,7 @@ def test_rejected_wordings_stay_rejected():
 @pytest.mark.parametrize("relative", sorted(FILES))
 def test_every_changed_file_inverts_to_its_exact_predecessor(relative):
     rule = FILES[relative]
-    raw = (ROOT / relative).read_bytes()
+    raw = b4_bytes(relative)
     value = json.loads(raw)
     saved = deepcopy(value)
     previous_raw = before_possessive_b4_bytes(relative, raw)
@@ -247,13 +253,13 @@ def test_a_damaged_group_stays_for_the_older_oracle(relative):
     carded["words"][first["group"]["words"][0]]["gloss"] = "fault"
     result = before_possessive_b4_object(relative, carded)
     assert first["group"] in result["segments"][first["segment"]]["alignments"]
-    raw = (ROOT / relative).read_bytes()
+    raw = b4_bytes(relative)
     assert sha(before_possessive_b4_bytes(relative, raw)) == rule["before_sha256"]
 
 
 def test_unrelated_values_pass_through_untouched():
     relative = "languages/en/texts/orationes/pater-noster.json"
-    raw = (ROOT / relative).read_bytes()
+    raw = b4_bytes(relative)
     value = json.loads(raw)
     assert relative not in FILES
     assert before_possessive_b4_bytes(relative, raw) is raw
@@ -278,7 +284,7 @@ def test_frame_inverse_keeps_other_card_fields_and_leaves_a_direct_gloss(relativ
         for word in change["group"]["words"]:
             framed["words"][word]["projected"] = [word]
     result = before_possessive_b4_layer_frame(framed)
-    previous = json.loads(before_possessive_b4_bytes(relative, (ROOT / relative).read_bytes()))
+    previous = json.loads(before_possessive_b4_bytes(relative, b4_bytes(relative)))
     for change in rule["groups"]:
         assert change["group"] not in result["segments"][change["segment"]].get("alignments", [])
         for word, entry in change["before_entries"].items():
@@ -328,7 +334,7 @@ def test_site_successors_supersede_only_an_exact_earlier_one_word_caption():
 @pytest.mark.parametrize("relative", sorted(FILES))
 def test_the_chain_entries_reach_this_predecessor_first(relative):
     """The foot of the altar and Canon entries treat the current file as its predecessor."""
-    raw = (ROOT / relative).read_bytes()
+    raw = b4_bytes(relative)
     previous_raw = before_possessive_b4_bytes(relative, raw)
     assert previous_raw != raw
     for entry in (before_foot_communion_bytes, before_canon_bytes):

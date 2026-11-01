@@ -21,6 +21,11 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from caption_followups_successor_fixture import (
+    before_followups_bytes,
+    before_followups_layer,
+    before_followups_object,
+)
 from ordo_notes_successor_fixture import (
     before_ordo_notes_bytes,
     before_ordo_notes_graph,
@@ -68,6 +73,7 @@ def carries_change(rule, raw):
 
 def before_foot_communion_bytes(relative, raw, diagnostic=DIAGNOSTIC):
     """Require every current byte, then restore only the declared earlier fragments."""
+    raw = before_followups_bytes(relative, raw)
     raw = before_possessive_b4_bytes(relative, raw)
     raw = before_possessive_b3_bytes(relative, raw)
     raw = before_possessive_b2_bytes(relative, raw)
@@ -104,6 +110,7 @@ def render(layout, value):
 
 def before_foot_communion_object(relative, value, diagnostic=DIAGNOSTIC):
     """Bind the complete current object, then parse its exact predecessor."""
+    value = before_followups_object(relative, value)
     value = before_possessive_b4_object(relative, value)
     value = before_possessive_b3_object(relative, value)
     value = before_possessive_b2_object(relative, value)
@@ -152,6 +159,7 @@ def before_foot_communion_layer_frame(layer, diagnostic=DIAGNOSTIC):
     Only the declared entries are bound; a fault anywhere else stays in the copy for
     the older oracle that reads it.
     """
+    layer = before_followups_layer(layer)
     layer = before_possessive_b4_layer_frame(layer)
     layer = before_possessive_b3_layer_frame(layer)
     layer = before_possessive_b2_layer_frame(layer)
