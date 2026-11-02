@@ -2,6 +2,7 @@
 
 import copy
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -44,6 +45,31 @@ ENGLISH_GROUPS = {
         ("s02", ["w005", "w006"], "w005", "your spirit"),
     ],
 }
+
+
+# The reader shows the English `about` of these two bodies verbatim as the Ordo
+# note on a Requiem day, and it checks every Ordo note with the corpus narrative
+# rule (checks/lint.py, check_narrative): no sentence opens with "He"/"His" or
+# with "Then/Now/... he". The corpus lint applies that rule to segment narratives
+# only, so these two `about` texts carry it here. Other `about` fields are not
+# Ordo notes and are deliberately left outside it.
+NARRATIVE_SENTENCE_SPLIT = r"(?<=[.;])\s+"
+NARRATIVE_PRONOUN_OPENINGS = (
+    r"^\W*(He|His)\b",
+    r"^\W*(Then|Now|Meanwhile|Here|Next|Again|Afterwards?)\b[^.]{0,24}\bhe\b",
+)
+PRIEST_SENTENCE = (
+    "The priest does not strike his breast and recites the prayer clearly at Low Mass "
+    "and quietly at sung Mass."
+)
+
+
+def ordo_note_pronoun_openings(about):
+    return [
+        sentence
+        for sentence in re.split(NARRATIVE_SENTENCE_SPLIT, about)
+        if any(re.match(pattern, sentence) for pattern in NARRATIVE_PRONOUN_OPENINGS)
+    ]
 
 
 def read(relative, root=CORPUS):
@@ -337,3 +363,43 @@ def test_actual_reader_preserves_every_word_actor_and_target_provider(reader_out
         f"languages/{language}/{relative}"
     ]
     assert text in store.language_manifest(CORPUS, language)["texts"]
+
+
+def test_ordo_note_rule_is_the_corpus_narrative_rule():
+    lint = (CORPUS / "checks/lint.py").read_text(encoding="utf-8")
+    for pattern in (NARRATIVE_SENTENCE_SPLIT, *NARRATIVE_PRONOUN_OPENINGS):
+        assert f'r"{pattern}"' in lint
+
+
+@pytest.mark.parametrize("text", TEXTS)
+def test_english_about_shown_as_ordo_note_names_the_priest(text):
+    about = raw(text, "en")["about"]
+    assert ordo_note_pronoun_openings(about) == [], (
+        f"{text}: the reader shows this English about as the Ordo note on a Requiem day, "
+        "and a sentence opening with a pronoun has no antecedent there — name the priest"
+    )
+
+
+@pytest.mark.parametrize(
+    "fault",
+    [
+        "The priest does not strike his breast. He recites the prayer clearly at Low Mass "
+        "and quietly at sung Mass.",
+        "The priest does not strike his breast. Then at Low Mass he recites the prayer clearly.",
+    ],
+)
+def test_ordo_note_rule_rejects_a_pronoun_opening_and_recovers(fault):
+    good = raw(AGNUS, "en")
+    assert PRIEST_SENTENCE in good["about"]
+    assert ordo_note_pronoun_openings(good["about"]) == []
+    bad = copy.deepcopy(good)
+    damaged_input = bad
+    try:
+        bad["about"] = bad["about"].replace(PRIEST_SENTENCE, fault)
+        assert len(ordo_note_pronoun_openings(bad["about"])) == 1
+    finally:
+        bad.clear()
+        bad.update(copy.deepcopy(good))
+    assert bad is damaged_input
+    assert bad == good
+    assert ordo_note_pronoun_openings(bad["about"]) == []
