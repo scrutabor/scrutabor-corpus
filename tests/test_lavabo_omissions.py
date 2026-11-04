@@ -18,13 +18,15 @@ CASES = [
     ("annunciation", "annuntiatio-beatae-mariae-virginis", False),
     ("palm-sunday", "dominica-ii-passionis", True),
     ("holy-thursday", "feria-v-in-cena-domini", True),
-    ("easter-vigil", "vigilia-paschalis", False),
+    ("easter-vigil", "vigilia-paschalis", True),
     ("easter-day", "dominica-resurrectionis", False),
     ("all-souls-i", "commemoratio-omnium-fidelium-defunctorum", True),
     ("all-souls-ii", "commemoratio-omnium-fidelium-defunctorum-missa-ii", True),
     ("all-souls-iii", "commemoratio-omnium-fidelium-defunctorum-missa-iii", True),
 ]
 OMITTED = {mass for _, mass, omitted in CASES if omitted}
+LAVABO_OMITTED = OMITTED - {"vigilia-paschalis"}
+TRIDUUM = {"feria-v-in-cena-domini", "vigilia-paschalis"}
 
 
 def read(path):
@@ -49,7 +51,15 @@ def copied_mass(root, mass="dominica-i-passionis"):
     target = root / relative
     target.parent.mkdir(parents=True, exist_ok=True)
     write(target, form)
-    bodies = {component["text"] for component in form["components"]} | {"ordinarium.lavabo"}
+    bodies = {component["text"] for component in form["components"]} | {
+        "ordinarium.lavabo",
+        "ordinarium.agnus-dei",
+        "ordinarium.qui-dixisti",
+        "ordinarium.pax-domini",
+        "ordinarium.haec-commixtio",
+        "ordinarium.fili-dei-vivi",
+        "ordinarium.perceptio-corporis",
+    }
     for text in bodies:
         category, slug = text.split(".", 1)
         name = Path("texts") / category / f"{slug}.json"
@@ -66,11 +76,11 @@ def copied_mass(root, mass="dominica-i-passionis"):
 
 def test_complete_catalogue_keeps_all_texts_and_explicit_retention_rows():
     assert (
-        len(list((CORPUS / "texts").glob("*/*.json"))) == 1222
-    )  # 1222 with Adoro te devote (orationes), added 2026-11-01
+        len(list((CORPUS / "texts").glob("*/*.json"))) == 1223
+    )  # Includes the complete Holy Thursday Agnus Dei.
     authored = [read(path) for path in (CORPUS / "formularies").glob("*/*.json")]
     catalogue = formulary_catalog(CORPUS)
-    assert catalogue["schema_version"] == "1.5.0"
+    assert catalogue["schema_version"] == "1.6.0"
     assert len(authored) == len(catalogue["formularies"]) == 114
     assert {row["id"] for row in authored if row.get("ordinary_omissions")} == OMITTED
     assert {row["id"] for row in catalogue["formularies"] if row["ordinary_omissions"]} == OMITTED
@@ -84,13 +94,17 @@ def test_complete_catalogue_keeps_all_texts_and_explicit_retention_rows():
             row for row in emitted["ordinary_omissions"] if row["reason"] == "lavabo-doxology"
         ]
         assert lavabo == (
-            [{**DESCRIPTOR, "text": "ordinarium/lavabo"}] if original["id"] in OMITTED else []
+            [{**DESCRIPTOR, "text": "ordinarium/lavabo"}]
+            if original["id"] in LAVABO_OMITTED
+            else []
         )
         assert original["formulary_schema"] == (
-            "1.5.0"
+            "1.6.0"
+            if original["id"] in TRIDUUM
+            else "1.5.0"
             if original["observance"] == "commemoratio-omnium-fidelium-defunctorum"
             else "1.4.0"
-            if original["id"] in OMITTED
+            if original["id"] in LAVABO_OMITTED
             else "1.3.0"
         )
         if original["id"] not in OMITTED:
@@ -172,7 +186,7 @@ def test_actual_source_checker_and_emitter_reject_bad_declarations_and_recover(t
         assert formulary_catalog(tmp_path)["formularies"][0]["ordinary_omissions"]
 
 
-@pytest.mark.parametrize("mass", ["annuntiatio-beatae-mariae-virginis", "vigilia-paschalis"])
+@pytest.mark.parametrize("mass", ["annuntiatio-beatae-mariae-virginis", "dominica-resurrectionis"])
 def test_retained_actual_forms_cannot_acquire_an_omission(tmp_path, mass):
     target = copied_mass(tmp_path, mass)
     before = target.read_bytes()

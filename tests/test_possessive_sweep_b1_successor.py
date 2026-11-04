@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import read_predecessor
 from possessive_sweep_b1_successor_fixture import (
     DATA,
     FILES,
@@ -42,7 +43,7 @@ def core(text):
 
 
 def layer(relative):
-    return json.loads((ROOT / relative).read_bytes())
+    return json.loads(read_predecessor(ROOT, relative))
 
 
 def segment_words(doc, segment):
@@ -72,7 +73,7 @@ def test_successor_names_exactly_the_changed_files_and_pins_their_bytes():
     assert len({change["row"] for _relative, change in GROUPS}) == len(GROUPS)
     for relative, rule in FILES.items():
         assert relative == f"languages/en/texts/{rule['text'].replace('.', '/', 1)}.json"
-        raw = (ROOT / relative).read_bytes()
+        raw = read_predecessor(ROOT, relative)
         assert sha(raw) == rule["after_sha256"], relative
         assert rule["before_sha256"] != rule["after_sha256"]
 
@@ -185,7 +186,7 @@ def test_controls_and_protected_rows_stay_split(row):
 @pytest.mark.parametrize("relative", sorted(FILES))
 def test_every_changed_file_inverts_to_its_exact_predecessor(relative):
     rule = FILES[relative]
-    raw = (ROOT / relative).read_bytes()
+    raw = read_predecessor(ROOT, relative)
     value = json.loads(raw)
     saved = deepcopy(value)
     previous_raw = before_possessive_b1_bytes(relative, raw)
@@ -224,13 +225,13 @@ def test_a_damaged_group_stays_for_the_older_oracle(relative):
     carded["words"][first["group"]["words"][0]]["gloss"] = "fault"
     result = before_possessive_b1_object(relative, carded)
     assert first["group"] in result["segments"][first["segment"]]["alignments"]
-    raw = (ROOT / relative).read_bytes()
+    raw = read_predecessor(ROOT, relative)
     assert sha(before_possessive_b1_bytes(relative, raw)) == rule["before_sha256"]
 
 
 def test_unrelated_values_pass_through_untouched():
     relative = "languages/en/texts/orationes/pater-noster.json"
-    raw = (ROOT / relative).read_bytes()
+    raw = read_predecessor(ROOT, relative)
     value = json.loads(raw)
     assert relative not in FILES
     assert before_possessive_b1_bytes(relative, raw) is raw
@@ -255,7 +256,7 @@ def test_frame_inverse_keeps_other_card_fields_and_leaves_a_direct_gloss(relativ
         for word in change["group"]["words"]:
             framed["words"][word]["projected"] = [word]
     result = before_possessive_b1_layer_frame(framed)
-    previous = json.loads(before_possessive_b1_bytes(relative, (ROOT / relative).read_bytes()))
+    previous = json.loads(before_possessive_b1_bytes(relative, read_predecessor(ROOT, relative)))
     for change in rule["groups"]:
         assert change["group"] not in result["segments"][change["segment"]].get("alignments", [])
         for word, entry in change["before_entries"].items():

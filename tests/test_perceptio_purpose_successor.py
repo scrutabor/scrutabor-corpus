@@ -326,10 +326,14 @@ def test_actual_help_topology_and_own_voice_fault_then_same_inputs_recover(fault
 @pytest.mark.parametrize("fault", LEDGER_FAULTS)
 def test_same_actual_ledger_reaches_native_and_strict_inverse_then_recovers(fault, monkeypatch):
     rule = DATA["ledger"]
-    raw = before_adoro_bytes(rule["relative"], (ROOT / rule["relative"]).read_bytes())
+    # Native validation must receive the actual complete current ledger. Only
+    # the historical inverse below constructs its own predecessor view.
+    raw = (ROOT / rule["relative"]).read_bytes()
     actual = json.loads(raw)
     rows = actual["sites"]
-    row = rows[rule["index"]]
+    index = next(i for i, entry in enumerate(rows) if entry["site"] == rule["after"]["site"])
+    row = rows[index]
+    assert row == rule["after"]
     refs, saved_row, whole = list(rows), deepcopy(row), deepcopy(actual)
     recorded, errors = translation_provenance.load(ROOT)
     assert errors == []
@@ -360,7 +364,6 @@ def test_same_actual_ledger_reaches_native_and_strict_inverse_then_recovers(faul
             row["familiar_core"] = True
         else:
             assert fault == "order"
-            index = rule["index"]
             rows[index], rows[index + 1] = rows[index + 1], rows[index]
         messages, _ = translation_provenance.check(ROOT)
         assert calls[-1] is recorded and recorded[rule["after"]["site"]] is row
@@ -384,7 +387,7 @@ def test_same_actual_ledger_reaches_native_and_strict_inverse_then_recovers(faul
     finally:
         restore(row, saved_row)
         rows[:] = refs
-    assert rows[rule["index"]] is row and actual == whole
+    assert rows[index] is row and actual == whole
     assert all(recorded[site] is entry for site, entry in polish.items())
     assert {site: recorded[site] for site in polish} == polish_saved
     assert before_perceptio_ledger(rule["relative"], actual) == expected

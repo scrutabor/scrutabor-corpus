@@ -22,6 +22,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_edition_object, before_edition_revision
+
 from checks.layout import formatted
 
 DATA = json.loads((Path(__file__).parent / "fixtures/ordo-notes-successor.json").read_bytes())
@@ -84,6 +86,7 @@ def before_ordo_notes_bytes(relative, raw):
     rule = DATA["files"].get(relative)
     if rule is None:
         return raw
+    raw = before_edition_revision(relative, raw)
     if relative == GRAPH:
         try:
             value = json.loads(raw)
@@ -112,6 +115,7 @@ def before_ordo_notes_object(relative, value):
     """A parsed JSON file (or the graph, or a records mapping taken from it)."""
     if relative == GRAPH:
         return before_ordo_notes_graph(value)
+    value = before_edition_object(relative, value)
     rule = DATA["files"].get(relative)
     if rule is None or "layout" not in rule or not isinstance(value, dict):
         return value

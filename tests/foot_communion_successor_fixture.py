@@ -31,6 +31,7 @@ from caption_followups_successor_fixture import (
     before_followups_layer,
     before_followups_object,
 )
+from edition_revision_fixture import before_edition_layer
 from ordo_notes_successor_fixture import (
     before_ordo_notes_bytes,
     before_ordo_notes_graph,
@@ -166,6 +167,7 @@ def before_foot_communion_layer_frame(layer, diagnostic=DIAGNOSTIC):
     Only the declared entries are bound; a fault anywhere else stays in the copy for
     the older oracle that reads it.
     """
+    layer = before_edition_layer(layer)
     layer = before_followups_layer(layer)
     layer = before_possessive_b4_layer_frame(layer)
     layer = before_possessive_b3_layer_frame(layer)

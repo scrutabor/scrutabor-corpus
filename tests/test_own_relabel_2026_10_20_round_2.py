@@ -20,6 +20,7 @@ from pathlib import Path
 
 import pytest
 from corpus_christi_epistle_fixture import expected_corpus_christi_epistle_row
+from edition_revision_fixture import current_edition_target_sha
 from lauda_sion_fixture import SITES as LAUDA_SITES
 from lauda_sion_fixture import predecessor_wording
 from marian_chant_fixture import expected_marian_row
@@ -280,6 +281,8 @@ def assert_wording_unchanged(site, row, target):
     if site in EXACT_WORDING_TARGETS:
         before, expected = EXACT_WORDING_TARGETS[site]
         assert LABELS[site]["target_sha256"] == before, "predecessor wording"
+    text, segment, language = site.rsplit(".", 2)
+    expected = current_edition_target_sha(text, language, segment, expected)
     assert row["target_sha256"] == expected, "unchanged wording"
     assert canonical_hash(target) == expected, "unchanged wording"
 

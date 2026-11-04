@@ -5,6 +5,7 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_edition_layer
 from possessive_sweep_b2_successor_fixture import before_possessive_b2_layer
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,7 +26,7 @@ def require(condition, message):
 
 def before_dies_irae_government_layer(layer):
     """Accept the complete named successor; never normalize a native input."""
-    comparison = deepcopy(layer)
+    comparison = before_edition_layer(deepcopy(layer))
     if layer.get("text") != DATA["text"]:
         return comparison
     comparison = before_possessive_b2_layer(comparison)

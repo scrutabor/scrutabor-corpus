@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from adoro_te_devote_successor_fixture import before_adoro_bytes
 from canon_consecration_successor_fixture import (
     DATA,
     DIAGNOSTIC,
@@ -185,7 +186,7 @@ def test_successor_names_exactly_the_changed_files_and_texts():
 def test_every_changed_file_inverts_to_its_exact_predecessor(relative):
     rule = DATA["files"][relative]
     actual = (ROOT / relative).read_bytes()
-    notes_raw = before_ordo_notes_bytes(relative, actual)
+    notes_raw = before_ordo_notes_bytes(relative, before_adoro_bytes(relative, actual))
     raw = before_foot_communion_bytes(relative, before_arrow_bytes(relative, notes_raw))
     assert hashlib.sha256(raw).hexdigest() == rule["after_sha256"]
     previous = before_canon_bytes(relative, raw)

@@ -72,7 +72,8 @@ from kalendarium.dismissal import calendar_table as dismissal_table
 # 6.8.0 carries the closed source-owned Lavabo segment omissions in neutral catalogue1.4.
 # 6.9.0 exposes authored commemoration slot ownership (selection schema 2.2.0).
 # 6.10.0 adds complete Requiem assembly and closed Ordinary performance.
-SCHEMA = "6.10.0"
+# 6.11.0 adds the closed Holy Thursday/Vigil prescriptions in catalogue 1.6.0.
+SCHEMA = "6.11.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.

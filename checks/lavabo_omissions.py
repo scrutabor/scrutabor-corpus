@@ -7,7 +7,7 @@ from pathlib import Path
 
 LEGACY_SCHEMA = "1.3.0"
 OMISSION_SCHEMA = "1.4.0"
-CATALOG_SCHEMA = "1.5.0"
+CATALOG_SCHEMA = "1.6.0"
 DESCRIPTOR = {
     "text": "ordinarium.lavabo",
     "segments": ["s09", "s10"],
@@ -33,9 +33,13 @@ def required(doc: dict) -> bool:
 
 def errors(doc: dict, corpus: Path) -> list[str]:
     from checks.requiem_assembly import assembly_errors, is_requiem
+    from checks.triduum_assembly import assembly_errors as triduum_errors
+    from checks.triduum_assembly import is_triduum
 
     if is_requiem(doc):
         return assembly_errors(doc, corpus)
+    if is_triduum(doc):
+        return triduum_errors(doc, corpus)
     needed = required(doc)
     schema = OMISSION_SCHEMA if needed else LEGACY_SCHEMA
     result = []

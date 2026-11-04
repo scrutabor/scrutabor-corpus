@@ -17,6 +17,7 @@ from caption_followups_successor_fixture import (
     before_followups_layer,
     before_followups_object,
 )
+from edition_revision_fixture import read_predecessor
 from foot_communion_successor_fixture import before_foot_communion_bytes
 
 from build_reader import store
@@ -96,7 +97,7 @@ def test_the_fixture_names_exactly_the_changed_files_and_pins_their_bytes():
     assert [len(kinds(kind)) for kind in ("core", "layer", "ledger")] == [8, 6, 15]
     for relative, rule in FILES.items():
         # The file as this successor left it: the newer declared successor is undone on a copy.
-        raw = before_adoro_bytes(relative, (ROOT / relative).read_bytes())
+        raw = before_adoro_bytes(relative, read_predecessor(ROOT, relative))
         assert sha(raw) == rule["after_sha256"] != rule["before_sha256"], relative
         assert sha(before_followups_bytes(relative, raw)) == rule["before_sha256"], relative
 
@@ -258,7 +259,7 @@ def test_unrelated_values_pass_through_untouched():
 
 @pytest.mark.parametrize("relative", sorted(FILES))
 def test_the_chain_entries_reach_this_predecessor_first(relative):
-    raw = (ROOT / relative).read_bytes()
+    raw = read_predecessor(ROOT, relative)
     previous_raw = before_followups_bytes(relative, raw)
     assert previous_raw != raw
     for entry in (before_foot_communion_bytes, before_canon_bytes):

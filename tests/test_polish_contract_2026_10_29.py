@@ -11,6 +11,7 @@ from canon_consecration_successor_fixture import (
     before_canon_layer,
     before_canon_object,
 )
+from edition_revision_fixture import read_predecessor
 from polish_contract_fixture import (
     DATA,
     LEDGER,
@@ -67,7 +68,7 @@ PROSE = (
 CAPTIONS = (
     (GOSPEL, "w130", "sepes", "opłotki"),
     (GOSPEL, "w133", "intráre", "do wejścia"),
-    (COMMUNICANTES, "w001", "Communicántes", "trwając we wspólnocie"),
+    (COMMUNICANTES, "w001", "Communicántes", "Trwając we wspólnocie"),
     (QUAM, "w010", "ratam", "zatwierdzoną"),
     (FILI, "w047", "permíttas", "nie pozwól"),
     (POSTCOMMUNION, "w009", "mystérii", "w tajemnicy"),
@@ -90,14 +91,14 @@ LINES = (
         "s01",
         "w001",
         "w006",
-        "trwając we wspólnocie i pamięć czcząc przede wszystkim",
+        "Trwając we wspólnocie i pamięć czcząc przede wszystkim",
     ),
     (
         FILI,
         "s04",
         "w035",
         "w047",
-        "i spraw abym Twoich zawsze trwał przy przykazaniach i od Ciebie nigdy być odłączonym "
+        "i spraw abym zawsze trwał przy Twoich przykazaniach i od Ciebie nigdy być odłączonym "
         "nie pozwól",
     ),
     (
@@ -252,8 +253,7 @@ def test_previous_wording_is_valid_schema_but_rejected_and_recovers(text, fault)
 
 @pytest.mark.parametrize("rule", DATA["layers"], ids=lambda rule: rule["id"])
 def test_exact_layer_inverse_restores_only_declared_fields(rule):
-    path = ROOT / rule["relative"]
-    raw = path.read_bytes()
+    raw = read_predecessor(ROOT, rule["relative"])
     actual = json.loads(raw)
     saved = deepcopy(actual)
     current_raw = before_canon_bytes(rule["relative"], raw)
@@ -264,7 +264,9 @@ def test_exact_layer_inverse_restores_only_declared_fields(rule):
     assert digest(before) == rule["before_canonical_sha256"]
     assert hashlib.sha256(before_raw).hexdigest() == rule["before_raw_sha256"]
     assert json.loads(before_raw) == before
-    assert before is not actual and actual == saved and path.read_bytes() == raw
+    assert (
+        before is not actual and actual == saved and read_predecessor(ROOT, rule["relative"]) == raw
+    )
     for operation in rule["operations"]:
         assert (
             current_polish_contract_value(rule["text"], operation["pointer"], operation["before"])
@@ -280,7 +282,7 @@ def test_exact_layer_inverse_restores_only_declared_fields(rule):
 
 @pytest.mark.parametrize("rule", DATA["layers"], ids=lambda rule: rule["id"])
 def test_unrelated_layer_change_cannot_hide_in_inverse(rule):
-    actual = json.loads((ROOT / rule["relative"]).read_bytes())
+    actual = json.loads(read_predecessor(ROOT, rule["relative"]))
     saved = deepcopy(actual)
     first, field = next(
         (sid, key)
@@ -300,7 +302,7 @@ def test_unrelated_layer_change_cannot_hide_in_inverse(rule):
 
 def test_exact_ledger_inverse_restores_only_declared_rows():
     relative = LEDGER["relative"]
-    raw = (ROOT / relative).read_bytes()
+    raw = read_predecessor(ROOT, relative)
     actual = json.loads(raw)
     saved = deepcopy(actual)
     current = before_canon_object(relative, actual)
@@ -317,7 +319,7 @@ def test_exact_ledger_inverse_restores_only_declared_rows():
         for i, pair in enumerate(zip(current["sites"], before["sites"], strict=True))
         if pair[0] != pair[1]
     ] == [change["index"] for change in LEDGER["rows"]]
-    assert before is not actual and actual == saved and (ROOT / relative).read_bytes() == raw
+    assert before is not actual and actual == saved and read_predecessor(ROOT, relative) == raw
     with pytest.raises(AssertionError, match=r"^Polish contract ledger(?:\n|$)"):
         before_polish_contract_ledger(relative, before)
     with pytest.raises(AssertionError, match=r"^exact Polish contract bytes(?:\n|$)"):

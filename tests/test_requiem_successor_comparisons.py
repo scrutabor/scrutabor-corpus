@@ -9,6 +9,7 @@ import pytest
 from adoro_te_devote_successor_fixture import before_adoro_graph, before_adoro_object
 from canon_consecration_successor_fixture import before_canon_graph, before_canon_object
 from documentary_successor_fixture import before_agency_ledger, before_language_successors
+from edition_revision_fixture import before_edition_object
 from english_contract_successor_fixture import before_english_contract_record_bytes
 from english_register_successor_fixture import before_english_register_record_bytes
 from lent_easter_successor_fixture import before_lent_easter_bytes, before_lent_easter_ledger
@@ -60,7 +61,7 @@ def test_real_current_inputs_validate_before_any_comparison_inverse():
     saved = deepcopy((graph, languages))
     assert bibliography.validate(ROOT, graph, languages) == []
     assert translation_provenance.check(ROOT)[0] == []
-    arrow_graph = before_arrow_graph(graph)
+    arrow_graph = before_arrow_graph(before_adoro_graph(graph))
     assert digest(before_canon_graph(arrow_graph)) == DATA["graph_frames"]["after"]
     comparison = before_requiem_graph(graph)
     assert digest(comparison) == DATA["graph_frames"]["before"]
@@ -182,22 +183,33 @@ def test_exact_new_graph_membership_fields_and_order_reject_then_recover(collect
 def test_unrelated_graph_fault_survives_comparison_and_public_validator_rejects_it():
     graph, languages = bibliography.load(ROOT)
     saved = deepcopy(graph)
+    historical = before_edition_object("bibliography/graph.json", graph)
+    historical_saved = deepcopy(historical)
     row = graph["uses"][0]
+    old_row = next(use for use in historical["uses"] if use["id"] == row["id"])
     original = deepcopy(row)
     try:
         row["edition"] = "unknown-existing-edition-control"
+        old_row["edition"] = row["edition"]
         # The public validator sees the same damaged current object first.
         assert any(
             "unknown-existing-edition-control" in error
             for error in bibliography.validate(ROOT, graph, languages)
         )
-        comparison = before_requiem_graph(graph)
+        assert before_edition_object("bibliography/graph.json", graph) is graph
+        with pytest.raises(AssertionError):
+            before_requiem_graph(graph)
+        # The original older guard receives the same fault on its deliberately
+        # established predecessor, independently of the actual native rejection.
+        comparison = before_requiem_graph(historical)
         assert comparison["uses"][0] == row
         assert digest(comparison) != DATA["graph_frames"]["before"]
         assert graph != saved
     finally:
         restore(row, original)
+        restore(historical, historical_saved)
     assert graph == saved and any(value is row for value in graph["uses"])
+    assert digest(before_requiem_graph(historical)) == DATA["graph_frames"]["before"]
     assert bibliography.validate(ROOT, graph, languages) == []
 
 

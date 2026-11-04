@@ -569,8 +569,8 @@ def test_historical_wording_basis_is_only_embedded_gloria(language):
     assert published[0]["address"] == {"kind": "word", "word": "w030"}
     assert published[0]["claim"] == CLAIMS[language]
     coverage = bibliography.evidence_coverage(ROOT, graph, packages)["languages"][language]
-    # Supported historical uses in two Requiem texts extend normalized coverage.
-    assert coverage["normalized"] == {"pl": 104, "en": 244}[language]
+    # The joined edition adds the supported source uses and complete Thursday Agnus.
+    assert coverage["normalized"] == {"pl": 107, "en": 246}[language]
 
 
 @pytest.mark.parametrize("language", ["pl", "en"])

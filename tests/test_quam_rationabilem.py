@@ -7,7 +7,6 @@ from pathlib import Path
 
 import pytest
 import test_main_ordo_registrations as registrations
-from adoro_te_devote_successor_fixture import before_adoro_bytes
 from canon_consecration_successor_fixture import (
     before_canon_bytes,
     before_canon_core_frame,
@@ -186,13 +185,16 @@ def test_EN_only_note_scope_rejects_and_restores(fault):
 def test_one_row_actual_input_and_whole_frame_inverse(fault, monkeypatch):
     current()
     relative = DATA["ledger_relative"]
-    raw = before_adoro_bytes(relative, (ROOT / relative).read_bytes())
+    # Native validation gets the complete current ledger, while the inverse
+    # below alone creates the exact historical comparison.
+    raw = (ROOT / relative).read_bytes()
     actual = json.loads(raw)
     saved, same_input = deepcopy(actual), actual
     rows = actual["sites"]
     original_order = list(rows)
     rule = DATA["ledger_change"]
-    row = rows[rule["index"]]
+    index = next(i for i, entry in enumerate(rows) if entry["site"] == rule["after"]["site"])
+    row = rows[index]
     row_saved = deepcopy(row)
     assert row == rule["after"]
     recorded, errors = translation_provenance.load(ROOT)
@@ -232,7 +234,6 @@ def test_one_row_actual_input_and_whole_frame_inverse(fault, monkeypatch):
             diagnostic = f"{site}: stale or incorrect familiar_core"
         else:
             assert fault == "order"
-            index = rule["index"]
             rows[index], rows[index + 1] = rows[index + 1], rows[index]
             diagnostic = None
         messages, _ = translation_provenance.check(ROOT)

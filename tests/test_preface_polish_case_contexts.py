@@ -6,6 +6,7 @@ from copy import deepcopy
 from typing import Any
 
 import pytest
+from edition_revision_fixture import before_edition_layer, before_edition_object
 from opening_caption_fixture import restore_opening_layer
 from polish_reader_successor_fixture import (
     before_apostles_role_comparison,
@@ -220,7 +221,9 @@ def assert_context(core, layer, slug):
 
 
 def assert_protected(core, layer, slug):
-    restored = deepcopy(layer)
+    restored = before_edition_layer(layer)
+    if restored is layer:
+        restored = deepcopy(layer)
     assert list(restored["words"]) == [
         w["id"] for segment in core["segments"] for w in segment.get("words", [])
     ]
@@ -255,7 +258,11 @@ def assert_source_and_english(core, english, slug):
     assert (
         canonical_hash(without_preface_delivery(comparison_core)) == BASELINES[slug]["core_digest"]
     )
-    assert canonical_hash(restore_opening_layer(english)) == BASELINES[slug]["english_digest"]
+    relative = f"languages/en/texts/{core['id'].replace('.', '/', 1)}.json"
+    assert check_layer(core, english, CORPUS / relative) == []
+    assert check(core, english) == []
+    comparison = before_edition_object(relative, english)
+    assert canonical_hash(restore_opening_layer(comparison)) == BASELINES[slug]["english_digest"]
 
 
 def test_scoped_population():

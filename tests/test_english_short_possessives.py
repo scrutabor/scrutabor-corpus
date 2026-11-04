@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import read_predecessor
 from english_possessive_successor_fixture import (
     DATA,
     before_short_possessive_bytes,
@@ -145,7 +146,7 @@ def test_actual_reader_caption_damage_and_same_artifact_recovery(reader_copy, ru
 def test_complete_successor_inverses_reject_drift_and_recover_same_input(rule):
     core, actual = subject(rule)
     native(core, actual)
-    raw = (ROOT / rule["relative"]).read_bytes()
+    raw = read_predecessor(ROOT, rule["relative"])
     saved, same_input = deepcopy(actual), actual
     comparison = before_short_possessive_layer(rule["relative"], actual)
     old_raw = before_short_possessive_bytes(rule["relative"], raw)
@@ -220,7 +221,7 @@ def test_complete_successor_inverses_reject_drift_and_recover_same_input(rule):
     assert before_short_possessive_layer(rule["relative"], actual) == comparison
     assert before_short_possessive_caption_frame(rule["relative"], actual) == comparison
     native(core, actual)
-    assert (ROOT / rule["relative"]).read_bytes() == raw
+    assert read_predecessor(ROOT, rule["relative"]) == raw
 
 
 def test_anima_caption_comparison_keeps_actual_bad_prose_for_original_oracle():

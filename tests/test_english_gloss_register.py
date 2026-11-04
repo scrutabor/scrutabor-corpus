@@ -23,6 +23,7 @@ from pathlib import Path
 
 import pytest
 import test_english_register as register
+from edition_revision_fixture import current_edition_caption
 from lauda_sion_fixture import TEXT as LAUDA_TEXT
 from lauda_sion_fixture import predecessor_core, predecessor_layer
 from possessive_sweep_b1_successor_fixture import possessive_b1_caption
@@ -643,7 +644,7 @@ LINES = (
         "s05",
         "w044",
         "w048",
-        ("be it done", "to me", "according to", "word", "your"),
+        ("be it done", "to me", "according to", "your word"),
     ),
 )
 
@@ -815,6 +816,9 @@ def diagnostics(text, core, layer):
     words = latin(core)
     for segment, ids, caption, kind, lemma, analysis in SITES.get(text, ()):
         ids, caption = possessive_b1_caption("en", text, ids, caption)
+        successor = current_edition_caption("en", text, segment, ids, caption)
+        if successor is not None:
+            ids, caption = tuple(successor["words"]), successor["gloss"]
         where = f"{text}:{segment}:{'+'.join(ids)}"
         anchor = next((w for w in ids if words.get(w, {}).get("lemma") == lemma), None)
         if anchor is None or parse(words[anchor]) != analysis:
@@ -845,7 +849,11 @@ def fixture_diagnostics(payload):
     found = []
     for text, rows in SITES.items():
         layer = load(text, "en")
-        for segment, ids, _, _, _, _ in rows:
+        for segment, ids, caption, _, _, _ in rows:
+            ids, caption = possessive_b1_caption("en", text, ids, caption)
+            successor = current_edition_caption("en", text, segment, ids, caption)
+            if successor is not None:
+                ids = tuple(successor["words"])
             _, path = realization(layer, segment, ids)
             if (text, path) in listed:
                 found.append(f"fixture:{text}:{path}: corrected field still listed")
@@ -934,7 +942,7 @@ MUTANTS = {
     ),
     "referent": (
         "orationes.pater-noster",
-        set_caption("s02", ("w009",), "your"),
+        set_caption("s02", ("w008", "w009"), "your name"),
     ),
     "person": (LITANY, set_caption("s146", ("w466",), "forsake")),
     "article": (

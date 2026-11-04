@@ -285,7 +285,7 @@ DIRECT = {
         "23": "and",
         "24": "of the Son",
         "25": "and",
-        "28": "amen",
+        "28": "Amen",
     },
 }
 GROUPS = {
@@ -298,7 +298,7 @@ GROUPS = {
     ],
     "en": [
         ("s01", [1, 2, 3], 3, "Please give your blessing, sir"),
-        ("s02", [4, 5], 5, "may the Lord be"),
+        ("s02", [4, 5], 5, "May the Lord be"),
         ("s02", [7, 8], 7, "your heart"),
         ("s02", [11, 12], 11, "your lips"),
         ("s02", [14, 15, 16, 17], 17, "you may worthily and fittingly proclaim"),
@@ -650,6 +650,25 @@ def test_human_request_divine_subject_and_purpose_referents_stay_distinct(kind):
 @pytest.mark.parametrize("kind,language,number", CAPTION_CASES, ids=CAPTION_IDS)
 def test_every_source_word_has_its_one_contextual_realization(kind, language, number):
     assert_caption(core(kind), layer(kind, language), kind, language, number)
+
+
+@pytest.mark.parametrize("kind", TEXTS)
+def test_old_lowercase_amen_rejects_and_same_current_caption_recovers(kind):
+    doc, target = core(kind), layer(kind, "en")
+    saved = copy.deepcopy(target)
+    assert_caption(doc, target, kind, "en", 28)
+    try:
+        target["words"]["w028"]["gloss"] = "amen"
+        assert target != saved
+        assert check_layer(doc, target, store.layer_path(ROOT, "en", TEXTS[kind])) == []
+        with pytest.raises(AssertionError) as caught:
+            assert_caption(doc, target, kind, "en", 28)
+        assert str(caught.value).splitlines()[0] == f"caption:{kind}:en:w028"
+    finally:
+        target.clear()
+        target.update(saved)
+    assert target == saved
+    assert_caption(doc, target, kind, "en", 28)
 
 
 @pytest.mark.parametrize("kind,language", LAYER_CASES, ids=LAYER_IDS)

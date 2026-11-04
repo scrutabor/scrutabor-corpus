@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_edition_layer, read_predecessor
 from english_possessive_successor_fixture import (
     DATA as SIX,
 )
@@ -119,10 +120,11 @@ def test_actual_alignment_fault_rejects_then_same_input_recovers(fault):
 
 def test_complete_extended_inverse_reaches_unchanged_six_group_predecessor():
     core, layer = current()
+    layer = before_edition_layer(layer)
     saved = deepcopy(layer)
     old_rule = next(rule for rule in SIX["layers"] if rule["relative"] == DATA["relative"])
     comparison = before_short_possessive_layer(DATA["relative"], layer)
-    raw = (ROOT / DATA["relative"]).read_bytes()
+    raw = read_predecessor(ROOT, DATA["relative"])
     old_raw = before_short_possessive_bytes(DATA["relative"], raw)
     assert digest(comparison) == old_rule["before_canonical_sha256"]
     assert hashlib.sha256(old_raw).hexdigest() == old_rule["before_raw_sha256"]
@@ -137,6 +139,7 @@ def test_complete_extended_inverse_reaches_unchanged_six_group_predecessor():
 @pytest.mark.parametrize("fault", ["unrelated-caption", "word-help", "extra-field"])
 def test_exact_frame_drift_is_rejected_then_same_input_recovers(fault):
     core, original = current()
+    original = before_edition_layer(original)
     changed = deepcopy(original)
     same_input = changed
     try:
@@ -159,6 +162,7 @@ def test_exact_frame_drift_is_rejected_then_same_input_recovers(fault):
 
 def test_caption_comparison_keeps_actual_prose_damage_for_its_original_oracle():
     core, original = current()
+    original = before_edition_layer(original)
     changed = deepcopy(original)
     same_input = changed
     try:

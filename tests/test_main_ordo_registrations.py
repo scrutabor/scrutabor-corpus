@@ -10,6 +10,7 @@ from pathlib import Path
 import pytest
 from canon_consecration_successor_fixture import before_canon_core_bytes
 from chant_fragment_fixture import before_chant_graph, before_chant_registry
+from edition_revision_fixture import before_edition_object, before_edition_revision
 from foot_communion_successor_fixture import before_foot_communion_core_bytes
 from lateran_epistle_source_fixture import before_lateran_graph, before_lateran_registry
 from offertory_rubric_successor_fixture import before_offertory_core_bytes
@@ -63,7 +64,8 @@ def assert_registered_payload(root, graph, row):
     assert hashlib.sha256(raw).hexdigest() == row["transcription_sha256"]
     core = root / ("texts/" + row["text"].replace(".", "/", 1) + ".json")
     core_raw = core.read_bytes()
-    comparison_raw = before_perceptio_core_bytes(row["text"], core_raw)
+    comparison_raw = before_edition_revision(str(core.relative_to(root)), core_raw)
+    comparison_raw = before_perceptio_core_bytes(row["text"], comparison_raw)
     comparison_raw = before_canon_core_bytes(row["text"], comparison_raw)
     comparison_raw = before_quam_core_bytes(row["text"], comparison_raw)
     comparison_raw = before_pater_agnus_core_bytes(row["text"], comparison_raw)
@@ -80,7 +82,8 @@ def assert_registered_payload(root, graph, row):
     assert hashlib.sha256((actual.text + "\n").encode()).hexdigest() == row["body_sha256"]
     witness = record(graph, "witnesses", row["witness_record"]["id"])
     assert witness == row["witness_record"]
-    notes_use = before_ordo_notes_use(record(graph, "uses", witness["use"]))
+    comparison_graph = before_edition_object(GRAPH, graph)
+    notes_use = before_ordo_notes_use(record(comparison_graph, "uses", witness["use"]))
     assert before_arrow_use(notes_use) == row["use_record"]
     assert witness["review"] == {"status": "pending"}
     subject = witness_subject(root, witness, graph, doc)
@@ -434,28 +437,42 @@ def test_exaltation_comparison_rejects_exact_record_damage_and_same_graph_recove
         "witness": ("witnesses", EXALTATION["witness"]["after"]),
     }
     field, expected = fields[part]
+    historical = before_edition_object(GRAPH, graph)
+    historical_saved = deepcopy(historical)
     current = record(graph, field, expected["id"])
+    old_current = record(historical, field, expected["id"])
     try:
         if fault == "missing":
             graph[field].remove(current)
+            historical[field].remove(old_current)
         elif fault == "wrong":
             if field == "witnesses":
                 current["transcription_sha256"] = "0" * 64
+                old_current["transcription_sha256"] = "0" * 64
             else:
                 current["claim"] += " Changed."
+                old_current["claim"] += " Changed."
         elif fault == "extra":
             current["unexpected"] = True
+            old_current["unexpected"] = True
         else:
             graph[field].append(deepcopy(current))
+            historical[field].append(deepcopy(old_current))
         assert graph != saved
+        assert before_edition_object(GRAPH, graph) is graph
+        with pytest.raises(AssertionError):
+            before_registrations(graph, registry)
         with pytest.raises(
             AssertionError, match=r"^exact Exaltation comparison source record(?:\n|$)"
         ):
-            before_registrations(graph, registry)
+            before_registrations(historical, registry)
     finally:
         graph.clear()
         graph.update(saved)
+        historical.clear()
+        historical.update(historical_saved)
         assert graph == saved and registry == saved_registry
         before_registrations(graph, registry)
+        before_registrations(historical, registry)
         current_witness = record(graph, "witnesses", EXALTATION["witness"]["after"]["id"])
         assert witness_subject(ROOT, current_witness, graph, doc) == subject

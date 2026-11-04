@@ -16,6 +16,7 @@ OMITTED = {
     "dominica-i-passionis",
     "dominica-ii-passionis",
     "feria-v-in-cena-domini",
+    "vigilia-paschalis",
     "commemoratio-omnium-fidelium-defunctorum",
     "commemoratio-omnium-fidelium-defunctorum-missa-ii",
     "commemoratio-omnium-fidelium-defunctorum-missa-iii",
@@ -84,6 +85,15 @@ def test_all_authored_fields_and_both_omission_shapes_project_independently(actu
                         {"text": "ordinarium.benedictio", "reason": "requiem-blessing"},
                     ]
                 )
+            if doc["id"] == "feria-v-in-cena-domini":
+                omissions.append(
+                    {"text": "ordinarium.qui-dixisti", "reason": "triduum-peace-prayer"}
+                )
+            elif doc["id"] == "vigilia-paschalis":
+                omissions = [
+                    {"text": "ordinarium.agnus-dei", "reason": "vigil-agnus-dei"},
+                    {"text": "ordinarium.qui-dixisti", "reason": "triduum-peace-prayer"},
+                ]
             assert doc["ordinary_omissions"] == omissions
             row["ordinary_omissions"] = copy.deepcopy(omissions)
             for omission in row["ordinary_omissions"]:
@@ -94,8 +104,8 @@ def test_all_authored_fields_and_both_omission_shapes_project_independently(actu
         expected.append(row)
     forms, calendar = actual_inputs
     assert len(expected) == 114
-    assert sum(bool(row["ordinary_omissions"]) for row in expected) == 6
-    assert sum(not row["ordinary_omissions"] for row in expected) == 108
+    assert sum(bool(row["ordinary_omissions"]) for row in expected) == 7
+    assert sum(not row["ordinary_omissions"] for row in expected) == 107
     assert forms == expected == emit.formulary_catalog(ROOT)["formularies"]
     assert calendar == emit.kalendarium()
     assert authored == saved
@@ -127,7 +137,7 @@ def test_forged_omission_or_calendar_is_rejected_and_same_inputs_recover(
     forms, calendar = copy.deepcopy(actual_inputs)
     saved_forms, saved_calendar = copy.deepcopy((forms, calendar))
     omitted = next(row for row in forms if row["id"] == "dominica-i-passionis")
-    retained = next(row for row in forms if row["id"] == "vigilia-paschalis")
+    retained = next(row for row in forms if row["id"] == "dominica-resurrectionis")
     assert (
         producer(consumer).calendar_table(forms, calendar, corpus=ROOT) == actual_tables[consumer]
     )

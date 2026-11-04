@@ -9,13 +9,14 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_edition_layer, before_edition_target_row
 from english_register_successor_fixture import before_english_register_text_layer
 from possessive_sweep_b2_successor_fixture import before_possessive_b2_layer
 
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
 from checks import interlinear, language_packs, prose
-from checks.translation_provenance import canonical_hash
+from checks.translation_provenance import canonical_hash, source_payload
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE = json.loads(
@@ -73,6 +74,7 @@ def reviewed_keep(layer, case):
 
 
 def preserved(layer, case):
+    layer = before_edition_layer(layer)
     layer = before_possessive_b2_layer(layer)
     layer = before_english_register_text_layer(layer, "unchanged contextual remainder")
     restored = deepcopy(layer)
@@ -113,7 +115,14 @@ def test_complete_layers_preserve_context_and_reader_roundtrip(case):
     ledger = json.loads(
         (ROOT / "languages" / case["language"] / "translation-provenance.json").read_text()
     )
-    assert [row for row in ledger["sites"] if row["text"] == case["text"]] == case["provenance"]
+    actual_rows = [row for row in ledger["sites"] if row["text"] == case["text"]]
+    for row in actual_rows:
+        segment = next(s for s in core["segments"] if s["id"] == row["segment"])
+        assert row["source_sha256"] == canonical_hash(source_payload(segment))
+        assert row["target_sha256"] == canonical_hash(
+            layer["segments"][row["segment"]]["translation"]
+        )
+    assert [before_edition_target_row(row) for row in actual_rows] == case["provenance"]
     base, target, tables = compact(core, layer)
     want_core, want_layers = emit._strip(
         expand_core(core), {case["language"]: enrich_layer(core, layer)}

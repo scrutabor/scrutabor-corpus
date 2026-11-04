@@ -4,6 +4,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_edition_layer
+
 FIXTURE = json.loads(
     (Path(__file__).parent / "fixtures/post-ascension-fields.json").read_text(encoding="utf-8")
 )
@@ -18,7 +20,7 @@ def value_at(document, keys):
 
 def restore_layer(layer, relative):
     """Reverse only exact named current fields; preserve every other field."""
-    result = deepcopy(layer)
+    result = deepcopy(before_edition_layer(layer))
     for field in FIXTURE["language_changes"][relative]:
         parent = value_at(result, field["keys"][:-1])
         key = field["keys"][-1]

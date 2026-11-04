@@ -19,11 +19,12 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
-from adoro_te_devote_successor_fixture import before_adoro_bytes
+from adoro_te_devote_successor_fixture import before_adoro_bytes, before_adoro_object
 from caption_followups_successor_fixture import (
     before_followups_bytes,
     before_followups_layer,
 )
+from edition_revision_fixture import before_edition_layer, read_predecessor
 from foot_communion_successor_fixture import (
     before_foot_communion_bytes,
     before_foot_communion_graph,
@@ -99,11 +100,12 @@ def before_canon_core_bytes(text, raw, diagnostic=DIAGNOSTIC):
 
 def before_canon_object(relative, value, diagnostic=DIAGNOSTIC):
     """Accept only the complete current file or its exact predecessor, as parsed JSON."""
+    value = before_adoro_object(relative, value)
     if relative not in DATA["files"]:
         return before_foot_communion_object(relative, value, diagnostic)
     value = before_possessive_b1_object(relative, value)
     value = before_arrow_object(relative, before_ordo_notes_object(relative, value))
-    actual = before_possessive_b1_bytes(relative, (ROOT / relative).read_bytes())
+    actual = before_possessive_b1_bytes(relative, read_predecessor(ROOT, relative))
     actual = before_ordo_notes_bytes(relative, actual)
     raw = before_foot_communion_bytes(relative, before_arrow_bytes(relative, actual), diagnostic)
     previous = json.loads(before_canon_bytes(relative, raw, diagnostic))
@@ -187,6 +189,7 @@ def before_canon_core_frame(core, diagnostic=DIAGNOSTIC):
 
 def before_canon_layer_frame(layer, diagnostic=DIAGNOSTIC):
     """Rejoin the divided translations and narratives on a copy of a layer-shaped value."""
+    layer = before_edition_layer(layer)
     layer = before_followups_layer(layer)
     layer = before_possessive_b4_layer_frame(layer)
     layer = before_possessive_b3_layer_frame(layer)

@@ -8,6 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_edition_layer, before_edition_target_row
 from english_register_successor_fixture import before_english_register_text_layer
 from negative_government_fixture import predecessor_layer, predecessor_rows
 from possessive_sweep_b3_successor_fixture import before_possessive_b3_layer
@@ -16,7 +17,7 @@ from possessive_sweep_b4_successor_fixture import before_possessive_b4_layer
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
 from checks import interlinear, language_packs, prose
-from checks.translation_provenance import canonical_hash
+from checks.translation_provenance import canonical_hash, source_payload
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE = json.loads(
@@ -99,6 +100,7 @@ def frame_readback(core, layer, frame):
 
 
 def preserved(layer, case):
+    layer = before_edition_layer(layer)
     layer = before_possessive_b4_layer(layer)
     layer = before_possessive_b3_layer(layer)
     layer = before_english_register_text_layer(layer, "unchanged seventh remainder")
@@ -142,15 +144,21 @@ def test_complete_real_layer_native_reader_and_predecessor_identity(case):
     preserved(layer, case)
     assert {
         sid: segment.get("translation")
-        for sid, segment in predecessor_layer(layer)["segments"].items()
+        for sid, segment in predecessor_layer(before_edition_layer(layer))["segments"].items()
     } == case["prose"]
     ledger = json.loads(
         (ROOT / "languages" / case["language"] / "translation-provenance.json").read_text()
     )
-    assert (
-        predecessor_rows([row for row in ledger["sites"] if row["text"] == case["text"]])
-        == case["provenance"]
-    )
+    actual_rows = [row for row in ledger["sites"] if row["text"] == case["text"]]
+    for row in actual_rows:
+        segment = next(s for s in core["segments"] if s["id"] == row["segment"])
+        assert row["source_sha256"] == canonical_hash(source_payload(segment))
+        assert row["target_sha256"] == canonical_hash(
+            layer["segments"][row["segment"]]["translation"]
+        )
+    assert [before_edition_target_row(row) for row in predecessor_rows(actual_rows)] == case[
+        "provenance"
+    ]
     base, target, tables = compact(core, layer)
     expected_core, expected_layers = emit._strip(
         expand_core(core), {case["language"]: enrich_layer(core, layer)}

@@ -18,6 +18,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_edition_object, before_edition_revision
+
 from build_reader.emit import _record_array
 from checks.layout import formatted
 
@@ -72,6 +74,7 @@ def _undo(rule, value):
 
 def before_adoro_object(relative, value):
     """A parsed file with the declared additions removed; unlisted files pass unchanged."""
+    value = before_edition_object(relative, value)
     rule = FILES.get(relative)
     if rule is None:
         return value
@@ -80,6 +83,7 @@ def before_adoro_object(relative, value):
 
 def before_adoro_bytes(relative, raw):
     """Whole-file bytes in the file's own layout; any other input reaches the old oracle."""
+    raw = before_edition_revision(relative, raw)
     rule = FILES.get(relative)
     if rule is None:
         return raw

@@ -8,6 +8,7 @@ from pathlib import Path
 import pytest
 from canon_consecration_successor_fixture import before_canon_bytes, before_canon_layer_frame
 from caption_followups_successor_fixture import before_followups_bytes
+from edition_revision_fixture import read_predecessor
 from foot_communion_successor_fixture import (
     before_foot_communion_bytes,
     before_foot_communion_layer_frame,
@@ -49,7 +50,7 @@ def core(text):
 
 def b4_bytes(relative):
     """The file as B4 left it: the newer declared successor is undone on a copy."""
-    return before_followups_bytes(relative, (ROOT / relative).read_bytes())
+    return before_followups_bytes(relative, read_predecessor(ROOT, relative))
 
 
 def layer(relative):

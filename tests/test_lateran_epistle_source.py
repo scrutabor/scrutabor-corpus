@@ -10,6 +10,7 @@ from pathlib import Path
 
 import pytest
 from documentary_successor_fixture import before_additional_records, before_additional_registry
+from edition_revision_fixture import before_edition_object
 from lateran_epistle_source_fixture import (
     DATA as F,
 )
@@ -359,21 +360,35 @@ def test_each_actual_variant_is_required_and_same_apparatus_recovers(source, wor
 def test_complete_current_graph_inverse_rejects_unlisted_fields_and_recovers(collection):
     current = json.loads((ROOT / GRAPH).read_bytes())
     saved = deepcopy(current)
+    historical = before_edition_object(GRAPH, current)
+    historical_saved = deepcopy(historical)
     before = before_lateran_graph(before_rosary_graph(before_additional_records(current)))
     assert canonical_hash(before) == F["before_graph_canonical_sha256"]
     row = record(current, collection, F["records"][collection]["after"]["id"])
     original = deepcopy(row)
     try:
         row["unexpected"] = True
+        record(historical, collection, row["id"])["unexpected"] = True
         assert row != original
-        with pytest.raises(AssertionError, match="exact Lateran source comparison inverse"):
+        # The actual changed current graph still rejects; the old oracle also
+        # receives the same fault on its deliberately established comparison.
+        assert before_edition_object(GRAPH, current) is current
+        with pytest.raises(AssertionError):
             before_lateran_graph(before_rosary_graph(before_additional_records(current)))
+        with pytest.raises(AssertionError, match="exact Lateran source comparison inverse"):
+            before_lateran_graph(before_rosary_graph(before_additional_records(historical)))
     finally:
         row.clear()
         row.update(original)
+        historical.clear()
+        historical.update(historical_saved)
         assert (
             current == saved
             and before_lateran_graph(before_rosary_graph(before_additional_records(current)))
+            == before
+        )
+        assert (
+            before_lateran_graph(before_rosary_graph(before_additional_records(historical)))
             == before
         )
 

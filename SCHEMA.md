@@ -161,8 +161,8 @@ source-derived prescriptions within that formulary's matching calendar/Office
 context, not generic rules inferred from its name, rank or season. No missing
 branch defaults to required. An unresolved branch is not an omission decision.
 
-The neutral reader catalogue has schema `1.5.0` (reader edition `6.10.0`).
-It preserves every `ordinary` branch. Passiontide de Tempore formularies retain
+The neutral reader catalogue has schema `1.6.0` (reader edition `6.11.0`).
+It preserves every `ordinary` branch. Passiontide de Tempore formularies other than Holy Thursday retain
 authored schema1.4.0 and the exact Lavabo descriptor below; unaffected forms
 retain1.3.0. The three All Souls formularies use authored1.5.0, add one shared
 `agnus-dei` component between `praefatio` and `communio`, and carry exactly:
@@ -179,6 +179,7 @@ retain1.3.0. The three All Souls formularies use authored1.5.0, add one shared
 The reader changes only dotted text addresses to slash addresses. Every emitted
 row carries `ordinary_omissions`: `[]` means retention; the one Lavabo row means
 only its doxology is omitted; the exact four rows above mean the Requiem scope.
+The two Triduum forms below are the only additional permitted descriptor sets.
 Arbitrary bodies, subsets, reasons, segments and extra fields are forbidden.
 The source rules are Ritus VII.6, X.4 and XIII.1. Introibo, Pax Domini, Haec
 commixtio, Placeat and the next two Communion prayers remain. No unconditional
@@ -196,6 +197,36 @@ bodies before making a nonmutating projection shared by flow, word addresses,
 captions, translations and print; unresolved contexts retain complete reference
 bodies. The hymn Gloria and its unchanged branches remain distinct from this
 doxology, especially on Holy Thursday. No full sacred wording is edited.
+
+The two authored Triduum forms use schema `1.6.0`. Holy Thursday retains its
+Lavabo descriptor and adds exactly
+`{"text":"ordinarium.qui-dixisti","reason":"triduum-peace-prayer"}`. It also
+requires one shared `agnus-dei` component, targeting
+`ordinarium.agnus-dei-in-cena-domini`, between `praefatio` and `communio`.
+That body has three distinct eight-word verses (s01–s03, w001–w024), each ending
+`miserére nobis`. The ordinary25-word and Requiem28-word forms keep their
+separate identities and complete study pages.
+
+The Easter Vigil carries exactly these ordered whole-body omissions:
+
+```json
+[
+  {"text":"ordinarium.agnus-dei","reason":"vigil-agnus-dei"},
+  {"text":"ordinarium.qui-dixisti","reason":"triduum-peace-prayer"}
+]
+```
+
+No Agnus component may be added to the Vigil. Both Triduum forms retain
+Pax Domini, Haec commixtio, Fili Dei vivi and Perceptio corporis; the source
+expressly withholds the kiss of peace without suppressing Pax Domini. No
+blanket blessing or Last Gospel omission is inferred. These prescriptions are
+bound to the exact authored identities, calendar keys, collections and seasons,
+not inferred from a date label or a generic Triduum class. Benziger1962 p.162,
+no.28 and p.216,no.7, independently collated with the Vatican setting p.159,
+no.28 and p.213,no.7, control this scope. Complete omitted and retained target
+bodies are checked before projection. The new allowed descriptor set requires
+catalogue1.6.0 and reader6.11.0; older/future protocols need explicit migration.
+Title-only language documents, bibliography schema and text schema do not change.
 
 The unchanged title-only authored documents and emitted language catalogues
 retain schema `1.2.0`; they may author neither `ordinary` nor

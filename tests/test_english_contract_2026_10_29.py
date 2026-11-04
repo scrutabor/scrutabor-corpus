@@ -16,6 +16,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import read_predecessor
 from english_contract_successor_fixture import (
     FILES,
     before_english_contract_bytes,
@@ -375,7 +376,7 @@ def test_split_cause_caption_is_rejected_and_recovers():
 @pytest.mark.parametrize("relative", sorted(FILES))
 def test_exact_predecessor_is_reachable_and_drift_is_rejected(relative):
     rule = FILES[relative]
-    current = (ROOT / relative).read_bytes()
+    current = read_predecessor(ROOT, relative)
     # The later English register successor is undone first; its own module pins the rest.
     raw = before_english_register_bytes(relative, current)
     actual = json.loads(raw)
@@ -392,4 +393,4 @@ def test_exact_predecessor_is_reachable_and_drift_is_rejected(relative):
     with pytest.raises(AssertionError, match=r"^English contract comparison bytes$"):
         before_english_contract_bytes(relative, raw + b" ")
     assert before_english_contract_object(relative, actual) == previous
-    assert (ROOT / relative).read_bytes() == current
+    assert read_predecessor(ROOT, relative) == current

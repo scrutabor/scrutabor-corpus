@@ -22,6 +22,7 @@ from pathlib import Path
 
 import pytest
 from anne_epistle_fixture import opening_case
+from edition_revision_fixture import current_edition_caption, current_edition_value
 from english_register_successor_fixture import english_register_caption_successor
 from possessive_sweep_b1_successor_fixture import possessive_b1_group
 from possessive_sweep_b2_successor_fixture import possessive_b2_group
@@ -931,6 +932,28 @@ def test_first_opening_caption_rejects_predecessor_and_restores(row):
         wrong = (*row[7], row[5], gloss[0].lower() + gloss[1:])
         row = (*row[:3], tuple(group["words"]), group["anchor"], gloss)
         row = (*row, tuple(change["latin"]), wrong)
+    if len(row[3]) == 1 and row[4] is None:
+        relative = f"languages/{row[0]}/texts/{row[1].replace('.', '/', 1)}.json"
+        successor = current_edition_value(relative, ["words", row[3][0], "gloss"], row[5])
+        if isinstance(successor, str) and successor != row[5]:
+            wrong = tuple(dict.fromkeys((*row[7], row[5], successor[0].lower() + successor[1:])))
+            row = (*row[:5], successor, row[6], tuple(v for v in wrong if v != successor))
+    edition_group = current_edition_caption(row[0], row[1], row[2], row[3], row[5])
+    if edition_group is not None:
+        old = row[5]
+        gloss = edition_group["gloss"]
+        wrong = tuple(dict.fromkeys((*row[7], old, gloss[0].lower() + gloss[1:])))
+        wrong = tuple(value for value in wrong if value != gloss)
+        words = tuple(edition_group["words"])
+        indexed = latin(core)
+        row = (
+            *row[:3],
+            words,
+            edition_group["anchor"],
+            gloss,
+            tuple(indexed[word]["form"] for word in words),
+            wrong,
+        )
     saved = deepcopy(layer)
     pin = row[:7]
     assert caption_diagnostics(pin, core, layer) == []

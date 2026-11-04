@@ -12,6 +12,7 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from adoro_te_devote_successor_fixture import before_adoro_bytes, before_adoro_object
 from foot_communion_successor_fixture import (
     before_foot_communion_bytes,
     before_foot_communion_layer_frame,
@@ -72,6 +73,7 @@ def inverse(rule, value, diagnostic, keep=None):
 
 def before_english_contract_object(relative, value, diagnostic="English contract comparison"):
     """Require the complete current object, then recover only the declared predecessor."""
+    value = before_adoro_object(relative, value)
     value = before_split_uses_object(relative, value)
     value = before_arrow_object(relative, value)
     rule = FILES.get(relative)
@@ -112,6 +114,7 @@ def before_english_contract_frame(relative, value, project, diagnostic="English 
 
 def before_english_contract_bytes(relative, raw, diagnostic="English contract comparison bytes"):
     """Require every current byte, then restore only the declared earlier lines."""
+    raw = before_adoro_bytes(relative, raw)
     raw = before_split_uses_bytes(relative, raw)
     raw = before_arrow_bytes(relative, raw)
     rule = FILES.get(relative)

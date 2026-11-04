@@ -8,6 +8,7 @@ from pathlib import Path
 import pytest
 import witness_header_fixture as headers
 from chant_fragment_fixture import before_chant_graph
+from edition_revision_fixture import before_edition_object
 from lateran_epistle_source_fixture import before_lateran_graph
 from requiem_successor_fixture import before_requiem_graph
 from rosary_gospel_source_fixture import before_rosary_graph
@@ -29,7 +30,7 @@ def record(graph, field, identifier):
     return rows[0]
 
 
-def exact_scope(graph):
+def exact_scope(graph, historical=None):
     witness = record(graph, "witnesses", DATA["witness"]["after"]["id"])
     assert witness == DATA["witness"]["after"], "exact declared source scope"
     primary = DATA["primary_use"]
@@ -41,7 +42,11 @@ def exact_scope(graph):
     assert record(graph, "collations", DATA["collation"]["id"]) == DATA["collation"]
     comparison = before_chant_graph(
         headers.before_joachim_records(
-            before_rosary_graph(before_lateran_graph(before_requiem_graph(graph)))
+            before_rosary_graph(
+                before_lateran_graph(
+                    before_requiem_graph(graph if historical is None else historical)
+                )
+            )
         )
     )
     for use in DATA["added_uses"]:
@@ -195,9 +200,12 @@ def test_complete_scope_and_outside_graph_guards_reject_then_same_graph_recovers
     graph = graph_data()
     saved = deepcopy(graph)
     healthy(graph)
+    historical = before_edition_object("bibliography/graph.json", graph)
+    old = deepcopy(historical)
     try:
         if fault == "unrelated":
             graph["uses"][0]["claim"] += " Changed."
+            record(historical, "uses", graph["uses"][0]["id"])["claim"] += " Changed."
             diagnostic = "unchanged complete source graph remainder"
         else:
             use = record(graph, "uses", DATA["added_uses"][0]["id"])
@@ -209,12 +217,17 @@ def test_complete_scope_and_outside_graph_guards_reject_then_same_graph_recovers
                 use["evidence_sha256"] = "0" * 64
             diagnostic = "exact declared source scope"
         assert graph != saved
-        with pytest.raises(AssertionError, match=diagnostic):
+        with pytest.raises(AssertionError):
             exact_scope(graph)
+        with pytest.raises(AssertionError, match=diagnostic):
+            exact_scope(graph, historical if fault == "unrelated" else None)
     finally:
         graph.clear()
         graph.update(saved)
+        historical.clear()
+        historical.update(old)
         assert graph == saved
+        exact_scope(graph, historical)
         healthy(graph)
 
 

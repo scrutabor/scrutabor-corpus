@@ -10,6 +10,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from edition_revision_fixture import before_edition_revision
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = json.loads((Path(__file__).parent / "fixtures/pater-agnus-successor.json").read_bytes())
 DIAGNOSTIC = "exact Pater to Agnus core successor"
@@ -24,6 +26,7 @@ def before_pater_agnus_core_bytes(text, raw, diagnostic=DIAGNOSTIC):
     rule = DATA["texts"].get(text)
     if rule is None:
         return raw
+    raw = before_edition_revision(rule["relative"], raw)
     require(hashlib.sha256(raw).hexdigest() == rule["after_sha256"], diagnostic)
     result = raw
     for operation in reversed(rule["raw_inverse"]):

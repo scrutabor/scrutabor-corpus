@@ -21,6 +21,11 @@ INVENTORIES = {
             "s03": (9, "Agnus Dei qui tollis peccáta mundi miserére nobis"),
             "s04": (17, "Agnus Dei qui tollis peccáta mundi dona nobis pacem"),
         },
+        "ordinarium.agnus-dei-in-cena-domini": {
+            "s01": (1, "Agnus Dei qui tollis peccáta mundi miserére nobis"),
+            "s02": (9, "Agnus Dei qui tollis peccáta mundi miserére nobis"),
+            "s03": (17, "Agnus Dei qui tollis peccáta mundi miserére nobis"),
+        },
         "ordinarium.agnus-dei-defunctorum": {
             "s01": (1, "Agnus Dei qui tollis peccáta mundi dona eis réquiem"),
             "s02": (10, "Agnus Dei qui tollis peccáta mundi dona eis réquiem"),
@@ -50,7 +55,11 @@ def base_errors(doc: dict[str, Any]) -> list[str]:
     if doc.get("id") not in TEXTS:
         return []
     rows = INVENTORIES[doc["id"]]
-    prefix = [] if doc["id"].endswith("-defunctorum") else ["s01"]
+    prefix = (
+        []
+        if doc["id"] in {"ordinarium.agnus-dei-defunctorum", "ordinarium.agnus-dei-in-cena-domini"}
+        else ["s01"]
+    )
     label = "Sanctus" if doc["id"] == TEXT else "Agnus Dei"
     segments = doc.get("segments", [])
     errors = []

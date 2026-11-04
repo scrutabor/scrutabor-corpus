@@ -16,6 +16,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import LAYER_CHANGES
 
 from checks import interlinear
 
@@ -247,7 +248,25 @@ HISTORICAL_PAYLOAD = json.loads(
 HISTORICAL = historical_inventory(HISTORICAL_PAYLOAD)
 DOCUMENTS = list(layers())
 TEXT_IDS = {doc["text"] for doc in DOCUMENTS}
-ALLOWANCES = combine_inventories(LEGACY, HISTORICAL, TEXT_IDS)
+# The historical receipt stays frozen. This one exact obsolete allowance was
+# retired when the edition replaced the archaic quotation with a priest subject.
+# Bind both sides explicitly rather than filtering allowances from observed prose.
+RETIRED_ABOUT = "ordinarium.suscipe-sancte-pater"
+ABOUT_CHANGE = next(
+    change
+    for change in LAYER_CHANGES["languages/en/texts/ordinarium/suscipe-sancte-pater.json"]
+    if change["path"] == ["about"]
+)
+CURRENT_LEGACY = deepcopy(LEGACY)
+assert (
+    CURRENT_LEGACY[RETIRED_ABOUT][("about",)]
+    == hashlib.sha256(ABOUT_CHANGE["before"].encode()).hexdigest()
+)
+assert stale(ABOUT_CHANGE["before"]) and not stale(ABOUT_CHANGE["after"])
+del CURRENT_LEGACY[RETIRED_ABOUT][("about",)]
+if not CURRENT_LEGACY[RETIRED_ABOUT]:
+    del CURRENT_LEGACY[RETIRED_ABOUT]
+ALLOWANCES = combine_inventories(CURRENT_LEGACY, HISTORICAL, TEXT_IDS)
 # Keep the existing conclusion contract independent of current prose: only an explicit
 # legacy prose field can defer it, and that field itself is checked by the all-text gate.
 CONCLUSION_TEXTS = [
@@ -660,3 +679,17 @@ def test_second_paschal_collect_cannot_self_exempt_from_contemporary_register():
     doc = json.loads((ROOT / path).read_bytes())
     assert contemporary(doc)
     assert mixed_fields(doc) == []
+
+
+def test_retired_about_allowance_is_bound_to_current_prose_and_stays_detectable():
+    actual = next(doc for doc in DOCUMENTS if doc["text"] == RETIRED_ABOUT)
+    saved = deepcopy(actual)
+    assert actual["about"] == ABOUT_CHANGE["after"]
+    assert ("about",) in LEGACY[RETIRED_ABOUT]
+    assert ("about",) not in ALLOWANCES.get(RETIRED_ABOUT, {})
+    for replacement in (ABOUT_CHANGE["before"], ABOUT_CHANGE["after"] + " Thy"):
+        mutant = deepcopy(actual)
+        mutant["about"] = replacement
+        assert ("about",) in register_changes(mutant, ALLOWANCES)["new"]
+    assert actual == saved
+    assert not any(register_changes(actual, ALLOWANCES).values())

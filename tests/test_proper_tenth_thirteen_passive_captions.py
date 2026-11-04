@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_edition_layer, before_edition_target_row
 from possessive_sweep_b4_successor_fixture import before_possessive_b4_layer
 
 from build_reader import emit, store
@@ -162,7 +163,7 @@ def retained(layer, case):
 
 
 def preserved(layer, case):
-    layer = before_possessive_b4_layer(layer)
+    layer = before_possessive_b4_layer(before_edition_layer(layer))
     comparison = deepcopy(layer)
     for g in DATA["groups"]:
         if (g["text"], g["language"]) == (case["text"], case["language"]):
@@ -206,7 +207,7 @@ def predecessor_core(core, case):
 
 def predecessor_provenance(rows, case):
     if case["text"] != STABAT_SOURCE_SUCCESSOR["text"]:
-        return rows
+        return [before_edition_target_row(row) for row in rows]
     rule = STABAT_SOURCE_SUCCESSOR["rows"][case["language"]]
     expected = deepcopy(case["provenance"])
     indices = [i for i, row in enumerate(expected) if row["site"] == rule["before"]["site"]]
@@ -273,12 +274,22 @@ def test_complete_current_native_reader_prose_and_predecessor(case):
     healthy(core, layer)
     assert canonical_hash(predecessor_core(core, case)) == case["core_sha256"]
     preserved(layer, case)
-    assert {sid: s.get("translation") for sid, s in layer["segments"].items()} == case["prose"]
+    assert {
+        sid: s.get("translation") for sid, s in before_edition_layer(layer)["segments"].items()
+    } == case["prose"]
     ledger = json.loads(
         (ROOT / "languages" / case["language"] / "translation-provenance.json").read_text()
     )
     saved_ledger = deepcopy(ledger)
     rows = [r for r in ledger["sites"] if r["text"] == case["text"]]
+    from checks.translation_provenance import source_payload
+
+    for row in rows:
+        source = next(s for s in core["segments"] if s["id"] == row["segment"])
+        assert row["source_sha256"] == canonical_hash(source_payload(source))
+        assert row["target_sha256"] == canonical_hash(
+            layer["segments"][row["segment"]]["translation"]
+        )
     assert predecessor_provenance(rows, case) == case["provenance"]
     base, target, tables = compact(core, layer)
     expected_core, expected_layers = emit._strip(

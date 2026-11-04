@@ -7,10 +7,10 @@ from pathlib import Path
 
 
 def verify(out: Path, manifest: dict) -> list[str]:
-    """The current reader retains all eleven descriptors, even if the source lost them."""
+    """The current reader retains all fourteen verse descriptors, even if the source lost them."""
     errors = []
-    if manifest.get("schema_version") != "6.10.0":
-        return ["participation performance requires reader 6.10.0"]
+    if manifest.get("schema_version") != "6.11.0":
+        return ["participation performance requires reader 6.11.0"]
     entries = [
         entry for entry in manifest.get("texts", []) if entry.get("id") == "ordinarium.sanctus"
     ]
@@ -60,6 +60,7 @@ def _agni(out: Path, manifest: dict) -> list[str]:
     # A separate literal inventory prevents the producer from accepting its own omission.
     inventories = {
         "agnus-dei": (["s01", "s02", "s03", "s04", "s05"], {"s02", "s03", "s04"}, 25),
+        "agnus-dei-in-cena-domini": (["s01", "s02", "s03"], {"s01", "s02", "s03"}, 24),
         "agnus-dei-defunctorum": (["s01", "s02", "s03"], {"s01", "s02", "s03"}, 28),
     }
     errors = []

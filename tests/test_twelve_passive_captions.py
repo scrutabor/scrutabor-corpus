@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_edition_layer, current_edition_value
 from ordo_notes_successor_fixture import before_ordo_notes_core_bytes, before_ordo_notes_core_object
 from requiem_successor_fixture import before_requiem_ledger
 
@@ -51,6 +52,7 @@ def parent_at(value, pointer):
 
 def before_current_successor(layer):
     """Undo only exact later Last-Gospel changes on a complete comparison copy."""
+    layer = before_edition_layer(layer)
     result = deepcopy(layer)
     if layer["text"] != CURRENT["text"]:
         return result
@@ -135,8 +137,15 @@ def retained(control, layer):
         if set(group["words"]) & set(control["words"])
     ]
     require(touching == control["groups"], "retained passive context")
+    expected = deepcopy(control["entries"])
+    relative = f"languages/{layer['language']}/texts/{layer['text'].replace('.', '/', 1)}.json"
+    for wid, entry in expected.items():
+        if "gloss" in entry:
+            entry["gloss"] = current_edition_value(
+                relative, ["words", wid, "gloss"], entry["gloss"]
+            )
     require(
-        {wid: layer["words"][wid] for wid in control["words"]} == control["entries"],
+        {wid: layer["words"][wid] for wid in control["words"]} == expected,
         "retained passive context",
     )
 

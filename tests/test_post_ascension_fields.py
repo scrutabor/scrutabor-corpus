@@ -11,6 +11,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import LAYER_CHANGES, before_edition_layer
 from gospel_delivery_fixture import (
     current_sung_expected_row,
     current_sung_source_hash,
@@ -55,7 +56,11 @@ def read(path):
 
 
 def assert_layer(relative, layer):
-    assert canonical_hash(layer) == FIXTURE["language_after_hashes"][relative], "selected layer"
+    for change in LAYER_CHANGES.get(relative, ()):
+        assert value_at(layer, change["path"]) == change["after"], "current edition field"
+    assert (
+        canonical_hash(before_edition_layer(layer)) == FIXTURE["language_after_hashes"][relative]
+    ), "selected layer"
     original = restore_layer(layer, relative)
     assert canonical_hash(original) == FIXTURE["language_before_hashes"][relative], (
         "historical layer inverse"

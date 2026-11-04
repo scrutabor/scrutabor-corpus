@@ -95,6 +95,7 @@ CANTU_II = (
     "ordinarium.sanctus",
     "ordinarium.agnus-dei",
     "ordinarium.agnus-dei-defunctorum",
+    "ordinarium.agnus-dei-in-cena-domini",
 )
 
 # n. 31 c — "una cum sacerdote celebrante recitant", low Mass, third degree.
@@ -104,6 +105,7 @@ LECTA_III = (
     "ordinarium.sanctus",
     "ordinarium.agnus-dei",
     "ordinarium.agnus-dei-defunctorum",
+    "ordinarium.agnus-dei-in-cena-domini",
 )
 
 # n. 32 — the whole Pater noster with the celebrant, at a low Mass, in Latin

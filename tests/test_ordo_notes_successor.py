@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pytest
 from adoro_te_devote_successor_fixture import before_adoro_bytes
+from edition_revision_fixture import before_edition_object, read_predecessor
 from ordo_notes_successor_fixture import (
     ADDED,
     CHANGED,
@@ -280,9 +281,31 @@ def test_apparatus_notes_count_and_name_their_witnesses():
 
 @pytest.mark.parametrize("text", LEONINE)
 def test_leonine_prose_describes_the_digital_ordo_as_a_derived_aid(text):
-    method = core(text)["editorial"]["source"]["method"]
+    actual = core(text)
+    method = actual["editorial"]["source"]["method"]
+    pages = {
+        "orationes.cor-iesu": "n. 675, p. 521",
+        "orationes.deus-refugium": "n. 675, p. 520",
+        "orationes.salve-regina": "n. 332, p. 215, and n. 675, p. 520",
+        "orationes.sancte-michael": "n. 675, pp. 520–521",
+    }
+    assert method.startswith("Latin textual basis: Enchiridion Indulgentiarum (1952), ")
+    assert pages[text] in method
+    assert "This edition supplies" in method
     assert "independent witnesses" not in method
-    assert "no independent transmission" in method and "not archived" in method
+    qualifications = {
+        "orationes.cor-iesu": "conditional addition printed in the source",
+        "orationes.deus-refugium": "no claim of authorship by Leo XIII is made",
+        "orationes.salve-regina": "These choices do not represent the printing diplomatically",
+        "orationes.sancte-michael": "placement and shared recitation are supported separately",
+    }
+    assert qualifications[text] in method
+    # The old notes receipt still checks its own complete predecessor; the live
+    # source statement above is independently bound to the printed source.
+    relative = str(core_path(text).relative_to(ROOT))
+    historical = before_edition_object(relative, actual)
+    old_method = historical["editorial"]["source"]["method"]
+    assert "no independent transmission" in old_method and "not archived" in old_method
     rulings = [entry["ruling"] for entry in apparatus(text)["adjudicated"]]
     assert not any("1962 witness" in ruling for ruling in rulings)
 
@@ -330,7 +353,18 @@ def test_enchiridion_records_locate_their_pages():
     value = graph()
     deus = use(value, DEUS_REFUGIUM_USE)
     assert deus["locator"] == {"printed": "p. 520", "scan": "PDF scan 541", "section": "n. 675"}
-    assert "PDF scan 541" in deus["decision_reason"]
+    assert deus["verified_on"] == "2026-11-04"
+    assert deus["claim"] == (
+        "The page prints the complete Latin collect. This edition follows that formula with "
+        "house accents/ligatures, retains genetrix/eundem for printed genitrix/eumdem, and keeps "
+        "its separately recorded punctuation. The claim does not attribute authorship to Leo XIII."
+    )
+    assert deus["decision_reason"] == (
+        "Direct printed-page comparison establishes the textual basis; the retained orthographic "
+        "and punctuation departures are explicitly listed in the text source note."
+    )
+    historical = before_edition_object(GRAPH, value)
+    assert "PDF scan 541" in use(historical, DEUS_REFUGIUM_USE)["decision_reason"]
     cor = use(value, COR_IESU_USE)
     assert cor["locator"] == {"printed": "p. 521", "scan": "PDF scan 542", "section": "n. 675"}
     assert "si addatur ter" in cor["claim"] and "directed" not in cor["claim"]
@@ -464,7 +498,9 @@ def test_any_other_object_reaches_the_older_oracle_with_the_fault(fault):
 
 
 def test_graph_inverse_removes_the_new_uses_and_restores_ten_records():
-    value = graph()
+    actual = graph()
+    actual_saved = deepcopy(actual)
+    value = before_edition_object(GRAPH, actual)
     saved = deepcopy(value)
     previous = before_ordo_notes_graph(value)
     assert value == saved and previous is not value
@@ -474,9 +510,10 @@ def test_graph_inverse_removes_the_new_uses_and_restores_ten_records():
     for identity, change in CHANGED.items():
         assert use(previous, identity) == change["before"]
         assert before_ordo_notes_use(use(value, identity)) == change["before"]
-    assert previous == json.loads(before_ordo_notes_bytes(GRAPH, (ROOT / GRAPH).read_bytes()))
+    assert previous == json.loads(before_ordo_notes_bytes(GRAPH, read_predecessor(ROOT, GRAPH)))
     assert before_ordo_notes_object(GRAPH, value) == previous
     assert before_ordo_notes_graph(previous) is previous, "a chain may reach it twice"
+    assert actual == actual_saved == graph()
     records = {"uses": [use(value, DIALOGUE_USE), use(value, COR_IESU_USE)], "witnesses": []}
     assert before_ordo_notes_graph(records) == {
         "uses": [CHANGED[COR_IESU_USE]["before"]],

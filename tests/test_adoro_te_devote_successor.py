@@ -18,6 +18,7 @@ from adoro_te_devote_successor_fixture import (
 from canon_consecration_successor_fixture import before_canon_bytes
 from caption_followups_successor_fixture import FILES as FOLLOWUPS
 from caption_followups_successor_fixture import before_followups_bytes
+from edition_revision_fixture import read_predecessor
 from foot_communion_successor_fixture import (
     before_foot_communion_bytes,
     before_foot_communion_graph,
@@ -45,12 +46,16 @@ def sha(raw):
     return hashlib.sha256(raw).hexdigest()
 
 
+def _current_bytes(relative):
+    return read_predecessor(ROOT, relative)
+
+
 def load(relative):
-    return json.loads((ROOT / relative).read_bytes())
+    return json.loads(_current_bytes(relative))
 
 
 def previous(relative):
-    return json.loads(before_adoro_bytes(relative, (ROOT / relative).read_bytes()))
+    return json.loads(before_adoro_bytes(relative, _current_bytes(relative)))
 
 
 def words():
@@ -81,7 +86,7 @@ def test_the_fixture_names_exactly_the_changed_files_and_pins_their_bytes():
         "lexicon/lemmata.json": 8,
     }
     for relative, rule in FILES.items():
-        raw = (ROOT / relative).read_bytes()
+        raw = _current_bytes(relative)
         assert sha(raw) == rule["after_sha256"] != rule["before_sha256"], relative
         assert sha(before_adoro_bytes(relative, raw)) == rule["before_sha256"], relative
         assert render(rule["layout"], json.loads(raw)) == raw, relative
@@ -205,7 +210,7 @@ def test_registries_append_the_text_and_its_two_new_parses():
 
 @pytest.mark.parametrize("relative", sorted(FILES))
 def test_every_changed_file_inverts_to_its_exact_predecessor(relative):
-    raw = (ROOT / relative).read_bytes()
+    raw = _current_bytes(relative)
     value = json.loads(raw)
     saved = deepcopy(value)
     previous_raw = before_adoro_bytes(relative, raw)
@@ -218,7 +223,7 @@ def test_every_changed_file_inverts_to_its_exact_predecessor(relative):
     assert before_adoro_bytes(relative, b"not json") == b"not json"
     if relative == GRAPH:
         assert before_adoro_graph(value) == older
-    assert (ROOT / relative).read_bytes() == raw, "the actual source is never rewritten"
+    assert _current_bytes(relative) == raw, "the actual source is never rewritten"
 
 
 def damage(value, change, how):
@@ -287,7 +292,7 @@ def test_every_other_field_is_preserved_with_a_fault_elsewhere(relative):
 
 def test_unrelated_values_pass_through_untouched():
     relative = "languages/en/texts/orationes/pater-noster.json"
-    raw = (ROOT / relative).read_bytes()
+    raw = _current_bytes(relative)
     value = json.loads(raw)
     assert relative not in FILES
     assert before_adoro_bytes(relative, raw) is raw
@@ -300,7 +305,7 @@ def test_unrelated_values_pass_through_untouched():
 @pytest.mark.parametrize("relative", sorted(FILES))
 def test_the_chain_entries_reach_this_predecessor_first(relative):
     """The foot of the altar and Canon entries treat the current file as its predecessor."""
-    raw = (ROOT / relative).read_bytes()
+    raw = _current_bytes(relative)
     previous_raw = before_adoro_bytes(relative, raw)
     assert previous_raw != raw
     for entry in (before_foot_communion_bytes, before_canon_bytes):
@@ -313,7 +318,7 @@ def test_the_chain_entries_reach_this_predecessor_first(relative):
 
 @pytest.mark.parametrize("relative", sorted(set(FILES) & set(FOLLOWUPS)))
 def test_the_older_caption_successor_runs_after_this_one(relative):
-    raw = (ROOT / relative).read_bytes()
+    raw = _current_bytes(relative)
     alone = before_followups_bytes(relative, raw)
     assert sha(alone) != FOLLOWUPS[relative]["before_sha256"], "the new rows are foreign to it"
     older = before_followups_bytes(relative, before_adoro_bytes(relative, raw))

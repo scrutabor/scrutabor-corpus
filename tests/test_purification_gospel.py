@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_edition_caption
 
 from build_reader import store
 from build_reader.bibliography_bindings import collation_subject, digest, witness_subject
@@ -69,7 +70,12 @@ def test_selected_complete_construction(language, numbers, anchor, gloss):
     matches = [
         g for g in raw["segments"]["s01"].get("alignments", []) if set(g["words"]) & set(ids)
     ]
-    assert matches == [{"words": ids, "anchor": wid(anchor), "gloss": gloss}]
+    expected = current_edition_caption(language, TEXT, "s01", ids, gloss) or {
+        "words": ids,
+        "anchor": wid(anchor),
+        "gloss": gloss,
+    }
+    assert matches == [expected]
     assert all("gloss" not in raw["words"][key] for key in ids)
 
 
@@ -131,7 +137,7 @@ def test_complete_provider_partition_and_contextual_dependencies(language):
             "the Christ",
         ]
         assert actual(99, 112) == [
-            "His parents were bringing in the Child Jesus",
+            "His parents were bringing in the child Jesus",
             "to",
             "do",
             "according to",

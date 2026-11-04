@@ -183,10 +183,18 @@ README grants the MIT License. Its required permission notice is preserved in
 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). These witness files are
 source evidence, not an endorsement by the Divinum Officium Project.
 
-Reader6.10.0 publishes the complete Agnus Dei and dismissal recensions for Masses
+Reader6.11.0 publishes the complete Agnus Dei and dismissal recensions for Masses
 for the Dead. The three All Souls formularies share the new Agnus component; the
 existing finite dismissal resource selects its Requiem profile. Neutral formulary
-catalogue1.5.0 transports the exact Iudica, first Communion peace prayer and final
+catalogue1.6.0 transports the exact Iudica, first Communion peace prayer and final
 blessing omissions alongside the existing Lavabo doxology rule. Canonical study
 bodies remain complete. Last Gospel and minister conditions remain explicit; the
 reader does not infer unrecorded ceremonies from a calendar choice.
+
+Holy Thursday uses its complete threefold Agnus Dei with three mercy petitions.
+The Easter Vigil omits Agnus Dei. Both Masses omit Qui dixisti, retain Pax Domini
+and the next two Communion preparation prayers, and withhold the kiss of peace
+(Missale Romanum1962, Benziger pp.162,216; Vatican pp.159,213). The Holy Thursday
+Lavabo doxology omission remains distinct from the required hymn Gloria. These
+closed prescriptions have authored schema1.6.0 and reader catalogue1.6.0; an older
+consumer must explicitly migrate before accepting the expanded descriptor set.

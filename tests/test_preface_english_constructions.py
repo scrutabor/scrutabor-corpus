@@ -7,6 +7,7 @@ from typing import Any
 import pytest
 from day_preface_fixture import TARGET as DAY_TARGET
 from day_preface_fixture import restore_day_preface
+from edition_revision_fixture import before_edition_layer
 from opening_caption_fixture import restore_opening_layer
 from post_ascension_fixture import restore_layer as restore_ascension_layer
 from preface_caption_fixture import restore_caption_layer
@@ -435,7 +436,7 @@ def assert_site(doc, layer, site):
 
 def restore_reviewed_fields(layer, slug):
     """Reverse only the named groups/glosses/prose; never mask new metadata."""
-    layer = restore_opening_layer(layer)
+    layer = restore_opening_layer(before_edition_layer(layer))
     restored = (
         restore_glory_layer(restore_caption_layer(layer, "en"), "en")
         if slug == "sanctissimae-trinitatis"

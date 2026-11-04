@@ -451,7 +451,7 @@ def english_texts():
 
 def test_no_english_vocative_caption_carries_the_particle():
     examined = list(english_texts())
-    assert len(examined) == 1222  # 1222 with Adoro te devote (orationes), added 2026-11-01
+    assert len(examined) == 1223  # Includes the Holy Thursday Agnus Dei.
     found = [hit for text in examined for hit in vocative_particles(core(text), layer("en", text))]
     assert found == []
     # Positive control: a Latin O captioned with its vocative is a real word, not the particle.

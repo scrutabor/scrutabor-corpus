@@ -182,14 +182,15 @@ def test_full_artifact_guard_rejects_producer_catalogue_corruption_and_recovers(
 
 def test_complete_inventory_counts_and_registry_append_are_exact():
     docs = [json.loads(p.read_text()) for p in (CORPUS / "texts").glob("*/*.json")]
-    assert len(docs) == 1222  # 1222 with Adoro te devote (orationes), added 2026-11-01
+    assert len(docs) == 1223  # Includes the Holy Thursday Agnus Dei.
     assert (
-        sum(len(s.get("words", [])) for doc in docs for s in doc["segments"]) == 67088
-    )  # +149 words of Adoro te devote
+        sum(len(s.get("words", [])) for doc in docs for s in doc["segments"]) == 67112
+    )  # Includes the 24 Holy Thursday words.
     registry = read("build_reader/registry/texts.json")
-    assert len(registry) == 1222  # 1222 with Adoro te devote (orationes), added 2026-11-01
+    assert len(registry) == 1223  # Includes the Holy Thursday Agnus Dei.
     assert registry[1219:] == [
         "ordinarium.agnus-dei-defunctorum",
         "ordinarium.ite-missa-est-defunctorum",
         "orationes.adoro-te-devote",  # appended 2026-11-01 after the two Requiem texts
+        "ordinarium.agnus-dei-in-cena-domini",
     ]

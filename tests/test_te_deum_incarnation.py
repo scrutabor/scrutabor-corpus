@@ -199,6 +199,14 @@ def test_all_twenty_eight_continuous_translations_and_citations_are_preserved(la
         }
         for sid, segment in value["segments"].items()
     }
+    if language == "pl":
+        # Siedlecki 1928, hymn 353, pp. 308–309. Validate both restored
+        # readings before comparing every other word and citation to the old seal.
+        readings = {"s08": ("pospiesza", "pośpiesza"), "s18": ("zagrzmi", "zabrzmi")}
+        for sid, (printed, former) in readings.items():
+            translation = protected[sid]["translation"]
+            assert translation.count(printed) == 1
+            protected[sid]["translation"] = translation.replace(printed, former)
     assert digest(protected) == PROTECTED[language]
 
 

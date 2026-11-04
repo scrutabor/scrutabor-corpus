@@ -1,4 +1,4 @@
-"""The 1903 Gloria witness is a partial basis, not the modern wording verbatim."""
+"""Gloria source claims distinguish exact 1903 retention from earlier variants."""
 
 import json
 from pathlib import Path
@@ -13,39 +13,42 @@ EDITION = "edition.pamiatka-missyi-dla-ludu-katolickiego-1903"
 URL = "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
 
 # Pamiątka Missyi (1903), printed p. 46 / PDF physical p. 49.
-# These are bounded source observations, not a replacement of the prayer.
+# These are bounded source observations. The two complete 1903 clauses are
+# retained with normalized capitals and segment punctuation; the other two
+# 1903 variants remain comparison evidence alongside exact later-admitted bases.
 CASES = {
     "s04": (
         "use.pl.af90bee5fee85e68d016",
         "Na Gloria — trzy wezwania pochwalne",
-        "Częściowy historyczny świadek brzmienia: „Chwalimy Cię. Błogosławimy Tobie. "
-        "Cześć oddajemy Tobie.” Druk nie poświadcza odrębnego czwartego wezwania ani "
-        "pełnego obecnego ciągu czterech zdań.",
+        "Częściowy historyczny świadek brzmienia: „Chwalimy Cię. Błogosławimy Tobie. Cześć "
+        "oddajemy Tobie.” Druk nie poświadcza odrębnego czwartego wezwania ani pełnego "
+        "obecnego ciągu czterech zdań.",
         "Chwalimy Cię. Błogosławimy Cię. Wielbimy Cię. Wysławiamy Cię.",
     ),
     "s05": (
         "use.pl.7bddbbb0be4a2d33ce42",
         "Na Gloria — dziękczynienie",
-        "Historyczny wariant dziękczynienia: „Dzięki składamy Tobie dla wielkiej "
-        "chwały Twojej.” Obecne „bo wielka jest chwała Twoja” jest rewizją składni, "
-        "nie dosłownym odczytem tej strony.",
-        "Dzięki Ci składamy, bo wielka jest chwała Twoja.",
+        "Historyczna podstawa pełnego obecnego brzmienia segmentu: „Dzięki składamy Tobie dla "
+        "wielkiej chwały Twojej.” Brzmienie, wielkie litery i końcowa kropka są zgodne z "
+        "drukiem.",
+        "Dzięki składamy Tobie dla wielkiej chwały Twojej.",
     ),
     "s10": (
         "use.pl.e2f3ce0c300bd37cd36b",
         "Na Gloria — prośba o przyjęcie modlitwy",
-        "Historyczny wariant prośby: „Który gładzisz grzechy świata, przyjmij prośby "
-        "nasze!” Druk ma liczbę mnogą „prośby” i formę „przyjmij”; nie poświadcza "
-        "dokładnie obecnego „przyjm błaganie nasze”.",
+        "Historyczny wariant prośby: „Który gładzisz grzechy świata, przyjmij prośby nasze!” "
+        "Druk ma liczbę mnogą „prośby” i formę „przyjmij”; nie poświadcza dokładnie obecnego "
+        "„przyjm błaganie nasze”.",
         "Który gładzisz grzechy świata, przyjm błaganie nasze.",
     ),
     "s12": (
         "use.pl.114f8fbe0049a01aec06",
         "Na Gloria — trzykrotne „sam”",
-        "Historyczny świadek trzykrotnego „sam”: „Boś ty sam Święty, Tyś sam Pan, "
-        "Tyś sam Najwyższy, Jezu Chryste”. Druk przechodzi bez kropki po „Chryste” "
-        "do „z Duchem świętym”; nie poświadcza dosłownie obecnego ciągu z „tylko Tyś”.",
-        "Albowiem tylko Tyś jest święty. Tylko Tyś jest Panem. Tylko Tyś Najwyższy, Jezu Chryste.",
+        "Historyczna podstawa pełnego obecnego brzmienia segmentu: „Boś Ty sam święty, Tyś "
+        "sam Pan, Tyś sam Najwyższy, Jezu Chryste.” Zachowano słownictwo druku; "
+        "znormalizowano wielkie litery i zamknięcie segmentu kropką przed dalszym „z Duchem "
+        "świętym”.",
+        "Boś Ty sam święty, Tyś sam Pan, Tyś sam Najwyższy, Jezu Chryste.",
     ),
 }
 
@@ -70,11 +73,13 @@ def test_partial_gloria_witness_keeps_exact_scope_and_current_prayer(segment, so
     use = uses[0]
     assert use["edition"] == EDITION
     assert use["digital_item"] == "item.pamiatka-missyi-dla-ludu-katolickiego-1903.sbc"
-    assert use["role"] == "historical_wording_basis"
+    assert use["role"] == (
+        "historical_wording_basis" if segment in {"s05", "s12"} else "historical_wording_comparator"
+    )
     assert use["decision"] == "RETAIN_WITH_CORRECTION"
     assert use["address"] == {"kind": "segment", "text": TEXT, "segment": segment}
     assert use["claim"] == claim
-    assert use["verified_on"] == "2026-10-26"
+    assert use["verified_on"] == ("2026-11-04" if segment in {"s05", "s12"} else "2026-10-26")
     assert use["locator"] == {
         "printed": "druk. s. 46",
         "scan": "PDF s. 49",
@@ -96,7 +101,7 @@ def test_partial_gloria_witness_keeps_exact_scope_and_current_prayer(segment, so
     group, entry = matches[0]
     assert group["locator"] == use["locator"]
     assert group["edition"] == EDITION
-    assert group["role"] == "historical_wording_basis"
+    assert group["role"] == use["role"]
     assert group["verified_on"] == use["verified_on"]
     assert entry == {
         "id": use_id,

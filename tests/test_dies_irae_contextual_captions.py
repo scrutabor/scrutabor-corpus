@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 from dies_irae_caption_fixture import DATA, canonical, parent_at, restore_dies_irae_layer
+from edition_revision_fixture import current_edition_value
 
 from build_reader.layers import enrich_layer, expand_core
 from checks import interlinear, language_packs, prose
@@ -68,7 +69,10 @@ def healthy(core, layer):
         if control["language"] == language:
             assert [indexed[wid] for wid in control["words"]] == control["source_words"]
             retained(control, layer)
-    assert layer["about"] == DATA["unchanged"][language]["about"]
+    relative = f"languages/{language}/{DATA['core_path']}"
+    assert layer["about"] == current_edition_value(
+        relative, ["about"], DATA["unchanged"][language]["about"]
+    )
     assert {
         sid: {key: value for key, value in segment.items() if key != "alignments"}
         for sid, segment in layer["segments"].items()

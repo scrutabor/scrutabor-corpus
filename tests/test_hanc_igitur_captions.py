@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_edition_layer
 
 from build_reader.layers import expand_core
 from checks import interlinear, interlinear_quality, language_packs, prose
@@ -97,7 +98,7 @@ def assert_hanc(core, layer, rows, fixture):
         all(layer["words"][word] == value for word, value in expected["word_after"].items()),
         "Hanc exact note and word contributions",
     )
-    restored = deepcopy(layer)
+    restored = deepcopy(before_edition_layer(layer))
     for word, before in expected["word_before"].items():
         restored["words"][word] = deepcopy(before)
     for sid, before in expected["groups_before"].items():

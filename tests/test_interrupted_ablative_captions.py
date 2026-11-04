@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 from dies_irae_caption_fixture import restore_dies_irae_layer
+from edition_revision_fixture import before_edition_layer, before_edition_object
 from gospel_delivery_fixture import current_sung_source_hash
 from michael_secret_fixture import control_expectation, ledger_expectation, predecessor_documents
 from opening_caption_fixture import restore_opening_layer
@@ -87,7 +88,9 @@ def parent_at(doc, pointer):
 
 def reviewed_predecessor_documents(documents):
     """Undo exact reviewed captions/prose before the immutable historical inverse."""
-    result = deepcopy(documents)
+    result = {
+        path: before_edition_object(path, value) for path, value in deepcopy(documents).items()
+    }
     for path, layer in result.items():
         if path.startswith("languages/en/texts/"):
             layer = before_possessive_b3_layer(before_possessive_b4_layer(layer))
@@ -109,6 +112,9 @@ def reviewed_predecessor_documents(documents):
 
 def historical_objects(documents):
     result = predecessor_documents(reviewed_predecessor_documents(documents))
+    for path, obj in result.items():
+        if isinstance(obj, dict) and "text" in obj and "words" in obj:
+            result[path] = before_edition_layer(obj)
     for operation in reversed(FIXTURE["operations"]):
         parent, key = parent_at(result[operation["path"]], operation["pointer"])
         require((key in parent) == operation["after"]["exists"], "successor field presence")

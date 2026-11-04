@@ -63,7 +63,7 @@ OLD_ABOUTS = {
 XII = "proprium.dominica-xii-post-pentecosten-secreta"
 ADVENT = "proprium.dominica-iv-adventus-collecta"
 CONTEXTS = (
-    ("ordinarium.misereatur", "s05", "w015", "przebaczenia", "pardon"),
+    ("ordinarium.misereatur", "s05", "w015", "Przebaczenia", "Pardon"),
     ("proprium.cathedra-sancti-petri-postcommunio", "s01", "w020", "przebaczenia", "forgiveness"),
     (
         "proprium.commemoratio-omnium-fidelium-defunctorum-missa-i-collecta",

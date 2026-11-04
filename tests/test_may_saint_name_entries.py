@@ -184,11 +184,12 @@ def test_june_martyr_name_reuses_parse_and_appends_text_addresses():
     assert canonical(selected["morph"]) == canonical(expected)
     assert canonical(morphology[54]) == canonical(expected)
     # Stable addresses precede the exact newly authored text order.
-    assert len(texts) == 1222  # 1222 with Adoro te devote (orationes), added 2026-11-01
+    assert len(texts) == 1223  # Includes the Holy Thursday Agnus Dei.
     assert texts[1219:] == [
         "ordinarium.agnus-dei-defunctorum",
         "ordinarium.ite-missa-est-defunctorum",
         "orationes.adoro-te-devote",  # appended 2026-11-01 after the two Requiem texts
+        "ordinarium.agnus-dei-in-cena-domini",  # appended without moving prior addresses
     ]
     # Preserve the exact historical prefix and its prior append sequence.
     texts = texts[:1219]

@@ -5,6 +5,7 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_edition_object, before_edition_revision
 from quam_rationabilem_successor_fixture import before_quam_bytes, before_quam_ledger
 
 from build_reader.bibliography_bindings import digest
@@ -23,6 +24,7 @@ def before_communicantes_layer(relative, value, diagnostic="Communicantes curren
     rule = DATA["layer"]
     if relative != rule["relative"]:
         return value
+    value = before_edition_object(relative, value)
     require(digest(value) == rule["after_canonical_sha256"], diagnostic)
     require(value["segments"]["s01"]["translation"] == rule["after"], diagnostic)
     result = deepcopy(value)
@@ -54,6 +56,7 @@ def before_communicantes_bytes(relative, raw, diagnostic="exact Communicantes co
     if relative not in rules:
         return raw
     rule = rules[relative]
+    raw = before_edition_revision(relative, raw)
     raw = before_quam_bytes(relative, raw, diagnostic)
     require(hashlib.sha256(raw).hexdigest() == rule["after_raw_sha256"], diagnostic)
     after, before = rule["raw_after"].encode(), rule["raw_before"].encode()

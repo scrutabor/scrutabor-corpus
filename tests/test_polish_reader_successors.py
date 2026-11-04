@@ -8,6 +8,7 @@ from pathlib import Path
 import documentary_successor_fixture as documentary
 import pytest
 from adoro_te_devote_successor_fixture import before_adoro_bytes
+from edition_revision_fixture import before_caption_revision, before_edition_layer
 from polish_contract_fixture import (
     before_polish_contract_bytes,
     before_polish_contract_ledger,
@@ -30,6 +31,7 @@ from build_reader import emit, store
 from build_reader.bibliography_bindings import digest
 from checks import interlinear, translation_provenance
 from checks.language_packs import check_core, check_layer
+from checks.layout import formatted
 from checks.translation_provenance import canonical_hash, source_payload
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -188,7 +190,9 @@ def test_actual_polish_regions_keep_source_and_provider_backmap(case):
         hashlib.sha256((ROOT / case["source"]).read_bytes()).hexdigest()
         == (case["source_raw_sha256"])
     )
-    comparison_raw = before_polish_contract_bytes(case["layer"], path.read_bytes())
+    comparison_raw = before_polish_contract_bytes(
+        case["layer"], before_caption_revision(case["layer"], path.read_bytes())
+    )
     assert hashlib.sha256(comparison_raw).hexdigest() == case["layer_after_sha256"]
     if case["id"] == "lent-postcommunion":
         assert_postcommunion(layer)
@@ -204,7 +208,9 @@ def test_actual_polish_regions_keep_source_and_provider_backmap(case):
 @pytest.mark.parametrize("case", TEXTS, ids=lambda case: case["id"])
 def test_exact_layer_inverses_keep_all_unselected_material(case):
     raw = (ROOT / case["layer"]).read_bytes()
-    comparison = before_polish_contract_bytes(case["layer"], raw)
+    comparison = before_polish_contract_bytes(
+        case["layer"], before_caption_revision(case["layer"], raw)
+    )
     assert hashlib.sha256(comparison).hexdigest() == case["layer_after_sha256"]
     for operation in reversed(case["layer_inverse_operations"]):
         after, before = operation["after"].encode(), operation["before"].encode()
@@ -712,8 +718,11 @@ def test_apostles_comparison_keeps_unrelated_layer_faults():
     core, actual = subject(case)
     saved, same_input = deepcopy(actual), actual
     comparison = before_apostles_role_comparison(actual)
-    assert digest(actual) == DATA["apostles_layer"]["after_canonical_sha256"]
-    assert digest(comparison) == DATA["apostles_layer"]["before_canonical_sha256"]
+    published = json.loads(before_caption_revision(case["layer"], formatted(actual).encode()))
+    assert digest(published) == DATA["apostles_layer"]["after_canonical_sha256"]
+    historical = before_apostles_role_comparison(published)
+    assert digest(historical) == DATA["apostles_layer"]["before_canonical_sha256"]
+    assert comparison["segments"]["s05"] == actual["segments"]["s05"]
     assert comparison is not actual and actual == saved
     assert_protected(core, actual, "apostolorum")
     for fault in ("selected-role", "unrelated-choir"):
@@ -728,7 +737,10 @@ def test_apostles_comparison_keeps_unrelated_layer_faults():
                 actual["segments"]["s05"]["translation"] += " Zmieniono."
                 compared = before_apostles_role_comparison(actual)
                 assert compared["segments"]["s05"] == actual["segments"]["s05"]
-                assert digest(compared) != DATA["apostles_layer"]["before_canonical_sha256"]
+                assert (
+                    digest(before_edition_layer(compared))
+                    != (DATA["apostles_layer"]["before_canonical_sha256"])
+                )
             assert actual != saved and interlinear.check(core, actual) == []
             with pytest.raises(AssertionError):
                 assert_protected(core, actual, "apostolorum")

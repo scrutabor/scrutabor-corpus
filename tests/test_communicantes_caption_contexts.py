@@ -68,7 +68,7 @@ def assert_known_caption(core, layer, language):
     """Complete-line relations at the two remediated children only."""
     ordinary = core["id"] == "ordinarium.communicantes"
     if ordinary and language == "en":
-        assert layer["words"]["w001"]["gloss"] == "remaining in communion"
+        assert layer["words"]["w001"]["gloss"] == "Remaining in communion"
         group(core, layer, "s01", ["w003", "w004"], "w004", {"venerating the memory"})
         group(core, layer, "s01", ["w014", "w015"], "w014", {"our Lord"})
         group(
@@ -104,7 +104,7 @@ def assert_known_caption(core, layer, language):
             f"all things | {aid['gloss']}"
         )
         assert caption(core, layer, "s01") == (
-            "remaining in communion | and | venerating the memory | first of all | "
+            "Remaining in communion | and | venerating the memory | first of all | "
             "of the glorious | ever | Virgin | Mary | Mother | of God | and | "
             "our Lord | Jesus | Christ"
         )
@@ -123,7 +123,7 @@ def assert_known_caption(core, layer, language):
         )
         # These formal Polish orders are valid counterexamples, not enforced EN symmetry.
         assert caption(core, layer, "s01").startswith(
-            "trwając we wspólnocie | i | pamięć | czcząc | przede | wszystkim |"
+            "Trwając we wspólnocie | i | pamięć | czcząc | przede | wszystkim |"
         )
         assert caption(core, layer, "s02") == (
             "a | także | błogosławionego | Józefa | tejże | Dziewicy | Oblubieńca"
@@ -131,11 +131,14 @@ def assert_known_caption(core, layer, language):
     elif language == "pl":
         group(core, layer, "s01", ["w003", "w004", "w005"], "w005", {"obchodząc najświętszy dzień"})
         assert caption(core, layer, "s01") == (
-            "trwając we wspólnocie | i | obchodząc najświętszy dzień | w którym | Pan | nasz"
+            "Trwając we wspólnocie | i | obchodząc najświętszy dzień | w którym | Pan | nasz"
         )
         assert caption(core, layer, "s03") == "Jezus | Chrystus | za | nas | został wydany"
         assert caption(core, layer, "s09").endswith("tej samej | Dziewicy | Oblubieńca")
     else:
+        assert caption(core, layer, "s01") == (
+            "Remaining in communion | and | celebrating the most sacred day | on which | our Lord"
+        )
         # Marked fronted for-us is defensible, and the perfect passive is realized once.
         assert caption(core, layer, "s03") == "Jesus | Christ | for | us | was handed over"
     if not ordinary:
@@ -154,6 +157,14 @@ def assert_known_caption(core, layer, language):
 @pytest.mark.parametrize("language", ["pl", "en"])
 def test_actual_complete_caption_relations(slug, language):
     core, layer = subject(slug, language)
+    assert_known_caption(core, layer, language)
+    assert not check_interlinear(core, layer)
+    saved = deepcopy(layer)
+    opening = layer["words"]["w001"]["gloss"]
+    layer["words"]["w001"]["gloss"] = opening[0].lower() + opening[1:]
+    with pytest.raises(AssertionError):
+        assert_known_caption(core, layer, language)
+    layer = saved
     assert_known_caption(core, layer, language)
     assert not check_interlinear(core, layer)
 

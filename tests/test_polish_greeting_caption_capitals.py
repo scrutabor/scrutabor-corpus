@@ -6,7 +6,9 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_caption_revision, before_edition_object
 from english_contract_successor_fixture import before_english_contract_layer
+from english_register_successor_fixture import before_english_register_layer
 from foot_communion_successor_fixture import (
     before_foot_communion_core_bytes,
     before_foot_communion_core_object,
@@ -123,7 +125,7 @@ def test_old_lowercase_is_structurally_valid_but_local_boundary_rejects_and_reco
 def test_exact_seven_byte_inverses_keep_every_other_field_and_language():
     assert len(CASES) == 7
     for case in CASES:
-        raw = (ROOT / case["path"]).read_bytes()
+        raw = before_caption_revision(case["path"], (ROOT / case["path"]).read_bytes())
         assert hashlib.sha256(raw).hexdigest() == case["after_sha256"]
         before = bytearray(raw)
         assert before[case["byte_offset"]] == ord("I")
@@ -141,7 +143,13 @@ def test_exact_seven_byte_inverses_keep_every_other_field_and_language():
         # English caption groups have their own controls; the complete prayers stay intact
         # once a later exact English successor is undone on a copy.
         previous = before_english_contract_layer(
-            str(english.relative_to(ROOT)), json.loads(english.read_bytes())
+            str(english.relative_to(ROOT)),
+            before_english_register_layer(
+                str(english.relative_to(ROOT)),
+                before_edition_object(
+                    str(english.relative_to(ROOT)), json.loads(english.read_bytes())
+                ),
+            ),
         )
         assert canonical_hash(prose_scope(previous)) == case["english_prose_sha256"]
 

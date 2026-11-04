@@ -10,6 +10,7 @@ from copy import deepcopy
 from itertools import pairwise
 
 import pytest
+from edition_revision_fixture import current_edition_caption
 from post_ascension_fixture import FIXTURE as ASCENSION
 
 from checks.interlinear import check, effective_gloss
@@ -228,6 +229,13 @@ def assert_site(doc, layer, site):
         possessive["morph"][key] == head["morph"][key] for key in ("case", "number", "gender")
     )
     members, anchor, gloss = realization(site)
+    successor = current_edition_caption("en", doc["id"], segment, members, gloss)
+    if successor is not None:
+        members, anchor, gloss = (
+            successor["words"],
+            int(successor["anchor"][1:]),
+            successor["gloss"],
+        )
     groups = layer["segments"][segment].get("alignments", [])
     touching = [g for g in groups if set(g["words"]) & set(members)]
     assert len(touching) == 1

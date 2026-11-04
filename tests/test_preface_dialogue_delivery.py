@@ -313,7 +313,7 @@ def test_no_other_ordinary_text_is_modeled_by_implication():
     assert len(prefaces) == 24 and DIALOGUE not in prefaces
     # Sanctus is independently source-supported quiet priestly recitation;
     # test_preface_body_delivery pins its five rows apart from the Preface rule.
-    # The two Agnus forms and Requiem dismissal have separate source-owned rules,
+    # The three Agnus forms and Requiem dismissal have separate source-owned rules,
     # with their complete positive and corruption controls in test_requiem_assembly.
     assert (
         modeled
@@ -322,6 +322,7 @@ def test_no_other_ordinary_text_is_modeled_by_implication():
             "ordinarium.ite-missa-est-paschale",
             "ordinarium.agnus-dei",
             "ordinarium.agnus-dei-defunctorum",
+            "ordinarium.agnus-dei-in-cena-domini",
             "ordinarium.ite-missa-est-defunctorum",
             "ordinarium.sanctus",
         }

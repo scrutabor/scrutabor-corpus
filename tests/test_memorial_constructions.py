@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_edition_caption
 
 from checks.interlinear import check
 
@@ -43,7 +44,11 @@ def test_complete_memorial_group(language, text, segment, start, end, anchor, gl
     core, layer = documents(language, text)
     ids = [f"w{number:03}" for number in range(start, end + 1)]
     groups = layer["segments"][segment].get("alignments", [])
-    expected = {"words": ids, "anchor": anchor, "gloss": gloss}
+    expected = current_edition_caption(language, text, segment, ids, gloss) or {
+        "words": ids,
+        "anchor": anchor,
+        "gloss": gloss,
+    }
     assert expected in groups
     assert all("gloss" not in layer["words"][word] for word in ids)
     assert check(core, layer) == []
@@ -55,7 +60,11 @@ def test_memorial_members_cannot_be_duplicated_or_lost(
 ):
     core, layer = documents(language, text)
     ids = [f"w{number:03}" for number in range(start, end + 1)]
-    expected = {"words": ids, "anchor": anchor, "gloss": gloss}
+    expected = current_edition_caption(language, text, segment, ids, gloss) or {
+        "words": ids,
+        "anchor": anchor,
+        "gloss": gloss,
+    }
     assert expected in layer["segments"][segment].get("alignments", [])
     duplicate = deepcopy(layer)
     duplicate["words"][ids[0]]["gloss"] = "duplicate"

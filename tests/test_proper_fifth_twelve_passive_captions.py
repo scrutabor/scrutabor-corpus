@@ -8,6 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_edition_layer
 from english_register_successor_fixture import before_english_register_text_layer
 from possessive_sweep_b3_successor_fixture import before_possessive_b3_layer
 
@@ -97,7 +98,7 @@ def frame_readback(core, layer, frame):
 
 
 def preserved(layer, case):
-    layer = before_possessive_b3_layer(layer)
+    layer = before_possessive_b3_layer(before_edition_layer(layer))
     layer = before_english_register_text_layer(layer, "unchanged fifth remainder")
     comparison = deepcopy(layer)
     for group in FIXTURE["groups"]:

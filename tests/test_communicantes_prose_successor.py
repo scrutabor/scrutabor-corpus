@@ -14,6 +14,11 @@ from communicantes_prose_successor_fixture import (
     before_communicantes_layer,
     before_communicantes_ledger,
 )
+from edition_revision_fixture import (
+    before_edition_object,
+    before_edition_revision,
+    current_edition_value,
+)
 from lent_easter_successor_fixture import RULE as LENT
 from lent_easter_successor_fixture import before_lent_easter_bytes, before_lent_easter_ledger
 from quam_rationabilem_successor_fixture import before_quam_bytes, before_quam_object
@@ -107,7 +112,22 @@ def assert_context(core, layer):
     for sid, expected in DATA["narrative"].items():
         assert layer["segments"][sid]["narrative"] == expected
     assert segments["s06"]["text"] == "Iungit manus."
-    assert caption_frame(layer) == DATA["captions"], "Communicantes retained captions"
+    # The historical receipt stays unchanged; the live response now uses the
+    # same initial capital as the complete prayer and its other occurrences.
+    expected = deepcopy(DATA["captions"])
+    relative = DATA["layer"]["relative"]
+    assert expected["words"]["w079"]["gloss"] == "amen"
+    expected["words"]["w079"]["gloss"] = current_edition_value(
+        relative, ["words", "w079", "gloss"], expected["words"]["w079"]["gloss"]
+    )
+    expected["words"]["w001"]["gloss"] = current_edition_value(
+        relative, ["words", "w001", "gloss"], expected["words"]["w001"]["gloss"]
+    )
+    expected["words"]["w074"]["gloss"] = current_edition_value(
+        relative, ["words", "w074", "gloss"], expected["words"]["w074"]["gloss"]
+    )
+    assert expected["words"]["w079"]["gloss"] == "Amen"
+    assert caption_frame(layer) == expected, "Communicantes retained captions"
 
 
 def current():
@@ -183,9 +203,26 @@ def test_actual_context_fault_fails_then_same_layer_recovers(fault):
     assert_context(core, actual)
 
 
+def test_lowercase_amen_is_not_the_current_caption_and_same_layer_recovers():
+    core, actual = current()
+    saved = deepcopy(actual)
+    assert actual["words"]["w079"]["gloss"] == "Amen"
+    try:
+        actual["words"]["w079"]["gloss"] = DATA["captions"]["words"]["w079"]["gloss"]
+        assert actual != saved
+        native(core, actual)
+        with pytest.raises(AssertionError, match=r"^Communicantes retained captions(?:\n|$)"):
+            assert_context(core, actual)
+    finally:
+        restore(actual, saved)
+    assert actual == saved
+    native(core, actual)
+    assert_context(core, actual)
+
+
 def test_short_participles_and_real_long_range_subject_sharing_remain_healthy():
     core, layer = current()
-    assert layer["words"]["w001"]["gloss"] == "remaining in communion"
+    assert layer["words"]["w001"]["gloss"] == "Remaining in communion"
     assert "unexpressed subject" in layer["words"]["w001"]["explanation"]
     assert {"words": ["w003", "w004"], "anchor": "w004", "gloss": "venerating the memory"} in (
         layer["segments"]["s01"]["alignments"]
@@ -219,8 +256,12 @@ def test_exact_layer_ledger_and_raw_inverses_keep_actual_native_inputs():
         raw = (ROOT / rule["relative"]).read_bytes()
         actual = json.loads(raw)
         saved = deepcopy(actual)
-        current_comparison = before_quam_object(rule["relative"], actual)
-        current_raw_comparison = before_quam_bytes(rule["relative"], raw)
+        current_comparison = before_quam_object(
+            rule["relative"], before_edition_object(rule["relative"], actual)
+        )
+        current_raw_comparison = before_quam_bytes(
+            rule["relative"], before_edition_revision(rule["relative"], raw)
+        )
         comparison = inverse(rule["relative"], actual)
         before_raw = before_communicantes_bytes(rule["relative"], raw)
         assert digest(current_comparison) == rule["after_canonical_sha256"]

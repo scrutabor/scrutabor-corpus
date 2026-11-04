@@ -10,6 +10,7 @@ import test_dies_irae_contextual_captions as historical
 from dies_irae_caption_fixture import DATA as HISTORICAL
 from dies_irae_caption_fixture import restore_dies_irae_layer
 from dies_irae_government_fixture import DATA, before_dies_irae_government_layer, canonical
+from edition_revision_fixture import before_edition_layer, current_edition_value
 from possessive_sweep_b2_successor_fixture import (
     before_possessive_b2_layer,
     before_possessive_b2_layer_frame,
@@ -123,9 +124,13 @@ def assert_current(core, layer):
             assert_case(case, core, layer)
     if language == "pl":
         assert_onsets(core, layer)
-    assert canonical(preserved(layer)) == DATA["layers"][language]["preserved_sha256"], (
-        "Dies irae unchanged prose and help"
+    assert layer["about"] == current_edition_value(
+        DATA["layers"][language]["path"], ["about"], HISTORICAL["unchanged"][language]["about"]
     )
+    assert (
+        canonical(preserved(before_edition_layer(layer)))
+        == DATA["layers"][language]["preserved_sha256"]
+    ), "Dies irae unchanged prose and help"
     before_dies_irae_government_layer(layer)
 
 
@@ -174,7 +179,10 @@ def test_historical_guard_passes_actual_candidate_to_native_checks(monkeypatch, 
 
     def pack(current_core, current_layer, path):
         assert current_core is core and current_layer is layer
-        assert canonical(current_layer) == DATA["layers"][language]["after_canonical_sha256"]
+        assert (
+            canonical(before_edition_layer(current_layer))
+            == DATA["layers"][language]["after_canonical_sha256"]
+        )
         seen.append("pack")
         return real_pack(current_core, current_layer, path)
 

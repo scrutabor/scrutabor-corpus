@@ -20,7 +20,13 @@ from pathlib import Path
 
 import pytest
 import test_english_register as register
+from adoro_te_devote_successor_fixture import before_adoro_bytes
 from canon_consecration_successor_fixture import before_canon_bytes
+from edition_revision_fixture import (
+    current_edition_target_sha,
+    current_edition_value,
+    read_predecessor,
+)
 from english_register_successor_fixture import (
     ALLOWANCES,
     DATA,
@@ -120,7 +126,11 @@ def caption(layer, segment, words):
 
 def prose_errors(row, value):
     """Classify a deviation from the pinned prose by the class the change corrected."""
-    if value == row["after"]:
+    relative = f"languages/en/texts/{row['text'].replace('.', '/', 1)}.json"
+    expected = current_edition_value(
+        relative, ["segments", row["segment"], "translation"], row["after"]
+    )
+    if value == expected:
         return []
     if "for ever" in value and "for ever" not in row["after"]:
         return ["legacy eternity spacing"]
@@ -151,14 +161,20 @@ def test_revised_prose_is_pinned_and_binds_its_ledger_row(key):
     healthy(core, layer)
     assert latin(core, segment)
     value = layer["segments"][segment]["translation"]
-    assert value == row["after"]
+    relative = f"languages/en/texts/{text.replace('.', '/', 1)}.json"
+    expected = current_edition_value(relative, ["segments", segment, "translation"], row["after"])
+    assert value == expected
     assert prose_errors(row, value) == []
     assert row["before"].count(GLORIA_PATRI) == value.count(GLORIA_PATRI)
     assert len(SHALL.findall(value)) <= len(SHALL.findall(row["before"]))
     assert "for ever" not in value
     site = f"{text}.{segment}.en"
     ledger_row = ledger()[site]
-    assert ledger_row["target_sha256"] == canonical_hash(value) == row["target_sha256_after"]
+    assert (
+        ledger_row["target_sha256"]
+        == canonical_hash(value)
+        == current_edition_target_sha(text, "en", segment, row["target_sha256_after"])
+    )
     assert row["target_sha256_before"] == canonical_hash(row["before"])
     assert (ledger_row["origin"], ledger_row["review"]) == (
         row["origin"],
@@ -323,13 +339,15 @@ def test_predictive_shall_caption_is_rejected_and_recovers():
 @pytest.mark.parametrize("relative", sorted(FILES))
 def test_exact_predecessor_is_reachable_and_drift_is_rejected(relative):
     rule = FILES[relative]
-    raw = (ROOT / relative).read_bytes()
+    raw = read_predecessor(ROOT, relative)
     actual = json.loads(raw)
     saved = deepcopy(actual)
     previous = before_english_register_object(relative, actual)
     previous_raw = before_english_register_bytes(relative, raw)
     assert actual == saved and previous is not actual and previous != actual
-    arrow_raw = before_arrow_bytes(relative, before_split_uses_bytes(relative, raw))
+    arrow_raw = before_arrow_bytes(
+        relative, before_split_uses_bytes(relative, before_adoro_bytes(relative, raw))
+    )
     current_raw = before_canon_bytes(relative, arrow_raw)
     assert hashlib.sha256(current_raw).hexdigest() == rule["after_raw_sha256"]
     assert hashlib.sha256(previous_raw).hexdigest() == rule["before_raw_sha256"]
@@ -339,4 +357,4 @@ def test_exact_predecessor_is_reachable_and_drift_is_rejected(relative):
     with pytest.raises(AssertionError, match=r"^English register comparison bytes$"):
         before_english_register_bytes(relative, raw + b" ")
     assert before_english_register_object(relative, actual) == previous
-    assert (ROOT / relative).read_bytes() == raw
+    assert read_predecessor(ROOT, relative) == raw

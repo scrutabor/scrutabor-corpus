@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_caption_revision, before_edition_layer
 from offertory_rubric_successor_fixture import before_offertory_core_bytes
 from possessive_sweep_b1_successor_fixture import possessive_b1_groups
 
@@ -56,6 +57,7 @@ def healthy(case, core, layer):
     assert language_packs.check_layer(core, layer, path_of(text, "en")) == []
     assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
     assert prose.check(layer) == []
+    layer = before_edition_layer(layer)
     assert layer["about"] == saved["about"]
     assert {
         sid: {k: v for k, v in segment.items() if k != "alignments"}
@@ -88,7 +90,9 @@ def healthy(case, core, layer):
         assert indexed["w017"]["head"] == "w016"
     comparison = before_offertory_core_bytes(text, path_of(text).read_bytes())
     assert hashlib.sha256(comparison).hexdigest() == saved["core_sha256"]
-    assert hashlib.sha256(path_of(text, "pl").read_bytes()).hexdigest() == saved["pl_sha256"]
+    relative = str(path_of(text, "pl").relative_to(ROOT))
+    raw = before_caption_revision(relative, path_of(text, "pl").read_bytes())
+    assert hashlib.sha256(raw).hexdigest() == saved["pl_sha256"]
 
 
 @pytest.mark.parametrize("case", CASES, ids=[c["id"] for c in CASES])

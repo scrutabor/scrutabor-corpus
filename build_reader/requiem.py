@@ -10,11 +10,11 @@ from pathlib import Path
 def manifest_errors(manifest: dict) -> list[str]:
     base = manifest.get("base")
     if (
-        manifest.get("schema_version") != "6.10.0"
+        manifest.get("schema_version") != "6.11.0"
         or not isinstance(base, dict)
         or base.get("formularies") != "formularies.json"
     ):
-        return ["Requiem assembly requires reader 6.10.0 and its declared catalogue"]
+        return ["Requiem assembly requires reader 6.11.0 and its declared catalogue"]
     return []
 
 
@@ -38,6 +38,6 @@ def verify(corpus: Path, out: Path, manifest: dict) -> list[str]:
             for item in row.get("ordinary_omissions", [])
         ]
         expected.append(row)
-    if published != {"schema_version": "1.5.0", "formularies": expected}:
+    if published != {"schema_version": "1.6.0", "formularies": expected}:
         return ["Requiem assembly catalogue differs from independent authored reconstruction"]
     return []

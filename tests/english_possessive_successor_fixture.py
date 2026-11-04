@@ -10,6 +10,7 @@ from canon_consecration_successor_fixture import (
     before_canon_layer_frame,
     before_canon_object,
 )
+from edition_revision_fixture import before_edition_layer
 from english_psalm_caption_addendum import (
     before_psalm_caption_bytes,
     before_psalm_caption_frame,
@@ -86,6 +87,7 @@ def before_short_possessive_caption_frame(
     relative, value, diagnostic="short possessive current caption frame"
 ):
     """Compare captions only, preserving every non-caption field and prose fault."""
+    value = before_edition_layer(value)
     value = before_foot_communion_layer_frame(value, diagnostic)
     value = before_psalm_caption_frame(relative, value, caption_frame, diagnostic)
     if relative not in LAYERS:

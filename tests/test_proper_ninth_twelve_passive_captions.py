@@ -8,6 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_edition_layer
 from negative_government_fixture import predecessor_layer, predecessor_rows
 from possessive_sweep_b4_successor_fixture import before_possessive_b4_layer
 
@@ -122,7 +123,7 @@ def contribution(layer, wid):
 
 
 def frame_readback(core, layer, frame):
-    layer = before_possessive_b4_layer(layer)
+    layer = before_possessive_b4_layer(before_edition_layer(layer))
     assert [
         word
         for segment in core["segments"]
@@ -135,7 +136,7 @@ def frame_readback(core, layer, frame):
 
 
 def preserved(layer, case):
-    layer = before_possessive_b4_layer(layer)
+    layer = before_possessive_b4_layer(before_edition_layer(layer))
     comparison = predecessor_layer(layer, "unchanged ninth remainder")
     for group in FIXTURE["groups"]:
         if (group["text"], group["language"]) == (case["text"], case["language"]):

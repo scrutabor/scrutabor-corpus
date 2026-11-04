@@ -9,6 +9,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_edition_layer
 from english_register_successor_fixture import (
     before_english_register_ledger,
     before_english_register_text_layer,
@@ -68,7 +69,7 @@ def group_in(layer, case):
 
 
 def preserved(layer, case):
-    layer = before_possessive_b2_layer(layer)
+    layer = before_possessive_b2_layer(before_edition_layer(layer))
     layer = before_english_register_text_layer(layer, "unchanged passive-layer remainder")
     restored = predecessor_layer(layer)
     for group_case in FIXTURE["groups"]:

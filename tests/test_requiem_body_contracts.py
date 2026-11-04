@@ -376,7 +376,7 @@ def test_english_about_shown_as_ordo_note_names_the_priest(text):
     about = raw(text, "en")["about"]
     assert ordo_note_pronoun_openings(about) == [], (
         f"{text}: the reader shows this English about as the Ordo note on a Requiem day, "
-        "and a sentence opening with a pronoun has no antecedent there — name the priest"
+        "where the house style identifies the priest even when a nearby sentence names him"
     )
 
 

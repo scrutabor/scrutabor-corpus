@@ -158,12 +158,12 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(emitted_book
     assert written["evidence_coverage"] == {
         # Both Requiem texts have retained Latin and language-specific evidence.
         "neutral": {
-            "normalized": 1216,
-            "texts": 1222,
+            "normalized": 1217,
+            "texts": 1223,
         },  # Adoro te devote carries normalized graph evidence (2026-11-01)
         "languages": {
-            "en": {"normalized": 244, "effective": 1222, "texts": 1222},
-            "pl": {"normalized": 104, "effective": 1220, "texts": 1222},
+            "en": {"normalized": 246, "effective": 1223, "texts": 1223},
+            "pl": {"normalized": 107, "effective": 1221, "texts": 1223},
         },
     }
 
@@ -446,17 +446,17 @@ def test_metrics_are_the_single_derived_denominator(reader_out):
     assert metrics == {
         "schema_version": "1.0.0",
         "texts": {
-            "total": 1222,
+            "total": 1223,
             "proprium": 1071,
-            "words": 67088,
-            "verse_segments": 2987,
+            "words": 67112,
+            "verse_segments": 2990,
         },  # Adoro te devote: +1 text, +149 words, +28 verse segments (2026-11-01)
-        "languages": {"en": {"texts": 1222}, "pl": {"texts": 1222}},
+        "languages": {"en": {"texts": 1223}, "pl": {"texts": 1223}},
         "formularies": {
             "total": 114,
             "observances": 110,
-            "component_uses": 1280,
-            "unique_component_texts": 1029,
+            "component_uses": 1281,
+            "unique_component_texts": 1030,
         },
     }
 
@@ -617,9 +617,16 @@ def test_verify_catches_what_the_round_trip_cannot(reader_out, tmp_path):
     clean = reader_out
     assert verify(CORPUS, clean) == []
 
+    last_copy = None
+
     def broken(mutate, name):
+        nonlocal last_copy
+        if last_copy is not None:
+            # Reaching the next probe means the previous assertion passed.
+            shutil.rmtree(last_copy)
         out = tmp_path / name
         shutil.copytree(clean, out)
+        last_copy = out
         mutate(out)
         return verify(CORPUS, out)
 

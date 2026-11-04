@@ -48,9 +48,14 @@ jobs:
       - name: name the base the identity check compares against
         run: |
           base="${{ github.event.pull_request.base.sha || github.event.before }}"
-          if [ -z "$base" ] || ! git cat-file -e "$base^{commit}" 2>/dev/null; then
+          if [ -z "$base" ] || [ "$base" = 0000000000000000000000000000000000000000 ]; then
             base="$(git rev-parse origin/main)"
+          elif ! git cat-file -e "$base^{commit}" 2>/dev/null; then
+            # A replaced tip may no longer be reachable from any fetched branch.
+            # Compare against that exact commit even after a force push.
+            git fetch --no-tags origin "$base"
           fi
+          git rev-parse --verify "$base^{commit}"
           echo "SCRUTABOR_BASE=$base" >> "$GITHUB_ENV"
           echo "identity will be compared against $base"
       # …and then the corpus itself, which is what this repository is for.
