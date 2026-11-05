@@ -14,6 +14,7 @@ from edition_revision_fixture import (
     CAPTION_FILES,
     FILES,
     LAYER_CHANGES,
+    OWNER_FILES,
     PUBLISHED_FILES,
     PUBLISHED_LAYER_CHANGES,
     REVIEW_FILES,
@@ -51,9 +52,10 @@ def test_scope_is_nonempty_and_names_each_declared_subject_once():
     assert len(PUBLISHED_LAYER_CHANGES) == 128
     assert len(CAPTION_FILES) == 72
     assert len(REVIEW_FILES) == 48
-    assert len(FILES) == 226
+    assert len(OWNER_FILES) == 33
+    assert len(FILES) == 230
     assert len(LAYER_CHANGES) == 208
-    assert len(TRANSLATIONS) == 42
+    assert len(TRANSLATIONS) == 57
     assert set(LAYER_CHANGES) <= set(FILES)
     for relative, changes in LAYER_CHANGES.items():
         assert relative.startswith("languages/") and "/texts/" in relative

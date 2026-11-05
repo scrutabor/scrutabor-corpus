@@ -148,10 +148,13 @@ def test_rejected_citation_attachments_do_not_reach_the_reader(reader_out):
 def test_reader_build_names_evidence_coverage_and_rejected_exposure(emitted_book):
     _, written = emitted_book
     assert written["citation_projection"] == {
-        "legacy": 2771,
-        "mapped": 1872,
-        "kept": 1617,
-        "excluded": 1154,
+        # Owner decisions 2026-11-05: 28 withdrawn Husenbeth Te Deum attachments and the
+        # unattested Blessed Be God s26 attachment leave; two Douay attachments are added; the
+        # Polish Regina caeli s02 Katechizm attachment leaves.
+        "legacy": 2742,
+        "mapped": 1871,
+        "kept": 1616,
+        "excluded": 1126,
         "unresolved": 0,
         "rejected_exposed": 0,
     }
@@ -162,7 +165,8 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(emitted_book
             "texts": 1223,
         },  # Adoro te devote carries normalized graph evidence (2026-11-01)
         "languages": {
-            "en": {"normalized": 246, "effective": 1223, "texts": 1223},
+            # ordinarium.agnus-dei gains its English 1846 wording uses (2026-11-05).
+            "en": {"normalized": 247, "effective": 1223, "texts": 1223},
             "pl": {"normalized": 107, "effective": 1221, "texts": 1223},
         },
     }

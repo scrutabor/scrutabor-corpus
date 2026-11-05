@@ -12,6 +12,7 @@ from dies_irae_caption_fixture import restore_dies_irae_layer
 from dies_irae_government_fixture import DATA, before_dies_irae_government_layer, canonical
 from edition_revision_fixture import (
     before_edition_layer,
+    before_owner_layer,
     before_review_layer,
     current_edition_value,
 )
@@ -352,8 +353,11 @@ def test_dative_controls_are_finite_and_do_not_ban_other_predicates(control):
     if control["text"] != DATA["text"]:
         comparison = before_dies_irae_government_layer(layer)
         # A control may carry the prayer reader review's declared captions (the Loreto
-        # collect's Polish *Concéde*); the projection may undo only those exact fields.
-        assert comparison is not layer and comparison == before_review_layer(layer)
+        # collect's Polish *Concéde*) and the owner decisions' declared Loreto explanations
+        # and about sentence; the projection may undo only those exact fields.
+        assert comparison is not layer and comparison == before_review_layer(
+            before_owner_layer(layer)
+        )
 
 
 @pytest.fixture(scope="module")

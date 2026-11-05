@@ -16,7 +16,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import LAYER_CHANGES, REVIEW_FILES
+from edition_revision_fixture import LAYER_CHANGES, OWNER_FILES, REVIEW_FILES
 
 from checks import interlinear
 
@@ -286,7 +286,33 @@ assert stale(REVIEWED_CHANGE["before"]) and stale(REVIEWED_CHANGE["after"])
 CURRENT_LEGACY[REVIEWED_TEXT][REVIEWED_FIELD] = hashlib.sha256(
     REVIEWED_CHANGE["after"].encode()
 ).hexdigest()
-ALLOWANCES = combine_inventories(CURRENT_LEGACY, HISTORICAL, TEXT_IDS)
+# The owner decisions (2026-11-05) changed three retained-register lines without changing their
+# register: the Te Deum's "Every day we bless Thee;" and "let me never be confounded", and the
+# capitals of the Angelus collect's pronouns. Each allowance, in whichever inventory holds it,
+# advances from exactly the declared before to the declared after; nothing is approved or retired.
+CURRENT_HISTORICAL = deepcopy(HISTORICAL)
+for _text, _field in (
+    ("orationes.te-deum", ("segments", "s24", "translation")),
+    ("orationes.te-deum", ("segments", "s28", "translation")),
+    ("orationes.angelus-domini", ("segments", "s13", "translation")),
+):
+    _change = next(
+        change
+        for change in OWNER_FILES[f"languages/en/texts/{_text.replace('.', '/', 1)}.json"][
+            "changes"
+        ]
+        if change["path"] == list(_field)
+    )
+    _holders = [
+        inventory
+        for inventory in (CURRENT_LEGACY, CURRENT_HISTORICAL)
+        if _field in inventory.get(_text, {})
+    ]
+    assert len(_holders) == 1, (_text, _field)
+    assert _holders[0][_text][_field] == hashlib.sha256(_change["before"].encode()).hexdigest()
+    assert stale(_change["before"]) and stale(_change["after"])
+    _holders[0][_text][_field] = hashlib.sha256(_change["after"].encode()).hexdigest()
+ALLOWANCES = combine_inventories(CURRENT_LEGACY, CURRENT_HISTORICAL, TEXT_IDS)
 # Keep the existing conclusion contract independent of current prose: only an explicit
 # legacy prose field can defer it, and that field itself is checked by the all-text gate.
 CONCLUSION_TEXTS = [

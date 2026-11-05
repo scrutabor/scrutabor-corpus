@@ -89,7 +89,7 @@ def test_each_language_retains_supported_formula_and_all_24_token_realizations(l
     assert interlinear_errors(doc, layer) == []
     title = read(f"languages/{language}/manifest.json")["titles"][AGNUS]["title"]
     assert title == (
-        "Baranku Boży w Wielki Czwartek" if language == "pl" else "Lamb of God on Maundy Thursday"
+        "Baranku Boży w Wielki Czwartek" if language == "pl" else "Lamb of God — Holy Thursday"
     )
     assert len(layer["words"]) == 24
     assert list(layer["words"]) == [f"w{i:03}" for i in range(1, 25)]

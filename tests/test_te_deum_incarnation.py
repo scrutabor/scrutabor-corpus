@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_owner_layer
 
 from checks.interlinear import check as check_interlinear
 from checks.translation_provenance import canonical_hash, source_payload
@@ -190,7 +191,9 @@ def test_alternative_is_localized_once_and_does_not_unsettle_future_active(langu
 
 @pytest.mark.parametrize("language", ["pl", "en"])
 def test_all_twenty_eight_continuous_translations_and_citations_are_preserved(language):
-    value = layer(language)
+    # The seal is the received text; only the owner-decision fields declared in the newest
+    # receipt (English s24 and s28 wording, the Te Deum citation audit) are undone first.
+    value = before_owner_layer(layer(language))
     assert len(value["segments"]) == 28
     protected = {
         sid: {

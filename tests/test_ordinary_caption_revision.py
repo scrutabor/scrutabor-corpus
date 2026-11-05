@@ -12,6 +12,7 @@ from edition_revision_fixture import (
     PUBLISHED_FILES,
     before_caption_revision,
     before_edition_revision,
+    before_owner_revision,
     before_review_revision,
 )
 
@@ -83,8 +84,9 @@ def test_scope_and_published_parent_are_exact():
 @pytest.mark.parametrize("relative", sorted(CAPTION_FILES))
 def test_exact_previous_published_bytes_and_older_receipts(relative):
     live = (ROOT / relative).read_bytes()
-    # A later receipt (the prayer reader review) may sit on top; undo it exactly first.
-    raw = before_review_revision(relative, live)
+    # Later receipts (the prayer reader review, then the owner decisions) may sit on top;
+    # undo them exactly first, newest first.
+    raw = before_review_revision(relative, before_owner_revision(relative, live))
     entry = CAPTION_FILES[relative]
     assert hashlib.sha256(raw).hexdigest() == entry["current"]
     published = before_caption_revision(relative, raw)

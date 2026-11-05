@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import TypedDict
 
 import pytest
-from edition_revision_fixture import before_review_layer
+from edition_revision_fixture import before_owner_layer, before_review_layer
 
 from build_reader.layers import enrich_layer, expand_core
 from checks import interlinear, language_packs
@@ -495,9 +495,11 @@ def preserved_context(layer):
 
 
 def assert_preserved_context(text, layer):
-    # The prayer reader review changed two prose lines and one explanation here; only those
-    # exact declared values are projected back before the retained-context digest.
-    assert canonical_hash(preserved_context(before_review_layer(layer))) == PRESERVED[text], (
+    # The prayer reader review changed two prose lines and one explanation here, and the owner
+    # decisions added six Loreto explanations and one about sentence; only those exact declared
+    # values are projected back (newest receipt first) before the retained-context digest.
+    retained = before_review_layer(before_owner_layer(layer))
+    assert canonical_hash(preserved_context(retained)) == PRESERVED[text], (
         "retained litany prose and details"
     )
 

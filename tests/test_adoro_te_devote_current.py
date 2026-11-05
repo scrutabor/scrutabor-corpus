@@ -21,7 +21,8 @@ CURRENT = {
         "s01": "With devotion I adore You, hidden Godhead,",
         "s02": "who are truly hidden beneath these forms:",
         "s06": "but hearing alone gives sure ground for faith:",
-        "s10": "but here Your humanity is hidden as well.",
+        # Owner decision 2026-11-05: the Latin has no pronoun here (s09 already names the Godhead).
+        "s10": "but here humanity is hidden as well.",
         "s22": "cleanse me, unclean as I am, with Your blood.",
         "s23": "One saving drop of that blood",
         "s24": "can free the whole world from every sin.",
@@ -184,12 +185,12 @@ def test_an_opening_page_cannot_support_the_polish_drop_clause(field, wrong):
 @pytest.mark.parametrize(
     ("language", "hearing", "faith", "humanity"),
     [
-        ("en", "through hearing alone", "one believes with certainty", "Your humanity as well"),
+        ("en", "through hearing alone", "one believes with certainty", "humanity as well"),
         (
             "pl",
             "jedynie dzięki słuchowi",
             "można wierzyć bez obawy błędu",
-            "także Twoje człowieczeństwo",
+            "także człowieczeństwo",
         ),
     ],
 )

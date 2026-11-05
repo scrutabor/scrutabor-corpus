@@ -125,13 +125,17 @@ def test_the_authored_graph_accounts_for_every_audited_legacy_citation():
     assert validate(CORPUS, graph, languages) == []
     state = parity(CORPUS, graph, languages)
     assert state == {
-        "legacy": 2771,
-        "mapped": 1872,
-        "removed": 899,
+        "legacy": 2742,
+        "mapped": 1871,
+        "removed": 871,
         "unmapped": 0,
-        # The seal follows the one adopted legacy-citation change: the Lewis and Short
-        # locator of the amen note, `s.v. amen, I` -> `s.v. amen, III.A–B` (2026-10-19).
-        "sha256": "7d7019f4a409297c093dda8aa5f7615342c81b20c77731212477d679bcdcf017",
+        # The seal follows the adopted legacy-citation changes: the Lewis and Short locator
+        # of the amen note, `s.v. amen, I` -> `s.v. amen, III.A–B` (2026-10-19); then the
+        # English Te Deum attachments (the 28 withdrawn Husenbeth 1853 citations leave with
+        # their removal records, Blessed Be God 1925 keeps the 26 segments it prints or revises
+        # at exact pages, Douay Ps 30:2 and 32:22 attest s28 and the second sentence of s27) and the
+        # Polish Regina caeli s02 Katechizm 1925 attachment, which prints another wording.
+        "sha256": "6a76b9b9350d44ed85728bbc8e9626e3f8c76e9ba028d6f1914a8a12133da4bd",
         "complete": True,
     }
 
