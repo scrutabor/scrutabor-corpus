@@ -7,7 +7,11 @@ from pathlib import Path
 
 import pytest
 from dies_irae_caption_fixture import restore_dies_irae_layer
-from edition_revision_fixture import before_edition_layer, before_edition_object
+from edition_revision_fixture import (
+    before_edition_layer,
+    before_edition_object,
+    current_edition_caption,
+)
 from gospel_delivery_fixture import current_sung_source_hash
 from michael_secret_fixture import control_expectation, ledger_expectation, predecessor_documents
 from opening_caption_fixture import restore_opening_layer
@@ -156,8 +160,21 @@ def assert_note(core, layer, row):
         require("explanation" not in entry, "parenthesis note scope")
 
 
+def reviewed_control_groups(row):
+    """Advance only a control group the prayer reader review declares for its exact old gloss."""
+    groups = []
+    for group in row["groups"]:
+        current = current_edition_caption(
+            row["language"], row["text"], row["segment"], group["words"], group["gloss"]
+        )
+        groups.append(
+            current if current is not None and current["words"] == group["words"] else group
+        )
+    return {**row, "groups": groups}
+
+
 def assert_control(layer, row):
-    row = control_expectation(row)
+    row = reviewed_control_groups(control_expectation(row))
     groups = layer["segments"][row["segment"]].get("alignments", [])
     touching = [g for g in groups if set(g["words"]) & set(row["span"])]
     grouped = {wid for g in touching for wid in g["words"]}

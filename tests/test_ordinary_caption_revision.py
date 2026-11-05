@@ -12,6 +12,7 @@ from edition_revision_fixture import (
     PUBLISHED_FILES,
     before_caption_revision,
     before_edition_revision,
+    before_review_revision,
 )
 
 from build_reader import emit, store
@@ -81,7 +82,9 @@ def test_scope_and_published_parent_are_exact():
 
 @pytest.mark.parametrize("relative", sorted(CAPTION_FILES))
 def test_exact_previous_published_bytes_and_older_receipts(relative):
-    raw = (ROOT / relative).read_bytes()
+    live = (ROOT / relative).read_bytes()
+    # A later receipt (the prayer reader review) may sit on top; undo it exactly first.
+    raw = before_review_revision(relative, live)
     entry = CAPTION_FILES[relative]
     assert hashlib.sha256(raw).hexdigest() == entry["current"]
     published = before_caption_revision(relative, raw)
@@ -97,12 +100,12 @@ def test_exact_previous_published_bytes_and_older_receipts(relative):
     if relative in PUBLISHED_FILES:
         assert hashlib.sha256(published).hexdigest() == PUBLISHED_FILES[relative]["current"]
         assert (
-            hashlib.sha256(before_edition_revision(relative, raw)).hexdigest()
+            hashlib.sha256(before_edition_revision(relative, live)).hexdigest()
             == (PUBLISHED_FILES[relative]["previous"])
         )
     else:
-        assert before_edition_revision(relative, raw) == published
-    assert (ROOT / relative).read_bytes() == raw
+        assert before_edition_revision(relative, live) == published
+    assert (ROOT / relative).read_bytes() == live
 
 
 @pytest.mark.parametrize("relative", sorted(CAPTION_FILES))

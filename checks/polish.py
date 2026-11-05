@@ -541,6 +541,10 @@ def check_divine_address(doc: dict, gloss: dict) -> list[str]:
     """
     errors: list[str] = []
     human_or_created_addressee = {
+        # Mary answers the angel (*secúndum verbum tuum*) and the faithful address
+        # the archangel (*tuque, Princeps*); the received verses keep their capitals.
+        ("orationes.angelus-domini", "w048"),
+        ("orationes.sancte-michael", "w020"),
         ("proprium.dominica-in-quinquagesima-evangelium", "w126"),
         ("proprium.dominica-in-septuagesima-evangelium", "w189"),
         ("proprium.dominica-xx-post-pentecosten-offertorium", "w010"),

@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_review_layer
 
 from checks import interlinear, language_packs
 from checks.collate import load_witness
@@ -24,6 +25,13 @@ GROUPS = [
     (374, 378, 376, "who lives and reigns with You"),
     (379, 381, 380, "forever and ever"),
 ]
+# The collect's English-only w366 note, plus the two invocation notes the prayer reader review
+# added: w038 (English, "Son" names Jesus) and w181 (Polish, the image of Gn 49:26).
+EXPLANATIONS = {
+    "w038": {"languages": ["en"]},
+    "w181": {"languages": ["pl"]},
+    "w366": {"languages": ["en"]},
+}
 CONTINUOUS = (
     "Almighty and eternal God, look upon the Heart of Thy most beloved Son and upon "
     "the praises and satisfaction which He offers Thee in the name of sinners; "
@@ -187,7 +195,7 @@ def test_selected_short_latin_conclusion_and_registered_transcript_are_preserved
         "qui tecum vivit et regnat in sæcula saeculorum. Amen."
     )
     assert "unitate" not in " ".join(forms)
-    assert core["localization"]["explanations"] == {"w366": {"languages": ["en"]}}
+    assert core["localization"]["explanations"] == EXPLANATIONS
     without_topology = deepcopy(core)
     del without_topology["localization"]["explanations"]
     assert canonical_hash(without_topology) == (
@@ -196,10 +204,10 @@ def test_selected_short_latin_conclusion_and_registered_transcript_are_preserved
 
 
 @pytest.mark.parametrize("language", ["en", "pl"])
-def test_explanation_topology_is_english_only_and_polish_stays_unmodified(language):
+def test_explanation_topology_is_english_w038_w366_and_polish_w181(language):
     core, _ = current()
     layer = read(f"languages/{language}/" + RELATIVE)
-    assert core["localization"]["explanations"] == {"w366": {"languages": ["en"]}}
+    assert core["localization"]["explanations"] == EXPLANATIONS
     assert ("explanation" in layer["words"]["w366"]) == (language == "en")
     assert language_packs.check_layer(core, layer, ROOT / RELATIVE) == []
 
@@ -311,7 +319,8 @@ def historical_english_for_collect_scope(layer: dict) -> dict:
 
 
 def assert_preserved_english(layer):
-    layer = historical_english_for_collect_scope(layer)
+    # Only the exact reader-review fields (s060 prose, w038 note, three captions) are undone.
+    layer = historical_english_for_collect_scope(before_review_layer(layer))
     assert len(unrelated_english(layer)["segments"]) == 88
     assert canonical_hash(unrelated_english(layer)) == (
         "cd29b72c8077e238793f35c93f374e13270a0cb3b2ebf3d42f0e393c79d4b196"
@@ -324,7 +333,9 @@ def test_other_88_english_segments_words_and_metadata_are_unchanged():
 
 
 def assert_preserved_polish(layer):
-    assert canonical_hash(layer) == (
+    # Only the exact reader-review fields are undone: the about sheet, the s062 group, the
+    # w196, w197, w239 and w240 captions and the w181 note.
+    assert canonical_hash(before_review_layer(layer)) == (
         "3813e50603bdffe875d5954d6f509cf5f6f3f5cba761264d68449d52515d0a3a"
     )
 

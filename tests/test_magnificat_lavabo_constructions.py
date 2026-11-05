@@ -6,7 +6,11 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import before_caption_revision, before_edition_layer
+from edition_revision_fixture import (
+    before_caption_revision,
+    before_edition_layer,
+    before_review_revision,
+)
 from offertory_rubric_successor_fixture import before_offertory_core_bytes
 from possessive_sweep_b1_successor_fixture import possessive_b1_groups
 
@@ -91,7 +95,9 @@ def healthy(case, core, layer):
     comparison = before_offertory_core_bytes(text, path_of(text).read_bytes())
     assert hashlib.sha256(comparison).hexdigest() == saved["core_sha256"]
     relative = str(path_of(text, "pl").relative_to(ROOT))
-    raw = before_caption_revision(relative, path_of(text, "pl").read_bytes())
+    # The prayer reader review changed the Polish Magnificat about sheet; undo it exactly first.
+    live = path_of(text, "pl").read_bytes()
+    raw = before_caption_revision(relative, before_review_revision(relative, live))
     assert hashlib.sha256(raw).hexdigest() == saved["pl_sha256"]
 
 

@@ -26,6 +26,16 @@ for _relative, _entry in CAPTION_FILES.items():
         "current": _entry["current"],
         "previous": PUBLISHED_FILES.get(_relative, _entry)["previous"],
     }
+# The newest receipt: the reader review of the standalone prayers, on top of both older ones.
+REVIEW_REVISION = json.loads(
+    (Path(__file__).parent / "fixtures/prayer-review-revision.json").read_bytes()
+)
+REVIEW_FILES = REVIEW_REVISION["files"]
+for _relative, _entry in REVIEW_FILES.items():
+    FILES[_relative] = {
+        "current": _entry["current"],
+        "previous": FILES.get(_relative, _entry)["previous"],
+    }
 
 
 def _exact_inverse(entry, raw):
@@ -46,11 +56,20 @@ def before_caption_revision(relative, raw):
     return _exact_inverse(entry, raw)
 
 
+def before_review_revision(relative, raw):
+    """The exact parent of the prayer reader-review receipt; anything else is returned untouched."""
+    entry = REVIEW_FILES.get(relative)
+    if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
+        return raw
+    return _exact_inverse(entry, raw)
+
+
 def before_edition_revision(relative, raw):
     entry = FILES.get(relative)
     if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
         return raw
-    result = before_caption_revision(relative, raw)
+    result = before_review_revision(relative, raw)
+    result = before_caption_revision(relative, result)
     if relative in PUBLISHED_FILES:
         result = _exact_inverse(PUBLISHED_FILES[relative], result)
     assert hashlib.sha256(result).hexdigest() == entry["previous"], relative
@@ -68,11 +87,11 @@ ABSENT = object()
 
 
 def _composed_layer_changes():
-    """Join exact adjacent values while preserving the two published receipts."""
+    """Join exact adjacent values while preserving the three receipts in order."""
     result = deepcopy(PUBLISHED_LAYER_CHANGES)
-    for relative, entry in CAPTION_FILES.items():
+    for relative, entry in [*CAPTION_FILES.items(), *REVIEW_FILES.items()]:
         changes = result.setdefault(relative, [])
-        for current in entry["changes"]:
+        for current in entry.get("changes", ()):
             previous = next((c for c in changes if c["path"] == current["path"]), None)
             if previous is None:
                 changes.append(deepcopy(current))
@@ -83,6 +102,8 @@ def _composed_layer_changes():
                 previous["after"] = deepcopy(current["after"])
             if previous.get("before", ABSENT) == previous.get("after", ABSENT):
                 changes.remove(previous)
+        if not changes:
+            del result[relative]
     return result
 
 
@@ -91,12 +112,26 @@ LAYER_CHANGES = _composed_layer_changes()
 
 def before_edition_layer(layer):
     """Undo only matching declared fields on a copy; preserve all unlisted mutations."""
+    return _undo_layer_changes(layer, LAYER_CHANGES)
+
+
+REVIEW_LAYER_CHANGES = {
+    relative: entry["changes"] for relative, entry in REVIEW_FILES.items() if entry.get("changes")
+}
+
+
+def before_review_layer(layer):
+    """Undo only the prayer reader-review fields (the newest receipt) on a copy."""
+    return _undo_layer_changes(layer, REVIEW_LAYER_CHANGES)
+
+
+def _undo_layer_changes(layer, declared):
     text = layer.get("text")
     language = layer.get("language", layer.get("lang"))
     if not isinstance(text, str) or not isinstance(language, str):
         return layer
     relative = f"languages/{language}/texts/{text.replace('.', '/', 1)}.json"
-    changes = LAYER_CHANGES.get(relative, ())
+    changes = declared.get(relative, ())
     result = layer
     for change in changes:
         fields = change["path"]
@@ -138,15 +173,25 @@ def before_edition_object(relative, value):
 
 
 def current_edition_value(relative, fields, previous):
-    """A declared live expected value; never normalize the observed current value."""
-    changes = [
-        *CAPTION_FILES.get(relative, {}).get("changes", ()),
-        *LAYER_CHANGES.get(relative, ()),
-    ]
-    for change in changes:
-        if change["path"] == list(fields) and change.get("before", ABSENT) == previous:
-            return deepcopy(change["after"]) if "after" in change else ABSENT
-    return previous
+    """A declared live expected value; never normalize the observed current value.
+
+    The receipts are walked oldest first, so an exact old value advances through every later
+    declared change of the same field; an undeclared value is returned as it came.
+    """
+    receipts = (
+        PUBLISHED_LAYER_CHANGES.get(relative, ()),
+        CAPTION_FILES.get(relative, {}).get("changes", ()),
+        REVIEW_FILES.get(relative, {}).get("changes", ()),
+    )
+    value, advanced = previous, False
+    for changes in receipts:
+        for change in changes:
+            if change["path"] == list(fields) and change.get("before", ABSENT) == value:
+                value, advanced = change.get("after", ABSENT), True
+                break
+    if not advanced:
+        return previous
+    return deepcopy(value) if value is not ABSENT else ABSENT
 
 
 def _digest(value):

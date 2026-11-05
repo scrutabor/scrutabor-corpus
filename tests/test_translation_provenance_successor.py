@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_edition_target_sha
 from gospel_delivery_fixture import current_sung_expected_row
 from pentecost_successor_fixture import expected_pentecost_row
 from post_ascension_fixture import expected_row_successor
@@ -231,12 +232,22 @@ def test_the_provenance_validator_rejects_a_cleared_flag(site, baseline, monkeyp
     assert tally == baseline["checked"][1]
 
 
+def current_review_row(row):
+    """Advance only an exact old target digest that the prayer reader review declares."""
+    advanced = current_edition_target_sha(
+        row["text"], row["language"], row["segment"], row["target_sha256"]
+    )
+    return row if advanced == row["target_sha256"] else {**row, "target_sha256": advanced}
+
+
 def test_all_173_successor_rows_match_exactly(baseline):
     for site, row in FIXTURE["after_rows"].items():
-        assert baseline["rows"][site] == current_expected_michael_row(
-            expected_pentecost_row(
-                current_sung_expected_row(
-                    expected_row_successor(current_expected_reflexive_row(row))
+        assert baseline["rows"][site] == current_review_row(
+            current_expected_michael_row(
+                expected_pentecost_row(
+                    current_sung_expected_row(
+                        expected_row_successor(current_expected_reflexive_row(row))
+                    )
                 )
             )
         )

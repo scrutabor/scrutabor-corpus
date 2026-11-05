@@ -10,7 +10,11 @@ import test_dies_irae_contextual_captions as historical
 from dies_irae_caption_fixture import DATA as HISTORICAL
 from dies_irae_caption_fixture import restore_dies_irae_layer
 from dies_irae_government_fixture import DATA, before_dies_irae_government_layer, canonical
-from edition_revision_fixture import before_edition_layer, current_edition_value
+from edition_revision_fixture import (
+    before_edition_layer,
+    before_review_layer,
+    current_edition_value,
+)
 from possessive_sweep_b2_successor_fixture import (
     before_possessive_b2_layer,
     before_possessive_b2_layer_frame,
@@ -347,7 +351,9 @@ def test_dative_controls_are_finite_and_do_not_ban_other_predicates(control):
     assert interlinear.check(core, layer) == []
     if control["text"] != DATA["text"]:
         comparison = before_dies_irae_government_layer(layer)
-        assert comparison is not layer and comparison == layer
+        # A control may carry the prayer reader review's declared captions (the Loreto
+        # collect's Polish *Concéde*); the projection may undo only those exact fields.
+        assert comparison is not layer and comparison == before_review_layer(layer)
 
 
 @pytest.fixture(scope="module")

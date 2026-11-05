@@ -16,7 +16,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import LAYER_CHANGES
+from edition_revision_fixture import LAYER_CHANGES, REVIEW_FILES
 
 from checks import interlinear
 
@@ -266,6 +266,26 @@ assert stale(ABOUT_CHANGE["before"]) and not stale(ABOUT_CHANGE["after"])
 del CURRENT_LEGACY[RETIRED_ABOUT][("about",)]
 if not CURRENT_LEGACY[RETIRED_ABOUT]:
     del CURRENT_LEGACY[RETIRED_ABOUT]
+# The prayer reader review (2026-11-05) changed one retained-register legacy line: the Holy
+# Name collect now renders peténtibus and its three ablatives. Its pending legacy allowance
+# advances to exactly the reviewed string; the debt itself is neither approved nor retired.
+REVIEWED_TEXT = "litaniae.sanctissimi-nominis-iesu"
+REVIEWED_FIELD = ("segments", "s145", "translation")
+REVIEWED_CHANGE = next(
+    change
+    for change in REVIEW_FILES["languages/en/texts/litaniae/sanctissimi-nominis-iesu.json"][
+        "changes"
+    ]
+    if change["path"] == list(REVIEWED_FIELD)
+)
+assert (
+    CURRENT_LEGACY[REVIEWED_TEXT][REVIEWED_FIELD]
+    == hashlib.sha256(REVIEWED_CHANGE["before"].encode()).hexdigest()
+)
+assert stale(REVIEWED_CHANGE["before"]) and stale(REVIEWED_CHANGE["after"])
+CURRENT_LEGACY[REVIEWED_TEXT][REVIEWED_FIELD] = hashlib.sha256(
+    REVIEWED_CHANGE["after"].encode()
+).hexdigest()
 ALLOWANCES = combine_inventories(CURRENT_LEGACY, HISTORICAL, TEXT_IDS)
 # Keep the existing conclusion contract independent of current prose: only an explicit
 # legacy prose field can defer it, and that field itself is checked by the all-text gate.

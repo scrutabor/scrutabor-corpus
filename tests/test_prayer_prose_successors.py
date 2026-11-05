@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_edition_value
 from english_contract_successor_fixture import (
     before_english_contract_layer,
     before_english_contract_prose,
@@ -298,7 +299,9 @@ def test_anima_formula_about_and_inherited_source_decisions_are_kept():
     assert {sid: row for sid, row in previous["segments"].items() if sid != "s13"} == {
         sid: row for sid, row in b1_layer["segments"].items() if sid != "s13"
     }
-    assert layer.get("about") == DATA["texts"][ANIMA]["about"]
+    assert layer.get("about") == current_edition_value(
+        relative, ["about"], DATA["texts"][ANIMA]["about"]
+    )
     relationships = store.translation_relationships(ROOT, "en")
     assert all(
         relationships[f"{ANIMA}.{sid}.en"] == "revised" for sid in ("s07", "s08", "s11", "s12")

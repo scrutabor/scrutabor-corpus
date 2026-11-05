@@ -238,7 +238,8 @@ def test_earlier_reworded_rows_carry_a_working_review(entry):
 def test_about_reads_forever():
     for text, row in ABOUT.items():
         _, layer = load(text)
-        assert layer["about"] == row["after"]
+        relative = f"languages/en/texts/{text.replace('.', '/', 1)}.json"
+        assert layer["about"] == current_edition_value(relative, ["about"], row["after"])
         assert "for ever" not in layer["about"]
 
 
