@@ -36,12 +36,23 @@ for _relative, _entry in REVIEW_FILES.items():
         "current": _entry["current"],
         "previous": FILES.get(_relative, _entry)["previous"],
     }
-# The newest receipt: the owner's decisions after that review, on top of all three.
+# The owner's decisions after that review, on top of all three.
 OWNER_REVISION = json.loads(
     (Path(__file__).parent / "fixtures/owner-decisions-revision.json").read_bytes()
 )
 OWNER_FILES = OWNER_REVISION["files"]
 for _relative, _entry in OWNER_FILES.items():
+    FILES[_relative] = {
+        "current": _entry["current"],
+        "previous": FILES.get(_relative, _entry)["previous"],
+    }
+# The newest receipt: three printed wording witnesses enter the bibliography, on top of all four.
+# It changes graph, bibliography, basis and provenance files only, never a language layer.
+WITNESS_REVISION = json.loads(
+    (Path(__file__).parent / "fixtures/witness-citations-revision.json").read_bytes()
+)
+WITNESS_FILES = WITNESS_REVISION["files"]
+for _relative, _entry in WITNESS_FILES.items():
     FILES[_relative] = {
         "current": _entry["current"],
         "previous": FILES.get(_relative, _entry)["previous"],
@@ -82,11 +93,20 @@ def before_owner_revision(relative, raw):
     return _exact_inverse(entry, raw)
 
 
+def before_witness_revision(relative, raw):
+    """The exact parent of the witness-citations receipt; anything else is returned untouched."""
+    entry = WITNESS_FILES.get(relative)
+    if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
+        return raw
+    return _exact_inverse(entry, raw)
+
+
 def before_edition_revision(relative, raw):
     entry = FILES.get(relative)
     if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
         return raw
-    result = before_owner_revision(relative, raw)
+    result = before_witness_revision(relative, raw)
+    result = before_owner_revision(relative, result)
     result = before_review_revision(relative, result)
     result = before_caption_revision(relative, result)
     if relative in PUBLISHED_FILES:
