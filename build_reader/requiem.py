@@ -10,11 +10,11 @@ from pathlib import Path
 def manifest_errors(manifest: dict) -> list[str]:
     base = manifest.get("base")
     if (
-        manifest.get("schema_version") != "6.11.0"
+        manifest.get("schema_version") != "6.12.0"
         or not isinstance(base, dict)
         or base.get("formularies") != "formularies.json"
     ):
-        return ["Requiem assembly requires reader 6.11.0 and its declared catalogue"]
+        return ["Requiem assembly requires reader 6.12.0 and its declared catalogue"]
     return []
 
 

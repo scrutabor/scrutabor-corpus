@@ -571,7 +571,8 @@ def test_historical_wording_basis_is_only_embedded_gloria(language):
     coverage = bibliography.evidence_coverage(ROOT, graph, packages)["languages"][language]
     # The joined edition adds the supported source uses and complete Thursday Agnus; the
     # owner decisions (2026-11-05) add the English 1846 wording uses of the ordinary Agnus.
-    assert coverage["normalized"] == {"pl": 107, "en": 247}[language]
+    # Withdrawn English Memorare uses no longer create a localized evidence slice.
+    assert coverage["normalized"] == {"pl": 107, "en": 246}[language]
 
 
 @pytest.mark.parametrize("language", ["pl", "en"])

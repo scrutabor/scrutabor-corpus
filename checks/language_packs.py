@@ -18,7 +18,15 @@ CORE_LOCALIZATION_KEYS = {
     "notes",
     "narrative_citations",
 }
-LAYER_KEYS = {"schema_version", "language", "text", "about", "segments", "words"}
+LAYER_KEYS = {
+    "schema_version",
+    "language",
+    "text",
+    "about",
+    "translation_label",
+    "segments",
+    "words",
+}
 
 
 def check_manifests(corpus: Path) -> list[str]:
@@ -188,7 +196,7 @@ def check_core(core: dict) -> list[str]:
             errors.append(f"{text_id}:{segment_id}: narrative citations on a verse")
         errors += lint_citations(citations, f"{text_id}:{segment_id}:narrative")
 
-    forbidden_doc = set(core) & {"about", "about_citations"}
+    forbidden_doc = set(core) & {"about", "about_citations", "translation_label"}
     if forbidden_doc:
         errors.append(
             f"{text_id}: localized document fields in neutral core {sorted(forbidden_doc)}"
@@ -229,6 +237,13 @@ def check_layer(core: dict, layer: dict, path: Path) -> list[str]:
         errors.append(f"{where}: schema version differs from the neutral core")
     if not isinstance(layer.get("about"), str) or not layer["about"].strip():
         errors.append(f"{where}: about is required and must be nonempty")
+
+    if "translation_label" in layer:
+        label = layer["translation_label"]
+        if not isinstance(label, str) or not label.strip():
+            errors.append(f"{where}: translation_label must be a nonempty string when present")
+        if not any(segment.get("type") == "verse" for segment in core.get("segments") or []):
+            errors.append(f"{where}: translation_label requires a verse translation")
 
     core_segments = core.get("segments") or []
     segments = layer.get("segments") or {}

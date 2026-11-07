@@ -1,4 +1,4 @@
-"""Revised historical bases retain exact source scope and inherited provenance."""
+"""Historical source records keep exact current retention, scope and provenance."""
 
 import copy
 import json
@@ -27,12 +27,64 @@ EXPECTED_IDS = {
     "use.pl.3c4887b171db3d7431ff",
 }
 AVE_IDS = {"use.pl.a9e8eb327d2b26261368", "use.pl.889d0b8c94319f3489ce"}
+WITHDRAWN_USES = {
+    "orationes.magnificat.s03.en": "use.en.c851cc4624ad0c9b8e90",
+    "orationes.magnificat.s04.en": "use.en.187222f69552357689e2",
+    "orationes.magnificat.s05.en": "use.en.c1bf1b3d4d5d50fac3c2",
+    "orationes.magnificat.s08.en": "use.en.fccee24c364e44f09cac",
+}
+WITHDRAWN_REPAIRS = [record for record in REPAIRS if record["site"] in WITHDRAWN_USES]
+RETAINED_REPAIRS = [record for record in REPAIRS if record["site"] not in WITHDRAWN_USES]
+WITHDRAWAL_REASON = (
+    "The recorded English draft is not a revision of this historical wording. This use does not "
+    "establish the claimed inherited origin at its addressed scope. The current wording is "
+    "unchanged."
+)
+
+
+def current_expected_use(record):
+    """Advance only the declared expected source metadata; never normalize an observed use."""
+    expected = copy.deepcopy(record["use"])
+    if record["site"] in WITHDRAWN_USES:
+        assert expected["id"] == WITHDRAWN_USES[record["site"]]
+        assert expected["decision"] == "RETAIN_WITH_CORRECTION"
+        expected.update(decision="REMOVE", decision_reason=WITHDRAWAL_REASON)
+    elif record["site"] == "orationes.magnificat.s06.en":
+        assert expected["id"] == "use.en.0cfda2b4bcac3b4851cb"
+        assert expected["verified_on"] == "2026-10-16"
+        expected.update(
+            claim=(
+                "Historical English wording basis for both clauses of this verse, including the "
+                "conceit of their heart. The print has shewn, in his arm and hath; the selected "
+                "text has shown, with His arm and has, with divine capitalization and punctuation "
+                "adjustments. The complete verse is revised rather than verbatim."
+            ),
+            decision_reason=(
+                "The directly viewed complete verse on printed p. 346 / PDF p. 373 supplies the "
+                "addressed wording under its revised relationship. No other Magnificat verse is "
+                "attributed to this use."
+            ),
+            verified_on="2026-11-06",
+        )
+    return expected
+
+
+def current_expected_provenance(record):
+    expected = current_canon_row(record["provenance"])
+    if record["site"] in WITHDRAWN_USES:
+        previous_review = (
+            "internally-reviewed" if record["site"] == "orationes.magnificat.s08.en" else "working"
+        )
+        assert (expected["origin"], expected["review"]) == ("public-domain", previous_review)
+        expected = {**expected, "origin": "working-unsettled", "review": "working"}
+    return expected
 
 
 def assert_source_record(actual, record):
-    assert actual == record["use"]
+    assert actual == current_expected_use(record)
     assert actual["role"] == "historical_wording_basis"
-    assert actual["decision"] == "RETAIN_WITH_CORRECTION"
+    expected_decision = "REMOVE" if record["site"] in WITHDRAWN_USES else "RETAIN_WITH_CORRECTION"
+    assert actual["decision"] == expected_decision
     assert actual["address"]["kind"] == "segment"
 
 
@@ -85,6 +137,8 @@ def test_revised_source_fixture_is_nonempty_and_covers_every_intended_site():
     assert len({record["site"] for record in REPAIRS}) == 11
     assert sum(record["language"] == "en" for record in REPAIRS) == 6
     assert sum(record["language"] == "pl" for record in REPAIRS) == 5
+    assert {record["site"] for record in WITHDRAWN_REPAIRS} == set(WITHDRAWN_USES)
+    assert len(RETAINED_REPAIRS) == 7
 
 
 @pytest.mark.parametrize("record", REPAIRS, ids=lambda record: record["site"])
@@ -95,14 +149,19 @@ def test_revised_source_has_exact_identity_scope_claim_and_unchanged_target(reco
     assert len(matches) == 1
     use = matches[0]
     assert_source_record(use, record)
-    provenance = current_canon_row(record["provenance"])
+    provenance = current_expected_provenance(record)
     assert baseline["recorded"][site] == provenance
     assert record["provenance"]["origin"] == "public-domain"
     assert record["provenance"]["familiar_core"] is False
     assert record["relationship"] == "revised"
-    assert store.translation_relationships(ROOT, language)[site] == record["relationship"]
+    relationships = store.translation_relationships(ROOT, language)
+    withdrawn = site in WITHDRAWN_USES
+    if withdrawn:
+        assert site not in relationships
+    else:
+        assert relationships[site] == record["relationship"]
     current = baseline["sites"][site]
-    assert current["has_wording_citations"] is True
+    assert current["has_wording_citations"] is (not withdrawn)
     for field in ("source_sha256", "target_sha256"):
         assert current[field] == provenance[field]
     assert not any(error.startswith(site + ":") for error in baseline["check"][0])
@@ -137,10 +196,10 @@ def test_revised_source_has_exact_identity_scope_claim_and_unchanged_target(reco
             )
         )
     ]
-    assert bases == [use["id"]]
+    assert bases == ([] if withdrawn else [use["id"]])
 
 
-@pytest.mark.parametrize("record", REPAIRS, ids=lambda record: record["site"])
+@pytest.mark.parametrize("record", RETAINED_REPAIRS, ids=lambda record: record["site"])
 @pytest.mark.parametrize(
     "damage",
     [
@@ -193,6 +252,41 @@ def test_real_revised_basis_rejection_and_exact_restoration(
     assert translation_provenance.corpus_sites(ROOT) == baseline["sites"]
     assert translation_provenance.check(ROOT) == baseline["check"]
     assert translation_provenance.load(ROOT) == (baseline["recorded"], [])
+
+
+@pytest.mark.parametrize("record", WITHDRAWN_REPAIRS, ids=lambda record: record["site"])
+def test_withdrawn_basis_rejects_false_origin_promotion_and_recovers(
+    record, baseline, source_snapshot, monkeypatch
+):
+    """A withdrawn historical use cannot support promoting the actual current copied row."""
+    site = record["site"]
+    original = copy.deepcopy(baseline["recorded"])
+    recorded = copy.deepcopy(original)
+    row = recorded[site]
+    assert row == current_expected_provenance(record)
+    snapshot = copy.deepcopy(row)
+    loader = translation_provenance.load
+    monkeypatch.setattr(translation_provenance, "load", lambda _root: (recorded, []))
+    assert translation_provenance.check(ROOT) == baseline["check"]
+    try:
+        row["origin"] = "public-domain"
+        assert recorded[site] is row and row != snapshot
+        errors, tally = translation_provenance.check(ROOT)
+        diagnostic = f"{site}: origin=public-domain requires a wording citation"
+        assert diagnostic not in baseline["check"][0]
+        assert set(errors) == set(baseline["check"][0]) | {diagnostic}
+        expected_tally = dict(baseline["check"][1])
+        expected_tally["working-unsettled"] -= 1
+        expected_tally["public-domain"] += 1
+        assert tally == expected_tally
+    finally:
+        row.clear()
+        row.update(snapshot)
+    assert recorded[site] is row and recorded == original
+    assert translation_provenance.check(ROOT) == baseline["check"]
+    assert baseline["recorded"] == original
+    monkeypatch.setattr(translation_provenance, "load", loader)
+    assert translation_provenance.load(ROOT) == (original, [])
 
 
 @pytest.mark.parametrize(

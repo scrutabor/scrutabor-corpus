@@ -99,6 +99,11 @@ def test_adopted_short_group_has_real_source_and_one_provider(case):
         for row in DATA["provenance_rows"]
         if (row["text"], row["segment"]) == (case["text"], case["segment"])
     )
+    if expected["site"] == "orationes.anima-christi.s12.en":
+        assert case["id"] == "anima-saints"
+        assert (expected["origin"], expected["review"]) == ("public-domain", "working")
+        # The caption and hashes are unchanged; the unsupported inherited origin was withdrawn.
+        expected = {**expected, "origin": "working-unsettled"}
     recorded = read("languages/en/translation-provenance.json")["sites"]
     row = next(row for row in recorded if row["site"] == expected["site"])
     assert row == expected

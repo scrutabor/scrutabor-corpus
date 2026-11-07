@@ -198,3 +198,7 @@ and the next two Communion preparation prayers, and withhold the kiss of peace
 Lavabo doxology omission remains distinct from the required hymn Gloria. These
 closed prescriptions have authored schema1.6.0 and reader catalogue1.6.0; an older
 consumer must explicitly migrate before accepting the expanded descriptor set.
+
+Reader6.12.0 additionally carries optional localized labels for complete verse
+translations and bounded reader notes on historical wording sources. These
+presentation fields do not change the canonical Latin or verse translations.

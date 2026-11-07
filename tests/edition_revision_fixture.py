@@ -26,7 +26,7 @@ for _relative, _entry in CAPTION_FILES.items():
         "current": _entry["current"],
         "previous": PUBLISHED_FILES.get(_relative, _entry)["previous"],
     }
-# The newest receipt: the reader review of the standalone prayers, on top of both older ones.
+# The reader review of the standalone prayers, on top of both older receipts.
 REVIEW_REVISION = json.loads(
     (Path(__file__).parent / "fixtures/prayer-review-revision.json").read_bytes()
 )
@@ -46,13 +46,23 @@ for _relative, _entry in OWNER_FILES.items():
         "current": _entry["current"],
         "previous": FILES.get(_relative, _entry)["previous"],
     }
-# The newest receipt: three printed wording witnesses enter the bibliography, on top of all four.
+# Three printed wording witnesses enter the bibliography, on top of all four older receipts.
 # It changes graph, bibliography, basis and provenance files only, never a language layer.
 WITNESS_REVISION = json.loads(
     (Path(__file__).parent / "fixtures/witness-citations-revision.json").read_bytes()
 )
 WITNESS_FILES = WITNESS_REVISION["files"]
 for _relative, _entry in WITNESS_FILES.items():
+    FILES[_relative] = {
+        "current": _entry["current"],
+        "previous": FILES.get(_relative, _entry)["previous"],
+    }
+# Source qualifications and attribution corrections follow the printed-witness receipt.
+SOURCE_SCOPE_REVISION = json.loads(
+    (Path(__file__).parent / "fixtures/source-scope-revision.json").read_bytes()
+)
+SOURCE_SCOPE_FILES = SOURCE_SCOPE_REVISION["files"]
+for _relative, _entry in SOURCE_SCOPE_FILES.items():
     FILES[_relative] = {
         "current": _entry["current"],
         "previous": FILES.get(_relative, _entry)["previous"],
@@ -78,7 +88,8 @@ def before_caption_revision(relative, raw):
 
 
 def before_review_revision(relative, raw):
-    """The exact parent of the prayer reader-review receipt; anything else is returned untouched."""
+    """Undo exact source-scope and prayer reader-review receipts, newest first."""
+    raw = before_source_scope_revision(relative, raw)
     entry = REVIEW_FILES.get(relative)
     if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
         return raw
@@ -86,7 +97,8 @@ def before_review_revision(relative, raw):
 
 
 def before_owner_revision(relative, raw):
-    """The exact parent of the owner-decisions receipt; anything else is returned untouched."""
+    """Undo exact source-scope and owner-decisions receipts, newest first."""
+    raw = before_source_scope_revision(relative, raw)
     entry = OWNER_FILES.get(relative)
     if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
         return raw
@@ -94,8 +106,17 @@ def before_owner_revision(relative, raw):
 
 
 def before_witness_revision(relative, raw):
-    """The exact parent of the witness-citations receipt; anything else is returned untouched."""
+    """Undo exact source-scope and witness-citations receipts, newest first."""
+    raw = before_source_scope_revision(relative, raw)
     entry = WITNESS_FILES.get(relative)
+    if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
+        return raw
+    return _exact_inverse(entry, raw)
+
+
+def before_source_scope_revision(relative, raw):
+    """Undo the source-scope receipt only for the complete exact declared input."""
+    entry = SOURCE_SCOPE_FILES.get(relative)
     if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
         return raw
     return _exact_inverse(entry, raw)
@@ -105,7 +126,8 @@ def before_edition_revision(relative, raw):
     entry = FILES.get(relative)
     if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
         return raw
-    result = before_witness_revision(relative, raw)
+    result = before_source_scope_revision(relative, raw)
+    result = before_witness_revision(relative, result)
     result = before_owner_revision(relative, result)
     result = before_review_revision(relative, result)
     result = before_caption_revision(relative, result)
@@ -126,9 +148,16 @@ ABSENT = object()
 
 
 def _composed_layer_changes():
-    """Join exact adjacent values while preserving the four receipts in order."""
+    """Join exact adjacent values while preserving the receipts in order."""
     result = deepcopy(PUBLISHED_LAYER_CHANGES)
-    for relative, entry in [*CAPTION_FILES.items(), *REVIEW_FILES.items(), *OWNER_FILES.items()]:
+    for relative, entry in [
+        *CAPTION_FILES.items(),
+        *REVIEW_FILES.items(),
+        *OWNER_FILES.items(),
+        *SOURCE_SCOPE_FILES.items(),
+    ]:
+        if not entry.get("changes"):
+            continue
         changes = result.setdefault(relative, [])
         for current in entry.get("changes", ()):
             previous = next((c for c in changes if c["path"] == current["path"]), None)
@@ -157,11 +186,18 @@ def before_edition_layer(layer):
 REVIEW_LAYER_CHANGES = {
     relative: entry["changes"] for relative, entry in REVIEW_FILES.items() if entry.get("changes")
 }
+SOURCE_SCOPE_LAYER_CHANGES = {
+    relative: entry["changes"]
+    for relative, entry in SOURCE_SCOPE_FILES.items()
+    if entry.get("changes")
+}
 
 
 def before_review_layer(layer):
-    """Undo only the prayer reader-review fields on a copy."""
-    return _undo_layer_changes(layer, REVIEW_LAYER_CHANGES)
+    """Undo source-scope and prayer reader-review fields on a historical comparison copy."""
+    return _undo_layer_changes(
+        _undo_layer_changes(layer, SOURCE_SCOPE_LAYER_CHANGES), REVIEW_LAYER_CHANGES
+    )
 
 
 OWNER_LAYER_CHANGES = {
@@ -170,8 +206,10 @@ OWNER_LAYER_CHANGES = {
 
 
 def before_owner_layer(layer):
-    """Undo only the owner-decision fields (the newest receipt) on a copy."""
-    return _undo_layer_changes(layer, OWNER_LAYER_CHANGES)
+    """Undo source-scope and owner-decision fields on a historical comparison copy."""
+    return _undo_layer_changes(
+        _undo_layer_changes(layer, SOURCE_SCOPE_LAYER_CHANGES), OWNER_LAYER_CHANGES
+    )
 
 
 def _undo_layer_changes(layer, declared):
@@ -232,6 +270,7 @@ def current_edition_value(relative, fields, previous):
         CAPTION_FILES.get(relative, {}).get("changes", ()),
         REVIEW_FILES.get(relative, {}).get("changes", ()),
         OWNER_FILES.get(relative, {}).get("changes", ()),
+        SOURCE_SCOPE_FILES.get(relative, {}).get("changes", ()),
     )
     value, advanced = previous, False
     for changes in receipts:

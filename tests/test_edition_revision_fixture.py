@@ -18,6 +18,7 @@ from edition_revision_fixture import (
     PUBLISHED_FILES,
     PUBLISHED_LAYER_CHANGES,
     REVIEW_FILES,
+    SOURCE_SCOPE_FILES,
     WITNESS_FILES,
     before_edition_layer,
     before_edition_object,
@@ -56,7 +57,8 @@ def test_scope_is_nonempty_and_names_each_declared_subject_once():
     assert len(OWNER_FILES) == 33
     assert len(WITNESS_FILES) == 6
     assert not any("changes" in entry for entry in WITNESS_FILES.values())
-    assert len(FILES) == 230
+    assert len(SOURCE_SCOPE_FILES) == 12
+    assert len(FILES) == 231
     assert len(LAYER_CHANGES) == 208
     assert len(TRANSLATIONS) == 57
     assert set(LAYER_CHANGES) <= set(FILES)

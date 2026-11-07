@@ -151,10 +151,11 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(emitted_book
         # Owner decisions 2026-11-05: 28 withdrawn Husenbeth Te Deum attachments and the
         # unattested Blessed Be God s26 attachment leave; two Douay attachments are added; the
         # Polish Regina caeli s02 Katechizm attachment leaves.
+        # Source-scope corrections withdraw another 25 English and five Polish attachments.
         "legacy": 2742,
         "mapped": 1871,
-        "kept": 1616,
-        "excluded": 1126,
+        "kept": 1586,
+        "excluded": 1156,
         "unresolved": 0,
         "rejected_exposed": 0,
     }
@@ -166,7 +167,8 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(emitted_book
         },  # Adoro te devote carries normalized graph evidence (2026-11-01)
         "languages": {
             # ordinarium.agnus-dei gains its English 1846 wording uses (2026-11-05).
-            "en": {"normalized": 247, "effective": 1223, "texts": 1223},
+            # English Memorare has no retained localized historical wording use.
+            "en": {"normalized": 246, "effective": 1223, "texts": 1223},
             "pl": {"normalized": 107, "effective": 1221, "texts": 1223},
         },
     }

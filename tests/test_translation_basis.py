@@ -16,9 +16,9 @@ CORPUS = Path(__file__).resolve().parent.parent
     ("text", "segment", "relationship"),
     [
         ("orationes.angelus-domini", "s02", "revised"),
-        ("orationes.magnificat", "s01", "revised"),
-        ("orationes.magnificat", "s02", "revised"),
-        ("orationes.anima-christi", "s07", "revised"),
+        ("orationes.magnificat", "s06", "revised"),
+        ("orationes.magnificat", "s07", "revised"),
+        ("orationes.magnificat", "s09", "revised"),
         ("ordinarium.deus-tu-conversus", "s09", "revised"),
         ("ordinarium.corpus-tuum", "s04", "revised"),
         ("proprium.dominica-iii-adventus-evangelium", "s02", "revised"),
@@ -32,8 +32,8 @@ CORPUS = Path(__file__).resolve().parent.parent
 def test_historical_wording_distinguishes_revision_from_spelling(
     text: str, segment: str, relationship: str
 ) -> None:
-    # The source pages already print spoke, among and takes, but not the
-    # modernized pronouns/constructions in the revised examples.
+    # The normalized examples retain printed wording; revisions recast source constructions.
+    # Magnificat s06/s07/s09 retain the documented Husenbeth revisions, including hath -> has.
     assert store.translation_relationships(CORPUS, "en")[f"{text}.{segment}.en"] == relationship
 
 

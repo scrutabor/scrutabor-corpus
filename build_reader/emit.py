@@ -73,7 +73,8 @@ from kalendarium.dismissal import calendar_table as dismissal_table
 # 6.9.0 exposes authored commemoration slot ownership (selection schema 2.2.0).
 # 6.10.0 adds complete Requiem assembly and closed Ordinary performance.
 # 6.11.0 adds the closed Holy Thursday/Vigil prescriptions in catalogue 1.6.0.
-SCHEMA = "6.11.0"
+# 6.12.0 adds localized full-translation labels and wording-source reader notes.
+SCHEMA = "6.12.0"
 REGISTRY = Path(__file__).with_name("registry")
 
 # WHAT A READER NEVER SEES, and what therefore never leaves the repository.
@@ -472,6 +473,11 @@ def language_artifact(
         "id": doc["id"],
         "language": layer["lang"],
         "about": layer["about"],
+        **(
+            {"translation_label": layer["translation_label"]}
+            if "translation_label" in layer
+            else {}
+        ),
         "seg": rows,
     }
 
@@ -503,6 +509,8 @@ def expand(
         "segments": {},
         "words": {},
     }
+    if "translation_label" in language_art:
+        layer["translation_label"] = language_art["translation_label"]
     for key, value in artifact.items():
         # `rs` is not copied back: its source (`ids`) is a declared drop, so
         # the round-trip cannot see it. `verify` compares it explicitly

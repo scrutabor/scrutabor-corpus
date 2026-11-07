@@ -161,7 +161,7 @@ source-derived prescriptions within that formulary's matching calendar/Office
 context, not generic rules inferred from its name, rank or season. No missing
 branch defaults to required. An unresolved branch is not an omission decision.
 
-The neutral reader catalogue has schema `1.6.0` (reader edition `6.11.0`).
+The neutral reader catalogue has schema `1.6.0` (reader edition `6.12.0`).
 It preserves every `ordinary` branch. Passiontide de Tempore formularies other than Holy Thursday retain
 authored schema1.4.0 and the exact Lavabo descriptor below; unaffected forms
 retain1.3.0. The three All Souls formularies use authored1.5.0, add one shared
@@ -225,7 +225,7 @@ not inferred from a date label or a generic Triduum class. Benziger1962 p.162,
 no.28 and p.216,no.7, independently collated with the Vatican setting p.159,
 no.28 and p.213,no.7, control this scope. Complete omitted and retained target
 bodies are checked before projection. The new allowed descriptor set requires
-catalogue1.6.0 and reader6.11.0; older/future protocols need explicit migration.
+catalogue1.6.0 and reader6.12.0; older/future protocols need explicit migration.
 Title-only language documents, bibliography schema and text schema do not change.
 
 The unchanged title-only authored documents and emitted language catalogues
@@ -917,6 +917,15 @@ neutral-reachable identities. A language artifact supplies a catalogue delta
 for identities reached by that language alone, then a ready-to-render four-part
 index: Latin textual sources, wording witnesses for the active language,
 official documents and liturgical history, and Scripture/language/scholarship.
+
+Bibliography schema **1.6.0** adds optional `reader_note` to target-language
+wording uses. It is a concise, nonempty, trimmed sentence in the package's
+language that explains a material limit of the source (for example, a missing
+ending or a comparison rather than a wording basis). It does not replace the
+precise `claim`, establish provenance, or contain verification/process notes.
+Neutral uses reject this field so a one-language note cannot leak into both
+readers. The note stays attached to its use in the lazy reader evidence and
+must remain visible when identical citations are grouped.
 
 The reader projection is an allowlist. It omits evidence-image hashes,
 owner-held inventory ids, migration pointers, editorial decisions and their
@@ -1976,7 +1985,7 @@ entries{ <lemma>: { senses[], note?, derivatives?, analysis? } }
 ## Language layer
 
 ```
-schema_version, language, text, about,
+schema_version, language, text, about, translation_label?,
 segments{ <seg-id>: { translation, translation_citations? | narrative, alignments? } },
 words{ <word-id>: { gloss?, explanation?, note? } }
 ```
@@ -1987,6 +1996,13 @@ words{ <word-id>: { gloss?, explanation?, note? } }
   true and verifiable (the quality doctrine applies as to any layer).
   Its presence is declared by the neutral core, not inferred from another
   target language.
+- `translation_label` (optional): a nonempty localized plain-text label identifying
+  the complete verse rendering, such as a named hymnic translation. It belongs
+  only to its target-language document and requires a verse translation. Reader
+  edition 6.12.0 preserves it as `translation_label`; applications display it once
+  with the full translation, including print and offline output, and omit it from
+  Latin-only and direct-Latin interlinear modes. It does not label the Latin,
+  change sacred text, select an alternative translation, or grant source approval.
 - `about_citations` (since 0.11.0): optional reader-facing sources supporting
   the introduction. Since 0.16.0 these are written once in the neutral core.
 - `gloss`: shortest natural reading aid in the target language

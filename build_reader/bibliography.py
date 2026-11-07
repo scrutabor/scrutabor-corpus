@@ -28,7 +28,7 @@ from .bibliography_bindings import (
 )
 from .bibliography_bindings import IDENTITY as ID_RE
 
-SCHEMA = "1.5.0"
+SCHEMA = "1.6.0"
 
 GRAPH_KEYS = {
     "schema_version",
@@ -83,6 +83,7 @@ USE_KEYS = {
     "address",
     "locator",
     "claim",
+    "reader_note",
     "verified_on",
     "evidence_sha256",
     "decision",
@@ -584,6 +585,12 @@ def _validate_uses(
             where,
             errors,
         )
+        if "reader_note" in use:
+            note = use["reader_note"]
+            if language is None:
+                errors.append(f"{where}.reader_note: belongs in a target-language package")
+            if not isinstance(note, str) or not note.strip() or note != note.strip():
+                errors.append(f"{where}.reader_note: must be a nonempty trimmed string")
         edition_id = use.get("edition")
         item_id = use.get("digital_item")
         if edition_id not in editions:
@@ -1070,6 +1077,7 @@ def _project_use(use: dict) -> dict:
         "address",
         "locator",
         "claim",
+        "reader_note",
         "verified_on",
     )
     return {key: use[key] for key in fields if key in use}
@@ -1249,6 +1257,8 @@ def _source_groups(uses: list[dict]) -> list[dict]:
         for use in sorted(grouped_uses, key=lambda value: value["id"]):
             address = {key: value for key, value in use["address"].items() if key != "text"}
             entry = {"id": use["id"], "address": address, "claim": use["claim"]}
+            if "reader_note" in use:
+                entry["reader_note"] = use["reader_note"]
             entries.append(entry)
         record = {
             "edition": edition,

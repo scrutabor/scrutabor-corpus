@@ -187,6 +187,13 @@ def assert_ledger(core, layer, entry, row):
         require(row == SUCCESSORS["ledger_before"], "reviewed historical ledger identity")
         row = {**row, "target_sha256": SUCCESSORS["target_sha256"]}
     row = ledger_expectation(row)
+    if row["site"] == "orationes.memorare.s03.en":
+        require(
+            (row["origin"], row["review"]) == ("public-domain", "internally-reviewed"),
+            "Memorare historical provenance identity",
+        )
+        # The documented independent draft supersedes the frozen inherited-origin label.
+        row = {**row, "origin": "own"}
     segment_id = row["site"].split(".")[-2]
     (segment,) = [s for s in core["segments"] if s["id"] == segment_id]
     require(

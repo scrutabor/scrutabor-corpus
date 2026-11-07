@@ -1,4 +1,4 @@
-"""Prayer prose ledger successors with finite English referents and healthy captions."""
+"""Current prayer prose contracts and exact historical ledger predecessors."""
 
 import hashlib
 import json
@@ -29,6 +29,7 @@ from checks.translation_provenance import canonical_hash, source_payload
 ROOT = Path(__file__).resolve().parents[1]
 POSTCOMMUNION = "proprium.dominica-ii-post-pentecosten-postcommunio"
 ANIMA = "orationes.anima-christi"
+UNSETTLED_ANIMA_SITES = {f"{ANIMA}.{sid}.en" for sid in ("s07", "s08", "s11", "s12")}
 CONCLUSION = (
     "Through our Lord Jesus Christ, Your Son, who lives and reigns with You in the "
     "unity of the Holy Spirit, God, forever and ever."
@@ -156,6 +157,12 @@ def restore(value, snapshot):
 
 def native_ledger(language):
     ledger = json.loads((ROOT / DATA["ledgers"][language]["relative"]).read_bytes())
+    if language == "en":
+        assert {
+            change["site"]
+            for change in DATA["ledgers"][language]["rows"]
+            if change["after"]["text"] == ANIMA
+        } == UNSETTLED_ANIMA_SITES
     for change in DATA["ledgers"][language]["rows"]:
         (row,) = [row for row in ledger["sites"] if row["site"] == change["site"]]
         core, layer = load(row["text"], language)
@@ -163,7 +170,11 @@ def native_ledger(language):
         if language == "en":
             meaning(core, layer)
         (segment,) = [segment for segment in core["segments"] if segment["id"] == row["segment"]]
-        assert row == change["after"]
+        expected = change["after"]
+        if change["site"] in UNSETTLED_ANIMA_SITES:
+            assert (expected["origin"], expected["review"]) == ("public-domain", "working")
+            expected = {**expected, "origin": "working-unsettled"}
+        assert row == expected
         assert row["source_sha256"] == canonical_hash(source_payload(segment))
         assert row["target_sha256"] == canonical_hash(
             layer["segments"][row["segment"]]["translation"]
@@ -287,7 +298,7 @@ def test_each_direct_divine_case_fault_recovers_same_segment(segment, word, posi
     meaning(core, layer)
 
 
-def test_anima_formula_about_and_inherited_source_decisions_are_kept():
+def test_anima_formula_about_and_current_source_decisions_are_exact():
     core, layer = load(ANIMA)
     healthy(core, layer)
     meaning(core, layer)
@@ -303,12 +314,10 @@ def test_anima_formula_about_and_inherited_source_decisions_are_kept():
         relative, ["about"], DATA["texts"][ANIMA]["about"]
     )
     relationships = store.translation_relationships(ROOT, "en")
-    assert all(
-        relationships[f"{ANIMA}.{sid}.en"] == "revised" for sid in ("s07", "s08", "s11", "s12")
-    )
+    assert UNSETTLED_ANIMA_SITES.isdisjoint(relationships)
     uses = json.loads((ROOT / "languages/en/bibliography.json").read_bytes())["uses"]
     decisions = {use["id"]: use["decision"] for use in uses}
-    assert decisions["use.en.6cbf3a9a9e7a1bca2242"] == "RETAIN"
+    assert decisions["use.en.6cbf3a9a9e7a1bca2242"] == "REMOVE"
     assert decisions["use.en.709d513aee4248ad24fa"] == "REMOVE"
 
 

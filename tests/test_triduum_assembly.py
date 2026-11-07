@@ -350,7 +350,7 @@ def test_whole_omitted_and_retained_targets_are_validated_before_emission(tmp_pa
 
 def test_protocol_projection_and_actual_reader_keep_all_three_word_sets(reader_out):
     manifest = read("manifest.json", reader_out)
-    assert manifest["schema_version"] == "6.11.0"
+    assert manifest["schema_version"] == "6.12.0"
     catalog = read("formularies.json", reader_out)
     assert catalog["schema_version"] == "1.6.0"
     for mass in MASSES:
@@ -420,7 +420,7 @@ def test_previous_reader_protocol_cannot_claim_the_expanded_prescription_set(rea
     manifest = read("manifest.json", reader_out)
     manifest["schema_version"] = "6.10.0"
     assert verify_performance(reader_out, manifest) == [
-        "participation performance requires reader 6.11.0"
+        "participation performance requires reader 6.12.0"
     ]
 
 
