@@ -402,7 +402,10 @@ def test_all_prose_rubrics_and_provenance_remain_exact_without_status_renewal(ba
         sid: {k: v for k, v in row.items() if k != "alignments"}
         for sid, row in layer["segments"].items()
     }
-    assert actual == FIXTURE["preserved_layers"][language]
+    expected = deepcopy(FIXTURE["preserved_layers"][language])
+    for segment, narrative in FIXTURE["rubric_successors"][language].items():
+        expected[segment]["narrative"] = narrative
+    assert actual == expected
     rows = [
         r
         for r in load(f"languages/{language}/translation-provenance.json")["sites"]

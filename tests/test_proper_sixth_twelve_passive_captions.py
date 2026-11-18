@@ -8,6 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_rubric_caption_layer
 from english_register_successor_fixture import (
     before_english_register_ledger,
     before_english_register_prose,
@@ -102,7 +103,7 @@ def frame_readback(core, layer, frame):
 
 
 def preserved(layer, case):
-    layer = before_possessive_b3_layer(layer)
+    layer = before_possessive_b3_layer(before_rubric_caption_layer(layer))
     layer = before_english_register_text_layer(layer, "unchanged sixth remainder")
     comparison = deepcopy(layer)
     for group in FIXTURE["groups"]:
@@ -142,7 +143,8 @@ def test_complete_real_layer_native_reader_and_predecessor_identity(case):
     assert canonical_hash(core) == case["core_sha256"]
     shape(core, layer)
     preserved(layer, case)
-    prose = {sid: segment.get("translation") for sid, segment in layer["segments"].items()}
+    prior = before_rubric_caption_layer(layer)
+    prose = {sid: segment.get("translation") for sid, segment in prior["segments"].items()}
     if case["language"] == "en":
         # A later exact English register successor is undone on a copy first.
         prose = before_english_register_prose(case["text"], prose)

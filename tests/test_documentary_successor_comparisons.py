@@ -11,6 +11,7 @@ from documentary_successor_fixture import (
     before_language_successors,
     predecessor_ledger,
 )
+from edition_revision_fixture import before_rubric_caption_revision
 from lauda_sion_fixture import FIXTURE as LAUDA
 from lauda_sion_fixture import current as lauda_current
 
@@ -25,13 +26,20 @@ ROOT = Path(__file__).resolve().parents[1]
 @pytest.mark.parametrize("language", ["pl", "en"])
 def test_current_rows_reject_each_changed_field_and_recover_same_container(language):
     relative = f"languages/{language}/translation-provenance.json"
-    value = json.loads((ROOT / relative).read_bytes())
+    raw = (ROOT / relative).read_bytes()
+    value = json.loads(raw)
+    historical = json.loads(before_rubric_caption_revision(relative, raw))
     snapshot = deepcopy(value)
     healthy = before_language_successors(relative, value)
     for change in DATA["ledgers"][relative]["rows"]:
         (row,) = [r for r in value["sites"] if r["site"] == change["after"]["site"]]
         core = store.core(ROOT, row["text"])
+        path = store.layer_path(ROOT, language, row["text"])
         layer = store.raw_layer(ROOT, language, row["text"])
+        previous = json.loads(
+            before_rubric_caption_revision(path.relative_to(ROOT).as_posix(), path.read_bytes())
+        )
+        (historical_row,) = [r for r in historical["sites"] if r["site"] == row["site"]]
         assert language_packs.check_core(core) == []
         assert (
             language_packs.check_layer(core, layer, store.layer_path(ROOT, language, row["text"]))
@@ -39,7 +47,10 @@ def test_current_rows_reject_each_changed_field_and_recover_same_container(langu
         )
         assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
         (segment,) = [s for s in core["segments"] if s["id"] == row["segment"]]
-        assert row == change["after"]
+        assert historical_row == change["after"]
+        assert historical_row["target_sha256"] == canonical_hash(
+            previous["segments"][row["segment"]]["translation"]
+        )
         assert row["source_sha256"] == canonical_hash(source_payload(segment))
         assert row["target_sha256"] == canonical_hash(
             layer["segments"][row["segment"]]["translation"]

@@ -11,6 +11,7 @@ from corpus_christi_epistle_fixture import (
     FIXTURE,
     expected_corpus_christi_epistle_row,
 )
+from edition_revision_fixture import before_rubric_caption_revision
 
 from build_reader import store
 from build_reader.layers import enrich_layer, expand_core
@@ -104,7 +105,11 @@ def test_inventory_and_unchanged_latin_with_owned_source_controls():
 def test_complete_actual_layers_have_exactly_120_providers_and_valid_help(language):
     core, layer = store.core(ROOT, TEXT), store.raw_layer(ROOT, language, TEXT)
     snapshot = deepcopy((core, layer))
-    assert provenance.canonical_hash(layer) == FIXTURE["layers"][language]["canonical_sha256"]
+    path = store.layer_path(ROOT, language, TEXT)
+    previous = json.loads(
+        before_rubric_caption_revision(path.relative_to(ROOT).as_posix(), path.read_bytes())
+    )
+    assert provenance.canonical_hash(previous) == FIXTURE["layers"][language]["canonical_sha256"]
     assert check_core(core) == []
     assert check_layer(core, layer, store.layer_path(ROOT, language, TEXT)) == []
     assert interlinear.check(core, layer) == []

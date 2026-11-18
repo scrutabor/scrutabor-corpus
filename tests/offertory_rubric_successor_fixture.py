@@ -10,6 +10,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from edition_revision_fixture import before_rubric_caption_revision
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = json.loads((Path(__file__).parent / "fixtures/offertory-rubric-successor.json").read_bytes())
 
@@ -23,6 +25,7 @@ def before_offertory_core_bytes(text, raw, diagnostic="exact Offertory core succ
     rule = DATA["texts"].get(text)
     if rule is None:
         return raw
+    raw = before_rubric_caption_revision(rule["relative"], raw)
     require(hashlib.sha256(raw).hexdigest() == rule["after_sha256"], diagnostic)
     result = raw
     for operation in reversed(rule["raw_inverse"]):

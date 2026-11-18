@@ -8,6 +8,7 @@ from pathlib import Path
 import pytest
 from adoro_te_devote_successor_fixture import before_adoro_bytes, before_adoro_graph
 from caption_followups_successor_fixture import before_followups_bytes
+from edition_revision_fixture import before_edition_object
 from foot_communion_successor_fixture import (
     DATA,
     DIAGNOSTIC,
@@ -227,7 +228,9 @@ def test_the_latin_words_are_unchanged(text):
             k: v for k, v in old.items() if k != "post"
         }
         assert new["id"] in changed or new == old
-    assert {k: v for k, v in current.items() if k not in ("segments", "editorial", "ids")} == {
+    relative = f"texts/{text.replace('.', '/', 1)}.json"
+    historical = before_edition_object(relative, current)
+    assert {k: v for k, v in historical.items() if k not in ("segments", "editorial", "ids")} == {
         k: v for k, v in previous.items() if k not in ("segments", "editorial", "ids")
     }
 

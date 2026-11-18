@@ -6,7 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import before_edition_layer, read_predecessor
+from edition_revision_fixture import before_edition_layer, before_edition_object, read_predecessor
 from english_possessive_successor_fixture import (
     DATA as SIX,
 )
@@ -48,6 +48,10 @@ def current():
     for case in CASES:
         assert_case(case, core, layer)
     return core, layer
+
+
+def historical_core(core):
+    return before_edition_object("texts/ordinarium/iudica-me.json", core)
 
 
 @pytest.mark.parametrize("case", CASES, ids=lambda case: case["id"])
@@ -133,7 +137,7 @@ def test_complete_extended_inverse_reaches_unchanged_six_group_predecessor():
     assert before_short_possessive_caption_frame(DATA["relative"], layer) == comparison
     fixture = ROOT / "tests/fixtures/english-short-possessive-successors.json"
     assert hashlib.sha256(fixture.read_bytes()).hexdigest() == DATA["six_fixture_sha256"]
-    native(core, layer)
+    native(historical_core(core), layer)
 
 
 @pytest.mark.parametrize("fault", ["unrelated-caption", "word-help", "extra-field"])
@@ -156,7 +160,7 @@ def test_exact_frame_drift_is_rejected_then_same_input_recovers(fault):
         changed.clear()
         changed.update(deepcopy(original))
     assert changed is same_input and changed == original
-    native(core, changed)
+    native(historical_core(core), changed)
     before_short_possessive_layer(DATA["relative"], changed)
 
 
@@ -180,7 +184,7 @@ def test_caption_comparison_keeps_actual_prose_damage_for_its_original_oracle():
         changed.clear()
         changed.update(deepcopy(original))
     assert changed is same_input and changed == original
-    native(core, changed)
+    native(historical_core(core), changed)
     assert_case(CASES[0], core, changed)
 
 

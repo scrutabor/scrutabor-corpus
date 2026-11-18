@@ -11,6 +11,7 @@ from edition_revision_fixture import (
     before_edition_layer,
     before_edition_object,
     current_edition_caption,
+    current_edition_target_sha,
 )
 from gospel_delivery_fixture import current_sung_source_hash
 from michael_secret_fixture import control_expectation, ledger_expectation, predecessor_documents
@@ -208,6 +209,11 @@ def assert_ledger(core, layer, entry, row):
     expected["source_sha256"] = current_sung_source_hash(
         row["site"].rsplit(".", 2)[0], segment_id, row["source_sha256"]
     )
+    text, _, lang = row["site"].rsplit(".", 2)
+    revised = current_edition_target_sha(text, lang, segment_id, expected["target_sha256"])
+    if revised != expected["target_sha256"]:
+        expected["target_sha256"] = revised
+        expected["review"] = "working"
     require({key: entry[key] for key in keys} == expected, "ledger status")
 
 

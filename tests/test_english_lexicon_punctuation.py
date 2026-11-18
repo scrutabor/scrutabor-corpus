@@ -87,7 +87,8 @@ EXPECTED_NOTES = {
     "sumo": "With reference to Communion, sumere means “to receive.”",
     "ut": (
         "With the subjunctive, ut can introduce a purpose, a result, or the content "
-        "of a request. With the indicative, it commonly means “as.”"
+        "of a request. With the indicative, ut can express manner with “as” or time with "
+        "“when” or “as soon as.”"
     ),
     "venter": "In the received English of the Ave María the word is “womb”: “fruit of thy womb.”",
     "quis": (

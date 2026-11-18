@@ -16,7 +16,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import LAYER_CHANGES, OWNER_FILES, REVIEW_FILES
+from edition_revision_fixture import LAYER_CHANGES, OWNER_FILES, REVIEW_FILES, RUBRIC_CAPTION_FILES
 
 from checks import interlinear
 
@@ -312,6 +312,23 @@ for _text, _field in (
     assert _holders[0][_text][_field] == hashlib.sha256(_change["before"].encode()).hexdigest()
     assert stale(_change["before"]) and stale(_change["after"])
     _holders[0][_text][_field] = hashlib.sha256(_change["after"].encode()).hexdigest()
+
+# The new Stabat Mater wording retires the one exact archaic field in the sequence.
+STABAT_TEXT = "proprium.septem-dolorum-beatae-mariae-virginis-sequentia"
+STABAT_FIELD = ("segments", "s15", "translation")
+STABAT_CHANGE = next(
+    change
+    for change in RUBRIC_CAPTION_FILES[
+        f"languages/en/texts/{STABAT_TEXT.replace('.', '/', 1)}.json"
+    ]["changes"]
+    if change["path"] == list(STABAT_FIELD)
+)
+assert CURRENT_LEGACY[STABAT_TEXT] == {
+    STABAT_FIELD: hashlib.sha256(STABAT_CHANGE["before"].encode()).hexdigest()
+}
+assert stale(STABAT_CHANGE["before"]) and not stale(STABAT_CHANGE["after"])
+del CURRENT_LEGACY[STABAT_TEXT]
+
 ALLOWANCES = combine_inventories(CURRENT_LEGACY, CURRENT_HISTORICAL, TEXT_IDS)
 # Keep the existing conclusion contract independent of current prose: only an explicit
 # legacy prose field can defer it, and that field itself is checked by the all-text gate.

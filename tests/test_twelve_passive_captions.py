@@ -6,7 +6,12 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import before_edition_layer, current_edition_value
+from edition_revision_fixture import (
+    before_edition_layer,
+    before_edition_object,
+    before_rubric_caption_revision,
+    current_edition_value,
+)
 from ordo_notes_successor_fixture import before_ordo_notes_core_bytes, before_ordo_notes_core_object
 from requiem_successor_fixture import before_requiem_ledger
 
@@ -39,7 +44,7 @@ def canonical(value):
 def load(language, text):
     path = DATA["cores"][text]["path"]
     raw = (ROOT / path).read_bytes()
-    comparison_raw = before_ordo_notes_core_bytes(text, raw)
+    comparison_raw = before_ordo_notes_core_bytes(text, before_rubric_caption_revision(path, raw))
     assert hashlib.sha256(comparison_raw).hexdigest() == DATA["cores"][text]["raw_sha256"]
     return json.loads(raw), json.loads((ROOT / "languages" / language / path).read_bytes())
 
@@ -152,7 +157,9 @@ def retained(control, layer):
 
 def healthy(core, layer):
     text, language = layer["text"], layer["language"]
-    comparison_core = before_ordo_notes_core_object(text, core)
+    comparison_core = before_ordo_notes_core_object(
+        text, before_edition_object(DATA["cores"][text]["path"], core)
+    )
     require(
         canonical(comparison_core) == DATA["cores"][text]["canonical_sha256"],
         "unchanged Latin core",

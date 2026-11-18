@@ -8,6 +8,11 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import (
+    before_edition_layer,
+    current_edition_target_sha,
+    current_edition_value,
+)
 from gospel_delivery_fixture import current_gospel_expected_row
 from pentecost_successor_fixture import FIXTURE, expected_pentecost_row
 from provenance_successor_fixture import assert_formula, assert_protection_scope
@@ -190,7 +195,7 @@ def test_ignis_keeps_selected_nominative_with_honest_uncertainty_and_no_source_p
     assert [provenance.source_payload(s) for s in restored["segments"]] == [
         provenance.source_payload(s) for s in core["segments"]
     ]
-    assert layer["segments"] == row["localized_segments"][language]
+    assert before_edition_layer(layer)["segments"] == row["localized_segments"][language]
     decoded, translated = transport(core, layer)
     assert next(w for w in words(decoded) if w["id"] == "w036")["analysis"] == row["analysis_after"]
     assert translated["words"]["w036"]["note"] == row["notes"][language]
@@ -214,17 +219,27 @@ def test_prose_successor_binds_real_scanner_without_relabeling(row, monkeypatch)
     historical = row["after"]
     expected = current_gospel_expected_row(historical)
     text, language, segment = expected["text"], expected["language"], expected["segment"]
+    relative = f"languages/{language}/texts/{text.replace('.', '/', 1)}.json"
+    expected = {
+        **expected,
+        "target_sha256": current_edition_target_sha(
+            text, language, segment, expected["target_sha256"]
+        ),
+    }
+    translation = current_edition_value(
+        relative, ["segments", segment, "translation"], row["translation_after"]
+    )
     core, layer = store.core(ROOT, text), store.raw_layer(ROOT, language, text)
     snapshot, fixture_snapshot = deepcopy((core, layer)), deepcopy(FIXTURE)
     actual, errors = provenance.load(ROOT)
     assert errors == [] and actual[expected["site"]] == expected
-    assert layer["segments"][segment]["translation"] == row["translation_after"]
+    assert layer["segments"][segment]["translation"] == translation
     assert {k: v for k, v in historical.items() if k != "target_sha256"} == {
         k: v for k, v in row["before"].items() if k != "target_sha256"
     }
     source = next(s for s in core["segments"] if s["id"] == segment)
     assert provenance.canonical_hash(provenance.source_payload(source)) == expected["source_sha256"]
-    assert provenance.canonical_hash(row["translation_after"]) == expected["target_sha256"]
+    assert provenance.canonical_hash(translation) == expected["target_sha256"]
     current = {expected["site"]: provenance.corpus_sites(ROOT)[expected["site"]]}
     recorded = {expected["site"]: deepcopy(actual[expected["site"]])}
     frozen = deepcopy((current, recorded))

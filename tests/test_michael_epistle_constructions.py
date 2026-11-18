@@ -5,9 +5,11 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_rubric_caption_layer
 from michael_epistle_fixture import (
     FIXTURE,
     TEXT,
+    current_row,
     predecessor_core,
     predecessor_layer,
     predecessor_row,
@@ -64,7 +66,7 @@ def actual_row(language):
 
 def exact_row(core, layer, row):
     language = layer["language"]
-    assert row == FIXTURE["ledger"][language]["after"], "Michael complete provenance row"
+    assert row == current_row(language), "Michael complete provenance row"
     assert row["source_sha256"] == canonical_hash(source_payload(core["segments"][0]))
     assert row["target_sha256"] == canonical_hash(layer["segments"]["s01"]["translation"])
 
@@ -83,7 +85,7 @@ def test_all105_realizations_context_genders_prose_and_reader(language):
     snapshot = deepcopy((core, layer))
     shape(core, layer)
     predecessor_core(core)
-    assert layer == FIXTURE["after_layers"][language]
+    assert before_rubric_caption_layer(layer) == FIXTURE["after_layers"][language]
     predecessor_layer(layer)
     exact_row(core, layer, actual_row(language))
     base, target, tables = compact(core, layer)

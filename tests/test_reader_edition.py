@@ -168,7 +168,8 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(emitted_book
         "languages": {
             # ordinarium.agnus-dei gains its English 1846 wording uses (2026-11-05).
             # English Memorare has no retained localized historical wording use.
-            "en": {"normalized": 246, "effective": 1223, "texts": 1223},
+            # Aylward's Stabat Mater adds an English wording source.
+            "en": {"normalized": 247, "effective": 1223, "texts": 1223},
             "pl": {"normalized": 107, "effective": 1221, "texts": 1223},
         },
     }

@@ -206,8 +206,9 @@ def predecessor_core(core, case):
 
 
 def predecessor_provenance(rows, case):
+    rows = [before_edition_target_row(row) for row in rows]
     if case["text"] != STABAT_SOURCE_SUCCESSOR["text"]:
-        return [before_edition_target_row(row) for row in rows]
+        return rows
     rule = STABAT_SOURCE_SUCCESSOR["rows"][case["language"]]
     expected = deepcopy(case["provenance"])
     indices = [i for i, row in enumerate(expected) if row["site"] == rule["before"]["site"]]

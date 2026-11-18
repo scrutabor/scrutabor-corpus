@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_edition_provenance_row
 from iste_gender_fixture import DATA, current_iste_expected_row
 from marian_gospel_fixture import current_expected_row
 
@@ -256,7 +257,8 @@ def test_historical_row_adapter_rejects_corruption_and_restores_same_input(row_i
 
 
 def reviewed_current_source(core, row, case):
-    assert row == current_expected_row(case["before"]), "current iste source binding"
+    expected = current_edition_provenance_row(current_expected_row(case["before"]))
+    assert row == expected, "current iste source binding"
     segment = next(s for s in core["segments"] if s["id"] == row["segment"])
     assert canonical_hash(source_payload(segment)) == row["source_sha256"]
 

@@ -360,6 +360,8 @@ def test_current_wording_matches_its_historical_or_exact_successor_hash(site):
         assert_label(site, row)
     elif site in EXACT_WORDING_TARGETS:
         before, after = EXACT_WORDING_TARGETS[site]
+        text, segment, language = site.rsplit(".", 2)
+        after = current_edition_target_sha(text, language, segment, after)
         original = deepcopy(row)
         assert row["target_sha256"] == after
         try:

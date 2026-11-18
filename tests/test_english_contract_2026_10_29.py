@@ -16,7 +16,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import read_predecessor
+from edition_revision_fixture import current_edition_value, read_predecessor
 from english_contract_successor_fixture import (
     FILES,
     before_english_contract_bytes,
@@ -232,11 +232,16 @@ def test_each_contemporary_conclusion_reads_forever_and_ever(text):
 @pytest.mark.parametrize("text", sorted(PROSE))
 def test_revised_prose_binds_its_unchanged_ledger_labels(text):
     _, layer = load(text)
-    segment, expected = PROSE[text]
+    segment, previous = PROSE[text]
+    relative = f"languages/en/texts/{text.replace('.', '/', 1)}.json"
+    expected = current_edition_value(relative, ["segments", segment, "translation"], previous)
     site = f"{text}.{segment}.en"
     row = ledger()[site]
     assert layer["segments"][segment]["translation"] == expected
-    assert row["target_sha256"] == canonical_hash(expected)
+    assert row["target_sha256"] == canonical_hash(previous)
+    native = json.loads((ROOT / "languages/en/translation-provenance.json").read_bytes())
+    (current,) = [item for item in native["sites"] if item["site"] == site]
+    assert current["target_sha256"] == canonical_hash(expected)
     assert (row["origin"], row["review"]) == PROVENANCE[site]
     assert row["familiar_core"] is False
 
@@ -269,7 +274,11 @@ def test_psalm_cause_clause_and_caption_group():
     healthy(core, layer)
     forms = [word["form"] for word in latin(core, segment)]
     assert forms[4:11] == ["discérne", "causam", "meam", "de", "gente", "non", "sancta"]
-    assert layer["segments"][segment]["translation"] == expected
+    assert layer["segments"][segment]["translation"] == current_edition_value(
+        "languages/en/texts/ordinarium/iudica-me.json",
+        ["segments", segment, "translation"],
+        expected,
+    )
     assert layer["segments"][segment]["alignments"] == [CAUSE_GROUP]
     assert layer["words"]["w005"] == {"gloss": "set apart"}
     assert cause_errors(core, layer) == []

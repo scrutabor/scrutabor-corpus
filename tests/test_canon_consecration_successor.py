@@ -20,6 +20,7 @@ from canon_consecration_successor_fixture import (
     before_canon_layer_frame,
     current_canon_row,
 )
+from edition_revision_fixture import before_edition_object
 from foot_communion_successor_fixture import (
     before_foot_communion_bytes,
     before_foot_communion_graph,
@@ -211,7 +212,8 @@ def test_the_latin_words_are_unchanged(text):
     current = core(text)
     previous = json.loads(before_canon_core_bytes(text, core_path(text).read_bytes()))
     assert words(current) == words(previous)
-    assert {k: v for k, v in current.items() if k not in ("segments", "editorial", "ids")} == {
+    historical = before_edition_object(str(core_path(text).relative_to(ROOT)), current)
+    assert {k: v for k, v in historical.items() if k not in ("segments", "editorial", "ids")} == {
         k: v for k, v in previous.items() if k not in ("segments", "editorial", "ids")
     }
 

@@ -113,10 +113,7 @@ def test_sorrows_contemplation_retains_mother_and_son_without_approval():
     name = "septem-dolorum-beatae-mariae-virginis-sequentia"
     core, layer, _ = load(name)
     wording = layer["segments"]["s06"]["translation"]
-    assert (
-        wording
-        == "Who would not be saddened on contemplating Christ’s Mother suffering with her Son?"
-    )
+    assert wording == "Who could look unmoved\nOn the Mother of our Lord,\nGrieving with her Son?"
     segment = next(s for s in core["segments"] if s["id"] == "s06")
     contemplari = next(w for w in segment["words"] if w["id"] == "w058")
     assert contemplari["lemma"] == "contemplor"
@@ -125,7 +122,7 @@ def test_sorrows_contemplation_retains_mother_and_son_without_approval():
     site = next(s for s in provenance["sites"] if s["text"] == core["id"] and s["segment"] == "s06")
     assert site["target_sha256"] == canonical_hash(wording)
     assert site["source_sha256"] == canonical_hash(source_payload(segment))
-    assert (site["origin"], site["review"]) == ("working-unsettled", "working")
+    assert (site["origin"], site["review"]) == ("public-domain", "working")
 
 
 @pytest.mark.parametrize(

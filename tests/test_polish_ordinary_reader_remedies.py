@@ -10,7 +10,7 @@ from pathlib import Path
 
 import pytest
 from canon_consecration_successor_fixture import before_canon_core_object
-from edition_revision_fixture import before_edition_object
+from edition_revision_fixture import before_edition_object, before_rubric_caption_layer
 from english_contract_successor_fixture import before_english_contract_layer
 from foot_communion_successor_fixture import before_foot_communion_core_object
 from offertory_rubric_successor_fixture import before_offertory_core_object
@@ -212,7 +212,7 @@ def assert_case(case, core, layer, row):
         emitted = next(s for s in artifact["seg"] if s["id"] == "s02")
         require([g for g in emitted["a"] if g["s"] == start] == [compact], "compact reader phrase")
 
-    restored = deepcopy(layer)
+    restored = deepcopy(before_rubric_caption_layer(layer))
     for change in spec["inverse"]:
         owner = restored
         for field in change["path"][:-1]:

@@ -6,7 +6,11 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import before_caption_revision, before_edition_object
+from edition_revision_fixture import (
+    before_caption_revision,
+    before_edition_object,
+    before_rubric_caption_revision,
+)
 from english_contract_successor_fixture import before_english_contract_layer
 from english_register_successor_fixture import before_english_register_layer
 from foot_communion_successor_fixture import (
@@ -96,15 +100,25 @@ def response(case, core, raw):
     )
 
 
+def greeting_witness(case):
+    relative = case["path"]
+    return before_rubric_caption_revision(relative, (ROOT / relative).read_bytes())
+
+
+def greeting_core(case):
+    relative = f"texts/{case['text'].replace('.', '/', 1)}.json"
+    return before_edition_object(relative, store.core(ROOT, case["text"]))
+
+
 @pytest.mark.parametrize("case", CASES, ids=[row["text"] for row in CASES])
 def test_actual_complete_response_reaches_native_reader(case):
-    response(case, store.core(ROOT, case["text"]), store.raw_layer(ROOT, "pl", case["text"]))
+    response(case, greeting_core(case), json.loads(greeting_witness(case)))
 
 
 @pytest.mark.parametrize("case", CASES, ids=[row["text"] for row in CASES])
 def test_old_lowercase_is_structurally_valid_but_local_boundary_rejects_and_recovers(case):
-    core = store.core(ROOT, case["text"])
-    layer = store.raw_layer(ROOT, "pl", case["text"])
+    core = greeting_core(case)
+    layer = json.loads(greeting_witness(case))
     record = layer["words"][case["word"]]
     saved, whole = deepcopy(record), deepcopy(layer)
     response(case, core, layer)
@@ -125,7 +139,7 @@ def test_old_lowercase_is_structurally_valid_but_local_boundary_rejects_and_reco
 def test_exact_seven_byte_inverses_keep_every_other_field_and_language():
     assert len(CASES) == 7
     for case in CASES:
-        raw = before_caption_revision(case["path"], (ROOT / case["path"]).read_bytes())
+        raw = before_caption_revision(case["path"], greeting_witness(case))
         assert hashlib.sha256(raw).hexdigest() == case["after_sha256"]
         before = bytearray(raw)
         assert before[case["byte_offset"]] == ord("I")
@@ -135,7 +149,10 @@ def test_exact_seven_byte_inverses_keep_every_other_field_and_language():
         comparison["words"][case["word"]]["gloss"] = "I"
         assert comparison == json.loads(raw)
         source = ROOT / "texts" / (case["text"].replace(".", "/", 1) + ".json")
-        notes_raw = before_ordo_notes_core_bytes(case["text"], source.read_bytes())
+        notes_raw = before_ordo_notes_core_bytes(
+            case["text"],
+            before_rubric_caption_revision(str(source.relative_to(ROOT)), source.read_bytes()),
+        )
         source_raw = before_pater_agnus_core_bytes(case["text"], notes_raw)
         source_raw = before_foot_communion_core_bytes(case["text"], source_raw)
         assert hashlib.sha256(source_raw).hexdigest() == case["source_sha256"]

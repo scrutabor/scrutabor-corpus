@@ -67,6 +67,17 @@ for _relative, _entry in SOURCE_SCOPE_FILES.items():
         "current": _entry["current"],
         "previous": FILES.get(_relative, _entry)["previous"],
     }
+RUBRIC_CAPTION_REVISION = json.loads(
+    (Path(__file__).parent / "fixtures/rubric-caption-revision.json").read_bytes()
+)
+RUBRIC_CAPTION_FILES = RUBRIC_CAPTION_REVISION["files"]
+for _relative, _entry in RUBRIC_CAPTION_FILES.items():
+    if _relative in FILES:
+        assert FILES[_relative]["current"] == _entry["previous"], _relative
+    FILES[_relative] = {
+        "current": _entry["current"],
+        "previous": FILES.get(_relative, _entry)["previous"],
+    }
 
 
 def _exact_inverse(entry, raw):
@@ -82,7 +93,10 @@ def _exact_inverse(entry, raw):
 def before_caption_revision(relative, raw):
     """The exact published parent, independently of the older edition receipt."""
     entry = CAPTION_FILES.get(relative)
-    if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
+    if entry is None:
+        return raw
+    raw = before_rubric_caption_revision(relative, raw)
+    if hashlib.sha256(raw).hexdigest() != entry["current"]:
         return raw
     return _exact_inverse(entry, raw)
 
@@ -116,10 +130,31 @@ def before_witness_revision(relative, raw):
 
 def before_source_scope_revision(relative, raw):
     """Undo the source-scope receipt only for the complete exact declared input."""
+    raw = before_rubric_caption_revision(relative, raw)
     entry = SOURCE_SCOPE_FILES.get(relative)
     if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
         return raw
     return _exact_inverse(entry, raw)
+
+
+def before_rubric_caption_revision(relative, raw):
+    """Restore the immediate predecessor of the rubric and caption corrections."""
+    entry = RUBRIC_CAPTION_FILES.get(relative)
+    if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
+        return raw
+    return _exact_inverse(entry, raw)
+
+
+def before_rubric_caption_layer(layer):
+    """Reconstruct a layer's exact earlier comparison frame, if declared."""
+    relative = f"languages/{layer['language']}/texts/{layer['text'].replace('.', '/', 1)}.json"
+    if relative not in RUBRIC_CAPTION_FILES:
+        return layer
+    from checks.layout import formatted
+
+    raw = formatted(layer).encode("utf-8")
+    previous = before_rubric_caption_revision(relative, raw)
+    return layer if previous is raw else json.loads(previous)
 
 
 def before_edition_revision(relative, raw):
@@ -155,6 +190,7 @@ def _composed_layer_changes():
         *REVIEW_FILES.items(),
         *OWNER_FILES.items(),
         *SOURCE_SCOPE_FILES.items(),
+        *RUBRIC_CAPTION_FILES.items(),
     ]:
         if not entry.get("changes"):
             continue
@@ -191,10 +227,16 @@ SOURCE_SCOPE_LAYER_CHANGES = {
     for relative, entry in SOURCE_SCOPE_FILES.items()
     if entry.get("changes")
 }
+RUBRIC_CAPTION_LAYER_CHANGES = {
+    relative: entry["changes"]
+    for relative, entry in RUBRIC_CAPTION_FILES.items()
+    if entry.get("changes")
+}
 
 
 def before_review_layer(layer):
     """Undo source-scope and prayer reader-review fields on a historical comparison copy."""
+    layer = _undo_layer_changes(layer, RUBRIC_CAPTION_LAYER_CHANGES)
     return _undo_layer_changes(
         _undo_layer_changes(layer, SOURCE_SCOPE_LAYER_CHANGES), REVIEW_LAYER_CHANGES
     )
@@ -207,6 +249,7 @@ OWNER_LAYER_CHANGES = {
 
 def before_owner_layer(layer):
     """Undo source-scope and owner-decision fields on a historical comparison copy."""
+    layer = _undo_layer_changes(layer, RUBRIC_CAPTION_LAYER_CHANGES)
     return _undo_layer_changes(
         _undo_layer_changes(layer, SOURCE_SCOPE_LAYER_CHANGES), OWNER_LAYER_CHANGES
     )
@@ -271,6 +314,7 @@ def current_edition_value(relative, fields, previous):
         REVIEW_FILES.get(relative, {}).get("changes", ()),
         OWNER_FILES.get(relative, {}).get("changes", ()),
         SOURCE_SCOPE_FILES.get(relative, {}).get("changes", ()),
+        RUBRIC_CAPTION_FILES.get(relative, {}).get("changes", ()),
     )
     value, advanced = previous, False
     for changes in receipts:
@@ -302,8 +346,17 @@ def current_edition_target_sha(text, language, segment, previous):
     return previous
 
 
+def current_edition_provenance_row(row):
+    """Advance a complete expected row whose translation classification changed."""
+    receipt = RUBRIC_CAPTION_REVISION.get("target_rows", {}).get(row.get("site"))
+    return deepcopy(receipt["after"]) if receipt and row == receipt["before"] else row
+
+
 def before_edition_target_row(row):
-    """Historical target identity only; retain every other row field and fault."""
+    """Use an exact row receipt if its classification changed with the text."""
+    receipt = RUBRIC_CAPTION_REVISION.get("target_rows", {}).get(row.get("site"))
+    if receipt:
+        return deepcopy(receipt["before"]) if row == receipt["after"] else row
     relative = f"languages/{row['language']}/texts/{row['text'].replace('.', '/', 1)}.json"
     for change in LAYER_CHANGES.get(relative, ()):
         if (

@@ -13,6 +13,7 @@ from edition_revision_fixture import (
     before_owner_revision,
     before_review_layer,
     before_review_revision,
+    before_rubric_caption_revision,
     before_source_scope_revision,
 )
 
@@ -54,7 +55,8 @@ def test_receipt_names_only_the_twelve_authored_json_subjects_and_four_layer_fie
 def test_exact_source_scope_predecessor_refuses_corrupt_or_unrelated_bytes(relative):
     raw = (ROOT / relative).read_bytes()
     entry = SOURCE_SCOPE_FILES[relative]
-    assert hashlib.sha256(raw).hexdigest() == entry["current"]
+    current = before_rubric_caption_revision(relative, raw)
+    assert hashlib.sha256(current).hexdigest() == entry["current"]
     previous = before_source_scope_revision(relative, raw)
     assert previous != raw and hashlib.sha256(previous).hexdigest() == entry["previous"]
     assert before_source_scope_revision(relative, previous) is previous

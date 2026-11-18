@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 from anne_epistle_fixture import predecessor_layer
-from edition_revision_fixture import before_edition_layer
+from edition_revision_fixture import before_edition_layer, before_rubric_caption_revision
 from possessive_sweep_b1_successor_fixture import before_possessive_b1_layer
 from possessive_sweep_b2_successor_fixture import before_possessive_b2_layer
 from rosary_communion_fixture import (
@@ -483,10 +483,17 @@ def test_anne_shared_projection_rejects_changed_current_layer_and_recovers(langu
     assert occurrence_target(core, layer, row) == healthy
 
 
+def shared_projection_witness(language, text):
+    path = store.layer_path(ROOT, language, text)
+    return json.loads(
+        before_rubric_caption_revision(path.relative_to(ROOT).as_posix(), path.read_bytes())
+    )
+
+
 @pytest.mark.parametrize("text,language,word", PROJECTION_CASES)
 def test_current_shared_projection_is_checked_before_its_historical_inverse(text, language, word):
     (row,) = [r for r in DATA["occurrences"] if r["text"] == text and r["word"]["id"] == word]
-    core, layer = store.core(ROOT, text), store.raw_layer(ROOT, language, text)
+    core, layer = store.core(ROOT, text), shared_projection_witness(language, text)
     saved = deepcopy((core, layer, DATA))
     expected = "of grace" if word == "w038" else {"pl": "łaska", "en": "grace"}[language]
     assert row["targets"][language] == {"word": {"gloss": expected}, "alignments": []}
@@ -500,7 +507,7 @@ def test_current_shared_projection_fault_rejects_and_restores_same_objects(
     text, language, word, fault
 ):
     (row,) = [r for r in DATA["occurrences"] if r["text"] == text and r["word"]["id"] == word]
-    core, layer = store.core(ROOT, text), store.raw_layer(ROOT, language, text)
+    core, layer = store.core(ROOT, text), shared_projection_witness(language, text)
     saved_core, saved_layer, saved_row = deepcopy(core), deepcopy(layer), deepcopy(row)
     saved_data = deepcopy(DATA)
     healthy = occurrence_target(core, layer, row)

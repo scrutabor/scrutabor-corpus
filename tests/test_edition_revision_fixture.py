@@ -18,6 +18,7 @@ from edition_revision_fixture import (
     PUBLISHED_FILES,
     PUBLISHED_LAYER_CHANGES,
     REVIEW_FILES,
+    RUBRIC_CAPTION_FILES,
     SOURCE_SCOPE_FILES,
     WITNESS_FILES,
     before_edition_layer,
@@ -58,9 +59,40 @@ def test_scope_is_nonempty_and_names_each_declared_subject_once():
     assert len(WITNESS_FILES) == 6
     assert not any("changes" in entry for entry in WITNESS_FILES.values())
     assert len(SOURCE_SCOPE_FILES) == 12
-    assert len(FILES) == 231
-    assert len(LAYER_CHANGES) == 208
-    assert len(TRANSLATIONS) == 57
+    assert len(RUBRIC_CAPTION_FILES) == 169
+    non_layer_files = {
+        relative for relative, entry in RUBRIC_CAPTION_FILES.items() if not entry.get("changes")
+    }
+    assert non_layer_files == {
+        "bibliography/graph.json",
+        "languages/en/bibliography.json",
+        "languages/en/lexicon.json",
+        "languages/en/translation-basis.json",
+        "languages/pl/lexicon.json",
+        "languages/en/translation-provenance.json",
+        "languages/pl/translation-provenance.json",
+        "texts/ordinarium/evangelium-ultimum.json",
+        "texts/ordinarium/iudica-me.json",
+        "texts/ordinarium/supplices-te-rogamus.json",
+        "texts/ordinarium/suscipe-sancta-trinitas.json",
+        "texts/ordinarium/te-igitur.json",
+        "texts/proprium/commemoratio-omnium-fidelium-defunctorum-missa-i-offertorium.json",
+        "texts/proprium/corporis-christi-alleluia.json",
+        "texts/proprium/corporis-christi-evangelium.json",
+        "texts/proprium/dominica-ii-adventus-epistola.json",
+        "texts/proprium/dominica-iii-post-pentecosten-graduale.json",
+        "texts/proprium/dominica-iv-post-pascha-introitus.json",
+        "texts/proprium/dominica-x-post-pentecosten-introitus.json",
+        "texts/proprium/nativitas-beatae-mariae-virginis-epistola.json",
+        "texts/proprium/pretiosissimi-sanguinis-domini-nostri-iesu-christi-communio.json",
+        "texts/proprium/pretiosissimi-sanguinis-domini-nostri-iesu-christi-secreta.json",
+        "texts/proprium/vigilia-nativitatis-epistola.json",
+        "texts/psalmi/118-he.json",
+    }
+    assert sum(len(entry.get("changes", ())) for entry in RUBRIC_CAPTION_FILES.values()) == 281
+    assert len(FILES) == 373
+    assert len(LAYER_CHANGES) == 332
+    assert len(TRANSLATIONS) == 150
     assert set(LAYER_CHANGES) <= set(FILES)
     for relative, changes in LAYER_CHANGES.items():
         assert relative.startswith("languages/") and "/texts/" in relative
