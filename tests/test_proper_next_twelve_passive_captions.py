@@ -9,6 +9,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_reading_layer
 from english_contract_successor_fixture import before_english_contract_text_layer
 from english_register_successor_fixture import before_english_register_text_layer
 from michael_epistle_fixture import predecessor_core, predecessor_layer, predecessor_row
@@ -82,7 +83,7 @@ def reviewed_scalar(layer):
 
 
 def preserved(layer, case):
-    layer = before_possessive_b2_layer(layer)
+    layer = before_possessive_b2_layer(before_reading_layer(layer))
     layer = before_english_register_text_layer(layer, "unchanged contextual remainder")
     layer = before_polish_contract_layer(layer, "unchanged contextual remainder")
     restored = predecessor_palm_layer(layer)
@@ -106,7 +107,9 @@ def preserved(layer, case):
 def previous(layer):
     """Undo the newer exact English successor before the older predecessor oracles."""
     return predecessor_layer(
-        before_english_contract_text_layer(layer, "unchanged contextual remainder")
+        before_english_contract_text_layer(
+            before_reading_layer(layer), "unchanged contextual remainder"
+        )
     )
 
 

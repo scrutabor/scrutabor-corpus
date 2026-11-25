@@ -15,6 +15,7 @@ from anne_epistle_fixture import (
     predecessor_layer,
     predecessor_row,
 )
+from edition_revision_fixture import current_edition_value
 
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
@@ -77,7 +78,10 @@ def test_all229_realizations_current_native_prose_and_reader(language):
     shape(core, layer)
     predecessor_core(core)
     predecessor_layer(layer)
-    assert layer == FIXTURE["after_layers"][language]
+    expected = deepcopy(FIXTURE["after_layers"][language])
+    relative = f"languages/{language}/texts/{TEXT.replace('.', '/', 1)}.json"
+    expected["about"] = current_edition_value(relative, ["about"], expected["about"])
+    assert layer == expected
     assert len(layer["words"]) == 229
     current_row(core, layer, actual_row(language))
     base, target, tables = compact(core, layer)

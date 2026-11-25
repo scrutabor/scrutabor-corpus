@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_edition_value
 
 from build_reader.layers import enrich_layer, expand_core
 from checks import (
@@ -59,6 +60,8 @@ def load(part, language):
 def reviewed(core, layer):
     key = core["id"].rsplit("-", 1)[1] + "." + layer["language"]
     expected = deepcopy(FIXTURE["layers"][key])
+    relative = f"languages/{layer['language']}/texts/{core['id'].replace('.', '/', 1)}.json"
+    expected["about"] = current_edition_value(relative, ["about"], expected["about"])
     # These two English reprise initials have an independently scoped case rule.
     # This construction check accepts only the exact lower/upper initial pair.
     if layer["language"] == "en":

@@ -18,8 +18,8 @@ ROOT = Path(__file__).resolve().parents[1]
 TEXT = "proprium.purificatio-beatae-mariae-virginis-epistola"
 LINES = {
     "pl": (
-        "To | mówi | Pan | Bóg | Oto | ja | posyłam | Anioła | mego | i | przygotuje | drogę"
-        " | przed | obliczem | moim | A | natychmiast | przyjdzie | do | świątyni | swojej"
+        "To | mówi | Pan | Bóg | Oto | Ja | posyłam | Anioła | Mego | i | przygotuje | drogę"
+        " | przed | obliczem | Moim | A | natychmiast | przyjdzie | do | świątyni | swojej"
         " | Władca | którego | wy | szukacie | i | Anioł | Przymierza | którego | wy | pragniecie"
         " | Oto | przychodzi | mówi | Pan | Zastępów | lecz | kto | zdoła | pojąć | dzień"
         " | przyjścia | Jego | i | kto | ostoi się | na | widok | Jego | On | bowiem | jak | ogień"
@@ -217,6 +217,7 @@ def test_escaped_classes_pass_generic_checks_but_not_context(mode):
     assert not interlinear.check(doc, layer)
     checker = english if language == "en" else polish
     assert not checker.check(doc, layer)
+    assert line(doc, layer) != line(doc, layers[language])
     assert line(doc, layer) != LINES[language].split(" | ")
 
 

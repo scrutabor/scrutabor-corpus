@@ -143,10 +143,17 @@ def prose_errors(row, value):
     return ["revised prose"]
 
 
+def expected_caption(row):
+    if len(row["words"]) == 1:
+        relative = f"languages/en/texts/{row['text'].replace('.', '/', 1)}.json"
+        return current_edition_value(relative, ["words", row["words"][0], "gloss"], row["after"])
+    return row["after"]
+
+
 def caption_errors(row, value):
     if value is None:
         return ["caption shape"]
-    if value == row["after"]:
+    if value == expected_caption(row):
         return []
     if SHALL.search(value):
         return ["predictive shall" if "future" in row["classes"] else "future perfect shall"]
@@ -203,7 +210,7 @@ def test_revised_caption_is_pinned_with_its_latin_tense(row):
     ]
     assert morphs == row["latin_tense_mood"]
     value = caption(layer, row["segment"], row["words"])
-    assert value == row["after"]
+    assert value == expected_caption(row)
     assert caption_errors(row, value) == []
     assert not SHALL.search(value)
     if row["classes"] == ["future-perfect"]:

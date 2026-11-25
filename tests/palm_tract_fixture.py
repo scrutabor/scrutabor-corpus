@@ -4,6 +4,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_reading_layer
+
 from checks.translation_provenance import canonical_hash
 
 DATA = json.loads((Path(__file__).with_name("fixtures") / "palm-tract-captions.json").read_text())
@@ -14,7 +16,8 @@ def reviewed_palm_layer(layer):
     assert layer.get("text") == TEXT, "unchanged contextual remainder"
     assert layer.get("language") in DATA["layers"], "unchanged contextual remainder"
     case = DATA["layers"][layer["language"]]
-    assert canonical_hash(layer) == case["after_sha256"], "unchanged contextual remainder"
+    comparison = before_reading_layer(layer)
+    assert canonical_hash(comparison) == case["after_sha256"], "unchanged contextual remainder"
 
 
 def predecessor_palm_layer(layer):
@@ -22,7 +25,7 @@ def predecessor_palm_layer(layer):
         return deepcopy(layer)
     reviewed_palm_layer(layer)
     case = DATA["layers"][layer["language"]]
-    restored = deepcopy(layer)
+    restored = deepcopy(before_reading_layer(layer))
     for wid, change in case["word_changes"].items():
         assert restored["words"][wid] == change["after"], "unchanged contextual remainder"
         restored["words"][wid] = deepcopy(change["before"])

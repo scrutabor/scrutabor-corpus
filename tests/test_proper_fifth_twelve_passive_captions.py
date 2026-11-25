@@ -8,7 +8,11 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import before_edition_layer
+from edition_revision_fixture import (
+    before_edition_layer,
+    current_edition_target_sha,
+    current_edition_value,
+)
 from english_register_successor_fixture import before_english_register_text_layer
 from possessive_sweep_b3_successor_fixture import before_possessive_b3_layer
 
@@ -133,13 +137,27 @@ def test_complete_real_layer_native_reader_and_predecessor_identity(case):
     assert canonical_hash(core) == case["core_sha256"]
     shape(core, layer)
     preserved(layer, case)
-    assert {sid: segment.get("translation") for sid, segment in layer["segments"].items()} == case[
-        "prose"
-    ]
+    relative = store.layer_path(ROOT, case["language"], case["text"]).relative_to(ROOT).as_posix()
+    expected_prose = {
+        sid: current_edition_value(relative, ("segments", sid, "translation"), previous)
+        for sid, previous in case["prose"].items()
+    }
+    assert {sid: segment.get("translation") for sid, segment in layer["segments"].items()} == (
+        expected_prose
+    )
     ledger = json.loads(
         (ROOT / "languages" / case["language"] / "translation-provenance.json").read_text()
     )
-    assert [row for row in ledger["sites"] if row["text"] == case["text"]] == case["provenance"]
+    expected_rows = [
+        {
+            **row,
+            "target_sha256": current_edition_target_sha(
+                case["text"], case["language"], row["segment"], row["target_sha256"]
+            ),
+        }
+        for row in case["provenance"]
+    ]
+    assert [row for row in ledger["sites"] if row["text"] == case["text"]] == expected_rows
     base, target, tables = compact(core, layer)
     expected_core, expected_layers = emit._strip(
         expand_core(core), {case["language"]: enrich_layer(core, layer)}

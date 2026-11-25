@@ -7,6 +7,7 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_reading_layer
 from iste_gender_fixture import before_iste_gender, current_iste_expected_row
 from rosary_gospel_source_fixture import before_rosary_core
 
@@ -46,6 +47,7 @@ def current_expected_row(row):
 
 
 def predecessor_layer(layer):
+    layer = before_reading_layer(layer)
     result = deepcopy(layer)
     case = LAYERS.get((layer["text"], layer["language"]))
     if case is None:

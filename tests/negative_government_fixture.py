@@ -4,6 +4,7 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_reading_layer
 from lateran_epistle_fixture import before_lateran_targets
 from lateran_epistle_source_fixture import DATA as LATERAN_SOURCE
 from lateran_epistle_source_fixture import before_lateran_core
@@ -32,6 +33,8 @@ def predecessor_layer(layer, message="complete current government layer"):
         ),
         None,
     )
+    if case is not None:
+        layer = before_reading_layer(layer)
     comparison = before_lateran_targets(layer, message)
     if case is None:
         return comparison

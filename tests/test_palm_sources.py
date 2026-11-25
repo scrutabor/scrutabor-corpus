@@ -850,7 +850,7 @@ def test_the_major_line_repairs_read_in_order():
         "[byli godni zarówno czerpać naukę z Jego cierpliwości, "
         "jak i uczestniczyć w Jego zmartwychwstaniu]"
     ) in line("pl", PA + "collecta")
-    assert line("pl", PA + "introitus").count("[nie oddalaj daleko]") == 2
+    assert line("pl", PA + "introitus").count("[nie oddalaj]") == 2
     assert "aby | prosił o | Barabasza" in line("pl", PA + "evangelium", "s61")
     assert "(0) | krwi | sprawiedliwego" in line("pl", PA + "evangelium", "s74")
 

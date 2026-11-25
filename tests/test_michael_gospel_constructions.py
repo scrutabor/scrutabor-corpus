@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_edition_value
 from michael_gospel_fixture import (
     FIXTURE,
     TEXT,
@@ -99,7 +100,10 @@ def test_all196_realizations_context_genders_prose_and_reader(language):
     snapshot = deepcopy((core, layer))
     shape(core, layer)
     predecessor_core(core)
-    assert layer == FIXTURE["after_layers"][language]
+    expected = deepcopy(FIXTURE["after_layers"][language])
+    relative = f"languages/{language}/texts/{TEXT.replace('.', '/', 1)}.json"
+    expected["about"] = current_edition_value(relative, ["about"], expected["about"])
+    assert layer == expected
     predecessor_layer(layer)
     exact_row(core, layer, actual_row(language))
     base, target, tables = compact(core, layer)

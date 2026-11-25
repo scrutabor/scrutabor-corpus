@@ -78,6 +78,16 @@ for _relative, _entry in RUBRIC_CAPTION_FILES.items():
         "current": _entry["current"],
         "previous": FILES.get(_relative, _entry)["previous"],
     }
+READING_FILES = json.loads(
+    (Path(__file__).parent / "fixtures/reading-language-revision.json").read_bytes()
+)["files"]
+for _relative, _entry in READING_FILES.items():
+    if _relative in FILES:
+        assert FILES[_relative]["current"] == _entry["previous"], _relative
+    FILES[_relative] = {
+        "current": _entry["current"],
+        "previous": FILES.get(_relative, _entry)["previous"],
+    }
 
 
 def _exact_inverse(entry, raw):
@@ -137,8 +147,37 @@ def before_source_scope_revision(relative, raw):
     return _exact_inverse(entry, raw)
 
 
+def before_reading_revision(relative, raw):
+    """Restore the immediate predecessor of the current language edition."""
+    entry = READING_FILES.get(relative)
+    if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
+        return raw
+    return _exact_inverse(entry, raw)
+
+
+def before_reading_object(relative, value):
+    """Return the preceding edition only for an exact, complete current document."""
+    if relative not in READING_FILES:
+        return value
+    if "/texts/" in relative or relative.endswith("translation-provenance.json"):
+        from checks.layout import formatted
+
+        raw = formatted(value).encode()
+    else:
+        raw = (json.dumps(value, ensure_ascii=False, indent=2) + "\n").encode()
+    previous = before_reading_revision(relative, raw)
+    return value if previous is raw else json.loads(previous)
+
+
+def before_reading_layer(layer):
+    """Immediate predecessor of a complete authored language layer."""
+    relative = f"languages/{layer['language']}/texts/{layer['text'].replace('.', '/', 1)}.json"
+    return before_reading_object(relative, layer)
+
+
 def before_rubric_caption_revision(relative, raw):
     """Restore the immediate predecessor of the rubric and caption corrections."""
+    raw = before_reading_revision(relative, raw)
     entry = RUBRIC_CAPTION_FILES.get(relative)
     if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
         return raw
@@ -148,7 +187,7 @@ def before_rubric_caption_revision(relative, raw):
 def before_rubric_caption_layer(layer):
     """Reconstruct a layer's exact earlier comparison frame, if declared."""
     relative = f"languages/{layer['language']}/texts/{layer['text'].replace('.', '/', 1)}.json"
-    if relative not in RUBRIC_CAPTION_FILES:
+    if relative not in RUBRIC_CAPTION_FILES and relative not in READING_FILES:
         return layer
     from checks.layout import formatted
 
@@ -191,6 +230,7 @@ def _composed_layer_changes():
         *OWNER_FILES.items(),
         *SOURCE_SCOPE_FILES.items(),
         *RUBRIC_CAPTION_FILES.items(),
+        *READING_FILES.items(),
     ]:
         if not entry.get("changes"):
             continue
@@ -232,10 +272,14 @@ RUBRIC_CAPTION_LAYER_CHANGES = {
     for relative, entry in RUBRIC_CAPTION_FILES.items()
     if entry.get("changes")
 }
+READING_LAYER_CHANGES = {
+    relative: entry["changes"] for relative, entry in READING_FILES.items() if entry.get("changes")
+}
 
 
 def before_review_layer(layer):
     """Undo source-scope and prayer reader-review fields on a historical comparison copy."""
+    layer = _undo_layer_changes(layer, READING_LAYER_CHANGES)
     layer = _undo_layer_changes(layer, RUBRIC_CAPTION_LAYER_CHANGES)
     return _undo_layer_changes(
         _undo_layer_changes(layer, SOURCE_SCOPE_LAYER_CHANGES), REVIEW_LAYER_CHANGES
@@ -249,6 +293,7 @@ OWNER_LAYER_CHANGES = {
 
 def before_owner_layer(layer):
     """Undo source-scope and owner-decision fields on a historical comparison copy."""
+    layer = _undo_layer_changes(layer, READING_LAYER_CHANGES)
     layer = _undo_layer_changes(layer, RUBRIC_CAPTION_LAYER_CHANGES)
     return _undo_layer_changes(
         _undo_layer_changes(layer, SOURCE_SCOPE_LAYER_CHANGES), OWNER_LAYER_CHANGES
@@ -315,6 +360,7 @@ def current_edition_value(relative, fields, previous):
         OWNER_FILES.get(relative, {}).get("changes", ()),
         SOURCE_SCOPE_FILES.get(relative, {}).get("changes", ()),
         RUBRIC_CAPTION_FILES.get(relative, {}).get("changes", ()),
+        READING_FILES.get(relative, {}).get("changes", ()),
     )
     value, advanced = previous, False
     for changes in receipts:
@@ -335,7 +381,9 @@ def _digest(value):
 def current_edition_target_sha(text, language, segment, previous):
     """Advance only an enrolled translation's exact old target digest."""
     relative = f"languages/{language}/texts/{text.replace('.', '/', 1)}.json"
-    for change in LAYER_CHANGES.get(relative, ()):
+    # Older comparisons begin at the composed predecessor. More recent ones can
+    # begin at the immediately preceding wording of the same segment.
+    for change in (*LAYER_CHANGES.get(relative, ()), *READING_LAYER_CHANGES.get(relative, ())):
         if (
             change["path"] == ["segments", segment, "translation"]
             and "before" in change

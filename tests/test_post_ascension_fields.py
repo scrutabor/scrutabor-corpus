@@ -11,7 +11,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import LAYER_CHANGES, before_edition_layer
+from edition_revision_fixture import LAYER_CHANGES, before_edition_layer, before_reading_layer
 from gospel_delivery_fixture import (
     current_sung_expected_row,
     current_sung_source_hash,
@@ -153,7 +153,10 @@ def test_complete_component_and_each_consumer(text, language):
     if relative in FIXTURE["language_changes"]:
         assert_layer(relative, layer)
     else:
-        assert canonical_hash(layer) == FIXTURE["language_after_hashes"][relative]
+        assert (
+            canonical_hash(before_reading_layer(layer))
+            == FIXTURE["language_after_hashes"][relative]
+        )
 
 
 def test_title_and_exact_eight_about_consumers():
@@ -166,7 +169,10 @@ def test_title_and_exact_eight_about_consumers():
         assert f"“{title}”" in read(path)["about"]
     for text, language_hashes in FIXTURE["shared_about_hashes"].items():
         for language, expected in language_hashes.items():
-            assert canonical_hash(store.raw_layer(ROOT, language, text)["about"]) == expected
+            assert (
+                canonical_hash(before_reading_layer(store.raw_layer(ROOT, language, text))["about"])
+                == expected
+            )
 
 
 @pytest.mark.parametrize("text,word", sorted(FIXTURE["uncertainty_sites"].items()))

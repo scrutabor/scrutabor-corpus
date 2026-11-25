@@ -7,6 +7,7 @@ from collections import Counter
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_reading_object
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -208,7 +209,7 @@ def test_the_one_updated_target_hash_is_not_a_source_or_review_change():
 
 @pytest.mark.parametrize("row", FIXTURE["document_subjects"], ids=lambda row: row["path"])
 def test_no_unlisted_word_prose_or_analysis_edit(row):
-    assert digest(load(row["path"])) == row["after_sha256"]
+    assert digest(before_reading_object(row["path"], load(row["path"]))) == row["after_sha256"]
 
 
 def test_all_scoped_graph_records_keep_their_exact_pending_subjects():

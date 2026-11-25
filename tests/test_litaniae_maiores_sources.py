@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_edition_value
 
 from build_reader.bibliography_bindings import digest, selected_text, transcript_digest
 from build_reader.layers import expand_core
@@ -113,6 +114,11 @@ def core(text):
 
 def layer(language, text):
     return load(f"languages/{language}/texts/" + text.replace(".", "/", 1) + ".json")
+
+
+def current_about(language, text):
+    relative = f"languages/{language}/texts/{text.replace('.', '/', 1)}.json"
+    return current_edition_value(relative, ["about"], ABOUT[language, text])
 
 
 def words(doc):
@@ -257,7 +263,10 @@ def test_the_captions_keep_the_sentence_internal_relative_and_the_english_group(
     assert polish["words"]["w028"] == {"gloss": "który"} and english["words"]["w028"] == {
         "gloss": "who"
     }
-    assert (polish["about"], english["about"]) == (ABOUT["pl", COLLECT], ABOUT["en", COLLECT])
+    assert (polish["about"], english["about"]) == (
+        current_about("pl", COLLECT),
+        current_about("en", COLLECT),
+    )
     polish, english = layer("pl", POSTCOMMUNION), layer("en", POSTCOMMUNION)
     assert polish["words"]["w029"] == {"gloss": "który"} and english["words"]["w029"] == {
         "gloss": "who"
@@ -278,8 +287,8 @@ def test_the_captions_keep_the_sentence_internal_relative_and_the_english_group(
         "attend to",
     ]
     assert (polish["about"], english["about"]) == (
-        ABOUT["pl", POSTCOMMUNION],
-        ABOUT["en", POSTCOMMUNION],
+        current_about("pl", POSTCOMMUNION),
+        current_about("en", POSTCOMMUNION),
     )
     assert polish["words"]["w020"] == {"explanation": NOTE["pl"]}
     assert english["words"]["w020"] == {"explanation": NOTE["en"]}

@@ -4,6 +4,7 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_reading_layer
 from michael_gospel_source_fixture import DATA as SOURCE
 
 from checks.translation_provenance import canonical_hash
@@ -58,6 +59,7 @@ def predecessor_core(core):
 def predecessor_layer(layer):
     if layer["text"] != TEXT:
         return deepcopy(layer)
+    layer = before_reading_layer(layer)
     language = layer["language"]
     require(layer == FIXTURE["after_layers"][language], "Gospel complete target layer")
     restored = inverse(layer, FIXTURE["layer_operations"][language])

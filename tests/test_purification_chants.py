@@ -308,7 +308,7 @@ def test_retained_latin_analyses():
         (GRADUAL, "en", "The Gradual of"),
         (ALLELUIA, "pl", "Alleluja formularza"),
         (ALLELUIA, "en", "The Alleluia of"),
-        (OFFERTORY, "pl", "Offertorium formularza"),
+        (OFFERTORY, "pl", "Antyfona na ofiarowanie formularza"),
         (OFFERTORY, "en", "The Offertory of"),
         (INTROIT, "pl", "Introit formularza"),
         (INTROIT, "en", "The Introit of"),

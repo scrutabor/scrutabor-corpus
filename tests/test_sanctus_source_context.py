@@ -48,7 +48,7 @@ NARRATIVES = {
         "join the singing. At the words “Benedíctus qui venit in nómine Dómini” "
         "the priest straightens up and signs himself with the cross from "
         "forehead to breast. After completing his own recitation he begins the "
-        "Canon, said silently apart from a few sentences spoken aloud. The priest "
+        "Canon, said in a low voice apart from a few passages spoken aloud. The priest "
         "does not wait for the choir to finish. The Gregorian Sanctus and Benedictus "
         "are sung continuously. With other musical settings the Benedictus "
         "follows the Consecration. Singing ceases during the Consecration."

@@ -9,6 +9,7 @@ from pathlib import Path
 
 import pytest
 from anne_epistle_fixture import predecessor_core, predecessor_layer, predecessor_rows
+from edition_revision_fixture import before_reading_layer, before_reading_object
 from possessive_sweep_b4_successor_fixture import before_possessive_b4_layer
 
 from build_reader import emit, store
@@ -98,8 +99,8 @@ def frame_readback(core, layer, frame):
 
 
 def preserved(layer, case):
-    layer = before_possessive_b4_layer(layer)
     comparison = predecessor_layer(layer, "unchanged eighth remainder")
+    comparison = before_possessive_b4_layer(before_reading_layer(comparison))
     for group in FIXTURE["groups"]:
         if (group["text"], group["language"]) == (case["text"], case["language"]):
             reviewed_group(comparison, group)
@@ -137,13 +138,12 @@ def test_complete_real_layer_native_reader_and_predecessor_identity(case):
     shape(core, layer)
     assert canonical_hash(predecessor_core(core)) == case["core_sha256"]
     preserved(layer, case)
-    comparison = predecessor_layer(layer)
+    comparison = before_reading_layer(predecessor_layer(layer))
     assert {
         sid: segment.get("translation") for sid, segment in comparison["segments"].items()
     } == case["prose"]
-    ledger = json.loads(
-        (ROOT / "languages" / case["language"] / "translation-provenance.json").read_text()
-    )
+    relative = f"languages/{case['language']}/translation-provenance.json"
+    ledger = before_reading_object(relative, json.loads((ROOT / relative).read_text()))
     rows = [row for row in ledger["sites"] if row["text"] == case["text"]]
     assert predecessor_rows(core, layer, rows) == case["provenance"]
     base, target, tables = compact(core, layer)
@@ -366,9 +366,8 @@ def divine_prose_and_target(layer, rows, case):
 @pytest.mark.parametrize("fault", ["prose-initial", "target-digest", "origin"])
 def test_divine_prose_initial_and_exact_matching_provenance_reject_then_recover(case, fault):
     core, layer = load(case)
-    ledger = json.loads(
-        (ROOT / "languages" / case["language"] / "translation-provenance.json").read_text()
-    )
+    relative = f"languages/{case['language']}/translation-provenance.json"
+    ledger = before_reading_object(relative, json.loads((ROOT / relative).read_text()))
     rows = [row for row in ledger["sites"] if row["text"] == case["text"]]
     saved_layer, saved_ledger = deepcopy(layer), deepcopy(ledger)
     shape(core, layer)

@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from anne_epistle_fixture import TEXT as ANNE_TEXT
 from anne_epistle_fixture import predecessor_layer
 from edition_revision_fixture import before_edition_layer, before_rubric_caption_revision
 from possessive_sweep_b1_successor_fixture import before_possessive_b1_layer
@@ -135,8 +136,10 @@ def test_all160_existing_contexts_keep_their_own_realizations():
                 == []
             )
             assert interlinear.check(expand_core(core), enrich_layer(core, layer)) == []
-            layer = before_possessive_b2_layer(before_edition_layer(layer))
-            layer = before_possessive_b1_layer(layer)
+            # The Anne projection validates its complete current layer before reversing it.
+            if row["text"] != ANNE_TEXT:
+                layer = before_possessive_b2_layer(before_edition_layer(layer))
+                layer = before_possessive_b1_layer(layer)
             assert occurrence_target(core, layer, row) == row["targets"][language]
 
 
@@ -429,7 +432,7 @@ def occurrence_target(core, layer, row):
     if key in PROJECTION_HISTORY:
         return current_projection_predecessor(core, layer, row, PROJECTION_HISTORY[key])
     comparison = layer
-    if row["text"] == "proprium.sanctae-annae-matris-beatae-mariae-virginis-epistola":
+    if row["text"] == ANNE_TEXT:
         assert language_packs.check_core(core) == []
         category, slug = core["id"].split(".", 1)
         path = ROOT / "languages" / layer["language"] / "texts" / category / (slug + ".json")
@@ -456,7 +459,7 @@ def occurrence_target(core, layer, row):
 @pytest.mark.parametrize("language", ["pl", "en"])
 @pytest.mark.parametrize("fault", ["group", "prose", "about"])
 def test_anne_shared_projection_rejects_changed_current_layer_and_recovers(language, fault):
-    text = "proprium.sanctae-annae-matris-beatae-mariae-virginis-epistola"
+    text = ANNE_TEXT
     row = next(r for r in DATA["occurrences"] if r["text"] == text and r["word"]["id"] == "w207")
     core, layer = store.core(ROOT, text), store.raw_layer(ROOT, language, text)
     saved_core, saved_layer = deepcopy(core), deepcopy(layer)

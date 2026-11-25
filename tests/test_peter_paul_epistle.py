@@ -50,7 +50,7 @@ def test_contextual_pronoun_genders_preserve_the_referents():
 def test_polish_clitic_and_accusative_subject_have_complete_realizations():
     data = layer("pl")
     assert group(data, ["w033", "w034"])["gloss"] == "Gdy go"
-    assert group(data, ["w154", "w155", "w156"])["gloss"] == "że widzi widzenie"
+    assert group(data, ["w154", "w155", "w156"])["gloss"] == "że ma widzenie"
     assert group(data, ["w076"])["reason"] == "inflection"
     assert data["words"]["w078"]["gloss"] == "spał"
 

@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_edition_value
 
 from build_reader import bibliography, store
 from build_reader.emit import Table, core_artifact, expand, language_artifact, lexicon_slice
@@ -405,6 +406,12 @@ def test_all_prose_rubrics_and_provenance_remain_exact_without_status_renewal(ba
     expected = deepcopy(FIXTURE["preserved_layers"][language])
     for segment, narrative in FIXTURE["rubric_successors"][language].items():
         expected[segment]["narrative"] = narrative
+    relative = f"languages/{language}/texts/{TEXT.replace('.', '/', 1)}.json"
+    for segment, row in expected.items():
+        if "narrative" in row:
+            row["narrative"] = current_edition_value(
+                relative, ["segments", segment, "narrative"], row["narrative"]
+            )
     assert actual == expected
     rows = [
         r

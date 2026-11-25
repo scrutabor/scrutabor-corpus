@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from edition_revision_fixture import current_edition_caption
 from provenance_successor_fixture import assert_protection_scope
 
 from build_reader import store
@@ -106,6 +107,7 @@ def text_id(row):
 
 
 # --- word captions ------------------------------------------------------------------------------
+PL_SALVATION = "Jego prawica i święte ramię przyniosły Mu zbawienie"
 # (tag, language, text, word, Latin form, selected caption, predecessor caption)
 CAPTIONS: list[tuple[Any, ...]] = [
     ("salvation", "pl", INTROIT, "w020", "Salvávit", "Zbawiła", "przyniosła zwycięstwo"),
@@ -121,10 +123,15 @@ CAPTIONS: list[tuple[Any, ...]] = [
 
 
 def assert_caption(doc, lay, row):
-    tag, _language, _text, wid, form, gloss, _old = row
+    tag, language, text, wid, form, gloss, _old = row
     assert words(doc)[wid]["form"] == form, f"{tag} Latin context"
-    assert not [g for g in alignments(lay) if wid in g["words"]], f"{tag} caption"
-    assert lay["words"][wid].get("gloss") == gloss, f"{tag} caption"
+    found = [g for g in alignments(lay) if wid in g["words"]]
+    successor = current_edition_caption(language, text, "s01", [wid], gloss)
+    if successor is None:
+        assert not found and lay["words"][wid].get("gloss") == gloss, f"{tag} caption"
+    else:
+        assert found == [successor], f"{tag} caption"
+        assert all("gloss" not in lay["words"][w] for w in successor["words"]), f"{tag} caption"
     assert interlinear.check(doc, lay) == [], f"{tag} interlinear line"
 
 
@@ -142,6 +149,9 @@ def test_predecessor_caption_is_rejected(row):
         lay["words"][row[3]].pop("gloss")
         zero = {"words": [row[3]], "reason": "idiom"}
         lay["segments"]["s01"].setdefault("alignments", []).append(zero)
+    elif row[1:4] == ("pl", INTROIT, "w020"):
+        (selected,) = [g for g in alignments(lay) if row[3] in g["words"]]
+        selected["gloss"] = PL_SALVATION.replace("zbawienie", "zwycięstwo")
     else:
         lay["words"][row[3]]["gloss"] = row[6]
     rejects(assert_caption, doc, lay, row, message=f"{row[0]} caption")
@@ -696,10 +706,15 @@ def test_the_introit_renders_salvation_not_victory(language):
     noun, other = {"pl": ("zbawieni", "zwycięst"), "en": ("salvation", "victory")}[language]
     assert noun in lay["segments"]["s01"]["translation"]
     assert other not in json.dumps(lay, ensure_ascii=False)
-    assert (
-        lay["words"]["w020"]["gloss"] == {"pl": "Zbawiła", "en": "Has worked salvation"}[language]
-    )
-    assert lay["words"]["w021"]["gloss"] == {"pl": "Mu", "en": "for Him"}[language]
+    if language == "pl":
+        members = span(20, 27)
+        assert [g for g in alignments(lay) if set(g["words"]) & set(members)] == [
+            group(members, "w020", PL_SALVATION)
+        ]
+        assert all("gloss" not in lay["words"][wid] for wid in members)
+    else:
+        assert lay["words"]["w020"]["gloss"] == "Has worked salvation"
+        assert lay["words"]["w021"]["gloss"] == "for Him"
 
 
 # --- the Iubiláte of the two identical Offertories ------------------------------------------------
@@ -719,9 +734,10 @@ def test_the_two_jubilate_offertories_read_alike():
     assert pair and pair == [g for g in alignments(b) if g["words"] == ids(20, 21)]
 
 
-# --- no clause-sized group remains in the nine proper texts ---------------------------------------
+# --- the complete inventory of longer groups in the nine proper texts ---------------------------
 # Every group of three or more words left in this Mass, with its caption.
 LONG_GROUPS = {
+    ("pl", INTROIT): [("w020", PL_SALVATION)],
     ("pl", GOSPEL): [("w122", "Nie będzie bowiem mówił")],
     ("en", INTROIT): [("w025", "His holy arm"), ("w044", "forever and ever")],
     ("pl", COLLECT): [("w005", "jednoczysz w jednej woli")],
@@ -851,7 +867,7 @@ def with_caption(lay, wid, caption):
 
 # (language, text, word, caption, target text before the opening, target opening)
 CAP_SITES = [
-    ("pl", INTROIT, "w020", "Zbawiła", "alleluja, alleluja. ", "Jego prawica"),
+    ("pl", INTROIT, "w020", PL_SALVATION, "alleluja, alleluja. ", "Jego prawica"),
     ("en", INTROIT, "w020", "Has worked salvation", "alleluia, alleluia. ", "His right hand"),
     ("en", EPISTLE, "w002", "Every excellent gift", "Dearly beloved: ", "Every excellent gift"),
     ("en", EPISTLE, "w039", "And let", "my dearest brothers. ", "And let every man"),

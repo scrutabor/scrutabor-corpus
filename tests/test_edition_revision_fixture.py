@@ -17,6 +17,7 @@ from edition_revision_fixture import (
     OWNER_FILES,
     PUBLISHED_FILES,
     PUBLISHED_LAYER_CHANGES,
+    READING_FILES,
     REVIEW_FILES,
     RUBRIC_CAPTION_FILES,
     SOURCE_SCOPE_FILES,
@@ -25,6 +26,7 @@ from edition_revision_fixture import (
     before_edition_object,
     before_edition_revision,
     before_edition_target_row,
+    before_reading_revision,
     current_edition_caption,
     current_edition_target_sha,
     current_edition_value,
@@ -90,14 +92,27 @@ def test_scope_is_nonempty_and_names_each_declared_subject_once():
         "texts/psalmi/118-he.json",
     }
     assert sum(len(entry.get("changes", ())) for entry in RUBRIC_CAPTION_FILES.values()) == 281
-    assert len(FILES) == 373
-    assert len(LAYER_CHANGES) == 332
-    assert len(TRANSLATIONS) == 150
+    assert len(READING_FILES) == 1723
+    assert len(FILES) == 1897
+    assert len(LAYER_CHANGES) == 1856
+    assert len(TRANSLATIONS) == 232
     assert set(LAYER_CHANGES) <= set(FILES)
     for relative, changes in LAYER_CHANGES.items():
         assert relative.startswith("languages/") and "/texts/" in relative
         assert len(changes) == len({tuple(change["path"]) for change in changes})
         assert all(change.get("before") != change.get("after") for change in changes)
+
+
+@pytest.mark.parametrize("relative", sorted(READING_FILES))
+def test_reading_revision_restores_its_exact_published_input(relative):
+    raw = (ROOT / relative).read_bytes()
+    previous = before_reading_revision(relative, raw)
+    entry = READING_FILES[relative]
+    assert hashlib.sha256(raw).hexdigest() == entry["current"]
+    assert hashlib.sha256(previous).hexdigest() == entry["previous"]
+    assert before_reading_revision(relative, previous) is previous
+    damaged = raw + b" "
+    assert before_reading_revision(relative, damaged) is damaged
 
 
 @pytest.mark.parametrize("relative", sorted(FILES))

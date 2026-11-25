@@ -251,7 +251,7 @@ def test_english_local_group_preserves_protection_and_earlier_group(documents, d
 def test_persona_explanation_passes_native_prose_and_rejects_old_punctuation(documents, language):
     layer = documents["layers"][language]
     about = {
-        "pl": "Alleluia formularza „Świętego Józefa Rzemieślnika” w Mszale Rzymskim z 1962 roku. "
+        "pl": "Alleluja formularza „Świętego Józefa Rzemieślnika” w Mszale Rzymskim z 1962 roku. "
         "Pierwszy werset przemawia w imieniu świętego Józefa. "
         "Drugi jest prośbą Kościoła skierowaną do niego.",
         "en": "The alleluia of the formulary “Saint Joseph the Worker” in the 1962 Roman Missal. "

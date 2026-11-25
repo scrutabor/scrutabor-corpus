@@ -8,7 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import before_rubric_caption_layer
+from edition_revision_fixture import before_rubric_caption_layer, current_edition_value
 from english_register_successor_fixture import (
     before_english_register_ledger,
     before_english_register_prose,
@@ -103,6 +103,13 @@ def frame_readback(core, layer, frame):
 
 
 def preserved(layer, case):
+    relative = f"languages/{case['language']}/texts/{case['text'].replace('.', '/', 1)}.json"
+    prose = {"s01": layer["segments"]["s01"]["translation"]}
+    if case["language"] == "en":
+        prose = before_english_register_prose(case["text"], prose)
+    assert prose["s01"] == current_edition_value(
+        relative, ["segments", "s01", "translation"], case["prose"]["s01"]
+    ), "unchanged sixth remainder"
     layer = before_possessive_b3_layer(before_rubric_caption_layer(layer))
     layer = before_english_register_text_layer(layer, "unchanged sixth remainder")
     comparison = deepcopy(layer)

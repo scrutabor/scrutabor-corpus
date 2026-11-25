@@ -11,6 +11,7 @@ import pytest
 import witness_header_fixture as headers
 from chant_fragment_fixture import before_chant_graph, before_chant_registry
 from documentary_successor_fixture import before_language_successors
+from edition_revision_fixture import before_reading_object
 from lateran_epistle_source_fixture import before_lateran_graph, before_lateran_registry
 from possessive_sweep_b4_successor_fixture import before_possessive_b4_object
 from requiem_successor_fixture import before_requiem_graph
@@ -770,7 +771,7 @@ def predecessor_target_input(relative, value):
     comparison = (
         before_language_successors(relative, value)
         if relative in CURRENT_LEDGER_PREDECESSORS
-        else deepcopy(before_possessive_b4_object(relative, value))
+        else deepcopy(before_possessive_b4_object(relative, before_reading_object(relative, value)))
     )
     if relative in CURRENT_LEDGER_PREDECESSORS:
         current = CURRENT_LEDGER_PREDECESSORS[relative]

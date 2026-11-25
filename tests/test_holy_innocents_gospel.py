@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_edition_target_sha
 from gospel_delivery_fixture import current_gospel_selected_hash
 
 from build_reader import bibliography_bindings as bb
@@ -206,9 +207,9 @@ def test_prose_provenance_is_current_but_still_working(language, prefix):
         False,
     )
     if language == "pl":
-        assert (
-            site["target_sha256"]
-            == "1000dddfac276ad205da19d9b7a32b9bfe5f1e734704f267b848206ef533ced4"
+        original_target = "1000dddfac276ad205da19d9b7a32b9bfe5f1e734704f267b848206ef533ced4"
+        assert site["target_sha256"] == current_edition_target_sha(
+            TEXT, language, "s01", original_target
         )
     else:
         prose = layer["segments"]["s01"]["translation"]

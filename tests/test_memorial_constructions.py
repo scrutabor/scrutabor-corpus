@@ -78,7 +78,7 @@ def test_polish_possessive_and_correlative_keep_their_government():
     _, simili = documents("pl", "ordinarium.simili-modo")
     assert [simili["words"][word]["gloss"] for word in ("w057", "w058", "w059")] == [
         "na",
-        "moją",
+        "Moją",
         "pamiątkę",
     ]
     _, cathedra = documents("pl", CATHEDRA)

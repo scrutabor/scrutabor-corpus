@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_edition_value
 from reader_arrow_successor_fixture import before_arrow_use
 from test_translation_provenance import initialize_all, set_basis, set_origin, write_text
 
@@ -72,7 +73,10 @@ def test_lateran_reuse_keeps_its_distinct_source_and_working_state(baseline):
     assert row["source_sha256"] != lent["after"]["source_sha256"]
     assert row["target_sha256"] == lent["after"]["target_sha256"]
     core, layers = store.load(ROOT, expected["text"])
-    assert store.raw_layer(ROOT, "en", expected["text"]) == expected["after"]
+    wanted = deepcopy(expected["after"])
+    relative = f"languages/en/texts/{expected['text'].replace('.', '/', 1)}.json"
+    wanted["about"] = current_edition_value(relative, ["about"], wanted["about"])
+    assert store.raw_layer(ROOT, "en", expected["text"]) == wanted
     assert layers["en"]["segments"]["s01"]["translation"] == lent["translation"]
     segment = next(s for s in core["segments"] if s["id"] == "s01")
     assert len(segment["words"]) == 32

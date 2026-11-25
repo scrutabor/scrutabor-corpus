@@ -376,7 +376,7 @@ def test_the_referenced_texts_name_their_lent_use():
     for language in ("en", "pl"):
         assert "115" not in layer(language, EP3SEC)["about"]
     assert (
-        "God, who by fasting restrains"
+        "God, who through our bodily fasting restrains"
         in layer("en", "ordinarium.praefatio-quadragesimae")["about"]
     )
 

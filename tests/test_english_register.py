@@ -692,14 +692,15 @@ def test_baptist_secret_retains_due_honor_and_identifies_the_son_after_both_acti
     words = {w["id"]: w for s in core["segments"] for w in s.get("words", [])}
     assert [words[w]["lemma"] for w in ["w008", "w009"]] == ["honor", "debeo"]
     prose = layer["segments"]["s01"]["translation"]
-    assert "celebrating with due honor the birth of him" in prose
+    assert "duly honoring the birth of the one" in prose
     assert (
-        "both foretold the coming of the Savior of the world and made His presence known" in prose
+        "foretold the coming of Your Son, our Lord Jesus Christ, the Savior of the world, "
+        "and pointed Him out when He came" in prose
     )
-    assert "known: our Lord Jesus Christ, Your Son. He lives and reigns with You" in prose
+    assert "when He came. He lives and reigns with You" in prose
     assert "You live and reign" not in prose
     # Plural altaria can name one altar; grammar alone must not force a rewrite.
-    assert "Your altar with gifts" in prose and words["w004"]["morph"]["number"] == "pl"
+    assert "Your altars with gifts" in prose and words["w004"]["morph"]["number"] == "pl"
     assert layer["segments"]["s02"]["translation"] == "forever and ever."
     assert layer["segments"]["s03"]["translation"] == "Amen."
 

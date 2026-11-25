@@ -8,7 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import before_edition_layer
+from edition_revision_fixture import before_edition_layer, before_reading_object
 from english_register_successor_fixture import before_english_register_text_layer
 from possessive_sweep_b3_successor_fixture import before_possessive_b3_layer
 
@@ -116,9 +116,8 @@ def test_complete_layers_preserve_context_and_reader_roundtrip(case):
     assert canonical_hash(core) == case["core_sha256"]
     shape(core, layer)
     preserved(layer, case)
-    ledger = json.loads(
-        (ROOT / "languages" / case["language"] / "translation-provenance.json").read_text()
-    )
+    relative = f"languages/{case['language']}/translation-provenance.json"
+    ledger = before_reading_object(relative, json.loads((ROOT / relative).read_text()))
     assert [row for row in ledger["sites"] if row["text"] == case["text"]] == case["provenance"]
     base, target, tables = compact(core, layer)
     want_core, want_layers = emit._strip(

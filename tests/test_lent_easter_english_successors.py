@@ -12,6 +12,7 @@ from communicantes_prose_successor_fixture import (
     before_communicantes_bytes,
     before_communicantes_ledger,
 )
+from edition_revision_fixture import before_reading_revision
 from lent_easter_successor_fixture import (
     DATA,
     RULE,
@@ -96,10 +97,9 @@ def test_food_caption_provider_backmap(case):
     core, layer = subject(case)
     assert check_layer(core, layer, store.layer_path(ROOT, "en", case["text"])) == []
     assert_food(case, core, layer)
-    assert (
-        hashlib.sha256(store.layer_path(ROOT, "en", case["text"]).read_bytes()).hexdigest()
-        == (case["layer_after_sha256"])
-    )
+    path = store.layer_path(ROOT, "en", case["text"])
+    previous = before_reading_revision(path.relative_to(ROOT).as_posix(), path.read_bytes())
+    assert hashlib.sha256(previous).hexdigest() == (case["layer_after_sha256"])
     for source, expected in zip(core["segments"], case["segments"], strict=True):
         assert [word for provider in providers(source, layer) for word in provider["words"]] == (
             [word[0] for word in expected["words"]]

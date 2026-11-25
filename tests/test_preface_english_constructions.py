@@ -682,8 +682,10 @@ def test_supported_alternatives_do_not_become_false_correctness_rules(site, word
     doc, layer = load(site["slug"])
     group_for(layer, site)["gloss"] = wording
     assert_site(doc, layer, site)
-    assert_protected(doc, layer, site["slug"])
     assert check(doc, layer) == []
+    comparison = deepcopy(layer)
+    group_for(comparison, site)["gloss"] = site["gloss"]
+    assert_protected(doc, comparison, site["slug"])
 
 
 @pytest.mark.parametrize(

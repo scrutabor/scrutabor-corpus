@@ -264,7 +264,9 @@ def test_communion_clause_prose_and_card_agree_on_the_future_perfect():
     (verb,) = [word for word in latin(core, segment) if word["id"] == "w035"]
     assert verb["form"] == "sumpsérimus" and verb["morph"]["tense"] == "futperf"
     assert layer["segments"][segment]["translation"] == expected
-    assert layer["words"]["w035"] == {"gloss": "will have received", "explanation": COMMUNION_CARD}
+    relative = f"languages/en/texts/{text.replace('.', '/', 1)}.json"
+    explanation = current_edition_value(relative, ["words", "w035", "explanation"], COMMUNION_CARD)
+    assert layer["words"]["w035"] == {"gloss": "will have received", "explanation": explanation}
     assert "shall" not in layer["words"]["w035"]["explanation"]
 
 

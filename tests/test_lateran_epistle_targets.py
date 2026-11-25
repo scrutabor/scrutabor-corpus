@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_reading_layer
 from lateran_epistle_fixture import (
     DATA,
     TEXT,
@@ -25,7 +26,7 @@ DECISIONS = [pytest.param(lang, wid, id=f"{lang}-{wid}") for lang in LANGUAGES f
 
 
 def load(language):
-    return store.core(ROOT, TEXT), store.raw_layer(ROOT, language, TEXT)
+    return store.core(ROOT, TEXT), before_reading_layer(store.raw_layer(ROOT, language, TEXT))
 
 
 def healthy(core, layer):

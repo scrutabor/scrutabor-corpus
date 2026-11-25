@@ -4,6 +4,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_reading_layer
+
 from checks.translation_provenance import canonical_hash
 
 DATA = json.loads(
@@ -13,12 +15,12 @@ TEXT = DATA["text"]
 
 
 def before_lateran_targets(layer, message="complete Lateran target layer"):
-    comparison = deepcopy(layer)
     if layer.get("text") != TEXT:
-        return comparison
+        return deepcopy(layer)
+    comparison = deepcopy(before_reading_layer(layer))
     language = layer.get("language", layer.get("lang"))
     case = DATA["layers"][language]
-    assert canonical_hash(layer) == case["after_sha256"], message
+    assert canonical_hash(comparison) == case["after_sha256"], message
     for change in reversed(case["changes_after_negative"]):
         parts = change["pointer"].strip("/").split("/")
         parent = comparison

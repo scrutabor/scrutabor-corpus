@@ -6,6 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_reading_layer
 
 from build_reader.bibliography_bindings import selected_text
 from build_reader.emit import Table, core_artifact, expand, language_artifact
@@ -52,6 +53,8 @@ def parent_at(doc, pointer):
 
 def historical_objects(documents):
     result = deepcopy(documents)
+    for path in LAYERS.values():
+        result[path] = before_reading_layer(result[path])
     # Undo the later, exact Polish clarity changes before the frozen original
     # 47-operation inverse. Neither its operations nor historical hashes move.
     for operation in reversed(CLARITY["operations"]):

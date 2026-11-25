@@ -8,7 +8,11 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import before_edition_layer
+from edition_revision_fixture import (
+    before_edition_layer,
+    before_reading_layer,
+    before_reading_object,
+)
 from negative_government_fixture import predecessor_layer, predecessor_rows
 from possessive_sweep_b4_successor_fixture import before_possessive_b4_layer
 
@@ -177,11 +181,10 @@ def test_complete_real_layer_native_reader_and_predecessor_identity(case):
     preserved(layer, case)
     assert {
         sid: segment.get("translation")
-        for sid, segment in predecessor_layer(layer)["segments"].items()
+        for sid, segment in predecessor_layer(before_reading_layer(layer))["segments"].items()
     } == case["prose"]
-    ledger = json.loads(
-        (ROOT / "languages" / case["language"] / "translation-provenance.json").read_text()
-    )
+    relative = f"languages/{case['language']}/translation-provenance.json"
+    ledger = before_reading_object(relative, json.loads((ROOT / relative).read_text()))
     assert (
         predecessor_rows([row for row in ledger["sites"] if row["text"] == case["text"]])
         == case["provenance"]
@@ -323,9 +326,10 @@ def test_companion_scalar_rejects_predecessor_then_same_layer_recovers(case):
 
 @pytest.mark.parametrize("frame,fault", FRAMES)
 def test_predicate_subject_agent_negation_and_state_frames_recover(frame, fault):
-    core, layer = load(frame)
+    core, current = load(frame)
+    shape(core, current)
+    layer = before_reading_layer(current)
     saved = deepcopy(layer)
-    shape(core, layer)
     frame_readback(core, layer, frame)
     kind, wid, wrong = fault
     try:
@@ -407,12 +411,12 @@ def finite_prose_and_target(layer, rows, case):
 @pytest.mark.parametrize("fault", ["prose-companion", "target-digest", "origin"])
 def test_one_prose_companion_and_exact_matching_provenance_recover(case, fault):
     core, layer = load(case)
-    ledger = json.loads(
-        (ROOT / "languages" / case["language"] / "translation-provenance.json").read_text()
-    )
+    relative = f"languages/{case['language']}/translation-provenance.json"
+    ledger = before_reading_object(relative, json.loads((ROOT / relative).read_text()))
     rows = [row for row in ledger["sites"] if row["text"] == case["text"]]
-    saved_layer, saved_ledger = deepcopy(layer), deepcopy(ledger)
     shape(core, layer)
+    layer = before_reading_layer(layer)
+    saved_layer, saved_ledger = deepcopy(layer), deepcopy(ledger)
     finite_prose_and_target(layer, rows, case)
     selected = next(row for row in rows if row["segment"] == case["segment"])
     try:

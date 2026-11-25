@@ -8,7 +8,11 @@ from pathlib import Path
 import documentary_successor_fixture as documentary
 import pytest
 from adoro_te_devote_successor_fixture import before_adoro_bytes
-from edition_revision_fixture import before_caption_revision, before_edition_layer
+from edition_revision_fixture import (
+    before_caption_revision,
+    before_edition_layer,
+    before_reading_revision,
+)
 from polish_contract_fixture import (
     before_polish_contract_bytes,
     before_polish_contract_ledger,
@@ -191,7 +195,10 @@ def test_actual_polish_regions_keep_source_and_provider_backmap(case):
         == (case["source_raw_sha256"])
     )
     comparison_raw = before_polish_contract_bytes(
-        case["layer"], before_caption_revision(case["layer"], path.read_bytes())
+        case["layer"],
+        before_caption_revision(
+            case["layer"], before_reading_revision(case["layer"], path.read_bytes())
+        ),
     )
     assert hashlib.sha256(comparison_raw).hexdigest() == case["layer_after_sha256"]
     if case["id"] == "lent-postcommunion":
@@ -209,7 +216,8 @@ def test_actual_polish_regions_keep_source_and_provider_backmap(case):
 def test_exact_layer_inverses_keep_all_unselected_material(case):
     raw = (ROOT / case["layer"]).read_bytes()
     comparison = before_polish_contract_bytes(
-        case["layer"], before_caption_revision(case["layer"], raw)
+        case["layer"],
+        before_caption_revision(case["layer"], before_reading_revision(case["layer"], raw)),
     )
     assert hashlib.sha256(comparison).hexdigest() == case["layer_after_sha256"]
     for operation in reversed(case["layer_inverse_operations"]):

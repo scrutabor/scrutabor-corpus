@@ -6,6 +6,7 @@ import shutil
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_edition_value
 
 from build_reader import emit, store
 from checks import formularies, prose
@@ -253,7 +254,8 @@ def test_seven_reused_contexts_name_both_formularies_without_body_replacement(la
             + " of the formularies “Fifth Sunday after Easter” and “Vigil of the Ascension "
             "of the Lord” in the 1962 Roman Missal."
         )
-    assert layer["about"] == expected
+    relative = f"languages/{lang}/texts/{text.replace('.', '/', 1)}.json"
+    assert layer["about"] == current_edition_value(relative, ["about"], expected)
     assert prose.check(layer) == []
     doc = read(ROOT / PARENT)
     part = next(c for c in doc["components"] if c["key"] == role)

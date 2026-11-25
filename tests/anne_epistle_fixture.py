@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 from anne_documentary_fixture import target_core
+from edition_revision_fixture import before_reading_layer, current_edition_value
 
 from checks.translation_provenance import canonical_hash, source_payload
 
@@ -53,8 +54,11 @@ def predecessor_layer(layer, message="Anne complete target layer"):
     if layer["text"] != TEXT:
         return deepcopy(layer)
     language = layer["language"]
-    require(layer == FIXTURE["after_layers"][language], message)
-    restored = inverse(layer, FIXTURE["layer_operations"][language])
+    expected = deepcopy(FIXTURE["after_layers"][language])
+    relative = f"languages/{language}/texts/{TEXT.replace('.', '/', 1)}.json"
+    expected["about"] = current_edition_value(relative, ["about"], expected["about"])
+    require(layer == expected, message)
+    restored = inverse(before_reading_layer(layer), FIXTURE["layer_operations"][language])
     require(
         canonical_hash(restored) == FIXTURE["before_layer_sha256"][language],
         "Anne predecessor target layer",

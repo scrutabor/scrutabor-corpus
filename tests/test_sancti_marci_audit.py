@@ -13,6 +13,7 @@ from functools import cache
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_edition_value
 from possessive_sweep_b4_successor_fixture import before_possessive_b4_layer
 
 from build_reader import store
@@ -511,7 +512,9 @@ ABOUT = {
 
 @pytest.mark.parametrize("key", sorted(ABOUT), ids=[f"{k[0]}-{k[1]}" for k in sorted(ABOUT)])
 def test_selected_about_note(key):
-    assert layer(*key)["about"] == ABOUT[key]
+    language, text = key
+    relative = f"languages/{language}/texts/{text.replace('.', '/', 1)}.json"
+    assert layer(*key)["about"] == current_edition_value(relative, ["about"], ABOUT[key])
 
 
 def consumers(text):
@@ -566,24 +569,35 @@ def test_shared_note_names_its_consumers_not_one_home(key):
     rejects(named_uses, language, text, note, extra, message="about names every consumer")
 
 
-LATIN_PART = {
-    "introitus": "introitus",
-    "collecta": "collecta",
-    "epistola": "epistola",
-    "alleluia": "alleluia",
-    "evangelium": "evangelium",
-    "offertorium": "offertorium",
-    "secreta": "secreta",
-    "communio": "communio",
-    "postcommunio": "postcommunio",
+PART_NAMES = {
+    "pl": {
+        "introitus": "Introit",
+        "collecta": "Kolekta",
+        "epistola": "Czytanie",
+        "alleluia": "Alleluja",
+        "evangelium": "Ewangelia",
+        "offertorium": "Antyfona na ofiarowanie",
+        "secreta": "Sekreta",
+        "communio": "Antyfona na Komunię",
+        "postcommunio": "Pokomunia",
+    },
+    "en": {
+        "introitus": "The Introit",
+        "collecta": "The Collect",
+        "epistola": "The Epistle",
+        "alleluia": "The alleluia",
+        "evangelium": "The Gospel",
+        "offertorium": "The Offertory",
+        "secreta": "The Secret",
+        "communio": "The Communion antiphon",
+        "postcommunio": "The Postcommunion",
+    },
 }
 
 
 def part_name(text, note, language):
     role = text.rsplit("-", 1)[1]
-    expected = LATIN_PART[role]
-    head = note.split(" ", 2)[1] if language == "en" else note.split(" ", 1)[0]
-    assert head.lower() == expected, "Latin part name"
+    assert note.startswith(PART_NAMES[language][role] + " "), "localized part name"
 
 
 MARK_NOTES = [
@@ -606,22 +620,17 @@ MARK_NOTES = [
 
 
 @pytest.mark.parametrize("key", MARK_NOTES, ids=[f"{k[0]}-{k[1]}" for k in MARK_NOTES])
-def test_notes_use_the_latin_part_name(key):
+def test_notes_use_the_localized_part_name(key):
     language, text = key
     note = layer(language, text)["about"]
     part_name(text, note, language)
-    vernacular = {
-        "pl": {"collecta": "Kolekta", "postcommunio": "Modlitwa"},
-        "en": {"collecta": "The collect", "postcommunio": "The postcommunion"},
-    }[language]
     role = text.rsplit("-", 1)[1]
-    if role in vernacular:
-        rest = note.split(" ", 2)[2] if language == "en" else note.split(" ", 1)[1]
-        wrong = vernacular[role] + " " + rest
-        rejects(part_name, text, wrong, language, message="Latin part name")
+    name = PART_NAMES[language][role]
+    different = PART_NAMES[language]["collecta" if role != "collecta" else "postcommunio"]
+    rejects(part_name, text, different + note[len(name) :], language, message="localized part name")
 
 
-def test_the_latin_part_name_is_the_corpus_majority():
+def test_the_localized_part_name_is_the_corpus_majority():
     roles = (
         "introitus",
         "collecta",
@@ -633,7 +642,7 @@ def test_the_latin_part_name_is_the_corpus_majority():
     )
     vernacular = {
         "pl": re.compile(
-            r"^(Introit\b|Antyfona|Kolekta|Epistoła|Lekcja|Ewangelia|Sekreta|Modlitwa|Pokomunia)"
+            r"^(Introit\b|Antyfona|Kolekta|Epistoła|Czytanie|Lekcja|Ewangelia|Sekreta|Modlitwa|Pokomunia)"
         ),
         "en": re.compile(
             r"^The (?:\w+ )?"
@@ -653,7 +662,7 @@ def test_the_latin_part_name_is_the_corpus_majority():
                 latin += 1
             elif vernacular[language].match(note):
                 other += 1
-        assert latin > 2 * other > 0, (language, latin, other)
+        assert other > 2 * latin, (language, latin, other)
 
 
 # --- the Greater-Litanies conclusion (SM-LAT-1) -----------------------------------------------

@@ -126,6 +126,9 @@ def assert_context(core, layer):
     expected["words"]["w074"]["gloss"] = current_edition_value(
         relative, ["words", "w074", "gloss"], expected["words"]["w074"]["gloss"]
     )
+    expected["words"]["w038"]["explanation"] = current_edition_value(
+        relative, ["words", "w038", "explanation"], expected["words"]["w038"]["explanation"]
+    )
     assert expected["words"]["w079"]["gloss"] == "Amen"
     assert caption_frame(layer) == expected, "Communicantes retained captions"
 

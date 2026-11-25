@@ -4,6 +4,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_reading_layer
+
 from build_reader.layers import enrich_layer, expand_core
 from checks import interlinear, language_packs, prose
 from checks.lint import lint_text
@@ -30,7 +32,9 @@ def reviewed_rosary(core, layer):
     assert canonical_hash(core) == DATA["core_after_sha256"], "complete Rosary core"
     assert layer.get("language") in DATA["layers"], "complete Rosary layer"
     case = DATA["layers"][layer["language"]]
-    assert canonical_hash(layer) == case["after_sha256"], "complete Rosary layer"
+    assert canonical_hash(before_reading_layer(layer)) == case["after_sha256"], (
+        "complete Rosary layer"
+    )
 
 
 def predecessor_rosary_core(core):
@@ -53,8 +57,10 @@ def predecessor_rosary_layer(layer):
         return deepcopy(layer)
     assert layer.get("language") in DATA["layers"], "complete Rosary layer"
     case = DATA["layers"][layer["language"]]
-    assert canonical_hash(layer) == case["after_sha256"], "complete Rosary layer"
-    result = deepcopy(layer)
+    assert canonical_hash(before_reading_layer(layer)) == case["after_sha256"], (
+        "complete Rosary layer"
+    )
+    result = deepcopy(before_reading_layer(layer))
     for wid, before in case["before"]["words"].items():
         after = case["after"]["words"][wid]
         if before != after:

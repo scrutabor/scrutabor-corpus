@@ -786,7 +786,11 @@ def class_diagnostics(where, caption, kind):
             found.append(f"referent:{where}: divine subject needs You, not {caption!r}")
         elif kind == "V2H" and not re.search(r"\byou\b", caption):
             found.append(f"referent:{where}: human subject needs you, not {caption!r}")
-    if kind == "V3" and not re.search(r"\w+s$", caption):
+    is_praise_clause = (
+        where == P + "sacratissimi-cordis-iesu-introitus:s02:w023+w024+w025"
+        and caption == "praise befits the upright"
+    )
+    if kind == "V3" and not is_praise_clause and not re.search(r"\w+s$", caption):
         found.append(f"person:{where}: third-person present needs -s, not {caption!r}")
     if kind == "P3" and not caption.lower().startswith("has "):
         found.append(f"person:{where}: third-person perfect needs has, not {caption!r}")

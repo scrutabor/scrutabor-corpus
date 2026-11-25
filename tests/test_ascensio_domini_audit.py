@@ -26,6 +26,7 @@ from ascension_postcommunion_wording import (
     current_verse_phrase,
     is_current_postcommunion_subject,
 )
+from edition_revision_fixture import current_edition_caption, current_edition_value
 from english_register_successor_fixture import before_english_register_allowance_frame
 from provenance_successor_fixture import assert_protection_scope
 
@@ -231,19 +232,22 @@ ABSORBED_CAPTIONS = {
 
 
 def assert_absorbed_caption(lay, row, expected):
-    tag, _language, _text, wid, _form, gloss, _old = row
+    tag, _language, _text, wid, _form, _gloss, _old = row
     assert [g for g in alignments(lay) if wid in g["words"]] == [expected], f"{tag} caption"
-    assert expected["gloss"].startswith(f"{gloss} "), f"{tag} caption"
     assert all("gloss" not in lay["words"][w] for w in expected["words"]), f"{tag} caption"
 
 
 def assert_caption(doc, lay, row):
-    tag, _language, text, wid, form, gloss, _old = row
+    tag, language, text, wid, form, gloss, _old = row
     assert words(doc)[wid]["form"] == form, f"{tag} Latin context"
     if is_current_postcommunion_subject(row):
         assert_postcommunion_subject(doc, lay, row)
     elif (text, wid) in ABSORBED_CAPTIONS:
-        assert_absorbed_caption(lay, row, ABSORBED_CAPTIONS[(text, wid)])
+        expected = ABSORBED_CAPTIONS[(text, wid)]
+        assert expected["gloss"].startswith(f"{gloss} "), f"{tag} caption"
+        assert_absorbed_caption(lay, row, expected)
+    elif successor := current_edition_caption(language, text, "s01", [wid], gloss):
+        assert_absorbed_caption(lay, row, successor)
     else:
         assert not [g for g in alignments(lay) if wid in g["words"]], f"{tag} caption"
         assert lay["words"][wid].get("gloss") == gloss, f"{tag} caption"
@@ -279,6 +283,14 @@ def test_predecessor_caption_is_rejected(row):
     elif (row[2], row[3]) in ABSORBED_CAPTIONS:
         (absorbed,) = [g for g in alignments(lay) if row[3] in g["words"]]
         absorbed["gloss"] = absorbed["gloss"].replace(row[5], row[6], 1)
+    elif current_edition_caption(row[1], row[2], "s01", [row[3]], row[5]):
+        (selected,) = [g for g in alignments(lay) if row[3] in g["words"]]
+        current, previous = {
+            (COLLECT, "w007"): ("dziś", row[6]),
+            (GOSPEL, "w004"): ("siedziało", row[6].removeprefix("gdy ")),
+        }.get((row[2], row[3]), (row[5], row[6]))
+        assert selected["gloss"].count(current) == 1
+        selected["gloss"] = selected["gloss"].replace(current, previous, 1)
     else:
         lay["words"][row[3]]["gloss"] = row[6]
     assert lay != pristine, "nonvacuous caption mutation"
@@ -289,11 +301,12 @@ def test_predecessor_caption_is_rejected(row):
 
 def test_the_polish_collect_reads_its_subject_in_the_nominative():
     lay = layer("pl", COLLECT)
-    line = [lay["words"][w]["gloss"] for w in ids(*range(6, 17))]
-    assert line == [
-        *("którzy", "w dzisiejszym", "dniu", "Jednorodzony", "Twój", "Odkupiciel", "nasz"),
-        *("do", "nieba", "wstąpił", "wierzymy"),
+    members = ids(*range(6, 17))
+    expected = "którzy wierzymy, że dziś Twój Jednorodzony, nasz Odkupiciel, wstąpił do nieba"
+    assert [g for g in alignments(lay) if set(g["words"]) & set(members)] == [
+        group(members, "w016", expected)
     ]
+    assert all("gloss" not in lay["words"][wid] for wid in members)
     assert (
         "w dzisiejszym dniu Twój Jednorodzony, Odkupiciel nasz, wstąpił"
         in (lay["segments"]["s01"]["translation"])
@@ -679,7 +692,9 @@ ABOUT_IDS = [f"{k[0]}-{k[1].split('.')[-1]}" for k in ABOUTS]
 
 def assert_about(lay, key):
     about = lay["about"]
-    assert about == ABOUTS[key][0], "about note"
+    language, text = key
+    relative = f"languages/{language}/texts/{text.replace('.', '/', 1)}.json"
+    assert about == current_edition_value(relative, ["about"], ABOUTS[key][0]), "about note"
     assert "formular" not in about and "season of the" not in about, "about note"
     assert all(phrase in about for phrase in USES[key]), "about note"
     assert prose.check(lay) == [], "about note"
@@ -774,6 +789,7 @@ NAMED = {
 HISTORICAL_CONTINUATIONS = dict(CONTINUATIONS)
 HISTORICAL_REVIEWED_CAPITALS = dict(REVIEWED_CAPITALS)
 CONTINUATIONS.pop(("en", OFFERTORY, "w001"))
+CONTINUATIONS[("pl", GOSPEL, "w004")] = "gdy jedenastu uczniów siedziało przy stole"
 REVIEWED_CAPITALS.pop(("pl", PREFACE, "w044"))
 
 
@@ -1064,7 +1080,7 @@ CONSUMERS_OF_ULTERIOR = [
 
 def assert_card(entries):
     card = entries["ulterior"]
-    assert card == {"senses": ["ostatni", "najdalszy", "dalszy"]}, "card senses"
+    assert card == {"senses": ["dalszy", "w stopniu najwyższym: najdalszy, ostatni"]}, "card senses"
     assert "kraniec" not in card["senses"], "card senses"
 
 

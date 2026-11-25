@@ -11,6 +11,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_edition_value
 from marian_chant_fixture import FIXTURE, expected_marian_row
 
 from checks import prose
@@ -98,7 +99,8 @@ def test_complete_selected_layer_and_all_canonical_memberships(site):
     assert canonical_hash(source_payload(source)) == FIXTURE["source"][text]["sha256"]
     assert (document["text"], document["language"]) == (text, language)
     assert set(document["segments"]) == {"s01"}
-    assert document["about"] == expected["about"]
+    relative = f"languages/{language}/texts/{text.replace('.', '/', 1)}.json"
+    assert document["about"] == current_edition_value(relative, ["about"], expected["about"])
     assert_memberships(document, ids)
     assert_captions(site, document)
     assert document["segments"][segment]["translation"] == expected["translation"]

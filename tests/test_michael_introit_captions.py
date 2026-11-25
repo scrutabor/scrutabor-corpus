@@ -6,6 +6,7 @@ from hashlib import sha256
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_edition_value
 
 from build_reader import bibliography
 from build_reader.bibliography_bindings import validate_bindings
@@ -85,7 +86,8 @@ def healthy(core, target, language):
     assert check_layer(core, target, ROOT / f"languages/{language}/{PATH}") == []
     assert prose.check(target) == []
     assert problems(target, language) == []
-    assert target["about"] == FIXTURE["about"][language]
+    relative = f"languages/{language}/{PATH}"
+    assert target["about"] == current_edition_value(relative, ["about"], FIXTURE["about"][language])
     assert target["segments"]["s01"]["translation"] == FIXTURE["prose"][language]
     expected_words = {word: {} for word in FIXTURE["old_words"][language]}
     for word, gloss in FIXTURE["direct"][language].items():
@@ -95,6 +97,7 @@ def healthy(core, target, language):
         expected_words[word]["explanation"] = explanation
     assert target["words"] == expected_words
     outside = deepcopy(target)
+    outside["about"] = FIXTURE["about"][language]
     outside["words"] = FIXTURE["old_words"][language]
     outside["segments"]["s01"]["translation"] = FIXTURE["original_prose"][language]
     old = FIXTURE["old_alignments"][language]

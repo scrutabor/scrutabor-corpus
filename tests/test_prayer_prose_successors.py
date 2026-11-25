@@ -6,7 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import current_edition_value
+from edition_revision_fixture import before_reading_revision, current_edition_value
 from english_contract_successor_fixture import (
     before_english_contract_layer,
     before_english_contract_prose,
@@ -348,7 +348,9 @@ def test_exact_layer_and_ledger_byte_inverses_preserve_every_other_field():
             assert differences == [(ord("y"), ord("Y"))] * 5
         assert (ROOT / rule["layer"]).read_bytes() == actual_raw
     polish = DATA["polish_row_subject"]
-    comparison = raw = (ROOT / polish["layer"]).read_bytes()
+    comparison = raw = before_reading_revision(
+        polish["layer"], (ROOT / polish["layer"]).read_bytes()
+    )
     assert hashlib.sha256(raw).hexdigest() == polish["after_sha256"]
     for operation in reversed(polish["literal_operations"]):
         before, after = operation["before"].encode(), operation["after"].encode()
