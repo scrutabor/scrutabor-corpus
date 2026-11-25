@@ -81,13 +81,17 @@ for _relative, _entry in RUBRIC_CAPTION_FILES.items():
 READING_FILES = json.loads(
     (Path(__file__).parent / "fixtures/reading-language-revision.json").read_bytes()
 )["files"]
-for _relative, _entry in READING_FILES.items():
-    if _relative in FILES:
-        assert FILES[_relative]["current"] == _entry["previous"], _relative
-    FILES[_relative] = {
-        "current": _entry["current"],
-        "previous": FILES.get(_relative, _entry)["previous"],
-    }
+COMMUNION_FILES = json.loads(
+    (Path(__file__).parent / "fixtures/communion-readings-revision.json").read_bytes()
+)["files"]
+for _revision in (READING_FILES, COMMUNION_FILES):
+    for _relative, _entry in _revision.items():
+        if _relative in FILES:
+            assert FILES[_relative]["current"] == _entry["previous"], _relative
+        FILES[_relative] = {
+            "current": _entry["current"],
+            "previous": FILES.get(_relative, _entry)["previous"],
+        }
 
 
 def _exact_inverse(entry, raw):
@@ -147,8 +151,17 @@ def before_source_scope_revision(relative, raw):
     return _exact_inverse(entry, raw)
 
 
+def before_communion_revision(relative, raw):
+    """Restore the wording before the antiphon, epistle and title corrections."""
+    entry = COMMUNION_FILES.get(relative)
+    if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
+        return raw
+    return _exact_inverse(entry, raw)
+
+
 def before_reading_revision(relative, raw):
-    """Restore the immediate predecessor of the current language edition."""
+    """Restore the edition preceding the general language revision."""
+    raw = before_communion_revision(relative, raw)
     entry = READING_FILES.get(relative)
     if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
         return raw
@@ -157,7 +170,7 @@ def before_reading_revision(relative, raw):
 
 def before_reading_object(relative, value):
     """Return the preceding edition only for an exact, complete current document."""
-    if relative not in READING_FILES:
+    if relative not in READING_FILES and relative not in COMMUNION_FILES:
         return value
     if "/texts/" in relative or relative.endswith("translation-provenance.json"):
         from checks.layout import formatted
@@ -187,7 +200,9 @@ def before_rubric_caption_revision(relative, raw):
 def before_rubric_caption_layer(layer):
     """Reconstruct a layer's exact earlier comparison frame, if declared."""
     relative = f"languages/{layer['language']}/texts/{layer['text'].replace('.', '/', 1)}.json"
-    if relative not in RUBRIC_CAPTION_FILES and relative not in READING_FILES:
+    if not any(
+        relative in files for files in (RUBRIC_CAPTION_FILES, READING_FILES, COMMUNION_FILES)
+    ):
         return layer
     from checks.layout import formatted
 
@@ -231,6 +246,7 @@ def _composed_layer_changes():
         *SOURCE_SCOPE_FILES.items(),
         *RUBRIC_CAPTION_FILES.items(),
         *READING_FILES.items(),
+        *COMMUNION_FILES.items(),
     ]:
         if not entry.get("changes"):
             continue
@@ -275,10 +291,16 @@ RUBRIC_CAPTION_LAYER_CHANGES = {
 READING_LAYER_CHANGES = {
     relative: entry["changes"] for relative, entry in READING_FILES.items() if entry.get("changes")
 }
+COMMUNION_LAYER_CHANGES = {
+    relative: entry["changes"]
+    for relative, entry in COMMUNION_FILES.items()
+    if entry.get("changes")
+}
 
 
 def before_review_layer(layer):
     """Undo source-scope and prayer reader-review fields on a historical comparison copy."""
+    layer = _undo_layer_changes(layer, COMMUNION_LAYER_CHANGES)
     layer = _undo_layer_changes(layer, READING_LAYER_CHANGES)
     layer = _undo_layer_changes(layer, RUBRIC_CAPTION_LAYER_CHANGES)
     return _undo_layer_changes(
@@ -293,6 +315,7 @@ OWNER_LAYER_CHANGES = {
 
 def before_owner_layer(layer):
     """Undo source-scope and owner-decision fields on a historical comparison copy."""
+    layer = _undo_layer_changes(layer, COMMUNION_LAYER_CHANGES)
     layer = _undo_layer_changes(layer, READING_LAYER_CHANGES)
     layer = _undo_layer_changes(layer, RUBRIC_CAPTION_LAYER_CHANGES)
     return _undo_layer_changes(
@@ -361,6 +384,7 @@ def current_edition_value(relative, fields, previous):
         SOURCE_SCOPE_FILES.get(relative, {}).get("changes", ()),
         RUBRIC_CAPTION_FILES.get(relative, {}).get("changes", ()),
         READING_FILES.get(relative, {}).get("changes", ()),
+        COMMUNION_FILES.get(relative, {}).get("changes", ()),
     )
     value, advanced = previous, False
     for changes in receipts:
@@ -383,14 +407,16 @@ def current_edition_target_sha(text, language, segment, previous):
     relative = f"languages/{language}/texts/{text.replace('.', '/', 1)}.json"
     # Older comparisons begin at the composed predecessor. More recent ones can
     # begin at the immediately preceding wording of the same segment.
-    for change in (*LAYER_CHANGES.get(relative, ()), *READING_LAYER_CHANGES.get(relative, ())):
-        if (
-            change["path"] == ["segments", segment, "translation"]
-            and "before" in change
-            and "after" in change
-            and _digest(change["before"]) == previous
-        ):
-            return _digest(change["after"])
+    for frame in (LAYER_CHANGES, READING_LAYER_CHANGES, COMMUNION_LAYER_CHANGES):
+        for change in frame.get(relative, ()):
+            if (
+                change["path"] == ["segments", segment, "translation"]
+                and "before" in change
+                and "after" in change
+                and _digest(change["before"]) == previous
+            ):
+                previous = _digest(change["after"])
+                break
     return previous
 
 

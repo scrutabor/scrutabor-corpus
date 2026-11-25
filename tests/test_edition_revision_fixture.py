@@ -12,6 +12,7 @@ from pathlib import Path
 import pytest
 from edition_revision_fixture import (
     CAPTION_FILES,
+    COMMUNION_FILES,
     FILES,
     LAYER_CHANGES,
     OWNER_FILES,
@@ -22,6 +23,7 @@ from edition_revision_fixture import (
     RUBRIC_CAPTION_FILES,
     SOURCE_SCOPE_FILES,
     WITNESS_FILES,
+    before_communion_revision,
     before_edition_layer,
     before_edition_object,
     before_edition_revision,
@@ -93,9 +95,10 @@ def test_scope_is_nonempty_and_names_each_declared_subject_once():
     }
     assert sum(len(entry.get("changes", ())) for entry in RUBRIC_CAPTION_FILES.values()) == 281
     assert len(READING_FILES) == 1723
-    assert len(FILES) == 1897
+    assert len(COMMUNION_FILES) == 12
+    assert len(FILES) == 1901
     assert len(LAYER_CHANGES) == 1856
-    assert len(TRANSLATIONS) == 232
+    assert len(TRANSLATIONS) == 234
     assert set(LAYER_CHANGES) <= set(FILES)
     for relative, changes in LAYER_CHANGES.items():
         assert relative.startswith("languages/") and "/texts/" in relative
@@ -105,7 +108,7 @@ def test_scope_is_nonempty_and_names_each_declared_subject_once():
 
 @pytest.mark.parametrize("relative", sorted(READING_FILES))
 def test_reading_revision_restores_its_exact_published_input(relative):
-    raw = (ROOT / relative).read_bytes()
+    raw = before_communion_revision(relative, (ROOT / relative).read_bytes())
     previous = before_reading_revision(relative, raw)
     entry = READING_FILES[relative]
     assert hashlib.sha256(raw).hexdigest() == entry["current"]
@@ -113,6 +116,18 @@ def test_reading_revision_restores_its_exact_published_input(relative):
     assert before_reading_revision(relative, previous) is previous
     damaged = raw + b" "
     assert before_reading_revision(relative, damaged) is damaged
+
+
+@pytest.mark.parametrize("relative", sorted(COMMUNION_FILES))
+def test_communion_revision_restores_only_the_exact_preceding_file(relative):
+    raw = (ROOT / relative).read_bytes()
+    entry = COMMUNION_FILES[relative]
+    previous = before_communion_revision(relative, raw)
+    assert hashlib.sha256(raw).hexdigest() == entry["current"]
+    assert hashlib.sha256(previous).hexdigest() == entry["previous"]
+    assert before_communion_revision(relative, previous) is previous
+    damaged = raw + b" "
+    assert before_communion_revision(relative, damaged) is damaged
 
 
 @pytest.mark.parametrize("relative", sorted(FILES))
