@@ -90,7 +90,10 @@ COMMUNION_FILES = json.loads(
 BIBLIOGRAPHY_FILES = json.loads(
     (Path(__file__).parent / "fixtures/bibliographic-source-revision.json").read_bytes()
 )["files"]
-for _revision in (READING_FILES, COMMUNION_FILES, BIBLIOGRAPHY_FILES):
+GRATIA_FILES = json.loads(
+    (Path(__file__).parent / "fixtures/gratia-explanation-revision.json").read_bytes()
+)["files"]
+for _revision in (READING_FILES, COMMUNION_FILES, BIBLIOGRAPHY_FILES, GRATIA_FILES):
     for _relative, _entry in _revision.items():
         if _relative in FILES:
             assert FILES[_relative]["current"] == _entry["previous"], _relative
@@ -162,8 +165,17 @@ def before_source_scope_revision(relative, raw):
     return _exact_inverse(entry, raw)
 
 
+def before_gratia_revision(relative, raw):
+    """Restore the preceding explanation only from the exact current language layer."""
+    entry = GRATIA_FILES.get(relative)
+    if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
+        return raw
+    return _exact_inverse(entry, raw)
+
+
 def before_bibliography_revision(relative, raw):
     """Restore the preceding bibliography and its source readings when the input is exact."""
+    raw = before_gratia_revision(relative, raw)
     entry = BIBLIOGRAPHY_FILES.get(relative)
     if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
         return raw
@@ -400,7 +412,13 @@ def before_rubric_caption_layer(layer):
     relative = f"languages/{layer['language']}/texts/{layer['text'].replace('.', '/', 1)}.json"
     if not any(
         relative in files
-        for files in (RUBRIC_CAPTION_FILES, READING_FILES, COMMUNION_FILES, BIBLIOGRAPHY_FILES)
+        for files in (
+            RUBRIC_CAPTION_FILES,
+            READING_FILES,
+            COMMUNION_FILES,
+            BIBLIOGRAPHY_FILES,
+            GRATIA_FILES,
+        )
     ):
         return layer
     from checks.layout import formatted
@@ -447,6 +465,7 @@ def _composed_layer_changes():
         *READING_FILES.items(),
         *COMMUNION_FILES.items(),
         *BIBLIOGRAPHY_FILES.items(),
+        *GRATIA_FILES.items(),
     ]:
         if not entry.get("changes"):
             continue

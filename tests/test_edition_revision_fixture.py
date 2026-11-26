@@ -15,6 +15,7 @@ from edition_revision_fixture import (
     CAPTION_FILES,
     COMMUNION_FILES,
     FILES,
+    GRATIA_FILES,
     LAYER_CHANGES,
     OWNER_FILES,
     PUBLISHED_FILES,
@@ -120,8 +121,11 @@ def test_scope_is_nonempty_and_names_each_declared_subject_once():
         COMMUNION_FILES,
     )
     assert len(previous) == 1901
-    assert set(FILES) == previous | BIBLIOGRAPHY_FILES.keys()
-    assert len(LAYER_CHANGES) == 1856
+    assert set(GRATIA_FILES) == {
+        f"languages/{lang}/texts/orationes/ave-maria.json" for lang in ("pl", "en")
+    }
+    assert set(FILES) == previous | BIBLIOGRAPHY_FILES.keys() | GRATIA_FILES.keys()
+    assert len(LAYER_CHANGES) == 1857
     assert len(TRANSLATIONS) == 234
     assert set(LAYER_CHANGES) <= set(FILES)
     for relative, changes in LAYER_CHANGES.items():
