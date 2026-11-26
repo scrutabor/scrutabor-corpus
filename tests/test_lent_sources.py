@@ -16,6 +16,7 @@ import re
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_bibliography_record
 
 from checks import transcription
 from checks.collate import collate
@@ -127,25 +128,25 @@ REPRINT_LEAVES = {  # leaf -> sha256 of the page image the reprint use cites
     "n186": "7e4c16b76eae65c5b647a502ce0ed4c0bd190984ed3b8a51456ba1417406c504",
 }
 PD_LOCATORS = {
-    L1 + "graduale": ("p. 172", "scan p. 188"),
-    L1 + "offertorium": ("pp. 173–174", "scan pp. 189–190"),
-    L1 + "epistola": ("pp. 171–172", "scan pp. 187–188"),
-    L1 + "evangelium": ("p. 173", "scan p. 189"),
-    L2 + "offertorium": ("p. 193", "scan p. 209"),
-    L2 + "communio": ("p. 193", "scan p. 209"),
-    L2 + "epistola": ("pp. 191–192", "scan pp. 207–208"),
-    L2 + "tractus": ("p. 192", "scan p. 208"),
-    L3 + "introitus": ("pp. 209–210", "scan pp. 225–226"),
-    L3 + "graduale": ("p. 210", "scan p. 226"),
-    L3 + "tractus": ("pp. 210–211", "scan pp. 226–227"),
-    L3 + "communio": ("p. 212", "scan p. 228"),
-    L3 + "epistola": ("p. 210", "scan p. 226"),
-    L3 + "evangelium": ("pp. 211–212", "scan pp. 227–228"),
-    L4 + "offertorium": ("p. 233", "scan p. 249"),
-    L4 + "communio": ("p. 233", "scan p. 249"),
-    L4 + "epistola": ("pp. 231–232", "scan pp. 247–248"),
-    L4 + "evangelium": ("pp. 232–233", "scan pp. 248–249"),
-    P18GR: ("p. 232", "scan p. 248"),
+    L1 + "graduale": ("p. 172", "PDF p. 188"),
+    L1 + "offertorium": ("pp. 173–174", "PDF pp. 189–190"),
+    L1 + "epistola": ("pp. 171–172", "PDF pp. 187–188"),
+    L1 + "evangelium": ("p. 173", "PDF p. 189"),
+    L2 + "offertorium": ("p. 193", "PDF p. 209"),
+    L2 + "communio": ("p. 193", "PDF p. 209"),
+    L2 + "epistola": ("pp. 191–192", "PDF pp. 207–208"),
+    L2 + "tractus": ("p. 192", "PDF p. 208"),
+    L3 + "introitus": ("pp. 209–210", "PDF pp. 225–226"),
+    L3 + "graduale": ("p. 210", "PDF p. 226"),
+    L3 + "tractus": ("pp. 210–211", "PDF pp. 226–227"),
+    L3 + "communio": ("p. 212", "PDF p. 228"),
+    L3 + "epistola": ("p. 210", "PDF p. 226"),
+    L3 + "evangelium": ("pp. 211–212", "PDF pp. 227–228"),
+    L4 + "offertorium": ("p. 233", "PDF p. 249"),
+    L4 + "communio": ("p. 233", "PDF p. 249"),
+    L4 + "epistola": ("pp. 231–232", "PDF pp. 247–248"),
+    L4 + "evangelium": ("pp. 232–233", "PDF pp. 248–249"),
+    P18GR: ("p. 232", "PDF p. 248"),
 }
 LAITY_SHA = "8e692b256e08350896902e55787f70c171a444d33e754f4d67e84fe000f81dd1"
 
@@ -325,10 +326,15 @@ def test_the_revised_english_names_its_historical_basis(text):
     assert len(found) == 1 and found[0]["edition"] == "edition.the-missal-for-the-laity-1846"
     locator = found[0]["locator"]
     assert (locator["printed"], locator["scan"]) == PD_LOCATORS[text]
+    first_page = re.findall(r"\d+", PD_LOCATORS[text][1])[0]
+    assert locator["page_url"] == (
+        "https://archive.org/download/TheMissalForTheLaity/TheMissalForTheLaity.pdf"
+        f"#page={first_page}"
+    )
     assert found[0]["evidence_sha256"] == LAITY_SHA
     if mixed:
         expected = load("tests/fixtures/mixed-translation-origins.json")["corrected_use"]
-        assert found[0] == expected["after"]
+        assert found[0] == current_bibliography_record("uses", expected["after"])
 
 
 @pytest.mark.parametrize("text", TEXTS)

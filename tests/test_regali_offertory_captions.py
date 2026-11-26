@@ -421,7 +421,7 @@ def test_actual_source_slip_is_a_corrigendum_not_an_apparatus_variant(tmp_path, 
     (use,) = [row for row in graph["uses"] if row["id"] == f"use.proprium.{slug}.do44667ff"]
     assert use["evidence_sha256"] == sha256((digital + "\n").encode()).hexdigest()
     assert "præscibus" in use["claim"] and "declared corrigendum to précibus" in use["claim"]
-    assert use["verified_on"] == "2026-10-27"
+    assert use["verified_on"] == "2026-11-26"
     witnesses = [row for row in graph["witnesses"] if row["text"] == core["id"]]
     assert {row["id"] for row in witnesses} == {
         f"witness.proprium.{slug}.do44667ff",

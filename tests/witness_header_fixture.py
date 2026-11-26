@@ -7,6 +7,11 @@ from copy import deepcopy
 from pathlib import Path
 
 from anne_documentary_fixture import before_anne_records, before_anne_registry
+from edition_revision_fixture import (
+    before_bibliography_records,
+    before_bibliography_revision,
+    current_bibliography_review,
+)
 from lateran_epistle_source_fixture import before_lateran_records
 from michael_gospel_source_fixture import before_michael_records, before_michael_registry
 from rosary_gospel_source_fixture import before_rosary_records
@@ -34,14 +39,14 @@ def expected_transcript(relative, historical):
 def expected_review(identifier, historical):
     """Advance exactly the admitted review subset; other existing reviews stay exact."""
     if identifier not in REVIEWS:
-        return historical
+        return current_bibliography_review(identifier, historical)
     row = REVIEWS[identifier]
     assert historical == row["before_sha256"], "historical source review digest"
     actual = row["after_sha256"]
     assert isinstance(actual, str) and re.fullmatch(r"[0-9a-f]{64}", actual), (
         "required real source review capture"
     )
-    return actual
+    return current_bibliography_review(identifier, actual)
 
 
 # This narrow content successor is separate from the immutable privacy snapshots.
@@ -151,7 +156,7 @@ def assert_transcript_content(root, relative):
     """Inspect real current bytes; no predecessor string is fabricated or installed."""
     assert relative in TRANSCRIPTS, "known transcript successor identity"
     row = TRANSCRIPTS[relative]
-    raw = (root / relative).read_bytes()
+    raw = before_bibliography_revision(relative, (root / relative).read_bytes())
     raw = before_exaltation_header(relative, raw)
     raw = before_source_scope_header(relative, raw)
     assert hashlib.sha256(raw).hexdigest() == row["after_sha256"], (
@@ -179,7 +184,8 @@ def expected_header_lines(identity, historical):
 
 def before_privacy(value, diagnostic="exact transcript-header comparison inverse"):
     """Reverse exact known scalars on comparison copies ONLY, never native arguments."""
-    result = before_joachim_records(before_rosary_records(before_lateran_records(value)))
+    comparison = before_bibliography_records(value)
+    result = before_joachim_records(before_rosary_records(before_lateran_records(comparison)))
 
     def visit(item):
         if isinstance(item, list):
@@ -207,7 +213,7 @@ def before_privacy(value, diagnostic="exact transcript-header comparison inverse
                 assert canonical_hash(identity) == row["before_identity_sha256"], diagnostic
             if identifier in REVIEWS and "review" in item:
                 old = REVIEWS[identifier]["before_sha256"]
-                new = expected_review(identifier, old)
+                new = REVIEWS[identifier]["after_sha256"]
                 assert item["review"] == {"status": "reviewed", "sha256": new}, diagnostic
                 item["review"] = {"status": "reviewed", "sha256": old}
             for child in item.values():

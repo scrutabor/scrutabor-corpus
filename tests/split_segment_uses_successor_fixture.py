@@ -13,6 +13,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_bibliography_record
+
 DATA = json.loads(
     (Path(__file__).parent / "fixtures/split-segment-uses-successor.json").read_bytes()
 )
@@ -30,7 +32,10 @@ def before_split_uses_object(relative, value):
     kept = [
         use
         for use in uses
-        if not (isinstance(use, dict) and ADDED.get((relative, use.get("id"))) == use)
+        if not (
+            isinstance(use, dict)
+            and ADDED.get((relative, use.get("id"))) == before_bibliography_record("uses", use)
+        )
     ]
     if len(kept) == len(uses):
         return value

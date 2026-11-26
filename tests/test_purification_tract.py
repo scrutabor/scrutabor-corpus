@@ -222,7 +222,10 @@ def test_exact_printed_identity_and_current_not_historical_genesis():
     )
     assert "Editio iuxta typicam" in mr["claim"]
     assert "not original transcription genesis" in mr["claim"]
-    assert all(u["verified_on"] == "2026-09-19" for u in uses)
+    assert {u["id"]: u["verified_on"] for u in uses} == {
+        f"use.{TEXT}.do44667ff": "2026-11-26",
+        f"use.{TEXT}.mr1962": "2026-09-19",
+    }
     header = (ROOT / "witnesses" / TEXT / "mr.txt").read_text()
     assert "# historical-transcribed: 2026-09-19 from directly viewed page images" in header
     assert "# verification-scope: current whole-body conformity" in header

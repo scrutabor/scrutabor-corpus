@@ -6,7 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import current_edition_target_sha
+from edition_revision_fixture import current_bibliography_record, current_edition_target_sha
 from gospel_delivery_fixture import current_sung_expected_row
 from pentecost_successor_fixture import expected_pentecost_row
 from post_ascension_fixture import expected_row_successor
@@ -58,7 +58,7 @@ def assert_mapping(mapping):
 
 def assert_projected(expected, actual, use, basis, source, target):
     assert actual == current_sung_expected_row(expected["provenance"]), "projected provenance"
-    assert use == expected["use"], "segment source use"
+    assert use == current_bibliography_record("uses", expected["use"]), "segment source use"
     assert basis == expected["basis"], "revised relationship scope"
     assert actual["origin"] == "public-domain" and actual["review"] == "working"
     assert basis["relationship"] == "revised"
@@ -67,7 +67,8 @@ def assert_projected(expected, actual, use, basis, source, target):
         "text": actual["text"],
         "segment": actual["segment"],
     }
-    assert use["role"] == "historical_wording_basis" and use["decision"] == "RETAIN"
+    assert use["role"] == "historical_wording_basis"
+    assert use["decision"] in {"RETAIN", "RETAIN_WITH_CORRECTION"}
     assert target == expected["translation"], "projected target"
     assert provenance.canonical_hash(target) == actual["target_sha256"], "target hash"
     assert (
@@ -362,7 +363,7 @@ def test_every_projection_rejects_label_source_scope_and_hash_mutations(site, da
     expected = PROJECTIONS[site]
     row, use, basis = (
         current_sung_expected_row(expected["provenance"]),
-        deepcopy(expected["use"]),
+        current_bibliography_record("uses", deepcopy(expected["use"])),
         deepcopy(expected["basis"]),
     )
     source = deepcopy(core_segment(row["text"], row["segment"]))

@@ -26,7 +26,11 @@ from ascension_postcommunion_wording import (
     current_verse_phrase,
     is_current_postcommunion_subject,
 )
-from edition_revision_fixture import current_edition_caption, current_edition_value
+from edition_revision_fixture import (
+    before_bibliography_record,
+    current_edition_caption,
+    current_edition_value,
+)
 from english_register_successor_fixture import before_english_register_allowance_frame
 from provenance_successor_fixture import assert_protection_scope
 
@@ -902,7 +906,12 @@ def assert_lu(doc, folder, graph):
     assert (use["edition"], use["evidence_sha256"]) == ("edition.liber-usualis.1961", LU_SHA), (
         "graph"
     )
-    assert use["locator"] == {"printed": "p. 849", "scan": "PDF p. 1037"}, "graph"
+    previous_locator = {"printed": "p. 849", "scan": "PDF p. 1037"}
+    assert use["locator"] == {
+        **previous_locator,
+        "page_url": "https://archive.org/details/TheLiberUsualis1961/page/n1036/mode/1up",
+    }, "graph"
+    assert before_bibliography_record("uses", use)["locator"] == previous_locator, "graph"
     (collation,) = [c for c in graph["collations"] if c["text"] == OFFERTORY]
     assert witness_id in collation["witnesses"], "graph"
     assert collation["apparatus_sha256"] == digest(apparatus), "graph"
@@ -915,7 +924,10 @@ def test_the_chant_book_omission_is_recorded_with_its_witness():
     assert_lu(core(OFFERTORY), ROOT / "witnesses" / OFFERTORY, load("bibliography/graph.json"))
 
 
-@pytest.mark.parametrize("damage", ["drop-entry", "class", "reviewed", "inventory", "note", "body"])
+@pytest.mark.parametrize(
+    "damage",
+    ["drop-entry", "class", "reviewed", "inventory", "missing-url", "wrong-page", "note", "body"],
+)
 def test_the_chant_book_record_rejects_damage(damage, tmp_path):
     folder = tmp_path / OFFERTORY
     shutil.copytree(ROOT / "witnesses" / OFFERTORY, folder)
@@ -936,6 +948,14 @@ def test_the_chant_book_record_rejects_damage(damage, tmp_path):
         expected = "graph"
     elif damage == "inventory":
         del witness["source_dependencies"]
+        expected = "graph"
+    elif damage in {"missing-url", "wrong-page"}:
+        (use,) = [u for u in graph["uses"] if u["id"] == witness["use"]]
+        locator = use["locator"]
+        if damage == "missing-url":
+            del locator["page_url"]
+        else:
+            locator["page_url"] = locator["page_url"].replace("/n1036/", "/n1037/")
         expected = "graph"
     elif damage == "note":
         apparatus["note"] = "The witnesses agree on the substantive text."
@@ -1166,7 +1186,7 @@ def assert_basis_claim(uses, text):
     head, _, changes = use["claim"].partition(": ")
     assert "revised" in head and "Shout for joy (Iubiláte)" in changes, "basis claim"
     assert "Sing joyfully" not in use["claim"], "basis claim"
-    assert use["verified_on"] == "2026-10-20", "basis claim"
+    assert use["verified_on"] == "2026-11-25", "basis claim"
 
 
 @pytest.mark.parametrize("text", sorted(BASIS_CLAIMS))

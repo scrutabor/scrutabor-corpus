@@ -202,7 +202,8 @@ def test_unrelated_graph_fault_survives_comparison_and_public_validator_rejects_
         # The original older guard receives the same fault on its deliberately
         # established predecessor, independently of the actual native rejection.
         comparison = before_requiem_graph(historical)
-        assert comparison["uses"][0] == row
+        assert comparison["uses"][0] == old_row
+        assert old_row["edition"] == row["edition"] == "unknown-existing-edition-control"
         assert digest(comparison) != DATA["graph_frames"]["before"]
         assert graph != saved
     finally:

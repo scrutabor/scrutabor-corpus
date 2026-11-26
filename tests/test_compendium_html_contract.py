@@ -46,6 +46,7 @@ JOIN_MUTANTS = [
     "use-evidence",
     "use-claim",
     "use-locator",
+    "use-section-link",
     "use-edition",
     "item-scan-url",
 ]
@@ -172,6 +173,11 @@ def test_exact_source_join_rejects_and_restores(case, mutation):
         "use-evidence": (use, "evidence_sha256", "0" * 64),
         "use-claim": (use, "claim", "The entire selected Creed is printed here."),
         "use-locator": (use, "locator", {"section": "Nicene Creed"}),
+        "use-section-link": (
+            use,
+            "locator",
+            {**use["locator"], "page_url": item["record_url"] + "#A%29%20COMMON%20PRAYERS"},
+        ),
         "use-edition": (use, "edition", "edition.unrelated"),
     }
     record, field, value = changes[mutation]

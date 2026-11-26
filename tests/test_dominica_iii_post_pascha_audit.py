@@ -11,6 +11,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_bibliography_revision
 from provenance_successor_fixture import assert_protection_scope
 
 from build_reader import store
@@ -887,7 +888,10 @@ def assert_witness(doc, folder, graph):
     assert len(meta["corrigenda"]) == 1, "one declared corrigendum"
     ((printed, emended, reason),) = meta["corrigenda"]
     assert (printed, emended) == ("iustem", "iustum")
-    assert "Dignum et iustum est" in reason and "vatican" in reason
+    assert reason == (
+        "the prose setting on p. 291 prints iustem; the sung setting on p. 236 "
+        "and the Vatican prose setting on p. 288 both print iustum"
+    )
     assert meta["location"].startswith("printed p. 291; leaf n370")
     assert meta["orthography"].startswith("exact printed accents")
     assert collate.load_witness(folder / "vatican.txt")[1].startswith("Vere dignum et iustum est,")
@@ -906,9 +910,17 @@ def graph():
 
 def test_preface_witness_prints_the_slip_and_declares_it():
     assert_witness(core(PREFACE), WITNESS, graph())
+    path = WITNESS / "mr.txt"
+    previous = before_bibliography_revision(path.relative_to(ROOT).as_posix(), path.read_bytes())
+    assert (
+        "# corrigendum: iustem -> iustum (the page's slip; the response printed above it "
+        "on the same page reads Dignum et iustum est, and witness vatican prints iustum)"
+    ) in previous.decode().splitlines()
 
 
-@pytest.mark.parametrize("damage", ["emended", "undeclared", "no-reason", "stale-digest"])
+@pytest.mark.parametrize(
+    "damage", ["emended", "undeclared", "no-reason", "wrong-page", "stale-digest"]
+)
 def test_preface_witness_damage_is_rejected(damage, tmp_path):
     doc, data = core(PREFACE), graph()
     assert_witness(doc, WITNESS, data)
@@ -925,13 +937,19 @@ def test_preface_witness_damage_is_rejected(damage, tmp_path):
         path.write_text(
             transcript.replace(line, "# corrigendum: iustem -> iustum"), encoding="utf-8"
         )
+    elif damage == "wrong-page":
+        path.write_text(transcript.replace("on p. 236", "on p. 235"), encoding="utf-8")
     else:
         (witness,) = [w for w in data["witnesses"] if w["id"] == f"witness.{PREFACE}.mr1962"]
         witness["transcription_sha256"] = PREDECESSOR_DIGEST
     if damage != "stale-digest":
         (witness,) = [w for w in data["witnesses"] if w["id"] == f"witness.{PREFACE}.mr1962"]
         witness["transcription_sha256"] = transcript_digest(path.read_text(encoding="utf-8"))
-        assert collate.collate(doc, folder)[0]
+        errors = collate.collate(doc, folder)[0]
+        if damage == "wrong-page":
+            assert errors == []
+        else:
+            assert errors
     with pytest.raises(AssertionError):
         assert_witness(doc, folder, data)
     assert_witness(doc, WITNESS, graph())

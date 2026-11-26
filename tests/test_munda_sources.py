@@ -31,16 +31,20 @@ ENDING_SOURCES = {
     "pl": (
         "edition.pamiatka-missyi-dla-ludu-katolickiego-1903",
         "item.pamiatka-missyi-dla-ludu-katolickiego-1903.sbc",
-        "45",
-        "PDF page 48",
-        "ff084d288a3ac4d35664b4a228a2615368a4f25ec62b200f71bae7df7e46d200",
+        "s. 45",
+        "PDF, s. 48",
+        "https://sbc.org.pl/Content/318796/PDF/Publikacja-KC-8251.pdf#page=48",
+        "5911c4813ab6be6408e07e4122a1ef66ca7c2a9649dedc93654a734fed9f0162",
+        "RETAIN_WITH_CORRECTION",
     ),
     "en": (
         "edition.the-missal-for-the-laity-1846",
         "item.missal-for-the-laity-1846.scan",
         "40",
-        "PDF page 52",
-        "12a39d07b85fecb8570e6bd741a4d49d0d726de47a81e359666728a35d7580ea",
+        "PDF p. 52",
+        "https://archive.org/download/TheMissalForTheLaity/TheMissalForTheLaity.pdf#page=52",
+        "8e692b256e08350896902e55787f70c171a444d33e754f4d67e84fe000f81dd1",
+        "RETAIN",
     ),
 }
 
@@ -70,13 +74,13 @@ def assert_ending_reference(graph, language_graph, language):
     rows = munda_rows(language_graph, "uses")
     assert len(rows) == 1
     use = rows[0]
-    edition, item, printed, scan, evidence = ENDING_SOURCES[language]
+    edition, item, printed, scan, url, evidence, decision = ENDING_SOURCES[language]
     assert use["id"] == f"use.{language}.munda-cor-meum.short-conclusion"
     assert (use["edition"], use["digital_item"]) == (edition, item)
     assert use["address"] == {"kind": "segment", "text": TEXT, "segment": "s02"}
     assert use["role"] == "historical_wording_basis"
-    assert use["decision"] == "RETAIN"
-    assert use["locator"] == {"printed": printed, "scan": scan}
+    assert use["decision"] == decision
+    assert use["locator"] == {"printed": printed, "scan": scan, "page_url": url}
     assert use["evidence_sha256"] == evidence
     source_item = next(r for r in graph["digital_items"] if r["id"] == item)
     assert source_item["edition"] == edition
@@ -144,7 +148,7 @@ def test_exact_source_identity_and_distinct_claim_boundaries(suffix, edition, it
         assert "priest reuse is established separately" in use["claim"]
         print_edition = next(e for e in graph["editions"] if e["id"] == edition)
         assert (print_edition["publisher"], print_edition["edition_statement"]) == (
-            "Benziger Brothers",
+            "Benziger Brothers, Inc.",
             "Editio iuxta typicam",
         )
     elif suffix == "mr1962-ritual-boundary":

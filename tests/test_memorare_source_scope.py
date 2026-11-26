@@ -92,8 +92,11 @@ def assert_source_scopes(graph: dict, languages: dict) -> None:
         assert group["edition"] == EDITION
         assert group["digital_item"] == ITEM
         assert entry["address"] == {"kind": "segment", "segment": segment}
-    assert entries[EXACT_BASIS][0]["locator"]["printed"] == "druk. s. 156"
-    assert entries[EXACT_BASIS][0]["locator"]["scan"] == "PDF s. 161"
+    assert entries[EXACT_BASIS][0]["locator"]["printed"] == "s. 156"
+    assert entries[EXACT_BASIS][0]["locator"]["scan"] == "PDF, s. 161"
+    assert entries[EXACT_BASIS][0]["locator"]["page_url"] == (
+        "https://sbc.org.pl/Content/320337/PDF/Publikacja-KC-8052.pdf#page=161"
+    )
     bases, texts = provenance.wording_bases(languages["pl"]["uses"], "pl")
     assert TEXT not in texts, "a whole-prayer basis would cover the unsettled segments"
     assert {site for site in bases if site.startswith(f"{TEXT}.")} == {f"{TEXT}.s06.pl"}

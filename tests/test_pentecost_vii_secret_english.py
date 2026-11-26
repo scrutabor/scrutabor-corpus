@@ -92,15 +92,15 @@ def test_singular_sacrifice_and_equal_blessing_remain_explicit():
 
 
 @pytest.mark.parametrize(
-    "suffix,segment,printed,scan,leaf",
+    "suffix,segment,printed,scan,physical_page",
     [
-        ("body", "s01", "pp.436–437", "PDF463–464", 462),
-        ("expanded-conclusion", "s01", "p.29", "PDF56", 55),
-        ("duration", "s02", "p.29", "PDF56", 55),
+        ("body", "s01", "pp.436–437", "PDF pp. 463–464", 463),
+        ("expanded-conclusion", "s01", "p.29", "PDF p. 56", 56),
+        ("duration", "s02", "p.29", "PDF p. 56", 56),
     ],
 )
 def test_body_and_expanded_formula_have_separate_historical_bases(
-    suffix, segment, printed, scan, leaf
+    suffix, segment, printed, scan, physical_page
 ):
     graph = json.loads((CORPUS / "languages/en/bibliography.json").read_text())
     uses = [u for u in graph["uses"] if u["address"].get("text") == TEXT]
@@ -114,8 +114,8 @@ def test_body_and_expanded_formula_have_separate_historical_bases(
     assert item["locator"]["printed"] == printed
     assert item["locator"]["scan"] == scan
     assert item["locator"]["page_url"] == (
-        "https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth"
-        f"/page/n{leaf}/mode/1up"
+        "https://archive.org/download/missal_for_use_of_laity_1853-f_c_husenbeth/"
+        f"missal_for_use_of_laity_1853-f_c_husenbeth.pdf#page={physical_page}"
     )
     if suffix == "body":
         assert "does not print the expanded ending" in item["claim"]

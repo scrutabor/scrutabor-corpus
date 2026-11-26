@@ -5,6 +5,7 @@ from copy import deepcopy
 
 import pytest
 from common_preface_source_fixture import without_common_preface_source_chain
+from edition_revision_fixture import before_bibliography_record
 
 from build_reader import bibliography
 from build_reader.bibliography_bindings import BindingError, witness_subject
@@ -127,7 +128,7 @@ def epiphany_inventory():
 
 def check_dependencies(data):
     # Validate and undo only the complete, separately reviewed Common source
-    # additions. Keep the original 40/20 inventory and 19 unknown gaps intact.
+    # additions. The nineteen single-print bodies now have explicit inventories.
     data = without_common_preface_source_chain(data)
     ids = {tid(s) for s in SLUGS}
     witnesses = [w for w in data["witnesses"] if w["text"] in ids]
@@ -135,7 +136,7 @@ def check_dependencies(data):
     assert len(witnesses) == 40 and len(collations) == 20
     assert all(r["review"] == {"status": "pending"} for r in witnesses + collations)
     assert not any(r["text"] == tid("communis") for r in witnesses + collations)
-    unknown = []
+    primary_only = []
     for witness in witnesses:
         if witness["transcription"] != "mr":
             assert not any(
@@ -145,9 +146,10 @@ def check_dependencies(data):
         elif witness["text"] == tid("epiphaniae"):
             assert witness["source_dependencies"] == epiphany_inventory()
         else:
-            assert "source_dependencies" not in witness
-            unknown.append(witness["text"])
-    assert len(unknown) == 19
+            assert witness.get("source_dependencies") == {"uses": [], "raw_binding": None}
+            assert "source_dependencies" not in before_bibliography_record("witnesses", witness)
+            primary_only.append(witness["text"])
+    assert set(primary_only) == ids - {tid("communis"), tid("epiphaniae")}
 
 
 @pytest.mark.parametrize("slug", SLUGS)
@@ -165,7 +167,7 @@ def test_hand_rubric_population_excludes_all_easter_bodies():
     check_population(graph(), documents)
 
 
-def test_rubric_sources_do_not_complete_unknown_inventories_or_create_reviews():
+def test_body_inventories_keep_separate_rubric_sources_and_pending_reviews():
     check_dependencies(graph())
 
 
@@ -264,7 +266,7 @@ def test_source_claim_mutations_are_rejected(mutation):
         "drop-sung",
         "omit-rubric",
         "raw-invention",
-        "complete-unknown",
+        "missing-primary-only-declaration",
         "common-witness",
         "common-collation",
         "approved-witness",
@@ -282,11 +284,11 @@ def test_dependency_and_pending_gap_mutations_are_rejected(mutation):
         witness["source_dependencies"]["uses"].remove(uid("epiphaniae"))
     elif mutation == "raw-invention":
         witness["source_dependencies"]["raw_binding"] = "preface-rubric"
-    elif mutation == "complete-unknown":
-        unknown = next(
+    elif mutation == "missing-primary-only-declaration":
+        primary_only = next(
             w for w in data["witnesses"] if w["id"] == f"witness.{tid('apostolorum')}.mr1962"
         )
-        unknown["source_dependencies"] = {"uses": [], "raw_binding": None}
+        del primary_only["source_dependencies"]
     elif mutation == "common-witness":
         added = deepcopy(witness)
         added["text"] = tid("communis")

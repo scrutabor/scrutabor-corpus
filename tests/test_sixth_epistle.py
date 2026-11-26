@@ -226,7 +226,12 @@ def test_complete_raw_reading_and_all_nine_variant_positions():
 def test_actual_edition_and_pending_source_states():
     graph = load("bibliography/graph.json")
     uses = [u for u in graph["uses"] if u["address"].get("text") == TEXT]
-    assert len(uses) == 2 and all(u["verified_on"] == "2026-08-31" for u in uses)
+    assert {u["id"].rsplit(".", 1)[-1]: u["verified_on"] for u in uses} == {
+        "do44667ff": "2026-11-26",
+        "mr1962": "2026-08-31",
+    }
+    digital = next(u for u in uses if u["id"].endswith(".do44667ff"))
+    assert digital["locator"]["page_url"].endswith("/Tempora/Pent06-0.txt#L28")
     mr = next(u for u in uses if u["id"].endswith(".mr1962"))
     assert "Benziger" in mr["claim"] and "without shared expansions" in mr["claim"]
     assert mr["locator"]["printed"] == "p. 379"
@@ -235,7 +240,7 @@ def test_actual_edition_and_pending_source_states():
     for w in witnesses:
         assert w["review"] == {"status": "pending"}
         # The DO witness names its raw binding; the Missal witness has none.
-        bound = {"uses": [], "raw_binding": KEY} if w["id"].endswith(".do44667ff") else None
+        bound = {"uses": [], "raw_binding": KEY if w["id"].endswith(".do44667ff") else None}
         assert w.get("source_dependencies") == bound
         raw = (ROOT / f"witnesses/{TEXT}/{w['transcription']}.txt").read_text()
         assert w["transcription_sha256"] == transcript_digest(raw)

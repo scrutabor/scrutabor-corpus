@@ -10,7 +10,11 @@ from pathlib import Path
 import pytest
 from canon_consecration_successor_fixture import before_canon_core_bytes
 from chant_fragment_fixture import before_chant_graph, before_chant_registry
-from edition_revision_fixture import before_edition_object, before_edition_revision
+from edition_revision_fixture import (
+    before_bibliography_subject,
+    before_edition_object,
+    before_edition_revision,
+)
 from foot_communion_successor_fixture import before_foot_communion_core_bytes
 from lateran_epistle_source_fixture import before_lateran_graph, before_lateran_registry
 from offertory_rubric_successor_fixture import before_offertory_core_bytes
@@ -429,7 +433,10 @@ def test_exaltation_comparison_rejects_exact_record_damage_and_same_graph_recove
     )
     current_witness = record(graph, "witnesses", EXALTATION["witness"]["after"]["id"])
     subject = witness_subject(ROOT, current_witness, graph, doc)
-    assert subject == EXALTATION["expected_source_subject"]
+    assert (
+        before_bibliography_subject(subject, reviewable=True)
+        == EXALTATION["expected_source_subject"]
+    )
     fields = {
         "doxology": ("uses", EXALTATION["added_uses"][0]),
         "reprise": ("uses", EXALTATION["added_uses"][1]),

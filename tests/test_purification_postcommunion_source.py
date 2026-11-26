@@ -178,7 +178,12 @@ def test_all_six_accidentals_have_exact_readings():
 def test_ritual_locator_and_actual_response_proposal():
     graph, _ = bibliography.load(ROOT)
     use = next(u for u in graph["uses"] if u["id"] == PREFIX + "oration-boundaries.mr1962")
-    assert "preface opening dialogue" in use["locator"]["section"]
+    assert (
+        use["locator"]["section"]
+        == "Rubricae generales Missalis romani, nn. 505, 511 i, 513 a, 514."
+    )
+    assert use["locator"]["printed"] == "pp. xxxiii–xxxiv"
+    assert use["locator"]["page_url"].endswith("/page/n38/mode/1up")
     core, _ = store.load(ROOT, TEXT)
     before = json.dumps(core, ensure_ascii=False, sort_keys=True)
     assessment = attribute.assess(core)

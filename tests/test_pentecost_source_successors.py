@@ -7,6 +7,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_bibliography_record
 from witness_header_fixture import expected_review
 
 from build_reader import bibliography, store
@@ -78,9 +79,8 @@ def assert_rubric(core):
 def assert_source_fields(graph):
     uses = {row["id"]: row for row in graph["uses"]}
     for expected in FIXTURE["source_uses"]:
-        assert {key: uses[expected["id"]][key] for key in expected} == expected, (
-            "bounded source role and claim"
-        )
+        observed = before_bibliography_record("uses", uses[expected["id"]])
+        assert {key: observed[key] for key in expected} == expected, "bounded source role and claim"
 
 
 def synthetic_parentheses(root):

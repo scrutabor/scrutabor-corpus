@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pytest
 from chant_fragment_fixture import before_chant_registry
+from edition_revision_fixture import current_bibliography_fields
 from lateran_epistle_source_fixture import before_lateran_registry
 from rosary_gospel_source_fixture import before_rosary_registry
 from witness_header_fixture import before_joachim_registry
@@ -105,7 +106,7 @@ def subjects(state):
     result = {}
     for witness in graph["witnesses"]:
         result[witness["id"]] = witness_subject(root, witness, graph, doc)
-        expected = case["witnesses"][witness["id"]]
+        expected = current_bibliography_fields("witnesses", case["witnesses"][witness["id"]])
         assert witness["source_dependencies"] == expected["source_dependencies"], (
             "source contribution inventory differs"
         )
@@ -168,14 +169,14 @@ def test_complete_source_subjects_remain_pending_and_withheld(tmp_path, case):
     actual, collation = subjects(state)
     assert len(actual) == len(case["witnesses"]) == 2
     for witness in graph["witnesses"]:
-        expected = case["witnesses"][witness["id"]]
+        expected = current_bibliography_fields("witnesses", case["witnesses"][witness["id"]])
         assert {key: witness[key] for key in expected} == expected
         assert witness["coverage"] == {"kind": "full"}
         assert witness["review"] == {"status": "pending"}
         subject = actual[witness["id"]]
         assert subject["contract"] == "witness-review-2"
         for identity, source in subject["source_uses"].items():
-            expected_use = case["uses"][identity]
+            expected_use = current_bibliography_fields("uses", case["uses"][identity])
             assert {key: source["use"][key] for key in expected_use} == expected_use
             assert source["digital_item"]["edition"] == source["edition"]["id"]
             if witness["transcription"] == "do":
@@ -186,7 +187,8 @@ def test_complete_source_subjects_remain_pending_and_withheld(tmp_path, case):
             else:
                 assert subject["raw_resolution"] is None
     current = record(graph, "collations", case["collation"]["id"])
-    assert {key: current[key] for key in case["collation"]} == case["collation"]
+    expected = current_bibliography_fields("collations", case["collation"])
+    assert {key: current[key] for key in expected} == expected
     assert case["collation"]["review"] == {"status": "pending"}
     assert collation["contract"] == "collation-review-2"
     assert validate_bindings(state["root"], graph) == []

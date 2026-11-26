@@ -6,7 +6,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import current_edition_value
+from edition_revision_fixture import current_bibliography_record, current_edition_value
 
 from build_reader import bibliography, store
 from build_reader.emit import Table, core_artifact, expand, language_artifact, lexicon_slice
@@ -149,7 +149,8 @@ def assert_sources(core, apparatus, graph, english):
     require(uses[WITHHELD]["decision"] == "REMOVE", "source:1846:withheld")
     for identifier in (MR, WITHHELD, BASIS):
         require(
-            uses[identifier] == FIXTURE["source_uses"][identifier],
+            uses[identifier]
+            == current_bibliography_record("uses", FIXTURE["source_uses"][identifier]),
             f"source:{identifier}:exact-record",
         )
     sites, _texts = wording_bases(english["uses"], "en")

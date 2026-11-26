@@ -9,6 +9,7 @@ from urllib.parse import urlsplit
 
 import pytest
 import witness_header_fixture as header_fixture
+from edition_revision_fixture import current_bibliography_review
 from witness_header_fixture import (
     BY_ID,
     DATA,
@@ -228,7 +229,7 @@ def test_missing_real_review_capture_rejects_and_same_copy_recovers(monkeypatch)
     with monkeypatch.context() as patch:
         patch.setattr(header_fixture, "REVIEWS", changed)
         healthy = expected_review(identifier, row["before_sha256"])
-        assert healthy == row["after_sha256"]
+        assert healthy == current_bibliography_review(identifier, row["after_sha256"])
         row["after_sha256"] = None
         assert changed != saved
         try:

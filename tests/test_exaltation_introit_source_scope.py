@@ -8,7 +8,11 @@ from pathlib import Path
 import pytest
 import witness_header_fixture as headers
 from chant_fragment_fixture import before_chant_graph
-from edition_revision_fixture import before_edition_object
+from edition_revision_fixture import (
+    before_bibliography_subject,
+    before_edition_object,
+    current_bibliography_record,
+)
 from lateran_epistle_source_fixture import before_lateran_graph
 from requiem_successor_fixture import before_requiem_graph
 from rosary_gospel_source_fixture import before_rosary_graph
@@ -32,14 +36,20 @@ def record(graph, field, identifier):
 
 def exact_scope(graph, historical=None):
     witness = record(graph, "witnesses", DATA["witness"]["after"]["id"])
-    assert witness == DATA["witness"]["after"], "exact declared source scope"
-    primary = DATA["primary_use"]
-    assert record(graph, "uses", primary["after"]["id"]) == primary["after"], (
+    assert witness == current_bibliography_record("witnesses", DATA["witness"]["after"]), (
         "exact declared source scope"
     )
+    primary = DATA["primary_use"]
+    assert record(graph, "uses", primary["after"]["id"]) == current_bibliography_record(
+        "uses", primary["after"]
+    ), "exact declared source scope"
     for use in DATA["added_uses"]:
-        assert record(graph, "uses", use["id"]) == use, "exact declared source scope"
-    assert record(graph, "collations", DATA["collation"]["id"]) == DATA["collation"]
+        assert record(graph, "uses", use["id"]) == current_bibliography_record("uses", use), (
+            "exact declared source scope"
+        )
+    assert record(graph, "collations", DATA["collation"]["id"]) == current_bibliography_record(
+        "collations", DATA["collation"]
+    )
     comparison = before_chant_graph(
         headers.before_joachim_records(
             before_rosary_graph(
@@ -68,7 +78,7 @@ def healthy(graph):
     core = store.core(ROOT, DATA["text"])
     assert bindings.digest(core) == DATA["core_sha256"]
     subject = bindings.witness_subject(ROOT, witness, graph, core)
-    assert subject == DATA["expected_source_subject"]
+    assert before_bibliography_subject(subject, reviewable=True) == DATA["expected_source_subject"]
     assert witness["review"] == DATA["collation"]["review"] == {"status": "pending"}
     headers.assert_transcript_content(ROOT, DATA["relative"])
     apparatus = json.loads((ROOT / "witnesses" / DATA["text"] / "apparatus.json").read_text())
@@ -239,6 +249,6 @@ def test_real_public_projection_includes_bounded_claims_but_withholds_pending_re
     entries = [entry for group in text["source_groups"] for entry in group["entries"]]
     for use in [DATA["primary_use"]["after"], *DATA["added_uses"]]:
         projected = next(entry for entry in entries if entry["id"] == use["id"])
-        assert projected["claim"] == use["claim"]
+        assert projected["claim"] == current_bibliography_record("uses", use)["claim"]
         assert projected["address"] == {k: v for k, v in use["address"].items() if k != "text"}
     assert text["witnesses"] == [] and "collation" not in text

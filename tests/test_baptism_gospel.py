@@ -189,7 +189,7 @@ def test_exact_edition_metadata_does_not_renew_source_acceptance():
     uses = [u for u in graph["uses"] if u["address"].get("text") == TEXT]
     assert {u["id"].rsplit(".", 1)[1]: u["verified_on"] for u in uses} == {
         "mr1962": "2026-09-25",
-        "do44667ff": "2026-09-12",
+        "do44667ff": "2026-11-26",
     }
     witnesses = [w for w in graph["witnesses"] if w["text"] == TEXT]
     assert len(witnesses) == 2

@@ -93,7 +93,9 @@ def test_new_senses_have_individually_identified_lexical_evidence():
         assert use["role"] == "lexical_support"
         assert use["address"] == {"kind": "lemma", "lemma": lemma}
         assert use["evidence_sha256"]
-        assert "Perseus TEI entry" in use["locator"]["section"]
+        head = "fidelis (fideliter)" if lemma == "fideliter" else lemma
+        assert use["locator"]["section"].startswith(f"s.v. {head}")
+        assert "dictionary-entries.atlas_v1%3Alat.ls.perseus-eng2-" in use["locator"]["page_url"]
 
 
 REGISTER_SENSES = {

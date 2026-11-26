@@ -8,6 +8,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_bibliography_record
 
 from checks import delivery, language_packs, orations, participation, prose
 from checks.translation_provenance import canonical_hash, source_payload
@@ -119,7 +120,8 @@ def assert_source_records(graph):
             ],
             key=lambda row: row["id"],
         )
-        assert selected == FIXTURE[fixture_key], "exact source scopes and pending bindings"
+        expected = [current_bibliography_record(key, row) for row in FIXTURE[fixture_key]]
+        assert selected == expected, "exact source scopes and pending bindings"
     assert len(FIXTURE["source_uses"]) == 8
     assert all(
         row["review"] == {"status": "pending"}

@@ -5,6 +5,7 @@ import json
 from copy import deepcopy
 
 import pytest
+from edition_revision_fixture import before_bibliography_revision
 from preface_caption_fixture import restore_caption_layer
 from preface_delivery_fixture import current_source_hash
 from preface_glory_fixture import (
@@ -34,8 +35,12 @@ def load(language):
 
 
 def assert_exact_inverse(core, layer, language):
+    observed = formatted(core).encode()
+    previous = before_bibliography_revision(REL, observed)
+    assert previous != observed
     assert (
-        hashlib.sha256(formatted(restore_glory_core(core)).encode()).hexdigest() == PREVIOUS["core"]
+        hashlib.sha256(formatted(restore_glory_core(json.loads(previous))).encode()).hexdigest()
+        == PREVIOUS["core"]
     )
     assert (
         hashlib.sha256(
@@ -74,6 +79,8 @@ def test_only_the_named_glory_fields_changed(language):
         "declaration-key-order",
         "missing-word",
         "core-word",
+        "source-reading",
+        "previous-source",
         "declaration",
     ],
 )
@@ -114,6 +121,14 @@ def test_inverse_cannot_hide_unreviewed_payload(language, mutation):
         next(w for s in core["segments"] for w in s.get("words", []) if w["id"] == "w064")[
             "form"
         ] = "changed"
+    elif mutation == "source-reading":
+        method = core["editorial"]["source"]["method"]
+        assert "semper ut ubíque" in method
+        core["editorial"]["source"]["method"] = method.replace(
+            "semper ut ubíque", "semper et ubíque"
+        )
+    elif mutation == "previous-source":
+        core = json.loads(before_bibliography_revision(REL, formatted(core).encode()))
     else:
         core["localization"]["explanations"]["w065"] = {}
     with pytest.raises((AssertionError, KeyError)):

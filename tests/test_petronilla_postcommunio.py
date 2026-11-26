@@ -209,7 +209,10 @@ def test_printed_sources_are_narrow_and_pending():
         "corroborating_latin_witness",
         "p. 541",
     )
-    assert vatican["locator"]["section"] == "no.2696, Pro S. Petronilla, Postcommunio"
+    assert (
+        vatican["locator"]["section"]
+        == "Die 31 maii. Beatæ Mariæ Virginis Reginæ. Pro S. Petronilla. Postcommunio, n. 2696."
+    )
     assert all(use["address"] == {"kind": "text", "text": TEXT} for use in (benziger, vatican))
     witnesses = [row for row in graph["witnesses"] if row["text"] == TEXT]
     collations = [row for row in graph["collations"] if row["text"] == TEXT]

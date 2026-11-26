@@ -24,17 +24,18 @@ from provenance_successor_fixture import FIXTURE as SUCCESSOR
 
 from checks import transcription
 from checks.collate import collate
+from checks.raw_binding import resolve_binding
 
 ROOT = Path(__file__).resolve().parents[1]
 PA = "proprium.dominica-i-passionis-"
 TWIN = "proprium.pretiosissimi-sanguinis-domini-nostri-iesu-christi-epistola"
 ORATIONS = [PA + "collecta", PA + "secreta", PA + "postcommunio"]
 PD_LOCATORS = {
-    PA + "introitus": ("p. 253", "scan p. 269"),
-    PA + "graduale": ("p. 254", "scan p. 270"),
-    PA + "tractus": ("p. 254", "scan p. 270"),
-    PA + "offertorium": ("p. 255", "scan p. 271"),
-    PA + "evangelium": ("pp. 254–255", "scan pp. 270–271"),
+    PA + "introitus": ("p. 253", "PDF p. 269"),
+    PA + "graduale": ("p. 254", "PDF p. 270"),
+    PA + "tractus": ("p. 254", "PDF p. 270"),
+    PA + "offertorium": ("p. 255", "PDF p. 271"),
+    PA + "evangelium": ("pp. 254–255", "PDF pp. 270–271"),
 }
 PD_CLAIMS = {
     PA + "introitus": (
@@ -48,9 +49,9 @@ PD_CLAIMS = {
         "Liberátor meus, Dómine), the wrathful nations, those who rise against me."
     ),
     PA + "tractus": (
-        "Historical English basis of the Tract (the Douay Ps 128:1–4 through this missal), "
-        "revised against the Latin: sinners (peccatóres), their iniquities, has cut (the "
-        "Missal prints concídit)."
+        "The 1846 English Tract reads “the wicked”, “their iniquity” and “will cut the necks "
+        "of sinners”. The current English follows peccatóres, iniquitátes and concídit in the "
+        "1962 Latin and gives “sinners”, “their iniquities” and “has cut”."
     ),
     PA + "offertorium": (
         "Historical English basis of the Offertory (the Douay Ps 118:17, 107 through this "
@@ -241,6 +242,11 @@ def test_the_revised_english_names_its_historical_basis(text):
     assert len(found) == 1 and found[0]["edition"] == "edition.the-missal-for-the-laity-1846"
     locator = found[0]["locator"]
     assert (locator["printed"], locator["scan"]) == PD_LOCATORS[text]
+    first_page = re.findall(r"\d+", PD_LOCATORS[text][1])[0]
+    assert locator["page_url"] == (
+        "https://archive.org/download/TheMissalForTheLaity/TheMissalForTheLaity.pdf"
+        f"#page={first_page}"
+    )
     assert found[0]["evidence_sha256"] == LAITY_SHA
     assert found[0]["claim"] == PD_CLAIMS[text]
 
@@ -292,7 +298,15 @@ def test_the_common_preface_tail_names_its_basis_in_every_preface(text):
         assert provenance[f"{text}.{segment}.en"]["origin"] == "public-domain"
         use = uses[f"use.en.{text}.{segment}.fpb1839"]
         assert use["edition"] == "edition.the-family-prayer-book-1839"
-        assert use["locator"] == {"printed": "p. 79", "scan": "scan p. 110"}
+        assert use["locator"] == {
+            "printed": "p. 79",
+            "scan": "PDF p. 110",
+            "page_url": (
+                "https://commons.wikimedia.org/wiki/File:The_family_prayer-book,"
+                "_containing_all_the_public_and_private_devotions_in_use_amongst_"
+                "English_Catholics._(IA_TheFamilyPrayerBookContaining).pdf?page=110"
+            ),
+        }
         assert use["evidence_sha256"] == FPB_SHA
     assert_tail_basis_scope(text, load("languages/en/translation-basis.json")["records"])
 
@@ -345,11 +359,13 @@ def test_preface_tail_and_successor_scopes_reject_real_damage(damage):
     assert_tail_basis_scope(text, records)
 
 
-def test_the_introit_method_states_that_its_raw_binding_is_pending():
-    method = core(PA + "introitus")["editorial"]["source"]["method"]
-    assert "bound to its raw archive" not in method
-    assert "raw binding is pending (its reading divides deduxérunt into two words" in method
-    assert "the raw binding is pending" in witness(PA + "introitus", "do")
+def test_the_print_and_pinned_digital_introit_keep_their_actual_word_division():
+    text = PA + "introitus"
+    method = core(text)["editorial"]["source"]["method"]
+    assert "de duxérunt in the psalm verse (line 17)" in method
+    assert "ipsa me de duxérunt et adduxérunt" in witness(text, "do")
+    assert "ipsa me deduxérunt, et adduxérunt" in witness(text, "mr")
+    assert resolve_binding(ROOT / "witnesses" / text / "do.txt", ROOT) is None
 
 
 def test_the_offertory_reads_vivam_as_a_future_in_both_languages():

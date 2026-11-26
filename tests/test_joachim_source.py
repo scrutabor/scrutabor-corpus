@@ -549,11 +549,23 @@ def test_pending_native_and_reader_boundaries_do_not_promote_source_review(sourc
     doc = json.loads((root / F["core"]).read_bytes())
     assert subject["contract"] == "witness-review-2"
     mr = record(graph, "witnesses", F["mr_id"])
-    assert "source_dependencies" not in mr
+    assert mr["source_dependencies"] == {"uses": [], "raw_binding": None}
+    printed = witness_subject(root, mr, graph, doc)
+    assert printed["contract"] == "witness-review-2" and printed["raw_resolution"] is None
+    assert set(printed["source_uses"]) == {mr["use"]}
+    locator = printed["source_uses"][mr["use"]]["use"]["locator"]
+    assert locator["printed"] == "p. 642"
+    assert (
+        locator["page_url"] == "https://archive.org/details/missale-romanum-1962/page/n723/mode/1up"
+    )
+
+    incomplete_graph = deepcopy(graph)
+    incomplete = record(incomplete_graph, "witnesses", F["mr_id"])
+    del incomplete["source_dependencies"]
     with pytest.raises(
         BindingError, match="complete explicit source_dependencies declaration required"
     ):
-        witness_subject(root, mr, graph, doc)
+        witness_subject(root, incomplete, incomplete_graph, doc)
     assert all(
         r["review"] == {"status": "pending"} for r in graph["witnesses"] + graph["collations"]
     )

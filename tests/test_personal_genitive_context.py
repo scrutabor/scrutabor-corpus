@@ -471,8 +471,11 @@ def test_emphatic_compound_uses_personal_components_not_adjective_paradigm():
 
 def test_compound_components_have_precise_dictionary_evidence():
     graph = read_json("bibliography/graph.json")
-    uses = [u for u in graph["uses"] if u["id"] == "use.lemma.meipse.lewis-short.1879"]
-    assert len(uses) == 1
-    assert uses[0]["address"] == {"kind": "lemma", "lemma": "meipse"}
-    assert uses[0]["role"] == "lexical_support"
-    assert uses[0]["digital_item"] == "item.lewis-short.perseus.40038e4.eng1"
+    uses = [u for u in graph["uses"] if u["address"].get("lemma") == "meipse"]
+    assert {u["locator"]["section"] for u in uses} == {"s.v. ego (me)", "s.v. ipse"}
+    for use in uses:
+        assert use["address"] == {"kind": "lemma", "lemma": "meipse"}
+        assert use["role"] == "lexical_support"
+        assert use["digital_item"] == "item.lewis-short.perseus.40038e4.eng2"
+        article = "n15326" if use["locator"]["section"] == "s.v. ego (me)" else "n24872"
+        assert use["locator"]["page_url"].endswith(f"lat.ls.perseus-eng2-{article}/")

@@ -98,10 +98,13 @@ def test_missal_page_locators_name_their_leaf():
     seen = 0
     for use in graph()["uses"]:
         locator = use["locator"]
-        first = re.match(r"leaves? (n\d+)", locator.get("scan", ""))
+        first = re.search(r"\b(?:leaf|leaves)\s+n(\d+)\b", locator.get("scan", ""), re.I)
         if use["edition"] != MISSAL or not first or "page_url" not in locator:
             continue
-        assert f"/page/{first[1]}/" in locator["page_url"], use["id"]
+        leaf = int(first[1])
+        assert locator["page_url"] == (
+            f"https://archive.org/details/missale-romanum-1962/page/n{leaf}/mode/1up"
+        ), use["id"]
         seen += 1
     assert seen > 40
 
@@ -146,7 +149,11 @@ def test_baptist_secret_declares_its_abbreviated_print_and_separate_expansion():
     assert formula["role"] == "direct_approved_print"
     transcript = (ROOT / f"witnesses/{JOHN_SECRET}/mr.txt").read_text()
     assert "Qui tecum vivit. only" in transcript
-    assert "house accents" in transcript
+    assert "per omnia sæcula sæculorum. Amen; without stress marks" in transcript
+    body = [line for line in transcript.splitlines() if line and not line.startswith("#")]
+    assert len(body) == 1
+    assert "Dóminum nostrum Iesum Christum Fílium tuum: Qui tecum vivit" in body[0]
+    assert body[0].endswith("per ómnia sǽcula sæculórum. Amen.")
 
 
 def test_baptist_secret_apparatus_quotes_original_accidentals_without_changing_latin():

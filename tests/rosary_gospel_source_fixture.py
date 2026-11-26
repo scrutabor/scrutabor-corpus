@@ -4,6 +4,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_bibliography_record, before_bibliography_records
+
 DATA = json.loads((Path(__file__).parent / "fixtures/rosary-gospel-source.json").read_bytes())
 
 
@@ -28,7 +30,7 @@ def before_rosary_registry(registry):
 
 
 def before_rosary_records(value):
-    result = deepcopy(value)
+    result = before_bibliography_records(value)
     rows = {row["id"]: row for row in DATA["records"]}
     witness_id = next(row["id"] for row in DATA["records"] if row["collection"] == "witnesses")
 
@@ -84,5 +86,7 @@ def before_rosary_records(value):
 def before_rosary_graph(graph):
     for rule in DATA["records"]:
         matches = [row for row in graph[rule["collection"]] if row["id"] == rule["id"]]
-        assert matches == [rule["after"]], "complete Rosary graph record"
+        assert [before_bibliography_record(rule["collection"], row) for row in matches] == [
+            rule["after"]
+        ], "complete Rosary graph record"
     return before_rosary_records(graph)

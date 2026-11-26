@@ -4,6 +4,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_bibliography_record
+
 DATA = json.loads((Path(__file__).parent / "fixtures/thomas-simon-chant-sources.json").read_bytes())
 ROWS = DATA["rows"]
 
@@ -31,9 +33,10 @@ def before_chant_graph(graph):
             matches = [
                 item for item in historical[collection] if item["id"] == change["after"]["id"]
             ]
-            assert len(matches) == 1 and matches[0] == change["after"], (
-                "exact two-chant graph successor"
-            )
+            assert (
+                len(matches) == 1
+                and before_bibliography_record(collection, matches[0]) == change["after"]
+            ), "exact two-chant graph successor"
             matches[0].clear()
             matches[0].update(deepcopy(change["before"]))
     return historical

@@ -8,7 +8,11 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import before_edition_layer, before_edition_target_row
+from edition_revision_fixture import (
+    before_bibliography_revision,
+    before_edition_layer,
+    before_edition_target_row,
+)
 from english_register_successor_fixture import before_english_register_text_layer
 from negative_government_fixture import predecessor_layer, predecessor_rows
 from possessive_sweep_b3_successor_fixture import before_possessive_b3_layer
@@ -17,6 +21,7 @@ from possessive_sweep_b4_successor_fixture import before_possessive_b4_layer
 from build_reader import emit, store
 from build_reader.layers import enrich_layer, expand_core
 from checks import interlinear, language_packs, prose
+from checks.layout import formatted
 from checks.translation_provenance import canonical_hash, source_payload
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -139,7 +144,9 @@ def compact(core, layer):
 def test_complete_real_layer_native_reader_and_predecessor_identity(case):
     core, layer = load(case)
     saved = deepcopy((core, layer, FIXTURE))
-    assert canonical_hash(core) == case["core_sha256"]
+    relative = "texts/" + case["text"].replace(".", "/", 1) + ".json"
+    previous = before_bibliography_revision(relative, formatted(core).encode())
+    assert canonical_hash(json.loads(previous)) == case["core_sha256"]
     shape(core, layer)
     preserved(layer, case)
     assert {

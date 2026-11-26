@@ -9,6 +9,7 @@ from pathlib import Path
 
 import pytest
 from documentary_successor_fixture import before_additional_records, before_additional_registry
+from edition_revision_fixture import current_bibliography_record
 from lateran_epistle_source_fixture import before_lateran_graph, before_lateran_registry
 from marian_gospel_fixture import predecessor_core
 from rosary_gospel_source_fixture import (
@@ -79,7 +80,9 @@ def healthy(state):
     assert reading is not None
     assert normalized(asdict(reading), root) == DATA["expected_reading"]
     for row in DATA["records"]:
-        assert [r for r in graph[row["collection"]] if r["id"] == row["id"]] == [row["after"]]
+        assert [r for r in graph[row["collection"]] if r["id"] == row["id"]] == [
+            current_bibliography_record(row["collection"], row["after"])
+        ]
     doc = json.loads((root / DATA["core"]).read_bytes())
     assert digest(predecessor_core(doc)) == DATA["before_core_sha256"]
     assert (

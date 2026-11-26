@@ -103,8 +103,8 @@ def test_the_new_polish_basis_is_the_actual_drop_page_not_the_opening_page():
         assert use["edition"] == "edition.katolik-w-modlitwie-1902"
         assert use["digital_item"] == "item.katolik-w-modlitwie-1902.obc"
         assert use["role"] == "historical_wording_basis"
-        assert use["locator"]["printed"] == "p. 156"
-        assert use["locator"]["scan"] == "physical PDF p. 170 (one-based)"
+        assert use["locator"]["printed"] == "s. 156"
+        assert use["locator"]["scan"] == "PDF, s. 170"
         assert (
             use["evidence_sha256"]
             == "5e6e47a1bef9d2d08dba2b4f45cc51ad463209827522e35a34abdc262fefac15"
@@ -163,13 +163,14 @@ def test_latin_printed_lineation_and_generic_belief_are_preserved():
 
 
 def assert_polish_drop_locator(use):
-    assert use["locator"]["printed"] == "p. 156"
-    assert use["locator"]["scan"] == "physical PDF p. 170 (one-based)"
+    assert use["locator"]["printed"] == "s. 156"
+    assert use["locator"]["scan"] == "PDF, s. 170"
+    assert (
+        use["locator"]["page_url"] == "https://obc.opole.pl/Content/12961/PDF/10097s.pdf#page=170"
+    )
 
 
-@pytest.mark.parametrize(
-    "field,wrong", [("printed", "p. 154"), ("scan", "physical PDF p. 168 (one-based)")]
-)
+@pytest.mark.parametrize("field,wrong", [("printed", "s. 154"), ("scan", "PDF, s. 168")])
 def test_an_opening_page_cannot_support_the_polish_drop_clause(field, wrong):
     use = next(
         use

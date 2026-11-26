@@ -750,10 +750,14 @@ def test_actual_witness_coverage_and_subject_are_not_review_stamps(
             "direct_approved_print" if kind == "ordinary" else "corroborating_latin_witness"
         )
         assert use["locator"]["printed"] == ("222" if kind == "ordinary" else "139")
-    expected = {"kind": "words", "words": WORDS[3:18]} if name == "mr-partial" else {"kind": "full"}
+    expected = {"kind": "words", "words": WORDS[:18]} if name == "mr-partial" else {"kind": "full"}
     assert row["coverage"] == expected, f"witness-coverage:{kind}:{name}"
     transcript = root / "witnesses" / TEXTS[kind] / f"{name}.txt"
     assert row["transcription_sha256"] == transcript_digest(transcript.read_text(encoding="utf-8"))
+    if name == "mr-partial":
+        words = load_witness(transcript)[1].split()
+        assert words[:3] == ["Iube,", "domne,", "benedícere."]
+        assert words[-2:] == ["annuntiétis", "evangélium"]
     subject = witness_subject(root, row, graph, core(kind, root))
     assert subject["contract"] == "witness-review-2"
     if row["review"]["status"] == "reviewed":

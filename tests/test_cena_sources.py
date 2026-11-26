@@ -45,10 +45,10 @@ SHA = {
     "husenbeth1853": "64dda22f4b0753135be1112b8bd36eab7fbb9c92586c2fc2d831c0a4b7f65d8a",
 }
 PD = {
-    CE + "collecta": (HUSENBETH, "p. 281", "scan p. 308", "tuæ propitiatiónis efféctum"),
-    CE + "epistola": (LAITY, "pp. 314–315", "scan pp. 330–331", "the new covenant"),
-    CE + "evangelium": (LAITY, "pp. 315–316", "scan pp. 331–332", "during supper (cena facta)"),
-    CE + "communio": (LAITY, "pp. 316–317", "scan pp. 332–333", "ut et vos ita faciátis"),
+    CE + "collecta": (HUSENBETH, "p. 281", "PDF p. 308", "tuæ propitiatiónis efféctum"),
+    CE + "epistola": (LAITY, "pp. 314–315", "PDF pp. 330–331", "the new covenant"),
+    CE + "evangelium": (LAITY, "pp. 315–316", "PDF pp. 331–332", "during supper (cena facta)"),
+    CE + "communio": (LAITY, "pp. 316–317", "PDF pp. 332–333", "ut et vos ita faciátis"),
 }
 RG_LITERAL = (
     "Qui tecum vivit et regnat in unitate Spiritus Sancti, Deus, per omnia sæcula sæculorum. Amen;"

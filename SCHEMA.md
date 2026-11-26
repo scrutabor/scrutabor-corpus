@@ -927,6 +927,26 @@ Neutral uses reject this field so a one-language note cannot leak into both
 readers. The note stays attached to its use in the lazy reader evidence and
 must remain visible when identical citations are grouped.
 
+An online item can record its access date in `accessed_on` (YYYY-MM-DD).
+This date describes consultation of the item. A publication date or revision
+belongs to the edition.
+
+A line-addressed electronic source may give ordered `locator.passages`. Each
+passage has its source `heading` and an HTTPS `url` ending in a one-based
+`#L12` or `#L12-L15` range. The first passage opens at `page_url`.
+A passage can lead to another file when the edition prints a reference and
+supplies the words elsewhere. The original section locator retains any
+additional coordinates within the line.
+
+Bibliography schema **1.7.0** supports additional imprints as ordered
+`{place, publisher}` pairs and publication events as `{kind, date}` records.
+A date is a four-digit year or an ISO calendar date. The event identifies a
+copyright, imprimatur, decree establishing the typical edition, digital
+revision, or the year of the edition reprinted. The principal `year` field
+still describes the cited edition. An undated reproduction can use `s.a.`
+and give the date of its source separately. The reader retains contributor
+credits, volume designations and each place–publisher pairing.
+
 The reader projection is an allowlist. It omits evidence-image hashes,
 owner-held inventory ids, migration pointers, editorial decisions and their
 reasons, raw transcriptions, and archive paths. During the transition it emits

@@ -11,7 +11,12 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import LAYER_CHANGES, before_edition_layer, before_reading_layer
+from edition_revision_fixture import (
+    LAYER_CHANGES,
+    before_edition_layer,
+    before_reading_layer,
+    current_bibliography_record,
+)
 from gospel_delivery_fixture import (
     current_sung_expected_row,
     current_sung_source_hash,
@@ -381,7 +386,8 @@ def test_all_eleven_latin_additions_and_two_english_admissions_are_exact():
             "Verified against the specified passages of the approved 1962 printing; "
             "witness review remains pending."
         )
-    for use in FIXTURE["historical_english_uses"]:
+    for previous in FIXTURE["historical_english_uses"]:
+        use = current_bibliography_record("uses", previous)
         assert [row for row in packages["en"]["uses"] if row["id"] == use["id"]] == [use]
         assert not any(row["id"] == use["id"] for row in packages["pl"]["uses"])
         assert use["role"] == "historical_wording_basis"
@@ -419,7 +425,7 @@ def test_real_wording_scanner_rejects_source_scope_loss(damage, monkeypatch):
     original = bibliography.load(ROOT)
     pristine = deepcopy((FIXTURE, original))
     graph, packages = deepcopy(original)
-    use = FIXTURE["historical_english_uses"][0]
+    use = current_bibliography_record("uses", FIXTURE["historical_english_uses"][0])
     selected = next(row for row in packages["en"]["uses"] if row["id"] == use["id"])
     assert selected == use
     site = use["address"]["text"] + "." + use["address"]["segment"] + ".en"

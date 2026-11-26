@@ -164,9 +164,31 @@ def test_the_commemoration_of_st_anastasia_is_announced_as_printed():
         A + "secreta": ["Pro S. Anastasia."],
         A + "postcommunio": ["Pro S. Anastasia."],
     }
-    header = witness(A + "postcommunio", "do")
+    text = A + "postcommunio"
+    header = witness(text, "do")
+    raw = (ROOT / "witnesses/raw/do-Sancti-12-25m2.txt").read_text().splitlines()
+    assert raw[67:70] == [
+        "[Commemoratio Postcommunio]",
+        "!Pro S. Anastasia",
+        "@Commune/C6b:Postcommunio",
+    ]
     assert "@Commune/C6b:Postcommunio" in header
-    assert "Commune/C6a.txt [Postcommunio], line 89" in header
+    assert "C6b.txt [Postcommunio] (lines 42-44) gives Præsta nobis" in header
+    assert "C6a.txt [Postcommunio] (lines 88-90)" in header
+    common = (ROOT / "witnesses/raw/do-Commune-C6a.txt").read_text().splitlines()
+    assert common[87] == "[Postcommunio]" and common[88].startswith("Satiásti, Dómine,")
+    assert bodies(text, "do")[1].startswith(common[88] + " ")
+    locator = uses(text)["do44667ff"]["locator"]
+    base = "https://github.com/DivinumOfficium/divinum-officium/blob/44667ff518b8ff1439780470828b39714f5306a2/web/www/"
+    assert locator["page_url"] == base + "missa/Latin/Sancti/12-25m2.txt#L64-L66"
+    assert [(p["heading"], p["url"].removeprefix(base)) for p in locator["passages"]] == [
+        ("Postcommunio", "missa/Latin/Sancti/12-25m2.txt#L64-L66"),
+        ("Per eundem", "missa/Latin/Ordo/Prayers.txt#L111-L113"),
+        ("Commemoratio Postcommunio", "missa/Latin/Sancti/12-25m2.txt#L68-L70"),
+        ("Postcommunio (Præsta nobis)", "horas/Latin/Commune/C6b.txt#L42-L44"),
+        ("Postcommunio (Satiásti)", "horas/Latin/Commune/C6a.txt#L88-L90"),
+        ("Per Dominum", "missa/Latin/Ordo/Prayers.txt#L95-L97"),
+    ]
 
 
 @pytest.mark.parametrize("text,cue", INTROITS)

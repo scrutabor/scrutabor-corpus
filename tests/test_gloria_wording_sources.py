@@ -10,7 +10,7 @@ from build_reader import bibliography
 ROOT = Path(__file__).resolve().parents[1]
 TEXT = "ordinarium.gloria"
 EDITION = "edition.pamiatka-missyi-dla-ludu-katolickiego-1903"
-URL = "https://sbc.org.pl/dlibra/publication/337480/edition/318796/pamiatka-missyi-dla-ludu-katolickiego"
+URL = "https://sbc.org.pl/Content/318796/PDF/Publikacja-KC-8251.pdf#page=49"
 
 # Pamiątka Missyi (1903), printed p. 46 / PDF physical p. 49.
 # These are bounded source observations. The two complete 1903 clauses are
@@ -79,10 +79,10 @@ def test_partial_gloria_witness_keeps_exact_scope_and_current_prayer(segment, so
     assert use["decision"] == "RETAIN_WITH_CORRECTION"
     assert use["address"] == {"kind": "segment", "text": TEXT, "segment": segment}
     assert use["claim"] == claim
-    assert use["verified_on"] == ("2026-11-04" if segment in {"s05", "s12"} else "2026-10-26")
+    assert use["verified_on"] == "2026-11-25"
     assert use["locator"] == {
-        "printed": "druk. s. 46",
-        "scan": "PDF s. 49",
+        "printed": "s. 46",
+        "scan": "PDF, s. 49",
         "page_url": URL,
         "section": section,
     }
@@ -125,7 +125,7 @@ def test_english_gloria_confession_keeps_its_own_source_scope():
     assert use["role"] == "historical_wording_basis"
     assert use["decision"] == "RETAIN_WITH_CORRECTION"
     assert use["locator"]["printed"] == "pp. 65–66"
-    assert use["locator"]["scan"] == "scan pp. 96–97"
+    assert use["locator"]["scan"] == "PDF pp. 96–97"
     assert "Christ alone is holy, Lord and Most High" in use["claim"]
     assert "revision, not a verbatim transcription" in use["claim"]
     assert "right hand" not in use["claim"]

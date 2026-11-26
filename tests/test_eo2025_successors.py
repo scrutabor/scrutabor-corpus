@@ -141,7 +141,9 @@ def test_current_full_witness_has_exact_pending_pdf_inventory(actual, row):
     assert use["evidence_sha256"] == row["document"]["page_image_sha256"]
     assert use["role"] == "corroborating_latin_witness"
     assert use["address"] == {"kind": "text", "text": row["text"]}
-    assert use["verified_on"] == "2026-10-24"
+    assert use["verified_on"] == "2026-11-26"
+    pdf = "https://extraordinaryform.org/handmissals/HandMissalChant.pdf"
+    assert use["locator"]["page_url"] == f"{pdf}#page={row['document']['pdf_page']}"
     assert "unretained August" in use["claim"]
 
 

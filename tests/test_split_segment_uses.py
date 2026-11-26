@@ -13,6 +13,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_bibliography_record, current_bibliography_record
 from split_segment_uses_successor_fixture import (
     DATA,
     FILES,
@@ -53,8 +54,8 @@ def test_each_new_segment_record_is_its_parent_at_the_new_segment(row):
     uses = current(row["file"])["uses"]
     matches = [use for use in uses if use["id"] == row["row"]["id"]]
     parents = [use for use in uses if use["id"] == row["parent"]]
-    assert matches == [row["row"]] and len(parents) == 1
-    parent = parents[0]
+    assert matches == [current_bibliography_record("uses", row["row"])] and len(parents) == 1
+    parent = before_bibliography_record("uses", parents[0])
     text = parent["address"]["text"]
     kept, new = DIVISIONS[text]
     assert parent["address"] == {"kind": "segment", "text": text, "segment": kept}
@@ -145,4 +146,7 @@ def test_the_reader_shows_one_source_for_both_halves(reader_out):
             "kind": "segment",
             "segment": row["row"]["address"]["segment"],
         }
-        assert entries[row["row"]["id"]]["claim"] == entries[row["parent"]]["claim"]
+        sources = by_id(current(row["file"]))
+        for identifier in (row["parent"], row["row"]["id"]):
+            assert entries[identifier]["claim"] == sources[identifier]["claim"]
+        assert sources[row["parent"]]["locator"] == sources[row["row"]["id"]]["locator"]

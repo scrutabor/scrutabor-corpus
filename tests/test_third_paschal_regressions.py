@@ -5,6 +5,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_bibliography_record
 from gospel_delivery_fixture import current_gospel_selected_hash
 from provenance_successor_fixture import assert_protection_scope
 
@@ -81,6 +82,7 @@ PAGES = {
     22: "b511f3aa4016b387d2995b5089e15aa62593c04118052ef48dcc09352fcf769c",
     298: "ee8d1c45f6cc759518ae59a1dd047dfa80033904ba5ce1799fbaa2334df9ee55",
 }
+BENZIGER_PDF = "8e5311d636452dcfb0d5651b426702571114570969efe46a42594bdd05d01716"
 SOURCE_HASHES = {
     "introitus": "e13fa197788db161ecfa4e062d253872da662e6ad306553aafa8bc47b9eed96d",
     "collecta": "c8edae0d633dca70032f7e5d045a0e6ae515feaf4f85864937fe25aca281d266",
@@ -340,7 +342,11 @@ def assert_composite(data, role, transcript, apparatus):
     assert common["locator"]["printed"] == "p. " + printed
     assert common["locator"]["scan"] == f"leaf n{leaf} / PDF p. {leaf + 1}"
     assert common["locator"]["page_url"].endswith(f"/page/n{leaf}/mode/1up")
-    assert common["evidence_sha256"] == PAGES[leaf]
+    if role == "introitus":
+        assert common["evidence_sha256"] == BENZIGER_PDF
+        assert before_bibliography_record("uses", common)["evidence_sha256"] == PAGES[leaf]
+    else:
+        assert common["evidence_sha256"] == PAGES[leaf]
     assert "# composite-corrected:" in transcript and "# source-spans:" in transcript
     assert "# orthography: literal contributing-source" in transcript
     if role == "introitus":
@@ -376,7 +382,7 @@ def test_proper_and_common_spans_are_honest_and_pending(role):
 
 @pytest.mark.parametrize("role", COMPOSITES)
 @pytest.mark.parametrize(
-    "damage", ["blanket-claim", "dependency", "review", "edition", "raw", "apparatus"]
+    "damage", ["blanket-claim", "dependency", "review", "edition", "evidence", "raw", "apparatus"]
 )
 def test_source_scope_damage_is_rejected_and_original_restored(role, damage):
     good = load("bibliography/graph.json")
@@ -397,11 +403,14 @@ def test_source_scope_damage_is_rejected_and_original_restored(role, damage):
         witness["source_dependencies"]["uses"].pop()
     elif damage == "review":
         witness["review"] = {"status": "reviewed", "sha256": witness["transcription_sha256"]}
-    elif damage == "edition":
+    elif damage in {"edition", "evidence"}:
         common = next(
             u for u in bad["uses"] if u["id"] == witness["source_dependencies"]["uses"][0]
         )
-        common["edition"] = "edition.unrelated"
+        if damage == "edition":
+            common["edition"] = "edition.unrelated"
+        else:
+            common["evidence_sha256"] = PAGES[298] if role == "introitus" else BENZIGER_PDF
     elif damage == "raw":
         changed_transcript += "Unprinted addition.\n"
     else:

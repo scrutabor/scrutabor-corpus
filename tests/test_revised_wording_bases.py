@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pytest
 from canon_consecration_successor_fixture import current_canon_row
+from edition_revision_fixture import current_bibliography_record
 
 from build_reader import bibliography, store
 from checks import translation_provenance
@@ -66,7 +67,7 @@ def current_expected_use(record):
             ),
             verified_on="2026-11-06",
         )
-    return expected
+    return current_bibliography_record("uses", expected)
 
 
 def current_expected_provenance(record):
@@ -296,14 +297,14 @@ def test_withdrawn_basis_rejects_false_origin_promotion_and_recovers(
 )
 @pytest.mark.parametrize("damage", ["old-pages", "old-publication"])
 def test_ave_revised_basis_rejects_old_page_and_publication_identity(record, damage):
-    original = copy.deepcopy(record["use"])
+    original = current_expected_use(record)
     mutant = copy.deepcopy(original)
     assert_source_record(original, record)
     if damage == "old-pages":
         mutant["locator"]["printed"] = "druk. s. 130"
         mutant["locator"]["scan"] = "PDF s. 144"
     else:
-        mutant["locator"]["page_url"] = mutant["locator"]["page_url"].replace("13965", "13065")
+        mutant["locator"]["page_url"] = "https://obc.opole.pl/Content/13065/PDF/13065.pdf#page=144"
     with pytest.raises(AssertionError):
         assert_source_record(mutant, record)
     mutant.clear()

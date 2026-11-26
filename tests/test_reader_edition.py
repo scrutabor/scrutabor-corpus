@@ -153,16 +153,17 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(emitted_book
         # Polish Regina caeli s02 Katechizm attachment leaves.
         # Source-scope corrections withdraw another 25 English and five Polish attachments.
         "legacy": 2742,
-        "mapped": 1871,
-        "kept": 1586,
-        "excluded": 1156,
+        "mapped": 1883,
+        # Ten additional attachments named wording absent from the cited printed passages.
+        "kept": 1588,
+        "excluded": 1154,
         "unresolved": 0,
         "rejected_exposed": 0,
     }
     assert written["evidence_coverage"] == {
         # Both Requiem texts have retained Latin and language-specific evidence.
         "neutral": {
-            "normalized": 1217,
+            "normalized": 1223,
             "texts": 1223,
         },  # Adoro te devote carries normalized graph evidence (2026-11-01)
         "languages": {
@@ -170,7 +171,7 @@ def test_reader_build_names_evidence_coverage_and_rejected_exposure(emitted_book
             # English Memorare has no retained localized historical wording use.
             # Aylward's Stabat Mater adds an English wording source.
             "en": {"normalized": 247, "effective": 1223, "texts": 1223},
-            "pl": {"normalized": 107, "effective": 1221, "texts": 1223},
+            "pl": {"normalized": 108, "effective": 1223, "texts": 1223},
         },
     }
 

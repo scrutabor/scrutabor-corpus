@@ -352,8 +352,17 @@ def test_dialogue_rubric_use_binds_the_page_that_prints_it():
 def test_enchiridion_records_locate_their_pages():
     value = graph()
     deus = use(value, DEUS_REFUGIUM_USE)
-    assert deus["locator"] == {"printed": "p. 520", "scan": "PDF scan 541", "section": "n. 675"}
-    assert deus["verified_on"] == "2026-11-04"
+    pdf = (
+        "https://archive.org/download/enchiridion_indulgentiarum_1952/"
+        "enchiridion_indulgentiarum_1952.pdf"
+    )
+    assert deus["locator"] == {
+        "printed": "p. 520",
+        "scan": "PDF scan 541",
+        "section": "n. 675",
+        "page_url": f"{pdf}#page=541",
+    }
+    assert deus["verified_on"] == "2026-11-26"
     assert deus["claim"] == (
         "The page prints the complete Latin collect. This edition follows that formula with "
         "house accents/ligatures, retains genetrix/eundem for printed genitrix/eumdem, and keeps "
@@ -366,7 +375,12 @@ def test_enchiridion_records_locate_their_pages():
     historical = before_edition_object(GRAPH, value)
     assert "PDF scan 541" in use(historical, DEUS_REFUGIUM_USE)["decision_reason"]
     cor = use(value, COR_IESU_USE)
-    assert cor["locator"] == {"printed": "p. 521", "scan": "PDF scan 542", "section": "n. 675"}
+    assert cor["locator"] == {
+        "printed": "p. 521",
+        "scan": "PDF scan 542",
+        "section": "n. 675",
+        "page_url": f"{pdf}#page=542",
+    }
     assert "si addatur ter" in cor["claim"] and "directed" not in cor["claim"]
 
 

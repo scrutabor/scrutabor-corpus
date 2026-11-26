@@ -440,7 +440,14 @@ def test_pending_witness_and_collation_dependencies(text):
     subjects = {}
     for witness in witnesses:
         assert witness["review"] == {"status": "pending"}
-        assert witness["source_dependencies"]["uses"] == []
+        expected_uses = []
+        if text == INTROIT and witness["transcription"] == "mr":
+            formula = f"use.{INTROIT}.gloria-formula-and-repetition.mr1962"
+            source = next(u for u in graph["uses"] if u["id"] == formula)
+            assert source["address"] == {"kind": "word", "text": INTROIT, "word": "w038"}
+            assert source["locator"]["printed"] == "p. 1"
+            expected_uses = [formula]
+        assert witness["source_dependencies"]["uses"] == expected_uses
         assert (witness["source_dependencies"]["raw_binding"] is None) == (
             witness["transcription"] == "mr"
         )
@@ -622,7 +629,12 @@ def test_offertory_explains_its_addressee_with_a_liturgical_source():
     uses = [u for u in graph["uses"] if u["address"] == address]
     assert [u["id"] for u in uses] == [f"use.{OFFERTORY}.addressee.lu1961"]
     assert uses[0]["role"] == "official_liturgical_context"
-    assert uses[0]["locator"] == {"printed": "pp. 1365, 1258", "scan": "PDF pp. 1569, 1452"}
+    assert uses[0]["digital_item"] == "item.liber-usualis.1961.ia"
+    assert uses[0]["locator"] == {
+        "printed": "pp. 1365, 1258",
+        "scan": "PDF pp. 1569, 1452",
+        "page_url": "https://archive.org/details/TheLiberUsualis1961/page/n1568/mode/1up",
+    }
     for language, marker in (("pl", "o Maryi"), ("en", "of Mary")):
         words = store.raw_layer(ROOT, language, OFFERTORY)["words"]
         explanation = words["w009"]["explanation"]

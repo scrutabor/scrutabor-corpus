@@ -4,6 +4,7 @@ import hashlib
 import re
 from copy import deepcopy
 from typing import TypedDict
+from urllib.parse import quote
 
 from checks.normalize import substantive
 
@@ -31,6 +32,7 @@ class Scope(TypedDict):
     address: dict
     claim: str
     section: str
+    passage_hint: str
     container: str
     coverage: dict
     words: list[str]
@@ -42,6 +44,7 @@ class Scope(TypedDict):
 # Sub tuum has no graph witness here; its separate source claim is not upgraded.
 SCOPES: dict[str, Scope] = {
     "orationes.actus-contritionis": {
+        "passage_hint": "Deus meus, ex toto corde pænitet me",
         "use": "use.orationes.actus-contritionis.compendium-2005",
         "witness": "witness.orationes.actus-contritionis.compendium-2005",
         "address": {"kind": "text", "text": "orationes.actus-contritionis"},
@@ -116,6 +119,7 @@ SCOPES: dict[str, Scope] = {
         "Amen.",
     },
     "orationes.angele-dei": {
+        "passage_hint": "qui custos es mei",
         "use": "use.orationes.angele-dei.compendium-2005",
         "witness": "witness.orationes.angele-dei.compendium-2005",
         "address": {"kind": "text", "text": "orationes.angele-dei"},
@@ -147,6 +151,7 @@ SCOPES: dict[str, Scope] = {
         "custódi, rege et gubérna. Amen.",
     },
     "orationes.anima-christi": {
+        "passage_hint": "Ánima Christi, sanctífica me",
         "use": "use.orationes.anima-christi.compendium-2005",
         "witness": "witness.orationes.anima-christi.compendium-2005",
         "address": {"kind": "text", "text": "orationes.anima-christi"},
@@ -232,6 +237,7 @@ SCOPES: dict[str, Scope] = {
         "sæcula sæculórum. Amen",
     },
     "orationes.magnificat": {
+        "passage_hint": "Ábraham et sémini eius in sæcula.",
         "use": "use.orationes.magnificat.compendium-2005",
         "witness": "witness.orationes.magnificat.compendium-2005",
         "address": {"kind": "word", "text": "orationes.magnificat", "word": "w090"},
@@ -292,6 +298,7 @@ SCOPES: dict[str, Scope] = {
         "et in sæcula sæculórum. Amen.",
     },
     "orationes.memorare": {
+        "passage_hint": "Memoráre, o piíssima Virgo María",
         "use": "use.orationes.memorare.compendium-2005",
         "witness": "witness.orationes.memorare.compendium-2005",
         "address": {"kind": "text", "text": "orationes.memorare"},
@@ -364,6 +371,7 @@ SCOPES: dict[str, Scope] = {
         "despícere; sed áudi propítia et exáudi. Amen.",
     },
     "orationes.symbolum-apostolorum": {
+        "passage_hint": "Credo in Deum Patrem omnipoténtem",
         "use": "use.orationes.symbolum-apostolorum.compendium-2005",
         "witness": ("witness.orationes.symbolum-apostolorum.compendium-2005"),
         "address": {"kind": "word", "text": "orationes.symbolum-apostolorum", "word": "w001"},
@@ -515,6 +523,7 @@ SCOPES: dict[str, Scope] = {
         "iudicáre vivos et mórtuos.",
     },
     "orationes.te-deum": {
+        "passage_hint": "Te Deum laudámus",
         "use": "use.orationes.te-deum.compendium-2005",
         "witness": "witness.orationes.te-deum.compendium-2005",
         "address": {"kind": "text", "text": "orationes.te-deum"},
@@ -797,6 +806,20 @@ def resolve_documents(value, sources, *, witness, doc, transcript):
         raise ValueError("compendium HTML source assertion differs")
     source = sources[record["use"]]
     use, item, edition, work = (source[key] for key in ("use", "digital_item", "edition", "work"))
+    section = scope["section"]
+    fragment = (
+        "The%20Profession%20of%20the%20Christian%20Faith"
+        if doc["id"] == "orationes.symbolum-apostolorum"
+        else "A%29%20COMMON%20PRAYERS"
+    )
+    section_locators = (
+        {"section": section},
+        {"section": section, "page_url": URL + "#" + fragment},
+        {
+            "section": section,
+            "page_url": URL + "#" + fragment + ":~:text=" + quote(scope["passage_hint"], safe=""),
+        },
+    )
     if (
         use.get("id") != scope["use"]
         or use.get("edition") != EDITION
@@ -804,7 +827,7 @@ def resolve_documents(value, sources, *, witness, doc, transcript):
         or use.get("role") != "official_text"
         or use.get("address") != scope["address"]
         or use.get("claim") != scope["claim"]
-        or use.get("locator") != {"section": scope["section"]}
+        or use.get("locator") not in section_locators
         or use.get("evidence_sha256") != ORIGINAL_SHA
         or item.get("id") != ITEM
         or item.get("edition") != EDITION

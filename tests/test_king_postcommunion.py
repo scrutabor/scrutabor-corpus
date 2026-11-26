@@ -183,7 +183,13 @@ def test_source_body_expansion_and_pending_states_distinct():
         if u["address"].get("text") == TEXT
     }
     assert len(uses) == 5
-    assert all(";" not in use["claim"] for use in uses.values())
+    for key, use in uses.items():
+        claim = use["claim"]
+        if key == "expanded-conclusion.mr1962":
+            printed_ending = "sæcula sæculorum. Amen;"
+            assert printed_ending in claim
+            claim = claim.replace(printed_ending, "", 1)
+        assert ";" not in claim
     assert uses["mr1962"]["locator"]["printed"] == "p. 714"
     assert (
         uses["mr1962"]["evidence_sha256"]
@@ -207,7 +213,9 @@ def test_source_body_expansion_and_pending_states_distinct():
     assert collation["review"] == {"status": "pending"}
     assert collation["apparatus_sha256"] == digest(load(f"witnesses/{TEXT}/apparatus.json"))
     printed = (ROOT / f"witnesses/{TEXT}/mr.txt").read_text()
-    assert "Benziger 1962 (Editio iuxta typicam)" in printed and "unaccented" in printed
+    assert "Benziger 1962 (Editio iuxta typicam)" in printed
+    assert "per omnia sæcula sæculorum. Amen; without stress marks" in printed
+    assert printed.rstrip().endswith("per ómnia sǽcula sæculórum. Amen.")
 
 
 @pytest.fixture

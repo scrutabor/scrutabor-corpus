@@ -149,10 +149,10 @@ def test_conclusion_keeps_present_tense_and_contemporary_address():
 
 
 @pytest.mark.parametrize(
-    "suffix,printed,scan,leaf",
-    [("body", "p.93", "PDF120", 119), ("expanded-conclusion", "p.29", "PDF56", 55)],
+    "suffix,printed,pdf",
+    [("body", "p.93", 120), ("expanded-conclusion", "p.29", 56)],
 )
-def test_body_and_conclusion_name_their_separate_historical_basis(suffix, printed, scan, leaf):
+def test_body_and_conclusion_name_their_separate_historical_basis(suffix, printed, pdf):
     graph = json.loads((CORPUS / "languages/en/bibliography.json").read_text())
     uses = [use for use in graph["uses"] if use["address"].get("text") == TEXT]
     assert len(uses) == 2
@@ -162,9 +162,10 @@ def test_body_and_conclusion_name_their_separate_historical_basis(suffix, printe
     assert use["edition"] == "edition.the-missal-for-the-use-of-the-laity-1853"
     assert use["digital_item"] == "item.missal-for-the-use-of-the-laity-1853.scan"
     assert use["evidence_sha256"] == SOURCE
-    assert use["locator"]["printed"] == printed and use["locator"]["scan"] == scan
+    assert use["locator"]["printed"] == printed and use["locator"]["scan"] == f"PDF p. {pdf}"
     assert use["locator"]["page_url"] == (
-        f"https://archive.org/details/missal_for_use_of_laity_1853-f_c_husenbeth/page/n{leaf}/mode/1up"
+        "https://archive.org/download/missal_for_use_of_laity_1853-f_c_husenbeth/"
+        f"missal_for_use_of_laity_1853-f_c_husenbeth.pdf#page={pdf}"
     )
 
 

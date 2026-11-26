@@ -217,19 +217,14 @@ def test_coherent_gradual_extension_reaches_body_equality(tmp_path):
         resolve_binding(witness, tmp_path)
 
 
-def test_printed_fieri_and_selected_house_accent_are_distinct():
+def test_the_selected_and_printed_accents_in_fieri_agree():
     core, _ = documents("epistola", "en")
     word = next(w for s in core["segments"] for w in s["words"] if w["id"] == "w024")
     assert word["form"] == "fíeri"
-    assert "fieri" in (ROOT / "witnesses" / (P + "epistola") / "mr.txt").read_text()
+    witness = (ROOT / "witnesses" / (P + "epistola") / "mr.txt").read_text()
+    assert "Si fíeri potest" in witness
     entries = load("witnesses/" + P + "epistola/apparatus.json")["adjudicated"]
-    assert any(
-        e["at"] == "w024"
-        and e["ours"] == "fíeri"
-        and e["witnesses"].get("mr") == "fieri"
-        and e["class"] == "accent"
-        for e in entries
-    )
+    assert all("mr" not in row["witnesses"] for row in entries if row["at"] == "w024")
 
 
 def test_introit_doxology_is_expanded_without_modernizing_protected_prose():
@@ -346,10 +341,7 @@ SOURCE_REASONS = {
         "The proper page contains the Collect and its short conclusion cue; "
         "the expanded conclusion and response come from the separately identified sources."
     ),
-    "epistola": (
-        "The full Epistle is printed on this page; "
-        "the declared house accent on fíeri differs from the printed fieri."
-    ),
+    "epistola": "The normal and resumed settings both print the accent in Si fíeri potest.",
     "evangelium": (
         "The full Gospel is printed on this page; the selected punctuation "
         "and the resumed printing’s accidental variants are declared separately."
@@ -411,6 +403,8 @@ def test_third_sunday_source_prose_has_readable_numbers_and_titles():
     by_id = {r["id"]: r for r in rows}
     ep = by_id["use." + P + "epistola.mr1962"]
     go = by_id["use." + P + "evangelium.mr1962"]
-    assert "p. 45 prints the complete 81-word Epistle" in ep["claim"]
+    assert "p. 45 prints the complete Epistle and accents fíeri in Si fíeri potest" in ep["claim"]
+    epistle = load("texts/proprium/dominica-iii-post-epiphaniam-epistola.json")
+    assert sum(len(s.get("words", [])) for s in epistle["segments"]) == 81
     assert "p. 46 prints the complete 213-word Gospel" in go["claim"]
     assert ep["locator"]["printed"] == "p. 45" and go["locator"]["printed"] == "p. 46"

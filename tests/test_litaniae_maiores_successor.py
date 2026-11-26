@@ -7,7 +7,7 @@ from collections import Counter
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import before_reading_object
+from edition_revision_fixture import before_bibliography_record, before_reading_object
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -217,7 +217,9 @@ def test_all_scoped_graph_records_keep_their_exact_pending_subjects():
     assert len(FIXTURE["graph_records"]) == 15
     for row in FIXTURE["graph_records"]:
         record = select(graph, [row["section"], {"id": row["id"]}])
-        assert digest(record) == row["sha256"], row["id"]
+        assert digest(before_bibliography_record(row["section"], record)) == row["sha256"], row[
+            "id"
+        ]
         if row["section"] in {"witnesses", "collations"}:
             assert record["review"] == {"status": "pending"}
 

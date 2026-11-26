@@ -5,6 +5,9 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from documentary_bibliography_fixture import current_source_uses
+from edition_revision_fixture import before_bibliography_record, current_bibliography_record
+
 DATA = json.loads((Path(__file__).with_name("fixtures") / "michael-gospel-source.json").read_text())
 TEXT = DATA["text"]
 RECORDS = {row["id"]: row for row in DATA["records"]}
@@ -68,12 +71,21 @@ def before_michael_records(value):
                 "raw_resolution",
             }, "complete Michael Gospel witness subject"
             assert item["contract"] == "witness-review-2", "current Michael source contract"
-            assert item["witness"] == {
-                key: field for key, field in WITNESS["after"].items() if key != "review"
-            }, "complete Michael Gospel witness record"
-            assert item["source_uses"] == DATA["source_uses"]["after"], (
-                "complete Michael Gospel source uses"
+            historical_witness = {
+                key: val for key, val in WITNESS["after"].items() if key != "review"
+            }
+            modern_witness = current_bibliography_record(
+                "witnesses", historical_witness, subject=True
             )
+            assert item["witness"] in (historical_witness, modern_witness), (
+                "complete Michael Gospel witness record"
+            )
+            old_uses = DATA["source_uses"]["after"]
+            new_uses = current_source_uses(old_uses)
+            assert (item["witness"], item["source_uses"]) in (
+                (historical_witness, old_uses),
+                (modern_witness, new_uses),
+            ), "complete Michael Gospel source uses"
             assert item["raw_resolution"] == DATA["expected_source"], (
                 "complete Michael Gospel raw resolution"
             )
@@ -92,16 +104,15 @@ def before_michael_records(value):
         if item.get("id") in RECORDS:
             row = RECORDS[item["id"]]
             before, after = deepcopy(row["before"]), deepcopy(row["after"])
-            if "review" in after and "review" not in item:
-                del before["review"]
-                del after["review"]
             if row["collection"] == "collations":
                 selected = item.get("selected_text_sha256")
                 assert selected in DATA["gospel_selected"].values(), (
                     "exact current or historical sung Michael selection"
                 )
                 before["selected_text_sha256"] = after["selected_text_sha256"] = selected
-            assert item == after, "complete Michael Gospel source record"
+            assert before_bibliography_record(row["collection"], item) == after, (
+                "complete Michael Gospel source record"
+            )
             item.clear()
             item.update(before)
             return

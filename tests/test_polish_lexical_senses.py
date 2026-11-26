@@ -57,7 +57,12 @@ def test_lexical_support_identifies_the_actual_dictionary_entry(lemma, entry):
     use = next(row for row in graph["uses"] if row["id"] == f"use.lemma.{lemma}.lewis-short.1879")
     assert use["role"] == "lexical_support"
     assert use["address"] == {"kind": "lemma", "lemma": lemma}
-    assert use["locator"]["section"] == f"Perseus TEI entry {entry}"
+    head = "formido 1" if lemma == "formido" else lemma
+    assert use["locator"]["section"] == f"s.v. {head}"
+    assert use["locator"]["page_url"] == (
+        "https://atlas.perseus.tufts.edu/dictionaries/entry/"
+        f"urn%3Acite2%3Ascaife-viewer%3Adictionary-entries.atlas_v1%3Alat.ls.perseus-eng2-{entry}/"
+    )
     assert use["evidence_sha256"]
 
 

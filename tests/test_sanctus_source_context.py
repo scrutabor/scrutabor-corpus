@@ -89,7 +89,8 @@ def assert_context(graph):
         assert one(graph, "digital_items", use["digital_item"])["edition"] == MR
     edition = one(graph, "editions", DMS)
     assert edition["authority"] == "official_document"
-    assert (edition["year"], edition["volume"]) == ("1958", "50")
+    assert edition["year"] == "1958"
+    assert edition["edition_statement"] == "Acta Apostolicae Sedis 50 (1958), pp. 630–663"
     assert one(graph, "works", edition["work"])["responsible"] == "Sacra Rituum Congregatio"
     item = one(graph, "digital_items", DMS_ITEM)
     assert item["edition"] == DMS and item["kind"] == "scan"

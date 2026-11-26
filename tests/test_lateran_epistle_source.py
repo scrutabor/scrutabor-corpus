@@ -10,7 +10,12 @@ from pathlib import Path
 
 import pytest
 from documentary_successor_fixture import before_additional_records, before_additional_registry
-from edition_revision_fixture import before_edition_object
+from edition_revision_fixture import (
+    before_bibliography_revision,
+    before_edition_object,
+    current_bibliography_fields,
+    current_bibliography_record,
+)
 from lateran_epistle_source_fixture import (
     DATA as F,
 )
@@ -20,6 +25,7 @@ from lateran_epistle_source_fixture import (
     before_lateran_records,
     before_lateran_registry,
     canonical_hash,
+    current_lateran_subject,
 )
 from rosary_gospel_source_fixture import before_rosary_graph, before_rosary_registry
 
@@ -101,9 +107,11 @@ def healthy(state):
     doc = json.loads((root / F["core"]).read_bytes())
     before_lateran_core(doc)
     for collection, rule in F["records"].items():
-        assert record(graph, collection, rule["after"]["id"]) == rule["after"]
+        assert record(graph, collection, rule["after"]["id"]) == current_bibliography_record(
+            collection, rule["after"]
+        )
     subject = witness_subject(root, record(graph, "witnesses", F["witness_id"]), graph, doc)
-    assert subject == F["expected_subject"]
+    assert subject == current_lateran_subject()
     assert validate_bindings(root, graph) == []
     errors, warnings, stats = collate(expand_core(doc), root / f"witnesses/{F['text']}")
     assert errors == warnings == []
@@ -155,21 +163,33 @@ def test_direct_common_claim_does_not_prove_inherited_selection_or_review(source
     assert F["binding"]["references"] == [] and "contract" not in F["binding"]
     assert subject["contract"] == "witness-review-2"
     assert set(subject["source_uses"]) == {F["use_id"]}
+    use = subject["source_uses"][F["use_id"]]["use"]
+    links = [part["url"] for part in use["locator"]["passages"]]
+    assert links == [use["locator"]["page_url"]]
+    assert links[0].endswith("/web/www/horas/Latin/Commune/C8.txt#L587")
     assert all(
         row["review"] == {"status": "pending"} for row in graph["witnesses"] + graph["collations"]
     )
     mr = record(graph, "witnesses", F["mr_id"])
     doc = json.loads((root / F["core"]).read_bytes())
+    print_subject = witness_subject(root, mr, graph, doc)
+    assert print_subject["contract"] == "witness-review-2"
+    assert print_subject["raw_resolution"] is None
+    assert set(print_subject["source_uses"]) == {mr["use"]}
+    assert mr["source_dependencies"] == {"raw_binding": None, "uses": []}
+    missing_declaration = deepcopy(mr)
+    del missing_declaration["source_dependencies"]
+    assert missing_declaration == current_bibliography_fields("witnesses", F["unchanged_mr_record"])
     with pytest.raises(
         BindingError, match="complete explicit source_dependencies declaration required"
     ):
-        witness_subject(root, mr, graph, doc)
+        witness_subject(root, missing_declaration, graph, doc)
     public = next(row for row in public_text_evidence(graph)["texts"] if row["id"] == F["text"])
     assert public["witnesses"] == [] and "collation" not in public
     entries = [entry for group in public["source_groups"] for entry in group["entries"]]
     assert (
         next(row for row in entries if row["id"] == F["use_id"])["claim"]
-        == (F["records"]["uses"]["after"]["claim"])
+        == current_bibliography_record("uses", F["records"]["uses"]["after"])["claim"]
     )
     assert "raw_resolution" not in json.dumps(public)
 
@@ -512,12 +532,15 @@ def test_whole_core_comparison_allows_only_the_documentary_method(source, fault)
 def test_old_source_controls_and_documentary_history_remain_exact(source):
     healthy(source)
     for relative, expected in F["unchanged"].items():
-        assert hashlib.sha256((ROOT / relative).read_bytes()).hexdigest() == expected
+        historic = before_bibliography_revision(relative, (ROOT / relative).read_bytes())
+        assert hashlib.sha256(historic).hexdigest() == expected
     actual = (source["root"] / F["witness"]).read_text()
     assert all(line in actual.splitlines() for line in F["historical_lines"])
     old = [row for row in F["apparatus"]["adjudicated"] if row["class"] == "punctuation"]
     assert old == F["old_punctuation"]
-    assert record(source["graph"], "witnesses", F["mr_id"]) == F["unchanged_mr_record"]
+    assert record(source["graph"], "witnesses", F["mr_id"]) == current_bibliography_record(
+        "witnesses", F["unchanged_mr_record"]
+    )
 
 
 def test_snapshot_returns_independent_complete_source_values(source):

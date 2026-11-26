@@ -28,7 +28,8 @@ from .bibliography_bindings import (
 )
 from .bibliography_bindings import IDENTITY as ID_RE
 
-SCHEMA = "1.6.0"
+SCHEMA = "1.7.0"
+PREVIOUS_SCHEMA = "1.6.0"
 
 GRAPH_KEYS = {
     "schema_version",
@@ -52,6 +53,8 @@ EDITION_KEYS = {
     "title",
     "edition_statement",
     "contributors",
+    "additional_imprints",
+    "publication_events",
     "place",
     "publisher",
     "year",
@@ -72,6 +75,8 @@ DIGITAL_ITEM_KEYS = {
     "revision",
     "sha256",
     "access",
+    "accessed_on",
+    "publication_events",
     "owner_scan_id",
     "digitization_rights",
 }
@@ -91,7 +96,7 @@ USE_KEYS = {
     "legacy_refs",
 }
 ADDRESS_KEYS = {"kind", "text", "segment", "word", "lemma"}
-LOCATOR_KEYS = {"printed", "scan", "section", "page_url"}
+LOCATOR_KEYS = {"printed", "scan", "section", "page_url", "passages"}
 WITNESS_KEYS = {
     "id",
     "text",
@@ -565,6 +570,59 @@ def _validate_address(
         errors.append(f"{where}: unknown word {address.get('word')!r}")
 
 
+def _validate_line_passages(
+    locator: dict, item: dict | None, where: str, errors: list[str]
+) -> None:
+    passages = locator.get("passages")
+    if not isinstance(passages, list) or not passages:
+        errors.append(f"{where}.passages: expected one or more source passages")
+        return
+    if item is None or item.get("kind") != "born-digital":
+        errors.append(f"{where}.passages: line references require a digital text")
+    pinned_prefix = None
+    if item and isinstance(item.get("record_url"), str):
+        source = urlparse(item["record_url"])
+        parts = source.path.strip("/").split("/")
+        if source.hostname == "raw.githubusercontent.com" and len(parts) >= 4:
+            revision = parts[2]
+        elif (
+            source.hostname == "github.com"
+            and len(parts) >= 4
+            and parts[2]
+            in (
+                "blob",
+                "tree",
+                "commit",
+            )
+        ):
+            revision = parts[3]
+        else:
+            revision = ""
+        if re.fullmatch(r"[a-fA-F0-9]{40}", revision):
+            pinned_prefix = f"https://github.com/{parts[0]}/{parts[1]}/blob/{revision}/"
+            if item.get("revision", revision) != revision:
+                errors.append(f"{where}.passages: digital item differs from its source revision")
+    seen = set()
+    for index, entry in enumerate(passages):
+        path = f"{where}.passages[{index}]"
+        record = _unknown(entry, {"heading", "url"}, path, errors)
+        _required_strings(record, ("heading", "url"), path, errors)
+        url = record.get("url")
+        if not isinstance(url, str) or not _https(url):
+            errors.append(f"{path}.url: expected an absolute HTTPS reference")
+            continue
+        if pinned_prefix and not url.startswith(pinned_prefix):
+            errors.append(f"{path}.url: source passage belongs to another repository or revision")
+        anchor = re.fullmatch(r"L([1-9][0-9]*)(?:-L([1-9][0-9]*))?", urlparse(url).fragment)
+        if not anchor or int(anchor[2] or anchor[1]) < int(anchor[1]):
+            errors.append(f"{path}.url: expected an ordered source line range")
+        if url in seen:
+            errors.append(f"{path}.url: duplicate source passage")
+        seen.add(url)
+    if isinstance(passages[0], dict) and passages[0].get("url") != locator.get("page_url"):
+        errors.append(f"{where}.page_url: must open the first source passage")
+
+
 def _validate_uses(
     values: list[dict],
     editions: dict[str, dict],
@@ -575,6 +633,7 @@ def _validate_uses(
     errors: list[str],
     *,
     language: str | None,
+    schema: str,
 ) -> None:
     prefix = f"languages.{language}.uses" if language else "bibliography.uses"
     for index, use in enumerate(values):
@@ -627,6 +686,10 @@ def _validate_uses(
         locator = _unknown(use.get("locator"), LOCATOR_KEYS, f"{where}.locator", errors)
         if "page_url" in locator and not _https(locator.get("page_url")):
             errors.append(f"{where}.locator.page_url: must be an absolute HTTPS URL")
+        if "passages" in locator:
+            if schema == PREVIOUS_SCHEMA:
+                errors.append(f"{where}.locator.passages: requires bibliography schema {SCHEMA}")
+            _validate_line_passages(locator, item, f"{where}.locator", errors)
         if item is not None:
             _archive_locator(item, locator, f"{where}.locator", errors)
         if item is not None and item.get("kind") == "scan":
@@ -647,6 +710,47 @@ def _validate_uses(
             errors.append(f"{where}.legacy_refs: a use cannot claim another package's citation")
 
 
+def _validate_publication_details(
+    subject: dict, where: str, errors: list[str], *, digital: bool = False
+) -> None:
+    """A dated event belongs to the printed edition or to the particular digital item."""
+    kinds = (
+        ("digital_publication", "digital_reproduction", "revision")
+        if digital
+        else (
+            "copyright",
+            "imprimatur",
+            "typical_edition",
+            "title_page",
+            "ecclesiastical_approval",
+            "revision",
+            "reprint_of",
+        )
+    )
+    for field, keys in (
+        ("additional_imprints", ("place", "publisher")),
+        ("publication_events", ("kind", "date")),
+    ):
+        if field not in subject:
+            continue
+        values = subject[field]
+        if not isinstance(values, list) or not values:
+            errors.append(f"{where}.{field}: expected a nonempty list")
+            continue
+        for index, value in enumerate(values):
+            path = f"{where}.{field}[{index}]"
+            record = _unknown(value, set(keys), path, errors)
+            _required_strings(record, keys, path, errors)
+            if field == "publication_events":
+                if record.get("kind") not in kinds:
+                    errors.append(f"{path}.kind: unknown publication event")
+                value_date = record.get("date")
+                if not isinstance(value_date, str) or not (
+                    re.fullmatch(r"[0-9]{4}", value_date) or _date(value_date)
+                ):
+                    errors.append(f"{path}.date: expected a year or ISO calendar date")
+
+
 def validate(
     corpus: Path,
     graph: dict | None = None,
@@ -663,7 +767,7 @@ def validate(
         language_graphs = loaded_languages if language_graphs is None else language_graphs
 
     graph = _unknown(graph, GRAPH_KEYS, "bibliography", errors)
-    if graph.get("schema_version") != SCHEMA:
+    if graph.get("schema_version") not in (PREVIOUS_SCHEMA, SCHEMA):
         errors.append(f"bibliography.schema_version: must be {SCHEMA}")
     works = _records(graph, "works", WORK_KEYS, errors)
     editions = _records(graph, "editions", EDITION_KEYS, errors)
@@ -734,6 +838,10 @@ def validate(
         contributors = edition.get("contributors") or []
         if not isinstance(contributors, list) or any(not _nonempty(v) for v in contributors):
             errors.append(f"{where}.contributors: must be an array of nonempty strings")
+        if "additional_imprints" in edition or "publication_events" in edition:
+            if graph.get("schema_version") == PREVIOUS_SCHEMA:
+                errors.append(f"{where}: publication details require bibliography schema {SCHEMA}")
+            _validate_publication_details(edition, where, errors)
         rights = _unknown(edition.get("rights"), RIGHTS_KEYS, f"{where}.rights", errors)
         if rights.get("status") not in RIGHTS_STATUSES:
             errors.append(f"{where}.rights.status: unknown value")
@@ -760,6 +868,14 @@ def validate(
             and not _nonempty(item.get("owner_scan_id"))
         ):
             errors.append(f"{where}: a scan needs a scan URL or an owner-held scan id")
+        if "publication_events" in item:
+            if graph.get("schema_version") == PREVIOUS_SCHEMA:
+                errors.append(f"{where}: publication details require bibliography schema {SCHEMA}")
+            _validate_publication_details(item, where, errors, digital=True)
+        if "accessed_on" in item and (
+            graph.get("schema_version") != SCHEMA or not _date(item["accessed_on"])
+        ):
+            errors.append(f"{where}.accessed_on: expected a calendar date in schema {SCHEMA}")
         digest = item.get("sha256")
         if digest is not None and (not isinstance(digest, str) or not SHA256_RE.fullmatch(digest)):
             errors.append(f"{where}.sha256: must be a lowercase SHA-256")
@@ -773,6 +889,7 @@ def validate(
         lemmata,
         errors,
         language=None,
+        schema=graph.get("schema_version", ""),
     )
 
     language_ids = set(_language_ids(corpus))
@@ -787,8 +904,8 @@ def validate(
     for language, language_graph in sorted(language_graphs.items()):
         prefix = f"languages.{language}.bibliography"
         language_graph = _unknown(language_graph, LANGUAGE_GRAPH_KEYS, prefix, errors)
-        if language_graph.get("schema_version") != SCHEMA:
-            errors.append(f"{prefix}.schema_version: must be {SCHEMA}")
+        if language_graph.get("schema_version") != graph.get("schema_version"):
+            errors.append(f"{prefix}.schema_version: must match the neutral bibliography")
         if language_graph.get("language") != language:
             errors.append(f"{prefix}.language: must match its package")
         values = _records(
@@ -814,6 +931,7 @@ def validate(
             lemmata,
             errors,
             language=language,
+            schema=graph.get("schema_version", ""),
         )
         language_uses[language] = values
 
@@ -1041,6 +1159,8 @@ def _project_edition(edition: dict) -> dict:
         "title",
         "edition_statement",
         "contributors",
+        "additional_imprints",
+        "publication_events",
         "place",
         "publisher",
         "year",
@@ -1063,6 +1183,8 @@ def _project_item(item: dict) -> dict:
         "scan_url",
         "revision",
         "access",
+        "accessed_on",
+        "publication_events",
         "digitization_rights",
     )
     return {key: item[key] for key in fields if key in item}
@@ -1165,7 +1287,14 @@ def _edition_sort_key(edition: dict, works: dict[str, dict]) -> tuple[str, str, 
     return (
         _sort_text(work.get("responsible") or work["title"]),
         _sort_text(work["title"]),
-        _sort_text(edition["year"]),
+        next(
+            (
+                event["date"]
+                for event in edition.get("publication_events", ())
+                if event["kind"] == "revision"
+            ),
+            _sort_text(edition["year"].strip("[]")),
+        ),
         edition["id"],
     )
 

@@ -7,8 +7,11 @@ The ordinary language checks and the current-edition assertions read live data.
 
 import hashlib
 import json
+import shutil
 from copy import deepcopy
+from functools import cache
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 PUBLISHED_FILES = json.loads(
     (Path(__file__).parent / "fixtures/edition-revision-history.json").read_bytes()
@@ -84,7 +87,10 @@ READING_FILES = json.loads(
 COMMUNION_FILES = json.loads(
     (Path(__file__).parent / "fixtures/communion-readings-revision.json").read_bytes()
 )["files"]
-for _revision in (READING_FILES, COMMUNION_FILES):
+BIBLIOGRAPHY_FILES = json.loads(
+    (Path(__file__).parent / "fixtures/bibliographic-source-revision.json").read_bytes()
+)["files"]
+for _revision in (READING_FILES, COMMUNION_FILES, BIBLIOGRAPHY_FILES):
     for _relative, _entry in _revision.items():
         if _relative in FILES:
             assert FILES[_relative]["current"] == _entry["previous"], _relative
@@ -97,9 +103,14 @@ for _revision in (READING_FILES, COMMUNION_FILES):
 def _exact_inverse(entry, raw):
     assert hashlib.sha256(raw).hexdigest() == entry["current"]
     text = raw.decode("utf-8")
-    for start, end, previous in reversed(entry["inverse"]):
-        text = text[:start] + previous + text[end:]
-    result = text.encode("utf-8")
+    chunks = []
+    position = 0
+    for start, end, previous in entry["inverse"]:
+        assert position <= start <= end <= len(text)
+        chunks.extend((text[position:start], previous))
+        position = end
+    chunks.append(text[position:])
+    result = "".join(chunks).encode("utf-8")
     assert hashlib.sha256(result).hexdigest() == entry["previous"]
     return result
 
@@ -151,8 +162,195 @@ def before_source_scope_revision(relative, raw):
     return _exact_inverse(entry, raw)
 
 
+def before_bibliography_revision(relative, raw):
+    """Restore the preceding bibliography and its source readings when the input is exact."""
+    entry = BIBLIOGRAPHY_FILES.get(relative)
+    if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
+        return raw
+    return _exact_inverse(entry, raw)
+
+
+@cache
+def _bibliography_record_changes():
+    root = Path(__file__).resolve().parents[1]
+    changed = {}
+    for relative in (
+        "bibliography/graph.json",
+        "languages/pl/bibliography.json",
+        "languages/en/bibliography.json",
+    ):
+        current = (root / relative).read_bytes()
+        previous = _exact_inverse(BIBLIOGRAPHY_FILES[relative], current)
+        earlier, later = json.loads(previous), json.loads(current)
+        for field, rows in later.items():
+            if not isinstance(rows, list):
+                continue
+            old = {r["id"]: r for r in earlier[field] if isinstance(r, dict) and "id" in r}
+            for row in rows:
+                if not isinstance(row, dict) or "id" not in row:
+                    continue
+                identity = row["id"]
+                if identity in old and row != old[identity]:
+                    key = (field, identity)
+                    assert key not in changed, key
+                    changed[key] = (old[identity], row)
+    return changed
+
+
+def _bibliography_record(field, row, source, target, subject):
+    transition = _bibliography_record_changes().get((field, row.get("id")))
+    if transition is None:
+        return row
+    expected, result = transition[source], transition[target]
+    if subject:
+        assert field == "witnesses" and "review" not in row
+        expected = {k: v for k, v in expected.items() if k != "review"}
+        result = {k: v for k, v in result.items() if k != "review"}
+    return deepcopy(result) if row == expected else row
+
+
+def before_bibliography_record(field, row, *, subject=False):
+    """The immediate predecessor of an exact row or a native witness subject."""
+    return _bibliography_record(field, row, 1, 0, subject)
+
+
+def current_bibliography_record(field, row, *, subject=False):
+    """Advance an exact historical expectation without changing the observed input."""
+    return _bibliography_record(field, row, 0, 1, subject)
+
+
+def current_bibliography_fields(field, expected):
+    """Advance a historical selection of fields only when every one matches its source."""
+    pair = _bibliography_record_changes().get((field, expected.get("id")))
+    if not pair or any(k not in pair[0] or pair[0][k] != v for k, v in expected.items()):
+        return expected
+    return {k: deepcopy(pair[1][k]) for k in expected if k in pair[1]}
+
+
+def before_bibliography_records(value):
+    """Restore whole enrolled records, preserving arbitrary changes elsewhere in a comparison."""
+    fields = {
+        "work": "works",
+        "edition": "editions",
+        "item": "digital_items",
+        "use": "uses",
+        "witness": "witnesses",
+        "collation": "collations",
+    }
+
+    def visit(item, *, native=False):
+        if isinstance(item, list):
+            return [visit(child) for child in item]
+        if not isinstance(item, dict):
+            return item
+        identity = item.get("id")
+        if isinstance(identity, str):
+            field = fields.get(identity.split(".", 1)[0])
+            if field:
+                previous = before_bibliography_record(field, item, subject=native)
+                if previous is not item:
+                    return previous
+        witness_subject = item.get("contract") in {"witness-identity-2", "witness-review-2"}
+        return {k: visit(v, native=witness_subject and k == "witness") for k, v in item.items()}
+
+    return visit(value)
+
+
+def current_bibliography_review(identifier, previous):
+    """Advance a recorded review digest only from its exact enrolled predecessor."""
+    field = "collations" if identifier.startswith("collation.") else "witnesses"
+    pair = _bibliography_record_changes().get((field, identifier))
+    if previous and pair and pair[0].get("review", {}).get("sha256") == previous:
+        return pair[1]["review"]["sha256"]
+    return previous
+
+
+def _write_historical_input(root, historical_root, name):
+    dest = historical_root / name
+    if dest.exists():
+        return
+    dest.parent.mkdir(exist_ok=True, parents=True)
+    raw = (root / name).read_bytes()
+    if name in BIBLIOGRAPHY_FILES:
+        raw = _exact_inverse(BIBLIOGRAPHY_FILES[name], raw)
+    dest.write_bytes(raw)
+
+
+@cache
+def _bibliography_witness_roots():
+    from build_reader.bibliography_bindings import _SourceSnapshot
+
+    root = Path(__file__).resolve().parents[1]
+    relative = "bibliography/graph.json"
+    raw = (root / relative).read_bytes()
+    earlier = json.loads(_exact_inverse(BIBLIOGRAPHY_FILES[relative], raw))
+    later = json.loads(raw)
+    directory = TemporaryDirectory(prefix="bibliographic-predecessor-")
+    historical_root = Path(directory.name)
+    # A raw resolver confines every path to its own edition, including the registry.
+    shutil.copytree(root / "witnesses/raw", historical_root / "witnesses/raw")
+    for name in BIBLIOGRAPHY_FILES:
+        if name.startswith("witnesses/raw/"):
+            (historical_root / name).write_bytes(
+                _exact_inverse(BIBLIOGRAPHY_FILES[name], (root / name).read_bytes())
+            )
+    registry = json.loads((historical_root / "witnesses/raw/bindings.json").read_bytes())
+    for binding in registry["bindings"].values():
+        name = binding["witness"]
+        _write_historical_input(root, historical_root, name)
+    pairs = [
+        (location, _SourceSnapshot(location, graph), {w["id"]: w for w in graph["witnesses"]})
+        for location, graph in ((root, later), (historical_root, earlier))
+    ]
+    return directory, pairs
+
+
+@cache
+def _bibliography_subject_pair(identifier, reviewable):
+    from build_reader.bibliography_bindings import _witness_subject, text_document
+
+    _directory, (current, previous) = _bibliography_witness_roots()
+    root, historical_root = current[0], previous[0]
+    if identifier not in current[2] or identifier not in previous[2]:
+        return None
+    witness = previous[2][identifier]
+    text = witness["text"]
+    # Only the requested witness and its Latin text are needed beside the archive.
+    for name in (
+        f"witnesses/{text}/{witness['transcription']}.txt",
+        "texts/" + text.replace(".", "/", 1) + ".json",
+    ):
+        _write_historical_input(root, historical_root, name)
+    return tuple(
+        _witness_subject(
+            location,
+            index[identifier],
+            text_document(location, text),
+            snapshot,
+            reviewable=reviewable,
+        )
+        for location, snapshot, index in (current, previous)
+    )
+
+
+def before_bibliography_subject(value, *, reviewable=False):
+    """Return the native predecessor only for the entire, exact later witness subject."""
+    from build_reader.bibliography_bindings import BindingError
+
+    identifier = value.get("witness", {}).get("id")
+    if not identifier:
+        return value
+    try:
+        pair = _bibliography_subject_pair(identifier, reviewable)
+    except BindingError:
+        # Either edition lacks the requested contract. It cannot prove this inverse.
+        return value
+    return deepcopy(pair[1]) if pair and value == pair[0] else value
+
+
 def before_communion_revision(relative, raw):
     """Restore the wording before the antiphon, epistle and title corrections."""
+    raw = before_bibliography_revision(relative, raw)
     entry = COMMUNION_FILES.get(relative)
     if entry is None or hashlib.sha256(raw).hexdigest() != entry["current"]:
         return raw
@@ -170,7 +368,7 @@ def before_reading_revision(relative, raw):
 
 def before_reading_object(relative, value):
     """Return the preceding edition only for an exact, complete current document."""
-    if relative not in READING_FILES and relative not in COMMUNION_FILES:
+    if not any(relative in files for files in (READING_FILES, COMMUNION_FILES, BIBLIOGRAPHY_FILES)):
         return value
     if "/texts/" in relative or relative.endswith("translation-provenance.json"):
         from checks.layout import formatted
@@ -201,7 +399,8 @@ def before_rubric_caption_layer(layer):
     """Reconstruct a layer's exact earlier comparison frame, if declared."""
     relative = f"languages/{layer['language']}/texts/{layer['text'].replace('.', '/', 1)}.json"
     if not any(
-        relative in files for files in (RUBRIC_CAPTION_FILES, READING_FILES, COMMUNION_FILES)
+        relative in files
+        for files in (RUBRIC_CAPTION_FILES, READING_FILES, COMMUNION_FILES, BIBLIOGRAPHY_FILES)
     ):
         return layer
     from checks.layout import formatted
@@ -247,6 +446,7 @@ def _composed_layer_changes():
         *RUBRIC_CAPTION_FILES.items(),
         *READING_FILES.items(),
         *COMMUNION_FILES.items(),
+        *BIBLIOGRAPHY_FILES.items(),
     ]:
         if not entry.get("changes"):
             continue
@@ -298,8 +498,16 @@ COMMUNION_LAYER_CHANGES = {
 }
 
 
+BIBLIOGRAPHY_LAYER_CHANGES = {
+    relative: entry["changes"]
+    for relative, entry in BIBLIOGRAPHY_FILES.items()
+    if entry.get("changes")
+}
+
+
 def before_review_layer(layer):
     """Undo source-scope and prayer reader-review fields on a historical comparison copy."""
+    layer = _undo_layer_changes(layer, BIBLIOGRAPHY_LAYER_CHANGES)
     layer = _undo_layer_changes(layer, COMMUNION_LAYER_CHANGES)
     layer = _undo_layer_changes(layer, READING_LAYER_CHANGES)
     layer = _undo_layer_changes(layer, RUBRIC_CAPTION_LAYER_CHANGES)
@@ -315,6 +523,7 @@ OWNER_LAYER_CHANGES = {
 
 def before_owner_layer(layer):
     """Undo source-scope and owner-decision fields on a historical comparison copy."""
+    layer = _undo_layer_changes(layer, BIBLIOGRAPHY_LAYER_CHANGES)
     layer = _undo_layer_changes(layer, COMMUNION_LAYER_CHANGES)
     layer = _undo_layer_changes(layer, READING_LAYER_CHANGES)
     layer = _undo_layer_changes(layer, RUBRIC_CAPTION_LAYER_CHANGES)
@@ -385,6 +594,7 @@ def current_edition_value(relative, fields, previous):
         RUBRIC_CAPTION_FILES.get(relative, {}).get("changes", ()),
         READING_FILES.get(relative, {}).get("changes", ()),
         COMMUNION_FILES.get(relative, {}).get("changes", ()),
+        BIBLIOGRAPHY_FILES.get(relative, {}).get("changes", ()),
     )
     value, advanced = previous, False
     for changes in receipts:

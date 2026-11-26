@@ -4,6 +4,7 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_bibliography_record
 from witness_header_fixture import before_privacy
 
 DATA = json.loads((Path(__file__).parent / "fixtures/common-preface-source-chain.json").read_text())
@@ -27,5 +28,6 @@ def without_common_preface_source_chain(graph):
             for row in result[key]
             if row.get("text", row.get("address", {}).get("text")) == DATA["text"]
         ]
-        assert remaining == DATA["records_before"][key], "earlier Common Preface source inventory"
+        previous = [before_bibliography_record(key, row) for row in remaining]
+        assert previous == DATA["records_before"][key], "earlier Common Preface source inventory"
     return result

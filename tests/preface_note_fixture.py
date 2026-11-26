@@ -1,8 +1,12 @@
 """Reverse only the exact reviewed Quam explanation, never arbitrary notes."""
 
+import json
 from copy import deepcopy
 
+from edition_revision_fixture import before_bibliography_revision
 from preface_delivery_fixture import without_preface_delivery
+
+from checks.layout import formatted
 
 # Restore only six sentence-case successors before the older exact inverses.
 CAPTION_CASE = {
@@ -37,7 +41,9 @@ def restore_note_layer(layer, language):
 
 
 def restore_note_core(core):
-    result = without_preface_delivery(core)
+    relative = "texts/ordinarium/praefatio-sanctissimae-trinitatis.json"
+    previous = before_bibliography_revision(relative, formatted(core).encode())
+    result = without_preface_delivery(json.loads(previous))
     assert result["id"] == "ordinarium.praefatio-sanctissimae-trinitatis"
     declarations = result["localization"]["explanations"]
     assert list(declarations) == ["w064", "w085"]

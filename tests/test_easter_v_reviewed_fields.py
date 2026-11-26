@@ -573,7 +573,8 @@ def test_historical_wording_basis_is_only_embedded_gloria(language):
     # owner decisions (2026-11-05) add the English 1846 wording uses of the ordinary Agnus.
     # Withdrawn English Memorare uses no longer create a localized evidence slice.
     # Aylward supplies a historical wording basis for the English Stabat Mater.
-    assert coverage["normalized"] == {"pl": 107, "en": 247}[language]
+    # The Polish reading of Psalm 118, 33–40 cites Wujek for comparison.
+    assert coverage["normalized"] == {"pl": 108, "en": 247}[language]
 
 
 @pytest.mark.parametrize("language", ["pl", "en"])

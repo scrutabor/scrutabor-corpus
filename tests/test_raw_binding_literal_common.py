@@ -15,6 +15,7 @@ from contextlib import contextmanager
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import before_bibliography_revision
 
 from build_reader.bibliography import public_text_evidence
 from build_reader.bibliography_bindings import (
@@ -786,8 +787,8 @@ def test_real_records_bind_the_three_contributions_and_keep_history():
     )
     expected = {
         PRIMARY: ("derived_digital_collation_aid", "common-c8", "RETAIN_WITH_CORRECTION"),
-        SELECTION: ("rubric_control", "do-sancti-11-09", "RETAIN"),
-        CONCLUSION: ("derived_digital_collation_aid", "prayers", "RETAIN"),
+        SELECTION: ("rubric_control", "do-sancti-11-09", "RETAIN_WITH_CORRECTION"),
+        CONCLUSION: ("derived_digital_collation_aid", "prayers", "RETAIN_WITH_CORRECTION"),
     }
     for identity, (role, archive, decision) in expected.items():
         record = one(graph["uses"], identity)
@@ -796,7 +797,7 @@ def test_real_records_bind_the_three_contributions_and_keep_history():
             SOURCE_HASHES[archive],
             decision,
         )
-        assert record["verified_on"] == "2026-10-22"
+        assert record["verified_on"] == "2026-11-26"
         assert record["address"] == {"kind": "text", "text": TEXT}
     assert "Common C8" in one(graph["uses"], PRIMARY)["claim"]
     assert "not a normative printed rubric" in one(graph["uses"], SELECTION)["claim"]
@@ -810,11 +811,12 @@ def test_real_records_bind_the_three_contributions_and_keep_history():
     ]
     assert "# fetched: 2026-08-31" in headers
     assert f"# path: {PATH}" in headers and f"# raw-binding: {KEY}" in headers
-    assert any(
-        line.startswith("# correction: 2026-10-07 this line formerly claimed") for line in headers
-    )
+    path = f"witnesses/{TEXT}/do.txt"
+    original = before_bibliography_revision(path, (ROOT / path).read_bytes()).decode()
+    assert "# correction: 2026-10-07 this line formerly claimed" in original
     assert (
-        "# orthography: exact source spelling, accents, capitalization, and punctuation" in headers
+        "# orthography: spelling, accents, case and punctuation of the cited digital text"
+        in headers
     )
     for record in [*graph["witnesses"], *graph["collations"]]:
         if record["text"] == TEXT:

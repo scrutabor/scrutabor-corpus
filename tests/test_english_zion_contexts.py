@@ -232,7 +232,7 @@ def test_revised_basis_does_not_claim_the_page_prints_zion(identity, segment):
     assert use["edition"] == "edition.the-missal-for-the-laity-1846"
     assert use["digital_item"] == "item.missal-for-the-laity-1846.scan"
     assert use["role"] == "historical_wording_basis"
-    assert use["verified_on"] == "2026-08-28"
+    assert use["verified_on"] == "2026-11-25"
     assert use["evidence_sha256"] == (
         "8e692b256e08350896902e55787f70c171a444d33e754f4d67e84fe000f81dd1"
     )

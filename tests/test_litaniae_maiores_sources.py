@@ -232,7 +232,8 @@ def test_the_graph_records_stay_bounded_and_pending(text):
         assert "abbreviated Per Dominum cue" in page["claim"]
         assert rule["locator"]["section"].startswith("Rubricae generales115a")
         assert "not printed continuously on the proper page" in rule["claim"]
-        assert page["decision"] == rule["decision"] == "RETAIN"
+        assert page["decision"] == ("RETAIN" if edition == "mr1962" else "RETAIN_WITH_CORRECTION")
+        assert rule["decision"] == "RETAIN"
         witness = record("witnesses", f"witness.{text}.{edition}")
         transcript = (ROOT / "witnesses" / text / f"{witness['transcription']}.txt").read_text(
             encoding="utf-8"

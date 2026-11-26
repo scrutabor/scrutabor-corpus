@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 import pytest
+from edition_revision_fixture import current_bibliography_fields
 
 from build_reader.bibliography import public_text_evidence
 from build_reader.bibliography_bindings import (
@@ -111,7 +112,10 @@ def source_errors(state):
             ):
                 errors.append(f"{text}: {name} full transcript binding differs")
         use = uses.get(f"use.{text}.vatican1962")
-        if use is None or any(use.get(k) != v for k, v in page["vatican_use"].items()):
+        expected_use = current_bibliography_fields(
+            "uses", {"id": f"use.{text}.vatican1962", **page["vatican_use"]}
+        )
+        if use is None or any(use.get(k) != v for k, v in expected_use.items()):
             errors.append(f"{text}: Vatican page/reference/source identity differs")
         if page["vatican_use"]["evidence_sha256"] != ORACLE["pdf_sha256"]:
             errors.append(f"{text}: Vatican original-object oracle is inconsistent")
@@ -155,7 +159,8 @@ def source_errors(state):
             errors.append(f"{text}: collation identity, dependencies or current bindings differ")
     if total_entries != 35:
         errors.append("expected exactly 35 classified apparatus entries")
-    for identifier, expected in ORACLE["context_uses"].items():
+    for identifier, original in ORACLE["context_uses"].items():
+        expected = current_bibliography_fields("uses", {"id": identifier, **original})
         use = uses.get(identifier)
         if use is None or any(use.get(k) != v for k, v in expected.items()):
             errors.append(f"{identifier}: exact Wisdom context differs")

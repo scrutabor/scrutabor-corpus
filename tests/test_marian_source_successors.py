@@ -262,7 +262,13 @@ def test_reader_projects_narrow_uses_without_pending_reviews_or_internal_fields(
     graph_snapshot = copy.deepcopy(graph)
     assert validate(CORPUS, graph, languages) == []
     use = row(graph, "uses", f"use.{SEVEN}.do44667ff")
-    assert use["claim"] == SEVEN_CLAIM and use["locator"] == SEVEN_LOCATOR
+    assert use["claim"] == SEVEN_CLAIM and use["locator"]["section"] == SEVEN_LOCATOR["section"]
+    base = f"https://github.com/DivinumOfficium/divinum-officium/blob/{REVISION}/web/www/missa/Latin/Sancti/"
+    assert use["locator"]["passages"] == [
+        {"heading": "Offertorium", "url": base + "07-16.txt#L37-L39"},
+        {"heading": "Offertorium", "url": base + "09-15.txt#L120-L121"},
+    ]
+    assert use["locator"]["page_url"] == use["locator"]["passages"][0]["url"]
     edition = row(graph, "editions", "edition.missale-romanum.1962-typica")
     assert edition["edition_statement"] == "Editio iuxta typicam"
     assert edition["authority"] == "approved_ecclesiastical_edition"

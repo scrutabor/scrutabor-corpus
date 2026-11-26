@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 from chant_fragment_fixture import ROWS, before_chant_graph, before_chant_registry
+from edition_revision_fixture import current_bibliography_record
 
 from build_reader.bibliography import public_text_evidence
 from build_reader.bibliography_bindings import digest, validate_bindings, witness_subject
@@ -108,7 +109,9 @@ def test_complete_literal_source_and_native_collation_remain_pending(chant):
         item for item in public_text_evidence(graph)["texts"] if item["id"] == row["text"]
     )
     assert public["witnesses"] == [] and "collation" not in public
-    assert record(graph, "uses", row["use"]["after"]["id"]) == row["use"]["after"]
+    assert record(graph, "uses", row["use"]["after"]["id"]) == current_bibliography_record(
+        "uses", row["use"]["after"]
+    )
     assert (ROOT / row["binding"]["witness"]).read_bytes() == (
         root / row["binding"]["witness"]
     ).read_bytes()

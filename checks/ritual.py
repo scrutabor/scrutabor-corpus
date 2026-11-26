@@ -27,6 +27,10 @@ EXECUTION = {
     "rubric_segment": "s01",
     "rubric_uses": RUBRIC_USES,
 }
+VIGIL_RUBRIC_URL = (
+    "https://github.com/DivinumOfficium/divinum-officium/blob/"
+    "44667ff518b8ff1439780470828b39714f5306a2/web/www/missa/Latin/Tempora/Quad6-6r.txt#L497-L508"
+)
 RUBRIC_SOURCES = {
     "mr": {
         "edition": "edition.missale-romanum.1962-typica",
@@ -49,7 +53,9 @@ RUBRIC_SOURCES = {
             "section": (
                 "web/www/missa/Latin/Tempora/Quad6-6r.txt [Prelude], physical lines 497–508; "
                 "ritual rubric line 499, six utterances lines 498, 500, 502–503, 505–506"
-            )
+            ),
+            "page_url": VIGIL_RUBRIC_URL,
+            "passages": [{"heading": "Prelude", "url": VIGIL_RUBRIC_URL}],
         },
         "evidence_sha256": "ed02ec52034eb46099622477bf6067216a7494fa4122dfbd39f4c7f2f03770ca",
     },

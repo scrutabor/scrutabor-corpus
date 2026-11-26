@@ -56,11 +56,11 @@ SHA = {
     "husenbeth1853": "64dda22f4b0753135be1112b8bd36eab7fbb9c92586c2fc2d831c0a4b7f65d8a",
 }
 PD = {
-    PA + "introitus": (HUSENBETH, "pp. 249–250", "scan pp. 276–277", "ne longe fácias"),
-    PA + "graduale": (LAITY, "p. 283", "scan p. 299", "pacem peccatórum videns"),
-    PA + "tractus": (HUSENBETH, "p. 251", "scan p. 278", "the third speravérunt"),
-    PA + "offertorium": (LAITY, "p. 292", "scan p. 308", "consolántem me quæsívi"),
-    PA + "evangelium": (LAITY, "pp. 285–292", "scan pp. 301–308", "the elders (senióres)"),
+    PA + "introitus": (HUSENBETH, "pp. 249–250", "PDF pp. 276–277", "ne longe fácias"),
+    PA + "graduale": (LAITY, "p. 283", "PDF p. 299", "pacem peccatórum videns"),
+    PA + "tractus": (HUSENBETH, "p. 251", "PDF p. 278", "the third speravérunt"),
+    PA + "offertorium": (LAITY, "p. 292", "PDF p. 308", "consolántem me quæsívi"),
+    PA + "evangelium": (LAITY, "pp. 285–292", "PDF pp. 301–308", "the elders (senióres)"),
 }
 CONCLUSION = (
     "Through | [our Lord] | [Jesus Christ] | [Your Son] | [who lives and reigns with You] | in | "

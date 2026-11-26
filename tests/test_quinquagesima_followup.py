@@ -193,6 +193,10 @@ def test_response_comparator_does_not_claim_a_proper_response_marker(slug):
     tid = PREFIX + slug
     use = next(r for r in graph["uses"] if r["id"] == f"use.{tid}.prayer-response.lu1961")
     assert use["edition"] == "edition.liber-usualis.1961"
+    assert (
+        use["locator"]["page_url"]
+        == "https://archive.org/details/TheLiberUsualis1961/page/n209/mode/1up"
+    )
     assert "not the controlling 1962" in use["claim"]
     assert "proper page does not print" in use["claim"]
     witness = next(r for r in graph["witnesses"] if r["id"] == f"witness.{tid}.mr1962")

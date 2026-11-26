@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 from adoro_te_devote_successor_fixture import before_adoro_bytes, before_adoro_graph
 from caption_followups_successor_fixture import before_followups_bytes
-from edition_revision_fixture import before_edition_object
+from edition_revision_fixture import before_edition_object, current_bibliography_record
 from foot_communion_successor_fixture import (
     DATA,
     DIAGNOSTIC,
@@ -329,10 +329,12 @@ def test_printed_basis_binds_the_page_already_bound():
     uses = {use["id"]: use for use in graph["uses"]}
     use = uses["use.ordinarium.qui-dixisti.mr1962"]
     twin = uses["use.ordinarium.fili-dei-vivi.mr1962"]
-    assert use == DATA["graph_use"]["row"]
+    assert use == current_bibliography_record("uses", DATA["graph_use"]["row"])
     assert use["evidence_sha256"] == twin["evidence_sha256"]
     assert use["locator"] == twin["locator"] and list(use) == list(twin)
-    for key in ("edition", "digital_item", "role", "claim", "decision"):
+    assert "conditional Pax tecum" in use["claim"] and "p. 313" in use["claim"]
+    assert "Fili Dei vivi" in twin["claim"]
+    for key in ("edition", "digital_item", "role", "decision"):
         assert use[key] == twin[key]
     method = core("ordinarium.qui-dixisti")["editorial"]["source"]["method"]
     assert method == METHOD and "independent" not in method

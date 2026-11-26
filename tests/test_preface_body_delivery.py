@@ -18,6 +18,7 @@ from typing import Any
 
 import pytest
 from common_preface_source_fixture import without_common_preface_source_chain
+from edition_revision_fixture import before_bibliography_revision, before_bibliography_subject
 from preface_delivery_fixture import (
     DATA,
     current_expected_row,
@@ -539,7 +540,8 @@ def without_apparatus_hash(row: dict[str, Any]) -> dict[str, Any]:
 
 
 def test_the_graph_overlay_is_exactly_the_stored_selected_text_digests():
-    graph = json.loads((CORPUS / "bibliography" / "graph.json").read_text(encoding="utf-8"))
+    relative = "bibliography/graph.json"
+    graph = json.loads(before_bibliography_revision(relative, (CORPUS / relative).read_bytes()))
     graph = without_common_preface_source_chain(graph)
     graph = without_ascension_vigil_preface_occurrence(graph)
     collations = [row for row in graph["collations"] if row["text"] in DATA["source"]]
@@ -579,8 +581,15 @@ def test_the_witness_overlay_is_exactly_the_current_and_historical_subjects():
         old = bindings._witness_subject(
             CORPUS, row, without_preface_delivery(doc), snapshot, reviewable=False
         )
-        assert bindings.digest(before_privacy(current)) == expected["after"]
-        assert bindings.digest(before_privacy(old)) == expected["before"]
+        assert old == {
+            **current,
+            "selected_text": bindings.selected_text(without_preface_delivery(doc)),
+        }
+        assert current["selected_text"] == bindings.selected_text(doc)
+        previous = before_bibliography_subject(current)
+        previous_old = {**previous, "selected_text": old["selected_text"]}
+        assert bindings.digest(before_privacy(previous)) == expected["after"]
+        assert bindings.digest(before_privacy(previous_old)) == expected["before"]
         assert current_witness_hash(row["id"], expected["before"]) == expected["after"]
 
 

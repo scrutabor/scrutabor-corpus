@@ -19,6 +19,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from edition_revision_fixture import before_bibliography_revision, before_bibliography_subject
 from gospel_delivery_fixture import (
     DATA,
     current_gospel_expected_row,
@@ -641,6 +642,8 @@ def without_apparatus_hash(row: dict[str, Any]) -> dict[str, Any]:
 def test_the_graph_overlay_is_exactly_the_stored_selected_text_digests():
     graph = json.loads((CORPUS / "bibliography" / "graph.json").read_text(encoding="utf-8"))
     assert bindings.validate_bindings(CORPUS, graph) == []
+    relative = "bibliography/graph.json"
+    graph = json.loads(before_bibliography_revision(relative, (CORPUS / relative).read_bytes()))
     collations = [row for row in graph["collations"] if row["text"] in DATA["source"]]
     assert len(collations) == 98
     assert sorted(row["id"] for row in collations) == sorted(DATA["collation_records"])
@@ -681,8 +684,13 @@ def test_the_witness_overlay_is_exactly_the_current_and_historical_subjects():
         old = bindings._witness_subject(
             CORPUS, row, without_gospel_delivery(doc), snapshot, reviewable=False
         )
-        assert bindings.digest(before_privacy(current)) == expected["after"]
-        assert bindings.digest(before_privacy(old)) == expected["before"]
+        comparison = before_bibliography_subject(current)
+        assert comparison["selected_text"] == current["selected_text"]
+        assert old["selected_text"] == bindings.selected_text(without_gospel_delivery(doc))
+        assert old == {**current, "selected_text": old["selected_text"]}
+        assert bindings.digest(before_privacy(comparison)) == expected["after"]
+        earlier = {**comparison, "selected_text": old["selected_text"]}
+        assert bindings.digest(before_privacy(earlier)) == expected["before"]
         assert current_gospel_witness_hash(row["id"], expected["before"]) == expected["after"]
 
 

@@ -91,13 +91,25 @@ BOUND = [
     IO + "introitus",
     "proprium.nativitas-sancti-ioannis-baptistae-offertorium",
 ]
-PENDING = [
-    IN + "tractus",
-    IO + "postcommunio",
-    OC + "secreta",
-    OC + "postcommunio",
-    DO + "graduale",
-]
+PENDING = {
+    IN + "tractus": [("Tractus", "missa/Latin/Sancti/12-28.txt#L51-L56")],
+    IO + "postcommunio": [
+        ("Postcommunio", "horas/Latin/Commune/C5.txt#L391-L393"),
+        ("Per Dominum", "missa/Latin/Ordo/Prayers.txt#L95-L97"),
+        ("Postcommunio", "missa/Latin/Sancti/12-27.txt#L69-L70"),
+    ],
+    OC + "secreta": [
+        ("Secreta", "horas/Latin/Commune/C2a.txt#L83-L85"),
+        ("Per Dominum", "missa/Latin/Ordo/Prayers.txt#L95-L97"),
+        ("Secreta", "missa/Latin/Sancti/01-01.txt#L44-L45"),
+    ],
+    OC + "postcommunio": [
+        ("Postcommunio", "horas/Latin/Commune/C10b.txt#L46-L48"),
+        ("Per eundem", "missa/Latin/Ordo/Prayers.txt#L111-L113"),
+        ("Postcommunio", "missa/Latin/Sancti/01-01.txt#L58-L59"),
+    ],
+    DO + "graduale": [("Graduale", "missa/Latin/Tempora/Nat1-0.txt#L39-L42")],
+}
 
 
 def load(relative):
@@ -295,13 +307,21 @@ def test_the_bound_divinum_officium_witnesses_read_their_archives_exactly(text):
 
 
 @pytest.mark.parametrize("text", PENDING)
-def test_the_unbound_divinum_officium_witnesses_say_why(text):
+def test_unbound_digital_transcriptions_identify_their_readings_without_promoting_review(text):
     header = witness(text, "do")
     assert "# raw-binding:" not in header
-    assert "the raw binding is pending because" in header
     assert (
-        "# orthography: exact source spelling, accents, capitalization, and punctuation" in header
+        "# orthography: spelling, accents, case and punctuation of the cited digital text" in header
     )
+    row = record(text, "do44667ff")
+    assert not row.get("source_dependencies", {}).get("raw_binding")
+    assert row["review"] == {"status": "pending"}
+    locator = uses(text)["do44667ff"]["locator"]
+    base = "https://github.com/DivinumOfficium/divinum-officium/blob/44667ff518b8ff1439780470828b39714f5306a2/web/www/"
+    assert locator["passages"] == [
+        {"heading": heading, "url": base + source} for heading, source in PENDING[text]
+    ]
+    assert locator["page_url"] == locator["passages"][0]["url"]
     assert "this body has not been verified" not in header
     clean(text)
 

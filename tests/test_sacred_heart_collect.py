@@ -6,10 +6,11 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
-from edition_revision_fixture import before_review_layer
+from edition_revision_fixture import before_bibliography_revision, before_review_layer
 
 from checks import interlinear, language_packs
 from checks.collate import load_witness
+from checks.layout import formatted
 from checks.translation_provenance import canonical_hash
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -191,12 +192,13 @@ def test_selected_short_latin_conclusion_and_registered_transcript_are_preserved
     ]
     _, body = load_witness(ROOT / "witnesses" / TEXT / "enchiridion-1952.txt")
     assert body.endswith(
-        "tu veniam concede placatus in nomine eiusdem Filii tui Iesu Christi, "
-        "qui tecum vivit et regnat in sæcula saeculorum. Amen."
+        "tu veniam concede placatus in nomine eiusdem Filii tui Iesu Christi: "
+        "Qui tecum vivit et regnat in saecula saeculorum. Amen."
     )
     assert "unitate" not in " ".join(forms)
     assert core["localization"]["explanations"] == EXPLANATIONS
-    without_topology = deepcopy(core)
+    previous = before_bibliography_revision(RELATIVE, formatted(core).encode())
+    without_topology = json.loads(previous)
     del without_topology["localization"]["explanations"]
     assert canonical_hash(without_topology) == (
         "35257d85aa0f1e75f3d5626f10eee590841a21f4a86394639f4657f41c911a5e"
@@ -374,7 +376,8 @@ def test_exact_historical_body_basis_and_redundant_parallel_have_separate_decisi
     assert key["decision"] == "RETAIN_WITH_CORRECTION"
     assert key["locator"] == {
         "printed": "pp. 262–263",
-        "scan": "DJVU physical pages 275–276 (one-based)",
+        "scan": "DjVu pp. 275–276",
+        "page_url": "https://commons.wikimedia.org/wiki/File:KeyOfHeaven.djvu?page=275",
     }
     assert "Historical English basis for the revised collect body" in key["claim"]
     assert "appeasement" in key["claim"]

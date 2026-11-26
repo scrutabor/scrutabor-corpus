@@ -9,6 +9,7 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
+from edition_revision_fixture import before_bibliography_records
 from ordo_notes_successor_fixture import before_ordo_notes_graph
 from reader_arrow_successor_fixture import before_arrow_graph
 
@@ -36,7 +37,7 @@ def before_main_ordo_records(records, text):
     """Invert only two complete named additions before the unchanged old oracle."""
     assert text in {"ordinarium.panem-caelestem", "ordinarium.praefatio-dialogus"}
     row = DATA["texts"][text]
-    result = deepcopy(before_arrow_graph(before_ordo_notes_graph(records)))
+    result = before_arrow_graph(before_ordo_notes_graph(before_bibliography_records(records)))
     for collection, name in (("uses", "use_record"), ("witnesses", "witness_record")):
         expected = row[name]
         matches = [item for item in result[collection] if item.get("id") == expected["id"]]

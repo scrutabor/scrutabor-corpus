@@ -20,7 +20,11 @@ from canon_consecration_successor_fixture import (
     before_canon_layer_frame,
     current_canon_row,
 )
-from edition_revision_fixture import before_edition_object
+from edition_revision_fixture import (
+    before_bibliography_record,
+    before_edition_object,
+    current_bibliography_record,
+)
 from foot_communion_successor_fixture import (
     before_foot_communion_bytes,
     before_foot_communion_graph,
@@ -309,10 +313,13 @@ def test_printed_basis_binds_the_page_already_bound(identity, bound_by):
     graph = before_ordo_notes_graph(json.loads((ROOT / "bibliography/graph.json").read_bytes()))
     uses = {use["id"]: use for use in graph["uses"]}
     use = uses[identity]
-    assert use == next(rule["row"] for rule in DATA["graph_uses"] if rule["row"]["id"] == identity)
+    previous = next(rule["row"] for rule in DATA["graph_uses"] if rule["row"]["id"] == identity)
+    assert use == current_bibliography_record("uses", previous)
     assert use["evidence_sha256"] == uses[bound_by]["evidence_sha256"]
     assert list(use) == list(uses[bound_by])
-    for key in ("edition", "digital_item", "role", "claim", "decision"):
+    assert previous["claim"] == before_bibliography_record("uses", uses[bound_by])["claim"]
+    assert use["locator"]["page_url"] == uses[bound_by]["locator"]["page_url"]
+    for key in ("edition", "digital_item", "role", "decision"):
         assert use[key] == uses[bound_by][key]
     text = use["address"]["text"]
     method = core(text)["editorial"]["source"]["method"]

@@ -175,7 +175,12 @@ def test_the_holy_family_secret_has_the_printed_deprecantes():
     )
     assert doc["ids"]["next"] == 48
     assert doc["title"].endswith("Dómine, supplíciter deprecántes")
-    assert "except the participle deprecántes" in uses(text)["do44667ff"]["claim"]
+    digital = resolve_binding(ROOT / "witnesses" / text / "do.txt", ROOT)
+    assert digital is not None and "Dómine, supplíciter ut, per" in digital.text
+    assert "deprecántes" not in digital.text
+    assert uses(text)["do44667ff"]["locator"]["page_url"].endswith(
+        "/web/www/missa/Latin/Tempora/Epi1-0.txt#L69-L71"
+    )
     assert layer("pl", text)["words"]["w047"]["gloss"] == "prosząc"
     assert layer("en", text)["words"]["w047"]["gloss"] == "beseeching"
     assert "pokornie prosząc, abyś" in layer("pl", text)["segments"]["s01"]["translation"]
@@ -216,7 +221,9 @@ def test_the_holy_family_reads_its_own_epistle():
     bound = resolve_binding(ROOT / "witnesses" / EPISTLE / "do.txt", ROOT)
     assert bound is not None and bound.text.endswith("per ipsum.")
     assert len(bound.text.split()) == 108
-    assert uses(EPISTLE)["do44667ff"]["decision_reason"].startswith("Exact pinned original")
+    assert uses(EPISTLE)["do44667ff"]["locator"]["page_url"].endswith(
+        "/web/www/missa/Latin/Tempora/Epi1-0.txt#L35"
+    )
     clean(EPISTLE)
 
 
@@ -356,7 +363,9 @@ def test_the_second_sunday_conclusions_name_only_their_actual_printed_sources(
         ),
         "oration-boundaries": (
             39,
-            "c03be5250068f8c9c262983bc7689a18d0180b88b0c4476d21fac383c8f07993",
+            "8e5311d636452dcfb0d5651b426702571114570969efe46a42594bdd05d01716"
+            if slug == "secreta"
+            else "c03be5250068f8c9c262983bc7689a18d0180b88b0c4476d21fac383c8f07993",
         ),
         control: (
             leaf,

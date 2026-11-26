@@ -5,6 +5,7 @@ import json
 from copy import deepcopy
 
 import pytest
+from edition_revision_fixture import before_bibliography_records
 from main_ordo_consumer_fixture import DATA as MAIN_ORDO
 from main_ordo_consumer_fixture import before_main_ordo_records
 from preface_delivery_fixture import current_graph_hash, current_selected_hash
@@ -131,11 +132,17 @@ def check_primary(data, slug):
         "page_url": f"https://archive.org/details/missale-romanum-1962/page/n{leaf}/mode/1up",
     }
     claim = value["claim"]
-    assert "approved Benziger printing" in claim
-    if slug not in EASTER:
+    if slug == "sanctissimae-trinitatis":
+        assert "p. 296 reads nos tibi semper ut ubíque" in claim
+        assert "p. 246 reads nos tibi semper, et ubíque" in claim
+        assert "selected prose reads semper et ubíque" in claim
+        assert "hand-position rubric has its own citation" in claim
+    elif slug not in EASTER:
+        assert "approved Benziger printing" in claim
         assert "imported hand-position rubric is outside this use" in claim
         assert "complete 1962 liturgical component" not in claim
     else:
+        assert "approved Benziger printing" in claim
         assert "hand-position rubric" not in claim
         if slug == "paschalis-in-nocte":
             assert claim == (
@@ -151,8 +158,6 @@ def check_primary(data, slug):
         assert choice in claim
     if slug in APPLICATIONS:
         assert "same-page" in claim and APPLICATIONS[slug] in claim
-    if slug == "sanctissimae-trinitatis":
-        assert "semper ut ubique" in claim and "selected et" in claim
 
 
 def check_easter(data, slug, doc):
@@ -192,7 +197,7 @@ def check_protected(data, slug):
         for key in ("uses", "witnesses", "collations")
     }
     if slug == "dialogus":
-        records = before_main_ordo_records(records, tid(slug))
+        records = before_main_ordo_records(before_bibliography_records(records), tid(slug))
     assert digest(before_privacy(records)) == current_graph_hash(tid(slug), PROTECTED[slug])
 
 

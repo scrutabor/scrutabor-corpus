@@ -13,6 +13,7 @@ from anne_documentary_fixture import (
     F,
     before_anne_core,
     before_anne_graph,
+    before_anne_records,
     before_anne_registry,
     current,
     record,
@@ -105,6 +106,26 @@ def test_real_current_inputs_validate_before_complete_historical_inverse():
     assert graph == saved_graph and registry == saved_registry
 
 
+def test_complete_native_source_and_graph_record_reject_damaged_evidence(state):
+    _, subject = current(state["root"], state["graph"])
+    previous = before_anne_records(subject)
+    assert previous["contract"] == "witness-identity-2"
+    assert "raw_resolution" not in previous
+    damaged = deepcopy(subject)
+    use = F["records"]["uses"]["after"]["id"]
+    citation = subject["source_uses"][use]["use"]["locator"]
+    assert [part["url"] for part in citation["passages"]] == [citation["page_url"]]
+    assert citation["page_url"].endswith("/web/www/horas/Latin/Commune/C7a.txt#L77")
+    damaged["source_uses"][use]["digital_item"]["record_url"] += "-changed"
+    with pytest.raises(AssertionError, match="complete current Anne witness and source uses"):
+        before_anne_records(damaged)
+    damaged_record = deepcopy(F["records"]["witnesses"]["after"])
+    del damaged_record["review"]
+    with pytest.raises(AssertionError, match="exact Anne graph successor"):
+        before_anne_records(damaged_record)
+    assert before_anne_records(subject) == previous
+
+
 def test_complete_member_framing_and_single_literal_body_fragment(state):
     actual, _ = current(state["root"], state["graph"])
     root = state["root"]
@@ -147,8 +168,15 @@ def test_pending_identity_is_not_a_source_review_or_public_witness_grant(state):
     )
     mr = next(r for r in graph["witnesses"] if r["transcription"] == "mr")
     core = json.loads((root / F["core"]).read_bytes())
+    print_subject = witness_subject(root, mr, graph, core)
+    assert print_subject["contract"] == "witness-review-2"
+    assert print_subject["raw_resolution"] is None
+    assert set(print_subject["source_uses"]) == {mr["use"]}
+    assert mr["source_dependencies"] == {"raw_binding": None, "uses": []}
+    missing_declaration = deepcopy(mr)
+    del missing_declaration["source_dependencies"]
     with pytest.raises(BindingError, match="complete explicit source_dependencies"):
-        witness_subject(root, mr, graph, core)
+        witness_subject(root, missing_declaration, graph, core)
     (public,) = [r for r in public_text_evidence(graph)["texts"] if r["id"] == F["text"]]
     assert public["witnesses"] == [] and "collation" not in public
     assert "raw_resolution" not in json.dumps(public)

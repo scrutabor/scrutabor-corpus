@@ -3,7 +3,16 @@
 import hashlib
 import json
 from copy import deepcopy
+from functools import cache
 from pathlib import Path
+
+from documentary_bibliography_fixture import current_source_uses
+from edition_revision_fixture import (
+    BIBLIOGRAPHY_FILES,
+    before_bibliography_record,
+    before_bibliography_revision,
+    current_bibliography_record,
+)
 
 from build_reader.bibliography_bindings import digest, witness_subject
 from build_reader.layers import expand_core
@@ -57,12 +66,33 @@ def record(graph, field, identity):
     return matches[0]
 
 
+@cache
+def historical_anne_source():
+    """Read the retained whole-graph predecessor to recover the same edition and item."""
+    path = "bibliography/graph.json"
+    frozen = before_bibliography_revision(path, (ROOT / path).read_bytes())
+    assert hashlib.sha256(frozen).hexdigest() == BIBLIOGRAPHY_FILES[path]["previous"]
+    graph = json.loads(frozen)
+    use = F["records"]["uses"]["after"]
+    assert record(graph, "uses", use["id"]) == use
+    edition = record(graph, "editions", use["edition"])
+    return {
+        use["id"]: {
+            "use": use,
+            "edition": edition,
+            "work": record(graph, "works", edition["work"]),
+            "digital_item": record(graph, "digital_items", use["digital_item"]),
+        }
+    }
+
+
 def current(root=ROOT, graph=None):
     """Pass real current inputs to the native APIs, never a predecessor copy."""
     if graph is None:
         graph = json.loads((root / "bibliography/graph.json").read_bytes())
     for field, rule in F["records"].items():
-        assert record(graph, field, rule["after"]["id"]) == rule["after"], (
+        expected = current_bibliography_record(field, rule["after"])
+        assert record(graph, field, expected["id"]) == expected, (
             "complete current Anne documentary record"
         )
     registry = json.loads((root / "witnesses/raw/bindings.json").read_bytes())
@@ -87,7 +117,7 @@ def current(root=ROOT, graph=None):
     subject = witness_subject(root, witness, graph, core)
     assert subject["contract"] == "witness-review-2"
     assert subject["raw_resolution"] == F["expected_source"]
-    assert set(subject["source_uses"]) == {witness["use"]}
+    assert subject["source_uses"] == current_source_uses(historical_anne_source())
     errors, warnings, stats = collate(expand_core(core), root / "witnesses" / F["text"])
     assert errors == warnings == []
     assert stats["words"] == 229 and stats["witnesses"] == 2
@@ -101,7 +131,9 @@ def before_anne_graph(value):
     result = deepcopy(value)
     for field, rule in F["records"].items():
         actual = record(result, field, rule["after"]["id"])
-        assert actual == rule["after"], "exact Anne graph successor"
+        assert before_bibliography_record(field, actual) == rule["after"], (
+            "exact Anne graph successor"
+        )
         actual.clear()
         actual.update(deepcopy(rule["before"]))
     return result
@@ -132,11 +164,10 @@ def before_anne_core(value):
 def before_anne_records(value):
     """Undo exact Anne records/subjects on a copy, retaining all unrelated records."""
     result = deepcopy(value)
-    rules = {rule["after"]["id"]: rule for rule in F["records"].values()}
+    rules = {rule["after"]["id"]: (field, rule) for field, rule in F["records"].items()}
     witness = F["records"]["witnesses"]
-    use = F["records"]["uses"]
 
-    def visit(item):
+    def visit(item, in_subject=False):
         if isinstance(item, list):
             for child in item:
                 visit(child)
@@ -155,8 +186,16 @@ def before_anne_records(value):
                 "raw_resolution",
             }, "complete current Anne witness subject"
             assert item["contract"] == "witness-review-2"
-            assert item["witness"] == {k: v for k, v in witness["after"].items() if k != "review"}
-            assert item["source_uses"] == {use["after"]["id"]: use["after"]}
+            historical_witness = {k: v for k, v in witness["after"].items() if k != "review"}
+            historical_uses = historical_anne_source()
+            assert (item["witness"], item["source_uses"]) in (
+                (historical_witness, historical_uses),
+                (
+                    current_bibliography_record("witnesses", historical_witness, subject=True),
+                    current_source_uses(historical_uses),
+                ),
+            ), "complete current Anne witness and source uses"
+            item["source_uses"] = deepcopy(historical_uses)
             assert item["raw_resolution"] == F["expected_source"]
             assert (
                 digest(item["selected_text"])
@@ -165,16 +204,19 @@ def before_anne_records(value):
             item["contract"] = "witness-identity-2"
             del item["raw_resolution"]
         if item.get("id") in rules:
-            rule = rules[item["id"]]
+            field, rule = rules[item["id"]]
             before, after = deepcopy(rule["before"]), deepcopy(rule["after"])
-            if "review" in after and "review" not in item:
+            native = field == "witnesses" and "review" not in item and in_subject
+            if native:
                 del before["review"]
                 del after["review"]
-            assert item == after, "exact Anne graph successor"
+            assert before_bibliography_record(field, item, subject=native) == after, (
+                "exact Anne graph successor"
+            )
             item.clear()
             item.update(before)
-        for child in item.values():
-            visit(child)
+        for key, child in item.items():
+            visit(child, key == "witness" and item.get("contract") == "witness-identity-2")
 
     visit(result)
     return result

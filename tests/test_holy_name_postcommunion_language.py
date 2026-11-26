@@ -187,14 +187,13 @@ def test_english_is_a_request_not_an_unconditional_promise():
 
 
 @pytest.mark.parametrize(
-    "suffix,year,printed,pdf,leaf,digest",
+    "suffix,year,printed,pdf,digest",
     [
         (
             "body.husenbeth1853",
             1853,
             95,
             122,
-            121,
             "64dda22f4b0753135be1112b8bd36eab7fbb9c92586c2fc2d831c0a4b7f65d8a",
         ),
         (
@@ -202,7 +201,6 @@ def test_english_is_a_request_not_an_unconditional_promise():
             1853,
             29,
             56,
-            55,
             "64dda22f4b0753135be1112b8bd36eab7fbb9c92586c2fc2d831c0a4b7f65d8a",
         ),
         (
@@ -210,13 +208,12 @@ def test_english_is_a_request_not_an_unconditional_promise():
             1846,
             584,
             614,
-            613,
             "8e692b256e08350896902e55787f70c171a444d33e754f4d67e84fe000f81dd1",
         ),
     ],
 )
 def test_body_formula_and_interpretive_control_have_exact_distinct_sources(
-    suffix, year, printed, pdf, leaf, digest
+    suffix, year, printed, pdf, digest
 ):
     graph = json.loads((CORPUS / "languages/en/bibliography.json").read_text())
     uses = [u for u in graph["uses"] if u["address"].get("text") == TEXT]
@@ -224,12 +221,13 @@ def test_body_formula_and_interpretive_control_have_exact_distinct_sources(
     use = next(u for u in uses if u["id"] == f"use.en.{TEXT}.{suffix}")
     assert use["address"] == {"kind": "segment", "text": TEXT, "segment": "s01"}
     assert use["role"] == "historical_wording_basis" and use["evidence_sha256"] == digest
-    assert use["locator"]["printed"] == f"p.{printed}" and use["locator"]["scan"] == f"PDF{pdf}"
+    assert use["locator"]["printed"] == f"p.{printed}" and use["locator"]["scan"] == f"PDF p. {pdf}"
     archive = (
         "missal_for_use_of_laity_1853-f_c_husenbeth" if year == 1853 else "TheMissalForTheLaity"
     )
     assert (
-        use["locator"]["page_url"] == f"https://archive.org/details/{archive}/page/n{leaf}/mode/1up"
+        use["locator"]["page_url"]
+        == f"https://archive.org/download/{archive}/{archive}.pdf#page={pdf}"
     )
 
 

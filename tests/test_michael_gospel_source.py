@@ -9,6 +9,8 @@ from pathlib import Path
 
 import pytest
 import witness_header_fixture as headers
+from documentary_bibliography_fixture import current_source_uses
+from edition_revision_fixture import current_bibliography_record
 from gospel_delivery_fixture import DATA as GOSPEL
 from michael_gospel_source_fixture import (
     DATA as F,
@@ -65,7 +67,9 @@ def source(tmp_path):
             if row.get("text", row.get("address", {}).get("text")) == TEXT
         ]
     for row in F["records"]:
-        assert record(graph, row["collection"], row["id"]) == row["after"]
+        assert record(graph, row["collection"], row["id"]) == current_bibliography_record(
+            row["collection"], row["after"]
+        )
     current = load_registry(ROOT)
     registry = {
         "version": 1,
@@ -110,7 +114,12 @@ def current(state):
     subject = witness_subject(root, record(graph, "witnesses", witness["id"]), graph, core)
     assert subject["contract"] == "witness-review-2"
     assert subject["raw_resolution"] == F["expected_source"]
-    assert subject["source_uses"] == F["source_uses"]["after"]
+    assert subject["source_uses"] == current_source_uses(F["source_uses"]["after"])
+    citation = subject["source_uses"][witness["use"]]["use"]["locator"]
+    body, caller = [part["url"] for part in citation["passages"]]
+    assert citation["page_url"] == body and body.endswith("/missa/Latin/Sancti/05-08.txt#L36")
+    assert caller.rsplit("#", 1)[0].endswith("/missa/Latin/Sancti/09-29.txt")
+    assert caller.rsplit("#", 1)[1] in {"L36", "L35-L36"}
     errors, warnings, stats = collate(expand_core(core), root / Path(F["witness"]).parent)
     assert errors == warnings == []
     assert stats["words"] == 196 and stats["witnesses"] == 2 and stats["corrigenda"] == 1
@@ -279,16 +288,28 @@ def test_reader_and_collation_keep_pending_distinct_from_resolution(source):
     core, subject = current(source)
     graph = source["graph"]
     mr = next(row for row in graph["witnesses"] if row["transcription"] == "mr")
-    old_mr = json.loads((ROOT / GRAPH).read_text())
-    assert mr == record(old_mr, "witnesses", mr["id"])
+    live_graph = json.loads((ROOT / GRAPH).read_text())
+    assert mr == record(live_graph, "witnesses", mr["id"])
+    root = source["root"]
+    print_subject = witness_subject(root, mr, graph, core)
+    assert print_subject["contract"] == "witness-review-2"
+    assert print_subject["raw_resolution"] is None
+    assert set(print_subject["source_uses"]) == {mr["use"]}
+    assert mr["source_dependencies"] == {"raw_binding": None, "uses": []}
+    subjects = {subject["witness"]["id"]: subject, mr["id"]: print_subject}
+    assert collation_subject(root, graph["collations"][0], core, subjects)["contract"] == (
+        "collation-review-2"
+    )
+    missing_declaration = deepcopy(mr)
+    del missing_declaration["source_dependencies"]
     with pytest.raises(
         BindingError, match="complete explicit source_dependencies declaration required"
     ):
-        witness_subject(source["root"], mr, graph, core)
-    subjects = {subject["witness"]["id"]: subject}
+        witness_subject(root, missing_declaration, graph, core)
     subjects[mr["id"]] = _witness_subject(
-        source["root"], mr, core, _SourceSnapshot(source["root"], graph), reviewable=False
+        root, missing_declaration, core, _SourceSnapshot(root, graph), reviewable=False
     )
+    assert subjects[mr["id"]]["contract"] == "witness-identity-2"
     with pytest.raises(
         BindingError, match="reviewable collation requires complete witness source inventories"
     ):
@@ -302,7 +323,10 @@ def test_reader_and_collation_keep_pending_distinct_from_resolution(source):
     assert public["witnesses"] == [] and "collation" not in public
     entries = [entry for group in public["source_groups"] for entry in group["entries"]]
     expected = next(row["after"] for row in F["records"] if row["collection"] == "uses")
-    assert next(row for row in entries if row["id"] == expected["id"])["claim"] == expected["claim"]
+    assert (
+        next(row for row in entries if row["id"] == expected["id"])["claim"]
+        == current_bibliography_record("uses", expected)["claim"]
+    )
     assert "raw_resolution" not in json.dumps(public) and F["binding_id"] not in json.dumps(public)
 
 
